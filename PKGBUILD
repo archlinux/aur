@@ -1,14 +1,14 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
-pkgver=2016
-_pkgver=1.2.0-production
-pkgrel=4
+pkgver=2017
+_pkgver=1.2.2-production
+pkgrel=1
 pkgdesc="VaudTax"
 url="http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
 arch=(i686 x86_64)
 license=('custom')
-source=('https://vaudtax-dl.vd.ch/vaudtax2016/telechargement/linux/VaudTax_2016.tar.gz'
+source=("https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/VaudTax_$pkgver.tar.gz"
 'execute_from_usr_share.patch')
 _dirname="VaudTax_$pkgver-$_pkgver"
 
@@ -33,5 +33,5 @@ package() {
 	cp ${pkgname}-${pkgver} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('a21646b0e100fdeb26694b16748f1811'
-         '50de86f022910871d336571832e5f810')
+md5sums=('ecad1c1335ad14883d3e478e69f4afe2'
+         'a379a4fdb08eb3ef43f4e0ea8842454c')

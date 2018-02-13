@@ -1,5 +1,5 @@
---- a/vaudtax-2016
-+++ b/vaudtax-2016
+--- a/vaudtax-2017
++++ b/vaudtax-2017
 @@ -5,11 +5,7 @@
  
  classpath='lib/dvbern-lib-update.jar'
