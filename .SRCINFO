@@ -1,7 +1,7 @@
 pkgbase = ccnet
 	pkgdesc = A framework for writing networked applications in C.
 	pkgver = 6.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haiwen/ccnet
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ccnet
 	arch = aarch64
 	license = GPL2
 	makedepends = vala
-	makedepends = libmariadbclient
+	depends = libevent
 	depends = libsearpc
 	conflicts = ccnet-server
 	source = ccnet-v6.1.5-server.tar.gz::https://github.com/haiwen/ccnet/archive/v6.1.5.tar.gz

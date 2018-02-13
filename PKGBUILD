@@ -5,13 +5,13 @@
 
 pkgname=ccnet
 pkgver=6.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for writing networked applications in C."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('GPL2')
-depends=('libsearpc')
-makedepends=('vala' 'libmariadbclient' )
+depends=('libevent' 'libsearpc')
+makedepends=('vala')
 conflicts=('ccnet-server')
 source=("${pkgname}-v${pkgver}-server.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libccnet.pc.patch")
@@ -20,13 +20,11 @@ sha256sums=('763296486f8cc51b439355e87dac8cb71975689024bddb359b0456aa8dbd518f'
 
 prepare () {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
     patch -p1 -i "${srcdir}"/libccnet.pc.patch
 }
 
 build () {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
     ./autogen.sh
     ./configure --prefix=/usr --enable-console PYTHON=/usr/bin/python2
     make
@@ -34,6 +32,5 @@ build () {
 
 package () {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
     make DESTDIR="$pkgdir" install
 }
