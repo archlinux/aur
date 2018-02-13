@@ -1,16 +1,13 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=r164.660e855.gmmlib.r8.b1451bb
+pkgver=r260.43a84e7.gmmlib.r21.6fb6598
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
 license=('MIT' 'BSD')
-depends=(
-     # AUR:
-         'libva-git'
-)
+depends=('libva')
 makedepends=('git' 'cmake')
 provides=('intel-media-driver')
 conflicts=('intel-media-driver')

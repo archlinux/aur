@@ -1,6 +1,6 @@
 pkgbase = intel-media-driver-git
 	pkgdesc = Intel Media Driver for VAAPI (git version)
-	pkgver = r164.660e855.gmmlib.r8.b1451bb
+	pkgver = r260.43a84e7.gmmlib.r21.6fb6598
 	pkgrel = 1
 	url = https://github.com/intel/media-driver/
 	install = intel-media-driver-git.install
@@ -10,7 +10,7 @@ pkgbase = intel-media-driver-git
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	depends = libva-git
+	depends = libva
 	provides = intel-media-driver
 	conflicts = intel-media-driver
 	options = !emptydirs
