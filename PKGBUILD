@@ -14,11 +14,12 @@ license=('custom:panasonic')
 depends=(libusb-compat)
 optdepends=('cups: printer support'
             'sane: scanner support')
-conflicts=(mccgdi panamfs-scan)
-source_x86_64=("http://cs.psn-web.net/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/${_pkgname_print}-${_pkgver_print}-x86_64.tar.gz"
-               "http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/${_pkgname_scan}-${_pkgver_scan}-x86_64.tar.gz")
-source_i686=("http://cs.psn-web.net/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/${_pkgname_print}-${_pkgver_print}-i686.tar.gz"
-             "http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/${_pkgname_scan}-${_pkgver_scan}-i686.tar.gz")
+conflicts=("${_pkgname_print}" "${_pkgname_scan}")
+_url='http://cs.psn-web.net/support/fax/common/file'
+source_x86_64=("${_url}/Linux_PrnDriver/Driver_Install_files/${_pkgname_print}-${_pkgver_print}-x86_64.tar.gz"
+               "${_url}/Linux_ScanDriver/${_pkgname_scan}-${_pkgver_scan}-x86_64.tar.gz")
+source_i686=("${_url}/Linux_PrnDriver/Driver_Install_files/${_pkgname_print}-${_pkgver_print}-i686.tar.gz"
+             "${_url}/Linux_ScanDriver/${_pkgname_scan}-${_pkgver_scan}-i686.tar.gz")
 sha256sums_x86_64=('e2532473a3843f859c0207f91483dd4a156a167e5244e7a7fd605578e85163a9'
                    '01829def2a8ea215c59d60327c085f382c88033054879f178559fa76293d6801')
 sha256sums_i686=('536060e3cc75b54c1f08c1c02aa100a6ba9c82b2a60adc6c6ef939e0c73c72da'
@@ -93,7 +94,12 @@ package() {
   sed 's/0x//g' |
   while read -r device; do
     device=($device)
-    echo "ATTRS{idVendor}==\"${device[0]}\", ATTRS{idProduct}==\"${device[1]}\", MODE=\"0664\", GROUP=\"scanner\", ENV{libsane_matched}=\"yes\""
+    echo \
+    'ATTRS{idVendor}=="'"${device[0]}"'",' \
+    'ATTRS{idProduct}=="'"${device[1]}"'",' \
+    'MODE="0664",' \
+    'GROUP="scanner",' \
+    'ENV{libsane_matched}="yes"'
   done \
   > "$pkgdir/usr/lib/udev/rules.d/49-sane-panamfs.rules"
 
