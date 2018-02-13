@@ -1,7 +1,7 @@
 # Maintainer: roger <roger@rogerpc.com.ar>
 
 pkgname=escrotum-git
-pkgver=0.2.1.r31.094b288
+pkgver=0.2.1.r31.g094b288
 pkgrel=1
 pkgdesc="Screen capture using pygtk, inspired by scrot"
 arch=('i686' 'x86_64')
