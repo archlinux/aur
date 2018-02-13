@@ -3,9 +3,9 @@
 
 pkgbase=python-pytimeparse
 pkgname=('python-pytimeparse' 'python2-pytimeparse')
-_pkgname=pytimeparse
+_pkgname=${pkgbase#python-}
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A small Python library to parse various kinds of time expressions"
 arch=('x86_64')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
