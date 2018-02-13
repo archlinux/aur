@@ -1,7 +1,7 @@
 # Maintainer: Aldo Gunsing <dev at aldogunsing dot nl>
 
 pkgname=klfc
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Tool to create advanced keyboard layouts in various formats"
 url="https://github.com/39aldo39/klfc"
@@ -15,7 +15,7 @@ depends=("haskell-base-prelude" "haskell-text" "haskell-bytestring" "haskell-sem
     "haskell-file-embed" "haskell-xml" "haskell-chunked-data" "haskell-process>=1.2.0.0")
 makedepends=("cabal-install")
 source=("https://github.com/39aldo39/klfc/archive/v$pkgver.tar.gz")
-md5sums=('ba7e58d828bbcff30d52399c795c99cd')
+md5sums=('3d78e1f9ea980c0414cc0c1d948c7a4b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
