@@ -5,7 +5,7 @@
 
 # Maintainer: Nicolas Haigh <haigh.nicolas at googlemail dot com>
 pkgname=python2-owm
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A wrapper for the OpenWeatherMap API"
 arch=('any')
