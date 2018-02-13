@@ -18,15 +18,9 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make
-	make DESTDIR="$pkgdir" install
-}
-
-install() {
 	install -Dm755 "$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.png" -t "/usr/share/pixmaps/"
-	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.desktop" -t "/usr/share/applications/"
-
-	
+	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
+
+
