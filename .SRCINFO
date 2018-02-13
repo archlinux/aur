@@ -1,13 +1,13 @@
 pkgbase = python-rstr
 	pkgdesc = Generate random strings in Python
 	pkgver = 2.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/leapfrogdevelopment/rstr
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/be/52/f87d6a9c691329dc71eaa6263f63cc262bd818df89e2dc981720db9dc9c5/rstr-2.2.6.tar.gz
+	source = https://files.pythonhosted.org/packages/source/r/rstr/rstr-2.2.6.tar.gz
 	md5sums = be2d1a655e3adb5d55db981846fe9761
 
 pkgname = python-rstr
