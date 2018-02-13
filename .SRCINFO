@@ -1,0 +1,19 @@
+pkgbase = ruby-thin-1.5
+	pkgdesc = A thin and fast web server
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://code.macournoyer.com/thin/
+	arch = any
+	license = GPL
+	license = RUBY
+	depends = ruby
+	depends = ruby-daemons
+	depends = ruby-eventmachine
+	depends = ruby-rack
+	noextract = thin-1.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/thin-1.5.1.gem
+	sha1sums = 4280f5a3db7c4d6470c15f6acec9a0dded057ab8
+
+pkgname = ruby-thin-1.5
+
