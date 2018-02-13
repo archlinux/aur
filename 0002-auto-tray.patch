@@ -1,0 +1,24 @@
+--- a/xrx7220.ppd	2018-02-13 10:36:54.818880723 +0100
++++ b/xrx7220.ppd	2018-02-13 10:37:38.829388263 +0100
+@@ -1165,7 +1165,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"
+--- a/xrx7225.ppd	2018-02-13 10:42:35.190288983 +0100
++++ b/xrx7225.ppd	2018-02-13 10:42:45.929390252 +0100
+@@ -1165,7 +1165,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"
