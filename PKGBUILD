@@ -2,7 +2,7 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine-git
-pkgver=r4910.b0aba7ff
+pkgver=r5251.690c7baa
 pkgrel=1
 epoch=1
 pkgdesc="CuraEngine is a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called Cura."
