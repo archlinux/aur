@@ -2,8 +2,8 @@
 # Contributor: Eugene Dvoretsky <radioxoma at gmail dot com>
 
 pkgname=python-pylibtiff-git
-pkgver=r138.33735eb
-pkgrel=2
+pkgver=r153.ef9076e
+pkgrel=1
 pkgdesc="A python wrapper of the C libtiff library"
 arch=('i686' 'x86_64')
 url="https://github.com/pearu/pylibtiff"
