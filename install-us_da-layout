@@ -1,0 +1,27 @@
+#!/bin/bash
+cd /usr/share/X11/xkb/rules
+
+if grep us_da evdev.xml > /dev/null; then
+    exit
+fi
+
+echo "Adding us_da layout to evdev.xml"
+
+read -r -d '' layout <<EOF || true
+<!-- BEGIN us_da -->
+    <layout>
+      <configItem>
+        <name>us_da</name>
+
+        <shortDescription>us_da</shortDescription>
+        <description>English (US, with Danish letters)</description>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+          <iso639Id>dan</iso639Id>
+        </languageList>
+      </configItem>
+    </layout>
+<!-- END us_da -->
+EOF
+
+awk -v layout="$layout" '{ print } /<layoutList>/ { print layout }' evdev.xml | sponge evdev.xml

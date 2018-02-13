@@ -1,0 +1,12 @@
+default  partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(basic)"
+
+    name[Group1]= "English (US, with æøå)";
+
+    key <AD11> {	[ bracketleft,	braceleft, aring, Aring	]	};
+    key <AC10> {	[ semicolon,	colon, ae, AE		]	};
+    key <AC11> {	[ apostrophe,	quotedbl, oslash, Ooblique	]	};
+
+    include "level3(ralt_switch)"
+};

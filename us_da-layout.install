@@ -1,28 +1,7 @@
 cd /usr/share/X11/xkb/rules
 
 post_install() {
-	if grep us_da evdev.xml > /dev/null; then
-		return
-	fi
-
-	read -r -d '' layout <<EOF || true
-<!-- BEGIN us_da -->
-    <layout>
-      <configItem>
-        <name>us_da</name>
-
-        <shortDescription>us_da</shortDescription>
-        <description>English (US, with Danish letters)</description>
-        <languageList>
-          <iso639Id>eng</iso639Id>
-          <iso639Id>dan</iso639Id>
-        </languageList>
-      </configItem>
-    </layout>
-<!-- END us_da -->
-EOF
-
-	awk -v layout="$layout" '{ print } /<layoutList>/ { print layout }' evdev.xml | sponge evdev.xml
+	/usr/share/libalpm/scripts/install-us_da-layout
 }
 
 pre_remove() {
