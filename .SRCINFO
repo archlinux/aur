@@ -1,6 +1,6 @@
 pkgbase = trizen
 	pkgdesc = Trizen AUR Package Manager: A lightweight wrapper for AUR.
-	pkgver = 1.42
+	pkgver = 1.43
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/trizen/trizen
@@ -17,8 +17,8 @@ pkgbase = trizen
 	depends = perl-lwp-protocol-https
 	depends = perl-term-readline-gnu
 	optdepends = perl-json-xs: faster JSON deserialization
-	source = trizen-1.42.tar.gz::https://github.com/trizen/trizen/archive/1.42.tar.gz
-	sha256sums = d3c1b9df361b1fa600f15caaa7c971216139a60e19315f31b09305ca81b10e8d
+	source = trizen-1.43.tar.gz::https://github.com/trizen/trizen/archive/1.43.tar.gz
+	sha256sums = 4291970f6146031045439cdb3b0197856dab3b6982b340e115098fdd37cbf8ae
 
 pkgname = trizen
 
