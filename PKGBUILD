@@ -6,7 +6,7 @@ pkgdesc="Free Software for Piano Tuning"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/tp3/Entropy-Piano-Tuner"
 license=('GPL3')
-depends=('qtmidi-qt5' 'qwt' 'libuv' 'hicolor-icon-theme' 'qt5-multimedia' 'fftw')
+depends=('qtmidi-qt5' 'qwt' 'libuv' 'hicolor-icon-theme' 'qt5-multimedia' 'fftw' 'qt5-declarative')
 
 source=(git+https://gitlab.com/tp3/Entropy-Piano-Tuner.git rpath.patch)
 md5sums=('SKIP'
