@@ -14,7 +14,6 @@ license=('custom:panasonic')
 depends=(libusb-compat)
 optdepends=('cups: printer support'
             'sane: scanner support')
-makedepends=(vim)
 conflicts=(mccgdi panamfs-scan)
 source_x86_64=("http://cs.psn-web.net/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/${_pkgname_print}-${_pkgver_print}-x86_64.tar.gz"
                "http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/${_pkgname_scan}-${_pkgver_scan}-x86_64.tar.gz")
@@ -27,8 +26,9 @@ sha256sums_i686=('536060e3cc75b54c1f08c1c02aa100a6ba9c82b2a60adc6c6ef939e0c73c72
 
 package() {
   findhere() { find . -mindepth 1 -maxdepth 1 -name "$1"; }
-  tohex() { xxd -p -c 2147483647; }
-  hexstr() { printf '%s' "$1" | tohex; }
+  tohex() { od -An -tx1 -v | tr '\n' ' ' | sed 's/ //g'; }
+  hexstr() { printf '%s' "$@" | tohex; }
+  tobytes() { sed 's/\(..\)/\\x\1\n/g' | xargs -d '\n' -n 500 echo | sed 's/ //g' | xargs -d '\n' -n 1 printf; }
   zeros() { for i in `seq 1 "$1"`; do echo -n '00'; done }
   hexsed() { sed "s/`hexstr "$1"`/`hexstr "$2"``zeros $(("${#1}" - "${#2}"))`/g"; }
 
@@ -46,9 +46,11 @@ package() {
   mkdir -p "$pkgdir/usr/lib/cups/filter/"
   for f in 'L_H0JDGCZAZ'; do
     # replace /usr/local path in binary file
-    cat "filter/$f" | tohex |
+    cat "filter/$f" |
+    tohex |
     hexsed '/usr/local/share/panasonic/printer/data/' '/usr/share/mccgdi/' |
-    xxd -r -p > "$pkgdir/usr/lib/cups/filter/$f"
+    tobytes \
+    > "$pkgdir/usr/lib/cups/filter/$f"
     chmod 755 "$pkgdir/usr/lib/cups/filter/$f"
   done
 
