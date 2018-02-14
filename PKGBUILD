@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=caire
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Content aware image resize library based on Seam Carving"
 arch=('x86_64' 'i686')
@@ -30,4 +30,4 @@ package() {
   install -m755 "$GOPATH/src/$_importpath/cmd/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('a37f8d46359b75dbe474635c4cd7354538e1be4744c292c756000fb669a3c5de')
+sha256sums=('f075ee4b3d12f94b987dc44972ead28693fa622ad8326fd58d91a7628012d45c')
