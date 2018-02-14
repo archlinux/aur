@@ -5,7 +5,7 @@
 pkgbase=python-schedutils
 pkgname=('python-schedutils' 'python2-schedutils')
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface for the Linux scheduler functions etc."
 arch=('x86_64')
 url="https://git.kernel.org/cgit/libs/python/python-schedutils/python-schedutils.git/"
@@ -16,7 +16,7 @@ sha512sums=('e340cd60045f5f96ad722b1651ef5e26c3a99a4a986fbbcb0319e036a76a56c67b9
 
 
 prepare() {
-  cp -a "${pkgname[0]}-${pkgver}" "${pkgname[1]}-${pkgver}"
+  cp -av "${pkgname[0]}-${pkgver}" "${pkgname[1]}-${pkgver}"
 }
 
 build() {
@@ -33,7 +33,7 @@ package_python-schedutils() {
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}/"
-  install -t "${pkgdir}/usr/share/doc/${pkgname}" -vDm644 {ChangeLog,README}
+  install -t "${pkgdir}/usr/share/doc/${pkgname[0]}" -vDm644 {ChangeLog,README}
 }
 
 package_python2-schedutils() {
@@ -43,6 +43,7 @@ package_python2-schedutils() {
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}/"
+  install -t "${pkgdir}/usr/share/doc/${pkgname[1]}" -vDm644 {ChangeLog,README}
   mv -v "${pkgdir}/usr/bin/pchrt" "${pkgdir}/usr/bin/pchrt2"
   mv -v "${pkgdir}/usr/bin/ptaskset" "${pkgdir}/usr/bin/ptaskset2"
   mv -v "${pkgdir}/usr/share/man/man1/pchrt.1" \
