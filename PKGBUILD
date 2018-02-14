@@ -3,7 +3,7 @@
 
 pkgname=routeconverter
 pkgver=2.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
 arch=(i686 x86_64)
 url="http://www.routeconverter.de/en"
@@ -13,7 +13,7 @@ optdepends=('gpsbabel: for some additional format support')
 changelog=ChangeLog
 source=(routeconverter
         routeconverter-cli
-        http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
+        http://static.routeconverter.com/download/previous-releases/2.22/RouteConverterCmdLine.jar
         http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
 noextract=(RouteConverterCmdLine.jar
