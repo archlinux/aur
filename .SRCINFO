@@ -1,12 +1,13 @@
 pkgbase = gin-cli
 	pkgdesc = Command line client for the G-Node Infrastructure (GIN) services
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/G-Node/gin-cli
 	install = gin-cli.install
 	arch = x86_64
 	license = BSD
 	depends = git-annex
+	depends = openssh
 	source = https://github.com/G-Node/gin-cli/releases/download/v0.13/gin-cli-0.13-linux-amd64.tar.gz
 	sha512sums = 354a6c929f1ac042e1d16d90b87208cc8bcc24df24882c1c9a72ba3ac4e49db19e842112badd20eed2c2b047893546ddd54029222e235f6027661e06bcad82ee
 
