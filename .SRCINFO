@@ -1,0 +1,15 @@
+pkgbase = twterm
+	pkgdesc = A full-featured TUI Twitter client.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://twterm.ryota-ka.me/
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = twterm-2.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/twterm-2.2.0.gem
+	sha1sums = 33be380389a6db7c08e50cf3b01b2ac5b48327f2
+
+pkgname = twterm
+
