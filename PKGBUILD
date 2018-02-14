@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=64.0.3282.140
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('i686' 'x86_64')
@@ -37,7 +37,6 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-skia-harmony.patch
         chromium-memcpy-r0.patch
         chromium-clang-r2.patch
-        chromium-exclude_unwind_tables.patch
         chromium-widevine.patch
         chromium-vaapi-move.patch.gz
         chromium-vaapi-init.patch
@@ -52,7 +51,6 @@ sha256sums=('146afbab37982c52251e5c71b6e19e6e7053b527217fe1da9966c794478c29ce'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             '455f0029987d9f0532bd9a5250669af5146a9c2b65b776d4a6e2499e8aca7bb4'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
-            '9478f1ec1a3c53425306cf41c2d0555c215a4f106955d9d6adfff38044530ce8'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '12d6663bc61845414b284bb9e2d455e0f4e40f5ae69d035f00505ce9c9403169'
             '8a81a14af625c8b79006d1b9b4321d5487bc2e56a3fb3a677f9a8dab369be7af'
@@ -71,7 +69,7 @@ readonly -A _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
-  #[libvpx]=libvpx            # https://bugs.gentoo.org/611394
+  [libvpx]=libvpx
   [libwebp]=libwebp
   #[libxml]=libxml2           # https://crbug.com/736026
   [libxslt]=libxslt
@@ -113,9 +111,6 @@ prepare() {
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/712575
-  patch -Np1 -i ../chromium-exclude_unwind_tables.patch
 
   # https://crbug.com/772655
   patch -Np1 -i ../chromium-use-fromUTF8-for-UnicodeString-construction.patch
@@ -207,7 +202,6 @@ build() {
     'link_pulseaudio=true'
     'use_system_freetype=true'
     'use_system_harfbuzz=true'
-    'use_gtk3=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
@@ -226,7 +220,11 @@ build() {
   )
 
   if check_option strip y; then
-    _flags+=('exclude_unwind_tables=true')
+    # https://chromium-review.googlesource.com/c/chromium/src/+/712575
+    # _flags+=('exclude_unwind_tables=true')
+    CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
+    CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
+    CPPFLAGS+=' -DNO_UNWIND_TABLES'
   fi
 
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
