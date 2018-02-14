@@ -1,37 +1,35 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Gabriele Russo Russo <gabri.russo17@gmail.com>
 
 pkgname=todoist
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
 url="https://github.com/sachaos/todoist"
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'dep')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
-source=("https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
-sha256sums=('e4ad00b64bba61d199de3dff12095fde71bca2b32b8a14ff83189b5cfb2d2e54')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
+md5sums=('a072a9325bd9ba4772ec3f9c52bff268')
 
 prepare() {
- mkdir -p "$srcdir/go"
+ mkdir -p "$srcdir/go/src/github.com/sachaos"
+ ln -sf "$srcdir/$pkgname-$pkgver" "$srcdir/go/src/github.com/sachaos/$pkgname"
+}
+
+build() {
  export GOPATH="$srcdir/go"
- go get github.com/fatih/color
- go get github.com/spf13/viper
- go get github.com/urfave/cli
- go get github.com/pkg/browser
- go get github.com/sachaos/todoist/lib
- cd $srcdir/$pkgname-$pkgver
- go build -o $pkgname
+ export PATH="$PATH:$srcdir/go/bin/"
+ cd "$srcdir/go/src/github.com/sachaos/$pkgname"
+ make install
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "$srcdir/go/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/go/src/github.com/sachaos/$pkgname"
   install -Dm644 todoist_functions.sh "${pkgdir}/usr/share/todoist/todoist_functions.sh"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
-  rm -r  "$srcdir/go"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 # vim:set ts=2 sw=2 et:
