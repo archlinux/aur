@@ -16,7 +16,7 @@ groups=('mingw-w64-toolchain' 'mingw-w64')
 depends=('zlib' 'libmpc'
 	 'mingw-w64-crt' 'mingw-w64-binutils' 'mingw-w64-winpthreads'
 	 'mingw-w64-headers')
-makedepends=("gcc-ada")
+makedepends=("gcc-ada" 'mingw-w64-gcc-base')
 #checkdepends=('dejagnu') # Windows executables could run on Arch through bin_mft and Wine
 optdepends=()
 provides=('mingw-w64-gcc-base')
