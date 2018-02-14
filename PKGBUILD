@@ -11,7 +11,7 @@ license=('GPLv3')
 makedepends=('git' 'pandoc')
 depends=('freeimage' 'freetype2' 'wxgtk-trenchbroom' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
 
-source=(git://github.com/kduske/TrenchBroom.git#branch=release/v2.0.0)
+source=(git://github.com/kduske/TrenchBroom.git)
 sha1sums=('SKIP')
 
 build() {
