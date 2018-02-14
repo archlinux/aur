@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.11.1.r19132.g993a726c4
+pkgver=1.11.1.r19596.ge27963d17
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -123,7 +123,8 @@ build() {
     --without-libaudit \
     --without-netconfig \
     --without-ofono \
-    --without-selinux
+    --without-selinux \
+    --with-iwd
 
      sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 
