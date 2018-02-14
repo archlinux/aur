@@ -35,10 +35,9 @@ build() {
     ${srcdir}/gcc-${pkgver}/configure --prefix=/usr \
         --target=${_target} \
         --enable-languages=c,lto \
-        --enable-shared --enable-static \
-        --enable-threads=win32 \
+        --enable-static \
         --with-system-zlib \
-        --enable-lto --disable-dw2-exceptions --enable-libgomp \
+        --enable-lto --disable-dw2-exceptions \
         --disable-nls --enable-version-specific-runtime-libs \
         --disable-multilib --enable-checking=release
     make all-gcc
