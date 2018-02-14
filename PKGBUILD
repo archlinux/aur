@@ -15,8 +15,8 @@ depends=('gtk3' 'pcre2' 'gnutls')
 makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 
-# Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
-_frepourl='http://pkgs.fedoraproject.org/rpms/vte291'
+# Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
+_frepourl='https://src.fedoraproject.org/rpms/vte291'
 _frepobranch='f27'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
 _fcommit='7dce41935b8df88c353b88854780661a0232e699'
