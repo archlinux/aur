@@ -1,0 +1,33 @@
+diff --git electron.js electron.js
+index c640036..10a8999 100755
+--- electron.js
++++ electron.js
+@@ -185,11 +185,13 @@ appHelper = {
+      */
+     createWindow: function() {
+
+-        // Recover window state (width, height, and x&y position)
+-        this.state = windowStateKeeper('main', {
++        // Set window state (width, height, and x&y position)
++        this.state = {
++            x      : 0,
++            y      : 0,
+             width  : 1000,
+             height : 600
+-        });
++        };
+
+         // Create new browser window
+         win = new BrowserWindow({
+@@ -274,11 +276,6 @@ appHelper = {
+      */
+     registerEvents: function() {
+
+-        // Save window state (width, height, and x&y position)
+-        win.on('close', function() {
+-            this.state.saveState(win);
+-        }.bind(appHelper));
+-
+         win.on('closed', function() {
+             win = null;
+         });
