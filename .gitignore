@@ -1,5 +1,5 @@
 *.pkg.tar*
 *.src.tar*
-/zfs-auto-snapshot/
+*.gz
 src
 pkg
