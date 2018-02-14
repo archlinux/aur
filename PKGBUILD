@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 _oomox_ver=1.5.0
-_numix_ver=1.6.0
+_numix_ver=1.6.1
 _materia_ver=20180110
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
@@ -9,7 +9,7 @@ _oomoxify_ver=675fedce9a47745212b062e13a7e51b01f2bb581
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -35,7 +35,6 @@ depends=(
 )
 optdepends=(
     'xorg-xrdb: for the `xresources` theme'
-    'gnome-colors-common-icon-theme: for using the generated icon theme'
     'breeze-icons: more fallback icons'
     'gksu: for applying Spotify theme from GUI without polkit'
 )
@@ -53,7 +52,7 @@ source=(
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
 md5sums=('982bcee23a67e2d3a1633b50310cc3e4'
-         'd05dcdf2ba470629233df2ff1944ae91'
+         '7b86af8b2a5eb1f9b0152ea609060b31'
          '982ef08f7d5d6229e3b0fcbd1896ebfc'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
          'f3a30f186dc92a972b88975fcbd321ed'
