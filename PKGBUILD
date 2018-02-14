@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=inscore-git
-pkgver=3882.453f1bda
+pkgver=4602.b1026e938
 pkgrel=1
 pkgdesc="Grame's INScore: interactive augmented music scores (git version)"
 arch=('x86_64' 'i686')
@@ -10,10 +10,10 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-imageformats' 'qt5-multimedia'
 	 'qt5-svg' 'qt5-tools' 'qt5-websockets' 'guidolib-git' 'guidoar-git'
 	 # These dependencies are all optional but we pull them in anyway in
 	 # order to provide a complete feature set.
-	 'libmusicxml-git' 'libmicrohttpd' 'faust2-git' 'lua')
+	 'libmusicxml-git' 'libmicrohttpd' 'faust' 'lua')
 #optdepends=('libmusicxml: MusicXML support'
 #	    'libmicrohttpd: HTTP server support'
-#	    'faust2-git: Faust programming support'
+#	    'faust: Faust programming support'
 #	    'lua: Lua programming support (deprecated)')
 provides=('inscore')
 conflicts=('inscore')
