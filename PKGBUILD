@@ -110,7 +110,7 @@ EOF
 runner = "wine"
 EOF
   fi
-  if pacman -T "mingw-w64-crt>3.0.5.20171219" ; then
+  if pacman -T "mingw-w64-crt>5.0.3.20171219" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 rustflags = ["-C", "link-arg=-lmsvcrt"]
 EOF
