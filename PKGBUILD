@@ -1,8 +1,8 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
-# Maintainer: Corey Hinshaw <coreyhinshaw@gmail.com>
+# Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=17.10.17
+pkgver=17.10.19
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -19,8 +19,7 @@ depends=(
 	'python-xlib'
 	'dmidecode')
 makepdepends=(
-	'python-pyflakes'
-	'patch')
+	'python-pyflakes')
 optdepends=(
 	'pm-utils: For power management features'
 	'gtk3: To launch System76 driver and firmware GUI'
@@ -34,7 +33,7 @@ source=(
 	'gtk.patch'
 	'cli.patch'
 	'hidpi.patch')
-sha1sums=('6d6121f6e36b58a795c14338fc724c0e1a89f44e'
+sha1sums=('9d4f4be2ed45197cebe4dc7ccf4ebd0727a560ca'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
@@ -95,11 +94,14 @@ package() {
 	cd ${pkgdir}
 
 	# patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/cli.patch 
+	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/cli.patch
+
 	# galu1 model-specific patch
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/galu1.patch 
+	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/galu1.patch
+
 	# enabling "Restore System" button if all changes applied
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch
+
 	# Remove Ubuntu-specific service target
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/hidpi.patch
 } 
