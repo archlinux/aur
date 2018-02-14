@@ -6,6 +6,7 @@ pkgdesc="A python widget library and application framework"
 arch=('any')
 url="https://github.com/npcole/npyscreen"
 license=('BSD')
+replaces=('python-npyscreen')
 makedepends=('git' 'python-setuptools' )
 depends=('python' )
 source=('git+https://github.com/npcole/npyscreen.git')
