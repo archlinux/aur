@@ -8,11 +8,10 @@ url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=(custom:"brother commercial license")
 install="brother-mfc-${model}.install"
-if [ "$CARCH" == 'i686' ]; then
-   depends=('perl')
-elif [ "$CARCH" == 'x86_64' ]; then
-   depends=('perl' 'lib32-libcups')
+if [ "$CARCH" == 'x86_64' ]; then
+   depends=('lib32-libcups')
 fi
+makedepends=('perl')
 source=("http://download.brother.com/welcome/dlf101616/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
         "http://download.brother.com/welcome/dlf101617/mfc${model}cupswrapper-1.1.4-0.i386.deb")
 sha256sums=('1ca1143c074c33ecfe0cdc26eb5c5e6cd9b0bbe94c116fc9c03d54de7a3029df'
