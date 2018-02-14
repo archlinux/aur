@@ -3,8 +3,8 @@
 
 pkgbase=linux-apparmor
 _srcname=linux-4.15
-pkgver=4.15.1
-pkgrel=4
+pkgver=4.15.2
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -27,7 +27,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
+            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
             '57400ed3b21281ad84d72756ce98815c8f6073b8c53b3bc6d73120c47902a263'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
