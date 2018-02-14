@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ryver
-Icon=/opt/ryver-desktop/resources/app.asar.unpacked/resources/linux/icon.png
+Icon=/opt/ryver-desktop/resources/ryver.png
 Exec=/opt/ryver-desktop/Ryver
 Comment=Ryver client for Linux - Team communications
 Categories=Network;InstantMessaging;

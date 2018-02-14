@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ryver-desktop
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Ryver client for Linux - Team communications"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://ryver.com/"
 license=('custom')
 depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libcurl-compat' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
 optdepends=('gnome-keyring')
-source=("https://ryver.com/download/linux/stable"
-        "ryver.desktop")
-sha256sums=('d886bb520dc086481828cf2d9f76b048f8b9d5c1e2a852bd808b5750dc15cf24'
-            '38feec313670fefe6593f659c2bc36078e66ba18b63cb2e807da46bbe4edd5ba')
+source=("https://ryver.com/download/linux/stable" "ryver.png" "ryver.desktop")
+sha256sums=('55fbc6c8084d13d076688a3079e146fa7b506a0964192fe312dfd5b6df00574c'
+            '7aa50868245f75a489eff1c438aec17f51251a07401ef4aee7e7b395e2325377'
+            '2ce4f9e27f123a327ed7be69b967e70cec1c4e0752caa39278853d6964f558ad')
 
 package() {
     cd $srcdir/Ryver
@@ -24,5 +24,6 @@ package() {
     
     # app file desktop
     install -dm 755 $pkgdir/usr/share/applications
+    install -Dm 644 $srcdir/ryver.png $pkgdir/opt/ryver-desktop/resources/ryver.png
     install -Dm 644 $srcdir/ryver.desktop $pkgdir/usr/share/applications/
 }
