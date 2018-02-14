@@ -7,9 +7,9 @@ arch=('any')
 url="https://paranoiaworks.mobi/"
 license=('Apache' 'MIT')
 depends=('java-runtime>=8')
-source=("SSEFilePC::http://my-files.ru/Save/8rr439"
-"http://my-files.ru/Save/f7skdx/icon.png"
-"http://my-files.ru/Save/i5rsez/sse.desktop"
+source=("https://annimon.com/files/sse/SSEFilePC.zip"
+"https://annimon.com/files/sse/icon.png"
+"https://annimon.com/files/sse/sse.desktop"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP')
 package() {
