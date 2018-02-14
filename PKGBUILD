@@ -1,15 +1,15 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.4.99
-_numix_ver=1.4.0.2
-_materia_ver=20171213
-_archdroid_ver=1.0.1
-_gnome_colors_ver=1.0
-_oomoxify_ver=5640e1c2323a319ede50b24b2d2f45b49e76e112
+_oomox_ver=1.5.0
+_numix_ver=1.6.0
+_materia_ver=20180110
+_archdroid_ver=1.0.2
+_gnome_colors_ver=5.5.3
+_oomoxify_ver=675fedce9a47745212b062e13a7e51b01f2bb581
 
 pkgname=oomox
-pkgver=${_oomox_ver}_${_numix_ver}_${_materia_ver}
-pkgrel=2
+pkgver=${_oomox_ver}
+pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ depends=(
     'gtk-engines'
     'imagemagick'
     'inkscape'
+    'librsvg'
     'optipng'
     'parallel'
     'polkit'
@@ -51,12 +52,12 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
-md5sums=('1d8dd19bf6e2fb3af9682e4b89218937'
-         '7dc275331809a46bc5673e44d81dfdfb'
-         'c12b3b8813f1fe5a92525e55d68afa9e'
-         'dddd9735950933d31110875d4477893e'
-         'bd459672e65140a7879951715114fdd2'
-         '41d604da88231b844402673b454300ea')
+md5sums=('982bcee23a67e2d3a1633b50310cc3e4'
+         'd05dcdf2ba470629233df2ff1944ae91'
+         '982ef08f7d5d6229e3b0fcbd1896ebfc'
+         '48ca9edc0cf2b06bdc353bd5f2c833ba'
+         'f3a30f186dc92a972b88975fcbd321ed'
+         'fbef02b2584fbafb009309eca6d28a54')
 
 prepare() {
     cd ${srcdir}
@@ -64,7 +65,7 @@ prepare() {
     cp -pr "materia-theme-${_materia_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "${pkgname}-archdroid-icon-theme-${_archdroid_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "${pkgname}-gnome-colors-icon-theme-${_gnome_colors_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
-    cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/oomoxify"
+    cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
 }
 
 package() {
