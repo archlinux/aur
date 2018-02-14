@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=4
 _minor=9
-_patchlevel=45
+_patchlevel=74
 _pfpatchlevel=22
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -15,7 +15,9 @@ _pfrel=6
 pkgrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
-_pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
+#_pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
+_pfpatchhome="https://github.com/pfactum/pf-kernel/compare/"
+_pfpatchname=v${_basekernel}...v${_basekernel}-pf${_pfrel}.diff
 
 ### PATCH AND BUILD OPTIONS
 
@@ -26,7 +28,7 @@ _NUMA_off=yes        # Disable NUMA in kernel config
 # see, https://bugs.archlinux.org/task/31187
 
 # Set to 'y' to enable AUFS
-_AUFS=n
+_AUFS=y
 
 ####
 _CPUSUFFIXES_KBUILD=(CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 COREI7 COREI7AVX COREAVXI COREAVX2)
@@ -56,7 +58,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v${_major}.x/${_srcname}.tar.{xz
         'logo_linux_clut224.ppm.bz2'        #\
         'logo_linux_mono.pbm.bz2'           #-> the Arch Linux boot logos
         'logo_linux_vga16.ppm.bz2'          #/
-        "${_pfpatchhome}${_pfpatchname}.xz" # the -pf patchset
+        "${_pfpatchhome}${_pfpatchname}"    # the -pf patchset
         ${_incr[@]})                        # the incremental kernel patches
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
@@ -68,7 +70,7 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
             '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            'ef689fca3cf9b46991682c9ddbee68c5de83073e5d1bf3fce26156c654298161'
+            '7c50bd18693db82d0c04ab3ef2a8dba90af9a433072bac1448483128aabccb94'
             '5bf7ecb7044b493206683ed8341e3ba0d4e1aa93a9266c5db631248a4f2090eb'
             '3833b9bf88031adcfadea5ba5a4b36a2f4a9993e3649a5140d3b9b14584e1f78'
             '0ca4aacb2bc688b3101a1e67e2d0f5258bb4b1c4ca12e89fa078aa11f31b89a6'
@@ -91,13 +93,42 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '5b27b346324052df15d0cb20e5101335c81d7a166df14217f91cf1f6d26aa335'
             '5d035459919d8c544d0016be6972e2d4eff5c7c7b7f268ae1e5abfdab94caf87'
             'a17c21ceadea9954daa3f55cda8fbe8df9abcdaa6575006f44cd20c69cd870c6'
-            '0cbed0cb91f16f4cdbb3c98d43f54a04f4e4c311d90bd5df84cfb5c89e26c5fe')
+            '0cbed0cb91f16f4cdbb3c98d43f54a04f4e4c311d90bd5df84cfb5c89e26c5fe'
+            'ad4a8d4007ce1966bc2d86da4da732f403539c0a8045f2c51802faf1cfb7a001'
+            '9e0b4c4bd7021e987b35ee4f4d947ca4b9c11463f04f273109c86d8be0b1f2cc'
+            '60779a56891455f3b73524c1a33f8fca0e6e6f0d60f1a81cb85c2f7b19b1cbe2'
+            '7749ae1978889382af8de9050a202c65654dc38dd899a1cd2fa43919a2c9f2cd'
+            '9b847af46635dbb200a55aa89b951a133a436d776c906f6908addf5c800130cc'
+            '20c1ecc3321328ebf251e8a7c426b385a6af6f2eb04f2b90e567d3f4683ac4b1'
+            '9ce4c87707cfe8e3a7f123ecafda72fd2f14a89161381db00366897cdea52154'
+            '27edfaa198cf2ac5909e45ca9ea8e5a76dd9c4c124308d3f15e755236f7fa538'
+            '0c89b0d4728a289f6d744b68ccdd30a1346486ff5a673b28b007f5817ac7e007'
+            '27b07d8188614940b34a57673d119488b6943f9dc31458a0e0437b008ca94125'
+            'bf12b7d994948ae21be887ef82e904ae7889e274b9e56423f6cee5983f585bed'
+            '393639742cc19a996b525675fab30b335875b3d91a544eb1fdf929896944f6c6'
+            'de0cc3c9a497e7df2d44205d55234fa91a50f61d1d45d716a26c4f1cded71d5b'
+            '655e816cce1968fdf5eafa2f4b900fb23f1f6d51f61119eff1d86252c67ce109'
+            '02a81f3478eab8c2834287a1aedd4e7f62b3d2a341c31bbe64fda432efd13905'
+            '7e9756508de30a0a787b8aa7dbd50b89e19d0b05a57bb316c05276e083502dad'
+            '65a165e732dc33f8b0b3e077d7f0dbae419a28b3142b3fc2f717f701a6785f80'
+            '4c211745d210ab044ec9b4f0b1f496e32efd3efc4176adc6992642335814ff6f'
+            '5f65e020f7211097d29e2b4879b8c4df334d1a504e6b451ac045a936b3b3583d'
+            'ba531b62b547d5cc7ff815d6a67cb2a2b5858948731445fbf45c835396d6634e'
+            'b2d556facb14a105dbf2c9455eaffca20f0d33b01e287c2bdd2abd9109fa35b2'
+            'd7707daa13a8b82ae70162af484dc88565620b5a8a0c779fe8bc836765292acc'
+            '5115daaf6b3a13c534d08f8ea9f074a70c76a893b1e0176eab8b48168ad06839'
+            '268f23d0b1c37294ee258da72cc810a4505d4a5a119dd79108f7814dd91c695f'
+            'c05925afe2d2423b25609c3e6c3016b0a8f2023024f0d9a7cfff37602e75c14a'
+            '055b24f318f21c483398d46fc98843b2a5262cd34b318ff1a8331caf1750c40c'
+            '3375f046747f00a28605b4836251dd5edc22f8b45ef1dc49e33dd31ab4f1d3da'
+            '11d14ea4b1c94da81192c06d4b8e0310d5545614d91a0c04282e6ea7a7d68c0d'
+            'db0eaabbc9ce2052397deb26fe6c072e804ab29514582c96add5664b795e6148')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
 
-_aufs3git="http://git.code.sf.net/p/aufs/aufs3-standalone"
-_aufs3name=aufs3-standalone
+_aufs4git="https://github.com/sfjro/aufs4-standalone.git"
+_aufs4name=aufs4-standalone
 
 _kernelname=${pkgbase#linux}
 # '
@@ -117,13 +148,13 @@ prepare() {
   patch -Np1 < ${srcdir}/${_pfpatchname}
 
   if [[ ${_AUFS} = 'y' ]]; then
-    msg "Fetching and applying aufs3 patches"
-    git clone ${_aufs3git} ${_aufs3name}
-    cd ${_aufs3name}
-    git checkout origin/aufs${_basekernel} || _aufs3checkout=KRAKRA
-    if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
+    msg "Fetching and applying aufs4 patches"
+    git clone ${_aufs4git} ${_aufs4name}
+    cd ${_aufs4name}
+    git checkout origin/aufs${_basekernel} || _aufs4checkout=KRAKRA
+    if [[ ${_aufs4checkout} = "KRAKRA" ]]; then
     echo
-        msg "AUFS3 not yet ported to version ${_basekernel}!"
+        msg "AUFS4 not yet ported to version ${_basekernel}!"
         msg "Skipping related patches."
     echo
     cd ..
@@ -132,14 +163,14 @@ prepare() {
 #        mv include/linux/Kbuild "${pkgdir}/usr/src/linux-${_kernver}/include/"
     rm include/uapi/linux/Kbuild
     cd ..
-    cp -a ${_aufs3name}/{Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
-    msg "Patching aufs3"
-    for _patch in ${_aufs3name}/*.patch; do
-        patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
+    cp -a ${_aufs4name}/{Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
+    msg "Patching aufs4"
+    for _patch in ${_aufs4name}/*.patch; do
+        patch -Np1 -i ${_patch} || _aufs4fail=KRAKRA
         done
-        if [[ ${_aufs3fail} = "KRAKRA" ]]; then
+        if [[ ${_aufs4fail} = "KRAKRA" ]]; then
         echo
-            msg "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
+            msg "Not all aufs4 patches applied correctly. Ignore this if you won't use AUFS."
             msg "Otherwise, press CTRL-C now and fix manually"
             echo
         fi
@@ -365,7 +396,7 @@ build() {
 
 _package() {
 msg "Running package-${pkgbase}()"
- _pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support."
+ _pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs4. Long-term support."
  pkgdesc=${_pkgdesc}
  [ "${pkgbase}" = "linux" ] && groups=('base')
  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -377,10 +408,10 @@ msg "Running package-${pkgbase}()"
         'nvidia-pf: NVIDIA drivers for linux-pf-lts'
         'nvidia-beta-all: NVIDIA drivers for all installed kernels'
         'modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- #provides=(${pkgbase}=${_basekernel} 'aufs3')    # for $pkgname-optimized
- provides=(${pkgbase}=${_basekernel} linux=${pkgver} 'aufs3')
+ #provides=(${pkgbase}=${_basekernel} 'aufs4')    # for $pkgname-optimized
+ provides=(${pkgbase}=${_basekernel} linux=${pkgver} 'aufs4')
  # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
- # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
+ # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs4')
 
  # If generic build, then conflict with all optimized ones
  for _cpusuffix in "${_CPUSUFFIXES[@]}" ; do
@@ -394,8 +425,8 @@ msg "Running package-${pkgbase}()"
  #'
   cd "${srcdir}/${_srcname}"
 
-  # Remove undeeded aufs3 git tree
-  rm -fr aufs3 2>/dev/null
+  # Remove undeeded aufs4 git tree
+  rm -fr aufs4 2>/dev/null
 
   # work around the AUR parser
   # This allows building cpu-optimized packages with according package names.
@@ -479,7 +510,7 @@ msg "Running package-${pkgbase}()"
      default)
   # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
          pkgname="${pkgbase}"
-         pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support."
+         pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs4. Long-term support."
          ;;
     esac
 
