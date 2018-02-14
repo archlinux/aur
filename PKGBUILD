@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://github.com/jgraph/drawio'
 license=('Apache')
 depends=(electron gconf libnotify)
-conflicts=(drawio-desktop-bin)
 makedepends=(npm)
 source=("drawio-desktop-$pkgver.zip::https://github.com/jgraph/drawio/releases/download/v$pkgver/draw.war")
 noextract=("drawio-desktop-$pkgver.zip")
