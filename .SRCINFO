@@ -1,6 +1,6 @@
 pkgbase = linux-pf-lts
 	pkgver = 4.9.74
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pf.natalenko.name/
 	arch = i686
 	arch = x86_64
