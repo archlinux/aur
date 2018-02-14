@@ -1,0 +1,18 @@
+pkgbase = sse-file-pc
+	pkgdesc = File encryption
+	pkgver = 12RF3Fc
+	pkgrel = 1
+	url = https://paranoiaworks.mobi/
+	arch = any
+	license = Apache
+	license = MIT
+	depends = java-runtime>=8
+	source = SSEFilePC::http://my-files.ru/Save/8rr439
+	source = http://my-files.ru/Save/f7skdx/icon.png
+	source = http://my-files.ru/Save/i5rsez/sse.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = sse-file-pc
+
