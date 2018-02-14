@@ -17,7 +17,7 @@ pkgbase = vte3-tilix
 	depends = gnutls
 	options = !emptydirs
 	source = git+https://git.gnome.org/browse/vte#tag=0.50.2
-	source = vte291-command-notify-scroll-speed.patch-7dce41935b8df88c353b88854780661a0232e699::http://src.fedoraproject.org/rpms/vte291/raw/7dce41935b8df88c353b88854780661a0232e699/f/vte291-command-notify-scroll-speed.patch
+	source = vte291-command-notify-scroll-speed.patch-7dce41935b8df88c353b88854780661a0232e699::https://src.fedoraproject.org/rpms/vte291/raw/7dce41935b8df88c353b88854780661a0232e699/f/vte291-command-notify-scroll-speed.patch
 	source = add-zsh-notfication-support.patch
 	source = alternate-screen.patch-1.7.1::https://github.com/gnunn1/tilix/raw/1.7.1/experimental/vte/alternate-screen.patch
 	source = disable-bg-draw.patch-1.7.1::https://github.com/gnunn1/tilix/raw/1.7.1/experimental/vte/disable-bg-draw.patch
