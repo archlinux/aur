@@ -4,7 +4,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=faac
-pkgver=1.29.7.7
+pkgver=1.29.9.2
 pkgrel=1
 pkgdesc="An AAC audio encoder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://www.audiocoding.com/"
 license=('GPL' 'custom')
 depends=('libmp4v2')
 source=("https://sourceforge.net/projects/faac/files/faac-src/faac-${pkgver:0:4}/faac-$pkgver.tar.gz")
-sha256sums=('b898fcf55e7b52f964ee62d077f56fe9b3b35650e228f006fbef4ce903b4d731')
+sha256sums=('d45f209d837c49dae6deebcdd87b8cc3b04ea290880358faecf5e7737740c771')
 
 build() {
   cd ${pkgname}-${pkgver}
