@@ -8,7 +8,7 @@ pkgdesc='A Gtk utility to set two different backgrounds for each monitor on GNOM
 arch=('any')
 url='https://github.com/gabmus/hydrapaper'
 license=('GPL3')
-depends=('gtk3>=3.14' 'python' 'python-pillow' 'python-xmltodict')
+depends=('gtk3>=3.24' 'python' 'python-pillow' 'libwnck3')
 makedepends=('git' 'meson')
 provides=('hydrapaper')
 conflicts=('hydrapaper')
