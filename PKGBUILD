@@ -9,9 +9,9 @@ arch=('i686' 'x86_64')
 license=(custom:"brother commercial license")
 install="brother-mfc-${model}.install"
 if [ "$CARCH" == 'i686' ]; then
-   depends=('deb2targz' 'perl')
+   depends=('perl')
 elif [ "$CARCH" == 'x86_64' ]; then
-   depends=('deb2targz' 'perl' 'lib32-libcups')
+   depends=('perl' 'lib32-libcups')
 fi
 source=("http://download.brother.com/welcome/dlf101616/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
         "http://download.brother.com/welcome/dlf101617/mfc${model}cupswrapper-1.1.4-0.i386.deb")
@@ -19,8 +19,6 @@ sha256sums=('1ca1143c074c33ecfe0cdc26eb5c5e6cd9b0bbe94c116fc9c03d54de7a3029df'
             '4472d0aef4148eace6d8df873b03eb1a91922791e451e90d7addde4e37c876e2')
 
 package() {
-    deb2targz *.deb >/dev/null || return 1
-    rm -f *.deb || return 1
     cd $srcdir || return 1
     [ -d "mfc${model}" ] || (mkdir mfc${model} || return 1)
     for i in *.tar.gz;do tar xfz $i -C mfc${model};done || return 1
