@@ -18,8 +18,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=3.4.1
-pkgrel=4
+pkgver=3.4.2
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
          'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 
-         'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'openal' 'opencore-amr'
+         'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'ndi-sdk' 'openal' 'opencore-amr'
          'opencv' 'opencl-driver' 'opencl-icd-loader' 'openh264' 
          'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband' 'rtmpdump'
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
@@ -38,7 +38,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
          'libx265.so' 'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda' 'nvidia-utils')
-makedepends=('flite' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers' 'libvmaf')
+makedepends=('flite' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers' 'vmaf')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -51,7 +51,7 @@ source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'ffmpeg-full-rkmpp-remove-stream-start.patch'
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
+sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
             'SKIP'
             '142923fd02851343bfbfd31b201ba014dced8a8c8898373c72d71d30d59f5851'
             'cac8577126c3e49f8c915fa289f3f5aa624dc55f897b8b7a5613191bcfa9c097'
@@ -153,6 +153,7 @@ build() {
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libmysofa \
+    --enable-libndi_newtek \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
