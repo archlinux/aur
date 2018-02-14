@@ -6,7 +6,7 @@
 set -u
 pkgbase=linux-lts316
 _srcname=linux-3.16
-pkgver=3.16.54
+pkgver=3.16.55
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
