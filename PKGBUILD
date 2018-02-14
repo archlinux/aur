@@ -1,25 +1,23 @@
 # Maintainer: Renato Candido <renatocan@gmail.com>
 
 pkgname=python-lesscpy
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Python LESS compiler"
 url="https://github.com/lesscpy/lesscpy"
-depends=('python' 'python-ply' )
+depends=('python' )
 makedepends=('python3' )
 license=('MIT')
 arch=('any')
-source=('https://pypi.python.org/packages/32/38/a55150ec018cf6fe11012bf1d988cd737af7f82227e4ac753619f0fb27a4/lesscpy-0.12.0.tar.gz')
-md5sums=('0a5a3ca4091ad3fb62ac6f705f8463d4')
+source=('https://pypi.python.org/packages/c2/c2/515d710df11dd4edb07b685e33e8622469593d44cd798534af24f8e0147b/lesscpy-0.13.0.tar.gz')
+md5sums=('d91047bdc5b8e2ff14ca43686101978a')
 
 build() {
-    cd $srcdir/lesscpy-0.12.0
+    cd $srcdir/lesscpy-0.13.0
     python setup.py build
 }
 
 package() {
-    cd $srcdir/lesscpy-0.12.0
+    cd $srcdir/lesscpy-0.13.0
     python setup.py install --root="$pkgdir" --optimize=1 
 }
-
-md5sums=('0a5a3ca4091ad3fb62ac6f705f8463d4')
