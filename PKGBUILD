@@ -4,32 +4,33 @@
 
 set -u
 pkgname='jp2a'
-pkgver='1.0.6'
-pkgrel='3'
+pkgver='1.0.7'
+pkgrel='1'
 pkgdesc='A small utility for converting JPG images to ASCII'
 arch=('i686' 'x86_64' 'armv7h')
 #url='http://jp2a.sourceforge.net/'
 url='https://github.com/cslarsen/jp2a'
 license=('GPL')
 depends=('curl' 'libjpeg')
-source=("http://downloads.sourceforge.net/jp2a/jp2a-${pkgver}.tar.gz")
-sha256sums=('0930ac8a9545c8a8a65dd30ff80b1ae0d3b603f2ef83b04226da0475c7ccce1c')
-
-prepare(){
-  set -u
-  cd "${pkgname}-${pkgver}"
-  ./configure --prefix='/usr'
-  set +u
-}
+_github='cslarsen'
+_verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>v\([0-9\.]\+\)</title>.*' 'f')
+source=("jp2a-${pkgver}.tar.gz::https://github.com/cslarsen/jp2a/archive/v${pkgver}.tar.gz")
+sha256sums=('e509d8bbf9434afde5c342568b21d11831a61d9942ca8cb1633d4295b7bc5059')
 
 build(){
   set -u
   cd "${pkgname}-${pkgver}"
+  if [ ! -s 'Makefile' ]; then
+    if [ ! -s 'configure' ]; then
+      autoreconf -fi
+    fi
+    ./configure --prefix='/usr'
+  fi
   make
   set +u
 }
 
-check() {
+check_disabled() {
   set -u
   cd "${pkgname}-${pkgver}"
   make test
