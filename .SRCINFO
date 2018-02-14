@@ -1,6 +1,6 @@
 pkgbase = aurbrowser
 	pkgdesc = A Qt application that allows an Arch Linux user to browse and install packages from the AUR.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gitlab.com/brandonjhall/aurbrowser
 	install = aurbrowser.install
@@ -10,8 +10,8 @@ pkgbase = aurbrowser
 	depends = gcc-libs>=7.2.1+20180116-1
 	depends = glibc>=2.26-11
 	depends = sudo
-	source = aurbrowser-1.2.0.tar.gz::https://gitlab.com/brandonjhall/aurbrowser/repository/v1.2.0/archive.tar.gz
-	md5sums = 2c03c04fae16afc5557573138dbe0590
+	source = aurbrowser-1.2.1.tar.gz::https://gitlab.com/brandonjhall/aurbrowser/repository/v1.2.1/archive.tar.gz
+	md5sums = 9361b12556ecb15bf44b889bf872e79e
 
 pkgname = aurbrowser
 
