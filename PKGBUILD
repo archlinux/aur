@@ -43,13 +43,14 @@ build() {
     elif [ ${_target} == "x86_64-w64-mingw32" ]; then
         _crt_configure_args="--disable-lib32 --enable-lib64"
     fi
-    mkdir -p "crt-${_target}" && cd "crt-${_target}"
+    mkdir -p "crt-${_target}" && pushd "crt-${_target}"
     ../mingw-w64/mingw-w64-crt/configure \
         --prefix=/usr/${_target} \
         --host=${_target} \
         --enable-wildcard \
         ${_crt_configure_args}
     make
+    popd
   done
 }
 
@@ -57,7 +58,8 @@ package() {
   cd "${srcdir}"
   for _target in ${_targets}; do
     msg "Installing ${_target} crt"
-    cd "crt-${_target}"
+    pushd "crt-${_target}"
     make DESTDIR="${pkgdir}" install
+    popd
   done
 }
