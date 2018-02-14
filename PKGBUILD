@@ -8,10 +8,10 @@ pkgver=2.2.6
 pkgrel=4
 pkgdesc="Generate random strings in Python"
 arch=('x86_64')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 url="https://bitbucket.org/leapfrogdevelopment/rstr"
 license=('BSD')
-source=("https://pypi.python.org/simple/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/r/rstr/rstr-$pkgver.tar.gz")
 sha256sums=('5dea822326e418e0c9816c9cd14ae9c7be2d4cd4334043c397f202bc2ae2eda4')
 
 prepare () {
@@ -33,7 +33,7 @@ package_python-rstr() {
   depends=('python')
 
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 
 }
@@ -42,6 +42,7 @@ package_python2-rstr() {
   depends=('python2')
 
   cd $_pkgname-py2-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
 }
