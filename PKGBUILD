@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=1.4.6.99
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix and Materia (ex-Flat-Plat) themes (GTK2, GTK3),
@@ -44,8 +44,9 @@ depends=(
 	'polkit'
 	'parallel'
 	'optipng'
-	'inkscape'
+	'librsvg'
 	'imagemagick'
+	'inkscape'
 )
 makedepends=(
 	'git'
