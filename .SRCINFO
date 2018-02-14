@@ -1,19 +1,25 @@
 pkgbase = systemtap
-	pkgdesc = SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system.
-	pkgver = 3.1
-	pkgrel = 3
+	pkgdesc = provides infrastructure to simplify the gathering of information about the running system.
+	pkgver = 3.2
+	pkgrel = 1
 	url = http://sourceware.org/systemtap/
 	install = systemtap.install
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = python2-setuptools
+	makedepends = xmlto
 	depends = elfutils
 	depends = nss
 	depends = python2
-	optdepends = sqlite3
-	source = systemtap-3.1.tar.gz::https://sourceware.org/systemtap/ftp/releases/systemtap-3.1.tar.gz
-	sha512sums = 10019b9c2d66f3f8d6e6ce3d1f3dfe99c9e5bda9f220eb2aa885643235c270c2004528cded0e94370cc0fc0c62d8fbe96cafa7609c619a8ee498335ecd0aa41d
+	optdepends = sqlite3: for storing results in a database
+	source = systemtap-3.2.tar.gz::https://sourceware.org/systemtap/ftp/releases/systemtap-3.2.tar.gz
+	source = systemtap-3.2.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/systemtap-3.2.tar.gz.asc
+	source = access_process_vm_h.patch
+	validpgpkeys = 5D38116FA4D3A7CC77E378D37E83610126DCC2E8
+	sha512sums = 6036ed1b5189fd3fcfdeeaa526a3539ac632d0b687a063b5e3424e8f613bfc2c8d079742b0262b547128e97e30e4beb61898b23761657aee519e61346ac92e94
+	sha512sums = SKIP
+	sha512sums = f33d81d2e4d0892cb248e89eb11b76d390f78ef7e50dca8d15e0a868c1a42fb0fc40ea69d6d967ebd65dd7d7a910bf8b2faf31378dc744ef1e13aeb423a2572b
 
 pkgname = systemtap
 
