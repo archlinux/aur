@@ -3,7 +3,7 @@
 pkgname=qtcdrp
 pkgver=1.1
 pkgrel=2
-pkgdesc="Common libraries for the- applications by Victor Tran"
+pkgdesc="Qt Creator Discord Rich Presence Module"
 arch=("x86_64")
 url="https://github.com/vicr123/QtcDRP"
 license=('GPL3')

@@ -1,5 +1,5 @@
 pkgbase = qtcdrp
-	pkgdesc = Common libraries for the- applications by Victor Tran
+	pkgdesc = Qt Creator Discord Rich Presence Module
 	pkgver = 1.1
 	pkgrel = 2
 	url = https://github.com/vicr123/QtcDRP
