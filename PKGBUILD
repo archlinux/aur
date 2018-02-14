@@ -13,7 +13,6 @@ url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('mingw-w64-bootstrap' 'mingw-w64')
 depends=('zlib' 'libmpc' 'ppl' 'cloog' 'mingw-w64-binutils' 'mingw-w64-headers' 'mingw-w64-headers-bootstrap')
-provides=('mingw-w64-gcc')
 conflicts=('mingw-w64-gcc')
 options=('staticlibs' '!emptydirs')
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2)
