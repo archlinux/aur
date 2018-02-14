@@ -2,13 +2,13 @@
 pkgbase=python-reproject
 pkgname=('python-reproject' 'python-reproject-doc')
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io/en/stable/"
 license=('BSD')
 makedepends=('cython' 'python-astropy>=2.0' 'python-astropy-helpers' 'python-astropy-healpix>=0.2' 'python-sphinx')
-checkdepends=('python-matplotlib' 'python-shapely' 'python-pytest-arraydiff')
+checkdepends=('python-matplotlib' 'python-shapely' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/r/reproject/reproject-${pkgver}.tar.gz")
 md5sums=('56777bf5c2f8e2a7c0a05b3d058943c2')
 
