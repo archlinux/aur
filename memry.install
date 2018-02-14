@@ -1,4 +1,0 @@
-post_install() {
-    getent group memry &> /dev/null || groupadd -g 337 memry &>/dev/null
-    getent passwd memry &> /dev/null || useradd -u 337 -g memry -d /var/lib/memry -s /bin/nologin memry &> /dev/null
-}
