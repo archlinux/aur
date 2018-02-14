@@ -1,0 +1,11 @@
+[Desktop Entry]
+Exec=/opt/trenchbroom/TrenchBroom
+GenericName=Level Editor
+Comment=Level Editor
+Icon=trenchbroom
+Name=TrenchBroom
+Terminal=0
+Type=Application
+Categories=Game
+Keywords=quake;level;editor;
+
