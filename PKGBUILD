@@ -6,12 +6,13 @@
 # highlighted at https://github.com/bitpay/copay/issues/6204
 
 pkgname=copay
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
 url="https://copay.io"
 license=('MIT')
+makedepends=('zip')
 depends=('npm' 'python2')
 
 # For some reason, stripping the massive copay binary breaks the app
