@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # latest commit on stable branch
-_commit='46659f7deb962f55c728e70597e37c2a3ab6326d'
+_commit='78bd76934d74556054ed4cb69929d4318ae82a2d'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=237.0
-pkgrel=2
+pkgver=237.31
+pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')

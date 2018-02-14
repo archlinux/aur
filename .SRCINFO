@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 237.0
-	pkgrel = 2
+	pkgver = 237.31
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	groups = selinux
@@ -90,9 +90,9 @@ pkgname = systemd-selinux
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=237.0
-	provides = udev=237.0
-	provides = systemd=237.0-2
+	provides = systemd-tools=237.31
+	provides = udev=237.31
+	provides = systemd=237.31-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -121,15 +121,15 @@ pkgname = libsystemd-selinux
 	depends = libselinux
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=237.0-2
+	provides = libsystemd=237.31-1
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=237.0-2
-	provides = selinux-systemd-sysvcompat=237.0-2
+	provides = systemd-sysvcompat=237.31-1
+	provides = selinux-systemd-sysvcompat=237.31-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
