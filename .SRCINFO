@@ -1,0 +1,32 @@
+pkgbase = mcedit-git
+	pkgdesc = Minecraft world editor
+	pkgver = 20180211
+	pkgrel = 1
+	url = https://www.mcedit-unified.net/
+	arch = any
+	license = BSD
+	makedepends = cython2
+	depends = python2
+	depends = python2-opengl
+	depends = python2-numpy
+	depends = python2-pygame
+	depends = python2-yaml
+	depends = python2-pillow
+	depends = python2-ftputil
+	depends = python2-xlib
+	depends = xclip
+	conflicts = mcedit
+	conflicts = pymclevel
+	source = MCEdit
+	source = MCEdit.desktop
+	source = directories.patch
+	source = setup_leveldb.patch
+	source = git+https://github.com/Podshot/MCEdit-Unified.git
+	md5sums = b08f609c8923067b13a9bd462999a6f4
+	md5sums = 53fe3c41d58fd1f6429f90ba0b1831ac
+	md5sums = 91f520357b56b83e96073c385aa4e19e
+	md5sums = 7eee6c02f60a7ff1c7d245624b75bace
+	md5sums = SKIP
+
+pkgname = mcedit-git
+
