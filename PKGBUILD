@@ -1,21 +1,21 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
 
-pkgver=2.3.0
+pkgver=2.3.0.4
 pkgrel=1
 pkgdesc='Simple Encrypted Arithmetic Library'
 arch=('x86_64')
 url="https://sealcrypto.codeplex.com/"
 license=('MSR-LA')
 depends=()
-makedepends=('unzip' 'gcc' 'autoconf')
-source=("https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_v2.3.0-1.zip")
-md5sums=('dbbe3be7ae612dcc5ce390e722036a15')
+makedepends=('tar' 'gcc' 'autoconf')
+source=("https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_v2.3.0-4_Linux.tar.gz")
+md5sums=('a0aa3e0ea796f02cf7c978aa4722c1fa')
 provides=('sealcrypto')
 
 build() {
   cd "${srcdir}"
-  unzip -o "SEAL_v${pkgver}-1.zip"
+  tar xvf "SEAL_v2.3.0-4_Linux.tar.gz"
   cd "SEAL/SEAL"
   autoreconf -i || true
   bash configure
