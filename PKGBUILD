@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r1103.gd93eee234
+pkgver=0.8.1.r1105.g867d3ce1f
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -170,9 +170,11 @@ package() {
     
     [ "$CARCH" = 'x86_64' ] && _architecture='64'
     
-    rm -rf "$pkgdir"/usr/lib"$_architecture"/lib{cpuinfo,nnpack,pthreadpool}.a
+    rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool}.h,{__init__,avx{,2}}.py}
+    
+    rm -f "$pkgdir"/usr/lib"$_architecture"/lib{cpuinfo,nnpack,pthreadpool}.a
     
     # copyright notice
     cd "${srcdir}/${pkgname}"
-    install -D -m644 'NOTICE' "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
