@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.28.0.r121.g0192eeb09c
+pkgver=0.28.2.r279.g6751b5b1c2
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ build() {
         --progress \
         --confdir='/etc/mpv' \
         \
+        --disable-lgpl \
         --enable-libmpv-shared \
         --disable-libmpv-static \
         --disable-static-build \
@@ -89,7 +90,6 @@ build() {
         --lua='52arch' \
         \
         --enable-sdl2 \
-        --disable-sdl1 \
         --enable-oss-audio \
         --enable-rsound \
         --enable-sndio \
@@ -155,7 +155,8 @@ build() {
         --enable-dvbin \
         \
         --disable-apple-remote \
-        --disable-macos-touchbar
+        --disable-macos-touchbar \
+        --disable-macos-cocoa-cb
     
     ./waf build
 }
