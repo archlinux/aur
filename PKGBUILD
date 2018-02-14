@@ -6,8 +6,11 @@
 # Contributor: Mathias Stearn <mathias@10gen.com>
 # Contributor: Alec Thomas
 
+# Check https://www.mongodb.org/dl/src for source location, including
+# checksums
+
 pkgname=mongodb-3.4
-pkgver=3.4.10
+pkgver=3.4.13
 pkgrel=1
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=('x86_64')
@@ -26,7 +29,7 @@ source=("http://downloads.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
         'mongodb.sysusers' 'mongodb.tmpfiles' 'mongodb.conf' 'mongodb.service'
         'asio-openssl-1.1.0.patch'
         'using-std-string.patch')
-sha512sums=('6293dde40a8433477ba3b1cf77abbdb32b28ce58279cc616b488647c8ab71b5ab3eab2146058c4a74b9e00f0938f1415020e2f26ea01f2b29dd78a1a38d58c3a'
+sha512sums=('295dbb38d44c99e0dce46c5e4aa5d73c64d813a3767e71a7187aff05e30f896d283ca7ef19c0a7bbd036eecf3d419e38ea3bc7d98ba93d12296c49e565df0f66'
             '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
             'a931c401792f4e7928e4778d91626c1ecc3e97e5728549b170c050de487b2e5234747b0ee2d5acc3d63b798716758c17e30914dcaa9a92ac386db39f8a45a05c'
             '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
