@@ -8,7 +8,7 @@ pkgbase = universal-ctags
 	provides = ctags,
 	provides = readtags
 	source = https://github.com/universal-ctags/ctags/archive/master.zip
-	sha256sums = 86632272422be614974e5f8ac9a89bfceeaebe52b83b7de53e5878e3d671514c
+	sha256sums = 82bcb0a185db75053fc913274bf07a3e1f94d9dd7a1a5c45146f608f3636a1df
 
 pkgname = universal-ctags
 
