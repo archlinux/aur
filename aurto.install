@@ -7,20 +7,6 @@ function initialised {
   grep -q '^Include = /etc/pacman.d/aurto$' /etc/pacman.conf
 }
 
-function setup_sudoers {
-  echo "## aurto rules
-%$user ALL=(ALL) NOPASSWD: /usr/bin/arch-nspawn
-%$user ALL=(ALL) NOPASSWD: /usr/bin/pacsync aurto
-%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/makechrootpkg
-%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/aurbuild_chroot
-## /aurto rules" >> /etc/sudoers
-}
-
-function clean_sudoers {
-  ## removes everything between `## aurto rules` & `## /aurto rules` in the sudoers file
-  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
-}
-
 post_install() {
   if initialised; then
     echo 'Already initialised' >&2
@@ -40,26 +26,21 @@ post_install() {
   fi
   echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
 
-  echo 'aurto: Adding passwordless use of arch-nspawn, makechrootpkg, aurbuild_chroot, pacsync aurto' >&2
-  if ! test -f /etc/sudoers.aurto-backup; then
-    cp /etc/sudoers /etc/sudoers.aurto-backup
-  fi
-  setup_sudoers
-
   echo 'aurto: Adding & enabling systemd timer update tasks' >&2
   systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
   systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
-}
 
+  echo "aurto: Passwordless usage available for \`wheel\` group"
+}
 
 post_upgrade() {
   if ! initialised; then
     exit 0
   fi
 
-  ## redo to support package to package changes
-  clean_sudoers
-  setup_sudoers
+  ## clean legacy additions to the sudoers file
+  ## removes everything between `## aurto rules` & `## /aurto rules` in the sudoers file
+  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
 }
 
 pre_remove() {
@@ -76,9 +57,6 @@ post_remove() {
   if ! initialised; then
     exit 0
   fi
-
-  echo 'aurto: Removing aurto rules from /etc/sudoers' >&2
-  clean_sudoers
 
   echo 'aurto: Removing include from pacman.conf' >&2
   sed -i '/^Include = \/etc\/pacman.d\/aurto$/d' /etc/pacman.conf
