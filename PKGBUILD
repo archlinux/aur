@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3346.0
+pkgver=66.0.3347.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('6b27268c1a7d5b1f9cfe738d8bcd1469e92dce8eaf7adbedb036a30ed1f6038e'
+sha256sums=('501e291cfc4ad1ad45d0daa7dd246ef039bf345b404cdddccc2f0ac0664513ba'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -358,7 +358,7 @@ patch -Np1 -i ../edgy.patch
 
 patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
-patch -Np1 -i ../desu.patch
+#patch -Np1 -i ../desu.patch
  #patch -Np1 -i ../hell.patch
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
