@@ -1,41 +1,41 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: pingplug <pingplug@foxmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 # Contributor: rkitover <rkitover@gmail.com>
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-crt-git
-pkgver=5.0.rc2.r126.gb48e3ac
+pkgver=5.0.3.20180212
+_pkgver=5.0.3
 pkgrel=1
-pkgdesc='MinGW-w64 CRT for Windows'
+pkgdesc='MinGW-w64 CRT for Windows(git version)'
 arch=('any')
-url='http://mingw-w64.sourceforge.net'
+url='https://mingw-w64.org/doku.php'
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-binutils' 'mingw-w64-headers-git')
-provides=('mingw-w64-crt')
+makedepends=('git' 'mingw-w64-gcc-base' 'mingw-w64-binutils' "mingw-w64-headers-git>=$pkgver")
+provides=("mingw-w64-crt=$pkgver")
 conflicts=('mingw-w64-crt')
+replaces=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
-source=(git://git.code.sf.net/p/mingw-w64/mingw-w64)
-md5sums=(SKIP)
-
+source=('git+https://git.code.sf.net/p/mingw-w64/mingw-w64')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/mingw-w64"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${srcdir}/mingw-w64"
+  echo "${_pkgver}.`git log -1 --date=short --format=%cd | sed s/-//g`"
 }
 
 prepare() {
-  cd ${srcdir}/mingw-w64/mingw-w64-crt
+  cd "${srcdir}/mingw-w64/mingw-w64-crt"
   aclocal
   automake
 }
 
 build() {
-  cd ${srcdir}
+  cd "${srcdir}"
   for _target in ${_targets}; do
     msg "Building ${_target} CRT"
     if [ ${_target} == "i686-w64-mingw32" ]; then
@@ -43,18 +43,21 @@ build() {
     elif [ ${_target} == "x86_64-w64-mingw32" ]; then
         _crt_configure_args="--disable-lib32 --enable-lib64"
     fi
-    mkdir -p ${srcdir}/crt-${_target} && cd ${srcdir}/crt-${_target}
-    ${srcdir}/mingw-w64/mingw-w64-crt/configure --prefix=/usr/${_target} \
-        --host=${_target} --enable-wildcard \
+    mkdir -p "crt-${_target}" && cd "crt-${_target}"
+    ../mingw-w64/mingw-w64-crt/configure \
+        --prefix=/usr/${_target} \
+        --host=${_target} \
+        --enable-wildcard \
         ${_crt_configure_args}
     make
   done
 }
 
 package() {
+  cd "${srcdir}"
   for _target in ${_targets}; do
     msg "Installing ${_target} crt"
-    cd ${srcdir}/crt-${_target}
-    make DESTDIR=${pkgdir} install
+    cd "crt-${_target}"
+    make DESTDIR="${pkgdir}" install
   done
 }
