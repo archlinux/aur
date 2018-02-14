@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-gtk-theme
-pkgver=20180212
+pkgver=20180213
 pkgrel=1
 pkgdesc="A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
@@ -9,11 +9,11 @@ url='https://www.gnome-look.org/p/1187179'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 _hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
-source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518407312/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha.tar.xz"
-        "${pkgname}-dark-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518407314/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518496874/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha.tar.xz"
+        "${pkgname}-dark-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518496876/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark.tar.xz")
 
-sha256sums=('86fcaec9d98cdf9b6316cfd7c9727d8e03dc1e0ebccd75060ffdf577b5d171fd'
-            'f2838a6507264bcbd32d264c30b55784de3be2afbbf09ec120b5e9d0b4718dce')
+sha256sums=('7b722c0dc4b0fd9b0635bb0c55e3e236de82f51987df4819181624ebe26a0577'
+            'f61c702d2754a94f7e84295d9d9813a6a0d497d207c3090452eed8bbebd54156')
 
 
 prepare() {
