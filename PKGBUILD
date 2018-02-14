@@ -1,7 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=ruby-ast
-pkgver=2.3.0
+_gemname=ast
+pkgname=ruby-$_gemname
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A library for working with Abstract Syntax Trees"
 arch=('any')
@@ -9,16 +10,10 @@ url="https://whitequark.github.io/ast/"
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('15d97cf7f3430351a8663f2c5fb7591fb29f700fa28576c46c53b992e912e85e')
-noextract=("${pkgname#*-}-${pkgver}.gem")
+sha256sums=('a7270b78d8c970e90a5b932471c691e3ca74aa8be030f1a954d38ec487d79aa0')
+noextract=("${pkgname#*-}-$pkgver.gem")
 
 package() {
-  cd "$srcdir"
-
-  msg2 'Installing...'
-  gem install \
-    --no-user-install \
-    --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname#*-}-$pkgver.gem
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" "$_gemname-$pkgver.gem"
 }
