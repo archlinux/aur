@@ -7,7 +7,7 @@
 pkgname=mingw-w64-rust
 _pkgname=rust
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
 url='https://www.rust-lang.org/'
@@ -98,9 +98,15 @@ EOF
 runner = "wine"
 EOF
   fi
+  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+rustflags = [
+EOF
+  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+            ]
+
+EOF
 
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-
 [target.x86_64-pc-windows-gnu]
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
 ar = "/usr/x86_64-w64-mingw32/bin/ar"
@@ -110,11 +116,18 @@ EOF
 runner = "wine"
 EOF
   fi
+  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+rustflags = [
+EOF
   if pacman -T "mingw-w64-crt>5.0.3.20171219" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-rustflags = ["-C", "link-arg=-lmsvcrt"]
+             "-C", "link-arg=-lmsvcrt",
 EOF
   fi
+  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+            ]
+
+EOF
 }
 
 # vim:set ts=2 sw=2 et:
