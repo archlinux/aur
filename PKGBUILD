@@ -6,14 +6,15 @@ pkgname=boost-65-compat
 _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
 url='http://www.boost.org/'
 license=('custom')
 depends=('bzip2' 'zlib' 'icu>=55.1' 'openmpi')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' )
-source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2)
+source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2)
+#source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2)
 sha256sums=('9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81')
 
 build() {
@@ -21,7 +22,6 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd ${_pkgname}_${_boostver}
-
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
 
    _bindir="bin.linuxx86"
