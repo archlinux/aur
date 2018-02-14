@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r1101.gb0961ca52
+pkgver=0.8.1.r1103.gd93eee234
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -10,23 +10,21 @@ license=('APACHE')
 depends=(
     # official repositories:
         # required:
-            'google-glog' 'protobuf' 'lapack' 'python2' 'python2-numpy' 'python2-protobuf'
+            'google-glog' 'protobuf' 'lapack' 'python' 'python-numpy' 'python-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
             'hiredis' 'ffmpeg'
-        # python2:
-            'python2-flask' 'python2-future' 'graphviz' 'python2-hypothesis'
-            'python2-jupyter_core' 'python2-matplotlib' 'python2-pydot' 'python2-yaml'
-            'python2-requests' 'python2-scipy' 'python2-setuptools' 'python2-six'
-            'python2-tornado' 'python2-gflags' 'python2-pyzmq'
+        # python:
+            'python-flask' 'python-future' 'graphviz' 'python-hypothesis'
+            'python-jupyter_core' 'python-matplotlib' 'python-pydot' 'python-yaml'
+            'python-requests' 'python-scipy' 'python-setuptools' 'python-six'
+            'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
-        # python2:
-            'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
-            'python2-lmdb'
+        # python:
+            'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
+            'python-lmdb'
 )
-makedepends=('git' 'cmake'
-             'python' 'python-yaml' # needed by submodule aten in src/Aten/{CMakeLists.txt,gen.py}
-)
+makedepends=('git' 'cmake')
 provides=('caffe2-cpu')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu')
@@ -112,10 +110,13 @@ build() {
     mkdir -p build
     cd build
     
+    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    
     cmake \
         -DBLAS:STRING='Eigen' \
         \
         -DBUILD_BINARY:BOOL='ON' \
+        -DBUILD_DOCS:BOOL='OFF' \
         -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
@@ -128,15 +129,14 @@ build() {
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
-        -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
+        -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python${_pythonver}" \
+        -DPYTHON_INCLUDE_DIR:PATH="/usr/include/python${_pythonver}m" \
+        -DPYTHON_LIBRARY:FILEPATH="/usr/lib/libpython${_pythonver}m.so" \
         \
-        -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
-        \
-        -DPYTHON_EXECUTABLE:FILEPATH='/usr/bin/python2.7' \
-        -DPYTHON_INCLUDE_DIR:PATH='/usr/include/python2.7' \
-        -DPYTHON_LIBRARY:FILEPATH='/usr/lib/libpython2.7.so' \
-        \
+        -DUSE_ATEN:BOOL='ON' \
+        -DUSE_ASAN:BOOL='ON' \
         -DUSE_CUDA:BOOL='OFF' \
+        -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
         -DUSE_GLOO:BOOL='ON' \
@@ -148,17 +148,15 @@ build() {
         -DUSE_MPI:BOOL='ON' \
         -DUSE_NCCL:BOOL='OFF' \
         -DUSE_NERVANA_GPU:BOOL='OFF' \
+        -DUSE_NNAPI:BOOL='OFF' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
         -DUSE_OPENCV:BOOL='OFF' \
-        -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_THREADS:BOOL='ON' \
         -DUSE_ZMQ:BOOL='ON' \
-        -DUSE_ATEN:BOOL='ON' \
-        -DUSE_ASAN:BOOL='ON' \
         \
         -Wno-dev \
         ..
@@ -174,7 +172,7 @@ package() {
     
     rm -rf "$pkgdir"/usr/lib"$_architecture"/lib{cpuinfo,nnpack,pthreadpool}.a
     
-    # license
+    # copyright notice
     cd "${srcdir}/${pkgname}"
     install -D -m644 'NOTICE' "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
