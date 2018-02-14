@@ -2,37 +2,39 @@
 
 pkgname=zfs-auto-snapshot-git
 pkgdesc="Implementation of a snapshotting service for ZFS"
-pkgver=1.2.1.1.r0.63e4438
+pkgver=1.2.4.r0.277287f
 pkgrel=1
 epoch=1
 arch=('any')
-url=""
+url="https://github.com/zfsonlinux/zfs-auto-snapshot"
 license=('GPL2')
 depends=('systemd>=212' 'zfs')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/zfsonlinux/zfs-auto-snapshot#branch=debian')
-sha256sums=('SKIP')
+source=("git+$url" "prefix_label_order.patch")
+sha512sums=('SKIP'
+            'f0dc350f17bac8b1569e088c7b8c4d097b810eeab1addbf84f79aa5294c96a6353ceaaeb212feb85136f5a190d5ae54ff9a2e5b9441a0cb0960d43518aedfa47')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
-  printf "%s\n" "$(git describe --tags --long | sed 's|debian/||g' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s\n" "$(git describe --tags --long | sed 's|upstream/||g' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-build() {
-  cd "$srcdir/${pkgname%-git}"
+prepare() {
+  cd "${pkgname%-git}"
 
-  ### COMMENT the following 4 lines to NOT change the snapshot name to
-  ### @PREFIX_DATE_LABEL instead of @PREFIX-LABEL_DATE
-  ### (the following makes the snapshots nicely sorted by time)
-  sed -r -i \
-      -e 's@^(SNAPNAME="\$)(opt_prefix)(.*)-\$DATE@\1{\2}_$DATE\3@' \
-      -e 's@^(SNAPGLOB="\$)(opt_prefix)(.*})([?]+)@\1{\2}\4\3@' \
-      src/zfs-auto-snapshot.sh
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+        break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
 
-  mkdir systemd
+  mkdir "../systemd"
+  cd "../systemd"
   ### "Label|NumberOfKeptSnapshots|systemd-timer-spec" of snapshots,
   ### eg. timer and service files, being created adjust/extend if required
   declare -a arr=(
@@ -48,7 +50,7 @@ build() {
     _keep="$(echo $i | cut -d'|' -f2)"
     _OnCalendarSpec="$(echo $i | cut -d'|' -f3)"
     _prefix="--prefix=znap"
-    cat > systemd/zfs-auto-snapshot-${_label}.service <<EOF
+    cat > zfs-auto-snapshot-${_label}.service <<EOF
 [Unit]
 Description=ZFS $_label snapshot service
 
@@ -57,7 +59,7 @@ ExecStart=$_PREFIX/bin/zfs-auto-snapshot --skip-scrub $_prefix --label=$_label -
 EOF
 
     # write timer files
-    cat > systemd/zfs-auto-snapshot-${_label}.timer <<EOF
+    cat > zfs-auto-snapshot-${_label}.timer <<EOF
 # See systemd.timers and systemd.time manpages for details
 [Unit]
 Description=ZFS $_label snapshot timer
@@ -80,5 +82,5 @@ package() {
   install -d "$pkgdir/usr/share/man/man8"
   install -m 755 src/zfs-auto-snapshot.sh "$pkgdir/usr/bin/zfs-auto-snapshot"
   install -m 644 src/zfs-auto-snapshot.8 "$pkgdir/usr/share/man/man8"
-  install -m 644 systemd/* "$pkgdir/usr/lib/systemd/system"
+  install -m 644 ../systemd/* "$pkgdir/usr/lib/systemd/system"
 }
