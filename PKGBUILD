@@ -17,7 +17,7 @@ _pkgrel_x86_64=1
 _pkgrel_armv6h=1
 _pkgrel_armv7h=1
 _pkgrel_armv8h=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote desktop application"
 groups=('network')
 url="http://www.nomachine.com"
@@ -40,13 +40,20 @@ install=nomachine.install
 
 prepare()
 {
-#Fix Fedora Version Var
+#Fix Fedora Version Var And Libstdc++ Rename
 tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" NX/scripts/setup/nxclient
 sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' "$srcdir/NX/scripts/setup/nxclient"
+tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" "NX/lib/"
+for _libstdc in "$srcdir/NX/lib/"libstdc++.*; do
+mv "${_libstdc}" ${_libstdc}.nomachine
+done
 gzip -d "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz"
-tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/scripts/setup/nxclient  -C "$srcdir/NX/scripts/setup/nxclient"
+tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/scripts/setup/nxclient -C "$srcdir/NX/scripts/setup/nxclient"
+tar --delete -f "$srcdir/NX/etc/NX/server/packages/nxclient.tar" "NX/lib/"
+tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" "NX/lib/" -C "$srcdir/NX/lib/"
 gzip "$srcdir/NX/etc/NX/server/packages/nxclient.tar"
 rm -fr "$srcdir/NX/scripts"*
+rm -fr "$srcdir/NX/lib"*
 #Change Automatic Service Start And/Or Firewall Automatic Rules If Apply
 if [ $_autoservice = y ] && [ $_autofirewall = y ]; then
 echo "####################################################################"
