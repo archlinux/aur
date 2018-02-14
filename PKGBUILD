@@ -1,16 +1,16 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r875.gf8e70225
+pkgver=0.8.1.r1101.gb0961ca52
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
-url='http://caffe2.ai/'
+url='https://caffe2.ai/'
 license=('APACHE')
 depends=(
     # official repositories:
         # required:
-            'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
+            'google-glog' 'protobuf' 'lapack' 'python2' 'python2-numpy' 'python2-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
             'hiredis' 'ffmpeg'
@@ -24,11 +24,8 @@ depends=(
             'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
             'python2-lmdb'
 )
-makedepends=(
-    # official repositories:
-        'git' 'cmake' 'ninja'
-    # AUR:
-        'confu-git' 'python-peachpy-git'
+makedepends=('git' 'cmake'
+             'python' 'python-yaml' # needed by submodule aten in src/Aten/{CMakeLists.txt,gen.py}
 )
 provides=('caffe2-cpu')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
@@ -56,8 +53,16 @@ source=(
         'submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
         'submodule-aten'::'git+https://github.com/zdevito/ATen.git'
         'submodule-zstd'::'git+https://github.com/facebook/zstd.git'
+        'submodule-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo.git'
+        'submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
+        'submodule-python-peachpy'::'git+https://github.com/Maratyszcza/PeachPy.git'
+        'submodule-python-six'::'git+https://github.com/benjaminp/six.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -82,7 +87,8 @@ prepare() {
     local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
                            protobuf android-cmake ios-cmake NNPACK gloo \
                            NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
-                           NNPACK_deps/psimd aten zstd"
+                           NNPACK_deps/psimd aten zstd cpuinfo python-enum python-peachpy \
+                           python-six"
     git submodule init
     for _submodule in $_submodule_list
     do
@@ -160,18 +166,15 @@ build() {
 }
 
 package() {
-    cd "$pkgname/build"
+    cd "${pkgname}/build"
+    
     make DESTDIR="$pkgdir" install
     
-    # directories creation
-    mkdir -p "${pkgdir}/usr/lib/python2.7/site-packages"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    [ "$CARCH" = 'x86_64' ] && _architecture='64'
     
-    # move/rename folders to the right location
-    mv -f "${pkgdir}/usr/caffe"  "${pkgdir}/usr/lib/python2.7/site-packages"
-    mv -f "${pkgdir}/usr/caffe2" "${pkgdir}/usr/lib/python2.7/site-packages"
+    rm -rf "$pkgdir"/usr/lib"$_architecture"/lib{cpuinfo,nnpack,pthreadpool}.a
     
     # license
     cd "${srcdir}/${pkgname}"
-    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 'NOTICE' "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
