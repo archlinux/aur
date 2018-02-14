@@ -24,7 +24,7 @@ provides=('phoronix-test-suite')
 conflicts=('phoronix-test-suite' 'phoronix-test-suite-milestone')
 install=${pkgname}.install
 source=(http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-$pkgver.tar.gz)
-sha256sums=('944e8abd4616b9dd550f5200c172b38945e8ed11e95c9b9b95c5cc68b09dcbe8')
+sha256sums=('086df15206050a541fa142f16607c03edbed174322ff9b7b134ab97da40b1290')
 
 package() {
   cd "$srcdir"/phoronix-test-suite
