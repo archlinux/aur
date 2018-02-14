@@ -1,0 +1,15 @@
+pkgbase = ruby-hashie
+	pkgdesc = A collection of classes and mixins that make hashes more powerful.
+	pkgver = 3.5.7
+	pkgrel = 1
+	url = https://github.com/intridea/hashie
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = hashie-3.5.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hashie-3.5.7.gem
+	sha1sums = c6830cab573612f811a80ba6b05c5f993cbfe260
+
+pkgname = ruby-hashie
+
