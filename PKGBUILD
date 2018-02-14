@@ -14,6 +14,7 @@ arch=('x86_64')
 url='https://www.mongodb.com/'
 license=('AGPL3')
 provides=('mongodb')
+conflicts=('mongodb')
 depends=('pcre' 'snappy' 'openssl' 'libsasl' 'yaml-cpp' 'lsb-release' 'wiredtiger'
          'libstemmer')
 makedepends=('scons' 'readline' 'ncurses' 'libpcap' 'boost')
