@@ -2,15 +2,16 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gtk2+extra
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="GtkExtra is a useful set of widgets for creating GUI's for the Xwindows system using GTK+"
 arch=(x86_64)
 url="http://gtkextra.sourceforge.net/"
 depends=('gtk2')
+makedepends=('python')
 license=('LGPL')
 source=(http://downloads.sourceforge.net/project/gtkextra/${pkgver%.*}/gtkextra-$pkgver.tar.gz)
-sha256sums=('7889f958ee9fb6bd564aa941891909c3af7a03b92e232c5a90bab0289407d884')
+sha256sums=('651b738a78edbd5d6ccb64f5a256c39ec35fbbed898e54a3ab7e6cf8fd82f1d6')
 
 build() {
   cd "$srcdir"/gtkextra-$pkgver
