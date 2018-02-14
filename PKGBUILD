@@ -6,7 +6,7 @@
 
 pkgname=octoprint
 _reponame=OctoPrint
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
@@ -18,6 +18,7 @@ depends=(
     'python2-chainmap'
     'python2-click'
     'python2-dateutil'
+    'python2-emoji'
     'python2-feedparser'
     'python2-flask'
     'python2-flask-assets'
@@ -27,6 +28,7 @@ depends=(
     'python2-future'
     'python2-futures'
     'python2-markdown'
+    'python2-monotonic'
     'python2-netaddr'
     'python2-netifaces'
     'python2-pkginfo'
@@ -59,24 +61,24 @@ source=(
     octoprint-deps.patch
     octoprint-jinja29.patch
 )
-sha512sums=('d704023e4b1959a8a01cf888b735a90e2d809e136807476aa6815e482c59d8143fe541e37cc6189480b886437183f046233de4a1a820155b499fa3a486c190dc'
+sha512sums=('9ffb16242e75a2fe8df1d95bb36d42e042f8fc308ab238ca80095fe09248277265b0e9fd148051e2a514471a113ce7eecdc76ff558999a721c2a7d0d41943975'
             '5c22c76e4089958ff42e2627f29c360fa0f9a73b849f1fe5092cdd9ae800323263b75ac7e23d7189badac9baa7daa850183bf2491680a0ac01c605531728da62'
             '89a8703cbc8b8802eb6a360359f92904357a99bf5b1174c85d4555f88a816d4c008d077fe4f3fed4db0b23e8a662359bcfafaf7750a2ed50a81104f04d04c056'
-            'a77e369c4bfcd47f63de25bc460a1a5856805e728dbfd4469c5dd5ff5128e55ef11430b0eb1d400a116c2de9d0552a507e04467f6d5b43ba440f5781e7e31dcd'
+            '4686d6f0e13db636b4996bba0a456ce1ee09fedca1ad993a9250257cbeddc485e7ff6113afd1a65e18d3058617e5372a480a2db11d01701b30fa026be946bdaf'
             '41e03bcc2111d1000ca0d62634009dc2030bae52b6623cd58a595f570e0f99e524613d52785b50098fe044fe5355b26221ce7a286148d9bdd95fb3f220bb5568')
 
 
 prepare() {
     cd ${srcdir}/${_reponame}-${pkgver}
 
-    patch -p1 < "$srcdir/octoprint-deps.patch"
-    patch -p1 < "$srcdir/octoprint-jinja29.patch"
+    patch -p1 < "${srcdir}/octoprint-deps.patch"
+    patch -p1 < "${srcdir}/octoprint-jinja29.patch"
 }
 
 package() {
     cd ${srcdir}/${_reponame}-${pkgver}
 
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 
     install -D -m755 ${srcdir}/octoprint.run ${pkgdir}/usr/bin/octoprint
     install -D -m644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service

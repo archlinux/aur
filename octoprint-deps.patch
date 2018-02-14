@@ -1,57 +1,87 @@
 diff --git a/setup.py b/setup.py
-index 25f9d54d..501bfeaa 100644
+index 2f22d210..2960d8f9 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -14,34 +14,34 @@ import octoprint_setuptools
+@@ -14,45 +14,40 @@ import octoprint_setuptools
  
  # Requirements for our application
  INSTALL_REQUIRES = [
 -	"flask>=0.9,<0.11",
-+	"flask>=0.11,<0.12",
- 	"Jinja2>=2.8,<2.9", # Jinja 2.9 has breaking changes WRT template scope - we can't
- 	                    # guarantee backwards compatibility for plugins and such with that
- 	                    # version, hence we need to pin to a lower version for now. See #1697
+-	"Jinja2>=2.8,<2.9", # Jinja 2.9 has breaking changes WRT template scope - we can't
+-	                    # guarantee backwards compatibility for plugins and such with that
+-	                    # version, hence we need to pin to a lower version for now. See #1697
 -	"werkzeug>=0.8.3,<0.9",
 -	"tornado==4.0.2", # pinned for now, we need to migrate to a newer tornado, but due
-+	"werkzeug>=0.11.1,<0.12",
-+	"tornado>=4.4.2,<4.5", # pinned for now, we need to migrate to a newer tornado, but due
- 	                  # to some voodoo needed to get large streamed uploads and downloads
- 	                  # to work that is probably not completely straightforward and therefore
- 	                  # something for post-1.3.0-stable release
- 	"sockjs-tornado>=1.0.3,<1.1",
+-	                  # to some voodoo needed to get large streamed uploads and downloads
+-	                  # to work that is probably not completely straightforward and therefore
+-	                  # something for post-1.3.0-stable release
+-	"sockjs-tornado>=1.0.3,<1.1",
 -	"PyYAML>=3.10,<3.11",
 -	"Flask-Login>=0.2.2,<0.3",
 -	"Flask-Principal>=0.3.5,<0.4",
 -	"Flask-Babel>=0.9,<0.10",
 -	"Flask-Assets>=0.10,<0.11",
-+	"PyYAML>=3.12,<3.13",
-+	"Flask-Login>=0.3,<0.4",
-+	"Flask-Principal>=0.4,<0.5",
-+	"Flask-Babel>=0.11,<0.12",
-+	"Flask-Assets>=0.12,<0.13",
- 	"markdown>=2.6.4,<2.7",
+-	"markdown>=2.6.4,<2.7",
 -	"pyserial>=2.7,<2.8",
-+	"pyserial>=3.1.1,<3.2",
- 	"netaddr>=0.7.17,<0.8",
- 	"watchdog>=0.8.3,<0.9",
- 	"sarge>=0.1.4,<0.2",
- 	"netifaces>=0.10,<0.11",
- 	"pylru>=1.0.9,<1.1",
+-	"netaddr>=0.7.17,<0.8",
+-	"watchdog>=0.8.3,<0.9",
+-	"sarge>=0.1.4,<0.2",
+-	"netifaces>=0.10,<0.11",
+-	"pylru>=1.0.9,<1.1",
 -	"rsa>=3.2,<3.3",
 -	"pkginfo>=1.2.1,<1.3",
--	"requests>=2.7,<2.8",
+-	"requests>=2.18.4,<3",
 -	"semantic_version>=2.4.2,<2.5",
--	"psutil>=3.2.1,<3.3",
+-	"psutil>=5.4.1,<6",
 -	"Click>=6.2,<6.3",
-+	"rsa>=3.4,<3.5",
-+	"pkginfo>=1.3.2,<1.4",
-+	"requests>=2.11.1,<2.12",
-+	"semantic_version>=2.6.0,<2.7",
-+	"psutil>=4.3.1,<4.4",
-+	"Click>=6.6,<6.7",
- 	"awesome-slugify>=1.6.5,<1.7",
- 	"feedparser>=5.2.1,<5.3",
- 	"chainmap>=1.0.2,<1.1",
+-	"awesome-slugify>=1.6.5,<1.7",
+-	"feedparser>=5.2.1,<5.3",
+-	"chainmap>=1.0.2,<1.1",
+-	"future>=0.15,<0.16",
+-	"scandir>=1.3,<1.4",
+-	"websocket-client>=0.40,<0.41",
+-	"python-dateutil>=2.6,<2.7",
+-	"wrapt>=1.10.10,<1.11",
+-	"futures>=3.1.1,<3.2",
+-	"emoji>=0.4.5,<0.5",
+-	"monotonic>=1.3,<1.4"
++	"flask",
++	"Jinja2",
++	"werkzeug",
++	"tornado",
++	"sockjs-tornado",
++	"PyYAML",
++	"Flask-Login",
++	"Flask-Principal",
++	"Flask-Babel",
++	"Flask-Assets",
++	"markdown",
++	"pyserial",
++	"netaddr",
++	"watchdog",
++	"sarge",
++	"netiface",
++	"pylru",
++	"rsa",
++	"pkginfo",
++	"requests",
++	"semantic_version",
++	"psutil",
++	"Click",
++	"awesome-slugify",
++	"feedparser",
++	"chainmap",
++	"future",
++	"scandir",
++	"websocket-client",
++	"python-dateutil",
++	"wrapt",
++	"futures",
++	"emoji",
++	"monotonic"
+ ]
+ 
+ if sys.platform == "darwin":
 diff --git a/src/octoprint/plugin/types.py b/src/octoprint/plugin/types.py
 index 196a2376..48028a21 100644
 --- a/src/octoprint/plugin/types.py
@@ -76,24 +106,19 @@ index 196a2376..48028a21 100644
  		                  never=lambda: False)
  
  		for level, condition in conditions.items():
-@@ -1938,4 +1938,3 @@ class AppPlugin(OctoPrintPlugin):
- 
- 	def get_additional_apps(self):
- 		return []
--
 diff --git a/src/octoprint/plugins/announcements/__init__.py b/src/octoprint/plugins/announcements/__init__.py
 index c064d860..ce776d72 100644
 --- a/src/octoprint/plugins/announcements/__init__.py
 +++ b/src/octoprint/plugins/announcements/__init__.py
 @@ -22,7 +22,7 @@ from collections import OrderedDict
- 
  from octoprint.server import admin_permission
  from octoprint.server.util.flask import restricted_access, with_revalidation_checking, check_etag
+ from octoprint.util import utmify
 -from flask.ext.babel import gettext
 +from flask_babel import gettext
+ from octoprint import __version__ as OCTOPRINT_VERSION
  
  class AnnouncementPlugin(octoprint.plugin.AssetPlugin,
-                          octoprint.plugin.SettingsPlugin,
 diff --git a/src/octoprint/plugins/corewizard/__init__.py b/src/octoprint/plugins/corewizard/__init__.py
 index bfeb93e7..800a1f7b 100644
 --- a/src/octoprint/plugins/corewizard/__init__.py
@@ -101,9 +126,9 @@ index bfeb93e7..800a1f7b 100644
 @@ -9,7 +9,7 @@ __copyright__ = "Copyright (C) 2015 The OctoPrint Project - Released under terms
  import octoprint.plugin
  
- 
 -from flask.ext.babel import gettext
 +from flask_babel import gettext
+ from .subwizards import Subwizards
  
  
  class CoreWizardPlugin(octoprint.plugin.AssetPlugin,
@@ -117,20 +142,19 @@ index 988d4840..7d5b5f44 100644
  import flask
 -from flask.ext.babel import gettext
 +from flask_babel import gettext
- from builtins import range
  
- import octoprint.plugin
+ # noinspection PyCompatibility
+ from builtins import range
 diff --git a/src/octoprint/plugins/pluginmanager/__init__.py b/src/octoprint/plugins/pluginmanager/__init__.py
 index 64199e9a..8ec6ce90 100644
 --- a/src/octoprint/plugins/pluginmanager/__init__.py
 +++ b/src/octoprint/plugins/pluginmanager/__init__.py
-@@ -16,7 +16,7 @@ from octoprint.server import admin_permission, VERSION
+@@ -16,6 +16,6 @@ from octoprint.server import admin_permission, VERSION
  from octoprint.util.pip import LocalPipCaller, UnknownPip
  
  from flask import jsonify, make_response
 -from flask.ext.babel import gettext
 +from flask_babel import gettext
- from collections import OrderedDict
  
  import logging
 diff --git a/src/octoprint/plugins/softwareupdate/__init__.py b/src/octoprint/plugins/softwareupdate/__init__.py
@@ -363,27 +387,28 @@ diff --git a/src/octoprint/server/util/__init__.py b/src/octoprint/server/util/_
 index 5d202d16..cbfde8b4 100644
 --- a/src/octoprint/server/util/__init__.py
 +++ b/src/octoprint/server/util/__init__.py
-@@ -13,6 +13,8 @@ from octoprint.users import ApiUser
- from octoprint.util import deprecated
+@@ -13,7 +13,9 @@ from octoprint.users import ApiUser
+ from octoprint.plugin import plugin_manager
  
  import flask as _flask
 +import flask_login
 +import flask_principal
+ import logging
  
  from . import flask
  from . import sockjs
-@@ -58,9 +60,9 @@ def loginFromApiKeyRequestHandler():
- 
- 	if apikey and apikey != octoprint.server.UI_API_KEY and not octoprint.server.appSessionManager.validate(apikey):
- 		user = get_user_for_apikey(apikey)
--		if user is not None and _flask.ext.login.login_user(user, remember=False):
--			_flask.ext.principal.identity_changed.send(_flask.current_app._get_current_object(),
--			                                           identity=_flask.ext.principal.Identity(user.get_id()))
-+		if user is not None and flask_login.login_user(user, remember=False):
-+			flask_principal.identity_changed.send(_flask.current_app._get_current_object(),
-+			                                           identity=flask_principal.Identity(user.get_id()))
- 		else:
- 			return _flask.make_response("Invalid API key", 401)
+@@ -68,9 +68,9 @@ def loginFromApiKeyRequestHandler():
+ 		return
+ 	
+ 	user = get_user_for_apikey(apikey)
+-	if user is not None and _flask.ext.login.login_user(user, remember=False):
+-		_flask.ext.principal.identity_changed.send(_flask.current_app._get_current_object(),
+-		                                           identity=_flask.ext.principal.Identity(user.get_id()))
++	if user is not None and _flask_login.login_user(user, remember=False):
++		_flask_principal.identity_changed.send(_flask.current_app._get_current_object(),
++		                                           identity=_flask_principal.Identity(user.get_id()))
+ 	else:
+ 		return _flask.make_response("Invalid API key", 401)
  
 diff --git a/src/octoprint/server/util/flask.py b/src/octoprint/server/util/flask.py
 index 87bf9944..7b0aeaa1 100644
@@ -441,9 +466,9 @@ index 87bf9944..7b0aeaa1 100644
 -		user = flask.ext.login.current_user
 +		user = flask_login.current_user
  
--	if user is not None and not user.is_anonymous():
+-	if user is not None and not user.is_anonymous() and user.is_active():
 -		flask.ext.principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask.ext.principal.Identity(user.get_id()))
-+	if user is not None and not user.is_anonymous:
++	if user is not None and not user.is_anonymous and user.is_active:
 +		flask_principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask_principal.Identity(user.get_id()))
  		if hasattr(user, "session"):
  			flask.session["usersession.id"] = user.session
@@ -530,7 +555,7 @@ index 87bf9944..7b0aeaa1 100644
  	def resolve_output_to_path(self, ctx, target, bundle):
  		import os
 diff --git a/src/octoprint/server/util/tornado.py b/src/octoprint/server/util/tornado.py
-index 6373733e..3a7c149c 100644
+index b7610b07..a3544b6a 100644
 --- a/src/octoprint/server/util/tornado.py
 +++ b/src/octoprint/server/util/tornado.py
 @@ -29,36 +29,6 @@ import tornado.util
@@ -567,15 +592,15 @@ index 6373733e..3a7c149c 100644
 -	tornado.ioloop.PeriodicCallback._schedule_next = _schedule_next
 -
 -
- #~~ WSGI middleware
+ #~~ More sensible logging
  
  
-@@ -689,8 +659,10 @@ class CustomHTTPServer(tornado.httpserver.HTTPServer):
+@@ -712,8 +682,10 @@ class CustomHTTPServer(tornado.httpserver.HTTPServer):
  
  	``default_max_body_size`` is the default maximum body size to apply if no specific one from ``max_body_sizes`` matches.
  	"""
-+	def __init__(self, *args, **kwargs):
-+		pass
++    def __init__(self, *args, **kwargs):
++            pass
  
 -	def __init__(self, request_callback, no_keep_alive=False, io_loop=None,
 +	def initialize(self, request_callback, no_keep_alive=False, io_loop=None,
