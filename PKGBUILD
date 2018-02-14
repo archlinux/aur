@@ -9,16 +9,16 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
-depends=('root' 'qt4')
+depends=('root' 'qt5-base')
 url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
 md5sums=('eede668b446e899da12487f182957ed0')
 
-_USEQT=4 # qt4 - Qt 4.6.x and higher (recommended) <-- from the source code 5.1.2
+_USEQT=5
 
 prepare() {
 
@@ -32,11 +32,9 @@ prepare() {
   sed -i 's#\$(GO4LIBPATH)#$(DESTDIR)&#g' Makefile
   sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)&#g' Makefile
 
-  # Does not seem needed since 5.2.0
-  #msg "fixing QGo4Widget.cpp:324:25: error: cannot convert ‘bool’ to ‘TGo4ViewPanel*’ in initialization"
-  #sed -i 's#TGo4ViewPanel\* res = false;#TGo4ViewPanel\* res = 0;#g' qt4/Go4GUI/QGo4Widget.cpp
-
-  msg "Fixing lack of Riosfwd.h from ROOT 6.12"
+  #/usr/include/root/Riosfwd.h:25:2: warning:
+  #warning "Riosfwd.h is deprecated. It will be removed in ROOT v6.12. Please use #include <iosfwd>, instead."
+  msg "Go4 5.2.0 needs fixing lack of Riosfwd.h from ROOT 6.12"
   sed -i 's/#include "Riosfwd.h"/#include <iosfwd>/g' Go4EventServer/TGo4MbsFile.cxx
 
 }
@@ -46,7 +44,8 @@ build() {
   cd go4-${pkgver}
   make clean-bin
   make clean
-  make prefix=/usr withqt=$_USEQT GO4_OS=Linux rpath=true withdabc=yes nodepend=0 debug=1 all || return 1
+  ## rpath=false seemed to reduce que volume of warnings with ROOT6
+  make prefix=/usr withqt=$_USEQT GO4_OS=Linux rpath=false withdabc=yes nodepend=1 debug=1 all || return 1
 
 }
 
@@ -90,12 +89,4 @@ EOF
   install -m755 ${srcdir}/go4.sh  ${pkgdir}/etc/profile.d/go4.sh
 
   # Csh no longer supported. Go4 itself does not seem to support it.
-
-  # for later maybe? uninstall and therefore remove packages
-  # PATH="${PATH/\/path\/to\/remove/}"
-
-  #/usr/include/root/Riosfwd.h:25:2: warning:
-  #warning "Riosfwd.h is deprecated. It will be removed in ROOT v6.12. Please use #include <iosfwd>, instead."
-
-  #sed -i 's#\$HOME#/usr#g' go
 }
