@@ -1,0 +1,15 @@
+pkgbase = xpilot
+	pkgdesc = XPilot - Multiplayer online space action since 1991
+	pkgver = 4.5.5
+	pkgrel = 1
+	url = http://xpilot.org
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	makedepends = setconf
+	makedepends = xorgproto
+	source = xpilot-4.5.5.tar.bz2::https://downloads.sourceforge.net/project/xpilotgame/xpilot-4/xpilot-4.5.5/xpilot-4.5.5.tar.bz2
+	sha256sums = 5e40424d093c8b712170a5dff3396df63302775f42da829b8832840f359cd92a
+
+pkgname = xpilot
+
