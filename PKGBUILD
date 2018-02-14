@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=tbt
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Thunderbolt(TM) user-space components'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/01org/thunderbolt-software-user-space'
 license=('BSD')
 makedepends=('cmake' 'boost' 'txt2tags')
 source=("https://github.com/01org/thunderbolt-software-user-space/archive/v${pkgver}.tar.gz")
-sha512sums=('fbd5902f3f06d3cfec309a972fe5dc32e87eab39668b2c07401bd79ad9af2210f8db41ecdd30cfae34ba24b03dc47df439c2fcd2e74da55d1101237f723b4540')
+sha512sums=('b8bcb31d864376c644f9813abf2d090cc3239271df8a8e71ff7d5e398e993d4d01e94ba5fc1bc13d7dd0fa861b4b918a6df0724ca43f54a5e706ec67f3c7846b')
 
 prepare() {
   cd "${srcdir}/thunderbolt-software-user-space-${pkgver}"
