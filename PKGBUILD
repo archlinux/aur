@@ -1,7 +1,7 @@
 # Maintainer: nic96
 pkgname=leveldb-mcpe
-pkgver=1.18
-pkgrel=2
+pkgver=1.20
+pkgrel=1
 pkgdesc="LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values."
 url="https://github.com/Mojang/leveldb-mcpe"
 license=('BSD')
@@ -12,7 +12,7 @@ makedepends=('git' 'make')
 source=("git://github.com/Mojang/leveldb-mcpe.git"
         "makefile.patch")
 md5sums=('SKIP'
-         'ba5191cabcee17d312b8382cef99aed4')
+         '43bfbce201f99c79dd56703719ec6b74')
 
 prepare() {
   cd "$srcdir/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = leveldb-mcpe
 	pkgdesc = LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.
-	pkgver = 1.18
-	pkgrel = 2
+	pkgver = 1.20
+	pkgrel = 1
 	url = https://github.com/Mojang/leveldb-mcpe
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = leveldb-mcpe
 	source = git://github.com/Mojang/leveldb-mcpe.git
 	source = makefile.patch
 	md5sums = SKIP
-	md5sums = ba5191cabcee17d312b8382cef99aed4
+	md5sums = 43bfbce201f99c79dd56703719ec6b74
 
 pkgname = leveldb-mcpe
 
