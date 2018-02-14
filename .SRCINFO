@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-winpthreads-git
-	pkgdesc = MinGW-w64 winpthreads library
-	pkgver = 4.0.rc1.r7.gc440466
+	pkgdesc = MinGW-w64 winpthreads library(git version)
+	pkgver = 5.0.3.20180212
 	pkgrel = 1
-	url = http://mingw-w64.sourceforge.net
+	url = https://mingw-w64.org/doku.php
 	arch = any
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
@@ -10,21 +10,19 @@ pkgbase = mingw-w64-winpthreads-git
 	makedepends = git
 	makedepends = mingw-w64-gcc-base
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-crt-git
-	provides = mingw-w64-winpthreads
+	makedepends = mingw-w64-crt-git>=5.0.3.20180212
+	provides = mingw-w64-winpthreads=5.0.3.20180212
 	provides = mingw-w64-headers-bootstrap
-	provides = mingw-w64-winpthreads-svn
-	conflicts = mingw-w64-headers-bootstrap
 	conflicts = mingw-w64-winpthreads
-	conflicts = mingw-w64-winpthreads-svn
+	conflicts = mingw-w64-headers-bootstrap
+	replaces = mingw-w64-winpthreads
 	replaces = mingw-w64-headers-bootstrap
-	replaces = mingw-w64-winpthreads-svn
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git://git.code.sf.net/p/mingw-w64/mingw-w64
-	md5sums = SKIP
+	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
+	sha256sums = SKIP
 
 pkgname = mingw-w64-winpthreads-git
 
