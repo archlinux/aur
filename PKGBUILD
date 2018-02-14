@@ -1,40 +1,49 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
 pkgver=0.21.0
-pkgrel=1
-pkgdesc="Craw stonesoup, curses version"
+pkgrel=2
+pkgdesc="Crawl stonesoup, curses version"
 url="http://crawl.develz.org/"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('ncurses')
+depends=('lua51' 'sqlite' 'zlib')
 makedepends=('git')
 conflicts=()
 replaces=()
 backup=()
-source=("git://github.com/crawl/crawl.git#tag=${pkgver}")
+source=("https://github.com/crawl/$pkgname/archive/$pkgver.tar.gz")
 
-md5sums=('SKIP')
+md5sums=('0780da66a5afe5af8e6d3013bf9d950c')
 
 prepare() {
 
-	cd "${srcdir}/${pkgname}"
-
-  	git submodule update --init
+  cd "${srcdir}/${pkgname}-${pkgver}/crawl-ref/source"
+	
+  echo $pkgver > util/release_ver
 
 }
 
 build() {
 
-  cd "${srcdir}/${pkgname}/crawl-ref/source"
+  cd "${srcdir}/${pkgname}-${pkgver}/crawl-ref/source"
+  make \
+  prefix=/usr \
+  bin_prefix=bin \
+  DESTDIR=$pkgdir \
+  SAVEDIR='~/.crawl' \
+  LUA_PACKAGE=lua51
 
-  make CFLAGS="-fPIC" prefix="${pkgdir}/usr"
 }
 
 package() {
 
-  cd "${srcdir}/${pkgname}/crawl-ref/source"
-  
-  make install prefix="${pkgdir}/usr"
+  cd "${srcdir}/${pkgname}-${pkgver}/crawl-ref/source"
+  make install \
+  prefix=/usr \
+  bin_prefix=bin \
+  DESTDIR=$pkgdir \
+  SAVEDIR='~/.crawl' \
+  LUA_PACKAGE=lua51
 
 }
 
