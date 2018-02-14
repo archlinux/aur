@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.8.7.dev.r26.g76c867ca
+pkgver=1.8.11.dev.r13.g6078306a
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -32,31 +32,23 @@ mkdir -p nma/etc/xdg nma/usr/bin \
 build() {
 	cd $srcdir/network-manager-applet
 	
-	./configure --prefix=/usr \
-    --sysconfdir=/etc \
-		--localstatedir=/var \
-    runstatedir=/run \
-    --sbindir=/usr/bin \
-		--libexecdir=/usr/lib/networkmanager \
-		--disable-static \
-		--disable-maintainer-mode \
-		--enable-gtk-doc \
-    --enable-introspection \
-    --enable-ld-gc \
-    --with-team \
-    --with-wwan \
-    --without-appindicator \
-    --without-selinux
-	
-   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	arch-meson build \
+		-Dgtk_doc=true \
+    -Dintrospection=true \
+    -Dld_gc=true \
+    -Dteam=true \
+    -Dwwan=true \
+    -Dappindicator=false \
+    -Dselinux=false \
+    -Db_lto=false
 
-  make
+  ninja -C build
 }
 
-check() {
-  cd $srcdir/network-manager-applet
-  make -k check
-}
+#check() {
+#  cd $srcdir/network-manager-applet
+#  make -k check
+#}
 
 package_nm-connection-editor-git() {
   pkgdesc="NetworkManager GUI connection editor and widgets"
@@ -65,7 +57,7 @@ package_nm-connection-editor-git() {
   replaces=(libnm-gtk nm-connection-editor)
 
   cd $srcdir/network-manager-applet
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" ninja -C build install
 
 ### Split network-manager-applet
   cd ../nma
