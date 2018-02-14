@@ -1,12 +1,12 @@
 pkgbase = ant-nebula-gtk-theme
 	pkgdesc = Ant Nebula Theme for GTK 3.x
-	pkgver = 1.0.3
-	pkgrel = 7
+	pkgver = 1.1.0
+	pkgrel = 4
 	url = https://www.gnome-look.org/p/1099856/
 	arch = any
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1516251197/s/$_s/t/$_t/u//Ant-Nebula.tar
-	md5sums = 2e4e28be233ff6e0ca35089ae9aff846
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1518217227/s/68e6f10ce9f8f030406ccf210a0800a6/t/1518650913/u//Ant-Nebula.tar
+	sha256sums = 87f8b66a7539c45af3fabd4ec410fe6ce9cdcfb37f1b1e83297d451b7aa47712
 
 pkgname = ant-nebula-gtk-theme
 
