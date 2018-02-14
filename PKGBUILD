@@ -28,4 +28,8 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
+  
+  # License file
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${_srcname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
