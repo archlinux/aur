@@ -1,8 +1,9 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: Nothing4You
 
 pkgname=mqrg-git
 _gitname="microqrcode"
-pkgver=20140617
+pkgver=r41.91115b1
 pkgrel=1
 pkgdesc="microqrcode generator draws QR codes into the text terminal"
 url="https://github.com/trezor/microqrcode"
@@ -14,7 +15,7 @@ makedepends=('git' 'check')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
