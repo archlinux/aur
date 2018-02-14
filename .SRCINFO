@@ -5,9 +5,12 @@ pkgbase = ida-free
 	url = https://www.hex-rays.com/products/ida/
 	arch = x86_64
 	license = custom
+	makedepends = fakechroot
 	options = !strip
 	source = https://out7.hex-rays.com/files/idafree70_linux.run
+	source = ida-free.desktop
 	sha256sums = e38333d6cf844706ec48d154e64740b9b125c388f7b3a541104ba0a9a61321ab
+	sha256sums = SKIP
 
 pkgname = ida-free
 
