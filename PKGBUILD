@@ -3,12 +3,12 @@
 
 pkgname=otf-ibm-plex
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Plex Mono, Sans, and Serif typefaces"
 url="https://ibm.github.io/type/"
 arch=('any')
 license=('custom')
-source=("https://github.com/IBM/type/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/IBM/type/archive/v$pkgver.tar.gz")
 sha256sums=('7b719d560879854b80f8589d1d690c0fef079aaf98ef4360ce0132f3829c0ef5')
 
 package() {
