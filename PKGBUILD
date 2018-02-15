@@ -3,13 +3,13 @@
 
 pkgname=tracktion-6
 pkgver=6.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free-to-use Proprietary Digital Audio Workstation"
 arch=('x86_64')
 url="https://www.tracktion.com/"
 license=('custom')
 depends=('alsa-lib' 'freetype2' 'mesa' 'libxinerama')
-makedepends=('prelink')
+makedepends=('paxtest')
 optdepends=(
     'caps: The LADSPA C* Audio Plugin Suite'
 	'fil-plugins: LADSPA four-band parametric equaliser plugins'
@@ -33,7 +33,7 @@ md5sums=('77393f2440c1b3da9d5ea8e4fa315828'
 
 package() {
 	tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
-    execstack -c "$pkgdir/usr/bin/Tracktion6"
+    /usr/lib/paxtest/execstack -c "$pkgdir/usr/bin/Tracktion6"
 	rm "$pkgdir/usr/share/applications/tracktion6.desktop"
 	install -Dm644 "$startdir/Tracktion6.desktop" "$pkgdir/usr/share/applications/"
 	install -Dm644 "$startdir/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
