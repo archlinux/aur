@@ -1,36 +1,30 @@
-# Based on libvirt-git
-# Thanks to the team of libvirt-git:
-#  Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
-#  Contributor: Jonas Heinrich <onny@project-insanity.org>
-#  Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-#  Contributor: Jonathan Wiersma <archaur at jonw dot org>
+# ${Id}: PKGBUILD 274316 2017-12-13 22:56:42Z anatolik ${}
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
-arch=('i686' 'x86_64')
+pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
+arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph' 'libssh2' 'netcf' 'perl-xml-xpath'
-	 'zfs-utils')
-makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq'
-	     'libiscsi'
-	     'perl-xml-xpath' 'libxslt'
-	     'git' 'xhtml-docs')
+	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2'
+   'netcf' 'fuse2' 'zfs-utils')
+makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
+	     'libiscsi' 'open-iscsi' 'perl-xml-xpath' 'libxslt' 'qemu'
+       'ceph-libs')
 optdepends=('ebtables: required for default NAT networking'
 	    'dnsmasq: required for default NAT/DHCP for guests'
 	    'bridge-utils: for bridged networking'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
-	    'dmidecode'
-	    'pm-utils: host power management')
-conflicts=('libvirt')
-provides=('libvirt')
+	    'dmidecode')
 options=('emptydirs')
 backup=('etc/conf.d/libvirt-guests'
 	'etc/conf.d/libvirtd'
@@ -57,7 +51,6 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/libvirt/nwfilter/qemu-announce-self.xml'
 	'etc/libvirt/qemu-lockd.conf'
 	'etc/libvirt/qemu.conf'
-	'etc/libvirt/qemu/networks/autostart/default.xml'
 	'etc/libvirt/qemu/networks/default.xml'
 	'etc/libvirt/virt-login-shell.conf'
 	'etc/libvirt/virtlockd.conf'
@@ -67,21 +60,24 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/logrotate.d/libvirtd.uml'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
-source=("git+git://libvirt.org/libvirt.git#tag=v$pkgver"
-	libvirtd.conf.d
-	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d)
-md5sums=('SKIP'
-         '5e31269067dbd12ca871234450bb66bb'
-         '384fff96c6248d4f020f6fa66c32b357'
-         '020971887442ebbf1b6949e031c8dd3f')
+validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
+source=("https://libvirt.org/sources/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	'libvirtd.conf.d'
+	'libvirtd-guests.conf.d'
+	'libvirt.sysusers.d')
+#	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
+sha512sums=('c99ea305f427859eb070b5f0c43de48645a5c53a2aa8efc60f54f278ec3fa0b504307861309e1852f8d7bff4436afe00c859aac27691366a0c36c91341cea7a1'
+            'SKIP'
+            'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
+            'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
+            '7d1d535aaf739a6753f6819c49272c8d9b5f488e0a8553797499334a76b8631474e222b6048f2125b858e5ecc21e602face45dd02121f833d605b9ae58322982')
 
 prepare() {
-  cd "$srcdir/${pkgname/-zfs/}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   for file in $(find . -name '*.py' -print); do
-    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' "${file}"
+    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "${file}"
   done
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
@@ -89,51 +85,49 @@ prepare() {
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
     src/locking/virtlockd.service.in
   sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
-  # 78 is kvm group: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
-  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu{.conf,_conf.c} \
     src/qemu/test_libvirtd_qemu.aug.in
 
+  sed -i 's|libsystemd-daemon|libsystemd|g' configure
   sed -i 's/notify/simple/' daemon/libvirtd.service.in
+
+#  patch -p1 -i "${srcdir}"/ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch
 }
 
 build() {
-  cd "$srcdir/${pkgname/-zfs/}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   export PYTHON=`which python2`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
-  NOCONFIGURE=1 ./autogen.sh
-  sed -i 's|libsystemd-daemon|libsystemd|g' configure
-
-  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-zfs/}" --sbindir=/usr/bin \
-	--with-storage-lvm --with-udev --without-hal --disable-static \
+  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname}" --sbindir=/usr/bin \
+	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
-	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--with-netcf --with-interface \
+	--with-qemu-user=nobody --with-qemu-group=kvm \
+	--with-netcf --with-interface --with-lxc --with-storage-iscsi \
 	--with-storage-zfs
 	# --with-audit
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname/-zfs/}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
-  install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
-  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
+  install -D -m644 "${srcdir}"/libvirtd.conf.d "${pkgdir}"/etc/conf.d/libvirtd
+  install -D -m644 "${srcdir}"/libvirtd-guests.conf.d "${pkgdir}"/etc/conf.d/libvirt-guests
+  install -D -m644 "${srcdir}"/libvirt.sysusers.d "${pkgdir}"/usr/lib/sysusers.d/libvirt.conf
 
-  chown -R 0:78 "$pkgdir"/var/lib/libvirt/qemu
-  chmod 0770 "$pkgdir"/var/lib/libvirt/qemu
-
-  chown 0:102 "$pkgdir"/usr/share/polkit-1/rules.d
-  chmod 0750 "$pkgdir"/usr/share/polkit-1/rules.d
+  chown 0:102 "${pkgdir}"/usr/share/polkit-1/rules.d
+  chmod 0750 "${pkgdir}"/usr/share/polkit-1/rules.d
 
   rm -rf \
-	"$pkgdir"/var/run \
-	"$pkgdir"/etc/sysconfig \
-	"$pkgdir"/etc/rc.d
+	"${pkgdir}"/var/run \
+	"${pkgdir}"/var/lib/libvirt/qemu \
+	"${pkgdir}"/var/cache/libvirt/qemu \
+	"${pkgdir}"/etc/sysconfig
+
+  rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
 }
