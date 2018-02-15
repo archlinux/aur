@@ -50,7 +50,7 @@ build() {
 
 package() {
 	cd wxWidgets-${pkgver}
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR=${pkgdir} install
 	install -D -m644 "docs/licence.txt" "${pkgdir}${destdir}/share/licenses/${pkgname}/LICENSE"
 	ln -s ${destdir}/include/wx-3.1/wx ${pkgdir}${destdir}/include/wx
 }
