@@ -1,10 +1,10 @@
-From 1a0e4c170e4622947c0d1d530d63a3241a99b93c Mon Sep 17 00:00:00 2001
-Message-Id: <1a0e4c170e4622947c0d1d530d63a3241a99b93c.1518115547.git.jan.steffens@gmail.com>
-In-Reply-To: <d817891efd179bdb0b5d30fa8aafaeb2a96af76c.1518115547.git.jan.steffens@gmail.com>
-References: <d817891efd179bdb0b5d30fa8aafaeb2a96af76c.1518115547.git.jan.steffens@gmail.com>
+From 509ca946c21ff2ae50c6404d191c87573a53a621 Mon Sep 17 00:00:00 2001
+Message-Id: <509ca946c21ff2ae50c6404d191c87573a53a621.1518653356.git.jan.steffens@gmail.com>
+In-Reply-To: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
+References: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
 From: Sven Joachim <svenjoac@gmx.de>
 Date: Fri, 26 Jan 2018 10:38:01 +0100
-Subject: [PATCH 3/3] ssb: Do not disable PCI host on non-Mips
+Subject: [PATCH 3/4] ssb: Do not disable PCI host on non-Mips
 
 After upgrading an old laptop to 4.15-rc9, I found that the eth0 and
 wlan0 interfaces had disappeared.  It turns out that the b43 and b44

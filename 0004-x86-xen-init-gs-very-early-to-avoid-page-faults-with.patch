@@ -1,0 +1,80 @@
+From 782e9c805d19610d5821d1f75a3854ac587e2dac Mon Sep 17 00:00:00 2001
+Message-Id: <782e9c805d19610d5821d1f75a3854ac587e2dac.1518653356.git.jan.steffens@gmail.com>
+In-Reply-To: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
+References: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
+From: Juergen Gross <jgross@suse.com>
+Date: Thu, 1 Feb 2018 13:40:19 +0100
+Subject: [PATCH 4/4] x86/xen: init %gs very early to avoid page faults with
+ stack protector
+
+When running as Xen pv guest %gs is initialized some time after
+C code is started. Depending on stack protector usage this might be
+too late, resulting in page faults.
+
+So setup %gs and MSR_GS_BASE in assembly code already.
+
+Cc: stable@vger.kernel.org
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Boris Ostrovsky <boris.ostrovsky@oracle.com>
+Tested-by: Chris Patterson <cjp256@gmail.com>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+---
+ arch/x86/xen/xen-head.S | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/x86/xen/xen-head.S b/arch/x86/xen/xen-head.S
+index 497cc55a0c16..96f26e026783 100644
+--- a/arch/x86/xen/xen-head.S
++++ b/arch/x86/xen/xen-head.S
+@@ -9,32 +9,48 @@
+ 
+ #include <asm/boot.h>
+ #include <asm/asm.h>
++#include <asm/msr.h>
+ #include <asm/page_types.h>
++#include <asm/percpu.h>
+ #include <asm/unwind_hints.h>
+ 
+ #include <xen/interface/elfnote.h>
+ #include <xen/interface/features.h>
+ #include <xen/interface/xen.h>
+ #include <xen/interface/xen-mca.h>
+ #include <asm/xen/interface.h>
+ 
+ #ifdef CONFIG_XEN_PV
+ 	__INIT
+ ENTRY(startup_xen)
+ 	UNWIND_HINT_EMPTY
+ 	cld
+ 
+ 	/* Clear .bss */
+ 	xor %eax,%eax
+ 	mov $__bss_start, %_ASM_DI
+ 	mov $__bss_stop, %_ASM_CX
+ 	sub %_ASM_DI, %_ASM_CX
+ 	shr $__ASM_SEL(2, 3), %_ASM_CX
+ 	rep __ASM_SIZE(stos)
+ 
+ 	mov %_ASM_SI, xen_start_info
+ 	mov $init_thread_union+THREAD_SIZE, %_ASM_SP
+ 
++#ifdef CONFIG_X86_64
++	/* Set up %gs.
++	 *
++	 * The base of %gs always points to the bottom of the irqstack
++	 * union.  If the stack protector canary is enabled, it is
++	 * located at %gs:40.  Note that, on SMP, the boot cpu uses
++	 * init data section till per cpu areas are set up.
++	 */
++	movl	$MSR_GS_BASE,%ecx
++	movq	$INIT_PER_CPU_VAR(irq_stack_union),%rax
++	cdq
++	wrmsr
++#endif
++
+ 	jmp xen_start_kernel
+ END(startup_xen)
+ 	__FINIT
+-- 
+2.16.1
+
