@@ -2,7 +2,7 @@
 
 pkgname=pybitmessage
 _realname=PyBitmessage
-pkgver=0.6.3
+pkgver=0.6.3.2
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
@@ -11,11 +11,11 @@ optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://github.com/Bitmessage/$_realname/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/Bitmessage/$_realname/archive/$pkgver.tar.gz
         pybitmessage.sh)
-sha256sums=('605e7ccf3c6a3cc79b3bf701676c5ba058051cd4c9b843415fc849298e6a365c'
+sha256sums=('1008d9b34070774267df005389d7e478b42131f79b63c40b1eb8212e67067ac3'
             'dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b')
-sha512sums=('66804a2644f145be544d88d56b231f2780314f4aa18919afa17b1ca32347fbc0d1aa03da5d93b2bb5ce0bbaf0f380b33ea116abef68a3808bccea8d821ea6473'
+sha512sums=('57bdbf10417973b4414f1a184b375a2dd6db1a07a6bc5596b5d256589eeae3c7343692be0f0aa681244c550d2b2d91773d9383d97c56eb48562d8099908c0261'
             'ddeac31b20f2a253df02e66d7f2981c9e672dfe422bd179c345f33362a7e0d089785b0c8f7e78353093ab57ef9b1a1f7baf8aa8fbbffb7d7198799f52a74d50c')
 provides=('pybitmessage')
 conflicts=('pybitmessage-git')
