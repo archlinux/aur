@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wordgrinder-git
-pkgver=0.6.r78.g5c8f43b
+pkgver=0.7.1.r13.ge81cb70
 pkgrel=1
 epoch=
 pkgdesc="A word processor which gets the hell out of your way and lets you get some work done."
@@ -33,6 +33,6 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
+  install -Dm644 licenses/COPYING.WordGrinder $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
 
