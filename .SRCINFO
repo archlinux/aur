@@ -1,7 +1,7 @@
 pkgbase = ruby-naught
 	pkgdesc = Naught is a toolkit for building Null Objects
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/avdi/naught
 	arch = any
 	license = MIT
