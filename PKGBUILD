@@ -33,7 +33,7 @@ package_python-rstr() {
   depends=('python')
 
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 
 }
@@ -42,6 +42,7 @@ package_python2-rstr() {
   depends=('python2')
 
   cd $_pkgname-py2-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
 }
