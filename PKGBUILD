@@ -2,12 +2,13 @@
 pkgname=python2-xdot
 _pyname=xdot
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive viewer for graphs. Python2 version"
 url='https://github.com/jrfonseca/xdot.py'
 arch=('any')
 license=('LGPL')
-depends=('python2-setuptools')
+depends=('python2')
+makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/1e/f7/24050b7f897c547fa18e4e6f0fc744da100b821da69e9f966808c67eb979/${_pyname}-${pkgver}.tar.gz)
 md5sums=('a8e5fc5208657b03ad1bd4c46de75724')
 
