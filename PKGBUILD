@@ -16,6 +16,7 @@ makedepends=(
     'texinfo'
     'help2man'
     'gettext'
+    'git'
 )
 checkdepends=(
     'check'
