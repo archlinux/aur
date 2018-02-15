@@ -32,4 +32,7 @@ package() {
   # License file
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/${_srcname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+  
+  # Correct to lowercase for the lib/cmake/AcesContainer
+  mv "${pkgdir}/usr/lib/CMake" "${pkgdir}/usr/lib/cmake"
 }
