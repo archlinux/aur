@@ -11,7 +11,6 @@ pkgbase = wxgtk-trenchbroom
 	makedepends = glu
 	makedepends = webkit2gtk
 	makedepends = libnotify
-	makedepends = gtk2
 	depends = gtk3
 	depends = gst-plugins-base-libs
 	depends = libsm
@@ -22,9 +21,11 @@ pkgbase = wxgtk-trenchbroom
 	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.0/wxWidgets-3.1.0.tar.bz2
 	source = make-abicheck-non-fatal.patch
 	source = wxGLContext_ctor_x11Direct20160316.patch
+	source = wxgtk-filezilla-assert.patch::https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch
 	sha1sums = 2170839cfa9d9322e8ee8368b21a15a2497b4f11
 	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
 	sha1sums = 6941a40b202f29f4ae36ff332fb8f1ff95244737
+	sha1sums = 1da8af91ef6c590da9c43dd115f52d605730f16a
 
 pkgname = wxgtk-trenchbroom
 
