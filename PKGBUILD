@@ -20,7 +20,7 @@ _vendorpath="gopath/src/$_vendor"
 
 prepare() {
   mkdir -p $(dirname gopath/src/$_vendor)
-  ln -sf "$srcdir"/$pkgname-$pkgver gopath/src/$_vendor
+  ln -sf "$srcdir"/$_pkgname-$pkgver gopath/src/$_vendor
 }
 
 build() {
@@ -32,8 +32,8 @@ build() {
 
 package() {
   cd $_vendorpath
-  install -Dm755 bin/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
   install -d "$pkgdir"/usr/share/man/man1
   install -Dm644 man/*.1 "$pkgdir"/usr/share/man/man1
 }
