@@ -1,7 +1,8 @@
-# Maintainer: Daniel Greve <greve.daniel.l@gmail.com>
+# Maintainer: Jeff Henson <jeff@henson.io>
+# Old Maintainer: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=zsh-pure-prompt
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')
@@ -9,7 +10,7 @@ url='https://github.com/sindresorhus/pure'
 license=('MIT')
 depends=('git>=2.0.0' 'zsh>=5.0.0')
 source=("https://github.com/sindresorhus/pure/archive/v${pkgver}.tar.gz")
-md5sums=('10da322f80c276f891209bb4a39ea775')
+sha256sums=('e913856cab98c17fa627e8135fc23dae9cefdddd6aef5cd60dd998c703a80f76')
 
 package() {
   cd "${srcdir}/pure-${pkgver}"
