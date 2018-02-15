@@ -8,8 +8,8 @@
 
 _pack=financial
 pkgname=octave-$_pack
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Financial manipulation, plotting functions and additional date manipulation tools."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('62ad058e23ce34d0a81bf5e86a1219c7')
+md5sums=('ad133caebd829da9e63a5fcf73395951')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
