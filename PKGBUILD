@@ -9,7 +9,7 @@ url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=("GPL")
 makedepends=("inkscape")
 conflicts=("breeze-hacked-cursor-theme")
-source=("https://static.dct.party/data/plasma-cursors-breeze_hacked.source-2.0-kvermette.zip")
+source=("https://soft.dct.party/plasma-cursors-breeze_hacked.source-2.0-kvermette.zip")
 sha512sums=("08b29793bf6e8ea0579e1d3f882f330e16f10893bfaa2d05688825fc5cf48c1f921ce0fcc3f6c082ab8f3b085c878bd4c4e2a6007bdcee08093e9f275c43c080")
 
 build() {
