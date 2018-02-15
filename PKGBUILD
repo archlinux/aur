@@ -12,7 +12,7 @@ optdepends=(
   'auracle-git: AUR helper'
   'gdrive: AUR package for google drive backup'
   'lostfiles: AUR package for finding lost files'
-  'pacaur: AUR helper'
+  'trizen: AUR helper'
   'arch-audit: collect CVE data'
   'rmlint: Finds lint and other unwanted'
   'rkhunter: finds root kits malware'
