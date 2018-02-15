@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://stardict.org/'
 license=('GPLv3')
 depends=('gtk3' 'glib2' 'libmariadbclient')
-makedepends=('intltool')
+makedepends=('git' 'intltool')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 source=("${_pkgname}::git://github.com/${_orgname}/${_pkgname}.git")
