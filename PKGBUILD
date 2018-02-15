@@ -2,8 +2,8 @@
 # Contributor: Ryan Corder <ryanc@greengrey.org>
 
 pkgname=tenshi
-pkgver=0.16
-pkgrel=2
+pkgver=0.17
+pkgrel=1
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="https://inversepath.com/tenshi.html"
 arch=(any)
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/inversepath/tenshi/archive/
         'tenshi.sysusers'
         'tenshi.tmpfiles'
         'conf.diff')
-md5sums=('b9646895fc1d16dfe7012677a34b0633'
+md5sums=('5ff83250bd5dd8eaf01714e8318ddde8'
          '8c8a582c6a8c61d4ff596ed3af8ab593'
          '19314a464da97b3046a2c7b7c81cd2e6'
          '68aafee3a3c8ea472296408854adac76'
