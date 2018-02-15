@@ -1,10 +1,8 @@
 [Desktop Entry]
-Name=alduin
-Comment=An RSS and Atom feed aggregator
-Exec="alduin"
-Icon=alduin
-Terminal=false
+Version=1.0
 Type=Application
-StartupNotify=true
-Categories=GNOME;GTK;Development;Documentation;
-MimeType=text/plain;
+Name=Alduin
+Comment=RSS, Atom and JSON feed aggregator
+Exec=alduin
+Icon=alduin
+Categories=Network;News;
