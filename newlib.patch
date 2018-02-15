@@ -1,0 +1,12 @@
+diff -Naur newlib-3.0.0.orig/newlib/libc/stdlib/exit.c newlib-3.0.0/newlib/libc/stdlib/exit.c
+--- newlib-3.0.0.orig/newlib/libc/stdlib/exit.c	2018-01-18 19:07:45.000000000 +0100
++++ newlib-3.0.0/newlib/libc/stdlib/exit.c	2018-02-15 12:51:39.396775246 +0100
+@@ -54,7 +54,7 @@
+ {
+ #ifdef _LITE_EXIT
+   /* Refer to comments in __atexit.c for more details of lite exit.  */
+-  void __call_exitprocs (int, void *)) __attribute__((weak);
++  void __call_exitprocs (int, void *) __attribute__((weak));
+   if (__call_exitprocs)
+ #endif
+     __call_exitprocs (code, NULL);

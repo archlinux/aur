@@ -2,9 +2,9 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-gcc
-pkgver=7.2.0
+pkgver=7.3.0
 _islver=0.18
-_newlibver=2.5.0.20170818
+_newlibver=3.0.0
 pkgrel=1
 #_snapshot=7-20170504
 pkgdesc='The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal'
@@ -15,10 +15,12 @@ depends=("$_target-binutils" 'zlib' 'libmpc')
 options=(!emptydirs !strip)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
-        "https://sourceware.org/pub/newlib/newlib-2.5.0.20170818.tar.gz")
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
+        "https://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz"
+        'newlib.patch')
+sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '7766f1a1411170e7844c7477ee82b26d35f7136b01f4cc3dea0e759551d4abbb')
+            'c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332'
+            '13533973c4604d7d51f056432b6d967b116214999d81899f93e6e1472d754e44')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
@@ -27,6 +29,10 @@ else
 fi
 
 prepare() {
+  cd newlib-$_newlibver
+  patch -Np1 -i "$srcdir/newlib.patch"
+  cd ..
+
   cd $_basedir
 
   # link isl for in-tree builds
@@ -84,7 +90,17 @@ build() {
     --enable-gnu-indirect-function \
     --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
     --with-pkgversion='Arch Repository' \
-    --with-bugurl='https://bugs.archlinux.org/'
+    --with-bugurl='https://bugs.archlinux.org/' \
+    --disable-newlib-supplied-syscalls \
+    --enable-newlib-reent-small \
+    --disable-newlib-fvwrite-in-streamio \
+    --disable-newlib-fseek-optimization \
+    --disable-newlib-wide-orient \
+    --enable-newlib-nano-malloc \
+    --disable-newlib-unbuf-stream-opt \
+    --enable-lite-exit \
+    --enable-newlib-global-atexit \
+    --enable-newlib-nano-formatted-io
 
   make INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
 }
