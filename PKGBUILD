@@ -3,10 +3,10 @@
 
 pkgname=python2-dicttoxml
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts a Python dictionary or other native data type into a valid XML string."
 url="https://github.com/quandyfactory/dicttoxml"
-depends=('python')
+depends=('python2')
 license=('GPL')
 arch=('any')
 source=("https://pypi.python.org/packages/74/36/534db111db9e7610a41641a1f6669a964aacaf51858f466de264cc8dcdd9/dicttoxml-${pkgver}.tar.gz")
