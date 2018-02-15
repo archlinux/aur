@@ -26,6 +26,6 @@ build() {
 package() {
 	cd TrenchBroom-2.0.0-final/build
 	make DESTDIR=${pkgdir} install
-	install -Dm644 "$srcdir/TrenchBroom-2.0.0-final/app/resources/linux/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
-	install -Dm644 "$srcdir/TrenchBroom-2.0.0-final/app/resources/linux/icons/icon_256.png" "$pkgdir/usr/share/pixmaps/trenchbroom.png"
+	install -Dm644 "${srcdir}/TrenchBroom-2.0.0-final/app/resources/linux/trenchbroom.desktop" "${pkgdir}/usr/share/applications/trenchbroom.desktop"
+	install -Dm644 "${srcdir}/TrenchBroom-2.0.0-final/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
 }
