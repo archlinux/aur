@@ -1,6 +1,6 @@
 pkgbase = dolfin-git
 	pkgdesc = the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations.
-	pkgver = 20171219
+	pkgver = 20180212
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/dolfin
 	arch = i686
@@ -13,9 +13,10 @@ pkgbase = dolfin-git
 	depends = gl2ps
 	depends = hdf5
 	depends = python-ffc-git
-	depends = slepc
+	depends = petsc
 	depends = suitesparse
 	optdepends = scotch: libraries for graph, mesh and hypergraph partitioning
+	optdepends = slepc: eigenvalue problem solvers
 	options = !emptydirs
 	source = dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#branch=master
 	md5sums = SKIP
