@@ -1,3 +1,8 @@
+2018-02-15 Pierre Choffet <peuc@wanadoo.fr>
+	* r3863.e340f253-1 :
+	Remove i686 arch
+	Explicitly declare all submodules
+
 2018-02-02 Pierre Choffet <peuc@wanadoo.fr>
 	* r3846.7ba2df70-1 :
 	Update versioning scheme
