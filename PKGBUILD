@@ -1,31 +1,22 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.17.4
+pkgver=1.18.0
 pkgrel=1
-_cqzbuildid=20180104111552
+_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse icu libevent libpng libjpeg-turbo)
+         nss hunspell sqlite ttf-font libpulse libvpx icu libevent libpng libjpeg-turbo)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm libnotify)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        wifi-disentangle.patch
-        wifi-fix-interface.patch
-        no-plt.diff
-        0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
-        0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch)
-sha256sums=('9f0b56b6265676ebb7cb5368936a0d1d121b1c43cf96adf71c2d022dbda47f84'
-            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
-            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
-            'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            'd45c97782a77e7c5ebacfa7b983019f6bb831794d3c707abbe3bb01cddb80f72'
-            '52c56c33f7ab98232d9c0644965f149da9b7266f607c84b80aca8a5534cee3bb')
-
+        0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch)
+sha256sums=('34fe2236256603a2b74249c34dd9832015c6c9547928d795106c9efcfed7d9ef'
+            'e8a695bd6a007525390c502739c0f00d5d753a1bde7053c21c712075f2c2994d')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -52,18 +43,8 @@ END
   # Remove -lcrmf from old configure scripts
   sed -i 's/NSS_LIBS="$NSS_LIBS -lcrmf"/NSS_LIBS="$NSS_LIBS"/' old-configure.in
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1360278
-  patch -Np1 -i "$srcdir/0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1419426
-  patch -Np1 -i "$srcdir/0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i "$srcdir/wifi-disentangle.patch"
-  patch -Np1 -i "$srcdir/wifi-fix-interface.patch"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
-  patch -Np1 -i "$srcdir/no-plt.diff"
+  # https://bugs.archlinux.org/task/57285
+  patch -Np1 -i "$srcdir/0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch"
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -103,9 +84,11 @@ ac_add_options --disable-parental-controls
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
-ac_add_options --with-system-libevent
 ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
 ac_add_options --with-system-png
+ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-system-hunspell
