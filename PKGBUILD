@@ -8,12 +8,12 @@ _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
+source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
 sha256sums=('063d2c3b0402d6191b90731e0f735c64830e7522348aeb7ed382a83165d45009')
 
 build() {
