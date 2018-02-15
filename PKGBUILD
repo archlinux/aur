@@ -31,4 +31,18 @@ package() {
   # License file
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/CTL-${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+  
+  # Move documentation
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share"
+  
+  # Correct to lowercase for the lib/cmake/CTL
+  mv "${pkgdir}/usr/lib/CMake" "${pkgdir}/usr/lib/cmake"
+  
+  # Remove srcdir reference
+  cd "${srcdir}/build/lib"
+  _libprefix=${PWD}
+  cd "${pkgdir}/usr/lib/cmake/CTL"
+  sed -i "s|${_libprefix}/\bIlmCtl\b|/usr|g" CTLLibraryDepends.cmake
+  sed -i "s|${_libprefix}/\bIlmCtlMath\b|/usr|g" CTLLibraryDepends.cmake
+  sed -i "s|${_libprefix}/\bIlmCtlSimd\b|/usr|g" CTLLibraryDepends.cmake
 }
