@@ -17,6 +17,6 @@
 @@ -22,4 +22,4 @@
  
  export PATH=$prfx/bin:$PATH
- 
--python -m pyrogen $*
-+python2 -m pyrogen $*
+
+-python -m pyrogen "${@}"
++python2 -m pyrogen "${@}"
