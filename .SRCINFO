@@ -1,0 +1,22 @@
+pkgbase = git-lfs-arm
+	pkgdesc = An open source Git extension for versioning large files on ARMv7, ARMv6 and ARMv8 (64-bit)
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://git-lfs.github.com/
+	install = git-lfs.install
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = ruby-ronn
+	depends = git>=1.8.5
+	provides = git-lfs
+	provides = git-lfs-bin
+	conflicts = git-lfs
+	conflicts = git-lfs-bin
+	source = git-lfs-arm-2.3.4.tar.gz::https://github.com/git-lfs/git-lfs-arm/archive/v2.3.4.tar.gz
+	sha1sums = 145d49542e9dfdec91a2bb0c52c037c67551a447
+
+pkgname = git-lfs-arm
+
