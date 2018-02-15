@@ -1,13 +1,11 @@
 pkgbase = python-pytimeparse
 	pkgdesc = A small Python library to parse various kinds of time expressions
 	pkgver = 1.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wroberts/pytimeparse
 	arch = x86_64
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/p/pytimeparse/pytimeparse-1.1.7.tar.gz
 	sha256sums = 51b641bcd435e0cb6b9701ed79cf7ee97fa6bf2dbb5d41baa16e5486e5d9b17a

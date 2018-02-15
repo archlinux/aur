@@ -1,3 +1,43 @@
-*
-!PKGBUILD
-!.SRCINFO
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.deb
+*.gz
+*.tgz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.xz
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# testing #
+###########
+test/
+
+# Arch #
+########
+pkg/
+src/
+
+####
+.gitignore
+####
