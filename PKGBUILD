@@ -6,7 +6,7 @@ url='https://github.com/muffinmad/pidgin-im-gnome-shell-extension'
 arch=('any')
 license=('GPL')
 groups=('gnome')
-depends=('pidgin' 'gnome-shell>=3.10')
+depends=('pidgin' 'gnome-shell>=3.10' 'telepathy-logger')
 makedepends=('git')
 source=(git://github.com/muffinmad/pidgin-im-gnome-shell-extension.git#tag=v1.0.3)
 md5sums=('SKIP')

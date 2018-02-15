@@ -9,6 +9,7 @@ pkgbase = pidgin-im-gnome-shell-extension
 	makedepends = git
 	depends = pidgin
 	depends = gnome-shell>=3.10
+	depends = telepathy-logger
 	source = git://github.com/muffinmad/pidgin-im-gnome-shell-extension.git#tag=v1.0.3
 	md5sums = SKIP
 
