@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.19.147
+pkgver=0.20.29
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
@@ -30,7 +30,7 @@ package() {
 
 	install -dm0755 "$pkgdir"/usr/lib
 
-	cp -a --reflink=auto Brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
+	cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
 
 	_launcher="$pkgdir/usr/bin/$pkgname"
 	install -Dm0755 /dev/stdin "$_launcher"<<END
@@ -165,7 +165,7 @@ Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 END
 
-	install -Dm0644 res/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm0644 res/dev/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
 
@@ -173,4 +173,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('3e4f6febd2bdd020251280de609bfa5c')
+md5sums=('920dc12c6c6985d07d35bc5398aa749a')
