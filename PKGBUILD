@@ -4,7 +4,7 @@
 pkgbase=linux-apparmor
 _srcname=linux-4.15
 pkgver=4.15.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,6 +20,7 @@ source=(
   'config.fragment'
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,13 +30,14 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
             '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
-            '57400ed3b21281ad84d72756ce98815c8f6073b8c53b3bc6d73120c47902a263'
+            '699ad86e5c6076fc5c544d72191efb7eb302f68169dad8495add0f1d156203ab'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '728ea88383ce6c542e2969246036f454395d5412779ffb5299639610b82b21f1'
-            '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
-            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
+            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
+            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
+            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -54,6 +56,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # https://bugs.archlinux.org/task/57327
+  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
