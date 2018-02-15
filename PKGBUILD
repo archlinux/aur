@@ -1,12 +1,12 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=libccp4-bzr
 pkgver=r1861
-pkgrel=1
+pkgrel=2
 pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
 license=('GPL')
-provides=('libccp4')
+provides=('libccp4=7.0.0')
 conflicts=('libccp4')
 depends=('mmdb2')
 makedepends=('bzr' 'gcc-fortran')
