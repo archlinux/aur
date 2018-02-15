@@ -1,6 +1,6 @@
 pkgbase = elisa-git
 	pkgdesc = Elisa Music Player
-	pkgver = v0.0.81.r17.ge4be4c4
+	pkgver = 0.0.81.r23.gc827e08
 	pkgrel = 1
 	url = https://cgit.kde.org/elisa.git/
 	arch = i686

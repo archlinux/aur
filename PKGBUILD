@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa-git
-pkgver=v0.0.81.r17.ge4be4c4
+pkgver=0.0.81.r23.gc827e08
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Elisa Music Player"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
