@@ -1,31 +1,32 @@
-pkgname=raiblocks-git
-pkgver=9.0.r136.g92169180
+pkgname=nanocurrency-git
+pkgver=10.0.r1.g4e4bcf8d
 pkgrel=1
-pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
+pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
-url="http://raiblocks.com/"
+url="https://nano.org/"
 license=('BSD 2-clause')
 makedepends=('cmake')
 depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
-provides=(raiblocks)
+provides=(raiblocks nanocurrency)
+conflicts=("raiblocks" "raiblocks-git", "raiblocks-node-git")
 install=install
 pkgver() {
   cd "raiblocks"
   git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-source=(raiblocks.desktop
-  raiblocks128.png
-  raiblocks.service
-  git+https://github.com/clemahieu/raiblocks.git
+source=(nanowallet.desktop
+  nanowallet128.png
+  nano-node.service
+  git+https://github.com/nanocurrency/raiblocks.git
   git+https://github.com/weidai11/cryptopp.git
   git+https://github.com/clemahieu/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/clemahieu/phc-winner-argon2.git)
 
-sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
-            '7e08e2b6d50638fb1438c746da78defc49ef317ee8ffa6feeb52635a976a0ea9'
-            '53ed2e7cf24c02172e3e804dd8689674867d82ca21b7d03be590d7a9b3a9c8bb'
+sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
+            '27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e'
+            'c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,7 +65,7 @@ prepare() {
 
 build() {
   cd "$srcdir/raiblocks"
-  make rai_wallet
+  make nano_wallet
   make rai_node
   make rai_lib
 }
@@ -72,14 +73,19 @@ build() {
 package() {
   cd "$srcdir/raiblocks"
 
-  install -Dm755 rai_wallet "$pkgdir"/usr/bin/rai_wallet
+  install -Dm755 nano_wallet "$pkgdir"/usr/bin/nano_wallet
+  ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
+  ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
   install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
+  ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
 
-  install -Dm644 "$srcdir"/raiblocks128.png "$pkgdir"/usr/share/pixmaps/raiblocks128.png
-  install -Dm644 "$srcdir"/raiblocks.desktop "$pkgdir"/usr/share/applications/raiblocks.desktop
+  install -Dm644 "$srcdir"/nanowallet128.png "$pkgdir"/usr/share/pixmaps/nanowallet128.png
+  install -Dm644 "$srcdir"/nanowallet.desktop "$pkgdir"/usr/share/applications/nanowallet.desktop
+  #ln -s /usr/share/applications/nanowallet.desktop "$pkgdir"/usr/lib/systemd/system/raiblocks.service
 
-  install -Dm644 "$srcdir"/raiblocks.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
+  install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
+  ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
 
 # vim:set ts=2 sw=2 et:

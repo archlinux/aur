@@ -1,0 +1,15 @@
+[Unit]
+Description=Nano Cryptocurrency Node
+After=network.target
+
+[Service]
+User=nano-node
+Group=nano-node
+WorkingDirectory=~
+RuntimeDirectory=nano-node
+
+Type=simple
+ExecStart=/usr/bin/nano_node --data_path /var/lib/nano-node --daemon
+
+[Install]
+WantedBy=multi-user.target

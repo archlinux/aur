@@ -1,16 +1,22 @@
-create_user() {
-  getent passwd raiblocks &>/dev/null || {
-    echo -n ">>> Creating raiblocks service user... "
-    useradd --system --user-group -m --home /var/lib/raiblocks raiblocks
-    echo "done"
-  } # NOTE: we do not autoremove user due to security concerns (Arch policy)
-  #chown raiblocks:raiblocks /var/lib/raiblocks
+create_or_update_user() {
+  if getent passwd raiblocks &>/dev/null; then
+    echo -n ">>> Updating nano-node service user from raiblocks... "
+    usermod -l nano-node -m -d /var/lib/nano-node raiblocks
+    groupmod -n nano-node raiblocks
+    echo "done. Data has been moved to /var/lib/nano-node"
+  else
+    getent passwd nano-node &>/dev/null || {
+      echo -n ">>> Creating nano-node service user... "
+      useradd --system --user-group -m --home /var/lib/nano-node nano-node
+      echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+    #chown nano-node:nano-node /var/lib/nano-node
+  fi
 }
-
 post_install() {
-  create_user
+  create_or_update_user
 }
 
 post_upgrade() {
-  create_user
+  create_or_update_user
 }

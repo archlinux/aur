@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Nano Wallet
+Comment=The scalable, fast, zero-fee cryptocurrency
+Keywords=raiblocks
+Exec=nano_wallet %u
+Terminal=false
+Type=Application
+Icon=nanowallet128
+MimeType=x-scheme-handler/xrb;
+Categories=Office;Finance;
