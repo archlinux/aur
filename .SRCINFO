@@ -1,7 +1,7 @@
 pkgbase = trenchbroom
 	pkgdesc = TrenchBroom is a modern cross-platform level editor for Quake-engine based games.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kristianduske.com/trenchbroom
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = trenchbroom
 	depends = libxxf86vm
 	depends = glew
 	depends = glm
+	conflicts = trenchbroom-git
 	source = https://github.com/kduske/TrenchBroom/archive/v2.0.0-final.tar.gz
 	sha1sums = fb67d59aa66f6f2cd45a76843e2908f6e2c86a21
 
