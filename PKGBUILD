@@ -3,7 +3,7 @@
  
 pkgname=su2
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
 url="http://su2.stanford.edu/index.html"
 license=('LGPL')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd "${srcdir}/SU2"
-  patch < "${srcdir}/configure.ac.patch"
+  #patch < "${srcdir}/configure.ac.patch"
   autoreconf -i
   echo "export PATH=\${PATH}:/opt/${pkgname}/bin" > "${srcdir}/su2_env.sh"
 }

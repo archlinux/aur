@@ -1,7 +1,7 @@
 pkgbase = su2
 	pkgdesc = Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://su2.stanford.edu/index.html
 	install = su2.install
 	arch = i686
