@@ -3,7 +3,7 @@
 pkgname=can-utils
 pkgver=2018.02.0
 _pkgname=can-utils-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux-CAN / SocketCAN user space applications"
 arch=('any')
 url="https://github.com/linux-can/can-utils"
