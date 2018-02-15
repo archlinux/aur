@@ -35,13 +35,13 @@ pkgver() {
 
 build() {
 	cd "$_srcname"
-	rm -r build.w64
+	if [ -d "build.w64" ]; then rm -r build.w64; fi
 	meson --cross-file build-win64.txt build.w64
 	cd build.w64
         meson configure -Dprefix=/opt/dxvk.w64 -Dbuildtype=release
         ninja
 	cd ..
-	rm -r build.w32
+	if [ -d "build.w32" ]; then rm -r build.w32; fi
 	meson --cross-file build-win32.txt build.w32
 	cd build.w32
 	meson configure -Dprefix=/opt/dxvk.w32 -Dbuildtype=release
