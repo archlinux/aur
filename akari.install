@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.12-ARCH'
+    EXTRAMODULES='extramodules-4.15-ARCH'
     depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version)
     echo "In order to use akari module append \"init=/usr/bin/ccs-init\""
     echo "to the kernel boot options and reboot the system to activate"
