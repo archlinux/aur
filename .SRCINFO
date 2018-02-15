@@ -1,7 +1,7 @@
 pkgbase = mumble-git
 	pkgdesc = A voice chat application similar to TeamSpeak
 	pkgver = 2018.02.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mumble.info/
 	arch = i686
 	arch = x86_64

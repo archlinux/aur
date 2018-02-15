@@ -11,7 +11,7 @@
 pkgname=mumble-git
 pkgver=2018.02.13
 _pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
 url='https://www.mumble.info/'
@@ -53,9 +53,8 @@ build() {
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
              no-server no-embed-qt-translations no-update packaged" \
     DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
-    INCLUDEPATH+="/usr/include/speech-dispatcher /usr/include/openssl-1.0" \
-    LIBS+="-lpng16 -lfreetype -lXrender -lfontconfig" \
-    QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
+    INCLUDEPATH+="/usr/include/speech-dispatcher" \
+    LIBS+="-lpng16 -lfreetype -lXrender -lfontconfig"
 
   make release
 }
