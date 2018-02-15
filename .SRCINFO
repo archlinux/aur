@@ -1,6 +1,6 @@
 pkgbase = brisk-menu-git
 	pkgdesc = Modern, efficient menu for the MATE Desktop Environment - git version
-	pkgver = v0.5.0.r8.gda5e98b
+	pkgver = v0.5.0.r13.g2abfdb2
 	pkgrel = 1
 	url = https://github.com/solus-project/brisk-menu
 	arch = i686
