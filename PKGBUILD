@@ -4,8 +4,8 @@
 
 pkgname=rebar
 epoch=1
-pkgver=2.6.1
-pkgrel=3
+pkgver=2.6.4
+pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/rebar/rebar"
@@ -13,7 +13,7 @@ license=('APACHE')
 depends=('erlang-nox')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rebar/rebar/archive/$pkgver.tar.gz")
-md5sums=('1ae17dd671c0434012c7a688d4cf60e4')
+sha256sums=('577246bafa2eb2b2c3f1d0c157408650446884555bf87901508ce71d5cc0bd07')
 
 build() {
   cd "$srcdir/rebar-$pkgver"
