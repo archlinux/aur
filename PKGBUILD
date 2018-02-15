@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=bookworm-git
-pkgver=0.9.1.r7.g01f5c7d
+pkgver=1.0.0.r10.g65ec1de
 pkgrel=1
 pkgdesc='A simple user centric eBook reader which displays multiple eBooks formats uniformly'
 arch=('i686' 'x86_64')
