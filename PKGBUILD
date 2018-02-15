@@ -3,38 +3,37 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
 license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
+checkdepends=('netperf' 'iperf')
 conflicts=('bcc-git')
 source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
-	'cppex-0.3.0.patch')
-sha256sums=('88f54dff96c30c6e7b45f475938eef790b1c9485f794b1ac6791c4e56007f7cc'
-            'b28a2c5149394fb7402dad92e4c0552644b63dd41394569b966eceb96fc5477e')
+	'fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch')
+sha512sums=('12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e'
+            '1c4a453a0663237b1ebebd4fdc60e7f6add8380bf624cfa6dd28e57a73d6db89b0a562c8bcaa788d8d59f69240b574b123d07e1eeb63da3a255d3b5e40c6221b')
 
 prepare() {
-	# the provided CMakeLists.txt compiles the cpp examples with a static copy
-	# of libbcc, ending up with ~282megs used; we'll just install the raw *.cc
-	cd "${srcdir}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 
-	patch -p0 < "${srcdir}/cppex-0.3.0.patch"
+	patch -Np1 -i "${srcdir}/fix_build_issue_for_llvm_5.0.1.patch"
 }
 
 build() {
-	# make sure repetitive builds are clean
-	[[ -d "${srcdir}/${pkgbase}-${pkgver}/build" ]] && \
-	rm -rf "${srcdir}/${pkgbase}-${pkgver}/build"
-	mkdir "${srcdir}/${pkgbase}-${pkgver}/build"
-	cd "${srcdir}/${pkgbase}-${pkgver}/build"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
+	rm -rf build
+	mkdir build
+	cd build
 
-	# we don't care which python here for the core C library
-	cmake .. -DREVISION=${pkgver} \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=/usr/lib
+	# The python version is irrelevant at this stage
+	cmake -DREVISION="${pkgver}" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+
 	make
 }
 
@@ -48,64 +47,72 @@ package_bcc() {
 	provides=('bcc' 'libbcc')
 	conflicts=('bcc-git')
 
-	# this installs the kitchen sink
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
-	make DESTDIR="${pkgdir}/" install
 
-	# these go in a split package python*-bcc
+	# Install the kitchen sink
+	make DESTDIR="${pkgdir}" install
+
+	# These go in a split package python*-bcc
 	rm -rf "${pkgdir}"/usr/lib/python*
 
-	# these go in a split package bcc-tools
+	# These go in a split package bcc-tools
 	rm -rf "${pkgdir}"/usr/share/bcc/{tools,man}
 }
 
 package_bcc-tools() {
 	pkgdesc='BPF Compiler Collection - Tools'
+	arch=('any')
 	depends=('bcc')
 	optdepends=('python-bcc: Python 3 bindings for BCC'
 		'python2-bcc: Python 2 bindings for BCC')
 	conflicts=('bcc-tools-git')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build/tools"
-	make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}" install
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build/man"
-	make DESTDIR="${pkgdir}/" install
-
+	make DESTDIR="${pkgdir}" install
+	mv "${pkgdir}"/usr/share/{bcc/man,}
 }
 
 package_python-bcc() {
 	pkgdesc='BPF Compiler Collection - Python 3 bindings'
+	arch=('any')
 	depends=('bcc' 'python')
 	makedepends=('cmake')
 	conflicts=('python-bcc-git')
 
-	# the C lib s already built, force a quick python3 binding build
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
-	cmake .. -DREVISION=${pkgver} -DPYTHON_CMD="python" \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=/usr/lib
+
+	# Force a quick python3 binding build (C library is already buidl)
+	cmake -DREVISION="${pkgver}" \
+		-DPYTHON_CMD="python" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+
 	make
 
-	# now install just those bindings
-	cd "${srcdir}/${pkgbase}-${pkgver}/build/src/python"
-	make DESTDIR="${pkgdir}/" install
+	# Install just those bindings
+	make -C "${srcdir}/${pkgbase}-${pkgver}/build/src/python" DESTDIR="${pkgdir}" install
 }
 
 package_python2-bcc() {
 	pkgdesc='BPF Compiler Collection - Python 2 bindings'
+	arch=('any')
 	depends=('bcc' 'python2')
 	makedepends=('cmake')
 	conflicts=('python2-bcc-git')
 
-	# the C lib s already built, force a quick python2 binding build
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
-	cmake .. -DREVISION=${pkgver} -DPYTHON_CMD="python2" \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=/usr/lib
+
+	# Force a quick python2 binding build (C library is already buidl)
+	cmake -DREVISION="${pkgver}" \
+		-DPYTHON_CMD="python2" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+
 	make
 
-	# now install just those bindings
-	cd "${srcdir}/${pkgbase}-${pkgver}/build/src/python"
-	make DESTDIR="${pkgdir}/" install
+	# Install just those bindings
+	make -C "${srcdir}/${pkgbase}-${pkgver}/build/src/python" DESTDIR="${pkgdir}" install
 }

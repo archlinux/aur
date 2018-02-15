@@ -1,10 +1,12 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
+	checkdepends = netperf
+	checkdepends = iperf
 	makedepends = cmake
 	makedepends = clang>=3.7.0
 	makedepends = llvm>=3.7.0
@@ -13,10 +15,10 @@ pkgbase = bcc
 	makedepends = python
 	makedepends = python2
 	conflicts = bcc-git
-	source = https://github.com/iovisor/bcc/archive/v0.3.0.tar.gz
-	source = cppex-0.3.0.patch
-	sha256sums = 88f54dff96c30c6e7b45f475938eef790b1c9485f794b1ac6791c4e56007f7cc
-	sha256sums = b28a2c5149394fb7402dad92e4c0552644b63dd41394569b966eceb96fc5477e
+	source = https://github.com/iovisor/bcc/archive/v0.5.0.tar.gz
+	source = fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch
+	sha512sums = 12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e
+	sha512sums = 1c4a453a0663237b1ebebd4fdc60e7f6add8380bf624cfa6dd28e57a73d6db89b0a562c8bcaa788d8d59f69240b574b123d07e1eeb63da3a255d3b5e40c6221b
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection -C library and examples
@@ -30,6 +32,7 @@ pkgname = bcc
 
 pkgname = bcc-tools
 	pkgdesc = BPF Compiler Collection - Tools
+	arch = any
 	depends = bcc
 	optdepends = python-bcc: Python 3 bindings for BCC
 	optdepends = python2-bcc: Python 2 bindings for BCC
@@ -37,12 +40,14 @@ pkgname = bcc-tools
 
 pkgname = python-bcc
 	pkgdesc = BPF Compiler Collection - Python 3 bindings
+	arch = any
 	depends = bcc
 	depends = python
 	conflicts = python-bcc-git
 
 pkgname = python2-bcc
 	pkgdesc = BPF Compiler Collection - Python 2 bindings
+	arch = any
 	depends = bcc
 	depends = python2
 	conflicts = python2-bcc-git
