@@ -1,10 +1,10 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
-url="https://sites.google.com/site/hsiumingstimer/"
+url="https://hsiumingstimer.sourceforge.io/"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'qt5-multimedia' 'hicolor-icon-theme')
@@ -19,23 +19,22 @@ install="$pkgname.install"
 changelog=
 source=("https://sourceforge.net/projects/hsiumingstimer/files/hmtimer-$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()
-md5sums=('42b3d0f833d1002f7c526158e97b9a50')
+md5sums=('9e5b4460d28ae9b12cb0e5a11d8c8579')
 
 build() {
   cd "$pkgname-$pkgver"
   qmake
   make
+  gzip hmtimer.1
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
   install -D -m0755 src/hmtimer $pkgdir/usr/bin/hmtimer
-  install -D -m0644 src/language/hmtimer_zh_TW.qm $pkgdir/usr/share/hmtimer/hmtimer_zh_TW.qm
-  install -D -m0644 src/language/hmtimer_ar.qm $pkgdir/usr/share/hmtimer/hmtimer_ar.qm
-  install -D -m0644 src/language/hmtimer_ru.qm $pkgdir/usr/share/hmtimer/hmtimer_ru.qm
-  install -D -m0644 src/language/hmtimer_be.qm $pkgdir/usr/share/hmtimer/hmtimer_be.qm
+  install -D -m0644 -t $pkgdir/usr/share/hmtimer src/language/hmtimer_*.qm
   install -D -m0644 hmtimer.desktop $pkgdir/usr/share/applications/hmtimer.desktop
   install -D -m0644 src/hmtimer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/hmtimer.png
   install -D -m0644 src/hmtimer48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/hmtimer.png
+  install -D -m0644 hmtimer.1.gz $pkgdir/usr/share/man/man1/hmtimer.1.gz
 }
