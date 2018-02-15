@@ -1,0 +1,476 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -219,1 +219,0 @@
+-        GuiAddons
+@@ -223,1 +222,0 @@
+-        WindowSystem
+--- a/libs/widgets/CMakeLists.txt
++++ a/libs/widgets/CMakeLists.txt
+@@ -102,1 +102,1 @@
+-target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::GuiAddons KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
++target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
+--- a/libs/widgetutils/CMakeLists.txt
++++ b/libs/widgetutils/CMakeLists.txt
+@@ -117,1 +117,0 @@
+-        KF5::GuiAddons
+@@ -119,1 +118,0 @@
+-        KF5::WindowSystem
+--- a/libs/widgetutils/config/kcolorscheme.cpp
++++ b/libs/widgetutils/config/kcolorscheme.cpp
+@@ -24,1 +24,0 @@
+-#include <kcolorutils.h>
+@@ -28,2 +27,199 @@
+ #include <QWidget>
++
++#include <math.h>
++
++namespace KColorUtils {
++    #define normalize(a) ((a) < 1.0 ? (a) > 0.0 ? (a) : 0.0 : 1.0)
++    #define mixQreal(a, b, bias) ((a) + ((b) - (a)) * (bias))
++
++    static qreal gamma(qreal n) {
++        return pow(normalize(n), 2.2);
++    }
++
++    static qreal igamma(qreal n) {
++        return pow(normalize(n), 1.0 / 2.2);
++    }
++
++    static const qreal yc[3] = {0.2126, 0.7152, 0.0722};
++
++    static qreal lumag(qreal r, qreal g, qreal b) {
++        return r * yc[0] + g * yc[1] + b * yc[2];
++    }
++
++    static inline qreal wrap(qreal a, qreal d = 1.0) {
++        qreal r = fmod(a, d);
++        return r < 0.0 ? d + r : r > 0.0 ? r : 0.0;
++    }
++
++    static void to_hcy(const QColor &color, qreal &h, qreal &c, qreal &y) {
++        qreal r = gamma(color.redF());
++        qreal g = gamma(color.greenF());
++        qreal b = gamma(color.blueF());
++
++        y = lumag(r, g, b);
++        qreal p = qMax(qMax(r, g), b);
++        qreal n = qMin(qMin(r, g), b);
++        qreal d = 6.0 * (p - n);
++
++        if (n == p) {
++            h = 0.0;
++        } else if (r == p) {
++            h = (g - b) / d;
++        } else if (g == p) {
++            h = (b - r) / d + 1.0 / 3.0;
++        } else {
++            h = (r - g) / d + 2.0 / 3.0;
++        }
++
++        if (r == g && g == b) {
++            c = 0.0;
++        } else {
++            c = qMax((y - n) / y, (p - y) / (1 - y));
++        }
++    }
++
++    static QColor from_hcy(qreal h, qreal c, qreal y, qreal a) {
++        qreal _h = wrap(h);
++        qreal _c = normalize(c);
++        qreal _y = normalize(y);
++
++        qreal _hs = _h * 6.0, th, tm;
++        if (_hs < 1.0) {
++            th = _hs;
++            tm = yc[0] + yc[1] * th;
++        } else if (_hs < 2.0) {
++            th = 2.0 - _hs;
++            tm = yc[1] + yc[0] * th;
++        } else if (_hs < 3.0) {
++            th = _hs - 2.0;
++            tm = yc[1] + yc[2] * th;
++        } else if (_hs < 4.0) {
++            th = 4.0 - _hs;
++            tm = yc[2] + yc[1] * th;
++        } else if (_hs < 5.0) {
++            th = _hs - 4.0;
++            tm = yc[2] + yc[0] * th;
++        } else {
++            th = 6.0 - _hs;
++            tm = yc[0] + yc[2] * th;
++        }
++
++        qreal tn, to, tp;
++        if (tm >= _y) {
++            tp = _y + _y * _c * (1.0 - tm) / tm;
++            to = _y + _y * _c * (th - tm) / tm;
++            tn = _y - (_y * _c);
++        } else {
++            tp = _y + (1.0 - _y) * _c;
++            to = _y + (1.0 - _y) * _c * (th - tm) / (1.0 - tm);
++            tn = _y - (1.0 - _y) * _c * tm / (1.0 - tm);
++        }
++
++        if (_hs < 1.0) {
++            return QColor::fromRgbF(igamma(tp), igamma(to), igamma(tn), a);
++        } else if (_hs < 2.0) {
++            return QColor::fromRgbF(igamma(to), igamma(tp), igamma(tn), a);
++        } else if (_hs < 3.0) {
++            return QColor::fromRgbF(igamma(tn), igamma(tp), igamma(to), a);
++        } else if (_hs < 4.0) {
++            return QColor::fromRgbF(igamma(tn), igamma(to), igamma(tp), a);
++        } else if (_hs < 5.0) {
++            return QColor::fromRgbF(igamma(to), igamma(tn), igamma(tp), a);
++        } else {
++            return QColor::fromRgbF(igamma(tp), igamma(tn), igamma(to), a);
++        }
++    }
++
++    static qreal luma(const QColor &color) {
++        return lumag(gamma(color.redF()), gamma(color.greenF()), gamma(color.blueF()));
++    }
++
++    static QColor lighten(const QColor &color, qreal ky = 0.5, qreal kc = 1.0) {
++        qreal h, c, y;
++        to_hcy(color, h, c, y);
++        y = 1.0 - normalize((1.0 - y) * (1.0 - ky));
++        c = 1.0 - normalize((1.0 - c) * kc);
++        return from_hcy(h, c, y, color.alphaF());
++    }
++
++    static QColor darken(const QColor &color, qreal ky = 0.5, qreal kc = 1.0) {
++        qreal h, c, y;
++        to_hcy(color, h, c, y);
++        y = normalize(y * (1.0 - ky));
++        c = normalize(c * kc);
++        return from_hcy(h, c, y, color.alphaF());
++    }
++
++    static QColor shade(const QColor &color, qreal ky, qreal kc = 0.0) {
++        qreal h, c, y;
++        to_hcy(color, h, c, y);
++        y = normalize(y + ky);
++        c = normalize(c + kc);
++        return from_hcy(h, c, y, color.alphaF());
++    }
++
++    static QColor mix(const QColor &c1, const QColor &c2, qreal bias = 0.5) {
++        if (bias <= 0.0) {
++            return c1;
++        }
++        if (bias >= 1.0) {
++            return c2;
++        }
++        if (qIsNaN(bias)) {
++            return c1;
++        }
++
++        qreal r = mixQreal(c1.redF(), c2.redF(), bias);
++        qreal g = mixQreal(c1.greenF(), c2.greenF(), bias);
++        qreal b = mixQreal(c1.blueF(), c2.blueF(), bias);
++        qreal a = mixQreal(c1.alphaF(), c2.alphaF(), bias);
++
++        return QColor::fromRgbF(r, g, b, a);
++    }
++
++    static QColor tintHelper(const QColor &base, qreal baseLuma, const QColor &color, qreal amount) {
++        QColor resultc = mix(base, color, pow(amount, 0.3));
++        qreal h, c, y;
++        to_hcy(resultc, h, c, y);
++        y = mixQreal(baseLuma, y, amount);
++        return from_hcy(h, c, y, resultc.alphaF());
++    }
++
++    static qreal contrastRatioForLuma(qreal y1, qreal y2) {
++        if (y1 > y2) {
++            return (y1 + 0.05) / (y2 + 0.05);
++        } else {
++            return (y2 + 0.05) / (y1 + 0.05);
++        }
++    }
++
++    static QColor tint(const QColor &base, const QColor &color, qreal amount = 0.3) {
++        if (amount <= 0.0) {
++            return base;
++        }
++        if (amount >= 1.0) {
++            return color;
++        }
++        if (qIsNaN(amount)) {
++            return base;
++        }
++
++        qreal baseLuma = luma(base);
++        double ri = contrastRatioForLuma(baseLuma, luma(color));
++        double rg = 1.0 + ((ri + 1.0) * amount * amount * amount);
++        double u = 1.0, l = 0.0;
++        QColor result;
++        for (int i = 12; i; --i) {
++            double a = 0.5 * (l + u);
++            result = tintHelper(base, baseLuma, color, a);
++            double ra = contrastRatioForLuma(baseLuma, luma(result));
++            if (ra > rg) {
++                u = a;
++            } else {
++                l = a;
++            }
++        }
++        return result;
++    }
++}
+ 
+--- a/libs/ui/widgets/KoDualColorButton.cpp
++++ b/libs/ui/widgets/KoDualColorButton.cpp
+@@ -22,1 +22,0 @@
+-#include <kcolormimedata.h>
+@@ -35,2 +34,40 @@
+ #include <QApplication>
++
++#include <qmimedata.h>
++
++namespace KColorMimeData {
++    static bool canDecode(const QMimeData *mimeData) {
++        if (mimeData->hasColor()) {
++            return true;
++        }
++        if (mimeData->hasText()) {
++            const QString colorName = mimeData->text();
++            if ((colorName.length() >= 4) && (colorName[0] == QLatin1Char('#'))) {
++                return true;
++            }
++        }
++        return false;
++    }
++
++    static void populateMimeData(QMimeData *mimeData, const QColor &color) {
++        mimeData->setColorData(color);
++        mimeData->setText(color.name());
++    }
++
++    static QDrag *createDrag(const QColor &color, QObject *dragsource) {
++        QDrag *drag = new QDrag(dragsource);
++        QMimeData *mime = new QMimeData;
++        populateMimeData(mime, color);
++        drag->setMimeData(mime);
++        QPixmap colorpix(25, 20);
++        colorpix.fill(color);
++        QPainter p(&colorpix);
++        p.setPen(Qt::black);
++        p.drawRect(0, 0, 24, 19);
++        p.end();
++        drag->setPixmap(colorpix);
++        drag->setHotSpot(QPoint(-5, -7));
++        return drag;
++    }
++}
+ 
+--- a/libs/widgetutils/xmlgui/kkeysequencewidget.cpp
++++ b/libs/widgetutils/xmlgui/kkeysequencewidget.cpp
+@@ -36,1 +36,0 @@
+-#include <kkeyserver.h>
+@@ -39,2 +38,205 @@
+ #include <kis_icon_utils.h>
++
++namespace KKeyServer {
++    static bool isShiftAsModifierAllowed(int keyQt) {
++        keyQt &= ~Qt::KeyboardModifierMask;
++
++        if (keyQt >= Qt::Key_F1 && keyQt <= Qt::Key_F35) {
++            return true;
++        }
++
++        if (QChar(keyQt).isLetter()) {
++            return true;
++        }
++
++        switch (keyQt) {
++            case Qt::Key_Return:
++            case Qt::Key_Space:
++            case Qt::Key_Backspace:
++            case Qt::Key_Tab:
++            case Qt::Key_Backtab:
++            case Qt::Key_Escape:
++            case Qt::Key_Print:
++            case Qt::Key_ScrollLock:
++            case Qt::Key_Pause:
++            case Qt::Key_PageUp:
++            case Qt::Key_PageDown:
++            case Qt::Key_Insert:
++            case Qt::Key_Delete:
++            case Qt::Key_Home:
++            case Qt::Key_End:
++            case Qt::Key_Up:
++            case Qt::Key_Down:
++            case Qt::Key_Left:
++            case Qt::Key_Right:
++            case Qt::Key_Enter:
++            case Qt::Key_SysReq:
++            case Qt::Key_CapsLock:
++            case Qt::Key_NumLock:
++            case Qt::Key_Help:
++            case Qt::Key_Back:
++            case Qt::Key_Forward:
++            case Qt::Key_Stop:
++            case Qt::Key_Refresh:
++            case Qt::Key_Favorites:
++            case Qt::Key_LaunchMedia:
++            case Qt::Key_OpenUrl:
++            case Qt::Key_HomePage:
++            case Qt::Key_Search:
++            case Qt::Key_VolumeDown:
++            case Qt::Key_VolumeMute:
++            case Qt::Key_VolumeUp:
++            case Qt::Key_BassBoost:
++            case Qt::Key_BassUp:
++            case Qt::Key_BassDown:
++            case Qt::Key_TrebleUp:
++            case Qt::Key_TrebleDown:
++            case Qt::Key_MediaPlay:
++            case Qt::Key_MediaStop:
++            case Qt::Key_MediaPrevious:
++            case Qt::Key_MediaNext:
++            case Qt::Key_MediaRecord:
++            case Qt::Key_MediaPause:
++            case Qt::Key_MediaTogglePlayPause:
++            case Qt::Key_LaunchMail:
++            case Qt::Key_Calculator:
++            case Qt::Key_Memo:
++            case Qt::Key_ToDoList:
++            case Qt::Key_Calendar:
++            case Qt::Key_PowerDown:
++            case Qt::Key_ContrastAdjust:
++            case Qt::Key_Standby:
++            case Qt::Key_MonBrightnessUp:
++            case Qt::Key_MonBrightnessDown:
++            case Qt::Key_KeyboardLightOnOff:
++            case Qt::Key_KeyboardBrightnessUp:
++            case Qt::Key_KeyboardBrightnessDown:
++            case Qt::Key_PowerOff:
++            case Qt::Key_WakeUp:
++            case Qt::Key_Eject:
++            case Qt::Key_ScreenSaver:
++            case Qt::Key_WWW:
++            case Qt::Key_Sleep:
++            case Qt::Key_LightBulb:
++            case Qt::Key_Shop:
++            case Qt::Key_History:
++            case Qt::Key_AddFavorite:
++            case Qt::Key_HotLinks:
++            case Qt::Key_BrightnessAdjust:
++            case Qt::Key_Finance:
++            case Qt::Key_Community:
++            case Qt::Key_AudioRewind:
++            case Qt::Key_BackForward:
++            case Qt::Key_ApplicationLeft:
++            case Qt::Key_ApplicationRight:
++            case Qt::Key_Book:
++            case Qt::Key_CD:
++            case Qt::Key_Clear:
++            case Qt::Key_ClearGrab:
++            case Qt::Key_Close:
++            case Qt::Key_Copy:
++            case Qt::Key_Cut:
++            case Qt::Key_Display:
++            case Qt::Key_DOS:
++            case Qt::Key_Documents:
++            case Qt::Key_Excel:
++            case Qt::Key_Explorer:
++            case Qt::Key_Game:
++            case Qt::Key_Go:
++            case Qt::Key_iTouch:
++            case Qt::Key_LogOff:
++            case Qt::Key_Market:
++            case Qt::Key_Meeting:
++            case Qt::Key_MenuKB:
++            case Qt::Key_MenuPB:
++            case Qt::Key_MySites:
++            case Qt::Key_News:
++            case Qt::Key_OfficeHome:
++            case Qt::Key_Option:
++            case Qt::Key_Paste:
++            case Qt::Key_Phone:
++            case Qt::Key_Reply:
++            case Qt::Key_Reload:
++            case Qt::Key_RotateWindows:
++            case Qt::Key_RotationPB:
++            case Qt::Key_RotationKB:
++            case Qt::Key_Save:
++            case Qt::Key_Send:
++            case Qt::Key_Spell:
++            case Qt::Key_SplitScreen:
++            case Qt::Key_Support:
++            case Qt::Key_TaskPane:
++            case Qt::Key_Terminal:
++            case Qt::Key_Tools:
++            case Qt::Key_Travel:
++            case Qt::Key_Video:
++            case Qt::Key_Word:
++            case Qt::Key_Xfer:
++            case Qt::Key_ZoomIn:
++            case Qt::Key_ZoomOut:
++            case Qt::Key_Away:
++            case Qt::Key_Messenger:
++            case Qt::Key_WebCam:
++            case Qt::Key_MailForward:
++            case Qt::Key_Pictures:
++            case Qt::Key_Music:
++            case Qt::Key_Battery:
++            case Qt::Key_Bluetooth:
++            case Qt::Key_WLAN:
++            case Qt::Key_UWB:
++            case Qt::Key_AudioForward:
++            case Qt::Key_AudioRepeat:
++            case Qt::Key_AudioRandomPlay:
++            case Qt::Key_Subtitle:
++            case Qt::Key_AudioCycleTrack:
++            case Qt::Key_Time:
++            case Qt::Key_Select:
++            case Qt::Key_View:
++            case Qt::Key_TopMenu:
++            case Qt::Key_Suspend:
++            case Qt::Key_Hibernate:
++            case Qt::Key_Launch0:
++            case Qt::Key_Launch1:
++            case Qt::Key_Launch2:
++            case Qt::Key_Launch3:
++            case Qt::Key_Launch4:
++            case Qt::Key_Launch5:
++            case Qt::Key_Launch6:
++            case Qt::Key_Launch7:
++            case Qt::Key_Launch8:
++            case Qt::Key_Launch9:
++            case Qt::Key_LaunchA:
++            case Qt::Key_LaunchB:
++            case Qt::Key_LaunchC:
++            case Qt::Key_LaunchD:
++            case Qt::Key_LaunchE:
++            case Qt::Key_LaunchF: {
++                return true;
++            }
++            default: {
++                return false;
++            }
++        }
++    }
++
++    static QString modToStringUser(uint mod) {
++        switch (mod) {
++            case Qt::META: {
++                return "Meta";
++            }
++            case Qt::SHIFT: {
++                return "Shift";
++            }
++            case Qt::CTRL: {
++                return "Ctrl";
++            }
++            case Qt::ALT: {
++                return "Alt";
++            }
++            default: {
++                return "???";
++            }
++        }
++    }
++}
+ 
