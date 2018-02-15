@@ -2,7 +2,7 @@
 # Contributor: George Eleftheriou <eleftg>
  
 pkgname=su2
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
 url="http://su2.stanford.edu/index.html"
