@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DobyTang/LazyLibrarian/
         'lazylibrarian.service'
         'lazylibrarian.sysusers')
 
-sha256sums=('b83eae119359945b3c6dc662c250719e751e25e793a522f3477a8f613c59b857'
+sha256sums=('7d94686085916a984ab89a76b0823695d784ef785368b175a89bd1077d6cc2cd'
             'ad571025028f86c6fbd867ea32e7d7b78d51f604f0bc3b1e373df642fe6c177c'
             '1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d')
 

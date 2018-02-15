@@ -1,6 +1,6 @@
 pkgbase = lazylibrarian
 	pkgdesc = Automatic Book Downloading via NZBs & Torrent
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/DobyTang/LazyLibrarian
 	install = lazylibrarian.install
@@ -9,10 +9,10 @@ pkgbase = lazylibrarian
 	depends = python2
 	provides = lazylibrarian
 	conflicts = lazylibrarian-git
-	source = lazylibrarian-1.4.3.tar.gz::https://github.com/DobyTang/LazyLibrarian/archive/1.4.3.tar.gz
+	source = lazylibrarian-1.5.0.tar.gz::https://github.com/DobyTang/LazyLibrarian/archive/1.5.0.tar.gz
 	source = lazylibrarian.service
 	source = lazylibrarian.sysusers
-	sha256sums = b83eae119359945b3c6dc662c250719e751e25e793a522f3477a8f613c59b857
+	sha256sums = 7d94686085916a984ab89a76b0823695d784ef785368b175a89bd1077d6cc2cd
 	sha256sums = ad571025028f86c6fbd867ea32e7d7b78d51f604f0bc3b1e373df642fe6c177c
 	sha256sums = 1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d
 
