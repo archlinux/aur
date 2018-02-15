@@ -4,7 +4,7 @@
 # https://github.com/soker90/paquetes-archinux.git
 
 pkgname=betcon
-pkgver=1.7.3.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
@@ -12,7 +12,7 @@ arch=('any')
 license=('GPLv3')
 depends=('python' 'python-pyqt5' 'sqlite' 'python-pyexcel-ods' 'python-yaml' 'python-pillow')
 source=("https://github.com/soker90/betcon/archive/$pkgver.tar.gz")
-md5sums=('8c0e48e167c58a10af205038a215845e')
+md5sums=('2cbac6c822e0c4adb2b66a35c324a33d')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/betcon/default/

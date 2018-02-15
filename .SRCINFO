@@ -1,6 +1,6 @@
 pkgbase = betcon
 	pkgdesc = Sports betting management
-	pkgver = 1.7.3.1
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = http://betcon.eduardoparra.es
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = betcon
 	depends = python-pyexcel-ods
 	depends = python-yaml
 	depends = python-pillow
-	source = https://github.com/soker90/betcon/archive/1.7.3.1.tar.gz
-	md5sums = 8c0e48e167c58a10af205038a215845e
+	source = https://github.com/soker90/betcon/archive/1.7.4.tar.gz
+	md5sums = 2cbac6c822e0c4adb2b66a35c324a33d
 
 pkgname = betcon
 
