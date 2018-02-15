@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=ombi
 Group=ombi
-WorkingDirectory=/opt/ombi
 Type=simple
-ExecStart=/usr/bin/mono /opt/ombi/Ombi.exe -p 3579
+WorkingDirectory=/usr/lib/ombi
+ExecStart=/usr/lib/ombi/Ombi --storage /var/lib/ombi
 Restart=always
 TimeoutStopSec=30
 
