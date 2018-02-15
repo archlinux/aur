@@ -69,7 +69,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.6.1.r22.g7543c5d
+pkgver=0.6.80
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -203,7 +203,7 @@ package_vala-panel-appmenu-registrar-git()
 {
   pkgdesc="Gtk module for exporting menus"
   provides=(vala-panel-appmenu-registrar)
-  depends=('gtk3')
+  depends=('glib2')
   cd "${srcdir}/${_pkgbase}"
-  make -C "registrar" DESTDIR="${pkgdir}" install
+  make -C "subprojects/registrar" DESTDIR="${pkgdir}" install
 }
