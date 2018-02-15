@@ -5,13 +5,13 @@ pkgbase=python-rstr
 pkgname=('python-rstr' 'python2-rstr')
 _pkgname=${pkgbase#python-}
 pkgver=2.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Generate random strings in Python"
 arch=('x86_64')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 url="https://bitbucket.org/leapfrogdevelopment/rstr"
 license=('BSD')
-source=("https://pypi.python.org/simple/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('5dea822326e418e0c9816c9cd14ae9c7be2d4cd4334043c397f202bc2ae2eda4')
 
 prepare () {
