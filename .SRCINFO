@@ -15,7 +15,7 @@ pkgbase = git-lfs-arm
 	provides = git-lfs-bin
 	conflicts = git-lfs
 	conflicts = git-lfs-bin
-	source = git-lfs-arm-2.3.4.tar.gz::https://github.com/git-lfs/git-lfs-arm/archive/v2.3.4.tar.gz
+	source = git-lfs-2.3.4.tar.gz::https://github.com/git-lfs/git-lfs/archive/v2.3.4.tar.gz
 	sha1sums = 145d49542e9dfdec91a2bb0c52c037c67551a447
 
 pkgname = git-lfs-arm
