@@ -1,7 +1,7 @@
 pkgbase = perl-pdf-create
 	pkgdesc = This packages the perl-pdf-create distribution, containing the PDF::Create module!
 	pkgver = 1.41
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/PDF-Create
 	arch = any
 	license = GPL

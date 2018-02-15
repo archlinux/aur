@@ -6,7 +6,7 @@
 
 pkgname=perl-pdf-create
 pkgver=1.41
-pkgrel=1
+pkgrel=2
 pkgdesc='This packages the perl-pdf-create distribution, containing the PDF::Create module!'
 _dist=PDF-Create
 arch=('any')
