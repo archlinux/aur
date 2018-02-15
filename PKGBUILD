@@ -1,39 +1,31 @@
-# Maintainer: Alexander Görtz <aur@nyloc.de>
-# Previous Maintainer of dehydrated-git: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: VVL <me@ivvl.ru>
+# Contributor: VVL <me@ivvl.ru>
+# Previous Maintainer of dehydrated: Alexander Görtz <aur@nyloc.de>
 
 pkgname=dehydrated
-pkgver=v0.1.0.r76.ga316a09
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/dehydrated"
 license=('MIT')
-source=("$pkgname::git+https://github.com/lukas2511/dehydrated.git"
-        "dehydrated.timer" "dehydrated.service")
+source=("https://github.com/lukas2511/dehydrated/archive/v$pkgver.tar.gz"
+        "dehydrated.timer"
+        "dehydrated.service")
 depends=('curl' 'openssl')
-makedepends=('git')
+conflicts=('dehydrated-git')
 sha256sums=('SKIP'
             'c2b5556776d20a2a8610e70d10eb2bf830ec5ac725be641ea0fe42945641d684'
-            '9721a64b90cd23971755fdb49bdea84068e8b6cc21ed913d141a0af7edda8b2f')
-
-pkgver() {
-	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
+            'fbc0d67e74a6c66b9a11f5fed7e623697871a74be5a65bf9a7aa436e89912cde')
 package() {
 	cd "$pkgname"
 	install -Dm755 dehydrated "$pkgdir/usr/bin/dehydrated"
-
 	install -Dm644 "$srcdir/dehydrated.timer" "$pkgdir/usr/lib/systemd/system/dehydrated.timer"
 	install -Dm644 "$srcdir/dehydrated.service" "$pkgdir/usr/lib/systemd/system/dehydrated.service"
-
-	install -Dm644 docs/*.md -t "$pkgdir/usr/share/docs/dehydrated"
 
 	install -Dm644 docs/examples/config "$pkgdir/etc/dehydrated/config.example"
 	install -Dm644 docs/examples/domains.txt "$pkgdir/etc/dehydrated/domains.txt.example"
 	install -Dm644 docs/examples/hook.sh "$pkgdir/etc/dehydrated/hook.sh.example"
-
+	install -Dm644 docs/*.md -t "$pkgdir/usr/share/docs/dehydrated"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }

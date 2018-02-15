@@ -3,4 +3,4 @@ Description=Check and renew ACME TLS certificates
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/dehydrated --cron
+ExecStart=/usr/bin/dehydrated -c
