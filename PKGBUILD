@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('mdcat-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('09bee344e411c1d3a8ab9bf9b2da5c4b022f28a69625331fac613602f1477a32dd0717ce8d9e29f57543242229cef8068dff71266c5a4dfcb51d10b8f0729b39')
+sha512sums=('4cecd37786e04c1989f24165a8900628837fef108764371752bf67363f57f6bfe58ea51b2f1571a82d1c6cbf3a20f5149eaa3eb68c884f88b993d54379fbd957')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
