@@ -5,27 +5,21 @@ pkgver=2018.02.0
 _pkgname=can-utils-${pkgver}
 pkgrel=2
 pkgdesc="Linux-CAN / SocketCAN user space applications"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/linux-can/can-utils"
 license=('GPLv2')
-makedepends=("libtool")
-provides=("can-utils")
-replaces=("can-utils-git")
 conflicts=("can-utils-git")
-source=("https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('370ad4b19447c29099f7300548f1a3362d6e123c4a6a827dbbd3110bc2c26839')
 
 build() {
-    cd "${srcdir}"
-    tar -xzf v2018.02.0.tar.gz
-    pwd
-    cd "${_pkgname}"
+    cd ${pkgname}-${pkgver}
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    make DESTDIR="$pkgdir/" install
+    cd ${pkgname}-${pkgver}
+    make install
 }

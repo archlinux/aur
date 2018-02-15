@@ -3,14 +3,11 @@ pkgbase = can-utils
 	pkgver = 2018.02.0
 	pkgrel = 2
 	url = https://github.com/linux-can/can-utils
-	arch = any
+	arch = x86_64
 	license = GPLv2
-	makedepends = libtool
-	provides = can-utils
 	conflicts = can-utils-git
-	replaces = can-utils-git
-	source = https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz
-	sha256sums = SKIP
+	source = can-utils-2018.02.0.tar.gz::https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz
+	sha256sums = 370ad4b19447c29099f7300548f1a3362d6e123c4a6a827dbbd3110bc2c26839
 
 pkgname = can-utils
 
