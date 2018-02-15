@@ -22,7 +22,7 @@ fi
 
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -62,13 +62,16 @@ case "$android_arch" in
         ;;
 esac
 
+options=('!strip'
+         '!buildflags'
+         'staticlibs'
+         '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
-options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "geoservices.pro.patch"
         "JavaScriptCore.pri.patch"
         "JavaScript.Platform.h.patch")
-md5sums=('c5e275ab0ed7ee61d0f4b82cd471770d'
+md5sums=('7e167b9617e7bd64012daaacb85477af'
          'de535e2ce98e9f75e9ec0ed1c52a2647'
          'd0b3bb4de8a44520c2923e14a8b4f9f1'
          '4c9bbe21230e34fa07c2cbd5119ceda9')
@@ -157,8 +160,8 @@ build() {
         -android-ndk-platform ${ANDROID_NDK_PLATFORM}"
 
     if [ "$ANDROID_MINIMUM_PLATFORM" -lt 18 ]; then
-             configue_opts+="
-                 -skip qtconnectivity"
+        configue_opts+="
+            -skip qtconnectivity"
     fi
 
     # Platform specific patches
@@ -178,7 +181,7 @@ build() {
 
     ./configure ${configue_opts}
 
-    make $MAKEFLAGS || return 1
+    make $MAKEFLAGS
 }
 
 package() {
