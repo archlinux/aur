@@ -1,4 +1,8 @@
 2018-02-15 Pierre Choffet <peuc@wanadoo.fr>
+	* r3863.e340f253-2 :
+	Rename package to "return-to-the-roots-git" since it's not meant to build a
+	statically given commit.
+
 	* r3863.e340f253-1 :
 	Remove i686 arch
 	Explicitly declare all submodules
