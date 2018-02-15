@@ -1,14 +1,11 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=libccp4
 pkgver=6.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
 license=('GPL')
-provides=(ccp4-libs)
-replaces=(ccp4-libs5)
-conflicts=('ccp4-libs5')
 depends=('mmdb2')
 makedepends=('gcc-fortran')
 source=(ftp://ftp.ccp4.ac.uk/opensource/$pkgname-$pkgver.tar.gz)
