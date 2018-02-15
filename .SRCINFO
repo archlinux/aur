@@ -1,0 +1,16 @@
+pkgbase = darktable-lua-scripts-git
+	pkgdesc = Lua scripts extending darktable
+	pkgver = r407.54572de
+	pkgrel = 1
+	url = https://github.com/darktable-org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = darktable
+	optdepends = hugin: hugins support
+	optdepends = enblend-enfuse: enfuse support
+	source = git+https://github.com/darktable-org/lua-scripts.git
+	sha256sums = SKIP
+
+pkgname = darktable-lua-scripts-git
+
