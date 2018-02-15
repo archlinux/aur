@@ -1,0 +1,39 @@
+pkgbase = python-easyaccess-git
+	pkgdesc = Enhanced command line SQL interpreter client for astronomical databases
+	pkgver = 1.4.3.r15.b488638
+	pkgrel = 1
+	url = https://github.com/mgckind/easyaccess
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-cx_oracle-git
+	makedepends = python2-cx_oracle-git
+	makedepends = python-pandas
+	makedepends = python-future
+	makedepends = python2-pandas
+	makedepends = python2-future
+	makedepends = python-requests
+	makedepends = python2-requests
+	makedepends = python-fitsio-git
+	makedepends = python2-fitsio-git
+	source = python-easyaccess-git::git+https://github.com/mgckind/easyaccess
+	md5sums = SKIP
+
+pkgname = python-easyaccess-git
+	depends = python
+	depends = python-cx_oracle-git
+	depends = python-pandas
+	depends = python-future
+	depends = python-requests
+	depends = python-fitsio-git
+
+pkgname = python2-easyaccess-git
+	depends = python2
+	depends = python2-cx_oracle-git
+	depends = python2-pandas
+	depends = python2-future
+	depends = python2-requests
+	depends = python2-fitsio-git
+
