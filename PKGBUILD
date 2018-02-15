@@ -8,16 +8,16 @@ pkgname=mysql-workbench-git
 pkgver=6.3.9.r0.g1972008
 pkgrel=1
 # mysql & mysql-connector-c++ from git
-_gdal_version=2.1.3
+_gdal_version=2.2.3
 _boost_version=1.59.0
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - git checkout'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.mysql.com/products/workbench/'
 license=('GPL2')
 depends=('cairo' 'ctemplate' 'desktop-file-utils' 'freetype2' 'gtkmm3'
 	'hicolor-icon-theme' 'libgl' 'libgnome-keyring' 'libiodbc' 'libxml2'
 	'libzip' 'mysql-python' 'pcre' 'python2' 'python2-cairo' 'python2-paramiko'
-	'python2-pexpect' 'tinyxml' 'unixodbc' 'vsqlite++')
+	'python2-pexpect' 'tinyxml' 'unixodbc' 'vsqlite++' 'proj' 'json-c')
 optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
 	'python2-pyodbc: database migration')
 provides=('mysql-workbench')
@@ -33,18 +33,22 @@ source=('git://github.com/mysql/mysql-workbench.git'
 	'0001-mysql-workbench-no-check-for-updates.patch'
 	'0002-disable-unsupported-operating-system-warning.patch'
 	'0003-add-option-to-hide-nonstandard-server-warning.patch'
-	'0004-fix-build-for-i686.patch'
+	'0005-gdal-use-CPLFree.patch'
+	'0006-mysql-include-my_dir.patch'
+	'0007-gdal-json-c-0-13.patch'
 	'arch_linux_profile.xml')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'b489793627e6cb8d2ff8d7737b61daf58382fe189fae4c581ddfd48c04b49005'
+            'a328d63d476b3653f5a25b5f7971e87a15cdf8860ab0729d4b1157ba988b8d0b'
             '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
             '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7'
             'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
             '0d65832bc5a73d4cfecef4b552bb78a30ce6020a5fabe5558dcf2ade8341b593'
             '3c9097af599f08388c471d6fd02f40ea72e5759eaa89f731e662852a5e67feea'
-            '68295716c55e5f7b07b3ec1162b512b33a0563952a0eb4ef6fd71d852c61de11'
+            '0965b4f12a0ae26bea131f05c7383d4a9b068d556b092ad23e19e1d8f6895531'
+            'd97a1fec15e0dc4491e79ce380f6f994f1c4b387d960c13e178a18b0299c0436'
+            '7000da5a03b7a44b26d86653104558798879ce9a2f6e7e1b929f8f9fcabdf33f'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
 
 pkgver() {
@@ -63,6 +67,16 @@ pkgver() {
 }
 
 prepare() {
+	cd "${srcdir}/mysql-server/"
+
+	# fix build without server
+	patch -Np1 < "${srcdir}"/0006-mysql-include-my_dir.patch
+
+	cd "${srcdir}/gdal-${_gdal_version}"
+
+	# Add support for json-c v0.13
+	patch -Np2 < "${srcdir}"/0007-gdal-json-c-0-13.patch
+
 	cd "${srcdir}/mysql-workbench/"
 
 	# Disable 'Help' -> 'Check for Updates'
@@ -75,8 +89,14 @@ prepare() {
 	# add option to hide nonstandard server warning
 	patch -Np1 < "${srcdir}"/0003-add-option-to-hide-nonstandard-server-warning.patch
 
-	# fix build for i686
-	patch -Np1 < "${srcdir}"/0004-fix-build-for-i686.patch
+	# gdal: use CPLFree()
+	patch -Np1 < "${srcdir}"/0005-gdal-use-CPLFree.patch
+
+	# GCC 7.x introduced some new warnings, remove '-Werror' for the build to complete
+	sed -i '/^set/s|-Werror -Wall|-Wall|' CMakeLists.txt
+
+	# GCC 7.x complains about unsupported flag
+	sed -i 's|-Wno-deprecated-register||' ext/scintilla/gtk/CMakeLists.txt
 
 	# we need python 2.x
 	sed -i '/^FIND_PROGRAM(PYTHON_EXEC /c FIND_PROGRAM(PYTHON_EXEC "python2")' \
@@ -84,16 +104,16 @@ prepare() {
 
 	# put antlr into place
 	install -D ${srcdir}/antlr-3.4-complete.jar ${srcdir}/linux-res/bin/antlr-3.4-complete.jar
+
+	# make sure to link against bundled libraries
+	sed -i "/target_link_libraries/s|\\$|-L${srcdir}/install-bundle/usr/lib/ \\$|" backend/wbpublic/CMakeLists.txt
 }
 
 build() {
-	# this uses deprecated auto_ptr...
-	# we known that, so do not flood the logs
-	CXXFLAGS="${CXXFLAGS} -Wno-deprecated-declarations"
-
 	# Build mysql
 	cd "${srcdir}/mysql-server/"
 	cmake . \
+		-DWITHOUT_SERVER=ON \
 		-DBUILD_CONFIG=mysql_release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
