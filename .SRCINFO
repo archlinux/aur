@@ -1,0 +1,12 @@
+pkgbase = breeze-hacked-cursor-theme-git
+	pkgdesc = Breeze Hacked cursor theme.
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	source = https://static.dct.party/data/breeze-hacked-cursor-theme.zip
+	sha256sums = 49a4ded5447c726e06151104bc656eca99f88db9751d240f020b7ce811acb15a
+
+pkgname = breeze-hacked-cursor-theme-git
