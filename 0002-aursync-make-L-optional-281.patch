@@ -1,7 +1,7 @@
-From 43ee1e5f814886b3f04bf899205ef2c2c03aba02 Mon Sep 17 00:00:00 2001
+From bed6e3128a7e95b837cb98a4fdafa289038378b0 Mon Sep 17 00:00:00 2001
 From: Alad Wenter <alad@mailbox.org>
 Date: Sat, 27 Jan 2018 03:21:37 +0100
-Subject: [PATCH 2/3] aursync: make -L optional (#281)
+Subject: [PATCH 2/4] aursync: make -L optional (#281)
 
 ---
  bin/aursync    | 7 ++++---

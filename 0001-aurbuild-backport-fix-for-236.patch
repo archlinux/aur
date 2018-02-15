@@ -1,7 +1,7 @@
-From 79b42b1252ff70ba46cb7fff077ab5afa0115568 Mon Sep 17 00:00:00 2001
+From 1ac09c520814769d670f4b351c889e4a421b55a0 Mon Sep 17 00:00:00 2001
 From: Alad Wenter <alad@mailbox.org>
 Date: Fri, 6 Oct 2017 23:03:14 +0200
-Subject: [PATCH 1/3] aurbuild: backport fix for #236
+Subject: [PATCH 1/4] aurbuild: backport fix for #236
 
 ---
  bin/aurbuild | 10 ++++++++--

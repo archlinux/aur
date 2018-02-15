@@ -1,7 +1,7 @@
-From fb682a53f0bad47baaf734d5af2baa2964fdb85b Mon Sep 17 00:00:00 2001
+From 4bf451876d51787b8be2694a4ccd16da1a233186 Mon Sep 17 00:00:00 2001
 From: Alad Wenter <alad@mailbox.org>
 Date: Sat, 27 Jan 2018 13:57:37 +0100
-Subject: [PATCH 3/3] aurbuild: update default options
+Subject: [PATCH 3/4] aurbuild: update default options
 
 Remove gpg --verbose, makepkg -L
 ---
