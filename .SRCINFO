@@ -1,14 +1,11 @@
 pkgbase = python-pandas_market_calendars
 	pkgdesc = Market and exchange trading calendars for pandas
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsheftel/pandas_market_calendars
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-six
-	makedepends = python-pytz
-	makedepends = python-pandas
 	depends = python-six
 	depends = python-pytz
 	depends = python-pandas
