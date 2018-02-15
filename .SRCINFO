@@ -1,14 +1,14 @@
 pkgbase = riscv64-unknown-elf-binutils
 	pkgdesc = Assemble and manipulate binary and object files for 32bit and 64bit RISC-V
-	pkgver = 2.29
+	pkgver = 2.29.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz
-	sha1sums = 47817089b3867baf307365004c51677174a27000
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.29.1.tar.xz
+	sha1sums = 172244a349d07ec205c39c0321cbc354c125e78e
 
 pkgname = riscv64-unknown-elf-binutils
 
