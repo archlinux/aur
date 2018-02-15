@@ -1,0 +1,4 @@
+pkg/
+src/
+phoronix-test-suite-*.tar.gz
+*.pkg.tar*
