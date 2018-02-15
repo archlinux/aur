@@ -1,7 +1,7 @@
 pkgbase = inox-hard
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 64.0.3282.168
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.chromium.org/Home
 	install = inox-hard.install
 	arch = i686
@@ -186,7 +186,7 @@ pkgbase = inox-hard
 	sha256sums = 814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a
 	sha256sums = 8f7d2baca6d96b1e668c8c2bcb1efe5daa0e1cb33de89e12165ea22c73ce8741
 	sha256sums = 0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa
-	sha256sums = 695aab20462a93bb28b054aa5621f35e48dd095e66c4ab9b2f55f407ec4737e5
+	sha256sums = 5c90b83ca74977a34c545f862fc242cfd248a89755800df34d3f212cdb707cc9
 	sha256sums = c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4
 	sha256sums = 73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3
 	sha256sums = 71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd
