@@ -1,0 +1,18 @@
+pkgbase = ctl
+	pkgdesc = The Color Transformation Language
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/ampas/CTL
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = gcc-libs
+	depends = ilmbase
+	depends = openexr
+	depends = libtiff
+	depends = aces-container
+	source = https://github.com/ampas/CTL/archive/ctl-1.5.2.tar.gz
+	sha256sums = d7fac1439332c4d84abc3c285b365630acf20ea041033b154aa302befd25e0bd
+
+pkgname = ctl
+
