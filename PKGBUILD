@@ -4,7 +4,7 @@
 
 pkgname=dehydrated
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/dehydrated"
@@ -14,6 +14,7 @@ source=("https://github.com/lukas2511/dehydrated/archive/v$pkgver.tar.gz"
         "dehydrated.service"
 )
 depends=('curl' 'openssl')
+optdepends=('letsencrypt-cloudflare-hook: Cloudflare hook for dns-01 challenge')
 conflicts=('dehydrated-git')
 sha256sums=('SKIP'
             'c2b5556776d20a2a8610e70d10eb2bf830ec5ac725be641ea0fe42945641d684'
