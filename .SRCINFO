@@ -1,0 +1,15 @@
+pkgbase = libdfuprog-git
+	pkgdesc = libdfuprog is a fork of dfu-programmer built as a dynamic library
+	pkgver = v0.7.0.r46.g15d3d92
+	pkgrel = 1
+	url = https://github.com/EspoTek/libdfuprog
+	arch = x86_64
+	license = GPL2
+	depends = libusb
+	provides = libdfuprog
+	conflicts = libdfuprog
+	source = git+https://github.com/EspoTek/libdfuprog
+	sha256sums = SKIP
+
+pkgname = libdfuprog-git
+
