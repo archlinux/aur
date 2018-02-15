@@ -1,10 +1,9 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
-	pkgver = 3.22.26+161+g60750b3ffd
+	pkgver = 3.22.28
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71
 	install = gtk3.install
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = gobject-introspection
@@ -41,19 +40,19 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = libcanberra
 	depends = glib2-patched-thumbnailer
 	depends = gtk-update-icon-cache
-	provides = gtk3=3.22.26+161+g60750b3ffd
+	provides = gtk3=3.22.28
 	provides = gtk3-print-backends
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26.1
-	source = git+https://git.gnome.org/browse/gtk+#commit=60750b3ffda1c27f47cdcd7dc97f863e08391b32
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=463ee95136d519783e55acbd092bc8ba1dd16832
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
-	source = https://gist.githubusercontent.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71/raw/543fa1dc7173d896f8d87bece94ae23944dd1e76/gtk3-filechooser-icon-view.patch
+	source = gtk3-filechooser-icon-view.patch
 	sha256sums = SKIP
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845
-	sha256sums = bc990c3f9bbe5e39184e9203cc99eff92920d1383119db49be92a01f98d71f2e
+	sha256sums = aa25ef34086e1b47a647006fa3946328b15f82ba16dac2ab37ceed0693c5425c
 
 pkgname = gtk3-patched-filechooser-icon-view
 
