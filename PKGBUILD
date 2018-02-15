@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=5.1
-pkgrel=3
+pkgver=5.2
+pkgrel=4
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac')
 arch=('any')
@@ -21,16 +21,14 @@ optdepends=(
   'gnu-netcat: used for checking network'
   'ccrypt: used for encrypting'
   'rsync: used for backup'
-  'inxi: system information viewer'
   'libnotify: desktop notifications'
-  'wavemon: wireless network monitor'
   'speedtest-cli: internet bandwidth'
   'lynis: system audit tool'
   'openbsd-netcat: used for checking network'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('cc58bf7db616621375e68a574b8f9c2b')
+md5sums=('2bcdd7bbc25029693ba602e2b51449fb')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 main/Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
