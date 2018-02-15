@@ -2,19 +2,19 @@
 # Contributor: flu
 
 pkgname=mpc-git
-pkgver=0.26
+pkgver=0.29.2.g2d6e3fe
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
-url="http://mpd.wikia.com"
+url="https://www.musicpd.org/clients/mpc/"
 license=('GPL2')
 depends=('libmpdclient')
-makedepends=('git')
+makedepends=('git' 'meson' 'python-sphinx')
 optdepends=('bash-completion')
 conflicts=('mpc')
 provides=('mpc')
 replaces=('mpc-svn')
-source=('git://git.musicpd.org/master/mpc.git')
+source=('mpc::git+https://github.com/MusicPlayerDaemon/mpc.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,21 +26,19 @@ pkgver() {
 build() {
     cd "${srcdir}/mpc"
 
-    # Configure Source
-    ./autogen.sh --prefix=/usr
-
-    # Build Source
-    make
+    # Build
+    arch-meson . build
+    ninja -C build
 }
 
 package() {
     cd "${srcdir}/mpc"
 
-    # Install Source
-    make prefix="${pkgdir}/usr" install
+    # Install Package
+    DESTDIR="${pkgdir}" ninja -C build install
 
     # Install Bash Completion File
-    install -D -m 644 "${srcdir}/mpc/doc/mpc-completion.bash" \
-        "${pkgdir}/etc/bash_completion.d/mpc"
+    install -D -m 644 "${srcdir}/mpc/contrib/mpc-completion.bash" \
+        "${pkgdir}/usr/share/bash-completion/completions/mpc"
 }
 
