@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=tr1pd
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="tamper resistant audit log"
 url="https://github.com/kpcyrd/tr1pd"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('AGPL3')
 install='tr1pd.install'
 source=("https://github.com/kpcyrd/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('91f489bbc66639b253df32c7d7beb10a9804b4745d3ca256b98bfeb4b20b383388926cb4eb892bef6a8bdf26a5e035282e743b813c561d513b487308b81aa093')
+sha512sums=('eae536bd1227a7f605b7eefb0b3d6682474acbbea98cce9a4f8acb4fb98e8000f9d1840d11e38bd27ceaf8a72b31a3b4bdbebb7edc49e5e6964bdded5db64ab9')
 
 build() {
   cd "$pkgname-$pkgver"
