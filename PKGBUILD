@@ -1,10 +1,9 @@
 # Maintainer: Roman Beslik <me@beroal.in.ua>
 pkgname=azardi
 pkgver=43.1
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "i686")
 url="http://azardi.infogridpacific.com/"
-makedepends=("deb2targz")
 pkgdesc="The AZARDI book reader by Infogrid Pacific Pte Ltd."
 if [ "$CARCH" = "x86_64" ]; then
 	_arch_file_name="amd64"
@@ -21,13 +20,16 @@ source=("https://azardi-download.s3.amazonaws.com/$_deb_file_name.deb"
 	"license.html::http://azardi.infogridpacific.com/azardi-license.html")
 license=("custom:azardi")
 install="_.install"
+_src_bin_dir="pkg"
 build() {
-	deb2targz "$srcdir/$_deb_file_name.deb"
+	cd "$srcdir"
+	FILE_NAME=$(find . -name "data.*")
+	mkdir --parents "$_src_bin_dir"
+	tar --extract --auto-compress "--file=$FILE_NAME" -C "$_src_bin_dir"
+	sed -i "s/Categories=Application;/Categories=Office;Viewer;/" "$_src_bin_dir/usr/share/applications/AZARDI.desktop"
 }
 package() {
-	cd "$srcdir"
-	FILE_NAME=$(find . -name "$_deb_file_name.tar*")
-	tar --extract --auto-compress "--file=$FILE_NAME" -C "$pkgdir"
+	cp -r "$srcdir/$_src_bin_dir"/* "$pkgdir"
 	# /opt/infogridpacific/azardi/LICENSE is the Mozilla license. WTF?
 	install --mode=0644 -D "--target-directory=$pkgdir/usr/share/licenses/$pkgname" "$srcdir/license.html"
 }
