@@ -1,6 +1,6 @@
 pkgbase = gnome-usage-git
 	pkgdesc = A nice way to view information about use of system resources
-	pkgver = 0.4.5.161.g6452220
+	pkgver = 3.27.90.2.g3908ab6
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
