@@ -1,4 +1,4 @@
-# Maintainer: Eric Richter <richter.eric.r@gmail.com>
+# Maintainer: Eric Richter <richteer@lastprime.net>
 pkgname=ripright
 pkgver=0.11
 pkgrel=2
