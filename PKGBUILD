@@ -1,12 +1,12 @@
 # Maintainer: Eric Richter <richter.eric.r@gmail.com>
 pkgname=ripright
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal automatic CD ripper and tagging utility"
 arch=('i686' 'x86_64')
 url="http://www.mcternan.me.uk/ripright"
 license=('GPL2')
-depends=('curl' 'flac' 'cdparanoia' 'imagemagick' 'libdiscid')
+depends=('curl' 'flac' 'cdparanoia' 'libmagick6' 'libdiscid')
 makedepends=()
 optdepends=()
 provides=('ripright')
@@ -17,7 +17,7 @@ md5sums=('51719e181ef7a852f5b854d4f43a56c6')
 build() {
 	cd $pkgname-$pkgver
 
-	./configure --prefix=/usr
+	MagickWand_CFLAGS="`pkg-config --cflags MagickWand-6.Q16HDRI`" MagickWand_LIBS="`pkg-config --libs MagickWand-6.Q16HDRI`" ./configure --prefix=/usr
 	make
 }
 
