@@ -4,8 +4,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=18.04.9
-_umsver=18.04.6
+pkgver=18.04.10
+_umsver=18.04.7
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
@@ -23,22 +23,19 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'topmenu-gtk: for Mutiny panel layout'
             'vala-panel-appmenu-mate: for Mutiny,Cupertino')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/$pkgver.tar.gz"
-        "ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/$_umsver.tar.gz"
-        '41.patch')
-sha256sums=('52d67bb8b52b08a1027677ee671da507977d2db299d40c77eb164c8419e529ae'
-            'a4e65836a5c5820607e9b948aa02e77deb493f72c29145f46ddb19dc50e019ba'
-            'c1657e08eb517a040a6209eebb0e67b477f3e65010cbc800f62f3712e048b617')
+        #"ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/$_umsver.tar.gz"
+        "ubuntu-mate-settings-$_umsver.tar.gz::https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz")
+sha256sums=('a1e9873094011093dbe48f2c997ab078c5586305f58e761e48c7c72df1dae59c'
+            '1cd12b2c32592ca72a6584d9b74ff98d8256c08c40957c2fb7f15db295c6bc8c')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i 's|/usr/lib/mate-applets/topmenu-mate-panel-applet|/usr/lib/topmenu-gtk/topmenu-mate-panel-applet|' mate-tweak
-
-  # Patch to fix starting on MATE 1.20, https://github.com/ubuntu-mate/mate-tweak/pull/41
-  patch -Np1 < ../41.patch
 }
 
 package() {
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  cp -r "$srcdir"/ubuntu-mate-settings-$_umsver/usr/share/mate-panel "$pkgdir/usr/share"
+  #cp -r "$srcdir"/ubuntu-mate-settings-$_umsver/usr/share/mate-panel "$pkgdir/usr/share"
+  cp -r "$srcdir"/ubuntu-mate-settings/usr/share/mate-panel "$pkgdir/usr/share"
 }
