@@ -1,0 +1,16 @@
+pkgbase = xcursor-hackneyed
+	pkgdesc = Cursor theme inspired by Windows 3.x with high-contrast and sensible use of colors
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/Enthymem/hackneyed-x11-cursors
+	arch = any
+	license = custom:MIT
+	makedepends = make
+	makedepends = xorg-xcursorgen
+	makedepends = inkscape>=0.48.4
+	makedepends = imagemagick>=6.8.6
+	source = https://github.com/Enthymem/hackneyed-x11-cursors/archive/0.5.2.tar.gz
+	sha512sums = 5dd05c860c5f7d2cf001b790db9a192e53532c89e35af6a458fd52b6e133ee17ee2a0e1dcb8c045b39c89117c05404be88864a3ebd4b0602c17ab1b64649ad1c
+
+pkgname = xcursor-hackneyed
+
