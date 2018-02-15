@@ -1,0 +1,23 @@
+pkgbase = gputop-git
+	pkgdesc = GPU profiling tool
+	pkgver = r957.757399aa75
+	pkgrel = 1
+	url = https://github.com/rib/gputop
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = openssl
+	optdepends = mesa: for the UI
+	optdepends = libepoxy: for the UI
+	optdepends = glfw-x11: for the UI (Xorg native)
+	optdepends = glfw-wayland: for the UI (Wayland native)
+	optdepends = gtk3: for the UI (GTK)
+	optdepends = cogl: for the UI (GTK)
+	optdepends = libsoup: for the UI (GTK)
+	source = https://github.com/rib/gputop
+	md5sums = SKIP
+
+pkgname = gputop-git
+
