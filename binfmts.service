@@ -4,14 +4,12 @@ Documentation=man:update-binfmts(8)
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/update-binfmts --enable
-ExecStop=/usr/bin/update-binfmts --disable
-KillMode=process
+ExecStart=/bin/bash -c "exec /usr/bin/update-binfmts --enable"
+KillMode=none
 Restart=no
-RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
 
-# This service file writes "enabled" to /proc/sys/fs/binfmt_misc/status,
+# This service file writes "enabled" to /proc/sys/fs/binfmt_misc/status, 
 # and registers all binfmt specifications in /var/lib/binfmts (default)
