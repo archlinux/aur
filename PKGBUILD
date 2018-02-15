@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gnome-usage
-pkgver=v3.27.90+2+g3908ab6
+pkgver=v3.27.90
 pkgrel=1
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('git' 'vala' 'gobject-introspection' 'meson')
 provides=("$pkgname")
 conflicts=("$pkgname")
 _tag=v3.27.90
-source=("git+https://gitlab.gnome.org/GNOME/$pkgname.git#tag=$tag")
+source=("git+https://gitlab.gnome.org/GNOME/$pkgname.git#tag=$_tag")
 sha256sums=('SKIP')
 
 pkgver() {
