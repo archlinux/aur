@@ -14,7 +14,7 @@ pkgbase = mingw-w64-pteros-git
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-pteros::git+https://github.com/mdimura/pteros.git#branch=master
+	source = mingw-w64-pteros::git+https://github.com/yesint/pteros.git#branch=master
 	sha1sums = SKIP
 
 pkgname = mingw-w64-pteros-git
