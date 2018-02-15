@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-sstp
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
@@ -28,7 +28,8 @@ build() {
     --sysconfdir=/etc \
     --with-pppd-plugin-dir=/usr/lib/pppd/${pppd_version} \
     --libdir=/usr/lib \
-    --libexecdir=/usr/lib/NetworkManager
+    --libexecdir=/usr/lib/NetworkManager \
+    --enable-more-warnings=no
 
   make
 }
