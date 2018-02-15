@@ -4,7 +4,7 @@
 
 pkgname=dehydrated
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/dehydrated"
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
             'fbc0d67e74a6c66b9a11f5fed7e623697871a74be5a65bf9a7aa436e89912cde')
 package() {
 	cd "$pkgname"
-	install -Dm755 dehydrated "$pkgdir/usr/bin/dehydrated"
+	install -Dm755 "dehydrated-$pkgver/dehydrated" "$pkgdir/usr/bin/dehydrated"
 	install -Dm644 "$srcdir/dehydrated.timer" "$pkgdir/usr/lib/systemd/system/dehydrated.timer"
 	install -Dm644 "$srcdir/dehydrated.service" "$pkgdir/usr/lib/systemd/system/dehydrated.service"
 
