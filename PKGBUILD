@@ -3,23 +3,24 @@
 _gemname=unicode-display_width
 pkgname=ruby-${_gemname}
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Determines the monospace display width of a string"
 arch=('any')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
 source=(
-	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
+  "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
 sha256sums=(
-	'08f71f8827f846522c2796f509324faf4690fd1edb8c50360d7dd986f903f18a'
+  '08f71f8827f846522c2796f509324faf4690fd1edb8c50360d7dd986f903f18a'
 )
 
 package() {
-	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-	rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-	install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
