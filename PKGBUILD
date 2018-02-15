@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.234.0670f78
+pkgver=1.2_1.7.0.netfilter.239.d21290a
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -29,6 +29,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   ./autogen.sh
+  cd "src/lib"
+  make ndpi_network_list.c.inc
 }
 
 build() {
