@@ -8,6 +8,7 @@ pkgbase = can-utils
 	makedepends = libtool
 	provides = can-utils
 	conflicts = can-utils-git
+	replaces = can-utils-git
 	source = https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz
 	sha256sums = SKIP
 

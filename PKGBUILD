@@ -10,6 +10,7 @@ url="https://github.com/linux-can/can-utils"
 license=('GPLv2')
 makedepends=("libtool")
 provides=("can-utils")
+replaces=("can-utils-git")
 conflicts=("can-utils-git")
 source=("https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz")
 sha256sums=('SKIP')
