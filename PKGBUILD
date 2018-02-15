@@ -1,6 +1,6 @@
 pkgname="i3lock-color"
 pkgver=2.10.1
-pkgrel=3
+pkgrel=4
 _version="2.10.1-1-c"
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
@@ -14,6 +14,10 @@ sha256sums=('df1b834c76461e5ff6c7799ffcb4e3d7dbcc8bc9f5ba5f62b4e74f1a7c63df66')
 
 build() {
 	cd "${srcdir}/${pkgname}-${_version}"
+
+	# Fix ticket FS#31544, sed line taken from gentoo
+	sed -i -e 's:login:system-auth:' pam/i3lock 
+	
 	autoreconf -fi
 	./configure --prefix="$pkgdir/usr/" --sysconfdir="$pkgdir/etc/"
 	make
