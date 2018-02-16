@@ -2,7 +2,7 @@
 
 pkgname=perl-term-twiddle-qle
 pkgver=2.73
-pkgrel=1
+pkgrel=2
 pkgdesc='Twiddles the cursor while your bored and waiting -*NOTE:without hi-res dep'
 _dist=Term-Twiddle
 arch=('any')
