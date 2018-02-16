@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
 	pkgver = 25.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = emacs-lucid
 	depends = hicolor-icon-theme
 	depends = dbus
 	depends = alsa-lib
-	depends = imagemagick
+	depends = libmagick6
 	depends = gnutls
 	depends = libxrandr
 	depends = libxinerama
