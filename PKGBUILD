@@ -29,7 +29,7 @@ depends=(
     xcb-util-wm
 )
 makedepends=(
-    'meson>=0.39.1'
+    meson
     pkg-config
     ninja
     libxslt
