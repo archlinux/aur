@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.r417.ff06954
+pkgver=1.1.1.r502.f2134cf
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  _ver="$(cat KNLMeansCL/KNLMeansCL.h | grep -m1 '#define VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat KNLMeansCL/NLMDefault.h | grep -m1 '#define VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
