@@ -3,17 +3,14 @@
 # Contributor: EEva <eeva+aur at marvid fr>
 
 pkgname=ttf-montserrat
-_fontname=Montserrat
-provides=('ttf-montserrat')
-pkgdesc="Gorgeous geometric font with extended latin support (Regular, Alternates)"
-url="http://montserrat.zkysky.com.ar/en"
 pkgver=7.200
-pkgrel=1
+pkgrel=2
+_fontname=Montserrat
+pkgdesc='Geometric font in many weights with Cyrillic and extended Latin support (Regular, Alternates), original concept by Julieta Ulanovsky'
+url='http://montserrat.zkysky.com.ar/en'
 arch=('any')
 license=('custom:OFL')
-depends=()
 install=ttf.install
-makedepends=()
 source=("https://github.com/JulietaUla/${_fontname}/archive/v${pkgver}.tar.gz")
 sha256sums=('340125df4700876c5adf4df98c885dbe9b96c8a6a0ee634a520934c77ee097dc')
 
