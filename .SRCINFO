@@ -1,0 +1,19 @@
+pkgbase = aurman-git
+	pkgdesc = aurman AUR helper
+	pkgver = 1.0a.5
+	pkgrel = 1
+	url = https://github.com/polygamma/aurman
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = expac
+	depends = python-requests
+	depends = pyalpm
+	depends = pacman
+	depends = sudo
+	source = aurman_sources::git+https://github.com/polygamma/aurman.git#branch=master
+	md5sums = SKIP
+
+pkgname = aurman-git
+
