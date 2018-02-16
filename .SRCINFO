@@ -13,7 +13,7 @@ pkgbase = mingw-w64-rust-bin
 	depends = libgit2
 	depends = mingw-w64-gcc
 	optdepends = wine: for cargo test support
-	provides = mingw-w64-rust
+	provides = mingw-w64-rust=1.24.0
 	conflicts = mingw-w64-rust
 	replaces = mingw-w64-rust
 	options = !emptydirs
