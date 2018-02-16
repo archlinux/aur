@@ -1,7 +1,7 @@
 pkgbase = perl-tk-splash
 	pkgdesc = create a splash screen
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Tk-Splash
 	arch = any
 	license = GPL

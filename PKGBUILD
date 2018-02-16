@@ -2,7 +2,7 @@
 
 pkgname=perl-tk-splash
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="create a splash screen "
 _dist=Tk-Splash
 arch=('any')
