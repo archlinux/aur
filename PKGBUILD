@@ -3,12 +3,13 @@
 pkgname=ruby-exifr
 gemname=exifr
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='EXIF Reader is a module to read EXIF from JPEG and TIFF images.'
 arch=('any')
 url='https://github.com/remvee/exifr'
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
