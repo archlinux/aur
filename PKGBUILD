@@ -103,7 +103,6 @@ build() {
     --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
     --with-hostname-persist=default \
     --with-iptables=/usr/bin/iptables \
-    --with-resolvconf=/usr/bin/resolvconf \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-libnm-glib \
     --with-modem-manager-1 \
