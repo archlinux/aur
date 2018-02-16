@@ -28,7 +28,7 @@ localise-queries
 bogus-priv
 no-resolv
 cache-size=10000
-log-queries
+log-queries=extra
 log-facility=/run/log/pihole/pihole.log
 local-ttl=300
 log-async
