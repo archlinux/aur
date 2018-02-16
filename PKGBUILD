@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=${_pkgname}-git
-pkgver=1.2.1.r0.g7ca6ebb
+pkgver=1.2.2.r7.g0cbdd30
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ conflicts=("${_pkgname}")
 depends=(gtk3 libkeybinder3 ffmpeg)
 makedepends=(git cmake vala gettext txt2man)
 optdepends=(
-  'gst-plugins-good: WebM output under Gnome Shell'
+  'gst-plugins-good: Recording under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
   'gifski: High quality GIF animations with thousands of colors'
 )
