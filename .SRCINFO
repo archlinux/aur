@@ -1,7 +1,7 @@
 pkgbase = peek
 	pkgdesc = Simple screen recorder with an easy to use interface
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phw/peek
 	arch = i686
 	arch = x86_64

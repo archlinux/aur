@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple screen recorder with an easy to use interface"
 arch=('i686' 'x86_64')
 url="https://github.com/phw/peek"
@@ -27,7 +27,7 @@ build() {
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DGSETTINGS_COMPILE=OFF \
-    -DENABLE_FILECHOOSERNATIVE=OFF
+    -DENABLE_FILECHOOSERNATIVE=ON
   make
 }
 
