@@ -1,4 +1,4 @@
-pkgbase = gnuplot
+pkgbase = gnuplot-caca
 	pkgdesc = Plotting package which outputs to X11, PostScript, PNG, GIF, and others
 	pkgver = 5.2.2
 	pkgrel = 1
@@ -19,10 +19,10 @@ pkgbase = gnuplot
 	depends = qt5-svg
 	depends = libcaca
 	depends = gnutls
-	source = https://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.2.2.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/gnuplot-caca/gnuplot-caca-5.2.2.tar.gz
 	source = lua53_compat.patch
 	sha1sums = fc39158851f39e48136d2bdd3f753bf46a99965c
 	sha1sums = 9005fa9e4da91ceedb8ccd1d761866e7b064f8b1
 
-pkgname = gnuplot
+pkgname = gnuplot-caca
 

@@ -2,8 +2,9 @@
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Samuel Williams <https://www.codeotaku.com>
 
-pkgname=gnuplot
+pkgname=gnuplot-caca
 pkgver=5.2.2
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others" 
