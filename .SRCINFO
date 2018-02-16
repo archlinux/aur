@@ -1,14 +1,14 @@
 pkgbase = base16-manager
 	pkgdesc = A command line tool to install base16 templates and set themes globally.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/AuditeMarlow/base16-manager
 	arch = any
 	license = MIT
 	depends = bash
 	depends = git
-	source = https://github.com/AuditeMarlow/base16-manager/archive/1.0.0.tar.gz
-	md5sums = 2898be2310016b053259d7a1e95e59d2
+	source = https://github.com/AuditeMarlow/base16-manager/archive/1.1.0.tar.gz
+	md5sums = 015a729f5f59d45f3d1d6ed5fdfe6c91
 
 pkgname = base16-manager
 
