@@ -1,7 +1,7 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname=('python-nexpy' 'python2-nexpy')
 _pkgname=nexpy
-pkgver=0.10.0
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="NeXpy: A Python GUI to analyze NeXus data"
 url="http://nexpy.github.io/nexpy"
@@ -9,14 +9,14 @@ arch=("any")
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six')
 source=("https://github.com/nexpy/nexpy/archive/v${pkgver}.tar.gz")
-md5sums=('16c73af136fd0a03e62b51a147d011c4')
+md5sums=('43bfc04c709eb5b8605215ed182af716')
 
 prepare() {
     cp -a "${srcdir}/$_pkgname-$pkgver"{,-py2}
 }
 
 package_python-nexpy() {
-    depends=('python-numpy' 'python-h5py' 'python-scipy' 'python-nexusformat' 'jupyter' 'python-matplotlib')
+    depends=('python-numpy' 'python-h5py' 'python-scipy' 'python-nexusformat' 'jupyter' 'python-matplotlib' 'python-ansi2html')
     cd "$srcdir/$_pkgname-$pkgver"
     sed -i 's/jupyter/jupyter_core/' src/nexpy/requires.py # Can't find jupyter at run time
     python setup.py install --root="$pkgdir/" --optimize=1
