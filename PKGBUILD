@@ -51,7 +51,7 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
-md5sums=('9fa55fdb07a2790059867138981421a8'
+md5sums=('32f570ff2b2729beb598983c2fa48f1c'
          '7b86af8b2a5eb1f9b0152ea609060b31'
          '982ef08f7d5d6229e3b0fcbd1896ebfc'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
@@ -65,11 +65,6 @@ prepare() {
     cp -pr "${pkgname}-archdroid-icon-theme-${_archdroid_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "${pkgname}-gnome-colors-icon-theme-${_gnome_colors_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
     cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
-}
-
-build() {
-    cd "${srcdir}/${pkgname}-${_oomox_ver}/packaging"
-    mv com.github.actionless.${pkgname} com.github.actionless.${pkgname}.desktop
 }
 
 package() {
