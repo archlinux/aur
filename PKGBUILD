@@ -4,7 +4,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=3.2.70.14
+pkgver=3.2.70.15
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
@@ -22,7 +22,7 @@ source=("https://github.com/MediaBrowser/Emby/releases/download/${pkgver}/embyse
         'emby-server.sysusers'
         'emby-server.tmpfiles')
 backup=('etc/conf.d/emby-server')
-sha256sums=('df73ea635798f79a6bd8233ccd8f4282697356e5d4658cf2ffe8348bbaa057ad'
+sha256sums=('3b6beb29267e4415a4bc08d84d7a6a3f34e90cb27ff3918698b108112759a57c'
             '1f04c5dff2e1534bff101917a556295d63aae26c233446b252890ad58221e513'
             'e44692b24d69aef8568c6e68088e5a28e42584868a8936abcab9211c236c2a6b'
             'e6676f75bb12ba2b88da130be1272abb0e332f40e9fa043182a865e3d74a38fb'
