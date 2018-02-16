@@ -4,7 +4,8 @@ Documentation=https://www.elastic.co/guide/en/beats/filebeat/current
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/filebeat -path.config /etc/filebeat \
+ExecStart=/usr/bin/filebeat -c /etc/filebeat/filebeat.yml \
+                            -path.config /etc/filebeat \
                             -path.home /usr/share/filebeat \
                             -path.data /var/lib/filebeat \
                             -path.logs /var/log/filebeat
