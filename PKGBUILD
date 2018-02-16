@@ -3,7 +3,7 @@ pkgbase=qt5-jsonserializer
 pkgname=(qt5-jsonserializer qt5-jsonserializer-doc)
 group=qt5-jsonserializer-full
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtJsonSerializer"
@@ -50,4 +50,8 @@ package_qt5-jsonserializer-doc() {
 
   cd build/doc
   make INSTALL_ROOT="$pkgdir" install
+
+  # DROP file paths from doc tags
+  find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
+    -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtJsonSerializer</path>:g' {} \;
 }
