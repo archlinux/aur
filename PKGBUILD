@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('501e291cfc4ad1ad45d0daa7dd246ef039bf345b404cdddccc2f0ac0664513ba'
+sha256sums=('a6b3a854900c04b46f53811335a7f791a8a208aa2413eec5539678c03dae9b2b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -212,8 +212,7 @@ sha256sums=('501e291cfc4ad1ad45d0daa7dd246ef039bf345b404cdddccc2f0ac0664513ba'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            'e802d8874dff02617b8d5a5214ac14bf616eff1528e1c0e0cc7c9bc1bd0804e5')
-
+            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -358,7 +357,7 @@ patch -Np1 -i ../edgy.patch
 
 patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
-#patch -Np1 -i ../desu.patch
+patch -Np1 -i ../desu.patch
  #patch -Np1 -i ../hell.patch
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
