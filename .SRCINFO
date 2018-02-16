@@ -1,8 +1,7 @@
 pkgbase = kodi-gb-git
-	pkgver = 18.0.r48226.3837206eaa
-	pkgrel = 2
+	pkgver = 18.0.r48337.dcdf336207
+	pkgrel = 1
 	url = http://kodi.tv
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = afpfs-ng
@@ -53,7 +52,7 @@ pkgbase = kodi-gb-git
 	sha256sums = SKIP
 
 pkgname = kodi-gb-git
-	pkgdesc = A software media player and entertainment hub for digital media (retroplayer branch)
+	pkgdesc = A software media player and entertainment hub for digital media (retroplayer / garbear)
 	depends = bluez-libs
 	depends = desktop-file-utils
 	depends = ffmpeg
@@ -86,56 +85,37 @@ pkgname = kodi-gb-git
 	optdepends = unrar: Archives support
 	optdepends = unzip: Archives support
 	optdepends = upower: Display battery level
-	provides = kodi
 	provides = xbmc
+	provides = kodi
+	provides = kodi-gb
+	conflicts = xbmc
 	conflicts = kodi
 	conflicts = kodi-git
-	conflicts = xbmc
-	replaces = xbmc-git
-	replaces = xbmc-svn
+	conflicts = arm-mem-git
+	conflicts = shairplay-git
+	replaces = xbmc-rbp-git
 
 pkgname = kodi-gb-eventclients-git
-	pkgdesc = Kodi Event Clients (retroplayer branch)
+	pkgdesc = Kodi event clients (retroplayer / garbear)
 	depends = cwiid
+	provides = kodi-eventclients
 	conflicts = kodi-eventclients
 	conflicts = kodi-eventclients-git
 
 pkgname = kodi-gb-tools-texturepacker-git
-	pkgdesc = Kodi Texturepacker tool (retroplayer branch)
+	pkgdesc = Kodi texturepacker tool (retroplayer / garbear)
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = lzo
+	conflicts = kodi-tools-texturepacker
 	conflicts = kodi-tools-texturepacker-git
 
 pkgname = kodi-gb-dev-git
-	pkgdesc = Kodi dev files (retroplayer branch)
+	pkgdesc = Kodi dev files (retroplayer / garbear)
 	depends = kodi
 	provides = kodi-dev
+	provides = kodi-gb-dev
+	conflicts = kodi-dev
 	conflicts = kodi-dev-git
-
-pkgname = kodi-gb-addon-peripheral-joystick-git
-	pkgdesc = Joystick support for Kodi
-	groups = kodi-addons
-	groups = kodi-addons-peripheral
-	depends = kodi
-
-pkgname = kodi-gb-addon-game-libretro-git
-	pkgdesc = libretro game addon for kodi
-	groups = kodi-addons
-	groups = kodi-addons-game
-	depends = kodi
-	provides = kodi-addon-game-libretro
-
-pkgname = kodi-gb-addon-game-libretro-snes9x2010-git
-	pkgdesc = libretro game addon for kodi - Snes9x Next. (Super Nintendo Entertainment System)
-	groups = kodi-addons
-	groups = kodi-addons-game
-	depends = kodi-addon-game-libretro
-
-pkgname = kodi-gb-addon-game-libretro-genplus-git
-	pkgdesc = libretro game addon for kodi - Genesis Plus GX. (Sega Master System/Sega Game Gear/Sega Mega Drive/Sega Genesis/Sega CD)
-	groups = kodi-addons
-	groups = kodi-addons-game
-	depends = kodi-addon-game-libretro
 
