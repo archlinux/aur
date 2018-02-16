@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export JAVA_HOME=/usr/share/hmcl/jre
+export PATH=$JAVA_HOME/bin:$PATH
+
+mpath=$HOME/.config/hmcl
+mkdir -p $mpath
+cd $mpath
+
+java -jar /usr/share/hmcl/hmcl.jar
