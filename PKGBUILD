@@ -2,9 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Shujie Zhang <zhang.shujie87@gmail.com>
 
+_name=news-updater
 pkgname=nextcloud-news-updater
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This Python library is a parallel feed updater for the nextCloud News app"
 arch=('any')
 url="https://github.com/nextcloud/news-updater"
@@ -14,7 +15,7 @@ makedepends=('python-setuptools')
 optdepends=('nextcloud-app-news: Updating a local instance of the nextCloud News app')
 backup=("etc/webapps/nextcloud/news/${pkgname}.ini")
 options=('!strip')
-source=("${pkgname}.tar.gz::https://github.com/nextcloud/news-updater/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/${_name}/archive/${pkgver}.tar.gz"
   "${pkgname}.ini"
   "${pkgname}.service"
   "${pkgname}.timer")
@@ -24,15 +25,19 @@ sha512sums=('dc57079df5490d63317525c322318dd3bf2dc88630827ff8cac8512e0e9fa333079
             'dd06c06249bc9537555517d97a66dbaefcfcc27547a03abb3cf8bcb15edbda1f49cb03191dbebb8ad6737bdf46c1f25567636fa1c206b60a39d22ce41c506aaa')
 install=${pkgname}.install
 
+prepare() {
+  mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
+}
+
 build() {
-  cd "news-updater-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "news-updater-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py install --skip-build --optimize=1 --root="${pkgdir}"
-  install -Dm0644 "${srcdir}/${pkgname}.ini" "${pkgdir}/etc/webapps/nextcloud/news/${pkgname}.ini"
-  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm0644 "${srcdir}/${pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
+  install -vDm0644 "${srcdir}/${pkgname}.ini" "${pkgdir}/etc/webapps/nextcloud/news/${pkgname}.ini"
+  install -vDm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -vDm0644 "${srcdir}/${pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
 }
