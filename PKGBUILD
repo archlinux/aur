@@ -1,13 +1,15 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
-pkgname=qt5-restclient
-pkgver=1.2.5
+pkgbase=qt5-restclient
+pkgname=(qt5-restclient qt5-restclient-doc)
+group=qt5-restclient-full
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer>=2.1.0')
-makedepends=('git' 'qt5-tools')
+depends=('qt5-base' 'qt5-jsonserializer>=3.1.0')
+makedepends=('git' 'qt5-tools' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtRestClient.git#tag=$pkgver"
@@ -25,11 +27,17 @@ build() {
   qmake "../$_pkgfqn/"
   make qmake_all
   make
+  make lrelease
+  make doxygen
 }
 
-package() {
+package_qt5-restclient() {
   cd build
+  cd src
   make INSTALL_ROOT="$pkgdir" install
+  cd ../tools
+  make INSTALL_ROOT="$pkgdir" install
+  cd ..
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/usr/lib" -type f -name '*.prl' \
@@ -37,4 +45,16 @@ package() {
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+}
+
+package_qt5-restclient-doc() {
+  depends=('qt5-restclient')
+  optdepends=()
+
+  cd build/doc
+  make INSTALL_ROOT="$pkgdir" install
+
+  # DROP file paths from doc tags
+  find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
+    -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtRestClient</path>:g' {} \;
 }
