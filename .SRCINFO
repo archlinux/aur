@@ -1,0 +1,13 @@
+pkgbase = adduser-deb
+	pkgdesc = Add and remove users and groups from Debian
+	pkgver = 3.113+nmu3
+	pkgrel = 1
+	url = http://alioth.debian.org/projects/adduser/
+	arch = any
+	license = GPLv2
+	depends = gawk
+	source = https://launchpad.net/debian/+archive/primary/+files/adduser_3.113+nmu3.tar.gz
+	md5sums = ccb5864bde56683182c89c44474e7182
+
+pkgname = adduser-deb
+
