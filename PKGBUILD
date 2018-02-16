@@ -15,14 +15,10 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('cf93aa21db03e821bd987e4471e1f35fae5c846cc8482249c589ba51969cdc30')
 
 build() {
-	cd $_dirname-$pkgver
-	mkdir build 
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake "$_dirname-$pkgver" -DCMAKE_INSTALL_PREFIX:PATH=/usr
 	make
 }
 
 package() {
-	cd $_dirname-$pkgver/build
 	make DESTDIR="$pkgdir/" install
 }
