@@ -1,29 +1,30 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=schroedinger-cat-backgrounds
 pkgver=18.91.0
-pkgrel=2
-_rhver="${pkgver}-6.fc26"
+pkgrel=3
+_rhver="${pkgver}-7.fc27"
 pkgdesc="Fedora 19 (Schroedinger Cat) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_19"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/s/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('e610392f9718f936735ff016861b63ba8b8d20335e46409f64440e69e8ef9f73')
+sha256sums=('8af9f8103a8b08d376c42a137aa46c56995a4f2994e9e03c3d09bb2247f76f9e')
 
 prepare()  {
-    tar -xvJf ./${pkgname}-${pkgver}.tar.xz
-    rm -r ./${pkgname}-${pkgver}.tar.xz
-    rm -r ./${pkgname}.spec
+  tar -xvJf ./${pkgname}-${pkgver}.tar.xz
+  rm -r ./${pkgname}-${pkgver}.tar.xz
+  rm -r ./${pkgname}.spec
 }
 
 build() {
-    cd ./${pkgname}-${pkgver}
-    make
+  cd ./${pkgname}-${pkgver}
+  make
 }
 
 package() {    
-    cd ./${pkgname}-${pkgver}
-    make install DESTDIR="${pkgdir}"
+  cd ./${pkgname}-${pkgver}
+  make install DESTDIR="${pkgdir}"
 }
+# vim:set ts=2 sw=2 et:
