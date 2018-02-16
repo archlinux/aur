@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
-pkgver=2.13.2
+pkgver=3.0
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
@@ -18,8 +18,8 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
 	"$pkgname.conf"
 	"$pkgname.sysuser"
   )
-md5sums=('07383d2b3de1ef31526b090603e783b3'
-         'a10e77e81c900819dfe78e1484e1e226'
+md5sums=('45fd33e4498b2ab9403d96e1251abb8c'
+         '6a09b7b025863a618f18f3c311227c14'
          '0f65203b2585fb83e02826091d220386'
          '2d6ae93eea48a09ce5bc5bf62e081dd4'
          '68e78907dc2a0c89421d02377e76d353')
@@ -40,12 +40,14 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: git descriptions setup 4" && return 1 ; fi
 
   # setting up logs paths
-  sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/structs.c
+  sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/memory.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 1" && return 1 ; fi
-  sed -i "s|/var/run/pihole-FTL|/run/pihole-ftl/pihole-FTL|w $_ssc" "$srcdir"/$_pkgname-$pkgver/structs.c
+  sed -i "s|/var/run/pihole-FTL|/run/pihole-ftl/pihole-FTL|w $_ssc" "$srcdir"/$_pkgname-$pkgver/memory.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 2" && return 1 ; fi
-  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/structs.c
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/memory.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 3" && return 1 ; fi
+  sed -i "s|/var/run/pihole/|/run/pihole-ftl/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/memory.c
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 4" && return 1 ; fi
 }
 
 build() {
