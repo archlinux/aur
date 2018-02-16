@@ -2,7 +2,7 @@
 
 pkgname=perl-tk-fontdialog
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Font Dialog Widget"
 _dist=Tk-FontDialog
 arch=('any')

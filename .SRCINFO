@@ -1,7 +1,7 @@
 pkgbase = perl-tk-fontdialog
 	pkgdesc = Font Dialog Widget
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Tk-FontDialog
 	arch = any
 	license = GPL
