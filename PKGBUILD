@@ -1,8 +1,9 @@
-# Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
+# Maintainer : Barry Smith <brrtsm@gmail.com>
+# Contributor: Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=ruby-thread_safe
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Thread-safe collections and utilities for Ruby"
 arch=(any)
 url="https://github.com/ruby-concurrency/thread_safe"
@@ -13,7 +14,7 @@ noextract=("thread_safe-${pkgver}.gem")
 sha256sums=('993da065f98b8575c537ebf984ffb79eecdb6064559a3b9d2a9d7aaf313704c3')
 
 package() {
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
 
   gem install --no-user-install --ignore-dependencies \
     -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" "thread_safe-${pkgver}.gem"
