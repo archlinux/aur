@@ -5,12 +5,12 @@
 pkgname=pdfposter
 pkgver=0.6.1dev
 _gitcommit='d800e72c8deef2f30d0b0c254cc7d5f6138c4839'
-pkgrel=1
+pkgrel=2
 pkgdesc='Print large posters on multiple sheets'
 arch=('any')
 url='https://build.opensuse.org/package/show?package=pdfposter&project=devel%3Alanguages%3Apython'
 license=('GPL3')
-depends=('python2-pypdf')
+depends=('python2-pypdf2')
 makedepends=('python2-distribute')
 options=(!emptydirs)
 source=("archive.tar.bz2::https://gitlab.com/pdftools/pdfposter/repository/archive.tar.bz2?ref=${_gitcommit}"
