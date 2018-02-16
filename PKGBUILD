@@ -1,18 +1,25 @@
+# Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
+# Submitter:  Danilo <aur@dbrgn.ch>
+
 model="9330cdw"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
-pkgrel=2
+pkgrel=4
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9330CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
-depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
-source=("http://www.brother.com/pub/bsc/linux/dlf/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
-        "http://www.brother.com/pub/bsc/linux/dlf/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
+depends=('deb2targz' 'perl' 'brscan4' 'a2ps')
+lpr_ver="1.1.2"
+lpr_rev=1
+cw_ver="1.1.4"
+cw_rev=0
+source=("http://download.brother.com/welcome/dlf100400/mfc${model}lpr-${lpr_ver}-${lpr_rev}.i386.deb"
+        "http://download.brother.com/welcome/dlf100402/mfc${model}cupswrapper-${cw_ver}-${cw_rev}.i386.deb")
 sha256sums=('d6af18bd4e33a2e01f6647cc1eb6d7f1b519bd9f32c525c0343e6883d66a0e04'
-            '02d8c0fa2335e7903b51c94fcd049acc5a93cfe422e0e3f9762bb3e45148b68f')
+            '08cf568c6924a146b541077642bf07b22fd8aa2b5cca522b4f627430ed2eb2ec')
 
 package() {
     deb2targz *.deb >/dev/null || return 1
