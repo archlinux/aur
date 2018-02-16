@@ -6,6 +6,7 @@ pkgbase = arrow
 	arch = i686
 	arch = x86_64
 	license = Apache
+	checkdepends = gflags
 	makedepends = cmake
 	makedepends = boost
 	makedepends = brotli
