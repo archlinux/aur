@@ -1,0 +1,20 @@
+pkgbase = canon-pixma-lt7500-complete
+	pkgdesc = Complete driver set (printing and scanning) for Canon Pixma TR7500 series
+	pkgver = 5.50.3.50
+	pkgrel = 2
+	url = http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libcups
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff
+	source = http://gdlp01.c-wss.com/gds/8/0100009108/01/cnijfilter2-5.50-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/1/0100009111/01/scangearmp2-3.50-1-deb.tar.gz
+	sha256sums = d90c16e3050e9676db51d3db4b1157416d2cc950b2f2e8b9f0d4c178a94cbbd0
+	sha256sums = 4a500f4c62fa30f4ded100aa07c95f3ee24ec1afbf2269222fc7801399b19b0a
+
+pkgname = canon-pixma-lt7500-complete
+
