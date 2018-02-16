@@ -3,7 +3,7 @@ _orgname=openorienteering
 _pkgname=mapper
 _branch=master
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.8.0.r4377.cdd48c35
+pkgver=0.8.0.r4396.8d96cc0e
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -67,6 +67,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLICENSING_PROVIDER=arch   \
     -DMapper_PACKAGE_NAME=${pkgname} \
+    -DMapper_VERSION_DISPLAY=${pkgver} \
     -Wno-dev
   make
 }
