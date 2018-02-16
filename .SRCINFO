@@ -1,6 +1,6 @@
 pkgbase = snapcraft
 	pkgdesc = Build Ubuntu snappy packages.
-	pkgver = 2.39
+	pkgver = 2.39.1
 	pkgrel = 1
 	url = http://snapcraft.io
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = snapcraft
 	depends = python-debian
 	optdepends = lxd
 	options = !emptydirs
-	source = https://github.com/ubuntu-core/snapcraft/archive/2.39.tar.gz
-	sha256sums = c75a6009dc5152b6dcc9a3fc72d129942bd407651abc0f1736d81184240e770c
+	source = https://github.com/ubuntu-core/snapcraft/archive/2.39.1.tar.gz
+	sha256sums = bb2bb8e70e97b8d4cf2fc20c418c2abdd10cb056fde134713849486727a9d2ed
 
 pkgname = snapcraft
 
