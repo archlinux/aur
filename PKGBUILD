@@ -2,13 +2,13 @@
 
 pkgname=return-to-the-roots-git
 pkgver=r3863.e340f253
-pkgrel=2
+pkgrel=3
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
 url="https://siedler25.org/"
 license=("GPL3")
-makedepends=("cmake" "git" "boost" "sdl_mixer" "curl" "lua" "miniupnpc")
-depends=("sdl_mixer" "miniupnpc" "boost-libs")
+makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua" "miniupnpc")
+depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc")
 conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
 provides=("return-to-the-roots")
 install="return-to-the-roots.install"
