@@ -1,14 +1,14 @@
-pkgname=nanocurrency-git
+pkgname=nanocurrency-node-git
 pkgver=10.0.r1.g4e4bcf8d
 pkgrel=1
-pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
+pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
 url="https://nano.org/"
 license=('BSD 2-clause')
 makedepends=('cmake')
-depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
-provides=(raiblocks nanocurrency)
-conflicts=("raiblocks" "raiblocks-git", "raiblocks-node-git")
+depends=('boost>=1.66.0' 'boost-libs>=1.66.0')
+provides=(raiblocks nanocurrency nanocurrency-node)
+conflicts=("raiblocks" "raiblocks-git" "raiblocks-cli-git" "nanocurrency-git")
 install=install
 pkgver() {
   cd "raiblocks"
@@ -45,7 +45,7 @@ prepare() {
 
   git submodule update --init --recursive
 
-  _flags=( "-D RAIBLOCKS_GUI=ON" )
+  _flags=( "-D RAIBLOCKS_GUI=OFF" )
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
@@ -54,7 +54,7 @@ prepare() {
     echo "excluding unsupported AVX2 optimizations"
   fi
   if grep -q sse4 /proc/cpuinfo; then
-    echo "build with SIMD optimizations"
+    echo "using with SIMD optimizations"
     _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=ON" )
   else
     echo "excluding unsupported SIMD optimizations"
@@ -65,7 +65,6 @@ prepare() {
 
 build() {
   cd "$srcdir/raiblocks"
-  make nano_wallet
   make rai_node
   make rai_lib
 }
@@ -73,16 +72,10 @@ build() {
 package() {
   cd "$srcdir/raiblocks"
 
-  install -Dm755 nano_wallet "$pkgdir"/usr/bin/nano_wallet
-  ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
   ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
   install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
   ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
-
-  install -Dm644 "$srcdir"/nanowallet128.png "$pkgdir"/usr/share/pixmaps/nanowallet128.png
-  install -Dm644 "$srcdir"/nanowallet.desktop "$pkgdir"/usr/share/applications/nanowallet.desktop
-  #ln -s /usr/share/applications/nanowallet.desktop "$pkgdir"/usr/lib/systemd/system/raiblocks.service
 
   install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
   ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
