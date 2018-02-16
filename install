@@ -9,7 +9,7 @@ create_or_update_user() {
     else
       usermod -l nano-node -m -d /var/lib/nano-node raiblocks
       groupmod -n nano-node raiblocks
-    end
+    fi
     echo "done. Data has been moved to /var/lib/nano-node"
   else
     getent passwd nano-node &>/dev/null || {
