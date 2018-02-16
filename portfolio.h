@@ -1,9 +1,6 @@
 #ifndef PORTFOLIO_H
 #define PORTFOLIO_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <math.h>
 #include "api.h"
 
@@ -18,6 +15,11 @@ const char* portfolio_file;
  */
 void portfolio_file_init();
 
+/**
+ * Stores the given file in a string and returns it
+ * @param fp the file
+ * @return the string containing the file
+ */
 char* portfolio_file_get_string(FILE* fp);
 
 /**

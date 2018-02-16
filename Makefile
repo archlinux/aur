@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall --std=c99
+CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2
 OBJECTS = main.o api.o portfolio.o
 LIBS = -lcurl -ljson-c -lm
 BIN = tick

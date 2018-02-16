@@ -3,8 +3,11 @@
 void portfolio_file_init() {
     char* home = getenv("HOME");
     char* path = (char*) malloc(strlen(home) + 30);
-    memcpy(path, home, strlen(home) + 1);
-    memcpy(&path[strlen(home)], "/.tick_portfolio.json", 25);
+    if (path == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    sprintf(path, "%s/.tick_portfolio.json", home);
     portfolio_file = path;
 }
 
@@ -13,7 +16,8 @@ char* portfolio_file_get_string(FILE* fp) {
     fseek(fp, 0, SEEK_END);
     size_t portfolio_size = (size_t) ftell(fp);
     fseek(fp, 0, SEEK_SET);
-    fread(portfolio_string, portfolio_size, sizeof(char), fp);
+    if (fread(portfolio_string, sizeof(char), portfolio_size, fp) != portfolio_size)
+        return NULL;
     return portfolio_string;
 }
 
@@ -27,6 +31,10 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         return;
     }
     char* portfolio_string = portfolio_file_get_string(fp);
+    if (portfolio_string == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        return;
+    }
     Json* jobj = NULL;
     if (strcmp(portfolio_string, "") == 0) { //new file
         jobj = json_object_new_array();
@@ -41,23 +49,27 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
             json_object_put(jobj);
             return;
         }
-        if (strcmp("USD$", ticker_name_string) != 0 && api_get_current_price(ticker_name_string) == NULL) {
-            printf("Invalid symbol.\n");
-            json_object_put(jobj);
-            free(portfolio_string);
-            return;
+        if (strcmp("USD$", ticker_name_string) != 0) {
+            double* data = api_get_current_price(ticker_name_string); // Curl data and check if NULL
+            if (data == NULL) {
+                printf("Invalid symbol.\n");
+                json_object_put(jobj);
+                free(portfolio_string);
+                return;
+            } else free(data);
         }
-        Json* new_object = json_object_new_object(); //creates new array index and adds values to it
+        Json* new_object = json_object_new_object(); // Creates new array index and adds values to it
         json_object_array_add(jobj, new_object);
         json_object_object_add(new_object, "Symbol", json_object_new_string(ticker_name_string));
         json_object_object_add(new_object, "Shares", json_object_new_double(quantity_shares));
         json_object_object_add(new_object, "USD_Spent", json_object_new_double(usd_spent));
         printf("Added %lf %s bought for %lf to portfolio.\n", quantity_shares, ticker_name_string, usd_spent);
-    } else {
+    } else { //if already in portfolio
         Json* current_index = json_object_array_get_idx(jobj, (size_t) index);
-        double current_shares = json_object_get_double(json_object_object_get(current_index, "Shares"));
+        double current_shares = json_object_get_double(
+                json_object_object_get(current_index, "Shares")); // Stores values already there
         double current_spent = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
-        json_object_object_del(current_index, "Shares");
+        json_object_object_del(current_index, "Shares"); // Deletes the objects already there
         json_object_object_del(current_index, "USD_Spent");
         if (option == SET) {
             current_shares = quantity_shares;
@@ -71,7 +83,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         } else {
             current_shares -= quantity_shares;
             current_spent -= usd_spent;
-            if (current_shares < 0 || current_spent < 0) {
+            if (current_shares < 0 || current_spent < 0) { // If you try to remove more than you have
                 printf("You do not have that many %s to remove.\n", ticker_name_string);
                 json_object_put(jobj);
                 free(portfolio_string);
@@ -128,6 +140,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
      */
     double* data = malloc(sizeof(double) * 3);
     char* portfolio_string = NULL;
+    Json* jobj = NULL;
     if (fp == NULL) { //if being called from portfolio_print_all
         ticker_name_string = (char*) strip_char(
                 (char*) json_object_get_string(json_object_object_get(current_index, "Symbol")), '\"');
@@ -135,7 +148,12 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
         data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
     } else { //if being called directly from main
         portfolio_string = portfolio_file_get_string(fp);
-        Json* jobj = json_tokener_parse(portfolio_string);
+        if (portfolio_string == NULL) {
+            fprintf(stderr, "fread() failed\n");
+            free(data);
+            return NULL;
+        }
+        jobj = json_tokener_parse(portfolio_string);
         int index = portfolio_symbol_index(ticker_name_string, jobj);
         if (index == -1) {
             printf("You do not have %s in your portfolio.\n", ticker_name_string);
@@ -160,10 +178,10 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
            data[0] / ticker_current_price_usd, ticker_name_string, data[0], data[1], data[0] - data[1],
            (100 * (data[0] - data[1])) / data[1],
            data[2], ticker_1d_percent_change);
-    if (fp == NULL) {
+    if (fp == NULL)
         free(ticker_name_string);
-        free(portfolio_string);
-    }
+    else json_object_put(jobj);
+    free(portfolio_string);
     return data;
 }
 
@@ -198,14 +216,20 @@ char* portfolio_legacy_get_next_val(FILE* fp) {
 void portfolio_legacy_convert() {
     printf("Warning: this will overwrite your JSON formatted portfolio, which is stored at: \"$HOME/.tick_portfolio\". Continue? y/n\n");
     char c = 0;
-    while (c != 'y' && c != 'n')
-        scanf("%c", &c);
+    while (c != 'y' && c != 'n') {
+        if (scanf("%c", &c) < 0)
+            c = 0;
+    }
     if (c == 'n') {
         printf("Aborted.\n");
         return;
     }
     FILE* fp = fopen(portfolio_file, "w");
     char* pf = portfolio_file_get_string(fp);
+    if (pf == NULL) {
+        fprintf(stderr, "fread() failed\n");
+        exit(EXIT_FAILURE);
+    }
     if (strcmp(pf, "") != 0)
         remove(portfolio_file);
     fclose(fp);

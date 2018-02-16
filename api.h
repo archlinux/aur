@@ -49,7 +49,7 @@ String* api_curl_data(char* url, char* post_field);
  * 2. Morningstar -- MUTF/OTCMKTS
  * 3. Coinmarketcap -- CRYPTO
  * @param ticker_name_string symbol
- * @return price data
+ * @return price data or NULL if invalid symbol
  */
 double* api_get_current_price(char* ticker_name_string);
 
@@ -63,7 +63,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
  * Returns current and yesterday's price of a stock with data from IEX.
  * Tested for NASDAQ, NYSE, and NYSEARCA listed stocks/ETFs.
  * @param ticker_name_string symbol
- * @return current price of stock
+ * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
 double* iex_get_price(char* ticker_name_string);
 
@@ -72,7 +72,7 @@ double* iex_get_price(char* ticker_name_string);
  * Tested for MUTF and OTCMKTS listed securities.
  * @param ticker_name_string symbol
  * @param offset number of days ago to get price of (0 = today)
- * @return price of security
+ * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
 double* morningstar_get_price(char* ticker_name_string);
 
@@ -80,7 +80,7 @@ double* morningstar_get_price(char* ticker_name_string);
  * Returns current and yesterday's price of a cryptocurrency with data from Coinmarketcap.
  * All cryptocurrencies listed on Coinmarketcap will work.
  * @param ticker_name_string symbol
- * @return current price of cryptocurrency
+ * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
 double* coinmarketcap_get_price(char* ticker_name_string);
 

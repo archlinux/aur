@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    //Convert legacy porfolio
+    // Convert legacy porfolio
     if (argc == 2 && strcmp(argv[1], "convert") == 0) {
         portfolio_legacy_convert();
         free((void*) portfolio_file);
@@ -59,8 +59,11 @@ int main(int argc, char* argv[]) {
             strtoupper(sym);
             if (strcmp(sym, "ALL") == 0)
                 portfolio_print_all(fp);
-            else
-                free(portfolio_print_stock(sym, fp, NULL));
+            else {
+                double* data = portfolio_print_stock(sym, fp, NULL);
+                if (data != NULL)
+                    free(data);
+            }
         }
     }
 
@@ -99,7 +102,7 @@ int main(int argc, char* argv[]) {
             // If last two characters of price are "EA", calculate
             // total price with number of units
             char ea = 0;
-            if (susd[ulen - 2] == 'E' && susd[ulen - 1] == 'A') {
+            if (ulen > 2 && susd[ulen - 2] == 'E' && susd[ulen - 1] == 'A') {
                 ea = 1;
                 susd[ulen - 2] = '\0';
             }
