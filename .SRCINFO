@@ -3,14 +3,15 @@ pkgbase = hmcl-git
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL/tree/master
-	arch = any
+	arch = x86_64
 	license = GPL3
-	makedepends = aria2
 	makedepends = git
 	provides = hmcl
 	conflicts = hmcl
 	source = git://github.com/huanghongxun/HMCL.git#branch=master
+	source = https://soft.dct.party/aur/hmcl/jdk-8-linux-x64.tar.xz
 	source = hmcl
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 4f83cd5629ef331f5d172fef3591964ac55da86c529cc7d87be8df63e25a29107773f7a389f83218bd9bd400963d01f9e1495898d9391c7a77042b475ee627cf
 
