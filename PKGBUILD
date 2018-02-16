@@ -1,4 +1,4 @@
-# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: Martin Florén <martin.floren@gmail.com>
 
 pkgname=otf-raleway
@@ -9,12 +9,12 @@ arch=('any')
 url="http://theleagueofmoveabletype.com/raleway/"
 license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
-source=(raleway.zip::'http://theleagueofmoveabletype.com/raleway/download')
-md5sums=('ff280d51659a149751a3fe194d2944b4')
+source=('https://github.com/theleagueof/raleway/archive/master.zip')
+sha256sums=('f6ed3c96644d9f01f6dbe10c427b830811c0faf13127a776567ad8f9036c67d0')
 
 package() {
-    cd $startdir/src
-    install -Dm 644 "theleagueof-raleway-40afd9d/Raleway Thin.otf" $pkgdir/usr/share/fonts/OTF/Raleway\ Thin.otf
+  cd "$srcdir/raleway-master"
+  install -Dm644 "Raleway Thin.otf" "$pkgdir/usr/share/fonts/OTF/Raleway Thin.otf"
+  install -Dm644 "Open Font License.markdown" "$pkgdir/usr/share/licenses/$pkgname/Open Font License.markdown"
+  install -m644 "Open Font License FAQ.markdown" "$pkgdir/usr/share/licenses/$pkgname/Open Font License FAQ.markdown"
 }
-
