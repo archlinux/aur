@@ -1,10 +1,9 @@
 pkgbase = gtk2-patched-filechooser-icon-view
 	pkgdesc = GTK2 patched with ahodesuka's filechooser-icon-view patch.
 	pkgver = 2.24.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/
 	install = gtk2.install
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = gobject-introspection
@@ -31,11 +30,11 @@ pkgbase = gtk2-patched-filechooser-icon-view
 	optdepends = gnome-icon-theme: Default icon theme
 	provides = gtk2=2.24.32
 	conflicts = gtk2
-	source = git://git.gnome.org/gtk+#commit=ed7d3e25f8b6debae6ccc8b50d1329155338cab8
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=ed7d3e25f8b6debae6ccc8b50d1329155338cab8
 	source = gtkrc
 	source = gtk-query-immodules-2.0.hook
 	source = xid-collision-debug.patch
-	source = https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/raw//gtk2-filechooser-icon-view.patch
+	source = gtk2-filechooser-icon-view.patch
 	sha256sums = SKIP
 	sha256sums = b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2
 	sha256sums = 9656a1efc798da1ac2dae94e921ed0f72719bd52d4d0138f305b993f778f7758
