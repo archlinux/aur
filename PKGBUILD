@@ -4,11 +4,11 @@ pkgbase=('python-scikit-umfpack')
 pkgname=('python-scikit-umfpack' 'python2-scikit-umfpack')
 _module='scikit-umfpack'
 pkgver='0.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to UMFPACK sparse direct solver."
 url="https://scikit-umfpack.github.io/scikit-umfpack"
-depends=('atlas-lapack' 'suitesparse' 'python2-scipy' 'python-scipy' 'cython2' 'cython' 'python2-numpy' 'python-numpy')
-makedepends=('python-setuptools' 'python2-setuptools' 'swig' 'python-pypandoc' 'python2-pypandoc')
+depends=('suitesparse')
+makedepends=('swig')
 license=('BSD')
 arch=('any')
 source=("https://pypi.io/packages/source/s/scikit-umfpack/scikit-umfpack-${pkgver}.tar.gz")
@@ -19,13 +19,15 @@ prepare() {
 }
 
 package_python-scikit-umfpack() {
-    depends+=('python')
+    depends+=('python' 'python-scipy' 'cython' 'python-numpy')
+    makedepends+=('python-setuptools' 'python-pypandoc')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-scikit-umfpack() {
-    depends+=('python2')
+    depends+=('python2' 'python2-scipy' 'cython2' 'python2-numpy')
+    makedepends+=('python2-setuptools' 'python2-pypandoc')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1
 }
