@@ -1,4 +1,5 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: LinRuoshui <lin.ruohshoei@gmail.com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 # Contributor: Jacob Emmert-Aronson <jacob at mlaronson dot com>
 # Contributor: Rene Schoebel <schoebel.r at gmail dot com>
 # Contributor: ZekeSulastin <zekesulastin@gmail.com>
@@ -13,53 +14,44 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=3.7.4
-_pkgver=3_7_4 # Upstream's url/dirs
+_pkgname=fs2open
+pkgver=3.8.0
+_pkgver=3_8_0 # Upstream's url/dirs
 pkgrel=1
-epoch=1
 pkgdesc="An enhancement of the FreeSpace 2 engine"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
 license=('custom:fs2_open')
-depends=('fs2_open-data' 'glu' 'libjpeg' 'libpng' 'libtheora'
-         'libvorbis' 'lua51' 'jansson' 'openal' 'sdl')
-optdepends=('fs2_open-mediavps: extensive audiovisual enhancements')
+conflicts=('fs2_open-git')
+depends=('doxygen' 'libjpeg' 'libpng' 'libtheora' 'libvorbis' 
+	 'lua51' 'mesa' 'openal' 'sdl' 'glu' 'jansson')
+optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
+	    'fs2_open-data: extensive retail data'
+	    'wxlauncher: cross-platform fs2 launcher')
 install=$pkgname.install
-source=(http://swc.fs2downloads.com/builds/fs2_open_${_pkgver}_src.tgz
+source=("https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_${_pkgver}/${pkgname}_${_pkgver}-source-Unix.tar.gz"
         'fs2_open'
         'fs2_open.desktop'
-        'increase_joy_buttons_fixed.patch'
         'options')
-sha256sums=('092b88ecf2ec13506a18e84be1d48cc03f65abba4b2cb5329450e9cae7cdbb25'
-            'b2032f44400f172fad769a94b9a3b5af16d46ac3901f855b7a5693870876ad24'
+sha256sums=('d26ff8b666bdae1e9f42abaf2f498db361093f2289da78555f1f6fbba7562227'
+            'ba7f8c62c41259223186b400ddcbb2c80665d27c6c34e0a5eca50b79450d2214'
             'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
-            '44b46f3aa70c515d6ea28f85703479cb53238c2dca8c005d9eca56c301d78efd'
             'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741')
-
-prepare() {
-  cd "${pkgname}_${_pkgver}"
-
-  # Increases hard limit of joystick buttons for better use with HOTAS etc.
-  patch -p1 -i "$srcdir/increase_joy_buttons_fixed.patch"
-}
-
 build() {
-  cd "${pkgname}_${_pkgver}"
+  cd "${_pkgname}.github.com"
 
-  # Add --enable-debug to make a debug build.  These are NOT meant for
-  # general play; only make a debug build if generating logs/bug-reports.
-  env LUA_CFLAGS="$(pkg-config --cflags lua51)" \
-      LUA_LIBS="$(pkg-config --libs lua51)"     \
-      ./autogen.sh --enable-speech
+  mkdir build
+  cd build
+  cmake ../
   make
 }
 
 package() {
-  cd "${pkgname}_${_pkgver}"
-
+  cd "${_pkgname}.github.com"
+  binary=`find build/bin/fs2_open*`	
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 ../fs2_open.desktop "$pkgdir/usr/share/applications/fs2_open.desktop"
   install -D -m644 ../options "$pkgdir/usr/share/$pkgname/options"
-  install -D -m755 code/fs2_open_$pkgver "$pkgdir/opt/$pkgname/fs2_open_$pkgver"
+  install -D -m755 ${binary} "$pkgdir/opt/$pkgname/fs2_open_$pkgver"
   install -D -m755 "../fs2_open" "$pkgdir/usr/bin/fs2_open"
 }
