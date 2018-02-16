@@ -8,7 +8,7 @@ license=('BSD 2-clause')
 makedepends=('cmake')
 depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
 provides=(raiblocks nanocurrency)
-conflicts=("raiblocks" "raiblocks-git", "raiblocks-node-git")
+conflicts=("raiblocks" "raiblocks-git" "raiblocks-node-git" "nanocurrency-node-git")
 install=install
 pkgver() {
   cd "raiblocks"
