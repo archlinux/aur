@@ -1,13 +1,15 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = 1.99.0.r34.g9a0d9eae
+	pkgver = 1.99.0.r86.g04750575
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = libmicrohttpd
 	makedepends = git
 	makedepends = rsync
+	makedepends = gperf
 	depends = libutil-linux
 	depends = gnutls
 	depends = libidn2
