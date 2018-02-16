@@ -1,7 +1,7 @@
 create_or_update_user() {
   if getent passwd raiblocks &>/dev/null; then
     echo -n ">>> Updating nano-node service user from raiblocks... "
-    if systemctl is-active --quiet service; then
+    if systemctl is-active --quiet raiblocks-node; then
       systemctl stop raiblocks-node
       usermod -l nano-node -m -d /var/lib/nano-node raiblocks
       groupmod -n nano-node raiblocks
