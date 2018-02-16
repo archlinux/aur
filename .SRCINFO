@@ -1,0 +1,28 @@
+pkgbase = gnuplot
+	pkgdesc = Plotting package which outputs to X11, PostScript, PNG, GIF, and others
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://www.gnuplot.info
+	arch = x86_64
+	license = custom
+	makedepends = texinfo
+	makedepends = texlive-core
+	makedepends = emacs
+	makedepends = texlive-latexextra
+	makedepends = qt5-tools
+	depends = readline
+	depends = gd
+	depends = wxgtk2
+	depends = cairo
+	depends = libjpeg
+	depends = lua
+	depends = qt5-svg
+	depends = libcaca
+	depends = gnutls
+	source = https://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.2.2.tar.gz
+	source = lua53_compat.patch
+	sha1sums = fc39158851f39e48136d2bdd3f753bf46a99965c
+	sha1sums = 9005fa9e4da91ceedb8ccd1d761866e7b064f8b1
+
+pkgname = gnuplot
+
