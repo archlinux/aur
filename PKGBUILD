@@ -2,7 +2,7 @@
 
 pkgname=otpclient-git
 _dirname="OTPClient"
-pkgver=v1.1.0
+pkgver=v1.1.0.r0.457122e
 pkgrel=1
 pkgdesc="Simple GTK+ v3 TOTP/HOTP client that uses libcotp"
 arch=('x86_64')
@@ -20,14 +20,10 @@ pkgver() {
 }
 
 build() {
-	cd $_dirname
-	mkdir build 
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake "$_dirname"/ -DCMAKE_INSTALL_PREFIX:PATH=/usr 
 	make
 }
 
 package() {
-	cd $_dirname/build
 	make DESTDIR="$pkgdir/" install
 }
