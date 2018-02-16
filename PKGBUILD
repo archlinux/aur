@@ -6,7 +6,7 @@
 
 pkgname=ngspice-git
 pkgver=r.
-pkgrel=1
+pkgrel=2
 pkgdesc='Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.'
 url='http://ngspice.sourceforge.net'
 license=('BSD')
@@ -15,6 +15,7 @@ depends=('libxaw' 'libedit' 'gcc-libs')
 source=("${pkgname}"::"git://git.code.sf.net/p/ngspice/ngspice#commit=99a20162d5038a328d335d11da69c9eee0549fdc"
         "manual.pdf"::"http://ngspice.sourceforge.net/docs/ngspice-manual.pdf")
 conflicts=("ngspice")
+provides=("ngspice")
 sha256sums=('SKIP'
             'dbdd19fde5995f78a362913cb196c778eff251fe59289673f5329adaede47110')
 
