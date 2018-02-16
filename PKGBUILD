@@ -4,12 +4,12 @@
 
 pkgname=cask
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management tool for Emacs"
 arch=('any')
 url='https://github.com/cask/cask'
 license=('GPL')
-depends=('emacs>=23' 'python')
+depends=('emacs' 'python')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('16b1054af3f58cf95b72f2d10e03450f550311774c7f16b918e3f29ecc7fcd13')
 
