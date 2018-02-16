@@ -1,7 +1,7 @@
 pkgbase = unity-editor-standardassets
 	pkgdesc = Unity Standard Assets for easily getting started building projects in Unity.
-	pkgver = 2017.3.0p2+20180117
-	pkgrel = 2
+	pkgver = 2017.3.1f1+20180216
+	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = unity-editor-standardassets
 	makedepends = libarchive
 	depends = unity-editor
 	options = !strip
-	source = http://beta.unity3d.com/download/7807bc63c3ab/UnitySetup-2017.3.0p2
-	sha1sums = ed56e42d211732e37fa84aa31b0d3eb2c92b177d
+	source = http://beta.unity3d.com/download/aea5ecb8f9fd/UnitySetup-2017.3.1f1
+	sha1sums = 065c7c75980dd57dc9b7113b2cd089e2ba2b9931
 
 pkgname = unity-editor-standardassets
 

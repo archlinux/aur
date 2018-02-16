@@ -1,16 +1,16 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.3.0
-_build=p2
-_buildtag=20180117
-_randomstring=7807bc63c3ab
+_version=2017.3.1
+_build=f1
+_buildtag=20180216
+_randomstring=aea5ecb8f9fd
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
 
 pkgname=unity-editor-standardassets
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=2
+pkgrel=1
 pkgdesc="Unity Standard Assets for easily getting started building projects in Unity."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -18,7 +18,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('ed56e42d211732e37fa84aa31b0d3eb2c92b177d')
+sha1sums=('065c7c75980dd57dc9b7113b2cd089e2ba2b9931')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
