@@ -195,8 +195,6 @@ build() {
   )
 
   if check_option strip y; then
-    # https://chromium-review.googlesource.com/c/chromium/src/+/712575
-    # _flags+=('exclude_unwind_tables=true')
     CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CPPFLAGS+=' -DNO_UNWIND_TABLES'
