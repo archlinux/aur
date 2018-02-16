@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.5.0
+_oomox_ver=1.5.0.1
 _numix_ver=1.6.1
 _materia_ver=20180110
 _archdroid_ver=1.0.2
@@ -9,7 +9,7 @@ _oomoxify_ver=675fedce9a47745212b062e13a7e51b01f2bb581
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
-md5sums=('982bcee23a67e2d3a1633b50310cc3e4'
+md5sums=('9fa55fdb07a2790059867138981421a8'
          '7b86af8b2a5eb1f9b0152ea609060b31'
          '982ef08f7d5d6229e3b0fcbd1896ebfc'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
@@ -67,9 +67,14 @@ prepare() {
     cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
 }
 
+build() {
+    cd "${srcdir}/${pkgname}-${_oomox_ver}/packaging"
+    mv com.github.actionless.${pkgname} com.github.actionless.${pkgname}.desktop
+}
+
 package() {
     install -d "${pkgdir}/opt/${pkgname}"
-    cd "${srcdir}/oomox-${_oomox_ver}"
+    cd "${srcdir}/${pkgname}-${_oomox_ver}"
     sed -i 's/rm -r/rm -rf/g' packaging/install.sh
     ./packaging/install.sh . "${pkgdir}"
     python -O -m compileall "${pkgdir}/opt/${pkgname}/oomox_gui"
