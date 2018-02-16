@@ -4,22 +4,12 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethminer-git
-pkgver=0.12.0.0.20170716.f99ca9822
+pkgver=0.14.0.1.20180216.07f5d714e
 pkgrel=1
 pkgdesc="Ethereum miner with CUDA and stratum support. chfast's version."
 arch=('i686' 'x86_64')
-depends=(
-  'boost'
-  'crypto++'
-  'cuda'
-  'leveldb'
-  'ocl-icd'
-  'libmicrohttpd'
-  'miniupnpc'
-  'libjson-rpc-cpp-git'
-)
 makedepends=(
-  'gcc5'
+  'gcc6'
   'cmake'
   'git'
   'opencl-headers'
@@ -61,10 +51,10 @@ build() {
   unset CFLAGS #march=native can break the build if set in makepkg.conf
   unset CXXFLAGS
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DETHASHCUDA=ON \
-      -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
-      -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
-      -DCMAKE_RANLIB=/usr/bin/gcc-ranlib-5 \
-      -DCMAKE_AR=/usr/bin/gcc-ar-5
+      -DCMAKE_C_COMPILER=/usr/bin/gcc-6 \
+      -DCMAKE_CXX_COMPILER=/usr/bin/g++-6 \
+      -DCMAKE_RANLIB=/usr/bin/gcc-ranlib-6 \
+      -DCMAKE_AR=/usr/bin/gcc-ar-6
   cmake --build .
   popd
 }
@@ -73,5 +63,5 @@ package() {
   cd "${pkgname}/build"
 
   msg 'Installing...'
-  DESTDIR="${pkgdir}" cmake -P cmake_install.cmake
+  DESTDIR="${pkgdir}" make install
 }
