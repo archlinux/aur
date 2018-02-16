@@ -2,7 +2,7 @@
 # Contributor: enihcam <nanericwang at the google email domain which is .com>
 
 pkgname=chakracore
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('icu')
 makedepends=('cmake' 'clang' 'python2')
 provides=('libChakraCore.so')
 source=("https://github.com/Microsoft/ChakraCore/archive/v${pkgver}.tar.gz")
-sha256sums=('af85cf9c1f3a32fef0f586842f468bf18158567c4b098b0a917bde7b386b90cc')
+sha256sums=('5c9ca5f4169bda73dba2fd3813f7747b89822a5942bbee775a93fb8879e24745')
 
 build() {
   cd "$srcdir/ChakraCore-${pkgver}"
