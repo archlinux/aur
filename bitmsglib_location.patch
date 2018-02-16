@@ -1,8 +1,8 @@
 diff --git a/src/proofofwork.py b/src/proofofwork.py
-index 493b8b0..f2b6135 100644
+index df6ed295..a033e8d1 100644
 --- a/src/proofofwork.py
 +++ b/src/proofofwork.py
-@@ -265,7 +265,9 @@ def init():
+@@ -270,7 +270,9 @@ def init():
                  bso = None
      else:
          try:
@@ -10,6 +10,6 @@ index 493b8b0..f2b6135 100644
 +            # Modified by Arch Linux PKGBUILD
 +            # https://aur.archlinux.org/packages/pybitmessage-git/
 +            bso = ctypes.CDLL(os.path.join("/usr/lib/pybitmessage-git", bitmsglib))
-             logger.info("Loaded C PoW DLL %s", bitmsglib)
-         except:
-             bso = None
+         except OSError:
+             import glob
+             try:
