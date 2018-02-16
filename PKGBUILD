@@ -2,12 +2,12 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=mailpile-git
-pkgver=r5570.37d96ac6
+pkgver=r5657.ad70997b
 pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 license=('AGPL3')
-depends=('python2-pillow' 'python2-lxml' 'python2-jinja' 'spambayes' 'python2-pgpdump' 'python2-crypto')
+depends=('python2-appdirs' 'python2-setuptools' 'python2-cryptography' 'python2-lxml' 'python2-jinja' 'spambayes' 'python2-selenium' 'python2-markupsafe' 'python2-nose' 'python2-mock' 'python2-crypto' 'python2-pydns' 'python2-pgpdump' 'python2-pillow' 'python2-pbr' 'python2-fasteners' )
 url="http://www.mailpile.is"
 provides=("mailpile")
 conflicts=("mailpile")
