@@ -18,7 +18,7 @@ pkgbase = asofe
 	depends = boost-libs
 	depends = libevent
 	depends = zeromq
-	source = git+https://github.com/TheLightSide/asofe.git#commit=88ee9402393643841643f24040b32be8dd47467e
+	source = git+https://github.com/TheLightSide/asofe.git#commit=390b12e01462c4aba643933b293cb1dcfeace741
 	source = boost-no-mt-suffix.patch
 	source = use-system-rust.patch
 	source = asofed.service
