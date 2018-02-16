@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r47.gc2ad93a
+pkgver=1.2a.r49.g78bf771
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -66,9 +66,6 @@ build() {
     cd "$pkgname"
     
     export MFX_HOME="$(pwd)"
-    
-    export CFLAGS="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
-    export CXXFLAGS="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
     
     perl tools/builder/build_mfx.pl \
                             --no-warn-as-error \
