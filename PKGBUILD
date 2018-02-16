@@ -1,6 +1,6 @@
 # Maintainer: <andrew dot myers at fdservices  dot co dot uk>
 pkgname=vpacman
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A programme to view and manage the pacman database - built with Tcl/Tk"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('xorg-xwininfo: for fine control of terminal windows'
 			'pkgfile: for faster retrieval of package files'
 			)
 source=(http://sourceforge.net/projects/vpacman/files/vpacman-$pkgver.tar.gz)
-md5sums=('34a7e0dbaa82d32f3bf61c40c6d88392')
+md5sums=('f7d5946d611b1fb94fdaa4ec4571d735')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -34,6 +34,7 @@ package() {
     install -d "$pkgdir"/usr/share/applications
     install -m644 vpacman.desktop "$pkgdir"/usr/share/applications/
 }
+
 
 
 
