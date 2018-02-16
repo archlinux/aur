@@ -8,7 +8,7 @@ pkgname=keybase-bin
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.41_20180215171601+d30b2a39c7
+pkgver=1.0.41_20180216170155+d426d58b11
 src_prefix=https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb
 deb_pkgver="${pkgver/_/-}"
 deb_pkgver="${deb_pkgver/+/.}"
@@ -47,5 +47,5 @@ package() {
 # You can cross reference these hashes with Keybase Debian repo metadata:
 # https://prerelease.keybase.io/deb/dists/stable/main/binary-amd64/Packages
 # https://prerelease.keybase.io/deb/dists/stable/main/binary-i386/Packages
-sha256sums_i686=(79f713459abf5d09dfca98ce0d50faff5d8c6c042c7027def61523f8cfa8e974)
-sha256sums_x86_64=(22cb0ca948007a452e5947ace76e9a0aa30830b8627d74a21e25429c944c3d00)
+sha256sums_i686=(3f361e79513944d38321311760e9d563a050a7c821ca0f05ca032f15550294e9)
+sha256sums_x86_64=(aff48dc31408c391d750c9dca70a384f25a5129bfe912a56dfaf4a6c0037da9a)
