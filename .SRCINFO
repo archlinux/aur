@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
-	pkgver = 17.2.4
-	pkgrel = 2
+	pkgver = 17.2.5
+	pkgrel = 1
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bareos
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
 	makedepends = sqlite3
-	source = git+https://github.com/bareos/bareos.git#tag=Release/17.2.4
+	source = git+https://github.com/bareos/bareos.git#tag=Release/17.2.5
 	md5sums = SKIP
 
 pkgname = bareos-common
@@ -29,13 +29,13 @@ pkgname = bareos-bconsole
 	install = bareos-bconsole.install
 	groups = bareos
 	groups = bareos-client
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = readline
 	depends = jansson
 
 pkgname = bareos-database-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Generic abstration libs and tools for sql catalog
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = libcap
 	depends = lzo
 	depends = zlib
@@ -46,26 +46,26 @@ pkgname = bareos-database-common
 pkgname = bareos-database-mysql
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for mysql catalog
 	install = bareos-database-mysql.install
-	depends = bareos-database-common=17.2.4
+	depends = bareos-database-common=17.2.5
 	depends = libmariadbclient
-	provides = bareos-database=17.2.4
+	provides = bareos-database=17.2.5
 
 pkgname = bareos-database-postgresql
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for postgresql catalog
 	install = bareos-database-postgresql.install
-	depends = bareos-database-common=17.2.4
+	depends = bareos-database-common=17.2.5
 	depends = postgresql-libs
-	provides = bareos-database=17.2.4
+	provides = bareos-database=17.2.5
 
 pkgname = bareos-database-sqlite3
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for sqlite3 catalog
-	depends = bareos-database-common=17.2.4
+	depends = bareos-database-common=17.2.5
 	depends = sqlite3
-	provides = bareos-database=17.2.4
+	provides = bareos-database=17.2.5
 
 pkgname = bareos-database-tools
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools with database dpendencies (dbcheck, bscan)
-	depends = bareos-database-common=17.2.4
+	depends = bareos-database-common=17.2.5
 	depends = openssl
 	depends = jansson
 
@@ -76,14 +76,14 @@ pkgname = bareos-devel
 pkgname = bareos-director
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Director daemon
 	install = bareos-director.install
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = openssl
 	depends = bash
 	depends = jansson
 
 pkgname = bareos-storage-fifo
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - FIFO support for storage daemon
-	depends = bareos-storage=17.2.4
+	depends = bareos-storage=17.2.5
 	depends = zlib
 	depends = libcap
 	depends = openssl
@@ -92,7 +92,7 @@ pkgname = bareos-storage-fifo
 
 pkgname = bareos-tools
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild)
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = glibc
 
 pkgname = bareos-filedaemon
@@ -100,7 +100,7 @@ pkgname = bareos-filedaemon
 	install = bareos-filedaemon.install
 	groups = bareos
 	groups = bareos-client
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = jansson
 	depends = zlib
 	depends = gcc-libs
@@ -108,7 +108,7 @@ pkgname = bareos-filedaemon
 pkgname = bareos-storage
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Storage daemon
 	install = bareos-storage.install
-	depends = bareos-common=17.2.4
+	depends = bareos-common=17.2.5
 	depends = zlib
 	depends = lzo
 	depends = jansson
@@ -117,7 +117,7 @@ pkgname = bareos-storage
 
 pkgname = bareos-storage-tape
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tape support for storage daemon
-	depends = bareos-storage=17.2.4
+	depends = bareos-storage=17.2.5
 	depends = zlib
 	depends = libcap
 	depends = bash
@@ -129,7 +129,7 @@ pkgname = bareos-storage-tape
 
 pkgname = bareos-director-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for director daemon
-	depends = bareos-director=17.2.4
+	depends = bareos-director=17.2.5
 	depends = libcap
 	depends = jansson
 	depends = lzo
@@ -138,7 +138,7 @@ pkgname = bareos-director-python-plugin
 
 pkgname = bareos-filedaemon-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for file daemon
-	depends = bareos-filedaemon=17.2.4
+	depends = bareos-filedaemon=17.2.5
 	depends = python
 	depends = python2
 	depends = libcap
@@ -147,7 +147,7 @@ pkgname = bareos-filedaemon-python-plugin
 
 pkgname = bareos-storage-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for storage daemon
-	depends = bareos-storage=17.2.4
+	depends = bareos-storage=17.2.5
 	depends = python2
 	depends = lzo
 	depends = python
