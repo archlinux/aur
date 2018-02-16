@@ -68,8 +68,7 @@ msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
-_dbusmenuname=vala-dbusmenu
-pkgver=0.6.80
+pkgver=0.6.92
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -78,10 +77,8 @@ license=('GPL3')
 
 source=("git://github.com/rilian-la-te/${_pkgbase}.git"
         "git://github.com/rilian-la-te/${_cmakename}.git"
-        "git://github.com/rilian-la-te/${_dbusmenuname}.git"
 		80appmenu-gtk-module)
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
 			'4c006c4ea7b8556070ad6d35529d3a9e23da8033429e34d1824c25942d969fbc')
 
@@ -96,8 +93,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_cmakename}"
   cp -r . "${srcdir}/${_pkgbase}/cmake"
-  cd "${srcdir}/${_dbusmenuname}"
-  cp -r . "${srcdir}/${_pkgbase}/dbusmenu"
 }
 
 build() {
@@ -108,7 +103,7 @@ build() {
 
 package_vala-panel-appmenu-xfce-git() {
   pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel"
-  depends=('gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3')
+  depends=('gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-appmenu-translations-git')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
@@ -122,11 +117,12 @@ package_vala-panel-appmenu-xfce-git() {
   rm -rf "${pkgdir}/usr/share/mate-panel"
   rm -rf "${pkgdir}/usr/share/dbus-1"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
+  rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
 
 package_vala-panel-appmenu-valapanel-git() {
   pkgdesc="AppMenu (Global Menu) plugin for vala-panel"
-  depends=('gtk3' 'bamf>=0.5.0' 'vala-panel' 'libwnck3')
+  depends=('gtk3' 'bamf>=0.5.0' 'vala-panel' 'libwnck3' 'vala-panel-appmenu-translations-git')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
@@ -138,13 +134,12 @@ package_vala-panel-appmenu-valapanel-git() {
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
-  rm -rf "${pkgdir}/usr/share/dbus-1"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 }
 
 package_vala-panel-appmenu-mate-git() {
   pkgdesc="AppMenu (Global Menu) plugin for mate-panel"
-  depends=('gtk3' 'bamf>=0.5.0' 'mate-panel' 'libwnck3')
+  depends=('gtk3' 'bamf>=0.5.0' 'mate-panel' 'libwnck3' 'vala-panel-appmenu-translations-git')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
@@ -157,11 +152,12 @@ package_vala-panel-appmenu-mate-git() {
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share/xfce4"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
+  rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
 
 package_vala-panel-appmenu-budgie-git() {
   pkgdesc="AppMenu (Global Menu) plugin for budgie-panel"
-  depends=('gtk3' 'bamf>=0.5.0' 'budgie-desktop' 'libwnck3')
+  depends=('gtk3' 'bamf>=0.5.0' 'budgie-desktop' 'libwnck3' 'vala-panel-appmenu-translations-git')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
@@ -174,7 +170,6 @@ package_vala-panel-appmenu-budgie-git() {
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
-  rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_vala-panel-appmenu-translations-git() {
@@ -186,6 +181,11 @@ package_vala-panel-appmenu-translations-git() {
   arch=('any')
   cd "${srcdir}/${_pkgbase}"
   make -C "po" DESTDIR="${pkgdir}" install
+  make -C "data" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib"
+  rm -rf "${pkgdir}/usr/share/dbus-1"
+  rm -rf "${pkgdir}/usr/share/mate-panel"
+  rm -rf "${pkgdir}/usr/share/xfce4"
 }
 
 package_appmenu-gtk-module-git()
