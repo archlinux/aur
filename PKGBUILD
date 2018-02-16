@@ -5,8 +5,8 @@
 
 pkgname=libvirt-zfs
 pkgver=4.0.0
-pkgrel=1
-pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
+pkgrel=2
+pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
@@ -61,7 +61,7 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
-source=("https://libvirt.org/sources/${pkgname}-${pkgver}.tar.xz"{,.asc}
+source=("https://libvirt.org/sources/${pkgname/-zfs/}-${pkgver}.tar.xz"{,.asc}
 	'libvirtd.conf.d'
 	'libvirtd-guests.conf.d'
 	'libvirt.sysusers.d')
@@ -73,7 +73,7 @@ sha512sums=('c99ea305f427859eb070b5f0c43de48645a5c53a2aa8efc60f54f278ec3fa0b5043
             '7d1d535aaf739a6753f6819c49272c8d9b5f488e0a8553797499334a76b8631474e222b6048f2125b858e5ecc21e602face45dd02121f833d605b9ae58322982')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
   for file in $(find . -name '*.py' -print); do
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' "${file}"
@@ -96,12 +96,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
   export PYTHON=`which python2`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
-  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname}" --sbindir=/usr/bin \
+  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-zfs/}" --sbindir=/usr/bin \
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
 	--with-qemu-user=nobody --with-qemu-group=kvm \
@@ -112,7 +112,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
