@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.10.3dev+38+g78ef57197
+pkgver=1.10.5dev+3+g5159c34ea
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -22,10 +22,10 @@ depends=("libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
          'bluez-libs' 'curl')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
-             'git' 'jansson' 'glib2-docs')
+             'git' 'jansson' 'glib2-docs' 'dhcpcd')
 optdepends=('modemmanager: for modem management service'
             'dhclient: External DHCP client'
-            'dhcpcd: alternative DHCP client; does not support DHCPv6'
+            'dhcpcd: alternative DHCP client'
             'dnsmasq: connection sharing'
             'bluez: bluetooth support'
             'openresolv: resolvconf support'
@@ -36,7 +36,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=78ef571972aa3bf81b287d767ae02471e2924027  # nm-1-10
+_commit=5159c34ea8923bf0c17fd31e183c5803b72b97f3  # nm-1-10
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
@@ -74,6 +74,7 @@ build() {
     --disable-ifnet \
     --disable-ifupdown \
     --disable-lto \
+    --disable-more-logging \
     --disable-more-warnings \
     --disable-static \
     --enable-bluez5-dun \
@@ -90,12 +91,14 @@ build() {
     --enable-tests=no \
     --enable-wifi \
     --with-config-dhcp-default=internal \
-    --with-config-dns-rc-manager-default=resolvconf \
+    --with-config-dns-rc-manager-default=symlink \
     --with-config-logging-backend-default=syslog \
     --with-config-plugins-default=keyfile,ibft \
     --with-crypto=nss \
     --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
     --with-dhclient=/usr/bin/dhclient \
+    --with-dhcpcd-supports-ipv6 \
+    --with-dhcpcd=/usr/bin/dhcpcd \
     --with-dnsmasq=/usr/bin/dnsmasq \
     --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
     --with-hostname-persist=default \
@@ -115,8 +118,8 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-wext \
-    --without-dhcpcd \
     --without-libaudit \
+    --without-more-asserts \
     --without-netconfig \
     --without-ofono \
     --without-selinux \
