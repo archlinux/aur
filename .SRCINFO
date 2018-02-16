@@ -1,0 +1,15 @@
+pkgbase = nodejs-observatory-cli
+	pkgdesc = Observatory by Mozilla CLI Client
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/mozilla/observatory-cli
+	arch = any
+	license = MPL2
+	makedepends = npm
+	depends = nodejs
+	noextract = observatory-cli-0.7.1.tgz
+	source = http://registry.npmjs.org/observatory-cli/-/observatory-cli-0.7.1.tgz
+	sha1sums = fb7f1d1cee6289c57300f92d75cb9f0b30c558f3
+
+pkgname = nodejs-observatory-cli
+
