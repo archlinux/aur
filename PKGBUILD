@@ -1,31 +1,28 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=f27-backgrounds
-_pkgname=fedora-workstation-backgrounds
-pkgver=27.2
+pkgver=27.0.1
 pkgrel=1
-_rhver="2.fc27"
+_rhver="1.fc28"
 pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F27_Artwork"
 license=("CC-BY-SA")
-source=("https://kojipkgs.fedoraproject.org//packages/fedora-workstation-backgrounds/1.1/${_rhver}/src/fedora-workstation-backgrounds-1.1-${_rhver}.src.rpm")
-sha256sums=('156de39b8ef6c05465fcf96d2c42031da9bf084c004303258cc4ddf2db590aa4')
+source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/${pkgname}-${pkgver}-${_rhver}.src.rpm")
+sha256sums=('8379ac1fedd9d3dd674708c2baaa6561f4a83bcb71f96cf2535e37e2b9cb20c4')
 
 prepare()  {
-    tar -xf ./${_pkgname}-1.1.tar.gz
-    rm -r ./${_pkgname}-1.1.tar.gz
-    rm -r ./${_pkgname}.spec
+    tar -xf ./${pkgname}-${pkgver}.tar.xz
+    rm -r ./${pkgname}-${pkgver}.tar.xz
+    rm -r ./${pkgname}.spec
 }
 
 build() {
-    cd ./${_pkgname}-1.1
-    ./configure --prefix=/usr
+    cd ./${pkgname}
     make
 }
 
 package() {    
-    cd ./${_pkgname}-1.1
+    cd ./${pkgname}
     make install DESTDIR="${pkgdir}"
-    mv ${pkgdir}/usr/share/backgrounds/fedora-workstation ${pkgdir}/usr/share/backgrounds/f27-backgrounds
 }
