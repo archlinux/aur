@@ -1,7 +1,7 @@
 pkgbase = labrador
 	pkgdesc = EspoTek Labrador transforms your PC or smartphone into a fully-featured electronics lab
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://espotek.com
 	arch = x86_64
 	license = GPL3
@@ -11,10 +11,12 @@ pkgbase = labrador
 	source = 68-labrador.rules
 	source = labrador.desktop
 	source = labrador.png
+	source = use_system_libs.patch
 	sha256sums = 028aa7de4c46e10d4c00355fb294d7e29bc735a15ba12e257150b5c45ee32755
 	sha256sums = 221e149de8e24a98da38ca8586d5dda7c08bf4a26b649ac2d55e4b25aada154d
 	sha256sums = 708d2e142931c6c6b190155b0833b296d5562cd8de758a137dd356577e5077a6
 	sha256sums = a4d11834978d31526d388723b695c618c2c23962a10d45f66c8ef3238bfa0b63
+	sha256sums = 18e4d82337fa2cde887cb133190f62613b56230279392a9fe013ee6639fa2b20
 
 pkgname = labrador
 

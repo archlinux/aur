@@ -1,0 +1,20 @@
+--- Labrador.pro.bak	2018-02-16 08:08:07.556303267 +0200
++++ Labrador.pro	2018-02-16 08:41:00.881835660 +0200
+@@ -141,14 +141,11 @@
+         } else {
+             message("Building for Linux (x64)")
+             #libusb include
+-            unix:!android:!macx:LIBS += -Lbuild_linux/libusb -lusb-1.0  ##I suspect the -L here does nothing!
+-            unix:!android:!macx:INCLUDEPATH += build_linux/libusb
+-            unix:!android:!macx:DEPENDPATH += build_linux/libusb
++            unix:!android:!macx:LIBS += -lusb-1.0
++            unix:!android:!macx:INCLUDEPATH += /usr/include/libusb-1.0
+ 
+             #libdfuprog include
+-            unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/x64 -ldfuprog-0.9
+-            unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
+-            unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
++            unix:!android:!macx:LIBS += -ldfuprog-0.9
+         }
+     }
+ }
