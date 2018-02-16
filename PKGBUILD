@@ -2,7 +2,7 @@
 
 pkgname=kicad-git
 pkgver=r9341.e69ddf0e1
-pkgrel=2
+pkgrel=3
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -33,7 +33,7 @@ build() {
               -DBUILD_GITHUB_PLUGIN=ON \
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
-              -DKICAD_SCRIPTING_WXPYTHON=ON \
+              -DKICAD_SCRIPTING_WXPYTHON=OFF \
               -DKICAD_SCRIPTING_ACTION_MENU=ON
 
   make
