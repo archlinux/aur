@@ -1,14 +1,14 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
 	pkgver = 0.23.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.eventd.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
 	license = MIT
-	makedepends = meson>=0.39.1
+	makedepends = meson
 	makedepends = pkg-config
 	makedepends = ninja
 	makedepends = libxslt

@@ -3,7 +3,7 @@
 pkgname=eventd
 pkgver=0.23.0
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -28,7 +28,7 @@ depends=(
     xcb-util-wm
 )
 makedepends=(
-    'meson>=0.39.1'
+    meson
     pkg-config
     ninja
     libxslt
