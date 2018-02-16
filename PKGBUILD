@@ -1,28 +1,24 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: chongli <kurto@mac.com>
+
 pkgname=otf-montserrat
-pkgver=0.1
-pkgrel=4
-pkgdesc="Often compared to Proxima Nova for it's charming utility, Montserrat is a useful typeface, loved by many web and UI designers. Designed by Julieta Ulanovsky."
+pkgver=7.200
+pkgrel=1
+_fontname=Montserrat
+pkgdesc='Geometric font in many weights with Cyrillic and extended Latin support (Regular, Alternates), original concept by Julieta Ulanovsky'
+url='http://montserrat.zkysky.com.ar/en'
 arch=('any')
-url="https://www.fontsquirrel.com/fonts/montserrat"
-license=('custom:SIL')
-provides=('otf-montserrat')
-source=('https://www.fontsquirrel.com/fonts/download/montserrat'
-        'sums')
-sha256sums=('SKIP'
-            'f216eef10aafdc28fb3bfb1f7c5ac690f2b0b737e1c8515e2cbf206622fcc575')
-
-prepare () {
-
-  sha256sum -c "${startdir}/sums"
-}
+license=('custom:OFL')
+install=ttf.install
+source=("https://github.com/JulietaUla/${_fontname}/archive/v${pkgver}.tar.gz")
+sha256sums=('340125df4700876c5adf4df98c885dbe9b96c8a6a0ee634a520934c77ee097dc')
 
 package() {
+  cd ${_fontname}-${pkgver}
 
-  install -D -m644 "SIL Open Font License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+  install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 
-  install -d "${pkgdir}/usr/share/fonts/OTF/"
-  install -m644 Montserrat-*.otf "${pkgdir}/usr/share/fonts/OTF/"
-  install -m644 MontserratAlternates-*.otf "${pkgdir}/usr/share/fonts/OTF/"
+  dst=${pkgdir}/usr/share/fonts/OTF
+  mkdir -p ${dst}
+  find ./fonts/otf -name '*.otf' -execdir install -m644 {} ${dst}/{} \;
 }
-
