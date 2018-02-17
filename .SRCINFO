@@ -1,0 +1,19 @@
+pkgbase = p8-platform-gb
+	pkgdesc = Platform support library used by libCEC and binary add-ons for Kodi (retroplayer / garbear)
+	pkgver = r100.3219004
+	pkgrel = 1
+	url = https://github.com/Pulse-Eight/platform
+	arch = armv7h
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = gcc-libs
+	provides = p8-platform
+	conflicts = libplatform
+	conflicts = p8-platform
+	replaces = libplatform
+	source = p8-platform-gb::git://github.com/xbmc/platform.git#commit=32190045c7eb6883c0662db2f91b4ceeab904fc2
+	sha256sums = SKIP
+
+pkgname = p8-platform-gb
+
