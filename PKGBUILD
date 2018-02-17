@@ -12,7 +12,7 @@ url="http://www.fwbuilder.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxslt' 'net-snmp' 'qt4' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
-conflicts=('libfwbuilder')
+conflicts=('libfwbuilder' 'fwbuilder')
 source=("http://sourceforge.net/projects/fwbuilder/files/Current_Packages/${pkgver%.*}/fwbuilder-${pkgver}.tar.gz"
 		'fwbuilder.xml'
 		'fwbuilder.desktop'
