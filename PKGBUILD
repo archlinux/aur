@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/obs-websocket
+	cd "$srcdir/obs-websocket"
 	mkdir build && cd build
 	cmake -DLIBOBS_INCLUDE_DIR="/usr/share/obs/libobs" -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
