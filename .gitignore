@@ -1,0 +1,5 @@
+*.tar*
+pkg/
+src/
+*.log
+kicad-scripting-git/
