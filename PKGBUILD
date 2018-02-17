@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcue
 _pkgname=libcue
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Parses so-called cue sheets and handles the parsed data (lib32)'
 url='http://github.com/lipnitsk/libcue/'
@@ -13,8 +13,7 @@ license=('GPL2')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/lipnitsk/libcue/archive/v$pkgver.tar.gz")
 depends=('lib32-glibc' 'libcue')
 makedepends=('cmake')
-md5sums=('0fff773e95175df349329ea34bc775cf')
-
+md5sums=('b672240933ea485449faaf61b5a3fecd')
 
 build() {
 cd ${_pkgname}-${pkgver}
@@ -38,7 +37,7 @@ make DESTDIR="${pkgdir}" install
 
 cd "$pkgdir/usr"
 rm -rf {bin,include,share/imlib2}/
-mv lib/ lib32/
+#mv lib/ lib32/
 
 cd "${pkgdir}/usr/lib32/pkgconfig"
 sed -i 's|includedir=${prefix}/include|includedir=${prefix}/include/libcue/|' libcue.pc
