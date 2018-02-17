@@ -1,0 +1,21 @@
+pkgbase = kodi-gb-platform
+	pkgdesc = platform library for external kodi addons (retroplayer / garbear)
+	pkgver = r55.36fb493
+	pkgrel = 1
+	url = https://github.com/xbmc/kodi-platform
+	arch = armv7h
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kodi-gb-dev
+	depends = kodi-gb
+	depends = p8-platform-gb
+	provides = kodi-platform
+	conflicts = kodi-platform
+	conflicts = kodi-platform-git
+	source = kodi-gb-platform::git://github.com/xbmc/kodi-platform.git#commit=36fb49371dbce49bf470a5bb1fc51b74b4a3612d
+	sha256sums = SKIP
+
+pkgname = kodi-gb-platform
+
