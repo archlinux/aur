@@ -1,10 +1,10 @@
-From f256ec7564d904b5c245c34a7cb091e6912b22c3 Mon Sep 17 00:00:00 2001
-Message-Id: <f256ec7564d904b5c245c34a7cb091e6912b22c3.1518115547.git.jan.steffens@gmail.com>
-In-Reply-To: <d817891efd179bdb0b5d30fa8aafaeb2a96af76c.1518115547.git.jan.steffens@gmail.com>
-References: <d817891efd179bdb0b5d30fa8aafaeb2a96af76c.1518115547.git.jan.steffens@gmail.com>
+From 7596bfa5ccb3e3a72443871a4c6d0c4f230c1cb5 Mon Sep 17 00:00:00 2001
+Message-Id: <7596bfa5ccb3e3a72443871a4c6d0c4f230c1cb5.1518653356.git.jan.steffens@gmail.com>
+In-Reply-To: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
+References: <44c5097b2711429f0d49d138681f67157982e729.1518653356.git.jan.steffens@gmail.com>
 From: Jim Bride <jim.bride@linux.intel.com>
 Date: Mon, 6 Nov 2017 13:38:57 -0800
-Subject: [PATCH 2/3] drm/i915/edp: Only use the alternate fixed mode if it's
+Subject: [PATCH 2/4] drm/i915/edp: Only use the alternate fixed mode if it's
  asked for
 
 In commit dc911f5bd8aa ("drm/i915/edp: Allow alternate fixed mode for

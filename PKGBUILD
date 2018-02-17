@@ -4,7 +4,7 @@
 pkgbase=linux-apparmor
 _srcname=linux-4.15
 pkgver=4.15.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -21,6 +21,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+  0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,14 +31,15 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
             '6dd42389603bc6c83d2e6db1d736303e41d26cef479cad926b87711f261c9c35'
             'SKIP'
-            '699ad86e5c6076fc5c544d72191efb7eb302f68169dad8495add0f1d156203ab'
+            '617d1a2b0160fc72098524a51501531556050cab0e466c9dbae5d60a78991bd2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '728ea88383ce6c542e2969246036f454395d5412779ffb5299639610b82b21f1'
-            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
-            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
+            '95bda0b206b917ee907375bb0015b8f04f668bfea74706ce614442326a6be442'
+            '2a9adeea2d45513ee3ef0af9fb91c254f14500195e801581b55abcf4ff228eb0'
+            '990653b33a736b3941f03d8ca49795109f16507afa34b57dbce3c8e2d2fb26ca'
+            '13bc8392b26d1ce0182060fba0f37f74dd7cdc6fff2fdea3240fc4e755621277')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -59,6 +61,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/57327
   patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+
+  # https://bugs.archlinux.org/task/57500
+  patch -Np1 -i ../0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
