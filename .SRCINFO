@@ -1,0 +1,21 @@
+pkgbase = template-glib-git
+	pkgdesc = A templating library for GLib
+	pkgver = 3.27.90
+	pkgrel = 1
+	url = https://git.gnome.org/browse/template-glib
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = glib2
+	depends = gobject-introspection-runtime
+	provides = template-glib
+	conflicts = template-glib
+	source = git+https://git.gnome.org/browse/template-glib
+	sha256sums = SKIP
+
+pkgname = template-glib-git
+
