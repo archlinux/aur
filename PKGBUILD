@@ -10,7 +10,7 @@ license=(GPL)
 conflicts=(gnome-builder)
 depends=('gtksourceview3' 'gtk3' 'libpeas' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
 'libgit2-glib' 'glib2')
-makedepends=('gnome-common-git' 'gobject-introspection' 'llvm' 'intltool')
+makedepends=('gnome-common' 'gobject-introspection' 'llvm' 'intltool')
 install=gnome-builder.install
 source=('git+git://git.gnome.org/gnome-builder')
 sha256sums=('SKIP')
