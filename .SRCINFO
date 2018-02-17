@@ -1,6 +1,6 @@
 pkgbase = scientifica-font
 	pkgdesc = Tall and condensed bitmap font for geeks.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://sourceforge.net/projects/terminus-font/
 	install = scientifica-font.install
