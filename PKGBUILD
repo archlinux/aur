@@ -5,14 +5,14 @@
 pkgbase=thunarx-python
 pkgname=('python2-thunarx' 'python-thunarx')
 epoch=1
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Thunarx Python Bindings"
 arch=('i686' 'x86_64')
 url='http://goodies.xfce.org/projects/bindings/thunarx-python'
 makedepends=('thunar>=1.7.0' 'python2-gobject' 'python-gobject')
 license=('GPL')
-sha256sums=('c7ee5ab236285209a8a1fc1c9d5fc7b1004806c2c91bda6065ee66070bf85864')
+sha256sums=('721fd6c305354d904d601be106ead60605a9d611b3a68965ed7b51d0216b1339')
 source=("https://archive.xfce.org/src/bindings/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.bz2")
 
 prepare() {
