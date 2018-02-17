@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=javascript-typescript-langserver
-pkgver=2.5.5
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="JavaScript and TypeScript code intelligence through the Language Server Protocol"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/sourcegraph/javascript-typescript-langserver"
 license=('APACHE')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-$pkgver.tgz)
 noextract=(${pkgname}-$pkgver.tgz)
-sha256sums=('2a45e09e1b980c5c3591ca4758864f2e6a812b4f4e4755f502d98541f0308d08')
+sha256sums=('a10eb9545ed6384cf669ca4ad1ee0d4e57343cb7235cc2def8e890f706fc011b')
 options=('!emptydirs')
 provides=()
 conflicts=()
