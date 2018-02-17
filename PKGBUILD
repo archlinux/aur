@@ -13,9 +13,9 @@ license=(GPL3)
 conflicts=(gnome-builder)
 provides=(gnome-builder)
 depends=(gtksourceview3 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils
-         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle
-         template-glib jsonrpc-glib python-sphinx)
-makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
+         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle-git
+         template-glib-git jsonrpc-glib-git python-sphinx)
+makedepends=(intltool llvm gobject-introspection-git gtk-doc yelp-tools appstream-glib vala git
              mm-common meson)
 optdepends=('gnome-code-assistance: Legacy assistance services'
             'meson: Meson support')
