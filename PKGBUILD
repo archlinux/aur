@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.19
+pkgver=4.14.20
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -92,9 +92,8 @@ source=(
   "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
   "unfuck_MuQSS_for_4.14.15+.patch::https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -102,7 +101,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '627c8bb675b760bf6533a7aacce843e222fb61f702777e6bbfb63db073dd9cbf'
+            'ec38313c7ff463f781fb36502d4b49811a903462f031c5392b95231cc371190f'
             'SKIP'
             'fc3033c9f914bf8b6da687b97bca27b897c551993e5737d14e68469793446031'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -117,7 +116,6 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
             'e0f40fc665ca9fa3cd1f3c9055aa11ea3d5f2790c7c9face69254a24ef27ec04'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
             '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
             'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 
@@ -132,14 +130,11 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
