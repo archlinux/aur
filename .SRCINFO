@@ -1,0 +1,19 @@
+pkgbase = demlo-git
+	pkgdesc = A dynamic and extensible music library organizer
+	pkgver = 2018.01.29.g8a86514
+	pkgrel = 1
+	url = https://github.com/Ambrevar/demlo/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = ffmpeg
+	depends = lua
+	depends = taglib
+	optdepends = chromaprint: Internet tagging
+	source = git+https://github.com/Ambrevar/demlo.git
+	md5sums = SKIP
+
+pkgname = demlo-git
+
