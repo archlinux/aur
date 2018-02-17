@@ -1,0 +1,101 @@
+From 658e5886d5ce2cb935af04783208f147af72cdb2 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Thu, 24 Jul 2014 14:30:05 +0300
+Subject: [PATCH 1/3] Fix .reviewboardrc's file name.
+
+---
+ .reviewboardc => .reviewboardrc | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename .reviewboardc => .reviewboardrc (100%)
+
+diff --git a/.reviewboardc b/.reviewboardrc
+similarity index 100%
+rename from .reviewboardc
+rename to .reviewboardrc
+
+From 34bed3ceb7cd2bb43e67acce97f4cc3e8bbc1c1d Mon Sep 17 00:00:00 2001
+From: Rex Dieter <rdieter@math.unl.edu>
+Date: Tue, 11 Mar 2014 09:51:17 -0500
+Subject: [PATCH 2/3] use LIB_PYTHON realpath
+
+Use GET_FILENAME_COMPONENT( ... REALPATH). PYTHON_LIBRARY as returned
+by cmake, whose target is often a symlink.  Some distro packaging
+reserves such library symlinks for -devel and not runtime.
+
+REVIEW: 116719
+---
+ kpythonpluginfactory/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/kpythonpluginfactory/CMakeLists.txt b/kpythonpluginfactory/CMakeLists.txt
+index c24160e7..a777dac1 100644
+--- a/kpythonpluginfactory/CMakeLists.txt
++++ b/kpythonpluginfactory/CMakeLists.txt
+@@ -3,7 +3,8 @@
+ set(kpythonpluginfactory_SRCS
+     kpythonpluginfactory.cpp)
+ 
+-GET_FILENAME_COMPONENT(LIB_PYTHON ${PYTHON_LIBRARIES} NAME)
++GET_FILENAME_COMPONENT(PYTHON_LIBRARY_REALPATH "${PYTHON_LIBRARY}" REALPATH)
++GET_FILENAME_COMPONENT(LIB_PYTHON ${PYTHON_LIBRARY_REALPATH} NAME)
+ ADD_DEFINITIONS(-DLIB_PYTHON="${LIB_PYTHON}")
+ ADD_DEFINITIONS(-DKDE_DEFAULT_DEBUG_AREA=15000)
+ 
+
+From b0137f694f946c7f10ac2863a71b4cdeda15eb87 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Wed, 14 Sep 2016 23:54:40 +0200
+Subject: [PATCH 3/3] Add some missing(?) link libraries
+
+This fixes the following build errors in openSUSE Factory:
+
+CMakeFiles/python_module_PyKDE4_dnssd.dir/sip/dnssd/sipdnssdpart2.cpp.o:
+In function `meth_DNSSD_ServiceBrowser_resolveHostName':
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/dnssd/sipdnssdpart2.cpp:408:
+undefined reference to `QHostAddress::QHostAddress(QHostAddress
+const&)'
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/dnssd/sipdnssdpart2.cpp:408:
+undefined reference to `QHostAddress::~QHostAddress()'
+collect2: error: ld returned 1 exit status
+...
+CMakeFiles/python_module_PyKDE4_kio.dir/sip/kio/sipkiopart3.cpp.o: In
+function `meth_KFilePlacesModel_deviceForIndex':
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/kio/sipkiopart3.cpp:18560:
+undefined reference to `Solid::Device::Device(Solid::Device const&)'
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/kio/sipkiopart3.cpp:18560:
+undefined reference to `Solid::Device::~Device()'
+CMakeFiles/python_module_PyKDE4_kio.dir/sip/kio/sipkiopart4.cpp.o: In
+function `meth_KDeviceListModel_deviceForIndex':
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/kio/sipkiopart4.cpp:27090:
+undefined reference to `Solid::Device::Device(Solid::Device const&)'
+/home/abuild/rpmbuild/BUILD/pykde4-4.14.3/build/sip/kio/sipkiopart4.cpp:27090:
+undefined reference to `Solid::Device::~Device()'
+collect2: error: ld returned 1 exit status
+
+REVIEW: 127705
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b0768cfe..b919d1b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -166,7 +166,7 @@ add_sip_python_module(PyKDE4.kdeui sip/kdeui/kdeuimod.sip ${KDE4_KDEUI_LIBS} ${Q
+ 
+ file(GLOB kio_files_sip sip/kio/*.sip)
+ set(SIP_EXTRA_FILES_DEPEND ${kio_files_sip})
+-add_sip_python_module(PyKDE4.kio sip/kio/kiomod.sip ${KDE4_KIO_LIBS} ${KDE4_KFILE_LIBS})
++add_sip_python_module(PyKDE4.kio sip/kio/kiomod.sip ${KDE4_KIO_LIBS} ${KDE4_KFILE_LIBS} ${KDE4_SOLID_LIBS})
+ 
+ file(GLOB kutils_files_sip sip/kutils/*.sip)
+ set(SIP_EXTRA_FILES_DEPEND ${kutils_files_sip})
+@@ -190,7 +190,7 @@ add_sip_python_module(PyKDE4.knewstuff sip/knewstuff/knewstuffmod.sip ${KDE4_KNE
+ 
+ file(GLOB dnssd_files_sip sip/dnssd/*.sip)
+ set(SIP_EXTRA_FILES_DEPEND ${dnssd_files_sip})
+-add_sip_python_module(PyKDE4.dnssd sip/dnssd/dnssdmod.sip ${KDE4_KDNSSD_LIBS} ${QT_QTCORE_LIBRARY})
++add_sip_python_module(PyKDE4.dnssd sip/dnssd/dnssdmod.sip ${KDE4_KDNSSD_LIBS} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+ 
+ file(GLOB phonon_files_sip sip/phonon/*.sip)
+ set(SIP_EXTRA_FILES_DEPEND ${phonon_files_sip})

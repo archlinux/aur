@@ -1,0 +1,24 @@
+diff -up pykde4-4.14.3/sip/kdeui/kfontchooser.sip.me pykde4-4.14.3/sip/kdeui/kfontchooser.sip
+--- pykde4-4.14.3/sip/kdeui/kfontchooser.sip.me	2018-01-17 13:16:50.738465947 +0100
++++ pykde4-4.14.3/sip/kdeui/kfontchooser.sip	2018-01-17 13:28:24.665226258 +0100
+@@ -59,7 +59,7 @@ public:
+ 
+     typedef QFlags<KFontChooser::DisplayFlag> DisplayFlags;
+ 
+-    explicit                KFontChooser (QWidget* parent /TransferThis/ = 0, const KFontChooser::DisplayFlags& flags = KFontChooser::DisplayFrame, const QStringList& fontList = QStringList(), int visibleListSize = 8, Qt::CheckState* sizeIsRelativeState = 0) [(QWidget* = 0, const KFontChooser::DisplayFlags& = KFontChooser::DisplayFrame, const QStringList& = QStringList(), int = 8, Qt::CheckState* = 0)];
++    explicit                KFontChooser (QWidget* parent /TransferThis/ = 0, const KFontChooser::DisplayFlags& flags = KFontChooser::DisplayFrame, const QStringList& fontList = QStringList(), int visibleListSize = 8, Qt::CheckState sizeIsRelativeState = Qt::Unchecked) [(QWidget* = 0, const KFontChooser::DisplayFlags& = KFontChooser::DisplayFrame, const QStringList& = QStringList(), int = 8, Qt::CheckState* = 0)];
+ %MethodCode
+ Py_BEGIN_ALLOW_THREADS
+     sipCpp = new sipKFontChooser (a0, *a1, *a2, a3, &a4);
+diff -up pykde4-4.14.3/sip/kdeui/kfontdialog.sip.me pykde4-4.14.3/sip/kdeui/kfontdialog.sip
+--- pykde4-4.14.3/sip/kdeui/kfontdialog.sip.me	2018-01-17 13:18:31.112670465 +0100
++++ pykde4-4.14.3/sip/kdeui/kfontdialog.sip	2018-01-17 13:28:00.121154351 +0100
+@@ -28,7 +28,7 @@ class KFontDialog : KDialog
+ 
+ 
+ public:
+-    explicit                KFontDialog (QWidget* parent /TransferThis/ = 0, const KFontChooser::DisplayFlags& flags = KFontChooser::NoDisplayFlags, const QStringList& fontlist = QStringList(), Qt::CheckState* sizeIsRelativeState = 0) [(QWidget* = 0, const KFontChooser::DisplayFlags& = KFontChooser::NoDisplayFlags, const QStringList& = QStringList(), Qt::CheckState* = 0)];
++    explicit                KFontDialog (QWidget* parent /TransferThis/ = 0, const KFontChooser::DisplayFlags& flags = KFontChooser::NoDisplayFlags, const QStringList& fontlist = QStringList(), Qt::CheckState sizeIsRelativeState = Qt::Unchecked) [(QWidget* = 0, const KFontChooser::DisplayFlags& = KFontChooser::NoDisplayFlags, const QStringList& = QStringList(), Qt::CheckState* = 0)];
+ %MethodCode
+ Py_BEGIN_ALLOW_THREADS
+     sipCpp= new sipKFontDialog (a0, *a1, *a2, &a3);

@@ -6,9 +6,9 @@ pkgname=('kdebindings-python'
          'kdebindings-python2'
          'kdebindings-python-common')
 _srcname=pykde4
-pkgver=4.14.2
-pkgrel=1
-url='https://projects.kde.org/projects/kde/kdebindings/python/pykde4/repository'
+pkgver=4.14.3
+pkgrel=8
+url='https://github.com/KDE/pykde4'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 makedepends=('automoc4'
@@ -20,9 +20,12 @@ makedepends=('automoc4'
              'python-sip'
              'python2-sip'
              'qscintilla')
-source=("https://download.kde.org/Attic/stable/${pkgver}/src/${_srcname}-${pkgver}.tar.xz"
+source=("https://github.com/KDE/${_srcname}/archive/v${pkgver}.tar.gz"
         "no-qtwebkit.patch"
-        "no-webview.patch")
+        "no-webview.patch"
+	"v4.14.3...master.patch"
+	"fix-build-with-sip-4.19.patch"
+	"pykde4-4.14.3-checkstate-sip-4.19.5.patch")
 
 prepare() {
   mkdir -p build-python{,2}
@@ -34,6 +37,15 @@ prepare() {
   # The arch version of kdelibs no longer provides kdewebkit
   # This patch is a crude attempt to get this to build without it
   patch -p1 -i ${srcdir}/no-webview.patch
+
+  # A roundup of all the commits to master since the 4.14.3 release
+  patch -p1 -i ${srcdir}/v4.14.3...master.patch
+
+  # Build fixes for sip 4.19
+  # First patch is from upstream. Second patch was taken from Fedora Rawhide
+  # (fc28) src rpm
+  patch -p1 -i ${srcdir}/fix-build-with-sip-4.19.patch
+  patch -p1 -i ${srcdir}/pykde4-4.14.3-checkstate-sip-4.19.5.patch
 }
 
 build() {
@@ -88,6 +100,9 @@ package_kdebindings-python-common() {
 
   rm -r "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
 }
-md5sums=('b34e92677ffc8c74220d4c32a89ec57d'
+md5sums=('c3b7624b56429988208d469f08d04250'
          'b20320e79db1a41d480ac47e47901586'
-         '8f7f6da4bf4730003319d71382460775')
+         '8f7f6da4bf4730003319d71382460775'
+         'f35500d0b5e431954093d7f40968cb57'
+         '1c06c9a4298dd109f9f1e46b94842df7'
+         'f85154e3ea61c73e89c9bf57d33df56e')
