@@ -1,7 +1,7 @@
 # Maintainer: Patrick Eigensatz <patrick.eigensatz@gmail.com>
 
 pkgname=qjournalctl
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Qt-based graphical user interface for systemd's journalctl command"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pentix/$pkgname/"
 license=('GPL')
 depends=('qt5-base')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('37303cf1c817cbe722ca18c0f2a01adfe9c07a01c55c0838cb459478fb564453')
+sha256sums=('e2ffc2ec12134a6a49f99e6ef84b420e9595191173195f8784fe794db5fae452')
 
 build() {
 	cd "$pkgname-$pkgver"
