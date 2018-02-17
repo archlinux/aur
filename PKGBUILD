@@ -3,7 +3,7 @@
 pkgname=dockbarx-git
 _pkgname=dockbarx
 epoch=1
-pkgver=0.92+20+g9c9d130
+pkgver=0.93+0+g8429c63
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i686' 'x86_64')
