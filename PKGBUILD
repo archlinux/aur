@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.15
-_zenpatch=zen-4.15.3-c07cc1e8055ec17856c1ef121726035857f6a730.diff
-pkgver=4.15.3
-pkgrel=2
+_zenpatch=zen-4.15.4-eb90bc7b9920306e3988579b19266f8c23365c07.diff
+pkgver=4.15.4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -29,9 +29,9 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '6dd42389603bc6c83d2e6db1d736303e41d26cef479cad926b87711f261c9c35'
+            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
             'SKIP'
-            '2ec5489b49aee81023b0dbccbc4c6a4880a5b2e1f1f866db96cea671bf565543'
+            '5057791a4415e2659b8bc34784b2078ad95635503ce4940c61ef19a2819e8e77'
             'SKIP'
             'be3892dad291bc1c289a67970944b425dab5d968030799e642d36e9e29c5dc7c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -58,8 +58,10 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
-  # set extraversion to pkgrel
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -82,7 +84,7 @@ END
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -96,12 +98,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
