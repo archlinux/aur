@@ -1,6 +1,6 @@
 pkgbase = buck
 	pkgdesc = A fast build system that encourages the creation of small, reusable modules over a variety of platforms and languages.
-	pkgver = 2017.11.16.01
+	pkgver = 2018.02.16.01
 	pkgrel = 1
 	url = https://buckbuild.com
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = buck
 	depends = java-runtime-headless>=7
 	depends = python2
 	optdepends = watchman: prevent Buck from parsing all of your build files every time
-	source = buck-2017.11.16.01.tar.gz::https://github.com/facebook/buck/archive/v2017.11.16.01.tar.gz
-	sha256sums = 4cabece42f1d1d6b31088150d56c23740ed7167a66e1584aba4b205c5260d369
+	source = buck-2018.02.16.01.tar.gz::https://github.com/facebook/buck/archive/v2018.02.16.01.tar.gz
+	sha256sums = f2e0c37dfdc20c9d9f9787d8ec06e84f711ff4bb3e8f62fba7a6161337eba0b5
 
 pkgname = buck
 
