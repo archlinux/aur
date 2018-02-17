@@ -72,6 +72,7 @@ optdepends=(
   samba                 dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
+install=wine-nine.install
 
 prepare() {
   # Allow ccache to work

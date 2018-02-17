@@ -3,6 +3,7 @@ pkgbase = wine-nine
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/iXit/wine
+	install = wine-nine.install
 	arch = x86_64
 	license = LGPL
 	makedepends = autoconf

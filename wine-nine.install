@@ -1,0 +1,5 @@
+post_install() {
+  echo "To enable nine you need to run 'ninewinecfg' and enable nine in the UI, for each prefix you want it on."
+  echo "ex: WINEPREFIX=~/wines/test ninewinecfg"
+  echo "Be sure to disable nine before uninstalling this package or it might cause problems."
+}
