@@ -1,6 +1,6 @@
 pkgbase = calc
 	pkgdesc = A simple command line calculator.
-	pkgver = 0.1.0
+	pkgver = 0.1.0.r4.g3ad87c1
 	pkgrel = 1
 	url = https://github.com/darshanparajuli/calc
 	arch = i686
