@@ -1,0 +1,14 @@
+pkgbase = universal-components-git
+	pkgdesc = Universal QtQuick 2.0 components. Qt Quick Controls 2.0 backend
+	pkgver = 20171203
+	pkgrel = 1
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = qt5-quickcontrols2
+	options = !strip
+	source = git+https://github.com/M4rtinK/universal-components.git#commit=da725c4f7bbe560fcd59cfb0fc27777a6198a56b
+	sha1sums = SKIP
+
+pkgname = universal-components-git
+
