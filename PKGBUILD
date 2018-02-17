@@ -2,7 +2,7 @@
 pkgbase=calc
 pkgname=calc-git
 _pkgname=calc
-pkgver=0.1.0
+pkgver=0.1.0.r4.g3ad87c1
 pkgrel=1
 pkgdesc="A simple command line calculator."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-    printf "%s" "$(git describe --always)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
