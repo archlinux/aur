@@ -2,8 +2,8 @@
 # Contributor: rayman2200 
 
 pkgname=dockbarx
-pkgver=0.92
-pkgrel=4
+pkgver=0.93
+pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i686' 'x86_64')
 url="https://github.com/M7S/dockbarx"
@@ -18,15 +18,8 @@ optdepends=('avant-window-navigator: AWN DockBarX Plugin'
             'dockmanager: dockmanager plugins'
             'cardapio-bzr: required to run menu applet for dockx (standalone dock)')
 conflicts=('dockbarx-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/M7S/dockbarx/archive/${pkgver}.tar.gz"
-        'freedesktop_quicklist.patch::https://github.com/M7S/dockbarx/commit/db984a935c60253dcf3c5cbdb2e623b4692b038d.patch')
-sha256sums=('eb7630c0cebeb84ba9f66c60d77ec082afe56b264db4139436913ebdf2b1b7ea'
-            '6eba00088c1094aee041b26407d5c8e9f19da2eaee491cc9aff92a11285efba2')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ../freedesktop_quicklist.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/M7S/dockbarx/archive/${pkgver}.tar.gz")
+sha256sums=('3f81b39d051c8b961df32e883069276dca10d84bae997b18f7938b004a3577e2')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
