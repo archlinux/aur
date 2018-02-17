@@ -3,7 +3,7 @@
 pkgname=opennic-up
 pkgver=0.90
 pkgrel=1
-pkgdesc="OpenNIC auto dns updater using Network Manager"
+pkgdesc="OpenNIC auto DNS updater using Network Manager"
 arch=('x86_64')
 url="https://github.com/kewlfft/opennic-up"
 depends=('fping' 'curl' 'networkmanager')
