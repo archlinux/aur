@@ -1,7 +1,7 @@
 # Maintainer: Joakim Nylen (jnylen) <me@jnylen.nu>
 
 pkgname=jotta-cli
-pkgver=0.3.4269
+pkgver=0.4.4914
 pkgrel=1
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 makedepends=()
@@ -13,8 +13,8 @@ options=('!strip' '!upx')
 provides=('jotta-cli')
 conflicts=()
 
-sha256sums_x86_64=('17e569ca5772f8c1da48112511e259079ee245191d02663ab5f18877067e0eec')
-sha256sums_i686=('cb7aa62d4346bb60de056b77605af8e621b641520ace7ecd952c5d4277f725b6')
+sha256sums_x86_64=('3882cea8ba0af218e4fc959effa02bf8eb58e9c88ceadd2f4a2aca549a82b6bb')
+sha256sums_i686=('4ca3271901c734c9994e7726b81aa11a03ceabcb1e92b534ac20429974ba6d92')
 
 source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_amd64.deb")
 
