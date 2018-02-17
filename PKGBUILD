@@ -10,6 +10,7 @@ url="https://git.gnome.org/browse/jsonrpc-glib"
 arch=(x86_64)
 license=(LGPL)
 conflicts=(jsonrpc-glib)
+provides=(jsonrpc-glib)
 depends=('json-glib')
 makedepends=('git' 'meson' 'vala' 'gobject-introspection' 'gtk-doc')
 source=("git+https://git.gnome.org/browse/jsonrpc-glib")

@@ -11,6 +11,7 @@ pkgbase = jsonrpc-glib-git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	depends = json-glib
+	provides = jsonrpc-glib
 	conflicts = jsonrpc-glib
 	source = git+https://git.gnome.org/browse/jsonrpc-glib
 	sha256sums = SKIP
