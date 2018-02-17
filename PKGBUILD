@@ -5,7 +5,7 @@
 
 pkgname=libvirt-zfs
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('x86_64')
 url="http://libvirt.org/"
@@ -25,6 +25,8 @@ optdepends=('ebtables: required for default NAT networking'
 	    'qemu'
 	    'radvd'
 	    'dmidecode')
+conflicts=('libvirt')
+provides=('libvirt')
 options=('emptydirs')
 backup=('etc/conf.d/libvirt-guests'
 	'etc/conf.d/libvirtd'
