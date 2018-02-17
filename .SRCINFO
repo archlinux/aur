@@ -9,8 +9,8 @@ pkgbase = hmcl-git
 	provides = hmcl
 	conflicts = hmcl
 	source = git://github.com/huanghongxun/HMCL.git#branch=master
-	source = https://soft.dct.party/aur/hmcl/jdk-8-linux-x64.tar.xz
-	source = https://soft.dct.party/aur/hmcl/jdk-8-linux-x64.tar.xz.sha512sum
+	source = https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz
+	source = https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz.sha512sum
 	source = hmcl
 	sha512sums = SKIP
 	sha512sums = SKIP

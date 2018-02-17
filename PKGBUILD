@@ -11,8 +11,8 @@ makedepends=("git")
 provides=("hmcl")
 conflicts=("hmcl")
 source=("git://github.com/huanghongxun/$_pkgname.git#branch=master"
-        "https://soft.dct.party/aur/hmcl/jdk-8-linux-x64.tar.xz"
-        "https://soft.dct.party/aur/hmcl/jdk-8-linux-x64.tar.xz.sha512sum"
+        "https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz"
+        "https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz.sha512sum"
         "hmcl")
 sha512sums=("SKIP"
         "SKIP"
