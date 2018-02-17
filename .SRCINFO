@@ -1,7 +1,7 @@
 pkgbase = ewbf-miner
 	pkgdesc = EWBF's CUDA Zcash miner
 	pkgver = v0.3.4b
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/nanopool/ewbf-miner
 	arch = x86_64
 	license = https://github.com/nanopool/ewbf-miner/blob/master/README.md
@@ -12,7 +12,7 @@ pkgbase = ewbf-miner
 	depends = libxext
 	depends = ncurses
 	depends = ocl-icd>=1.0
-	depends = nvidia
+	depends = cuda
 	depends = screen
 	options = !strip
 	options = !emptydirs
