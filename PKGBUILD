@@ -1,7 +1,7 @@
 # Maintainer: Mitsu <archlinux AT suumitsu DOT eu>
 pkgname=fadecut
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolset to rip audiostreams, cut, fade in/out and tag the resulting audiofiles"
 arch=("i686" "x86_64")
 url="https://github.com/fadecut/fadecut"
