@@ -1,7 +1,7 @@
 pkgbase = dse
-	pkgdesc = AES file encryption using a keyfile.
+	pkgdesc = AES file encryption using a keyfile
 	pkgver = 1.30
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kewlfft/dse
 	arch = x86_64
 	license = MIT
