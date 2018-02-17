@@ -1,8 +1,8 @@
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 1c3feffb1c1c..34fe18d467cd 100644
+index 2811a211632c..01a6da5ca04e 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -12724,6 +12724,12 @@ W:	http://tcp-lp-mod.sourceforge.net/
+@@ -13036,6 +13036,12 @@ W:	http://tcp-lp-mod.sourceforge.net/
  S:	Maintained
  F:	net/ipv4/tcp_lp.c
  
@@ -16,10 +16,10 @@ index 1c3feffb1c1c..34fe18d467cd 100644
  M:	Antti Palosaari <crope@iki.fi>
  L:	linux-media@vger.kernel.org
 diff --git a/include/linux/tcp.h b/include/linux/tcp.h
-index 542ca1ae02c4..f09122764bb8 100644
+index e8418fc77a43..2916834f4afc 100644
 --- a/include/linux/tcp.h
 +++ b/include/linux/tcp.h
-@@ -382,6 +382,7 @@ enum tsq_enum {
+@@ -374,6 +374,7 @@ enum tsq_enum {
  	TCP_MTU_REDUCED_DEFERRED,  /* tcp_v{4|6}_err() could not call
  				    * tcp_v{4|6}_mtu_reduced()
  				    */
@@ -27,7 +27,7 @@ index 542ca1ae02c4..f09122764bb8 100644
  };
  
  enum tsq_flags {
-@@ -391,6 +392,7 @@ enum tsq_flags {
+@@ -383,6 +384,7 @@ enum tsq_flags {
  	TCPF_WRITE_TIMER_DEFERRED	= (1UL << TCP_WRITE_TIMER_DEFERRED),
  	TCPF_DELACK_TIMER_DEFERRED	= (1UL << TCP_DELACK_TIMER_DEFERRED),
  	TCPF_MTU_REDUCED_DEFERRED	= (1UL << TCP_MTU_REDUCED_DEFERRED),
@@ -36,10 +36,10 @@ index 542ca1ae02c4..f09122764bb8 100644
  
  static inline struct tcp_sock *tcp_sk(const struct sock *sk)
 diff --git a/include/net/tcp.h b/include/net/tcp.h
-index 48978125947b..d9904fed3555 100644
+index 0a13574134b8..fc49147a8ad9 100644
 --- a/include/net/tcp.h
 +++ b/include/net/tcp.h
-@@ -988,6 +988,14 @@ struct tcp_congestion_ops {
+@@ -1020,6 +1020,14 @@ struct tcp_congestion_ops {
  	/* get info for inet_diag (optional) */
  	size_t (*get_info)(struct sock *sk, u32 ext, int *attr,
  			   union tcp_cc_info *info);
@@ -55,18 +55,18 @@ index 48978125947b..d9904fed3555 100644
  	char 		name[TCP_CA_NAME_MAX];
  	struct module 	*owner;
 diff --git a/include/uapi/linux/inet_diag.h b/include/uapi/linux/inet_diag.h
-index bbe201047df6..9e755cff2c3d 100644
+index 817d807e9481..1368f868dfb0 100644
 --- a/include/uapi/linux/inet_diag.h
 +++ b/include/uapi/linux/inet_diag.h
-@@ -142,6 +142,7 @@ enum {
+@@ -143,6 +143,7 @@ enum {
  	INET_DIAG_PAD,
  	INET_DIAG_MARK,
  	INET_DIAG_BBRINFO,
 +	INET_DIAG_WAVEINFO,
+ 	INET_DIAG_CLASS_ID,
+ 	INET_DIAG_MD5SIG,
  	__INET_DIAG_MAX,
- };
- 
-@@ -186,9 +187,21 @@ struct tcp_bbr_info {
+@@ -189,9 +190,21 @@ struct tcp_bbr_info {
  	__u32	bbr_cwnd_gain;		/* cwnd gain shifted left 8 bits */
  };
  
@@ -89,10 +89,10 @@ index bbe201047df6..9e755cff2c3d 100644
  };
  #endif /* _UAPI_INET_DIAG_H_ */
 diff --git a/net/ipv4/Kconfig b/net/ipv4/Kconfig
-index 91a2557942fa..de23b3a04b98 100644
+index f48fe6fc7e8c..be6129bbdf0c 100644
 --- a/net/ipv4/Kconfig
 +++ b/net/ipv4/Kconfig
-@@ -492,6 +492,18 @@ config TCP_CONG_BIC
+@@ -490,6 +490,18 @@ config TCP_CONG_BIC
  	increase provides TCP friendliness.
  	See http://www.csc.ncsu.edu/faculty/rhee/export/bitcp/
  
@@ -111,7 +111,7 @@ index 91a2557942fa..de23b3a04b98 100644
  config TCP_CONG_CUBIC
  	tristate "CUBIC TCP"
  	default y
-@@ -690,6 +702,9 @@ choice
+@@ -688,6 +700,9 @@ choice
  	config DEFAULT_CUBIC
  		bool "Cubic" if TCP_CONG_CUBIC=y
  
@@ -121,7 +121,7 @@ index 91a2557942fa..de23b3a04b98 100644
  	config DEFAULT_HTCP
  		bool "Htcp" if TCP_CONG_HTCP=y
  
-@@ -729,6 +744,7 @@ config DEFAULT_TCP_CONG
+@@ -727,6 +742,7 @@ config DEFAULT_TCP_CONG
  	string
  	default "bic" if DEFAULT_BIC
  	default "cubic" if DEFAULT_CUBIC
@@ -130,10 +130,10 @@ index 91a2557942fa..de23b3a04b98 100644
  	default "hybla" if DEFAULT_HYBLA
  	default "vegas" if DEFAULT_VEGAS
 diff --git a/net/ipv4/Makefile b/net/ipv4/Makefile
-index afcb435adfbe..bdc8cd1a804a 100644
+index c6c8ad1d4b6d..cd4cc6a7f65d 100644
 --- a/net/ipv4/Makefile
 +++ b/net/ipv4/Makefile
-@@ -47,6 +47,7 @@ obj-$(CONFIG_TCP_CONG_BBR) += tcp_bbr.o
+@@ -48,6 +48,7 @@ obj-$(CONFIG_TCP_CONG_BBR) += tcp_bbr.o
  obj-$(CONFIG_TCP_CONG_BIC) += tcp_bic.o
  obj-$(CONFIG_TCP_CONG_CDG) += tcp_cdg.o
  obj-$(CONFIG_TCP_CONG_CUBIC) += tcp_cubic.o
@@ -142,7 +142,7 @@ index afcb435adfbe..bdc8cd1a804a 100644
  obj-$(CONFIG_TCP_CONG_WESTWOOD) += tcp_westwood.o
  obj-$(CONFIG_TCP_CONG_HSTCP) += tcp_highspeed.o
 diff --git a/net/ipv4/tcp_cong.c b/net/ipv4/tcp_cong.c
-index 421ea1b918da..ca9caa4bc996 100644
+index 2f26124fd160..80114c1939b6 100644
 --- a/net/ipv4/tcp_cong.c
 +++ b/net/ipv4/tcp_cong.c
 @@ -181,6 +181,7 @@ void tcp_init_congestion_control(struct sock *sk)
@@ -154,46 +154,10 @@ index 421ea1b918da..ca9caa4bc996 100644
  		icsk->icsk_ca_ops->init(sk);
  	if (tcp_ca_needs_ecn(sk))
 diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
-index 40f7c8ee9ba6..c201c53409ea 100644
+index cd3d60bb7cc8..714df43d7263 100644
 --- a/net/ipv4/tcp_output.c
 +++ b/net/ipv4/tcp_output.c
-@@ -42,6 +42,26 @@
- #include <linux/gfp.h>
- #include <linux/module.h>
- 
-+static const char *header_flags[5] = { "[SYN]", "[SYN|ACK]",
-+					"[ACK]", "[FIN|ACK]", "[UNK]" };
-+static inline const char *print_tcp_header_flags(__u8 flags)
-+{
-+	if (flags & TCPHDR_SYN && !(flags & TCPHDR_ACK))
-+		return header_flags[0];
-+	else if (flags & TCPHDR_SYN && flags & TCPHDR_ACK)
-+		return header_flags[1];
-+	else if (flags & TCPHDR_FIN)
-+		return header_flags[3];
-+	else if (flags & TCPHDR_ACK)
-+		return header_flags[2];
-+	else
-+		return header_flags[4];
-+}
-+
-+#define NOW ktime_to_us(ktime_get())
-+#define SPORT(sk) ntohs(inet_sk(sk)->inet_sport)
-+#define DPORT(sk) ntohs(inet_sk(sk)->inet_dport)
-+
- /* People can turn this off for buggy TCP's found in printers etc. */
- int sysctl_tcp_retrans_collapse __read_mostly = 1;
- 
-@@ -742,6 +762,8 @@ static void tcp_tsq_handler(struct sock *sk)
- 		    tp->snd_cwnd > tcp_packets_in_flight(tp))
- 			tcp_xmit_retransmit_queue(sk);
- 
-+		pr_debug("%llu sport: %hu [%s]\n",
-+			 NOW, SPORT(sk), __func__);
- 		tcp_write_xmit(sk, tcp_current_mss(sk), tp->nonagle,
- 			       0, GFP_ATOMIC);
- 	}
-@@ -950,22 +972,47 @@ static bool tcp_needs_internal_pacing(const struct sock *sk)
+@@ -952,22 +952,36 @@ static bool tcp_needs_internal_pacing(const struct sock *sk)
  	return smp_load_acquire(&sk->sk_pacing_status) == SK_PACING_NEEDED;
  }
  
@@ -208,26 +172,23 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  	u64 len_ns;
 -	u32 rate;
  
--	if (!tcp_needs_internal_pacing(sk))
--		return;
+ 	if (!tcp_needs_internal_pacing(sk))
+ 		return;
 -	rate = sk->sk_pacing_rate;
 -	if (!rate || rate == ~0U)
-+	if (!tcp_needs_internal_pacing(sk)) {
-+		pr_debug("%llu sport: %hu [%s] tcp does not need pacing, value %u\n",
-+			 NOW, SPORT(sk), __func__, sk->sk_pacing_status);
- 		return;
-+	}
+-		return;
+-
+-	/* Should account for header sizes as sch_fq does,
+-	 * but lets make things simple.
+-	 */
+-	len_ns = (u64)skb->len * NSEC_PER_SEC;
+-	do_div(len_ns, rate);
 +
 +	if (ca_ops->get_pacing_time) {
-+		if (tcp_pacing_timer_check(sk)) {
-+			pr_debug("%llu sport: %hu [%s] tcp timer active, do not ask for pacing_time\n",
-+				 NOW, SPORT(sk), __func__);
++		if (tcp_pacing_timer_check(sk))
 +			return;
-+		}
 +
 +		len_ns = ca_ops->get_pacing_time(sk);
-+		pr_debug("%llu sport: %hu [%s] asked for pacing_time, len_ns=%llu\n",
-+			 NOW, SPORT(sk), __func__, len_ns);
 +	} else {
 +		u32 rate = sk->sk_pacing_rate;
 +
@@ -239,66 +200,11 @@ index 40f7c8ee9ba6..c201c53409ea 100644
 +		 */
 +		len_ns = (u64)skb->len * NSEC_PER_SEC;
 +		do_div(len_ns, rate);
-+		pr_debug("%llu sport: %hu [%s] default pacing_time, len_ns=%llu\n",
-+			 NOW, SPORT(sk), __func__, len_ns);
 +	}
- 
--	/* Should account for header sizes as sch_fq does,
--	 * but lets make things simple.
--	 */
--	len_ns = (u64)skb->len * NSEC_PER_SEC;
--	do_div(len_ns, rate);
  	hrtimer_start(&tcp_sk(sk)->pacing_timer,
  		      ktime_add_ns(ktime_get(), len_ns),
  		      HRTIMER_MODE_ABS_PINNED);
-@@ -995,6 +1042,7 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
- 	struct tcp_md5sig_key *md5;
- 	struct tcphdr *th;
- 	int err;
-+	u8 flags;
- 
- 	BUG_ON(!skb || !tcp_skb_pcount(skb));
- 	tp = tcp_sk(sk);
-@@ -1062,6 +1110,8 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
- 	th->check		= 0;
- 	th->urg_ptr		= 0;
- 
-+	flags = tcb->tcp_flags;
-+
- 	/* The urg_mode check is necessary during a below snd_una win probe */
- 	if (unlikely(tcp_urg_mode(tp) && before(tcb->seq, tp->snd_up))) {
- 		if (before(tp->snd_up, tcb->seq + 0x10000)) {
-@@ -1102,6 +1152,9 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
- 		tcp_event_data_sent(tp, sk);
- 		tp->data_segs_out += tcp_skb_pcount(skb);
- 		tcp_internal_pacing(sk, skb);
-+	} else {
-+		pr_debug ("%llu sport: %hu [%s] skb->len == tcp_header_size, an ACK probably\n",
-+			  NOW, SPORT(sk), __func__);
- 	}
- 
- 	if (after(tcb->end_seq, tp->snd_nxt) || tcb->seq == tcb->end_seq)
-@@ -1122,6 +1175,10 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
- 
- 	err = icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl);
- 
-+	pr_debug("%llu sport: %hu [%s] seq=%u, ack=%u, window=%u, len=%u flags=%s err=%i \n",
-+		 NOW, SPORT(sk),  __func__, ntohl(th->seq), ntohl(th->ack_seq),
-+		 ntohs(th->window), skb->len, print_tcp_header_flags(flags), err);
-+
- 	if (unlikely(err > 0)) {
- 		tcp_enter_cwr(sk);
- 		err = net_xmit_eval(err);
-@@ -2138,6 +2195,8 @@ static int tcp_mtu_probe(struct sock *sk)
- 	/* We're ready to send.  If this fails, the probe will
- 	 * be resegmented into mss-sized pieces by tcp_write_xmit().
- 	 */
-+	pr_debug("%llu sport: %hu [%s] sending a probe\n",
-+		 NOW, SPORT(sk), __func__);
- 	if (!tcp_transmit_skb(sk, nskb, 1, GFP_ATOMIC)) {
- 		/* Decrement cwnd here because we are sending
- 		 * effectively two packets. */
-@@ -2154,12 +2213,6 @@ static int tcp_mtu_probe(struct sock *sk)
+@@ -2123,12 +2137,6 @@ static int tcp_mtu_probe(struct sock *sk)
  	return -1;
  }
  
@@ -311,7 +217,7 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  /* TCP Small Queues :
   * Control number of packets in qdisc/devices to two packets / or ~1 ms.
   * (These limits are doubled for retransmits)
-@@ -2176,10 +2229,19 @@ static bool tcp_small_queue_check(struct sock *sk, const struct sk_buff *skb,
+@@ -2145,6 +2153,10 @@ static bool tcp_small_queue_check(struct sock *sk, const struct sk_buff *skb,
  {
  	unsigned int limit;
  
@@ -322,16 +228,7 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  	limit = max(2 * skb->truesize, sk->sk_pacing_rate >> 10);
  	limit = min_t(u32, limit, sysctl_tcp_limit_output_bytes);
  	limit <<= factor;
- 
-+	pr_debug("%llu sport: %hu [%s] pacing rate: %u B/s, %u KB/s, skb size %u, wmem_alloc %u, factor %u, limit %u",
-+		 NOW, SPORT(sk), __func__, sk->sk_pacing_rate,
-+		 sk->sk_pacing_rate >> 10, skb->truesize, refcount_read(&sk->sk_wmem_alloc),
-+		 factor, limit);
-+
- 	if (refcount_read(&sk->sk_wmem_alloc) > limit) {
- 		/* Always send the 1st or 2nd skb in write queue.
- 		 * No need to wait for TX completion to call us back,
-@@ -2261,6 +2323,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
+@@ -2230,6 +2242,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
  static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  			   int push_one, gfp_t gfp)
  {
@@ -339,7 +236,7 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  	struct tcp_sock *tp = tcp_sk(sk);
  	struct sk_buff *skb;
  	unsigned int tso_segs, sent_pkts;
-@@ -2268,6 +2331,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2237,6 +2250,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  	int result;
  	bool is_cwnd_limited = false, is_rwnd_limited = false;
  	u32 max_segs;
@@ -348,10 +245,10 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  
  	sent_pkts = 0;
  
-@@ -2283,11 +2348,35 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2252,10 +2267,24 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+ 	}
  
  	max_segs = tcp_tso_segs(sk, mss_now);
- 	tcp_mstamp_refresh(tp);
 +
 +	if (tcp_needs_internal_pacing(sk) &&
 +	    !tcp_pacing_timer_check(sk) &&
@@ -363,133 +260,28 @@ index 40f7c8ee9ba6..c201c53409ea 100644
 +		}
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
-+	} else
-+		pr_debug("%llu sport: %hu [%s] timer running, pacing_status %u, or no data to send\n",
-+			 NOW, SPORT(sk), __func__, sk->sk_pacing_status);
++	}
 +
  	while ((skb = tcp_send_head(sk))) {
  		unsigned int limit;
  
 -		if (tcp_pacing_check(sk))
-+		pr_debug("%llu sport: %hu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n",
-+			 NOW, SPORT(sk), __func__,
-+		    pacing_allowed_segs, sent_pkts, tcp_packets_in_flight(tp),
-+		    tp->snd_cwnd);
-+
 +		if (tcp_needs_internal_pacing(sk) &&
-+		    sent_pkts >= pacing_allowed_segs) {
-+			pr_debug("%llu sport: %hu [%s] BREAK for sent\n",
-+				 NOW, SPORT(sk), __func__);
++		    sent_pkts >= pacing_allowed_segs)
  			break;
-+		}
  
  		tso_segs = tcp_init_tso_segs(skb, mss_now);
- 		BUG_ON(!tso_segs);
-@@ -2295,33 +2384,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
- 		if (unlikely(tp->repair) && tp->repair_queue == TCP_SEND_QUEUE) {
- 			/* "skb_mstamp" is used as a start point for the retransmit timer */
- 			skb->skb_mstamp = tp->tcp_mstamp;
-+			pr_debug("%llu sport: %hu [%s] 1", NOW, SPORT(sk), __func__);
- 			goto repair; /* Skip network transmission */
- 		}
- 
- 		cwnd_quota = tcp_cwnd_test(tp, skb);
- 		if (!cwnd_quota) {
--			if (push_one == 2)
-+			if (push_one == 2) {
- 				/* Force out a loss probe pkt. */
-+				pr_debug("%llu sport: %hu [%s] 2", NOW, SPORT(sk), __func__);
- 				cwnd_quota = 1;
--			else
-+			} else {
-+				pr_debug("%llu sport: %hu [%s] 3", NOW, SPORT(sk), __func__);
- 				break;
-+			}
- 		}
- 
- 		if (unlikely(!tcp_snd_wnd_test(tp, skb, mss_now))) {
- 			is_rwnd_limited = true;
-+			pr_debug("%llu sport: %hu [%s] 4", NOW, SPORT(sk), __func__);
+@@ -2326,6 +2355,9 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  			break;
- 		}
- 
- 		if (tso_segs == 1) {
- 			if (unlikely(!tcp_nagle_test(tp, skb, mss_now,
- 						     (tcp_skb_is_last(sk, skb) ?
--						      nonagle : TCP_NAGLE_PUSH))))
-+						      nonagle : TCP_NAGLE_PUSH)))) {
-+				pr_debug("%llu sport: %hu [%s] 5", NOW, SPORT(sk), __func__);
- 				break;
-+			}
- 		} else {
- 			if (!push_one &&
- 			    tcp_tso_should_defer(sk, skb, &is_cwnd_limited,
--						 max_segs))
-+						 max_segs)) {
-+				pr_debug("%llu sport: %hu [%s] 6", NOW, SPORT(sk), __func__);
- 				break;
-+			}
- 		}
- 
- 		limit = mss_now;
-@@ -2333,16 +2431,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
- 						    nonagle);
- 
- 		if (skb->len > limit &&
--		    unlikely(tso_fragment(sk, skb, limit, mss_now, gfp)))
-+		    unlikely(tso_fragment(sk, skb, limit, mss_now, gfp))) {
-+			pr_debug("%llu sport: %hu [%s] 7", NOW, SPORT(sk), __func__);
- 			break;
-+		}
- 
- 		if (test_bit(TCP_TSQ_DEFERRED, &sk->sk_tsq_flags))
- 			clear_bit(TCP_TSQ_DEFERRED, &sk->sk_tsq_flags);
--		if (tcp_small_queue_check(sk, skb, 0))
-+		if (tcp_small_queue_check(sk, skb, 0)) {
-+			pr_debug("%llu sport: %hu [%s] 8", NOW, SPORT(sk), __func__);
- 			break;
-+		}
- 
--		if (unlikely(tcp_transmit_skb(sk, skb, 1, gfp)))
-+		if (unlikely(tcp_transmit_skb(sk, skb, 1, gfp))) {
-+			pr_debug("%llu sport: %hu [%s] 9", NOW, SPORT(sk), __func__);
- 			break;
-+		}
- 
- repair:
- 		/* Advance the send_head.  This one is sent out.
-@@ -2353,10 +2457,20 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
- 		tcp_minshall_update(tp, mss_now, skb);
- 		sent_pkts += tcp_skb_pcount(skb);
- 
--		if (push_one)
-+		if (push_one) {
-+			pr_debug("%llu sport: %hu [%s] 10", NOW, SPORT(sk), __func__);
- 			break;
-+		}
  	}
  
-+	if (!tcp_send_head(sk)) {
-+		pr_debug("%llu sport: %hu [%s] no skb in queue, sent %u\n",
-+			 NOW, SPORT(sk), __func__, sent_pkts);
-+	}
-+
 +	if (ca_ops->segments_sent && notify)
 +		ca_ops->segments_sent(sk, sent_pkts);
 +
  	if (is_rwnd_limited)
  		tcp_chrono_start(sk, TCP_CHRONO_RWND_LIMITED);
  	else
-@@ -2450,6 +2564,8 @@ void tcp_send_loss_probe(struct sock *sk)
- 	if (skb) {
- 		if (tcp_snd_wnd_test(tp, skb, mss)) {
- 			pcount = tp->packets_out;
-+			pr_debug("%llu sport: %hu [%s]\n",
-+				 NOW, SPORT(sk), __func__);
- 			tcp_write_xmit(sk, mss, TCP_NAGLE_OFF, 2, GFP_ATOMIC);
- 			if (tp->packets_out > pcount)
- 				goto probe_sent;
-@@ -2525,9 +2641,15 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
+@@ -2499,7 +2531,9 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
  {
  	struct sk_buff *skb = tcp_send_head(sk);
  
@@ -498,25 +290,9 @@ index 40f7c8ee9ba6..c201c53409ea 100644
 +	if (!skb || skb->len < mss_now)
 +		return;
  
-+	pr_debug("%llu sport: %hu [%s] Pushing directly\n",
-+		 NOW, SPORT(sk), __func__);
  	tcp_write_xmit(sk, mss_now, TCP_NAGLE_PUSH, 1, sk->sk_allocation);
-+	pr_debug("%llu sport: %hu [%s] End of untimed push\n",
-+		 NOW, SPORT(sk), __func__);
  }
- 
- /* This function returns the amount that we can raise the
-@@ -2878,6 +3000,9 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
- 		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
- 	}
- 
-+	pr_debug("%llu sport: %hu [%s] retransmit\n",
-+		 NOW, SPORT(sk), __func__);
-+
- 	if (likely(!err)) {
- 		TCP_SKB_CB(skb)->sacked |= TCPCB_EVER_RETRANS;
- 	} else if (err != -EBUSY) {
-@@ -2922,8 +3047,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
+@@ -2898,8 +2932,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
   */
  void tcp_xmit_retransmit_queue(struct sock *sk)
  {
@@ -529,11 +305,13 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  	struct sk_buff *skb;
  	struct sk_buff *hole = NULL;
  	u32 max_segs;
-@@ -2938,16 +3067,34 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2914,6 +2952,18 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  		skb = tcp_write_queue_head(sk);
  	}
  
-+	if (!tcp_pacing_timer_check(sk)) {
++	if (tcp_needs_internal_pacing(sk) &&
++	    !tcp_pacing_timer_check(sk) &&
++	    tcp_send_head(sk)) {
 +		pacing_allowed_segs = 1;
 +		if (ca_ops->pacing_timer_expired) {
 +			ca_ops->pacing_timer_expired(sk);
@@ -541,31 +319,22 @@ index 40f7c8ee9ba6..c201c53409ea 100644
 +		}
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
-+	} else
-+		pr_debug("%llu sport: %hu [%s] timer running\n", NOW, SPORT(sk), __func__);
++	}
 +
  	max_segs = tcp_tso_segs(sk, tcp_current_mss(sk));
  	tcp_for_write_queue_from(skb, sk) {
  		__u8 sacked;
- 		int segs;
- 
-+		pr_debug("%llu sport: %hu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n",
-+			 NOW, SPORT(sk), __func__, pacing_allowed_segs, sent_pkts,
-+			 tcp_packets_in_flight(tp), tp->snd_cwnd);
-+
+@@ -2922,7 +2972,8 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  		if (skb == tcp_send_head(sk))
  			break;
  
 -		if (tcp_pacing_check(sk))
 +		if (tcp_needs_internal_pacing(sk) &&
-+		    sent_pkts >= pacing_allowed_segs) {
-+			pr_debug("%llu sport: %hu [%s] BREAK for sent\n", NOW, SPORT(sk), __func__);
++		    sent_pkts >= pacing_allowed_segs)
  			break;
-+		}
  
  		/* we could do better than to assign each time */
- 		if (!hole)
-@@ -2995,7 +3142,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2971,7 +3022,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  			inet_csk_reset_xmit_timer(sk, ICSK_TIME_RETRANS,
  						  inet_csk(sk)->icsk_rto,
  						  TCP_RTO_MAX);
@@ -577,78 +346,6 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  }
  
  /* We allow to exceed memory limits for FIN packets to expedite
-@@ -3088,6 +3239,8 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
- 			     TCPHDR_ACK | TCPHDR_RST);
- 	tcp_mstamp_refresh(tcp_sk(sk));
- 	/* Send it off. */
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	if (tcp_transmit_skb(sk, skb, 0, priority))
- 		NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPABORTFAILED);
- }
-@@ -3124,6 +3277,8 @@ int tcp_send_synack(struct sock *sk)
- 		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_ACK;
- 		tcp_ecn_send_synack(sk, skb);
- 	}
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	return tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
- }
- 
-@@ -3403,6 +3558,8 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
- 	if (syn_data->len)
- 		tcp_chrono_start(sk, TCP_CHRONO_BUSY);
- 
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	err = tcp_transmit_skb(sk, syn_data, 1, sk->sk_allocation);
- 
- 	syn->skb_mstamp = syn_data->skb_mstamp;
-@@ -3428,6 +3585,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
- 	/* Send a regular SYN with Fast Open cookie request option */
- 	if (fo->cookie.len > 0)
- 		fo->cookie.len = 0;
-+	pr_debug("%llu [tcp_send_syn_data] fallback \n", NOW);
- 	err = tcp_transmit_skb(sk, syn, 1, sk->sk_allocation);
- 	if (err)
- 		tp->syn_fastopen = 0;
-@@ -3466,6 +3624,8 @@ int tcp_connect(struct sock *sk)
- 	tcp_ecn_send_syn(sk, buff);
- 
- 	/* Send off SYN; include data in Fast Open. */
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	err = tp->fastopen_req ? tcp_send_syn_data(sk, buff) :
- 	      tcp_transmit_skb(sk, buff, 1, sk->sk_allocation);
- 	if (err == -ECONNREFUSED)
-@@ -3585,6 +3745,8 @@ void tcp_send_ack(struct sock *sk)
- 	skb_set_tcp_pure_ack(buff);
- 
- 	/* Send it off, this clears delayed acks for us. */
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	tcp_transmit_skb(sk, buff, 0, (__force gfp_t)0);
- }
- EXPORT_SYMBOL_GPL(tcp_send_ack);
-@@ -3619,6 +3781,9 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
- 	 */
- 	tcp_init_nondata_skb(skb, tp->snd_una - !urgent, TCPHDR_ACK);
- 	NET_INC_STATS(sock_net(sk), mib);
-+
-+	pr_debug("%llu sport: %hu [%s]\n",
-+		 NOW, SPORT(sk), __func__);
- 	return tcp_transmit_skb(sk, skb, 0, (__force gfp_t)0);
- }
- 
-@@ -3664,6 +3829,8 @@ int tcp_write_wakeup(struct sock *sk, int mib)
- 			tcp_set_skb_tso_segs(skb, mss);
- 
- 		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_PSH;
-+		pr_debug("%llu sport: %hu [%s]\n", 
-+			 NOW, SPORT(sk), __func__);
- 		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
- 		if (!err)
- 			tcp_event_new_data_sent(sk, skb);
 diff --git a/net/ipv4/tcp_wave.c b/net/ipv4/tcp_wave.c
 new file mode 100644
 index 000000000000..2a5b2e14b07c

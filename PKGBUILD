@@ -1,34 +1,36 @@
 # $Id$
-# Maintainer: JJD <jjdanimoth@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-wave       # Build kernel with a different name
-_srcname=linux-4.13
-pkgver=4.13.9
-pkgrel=3
-arch=('i686' 'x86_64')
+pkgbase=linux-wave               # Build stock -ARCH kernel
+#pkgbase=linux-custom       # Build kernel with a different name
+_srcname=linux-4.14
+pkgver=4.14.19
+pkgrel=1
+arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
-        'config.i686' 'config.x86_64'
-        # pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        # wave patch
-        'tcp_wave.patch')
-
+source=(
+  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  'config'         # the main kernel config file
+  '60-linux.hook'  # pacman hook for depmod
+  '90-linux.hook'  # pacman hook for initramfs regeneration
+  'linux.preset'   # standard config files for mkinitcpio ramdisk
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  tcp_wave.patch
+)
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-             )
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+)
 
 _kernelname=${pkgbase#linux}
 
@@ -37,14 +39,28 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  patch -p1 -i ../tcp_wave.patch
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  cp -Tf ../config.${CARCH} .config
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+
+  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
+  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+
+  # https://bugs.archlinux.org/task/56605
+  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  patch -Np1 -i ../tcp_wave.patch
+
+  cp -Tf ../config .config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -62,7 +78,7 @@ prepare() {
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  # make menuconfig # CLI menu for configuration
+  #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
@@ -88,51 +104,52 @@ _package() {
 
   cd ${_srcname}
 
-  KARCH=x86
-
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-
-  # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # add real version for building modules and running depmod from post_install/upgrade
+  # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+  # now we call depmod...
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
@@ -148,14 +165,10 @@ _package-headers() {
 
   cp -t "${_builddir}" -a include scripts
 
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
-
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+  cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -164,7 +177,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
@@ -179,20 +191,20 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-  fi
+  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
 
   # remove unneeded architectures
   local _arch
   for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+    [[ ${_arch} == */x86/ ]] && continue
+    rm -r "${_arch}"
   done
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
@@ -232,12 +244,16 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
-            'SKIP'
-            '22156e82467c7911d226a0a887eba19103434efc104439a3b426a3fa551fb8f2'
-            'SKIP'
-            '818b6db9e824f3157c56f0cbe60230a4c6969f0a6e50ecab013385978d8763b1'
-            '96d6080a9445c4158f8b590168f9aaa3b29f6346682f4a97978dce1db76d6e3a'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'fb7606a013877fc404c7e79125532f65aa63d523ed75f61b4ce3092ee64bfa19')
+md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
+         'SKIP'
+         '93a9e0bc01a696f55700b2b7b87b6b95'
+         'SKIP'
+         '9278b7c90f4f6ecea68a4601e7a2b2b1'
+         'ce6c81ad1ad1f8b333fd6077d47abdaf'
+         'a85bfae59eb537b973c388ffadb281ff'
+         'a329f9581060d555dc7358483de9760a'
+         '53523555d234de3b2fde749096ba9948'
+         'c9feea6633f367f58ac03752509d2f1e'
+         'd725e8464fd1915dc1df72d3256a4eba'
+         '0ae8549287d6a3a4b3ab37758ca1d0cf'
+         'facb73764bf1c630d9d9f47775fec100')
