@@ -3,27 +3,26 @@
 
 _pkgname=fribidi
 pkgname=lib32-${_pkgname}
-pkgver=0.19.7
-pkgrel=4
+pkgver=1.0.1+8+gdf7252b
+pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (32 bit)"
 arch=('x86_64')
 license=('LGPL')
 url="https://github.com/fribidi/fribidi/"
-depends=('lib32-glib2' "${_pkgname}")
-makedepends=(git)
-_commit=1a6935cd8cd7d907fb3c5f3bcae174bee727c83d  # tags/0.19.7^0
+depends=('lib32-glibc' "${_pkgname}")
+makedepends=('git' 'lib32-glib2')
+_commit=df7252be3fd94ceae8141a09ee86421fdd8b3b7e # master
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
 cd ${_pkgname}
-git describe --tags | sed 's/-/+/g'
+git describe --tags | sed -e 's/-/+/g' -e 's/^v//'
 }
 
 prepare() {
 cd ${_pkgname}
-git cherry-pick -n 0efbaa9052320a951823a6e776b30a580e3a2b4e
-./bootstrap
+NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -33,13 +32,19 @@ export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
 cd ${_pkgname}
 ./configure --prefix=/usr --libdir=/usr/lib32
-make -j1
+sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+make
 }
 
 package() {
-make -j1 -C ${_pkgname} DESTDIR="${pkgdir}" install
+make -C ${_pkgname} DESTDIR="${pkgdir}" install
 
 cd ${pkgdir}/usr/
 rm -rf {bin,include,share}
-
 }
+
+check() {
+cd "${srcdir}/${_pkgname}"
+make check
+}
+
