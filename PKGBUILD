@@ -1,23 +1,33 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: eagletmt <eagletmt at gmail dot com>
 
 _gemname=oauth
 pkgname=ruby-$_gemname
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.5.4
+pkgrel=1
 pkgdesc='OAuth Core Ruby implementation.'
-arch=("any")
-url='https://rubygems.org/gems/oauth'
+arch=('any')
+url='https://github.com/oauth-xx/oauth-ruby'
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
+makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('bca47d77c946af466872269e37e470837858b1305d5143e5a56c50356e02b2cc')
+sha256sums=('3e017ed1c107eb6fe42c977b78c8a8409249869032b343cf2f23ac80d16b5fff')
+options=(!emptydirs)
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
