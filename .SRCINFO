@@ -1,0 +1,29 @@
+pkgbase = kdepimlibs4
+	pkgdesc = KDE4 PIM Libraries
+	pkgver = 4.14.10
+	pkgrel = 12
+	url = https://projects.kde.org/projects/kde/kdepimlibs
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = cyrus-sasl
+	makedepends = akonadi-qt4
+	depends = kdelibs
+	depends = libakonadi-qt4
+	depends = libical2
+	depends = qjson
+	provides = kdepimlibs
+	conflicts = kdepimlibs
+	replaces = kdepimlibs
+	source = https://download.kde.org/Attic/applications/15.04.3/src/kdepimlibs-4.14.10.tar.xz
+	source = kdepimlibs4-bug338658-1.patch::https://cgit.kde.org/kdepimlibs.git/patch/?id=4429619
+	source = kdepimlibs4-bug338658-2.patch::https://cgit.kde.org/kdepimlibs.git/patch/?id=d8b5da7
+	sha1sums = 8db2f59b8a33f4d1bbebfdff8b772d30669c9932
+	sha1sums = 8bebf347baf5a8058b5abac42a5bb417540ade1a
+	sha1sums = cf33e0350b0384b6bc640ebc1c65fa10650b35ce
+
+pkgname = kdepimlibs4
+
