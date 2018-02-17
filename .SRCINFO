@@ -1,0 +1,60 @@
+pkgbase = linux-gc
+	pkgver = 4.15.3
+	pkgrel = 2
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.3.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
+	source = v4.15_pds098k.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+	source = 0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
+	sha256sums = SKIP
+	sha256sums = 6dd42389603bc6c83d2e6db1d736303e41d26cef479cad926b87711f261c9c35
+	sha256sums = SKIP
+	sha256sums = 617d1a2b0160fc72098524a51501531556050cab0e466c9dbae5d60a78991bd2
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
+	sha256sums = feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c
+	sha256sums = b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe
+	sha256sums = 68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e
+	sha256sums = b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be
+	sha256sums = 13bc8392b26d1ce0182060fba0f37f74dd7cdc6fff2fdea3240fc4e755621277
+
+pkgname = linux-gc
+	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-gc=4.15.3
+	backup = etc/mkinitcpio.d/linux-gc.preset
+
+pkgname = linux-gc-headers
+	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
+	depends = linux-gc
+	provides = linux-gc-headers=4.15.3
+	provides = linux-headers=4.15.3
+
