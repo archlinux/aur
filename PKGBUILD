@@ -6,7 +6,7 @@
 
 pkgname=fwbuilder-qt4
 pkgver=5.1.0.3599
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented GUI and set of compilers for various firewall platforms"
 url="http://www.fwbuilder.org/"
 arch=('i686' 'x86_64')
