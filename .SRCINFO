@@ -1,6 +1,6 @@
 pkgbase = excavator
 	pkgdesc = Excavator by NiceHash. NiceHash's proprietary low-level CUDA miner.
-	pkgver = 1.4.3a
+	pkgver = 1.4.4a
 	pkgrel = 1
 	url = https://github.com/nicehash/excavator
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = excavator
 	depends = cuda
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/nicehash/excavator/releases/download/v1.4.3a/excavator_1.4.3a_amd64.deb
-	sha512sums_x86_64 = 19b45b3e99d7c5641b31fef5bf1d28a5a2ea7aa83fe13504ee6fa77c97ace947a02ea9255ac1496434e78ebbc0ce4227bf83eea7a49d1ca1aba993f5be74bd5f
+	source_x86_64 = https://github.com/nicehash/excavator/releases/download/v1.4.4a/excavator_1.4.4a_amd64.deb
+	sha512sums_x86_64 = 605d6dd0ea1752105471b0eed12e273339b890606b3ca3694037449b12184e24bfafce5f609fa8e1d64cab69509b4847076fab037d2e8a4b8ea502e1547a2a6f
 
 pkgname = excavator
 
