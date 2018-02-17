@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=opennic-up
-pkgver=0.81
+pkgver=0.82
 pkgrel=1
 pkgdesc="OpenNIC auto DNS updater using Network Manager"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/kewlfft/opennic-up"
 depends=('fping' 'curl' 'networkmanager')
 license=('LGPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kewlfft/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f16970f2740bf6e8e7e99de3729d19fe6df64ddce51be60da3cad4fa471e1e73')
+sha256sums=('5adf3e532515632d7b43c37109eea95b1d6106fbe1706231e0e7947996bdb3bd')
 
 package() {
     cd $pkgname-$pkgver
