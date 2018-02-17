@@ -1,0 +1,16 @@
+ plugins/spellcheck/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git c/plugins/spellcheck/meson.build i/plugins/spellcheck/meson.build
+index a8dc0036a..a9835672b 100644
+--- c/plugins/spellcheck/meson.build
++++ i/plugins/spellcheck/meson.build
+@@ -30,7 +30,7 @@ spellcheck_sources = [
+ 
+ spellcheck_deps = plugin_deps + [
+   dependency('gspell-1', version: '>= 1.2.0'),
+-  dependency('enchant'),
++  dependency('enchant-2'),
+ ]
+ 
+ shared_module('spellcheck-plugin', spellcheck_sources,

@@ -1,33 +1,47 @@
+# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tim Jester-Pfadt <t.jp<at>gmx.de>
 
+_pkgname=gnome-builder
 pkgname=gnome-builder-git
-pkgver=2657.cac6cfe
-pkgrel=4
-pkgdesc="Builder, a new IDE for Gnome"
+pkgver=3.27.90+27+g2c097bc19
+pkgrel=1
+pkgdesc="An IDE for writing GNOME-based software"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Builder"
-license=(GPL)
+license=(GPL3)
 conflicts=(gnome-builder)
-depends=('gtksourceview3' 'gtk3' 'libpeas' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
-'libgit2-glib' 'glib2')
-makedepends=('gnome-common' 'gobject-introspection' 'llvm' 'intltool')
+provides=(gnome-builder)
+depends=(gtksourceview3 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils
+         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle
+         template-glib jsonrpc-glib python-sphinx)
+makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
+             mm-common meson)
+optdepends=('gnome-code-assistance: Legacy assistance services'
+            'meson: Meson support')
 install=gnome-builder.install
-source=('git+git://git.gnome.org/gnome-builder')
-sha256sums=('SKIP')
+source=('git+git://git.gnome.org/gnome-builder'
+        enchant-2.diff)
+sha256sums=('SKIP'
+            'a9c69574433f83de76e488d5da6656e455dcbea80ff788141bae269c04ebc92b')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/^GNOME_BUILDER_//;s/_/./g;s/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname/src
+
+  # enchant 2.2
+  patch -Np1 -i ../../enchant-2.diff
+}
 
 build() {
-  cd "$srcdir"/gnome-builder
-  #autoreconf -fi
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-rdtscp --disable-schemas-compile
-  make
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir"/gnome-builder
-  make DESTDIR="$pkgdir" install
-}
-
-pkgver() {
-  cd "$srcdir"/gnome-builder
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  DESTDIR="$pkgdir" ninja -C build install
 }
