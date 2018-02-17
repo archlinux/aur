@@ -2,7 +2,7 @@
 
 pkgname=udr
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances."
 arch=('i686' 'x86_64')
 url="https://github.com/LabAdvComp/UDR"
