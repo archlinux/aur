@@ -1,19 +1,20 @@
 pkgbase = ruby-http
 	pkgdesc = An easy-to-use client library for making requests from Ruby. It uses a simple method chaining system for building requests, similar to Python's Requests.
-	pkgver = 0.9.7
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/httprb/http
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-addressable
 	depends = ruby-http-cookie
 	depends = ruby-http-form_data
 	depends = ruby-http_parser.rb
-	noextract = http-0.9.7.gem
+	noextract = http-3.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/http-0.9.7.gem
-	sha256sums = fd81fa67a0a0b5525ee6d7642cf955676337f91a9b7412ea5817ef58497eb470
+	source = https://rubygems.org/downloads/http-3.0.0.gem
+	sha256sums = da797d880d2d731097ab8ea4431ab7b0905e2cb02b19bcedf87920dc1e9612d7
 
 pkgname = ruby-http
 
