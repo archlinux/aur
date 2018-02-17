@@ -1,4 +1,4 @@
-# Maintainer: dctxmei <dctxmei@foxmail.com>
+# Maintainer: dctxmei <dctxmei@gmail.com>
 # Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
 pkgname=breeze-hacked-cursor-theme-git
 pkgver=2.0
