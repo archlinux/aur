@@ -2,16 +2,17 @@
 
 pkgname=gawk-redis
 _project=gawkextlib
-pkgver=1.4.0
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="GAWK extension - interface to Redis via hiredis API"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
-depends=('hiredis' 'gawkextlib')
+depends=('hiredis')
+makedepends=('gawkextlib')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('72ba8d3a3c98582162c82b1f9756e9d3')
-sha256sums=('08d6be552b8c12025c7739d1b4e6bd9972f2927c2381d0c8d17845b32fc62564')
+md5sums=('71f2cfd11210cc586d4029bab1eb5aa5')
+sha256sums=('bbd672eb026e534ec1488ddfd7a5df5b2a6025d8e5c3fa7a5a3162f91ddb7e70')
 
 build() {
 	cd "$pkgname-$pkgver"
