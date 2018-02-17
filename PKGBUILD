@@ -2,7 +2,7 @@
 
 _pkgname=scientifica
 pkgname=${_pkgname}-font
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=(any)
