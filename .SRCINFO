@@ -1,5 +1,5 @@
 pkgbase = opennic-up
-	pkgdesc = OpenNIC auto dns updater using Network Manager
+	pkgdesc = OpenNIC auto DNS updater using Network Manager
 	pkgver = 0.90
 	pkgrel = 1
 	url = https://github.com/kewlfft/opennic-up
