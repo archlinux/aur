@@ -33,4 +33,6 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
   echo "MimeType=text/x-xml-fwbuilder;" >> "$pkgdir/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "$srcdir/fwbuilder.xml" "$pkgdir/usr/share/mime/packages/fwbuilder.xml"
+  rm -f "$pkgdir/usr/share/applications/fwbuilder-qt4.desktop"
+  install -Dm644 "$srcdir/fwbuilder.desktop" "$pkgdir/usr/share/applications/fwbuilder.desktop"
 }
