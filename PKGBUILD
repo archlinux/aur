@@ -1,4 +1,4 @@
-# irccd packaging script for ArchLinux - Copyright (c) 2013-2015 Pierre Choffet
+# irccd packaging script for ArchLinux - Copyright (c) 2013-2018 Pierre Choffet
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,11 +19,11 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="IRC client daemon"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://projects.malikania.fr/irccd/"
 license=('custom:ISC')
 groups=()
@@ -39,7 +39,7 @@ options=()
 changelog="ChangeLog"
 source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('eae6dd8a62138b84ec7137cf99c0e47e')
+md5sums=('98fe4ff67a174467e12791cd97dfb807')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -52,8 +52,7 @@ build() {
 	-DWITH_CONFDIR='etc' \
 	-DWITH_MANDIR='usr/share/man' \
 	-DWITH_DOCDIR='usr/share/doc/irccd' \
-	-DWITH_PLUGINDIR='usr/share/irccd/plugins' \
-	-DWITH_PLUGIN_DEBUGNATIVE=Off
+	-DWITH_PLUGINDIR='usr/share/irccd/plugins'
 	make
 }
 
