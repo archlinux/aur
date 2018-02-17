@@ -4,7 +4,7 @@
 _version=4.0.3
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
