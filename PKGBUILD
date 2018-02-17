@@ -9,7 +9,7 @@ url="https://wiki.gnome.org/Apps/Builder"
 license=(GPL)
 conflicts=(gnome-builder)
 depends=('gtksourceview3' 'gtk3' 'libpeas' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
-'libgit2-glib-git' 'glib2')
+'libgit2-glib' 'glib2')
 makedepends=('gnome-common-git' 'gobject-introspection' 'llvm' 'intltool')
 install=gnome-builder.install
 source=('git+git://git.gnome.org/gnome-builder')
