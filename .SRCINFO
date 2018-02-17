@@ -1,8 +1,8 @@
 pkgbase = flat-remix-gnome-git
-	pkgdesc = Flat Remix GNOME theme is a pretty simple shell theme inspired on material design.
-	pkgver = 20171129
+	pkgdesc = Flat Remix GNOME theme is a pretty simple shell theme inspired on material design following a modern design using "flat" colors with high contrasts and sharp borders.
+	pkgver = r102.79ea3b3
 	pkgrel = 1
-	url = https://github.com/daniruiz/Flat-Remix-GNOME-theme/
+	url = https://drasite.com/flat-remix-gnome
 	arch = any
 	groups = gnome-shell-extensions
 	license = CC-BY-SA-4.0
