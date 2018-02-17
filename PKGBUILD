@@ -1,5 +1,5 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
-pkgbase=python-iminuit
+pkgbase=python2-iminuit
 pkgname=('python-iminuit' 'python2-iminuit')
 pkgver=1.2
 pkgrel=1
