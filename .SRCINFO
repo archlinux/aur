@@ -1,7 +1,7 @@
 pkgbase = ruby-pdf-reader
 	pkgdesc = A library for accessing the content of PDF files
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://github.com/yob/pdf-reader
 	arch = any
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = ruby-pdf-reader
 	depends = ruby-hashery
 	depends = ruby-ttfunk
 	depends = ruby-afm
-	noextract = pdf-reader-2.0.0.gem
+	noextract = pdf-reader-2.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/pdf-reader-2.0.0.gem
-	sha256sums = f7f8a109fdb3ecaca2736d198bd0c55e86c1eba158c3fe6b537778795bad8a5a
+	source = https://rubygems.org/downloads/pdf-reader-2.1.0.gem
+	sha256sums = 857463c03b9a166a67ae6e09a184e57ece19ebe25001ee8fc2ab3d76397971ac
 
 pkgname = ruby-pdf-reader
 
