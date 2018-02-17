@@ -47,7 +47,7 @@ package() {
     rm "${pkgdir}/usr/bin/swiftc"
     echo '#!/bin/bash' > "${pkgdir}/usr/bin/swiftc"
     # bwrap is used to alias the original Clang as cc, then replace Clang with a wrapper script.
-    echo 'bwrap --dev-bind / / --bind /usr/bin/clang /usr/bin/cc --bind /usr/lib/swift/arch/clang++ /usr/bin/clang++ /usr/lib/swift/arch/swiftc "$@"'
+    echo 'bwrap --dev-bind / / --bind /usr/bin/clang /usr/bin/cc --bind /usr/lib/swift/arch/clang++ /usr/bin/clang++ /usr/lib/swift/arch/swiftc "$@"' >> "${pkgdir}/usr/bin/swiftc"
 
     echo '#!/bin/bash' > "${pkgdir}/usr/lib/swift/arch/clang++"
     echo '( exec -a clang++ cc "$@" ) && patchelf --set-interpreter /usr/lib/swift/arch/ld.so "${@: -1}"' >> "${pkgdir}/usr/lib/swift/arch/clang++"
