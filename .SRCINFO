@@ -1,7 +1,7 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.9.4.r1949.g3762480587
-	pkgrel = 5
+	pkgver = 2.9.8.r741.g8b3a6bcf5c
+	pkgrel = 1
 	url = http://www.gimp.org
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = gimp-gtk3-git
 	makedepends = appstream-glib
 	makedepends = pygtk
 	makedepends = python-cairo
-	depends = babl
-	depends = gegl
+	depends = babl-git
+	depends = gegl-git
 	depends = lcms
 	depends = libxpm
 	depends = libwmf
@@ -34,7 +34,7 @@ pkgbase = gimp-gtk3-git
 	depends = desktop-file-utils
 	depends = libgexiv2
 	depends = hicolor-icon-theme
-	depends = libmypaint
+	depends = mypaint-brushes
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = libwebkit: for the help browser
 	optdepends = libwebp: for support of the webp file format
@@ -48,7 +48,7 @@ pkgbase = gimp-gtk3-git
 	conflicts = gimp
 	options = !libtool
 	source = git+https://git.gnome.org/browse/gimp#branch=gtk3-port
-	source = linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ginux.gpl?h=packages/gimp
+	source = linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp
 	md5sums = SKIP
 	md5sums = bb27bc214261d36484093e857f015f38
 

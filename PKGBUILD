@@ -5,14 +5,14 @@
 _version=2.99
 _gitname=gimp
 pkgname=${_gitname}-gtk3-git
-pkgver=2.9.4.r1949.g3762480587
-pkgrel=5
+pkgver=2.9.8.r741.g8b3a6bcf5c
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
-depends=('babl' 'gegl' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng'
-         'libexif' 'gtk3' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'libmypaint')
+depends=('babl-git' 'gegl-git' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'libexif' 'gtk3'
+	 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-brushes')
 makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes'
 	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
 	     'pygtk' 'python-cairo')
@@ -28,7 +28,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 options=('!libtool')
 provides=("gimp")
 conflicts=("gimp")
-source=(git+https://git.gnome.org/browse/gimp#branch=gtk3-port 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ginux.gpl?h=packages/gimp'
+source=(git+https://git.gnome.org/browse/gimp#branch=gtk3-port 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp'
 )
 md5sums=('SKIP'
          'bb27bc214261d36484093e857f015f38')
@@ -41,7 +41,7 @@ pkgver() {
 prepare() {
   cd $_gitname
   sed -i -e 's/automake-1.11/automake-1.14/g;s/aclocal-1.11/aclocal-1.14/g' autogen.sh
-  sed -i 's/gimp.desktop/gimp-'${_version}'.desktop/g' desktop/gimp.appdata.xml.in
+  sed -i 's/gimp.desktop/gimp-'${_version}'.desktop/g' desktop/org.gimp.GIMP.appdata.xml.in.in
   sed -i  '/_Name=/ s/$/ '${_version}'/;s/Icon=gimp/&-'${_version}'/' desktop/gimp.desktop.in.in
 
   #fix non-existing theme
@@ -66,11 +66,13 @@ package() {
   cd $_gitname
   make DESTDIR="$pkgdir/" install
 
-  mv "${pkgdir}/usr/share/appdata/gimp.appdata.xml" "${pkgdir}/usr/share/appdata/gimp-${_version}.appdata.xml"
-  mv "${pkgdir}/usr/share/applications/gimp.desktop" "${pkgdir}/usr/share/applications/gimp-${_version}.desktop"
+  mv "${pkgdir}"/usr/share/appdata/org.gimp.GIMP.appdata.xml \
+     "${pkgdir}"/usr/share/appdata/gimp-${_version}.appdata.xml
+  mv "${pkgdir}"/usr/share/applications/gimp.desktop \
+     "${pkgdir}"/usr/share/applications/gimp-${_version}.desktop
 
-  install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/3.0/palettes/Linux.gpl"
-  mv "${pkgdir}/usr/share/aclocal/gimp-2.0.m4" "${pkgdir}/usr/share/aclocal/gimp-${_version}.m4"
+  install -D -m644 "${srcdir}"/linux.gpl "${pkgdir}"/usr/share/gimp/3.0/palettes/Linux.gpl
+  mv "${pkgdir}"/usr/share/aclocal/gimp-2.0.m4 "${pkgdir}"/usr/share/aclocal/gimp-${_version}.m4
 
   for _icon in 16 22 24 32 48 256; do
     mv "${pkgdir}"/usr/share/icons/hicolor/${_icon}x${_icon}/apps/gimp{,-${_version}}.png
