@@ -1,6 +1,6 @@
 pkgbase = symphytum
 	pkgdesc = Personal database software
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://giowck.github.io/symphytum/
 	arch = i686
@@ -18,8 +18,9 @@ pkgbase = symphytum
 	depends = python-idna
 	depends = python-requests
 	depends = python-urllib3
-	source = https://github.com/giowck/symphytum/releases/download/v2.2/symphytum-2.2-src.tar.gz
-	md5sums = 8f139f45f4b1f85fd44f4198bdbca580
+	optdepends = megacmd-bin: MEGA cloud sync support
+	source = https://github.com/giowck/symphytum/releases/download/v2.3/symphytum-2.3-src.tar.gz
+	md5sums = 587df53fc29f8fb86ce918c2b08d29dc
 
 pkgname = symphytum
 
