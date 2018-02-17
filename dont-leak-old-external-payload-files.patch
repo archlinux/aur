@@ -1,0 +1,135 @@
+From: Dan Vrátil <dvratil@redhat.com>
+Date: Mon, 29 Jun 2015 20:45:11 +0000
+Subject: Don't leak old external payload files
+X-Git-Url: http://quickgit.kde.org/?p=akonadi.git&a=commitdiff&h=9c0dc6b3f0826d32eac310b2e7ecd858ca3df681
+---
+Don't leak old external payload files
+
+Actually delete old payload files after we increase the payload revision or
+switch from external to internal payload. This caused ~/.local/share/akonadi/file_db_data
+to grow insanely for all users, leaving them with many duplicated files (just with
+different revisions).
+
+It is recommended that users run akonadictl fsck to clean up the leaked payload
+files.
+
+Note that there won't be any more releases of Akonadi 1.13 (and this has been
+fixed in master already), so I strongly recommend distributions to pick this
+patch into their packaging.
+
+BUG: 341884
+CCBUG: 338402
+---
+
+
+--- a/server/src/storage/partstreamer.cpp
++++ b/server/src/storage/partstreamer.cpp
+@@ -290,6 +290,12 @@
+         mDataChanged = true;
+     }
+ 
++    // If the part is external, remember it's current file name
++    QString originalFile;
++    if (part.isValid() && part.external()) {
++        originalFile = PartHelper::resolveAbsolutePath(part.data());
++    }
++
+     part.setPartType(partType);
+     part.setVersion(partVersion);
+     part.setPimItemId(mItem.id());
+@@ -306,6 +312,14 @@
+         *changed = mDataChanged;
+     }
+ 
++    if (!originalFile.isEmpty()) {
++        // If the part was external but is not anymore, or if it's still external
++        // but the filename has changed (revision update), remove the original file
++        if (!part.external() || (part.external() && originalFile != PartHelper::resolveAbsolutePath(part.data()))) {
++            PartHelper::removeFile(originalFile);
++        }
++    }
++
+     return ok;
+ }
+ 
+
+--- a/server/tests/unittest/partstreamertest.cpp
++++ b/server/tests/unittest/partstreamertest.cpp
+@@ -91,6 +91,7 @@
+         QTest::addColumn<qint64>("expectedPartSize");
+         QTest::addColumn<bool>("expectedChanged");
+         QTest::addColumn<bool>("isExternal");
++        QTest::addColumn<int>("version");
+         QTest::addColumn<PimItem>("pimItem");
+ 
+         PimItem item;
+@@ -101,22 +102,22 @@
+         QVERIFY(item.insert());
+ 
+         // Order of these tests matters!
+-        QTest::newRow("item 1, internal") << QByteArray("PLD:DATA") << QByteArray("123") << 3ll << true << false << item;
+-        QTest::newRow("item 1, change to external") << QByteArray("PLD:DATA") << QByteArray("123456789") << 9ll << true << true << item;
+-        QTest::newRow("item 1, update external") << QByteArray("PLD:DATA") << QByteArray("987654321") << 9ll << true << true << item;
+-        QTest::newRow("item 1, external, no change") << QByteArray("PLD:DATA") << QByteArray("987654321") << 9ll << false << true << item;
+-        QTest::newRow("item 1, change to internal") << QByteArray("PLD:DATA") << QByteArray("1234") << 4ll << true << false << item;
+-        QTest::newRow("item 1, internal, no change") << QByteArray("PLD:DATA") << QByteArray("1234") << 4ll << false << false << item;
++        QTest::newRow("item 1, internal") << QByteArray("PLD:DATA") << QByteArray("123") << 3ll << true << false << -1 << item;
++        QTest::newRow("item 1, change to external") << QByteArray("PLD:DATA") << QByteArray("123456789") << 9ll << true << true << 0 << item;
++        QTest::newRow("item 1, update external") << QByteArray("PLD:DATA") << QByteArray("987654321") << 9ll << true << true << 1 << item;
++        QTest::newRow("item 1, external, no change") << QByteArray("PLD:DATA") << QByteArray("987654321") << 9ll << false << true << 2 << item;
++        QTest::newRow("item 1, change to internal") << QByteArray("PLD:DATA") << QByteArray("1234") << 4ll << true << false << 2 << item;
++        QTest::newRow("item 1, internal, no change") << QByteArray("PLD:DATA") << QByteArray("1234") << 4ll << false << false << 2 << item;
+     }
+ 
+     void testStreamer()
+     {
+-        return;
+         QFETCH(QByteArray, expectedPartName);
+         QFETCH(QByteArray, expectedData);
+         QFETCH(qint64, expectedPartSize);
+         QFETCH(bool, expectedChanged);
+         QFETCH(bool, isExternal);
++        QFETCH(int, version);
+         QFETCH(PimItem, pimItem);
+ 
+         FakeConnection connection;
+@@ -160,17 +161,18 @@
+ 
+         PimItem item = PimItem::retrieveById(pimItem.id());
+         const QVector<Part> parts = item.parts();
+-        QVERIFY(parts.count() == 1);
++        QCOMPARE(parts.count(), 1);
+         const Part part = parts[0];
+         QCOMPARE(part.datasize(), expectedPartSize);
+         QCOMPARE(part.external(), isExternal);
++        qDebug() << part.version() << part.data();
+         const QByteArray data = part.data();
+         if (isExternal) {
+             QVERIFY(streamerSpy.count() == 1);
+             QVERIFY(streamerSpy.first().count() == 1);
+             const Response response = streamerSpy.first().first().value<Akonadi::Server::Response>();
+             const QByteArray str = response.asString();
+-            const QByteArray expectedResponse = "+ STREAM [FILE " + QByteArray::number(part.id()) + "_r" + QByteArray::number(part.version()) + "]";
++            const QByteArray expectedResponse = "+ STREAM [FILE " + QByteArray::number(part.id()) + "_r" + QByteArray::number(version) + "]";
+             QCOMPARE(QString::fromUtf8(str), QString::fromUtf8(expectedResponse));
+ 
+             QFile file(PartHelper::resolveAbsolutePath(data));
+@@ -182,7 +184,7 @@
+             QCOMPARE(fileData, expectedData);
+ 
+             // Make sure no previous versions are left behind in file_db_data
+-            for (int i = 0; i < part.version(); ++i) {
++            for (int i = 0; i < version; ++i) {
+                 const QByteArray fileName = QByteArray::number(part.id()) + "_r" + QByteArray::number(part.version());
+                 const QString filePath = PartHelper::resolveAbsolutePath(fileName);
+                 QVERIFY(!QFile::exists(filePath));
+@@ -194,7 +196,7 @@
+             QCOMPARE(data, expectedData);
+ 
+             // Make sure nothing is left behind in file_db_data
+-            for (int i = 0; i <= part.version(); ++i) {
++            for (int i = 0; i <= version; ++i) {
+                 const QByteArray fileName = QByteArray::number(part.id()) + "_r" + QByteArray::number(part.version());
+                 const QString filePath = PartHelper::resolveAbsolutePath(fileName);
+                 QVERIFY(!QFile::exists(filePath));
+

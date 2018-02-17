@@ -1,0 +1,31 @@
+pkgbase = akonadi-qt4
+	pkgdesc = PIM layer, which provides an asynchronous API to access all kind of PIM data (Qt4 version)
+	pkgver = 1.13.0
+	pkgrel = 14
+	url = http://community.kde.org/KDE_PIM/Akonadi
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = postgresql
+	makedepends = mariadb
+	makedepends = qt4
+	makedepends = libxslt
+	source = https://download.kde.org/stable/akonadi/src/akonadi-1.13.0.tar.bz2
+	source = dont-leak-old-external-payload-files.patch
+	sha256sums = 8c7f690002ea22c139f3a64394aef2e816e00ca47fd971af7d54a66087356dd2
+	sha256sums = e6644929ebec09986113be49f9aabf23e47e04585295319787ff7777e8af31b9
+
+pkgname = libakonadi-qt4
+	pkgdesc = Qt4 akonadi libraries
+	depends = qt4
+	conflicts = akonadi<15
+
+pkgname = akonadi-qt4
+	depends = libakonadi-qt4
+	depends = boost-libs
+	depends = mariadb
+	conflicts = akonadi
+	replaces = akonadi<15
+
