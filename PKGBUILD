@@ -1,18 +1,18 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-git"
-pkgver=20171129
+pkgver=r142.5c8f2d1
 pkgrel=1
 pkgdesc="Flat remix is a pretty simple icon theme inspired on material design."
 arch=('any')
-url="https://github.com/daniruiz/Flat-Remix/"
+url="https://drasite.com/flat-remix"
 license=('GPL 3.0')
 source=("${pkgname}::git+https://github.com/daniruiz/Flat-Remix.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd ${pkgname}
-	git log -1 --format="%cd" --date=short | tr -d '-'
+pkgver () {
+  cd "$ pkgname"
+  printf "r% s.% s" "$ (git rev-list --count HEAD)" "$ (git rev-parse --short HEAD)"
 }
 
 package() {
