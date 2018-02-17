@@ -11,7 +11,7 @@ require 'xmlsimple'
 deps = []
 
 doc = XmlSimple.xml_in(open('https://raw.githubusercontent.com/fuchsia-mirror/manifest/master/jiri'))
-for pr in doc['projects'][0]['project'] do
+for pr in doc['projects'][0]['project']
   name = pr['name']
   remote = pr['remote']
   rev = pr['revision']
@@ -23,14 +23,13 @@ for pr in doc['projects'][0]['project'] do
   deps << [url, remote, path]
 end
 
-
 puts "Sources:"
-for d in deps do
+for d in deps
   puts "  #{d[0]}"
 end
 
 puts "Prepare:"
-for d in deps do
+for d in deps
   url, remote, path = *d
 
   puts "  mkdir -p #{File.dirname(path)}"
