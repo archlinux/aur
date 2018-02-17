@@ -2,7 +2,6 @@
 
 pkgname=udr
 pkgver=0.9.4
-_commit_hash=7885528
 pkgrel=1
 pkgdesc="A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances."
 arch=('i686' 'x86_64')
@@ -11,8 +10,8 @@ license=('apache-2.0' )
 depends=('openssl' 'crypto++' 'rsync')
 provides=('udr')
 conflicts=('udr-git')
-source=("https://github.com/LabAdvComp/UDR/archive/${_commit_hash}.tar.gz")
-md5sums=('db9425f07838517f079f81770f384154')
+source=("https://github.com/LabAdvComp/UDR/archive/v${pkgver}.tar.gz")
+md5sums=('74a7ebd384156be0fc3d9a08890e098b')
 
 build() {
   cd "$srcdir/UDR-${_commit_hash}"*
