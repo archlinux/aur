@@ -9,7 +9,7 @@ url="https://github.com/kewlfft/opennic-up"
 depends=('fping' 'curl' 'networkmanager')
 license=('LGPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kewlfft/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3583847e9f4834fdc401585fe798a9d9d408299b184bfa1dd31f6f4ba220e351')
+sha256sums=('9c5d51df03d15ac87882105900b399a67cae55c9fdcfa518b923c2642b932ce9')
 
 package() {
     cd $pkgname-$pkgver
