@@ -1,4 +1,4 @@
-# Contributor: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
@@ -7,7 +7,7 @@ pkgname=kdebase-workspace
 _pkgname=kde-workspace
 pkgver=4.11.22
 _pkgver=15.08.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Provides the interface and basic tools for the KDE workspace"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -21,7 +21,7 @@ depends=('kdebase-runtime' 'kdepimlibs4' 'lm_sensors' 'libraw1394'
          'xorg-xrdb' 'libxres' 'xorg-xrandr' 'xorg-xmessage' 'libusb-compat'
          'kde-base-artwork' 'xcb-util-renderutil' 'xcb-util-image' 'ttf-font'
          'xcb-util-keysyms' 'xcb-util-wm' 'pciutils' 'glu' 'kactivities4'
-         'strigi' 'qtwebkit')
+	 'strigi' 'qtwebkit' 'cln')
 makedepends=('cmake' 'automoc4' 'boost' 'kdebindings-python2' 'networkmanager')
 optdepends=('kde-wallpapers: wallpapers for KDE Plasma Workspaces'
             'appmenu-qt: menu applications over dbus' 'kdepim4-runtime: to display events in the calendar')
@@ -91,15 +91,16 @@ package() {
 
 	install -D -m644 "${srcdir}"/kde.pam "${pkgdir}"/etc/pam.d/kde
 	install -D -m644 "${srcdir}"/kde-np.pam "${pkgdir}"/etc/pam.d/kde-np
-	install -D -m644 "${srcdir}"/kscreensaver.pam "${pkgdir}"/etc/pam.d/kscreensaver
+	install -D -m644 "${srcdir}"/kscreensaver.pam \
+		"${pkgdir}"/etc/pam.d/kscreensaver
 
 	install -d -m755 "${pkgdir}"/usr/share/xsessions/
 	ln -sf /usr/share/apps/kdm/sessions/kde-plasma{,-safe}.desktop \
-      "${pkgdir}"/usr/share/xsessions/
+                "${pkgdir}"/usr/share/xsessions/
 	install -d -m755 "${pkgdir}"/etc/kde/{env,shutdown}
 
 	install -d -g 135 -o 135 "${pkgdir}"/var/lib/kdm
-    install -D -m644 "${srcdir}"/kdm.service \
-      "${pkgdir}"/usr/lib/systemd/system/kdm.service
-    install -Dm644 "${srcdir}"/kdm.logrotate "${pkgdir}"/etc/logrotate.d/kdm
+        install -D -m644 "${srcdir}"/kdm.service \
+                "${pkgdir}"/usr/lib/systemd/system/kdm.service
+        install -Dm644 "${srcdir}"/kdm.logrotate "${pkgdir}"/etc/logrotate.d/kdm
 }
