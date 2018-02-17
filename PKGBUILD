@@ -14,7 +14,7 @@ source=('git+https://github.com/Palakis/obs-websocket.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/obs-websocket
+	cd "$srcdir/obs-websocket"
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
