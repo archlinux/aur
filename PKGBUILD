@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r1318.gd3f1e231a0
+pkgver=4.0.0.r1410.g6049069905
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('x86_64')
@@ -98,6 +98,7 @@ build() {
               --sysconfdir=/etc \
               --libexecdir=/usr/lib \
               --disable-rpath \
+              --disable-fribidi \
               --enable-aa \
               --enable-faad \
               --enable-lirc \
