@@ -46,6 +46,18 @@ start() {
     checkconfig || return 1
 
     eval HOME="~${USER}"
+
+    # parsing files of session
+    ebegin "Fetching dbus address..."
+    for file in $(ls -d -1 $HOME/.dbus/session-bus/**-0)
+    do
+        echo $file
+        cat $file
+        source $file
+    done
+
+    export DBUS_SESSION_BUS_ADDRESS
+
     ebegin "Starting Emacs daemon for user ${USER}"
     start-stop-daemon --start \
     --chdir ${HOME} \

@@ -1,7 +1,7 @@
 # Maintainer: Manoel Vilela <manoel_vilela@engineer.com>
 
 pkgname="emacs-openrc"
-pkgver="1.0"
+pkgver="1.1"
 pkgrel=5
 pkgdesc="OpenRC emacs-daemon init script"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 install="$pkgname.install"
 changelog="CHANGELOG"
 source=("emacs-daemon.rc")
-md5sums=('99e69c5e740bcece750ce19574be0223')
+md5sums=('3c64ace1a95c705725d78498847f6d8e')
 
 package() {
   # Creating need directories
