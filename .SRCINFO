@@ -1,8 +1,8 @@
 pkgbase = fadecut-git
 	pkgdesc = Toolset to rip audiostreams, cut, fade in/out and tag the resulting audiofiles (git version)
-	pkgver = 20140917
+	pkgver = 20180217
 	pkgrel = 1
-	url = http://github.com/micressor/fadecut
+	url = https://github.com/fadecut/fadecut
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,11 +10,12 @@ pkgbase = fadecut-git
 	depends = sox
 	depends = streamripper
 	depends = vorbis-tools
+	depends = opus-tools
 	depends = git
 	optdepends = lame
 	provides = fadecut
 	conflicts = fadecut
-	source = git+https://github.com/micressor/fadecut.git
+	source = git+https://github.com/fadecut/fadecut.git
 	sha256sums = SKIP
 
 pkgname = fadecut-git
