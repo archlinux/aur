@@ -1,16 +1,16 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=vintagestory
-pkgver=1.5.0.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="An in-development indie sandbox game about innovation and exploration"
 arch=("any")
 url="https://www.vintagestory.at/"
 license=("custom")
 depends=("mono")
-source=("https://account.vintagestory.at/files/stable/vs_archive_$pkgver.tar.gz"
+source=("https://account.vintagestory.at/files/unstable/vs_archive_$pkgver.tar.gz"
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("6ffabc2c09191f3ed862609f2ec270e7"
+md5sums=("86769fdbe1c74a90cf924c5ed3e36f12"
          "7cf82f218ba3026aff620b131b7dc581"
          "da232b56f48e047ec60791bb7d8b6398")
 
@@ -18,10 +18,7 @@ prepare() {
 	# Create symbolic links for any assets (excluding fonts) containing non-lowercase letters
 	find "$pkgname"/assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
 		local filename="$(basename -- "$file")"
-		# Check if filename is not the same as itself lowercased
-		if [ "$filename" != "${filename,,}" ]; then
-			ln -sf "$filename" "${file%/*}"/"${filename,,}"
-		fi
+		ln -sf "$filename" "${file%/*}"/"${filename,,}"
 	done
 }
 
