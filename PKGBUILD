@@ -11,9 +11,11 @@ depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
 conflicts=(scientifica-font)
 provides=(scientifica-font)
 install=scientifica-font.install
-source=(https://raw.githubusercontent.com/sjossi/scientifica-font/master/75-yes-scientifica.conf
+source=( https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}-11.bdf
+        https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}Bold-11.bdf
         https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf)
-md5sums=('527aa5ed9023e7d2face57d48cfce034'
+md5sums=('de50582940a1203984f18f8fdfabeccc'
+         '3767c286c70e670a86ee50c3e30ebfac'
          'de50582940a1203984f18f8fdfabeccc')
 
 build()
