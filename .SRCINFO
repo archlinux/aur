@@ -1,6 +1,6 @@
 pkgbase = libqsqlcipher
 	pkgdesc = Qt5 sqldriver plugin for SQLCipher
-	pkgver = 5.10.0
+	pkgver = 5.10.1
 	pkgrel = 1
 	url = https://github.com/sjemens/qsqlcipher-qt5
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libqsqlcipher
 	license = LGPL3
 	depends = qt5-base
 	depends = sqlcipher
-	source = qsqlcipher-qt5-5.10.0-1.tar.gz::https://github.com/sjemens/qsqlcipher-qt5/archive/v5.10.0-1.tar.gz
-	sha256sums = 94735ddaae48ebc6e6b458de71962fbd2aedebbdc928ddd3c0fbeb2dd73354f7
+	source = qsqlcipher-qt5-5.10.1-1.tar.gz::https://github.com/sjemens/qsqlcipher-qt5/archive/v5.10.1-1.tar.gz
+	sha256sums = 22d98100addcaa030487fe3156d19b85881ada06a64f70a70e68a680a9b0025d
 
 pkgname = libqsqlcipher
 
