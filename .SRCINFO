@@ -1,6 +1,6 @@
 pkgbase = ardor
 	pkgdesc = The Ardor Reference Software Client for use with the Ardor Blockchain Platform.
-	pkgver = 2.0.13
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = https://www.ardorplatform.org
 	install = ardor.install
@@ -8,9 +8,9 @@ pkgbase = ardor
 	license = MIT/GPL
 	makedepends = unzip
 	depends = jre8-openjdk
-	source = https://bitbucket.org/Jelurida/ardor/downloads/ardor-client-2.0.13.zip
+	source = https://bitbucket.org/Jelurida/ardor/downloads/ardor-client-2.0.14.zip
 	source = ardor.service
-	sha256sums = 184d15da639c76556985ae1bcddef36c3e1bcf2e7a6e11501b9aa80e0456a5c2
+	sha256sums = 23ec29b0995970c7ce183dd024acc04b87481c24ca34ba7d5412a30bed437dc1
 	sha256sums = 7b044d914d07f31d97746d9e5438dbcfedcd2e81e8acadb4c96dd315f2ce4862
 
 pkgname = ardor
