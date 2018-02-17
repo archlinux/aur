@@ -1,0 +1,16 @@
+pkgbase = ricerous-git
+	pkgdesc = The diary of ricers.
+	pkgver = r55.4b6a828
+	pkgrel = 1
+	url = https://github.com/nixers-projects/ricerous
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-kivy
+	depends = python2-setuptools
+	options = !emptydirs
+	source = ricerous::git+https://github.com/nixers-projects/ricerous
+	md5sums = SKIP
+
+pkgname = ricerous-git
+
