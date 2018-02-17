@@ -1,5 +1,5 @@
 pkgbase = linux-bld
-	pkgver = 4.14.19
+	pkgver = 4.14.20
 	pkgrel = 1
 	url = https://github.com/rmullick/linux
 	arch = x86_64
@@ -12,22 +12,21 @@ pkgbase = linux-bld
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.19.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.19.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.20.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.20.sign
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-bld.preset
-	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
 	source = https://raw.githubusercontent.com/rmullick/bld-patches/master/BLD-4.14.patch
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux-lts&id=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
-	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch?h=packages/linux-lts&id=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
-	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux-lts&id=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
-	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux-lts&id=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux-lts&id=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
+	source = 0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux-lts&id=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
+	source = 0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux-lts&id=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 627c8bb675b760bf6533a7aacce843e222fb61f702777e6bbfb63db073dd9cbf
+	sha256sums = ec38313c7ff463f781fb36502d4b49811a903462f031c5392b95231cc371190f
 	sha256sums = SKIP
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
@@ -35,7 +34,6 @@ pkgbase = linux-bld
 	sha256sums = c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426
 	sha256sums = 80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794
 	sha256sums = 36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98
-	sha256sums = 5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311
 	sha256sums = 2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0
 	sha256sums = 6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794
 
