@@ -2,7 +2,7 @@
 
 pkgname=laverna
 pkgver=0.7.51
-pkgrel=6
+pkgrel=7
 pkgdesc="Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote."
 arch=("x86_64" "i686")
 depends=('gconf')
@@ -20,14 +20,14 @@ prepare() {
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/usr/share/{${pkgname},applications,licenses/${pkgname}}
 	install -Dm644 913.patch ${pkgdir}/usr/share/${pkgname}
+}
 
+package() {
 	cp -R ${srcdir}/* ${pkgdir}/usr/share/${pkgname}
 
 	cd ${pkgdir}/usr/share/${pkgname}/resources/app/
 	patch -p0 < ${pkgdir}/usr/share/${pkgname}/913.patch
-}
 
-package() {
 	install -Dm644 laverna.desktop ${pkgdir}/usr/share/${pkgname}
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
