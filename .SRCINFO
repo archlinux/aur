@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-sqlcipher
 	pkgdesc = SQLite extension that provides transparent 256-bit AES encryption of database files (mingw-w64)
-	pkgver = 3.4.1
-	pkgrel = 2
+	pkgver = 3.4.2
+	pkgrel = 1
 	url = https://www.zetetic.net/sqlcipher/
 	arch = any
 	license = BSD
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-sqlcipher
 	options = !strip
 	options = staticlibs
 	options = !makeflags
-	source = sqlcipher-3.4.1.zip::https://github.com/sqlcipher/sqlcipher/archive/v3.4.1.zip
-	source = https://www.zetetic.net/sqlcipher/verify/3.4.1/sqlcipher-3.4.1.zip.sig
+	source = sqlcipher-3.4.2.zip::https://github.com/sqlcipher/sqlcipher/archive/v3.4.2.zip
+	source = https://www.zetetic.net/sqlcipher/verify/3.4.2/sqlcipher-3.4.2.zip.sig
 	validpgpkeys = D83F5F9EB811D6E6B4A0D9C5D1FA3A2A97ED25C2
-	sha256sums = 6f65b65a6b450279151bdec8c66122133245bc78605165482a45347cee8dc904
+	sha256sums = f2afbde554423fd3f8e234d21e91a51b6f6ba7fc4971e73fdf5d388a002f79f1
 	sha256sums = SKIP
 
 pkgname = mingw-w64-sqlcipher
