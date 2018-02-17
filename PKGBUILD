@@ -2,13 +2,13 @@
 
 pkgname=dse
 pkgver=1.30
-pkgrel=3
-pkgdesc="AES file encryption using a keyfile."
+pkgrel=4
+pkgdesc="AES file encryption using a keyfile"
 arch=('x86_64')
 url="https://github.com/kewlfft/dse"
 makedepends=('glibc')
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kewlfft/dse/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kewlfft/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('dd2c2f98be019026229d62a9da32f67a9be6ddcedbf82bfc7563cca3662c92bf')
 
 build() {
@@ -17,6 +17,6 @@ build() {
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm 0755 dse "$pkgdir/usr/bin/dse"
+    install -Dm 0755 $pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
