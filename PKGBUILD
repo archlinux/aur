@@ -15,10 +15,12 @@ depends=('libxslt' 'net-snmp' 'qt4' 'desktop-file-utils' 'hicolor-icon-theme' 's
 conflicts=('libfwbuilder')
 source=("http://sourceforge.net/projects/fwbuilder/files/Current_Packages/${pkgver%.*}/fwbuilder-${pkgver}.tar.gz"
 		'fwbuilder.xml'
+		'fwbuilder.desktop'
 		'fwbuilder-gcc47.patch')
 sha256sums=('452514a1ec0be1416bfca93603e6c89deb91d1a3a19671c64b5a8868a3743daf'
-			'f8eacaa9895b17af3a1c148064b5ad8381b83f7983acb14687faef488ac8fede'
-			'd7c602d5b99c6e40403c0b02e34abf15de83802257ca5ce80ad53d486b692f27')
+	    '28d106593ebf43cffea1d29f23a1dce8e586680588f85b30f6cfd4de1ad4fc8e'
+	    'f8eacaa9895b17af3a1c148064b5ad8381b83f7983acb14687faef488ac8fede'
+	    'd7c602d5b99c6e40403c0b02e34abf15de83802257ca5ce80ad53d486b692f27')
 
 build() {
   cd "${srcdir}/fwbuilder-${pkgver}"
