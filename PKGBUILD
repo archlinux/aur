@@ -1,18 +1,47 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.15
-pkgver=4.15.3
+_branch=4.15
+_build_from=tarball
+#_build_from=git
+#_build_from=git-mirror
+pkgver=4.15.4
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+case $_build_from in
+  tarball)
+    _srcname=linux-${_branch}
+    source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+            "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+            "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+            "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign")
+    sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+                'SKIP'
+                '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
+                'SKIP')
+    ;;
+  git)
+    _srcname=linux
+    makedepends+=('git')
+    source=("${_srcname}::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-$_branch.y")
+    sha256sums=('SKIP')
+    ;;
+  git-mirror)
+    _srcname=linux
+    makedepends+=('git')
+    source=("${_srcname}::git+https://git.uplinklabs.net/steven/mirrors/linux/stable/linux-stable.git#branch=linux-$_branch.y")
+    sha256sums=('SKIP')
+    ;;
+  *)
+    error "Unknown _build_from setting '$_build_from'"
+    exit 1
+esac
+
+source+=(
         # the main kernel config file
         'config.x86_64'
         # pacman hook for depmod
@@ -23,10 +52,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
-            'SKIP'
-            '6dd42389603bc6c83d2e6db1d736303e41d26cef479cad926b87711f261c9c35'
-            'SKIP'
+sha256sums+=(
             '24c4bddca64e232a9af6c0a6193cbd4e9a36e2c060f46ffa73bcbc45c41345cb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -39,15 +65,24 @@ validpgpkeys=(
 
 _kernelname=${pkgbase#linux}
 
+if [[ $_build_from == git* ]]; then
+  pkgver() {
+    cd ${_srcname}
+    git describe --always | sed 's|^v||g;s|-|_|g'
+  }
+fi
+
 prepare() {
   cd ${_srcname}
 
-  dots="${pkgver//[^.]}"
-  dotcount="${#dots}"
+  if [[ $_build_from == tarball ]]; then
+    dots="${pkgver//[^.]}"
+    dotcount="${#dots}"
 
-  # add upstream patch
-  if [ "$dotcount" -gt 1 ]; then
-    patch -Np1 -i "${srcdir}/patch-${pkgver}"
+    # add upstream patch
+    if [ "$dotcount" -gt 1 ]; then
+      patch -Np1 -i "${srcdir}/patch-${pkgver}"
+    fi
   fi
 
   # add latest fixes from stable queue, if needed
