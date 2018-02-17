@@ -16,7 +16,7 @@ _pkgname=dockbarx
 pkgname="${_pkgname}"-gtk3-git
 _branchname='pygi-migration'
 epoch=1
-pkgver=0.93+gtk3+0+g089c94b
+pkgver=0.93+0+g089c94b
 pkgrel=1
 pkgdesc="DockBarX GTK3 port. (Standalone panel and mate applet)"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s/-/+/g"
+  git describe --long --tags | sed -r "s/-gtk3//;s/-/+/g"
 }
 
 prepare() {
