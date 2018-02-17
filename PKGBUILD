@@ -3,7 +3,7 @@
 _name=etesync
 pkgname=python-etesync
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
@@ -43,6 +43,8 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
+  # only run relevant tests:
+  # https://github.com/etesync/pyetesync/issues/5
   pytest tests/{test_collections.py,test_crypto.py}
 }
 
@@ -52,6 +54,7 @@ package() {
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}"
-  install -vDm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    -vDm644 {DESCRIPTION.rst,README.md}
 }
 
