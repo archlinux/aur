@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Builder"
 license=(GPL)
 conflicts=(gnome-builder)
-depends=('gtksourceview3-git' 'gtk3-git' 'libpeas-git' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
+depends=('gtksourceview3-git' 'gtk3' 'libpeas-git' 'gsettings-desktop-schemas' 'dconf' 'devhelp' 'glade' 'webkit2gtk' 'gtk-doc' 'clang' 'gjs' 
 'libgit2-glib-git' 'glib2-git')
 makedepends=('gnome-common-git' 'gobject-introspection-git' 'llvm' 'intltool')
 install=gnome-builder.install
