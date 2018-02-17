@@ -3,44 +3,41 @@
 
 _pkgname=libdvdread
 pkgname=lib32-${_pkgname}
-pkgver=5.0.4
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Provides a simple foundation for reading DVD video disks (32 bit)"
 arch=('x86_64')
-url="http://dvdnav.mplayerhq.hu"
+url="https://www.videolan.org/developers/libdvdnav.html"
 license=('GPL')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('lib32-libdvdcss' 'git')
 options=('!libtool')
-_gitver=511ac9c8199d7b604d6a65193fd2777b74fad776
-#source=(git://git.videolan.org/libdvdread.git#commit=$_gitver)
-#md5sums=('SKIP')
-source=("$_pkgname-$pkgver.zip::https://code.videolan.org/videolan/libdvdread/repository/archive.zip?ref=$_gitver")
-md5sums=('8afdef1868e1eb9fde8317bb2117af8c')
+_commit=95fdbe8337d2ff31dcfb68f35f3e4441dc27d92f  # tags/6.0.0^0
+source=("git+https://code.videolan.org/videolan/libdvdread.git#commit=$_commit")
+md5sums=('SKIP')
 
-prepare() {
-#cd $_pkgname
-mv $_pkgname-$_gitver-$_gitver $_pkgname-$pkgver
-cd $_pkgname-$pkgver
-
-autoreconf -fi
+pkgver() {
+cd ${_pkgname}
+git describe --tags | sed -e 's/-/+/g'
 }
 
+prepare() {
+cd ${_pkgname}
+autoreconf -fi
+}
 
 build() {
 export CC='gcc -m32'
 export CXX='g++ -m32'
 export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
-#cd "${_pkgname}"
-cd $_pkgname-$pkgver
+cd "${_pkgname}"
 ./configure --prefix=/usr --libdir=/usr/lib32
 make
 }
 
 package() {
-#cd "${_pkgname}"
-cd $_pkgname-$pkgver
+cd "${_pkgname}"
 make DESTDIR="${pkgdir}" install
 rm -rf "${pkgdir}/usr"/{bin,include,share}
 }
