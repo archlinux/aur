@@ -1,17 +1,17 @@
 pkgbase = aurto
 	pkgdesc = A simple aur tool for managing a local 'aurto' repository
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
 	arch = any
 	license = MIT
-	depends = aurutils
+	depends = aurutils<1.6.0
 	depends = devtools
 	depends = systemd
 	depends = pacutils
-	source = https://github.com/alexheretic/aurto/archive/v0.4.tar.gz
-	sha256sums = 6ffda08ad1bea89ff9d6d6cc24d568b2045853e597b419c56232e71ad4972298
+	source = https://github.com/alexheretic/aurto/archive/v0.5.tar.gz
+	sha256sums = 90d31d41088f96e00ba2eb12cd8cc97cd6890234e58526dd86c409359abca0ba
 
 pkgname = aurto
 
