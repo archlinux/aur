@@ -1,0 +1,19 @@
+pkgbase = kodi-addon-game-libretro-only-git
+	pkgdesc = Libretro compatibility layer for the Kodi Game API (only game.libretro. see other addons)
+	pkgver = r228.e0ec93c
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro
+	arch = armv7h
+	arch = x86_64
+	groups = kodi-addons
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = kodi-platform
+	provides = kodi-addon-game-libretro
+	source = kodi-addon-game-libretro-only-git::git+https://github.com/kodi-game/game.libretro.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kodi-addon-game-libretro-only-git
+
