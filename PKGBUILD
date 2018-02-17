@@ -2,7 +2,7 @@
 
 _pkgname=ffautocrop
 pkgname=$_pkgname-git
-pkgver=0.0.1.r0.g94c632c
+pkgver=0.0.1.r1.gd443c30
 pkgrel=1
 pkgdesc="automatically crop a video using ffmpeg"
 arch=("any")
@@ -24,5 +24,6 @@ pkgver() {
 package() {
   cd "$srcdir/${_pkgname}"
 
+  install -Dm664 README.md       "$pkgdir/usr/share/doc/${_pkgname}/README.md"
   install -Dm755 $_pkgname        "$pkgdir/usr/bin/${_pkgname}"
 }

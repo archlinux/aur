@@ -1,6 +1,6 @@
 pkgbase = ffautocrop-git
 	pkgdesc = automatically crop a video using ffmpeg
-	pkgver = 0.0.1.r0.g94c632c
+	pkgver = 0.0.1.r1.gd443c30
 	pkgrel = 1
 	url = https://github.com/tlaziuk/ffautocrop
 	arch = any
