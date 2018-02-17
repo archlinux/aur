@@ -1,7 +1,7 @@
 pkgbase = aurto
 	pkgdesc = A simple aur tool for managing a local 'aurto' repository
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = aurto
 	depends = systemd
 	depends = pacutils
 	source = https://github.com/alexheretic/aurto/archive/v0.5.tar.gz
-	sha256sums = 9b2983f4cae1176fe06b65d7c70d6fb430d986b7cc2d3deb05cb6b9278fa51ac
+	sha256sums = 9c1ca86f20e30b1c083f79a6fe1fedcfdf039e332749eea16f38ee2491114058
 
 pkgname = aurto
 
