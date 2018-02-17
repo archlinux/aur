@@ -4,7 +4,7 @@
 
 _pkgname=faad2
 pkgname=lib32-${_pkgname}
-pkgver=2.8.5
+pkgver=2.8.8
 pkgrel=1
 pkgdesc="ISO AAC audio decoder (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('lib32-glibc' ${_pkgname})
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/sourceforge/faac/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('1ae7cea796d9cba488e70f8979663002')
+md5sums=('28f6116efdbe9378269f8a6221767d1f')
 
 build() {
 export CC='gcc -m32'
