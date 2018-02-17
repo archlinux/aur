@@ -1,8 +1,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r9341.e69ddf0e1
-pkgrel=3
+pkgver=r9485.24fcdb00c
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -31,10 +31,10 @@ build() {
               -DKICAD_USE_OCE=ON \
               -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
               -DBUILD_GITHUB_PLUGIN=ON \
-              -DKICAD_SCRIPTING=ON \
-              -DKICAD_SCRIPTING_MODULES=ON \
+              -DKICAD_SCRIPTING=OFF \
+              -DKICAD_SCRIPTING_MODULES=OFF \
               -DKICAD_SCRIPTING_WXPYTHON=OFF \
-              -DKICAD_SCRIPTING_ACTION_MENU=ON
+              -DKICAD_SCRIPTING_ACTION_MENU=OFF
 
   make
 }
