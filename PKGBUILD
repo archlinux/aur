@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-2016-complete
-pkgver=2016.4
+pkgver=2016.5
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('b142c9c77e793fa8def24aeacebaf8b8f1dd55fc'
+sha1sums=('8c24c9c52213502e927c13d69cdc4296415a4136'
           '014b2cbfa13db9b495c88f653805c330747117dc')
 
 #With gcc6 currently there are less errors in the tests
