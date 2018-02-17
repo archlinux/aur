@@ -7,6 +7,9 @@ pkgbase = perl-math-mpfr
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl
+	makedepends = gmp>=6.1.1
+	makedepends = mpfr>=3.1.4.p1
 	depends = perl
 	depends = gmp>=6.1.1
 	depends = mpfr>=3.1.4.p1

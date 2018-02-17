@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'gmp>=6.1.1' 'mpfr>=3.1.4.p1')
-makedepends=()
+makedepends=('perl' 'gmp>=6.1.1' 'mpfr>=3.1.4.p1')
 url='https://metacpan.org/release/Math-MPFR'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPFR-$pkgver.tar.gz")
 md5sums=('e1f98e51cba2cd1f6adc98d5e0db01a3')
