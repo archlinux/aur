@@ -6,16 +6,16 @@
 _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgver=3.26.0
-pkgrel=2
+pkgver=3.26.2
+pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
 arch=(i686 x86_64)
 license=(GPL)
 depends=(libexif gnome-desktop exempi gvfs dconf tracker nautilus-sendto gnome-autoar)
-makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc meson ninja)
+makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc 'meson>=0.44.1' ninja)
 options=(!emptydirs)
-_commit=69942c754ea4e45ab0d32bcbc9e29f1c08da8990  # tags/3.26.0
+_commit=51637bc0960002b811e1c0c7be8671cf9a1cc5be  # tags/3.26.2
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
@@ -39,9 +39,7 @@ pkgver() {
 
 build() {
   cd build
-  export LANG=en_US.UTF-8
-  meson --prefix=/usr --buildtype=release ../nautilus \
-    --sysconfdir=/etc \
+  arch-meson ../nautilus \
     -Denable-exif=true \
     -Denable-xmp=true \
     -Denable-gtk-doc=true \
@@ -50,7 +48,7 @@ build() {
 }
 
 package_nautilus-typeahead() {
-  depends+=(libnautilus-extension)
+  depends+=(libnautilus-extension-typeahead)
   install=nautilus.install
   conflicts=(nautilus)
   provides=(nautilus)
