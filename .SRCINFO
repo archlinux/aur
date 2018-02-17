@@ -1,7 +1,7 @@
 pkgbase = fwbuilder-qt4
 	pkgdesc = Object-oriented GUI and set of compilers for various firewall platforms
 	pkgver = 5.1.0.3599
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fwbuilder.org/
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = fwbuilder-qt4
 	conflicts = libfwbuilder
 	source = http://sourceforge.net/projects/fwbuilder/files/Current_Packages/5.1.0/fwbuilder-5.1.0.3599.tar.gz
 	source = fwbuilder.xml
+	source = fwbuilder.desktop
 	source = fwbuilder-gcc47.patch
 	sha256sums = 452514a1ec0be1416bfca93603e6c89deb91d1a3a19671c64b5a8868a3743daf
 	sha256sums = f8eacaa9895b17af3a1c148064b5ad8381b83f7983acb14687faef488ac8fede
+	sha256sums = 28d106593ebf43cffea1d29f23a1dce8e586680588f85b30f6cfd4de1ad4fc8e
 	sha256sums = d7c602d5b99c6e40403c0b02e34abf15de83802257ca5ce80ad53d486b692f27
 
 pkgname = fwbuilder-qt4

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Firewall Builder
+Comment=Design and Manage Firewall Rules
+Icon=fwbuilder
+Categories=System;Settings;Security;Qt;
+Exec=fwbuilder
+Type=Application
+StartupNotify=false
+Terminal=false
