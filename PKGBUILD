@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=66.0.3343.0
+pkgver=66.0.3346.8
 pkgrel=10
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/k3.patch
 )
 
 
-sha256sums=('b0d2f0c93257396f3d27c31722eb138755424b6ac8a3ebdc68736543fdbd748e'
+sha256sums=('89cb38a9a015b484bf2d6c9179cbc7099f5f5dbb956a0b771e85055653cda62a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -179,7 +179,7 @@ sha256sums=('b0d2f0c93257396f3d27c31722eb138755424b6ac8a3ebdc68736543fdbd748e'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '96fed3b7de6ffceee1e89d8459acbc6c990ec828f60b93385fa414bfe1453819'
+            '15d19d16caa91d59978c6cae8e759344d9da7f8abf8e694ebee4fd39288ae1fe'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -209,11 +209,11 @@ sha256sums=('b0d2f0c93257396f3d27c31722eb138755424b6ac8a3ebdc68736543fdbd748e'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
-            '57fdfede4c0aeac19547e8c0ca68f097732ec5210343c0ef9190bde1da2e7a3a'
+            'a2d53e78c12ca72441f8600ed4332296cca3e7d841d7badd7b11e504bc5a84d7'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            '11b66c829c124cf764a0e6971dc0cf67adea5058b5777355b85b2a0540f550d6'
+            '706f0e0e80873796d427066a2cce00d964c9f41988068757b0d1c9c5d1f982d1'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
 
 
@@ -368,7 +368,7 @@ patch -Np1 -i ../edgy.patch
 
   patch -Np1 -i ../k2.patch
 
-  #patch -Np1 -i ../desu.patch
+  patch -Np1 -i ../desu.patch
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
