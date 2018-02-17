@@ -1,4 +1,4 @@
-# Maintainer: dctxmei <dctxmei@foxmail.com>
+# Maintainer: dctxmei <dctxmei@gmail.com>
 pkgname=hmcl-git
 _pkgname=HMCL
 pkgver=2.0
