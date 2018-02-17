@@ -2,8 +2,8 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgname=gtk2-perl
-pkgver=1.2498
-pkgrel=7
+pkgver=1.24992
+pkgrel=1
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(x86_64)
 license=('LGPL')
@@ -12,8 +12,8 @@ makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
 depends=('gtk2' 'pango-perl')
 checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-${pkgver}.tar.gz)
-md5sums=('6283be729ae8a45cfba26eedb62fa582')
+source=(https://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-${pkgver}.tar.gz)
+sha256sums=('a2ed6902f7f29f7c8dddbe58119589f433252a12132c295c54afbac587cc8480')
 
 prepare() {
   cd Gtk2-$pkgver
