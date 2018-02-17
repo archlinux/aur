@@ -1,6 +1,6 @@
 pkgbase = python2-clamd
 	pkgdesc = a python interface to Clamd
-	pkgver = 0.3.17
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://xael.org/pages/pyclamd-en.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-clamd
 	makedepends = python2-setuptools
 	depends = clamav
 	depends = python2
-	source = python2-clamd-0.3.17.tar.gz::https://xael.org/pages/pyClamd-0.3.17.tar.gz
-	md5sums = 701e63618e04f94d956e99e43372cf84
+	source = python2-clamd-0.4.0.tar.gz::https://xael.org/pages/pyClamd-0.4.0.tar.gz
+	md5sums = 176b00f50236fa11eaf1eb75ec8055d8
 
 pkgname = python2-clamd
 
