@@ -1,0 +1,20 @@
+pkgbase = libical2
+	pkgdesc = An open source reference implementation of the icalendar data type and serialization format (version 2)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/libical/libical
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	makedepends = cmake
+	depends = glibc
+	depends = glib2
+	depends = icu
+	depends = db
+	provides = libical=2.0.0
+	conflicts = libical
+	source = libical-2.0.0.tar.gz::https://github.com/libical/libical/archive/v2.0.0.tar.gz
+	sha256sums = 20f4a98475052e1200d2691ba50b27969e4bedc6e50bffd5e2fa81f4ac90de9a
+
+pkgname = libical2
+
