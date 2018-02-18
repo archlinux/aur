@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=3282.r5.e7a562f72
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('freetype2' 'lcms2' 'libjpeg')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
-makedepends=('git' 'python2' 'gn' 'ninja')
+makedepends=('git' 'python2' 'gn-bin>=r533513' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
@@ -21,16 +21,16 @@ source=("git+https://pdfium.googlesource.com/pdfium"
 md5sums=('SKIP'
          'SKIP'
          '0d32e29b011dec73943931283213322b'
-         '373e6738515518594fd0f1c59c67e083')
+         '7fbbe2baf9a1fed80ad74278e901fa0e')
 
 pkgver() {
 
   cd $srcdir/pdfium
 
-	# Version = branch name/number + number of commits since branch creation
-	# + short head
+  # Version = branch name/number + number of commits since branch creation
+  # + short head
   printf  "%s.r%s.%s" $(git rev-parse --abbrev-ref HEAD | cut -d '/' -f2)\
-	 $(git rev-list --count master..) $(git rev-parse --short HEAD)
+   $(git rev-list --count master..) $(git rev-parse --short HEAD)
 
 }
 
@@ -111,7 +111,7 @@ package() {
   install -D public/*.h --target-directory="${pkgdir}/usr/include/pdfium"
   install -D public/cpp/* --target-directory="${pkgdir}/usr/include/pdfium/cpp"
   install -D docs/* --target-directory="${pkgdir}/usr/share/doc/pdfium"
-  install -Dm755 out/Release/libpdfium.so --target-directory="${pkgdir}/usr/lib/pdfium"
+  install -Dm755 out/Release/libpdfium.so --target-directory="${pkgdir}/usr/lib"
   install -Dm644 ${srcdir}/libpdfium.pc --target-directory=${pkgdir}/usr/lib/pkgconfig
 
 }
