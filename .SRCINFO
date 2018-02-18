@@ -1,0 +1,12 @@
+pkgbase = bashmultitool
+	pkgdesc = A library for bash shell program containing useful functions, written in bash import into scripts
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/gavinlyonsrepo/bashmultitool
+	arch = any
+	license = MIT
+	source = https://github.com/gavinlyonsrepo/bashmultitool/archive/1.1.tar.gz
+	md5sums = c07b1f8041515c6addb48a8b0176a76b
+
+pkgname = bashmultitool
+
