@@ -4,7 +4,7 @@
 _name=schema
 pkgbase="python-$_name"
 pkgname=("python2-$_name" "python-$_name")
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=2
 pkgdesc='Python module to validate and convert data structures.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('python-setuptools'  'python-pytest'
             'python2-setuptools' 'python2-pytest')
 source=("$_name-$pkgver.tar.gz::https://github.com/keleshev/$_name/archive/v$pkgver.tar.gz")
-sha1sums=('fad10e26ba7bb28ec0d0e57f4410882dc357ab63')
+sha1sums=('02674b4ae3fe44957379da5f70bf03c3b12b2647')
 
 check() {
 	cd "$_name-$pkgver"
