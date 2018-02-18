@@ -15,11 +15,9 @@ optdepends=(
 )
 makedepends=()
 
-source=("https://github.com/janeczku/docker-machine-vultr/releases/download/v$pkgver/docker-machine-driver-vultr-Linux-$CARCH")
-sha256sums=('6e07f18f019d6d73089f09fe858e84a1a1ca37ca74d76f6bb918d63e021ee3d7')
+source=("docker-machine-driver-vultr::https://github.com/janeczku/docker-machine-vultr/releases/download/v$pkgver/docker-machine-driver-vultr-Linux-$CARCH")
+sha256sums=('46bc306ed8dc4c301b06352db370605bd589da9957565a03dc81a44b5d4788c0')
 
 package() {
-  cd "$srcdir"
-  install -d "$pkgdir/usr/bin"
-  install -m755 docker-machine-driver-vultr "$pkgdir/usr/bin/docker-machine-driver-vultr"
+  install -m755 docker-machine-driver-vultr "$pkgdir/docker-machine-driver-vultr"
 }

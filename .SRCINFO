@@ -7,8 +7,8 @@ pkgbase = docker-machine-vultr
 	license = MIT
 	depends = docker-machine
 	optdepends = docker: to manage the containers in the machine
-	source = https://github.com/janeczku/docker-machine-vultr/releases/download/v1.4.0/docker-machine-driver-vultr-Linux-x86_64
-	sha256sums = 6e07f18f019d6d73089f09fe858e84a1a1ca37ca74d76f6bb918d63e021ee3d7
+	source = docker-machine-driver-vultr::https://github.com/janeczku/docker-machine-vultr/releases/download/v1.4.0/docker-machine-driver-vultr-Linux-x86_64
+	sha256sums = 46bc306ed8dc4c301b06352db370605bd589da9957565a03dc81a44b5d4788c0
 
 pkgname = docker-machine-vultr
 
