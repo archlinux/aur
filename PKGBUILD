@@ -1,16 +1,16 @@
 # Maintainer: liberodark
 
 pkgname=scram
-pkgver=0.15.0
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Probabilistic risk analysis tool'
 arch=('x86_64')
 url='https://scram-pra.org/'
 license=('GPL3')
-depends=('boost-libs' 'gperftools' 'libxml++2.6')
-makedepends=('boost' 'cmake')
+depends=('boost-libs' 'gperftools' 'libxml2' 'qt5-base' 'qt5-tools' 'qt5-svg')
+makedepends=('boost' 'cmake' 'gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rakhimov/scram/archive/$pkgver.tar.gz")
-sha512sums=('a7401a6c8f44715cb2658ef57f6f10b15790444f2c53f44323ca6f42c08f481b05a840e1485df4866e0ea89c37291e8a4d9f47021d712b7177e5919e231f8c63')
+sha512sums=('SKIP')
 
 build() {
   cd $pkgname-$pkgver
