@@ -1,7 +1,7 @@
 pkgbase = cloud-init
 	pkgdesc = The standard for customising cloud instances
 	pkgver = 17.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud-init.io
 	arch = any
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = cloud-init
 	depends = python2-oauth
 	depends = python2-boto
 	depends = python2-configobj
+	depends = python2-jsonschema
 	depends = python2-jsonpatch
 	depends = python2-jsonpointer
 	depends = net-tools

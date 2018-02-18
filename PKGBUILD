@@ -4,14 +4,14 @@
 
 pkgname=cloud-init
 pkgver=17.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The standard for customising cloud instances"
 arch=('any')
 url="https://cloud-init.io"
 license=('GPL3')
 depends=('systemd' 'python2-yaml' 'python2-cheetah' 'python2-prettytable'
          'python2-oauth' 'python2-boto' 'python2-configobj'
-         'python2-jsonpatch' 'python2-jsonpointer' 'net-tools'
+         'python2-jsonschema' 'python2-jsonpatch' 'python2-jsonpointer' 'net-tools'
          'python2-requests' 'python2-argparse' 'python2-oauthlib'
          'python2-jinja')
 makedepends=('python2' 'python2-setuptools')
