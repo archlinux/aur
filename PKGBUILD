@@ -2,12 +2,12 @@
 pkgbase=python-astropy-healpix
 pkgname=('python-astropy-healpix' 'python-astropy-healpix-doc')
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
 url="http://astropy-healpix.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
 #checkdepends=('python-pytest' 'python-healpy' 'python-hypothesis')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-${pkgver}.tar.gz")
 md5sums=('88cbb91e9c4dc61740735c9a9bdaaec5')
@@ -26,7 +26,7 @@ build() {
 }
 
 #check(){
-#    cd $srcdir/astropy-healpix-${pkgver}
+#    cd ${srcdir}/astropy-healpix-${pkgver}
 #
 #    python setup.py test
 #}
