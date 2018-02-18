@@ -2,16 +2,17 @@
 
 _pkgname=onics
 pkgname=onics-git
-pkgver=545.6ec68b6
+pkgver=618.b6b8d90
 pkgrel=1
 pkgdesc="A command line tool suite to capture, dissect, manipulate and send network data."
 arch=('i686' 'x86_64')
 url="https://gitorious.org/onics/pages/Home"
 license=('GPL')
-depends=('glibc' 'libpcap')
+depends=('libpcap')
 makedepends=('git' 'make')
 conflicts=('onics')
 provides=('onics')
+options=(!emptydirs)
 source=('git+https://github.com/ctelfer/catlib.git#branch=master'
         'git+https://github.com/ctelfer/onics.git#branch=master')
 md5sums=('SKIP' 'SKIP')
@@ -29,6 +30,7 @@ build() {
 
   # Make ONICS
   cd "$srcdir/${_pkgname}"
+  ./configure
   make
 }
 
@@ -39,8 +41,14 @@ package() {
   # Move man pages to /usr/share
   mkdir -p "$pkgdir/usr/share"
   mv "$pkgdir/usr/man" "$pkgdir/usr/share"
-
-  # Rename pgrep to pkgrep to avoid conflict with package procps-ng
-  mv "$pkgdir/usr/bin/pgrep" "$pkgdir/usr/bin/pktgrep"
-  mv "$pkgdir/usr/share/man/man1/pgrep.1" "$pkgdir/usr/share/man/man1/pktgrep.1"
+  
+  # Correct man pages symlinks
+  for _file in "$pkgdir"/usr/share/man/man1/{mkicmp.1,mkicmp6.1,mktcp.1,mktcp6.1,mkudp.1,mkudp6.1}; do
+     rm ${_file}
+     ln -s mkpkt.1 ${_file}
+  done
+  for _file in "$pkgdir"/usr/share/man/man1/{ethwrap.1,ipwrap.1,ip6wrap.1,icmpwrap.1,icmp6wrap.1,tcpwrap.1,udpwrap.1,mkarp.1}; do
+     rm ${_file}
+     ln -s oprotowrap.1 ${_file}
+  done
 }

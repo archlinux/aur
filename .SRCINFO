@@ -1,6 +1,6 @@
 pkgbase = onics-git
 	pkgdesc = A command line tool suite to capture, dissect, manipulate and send network data.
-	pkgver = 545.6ec68b6
+	pkgver = 618.b6b8d90
 	pkgrel = 1
 	url = https://gitorious.org/onics/pages/Home
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = onics-git
 	license = GPL
 	makedepends = git
 	makedepends = make
-	depends = glibc
 	depends = libpcap
 	provides = onics
 	conflicts = onics
+	options = !emptydirs
 	source = git+https://github.com/ctelfer/catlib.git#branch=master
 	source = git+https://github.com/ctelfer/onics.git#branch=master
 	md5sums = SKIP
