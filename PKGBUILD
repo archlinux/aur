@@ -5,7 +5,7 @@
 pkgname=dogecoin-qt
 _binname=dogecoin
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
@@ -13,11 +13,11 @@ license=('MIT')
 provides=('dogecoin-qt')
 depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt4' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
-# Patches are from https://sources.debian.net/data/main/d/dogecoin/1.10.0-5/debian/patches/
 source=("https://github.com/dogecoin/dogecoin/archive/v${pkgver}.tar.gz"
 		"0001-configure.ac_use_PIC.patch"
 		"0002-rename-libbitcoinconsensus-to-libdogecoinconsensus.patch"
 		"0004-rename-RAND_egd.patch"
+		"0005-boost-patch-by-unixbrain.patch"
 		"dogecoin.desktop"
         )
 install=dogecoin.install
@@ -33,6 +33,7 @@ prepare() {
 	patch -p1 <"${srcdir}/0001-configure.ac_use_PIC.patch"
 	patch -p1 <"${srcdir}/0002-rename-libbitcoinconsensus-to-libdogecoinconsensus.patch"
 	patch -p1 <"${srcdir}/0004-rename-RAND_egd.patch"
+	patch -p1 <"${srcdir}/0005-boost-patch-by-unixbrain.patch"
 }
 build() {
 	cd "${srcdir}/dogecoin-$pkgver/"
