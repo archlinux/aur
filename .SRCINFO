@@ -9,6 +9,7 @@ pkgbase = python2-pymavlink-git
 	makedepends = python2-setuptools
 	depends = python2-pyserial
 	depends = python2-future
+	depends = python2-lxml
 	provides = python2-pymavlink
 	conflicts = python2-pymavlink
 	source = git+https://github.com/mavlink/mavlink.git
