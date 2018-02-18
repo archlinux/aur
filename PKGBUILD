@@ -6,7 +6,7 @@
 
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Official Telegram Desktop client'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -28,6 +28,7 @@ source=(
     "tg.protocol"
     "CMakeLists.inj"
     "tdesktop.patch"
+    "no-gtk2.patch"
     "libtgvoip.patch"
     "emoji.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji.webp"
     "emoji_125x.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji_125x.webp"
@@ -44,6 +45,7 @@ sha256sums=('SKIP'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
             'c0a71a540c6263d4e6cbba326a9b9d61cd57ef6db6054e87058dc49cbb707a23'
+            '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6'
             '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075'
             'fccd084805b4621e3614d2a0584bb78a0ad44f502a79b4a4534e901881677555'
             '668a2371c3dae8e95187f0c9f8fec9b0e535157482747d2f9c6034c6b9eefa16'
@@ -60,6 +62,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git submodule update
     patch -Np1 -i "$srcdir/tdesktop.patch"
+    patch -Np1 -i "$srcdir/no-gtk2.patch"
 
     for x in "" "_125x" "_150x" "_200x" "_250x"; do
         cp -vf "$srcdir/emoji$x.webp_${_emoji_res_commit}" "$srcdir/tdesktop/Telegram/Resources/art/emoji$x.webp"
