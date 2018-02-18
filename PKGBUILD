@@ -8,7 +8,7 @@
 
 pkgname=botan-with-compression
 _pkgname=botan
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Crypto library written in C++, built with compression support'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('python')
 conflicts=('botan')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC')
 source=("https://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
-sha256sums=('39f970fee5986a4c3e425030aef50ac284da18596c004d1a9cce7688c4e6d47c'
+sha256sums=('ed9464e2a5cfee4cd3d9bd7a8f80673b45c8a0718db2181a73f5465a606608a5'
             'SKIP')
 
 build() {
