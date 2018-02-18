@@ -1,28 +1,28 @@
 ## arg 1:  the new package version
 pre_install() {
-	echo Nothing to do
+	echo Nothing to do > /dev/null
 }
 
 ## arg 1:  the new package version
 post_install() {
-	echo Nothing to do
+	echo Nothing to do > /dev/null
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-	echo Nothing to do
+	echo Nothing to do > /dev/null
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-	echo Nothing to do
+	echo Nothing to do > /dev/null
 }
 
 ## arg 1:  the old package version
 pre_remove() {
-	echo Nothing to do
+	echo Nothing to do > /dev/null
 }
 
 ## arg 1:  the old package version
