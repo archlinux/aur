@@ -7,8 +7,8 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=2.11.0
-pkgrel=4
+pkgver=2.11.1
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -25,7 +25,7 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         input-mouse-side-buttons.patch
         v2_qemu_zen_smt_cache.patch
         v4_ivshmem.patch)
-sha256sums=('c9d34a79024eae080ce3853aa9afe503824520eefb440190383003081ce7f437'
+sha256sums=('8a5145d1f8bd2eadc6776f3e13c68cd28d01349e30639bdbcb26ac588d668686'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
