@@ -1,6 +1,6 @@
 pkgbase = obs-websocket-git
 	pkgdesc = Remote control of OBS Studio made easy
-	pkgver = VERSION
+	pkgver = r569.357691b
 	pkgrel = 1
 	url = https://github.com/Palakis/obs-websocket
 	arch = i686
@@ -8,11 +8,13 @@ pkgbase = obs-websocket-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = obs-studio
+	depends = obs-studio-git
 	depends = qt5-websockets
 	provides = obs-websocket
 	conflicts = obs-websocket
+	source = git+https://github.com/jp9000/obs-studio.git
 	source = git+https://github.com/Palakis/obs-websocket.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = obs-websocket-git
