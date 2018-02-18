@@ -47,10 +47,10 @@ optdepends=(
   'unzip: zip utilities support'
   'gzip: gzip utilities support'
   'tar: tar utilities support'
-  'vim: Vi IMproved (xxd) utilities support'
+  'xxd: xxd utilities support'
   'xz: XZ and LZMA utilities support'
 )
-makedepends=('git')
+makedepends=('git' 'help2man' 'python-docutils')
 checkdepends=(
   'python-pytest' 'python-jsbeautifier' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
   'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools'
