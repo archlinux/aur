@@ -1,0 +1,21 @@
+pkgbase = slimsmtp-git
+	pkgdesc = A simple, light weight SMTP server
+	pkgver = 0.r36.792a9e9
+	pkgrel = 1
+	url = https://hvornum.se
+	arch = x86_64
+	license = custom:BSD
+	license = cc-by-nc-sa-3.0
+	makedepends = python
+	depends = python,
+	depends = python-systemd
+	depends = postgresql
+	provides = slimsmtp-git
+	provides = slimsmtp
+	conflicts = slimsmtp-git
+	conflicts = slimsmtp
+	source = git+https://github.com/Torxed/slimsmtp.git
+	sha256sums = SKIP
+
+pkgname = slimsmtp-git
+
