@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=socos
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Commandline tool for controlling Sonos devices"
 arch=('any')
 url="https://github.com/SoCo/socos"
@@ -14,7 +14,7 @@ md5sums=('2d1cf8651a2c9d3d5b895d95706947ad')
 
 prepare() {
   cd "$srcdir/socos-$pkgver"
-  sed -i requirements.txt -e "s/soco==0.11.1/soco==0.12/"
+  sed -i requirements.txt -e "s/soco==0.11.1/soco>=0.11.1/"
 }
 
 package() {
