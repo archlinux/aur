@@ -1,7 +1,7 @@
 pkgbase = tilix
 	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gnunn1/tilix
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tilix
 	depends = vte3
 	depends = dconf
 	depends = gsettings-desktop-schemas
-	optdepends = python2-nautilus: for "Open Tilix Here" support in nautilus
+	optdepends = python-nautilus: for "Open Tilix Here" support in nautilus
 	optdepends = vte3-notification: for desktop notifications support
 	optdepends = vte3-tilix: for notifications, triggers and badges support
 	optdepends = libsecret: for the password manager
