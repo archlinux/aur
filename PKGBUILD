@@ -3,18 +3,17 @@
 
 pkgbase=mp-5
 #pkgname=(mp-5-nc mp-5-qt4 mp-5-kde4 mp-5-gtk)
-pkgname=(mp-5-qt4 mp-5-kde4 mp-5-gtk)
-pkgver=5.2.11
+pkgname=(mp-5-qt4 mp-5-gtk)
+pkgver=5.2.12
 pkgrel=1
 arch=('i686' 'x86_64')
-# Note: config.sh auto-detects during the build which libraries are available
-#makedepends=('ncurses' 'qt4' 'kdelibs' 'gtk3')     # 'gtk2'
-makedepends=('ncurses' 'qt4' 'kdelibs' 'gtk3')     # 'gtk2'
 url="http://www.triptico.com/software/mp.html"
 license=('GPL')
+# Note: config.sh auto-detects during the build which libraries are available
+makedepends=('ncurses' 'qt4' 'kdelibs' 'gtk3')     # 'gtk2'
 source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz
 		MinimumProfit.desktop)
-md5sums=('4da91d361597150b1ecf05a292b979ce'
+md5sums=('d5093672cdd0f8ac1731d5cfa777ca22'
          '7eae413ded2d6f69fba8347240b8b875')
 
 prepare() {
@@ -24,8 +23,8 @@ prepare() {
   rm -rf mp-5-qt4
   cp -a mp-$pkgver mp-5-qt4
 
-  rm -rf mp-5-kde4
-  cp -a mp-$pkgver mp-5-kde4
+  #rm -rf mp-5-kde4
+  #cp -a mp-$pkgver mp-5-kde4
 
   rm -rf mp-5-gtk
   mv mp-$pkgver mp-5-gtk
@@ -40,9 +39,9 @@ build() {
   ./config.sh --prefix=/usr --without-gtk
   make
 
-  cd "$srcdir/mp-5-kde4"
-  ./config.sh --prefix=/usr --with-kde4
-  make
+  #cd "$srcdir/mp-5-kde4"
+  #./config.sh --prefix=/usr --with-kde4
+  #make
 
   cd "$srcdir/mp-5-gtk"
   ./config.sh --prefix=/usr --without-qt4 --without-kde4
@@ -79,20 +78,20 @@ package_mp-5-qt4() {
   make DESTDIR="$pkgdir" install
 }
 
-package_mp-5-kde4() {
-  pkgdesc="Text editor for programmers (KDE4 front-end)"
-  depends=('kdelibs')
-  _pkgname='mp-5'
-  provides=($_pkgname)
-  conflicts=($_pkgname)
-
-  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-
-  cd mp-5-kde4
-  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir/usr/bin"
-  make DESTDIR="$pkgdir" install
-}
+#package_mp-5-kde4() {
+#  pkgdesc="Text editor for programmers (KDE4 front-end)"
+#  depends=('kdelibs')
+#  _pkgname='mp-5'
+#  provides=($_pkgname)
+#  conflicts=($_pkgname)
+#
+#  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
+#
+#  cd mp-5-kde4
+#  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+#  install -dm755 "$pkgdir/usr/bin"
+#  make DESTDIR="$pkgdir" install
+#}
 
 package_mp-5-gtk() {
   pkgdesc="Text editor for programmers (GTK front-end)"
