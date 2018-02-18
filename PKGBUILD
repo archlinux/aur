@@ -3,7 +3,7 @@
 _appname=zeal
 
 pkgname=${_appname}-git
-pkgver=0.5.0.0.ga5a66ef
+pkgver=0.6.0.r0.gbae9a49
 pkgrel=1
 pkgdesc="A simple documentation browser"
 arch=('i686' 'x86_64')
@@ -19,9 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd ${_appname}
-    # TODO: Use on next version update.
-    # git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
