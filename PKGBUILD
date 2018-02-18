@@ -7,13 +7,14 @@ pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
-makedepends=('cython' 'qd>=2.3.7' 'python-astropy>=0.3' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'qd>=2.3.7' 'python-astropy>=0.3' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-${pkgver}.tar.gz")
 md5sums=('83511d7d9ec2862f138e9e551432a544')
 
 prepare() {
     cd ${srcdir}/spherical_geometry-${pkgver}
+
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
@@ -26,7 +27,8 @@ build () {
 }
 
 #check(){
-#    cd $srcdir/spherical_geometry-${pkgver}
+#    cd ${srcdir}/spherical_geometry-${pkgver}
+#
 #    python setup.py test
 #}
 
