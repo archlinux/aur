@@ -1,8 +1,6 @@
-# Maintainer: AppleBloom <rat.o.drat@gmail.com>
-
 _pkgname="mavproxy"
 pkgname="$_pkgname-git"
-pkgver='r1385.c5a8643'
+pkgver='r1691.1b887ed'
 pkgrel='1'
 pkgdesc='MAVLink proxy and command line ground station.'
 arch=('any')
