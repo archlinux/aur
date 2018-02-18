@@ -4,7 +4,7 @@
 # Contributor: thacrazze <thacrazze|googlemail|com>
 
 pkgname=clipgrab
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('qtwebkit-bin')
 optdepends=('ffmpeg: for the conversion functionality')
 source=(https://download.clipgrab.org/$pkgname-$pkgver.tar.gz
         $pkgname.desktop)
-md5sums=('141a78f0eb0a19241376987ae8c7522f'
+md5sums=('b26201f062bbbd22d37629d94804ba06'
          '9a141791f6952917c441050c3dac81ce')
 
 build() {
