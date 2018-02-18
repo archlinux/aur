@@ -6,7 +6,7 @@ arch=('any')
 pkgdesc="Tool to list dependencies of a DLL"
 depends=('wine' 'python')
 license=("WTFPL")
-url="https://gist.github.com/xantares/04cd1c47cb242ddf49b848045260c014"
+url="https://gist.github.com/yan12125/63c7241596e628553d21"
 source=('https://gist.githubusercontent.com/xantares/04cd1c47cb242ddf49b848045260c014/raw/c78bee9a2f85590941dd4a1167a7ca191a313c1e/dependency.py')
 sha256sums=('SKIP')
 
