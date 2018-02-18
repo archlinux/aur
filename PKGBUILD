@@ -4,7 +4,7 @@ pkgname=wine-nine
 winever=3.0
 ninever=2
 pkgver=$winever.$ninever
-pkgrel=1
+pkgrel=2
 source=("https://github.com/iXit/wine/archive/wine-nine-$winever-$ninever.tar.gz")
 sha1sums=('a5dd78dcc6bbb14a3b2435a5001c185280aba830')
 
@@ -91,21 +91,55 @@ build()
 {
   cd "$srcdir"
 
+  msg2 "Building Wine-64..."
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
+    --without-freetype \
+    --without-fontconfig \
+    --without-curses \
+    --without-cms \
+    --without-gstreamer \
+    --without-alsa \
+    --without-capi \
+    --without-opencl \
+    --without-openal \
+    --without-netapi  \
+    --without-mpg123 \
+    --without-ldap \
+    --without-krb5 \
+    --without-jpeg \
+    --without-gnutls \
+    --without-coreaudio \
+    --without-dbus \
+    --without-cups \
+    --without-gsm \
+    --without-osmesa \
+    --without-oss  \
+    --without-pcap \
+    --without-png \
+    --without-pulse \
+    --without-sane \
+    --without-tiff \
+    --without-udev \
+    --without-v4l \
+    --without-xinput \
+    --without-xinput2 \
+    --without-xml \
+    --without-xslt \
+    --without-zlib \
+    --with-d3d9-nine \
     --enable-win64 \
     --disable-tests
-  # Gstreamer was disabled for FS#33655
+    # Gstreamer was disabled for FS#33655
 
-  make
-
-  _wine32opts=(
-    --libdir=/usr/lib32
-    --with-wine64="$srcdir/$pkgname-64-build"
-  )
+  make include
+  make __builddeps__
+  make d3d9-nine.dll.so -C dlls/d3d9-nine
+  make d3d9-nine.dll.fake -C dlls/d3d9-nine
+  make programs/ninewinecfg
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
@@ -113,42 +147,83 @@ build()
   cd "$srcdir/$pkgname-32-build"
   ../$pkgname/configure \
     --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --with-wine64="$srcdir/$pkgname-64-build" \
     --with-x \
-    --disable-tests \
-    "${_wine32opts[@]}"
+    --without-freetype \
+    --without-fontconfig \
+    --without-curses \
+    --without-cms \
+    --without-gstreamer \
+    --without-alsa \
+    --without-capi \
+    --without-opencl \
+    --without-openal \
+    --without-netapi  \
+    --without-mpg123 \
+    --without-ldap \
+    --without-krb5 \
+    --without-jpeg \
+    --without-gnutls \
+    --without-coreaudio \
+    --without-dbus \
+    --without-cups \
+    --without-gsm \
+    --without-osmesa \
+    --without-oss  \
+    --without-pcap \
+    --without-png \
+    --without-pulse \
+    --without-sane \
+    --without-tiff \
+    --without-udev \
+    --without-v4l \
+    --without-xinput \
+    --without-xinput2 \
+    --without-xml \
+    --without-xslt \
+    --without-zlib \
+    --with-d3d9-nine \
+    --disable-tests
 
-  make
+  make include
+  make __builddeps__
+  make d3d9-nine.dll.so -C dlls/d3d9-nine
+  make d3d9-nine.dll.fake -C dlls/d3d9-nine
+  make programs/ninewinecfg
 }
 
 package()
 {
-    tmppkg="$srcdir/tmppkg"
-    rm -rf "$tmppkg"
-    cd "$srcdir/$pkgname-32-build"
-    make prefix="$tmppkg/usr" \
-                libdir="$tmppkg/usr/lib32" \
-                dlldir="$tmppkg/usr/lib32/wine" install
-    cd "$srcdir/$pkgname-64-build"
-    make prefix="$tmppkg/usr" \
-                libdir="$tmppkg/usr/lib" \
-                dlldir="$tmppkg/usr/lib/wine" install
+  install -d "$pkgdir/usr/bin"
+  install -m755 "$srcdir/wine-nine/tools/wineapploader.in" \
+    "$pkgdir/usr/bin/ninewinecfg"
+  sed -e 's=@bindir@=/usr/bin=g' -i "$pkgdir/usr/bin/ninewinecfg"
 
-    #64 bits
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/lib/wine/fakedlls"
+  #64 bits
+  install -d "$pkgdir/usr/lib/wine/fakedlls"
 
-    install -m644 "$tmppkg/usr/lib/wine/fakedlls/d3d9-nine.dll" "$pkgdir/usr/lib/wine/fakedlls/"
-    install -m644 "$tmppkg/usr/lib/wine/fakedlls/ninewinecfg.exe" "$pkgdir/usr/lib/wine/fakedlls/"
-    install -m644 "$tmppkg/usr/lib/wine/d3d9-nine.dll.so" "$pkgdir/usr/lib/wine/"
-    install -m644 "$tmppkg/usr/lib/wine/libd3d9-nine.def"  "$pkgdir/usr/lib/wine/"
-    install -m644 "$tmppkg/usr/lib/wine/ninewinecfg.exe.so"  "$pkgdir/usr/lib/wine/"
-    install -m755 "$tmppkg/usr/bin/ninewinecfg"  "$pkgdir/usr/bin"
+  install -m644 "$srcdir/wine-nine-64-build/dlls/d3d9-nine/d3d9-nine.dll.fake" \
+    "$pkgdir/usr/lib/wine/fakedlls/d3d9-nine.dll"
+  install -m644 "$srcdir/wine-nine-64-build/dlls/d3d9-nine/d3d9-nine.dll.so" \
+    "$pkgdir/usr/lib/wine/"
+  install -m644 "$srcdir/wine-nine-64-build/dlls/d3d9-nine/libd3d9-nine.def" \
+    "$pkgdir/usr/lib/wine/"
+  install -m644 "$srcdir/wine-nine-64-build/programs/ninewinecfg/ninewinecfg.exe.fake" \
+    "$pkgdir/usr/lib/wine/fakedlls/ninewinecfg.exe"
+  install -m644 "$srcdir/wine-nine-64-build/programs/ninewinecfg/ninewinecfg.exe.so" \
+    "$pkgdir/usr/lib/wine/"
 
-    #32 bits
-    install -d "$pkgdir/usr/lib32/wine/fakedlls"
-    install -m644 "$tmppkg/usr/lib32/wine/fakedlls/d3d9-nine.dll" "$pkgdir/usr/lib32/wine/fakedlls/"
-    install -m644 "$tmppkg/usr/lib32/wine/fakedlls/ninewinecfg.exe" "$pkgdir/usr/lib32/wine/fakedlls/"
-    install -m644 "$tmppkg/usr/lib32/wine/d3d9-nine.dll.so" "$pkgdir/usr/lib32/wine/"
-    install -m644 "$tmppkg/usr/lib32/wine/libd3d9-nine.def"  "$pkgdir/usr/lib32/wine/"
-    install -m644 "$tmppkg/usr/lib32/wine/ninewinecfg.exe.so"  "$pkgdir/usr/lib32/wine/"
+  #32 bits
+  install -d "$pkgdir/usr/lib32/wine/fakedlls"
+  install -m324 "$srcdir/wine-nine-32-build/dlls/d3d9-nine/d3d9-nine.dll.fake" \
+    "$pkgdir/usr/lib32/wine/fakedlls/d3d9-nine.dll"
+  install -m324 "$srcdir/wine-nine-32-build/dlls/d3d9-nine/d3d9-nine.dll.so" \
+    "$pkgdir/usr/lib32/wine/"
+  install -m324 "$srcdir/wine-nine-32-build/dlls/d3d9-nine/libd3d9-nine.def" \
+    "$pkgdir/usr/lib32/wine/"
+  install -m324 "$srcdir/wine-nine-32-build/programs/ninewinecfg/ninewinecfg.exe.fake" \
+    "$pkgdir/usr/lib32/wine/fakedlls/ninewinecfg.exe"
+  install -m324 "$srcdir/wine-nine-32-build/programs/ninewinecfg/ninewinecfg.exe.so" \
+    "$pkgdir/usr/lib32/wine/"
 }

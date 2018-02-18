@@ -1,7 +1,7 @@
 pkgbase = wine-nine
 	pkgdesc = Wine nine libraries to be used with either standard Wine or Wine-Staging
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iXit/wine
 	install = wine-nine.install
 	arch = x86_64
