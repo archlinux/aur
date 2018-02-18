@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=170506
+pkgver=180203
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -32,18 +32,20 @@ optdepends=('aften: support for AC-3 audio encoding'
 'x265: support for H.265 video encoding')
 url="http://www.selur.de/"
 
-if test "$CARCH" == x86_64; then
-  source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
+source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
           hybrid.desktop
-          Hybrid.png)
-  md5sums=('adb6cd6e4e65ec9aa32acae64d8f79e5'
-           'dd87c6eb6df85049de38c61dfe400347'
-           '798dd936a3bc9bcd3b131d5dd6db96e6')
-fi
+          Hybrid.png
+          LICENSE)
 
 package() {
   cd "${srcdir}"
   install -D -m755 Hybrid "${pkgdir}"/usr/bin/Hybrid
   install -D -m644 hybrid.desktop "${pkgdir}"/usr/share/applications/hybrid.desktop
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+md5sums_x86_64=('0c6059ba86a3e2b88f68865caa6e57ac'
+                'dd87c6eb6df85049de38c61dfe400347'
+                '798dd936a3bc9bcd3b131d5dd6db96e6'
+                '1fd2ac133744f86e25fd680d14aed2b4')
