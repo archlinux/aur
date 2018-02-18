@@ -1,7 +1,7 @@
 # Maintainer: Trent Palmer trenttdually at gmail
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=3.0.r91.g5c84f5b
+pkgver=4.0.serial.r95.gcbd884d
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')
