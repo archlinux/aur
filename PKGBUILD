@@ -3,7 +3,7 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.15.0.r317.g14c63a9dc0
+pkgver=2.16.2.r246.ga4ee44448f
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=('i686' 'x86_64')
@@ -46,7 +46,9 @@ pkgver() {
 build() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$srcdir/$_name"
-  make prefix=/usr gitexecdir=/usr/lib/git-core \
+  make prefix=/usr \
+    gitexecdir=/usr/lib/git-core \
+    perllibdir=/usr/share/perl5/vendor_perl \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
@@ -87,7 +89,9 @@ check() {
 package() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$srcdir/$_name"
-  make prefix=/usr gitexecdir=/usr/lib/git-core \
+  make prefix=/usr \
+    gitexecdir=/usr/lib/git-core \
+    perllibdir=/usr/share/perl5/vendor_perl \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
@@ -119,7 +123,7 @@ package() {
   make -C contrib/subtree prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" install install-doc
 
   # mediawiki installation
-  make -C contrib/mw-to-git prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" install
+  make -C contrib/mw-to-git prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" INSTLIBDIR=/usr/share/perl5/vendor_perl install
 
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
@@ -132,13 +136,6 @@ package() {
     "$pkgdir"/usr/share/git/remote-helpers/git-remote-hg
   sed -i 's|#![ ]*/usr/bin/python$|#!/usr/bin/python2|' \
     "$pkgdir"/usr/share/git/svn-fe/svnrdump_sim.py
-
-  # perl modules from contrib/ install to site dir... move to vendor
-  mv "$pkgdir"/usr/share/perl5/site_perl/Git/* "$pkgdir"/usr/share/perl5/vendor_perl/Git/
-  rm -rf "$pkgdir"/usr/share/perl5/site_perl
-
-  # remove perllocal.pod, .packlist, and empty directories.
-  rm -rf "$pkgdir"/usr/lib/perl5
 
   # git-daemon via systemd socket activation
   install -D -m 644 "$srcdir"/git-daemon@.service "$pkgdir"/usr/lib/systemd/system/git-daemon@.service
