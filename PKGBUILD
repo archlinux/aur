@@ -7,7 +7,7 @@ pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy>=1.3' 'python-pytz' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'python-astropy>=1.3' 'python-pytz' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-astroquery')
 #checkdepends=('python-matplotlib' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
         'python-astroplan.patch')
@@ -15,7 +15,8 @@ md5sums=('8ac6dec44aadae0b98775658856a4f01'
          'dbeae8fbb4ac0945676630db8d219c59')
 
 prepare() {
-    cd "${srcdir}/astroplan-${pkgver}"
+    cd ${srcdir}/astroplan-${pkgver}
+
     patch -Np1 -i "${srcdir}/python-astroplan.patch"
 }
 
@@ -28,7 +29,7 @@ build () {
 }
 
 #check(){
-#    cd $srcdir/astroplan-${pkgver}
+#    cd ${srcdir}/astroplan-${pkgver}
 #
 #    python setup.py test
 #}
