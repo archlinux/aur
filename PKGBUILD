@@ -3,8 +3,8 @@
 pkgname=satysfi-git
 _pkgname=SATySFi
 pkgver=r1306.baa8057
-pkgrel=1
-pkgdesc="A new typesetting system with a static type system"
+pkgrel=2
+pkgdesc="A statically-typed, functional typesetting system"
 arch=('x86_64')
 url="https://github.com/gfngfn/SATySFi"
 license=('LGPL3')
@@ -27,6 +27,8 @@ build() {
   export OPAMROOT="${srcdir}/.opam"
   opam init --yes --no-setup
   eval "$(opam config env)"
+  # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
+  export CHECK_IF_PREINSTALLED=false
   opam pin add --yes satysfi .
 }
 
