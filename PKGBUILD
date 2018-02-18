@@ -6,7 +6,7 @@ _version=2.99
 _gitname=gimp
 pkgname=${_gitname}-gtk3-git
 pkgver=2.9.8.r741.g8b3a6bcf5c
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
@@ -15,7 +15,7 @@ depends=('babl-git' 'gegl-git' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libm
 	 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-brushes')
 makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes'
 	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
-	     'pygtk' 'python-cairo')
+	     'pygtk' 'python-cairo' 'gtk-doc')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
 	    'libwebkit: for the help browser'
 	    'libwebp: for support of the webp file format' 
