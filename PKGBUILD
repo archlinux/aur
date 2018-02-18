@@ -1,9 +1,9 @@
 
-# Maintainer: Malte Veerman <maldela@halloarsch.de>
+# Maintainer: Malte Veerman <malte.veerman@gmail.com>
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-kcm-git
-pkgver=v0.4.1.r21.g5de7586
+pkgver=v0.5.r6.gd2b113e
 pkgrel=1
 pkgdesc="KCM for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
