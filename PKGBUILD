@@ -2,7 +2,7 @@
 
 pkgname=jotta-cli
 pkgver=0.4.4914
-pkgrel=2
+pkgrel=3
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 makedepends=()
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${p
 
 source_i686=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_i386.deb")
 
-depends=('systemd')
+depends=('systemd' 'glibc')
 optdepends=()
 
 package() {
