@@ -12,6 +12,7 @@ pkgbase = geany-plugins-git
 	makedepends = gpgme
 	makedepends = ctpl
 	makedepends = lua
+	makedepends = gtkspell
 	makedepends = intltool
 	depends = geany-git
 	depends = vte
