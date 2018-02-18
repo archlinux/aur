@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.98.4.revolution.2018
+pkgver=0.98.4.pokemanz.heartscale
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 sha256sums=('64b5c6c47cd0705ff743fe3a14a0c71899db29f70f699d94cdf6f54e3fa13d00'
-            '4f3964f11bf6379df123eae488948c0d93f8432a6e546318b6c609085226c4e2'
+            'bc75525666fb273d7303e4baaaff386fd927d06c927b02141ee5ba8cac0e426f'
             'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
             '54b5f40a5385eba58385c49b7ba6a4485d531acdb6289c3cb97dcf6825750956')
 
@@ -23,13 +23,13 @@ package() {
 
     # Variables
     ## i know this isn't a good thing and nobody wants to see this on aur, but it'll make things easier for me #Fabian
-    ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64
-    __VNAMING="PROLinux" ##like PROLinux95_45_data, PROLinux95_45.x86_64
+    ## directory files naming is usually VNAMING_Data, binary VNAMING.x86_64
+    __VNAMING="PRO" ##like PROLinux95_45_data, PROLinux95_45.x86_64
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PRO2k18Linux.zip" ##filename
-    __DDLFSHA256="3f854d1aa54e4e78ba237e4ca119022e15ddada20586d8b44b9e9ef91f082223" #sha256sum
+    __DDLFN="PROLinux.zip" ##filename
+    __DDLFSHA256="e62e263ce49c7dcd6a9a9503207ae68e2e95f43ed7341abb42e91d5cee055a40" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
