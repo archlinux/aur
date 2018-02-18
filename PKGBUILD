@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.2.0.rc5.r1.g20fc0ad2d
+pkgver=1.2.0.rc5.r18.g0f0b08b85
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -49,6 +49,15 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   DESTDIR="$pkgdir" ninja install
+
+  # Merge directories
+  if test -d "$pkgdir"/usr/lib64/; then
+    if test -d "$pkgdir"/usr/lib/; then
+      mv "$pkgdir"/usr/lib64/* "$pkgdir"/usr/lib/
+      rm -rf "$pkgdir"/usr/lib64/
+    fi
+    mv "$pkgdir"/usr/lib64/ "$pkgdir"/usr/lib/
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
