@@ -3,7 +3,7 @@
 _pkgname=sonarqube
 pkgname=${_pkgname}
 pkgver=7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
@@ -27,12 +27,14 @@ install=${pkgname}.install
 source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
         "${_pkgname}.service"
         "${_pkgname}-tmpfile.conf"
-        "${_pkgname}-user.conf")
+        "${_pkgname}-user.conf"
+        "99-${_pkgname}.conf")
 
 sha256sums=('263942458279e2cf73fd86671511ac8ef0707e41ed51c9737142f8738bc7c060'
-            'cb3e3e810892e4d7ccf7a843ae1cb7daa14e3395025d0cc505b562f45e4f1ee9'
+            '1aeefc9db232d13a3139a27af308e30df72c8c9fd631f713e317e1ab18a24d77'
             '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
-            '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d')
+            '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
+            '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -59,6 +61,9 @@ package() {
     install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "${_pkgname}-user.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     install -Dm644 "${_pkgname}-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+    # Install an example conf for required sysctl values (vm.max_map_count and fs.file-max); see https://docs.sonarqube.org/display/SONAR/Requirements#Requirements-Linux.
+    install -Dm644 "99-sonarqube.conf" "${pkgdir}/usr/share/doc/${_pkgname}/99-sonarqube.conf"
 
     # Create symbolic links because SonarQube expects a specific directory layout.
     ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/logs"
