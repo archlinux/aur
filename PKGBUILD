@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=znapzupport
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-  '4ddd3681fb22cb760f10ad6ed492e784d73729f31e82441a8339d8a55cbdd960306f3c0fb5391b380380dece4816a448e7c103c48ac48a0f79c49b26f9b85e0c'
+  '110e0273747ba346bef82996d0db84e2aa008263a285834a0431895515eca644b3ad6405faaaa3b74b5c565a76e52c5388ec0d20652e55160e663dd1fefe782d'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
