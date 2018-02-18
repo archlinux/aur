@@ -1,7 +1,7 @@
 # Maintainer: koneu <koneu93 at googlemail dot com>
 
 pkgname='power.sh'
-pkgver='6'
+pkgver='7'
 pkgrel=1
 pkgdesc='tiny automated power settings'
 license=('CC0')
@@ -9,7 +9,7 @@ source=('power.sh' 'power.sh.blacklist' 'power.sh.rules' 'power.sh.service' 'pow
 depends=('systemd' 'sh' 'findutils')
 backup=('etc/power.sh.blacklist')
 arch=('any')
-md5sums=('5abe35bfa28e414bbe59408ee4ede986'
+md5sums=('524973f5fbb66f9ca7b309bb9681e97c'
          'c034bfa86c5b33f7d45d6967e2300e88'
          '8e6f9e2586f43e9031df9c65e0643c96'
          '1a16e384fee99a45f8fc59eaaa71d8f6'
