@@ -2,12 +2,13 @@
 _pkgname=todoist
 pkgname=todoist-linux-bin
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Unofficial desktop client for Todoist"
 arch=(x86_64)
 url="http://todoistlinux.hakimouake.com/"
 license=('unknown')
+depends=('gconf' 'libnotify' 'alsa-lib' 'gtk2' 'libxtst' 'nss')
 conflicts=('todoist')
 source=("https://s3.amazonaws.com/kamhix/downloads/todoist-linux-64bits.tar.gz"
 		"Todoist.desktop")
@@ -32,4 +33,4 @@ package() {
 }
 
 md5sums=('c107b9c92f9eab3a33b42afa434e28f0'
-         'e3d5d47be26b1875ea420f807f97cee1')
+         '196a345c7e51d52a7f6fec90c476e305')

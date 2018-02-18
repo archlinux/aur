@@ -1,16 +1,22 @@
 pkgbase = todoist-linux-bin
 	pkgdesc = Unofficial desktop client for Todoist
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://todoistlinux.hakimouake.com/
 	arch = x86_64
 	license = unknown
+	depends = gconf
+	depends = libnotify
+	depends = alsa-lib
+	depends = gtk2
+	depends = libxtst
+	depends = nss
 	conflicts = todoist
 	options = !strip
 	source = https://s3.amazonaws.com/kamhix/downloads/todoist-linux-64bits.tar.gz
 	source = Todoist.desktop
 	md5sums = c107b9c92f9eab3a33b42afa434e28f0
-	md5sums = e3d5d47be26b1875ea420f807f97cee1
+	md5sums = 196a345c7e51d52a7f6fec90c476e305
 
 pkgname = todoist-linux-bin
 
