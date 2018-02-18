@@ -1,7 +1,7 @@
 # Maintainer: TJM <tommy.mairo@gmail.com>
 pkgname=rtl8192eu
-pkgver=4.4.1.1
-pkgrel=1
+pkgver=4.4.1
+pkgrel=2
 pkgdesc="Driver for the Realtek8192eu chipset."
 arch=("x86_64" "armv6h")
 url="https://github.com/Mange/rtl8192eu-linux-driver"

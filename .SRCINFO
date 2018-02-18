@@ -1,7 +1,7 @@
 pkgbase = rtl8192eu
 	pkgdesc = Driver for the Realtek8192eu chipset.
-	pkgver = 4.4.1.1
-	pkgrel = 1
+	pkgver = 4.4.1
+	pkgrel = 2
 	url = https://github.com/Mange/rtl8192eu-linux-driver
 	install = rtl8192eu.install
 	arch = x86_64
