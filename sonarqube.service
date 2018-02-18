@@ -12,6 +12,8 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=sonarqube
 RuntimeDirectory=sonarqube
+LimitNOFILE=65536
+LimitNPROC=2048
 ExecStart=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh start
 ExecStop=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh stop
 
