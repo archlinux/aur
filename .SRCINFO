@@ -1,7 +1,7 @@
 pkgbase = jotta-cli
 	pkgdesc = Jottacloud command line client to back up/share your files to/on Jottacloud.
 	pkgver = 0.4.4914
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.jottacloud.com/jottacloud-command-line-tool
 	arch = x86_64
 	arch = i686

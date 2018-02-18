@@ -2,7 +2,7 @@
 
 pkgname=jotta-cli
 pkgver=0.4.4914
-pkgrel=1
+pkgrel=2
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 makedepends=()
 arch=('x86_64' 'i686')
@@ -28,7 +28,6 @@ package() {
 
     tar -xvf data.tar.gz -C ${pkgdir} --exclude='./control'
 
-    mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
     mv "${pkgdir}"/etc "${pkgdir}"/usr/etc
 
     chmod -R go-w "${pkgdir}"/usr
