@@ -5,7 +5,7 @@ pkgname=thunderbird-beta
 pkgver=59.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=3
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -20,29 +20,36 @@ optdepends=('hunspell: Spell checking'
 options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
-        $pkgname.desktop
-        thunderbird-install-dir.patch
-        no-crmf.diff)
-sha512sums=('384d78346413c66b02573a6138bde223b6388a306ba535eaf5498867a4dd7bb44b73dda4e7811b728202df0283813bc3365317007a170696bdba0703beb83215'
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/$pkgname.desktop
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/thunderbird-install-dir.patch
+       https://raw.githubusercontent.com/bn0785ac/thunderbeta/no-crmf.diff
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/fix-wifi-scanner.diff
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-data-sharing-infobar.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-location.services.mozilla.com.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-telemetry.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
+)
+
+sha512sums=('9fa452db4fcd487691bf154dcff7159b7b38acc721f2d40cc44c7e3806ed4d7c3f4245ac8fe34445425b6f66cd75c4503bf352f38c437e3c913154de5eebe5b0'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
-            'b10b74e073a369bf06069f21eddaa145eaa93e4b5128ff659eb186598ecce773afc1ce5a4b2208a7c2bb54ee118827db28171875dfdb91fb31cac4598a300371'
-            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065')
+            '33f5c73b18b078c49b97ebd526a8d07eb091deb223018068434cec0ff95e4ac64dbde70f1c2ccf46f833a17f898bb9a916357eebac05f39399f23a08f79149f7'
+            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
+            '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
+            '38d8e4d96fb2324b27bc9518ef54db3c47a6fc6846342e58ced56898bbafc09562e8c483998bab573908b5019ed88611c4893f752de491236cda00945d1d156a'
+            '45efc5fdbfd63d53763c1cfdb01647a38efedc8f8af8dacef95c73b06fb5e9030d1597d16bc8337f8fa52b9b6d060c8cb85387dd81e5157340746c17a81225e6'
+            'ba950af03a906918d0981e18c0c6e131d0ef2bfb890bedbc47215e82b354a34ade89de1655bd245e76301a08cd543a4522745da47d70939bfe8adeab51e60501'
+            '71ccc1ab8c28c269d2dd52f474dcc59bdb48defc3f38efc2e0725c1581ab14497753a790dd17325b74545d22f99b7cbaa46d461cc8fe73898632bb69b4238b4f'
+            'e43c3d5862f752dfbb7df2774bf57f675ee088985055a2d7fa67a5e6de864db4b5a25034854e9bd82b060fbff7668887f88b34e15cf61eb4de54fc6b0b60076f'
+            'bfe2fe62842939ffb2798a9948ef3dc83546dedf5cf47f9974635c65bb560111b6366b13440551bc1aa482d90f30a2bc3068966eb4247dd143bbcc6a7055206f')
+
+
 # RC
 if [[ $_build = ? ]]; then
   source[0]="https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/source/thunderbird-$_major.source.tar.xz"
 fi
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
-_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-
-# Mozilla API keys (see https://location.services.mozilla.com/api)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact heftig@archlinux.org for
-# more information.
-_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   # Link Python2
@@ -57,9 +64,17 @@ prepare() {
   msg2 "no-crmf.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1371991"
   patch -Np1 -i ../no-crmf.diff
 
-  # API keys
-  echo -n "$_google_api_key" >google-api-key
-  echo -n "$_mozilla_api_key" >mozilla-api-key
+
+
+cd mozilla
+
+patch -Np1 -i ../../firefox-52-disable-data-sharing-infobar.patch
+patch -Np1 -i ../../firefox-52-disable-location.services.mozilla.com.patch
+patch -Np1 -i ../../firefox-52-disable-telemetry.patch
+
+cd ../
+
+
 
   # mozconfig
   cat >.mozconfig <<END
@@ -75,13 +90,13 @@ ac_add_options --enable-optimize="-O2"
 #ac_add_options --enable-rust
 
 # Branding
-ac_add_options --enable-official-branding
-ac_add_options --enable-update-channel=beta
+
+ac_add_options --with-branding=../mail/branding/nightly 
+ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 
 # Keys
-ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
-ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -104,8 +119,18 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests ###
 ac_add_options --disable-debug-symbols ###
 
-STRIP_FLAGS="--strip-debug"
+ac_add_options --disable-necko-wifi 
+ac_add_options --disable-webspeech
+ac_add_options --disable-webrtc
+
 END
+
+cd mozilla
+msg2 'fixing dependency errors'
+
+patch -Np1 -i ../../fix.patch
+patch -Np1 -i ../../fix2.patch
+patch -Np1 -i ../../p.patch
 }
 
 build() {
@@ -131,6 +156,16 @@ build() {
 
 package() {
   cd thunderbird-$pkgver
+
+msg2 'fixing upstream error'
+cp default16.png mailicon16.png
+cp default22.png mailicon22.png
+cp default24.png mailicon24.png
+cp default32.png mailicon32.png
+cp default48.png mailicon48.png
+cp default64.png mailicon64.png
+cp default128.png mailicon128.png
+cp default256.png mailicon256.png
 
   # Install
   msg2 "Running make -f client.mk install.."
