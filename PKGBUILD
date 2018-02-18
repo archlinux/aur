@@ -8,7 +8,7 @@ pkgrel=2
 source=("https://github.com/iXit/wine/archive/wine-nine-$winever-$ninever.tar.gz")
 sha1sums=('a5dd78dcc6bbb14a3b2435a5001c185280aba830')
 
-pkgdesc="Wine nine libraries to be used with either standard Wine or Wine-Staging"
+pkgdesc="Wine nine libraries to be used with Wine 3.x"
 url="https://github.com/iXit/wine"
 arch=(x86_64)
 options=(staticlibs)
@@ -27,7 +27,7 @@ depends=(
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
   libpcap         lib32-libpcap
-  desktop-file-utils
+  desktop-file-utils 'wine>=3.0-1'
 )
 makedepends=(autoconf ncurses bison perl flex
   'gcc>=4.5.0-2'
@@ -68,7 +68,7 @@ optdepends=(
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
-  cups                  wine
+  cups
   samba                 dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})

@@ -1,5 +1,5 @@
 pkgbase = wine-nine
-	pkgdesc = Wine nine libraries to be used with either standard Wine or Wine-Staging
+	pkgdesc = Wine nine libraries to be used with Wine 3.x
 	pkgver = 3.0.2
 	pkgrel = 2
 	url = https://github.com/iXit/wine
@@ -74,6 +74,7 @@ pkgbase = wine-nine
 	makedepends = libpcap
 	makedepends = lib32-libpcap
 	makedepends = desktop-file-utils
+	makedepends = wine>=3.0-1
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -101,6 +102,7 @@ pkgbase = wine-nine
 	depends = libpcap
 	depends = lib32-libpcap
 	depends = desktop-file-utils
+	depends = wine>=3.0-1
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -136,7 +138,6 @@ pkgbase = wine-nine
 	optdepends = gst-plugins-base-libs
 	optdepends = lib32-gst-plugins-base-libs
 	optdepends = cups
-	optdepends = wine
 	optdepends = samba
 	optdepends = dosbox
 	options = staticlibs
