@@ -32,7 +32,7 @@ _old_control=n #for pre-GCN users who has problems with default config, pick =y 
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=19
+pkgrel=20
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -40,7 +40,7 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.15' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=3.0' 'linux<4.16' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -147,14 +147,39 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '0a725f40bc980d578cbed3e57a05b765'
 	 '5ba3bf9f58aa63c1849b056cf23022c9')
 
-
-build() {
+prepare() {
   ## Unpack archive
      /bin/sh ./fglrx-${_amdver}/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
 # mkdir common
 # mv etc lib usr common
 # mkdir archive_files
 # mv arch common xpic xpic_64a archive_files
+
+  ## Patch
+    cd ${srcdir}/archive_files
+    patch -Np1 -i ../makefile_compat.patch
+    patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
+    patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
+    patch -Np1 -i ../fglrx_gpl_symbol.patch
+    patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+    patch -Np1 -i ../4.3-gentoo-mtrr.patch
+    test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
+    patch -Np1 -i ../4.4-manjaro-xstate.patch
+    patch -Np1 -i ../grsec_arch.patch
+    patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+    patch -Np1 -i ../makesh-dont-check-gcc-version.patch
+    patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
+    patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
+    patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+    patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
+    patch -Np1 -i ../4.12-npfeiler-PUD_OFFSET.patch
+    patch -Np1 -i ../4.12-arch-remove_clts.patch
+    patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
+    patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
+    patch -Np1 -i ../4.14-npfeiler-task_struct-mm_segment_t.patch
+    
+    cd ${srcdir}/archive_files/common
+    patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
 }
 
 package() {
@@ -262,7 +287,6 @@ package() {
 
 
       cd ${srcdir}/archive_files/common
-      patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
       install -m644 etc/ati/* ${pkgdir}/etc/ati
       chmod 755 ${pkgdir}/etc/ati/authatieventsd.sh
       if [ "${_old_control}" = "y" ]; then
@@ -327,26 +351,6 @@ package() {
 
 ##catalyst-dkms section
       cd ${srcdir}/archive_files
-      patch -Np1 -i ../makefile_compat.patch
-      patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
-      patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-      patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
-      patch -Np1 -i ../4.3-gentoo-mtrr.patch
-      test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
-      patch -Np1 -i ../4.4-manjaro-xstate.patch
-      patch -Np1 -i ../grsec_arch.patch
-      patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
-      patch -Np1 -i ../makesh-dont-check-gcc-version.patch
-      patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
-      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
-      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
-      patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
-      patch -Np1 -i ../4.12-npfeiler-PUD_OFFSET.patch
-      patch -Np1 -i ../4.12-arch-remove_clts.patch
-      patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
-      patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
-      patch -Np1 -i ../4.14-npfeiler-task_struct-mm_segment_t.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
