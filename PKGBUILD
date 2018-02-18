@@ -2,7 +2,7 @@
 
 pkgname=palemoon-unstable-bin
 pkgver=27.8.0a1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
 url="http://linux.palemoon.org/"
@@ -17,7 +17,7 @@ options=('!strip')
 source=(palemoon.desktop)
 source_x86_64=("http://linux.palemoon.org/datastore/release/palemoon-unstable-latest.linux-x86_64.tar.bz2")
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_x86_64=('15a59114d0a933cfd09a477c8afbed8493d1e448f7f178c15fbe274707c86148')
+sha256sums_x86_64=('b85dbe13285db5aaff266e17dcb7b887cbc6aaeb64cb8bfbf234777e96a04db1')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
