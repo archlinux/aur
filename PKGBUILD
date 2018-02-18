@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=clipgrab-qt5
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 pkgdesc='Fork of ClipGrab to make it compatible with Qt5'
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ depends=('qt5-webkit')
 optdepends=('ffmpeg: for the conversion functionality')
 makedepends=('git')
 #source=($pkgname::git+https://github.com/OpenHelios/clipgrab-qt5.git
-source=(https://github.com/kikadf/clipgrab-qt5/archive/3.6.6.tar.gz
+source=(https://github.com/kikadf/clipgrab-qt5/archive/${pkgver}.tar.gz
         $pkgname.desktop)
-md5sums=('8e3090db43cdf27d207627c434d0e624'
+md5sums=('d513b92f796e8a54e9ea3352112b1706'
          '86ec4e7907a20dcae2c0cf6ad2438632')
 
 build() {
