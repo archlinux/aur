@@ -2,18 +2,19 @@
 pkgbase=python-astroscrappy
 pkgname=('python-astroscrappy' 'python-astroscrappy-doc')
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/astroscrappy"
 license=('BSD')
-makedepends=('cython>=0.21' 'python-astropy' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython>=0.21' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-${pkgver}.tar.gz")
 md5sums=('e7ec5d829191226e6092b08e1d8f4cd4')
 
 prepare() {
     cd ${srcdir}/astroscrappy-${pkgver}
+
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
@@ -26,7 +27,8 @@ build () {
 }
 
 check(){
-    cd $srcdir/astroscrappy-${pkgver}
+    cd ${srcdir}/astroscrappy-${pkgver}
+
     python setup.py test
 }
 
