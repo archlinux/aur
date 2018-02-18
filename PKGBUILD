@@ -4,7 +4,7 @@
 
 pkgname=qnapi
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/QNapi/${pkgname}"
@@ -24,9 +24,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make -j2
     make INSTALL_ROOT="${pkgdir}/" install
-    mkdir -p ${pkgdir}/usr/share/{kde4/services,kservices5}/ServiceMenus/
-    mv ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-scan.desktop                  ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-scan.desktop 
-    mv ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-download.desktop              ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-download.desktop
-    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-scan.desktop      ${pkgdir}/usr/share/kservices5/ServiceMenus/${pkgname}-scan.desktop
-    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${pkgname}-download.desktop  ${pkgdir}/usr/share/kservices5/ServiceMenus/${pkgname}-download.desktop
+    install -Dm644 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/"    ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}*.desktop
 }
