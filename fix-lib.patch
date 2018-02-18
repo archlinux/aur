@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -151,7 +151,7 @@ INITSYS_TYPES = sorted([f.partition(".")[0] for f in INITSYS_ROOTS.keys()])
+ USR = "usr"
+ ETC = "etc"
+ USR_LIB_EXEC = "usr/lib"
+-LIB = "lib"
++LIB = "usr/lib"
+ if os.uname()[0] == 'FreeBSD':
+     USR = "usr/local"
+     USR_LIB_EXEC = "usr/local/lib"
