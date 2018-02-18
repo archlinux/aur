@@ -1,4 +1,4 @@
-pkgbase = openglide-cvs
+pkgbase = openglide-git
 	pkgdesc = Glide wrapper, useful for DOSBox with Glide support
 	pkgver = last.cvs.r21.g841e107
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = openglide-cvs
 	source = openglide::git+https://github.com/voyageur/openglide
 	md5sums = SKIP
 
-pkgname = openglide-cvs
+pkgname = openglide-git
 

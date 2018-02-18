@@ -1,8 +1,8 @@
 # Maintainer: Jamie Christian <itschristian at gmail dot com>
 
 _pkgname=openglide
-pkgbase=openglide-cvs
-pkgname=openglide-cvs
+pkgbase=openglide-git
+pkgname=openglide-git
 pkgver=last.cvs.r21.g841e107
 pkgrel=1
 pkgdesc="Glide wrapper, useful for DOSBox with Glide support"
