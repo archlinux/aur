@@ -6,16 +6,16 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=68
+pkgrel=69
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
-_extramodules="extramodules-4.14-ck"
+_extramodules="extramodules-4.15-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url='https://www.broadcom.com/support/802.11'
 license=('custom')
-depends=('linux-ck>=4.14' 'linux-ck<4.15')
-makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<4.15')
+depends=('linux-ck>=4.15' 'linux-ck<4.16')
+makedepends=('linux-ck-headers>=4.15' 'linux-ck-headers<4.16')
 #replaces=()
 #groups=('ck-generic')
 source=(
@@ -27,6 +27,7 @@ source=(
   '005-debian-fix-kernel-warnings.patch'
   '006-linux411.patch'
   '007-linux412.patch'
+  '008-linux415.patch'
   'modprobe.d'
 )
 sha256sums=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be'
@@ -37,6 +38,7 @@ sha256sums=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be'
             '2306a59f9e7413f35a0669346dcd05ef86fa37c23b566dceb0c6dbee67e4d299'
             '5bc12cb57712e6a944dff1c90de50135c2508085d8497ab99284ccccdb35c32b'
             'a3d13e8abb96ad440dbfae29acae82d31d1ced2ea62052f1efb2c3c4add347ce'
+            '08c24157cf3b93b60e67e600d1d90223447361990df09acfb00281d79813d167'
             'b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32')
 
 prepare() {
@@ -47,19 +49,21 @@ prepare() {
   patch -Np1 -i "$srcdir/005-debian-fix-kernel-warnings.patch"
   patch -Np1 -i "$srcdir/006-linux411.patch"
   patch -Np1 -i "$srcdir/007-linux412.patch"
+  patch -Np1 -i "$srcdir/008-linux415.patch"
+  
+  sed -i -e '/BRCM_WLAN_IFNAME/s/eth/wlan/' src/wl/sys/wl_linux.c
 }
 
 build() {
-  sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" -i src/wl/sys/wl_linux.c
-  #sed -i -e "/EXTRA_LDFLAGS/s|\$(src)/lib|/usr/lib/${pkgname}|" Makefile
   make -C /usr/lib/modules/"${_kernver}"/build M=`pwd`
 }
 
 package() {
   install -Dm644 wl.ko "${pkgdir}/usr/lib/modules/${_extramodules}/wl.ko"
-
   # makepkg does not do this automatically for this pkg so do it here
   gzip "${pkgdir}/usr/lib/modules/${_extramodules}/wl.ko"
   install -Dm644 lib/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 modprobe.d "${pkgdir}/usr/lib/modprobe.d/broadcom-wl_ck.conf"
 }
+
+# vim: ts=2 sw=2 et:
