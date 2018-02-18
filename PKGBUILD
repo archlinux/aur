@@ -1,27 +1,26 @@
-# Maintainer: Felix M. Cobos <felix.cobos@gmail.com>
+# Maintainer: Martynas Mickevičius <self@2m.lt>
 
-pkgname=intellij-jdk
+pkgname=java-8-openjdk-shenandoah
 _major=8
-_minor=152
-_build=1136.9
-pkgver=${_major}u${_minor}b${_build}
+_build=145
+pkgver=b${_build}
 pkgrel=1
-pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
+pkgdesc="OpenJDK Java 8 development kit with ultra-low pause time Shenandoah GC"
 arch=('x86_64')
-url="https://bintray.com/jetbrains/intellij-jdk"
+url="https://wiki.openjdk.java.net/display/shenandoah/Main"
 license=('GPL2')
 depends=( 'java-runtime-common'          'ca-certificates-java'              'java-environment-common' )
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
-_zipname="jbsdk${pkgver}_linux_x64.tar.gz"
-source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha256sums=('0cb2111fe7321a17ca246b46ff21b6feb2c66bd12f891d2851021b213feb0835')
+_zipname="openjdk-shenandoah-jdk${_major}-b${_build}-x86_64-release.tar.xz"
+source=("https://builds.shipilev.net/openjdk-shenandoah-jdk8/${_zipname}")
+sha256sums=('be6fc4cf14a94f342aef28a86c63479caa2c0139619bc42000f90b7a2c5a73dc')
 
 package() {
 	rm "$srcdir/$_zipname"
 	find "$srcdir" -exec chmod g+r,o+r {} +
 	mkdir -p "$pkgdir/usr/lib/jvm"
-	cp -a "$srcdir" "$pkgdir/usr/lib/jvm/$pkgname"
+	cp -a "$srcdir/j2sdk-image" "$pkgdir/usr/lib/jvm/$pkgname"
 	ln -sf /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/$pkgname/jre/lib/security/cacerts"
 }
 
