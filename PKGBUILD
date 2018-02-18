@@ -13,7 +13,7 @@ provides=("titan-bot")
 install="Titan.install"
 source=("git://github.com/Marc3842h/Titan.git" "titan" "Titan.desktop")
 sha256sums=("SKIP" 
-            "0db0d38173ad4631a75d8cffe725e99bf05c4c5724cf3acfb413684b71fa88db" 
+            "577ae737b51d0d8fb0b66bd7f8199345c4ee1b1c98ee2cdc0cf254a3146ce98c" 
             "0340ee6a5ec048c5b994bbdbba9337989a1dd415c5765560401f20acad96cf1b")
 
 build() {
