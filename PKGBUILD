@@ -1,8 +1,8 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=dhcpcanon
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='DHCP client disclosing less identifying information'
 url='https://dhcpcanon.readthedocs.io'
 license=('MIT')
@@ -10,11 +10,11 @@ arch=('any')
 depends=('python-setuptools' 'python-attrs' 'python-dbus' 'python-netaddr' 'python-lockfile' 'python-pyroute2' 'scapy3k')
 checkdepends=('python-pytest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/juga0/dhcpcanon/archive/v${pkgver}.tar.gz)
-sha512sums=('44b08c861e7195da6ac04fb2fbfc0bca47aef1462bc46ddfb857048289817af0a09d1fe5171528d050dd3d3d78e7b7c8d63b9743051e7da7fa14859d9b632673')
+sha512sums=('2772d0235f74b426ea7e089437fb65f1403162d30b9e484e4275c9b288179b008532c5b976e105444c733f8779b12a9504cee2423afcba7ea0e2f9d40dbf97a5')
 
 build() {
-    cd ${pkgname}-${pkgver}
-    python setup.py build
+  cd ${pkgname}-${pkgver}
+  python setup.py build
 }
 
 check() {
