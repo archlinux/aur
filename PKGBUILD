@@ -1,8 +1,9 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: Barry Smith < brrtsm gmail c om>
+# Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=librfm5
-pkgver=5.3.16.0
+pkgver=5.3.16.3
 pkgrel=1
 pkgdesc="Rodent file manager library"
 arch=('i686' 'x86_64')
@@ -10,8 +11,8 @@ url="http://xffm.org/"
 license=('GPL3')
 makedepends=('intltool')
 depends=('libtubo0' 'libdbh2' 'libzip' 'gtk3' 'librsvg' 'file')
-source=(http://downloads.sourceforge.net/project/xffm/$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('6fb8e597d54c5cc23cbd3aaec5d309b6')
+source=(https://downloads.sourceforge.net/project/xffm/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha512sums=('e3d00b0337c9368bbe939bcb2d7f6b1c3f3b6b5a810074c5d6bc7afccd938c5284075231a0326b5be2b93436bee346871fb47ee30c130e6ce00756148d214000')
 
 build() {
   cd $pkgname-$pkgver

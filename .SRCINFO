@@ -1,6 +1,6 @@
 pkgbase = librfm5
 	pkgdesc = Rodent file manager library
-	pkgver = 5.3.16.0
+	pkgver = 5.3.16.3
 	pkgrel = 1
 	url = http://xffm.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = librfm5
 	depends = gtk3
 	depends = librsvg
 	depends = file
-	source = http://downloads.sourceforge.net/project/xffm/5.3.16.0/librfm5-5.3.16.0.tar.bz2
-	md5sums = 6fb8e597d54c5cc23cbd3aaec5d309b6
+	source = https://downloads.sourceforge.net/project/xffm/5.3.16.3/librfm5-5.3.16.3.tar.bz2
+	sha512sums = e3d00b0337c9368bbe939bcb2d7f6b1c3f3b6b5a810074c5d6bc7afccd938c5284075231a0326b5be2b93436bee346871fb47ee30c130e6ce00756148d214000
 
 pkgname = librfm5
 
