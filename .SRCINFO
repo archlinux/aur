@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.15.3
+	pkgver = 4.15.4
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,25 +10,23 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.15.3-xanmod4.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.15.4-xanmod5.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=0f968199092f29a953058013c90a2a828bf7caf3
-	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=0f968199092f29a953058013c90a2a828bf7caf3
-	source = 0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch?h=packages/linux&id=0f968199092f29a953058013c90a2a828bf7caf3
-	source = 0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch?h=packages/linux&id=0f968199092f29a953058013c90a2a828bf7caf3
-	sha256sums = 40eaf7819e695e940ea09590c66e1965d2de7e0c361363838963104cddb863db
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=010ee5e2aef6a412ca750bc1da54fcbbbcbe35bd
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=010ee5e2aef6a412ca750bc1da54fcbbbcbe35bd
+	source = 0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch?h=packages/linux&id=010ee5e2aef6a412ca750bc1da54fcbbbcbe35bd
+	sha256sums = 0cf34b83e09c2f255339f3aeec4234d3e30ed3fc1c64226cebe9ed792850bade
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
-	sha256sums = 95bda0b206b917ee907375bb0015b8f04f668bfea74706ce614442326a6be442
-	sha256sums = 2a9adeea2d45513ee3ef0af9fb91c254f14500195e801581b55abcf4ff228eb0
-	sha256sums = 990653b33a736b3941f03d8ca49795109f16507afa34b57dbce3c8e2d2fb26ca
-	sha256sums = 13bc8392b26d1ce0182060fba0f37f74dd7cdc6fff2fdea3240fc4e755621277
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=0f968199092f29a953058013c90a2a828bf7caf3
+	sha256sums = c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863
+	sha256sums = b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676
+	sha256sums = 54380eafa1dfb42f7860a5eee9f521c14aa5fd2c9f5bfaa6e0537d75800225b7
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=010ee5e2aef6a412ca750bc1da54fcbbbcbe35bd
 	sha256sums_x86_64 = 617d1a2b0160fc72098524a51501531556050cab0e466c9dbae5d60a78991bd2
 
 pkgname = linux-xanmod
