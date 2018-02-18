@@ -63,7 +63,7 @@ package() {
     install -Dm644 "${_pkgname}-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
     # Install an example conf for required sysctl values (vm.max_map_count and fs.file-max); see https://docs.sonarqube.org/display/SONAR/Requirements#Requirements-Linux.
-    install -Dm644 "99-sonarqube.conf" "${pkgdir}/usr/share/doc/${_pkgname}/99-${_pkgname}.conf"
+    install -Dm644 "99-${_pkgname}.conf" "${pkgdir}/usr/share/doc/${_pkgname}/99-${_pkgname}.conf"
 
     # Create symbolic links because SonarQube expects a specific directory layout.
     ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/logs"
