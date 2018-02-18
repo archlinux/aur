@@ -10,19 +10,8 @@ url='http://oblige.sourceforge.net/'
 license=('GPL')
 depends=('fltk>=1.3.0' 'hicolor-icon-theme')
 makedepends=('xdg-utils')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/./}-source.zip"
-        '0001-Makefile-Makefile.macos-fixed-for-prefabs-directory-.patch'
-        '0002-Makefile-fixed-make-install-not-installing-data-bg.patch')
-sha256sums=('3a895c16dc352dab295ab1e3b7d62f55615bb21ff6d7d8c874787c0a62c64257'
-            '53b98896e2385822c1bdc6ab1583696a54d2b7bc88f2cfb73ca4f0c156571af8'
-            '08cd8906fbebb980976239f885c902df77ad9708361126389d470c35681dcf71')
-
-prepare() {
-    cd Oblige-${pkgver}-source
-
-    patch -p 1 -i "$srcdir"/0001-Makefile-Makefile.macos-fixed-for-prefabs-directory-.patch
-    patch -p 1 -i "$srcdir"/0002-Makefile-fixed-make-install-not-installing-data-bg.patch
-}
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/./}-source.zip")
+sha256sums=('0d35050a5a3d10c932b44cfcb9d02777012d7ab0b3e2e2ed56bc5b388c068271')
 
 build() {
     cd Oblige-${pkgver}-source
