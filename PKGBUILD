@@ -1,27 +1,27 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3202.r4.effa1b15a
+pkgver=3282.r5.e7a562f72
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
 license=('BSD')
-depends=('freetype2' 'lcms2')
+depends=('freetype2' 'lcms2' 'libjpeg')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
 makedepends=('git' 'python2' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
-	"glnames.py::http://git.savannah.gnu.org/cgit/freetype/freetype2.git/plain/src/tools/glnames.py?h=VER-2-8"
+	"glnames.2.9.py::http://git.savannah.gnu.org/cgit/freetype/freetype2.git/plain/src/tools/glnames.py?h=VER-2-9"
 	"libpdfium.pc"
 	)
 
 md5sums=('SKIP'
          'SKIP'
-         '8c2bc74bc06f1e6a940266a58bedeb12'
-         '776bd9b489cb2878fdd318407a9f63e3')
+         '0d32e29b011dec73943931283213322b'
+         '373e6738515518594fd0f1c59c67e083')
 
 pkgver() {
 
@@ -69,7 +69,7 @@ prepare() {
 
   # workaround for https://bugs.chromium.org/p/pdfium/issues/detail?id=733
   mkdir -p $srcdir/pdfium/third_party/freetype/src/src/psnames/
-  python2 $srcdir/glnames.py $srcdir/pdfium/third_party/freetype/src/src/psnames/pstables.h
+  python2 $srcdir/glnames.2.9.py $srcdir/pdfium/third_party/freetype/src/src/psnames/pstables.h
 
   # set pdfium version in pc file
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/libpdfium.pc"
@@ -94,6 +94,7 @@ build() {
       'pdf_bundle_freetype=false'
       'use_system_freetype=true'
       'use_system_lcms2=true'
+      'use_system_libpng=true'
       'use_gio=false'
   )
 

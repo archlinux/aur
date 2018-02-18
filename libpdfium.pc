@@ -7,5 +7,5 @@ Name: Pdfium
 Description: Open-source PDF rendering engine.
 Version: @VERSION@
 Cflags: -I${includedir}
-Requires.private: lcms2 libjpeg zlib freetype2
+Requires.private: lcms2 libjpeg zlib freetype2 libpng
 Libs: -L${libdir} -lpdfium
