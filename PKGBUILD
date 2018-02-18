@@ -35,7 +35,7 @@ build() {
   cd "$srcdir/$_pkgname"
 
   ./bootstrap
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
