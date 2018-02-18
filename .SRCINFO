@@ -1,0 +1,24 @@
+pkgbase = bitshares-wallet-bin
+	pkgdesc = Bitshares wallet and client to the Bitshares network
+	pkgver = 2.0.180215
+	pkgrel = 1
+	url = https://bitshares.org/
+	arch = x86_64
+	license = MIT
+	depends = libxkbfile
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	source = bitshares-wallet-bin-2.0.180215.deb::https://github.com/bitshares/bitshares-ui/releases/download/2.0.180215/BitShares2-light_2.0.180215_amd64.deb
+	sha256sums = 0190aa7ff7650bcbf1a38df0b8e5e98955b73af555fd68af8fd6afb135c66bcc
+
+pkgname = bitshares-wallet-bin
+
