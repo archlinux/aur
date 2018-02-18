@@ -1,7 +1,7 @@
 # Maintainer: Alif Rachmawadi <arch@subosito.com>
 
 pkgname=gimme
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A shell script that knows how to install Go"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/travis-ci/gimme"
 depends=('jq')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0facfa300107b66f0cd253d62f55e55e91f4249a4a9d82d4fdcf1b2216a57b65')
+sha256sums=('e972303f3287964e3c1626b1c966a69e671de0cd78d82ce0caecd2230ffb090e')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"

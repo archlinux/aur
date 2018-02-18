@@ -1,13 +1,13 @@
 pkgbase = gimme
 	pkgdesc = A shell script that knows how to install Go
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/travis-ci/gimme
 	arch = any
 	license = MIT
 	depends = jq
-	source = https://github.com/travis-ci/gimme/archive/v1.3.0.tar.gz
-	sha256sums = 0facfa300107b66f0cd253d62f55e55e91f4249a4a9d82d4fdcf1b2216a57b65
+	source = https://github.com/travis-ci/gimme/archive/v1.4.0.tar.gz
+	sha256sums = e972303f3287964e3c1626b1c966a69e671de0cd78d82ce0caecd2230ffb090e
 
 pkgname = gimme
 
