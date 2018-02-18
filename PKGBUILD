@@ -61,8 +61,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcname=linux-4.14
-pkgver=4.14.20
+_srcname=linux-4.15
+pkgver=4.15.4
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -70,56 +70,42 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.14-ck${_ckpatchversion}"
+_ckpatchname="patch-4.15-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_preck2='https://github.com/ckolivas/linux/pull/7/commits'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  'config'         # the main kernel config file
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  config         # the main kernel config file
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
   "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
-  "http://ck.kolivas.org/patches/4.0/4.14/4.14-ck${_ckpatchversion}/${_ckpatchname}.xz"
-  # pre ck2 patches
-  "$_preck2/811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch"
-  "$_preck2/6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch"
-  "$_preck2/1588e6bf316231685204e358dfe172851b39fd1e.patch"
-  "$_preck2/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch"
-  "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
-  "unfuck_MuQSS_for_4.14.15+.patch::https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch"
+  "http://ck.kolivas.org/patches/4.0/4.15/4.15-ck${_ckpatchversion}/${_ckpatchname}.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'ec38313c7ff463f781fb36502d4b49811a903462f031c5392b95231cc371190f'
+            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
             'SKIP'
-            'fc3033c9f914bf8b6da687b97bca27b897c551993e5737d14e68469793446031'
+            'bb9520c2d8fe2a2bd3a434d62c3c369a0192eeff6958ca816898ca8a23af610d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            '44d10c573112dc2b64d39ea33c2a10fbbdd84f9877b8d736acc09b2516299474'
-            '24b74a975e61293cdd4ce37845a27f550102b0481017336e15df3334a82cef02'
-            '453ccb01d9e56ea3a33621516f0d52568e836d1932ff14e26567cc3fe2101a17'
-            'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
-            '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
-            '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
-            'e0f40fc665ca9fa3cd1f3c9055aa11ea3d5f2790c7c9face69254a24ef27ec04'
-            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
+            'af51d2433340fdd88a73fdfdfa88b304b3933a937c7ef16a22ba73950360de71'
+            'c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863'
+            'b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676'
+            '54380eafa1dfb42f7860a5eee9f521c14aa5fd2c9f5bfaa6e0537d75800225b7')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
@@ -127,26 +113,23 @@ prepare() {
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
 
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # https://bugs.archlinux.org/task/57500
+  patch -Np1 -i ../0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
 
   # Patch source with ck patchset
   patch -Np1 -i "../${_ckpatchname}"
-  patch -Np1 -i ../811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch
-  patch -Np1 -i ../6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch
-  patch -Np1 -i ../1588e6bf316231685204e358dfe172851b39fd1e.patch
-  patch -Np1 -i ../df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch
-  patch -Np1 -i ../a79d648fcde72fc98048d4435bc86864a59fd01b.patch
-  patch -Np1 -i ../unfuck_MuQSS_for_4.14.15+.patch
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
@@ -155,7 +138,15 @@ prepare() {
   # Clean tree and copy ARCH config over
   make mrproper
 
-  cp -Tf ../config .config
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
+
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -172,14 +163,6 @@ prepare() {
       -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -217,12 +200,12 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.162"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.162"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.170"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.170"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -234,16 +217,16 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook

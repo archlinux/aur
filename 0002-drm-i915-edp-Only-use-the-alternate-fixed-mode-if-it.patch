@@ -1,10 +1,10 @@
-From cf45be4971bdd769c09e2a11db483510cd0bcc5f Mon Sep 17 00:00:00 2001
-Message-Id: <cf45be4971bdd769c09e2a11db483510cd0bcc5f.1515173964.git.jan.steffens@gmail.com>
-In-Reply-To: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
-References: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
+From 9ae12d036a480aa5352118c982ba76f2fb1640a3 Mon Sep 17 00:00:00 2001
+Message-Id: <9ae12d036a480aa5352118c982ba76f2fb1640a3.1518828081.git.jan.steffens@gmail.com>
+In-Reply-To: <05a43fb8b36cdaf6a3580f46cab334f2c2796544.1518828081.git.jan.steffens@gmail.com>
+References: <05a43fb8b36cdaf6a3580f46cab334f2c2796544.1518828081.git.jan.steffens@gmail.com>
 From: Jim Bride <jim.bride@linux.intel.com>
 Date: Mon, 6 Nov 2017 13:38:57 -0800
-Subject: [PATCH 6/6] drm/i915/edp: Only use the alternate fixed mode if it's
+Subject: [PATCH 2/3] drm/i915/edp: Only use the alternate fixed mode if it's
  asked for
 
 In commit dc911f5bd8aa ("drm/i915/edp: Allow alternate fixed mode for
@@ -24,10 +24,10 @@ Signed-off-by: Jim Bride <jim.bride@linux.intel.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
-index 09f274419eea1c74..838cee312e8e6978 100644
+index add4b2434aa3..14a8bef9fdfe 100644
 --- a/drivers/gpu/drm/i915/intel_dp.c
 +++ b/drivers/gpu/drm/i915/intel_dp.c
-@@ -1632,7 +1632,8 @@ static bool intel_edp_compare_alt_mode(struct drm_display_mode *m1,
+@@ -1616,7 +1616,8 @@ static bool intel_edp_compare_alt_mode(struct drm_display_mode *m1,
  			m1->vdisplay == m2->vdisplay &&
  			m1->vsync_start == m2->vsync_start &&
  			m1->vsync_end == m2->vsync_end &&
@@ -38,5 +38,5 @@ index 09f274419eea1c74..838cee312e8e6978 100644
  }
  
 -- 
-2.15.1
+2.16.1
 
