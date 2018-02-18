@@ -2,6 +2,7 @@
 !apache.example.conf
 !.gitignore
 !librenms.install
+!librenms.logrotate
 !nginx.example.conf
 !PKGBUILD
 !.SRCINFO

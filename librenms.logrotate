@@ -1,0 +1,11 @@
+# /etc/logrotate.d/librenms
+/var/log/librenms/*log {
+    su http http
+    weekly
+    rotate 6
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 664 http http
+}
