@@ -1,6 +1,6 @@
 pkgbase = scrot-slabua-git
 	pkgdesc = Simple command-line screenshot utility for X - Slabua fork
-	pkgver = 0.8.26.r19.gd856d56
+	pkgver = 0.8.26.r23.g1428323
 	pkgrel = 1
 	url = https://github.com/slabua/scrot
 	arch = any
