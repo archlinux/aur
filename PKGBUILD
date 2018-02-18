@@ -66,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.19
+pkgver=4.14.20
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -131,13 +131,12 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '627c8bb675b760bf6533a7aacce843e222fb61f702777e6bbfb63db073dd9cbf'
+            'ec38313c7ff463f781fb36502d4b49811a903462f031c5392b95231cc371190f'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '0034a8c361c602c1683dd9c3ac4a8713dd28eaced37199f6a0a60f3631dfdc7d'
@@ -155,10 +154,9 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '767af9b833ff51e57738356c7895ccfa8d4a8e386759f34ffe92573f2331e5c0'
-            'f723c341df165e1a6280fdbab013b5f4256c429c4de7330f1f162feccf1fb3d7'
-            'ec69fb66b2e4baff93ba371c38ff9e7527208203b2b3ab7eea182c274e1201c6'
-            '4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78')
+            'a15ec5111b7a16b010ea2060e6eac9a08e33aa3a3371e21eb0cb0f71c968747f'
+            '7a3085c71b3d6d88161bf324783740d68eb90a10828a6a92d97ffa85a07d7934'
+            '2711b7947a9a844bcae8ddbc7df5e6b772afd74be750b4afadce969c3443268d')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -174,20 +172,16 @@ prepare() {
       patch -p1 -i ../patch-${pkgver}
   
   ### Disable USER_NS for non-root users by default
-      msg "Disable USER_NS for non-root users by default"
-      patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  ### Fix https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-      msg "Fix CVE-2017-8824"
-      patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+        msg "Disable USER_NS for non-root users by default"
+        patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   
-  ### Fix https://bugs.archlinux.org/task/56605
-      msg "Fix #56605"
-      patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+    ### Fix https://bugs.archlinux.org/task/56605
+        msg "Fix #56605"
+        patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
     
-  ### Fix https://bugs.archlinux.org/task/56711
-      msg "Fix #56711"
-      patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+    ### Fix https://bugs.archlinux.org/task/56711
+        msg "Fix #56711"
+        patch -Np1 -i ../0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix patching with 20180109"
