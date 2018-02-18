@@ -4,9 +4,9 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
-_commit=af3964a
-pkgver=0.3.0
-pkgrel=5
+_commit=2b47480
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
