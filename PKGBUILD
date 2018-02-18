@@ -3,13 +3,12 @@
 
 pkgname=canon-pixma-mx410-complete
 pkgver=3.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX410 series. Includes Greyscale patch."
 arch=('i686' 'x86_64')
 url='https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx410.aspx?type=drivers&language=EN'
 license=('custom')
 depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'gtk2')
-makedepends=('deb2targz')
 install=canon_mx410.install
 source=('http://gdlp01.c-wss.com/gds/6/0100003296/01/cnijfilter-mx410series-3.50-1-deb.tar.gz'
 	    'http://gdlp01.c-wss.com/gds/6/0100003306/01/scangearmp-mx410series-1.70-1-deb.tar.gz')
@@ -36,25 +35,16 @@ package(){
 
   cd ${pkgdir}
 
-  deb2targz cnijfilter-common_3.50-1_${_arch_str}.deb
-  tar -xvf cnijfilter-common_3.50-1_${_arch_str}.tar.gz > /dev/null
-  rm cnijfilter-common_3.50-1_${_arch_str}.deb
-  rm cnijfilter-common_3.50-1_${_arch_str}.tar.gz
+  for _deb in cnijfilter-common_3.50-1_${_arch_str}.deb \
+    cnijfilter-mx410series_3.50-1_${_arch_str}.deb \
+    scangearmp-common_1.70-1_${_arch_str}.deb \
+    scangearmp-mx410series_1.70-1_${_arch_str}.deb; do
 
-  deb2targz cnijfilter-mx410series_3.50-1_${_arch_str}.deb
-  tar -xvf cnijfilter-mx410series_3.50-1_${_arch_str}.tar.gz > /dev/null
-  rm cnijfilter-mx410series_3.50-1_${_arch_str}.deb
-  rm cnijfilter-mx410series_3.50-1_${_arch_str}.tar.gz
+        bsdtar -xvf ${_deb} data.tar.gz 2> /dev/null
+        bsdtar -xvf data.tar.gz 2> /dev/null
+        rm -f ${_deb} data.tar.gz
 
-  deb2targz scangearmp-common_1.70-1_${_arch_str}.deb
-  tar -xvf scangearmp-common_1.70-1_${_arch_str}.tar.gz > /dev/null
-  rm scangearmp-common_1.70-1_${_arch_str}.deb
-  rm scangearmp-common_1.70-1_${_arch_str}.tar.gz
-
-  deb2targz scangearmp-mx410series_1.70-1_${_arch_str}.deb
-  tar -xvf scangearmp-mx410series_1.70-1_${_arch_str}.tar.gz > /dev/null
-  rm scangearmp-mx410series_1.70-1_${_arch_str}.deb
-  rm scangearmp-mx410series_1.70-1_${_arch_str}.tar.gz
+  done
 
   # Apply patch to enable grayscale option (disabled by default)
   echo -e "\nApplying patch to enable grayscale-printing option...(disabled by default)."
