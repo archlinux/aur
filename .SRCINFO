@@ -9,7 +9,6 @@ pkgbase = python-keepmenu-git
 	makedepends = git
 	depends = python
 	depends = python-pykeepass
-	depends = python-pygpgme
 	depends = python-pyuserinput-git
 	optdepends = dmenu: either dmenu or rofi is required
 	optdepends = rofi: either dmenu or rofi is required

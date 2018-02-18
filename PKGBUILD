@@ -8,7 +8,7 @@ pkgdesc="Read Keepass databases via dmenu/rofi"
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('MIT')
-depends=('python' 'python-pykeepass' 'python-pygpgme' 'python-pyuserinput-git')
+depends=('python' 'python-pykeepass' 'python-pyuserinput-git')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required')
