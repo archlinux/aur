@@ -1,37 +1,30 @@
+# Maintainer: Philipp A. <flying-sheep@web.de>
 # Contributor: Vladimir Keleshev <vladimir [at] keleshev [dot] com>
-# Maintainer: ???
 
 _name=schema
 pkgbase="python-$_name"
 pkgname=("python2-$_name" "python-$_name")
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module to validate and convert data structures.'
-arch=('any')
+arch=(any)
 url="https://github.com/keleshev/$_name"
-license=('MIT')
-makedepends=('python-setuptools'  'python-pytest'
-            'python2-setuptools' 'python2-pytest')
-source=("$_name-$pkgver.tar.gz::https://github.com/keleshev/$_name/archive/v$pkgver.tar.gz")
-sha1sums=('02674b4ae3fe44957379da5f70bf03c3b12b2647')
-
-check() {
-	cd "$_name-$pkgver"
-	python2 setup.py test
-	python setup.py test
-}
+license=(MIT)
+makedepends=(python-pip python2-pip)
+_wheel="$_name-$pkgver-py2.py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
+sha256sums=('a058daf5d926e4ece9f13c4c2366a836143ca7913ef053c5023c569e00175b2a')
+noextract=("$_wheel")
 
 do_package() {
-	depends=("$1")
-	cd "$srcdir/$_name-$pkgver"
-	"$1" setup.py install --root="$pkgdir" --optimize=1
-	install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+	depends=($1)
+	$2 install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
 }
 
 package_python2-schema() {
-	do_package python2
+	do_package python2 pip2
 }
 
 package_python-schema() {
-	do_package python
+	do_package python pip
 }
