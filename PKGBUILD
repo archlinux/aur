@@ -1,9 +1,10 @@
 # Maintainer: Anton Hvornum <anton.feeds+AUR@gmail.com>
+# makepkg --printsrcinfo > .SRCINFO
 _owner=Torxed
 _name=slimsmtp
 #_dbuser_passwd=$(</dev/urandom tr -dc 'A-Za-z0-9!"#$%&()*+,-./:;<=>?@[\]^_`{|}~' | head -c 25  ; echo)
 pkgname=$_name-git
-pkgver=0.r36.792a9e9
+pkgver=0.r38.193bc0d
 pkgrel=1
 pkgdesc="A simple, light weight SMTP server"
 arch=('x86_64')
