@@ -5,7 +5,7 @@
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
 
 pkgname=geany-plugins-git
-pkgver=1.31.0.r83.g1aa5c353
+pkgver=1.32.0.r61.g7460d36a
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
@@ -13,7 +13,6 @@ url='https://plugins.geany.org/'
 license=('GPL')
 depends=('geany-git' 'vte' 'lua' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
 makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool')
-optdepends=('hspell: hebrew spell checker')
 provides=('geany-plugins')
 conflicts=('geany-plugins-svn' 'geany-plugins')
 source=('git+https://github.com/geany/geany-plugins.git')
@@ -27,7 +26,11 @@ pkgver() {
 build() {
   cd geany-plugins
   ./autogen.sh
-  ./configure --prefix=/usr --disable-geanypy
+
+  # To enable "spellcheck", first execute:
+  #     sudo ln -s /usr/lib/pkgconfig/enchant-2.pc /usr/lib/pkgconfig/enchant.pc
+
+  ./configure --prefix=/usr --disable-geanypy #--disable-spellcheck
   make build
 }
 
