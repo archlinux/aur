@@ -68,15 +68,6 @@ index f82b087198..408d668aa9 100644
    google_analytics:
      primary:          ''
      embeds:           ''
-@@ -157,7 +157,7 @@ defaults: &defaults
-     timeout: 5 # socket timeout
-     trigger_verbose: true
-   redis:
--    host: '127.0.0.1'
-+    host: '10.42.0.1'
-     port: 6379
-     connect_timeout: 2
-     read_timeout: 3
 @@ -168,7 +168,7 @@ defaults: &defaults
        users_metadata:      5
        redis_migrator_logs: 6
