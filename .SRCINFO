@@ -1,0 +1,23 @@
+pkgbase = nemu-git
+	pkgdesc = ncurses interface for QEMU
+	pkgver = 1.4.0r825.1e73a64
+	pkgrel = 1
+	url = https://bitbucket.org/PascalRD/nemu
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = qemu
+	depends = glibc
+	depends = ncurses
+	depends = sqlite
+	depends = udev
+	depends = libusb
+	depends = libarchive
+	provides = nemu
+	conflicts = nemu
+	source = git+https://bitbucket.org/PascalRD/nemu
+	md5sums = SKIP
+
+pkgname = nemu-git
+
