@@ -1,56 +1,67 @@
-#include <ncurses.h>
-#include <stdlib.h>
 #include "rc4.h"
 
-#define PASS_MAX 32
-#define BACKSPACE 127
-
-char* getPassword() {
-    unsigned char* pass = calloc(PASS_MAX, sizeof(char));
+char* rc4_getPassword() {
+    unsigned char* pass = malloc(PASS_MAX + 1);
+    if (pass == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        return NULL;
+    }
     initscr();
-    noecho();
-    unsigned int c, i = 0;
-    printw("Enter Password: ");
-    while ((c = (unsigned)getch()) && c != '\n' && i <= PASS_MAX) {
-        if (c != BACKSPACE) {
-            pass[i] = (char) c;
-            i++;
-        } else if (i > 0)
-            pass[i - 1] = '\0';
-    }
+    noecho(); // Doesn't echo chars when typed
+    unsigned int c, i;
+    do {
+        printw("Enter Password: ");
+        memset(pass, '\0', PASS_MAX + 1);
+        i = 0, c = 0;
+        while (c != '\n' && (c = (unsigned) getch())) {
+            if (c != BACKSPACE) {
+                pass[i] = (char) c;
+                i++;
+                if (i > PASS_MAX) {
+                    c = '\n';
+                    printw("\n");
+                }
+            } else if (i > 0) // If backspace
+                pass[i - 1] = '\0';
+        }
+    } while (i > PASS_MAX);
     endwin();
-    return (char*)pass;
+    return (char*) pass;
 }
 
-void keyExchange(int keySchedule[], int len, const unsigned char* key) {
+void rc4_key_exchange(int keySchedule[KEY_SCHEDULE_LENGTH], char* key) {
+    size_t len = strlen(key);
     int j = 0;
-    for (int i = 0; i < 256; ++i)
+    for (int i = 0; i < KEY_SCHEDULE_LENGTH; i++)
         keySchedule[i] = i;
-    for (int i = 0; i < 256; ++i) {
-        j = (j + keySchedule[i] + key[i % len]) % 256;
-        int temp = keySchedule[i];
+    int temp;
+    for (int i = 0; i < KEY_SCHEDULE_LENGTH; i++) {
+        j = (j + keySchedule[i] + key[i % len]) % KEY_SCHEDULE_LENGTH;
+        temp = keySchedule[i];
         keySchedule[i] = keySchedule[j];
         keySchedule[j] = temp;
     }
 }
 
-char* prga(int keySchedule[], int len) {
-    int i = 0;
-    int j = 0;
-    char* output = (char*) malloc((size_t)len);
-    for (int k = 0; k < len; ++k) {
-        i = (i + 1) % 256;
-        j = (j + keySchedule[i]) % 256;
-        int temp = keySchedule[i];
+char* rc4_prga(int keySchedule[KEY_SCHEDULE_LENGTH], size_t len) {
+    int i = 0, j = 0, temp;
+    char* output = malloc(len);
+    if (output == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        return NULL;
+    }
+    for (int k = 0; k < len; k++) {
+        i = (i + 1) % KEY_SCHEDULE_LENGTH;
+        j = (j + keySchedule[i]) % KEY_SCHEDULE_LENGTH;
+        temp = keySchedule[i];
         keySchedule[i] = keySchedule[j];
         keySchedule[j] = temp;
-        output[k] = (unsigned char) keySchedule[(keySchedule[i] + keySchedule[j]) % 256];
+        output[k] = (unsigned char) keySchedule[(keySchedule[i] + keySchedule[j]) % KEY_SCHEDULE_LENGTH];
     }
     return output;
 }
 
-void rc4(const unsigned char output[], const unsigned char message[], FILE* out, long int len) {
-    for (int i = 0; i < len; ++i)
-        fprintf(out, "%c", output[i] ^ message[i]);
-    printf("\n");
+void rc4_execute(char* output, char* message, size_t len) {
+    for (int i = 0; i < len; i++)
+        output[i] ^= message[i];
 }
