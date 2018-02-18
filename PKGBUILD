@@ -8,7 +8,7 @@ pkgdesc="Commandline interface to Habitica."
 arch=('any')
 url="https://pypi.python.org/pypi/habitica"
 license=('MIT')
-depends=('python' 'python-docopt' 'python-requests')
+depends=('python-docopt' 'python-requests')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/2a/f3/4aa50300d1468e0fbfdb2b900927c6c786310ed2943771d1da6fa47fcebd/${_pkgname}-$pkgver.tar.gz"
         auth.cfg.sample)
