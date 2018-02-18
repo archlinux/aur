@@ -1,6 +1,6 @@
 # Maintainer: Javier Torres <javier@javiertorres.eu>
 pkgname=carto-builder
-pkgver=4.1.0.r903.73e671bec4
+pkgver=v4.11.44.r11.7f856fca20
 pkgrel=1
 pkgdesc="Location Intelligence & Data Visualization tool"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=('git+https://github.com/CartoDB/cartodb.git'
         'carto-resque.service')
 noextract=()
 sha256sums=('SKIP'
-            '2dafd022b290fb0c6a336429ba3519b7bb403b88e3e5a7c846be5a1a06aea45f'
+            '16a8fbdffcd6700cf1d5d2371a7e11dc6baa335a92c8ab09033ad506b614ea20'
             '8cdc2866713b4ae0df5e007d672033b48992382186e53c8cb53d15a58755e8ae'
             '9dd127fc44c767fa6d7ba4f508680991006c5691466f9adc35a84e02a615aec7')
 
