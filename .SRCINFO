@@ -14,6 +14,8 @@ pkgbase = obs-websocket-git
 	conflicts = obs-websocket
 	source = git+https://github.com/jp9000/obs-studio.git
 	source = git+https://github.com/Palakis/obs-websocket.git
+	source = git+https://github.com/ARMmbed/mbedtls
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

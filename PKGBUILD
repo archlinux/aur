@@ -10,13 +10,20 @@ depends=('obs-studio-git' 'qt5-websockets')
 makedepends=('git' 'cmake')
 provides=('obs-websocket')
 conflicts=('obs-websocket')
-source=('git+https://github.com/jp9000/obs-studio.git' 'git+https://github.com/Palakis/obs-websocket.git')
-md5sums=('SKIP' 'SKIP')
+source=('git+https://github.com/jp9000/obs-studio.git' 'git+https://github.com/Palakis/obs-websocket.git' 'git+https://github.com/ARMmbed/mbedtls')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/obs-websocket"
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+cd "$srcdir/obs-websocket"
+git submodule init
+git config submodule."deps/mbedtls".url $srcdir/mbedtls
+git submodule update
 }
 
 build() {
