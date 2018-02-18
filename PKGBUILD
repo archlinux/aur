@@ -2,7 +2,7 @@
 
 pkgname=dns-over-https-git
 _pkgname=dns-over-https
-pkgver=d3b3228
+pkgver=f4e27c9
 pkgrel=1
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
