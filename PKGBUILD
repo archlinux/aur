@@ -2,7 +2,7 @@
 
 _name=chatterino2
 pkgname="$_name-git"
-pkgver=r365.de332db
+pkgver=nightly420.r17.g1d1f40b
 pkgrel=1
 pkgdesc='Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.'
 arch=('any')
@@ -18,7 +18,10 @@ sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$_name"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare () {
