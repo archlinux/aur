@@ -1,0 +1,14 @@
+pkgbase = sddm-chinese-painting-theme-git
+	pkgdesc = Chinese style SDDM theme (git version)
+	pkgver = 0.1.1.e50f5f9
+	pkgrel = 1
+	url = https://github.com/fralonra/sddm-chinese-painting-theme
+	arch = any
+	license = GPL3
+	depends = sddm
+	depends = qt5-graphicaleffects
+	source = git+https://github.com/fralonra/sddm-chinese-painting-theme#commit=e50f5f9
+	md5sums = SKIP
+
+pkgname = sddm-chinese-painting-theme-git
+
