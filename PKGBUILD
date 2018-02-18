@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.15
-_pkgver=4.15.2
+_pkgver=4.15.4
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -22,19 +22,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
+        x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 )
 replaces=('linux-grsec')
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
+            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
             'SKIP'
-            'c8a0c7fc3ef0ea4d7fe6f786b9987952e62c6bce7e3b20002358848c2117cfd9'
+            '176355facdd3a0e8b8bfbb92d1a6a321b854391da96f5c142054f37fd6548bb9'
             'SKIP'
-            '43201173c7ff59ee4ce5062d1c379043ecf61ee7a77deb1068d8ba4c39d3debd'
+            '2bdd63d39fee8174aada712921853463964fb6eb586818b7cd2eb859516be82b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148')
+            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
+            'fec79162a6220b7bf4d663c156303af61405d66427dd49351aa9fb9373c882e5')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -73,8 +75,10 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
-  # set extraversion to pkgrel
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -96,7 +100,8 @@ END
 
 build() {
   cd ${_srcname}
-  make LOCALVERSION= bzImage modules
+
+  make bzImage modules
 }
 
 _package() {
@@ -110,12 +115,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
