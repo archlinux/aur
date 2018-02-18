@@ -1,0 +1,15 @@
+pkgbase = arpreply-git
+	pkgdesc = arpreply - A tool to respond to ARP requests
+	pkgver = r2.10e96ec
+	pkgrel = 1
+	url = https://github.com/emanuele-f/arpreply
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python2
+	depends = scapy
+	source = git+https://github.com/emanuele-f/arpreply.git
+	md5sums = SKIP
+
+pkgname = arpreply-git
+
