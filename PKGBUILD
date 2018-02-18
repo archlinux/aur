@@ -1,5 +1,5 @@
 pkgname=parcel-bundler
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Blazing fast, zero configuration web application bundler"
 arch=(any)
@@ -19,4 +19,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('962c7bbe6c6f0a5772328a7b35b13258986e57afbe102b17deae76109e8d6158')
+sha256sums=('858422e0f8a3ae12d79f595a4325103576f2d92dd7cd051893a6e71ce27da33d')
