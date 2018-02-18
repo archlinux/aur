@@ -1,0 +1,15 @@
+pkgbase = python-dtlssocket
+	pkgdesc = Cython wrapper for tinydtls with a Socket like interface
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://git.fslab.de/jkonra2m/tinydtls-cython
+	arch = any
+	license = EPL
+	makedepends = python-setuptools
+	depends = python
+	depends = cython
+	source = https://files.pythonhosted.org/packages/source/D/DTLSSocket/DTLSSocket-0.1.7.tar.gz
+	md5sums = 1815c3f1d58a62ce93e044f9a0cd1b0e
+
+pkgname = python-dtlssocket
+
