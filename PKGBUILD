@@ -5,7 +5,7 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=58.0
+pkgver=58.0.2
 pkgrel=1
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+source=("https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_58_0_2_RELEASE.tar.gz"
         wifi-disentangle.patch wifi-fix-interface.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         no-plt.diff plugin-crash.diff glibc-2.26-fix.diff
@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch)
-sha256sums=('SKIP'
+sha256sums=('c6d58f5e9e4c46e4eed7a9ce435f42e41e2f91a0d85216d26c4da347b45bae09'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
@@ -48,6 +48,7 @@ sha256sums=('SKIP'
             'a72c657784dc5804509456d9ba39ccc8d5e5998c847f49abbcfeb2a547290815'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
             '80d6181d11c200aca2781f69ffeafb59ea23952304d161c2812a2f5a98b273b0')
+
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -65,7 +66,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
   patch -Np1 -i ../firefox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
@@ -145,7 +146,7 @@ END
 }
 
 build() {
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -161,7 +162,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 

@@ -1,6 +1,6 @@
 pkgbase = firefox-eme-free
 	pkgdesc = Deblobbed and EME free Firefox
-	pkgver = 58.0
+	pkgver = 58.0.2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = firefox-eme-free
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_58_0_RELEASE
+	source = https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_58_0_2_RELEASE.tar.gz
 	source = wifi-disentangle.patch
 	source = wifi-fix-interface.patch
 	source = 0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
@@ -60,7 +60,7 @@ pkgbase = firefox-eme-free
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch
-	sha256sums = SKIP
+	sha256sums = c6d58f5e9e4c46e4eed7a9ce435f42e41e2f91a0d85216d26c4da347b45bae09
 	sha256sums = f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed
 	sha256sums = e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1
 	sha256sums = aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96
