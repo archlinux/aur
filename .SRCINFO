@@ -1,23 +1,23 @@
 pkgbase = titan-bot-git
 	pkgdesc = A free, advanced CS:GO report and commendation bot built with performance and ease-of-use in mind
-	pkgver = 1.6.0_8add450
-	pkgrel = 1
+	pkgver = 1.6.0
+	pkgrel = 3
 	url = https://github.com/Marc3842h/Titan
 	install = Titan.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = msbuild-stable
-	depends = mono
+	makedepends = msbuild
+	depends = mono>=5.4.0
 	depends = gtk3
-	depends = gtk-sharp-3
 	depends = libnotify
 	depends = libappindicator-gtk3
+	provides = titan-bot
 	source = git://github.com/Marc3842h/Titan.git
 	source = titan
 	source = Titan.desktop
 	sha256sums = SKIP
-	sha256sums = 99e8b16775ed6b8bd952b41c91fd9120c0cb6d8a72a593e23d125b93deaa38db
+	sha256sums = 0db0d38173ad4631a75d8cffe725e99bf05c4c5724cf3acfb413684b71fa88db
 	sha256sums = 0340ee6a5ec048c5b994bbdbba9337989a1dd415c5765560401f20acad96cf1b
 
 pkgname = titan-bot-git
