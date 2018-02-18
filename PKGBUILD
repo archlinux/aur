@@ -1,6 +1,6 @@
 # Maintainer: Javier Torres <jtorres@carto.com>
 pkgname=odbc_fdw
-pkgver=0.2.0.r11.9a49548
+pkgver=0.2.0.r58.f21f92b
 pkgrel=1
 pkgdesc="PostgreSQL extension that implements a Foreign Data Wrapper (FDW) for remote databases using ODBC"
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/CartoDB/odbc_fdw.git#branch=postgresql_9.6')
+source=('git+https://github.com/CartoDB/odbc_fdw.git')
 noextract=()
 sha256sums=('SKIP')
 
