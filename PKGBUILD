@@ -1,9 +1,9 @@
-# Maintainer: David Runge <eolianoe At GoogleMAIL DoT com>
+# Maintainer: David Runge <dave@sleepmap.de>
 
 _name=etesync
 pkgname=python-etesync
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
@@ -56,5 +56,8 @@ package() {
     --root="${pkgdir}"
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {DESCRIPTION.rst,README.md}
+  # remove invalid tests folder
+  # https://bugs.archlinux.org/task/57562
+  rm -rv "${pkgdir}/usr/lib/python3.6/site-packages/tests"
 }
 
