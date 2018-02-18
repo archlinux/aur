@@ -5,7 +5,7 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=59.0.6
+pkgver=59.0.10
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_59_0b6_RELEASE.tar.gz"
+source=("https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_59_0b10_RELEASE.tar.gz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
-sha256sums=('13512cceb7c76fd721af28c9eb735ab7fdc4d27274e4546f5dd73fd15f47746b'
+sha256sums=('54038ca266aab6db77642fdc3c2f4a6a6cd73116898eb0085092e0d2537cd7d2'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
@@ -58,7 +58,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified-FIREFOX_59_0b6_RELEASE
+  cd mozilla-unified-FIREFOX_59_0b10_RELEASE
   patch -Np1 -i ../id.patch
 
 
@@ -127,7 +127,7 @@ END
 }
 
 build() {
-  cd mozilla-unified-FIREFOX_59_0b6_RELEASE
+  cd mozilla-unified-FIREFOX_59_0b10_RELEASE
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -143,7 +143,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified-FIREFOX_59_0b6_RELEASE
+  cd mozilla-unified-FIREFOX_59_0b10_RELEASE
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
