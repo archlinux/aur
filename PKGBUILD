@@ -1,6 +1,6 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.35
+pkgver=1.36.01
 pkgrel=1
 pkgdesc='LibreNMS is an autodiscovering PHP/MySQL-based network monitoring system.'
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/librenms/${pkgname}/archive/${pkgver}.tar.gz"
         "apache.example.conf"
         "nginx.example.conf")
 install="librenms.install"
-sha256sums=('6e685c0c34283fd69e51f437ca8ac392c8ab8430bfb883ea4b63bb7b1cae8cbd'
+sha256sums=('ea376693e76e044504dce2cc09c9596e828197616735971be0c3bb940737661f'
             '4189c171e4edb55ff11c80b313fed6ff4226ddb38f1e7c97e741e59e1c83afb8'
             'aed1a35b2d84f3b40e0d519ccdb56a5929896ae7cfedd3766f5df4b51fac3319'
             'e1722c586e61e320c2382b2322150e176c61523dccb81eeec6c3d4618819110c')
