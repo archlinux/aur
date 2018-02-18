@@ -13,5 +13,5 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctberthiaume/gdcp/archi
 sha256sums=('909c80d1df04269408efa18150e899107f3b19acc3cac5a05c2c68ba77e2d695')
 
 package() {
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/gdcp" "${pkgdir}/usr/bin/gdcp"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/gdcp" "${pkgdir}/usr/bin/gdcp"
 }
