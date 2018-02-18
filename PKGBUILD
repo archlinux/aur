@@ -1,12 +1,13 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Allen Wild <allenwild93@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: hexchain <i@hexchain.org>
 
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-systemqt-notoemoji
-pkgver=1.2.6
-pkgrel=5
+pkgver=1.2.8
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -17,41 +18,33 @@ optdepends=('libnotify: desktop notifications')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 
-_emoji_res_commit="db4c66e311a160b3f849d6c76890932c50701bf8"
+_emojiver="v1"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
     "Catch::git+https://github.com/philsquared/Catch"
+    "https://s3.amazonaws.com/aur-telegram-desktop-notoemoji/noto-emoji-${_emojiver}.tar.xz"
     "telegram-desktop.desktop"
     "tg.protocol"
     "CMakeLists.inj"
     "tdesktop.patch"
     "no-gtk2.patch"
     "libtgvoip.patch"
-    "emoji.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji.webp"
-    "emoji_125x.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji_125x.webp"
-    "emoji_150x.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji_150x.webp"
-    "emoji_200x.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji_200x.webp"
-    "emoji_250x.webp_${_emoji_res_commit}::https://github.com/PeterCxy/tdesktop/raw/${_emoji_res_commit}/Telegram/Resources/art/emoji_250x.webp"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '0b520c1227010f2357c52208c3937a394534bd3aa30c78810cd4d309afa94bd7'
             'b12b6d25fc2e6fb0a60a14bbab8b600ec71cf4651279180730c1a469afd1173c'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
             'c0a71a540c6263d4e6cbba326a9b9d61cd57ef6db6054e87058dc49cbb707a23'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6'
-            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075'
-            'fccd084805b4621e3614d2a0584bb78a0ad44f502a79b4a4534e901881677555'
-            '668a2371c3dae8e95187f0c9f8fec9b0e535157482747d2f9c6034c6b9eefa16'
-            'd84537063ccf42904ab35ea2624263419f7d17671d24b17d02d02020d9af8be2'
-            '876e085cee23f988b86398fb8bd104e3d7ad1aa45accd75e1d1d1653f2b32663'
-            '37add3f2536dc027705c202446deb0c5351c3c7ade27336b2c054917acf4d15f')
+            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -64,12 +57,12 @@ prepare() {
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
 
-    for x in "" "_125x" "_150x" "_200x" "_250x"; do
-        cp -vf "$srcdir/emoji$x.webp_${_emoji_res_commit}" "$srcdir/tdesktop/Telegram/Resources/art/emoji$x.webp"
-    done
-
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
+
+    for x in "" "_125x" "_150x" "_200x" "_250x"; do
+        cp -vf "$srcdir/noto-emoji-${_emojiver}/emoji$x.webp" "$srcdir/tdesktop/Telegram/Resources/art/emoji$x.webp"
+    done
 }
 
 build() {

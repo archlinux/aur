@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-systemqt-notoemoji
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 1.2.6
-	pkgrel = 5
+	pkgver = 1.2.8
+	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -21,38 +21,30 @@ pkgbase = telegram-desktop-systemqt-notoemoji
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.6
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.8
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
 	source = Catch::git+https://github.com/philsquared/Catch
+	source = https://s3.amazonaws.com/aur-telegram-desktop-notoemoji/noto-emoji-v1.tar.xz
 	source = telegram-desktop.desktop
 	source = tg.protocol
 	source = CMakeLists.inj
 	source = tdesktop.patch
 	source = no-gtk2.patch
 	source = libtgvoip.patch
-	source = emoji.webp_db4c66e311a160b3f849d6c76890932c50701bf8::https://github.com/PeterCxy/tdesktop/raw/db4c66e311a160b3f849d6c76890932c50701bf8/Telegram/Resources/art/emoji.webp
-	source = emoji_125x.webp_db4c66e311a160b3f849d6c76890932c50701bf8::https://github.com/PeterCxy/tdesktop/raw/db4c66e311a160b3f849d6c76890932c50701bf8/Telegram/Resources/art/emoji_125x.webp
-	source = emoji_150x.webp_db4c66e311a160b3f849d6c76890932c50701bf8::https://github.com/PeterCxy/tdesktop/raw/db4c66e311a160b3f849d6c76890932c50701bf8/Telegram/Resources/art/emoji_150x.webp
-	source = emoji_200x.webp_db4c66e311a160b3f849d6c76890932c50701bf8::https://github.com/PeterCxy/tdesktop/raw/db4c66e311a160b3f849d6c76890932c50701bf8/Telegram/Resources/art/emoji_200x.webp
-	source = emoji_250x.webp_db4c66e311a160b3f849d6c76890932c50701bf8::https://github.com/PeterCxy/tdesktop/raw/db4c66e311a160b3f849d6c76890932c50701bf8/Telegram/Resources/art/emoji_250x.webp
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 0b520c1227010f2357c52208c3937a394534bd3aa30c78810cd4d309afa94bd7
 	sha256sums = b12b6d25fc2e6fb0a60a14bbab8b600ec71cf4651279180730c1a469afd1173c
 	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
 	sha256sums = 7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82
 	sha256sums = c0a71a540c6263d4e6cbba326a9b9d61cd57ef6db6054e87058dc49cbb707a23
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 	sha256sums = 0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075
-	sha256sums = fccd084805b4621e3614d2a0584bb78a0ad44f502a79b4a4534e901881677555
-	sha256sums = 668a2371c3dae8e95187f0c9f8fec9b0e535157482747d2f9c6034c6b9eefa16
-	sha256sums = d84537063ccf42904ab35ea2624263419f7d17671d24b17d02d02020d9af8be2
-	sha256sums = 876e085cee23f988b86398fb8bd104e3d7ad1aa45accd75e1d1d1653f2b32663
-	sha256sums = 37add3f2536dc027705c202446deb0c5351c3c7ade27336b2c054917acf4d15f
 
 pkgname = telegram-desktop-systemqt-notoemoji
 
