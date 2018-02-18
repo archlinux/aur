@@ -1,4 +1,5 @@
 # Maintainer: Savino Jossi <savino.jossi@gmail.com>
+# Maintainer: Harry Law <orald@airmail.cc>
 
 _pkgname=scientifica
 pkgname=${_pkgname}-font
@@ -6,17 +7,15 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=(any)
-url=http://sourceforge.net/projects/terminus-font/
+url=https://github.com/NerdyPepper/scientifica
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
 conflicts=(scientifica-font)
 provides=(scientifica-font)
 install=scientifica-font.install
-source=( https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}-11.bdf
-        https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}Bold-11.bdf
-        https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf)
-md5sums=('de50582940a1203984f18f8fdfabeccc'
-         '3767c286c70e670a86ee50c3e30ebfac'
-         'de50582940a1203984f18f8fdfabeccc')
+source=(https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}Bold-11.bdf
+        https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/regular/${_pkgname}-11.bdf)
+md5sums=('3767c286c70e670a86ee50c3e30ebfac'
+	 '1b23c948030e09bcac0bae375a0fca37')
 
 build()
 {
@@ -39,8 +38,14 @@ EOF
 package()
 {
   install -Dm644 scientifica-11.bdf "${pkgdir}/usr/share/fonts/misc/scientifica-11.bdf"
+  install -Dm644 scientificaBold-11.bdf "${pkgdir}/usr/share/fonts/misc/scientificaBold-11.bdf"
   install -Dm644 75-yes-scientifica.conf "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica.conf"
   install -dm755 "${pkgdir}/etc/fonts/conf.d"
   install -dm755 "${pkgdir}/usr/share/fonts"
-  ln -sf -t "${pkgdir}/etc/fonts/conf.d" ../conf.avail/75-yes-scientifica.conf
+  ln -sf -t "${pkgdir}/etc/fonts/conf.d" ../conf.avail/75-yes-scientifica.conf                   
+  rm -fv /etc/fonts/conf.d/10-*
+  rm -fv /etc/fonts/conf.d/70-no-bitmaps.conf
+  if [[ ! -f /etc/fonts/conf.d/70-yes-bitmaps.conf ]]; then
+    ln -sf /etc/fonts/conf.avail/70-yes-bitmaps.conf "${pkgdir}/etc/fonts/conf.d/"
+  fi
 }

@@ -2,7 +2,7 @@ pkgbase = scientifica-font
 	pkgdesc = Tall and condensed bitmap font for geeks.
 	pkgver = 1.0.2
 	pkgrel = 1
-	url = http://sourceforge.net/projects/terminus-font/
+	url = https://github.com/NerdyPepper/scientifica
 	install = scientifica-font.install
 	arch = any
 	depends = xorg-fonts-encodings
@@ -11,12 +11,10 @@ pkgbase = scientifica-font
 	depends = fontconfig
 	provides = scientifica-font
 	conflicts = scientifica-font
-	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientifica-11.bdf
 	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf
-	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf
-	md5sums = de50582940a1203984f18f8fdfabeccc
+	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf
 	md5sums = 3767c286c70e670a86ee50c3e30ebfac
-	md5sums = de50582940a1203984f18f8fdfabeccc
+	md5sums = 1b23c948030e09bcac0bae375a0fca37
 
 pkgname = scientifica-font
 
