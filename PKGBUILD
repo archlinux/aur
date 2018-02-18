@@ -2,8 +2,8 @@
 
 pkgname=caff-svn
 _pkgname=caff
-pkgver=0.r899
-pkgrel=2
+pkgver=0.r905
+pkgrel=1
 pkgdesc="CA Fire and Forget is a script that helps you in keysigning."
 arch=('any')
 url="http://pgp-tools.alioth.debian.org/"
