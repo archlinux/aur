@@ -2,18 +2,18 @@
 
 _gemname=unf_ext
 pkgname=ruby-$_gemname
-pkgver=0.0.7.4
-pkgrel=2
+pkgver=0.0.7.5
+pkgrel=1
 pkgdesc="Unicode Normalization Form support library for CRuby"
 arch=(any)
 url="https://github.com/knu/ruby-unf_ext"
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
-optdepends=('ruby-bundler' 'ruby-rake' 'ruby-rakecompiler' 'ruby-rdoc' 'ruby-test-unit')
+makedepends=('rubygems' 'ruby-rdoc')
+optdepends=('ruby-bundler' 'ruby-rake' 'ruby-rdoc' 'ruby-test-unit')
 source=(https://rubygems.org/downloads/${pkgname#ruby-}-$pkgver.gem)
 noextract=(${pkgname#ruby-}-$pkgver.gem)
-sha512sums=('2f90542c899e02c2cae06b54ad381ba0f2084880cb760357b4cedf7f171aa2eb7322a0288fadd253624c531410730624a4c8d51e5eb61a67b3fd91d985847fbb')
+sha512sums=('5d60740172034253fec9659bec49e60f639e93d8f147582e26a012712ec2e5fca30674efc52695def0c3cd145c5ddd93a56a6d0f854ab04e7fc81544e6aede16')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
