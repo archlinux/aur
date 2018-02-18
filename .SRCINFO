@@ -1,6 +1,6 @@
 pkgbase = zam-plugins-git
 	pkgdesc = Collection of LV2/LADSPA/VST audio plugins for high quality processing.
-	pkgver = 3.9.r41.g7d2226a
+	pkgver = 3.10.r0.ga3321af
 	pkgrel = 1
 	url = https://github.com/zamaudio/zam-plugins
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = zam-plugins-git
 	depends = jack2
 	depends = libglvnd
 	depends = fftw
+	depends = libsamplerate
 	provides = zam-plugins
 	conflicts = zam-plugins
 	conflicts = zamplugins
