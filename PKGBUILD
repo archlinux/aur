@@ -1,7 +1,7 @@
 # Maintainer: Trent Palmer trenttdually at gmail
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r224.715acf2
+pkgver=r226.f7a0c4f
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
