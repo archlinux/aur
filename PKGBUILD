@@ -2,18 +2,19 @@
 pkgbase=python-regions
 pkgname=('python-regions' 'python-regions-doc')
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
 #checkdepends=('python-pytest-arraydiff')
 source=("https://files.pythonhosted.org/packages/source/r/regions/regions-${pkgver}.tar.gz")
 md5sums=('48597dc17906e478292040dae2df5596')
 
 prepare() {
     cd ${srcdir}/regions-${pkgver}
+
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
@@ -26,7 +27,7 @@ build () {
 }
 
 #check(){
-#    cd $srcdir/astroplan-${pkgver}
+#    cd ${srcdir}/astroplan-${pkgver}
 #
 #    python setup.py test
 #}
