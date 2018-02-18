@@ -1,6 +1,6 @@
 pkgbase = textilosaurus
 	pkgdesc = Simple cross-platform text editor based on Qt and Scintilla
-	pkgver = 2018.02.05
+	pkgver = 2018.02.12
 	pkgrel = 1
 	url = https://github.com/martinrotter/textilosaurus
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = textilosaurus
 	provides = textilosaurus
 	conflicts = textilosaurus
 	conflicts = textilosaurus-git
-	source = https://github.com/martinrotter/textilosaurus/archive/2018.02.05.tar.gz
-	md5sums = 93c0138b5d5faf474bfa0c3730cab102
+	source = https://github.com/martinrotter/textilosaurus/archive/2018.02.12.tar.gz
+	md5sums = 4b3b9260688e44a4ed9e723061458b3d
 
 pkgname = textilosaurus
 

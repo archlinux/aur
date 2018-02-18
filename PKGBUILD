@@ -1,7 +1,7 @@
 # Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
 
 pkgname=textilosaurus
-pkgver=2018.02.05
+pkgver=2018.02.12
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=()
 provides=('textilosaurus')
 conflicts=('textilosaurus' 'textilosaurus-git')
 source=("https://github.com/martinrotter/textilosaurus/archive/${pkgver}.tar.gz")
-md5sums=('93c0138b5d5faf474bfa0c3730cab102')
+md5sums=('4b3b9260688e44a4ed9e723061458b3d')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
