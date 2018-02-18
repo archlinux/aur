@@ -1,11 +1,11 @@
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 
 pkgname=amdapp-aparapi
-pkgver=20130123
-_apaver=2013_01_23
+pkgver=1.0.0
+_apaver=1.0.0-SNAPSHOT
 pkgrel=1
 pkgdesc="AMD's API for data parallel Java. Uses OpenCL"
-url="http://code.google.com/p/aparapi/"
+url="https://github.com/aparapi/aparapi/"
 arch=('i686' 'x86_64')
 license=('Other Open Source')
 groups=('amdapp')
@@ -19,11 +19,11 @@ source=( 'aparapi.sh')
 md5sums=('994e47a2d20c1436dd4bb9586ef1b3f7')
 
 if [ "$CARCH" = "i686" ]; then
-  source+=(http://aparapi.googlecode.com/files/Aparapi_${_apaver}_linux_x86.zip)
-  md5sums+=('d7cc1af45772a98ca053dd6930980e88')
+  source+=(https://github.com/aparapi/aparapi/releases/download/${_apaver}}/dist_linux_x86.zip)
+  md5sums+=('fa5902ecb99a43cce314e5c26152077f')
 else
-  source+=(http://aparapi.googlecode.com/files/Aparapi_${_apaver}_linux_x86_64.zip)
-  md5sums+=('068812301aa8197c5629ea15665a96ab')
+  source+=(https://github.com/aparapi/aparapi/releases/download/${_apaver}/dist_linux_x86_64.zip)
+  md5sums+=('a862f9d1caefe2c3b084d8edf9f82ba6')
 fi
 
 package() {
