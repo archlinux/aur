@@ -42,7 +42,8 @@ build() {
         -DBUILD_GUI=off \
         -DBUILD_KCM=on \
         -DBUILD_HELPER=off \
-        -DINSTALL_SHARED=off
+        -DINSTALL_SHARED=off \
+        -DKDE_INSTALL_USE_QT_SYS_PATHS=on
   make
 }
 
