@@ -42,8 +42,7 @@ package()
   install -Dm644 75-yes-scientifica.conf "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica.conf"
   install -dm755 "${pkgdir}/etc/fonts/conf.d"
   install -dm755 "${pkgdir}/usr/share/fonts"
-  ln -sf -t "${pkgdir}/etc/fonts/conf.d" ../conf.avail/75-yes-scientifica.conf                   
-  rm -fv /etc/fonts/conf.d/10-*
+  ln -sf -t "${pkgdir}/etc/fonts/conf.d" ../conf.avail/75-yes-scientifica.conf
   rm -fv /etc/fonts/conf.d/70-no-bitmaps.conf
   if [[ ! -f /etc/fonts/conf.d/70-yes-bitmaps.conf ]]; then
     ln -sf /etc/fonts/conf.avail/70-yes-bitmaps.conf "${pkgdir}/etc/fonts/conf.d/"
