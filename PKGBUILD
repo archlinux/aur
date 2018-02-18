@@ -2,7 +2,7 @@
 pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
@@ -86,4 +86,8 @@ package_qt5-datasync-doc() {
 
   cd build/doc
   make INSTALL_ROOT="$pkgdir" install
+
+  # DROP file paths from doc tags
+  find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
+    -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtDataSync</path>:g' {} \;
 }
