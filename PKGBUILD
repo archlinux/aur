@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 209036 2017-01-25 11:24:26Z jsteel $
-# Maintainer:  Jonathan Steel <jsteel at archlinux.org>
+# Maintainer:  kpcyrd <git@rxv.cc>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 
 pkgname=cloud-init
-pkgver=0.7.9
+pkgver=17.2
 pkgrel=1
 pkgdesc="The standard for customising cloud instances"
 arch=('any')
-url="http://cloud-init.io"
+url="https://cloud-init.io"
 license=('GPL3')
 depends=('systemd' 'python2-yaml' 'python2-cheetah' 'python2-prettytable'
          'python2-oauth' 'python2-boto' 'python2-configobj'
@@ -16,12 +16,12 @@ depends=('systemd' 'python2-yaml' 'python2-cheetah' 'python2-prettytable'
          'python2-jinja')
 makedepends=('python2' 'python2-setuptools')
 backup=('etc/cloud/cloud.cfg' 'etc/cloud/cloud.cfg.d/05_logging.cfg')
-source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz
+source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-logging.patch
         archlinux.cloud.cfg)
-md5sums=('0a83072b25a0f96c539fa6cd45c05347'
-         '269cf6bd2337ca2fea3197aefeee5277'
-         '4c03c6d2d35c42086ed07f487f01c08a')
+sha256sums=('f00338767a8877c8d72fe64a78d3897da822b3c1f47779ae31adc4815275594f'
+            '0c1d5976eda3a74c4c3b78701ea1109f3a3022df7a623359154924b67e64d356'
+            '344531c5e7c19e540c2381f19ee87807a1d478a21a24d7e143429479efd5de49')
 
 prepare(){
   cd $pkgname-$pkgver
