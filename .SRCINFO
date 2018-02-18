@@ -1,0 +1,14 @@
+pkgbase = gdcp
+	pkgdesc = scp like tool to interact with Google Drive from the command-line
+	pkgver = 0.7.13
+	pkgrel = 1
+	url = https://github.com/ctberthiaume/gdcp
+	arch = any
+	license = GPL3
+	depends = python2-pydrive
+	depends = python2-backoff
+	source = gdcp-0.7.13.tar.gz::https://github.com/ctberthiaume/gdcp/archive/v0.7.13.tar.gz
+	sha256sums = 909c80d1df04269408efa18150e899107f3b19acc3cac5a05c2c68ba77e2d695
+
+pkgname = gdcp
+
