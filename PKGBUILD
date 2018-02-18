@@ -1,13 +1,13 @@
 # Maintainer: Marc Steiner (Marc3842h) <info@marcsteiner.me>
 _pkgname=titan-bot
 pkgname=titan-bot-git
-pkgver=1.6.0_rc1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=3
 pkgdesc="A free, advanced CS:GO report and commendation bot built with performance and ease-of-use in mind"
 arch=("x86_64")
 url="https://github.com/Marc3842h/Titan"
 license=("MIT")
-depends=("mono>=5.4.0" "gtk3" "gtk-sharp-3" "libnotify" "libappindicator-gtk3")
+depends=("mono>=5.4.0" "gtk3" "libnotify" "libappindicator-gtk3")
 makedepends=("git" "msbuild")
 provides=("titan-bot")
 install="Titan.install"
