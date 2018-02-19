@@ -7,7 +7,7 @@ pkgdesc="A console client for the personalized web radio pandora"
 arch=(any)
 url="https://github.com/nega0/pianobarfly"
 license=(custom)
-depends=('libao' 'ffmpeg' 'readline' 'json-c' 'libgcrypt' 'gnutls' 'faad2')
+depends=('libao' 'ffmpeg' 'readline' 'json-c' 'libgcrypt' 'gnutls' 'faad2' 'libmad')
 optdepends=('libmad')
 makedepends=('pkgconfig>=0.9' 'git' 'automake')
 provides=('pianobarfly')
