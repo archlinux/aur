@@ -1,7 +1,7 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic-git
-pkgver=0.r8978.85c2c925
+pkgver=0.r9357.1f8681314
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('python2' 'boost>=1.65.1' 'git' )
 
 provides=('dcpomatic')
 conflicts=('dcpomatic')
-source=('dcpomatic-git::git://git.carlh.net/git/dcpomatic.git')
+source=('dcpomatic-git::git://git.carlh.net/git/dcpomatic.git#branch=v2.12.x')
 sha256sums=('SKIP')
 
 pkgver() {
