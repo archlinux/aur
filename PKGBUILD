@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
 license=('mit')
 depends=('glibc')
-makedepends=('bison')
 source=("https://github.com/rednex/rgbds/releases/download/v$pkgver/rgbds-$pkgver.tar.gz")
 sha1sums=('4b4ad4a5a90706808d1e49ddcac6bde871e98aa9')
 
