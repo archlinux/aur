@@ -1,3 +1,4 @@
+
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
@@ -10,7 +11,7 @@
 
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
@@ -22,7 +23,7 @@ license=('GPL3')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2c2ddd65a335ecdd15e9ff1032a1634330e0d2359760f2a968b21dbc9f4e0b57')
+sha256sums=('4319f90e68a571974d03f39507dde548971412e31f971081ca7eaf388187d52e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -54,6 +55,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -65,5 +79,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
