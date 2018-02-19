@@ -5,14 +5,12 @@ pkgbase = libosip2
 	epoch = 1
 	url = http://www.gnu.org/software/osip/
 	arch = x86_64
+	arch = i686
 	license = LGPL
 	depends = glibc
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/osip/libosip2-5.0.0.tar.gz
-	source = https://ftp.gnu.org/gnu/osip/libosip2-5.0.0.tar.gz.sig
-	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
 	sha256sums = 18a13c954f7297978e7bf1a0cdadde7c531e519d61a045dae304e054f3b2df03
-	sha256sums = SKIP
 
 pkgname = libosip2
 
