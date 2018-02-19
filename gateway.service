@@ -1,0 +1,10 @@
+[Service]
+ExecStart=/usr/bin/npm start --prefix /opt/gateway
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gateway
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
