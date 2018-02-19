@@ -12,7 +12,7 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
@@ -27,10 +27,10 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Build-QML-dev-tools-as-shared-library.patch'
         '0002-Ensure-static-plugins-are-exported.patch'
         '0003-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('5ccb4dbca5046554037bcffbb05918f6efcff321c44cd1c39b1c47be7e67711e'
-            '8923258b451a885b2300169864a43e944f951963455da1c79b5f06693323be7d'
-            'b9a5545eb33621deb61676e9000fc0417d0b1e419143bc276174c34545d6b562'
-            'df36a5b2a09c46b415d92e7aa1f9fe587ddd1fc58a4ccfb269661cd338414089')
+sha256sums=('3af9ed51bce5b5c6f04c4a67a6008f98765ccde897c43fff670621ab70789553'
+            '777da4ec89376e654d9088ec70e3c5154dd8e31fa8de6f1f77f2d7d5f10bcd9b'
+            'e9afee84dfde3275807cc9b2eb1fb23b5074a12b8f896bd02d8b8f9963d545a6'
+            'cbf3675f3072bbab29fdf5541fd3c15986567a127f920cdaddcfff9e6a9d0283')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -77,7 +77,21 @@ package() {
   for _arch in ${_architectures}; do
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
+
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -89,6 +103,9 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 
   # Make sure the executables don't conflict with their mingw-qt4 counterpart
