@@ -7,7 +7,7 @@
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=26b.r78.g19c7a01
+pkgver=26b.r90.g1dcb5f8
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
