@@ -11,7 +11,10 @@ license=('GPL2')
 depends=('perl' 'xclip')
 optdepends=('dmenu: for the scripts; dmenurl and dmenuclip')
 makedepends=('git')
-source=()
+source=('clipbored::git+http://github.com/trapd00r/clipbored')
+md5sums=('SKIP')
+sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 _gitroot="git://github.com/trapd00r/clipbored"
 _gitname="clipbored"
@@ -22,22 +25,8 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd $srcdir/$_gitname
   msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
 
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
@@ -52,7 +41,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd $srcdir/$_gitname
 
   mkdir -p ${pkgdir}/usr/bin
 
