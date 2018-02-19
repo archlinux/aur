@@ -5,7 +5,7 @@ pkgname=thunderbird-beta
 pkgver=59.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=3
+pkgrel=5
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -124,13 +124,15 @@ ac_add_options --disable-webspeech
 ac_add_options --disable-webrtc
 
 END
+msg2 'fixing dependency errors'
+
+
+patch -Np1 -i ../p.patch
 
 cd mozilla
-msg2 'fixing dependency errors'
 
 patch -Np1 -i ../../fix.patch
 patch -Np1 -i ../../fix2.patch
-patch -Np1 -i ../../p.patch
 }
 
 build() {
