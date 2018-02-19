@@ -1,12 +1,12 @@
 pkgname='kanjitomo'
 pkgdesc="identify Japanese characters from images or screen"
-pkgver=0.9.12
-pkgrel=2
+pkgver=0.9.13
+pkgrel=1
 arch=('any') 
 license=('custom')
 url="http://kanjitomo.net"
 source=("$pkgname.zip::http://kanjitomo.net/download.php")
-md5sums=('01e3a772259ddda4c7fa4d58c6f02a00')
+md5sums=('505e41df02a81f7946705e564cbb8ca3')
 depends=('java-environment')
 
 package () {
@@ -14,7 +14,6 @@ package () {
   # install
   mkdir -p "$pkgdir/usr/share/$pkgname"
   cp -r data images lib wallpaper KanjiTomo.jar "$pkgdir/usr/share/$pkgname"
-  chmod o+rwx "$pkgdir/usr/share/$pkgname/data/cache" # tell me a better option
   # licenses
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
   cp LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/${pkgname}_license"
