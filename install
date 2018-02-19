@@ -1,10 +1,11 @@
 post_install() {
   getent group knot-resolver &>/dev/null || groupadd -r knot-resolver >/dev/null
   getent passwd knot-resolver &>/dev/null || useradd -r -g knot-resolver -d /dev/null -s /bin/false -c knot-resolver knot-resolver >/dev/null
-  chown knot-resolver:knot-resolver /var/lib/knot-resolver
-  chmod 0755 /var/lib/knot-resolver
-  chown knot-resolver:knot-resolver /var/lib/knot-resolver/root.key
-  chmod 0644 /var/lib/knot-resolver/root.key
+  chown -R root:knot-resolver /etc/knot-resolver
+}
+
+post_upgrade() {
+  chown -R root:knot-resolver /etc/knot-resolver
 }
 
 post_remove() {

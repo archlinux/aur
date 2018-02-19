@@ -1,2 +1,0 @@
-# Used for systemd socket activation
-KRESD_ARGS="--config=/etc/knot-resolver/kresd.conf --verbose --forks=1 --keyfile=/var/lib/knot-resolver/root.key /run/knot-resolver/cache"
