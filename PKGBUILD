@@ -1,8 +1,8 @@
 # Maintainer: Clément Démoulins <clement@archivel.fr>
 
 pkgname=tvdb_api
-pkgver=1.9
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="easy to use interface to thetvdb.com"
 arch=('any')
 url="http://github.com/dbr/tvdb_api"
@@ -11,7 +11,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 
 source=(http://github.com/dbr/tvdb_api/tarball/$pkgver)
-md5sums=('b3f9c1a809967f3a14a694ac530fd3eb')
+md5sums=('832c2852187b19f7bfc4a5e2f491d4da')
 
 build() {
     cd "$srcdir/dbr-tvdb_api-"*
