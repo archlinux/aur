@@ -1,6 +1,6 @@
 pkgbase = bilibili-live-helper-git
 	pkgdesc = A Helper for Bilibili Live.
-	pkgver = r9.8b03f00
+	pkgver = r28.b500462
 	pkgrel = 1
 	url = https://github.com/pandaGao/bilibili-live-helper
 	install = bilibili-live-helper-git.install
