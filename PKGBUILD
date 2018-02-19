@@ -8,7 +8,7 @@
 
 _qt_module=qtgamepad
 pkgname="mingw-w64-qt5-gamepad"
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('any')
 pkgdesc="Adds support for getting events from gamepad devices (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('537550f988a71942392b3df21044e4cd566378bad2d9727663c9e8e7743e87e6')
+sha256sums=('85c72801f56f7d5f55caff8ef23137978abe01637bb179566dd5976d6f5346f7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -53,6 +53,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -64,5 +77,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
