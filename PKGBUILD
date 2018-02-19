@@ -10,7 +10,7 @@
 
 _qt_module=qtquickcontrols
 pkgname="mingw-w64-qt5-quickcontrols"
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
@@ -22,7 +22,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a133ef7724d5d2eef4085920d463af78024f327d0ae320f24202a51b554e6129')
+sha256sums=('d231a1993dc6a3f0dbc60a21d01fc0be15b0c26e881bd0631573952ea61682b7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -54,6 +54,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -65,5 +78,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
