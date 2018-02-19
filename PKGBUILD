@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
 pkgname=setserial
 pkgver=2.17
 pkgrel=5
 pkgdesc="Allows to change various attributes of a serial device"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://setserial.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
