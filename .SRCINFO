@@ -1,0 +1,18 @@
+pkgbase = igmpproxy-git
+	pkgdesc = a simple multicast router for Linux only using the IGMP protocol
+	pkgver = r112.d755b5b
+	pkgrel = 1
+	url = https://github.com/pali/igmpproxy
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = igmpproxy
+	conflicts = igmpproxy
+	backup = etc/igmpproxy.conf
+	source = git+https://github.com/pali/igmpproxy
+	source = igmpproxy.service
+	sha256sums = SKIP
+	sha256sums = 9f2eed64578b8bfb3091594cb32b3cd29798ba148d790286429cc6c86b8d423f
+
+pkgname = igmpproxy-git
+

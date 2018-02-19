@@ -1,0 +1,10 @@
+[Unit]
+Description=IGMP proxy
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/igmpproxy /etc/igmpproxy.conf
+
+[Install]
+WantedBy=multi-user.target
