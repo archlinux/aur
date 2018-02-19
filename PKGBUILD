@@ -1,8 +1,8 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=oce
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.18.3
+pkgrel=1
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
 arch=('i686' 'x86_64')
@@ -10,15 +10,15 @@ license=('GPLv2.1')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk' 'glu')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oce.sh 99_oce.conf)
-md5sums=('6dfd68e459e2c62387579888a867281f'
+md5sums=('1686393c8493bbbb2f3f242330b33cba'
          '606e400a97d9947459e4de2eca65f04c'
          '167a9f5c94a16d7855c3ac99e34a4506')
 
-prepare() {
-  if [ ! -e "/usr/include/xlocale.h" ]; then
-    sed -i 's,  #include <xlocale.h>,  #include <locale.h>,g' "oce-OCE-${pkgver}/src/Standard/Standard_CLocaleSentry.hxx"
-  fi
-}
+#prepare() {
+  #if [ ! -e "/usr/include/xlocale.h" ]; then
+  #  sed -i 's,  #include <xlocale.h>,  #include <locale.h>,g' "oce-OCE-${pkgver}/src/Standard/Standard_CLocaleSentry.hxx"
+  #fi
+#}
 
 build() {
   cd oce-OCE-${pkgver}
