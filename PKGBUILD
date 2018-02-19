@@ -1,10 +1,11 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Brice Carpentier <brice@dlfp.org>
+# Contributor: Zulu <aur@netz-mafia.de>
 
 pkgname=mono-beta
 _pkgname=mono
-pkgver=5.8.0.103
+pkgver=5.10.0.116
 pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=(i686 x86_64)
@@ -17,7 +18,7 @@ conflicts=('mono' 'monodoc')
 install="${_pkgname}.install"
 source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2
         mono.binfmt.d)
-sha256sums=('4af19840489063ba02b45e5a69db36f900ead0b6a29f786422d3efbc879b15ee'
+sha256sums=('0caf7ebd63257886f2aed4c1b30c02243135c75cff53cb3b28cbe2ed88fb23b9'
             '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425')
 
 build() {
