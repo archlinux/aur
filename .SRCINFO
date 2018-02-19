@@ -1,0 +1,13 @@
+pkgbase = git-fresh
+	pkgdesc = Keep your repo fresh with one command.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/imsky/git-fresh
+	arch = any
+	license = MIT
+	depends = bash
+	source = git-fresh-1.11.0.tar.gz::https://github.com/imsky/git-fresh/archive/v1.11.0.tar.gz
+	sha256sums = b8504e633c679b5112fc7ccfea354c4ceb01f9d6aa681abf09dc7c9564a7e38f
+
+pkgname = git-fresh
+
