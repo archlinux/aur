@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=libacpi
 pkgver=0.2
 pkgrel=4
 pkgdesc="general purpose lib to gather ACPI data"
-arch=(x86_64)
+arch=('x86_64' 'i686')
 url="http://www.ngolde.de/libacpi.html"
 license=('GPL')
 depends=()

@@ -4,6 +4,7 @@ pkgbase = libacpi
 	pkgrel = 4
 	url = http://www.ngolde.de/libacpi.html
 	arch = x86_64
+	arch = i686
 	license = GPL
 	options = !emptydirs
 	source = http://www.ngolde.de/download/libacpi-0.2.tar.gz
