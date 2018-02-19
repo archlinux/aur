@@ -4,7 +4,7 @@
 _gitname=archtorify
 pkgname=archtorify-git
 pkgver=1.12.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
@@ -15,8 +15,8 @@ source=("git+https://github.com/brainfucksec/${_gitname}/")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+  cd "$_gitname"
+  git describe --always | sed 's|-|.|g'
 }
 
 package() {
