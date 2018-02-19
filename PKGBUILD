@@ -9,7 +9,7 @@
 
 _qt_module=qt3d
 pkgname="mingw-w64-qt5-3d"
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('12457e7227c793274329371c60b9028ab3e44db837e875e2c460367c1dbd34ab')
+sha256sums=('041fb42536a72bbf9be17a6f52d4b73ce93fb98b456fd63503cc47d80d196b3b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -66,6 +66,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       # The .dll's are installed in both bindir and libdir, one copy of the .dll's is sufficient
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
@@ -77,5 +90,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
