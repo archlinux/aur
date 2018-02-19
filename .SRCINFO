@@ -1,0 +1,16 @@
+pkgbase = catch2
+	pkgdesc = A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later
+	pkgver = v2.1.2_0_g7cbd0b58
+	pkgrel = 1
+	url = https://github.com/catchorg/catch2
+	changelog = catch2.changelog
+	arch = any
+	license = boost
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	source = catch2::git+https://github.com/catchorg/Catch2.git#commit=7cbd0b587a24e5cbb9a7da9dd288f0532abfc57a
+	md5sums = SKIP
+
+pkgname = catch2
+
