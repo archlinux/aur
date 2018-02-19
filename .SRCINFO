@@ -1,0 +1,18 @@
+pkgbase = graphql-cli
+	pkgdesc = A command-line tool for working with graphql written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tailhook/graphql-cli
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/tailhook/graphql-cli/archive/v0.1.0/graphql-cli-0.1.0.tar.gz
+	sha256sums = c296fbf0b5308f921eb4ee0f4201ccdcf5899cc38d89bd90559aca16190a1d69
+
+pkgname = graphql-cli
+
