@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A simple aur tool for managing a local 'aurto' repository"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=()
 makedepends=()
 install="aurto.install"
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('62eb616cc3b3433b33fdba088cb480b6c838883d06450fcd14240ba47c2c69a4')
+sha256sums=('abc507a3c0f6d7ec09cde731a746d602b2b8d2e026a1854cdebc64707c4bd707')
 
 build() {
   cd "$pkgname-$pkgver"
