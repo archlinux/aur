@@ -4,9 +4,9 @@
 # Contributor: Chris <alostengineer at narmos dot org>
 pkgname=pam_ssh_agent_auth
 pkgver=0.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM module which permits authentication for arbitrary services via ssh-agent."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://pamsshagentauth.sourceforge.net/"
 license=('custom:OpenSSL')
 source=(http://downloads.sourceforge.net/project/pamsshagentauth/$pkgname/v$pkgver/$pkgname-$pkgver.tar.bz2)
