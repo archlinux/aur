@@ -10,7 +10,7 @@
 ###########################################################
 
 pkgname=archey4
-pkgver=v4.3.3
+pkgver=v4.4.0
 pkgrel=1
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
@@ -25,17 +25,18 @@ optdepends=('bind-tools: `WAN_IP` would be detected 5x faster'
             'virt-what: [virtual env.] `Model` would contain details about the hypervisor')
 provides=('archey' 'archey4')
 conflicts=('archey' 'archey-git' 'archey-plus' 'archey2' 'archey3-git' 'pyarchey')
+backup=('etc/archey4/config.json')
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('dac84f78399561c3eeedd19c3f86b8a6')
-sha256sums=('d0f7ed3832e162915a02ced2e706b4593f47a54ea06749b1b2200b605e2b1ba7')
+md5sums=('0f6b73aafef9b88fd8af5bc472499310')
+sha256sums=('2efba1b7bd1af6933ec1a3224ff28788192193411eb1f1da34b8b4c2c16a7fbd')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
 
-	install -D -m755 archey ${pkgdir}/usr/bin/${pkgname}
+	install -D -m755 archey/archey.py ${pkgdir}/usr/bin/${pkgname}
 	ln -s /usr/bin/${pkgname} ${pkgdir}/usr/bin/archey
 
-	install -D -m644 config.json ${pkgdir}/etc/archey4/config.json
+	install -D -m644 archey/config.json ${pkgdir}/etc/archey4/config.json
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 	install -D -m644 COPYRIGHT.md ${pkgdir}/usr/share/doc/${pkgname}/COPYRIGHT.md
