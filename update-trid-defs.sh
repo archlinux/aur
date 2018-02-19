@@ -8,6 +8,6 @@ fi
 _PWD=$(pwd)
 
 cd /var/lib/trid/
-python2 /usr/share/trid/tridupdate.py
+python /usr/share/trid/tridupdate.py
 
 cd ${_PWD}
