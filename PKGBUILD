@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -30,9 +30,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch'
         '0002-Prevent-linking-qhelpconverter-against-static-bearer.patch')
-sha256sums=('1ff5dc747b7935de85257673424dfdffb231f3409f09a5f833d37e2f625cfe32'
-            'b56db6e1c9aae96ec1fa6949481155972bfd05f0c9b2ffff2ae2216efb459132'
-            '9395445dd8a9eba7f9b14b3643fdd7e2f0175aa92b1658c6aef9425cb303588c')
+sha256sums=('f1ea441e5fe138756e6de3b60ab7d8d3051799eabe85a9408c995dfd4d048a53'
+            '3baea410be6981b8dca1d91dc6e2e79ea45ed689b093004fb5616a7fe8023173'
+            'e76e523c69922995877ee196c5949d277e94db3cd387b6afe4d6313e2ab7e42f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 # can not use static MySQL plugin because mariadb-connector-c comes with its own pthread implementation
@@ -84,6 +84,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       # Applications might be useful as well; keeping them will not hurt anybody I suppose
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
@@ -107,6 +120,9 @@ package() {
       #rm -r "${pkgdir}/usr/${_arch}/share"
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 
   # Make sure the executables don't conflict with their mingw-qt4 counterpart
