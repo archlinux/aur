@@ -2,11 +2,12 @@
 
 pkgname=img2xterm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Displays images on your 256-color terminal with Unicode block characters"
 arch=(any)
 url="https://github.com/rossy/img2xterm"
 license=('CC0')
+makedepends=('help2man')
 depends=('imagemagick' 'ncurses')
 optdepends=('gimp: palette containing the upper 240 colours used in xterm')
 options=(!emptydirs)
