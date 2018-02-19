@@ -1,6 +1,6 @@
 pkgbase = rusty-tags
 	pkgdesc = Create ctags/etags for a cargo project and all of its dependencies
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/dan-t/rusty-tags
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = rusty-tags
 	license = BSD
 	makedepends = cargo
 	depends = ctags
-	source = rusty-tags-2.7.0.tar.gz::https://github.com/dan-t/rusty-tags/archive/v2.7.0.tar.gz
-	sha256sums = 6a44f22ea72c90e6adfe04448cee8b436aa048806f15206c4c77872076d01cee
+	source = rusty-tags-2.9.0.tar.gz::https://github.com/dan-t/rusty-tags/archive/v2.9.0.tar.gz
+	sha256sums = 0637d4829203bd467f6cbd01d4a706a07c790fff9144b28db648c76e38fe8775
 
 pkgname = rusty-tags
 
