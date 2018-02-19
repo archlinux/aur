@@ -1,7 +1,7 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
 pkgver=0.8.0.r7.361698b
-pkgrel=1
+pkgrel=2
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/ripgrep"
@@ -13,13 +13,19 @@ source=("$pkgname::git+https://github.com/BurntSushi/ripgrep")
 sha1sums=('SKIP')
 
 build() {
+  if grep 'avx' /proc/cpuinfo >/dev/null 2>&1; then
+      cpufeatures="simd-accel avx-accel"
+  else
+      cpufeatures="simd-accel"
+  fi
+
   cd "$pkgname"
   if command -v rustup > /dev/null 2>&1; then
     RUSTFLAGS="-C target-cpu=native" rustup run nightly \
-      cargo build --release --features simd-accel
+      cargo build --release --features "$cpufeatures"
   elif rustc --version | grep -q nightly; then
     RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release --features simd-accel
+      cargo build --release --features "$cpufeatures"
   else
     cargo build --release
   fi
