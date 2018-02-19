@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 308099 2017-10-17 12:47:00Z eworm $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: orelien <orelien@chez.com>
 
 pkgname=windowmaker-extra
