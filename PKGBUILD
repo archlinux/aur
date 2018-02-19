@@ -2,7 +2,7 @@
 
 pkgname=rgbds
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Rednex GameBoy Development System"
 arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
@@ -20,5 +20,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX="$pkgdir/usr" mandir="$pkgdir/usr/share/man" install
-  install -D LICENSE "$pkgdir/usr/share/licenses/rgbds-git/LICENSE"
+  install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
