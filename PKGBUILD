@@ -16,9 +16,9 @@ depends=('gcc-libs' 'curl' 'libgit2' 'mingw-w64-gcc')
 optdepends=('wine: for cargo test support')
 options=(!emptydirs staticlibs !strip)
 provides=()
-conflicts=('mingw-w64-rust-bin')
-replaces=('mingw-w64-rust-bin')
-makedepends=('rust' 'libffi' 'perl' 'python2' 'nodejs' 'cmake')
+conflicts=()
+replaces=()
+makedepends=('rust' 'gdb' 'libffi' 'perl' 'python2' 'nodejs' 'cmake')
 
 source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz"{,.asc}
         mingw-config.toml)
