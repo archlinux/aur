@@ -1,14 +1,13 @@
 pkgbase = brother-dcp-9022cdw
 	pkgdesc = LPR and CUPS driver for the Brother DCP-9022CDW
 	pkgver = 1.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-dcp-9022cdw.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = tcsh
-	depends = deb2targz
 	depends = perl
 	depends = a2ps
 	depends = lib32-glibc
