@@ -3,8 +3,8 @@
 # Jean Lucas <jean at 4ray dot co> and Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -27,7 +27,7 @@ install=searx.install
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.install'
         'searx.service')
-sha512sums=('6c43d451d9ebc00f39ac5cdd74b95da420cb545f4f2dc4aa6ad03df4df6d1472fde909f535b0ea3bf2333b39329f203cd640f103b165392be7519bb35b6b3967'
+sha512sums=('97478d0dd61201510542d6574e7d59f43159fc30608257b8d31200567591e6fc0c1a41a6614e74e29988e4f76d0eae276688e060a6fe7d021fa29e23bbc80b76'
             'daf98a69d87dc78ea645a02146d67b0a2903b3b219edadf2e3c987c20d0751ac147b72fe185c74bfe3e0b154ed8ee4b9b503e7ca922548fad52157aada05803c'
             '64ab805f7e0089d9b638c2972687ba60331304b3d63bfff138ce8b7903d999f40854067c384cafbc6c635afc335bd084b758cbb7c5cac397d97ed1f31e67ac6e')
 
