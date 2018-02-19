@@ -23,12 +23,13 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  mkdir build && cd build && cmake ..
+  mkdir -p build
 }
 
 build() {
   cd "${_pkgname}/build"
 
+  cmake ..
   make
 }
 
