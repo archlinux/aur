@@ -1,8 +1,8 @@
 pkgbase = slimdns-git
 	pkgdesc = A simple, light weight DNS server
-	pkgver = 0.r17.67809b0
+	pkgver = v0.r19.5085237
 	pkgrel = 1
-	url = https://hvornum.se
+	url = https://github.com/Torxed/slimDNS
 	arch = x86_64
 	license = custom:BSD
 	license = cc-by-nc-sa-3.0
