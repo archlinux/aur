@@ -4,7 +4,7 @@ _owner=Torxed
 _name=slimsmtp
 #_dbuser_passwd=$(</dev/urandom tr -dc 'A-Za-z0-9!"#$%&()*+,-./:;<=>?@[\]^_`{|}~' | head -c 25  ; echo)
 pkgname=$_name-git
-pkgver=0.r38.193bc0d
+pkgver=0.1.2.r39.bd570d7
 pkgrel=1
 pkgdesc="A simple, light weight SMTP server"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
     cd $_name
     r=$(git log --pretty=oneline | cut -d' ' -f1 | wc -l)
     h=$(git rev-parse --short HEAD)
-    printf v0.r$r.g$h
+    printf v0.1.2.r$r.g$h
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = slimsmtp-git
 	pkgdesc = A simple, light weight SMTP server
-	pkgver = 0.r38.193bc0d
+	pkgver = 0.1.2.r39.bd570d7
 	pkgrel = 1
 	url = https://hvornum.se
 	arch = x86_64
