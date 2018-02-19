@@ -3,7 +3,7 @@
 pkgbase=('python2-catkin_lint')
 pkgname=('python2-catkin_lint')
 _module='catkin_lint'
-pkgver='1.4.17'
+pkgver='1.4.19'
 pkgrel=1
 pkgdesc="Check catkin packages for common errors"
 url="https://github.com/fkie/catkin_lint"
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/c/catkin_lint/catkin_lint-${pkgver}.tar.gz")
-md5sums=('c089484d44d5bf6387bc179710bd4d39')
+md5sums=('191fd2e86a81b60bf49ec4221758b70f')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
