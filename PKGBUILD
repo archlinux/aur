@@ -6,30 +6,27 @@
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.10.6
+pkgver=1.10.8
 pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 provides=('conky')
 conflicts=('conky')
-makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'git')
+makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git')
 depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
-        'lua53.patch'
-        'gcc7.patch')
+        'lua53.patch')
 
-sha256sums=('4c80982960b2a72e3e33cef33347c97b9239ed110d9584da4e7f17f28faf60ca'
-          '50844ccdd2b1f8e1b4b110d8b9069dc35af11650163013e2b98cc2e59aeda569'
-          '55ed017f56e657df4528b38ecafaab234ad164a899e19d704f6b397f4c82657b')
+sha256sums=('2ebd655a27c816bd613538b71d4ec1c096252cb522feaa05f64781dcedea8857'
+          '50844ccdd2b1f8e1b4b110d8b9069dc35af11650163013e2b98cc2e59aeda569')
 
 options=('!strip' 'debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
-	patch -p1 -i ../gcc7.patch # FS#54223
 }
 
 build() {
@@ -59,3 +56,4 @@ package() {
 	install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
 }
+

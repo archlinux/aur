@@ -1,15 +1,14 @@
 pkgbase = conky-cli
 	pkgdesc = Lightweight system monitor for X, without X11 dependencies
-	pkgver = 1.10.6
+	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
-	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
 	makedepends = cmake
 	makedepends = docbook2x
-	makedepends = docbook-xml
+	makedepends = docbook-xsl
 	makedepends = man-db
 	makedepends = git
 	depends = curl
@@ -20,12 +19,10 @@ pkgbase = conky-cli
 	conflicts = conky
 	options = !strip
 	options = debug
-	source = https://github.com/brndnmtthws/conky/archive/v1.10.6.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.8.tar.gz
 	source = lua53.patch
-	source = gcc7.patch
-	sha256sums = 4c80982960b2a72e3e33cef33347c97b9239ed110d9584da4e7f17f28faf60ca
+	sha256sums = 2ebd655a27c816bd613538b71d4ec1c096252cb522feaa05f64781dcedea8857
 	sha256sums = 50844ccdd2b1f8e1b4b110d8b9069dc35af11650163013e2b98cc2e59aeda569
-	sha256sums = 55ed017f56e657df4528b38ecafaab234ad164a899e19d704f6b397f4c82657b
 
 pkgname = conky-cli
 
