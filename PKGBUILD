@@ -13,12 +13,12 @@ license=('MIT')
 depends=('python2' 'python2-blessings' 'python2-pyric' 'python2-tornado' 'scapy' 'dnsmasq' 'hostapd' 'net-tools')
 makedepends=('git')
 source=("https://github.com/sophron/wifiphisher/archive/v$pkgver.tar.gz"
-	$pkgname.sh)
+$pkgname.sh)
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root=$pkgdir
+	cd "$srcdir/$pkgname-$pkgver"
+	python2 setup.py install --root=$pkgdir
 }
 
 md5sums=('bd4357b8a97cdcfb36624245c4f963da'
-         '20fc8c517c5e85c8a47e2372beecd83c')
+'20fc8c517c5e85c8a47e2372beecd83c')
