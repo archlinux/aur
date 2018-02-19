@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.15.99.name.tab.beta1
+pkgver=v0.15.99.name.tab.beta2
 pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1516571444
+epoch=1519047664
 
 
 # Release commit for nc0.15.99-name-tab-beta1
-_commit=fab005af18da02cad6b48b9d218e73d2c3eecd4d
+_commit=570a54769056680b1204194fd9a4de94852c8fe7
 
 
 pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon.'
@@ -33,19 +33,14 @@ conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
            'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
-        'namecoin1500x1500.png'
-        'patch.diff')
+        'namecoin1500x1500.png')
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
-            'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
-            '52ac2022fabd9b1428956b8202788f564d00c1778f5c7e78dd960c6ad6c70db0')
-
+            'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04')
 prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
-    cd "$srcdir/"
-    patch -p0 -i patch.diff
 }
 
 
