@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features)
-	pkgver = 7.0.7.22
+	pkgver = 7.0.7.23
 	pkgrel = 1
 	url = http://www.imagemagick.org/
 	arch = i686
@@ -90,9 +90,9 @@ pkgbase = imagemagick-full
 	depends = libfpx
 	depends = libraqm
 	depends = libumem-git
-	source = http://www.imagemagick.org/download/ImageMagick-7.0.7-22.tar.xz
+	source = http://www.imagemagick.org/download/ImageMagick-7.0.7-23.tar.xz
 	source = arch-fonts.diff
-	sha256sums = 49de9e08ea255a1f939158d85d50dfa29285bccbdcb7fee0fe4309061d438489
+	sha256sums = 8dee83fe4978a2d07a90c947508d734ddb175eeb299491f8560cea5ac0c26896
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
 pkgname = libmagick-full
@@ -122,7 +122,7 @@ pkgname = libmagick-full
 	backup = etc/ImageMagick-7/type-ghostscript.xml
 
 pkgname = imagemagick-full
-	depends = libmagick-full=7.0.7.22-1
+	depends = libmagick-full=7.0.7.23-1
 	depends = perl>=
 	depends = perl<
 	optdepends = imagemagick-full-doc: manual and API docs
