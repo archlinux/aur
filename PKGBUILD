@@ -32,8 +32,8 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.3
-pkgrel=2
+pkgver=4.15.4
+pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -53,8 +53,7 @@ source=(
   "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
-  0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
+  0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -62,7 +61,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '6dd42389603bc6c83d2e6db1d736303e41d26cef479cad926b87711f261c9c35'
+            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
             'SKIP'
             '617d1a2b0160fc72098524a51501531556050cab0e466c9dbae5d60a78991bd2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -70,10 +69,9 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             'feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c'
-            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
-            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be'
-            '13bc8392b26d1ce0182060fba0f37f74dd7cdc6fff2fdea3240fc4e755621277')
+            'c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863'
+            'b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676'
+            '54380eafa1dfb42f7860a5eee9f521c14aa5fd2c9f5bfaa6e0537d75800225b7')
 
 _kernelname=${pkgbase#linux}
 
@@ -92,11 +90,8 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  # https://bugs.archlinux.org/task/57327
-  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
-
   # https://bugs.archlinux.org/task/57500
-  patch -Np1 -i ../0004-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
+  patch -Np1 -i ../0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 
   # add PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
@@ -126,8 +121,10 @@ END
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
-  # set extraversion to pkgrel
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -161,7 +158,7 @@ END
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -175,12 +172,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
