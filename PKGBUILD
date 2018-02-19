@@ -4,7 +4,7 @@
 _pkgname=fribidi
 pkgname=lib32-${_pkgname}
 pkgver=1.0.1+8+gdf7252b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (32 bit)"
 arch=('x86_64')
 license=('LGPL')
@@ -33,7 +33,7 @@ export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 cd ${_pkgname}
 ./configure --prefix=/usr --libdir=/usr/lib32
 sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-make
+make -j1
 }
 
 package() {
