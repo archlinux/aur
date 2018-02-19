@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Roman Kyrylych <Roman.Kyrylych@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gtk2_prefs
 pkgver=0.4.1
 pkgrel=5
 pkgdesc="A GTK2 theme selector and font switcher"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://gtk-win.sourceforge.net/home/index.php/en/Gtk2Prefs"
 license=("GPL")
 depends=('gtk2')
