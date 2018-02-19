@@ -11,7 +11,7 @@ url="http://www.protocasedesigner.com/"
 depends=('java-runtime-common' 'jre7-openjdk')
 #install=protocase-designer.install
 license=('custom')
-source=('http://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-'$pkgver'.tar.gz'
+source=('https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-'$pkgver'.tar.gz'
 	ProtocaseDesigner.desktop)
 md5sums=('790133b8c4bf8baea3691024b0c9105b'
 	 'f66d02094444eac61f468371589fcc9c')
