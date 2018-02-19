@@ -19,13 +19,5 @@ package() {
 	cd "${srcdir}/${pkgname}/"
 	install -dm755 "${pkgdir}/usr/share/icons"
 	cp -a "Flat-Remix"* "${pkgdir}/usr/share/icons/"
-	for theme in \
-        "Flat-Remix" \
-        "Flat-Remix-Dark" \
-        "Flat-Remix-Light"
-    do
-        /bin/touch --no-create /usr/share/icons/${theme} &>/dev/null || :
-        /usr/bin/gtk-update-icon-cache -q /usr/share/icons/${theme} || :
-    done
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
