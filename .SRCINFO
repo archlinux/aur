@@ -9,6 +9,7 @@ pkgbase = catch2
 	makedepends = cmake
 	makedepends = make
 	makedepends = git
+	provides = catch2=v2.1.2_0_g7cbd0b58
 	source = catch2::git+https://github.com/catchorg/Catch2.git#commit=7cbd0b587a24e5cbb9a7da9dd288f0532abfc57a
 	md5sums = SKIP
 
