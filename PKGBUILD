@@ -1,13 +1,13 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=tick
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Command line stock and cryptocurrency portfolio tracker."
 arch=('x86_64')
 url="https://github.com/aokellermann/${pkgname}"
 license=('MIT')
-depends=('curl' 'json-c')
+depends=('curl' 'json-c' 'ncurses')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("git://github.com/aokellermann/${pkgname}")

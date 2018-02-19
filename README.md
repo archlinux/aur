@@ -54,6 +54,16 @@ in JSON. To convert your existing portfolio, run
 ```bash
 $ tick convert
 ```
+
+You may encrypt your portfolio using the RC4 algorithm
+```bash
+$ tick encrypt
+```
+and decrypt it with
+```bash
+$ tick decrypt
+```
+
 Once installed, you may read the man page for more information.
 
 #### License
@@ -71,7 +81,7 @@ license for more information.
 * Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data
-* Encrypt data (rc4 from my github?)
 * DEB/RPM package
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
+* Make printouts pretty with ncurses??

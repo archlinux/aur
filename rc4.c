@@ -10,14 +10,14 @@ char* rc4_getPassword() {
     noecho(); // Doesn't echo chars when typed
     unsigned int c, i;
     do {
-        printw("Enter Password: ");
+        printw("Enter Password (32 character max): ");
         memset(pass, '\0', PASS_MAX + 1);
         i = 0, c = 0;
         while (c != '\n' && (c = (unsigned) getch())) {
             if (c != BACKSPACE) {
                 pass[i] = (char) c;
                 i++;
-                if (i > PASS_MAX) {
+                if (i > PASS_MAX) { // Breaks loop if more than max
                     c = '\n';
                     printw("\n");
                 }
@@ -25,6 +25,7 @@ char* rc4_getPassword() {
                 pass[i - 1] = '\0';
         }
     } while (i > PASS_MAX);
+    clear();
     endwin();
     return (char*) pass;
 }

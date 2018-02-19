@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2
-OBJECTS = main.o api.o portfolio.o
-LIBS = -lcurl -ljson-c -lm
+CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 -Wshadow -Wpointer-arith
+OBJECTS = main.o api.o portfolio.o rc4.o
+LIBS = -lcurl -ljson-c -lm -lncurses
 BIN = tick
 DESTDIR = /usr
 

@@ -1,12 +1,13 @@
 pkgbase = tick
 	pkgdesc = Command line stock and cryptocurrency portfolio tracker.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/aokellermann/tick
 	arch = x86_64
 	license = MIT
 	depends = curl
 	depends = json-c
+	depends = ncurses
 	provides = tick
 	conflicts = tick
 	source = git://github.com/aokellermann/tick
