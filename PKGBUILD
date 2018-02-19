@@ -18,6 +18,6 @@ pkgver () {
 package() {
     cd "${srcdir}/${pkgname}/"
     install -dm755 "${pkgdir}/usr/share/themes"
-    cp -a "Flat Remix"* "${pkgdir}/usr/share/themes/"
+    cp -a "Flat-Remix"* "${pkgdir}/usr/share/themes/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
