@@ -5,15 +5,13 @@ pkgbase = libexosip2
 	epoch = 1
 	url = https://savannah.nongnu.org/projects/exosip/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = libosip2>=4.0.0
 	depends = openssl
 	source = https://download.savannah.gnu.org/releases/exosip/libexosip2-5.0.0.tar.gz
-	source = https://download.savannah.gnu.org/releases/exosip/libexosip2-5.0.0.tar.gz.sig
 	source = openssl110.patch
-	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
 	sha256sums = a26558594de95405d3adeee554a7c10cb3ec5a9316a879e679b53a99a9cf2e1f
-	sha256sums = SKIP
 	sha256sums = e60ef8fe99e7aa8641398a70708ab1e4f85d04872f1c658949afc4fd657c4d5a
 
 pkgname = libexosip2

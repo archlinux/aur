@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
 pkgname=libexosip2
@@ -7,15 +7,14 @@ epoch=1
 pkgver=5.0.0
 pkgrel=2
 pkgdesc="A library that hides the complexity of using SIP for multimedia session establishement"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://savannah.nongnu.org/projects/exosip/"
 license=('GPL')
 depends=('libosip2>=4.0.0' 'openssl')
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
-source=(https://download.savannah.gnu.org/releases/exosip/libexosip2-$pkgver.tar.gz{,.sig}
+source=(https://download.savannah.gnu.org/releases/exosip/libexosip2-$pkgver.tar.gz
         openssl110.patch)
 sha256sums=('a26558594de95405d3adeee554a7c10cb3ec5a9316a879e679b53a99a9cf2e1f'
-            'SKIP'
             'e60ef8fe99e7aa8641398a70708ab1e4f85d04872f1c658949afc4fd657c4d5a')
 
 prepare() {
