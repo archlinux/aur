@@ -21,5 +21,4 @@ package() {
   rmdir "$pkgdir/usr/etc"
 }
 
-sha1sums=('87dd6295103da48c2376872836273785ffe0def3')
 sha1sums=('1788cf56d4350b6d8ecf76b5d654c59c7bf9c24a')
