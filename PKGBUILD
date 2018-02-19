@@ -1,7 +1,7 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
-pkgver=0.8.0.r7.361698b
-pkgrel=2
+pkgver=0.8.0.r10.c749b60
+pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/ripgrep"
