@@ -6,7 +6,7 @@ pkgname=glib2-patched-thumbnailer
 pkgver=2.54.3+2+g94b38beff
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
-url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
+url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
 provides=("glib2=$pkgver")
 conflicts=('glib2')
@@ -18,17 +18,16 @@ optdepends=('python: for gdbus-codegen and gtester-report'
 options=('!docs' '!emptydirs')
 license=(LGPL)
 _commit=94b38beff1347ec4a733199f7a7abdacaa958678  # glib-2-54
-_patchver=d0edf118e1c27700300038c1d82b3ff775c0216b
-source=("git://git.gnome.org/glib#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
         gio-querymodules.hook
-        https://gist.githubusercontent.com/ahodesuka/49c1d0eea4b64f24c4c7/raw/$_patchver/glib-thumbnailer.patch)
+        glib-thumbnailer.patch)
 sha256sums=('SKIP'
             '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
             'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
             '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6'
-            '1a4673380fbdf8e8e5de3367089de6c97025633e54010575de63c5ab6c8a044d')
+            '9ea789788962a941af83b99949ddc21d7d19d820f2170f58691ca83e53afb158')
 
 pkgver() {
   cd glib
