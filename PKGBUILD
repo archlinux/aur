@@ -1,5 +1,6 @@
-pkgname=nanocurrency-git
-pkgver=10.0.r1.g4e4bcf8d
+pkgname=nanocurrency
+pkgver=10.0.1
+_tag="$pkgver"
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
@@ -10,15 +11,11 @@ depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
 provides=(raiblocks nanocurrency)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-node-git" "nanocurrency-node-git")
 install=install
-pkgver() {
-  cd "raiblocks"
-  git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
-  git+https://github.com/nanocurrency/raiblocks.git
+  "git+https://github.com/nanocurrency/raiblocks.git#tag=${_tag}"
   git+https://github.com/weidai11/cryptopp.git
   git+https://github.com/clemahieu/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
