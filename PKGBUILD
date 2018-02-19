@@ -1,19 +1,19 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
 
-_pkgname=mem_top
+_name=mem_top
 pkgname=python-mem_top
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 arch=('any')
 pkgdesc="Shows top suspects for memory leaks in your Python program"
 url="https://pypi.python.org/pypi/mem_top"
 license=("MIT")
 depends=('python')
-source=(https://pypi.io/packages/source/m/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('797f791971b2ad8cebdb1ba4f5f650e5')
+source=(git+https://github.com/denis-ryzhkov/mem_top#commit=037c1281)
+md5sums=('SKIP')
 
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_name}
   python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
 }

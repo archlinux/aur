@@ -1,13 +1,13 @@
 pkgbase = python-mem_top
 	pkgdesc = Shows top suspects for memory leaks in your Python program
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/mem_top
 	arch = any
 	license = MIT
 	depends = python
-	source = https://pypi.io/packages/source/m/mem_top/mem_top-0.1.6.tar.gz
-	md5sums = 797f791971b2ad8cebdb1ba4f5f650e5
+	source = git+https://github.com/denis-ryzhkov/mem_top#commit=037c1281
+	md5sums = SKIP
 
 pkgname = python-mem_top
 
