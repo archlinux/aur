@@ -1,22 +1,22 @@
-From 190e710701a41341a07e3a00e5e35429d81053f1 Mon Sep 17 00:00:00 2001
+From 297f163b0298a45307f397842bca505c860a7fc3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 22/34] Merge shared and static library trees
+Subject: [PATCH 21/32] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
  configure.pri                     |  9 +++++++++
  mkspecs/features/default_post.prf | 11 +++++++++++
- mkspecs/features/qt.prf           | 15 +++++++++++++++
+ mkspecs/features/qt.prf           | 17 +++++++++++++++++
  mkspecs/features/spec_pre.prf     | 11 ++++++++---
  qmake/generators/makefile.cpp     |  9 ++++++---
- 5 files changed, 49 insertions(+), 6 deletions(-)
+ 5 files changed, 51 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 83c0dee141..a05c3d98e6 100644
+index ea482552c4..9da756fb3a 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1212,3 +1212,12 @@ defineTest(createConfigStatus) {
+@@ -1225,3 +1225,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -51,10 +51,10 @@ index 7e027325bd..ad0db62b78 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 3ccbbe7061..afaac3dbc4 100644
+index b57afcf72d..6eebd068f1 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -255,6 +255,21 @@ for(ever) {
+@@ -259,6 +259,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -64,11 +64,13 @@ index 3ccbbe7061..afaac3dbc4 100644
 +            isEqual(MODULE_NAME, QtCore) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_CORE
 +            } else:isEqual(MODULE_NAME, QtGui) {
-+                LIBS$$var_sfx += $$QMAKE_LIBS_GUI
++                LIBS$$var_sfx += $$QMAKE_LIBS_GUI_STATIC
 +            } else:isEqual(MODULE_NAME, QtNetwork) {
-+                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK_STATIC $$QMAKE_LIBS_NETWORK
++                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK_STATIC
 +            } else:isEqual(MODULE_NAME, QtDBus) {
-+                LIBS$$var_sfx += $$QMAKE_LIBS_DBUS
++                LIBS$$var_sfx += $$QMAKE_LIBS_DBUS_STATIC
++            } else:isEqual(MODULE_NAME, QtWidgets) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_WIDGETS_STATIC
 +            } else:isEqual(MODULE_NAME, QtOpenGL) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_OPENGL
 +            }
@@ -126,5 +128,5 @@ index 0d07d6c333..5e84628e72 100644
  
      t << endl;
 -- 
-2.15.1
+2.16.1
 

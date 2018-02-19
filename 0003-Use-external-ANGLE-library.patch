@@ -1,7 +1,7 @@
-From 3f183dac766bbaa507ff90dc7286e0c693f2dab1 Mon Sep 17 00:00:00 2001
+From 84d1b9f6d84e46ee756761d0a9cc264d067b9250 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/34] Use external ANGLE library
+Subject: [PATCH 03/32] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -54,7 +54,7 @@ index f8cec00b82..d09c9fd49c 100644
  
  include(accessible/accessible.pri)
 diff --git a/src/opengl/opengl.pro b/src/opengl/opengl.pro
-index 016db46405..02f1204f0f 100644
+index 742be61a50..5fef69fd3f 100644
 --- a/src/opengl/opengl.pro
 +++ b/src/opengl/opengl.pro
 @@ -11,6 +11,7 @@ QMAKE_DOCS = $$PWD/doc/qtopengl.qdocconf
@@ -78,7 +78,7 @@ index b7790a66e3..046fe34a06 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index a2064b1362..b9ba606b03 100644
+index a73729a760..32d9f8502a 100644
 --- a/src/src.pro
 +++ b/src/src.pro
 @@ -180,10 +180,6 @@ qtConfig(gui) {
@@ -93,5 +93,5 @@ index a2064b1362..b9ba606b03 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.15.1
+2.16.1
 

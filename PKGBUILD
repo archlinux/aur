@@ -84,8 +84,8 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.10.0
-pkgrel=2
+pkgver=5.10.1
+pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -119,56 +119,52 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0017-Build-dynamic-host-libraries.patch'
         '0018-Enable-rpath-for-build-tools.patch'
         '0019-Use-system-zlib-for-build-tools.patch'
-        '0020-Disable-determing-default-include-and-lib-dirs-at-qm.patch'
-        '0021-Use-.dll.a-as-import-lib-extension.patch'
-        '0022-Merge-shared-and-static-library-trees.patch'
-        '0023-Pull-dependencies-of-static-libraries-in-CMake-modul.patch'
-        '0024-Allow-usage-of-static-version-with-CMake.patch'
-        '0025-Adjust-linker-flags-for-static-build-with-cmake-ming.patch'
-        '0026-Use-correct-pkg-config-static-flag.patch'
-        '0027-Fix-macro-invoking-moc-rcc-and-uic.patch'
-        '0028-Ignore-errors-about-missing-feature-static.patch'
-        '0029-Enable-and-fix-use-of-iconv.patch'
-        '0030-Ignore-failing-pkg-config-test.patch'
-        '0031-Prevent-qmake-from-messing-static-lib-dependencies.patch'
-        '0032-Hardcode-linker-flags-for-platform-plugins.patch'
-        '0033-Fix-linking-against-static-plugins-with-qmake.patch'
-        '0034-Don-t-use-the-statx-syscall.patch')
-sha256sums=('fd5578cd320a13617c12cf2b19439386b203d6d45548e855f94e07be9829f762'
-            'd10d56c65b632d881f79eda8c0caeffb1a53a4829ac886e80038cdc8929b1669'
-            '524883f46945ab2ce023e9de1144a7eebafdba936ea8c61e035006deff48fa5b'
-            'cea0e73f831348e50285ab87149803d4dfb5650c4c96037844b98b3dc1c65159'
-            'e333d61821a42710a00f9bd4d003d376f513ba6ca41a3739bfcd414c99b8e7dd'
-            'e8b0bdcc39458105dd0e5c569c98ef53a84d2fe4e9e200e1b1c1b7b749e8e758'
-            'e14860d560886b600373f639e89e9a60d77de9a536587633ea71e1fd907df3fb'
-            '447c27f0e87d5cdcbe9883f6d3aac0daefef28e09bd8afe8d07a650375ca8362'
-            'e2f98037b93aa2970014c1d185912b49d4ab5506c24fa2410cb0e93d4e0a1f54'
-            '507537c73995715fa1a4e9e0f1ecfdf4afe409b5397366f551d06c6c406e088b'
-            '760093a185cd77bacec0d85c0c077370d6044b89a4d6f03944524d1aa2b82dfa'
-            '6052446a675be39dd663ef69ee5339ab67c2805b29ff4ef19bacf0f677a95182'
-            '60a6e236334d3950b40dbb0501cc733bc7a672b0c7fbf6e4792c0058bf20a859'
-            'f58391f9407742a1543702fe0234a134883046ff99584c1cfa468893264bf5e9'
-            '9e406b466c2b447da5d44ea37cafe2b3c3caebfa54936eb71e816e60b186c47d'
-            '870ed7adb78d4f5b396fa9106777aaeefc2a8af406e1aa1655dfe3405974a1ce'
-            'b51a2d707a09cce340ca10e4a93c18a0872881889a97dc3ea2aafe73d80dfd46'
-            'ed206eef70d57cd1aeb31c9e65ceb46fe926bee462c9b6507d22b6daf9b03aff'
-            '00ea2ef2f2d8868351d857716e60e8e78ed90a294132cd1fbd8039aae50e7344'
-            'f80e166e5a358cc3d0dca5f0a543b30271a1c536ff9ef73105f1e432b10d3afe'
-            '12c4ce015c5641376dea7a232f0fc9f8feb10ddee06c65f87e0f00ea2574ab15'
-            'a3a6a12f94ed4a79b3910623e3a8a11859d7a6a72b4634ff8bd6d1269af615bd'
-            '6f1f96ec05f049a107f4b5b3fba05e088d47f1c4751fd21851ed48d5f1b5a274'
-            '2926f77fbab219cb2fe9bb630274b06594a72c9047d374209d96591e481015fd'
-            'b36b7fce8e101444d17026002f8052be41de887ccd263188a64faeae31cc1c89'
-            '7bcfe130f6dc47c9fb4d3db6fe9634596ab2c01e421bfc9a0967463487b4b7f0'
-            '83f6a3fc2489da2686f035563542478fd01e2849e18ea02478d7850bd68f16be'
-            '7254445b4cea5e1d7efc25b923e755ab3b19856ee8bce2ebe2900b9bf4717841'
-            'd03a3cc5dab9d9a843e73f241fee2778deffe9ee727e493a0052e62b2266923e'
-            'd6dc468d67e782b64fbe9ba64dfc3fdf423c5d06205f4a87a0561bb53b35d7fc'
-            '43c367e31c1560178a1471a80a9e90391c7c93f8dfece8c4c9dfafea4a3ce180'
-            '2e89aca862a62cbf535faf4b01c00dfed40ad6ccb52ac998913e9e96801491a3'
-            '8b1402c8ac78c0870af19ccdd8b2603e164cf2ef4fd4446fd03ea40b68a35643'
-            '81d279b24a508656597fec9bf94bade25cf0d600607febcd35f7fd27d09970eb'
-            '95a8cd9553ef18e200a85ff6dc5c718525d71be92d4fa49b8cdceae73696e037')
+        '0020-Use-.dll.a-as-import-lib-extension.patch'
+        '0021-Merge-shared-and-static-library-trees.patch'
+        '0022-Pull-dependencies-of-static-libraries-in-CMake-modul.patch'
+        '0023-Allow-usage-of-static-version-with-CMake.patch'
+        '0024-Adjust-linker-flags-for-static-build-with-cmake-ming.patch'
+        '0025-Use-correct-pkg-config-static-flag.patch'
+        '0026-Fix-macro-invoking-moc-rcc-and-uic.patch'
+        '0027-Ignore-errors-about-missing-feature-static.patch'
+        '0028-Enable-and-fix-use-of-iconv.patch'
+        '0029-Ignore-failing-pkg-config-test.patch'
+        '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch'
+        '0031-Hardcode-linker-flags-for-platform-plugins.patch'
+        '0032-Fix-linking-against-static-plugins-with-qmake.patch')
+sha256sums=('d8660e189caa5da5142d5894d328b61a4d3ee9750b76d61ad74e4eee8765a969'
+            '6b29d7a3751a506c15155425d6dc213e9f4654ee5b833007a0119bda6a050b28'
+            'ca10438f4a2d309f496e85d7b974d9eeb88115e068e146ca511b9784db95b822'
+            '75bf0d8b155f95bad2dfbc5c046f88afd6a5f2233336a1f6d148583ba445fca6'
+            'd70dcd1c44e751b0120f514af9db4ff20ebb0a327a22a371cf5e8d9453f66953'
+            'cbad834340bc9e9261704034e9192bd0d7306f9ff02a99fd73fc348948c37ed9'
+            '3c7cd1839a6f0891b871c75824b8ebeb05e4e61884c342d6b6ab583f10819138'
+            'c923da99871dac4fc58b8e70bd76c70fba0f421fc676a53bcb8c0187190ba737'
+            'f9be656281652f72297f1e573f23298c22f4849857d92106096feb4b3fe9244f'
+            '5add111a9e521159e31ecef4d85ebef86285bbbe2adce5d8cec94fd22822731e'
+            '7d38e79bc6b2e5d74515291bf78c3a6168f8bc834f7f59bda2c013f65e45bd3e'
+            '9ab62cc8cd1cf68ee5e87e276d5a2f19c43b04a1c50c10341794924277cfcca5'
+            'f1926bd51376a95ea1deee933dadd62166296e5780e24ce8312637c9d3eda27b'
+            '03f7a178af6b630f48da79c76e1239695d96137fd8394ba814e4bdf8c7e0a826'
+            'dc3e0e3fe4ba979f74ff9dc343b235d32473edb18ca7f8afea3076f613564a95'
+            'ef64b965a19e1e2848761829a6817dcb9f3ad616faa666f9e52736d810190c66'
+            '9e0c3848df586ec7decd9b7a6dab86a9e7e5cc7bf5ac06ff97d7d63e370bb05b'
+            '7dc90045a838f9ebcb7933d582abb3e8bba250644602e1019bf1a03e74cc3b09'
+            'b5cc23a29e80ec8185da8ca0950ab8a2f12f4ef4b998c763334d352e68b53fc2'
+            '944cfdbfd9d13285aefb4305596950d2880cc1023b5ad241af08e3d6995daa69'
+            '5f7498a98912542c39b081c2df1930246df3bdb533c2e30204bf795cea8b885f'
+            '0b8408d70a4544e43fd573e5b9ac751fb2732d3e4490f21e1737ac09ece25b62'
+            '08155a41f22c03741096145bf201d5503e38495c2f255f3c81ea658948258cd3'
+            '7b30d46f739dffa20a1964e09958a92af1749104fe7a88d7ea255aa54e553b25'
+            'c92d6a124b7b0333175122555ef9f647817eb54563480cf3eaaf47decfd907c3'
+            '0818c4d59aabb898fed8f313e21085cc8fc576d3f4975383eb73ba3f758c302e'
+            'ce5d416a3404199072062063d8038084c23bbfe8aa45ed3340c4afb4dfa461e4'
+            '8d1e93bea1cdcdf1b965f4c061975668334cef6a65130f1b4b528f2b6952a602'
+            '298ffdcd378e2b07fe8e978cfb5faac29c117a5f79288273545a6938b905f33a'
+            '7514edba8ecd28b27715650bbafa8649492b68efba1df9c9fa70f06a924fea14'
+            '7c232c385303b447e17270b946d333b56274312b08b4e76439a5f77cb77aa909'
+            'acfdf70ae8738a0373bbd93e42048d1c699f666dd72933ad3c09b09620fb0715'
+            'c3df40da9b2494e59aae786a26ba93d88128b69971d10a64cb6d610045a101f8')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -237,7 +233,7 @@ build() {
     # To prevent conflicts with the mingw-w64-qt4 package we have
     # to put tools in a dedicated folder
 
-    # The last device option allows using ccache though the use of
+    # The last device option allows using ccache despite the use of
     # pre-compile header
     # (sloppiness must be set to pch_defines,time_macros in ccache config)
 
@@ -345,6 +341,14 @@ package() {
     cd "$srcdir/${_pkgfqn}"
     make install -C ../build-${_arch} INSTALL_ROOT="${pkgdir}"
 
+    # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+    pushd "$srcdir/build-${_arch}/lib"
+    find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+    popd
+    pushd "$srcdir/build-${_arch}/plugins"
+    find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+    popd
+
     if isStatic; then
       # The static release contains only the static libs itself but relies on the
       # shared release for Qt5Bootstrap library and tools (qmake, uic, ...)
@@ -376,7 +380,7 @@ package() {
       popd
       rm "${pkgdir}/usr/${_arch}/lib/pkgconfig/StaticQt5OpenGLExtensions.pc"
 
-      # Keep various Qt 5 plugins to be used in static builds
+      # Create links to static plugins in lib directory
       pushd "${pkgdir}/usr/${_arch}/lib/" && ln -s "./qt/plugins/"*/*.a . && popd
 
       # Keep a couple pri files not found in base
@@ -403,6 +407,9 @@ package() {
         ln -s "../${_arch}/lib/qt/bin/${tool}" "${pkgdir}/usr/bin/${_arch}-${tool}-qt5"
       done
     fi
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
     # Remove doc
     rm -rf "${pkgdir}/usr/${_arch}/share/doc"

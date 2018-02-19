@@ -1,21 +1,21 @@
-From ae97e360a3e6402957a7e72d89adf71b94fc5730 Mon Sep 17 00:00:00 2001
+From fc85bad55db9fd58860c84e74ba3de1720111ef1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/34] Add profile for cross compilation with mingw-w64
+Subject: [PATCH 01/32] Add profile for cross compilation with mingw-w64
 
 ---
- mkspecs/mingw-w64-g++/qmake.conf      | 126 +++++++++++++++++++++++++++
+ mkspecs/mingw-w64-g++/qmake.conf      | 132 +++++++++++++++++++++++++++++
  mkspecs/mingw-w64-g++/qplatformdefs.h | 155 ++++++++++++++++++++++++++++++++++
- 2 files changed, 281 insertions(+)
+ 2 files changed, 287 insertions(+)
  create mode 100644 mkspecs/mingw-w64-g++/qmake.conf
  create mode 100644 mkspecs/mingw-w64-g++/qplatformdefs.h
 
 diff --git a/mkspecs/mingw-w64-g++/qmake.conf b/mkspecs/mingw-w64-g++/qmake.conf
 new file mode 100644
-index 0000000000..c49336845b
+index 0000000000..978867fa1b
 --- /dev/null
 +++ b/mkspecs/mingw-w64-g++/qmake.conf
-@@ -0,0 +1,126 @@
+@@ -0,0 +1,132 @@
 +#
 +# qmake configuration for i686-w64-mingw32-g++ and x86_64-w64-mingw32-g++
 +#
@@ -128,13 +128,19 @@ index 0000000000..c49336845b
 +QMAKE_PKG_CONFIG            = $${CROSS_COMPILE}pkg-config
 +
 +QMAKE_LIBS                  =
-+QMAKE_LIBS_CORE             = -lz -lpcre2-16 -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
-+QMAKE_LIBS_GUI              = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
++QMAKE_LIBS_CORE             = -lz -lpcre2-16 -liconv -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
++QMAKE_LIBS_GUI              = -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
++                              $$system($${QMAKE_PKG_CONFIG} --libs harfbuzz) \
++                              $$system($${QMAKE_PKG_CONFIG} --libs freetype2)
++QMAKE_LIBS_GUI_STATIC       = -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) \
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2)
-+QMAKE_LIBS_NETWORK          = -lws2_32 -lcrypt32 -ldnsapi
-+QMAKE_LIBS_NETWORK_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) -ldnsapi
-+QMAKE_LIBS_DBUS             = $$system($${QMAKE_PKG_CONFIG} --static --libs dbus-1)
++QMAKE_LIBS_NETWORK          = -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
++QMAKE_LIBS_NETWORK_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) \
++                              -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
++QMAKE_LIBS_DBUS             = $$system($${QMAKE_PKG_CONFIG} --libs dbus-1)
++QMAKE_LIBS_DBUS_STATIC      = $$system($${QMAKE_PKG_CONFIG} --static --libs dbus-1)
++QMAKE_LIBS_WIDGETS_STATIC   = -ldwmapi -luxtheme
 +QMAKE_LIBS_OPENGL           = -lglu32 -lopengl32 -lgdi32 -luser32
 +QMAKE_LIBS_OPENGL_ES2       = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
 +QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
@@ -304,5 +310,5 @@ index 0000000000..c5a70b1445
 +
 +#endif // QPLATFORMDEFS_H
 -- 
-2.15.1
+2.16.1
 
