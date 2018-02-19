@@ -1,7 +1,7 @@
 pkgbase = git-fresh
 	pkgdesc = Keep your repo fresh with one command.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imsky/git-fresh
 	arch = any
 	license = MIT
