@@ -1,0 +1,19 @@
+pkgbase = gateway
+	pkgdesc = Things Gateway by Mozilla
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://iot.mozilla.org/gateway/
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = yarn
+	depends = libusb
+	depends = nodejs
+	depends = openzwave
+	source = git+http://github.com/mozilla-iot/gateway.git#tag=0.3.0
+	source = git+http://github.com/OpenZWave/open-zwave.git#tag=V1.5
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = gateway
+
