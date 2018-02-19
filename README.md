@@ -63,6 +63,7 @@ and decrypt it with
 ```bash
 $ tick decrypt
 ```
+You can modify and check your portfolio without explicitly decrypting it.
 
 Once installed, you may read the man page for more information.
 
