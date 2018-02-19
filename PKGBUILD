@@ -5,8 +5,8 @@
 pkgname=phatch
 pkgver=0.2.7.1
 pkgmajorv=0.2.7
-pkgrel=9
-pkgdesc="Phatch is a simple to use cross-platform GUI Photo Batch Processor."
+pkgrel=10
+pkgdesc="A simple to use cross-platform GUI Photo Batch Processor."
 arch=('i686' 'x86_64')
 url="http://photobatch.stani.be"
 license=('GPL')
