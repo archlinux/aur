@@ -1,13 +1,13 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname="yubikey-oath-dmenu"
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel="1"
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
 arch=('any')
-depends=('bash>4.0' 'dmenu' 'xclip' 'yubikey-manager>=0.5.0')
+depends=('bash>4.0' 'dmenu' 'python', 'xclip' 'yubikey-manager>=0.5.0')
 optdepends=(
   'libnotify: Feedback via notify-send'
   'xdotool: Type code instead of copying to clipboard'
