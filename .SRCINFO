@@ -1,0 +1,20 @@
+pkgbase = cistem-bin
+	pkgdesc = User-friendly software to process cryo-EM images of macromolecular complexes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cistem.org
+	arch = x86_64
+	license = custom
+	provides = unblur
+	conflicts = unblur
+	source = cistem-1.0.0-beta-intel-linux.tar.gz::https://cistem.org/system/tdf/upload3/cistem-1.0.0-beta-intel-linux.tar.gz?file=1
+	source = LICENSE
+	source = cistem.sh
+	source = cistem.csh
+	sha256sums = 7f1df4dc2aa066387a791d2a4dcb539ff6cf7f124ac1ad5a793c401279f22082
+	sha256sums = 5252841f1b4b944841f7b038fd331ab480488c94122e55d3d16c14af2665971b
+	sha256sums = 83e6cc7be8b2f0042647c4f8d39c26cd0a076f60af17b5b552561e735cb32bb1
+	sha256sums = 05be2ae3e7e943cafa2139e71a35c6b4fc45d056d2c95049d4b2154a9158838c
+
+pkgname = cistem-bin
+
