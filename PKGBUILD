@@ -1,20 +1,20 @@
 # Contributor: Timo Schmiade <the_isz@gmx.de>
 
 pkgname=cdrip
-pkgver=2.2
-pkgrel=4
+pkgver=3.0
+pkgrel=0
 pkgdesc="A cdparanoia, lame and musicbrainz.org frontend written in python."
 arch=("any")
 url="https://github.com/the-isz/cdrip"
 license=("GPL")
-depends=("python2" "python2-musicbrainz2" "python2-eyed3" "libdiscid" "cdparanoia")
+depends=("python" "python-musicbrainzngs" "python-eyed3" "python-discid" "cdparanoia")
 options=(!emptydirs)
 source=("https://github.com/the-isz/$pkgname/tarball/$pkgver")
-md5sums=("0e713c7c86454e4a5d22e9421f17c238")
+md5sums=("679812fb7adc3df1148e7b5ae2c1a59a")
 
 package() {
-  cd "$srcdir/the-isz-$pkgname-ae81c46/deployment"
+  cd "$srcdir/the-isz-$pkgname-0404ce2/deployment"
 
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
   mv "$pkgdir/usr/bin/cdrip.py" "$pkgdir/usr/bin/cdrip"
 }
