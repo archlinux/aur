@@ -1,36 +1,84 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
-# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Sebastian Lau <lauseb644@gmail.com>
+# Contributor: damir <damir@archlinux.org>
+# Contributor: Paul Mattal <paul@archlinux.org>
 
-_pkgname=libx264
-pkgname=lib32-$_pkgname
-_pkgbase=x264
+pkgname=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
+_pkgbase=('x264')
 pkgver=152.20171224
-pkgrel=1
-pkgdesc='Free library for encoding H264/AVC video streams (32 bit)'
+pkgrel=2
+
 arch=('x86_64')
-url='http://www.videolan.org/developers/x264.html'
+url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
-makedepends=('git' 'gcc-multilib' 'nasm' 'l-smash')
-depends=("${_pkgname}" 'lib32-glibc')
-provides=('libx264.so')
-#conflicts=('lib32-libx264-stable-git')
+depends=('lib32-glibc')
+makedepends=('git' 'lib32-ffmpeg' 'l-smash' 'nasm')
 _commit='e9a5903edf8ca59ef20e6f4894c196f135af735e'
-source=("git://git.videolan.org/x264.git#commit=${_commit}")
-md5sums=('SKIP')
+source=("git+https://git.videolan.org/git/x264.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+cd ${_pkgbase}
+
+local _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
+local _date=$(git log -1 --format="%cd" --date=short | tr -d -)
+
+echo ${_ver}.${_date}
+}
+
+prepare() {
+mkdir build-{8,10}bit
+}
 
 build() {
-cd ${srcdir}/${_pkgbase}
-./configure --libdir=/usr/lib32 --host=i686-linux-gnu \
-	--prefix=/usr \
-	--enable-shared \
-	--enable-pic
-make
+for _b in 8 10; do (
+  cd build-${_b}bit
+  ../${_pkgbase}/configure \
+    --prefix='/usr' \
+    --enable-shared \
+    --enable-pic \
+    --enable-lto \
+    --bit-depth="${_b}" \
+    --libdir=/usr/lib32 --host=i686-linux-gnu
+  make
+) done
 }
 
-package() {
-cd ${srcdir}/${_pkgbase}
-make DESTDIR="$pkgdir/" install-lib-shared
-rm -rf $pkgdir/usr/include/
+package_lib32-libx264() {
+pkgdesc='Library for encoding H264/AVC video streams (8bit depth) (lib32)'
+provides=('lib32-libx264-8bit' 'libx264.so')
+conflicts=('lib32-libx264')
+
+make -C build-8bit DESTDIR=${pkgdir} install-lib-shared
+rm -rf "${pkgdir}"/usr/include
 }
+
+package_lib32-libx264-10bit() {
+pkgdesc='Library for encoding H264/AVC video streams (10bit depth) (lib32)'
+provides=('lib32-libx264' 'libx264.so')
+conflicts=('lib32-libx264')
+
+make -C build-10bit DESTDIR=${pkgdir} install-lib-shared
+rm -rf "${pkgdir}"/usr/include
+}
+
+package_lib32-libx264-all() {
+pkgdesc="Library for encoding H264/AVC video streams (all depths) (lib32)"
+
+local _ver=$(grep '#define X264_BUILD' "${_pkgbase}"/x264.h | cut -d' ' -f3)
+
+install -d "${pkgdir}"/usr/lib32/x264
+
+for _b in {8,10}bit; do
+  provides+=("libx264-${_b}.so")
+
+  make -C build-${_b} DESTDIR="${pkgdir}" install-lib-shared
+
+  mv "${pkgdir}"/usr/lib32/libx264.so.${_ver} "${pkgdir}"/usr/lib32/x264/libx264-${_b}.so.${_ver}
+  rm -r "${pkgdir}"/usr/{include,lib32/libx264.so,lib32/pkgconfig}
+  ln -sr "${pkgdir}"/usr/lib32/x264/libx264-${_b}.so{.${_ver},}
+done
+}
+
