@@ -2,7 +2,7 @@
 # Contributor: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 
 pkgname=protocase-designer
-pkgver=4.5.2
+pkgver=4.6.13
 pkgrel=1
 
 pkgdesc="The fastest and easiest way to design, price, and build custom electronics enclosures."
@@ -18,8 +18,8 @@ md5sums=('790133b8c4bf8baea3691024b0c9105b'
          
 [ "$CARCH" = "x86_64" ] && source=('https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-'$pkgver'.tar.gz'
 				   ProtocaseDesigner.desktop)
-[ "$CARCH" = "x86_64" ] && md5sums=('ccd28b8c4daab6142ff3212a7920c3d8'
-				    'f66d02094444eac61f468371589fcc9c')
+[ "$CARCH" = "x86_64" ] && md5sums=('876d0202c38fd3fe2573970015927b05'
+				    'df197d715c974e7ab6b4e125495c1cad')
 
 package() {
 	
