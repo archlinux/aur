@@ -1,6 +1,6 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=sigal
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Simple static gallery generator"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-click' 'python-jinja' 'python-markdown' 'python-pillow'
          'python-pilkit' 'python-blinker')
 source=("https://files.pythonhosted.org/packages/source/s/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('a7316d735d10842c6e3ecbea55a77988')
+md5sums=('c67bcf59800d64ee9f68778bd0e02b72')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
