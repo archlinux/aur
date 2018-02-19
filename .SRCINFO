@@ -1,0 +1,22 @@
+pkgbase = gtkdialog
+	pkgdesc = Gtkdialog is a small utility for fast and easy GUI building
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://code.google.com/p/gtkdialog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = automake
+	makedepends = bison
+	makedepends = flex
+	depends = libglade
+	depends = vte
+	optdepends = gtkdialog-examples: sample projects - pfeme, pfontview, playmusic
+	provides = gtkdialog
+	conflicts = gtkdialog
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-0.8.3.tar.gz
+	md5sums = f8d2a2b912bcd5aa7da60984c19bc493
+
+pkgname = gtkdialog
+
