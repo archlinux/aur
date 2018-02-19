@@ -1,6 +1,6 @@
 pkgbase = lyx-git
 	pkgdesc = An advanced WYSIWYM document processor & LaTeX front-end
-	pkgver = 2.3.0beta1.r747.gc6861923f0
+	pkgver = 2.3.0beta1.r809.g93f2481133
 	pkgrel = 1
 	url = http://www.lyx.org
 	arch = i686
@@ -18,7 +18,6 @@ pkgbase = lyx-git
 	depends = python
 	depends = imagemagick
 	depends = enchant
-	depends = python2-pyenchant
 	depends = python-pyenchant
 	depends = boost-libs
 	depends = libmythes
