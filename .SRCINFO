@@ -1,0 +1,14 @@
+pkgbase = linux-intel-undervolt-tool
+	pkgver = 1+a4e51fddd5b23b75bdcf638d3e09d78f94aed58a
+	pkgrel = 1
+	url = https://github.com/hedgepigdaniel/linux-intel-undervolt-tool/
+	install = undervolt-msr.install
+	arch = i386
+	arch = x86_64
+	depends = msr-tools
+	depends = python
+	source = linux-intel-undervolt-tool-a4e51fddd5b23b75bdcf638d3e09d78f94aed58a.tar.gz
+	md5sums = 309d49ced8e8fc948ed07fa3c71f0f2f
+
+pkgname = linux-intel-undervolt-tool
+
