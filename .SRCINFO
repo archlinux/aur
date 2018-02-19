@@ -4,6 +4,7 @@ pkgbase = pawm
 	pkgrel = 3
 	url = https://sites.google.com/site/pleyadestest/david/projects/pawm
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = cmake
 	depends = libxft

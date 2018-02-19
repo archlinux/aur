@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian BIdulock <bidulock@openss7.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=pawm
 pkgver=2.3.0
 pkgrel=3
 pkgdesc="Puto Amo Window Manager is a full featured window manager, but without useless bells and whistles"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 #url="http://www.pleyades.net/pawm/"
 url="https://sites.google.com/site/pleyadestest/david/projects/pawm"
 license=("GPL")
