@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=python-milksnake
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Python library that extends setuptools for binary extensions'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-cffi')
 makedepends=('python-setuptools')
 source=("milksnake-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0703e5eee8d397bf37b248d46a4976019968d51db923a8b841c06bfbdf85d08325e99d800f206701b6a5610299e25b2a4e56e6b67730a0ce6349c785a9f666e2')
+sha512sums=('7b4f9f86861856f2440cf26aa7de8608c358fad4b63aec61472f626d0119e42e1cf7e4aaea0a7cb28a2528a7b8452c946f4c5c66ed0c5c59f58b6a49c14d6f65')
 
 build() {
   cd milksnake-$pkgver
