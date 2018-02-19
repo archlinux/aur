@@ -1,7 +1,7 @@
-From d585e369c2274af65dc82c53f2ec6ad16c9a124b Mon Sep 17 00:00:00 2001
+From 14e1e2026e3e5bc255c717ecde076f54e0e107b1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 27/34] Fix macro invoking moc, rcc and uic
+Subject: [PATCH 26/32] Fix macro invoking moc, rcc and uic
 
 * Otherwise the arguments aren't passed correctly leading to errors like
   ```
@@ -18,7 +18,7 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index 489bc75511..c980f4220d 100644
+index 8d3dbe3ecf..f0f0d69309 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
 @@ -132,8 +132,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
@@ -32,7 +32,7 @@ index 489bc75511..c980f4220d 100644
                         DEPENDS ${infile} ${moc_depends}
                         ${_moc_working_dir}
                         VERBATIM)
-@@ -251,8 +252,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
+@@ -254,8 +255,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
          set(rc_depends ${rc_depends} ${_rc_depends})
      endforeach()
  
@@ -41,11 +41,11 @@ index 489bc75511..c980f4220d 100644
 -                       COMMAND ${Qt5Core_RCC_EXECUTABLE}
 +                       COMMAND ${RCC_LOC}
                         ARGS ${rcc_options} --binary --name ${target} --output ${rcc_destination} ${infiles}
-                        DEPENDS ${rc_depends} ${out_depends} VERBATIM)
- 
-@@ -284,8 +286,9 @@ function(QT5_ADD_RESOURCES outfiles )
- 
+                        DEPENDS ${rc_depends} ${out_depends} ${infiles} VERBATIM)
+     add_custom_target(${target} ALL DEPENDS ${rcc_destination})
+@@ -287,8 +289,9 @@ function(QT5_ADD_RESOURCES outfiles )
          _QT5_PARSE_QRC_FILE(${infile} _out_depends _rc_depends)
+         set_source_files_properties(${infile} PROPERTIES SKIP_AUTORCC ON)
  
 +        get_target_property(MOC_LOC ${Qt5Core_RCC_EXECUTABLE} IMPORTED_LOCATION)
          add_custom_command(OUTPUT ${outfile}
@@ -55,7 +55,7 @@ index 489bc75511..c980f4220d 100644
                             MAIN_DEPENDENCY ${infile}
                             DEPENDS ${_rc_depends} "${out_depends}" VERBATIM)
 diff --git a/src/widgets/Qt5WidgetsMacros.cmake b/src/widgets/Qt5WidgetsMacros.cmake
-index f5e7b7f050..18d120f0c7 100644
+index 737371a5ad..d103278cdf 100644
 --- a/src/widgets/Qt5WidgetsMacros.cmake
 +++ b/src/widgets/Qt5WidgetsMacros.cmake
 @@ -55,8 +55,9 @@ function(QT5_WRAP_UI outfiles )
@@ -68,7 +68,7 @@ index f5e7b7f050..18d120f0c7 100644
 +          COMMAND ${UIC_LOC}
            ARGS ${ui_options} -o ${outfile} ${infile}
            MAIN_DEPENDENCY ${infile} VERBATIM)
-         list(APPEND ${outfiles} ${outfile})
+         set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.15.1
+2.16.1
 

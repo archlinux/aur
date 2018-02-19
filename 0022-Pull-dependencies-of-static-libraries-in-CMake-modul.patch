@@ -1,7 +1,7 @@
-From 787ef35985d51e5ce1f48fae320c8998b29654b7 Mon Sep 17 00:00:00 2001
+From 22098826acc64ddaa2dbbeabe2d509fd8a54a6d1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 23/34] Pull dependencies of static libraries in CMake modules
+Subject: [PATCH 22/32] Pull dependencies of static libraries in CMake modules
 
 When doing a static build of Qt, the dependencies of the Qt
 libraries and plugins itself must be specified when linking
@@ -9,8 +9,8 @@ the final application.
 ---
  .../features/data/cmake/Qt5BasicConfig.cmake.in    | 148 ++++++++++++++++-----
  .../features/data/cmake/Qt5PluginTarget.cmake.in   |  11 +-
- qmake/generators/makefile.cpp                      |   7 +
- 3 files changed, 128 insertions(+), 38 deletions(-)
+ qmake/generators/makefile.cpp                      |  16 ++-
+ 3 files changed, 133 insertions(+), 42 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 index 55c74aad66..b401db5ac2 100644
@@ -251,23 +251,32 @@ index 5baf0fdb10..ec5f3cc437 100644
 +
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 5e84628e72..c853d52b27 100644
+index 5e84628e72..43f570fb2c 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -998,6 +998,13 @@ MakefileGenerator::writePrlFile(QTextStream &t)
-         for (ProStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
-             t << qv(project->values((*it).toKey()));
-         t << endl;
-+        t << "QMAKE_PRL_LIBS_FOR_CMAKE = ";
-+        QString sep;
-+        for (ProStringList::Iterator it = libs.begin(); it != libs.end(); ++it) {
-+            t << sep << project->values((*it).toKey()).join(';').replace('\\', "\\\\");
-+            sep = ';';
+@@ -994,10 +994,18 @@ MakefileGenerator::writePrlFile(QTextStream &t)
+             libs << "QMAKE_LIBS"; //obvious one
+         if(project->isActiveConfig("staticlib"))
+             libs << "QMAKE_LIBS_PRIVATE";
+-        t << "QMAKE_PRL_LIBS =";
+-        for (ProStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
+-            t << qv(project->values((*it).toKey()));
+-        t << endl;
++        QStringList libNames;
++        QStringList libNamesCMake;
++        for (const auto &lib : libs) {
++            for (const auto &libName : project->values(lib.toKey())) {
++                libNames << QMakeEvaluator::quoteValue(libName);
++                QString libNameCMake(libName.toQString());
++                libNameCMake.replace(QChar('\\'), QLatin1String("\\\\"));
++                libNamesCMake << libNameCMake;
++            }
 +        }
-+        t << endl;
++        t << "QMAKE_PRL_LIBS = " << libNames.join(QChar(' ')) << endl;
++        t << "QMAKE_PRL_LIBS_FOR_CMAKE = " << libNamesCMake.join(QChar(';')) << endl;
      }
  }
  
 -- 
-2.15.1
+2.16.1
 
