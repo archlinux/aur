@@ -7,11 +7,11 @@
 pkgbase=linux-ryzen-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=4.15
+_kernel_rel=4.16
 _branch=drm-next-4.17-wip
 # _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.15.725892.9778e0d1a858
+pkgver=4.16.737752.d821792171a0
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
