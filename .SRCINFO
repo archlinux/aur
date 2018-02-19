@@ -1,12 +1,13 @@
 pkgbase = brother-mfc-9142cdn
 	pkgdesc = LPR and CUPS driver for the Brother MFC-9142CDN
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-9142cdn.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother commercial license
+	makedepends = deb2targz
 	makedepends = perl
 	depends = lib32-libcups
 	source = http://download.brother.com/welcome/dlf101616/mfc9142cdnlpr-1.1.3-0.i386.deb
