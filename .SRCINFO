@@ -1,0 +1,20 @@
+pkgbase = kodi-addon-game-libretro-genplus-git
+	pkgdesc = Genesis Plus GX GameClient for XBMC
+	pkgver = r50.65cb1b1
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.genplus
+	arch = armv7h
+	arch = x86_64
+	groups = kodi-addons
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = kodi-platform
+	depends = kodi-addon-game-libretro
+	depends = libretro-genesis-plus-gx-git
+	source = kodi-addon-game-libretro-genplus-git::git+https://github.com/kodi-game/game.libretro.genplus.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kodi-addon-game-libretro-genplus-git
+
