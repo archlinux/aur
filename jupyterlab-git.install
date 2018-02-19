@@ -1,0 +1,21 @@
+with_env() {
+	env \
+		JUPYTER_DATA_DIR=/usr/share/jupyter \
+		JUPYTER_CONFIG_DIR=/etc/jupyter \
+		"$@" --user
+}
+
+post_install() {
+	with_env jupyter serverextension enable --py jupyterlab
+}
+
+pre_remove() {
+	with_env jupyter serverextension disable --py jupyterlab
+}
+
+pre_upgrade() {
+	pre_remove
+}
+post_upgrade() {
+	post_install
+}

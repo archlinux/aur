@@ -1,30 +1,58 @@
 # Maintainer: Fabian Zaremba <fabian@youremail.eu>
 
 pkgname=jupyterlab-git
-pkgver=v0.1.3.0.r56.g6f73639
+pkgver=v0.31.6.r11.g987702e76
 pkgrel=1
-pkgdesc="A pre-alpha Jupyter lab environment notebook server extension."
-url="http://jupyter.org"
+pkgdesc="JupyterLab computational environment."
+url="https://jupyter.org"
 depends=('python' 'jupyter>=4.1.0-5')
-makedepends=('python3' 'npm' )
+makedepends=('python3' 'npm' 'typescript' 'yarn')
 license=('BSD')
 conflicts=('jupyterlab')
 provides=('jupyterlab')
 arch=('any')
-source=('git+https://github.com/jupyter/jupyterlab.git')
-md5sums=(SKIP)
+install='jupyterlab-git.install'
+source=('git+https://github.com/jupyterlab/jupyterlab.git'
+        'git+https://github.com/jupyterlab/jupyterlab_launcher.git'
+        'jupyterlab-git.install')
+sha256sums=('SKIP'
+            'SKIP'
+            'ad628adfa2aa6997ffc05352b86e75f1fe23f60b5e056cc0bd23f5d6f87ad4e9')
 
 pkgver() {
-  cd "$srcdir/jupyterlab"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/jupyterlab"
+        git describe --match "v[0-9]*\.[0-9]*\.[0-9]*" --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/jupyterlab"
-    python setup.py build
+	cd "$srcdir"
+
+	mkdir path
+	export PATH="$PATH:$(pwd)/path"
+	ln -s /usr/bin/yarn path/jlpm	
+
+	cd "$srcdir/jupyterlab"
+	yarn install
+	yarn run build
+	yarn run build:core
+
+	# How to build app dir assets when jupyterlab is not installed yet?
+	# Optional according to wiki
+	jupyter lab build || true
+}
+
+
+check() {
+	echo "Skipping tests.."
+
+	#cd "$srcdir/jupyterlab"
+	#yarn run build:test
+	#yarn test
 }
 
 package() {
-    cd "$srcdir/jupyterlab"
-    python setup.py install --root="$pkgdir" --optimize=1 
+	cd "$srcdir/jupyterlab_launcher"
+	python setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/jupyterlab"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
