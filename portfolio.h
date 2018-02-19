@@ -2,11 +2,15 @@
 #define PORTFOLIO_H
 
 #include <math.h>
+#include <unistd.h>
 #include "api.h"
+#include "rc4.h"
 
 #define REMOVE 0
 #define ADD 1
 #define SET 2
+#define DECRYPT 0
+#define ENCRYPT 1
 
 const char* portfolio_file;
 
@@ -18,9 +22,11 @@ void portfolio_file_init();
 /**
  * Stores the given file in a string and returns it
  * @param fp the file
+ * @param len sets *len to the size of the string -- used for decryption (some chars will be encrypted to '\0', so
+ * the returned string will be null terminated somewhere in the middle several times
  * @return the string containing the file
  */
-char* portfolio_file_get_string(FILE* fp);
+char* portfolio_file_get_string(FILE* fp, size_t* len);
 
 /**
  * Adds quantity_shares of given symbol at given price to portfolio
@@ -67,5 +73,21 @@ char* portfolio_legacy_get_next_val(FILE* fp);
  * @param fp JSON formatted portfolio
  */
 void portfolio_legacy_convert();
+
+/**
+ * Returns an either encrypted or decrypted string of the input
+ * @param input the string to encrypt or decrypt
+ * @param input_len the length of the string
+ * @param password the password to encrypt or decrypt with
+ * @return encrypted or decrypted string
+ */
+char* portfolio_get_encrypt_string(char* input, size_t input_len, char* password);
+
+/**
+ * Either encrypts or decrypts the portfolio file
+ * @param option ENCRYPT or DECRYPT
+ * @param fp portfolio file
+ */
+void portfolio_encrypt_decrypt(int option, FILE* fp);
 
 #endif

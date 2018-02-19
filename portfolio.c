@@ -11,10 +11,16 @@ void portfolio_file_init() {
     portfolio_file = path;
 }
 
-char* portfolio_file_get_string(FILE* fp) {
+char* portfolio_file_get_string(FILE* fp, size_t* len) {
     char* portfolio_string = calloc(65536, 1);
+    if (portfolio_string == NULL) {
+        fprintf(stderr, "calloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
     fseek(fp, 0, SEEK_END);
     size_t portfolio_size = (size_t) ftell(fp);
+    if (len != NULL)
+        *len = portfolio_size;
     fseek(fp, 0, SEEK_SET);
     if (fread(portfolio_string, sizeof(char), portfolio_size, fp) != portfolio_size)
         return NULL;
@@ -30,7 +36,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         printf("You cannot add or remove values of 0.\n");
         return;
     }
-    char* portfolio_string = portfolio_file_get_string(fp);
+    char* portfolio_string = portfolio_file_get_string(fp, NULL);
     if (portfolio_string == NULL) {
         fprintf(stderr, "malloc() failed\n");
         return;
@@ -109,7 +115,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
 
 void portfolio_print_all(FILE* fp) {
     printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
-    char* portfolio_string = portfolio_file_get_string(fp);
+    char* portfolio_string = portfolio_file_get_string(fp, NULL);
     double* data, total_owned = 0, total_spent = 0, total_gain_1d = 0;
     if (strcmp(portfolio_string, "") == 0)
         return;
@@ -147,7 +153,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
         data[0] = json_object_get_double(json_object_object_get(current_index, "Shares"));
         data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
     } else { //if being called directly from main
-        portfolio_string = portfolio_file_get_string(fp);
+        portfolio_string = portfolio_file_get_string(fp, NULL);
         if (portfolio_string == NULL) {
             fprintf(stderr, "fread() failed\n");
             free(data);
@@ -214,7 +220,7 @@ char* portfolio_legacy_get_next_val(FILE* fp) {
 }
 
 void portfolio_legacy_convert() {
-    printf("Warning: this will overwrite your JSON formatted portfolio, which is stored at: \"$HOME/.tick_portfolio\". Continue? y/n\n");
+    printf("Warning: this will overwrite your JSON formatted portfolio, which is stored at: \"$HOME/.tick_portfolio.json\". Continue? y/n\n");
     char c = 0;
     while (c != 'y' && c != 'n') {
         if (scanf("%c", &c) < 0)
@@ -225,7 +231,7 @@ void portfolio_legacy_convert() {
         return;
     }
     FILE* fp = fopen(portfolio_file, "w");
-    char* pf = portfolio_file_get_string(fp);
+    char* pf = portfolio_file_get_string(fp, NULL);
     if (pf == NULL) {
         fprintf(stderr, "fread() failed\n");
         exit(EXIT_FAILURE);
@@ -259,4 +265,67 @@ void portfolio_legacy_convert() {
     printf("Successfully converted portfolio!\n");
     fclose(fp_legacy);
     fclose(fp);
+}
+
+char* portfolio_get_encrypt_string(char* input, size_t input_len, char* password) {
+    int keySchedule[256];
+    rc4_key_exchange(keySchedule, password);
+    char* output = rc4_prga(keySchedule, input_len);
+    rc4_execute(output, input, input_len);
+    return output;
+}
+
+void portfolio_encrypt_decrypt(int option, FILE* fp) {
+    size_t len;
+    char* ps = portfolio_file_get_string(fp, &len);
+    Json* jobj = json_tokener_parse(ps);
+    if (option == ENCRYPT && jobj == NULL) // If trying to encrypt an encrypted portfolio
+        printf("Your portfolio is already encrypted.\n");
+    else if (option == DECRYPT && jobj != NULL) // If trying to decrypt an unencrypted portfolio
+        printf("Your portfolio isn't encrypted.\n");
+    else {
+        char* password = rc4_getPassword();
+        if (option == ENCRYPT) { // When encrypting, ask to enter pw twice to make sure
+            printf("You will be asked to enter your password again to make sure the entries match.\n");
+            sleep(2);
+            char* passwordCheck = rc4_getPassword();
+            if (strcmp(password, passwordCheck) != 0) {
+                printf("Passwords do not match!\n");
+                free(password);
+                free(passwordCheck);
+                free(ps);
+                json_object_put(jobj);
+                return;
+            }
+            free(passwordCheck);
+        }
+        char* encrypted = portfolio_get_encrypt_string(ps, len, password);
+        if (option == DECRYPT) {
+            json_object_put(jobj);
+            encrypted = realloc(encrypted, len + 1);// Realloc to add null terminator for json parsing
+            if (encrypted == NULL) {                // Dealing with len is annoying so it's easier to just realloc
+                fprintf(stderr, "malloc() failed\n");
+                exit(EXIT_FAILURE);
+            }
+            encrypted[len] = '\0';
+            jobj = json_tokener_parse(encrypted);
+            if (jobj == NULL) { // If after decrypting, the portfolio is not JSON formatted,
+                printf("Wrong password!\n"); // then it's the wrong password
+                free(encrypted);
+                free(password);
+                free(ps);
+                return;
+            }
+        }
+        remove(portfolio_file); // Remove existing file and use fputc to write
+        fp = fopen(portfolio_file, "w"); // fprintf %s won't work since there some chars are encoded to '\0', so it
+        for (int i = 0; i < len; i++)    // will be null terminated several times in the middle
+            fputc(encrypted[i], fp);
+        fclose(fp);
+        free(encrypted);
+        free(password);
+    }
+    if (jobj != NULL)
+        json_object_put(jobj);
+    free(ps);
 }

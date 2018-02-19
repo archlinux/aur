@@ -30,14 +30,6 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    // Convert legacy porfolio
-    if (argc == 2 && strcmp(argv[1], "convert") == 0) {
-        portfolio_legacy_convert();
-        free((void*) portfolio_file);
-        fclose(fp);
-        return 0;
-    }
-
     // Portfolio modify operation
     int modop = -1;
 
@@ -45,10 +37,16 @@ int main(int argc, char* argv[]) {
     if (strcmp(cmd, "news") == 0) {
         if (argc == 3 && strlen(argv[2]) <= 32 && strlen(argv[2]) > 1)
             news_print_top_three(argv[2]);
-        else
-            printf("Invalid symbol.\n");
+        else printf("Invalid symbol.\n");
     }
-
+        //Convert
+    else if (strcmp(cmd, "convert") == 0 && argc == 2)
+        portfolio_legacy_convert();
+        //Encrypt/decrypt
+    else if (strcmp(argv[1], "encrypt") == 0 && argc == 2)
+        portfolio_encrypt_decrypt(ENCRYPT, fp);
+    else if (strcmp(argv[1], "decrypt") == 0 && argc == 2)
+        portfolio_encrypt_decrypt(DECRYPT, fp);
         // Check
     else if (strcmp(cmd, "check") == 0) {
         if (argc < 3) {
@@ -75,9 +73,7 @@ int main(int argc, char* argv[]) {
     else if (strcmp(cmd, "set") == 0)
         modop = SET;
 
-    else {
-        printf("Invalid arguments. Type \"man tick\" for help.\n");
-    }
+    else printf("Invalid arguments. Type \"man tick\" for help.\n");
 
     // Portfolio Operations
     if (modop > -1) {
