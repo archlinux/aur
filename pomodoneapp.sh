@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/pomodoneapp/PomoDoneApp
+exec /usr/lib/pomodoneapp/pomodoneapp
