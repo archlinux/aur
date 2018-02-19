@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mupen64plus-extraplugins-git
-pkgver=20170624.193503
+pkgver=20180212.161510
 pkgrel=1
 pkgdesc='Additional plugins for Mupen64Plus (git version)'
 arch=('i686' 'x86_64')
@@ -23,14 +23,6 @@ sha256sums=('SKIP'
             'SKIP')
 _m64p_plugins='rsp-z64 rsp-cxd4 video-arachnoid video-z64 video-glide64'
 
-prepare() {
-    # patch min/max macros
-    cd "$srcdir/mupen64plus-video-glide64/src"
-    sed -i *.cpp *.h \
-        -e 's|min[[:blank:]]*(|glide_min(|g' \
-        -e 's|max[[:blank:]]*(|glide_max(|g'
-}
-
 pkgver() {
     local _date=''
     local _latest_date=''
@@ -38,11 +30,11 @@ pkgver() {
     for _plugin in $_m64p_plugins
     do
         cd "${srcdir}/mupen64plus-${_plugin}"
+        
         _date="$(TZ='UTC' date -d "$(git log -1 --date='short' --pretty='format:%ci')" '+%Y%m%d.%H%M%S')"
+        
         [ "$(vercmp "$_date" "$_latest_date")" -gt '0' ] && _latest_date="$_date"
     done
-    
-    unset _plugin
     
     printf '%s\n' "${_latest_date}"
 }
@@ -54,16 +46,13 @@ build() {
         make -C "mupen64plus-${_plugin}/projects/unix" clean $@
         make -C "mupen64plus-${_plugin}/projects/unix" all $@
     done
-    
-    unset _plugin
 }
 
 package() {
     for _plugin in $_m64p_plugins
     do
         printf '%s\n' "************************************ Installing ${_plugin} plugin"
+        
         make -C "mupen64plus-${_plugin}/projects/unix" PREFIX='/usr' DESTDIR="$pkgdir" LDCONFIG='true' install $@
     done
-    
-    unset _plugin
 }
