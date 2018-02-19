@@ -4,7 +4,7 @@
 
 set -u
 pkgname='liquibase'
-pkgver='3.5.4'
+pkgver='3.5.5'
 pkgrel='1'
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
@@ -16,7 +16,7 @@ _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/releases/download/liqui
 options=('!strip')
 source=("https://github.com/liquibase/${pkgname}/releases/download/liquibase-parent-${pkgver}/liquibase-${pkgver}-bin.tar.gz"
         "liquibase.profile")
-sha256sums=('bedb67174f1d9b024b6a323bedcec3c082426122f8f658becfd9594a4e70a324'
+sha256sums=('da0df7f6ea7694fb62b1448c3c734644d8d49795ff9bb7417db18bb1da5ff2c6'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 
 package() {
