@@ -5,7 +5,7 @@ pkgname=thunderbird-beta
 pkgver=59.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=5
+pkgrel=10
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -160,6 +160,7 @@ package() {
   cd thunderbird-$pkgver
 
 msg2 'fixing upstream error'
+cd other-licenses/branding/thunderbird
 cp default16.png mailicon16.png
 cp default22.png mailicon22.png
 cp default24.png mailicon24.png
@@ -169,6 +170,7 @@ cp default64.png mailicon64.png
 cp default128.png mailicon128.png
 cp default256.png mailicon256.png
 
+cd $srcdir/thunderbird-$pkgver
   # Install
   msg2 "Running make -f client.mk install.."
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
