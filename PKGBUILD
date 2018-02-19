@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
 # Contributor: Penguin <TGates81.at.gmail.dot.com>
 
@@ -7,7 +7,7 @@ pkgname=ibam
 pkgver=0.5.2
 pkgrel=9
 pkgdesc="An intelligent battery monitor"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://ibam.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs')

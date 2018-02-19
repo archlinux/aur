@@ -5,6 +5,7 @@ pkgbase = ibam
 	url = http://ibam.sourceforge.net/
 	install = ibam.install
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = sed
 	makedepends = make
