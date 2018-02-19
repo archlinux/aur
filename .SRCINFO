@@ -4,6 +4,7 @@ pkgbase = tix
 	pkgrel = 5
 	url = http://tix.sourceforge.net/
 	arch = x86_64
+	arch = i686
 	license = BSD
 	depends = tk
 	depends = libx11
