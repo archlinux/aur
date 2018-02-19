@@ -2,7 +2,7 @@
 
 _pkgname=demlo
 pkgname=$_pkgname-git
-pkgver=2018.01.29.g8a86514
+pkgver=2018.02.13.g0317d78
 pkgrel=1
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 _gourl="github.com/ambrevar/$_pkgname"
 
 pkgver() {
-	cd "$srcdir"
+	cd "$srcdir/demlo"
 	git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
 }
 
