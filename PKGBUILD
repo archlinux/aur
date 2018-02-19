@@ -1,6 +1,6 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=libfolia
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="C++ library for FoLiA (Format for Linguistic Annotation)"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ options=(!libtool)
 url="https://proycon.github.io/folia"
 _gituser="LanguageMachines"
 _gitname="libfolia"
-source=(https://github.com/LanguageMachines/libfolia/archive/v1.11.tar.gz)
-md5sums=(ddece4cd49d8f8bd7ee583c166a0e034)
+source=(https://github.com/LanguageMachines/libfolia/archive/v1.12.tar.gz)
+md5sums=(6366c4f22852f627bfdc386c44b2bc5e)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
