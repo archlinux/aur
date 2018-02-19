@@ -10,7 +10,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch')
-sha256sums=('008333fdc3bc2d87977392397d38ebaae1329059997319cb1b0613fb6489806f'
-            '18df01e77021563ade5cd1a10efd053ce635c1ee3d81fe41ba9549aab1201fbe'
-            '54e4dd97457b1b9a9f061268daefaaea5ab64b752039a7a295107dad39093d6d')
+sha256sums=('a1fa98015ee5a6b81f2d337abc98d8b297c6718f7714a1f13fccfd2934c23649'
+            '7bfd02c22bade3f048d4a0e12a732aaf448ab033c4a46dff0779a453be0b99e9'
+            'a98e96bb005b822e0742eaf6103429dfd5c41142272957f6b8225f23be4a2289')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -38,7 +38,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 link_header_files() {
   for header in "$@"; do
-    ln -s "/usr/${_arch}/include/${header,,}" "./sysinclude/${header}"
+    ln -sf "/usr/${_arch}/include/${header,,}" "./sysinclude/${header}"
   done
 }
 
@@ -60,7 +60,7 @@ build() {
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       # Header are case sensitive under Linux, provide symlinks to prevent compile errors
       mkdir -p ./sysinclude/qtgui && link_header_files {ShlObj,Evr9,Mferror}.h
-      ln -s "/usr/${_arch}/include/qt/QtGui/qguiapplication.h" './sysinclude/qtgui/qguiapplication.h'
+      ln -sf "/usr/${_arch}/include/qt/QtGui/qguiapplication.h" './sysinclude/qtgui/qguiapplication.h'
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} INCLUDEPATH+="${srcdir}/${_pkgfqn}/build-${_arch}/sysinclude"
       make
       popd
@@ -76,6 +76,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -87,5 +100,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
