@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
     // Init/open portfolio
     portfolio_file_init();
-    FILE* fp = fopen(portfolio_file, "a+");
+    FILE* fp = fopen(portfolio_file, "r+");
     if (fp == NULL) {
         printf("Could not open portfolio file\n");
         free((void*) portfolio_file);
@@ -42,11 +42,13 @@ int main(int argc, char* argv[]) {
         //Convert
     else if (strcmp(cmd, "convert") == 0 && argc == 2)
         portfolio_legacy_convert();
+
         //Encrypt/decrypt
     else if (strcmp(argv[1], "encrypt") == 0 && argc == 2)
-        portfolio_encrypt_decrypt(ENCRYPT, fp);
+        portfolio_encrypt_decrypt(ENCRYPT, fp, NULL);
     else if (strcmp(argv[1], "decrypt") == 0 && argc == 2)
-        portfolio_encrypt_decrypt(DECRYPT, fp);
+        portfolio_encrypt_decrypt(DECRYPT, fp, NULL);
+
         // Check
     else if (strcmp(cmd, "check") == 0) {
         if (argc < 3) {

@@ -87,7 +87,8 @@ char* portfolio_get_encrypt_string(char* input, size_t input_len, char* password
  * Either encrypts or decrypts the portfolio file
  * @param option ENCRYPT or DECRYPT
  * @param fp portfolio file
+ * @param password the password to encrypt/decrypt with or NULL to ask user
  */
-void portfolio_encrypt_decrypt(int option, FILE* fp);
+void portfolio_encrypt_decrypt(int option, FILE* fp, char* password);
 
 #endif

@@ -28,25 +28,35 @@ char* portfolio_file_get_string(FILE* fp, size_t* len) {
 }
 
 void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option) {
-    if (quantity_shares < 0 || usd_spent < 0) {
+    if (quantity_shares < 0 || usd_spent < 0) { // Negative numbers
         printf("You must use positive values.\n");
         return;
     }
-    if (option != SET && quantity_shares == 0 && usd_spent == 0) {
+    if (option != SET && quantity_shares == 0 && usd_spent == 0) { // Adding or removing 0
         printf("You cannot add or remove values of 0.\n");
         return;
     }
-    char* portfolio_string = portfolio_file_get_string(fp, NULL);
-    if (portfolio_string == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        return;
-    }
+    size_t len;
+    char* portfolio_string = portfolio_file_get_string(fp, &len);
     Json* jobj = NULL;
-    if (strcmp(portfolio_string, "") == 0) { //new file
+    if (len == 0) //new file
         jobj = json_object_new_array();
-    } else jobj = json_tokener_parse(portfolio_string); //existing file
-    if (jobj == NULL)
-        printf("NULL JOBJ\n");
+    else jobj = json_tokener_parse(portfolio_string); //existing file
+    char* password = NULL;
+    if (jobj == NULL) { //ENCRYPTED PORTFOLIO
+        password = rc4_getPassword();
+        printf("Decrypting portfolio...\n");
+        portfolio_encrypt_decrypt(DECRYPT, fp, password);
+        fp = fopen(portfolio_file, "r+");
+        free(portfolio_string);
+        portfolio_string = portfolio_file_get_string(fp, NULL);
+        json_object_put(jobj);
+        jobj = json_tokener_parse(portfolio_string);
+        if (jobj == NULL) {
+            free(portfolio_string);
+            return;
+        }
+    }
     int index = portfolio_symbol_index(ticker_name_string, jobj);
     if (index == -1) { //if not already in portfolio
         if (option == REMOVE) {
@@ -108,19 +118,39 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
     }
     fp = fopen(portfolio_file, "w");
     fprintf(fp, "%s", json_object_to_json_string(jobj));
-    fclose(fp);
+    if (password != NULL) { // If portfolio was decrypted, encrypt again
+        fflush(fp);
+        printf("Encrypting porfolio...\n");
+        portfolio_encrypt_decrypt(ENCRYPT, fp, password);
+        free(password);
+    }
     json_object_put(jobj);
     free(portfolio_string);
 }
 
 void portfolio_print_all(FILE* fp) {
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
     char* portfolio_string = portfolio_file_get_string(fp, NULL);
     double* data, total_owned = 0, total_spent = 0, total_gain_1d = 0;
+    Json* jobj = json_tokener_parse(portfolio_string);
+    char* password = NULL;
+    if (jobj == NULL) { //ENCRYPTED PORTFOLIO
+        password = rc4_getPassword();
+        printf("Decrypting portfolio...\n");
+        portfolio_encrypt_decrypt(DECRYPT, fp, password);
+        fp = fopen(portfolio_file, "r+");
+        free(portfolio_string);
+        portfolio_string = portfolio_file_get_string(fp, NULL);
+        json_object_put(jobj);
+        jobj = json_tokener_parse(portfolio_string);
+        if (jobj == NULL) {
+            free(portfolio_string);
+            return;
+        }
+    }
     if (strcmp(portfolio_string, "") == 0)
         return;
-    Json* jobj = json_tokener_parse(portfolio_string);
     int num_symbols = (int) json_object_array_length(jobj);
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
     for (int i = 0; i < num_symbols; i++) {
         data = portfolio_print_stock(NULL, NULL, json_object_array_get_idx(jobj, (size_t) i));
         if (data != NULL) {
@@ -133,6 +163,12 @@ void portfolio_print_all(FILE* fp) {
     printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
            total_gain_1d, 100 * total_gain_1d / total_spent);
+    if (password != NULL) { // If portfolio was decrypted, encrypt again
+        fflush(fp);
+        printf("Encrypting porfolio...\n");
+        portfolio_encrypt_decrypt(ENCRYPT, fp, password);
+        free(password);
+    }
     json_object_put(jobj);
     free(portfolio_string);
 }
@@ -146,6 +182,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
      */
     double* data = malloc(sizeof(double) * 3);
     char* portfolio_string = NULL;
+    char* password = NULL;
     Json* jobj = NULL;
     if (fp == NULL) { //if being called from portfolio_print_all
         ticker_name_string = (char*) strip_char(
@@ -154,12 +191,21 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
         data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
     } else { //if being called directly from main
         portfolio_string = portfolio_file_get_string(fp, NULL);
-        if (portfolio_string == NULL) {
-            fprintf(stderr, "fread() failed\n");
-            free(data);
-            return NULL;
-        }
         jobj = json_tokener_parse(portfolio_string);
+        if (jobj == NULL) { //ENCRYPTED PORTFOLIO
+            password = rc4_getPassword();
+            printf("Decrypting portfolio...\n");
+            portfolio_encrypt_decrypt(DECRYPT, fp, password);
+            fp = fopen(portfolio_file, "r+");
+            free(portfolio_string);
+            portfolio_string = portfolio_file_get_string(fp, NULL);
+            json_object_put(jobj);
+            jobj = json_tokener_parse(portfolio_string);
+            if (jobj == NULL) {
+                free(portfolio_string);
+                return NULL;
+            }
+        }
         int index = portfolio_symbol_index(ticker_name_string, jobj);
         if (index == -1) {
             printf("You do not have %s in your portfolio.\n", ticker_name_string);
@@ -186,7 +232,15 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
            data[2], ticker_1d_percent_change);
     if (fp == NULL)
         free(ticker_name_string);
-    else json_object_put(jobj);
+    else {
+        json_object_put(jobj);
+        if (password != NULL) { // If portfolio was decrypted, encrypt again
+            fflush(fp);
+            printf("Encrypting porfolio...\n");
+            portfolio_encrypt_decrypt(ENCRYPT, fp, password);
+            free(password);
+        }
+    }
     free(portfolio_string);
     return data;
 }
@@ -275,7 +329,11 @@ char* portfolio_get_encrypt_string(char* input, size_t input_len, char* password
     return output;
 }
 
-void portfolio_encrypt_decrypt(int option, FILE* fp) {
+void portfolio_encrypt_decrypt(int option, FILE* fp, char* password) {
+    int free_pw = 0;
+    if (password == NULL)
+        free_pw = 1;
+    fp = fopen(portfolio_file, "r+");
     size_t len;
     char* ps = portfolio_file_get_string(fp, &len);
     Json* jobj = json_tokener_parse(ps);
@@ -284,20 +342,22 @@ void portfolio_encrypt_decrypt(int option, FILE* fp) {
     else if (option == DECRYPT && jobj != NULL) // If trying to decrypt an unencrypted portfolio
         printf("Your portfolio isn't encrypted.\n");
     else {
-        char* password = rc4_getPassword();
-        if (option == ENCRYPT) { // When encrypting, ask to enter pw twice to make sure
-            printf("You will be asked to enter your password again to make sure the entries match.\n");
-            sleep(2);
-            char* passwordCheck = rc4_getPassword();
-            if (strcmp(password, passwordCheck) != 0) {
-                printf("Passwords do not match!\n");
-                free(password);
+        if (password == NULL) {
+            password = rc4_getPassword();
+            if (option == ENCRYPT) { // When encrypting, ask to enter pw twice to make sure
+                printf("You will be asked to enter your password again to make sure the entries match.\n");
+                sleep(1);
+                char* passwordCheck = rc4_getPassword();
+                if (strcmp(password, passwordCheck) != 0) {
+                    printf("Passwords do not match!\n");
+                    free(password);
+                    free(passwordCheck);
+                    free(ps);
+                    json_object_put(jobj);
+                    return;
+                }
                 free(passwordCheck);
-                free(ps);
-                json_object_put(jobj);
-                return;
             }
-            free(passwordCheck);
         }
         char* encrypted = portfolio_get_encrypt_string(ps, len, password);
         if (option == DECRYPT) {
@@ -323,7 +383,12 @@ void portfolio_encrypt_decrypt(int option, FILE* fp) {
             fputc(encrypted[i], fp);
         fclose(fp);
         free(encrypted);
-        free(password);
+        if (free_pw) { // If being called from main
+            free(password);
+            if (option == ENCRYPT)
+                printf("Successfully encrypted your portfolio.\n");
+            else printf("Successfully decrypted your portfolio.\n");
+        }
     }
     if (jobj != NULL)
         json_object_put(jobj);
