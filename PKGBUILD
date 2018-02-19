@@ -1,6 +1,6 @@
 # Maintainer:  <simonfxr@gmail.com>
 pkgname=stack-static
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="The Haskell Tool Stack (linked statically)"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
 )
 sha256sums=(
   'df46833a748574d01f38d4120e5021ee6fac9b8a70995674ca0bd2cacbd3e3c2'
-  'c16b6b1fc31edb203dac9cd3745872c25ea088f12ca19dffb368de73e8b2b89b'
-  '0d8f006968e03bdf253e392d8ceb0f406e8638eb95e848aee629ed0fda5ee7cb'
+  'f8876fa73c4bb95c1d762073af2dfa4a003d795709ec3fee2f9743ca6a5fedc6'
+  'SKIP'
 )
 validpgpkeys=('C5705533DA4F78D8664B5DC0575159689BEFB442')
 
