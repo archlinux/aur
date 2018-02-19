@@ -7,7 +7,7 @@
 
 _pkgname=kmarkdownwebview
 pkgname="${_pkgname}-qt5webkit"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='KPart for rendering Markdown content'
 url='https://www.kde.org'
@@ -18,7 +18,7 @@ conflicts=('kmarkdownwebview')
 depends=('kparts' 'qt5-webkit')
 makedepends=('extra-cmake-modules')
 source=("$_pkgname-$pkgver.tar.xz"::"https://download.kde.org/stable/$_pkgname/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('38b72ba6fa4b513002e7873d2b774e50d676fc878a38b18e6eb9636b53b4c29d'
+sha256sums=('84bcc4b2626109241633a52ee5cd203105fd2488277b478572a3a5b593d3de42'
             'SKIP')
 validpgpkeys=('E191FD5BE6F46870F09E82B2024E7FB43D015474') # Friedrich W. H. Kossebau <kossebau@kde.org>
 
