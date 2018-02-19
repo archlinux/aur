@@ -33,7 +33,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -236,7 +236,7 @@ package_roccat-tools-ryosmk() {
 
 package_roccat-tools-ryosmkfx() {
   pkgdesc='Userland applications to configure and make extended use of ROCCAT RyosMK FX devices'
-  depends=('roccat-tools-common')
+  depends=('roccat-tools-common' 'roccat-tools-ryosmk')
 
   cd "$srcdir/$pkgbase-$pkgver/ryosmkfx"
   make DESTDIR="$pkgdir/" install
