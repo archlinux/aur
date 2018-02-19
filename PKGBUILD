@@ -14,7 +14,7 @@ makedepends=('qldv-git')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
 validpgpkeys=('5E4DF843FB065D7F7E24FBA2EF5430F071E1B235')
-provides=('swift-language')
+provides=('swift-language' 'lldb')
 replaces=('swift-language-bin')
 source=(
 "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"

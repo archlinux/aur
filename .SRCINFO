@@ -19,6 +19,7 @@ pkgbase = swift-bin
 	depends = patchelf
 	depends = bubblewrap
 	provides = swift-language
+	provides = lldb
 	conflicts = lldb
 	conflicts = swift-language-git
 	replaces = swift-language-bin
