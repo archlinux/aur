@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite
 	pkgver = 14.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
 	license = Commercial
@@ -19,6 +19,7 @@ pkgbase = davinci-resolve-studio
 	depends = qt5-webkit
 	depends = qt5-webengine
 	depends = qt5-websockets
+	conflicts = davinci-resolve
 	options = !strip
 	source = local://DaVinci_Resolve_Studio_14.3_Linux.zip
 	sha256sums = c13df388f0405dd120ae247e5ea3406dc6dcbef64e32ae3c7c0f37cc0ae6db23

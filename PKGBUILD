@@ -9,9 +9,9 @@
 # If you're running a hybrid setup, try with primusrun/optirun.
 
 pkgname=davinci-resolve-studio
-_pkgname=resolve-studio
+_pkgname=resolve
 pkgver=14.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -19,6 +19,7 @@ license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
          'qt5-webengine' 'qt5-websockets')
+conflicts=('davinci-resolve')
 options=('!strip')
 
 if [ ! -f ${pkgdir}/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ]; then
