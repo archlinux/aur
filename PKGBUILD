@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://untroubled.org/daemontools-encore"
 license=('MIT')
 depends=('sh')
-source=("https://untroubled.org/daemontools-encore/$pkgname-$pkgver.tar.gz")
+source=("https://untroubled.org/daemontools-encore/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('9f48f3c6cdd3f2b0202532e87f9ff46ea86777ca31ebda3a96bed618104bbd31')
 
 build() {
