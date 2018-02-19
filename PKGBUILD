@@ -1,0 +1,36 @@
+# $Id$
+# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+
+_hkgname=pandoc-include-code
+pkgname=pandoc-include-code
+pkgver=1.3.0.0
+pkgrel=1
+pkgdesc="A pandoc filter for including code from source files"
+url="https://github.com/owickstrom/pandoc-include-code"
+license=('MPL2')
+arch=('i686' 'x86_64')
+depends=('ghc-libs' 'haskell-pandoc-types' 'haskell-text' 'haskell-unordered-containers')
+makedepends=('ghc')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('4c203a572b37f4ca3a41d9a69a408932498b69a278fcafc8e0f653bef537a84117ba807c02fc37cc4ed9b0cc03fc463fd555aa326c2d6b5bccbbdfc45cd61134')
+
+build() {
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup build
+    runhaskell Setup register --gen-script
+    runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+}
+
+package() {
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    runhaskell Setup copy --destdir="${pkgdir}"
+}
