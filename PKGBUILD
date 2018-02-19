@@ -4,8 +4,8 @@
 
 pkgname=newrelic-php5
 pkgver=7.7.0.203
-_libver=20160303
-pkgrel=1
+_libver=20170718
+pkgrel=2
 pkgdesc="NewRelic PHP Monitoring Agent"
 arch=("x86_64")
 url="https://newrelic.com/php"

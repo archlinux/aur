@@ -15,4 +15,3 @@ pkgbase = newrelic-php5
 	md5sums = 4fc78347663adcb32ed28eddb546619c
 
 pkgname = newrelic-php5
-
