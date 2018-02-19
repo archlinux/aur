@@ -14,7 +14,7 @@ _mapboxcfg='QT.global.disabled_features+=geoservices_mapboxgl'
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -27,8 +27,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('d84dcec7cfbc99a13e048f935783b0c2e1cb540defc82d77ac869a5b76aa85c7'
-            'a4380c11444f11f79f5c78d76121e45aa27add611bc53204bb867fdf0832888c')
+sha256sums=('5e5cc05517c701a2c8ebba1fbe3ddff2b6b90d5aa554d307b1c477fe0cfd72c9'
+            'fe196a9d212be5d383a41a385e4801336a58e9c57a731be7438482d5b71b3bae')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -69,6 +69,19 @@ package() {
       pushd build-${_arch}-${_config##*=}
 
       make INSTALL_ROOT="$pkgdir" install
+
+      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      if [[ -d 'lib' ]]; then
+        pushd 'lib'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
+        popd
+      fi
+      if [[ -d 'plugins' ]]; then
+        pushd 'plugins'
+        find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib/qt/plugins" --parents {} +
+        popd
+      fi
+
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
         find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
@@ -80,5 +93,8 @@ package() {
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
+
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
