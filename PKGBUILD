@@ -1,8 +1,8 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=searx-py3
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -26,7 +26,7 @@ install=searx.install
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.install'
         'searx.service')
-sha512sums=('6c43d451d9ebc00f39ac5cdd74b95da420cb545f4f2dc4aa6ad03df4df6d1472fde909f535b0ea3bf2333b39329f203cd640f103b165392be7519bb35b6b3967'
+sha512sums=('97478d0dd61201510542d6574e7d59f43159fc30608257b8d31200567591e6fc0c1a41a6614e74e29988e4f76d0eae276688e060a6fe7d021fa29e23bbc80b76'
             'ad2d321f4d4c60f8aae9b577e9bbaa4558a927c198f849c610657e3994a780e6f402fe70ff36201075b1a82eddabd1b4a2c7e517a6ae5996b2b1c9ae8323c2c3'
             '64ab805f7e0089d9b638c2972687ba60331304b3d63bfff138ce8b7903d999f40854067c384cafbc6c635afc335bd084b758cbb7c5cac397d97ed1f31e67ac6e')
 
