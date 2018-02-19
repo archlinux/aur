@@ -9,8 +9,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=myrepos
-pkgver=1.20170129
-pkgrel=2
+pkgver=1.20171231
+pkgrel=1
 pkgdesc="Multiple Repository management tool"
 arch=('any')
 depends=('perl')
@@ -32,7 +32,7 @@ optdepends=('bzr: support for bzr repositories'
 url='http://myrepos.branchable.com'
 license=('GPL2')
 source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('da00533b01a511ece209f0254a6fae5735852e197d3b859a6f564b3fbc612dda')
+sha256sums=('81208a638c57e0c71cc32bf7464e781f1e451f140d6e9523dd721fc8dddd38f0')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'webcheckout')
 
