@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer:
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
@@ -9,7 +8,7 @@ pkgver=1.7.2
 pkgrel=3
 pkgdesc="Implementation of the OBject EXchange (OBEX) protocol"
 url="http://dev.zuckschwerdt.org/openobex/"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('GPL' 'LGPL')
 depends=('libusbx' 'bluez-libs')
 makedepends=('cmake' 'libxslt' 'doxygen' 'java-environment')

@@ -4,6 +4,7 @@ pkgbase = openobex
 	pkgrel = 3
 	url = http://dev.zuckschwerdt.org/openobex/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	license = LGPL
 	makedepends = cmake
