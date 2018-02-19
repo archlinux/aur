@@ -1,0 +1,21 @@
+pkgbase = slimimap-git
+	pkgdesc = A simple, light weight IMAP server
+	pkgver = v0.0.1.r2.b8e8c21
+	pkgrel = 1
+	url = https://hvornum.se
+	arch = x86_64
+	license = custom:BSD
+	license = cc-by-nc-sa-3.0
+	makedepends = python
+	depends = python
+	depends = python-systemd
+	depends = postgresql
+	provides = slimimap-git
+	provides = slimimap
+	conflicts = slimimap-git
+	conflicts = slimimap
+	source = git+https://github.com/Torxed/slimimap.git
+	sha256sums = SKIP
+
+pkgname = slimimap-git
+
