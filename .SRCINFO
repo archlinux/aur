@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-game-libretro-snes9x2010-git
 	pkgdesc = Snes9X Next GameClient for Kodi
 	pkgver = r49.a815363
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-game/game.libretro.snes9x2010
 	arch = armv7h
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = kodi-addon-game-libretro-snes9x2010-git
 	depends = kodi-addon-game-libretro
 	depends = libretro-snes9x2010-git
 	source = kodi-addon-game-libretro-snes9x2010-git::git+https://github.com/kodi-game/game.libretro.snes9x2010.git#branch=master
-	source = libretro-snes9x2010-config.cmake
 	sha256sums = SKIP
-	sha256sums = 941db1c0738f12aaba11ee98908f90254c808eb5a36eaf807dc3dd66e0132b08
 
 pkgname = kodi-addon-game-libretro-snes9x2010-git
 
