@@ -1,19 +1,19 @@
 pkgbase = thelounge
 	pkgdesc = Web-based IRC client - Official community fork of Shout
-	pkgver = 2.7.0
-	pkgrel = 2
+	pkgver = 2.7.1
+	pkgrel = 1
 	url = https://thelounge.github.io/
 	install = install
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = thelounge-2.7.0.tgz
+	noextract = thelounge-2.7.1.tgz
 	backup = etc/thelounge/config.js
-	source = http://registry.npmjs.org/thelounge/-/thelounge-2.7.0.tgz
+	source = http://registry.npmjs.org/thelounge/-/thelounge-2.7.1.tgz
 	source = system.service
 	source = user.service
-	sha256sums = 3dfe65a716fd23436d7d711b33ad6d89e1aa649fd696cfdef36fdfa5862cb2cc
+	sha256sums = 4b4970caba850042244798008afd334dd2ddd7e25339c864837ce11ba4703021
 	sha256sums = SKIP
 	sha256sums = SKIP
 
