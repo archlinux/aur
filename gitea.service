@@ -14,7 +14,7 @@ After=redis.service
 ###
 #LimitMEMLOCK=infinity
 #LimitNOFILE=65535
-RestartSec=2s
+RestartSec=1s
 Type=simple
 User=git
 Group=git
