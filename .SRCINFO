@@ -1,7 +1,7 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
 	pkgver = 2.9.8.r741.g8b3a6bcf5c
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gimp.org
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = gimp-gtk3-git
 	makedepends = pygtk
 	makedepends = python-cairo
 	makedepends = gtk-doc
+	makedepends = poppler-data
 	depends = babl-git
 	depends = gegl-git
 	depends = lcms
