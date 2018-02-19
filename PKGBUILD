@@ -1,8 +1,8 @@
 # Maintainer: Eric Toombs <ee double you toombs at you waterloo dot see eh?>
 
 pkgname='stanza'
-pkgver='0.11.7'
-pkgrel=2
+pkgver='0.12.8'
+pkgrel=1
 pkgdesc='The reference compiler for Stanza, a high-level multi-paradigm optionally-typed programming language.'
 arch=('x86_64')
 groups=()
@@ -10,7 +10,6 @@ url='http://lbstanza.org/'
 license=('GPL')
 
 depends=(
-    'gcc5'
 )
 makedepends=(
 )
@@ -21,14 +20,12 @@ provides=(
 conflicts=(
 )
 
-_srcfile='lstanza_0_11_7.zip'
+_srcfile="lstanza_${pkgver//./_}.zip"
 source=(
     "http://lbstanza.org/resources/stanza/$_srcfile"
-    'start-stanza.sh'
 )
 noextract=("$_srcfile")  # Don't extract. Archive is weird. See prepare().
-sha256sums=('87f59bf4ad42c76bee7b141fc860c79ee39890acbcf46effec58cb0a17350ffb'
-            '0439b9637691d406cec99e74d22c7899e4368954c99746b35a21fbc5f98dbe21')
+sha256sums=('09d10c3a7271f101df1cbaf0f4c09ca5a31f1e9fe43fcc141174f7463c4f4bdd')
 
 install='install'
 
@@ -43,16 +40,8 @@ prepare() {
     bsdtar xf "$srcdir/$_srcfile"
 }
 
-#build() {
-#}
-
 package() {
     mkdir "$pkgdir/opt"
     cp -pr "$srcdir/$pkgname" "$pkgdir/opt"
-
-    install -D "$srcdir/start-stanza.sh" "$pkgdir/usr/bin/stanza"
-
-    # For redirecting stanza from gcc 7 to gcc 5.
-    mkdir "$pkgdir/opt/stanza/bin"
-    ln -s "/usr/bin/gcc-5" "$pkgdir/opt/stanza/bin/cc"
+    ln -s "/opt/stanza/stanza" "$pkgdir/usr/bin/stanza"
 }
