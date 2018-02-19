@@ -4,7 +4,7 @@
 
 pkgname=hpmyroom
 pkgver=10.12.0.0112
-pkgrel=1
+pkgrel=2
 pkgdesc="HPE MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hpe.com"
 arch=('x86_64')
@@ -20,9 +20,9 @@ package() {
   find ${pkgdir}/usr/share/hpmyroom/Resources/* -type f -exec chmod a-x {} \;
   mkdir -p ${pkgdir}/usr/lib
   cd ${pkgdir}/usr/lib
-  ln -s libva.so.2.0.0 libva.so.1
-  ln -s libva-x11.so.2.0.0 libva-x11.so.1
-  ln -s libva-drm.so.2.0.0  libva-drm.so.1
+  ln -s libva.so.2.100.0 libva.so.1
+  ln -s libva-x11.so.2.100.0 libva-x11.so.1
+  ln -s libva-drm.so.2.100.0  libva-drm.so.1
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
