@@ -1,0 +1,16 @@
+pkgbase = pactory-git
+	pkgdesc = Pacman History - Logfile parser for pacman.log
+	pkgver = 20180219
+	pkgrel = 1
+	url = http://github.com/zeaq/pactory
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = pacman
+	depends = sed
+	source = git+https://github.com/zeaq/pactory.git
+	md5sums = SKIP
+
+pkgname = pactory-git
+
