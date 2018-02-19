@@ -19,6 +19,6 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/opt/Bitwarden/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	#install -D -m644 "/opt/Bitwarden/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
