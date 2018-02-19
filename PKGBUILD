@@ -2,7 +2,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r982.d7ad0b0
+pkgver=r1063.077bca7
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -78,7 +78,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/airgeddon"
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/airgeddon/LICENSE.md"
 
   rm -rf *.md .git* .editor* binaries imgs Dockerfile pindb_checksum.txt
