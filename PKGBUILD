@@ -4,8 +4,8 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-waveform
-pkgver=8.2.7
-pkgrel=2
+pkgver=9.0.33
+pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
 arch=('x86_64')
 url="https://www.tracktion.com/"
@@ -15,16 +15,19 @@ optdepends=(
   'jack: A low-latency audio server'
   'ladspa-plugins: A set of ladspa plugins'
 )
-conflicts=('waveform-bundle')
-source=(https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/archive/waveform/827/Waveform-installer-64bit-linux-8.2.7.deb)
-md5sums=('95bd25b2d5fe551949ddd2ade8eafe0b')
+conflicts=(
+    'waveform-bundle'
+    'tracktion-waveform-beta'
+)
+source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/9033/Waveform-installer-64bit-linux-9.0.33.deb)
+md5sums=('6ad4aa2675bf74c523b547209bc10be0')
 
 package() {
-    executable=Waveform8
+    executable=Waveform9
     tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
     install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     sed "s/@executable@/$executable/g" "$startdir/tracktion-waveform" > "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
-    sed -i "s/Exec=.*/Exec=$pkgname/" "$pkgdir/usr/share/applications/waveform8.desktop"
-    mv "$pkgdir/usr/share/doc/waveform8" "$pkgdir/usr/share/doc/$pkgname"
+    sed -i "s/Exec=.*/Exec=$pkgname/" "$pkgdir/usr/share/applications/waveform9.desktop"
+    mv "$pkgdir/usr/share/doc/waveform9" "$pkgdir/usr/share/doc/$pkgname"
 }
