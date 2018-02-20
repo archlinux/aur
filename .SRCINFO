@@ -1,0 +1,15 @@
+pkgbase = sevensquare-git
+	pkgdesc = Android screencast wroted in QT
+	pkgver = 1.3.10
+	pkgrel = 1
+	url = https://github.com/yangh/sevensquare/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = qt4
+	depends = android-tools
+	source = git+https://github.com/yangh/sevensquare.git
+	md5sums = SKIP
+
+pkgname = sevensquare-git
+
