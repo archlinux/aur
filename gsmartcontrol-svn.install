@@ -1,4 +1,10 @@
 post_install() {
+  echo '-----------------------------------------------------------------------------'
+  echo 'PLEASE NOTE: This is a development build. Please keep in mind that the SVN'
+  echo 'version is not intended for public use and may not work at all'
+  echo 'Please DO NOT report any issues with this package to the upstream maintainer.'
+  echo 'If in doubt, please use the official 'gsmartcontrol' community package.'
+  echo '-----------------------------------------------------------------------------'
   which xdg-icon-resource 1>/dev/null 2>/dev/null && xdg-icon-resource forceupdate || true
 }
 
