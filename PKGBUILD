@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 99895 2013-10-31 02:20:19Z allan $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
 pkgname=belle-sip
