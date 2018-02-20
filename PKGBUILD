@@ -1,7 +1,7 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname=gnome-osx-hsierra-light-gtk-theme
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 epoch=5
 pkgdesc='Gnome-OSX V HighSierra Light GTK Theme'
@@ -14,13 +14,17 @@ depends=('gtk-engine-murrine')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-_name='Gnome-OSX-V-HSierra'
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518825489/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
+md5sums=('1e81c88e4a78715cd763cb0677a790c6')
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1517759806/s/$_s/t/$_t/$_name-${pkgver//./-}-light-menus.tar.xz")
-md5sums=('3988ddba65dd105201f6b031578250d6')
+_dirname='Gnome-OSX-V-HSierra-light-menu-->2-themes'
+_themename='Gnome-OSX-V-HSierra'
+_ver='1-3-5'
 
 prepare() {
-    mv "$_name-${pkgver//./-}-light-menus" "$_name-light-menus"
+    mv "$_dirname/$_themename-$_ver-light-menu" "$_themename-Light"
+    mv "$_dirname/$_themename-NT-$_ver-light-menu" "$_themename-Light-NT"
+    rmdir "$_dirname"
 }
 
 package() {
