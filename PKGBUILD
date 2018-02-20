@@ -1,7 +1,7 @@
 # Maintainer: Shimi Chen <shimi.chen@gmail.com>
 
 pkgname=preflight-app
-pkgver=2.0.4
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Validate PDF files against the PDF/A-1b standard."
 arch=(any)
@@ -15,7 +15,7 @@ source=(preflight-app
         http://mirror.netcologne.de/apache.org/pdfbox/${pkgver}/${jarname})
 
 sha1sums=('0090ad58d90ca109f72808b8279452e9197d94b9'
-          'a841406420f37dd8d0bfe037431176572978e49e')
+          '61c8abc279374121d2aa1a38e9b7bdbfbc577737')
 
 package() {
     cd "${srcdir}"
