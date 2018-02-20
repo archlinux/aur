@@ -1,9 +1,8 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
-
-pkgbase=uget-integrator-browser # or uget-integrator-extension ?
+pkgbase=uget-integrator-browser
 pkgname=(uget-integrator-chrome uget-integrator-chromium uget-integrator-opera uget-integrator-firefox)
 arch=('any')
-url="https://github.com/ugetdm/uget-extension" # when uget-extension has a new release this package will auto upgrade
+url="https://github.com/ugetdm/uget-integrator"
 license=('GPL3')
 depends=('uget-integrator-bin')
 pkgver=0.0.1
