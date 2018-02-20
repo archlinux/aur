@@ -11,7 +11,7 @@ pkgbase = ttf-nerd-fonts-input
 	depends = xorg-font-utils
 	source = Input_Fonts_20170404.zip::http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
 	source = https://github.com/ryanoasis/nerd-fonts/archive/v1.2.0.tar.gz
-	sha256sums = 712f9d2ca9c39a4de2fa044a78f7ef4e78d18b4f4ee4cddab9241a9199d7ea7f
+	sha256sums = 18c69fbe80ed468dbd8445074bd696eb316f0b9102db3bc59a4f89b0d6f6d31d
 	sha256sums = c440409b76c86dc4a88be3d9ab5fb04092a176e6ff15ff2a61edc00861df0c2d
 
 pkgname = ttf-nerd-fonts-input
