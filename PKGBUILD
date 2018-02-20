@@ -47,6 +47,7 @@ package () {
         install -D -m755 $CARCH/libbass.so "$pkgdir/usr/lib/libbass.so"
 	;;
     esac
-    
+
+    install -D -m644 bass.h "$pkgdir/usr/include/bass.h"
     install -D -m644 bass.chm "$pkgdir/usr/share/doc/libbass/bass.chm"
 }
