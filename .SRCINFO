@@ -1,0 +1,14 @@
+pkgbase = reposync
+	pkgdesc = Wrapper for aursync
+	pkgver = 0.0.3
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = aurutils
+	depends = sudo
+	depends = bash
+	source = reposync.sh
+	sha256sums = c9bf9ffd6f35c413668f71f9c433eec06ceeac29ffe61f58617791b84a9b89bf
+
+pkgname = reposync
+
