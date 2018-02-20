@@ -1,4 +1,4 @@
-# Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
 
 pkgname=open-vm-tools-dkms
 epoch=6
