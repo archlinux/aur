@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Xastir with Speech
+Name[en_US]=Xastir with Speech
+Comment=Full featured APRS client
+Comment[en_US]=Full featured APRS client
+Encoding=UTF-8
+Exec=xastir-speech
+Icon=xastir.png
+MimeType=text/plain
+StartupNotify=true
+Terminal=
+TerminalOptions=
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
