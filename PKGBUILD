@@ -1,6 +1,6 @@
 pkgname=tremc-git
 _gitname=${pkgname%-git}
-pkgver=r671.5f2e6a3
+pkgver=r672.dfbde72
 pkgrel=1
 pkgdesc="Curses interface for transmission - python3 fork of transmission-remote-cli"
 arch=('any')
@@ -21,10 +21,7 @@ pkgver() {
 package() {
     cd "$_gitname"
 
-    install -D -m755 "tremc" "${pkgdir}/usr/bin/tremc"
-    install -D -m644 "tremc.1" "${pkgdir}/usr/share/man/man1/tremc.1"
-    install -D -m755 "completion/bash/tremc.sh" "${pkgdir}/usr/share/bash-completion/completions/tremc"
-    install -D -m755 "completion/zsh/_tremc" "${pkgdir}/usr/share/zsh/site-functions/_tremc"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 # vim: ts=4 sts=4 sw=4 et
