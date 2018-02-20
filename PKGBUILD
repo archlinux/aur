@@ -1,7 +1,7 @@
 # Maintainer: Arda Aytekin <aytekin@protonmail.com>
 
 pkgname=vpn-unlimited
-pkgver=4.16
+pkgver=4.17
 pkgrel=1
 pkgdesc='VPN Unlimited client application'
 arch=('x86_64' 'i686')
@@ -12,10 +12,10 @@ source_x86_64=("vpn-unlimited" "vpn-unlimited-daemon.service"
   "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_amd64.deb")
 md5sums_x86_64=('8623605b1bef9eda0f451a9b4447629f'
                 'eec970693be55274ff2e85e596407f20'
-                '713c98161060b81c5c963e9aa51d1d82')
+                '80e9b04662cbf35a7adb3e130d4bea68')
 md5sums_i686=('8623605b1bef9eda0f451a9b4447629f'
               'eec970693be55274ff2e85e596407f20'
-              '998dbdc5c67644c0adbb40584d5f62ca')
+              'f9d88d86b2c9bc3631119416f5443bf4')
 
 source_i686=("vpn-unlimited" "vpn-unlimited-daemon.service"
   "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_i386.deb")
