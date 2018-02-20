@@ -1,7 +1,7 @@
 pkgbase = tuxguitar
 	pkgdesc = multitrack guitar tablature editor and player
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.5
+	pkgrel = 1
 	url = http://sourceforge.net/projects/tuxguitar
 	arch = x86_64
 	license = LGPL
@@ -17,9 +17,9 @@ pkgbase = tuxguitar
 	depends = gtk2
 	depends = libxtst
 	optdepends = fluidsynth
-	source = tuxguitar-src-1.4.tar.gz::http://downloads.sourceforge.net/project/tuxguitar/TuxGuitar/TuxGuitar-1.4/tuxguitar-1.4-src.tar.gz
+	source = tuxguitar-src-1.5.tar.gz::http://downloads.sourceforge.net/project/tuxguitar/TuxGuitar/TuxGuitar-1.5/tuxguitar-1.5-src.tar.gz
 	source = nogcj.patch
-	sha256sums = ac72690bc1c20919dd66df46f757c6890be4c54b38f2a3b59a0265c777392210
+	sha256sums = 73fc2f2f433bda4b876a7670c2ec632c4c914d735ef566e745d1407dc2e6a5f9
 	sha256sums = bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc
 
 pkgname = tuxguitar

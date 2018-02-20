@@ -4,8 +4,8 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
@@ -79,3 +79,5 @@ cd /usr/share/tuxguitar
 exec ./tuxguitar.sh -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false "\$@"
 EOF
 }
+sha256sums=('73fc2f2f433bda4b876a7670c2ec632c4c914d735ef566e745d1407dc2e6a5f9'
+            'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
