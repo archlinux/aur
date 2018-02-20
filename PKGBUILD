@@ -1,9 +1,9 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=2.0.0rc2.r8.gcfeb25a
+pkgver=2.0.1.r3.g2e8699d
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
-arch=('x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jedisct1/dnscrypt-proxy"
 license=('custom:ISC')
 makedepends=('git' 'go')
