@@ -2,10 +2,9 @@
 # Based on python-dijitso-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com>
 
 _base=dijitso
-_fragment="#tag=2017.1.0"
 pkgname=python-${_base}
 pkgdesc="A Python module for distributed just-in-time shared library building (stable)."
-pkgver=20170509
+pkgver=2017.2.0
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -16,13 +15,8 @@ depends=('python-numpy')
 makedepends=('git')
 optdepends=('mpi4py: for running tests with MPI')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-	cd ${_base}
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
-}
 
 build() {
 	cd ${_base}
