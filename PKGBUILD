@@ -2,10 +2,10 @@
 
 pkgname=gin-cli
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line client for the G-Node Infrastructure (GIN) services'
 arch=('x86_64')
-url='https://github.com/G-Node/gin-cli'
+url='https://gin.g-node.org'
 license=('BSD')
 depends=('git-annex' 'openssh')
 install=${pkgname}.install
