@@ -1,5 +1,5 @@
 # Creator: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
-# Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
+# Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=waterfox-bin
 pkgver=56.0.4.1
 pkgrel=1
