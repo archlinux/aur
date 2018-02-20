@@ -1,0 +1,72 @@
+From 5d8e943787666543df6b858c001ab4e59b09fe2d Mon Sep 17 00:00:00 2001
+From: Arseniy Shestakov <me@arseniyshestakov.com>
+Date: Thu, 25 May 2017 03:03:02 +0300
+Subject: [PATCH] Launcher: add sanity checks for QDir::removeRecursively.
+ Issue 2673
+
+I'm not always fail to uninstall mod, but when I do I remove $HOME
+Bumblebee developers should be proud of us...
+---
+ launcher/modManager/cmodmanager.cpp | 22 ++++++++++++++++++++--
+ launcher/modManager/cmodmanager.h   |  1 +
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/launcher/modManager/cmodmanager.cpp b/launcher/modManager/cmodmanager.cpp
+index 59fd7faf..99a3df32 100644
+--- a/launcher/modManager/cmodmanager.cpp
++++ b/launcher/modManager/cmodmanager.cpp
+@@ -245,7 +245,7 @@ bool CModManager::doInstallMod(QString modname, QString archivePath)
+ 
+ 	if (!ZipArchive::extract(qstringToPath(archivePath), qstringToPath(destDir)))
+ 	{
+-		QDir(destDir + modDirName).removeRecursively();
++		removeModDir(destDir + modDirName);
+ 		return addError(modname, "Failed to extract mod data");
+ 	}
+ 
+@@ -270,7 +270,7 @@ bool CModManager::doUninstallMod(QString modname)
+ 	if (!localMods.contains(modname))
+ 		return addError(modname, "Data with this mod was not found");
+ 
+-	if (!QDir(modDir).removeRecursively())
++	if (!removeModDir(modDir))
+ 		return addError(modname, "Failed to delete mod data");
+ 
+ 	localMods.remove(modname);
+@@ -279,3 +279,21 @@ bool CModManager::doUninstallMod(QString modname)
+ 
+ 	return true;
+ }
++
++bool CModManager::removeModDir(QString path)
++{
++	// issues 2673 and 2680 its why you do not recursively remove without sanity check
++	QDir checkDir(path);
++	if(!checkDir.cdUp() || QString::compare("Mods", checkDir.dirName(), Qt::CaseInsensitive))
++		return false;
++	if(!checkDir.cdUp() || QString::compare("vcmi", checkDir.dirName(), Qt::CaseInsensitive))
++		return false;
++
++	QDir dir(path);
++	if(!dir.absolutePath().contains("vcmi", Qt::CaseInsensitive))
++		return false;
++	if(!dir.absolutePath().contains("Mods", Qt::CaseInsensitive))
++		return false;
++
++	return dir.removeRecursively();
++}
+diff --git a/launcher/modManager/cmodmanager.h b/launcher/modManager/cmodmanager.h
+index 800db6b5..b759ef06 100644
+--- a/launcher/modManager/cmodmanager.h
++++ b/launcher/modManager/cmodmanager.h
+@@ -18,6 +18,7 @@ class CModManager
+ 
+ 	QStringList recentErrors;
+ 	bool addError(QString modname, QString message);
++	bool removeModDir(QString mod);
+ public:
+ 	CModManager(CModList * modList);
+ 
+-- 
+2.16.1
+
