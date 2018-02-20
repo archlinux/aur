@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-mod-http-xslt-filter
 	pkgdesc = HTTP XSLT module for the Nginx web server
-	pkgver = 1.13.6
+	pkgver = 1.13.8
 	pkgrel = 1
 	url = https://nginx.org
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = nginx-mainline-mod-http-xslt-filter
 	license = custom
 	depends = nginx-mainline
 	depends = libxslt
-	source = http://nginx.org/download/nginx-1.13.6.tar.gz
-	sha256sums = 8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8
+	source = http://nginx.org/download/nginx-1.13.8.tar.gz
+	sha256sums = 8410b6c31ff59a763abf7e5a5316e7629f5a5033c95a3a0ebde727f9ec8464c5
 
 pkgname = nginx-mainline-mod-http-xslt-filter
 
