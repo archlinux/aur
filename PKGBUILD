@@ -2,10 +2,9 @@
 # Based on python-ufl-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com>
 
 _base=ufl
-_fragment="#tag=2017.1.0"
 pkgname=python-${_base}
 pkgdesc="Unified form language (stable)."
-pkgver=20170509
+pkgver=2017.2.0
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -15,13 +14,8 @@ conflicts=('python-ufl-git')
 depends=('python-numpy')
 makedepends=('git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-	cd ${_base}
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
-}
 
 build() {
 	cd ${_base}
