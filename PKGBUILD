@@ -17,13 +17,16 @@ optdepends=('innoextract: required by vcmibuilder'
 conflicts=('fuzzylite')
 install="${pkgname}.install"
 source=(https://github.com/vcmi/${pkgname}/archive/${pkgver}.tar.gz
-        0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch)
+        0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch
+        boostasiofix.patch)
 sha256sums=('b7f2459d7e054c8bdcf419cbb80040e751d3dbb06dc1113ac28f7365930f902e'
-            'fefca8818a11bc753a9dfd828fc1e3f6f64d104713e64fa76088c3ce05f60143')
+            'fefca8818a11bc753a9dfd828fc1e3f6f64d104713e64fa76088c3ce05f60143'
+            'e270050db24c2cd717c490d9d121b43d19574fd92345105374f3bc1c8386ea35')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 "${srcdir}/0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch"
+  patch -p1 -i "${srcdir}/0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch"
+  patch -p1 -l -i "${srcdir}/boostasiofix.patch"
 }
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
