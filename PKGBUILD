@@ -1,41 +1,40 @@
-# $Id: PKGBUILD 120392 2014-10-08 11:11:31Z idevolder $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Valeriy Lyasotskiy <onestep@ukr.net>
 # Contributor: Zom <zom@eevul.org>
 
 pkgname=apper
-epoch=1
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="KDE tools for PackageKit"
-arch=('i686' 'x86_64')
-url="http://kde-apps.org/content/show.php/Apper?content=84745"
-license=('GPL')
-depends=('packagekit-qt4' 'kdebase-runtime')
-makedepends=('cmake' 'automoc4' 'kdebase-workspace')
-optdepends=('kdebase-workspace: updates daemon')
-install="$pkgname.install"
-source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('5bc52b3db723603e12ab98205d54c7c9364905b54939499271db33d82bdd227f')
+pkgdesc="An application and package manager using PackageKit"
+arch=(x86_64)
+url="https://www.kde.org/applications/system/apper/"
+license=(GPL)
+depends=(packagekit-qt5 kcmutils appstream-qt)
+makedepends=(extra-cmake-modules kdoctools plasma-workspace)
+optdepends=('plasma-workspace: Updates daemon')
+source=("http://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('1a30be92aab8bd258c2a8824f533c5646b934e06b4268edbd11724ea450f4923'
+            'SKIP')
+validpgpkeys=(70C26659D184ABC01FFAF45228DDEDC6E4480AD0) # Daniel Nicoletti <dantti12@gmail.com>
 
 prepare() {
-        mkdir -p build
+  mkdir -p build
 }
 
 build() {
-	cd build
+  cd build
 
-	cmake ../$pkgname-$pkgver \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+  cmake ../$pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DAPPSTREAM=ON
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
-	# avoid gnome-packagekit conflict (stolen from fedora as suggested)
-	mv "$pkgdir/usr/share/dbus-1/services/org.freedesktop.PackageKit.service" \
-		"$pkgdir/usr/share/dbus-1/services/kde-org.freedesktop.PackageKit.service"
+  cd build
+  make DESTDIR="$pkgdir" install
 }
