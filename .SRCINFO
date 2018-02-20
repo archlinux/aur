@@ -1,6 +1,6 @@
 pkgbase = threshy
 	pkgdesc = ThinkPad battery threshold configuration using TLP and D-Bus
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 0
 	url = https://gitlab.com/wincak/threshy
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = threshy
 	depends = tlp>=1.0
 	depends = dbus>=1.12
 	depends = qt5-base>=5.9
-	source = git+https://gitlab.com/wincak/threshy.git#branch=master
+	source = git+https://gitlab.com/wincak/threshy.git#tag=v0.2
 	md5sums = SKIP
 
 pkgname = threshy
