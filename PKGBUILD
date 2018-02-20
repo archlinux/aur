@@ -8,7 +8,7 @@ pkgdesc="A utility for working with disk images, which are designed to be flashe
 arch=('i686' 'x86_64')
 url="https://github.com/alexchamberlain/piimg"
 license=('MIT')
-depends=('glibc' 'parted')
+depends=('parted')
 makedepends=('git' 'make')
 conflicts=('piimg')
 provides=('piimg')
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/bin/
-  mkdir -p "$pkgdir"/usr/share/doc/piimg/
+  mkdir -p "$pkgdir"/usr/{bin,share/{doc/${pkgname},licenses/${pkgname}}}
   install -gusers -oroot -m4750 "$srcdir/${_pkgname}"/src/piimg "$pkgdir"/usr/bin/
-  install -m644 "$srcdir/${_pkgname}"/{LICENSE,README.md} "$pkgdir"/usr/share/doc/piimg/
+  install -m644 "$srcdir/${_pkgname}"/README.md "$pkgdir"/usr/share/doc/${pkgname}/
+  install -m644 "$srcdir/${_pkgname}"/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/
 }

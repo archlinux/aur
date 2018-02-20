@@ -8,7 +8,6 @@ pkgbase = piimg-git
 	license = MIT
 	makedepends = git
 	makedepends = make
-	depends = glibc
 	depends = parted
 	provides = piimg
 	conflicts = piimg
