@@ -1,10 +1,10 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
-pkgbase=uget-integrator-browser
+pkgbase=uget-integrator-browsers
 pkgname=(uget-integrator-chrome uget-integrator-chromium uget-integrator-opera uget-integrator-firefox)
 arch=('any')
 url="https://github.com/ugetdm/uget-integrator"
 license=('GPL3')
-depends=('uget-integrator-bin')
+depends=('uget-integrator')
 pkgver=0.0.1
 pkgrel=1
 makedepends=()
