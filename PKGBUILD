@@ -1,4 +1,5 @@
-# Maintainer: Walter Dworak <preparationh67@gmail.com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
+# Contributor: Walter Dworak <preparationh67@gmail.com>
 
 pkgname='webvirtmgr'
 pkgdesc='Web front-end for KVM virtual machines'
