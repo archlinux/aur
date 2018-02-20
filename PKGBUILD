@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 pkg="pubs"
 pkgname="$pkg-git"
-pkgver=20180126.d685ec1
+pkgver=20180219.cfb0042
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
 arch=(any)
