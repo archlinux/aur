@@ -1,4 +1,4 @@
-# Maintainer: Tom Moore <t.moore01@gmail.com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
 # Contributor: ReNoM <renom@list.ru>
 
 # If you need the bundle, google VMware-ClientIntegrationPlugin-6.2.0.x86_64.bundle
