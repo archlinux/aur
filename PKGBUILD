@@ -4,7 +4,7 @@ _pkgname="mitsuba"
 _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
 pkgname="${_pkgname}-git"
 pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=2
+pkgrel=3
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
