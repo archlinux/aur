@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/libwpd"
 license=('LGPL')
 depends=('libetonyek' 'libmwaw' 'libodfgen' 'libvisio' 'libwps' 'libzmf')
-makedepends=('boost' 'glibc' 'libtool' 'libabw' 'libcdr' 'libe-book' 'libepubgen' 'libfreehand' 'libmspub' 'libpagemaker')
 optdepends=('libabw' 'libcdr' 'libe-book' 'libepubgen' 'libfreehand' 'libmspub' 'libpagemaker')
+makedepends=('boost' 'glibc' 'libtool' 'libabw' 'libcdr' 'libe-book' 'libepubgen' 'libfreehand' 'libmspub' 'libpagemaker')
 source=(http://downloads.sourceforge.net/project/libwpd/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('8807a94e844f56018179bcf21e1d391e')
 
