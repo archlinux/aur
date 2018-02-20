@@ -3,5 +3,5 @@ post_install() {
 }
 
 post_upgrade() {
- instant-clean
+	instant-clean
 }
