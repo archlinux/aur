@@ -29,6 +29,9 @@ _build_dir='build'
 
 _exec_helper_build_targets=('all')
 
+_test_binary='SelfTest'
+_exec_helper_test_targets=(${_test_binary})
+
 pkgver() {
     printf "%s" $pkgver
 }
@@ -36,6 +39,13 @@ pkgver() {
 build() {
     cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_INSTALL_LIBDIR="lib" -DCATCH_USE_VALGRIND=OFF -DCATCH_BUILD_EXAMPLES=OFF -DCATCH_ENABLE_COVERAGE=OFF -DCATCH_ENABLE_WERROR=OFF -DBUILD_TESTING=OFF
     make --directory "$_build_dir" ${_exec_helper_build_targets[@]}
+}
+
+check() {
+    cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DBUILD_TESTING=ON
+    make --directory "$_build_dir" ${_exec_helper_test_targets[@]}
+
+    $_build_dir/${_test_binary}
 }
 
 package_catch2() {
