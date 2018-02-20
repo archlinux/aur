@@ -7,13 +7,12 @@
 pkgname=emacs-lucid
 pkgver=25.3
 _pkgver_major=${pkgver/.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'libmagick6' 'gnutls' 
-'libxrandr' 'libxinerama')
+depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'libmagick6' 'gnutls' 'libxrandr' 'libxinerama')
 conflicts=('emacs')
 provides=("emacs=$_pkgver_major")
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
@@ -49,5 +48,6 @@ package() {
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
 
+  chmod 775 "$pkgdir"/var/games
   chown -R root:games "$pkgdir"/var/games
 }
