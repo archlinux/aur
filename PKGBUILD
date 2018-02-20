@@ -1,11 +1,12 @@
 # $Id: PKGBUILD 194370 2016-11-02 10:31:59Z alucryd $
+# Maintainer : Paul Wilk <paul.wilk@null.net>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
-# Maintainer: zoe <chp321 [at] gmail [dot] com>
+
 
 pkgname=ffmpeg0.10
 pkgver=0.10.16
