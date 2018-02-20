@@ -1,7 +1,7 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname=gnome-osx-light-gtk-theme
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 epoch=5
 pkgdesc='Gnome-OSX V Traditional Light GTK Theme'
@@ -14,13 +14,16 @@ depends=('gtk-engine-murrine')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-_name='Gnome-OSX-V-Traditional'
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518825529/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
+md5sums=('bd1caec7b416e18b929a9448083249a0')
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1517759767/s/$_s/t/$_t/$_name-${pkgver//./-}-light-menus.tar.xz")
-md5sums=('6c987c3d2cfa112098a1fad9a78dda99')
+_dirname='Gnome-OSX-V-traditional-light-menus-->2-themes'
+_themename='Gnome-OSX-V-Traditional'
 
 prepare() {
-    mv "$_name-${pkgver//./-}-light-menus" "$_name-light-menus"
+    mv "$_dirname/$_themename-${pkgver//./-}-light-menu" "$_themename-Light"
+    mv "$_dirname/$_themename-NT-${pkgver//./-}-light-menu" "$_themename-Light-NT"
+    rmdir "$_dirname"
 }
 
 package() {
