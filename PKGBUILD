@@ -1,8 +1,9 @@
-# Maintainer: Ashton S. Hellwig <ahellwig.dev@gmail.com>
+# Maintainer: Mort Yao <soi@mort.ninja>
+# Contributor: Ashton S. Hellwig <ahellwig.dev@gmail.com>
 # Contributor: Bug <bug2000@gmail.com>
 
 pkgname=jpcsp
-pkgver="rd24a39e"
+pkgver="r0f1ba37"
 pkgrel=1
 pkgdesc="Java PSP Emulator"
 options=('!strip')
@@ -13,13 +14,13 @@ depends=('java-runtime')
 makedepends=('p7zip')
 install=jpcsp.install
 _pkgarch='x86_64'
-md5sums=('SKIP'
-           'SKIP'
-           'SKIP')
-  
-source=("jpcsp-rd24a39e-linux-x86-64.7z::http://files.emunewz.net/builds/jpcsp/2017/12/04/jpcsp-rd24a39e-linux-x86-64.7z"
+
+source=("jpcsp-r0f1ba37-linux-x86-64.7z::http://files.emunewz.net/builds/jpcsp/2018/02/12/jpcsp-r0f1ba37-linux-x86-64.7z"
         "jpcsp.sh"
         "jpcsp.desktop")
+md5sums=('6f0015787b9f68950396bb84ec9ba4a9'
+         '7da803eed1b8b00bdf3d6f2486605b86'
+         'cd39aad03798576eb5228ed4184885c8')
 
 build() {
   cd $srcdir
@@ -34,5 +35,3 @@ package(){
   install -D jpcsp.desktop $pkgdir/usr/share/applications/jpcsp.desktop
 
 }
-
-# vim:set ts=2 sw=2 et:

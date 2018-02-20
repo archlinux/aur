@@ -1,0 +1,9 @@
+/pkg
+/src
+*.sig
+*.bz2
+*.gz
+*.tar
+*.xz
+*.zip
+*.7z
