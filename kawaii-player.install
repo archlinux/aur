@@ -1,0 +1,14 @@
+post_install() {    
+    echo
+    echo "If you are upgrading from Kawaii Player v2.9 or earlier, you are advised"
+    echo "to backup and then remove the following configuration files:"
+    echo "~/.config/kawaii-player/other_options.txt"
+    echo "~/.config/kawaii-player/config.txt"
+    echo "~/.config/kawaii-player/src/input.conf"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
+

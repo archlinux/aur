@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmihalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=2.9.0
+pkgver=3.1.1
 pkgrel=1
 _pkgrel=0
 pkgdesc="A powerful frontend for MPV with media server and torrent streaming capabilities"
@@ -9,10 +9,11 @@ arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
 depends=('curl' 'ffmpegthumbnailer' 'libnotify' 'libtorrent-rasterbar' 'mpv' 'python' 'python-beautifulsoup4' 'python-dbus' 'python-lxml'
-         'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'python-pytaglib' 'qt5-webengine' 'sqlite3' 'wget' 'youtube-dl')
+         'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'python-pytaglib' 'qt5-webengine' 'sqlite' 'wget' 'youtube-dl')
 makedepends=('git')
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-md5sums=('b469c0deb51ecf1322f2a7eb8c5cd3bd')
+install=kawaii-player.install
+md5sums=('695dcb749f56541eda98ee249d4378ba')
 
 package() {
     _app_dir="${srcdir}/${pkgname}-${pkgver}-${_pkgrel}/${_pkgname}"
