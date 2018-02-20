@@ -1,0 +1,12 @@
+pkgbase = openexif
+	pkgdesc = An object-oriented interface to Exif files
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://openexif.sourceforge.net
+	arch = x86_64
+	license = BSD
+	source = https://downloads.sourceforge.net/project/openexif/openexif/2.1.4/openexif-2_1_4-src.zip
+	sha256sums = 236a26abaa732d25fa7533f3bdf065588f49ac47db3ed6b08d7be001401e47f0
+
+pkgname = openexif
+
