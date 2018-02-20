@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=snapshot.2015.05.r216.g87c4b88
+pkgver=2018.02.r0.gaefb60c
 pkgrel=1
-pkgdesc="Examples for Magnum OpenGL graphics engine (Git version)"
+pkgdesc="Examples for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://mosra.cz/blog/magnum.php"
+url="http://magnum.graphics"
 license=('custom:Public Domain')
-depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'bullet' 'openal')
+depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'magnum-extras-git' 'bullet' 'openal')
 makedepends=('cmake' 'git')
 provides=('magnum-examples')
 conflicts=('magnum-examples')
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
@@ -25,6 +25,7 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_AREALIGHTS_EXAMPLE=ON \
         -DWITH_AUDIO_EXAMPLE=ON \
         -DWITH_BULLET_EXAMPLE=ON \
         -DWITH_CUBEMAP_EXAMPLE=ON \
@@ -35,6 +36,7 @@ build() {
         -DWITH_TEXT_EXAMPLE=ON \
         -DWITH_TEXTUREDTRIANGLE_EXAMPLE=ON \
         -DWITH_TRIANGLE_EXAMPLE=ON \
+        -DWITH_TRIANGLE_PLAIN_GLFW_EXAMPLE=OFF \
         -DWITH_VIEWER_EXAMPLE=ON
     make
 }
