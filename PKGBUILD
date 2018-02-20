@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 273634 2017-12-10 21:50:40Z arojas $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Benjamin Andresen <benny@klapmuetz.org>
 # Contributor: Mikko Seppдlд <t-r-a-y@mbnet.fi>
 
