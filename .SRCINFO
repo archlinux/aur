@@ -1,7 +1,7 @@
 pkgbase = freeroute-bin
 	pkgdesc = Automatic PCB track router for KiCad written by Alfons Wirtz
 	pkgver = 1.2.43.752065a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freerouting.net/
 	arch = i686
 	arch = x86_64
