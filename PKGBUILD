@@ -21,8 +21,8 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 groups=('gnome')
-# Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
-_frepourl='http://pkgs.fedoraproject.org/rpms/gnome-terminal'
+# Fedora patches: http://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
+_frepourl='http://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='f27'
 _fcommit='4b7a8b18c926c9599580e5b059d9f9738dd7ed0c'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
