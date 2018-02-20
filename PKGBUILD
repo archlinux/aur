@@ -3,7 +3,7 @@
 
 _pkgname=kftpgrabber
 pkgname=kftpgrabber-svn
-pkgver=r1488814    
+pkgver=r1510652    
 pkgrel=1
 pkgdesc="A graphical FTP client for KDE"
 url="http://kftp.org"
