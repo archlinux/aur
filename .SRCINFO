@@ -9,7 +9,7 @@ pkgbase = python-pyephem
 	license = LGPL
 	depends = python
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/e/ephem/ephem-3.7.6.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/e/ephem/ephem-3.7.6.0.tar.gz
 	md5sums = 405a109f3017251ecd8c2890d850f649
 
 pkgname = python-pyephem
