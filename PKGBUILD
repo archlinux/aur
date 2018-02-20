@@ -13,7 +13,7 @@ source=(http://arminstraub.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('ce1f54ac2be97fd48ac3c036b00e0c3f')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   python setup.py install --root $pkgdir
 
   # Desktop icon
