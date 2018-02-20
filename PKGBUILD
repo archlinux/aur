@@ -2,18 +2,15 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=dcc
-pkgver=1.3.158
-pkgrel=2
+pkgver=1.3.162
+pkgrel=1
 pkgdesc="Distributed Checksum Clearinghouse spam tool"
 url="http://www.rhyolite.com/anti-spam/dcc/"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('sh')
-source=(http://www.rhyolite.com/anti-spam/dcc/source/old/$pkgname-$pkgver.tar.Z \
-	http://www.rhyolite.com/dcc/LICENSE)
-sha256sums=('596bb4a02800a87501818215e61ac877e4d5a31ec0c8c227f23438f6b6b831c6'
-            '8bce5cc14bd52293e9b6331cbd2979a12d667bbea615e65b18608b690f7b5fef') 
-
+source=(http://www.rhyolite.com/anti-spam/dcc/source/old/$pkgname-$pkgver.tar.Z)
+sha256sums=('f98413df06d1c25a56cafc016adf9e3348ccce6bc575ea5b7d12556b8e83bc91')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -29,7 +26,7 @@ package() {
   MAKEFLAGS="$MAKEFLAGS -j1" # AUR comment zmeYski 2014-10-14 17:57
   make DESTDIR=${pkgdir}/ install
   install -d $pkgdir/usr/share/licenses/$pkgname
-  install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   
   #Fix file permissions
   find $pkgdir/ -group bin -exec chgrp root {} \;
