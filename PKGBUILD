@@ -1,4 +1,5 @@
-# Maintainer:  Janne Heß <jannehess@gmail.com>
+# Maintainer:  Maik Broemme <mbroemme@libmpq.org>
+# Contributor: Janne Heß <jannehess@gmail.com>
 # Contributor: Arthur Borsboom <arthurborsboom@gmail.com>
 # Contributor: Shanmu Thiagaraja <sthiagaraja+AUR@prshanmu.com>
 # Contributor: Limao Luo
@@ -20,9 +21,9 @@ _build_stubdom=${build_stubdom:-false}
 # Versions
 #####
 
-_xen_version='4.9.0'
+_xen_version='4.10.0'
 _xen_major_version='4'
-_xen_minor_version='9'
+_xen_minor_version='10'
 # grep -R IPXE_GIT_TAG src/xen-*/tools/firmware/etherboot
 _git_tag_ipxe='827dd1bfee67daa683935ce65316f7e0f057fe1c'
 # grep '_VERSION=' src/xen-*/stubdom/configure
@@ -46,7 +47,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -86,7 +87,7 @@ makedepends=(
 	lzo
 	pciutils
 	python2
-	sdl
+	sdl2
 	spice
 	usbredir
 	yajl
@@ -99,26 +100,18 @@ source=(
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
 	# XSA patches
-	'https://xenbits.xen.org/xsa/xsa226-4.9/0001-gnttab-dont-use-possibly-unbounded-tail-calls.patch'
-	'https://xenbits.xen.org/xsa/xsa226-4.9/0002-gnttab-fix-transitive-grant-handling.patch'
-	'https://xenbits.xen.org/xsa/xsa227.patch'
-	'https://xenbits.xen.org/xsa/xsa228.patch'
-	'https://xenbits.xen.org/xsa/xsa230.patch'
-	'https://xenbits.xen.org/xsa/xsa231-4.9.patch'
-	'https://xenbits.xen.org/xsa/xsa232.patch'
-	'https://xenbits.xen.org/xsa/xsa233.patch'
-	'https://xenbits.xen.org/xsa/xsa234-4.9.patch'
-	'https://xenbits.xen.org/xsa/xsa235-4.9.patch'
-	'https://xenbits.xen.org/xsa/xsa245/0001-xen-page_alloc-Cover-memory-unreserved-after-boot-in.patch'
-	'https://xenbits.xen.org/xsa/xsa245/0002-xen-arm-Correctly-report-the-memory-region-in-the-du.patch'
+	'https://xenbits.xen.org/xsa/xsa253.patch'
+	xsa254-diff-release410-comet1.1.patch::'https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff_plain;hp=refs/tags/RELEASE-4.10.0;h=refs/heads/4.10.0-shim-comet'
 
 	# Files
-	'nopic.patch'
 	'grub-mkconfig-helper'
 	'efi-xen.cfg'
 	'grub.conf'
 	"${pkgbase}.conf"
 	'tmpfiles.conf'
+
+	# Compile fixes.
+	'ocaml-unsafe-string.patch'
 )
 
 if [ "${_build_stubdom}" = true ] ; then
@@ -136,31 +129,23 @@ if [ "${_build_stubdom}" = true ] ; then
 fi
 
 sha256sums=(
-	'cade643fe3310d4d6f97d0c215c6fa323bc1130d7e64d7e2043ffaa73a96f33b'
+	'0262a7023f8b12bcacfb0b25e69b2a63291f944f7683d54d8f33d4b2ca556844'
 	'SKIP'
 	'36deacb946c59ad1d6600f6e5b89d6a7a8961e65eb000900e184075920120f49'
 
-	# XSA patches
-	'3878c27b77ba24012599289e0e0fb1e5198b1e4efe2f87f7c46def5f335f2fd5'
-	'01d773c5bb4cafe54daf0d14e8a3af899a7c5863513d18927c4a570a74afdb15'
-	'9923a47e5f86949800887596f098954a08ef73a01d74b1dbe16cab2e6b1fabb2'
-	'1979e111442517891b483e316a15a760a4c992ac4440f95e361ff12f4bebff62'
-	'77a73f1c32d083e315ef0b1bbb119cb8840ceb5ada790cad76cbfb9116f725cc'
-	'71a53a5133c8d4e381dd0e3e54205d31dea545ab62b261084dd3aea140f88cad'
-	'5068a78293daa58557c30c95141b775becfb650de6a5eda0d82a4a321ced551c'
-	'f721cc49ba692b2f36299b631451f51d7340b8b4732f74c98f01cb7a80d8662b'
-	'213f9d81a4ab785db67b9f579c9e88c9c8586c46b93f466a309060750df2df32'
-	'd8f012734fbf6019c1ff864744e308c41dfb9c7804ca3be2771c2c972cdf4bd5'
-	'526f9e1b127fbb316762ce8e8f4563bc9de0c55a1db581456a3017d570d35bdd'
-	'7164010112fcccd9cd88e72ace2eeabdb364dd6f4d05c434686267d18067f420'
-	# Last checked: XSA-245
+	# XSA patches (Last checked: XSA-253)
+	'bba1abb5e4368421de29385e37f8477bf3534d3ba3ff7e2aae9c9d3da53f1393'
+	'5276d63e3b2ffc5217981e7b683c28d75b81793af8d2ffc75566db39aaabbaef'
+
 	# PKGBUILD files
-	'b270ce2dc383cf350ef00dae47064056cad382d8f3db7985a6d55207030c53de'
-	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
+	'7dd6f1d6c10d4e8793412175b964df2477633cd988810df71e2040bf79e4d56c'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
 	'3f0af16958c3e057b9baa5afc47050d9adf7dd553274dd97ae4f35938fefb568'
 	'50a9b7fd19e8beb1dea09755f07318f36be0b7ec53d3c9e74f3266a63e682c0c'
 	'80227f8daa62a49c08fb7ffcc7de8cabbd0645396e46c04f7caaa71b04f446f0'
+
+	# Compile fixes.
+	'7c76b116ce09a53708306682f04e1460a788fe66f832091b7003a5d8e1fee312'
 )
 
 
@@ -204,18 +189,8 @@ prepare() {
 
 	# XSA Patches
 	msg2 'Applying XSA Patches...'
-	# None yet. Example:
-	patch -Np1 -i "${srcdir}/0001-gnttab-dont-use-possibly-unbounded-tail-calls.patch"
-	patch -Np1 -i "${srcdir}/0002-gnttab-fix-transitive-grant-handling.patch"
-	patch -Np1 -i "${srcdir}/xsa227.patch"
-	patch -Np1 -i "${srcdir}/xsa228.patch"
-	patch -Np1 -i "${srcdir}/xsa230.patch"
-	patch -Np1 -i "${srcdir}/xsa231-4.9.patch"
-	patch -Np1 -i "${srcdir}/xsa232.patch"
-	patch -Np1 -i "${srcdir}/xsa233.patch"
-	patch -Np1 -i "${srcdir}/xsa234-4.9.patch"
-	patch -Np1 -i "${srcdir}/0001-xen-page_alloc-Cover-memory-unreserved-after-boot-in.patch"
-	patch -Np1 -i "${srcdir}/0002-xen-arm-Correctly-report-the-memory-region-in-the-du.patch"
+	patch -Np1 -i "${srcdir}/xsa253.patch"
+
 	# qemu-xen-traditional
 	pushd 'tools/qemu-xen-traditional' >/dev/null
 	# None yet. Example:
@@ -226,9 +201,6 @@ prepare() {
 	# None yet. Example:
 	#patch -Np1 -i "${srcdir}/xsa211-qemuu-4.8.patch"
 	popd >/dev/null
-
-	# Patch build with PIC
-	patch -Np1 -i "${srcdir}/nopic.patch"
 
 	# Patch EFI binary build with mingw
 	msg2 'Patching EFI build...'
@@ -261,6 +233,9 @@ prepare() {
 	# Copied from Gentoo's xen 4.8.1-r2 ebuild
 	find . \( -name 'Makefile*' -o -name '*.mk' -o -name 'common.make' \) -exec sed -i 's/ *-Werror */ /' '{}' ';'
 	sed -i 's/, "-Werror"//' 'tools/python/setup.py'
+
+	# Patch ocaml for 4.06 unsafe string
+	patch -Np1 -i "${srcdir}/ocaml-unsafe-string.patch"
 }
 
 build() {
@@ -283,7 +258,14 @@ build() {
 		--with-system-ovmf \
 		--with-system-seabios=/usr/share/qemu/bios-256k.bin \
 		"${_config_stubdom:---disable-stubdom}" \
-		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir --disable-werror"
+		--with-extra-qemuu-configure-args=" \
+			--disable-bluez \
+			--disable-gtk \
+			--disable-vte \
+			--disable-werror \
+			--enable-spice \
+			--enable-usb-redir \
+			--with-sdlabi=2.0"
 
 	msg2 'Building Xen...'
 	# NO_WERROR is required for iPXE, as the sources are not extracted before the build
@@ -306,7 +288,7 @@ package_xen() {
 		lzo
 		pciutils
 		python2
-		sdl
+		sdl2
 		spice
 		usbredir
 		yajl
@@ -342,6 +324,7 @@ package_xen() {
 	install -Dm644 "${srcdir}/grub.conf" etc/xen/grub.conf
 	install -Dm755 "${srcdir}/grub-mkconfig-helper" etc/grub.d/09_xen
 	install -Dm644 "${srcdir}/efi-xen.cfg" etc/xen/efi-xen.cfg
+	install -Dm644 "${srcdir}/xen.conf" usr/lib/modules-load.d/xen.conf
 
 	# Fix paths in scripts, move to right locations and create missing directories
 	msg2 'Fixing paths...'
