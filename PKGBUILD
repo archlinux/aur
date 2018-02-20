@@ -16,5 +16,5 @@ package() {
 
     install -dm755 "${pkgdir}/usr/lib/firewalld/services"
     install -Dm644 services/* "${pkgdir}/usr/lib/firewalld/services"
-    install -Dm755 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
