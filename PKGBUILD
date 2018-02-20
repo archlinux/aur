@@ -3,7 +3,7 @@
 _pyname=conda
 pkgname=python-conda
 pkgver=4.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
@@ -22,6 +22,7 @@ sha512sums=('935745439bfdc0c485e7575e34042768e26a87649994869cfada51fa2c6ecc28124
 prepare() {
   cd "$srcdir/${_pyname}-$pkgver"
   sed -i 's/$_CONDA_ROOT//' conda/shell/bin/{de,}activate
+  sed -i 's/env python/python3/' conda/shell/bin/conda
 }
 
 package() {
