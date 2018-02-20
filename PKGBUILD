@@ -1,4 +1,4 @@
-# Maintainer:  Jonathan Steel <jsteel at archlinux.org>
+# Maintainer:  Paul Wilk <paul.wilk@null.net>
 # Contributor: ReNoM <renom@list.ru>
 
 pkgname=vmware-vcli
