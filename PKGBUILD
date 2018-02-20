@@ -2,10 +2,9 @@
 # Based on python-instant-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com>
 
 _base=mshr
-_fragment="#tag=2017.1.0"
 pkgname=python-${_base}
 pkgdesc="Mesh generation component of FEniCS (stable)."
-pkgver=20170511
+pkgver=2017.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -15,13 +14,8 @@ conflicts=('python-mshr-git')
 depends=('dolfin' 'mpfr')
 makedepends=('git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-	cd ${_base}
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
-}
 
 build() {
 	cd ${_base}

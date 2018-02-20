@@ -1,6 +1,6 @@
 pkgbase = python-mshr
 	pkgdesc = Mesh generation component of FEniCS (stable).
-	pkgver = 20170511
+	pkgver = 2017.2.0
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/mshr
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = python-mshr
 	depends = mpfr
 	conflicts = python-mshr-git
 	options = !emptydirs
-	source = mshr::git+https://bitbucket.org/fenics-project/mshr.git#tag=2017.1.0
+	source = mshr::git+https://bitbucket.org/fenics-project/mshr.git#tag=2017.2.0
 	md5sums = SKIP
 
 pkgname = python-mshr
