@@ -1,5 +1,6 @@
 post_install() {
-  fc-cache -fs
+  echo "Finalising the font directory..."
+  fc-cache -vfs
   mkfontscale usr/share/fonts/misc
   mkfontdir usr/share/fonts/misc
 }
