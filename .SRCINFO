@@ -1,0 +1,32 @@
+pkgbase = wlroots-full-git
+	pkgdesc = A modular Wayland compositor library (static and shared libs, all features enabled)
+	pkgver = r1924.2e7d886
+	pkgrel = 1
+	url = https://github.com/swaywm/wlroots
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = pkg-config
+	depends = wayland
+	depends = wayland-protocols
+	depends = libdrm
+	depends = opengl-driver
+	depends = pixman
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = xcb-util-image
+	depends = xcb-util-wm
+	depends = libinput
+	depends = libcap
+	depends = udev
+	depends = systemd
+	provides = wlroots
+	conflicts = wlroots
+	options = staticlibs
+	source = wlroots-full-git::git+https://github.com/swaywm/wlroots
+	sha512sums = SKIP
+
+pkgname = wlroots-full-git
+
