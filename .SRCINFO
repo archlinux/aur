@@ -1,7 +1,7 @@
-pkgbase = uget-integrator-browser
+pkgbase = uget-integrator-browsers
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/ugetdm/uget-extension
+	url = https://github.com/ugetdm/uget-integrator
 	arch = any
 	license = GPL3
 	depends = uget-integrator-bin
