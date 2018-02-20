@@ -2,23 +2,15 @@
 # Contributor: Your Name <youremail@domain.com>
 
 pkgname=ocp-build
-pkgver=1.99.19_beta
+pkgver=1.99.20_beta
 pkgrel=1
 pkgdesc="A build system for OCaml applications"
 arch=('i686' 'x86_64')
 url="http://www.typerex.org/ocp-build.html"
 license=('GPL3')
-depends=('ocaml' 'ocaml-findlib')
-source=("https://github.com/OCamlPro/ocp-build/archive/${pkgver/_/-}.tar.gz"
-        "link-terminfo.patch")
-md5sums=('e4d5e3bc256091b5907a43613c33411c'
-         '5e13a6bc6dd42eba07214284fc8d7051')
-
-prepare() {
-  cd "${srcdir}/ocp-build-${pkgver/_/-}"
-
-  patch -Np1 < "${srcdir}/link-terminfo.patch"
-}
+depends=('ocaml' 'ocaml-findlib' 'ocaml-cmdliner')
+source=("https://github.com/OCamlPro/ocp-build/archive/${pkgver/_/-}.tar.gz")
+md5sums=('72d9c1b1a42d1873628e2d6e7529d8cb')
 
 build() {
   cd "${srcdir}/ocp-build-${pkgver/_/-}"
@@ -31,7 +23,4 @@ package() {
   cd "${srcdir}/ocp-build-${pkgver/_/-}"
 
   make install prefix="${pkgdir}/usr"
-  # No need for uninstall information - we're using a package manager
-  find "${pkgdir}" -name "*.uninstall" -type f -delete
-  rm "${pkgdir}/usr/lib/ocaml/installed.ocp"
 }
