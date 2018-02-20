@@ -4,7 +4,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-multilib-patched
-_rev=4068
+_rev=4081
 pkgver=0.74.$_rev
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games. 32-bit build with selected patches"
@@ -28,10 +28,9 @@ source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/
 #install=$pkgname.install
 prepare() {
 	cd "$srcdir/$pkgname"
-	#mkdir "$srcdir/$pkgname/include/GL/"
-	#cp "/usr/include/GL/gl.h" "$srcdir/$pkgname/include/GL/gl.h"
 	patch -p0 <"../patches/dosbox_r3995_digi_pcspkr.diff"
 	patch -p1 <"../patches/dosbox-SVN-r4025-mt32-patch.diff"
+	patch -p0 <"../patches/nukedopl.patch"
 	patch -p1 <"../patches/1_voodoo_gl.diff"
 }
 build() {
@@ -59,4 +58,4 @@ sha256sums=('SKIP'
             'e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56'
             'e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a'
             '228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81'
-            '4463075b8be563a77fcac54b55f2b5fd46e40e013babbb65f31817a8f6f8cc0e')
+            '1bee6dba880cbeaf0ee7fc75f0812967a9ccd570b6f948194cfd1c7a570db492')
