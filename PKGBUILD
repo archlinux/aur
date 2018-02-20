@@ -2,31 +2,27 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=onedrive
-pkgver=1.1
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Free OneDrive client written in D'
 arch=('i686' 'x86_64')
 url='https://github.com/skilion/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd')
-backup=('etc/onedrive.conf')
-install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
-sha256sums=('c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d')
+sha256sums=('fb51c81ec95c28f3fe3b29e3b7f915e30161bd5f4b14bb53ae5c2233cc1e92e9')
 
 prepare() {
-  sed -i 's|/usr/local|/usr|g' $pkgname-$pkgver/onedrive.service
+  printf 'v%s\n' "$pkgver" > $pkgname-$pkgver/version
+  sed -i '/^onedrive:/ s/version //' $pkgname-$pkgver/Makefile
 }
 
 build() {
-  make -C $pkgname-$pkgver
+  make PREFIX=/usr -C $pkgname-$pkgver
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  install -Dm755 onedrive -t "$pkgdir/usr/bin/"
-  install -Dm644 onedrive.conf -t "$pkgdir/etc/"
-  install -Dm644 onedrive.service -t "$pkgdir/usr/lib/systemd/user/"
+  make PREFIX=/usr DESTDIR="$pkgdir" -C $pkgname-$pkgver install
+  install -Dm644 $pkgname-$pkgver/config "$pkgdir/usr/share/onedrive/config.default"
 }

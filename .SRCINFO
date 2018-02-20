@@ -1,9 +1,8 @@
 pkgbase = onedrive
 	pkgdesc = Free OneDrive client written in D
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/skilion/onedrive
-	install = onedrive.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,9 +11,8 @@ pkgbase = onedrive
 	depends = gcc-libs
 	depends = glibc
 	depends = sqlite
-	backup = etc/onedrive.conf
-	source = onedrive-1.1.tar.gz::https://github.com/skilion/onedrive/archive/v1.1.tar.gz
-	sha256sums = c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d
+	source = onedrive-1.1.1.tar.gz::https://github.com/skilion/onedrive/archive/v1.1.1.tar.gz
+	sha256sums = fb51c81ec95c28f3fe3b29e3b7f915e30161bd5f4b14bb53ae5c2233cc1e92e9
 
 pkgname = onedrive
 
