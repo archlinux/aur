@@ -1,6 +1,6 @@
 # Maintainer: Adam Harvey <adam@adamharvey.name>
 pkgname=delve
-pkgver=1.0.0rc2
+pkgver=1.0.0
 pkgrel=1
 epoch=
 pkgdesc="A debugger for the Go programming language"
@@ -22,7 +22,7 @@ changelog=
 # Delve has its own version tags that don't quite line up with Arch's normal
 # versioning, and Git packages the tarballs without the preceding "v". It's all
 # a bit ugly.
-_delve_ver='1.0.0-rc.2'
+_delve_ver='1.0.0'
 _delve_tag="v${_delve_ver}"
 
 # Delve also expects that a standard GOPATH setup is available, and make fails
@@ -33,7 +33,7 @@ _delve_srcdir="src/${_delve_pkg}"
 source=("${url}/archive/${_delve_tag}.tar.gz")
 noextract=()
 md5sums=()
-sha512sums=('d8bf93774a2ac7f24030f01a2ce25b951ac92ec7b7f34ba668053269943e4e2b513cadb61f033c5c2c2d9a847b5eaf50b7c686d5a7092953b79cd9dc6b966b65')
+sha512sums=('128311bb7fd61b5b681c89060d7c0817da649fdbeef6367e627ca537ad4c3f07771d638e7e803c052c95bace8a7f5c8fb07feda1e06ce0ef34fd87143c29fece')
 validpgpkeys=()
 
 build() {
