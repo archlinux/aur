@@ -1,6 +1,6 @@
 pkgbase = magnum-plugins-git
 	pkgdesc = Plugins for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = snapshot.2015.05.r487.g5beea61
+	pkgver = 2018.02.r0.gb4a0a5d
 	pkgrel = 1
 	url = http://magnum.graphics
 	arch = i686

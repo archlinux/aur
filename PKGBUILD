@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=snapshot.2015.05.r487.g5beea61
+pkgver=2018.02.r0.gb4a0a5d
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
