@@ -9,16 +9,18 @@ pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
 arch=("i686" "x86_64")
-depends=("python" "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt4" "fftw" "collada-dom-mitsuba" "boost" "pcre")
-makedepends=("gcc5" "eigen" "scons" "git")
+depends=("python" "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt4" "fftw" "collada-dom-mitsuba" "boost-libs" "pcre")
+makedepends=("gcc5" "eigen" "scons" "git" "boost")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
         "python3.5.patch"
-	"eigen3.3.1.patch")
+        "eigen3.3.1.patch"
+        "irawan.bsdf.drop.patch")
 sha256sums=('SKIP'
             '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04'
-            '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d')
+            '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d'
+            'd2c8e1a1478e279da2a08acfa07e4628f492dabbaa7fd5e7b8706ebe607d4431')
 
 
 pkgver() {
@@ -38,9 +40,11 @@ prepare() {
     #sed -i -e "s:collada-dom:collada-dom2.4:g" -e "s:collada14dom:collada-dom2.4-dp:g" config.py
     ## update GLINCLUDE path to refere to glew-1.13.0 as mitsuba wont build with glew 2.0.0
     sed -i "/XERCESLIB/aGLINCLUDE      = ['/usr/include/glew-1.13.0']" config.py
+    ## fix xerces build with gcc5
+    sed -i "s:\(CXXFLAGS       = \[\):\1 '-std=gnu++11',:" config.py
     patch -Np1 -i ${srcdir}/python3.5.patch 
     patch -Np1 -i ${srcdir}/eigen3.3.1.patch
-
+    patch -Np1 -i ${srcdir}/irawan.bsdf.drop.patch
 }
 
 build() {
