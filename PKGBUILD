@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=libview
