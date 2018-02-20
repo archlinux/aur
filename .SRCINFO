@@ -1,14 +1,12 @@
 pkgbase = resp
 	pkgdesc = Standalone RESP charge fitting program
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://upjv.q4md-forcefieldtools.org
 	arch = i686
 	arch = x86_64
 	license = AMBER
 	makedepends = gcc-fortran
-	depends = gcc-libs
-	depends = glibc
 	source = ftp://ftp.desolve.ru/viktor/resp-2.2.tar.gz
 	md5sums = c0111044db2986323ce84f79f843f662
 
