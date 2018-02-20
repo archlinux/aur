@@ -19,6 +19,7 @@ optdepends=("fprintd: D-Bus daemon that manages fingerprint readers")
 groups=(fprint-git)
 provides=(libfprint)
 conflicts=(libfprint)
+replaces=(libfprint-vfs0090)
 source=("git+https://github.com/3v1n0/libfprint.git")
 md5sums=('SKIP')
 
