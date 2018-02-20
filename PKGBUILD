@@ -2,14 +2,14 @@
 
 pkgname=gpodder3
 _pkgname=gpodder
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
 arch=('any')
 url='http://gpodder.org/'
 conflicts=('gpodder' 'gpodder2' 'gpodder-git')
-depends=('python-dbus' 'python-podcastparser' 'python-mygpoclient' 'python-gobject')
+depends=('python-dbus' 'python-podcastparser' 'python-mygpoclient' 'python-gobject' 'python-cairo')
 makedepends=('intltool' 'imagemagick' 'help2man')
 optdepends=('libgpod: for ipod support'
             'gnome-bluetooth: transfer podcast via bluethooth'
@@ -31,5 +31,5 @@ package() {
          -e 's|#!/usr/bin/env python$|#!/usr/bin/env python|' \
     $(find $pkgdir/usr/lib/python3.6/site-packages/gpodder/ -name '*.py')
 }
-md5sums=('2303a104690a614935f06f5c6d2ab3ef')
-sha1sums=('bae623e6465f28d75c75170279ffd4e51d3769c7')
+md5sums=('4c072ecd1ab088f3c5f4e9d4f636d1b8')
+sha1sums=('0feb4254d09824b13c6842b3aadbfc9afa9bd9e6')
