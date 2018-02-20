@@ -1,4 +1,4 @@
-# Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
+# Contributor: Paul Wilk <paul.wilk@null.net>
 # based on vmware-server-console and bin32-vmware-server PKGBUILDs
 
 pkgname=bin32-vmware-server-console
