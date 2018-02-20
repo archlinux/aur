@@ -1,10 +1,11 @@
 pkgbase = ruby-colored
 	pkgdesc = Ruby library for colorizing text output in your terminal
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/defunkt/colored
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = colored-1.2.gem
 	source = https://rubygems.org/downloads/colored-1.2.gem
