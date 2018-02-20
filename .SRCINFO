@@ -1,0 +1,14 @@
+pkgbase = smina-bin
+	pkgdesc = Smina is a fork of Autodock Vina that focuses on improving scoring and minimization
+	pkgver = 20171109
+	pkgrel = 1
+	url = https://sourceforge.net/projects/smina/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	noextract = smina.static
+	source = https://downloads.sourceforge.net/project/smina/smina.static
+	md5sums = 2c36acc7c512a800640012355ea791bc
+
+pkgname = smina-bin
+
