@@ -1,7 +1,7 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
 	pkgver = 26.0.91
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = emacs-pretest
 	depends = dconf
 	depends = desktop-file-utils
 	depends = alsa-lib
-	depends = imagemagick
+	depends = libmagick6
 	depends = gnutls
 	provides = emacs
 	conflicts = emacs

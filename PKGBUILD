@@ -6,12 +6,12 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=26.0.91
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'dconf' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls')
+depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'dconf' 'desktop-file-utils' 'alsa-lib' 'libmagick6' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
@@ -21,6 +21,9 @@ validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF9
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
+
+# Else imagemagick is not detected.
+export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 
   local confopts=(
                   --prefix=/usr
