@@ -2,7 +2,7 @@
 
 _pkgname='agensgraph'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r101.g355d7fc3
+pkgver=VERSION
 pkgrel=1
 pkgdesc="A multi-model graph database based on PostgreSQL."
 arch=('i686' 'x86_64')
@@ -40,6 +40,7 @@ pkgver() {
   git describe --long --tags | sed -e 's/^v//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
   set +u
 }
+
 prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -Np1 < ../postgresql-run-socket.patch
