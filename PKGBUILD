@@ -1,10 +1,10 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-extras-git
-pkgver=snapshot.2015.05.r104.g02d87f6
+pkgver=2018.02.r0.ge60d981
 pkgrel=1
-pkgdesc="Extras for Magnum graphics engine (Git version)"
+pkgdesc="Extras for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://mosra.cz/blog/magnum.php"
+url="http://magnum.graphics"
 license=('MIT')
 depends=('magnum-git')
 makedepends=('cmake' 'git')
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
