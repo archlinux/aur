@@ -1,7 +1,7 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname=gnome-osx-space-grey-gtk-theme
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 epoch=5
 pkgdesc='Gnome-OSX V Space Grey GTK Theme'
@@ -14,13 +14,16 @@ depends=('gtk-engine-murrine')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-_name='Gnome-OSX-V-Space-Grey'
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518825410/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
+md5sums=('1ed12bf34a04f2691ba50e8fe8ac43c0')
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1517759742/s/$_s/t/$_t/$_name-${pkgver//./-}.tar.xz")
-md5sums=('5b19643a3ae488346b00bb51104d9f13')
+_dirname='Gnome-OSX-SpaceGrey-->2-themes'
+_themename='Gnome-OSX-V-Space-Grey'
 
 prepare() {
-    mv "$_name-${pkgver//./-}" "$_name"
+    mv "$_dirname/$_themename-${pkgver//./-}" "$_themename"
+    mv "$_dirname/$_themename-NT-${pkgver//./-}" "$_themename-NT"
+    rmdir $_dirname
 }
 
 package() {
