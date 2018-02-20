@@ -1,14 +1,14 @@
 # Maintainer: Thomas Lübking <thomas.luebking@gmail.com>
 
 pkgname=qnetctl-git
-pkgver=20140422
+pkgver=20180220
 pkgrel=1
 pkgdesc="A Qt GUI for netctl"
 arch=('i686' 'x86_64')
 url="https://github.com/luebking/qnetctl/"
 license=('GPL2')
 groups=('base')
-depends=('qt4')
+depends=('qt5-base')
 makedepends=('git')
 conflicts=()
 provides=('qnetctl')
@@ -29,7 +29,7 @@ build() {
         cd "$_gitname"
     fi
 
-    qmake-qt4 qmake.pro
+    qmake-qt5 qmake.pro
     make
 }
 
