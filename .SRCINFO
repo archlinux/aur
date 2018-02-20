@@ -1,0 +1,33 @@
+pkgbase = uget-integrator-browser
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ugetdm/uget-extension
+	arch = any
+	license = GPL3
+	depends = uget-integrator-bin
+	source = ugetdm-chrome-0.0.1::https://raw.githubusercontent.com/ugetdm/uget-integrator/v0.0.1/conf/com.ugetdm.chrome.json
+	source = ugetdm-firefox-0.0.1::https://raw.githubusercontent.com/ugetdm/uget-integrator/v0.0.1/conf/com.ugetdm.firefox.json
+	md5sums = 09303ac5e041a9788cf0748929cbd827
+	md5sums = 14049191a778e186d6805b65972245d9
+
+pkgname = uget-integrator-chrome
+	pkgdesc = Configuration to connect Google Chrome with uget-integrator
+	install = chrome.install
+	optdepends = google-chrome: the browser
+
+pkgname = uget-integrator-chromium
+	pkgdesc = Configuration to connect Chromium with uget-integrator
+	install = chrome.install
+	optdepends = chromium: the browser
+
+pkgname = uget-integrator-opera
+	pkgdesc = Configuration to connect Opera with uget-integrator
+	install = opera.install
+	optdepends = opera-beta: the browser beta version
+	optdepends = opera-developer: the browser developer version
+
+pkgname = uget-integrator-firefox
+	pkgdesc = Configuration to connect Firefox with uget-integrator
+	install = firefox.install
+	optdepends = firefox: the browser
+
