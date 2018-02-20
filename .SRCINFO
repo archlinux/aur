@@ -1,0 +1,13 @@
+pkgbase = printproto-fix
+	pkgdesc = X11 print extension wire protocol
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = xorg-util-macros
+	source = https://xorg.freedesktop.org//releases/individual/proto/printproto-1.0.5.tar.bz2
+	sha1sums = 4ddb7781ebc2418d681a6f5e16d777aed56ea35e
+
+pkgname = printproto-fix
+
