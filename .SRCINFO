@@ -1,6 +1,6 @@
 pkgbase = magnum-git
 	pkgdesc = C++11/C++14 graphics middleware for games and data visualization (Git version)
-	pkgver = snapshot.2015.05.r1507.g77764c0b
+	pkgver = 2018.02.r0.g8c921a70
 	pkgrel = 1
 	url = http://magnum.graphics
 	arch = i686
