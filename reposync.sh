@@ -27,7 +27,7 @@ trap 'bash -c "$exit_cmd"' EXIT
 repo="$(mktemp -d)"
 defer "rmdir '$repo'"
 
-s3fs "${bucket}" "$repo" -o "nosuid,nodev,default_acl=public-read,url=$bucket_url"
+s3fs "${bucket}" "$repo" -o "nosuid,nodev,default_acl=public-read,url=$bucket_url,retries=10"
 defer "fusermount -u '$repo'"
 mkdir -p "$repo/${repo_path}"
 
