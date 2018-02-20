@@ -1,10 +1,10 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-integration-git
-pkgver=snapshot.2015.05.r250.g96fa27a
+pkgver=2018.02.r0.ga12afd4
 pkgrel=1
-pkgdesc="Integration libraries for Magnum OpenGL graphics engine (Git version)"
+pkgdesc="Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://mosra.cz/blog/magnum.php"
+url="http://magnum.graphics"
 license=('MIT')
 depends=('magnum-git' 'bullet')
 makedepends=('cmake' 'git')
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
@@ -25,7 +25,8 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_BULLET=ON
+        -DWITH_BULLET=ON \
+        -DWITH_DART=OFF
     make
 }
 
