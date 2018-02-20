@@ -1,13 +1,14 @@
 pkgbase = bonzomatic-git
 	pkgdesc = a live-coding tool where you can write a 2D fragment/pixel shader while it is running in the background
 	pkgver = r284.362c1de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gargaj/bonzomatic
 	arch = x86_64
 	license = custom:Unlicense
 	makedepends = git
 	makedepends = cmake
 	makedepends = glu
+	makedepends = chrpath
 	depends = xorg-server
 	depends = libxrandr
 	depends = libxinerama

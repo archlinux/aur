@@ -3,7 +3,7 @@
 _pkgname="bonzomatic"
 pkgname=("${_pkgname}-git")
 pkgver=r284.362c1de
-pkgrel=1
+pkgrel=2
 pkgdesc='a live-coding tool where you can write a 2D fragment/pixel shader while it is running in the background'
 arch=('x86_64')
 url='https://github.com/Gargaj/bonzomatic'
@@ -11,7 +11,7 @@ license=('custom:Unlicense')
 provides=('bonzomatic')
 conflicts=('bonzomatic')
 depends=('xorg-server' 'libxrandr' 'libxinerama' 'libxcursor' 'libbass')
-makedepends=('git' 'cmake' 'glu')
+makedepends=('git' 'cmake' 'glu' 'chrpath')
 source=('git+https://github.com/Gargaj/bonzomatic.git')
 md5sums=('SKIP')
 
@@ -35,6 +35,9 @@ build() {
 
 package() {
   cd "${_pkgname}/build"
+
+  # Fix insecure rpath
+  chrpath -d Bonzomatic
 
   install -Dm755 Bonzomatic "${pkgdir}/usr/bin/Bonzomatic"
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
