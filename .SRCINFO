@@ -1,6 +1,6 @@
 pkgbase = python-ffc
 	pkgdesc = A compiler for finite element variational forms (stable).
-	pkgver = 20170509
+	pkgver = 2017.2.0
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/ffc
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ffc
 	depends = python-ufl
 	conflicts = python-ffc-git
 	options = !emptydirs
-	source = ffc::git+https://bitbucket.org/fenics-project/ffc.git#tag=2017.1.0
+	source = ffc::git+https://bitbucket.org/fenics-project/ffc.git#tag=2017.2.0
 	md5sums = SKIP
 
 pkgname = python-ffc
