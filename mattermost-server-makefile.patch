@@ -1,13 +1,13 @@
-diff --git Makefile-bk Makefile
-index fe98842..3ee6250 100644
---- Makefile-bk
+diff --git Makefile~ Makefile
+index ca8fafd..af07d15 100644
+--- Makefile~
 +++ Makefile
-@@ -465,7 +465,7 @@ clean:
+@@ -477,7 +477,7 @@ clean: stop-docker ## Clean up everything except persistant server data.
  
  	cd $(BUILD_WEBAPP_DIR) && $(MAKE) clean
  
--	find . -type d -name data | xargs rm -r
-+	find . -type d -name data | xargs rm -rf
+-	find . -type d -name data -not -path './vendor/*' | xargs rm -r
++	find . -type d -name data -not -path './vendor/*' | xargs rm -rf
  	rm -rf logs
  
  	rm -f mattermost.log
