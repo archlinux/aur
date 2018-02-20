@@ -2,7 +2,7 @@
 # Based on community/gsmartcontrol
 
 pkgname=gsmartcontrol-svn
-pkgver=r116
+pkgver=r251
 pkgrel=1
 pkgdesc="A graphical user interface for the smartctl hard disk drive health inspection tool."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://gsmartcontrol.sourceforge.net/home"
 license=('GPL3')
 conflicts=('gsmartcontrol')
 provides=('gsmartcontrol')
-depends=('smartmontools' 'gtkmm' 'xorg-xmessage' 'hicolor-icon-theme')
+depends=('smartmontools' 'gtkmm3' 'xorg-xmessage' 'hicolor-icon-theme')
 optdepends=('polkit: to run gsmartcontrol directly from menu')
 install=${pkgname}.install
 source=(${pkgname}::svn://svn.code.sf.net/p/gsmartcontrol/code/trunk/gsmartcontrol
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	./configure --prefix=/usr
+	CXXFLAGS+=' -std=c++11' ./configure --prefix=/usr --sbindir=/usr/bin/
 	make 
 }
 
