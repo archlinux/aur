@@ -1,14 +1,15 @@
 post_install() {
-  echo "Finalising the font directory..."
-  fc-cache -vfs
-  mkfontscale usr/share/fonts/misc
-  mkfontdir usr/share/fonts/misc
+	fc-cache -vfs
+	mkfontscale /usr/share/fonts/misc
+	mkfontdir /usr/share/fonts/misc
 }
 
 post_upgrade() {
-  post_install
+	post_install
 }
 
 post_remove() {
-  post_install
+	post_install
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
