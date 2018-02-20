@@ -6,12 +6,12 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=26.0.91
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'dconf' 'desktop-file-utils' 'alsa-lib' 'libmagick6' 'gnutls')
+depends=('gpm' 'm17n-lib' 'gtk3' 'libmagick6' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
