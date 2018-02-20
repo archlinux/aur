@@ -4,11 +4,11 @@
 # Contributor: Jerome Berger <jeberger@free.fr>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Elijah Stone <elronnd@protonmail.ch>
+# Contributor: Elijah Stone <elronnd@elronnd.net>
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=7.2.0
-pkgrel=3
+pkgver=7.3.0
+pkgrel=1
 _islver=0.18
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,20 +16,18 @@ url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-	https://ftp.gnu.org/pub/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
+	https://ftp.gnu.org/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
-	init.diff
 )
 sha256sums=(
-	'1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
+	'832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
 	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
 	'SKIP'
 	'SKIP'
 	'fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b'
-	'5f9efcd016389c3940afdc5819c218f44557c816a785f99373d796bebb0e7465'
 )
 
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
@@ -53,7 +51,6 @@ prepare() {
 	cd $srcdir/gdc
 	git checkout gdc-7
 	git apply $srcdir/paths.diff
-	git apply $srcdir/init.diff
 	./setup-gcc.sh ../gcc-$pkgver
 
 	mkdir $srcdir/gcc-build
