@@ -1,0 +1,11 @@
+--- parse_doxygen.py	2018-02-20 10:09:01.595734780 +0100
++++ parse_doxygen.py.new	2018-02-20 10:09:35.768496224 +0100
+@@ -634,6 +634,8 @@
+     def add_text(text):
+         if text is not None and text.strip():
+             tl = text.split('\n')
++            if isinstance(lines[-1], bytes):
++                lines[-1] = lines[-1].decode('utf-8')
+             lines[-1] += tl[0]
+             lines.extend([indent + line for line in tl[1:]])
+             if text.endswith('\n'):

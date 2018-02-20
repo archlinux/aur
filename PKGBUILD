@@ -2,29 +2,37 @@
 # Based on dolfin-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com> and submitted by myles
 
 _base=dolfin
-_fragment="#tag=2017.1.0"
 pkgname=${_base}
 pkgdesc="the C++ and Python interfaces of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable)."
-pkgver=20170509
+pkgver=2017.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics')
 conflicts=('dolfin-git')
-depends=('cppunit' 'eigen' 'gl2ps' 'hdf5' 'python-ffc' 'slepc' 'suitesparse')
-optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning')
-makedepends=('git')
+depends=('python-instant'
+         'python-pkgconfig'
+				 'python-ply'
+				 'swig'
+				 'cppunit'
+				 'eigen'
+				 'gl2ps'
+				 'hdf5'
+				 'python-ffc'
+				 'petsc'
+				 'suitesparse')
+optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
+            'python-mpi4py: MPI library for python'
+            'slepc: eigenvalue problem solvers'
+            'petsc4py: interface with PETSc from python'
+            'slepc4py: interface with SLEPc from python'
+            'python-matplotlib: plotting support')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 export MAKEFLAGS="-j1"
-
-pkgver() {
-	cd ${_base}
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
-}
 
 build() {
 	cd ${_base}
@@ -34,16 +42,19 @@ build() {
 
 	local py_interp=`python -c "import os,sys; print(os.path.realpath(sys.executable))"`
 
-	[ -z "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
-	[ -z "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
+	[ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
+	[ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
+
+	echo $(pwd)
+	patch ../doc/parse_doxygen.py < ../../../parse_doxygen.patch 
 
 	cmake ..\
 		-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
 		-DPYTHON_EXECUTABLE="${py_interp}" \
-		-DDOLFIN_ENABLE_DOCS=FALSE \
 		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
 		-DCMAKE_SKIP_RPATH=TRUE \
 		-DCMAKE_BUILD_TYPE="Release"
+		# -DDOLFIN_ENABLE_DOCS=FALSE \
 
 	make
 }
