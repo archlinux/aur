@@ -1,4 +1,4 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Paul Wilk <paul.wilk@null.net>
 
 pkgname=google-keep-desktop
 pkgver=1.7.9
