@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-glpk
-pkgver=4.64
+pkgver=4.65
 pkgrel=1
 pkgdesc="GNU Linear Programming Kit : solve LP, MIP and other problems. (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/glpk/glpk-${pkgver}.tar.gz)
-sha256sums=('539267f40ea3e09c3b76a31c8747f559e8a097ec0cda8f1a3778eec3e4c3cc24')
+sha256sums=('4281e29b628864dfe48d393a7bedd781e5b475387c20d8b0158f329994721a10')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
