@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=corrade-git
-pkgver=snapshot.2015.05.r752.gbfd0d98e
+pkgver=2018.02.r0.ga5d4c8b7
 pkgrel=1
 pkgdesc="C++11/C++14 multiplatform utility library (Git version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
