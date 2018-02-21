@@ -39,7 +39,7 @@ pkgbase = bitwarden
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/bitwarden/desktop/releases/download/v0.0.7/bitwarden_0.0.7_amd64.deb
-	sha512sums_x86_64 = b53a3cff285efb98e9c0ce3a774b95229a3bc92d9d5ca287be3585d39c8ae5bddb5cb0d595008aa067451bf6611da4ec432b8b3979aa4e34e76ddc845f7db447
+	sha512sums_x86_64 = 3e44a0b1e6edd2f3a052df3474cca37cb82d961bee67e0fcdede23ac8a6cb96a4c0a0e3ea9eeb1ab0626cee0a970598baae031d2aa7d5c6d507794c2fa99603e
 
 pkgname = bitwarden
 
