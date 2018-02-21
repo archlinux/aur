@@ -1,7 +1,7 @@
 pkgbase = neovim-youcompleteme-core-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2199.b4ab6da8
-	pkgrel = 1
+	pkgver = r2268.d27563d2
+	pkgrel = 2
 	url = https://valloric.github.io/YouCompleteMe/
 	arch = i686
 	arch = x86_64
