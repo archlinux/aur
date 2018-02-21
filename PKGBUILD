@@ -7,12 +7,12 @@ pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.31.r400.gc79b4ff22
+pkgver=2.31.r470.g8fd74f718
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs')
+makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils')
 # the following checkdepends are only required for static checks and unit tests,
 # both are currently disabled
 # checkdepends=('python' 'squashfs-tools' 'indent' 'shellcheck')

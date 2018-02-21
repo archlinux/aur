@@ -1,6 +1,6 @@
 pkgbase = snapd-git
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.31.r400.gc79b4ff22
+	pkgver = 2.31.r470.g8fd74f718
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
@@ -13,6 +13,7 @@ pkgbase = snapd-git
 	makedepends = libcap
 	makedepends = systemd
 	makedepends = xfsprogs
+	makedepends = python-docutils
 	depends = squashfs-tools
 	depends = libseccomp
 	depends = libsystemd
