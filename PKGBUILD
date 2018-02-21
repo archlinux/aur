@@ -21,7 +21,7 @@ options=('strip' 'zipman')
 source=("http://www.rsyslog.com/files/download/rsyslog/rsyslog-$pkgver.tar.gz"
 	'rsyslog.logrotate'
 	'rsyslog.conf')
-sha256sums=('9646fdc33a6314464cba68323716010a8a55c3deb523cd798ba8b41a0efa40b8'
+sha256sums=('2df39d91baddb75c575aa03525cd9d4d20aad75011c6d6d25ef773ac26ff5c12'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             '5fd51665ab9a81fbb24773068cb261b8dec073d74082c121633f49b9381d9a3f')
 
