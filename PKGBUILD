@@ -1,9 +1,9 @@
-# Maintainer: Tim Buecher <timbuecher.dev@gmail.com>
-# Contributor: James An <james@jamesan.ca>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Tim Buecher <timbuecher.dev@gmail.com>
 
 pkgname=geany-astyle
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Sourcecode formatter/beautifier based on AStyle for Geany'
 url='https://launchpad.net/geany-astyle'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('d3ef9979426d217a3c6becb5ecad4422')
 build() {
     cd "astyle-plugin-src-$pkgver/src"
 
-    gcc main.c -O2 -fPIC `pkg-config --cflags geany` -lastyle-2.05.1 -shared `pkg-config --libs geany` -o "astyle_plugin.so"
+    gcc main.c -O2 -fPIC `pkg-config --cflags geany` -lastyle -shared `pkg-config --libs geany` -o "astyle_plugin.so"
 }
 
 package() {
