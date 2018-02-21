@@ -6,14 +6,14 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}-unstable
-pkgver=3951_4.14_r52_g0c8fe06e
+pkgver=4055_4.15.1_r9_g2b44dd41
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license=('GPL')
 depends=('glibc' 'e2fsprogs' 'lzo' 'zlib' 'zstd')
-makedepends=('git' 'asciidoc' 'xmlto')
+makedepends=('git' 'asciidoc' 'xmlto' 'python' 'python-setuptools')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
 _url=https://projects.archlinux.org/svntogit/packages.git/plain/trunk/
