@@ -25,7 +25,6 @@ package() {
     python setup.py install --optimize=1 --root="${pkgdir}"
 
     install -d "/var/lib/encarne"
-    install -m777 "/var/lib/encarne"
 
     # Place systemd user service
     install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
