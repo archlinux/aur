@@ -1,7 +1,7 @@
 pkgbase = simpletools
 	pkgdesc = Handy command line tools for ntuple manipulation and analysis.
 	pkgver = 2.0v.e574cc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cofitzpa/simpletools
 	arch = i686
 	arch = x86_64

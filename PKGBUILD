@@ -2,7 +2,7 @@
 
 pkgname=simpletools
 pkgver=2.0v.e574cc8
-pkgrel=1
+pkgrel=2
 pkgdesc="Handy command line tools for ntuple manipulation and analysis."
 arch=('i686' 'x86_64')
 url="https://github.com/cofitzpa/simpletools"
@@ -16,15 +16,22 @@ sha256sums=('SKIP'
 options=('!emptydirs')
 
 
-package() {
-    # make install target is lost if done in prepare() or build()
-    # do everything here...
+prepare() {
     mkdir -p "${srcdir}/${pkgname}/build"
-    install -d "${pkgdir}/usr/lib/"
     cd "${srcdir}/${pkgname}/build"
     msg2 'Configuring...'
     cmake -C "${srcdir}/settings.cmake" "${srcdir}/${pkgname}"
-    msg2 'Compiling & Installing...'
+}
+
+build() {
+    cd "${srcdir}/${pkgname}/build"
+    msg2 'Compiling...'
+    make
+}
+
+package() {
+    msg2 'Installing...'
+    cd "${srcdir}/${pkgname}/build"
     make DESTDIR="${pkgdir}" install
 
     # install tutorials
