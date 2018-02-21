@@ -13,16 +13,17 @@ conflicts=('vim' 'vi' 'vi-vim-symlink')
 
 package() {
   install -dm755 "$pkgdir/usr/bin/"
+  cd "$pkgdir/usr/bin/"
 
-  echo -e '#!/bin/sh\nexec nvim -e "$@"'  > "$pkgdir/usr/bin/ex"
-  echo -e '#!/bin/sh\nexec nvim -E "$@"'  > "$pkgdir/usr/bin/exim"
-  echo -e '#!/bin/sh\nexec nvim -RZ "$@"' > "$pkgdir/usr/bin/rview"
-  echo -e '#!/bin/sh\nexec nvim -Z "$@"'  > "$pkgdir/usr/bin/rvim"
-  echo -e '#!/bin/sh\nexec nvim -R "$@"'  > "$pkgdir/usr/bin/view"
-  echo -e '#!/bin/sh\nexec nvim -d "$@"'  > "$pkgdir/usr/bin/vimdiff"
-  chmod 755 "$pkgdir/usr/bin/"*
+  echo -e '#!/bin/sh\nexec nvim -e "$@"'  > ex
+  echo -e '#!/bin/sh\nexec nvim -E "$@"'  > exim
+  echo -e '#!/bin/sh\nexec nvim -RZ "$@"' > rview
+  echo -e '#!/bin/sh\nexec nvim -Z "$@"'  > rvim
+  echo -e '#!/bin/sh\nexec nvim -R "$@"'  > view
+  echo -e '#!/bin/sh\nexec nvim -d "$@"'  > vimdiff
+  chmod 755 *
 
   for _link in edit vedit vi vim; do
-    ln -s nvim "$pkgdir/usr/bin/$_link"
+    ln -s nvim $_link
   done
 }
