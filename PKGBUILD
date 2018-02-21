@@ -1,7 +1,7 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="yatqa"
-_pkgver="3.9b"
+_pkgver="3.9c"
 pkgver="${_pkgver/-/}"
 epoch="1"
 pkgrel="1"
@@ -17,7 +17,7 @@ source=("http://yat.qa/YaTQA-Setup_${_pkgver}.exe"
         "yatqa.desktop"
         "yatqa.install"
         "LICENSE")
-sha256sums=('13a9ab7ccf130b29432d1b146c0e18267f0adbcfedf35e64e21071c8c0aa8f07'
+sha256sums=('3ff3ee8ef9fa65f6ca297d5ad267d5831b36876822aa93329c141e752afc6908'
             '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
