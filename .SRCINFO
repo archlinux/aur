@@ -1,0 +1,20 @@
+pkgbase = docker-manager-git
+	pkgdesc = Ease the use of docker containers (start/connect/save/stop), written in Golang.
+	pkgver = v0.2.beta.r2.g693a156
+	pkgrel = 1
+	url = https://github.com/BenjaminNavarro/docker-manager
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = docker-manager
+	conflicts = docker-manager
+	options = !strip
+	options = !emptydirs
+	source = docker-manager::git+http://github.com/BenjaminNavarro/docker-manager#branch=master
+	md5sums = SKIP
+
+pkgname = docker-manager-git
+
