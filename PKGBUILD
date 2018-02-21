@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=brook-systemd
 pkgver=v20180112
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Install brook(client) with systemd"
 arch=('x86_64')
@@ -33,6 +33,6 @@ validpgpkeys=()
 package() {
 	install -D brook $pkgdir/opt/brook
 	install -Dm644 brook-client.service $pkgdir/usr/lib/systemd/system/brook-client.service
-	install -Dm644 brook-client-http.service $pkgdir/usr/lib/systemd/system/brook-client.service
+	install -Dm644 brook-client-http.service $pkgdir/usr/lib/systemd/system/brook-client-http.service
 	install -Dm644 EnvironmentFile $pkgdir/etc/default/brook
 }
