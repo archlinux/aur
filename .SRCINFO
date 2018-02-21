@@ -11,6 +11,7 @@ pkgbase = openglide-git
 	depends = sdl
 	depends = glu
 	depends = libsm
+	conflicts = openglide-cvs
 	options = !libtool
 	source = openglide::git+https://github.com/voyageur/openglide
 	md5sums = SKIP

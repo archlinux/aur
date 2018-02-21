@@ -12,6 +12,7 @@ license=('GPL2')
 options=(!libtool)
 depends=('mesa' 'sdl' 'glu' 'libsm')
 makedepends=('cvs')
+conflicts=('openglide-cvs')
 source=("$_pkgname::git+https://github.com/voyageur/openglide")
 md5sums=('SKIP')
 
