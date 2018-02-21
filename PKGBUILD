@@ -16,7 +16,7 @@ depends=(wayland wayland-protocols
          xcb-util-image xcb-util-wm
          libinput
          libcap udev systemd)
-makedepends=(git meson pkg-config)
+makedepends=(git pkg-config meson ninja)
 source=("$pkgname::git+$url")
 sha512sums=(SKIP)
 
