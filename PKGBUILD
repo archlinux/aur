@@ -16,21 +16,21 @@ source=("git+https://github.com/nukesor/encarne.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "${_gitname}"
+    cd "${_gitname}"
 
-  # We don't need anything related to git in the package
-  rm -rf .git*
+    # We don't need anything related to git in the package
+    rm -rf .git*
 
-  # Install
-  python setup.py install --optimize=1 --root="${pkgdir}"
+    # Install
+    python setup.py install --optimize=1 --root="${pkgdir}"
 
-  mkdir /var/lib/encarne
-  chown 777 /var/lib/encarne
+    install -d -m777 "/var/lib/encarne"
 
-  # Place systemd user service
-  install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
+    # Place systemd user service
+    install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
+    install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
 
-  # Install License
-  # MIT/X11 license
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install License
+    # MIT/X11 license
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
