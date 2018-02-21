@@ -1,4 +1,4 @@
-# Maintainer: Ivan Trubach <dev@b1nary.tk>
+# Maintainer: Ivan Trubach <mr.trubach@icloud.com> <dev@b1nary.tk>
 
 pkgname=wlroots-full-git
 pkgver=r1924.2e7d886
