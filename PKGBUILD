@@ -1,16 +1,16 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.3.0
-_build=f1
-_buildtag=20171206
-_randomstring=3c89f8d277f5
+_version=2018.1.0
+_build=b8
+_buildtag=20180221
+_randomstring=ee2fb9f9da52
 _prefix=/opt/UnityBeta
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
 
 pkgname=unity-editor-beta
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=3
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -42,7 +42,7 @@ source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor-beta'
         'unity-editor-beta.desktop'
         'unity-editor-beta-icon.png')
-sha1sums=('864eec744e5ca360c41e6121ddbd4cbb48659fe4'
+sha1sums=('1322e5922b3a5b37910b30e308740cc453211ebd'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
           'fddf4861974f88f0565de7f54f7418204e729894')
