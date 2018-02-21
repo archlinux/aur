@@ -1,7 +1,7 @@
 pkgbase = brook-systemd
 	pkgdesc = Install brook(client) with systemd
 	pkgver = v20180112
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/txthinking/brook
 	arch = x86_64
 	license = GPL
