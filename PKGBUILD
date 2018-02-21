@@ -1,8 +1,8 @@
 # Contributor: clu@eeviac
 
 pkgname=perl-text-unidecode
-pkgver=0.04
-pkgrel=2
+pkgver=1.30
+pkgrel=1
 pkgdesc="US-ASCII transliterations of Unicode text"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Text-Unidecode"
@@ -10,7 +10,7 @@ license=('Unknown')
 depends=('perl>=5.6.0')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/Text-Unidecode-${pkgver}.tar.gz)
-sha1sums=('baf3e2f90011e25fb10cb4d47ade53cc3977b3af')
+sha1sums=('13c28520896a0073e0ea9333a2b6b770dcf17d6e')
 
 build() {
   cd  ${srcdir}/Text-Unidecode-${pkgver}
