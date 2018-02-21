@@ -2,7 +2,7 @@
 
 pkgname=gnome-usage
 pkgver=3.27.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g;s/^v//'
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = gnome-usage
 	pkgdesc = A nice way to view information about use of system resources
 	pkgver = 3.27.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
 	arch = x86_64
