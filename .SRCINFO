@@ -1,0 +1,15 @@
+pkgbase = brother-hll2350dw
+	pkgdesc = Brother HL-L2350DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	source = http://download.brother.com/welcome/dlf103565/hll2350dwpdrv-4.0.0-1.i386.rpm
+	sha512sums = 6f09adf26da9db35a45a540ae08fdf74cf00ca9edd98075a5a043003b84ae2c9c28e989c0e422bf7a6f2d6474600043150d6f23e5b3cdbf2687e525b0af67b42
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hll2350dw
+
