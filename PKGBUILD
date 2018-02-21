@@ -1,7 +1,7 @@
 # Maintainer: Tim Diels <timdiels.m@gmail.com>
 
 pkgname=electroneum
-pkgver=0.11.0.0
+pkgver=0.11.1.0
 pkgrel=1
 pkgdesc='Secure, private, mobile based cryptocurrency '
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
     'graphviz: documentation'
 )
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('0c459d99d18db514ba66f1df84e92daa')
+md5sums=('368005dbbd07fa8b0a90f8b9efda4ff2')
 
 build() {
     cd "$pkgname-$pkgver"
