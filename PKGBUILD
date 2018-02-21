@@ -4,7 +4,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=4.0.3-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -31,6 +31,7 @@ source=(
     "lldb_missing_include.patch"
     "glibc-2.26.patch"
     "glibc-2.26-compiler-rt-compat.patch"
+    "sr6176.patch"
 )
 sha256sums=('026d596dd4a24580a5e442409e8c58259197bd73ddbb77e5aade96da982ea39b'
             'a611487a82636142bc1ea8ef5b21401a5c75e57fb0dbf041ef8f2e85a472db2e'
@@ -47,7 +48,8 @@ sha256sums=('026d596dd4a24580a5e442409e8c58259197bd73ddbb77e5aade96da982ea39b'
             '18b7895fba15702419e86ae593531669c3966d1c8aa9a83361c5c8ef9d54f893'
             'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e'
             '215473272ec550c58fd2852c3e1c4aa4482a7d2b4980308df14f4a18676775a9'
-            '2311adf234f52831af3b326d0d589fceae0a5336aa8576fdfd62afe71c195124')
+            '2311adf234f52831af3b326d0d589fceae0a5336aa8576fdfd62afe71c195124'
+            '22a0320dc3474f8be133b2d50d72c7feb215d847feee181549bbbd27735e5ab6')
 
 prepare() {
     # Use python2 where appropriate
@@ -85,8 +87,8 @@ prepare() {
     ( cd "${srcdir}" && patch -p1 -i "${srcdir}/glibc-2.26.patch" )
     ( cd "${srcdir}/compiler-rt" && patch -p1 -i "${srcdir}/glibc-2.26-compiler-rt-compat.patch" )
 
-    # Skip failing test for now (see https://bugs.swift.org/browse/SR-6176)
-    rm "${srcdir}/swift/test/Constraints/tuple_arguments.swift"
+    # Backported fix for SR-6176
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sr6176.patch" )
 }
 
 _common_build_params=(
