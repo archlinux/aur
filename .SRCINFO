@@ -1,7 +1,7 @@
 pkgbase = reposync
 	pkgdesc = Wrapper for aursync
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = aurutils

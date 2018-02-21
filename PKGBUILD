@@ -1,7 +1,7 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=reposync
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 source=(reposync.sh)
