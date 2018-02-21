@@ -4,7 +4,7 @@
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.32
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
 url="https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/"
@@ -12,10 +12,11 @@ provides=("gtk2=$pkgver")
 conflicts=('gtk2')
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
          'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'librsvg'
-         'desktop-file-utils' 'gtk-doc' 'glib2-patched-thumbnailer')
+         'desktop-file-utils' 'gtk-doc')
 makedepends=('gobject-introspection' 'python2' 'git' 'gtk-doc')
 optdepends=('gnome-themes-standard: Default widget theme' 
-            'gnome-icon-theme: Default icon theme')
+            'gnome-icon-theme: Default icon theme'
+			'glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
 license=('LGPL')
 install=gtk2.install
 _commit=ed7d3e25f8b6debae6ccc8b50d1329155338cab8 # tags/2.24.32^0
