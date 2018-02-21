@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("ctags", "readtags")
-source=("https://github.com/universal-ctags/ctags/archive/master.zip")
-sha256sums=("82bcb0a185db75053fc913274bf07a3e1f94d9dd7a1a5c45146f608f3636a1df")
+source=("git://github.com/universal-ctags/ctags.git")
+sha256sums=("SKIP")
 validpgpkeys=()
 
 package() {
