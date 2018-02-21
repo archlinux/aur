@@ -4,7 +4,7 @@
 pkgname=perl-net-netmask
 _cpanname=Net-Netmask
 _module=Net::Netmask
-pkgver=1.9019
+pkgver=1.9022
 pkgrel=1
 pkgdesc="Parse, manipulate and lookup IP network blocks."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=()
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/M/MU/MUIR/modules/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('406995de27f55980f50f0bfbeb3c2d27')
+md5sums=('67cee41e2214bd0934ff96944b29130c')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
