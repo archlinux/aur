@@ -5,7 +5,7 @@
 set -u
 pkgbase="adminer-skins"
 pkgname=("${pkgbase}-"{brade,bueltge,cvicebni-ubor,galkaev,haeckel,hever,jukin,kahi,konya,nette,ng9,nicu,pappu687,paranoiq,pepa-linha,pilot,pokorny,price})
-pkgver=20150806
+pkgver=20180219
 pkgrel=1
 pkgdesc='Adminer skins'
 arch=('any')
@@ -25,7 +25,7 @@ sha256sums=('87a832112acf015566c41ea4b7e5f67c1e776eba16a933ce348c564dd6dad89b'
             '772d8d75c5a58894b3c45b6f1b96aa9377059b374b6851d362f6abbeb77e948d'
             '2aac952b12abaca9ac324b0aa9f585bf8477a6c122a865ed2a55fc4757b6304d'
             '000bfc1131417a39d20669f230d434817dcec04d9da5a437b9080c196f5a1972'
-            'e00a45388e2712a21b8db61edaee965e851a7523fbf95889fb553e7c67a33ebc'
+            '7721c008bc28de85d81d37a88b61decacd92c274f2cd8bc9a78f52049a8d052d'
             'e58b618996af64de84241db942ceb8f049af842272124481d09b310f720869f9'
             'a2cad46a758f92a9f3cb6816a428b47df74ef1cdf31bd8975ad8cafc0e8f12a8'
             'b0ef4026fda0bcbbda46e958e0d90df984d40debe23669892a66724ae37717c2'
