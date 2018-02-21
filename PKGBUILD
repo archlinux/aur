@@ -15,8 +15,7 @@ replaces=('gtk3-print-backends<=3.22.26.1')
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
          adwaita-icon-theme json-glib librsvg wayland-protocols desktop-file-utils mesa
-         cantarell-fonts colord rest libcups libcanberra glib2-patched-thumbnailer
-         gtk-update-icon-cache)
+         cantarell-fonts colord rest libcups libcanberra gtk-update-icon-cache)
 optdepends=('glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
 

@@ -38,7 +38,6 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = rest
 	depends = libcups
 	depends = libcanberra
-	depends = glib2-patched-thumbnailer
 	depends = gtk-update-icon-cache
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
 	provides = gtk3=3.22.28
