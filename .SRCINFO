@@ -1,6 +1,6 @@
 pkgbase = sddm-archlinux-theme-git
 	pkgdesc = Archlinux Theme for SDDM
-	pkgver = 0.1.r11.g8898d77
+	pkgver = 0.1.r13.ge2054bd
 	pkgrel = 1
 	url = https://github.com/absturztaube/sddm-archlinux-theme
 	install = sddm-archlinux-theme.install
@@ -8,7 +8,7 @@ pkgbase = sddm-archlinux-theme-git
 	license = CCPL:cc-by-sa
 	makedepends = git
 	depends = sddm
-	source = git://github.com/absturztaube/sddm-archlinux-theme.git
+	source = git+https://github.com/absturztaube/sddm-archlinux-theme.git
 	sha256sums = SKIP
 
 pkgname = sddm-archlinux-theme-git

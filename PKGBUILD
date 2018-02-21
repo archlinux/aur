@@ -2,7 +2,7 @@
 
 _pkgname=sddm-archlinux-theme
 pkgname=$_pkgname-git
-pkgver=0.1.r11.g8898d77
+pkgver=0.1.r13.ge2054bd
 pkgrel=1
 pkgdesc="Archlinux Theme for SDDM"
 arch=('any')
@@ -11,7 +11,7 @@ license=('CCPL:cc-by-sa')
 depends=('sddm')
 makedepends=('git')
 install="$_pkgname.install"
-source=("git://github.com/absturztaube/$_pkgname.git")
+source=("git+https://github.com/absturztaube/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,5 +22,5 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/sddm/themes/archlinux/" $_pkgname/archlinux/*
+  install -Dm644 $_pkgname/archlinux/* -t "$pkgdir/usr/share/sddm/themes/archlinux/"
 }
