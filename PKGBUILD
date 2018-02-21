@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 validpgpkeys=()
 
 package() {
-	cd "${srcdir}/ctags-master"
+	cd "${srcdir}/ctags"
 	./autogen.sh
 	./configure
 	make
