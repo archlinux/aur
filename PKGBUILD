@@ -1,5 +1,6 @@
 pkgname=lwt-git
-pkgver=20160212
+_pkgname=lwt
+pkgver=2018_02_21
 pkgrel=1
 pkgdesc="Lightweight terminal emulator based on the VTE and GTK libraries."
 url="https://github.com/mewkiz/lwt"
@@ -12,6 +13,11 @@ install=${pkgname}.install
 
 _gitroot='https://github.com/mewkiz/lwt.git'
 _gitname='lwt'
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git log -1 --format="%cd" --date="format:%Y_%m_%d"
+}
 
 build() {
   cd "$srcdir"
