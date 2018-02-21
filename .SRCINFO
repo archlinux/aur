@@ -1,16 +1,16 @@
 pkgbase = nodejs-create-react-app
 	pkgdesc = Create React apps with no build configuration
-	pkgver = 1.4.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/create-react-app
 	arch = any
 	license = BSD
 	makedepends = npm
 	depends = nodejs
-	noextract = create-react-app-1.4.1.tgz
+	noextract = create-react-app-1.5.2.tgz
 	options = !emptydirs
-	source = https://registry.npmjs.org/create-react-app/-/create-react-app-1.4.1.tgz
-	sha384sums = 9209da6f3f1f56c0ba446ff6227d4c4c84777eeceb8eb11838517a87ed836743365be1599b53d37fbe783d23f42ba76f
+	source = https://registry.npmjs.org/create-react-app/-/create-react-app-1.5.2.tgz
+	sha384sums = ebb884563b86f66ff7d93dd857acd9e167a874727d5f6f19c0e4d893774f3e79e7d847bba1b054e1d72489b59035762b
 
 pkgname = nodejs-create-react-app
 
