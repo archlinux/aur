@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=apple_set_os
-pkgver=v0.r6.g824a907
+pkgver=v1.r6.g7b6fa20
 pkgrel=1
 pkgdesc='Tiny EFI program for unlocking the Intel integrated graphics device on the Macbook Pro 11,3'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   'systemd: has boot loader capable of UEFI chainloading'
 )
 source=(
-  "$pkgname"::"git+https://github.com/0xbb/$pkgname.efi.git"
+  "$pkgname"::"git+https://github.com/rudis/$pkgname.efi.git"
 )
 md5sums=('SKIP')
 
