@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=clipmenu
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
@@ -11,7 +11,7 @@ depends=(dmenu xsel clipnotify)
 conflicts=(clipmenu-git)  # Old package from pre-AUR4 days
 
 source=("https://github.com/cdown/clipmenu/archive/${pkgver}.zip")
-md5sums=('40e6a6b10f1a284815b2f74e32045022')
+md5sums=('98b795f9a845b17bea7f33d019121de1')
 
 package() {
     install -D -m755 \
