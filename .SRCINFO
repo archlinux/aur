@@ -1,0 +1,23 @@
+pkgbase = lazyman
+	pkgdesc = A simple program that lets you stream every NHL and MLB game
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/StevensNJD4/LazyMan
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-setuptools
+	depends = jdk8-openjdk
+	optdepends = vlc: optional video player - choose one
+	optdepends = mpv: optional video player - choose one
+	source = https://github.com/StevensNJD4/LazyMan/releases/download/2.3.0.20171231/Mac_Linux.zip
+	source = lazyman.sh
+	source = lazyman.desktop
+	source = lazyman.png
+	md5sums = d1366c1dcfc4ec786de42b90a478e709
+	md5sums = 1d3917bff7f174d3e19e62d1ea2b49a7
+	md5sums = fdfd3f5bad0b9ec34f15a361ff737f4c
+	md5sums = 41aebb968e8b6856d1b73cabd6a8c5d2
+
+pkgname = lazyman
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LazyMan
+Version=1.0
+Comment=None
+Exec=/usr/bin/lazyman
+Icon=/opt/lazyman/lazyman.png
+Terminal=false
+Type=Application
+Categories=Video,Player
+StartupNotify=false
