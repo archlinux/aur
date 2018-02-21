@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=apple_set_os
-pkgver=v1.r6.g7b6fa20
+pkgver=1.r6.g7b6fa20
 pkgrel=1
 pkgdesc='Tiny EFI program for unlocking the Intel integrated graphics device on the Macbook Pro 11,3'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
     cd "$pkgname"
     (
         set -o pipefail
-        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        git describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
