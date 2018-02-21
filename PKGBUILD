@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nash-git
-pkgver=r444.5a9bdb1
+pkgver=r959.09e8c98
 pkgrel=1
 epoch=
 pkgdesc="A system shell that attempts to be more safe and give more power to user."
