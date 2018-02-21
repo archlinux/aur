@@ -1,6 +1,6 @@
 pkgbase = neovim-symlinks
 	pkgdesc = Runs neovim if vi or vim is called
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	arch = any
 	depends = neovim
