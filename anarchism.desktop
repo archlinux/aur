@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=An Anarchist FAQ
-Exec=xdg-open file:///usr/share/doc/anarchism/html/index.html
-Icon=anarchism.png
-Name=An Anarchist FAQ
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Education;Science
