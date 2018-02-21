@@ -1,9 +1,10 @@
 # Maintainer: Jamie Christian <itschristian at gmail dot com>
+
 _pkgname=RespeQt
 pkgbase=respeqt-git
 pkgname=respeqt-git
-pkgver=r3.r72.g2b777b8
-pkgrel=1
+pkgver=r4.r4.g2e50a40
+pkgrel=5
 pkgdesc="RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable."
 url="https://github.com/jzatarski/RespeQt"
 arch=('i686' 'x86_64')
