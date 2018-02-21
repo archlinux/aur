@@ -1,15 +1,14 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=ksnip-git
-pkgver=r201.97bf19d
+pkgver=r261.44c9092
 pkgrel=1
 pkgdesc='Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/ksnip'
 license=('GPL')
 depends=(qt5-x11extras)
-makedepends=(git cmake)
-optdepends=()
+makedepends=(git cmake extra-cmake-modules qt5-tools)
 source=('git+https://github.com/DamirPorobic/ksnip.git')
 _gitname='ksnip'
 md5sums=(SKIP)
