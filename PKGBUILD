@@ -1,7 +1,7 @@
 # Maintainer: Fabian Zaremba <fabian@youremail.eu>
 
 pkgname=jupyterlab-git
-pkgver=v0.31.6.r11.g987702e76
+pkgver=0.31.6.r21.g97e1decaf
 pkgrel=1
 pkgdesc="JupyterLab computational environment."
 url="https://jupyter.org"
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/jupyterlab"
-        git describe --match "v[0-9]*\.[0-9]*\.[0-9]*" --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --match "v*" --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
