@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 #url="http://directory.fsf.org/project/HexCurse/"
 url="https://github.com/LonnyGomes/hexcurse"
 license=('GPL')
+depends=('ncurses')
 options=('!makeflags')
 source=("$pkgname-$pkgver.tgz::https://github.com/LonnyGomes/hexcurse/archive/v$pkgver.tar.gz")
 #source=("http://www.sourcefiles.org/Editors/Hex/$pkgname-$pkgver.tar.gz")
