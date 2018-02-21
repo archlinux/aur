@@ -2,7 +2,7 @@
 
 pkgname=recon-ng
 pkgver=4.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 url='https://bitbucket.org/LaNMaSteR53/recon-ng'
 license=('GPL3')
@@ -12,11 +12,17 @@ depends=('python2' 'python2-dicttoxml' 'python2-dnspython'
          'python2-lxml' 'python2-mechanize' 'python2-slowaes'
          'python2-xlsxwriter' 'python2-olefile' 'python2-pypdf2'
          'python2-flask' 'python2-unicodecsv')
-source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/LaNMaSteR53/recon-ng/get/v${pkgver}.tar.gz)
-sha256sums=('e841bc43c5097f3506d548d23a538411f9e5712ec5dbdb2be2d3fb0a863f7faf')
+source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/LaNMaSteR53/recon-ng/get/v${pkgver}.tar.gz
+        opt-in-analytics.patch)
+sha256sums=('e841bc43c5097f3506d548d23a538411f9e5712ec5dbdb2be2d3fb0a863f7faf'
+            '3208e111fb44e0799272429b6d87544a2a54a6f48ef640524a19a8c0a37d3d00')
 
 prepare() {
+  rm -rf recon-ng-$pkgver
   mv LaNMaSteR53-recon-ng-* recon-ng-$pkgver
+  cd ${pkgname}-${pkgver}
+  # change analytics from opt-out to opt-in
+  patch -Np1 -i ../opt-in-analytics.patch
 }
 
 package() {
