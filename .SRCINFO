@@ -1,0 +1,16 @@
+pkgbase = python2-pico-git
+	pkgdesc = PicoScope Python Interface
+	pkgver = r134.f688d7e
+	pkgrel = 1
+	url = https://github.com/colinoflynn/pico-python
+	arch = any
+	license = BSD 2-Clause
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-pico
+	conflicts = python2-pico
+	source = python2-pico-git::git+http://github.com/colinoflynn/pico-python
+	md5sums = SKIP
+
+pkgname = python2-pico-git
+
