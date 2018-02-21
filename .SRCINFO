@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 20180213
+	pkgver = 20180221
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1187179
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = matcha-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = matcha-gtk-theme-20180213.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518496874/s/eefabb2d378ab0b1c937d983435e060c/t/1518633627/Matcha.tar.xz
-	source = matcha-gtk-theme-dark-20180213.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1518496876/s/eefabb2d378ab0b1c937d983435e060c/t/1518633627/Matcha-dark.tar.xz
-	sha256sums = 7b722c0dc4b0fd9b0635bb0c55e3e236de82f51987df4819181624ebe26a0577
-	sha256sums = f61c702d2754a94f7e84295d9d9813a6a0d497d207c3090452eed8bbebd54156
+	source = matcha-gtk-theme-20180221.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1519176800/s/598d2858b79dad5739df9be1ad793da9/t/1519228584/Matcha.tar.xz
+	source = matcha-gtk-theme-dark-20180221.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1519176803/s/598d2858b79dad5739df9be1ad793da9/t/1519228584/Matcha-dark.tar.xz
+	sha256sums = 772b511efa8704b2b1c4d0fc2e51ff0cc7343c47cb1e295cdd6f26908aa7c601
+	sha256sums = 3eb9e525c118e7c46835489c54fd43163b26aac9e1e8eead27234a6577ed2969
 
 pkgname = matcha-gtk-theme
 
