@@ -2,12 +2,12 @@
 
 _pkgname=feed2toot
 pkgname=python-feed2toot-git
-pkgver=0.4.r0.g2ca649d
+pkgver=0.7.r0.g5af950e
 pkgrel=1
 pkgdesc="Feed2toot automatically parses rss feeds, identifies new posts and posts them on the Mastodon social network."
 arch=('any')
 url="https://gitlab.com/chaica/feed2toot"
-license=('MIT')
+license=('GPL3')
 depends=('python-feedparser' 'python-mastodon')
 makedepends=('python-setuptools')
 source=("git+https://gitlab.com/chaica/feed2toot.git")
