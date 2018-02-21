@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=focuswriter
-pkgver=1.6.9
+pkgver=1.6.10
 pkgrel=1
 pkgdesc='A simple fullscreen word processor'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'hunspell')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('67623d092a1d5131db0e967785e56c4e9c25a091cf0eecb63952e5f8babc7132')
+sha256sums=('ba2fa56bb2b4ddde67203ef334a96d38eaa70b9120d52e949aed2a5a3cf32b43')
 
 build() {
   cd "$pkgname-$pkgver"
