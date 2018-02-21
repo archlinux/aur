@@ -11,7 +11,7 @@ url="https://bitwarden.com"
 license=('GPL3')
 groups=('')
 depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
-makedepends=('nodejs' 'npm' 'rpm-org')
+makedepends=('nodejs' 'yarn' 'rpm-org')
 conflicts=('bitwarden')
 install=${pkgname}.install
 
@@ -27,10 +27,10 @@ build() {
     cd "$_pkgname"
 
     #Install Dependencies
-    npm install
+    yarn
 
     # Build
-    npm run dist:lin
+    yarn dist:lin
 
     #Copy DOTDEB in SRC Directory
     cp ./dist/bitwarden_${_pkgver}_amd64.deb $srcdir/bitwarden.deb
@@ -41,6 +41,6 @@ package(){
     # Extract DOTDEB Package
     ar xv bitwarden.deb
 
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+    # Extract package data
+    tar xf data.tar.xz -C "${pkgdir}"
 }
