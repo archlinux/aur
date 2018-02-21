@@ -9,7 +9,7 @@ _opt_RPM=1 # Default 1
 
 # https://askubuntu.com/questions/314833/diagnosing-the-problem-when-canon-printer-fails-to-print-under-ubuntu
 # https://www.reddit.com/r/linux4noobs/comments/7tiemc/canon_mf4320_printer_does_not_print_and_cpu_hangs/
-_opt_altver=3 # Default 3 until cnpkmoduleufr2 bug is fixed in version>3.40, then 0
+_opt_altver=0 # Default 3 until cnpkmoduleufr2 bug is fixed in version>3.40, then 0
 # 0 all files from latest version only
 # 1-3 to mix in some files from an old version to squash bugs
 #   1 Mix from original tar. These tar are large and Canon makes old versions unavailable in less than 2 years. Noone wants to supply these.
@@ -98,19 +98,25 @@ if [ "${_opt_use_other}" -ne 2 ]; then
 fi
 
 pkgname='cndrvcups-lb-bin'
-
-#pkgver='3.00'; _commonver='3.10'; _dl0='0'; _dl1='0100003440'; _dl2='09'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/09/Linux_UFRII_PrinterDriver_V300_us_EN.tar.gz
-#pkgver='3.00'; _commonver='3.10'; _dl0='8'; _dl1='0100002708'; _dl2='12'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/12/Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz 3d4210670e5844d118c5350643b046e9126726eadca4d0f5d2b9c904133e956d
-#pkgver='3.10'; _commonver='3.40'; _dl0='0'; _dl1='0100003440'; _dl2='10'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/10/Linux_UFRII_PrinterDriver_V310_us_EN.tar.gz
-#pkgver='3.10'; _commonver='3.40'; _dl0='0'; _dl1='0100003440'; _dl2='10'; _co='uk' # bbb4d87eec24278246eecd85860f7b2b5f854d035ed8b9a2980ea10b0e995eff
-#pkgver='3.20'; _commonver='3.60'; _dl0='8'; _dl1='0100002708'; _dl2='14'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/14/Linux_UFRII_PrinterDriver_V320_uk_EN.tar.gz b28bc2b460aeddcb7800983d2fad8c29ea6efcc95ad767a78fe6c25d0956f242
-#pkgver='3.30'; _commonver='3.70'; _dl0='8'; _dl1='0100002708'; _dl2='15'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/15/Linux_UFRII_PrinterDriver_V330_uk_EN.tar.gz df669767927a8e17faefe72b4a2c259cd944162b5ed046d44dedbbdb943cf756
-#pkgver='3.31'; _commonver='3.71'; _dl0='8'; _dl1='0100007658'; _dl2='03'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/16/linux-UFRII-drv-v331-uken.tar.gz c1211cbe27034847284541fcc613b86ccfe99418a6a2cbb4589b99ffe1af4645
-pkgver='3.40'; _commonver='3.80'; _dl0='8'; _dl1='0100002708'; _dl2='17'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz fb3701f564f987126a9a3d03a163951f3182d6f7d626530a6767cb1f996fa203
-#pkgver='3.40_02'; _commonver='3.80'; _dl0='0'; _dl1='0100003440'; _dl2='14'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/14/linux-UFRII-drv-v340-02-usen.tar.gz ef5421f98ae428ad8ad11ed5d9fb0e53bdc03b2693e79d590cf778fbe68250b5
+# http://files.canon-europe.com/files/soft44160/Software/01371en_linuxufrII_0207.zip
+# http://files.canon-europe.com/files/soft45378/Software/o157e1en_linux_UFRII_v290.zip
+# http://files.canon-europe.com/files/soft46530/Software/o1581en_linux_UFRII_v300.zip
+#pkgver='3.00'; _commonver='3.10'; _dl='0/0100003440/09'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/09/Linux_UFRII_PrinterDriver_V300_us_EN.tar.gz
+#pkgver='3.00'; _commonver='3.10'; _dl='8/0100002708/12'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/12/Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz 3d4210670e5844d118c5350643b046e9126726eadca4d0f5d2b9c904133e956d
+# http://files.canon-europe.com/files/soft46710/Software/o151en_linux_UFRII_v310.zip
+#pkgver='3.10'; _commonver='3.40'; _dl='0/0100003440/10'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/10/Linux_UFRII_PrinterDriver_V310_us_EN.tar.gz
+#pkgver='3.10'; _commonver='3.40'; _dl='0/0100003440/10'; _co='uk' # bbb4d87eec24278246eecd85860f7b2b5f854d035ed8b9a2980ea10b0e995eff
+#pkgver='3.20'; _commonver='3.60'; _dl='8/0100002708/14'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/14/Linux_UFRII_PrinterDriver_V320_uk_EN.tar.gz b28bc2b460aeddcb7800983d2fad8c29ea6efcc95ad767a78fe6c25d0956f242
+#pkgver='3.30'; _commonver='3.70'; _dl='8/0100002708/15'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/15/Linux_UFRII_PrinterDriver_V330_uk_EN.tar.gz df669767927a8e17faefe72b4a2c259cd944162b5ed046d44dedbbdb943cf756
+#pkgver='3.31'; _commonver='3.71'; _dl='8/0100007658/03'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/16/linux-UFRII-drv-v331-uken.tar.gz c1211cbe27034847284541fcc613b86ccfe99418a6a2cbb4589b99ffe1af4645
+#pkgver='3.40'; _commonver='3.80'; _dl='8/0100002708/17'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz fb3701f564f987126a9a3d03a163951f3182d6f7d626530a6767cb1f996fa203
+#pkgver='3.40_02'; _commonver='3.80'; _dl='0/0100003440/14'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/14/linux-UFRII-drv-v340-02-usen.tar.gz ef5421f98ae428ad8ad11ed5d9fb0e53bdc03b2693e79d590cf778fbe68250b5
+# http://gdlp01.c-wss.com/gds/8/0100007658/04/linux-UFRII-drv-v340-uken.tar.gz
+# http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz
+pkgver='3.50'; _commonver='3.90'; _dl='0/0100009240/01'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/01/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
 
 _pkgver="${pkgver}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D Laser Shot LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
 # Not UFR II: PRO PC-D
 arch=('i686' 'x86_64')
@@ -122,7 +128,7 @@ case "${_opt_use_other}" in
 0)
   conflicts=('cndrvcups-common-lb' 'cndrvcups-lb')
   provides=("cndrvcups-lb=${_pkgver}")
-  provides=("cndrvcups-common-lb=${_commonver}")
+  provides+=("cndrvcups-common-lb=${_commonver}")
   ;;
 1)
   depends+=("cndrvcups-common-lb=${_commonver}")
@@ -155,7 +161,7 @@ else
   _srcdir=("linux-UFRII-drv-v${_pkgverV//./}-${_co}en")
 fi
 unset _pkgverV
-source=("http://gdlp01.c-wss.com/gds/${_dl0}/${_dl1}/${_dl2}/${_srcdir}.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/${_dl}/${_srcdir}.tar.gz")
 unset _dl0 _dl1 _dl2
 if [ "${_inst_mix}" -ne 0 ]; then
   _pkgverA='3.20'
@@ -176,9 +182,7 @@ if [ "${_inst_lb}" -ne 0 ] && [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
     'https://archive.archlinux.org/packages/l/lib32-glibc/lib32-glibc-2.23-5-x86_64.pkg.tar.xz'
   )
 fi
-sha256sums=('fb3701f564f987126a9a3d03a163951f3182d6f7d626530a6767cb1f996fa203'
-            '21c0e211db2c96422fc9084a1215c880f8d53a2c8c17ccb6458d13573e002268'
-            '240056a59084e9426a6e8e5b8a07734785b7f3983dc26c74127463e1a6c16e4e')
+sha256sums=('c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f')
 #PKGEXT='.tar.gz'
 
 package() {
@@ -213,13 +217,17 @@ package() {
     if [ "${_inst_common}" -ne 0 ]; then
       set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} common"; set -u
       bsdtar -xf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cncom}.${_archrpme[${_opt_RPM}]}"
-      mv "usr/share/doc/cndrvcups-common-${_commonver}"/*.txt "usr/share/licenses/${pkgname}/"
-      rmdir "usr/share/doc/cndrvcups-common-${_commonver}"
+      if [ "$(vercmp "${_commonver}" '3.90')" -lt 0 ]; then
+        mv "usr/share/doc/cndrvcups-common-${_commonver}"/*.txt "usr/share/licenses/${pkgname}/"
+        rmdir "usr/share/doc/cndrvcups-common-${_commonver}"
+      fi
     fi
     if [ "${_inst_lb}" -ne 0 ]; then
       set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} lb"; set -u
       bsdtar -xf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufr}.${_archrpme[${_opt_RPM}]}"
-      mv "usr/share/doc/cndrvcups-ufr2-${_co}-${_pkgverS}"/*.txt "usr/share/licenses/${pkgname}/"
+      if [ "$(vercmp "${_commonver}" '3.90')" -lt 0 ]; then
+        mv "usr/share/doc/cndrvcups-ufr2-${_co}-${_pkgverS}"/*.txt "usr/share/licenses/${pkgname}/"
+      fi
 
       if [ "${_inst_alternate}" -ne 0 ]; then
         if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
@@ -250,19 +258,23 @@ package() {
         mv 'usr/lib'/*.so* 'usr/lib'/*.a 'usr/lib32'
       fi
     fi
-  else
+  else # Debian
     if [ "${_inst_common}" -ne 0 ]; then
       set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} common"; set -u
       bsdtar -xvf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cncom}.${_archrpme[${_opt_RPM}]}"
       bsdtar -xf 'data.tar.gz'
-      mv 'usr/share/doc/cndrvcups-common'/*.txt.gz "usr/share/licenses/${pkgname}/"
+      if [ "$(vercmp "${_commonver}" '3.90')" -lt 0 ]; then
+        mv 'usr/share/doc/cndrvcups-common'/*.txt.gz "usr/share/licenses/${pkgname}/"
+      fi
       chmod 777 'etc/cngplp'/*/
     fi
     if [ "${_inst_lb}" -ne 0 ]; then
       set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} lb"; set -u
       bsdtar -xvf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufr}.${_archrpme[${_opt_RPM}]}"
       bsdtar -xf 'data.tar.gz'
-      mv "usr/share/doc/cndrvcups-ufr2-${_co}"/*.txt.gz "usr/share/licenses/${pkgname}/"
+      if [ "$(vercmp "${_commonver}" '3.90')" -lt 0 ]; then
+        mv "usr/share/doc/cndrvcups-ufr2-${_co}"/*.txt.gz "usr/share/licenses/${pkgname}/"
+      fi
 
       if [ "${_inst_alternate}" -ne 0 ]; then
         if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
@@ -358,9 +370,11 @@ EOF
     if [ "${_inst_patch}" -ne 0 ]; then
       set +u; msg2 "Patching alternate to ${_pkgverA}"; set -u
       bspatch 'usr/bin/cnpkmoduleufr2'{,.new} "${srcdir}/${_arpat}"
-      chmod 755 'usr/bin/cnpkmoduleufr2.new'
       mv 'usr/bin/cnpkmoduleufr2'{.new,}
     fi
+    # 4755 SUID seems not necessary for cnusb, USB, or Network
+    chmod 755 'usr/bin/cnpkmoduleufr2'
+
     # grep -he '^*ModelName:' 'usr/share/cups/model'/*.ppd > "${startdir}/models.${_pkgver}.txt"
 
     gzip 'usr/share/cups/model'/*.ppd
