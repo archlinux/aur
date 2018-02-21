@@ -1,17 +1,18 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-migrate-parsetree
-pkgver=1.0.2
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Convert OCaml parsetrees between different versions"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
-url="https://github.com/let-def/ocaml-migrate-parsetree"
-depends=('ocaml' 'ocamlbuild' 'ocaml-result')
-makedepends=('ocaml-findlib' 'jbuilder')
+url="https://github.com/ocaml-ppx/ocaml-migrate-parsetree"
+depends=('ocaml' 'ocaml-result')
+optdepends=('ocamlbuild: For ocamlbuild plugin')
+makedepends=('ocaml-findlib' 'dune' 'ocamlbuild')
 options=('!strip')
-source=("https://github.com/let-def/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('7bb4f5a054a27fffb4b925dbde38816b')
+source=("https://github.com/ocaml-ppx/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('b79b27726fef129ad1804cbb83a05079')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,9 +23,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -dm755 "${pkgdir}$(ocamlc -where)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr"
+  install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/lib/ocaml-migrate-parsetree"{,-ocamlbuild} "${pkgdir}$(ocamlc -where)/"
 }
