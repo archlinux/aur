@@ -1,0 +1,15 @@
+pkgbase = brother-pj723
+    pkgdesc = Brother PJ-723 CUPS driver
+    pkgver = 1.2.0
+    pkgrel = 1
+    url = http://www.brother.com
+    arch = any
+    license = GPL
+    source = http://download.brother.com/welcome/dlfp100218/pj723cupswrapper-1.2.0-0.i386.rpm
+    source = http://download.brother.com/welcome/dlfp100217/pj723lpr-1.2.0-0.i386.rpm
+    md5sums = e63370dea8692176e7d257d810145e76
+    md5sums = f976c06d770c74b94d8d480d463260e0
+    depends_x86_64 = lib32-glibc
+
+pkgname = brother-pj723
+

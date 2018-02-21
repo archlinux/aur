@@ -1,0 +1,17 @@
+post_install() {
+    __port2="$(lpinfo -v | grep -i 'usb://Brother/PJ-723' | head -1)"
+    if [ "$__port2" = '' ];then
+        __port2="$(sudo lpinfo -v | grep 'usb://' | head -1)"
+    fi
+    __port="$(echo $__port2| sed s/direct//g)"
+
+    if [ "$__port" = '' ];then
+        __port="usb:/dev/usb/lp0"
+    fi
+
+    lpadmin -p Brother_PJ-723 -E -v $__port -P /usr/share/ppd/Brother/brother_pj723_printer_en.ppd
+}
+
+pre_remove() {
+    lpadmin -x Brother_PJ-723
+}
