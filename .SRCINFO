@@ -1,0 +1,16 @@
+pkgbase = opentheory-git
+	pkgdesc = a tool for processing higher-order logic theory packages
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.gilith.com/software/opentheory
+	arch = x86_64
+	license = MIT
+	makedepends = mlton
+	makedepends = git
+	provides = opentheory
+	conflicts = opentheory
+	source = opentheory::git+https://github.com/gilith/opentheory.git
+	md5sums = SKIP
+
+pkgname = opentheory-git
+
