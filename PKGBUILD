@@ -7,14 +7,14 @@
 
 pkgname=denemo
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
 license=('GPL')
 depends=('aubio' 'lilypond' 'gtk3' 'libxml2' 'fftw' 'librsvg' 'fluidsynth'
 	 'libsmf' 'evince' 'gtksourceview3' 'portmidi' 'guile2.0')
-makedepends=('intltool' 'git')
+makedepends=('intltool' 'git' 'rubberband')
 noextract=(${pkgname}-${pkgver}.tar.gz)
 validpgpkeys=('C66734FA5D60E4DDD882EF81AE6F83BB6C574235')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig} no_portaudio.patch)

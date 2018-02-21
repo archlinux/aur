@@ -1,12 +1,13 @@
 pkgbase = denemo
 	pkgdesc = A music score editor
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.denemo.org
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
 	makedepends = git
+	makedepends = rubberband
 	depends = aubio
 	depends = lilypond
 	depends = gtk3
