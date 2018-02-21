@@ -1,9 +1,9 @@
 # Maintainer: Lars Hupel <lars@hupel.info>
 # Contributor: Ramana Kumar <firstname|@|member.fsf.org>
 pkgname=opentheory-git
-pkgver="1.3"
-_pkgver="$pkgver"
-pkgrel=1
+pkgver="1.3.r1493.45d7d5e5"
+_basever="1.3"
+pkgrel=2
 pkgdesc="a tool for processing higher-order logic theory packages"
 arch=('x86_64')
 url="http://www.gilith.com/software/opentheory"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "${_basever}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
