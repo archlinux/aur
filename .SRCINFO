@@ -1,0 +1,17 @@
+pkgbase = breeze-flat
+	pkgdesc = Breeze Light and Dark with opaque backgrounds and without shadows
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://store.kde.org/p/1215691/
+	arch = any
+	license = LGPL3
+	depends = plasma-framework
+	source = breeze-flat::git+https://framagit.org/ariasuni/breeze-flat.git#tag=v1.1
+	md5sums = SKIP
+
+pkgname = breeze-light-flat
+	pkgdesc = Breeze Light with opaque backgrounds and without shadows
+
+pkgname = breeze-dark-flat
+	pkgdesc = Breeze Dark with opaque backgrounds and without shadows
+
