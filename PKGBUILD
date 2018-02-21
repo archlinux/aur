@@ -1,45 +1,33 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=bash-utils-git
-pkgver=r65.5861540
+_pkgname=${pkgname%-git}
+pkgver=0.1.r42.g5d89003
 pkgrel=1
-pkgdesc="Misc. small utilities mainly for bash"
+pkgdesc="Miscellaneous small utils, mainly for the Bash shell."
 arch=('any')
 url="https://github.com/jabbalaci/Bash-Utils"
 license=('unknown')
-depends=(python2)
+depends=('python')
 optdepends=(
     'markdown: for markdown.py'
-    'pygtk: for mouse/mousepos_gui.py'
-    'python2-beautifulsoup3: for get_images.py, get_links.py, and prettify.py'
-    'python: for top10.py'
+    'python-beautifulsoup4: for get_images.py, get_links.py, and prettify.py'
 )
 makedepends=('git')
-source=(
-    'bash-utils'::'git+https://github.com/jabbalaci/Bash-Utils.git'
-    'python2.patch'
-)
-md5sums=(
-    'SKIP'
-    '88dda86b5407a6aa7570d77c1de1054d'
-)
+source=("$_pkgname"::"git+https://github.com/jabbalaci/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-    cd bash-utils
+    cd "$_pkgname"
     (
         set -o pipefail
-        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        git describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 
-prepare() {
-    cd bash-utils
-    patch -p1 < ../python2.patch
-}
-
 package() {
-    cd bash-utils
+    cd "$_pkgname"
 
     # install the scripts
     install -dm755 "${pkgdir}/usr/lib/bash-utils"

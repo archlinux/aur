@@ -1,20 +1,18 @@
 pkgbase = bash-utils-git
-	pkgdesc = Misc. small utilities mainly for bash
-	pkgver = r65.5861540
+	pkgdesc = Miscellaneous small utils, mainly for the Bash shell.
+	pkgver = 0.1.r42.g5d89003
 	pkgrel = 1
 	url = https://github.com/jabbalaci/Bash-Utils
 	arch = any
 	license = unknown
 	makedepends = git
-	depends = python2
+	depends = python
 	optdepends = markdown: for markdown.py
 	optdepends = pygtk: for mouse/mousepos_gui.py
 	optdepends = python2-beautifulsoup3: for get_images.py, get_links.py, and prettify.py
 	optdepends = python: for top10.py
-	source = bash-utils::git+https://github.com/jabbalaci/Bash-Utils.git
-	source = python2.patch
+	source = bash-utils::git+https://github.com/jabbalaci/bash-utils.git
 	md5sums = SKIP
-	md5sums = 88dda86b5407a6aa7570d77c1de1054d
 
 pkgname = bash-utils-git
 
