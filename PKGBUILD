@@ -1,26 +1,28 @@
-# Maintainer: N. Izumi aka izmntuk
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: N. Izumi aka izmntuk
+
 pkgname=otf-russkopis
-pkgdesc='A Free Cyrillic cursive font'
-pkgrel=1
+_fontname=Russkopis
 pkgver=0.0.1
+pkgrel=2
+pkgdesc='A Free Cyrillic cursive font for Russian, Ukrainian, Belarusian, and Bulgarian'
 url='https://github.com/MihailJP/Russkopis'
-license=('custom')
+license=('X11')
 arch=('any')
 makedepends=('fontforge')
 depends=('fontconfig' 'xorg-font-utils')
-install=INSTALL
-options=('!strip')
-sha1sums=('b1262d685239005680d45dbfade147ca455adf77' 'SKIP')
-source=('https://github.com/MihailJP/Russkopis/archive/'${pkgver}'.tar.gz' INSTALL)
+sha256sums=('1ac0338ea957b553cdcb427fdab0ccbeb66685c45fd2852fa7371407605b577b')
+source=("https://github.com/MihailJP/${_fontname}/archive/${pkgver}.tar.gz")
 
 build() {
-	make -C "${srcdir}/Russkopis-${pkgver}"
+    cd ${_fontname}-${pkgver}
+    make
 }
 
 package() {
-	cd "${srcdir}/Russkopis-${pkgver}"
-	install -d "${pkgdir}"/usr/share/{doc,licenses}/"${pkgname}" "${pkgdir}/usr/share/fonts/OTF"
-	install -pm644 README{,.{ja,ru}.utf8} "${pkgdir}/usr/share/doc/${pkgname}"
-	install -pm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -pm644 Russkopis-{Normalny,Zhirny}.otf "${pkgdir}/usr/share/fonts/OTF"
+    cd ${_fontname}-${pkgver}
+    install -d ${pkgdir}/usr/share/{doc,licenses}/${pkgname} ${pkgdir}/usr/share/fonts/OTF
+    install -pm644 README{,.{ja,ru}.utf8} ${pkgdir}/usr/share/doc/${pkgname}
+    install -pm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+    install -pm644 ${_fontname}-{Normalny,Zhirny}.otf ${pkgdir}/usr/share/fonts/OTF
 }
