@@ -1,8 +1,9 @@
 pkgbase = hmcl-git
 	pkgdesc = A powered Minecraft launcher that supports a lot of features.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huanghongxun/HMCL/tree/master
+	install = HMCL.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = hmcl-git
 	source = git://github.com/huanghongxun/HMCL.git#branch=master
 	source = https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz
 	source = https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz.sha512sum
-	source = hmcl
+	source = HMCL.run
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e

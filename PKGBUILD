@@ -2,7 +2,7 @@
 pkgname=hmcl-git
 _pkgname=HMCL
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powered Minecraft launcher that supports a lot of features."
 arch=("x86_64")
 url="https://github.com/huanghongxun/HMCL/tree/master"
@@ -10,10 +10,11 @@ license=("GPL3")
 makedepends=("git")
 provides=("hmcl")
 conflicts=("hmcl")
+install="$_pkgname.install"
 source=("git://github.com/huanghongxun/$_pkgname.git#branch=master"
         "https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz"
         "https://soft.dct.party/aur/hmcl-git/jdk-8-linux-x64.tar.xz.sha512sum"
-        "hmcl")
+        "$_pkgname.run")
 sha512sums=("SKIP"
         "SKIP"
         "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
@@ -26,12 +27,13 @@ pkgver() {
 build() {
     export JAVA_HOME=$srcdir/jdk1.8.0
     cd $srcdir/$_pkgname
+    HOME=/root
     bash gradlew build
 }
 
 package() {
-    jpath=$(echo $srcdir/$_pkgname/$_pkgname/build/libs/HMCL-*sources.jar | sed 's/-sources//')
-    install -Dm644 $jpath $pkgdir/usr/share/hmcl/hmcl.jar
+    _path=$(echo $srcdir/$_pkgname/$_pkgname/build/libs/HMCL-*sources.jar | sed 's/-sources//')
+    install -Dm644 $_path $pkgdir/usr/share/hmcl/hmcl.jar
     mv $JAVA_HOME/jre $pkgdir/usr/share/hmcl/jre
-    install -Dm755 $srcdir/hmcl $pkgdir/usr/bin/hmcl
+    install -Dm755 $srcdir/$_pkgname.run $pkgdir/usr/bin/hmcl
 }
