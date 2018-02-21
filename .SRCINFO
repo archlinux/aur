@@ -1,14 +1,18 @@
 pkgbase = otf-ibm-plex-git
 	pkgdesc = IBM Plex Mono, Sans, and Serif typefaces (OTF version)
 	pkgver = latest
-	pkgrel = 1
-	url = https://github.com/IBM/type
+	pkgrel = 2
+	url = https://github.com/IBM/plex
 	arch = any
 	license = sil
 	makedepends = git
 	provides = otf-ibm-plex
+	provides = otf-ibm-plex-mono
+	provides = otf-ibm-plex-sans
+	provides = otf-ibm-plex-sans-condensed
+	provides = otf-ibm-plex-serif
 	conflicts = otf-ibm-plex
-	source = otf-ibm-plex::git+https://github.com/IBM/type.git
+	source = otf-ibm-plex::git+https://github.com/IBM/plex.git
 	sha256sums = SKIP
 
 pkgname = otf-ibm-plex-git
