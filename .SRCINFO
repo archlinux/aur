@@ -3,7 +3,6 @@ pkgbase = sddm-archlinux-theme-git
 	pkgver = 0.1.r13.ge2054bd
 	pkgrel = 1
 	url = https://github.com/absturztaube/sddm-archlinux-theme
-	install = sddm-archlinux-theme.install
 	arch = any
 	license = CCPL:cc-by-sa
 	makedepends = git

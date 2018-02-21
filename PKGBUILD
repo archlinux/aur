@@ -10,7 +10,6 @@ url="https://github.com/absturztaube/sddm-archlinux-theme"
 license=('CCPL:cc-by-sa')
 depends=('sddm')
 makedepends=('git')
-install="$_pkgname.install"
 source=("git+https://github.com/absturztaube/$_pkgname.git")
 sha256sums=('SKIP')
 
