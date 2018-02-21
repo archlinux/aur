@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=perl-net-pcap
 _realname=Net-Pcap
-pkgver=0.17
-pkgrel=8
+pkgver=0.18
+pkgrel=1
 pkgdesc="Perl/CPAN Module Net::Pcap"
 arch=("i686" "x86_64")
 url="https://metacpan.org/release/$_realname"
@@ -12,15 +12,18 @@ source=("http://cpan.metacpan.org/authors/id/S/SA/SAPER/$_realname-$pkgver.tar.g
 	makefile.patch
 	listdatalinks.patch)
 depends=('perl' 'libpcap')
-md5sums=('fbe911ba5f57d5ba43494434ffb828a0'
-         '5e96f92128b562f66ba092d23700f6c1'
-         'c6781cc15f79672b91fe3be96cb43c3d')
+md5sums=('18d7298dca72b53271d68646c34b6a39'
+         '9a8647b3eaacfed4a0d49cd74f20f8b7'
+         '8c982b3e323f67cc718d9bffc7843548')
+
+prepare() {
+  cd $_realname-$pkgver
+  patch -Np2 -b -z .orig <../makefile.patch
+  patch -Np2 -b -z .orig <../listdatalinks.patch
+}
 
 build() {
-  cd $srcdir/$_realname-$pkgver
-  patch -p1 <../makefile.patch
-  patch -p1 <../listdatalinks.patch
-
+  cd $_realname-$pkgver
   # install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
@@ -35,7 +38,7 @@ fi
 # template end;
 }
 package() {
-  cd $srcdir/$_realname-$pkgver
+  cd $_realname-$pkgver
 
   make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir/" install
 

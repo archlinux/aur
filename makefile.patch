@@ -1,12 +1,13 @@
-diff -up Net-Pcap-0.17/Makefile.PL.orig Net-Pcap-0.17/Makefile.PL
---- Net-Pcap-0.17/Makefile.PL.orig	2013-03-15 21:00:34.000000000 -0600
-+++ Net-Pcap-0.17/Makefile.PL	2013-03-15 21:00:47.000000000 -0600
-@@ -63,39 +63,6 @@ Or get and install the WinPcap developer
+diff -up src/Net-Pcap-0.18/Makefile.PL.orig src/Net-Pcap-0.18/Makefile.PL
+--- src/Net-Pcap-0.18/Makefile.PL.orig	2016-05-09 15:23:13.000000000 -0600
++++ src/Net-Pcap-0.18/Makefile.PL	2018-02-20 21:56:00.000000000 -0700
+@@ -62,40 +62,6 @@ Or get and install the WinPcap developer
+   http://www.winpcap.org/install/
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  REASON
- 
+-
 -} else { # other systems (Unix)
--    warn <<"REASON" and exit unless have_library('pcap');
+-    die <<"REASON" unless have_library('pcap');
 -        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -You appear to lack the pcap(3) library. \a
 -
@@ -21,7 +22,7 @@ diff -up Net-Pcap-0.17/Makefile.PL.orig Net-Pcap-0.17/Makefile.PL
 -        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -REASON
 -
--    warn <<"REASON" unless have_library('pcap', 'pcap_lib_version');
+-    die <<"REASON" unless have_library('pcap', 'pcap_lib_version');
 -        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -You appear to have an old version of the pcap library. \a
 -

@@ -1,7 +1,7 @@
-diff -up Net-Pcap-0.17/Pcap.pm.orig Net-Pcap-0.17/Pcap.pm
---- Net-Pcap-0.17/Pcap.pm.orig	2013-03-15 23:19:38.000000000 -0600
-+++ Net-Pcap-0.17/Pcap.pm	2013-03-15 23:21:32.000000000 -0600
-@@ -704,6 +704,10 @@ Close the savefile associated with the d
+diff -up src/Net-Pcap-0.18/Pcap.pm.orig src/Net-Pcap-0.18/Pcap.pm
+--- src/Net-Pcap-0.18/Pcap.pm.orig	2016-05-15 07:24:03.000000000 -0600
++++ src/Net-Pcap-0.18/Pcap.pm	2018-02-20 21:56:00.000000000 -0700
+@@ -714,6 +714,10 @@ Close the savefile associated with the d
  
  =over
  
