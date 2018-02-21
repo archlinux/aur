@@ -1,12 +1,12 @@
 # Contributor: Sara <sara at archlinux dot us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpad-git
-pkgver=r269.dbf1a4f
-pkgrel=2
+pkgver=r271.66eb566
+pkgrel=1
 pkgdesc="A small linux framebuffer virtual terminal."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/fbpad.git"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=()
 makedepends=('git' 'ft2tf' 'ttf-dejavu')
