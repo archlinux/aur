@@ -10,7 +10,7 @@ arch=('any')
 license=('LGPL3')
 depends=('breeze-icons')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://dl.opendesktop.org/api/files/download/id/1512168280/kde.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1512168280/s/cd5638d28fe1577ba10fcbadb1df67fa/t/1519222259/u//kde.tar.gz")
 sha256sums=('20312b445d3ccfc818743bb00e1507972b1e0ef9d03a02fbe47b533e82c84477')
 
 package() {
