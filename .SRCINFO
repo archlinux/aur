@@ -1,0 +1,15 @@
+pkgbase = perl-b-lint
+	pkgdesc = perl linter
+	pkgver = 1.22
+	pkgrel = 1
+	url = https://metacpan.org/release/B-Lint
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker
+	depends = perl-module-pluggable
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/B-Lint-1.22.tar.gz
+	sha256sums = 07e666030764d773469d2358ee75c372afad1893cdbee1074709bbf8a6189280
+
+pkgname = perl-b-lint
+
