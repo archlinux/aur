@@ -2,32 +2,29 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=rage
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/about-rage"
 license=('BSD')
 depends=('efl')
-source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('24514ab8d6e06f159d4a4eb4a3da80a569785014f2628610f00cdb5561589d76')
+makedepends=('meson' 'mesa')
+source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('1e772370c2199f89f4c34f1968432df4eabf0e4fe4f960649d0b9d27496bdf3d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr
-
-  make
+  meson --prefix /usr --buildtype release build
+  ninja -C build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "ChangeLog" "NEWS" "README"
-
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "AUTHORS" "COPYING"
 }
