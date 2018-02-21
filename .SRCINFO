@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-catkin
+	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = http://www.ros.org/wiki/catkin
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = python2-catkin_pkg
+	makedepends = python2-empy
+	makedepends = python2
+	depends = python2-nose
+	depends = gmock
+	depends = python2-empy
+	depends = gtest
+	depends = python2-catkin_pkg
+	depends = python2
+	source = ros-melodic-catkin-0.7.11-0.tar.gz::https://github.com/ros-gbp/catkin-release/archive/release/melodic/catkin/0.7.11-0.tar.gz
+	sha256sums = a6f1203bb66aab0e9addb52986c84316226a166f74840a54e1d31ac8faf0f8b6
+
+pkgname = ros-melodic-catkin
+
