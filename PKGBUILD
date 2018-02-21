@@ -38,6 +38,7 @@ sha256sums=('SKIP'
 }
 
 prepare() {
+  export TERM=xterm
   # shellcheck disable=SC2154
   ue4src="$srcdir/UnrealEngine/Engine/Source"
   patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
