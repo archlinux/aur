@@ -2,14 +2,15 @@
 
 pkgname=simpletools
 pkgver=2.0v.e574cc8
-pkgrel=2
+_commit=e574cc8
+pkgrel=3
 pkgdesc="Handy command line tools for ntuple manipulation and analysis."
 arch=('i686' 'x86_64')
 url="https://github.com/cofitzpa/simpletools"
 license=('GPL2')
 provides=('simpletools')
 depends=('root')
-source=("${pkgname}::git+https://github.com/cofitzpa/simpletools"
+source=("${pkgname}::git+https://github.com/cofitzpa/simpletools#commit=${_commit}"
         'settings.cmake')
 sha256sums=('SKIP'
             '540b86cd9997926026a5d277c819ae9c348bde7921158a78f3c676c855b6ab5e')
