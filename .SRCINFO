@@ -1,0 +1,29 @@
+pkgbase = python-pico-git
+	pkgdesc = PicoScope Python Interface
+	pkgver = r135.98777ef
+	pkgrel = 1
+	url = https://github.com/colinoflynn/pico-python
+	arch = any
+	license = BSD 2-Clause
+	optdepends = libps2000
+	optdepends = libps2000a
+	optdepends = libps3000
+	optdepends = libps3000a
+	optdepends = libps4000
+	optdepends = libps4000a
+	optdepends = libps5000
+	optdepends = libps5000a
+	optdepends = libps6000
+	source = pico-python::git+http://github.com/colinoflynn/pico-python
+	md5sums = SKIP
+
+pkgname = python-pico-git
+	depends = python
+	provides = python-pico
+	conflicts = python-pico
+
+pkgname = python2-pico-git
+	depends = python2
+	provides = python2-pico
+	conflicts = python2-pico
+
