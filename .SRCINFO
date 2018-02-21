@@ -1,16 +1,18 @@
 pkgbase = customizepkg-scripting
 	pkgdesc = A tool to modify automatically PKGBUILDs - modified to just run scripts
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Scimmia22/customizepkg-scripting
 	arch = any
 	license = GPL2
 	depends = bash
 	depends = diffutils
+	depends = coreutils
+	depends = grep
 	optdepends = vim: for vimdiff
 	provides = customizepkg
 	conflicts = customizepkg
-	source = https://github.com/Scimmia22/customizepkg-scripting/archive/0.4.1.tar.gz
+	source = customizepkg-scripting-0.4.1.tar.gz::https://github.com/Scimmia22/customizepkg-scripting/archive/0.4.1.tar.gz
 	sha256sums = c9968f443395f4716a2fe42eb4ff1d379d3a81e04c149bf02c6ac2b50cfe61f8
 
 pkgname = customizepkg-scripting
