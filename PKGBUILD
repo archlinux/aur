@@ -5,14 +5,14 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Airspeed is a powerful and easy-to-use templating engine for Python that aims for a high level of compatibility with the popular Velocity library for Java"
-pkgver="0.5.4"
-pkgrel=3
+pkgver="0.5.8"
+pkgrel=1
 url="https://github.com/purcell/airspeed"
-license=('BSD-2-Clause')
+license=('BSD')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://github.com/purcell/airspeed/archive/$pkgver.tar.gz")
-md5sums=('9477043347028e8d1ea122b3b1e6f994')
+md5sums=('e1eaced1718a568fe4054c29b7bc2128')
 
 build() {
     cd "$_name-$pkgver"
@@ -25,7 +25,7 @@ package_python-airspeed(){
              'python-six')
     cd "$_name-$pkgver"
     python setup.py install --root="${pkgdir}/" --optimize=1
-    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENCE
+    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENCE 
 }
 
 package_python2-airspeed(){
