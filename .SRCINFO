@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.31
-	pkgrel = 3
+	pkgver = 2.31.1
+	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = snapd
 	makedepends = libcap
 	makedepends = systemd
 	makedepends = xfsprogs
+	makedepends = python-docutils
 	depends = squashfs-tools
 	depends = libseccomp
 	depends = libsystemd
@@ -20,10 +21,8 @@ pkgbase = snapd
 	conflicts = snap-confine
 	options = !strip
 	options = emptydirs
-	source = snapd-2.31::https://github.com/snapcore/snapd/archive/2.31.tar.gz
-	source = 0001-cmd-snap-seccomp-drop-link-flags-that-will-be-reject.patch
-	sha256sums = 973e7e8098f5780d71a0633a0fa7c3371ef7fb7ae120d464b2e25af9588c1f89
-	sha256sums = ba4591f70b032b5e6f63d251cf6463ef93f3b963b8f19aac098b4c7dbed0309d
+	source = snapd-2.31.1::https://github.com/snapcore/snapd/archive/2.31.1.tar.gz
+	sha256sums = 15b630811b8b017276767f1e0e8713c5fbf223d7dd90f75a740535652c066d85
 
 pkgname = snapd
 
