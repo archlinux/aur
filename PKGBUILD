@@ -7,7 +7,7 @@
 # Contributor: Sergey Plaksin <serp256(at)gmail(dot)com>
 
 pkgname=ocaml-batteries
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A comprehensive standard library for OCaml"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('ocaml-bisect')
 makedepends=('ocamlbuild')
 install=ocaml-batteries.install
 source=("https://github.com/ocaml-batteries-team/batteries-included/archive/v${pkgver}.tar.gz")
-sha512sums=('ecb973c9cc535fce18db8efb1bfb9dfde73d7a7fc82cb6b0657547b6f7d173e9004015f698065ed5efeb9f89f1fcc1b548745b708139ce0d01eb6f63981421c9')
+sha512sums=('49943ed407ebf92bcf3cd859c51e7d292503e45e01c53583b0f2b0387f13954bb23f7c51d294fef7d154733fc21ea93e6cda1a38c344b16a8f63e34543854e67')
 options=(!strip !makeflags)
 
 build(){
