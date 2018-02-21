@@ -7,7 +7,7 @@ pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
-depends=('python-daemonize' 'python-terminaltables-git' 'python-colorclass-git' 'mediainfo' 'pueue' 'python-lxml')
+depends=('mediainfo' 'pueue' 'python-lxml' 'python-sqlalchemy' 'python-sqlalchemy-utils')
 makedepends=('git' 'python-setuptools')
 provides=('encarne')
 conflicts=('encarne')
@@ -23,6 +23,9 @@ package() {
 
   # Install
   python setup.py install --optimize=1 --root="${pkgdir}"
+
+  mkdir /var/lib/encarne
+  chown 777 /var/lib/encarne
 
   # Place systemd user service
   install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
