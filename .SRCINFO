@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-roscpp-tutorials
+	pkgdesc = ROS - This package attempts to show the features of ROS step-by-step, including using messages, servers, parameters, etc.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://www.ros.org/wiki/roscpp_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-roscpp-serialization
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rostime
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-rosconsole
+	depends = ros-melodic-roscpp-serialization
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-rostime
+	source = ros-melodic-roscpp-tutorials-0.8.1-0.tar.gz::https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/roscpp_tutorials/0.8.1-0.tar.gz
+	sha256sums = 183183b4218eff5633c7fb96ab847fa5e89173e651aaacc2b3fa4926bd37ebc6
+
+pkgname = ros-melodic-roscpp-tutorials
+
