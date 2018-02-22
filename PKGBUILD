@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=r-studio-for-linux
-pkgver=4.3.2951
+pkgver=4.3.2961
 pkgrel=1
 pkgdesc="Undelete and data recovery software (non free version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('c33acb398f1c8cdc680b981344f51b7f1f4e651c9a215e37d38d9daae08d187b4b936e4e8eea3fa81a850a3e0803d738c160f44232abb2f5422f9d60727a77b7'
          '16a3c7e30096066b3ab1640f32c421424bfdefdb2859526d0f03dd5e173bc61450ca8371225fe7491135967ffe7c08b9c92b6d5b39bdf7a8999c85b6d7789c4a')
-sha512sums_x86_64=('49a2c754e22e20d1a5a877c3b09705a0ff560e72d49837196851911228402da98a620132970064056362f83667fe0a728dec7c28ab47d0919c3b5d83df299d9f')
+sha512sums_x86_64=('88ad54220770e523322c1645d7d89b885636d0b29d60d6aa3b67863d50383f752b0a6c286e04f3ec3b5ad58509ea70d7ccc67cb8abe8be708bad2f640d24f8e3')
         
 package() {
   cd $srcdir
