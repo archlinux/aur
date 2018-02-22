@@ -1,7 +1,7 @@
 pkgbase = tresorit
 	pkgdesc = Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.
-	pkgver = 3.0.483.730
-	pkgrel = 2
+	pkgver = 3.0.504.743
+	pkgrel = 1
 	url = http://www.tresorit.com/
 	install = tresorit.install
 	arch = i686
