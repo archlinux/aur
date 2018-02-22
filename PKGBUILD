@@ -3,7 +3,7 @@
 
 pkgname=sent
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple plaintext presentation tool'
 arch=('i686' 'x86_64')
 url='http://tools.suckless.org/sent'
