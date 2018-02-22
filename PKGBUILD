@@ -5,7 +5,7 @@
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.63.2
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
          'python-vincenty' 'python-voluptuous>=0.9.3' 'python-netifaces'
          'python-webcolors' 'python-async-timeout>=2.0.0' 'python-aiohttp' 'python-aiohttp-cors>=0.5.3'
-         'python-jinja>=2.9.5' 'python-yarl' 'python-chardet>=3.0.4' 'python-astral' 'python-certifi')
+         'python-jinja>=2.9.5' 'python-yarl' 'python-chardet>=3.0.4' 'python-astral' 'python-certifi' 'python-attrs')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
