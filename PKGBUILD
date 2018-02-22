@@ -7,6 +7,7 @@ pkgdesc='Display/Remove duplicate bookmarks, empty folders or descriptions'
 url=https://github.com/vaeth/bookmarkdupes
 arch=('any')
 license=('GPL')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/870263/bookmark_dupes-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('8a49871414f251cfc628c155b56080849847bb350d585d2acb8f304523131e42')
