@@ -4,8 +4,8 @@
 # Maintainer: Ian Denhardt <ian@zenhack.net>
 
 pkgname=alot
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -51,4 +51,4 @@ package() {
     install -Dm644 docs/build/man/alot.1 "$pkgdir/usr/share/man/man1/alot.1"
     install -Dm644 extra/alot.desktop "$pkgdir/usr/share/applications/alot.desktop"
 }
-md5sums=('db355cfb3e905aede50e757cb723ad4d')
+sha256sums=('2d49a7d61241cfadc993a8456076605b2cfe264c51f5e3f18f337bad58f29a1c')

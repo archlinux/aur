@@ -1,7 +1,7 @@
 pkgbase = alot
 	pkgdesc = terminal-based MUA for the notmuch mail system
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/pazz/alot
 	arch = any
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = alot
 	depends = python2-urwidtrees
 	depends = python2-twisted
 	options = !emptydirs
-	source = alot-0.6.tar.gz::https://github.com/pazz/alot/archive/0.6.tar.gz
-	md5sums = db355cfb3e905aede50e757cb723ad4d
+	source = alot-0.7.tar.gz::https://github.com/pazz/alot/archive/0.7.tar.gz
+	sha256sums = 2d49a7d61241cfadc993a8456076605b2cfe264c51f5e3f18f337bad58f29a1c
 
 pkgname = alot
 
