@@ -2,17 +2,16 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gnome-shell-theme-bin'
-pkgver='2.99.4'
-_pkgdir="3.0.0-b4"
+pkgver='3.0.3'
 pkgrel=1
-pkgdesc='Pop GNOME Shell Theme'
+pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
 license=('GPL2' 'CCPL:by-sa')
 conflicts=('pop-gnome-shell-theme')
 provides=('pop-gnome-shell-theme')
-source=("https://github.com/pop-os/gtk-theme/releases/download/${_pkgdir}/pop-gnome-shell-theme_${pkgver}_all.deb")
-sha256sums=('599fe37c78900f93fd91ab2001a2b6c7f1ba59f2319cc5ab1902072cba924d97')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~1517247190~18.04~35b69b7_all.deb")
+sha256sums=('44e72fc6cac94f04276b354e80cc14f8fde70366ac8615fc4d4eddba93d81868')
 
 package() {
   cd "${srcdir}"
