@@ -2,22 +2,25 @@
 
 pkgname=include-what-you-use
 epoch=1
-pkgver=0.8
-pkgrel=4
+pkgver=0.9
+pkgrel=1
+_clang_major=5
+_clang_minor=0
+_clang_ver="$_clang_major.$_clang_minor"
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
-source=(http://include-what-you-use.org/downloads/include-what-you-use-$pkgver.src.tar.gz)
-sha512sums=('f14e404e5d03f13022243db4707dbbeda43956b71018439b3d1d8fcf3f173c1706d1d8c2db413a85f979211b01edd59d2c34742ccb14d9e16e5b5ce51119d48b')
+source=("https://github.com/include-what-you-use/include-what-you-use/archive/clang_${_clang_ver}.tar.gz")
+sha512sums=('9d4a9717a3a3f6752f8bdd1392b6d7a5e8b8dc277ef46a50f24185a089360380e1da92a61fd150598843f5c24cff03e74bc674e57579960d977acde755e34c52')
 arch=('i686' 'x86_64')
-_min=4
-_max=$((_min+1))
-depends=("clang>=$_min.0" "clang<$_max.0")
-makedepends=("clang>=$_min.0" "clang<$_max.0" "cmake" "llvm>=$_min.0" "llvm<$_max.0")
+_min="${_clang_ver}"
+_max=$((_clang_major+1)).0
+depends=("clang>=$_min" "clang<$_max")
+makedepends=("clang>=$_min" "clang<$_max" "cmake" "llvm>=$_min" "llvm<$_max")
 optdepends=('python2')
 
 build() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname-clang_${_clang_ver}"
 
     rm -rf build && mkdir build && cd build
     cmake -DIWYU_LLVM_ROOT_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
