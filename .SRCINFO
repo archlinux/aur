@@ -4,7 +4,6 @@ pkgbase = lgeneral
 	pkgrel = 1
 	url = http://lgames.sourceforge.net/LGeneral/
 	install = lgeneral.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = custom
