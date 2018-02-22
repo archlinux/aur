@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=ffmpeg-full3.4
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="FFmpeg 3.4, designed to fix linking issues with packages that require this version of FFmpeg."
 arch=("x86_64")
 url="https://ffmpeg.org/"
@@ -43,7 +43,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         "LICENSE"
 )
 validpgpkeys=("FCF986EA15E6E293A5644F10B4322F04D67658D8")
-sha256sums=("5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0"
+sha256sums=("2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740"
             "142923fd02851343bfbfd31b201ba014dced8a8c8898373c72d71d30d59f5851"
             "cac8577126c3e49f8c915fa289f3f5aa624dc55f897b8b7a5613191bcfa9c097"
             "04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36")
