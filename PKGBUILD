@@ -1,13 +1,13 @@
 # Author and Maintainer: renyuneyun <renyuneyun@gmail.com>
 # Original author: Samantha McVey <samantham@posteo.net>
-# Copyright (C) 2017
+# Copyright (C) 2017 - 2018
 # This file and project are licensed under the GPLv2 or greater at your choice.
 # For more information view the license included or visit:
 # https://www.gnu.org/licenses/gpl-2.0.html
 
 pkgname=('pacman-pstatus')
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://gitlab.com/renyuneyun/pacman-ps'
 license=('GPL')
