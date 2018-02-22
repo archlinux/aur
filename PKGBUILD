@@ -4,7 +4,7 @@
 
 _pkgname=fdroidserver
 pkgname=${_pkgname}-git
-pkgver=r3725.3eca9dd
+pkgver=r4975.00811088
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$_pkgname"
@@ -51,10 +51,10 @@ package() {
 
     mkdir -p "$pkgdir/usr/bin"
     install "fdroid" "$pkgdir/usr/bin"
-    install "fd-commit" "$pkgdir/usr/bin"
 
     install -D completion/bash-completion "$pkgdir/usr/share/bash-completion/completions/fdroidserver"
 
-    install -D "examples/config.py" "$pkgdir/usr/share/$_pkgname/config.sample.py"
+    install -D "examples/config.py" "$pkgdir/usr/share/doc/$_pkgname/examples/config.py"
+    install -D "examples/fdroid-icon.png" "$pkgdir/usr/share/doc/$_pkgname/examples/fdroid-icon.png"
     mkdir -p "$pkgdir/opt/android-sdk/tools"
 }
