@@ -3,7 +3,7 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=2.93.r343.g896de2b59
+pkgver=2.93.r344.g96926a833
 pkgrel=1
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
 arch=('i686' 'x86_64')
