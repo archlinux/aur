@@ -1,11 +1,16 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+# To enable the Instrumentation and Tracing Technology API (ittnotify),
+# firstly install the package intel-seapi and then build intel-media-sdk.
+# It will be autodetected by the build system, serving as a makedepend.
+# Currently it will not be a mandatory makedepend.
+
 _commit='934c36b9d0f01af04de23c35d63b5916ee7b3102'
 
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=1.2a
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -53,12 +58,17 @@ prepare() {
     patch -Np1 -i "${srcdir}/intel-media-sdk-change-gcc-version.patch"
     patch -Np1 -i "${srcdir}/intel-media-sdk-detect-intel-opencl.patch"
     patch -Np1 -i "${srcdir}/intel-media-sdk-add-runtime-libraries.patch"
+    
+    # fix ittnotify (intel-seapi) detection in the build system
+    sed -i '/ITT_LIB/s/\$ENV{ITT_PATH}/$ENV{ITT_PATH}\/lib/' builder/FindVTune.cmake
 }
 
 build() {
     cd "${_srcname}-${pkgver}"
     
     export MFX_HOME="$(pwd)"
+    
+    export ITT_PATH='/usr'
     
     export CFLAGS="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
     export CXXFLAGS="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
