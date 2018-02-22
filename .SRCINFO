@@ -1,0 +1,14 @@
+pkgbase = tcomment-vim
+	pkgdesc = An extensible & universal comment vim-plugin that also handles embedded filetypes
+	pkgver = 3.08.1
+	pkgrel = 1
+	url = https://github.com/tomtom/tcomment_vim
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	depends = vim
+	source = https://github.com/tomtom/tcomment_vim/archive/3.08.1.tar.gz
+	md5sums = 6ea8f4ce78411efba444a0218e111219
+
+pkgname = tcomment-vim
+
