@@ -1,12 +1,13 @@
 pkgbase = reposync
 	pkgdesc = Wrapper for aursync
-	pkgver = 0.0.6
-	pkgrel = 2
+	pkgver = 0.0.7
+	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = aurutils
 	depends = sudo
 	depends = bash
+	depends = s3fs-fuse
 	source = reposync.sh
 	sha256sums = 94095385e1bb847c900cb2aaa05a5fc3e694b688f9d7a96bf901b39e2d46cb95
 
