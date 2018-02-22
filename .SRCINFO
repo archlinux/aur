@@ -21,7 +21,10 @@ pkgbase = sirikali
 	optdepends = ecryptfs-simple: for eCryptfs support
 	conflicts = sirikali-git
 	source = SiriKali-1.3.3.tar.xz::https://github.com/mhogomchungu/sirikali/releases/download/1.3.3/SiriKali-1.3.3.tar.xz
+	source = SiriKali-1.3.3.tar.xz.asc::https://github.com/mhogomchungu/sirikali/releases/download/1.3.3/SiriKali-1.3.3.tar.xz.asc
+	validpgpkeys = E3AF84691424AD00E099003502FC64E8DEBF43A8
 	sha256sums = 2ab44411f9aee06d0d7ca4592fbf8d830078b99f6bc60469648c5b0d8baefa21
+	sha256sums = SKIP
 
 pkgname = sirikali
 
