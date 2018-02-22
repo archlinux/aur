@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=3.2.70.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
 url='http://emby.media'
