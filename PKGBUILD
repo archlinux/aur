@@ -4,8 +4,8 @@
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=vim-rails
-pkgver=5.2_23266
-pkgrel=4
+pkgver=5.3_25295
+pkgrel=1
 pkgdesc='ViM plugin for enhanced Ruby on Rails application development'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=1567'

@@ -1,13 +1,13 @@
 pkgbase = vim-rails
 	pkgdesc = ViM plugin for enhanced Ruby on Rails application development
-	pkgver = 5.2_23266
-	pkgrel = 4
+	pkgver = 5.3_25295
+	pkgrel = 1
 	url = http://www.vim.org/scripts/script.php?script_id=1567
 	arch = any
 	groups = vim-plugins
 	license = custom:vim
 	depends = vim
-	source = vim-rails.zip::http://www.vim.org/scripts/download_script.php?src_id=23266
+	source = vim-rails.zip::http://www.vim.org/scripts/download_script.php?src_id=25295
 	source = license.txt
 	sha256sums = 86701db15c753bb4bd0e5ee233b37505454548e472cf6e6520a84b095833d7c5
 	sha256sums = 446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3
