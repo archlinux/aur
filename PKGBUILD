@@ -2,7 +2,7 @@
 
 pkgname=hunspell-cs
 pkgver=20061030
-pkgrel=2
+pkgrel=3
 pkgdesc="Czech dictionary for Hunspell"
 arch=('any')
 url="http://extensions.services.openoffice.org/en/project/czech-dictionary-pack-ceske-slovniky-cs-cz"
@@ -30,6 +30,6 @@ package()
 
   # docs
   install -dm755 "$pkgdir"/usr/share/doc/$pkgname
-  install -m644 README_cs.txt "$pkgdir"/usr/share/doc/$pkgname
+  install -m644 README_cs_CZ.txt "$pkgdir"/usr/share/doc/$pkgname
 
 }

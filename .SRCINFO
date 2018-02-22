@@ -1,7 +1,7 @@
 pkgbase = hunspell-cs
 	pkgdesc = Czech dictionary for Hunspell
 	pkgver = 20061030
-	pkgrel = 2
+	pkgrel = 3
 	url = http://extensions.services.openoffice.org/en/project/czech-dictionary-pack-ceske-slovniky-cs-cz
 	arch = any
 	license = GPL2
