@@ -10,7 +10,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.1.3.r36.g5a83e351
+pkgver=3.1.4.r0.g12d25f8c
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
