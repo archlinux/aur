@@ -6,8 +6,8 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r49.g78bf771
-pkgrel=2
+pkgver=1.2a.r55.g22dae39
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -26,8 +26,6 @@ makedepends=(
 )
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'libmfx')
-source=('intel-media-sdk-detect-intel-opencl.patch')
-sha256sums=('689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -42,15 +40,6 @@ prepare() {
         git clone https://github.com/Intel-Media-SDK/MediaSDK.git "$pkgname"
         cd "$pkgname"
     fi
-    
-    for _patch in intel-media-sdk-detect-intel-opencl.patch
-    do
-        printf '%s\n' "Checking patch '${_patch}'"
-        if patch -Np1 --dry-run -i "${srcdir}/${_patch}" >/dev/null
-        then
-            patch -Np1 -i "${srcdir}/${_patch}"
-        fi
-    done
     
     # change plugins directory
     if ! grep -q '^set(MFX_PLUGINS_DIR[[:space:]]/usr/lib64)$' CMakeLists.txt
