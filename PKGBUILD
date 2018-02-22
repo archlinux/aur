@@ -7,6 +7,7 @@ pkgdesc='Easily install themes and skins for many popular sites'
 url=https://add0n.com/stylus.html
 arch=('any')
 license=('GPL3')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/814814/stylus-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('c0fa61da3f75e5fb202a8008461e4c73a44c86b64197bd4fcaea38018a7aae3d')
