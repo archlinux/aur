@@ -2,12 +2,12 @@
 # Debian Upstream Maintainer: IOhannes m zmölnig <umlaeute at debian.org>
 
 pkgname=pd-lua-git
-pkgver=29.f5703f5
+pkgver=36.0d61232
 pkgrel=1
 pkgdesc="Lua bindings for Pd"
 arch=("i686" "x86_64")
 license=('GPL')
-url="http://download.puredata.info/pdlua"
+url="https://github.com/agraef/pd-lua"
 depends=('pd' 'lua')
 makedepends=('pkg-config')
 source=("git+https://github.com/agraef/pd-lua.git")
