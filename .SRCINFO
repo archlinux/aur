@@ -1,7 +1,7 @@
 pkgbase = ttf-chunk
 	pkgdesc = An ultra-bold slab serif typeface that is reminiscent of old American Western woodcuts, broadsides, and newspaper headlines. Used mainly for display, the fat block lettering is unreserved yet refined for contemporary use.
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/chunk
 	arch = any
 	groups = lmt-fonts
