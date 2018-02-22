@@ -1,7 +1,7 @@
 pkgbase = home-assistant
 	pkgdesc = Open-source home automation platform running on Python 3
 	pkgver = 0.63.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://home-assistant.io/
 	install = hass.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = home-assistant
 	depends = python-chardet>=3.0.4
 	depends = python-astral
 	depends = python-certifi
+	depends = python-attrs
 	optdepends = git: install component requirements from github
 	optdepends = net-tools: necessary for nmap discovery
 	replaces = python-home-assistant
