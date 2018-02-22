@@ -7,6 +7,7 @@ pkgdesc='Provides keyboard shortcuts for navigation and control in the spirit of
 url=https://github.com/philc/vimium
 arch=('any')
 license=('MIT')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/808538/vimium_ff-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('fe59078479c53b87fb142667f0fb95163d371549d119ce90ed46ec05a8b4b1ca')
