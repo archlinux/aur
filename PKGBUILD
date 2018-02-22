@@ -48,6 +48,7 @@ package() {
 
     install -D completion/bash-completion "$pkgdir/usr/share/bash-completion/completions/fdroidserver"
 
-    install -D "examples/config.py" "$pkgdir/usr/share/$pkgname/config.sample.py"
+    install -D "examples/config.py" "$pkgdir/usr/share/doc/$pkgname/examples/config.py"
+    install -D "examples/fdroid-icon.png" "$pkgdir/usr/share/doc/$pkgname/examples/fdroid-icon.png"
     mkdir -p "$pkgdir/opt/android-sdk/tools"
 }
