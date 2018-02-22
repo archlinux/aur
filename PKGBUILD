@@ -19,10 +19,10 @@ prepare() {
     # TODO https://github.com/Kitt-AI/snowboy/issues/377
     # TODO https://github.com/Kitt-AI/snowboy/pull/376
     sed -i -e "s|-lf77blas -lcblas -llapack -latlas|-lcblas|g" \
-        -e 's/ -shared/ -Wl,-O1,--as-needed/g' \
+        -e 's/ -shared/ -Wl,-O1,--as-needed\0/g' \
         "${srcdir}/${_pkgname}-${pkgver}/swig/Python3/Makefile"
     sed -i -e "s|-lf77blas -lcblas -llapack -latlas|-lcblas|g" \
-        -e 's/ -shared/ -Wl,-O1,--as-needed/g' \
+        -e 's/ -shared/ -Wl,-O1,--as-needed\0/g' \
         "${srcdir}/${_pkgname}-${pkgver}/swig/Python/Makefile"
     cp -a "${srcdir}/${_pkgname}-${pkgver}"{,-py2}
 }
