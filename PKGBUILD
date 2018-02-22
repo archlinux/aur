@@ -1,17 +1,17 @@
-# Maintainer: samæ <samæ at marvid dot fr>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Contributor: samæ <samæ at marvid dot fr>
 
 _fnt_name=blackout
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
-pkgrel=2
-pkgdesc="A bad-ass, unholy-mother-shut-your-mouth stencil sans-serif."
+pkgrel=3
+pkgdesc="Eats holes for breakfast lunch and dinner. Inspired by filling in sans-serif newspaper headlines. Continually updated with coffee and music. Makes your work louder than the next person’s."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-font-utils')
-source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
-install=${pkgname}.install
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 md5sums=('23ec5900abd2b9f9196cec94ae505315')
 
 package() {

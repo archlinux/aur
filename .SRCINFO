@@ -1,15 +1,15 @@
 pkgbase = ttf-blackout
-	pkgdesc = A bad-ass, unholy-mother-shut-your-mouth stencil sans-serif.
+	pkgdesc = Eats holes for breakfast lunch and dinner. Inspired by filling in sans-serif newspaper headlines. Continually updated with coffee and music. Makes your work louder than the next person’s.
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/blackout
-	install = ttf-blackout.install
 	arch = any
 	groups = lmt-fonts
 	license = custom:OFL
 	depends = fontconfig
+	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/theleagueof/blackout/archive/master.zip
+	source = ttf-blackout-20160215.zip::https://github.com/theleagueof/blackout/archive/master.zip
 	md5sums = 23ec5900abd2b9f9196cec94ae505315
 
 pkgname = ttf-blackout
