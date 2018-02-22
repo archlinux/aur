@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=neon-wallet
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Light Wallet for the NEO Blockchain"
 arch=('x86_64')
 license=('MIT')
@@ -11,7 +11,7 @@ source=("https://github.com/CityOfZion/neon-wallet/archive/$pkgver.tar.gz"
         "neon.png"
         "LICENSE"
        )
-sha256sums=('d1fa6d4805ac1e5d7187dd511dbb1bd8708d1bc00f3c90be741e4e5d67cfc46e'
+sha256sums=('e67285e190cfa2a9eebde1bbb36cfa4fa6c948dee075a4aeb3d8da1792302d8d'
             'd70d3cb065a779035812f12f0da337b9d83975159b26fba6efd04fd2db87b547'
             '0bfb88ecd77178bc600a9d752ba6e3a1f5cf4a38963bb718d2d047030445ff34'
             '49d5f9ad18e2e7d8de196c9c0bcf558b018918e23f60e3e0ab83ddc4ef9a6151')
