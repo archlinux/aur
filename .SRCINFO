@@ -1,0 +1,18 @@
+pkgbase = scannerl-git
+	pkgdesc = Save your dotfiles once, deploy them everywhere
+	pkgver = 0.38.r0.gc5b1b15
+	pkgrel = 1
+	url = https://github.com/kudelskisecurity/scannerl
+	arch = any
+	license = GPL
+	makedepends = rebar
+	makedepends = git
+	depends = erlang-nox>=20
+	depends = openssh
+	provides = scannerl
+	conflicts = scannerl
+	source = git+https://github.com/kudelskisecurity/scannerl.git
+	md5sums = SKIP
+
+pkgname = scannerl-git
+
