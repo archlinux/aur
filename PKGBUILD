@@ -7,6 +7,7 @@ pkgdesc='Control the HTTP Referer on a per-site basis'
 url=https://addons.mozilla.org/en-US/firefox/addon/referercontrol
 arch=('any')
 license=('custom:MPLv2')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/793120/referer_control-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('b272fa496b52e25bd6406d645b26d169d3c5361c3178cd64833c1f4b92af1641')
