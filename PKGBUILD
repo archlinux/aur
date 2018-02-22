@@ -1,28 +1,41 @@
-# Maintainer: Ben Alex <ben.alex@acegi.com.au>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnx
-pkgver=2.9.512
-pkgrel=2
-pkgdesc='Nanex NxCore tape processing library'
-arch=('x86_64')
-url="http://nanex.net"
-license=('custom')
-depends=('gcc-libs')
+pkgver=1.0.0
+_pkgverexamples=20180218
+pkgrel=1
+pkgdesc="Library for Nintendo Switch (NX) homebrew development"
+arch=('any')
+url="http://devkitpro.org"
+license=('custom: ISC')
+depends=('devkita64')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/switchbrew/libnx/archive/v$pkgver.tar.gz"
+        "https://github.com/switchbrew/switch-examples/releases/download/v$_pkgverexamples/switch-examples-$_pkgverexamples.tar.bz2")
+sha256sums=('14bca9efe9b3c1d46c2f442bf09eaac2bd415ac7d27a1dddcd1af2428574aecf'
+            '24b00060974e70be6ebf85addb35feb22146b1fcce28fb16b9c378097462b97b')
+noextract=("switch-examples-$_pkgverexamples.tar.bz2")
+options=(!strip staticlibs)
 
-source=('LICENSE'
-        'http://www.nanex.net/downloads/Linux/BETA/OLD/20151109.libnx.so.testing.tgz'
-	'http://www.nanex.net/downloads/Linux/BETA/OLD/20141216.NxCoreAPIDU.tgz')
-md5sums=('84bf6d4d8cf9e6597e8751dbe4f788f3'
-         '674b616cae4bc0f1bf15690b0a119f18'
-         '3bd43ad96641781079ad80e50197d876')
+build() {
+  # set environment
+  source /etc/profile.d/devkita64.sh
+
+  make -C libnx-$pkgver
+}
 
 package() {
-	cd ${srcdir}
-	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	cd ${srcdir}/20141216.NxCoreAPIDU/NxCoreDU
-	install -Dm644 NxCoreAPIDU.h ${pkgdir}/usr/include/NxCoreAPIDU.h
-	install -Dm644 NxCoreLoadLib.h ${pkgdir}/usr/include/NxCoreLoadLib.h
-	cd ${srcdir}/20151109.libnx.so.testing/CentOS-x64-63_gcc-4.7.2-O3_v2.9.512
-	install -Dm644 libnx.so ${pkgdir}/usr/lib/libnx.so
+  cd libnx-$pkgver
+
+  make -C nx dist-bin
+  DEVKITPRO="$pkgdir/opt/devkitpro"
+  install -d "$DEVKITPRO"/libnx
+  bsdtar xf nx/libnx-$pkgver.tar.bz2 -C "$DEVKITPRO"/libnx
+  # examples
+  install -d "$DEVKITPRO"/examples/switch
+  bsdtar xf ../switch-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/switch
+  # fix permissions
+  chown -R root:root "$DEVKITPRO"/examples
+  find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+
+  # license
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
