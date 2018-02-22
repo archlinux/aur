@@ -12,6 +12,5 @@ source=("http://web.archive.org/web/20141118200943/https://assetportal.nokia.com
 md5sums=('d1d5f51179052d6104884eb37590cae8')
 
 package() {
-  install -d "$pkgdir/usr/share/fonts/TTF"
-  install -m644 nokiapuretext-webfont.ttf "$pkgdir/usr/share/fonts/TTF/nokiapuretext-webfont.ttf"
+  install -Dm644 nokiapuretext-webfont.ttf "$pkgdir/usr/share/fonts/TTF/nokiapuretext-webfont.ttf"
 }
