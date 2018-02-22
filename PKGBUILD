@@ -3,8 +3,8 @@
 
 pkgname=ssb-patchwork
 _upstream=patchwork
-pkgver=3.8.6
-pkgrel=2
+pkgver=3.8.10
+pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
@@ -16,7 +16,7 @@ source=(
 'run.sh'
 "${pkgname}.desktop"
 )
-md5sums=('6889ff0b42d44c115552821338826261'
+md5sums=('9325b924b3f3ecc9dbaddce1a3d88ad2'
          'bb315f14e6d7ef57976c8934ddad4fd9'
          '3c73b5245f2da7dd2e31729e2b57ad37')
 
