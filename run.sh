@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /opt/ssb-patchwork
-./node_modules/.bin/electron index.js
+./node_modules/.bin/electron index.js "$@"

@@ -17,7 +17,7 @@ source=(
 "${pkgname}.desktop"
 )
 md5sums=('6889ff0b42d44c115552821338826261'
-         '26bbb4043ff690355e9d83f539484644'
+         'bb315f14e6d7ef57976c8934ddad4fd9'
          '3c73b5245f2da7dd2e31729e2b57ad37')
 
 build() {
