@@ -1,4 +1,4 @@
-# Maintainer: LightDot <lightdot a-t- g m a i l>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 _pkgname=polkit-efl
 pkgname=$_pkgname-git
