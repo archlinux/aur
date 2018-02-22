@@ -1,8 +1,9 @@
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=obs-service-format_spec_file
-pkgver=20171107
+pkgver=20180215
 pkgrel=1
 _pkgver=1.1
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
