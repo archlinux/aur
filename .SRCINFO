@@ -1,0 +1,19 @@
+pkgbase = libnx-git
+	pkgdesc = Library for Nintendo Switch (NX) homebrew development (development version)
+	pkgver = 1.0.0.r15.gff8a95b
+	pkgrel = 1
+	url = http://devkitpro.org
+	arch = any
+	license = custom: ISC
+	depends = devkita64
+	provides = libnx
+	conflicts = libnx
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/switchbrew/libnx.git
+	source = git+https://github.com/switchbrew/switch-examples.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libnx-git
+
