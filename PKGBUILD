@@ -4,14 +4,14 @@
 
 _gitname=libgit2
 pkgname=libgit2-git
-pkgver=0.26.0.r379.gf1323d9c1
+pkgver=0.27.0.rc1.r0.g809b0ca6b
 epoch=2
 pkgrel=1
 pkgdesc='A linkable library for Git'
 arch=('i686' 'x86_64')
 url="https://libgit2.github.com/"
 license=('GPL2')
-depends=(zlib openssl libssh2 curl)
+depends=('curl' 'http-parser')
 makedepends=(cmake python git)
 provides=('libgit2')
 conflicts=('libgit2')
