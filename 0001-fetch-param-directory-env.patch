@@ -1,0 +1,13 @@
+diff --git a/zcutil/fetch-params.sh b/zcutil/fetch-params.sh
+index 392f60a2..54c46d3a 100755
+--- a/zcutil/fetch-params.sh
++++ b/zcutil/fetch-params.sh
+@@ -2,7 +2,7 @@
+ 
+ set -eu
+ 
+-PARAMS_DIR="$HOME/.zcash-params"
++PARAMS_DIR=${PARAMS_DIR:-$HOME/.zcash-params}
+ 
+ SPROUT_PKEY_NAME='sprout-proving.key'
+ SPROUT_VKEY_NAME='sprout-verifying.key'

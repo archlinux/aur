@@ -1,0 +1,69 @@
+_koto_user=koto
+_koto_group=koto
+
+post_install() {
+  _mkuser
+  pw=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32;echo;`
+  sed -i -e "s/<secret>/$pw/g" /etc/koto.conf
+  chown -R $_koto_user:$_koto_group /var/lib/koto
+  printf "%b\n" "$koto"
+}
+
+post_upgrade() {
+  _mkuser
+  chown -R $_koto_user:$_koto_group /var/lib/koto
+  printf "%b\n" "$koto"
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /var/lib/koto
+}
+
+_mkuser() {
+  getent passwd $_koto_user &>/dev/null || {
+    echo -n "Creating koto user... "
+    grep -E "^$_koto_group:" /etc/group >/dev/null || groupadd $_koto_group
+    useradd -m -d /var/lib/koto -g $_koto_group -s /usr/bin/nologin $_koto_user 2>/dev/null
+    mkdir /var/lib/koto/data
+    mkdir /var/lib/koto/.koto
+    ln -s /etc/koto.conf /var/lib/koto/.koto/koto.conf
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing koto user... "
+  userdel -rf $_koto_user 2>/dev/null
+  echo "done"
+}
+
+read -d '' koto <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Koto                                                              ##
+##  ____________                                                      ##
+##                                                                    ##
+##  To start kotod:                                                   ##
+##                                                                    ##
+##      # PARAMS_DIR=/var/lib/koto/zcash-params koto-fetch-params     ##
+##      # systemctl start kotod                                       ##
+##                                                                    ##
+##  To communicate with koto as a normal user:                        ##
+##                                                                    ##
+##      $ mkdir -p ~/.koto                                            ##
+##      $ cat > ~/.koto/koto.conf <<'EOF'                             ##
+##      rpcuser=user                                                  ##
+##      rpcpassword=secret                                            ##
+##      EOF                                                           ##
+##                                                                    ##
+##      $ koto-fetch-params                                           ##
+##                                                                    ##
+##  Config:         /etc/koto.conf                                    ##
+##  Data Directory: /var/lib/koto/data                                ##
+##  Documentation:  /usr/share/doc/koto                               ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
