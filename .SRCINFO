@@ -1,18 +1,15 @@
 pkgbase = tg
 	pkgdesc = An advanced cross-platform solution for timing mechanical watches, a timegrapher. Also known as tg-timer.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vacaboja/tg
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = gtk3
 	depends = portaudio
 	depends = fftw
 	provides = tg-timer
-	conflicts = tg
-	conflicts = tg-timer
-	source = https://github.com/vacaboja/tg/archive/v0.5.0.tar.gz
+	source = tg-0.5.0.tar.gz::https://github.com/vacaboja/tg/archive/v0.5.0.tar.gz
 	md5sums = 92f548e6a25b003e77f9613bf26cb940
 
 pkgname = tg
