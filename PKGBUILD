@@ -4,7 +4,7 @@ _pkgname="mitsuba"
 _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
 pkgname="${_pkgname}-git"
 pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=3
+pkgrel=4
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -16,11 +16,11 @@ conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
         "python3.5.patch"
         "eigen3.3.1.patch"
-        "irawan.bsdf.drop.patch")
+        "irawan.bsdf.patch")
 sha256sums=('SKIP'
             '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04'
             '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d'
-            'd2c8e1a1478e279da2a08acfa07e4628f492dabbaa7fd5e7b8706ebe607d4431')
+            '290f61f85b1e28bd4d9d4ec01f2dd87752550c0534a4d700219c9e89e4e09af4')
 
 
 pkgver() {
@@ -44,7 +44,7 @@ prepare() {
     sed -i "s:\(CXXFLAGS       = \[\):\1 '-std=gnu++11',:" config.py
     patch -Np1 -i ${srcdir}/python3.5.patch 
     patch -Np1 -i ${srcdir}/eigen3.3.1.patch
-    patch -Np1 -i ${srcdir}/irawan.bsdf.drop.patch
+    patch -Np1 -i ${srcdir}/irawan.bsdf.patch
 }
 
 build() {
