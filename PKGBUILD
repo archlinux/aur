@@ -1,8 +1,8 @@
 # Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
 
 pkgname=doomseeker
-pkgver=1.1
-pkgrel=8
+pkgver=1.2
+pkgrel=0
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="https://reotip.alwaysdata.net/"
@@ -12,19 +12,18 @@ depends=('qt4' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'make')
 
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
-    	    'odamex: Classic client/server multiplayer fork'
-    	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
+            'odamex: Classic client/server multiplayer fork'
+            'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
 
-source=("https://reotip.alwaysdata.net/1.0.tar.gz"
+source=("https://bitbucket.org/destroyerrocket/doomseeker/get/default.tar.gz"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 
-sha256sums=('9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d'
+sha256sums=('47bbec12fa14a67701ea52faec7783958791748c49726e801bbed53bebc4f2d8'
             '64004248a2dd3771292e63717a05e1859f1ffe6d6fd5f16ebfa1427b9a43533f'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
-_bbdir=Doomseeker-doomseeker-b1cb0d67f9b9
-
+_bbdir=destroyerrocket-doomseeker-34583760c068/
 build() {
     cd $srcdir/$_bbdir
     mkdir -p build
