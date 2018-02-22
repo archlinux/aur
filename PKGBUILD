@@ -3,7 +3,7 @@
 
 pkgname=twinejs-standalone
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source tool for telling interactive, nonlinear stories"
 arch=('x86_64')
 url="http://twinery.org/"
@@ -12,7 +12,7 @@ depends=('libxss'
 	 'gconf'
 	 'nss'
 	 'gtk3')
-source=("https://bitbucket.org/klembot/twinejs/downloads/twine_${pkgver}_linux64.zip"
+source=("https://github.com/klembot/twinejs/releases/download/${pkgver}/twine_${pkgver}_linux64.zip"
         "http://twinery.org/homepage/img/logo.svg"
         "twinejs.desktop")
 md5sums=('277e7790b4fc60bbf8e8cd0da13c1021'
