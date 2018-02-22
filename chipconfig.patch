@@ -1,0 +1,16 @@
+diff --git a/chipconfig.c b/chipconfig.c
+index aaa26c7..2d2342e 100644
+--- a/chipconfig.c
++++ b/chipconfig.c
+@@ -90,7 +90,10 @@ int msmidcount;
+ char vname[50];
+ char vval[100];
+ 
+-FILE* in=fopen("chipset.cfg","r");  
++FILE* in=fopen("chipset.cfg","r");
++if (in == 0) {
++  in=fopen("/etc/qtools/chipset.cfg","r");
++}
+ if (in == 0) {
+   printf("\n! Файл конфигурации чипсетов chipset.cfg не найден\n");
+   return 0;  // конфиг не найден

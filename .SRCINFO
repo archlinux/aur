@@ -1,0 +1,20 @@
+pkgbase = qtools-git
+	pkgdesc = A toolset for reading/writing flash of Qualcomm chips
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/forth32/qtools
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = readline
+	provides = qtools
+	conflicts = qtools
+	backup = etc/qtools/chipset.cfg
+	source = git+https://github.com/forth32/qtools.git
+	source = chipconfig.patch
+	sha256sums = SKIP
+	sha256sums = 618abb9acc929cdab9964a49254681bca07ffab088e283936501bfcdb5a881e4
+
+pkgname = qtools-git
+
