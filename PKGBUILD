@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=qt5ct-svn
-pkgver=0.35.r449
+pkgver=0.35.r455
 pkgrel=1
 pkgdesc="Qt5 Configuration Tool - svn version."
 arch=('i686' 'x86_64')
@@ -32,7 +32,5 @@ build() {
 package() {
   cd "${pkgname%-*}"
   make INSTALL_ROOT="$pkgdir" install
-  install -d "$pkgdir/usr/share/qt5ct"
-  cp -r {colors,qss} "$pkgdir/usr/share/qt5ct"
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
