@@ -7,6 +7,7 @@ pkgdesc='Manage your tabs in the sidebar'
 url=https://addons.mozilla.org/en-US/firefox/addon/tree-tabs
 arch=('any')
 license=('custom:MPLv2')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/809637/tree_tabs-$pkgver-an+fx-linux.xpi")
 noextract=("${source##*/}")
 sha256sums=('690b0f89d271224272625f4687c2f304ff6df8be17f2efb0db613a02e3860a56')
