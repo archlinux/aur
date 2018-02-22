@@ -10,7 +10,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
-makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'wxgtk')
+makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'wxgtk' 'systemd')
 source=('git+https://github.com/Icinga/icinga2.git')
 sha256sums=('SKIP')
 
