@@ -5,7 +5,7 @@
 
 pkgname=db6.2
 _pkgname=${pkgname%[0-9]*\.[0-9]*}
-pkgver=6.2.23
+pkgver=6.2.32
 _pkgver=${pkgver%\.[0-9]*}
 pkgrel=1
 pkgdesc="The Berkeley DB embedded database system $_pkgver"
@@ -16,7 +16,7 @@ depends=('gcc-libs' 'sh')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname"{,4.{5,6,8},5.2})
 source=("http://download.oracle.com/berkeley-$_pkgname/$_pkgname-${pkgver}.tar.gz")
-sha1sums=('646c57b99799dc300207976e2270cdaca1a2f198')
+md5sums=('33491b4756cb44b91c3318b727e71023')
 
 build() {
   cd "$_pkgname-$pkgver/build_unix"
