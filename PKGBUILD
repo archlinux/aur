@@ -1,4 +1,4 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
