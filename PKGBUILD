@@ -1,6 +1,6 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
-pkgname=('icinga2-common-git' 'icinga2-git' 'icinga-studio-git')
+pkgname=('icinga2-common-git' 'icinga2-git')
 pkgbase=icinga2-git
 _pkgname=icinga2
 pkgver=r7877.aacc535ac
@@ -10,7 +10,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
-makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'wxgtk' 'systemd')
+makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'systemd' 'wxgtk')
 source=('git+https://github.com/Icinga/icinga2.git')
 sha256sums=('SKIP')
 
@@ -33,7 +33,6 @@ build() {
     -DICINGA2_SYSCONFIGFILE=/etc/default/icinga2 \
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
     -DUSE_SYSTEMD=ON \
-    -DICINGA2_WITH_STUDIO=ON \
     -DLOGROTATE_HAS_SU=OFF
 
   make
@@ -98,18 +97,4 @@ package_icinga2-git() {
             "$pkgdir/var/log/icinga2"
 
   rm -r $pkgdir/usr/lib/icinga2/lib*
-  rm $pkgdir/usr/bin/icinga-studio
-}
-
-package_icinga-studio-git() {
-  pkgdesc="Graphical tool for debugging and testing the Icinga2 API"
-  depends=('icinga2-common' 'wxgtk')
-  provides=('icinga2-studio')
-  conflicts=('icinga2-studio')
-
-  cd "$srcdir/$_pkgname/build"
-  make DESTDIR="$pkgdir" install
-  rm -r $pkgdir/{etc,run,var}
-  rm -r $pkgdir/usr/{lib,share}
-  rm $pkgdir/usr/bin/icinga2
 }
