@@ -1,11 +1,11 @@
 pkgbase = polkit-efl-git
-	pkgdesc = Polkit Authentication Agent using EFL - Development version
+	pkgdesc = Enlightenment polkit authentication agent using EFL - development version.
 	pkgver = 0.1.0.r8.g6417565
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = any
 	license = GPL3
-	license = LGPL: Icons
+	license = LGPL
 	makedepends = git
 	makedepends = mesa
 	depends = python-efl
