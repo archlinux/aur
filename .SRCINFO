@@ -1,0 +1,23 @@
+pkgbase = frivpn-git
+	pkgdesc = A multi-threaded OpenVPN client
+	pkgver = 61.7596215
+	pkgrel = 1
+	url = https://github.com/znuh/frivpn
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = lua
+	makedepends = openssl
+	makedepends = lzo
+	depends = lua
+	depends = lua-posix
+	depends = lua-luaossl
+	depends = lua-cqueues
+	depends = openssl
+	depends = lzo
+	source = git+https://github.com/znuh/frivpn.git
+	sha256sums = SKIP
+
+pkgname = frivpn-git
+
