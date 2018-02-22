@@ -1,0 +1,16 @@
+pkgbase = maninex
+	pkgdesc = Extension manager for Chromium-like browsers without the WebStore plugin
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/InspectorMustache/maninex
+	arch = any
+	license = MIT
+	depends = python>=3.3.0,
+	depends = python-requests,
+	depends = python-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/82/0a/cd28b1c311446d7b3c8c19af36448415e6477a63644b6a3a68d806436b84/maninex-0.3.tar.gz
+	md5sums = 7be996184f64dd8add128000ecd8903e
+
+pkgname = maninex
+
