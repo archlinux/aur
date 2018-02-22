@@ -4,12 +4,12 @@
 _model="j625dw"
 pkgname="brother-mfc-$_model"
 pkgver="3.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother MFC-J625DW"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 license=('unknown')
-depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
+depends=('tcsh' 'perl' 'a2ps')
 if test "$CARCH" == x86_64; then
    depends+=(lib32-glibc)
 fi
