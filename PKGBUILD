@@ -7,10 +7,10 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3350.0
+pkgver=66.0.3352.0
 pkgrel=1
 _launcher_ver=5
-pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
+pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('553129cbf651f0d94bf0200f46c0359f2abd2aebf435723ebf667bb5062b6ffa'
+sha256sums=('026463c55f7d6338094f603d1154c38258491c6a3b011b7c6d37cb0d7512763f'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -178,7 +178,7 @@ sha256sums=('553129cbf651f0d94bf0200f46c0359f2abd2aebf435723ebf667bb5062b6ffa'
             'f59483b9d7d93fd09ffce43f987078d656a67b2c7b90877d845932f290ce4c8c'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '15d19d16caa91d59978c6cae8e759344d9da7f8abf8e694ebee4fd39288ae1fe'
+            '0618b9fc3f63920d29802b3ac3936ccbba5669ca399ca7eb00b7d087a0eb5559'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
