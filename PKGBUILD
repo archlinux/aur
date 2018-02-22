@@ -3,8 +3,8 @@
 pkgname=hda-jack-retask-bzr
 _pkgname=hda-jack-retask
 pkgver=10
-pkgrel=1
-pkgdesc="Retask your jack plugs (eg. turn your microphone jack plug into a headphone one)."
+pkgrel=2
+pkgdesc="Retask your jack plugs (eg. turn your microphone jack plug into a headphone one) - DEPRECATED: use community/alsa-tools instead"
 arch=(i686 x86_64)
 url="https://code.launchpad.net/~diwic/+junk/hda-jack-retask"
 license=(GPL2)
@@ -16,6 +16,9 @@ _bzrtrunk="https://code.launchpad.net/~diwic/+junk/hda-jack-retask"
 _bzrmod="hda-jack-retask"
 
 build() {
+  msg1 "This package is deprecated. Use community/alsa-tools instead."
+  exit 1
+
   cd "${srcdir}"
   
   msg2 "Connecting to Bazaar server and checking out..."
