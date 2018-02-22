@@ -1,7 +1,7 @@
 pkgbase = ttf-goudy-bookletter-1911
 	pkgdesc = A public domain font based on Frederic Goudy’s Kennerley Oldstyle.
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/goudy-bookletter-1911
 	arch = any
 	groups = lmt-fonts
