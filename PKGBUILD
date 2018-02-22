@@ -10,7 +10,7 @@ _pkgver=${pkgver%\.[0-9]*}
 pkgrel=1
 pkgdesc="The Berkeley DB embedded database system $_pkgver"
 arch=('i686' 'x86_64')
-url="http://www.oracle.com/technology/software/products/berkeley-$_pkgname/index.html"
+url="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb"
 license=('custom')
 depends=('gcc-libs' 'sh')
 provides=("$_pkgname=$pkgver")
