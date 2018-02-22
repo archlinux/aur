@@ -1,18 +1,18 @@
-# Maintainer: samæ <samæ at marvid dot fr>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Contributor: samæ <samæ at marvid dot fr>
 
 _fnt_name=league-gothic
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
-pkgrel=1
+pkgrel=2
 pkgdesc="League Gothic is a revival of an old classic, and one of our favorite typefaces, Alternate Gothic #1"
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('otf-league-gothic')
-source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
-install=${pkgname}.install
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 md5sums=('e19525cac31d325b4604d01e36c9fd6c')
 
 package() {
@@ -28,4 +28,3 @@ package() {
 
   install -Dm644 ${srcdir}/${_fnt_name}-master/Open\ Font\ License.markdown ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
-
