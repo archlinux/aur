@@ -10,9 +10,9 @@ GTK_VERSION=3
 JAVA_VERSION=8
 
 pkgname=xmind
-pkgver=3.7.6
-_filename=$pkgname-8-update6-linux
-pkgrel=3
+pkgver=3.7.7
+_filename=$pkgname-8-update7-linux
+pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
 url="http://www.xmind.net"
@@ -29,7 +29,7 @@ source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
 'xmind.xml'
 'xmind.png'
 'xmind_file.png')
-sha512sums=('0e4871a385c8449da000ee3bcf1a44fe63075af4f592f43a01635e017ab253a996739c63f9c71f098529adf62b5df4018440c7db1c44040488c0e3186abe6248'
+sha512sums=('0f59201f44b23436c7e6e3fd4dd1427337e5a262e5d4f25dbc836c2f4fd42b99232c1988138ba7015523ede50e0ae829ada6359698d5af0eee529ed19cd347e3'
 'SKIP'
 'SKIP'
 'SKIP'
