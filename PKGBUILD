@@ -2,7 +2,7 @@
 
 pkgname=tl866-updater-git
 _pkgname=TL866
-pkgver=r35.2747c4c
+pkgver=r119.191da21
 pkgrel=1
 pkgdesc="Open source software for TL866 eprom programmer"
 arch=('i686' 'x86_64')
@@ -18,13 +18,12 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/TL866_Updater"
-	qmake
+  cd "${srcdir}/${_pkgname}/TL866_Updater/QT"
+  qmake
   make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}/TL866_Updater"
-  #make install
-	install -D --mode=0755 TL866_Updater "${pkgdir}/usr/bin/tl866-updater"
+  cd "${srcdir}/${_pkgname}/TL866_Updater/QT"
+  install -D --mode=0755 TL866_Updater "${pkgdir}/usr/bin/tl866-updater"
 }
