@@ -10,7 +10,7 @@ url='http://www.washington.edu/alpine/'
 license=('apache')
 depends=('ncurses')
 makedepends=('gcc')
-source=("http://pkgs.fedoraproject.org/repo/pkgs/alpine/alpine-2.00.tar.bz2/84e44cbf71ed674800a5d57eed9c1c52/alpine-${pkgver}.tar.bz2")
+source=("http://ftp.swin.edu.au/alpine/alpine-${pkgver}.tar.bz2")
 sha256sums=('c85db8405af90375ba2440c85b7952d80996154e9916b83acca558dc82e0a2a6')
 
 prepare() {
