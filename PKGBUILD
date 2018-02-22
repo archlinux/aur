@@ -2,18 +2,18 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 pkgname=afew
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="afew is an initial tagging script for notmuch mail"
 arch=(any)
-url="https://github.com/teythoon/afew"
+url="https://github.com/afewmail/afew"
 license=('custom:BSD')
 depends=('python' 'notmuch' 'dbacl' 'python-chardet' 'python-setuptools')
 makedepends=('python-sphinx')
 conflicts=(afew-git)
 source=('LICENSE' "https://github.com/afewmail/afew/archive/$pkgver.tar.gz")
 sha1sums=(26af0a66e96e073a476f9f5006d45a349f81faf3
-          c6f89bec7fa7b0d12decf8e9d3b878ade82c247b)
+          d99268edee10f8e2587fcd6b88299c407ee868be)
 
 prepare () {
   # We build from the versioned tarball from github so we do not need to
