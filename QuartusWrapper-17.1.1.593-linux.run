@@ -1,0 +1,1 @@
+./QuartusWrapper-17.1.1.593-linux.run --accept_eula 1 "$@"
