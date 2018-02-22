@@ -8,7 +8,7 @@ pkgbase = obs-service-format_spec_file
 	depends = obs-service-source_validator
 	depends = perl-date-parse
 	source = http://download.opensuse.org/source/factory/repo/oss/suse/src/obs-service-format_spec_file-20180215-1.1.src.rpm
-	sha256sums = 3e47e50921066d1cc139ba2e17fc1b26a44e481ae3cb07f8e97b710be32c343e
+	sha256sums = afc35c7489b04017c1abcce121107ca9c28d75bbb7b913adba3ed2ecaf68be49
 
 pkgname = obs-service-format_spec_file
 

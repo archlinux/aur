@@ -13,7 +13,7 @@ url='https://build.opensuse.org/package/show/openSUSE:Factory/obs-service-format
 license=('GPL2')
 depends=('obs-service-source_validator' 'perl-date-parse')
 source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
-sha256sums=('3e47e50921066d1cc139ba2e17fc1b26a44e481ae3cb07f8e97b710be32c343e')
+sha256sums=('afc35c7489b04017c1abcce121107ca9c28d75bbb7b913adba3ed2ecaf68be49')
 
 prepare() {
   cd "$srcdir"
