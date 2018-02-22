@@ -6,12 +6,14 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=gaupol-git
-pkgver=20140621.1947
+pkgver=20180218.2292
 pkgrel=1
 pkgdesc="An editor for text-based subtitles (devel tree)"
 arch=('any')
 url="http://home.gna.org/gaupol"
 license=('GPL')
+provides=('gaupol')
+conflicts=('gaupol')
 depends=('python-gobject' 'gtk3' 'gst-plugins-base' 'gst-plugins-good'
          'iso-codes' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('intltool' 'git')
