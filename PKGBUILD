@@ -2,7 +2,7 @@
 
 pkgname=slstatus-git
 pkgver=r330.7246dc4
-pkgrel=1
+pkgrel=2
 pkgdesc='A status monitor for window managers'
 arch=('i686' 'x86_64')
 url='http://tools.suckless.org/slstatus'
