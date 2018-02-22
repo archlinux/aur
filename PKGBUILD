@@ -1,4 +1,5 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
