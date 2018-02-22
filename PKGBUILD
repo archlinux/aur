@@ -3,7 +3,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-svn
-pkgver=0.74.4059
+pkgver=0.74.4085
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libgl' 'libpng' 'mesa' 'sdl_net' 'sdl_
 makedepends=('subversion')
 provides=('dosbox')
 conflicts=('dosbox')
-source=($pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk
+source=($pkgname::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
     $pkgname.desktop
     dosbox-16.png 
     dosbox-48.png 
