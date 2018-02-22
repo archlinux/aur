@@ -1,13 +1,14 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r190.g5f6225c3
+pkgver=2.4.rc2.r280.g2cea7200
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
-optdepends=('easy-rsa: easy CA and certificate handling')
+optdepends=('easy-rsa: easy CA and certificate handling'
+            'pam: authenticate via PAM')
 makedepends=('git' 'systemd')
 conflicts=('openvpn' 'openvpn-dev')
 provides=('openvpn=2.4.0' 'openvpn-dev')
