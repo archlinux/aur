@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir -p $HOME/editcp
+cd $HOME/editcp
+cp -ua /usr/share/editcp/* .
+exec ./editcp.sh $1
