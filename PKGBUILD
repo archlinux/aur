@@ -7,6 +7,7 @@ pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 url=https://github.com/gorhill/uBlock
 arch=('any')
 license=('GPL3')
+groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('30b258803fd6cd988c5ba479f2f6ff5b4e9b40110c81e3421a6867b20ec718a6')
