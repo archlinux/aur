@@ -1,6 +1,6 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=4.0.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
 makedepends=('patchelf')
 source=("snapgene_viewer_${pkgver}_linux.rpm::http://www.snapgene.com/products/snapgene_viewer/download.php?&majorRelease=${pkgver:0:3}&minorRelease=${pkgver}&os=linux_rpm")
-sha512sums=('893f76de44dc9fd41a3e56c46c79e2c4b7f2954727167a80ab8da77d4defd2816556c8e665bef7c0fe6328d367ad91e664fbc435329fefd600dd5b47e70c7d55')
+sha512sums=('71843d8b20f95cf39bf40ebf803dce5b35c8966fb63e75ad7b2ef8d7bbd194db42c47abd01e832d5622abfd1e55732425135662fbc5c152fe10f6f4d31d83bbc')
 
 # Some shared libraries could be stripped out and installed as dependencies
 # instead.  However, directly calling the snapgene-viewer binary currently
