@@ -9,7 +9,7 @@
 
 pkgname=freetype2-cleartype
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library with ClearType patch"
 arch=(x86_64)
 license=('GPL')
@@ -28,14 +28,14 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
 		0007-cleartype.patch
 		freetype2.sh
 )
-md5sums=('513c403c110016fdc7e537216a642b1d'
-         'SKIP'
-         'a1f96fd4abc2574b04c2599fb1c71293'
-         '47e916030eec65a17d87641595cc1ae8'
-         'b97d9d0b86f9edb961ee97f771016ba5'
-         '0292b4dbbefbfc5404390e4879b88de2'
-         '9df123ffc4fd56e6345abb2707efd84e'
-         'fef731289a0f86933ff2d0b3615c3de0')
+sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
+          'SKIP'
+          'b69531770c343d403be294b7e4d25ac45738c833'
+          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
+          '770f1981734a837bcf065564c91644b4cc5e256a'
+          '21ad7dd31e16adb5b39adfa5671018a736626562'
+          '6aaa8af267f85079c8f21db417bc1741de980113'
+          'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare() {
