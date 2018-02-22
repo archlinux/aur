@@ -1,4 +1,4 @@
-# Maintainer: LighDot <lightdot -a-t- g m a i l>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=tg
 pkgver=0.5.0
