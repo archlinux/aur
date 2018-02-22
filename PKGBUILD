@@ -5,7 +5,7 @@
 
 pkgname='seahub'
 pkgver=6.2.5
-pkgrel=4
+pkgrel=5
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -13,7 +13,6 @@ license=('Apache' 'PSF' 'MIT' 'BSD' 'GPL')
 depends=("seafile-server=${pkgver}" 'libmemcached' 'libmariadbclient')
 optdepends=('memcached' 'mariadb')
 makedepends=('python2-virtualenv')
-install="${pkgname}.install"
 changelog="ChangeLog"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz")
 sha256sums=('80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039')
@@ -46,8 +45,7 @@ package() {
     venv="${pkgdir}/usr/lib/seahub"
     virtualenv2 --no-wheel --system-site-packages "${venv}"
 
-    # Activates the VirtualEnv
-    source "${venv}/bin/activate"
+    source "${venv}/bin/activate"  # Activates the VirtualEnv
 
     # Fix subprocess exception if gunicorn is already installed
     printf 'Installing gunicorn...'

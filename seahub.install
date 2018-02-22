@@ -1,6 +1,0 @@
-post_upgrade() { 
-    # Remove old virtualenv and script upgrade 
-    # More infos: pacman -Qc seahub
-    rm -rf /usr/lib/seafile
-    rm -f  /usr/bin/seahub-preupgrade
-}
