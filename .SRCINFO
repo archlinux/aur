@@ -1,13 +1,14 @@
 pkgbase = htop-temperature
 	pkgdesc = Interactive process viewer with added support for CPU temperature
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hisham.hm/htop/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python
 	depends = ncurses
+	depends = libnl
 	depends = lm_sensors
 	optdepends = lsof: show files opened by a process
 	optdepends = strace: attach to a running process

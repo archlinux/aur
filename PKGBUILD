@@ -3,12 +3,12 @@
 
 pkgname=htop-temperature
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive process viewer with added support for CPU temperature"
 arch=('i686' 'x86_64')
 url="http://hisham.hm/htop/"
 license=('GPL')
-depends=('ncurses' 'lm_sensors')
+depends=('ncurses' 'libnl' 'lm_sensors')
 makedepends=('python')
 optdepends=('lsof: show files opened by a process'
             'strace: attach to a running process')
@@ -34,12 +34,14 @@ build() {
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
-      --enable-unicode \
+      --enable-cgroup \
+      --enable-delayacct \
       --enable-openvz \
-      --enable-vserver \
-      --enable-cgroup
+      --enable-unicode \
+      --enable-vserver
 
-  make
+
+  make $MAKEFLAGS
 }
 
 package() {
