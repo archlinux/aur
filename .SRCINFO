@@ -1,5 +1,5 @@
 pkgbase = ttf-nokiapure
-	pkgdesc = Nokia Pure text font
+	pkgdesc = Nokia Pure text font.
 	pkgver = 1.0
 	pkgrel = 3
 	url = https://en.wikipedia.org/wiki/Nokia_Pure
