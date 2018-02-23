@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/{bin,share/{doc/${pkgname},licenses/${pkgname}}}
+  mkdir -p "$pkgdir"/usr/{bin,share/{doc/${_pkgname},licenses/${_pkgname}}}
   install -gusers -oroot -m4750 "$srcdir/${_pkgname}"/src/piimg "$pkgdir"/usr/bin/
-  install -m644 "$srcdir/${_pkgname}"/README.md "$pkgdir"/usr/share/doc/${pkgname}/
-  install -m644 "$srcdir/${_pkgname}"/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/
+  install -m644 "$srcdir/${_pkgname}"/README.md "$pkgdir"/usr/share/doc/${_pkgname}/
+  install -m644 "$srcdir/${_pkgname}"/LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/
 }
