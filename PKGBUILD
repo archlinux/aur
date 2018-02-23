@@ -18,19 +18,22 @@ prepare () {
   cd "$srcdir/hdf5-${pkgver/_/-}"
 
   # run H5detect.exe, H5make_libsettings.exe through wine
-  sed -i "s|set (CMD $<TARGET_FILE:H5|set (CMD wine $<TARGET_FILE:H5|g" src/CMakeLists.txt
+  sed "s|set (CMD $<TARGET_FILE:H5|set (CMD /usr/bin/@ARCH@-wine $<TARGET_FILE:H5|g" src/CMakeLists.txt > src/CMakeLists.txt.in
 
   # do not use msvc import suffix
   sed -i "s|MINGW AND \${libtype} MATCHES \"SHARED\"|0|g" config/cmake_ext_mod/HDFMacros.cmake
 
   # dont add twice the lib prefix
   sed -i 's|set (LIB_RELEASE_NAME "lib\${libname}")|set (LIB_RELEASE_NAME "\${libname}")|g' config/cmake_ext_mod/HDFMacros.cmake
+
 }
 
 build() {
-  cd "$srcdir/hdf5-${pkgver/_/-}"
+  cd "$srcdir"
   for _arch in $_architectures; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
+    cp -r hdf5-${pkgver/_/-} hdf5-${_arch} && pushd hdf5-${_arch}
+    sed "s|@ARCH@|${_arch}|g" src/CMakeLists.txt.in > src/CMakeLists.txt
+    mkdir build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
       -DBUILD_TESTING=OFF \
@@ -39,12 +42,13 @@ build() {
       ..
     make
     popd
+    popd
   done
 }
 
 package() {
   for _arch in $_architectures; do
-    cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
+    cd "$srcdir/hdf5-${_arch}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm "$pkgdir"/usr/${_arch}/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
