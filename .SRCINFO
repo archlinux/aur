@@ -1,0 +1,23 @@
+pkgbase = kodi-addon-pvr-vuplus
+	pkgdesc = VuPlus/Enigma2 PVR client addon for Kodi
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.vuplus
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	groups = kodi-addons
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-platform
+	makedepends = git
+	makedepends = kodi-dev
+	depends = kodi
+	depends = p8-platform
+	source = git+https://github.com/kodi-pvr/pvr.vuplus.git#branch=Krypton
+	md5sums = SKIP
+
+pkgname = kodi-addon-pvr-vuplus
+
