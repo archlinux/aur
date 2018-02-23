@@ -1,7 +1,7 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
 	pkgver = 2.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = yle-dl
 	depends = python-future
 	depends = python-lxml
 	depends = python-pyamf
+	depends = python-pysocks
 	depends = python-requests
 	depends = youtube-dl
 	depends = wget
