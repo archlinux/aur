@@ -14,21 +14,19 @@ pkgbase = bcc
 	makedepends = bison
 	makedepends = python
 	makedepends = python2
-	conflicts = bcc-git
 	source = https://github.com/iovisor/bcc/archive/v0.5.0.tar.gz
 	source = fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch
 	sha512sums = 12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e
 	sha512sums = 1c4a453a0663237b1ebebd4fdc60e7f6add8380bf624cfa6dd28e57a73d6db89b0a562c8bcaa788d8d59f69240b574b123d07e1eeb63da3a255d3b5e40c6221b
 
 pkgname = bcc
-	pkgdesc = BPF Compiler Collection -C library and examples
+	pkgdesc = BPF Compiler Collection - C library and examples
 	depends = linux-headers
 	optdepends = bcc-tools: Python utilites using the BCC library
 	optdepends = python-bcc: Python 3 bindings for BCC
 	optdepends = python2-bcc: Python 2 bindings for BCC
 	provides = bcc
 	provides = libbcc
-	conflicts = bcc-git
 
 pkgname = bcc-tools
 	pkgdesc = BPF Compiler Collection - Tools
@@ -36,18 +34,15 @@ pkgname = bcc-tools
 	depends = bcc
 	optdepends = python-bcc: Python 3 bindings for BCC
 	optdepends = python2-bcc: Python 2 bindings for BCC
-	conflicts = bcc-tools-git
 
 pkgname = python-bcc
 	pkgdesc = BPF Compiler Collection - Python 3 bindings
 	arch = any
 	depends = bcc
 	depends = python
-	conflicts = python-bcc-git
 
 pkgname = python2-bcc
 	pkgdesc = BPF Compiler Collection - Python 2 bindings
 	arch = any
 	depends = bcc
 	depends = python2
-	conflicts = python2-bcc-git

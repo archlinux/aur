@@ -11,7 +11,6 @@ url='https://github.com/iovisor/bcc'
 license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
 checkdepends=('netperf' 'iperf')
-conflicts=('bcc-git')
 source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
 	'fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch')
 sha512sums=('12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e'
@@ -38,14 +37,13 @@ build() {
 }
 
 package_bcc() {
-	pkgdesc='BPF Compiler Collection -C library and examples'
+	pkgdesc='BPF Compiler Collection - C library and examples'
 	depends=('linux-headers')
 	optdepends=('bcc-tools: Python utilites using the BCC library'
 		'python-bcc: Python 3 bindings for BCC'
 		'python2-bcc: Python 2 bindings for BCC')
 	makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison')
 	provides=('bcc' 'libbcc')
-	conflicts=('bcc-git')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
@@ -65,7 +63,6 @@ package_bcc-tools() {
 	depends=('bcc')
 	optdepends=('python-bcc: Python 3 bindings for BCC'
 		'python2-bcc: Python 2 bindings for BCC')
-	conflicts=('bcc-tools-git')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build/tools"
 	make DESTDIR="${pkgdir}" install
@@ -80,7 +77,6 @@ package_python-bcc() {
 	arch=('any')
 	depends=('bcc' 'python')
 	makedepends=('cmake')
-	conflicts=('python-bcc-git')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
@@ -101,7 +97,6 @@ package_python2-bcc() {
 	arch=('any')
 	depends=('bcc' 'python2')
 	makedepends=('cmake')
-	conflicts=('python2-bcc-git')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
