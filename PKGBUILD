@@ -5,24 +5,24 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.7.0.DEV.r39764.ge89a2b8123
-pkgrel=3
+pkgver=0.7.0.DEV.r41074.g018fb61ff6
+pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
 license=('MIT')
 makedepends=('gcc-fortran' 'git')
 makedepends+=('arpack' 'blas>=3.5.0' 'gmp' 'lapack>=3.5.0' 'libgit2'
-              'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm'
+              'libunwind' 'mbedtls' 'mpfr' 'openlibm'
               'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme'
-              'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+              'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'llvm39' 'utf8proc' (AUR) 'intel-mkl' (AUR)
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
 source=(git://github.com/JuliaLang/julia.git#branch=master
         Make.user)
 md5sums=('SKIP'
-         '589cb7c38c49ab46682f371fcb8fcb82')
+         '490d7e6f1a8829b5ad0232935f63ff2f')
 
 
 pkgver() {
