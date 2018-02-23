@@ -2,12 +2,12 @@
 
 _gitname=kded_rotation
 pkgname=kded-rotation-git
-pkgver=r4.bcc2f3b
-pkgrel=2
+pkgver=r5.be2bec7
+pkgrel=1
 pkgdesc='KDED module for handling automatic screen rotation (WIP) '
 arch=(i686 x86_64)
 url='https://github.com/dos1/kded_rotation'
-license=(unknown)
+license=(GPL2 GPL3)
 depends=(kded iio-sensor-proxy xorg-xrandr xorg-xinput)
 makedepends=(extra-cmake-modules git)
 conflicts=()
