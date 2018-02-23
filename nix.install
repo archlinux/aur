@@ -49,27 +49,33 @@ restore_store() {
   chown root.root /nix/store
 }
 
+init_channels() {
+ # Initialize default nix channel
+  echo "Initializing default nix channel"
+  source /etc/profile.d/nix.sh
+  nix-channel --update
+}
+
 daemon_info() {
-  if [ ! -d /nix/var/nix/profiles/per-user/root ]; then
-    echo "To start the nix daemon, execute one of the following:"
-    echo
-    echo "    systemctl enable nix-daemon.socket       # Sets the daemon to start on next boot"
-    echo "    systemctl enable --now nix-daemon.socket # Starts now and on next boot too"
-    echo
-    echo "Also, if this is a new install, you need to start a new login shell or otherwise"
-    echo
-    echo "    source /etc/profile.d/nix.sh"
-    echo "    source /etc/profile.d/nix-daemon.sh"
-    echo
-    echo "Once your environment is set-up, you will need to add some channels.  You can see how"
-    echo "to do that here:"
-    echo "    https://nixos.org/nix/manual/#sec-channels"
-  fi
+  echo "To start the nix daemon, execute one of the following:"
+  echo
+  echo "    systemctl enable nix-daemon.socket       # Sets the daemon to start on next boot"
+  echo "    systemctl enable --now nix-daemon.socket # Starts now and on next boot too"
+  echo
+  echo "Also, if this is a new install, you need to start a new login shell or otherwise"
+  echo
+  echo "    source /etc/profile.d/nix.sh"
+  echo "    source /etc/profile.d/nix-daemon.sh"
+  echo
+  echo "Once your environment is set-up, you will need to add some channels.  You can see how"
+  echo "to do that here:"
+  echo "    https://nixos.org/nix/manual/#sec-channels"
 }
 
 post_install() {
   create_users
   create_store
+  init_channels
   daemon_info
 }
 
