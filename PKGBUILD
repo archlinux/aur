@@ -2,7 +2,7 @@
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=2017.04.03.1.r0.g4b3dad8ee
+pkgver=2018.02.17.1.r0.g5066fab23
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -43,7 +43,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  python2 setup.py build
+  python2 setup.py --quiet build
 }
 
 #check() {
@@ -65,5 +65,7 @@ package() {
   #cd $pkgname
   #python2 setup.py install --prefix=/opt/sickrage/app --install-lib=/opt/sickrage/app --root="$pkgdir" --optimize=1
   cp -rp $pkgname/* "$pkgdir/opt/sickrage/app/"
+
+  warning "If the upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first"
 }
 
