@@ -7,8 +7,8 @@
 
 pkgname=laptop-mode-tools-git
 _pkgname=laptop-mode-tools
-pkgver=1.72.1
-pkgrel=2
+pkgver=1.72.2.15.g16f5d24
+pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools'
@@ -68,5 +68,5 @@ package() {
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
     find "${pkgdir}" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' '{}' ';'
 
-    install -Dm755 gui/LMT.py "${pkgdir}/usr/bin/lmt-gui"
+    install -Dm755 gui/lmt.py "${pkgdir}/usr/bin/lmt-gui"
 }
