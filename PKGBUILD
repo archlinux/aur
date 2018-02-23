@@ -26,5 +26,5 @@ package() {
     
     ./configure
     make
-    make DESTDIR="$pkgdir" install prefix=/usr/bin
+    make DESTDIR="$pkgdir" install
 }
