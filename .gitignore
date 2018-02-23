@@ -1,0 +1,7 @@
+makehuman
+src
+pkg
+makehuman-hg-*.tar.xz
+makehuman-hg-*.src.tar.gz
+.AURINFO
+

@@ -1,0 +1,22 @@
+pkgbase = makehuman-hg
+	pkgdesc = Parametrical modeling program for creating human bodies
+	pkgver = 1.2.0.r2134.deca8874422d
+	pkgrel = 1
+	url = http://www.makehuman.org/
+	arch = any
+	license = AGPL3
+	makedepends = mercurial
+	depends = python2-numpy
+	depends = python2-pyqt4
+	depends = python2-opengl
+	provides = makehuman
+	conflicts = makehuman
+	source = makehuman::hg+https://bitbucket.org/MakeHuman/makehuman
+	source = makehuman.desktop
+	source = makehuman.sh
+	md5sums = SKIP
+	md5sums = f54fdfbc6c783effc4624808d2547563
+	md5sums = 4170c53c5ca07baf0ef0e423fbef6f74
+
+pkgname = makehuman-hg
+
