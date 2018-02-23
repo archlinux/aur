@@ -1,0 +1,19 @@
+pkgbase = kded-rotation-git
+	pkgdesc = KDED module for handling automatic screen rotation (WIP)
+	pkgver = r4.bcc2f3b
+	pkgrel = 1
+	url = https://github.com/dos1/kded_rotation
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kded
+	depends = iio-sensor-proxy
+	depends = xorg-xrandr
+	depends = xorg-xinput
+	source = git://github.com/dos1/kded_rotation.git
+	sha256sums = SKIP
+
+pkgname = kded-rotation-git
+
