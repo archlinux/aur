@@ -1,0 +1,17 @@
+pkgbase = cauralho-git
+	pkgdesc = A small tool to help with updating AUR packages installed in the system.
+	pkgver = r2.18ba2bb
+	pkgrel = 1
+	url = https://github.com/qrwteyrutiyoup/cauralho
+	arch = any
+	license = Apache
+	depends = dialog
+	depends = curl
+	depends = jq
+	depends = bash>=4.0.0
+	backup = etc/cauralho.conf
+	source = cauralho::git+https://github.com/qrwteyrutiyoup/cauralho.git
+	md5sums = SKIP
+
+pkgname = cauralho-git
+
