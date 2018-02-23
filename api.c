@@ -1,6 +1,6 @@
 #include "api.h"
 
-String* api_string_init() {
+String* api_string_init(void) {
     String* pString = (String*) malloc(sizeof(String));
     if (pString != NULL) {
         pString->len = 0;
@@ -15,6 +15,29 @@ String* api_string_init() {
         exit(EXIT_FAILURE);
     }
     return pString;
+}
+
+Info* api_info_init(void){
+    Info* pInfo = malloc(sizeof(Info));
+    if (pInfo != NULL){
+        pInfo->name = malloc(64);
+        pInfo->symbol = malloc(64);
+        if (pInfo->name == NULL || pInfo->symbol == NULL){
+            fprintf(stderr, "malloc() failed\n");
+            exit(EXIT_FAILURE);
+        }
+        pInfo->price = EMPTY;
+        pInfo->change_1d = EMPTY;
+        pInfo->change_7d = EMPTY;
+        pInfo->change_30d = EMPTY;
+        pInfo->div_yield = EMPTY;
+        pInfo->marketcap = EMPTY;
+        pInfo->volume_1d = EMPTY;
+    } else {
+        fprintf(stderr, "malloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    return pInfo;
 }
 
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hString) {
@@ -234,6 +257,58 @@ void json_print_news(Json* jobj) {
     }
 }
 
+void api_print_info(char* ticker_name_string){
+    Info* ticker_info = coinmarketcap_get_info(ticker_name_string);
+    if (ticker_info == NULL){
+        printf("Invalid symbol!\n");
+        return;
+    }
+    if (ticker_info->name != NULL)
+        printf("Name: %s\n", ticker_info->name);
+    if (ticker_info->symbol != NULL)
+        printf("Symbol: %s\n", ticker_info->symbol);
+    if (ticker_info->price != EMPTY)
+        printf("Price: $%lf\n", ticker_info->price);
+    if (ticker_info->change_1d != EMPTY)
+        printf("Percent change 24h: %lf%%\n", ticker_info->change_1d);
+    if (ticker_info->change_7d != EMPTY)
+        printf("Percent change 7d: %lf%%\n", ticker_info->change_7d);
+    if (ticker_info->change_30d != EMPTY)
+        printf("Percent change 30d: %lf%%\n", ticker_info->change_30d);
+    if (ticker_info->div_yield != EMPTY)
+        printf("Dividend yield: %lf%%\n", ticker_info->div_yield);
+    if (ticker_info->marketcap != EMPTY)
+        printf("Market Cap: $%ld\n", ticker_info->marketcap);
+    if (ticker_info->volume_1d != EMPTY)
+        printf("Volume 24h: $%ld\n", ticker_info->volume_1d);
+    api_info_destroy(&ticker_info);
+}
+
+Info* coinmarketcap_get_info(char* ticker_name_string){
+    char coinmarketcap_api_string[64];
+    sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
+    String* pString = api_curl_data(coinmarketcap_api_string, NULL);
+    if (pString->data[0] == '{') { //Invalid symbol
+        api_string_destroy(&pString);
+        return NULL;
+    }
+    Info* ticker_info = api_info_init();
+    Json* jobj = json_tokener_parse(pString->data);
+    Json* data = json_object_array_get_idx(jobj, 0);
+    strcpy(ticker_info->name, json_object_get_string(json_object_object_get(data, "name")));
+    //ticker_info->name = json_object_get_string(json_object_object_get(data, "name"));
+    strcpy(ticker_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
+    //ticker_info->symbol = json_object_get_string(json_object_object_get(data, "symbol"));
+    ticker_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
+    ticker_info->change_1d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL);
+    ticker_info->change_7d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL);
+    ticker_info->marketcap = strtol(json_object_get_string(json_object_object_get(data, "market_cap_usd")), NULL, 10);
+    ticker_info->volume_1d = strtol(json_object_get_string(json_object_object_get(data, "24h_volume_usd")), NULL, 10);
+    json_object_put(jobj);
+    api_string_destroy(&pString);
+    return ticker_info;
+}
+
 const char* google_shorten_link(char* url_string) {
     char post_string[1024], copy[1024];
     sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); //Format HTTP POST
@@ -278,4 +353,12 @@ void api_string_destroy(String** phString) {
     free(pString->data);
     free(*phString);
     *phString = NULL;
+}
+
+void api_info_destroy(Info** phInfo) {
+    Info* pInfo = *phInfo;
+    free((void*)pInfo->name);
+    free((void*)pInfo->symbol);
+    free(*phInfo);
+    *phInfo = NULL;
 }

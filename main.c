@@ -44,10 +44,18 @@ int main(int argc, char* argv[]) {
         portfolio_legacy_convert();
 
         //Encrypt/decrypt
-    else if (strcmp(argv[1], "encrypt") == 0 && argc == 2)
+    else if (strcmp(cmd, "encrypt") == 0 && argc == 2)
         portfolio_encrypt_decrypt(ENCRYPT, fp, NULL);
-    else if (strcmp(argv[1], "decrypt") == 0 && argc == 2)
+    else if (strcmp(cmd, "decrypt") == 0 && argc == 2)
         portfolio_encrypt_decrypt(DECRYPT, fp, NULL);
+
+        // Info
+    else if (strcmp(cmd, "info") == 0 && argc == 3) {
+        char sym[strlen(argv[2]) + 1];
+        strcpy(sym, argv[2]);
+        strtoupper(sym);
+        api_print_info(sym);
+    }
 
         // Check
     else if (strcmp(cmd, "check") == 0) {

@@ -9,6 +9,8 @@
 #ifndef API_H
 #define API_H
 
+#define EMPTY (-999)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,6 +25,18 @@ struct string {
 
 typedef struct string String;
 
+struct info {
+    char* name;
+    char* symbol;
+    double price;
+    double change_1d, change_7d, change_30d;
+    double div_yield;
+    long marketcap;
+    long volume_1d;
+};
+
+typedef struct info Info;
+
 typedef struct json_object Json;
 
 /**
@@ -31,6 +45,12 @@ typedef struct json_object Json;
  * @return STRING object
  */
 String* api_string_init(void);
+
+/**
+ * Creates and returns an Info object
+ * @return Info object
+ */
+Info* api_info_init(void);
 
 /**
  * GETs data from API server and returns it in a String
@@ -96,6 +116,14 @@ void news_print_top_three(char* ticker_name_string);
  */
 void json_print_news(Json* jobj);
 
+void api_print_info(char* ticker_name_string);
+
+/**
+ * Prints info related to the given cryptocurrency
+ * @param ticker_name_string the cryptocurrency's name
+ */
+Info* coinmarketcap_get_info(char* ticker_name_string);
+
 /**
  * Given a url, returns a shorter link using goo.gl
  * @param url_string the link to shorten
@@ -116,5 +144,11 @@ const char* strip_char(char* string, char c);
  * @param phString the String to destroy
  */
 void api_string_destroy(String** phString);
+
+/**
+ * Destroys Info object and frees memory
+ * @param phInfo the Info to destroy
+ */
+void api_info_destroy(Info** phString);
 
 #endif
