@@ -3,7 +3,7 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.0.0b21-42_amd64
 pkgver=4.0.0b21
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="http://www.signalyst.com/custom.html"
 license=('custom')
 install=$pkgname.install
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2')
-optdepends=('rygel: for network access with upnp' 'minimserver: UPnP Audio server')
+optdepends=('rygel: for network access with upnp' 'minimserver: UPnP Audio server' 'nvidia-dkms: CUDA acceleration')
 source=("https://www.signalyst.eu/bins/hqplayerd/xenial/hqplayerd_$_debpkgver.deb" 'start_hqplayerd.sh' 'hqplayerd_rygel.service' 'hqplayerd.service')
 sha256sums=('SKIP'
 '2c1a93ea66e59a7eee1b76fc70816bb9f6169b155eb42b390ecddb4b38b31ca5'
@@ -37,6 +37,9 @@ package() {
     
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/rygel.conf.gz" \
     "$pkgdir/usr/share/doc/hqplayerd/rygel.conf.gz"
+    
+     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/hqplayerd.xml-rmeaio" \
+    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml-rmeaio"
   
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/copyright" \
     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
