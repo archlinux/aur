@@ -1,0 +1,38 @@
+#!bin/sh
+read -r -d '' msg << TIPS
+====================================\n
+×更新该脚本:进入/opt/wechat_web_devtools/执行\e[1mgit pull origin\e[0m 或者向aur维护者发送更新反馈
+\n
+
+×更新开发者工具：
+\n
+    进入/opt/wechat_web_devtools/执行\e[1m./bin/update_package_nw.sh\e[0m 
+\n
+    安装过程中确认安装到$HOME/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具路径下
+\n
+    最后完成去掉打开开发者工具的钩
+\n
+
+×如果wcc和wcsc编译有问题，进入/opt/wechat_web_devtools/，执行以下命令，让工具重新生成wcc和wcsc（会删除开发者工具配置文件,所有工程和登录信息会消失）
+\n
+    \e [1m./bin/wxdt uninstall \e[0m
+\n
+    \e[1m./bin/wxdt install \e[0m
+\n
+
+×更多内容：访问 \e[1m https://github.com/cytle/wechat_web_devtools \e[0m 提交反馈/寻找问题解决/贡献代码 等等
+
+\n
+====================================
+TIPS
+
+post_install(){
+    echo -e '\e[1m为小程序开发需要的wcc.exe和wcsc.exe创建32位wine环境 --->> ...\n\e[0m  正在启动wine配置工具\e[1mwinecfg\e[0m...关闭wine窗口后，将会开始自动安装wechat_web_devtools'
+    WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
+    /opt/wechat_web_devtools/bin/wxdt install
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}
