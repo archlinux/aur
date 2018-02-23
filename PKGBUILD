@@ -2,7 +2,7 @@
 
 pkgname=vim-ranger
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ranger integration for vim"
 license=('MIT')
 arch=('any')
@@ -17,5 +17,5 @@ package() {
 		"${pkgdir}/usr/share/vim/vimfiles/plugin/ranger.vim"
 
 	head -n 22 "ranger.vim-${pkgver}/plugin/ranger.vim" > LICENSE
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
