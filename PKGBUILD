@@ -1,21 +1,19 @@
 # Maintainer: aimileus <me at aimileus dot nl>
-pkgname=python-snowboy-git
+pkgname=('python-snowboy-git' 'python2-snowboy-git')
+pkgbase=python-snowboy-git
 _pkgname=snowboy
-pkgver=v1.2.0.r134.g7d20d7f
+pkgver=v1.3.0.r3.g75ef4f5
 pkgrel=1
 pkgdesc="A hotword detection engine - Python bindings"
 arch=('x86_64')
 url="https://snowboy.kitt.ai/"
 license=('Apache')
-depends=(
-  'cblas'
-  'lapack'
-  'python-pyaudio'
-)
 makedepends=(
   'git'
   'python-setuptools'
+  'python2-setuptools'
   'swig'
+  'cblas'
 )
 conflicts=('python-snowboy')
 provides=('python-snowboy')
@@ -28,17 +26,40 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_pkgname"
-  sed -i "s|-lf77blas -lcblas -llapack -latlas|-lcblas -llapack|g" \
-    swig/Python3/Makefile
+  cp -a "${_pkgname}"{,-py2}
+
+  sed -i -e "s|-lf77blas -lcblas -llapack -latlas|-lcblas|g" \
+    -e 's| -shared| -Wl,-O1,--as-needed\0|g' \
+    "${_pkgname}/swig/Python3/Makefile"
+  sed -i -e "s|-lf77blas -lcblas -llapack -latlas|-lcblas|g" \
+    -e 's| -shared| -Wl,-O1,--as-needed\0|g' \
+    "${_pkgname}-py2/swig/Python/Makefile"
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$srcdir/${_pkgname}"
   python setup.py build
+
+  cd "$srcdir/${_pkgname}-py2"
+  python2 setup.py build
 }
 
-package() {
-  cd "$_pkgname"
-  python setup.py install --root="$pkgdir/" --prefix=/usr
+package_python-snowboy-git() {
+  depends=('cblas' 'python-pyaudio')
+
+  cd "${_pkgname}"
+  python setup.py install \
+	  --root="$pkgdir" \
+	  --optimize=1 \
+	  --skip-build
+}
+
+package_python2-snowboy-git() {
+  depends=('cblas' 'python2-pyaudio')
+
+  cd "$_pkgname-py2"
+  python2 setup.py install \
+	  --root="$pkgdir" \
+	  --optimize=1 \
+	  --skip-build
 }

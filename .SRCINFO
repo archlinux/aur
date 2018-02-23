@@ -1,20 +1,25 @@
 pkgbase = python-snowboy-git
 	pkgdesc = A hotword detection engine - Python bindings
-	pkgver = v1.2.0.r134.g7d20d7f
+	pkgver = v1.3.0.r3.g75ef4f5
 	pkgrel = 1
 	url = https://snowboy.kitt.ai/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	makedepends = swig
-	depends = cblas
-	depends = lapack
-	depends = python-pyaudio
+	makedepends = cblas
 	provides = python-snowboy
 	conflicts = python-snowboy
 	source = git+https://github.com/Kitt-AI/snowboy.git
 	md5sums = SKIP
 
 pkgname = python-snowboy-git
+	depends = cblas
+	depends = python-pyaudio
+
+pkgname = python2-snowboy-git
+	depends = cblas
+	depends = python2-pyaudio
 
