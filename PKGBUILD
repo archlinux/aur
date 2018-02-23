@@ -4,7 +4,7 @@
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
 pkgver=5.2.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
