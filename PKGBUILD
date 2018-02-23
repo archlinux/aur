@@ -2,20 +2,23 @@
 
 pkgname=numix-themes-green
 pkgver=2.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('ruby-bundler' 'inkscape')
-source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-sha256sums=('4590c6077828d73aecbc2521acf5b8d4669aacff1e9d09575888be67f2dc0d1b')
+source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz" "gtk2rc.patch")
+sha256sums=('2b997ad3eee0b802d0dd49dd772127fd3c337cca32d8863efd4897928e38879a'
+            'f3d1de132ccb999fa8c7c1e1d545cfdb790d77e58a21097f24303bdc79c71ea3')
 
 
 prepare() {
    local color="#697740" name="Green"
-   cd numix-gtk-theme-${pkgver}/src
+   cd numix-gtk-theme-${pkgver}
+   patch -Np0 -i ../gtk2rc.patch
+   cd src
    for file in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
       assets/*.svg \
