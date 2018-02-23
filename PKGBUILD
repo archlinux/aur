@@ -27,15 +27,15 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "$_pkgname"
-  python setup.py build
-}
-
 prepare() {
   cd "$_pkgname"
   sed -i "s|-lf77blas -lcblas -llapack -latlas|-lcblas -llapack|g" \
     swig/Python3/Makefile
+}
+
+build() {
+  cd "$_pkgname"
+  python setup.py build
 }
 
 package() {
