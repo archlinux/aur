@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://bitwarden.com
 	install = bitwarden.install
@@ -38,8 +38,8 @@ pkgbase = bitwarden
 	depends = pango
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/bitwarden/desktop/releases/download/v0.0.7/bitwarden_0.0.7_amd64.deb
-	sha512sums_x86_64 = 3e44a0b1e6edd2f3a052df3474cca37cb82d961bee67e0fcdede23ac8a6cb96a4c0a0e3ea9eeb1ab0626cee0a970598baae031d2aa7d5c6d507794c2fa99603e
+	source_x86_64 = https://github.com/bitwarden/desktop/releases/download/v0.0.8/Bitwarden-0.0.8-amd64.deb
+	sha512sums_x86_64 = ad5d8e5a6686038b7ac78ab5434cb82a33005ce559c75223cd809c67b0867ad238757eeb945db4bd8a41ef1c94d80679840c977c5527ebfb4595791d3f8261f3
 
 pkgname = bitwarden
 

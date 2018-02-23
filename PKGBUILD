@@ -12,7 +12,7 @@ depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'electron' 'expat' 'fontconfig' 'freety
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
-sha512sums_x86_64=('')
+sha512sums_x86_64=('ad5d8e5a6686038b7ac78ab5434cb82a33005ce559c75223cd809c67b0867ad238757eeb945db4bd8a41ef1c94d80679840c977c5527ebfb4595791d3f8261f3')
 
 package(){
 
