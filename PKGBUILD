@@ -54,7 +54,6 @@ package_eudev() {
 	pkgdesc="The userspace dev tools (udev) forked by Gentoo"
 	provides=("udev=${_udev_ver}")
 	depends=("libeudev" 'kbd' 'kmod' 'hwids' 'util-linux')
-	optdepends=('eudev-systemd: makes packages compiled with systemd features run')
 	backup=('etc/udev/udev.conf')
 
 
@@ -74,7 +73,6 @@ package_eudev() {
 package_libeudev() {
 	pkgdesc="eudev client libraries"
 	depends=('glib2' 'glibc')
-	optdepends=('libeudev-systemd: systemd client libraries')
 	conflicts=('libudev.so')
 	provides=("libudev=${_udev_ver}" 'libudev.so')
 

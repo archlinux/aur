@@ -29,7 +29,6 @@ pkgname = eudev
 	depends = kmod
 	depends = hwids
 	depends = util-linux
-	optdepends = eudev-systemd: makes packages compiled with systemd features run
 	provides = udev=237
 	backup = etc/udev/udev.conf
 
@@ -37,7 +36,6 @@ pkgname = libeudev
 	pkgdesc = eudev client libraries
 	depends = glib2
 	depends = glibc
-	optdepends = libeudev-systemd: systemd client libraries
 	provides = libudev=237
 	provides = libudev.so
 	conflicts = libudev.so
