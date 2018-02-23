@@ -1,6 +1,6 @@
 pkgbase = pyload-git
 	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest stable branch
-	pkgver = v0.4.9.r4203.ge2e7d95e8
+	pkgver = v0.4.9.r4238.g24782b8c0
 	pkgrel = 1
 	url = https://github.com/pyload/pyload
 	install = pyload-git.install
@@ -31,7 +31,6 @@ pkgbase = pyload-git
 	source = pyLoadCore
 	source = pyLoadCli
 	source = pyLoadGui
-	source = suppress_jinja2_version_check.patch
 	md5sums = SKIP
 	md5sums = b96a4e5091463b3b7fd79208623f1a3a
 	md5sums = c67462993d27d5884677dd6e8a8a17d2
@@ -42,7 +41,6 @@ pkgbase = pyload-git
 	md5sums = 6d764666ec89ce218cd00164e73e0989
 	md5sums = 6fc2f343d2f324a66745524bbab93e5c
 	md5sums = 806a22a74e8331dffcb8538182e4df2c
-	md5sums = d6051baf3bf7749e2b7959e73761bb30
 
 pkgname = pyload-git
 
