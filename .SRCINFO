@@ -1,6 +1,6 @@
 pkgbase = python-louvain-igraph
 	pkgdesc = Louvain algorithm for community detection (for use with python-igraph)
-	pkgver = 0.5.3
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/vtraag/louvain-igraph
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-louvain-igraph
 	makedepends = python-setuptools
 	depends = python
 	depends = python-igraph
-	source = https://files.pythonhosted.org/packages/source/l/louvain/louvain-0.5.3.tar.gz
-	sha256sums = 640a6728066df822f1228cfb028e9648c4d516bbdb07a92d3159a810fb975f95
+	source = https://files.pythonhosted.org/packages/source/l/louvain/louvain-0.6.1.tar.gz
+	sha256sums = ffd83318e44e62e24d3cb7f159c0ff13382edafb956a8169cedd2c79b66b6968
 
 pkgname = python-louvain-igraph
 

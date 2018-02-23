@@ -2,7 +2,7 @@
 
 _name=louvain
 pkgname=python-$_name-igraph
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Louvain algorithm for community detection (for use with python-igraph)'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python python-igraph)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('640a6728066df822f1228cfb028e9648c4d516bbdb07a92d3159a810fb975f95')
+sha256sums=('ffd83318e44e62e24d3cb7f159c0ff13382edafb956a8169cedd2c79b66b6968')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
