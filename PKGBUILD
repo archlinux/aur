@@ -2,7 +2,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r271.6aa47e0
+pkgver=r671.6aa47e0
 pkgrel=1
 pkgdesc="AT&T's KornShell (${_pkgname}) from ast-base, Meson Build"
 arch=('x86_64')
@@ -61,8 +61,4 @@ package() {
 		ln -sf 'ksh' "${pkgdir}/usr/bin/${_exe}"
 	done
 	install -Dm 755 "build/src/cmd/${_pkgname}/shcomp" "${pkgdir}/usr/bin/shcomp"
-	local _lib
-	for _lib in 'ast' 'cmd' 'coshell'; do
-		install -Dm 755 "build/src/lib/lib${_lib}/lib${_lib}.so" "${pkgdir}/usr/lib/lib${_lib}.so"
-	done
 }
