@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=encarne
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
