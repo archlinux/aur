@@ -2,7 +2,7 @@
 
 pkgname=cockpit-minimal
 pkgver=162
-pkgrel=1
+pkgrel=2
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -36,7 +36,8 @@ package() {
   cd cockpit-${pkgver}
   make DESTDIR="$pkgdir" install
   cd $pkgdir
-  for d in docker kdump kubernetes machines ostree packagekit pcp playground realmd selinux sosreport subscriptions tuned; do
+  for d in docker kdump kubernetes machines ostree ovirt packagekit pcp playground realmd selinux sosreport subscriptions tuned; do
       rm -r usr/share/cockpit/$d;
+      rm -r usr/src/debug/usr/share/cockpit/$d;
   done
 }
