@@ -2,14 +2,16 @@
 # Thanks to:
 # * Yuen Hoe (Jason moofang) / jasonmoofang@github
 #   https://github.com/jasonmoofang/activityfox
+# * Leonid Kalichkin / hellishnoob@github
+#   https://github.com/hellishnoob/activityfox
 
 pkgname=activityfox-git
 _pkgname=activityfox
-pkgver=0.170213
-pkgrel=3
+pkgver=0.180121
+pkgrel=1
 pkgdesc="allow Firefox to play nice with KDE Plasma Activities"
 arch=('i686' 'x86_64')
-url="https://github.com/jasonmoofang/activityfox"
+url="https://github.com/hellishnoob/activityfox"
 license=('GPL3')
 depends=('firefox')
 makedepends=('automoc4')
