@@ -1,18 +1,28 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
-pkgname='python2-pycifrw'
+pkgname=('python2-pycifrw' 'python-pycifrw')
 _pkgname='PyCifRW'
-pkgver=4.2
+pkgver=4.4
 pkgrel=1
 pkgdesc="CIF/STAR file support for Python"
 url="https://bitbucket.org/jamesrhester/pycifrw"
 arch=("any")
 license=('Python-2.0')
-makedepends=('python2-setuptools')
-depends=('python2-numpy')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://bitbucket.org/jamesrhester/pycifrw/downloads/$_pkgname-$pkgver.tar.gz")
-md5sums=('2b190e43ee4d629ececf81dfe7160f1c')
+md5sums=('33b14211e6b01a3218bda51461d2760f')
 
-package() {
+prepare() {
+    cp -a "${srcdir}/$_pkgname-$pkgver"{,-py2}
+}
+
+package_python-pycifrw() {
+    depends=('python-numpy')
     cd "$srcdir/${_pkgname}-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1
+}
+
+package_python2-pycifrw() {
+    depends=('python2-numpy')
+    cd "$srcdir/${_pkgname}-$pkgver-py2"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
