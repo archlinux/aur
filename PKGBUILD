@@ -3,13 +3,13 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 
-_udev_ver=232
+_udev_ver=237
 
 pkgbase=eudev
 pkgname=( 'eudev' 'libeudev')
-pkgver=3.2.2
-pkgrel=3
-arch=('i686' 'x86_64')
+pkgver=3.2.5
+pkgrel=1
+arch=('x86_64')
 url="http://www.gentoo.org/proj/en/eudev/"
 license=('GPL')
 makedepends=('gobject-introspection' 'gperf' 'gtk-doc' 'intltool' 'kmod')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gentoo/eudev/archive/v${pkg
 	'initcpio_hooks'
 	'initcpio_install'
 	'udev-hwdb.hook')
-sha256sums=('80628191448886846ab9cc0e2af6782358a0afb81d5b4f8cd9d982d2626cca31'
+sha256sums=('870920011285b919fca5c60eaa5670312eeffe3883dd8cf564cd1179fc639336'
             '892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13'
             '77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875'
             '846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151')
@@ -54,8 +54,7 @@ package_eudev() {
 	pkgdesc="The userspace dev tools (udev) forked by Gentoo"
 	provides=("udev=${_udev_ver}")
 	depends=("libeudev" 'kbd' 'kmod' 'hwids' 'util-linux')
-	optdepends=('eudev-systemd: makes packages compiled with systemd features run'
-		'udev-openrc: udev starup scripts for openrc')
+	optdepends=('eudev-systemd: makes packages compiled with systemd features run')
 	backup=('etc/udev/udev.conf')
 
 
