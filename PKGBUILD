@@ -1,9 +1,9 @@
 # Maintainer: snql <snql DOT by AT gmail DOT com>
 # Based on vivaldi-codecs-ffmpeg-extra-bin package <Maintainer: Fahad Hossain>
-
+# http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_61.0.3163.100-0ubuntu1.1378_amd64.deb
 pkgname=yandex-browser-codecs-ffmpeg-extra-bin
-pkgver=64.0.3282.167
-pkgrel=1
+pkgver=61.0.3163.100
+pkgrel=1378
 pkgdesc="Prebuilt ffmpeg-codecs package for yandex.browser"
 arch=(
   "x86_64"
@@ -18,10 +18,10 @@ conflicts=(
 )
 source=(
   
-"http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.16.04.${pkgrel}_amd64.deb"
+"http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu1.${pkgrel}_amd64.deb"
 )
 md5sums=(
-  "7d390a71f846a3472b577544e0f0a181"
+  "6e5268a86f4fefec858da0aa6e0407b1"
 )
 
 prepare() {
