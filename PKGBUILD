@@ -8,7 +8,7 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=1.0.0.beta1.r0.g74a447ad0
+pkgver=1.0.0.beta1.r38.ga94276f6e
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
