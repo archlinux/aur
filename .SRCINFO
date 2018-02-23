@@ -1,0 +1,16 @@
+pkgbase = streem-git
+	pkgdesc = prototype of stream based programming language
+	pkgver = r940.c7214e5
+	pkgrel = 1
+	url = https://github.com/matz/streem
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = streem
+	conflicts = streem
+	source = git+https://github.com/matz/streem.git
+	md5sums = SKIP
+
+pkgname = streem-git
+
