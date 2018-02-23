@@ -1,4 +1,4 @@
-# probz
+# Maintainer: probz
 
 pkgname=kodi-addon-pvr-vuplus
 pkgbase=${pkgname}
