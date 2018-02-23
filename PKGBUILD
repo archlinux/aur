@@ -3,7 +3,7 @@
 pkgname=koto
 pkgver=1.0.14
 _tag=180210
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and open source cryptocurrency"
 arch=('i686' 'x86_64')
 url="https://koto.cash"
@@ -11,17 +11,12 @@ license=(MIT)
 depends=('bash')
 makedepends=('wget' 'unzip')
 provides=('kotod' 'koto-cli' 'koto-tx' 'koto-fetch-params')
-backup=('etc/koto.conf')
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/koto-dev/koto/archive/${_tag}.tar.gz"
         "0001-fetch-param-directory-env.patch"
-        "koto.install"
-        "koto.conf"
-        "kotod.service")
+        "koto.install")
 sha1sums=('0ceb84cdd7087ec7bcd91a3fe1c2e7b941fb4fa3'
           'e27ee657c0652137537c1bb9b48ce1730cba3423'
-          '47a54c280e049495900d8c4c39115e3c11b971df'
-          '2c4e98f61b702cbfaf656c7e3ae50f030a5a3543'
-          '51c9722a954b3e9573f418881330194052fffc4c')
+          'e1e1155f7618c4da3c51517ba6530178f33cee28')
 install=koto.install
 
 prepare() {
@@ -59,7 +54,4 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}-${_tag}/contrib/kotod.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/kotod"
   install -Dm644 "${srcdir}/${pkgname}-${_tag}/contrib/koto-cli.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/koto-cli"
-
-  install -Dm644 "${srcdir}/kotod.service" "${pkgdir}/usr/lib/systemd/system/kotod.service"
-  install -Dm644 "${srcdir}/koto.conf" "${pkgdir}/etc/koto.conf"
 }

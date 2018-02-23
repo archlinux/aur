@@ -1,7 +1,7 @@
 pkgbase = koto
 	pkgdesc = Decentralized and open source cryptocurrency
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koto.cash
 	install = koto.install
 	arch = i686
@@ -14,17 +14,12 @@ pkgbase = koto
 	provides = koto-cli
 	provides = koto-tx
 	provides = koto-fetch-params
-	backup = etc/koto.conf
 	source = koto-180210.tar.gz::https://github.com/koto-dev/koto/archive/180210.tar.gz
 	source = 0001-fetch-param-directory-env.patch
 	source = koto.install
-	source = koto.conf
-	source = kotod.service
 	sha1sums = 0ceb84cdd7087ec7bcd91a3fe1c2e7b941fb4fa3
 	sha1sums = e27ee657c0652137537c1bb9b48ce1730cba3423
-	sha1sums = 47a54c280e049495900d8c4c39115e3c11b971df
-	sha1sums = 2c4e98f61b702cbfaf656c7e3ae50f030a5a3543
-	sha1sums = 51c9722a954b3e9573f418881330194052fffc4c
+	sha1sums = e1e1155f7618c4da3c51517ba6530178f33cee28
 
 pkgname = koto
 
