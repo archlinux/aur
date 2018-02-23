@@ -3,7 +3,7 @@
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
-pkgver=0.6.0.r60.ge0e7e59
+pkgver=0.6.0.r74.ge34db67
 pkgrel=1
 pkgdesc="Utilities library for Belledonne Communications software"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.linphone.org/"
 license=('GPL')
 conflicts=('bctoolbox')
 provides=('bctoolbox')
-depends=('mbedtls')
+depends=('libdecaf' 'mbedtls')
 makedepends=('cmake' 'git')
 source=("git://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
