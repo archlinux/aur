@@ -5,7 +5,7 @@
 sha1=$(curl "https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1?format=TEXT" | base64 --decode)
 pkgname='gn-bin'
 pkgdesc="Prebuilt binary for GN (Generate Ninja), Chromium's meta-build system"
-pkgver=r456551
+pkgver=r533513
 pkgrel=1
 arch=('x86_64')
 conflicts=('gn-git')
