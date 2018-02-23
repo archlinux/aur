@@ -3,12 +3,12 @@
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 pkgname=afew
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="afew is an initial tagging script for notmuch mail"
 arch=(any)
 url="https://github.com/afewmail/afew"
 license=('custom:BSD')
-depends=('python' 'notmuch' 'dbacl' 'python-chardet' 'python-setuptools')
+depends=('python' 'notmuch' 'dbacl' 'python-chardet' 'python-setuptools' 'python-dkim')
 makedepends=('python-sphinx')
 conflicts=(afew-git)
 source=('LICENSE' "https://github.com/afewmail/afew/archive/$pkgver.tar.gz")
