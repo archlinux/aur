@@ -2,13 +2,13 @@
 # Contributor: blainester <theblainestory@gmail.com>
 # Contributor: mar77i <mar77i at protonmail dot ch>
 pkgname=micro
-pkgver=1.3.3
-pkgrel=5
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
-depends=("go")
+makedepends=("go")
 optdepends=('xclip: Required for copying/pasting text')
 conflicts=("micro-git")
 _giturl=github.com/zyedidia/micro
