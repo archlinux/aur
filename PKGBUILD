@@ -195,7 +195,7 @@ package_usefuld() {
   license=('GPL2' 'LGPL2.1')
   groups=('base-devel')
   depends=('bash' 'iptables' 'kmod'
-           'libfuld'
+           'libusefuld'
            'util-linux')
   optdepends=('eudev')
   provides=('nss-myhostname' "systemd-tools=$pkgver" 'systemd')
