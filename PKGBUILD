@@ -1,13 +1,14 @@
 # Maintainer: svexican (svexican@gmail.com)
 
 pkgname=bubbleswm-git
-pkgver=8984443
+pkgver=r226.9624938
 pkgrel=1
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
 url="https://github.com/svexican/bubbleswm"
 license=('GPL')
-depends=('libconfig' 'libx11' 'libxft' 'libxinerama')
+depends=('libx11' 'libxft')
+optdepends=('libxinerama')
 provides=("${pkgname%-*}")
 source=('git+https://github.com/svexican/bubbleswm.git')
 md5sums=('SKIP')
@@ -20,20 +21,15 @@ pkgver() {
 
 build() {
   cd ${pkgname%-*}
+
+  msg "Patching default.mk"
+  sed -ri 's:# (INCLUDES = -I/usr/include/freetype2):\1:' default.mk
+
   msg "Starting make..."
-  make
-
-  git submodule init
-  git submodule update
-
-  cd xowl
   make
 }
 
 package() {
   cd ${pkgname%-*}
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
-
-  cd xowl
   make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
