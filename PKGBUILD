@@ -2,7 +2,7 @@
 
 _gitname=encarne
 pkgname=${_gitname}-git
-pkgver='r67.191ea13'
+pkgver='1.3.0.r0.gfbee758'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -14,6 +14,11 @@ conflicts=('encarne')
 url='https://github.com/nukesor/encarne'
 source=("git+https://github.com/nukesor/encarne.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_gitname
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
+}
 
 package() {
     cd "${_gitname}"
