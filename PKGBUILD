@@ -3,7 +3,7 @@
 _gitname=kded_rotation
 pkgname=kded-rotation-git
 pkgver=r4.bcc2f3b
-pkgrel=1
+pkgrel=2
 pkgdesc='KDED module for handling automatic screen rotation (WIP) '
 arch=(i686 x86_64)
 url='https://github.com/dos1/kded_rotation'
@@ -37,4 +37,5 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
+  chmod +x "$pkgdir"/usr/bin/*
 }
