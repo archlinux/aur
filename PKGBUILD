@@ -2,7 +2,7 @@
 
 pkgbase=('stig-git')
 pkgname=('stig-git')
-pkgver=0.8.0a.r0.a85c8e2
+pkgver=0.8.2a.r91.c28fd6b
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
