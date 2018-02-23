@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3352.0
+pkgver=66.0.3353.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('026463c55f7d6338094f603d1154c38258491c6a3b011b7c6d37cb0d7512763f'
+sha256sums=('f4817473edf06500304157e20cb61ae47c88efa1e988cf5ec7138598796ef193'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -137,7 +137,7 @@ sha256sums=('026463c55f7d6338094f603d1154c38258491c6a3b011b7c6d37cb0d7512763f'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
             'b5532de9e402a7d0b12258e9de56722e7eec84dc54cd53b9fe25d62c7354c0af'
             'f4af2787f31abe66ab1180affed6f4c97daaad9151de429c9f5dc3e223cc8d87'
-            '7ae51e5bd3c0dad1007cbf4991d7a68bcc76919f0247856328e1db65aedf8f91'
+            '2d891858f4a1a818f85c70b434bd2886d8d6d89a2db6da9789b15b847b934efa'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
             'e6a3490da7b98e3c2d9d04bc595a3349779a0426dfe61aa955d6fb7daa816c12'
             '9be24cb424d59cea12944bdb451690728e373ece6e4e93dbae8b92078da2130d'
@@ -200,7 +200,7 @@ sha256sums=('026463c55f7d6338094f603d1154c38258491c6a3b011b7c6d37cb0d7512763f'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            'eea10be17469d859f6731e056d9914e91e8049698012ba399d441846d218d68b'
+            'f2fa24d65ef4afc21e658ed476884a543ebcb78135693c77a5f14007c0a5e064'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -213,6 +213,7 @@ sha256sums=('026463c55f7d6338094f603d1154c38258491c6a3b011b7c6d37cb0d7512763f'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -354,7 +355,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
+patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
