@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-cpp-common
+	pkgdesc = ROS - cpp_common contains C++ code for doing things that are not necessarily ROS related, but are useful for multiple packages.
+	pkgver = 0.6.9
+	pkgrel = 1
+	url = http://www.ros.org/wiki/cpp_common
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = boost
+	makedepends = console-bridge
+	depends = boost
+	depends = console-bridge
+	source = ros-melodic-cpp-common-0.6.9-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/cpp_common/0.6.9-0.tar.gz
+	sha256sums = c0e1f36c6a29ffd9652622ea93957f4337fca34a48531d3a132f1a38d6c98cb8
+
+pkgname = ros-melodic-cpp-common
+
