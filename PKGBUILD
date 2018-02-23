@@ -1,6 +1,6 @@
 # Maintainer: Fabio Zanini <fabio DOOT zanini AAT fastmail DOOT fm>
 pkgname=aliview
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="Software for aligning viewing and editing dna/aminoacid sequences."
 arch=('any')
