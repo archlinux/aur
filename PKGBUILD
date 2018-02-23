@@ -6,7 +6,7 @@
 # highlighted at https://github.com/bitpay/copay/issues/6204
 
 pkgname=copay
-pkgver=3.14.1
+pkgver=3.14.2
 pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
