@@ -123,6 +123,10 @@ prepare() {
         msg "Add rt patch"
         patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
     
+    ### Disable USER_NS for non-root users by default
+        msg "Disable USER_NS for non-root users by default"
+        patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
         patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
