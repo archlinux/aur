@@ -17,5 +17,13 @@ then
   export WINEPATH=${mingw_prefix}/bin
 fi
 
+if test "@TRIPLE@" = "x86_64-w64-mingw32"
+then
+  export WINEARCH=win64
+else
+  export WINEARCH=win32
+fi
+
+
 wine "$@"
 
