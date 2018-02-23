@@ -12,15 +12,15 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.14.22
+pkgver=2.18.17
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='https://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qtwebkit' 'qwt-qt4' 'qwtpolar-qt4' 'spatialindex' 'sqlite'
-         'python2' 'python2-httplib2' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
+         'qt4' 'qca-qt4' 'qjson' 'qscintilla-qt4' 'qwt-qt4' 'qwtpolar-qt4' 'spatialindex' 'sqlite'
+         'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
@@ -36,7 +36,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('72e609f334358f6a2cdc6defbf59e41d')
+md5sums=('d3b23c76a84a8d050aa5f5e58c762347')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -47,7 +47,6 @@ prepare() {
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
-  sed -i 's/python /python2 /' scripts/pyuic4-wrapper.sh
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -68,8 +67,9 @@ build() {
     -DENABLE_TESTS=FALSE \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DWITH_QTWEBKIT=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX}=FALSE \
+    -DWITH_INTERNAL_{MARKUPSAFE,OWSLIB,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
@@ -102,9 +102,12 @@ package() {
     install -Dm644 images/icons/${prog}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$prog.svg"
   done
 
-  # install mime information and icon
+  # install mime information and icons
   install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
   install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/qgis-mime.png"
+  for type in asc ddf dem dt0 dxf gml img mime mldata qgs qlr qml qpt shp sqlite; do
+    install -Dm644 images/icons/qgis_${type}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-$type.svg"
+  done
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
   python2 -m compileall -q "$pkgdir"
