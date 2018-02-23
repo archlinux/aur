@@ -1,9 +1,9 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>, Saren Arterius <saren@wtako.net>
 # Maintainer: George Amanakis<gamanakis@gmail.com>
-pkgname=cpuset
+pkgname=cpuset-git
 pkgver=r59.02ef9e0
 pkgver() {
-	cd "$pkgname"
+	cd "${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
@@ -21,7 +21,7 @@ md5sums=('SKIP'
          'f944918002bde0e949a694741309fda8')
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	patch -p1 -i ../0001-remove-exclusivity.patch
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
