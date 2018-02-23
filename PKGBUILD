@@ -1,34 +1,35 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot org>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Kosyak <ObKo@mail.ru>
 
 pkgname=qextserialport
 pkgver=1.2rc
 pkgrel=6
-pkgdesc="Cross-platform serial port class libary for Qt."
+pkgdesc='Cross-platform serial port class libary for Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/qextserialport/qextserialport'
 license=('MIT')
-depends=('qt5-base')
-source=("qextserialport-${pkgver}.tar.gz::https://github.com/qextserialport/qextserialport/archive/${pkgver}.tar.gz")
-sha1sums=('2cd3ec6771b056db1bdf471517f8e20e8a4ecff2')
+depends=('gcc-libs' 'glibc' 'qt5-base')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/qextserialport/qextserialport/archive/$pkgver.tar.gz")
+sha256sums=('1f1c068206af95c328b165e9ea31006e43faa6ee224aaec6aa0f72d2afa5f011')
 
 prepare() {
-  mkdir -p build
+  mkdir -p $pkgname-$pkgver/build
 }
 
 build() {
-  cd build
+  cd $pkgname-$pkgver/build
 
-  qmake-qt5 "../qextserialport-${pkgver}"
+  qmake-qt5 ..
   make
 }
 
 package() {
-  make -C build INSTALL_ROOT="${pkgdir}" install
+  cd $pkgname-$pkgver
 
-  install -Dm644 "qextserialport-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/qextserialport/LICENSE"
+  make -C build INSTALL_ROOT="$pkgdir" install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/qextserialport/"
 
   # Fix wrong path in prl files
-  find "${pkgdir}/usr/lib" -type f -name '*.prl' \
-    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+  sed -i '/^QMAKE_PRL_BUILD_DIR/d' "$pkgdir/usr/lib/"*.prl
 }
