@@ -1,7 +1,8 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Jian Zeng <anonymousknight96+aur AT gmail.com>
 
 pkgname=nodejs-ts-node
-pkgver=4.1.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='TypeScript execution environment and REPL for node'
 arch=('any')
