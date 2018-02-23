@@ -8,7 +8,7 @@ pkgver=3.2
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
 arch=('i686' 'x86_64')
-url='https://www.wine-staging.com/'
+url='https://github.com/wine-staging/wine-staging'
 license=('LGPL')
 _depends=(
     'attr'                  'lib32-attr'
