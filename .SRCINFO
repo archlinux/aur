@@ -8,11 +8,9 @@ pkgbase = ibm-sw-tpm2
 	license = BSD
 	depends = openssl-1.0
 	source = https://downloads.sourceforge.net/project/ibmswtpm2/ibmtpm1119.tar.gz
-	source = makefile
 	source = tpm2_server
 	source = tpm2_server.service
 	md5sums = cf20b9080b4692984c8389c5052fe68a
-	md5sums = 67f313d49a98a4b75371bc9679f880e6
 	md5sums = 3bff9d0e8b2b7b68be2e388d8ca4e2ce
 	md5sums = e64a1c4908f3eea859b25cf291e7848a
 

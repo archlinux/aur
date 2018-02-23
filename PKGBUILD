@@ -9,13 +9,11 @@ url="https://sourceforge.net/projects/ibmswtpm2/"
 license=('BSD')
 depends=('openssl-1.0')
 source=("https://downloads.sourceforge.net/project/ibmswtpm2/ibmtpm$pkgver.tar.gz"
-	makefile
 	tpm2_server
 tpm2_server.service)
 
 build() {
 	cd $srcdir
-	cp makefile src/
 	cd src
 	make -f makefile
 }
@@ -28,6 +26,5 @@ package() {
 }
 
 md5sums=('cf20b9080b4692984c8389c5052fe68a'
-	'67f313d49a98a4b75371bc9679f880e6'
 	'3bff9d0e8b2b7b68be2e388d8ca4e2ce'
 'e64a1c4908f3eea859b25cf291e7848a')
