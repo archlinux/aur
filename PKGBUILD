@@ -15,7 +15,7 @@ arch=('any')
 url="https://gajim.org/"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
-         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
+         'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
          'python-distro')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
