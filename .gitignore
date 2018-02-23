@@ -4,3 +4,4 @@
 *.zip.sig
 /src
 /pkg
+/copay-*
