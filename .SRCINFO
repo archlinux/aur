@@ -1,0 +1,16 @@
+pkgbase = presage-git
+	pkgdesc = Presage is an intelligent predictive text entry platform.
+	pkgver = 926
+	pkgrel = 1
+	url = http://presage.sourceforge.net
+	arch = any
+	makedepends = git
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	depends = sqlite
+	source = git+https://git.code.sf.net/p/presage/presage
+	sha256sums = SKIP
+
+pkgname = presage-git
+
