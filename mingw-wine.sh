@@ -6,7 +6,7 @@ mingw_prefix=/usr/@TRIPLE@
 
 # run it in a custom WINEPREFIX to not mess with default ~/.wine
 # also default prefix might be a 32 bits prefix, which will fail to run x86_64 exes
-if ! test -d "${WINEPREFIX}"
+if test -z "${WINEPREFIX}"
 then
   export WINEPREFIX=~/.wine-@TRIPLE@
 fi
