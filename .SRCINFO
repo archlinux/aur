@@ -1,6 +1,6 @@
 pkgbase = arch-upgrade
 	pkgdesc = Desktop app to upgrade your Arch Linux system
-	pkgver = 1.11.1
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/bulletmark/arch-upgrade
 	install = install.sh
@@ -10,8 +10,8 @@ pkgbase = arch-upgrade
 	depends = xmlstarlet
 	depends = python-unidecode
 	backup = etc/arch-upgrade.conf
-	source = arch-upgrade-1.11.1.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.11.1.tar.gz
-	md5sums = 524e76d5f8b875e233e48f4d225daab6
+	source = arch-upgrade-1.12.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.12.tar.gz
+	md5sums = 87b644e39722d877b0f3e09caca5bc48
 
 pkgname = arch-upgrade
 
