@@ -3,13 +3,13 @@
 
 pkgname=python2-yle-dl
 pkgver=2.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
 license=('GPL3')
 depends=('ffmpeg' 'python2-crypto' 'python2-future' 'python2-lxml'
-         'python2-pyamf' 'python2-requests' 'python2-youtube-dl' 'wget')
+         'python2-pyamf' 'python2-pysocks' 'python2-requests' 'python2-youtube-dl' 'wget')
 optdepends=('php-mcrypt: for AdobeHDS.php based downloader backend'
             'rtmpdump: for downloading Areena audio streams')
 makedepends=('python2-setuptools')
