@@ -1,7 +1,7 @@
 pkgbase = doomseeker
 	pkgdesc = A cross-platform Doom server browser
-	pkgver = 1.1
-	pkgrel = 8
+	pkgver = 1.2
+	pkgrel = 0
 	url = https://reotip.alwaysdata.net/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = doomseeker
 	optdepends = zandronum2: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
-	source = https://reotip.alwaysdata.net/1.0.tar.gz
+	source = https://bitbucket.org/destroyerrocket/doomseeker/get/default.tar.gz
 	source = doomseeker.desktop
 	source = doomseeker-launch-script.sh
-	sha256sums = 9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d
+	sha256sums = 47bbec12fa14a67701ea52faec7783958791748c49726e801bbed53bebc4f2d8
 	sha256sums = 64004248a2dd3771292e63717a05e1859f1ffe6d6fd5f16ebfa1427b9a43533f
 	sha256sums = 96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4
 
