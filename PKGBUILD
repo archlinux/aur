@@ -10,7 +10,7 @@ _minor=15
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=2
+_pfrel=3
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -73,7 +73,7 @@ true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://pf.natalenko.name/"
+url="https://pfactum.github.io/pf-kernel"
 license=('GPL2')
 options=('!strip')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
@@ -98,14 +98,17 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
+  
+  # fixed -pf now
   # disable USER_NS for non-root users by default
-  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  #patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  #patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   # https://bugs.archlinux.org/task/57327
-  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+  #patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+
+  # end
   # end linux-ARCH patches
 
   # fix ci  invalid PC card inserted issue hopefully
@@ -679,9 +682,9 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 # makepkg -g >>PKGBUILD
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
-            '943e1e6e1518edc8ab86023805f8f88f3672871a4039ccf8a9e97c33e95ae395'
+            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '25b06ca29edab2f7b8a2546de382c4ba05d2c23bbfc9fbd30a0363da374997ea'
+            'aeb4524f65beee76c1b7d609b5f998d6177a3f1d70b45740a0cd34f6f319b750'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
