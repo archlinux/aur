@@ -1,6 +1,6 @@
 pkgbase = postman
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 5.5.3
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = postman
 	depends = electron
 	depends = ttf-opensans
 	conflicts = postman-bin
-	source = postman-5.5.3.zip::https://dl.pstmn.io/download/version/5.5.3/linux64
+	source = postman-6.0.6.zip::https://dl.pstmn.io/download/version/6.0.6/linux64
 	source = remove-updater.patch
-	sha256sums = e6fee23250c3fabd2c143b002a3d7f658d7094de22ea3c01e40b387599f00077
-	sha256sums = 0d6063e13c3f84110125c47732557b59475df88cdb3a1e036b4c21adb7d6250a
+	sha256sums = 1a169bec6fe935a41d0dab63ef8af238ebcfb913a330c8605689ec018ff1c017
+	sha256sums = 7d5f73390a308b6f30133733f4816e47be207ab87d3b1a5fa5fe343916bbc621
 
 pkgname = postman
 

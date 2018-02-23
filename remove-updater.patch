@@ -1,6 +1,6 @@
 --- a/services/menuManager.js
 +++ b/services/menuManager.js
-@@ -13,11 +13,6 @@
+@@ -14,11 +14,6 @@
          label: appName,
          submenu: [
            { role: 'about' },
@@ -12,7 +12,7 @@
            {
              label: 'Preferences',
              accelerator: 'CmdOrCtrl+,',
-@@ -364,11 +359,6 @@
+@@ -347,11 +342,6 @@
          label: 'Help',
          role: 'help',
          submenu: [
@@ -26,27 +26,17 @@
              click: function (menuItem, browserWindow, options) { menuManager.handleMenuAction('openCustomUrl', 'https://www.getpostman.com/docs/', options); }
 --- a/js/requester.js
 +++ b/js/requester.js
-@@ -424105,11 +424105,6 @@
-                 { key: _SettingsTypeConstants.SETTINGS_PROXY },
-                 _react2.default.createElement(_SettingsProxyContainer2.default, null)
-               ),
--              _react2.default.createElement(
--                _SettingsTabContent2.default,
--                { key: _SettingsTypeConstants.SETTINGS_UPDATE },
--                _react2.default.createElement(_SettingsUpdateContainer2.default, null)
--              ),
-               _react2.default.createElement(
-                 _SettingsTabContent2.default,
-                 { key: _SettingsTypeConstants.SETTINGS_ABOUT },
-@@ -424231,11 +424226,6 @@
-             { refKey: _SettingsTypeConstants.SETTINGS_PROXY },
-             'Proxy'
-           ),
--          _react2.default.createElement(
--            _Tabs.Tab,
--            { refKey: _SettingsTypeConstants.SETTINGS_UPDATE },
--            'Update'
--          ),
-           _react2.default.createElement(
-             _Tabs.Tab,
-             { refKey: _SettingsTypeConstants.SETTINGS_ABOUT },
+@@ -545604,9 +545604,6 @@
+                 _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_PROXY },
+                   _react2.default.createElement(_SettingsProxyContainer2.default, null)),
+ 
+-                _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_UPDATE },
+-                  _react2.default.createElement(_SettingsUpdateContainer2.default, null)),
+-
+                 _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_ABOUT },
+                   _react2.default.createElement(_SettingsAboutContainer2.default, null)))))));
+ 
+@@ -545663,3 +545660,2 @@
+             _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_PROXY }, 'Proxy'),
+-            _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_UPDATE }, 'Update'),
+             _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_ABOUT }, 'About'))));

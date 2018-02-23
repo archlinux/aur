@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <kitsunyan@inbox.ru>
 
 pkgname=postman
-pkgver=5.5.3
+pkgver=6.0.6
 pkgrel=1
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=(electron ttf-opensans)
 conflicts=(postman-bin)
 source=("postman-$pkgver.zip::https://dl.pstmn.io/download/version/${pkgver}/linux64"
         'remove-updater.patch')
-sha256sums=('e6fee23250c3fabd2c143b002a3d7f658d7094de22ea3c01e40b387599f00077'
-            '0d6063e13c3f84110125c47732557b59475df88cdb3a1e036b4c21adb7d6250a')
+sha256sums=('1a169bec6fe935a41d0dab63ef8af238ebcfb913a330c8605689ec018ff1c017'
+            '7d5f73390a308b6f30133733f4816e47be207ab87d3b1a5fa5fe343916bbc621')
 
 prepare() {
   cd "$srcdir/Postman/resources/app"
@@ -20,7 +20,7 @@ prepare() {
   # remove updater from menu
   patch -Np1 -i "$srcdir/remove-updater.patch"
 
-  for f in 'js/console.js' 'js/requester.js' 'js/runner.js'; do
+  for f in 'js/console.js' 'js/requester.js' 'js/runner.js' 'js/shared.js'; do
     # set "DISABLE_ANALYTICS" and "DISABLE_UPDATES" variables to "true"
     sed -i "$f" \
     -e 's/window.DISABLE_ANALYTICS = false;/window.DISABLE_ANALYTICS = true;/' \
