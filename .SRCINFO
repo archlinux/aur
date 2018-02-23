@@ -13,7 +13,7 @@ pkgbase = pilot-link
 	depends = popt
 	depends = bluez>=4.59
 	options = !libtool
-	source = http://pkgs.fedoraproject.org/repo/pkgs/pilot-link/pilot-link-0.12.5.tar.bz2/568c55bf504b044f6fbd50baa407c990/pilot-link-0.12.5.tar.bz2
+	source = https://mirrors.slackware.com/slackware/slackware-14.1/source/l/pilot-link/pilot-link-0.12.5.tar.bz2
 	source = pilot-link-png14.patch
 	md5sums = 568c55bf504b044f6fbd50baa407c990
 	md5sums = a21a2eeb01544a8a261a75e64a3120c3
