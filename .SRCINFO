@@ -1,0 +1,16 @@
+pkgbase = rshijack
+	pkgdesc = rust rewrite of shijack
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/rshijack
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = cargo
+	depends = libpcap
+	source = rshijack-0.1.0.tar.gz::https://github.com/kpcyrd/rshijack/archive/v0.1.0.tar.gz
+	sha512sums = 70cf390ed308d0ea22478f3f7f93ee4ae16676eaec423d3534cc15a3d6dd57c7e84df3db9ca027ab5515d11387fceab11b4085e123d898089315409759547962
+
+pkgname = rshijack
+
