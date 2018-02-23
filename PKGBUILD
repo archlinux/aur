@@ -6,7 +6,7 @@ pkgver=0.8.2a.r91.c28fd6b
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
-depends=('python' 'python-urwid' 'python-urwidtrees-git' 'python-aiohttp'
+depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
          'python-xdg' 'python-blinker' 'python-natsort')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-geoip: shows country codes in peer lists'
