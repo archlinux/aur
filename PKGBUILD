@@ -61,8 +61,8 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.14
-_pkgver=4.14.18
-_rtver=15
+_pkgver=4.14.20
+_rtver=17
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
@@ -93,7 +93,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
         "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
         "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
-        "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
@@ -108,9 +107,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -125,21 +123,13 @@ prepare() {
         msg "Add rt patch"
         patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
     
-    ### Disable USER_NS for non-root users by default
-        msg "Disable USER_NS for non-root users by default"
-        patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-    ### Fix https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-        msg "Fix CVE-2017-8824"
-        patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
-        patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+        patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
     
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch    
+        patch -Np1 -i ../0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch    
     
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -442,9 +432,9 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '3582494199ecb65e5c7a908a87e69c97005640f857c54487ff4a0cbd749c505d8d114fb9d4a01e081ab6e7982fc39b8c7077e6b4cc7e52bcdb904cffea637e62'
+            '1ddddb3a8eeed75bf650b749fa04712d0db67615e4cc6195dc43046797970f3b459299b71366b9a254fa6c6c3896339c3cef65d93b4097ab90a5cfbb6aa1c445'
             'SKIP'
-            '656c16f09611ff33cae7bd5cdddf33179bd707f6892c3349d7ee9b90976a347f0d90bb766c85d457e7766ed3a45b0636533fd67552c1502ce98ffb3af76f4256'
+            'dfc67f6a89347a7656caeeaa9deb08a9992cc6f20b1490db76858b8fadbbefd74a5f1dfbbb17c2010c62a3ddcdd495351b7f902cafb1f4020639652c2b008396'
             'SKIP'
             '21ecaca7cd389d0806d5f1c28f0f29ec820af30d8f33c578f502c6136e19e079592b3f018e27be3f5476367250f10936872261791e1c2316453fe42236882340'
             'e1819903787241db1fc7cf4fb7682936185c73ef7ba842f59b94f2d56ef2ceab3df42344df3cb226060c09257d98e9a861bc8f7a7debc0a9f0936022022fc3ba'
@@ -454,7 +444,6 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '8d81793da14847ee521d230a3065b0c1dfd0138c28ea350754de21e2908132866e4851119f98182cf8725a92a803c31999f457a495c5079afe7d82470f5fcb63'
             '27b68107c4920baf85a5b1e1636d523399bcc1c7bce5e238ee321c666bb79f0124890577b3cba16a99d7da406015401324e8d04b91a1f73e4093473033ae237a'
             '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
-            '75403516c0e64e13c66602ade9ac12fd553ec811628b4bba79686e183e12a798281566dfdbbe0ba1217ebe8ee1d294a7ca904c36d7b760bcb558ddca0cb7f260'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
@@ -463,10 +452,9 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'f665daaec89b15d3a4cf2cabaf2b423dcda5e005860275753575f6bbed6815c3f17558b24da01ce6f6f0aeba900c506c32efa50754592625f3b513c7f14aea62'
-            '2ab17dfa1d37a73441f2e42883358763db648c5b863e76a8d7b3b344c1b293ffee5f72c8ed1f8219cec8c8419898fac59b21e0b6bf47daee17e426b18d907df9'
-            '24dccb21b187f331955d6f4d992b2ccd9cbf27acd83e4ff417921e200a1ebc4f52ec9732180a6d3922f86d2422ab0047558c62b76253e6f81983f26d0ae10f76'
-            'bd0a758c7cc185cf5f29ea1d0a8964d12592c45cd9560d1f0508ad0dc102920e4f45aaa6921e58f145daea211340e8884f530a07c8da76f12af817c812b021dc')
+            '9268112c46f06ff359c91097ad06a7cff546d0b1251f1133a981479fb6f810854585433e8000f287aeffa1b6c4c7da143c7ae2a6760759aa1d0d438141cd66f9'
+            '9bf06ae89a6e55d2dcc27b510bc034d822c308e2d652c4839e3135e5225b1a9cca1b39f90fd3e5f0d480e09257d0cb6d9d4c0cd89f5b56095f6d999dfff24d37'
+            '14a9bdadc26a3bbd35baba8d550b39ac941600de7c0c7553fab94e47431e5a58066a561e04891fbfd911f573be801d357d6a9149e51472136bf05ac9b26ab61a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
