@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik at gmail dot com>
 
 pkgname=geogebra-5
-pkgver=5.0.431.0
+pkgver=5.0.436.0
 pkgrel=1
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
@@ -40,7 +40,7 @@ package() {
   install -Dm644 "${srcdir}/geogebra-mime.xml" "${pkgdir}/usr/share/mime/packages/geogebra.xml"
 }
 
-sha512sums=('4b549f46a3f91c0beb4cba31a2eeb0efd4370288ef1036b934b59632cea09a3559f8e89bbe7f4702545a337ff6565db077d836913b51d801e89c70fe5a62d892'
+sha512sums=('0e74c95fceab1721a3cec935215b2d738722c83869d2dd34494e31b786c82510a45d111ab5192b6392c7d7b236721d336397aaf8962a967ed00a9b01b034c6f6'
             'a946acb8867f497c68ce6f8fff8172da4a43a9ca118aafcc5ac414318fd52c4bc6ada387bdfa296f0ff2e1d7411ae345b61197b4adaa3f54299aab837647df55'
             'f5d6f3fe17638f4521b0a00d6d077a5c509984bd8f7cb39c28e412b7384ec129c6595400e7ae4cb5ba05f1673eb46d8f6c56db1b4145afb35797a1d0a170965d'
             '415e73ff15524d5e81b05cf4c31241f4e21a4eedcef0a11e5af82423f9a7c2cbf632e9ee1e86b4cc60ebc566472462979a65cb7f3cfc9f94243fb545ac042a0f')
