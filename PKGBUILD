@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='quex'
-pkgver=0.67.5
+pkgver=0.68.2
 pkgrel=1
 pkgdesc="Generator of lexical analyzers in C and C++. Unicode Supported."
 arch=('any')
@@ -9,7 +9,7 @@ license=('LGPL')
 provides=('quex')
 depends=('python2')
 source=("http://downloads.sourceforge.net/project/quex/DOWNLOAD/quex-$pkgver.tar.gz" "quex")
-md5sums=('3d9070cad09f9814954b2b04613cbb21'
+md5sums=('80ddb372819afa05449114633c5a6f69'
          '89ee42a783fe1fb7bf7787cc861be1a3')
 
 package() {
