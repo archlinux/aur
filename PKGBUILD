@@ -2,7 +2,7 @@
 # Contributor: Nick Bair <njbair at gmail dot com>
 pkgname=bubbleupnpserver
 pkgver=0.9.27
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream content to Android devices over the Internet – requires UPNP/DNLA backend e.g. Mediatomb"
 arch=('any')
 url="http://www.bubblesoftapps.com/bubbleupnpserver/"
@@ -18,7 +18,7 @@ source=(
 "http://bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServer.jar"
 )
 noextract=('BubbleUPnPServer.jar')
-sha256sums=('SKIP'
+sha256sums=('5053f208f9c61090f512a61069de8255f973a3d2abb55293f75fe9d831fe1b60'
             'a5992d91512469eca0a20634165f90ca8105107801fbd3fec60b45824ef311fb'
             '61bf63a84b839b85c0fdf0210310c94242bbb6e1aa69bf0d6c46efa013b52ae5'
             'fd764bb4c785ab0e2481d26f4f30656ba756949afa8ed949234e722ded87bf04'
