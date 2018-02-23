@@ -4,6 +4,7 @@
 pkgname=yandex-browser-codecs-ffmpeg-extra-bin
 pkgver=61.0.3163.100
 pkgrel=1378
+epoch=1
 pkgdesc="Prebuilt ffmpeg-codecs package for yandex.browser"
 arch=(
   "x86_64"

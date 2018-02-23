@@ -2,6 +2,7 @@ pkgbase = yandex-browser-codecs-ffmpeg-extra-bin
 	pkgdesc = Prebuilt ffmpeg-codecs package for yandex.browser
 	pkgver = 61.0.3163.100
 	pkgrel = 1378
+	epoch = 1
 	url = https://packages.ubuntu.com/xenial/amd64/chromium-codecs-ffmpeg-extra/download
 	arch = x86_64
 	license = LGPL
