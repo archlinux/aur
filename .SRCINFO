@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-rosmake
+	pkgdesc = ROS - rosmake is a ros dependency aware build tool which can be used to build all dependencies in the correct order.
+	pkgver = 1.14.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosmake
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-catkin
+	depends = python2-rospkg
+	source = ros-melodic-rosmake-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosmake/1.14.3-0.tar.gz
+	sha256sums = 67edfca51122c4da0e3dafc20a1f84eed753d1f9b6e159351948029337b9753e
+
+pkgname = ros-melodic-rosmake
+
