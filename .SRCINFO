@@ -13,10 +13,12 @@ pkgbase = gtkhtml4-git
 	depends = gnome-icon-theme>=2.22
 	depends = gtk3>=3.2.0
 	depends = iso-codes>=0.49
+	provides = gtkhtml4
+	conflicts = gtkhtml4
 	source = gtkhtml4::git+https://github.com/GNOME/gtkhtml.git
 	source = enchant-2.patch
 	sha256sums = SKIP
-	sha256sums = 8f8f26cf66c8ffa7efd0845153e9e8ce0cdbd0d161a48c28f860dc51004686f3
+	sha256sums = 2b78f071f7893e19618959443f3775bd435941a37ea9198b2fe72b596c205891
 
 pkgname = gtkhtml4-git
 
