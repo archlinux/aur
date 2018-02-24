@@ -4,7 +4,7 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.106
 _extramodules=extramodules-4.15-ck
-pkgrel=7
+pkgrel=8
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -45,11 +45,8 @@ package() {
 
   find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf" <<END
-blacklist nouveau
-blacklist nvidiafb
-blacklist rivafb
-END
+  echo "blacklist nouveau" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf"
 }
 
 # vim:set ts=2 sw=2 et:
