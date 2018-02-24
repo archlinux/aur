@@ -7,7 +7,9 @@ pkgbase = blender-plugin-bligify
     groups = blender
     license = GPL
     makedepends = unzip
-    depends = blender gifsicle imagemagick
+    depends = blender
+    depends = gifsicle
+    depends = imagemagick
     source = https://github.com/doakey3/Bligify/releases/download/1.3.5/Bligify.zip
     md5sums = d604422b40611c84b09a90d91ab60e69
 
