@@ -1,7 +1,7 @@
 pkgbase = python-pyfr
 	pkgdesc = Python based framework for solving advection-diffusion type problems on streaming architectures
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.7.5
+	pkgrel = 1
 	url = http://www.pyfr.org/
 	arch = i686
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = python-pyfr
 	optdepends = cblas: needed for OpenMP backend
 	optdepends = openblas: alternative blas for OpenMP backend
 	optdepends = cgns>=3.3: for importing CGNS meshes
-	source = http://www.pyfr.org/download/PyFR-1.5.0.zip
-	sha256sums = 84fc65fdcc2e7c446abddbedcf1e44a842593f8a04c3c8927f1c5742266c6333
+	source = https://github.com/vincentlab/PyFR/archive/v1.7.5.tar.gz
+	sha256sums = b12dd3ed0cbd3835297dec4f038d1034a2c1cda7100b7c1cee6b4e270cdd132c
 
 pkgname = python-pyfr
 
