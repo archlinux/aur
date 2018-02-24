@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=('pipdeptree')
-pkgver='0.10.1'
+pkgver='0.11.0'
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 url="https://github.com/naiquevin/${pkgname}"
@@ -9,7 +9,7 @@ depends=('python-pip')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('656eaf8ecbe9975ead1e46cab580b58a')
+md5sums=('0f8d54572e9f700357e16fc994fb1b04')
 
 
 package() {
