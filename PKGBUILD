@@ -5,13 +5,13 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="graphical user interface to OpenSSL, RSA/DSA public keys, certificates, signing requests and revokation lists"
 arch=('i686' 'x86_64')
-url="http://www.hohnstaedt.de/xca.html"
+url="http://xca.hohnstaedt.de"
 license=('BSD')
 depends=('qt5-base' 'libltdl' 'shared-mime-info' 'qt5-tools')
 #makedepends=('linuxdoc-tools')
-source=("http://downloads.sourceforge.net/sourceforge/xca/$pkgname-$pkgver.tar.gz")
-md5sums=('bf5737800bbfe65a527410a93d4a3fca')
-
+#source=("http://downloads.sourceforge.net/sourceforge/xca/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/chris2511/xca/releases/download/RELEASE.$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('ffd4bf247ef49b9977c3166bf9e3269fb96d869ef59877810f794849a791cfbf')
 build ()
 {
 cd $srcdir/$pkgname-$pkgver
