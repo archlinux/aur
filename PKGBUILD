@@ -2,7 +2,7 @@
 
 pkgname=myetherwallet
 _pkgname=etherwallet
-pkgver=3.20
+pkgver=3.20.01
 pkgrel=1
 pkgdesc='Free, open-source, client-side tool for easily & securely interacting with the Ethereum network'
 arch=('any')
@@ -13,13 +13,13 @@ source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver.zip"
         'myetherwallet.desktop'
         'myetherwallet'
         'LICENSE')
-sha256sums=('23706cb52a9157b7c874024e6d44a033b2295a70c1d836061dab904bf7075623'
+sha256sums=('d2ec00ff5ca8b076e127300bfa2ba938f1d07da567fa22ab9598424d41f39140'
             '9fb1e89ff5a138b8e2577e3d82b0c1b9f938c38f846c01d8cadd357c6eb4ee23'
             'a723f0ba81f225d7a7bd083db89c50673e1fd11bb608d11c72efe5b9283a2524'
             'c834d53db7382f39e38e49e72ca27c79353e3be00e47e40705c2e5b9be964b57')
 
 package() {
-  cd "$srcdir/$_pkgname-v${pkgver::-1}"
+  cd "$srcdir/$_pkgname-v$pkgver"
 
   # Lib directory
   install -d "$pkgdir/opt/$pkgname"
