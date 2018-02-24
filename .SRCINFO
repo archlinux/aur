@@ -1,0 +1,20 @@
+pkgbase = python-django-bootstrap4
+	pkgdesc = Bootstrap 4 integration with Django
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/zostera/django-bootstrap4
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://github.com/zostera/django-bootstrap4/archive/0.0.6.tar.gz
+	sha256sums = e9079ec03280ea72022227ac27afc7dece3ce80be278a3434705ec909cc56383
+
+pkgname = python-django-bootstrap4
+	depends = python-django
+
+pkgname = python2-django-bootstrap4
+	depends = python2-django
+
