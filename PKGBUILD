@@ -2,7 +2,7 @@
 
 pkgname=smsync-git
 _pkgname=smsync
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='smsync (Smart Music Sync) is an easy-to-use command line application for Linux. It helps to keep huge music collections in sync and is also taking care of conversions between different formats'
 arch=('x86_64' 'i686')
