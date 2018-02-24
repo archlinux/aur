@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.4
-pkgrel=4
+pkgver=0.0.5
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -16,26 +16,26 @@ source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
     'ffmpeg.tar.gz::https://github.com/hrydgard/ppsspp-ffmpeg/archive/7b7ae7b06705bf5539b222e77c779d4b649b53ef.tar.gz'
     'hidapi.tar.gz::https://github.com/RPCS3/hidapi/archive/ca39ce8939e490ffcadb38ff978447aac1c17662.tar.gz'
     'libpng.tar.gz::https://github.com/RPCS3/libpng/archive/1dcba4d6eb1bad9500be877cbd1b0442fa92cfa6.tar.gz'
-    'pugixml.tar.gz::https://github.com/RPCS3/pugixml/archive/f205aaf6e1c90f1dda943edd4f82922118a85648.tar.gz'
+    'pugixml.tar.gz::https://github.com/RPCS3/pugixml/archive/257fbb4e1b09b0f1a6b2020ae2db190b87c8f9c7.tar.gz'
     'zlib.tar.gz::https://github.com/madler/zlib/archive/v1.2.11.tar.gz'
-    'Vulkan-LoaderAndValidationLayers.tar.gz::https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/85926a33d427ee62f395a50886db980127063c72.tar.gz'
-    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/cf571f7310f58e6eb4ea35600ef1401bc76db0d2.tar.gz'
-    'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/1370fe6a26a82f18500faedac66798953961a916.tar.gz'
+    'Vulkan-LoaderAndValidationLayers.tar.gz::https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/28d93dfc0f24d65237fd773d74a284bf6e399222.tar.gz'
+    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/e22e3473958e9bf3536f6c2133d66e5808816b78.tar.gz'
+    'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/673dcefaa048c5f5a2bf8b85daf8f7b9978d018a.tar.gz'
     'llvm.tar.gz::https://github.com/llvm-mirror/llvm/archive/4423e351176a92975739dd4ea43c2ff5877236ae.tar.gz'
     'optional.tar.gz::https://github.com/akrzemi1/Optional/archive/f27e79084a9176672ed1eae50b3397fa8035d50d.tar.gz'
     'git-version.h')
 
-sha256sums=('fad33644c99db5f7582140052b604ae842de3b80fd9428156ef0fbeaaf431763'
+sha256sums=('a33a208076e7bc31e2a4023a270e4769c1ae13463fe16a4fcbe3ad7915fba7b0'
             '0699d2fbfff96f09b170c5d5d93a7d782bf028a4fbe3c7cc9c5edfedf1124b2d'
             '1ccf3ed205a7a2f0d6a060415b123f1ae0d984cd4435db01af8de11a2eda49c1'
             '1596acf40444d17e17ef574b9ad8c7f2de9cbc429273da0b90883bffdb493071'
             '408e65ce23481bdb289f01930602afc36c238e41ffcc7e4915fb8457799c24bb'
             'c8fbec2f447b2e09b68b6970ee8c3e5cdd5775aff9ec1e2db6ed5f06fc273312'
-            '5e4c4a76061ef0917372ad80dfbd477e676a263595f4a15e5456ac849ec3832d'
+            'b5a1f24be920f86c76503a1e856da5b86fdeb98b5a4e3f30c929af9c5fdc0d6c'
             '629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff'
-            '52067f486c8650a0e1a4a18ef691563433f680889c539b2c6555481798a8f5e4'
-            '482c46287ea534c6f8bb346f91fc26199997d832cff4ae6dab0c9d6bb8307608'
-            'e4ec96d7dd8d90e7e448b6f034b3a812865435b1e795893a35526002e722ce6a'
+            '24417e030a734557b2e424d2446602c8efe5e8cc306e7da68fb3812d125e5afc'
+            'dbb08ec1a3d73c997fe5226320192aaf0cf881412e0956a3bd9aefd7881c3e76'
+            '9c59802895a7812d6ce63f25abf9ad75fe651ab7b550d79cd266fee34bfedfeb'
             '16dc99ccbe614bba047f35f4338a23fc0f9e071d4fcca65dc4fd211ecf2a7254'
             '0e7fc73bf95be5a8fe92373c68dab07b09646fba7d9b76eb047a1b665f4e45c6'
             '4602a47515c0a976da699931358a25e9b9f3c953d2abff9c862c6be9ba2708a6')
@@ -57,15 +57,15 @@ prepare()
     rmdir 3rdparty/Optional
     ln --symbolic --force ../../Optional-f27e79084a9176672ed1eae50b3397fa8035d50d 3rdparty/Optional
     rmdir 3rdparty/pugixml
-    ln --symbolic --force ../../pugixml-f205aaf6e1c90f1dda943edd4f82922118a85648 3rdparty/pugixml
+    ln --symbolic --force ../../pugixml-257fbb4e1b09b0f1a6b2020ae2db190b87c8f9c7 3rdparty/pugixml
     rmdir 3rdparty/zlib
     ln --symbolic --force ../../zlib-1.2.11 3rdparty/zlib
     rmdir Vulkan/Vulkan-LoaderAndValidationLayers
     ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-85926a33d427ee62f395a50886db980127063c72 Vulkan/Vulkan-LoaderAndValidationLayers
     rmdir Vulkan/glslang
-    ln --symbolic --force ../../glslang-cf571f7310f58e6eb4ea35600ef1401bc76db0d2 Vulkan/glslang
+    ln --symbolic --force ../../glslang-e22e3473958e9bf3536f6c2133d66e5808816b78 Vulkan/glslang
     rmdir asmjit
-    ln --symbolic --force ../asmjit-1370fe6a26a82f18500faedac66798953961a916 asmjit
+    ln --symbolic --force ../asmjit-673dcefaa048c5f5a2bf8b85daf8f7b9978d018a asmjit
     rmdir llvm
     ln --symbolic --force ../llvm-4423e351176a92975739dd4ea43c2ff5877236ae llvm
 
