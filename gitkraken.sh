@@ -1,3 +1,3 @@
 #!/bin/sh
 
-LD_LIBRARY_PATH=/usr/lib/libcurl-openssl-1.0 /opt/gitkraken/gitkraken "$@"
+LD_LIBRARY_PATH=/usr/lib/libcurl-gnutls.so.3 /opt/gitkraken/gitkraken "$@"
