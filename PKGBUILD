@@ -7,7 +7,7 @@ _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
 pkgver=3.26.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
 arch=(i686 x86_64)
@@ -28,6 +28,8 @@ prepare() {
 
   git submodule init
   git submodule update
+
+  git cherry-pick -n d74e1a3d 9238456b bf86a803
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
 }
