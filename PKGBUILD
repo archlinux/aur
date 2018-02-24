@@ -12,4 +12,7 @@ sha256sums=('561a952394bc1d9291179a8677eb6f5dafbf3e361c851f3dbb59db604c9b8e8b')
 package() {
   cd GDAL-$pkgver
   python setup.py install --root="$pkgdir"
+  
+  install -dm 755 $pkgdir/usr/share/licenses/$pkgname/
+  ln -s /usr/share/licenses/gdal/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
