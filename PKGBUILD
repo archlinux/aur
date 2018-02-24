@@ -1,6 +1,6 @@
 # Maintainer: Luigi Guevara <luigi.t.guevara@killua.me>
 pkgname=pomello
-pkgver=0.7.5
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Stay Focused. Accomplish more."
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ install='pomello.install'
 source_i686=("Pomello_${pkgver}.deb::http://www.pomelloapp.com/download/linux?package=deb&arch=32")
 source_x86_64=("Pomello_${pkgver}.deb::http://www.pomelloapp.com/download/linux?package=deb&arch=64")
 options=(!strip)
-md5sums_i686=('9dfc6074ae2b887f827a1f246ec85a2d')
-md5sums_x86_64=('7f34b5569c2b17f23d9704dca374be08')
+md5sums_i686=('2aa608af394fbe0303bb0e1411e1708e')
+md5sums_x86_64=('7c999fc6596276f5d32d9f5f356ff27d')
 
 prepare() {
   cd "$srcdir"
@@ -31,11 +31,12 @@ package() {
   mkdir -p "$pkgdir/opt/Pomello/lib"
   ln -nsf /usr/lib/libudev.so.1 "$pkgdir/opt/Pomello/lib/libudev.so.0"
 
-  install -D -m644 "${pkgdir}/opt/Pomello/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${pkgdir}/opt/Pomello/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+  install -D -m644 "${pkgdir}/opt/Pomello/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
 
-  ln -nsf "/opt/Pomello/Pomello" "${pkgdir}/usr/bin/pomello"
-  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "$pkgdir/usr/share/applications/Pomello.desktop"
-  sed -e 's#/opt/Pomello/Pomello#/usr/bin/pomello#' -i "$pkgdir/usr/share/applications/Pomello.desktop"
+  ln -nsf "/opt/Pomello/pomello" "${pkgdir}/usr/bin/pomello"
+  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "$pkgdir/usr/share/applications/pomello.desktop"
+  sed -e 's#/opt/Pomello/pomello#/usr/bin/pomello#' -i "$pkgdir/usr/share/applications/pomello.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
