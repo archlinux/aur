@@ -8,7 +8,7 @@
 pkgname=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
 _pkgbase=('x264')
 pkgver=152.20171224
-pkgrel=2
+pkgrel=3
 
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
@@ -48,6 +48,7 @@ for _b in 8 10; do (
 
 package_lib32-libx264() {
 pkgdesc='Library for encoding H264/AVC video streams (8bit depth) (lib32)'
+depends=('libx264')
 provides=('lib32-libx264-8bit' 'libx264.so')
 conflicts=('lib32-libx264')
 
@@ -57,6 +58,7 @@ rm -rf "${pkgdir}"/usr/include
 
 package_lib32-libx264-10bit() {
 pkgdesc='Library for encoding H264/AVC video streams (10bit depth) (lib32)'
+depends=('libx264-10bit')
 provides=('lib32-libx264' 'libx264.so')
 conflicts=('lib32-libx264')
 
@@ -66,6 +68,7 @@ rm -rf "${pkgdir}"/usr/include
 
 package_lib32-libx264-all() {
 pkgdesc="Library for encoding H264/AVC video streams (all depths) (lib32)"
+depends=('libx264-all')
 
 local _ver=$(grep '#define X264_BUILD' "${_pkgbase}"/x264.h | cut -d' ' -f3)
 
