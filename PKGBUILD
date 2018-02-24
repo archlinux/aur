@@ -4,7 +4,7 @@
 
 pkgname=nvidia-ck
 pkgver=390.25
-pkgrel=4
+pkgrel=5
 epoch=1
 _extramodules=extramodules-4.15-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -44,11 +44,8 @@ package() {
 
   find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-ck.conf" <<END
-blacklist nouveau
-blacklist nvidiafb
-blacklist rivafb
-END
+  echo "blacklist nouveau" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-ck.conf"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
 }
