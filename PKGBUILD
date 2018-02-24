@@ -114,9 +114,6 @@ package() {
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
 
-  # Symlink /var/lib/snapd/snap to /snap so that --classic snaps work
-  ln -s var/lib/snapd/snap "$pkgdir/snap"
-
   # pre-create directories
   install -dm755 "$pkgdir/var/lib/snapd/snap"
   install -dm755 "$pkgdir/var/cache/snapd"
