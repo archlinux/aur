@@ -69,7 +69,6 @@ package_bcc-tools() {
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build/man"
 	make DESTDIR="${pkgdir}" install
-	mv "${pkgdir}"/usr/share/{bcc/man,}
 }
 
 package_python-bcc() {
