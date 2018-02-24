@@ -28,10 +28,16 @@ optdepends=('bullet>=2.82: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2c29955d476c97dc0ccbb1c8295ec6e8ffe203d7bc6047c1f34433a82ab9215e')
+source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2" "ogre-1.10.patch")
+sha256sums=('2c29955d476c97dc0ccbb1c8295ec6e8ffe203d7bc6047c1f34433a82ab9215e'
+            'a1c8a9d181f3de6007361f571a40fd04e780081cd9a9a281d64d316e8cc89892')
 
 prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np2 -i "${srcdir}/ogre-1.10.patch"
+}
+
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -p build && cd build
@@ -40,10 +46,6 @@ prepare() {
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-}
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make
 }
 

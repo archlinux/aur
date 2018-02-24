@@ -1,94 +1,13 @@
-diff -ura src/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc src2/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc
---- src/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc	2017-08-06 19:28:22.086767172 +0200
-@@ -351,7 +351,6 @@
-   // TODO: this was causing a segfault. Need to debug, and put back in
-   if (this->dataPtr->root)
-   {
--    this->dataPtr->root->shutdown();
-     /*const Ogre::Root::PluginInstanceList ll =
-      this->dataPtr->root->getInstalledPlugins();
+Only in patched/gazebo-9.0.0: build
+diff -ura original/gazebo-9.0.0/gazebo/rendering/CustomPSSMShadowCameraSetup.cc patched/gazebo-9.0.0/gazebo/rendering/CustomPSSMShadowCameraSetup.cc
+--- original/gazebo-9.0.0/gazebo/rendering/CustomPSSMShadowCameraSetup.cc	2018-01-25 23:25:48.000000000 +0100
++++ patched/gazebo-9.0.0/gazebo/rendering/CustomPSSMShadowCameraSetup.cc	2018-02-24 12:29:12.219115580 +0100
+@@ -49,6 +49,8 @@
  
-diff -ura src/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp src2/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp
---- src/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp	2017-08-25 23:33:57.747595635 +0200
-@@ -32,9 +32,9 @@
-       , mCreated(false)
-       , mSubMesh(0)
-       , mEntity(0)
--      , mVertexBuffer(0)
-+      , mVertexBuffer()
-       , mVertices(0)
--      , mIndexBuffer(0)
-+      , mIndexBuffer()
-       , mSceneNode(0)
-       , mSteps(70)
-       , mCircles(95)
-diff -ura src/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp src2/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp
---- src/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-08-06 19:27:43.967225361 +0200
-@@ -22,6 +22,8 @@
- */
+ #include "gazebo/rendering/CustomPSSMShadowCameraSetup.hh"
+ #include "gazebo/rendering/ogre_gazebo.h"
++#include <OGRE/RTShaderSystem/OgreShaderFunction.h>
++#include <OGRE/RTShaderSystem/OgreShaderProgram.h>
  
- #include <vector>
-+
-+#include <OgrePixelFormat.h>
- #include "VClouds/DataManager.h"
- 
- #include "VClouds/VClouds.h"
-@@ -689,8 +691,12 @@
-       {
-         for (x = pb.left; x < pb.right; x++)
-         {
-+          Ogre::uint8 *ptr = (Ogre::uint8 *)pb.data +
-+                             (x + y * pb.rowPitch + z * pb.slicePitch) *
-+                                 Ogre::PixelUtil::getNumElemBytes(pb.format);
-+
-           Ogre::PixelUtil::packColour(c[x][y][z].dens/* TODO!!!! */,
--              c[x][y][z].light, 0, 0, pb.format, &pbptr[x]);
-+              c[x][y][z].light, 0, 0, pb.format, ptr);
-         }
-         pbptr += pb.rowPitch;
-       }
-diff -ura src/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material src2/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material
---- src/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material	2017-01-26 02:16:28.000000000 +0100
-+++ src2/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material	2017-08-06 19:27:43.967225361 +0200
-@@ -65,19 +65,3 @@
- 		}
- 	}
- }
--
--material DeferredRendering/Shadows/RSMCaster_Spot
--{
--	technique
--	{
--		pass
--		{
--			vertex_program_ref DeferredShading/Shadows/RSMCasterVP
--			{
--			}
--			fragment_program_ref DeferredShading/Shadows/RSMCasterFP_Spot
--			{
--			}
--		}
--	}
--}
-diff -r 01ac9ab0c44e -r 97d1dae5f3fc gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc
---- a/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc       Tue Sep 12 17:18:20 2017 +0000
-+++ b/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc       Fri Sep 22 19:47:43 2017 +0200
-@@ -101,7 +101,6 @@
-
-   Ogre::String programSource = ss.str();
-
--  std::cout << programSource << "\n";
-   Ogre::String programName = this->baseName + "VP_" +
-     Ogre::StringConverter::toString(_permutation);
-
-@@ -294,7 +293,6 @@
-   Ogre::String programName = this->baseName + "FP_" +
-     Ogre::StringConverter::toString(_permutation);
-
--  std::cout << programSource << "\n";
- #if OGRE_DEBUG_MODE
-   Ogre::LogManager::getSingleton().getDefaultLog()->logMessage(programSource);
- #endif
+ using namespace gazebo;
+ using namespace rendering;
