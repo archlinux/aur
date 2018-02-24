@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-roswtf
+	pkgdesc = ROS - roswtf is a tool for diagnosing issues with a running ROS system.
+	pkgver = 1.13.6
+	pkgrel = 1
+	url = http://ros.org/wiki/roswtf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rosgraph
+	depends = ros-melodic-roslib
+	depends = ros-melodic-roslaunch
+	depends = ros-melodic-rosservice
+	depends = ros-melodic-rosnode
+	depends = ros-melodic-rosbuild
+	depends = python2-rospkg
+	depends = python2-paramiko
+	source = ros-melodic-roswtf-1.13.6-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roswtf/1.13.6-0.tar.gz
+	sha256sums = 105e5d51379e0aa9be7029dce26f8a5f23fd5b15aefb31891a07eb432e7e6434
+
+pkgname = ros-melodic-roswtf
+
