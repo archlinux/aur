@@ -10,7 +10,7 @@ _alteradir="/opt/altera"
 
 depends=('quartus-standard')
 
-source=("http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/cyclonev-${pkgver}" )
+source=("http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/stratixv-${pkgver}.qdz" )
 md5sums=('SKIP')
 options=('!strip' '!upx') # No need for device support
 PKGEXT=".pkg.tar" # Do not compress
