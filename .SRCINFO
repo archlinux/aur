@@ -1,0 +1,21 @@
+pkgbase = quartus-standard-programmer
+	pkgdesc = Quartus Prime Programmer and Tools
+	pkgver = 17.1.1.593
+	pkgrel = 1
+	url = http://dl.altera.com/?edition=standard
+	install = quartus.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !upx
+	source = http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/ib_installers/QuartusProgrammerSetup-17.1.1.593-linux.run
+	source = http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/QuartusProgrammerSetup-17.1.0.590-linux.run
+	source = 51-usbblaster.rules
+	source = quartus.install
+	sha256sums = c816847e72753c8fd625361d26ba269f88ad6f5ed4a613d43e9871373faf05a6
+	sha256sums = 69975a8f1530378b45de871f0677818d35f61237c936753cb660a939bc70a12c
+	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
+	sha256sums = 0e815b138bcec2d1f9c6aa498d2f56cc131417119af19016a2019173da526d9b
+
+pkgname = quartus-standard-programmer
+
