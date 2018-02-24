@@ -1,8 +1,9 @@
-# Maintainer: dmerej <d.merej@gmail.com>
+# Maintainer: Barry <brrtsm at gnmail .com>
+# Contributor: dmerej <d.merej@gmail.com>
 
 pkgname=hollywood
-pkgver=1.7
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
@@ -38,17 +39,19 @@ source=(
 )
 
 md5sums=(
-  'a8fea084ecf1027abef75858033a6e81'
-  '743f21cddd30929ab744480e53123c41'
+  '457c69f0f3ae790bf0c868477d36425f'
+  'cc4ce13f8e8d31252db5a0750bb538f6'
   '65d3616852dbf7b1a6d4b53b00626032'
 )
 
 package() {
   # Install files
-  install -dm0755 "$pkgdir/"{usr/bin,usr/lib/hollywood,usr/share/{licenses/hollywood,man/man1,hollywood}}
+  install -dm0755 "$pkgdir/"{usr/bin,usr/lib/{hollywood,wallstreet},usr/share/{licenses/hollywood,man/man1,hollywood,wallstreet}}
   install -m 0755 "$srcdir/$pkgname-$pkgver/bin/"*  "$pkgdir/usr/bin"
   install -m 0755 "$srcdir/$pkgname-$pkgver/lib/hollywood/"* "$pkgdir/usr/lib/hollywood"
+  install -m 0755 "$srcdir/$pkgname-$pkgver/lib/wallstreet/"* "$pkgdir/usr/lib/wallstreet"
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/hollywood/"*  "$pkgdir/usr/share/hollywood"
+  install -m 0644 "$srcdir/$pkgname-$pkgver/share/wallstreet/"*  "$pkgdir/usr/share/wallstreet"
   install -m 0644 "$srcdir/$pkgname-$pkgver/"{README,ChangeLog}  "$pkgdir/usr/share/hollywood"
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/man/man1/"*  "$pkgdir/usr/share/man/man1"
   # copyright and license

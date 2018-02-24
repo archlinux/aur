@@ -1,7 +1,7 @@
 pkgbase = hollywood
 	pkgdesc = Fill your console with Hollywood melodrama technobabble.
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 1.14
+	pkgrel = 1
 	url = https://launchpad.net/hollywood
 	arch = any
 	license = Apache
@@ -23,11 +23,11 @@ pkgbase = hollywood
 	depends = tree
 	depends = speedometer
 	depends = util-linux
-	source = hollywood-1.7.tar.gz::https://launchpad.net/hollywood/trunk/1.7/+download/hollywood_1.7.orig.tar.gz
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/hollywood_1.7-0ubuntu1.debian.tar.xz
+	source = hollywood-1.14.tar.gz::https://launchpad.net/hollywood/trunk/1.14/+download/hollywood_1.14.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/hollywood_1.14-0ubuntu1.debian.tar.xz
 	source = license.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
-	md5sums = a8fea084ecf1027abef75858033a6e81
-	md5sums = 743f21cddd30929ab744480e53123c41
+	md5sums = 457c69f0f3ae790bf0c868477d36425f
+	md5sums = cc4ce13f8e8d31252db5a0750bb538f6
 	md5sums = 65d3616852dbf7b1a6d4b53b00626032
 
 pkgname = hollywood
