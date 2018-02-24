@@ -2,7 +2,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 pkgname=slepc
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
