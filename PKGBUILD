@@ -1,33 +1,43 @@
-#Contributor: marauder <abhinav.kssk@gmail.com>
+# Maintainer: Tim Rakowski <tim.rakowski@gmail.com>
+# Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Ignition Message protobuf messages and functions for robot applications"
+pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
 license=('Apache')
 groups=('development')
-depends=('protobuf' 'protobuf-c' 'ignition-math>=3')
-makedepends=('cmake' 'ruby-ronn' 'pkg-config>=0.28' 'doxygen')
+depends=('protobuf' 'protobuf-c' 'ignition-math' 'ignition-tools')
+makedepends=('ignition-cmake' 'ruby-ronn' 'pkg-config>=0.28' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('b62b1fc22592d45fd189c13ef6696c22a34c5755f3ff2fb1a62488adaf361a0d')
+sha256sums=('d5922f9f160aebc6fb1d6de32054e17c9493a6995ea0f1f3a56ba6448c3040ab')
 
-_dir="ignitionrobotics-ign-msgs-b5ed20ac644a"
+_dir="ignitionrobotics-ign-msgs-9ba6a3e1c418"
 
-prepare() {
+build() {
   cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib"
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DBUILD_TESTING:BOOL=False
+  make
 }
 
-build() {
-  cd "${srcdir}/${_dir}/build"
+check() {
+  cd "$srcdir/$_dir/build"
+
+  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DBUILD_TESTING:BOOL=True
+
   make
+  make test
 }
 
 package() {
