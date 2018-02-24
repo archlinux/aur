@@ -1,0 +1,1150 @@
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/CHANGELOG.rst patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/CHANGELOG.rst
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/CHANGELOG.rst	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/CHANGELOG.rst	2018-02-24 21:54:36.229427212 +0100
+@@ -2,6 +2,17 @@
+ Changelog for package gazebo_plugins
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
++2.7.4 (2018-02-12)
++------------------
++* Adding velocity to joint state publisher gazebo plugin (`#671 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/671>`_)
++* Fix last gazebo8 warnings! (lunar-devel) (`#664 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/664>`_)
++* Fix gazebo8 warnings part 7: retry `#642 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/642>`_ on lunar (`#660 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/660>`_)
++* gazebo8 warnings: ifdefs for Get.*Vel() (`#655 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/655>`_)
++* Fix gazebo8 warnings part 8: ifdef's for GetWorldPose (lunar-devel) (`#652 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/652>`_)
++* for gazebo8+, call functions without Get (`#640 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/640>`_)
++* Fix conflict (`#647 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/647>`_)
++* Contributors: Jose Luis Rivero, Steven Peters
++
+ 2.7.3 (2017-12-11)
+ ------------------
+ * Fix gazebo8 warnings part 4: convert remaining local variables in plugins to ign-math (lunar-devel) (`#634 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/634>`_)
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/package.xml patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/package.xml
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/package.xml	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/package.xml	2018-02-24 21:54:36.229427212 +0100
+@@ -1,7 +1,7 @@
+ <?xml version="1.0"?>
+ <package format="2">
+   <name>gazebo_plugins</name>
+-  <version>2.7.3</version>
++  <version>2.7.4</version>
+   <description>
+     Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
+   </description>
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_block_laser.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_block_laser.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_block_laser.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_block_laser.cpp	2018-02-24 21:54:36.229427212 +0100
+@@ -82,7 +82,11 @@
+   std::string worldName = _parent->WorldName();
+   this->world_ = physics::get_world(worldName);
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  last_update_time_ = this->world_->SimTime();
++#else
+   last_update_time_ = this->world_->GetSimTime();
++#endif
+ 
+   this->node_ = transport::NodePtr(new transport::Node());
+   this->node_->Init(worldName);
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_bumper.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_bumper.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_bumper.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_bumper.cpp	2018-02-24 21:54:36.229427212 +0100
+@@ -157,7 +157,7 @@
+       *Simulator::Instance()->GetMRMutex());
+     // look through all models in the world, search for body
+     // name that matches frameName
+-    phyaics::Model_V all_models = World::Instance()->GetModels();
++    physics::Model_V all_models = World::Instance()->Models();
+     for (physics::Model_V::iterator iter = all_models.begin();
+       iter != all_models.end(); iter++)
+     {
+@@ -183,9 +183,9 @@
+   /*
+   if (myFrame)
+   {
+-    frame_pose = myFrame->GetWorldPose();  //-this->myBody->GetCoMPose();
+-    frame_pos = frame_pose.pos;
+-    frame_rot = frame_pose.rot;
++    frame_pose = myFrame->WorldPose();  //-this->myBody->GetCoMPose();
++    frame_pos = frame_pose.Pos();
++    frame_rot = frame_pose.Rot();
+   }
+   else
+   */
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_diff_drive.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_diff_drive.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_diff_drive.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_diff_drive.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -115,13 +115,8 @@
+     joints_.resize ( 2 );
+     joints_[LEFT] = gazebo_ros_->getJoint ( parent, "leftJoint", "left_joint" );
+     joints_[RIGHT] = gazebo_ros_->getJoint ( parent, "rightJoint", "right_joint" );
+-#if GAZEBO_MAJOR_VERSION > 2
+     joints_[LEFT]->SetParam ( "fmax", 0, wheel_torque );
+     joints_[RIGHT]->SetParam ( "fmax", 0, wheel_torque );
+-#else
+-    joints_[LEFT]->SetMaxForce ( 0, wheel_torque );
+-    joints_[RIGHT]->SetMaxForce ( 0, wheel_torque );
+-#endif
+ 
+ 
+ 
+@@ -136,7 +131,11 @@
+     // Initialize update rate stuff
+     if ( this->update_rate_ > 0.0 ) this->update_period_ = 1.0 / this->update_rate_;
+     else this->update_period_ = 0.0;
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_update_time_ = parent->GetWorld()->SimTime();
++#else
+     last_update_time_ = parent->GetWorld()->GetSimTime();
++#endif
+ 
+     // Initialize velocity stuff
+     wheel_speed_[RIGHT] = 0;
+@@ -188,19 +187,18 @@
+ 
+ void GazeboRosDiffDrive::Reset()
+ {
++#if GAZEBO_MAJOR_VERSION >= 8
++  last_update_time_ = parent->GetWorld()->SimTime();
++#else
+   last_update_time_ = parent->GetWorld()->GetSimTime();
++#endif
+   pose_encoder_.x = 0;
+   pose_encoder_.y = 0;
+   pose_encoder_.theta = 0;
+   x_ = 0;
+   rot_ = 0;
+-#if GAZEBO_MAJOR_VERSION > 2
+   joints_[LEFT]->SetParam ( "fmax", 0, wheel_torque );
+   joints_[RIGHT]->SetParam ( "fmax", 0, wheel_torque );
+-#else
+-  joints_[LEFT]->SetMaxForce ( 0, wheel_torque );
+-  joints_[RIGHT]->SetMaxForce ( 0, wheel_torque );
+-#endif
+ }
+ 
+ void GazeboRosDiffDrive::publishWheelJointState()
+@@ -213,9 +211,13 @@
+ 
+     for ( int i = 0; i < 2; i++ ) {
+         physics::JointPtr joint = joints_[i];
+-        ignition::math::Angle angle = joint->GetAngle ( 0 ).Ign();
++#if GAZEBO_MAJOR_VERSION >= 8
++        double position = joint->Position ( 0 );
++#else
++        double position = joint->GetAngle ( 0 ).Radian();
++#endif
+         joint_state_.name[i] = joint->GetName();
+-        joint_state_.position[i] = angle.Radian () ;
++        joint_state_.position[i] = position;
+     }
+     joint_state_publisher_.publish ( joint_state_ );
+ }
+@@ -228,7 +230,11 @@
+         std::string wheel_frame = gazebo_ros_->resolveTF(joints_[i]->GetChild()->GetName ());
+         std::string wheel_parent_frame = gazebo_ros_->resolveTF(joints_[i]->GetParent()->GetName ());
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d poseWheel = joints_[i]->GetChild()->RelativePose();
++#else
+         ignition::math::Pose3d poseWheel = joints_[i]->GetChild()->GetRelativePose().Ign();
++#endif
+ 
+         tf::Quaternion qt ( poseWheel.Rot().X(), poseWheel.Rot().Y(), poseWheel.Rot().Z(), poseWheel.Rot().W() );
+         tf::Vector3 vt ( poseWheel.Pos().X(), poseWheel.Pos().Y(), poseWheel.Pos().Z() );
+@@ -250,19 +256,18 @@
+        (this seems to be solved in https://bitbucket.org/osrf/gazebo/commits/ec8801d8683160eccae22c74bf865d59fac81f1e)
+     */
+     for ( int i = 0; i < 2; i++ ) {
+-#if GAZEBO_MAJOR_VERSION > 2
+       if ( fabs(wheel_torque -joints_[i]->GetParam ( "fmax", 0 )) > 1e-6 ) {
+         joints_[i]->SetParam ( "fmax", 0, wheel_torque );
+-#else
+-      if ( fabs(wheel_torque -joints_[i]->GetMaxForce ( 0 )) > 1e-6 ) {
+-        joints_[i]->SetMaxForce ( 0, wheel_torque );
+-#endif
+       }
+     }
+ 
+ 
+     if ( odom_source_ == ENCODER ) UpdateOdometryEncoder();
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = parent->GetWorld()->SimTime();
++#else
+     common::Time current_time = parent->GetWorld()->GetSimTime();
++#endif
+     double seconds_since_last_update = ( current_time - last_update_time_ ).Double();
+ 
+     if ( seconds_since_last_update > update_period_ ) {
+@@ -282,13 +287,8 @@
+                 ( fabs ( wheel_speed_[LEFT] - current_speed[LEFT] ) < 0.01 ) ||
+                 ( fabs ( wheel_speed_[RIGHT] - current_speed[RIGHT] ) < 0.01 ) ) {
+             //if max_accel == 0, or target speed is reached
+-#if GAZEBO_MAJOR_VERSION > 2
+             joints_[LEFT]->SetParam ( "vel", 0, wheel_speed_[LEFT]/ ( wheel_diameter_ / 2.0 ) );
+             joints_[RIGHT]->SetParam ( "vel", 0, wheel_speed_[RIGHT]/ ( wheel_diameter_ / 2.0 ) );
+-#else
+-            joints_[LEFT]->SetVelocity ( 0, wheel_speed_[LEFT]/ ( wheel_diameter_ / 2.0 ) );
+-            joints_[RIGHT]->SetVelocity ( 0, wheel_speed_[RIGHT]/ ( wheel_diameter_ / 2.0 ) );
+-#endif
+         } else {
+             if ( wheel_speed_[LEFT]>=current_speed[LEFT] )
+                 wheel_speed_instr_[LEFT]+=fmin ( wheel_speed_[LEFT]-current_speed[LEFT],  wheel_accel * seconds_since_last_update );
+@@ -303,13 +303,8 @@
+             // ROS_INFO_NAMED("diff_drive", "actual wheel speed = %lf, issued wheel speed= %lf", current_speed[LEFT], wheel_speed_[LEFT]);
+             // ROS_INFO_NAMED("diff_drive", "actual wheel speed = %lf, issued wheel speed= %lf", current_speed[RIGHT],wheel_speed_[RIGHT]);
+ 
+-#if GAZEBO_MAJOR_VERSION > 2
+             joints_[LEFT]->SetParam ( "vel", 0, wheel_speed_instr_[LEFT] / ( wheel_diameter_ / 2.0 ) );
+             joints_[RIGHT]->SetParam ( "vel", 0, wheel_speed_instr_[RIGHT] / ( wheel_diameter_ / 2.0 ) );
+-#else
+-            joints_[LEFT]->SetVelocity ( 0,wheel_speed_instr_[LEFT] / ( wheel_diameter_ / 2.0 ) );
+-            joints_[RIGHT]->SetVelocity ( 0,wheel_speed_instr_[RIGHT] / ( wheel_diameter_ / 2.0 ) );
+-#endif
+         }
+         last_update_time_+= common::Time ( update_period_ );
+     }
+@@ -364,7 +359,11 @@
+ {
+     double vl = joints_[LEFT]->GetVelocity ( 0 );
+     double vr = joints_[RIGHT]->GetVelocity ( 0 );
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = parent->GetWorld()->SimTime();
++#else
+     common::Time current_time = parent->GetWorld()->GetSimTime();
++#endif
+     double seconds_since_last_update = ( current_time - last_odom_update_ ).Double();
+     last_odom_update_ = current_time;
+ 
+@@ -433,8 +432,12 @@
+ 
+     }
+     if ( odom_source_ == WORLD ) {
+-        // getting data form gazebo world
++        // getting data from gazebo world
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d pose = parent->WorldPose();
++#else
+         ignition::math::Pose3d pose = parent->GetWorldPose().Ign();
++#endif
+         qt = tf::Quaternion ( pose.Rot().X(), pose.Rot().Y(), pose.Rot().Z(), pose.Rot().W() );
+         vt = tf::Vector3 ( pose.Pos().X(), pose.Pos().Y(), pose.Pos().Z() );
+ 
+@@ -449,8 +452,13 @@
+ 
+         // get velocity in /odom frame
+         ignition::math::Vector3d linear;
++#if GAZEBO_MAJOR_VERSION >= 8
++        linear = parent->WorldLinearVel();
++        odom_.twist.twist.angular.z = parent->WorldAngularVel().Z();
++#else
+         linear = parent->GetWorldLinearVel().Ign();
+         odom_.twist.twist.angular.z = parent->GetWorldAngularVel().Ign().Z();
++#endif
+ 
+         // convert velocity to child_frame_id (aka base_footprint)
+         float yaw = pose.Rot().Yaw();
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_f3d.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_f3d.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_f3d.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_f3d.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -152,17 +152,25 @@
+   ignition::math::Vector3d torque;
+   ignition::math::Vector3d force;
+ 
+-  // get force on body
++  // get force and torque on body
++#if GAZEBO_MAJOR_VERSION >= 8
++  force = this->link_->WorldForce();
++  torque = this->link_->WorldTorque();
++#else
+   force = this->link_->GetWorldForce().Ign();
+-
+-  // get torque on body
+   torque = this->link_->GetWorldTorque().Ign();
++#endif
+ 
+   this->lock_.lock();
+   // copy data into wrench message
+   this->wrench_msg_.header.frame_id = this->frame_name_;
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->wrench_msg_.header.stamp.sec = (this->world_->SimTime()).sec;
++  this->wrench_msg_.header.stamp.nsec = (this->world_->SimTime()).nsec;
++#else
+   this->wrench_msg_.header.stamp.sec = (this->world_->GetSimTime()).sec;
+   this->wrench_msg_.header.stamp.nsec = (this->world_->GetSimTime()).nsec;
++#endif
+ 
+   this->wrench_msg_.wrench.force.x    = force.X();
+   this->wrench_msg_.wrench.force.y    = force.Y();
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_ft_sensor.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_ft_sensor.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_ft_sensor.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_ft_sensor.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -157,7 +157,11 @@
+ // Update the controller
+ void GazeboRosFT::UpdateChild()
+ {
++#if GAZEBO_MAJOR_VERSION >= 8
++  common::Time cur_time = this->world_->SimTime();
++#else
+   common::Time cur_time = this->world_->GetSimTime();
++#endif
+ 
+   // rate control
+   if (this->update_rate_ > 0 &&
+@@ -189,8 +193,13 @@
+   this->lock_.lock();
+   // copy data into wrench message
+   this->wrench_msg_.header.frame_id = this->frame_name_;
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->wrench_msg_.header.stamp.sec = (this->world_->SimTime()).sec;
++  this->wrench_msg_.header.stamp.nsec = (this->world_->SimTime()).nsec;
++#else
+   this->wrench_msg_.header.stamp.sec = (this->world_->GetSimTime()).sec;
+   this->wrench_msg_.header.stamp.nsec = (this->world_->GetSimTime()).nsec;
++#endif
+ 
+   this->wrench_msg_.wrench.force.x = force.X() + this->GaussianKernel(0, this->gaussian_noise_);
+   this->wrench_msg_.wrench.force.y = force.Y() + this->GaussianKernel(0, this->gaussian_noise_);
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_hand_of_god.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_hand_of_god.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_hand_of_god.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_hand_of_god.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -115,8 +115,13 @@
+       return;
+     }
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++    cl_ = 2.0 * sqrt(kl_*floating_link_->GetInertial()->Mass());
++    ca_ = 2.0 * sqrt(ka_*floating_link_->GetInertial()->IXX());
++#else
+     cl_ = 2.0 * sqrt(kl_*floating_link_->GetInertial()->GetMass());
+     ca_ = 2.0 * sqrt(ka_*floating_link_->GetInertial()->GetIXX());
++#endif
+ 
+     // Create the TF listener for the desired position of the hog
+     tf_buffer_.reset(new tf2_ros::Buffer());
+@@ -154,7 +159,15 @@
+         ignition::math::Quaterniond(q.w, q.x, q.y, q.z));
+ 
+     // Relative transform from actual to desired pose
++#if GAZEBO_MAJOR_VERSION >= 8
++    ignition::math::Pose3d world_pose = floating_link_->DirtyPose();
++    ignition::math::Vector3d worldLinearVel = floating_link_->WorldLinearVel();
++    ignition::math::Vector3d relativeAngularVel = floating_link_->RelativeAngularVel();
++#else
+     ignition::math::Pose3d world_pose = floating_link_->GetDirtyPose().Ign();
++    ignition::math::Vector3d worldLinearVel = floating_link_->GetWorldLinearVel().Ign();
++    ignition::math::Vector3d relativeAngularVel = floating_link_->GetRelativeAngularVel().Ign();
++#endif
+     ignition::math::Vector3d err_pos = hog_desired.Pos() - world_pose.Pos();
+     // Get exponential coordinates for rotation
+     ignition::math::Quaterniond err_rot =  (ignition::math::Matrix4d(world_pose.Rot()).Inverse()
+@@ -162,11 +175,11 @@
+     ignition::math::Quaterniond not_a_quaternion = err_rot.Log();
+ 
+     floating_link_->AddForce(
+-        kl_ * err_pos - cl_ * floating_link_->GetWorldLinearVel().Ign());
++        kl_ * err_pos - cl_ * worldLinearVel);
+ 
+     floating_link_->AddRelativeTorque(
+         ka_ * ignition::math::Vector3d(not_a_quaternion.X(), not_a_quaternion.Y(), not_a_quaternion.Z())
+-      - ca_ * floating_link_->GetRelativeAngularVel().Ign());
++      - ca_ * relativeAngularVel);
+ 
+     // Convert actual pose to TransformStamped message
+     geometry_msgs::TransformStamped hog_actual_tform;
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_imu.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_imu.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_imu.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_imu.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -147,7 +147,11 @@
+ 
+   // assert that the body by link_name_ exists
+   this->link = boost::dynamic_pointer_cast<physics::Link>(
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->world_->EntityByName(this->link_name_));
++#else
+     this->world_->GetEntity(this->link_name_));
++#endif
+   if (!this->link)
+   {
+     ROS_FATAL_NAMED("imu", "gazebo_ros_imu plugin error: bodyName: %s does not exist\n",
+@@ -171,11 +175,20 @@
+   }
+ 
+   // Initialize the controller
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_time_ = this->world_->SimTime();
++#else
+   this->last_time_ = this->world_->GetSimTime();
++#endif
+ 
+   // this->initial_pose_ = this->link->GetPose();
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_vpos_ = this->link->WorldLinearVel();
++  this->last_veul_ = this->link->WorldAngularVel();
++#else
+   this->last_vpos_ = this->link->GetWorldLinearVel().Ign();
+   this->last_veul_ = this->link->GetWorldAngularVel().Ign();
++#endif
+   this->apos_ = 0;
+   this->aeul_ = 0;
+ 
+@@ -203,7 +216,11 @@
+ // Update the controller
+ void GazeboRosIMU::UpdateChild()
+ {
++#if GAZEBO_MAJOR_VERSION >= 8
++  common::Time cur_time = this->world_->SimTime();
++#else
+   common::Time cur_time = this->world_->GetSimTime();
++#endif
+ 
+   // rate control
+   if (this->update_rate_ > 0 &&
+@@ -217,7 +234,11 @@
+     ignition::math::Vector3d pos;
+ 
+     // Get Pose/Orientation ///@todo: verify correctness
++#if GAZEBO_MAJOR_VERSION >= 8
++    pose = this->link->WorldPose();
++#else
+     pose = this->link->GetWorldPose().Ign();
++#endif
+     // apply xyz offsets and get position and rotation components
+     pos = pose.Pos() + this->offset_.Pos();
+     rot = pose.Rot();
+@@ -227,8 +248,13 @@
+     rot.Normalize();
+ 
+     // get Rates
++#if GAZEBO_MAJOR_VERSION >= 8
++    ignition::math::Vector3d vpos = this->link->WorldLinearVel();
++    ignition::math::Vector3d veul = this->link->WorldAngularVel();
++#else
+     ignition::math::Vector3d vpos = this->link->GetWorldLinearVel().Ign();
+     ignition::math::Vector3d veul = this->link->GetWorldAngularVel().Ign();
++#endif
+ 
+     // differentiate to get accelerations
+     double tmp_dt = this->last_time_.Double() - cur_time.Double();
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_pose_trajectory.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_pose_trajectory.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_pose_trajectory.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_pose_trajectory.cpp	2018-02-24 21:54:36.230427198 +0100
+@@ -143,7 +143,11 @@
+   }
+ #endif
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_time_ = this->world_->SimTime();
++#else
+   this->last_time_ = this->world_->GetSimTime();
++#endif
+ 
+   // start custom queue for joint trajectory plugin ros topics
+   this->callback_queue_thread_ =
+@@ -171,7 +175,11 @@
+       this->reference_link_name_ != "map")
+   {
+     physics::EntityPtr ent =
++#if GAZEBO_MAJOR_VERSION >= 8
++      this->world_->EntityByName(this->reference_link_name_);
++#else
+       this->world_->GetEntity(this->reference_link_name_);
++#endif
+     if (ent)
+       this->reference_link_ = boost::dynamic_pointer_cast<physics::Link>(ent);
+     if (!this->reference_link_)
+@@ -211,7 +219,11 @@
+   // trajectory start time
+   this->trajectory_start = gazebo::common::Time(trajectory->header.stamp.sec,
+                                                 trajectory->header.stamp.nsec);
++#if GAZEBO_MAJOR_VERSION >= 8
++  common::Time cur_time = this->world_->SimTime();
++#else
+   common::Time cur_time = this->world_->GetSimTime();
++#endif
+   if (this->trajectory_start < cur_time)
+     this->trajectory_start = cur_time;
+ 
+@@ -222,8 +234,13 @@
+ 
+   if (this->disable_physics_updates_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->physics_engine_enabled_ = this->world_->PhysicsEnabled();
++    this->world_->SetPhysicsEnabled(false);
++#else
+     this->physics_engine_enabled_ = this->world_->GetEnablePhysicsEngine();
+     this->world_->EnablePhysicsEngine(false);
++#endif
+   }
+ }
+ 
+@@ -245,7 +262,11 @@
+       this->reference_link_name_ != "map")
+   {
+     physics::EntityPtr ent =
++#if GAZEBO_MAJOR_VERSION >= 8
++      this->world_->EntityByName(this->reference_link_name_);
++#else
+       this->world_->GetEntity(this->reference_link_name_);
++#endif
+     if (ent)
+       this->reference_link_ = boost::dynamic_pointer_cast<physics::Link>(ent);
+     if (!this->reference_link_)
+@@ -262,7 +283,11 @@
+                 " inertially", this->reference_link_->GetName().c_str());
+   }
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->model_ =  this->world_->ModelByName(req.model_name);
++#else
+   this->model_ =  this->world_->GetModel(req.model_name);
++#endif
+   if (!this->model_)  // look for it by frame_id name
+   {
+     this->model_ = this->reference_link_->GetParentModel();
+@@ -295,8 +320,13 @@
+   this->disable_physics_updates_ = req.disable_physics_updates;
+   if (this->disable_physics_updates_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->physics_engine_enabled_ = this->world_->PhysicsEnabled();
++    this->world_->SetPhysicsEnabled(false);
++#else
+     this->physics_engine_enabled_ = this->world_->GetEnablePhysicsEngine();
+     this->world_->EnablePhysicsEngine(false);
++#endif
+   }
+ 
+   return true;
+@@ -310,7 +340,11 @@
+   boost::mutex::scoped_lock lock(this->update_mutex);
+   if (this->has_trajectory_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time cur_time = this->world_->SimTime();
++#else
+     common::Time cur_time = this->world_->GetSimTime();
++#endif
+     // roll out trajectory via set model configuration
+     // gzerr << "i[" << trajectory_index  << "] time "
+     //       << trajectory_start << " now: " << cur_time << " : "<< "\n";
+@@ -325,10 +359,18 @@
+           cur_time.Double(), this->trajectory_index, this->points_.size());
+ 
+         // get reference link pose before updates
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d reference_pose = this->model_->WorldPose();
++#else
+         ignition::math::Pose3d reference_pose = this->model_->GetWorldPose().Ign();
++#endif
+         if (this->reference_link_)
+         {
++#if GAZEBO_MAJOR_VERSION >= 8
++          reference_pose = this->reference_link_->WorldPose();
++#else
+           reference_pose = this->reference_link_->GetWorldPose().Ign();
++#endif
+         }
+ 
+         // trajectory roll-out based on time:
+@@ -380,7 +422,13 @@
+         this->reference_link_.reset();
+         this->has_trajectory_ = false;
+         if (this->disable_physics_updates_)
++        {
++#if GAZEBO_MAJOR_VERSION >= 8
++          this->world_->SetPhysicsEnabled(this->physics_engine_enabled_);
++#else
+           this->world_->EnablePhysicsEngine(this->physics_engine_enabled_);
++#endif
++        }
+       }
+     }
+   }
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_state_publisher.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_state_publisher.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_state_publisher.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_state_publisher.cpp	2018-02-24 21:54:36.231427186 +0100
+@@ -78,7 +78,11 @@
+     } else {
+         this->update_period_ = 0.0;
+     }
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_update_time_ = this->world_->SimTime();
++#else
+     last_update_time_ = this->world_->GetSimTime();
++#endif
+ 
+     for ( unsigned int i = 0; i< joint_names_.size(); i++ ) {
+         physics::JointPtr joint = this->parent_->GetJoint(joint_names_[i]);
+@@ -94,7 +98,11 @@
+     tf_prefix_ = tf::getPrefixParam ( *rosnode_ );
+     joint_state_publisher_ = rosnode_->advertise<sensor_msgs::JointState> ( "joint_states",1000 );
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_update_time_ = this->world_->SimTime();
++#else
+     last_update_time_ = this->world_->GetSimTime();
++#endif
+     // Listen to the update event. This event is broadcast every
+     // simulation iteration.
+     this->updateConnection = event::Events::ConnectWorldUpdateBegin (
+@@ -103,7 +111,11 @@
+ 
+ void GazeboRosJointStatePublisher::OnUpdate ( const common::UpdateInfo & _info ) {
+     // Apply a small linear velocity to the model.
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = this->world_->SimTime();
++#else
+     common::Time current_time = this->world_->GetSimTime();
++#endif
+     double seconds_since_last_update = ( current_time - last_update_time_ ).Double();
+     if ( seconds_since_last_update > update_period_ ) {
+ 
+@@ -121,12 +133,19 @@
+     joint_state_.header.stamp = current_time;
+     joint_state_.name.resize ( joints_.size() );
+     joint_state_.position.resize ( joints_.size() );
++    joint_state_.velocity.resize ( joints_.size() );
+ 
+     for ( int i = 0; i < joints_.size(); i++ ) {
+         physics::JointPtr joint = joints_[i];
+-        ignition::math::Angle angle = joint->GetAngle ( 0 ).Ign();
++        double velocity = joint->GetVelocity( 0 );
++#if GAZEBO_MAJOR_VERSION >= 8
++        double position = joint->Position ( 0 );
++#else
++        double position = joint->GetAngle ( 0 ).Radian();
++#endif
+         joint_state_.name[i] = joint->GetName();
+-        joint_state_.position[i] = angle.Radian () ;
++        joint_state_.position[i] = position;
++        joint_state_.velocity[i] = velocity;
+     }
+     joint_state_publisher_.publish ( joint_state_ );
+ }
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_trajectory.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_trajectory.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_trajectory.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_joint_trajectory.cpp	2018-02-24 21:54:36.231427186 +0100
+@@ -145,7 +145,11 @@
+   }
+ #endif
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_time_ = this->world_->SimTime();
++#else
+   this->last_time_ = this->world_->GetSimTime();
++#endif
+ 
+   // start custom queue for joint trajectory plugin ros topics
+   this->callback_queue_thread_ =
+@@ -173,7 +177,11 @@
+       this->reference_link_name_ != "map")
+   {
+     physics::EntityPtr ent =
++#if GAZEBO_MAJOR_VERSION >= 8
++      this->world_->EntityByName(this->reference_link_name_);
++#else
+       this->world_->GetEntity(this->reference_link_name_);
++#endif
+     if (ent)
+       this->reference_link_ = boost::dynamic_pointer_cast<physics::Link>(ent);
+     if (!this->reference_link_)
+@@ -213,7 +221,11 @@
+   // trajectory start time
+   this->trajectory_start = gazebo::common::Time(trajectory->header.stamp.sec,
+                                                 trajectory->header.stamp.nsec);
++#if GAZEBO_MAJOR_VERSION >= 8
++  common::Time cur_time = this->world_->SimTime();
++#else
+   common::Time cur_time = this->world_->GetSimTime();
++#endif
+   if (this->trajectory_start < cur_time)
+     this->trajectory_start = cur_time;
+ 
+@@ -224,8 +236,13 @@
+ 
+   if (this->disable_physics_updates_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->physics_engine_enabled_ = this->world_->PhysicsEnabled();
++    this->world_->SetPhysicsEnabled(false);
++#else
+     this->physics_engine_enabled_ = this->world_->GetEnablePhysicsEngine();
+     this->world_->EnablePhysicsEngine(false);
++#endif
+   }
+ }
+ 
+@@ -247,7 +264,11 @@
+       this->reference_link_name_ != "map")
+   {
+     physics::EntityPtr ent =
++#if GAZEBO_MAJOR_VERSION >= 8
++      this->world_->EntityByName(this->reference_link_name_);
++#else
+       this->world_->GetEntity(this->reference_link_name_);
++#endif
+     if (ent)
+       this->reference_link_ = boost::shared_dynamic_cast<physics::Link>(ent);
+     if (!this->reference_link_)
+@@ -264,7 +285,11 @@
+                 " inertially", this->reference_link_->GetName().c_str());
+   }
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->model_ =  this->world_->ModelByName(req.model_name);
++#else
+   this->model_ =  this->world_->GetModel(req.model_name);
++#endif
+   if (!this->model_)  // look for it by frame_id name
+   {
+     this->model_ = this->reference_link_->GetParentModel();
+@@ -297,8 +322,13 @@
+   this->disable_physics_updates_ = req.disable_physics_updates;
+   if (this->disable_physics_updates_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->physics_engine_enabled_ = this->world_->PhysicsEnabled();
++    this->world_->SetPhysicsEnabled(false);
++#else
+     this->physics_engine_enabled_ = this->world_->GetEnablePhysicsEngine();
+     this->world_->EnablePhysicsEngine(false);
++#endif
+   }
+ 
+   return true;
+@@ -312,7 +342,11 @@
+   boost::mutex::scoped_lock lock(this->update_mutex);
+   if (this->has_trajectory_)
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time cur_time = this->world_->SimTime();
++#else
+     common::Time cur_time = this->world_->GetSimTime();
++#endif
+     // roll out trajectory via set model configuration
+     // gzerr << "i[" << trajectory_index  << "] time "
+     //       << trajectory_start << " now: " << cur_time << " : "<< "\n";
+@@ -327,10 +361,18 @@
+           cur_time.Double(), this->trajectory_index, this->points_.size());
+ 
+         // get reference link pose before updates
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d reference_pose = this->model_->WorldPose();
++#else
+         ignition::math::Pose3d reference_pose = this->model_->GetWorldPose().Ign();
++#endif
+         if (this->reference_link_)
+         {
++#if GAZEBO_MAJOR_VERSION >= 8
++          reference_pose = this->reference_link_->WorldPose();
++#else
+           reference_pose = this->reference_link_->GetWorldPose().Ign();
++#endif
+         }
+ 
+         // trajectory roll-out based on time:
+@@ -382,7 +424,13 @@
+         this->reference_link_.reset();
+         this->has_trajectory_ = false;
+         if (this->disable_physics_updates_)
++        {
++#if GAZEBO_MAJOR_VERSION >= 8
++          this->world_->SetPhysicsEnabled(this->physics_engine_enabled_);
++#else
+           this->world_->EnablePhysicsEngine(this->physics_engine_enabled_);
++#endif
++        }
+       }
+     }
+   }
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_openni_kinect.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_openni_kinect.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_openni_kinect.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_openni_kinect.cpp	2018-02-24 21:54:36.231427186 +0100
+@@ -435,7 +435,11 @@
+   if (this->depth_info_connect_count_ > 0)
+   {
+     this->sensor_update_time_ = this->parentSensor_->LastMeasurementTime();
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time cur_time = this->world_->SimTime();
++#else
+     common::Time cur_time = this->world_->GetSimTime();
++#endif
+     if (this->sensor_update_time_ - this->last_depth_image_camera_info_update_time_ >= this->update_period_)
+     {
+       this->PublishCameraInfo(this->depth_image_camera_info_pub_);
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_p3d.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_p3d.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_p3d.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_p3d.cpp	2018-02-24 21:54:36.231427186 +0100
+@@ -149,10 +149,19 @@
+       this->rosnode_->advertise<nav_msgs::Odometry>(this->topic_name_, 1);
+   }
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_time_ = this->world_->SimTime();
++#else
+   this->last_time_ = this->world_->GetSimTime();
++#endif
+   // initialize body
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->last_vpos_ = this->link_->WorldLinearVel();
++  this->last_veul_ = this->link_->WorldAngularVel();
++#else
+   this->last_vpos_ = this->link_->GetWorldLinearVel().Ign();
+   this->last_veul_ = this->link_->GetWorldAngularVel().Ign();
++#endif
+   this->apos_ = 0;
+   this->aeul_ = 0;
+ 
+@@ -178,8 +187,13 @@
+     ROS_DEBUG_NAMED("p3d", "got body %s", this->reference_link_->GetName().c_str());
+     this->frame_apos_ = 0;
+     this->frame_aeul_ = 0;
++#if GAZEBO_MAJOR_VERSION >= 8
++    this->last_frame_vpos_ = this->reference_link_->WorldLinearVel();
++    this->last_frame_veul_ = this->reference_link_->WorldAngularVel();
++#else
+     this->last_frame_vpos_ = this->reference_link_->GetWorldLinearVel().Ign();
+     this->last_frame_veul_ = this->reference_link_->GetWorldAngularVel().Ign();
++#endif
+   }
+ 
+ 
+@@ -201,7 +215,11 @@
+   if (!this->link_)
+     return;
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++  common::Time cur_time = this->world_->SimTime();
++#else
+   common::Time cur_time = this->world_->GetSimTime();
++#endif
+ 
+   // rate control
+   if (this->update_rate_ > 0 &&
+@@ -230,23 +248,36 @@
+         ignition::math::Vector3d frame_veul;
+ 
+         // get inertial Rates
++        // Get Pose/Orientation
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Vector3d vpos = this->link_->WorldLinearVel();
++        ignition::math::Vector3d veul = this->link_->WorldAngularVel();
++
++        pose = this->link_->WorldPose();
++#else
+         ignition::math::Vector3d vpos = this->link_->GetWorldLinearVel().Ign();
+         ignition::math::Vector3d veul = this->link_->GetWorldAngularVel().Ign();
+ 
+-        // Get Pose/Orientation
+         pose = this->link_->GetWorldPose().Ign();
++#endif
+ 
+         // Apply Reference Frame
+         if (this->reference_link_)
+         {
+-          // convert to relative pose
++          // convert to relative pose, rates
++#if GAZEBO_MAJOR_VERSION >= 8
++          frame_pose = this->reference_link_->WorldPose();
++          frame_vpos = this->reference_link_->WorldLinearVel();
++          frame_veul = this->reference_link_->WorldAngularVel();
++#else
+           frame_pose = this->reference_link_->GetWorldPose().Ign();
++          frame_vpos = this->reference_link_->GetWorldLinearVel().Ign();
++          frame_veul = this->reference_link_->GetWorldAngularVel().Ign();
++#endif
+           pose.Pos() = pose.Pos() - frame_pose.Pos();
+           pose.Pos() = frame_pose.Rot().RotateVectorReverse(pose.Pos());
+           pose.Rot() *= frame_pose.Rot().Inverse();
+-          // convert to relative rates
+-          frame_vpos = this->reference_link_->GetWorldLinearVel().Ign();
+-          frame_veul = this->reference_link_->GetWorldAngularVel().Ign();
++
+           vpos = frame_pose.Rot().RotateVector(vpos - frame_vpos);
+           veul = frame_pose.Rot().RotateVector(veul - frame_veul);
+         }
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_planar_move.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_planar_move.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_planar_move.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_planar_move.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -112,8 +112,16 @@
+       odometry_rate_ = sdf->GetElement("odometryRate")->Get<double>();
+     }
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_odom_publish_time_ = parent_->GetWorld()->SimTime();
++#else
+     last_odom_publish_time_ = parent_->GetWorld()->GetSimTime();
++#endif
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_odom_pose_ = parent_->WorldPose();
++#else
+     last_odom_pose_ = parent_->GetWorldPose().Ign();
++#endif
+     x_ = 0;
+     y_ = 0;
+     rot_ = 0;
+@@ -160,7 +168,11 @@
+   void GazeboRosPlanarMove::UpdateChild()
+   {
+     boost::mutex::scoped_lock scoped_lock(lock);
++#if GAZEBO_MAJOR_VERSION >= 8
++    ignition::math::Pose3d pose = parent_->WorldPose();
++#else
+     ignition::math::Pose3d pose = parent_->GetWorldPose().Ign();
++#endif
+     float yaw = pose.Rot().Yaw();
+     parent_->SetLinearVel(ignition::math::Vector3d(
+           x_ * cosf(yaw) - y_ * sinf(yaw),
+@@ -168,7 +180,11 @@
+           0));
+     parent_->SetAngularVel(ignition::math::Vector3d(0, 0, rot_));
+     if (odometry_rate_ > 0.0) {
++#if GAZEBO_MAJOR_VERSION >= 8
++      common::Time current_time = parent_->GetWorld()->SimTime();
++#else
+       common::Time current_time = parent_->GetWorld()->GetSimTime();
++#endif
+       double seconds_since_last_update =
+         (current_time - last_odom_publish_time_).Double();
+       if (seconds_since_last_update > (1.0 / odometry_rate_)) {
+@@ -214,7 +230,11 @@
+       tf::resolve(tf_prefix_, robot_base_frame_);
+ 
+     // getting data for base_footprint to odom transform
++#if GAZEBO_MAJOR_VERSION >= 8
++    ignition::math::Pose3d pose = this->parent_->WorldPose();
++#else
+     ignition::math::Pose3d pose = this->parent_->GetWorldPose().Ign();
++#endif
+ 
+     tf::Quaternion qt(pose.Rot().X(), pose.Rot().Y(), pose.Rot().Z(), pose.Rot().W());
+     tf::Vector3    vt(pose.Pos().X(), pose.Pos().Y(), pose.Pos().Z());
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_projector.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_projector.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_projector.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_projector.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -82,7 +82,11 @@
+   // Create a new transport node for talking to the projector
+   this->node_.reset(new transport::Node());
+   // Initialize the node with the world name
++#if GAZEBO_MAJOR_VERSION >= 8
++  this->node_->Init(this->world_->Name());
++#else
+   this->node_->Init(this->world_->GetName());
++#endif
+   // Setting projector topic
+   std::string name = std::string("~/") + _parent->GetName() + "/" +
+                       _sdf->Get<std::string>("projector");
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_range.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_range.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_range.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_range.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -243,7 +243,11 @@
+ {
+   if (this->topic_name_ != "")
+   {
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time cur_time = this->world_->SimTime();
++#else
+     common::Time cur_time = this->world_->GetSimTime();
++#endif
+     if (cur_time - this->last_update_time_ >= this->update_period_)
+     {
+       common::Time sensor_update_time =
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_skid_steer_drive.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_skid_steer_drive.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_skid_steer_drive.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_skid_steer_drive.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -232,7 +232,11 @@
+     } else {
+       this->update_period_ = 0.0;
+     }
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_update_time_ = this->world->SimTime();
++#else
+     last_update_time_ = this->world->GetSimTime();
++#endif
+ 
+     // Initialize velocity stuff
+     wheel_speed_[RIGHT_FRONT] = 0;
+@@ -331,7 +335,11 @@
+ 
+   // Update the controller
+   void GazeboRosSkidSteerDrive::UpdateChild() {
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = this->world->SimTime();
++#else
+     common::Time current_time = this->world->GetSimTime();
++#endif
+     double seconds_since_last_update =
+       (current_time - last_update_time_).Double();
+     if (seconds_since_last_update > update_period_) {
+@@ -405,7 +413,11 @@
+ 
+     // TODO create some non-perfect odometry!
+     // getting data for base_footprint to odom transform
++#if GAZEBO_MAJOR_VERSION >= 8
++    ignition::math::Pose3d pose = this->parent->WorldPose();
++#else
+     ignition::math::Pose3d pose = this->parent->GetWorldPose().Ign();
++#endif
+ 
+     tf::Quaternion qt(pose.Rot().X(), pose.Rot().Y(), pose.Rot().Z(), pose.Rot().W());
+     tf::Vector3 vt(pose.Pos().X(), pose.Pos().Y(), pose.Pos().Z());
+@@ -436,8 +448,13 @@
+ 
+     // get velocity in /odom frame
+     ignition::math::Vector3d linear;
++#if GAZEBO_MAJOR_VERSION >= 8
++    linear = this->parent->WorldLinearVel();
++    odom_.twist.twist.angular.z = this->parent->WorldAngularVel().Z();
++#else
+     linear = this->parent->GetWorldLinearVel().Ign();
+     odom_.twist.twist.angular.z = this->parent->GetWorldAngularVel().Ign().Z();
++#endif
+ 
+     // convert velocity to child_frame_id (aka base_footprint)
+     float yaw = pose.Rot().Yaw();
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_tricycle_drive.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_tricycle_drive.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_tricycle_drive.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_tricycle_drive.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -116,7 +116,11 @@
+     // Initialize update rate stuff
+     if ( this->update_rate_ > 0.0 ) this->update_period_ = 1.0 / this->update_rate_;
+     else this->update_period_ = 0.0;
++#if GAZEBO_MAJOR_VERSION >= 8
++    last_actuator_update_ = parent->GetWorld()->SimTime();
++#else
+     last_actuator_update_ = parent->GetWorld()->GetSimTime();
++#endif
+ 
+     // Initialize velocity stuff
+     alive_ = true;
+@@ -166,7 +170,11 @@
+     joint_state_.effort.resize ( joints.size() );
+     for ( std::size_t i = 0; i < joints.size(); i++ ) {
+         joint_state_.name[i] = joints[i]->GetName();
++#if GAZEBO_MAJOR_VERSION >= 8
++        joint_state_.position[i] = joints[i]->Position ( 0 );
++#else
+         joint_state_.position[i] = joints[i]->GetAngle ( 0 ).Radian();
++#endif
+         joint_state_.velocity[i] = joints[i]->GetVelocity ( 0 );
+         joint_state_.effort[i] = joints[i]->GetForce ( 0 );
+     }
+@@ -185,7 +193,11 @@
+         std::string frame = gazebo_ros_->resolveTF ( joints[i]->GetName() );
+         std::string parent_frame = gazebo_ros_->resolveTF ( joints[i]->GetParent()->GetName() );
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d pose = joints[i]->GetChild()->RelativePose();
++#else
+         ignition::math::Pose3d pose = joints[i]->GetChild()->GetRelativePose().Ign();
++#endif
+ 
+         tf::Quaternion qt ( pose.Rot().X(), pose.Rot().Y(), pose.Rot().Z(), pose.Rot().W() );
+         tf::Vector3 vt ( pose.Pos().X(), pose.Pos().Y(), pose.Pos().Z() );
+@@ -199,7 +211,11 @@
+ void GazeboRosTricycleDrive::UpdateChild()
+ {
+     if ( odom_source_ == ENCODER ) UpdateOdometryEncoder();
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = parent->GetWorld()->SimTime();
++#else
+     common::Time current_time = parent->GetWorld()->GetSimTime();
++#endif
+     double seconds_since_last_update = ( current_time - last_actuator_update_ ).Double();
+     if ( seconds_since_last_update > update_period_ ) {
+ 
+@@ -246,7 +262,11 @@
+     }
+     joint_wheel_actuated_->SetParam ( "vel", 0, applied_speed );
+ 
++#if GAZEBO_MAJOR_VERSION >= 8
++    double current_angle = joint_steering_->Position ( 0 );
++#else
+     double current_angle = joint_steering_->GetAngle ( 0 ).Radian();
++#endif
+ 
+     // truncate target angle
+     if (target_angle > +M_PI / 2.0)
+@@ -333,7 +353,11 @@
+ {
+     double vl = joint_wheel_encoder_left_->GetVelocity ( 0 );
+     double vr = joint_wheel_encoder_right_->GetVelocity ( 0 );
++#if GAZEBO_MAJOR_VERSION >= 8
++    common::Time current_time = parent->GetWorld()->SimTime();
++#else
+     common::Time current_time = parent->GetWorld()->GetSimTime();
++#endif
+     double seconds_since_last_update = ( current_time - last_odom_update_ ).Double();
+     last_odom_update_ = current_time;
+ 
+@@ -393,7 +417,11 @@
+     }
+     if ( odom_source_ == WORLD ) {
+         // getting data form gazebo world
++#if GAZEBO_MAJOR_VERSION >= 8
++        ignition::math::Pose3d pose = parent->WorldPose();
++#else
+         ignition::math::Pose3d pose = parent->GetWorldPose().Ign();
++#endif
+         qt = tf::Quaternion ( pose.Rot().X(), pose.Rot().Y(), pose.Rot().Z(), pose.Rot().W() );
+         vt = tf::Vector3 ( pose.Pos().X(), pose.Pos().Y(), pose.Pos().Z() );
+ 
+@@ -408,8 +436,13 @@
+ 
+         // get velocity in /odom frame
+         ignition::math::Vector3d linear;
++#if GAZEBO_MAJOR_VERSION >= 8
++        linear = parent->WorldLinearVel();
++        odom_.twist.twist.angular.z = parent->WorldAngularVel().Z();
++#else
+         linear = parent->GetWorldLinearVel().Ign();
+         odom_.twist.twist.angular.z = parent->GetWorldAngularVel().Ign().Z();
++#endif
+ 
+         // convert velocity to child_frame_id (aka base_footprint)
+         float yaw = pose.Rot().Yaw();
+diff -ura original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_vacuum_gripper.cpp patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_vacuum_gripper.cpp
+--- original/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_vacuum_gripper.cpp	2017-12-11 13:53:46.000000000 +0100
++++ patched/gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-2.7.3-0/src/gazebo_ros_vacuum_gripper.cpp	2018-02-24 21:54:36.232427172 +0100
+@@ -179,8 +179,13 @@
+   }
+   // apply force
+   lock_.lock();
++#if GAZEBO_MAJOR_VERSION >= 8
++  ignition::math::Pose3d parent_pose = link_->WorldPose();
++  physics::Model_V models = world_->Models();
++#else
+   ignition::math::Pose3d parent_pose = link_->GetWorldPose().Ign();
+   physics::Model_V models = world_->GetModels();
++#endif
+   for (size_t i = 0; i < models.size(); i++) {
+     if (models[i]->GetName() == link_->GetName() ||
+         models[i]->GetName() == parent_->GetName())
+@@ -189,14 +194,25 @@
+     }
+     physics::Link_V links = models[i]->GetLinks();
+     for (size_t j = 0; j < links.size(); j++) {
++#if GAZEBO_MAJOR_VERSION >= 8
++      ignition::math::Pose3d link_pose = links[j]->WorldPose();
++#else
+       ignition::math::Pose3d link_pose = links[j]->GetWorldPose().Ign();
++#endif
+       ignition::math::Pose3d diff = parent_pose - link_pose;
+       double norm = diff.Pos().Length();
+       if (norm < 0.05) {
++#if GAZEBO_MAJOR_VERSION >= 8
++        links[j]->SetLinearAccel(link_->WorldLinearAccel());
++        links[j]->SetAngularAccel(link_->WorldAngularAccel());
++        links[j]->SetLinearVel(link_->WorldLinearVel());
++        links[j]->SetAngularVel(link_->WorldAngularVel());
++#else
+         links[j]->SetLinearAccel(link_->GetWorldLinearAccel());
+         links[j]->SetAngularAccel(link_->GetWorldAngularAccel());
+         links[j]->SetLinearVel(link_->GetWorldLinearVel());
+         links[j]->SetAngularVel(link_->GetWorldAngularVel());
++#endif
+         double norm_force = 1 / norm;
+         if (norm < 0.01) {
+           // apply friction like force
