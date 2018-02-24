@@ -1,10 +1,11 @@
 pkgbase = cpuminer-multi-allium-git
 	pkgdesc = Multi-threaded CPU miner with Allium (Garlicoin) support - git version
 	pkgver = 1.0.0.allium.r0.gf502477
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/GarlicoinOrg/cpuminer-multi
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = curl
 	depends = jansson
 	depends = openssl

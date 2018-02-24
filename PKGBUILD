@@ -2,12 +2,13 @@
 pkgname=cpuminer-multi-allium-git
 _pkgname=cpuminer-multi
 pkgver=1.0.0.allium.r0.gf502477
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-threaded CPU miner with Allium (Garlicoin) support - git version"
 arch=('x86_64')
 url="https://github.com/GarlicoinOrg/cpuminer-multi"
 license=('GPL')
 depends=('curl' 'jansson' 'openssl')
+makedepends=('git')
 provides=('cpuminer' 'cpuminer-multi' 'cpuminer-multi-allium')
 conflicts=('cpuminer' 'cpuminer-multi' 'cpuminer-multi-allium' 'cpuminer-multi-git')
 source=('git+https://github.com/GarlicoinOrg/cpuminer-multi')
