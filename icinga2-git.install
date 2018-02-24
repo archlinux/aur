@@ -12,8 +12,6 @@ post_install() {
     /var/cache/icinga2 \
     /var/log/icinga2
 
-  /usr/bin/systemd-tmpfiles --create icinga2.conf
-
   /usr/bin/icinga2 feature enable checker &> /dev/null
   /usr/bin/icinga2 feature enable mainlog &> /dev/null
   /usr/bin/icinga2 feature enable notification &> /dev/null

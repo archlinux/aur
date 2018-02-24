@@ -42,8 +42,10 @@ backup=(etc/default/icinga2
         etc/icinga2/zones.conf
         etc/logrotate.d/icinga2)
 install='icinga2-git.install'
-source=('git+https://github.com/Icinga/icinga2.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/Icinga/icinga2.git'
+        "$pkgname.tmpfiles")
+sha256sums=('SKIP'
+            '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c')
 
 pkgver() {
   cd "$_pkgname"
@@ -81,11 +83,7 @@ package() {
   rm "$pkgdir/etc/icinga2/features-enabled/notification.conf"
   rm -r "$pkgdir/run"
 
-  mkdir -p "$pkgdir/usr/lib/tmpfiles.d"
-  cat > "$pkgdir/usr/lib/tmpfiles.d/icinga2.conf" <<- EOF
-	d /run/icinga2 0750 icinga icingacmd -
-	d /run/icinga2/cmd 2750 icinga icingacmd -
-	EOF
+  install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
   cd "$srcdir/$_pkgname"
 
