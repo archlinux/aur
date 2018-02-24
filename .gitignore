@@ -5,8 +5,4 @@
 !chromium-dev.install
 !chromium-dev.svg
 !chromium-widevine-r1.patch
-!chromium-intel-vaapi_r16.diff.patch
-!chromium-exclude_unwind_tables_r2.patch.patch
-!pkg
-!src
-
+!chromium-exclude_unwind_tables_r3.patch
