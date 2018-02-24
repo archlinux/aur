@@ -1,8 +1,9 @@
-# Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
+# Maintainer: nyyu <mail@nyyu.tk>
+# Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Contributor: EnteEnteEnte <ducksource@duckpond.ch>
 
 pkgname='teamspeak3-server'
-pkgver='3.0.13.8'
+pkgver='3.1.0'
 pkgrel=1
 pkgdesc='A proprietary VoIP conference software'
 license=('custom')
@@ -18,9 +19,9 @@ source=('teamspeak3-server.ini'
 source_i686=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspeak3-server_linux_x86-$pkgver.tar.bz2")
 source_x86_64=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspeak3-server_linux_amd64-$pkgver.tar.bz2")
 sha256sums=('c678f5d657772920260c4ea4718677e6b00ef28ad74c317e05632a01d33b3ca5'
-            'de414c8dffc06b941181007383250bd90500ef8a81bb502a2396118861c7c938')
-sha256sums_i686=('c1be39df7ee136c87e0ea1eff4e3aa84074e2d141c66d23f9a66eb5afa2b1876')
-sha256sums_x86_64=('460c771bf58c9a49b4be2c677652f21896b98a021d7fff286e59679b3f987a59')
+            'b20c9234b1f9a67c252114ae634a1e64df85a516d59a997e9e920cf7431eab28')
+sha256sums_i686=('793025b43f2c971aadfc76c9a23e4aa24143e41188cdf4a37e5c53affaa39d93')
+sha256sums_x86_64=('9f18cff600b9ce82a26ab788633cd5004bbe8c86963507efd3704c085f50a391')
 
 if [ "$CARCH" == "x86_64" ]; then
   _TSARCH='amd64'
