@@ -3,40 +3,33 @@
 
 pkgname=gvsig-desktop-bin
 _pkgname=gvSIG-desktop
-pkgver=2.3.1
-_pkgrel=2501
+_pkgname_lower=gvsig-desktop
+pkgver=2.4.0
+_pkgrel=2850
 pkgrel=1
 pkgdesc="A powerful, user-friendly and interoperable GIS."
 arch=('x86_64')
 url="http://www.gvsig.com/en/products/gvsig-desktop"
 license=('GPL')
 depends=('java-environment>=6' 'hicolor-icon-theme' 'libidn' 'libldap' 'libjpeg-turbo' 'proj' 'geos' 'openssl')
-source=("http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/${pkgver}/builds/${_pkgrel}/gvSIG-desktop-${pkgver}-${_pkgrel}-final-lin_ubuntu_16.04-x86_64.zip"
-        "$_pkgname.desktop" "gvSIG.config" "001-patch_x64bits.patch")
-sha256sums=('987ec4e47e9d9dec43d588c07693b04f438049b8ce5b73372290e1108b45431e'
-            'f3bfca96b53572799aad64092b30ece4cec3b67db0062efada79a48d60d00ea0'
-            'd5dd810d2492486af38b2d8079dbd24554b4f7dd6fd43d1af860ae6667239bb2'
-            '212ed4c8223c18239ca10d4e78b6cc5fbbea8631157313b51cdaf8c55bd91316')
+source=("http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/${pkgver}/builds/${_pkgrel}/gvSIG-desktop-${pkgver}-${_pkgrel}-final-lin-x86_64.zip"
+        "$_pkgname.desktop" "gvSIG.config")
+sha256sums=('f256ebd057807956d726378eff63e24fbfed836518bdac511b0b60847baf34da'
+            '28488fdddfcba0b6af7dd37356dad81d3bdcc08e97cb6422aaddabfe7c68add4'
+            'd5dd810d2492486af38b2d8079dbd24554b4f7dd6fd43d1af860ae6667239bb2')
 
 #if   [ "$CARCH" = "i686"   ]; then _arch="x86"
 #elif [ "$CARCH" = "x86_64" ]; then _arch="x86_64"
 #fi
 
-prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}-${_pkgrel}-final-lin_ubuntu_16.04-x86_64/
-
-  # Patch for x64bits java
-  patch -Np0 -i "${srcdir}/001-patch_x64bits.patch"
-}
-
 package() {
   cd $srcdir
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  cp -R ${srcdir}/${_pkgname}-${pkgver}-${_pkgrel}-final-lin_ubuntu_16.04-x86_64/* ${pkgdir}/opt/${pkgname}
+  mkdir -p ${pkgdir}/opt/${_pkgname_lower}
+  cp -R ${srcdir}/${_pkgname}-${pkgver}-${_pkgrel}-final-lin-x86_64/* ${pkgdir}/opt/${_pkgname_lower}
 
-  sed -i  's:"$HOME/$GVSIG_APPLICATION_NAME":$HOME"/.gvsig":' "${pkgdir}/opt/${pkgname}/gvSIG.sh"
+  sed -i  's:"$HOME/$GVSIG_APPLICATION_NAME":$HOME"/.gvsig":' "${pkgdir}/opt/${_pkgname_lower}/gvSIG.sh"
 
-  install -Dm644 "gvSIG.config"  ${pkgdir}/opt/${pkgname}/gvSIG.config
+  install -Dm644 "gvSIG.config"  ${pkgdir}/opt/${_pkgname_lower}/gvSIG.config
 
   install -Dm644 "${_pkgname}.desktop" \
         ${pkgdir}/usr/share/applications/${_pkgname}.desktop
@@ -44,14 +37,15 @@ package() {
   install -dm755 ${pkgdir}/usr/bin
 
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/$pkgname
-  echo "/opt/${pkgname}/gvSIG.sh" >> ${pkgdir}/usr/bin/${pkgname}
+  echo "/opt/${_pkgname_lower}/gvSIG.sh" >> ${pkgdir}/usr/bin/${pkgname}
   chmod +x ${pkgdir}/usr/bin/${pkgname}
-  chmod -Rfv 755 ${pkgdir}/opt/${pkgname}/gvSIG
+  chmod -Rfv 755 ${pkgdir}/opt/${_pkgname_lower}/gvSIG
 
   for s in 16 22 48; do
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps
-    cp "${pkgdir}/opt/${pkgname}/gvsig-icon${s}x${s}.png" "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${pkgname}.png"
+    cp "${pkgdir}/opt/${_pkgname_lower}/gvsig-icon${s}x${s}.png" "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${_pkgname_lower}.png"    
   done
 
-  rm ${pkgdir}/opt/${pkgname}/home/gvSIG/plugins/org.gvsig.app.mainplugin/Symbols/Geology/"Neotectonic, Earthquake-Hazard"/Fault-plane*.*
+  mkdir -p ${pkgdir}/usr/share/pixmaps
+  cp "${pkgdir}/opt/${_pkgname_lower}/gvsig-icon48x48.png" "${pkgdir}/usr/share/pixmaps/${_pkgname_lower}.png"  
 }
