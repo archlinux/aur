@@ -1,7 +1,7 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
@@ -15,9 +15,9 @@ pkgbase = bcc
 	makedepends = python
 	makedepends = python2
 	source = https://github.com/iovisor/bcc/archive/v0.5.0.tar.gz
-	source = fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch
+	source = cherry-fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch
 	sha512sums = 12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e
-	sha512sums = 1c4a453a0663237b1ebebd4fdc60e7f6add8380bf624cfa6dd28e57a73d6db89b0a562c8bcaa788d8d59f69240b574b123d07e1eeb63da3a255d3b5e40c6221b
+	sha512sums = f518f32584b1f828af5df00972c33e6efc7f4327fd65505156e6dec96e4e2f6e7fafb50fb0855693d586223dce4f6cbf7db34ae252358636decc5dbe7f6121a7
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
