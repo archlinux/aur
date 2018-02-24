@@ -17,12 +17,12 @@ String* api_string_init(void) {
     return pString;
 }
 
-Info* api_info_init(void){
+Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
-    if (pInfo != NULL){
+    if (pInfo != NULL) {
         pInfo->name = malloc(64);
         pInfo->symbol = malloc(64);
-        if (pInfo->name == NULL || pInfo->symbol == NULL){
+        if (pInfo->name == NULL || pInfo->symbol == NULL) {
             fprintf(stderr, "malloc() failed\n");
             exit(EXIT_FAILURE);
         }
@@ -83,7 +83,7 @@ String* api_curl_data(char* url, char* post_field) {
     return pString;
 }
 
-double* api_get_current_price(char* ticker_name_string) {
+double* api_get_current_price(const char* ticker_name_string) {
     double* val;
     if (strlen(ticker_name_string) > 5) { //if symbol length is greater than 5, then it must be a crypto
         val = coinmarketcap_get_price(ticker_name_string);
@@ -101,7 +101,7 @@ double* api_get_current_price(char* ticker_name_string) {
     return NULL; //Invalid symbol
 }
 
-double* iex_get_price(char* ticker_name_string) {
+double* iex_get_price(const char* ticker_name_string) {
     char iex_api_string[64];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", ticker_name_string);
     String* pString = api_curl_data(iex_api_string, NULL);
@@ -115,8 +115,8 @@ double* iex_get_price(char* ticker_name_string) {
         fprintf(stderr, "malloc() failed\n");
         exit(EXIT_FAILURE);
     }
-    char* price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
-    char* close_price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
+    const char* price_string = json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
+    const char* close_price_string = json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
     ret[0] = strtod(price_string, NULL); //Intraday current price
     ret[1] = strtod(close_price_string, NULL); //Previous day's close price
     api_string_destroy(&pString);
@@ -124,7 +124,7 @@ double* iex_get_price(char* ticker_name_string) {
     return ret;
 }
 
-double* morningstar_get_price(char* ticker_name_string) {
+double* morningstar_get_price(const char* ticker_name_string) {
     char today_char[16], yesterday_char[16], morningstar_api_string[512];
     time_t now = time(NULL);
     struct tm* ts = localtime(&now);
@@ -152,17 +152,17 @@ double* morningstar_get_price(char* ticker_name_string) {
     size_t size = json_object_array_length(datapoints);
     Json* today = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1),
                                             0); //latest day of data will be in last array index
-    char* price = (char*) json_object_to_json_string(today);
+    const char* price = json_object_to_json_string(today);
     ret[0] = strtod(price, NULL); //Last close price
     Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0);
-    price = (char*) json_object_to_json_string(yesterday);
+    price = json_object_to_json_string(yesterday);
     ret[1] = strtod(price, NULL); //Close price before last close price
     json_object_put(jobj);
     api_string_destroy(&pString);
     return ret;
 }
 
-double* coinmarketcap_get_price(char* ticker_name_string) {
+double* coinmarketcap_get_price(const char* ticker_name_string) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
@@ -174,8 +174,8 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
     Json* data = json_object_array_get_idx(jobj, 0);
     Json* usd = json_object_object_get(data, "price_usd");
     Json* percent_change_1d = json_object_object_get(data, "percent_change_24h");
-    char* price = (char*) json_object_get_string(usd);
-    char* change_1d = (char*) json_object_get_string(percent_change_1d);
+    const char* price = json_object_get_string(usd);
+    const char* change_1d = json_object_get_string(percent_change_1d);
     double* ret = malloc(sizeof(double) * 2);
     if (ret == NULL) {
         fprintf(stderr, "malloc() failed\n");
@@ -188,7 +188,7 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
     return ret;
 }
 
-void news_print_top_three(char* ticker_name_string) {
+void news_print_top_three(const char* ticker_name_string) {
     char* url_encoded_string = calloc(128, 1);
     if (url_encoded_string == NULL) {
         fprintf(stderr, "malloc() failed\n");
@@ -222,30 +222,30 @@ void news_print_top_three(char* ticker_name_string) {
 
 void json_print_news(Json* jobj) {
     Json* article_list = json_object_object_get(jobj, "articles"), * article;
-    char* author_string, * title_string, * source_string, * date_string, * url_string;
+    char* author_string, * title_string, * source_string, * url_string, * stripped, * shortened;
+    const char* date_string;
     int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
                                10);
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
-        author_string = (char*) strip_char(
-                (char*) json_object_to_json_string(json_object_object_get(article, "author")),
-                '\\'); //Strip all attributes of backslashes
-        title_string = (char*) strip_char(
-                (char*) json_object_to_json_string(json_object_object_get(article, "title")), '\\');
-        source_string = (char*) strip_char((char*) json_object_to_json_string(
+        author_string = strip_char(
+                json_object_to_json_string(json_object_object_get(article, "author")), '\\'); //Strip all attributes of backslashes
+        title_string = strip_char(
+                json_object_to_json_string(json_object_object_get(article, "title")), '\\');
+        source_string = strip_char(json_object_to_json_string(
                 json_object_object_get(json_object_object_get(article, "source"), "name")), '\\');
-        date_string = (char*) json_object_to_json_string(json_object_object_get(article, "publishedAt"));
-        url_string = (char*) strip_char((char*) json_object_to_json_string(json_object_object_get(article, "url")),
-                                        '\\');
-        char* stripped = (char*) strip_char(url_string, '\"'); //Strip url of quotes
-        char* shortened = (char*) google_shorten_link(stripped); //Shorten link
+        date_string = json_object_to_json_string(json_object_object_get(article, "publishedAt"));
+        url_string = strip_char(json_object_to_json_string(json_object_object_get(article, "url")),
+                                '\\');
+        stripped = strip_char(url_string, '\"'); //Strip url of quotes
+        shortened = google_shorten_link(stripped); //Shorten link
         printf("Title: %s Source: %s ", title_string, source_string);
         if (strcmp(author_string, "null") != 0) //Some articles don't list authors or dates
             printf("Author: %s ", author_string);
         if (strcmp(date_string, "null") != 0) {
-            date_string[11] = '\"';
-            date_string[12] = '\0'; //Terminate date string after the day of the month since it include time as well
-            printf("Date: %s ", date_string);
+            for (int j = 0; j < 11; j++)
+                putchar(date_string[j]);
+            putchar('\"');
         }
         printf("Url: \"%s\"\n", shortened);
         free(author_string);
@@ -257,9 +257,9 @@ void json_print_news(Json* jobj) {
     }
 }
 
-void api_print_info(char* ticker_name_string){
+void api_print_info(const char* ticker_name_string) {
     Info* ticker_info = coinmarketcap_get_info(ticker_name_string);
-    if (ticker_info == NULL){
+    if (ticker_info == NULL) {
         printf("Invalid symbol!\n");
         return;
     }
@@ -284,7 +284,7 @@ void api_print_info(char* ticker_name_string){
     api_info_destroy(&ticker_info);
 }
 
-Info* coinmarketcap_get_info(char* ticker_name_string){
+Info* coinmarketcap_get_info(const char* ticker_name_string) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
@@ -296,9 +296,7 @@ Info* coinmarketcap_get_info(char* ticker_name_string){
     Json* jobj = json_tokener_parse(pString->data);
     Json* data = json_object_array_get_idx(jobj, 0);
     strcpy(ticker_info->name, json_object_get_string(json_object_object_get(data, "name")));
-    //ticker_info->name = json_object_get_string(json_object_object_get(data, "name"));
     strcpy(ticker_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
-    //ticker_info->symbol = json_object_get_string(json_object_object_get(data, "symbol"));
     ticker_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
     ticker_info->change_1d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL);
     ticker_info->change_7d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL);
@@ -309,7 +307,7 @@ Info* coinmarketcap_get_info(char* ticker_name_string){
     return ticker_info;
 }
 
-const char* google_shorten_link(char* url_string) {
+char* google_shorten_link(const char* url_string) {
     char post_string[1024], copy[1024];
     sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); //Format HTTP POST
     String* pString = api_curl_data(
@@ -323,7 +321,7 @@ const char* google_shorten_link(char* url_string) {
         fprintf(stderr, "calloc() failed\n");
         exit(EXIT_FAILURE);
     }
-    for (int i = 0, j = 0; j < strlen(copy); i++, j++) { //Ignore escape characters
+    for (unsigned int i = 0, j = 0; j < strlen(copy); i++, j++) { //Ignore escape characters
         if (copy[j] == '\\' || copy[j] == '\"')
             j++;
         final[i] = copy[j];
@@ -333,7 +331,7 @@ const char* google_shorten_link(char* url_string) {
     return final;
 }
 
-const char* strip_char(char* string, char c) {
+char* strip_char(const char* string, char c) {
     size_t len = strlen(string);
     char* final_string = calloc(len + 1, 1);
     if (final_string == NULL) {
@@ -357,8 +355,8 @@ void api_string_destroy(String** phString) {
 
 void api_info_destroy(Info** phInfo) {
     Info* pInfo = *phInfo;
-    free((void*)pInfo->name);
-    free((void*)pInfo->symbol);
+    free(pInfo->name);
+    free(pInfo->symbol);
     free(*phInfo);
     *phInfo = NULL;
 }

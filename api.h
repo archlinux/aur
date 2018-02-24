@@ -71,7 +71,7 @@ String* api_curl_data(char* url, char* post_field);
  * @param ticker_name_string symbol
  * @return price data or NULL if invalid symbol
  */
-double* api_get_current_price(char* ticker_name_string);
+double* api_get_current_price(const char* ticker_name_string);
 
 /**
  * writefunction for cURL HTTP GET
@@ -85,7 +85,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
  * @param ticker_name_string symbol
  * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
-double* iex_get_price(char* ticker_name_string);
+double* iex_get_price(const char* ticker_name_string);
 
 /**
  * Returns current and yesterday's price of a mutual fund with data from Morningstar
@@ -94,7 +94,7 @@ double* iex_get_price(char* ticker_name_string);
  * @param offset number of days ago to get price of (0 = today)
  * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
-double* morningstar_get_price(char* ticker_name_string);
+double* morningstar_get_price(const char* ticker_name_string);
 
 /**
  * Returns current and yesterday's price of a cryptocurrency with data from Coinmarketcap.
@@ -102,13 +102,13 @@ double* morningstar_get_price(char* ticker_name_string);
  * @param ticker_name_string symbol
  * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
-double* coinmarketcap_get_price(char* ticker_name_string);
+double* coinmarketcap_get_price(const char* ticker_name_string);
 
 /**
  * Prints top three news articles in the past week based on the given string
  * @param ticker_name_string the string
  */
-void news_print_top_three(char* ticker_name_string);
+void news_print_top_three(const char* ticker_name_string);
 
 /**
  * Given a JSON formatted string, print title, source, author, and url of articles
@@ -116,20 +116,20 @@ void news_print_top_three(char* ticker_name_string);
  */
 void json_print_news(Json* jobj);
 
-void api_print_info(char* ticker_name_string);
+void api_print_info(const char* ticker_name_string);
 
 /**
  * Prints info related to the given cryptocurrency
  * @param ticker_name_string the cryptocurrency's name
  */
-Info* coinmarketcap_get_info(char* ticker_name_string);
+Info* coinmarketcap_get_info(const char* ticker_name_string);
 
 /**
  * Given a url, returns a shorter link using goo.gl
  * @param url_string the link to shorten
  * @return the shortened link
  */
-const char* google_shorten_link(char* url_string);
+char* google_shorten_link(const char* url_string);
 
 /**
  * Returns a string stripped of the given char
@@ -137,7 +137,7 @@ const char* google_shorten_link(char* url_string);
  * @param c the char to strip
  * @return the stripped string
  */
-const char* strip_char(char* string, char c);
+char* strip_char(const char* string, char c);
 
 /**
  * Destroys String object and frees memory
