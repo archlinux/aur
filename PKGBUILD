@@ -63,7 +63,9 @@ prepare() {
 	CONFIG_LOCALVERSION_AUTO=n
 	EOF
   sed -i '2iexit 0' scripts/depmod.sh
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
   chmod +x tools/objtool/sync-check.sh
   make prepare
 }
@@ -76,10 +78,10 @@ build() {
 
 package_linux-linode() {
   cd "${srcdir}/${_srcname}"
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   emdir="extramodules-${_basekernel}${_kernelname}"
   mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
