@@ -1,27 +1,8 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7c0e2cf..fd3dceb 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -58,14 +58,6 @@ target_link_libraries(trezord ${OS_LIBRARIES})
- # add dynamic libs
- find_package(CURL REQUIRED)
- find_package(libmicrohttpd REQUIRED)
--
--# add static libs
--if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
--  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
--  set(BUILD_SHARED_LIBS off)
--  set(Boost_USE_STATIC_LIBS on)
--  set(CMAKE_FIND_STATIC FIRST)
--endif(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
- find_package(Boost 1.53.0 REQUIRED
-   regex thread system unit_test_framework program_options chrono)
- find_package(Protobuf 2.5.0 REQUIRED)
 diff --git a/release/linux/trezor.rules b/release/linux/trezor.rules
-index bd8a838..7008bd5 100644
+index 54bd9fd..7eea376 100644
 --- a/release/linux/trezor.rules
 +++ b/release/linux/trezor.rules
-@@ -3,11 +3,11 @@
+@@ -3,9 +3,9 @@
  # Put this file into /usr/lib/udev/rules.d
  
  # TREZOR
@@ -33,9 +14,5 @@ index bd8a838..7008bd5 100644
  # TREZOR v2
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
--KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c0",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
--KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
 +SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 +SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
-+KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c0",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"
-+KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"

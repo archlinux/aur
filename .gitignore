@@ -1,8 +1,6 @@
 src/
 pkg/
 
-trezor-common/
-trezor-crypto/
-trezord/
+trezord-go/
 
 *.pkg.tar.xz
