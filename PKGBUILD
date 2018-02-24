@@ -13,6 +13,8 @@ url="https://github.com/lpechacek/cpuset/"
 license=('GPL2')
 depends=('python' 'python-future')
 options=('!emptydirs')
+provides=('cpuset')
+conflicts=('cpuset')
 # 0001-remove-exclusivity.patch removes setting cpu_exclusive and mem_exclusive to 1,
 # thus enabling cpuset to run even when a machine.slice has been created and cannot be modified
 source=('git+https://github.com/lpechacek/cpuset'
