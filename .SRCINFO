@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-rosunit
+	pkgdesc = ROS - Unit-testing package for ROS.
+	pkgver = 1.14.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosunit
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-roslib
+	depends = python2-rospkg
+	source = ros-melodic-rosunit-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosunit/1.14.3-0.tar.gz
+	sha256sums = 191b001f8f6740b9c83e051ac6f23828d505e514938d94dda6843290f9fb31e7
+
+pkgname = ros-melodic-rosunit
+
