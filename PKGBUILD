@@ -1,6 +1,6 @@
 # $Id: PKGBUILD 278826 2016-10-15 00:15:40Z heftig $
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Ian Hernández <badwolfie@archlinux.info>
+# Contributor: Ian Hernández <badwolfie@archlinux.info>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 _pkgbase=nautilus
