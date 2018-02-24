@@ -1,4 +1,5 @@
-# Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
+# Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname='icinga2-git'
 _pkgname=icinga2
