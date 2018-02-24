@@ -2,7 +2,7 @@
 pkgname=cpuminer-opt-git
 _pkgname=cpuminer-opt
 pkgver=3.8.3.1.r0.g59c7848
-pkgrel=2
+pkgrel=3
 pkgdesc="Optimized multi-algo CPU miner - git version"
 arch=('x86_64')
 url="https://github.com/JayDDee/cpuminer-opt"
