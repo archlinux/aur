@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kstogram
-pkgver=2.6.4.1487
+pkgver=2.6.7.1517
 pkgrel=1
 pkgdesc="Download and backup Instagram photos shared by any user."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-script' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'libexif' 'libj
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('660012549aa4d5ce73d0c9f772d72a3a668b09f81ddc032503bf1bd7e6af119a'
+sha256sums=('63cb239299f970e8c3a1b0d0d9c6ceca7deaa647bcd854cb8df48692d747e767'
             '7970c1f1aacd5a546ca8252c2d48a874478a26e23eb57769f54c5feac7316f51'
             'b1add61c84f745911dee0672b25e021a3da0d90127843f3a814864858306ab8b')
 
