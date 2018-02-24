@@ -1,7 +1,7 @@
 pkgbase = megasync
 	pkgdesc = Sync your files to your Mega account. Official app
 	pkgver = 3.6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/megasync
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = megasync
 	makedepends = qt5-tools
 	makedepends = swig
 	makedepends = doxygen
-	depends = curl
 	depends = c-ares
 	depends = crypto++
 	depends = libsodium
