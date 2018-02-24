@@ -38,7 +38,7 @@ fi
 if [ -f "/usr/include/SuiteSparse_config.h" ]; then
 	CONFOPTS="${CONFOPTS} --with-suitesparse=1"
 fi
- 
+
 # Add metis support
 if [ -f "/usr/include/metis.h" ]; then
 	CONFOPTS="${CONFOPTS} --with-metis=1"

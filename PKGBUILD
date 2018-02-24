@@ -25,11 +25,10 @@ optdepends=('trilinos: support for trilinos'
     'fftw:     support for the fftw fast Fourier transform'
     )
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz test_optdepends.sh)
-md5sums=('322cbcf2a0f7b7bad562643b05d66f11'
-         'e60925d1f552303198106bf98eb2bfa5')
+source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
+        test_optdepends.sh)
 sha256sums=('01f9c3ed937eafac6c9e006510b61c7cd07197115ec40c429fc835f346ca3eac'
-            'adff0a432735f6cf4ec2edcb7345ba0d90963bef962b8d9742fa5e9735c0e455')
+            'c7b0d839c43bbae0405b8b007588debcd0da526e9a999c5933278d347a0900e2')
 
 
 _install_dir=/opt/petsc/${_config}
@@ -99,7 +98,7 @@ package() {
 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscrules"
 
 	export PETSC_DIR=${_install_dir}
-	
+
 	# Note: the hyperlinks between documentation, tutorials and examples are
 	# not perfect yet
 
