@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-rospack
+	pkgdesc = ROS - ROS Package Tool.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://wiki.ros.org/rospack
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cmake-modules
+	makedepends = tinyxml2
+	makedepends = gtest
+	makedepends = pkg-config
+	makedepends = boost
+	makedepends = python2
+	depends = tinyxml2
+	depends = python2-rosdep
+	depends = python2-catkin_pkg
+	depends = python2
+	depends = boost
+	depends = pkg-config
+	source = ros-melodic-rospack-2.5.0-0.tar.gz::https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/2.5.0-0.tar.gz
+	sha256sums = 132fabb7015379f5ffaea05cd6cd737848ebf6edb7b584d147be2793005d3d4b
+
+pkgname = ros-melodic-rospack
+
