@@ -1,20 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-# Contributor: AUR Perl <aurperl@juster.info>
-# Generator  : CPANPLUS::Dist::Arch 1.18
-
 pkgname='perl-class-c3-componentised'
-pkgver='1.001000'
-pkgrel='5'
+pkgver='1.001002'
+pkgrel='1'
 pkgdesc='Load mix-ins or components to your C3-based class'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-c3' 'perl-class-inspector' 'perl-mro-compat')
-makedepends=('perl-module-install' 'perl-test-exception' 'perl-test-pod-coverage')
+depends=('perl-class-c3>=0.20' 'perl-class-inspector>=1.32' 'perl-mro-compat>=0.09')
+makedepends=('perl-module-install' 'perl-test-exception>=0.31')
 url='http://search.cpan.org/dist/Class-C3-Componentised'
-source=('http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Class-C3-Componentised-1.001000.tar.gz')
-sha512sums=('860b7cd09b1add6f252fddc0934e9f542231be90a57cf36afcab55684aca2fdb667777248c3583ad955ce0b76db44297515f56194ed2ec444dd8c801a01b5713')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-Componentised-${pkgver}.tar.gz")
+sha512sums=('11f7d752fec271e0e1274fcfe56dadece07e79b0986bbad86fff569e74900d9fb2e68a3aeb1e465073f01e3e4dda3f4644117084880321f8213ef05ec7e2bdc0')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
