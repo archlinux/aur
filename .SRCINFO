@@ -1,0 +1,14 @@
+pkgbase = ttf-zaklad
+	pkgdesc = Display font designed for use on signage and posters, it’s massive and sturdy construction was inspired the blocky geometrical letters from the Warsaw’s craftsmen shops.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kroje.org/en/fonts/zaklad/
+	arch = any
+	license = custom:OFL-1.1
+	source = ttf-zaklad-1.0.tar.gz::https://github.com/warszawskie-kroje/zaklad/archive/v1.0.tar.gz
+	source = LICENSE
+	sha256sums = 8063fd23d96a485d40e032206b3e16e6e7f1e5cd70e4faa01a8221ceaa612113
+	sha256sums = a22e755224fbe538e0d2883668938360a1b164a1e38b1b701d73e63e9cbe3a3a
+
+pkgname = ttf-zaklad
+
