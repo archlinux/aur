@@ -3,7 +3,7 @@
 
 pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
-pkgver=2017.9.3
+pkgver=2017.11.5
 pkgrel=1
 pkgdesc="Python PE parsing module"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/erocarrera/pefile"
 license=('MIT')
 makedepends=('python' 'python2' 'python-future' 'python2-future')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/erocarrera/pefile/archive/v${pkgver}.tar.gz")
-sha512sums=('b4e3737608b3e76c450be456b81ab9ea9fc18b1b87fef5d55012fda4fc2cdf2ed4ec052c6f43abb3ced7c79f46fde04160b5d52c6d40791327b10c06b551a080')
+sha512sums=('820f7770d18256857436698a9d72276dc8089a2a85c20f1c2e284c541680879016f7acf7b3029e7dd1f32ef093b52fe1c8e8f7962e5b9a7dbbc0f94caf6d0d66')
 
 prepare() {
   cd "${srcdir}"
