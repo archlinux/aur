@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-rosmsg
+	pkgdesc = ROS - rosmsg contains two command-line tools: rosmsg and rossrv.
+	pkgver = 1.13.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rosmsg
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rosbag
+	depends = ros-melodic-genmsg
+	depends = ros-melodic-catkin
+	depends = ros-melodic-roslib
+	depends = ros-melodic-genpy
+	depends = python2-rospkg
+	source = ros-melodic-rosmsg-1.13.6-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmsg/1.13.6-0.tar.gz
+	sha256sums = 9cbd2b33c30f063c5d152916d7dc65e517ee8060acc30d7a8e0618b382469c88
+
+pkgname = ros-melodic-rosmsg
+
