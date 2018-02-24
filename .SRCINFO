@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-roslaunch
+	pkgdesc = ROS - roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server.
+	pkgver = 1.13.6
+	pkgrel = 1
+	url = http://ros.org/wiki/roslaunch
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rosunit
+	depends = ros-melodic-rosgraph-msgs
+	depends = ros-melodic-rosparam
+	depends = ros-melodic-roslib
+	depends = ros-melodic-rosclean
+	depends = ros-melodic-rosmaster
+	depends = ros-melodic-rosout
+	depends = python2-rospkg
+	depends = python2-paramiko
+	depends = python2-yaml
+	source = ros-melodic-roslaunch-1.13.6-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roslaunch/1.13.6-0.tar.gz
+	sha256sums = d41b699dfa29115f25a554f526c00a7baba108c6e80bef8463a9f34f974eb687
+
+pkgname = ros-melodic-roslaunch
+
