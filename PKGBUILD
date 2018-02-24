@@ -3,12 +3,13 @@
 pkgname=cauralho-git
 _pkgname=cauralho
 pkgver=r2.18ba2bb
-pkgrel=1
+pkgrel=2
 pkgdesc="A small tool to help with updating AUR packages installed in the system."
 arch=("any")
 url="https://github.com/qrwteyrutiyoup/cauralho"
 license=("Apache")
 depends=(dialog curl jq 'bash>=4.0.0')
+makedepends=(git)
 source=("${_pkgname}"::git+https://github.com/qrwteyrutiyoup/cauralho.git)
 md5sums=('SKIP')
 backup=('etc/cauralho.conf')
