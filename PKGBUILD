@@ -7,16 +7,18 @@ arch=('any')
 url="http://ignitionrobotics.org/libs/cmake"
 license=('Apache')
 groups=('development')
-depends=('cmake')
+depends=('cmake' 'pkg-config')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-cmake/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('c5f1c74714ed93ff0ba02c504c94055785aa877925fd003b8cdb433cf302a4ed')
+source=("https://bitbucket.org/ignitionrobotics/ign-cmake/get/${pkgname}_${pkgver}.tar.bz2" "jsoncpp.patch")
+sha256sums=('c5f1c74714ed93ff0ba02c504c94055785aa877925fd003b8cdb433cf302a4ed'
+            'bfecea1da1bd6fed1e5093788c54a2562e7b3b0eb95f85726f87e28a217dc94a')
 
 _dir="ignitionrobotics-ign-cmake-1f49f8a81dd8"
 
 build() {
   cd "$srcdir/$_dir"
+  patch -Np2 -i "${srcdir}/jsoncpp.patch"
 
   mkdir -p build
   cd build
