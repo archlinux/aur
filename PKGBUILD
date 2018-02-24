@@ -2,10 +2,10 @@ pkgbase=usefuld
 _pkgbase=systemd
 pkgname=('usefuld' 'libusefuld')
 # latest commit on stable branch
-_commit='78bd76934d74556054ed4cb69929d4318ae82a2d'
+_commit='7909254c7a8ee09d91b8b21fd779320b3e2fe716'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=237.31
+pkgver=237.64
 pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -22,16 +22,14 @@ source=('git://github.com/systemd/systemd-stable.git'
         'loader.conf'
         'https://git.archlinux.org/svntogit/packages.git/plain/systemd/repos/core-x86_64/splash-arch.bmp'
         'systemd-sysusers.hook'
-        'systemd-tmpfiles.hook'
-        'systemd-update.hook')
+        'systemd-tmpfiles.hook')
 sha512sums=('SKIP'
             'SKIP'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             '7d49a948f5d58f662a7d81544254528257ef8c0a08ca560834f09a7cdf566161d2df4d419ebbc2983196cd45c9eeefcd0c4c2c554376916dce42e895262afc30'
-            'e521d92674597f82d589b83c378c50c92c881fdb84c436c8b26f7a3436a4c91a20585824a5563933f6868a3023b9ee2fdc7bd58e04bb47c25a0a36e296308fd3'
-            '10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618')
+            'e521d92674597f82d589b83c378c50c92c881fdb84c436c8b26f7a3436a4c91a20585824a5563933f6868a3023b9ee2fdc7bd58e04bb47c25a0a36e296308fd3')
 
 _backports=(
 )
@@ -94,7 +92,7 @@ prepare() {
     git revert -n "$_commit"
   done
 
-  # make systemd-nspawn work
+  # patch nspawn to work without systemd
   sed -i 's#static bool arg_register = true;#static bool arg_register = false;#' src/nspawn/nspawn.c
   sed -i 's#static bool arg_keep_unit = false;#static bool arg_keep_unit = true;#' src/nspawn/nspawn.c
 }
@@ -191,13 +189,13 @@ build() {
 }
 
 package_usefuld() {
-  pkgdesc="system and service manager exclude udev,... include tmpfiles, sysvusers, nspawn, boot,..."
+  pkgdesc="minimal systemd build for setups without systemd, exclude udev, include tmpfiles, sysvusers, nspawn, boot,..."
   license=('GPL2' 'LGPL2.1')
   groups=('base-devel')
   depends=('bash' 'iptables' 'kmod'
            'libusefuld'
            'util-linux')
-  optdepends=('eudev')
+  optdepends=('eudev: needs standalone udev')
   provides=('nss-myhostname' "systemd-tools=$pkgver" 'systemd')
   replaces=('nss-myhostname' 'systemd-tools' 'systemd')
   conflicts=('nss-myhostname' 'systemd-tools' 'systemd')
@@ -264,7 +262,7 @@ package_usefuld() {
 }
 
 package_libusefuld() {
-  pkgdesc="systemd client libraries exclude libudev"
+  pkgdesc="minimal systemd client libraries exclude libudev"
   depends=('glibc')
   optdepends=('libeudev')
   license=('GPL2')
