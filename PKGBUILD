@@ -59,11 +59,29 @@ package_icinga2-git() {
   provides=('icinga2')
   conflicts=('icinga2')
   backup=(etc/default/icinga2
-          etc/icinga2/features-available/{api,checker,command,compatlog}.conf
-          etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
-          etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
-          etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
-          etc/icinga2/{constants,icinga2,init,zones}.conf
+          etc/icinga2/features-available/api.conf
+          etc/icinga2/features-available/checker.conf
+          etc/icinga2/features-available/command.conf
+          etc/icinga2/features-available/compatlog.conf
+          etc/icinga2/features-available/debuglog.conf
+          etc/icinga2/features-available/elasticsearch.conf
+          etc/icinga2/features-available/gelf.conf
+          etc/icinga2/features-available/graphite.conf
+          etc/icinga2/features-available/ido-mysql.conf
+          etc/icinga2/features-available/ido-pgsql.conf
+          etc/icinga2/features-available/influxdb.conf
+          etc/icinga2/features-available/livestatus.conf
+          etc/icinga2/features-available/mainlog.conf
+          etc/icinga2/features-available/notification.conf
+          etc/icinga2/features-available/opentsdb.conf
+          etc/icinga2/features-available/perfdata.conf
+          etc/icinga2/features-available/statusdata.conf
+          etc/icinga2/features-available/syslog.conf
+          etc/icinga2/constants.conf
+          etc/icinga2/icinga2.conf
+          etc/icinga2/scripts/mail-host-notification.sh
+          etc/icinga2/scripts/mail-service-notification.sh
+          etc/icinga2/zones.conf
           etc/logrotate.d/icinga2)
   install='icinga2-git.install'
 
@@ -97,4 +115,16 @@ package_icinga2-git() {
             "$pkgdir/var/log/icinga2"
 
   rm -r $pkgdir/usr/lib/icinga2/lib*
+
+  # check that the backup array contains all files in /etc except those explicitly excluded in the command below.
+  diff -u \
+    <(printf '%s\n' "${backup[@]}" | sort) \
+    <(find "$pkgdir/etc" '(' \
+        -path "$pkgdir/etc/bash_completion.d" -o \
+        -path "$pkgdir/etc/icinga2/conf.d.example" -o \
+        -path "$pkgdir/etc/icinga2/zones.d/README" \
+      ')' -prune -o -type f -printf 'etc/%P\n' | sort) || {
+    error 'Backup array and file installed to /etc are inconsistent.'
+    return 1
+  }
 }
