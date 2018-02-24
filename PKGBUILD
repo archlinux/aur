@@ -4,12 +4,12 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.15
-_stable=4.15.4
-_patchver=4.15.5
+_stable=4.15.5
+_patchver=4.15.6
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -41,9 +41,9 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
             '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
+            'b5dc7021bd0c08e4a58b59035f9b757ce6909b46067950ac56d2ad68c1b69dd1'
             'SKIP'
-            'a7626046f95589b31f8ffa3cf24d001b3d104afce2ec7e8d8d794bda364378a9'
+            'bde31c95b51551916f9f0f5c1e31980a4bfb85ba295914170e454c323bae5cbf'
             'SKIP')
 
 _kernelname=${pkgbase#linux}
