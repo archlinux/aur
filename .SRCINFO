@@ -1,19 +1,17 @@
 pkgbase = ttf-nerd-fonts-symbols
 	pkgdesc = Developer targeted patched fonts with a high number of glyphs (icons)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = x86_64
 	arch = i686
 	license = MIT
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.1.0/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.1.0/10-nerd-font-symbols.conf
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.1.0/LICENSE
-	source = add-monospace-font-family.patch
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.2.0/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.2.0/10-nerd-font-symbols.conf
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/1.2.0/LICENSE
 	sha256sums = 871e6c4dacd9bcb558852785436c854e7e77f764d795bbba6cc465e62c5c5c12
 	sha256sums = 52abef94b12365ecbcb0407d480a160fd77452be0045102c1aa9eb27b7c7aa3e
 	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
-	sha256sums = 54d241af7f5ac8db40d0d193742b9de82c9fd2c7ace5aa048549be32398a6e2b
 
 pkgname = ttf-nerd-fonts-symbols
 
