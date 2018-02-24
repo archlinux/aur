@@ -2,7 +2,7 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate
-pkgver=1.4.1
+pkgver=1.5
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
