@@ -43,9 +43,11 @@ backup=(etc/default/icinga2
         etc/logrotate.d/icinga2)
 install='icinga2-git.install'
 source=('git+https://github.com/Icinga/icinga2.git'
-        "$pkgname.tmpfiles")
+        "$pkgname.tmpfiles"
+        "$pkgname.sysusers")
 sha256sums=('SKIP'
-            '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c')
+            '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
+            '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
 
 pkgver() {
   cd "$_pkgname"
@@ -84,6 +86,7 @@ package() {
   rm -r "$pkgdir/run"
 
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   cd "$srcdir/$_pkgname"
 
