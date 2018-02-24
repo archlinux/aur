@@ -1,7 +1,7 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname="social-engineer-toolkit"
-pkgver=7.7.4
+pkgver=7.7.5
 pkgrel=1
 pkgdesc="The Social-Engineer Toolkit (SET)"
 arch=("any")
