@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="A lightweight HTML renderer/editor widget for GTK3"
 arch=(i686 x86_64)
 license=('GPL')
-provides=("${pkgname/-git/"}")
-conflicts=("${pkgname/-git/"}")
+provides=("${pkgname/-git/}")
+conflicts=("${pkgname/-git/}")
 depends=('cairo>=1.10.0'
          'enchant>=2.0'
          'gnome-common>=3.2.0'
