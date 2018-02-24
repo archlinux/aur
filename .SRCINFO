@@ -1,7 +1,7 @@
 pkgbase = lxd
 	pkgdesc = REST API, command line tool and OpenStack integration plugin for LXC.
 	pkgver = 2.21
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lxc/lxd
 	arch = x86_64
 	license = APACHE
