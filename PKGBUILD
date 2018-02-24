@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/JayDDee/cpuminer-opt"
 license=('GPL')
 depends=('curl' 'gmp' 'jansson' 'openssl')
+makedepends=('git')
 provides=('cpuminer' 'cpuminer-multi' 'cpuminer-opt')
 conflicts=('cpuminer' 'cpuminer-multi' 'cpuminer-opt' 'cpuminer-multi-git')
 source=('git+https://github.com/JayDDee/cpuminer-opt')
