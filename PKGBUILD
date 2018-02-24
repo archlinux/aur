@@ -15,7 +15,7 @@ depends=('gksu'
 )
 package()
 {
-	cd "$srcdir/Nvidiux-2.0.0"
+	cd "$srcdir/Nvidiux-2.0"
 	cp -r usr $pkgdir
 }
 source=(https://github.com/RunGp/Nvidiux/archive/2.0.tar.gz)
