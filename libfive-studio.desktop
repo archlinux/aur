@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Studio for libfive
+Icon=libfive-studio
+Exec=libfive-studio %f
+Categories=Graphics;3DGraphics;Engineering;
+Keywords=3d;solid;geometry;csg;model;stl;
