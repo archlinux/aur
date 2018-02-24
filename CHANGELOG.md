@@ -1,3 +1,27 @@
+# [v2.1.0 - 2018-02-15](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.6)
+
+## Added
+
+- Allow tags to be pushed individually.
+- Added context menu option to clean untracked files from the working directory.
+- Automatically scale down images that are wider than the diff area.
+- Added options to collapse added and deleted files. All files now start expanded by default.
+- (Linux) Added libsecret credential storage for distros that have it.
+
+## Fixed
+
+- Fixed regression in visiting range links from the log.
+- Print error to log when the pre-push hook fails.
+- Print error to log when stage fails because of a filter error.
+- Fixed staged state of files that can't be staged because of a filter error.
+- Fixed failure to execute some filters (including the LFS ones) that require the working directory be set to the working directory of the repository.
+- Fixed interface issues in some themes.
+- Fixed failure to update graph during refresh when the refresh is triggered by changes to the working directory.
+
+## Changed
+
+- Changed selection in the commit list to allow only two commits to be selected with Ctrl+click (or Cmd+click on Mac) instead of a contiguous range with Shift+click. Selecting a contigous range doesn't make sense when it includes commits on different branches.
+
 # [v2.0.6 - 2018-01-23](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.5)
 
 ## Fixed
