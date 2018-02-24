@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-rosconsole
+	pkgdesc = ROS - ROS console output library.
+	pkgver = 1.13.6
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rosconsole
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-cpp-common
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rosunit
+	makedepends = ros-melodic-rostime
+	makedepends = apr
+	makedepends = apr-util
+	makedepends = boost
+	makedepends = log4cxx
+	depends = ros-melodic-cpp-common
+	depends = ros-melodic-rosbuild
+	depends = ros-melodic-rostime
+	depends = apr
+	depends = apr-util
+	depends = log4cxx
+	source = ros-melodic-rosconsole-1.13.6-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosconsole/1.13.6-0.tar.gz
+	sha256sums = 2f454e47a6c9380b372d44f2d1b0e43db59f6c38a466aaa173fd3f3ce5571286
+
+pkgname = ros-melodic-rosconsole
+
