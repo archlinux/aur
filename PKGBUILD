@@ -1,12 +1,12 @@
 # Maintainer: Koyu Berteon <me@koyu.space>
 pkgname=minecraft-launcher-tar
 pkgver=2.0.1005.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Updated Minecraft Launcher built with tar file"
 arch=('x86_64')
 url="https://koyu.space/"
 license=('All rights reserved')
-depends=('java-runtime=8' 'icu57' 'xorg-xrandr')
+depends=('java-runtime>=8' 'icu57' 'xorg-xrandr')
 optdepends=('flite: chat narrator support')
 source=(
 https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz

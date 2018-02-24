@@ -1,11 +1,11 @@
 pkgbase = minecraft-launcher-tar
 	pkgdesc = Updated Minecraft Launcher built with tar file
 	pkgver = 2.0.1005.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://koyu.space/
 	arch = x86_64
 	license = All rights reserved
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	depends = icu57
 	depends = xorg-xrandr
 	optdepends = flite: chat narrator support
