@@ -196,7 +196,7 @@ package_usefuld() {
            'libusefuld'
            'util-linux')
   optdepends=('eudev: needs standalone udev')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" 'systemd')
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'systemd')
   conflicts=('nss-myhostname' 'systemd-tools' 'systemd')
   install="systemd.install"
@@ -226,9 +226,6 @@ package_usefuld() {
   chown root:systemd-journal "$pkgdir/var/log/journal"
   chmod 2755 "$pkgdir/var/log/journal"
 
-  # ship default policy to leave services disabled
-  echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
-
   # runtime libraries shipped with libsystemd
   rm "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so*
 
@@ -243,7 +240,6 @@ package_usefuld() {
 
   install -Dm644 "$srcdir/systemd-sysusers.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-sysusers.hook"
   install -Dm644 "$srcdir/systemd-tmpfiles.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-tmpfiles.hook"
-  install -Dm644 "$srcdir/systemd-update.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-update.hook"
 
   # delete systemd-udev so we can install eudev
   rm -r "$pkgdir"/etc/udev

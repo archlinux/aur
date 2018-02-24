@@ -46,7 +46,7 @@ pkgname = usefuld
 	optdepends = eudev: needs standalone udev
 	provides = nss-myhostname
 	provides = systemd-tools=237.64
-	provides = systemd
+	provides = systemd=237.64
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = systemd
