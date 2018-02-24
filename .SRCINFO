@@ -1,0 +1,15 @@
+pkgbase = quartus-standard-device-cyclonev
+	pkgdesc = Cyclone V device support for Quartus Prime Standard Edition
+	pkgver = 17.1.0.590
+	pkgrel = 1
+	url = http://dl.altera.com/?edition=lite#tabs-2
+	arch = x86_64
+	license = custom
+	depends = quartus-standard
+	options = !strip
+	options = !upx
+	source = http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/stratixv-17.1.0.590
+	md5sums = SKIP
+
+pkgname = quartus-standard-device-cyclonev
+
