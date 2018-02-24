@@ -4,12 +4,12 @@ pkgver=1.8
 pkgrel=1
 pkgdesc="Halo is an icon theme for Linux desktops, the set is inspired by the latest flat design trend from Alejandro Camarena"
 arch=('any')
-url="https://github.com/archmerge/Halo-icons"
+url="https://github.com/erikdubois/halo-icons"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
 provides=('halo-icons-git')
 options=(!strip !emptydirs)
-source=('Halo::git+https://github.com/archmerge/Halo-icons')
+source=('Halo::git+https://github.com/erikdubois/Halo-icons')
 sha256sums=('SKIP')
 
 package() {
