@@ -3,7 +3,7 @@
 
 pkgname=league-fonts
 pkgver=20171115
-pkgrel=1
+pkgrel=2
 pkgdesc='A package depending on all the fonts from The League Of The Moveable Type'
 arch=('any')
 url='http://theleagueofmoveabletype.com'
@@ -19,6 +19,7 @@ depends=('ttf-league-spartan'
          'ttf-ostrich-sans'
          'ttf-junction'
          'ttf-league-gothic'
+         'ttf-league-mono'
          'ttf-knewave'
          'ttf-league-script-number-one'
          'ttf-orbitron'
