@@ -2,12 +2,12 @@ pkgbase = python-summa-git
 	pkgdesc = TextRank implementation for text summarization and keyword extraction in Python.
 	pkgver = 0.1.0.r6.g985402e
 	pkgrel = 1
-	url = https://github.com/mar77i/textrank
+	url = https://github.com/summanlp/textrank
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-scipy
-	source = git+https://github.com/mar77i/textrank.git
+	source = git+https://github.com/summanlp/textrank.git
 	sha1sums = SKIP
 
 pkgname = python-summa-git
