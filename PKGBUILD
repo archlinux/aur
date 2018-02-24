@@ -16,9 +16,13 @@ sha256sums=('c5f1c74714ed93ff0ba02c504c94055785aa877925fd003b8cdb433cf302a4ed'
 
 _dir="ignitionrobotics-ign-cmake-1f49f8a81dd8"
 
-build() {
+prepare() {
   cd "$srcdir/$_dir"
   patch -Np2 -i "${srcdir}/jsoncpp.patch"
+}
+
+build() {
+  cd "$srcdir/$_dir"
 
   mkdir -p build
   cd build
