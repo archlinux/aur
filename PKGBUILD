@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-h11')
 source=("https://pypi.python.org/packages/8a/8e/65017baa6a398f93866c68054ce797aef1a8b10793c94d8653f70e8ad613/wsproto-$pkgver.tar.gz")
-md5sums=('d75d9fe117cad031f3429a4f916d065c')
+sha512sums=('583e030dc88971b3733e5e84e5fbaa70d6043d01485cabbbf45470baa31e4f511aea55e108132fc298aeae0031542af7bdd22b7ae25b11832179025a2fde4bdd')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
