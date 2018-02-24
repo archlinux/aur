@@ -2,7 +2,7 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -18,10 +18,10 @@ optdepends=('libsecret: support for Gnome libsecret password storage (must recom
             'ecryptfs-simple: for eCryptfs support')
 conflicts=("sirikali-git")
 source=("${_name}-${pkgver}.tar.xz::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz"
-        "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.asc")
+        "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.sha2.asc")
 sha256sums=('2ab44411f9aee06d0d7ca4592fbf8d830078b99f6bc60469648c5b0d8baefa21'
             'SKIP')
-validpgpkeys=('E3AF84691424AD00E099003502FC64E8DEBF43A8')
+validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 
 prepare() {
   cd "$srcdir/${_name}-${pkgver}"
