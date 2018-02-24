@@ -20,7 +20,7 @@ source=(
 sha256sums=(
     'SKIP'
     'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
-    'SKIP'
+    '9d7d361911e717637af3674b82f6919e6f76c2a915e2a24d7f28f716caa5b70c'
 )
 
 _importpath="github.com/trezor/${gitname}"
