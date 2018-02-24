@@ -1,5 +1,5 @@
 # Submitter: Zesen Qian <quartus at riaqn dot org>
-# Maintainer Sequencer <liujiuyang1994 at gmail dot com>
+# Maintainer: Sequencer <liujiuyang1994 at gmail dot com>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
@@ -20,18 +20,16 @@ _alteradir="/opt/altera"
 depends=('desktop-file-utils' 'expat' 'fontconfig' 'freetype2'
 'glibc' 'gtk2' 'libcanberra' 'libpng' 'libpng12' 'libice' 'libsm'
 'util-linux' 'ncurses' 'tcl' 'tcllib' 'zlib' 'libx11' 'libxau'
-'libxdmcp' 'libxext' 'libxft' 'libxrender' 'libxt' 'libxtst')
+'libxdmcp' 'libxext' 'libxft' 'libxrender' 'libxt' 'libxtst' 'lsb-release')
 
-source=("http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/update/QuartusSetup-${pkgver}-linux.run"
+source=("RealQuartusSetup-${pkgver}-linux.run::http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/update/QuartusSetup-${pkgver}-linux.run"
         "http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/QuartusSetup-${_oldver}-linux.run"
-        "QuartusWrapper-${pkgver}-linux.run"
         "quartus.sh"
         "quartus.desktop"
         "51-usbblaster.rules"
         "quartus.install")
 sha256sums=('5a6a98b61b054bb2116be36afd53aa67e67684a0017adfca0e1a9b96ef0069da'
             '2f05a82bc996a9fa160f4dc42ea9afd047d7b1535589e4687681a611319eb44d'
-            'cdaacc5198bb3af03cdf831c4734effa6ae0eac6f14971388a808ce701db1c26'    
             '849dd042a6173bb4f97a9522b51935bd3069a3313fe963ae19dcf4c25331b291'
             'eade659fda0db843a5b287502415c698c4f251f3b721836e2a56911896fc2371'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b'
@@ -40,27 +38,33 @@ sha256sums=('5a6a98b61b054bb2116be36afd53aa67e67684a0017adfca0e1a9b96ef0069da'
 options=(!strip !upx) # Stripping and UPX will takes ages, I'd avoid it.
 install='quartus.install'
 PKGEXT=".pkg.tar" # Do not compress
+prepare() {
+    cd "${srcdir}"
+    chmod a+x "QuartusSetup-${_oldver}-linux.run"
+    chmod a+x "RealQuartusSetup-${pkgver}-linux.run"
+}
 
 package() {
     cd "${srcdir}"
-
-    chmod a+x "QuartusSetup-${_oldver}-linux.run"
-    chmod a+x "QuartusSetup-${pkgver}-linux.run"
-    chmod a+x "QuartusWrapper-${pkgver}-linux.run"
-
-    # switch two files
-    mv "QuartusSetup-${pkgver}-linux.run" "temp"
-    mv "QuartusWrapper-${pkgver}-linux.run" "QuartusSetup-${pkgver}-linux.run"
-    mv "temp" "QuartusWrapper-${pkgver}-linux.run"
-
-    DISPLAY="" ./"QuartusSetup-${_oldver}-linux.run" --accept_eula 1 --mode unattended --unattendedmodeui none --installdir "${pkgdir}${_alteradir}" &>/dev/null & 
-    
-    while [ ! -d "${pkgdir}${_alteradir}/logs" ]; do
+    DISPLAY="" ./"QuartusSetup-${_oldver}-linux.run" --accept_eula 1 --mode unattended --unattendedmodeui none --installdir "${pkgdir}${_alteradir}" & 
+    while [ ! -f "${pkgdir}${_alteradir}/logs/quartus-${_oldver}-linux-install.log" ]; do
+        echo waiting for QuartusSetup-${_oldver}
+	sync
         sleep 10
     done
     killall QuartusSetup-${_oldver}-linux.run
-    
+    echo "base package packaged"
+    DISPLAY="" ./"RealQuartusSetup-${pkgver}-linux.run" --accept_eula 1 --mode unattended --unattendedmodeui none --installdir "${pkgdir}${_alteradir}" & 
+    while [ ! -f "${pkgdir}${_alteradir}/logs/quartus-${pkgver}-linux-install.log" ]; do
+        echo waiting for QuartusSetup-${pkgver}
+	sync
+        sleep 10
+    done
+    killall RealQuartusSetup-${pkgver}-linux.run
+    sync
+    echo "update package packaged"
     # Remove uninstaller and install logs since we have a working package management
+    echo "remove useless package"
     rm -r "${pkgdir}${_alteradir}/uninstall"
     rm -r "${pkgdir}${_alteradir}/logs"
 
