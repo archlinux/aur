@@ -3,7 +3,7 @@
 pkgname=otf-ibm-plex-git
 _pkgname=otf-ibm-plex
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='IBM Plex Mono, Sans, and Serif typefaces (OTF version)'
 arch=('any')
 url='https://github.com/IBM/plex'
@@ -37,5 +37,5 @@ package() {
 	done
 
 	# License
-	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/license.md
+	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
