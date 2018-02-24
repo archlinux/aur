@@ -1,4 +1,5 @@
 # $Id$
+# Maintainer: Aoibhinn Nic Aoidh <oibindnicaoidh@gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
@@ -20,7 +21,7 @@ backup=('etc/xdg/luakit/globals.lua'
         'etc/xdg/luakit/webview_wm.lua'
         'etc/xdg/luakit/window.lua')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luakit/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('23d98b6b51b66c85b6823cd287e161e1093b80639f06f1da9b0a7290b0859d37')
+sha256sums=('277f8ee237b7728f00dd2f6875dc386f41280ff69024e40a153a949faaff905b')
 
 build() {
   cd $pkgname-$pkgver
