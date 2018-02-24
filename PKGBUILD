@@ -9,7 +9,7 @@ url="http://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
 depends=('pangomm>=1.4' 'libsub>=1.2.4' 'libcxml>=0.15.4' 'libdcp>=1.4.4' 'ffmpeg' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm')
 makedepends=('python2' 'boost>=1.61.0' )
-source=("http://dcpomatic.com/downloads/${pkgver}/${pkgname}-${pkgver}.tar.bz2" )
+source=("${pkgname}-${pkgver}.tar.bz2::http://dcpomatic.com/dl.php?id=source&version=${pkgver}" )
 sha256sums=('bb3ecbd2cce651d4bce317c1d21d5d4f417163dd0192afa6cd5b06fa55831b2c')
 
 
