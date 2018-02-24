@@ -1,7 +1,7 @@
 pkgbase = ttf-nerd-fonts-symbols
 	pkgdesc = Developer targeted patched fonts with a high number of glyphs (icons)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = x86_64
 	arch = i686
