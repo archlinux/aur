@@ -1,14 +1,15 @@
 pkgbase = screentranslator
 	pkgdesc = Screen capture, OCR and translation tool.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gres.biz/screen-translator
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = qt5-webkit
 	depends = qt5-x11extras
 	depends = tesseract
-	source = screentranslator::git+https://github.com/OneMoreGres/ScreenTranslator.git#tag=2.0.1
+	source = screentranslator::git+https://github.com/OneMoreGres/ScreenTranslator.git#tag=2.0.2
 	source = screentranslator.desktop
 	source = screentranslator.png
 	source = screentranslator.sh

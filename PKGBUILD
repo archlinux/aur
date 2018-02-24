@@ -1,14 +1,14 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=screentranslator
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Screen capture, OCR and translation tool.'
 url='https://gres.biz/screen-translator'
 license=('MIT')
 arch=('x86_64')
 depends=('qt5-webkit' 'qt5-x11extras' 'tesseract')
-makedepends=()
+makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/OneMoreGres/ScreenTranslator.git#tag=${pkgver}"
   "${pkgname}.desktop"
