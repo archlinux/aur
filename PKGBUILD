@@ -9,20 +9,16 @@ url="https://github.com/cytle/wechat_web_devtools"
 license=('custom')
 
 depends=('wine' 'wine-mono' 'httpie' 'wget')
-makedepends=('git' 'wine_gecko')
+makedepends=('wine_gecko')
 
-source=("git://github.com/cytle/wechat_web_devtools")
+source=("https://github.com/cytle/wechat_web_devtools/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
 install=${pkgname}.install
 
-prepare() {
-    cd $srcdir/$pkgname
-    rm images -rf
-    rm 'package.nw/node_modules/git-utils/deps/libgit2/tests/resources/status/这'
-}
-
 package() {
+    rm -rf $srcdir/$pkgname-$pkgver/images
     install -dm755 $pkgdir/opt
-    cp -r $srcdir/$pkgname $pkgdir/opt/
+    cp -r $srcdir/$pkgname-$pkgver $pkgdir/opt/$pkgname
+    echo '软件包较大 请耐心等待 please wait'
 }

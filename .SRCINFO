@@ -6,13 +6,12 @@ pkgbase = wechat_web_devtools
 	install = wechat_web_devtools.install
 	arch = any
 	license = custom
-	makedepends = git
 	makedepends = wine_gecko
 	depends = wine
 	depends = wine-mono
 	depends = httpie
 	depends = wget
-	source = git://github.com/cytle/wechat_web_devtools
+	source = https://github.com/cytle/wechat_web_devtools/archive/v1.02.1802080.tar.gz
 	sha512sums = SKIP
 
 pkgname = wechat_web_devtools
