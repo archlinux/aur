@@ -1,0 +1,33 @@
+addremvoclib() {
+  # copied from $(voc-git-repo)/src/tools/make/addlibrary.sh
+
+  if ! which ldconfig >/dev/null 2>&1; then exit 0; fi
+
+  if test -d /etc/ld.so.conf.d; then
+
+    # Linux-like system
+    # Need to update the ldconfig configuration in the /etc/ld.so.conf.d dir.
+    if test "$1" = "install"; then
+      echo $2>/etc/ld.so.conf.d/lib$3.conf
+    else
+      rm -f /etc/ld.so.conf.d/lib$3.conf
+    fi
+    ldconfig
+
+  else
+
+    # BSD-like system
+    # Just run ldconfig -m to update the cache. It'll add-to/update/reove-from
+    # the cache appropraitely for whether they are present opt not.
+    ldconfig -m "$2"
+
+  fi
+}
+
+post_install() {
+  addremvoclib install /opt/voc/lib voc
+}
+
+pre_remove() {
+  addremvoclib uninstall /opt/voc/lib voc
+}
