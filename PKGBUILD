@@ -78,27 +78,41 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  # move default config to conf.d.example
   mv "$pkgdir/etc/icinga2/conf.d" "$pkgdir/etc/icinga2/conf.d.example"
   mkdir "$pkgdir/etc/icinga2/conf.d"
-  rm "$pkgdir/etc/icinga2/features-enabled/checker.conf"
-  rm "$pkgdir/etc/icinga2/features-enabled/mainlog.conf"
-  rm "$pkgdir/etc/icinga2/features-enabled/notification.conf"
-  rm -r "$pkgdir/run"
 
-  install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
-  cd "$srcdir/$_pkgname"
-
-  install -Dm644 tools/syntax/vim/ftdetect/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/ftdetect/icinga2.vim"
-  install -Dm644 tools/syntax/vim/syntax/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/syntax/icinga2.vim"
-  install -Dm644 tools/syntax/nano/icinga2.nanorc "$pkgdir/usr/share/nano/icinga2.nanorc"
-
+  # restrict some filesystem locations by default
   chmod 750 "$pkgdir/etc/icinga2" \
             "$pkgdir/var/lib/icinga2" \
             "$pkgdir/var/spool/icinga2" \
             "$pkgdir/var/cache/icinga2" \
             "$pkgdir/var/log/icinga2"
+
+  # config files for creating users, groups and tmp files/dirs
+  install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
+  # install syntax highlighting for vim and nano
+  cd "$srcdir/$_pkgname"
+  install -Dm644 tools/syntax/vim/ftdetect/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/ftdetect/icinga2.vim"
+  install -Dm644 tools/syntax/vim/syntax/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/syntax/icinga2.vim"
+  install -Dm644 tools/syntax/nano/icinga2.nanorc "$pkgdir/usr/share/nano/icinga2.nanorc"
+
+  # remove features-enabled symlink from the package so that they are not
+  # recreated on package upgrades. they are initially set-up in the
+  # post_install script.
+  rm "$pkgdir/etc/icinga2/features-enabled/checker.conf"
+  rm "$pkgdir/etc/icinga2/features-enabled/mainlog.conf"
+  rm "$pkgdir/etc/icinga2/features-enabled/notification.conf"
+  # ensure that nothing it left in features enables. make sure to keep the list
+  # above in sync with post_install. rmdir && mkdir seems to be the easiest way
+  # to check if the directory was actually empty.
+  rmdir "$pkgdir/etc/icinga2/features-enabled" && mkdir "$pkgdir/etc/icinga2/features-enabled" || {
+    error 'Features enabled by make install are inconsistent with those in package().'
+    ls -l "$pkgdir/etc/icinga2/features-enabled"
+    return 1
+  }
 
   # check that the backup array contains all files in /etc except those explicitly excluded in the command below.
   diff -u \
@@ -111,4 +125,7 @@ package() {
     error 'Backup array and file installed to /etc are inconsistent.'
     return 1
   }
+
+  # some cleanup
+  rm -r "$pkgdir/run"
 }
