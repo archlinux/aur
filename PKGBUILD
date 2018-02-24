@@ -3,7 +3,7 @@
 
 pkgname=rsyslog
 pkgver=8.33.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('any')
@@ -62,4 +62,5 @@ package() {
   make install DESTDIR="$pkgdir"
   install -D -m644 "$srcdir"/${pkgname}.conf "$pkgdir"/etc/${pkgname}.conf
   install -D -m644 "$srcdir"/${pkgname}.logrotate "$pkgdir"/etc/logrotate.d/${pkgname}
+  install -D -m644 "$srcdir"/${pkgname}.service /lib/systemd/system/${pkgname}.service
 }
