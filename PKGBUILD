@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=gimp-plugin-export-layers
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 gimpver=2.0
 pkgdesc="GIMP plug-in that exports layers as separate images."
 arch=(any)
