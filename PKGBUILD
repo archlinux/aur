@@ -3,7 +3,7 @@
 
 pkgname=projectlibre
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
 replaces=('project-libre')
@@ -11,7 +11,7 @@ url="http://www.projectlibre.org"
 license=('CPAL')
 depends=('java-runtime')
 install=projectlibre.install
-source=("https://svwh.dl.sourceforge.net/project/${pkgname}/ProjectLibre/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
+source=("http://sourceforge.mirrorservice.org/p/pr/projectlibre/ProjectLibre/${pkgver%.*}/projectlibre-${pkgver}.tar.gz"
 		"projectlibre.png"
 		"projectlibre.desktop"
 		"projectlibre.patch"
