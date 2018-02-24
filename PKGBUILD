@@ -3,7 +3,7 @@
 pkgname=include-what-you-use
 epoch=1
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 _clang_major=5
 _clang_minor=0
 _clang_ver="$_clang_major.$_clang_minor"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    cd $srcdir/$pkgname/build
+    cd "$srcdir/$pkgname-clang_${_clang_ver}/build"
 
     make install DESTDIR=$pkgdir
     install -Dm755 ../fix_includes.py "${pkgdir}/usr/bin/iwyu-fix_includes.py"

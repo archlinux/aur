@@ -1,7 +1,7 @@
 pkgbase = include-what-you-use
 	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://include-what-you-use.org
 	arch = i686
