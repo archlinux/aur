@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180206
+pkgver=4.0.0v20180223
 _pkgver=4.0.0
-_snapshot_=20180206
-_snapver_=0233
+_snapshot_=20180223
+_snapver_=0238
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -94,6 +94,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-rpath \
+    --disable-fribidi \
     --enable-faad \
     --enable-nls \
     --enable-lirc \
@@ -131,7 +132,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('1e8aeb8b0bbac97b6e828e4756d08d83a1727df7750179964cb32e4f913f794c'
+sha256sums=('ab9063565f6ab93633994336001879de03740f5548bf13b1c04086ea4b3bfd85'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
