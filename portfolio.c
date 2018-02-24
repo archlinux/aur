@@ -1,6 +1,8 @@
 #include "portfolio.h"
 
-void portfolio_file_init() {
+char* portfolio_file;
+
+void portfolio_file_init(void) {
     char* home = getenv("HOME");
     char* path = (char*) malloc(strlen(home) + 30);
     if (path == NULL) {
@@ -27,7 +29,7 @@ char* portfolio_file_get_string(FILE* fp, size_t* len) {
     return portfolio_string;
 }
 
-void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option) {
+void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option) {
     if (quantity_shares < 0 || usd_spent < 0) { // Negative numbers
         printf("You must use positive values.\n");
         return;
@@ -185,8 +187,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
     char* password = NULL;
     Json* jobj = NULL;
     if (fp == NULL) { //if being called from portfolio_print_all
-        ticker_name_string = (char*) strip_char(
-                (char*) json_object_get_string(json_object_object_get(current_index, "Symbol")), '\"');
+        ticker_name_string = strip_char(json_object_get_string(json_object_object_get(current_index, "Symbol")), '\"');
         data[0] = json_object_get_double(json_object_object_get(current_index, "Shares"));
         data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
     } else { //if being called directly from main
@@ -245,13 +246,11 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
     return data;
 }
 
-int portfolio_symbol_index(char* ticker_name_string, Json* jarray) {
-    int num_symbols = (int) json_object_array_length(jarray);
+int portfolio_symbol_index(const char* ticker_name_string, Json* jarray) {
     char* str;
-    for (int i = 0; i < num_symbols; i++) {
-        str = (char*) json_object_to_json_string(
-                json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol"));
-        str = (char*) strip_char(str, '\"');
+    for (int i = 0; i < (int)json_object_array_length(jarray); i++) {
+        str = strip_char(json_object_to_json_string(
+                json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol")), '\"');
         if (strcmp(str, ticker_name_string) == 0) {
             free(str);
             return i;
@@ -273,7 +272,7 @@ char* portfolio_legacy_get_next_val(FILE* fp) {
     return val;
 }
 
-void portfolio_legacy_convert() {
+void portfolio_legacy_convert(void) {
     printf("Warning: this will overwrite your JSON formatted portfolio, which is stored at: \"$HOME/.tick_portfolio.json\". Continue? y/n\n");
     char c = 0;
     while (c != 'y' && c != 'n') {
@@ -346,7 +345,7 @@ void portfolio_encrypt_decrypt(int option, FILE* fp, char* password) {
             password = rc4_getPassword();
             if (option == ENCRYPT) { // When encrypting, ask to enter pw twice to make sure
                 printf("You will be asked to enter your password again to make sure the entries match.\n");
-                sleep(1);
+                sleep(2);
                 char* passwordCheck = rc4_getPassword();
                 if (strcmp(password, passwordCheck) != 0) {
                     printf("Passwords do not match!\n");
@@ -379,7 +378,7 @@ void portfolio_encrypt_decrypt(int option, FILE* fp, char* password) {
         }
         remove(portfolio_file); // Remove existing file and use fputc to write
         fp = fopen(portfolio_file, "w"); // fprintf %s won't work since there some chars are encoded to '\0', so it
-        for (int i = 0; i < len; i++)    // will be null terminated several times in the middle
+        for (int i = 0; i < (int)len; i++)    // will be null terminated several times in the middle
             fputc(encrypted[i], fp);
         fclose(fp);
         free(encrypted);

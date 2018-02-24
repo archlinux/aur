@@ -12,12 +12,12 @@
 #define DECRYPT 0
 #define ENCRYPT 1
 
-const char* portfolio_file;
+extern char* portfolio_file;
 
 /**
  * Sets portfolio_file to $HOME/.tick_portfolio.json
  */
-void portfolio_file_init();
+void portfolio_file_init(void);
 
 /**
  * Stores the given file in a string and returns it
@@ -35,7 +35,7 @@ char* portfolio_file_get_string(FILE* fp, size_t* len);
  * @param purchase_price quantity_shares of money spent
  * @param fp portfolio file
  */
-void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option);
+void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option);
 
 /**
  * Prints current holdings of all symbols
@@ -59,7 +59,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp, Json* current_
  * @param jarray the array
  * @return -1 if not found, the index otherwise
  */
-int portfolio_symbol_index(char* ticker_name_string, Json* jarray);
+int portfolio_symbol_index(const char* ticker_name_string, Json* jarray);
 
 /**
  * Returns a string from the current stream pointer to the next space, newline, or EOF
@@ -72,7 +72,7 @@ char* portfolio_legacy_get_next_val(FILE* fp);
  * Adds contents of legacy portfolio to JSON formatted portfolio
  * @param fp JSON formatted portfolio
  */
-void portfolio_legacy_convert();
+void portfolio_legacy_convert(void);
 
 /**
  * Returns an either encrypted or decrypted string of the input

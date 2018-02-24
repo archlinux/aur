@@ -1,5 +1,9 @@
 ## Command line stock and cryptocurrency portfolio tracker.
 #### How to install:
+Before installation, make sure all dependencies are installed:
+* curl
+* json-c
+* ncurses
 ```bash
 $ git clone https://github.com/aokellermann/tick.git
 $ cd tick
@@ -76,7 +80,7 @@ is taken from Coinmarketcap's free API. News information is taken from News
 API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
-#### Future Ideas
+#### Future Ideas/To-do
 * Command to get info about a security
 * Historical support -- 7d/28d profits
 * Different ways to sort "check all"
@@ -86,3 +90,6 @@ intraday data
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
 * Make printouts pretty with ncurses??
+* Check without re-encrypting
+* Make strip char work in place instead of allocing
+* Format prices with commas (locale)

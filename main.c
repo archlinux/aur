@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
     FILE* fp = fopen(portfolio_file, "r+");
     if (fp == NULL) {
         printf("Could not open portfolio file\n");
-        free((void*) portfolio_file);
+        free(portfolio_file);
         return 0;
     }
 
@@ -132,7 +132,7 @@ int main(int argc, char* argv[]) {
             }
         }
     }
-    free((void*) portfolio_file);
+    free(portfolio_file);
     fclose(fp);
     return 0;
 }

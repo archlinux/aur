@@ -13,7 +13,7 @@
  * Takes a password from user input and returns it (max 32 chars)
  * @return password
  */
-char* rc4_getPassword();
+char* rc4_getPassword(void);
 
 /**
  * Performs key exchange

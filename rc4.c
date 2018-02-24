@@ -1,6 +1,6 @@
 #include "rc4.h"
 
-char* rc4_getPassword() {
+char* rc4_getPassword(void) {
     unsigned char* pass = malloc(PASS_MAX + 1);
     if (pass == NULL) {
         fprintf(stderr, "malloc() failed\n");
@@ -51,7 +51,7 @@ char* rc4_prga(int keySchedule[KEY_SCHEDULE_LENGTH], size_t len) {
         fprintf(stderr, "malloc() failed\n");
         return NULL;
     }
-    for (int k = 0; k < len; k++) {
+    for (int k = 0; k < (int)len; k++) {
         i = (i + 1) % KEY_SCHEDULE_LENGTH;
         j = (j + keySchedule[i]) % KEY_SCHEDULE_LENGTH;
         temp = keySchedule[i];
@@ -63,6 +63,6 @@ char* rc4_prga(int keySchedule[KEY_SCHEDULE_LENGTH], size_t len) {
 }
 
 void rc4_execute(char* output, char* message, size_t len) {
-    for (int i = 0; i < len; i++)
+    for (int i = 0; i < (int)len; i++)
         output[i] ^= message[i];
 }
