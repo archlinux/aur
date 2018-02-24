@@ -1,7 +1,6 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
-pkgname=('icinga2-common-git' 'icinga2-git')
-pkgbase=icinga2-git
+pkgname='icinga2-git'
 _pkgname=icinga2
 pkgver=r7877.aacc535ac
 pkgrel=1
@@ -10,7 +9,39 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
+optdepends=('monitoring-plugins: plugins needed for icinga checks'
+            'libmariadbclient: for MySQL support'
+            'postgresql-libs: for PostgreSQL support')
 makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'systemd' 'wxgtk')
+provides=('icinga2' 'icinga2-common')
+conflicts=('icinga2' 'icinga2-common' 'icinga2-common-git')
+replaces=('icinga2-common-git')
+backup=(etc/default/icinga2
+        etc/icinga2/features-available/api.conf
+        etc/icinga2/features-available/checker.conf
+        etc/icinga2/features-available/command.conf
+        etc/icinga2/features-available/compatlog.conf
+        etc/icinga2/features-available/debuglog.conf
+        etc/icinga2/features-available/elasticsearch.conf
+        etc/icinga2/features-available/gelf.conf
+        etc/icinga2/features-available/graphite.conf
+        etc/icinga2/features-available/ido-mysql.conf
+        etc/icinga2/features-available/ido-pgsql.conf
+        etc/icinga2/features-available/influxdb.conf
+        etc/icinga2/features-available/livestatus.conf
+        etc/icinga2/features-available/mainlog.conf
+        etc/icinga2/features-available/notification.conf
+        etc/icinga2/features-available/opentsdb.conf
+        etc/icinga2/features-available/perfdata.conf
+        etc/icinga2/features-available/statusdata.conf
+        etc/icinga2/features-available/syslog.conf
+        etc/icinga2/constants.conf
+        etc/icinga2/icinga2.conf
+        etc/icinga2/scripts/mail-host-notification.sh
+        etc/icinga2/scripts/mail-service-notification.sh
+        etc/icinga2/zones.conf
+        etc/logrotate.d/icinga2)
+install='icinga2-git.install'
 source=('git+https://github.com/Icinga/icinga2.git')
 sha256sums=('SKIP')
 
@@ -38,53 +69,7 @@ build() {
   make
 }
 
-package_icinga2-common-git() {
-  pkgdesc="Common files for Icinga2"
-  provides=('icinga2-common')
-  conflicts=('icinga2-common')
-
-  cd "$srcdir/$_pkgname/build"
-  make DESTDIR="$pkgdir" install
-  rm -r $pkgdir/{etc,run,var}
-  rm -r $pkgdir/usr/{bin,share}
-  rm -r $pkgdir/usr/lib/systemd
-  rm -r $pkgdir/usr/lib/icinga2/{prepare-dirs,safe-reload,sbin}
-}
-
-package_icinga2-git() {
-  depends=('icinga2-common')
-  optdepends=('monitoring-plugins: plugins needed for icinga checks'
-              'libmariadbclient: for MySQL support'
-              'postgresql-libs: for PostgreSQL support')
-  provides=('icinga2')
-  conflicts=('icinga2')
-  backup=(etc/default/icinga2
-          etc/icinga2/features-available/api.conf
-          etc/icinga2/features-available/checker.conf
-          etc/icinga2/features-available/command.conf
-          etc/icinga2/features-available/compatlog.conf
-          etc/icinga2/features-available/debuglog.conf
-          etc/icinga2/features-available/elasticsearch.conf
-          etc/icinga2/features-available/gelf.conf
-          etc/icinga2/features-available/graphite.conf
-          etc/icinga2/features-available/ido-mysql.conf
-          etc/icinga2/features-available/ido-pgsql.conf
-          etc/icinga2/features-available/influxdb.conf
-          etc/icinga2/features-available/livestatus.conf
-          etc/icinga2/features-available/mainlog.conf
-          etc/icinga2/features-available/notification.conf
-          etc/icinga2/features-available/opentsdb.conf
-          etc/icinga2/features-available/perfdata.conf
-          etc/icinga2/features-available/statusdata.conf
-          etc/icinga2/features-available/syslog.conf
-          etc/icinga2/constants.conf
-          etc/icinga2/icinga2.conf
-          etc/icinga2/scripts/mail-host-notification.sh
-          etc/icinga2/scripts/mail-service-notification.sh
-          etc/icinga2/zones.conf
-          etc/logrotate.d/icinga2)
-  install='icinga2-git.install'
-
+package() {
   cd "$srcdir/$_pkgname/build"
 
   make DESTDIR="$pkgdir" install
@@ -113,8 +98,6 @@ package_icinga2-git() {
             "$pkgdir/var/spool/icinga2" \
             "$pkgdir/var/cache/icinga2" \
             "$pkgdir/var/log/icinga2"
-
-  rm -r $pkgdir/usr/lib/icinga2/lib*
 
   # check that the backup array contains all files in /etc except those explicitly excluded in the command below.
   diff -u \
