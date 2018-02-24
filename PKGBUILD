@@ -8,7 +8,7 @@ pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
-depends=('boost-libs' 'libedit' 'openssl' 'yajl')
+depends=('boost-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
