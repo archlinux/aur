@@ -2,7 +2,7 @@
 
 pkgname=xca
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="graphical user interface to OpenSSL, RSA/DSA public keys, certificates, signing requests and revokation lists"
 arch=('i686' 'x86_64')
 url="http://xca.hohnstaedt.de"
