@@ -1,0 +1,28 @@
+pkgbase = jupyter-notebook-latest
+	pkgdesc = The language-agnostic HTML notebook application for Project Jupyter
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/jupyter/notebook
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = npm
+	makedepends = git
+	depends = python-setuptools
+	depends = python-jinja
+	depends = python-tornado
+	depends = python-terminado
+	depends = python-traitlets
+	depends = jupyter-nbformat
+	depends = python-jupyter_core
+	depends = python-jupyter_client
+	depends = mathjax
+	depends = python-send2trash
+	optdepends = pandoc: notebook export
+	provides = jupyter-notebook
+	conflicts = jupyter-notebook
+	source = jupyter-notebook-5.3.0.tgz::https://github.com/jupyter/notebook/archive/5.3.0.tar.gz
+	sha256sums = a674f74e612b435a1ec9372f8f583b0cd64d9db531534c3174f06a2a9087ed80
+
+pkgname = jupyter-notebook-latest
+
