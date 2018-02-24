@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideodownloader
-pkgver=4.4.3.2265
+pkgver=4.4.4.2275
 pkgrel=1
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-script' 'portaudio' 'ffmpeg2.8')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('539960a298bc527227ef8d2a1cecd5ed71c7985f8949f2b851abe933bb923380'
+sha256sums=('bfe64bc1fd84cd945fc23ea0c25dfc5b84a0359a4defc7c07cccd14e905eae89'
             '6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952'
             '56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be')
 
