@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-rostest
+	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
+	pkgver = 1.13.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rostest
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rosunit
+	makedepends = boost
+	depends = ros-melodic-rosgraph
+	depends = ros-melodic-rospy
+	depends = ros-melodic-rosmaster
+	depends = ros-melodic-rosunit
+	depends = ros-melodic-roslaunch
+	depends = boost
+	source = ros-melodic-rostest-1.13.6-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/1.13.6-0.tar.gz
+	sha256sums = 48219b617f7efeb9e9c860d2d8d42437bf16b3d953fbff163db40196b2cc0bdc
+
+pkgname = ros-melodic-rostest
+
