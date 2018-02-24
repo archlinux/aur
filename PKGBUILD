@@ -78,7 +78,7 @@ package() {
   cd $pkgname-$pkgver/build
 
   # Add optional deps based on selected or autodetected options
-  [[ "$(sed -n '/^WITH_GRASS7:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('grass: GRASS7 plugin')
+  [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]]      && optdepends+=('grass: GRASS7 plugin')
   [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
   [[ "$(sed -n '/^WITH_GLOBE:/  s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth: Globe plugin')
 
