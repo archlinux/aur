@@ -1,29 +1,44 @@
-# $Id$
+# Maintainer: Jonathon Fernyhough <jonathon at_manjaro dot_org>
+# Contributor: Gaming4JC
 # Previous Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gtkhtml4
+pkgname=gtkhtml4-git
+_pkgname=gtkhtml4
 _pkgbasename=gtkhtml
-pkgver=4.10.0
+pkgver=latest
 pkgrel=1
 pkgdesc="A lightweight HTML renderer/editor widget for GTK3"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('gtk3' 'enchant' 'iso-codes' 'libsoup')
+depends=('cairo>=1.10.0'
+         'enchant>=2.0'
+         'gnome-common>=3.2.0'
+         'gnome-icon-theme>=2.22'
+         'gtk3>=3.2.0'
+         'iso-codes>=0.49')
 makedepends=('intltool')
-url="http://www.gnome.org"
-source=(https://download.gnome.org/sources/$_pkgbasename/${pkgver:0:4}/$_pkgbasename-$pkgver.tar.xz)
-sha256sums=('ca3b6424fb2c7ac5d9cb8fdafb69318fa2e825c9cf6ed17d1e38d9b29e5606c3')
+url='https://github.com/GNOME/gtkhtml'
+source=("${pkgname/-git/}::git+https://github.com/GNOME/${_pkgbasename}.git"
+        'enchant-2.patch')
+sha256sums=('SKIP'
+            '2b78f071f7893e19618959443f3775bd435941a37ea9198b2fe72b596c205891')
+
+prepare() {
+	cd "${pkgname/-git/}"
+	patch -Np0 < ../enchant-2.patch
+}
 
 build() {
-    cd "$_pkgbasename-$pkgver"
-    ./configure --prefix=/usr --sysconfdir=/etc \
-        --libexecdir=/usr/lib/gtkhtml4 \
-        --localstatedir=/var --disable-static
-    make
+	cd "${pkgname/-git/}"
+	./autogen.sh  --prefix=/usr --sysconfdir=/etc \
+		--libexecdir=/usr/lib/gtkhtml4 \
+		--localstatedir=/var --disable-static
+	./configure
+	make
 }
 
 package() {
-    cd "$_pkgbasename-$pkgver"
-    make DESTDIR="$pkgdir" install
+	cd "${pkgname/-git/}"
+	make DESTDIR="$pkgdir" install
 }
 
