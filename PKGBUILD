@@ -22,7 +22,7 @@ package() {
 	cd $srcdir/simonpi
 	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
 	install -dm755 $pkgdir/opt/simonpiemu/
-	cp simonpiemu/* $pkgdir/opt/simonpiemu/
+	cp -r simonpiemu/* $pkgdir/opt/simonpiemu/
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
