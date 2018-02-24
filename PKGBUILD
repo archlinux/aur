@@ -29,7 +29,7 @@ source=(
 )
 
 md5sums=('b7d246790ebd4080b0a1754689999a44'
-         '5dde136f2fbcdf5773a011a39c82cfc6'
+         'a95280cf05920bd561cae451acb5b27d'
          'dfa7033fc39632af0f2c7e26ee966789'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
