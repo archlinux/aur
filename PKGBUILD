@@ -21,7 +21,8 @@ validpgpkeys=('5D38116FA4D3A7CC77E378D37E83610126DCC2E8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/access_process_vm_h.patch"
+  patch -Np1 -i "${srcdir}/stp_remove_install_hooks.patch"
+  autoreconf -i
 }
 build() {
   cd "${pkgname}-${pkgver}"
