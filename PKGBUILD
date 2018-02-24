@@ -5,18 +5,18 @@
 # Contributor: Pawel Bogur <jid:smeagol@uaznia.net>
 
 pkgname=tcllib
-pkgver=1.18
-pkgrel=2
+pkgver=1.19
+pkgrel=1
 pkgdesc="Set of pure-Tcl extensions."
 arch=('any')
 url="http://core.tcl.tk/tcllib/"
 license=('bsd')
 depends=('tcl')
-source=(https://github.com/tcltk/tcllib/archive/tcllib_${pkgver/./_}.tar.gz)
-sha256sums=('1c831474ed84fec349234a96bd7d855a74245bb305bfc2c9270bfde95c357b4f')
+source=(https://github.com/tcltk/tcllib/archive/tcllib-${pkgver/./-}.tar.gz)
+sha256sums=('f0977ed98a6555266461a818d2814ff11f35f90412d394e13bf3da686cc93ca0')
 
 package(){
-  cd "$srcdir"/tcllib-tcllib_${pkgver/./_}
+  cd "$srcdir"/tcllib-tcllib-${pkgver/./-}
   tclsh installer.tcl -pkg-path "$pkgdir"/usr/lib/tcllib \
 	-app-path "$pkgdir"/usr/bin \
 	-nroff-path "$pkgdir"/usr/share/man/mann \
