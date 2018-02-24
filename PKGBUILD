@@ -5,11 +5,13 @@ pkgdesc="Meta-package for the base languages of camisole"
 arch=('any')
 url="https://github.org/prologin/camisole"
 license=('GPL')
-depends=('fpc'                # handle Pascal sources
+depends=('dmd'                # handle D sources
+         'fpc'                # handle Pascal sources
          'gambit-c'           # handle Scheme sources
          'gcc'                # handle C, C++ sources
          'gcc-ada'            # handle Ada sources
          'ghc'                # handle Haskell sources
+         'go'                 # handle Go sources
          'jdk8-openjdk'       # handle Java sources
          'luajit'             # handle Lua sources
          'mono'               # handle C# sources
