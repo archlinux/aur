@@ -6,7 +6,7 @@
 # Contributor: z3ntu <WEI16416@spengergasse.at>
 
 pkgname=packettracer
-pkgver=7.1
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'x86_64' )
@@ -15,11 +15,11 @@ url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
 source=('packettracer' 'linguist' 'packettracer.sh')
-source_x86_64=('local://PacketTracer71_64bit_linux.tar.gz')
+source_x86_64=('local://Packet Tracer 7.1.1 for Linux 64 bit.tar')
 sha512sums=('3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17'
 	    'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
 	    '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
-sha512sums_x86_64=('05b2c81f4ef6ca97b7199d71ad94d5ddbfc784206245785c0cbd2665e77ab9af429482e032678fe833f74d122534dc69a7085a9e89e13a7aacab959526843b42')
+sha512sums_x86_64=('7d4f2bd35826702d3e0637b42c985173b4c34b55e7b10979e8efa8ac4a6fc22a3d59392d714f15718745424e08c8d077f88f6ed3b3d62774c5c7447b223192c1')
 
 # We don't want to strip anything from the static libraries
 # We want to keep all binaries orginal (Cisco is goofy)
