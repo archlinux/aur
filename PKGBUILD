@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://mozart.github.io/'
 license=('BSD')
 depends=('tk')
-conflicts=('mozart2')
+conflicts=('mozart2' 'mozart1-bin')
 source=(https://github.com/alevalv/mozart2-compiler-archlinux/releases/download/1.0/bin.rpm
 	https://raw.githubusercontent.com/mozart/mozart2/master/LICENSE.txt)
 sha512sums=('dbdf8619d41918e7403a8ea3a7759fdc15013c9bece37ce10d16371428f15c66a31be3624175a4d49ce318647200eac56806922ba240935e421e061e32d8690c'
