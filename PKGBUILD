@@ -2,8 +2,8 @@
 
 pkgname=bitwarden-git
 _pkgname=desktop
-pkgver=v0.0.15.r3.g5ee4a89
-_pkgver=0.0.15
+pkgver=v0.0.16
+_pkgver=0.0.16
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('bitwarden')
 install=${pkgname}.install
 
 source=(git+https://github.com/bitwarden/${_pkgname}.git package.json)
-sha256sums=('SKIP' '2e353aeac4694cd9d3e66a245a78c749e5d4d31fd23934179f32bd0bc63e254b')
+sha256sums=('SKIP' '3226882ac6086bd0caee8368203344c1b44e94e86fe73b1b14b5b7c8d7309682')
 
 pkgver() {
     cd $_pkgname
