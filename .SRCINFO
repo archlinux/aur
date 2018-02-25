@@ -1,8 +1,8 @@
 pkgbase = usql
 	pkgdesc = usql is a universal command-line interface for SQL databases
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://github.com/knq/usql
+	url = https://github.com/xo/usql
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -13,7 +13,7 @@ pkgbase = usql
 	makedepends = git
 	depends = go
 	provides = usql
-	source = git+https://github.com/knq/usql#tag=v0.5.0
+	source = git+https://github.com/xo/usql#tag=v0.6.0
 	md5sums = SKIP
 
 pkgname = usql
