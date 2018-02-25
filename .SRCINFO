@@ -1,0 +1,25 @@
+pkgbase = python-gevent-eventemitter-git
+	pkgdesc = Implements EventEmitter using gevent
+	pkgver = 659116c
+	pkgrel = 1
+	url = https://github.com/rossengeorgiev/gevent-eventemitter
+	arch = any
+	license = MIT
+	checkdepends = python
+	checkdepends = python2
+	checkdepends = python-nose
+	checkdepends = python-coverage
+	checkdepends = python2-nose
+	checkdepends = python2-coverage
+	makedepends = python-setuptools
+	source = git://github.com/rossengeorgiev/gevent-eventemitter
+	sha256sums = SKIP
+
+pkgname = python-gevent-eventemitter-git
+	depends = python
+	depends = python-gevent
+
+pkgname = python2-gevent-eventemitter-git
+	depends = python2
+	depends = python2-gevent
+
