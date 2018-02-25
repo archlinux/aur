@@ -3,9 +3,9 @@
 pkgname=iramuteq-bin
 pkgver=0.7.alpha2
 pkgver_=0.7-alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="Statistical analysis of text"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.iramuteq.org/"
 license=('GPL')
 depends=('python2' 'wxpython' 'python2-xlrd' 'r')
