@@ -1,6 +1,6 @@
 pkgbase = reposync
 	pkgdesc = Wrapper for aursync
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = reposync
 	depends = bash
 	depends = s3fs-fuse
 	source = reposync.sh
-	sha256sums = 6a4adae099062fa82c7d7dc30a608274dcf2ca3ca726e661e365d6df8159bf1a
+	sha256sums = 69de244e9aed21b434ee5f73a463d09739c5baf3d34b50036ce862fe6601e94e
 
 pkgname = reposync
 

@@ -6,7 +6,7 @@ cfg_file="${REPOSYNC_CONFIG:-/etc/xdg/$cfg_name}"
 cfg_file_system="$cfg_file"
 local_repo="$HOME/.cache/reposync"
 
-do_rsync="rsync -acv --append"
+do_rsync="rsync -av --append"
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
