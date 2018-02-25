@@ -1,0 +1,51 @@
+Description: Use system-wide copies of gsm.h.
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>
+Forwarded: not-needed
+
+Index: swh-plugins/gsm_1215.xml
+===================================================================
+--- swh-plugins.orig/gsm_1215.xml
++++ swh-plugins/gsm_1215.xml
+@@ -9,7 +9,7 @@
+     <code><![CDATA[
+       #include <stdlib.h>
+       #include "ladspa-util.h"
+-      #include "gsm/gsm.h"
++      #include <gsm/gsm.h>
+       #include "util/biquad.h"
+ 
+       #define SCALE 32768.0f
+Index: swh-plugins/configure.ac
+===================================================================
+--- swh-plugins.orig/configure.ac
++++ swh-plugins/configure.ac
+@@ -143,7 +143,6 @@ AC_SUBST(LIBTOOL)
+ AC_OUTPUT([
+ Makefile
+ util/Makefile
+-gsm/Makefile
+ gverb/Makefile
+ metadata/Makefile
+ po/Makefile.in
+Index: swh-plugins/Makefile.am
+===================================================================
+--- swh-plugins.orig/Makefile.am
++++ swh-plugins/Makefile.am
+@@ -34,7 +34,7 @@ plugin_LTLIBRARIES = \
+ 	latency_1914.la xfade_1915.la sc4m_1916.la \
+ 	mbeq_1197.la pitch_scale_1193.la pitch_scale_1194.la imp_1199.la
+ 
+-SUBDIRS = po util gsm gverb metadata
++SUBDIRS = po util gverb metadata
+ 
+ # Wacky stuff to stop automake getting confused
+ EXTRA_DIST = config.rpath  @top_srcdir@/*.xml @top_srcdir@/*.c @top_srcdir@/*.h \
+@@ -73,7 +73,7 @@ sc3_1427_la_LIBADD = -Lutil -ldb -lrms
+ sc4_1882_la_LIBADD = -Lutil -ldb -lrms
+ sc4m_1916_la_LIBADD = -Lutil -ldb -lrms
+ se4_1883_la_LIBADD = -Lutil -ldb -lrms
+-gsm_1215_la_LIBADD = gsm/libgsm.a
++gsm_1215_la_LIBADD = -lgsm
+ gverb_1216_la_LIBADD = -Lgverb -lgverb
+ lcr_delay_1436_la_DEPENDENCIES = util/biquad.h
+ 
