@@ -1,0 +1,14 @@
+pkgbase = coinget
+	pkgdesc = the fastest cli price checker for cryptocurrencies
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Olavhaasie/coinget
+	arch = x86_64
+	license = MIT
+	depends = curl
+	provides = coinget
+	source = https://github.com/Olavhaasie/coinget/releases/download/v2.0.0/coinget-2.0.0.tar.gz
+	md5sums = faf7998d1355331e82973564befefa23
+
+pkgname = coinget
+
