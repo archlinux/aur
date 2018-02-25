@@ -2,7 +2,7 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2.r11.g17043e8e
+pkgver=v19.2.r15.g6564db6f
 pkgrel=1
 
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
