@@ -3,7 +3,7 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
-pkgver=2017.1.1
+pkgver=2017.1.2
 pkgrel=1
 license=('custom')
  
@@ -12,7 +12,7 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/irpf/arquivos/IRPF2017-1.1.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/irpf/arquivos/IRPF2017-1.2.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
@@ -20,7 +20,7 @@ source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/irpf/arquivos/IRPF
 		$pkgname)
  
 
-md5sums=('baf9e220bde4e8b6ec03786c32c76c88'
+md5sums=('6411a515412b59fa8c7f0d41256c97ea'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
