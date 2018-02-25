@@ -10,19 +10,14 @@ url='https://github.com/ValvePython/vdf'
 license=('MIT')
 depends=()
 makedepends=(python-setuptools)
-checkdepends=(python-nose python-coverage python-mock python2-nose python2-coverage python2-mock)
+checkdepends=(python python2 python-nose python-coverage python-mock python2-nose python2-coverage python2-mock)
 source=("https://github.com/ValvePython/vdf/archive/v$pkgver.tar.gz")
 sha256sums=('d129edb0ab0cac55f9cd632959f05b8cbbe0babe017cf9671b8b379ec3186148')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
-  echo $pkgname
-  if [ $pkgname = python-vdf ]
-  then
-    python setup.py test
-  else
-    python2 setup.py test
-  fi
+  python setup.py test
+  python2 setup.py test
 }
 
 package_python-vdf() {
