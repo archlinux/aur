@@ -130,6 +130,8 @@ void api_print_info(const char* ticker_name_string);
  */
 Info* iex_get_info(const char* ticker_name_string);
 
+Info* morningstar_get_info(const char* ticker_name_string);
+
 /**
  * Returns a pointer to an Info object containing info pertaining
  * to the given crypto
