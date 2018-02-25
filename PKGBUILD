@@ -1,18 +1,18 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tss-git
-pkgver=1.1.0.r231.g64b11df
-_pkgname=TPM2.0-TSS
+pkgver=1.1.0.r495.g3a38292
+_pkgname=tpm2-tss
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
 arch=('i686' 'x86_64')
 provides=('tpm2-tss')
 conflicts=('tpm2-tss')
-url="https://github.com/01org/TPM2.0-TSS"
+url="https://github.com/tpm2-software/tpm2-tss"
 license=('custom')
 makedepends=('git' 'cmocka' 'autoconf-archive')
-depends=('gcc-libs')
-source=('git+https://github.com/01org/TPM2.0-TSS.git')
+depends=('libgcrypt' 'uriparser')
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
