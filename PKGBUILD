@@ -2,9 +2,9 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.12.3
+pkgver=2.13.0
 _pkgver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -20,7 +20,7 @@ source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgn
         "visit.sh"
         "visit_FindIceT.patch"
         "visit_frontendlauncher.patch")
-sha256sums=('2dd351a291ee3e79926bc00391ca89b202cfa4751331b0fdee1b960c7922161f'
+sha256sums=('716644b8e78a00ff82691619d4d1e7a914965b6535884890b667b97ba08d6a0f'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
             '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
