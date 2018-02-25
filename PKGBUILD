@@ -2,12 +2,12 @@
 
 pkgname=aom
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
 url="http://aomedia.org/"
 license=('BSD' 'custom:PATENTS')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('git' 'perl' 'yasm')
 source=("git+https://aomedia.googlesource.com/aom#tag=v$pkgver")
 sha256sums=('SKIP')
