@@ -72,9 +72,14 @@ echo "Performing repository sync"
 aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
 
 (
+    
     cd "$local_repo"
+    rm -f "$db_remote_name" "${db_remote_name}.sig"
+    rm -f "$files_remote_name" "${files_remote_name}.sig"
     cp -af "$db_local_name" "$db_remote_name"
+    cp -af "${db_local_name}.sig" "${db_remote_name}.sig"
     cp -af "$files_local_name" "$files_remote_name"
+    cp -af "${files_local_name}.sig" "${files_remote_name}.sig"
 )
 
 echo "Syncing local repo to remote"
