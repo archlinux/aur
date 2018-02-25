@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Jörg Schuck <joerg_schuck@web.de>
 # Contributor: T. Baumann <arch AT nnamuab DOT de>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -8,7 +8,7 @@
 pkgname=enchant1.6
 _pkgname=enchant
 pkgver=1.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A wrapper library for generic spell checking"
 arch=('i686' 'x86_64')
 url="https://abiword.github.io/enchant/"
@@ -34,11 +34,12 @@ prepare() {
   cd $_pkgname
   patch -p1 < ../makefile_1.6.patch
   patch -p1 < ../aclocal.patch
-  NOCONFIGURE=1 ./autogen.sh
+  sed -i '11s+$+1.6+' enchant.pc.in
 }
 
 build() {
   cd $_pkgname
+  OCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --disable-static \
     --disable-ispell \
@@ -49,11 +50,6 @@ build() {
 
 package() {
   cd $_pkgname
-  local _tempdir=$(readlink -f "./maketarget")
-  make DESTDIR="${_tempdir}" install
-
-  install -dm 755 "${pkgdir}/usr/lib/enchant1.6"
-  cp -a "${_tempdir}/usr/lib/enchant/"* "${pkgdir}/usr/lib/enchant1.6/."
-  cp -a "${_tempdir}/usr/lib/libenchant.so.1"* "${pkgdir}/usr/lib/."
-  
+  make DESTDIR="$pkgdir" install
+  rm "$pkgdir"/usr/share/enchant/enchant.ordering
 }
