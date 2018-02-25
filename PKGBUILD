@@ -9,7 +9,10 @@ arch=("x86_64" "i686")
 conflicts=("${_pkgbase}")
 url="https://getmonero.org/"
 license=("BSD")
-depends=("qt5-declarative" "qt5-svg")
+depends=("qt5-declarative"
+	"qt5-svg"
+	"desktop-file-utils"
+)
 provides=("monerod=${pkgver}"
           "monero-blockchain-export=${pkgver}"
           "monero-blockchain-import=${pkgver}"
