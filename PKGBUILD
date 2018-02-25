@@ -1,8 +1,8 @@
 # Maintainer: hobbledehoy899 <hobbledehoy899@protonmail.org>
 
 pkgname=palemoon-unstable-bin
-pkgver=27.8.0a1
-pkgrel=4
+pkgver=27.8.0a1.20180218
+pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
 url="http://linux.palemoon.org/"

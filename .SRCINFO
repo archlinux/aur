@@ -1,7 +1,7 @@
 pkgbase = palemoon-unstable-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.8.0a1
-	pkgrel = 4
+	pkgver = 27.8.0a1.20180218
+	pkgrel = 1
 	url = http://linux.palemoon.org/
 	arch = x86_64
 	license = MPL
@@ -17,7 +17,7 @@ pkgbase = palemoon-unstable-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=27.8.0a1
+	provides = palemoon=27.8.0a1.20180218
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
