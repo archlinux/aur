@@ -11,13 +11,7 @@ pkgbase = python-vdf
 
 pkgname = python-vdf
 	depends = python
-	depends = python-nose
-	depends = python-coverage
-	depends = python-mock
 
 pkgname = python2-vdf
 	depends = python2
-	depends = python2-nose
-	depends = python2-coverage
-	depends = python2-mock
 

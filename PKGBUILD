@@ -13,14 +13,24 @@ makedepends=('python-setuptools')
 source=("https://github.com/ValvePython/vdf/archive/v$pkgver.tar.gz")
 sha256sums=('d129edb0ab0cac55f9cd632959f05b8cbbe0babe017cf9671b8b379ec3186148')
 
+check_python-vdf() {
+  checkdepends=('python-nose' 'python-coverage' 'python-mock')
+  python setup.py test
+}
+
+check_python2-vdf() {
+  checkdepends=('python2-nose' 'python2-coverage' 'python2-mock')
+  python2 setup.py test
+}
+
 package_python-vdf() {
-  depends=('python' 'python-nose' 'python-coverage' 'python-mock')
+  depends=('python')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --optimize=1 --root="${pkgdir}/"
 }
 
 package_python2-vdf() {
-  depends=('python2' 'python2-nose' 'python2-coverage' 'python2-mock')
+  depends=('python2')
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --optimize=1 --root="${pkgdir}/"
 }
