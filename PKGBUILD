@@ -1,16 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=wgetpkg
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Download AUR packages with wget"
 arch=('any')
-depends=('perl6' 'wget')
-groups=('perl6')
+depends=('wget')
 url="https://github.com/atweiden/wgetpkg"
 license=('UNLICENSE')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
-sha256sums=('f06e74f171bed43317703a17e4595545550f9ed0500f3efc462fde5ba67fb96f')
+sha256sums=('7d0d60b4aa62579b71f585b072b5189596709f153c9fb75efa346a3ceea87418')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,10 +21,5 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  export RAKUDO_LOG_PRECOMP=1
-  export RAKUDO_RERESOLVE_DEPENDENCIES=0
-  perl6-install-dist \
-    --to="$pkgdir/usr/share/perl6/vendor" \
-    --for=vendor \
-    --from=.
+  install -Dm 755 wgetpkg -t "$pkgdir/usr/bin"
 }
