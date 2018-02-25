@@ -78,11 +78,12 @@ package() {
     gzip "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/char/cbm.ko"
     # kernel module: clean up left overs
     rm -rf "${pkgdir}/lib/modules"
-    rmdir "${pkgdir}/lib"
   fi
 
   # clean up empty dirs
-  rmdir "${pkgdir}/usr/share/info"
+  #rmdir "${pkgdir}/lib"
+  #rmdir "${pkgdir}/usr/share/info"
+  find "${pkgdir}" -type d -empty -delete
 }
 
 # EOF
