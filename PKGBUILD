@@ -12,8 +12,8 @@ url='https://projects.kde.org/projects/playground/libs/libechonest'
 license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake')
-source=("http://files.lfranchi.com/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('d8c60545b056145dc66882971a0acf9c')
+source=("https://github.com/lfranchi/libechonest/archive/${pkgver}.tar.gz")
+md5sums=('c4f84633d9b2dc2097078ccb0e8eb50a')
 
 prepare() {
   rm -rf "build"

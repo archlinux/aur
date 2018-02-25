@@ -8,8 +8,8 @@ pkgbase = libechonest-qt5
 	license = GPL
 	makedepends = cmake
 	depends = qt5-base
-	source = http://files.lfranchi.com/libechonest-2.3.1.tar.bz2
-	md5sums = d8c60545b056145dc66882971a0acf9c
+	source = https://github.com/lfranchi/libechonest/archive/2.3.1.tar.gz
+	md5sums = c4f84633d9b2dc2097078ccb0e8eb50a
 
 pkgname = libechonest-qt5
 
