@@ -90,6 +90,6 @@ aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
 
 echo "Syncing local repo to remote"
 echo "$local_repo/ -> $remote_repo/"
-$do_rsync "$local_repo/" "$remote_repo/"
-$do_rsync -c "$local_repo"/dangersalad.db.* "$remote_repo/"
-$do_rsync -c "$local_repo"/dangersalad.files.* "$remote_repo/"
+$do_rsync --delete-after "$local_repo/" "$remote_repo/"
+$do_rsync -c "${local_repo}/${db_remote_name}"* "$remote_repo/"
+$do_rsync -c "${local_repo}/${files_remote_name}"* "$remote_repo/"
