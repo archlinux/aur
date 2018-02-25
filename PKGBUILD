@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=64.0.3282.167
+pkgver=64.0.3282.186
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -29,9 +29,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-memcpy-r0.patch
         chromium-clang-r2.patch
         chromium-widevine.patch)
-sha256sums=('f3308b41f241d53a269ec0c73e8512f4ac58b7aafe16967a3dba5b99abc4c455'
+sha256sums=('5fd0218759231ac00cc729235823592f6fd1e4a00ff64780a5fed7ab210f1860'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '3426b9c1ebacaf6dda24afc92cf6a61727fc657a62b43345280520189f5f1eeb'
+            'e73f69942af1ba730a700151973fa6309b0586ff45bf35a7fea43f52b54a9cb5'
             'c82c830bac7ab328a76d85fb141e150a17d02d97138a6daa4720a8a8c371a402'
             '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
