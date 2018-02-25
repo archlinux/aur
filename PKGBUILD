@@ -2,13 +2,13 @@
 
 _pkgname=glava
 pkgname=${_pkgname}-git
-pkgver=r73.dbcecc9
+pkgver=r126.318b4b3
 pkgrel=1
 pkgdesc="OpenGL audio spectrum visualizer"
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
 license=('GPL3')
-depends=('x-server' 'pulseaudio' 'glfw-x11-git' 'libxext')
+depends=('x-server' 'pulseaudio' 'glfw-x11-git' 'libxext' 'libxcomposite')
 makedepends=('git' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
