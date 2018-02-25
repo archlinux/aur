@@ -3,8 +3,8 @@
 # Contributor: Adria Arrufat <swiftscythe at gmail _dot_com>
 
 pkgname=cronopete
-pkgver=3.26.1
-pkgrel=2
+pkgver=3.28.0
+pkgrel=1
 pkgdesc="A graphical backup utility based on Apple Time Machine idea."
 arch=('i686' 'x86_64')
 url="http://www.rastersoft.com/programas/cronopete.html"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gsl' 'glib2' 'gtk3' 'libgee' 'libx11')
 makedepends=('vala' 'glib2' 'cmake' 'intltool' 'udisks2')
 source=(https://github.com/rastersoft/cronopete/archive/${pkgver}.tar.gz)
-sha512sums=('dc320cb68a96365027c36b9754ac894af3bd7bba65c82920d7a0ff4f14c88145f59a0f35407ce338d41e124b5360184ac8a3d917863c5cd9892e95cb4007f813')
+sha512sums=('d3ad958dec5505c7d93b7b63eeb1da23a167dae813d8e9ad0b909c9653151cf0f6dbcc17a1479ba5b5bfd926eb0f7a6cf247495a658ea83ce8a577ecf6102c5c')
 install=${pkgname}.install
 
 build() {
