@@ -1,3 +1,7 @@
+# NOTE before builing package - download needed catalyst driver zip archives from here:
+# https://support.amd.com/en-us/download/desktop/previous?os=Linux%20x86_64
+# and paste it next to this PKGBUILD
+
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Great Contributor: Shen Miren <dickeny@gmail.com> (build_module/hook idea and code)
 # Great Contributor: Eduardo "kensai" Romero (previous catalyst and catalyst-utils maintainer)
