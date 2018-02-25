@@ -1,15 +1,15 @@
 pkgbase = ruby-moneta
 	pkgdesc = A unified interface to key/value stores, including Redis, Memcached, TokyoCabinet, ActiveRecord and many more
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://github.com/minad/moneta
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = moneta-0.8.0.gem
+	noextract = moneta-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/moneta-0.8.0.gem
-	sha1sums = b57de8036b81e2287e2d19e1a932486710872b58
+	source = https://rubygems.org/downloads/moneta-1.0.0.gem
+	sha1sums = 7a110e9b1ccf4fab06da8c32686c2f7c88c2b60f
 
 pkgname = ruby-moneta
 
