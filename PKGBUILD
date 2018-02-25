@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.21
+pkgver=4.14.22
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -80,8 +80,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -95,14 +94,10 @@ prepare() {
     ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  
-    ### Fix https://bugs.archlinux.org/task/56605
-        msg "Fix #56605"
-        patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
     
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+        patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -369,7 +364,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '90a85a110b8b9ff79e0f7e6e47149bd118e62c479506ef3605c06d688983e5b7da482dc06e0de1133f0cf6860cd66a2340191c827d5809dd3a5f81e271f57e14'
+            '2e0216fe250ab84c7deee6f0f8751d34de3afbc3c5a0287e53cff6f866f15aad3610b5f8dfd9c514f60c766e8fb87df2e5db49777570ac5433a026848f1a21cf'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -378,9 +373,8 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '9268112c46f06ff359c91097ad06a7cff546d0b1251f1133a981479fb6f810854585433e8000f287aeffa1b6c4c7da143c7ae2a6760759aa1d0d438141cd66f9'
-            '9bf06ae89a6e55d2dcc27b510bc034d822c308e2d652c4839e3135e5225b1a9cca1b39f90fd3e5f0d480e09257d0cb6d9d4c0cd89f5b56095f6d999dfff24d37'
-            '14a9bdadc26a3bbd35baba8d550b39ac941600de7c0c7553fab94e47431e5a58066a561e04891fbfd911f573be801d357d6a9149e51472136bf05ac9b26ab61a')
+            '4586b3fcdf2696b23f1a03007505229074e3a1af98cfdb21ef902f72e1d3b475b7ffbf62cc8607fb1107ead870a9de49a52eed22a516ced803c9f00c079fab76'
+            'e28a7dffc33dedff84e93d99aa1e9d6af07d4b9429062934991d5555e2d655da7566a1390c1c9381738d2afc0b33e28b1196697fd234b18113593276493407a3')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
