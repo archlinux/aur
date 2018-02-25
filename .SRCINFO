@@ -1,0 +1,18 @@
+pkgbase = gitlpm-git
+	pkgdesc = Graphs your lpm (lines per minute) between commits
+	pkgver = r8.fc562d0
+	pkgrel = 1
+	url = https://github.com/csculley/gitlpm.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = gawk
+	depends = gnuplot
+	provides = gitlpm
+	conflicts = gitlpm
+	source = gitlpm::git+https://github.com/csculley/gitlpm.git#branch=master
+	md5sums = SKIP
+
+pkgname = gitlpm-git
+
