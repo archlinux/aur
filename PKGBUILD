@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.20
-xanmod=22
+pkgver=4.14.22
+xanmod=23
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,13 +31,12 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
+arch_config_trunk=64dde16452b6629496a605ba9c840644bfbb47fb
 
 # Arch additional patches
 arch_patches=(
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-        0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+        0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -49,13 +48,12 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('82d9fc437bf9366b3c45d9e9fd93bb09d03283e18b2484b33431a7d5c1fd5530'
+sha256sums=('ab491ff5489903a0b822f66f48a34174e16e6132ad0ea914433ac15fdd3cba71'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
             '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
 sha256sums_x86_64=('c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426')
 
