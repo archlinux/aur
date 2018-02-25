@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=3.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -36,5 +36,5 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('401ac76cf2358726a5e87d1830446cb6'
+md5sums=('e83f488aa9d1278f6abf27ca655f572d'
          '18e28a76097af88457462b08752382df')
