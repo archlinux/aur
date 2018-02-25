@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")

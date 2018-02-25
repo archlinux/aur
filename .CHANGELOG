@@ -1,6 +1,34 @@
 Version history
 ===============
 
+0.9.12
+------
+
+2018-02-23
+
+Multiplayer maps: Arty's Let Them Eat Cake (rename of Feaster Island),
+Layer of Hell, Flopsy's Block Chaos, Nessy's Abandoned Sanctuaries.
+
+lemforum: Some Cunning/Daunting levels reordered. This Lix, extra sawblade.
+Bipolar Maniac, imploders 5->1 because the level is lose-1. Tribute to
+Benny Hill, imploders 1->0.
+
+On previewing/editing maps with more than 2.8 x 2^20 pixels (about 2.8
+million pixels), Lix warns that these maps will likely crash. You can still
+play and edit these maps normally. The warning is not perfect, but OK for now;
+any real fix will be difficult.
+
+Fix #229: Tooltips for all skills and all buttons during play.
+
+Fix #306: `--fullscreen' command-line switch works again.
+
+Allow the command-line parameter `--' to terminate switches. Subsequet
+arguments will be interpreted as files even if they look like switches.
+
+Linking on Linux: In dub.json, specify only `allegro-5', not `allegro', and
+let dub use pkg-config to deduce linker flags (typically -lallegro).
+
+
 0.9.11
 ------
 
