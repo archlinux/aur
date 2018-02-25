@@ -2,8 +2,8 @@
 # Contributor: stqn
 
 # Set this to 'true' to build and install the plugins
-_plugin_feedreader=true
-_plugin_voip=true
+#_plugin_feedreader=true
+#_plugin_voip=true
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -18,7 +18,7 @@ _plugin_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.3.r421.g1c2d17b5c
+pkgver=v0.6.4.RC1.r0.g31ab87c65
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -43,8 +43,10 @@ sha256sums=('SKIP')
 # Set options for qmake
 _optClang=''
 _optAutol=''
+_optPlugin=''
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
+([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 
 # Handle unofficial plugins
 if [[ "$_plugin_lua4rs" == 'true' ]] ; then
@@ -82,9 +84,9 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		${_optAutol} ${_optClang} \
-		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
-		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
+		${_optAutol} ${_optClang} ${_optPlugin} \
+		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		RetroShare.pro
 	make
 }
