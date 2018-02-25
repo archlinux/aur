@@ -5,7 +5,7 @@ pkgname=thunderbird-beta
 pkgver=59.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=10
+pkgrel=14
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -20,13 +20,13 @@ optdepends=('hunspell: Spell checking'
 options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
-        https://raw.githubusercontent.com/bn0785ac/thunderbeta/$pkgname.desktop
-        https://raw.githubusercontent.com/bn0785ac/thunderbeta/thunderbird-install-dir.patch
-       https://raw.githubusercontent.com/bn0785ac/thunderbeta/no-crmf.diff
-        https://raw.githubusercontent.com/bn0785ac/thunderbeta/fix-wifi-scanner.diff
-https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-data-sharing-infobar.patch
-https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-location.services.mozilla.com.patch
-https://raw.githubusercontent.com/bn0785ac/thunderbeta/firefox-52-disable-telemetry.patch
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/$pkgname.desktop
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/thunderbird-install-dir.patch
+       https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/no-crmf.diff
+        https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix-wifi-scanner.diff
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/firefox-52-disable-data-sharing-infobar.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/firefox-52-disable-location.services.mozilla.com.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/firefox-52-disable-telemetry.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
