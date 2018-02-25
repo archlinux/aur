@@ -1,0 +1,46 @@
+pkgbase = python-steam
+	pkgdesc = Module for interacting with various Steam features
+	pkgver = 0.8.20
+	pkgrel = 1
+	url = https://github.com/ValvePython/steam
+	arch = any
+	license = MIT
+	checkdepends = python
+	checkdepends = python2
+	checkdepends = python-nose
+	checkdepends = python-coverage
+	checkdepends = python-mock
+	checkdepends = python2-nose
+	checkdepends = python2-coverage
+	checkdepends = python2-mock
+	makedepends = python-setuptools
+	source = https://github.com/ValvePython/steam/archive/v0.8.20.tar.gz
+	sha256sums = 32a3c75949817bd76d614cfc69e92c9b4cf68461275e306aeee5e043558cd4d8
+
+pkgname = python-steam
+	depends = python
+	depends = python-six
+	depends = python-cryptography
+	depends = python-requests
+	depends = python-gevent
+	depends = python-protobuf
+	depends = python-pyaml
+	depends = python-vcrpy
+	depends = python-sphinx
+	depends = python-vdf
+	depends = python-gevent-eventemitter-git
+
+pkgname = python2-steam
+	depends = python2
+	depends = python2-six
+	depends = python2-cryptography
+	depends = python2-requests
+	depends = python2-gevent
+	depends = python2-protobuf
+	depends = python2-enum34
+	depends = python2-pyaml
+	depends = python2-vcrpy
+	depends = python2-sphinx
+	depends = python2-vdf
+	depends = python2-gevent-eventemitter-git
+
