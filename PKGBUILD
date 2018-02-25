@@ -17,7 +17,10 @@ optdepends=(
 		)
 makedepends=()
 checkdepends=()
-
+optdepends=(
+	"miredo: a Teredo server/client, x86_64"
+	"miredo-debian: a Teredo client, armv7"
+		)
 install=$pkgname.install
 
 
