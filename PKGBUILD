@@ -1,8 +1,8 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3-bin
-pkgver=0.0.4
-_pkgbuild='2018-01-06-d770a42-9397'
-pkgrel=4
+pkgver=0.0.5
+_pkgbuild='6461-d78b0467'
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -15,7 +15,7 @@ replaces=('rpcs3')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=("https://rpcs3.net/cdn/builds/rpcs3-v$pkgver-${_pkgbuild}_linux64.AppImage")
-sha256sums=('686bd2f5ee78ff4e581ebabe6766d2595135378536a63771cbc2450b13ff92c0')
+sha256sums=('9e5e24a5c6b99cf617708dae8de69dfe4b0a51bb5ea21100fc1735a66675f634')
 
 prepare()
 {
