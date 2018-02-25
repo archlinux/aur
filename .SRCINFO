@@ -1,15 +1,16 @@
 pkgbase = gnome-shell-theme-copernico-git
-	pkgdesc = A theme for the GNOME Shell which provides a slightly more pleasant visual impression.
-	pkgver = 15.73fa7ca
+	pkgdesc = A flat theme for the GNOME Shell which provides a slightly more pleasant visual impression.
+	pkgver = v3.26.r0.gb62fc37
 	pkgrel = 1
-	url = https://gnome-look.org/content/show.php/Copernico+Theme?content=167439
+	url = https://gitlab.com/mgyugcha/copernico-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-theme-copernico
 	conflicts = gnome-shell-theme-copernico
-	source = copernico::git+https://github.com/mgyugcha/copernico-theme.git
+	source = copernico-theme::git+https://gitlab.com/mgyugcha/copernico-theme.git
 	sha512sums = SKIP
 
 pkgname = gnome-shell-theme-copernico-git
+
