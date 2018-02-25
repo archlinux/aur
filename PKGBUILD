@@ -3,15 +3,15 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 pkgname=cask
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="Project management tool for Emacs"
 arch=('any')
 url='https://github.com/cask/cask'
 license=('GPL')
 depends=('emacs' 'python')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('16b1054af3f58cf95b72f2d10e03450f550311774c7f16b918e3f29ecc7fcd13')
+sha256sums=('71bafe94b7ea08b0f9075df2cb3cc2063a00c88e64fb1bf7073ae1b5fa2560cc')
 
 package() {
 	cd "${srcdir}/${pkgname}-$pkgver"
