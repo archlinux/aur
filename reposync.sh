@@ -61,10 +61,15 @@ files_remote_name="${repo_name}.files"
         echo "Adding $pkg"
         repo-add "$db_local_name" "$pkg"
     done
-    rm -f "${db_remote_name}.sig"
-    gpg --output "${db_remote_name}.sig" --detach-sign "$db_local_name"
-    rm -f "${files_remote_name}.sig"
-    gpg --output "${files_remote_name}.sig" --detach-sign "$files_local_name"
+    # copy newly generated database files to their remote location
+    mv "$db_local_name" "$db_remote_name"
+    mv "$files_local_name" "$files_remote_name"
+    # remove all the extras
+    rm -f "${db_remote_name}".*
+    rm -f "${files_remote_name}".*
+    # generate new signatures
+    gpg --output "${db_remote_name}.sig" --detach-sign "$db_remote_name"
+    gpg --output "${files_remote_name}.sig" --detach-sign "$files_remote_name"
 )
 
 echo "Performing system update"
@@ -72,17 +77,6 @@ sudo pacman -Syu
 
 echo "Performing repository sync"
 aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
-
-(
-    
-    cd "$local_repo"
-    rm -f "$db_remote_name" "${db_remote_name}.sig"
-    rm -f "$files_remote_name" "${files_remote_name}.sig"
-    cp -af "$db_local_name" "$db_remote_name"
-    cp -af "${db_local_name}.sig" "${db_remote_name}.sig"
-    cp -af "$files_local_name" "$files_remote_name"
-    cp -af "${files_local_name}.sig" "${files_remote_name}.sig"
-)
 
 echo "Syncing local repo to remote"
 echo "$local_repo/ -> $remote_repo/"
