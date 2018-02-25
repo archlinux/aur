@@ -1,0 +1,13 @@
+pkgbase = tempus-themes-konsole
+	pkgdesc = Tempus themes for KDE Konsole (minimum WCAG AA colour contrast compliance)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/protesilaos/tempus-themes-konsole
+	arch = any
+	license = GPL3
+	depends = konsole
+	source = tempus-themes-konsole-0.1.0.tar.gz::https://github.com/protesilaos/tempus-themes-konsole/archive/0.1.0.tar.gz
+	sha512sums = 5c0181548c7955d86147ecde099d1d4f9e1e5c880161f50994b6554e4bc2551783a0ba054d7fb32347aee908cfc5bbcbef31c682d37981272d9c50db1d9d431d
+
+pkgname = tempus-themes-konsole
+
