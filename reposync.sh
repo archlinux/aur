@@ -63,8 +63,6 @@ files_remote_name="${repo_name}.files"
     done
     gpg --output "${db_remote_name}.sig" --detach-sign "$db_local_name"
     gpg --output "${files_remote_name}.sig" --detach-sign "$files_local_name"
-    mv "$db_local_name" "$db_remote_name"
-    mv "$files_local_name" "$files_remote_name"
 )
 
 echo "Performing system update"
@@ -72,6 +70,12 @@ sudo pacman -Syu
 
 echo "Performing repository sync"
 aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
+
+(
+    cd "$local_repo"
+    cp -aF "$db_local_name" "$db_remote_name"
+    cp -aF "$files_local_name" "$files_remote_name"
+)
 
 echo "Syncing local repo to remote"
 echo "$local_repo/ -> $remote_repo/"
