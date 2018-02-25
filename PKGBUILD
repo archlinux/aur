@@ -13,7 +13,7 @@ depends=('gnome-shell' 'mconnect-git')
 optdepends=('gnome-tweak-tool')
 install=$pkgname.install
 
-source=('https://github.com/andyholmes/gnome-shell-extension-mconnect/releases/download/v16/mconnect.andyholmes.github.io.zip')
+source=('https://github.com/andyholmes/gnome-shell-extension-mconnect/releases/download/v17/mconnect.andyholmes.github.io.zip')
 md5sums=('SKIP')
 
 package() {
