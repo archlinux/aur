@@ -49,8 +49,9 @@ files_remote_name="${repo_name}.files"
 
 (
     cd "$local_repo"
-    mv "$db_remote_name" "$db_local_name"
-    rm -f "$files_local_name"
+    # remove all existing db files
+    rm -f "$db_remote_name"*
+    rm -f "$files_remote_name"*
     for pkg in *.pkg.tar.xz
     do
         if [[ ! -f "${pkg}.sig" ]]
@@ -61,15 +62,11 @@ files_remote_name="${repo_name}.files"
         echo "Adding $pkg"
         repo-add "$db_local_name" "$pkg"
     done
-    # copy newly generated database files to their remote location
-    mv "$db_local_name" "$db_remote_name"
-    mv "$files_local_name" "$files_remote_name"
-    # remove all the extras
-    rm -f "${db_remote_name}".*
-    rm -f "${files_remote_name}".*
     # generate new signatures
-    gpg --output "${db_remote_name}.sig" --detach-sign "$db_remote_name"
-    gpg --output "${files_remote_name}.sig" --detach-sign "$files_remote_name"
+    rm -f "${db_local_name}.sig"
+    gpg --output "${db_local_name}.sig" --detach-sign "$db_local_name"
+    rm -f "${files_local_name}.sig"
+    gpg --output "${files_local_name}.sig" --detach-sign "$files_local_name"
 )
 
 echo "Performing system update"
@@ -77,6 +74,19 @@ sudo pacman -Syu
 
 echo "Performing repository sync"
 aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
+
+(
+    
+    cd "$local_repo"
+    # copy newly generated database files to their remote location
+    mv "$db_local_name" "$db_remote_name"
+    mv "$files_local_name" "$files_remote_name"
+    mv "${db_local_name}.sig" "$db_remote_name"
+    mv "${files_local_name}.sig" "$files_remote_name"
+    # remove all the extras
+    rm -f "${db_local_name}"*
+    rm -f "${files_local_name}"*
+)
 
 echo "Syncing local repo to remote"
 echo "$local_repo/ -> $remote_repo/"
