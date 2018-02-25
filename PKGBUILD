@@ -3,10 +3,10 @@
 pkgname=tpm2-tss
 pkgver=1.3.0
 _gitname=$pkgname
-pkgrel=1
+pkgrel=2
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
 arch=('i686' 'x86_64')
-url="https://github.com/intel/tpm2-tss"
+url="https://github.com/tpm2-software/tpm2-tss"
 license=('custom')
 makedepends=('git' 'cmocka' 'autoconf-archive')
 depends=('gcc-libs')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 build() {
     cd "$srcdir/$_gitname"
     ./bootstrap
-    CXXFLAGS="$CXXFLAGS -Wno-error=int-in-bool-context" ./configure --prefix=/usr --sbindir=/usr/bin --disable-static
+    ./configure --prefix=/usr --sbindir=/usr/bin --disable-static --with-pic
     make
 }
 
