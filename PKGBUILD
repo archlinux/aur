@@ -1,17 +1,14 @@
 # Maintainer:  ahjolinna <@yahoo.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 # WARNING: The configure script will automatically enable any optional
 # features it finds support for on your system. If you want to avoid
 # linking against something you have installed, you'll have to disable
 # it in the configure below. The package() script will attempt to
-# update the dependencies based on dynamic libraries when packaging.
-# Upstream recommends their forked ffmpeg, which can be installed alongside a
-# different system ffmpeg. You can build mpv against the system ffmpeg instead
-# by uncommenting the second line below, but this may sometimes fail to build
-# when mpv depends on a feature that hasn't been merged into upstream ffmpeg.
+# update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.0.r189.g7f3c7100d5
+pkgver=0.28.2.r300.g1f2d8ed01c
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -122,7 +119,6 @@ build() {
 	            --enable-libavdevice \
 	            --lua=52arch \
 	            --enable-sdl2 \
-	            --disable-sdl1 \
 	            --enable-oss-audio \
 	            --enable-rsound \
 	            --enable-sndio \
