@@ -1,6 +1,6 @@
 pkgbase = wine-staging-lutris-git
 	pkgdesc = A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)
-	pkgver = 3.2.r3555.4cb811ac+wine.3.2.r149.gf9e1dbb83d
+	pkgver = 3.2.r3559.41645dc0+wine.3.2.r167.g7be8beab68
 	pkgrel = 1
 	url = https://github.com/wine-staging/wine-staging
 	arch = i686
@@ -132,10 +132,10 @@ pkgbase = wine-staging-lutris-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.2.r149.gf9e1dbb83d
-	provides = wine-wow64=3.2.r149.gf9e1dbb83d
-	provides = wine-git=3.2.r149.gf9e1dbb83d
-	provides = wine-staging=3.2.r3555.4cb811ac
+	provides = wine=3.2.r167.g7be8beab68
+	provides = wine-wow64=3.2.r167.g7be8beab68
+	provides = wine-git=3.2.r167.g7be8beab68
+	provides = wine-staging=3.2.r3559.41645dc0
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
