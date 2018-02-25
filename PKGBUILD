@@ -14,9 +14,6 @@ sha256sums=('5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-# https://llvm.org/docs/HowToCrossCompileLLVM.html
-# https://llvm.org/docs/CMake.html
-
 build() {
   cd "$srcdir/llvm-$pkgver.src/"
   for _arch in ${_architectures}; do
@@ -32,8 +29,9 @@ build() {
       -DLLVM_DEFAULT_TARGET_TRIPLE="${_arch}" \
       -DLLVM_TARGET_ARCH="X86" \
       -DLLVM_TABLEGEN=/usr/bin/llvm-tblgen \
-      -DCMAKE_CROSSCOMPILING=TRUE \
       -DLLVM_INFERRED_HOST_TRIPLE=x86_64-pc-linux-gnu \
+      -DLLVM_BUILD_LLVM_DYLIB=ON \
+      -DBUILD_SHARED_LIBS=OFF \
       ..
     make
     popd
@@ -44,7 +42,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/llvm-$pkgver.src/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    install -m644 lib/libLLVM*.dll.a "${pkgdir}"/usr/${_arch}/lib
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
