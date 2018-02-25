@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2017.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
@@ -53,17 +53,17 @@ build() {
 	echo "Fixing references..."
 
 	# fix references to srcdir
-	for f in `grep -R "${srcdir}" ${srcdir} | cut -d: -f1`; do
-		sed -i "s,${srcdir},/opt," $f
+	for f in `grep -RI "${srcdir}" ${srcdir} | cut -d: -f1`; do
+		sed -i "s,${srcdir},/opt,g" $f
 	done
 
 	echo "Fixing symlinks..."
 
 	# fix symlinks pointing to srcdir
 	# https://stackoverflow.com/questions/31020219/how-change-symlink-path-for-many-files
-	oldpath="${srcdir}"
-	newpath='/opt'
-	find ${srcdir}/salome_meca -type l -execdir bash -c 'p="$(readlink "{}")"; if [ "${p:0:1}" != "/" ]; then p="$(echo "$(pwd)/$p" | sed -e "s|/\./|/|g" -e ":a" -e "s|/[^/]*/\.\./|/|" -e "t a")"; fi; if [ "${p:0:'${#oldpath}'}" == "'"$oldpath"'" ]; then ln -snf "'"$newpath"'${p:'${#oldpath}'}" "{}"; fi;' \;
+	_oldpath="${srcdir}"
+	_newpath='/opt'
+	find ${srcdir}/salome_meca -type l -execdir bash -c 'p="$(readlink "{}")"; if [ "${p:0:1}" != "/" ]; then p="$(echo "$(pwd)/$p" | sed -e "s|/\./|/|g" -e ":a" -e "s|/[^/]*/\.\./|/|" -e "t a")"; fi; if [ "${p:0:'${#_oldpath}'}" == "'"$_oldpath"'" ]; then ln -snf "'"$_newpath"'${p:'${#_oldpath}'}" "{}"; fi;' \;
 }
 
 package() {
