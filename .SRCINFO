@@ -1,0 +1,19 @@
+pkgbase = onepaq
+	pkgdesc = A cross platform 1password read-only client
+	pkgver = v0.9.0
+	pkgrel = 1
+	url = http://github.com/hspak/onepaq
+	install = onepaq.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = onepaq
+	conflicts = onepaq
+	source = https://github.com/hspak/onepaq/archive/v0.9.0.tar.gz
+	source = onepaq.service
+	sha256sums = b5f452b37d8d56904141792240e888d6842831ed02181dae5e2e1958fc3c56ac
+	sha256sums = b2cb6b881d53f3e2e7230dab6ec94ec09f4b46b60cb97bfa9f8cccb1cba05b0d
+
+pkgname = onepaq
+

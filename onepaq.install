@@ -1,0 +1,4 @@
+post_install() {
+  mkdir -p /var/log/onepaq/
+  touch /var/log/onepaq/onepaq.log
+}

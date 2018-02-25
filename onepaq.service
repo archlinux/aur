@@ -1,0 +1,10 @@
+[Unit]
+Description=A cross platform 1password read-only client
+
+[Service]
+ExecStart=/usr/bin/onepaq server
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
