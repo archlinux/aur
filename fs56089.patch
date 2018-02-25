@@ -4,7 +4,7 @@ diff -rupN ffmpeg-3.4.orig/libavformat/aviobuf.c ffmpeg-3.4/libavformat/aviobuf.
 @@ -531,6 +531,24 @@ void avio_write_marker(AVIOContext *s, i
      s->last_time = time;
  }
-
+ 
 +static int read_packet_wrapper(AVIOContext *s, uint8_t *buf, int size)
 +{
 +    int ret;
@@ -24,12 +24,12 @@ diff -rupN ffmpeg-3.4.orig/libavformat/aviobuf.c ffmpeg-3.4/libavformat/aviobuf.
 +}
 +
  /* Input stream */
-
+ 
  static void fill_buffer(AVIOContext *s)
 @@ -569,10 +587,7 @@ static void fill_buffer(AVIOContext *s)
          len = s->orig_buffer_size;
      }
-
+ 
 -    if (s->read_packet)
 -        len = s->read_packet(s->opaque, dst, len);
 -    else
@@ -45,12 +45,12 @@ diff -rupN ffmpeg-3.4.orig/libavformat/aviobuf.c ffmpeg-3.4/libavformat/aviobuf.
 -                if(s->read_packet)
 -                    len = s->read_packet(s->opaque, buf, size);
 +                len = read_packet_wrapper(s, buf, size);
-
+ 
                  if (len <= 0) {
                      /* do not modify buffer if EOF reached so that a seek back can
 @@ -711,7 +725,7 @@ int avio_read_partial(AVIOContext *s, un
          return -1;
-
+ 
      if (s->read_packet && s->write_flag) {
 -        len = s->read_packet(s->opaque, buf, size);
 +        len = read_packet_wrapper(s, buf, size);
@@ -79,6 +79,6 @@ diff -rupN ffmpeg-3.4.orig/libavformat/version.h ffmpeg-3.4/libavformat/version.
 +#ifndef FF_API_OLD_AVIO_EOF_0
 +#define FF_API_OLD_AVIO_EOF_0           (LIBAVFORMAT_VERSION_MAJOR < 58)
 +#endif
-
-
+ 
+ 
  #ifndef FF_API_R_FRAME_RATE
