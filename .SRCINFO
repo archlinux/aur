@@ -1,0 +1,27 @@
+pkgbase = spacefm-ng-git
+	pkgdesc = A fork of spacefm multi-panel tabbed file manager pulled from git repo
+	pkgver = 1.0.6.18.g49f49f0
+	pkgrel = 1
+	url = https://github.com/Teklad/spacefm-ng
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = git
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = startup-notification
+	depends = ffmpegthumbnailer
+	optdepends = lsof: device processes
+	optdepends = wget: plugin download
+	optdepends = gksu: perform as root functionality
+	optdepends = udevil: mount as non-root user and mount networks
+	optdepends = udisks2: mount as non-root user
+	provides = spacefm
+	conflicts = spacefm
+	source = git+https://github.com/Teklad/spacefm-ng
+	md5sums = SKIP
+
+pkgname = spacefm-ng-git
+
