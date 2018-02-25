@@ -76,13 +76,12 @@ echo "Performing repository sync"
 aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
 
 (
-    
     cd "$local_repo"
     # copy newly generated database files to their remote location
     mv "$db_local_name" "$db_remote_name"
     mv "$files_local_name" "$files_remote_name"
-    mv "${db_local_name}.sig" "$db_remote_name"
-    mv "${files_local_name}.sig" "$files_remote_name"
+    mv "${db_local_name}.sig" "${db_remote_name}.sig"
+    mv "${files_local_name}.sig" "${files_remote_name}.sig"
     # remove all the extras
     rm -f "${db_local_name}"*
     rm -f "${files_local_name}"*
