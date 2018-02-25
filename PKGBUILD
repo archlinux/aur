@@ -40,7 +40,7 @@ package() {
 	install -D -m755 etc/miredo/client-hook ${pkgdir}/etc/miredo/client-hook || return 1
 	install -D -m644 etc/miredo/miredo.conf ${pkgdir}/etc/miredo/miredo.conf || return 1
 	install -D -m755 etc/network/if-up.d/miredo ${pkgdir}/etc/network/if-up.d/miredo || return 1
-	install -D -m644 miredo.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/miredo.service || return 1
+	install -D -m644 miredo.service ${pkgdir}/usr/lib/systemd/system/miredo.service || return 1
 	install -D -m644 50-miredo.conf ${pkgdir}/etc/sysctl.d/50-miredo.conf || return 1
 	
 #/usr
