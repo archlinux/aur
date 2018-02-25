@@ -1,4 +1,4 @@
-.TH TICK "1" "January 2018" "Tick 1.8.0" "User Commands"
+.TH TICK "1" "February 2018" "Tick 1.9.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -7,7 +7,8 @@ Tick - Command line stock and cryptocurrency portfolio tracker.
 tick COMMAND [ARGUMENTS]
 
 .SH DESCRIPTION
-Create your portfolio by adding your current holdings. Then, use the option "check" to get information on the current price.
+Create your portfolio by adding your current holdings. You can see information about your holdings with the command "check".
+You may also see information about securities that you may not own with commands "info"and "news".
 
 .SS
 Portfolio:
@@ -40,7 +41,12 @@ $HOME/.tick_portfolio.
 Encrypts or decrypts your portfolio using the RC4 algorithm. Password must be 32 characters or less.
 
 .SS
-News:
+Security Information:
+
+.TP
+[info] [symbol]
+Prints information on the given security. This includes company name, current and historical price, dividends, market cap,
+and volume.
 
 .TP
 [news] [symbol]
@@ -73,6 +79,11 @@ $ tick check all
 To get the top three news articles on Tesla in the past two weeks, run
 .RS
 $ tick news tesla
+
+.RE
+To get information on Tesla, run
+.RS
+$ tick info tesla
 
 .SH FILES
 .I ~/.tick_portfolio.json

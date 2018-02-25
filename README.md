@@ -14,7 +14,7 @@ If you are an Arch user, you can install from the AUR.
 ```bash
 $ yaourt -S tick
 ```
-#### Usage
+#### Portfolio
 To update your portfolio, use the options add, rm, or set. You may use the
 special string "USD$" to add US Dollars to your portfolio.
 ```bash
@@ -44,21 +44,6 @@ $ tick check [symbol/crypto_id/all]
 The string "all" will list your entire portfolio, as well as produce a grand
 total. Running "check" with no other arguments will also list your entire portfolio.
 
-To get the top three news articles on a specific stock or cryptocurrency,
-you can run
-
-```bash
-$ tick news [symbol]
-```
-If you wish to use spaces in your input, you can either surround the phrase
-with quotes or replace spaces with underscores.
-
-As of version 1.7, the portfolio file has been reconstructed and formatted
-in JSON. To convert your existing portfolio, run
-```bash
-$ tick convert
-```
-
 You may encrypt your portfolio using the RC4 algorithm
 ```bash
 $ tick encrypt
@@ -68,6 +53,28 @@ and decrypt it with
 $ tick decrypt
 ```
 You can modify and check your portfolio without explicitly decrypting it.
+
+#### Security Information
+
+To get information about a security, you can use the info command.
+```bash
+$ tick info tsla
+```
+
+To get the top three news articles on a specific stock or cryptocurrency,
+you can run
+
+```bash
+$ tick news [symbol]
+```
+If you wish to use spaces in your input, you can either surround the phrase
+with quotes or replace spaces with underscores.
+
+Note: As of version 1.7, the portfolio file has been reconstructed and formatted
+in JSON. To convert your existing portfolio, run
+```bash
+$ tick convert
+```
 
 Once installed, you may read the man page for more information.
 
@@ -81,15 +88,14 @@ API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
 #### Future Ideas/To-do
-* Command to get info about a security
 * Historical support -- 7d/28d profits
 * Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
-intraday data
+intraday data (wait for iex v2 probably)
 * DEB/RPM package
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
 * Make printouts pretty with ncurses??
-* Check without re-encrypting
+* Check without re-encrypting in case sigint
 * Make strip char work in place instead of allocing
-* Format prices with commas (locale)
+* Format prices with commas (set locale)
