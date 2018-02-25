@@ -3,8 +3,8 @@
 
 pkgname=spacefm-ng
 pkgver=1.0.6
-pkgrel=1
-pkgdesc='A fork spacefm multi-panel tabbed file manager'
+pkgrel=2
+pkgdesc='A fork of spacefm multi-panel tabbed file manager'
 arch=('i686' 'x86_64')
 url='https://github.com/Teklad/spacefm-ng'
 license=('GPL3')

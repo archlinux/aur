@@ -1,7 +1,7 @@
 pkgbase = spacefm-ng
-	pkgdesc = A fork spacefm multi-panel tabbed file manager
+	pkgdesc = A fork of spacefm multi-panel tabbed file manager
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Teklad/spacefm-ng
 	arch = i686
 	arch = x86_64
