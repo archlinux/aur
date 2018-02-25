@@ -1,6 +1,6 @@
 # NOTE before builing package - download needed catalyst drivers zip archives from here:
 # https://support.amd.com/en-us/download/desktop?os=Linux%20x86_64
-# https://support.amd.com/en-us/download/desktop/previous?os=Linux%20x86_64
+# if _old_control=y also: https://support.amd.com/en-us/download/desktop/previous?os=Linux%20x86_64
 # and paste it next to this PKGBUILD
 
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
@@ -37,7 +37,7 @@ _old_control=n #for pre-GCN users who has problems with default config, pick =y 
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=21
+pkgrel=22
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -81,7 +81,6 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
     http://www2.ati.com/drivers/linux/radeon-crimson-15.12-15.302-151217a-297685e.zip
-    http://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
@@ -119,7 +118,6 @@ source=(
     4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
-	 'd2de2df6946b452c266a3c892e6e46ff'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
 	 'bdafe749e046bfddee2d1c5e90eabd83'
 	 '9d9ea496eadf7e883d56723d65e96edf'
@@ -156,10 +154,17 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '5ba3bf9f58aa63c1849b056cf23022c9'
 	 '10af58c21e4e972115dda6dbd8279594')
 
+	 if [ "${_old_control}" = "y" ]; then
+	 	 source+=(http://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip)
+	 	 md5sums+=('d2de2df6946b452c266a3c892e6e46ff')
+	 fi
+
 prepare() {
   ## Unpack archive
      /bin/sh ./fglrx-${_amdver}/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
-     /bin/sh ./AMD-Catalyst-15.9-Linux-installer-15.201.1151-x86.x86_64.run --extract archive_files_2
+	 if [ "${_old_control}" = "y" ]; then
+	 	 /bin/sh ./AMD-Catalyst-15.9-Linux-installer-15.201.1151-x86.x86_64.run --extract archive_files_2
+	 fi
 # mkdir common
 # mv etc lib usr common
 # mkdir archive_files
@@ -264,8 +269,11 @@ package() {
       install -m644 X11R6/${_lib}/*.cap ${pkgdir}/usr/lib
       install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/xorg/modules/dri
       install -m755 ${_lib}/*.so* ${pkgdir}/usr/lib
-    ## use opencl runtime from 15.9
-      install -m755  ${srcdir}/archive_files_2/arch/${_amdarch}/usr/${_lib}/libamdocl* ${pkgdir}/usr/lib
+
+      if [ "${_old_control}" = "y" ]; then
+      ## use opencl runtime from 15.9
+            install -m755  ${srcdir}/archive_files_2/arch/${_amdarch}/usr/${_lib}/libamdocl* ${pkgdir}/usr/lib
+      fi
       rm ${pkgdir}/usr/lib/libOpenCL.so.1       #opencl-icd-loader provides this
 #       install -m755 ${_lib}/hsa/* ${pkgdir}/usr/lib/hsa		#removed in 14.1
 
@@ -394,12 +402,14 @@ package() {
 	cd ${srcdir}/archive_files/arch/x86/usr
 	install -dm755 ${pkgdir}/usr/lib32
 	install -dm755 ${pkgdir}/usr/lib32/fglrx
-        install -dm755 ${pkgdir}/usr/lib32/dri
+	install -dm755 ${pkgdir}/usr/lib32/dri
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 #	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
-   ## use opencl runtime from 15.9
-    install -m755  ${srcdir}/archive_files_2/arch/x86/usr/lib/libamdocl* ${pkgdir}/usr/lib32
+	if [ "${_old_control}" = "y" ]; then
+	## use opencl runtime from 15.9
+		install -m755  ${srcdir}/archive_files_2/arch/x86/usr/lib/libamdocl* ${pkgdir}/usr/lib32
+	fi
 	rm ${pkgdir}/usr/lib32/libOpenCL.so.1      #lib32-opencl-icd-loader provides this
 #	install -m755 lib/hsa/* ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 X11R6/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx
@@ -408,7 +418,7 @@ package() {
 	install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-        ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
+	ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
 
 	cd $pkgdir/usr/lib32
 	ln -sf /usr/lib32/libfglrx_dm.so.1.0	${pkgdir}/usr/lib32/libfglrx_dm.so.1
