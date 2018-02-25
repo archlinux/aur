@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90023.g192ea5bb77
+pkgver=3.5.r90168.gc0919c4985
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -20,9 +20,9 @@ depends=(
         'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
-        'rockchip-mpp'
+        'chromaprint-fftw' 'libbs2b' 'codec2' 'libilbc' 'kvazaar'
+        'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk'
+        'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -118,6 +118,7 @@ build() {
         --enable-libcaca \
         --enable-libcelt \
         --enable-libcdio \
+        --enable-libcodec2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --disable-libflite \
