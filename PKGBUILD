@@ -2,18 +2,18 @@
 
 pkgname=dxvk-git
 _srcname=dxvk
-pkgver=20180215.746c90e
+pkgver=20180225.ced02ba
 pkgrel=1
 epoch=
-pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
+pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine. Requires Wine with Vulkan support (wine-staging or wine-vulkan)"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 groups=()
-depends=('vulkan-icd-loader' 'wine-staging')
+depends=('vulkan-icd-loader' 'wine')
 makedepends=('ninja' 'meson' 'glslang' 'mingw-w64-gcc')
 checkdepends=()
-optdepends=()
+optdepends=('wine-staging: Wine with Vulkan support' 'wine-vulkan: Wine with Vulkan support')
 provides=()
 conflicts=()
 replaces=()
