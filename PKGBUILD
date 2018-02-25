@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-binutils
-pkgver=2.29.1
+pkgver=2.30
 pkgrel=1
 pkgdesc="Binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
@@ -12,16 +12,13 @@ license=('GPL3')
 groups=('djgpp')
 options=('!libtool' '!emptydirs')
 source=("http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"
-	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz.sig"
 	"binutils-bfd-djgpp.patch"
 	"binutils-djgpp.patch"
 	"lto-discard.patch")
-sha256sums=('e7010a46969f9d3e53b650a518663f98a5dde3c3ae21b7d71e5e6803bc36b577'
-            'SKIP'
-            '1204757839cfd97383151bfa67f10e04173ad4c70559ba3544e3f629052b8ebe'
-            'a8a478da13137d2995dd67d24194f68c7499cf1fe7ab7ef5b686856ce484ee13'
+sha256sums=('6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6'
+            '81d5e555e52f84f7006ba7e8a888eff9a9590f2e20377396ed143581c723a799'
+            '2ece4649f6bf938945db4d40ce5aa8ce4cf0c7be138af8373daa0220c4936afe'
             '358cab5b397662718260f41c8a4139c97676600fa5ef9f3aa699bfe27606c434')
-validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 _target="i686-pc-msdosdjgpp"
 
 prepare() {
