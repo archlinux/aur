@@ -5,7 +5,7 @@ pkgver=2.1
 pkgrel=1
 pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
-url="https://github.com/Deevad/peppercarrot_fonts"
+url="https://framagit.org/peppercarrot/webcomics/tree/master/fonts"
 license=('GPL3' 'Apache' 'Custom:OFL10' 'Custom:OFL11' 'Custom:MITX11'
          'Custom:MplusFont' 'Custom:CCBY3')
 depends=('fontconfig' 'xorg-font-utils'
