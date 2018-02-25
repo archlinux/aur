@@ -62,6 +62,7 @@ files_remote_name="${repo_name}.files"
         do
             echo "Removing $oldpkg from repo"
             mv "$oldpkg" "$old_pkgs"
+            mv "${oldpkg}.sig" "$old_pkgs"
         done
     done
     for pkg in *.pkg.tar.xz
