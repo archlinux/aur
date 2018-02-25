@@ -2,15 +2,15 @@
 # Contributor: jedbrown
 
 pkgname=papi
-pkgver=5.5.1
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
 url="http://icl.cs.utk.edu/papi/"
 license=('BSD')
 depends=('glibc' 'gcc-fortran')
 source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('49dc2c2323f6164c4a7e81b799ed690ee73158671205e71501f849391dd2c2d4')
+sha256sums=('49b7293f9ca2d74d6d80bd06b5c4be303663123267b4ac0884cbcae4c914dc47')
 conflicts=('libpfm4')
 
 build() {
@@ -19,19 +19,18 @@ build() {
   export CFLAGS="-fPIC ${CFLAGS}"
   ./configure \
     --prefix=/usr \
-    --with-static-lib=no --with-shared-lib=yes \
+    --with-static-lib=yes --with-shared-lib=yes \
     --mandir=/usr/share/man \
     --with-perf-events
 
   make
 }
 
-#check(){
-#  cd "${srcdir}/${pkgname}-${pkgver}/src"
-#
-#  make test
-#  #make fulltest
-#}
+check(){
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+
+  make test
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
