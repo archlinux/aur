@@ -1,7 +1,8 @@
 # Maintainer: Dan McCurry <dan.mc at protonmail dot com>
+_version=January2018
 pkgname=fullprof-suite
-pkgver=2017.07
-pkgrel=2
+pkgver=2018.01
+pkgrel=1
 pkgdesc="Crystallographic tools for Rietveld, profile matching & integrated intensity refinements of X-Ray and/or neutron data."
 arch=('x86_64')
 url="https://www.ill.eu/sites/fullprof"
@@ -16,10 +17,10 @@ install=${pkgname}.install
 # You will need to download the .tgz file from the webpage directly:
 # https://www.ill.eu/sites/fullprof/php/downloads.html
 
-source=("file://FullProf_Suite_July2017_Linux64.tgz"
+source=("file://FullProf_Suite_${_version}_Linux64.tgz"
 	"fullprof-bin")
 noextract=("${source##*/}")
-md5sums=('2042ff640d1c47958809ef3a19d6725c'
+md5sums=('57c1119910db3158dd79e5b72ff018c2'
          'e91280ece6411983c74b3a8071402eb9')
 PKGEXT=.pkg.tar
 
@@ -27,7 +28,8 @@ prepare() {
 	mkdir -p ${srcdir}/${pkgname}
 	mkdir -p ${srcdir}/bin
 
-	tar -xzvf ${srcdir}/FullProf_Suite_*.tgz -C ${srcdir}/${pkgname}/
+	msg2 "Extracting FullProf Suite..."
+	tar -xzf ${srcdir}/FullProf_Suite_${_version}_Linux64.tgz -C ${srcdir}/${pkgname}/
 
 	for i in $(find ${srcdir}/${pkgname}/. \
 		-maxdepth 1 -executable -type f -printf "%P "); do
