@@ -12,7 +12,7 @@ license=('GPL')
 url="http://planeworld.org/"
 depends=('sfml' 'lua' 'libnoise2d' 'eigen' 'gml')
 makedepends=('gcc-libs' 'git' 'cmake' 'sfml' 'lua' 'libnoise2d' 'eigen' 'gml')
-source=("git+https://github.com/planeworld/planeworld.git#commit=53f4a95ffe7c37fe342026307d9e88b556788a46")
+source=("git+https://github.com/planeworld/planeworld.git")
 md5sums=('SKIP')
 
 pkgver() {
