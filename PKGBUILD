@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-git
-pkgver=0.1.0.r7650.gefcf1e9128
+pkgver=0.1.0.r8256.gccd7081c49
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
 url="http://aomedia.org/"
 license=('BSD' 'custom:PATENTS')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('git' 'cmake' 'perl' 'yasm')
 provides=('aom')
 conflicts=('aom')
