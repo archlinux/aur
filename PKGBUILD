@@ -4,7 +4,7 @@
 _name=gzdoom
 pkgname=${_name}
 pkgver=3.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -45,15 +45,18 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 replaces=("${_name}1")
 source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
         "${_name}.desktop"
-        '0001-Fix-path-to-FluidR3-soundfont.patch')
+        '0001-Fix-path-to-FluidR3-soundfont.patch'
+        '0002-Added-SHARE_DIR-search-path-back.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '94834c91230c5c3743d47fc83b7d143d827e11e10b528a7d4f2b96e577c1123d')
+            '94834c91230c5c3743d47fc83b7d143d827e11e10b528a7d4f2b96e577c1123d'
+            '0f7401c77b615f5ce5484da2d65776ee7c989b0160953778adfceb3c631d29dd')
 
 prepare() {
     cd $_name
 
     patch -p1 -i"$srcdir"/0001-Fix-path-to-FluidR3-soundfont.patch
+    patch -p1 -i"$srcdir"/0002-Added-SHARE_DIR-search-path-back.patch
 }
 
 build() {

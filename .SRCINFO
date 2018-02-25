@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
 	pkgver = 3.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -46,9 +46,11 @@ pkgbase = gzdoom
 	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.2.5
 	source = gzdoom.desktop
 	source = 0001-Fix-path-to-FluidR3-soundfont.patch
+	source = 0002-Added-SHARE_DIR-search-path-back.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
 	sha256sums = 94834c91230c5c3743d47fc83b7d143d827e11e10b528a7d4f2b96e577c1123d
+	sha256sums = 0f7401c77b615f5ce5484da2d65776ee7c989b0160953778adfceb3c631d29dd
 
 pkgname = gzdoom
 
