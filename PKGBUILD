@@ -4,8 +4,8 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.2
+pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
 url=http://www.whatpulse.org
@@ -21,8 +21,8 @@ source=('whatpulse.desktop')
 source_i686=("http://static.whatpulse.org/files/whatpulse-linux-ubuntu-32bit-$pkgver.tar.gz")
 source_x86_64=("http://static.whatpulse.org/files/whatpulse-linux-ubuntu-64bit-$pkgver.tar.gz")
 sha256sums=('aba7e6b28ccebdb6115245dae1a7ca8e88afa2ecb1619037b66f65090a284363')
-sha256sums_i686=('8480458eb7baf1f929e731b13448ab061cd3f25ac8cd850cb2cd17dfa4fba83b')
-sha256sums_x86_64=('fa28c002d8906416e1abd73a6150c453a87d30a41136494e0ec42728de2f3400')
+sha256sums_i686=('b3aa6ad72e87792eb2119e8b508ff791a7985f9a31ec4a38419678bebb6b20c6')
+sha256sums_x86_64=('593a6e606c76c1d8df79770019a0f085e4cc74c742834e77dee565f5d71da93c')
 
 build() {
 	# Extract the tiny, tiny bit of license/usage information that exists
