@@ -6,7 +6,7 @@ arch=('any')
 license=('MIT')
 source=(reposync.sh)
 pkgdesc="Wrapper for aursync"
-sha256sums=('6b668906c9f9dd6b3b7e0ad8dacb48b68460af20bf5bf37cfd523088ab620bc5')
+sha256sums=('17b634aff7c5802f554232c485d5b38ac69b280f3baa316bbac40660fcc7622f')
 depends=('aurutils' 'sudo' 'bash' 's3fs-fuse')
 
 package () {

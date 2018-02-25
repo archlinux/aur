@@ -98,6 +98,8 @@ aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
     # remove all the extras
     rm -f "${db_local_name}"*
     rm -f "${files_local_name}"*
+    # remove backup files from aursync
+    rm -f *~
 )
 
 echo "Syncing local repo to remote"
