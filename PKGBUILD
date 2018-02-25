@@ -1,27 +1,27 @@
 # Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
-appname=vk_api
-pkgname=(python-vk_api python2-vk_api)
-pkgver=9.3
-pkgrel=3
-pkgdesc='Module for writing scripts for vk.com (vkontakte)'
+_pkgname=vdf
+pkgname=(python-vdf python2-vdf)
+pkgver=2.3
+pkgrel=1
+pkgdesc="Library for working with Valve's VDF text format"
 arch=('any')
-url='https://github.com/python273/vk_api'
-license=('APACHE')
+url='https://github.com/ValvePython/vdf'
+license=('MIT')
 depends=()
 makedepends=('python-setuptools')
-source=("https://github.com/python273/vk_api/archive/v$pkgver.tar.gz")
-sha256sums=('cc7cbf1e90ad1003bd38d00867e2352c59034d1bdda98afce91d63160894b636')
+source=("https://github.com/ValvePython/vdf/archive/v$pkgver.tar.gz")
+sha256sums=('d129edb0ab0cac55f9cd632959f05b8cbbe0babe017cf9671b8b379ec3186148')
 
-package_python-vk_api() {
-  depends=('python' 'python-requests' 'python-beautifulsoup4')
-  cd "$srcdir/$appname-$pkgver"
+package_python-vdf() {
+  depends=('python' 'python-nose' 'python-coverage' 'python-mock')
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --optimize=1 --root="${pkgdir}/"
 }
 
-package_python2-vk_api() {
-  depends=('python2' 'python2-requests' 'python2-enum34' 'python2-beautifulsoup4')
-  cd "$srcdir/$appname-$pkgver"
+package_python2-vdf() {
+  depends=('python2' 'python2-nose' 'python2-coverage' 'python2-mock')
+  cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --optimize=1 --root="${pkgdir}/"
 }
 # vim:set ts=2 sw=2 et:
