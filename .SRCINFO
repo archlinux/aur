@@ -19,7 +19,6 @@ pkgbase = spacefm-ng
 	optdepends = udisks2: mount as non-root user
 	provides = spacefm
 	conflicts = spacefm
-	replaces = spacefm
 	source = spacefm-ng-1.0.6.tar.gz::https://github.com/Teklad/spacefm-ng/archive/1.0.6.tar.gz
 	md5sums = 01f45b00f61ec346b53668bdeb08e1f1
 

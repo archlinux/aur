@@ -1,5 +1,6 @@
-# Maintainer:  grimi <grimi at poczta dot fm>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: grimi <grimi at poczta dot fm>
+
 pkgname=spacefm-ng
 pkgver=1.0.6
 pkgrel=1
@@ -15,10 +16,9 @@ optdepends=('lsof: device processes'
             'udevil: mount as non-root user and mount networks'
             'udisks2: mount as non-root user')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Teklad/$pkgname/archive/$pkgver.tar.gz")
-provides=("spacefm")
-replaces=("spacefm")
-conflicts=("spacefm")
 md5sums=('01f45b00f61ec346b53668bdeb08e1f1')
+provides=('spacefm')
+conflicts=('spacefm')
 
 build() {
   cd $pkgname-$pkgver
