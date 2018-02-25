@@ -1,6 +1,6 @@
 pkgbase = python-steam-git
 	pkgdesc = Module for interacting with various Steam features
-	pkgver = 0.8.20
+	pkgver = 0.8.20.r37.f2aae35
 	pkgrel = 1
 	url = https://github.com/ValvePython/steam
 	arch = any
