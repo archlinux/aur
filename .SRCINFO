@@ -1,7 +1,7 @@
 pkgbase = denemo
 	pkgdesc = A music score editor
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.denemo.org
 	arch = x86_64
 	license = GPL
