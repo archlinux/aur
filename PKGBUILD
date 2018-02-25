@@ -1,11 +1,11 @@
 pkgname=python-multivault-git
 pkgver=r24.1aeea29
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI to encrypt and decrypt content for ansible"
 url="https://github.com/Selfnet/multivault/"
 license=('MIT')
 arch=('any')
-depends=('python-gnupg' 'python-yaml' 'libldap' 'python-paramiko')
+depends=('python-gnupg' 'python-yaml' 'python-ldap3' 'python-paramiko')
 source=("git+https://github.com/Selfnet/multivault.git")
 sha512sums=('SKIP')
 
