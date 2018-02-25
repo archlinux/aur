@@ -1,5 +1,6 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Haochen Tong <i at hexchain dot org>
 
 _gemname_='opener'
 pkgname="ruby-${_gemname_}"
@@ -10,6 +11,7 @@ arch=('any')
 url='https://github.com/sunaku/opener'
 license=('Ruby')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem")
 noextract=("${_gemname_}-${pkgver}.gem")
