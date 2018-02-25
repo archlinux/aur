@@ -82,10 +82,13 @@ optdepends=(
 options=('staticlibs')
 source=("$_winesrc"::'git://source.winehq.org/git/wine.git'
         "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
-        '30-win32-aliases.conf')
+        '30-win32-aliases.conf'
+		'wine-binfmt.conf')
 sha256sums=('SKIP'
             'SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
+install=wine.install
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -103,11 +106,13 @@ else
 	makedepends=("${makedepends[@]}" "${_depends[@]}")
 	provides=(
 		"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-		"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
 		"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+		"bin32-wine=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+		"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
 		"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
 	)
-	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-git')
+	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-git' 'wine-wow64' 'bin32-wine')
+	replaces=('bin32-wine')
 fi 
 
 prepare() {
@@ -123,7 +128,7 @@ prepare() {
     # change back to the wine upstream commit that this version of wine-staging is based in
     msg2 'Changing wine HEAD to the wine-staging base commit...'
     git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
-    
+		
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
@@ -219,4 +224,5 @@ package() {
     install -d "$pkgdir"/etc/fonts/conf.{avail,d}
     install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
     ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+	install -Dm 644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
