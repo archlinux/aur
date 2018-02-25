@@ -1,14 +1,14 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq-bin
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
 url="https://bitsquare.io/"
 license=('AGPL3')
 source_x86_64=("https://github.com/bitsquare/bitsquare/releases/download/v${pkgver}/Bisq-64bit-${pkgver}.deb")
-md5sums_x86_64=('89437ac451970118f78427f7415045d5')
+md5sums_x86_64=('c7cfa756b71c204136a799f0871d494a')
 _binname=Bisq
 conflicts=("bisq")
 provides=("bisq")
