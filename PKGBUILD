@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-ros'
-pkgver='2.7.3'
+pkgver='2.7.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,15 +29,21 @@ depends=(${ros_depends[@]}
   tinyxml)
 
 # Git version (e.g. for debugging)
-# _tag=release/lunar/gazebo_ros/${pkgver}-${_pkgver_patch}
+# _tag=release/lunar/gazebo_ros/2.7.3-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="gazebo_ros_pkgs-release-release-lunar-gazebo_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('85b7b58bdc4575553204a25413a9835a881623a36bc77b0deeb0e7c17282f58f')
+_dir="gazebo_ros_pkgs-release-release-lunar-gazebo_ros-2.7.3-${_pkgver_patch}"
+source=("${pkgname}-2.7.3-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_ros/2.7.3-${_pkgver_patch}.tar.gz" "2.7.4.patch")
+sha256sums=('85b7b58bdc4575553204a25413a9835a881623a36bc77b0deeb0e7c17282f58f'
+            '7d211947fae04f2a45a22991980a817e7fe6457e7ac2495748c3e1147105bb63')
+
+prepare() {
+  cd "${srcdir}"
+  patch -Np1 -i "2.7.4.patch"
+}
 
 build() {
   # Use ROS environment variables
