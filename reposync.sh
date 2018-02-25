@@ -61,7 +61,9 @@ files_remote_name="${repo_name}.files"
         echo "Adding $pkg"
         repo-add "$db_local_name" "$pkg"
     done
+    rm -f "${db_remote_name}.sig"
     gpg --output "${db_remote_name}.sig" --detach-sign "$db_local_name"
+    rm -f "${files_remote_name}.sig"
     gpg --output "${files_remote_name}.sig" --detach-sign "$files_local_name"
 )
 
@@ -85,5 +87,5 @@ aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
 echo "Syncing local repo to remote"
 echo "$local_repo/ -> $remote_repo/"
 $do_rsync "$local_repo/" "$remote_repo/"
-$do_rsync -c "$local_repo/dangersalad.db.*" "$remote_repo/"
-$do_rsync -c "$local_repo/dangersalad.files.*" "$remote_repo/"
+$do_rsync -c "$local_repo"/dangersalad.db.* "$remote_repo/"
+$do_rsync -c "$local_repo"/dangersalad.files.* "$remote_repo/"
