@@ -3,15 +3,15 @@
 
 pkgname=purrdata-pure
 _pkgname=pd-pure
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc="Loader plugin for the Pure programming language, Purr-Data version"
 arch=('i686' 'x86_64')
 url="http://purelang.bitbucket.org/"
 depends=('purr-data' 'pure')
 license=('custom')
-source=(https://bitbucket.org/purelang/pure-lang/downloads/$_pkgname-$pkgver.tar.gz)
-md5sums=('6d1742ea78f329c4625d037926593275')
+source=(https://github.com/agraef/pure-lang/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz)
+md5sums=('a98a6bd74bc5b572ef74012bc9891c3e')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
