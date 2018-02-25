@@ -10,8 +10,8 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://planeworld.org/"
-depends=('sfml' 'lua' 'libnoise2d' 'eigen' 'gml')
-makedepends=('gcc-libs' 'git' 'cmake' 'sfml' 'lua' 'libnoise2d' 'eigen' 'gml')
+depends=('sfml' 'lua' 'libnoise2d' 'eigen' 'glm')
+makedepends=('gcc-libs' 'git' 'cmake' 'sfml' 'lua' 'libnoise2d' 'eigen' 'glm')
 source=("git+https://github.com/planeworld/planeworld.git")
 md5sums=('SKIP')
 
