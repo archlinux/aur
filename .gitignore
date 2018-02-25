@@ -3,3 +3,4 @@
 visit-install*
 /pkg
 /src
+*.log*

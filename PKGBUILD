@@ -2,7 +2,7 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 pkgname=visit-bin
 _pkgname=visit
-pkgver=2.12.3
+pkgver=2.13.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('BSD' 'custom')
 provides=('visit')
 conflicts=('visit' 'visit-build')
-depends=('libpng15' 'glu')
+depends=('libpng' 'glu')
 makedepends=('bash' 'cpio')
 _ver=ubuntu14
 _url="http://visit.ilight.com/svn/${_pkgname}/trunk/releases/${pkgver}"
@@ -20,8 +20,8 @@ source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('42dda6b4137a68f8b005d0798b744025ba569a36a99b9a34d458c72f5117e7ed'
-            '09f8f546e4f271176e1d4678bf7ef4e648b6c95ddb5b9f50587b11bcde8a0570'
+sha256sums=('bf524d57e6ac8dcbf4341b57169e18cc2b67fa4d5462c4dca2ce9cf02b938f2a'
+            '2654cef38b463b199edc99cf769beebb60ec7cdb492001d04e0d9a09a4238324'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7')
 
