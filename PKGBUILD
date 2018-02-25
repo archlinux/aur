@@ -13,8 +13,8 @@ source=("godot.desktop" "icons.tar.gz")
 source_i686+=("$pkgname-$pkgver.tar.gz::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.32.zip")
 source_x86_64+=("$pkgname-$pkgver.tar.gz::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.64.zip")
 md5sums=("fa7422332b97ab8430ea7628ec8b0880" "9dbfaa636daf7737899de6a28c33c3be")
-md5sums_i686=("25392d182412bfb42e3219defdb5af1d")
-md5sums_x86_64=("57666c26581caa74d1c757655e6b17da")
+md5sums_i686=("4325a8ed0d7b04bdfcc328b481818018")
+md5sums_x86_64=("9fbd0894060a7d211601d5a00cb51735")
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
