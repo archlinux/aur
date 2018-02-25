@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss10
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Envy Code R.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka'
            'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss10-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('c184fa6b4430f2b7a99603435468c9442dc1322b16a06e88438cfa5eff4b046b'
+sha256sums=('549395bf250204a50863c397b1bc5239d76c8254f40335da99cb6a4651fe5987'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
