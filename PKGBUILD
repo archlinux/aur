@@ -1,22 +1,22 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=helpdeco
-pkgver=2.1.3
-pkgrel=3
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="Decompiler for WinHelp (.hlp) files"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends_i686=('glibc')
-depends_x86_64=('lib32-glibc')
-makedepends_x86_64=('gcc-multilib')
-url="http://sourceforge.net/projects/helpdeco/"
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('6ef5dd1a4a397589e5bcdd308820f4d38cbf53e413971231505a998bc1c8003de3b291483743027280ff3113338fc0ed9553066435ee5ffb597da33a487e2638')
+depends=('glibc')
+url="https://sourceforge.net/projects/helpdeco/"
+source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make CFLAGS="$CFLAGS -m32" LDFLAGS="$LDFLAGS -m32"
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make install prefix="$pkgdir/usr"
 }
+
+sha512sums=('e0b7445dbf5c42e2f96061cadc816786118e26229f2af23fbfd3c4ffd26cc3a5949fd2fc376e4e8ef909976bb519bf624aedfe41e881639ab2e5130fb468a502')
