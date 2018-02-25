@@ -2,25 +2,24 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
 pkgver=3.10.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc="XX-Net, a web proxy tool."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/XX-net/XX-Net"
 license=('unknown')
-depends=('python2' 'supervisor')
+depends=('python2')
 options=('!strip')
 
 optdepends=(
 	'python2: A high-level scripting language'
 	'supervisor: A system for controlling process state under UNIX'
+	'miredo: a Teredo server/client, x86_64'
+	'miredo-debian: a Teredo client, armv7'
 		)
 makedepends=()
 checkdepends=()
-optdepends=(
-	"miredo: a Teredo server/client, x86_64"
-	"miredo-debian: a Teredo client, armv7"
-		)
+
 install=$pkgname.install
 
 
