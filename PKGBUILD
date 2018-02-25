@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.21
+pkgver=4.14.22
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -15,13 +15,12 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=50a8c70e78f40f4a5df9d1bdb6e2547c4573034b
+arch_config_trunk=64dde16452b6629496a605ba9c840644bfbb47fb
 
 # Arch additional patches
 arch_patches=(
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-        0003-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+        0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -40,7 +39,7 @@ for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '4d888fb78a52e556948483c8410159a83c51195eb7637f084d6f19f014fff448'
+            '6df3b1cea7091380949dcb33a8313bdfd4b26227584569753ff6c8d161ee1cf7'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -48,7 +47,6 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
             '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
 
 validpgpkeys=(
