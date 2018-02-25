@@ -28,7 +28,7 @@ package() {
 	ar vx ${pkgname}_${pkgver}-4_armhf.deb || return 1
     tar fx data.tar.xz || return 1
 	ls ${srcdir}
-	#install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 ${pkgdir}/usr/lib/libJudy.so.1 || return 1
-	install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1 ${pkgdir}/arm-linux-gnueabihf || return 1
-	install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 ${pkgdir}/usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 || return 1
+	install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 ${pkgdir}/usr/lib/libJudy.so.1 || return 1
+	#install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1 ${pkgdir}/arm-linux-gnueabihf || return 1
+	#install -D -m755 usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 ${pkgdir}/usr/lib/arm-linux-gnueabihf/libJudy.so.1.0.3 || return 1
 }
