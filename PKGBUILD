@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="miredo, miredo.deb"
 arch=('armv7h')
@@ -16,10 +16,14 @@ checkdepends=()
 
 source=(
 	"http://ftp.cn.debian.org/debian/pool/main/m/miredo/miredo_${pkgver}-2_armhf.deb"
+	"miredo.service"
+	"50-miredo.conf"
 		)
 noextract=()
 md5sums=(
 	'4680e1bf2fa322d442be326f94490114'
+	"eccff5befe0e71875c3429e71b81bcda"
+	"44fad4f428c85b64a9c46c93ec76079f"
 		)
 validpgpkeys=()
 
@@ -36,7 +40,8 @@ package() {
 	install -D -m755 etc/miredo/client-hook ${pkgdir}/etc/miredo/client-hook || return 1
 	install -D -m644 etc/miredo/miredo.conf ${pkgdir}/etc/miredo/miredo.conf || return 1
 	install -D -m755 etc/network/if-up.d/miredo ${pkgdir}/etc/network/if-up.d/miredo || return 1
-	
+	install -D -m644 miredo.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/miredo.service || return 1
+	install -D -m644 50-miredo.conf ${pkgdir}/etc/sysctl.d/50-miredo.conf || return 1
 	
 #/usr
 	##lib

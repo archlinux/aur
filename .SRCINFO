@@ -1,7 +1,7 @@
 pkgbase = miredo-debian
 	pkgdesc = miredo, miredo.deb
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/jessie/miredo
 	arch = armv7h
 	license = unknown
@@ -12,7 +12,11 @@ pkgbase = miredo-debian
 	conflicts = miredo
 	options = !strip
 	source = http://ftp.cn.debian.org/debian/pool/main/m/miredo/miredo_1.2.6-2_armhf.deb
+	source = miredo.service
+	source = 50-miredo.conf
 	md5sums = 4680e1bf2fa322d442be326f94490114
+	md5sums = eccff5befe0e71875c3429e71b81bcda
+	md5sums = 44fad4f428c85b64a9c46c93ec76079f
 
 pkgname = miredo-debian
 
