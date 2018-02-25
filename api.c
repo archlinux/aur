@@ -229,7 +229,8 @@ void json_print_news(Json* jobj) {
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
         author_string = strip_char(
-                json_object_to_json_string(json_object_object_get(article, "author")), '\\'); //Strip all attributes of backslashes
+                json_object_to_json_string(json_object_object_get(article, "author")),
+                '\\'); //Strip all attributes of backslashes
         title_string = strip_char(
                 json_object_to_json_string(json_object_object_get(article, "title")), '\\');
         source_string = strip_char(json_object_to_json_string(
@@ -259,6 +260,8 @@ void json_print_news(Json* jobj) {
 
 void api_print_info(const char* ticker_name_string) {
     Info* ticker_info = coinmarketcap_get_info(ticker_name_string);
+    if (ticker_info == NULL)
+        ticker_info = iex_get_info(ticker_name_string);
     if (ticker_info == NULL) {
         printf("Invalid symbol!\n");
         return;
@@ -282,6 +285,45 @@ void api_print_info(const char* ticker_name_string) {
     if (ticker_info->volume_1d != EMPTY)
         printf("Volume 24h: $%ld\n", ticker_info->volume_1d);
     api_info_destroy(&ticker_info);
+}
+
+Info* iex_get_info(const char* ticker_name_string) {
+    char iex_api_string[128];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", ticker_name_string);
+    String* pString = api_curl_data(iex_api_string, NULL); // API CALL 1 -- name, symbol, price, mcap, volume
+    if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
+        api_string_destroy(&pString);
+        return NULL;
+    }
+    Info* ticker_info = api_info_init();
+    Json* jobj = json_tokener_parse(pString->data);
+    strcpy(ticker_info->name, json_object_get_string(json_object_object_get(jobj, "companyName")));
+    strcpy(ticker_info->symbol, json_object_get_string(json_object_object_get(jobj, "symbol")));
+    ticker_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
+    ticker_info->marketcap = json_object_get_int64(json_object_object_get(jobj, "marketCap"));
+    ticker_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
+    json_object_put(jobj);
+    api_string_destroy(&pString);
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/stats/dividendYield", ticker_name_string);
+    pString = api_curl_data(iex_api_string, NULL); // API CALL 2 -- dividend
+    if (strcmp("0", pString->data) != 0)
+        ticker_info->div_yield = strtod(pString->data, NULL);
+    api_string_destroy(&pString);
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", ticker_name_string);
+    pString = api_curl_data(iex_api_string, NULL); // API CALL 3 -- historical
+    jobj = json_tokener_parse(pString->data);
+    Json* d_30 = json_object_array_get_idx(jobj, 0);
+    Json* d_7 = json_object_array_get_idx(jobj, json_object_array_length(jobj) - 6);
+    Json* d_1 = json_object_array_get_idx(jobj, json_object_array_length(jobj) - 2);
+    ticker_info->change_30d = 100 / ticker_info->price *
+                              (ticker_info->price - json_object_get_double(json_object_object_get(d_30, "close")));
+    ticker_info->change_7d = 100 / ticker_info->price *
+                             (ticker_info->price - json_object_get_double(json_object_object_get(d_7, "close")));
+    ticker_info->change_1d = 100 / ticker_info->price *
+                             (ticker_info->price - json_object_get_double(json_object_object_get(d_1, "close")));
+    json_object_put(jobj);
+    api_string_destroy(&pString);
+    return ticker_info;
 }
 
 Info* coinmarketcap_get_info(const char* ticker_name_string) {

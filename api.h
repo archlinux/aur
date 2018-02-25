@@ -26,13 +26,13 @@ struct string {
 typedef struct string String;
 
 struct info {
-    char* name;
-    char* symbol;
-    double price;
-    double change_1d, change_7d, change_30d;
-    double div_yield;
-    long marketcap;
-    long volume_1d;
+    char* name; // Name of security (ex. Apple Inc.)
+    char* symbol; // Symbol of security (ex. AAPL)
+    double price; // Current price of security in USD (ex. 174.54)
+    double change_1d, change_7d, change_30d; // Percent change in the past x days (ex. -7.49)
+    double div_yield; // Percent dividend yield (ex. 1.46)
+    long marketcap; // Market cap in USD (ex. 890489000000)
+    long volume_1d; // Volume in shares of security (ex. 33812360)
 };
 
 typedef struct info Info;
@@ -116,11 +116,25 @@ void news_print_top_three(const char* ticker_name_string);
  */
 void json_print_news(Json* jobj);
 
+/**
+ * Prints info about the given symbol
+ * @param ticker_name_string the symbol
+ */
 void api_print_info(const char* ticker_name_string);
 
 /**
- * Prints info related to the given cryptocurrency
- * @param ticker_name_string the cryptocurrency's name
+ * Returns a pointer to an Info object containing info pertaining
+ * to the given symbol
+ * @param ticker_name_string stock/etf symbol
+ * @return Info object
+ */
+Info* iex_get_info(const char* ticker_name_string);
+
+/**
+ * Returns a pointer to an Info object containing info pertaining
+ * to the given crypto
+ * @param ticker_name_string the crypto's name
+ * @return Info object
  */
 Info* coinmarketcap_get_info(const char* ticker_name_string);
 
