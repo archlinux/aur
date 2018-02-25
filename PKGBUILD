@@ -1,26 +1,23 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Haochen Tong <i at hexchain dot org>
 
-pkgname=ruby-binman
-pkgver=5.0.1
+_gemname_=binman
+pkgname=ruby-${_gemname_}
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Produces UNIX manual pages for executable scripts"
 arch=('any')
 depends=('ruby' 'ruby-opener')
+makedepends=('ruby-rdoc')
 url="https://github.com/sunaku/binman"
 license=('ISC')
-source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('73501b43ab2a67fb7611199b07a920db41f33297fd0d8a93ef2867862508589c')
+source=(https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem)
+sha256sums=('767b5174a333e5f0c2f4d6346f28b9a91e8233347fe55dbb9100e558a0afc4f2')
 noextract=("${pkgname#*-}-${pkgver}.gem")
-provides=('binman' 'ruby-binman')
-conflicts=('binman')
+options=(!emptydirs)
 
 package() {
-  cd "$srcdir"
-
-  msg2 'Installing...'
-  gem install \
-    --no-user-install \
-    --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname#*-}-$pkgver.gem
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname_}-${pkgver}.gem"
+    rm "${pkgdir}/${_gemdir}/cache/${_gemname_}-${pkgver}.gem"
 }
