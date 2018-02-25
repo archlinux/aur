@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=qtav-git
-pkgver=v1.12.0.r108.gf3ad0a57
+pkgver=v1.12.0.r110.g25218928
 pkgrel=1
 pkgdesc="A cross-platform multimedia playback framework based on Qt and FFmpeg"
 arch=('x86_64')
