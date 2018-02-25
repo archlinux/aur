@@ -3,18 +3,24 @@
 # Contributor: SeeSchloss <seeschloss@seos.fr>
 
 pkgname=unoconv
-pkgver=0.7
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Libreoffice-based document converter"
+url="http://dag.wiee.rs/home-made/unoconv"
 depends=(python libreoffice)
-makedepends=(asciidoc)
+makedepends=(asciidoc git)
 arch=(any)
 license=(GPL2)
-url="http://dag.wieers.com/home-made/unoconv"
-source=("$url/$pkgname-$pkgver.tar.gz")
-sha256sums=('56abbec55632b19dcaff7d506ad6e2fd86f53afff412e622cc1e162afb1263fa')
+_commit=7f044854cc2b75d3ba988411f5f9f0c2483169cd  # tags/0.8.2
+source=("git+https://github.com/dagwieers/unoconv#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 package() {
-    cd $pkgname-$pkgver
-    make DESTDIR="$pkgdir" install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }
