@@ -1,7 +1,7 @@
-# Maintainer: Slavi Pantaleev <s.pantaleev at gmail.com>
+# Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=sftpman-gtk
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK frontend for SftpMan (application that handles sshfs/sftp file systems mounting)."
 arch=('any')
