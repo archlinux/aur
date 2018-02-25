@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrwallet-git')
-pkgver=20171214
+pkgver=20180224
 pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('dep' 'git' 'go')
@@ -65,7 +65,6 @@ package_dcrd-git() {
 
   msg2 'Installing dcrd...'
   for _bin in dcraddblock \
-              dcrcheckdevpremine \
               dcrctl \
               dcrd \
               dcrfindcheckpoint \
