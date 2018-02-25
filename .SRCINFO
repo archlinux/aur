@@ -1,10 +1,8 @@
 pkgbase = gimagereader-qt5
 	pkgdesc = A graphical frontend to tesseract-ocr - Qt5 version
 	pkgver = 3.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/manisandro/gImageReader
-	install = gimagereader-qt5.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = desktop-file-utils
