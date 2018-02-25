@@ -10,7 +10,6 @@ license=('GPL')
 groups=('')
 depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
 source_x86_64=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
 sha512sums_x86_64=('09913cc5013d0c754be5dc10c7542af1a90362948b42bb8fb6123551e5bac919043902ffeae56d9318cf65814a4d2e8f4be7ed0656f952d48de09c3c4e3e5dfd')
 

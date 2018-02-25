@@ -3,7 +3,6 @@ pkgbase = bitwarden
 	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://bitwarden.com
-	install = bitwarden.install
 	arch = x86_64
 	license = GPL
 	depends = alsa-lib
