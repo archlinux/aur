@@ -3,7 +3,7 @@
 
 pkgname=hollywood
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
@@ -46,12 +46,10 @@ md5sums=(
 
 package() {
   # Install files
-  install -dm0755 "$pkgdir/"{usr/bin,usr/lib/{hollywood,wallstreet},usr/share/{licenses/hollywood,man/man1,hollywood,wallstreet}}
-  install -m 0755 "$srcdir/$pkgname-$pkgver/bin/"*  "$pkgdir/usr/bin"
+  install -dm0755 "$pkgdir/"{usr/bin,usr/lib/hollywood,usr/share/{licenses/hollywood,man/man1,hollywood}}
+  install -m 0755 "$srcdir/$pkgname-$pkgver/bin/hollywood"  "$pkgdir/usr/bin"
   install -m 0755 "$srcdir/$pkgname-$pkgver/lib/hollywood/"* "$pkgdir/usr/lib/hollywood"
-  install -m 0755 "$srcdir/$pkgname-$pkgver/lib/wallstreet/"* "$pkgdir/usr/lib/wallstreet"
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/hollywood/"*  "$pkgdir/usr/share/hollywood"
-  install -m 0644 "$srcdir/$pkgname-$pkgver/share/wallstreet/"*  "$pkgdir/usr/share/wallstreet"
   install -m 0644 "$srcdir/$pkgname-$pkgver/"{README,ChangeLog}  "$pkgdir/usr/share/hollywood"
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/man/man1/"*  "$pkgdir/usr/share/man/man1"
   # copyright and license
