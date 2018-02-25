@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LazyMan
+Comment=Stream every NHL and MLB game
+Path=/usr/bin
+Exec=lazyman
+Icon=/usr/share/icons/lazyman.png
+Terminal=false
+Categories=Video;AudioVideo;TV;Player;
+StartupNotify=false
+Version=1.0
