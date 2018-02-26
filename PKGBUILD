@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 
 pkgdesc="miredo, miredo.deb, only support armv7h"
 arch=('armv7h')
@@ -19,7 +19,7 @@ source=(
 	"miredo.service"
 	"50-miredo.conf"
 	"restart_miredo"
-	"miredo.ini"
+	"miredo-disable_ipv6.ini"
 		)
 noextract=()
 md5sums=(
