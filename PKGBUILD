@@ -2,7 +2,7 @@
 # Contributor: mortzu
 pkgname=netkit-rwho-debian
 pkgver=0.17
-pkgrel=4
+pkgrel=5
 _debrev=13
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
