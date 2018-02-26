@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 
 pkgname=terminfo-italics
-pkgver=6.0+20170902
+pkgver=6.1
 pkgrel=1
 pkgdesc='Common terminfo formats patched to support italics'
 arch=('any')
