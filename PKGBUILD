@@ -27,7 +27,7 @@ md5sums=(
 	"eccff5befe0e71875c3429e71b81bcda"
 	"44fad4f428c85b64a9c46c93ec76079f"
 	"213905764b73be9203724d19a78792cf"
-	"59717fe16bde9cb80669bf477d7aa0c3"
+	"ee5ac1fadacdc9527ecb3a53cc779710"
 		)
 validpgpkeys=()
 
