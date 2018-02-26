@@ -3,7 +3,7 @@ Type=Application
 Name=Risk of Rain
 GenericName=Risk of Rain
 Icon=/opt/riskofrain-hib/assets/icon.png
-Exec="LD_PRELOAD=/usr/lib32/libcurl.so.3 /usr/bin/riskofrain"
+Exec="/usr/bin/riskofrain"
 Categories=Game;
 Path=/opt/riskofrain-hib
 
