@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -26,7 +26,6 @@ source=(
     "variant::git+https://github.com/mapbox/variant.git"
     "Catch::git+https://github.com/philsquared/Catch"
     "https://s3.amazonaws.com/aur-telegram-desktop-notoemoji/noto-emoji-${_emojiver}.tar.xz"
-    "telegram-desktop.desktop"
     "tg.protocol"
     "CMakeLists.inj"
     "tdesktop.patch"
@@ -39,7 +38,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0b520c1227010f2357c52208c3937a394534bd3aa30c78810cd4d309afa94bd7'
-            'b12b6d25fc2e6fb0a60a14bbab8b600ec71cf4651279180730c1a469afd1173c'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
             'c0a71a540c6263d4e6cbba326a9b9d61cd57ef6db6054e87058dc49cbb707a23'
@@ -88,7 +86,7 @@ package() {
     install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
     install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/telegram-desktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
+    install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 
     install -d "$pkgdir/usr/share/kservices5"
     install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
