@@ -2,10 +2,10 @@
 
 pkgname=doomseeker
 pkgver=1.2
-pkgrel=0
+pkgrel=20180228
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
-url="http://doomseeker.drdteam.org/"
+url="https://reotip.alwaysdata.net/"
 license=("GPL2")
 
 depends=('qt4' 'zlib' 'bzip2')
@@ -14,16 +14,15 @@ makedepends=('gcc' 'cmake' 'make')
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
-
-source=("https://bitbucket.org/destroyerrocket/doomseeker/get/default.tar.gz"
+source=("hg+ssh://hg@bitbucket.org/Doomseeker/doomseeker"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 
-sha256sums=('47bbec12fa14a67701ea52faec7783958791748c49726e801bbed53bebc4f2d8'
+sha256sums=('SKIP'
             '64004248a2dd3771292e63717a05e1859f1ffe6d6fd5f16ebfa1427b9a43533f'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
-_bbdir=destroyerrocket-doomseeker-34583760c068/
+_bbdir=doomseeker
 build() {
     cd $srcdir/$_bbdir
     mkdir -p build
