@@ -1,0 +1,30 @@
+pkgbase = exec-helper
+	pkgdesc = How To Get Coffee In Peace: a shell meta-wrapper
+	pkgver = 0.2.0_2_gdb7aef2
+	pkgrel = 1
+	url = https://github.com/bverhagen/exec-helper
+	changelog = exec-helper.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = make
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = microsoft-gsl-git
+	makedepends = lsb-release
+	depends = yaml-cpp
+	depends = boost-libs
+	source = exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=db7aef26df984c781337e130229afad86bce1979
+	md5sums = SKIP
+
+pkgname = exec-helper
+
+pkgname = exec-helper-docs
+	pkgdesc = HTML API documentation for exec-helper
+	arch = any
+	depends = 
+
