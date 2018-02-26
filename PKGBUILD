@@ -1,9 +1,10 @@
 # Contributor: Isak Karlsson <isak.karlsson@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Abuzer Rafey <arafey@vyvygen.org>
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.25.0.2018.02.22
+pkgver=1.26.0_2018.02.25
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -16,10 +17,17 @@ options=('staticlibs' '!strip' '!emptydirs' '!makeflags')
 conflicts=('rust')
 provides=('rust')
 sha256sums=('SKIP'
-	    'SKIP')
-validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
+            'SKIP')
+validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
 
 export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
+
+pkgver() {
+  cd ${srcdir}/rustc-nightly-src
+  ver="$(expr "$(cat version)" : '\(.*\)-nightly')"
+  date="$(expr "$(cat version)" : '.* \(.*\))')"
+  echo "${ver}_${date//\-/.}"
+}
 
 build() {
   cd rustc-nightly-src

@@ -1,6 +1,6 @@
 pkgbase = rust-nightly
 	pkgdesc = A safe, concurrent, practical language
-	pkgver = 1.25.0.2018.02.22
+	pkgver = 1.26.0_2018.02.25
 	pkgrel = 1
 	url = http://www.rust-lang.org/
 	arch = i686
