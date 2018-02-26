@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r38592.7e4936454df2
+pkgver=3.r38904.3cbcbdb00e29
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -12,7 +12,7 @@ pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('meanwhile' 'farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss'
+depends=('enchant1.6' 'meanwhile' 'farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss'
   'libgnome-keyring' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
     'hicolor-icon-theme' 'dbus-glib' 'webkitgtk3' 'json-glib')
 optdepends=('avahi: Bonjour protocol support'
@@ -37,24 +37,17 @@ pkgver() {
   printf "3.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
-  cd "$srcdir"/"$_hgname"
-  rm -rf ../build
-  mkdir ../build
-  NOCONFIGURE=1 ./autogen.sh
-} 
-
 build() {
-  cd "$srcdir"/build
-   meson ../pidgin -Dsilc=false --prefix=/usr
-  ninja
+  cd "$srcdir"/pidgin
+   arch-meson build -Dsilc=false
+  ninja -C build
 }
 
 package(){
-  cd "$srcdir"/build
+  cd "$srcdir"/pidgin
 
   # For linking
-  DESTDIR=$pkgdir ninja install
+  DESTDIR=$pkgdir ninja -C build install
 
 }
 
