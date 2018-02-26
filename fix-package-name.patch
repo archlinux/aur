@@ -1,0 +1,25 @@
+diff --git a/imports/fix.go b/imports/fix.go
+index de660879..380ec8e9 100644
+--- a/imports/fix.go
++++ b/imports/fix.go
+@@ -908,9 +908,19 @@ func findImportGoPath(pkgName string, symbols map[string]bool, filename string)
+ 		if pkg == nil {
+ 			continue
+ 		}
++
+ 		// If the package name in the source doesn't match the import path's base,
+ 		// return true so the rewriter adds a name (import foo "github.com/bar/go-foo")
+-		needsRename := path.Base(pkg.importPath) != pkgName
++		baseName := path.Base(pkg.importPath)
++		for _, prefix := range []string{"go.", "go-"} {
++			baseName = strings.TrimPrefix(baseName, prefix)
++		}
++		for _, suffix := range []string{".go", "-go"} {
++			baseName = strings.TrimSuffix(baseName, suffix)
++		}
++
++		needsRename := baseName != pkgName
++
+ 		return pkg.importPathShort, needsRename, nil
+ 	}
+ 	return "", false, nil
