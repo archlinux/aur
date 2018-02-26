@@ -1,13 +1,14 @@
 # Maintainer: mickael9 <mickael9 at gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Thore Bödecker <me@foxxx0.de>
+# Contributor: Jörg Schuck <joerg_schuck [at] web.de>
 #
 # Changes from 2016-01-10, by Thore Bödecker:
 # 	reworked everything to allow php56 to co-exist with upstream php packages
 
 
 pkgbase=php56
-_pkgbase=${pkgbase%56}
+_pkgbase="${pkgbase%56}"
 pkgname=("${pkgbase}"
          "${pkgbase}-cgi"
          "${pkgbase}-apache"
@@ -31,7 +32,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -44,7 +45,8 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
 source=("https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
-        'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
+        'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles'
+        'use-enchant2.patch')
 sha512sums=('c494721594511f79a103ea3c73c5035aa0fcbca626710a0b85d2395693caf6762edefa3347cd0f8567b186f98c0df7f83cd4c698b158f0f72aa62aabbbb4e297'
             'SKIP'
             'e742d6e3e43bce75e11b4646cdbf06c5661c66cc22d5615caff1e293ed35e95973290940c93d6abeec2d43f02761baabf24e6954720d7df8f2bd7de2c3f9ba0d'
@@ -52,21 +54,26 @@ sha512sums=('c494721594511f79a103ea3c73c5035aa0fcbca626710a0b85d2395693caf6762ed
             '5e65a0cda2b873bf4f4f502ec6aef57c8c0a1c77c60a1d2c352da8871bcf213bc28b005f5517a806ee909b958c986601eb7381c6f7296f42cf3dbd3af0619035'
             'a398e9cde4ba57d243abb5b394152d87bc1fddc2d5fc934569e1f912a5a80eba3ae14720fe99fcda50722bedc5d65abcbde2822f5075091c4a83a2f6bb22c122'
             'c6b74e1b39224e79d33915a0d32fe2d08114d1dcec93035017af783b8b73b6475779e3e649abb35b73ea2fd6553120696c48ebb0894531282fbc9e1b36da9f3b'
-            '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3')
+            '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3'
+            'a055e5828de2840d1da4e18d4be2d31a14d4ffb3370185933357aee3110e04bf5ea01516d1e9b2c05ae11d637528bffd858dd1f6ed439a58314fed5f945456f6')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
               '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
 
 prepare() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
+	cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-	patch -p0 -i ${srcdir}/php.ini.patch
-	patch -p0 -i ${srcdir}/php-fpm.conf.in.patch
+	patch -p0 -i "${srcdir}/php.ini.patch"
+	patch -p0 -i "${srcdir}/php-fpm.conf.in.patch"
 	# Just because our Apache 2.4 is configured with a threaded MPM by default does not mean we want to build a ZTS PHP.
 	# Let's supress this behaviour and build a SAPI that works fine with the prefork MPM.
 	sed '/APACHE_THREADED_MPM=/d' -i sapi/apache2handler/config.m4 -i configure
 
 	# Allow php-tidy to compile with tidy-html5
 	sed 's/buffio\.h/tidybuffio\.h/' -i ext/tidy/tidy.c
+
+  # thanks to Jörg Schuck for providing this patch
+  # https://gist.github.com/jschuck/5d237974e5856a221ccb347c9ccf8711
+	patch -p0 -N -i "${srcdir}/use-enchant2.patch"
 }
 
 build() {
@@ -150,15 +157,15 @@ build() {
 		--with-zlib \
 		"
 
-	export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
-	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
+	export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
+	export PEAR_INSTALLDIR="/usr/share/${pkgbase}/pear"
 	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	# php
-	mkdir -p ${srcdir}/build-php
-	cd ${srcdir}/build-php
+	mkdir -p "${srcdir}/build-php"
+	cd "${srcdir}/build-php"
 	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
