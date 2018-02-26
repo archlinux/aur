@@ -5,7 +5,7 @@ pkgver=1.2
 pkgrel=20180228
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
-url="https://reotip.alwaysdata.net/"
+url="http://doomseeker.drdteam.org/"
 license=("GPL2")
 
 depends=('qt4' 'zlib' 'bzip2')
