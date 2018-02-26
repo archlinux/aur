@@ -1,0 +1,31 @@
+commit 4958154b91ef22274be780d1792fadb0295c3b2b (HEAD -> refs/heads/configure_missing_include_path_option)
+Author:     Uffe Jakobsen <>
+AuthorDate: Mon Feb 26 04:18:41 2018 +0100
+Commit:     Uffe Jakobsen <>
+CommitDate: Mon Feb 26 04:18:41 2018 +0100
+---
+:100755 100755 e0f7ded 9666a81 M	configure
+ configure | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git configure configure
+index e0f7ded..9666a81 100755
+--- configure
++++ configure
+@@ -209,6 +209,8 @@ for option in $@; do
+   ;;
+   --ldflags=*) LDFLAGS="${LDFLAGS} $optval"
+   ;;
++  --include-path=*) INCLUDE_PATH="$optval"
++  ;;
+   --compiler-prefix=*) COMPILER_PREFIX="$optval"
+   ;;
+   --install-prefix=*) INSTALL_PREFIX="$optval"
+@@ -528,7 +530,3 @@ echo "        BINS: naken_asm${CONFIG_EXT}, naken_util${CONFIG_EXT}, naken_prog$
+ echo
+ echo "Now type: make"
+ echo
+-
+-
+-
+-
