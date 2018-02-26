@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=compsize
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Calculate compression ratio of a set of files on Btrfs"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/kilobyte/compsize"
 license=(GPL)
 depends=(glibc)
 makedepends=(btrfs-progs git)
-_commit=dfb7881aa6225c200764c69b12c7f2f59e24783a  # tags/v1.0^0
+_commit=4d1a278d8b90f439f3e5dadfe02e7d8c566eecc5  # tags/v1.1^0
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd $pkgname
+  install -d "$pkgdir/usr/share/man/man8"
   make install PREFIX="$pkgdir"
-  install -Dt "$pkgdir/usr/share/man/man8" -m644 compsize.8
 }
