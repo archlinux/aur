@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=libdart
-pkgver=5.1.1
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'doxygen')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('e186c990176d8b7dd7039c59f934555d3738bd01a9205234b9b007a0be138363')
+sha256sums=('aa92634c1c97d99966cf16c4a0845792941358c063409fa00c28b4039c961c25')
 
 # Build type
 _buildtype="Release"
