@@ -1,0 +1,18 @@
+MEDUSA_USER="medusa"
+MEDUSA_GROUP="medusa"
+MEDUSA_DIR="/opt/medusa"
+
+post_install() {
+    getent group ${MEDUSA_GROUP} &> /dev/null || groupadd -r ${MEDUSA_GROUP} &> /dev/null
+    getent passwd ${MEDUSA_USER} &> /dev/null || useradd -r -g ${MEDUSA_GROUP} -d ${MEDUSA_DIR} -s /usr/bin/nologin ${MEDUSA_USER} &> /dev/null
+    chown -R ${MEDUSA_USER}:${MEDUSA_GROUP} ${MEDUSA_DIR}
+}
+
+post_upgrade() {
+  chown -R ${MEDUSA_USER}:${MEDUSA_GROUP} ${MEDUSA_DIR}
+}
+
+post_remove() {
+    userdel ${MEDUSA_USER} &> /dev/null
+    groupdel ${MEDUSA_GROUP} &> /dev/null || /bin/true
+}

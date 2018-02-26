@@ -1,0 +1,13 @@
+[Unit]
+Description=Medusa Daemon
+
+[Service]
+User=medusa
+Group=medusa
+
+Type=forking
+GuessMainPID=no
+ExecStart=/usr/bin/python2.7 /opt/medusa/app/start.py -q --daemon --nolaunch --datadir=/opt/medusa/data
+
+[Install]
+WantedBy=multi-user.target

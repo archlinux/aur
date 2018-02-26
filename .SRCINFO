@@ -1,0 +1,28 @@
+pkgbase = pymedusa
+	pkgdesc = Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.
+	pkgver = 13476.ccbc0ce9a
+	pkgrel = 1
+	url = https://github.com/pymedusa/Medusa
+	install = pymedusa.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-babel
+	depends = python2-cheetah
+	depends = python2-mako
+	optdepends = python2-notify
+	optdepends = unrar
+	conflicts = sickbeard
+	conflicts = sickrage
+	conflicts = sickrage-git
+	conflicts = sickrage2-git
+	conflicts = sickgear-git
+	source = git://github.com/pymedusa/Medusa.git
+	source = pymedusa.service
+	source = pymedusa.install
+	md5sums = SKIP
+	md5sums = a7d53eaed59f1e268aea8f73829d0b4c
+	md5sums = 188855fff23f878fcd9f8e5b498e0dd3
+
+pkgname = pymedusa
+
