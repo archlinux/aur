@@ -2,14 +2,14 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.3.1.r497.g4c29c00e1
+pkgver=1.3.1.r515.g4273c0313
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly'
          'gst-libav' 'taglib' 'glew' 'desktop-file-utils' 'hicolor-icon-theme'
-         'qt5-base' 'libechonest-qt5' 'protobuf' 'crypto++' 'chromaprint'
+         'qt5-base' 'protobuf' 'crypto++' 'chromaprint'
          'libmygpo-qt5-git' 'qt5-x11extras')
 makedepends=('git' 'boost' 'cmake' 'mesa' 'qt5-tools')
 install=clementine.install
@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
   cd Clementine
-  git am --signoff -k < ../spotify_blob.patch
+  patch -Np1 -i ../spotify_blob.patch
   patch -Np0 -i ../spotify_install.patch
 }
 
