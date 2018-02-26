@@ -3,7 +3,7 @@
 pkgbase=('stig-git')
 pkgname=('stig-git')
 pkgver=0.8.3a.r97.71ee76c
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
