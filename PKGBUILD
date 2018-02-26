@@ -18,7 +18,6 @@ source=(
 )
 sha256sums=('SKIP'
 	'f0a176539a6c5be46dc832d054be2f18c3256e5fd34c5f1416c9463bd75c82b3')
-options=(!libtool)
 
 pkgver() {
 	cd "$pkgname"
