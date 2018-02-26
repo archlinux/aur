@@ -2,7 +2,7 @@
 
 pkgbase=('stig-git')
 pkgname=('stig-git')
-pkgver=0.8.2a.r91.c28fd6b
+pkgver=0.8.3a.r97.71ee76c
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
@@ -23,6 +23,11 @@ pkgver() {
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
+prepare(){
+    cd stig
+    sed -i 's/urwidtrees>=1.0.3dev0/urwidtrees>=1.0.2/' setup.py
+}
+
 build() {
     cd stig
     python setup.py build
@@ -32,3 +37,4 @@ package() {
     cd stig
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
+
