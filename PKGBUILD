@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3353.0
+pkgver=66.0.3355.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -16,7 +16,7 @@ url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libappindicator-gtk2')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('f4817473edf06500304157e20cb61ae47c88efa1e988cf5ec7138598796ef193'
+sha256sums=('efeaa64d1057238f3a8021624128de68c9b92cc4fb95bd8be8679de43122d3a4'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -137,7 +137,7 @@ sha256sums=('f4817473edf06500304157e20cb61ae47c88efa1e988cf5ec7138598796ef193'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
             'b5532de9e402a7d0b12258e9de56722e7eec84dc54cd53b9fe25d62c7354c0af'
             'f4af2787f31abe66ab1180affed6f4c97daaad9151de429c9f5dc3e223cc8d87'
-            '2d891858f4a1a818f85c70b434bd2886d8d6d89a2db6da9789b15b847b934efa'
+            '0aba122f4b6d1cf2f30f5616253b26455c18d4b4253a3ffe95d120a768e170c8'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
             'e6a3490da7b98e3c2d9d04bc595a3349779a0426dfe61aa955d6fb7daa816c12'
             '9be24cb424d59cea12944bdb451690728e373ece6e4e93dbae8b92078da2130d'
@@ -208,7 +208,7 @@ sha256sums=('f4817473edf06500304157e20cb61ae47c88efa1e988cf5ec7138598796ef193'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
-            'a2d53e78c12ca72441f8600ed4332296cca3e7d841d7badd7b11e504bc5a84d7'
+            '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
