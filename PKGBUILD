@@ -10,7 +10,6 @@ url="http://xcb.freedesktop.org"
 license=('custom')
 depends=('lib32-glibc' 'lib32-libxcb' $_pkgbasename)
 makedepends=('gperf' 'gcc-multilib')
-options=('!libtool')
 source=(http://xcb.freedesktop.org/dist/${_pkgbasename}-${pkgver}.tar.bz2)
 sha256sums=('46e49469cb3b594af1d33176cd7565def2be3fa8be4371d62271fabb5eae50e9')
 
