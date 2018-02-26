@@ -1,7 +1,7 @@
 pkgbase = stig
 	pkgdesc = TUI and CLI client for the Transmission daemon
 	pkgver = 0.8.3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rndusr/stig
 	arch = any
 	license = GPL
