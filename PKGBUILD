@@ -5,7 +5,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-dev
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ options=('!emptydirs')
 conflicts=('gnucash' 'gnucash-devel' 'gnucash-latest' 'gnucash-git' 'gnucash-python' 'gnucash-xbt')
 provides=('gnucash')
 source=("https://github.com/Gnucash/gnucash/releases/download/${pkgver}/gnucash-${pkgver}.tar.bz2")
-sha256sums=('a00d1ba3e12f406a90a852543c56b9116ccbade264ada44aa6b8e0936c895891')
+sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
 
 build() {
 	cd "$srcdir/${pkgname/-dev}-$pkgver"
