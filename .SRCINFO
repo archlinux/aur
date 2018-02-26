@@ -1,6 +1,6 @@
 pkgbase = linux-surfacepro3-git
-	pkgver = 4.16rc2.r62.g79c0ef3e85c015b092
-	pkgrel = 1
+	pkgver = 4.16rc3.r0.g4a3928c6f8a53fa1ae
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-surfacepro3-git
 	sha256sums = SKIP
 	sha256sums = becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc
 	sha256sums = 56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de
-	sha256sums = 3b6f57346a53ffdf5842dbc22eaee091348aefa383fecb8befd3abe57b7d7a33
+	sha256sums = c1991f1a46c463ba573b58bedb8a9b6239fb17db92831cdc8cdf5616999da29f
 	sha256sums = cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52
 	sha256sums = 34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113
 	sha256sums = 31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3
