@@ -1,0 +1,18 @@
+pkgbase = asmfish-git
+	pkgdesc = Stockfish translated into assembly language.
+	pkgver = 134
+	pkgrel = 1
+	url = https://github.com/lantonov/asmFish
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	optdepends = xboard
+	optdepends = scid_vs_pc
+	provides = asmfish
+	conflicts = asmfish
+	source = asmfish::git+https://github.com/lantonov/asmFish
+	md5sums = SKIP
+
+pkgname = asmfish-git
+
