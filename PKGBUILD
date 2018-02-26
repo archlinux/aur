@@ -2,11 +2,7 @@
 # Maintainer: jaap
 # Contributor: jaap
 pkgname=synergy2-bin
-<<<<<<< HEAD
 pkgver=2.0.6.stable~b1396+1ef57bb6
-=======
-pkgver=2.0.5.stable~b1345+3f23b557
->>>>>>> 18e86f30983195d06c2ed7de16afd5535bff78dc
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
@@ -31,9 +27,5 @@ package(){
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 	sed -i "s/{DISPLAY}/${DISPLAY}/g" "${pkgdir}/usr/lib/systemd/system/synergy.service"
 	cd ..
-<<<<<<< HEAD
 	tput setaf 1; echo "\nthis is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
-=======
-	tput setaf 1; echo "this is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
->>>>>>> 18e86f30983195d06c2ed7de16afd5535bff78dc
 }
