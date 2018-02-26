@@ -21,6 +21,7 @@ depends=(
 		'gambas3-gb-desktop-x11'
 		'gambas3-gb-web'
 		'gambas3-gb-net'
+		'gambas3-gb-util'
 		'gambas3-gb-dbus'
 		'gambas3-gb-image'
 		'gambas3-gb-args'
