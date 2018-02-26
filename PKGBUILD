@@ -15,7 +15,6 @@ url="http://developer.kde.org/~wheeler/taglib.html"
 license=('LGPL' 'MPL')
 depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake')
-options=('!libtool')
 source=("http://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
 md5sums=('cee7be0ccfc892fa433d6c837df9522a')
 
