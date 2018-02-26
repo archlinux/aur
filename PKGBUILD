@@ -1,8 +1,10 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Dirk Langer AKA Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-devel-overloadinfo'
-pkgver='0.004'
+_realname='Devel-OverloadInfo'
+pkgver='0.005'
 pkgrel='1'
 pkgdesc="introspect overloaded operators"
 arch=('any')
@@ -11,30 +13,28 @@ options=('!emptydirs')
 depends=('perl-mro-compat' 'perl-package-stash>=0.14' 'perl-sub-identify' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal')
-url='https://metacpan.org/release/Devel-OverloadInfo'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.004.tar.gz')
-md5sums=('97a27e31858b073daba54121d57be705')
-sha512sums=('a8770f3319c8224d348fd28b1a057333e87d73b914c892d3c3581673db6fef8b5728a02a485eefc90edbc05899150cd8e172f464f0a4a29e8161815f6de8dcb1')
-_distdir="Devel-OverloadInfo-0.004"
+url="https://metacpan.org/release/${_realname}"
+source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/${_realname}-${pkgver}.tar.gz")
+md5sums=('607b65dfe9fdb47df780f3b22dcb7917')
+sha512sums=('66ff0869ecd34b2a80e6c8052e9ba7cf396b85e25f2efa92e42447ae3164ac50f703ca4dbee38ac676b70caf19ce189a6d2a1d6322cf3af342d4edd5c0b336e7')
+_distdir="Devel-OverloadInfo-0.005"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  make test
 }
 
 package() {
