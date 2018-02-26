@@ -4,7 +4,7 @@ _module=spnego-http-auth-nginx-module
 _nginx=$(command -v nginx > /dev/null && nginx -v 2>&1 | awk -F'nginx/' '{print $NF}')
 
 pkgname=${_module}-git
-pkgver=1.13.7.7e028a5
+pkgver=1.13.9.7e028a5
 pkgrel=1
 pkgdesc='Dynamic Nginx module for SPNEGO Kerberos authentication via GSSAPI'
 arch=('x86_64')
