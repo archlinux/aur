@@ -4,9 +4,9 @@
 
 pkgname=synfig-git
 pkgver=r8212.cdd534e1c
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector animation program (CLI renderer only)"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://synfig.org"
 license=('GPL2')
 depends=('libxml++2.6' 'libsigc++2.0' 'etl-git' 'imagemagick' 'ffmpeg' 'fontconfig'
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd synfig/synfig-core
 
-  export CXXFLAGS="$CXXFLAGS -std=gnu++11"
+export  PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig" 
 
   ./bootstrap.sh
   intltoolize --force --copy

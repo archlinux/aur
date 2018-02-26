@@ -1,9 +1,8 @@
 pkgbase = synfig-git
 	pkgdesc = Professional vector animation program (CLI renderer only)
 	pkgver = r8212.cdd534e1c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://synfig.org
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
