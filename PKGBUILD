@@ -22,14 +22,6 @@ sha512sums_x86_64=('51fc30dd8a6250ab10a348f0122638bbdf995a08b67d7f308364b640ea79
 	install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 	sed -i "s/{DISPLAY}/${DISPLAY}/g" "${pkgdir}/usr/lib/systemd/system/synergy.service"
-	cd ..
 
-	# Fix directories structure differencies
-	cd "${pkgdir}"
-
-	install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
-
-	cd ..
 	tput setaf 1; echo "this is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
 }
