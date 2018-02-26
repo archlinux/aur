@@ -1,5 +1,5 @@
 pkgbase = linux-ryzen-git
-	pkgver = 4.16rc1.r0.g7928b2cbe55b
+	pkgver = 4.16rc3.r0.g4a3928c6f8a5
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = linux-ryzen-git
 	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 	source = config.x86_64
 	source = linux-ryzen-git.preset
-	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
+	source = enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.16%2B.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6c4ab77d0be624799b9b8e12b228fe181577b298d73355b14618ebf1f5675fa7
-	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
+	sha256sums = SKIP
 
 pkgname = linux-ryzen-git
 	pkgdesc = The Linux kernel and modules (git version), with GCC optimization patch and Ryzen-friendly config flags (CONFIG_RCU_NOCB_CPU=y) to enable the rcu_nocbs=0-x boot argument
