@@ -1,90 +1,83 @@
-# $Id$
-# Maintainer: Roberto Valentini <valantin89 [at] gmail [dot] com>
+# Maintainer: Andy Botting <andy@andybotting.com>
 
-pkgbase=python-neutronclient
-pkgname=(python-neutornclient python2-neutronclient)
-pkgver=6.6.0
-pkgrel=1
-pkgdesc="CLI and Client Library for OpenStack Networking"
+pkgname=('python-neutronclient' 'python2-neutronclient')
+pkgver='6.7.0'
+pkgrel='1'
+pkgdesc='Python client library for Neutron'
 arch=('any')
-url="http://docs.openstack.org/developer/python-neutronclient"
+url="https://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
-makedepends=('python-pbr>=2.0.0'
-             'python2-pbr>=2.0.0'
-             'python-cliff>=2.8.0'
-             'python2-cliff>=2.8.0'
-             'python-debtcollector>=1.2.0'
-             'python2-debtcollector>=1.2.0'
-             'python-iso8601>=0.1.11'
-             'python2-iso8601>=0.1.11'
-             'python-netaddr>=0.7.18'
-             'python2-netaddr>=0.7.18'
-             'python-osc-lib>=1.8.0'
-             'python2-osc-lib>=1.8.0'
-             'python-oslo-i18n>=3.15.3'
-             'python2-oslo-i18n>=3.15.3'
-             'python-oslo-serialization>=2.18.0'
-             'python2-oslo-serialization>=2.18.0'
-             'python-oslo-utils>=3.33.0'
-             'python2-oslo-utils>=3.33.0'
-             'python-os-client-config>=1.28.0'
-             'python2-os-client-config>=1.28.0'
-             'python-keystoneauth1>=3.3.0'
-             'python2-keystoneauth1>=3.3.0'
-             'python-keystoneclient>=3.8.0'
-             'python2-keystoneclient>=3.8.0'
-             'python-requests>=2.14.2'
-             'python2-requests>=2.14.2'
-             'python-simplejson>=3.5.1'
-             'python2-simplejson>=3.5.1')
-#checkdepends=('python-oslotest' 'python2-oslotest' 'python-requests-mock' 'python2-requests-mock')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/openstack/python-neutronclient/archive/$pkgver.tar.gz")
-sha512sums=('9e5a9d45444bfa37852d338262db45e0b158dda4d69af171c0aa542c6ffe2ce0fcea8a791352be9a1c9d52d172f964637a68f43f4909cfdc012872ec16baf697')
+makedepends=('git' 'python-pbr' 'python2-pbr'
+             'python-cliff' 'python2-cliff'
+             'python-debtcollector' 'python2-debtcollector'
+             'python-iso8601' 'python2-iso8601'
+             'python-netaddr' 'python2-netaddr'
+             'python-osc-lib' 'python2-osc-lib'
+             'python-oslo-log' 'python2-oslo-log'
+             'python-oslo-i18n' 'python2-oslo-i18n'
+             'python-oslo-serialization' 'python2-oslo-serialization'
+             'python-oslo-utils' 'python2-oslo-utils'
+             'python-os-client-config' 'python2-os-client-config'
+             'python-keystoneauth1' 'python2-keystoneauth1'
+             'python-keystoneclient' 'python2-keystoneclient'
+             'python-requests' 'python2-requests'
+             'python-six' 'python2-six'
+             'python-babel' 'python2-babel')
+checkdepends=('python-pbr' 'python2-pbr'
+              'python-mock' 'python2-mock'
+              'python-requests-mock' 'python2-requests-mock'
+              'python-testtools' 'python2-testtools'
+              'python-oslotest' 'python2-oslotest'
+              'python-osprofiler' 'python2-osprofiler'
+              'python-tempest')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
-  cp -a python-neutronclient-$pkgver{,-py2}
-
-  export PBR_VERSION=$pkgver
+  sed -i '/simplejson/d' "${srcdir}/${pkgname}/requirements.txt"
+  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
-  cd "$srcdir"/python-neutronclient-$pkgver
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 
-  cd "$srcdir"/python-neutronclient-$pkgver-py2
+  cd "${srcdir}/${pkgname}-py2"
   python2 setup.py build
 }
 
-#check() {
-#  cd "$srcdir"/python-neutronclient-$pkgver
-#  python setup.py testr
-#
-#  cd "$srcdir"/python-neutronclient-$pkgver-py2
-#  PYTHON=python2 python2 setup.py testr
-#}
+check() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py testr
 
-package_python-neutornclient() {
+  cd "${srcdir}/${pkgname}-py2"
+  PYTHON=python2 python2 setup.py testr
+}
+
+package_python-neutronclient() {
   depends=('python-pbr' 'python-cliff' 'python-debtcollector' 'python-iso8601'
-           'python-netaddr' 'python-osc-lib' 'python-oslo-i18n'
-           'python-oslo-serialization' 'python-oslo-utils' 'python-os-client-config'
-           'python-keystoneauth1' 'python-keystoneclient' 'python-requests'
-           'python-simplejson')
-
-  cd "$srcdir"/python-neutronclient-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+           'python-netaddr' 'python-osc-lib' 'python-oslo-log'
+           'python-oslo-i18n' 'python-oslo-serialization' 'python-oslo-utils'
+           'python-os-client-config' 'python-keystoneauth1'
+           'python-keystoneclient' 'python-requests'
+           'python-six' 'python-babel')
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -D --mode 644 "tools/neutron.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/neutron"
 }
 
 package_python2-neutronclient() {
   depends=('python2-pbr' 'python2-cliff' 'python2-debtcollector' 'python2-iso8601'
-           'python2-netaddr' 'python2-osc-lib' 'python2-oslo-i18n'
-           'python2-oslo-serialization' 'python2-oslo-utils'
-           'python2-os-client-config' 'python2-keystoneauth1' 'python2-keystoneclient'
-           'python2-requests' 'python2-simplejson')
-
-  cd "$srcdir"/python-neutronclient-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
-
-  mv "$pkgdir"/usr/bin/neutron{,2}
+           'python2-netaddr' 'python2-osc-lib' 'python-oslo-log'
+           'python2-oslo-i18n' 'python2-oslo-serialization' 'python2-oslo-utils'
+           'python2-os-client-config' 'python2-keystoneauth1'
+           'python2-keystoneclient' 'python2-requests'
+           'python2-six' 'python2-babel')
+  cd "${srcdir}/python-neutronclient-py2"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  mv "${pkgdir}"/usr/bin/neutron{,2}
+  install -D --mode 644 "tools/neutron.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/neutron2"
+  sed -i -e '/^complete/s/neutron$/neutron2/' -e 's/neutron bash-completion/neutron2 bash-completion/g' "${pkgdir}/usr/share/bash-completion/completions/neutron2"
 }
 
 # vim:set ts=2 sw=2 et:

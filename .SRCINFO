@@ -1,48 +1,67 @@
 pkgbase = python-neutronclient
-	pkgdesc = CLI and Client Library for OpenStack Networking
-	pkgver = 6.6.0
+	pkgdesc = Python client library for Neutron
+	pkgver = 6.7.0
 	pkgrel = 1
-	url = http://docs.openstack.org/developer/python-neutronclient
+	url = https://docs.openstack.org/developer/python-neutronclient/
 	arch = any
 	license = Apache
-	makedepends = python-pbr>=2.0.0
-	makedepends = python2-pbr>=2.0.0
-	makedepends = python-cliff>=2.8.0
-	makedepends = python2-cliff>=2.8.0
-	makedepends = python-debtcollector>=1.2.0
-	makedepends = python2-debtcollector>=1.2.0
-	makedepends = python-iso8601>=0.1.11
-	makedepends = python2-iso8601>=0.1.11
-	makedepends = python-netaddr>=0.7.18
-	makedepends = python2-netaddr>=0.7.18
-	makedepends = python-osc-lib>=1.8.0
-	makedepends = python2-osc-lib>=1.8.0
-	makedepends = python-oslo-i18n>=3.15.3
-	makedepends = python2-oslo-i18n>=3.15.3
-	makedepends = python-oslo-serialization>=2.18.0
-	makedepends = python2-oslo-serialization>=2.18.0
-	makedepends = python-oslo-utils>=3.33.0
-	makedepends = python2-oslo-utils>=3.33.0
-	makedepends = python-os-client-config>=1.28.0
-	makedepends = python2-os-client-config>=1.28.0
-	makedepends = python-keystoneauth1>=3.3.0
-	makedepends = python2-keystoneauth1>=3.3.0
-	makedepends = python-keystoneclient>=3.8.0
-	makedepends = python2-keystoneclient>=3.8.0
-	makedepends = python-requests>=2.14.2
-	makedepends = python2-requests>=2.14.2
-	makedepends = python-simplejson>=3.5.1
-	makedepends = python2-simplejson>=3.5.1
-	source = python-neutronclient-6.6.0.tar.gz::https://github.com/openstack/python-neutronclient/archive/6.6.0.tar.gz
-	sha512sums = 9e5a9d45444bfa37852d338262db45e0b158dda4d69af171c0aa542c6ffe2ce0fcea8a791352be9a1c9d52d172f964637a68f43f4909cfdc012872ec16baf697
+	checkdepends = python-pbr
+	checkdepends = python2-pbr
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	checkdepends = python-requests-mock
+	checkdepends = python2-requests-mock
+	checkdepends = python-testtools
+	checkdepends = python2-testtools
+	checkdepends = python-oslotest
+	checkdepends = python2-oslotest
+	checkdepends = python-osprofiler
+	checkdepends = python2-osprofiler
+	checkdepends = python-tempest
+	makedepends = git
+	makedepends = python-pbr
+	makedepends = python2-pbr
+	makedepends = python-cliff
+	makedepends = python2-cliff
+	makedepends = python-debtcollector
+	makedepends = python2-debtcollector
+	makedepends = python-iso8601
+	makedepends = python2-iso8601
+	makedepends = python-netaddr
+	makedepends = python2-netaddr
+	makedepends = python-osc-lib
+	makedepends = python2-osc-lib
+	makedepends = python-oslo-log
+	makedepends = python2-oslo-log
+	makedepends = python-oslo-i18n
+	makedepends = python2-oslo-i18n
+	makedepends = python-oslo-serialization
+	makedepends = python2-oslo-serialization
+	makedepends = python-oslo-utils
+	makedepends = python2-oslo-utils
+	makedepends = python-os-client-config
+	makedepends = python2-os-client-config
+	makedepends = python-keystoneauth1
+	makedepends = python2-keystoneauth1
+	makedepends = python-keystoneclient
+	makedepends = python2-keystoneclient
+	makedepends = python-requests
+	makedepends = python2-requests
+	makedepends = python-six
+	makedepends = python2-six
+	makedepends = python-babel
+	makedepends = python2-babel
+	source = git+https://git.openstack.org/openstack/python-neutronclient#tag=6.7.0
+	sha512sums = SKIP
 
-pkgname = python-neutornclient
+pkgname = python-neutronclient
 	depends = python-pbr
 	depends = python-cliff
 	depends = python-debtcollector
 	depends = python-iso8601
 	depends = python-netaddr
 	depends = python-osc-lib
+	depends = python-oslo-log
 	depends = python-oslo-i18n
 	depends = python-oslo-serialization
 	depends = python-oslo-utils
@@ -50,7 +69,8 @@ pkgname = python-neutornclient
 	depends = python-keystoneauth1
 	depends = python-keystoneclient
 	depends = python-requests
-	depends = python-simplejson
+	depends = python-six
+	depends = python-babel
 
 pkgname = python2-neutronclient
 	depends = python2-pbr
@@ -59,6 +79,7 @@ pkgname = python2-neutronclient
 	depends = python2-iso8601
 	depends = python2-netaddr
 	depends = python2-osc-lib
+	depends = python-oslo-log
 	depends = python2-oslo-i18n
 	depends = python2-oslo-serialization
 	depends = python2-oslo-utils
@@ -66,5 +87,6 @@ pkgname = python2-neutronclient
 	depends = python2-keystoneauth1
 	depends = python2-keystoneclient
 	depends = python2-requests
-	depends = python2-simplejson
+	depends = python2-six
+	depends = python2-babel
 
