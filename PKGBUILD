@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
 pkgver=1.13.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
@@ -28,12 +28,12 @@ md5sums=('dcd482dd98d2022659212f183e8fe81b'
          'SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2'
-         '0a383a1bc933c9bd11a51dc45a054137')
+         'd8bca99da74aeea48210025c957a9c12')
 sha512sums=('92c34c182b59e0597a6b0af996770673b08b075f47285e2fbb9d8df59bb9c38fcca8e77bc6e3ca8e019500d041f96437b6b4f80d5dfd914a6f843ca919dac07b'
             'SKIP'
             '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
-            '6b9d90f5f18b350f991ccf6a6de937823aec7b76d23b1d2a3375840328fc780363801502dc47a342c48bb9455b77729205bb21319bafd4f81d74656c3aa1062b')
+            '90aa39995592a91106b69da29b071bc266fd1cc6d2cfc4addffeaa9e58a5e063cd91525605b9015a48afa27b6232428a50ce45a49acd04ffceeeb848539aa482')
 
 _common_flags=(
   --with-compat
