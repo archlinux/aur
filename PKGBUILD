@@ -2,14 +2,14 @@
 
 pkgname=zig
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a programming language prioritizing robustness, optimality, and clarity'
 arch=('i686' 'x86_64')
 url='http://ziglang.org/'
 license=('MIT')
 depends=('llvm' 'clang')
 makedepends=('cmake')
-source=("https://s3.amazonaws.com/ziglang.org/download/$pkgver/zig-$pkgver.tar.xz")
+source=("https://ziglang.org/download/$pkgver/zig-$pkgver.tar.xz")
 md5sums=('e1d62c8f196acef9173c88b4787bf4eb')
 
 build() {
