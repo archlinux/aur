@@ -1,19 +1,16 @@
 
 pkgname=nginx-mainline-passenger
-pkgver=1.11.9
-pkgrel=3
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module and SSL hardening.'
-arch=('i686' 'x86_64')
+pkgver=1.13.9
+pkgrel=1
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
+arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger-nginx-module')
-optdepends=('logrotate: rotate nginx/passenger logs.')
-makedepends=('hardening-wrapper')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
         'etc/nginx/koi-utf'
-        'etc/nginx/mime.types'
         'etc/nginx/nginx.conf'
         'etc/nginx/scgi_params'
         'etc/nginx/uwsgi_params'
@@ -27,15 +24,20 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         logrotate
         nginx.conf)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('dc22b71f16b551705930544dc042f1ad1af2f9715f565187ec22c7a4b2625748'
+md5sums=('dcd482dd98d2022659212f183e8fe81b'
+         'SKIP'
+         'ef491e760e7c1ffec9ca25441a150c83'
+         '6a01fb17af86f03707c8ae60f98a2dc2'
+         '0a383a1bc933c9bd11a51dc45a054137')
+sha512sums=('92c34c182b59e0597a6b0af996770673b08b075f47285e2fbb9d8df59bb9c38fcca8e77bc6e3ca8e019500d041f96437b6b4f80d5dfd914a6f843ca919dac07b'
             'SKIP'
-            '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
-            'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            'd2fcf07eceb264b647a6198d107157bed1a438a01db515c4107c1c65b6be0272')
+            '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
+            '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
+            '6b9d90f5f18b350f991ccf6a6de937823aec7b76d23b1d2a3375840328fc780363801502dc47a342c48bb9455b77729205bb21319bafd4f81d74656c3aa1062b')
 
 _common_flags=(
-  --with-ipv6
-  --with-pcre-jit
+  --with-compat
+  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -55,15 +57,13 @@ _common_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
+  --with-pcre-jit
   --with-stream
-  --with-stream_ssl_module
-  --with-threads
-)
-
-_mainline_flags=(
-  --with-stream_ssl_preread_module
   --with-stream_geoip_module
   --with-stream_realip_module
+  --with-stream_ssl_module
+  --with-stream_ssl_preread_module
+  --with-threads
 )
 
 _passenger_flags=(
@@ -87,8 +87,9 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --with-cc-opt="$CFLAGS $CPPFLAGS" \
+    --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
-    ${_mainline_flags[@]} \
     ${_passenger_flags[@]}
 
   make
@@ -104,10 +105,10 @@ package() {
     -i "$pkgdir"/etc/nginx/nginx.conf
 
   rm "$pkgdir"/etc/nginx/*.default "$pkgdir"/etc/nginx/nginx.conf
-  
+
   # Install custom configuration:
   install -Dm644 ../nginx.conf "$pkgdir"/etc/nginx/
-  
+
   # Create sites directory:
   mkdir "$pkgdir"/etc/nginx/sites
 
@@ -130,7 +131,7 @@ package() {
   gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 
   for i in ftdetect indent syntax; do
-    install -Dm644 contrib/vim/${i}/nginx.vim \
-      "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
+    install -Dm644 contrib/vim/$i/nginx.vim \
+      "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
   done
 }
