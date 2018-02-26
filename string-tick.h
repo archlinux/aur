@@ -18,7 +18,7 @@ typedef struct string String;
  * object with size 1 and no data
  * @return STRING object
  */
-String* api_string_init(void);
+String* string_init(void);
 
 /**
  * Changes letters in a string to lowercase
@@ -44,6 +44,6 @@ char* strip_char(char* string, char c);
  * Destroys String object and frees memory
  * @param phString the String to destroy
  */
-void api_string_destroy(String** phString);
+void string_destroy(String** phString);
 
 #endif

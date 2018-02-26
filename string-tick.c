@@ -1,6 +1,6 @@
 #include "string-tick.h"
 
-String* api_string_init(void) {
+String* string_init(void) {
     String* pString = (String*) malloc(sizeof(String));
     if (pString != NULL) {
         pString->len = 0;
@@ -39,7 +39,7 @@ char* strip_char(char* string, char c) {
     return string;
 }
 
-void api_string_destroy(String** phString) {
+void string_destroy(String** phString) {
     String* pString = *phString;
     free(pString->data);
     free(*phString);
