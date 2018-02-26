@@ -8,8 +8,8 @@ arch=('x86_64')
 url=http://www.sanger.ac.uk/science/tools/"${artemis}"
 license=('GPL2')
 depends=('java-runtime>=1.6')
-source=("${pkgname}"-"${pkgver}".tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/"${pkgname}"/v16/v"${pkgver}".tar.gz)
-sha256sums=('84a79eef8887994facb786ed095400ca5d7ddbfb1b126b2f3906db3dc1775813')
+source=("${pkgname}"-"${pkgver}".tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/"${pkgname}"/v16/v"${pkgver}"/"${pkgname}"_compiled_v"${pkgver}".tar.gz)
+sha256sums=('a1120ec6248fe03d82ec87e7bcc07ac33bb3db54bff3c532cfec58ba0675f291')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
@@ -27,5 +27,5 @@ package() {
     rm "${pkgdir}"/opt/"${pkgname}"/"${script}"
   done
 
-  install -Dm644 README "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
 }
