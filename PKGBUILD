@@ -1,9 +1,9 @@
+# Maintainer : FadeMind <fademind@gmail.com>
 # Contributor: Red_Squirrel <evangelion87d@gmail.com>
 # Contributor: Xavier114fch <xavier114fch@gmail.com>
 # Contributor: nachoig      <areta@outlook.com.br>
 # Contributor: nTia89       <mattia.b89@gmail.com>
 # Contributor: Mark E. Lee  <mark@markelee.com>
-# Maintainer : Mark E. Lee  <mark@markelee.com>
 
 ## Changelog :
 ## changed build function to package function (since nothing is built)
@@ -54,7 +54,7 @@
 ## temporarily removing GPG sig checks
 ## updated to upstream 4.4.1
 ## updated to upstream 4.4.2
-## updated to remove "Y2K" problem. Credit to Tomasz Przybył for reporting the error. Credit to Mark Lee for identifying the cause and fix.
+## updated to remove "Y2K" problem. Credit to FadeMind for reporting the error. Credit to Mark Lee for identifying the cause and fix.
 ## updated to upstream 4.4.3
 ## updated to upstream 4.4.4
 ## updated to upstream 5.0.0
@@ -70,24 +70,26 @@
 ## updated to upstream 5.2.1
 ## updated to upstream 5.2.3
 ## updated to upstream 5.3.0
+## updated to upstream 6.0.1
 
 pkgname=libreoffice-fresh-rpm
-pkgver=5.3.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
-arch=('any')
+arch=('i686' 'x86_64')
 url='http://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
 makedepends=('curl' 'awk')
 optdepends=('jre7-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+# WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 if [ "$(uname -m)" == "i686" ]; then  ## convert bit architecture to libreoffice format
   arch_mod='x86';
-  sha256sums+=('c7040dbdcfb60b7c23b736b4e9b76a00e4301b93646ddf62c2712033fe16a2a0');
+  sha256sums+=('722ab3d224f08a4b36600955da14a43007749eff5c8fd610f272e49dd132dc86');
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
  else
   arch_mod='x86_64';
-  sha256sums+=('8ef2cbba3bebfdb2635451fbf40ac7119a1066dea67c3fcc354b80bc9a7870ef')
+  sha256sums+=('fd3bce0246fff46cc1627a000f42b157304f74132421c8370817fdfa675b61b6')
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 fi;
 
@@ -176,3 +178,4 @@ for a in $(ls -d */); do  ## loop for all directories found
 done;
 
 }
+sha256sums=('fd3bce0246fff46cc1627a000f42b157304f74132421c8370817fdfa675b61b6')
