@@ -1,9 +1,9 @@
-# Maintainer: Denis Yantarev <denis dot yantarev at gmail dot com>
+# Maintainer: Denis Yantarev <denis.yantarev@gmail.com>
 # Contributor: Soup <soup a.t soultrap d.o.t n.e.t>
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.19.0.4
+pkgver=1.19.0.5
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 url='https://packages.debian.org/source/sid/dpkg'
 depends=('glibc')
 source=("http://http.debian.net/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('63cfe8d94bc906b6a49daf659600f783')
+md5sums=('704ea5ca7a799bbb5a4de17a0fccae6c')
 
 build() {
   cd dpkg-$pkgver
