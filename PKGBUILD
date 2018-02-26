@@ -4,6 +4,7 @@
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
 # Contributor: misc <tastky@gmail.com>
 # Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
+# Contributor: Shun Terabayashi <shunonymous at gmail.com>
 
 pkgbase=linux-git
 _srcname=linux
@@ -185,11 +186,6 @@ _package-headers() {
   cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
 
   # add dvb headers for external modules
-  # in reference to:
-  # http://bugs.archlinux.org/task/9912
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-  # and...
   # http://bugs.archlinux.org/task/11194
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
   cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
