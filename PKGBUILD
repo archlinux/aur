@@ -30,7 +30,7 @@ optdepends=('python-py2neo: flow analysis support'
             'tesseract: Screenshots analysis')
 makedepends=('python-setuptools')
 backup=('etc/httpd/conf/extra/ivre.conf')
-source=(https://pypi.python.org/packages/bb/91/12390971b0336f0d064d60cfe661db1a6762419e58b6a077cd174102ee8e/$pkgname-$pkgver.tar.gz
+source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz
         'apache.example.conf')
 sha256sums=('d3eb6c48ea53111991883fdff5cb5170797a8cf1287fe1bcd29ef760b0c882af'
             '3e372f51f2ad441baf8268ce29d35b3a1cb9ef4cb29e7864fab389759694f72e')
