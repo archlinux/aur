@@ -5,20 +5,21 @@
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
 pkgver=1.26.0_2018.02.25
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'cargo')
-source=("https://static.rust-lang.org/dist/rustc-nightly-src.tar.gz"
-	"https://static.rust-lang.org/dist/rustc-nightly-src.tar.gz.asc")
+_src="https://static.rust-lang.org/dist/rustc-nightly-src.tar.xz"
+source=($_src
+	$_src.asc)
 options=('staticlibs' '!strip' '!emptydirs' '!makeflags')
 conflicts=('rust')
 provides=('rust')
-sha256sums=('SKIP'
-            'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
+sha256sums=("$(curl -sL $_src.sha256 | cut -d\  -f1)"
+	    "SKIP")
 
 export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
 
