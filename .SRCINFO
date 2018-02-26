@@ -1,0 +1,16 @@
+pkgbase = imitation-gedit-plugin-git
+	pkgdesc = A gedit plugin that allows the user to edit a document in multiple places.
+	pkgver = 8.bac57a0
+	pkgrel = 1
+	url = https://github.com/code-tree/imitation
+	install = imitation-gedit-plugin-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gedit
+	depends = gsettings-desktop-schemas
+	source = imitation-gedit-plugin-git::git+https://github.com/code-tree/imitation
+	md5sums = SKIP
+
+pkgname = imitation-gedit-plugin-git
+
