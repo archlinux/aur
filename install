@@ -1,6 +1,0 @@
-post_install() {
-  if ! getent passwd stubby &>/dev/null; then
-    groupadd -r stubby
-    useradd -r -g stubby -d / -s /bin/nologin -c stubby stubby
-  fi
-}
