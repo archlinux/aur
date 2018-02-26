@@ -10,7 +10,7 @@ dirname="deskchan"
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname="deskchan-git"   # '-bzr', '-git', '-hg' or '-svn'
-pkgrel=1
+pkgrel=2
 pkgver=0.2.7
 pkgdesc="DeskChan, your personal computer assistant."
 arch=("any")
@@ -65,7 +65,7 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 
 	ln -s /opt/deskchan/bin/DeskChan usr/bin/deskchan
-	cp -r $srcdir/$dirname/* /opt/deskchan/
+	cp -r $srcdir/$dirname/assets $srcdir/$dirname/plugins opt/deskchan/
 	chmod a+rw -R $pkgdir/opt/deskchan/
 
 	mkdir -p $pkgdir/usr/share/applications $pkgdir/usr/share/icons
