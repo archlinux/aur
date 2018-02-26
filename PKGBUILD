@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-auth-ldap-git
 pkgver=r137.42d195d
-pkgrel=1
+pkgrel=5
 
 _modname=nginx-auth-ldap
 _nginxver=1.13.9
