@@ -10,7 +10,6 @@ url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('lib32-libxv>=1.0.5' $_pkgbasename)
 makedepends=('pkgconfig' gcc-multilib)
-options=('!libtool')
 source=(${url}/releases/individual/lib/libXvMC-${pkgver}.tar.bz2{,.sig})
 sha256sums=('e501a079b5dfaef0897c56152770c77e05e362065cec58910289aa567277ee2e'
             'SKIP')
