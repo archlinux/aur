@@ -1,6 +1,6 @@
 pkgbase = ttf-ibm-plex-git
 	pkgdesc = IBM Plex
-	pkgver = 0.5.3
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://ibm.github.io/type/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ttf-ibm-plex-git
 	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = git://github.com/IBM/type.git
+	source = git://github.com/IBM/plex.git
 	sha256sums = SKIP
 
 pkgname = ttf-ibm-plex-git
