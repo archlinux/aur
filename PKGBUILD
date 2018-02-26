@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=66.0.3346.8
+pkgver=66.0.3350.0
 pkgrel=10
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -16,7 +16,7 @@ url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libappindicator-gtk2')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk' 'ncurses5-compat-libs')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/k3.patch
 )
 
 
-sha256sums=('89cb38a9a015b484bf2d6c9179cbc7099f5f5dbb956a0b771e85055653cda62a'
+sha256sums=('553129cbf651f0d94bf0200f46c0359f2abd2aebf435723ebf667bb5062b6ffa'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -213,7 +213,7 @@ sha256sums=('89cb38a9a015b484bf2d6c9179cbc7099f5f5dbb956a0b771e85055653cda62a'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            '706f0e0e80873796d427066a2cce00d964c9f41988068757b0d1c9c5d1f982d1'
+            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
 
 
