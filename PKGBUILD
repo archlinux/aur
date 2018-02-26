@@ -1,0 +1,63 @@
+pkgname=kawaii-player-git
+_pkgname=kawaii-player
+pkgver=v3.1.1.0.r66.gb9f0f55
+pkgrel=1
+pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server"
+arch=(any)
+conflicts=('kawaii-player')
+license=('GPL3')
+depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'curl' 'libnotify' 'python-dbus' 'libtorrent-rasterbar' 'python-pytaglib' 'python-mutagen' 'python-beautifulsoup4' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'youtube-dl' 'wget')
+#optdepends=('livestreamer' 'youtube-dl' 'wget')
+makedepends=('git')
+
+source=("git+https://github.com/kanishka-linux/kawaii-player.git")
+#source=("git+https://github.com/kanishka-linux/kawaii-player.git#branch=devel")
+md5sums=('SKIP')
+_gitname=kawaii_player
+
+pkgver() {
+  cd "$srcdir/kawaii-player"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+
+  _bpath="${srcdir}/kawaii-player/${_gitname}"
+
+  install -d "${pkgdir}/usr/share/${_pkgname}/"
+  install -d "${pkgdir}/usr/share/applications/"
+  install -d "${pkgdir}/usr/bin/"
+  
+  for file in "${_bpath}/"*;do
+  	nm=$(echo $file | rev | cut -d'/' -f1 | rev)
+  	if [ -d "$file" ];then
+		install -d "${pkgdir}/usr/share/${_pkgname}/${nm}/"
+		_plugin_path="$file/"
+		for plugins in "${_plugin_path}"*;do
+			plugin_name=$(echo $plugins | rev | cut -d'/' -f1 | rev)
+            if [ $plugin_name == 'kawaii-player.desktop' ]; then
+                echo $plugins
+                echo 'desktop file copying'
+                cat "${_plugin_path}kawaii-player.desktop" | sed 's/Exec=/Exec=python -B \/usr\/share\/kawaii-player\/kawaii_player.py \%f/g' > "${pkgdir}/usr/share/applications/kawaii-player.desktop"
+			elif [ $plugin_name != 'installPlugins.py' ];then
+				echo $plugins
+				echo 'Plugins copying'
+				install -Dm755 "$plugins" "${pkgdir}/usr/share/${_pkgname}/${nm}/"
+			fi
+		done
+  	else
+		if [ $nm == 'kawaii-player' ];then
+			echo $file
+			echo 'kawaii-player script'
+			install -Dm755 "$file" "${pkgdir}/usr/bin/kawaii-player"
+			chmod +x "${pkgdir}/usr/bin/kawaii-player"
+		else 
+            echo $file
+            echo 'source files copying'
+            install -Dm755 "$file" "${pkgdir}/usr/share/${_pkgname}/"
+		fi
+	fi
+  done
+  
+}
