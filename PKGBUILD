@@ -7,7 +7,7 @@ pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.31.r470.g8fd74f718
+pkgver=2.31.1.r608.g0da606958
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -56,7 +56,6 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
 
-  # Generate version
   ./mkversion.sh $pkgver-$pkgrel
 
   # Use get-deps.sh provided by upstream to fetch go dependencies using the
@@ -84,7 +83,6 @@ build() {
        SNAPD_ENVIRONMENT_FILE=/etc/default/snapd
 
   cd cmd
-  # Sync actual parameters with cmd/autogen.sh
   autoreconf -i -f
   ./configure \
     --prefix=/usr \
@@ -150,9 +148,6 @@ package_snapd-git() {
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
 
-  # Symlink /var/lib/snapd/snap to /snap so that --classic snaps work
-  ln -s var/lib/snapd/snap "$pkgdir/snap"
-
   # pre-create directories
   install -dm755 "$pkgdir/var/lib/snapd/snap"
   install -dm755 "$pkgdir/var/cache/snapd"
@@ -175,6 +170,7 @@ package_snapd-git() {
   make -C cmd install DESTDIR="$pkgdir/"
 
   # Install man file
+  mkdir -p "$pkgdir/usr/share/man/man1"
   "$GOPATH/bin/snap" help --man > "$pkgdir/usr/share/man/man1/snap.1"
 
   # Install the "info" data file with snapd version
