@@ -3,14 +3,14 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgbase=gpgme
-pkgname=(gpgme qgpgme python-gpgme)
+pkgname=(gpgme qgpgme python-gpgme python2-gpgme)
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
 license=('LGPL')
-makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig')
+makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'python2' 'swig')
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
 sha256sums=('1a8fed1197c3b99c35f403066bb344a26224d292afc048cfdfc4ccd5690a0693'
             'SKIP')
@@ -55,5 +55,14 @@ package_python-gpgme() {
 
   cd ${pkgbase}-${pkgver}/lang/python
   make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib"/python2*/
 }
 
+package_python2-gpgme() {
+  pkgdesc="Python 2 bindings for GPGme"
+  depends=('gpgme' 'python2')
+
+  cd ${pkgbase}-${pkgver}/lang/python
+  make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib"/python3*/
+}
