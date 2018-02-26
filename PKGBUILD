@@ -1,6 +1,7 @@
+# Maintainer: Denis Yantarev <denis.yantarev@gmail.com>
 # Contributor: Marek Kubica <marek@xivilization.net>
 pkgname=homeshick-git
-pkgver=1.0.0.r35.g23cb8a7
+pkgver=1.0.0.r74.g680252e
 pkgrel=1
 pkgdesc="bash stand-in for homesick by technicalpickles"
 arch=(any)
@@ -39,7 +40,12 @@ package() {
   install -D "$srcdir"/$pkgname/homeshick.sh "$pkgdir"/usr/lib/homeshick/homeshick.sh
   install -D "$srcdir"/$pkgname/homeshick.fish "$pkgdir"/usr/lib/homeshick/homeshick.fish
   cp -r "$srcdir"/$pkgname/lib "$pkgdir"/usr/lib/homeshick/
+	# copy bash-completion files
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
+	install -m644 "$srcdir"/$pkgname/completions/_homeshick "$pkgdir"/usr/share/bash-completion/completions/_homeshick
+	install -m644 "$srcdir"/$pkgname/completions/homeshick-completion.bash "$pkgdir"/usr/share/bash-completion/completions/homeshick
   # copy the licenses
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
   install -m=644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/$pkgname/LICENSE*
 }
+
