@@ -13,7 +13,6 @@ url="http://www.infradead.org/~tgr/libnl/"
 license=('GPL')
 depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
-options=('!libtool')
 source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz")
 sha512sums=('6336e5c55c79ff2638de9c812cc1842871769236bad7f65c547dec35fafd91988b257fceab144a0cc133c4b29f61172f6552c53aa9fc723bdc783079c2b1851e')
 
