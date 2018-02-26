@@ -1,7 +1,7 @@
 _npmname=pnpm
-_npmver=1.23.2
+_npmver=1.35.1
 pkgname=nodejs-pnpm
-pkgver=1.23.2
+pkgver=1.35.1
 pkgrel=1
 pkgdesc="Performant npm installations"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('fab8274df14f9a0996716760985c4a873a0cfd393c1638e117457fec5bc1fc53')
+sha256sums=('b113d6e02f8f638de07d081dcd08997a67d6bf513935ea235cb735cd1594d91e')
 
 package() {
   cd $srcdir
