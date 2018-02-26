@@ -45,7 +45,7 @@ package() {
 	install -D -m644 etc/miredo/miredo.conf ${pkgdir}/etc/miredo/miredo.conf || return 1
 	install -D -m755 etc/network/if-up.d/miredo ${pkgdir}/etc/network/if-up.d/miredo || return 1
 	install -D -m644 50-miredo.conf ${pkgdir}/etc/sysctl.d/50-miredo.conf || return 1
-	install -D -m644 miredo.ini ${pkgdir}/etc/supervisor.d/miredo.ini || return 1
+	install -D -m644 miredo-disable_ipv6.ini ${pkgdir}/etc/supervisor.d/miredo-disable_ipv6.ini || return 1
 	install -D -m755 restart_miredo ${pkgdir}/etc/miredo/restart_miredo || return 1
 	
 #/usr
