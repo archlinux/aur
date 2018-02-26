@@ -5,7 +5,7 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.31
+pkgver=2.24.32
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
@@ -14,11 +14,11 @@ install=gtk2.install
 depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22.1'}
          lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
          $_pkgbasename)
-options=('!libtool' '!docs')
+makedepends=('python')
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch)
-sha256sums=('68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658'
+sha256sums=('b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
@@ -34,7 +34,7 @@ build() {
 
   cd "${srcdir}/gtk+-${pkgver}"
 
-  CXX=/bin/false ./configure --prefix=/usr \
+  ./configure --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
       --libdir=/usr/lib32 \
