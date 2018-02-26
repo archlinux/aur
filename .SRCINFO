@@ -1,7 +1,7 @@
 pkgbase = kdepimlibs4
 	pkgdesc = KDE4 PIM Libraries
 	pkgver = 4.14.10
-	pkgrel = 14
+	pkgrel = 15
 	url = https://projects.kde.org/projects/kde/kdepimlibs
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = kdepimlibs4
 	makedepends = automoc4
 	makedepends = boost
 	makedepends = cyrus-sasl
-	makedepends = akonadi
+	makedepends = akonadi-qt4
 	depends = kdelibs
 	depends = libakonadi-qt4
 	depends = libical>=3.0.0
