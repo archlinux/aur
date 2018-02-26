@@ -1,3 +1,12 @@
+2018-02-26 Joffrey <j-off@live.fr>
+	* Version: 6.2.5-6
+
+	* PKGBUILD: Update depends and optdepends
+	Compile all seahub locales in build()
+	Prepare and install licence.txt
+	Remove tests and scripts useless in sources
+	Fix six module missing with cmd "seafile-admin setup"
+
 2018-02-22 Joffrey <j-off@live.fr>
 	* Version: 6.2.5-5
 
