@@ -9,7 +9,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-cvs-patched-wideglyphs
 pkgver=20170412
-pkgrel=5
+pkgrel=6
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and wide glyphs patch (cvs version)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -25,6 +25,7 @@ source=('urxvt.desktop'
         'font-width-fix.patch'
         'line-spacing-fix.patch'
         'sgr-mouse-mode.patch'
+        'add-space-to-extent_test_chars.patch'
         'enable-wide-glyphs.patch')
 sha1sums=('b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
@@ -32,7 +33,8 @@ sha1sums=('b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '01ee8f212add79a158dcd4ed78d0ea1324bdc59b'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'f478acf3662aab3f5b1703a4a29bcfe055dbdd66'
-          '1b4feb5ab8b22ddc1498ac4d5d9789891e71ddc8')
+          '69b77c0b4b4587117f3a6e240a5bd6389ed40be3'
+          '5b37be933d9b6cc1f7e3129a69c338d232bf7808')
 
 prepare() {
   cd ${srcdir}

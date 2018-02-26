@@ -63,18 +63,18 @@ index 3e3f78bd..b8b1591d 100755
  # Check whether --enable-pixbuf was given.
  if test "${enable_pixbuf+set}" = set; then :
    enableval=$enable_pixbuf; if test x$enableval = xyes -o x$enableval = xno; then
-@@ -7734,6 +7746,11 @@ if test x$support_styles = xyes; then
+@@ -7733,6 +7745,11 @@ if test x$support_styles = xyes; then
+ 
  $as_echo "#define ENABLE_STYLES 1" >>confdefs.h
  
- fi
++fi
 +if test x$support_wide_glyphs = xyes; then
 +
 +$as_echo "#define ENABLE_WIDE_GLYPHS 1" >>confdefs.h
 +
-+fi
+ fi
  if test x$support_iso14755 = xyes; then
  
- $as_echo "#define ISO_14755 1" >>confdefs.h
 diff --git a/configure.ac b/configure.ac
 index 0da3b596..52ab8e4c 100644
 --- a/configure.ac

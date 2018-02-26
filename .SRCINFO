@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-cvs-patched-wideglyphs
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and wide glyphs patch (cvs version)
 	pkgver = 20170412
-	pkgrel = 5
+	pkgrel = 6
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = rxvt-unicode-cvs-patched-wideglyphs
 	source = font-width-fix.patch
 	source = line-spacing-fix.patch
 	source = sgr-mouse-mode.patch
+	source = add-space-to-extent_test_chars.patch
 	source = enable-wide-glyphs.patch
 	sha1sums = b5a4507f85ebb7bac589db2e07d9bc40106720d9
 	sha1sums = 62c4ffecfce6967def394dd4d418b68652372ea2
@@ -27,7 +28,8 @@ pkgbase = rxvt-unicode-cvs-patched-wideglyphs
 	sha1sums = 01ee8f212add79a158dcd4ed78d0ea1324bdc59b
 	sha1sums = b7fde1c46af45e831828738874f14b092b1e795f
 	sha1sums = f478acf3662aab3f5b1703a4a29bcfe055dbdd66
-	sha1sums = 1b4feb5ab8b22ddc1498ac4d5d9789891e71ddc8
+	sha1sums = 69b77c0b4b4587117f3a6e240a5bd6389ed40be3
+	sha1sums = 5b37be933d9b6cc1f7e3129a69c338d232bf7808
 
 pkgname = rxvt-unicode-cvs-patched-wideglyphs
 
