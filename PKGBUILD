@@ -32,7 +32,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.33
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -55,7 +55,7 @@ sha512sums=('c494721594511f79a103ea3c73c5035aa0fcbca626710a0b85d2395693caf6762ed
             'a398e9cde4ba57d243abb5b394152d87bc1fddc2d5fc934569e1f912a5a80eba3ae14720fe99fcda50722bedc5d65abcbde2822f5075091c4a83a2f6bb22c122'
             'c6b74e1b39224e79d33915a0d32fe2d08114d1dcec93035017af783b8b73b6475779e3e649abb35b73ea2fd6553120696c48ebb0894531282fbc9e1b36da9f3b'
             '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3'
-            'a055e5828de2840d1da4e18d4be2d31a14d4ffb3370185933357aee3110e04bf5ea01516d1e9b2c05ae11d637528bffd858dd1f6ed439a58314fed5f945456f6')
+            '5f0dc48f13de7024db1bd6189967b389aa6d8cf9ab9dc1b242b4ea4250df1edd909364efb2d840e38227676fee5dee93bac38056db2a80ad6c7ba0e13f71fcd1')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
               '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
 
