@@ -1,4 +1,4 @@
-# Maintainer: FadeMind <fademind@gmail.com
+# Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Kuba Serafinowski <zizzfizzix at gmail dot com>
 # Contributor: Rick W. Chen <stuffcorpse at archlinux dot us>
