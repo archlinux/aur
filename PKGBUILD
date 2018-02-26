@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=rollup
-pkgver=0.56.2
+pkgver=0.56.3
 pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
-source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
@@ -21,4 +21,4 @@ package() {
   rmdir "$pkgdir/usr/etc"
 }
 
-sha1sums=('1788cf56d4350b6d8ecf76b5d654c59c7bf9c24a')
+sha256sums=('13308a99f80ceaa918f2cb7298f784db49ebd99aff2231453faca0618cdd9e36')
