@@ -17,13 +17,7 @@
 #include <stddef.h>
 #include <curl/curl.h>
 #include <json-c/json_tokener.h>
-
-struct string {
-    char* data;
-    size_t len;
-};
-
-typedef struct string String;
+#include "string-tick.h"
 
 struct info {
     char* name; // Name of security (ex. Apple Inc.)
@@ -38,13 +32,6 @@ struct info {
 typedef struct info Info;
 
 typedef struct json_object Json;
-
-/**
- * Creates and returns a STRING
- * object with size 1 and no data
- * @return STRING object
- */
-String* api_string_init(void);
 
 /**
  * Creates and returns an Info object
@@ -152,20 +139,6 @@ Info* coinmarketcap_get_info(const char* ticker_name_string);
  * @return the shortened link
  */
 char* google_shorten_link(const char* url_string);
-
-/**
- * Returns the input string, stripped of the given char
- * @param string the string to strip the char from
- * @param c the char to strip
- * @return input string
- */
-char* strip_char(char* string, char c);
-
-/**
- * Destroys String object and frees memory
- * @param phString the String to destroy
- */
-void api_string_destroy(String** phString);
 
 /**
  * Destroys Info object and frees memory

@@ -1,22 +1,5 @@
 #include "api.h"
 
-String* api_string_init(void) {
-    String* pString = (String*) malloc(sizeof(String));
-    if (pString != NULL) {
-        pString->len = 0;
-        pString->data = (char*) malloc(sizeof(char));
-        if (pString->data == NULL) {
-            fprintf(stderr, "malloc() failed\n");
-            exit(EXIT_FAILURE);
-        }
-        pString->data[0] = '\0';
-    } else {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
-    return pString;
-}
-
 Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
     if (pInfo != NULL) {
@@ -402,25 +385,6 @@ char* google_shorten_link(const char* url_string) {
     json_object_put(jobj);
     api_string_destroy(&pString);
     return short_url;
-}
-
-char* strip_char(char* string, char c) {
-    size_t len = strlen(string);
-    int i, j;
-    for (i = 0, j = 0; j < (int) len; i++, j++) {
-        while (string[j] == c)
-            j++;
-        string[i] = string[j];
-    }
-    string[i] = '\0';
-    return string;
-}
-
-void api_string_destroy(String** phString) {
-    String* pString = *phString;
-    free(pString->data);
-    free(*phString);
-    *phString = NULL;
 }
 
 void api_info_destroy(Info** phInfo) {

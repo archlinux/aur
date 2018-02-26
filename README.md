@@ -100,3 +100,4 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Format prices with commas (set locale)
 * Function to add new attributes to portfolio if not found
 * Improve code documentation
+* Round doubles

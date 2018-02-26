@@ -1,16 +1,5 @@
-#include <ctype.h>
 #include "api.h"
 #include "portfolio.h"
-
-void strtolower(char* str) {
-    for (int i = 0; str[i] != '\0'; i++)
-        str[i] = (char) tolower(str[i]);
-}
-
-void strtoupper(char* str) {
-    for (int i = 0; str[i] != '\0'; i++)
-        str[i] = (char) toupper(str[i]);
-}
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
