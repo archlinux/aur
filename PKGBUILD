@@ -28,8 +28,8 @@ build() {
 
 package() {
   cd ${_svnmod}
-  install -Dm755 $srcdir/abcl.sh $pkgdir/usr/bin/abcl
-  install -Dm644 dist/abcl.jar $pkgdir/usr/share/java/abcl.jar
+  install -Dm755 "$srcdir"/abcl.sh "$pkgdir"/usr/bin/abcl
+  install -Dm644 dist/abcl.jar "$pkgdir"/usr/share/java/abcl.jar
   install -Dm644 dist/abcl-contrib.jar \
-	  $pkgdir/usr/share/java/abcl-contrib.jar
+	  "$pkgdir"/usr/share/java/abcl-contrib.jar
 }
