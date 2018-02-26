@@ -13,7 +13,7 @@ pkgbase = kdepimlibs4
 	makedepends = akonadi
 	depends = kdelibs
 	depends = libakonadi-qt4
-	depends = libical
+	depends = libical>=3.0.0
 	depends = qjson
 	provides = kdepimlibs
 	conflicts = kdepimlibs

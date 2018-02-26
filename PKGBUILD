@@ -11,7 +11,7 @@ pkgdesc="KDE4 PIM Libraries"
 arch=('x86_64')
 url='https://projects.kde.org/projects/kde/kdepimlibs'
 license=('GPL' 'LGPL')
-depends=('kdelibs' 'libakonadi-qt4' 'libical' 'qjson')
+depends=('kdelibs' 'libakonadi-qt4' 'libical>=3.0.0' 'qjson')
 # Note: makedepend on akonadi (KDE5 version) is not a mistake
 # akonadi-qt4 is not needed here
 makedepends=('cmake' 'automoc4' 'boost' 'cyrus-sasl' 'akonadi')
