@@ -1,0 +1,14 @@
+pkgbase = tfenv
+	pkgdesc = Terraform version manager inspired by rbenv
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/kamatama41/tfenv
+	arch = x86_64
+	license = MIT
+	depends = terraform
+	provides = tfenv
+	source = git://github.com/kamatama41/tfenv.git
+	md5sums = SKIP
+
+pkgname = tfenv
+
