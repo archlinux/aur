@@ -1,6 +1,6 @@
 pkgname=file-commander-git
 _pkgname=file-commander
-pkgver=0.9.3.3.r65.g6362e00
+pkgver=0.9.4.r3.g1b9b717
 pkgrel=1
 pkgdesc='Qt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
