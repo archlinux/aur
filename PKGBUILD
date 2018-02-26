@@ -7,7 +7,7 @@
 
 pkgname=('pacman-pstatus')
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='https://gitlab.com/renyuneyun/pacman-ps'
 license=('GPL')
@@ -20,10 +20,8 @@ pkgdesc="Provides a command to identify which running processes have files that 
 install='pacman-ps.install'
 
 options=('!strip')
-source=("git+https://gitlab.com/renyuneyun/pacman-ps#tag=v$pkgver"
-        'pacman-ps.install')
-sha1sums=('SKIP'
-          '53dcfea595c1c59cd47ae45c7f083e3e03a5e219')
+source=("git+https://gitlab.com/renyuneyun/pacman-ps#tag=v$pkgver")
+md5sums=('SKIP')
 
 package() {
   LICENSE_DIR="/usr/share/licenses"
