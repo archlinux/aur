@@ -1,8 +1,8 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=v6.2.dev.210.g24a67bc
-pkgrel=1
+pkgver=v6.2.dev.358.g3c64fad
+pkgrel=2
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
@@ -15,7 +15,7 @@ depends=('python' 'tk' 'libxmu' 'glu'
 options=('!buildflags')
 provides=('netgen')
 conflicts=('netgen-nogui')
-source=("${pkgname%-git}::git+http://git.code.sf.net/p/netgen-mesher/git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/ngsolve/netgen.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
