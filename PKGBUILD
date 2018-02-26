@@ -5,14 +5,13 @@
 
 pkgname=seafile-server
 pkgver=6.2.5
-pkgrel=4
-pkgdesc="Seafile is an online file storage and collaboration tool"
+pkgrel=5
+pkgdesc="Seafile server core"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('AGPL3')
-makedepends=("vala" "intltool")
-depends=("ccnet-server=${pkgver}" "libevhtp-seafile" "libarchive"
-         "wget" "sqlite" "fuse" "git" "ffmpeg")
+depends=("ccnet-server=${pkgver}" "fuse2" "libevhtp-seafile" "libarchive")
+makedepends=("vala")
 optdepends=("python2-wsgidav-seafile: webdav-support")
 conflicts=('seafile')
 changelog="ChangeLog"
