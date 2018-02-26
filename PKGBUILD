@@ -9,7 +9,6 @@ url="http://xmlsoft.org/XSLT/"
 license=('custom')
 depends=('lib32-libxml2' 'lib32-libgcrypt' 'libxslt' 'lib32-xz')
 makedepends=(gcc-multilib git)
-options=(!libtool)
 _commit=32c88216ddbaa0f3491f45bc84ee89285c6a1129  # master
 source=("git+https://git.gnome.org/browse/libxslt#commit=$_commit")
 md5sums=('SKIP')
