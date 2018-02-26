@@ -1,4 +1,4 @@
-# Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
+# Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 # Contributor: mortzu
 pkgname=netkit-rwho-debian
 pkgver=0.17
