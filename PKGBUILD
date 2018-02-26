@@ -3,8 +3,8 @@
 
 pkgbase=tboot
 pkgname=tboot-hg
-pkgver=r508+.521c58e51eb5+
-pkgrel=2
+pkgver=r510+.59086d17f60d+
+pkgrel=1
 pkgdesc="A pre-kernel/VMM module that uses Intel(R) TXT to perform a measured and verified launch of an OS kernel/VMM."
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/tboot/"
@@ -36,7 +36,8 @@ build() {
   cd "code"
 
 #  unset LDFLAGS
-  make debug=y
+
+  CFLAGS+="-Wno-error=stack-protector --warn-stack-protector" make debug=y
 }
 
 package() {
