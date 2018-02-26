@@ -1,14 +1,13 @@
 # Maintainer: mawcomw <mawcomw@gmail.com>
+
 pkgname=limesurvey
-pkgver=2.63.1.170305
+pkgver=3.4.2+180223
 pkgrel=1
-pkgdesc="Then open source survey application."
+pkgdesc='The open source survey application'
 arch=('any')
-url="http://www.limesurvey.org"
+url='http://www.limesurvey.org'
 license=('GPL2')
 depends=('php>=5.3')
-#makedepends=()
-#checkdepends=()
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
 	    'tomcat6: a supported application server'
@@ -16,26 +15,10 @@ optdepends=('apache: a supported application server'
 	    'mariadb: MariaDB database support'
 	    'mysql: MySQL database support'
 	    'postgresql: PostgreSQL database support')
-provides=('limesurvey')
-#conflicts=()
-#replaces=()
-#backup=('')
-#options=()
-#install=limesurvey.install
-#changelog
-source=('https://github.com/LimeSurvey/LimeSurvey/archive/2.63.1+170305.tar.gz'
+source=("http://download.limesurvey.org/latest-stable-release/${pkgname}${pkgver}.tar.bz2"
 	'apache.example.conf')
-#noextract
-#md5sums=()
-#sha1sums=()
-#sha256sums=()
-#sha384sums=()
-sha512sums=('e6a72ff5b4d5fa53cc8092f02cb6321d427ec9c7067dbb301b055249a42c6238b159b2d580b63955245cc22728ef2453ef4e60884cc254aa98b81f661466384e'
-	    'e594a3a02cb04e1cca9ddf1c5995344f20adc9c5543fe622ad66fdc48d587fc969541530f1e2a8883e0f501ed1b2d409c23ecc7cd8e29aaea0369f625cd4f417')
-
-build() {
-	return 0
-}
+sha256sums=('9736bce66d6016672c73fad2956ff27dea62f23f24a4a8e5ece85c625cc6351d'
+            '325eefd06cd8e9502b90ff13739f9f3a2d405ab30728c109de202847086357c5')
 
 package() {
 	_limesurvey_installation_path="/usr/share/webapps"
