@@ -1,7 +1,7 @@
 pkgbase = slackadaisical
 	pkgdesc = Command line slack chat client
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bkanber/Slackadaisical
 	arch = any
 	license = GPL-3.0
