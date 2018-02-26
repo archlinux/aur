@@ -1,7 +1,7 @@
 # Maintainer: Dominik Wetzel <dimonok@web.de>
 pkgname=kyocera_universal
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog4)."
 arch=('x86_64' 'i386')
 url="https://www.kyocera.com/"
