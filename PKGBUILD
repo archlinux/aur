@@ -46,6 +46,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_srcdirname}"
   patch -p0 < ${startdir}/configure-include-path.patch
+  patch -p0 < ${startdir}/makefile_add_naken_prog.patch
 }
 
 build() {

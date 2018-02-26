@@ -1,0 +1,38 @@
+commit 91a112c703617ad41059fcacd2d13924522eb773 (HEAD -> refs/heads/makefile_install_naken_prog)
+Author:     Uffe Jakobsen <>
+AuthorDate: Mon Feb 26 04:58:06 2018 +0100
+Commit:     Uffe Jakobsen <>
+CommitDate: Mon Feb 26 04:58:06 2018 +0100
+
+    Makefile: Add missing naken_prog to install target
+---
+:100644 100644 3aff846 38ccdf0 M	Makefile
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git Makefile Makefile
+index 3aff846..38ccdf0 100644
+--- Makefile
++++ Makefile
+@@ -21,6 +21,7 @@ install:
+ 	@mkdir -p $(INSTALL_BIN)
+ 	@cp naken_asm $(INSTALL_BIN)
+ 	@cp naken_util $(INSTALL_BIN)
++	@cp naken_prog $(INSTALL_BIN)
+ 
+ install_old:
+ 	#@mkdir -p $(INSTALL_INCLUDES)/include
+@@ -33,6 +34,7 @@ uninstall:
+ 	@echo "Scary stuff.  Just erase these things by hand."
+ 	#@rm -f $(INSTALL_BIN)/naken_asm
+ 	#@rm -f $(INSTALL_BIN)/naken_util
++	#@rm -f $(INSTALL_BIN)/naken_prog
+ 	#@rm -rf $(INSTALL_INCLUDES)
+ 
+ testing: launchpad_blink.asm
+@@ -78,5 +80,3 @@ tests:
+ 
+ distclean: clean
+ 	@rm -f config.mak *.asm
+-
+-
