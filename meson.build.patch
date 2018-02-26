@@ -1,0 +1,9 @@
+43,47c43,44
+< libmarkdown = dependency('libmarkdown', version: '>= 2.2.1', required: false)
+< if libmarkdown.found() == false
+<     cc = meson.get_compiler('c')
+<     libmarkdown = cc.find_library('libmarkdown', required: true)
+< endif
+---
+> cc = meson.get_compiler('c')
+> libmarkdown = cc.find_library('libmarkdown', required: true)
