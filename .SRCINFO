@@ -1,7 +1,7 @@
 pkgbase = kdepimlibs4
 	pkgdesc = KDE4 PIM Libraries
 	pkgver = 4.14.10
-	pkgrel = 13
+	pkgrel = 14
 	url = https://projects.kde.org/projects/kde/kdepimlibs
 	arch = x86_64
 	license = GPL

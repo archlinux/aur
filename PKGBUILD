@@ -6,7 +6,7 @@
 pkgname=kdepimlibs4
 pkgver=4.14.10
 _kdeappver=15.04.3
-pkgrel=13
+pkgrel=14
 pkgdesc="KDE4 PIM Libraries"
 arch=('x86_64')
 url='https://projects.kde.org/projects/kde/kdepimlibs'
