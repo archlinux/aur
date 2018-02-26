@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GeoGebra
+Comment=Dynamic mathematics software with interactive graphics, algebra and spreadsheet
+Exec=geogebra
+Icon=geogebra
+Terminal=false
+StartupNotify=false
+Categories=Education;Science;Math;
+MimeType=application/vnd.geogebra.file;application/vnd.geogebra.tool;
