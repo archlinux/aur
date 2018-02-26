@@ -11,7 +11,6 @@ url="http://www.libsdl.org/projects/SDL_image/"
 license=('LGPL')
 depends=('lib32-sdl' 'lib32-libpng' 'lib32-libjpeg' 'lib32-libtiff' 'lib32-zlib' "$_pkgbasename")
 makedepends=('gcc-multilib')
-options=('!libtool')
 source=("https://www.libsdl.org/projects/SDL_image/release/SDL_image-${pkgver}.tar.gz")
 sha512sums=('0e71b280abc2a7f15755e4480a3c1b52d41f9f8b0c9216a6f5bd9fc0e939456fb5d6c10419e1d1904785783f9a1891ead278c03e88b0466fecc6871c3ca40136')
 
