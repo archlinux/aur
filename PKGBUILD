@@ -1,6 +1,6 @@
 # Maintainer: Aurelien Cedeyn <aurelien.cedeyn@gmail.com>
 pkgname="clustershell"
-pkgver=1.7.1
+pkgver=1.8
 pkgrel=1
 pkgdesc="Python framework for efficient cluster administration"
 arch=(any)
@@ -8,7 +8,7 @@ url="http://cea-hpc.github.io/clustershell/"
 license=('custom:CeCILL')
 groups=()
 depends=('python2')
-makedepends=('python2' 'setuptools')
+makedepends=('python' 'python-setuptools')
 optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved')
 provides=()
 conflicts=()
@@ -19,16 +19,16 @@ install=
 changelog=ChangeLog
 source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('349bce77263e5f750ebdda719537ee83')
+sha256sums=('ad5a13e2d107b4095229810c35365e22ea94dfd2baf4fdcfcc68ce58ee37cee3')
 
 build() {
 	echo "Directory: ${srcdir}/${pkgname}-${pkgver}"
 	cd ${srcdir}/${pkgname}-${pkgver}
-	python2 setup.py build
+	python setup.py build
 }
 package(){
 	cd ${srcdir}/${pkgname}-${pkgver}
-	python2 setup.py install -O1 --skip-build --root="${pkgdir}"
+	python setup.py install -O1 --skip-build --root="${pkgdir}"
 	# config files
 	install -d ${pkgdir}/etc/clustershell
 	install -p -m 0644 conf/*.conf ${pkgdir}/etc/${pkgname}/
@@ -40,7 +40,7 @@ package(){
 	install -p -m 0644 doc/man/man1/nodeset.1 ${pkgdir}/usr/share/man/man1/
 	install -p -m 0644 doc/man/man5/clush.conf.5 ${pkgdir}/usr/share/man/man5/
 	install -p -m 0644 doc/man/man5/groups.conf.5 ${pkgdir}/usr/share/man/man5/
-	install -D -m644 Licence_CeCILL-C_V1-en.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m 0644 COPYING.LGPLv2.1 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	local vimdatadir=/usr/share/vim/vimfiles
 	cd ${srcdir}/${pkgbase}-${pkgver}
