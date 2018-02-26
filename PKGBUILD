@@ -20,7 +20,7 @@ conflicts=(${_pkgname}
            'sickgear-git')
 makedepends=('git')
 install=$pkgname.install
-source=("git://github.com/${_gitauthor}/${_gitname}.git" "pymedusa.service" "pymedusa.install")
+source=("git://github.com/${_gitauthor}/${_gitname}.git" "${pkgname}.service" "${pkgname}.install")
 md5sums=('SKIP' 'a7d53eaed59f1e268aea8f73829d0b4c' '188855fff23f878fcd9f8e5b498e0dd3')
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/pymedusa.service" "${pkgdir}/usr/lib/systemd/system/pymedusa.service"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -dm755 "${pkgdir}${_pymedusa_dir}"/{app,data}
   
   cp -rp "$srcdir/$_gitname"/* "${pkgdir}${_pymedusa_dir}"/app/
