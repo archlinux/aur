@@ -1,7 +1,8 @@
+#Maintainer: Solomon Choina <shlomochoina at gmail dot com>
 pkgname=kawaii-player-git
 _pkgname=kawaii-player
 pkgver=v3.1.1.0.r66.gb9f0f55
-pkgrel=1
+pkgrel=2
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server"
 arch=(any)
 conflicts=('kawaii-player')
@@ -22,42 +23,7 @@ pkgver() {
 }
 
 package() {
-
-  _bpath="${srcdir}/kawaii-player/${_gitname}"
-
-  install -d "${pkgdir}/usr/share/${_pkgname}/"
-  install -d "${pkgdir}/usr/share/applications/"
-  install -d "${pkgdir}/usr/bin/"
-  
-  for file in "${_bpath}/"*;do
-  	nm=$(echo $file | rev | cut -d'/' -f1 | rev)
-  	if [ -d "$file" ];then
-		install -d "${pkgdir}/usr/share/${_pkgname}/${nm}/"
-		_plugin_path="$file/"
-		for plugins in "${_plugin_path}"*;do
-			plugin_name=$(echo $plugins | rev | cut -d'/' -f1 | rev)
-            if [ $plugin_name == 'kawaii-player.desktop' ]; then
-                echo $plugins
-                echo 'desktop file copying'
-                cat "${_plugin_path}kawaii-player.desktop" | sed 's/Exec=/Exec=python -B \/usr\/share\/kawaii-player\/kawaii_player.py \%f/g' > "${pkgdir}/usr/share/applications/kawaii-player.desktop"
-			elif [ $plugin_name != 'installPlugins.py' ];then
-				echo $plugins
-				echo 'Plugins copying'
-				install -Dm755 "$plugins" "${pkgdir}/usr/share/${_pkgname}/${nm}/"
-			fi
-		done
-  	else
-		if [ $nm == 'kawaii-player' ];then
-			echo $file
-			echo 'kawaii-player script'
-			install -Dm755 "$file" "${pkgdir}/usr/bin/kawaii-player"
-			chmod +x "${pkgdir}/usr/bin/kawaii-player"
-		else 
-            echo $file
-            echo 'source files copying'
-            install -Dm755 "$file" "${pkgdir}/usr/share/${_pkgname}/"
-		fi
-	fi
-  done
-  
+  cd $srcdir/kawaii-player
+  python setup.py install --root="$pkgdir" --optimize=1 --prefix=/usr 
+  install -D "${pkgdir}/usr/lib/python3.6/site-packages/kawaii_player/resources/kawaii-player.desktop" "${pkgdir}/usr/share/applications/kawaii-player.desktop"
 }
