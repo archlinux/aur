@@ -23,29 +23,29 @@ sha256sums=('0409e2ce4bfdb2dacb2c193d0fedfc49bb975cb057c5c6b0ffcca603a1188da7'
             'f76bc6481d81a1d2510a410915b946c44eebdce12d6c3b5f2869634b10372ed8')
 
 build() {
-  cd $srcdir/netkit-rwho-$pkgver
+  cd "$srcdir/netkit-rwho-$pkgver"
 
   while read patch; do
-    patch -Np1 -i ../debian/patches/$patch
+    patch -Np1 -i "../debian/patches/$patch"
   done < ../debian/patches/series
 
-  ./configure --prefix=/usr --installroot=$pkgdir
+  ./configure --prefix=/usr --installroot="$pkgdir"
   make
 }
 
 package() {
-  cd $srcdir/netkit-rwho-$pkgver
+  cd "$srcdir/netkit-rwho-$pkgver"
 
-  mkdir -p $pkgdir/usr/{bin,sbin,share,man/man1,man/man8} $pkgdir/var/spool/rwho
+  mkdir -p "$pkgdir/usr/"{bin,sbin,share,man/man1,man/man8} "$pkgdir/var/spool/rwho"
   make install
 
-  mv $pkgdir/usr/man $pkgdir/usr/share/man
+  mv "$pkgdir/usr/man" "$pkgdir/usr/share/man"
 
-  mv $pkgdir/usr/sbin/rwhod $pkgdir/usr/bin
-  rmdir $pkgdir/usr/sbin
+  mv "$pkgdir/usr/sbin/rwhod" "$pkgdir/usr/bin"
+  rmdir "$pkgdir/usr/sbin"
 
-  install -Dm644 $srcdir/debian/copyright $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 $srcdir/rwhod.conf $pkgdir/etc/conf.d/rwhod
-  install -Dm644 $srcdir/rwhod.service $pkgdir/usr/lib/systemd/system/rwhod.service
-  install -D $srcdir/rwhod.cron $pkgdir/etc/cron.monthly/rwhod
+  install -Dm644 "$srcdir/debian/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/rwhod.conf" "$pkgdir/etc/conf.d/rwhod"
+  install -Dm644 "$srcdir/rwhod.service" "$pkgdir/usr/lib/systemd/system/rwhod.service"
+  install -D "$srcdir/rwhod.cron" "$pkgdir/etc/cron.monthly/rwhod"
 }
