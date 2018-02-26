@@ -1,24 +1,29 @@
-# Maintainer: Nenad Stojanovikj <nekk1 at live dot com>
-# Previous Maintainer: Joseph Post <joe@jcpst.com>
-# Previous Maintainer: Stephan Wienczny <stephan@wienczny.de>
+# Maintainer: Denys Vitali <denys@denv.it>
+# Based on the work of (dbeaver-ee):
+# * John Sivak <jsivak@winterjewel.com>
+# * Joseph Post <joe@jcpst.com>
+# * Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ce
-pkgver=4.2.4
-pkgrel=2
-pkgdesc="A free universal database tool for developers and database administrators. This is the community edition."
+pkgver=4.3.5
+pkgrel=1
+pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('i686' 'x86_64')
-url="http://dbeaver.jkiss.org/"
+url="http://dbeaver.com/"
 license=("GPL")
 depends=('java-runtime>=1.6' 'gtk2' 'gtk-update-icon-cache')
 install=dbeaver-ce.install
 
 source=(dbeaver-ce.desktop dbeaver-ce.install)
-source_i686=(http://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz)
-source_x86_64=(http://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
-sha256sums=('d3244943e1698dc1661585a3230f046bb06157e532f44a18ced575bce964746a'
-            'a54659b53f1966395f7e296d448c42e1165ec38f5db20181a9e294f775e1c43b')
-sha256sums_i686=('c0fd2e93e80d93010a2c40880640132672bc39d2e8e80355b6b49acb7d218e0f')
-sha256sums_x86_64=('a1a03606aca830685f313014e03a167e5326a39e71c5245c33d9bcda525f33cf')
+source_i686=(https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz)
+source_x86_64=(https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
+sha256sums=('f1dd2cd13732d00a36d95218d59423689112b343b2212744f6c7b6893381ce78'
+            '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
+sha256sums_i686=('f5c9b473732a8d8633eebcb81dc8735d190af6e56ce939bcf2eab6ce8b2c473a')
+sha256sums_x86_64=('c1a3f08c34de8cea8076acc1b2709860bacd9b2861d006f81efa33fbdbde47b6')
+
+# https://dbeaver.jkiss.org/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz.sha256
+# https://dbeaver.jkiss.org/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz.sha256
 
 noextract=("dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz"
            "dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz")
@@ -46,3 +51,4 @@ package() {
     ln -s /opt/${pkgname}/dbeaver usr/bin/dbeaver-ce
     install -m 644 $srcdir/dbeaver-ce.desktop $pkgdir/usr/share/applications/
 }
+

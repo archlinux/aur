@@ -2,8 +2,9 @@
 Exec=/opt/dbeaver-ce/dbeaver
 Type=Application
 Terminal=false
-Icon=dbeaver
+Icon=dbeaver-ce
 Categories=Development;Java;Database;
 
 Name=DBeaver Community Edition
 GenericName=Database Client
+
