@@ -9,7 +9,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.2.10.180.g4c9cbf20
+pkgver=2.2.10.186.g1c0173ec
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -17,12 +17,8 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp'
 conflicts=('eiskaltdcpp')
 options=('!emptydirs')
-source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git'
-        'esee.patch'
-         )
-sha256sums=('SKIP'
-            'b68a4def7204214d418efabfe130393e6b8481a3b348defeb9050bbb2693fa54'
-            )
+source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
+sha256sums=('SKIP')
 makedepends=('git'
              'cmake'
              'lua'
@@ -57,10 +53,6 @@ prepare() {
 
   # Fix php dependency
   find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
-
-  cd eiskaltdcpp
-  # Bleh patch for set right version
-  patch -p1 -i "${srcdir}/esee.patch"
 }
 
 build() {
