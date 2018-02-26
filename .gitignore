@@ -2,6 +2,7 @@
 *.src.tar*
 *.tgz
 *.tar.gz
+*jar
 src
 *~
 pkg

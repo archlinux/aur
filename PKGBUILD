@@ -8,12 +8,12 @@ arch=(any)
 license=('GPL3')
 url="https://github.com/mclauncher/HMCL"
 makedepends=('unzip')
-depends=('java-environment' 'bash' 'hicolor-icon-theme')
+depends=('java-environment>=8' 'bash' 'hicolor-icon-theme')
 noextract=("HMCL-$pkgver.jar")
 source=('hmcl-launch-script'
         'hmcl.desktop.in'
         # "$url/releases/download/v${pkgver%.*}/HMCL-$pkgver.jar")
-	"https://github.com/LinRs/HMCL/releases/download/v2.7.9/HMCL-${pkgver}.jar"
+	"HMCL-${pkgver}.jar::https://github.com/LinRs/HMCL/releases/download/v2.7.9/HMCL-${pkgver}.jar"
 	#"hmcl::git+$url.git#commit=cbb2a1b5755389b751d24730bc93de1011bed119"
 	)
 
