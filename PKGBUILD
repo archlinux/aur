@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
@@ -24,9 +24,9 @@ backup=(
 source=(
 	https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
 )
-sha1sums=('b9807d8fa222c6a3747575956a7d52ebfaeffb1c')
-sha256sums=('a00d1ba3e12f406a90a852543c56b9116ccbade264ada44aa6b8e0936c895891')
-sha512sums=('d096ec2a3907dcd09c936f0a49ef6fb5028a17d2e0ade9e68eae7303530480ce19e08c1864efd862d363fda9ef6343260396b794b3c4ac74544baa2628a310eb')
+sha1sums=('df2c53c733b9e08904f5cbd508e20d5abeb40579')
+sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
+sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e444f53010ad53c6b1adf28c75aa482403c06052314a91636c2a8baa30e09af')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
