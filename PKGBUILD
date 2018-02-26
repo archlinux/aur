@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.15
-pkgver=4.15.5
+pkgver=4.15.6
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -91,13 +91,13 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'b5dc7021bd0c08e4a58b59035f9b757ce6909b46067950ac56d2ad68c1b69dd1'
+            '79832aa2c9bc661ef1b4b8d55e6eff346cf23fd6c7dfd1ff0f1a7239cf2b8072'
             'SKIP'
             'ea0dbe0c3cf14be9fafeddfa809cd80a50cc59437663f969637013c3859c05a8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
+            '738f96d2cdc52a04b6e6959f3436c0388db38d18a4ac47fb0a82021faff8f9c5'
             'af51d2433340fdd88a73fdfdfa88b304b3933a937c7ef16a22ba73950360de71'
             'c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863'
             'b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676')
