@@ -3,8 +3,8 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-pulse
-pkgver=3.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -24,7 +24,7 @@ source=(
   godot.desktop
   icon.png
 )
-sha256sums=('cc4392dbc9e7aa9c33c10c652299fe5c2e160921a514b18731eca860931117ca'
+sha256sums=('95e6d2a4b131d19fe2418c6324a0e59fe63bb4421c98264ec9904ea21ec20fb6'
             'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
             'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
 
