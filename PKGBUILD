@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=3
+pkgrel=4
 
 pkgdesc="miredo, miredo.deb, only support armv7h"
 arch=('armv7h')
