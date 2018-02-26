@@ -8,17 +8,21 @@ pkgver=1.5
 pkgrel=3
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
-url="http://ab-initio.mit.edu/wiki/index.php/MIT_Photonic_Bands"
+url="https://mpb.readthedocs.io"
 license=('GPL')
 depends=('lapack' 'hdf5' 'fftw-mpi' 'libctl' 'openmpi')
 makedepends=('gcc-fortran')
-source=(http://ab-initio.mit.edu/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ea4dfe6dfdabb054d6332316903cff9f')
-sha256sums=('3deafe79185eb9eb8a8fe97d9fe51624221f51c1cf4baff4b4a7242c51130bd7')
+source=(git+https://github.com/stevengj/$pkgname.git)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | cut -d-  -f1
+}
 
 build() {
-	cd "$srcdir"
-
+	cd "${srcdir}/${pkgname}"
+	git checkout ${pkgver}
 	cp -r $pkgname-$pkgver $pkgname-$pkgver-inv
 	cp -r $pkgname-$pkgver $pkgname-$pkgver-mpi
 	cp -r $pkgname-$pkgver $pkgname-$pkgver-inv-mpi
@@ -81,4 +85,4 @@ package() {
 	cd "$srcdir"/$pkgname-$pkgver-inv-mpi
 	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
 }
-#
+
