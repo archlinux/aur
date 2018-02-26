@@ -1,5 +1,7 @@
 #! /bin/bash
 
+TERM=xterm
+
 pkgname="gog-stardew-valley"
 pkgdir="/opt/${pkgname}/"
 run="${pkgdir}/start.sh"
