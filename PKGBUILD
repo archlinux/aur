@@ -178,4 +178,3 @@ for a in $(ls -d */); do  ## loop for all directories found
 done;
 
 }
-sha256sums=('fd3bce0246fff46cc1627a000f42b157304f74132421c8370817fdfa675b61b6')
