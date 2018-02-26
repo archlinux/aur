@@ -4,31 +4,33 @@
 # AUR4 Maintainer: McNoggins <gagnon88 AT gmail DOT com>
 
 pkgname=mpb
-pkgver=1.5
-pkgrel=3
+pkgver=v1.6.1
+pkgrel=1
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
 url="https://mpb.readthedocs.io"
 license=('GPL')
-depends=('lapack' 'hdf5' 'fftw-mpi' 'libctl' 'openmpi')
+depends=('lapack' 'hdf5' 'openmpi' 'fftw-mpi' 'libctl')
 makedepends=('gcc-fortran')
 source=(git+https://github.com/stevengj/$pkgname.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/$pkgname"
   git describe --long --tags | cut -d-  -f1
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	git checkout ${pkgver}
-	cp -r $pkgname-$pkgver $pkgname-$pkgver-inv
-	cp -r $pkgname-$pkgver $pkgname-$pkgver-mpi
-	cp -r $pkgname-$pkgver $pkgname-$pkgver-inv-mpi
+	cd "$srcdir/$pkgname"
+	git checkout $pkgver
+	cd ../
+	cp -r $pkgname $pkgname-inv
+	cp -r $pkgname $pkgname-mpi
+	cp -r $pkgname $pkgname-inv-mpi
 
 	# configure includes two options for working with GNU Fortran and HDF5 v1.8.x
-	cd $pkgname-$pkgver
+	cd $pkgname
+	sh autogen.sh
 	./configure \
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
@@ -38,7 +40,8 @@ build() {
 	make
 
 	# configure inversion symmetry binaries (run at least 2x as fast)
-	cd ../$pkgname-$pkgver-inv
+	cd ../$pkgname-inv
+	sh autogen.sh
 	./configure \
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
@@ -49,7 +52,8 @@ build() {
 	make
 
 	# configure parrallel computation
-	cd ../$pkgname-$pkgver-mpi
+	cd ../$pkgname-mpi
+	sh autogen.sh
 	./configure \
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
@@ -60,7 +64,8 @@ build() {
 	make
 
 	# configure parrallel computation
-	cd ../$pkgname-$pkgver-inv-mpi
+	cd ../$pkgname-inv-mpi
+	sh autogen.sh
 	./configure \
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
@@ -73,16 +78,16 @@ build() {
 }
 
 package() { 
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$srcdir"/$pkgname
 	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
 
-	cd "$srcdir"/$pkgname-$pkgver-inv
+	cd "$srcdir"/$pkgname-inv
 	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
 
-	cd "$srcdir"/$pkgname-$pkgver-mpi
+	cd "$srcdir"/$pkgname-mpi
 	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
 
-	cd "$srcdir"/$pkgname-$pkgver-inv-mpi
+	cd "$srcdir"/$pkgname-inv-mpi
 	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
 }
 
