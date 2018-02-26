@@ -1,0 +1,14 @@
+pkgbase = slackadaisical
+	pkgdesc = Command line slack chat client
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/bkanber/Slackadaisical
+	arch = any
+	license = GPL-3.0
+	depends = npm
+	noextract = slackadaisical-0.1.2.tgz
+	source = https://registry.npmjs.org/slackadaisical/-/slackadaisical-0.1.2.tgz
+	sha256sums = fe58b55fca2ea519d143b3f9eb6a78a99e2c4c1090770665a6a205ddbd80de06
+
+pkgname = slackadaisical
+
