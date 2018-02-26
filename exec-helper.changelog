@@ -2,11 +2,12 @@ Changelog
 =========
 
 
-0.1.1_192_g69ccc21
-------------
+0.2.0 (2018-02-02)
+------------------
 
 New
 ~~~
+- Changed LICENSE from GPL-v3 to the 3-clause BSD. [Bart Verhagen]
 - Added a version option displaying the version and copyright
   information for the particular exec-helper instance. [Bart Verhagen]
 - CI: Removed spurious install-aur script. [Bart Verhagen]

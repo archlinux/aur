@@ -1,6 +1,6 @@
 pkgbase = exec-helper-git
 	pkgdesc = How To Get Coffee In Peace: a shell meta-wrapper
-	pkgver = 0.1.1_192_g69ccc21
+	pkgver = 0.2.0_2_gdb7aef2
 	pkgrel = 1
 	url = https://github.com/bverhagen/exec-helper
 	changelog = exec-helper.changelog
@@ -15,9 +15,10 @@ pkgbase = exec-helper-git
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = microsoft-gsl-git
+	makedepends = lsb-release
 	depends = yaml-cpp
 	depends = boost-libs
-	source = exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=69ccc215a5d8055f23c4283dfb092ce6616248c4
+	source = exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=db7aef26df984c781337e130229afad86bce1979
 	md5sums = SKIP
 
 pkgname = exec-helper-git

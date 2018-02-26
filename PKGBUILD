@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen@gmail.com>
 pkgname=('exec-helper-git' 'exec-helper-git-docs')
 pkgbase='exec-helper-git'
-pkgver=0.1.1_192_g69ccc21
+pkgver=0.2.0_2_gdb7aef2
 pkgrel=1
 epoch=
 pkgdesc="How To Get Coffee In Peace: a shell meta-wrapper"
@@ -10,7 +10,7 @@ url="https://github.com/bverhagen/exec-helper"
 license=('GPL3')
 groups=()
 depends=(yaml-cpp boost-libs)
-makedepends=(cmake boost make doxygen graphviz git pkg-config microsoft-gsl-git)
+makedepends=(cmake boost make doxygen graphviz git pkg-config microsoft-gsl-git lsb-release)
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=exec-helper.changelog
-source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=69ccc215a5d8055f23c4283dfb092ce6616248c4')
+source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=db7aef26df984c781337e130229afad86bce1979')
 noextract=()
 validpgpkeys=()
 
@@ -31,7 +31,7 @@ _exec_helper_build_targets=('exec-helper' 'docs-man')
 _exec_helper_docs_build_targets=('docs-html')
 
 _system_description=$(lsb_release --description --short | sed 's/"//g')
-_source_version=0.1.1_192_g69ccc21
+_source_version=0.2.0_2_gdb7aef2
 _release_version="($_system_description) $_source_version"
 _copyright="Copyright (c) $(date +'%Y') Bart Verhagen"
 
