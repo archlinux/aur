@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=DeskChan
+GenericName=deskchan
+Comment=
+Icon=deskchan
+Exec="/usr/bin/deskchan"
+Terminal=false
+Categories=Misc
