@@ -1,8 +1,8 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=rapydscript-ng-git
-pkgver=0.7.17.r2.g15db838
-pkgrel=1
+pkgver=0.7.18.r14.g4d50bb1
+pkgrel=2
 pkgdesc="Pythonic JavaScript that doesn't suck"
 arch=('any')
 url="https://github.com/kovidgoyal/${pkgname%-git}"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('nodejs')
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
-comflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -37,6 +37,9 @@ package() {
 
     mkdir -p "${pkgdir}"/usr/{bin,lib/node_modules/rapydscript-ng/}
     cp -r * "${pkgdir}"/usr/lib/node_modules/rapydscript-ng/
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 
     ln -s ../lib/node_modules/rapydscript-ng/bin/rapydscript "${pkgdir}"/usr/bin/rapydscript
 
