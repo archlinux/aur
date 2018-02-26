@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://lucaschess.pythonanywhere.com/"
 license=('GPL2')
 depends=('python2-pyaudio' 'swig' 'python2-psutil' 'python2-chardet' 'python2-pygal' 
-         'python2-pocketsphinx' 'python2-pyqt4' 'python2-pillow' 'python2-chess') 
+         'python2-pocketsphinx' 'python2-pyqt4' 'python2-pillow' 'python2-chess' 'python2-scandir') 
 makedepends=('git' 'cython2')
 optdepends=('crafty' 'cutechess' 'fairymax' 'fruit' 'gnuchess' 'hoichess' 'pychess'
             'stockfish' 'toga2' 'xboard' 'scid_vs_pc')
