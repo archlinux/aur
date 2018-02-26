@@ -13,11 +13,11 @@ source=("https://pypi.python.org/packages/10/7d/7e815d8e25ddd08edd46dc5202e3b30c
 md5sums=('53bb859d1dff2830b26b6d5852801c5a')
 
 build() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
+  cd "${srcdir}/${pkgname#python-}-0.7"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
+  cd "${srcdir}/${pkgname#python-}-0.7"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
