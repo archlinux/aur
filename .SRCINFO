@@ -1,6 +1,6 @@
 pkgbase = pubs-git
 	pkgdesc = Your bibliography on the command line
-	pkgver = 20180219.cfb0042
+	pkgver = 20180220.0d38c73
 	pkgrel = 1
 	url = https://github.com/pubs/pubs
 	arch = any
