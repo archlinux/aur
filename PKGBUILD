@@ -1,8 +1,8 @@
 # Maintainer: Pierre Lalet <pl@ivre.rocks>
 
 pkgname=ivre
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="Network recon framework"
 url="https://ivre.rocks/"
 arch=('any')
@@ -30,9 +30,9 @@ optdepends=('python-py2neo: flow analysis support'
             'tesseract: Screenshots analysis')
 makedepends=('python-setuptools')
 backup=('etc/httpd/conf/extra/ivre.conf')
-source=(https://github.com/cea-sec/$pkgname/archive/v$pkgver.tar.gz
+source=(https://pypi.python.org/packages/bb/91/12390971b0336f0d064d60cfe661db1a6762419e58b6a077cd174102ee8e/$pkgname-$pkgver.tar.gz
         'apache.example.conf')
-sha256sums=('4b8cda9dfb05493ee19fd334e7872bff39333b623974e6eafa976ec938d84d07'
+sha256sums=('d3eb6c48ea53111991883fdff5cb5170797a8cf1287fe1bcd29ef760b0c882af'
             '3e372f51f2ad441baf8268ce29d35b3a1cb9ef4cb29e7864fab389759694f72e')
 
 build() {
