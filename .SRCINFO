@@ -1,0 +1,18 @@
+pkgbase = kdebase-runtime-plasma4extras
+	pkgdesc = KDE Plasma 4 extras package from kdebase-runtime
+	pkgver = 17.08.3
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kactivities4
+	source = https://download.kde.org/stable/applications/17.08.3/src/kde-runtime-17.08.3.tar.xz
+	source = build-plasma4extras-only.patch
+	sha256sums = 682c18afb11cda41288c4508831cb59797417b9d81ea916e0e99722ebe9bce96
+	sha256sums = d6bce940accaf7f41fba994574f7e9b2c2ba6a5f94d4b42a52949a905330a658
+
+pkgname = kdebase-runtime-plasma4extras
+

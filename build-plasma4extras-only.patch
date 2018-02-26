@@ -1,0 +1,173 @@
+diff -Nur original/CMakeLists.txt modified/CMakeLists.txt
+--- original/CMakeLists.txt	2017-10-01 02:02:55.000000000 +0100
++++ modified/CMakeLists.txt	2018-02-25 01:20:14.769865058 +0000
+@@ -20,48 +20,6 @@
+ find_package(KDE4 4.9.95 REQUIRED)
+ include(KDE4Defaults)
+ 
+-find_package(KDeclarative QUIET CONFIG)
+-set_package_properties(KDeclarative PROPERTIES DESCRIPTION "KDE Declarative (QML) support from kdelibs"
+-                       URL "http://www.kde.org"
+-                       TYPE REQUIRED
+-                       PURPOSE "Required by corebindingsplugin (org.kde.plasma.core)"
+-                      )
+-
+-macro_optional_find_package(NepomukCore)
+-set_package_properties(NepomukCore PROPERTIES DESCRIPTION "Nepomuk Core Libraries"
+-                       URL "https://projects.kde.org/nepomuk-core"
+-                       TYPE OPTIONAL
+-                      )
+-
+-macro_optional_find_package(SLP)
+-set_package_properties(SLP PROPERTIES DESCRIPTION "SLP (Service Location Protocol) implementation"
+-                       URL "http://www.openslp.org/"
+-                       TYPE OPTIONAL
+-                       PURPOSE "Provides SLP support in the network:/ kioslave."
+-                      )
+-
+-find_package(LibAttica 0.1.4)
+-set_package_properties(LibAttica PROPERTIES DESCRIPTION "A library to access Open Collaboration Service providers"
+-                       URL "https://projects.kde.org/attica"
+-                       TYPE REQUIRED
+-                       PURPOSE "Attica is needed for the Get Hot New Stuff support"
+-                      )
+-
+-macro_optional_find_package(QCA2 2.0.0)
+-set_package_properties(QCA2 PROPERTIES DESCRIPTION "Support for remote plasma widgets"
+-                       URL "http://delta.affinix.com/qca"
+-                       TYPE OPTIONAL
+-                      )
+-
+-find_package(LibGcrypt 1.5.0 REQUIRED QUIET)
+-set_package_properties(LibGcrypt PROPERTIES DESCRIPTION "Libgcrypt is a general purpose cryptographic library based on the code from GnuPG."
+-                       URL "http://www.gnu.org/software/libgcrypt/"
+-                       TYPE REQUIRED
+-                       PURPOSE "kwalletd needs libgcrypt to perform PBKDF2-SHA512 hashing"
+-                      )
+-# Build options
+-option(KDERUNTIME_BUILD_NEPOMUK "Build the Nepomuk KCM and kioslaves" FALSE)
+-
+ check_include_files(sys/wait.h HAVE_SYS_WAIT_H)
+ check_include_files(sys/time.h HAVE_SYS_TIME_H)
+ 
+@@ -72,96 +30,9 @@
+ 
+ include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${KDE4_INCLUDES})
+ 
+-# Build infrastructure
+-add_subdirectory(cmake)
+-
+-# Background processes
+-add_subdirectory(kpasswdserver)
+-add_subdirectory(kdontchangethehostname)
+-macro_optional_add_subdirectory(kglobalaccel)
+-add_subdirectory(knotify)
+-add_subdirectory(ktimezoned)
+-
+-if(NOT WINCE)
+-macro_optional_add_subdirectory(kuiserver)
+-endif(NOT WINCE)
+-add_subdirectory(kwalletd)
+-
+-if ( UNIX )
+-   add_subdirectory(soliduiserver)
+-   add_subdirectory(solidautoeject)
+-   add_subdirectory(solid-device-automounter)
+-   add_subdirectory(solid-networkstatus)
+-endif ( UNIX )
+-
+-if(NepomukCore_FOUND AND KDERUNTIME_BUILD_NEPOMUK)
+-    macro_optional_add_subdirectory(nepomuk)
+-endif()
+-
+-# Plugins/components required for basic utility
+-if ( NOT WINCE )
+-    add_subdirectory(kcontrol)
+-endif ( NOT WINCE )
+-add_subdirectory(kioslave)
+-add_subdirectory(kurifilter-plugins)
+-add_subdirectory(phonon)
+-add_subdirectory(kimgio)
+-macro_optional_add_subdirectory(renamedlgplugins)
+-
+-# UI Helper applications
+-macro_optional_add_subdirectory(drkonqi)
+-add_subdirectory(kcmshell)
+-add_subdirectory(kdebugdialog)
+-macro_optional_add_subdirectory(khelpcenter)
+-add_subdirectory(knetattach)
+-add_subdirectory(knewstuff)
+-macro_optional_add_subdirectory(keditfiletype)
+-if ( UNIX )
+-   add_subdirectory(kdesu)
+-endif ( UNIX )
+-
+-# Command-line tools (e.g. for shell scripts)
+-if ( UNIX )
+-   add_subdirectory(kdeeject)
+-endif ( UNIX )
+-add_subdirectory(kfile)
+-add_subdirectory(kiconfinder)
+-add_subdirectory(kioclient)
+-add_subdirectory(kioexec)
+-add_subdirectory(ktraderclient)
+-add_subdirectory(kreadconfig)
+-add_subdirectory(kmimetypefinder)
+-if (Q_WS_X11)
+-  add_subdirectory(kstart)
+-endif (Q_WS_X11)
+-add_subdirectory(kquitapp)
+-add_subdirectory(menu)
+ if ( NOT WINCE )
+     add_subdirectory(plasma)
+ endif ( NOT WINCE )
+-add_subdirectory(solid-hardware)
+-
+-# Platform-specific integration
+-add_subdirectory(platforms)
+-
+-# Default settings, content and config
+-add_subdirectory(l10n)
+-add_subdirectory(localization)
+-if(NOT WINCE)
+-  add_subdirectory(kde-menu)
+-macro_optional_add_subdirectory(doc)
+-endif(NOT WINCE)
+-
+-# Artwork
+-add_subdirectory(desktoptheme)
+-if ( NOT WINCE )
+-  add_subdirectory(pics)
+-endif ( NOT WINCE )
+-
+-# KDE integration for attica
+-if(LIBATTICA_FOUND)
+-  macro_optional_add_subdirectory(attica)
+-endif(LIBATTICA_FOUND)
+ 
+ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+diff -Nur original/plasma/CMakeLists.txt modified/plasma/CMakeLists.txt
+--- original/plasma/CMakeLists.txt	2017-10-01 02:02:55.000000000 +0100
++++ modified/plasma/CMakeLists.txt	2018-02-24 23:05:02.109965267 +0000
+@@ -1,6 +1 @@
+-add_subdirectory(containments)
+ add_subdirectory(declarativeimports)
+-add_subdirectory(kpart)
+-add_subdirectory(remotewidgetshelper)
+-add_subdirectory(scriptengines)
+-add_subdirectory(tools)
+diff -Nur original/plasma/declarativeimports/CMakeLists.txt modified/plasma/declarativeimports/CMakeLists.txt
+--- original/plasma/declarativeimports/CMakeLists.txt	2017-10-01 02:02:55.000000000 +0100
++++ modified/plasma/declarativeimports/CMakeLists.txt	2018-02-24 23:05:24.093967766 +0000
+@@ -1,10 +1 @@
+-add_subdirectory(core)
+-add_subdirectory(dirmodel)
+-add_subdirectory(draganddrop)
+-add_subdirectory(graphicslayouts)
+-add_subdirectory(graphicswidgets)
+-add_subdirectory(krunnermodel)
+-add_subdirectory(qtextracomponents)
+-add_subdirectory(plasmacomponents)
+ add_subdirectory(plasmaextracomponents)
+-add_subdirectory(locale)
