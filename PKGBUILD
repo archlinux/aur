@@ -16,11 +16,11 @@ backup=('etc/conf.d/rwhod')
 source=(http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_${pkgver}.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_${pkgver}-${_debrev}.debian.tar.gz
         rwhod.conf rwhod.service rwhod.cron)
-md5sums=('0f71620d45d472f89134ba0d74242e75'
-         '82ed5a3c6b0bbf00b36508b9787963b9'
-         '6f0db2a76fc465cc2e2d37dc0c4aa19d'
-         'd8ff594a2235fb7a0b3328f6f2459e60'
-         '059e662579a4b893ee6fa97032f8b0a2')
+sha256sums=('0409e2ce4bfdb2dacb2c193d0fedfc49bb975cb057c5c6b0ffcca603a1188da7'
+            '53aefa27d98b565bf756db57120c03bd224a238e45699d92076420272a6eba8e'
+            '3ad57b0f1ec2f05084df0d2e33fd7605b8c1af5c4330e519b1defcd0ef334a3c'
+            'dd73567ee4b9f44096fc3c763d8cbd6b454d05c05bfe50d9a2a966336f1197c1'
+            'f76bc6481d81a1d2510a410915b946c44eebdce12d6c3b5f2869634b10372ed8')
 
 build() {
   cd $srcdir/netkit-rwho-$pkgver
