@@ -1,13 +1,13 @@
-# Maintainer:   Maximilian Weiss <$(echo "bWF4QG1heHdlaXNzLmlv" | base64 -d)>
+# Maintainer:  Maximilian Weiss <$(echo "bWF4QG1heHdlaXNzLmlv" | base64 -d)>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-btchip-git
 pkgver=0.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
-depends=('python-hidapi')
+depends=('python-hidapi' 'libusb-compat' 'libusb' 'libsystemd')
 makedepends=('python-setuptools')
 optdepends=('btchip-udev: access BTChip as non-root user')
 url="https://github.com/LedgerHQ/btchip-python"
