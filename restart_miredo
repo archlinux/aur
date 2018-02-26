@@ -1,0 +1,3 @@
+#!/bin/bash
+/usr/bin/sysctl -p /etc/sysctl.d/50-miredo.conf
+systemctl restart miredo
