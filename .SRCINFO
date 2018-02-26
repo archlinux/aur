@@ -1,0 +1,14 @@
+pkgbase = threshy-gui
+	pkgdesc = Qt GUI for Threshy
+	pkgver = 0.2
+	pkgrel = 0
+	url = https://gitlab.com/wincak/threshy-gui
+	arch = x86_64
+	license = GPL
+	depends = threshy>=0.2
+	depends = qt5-base>=5.9
+	source = git+https://gitlab.com/wincak/threshy-gui.git#tag=v0.2
+	md5sums = SKIP
+
+pkgname = threshy-gui
+
