@@ -130,6 +130,12 @@ void api_print_info(const char* ticker_name_string);
  */
 Info* iex_get_info(const char* ticker_name_string);
 
+/**
+ * Returns a pointer to an Info object containing info pertaining
+ * to the given symbol
+ * @param ticker_name_string mutf/otc symbol
+ * @return Info object
+ */
 Info* morningstar_get_info(const char* ticker_name_string);
 
 /**
@@ -148,12 +154,12 @@ Info* coinmarketcap_get_info(const char* ticker_name_string);
 char* google_shorten_link(const char* url_string);
 
 /**
- * Returns a string stripped of the given char
+ * Returns the input string, stripped of the given char
  * @param string the string to strip the char from
  * @param c the char to strip
- * @return the stripped string
+ * @return input string
  */
-char* strip_char(const char* string, char c);
+char* strip_char(char* string, char c);
 
 /**
  * Destroys String object and frees memory

@@ -88,7 +88,7 @@ API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
 #### Future Ideas/To-do
-* Historical support -- 7d/28d profits
+* Historical support -- 7d/28d profits (wait for coinmarketcap release)
 * Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
@@ -97,5 +97,6 @@ intraday data (wait for iex v2 probably)
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
 * Make printouts pretty with ncurses??
 * Check without re-encrypting in case sigint
-* Make strip char work in place instead of allocing
 * Format prices with commas (set locale)
+* Function to add new attributes to portfolio if not found
+* Improve code documentation

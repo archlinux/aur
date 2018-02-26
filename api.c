@@ -222,39 +222,31 @@ void news_print_top_three(const char* ticker_name_string) {
 
 void json_print_news(Json* jobj) {
     Json* article_list = json_object_object_get(jobj, "articles"), * article;
-    char* author_string, * title_string, * source_string, * url_string, * stripped, * shortened;
-    const char* date_string;
-    int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
-                               10);
+    char author_string[512], title_string[512], source_string[512], url_string[512], date_string[512], * shortened_url;
+    int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10);
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
-        author_string = strip_char(
-                json_object_to_json_string(json_object_object_get(article, "author")),
-                '\\'); //Strip all attributes of backslashes
-        title_string = strip_char(
-                json_object_to_json_string(json_object_object_get(article, "title")), '\\');
-        source_string = strip_char(json_object_to_json_string(
-                json_object_object_get(json_object_object_get(article, "source"), "name")), '\\');
-        date_string = json_object_to_json_string(json_object_object_get(article, "publishedAt"));
-        url_string = strip_char(json_object_to_json_string(json_object_object_get(article, "url")),
-                                '\\');
-        stripped = strip_char(url_string, '\"'); //Strip url of quotes
-        shortened = google_shorten_link(stripped); //Shorten link
+        strcpy(author_string, json_object_to_json_string(json_object_object_get(article, "author")));
+        strip_char(author_string, '\\'); // Strip all attributes of escape characters
+        strcpy(title_string, json_object_to_json_string(json_object_object_get(article, "title")));
+        strip_char(title_string, '\\');
+        strcpy(source_string,
+               json_object_to_json_string(json_object_object_get(json_object_object_get(article, "source"), "name")));
+        strip_char(source_string, '\\');
+        strcpy(date_string, json_object_to_json_string(json_object_object_get(article, "publishedAt")));
+        date_string[11] = '\"'; // End string after day of month
+        date_string[12] = '\0';
+        strcpy(url_string, json_object_to_json_string(json_object_object_get(article, "url")));
+        strip_char(url_string, '\\');
+        strip_char(url_string, '\"');
+        shortened_url = google_shorten_link(url_string); // Shorten link with google API
         printf("Title: %s Source: %s ", title_string, source_string);
         if (strcmp(author_string, "null") != 0) //Some articles don't list authors or dates
             printf("Author: %s ", author_string);
-        if (strcmp(date_string, "null") != 0) {
-            for (int j = 0; j < 11; j++)
-                putchar(date_string[j]);
-            putchar('\"');
-        }
-        printf("Url: \"%s\"\n", shortened);
-        free(author_string);
-        free(title_string);
-        free(source_string);
-        free(url_string);
-        free(stripped);
-        free(shortened);
+        if (strcmp(date_string, "null") != 0)
+            printf("Date: %s ", date_string);
+        printf("Url: \"%s\"\n", shortened_url);
+        free(shortened_url);
     }
 }
 
@@ -394,42 +386,34 @@ Info* coinmarketcap_get_info(const char* ticker_name_string) {
 }
 
 char* google_shorten_link(const char* url_string) {
-    char post_string[1024], copy[1024];
+    char post_string[1024];
     sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); //Format HTTP POST
     String* pString = api_curl_data(
             "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU", post_string);
     Json* jobj = json_tokener_parse(pString->data);
-    Json* short_url = json_object_object_get(jobj, "id");
-    const char* short_url_string = json_object_to_json_string(short_url);
-    strcpy(copy, short_url_string);
-    char* final = calloc(strlen(copy) + 1, 1);
-    if (final == NULL) {
+    char* short_url = malloc(32);
+    if (short_url == NULL) {
         fprintf(stderr, "calloc() failed\n");
         exit(EXIT_FAILURE);
     }
-    for (unsigned int i = 0, j = 0; j < strlen(copy); i++, j++) { //Ignore escape characters
-        if (copy[j] == '\\' || copy[j] == '\"')
-            j++;
-        final[i] = copy[j];
-    }
+    strcpy(short_url, json_object_to_json_string(json_object_object_get(jobj, "id")));
+    strip_char(short_url, '\\');
+    strip_char(short_url, '\"');
     json_object_put(jobj);
     api_string_destroy(&pString);
-    return final;
+    return short_url;
 }
 
-char* strip_char(const char* string, char c) {
+char* strip_char(char* string, char c) {
     size_t len = strlen(string);
-    char* final_string = calloc(len + 1, 1);
-    if (final_string == NULL) {
-        fprintf(stderr, "calloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
-    for (int i = 0, j = 0; j < (int) len; i++, j++) {
+    int i, j;
+    for (i = 0, j = 0; j < (int) len; i++, j++) {
         while (string[j] == c)
             j++;
-        final_string[i] = string[j];
+        string[i] = string[j];
     }
-    return final_string;
+    string[i] = '\0';
+    return string;
 }
 
 void api_string_destroy(String** phString) {
