@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r3011.gc61feb55
+pkgver=0.2.r3011.g8c8a28c0
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -36,11 +36,6 @@ prepare() {
 
 git pull origin pull/492/head --no-edit # positional tracking videobasedtracker
 git pull origin pull/493/head --no-edit # positional tracking unifiedvideoinertialtracker
-git pull origin pull/546/head --no-edit # remove boost version check
-
-#temporary fix for boost incompatibility
-#sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp
-#sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
 
 #git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
@@ -50,10 +45,7 @@ build() {
   git submodule init
   git submodule update
   cd "$srcdir/osvr-core-build"
-  # tests don't link, undefined reference to json lib
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSVR_UTIL_DEV_VERBOSE=0 -DBUILD_TESTING=0 -DBUILD_HEADER_DEPENDENCY_TESTS=0 -DCMAKE_INSTALL_LIBDIR=lib ../osvr-core
-# -DCMAKE_MODULE_PATH="$srcdir" ../osvr-core
-# -Djsoncpp_DIR="$srcdir/osvr-core-build/jsoncppmake" ../osvr-core
   make
 }
 
@@ -67,10 +59,11 @@ package() {
 }
 
 
-# vim:set ts=2 sw=2 et:
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
+
+# vim:set ts=2 sw=2 et:
