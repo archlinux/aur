@@ -1,7 +1,7 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname=macos-icon-theme
-pkgver=4.1.7
+pkgver=4.1.8
 pkgrel=1
 pkgdesc='macOS Icons Theme'
 arch=('any')
