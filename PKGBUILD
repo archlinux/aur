@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com> 
 
 pkgname=python-spake2
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="This library implements the SPAKE2 password-authenticated key exchange"
 arch=('any')
