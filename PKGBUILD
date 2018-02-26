@@ -1,4 +1,5 @@
 # Maintainer: Aurelien Cedeyn <aurelien.cedeyn@gmail.com>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname="clustershell"
 pkgver=1.8
 pkgrel=1
