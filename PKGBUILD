@@ -9,7 +9,6 @@ pkgdesc="A library that allows you to use TrueType fonts in your SDL application
 arch=('x86_64')
 url="http://www.libsdl.org/projects/SDL_ttf/"
 license=('LGPL')
-options=('!libtool')
 depends=('lib32-sdl' 'lib32-freetype2' $_pkgbasename)
 makedepends=('gcc-multilib')
 source=("https://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$pkgver.tar.gz"
