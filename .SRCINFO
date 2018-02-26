@@ -17,6 +17,7 @@ pkgbase = lucaschess-git
 	depends = python2-pyqt4
 	depends = python2-pillow
 	depends = python2-chess
+	depends = python2-scandir
 	optdepends = crafty
 	optdepends = cutechess
 	optdepends = fairymax
