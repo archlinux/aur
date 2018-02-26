@@ -7,7 +7,7 @@ pkgname=kdebase-workspace
 _pkgname=kde-workspace
 pkgver=4.11.22
 _pkgver=15.08.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Provides the interface and basic tools for the KDE workspace"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -23,8 +23,10 @@ depends=('kdebase-runtime' 'kdepimlibs4' 'lm_sensors' 'libraw1394'
          'xcb-util-keysyms' 'xcb-util-wm' 'pciutils' 'glu' 'kactivities4'
 	 'strigi' 'qtwebkit' 'cln')
 makedepends=('cmake' 'automoc4' 'boost' 'kdebindings-python2' 'networkmanager')
-optdepends=('kde-wallpapers: wallpapers for KDE Plasma Workspaces'
-            'appmenu-qt: menu applications over dbus' 'kdepim4-runtime: to display events in the calendar')
+optdepends=('kdebase-runtime-plasma4extras: system tray support'
+            'kde-wallpapers: wallpapers for KDE Plasma Workspaces'
+            'appmenu-qt: menu applications over dbus' 
+            'kdepim4-runtime: to display events in the calendar')
 install="${pkgname}.install"
 backup=('usr/share/config/kdm/kdmrc' 'etc/pam.d/kde' 'etc/pam.d/kde-np' 'etc/pam.d/kscreensaver')
 source=("http://download.kde.org/Attic/applications/${_pkgver}/src/${_pkgname}-${pkgver}.tar.xz"
