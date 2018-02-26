@@ -4,7 +4,7 @@
 
 pkgname=godot-pulse
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
