@@ -6,9 +6,10 @@ pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog
 arch=('x86_64' 'i386')
 url="https://www.kyocera.com/"
 license=('other')
-depends=('bash-completion' 'cups-filters' 'gcc-libs' 'krb5' 'libcups' 'libgcrypt' 'python2-reportlab' 'zlib' 'python2-pypdf2' 'python2')
+depends=('bash-completion' 'cups-filters' 'gcc-libs' 'krb5' 'libcups' 'libgcrypt' 'python2-reportlab' 'zlib' 'python2-pypdf2' 'python2' 'lib32-zlib' 'lib32-libcups')
 arch=('i686' 'x86_64')
-makedepends=('unzip')
+makedepends=('unzip' 'wget')
+DLAGENTS=("https::/usr/bin/wget")
 toDwnld="KyoceraLinux_Ph..._2017.06.15.zip" 
 source=("https://cdn.kyostatics.net/dlc/de/driver/all/kyoceralinuxpackages-20160420-upd-v3.-downloadcenteritem-Single-File.downloadcenteritem.tmp/${toDwnld}" 
 python2.patch)
