@@ -65,7 +65,7 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 
 	ln -s /opt/deskchan/bin/DeskChan usr/bin/deskchan
-	mkdir -p opt/deskchan/assets opt/deskchan/data
+	cp -r $srcdir/$dirname/* /opt/deskchan/
 	chmod a+rw -R $pkgdir/opt/deskchan/
 
 	mkdir -p $pkgdir/usr/share/applications $pkgdir/usr/share/icons
