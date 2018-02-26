@@ -5,7 +5,7 @@
 pkgname=gtkhtml4-git
 _pkgbasename=gtkhtml
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight HTML renderer/editor widget for GTK3"
 arch=(i686 x86_64)
 license=('GPL')
@@ -31,10 +31,9 @@ prepare() {
 
 build() {
 	cd "${pkgname/-git/}"
-	./autogen.sh  --prefix=/usr --sysconfdir=/etc \
+	./autogen.sh --prefix=/usr --sysconfdir=/etc \
 		--libexecdir=/usr/lib/gtkhtml4 \
 		--localstatedir=/var --disable-static
-	./configure
 	make
 }
 
