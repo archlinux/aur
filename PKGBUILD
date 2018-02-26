@@ -13,7 +13,7 @@ depends=('gtk-update-icon-cache')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1517014896/s/$_s/t/$_t/macOS.tar.xz")
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1519002046/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
 md5sums=('056982040d0efdcf4fa93b0e5bc9bc3d')
 
 prepare() {
