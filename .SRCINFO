@@ -1,0 +1,21 @@
+pkgbase = pulxc-git
+	pkgdesc = A per user LXC for workstation environment
+	pkgver = r17.8c75a9f
+	pkgrel = 1
+	url = https://github.com/ss1h2a3tw/pulxc
+	install = pulxc.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = lxc
+	optdepends = arch-install-scripts: For creating archlinux LXC
+	provides = pulxc
+	conflicts = pulxc
+	backup = etc/pulxc/pulxc.conf
+	backup = etc/pulxc/pulxc-lxc.conf
+	backup = var/lib/pulxc/nextip
+	source = git+https://github.com/ss1h2a3tw/pulxc
+	md5sums = SKIP
+
+pkgname = pulxc-git
+

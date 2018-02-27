@@ -1,0 +1,10 @@
+post_install() {
+	id pulxc > /dev/null 2>&1
+    if [[ $? -ne 0 ]]; then
+        groupadd -g 500 pulxc
+        useradd -b /var/lib -u 500 -g 500 -N pulxc
+        touch /etc/subuid
+        touch /etc/subgid
+        usermod -v 100000-165535 -w 100000-165535 pulxc
+    fi
+}
