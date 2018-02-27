@@ -2,8 +2,8 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.5.1
-pkgrel=3
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
@@ -30,7 +30,7 @@ depends=('python-appdirs'
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/e/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('927cbabe95249659a4e92e3a85d45be393a96a9656aefbcbebf92c75d50a6e3f5ffc0f4c92671c6b331aa66b9138a48a90d13183f7b070589cf83ef191a544ef')
+sha512sums=('3fd41cc422f4aad0fc40e06cb7fa25cbf61928343b4c8148d22a91f5cdd57d90efdce3c3522e7dc138cbe4db30197baa27524569a9736699070fe6882d8875f1')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -56,8 +56,5 @@ package() {
     --root="${pkgdir}"
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {DESCRIPTION.rst,README.md}
-  # remove invalid tests folder
-  # https://bugs.archlinux.org/task/57562
-  rm -rv "${pkgdir}/usr/lib/python3.6/site-packages/tests"
 }
 
