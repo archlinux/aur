@@ -32,6 +32,7 @@ backup=(
     'etc/systemd/system/initrd-network.service'
     'etc/systemd/system/initrd-shell.service'
     'etc/systemd/system/initrd-shell.sh'
+    'etc/systemd/system/initrd-sysroot-mount.service'
 )
 conflicts=(
     'mkinitcpio-dropbear'
