@@ -7,7 +7,7 @@
 pkgname=wine-vulkan-git
 pkgver=r122676.5557ebd4ff
 pkgrel=1
-pkgdesc='A compatibility layer for running Windows programs (git version)'
+pkgdesc='A compatibility layer for running Windows programs (git version with vulkan patches)'
 arch=('i686' 'x86_64')
 url='https://www.winehq.org'
 license=('LGPL')
