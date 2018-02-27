@@ -1,7 +1,7 @@
 pkgbase = kmodcache
 	pkgdesc = Scripts to make a copy of installed kernel modules, which will be used for on-demand loading from then point on, thus make reboots unnecessary after kernel updates.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
 	source = kmodcache.conf
