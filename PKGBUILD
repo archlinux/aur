@@ -7,7 +7,7 @@
 pkgname=mingw-w64-rust
 _pkgname=rust
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
 url='https://www.rust-lang.org/'
@@ -52,9 +52,11 @@ build() {
 package() {
   cd "rustc-$pkgver-src"
 
+  # rust will build install tools there
   unset LDFLAGS
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+  # TODO: find a way to disable packaging
   DESTDIR="$pkgdir" python2 ./x.py install \
     src/librustc \
     src/libstd \
@@ -95,9 +97,9 @@ package() {
 linker = "/usr/bin/i686-w64-mingw32-gcc"
 ar = "/usr/i686-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" ; then
+  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-runner = "wine"
+runner = "/usr/bin/i686-w64-mingw32-wine"
 EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
@@ -113,9 +115,9 @@ EOF
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
 ar = "/usr/x86_64-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" ; then
+  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-runner = "wine"
+runner = "/usr/bin/x86_64-w64-mingw32-wine"
 EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
