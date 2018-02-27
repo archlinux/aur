@@ -6,6 +6,7 @@ pkgbase = maxima-jupyter-git
 	arch = x86_64
 	license = BSD
 	depends = maxima
+	conflicts = maxima-ecl
 	options = !strip
 	source = maxima-jupyter-git::git+https://github.com/robert-dodier/maxima-jupyter
 	source = https://beta.quicklisp.org/quicklisp.lisp

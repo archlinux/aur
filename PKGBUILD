@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/robert-dodier/maxima-jupyter"
 license=('BSD')
 depends=("maxima")
-conflicts('maxima-ecl')
+conflicts=('maxima-ecl')
 options=('!strip')
 source=(
   "$pkgname::git+https://github.com/robert-dodier/maxima-jupyter"
