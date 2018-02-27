@@ -1,0 +1,19 @@
+pkgbase = imagescan-plugin-gt-s650
+	pkgdesc = Plugin for using Epson GT-S650 and Perfection V39 with Image Scan v3
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = imagescan-plugin-gt-s650.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = imagescan
+	source = imagescan-plugin-gt-s650.install
+	md5sums = 42eed403d883c2865850b55527fd9a22
+	source_i686 = https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x86/imagescan-bundle-fedora-27-1.3.26.x86.rpm.tar.gz
+	md5sums_i686 = ed7b6efe95c017c4209966f82706b3b3
+	source_x86_64 = https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-27-1.3.26.x64.rpm.tar.gz
+	md5sums_x86_64 = e2be52d9e5fbc5f88601dd785d5ebc4b
+
+pkgname = imagescan-plugin-gt-s650
+

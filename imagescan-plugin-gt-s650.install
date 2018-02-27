@@ -1,0 +1,3 @@
+post_install() {
+    echo "Remember to read the license at /usr/share/doc/imagescan-plugin-gt-s650/COPYING.EPSON"
+}
