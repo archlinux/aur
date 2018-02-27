@@ -1,6 +1,6 @@
 pkgbase = python-spectra
 	pkgdesc = Color scales and color conversion in Python
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 2
 	url = https://pypi.python.org/pypi/spectra
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-spectra
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-spectra-0.0.10.tar.gz::https://pypi.python.org/packages/09/fb/03db11656c75b19fb18e682dde67eee1096ba09da2bd100ce4b388003006/spectra-0.0.10.tar.gz
-	sha256sums = 31300e339d88a051cccfa174e22a0e5317553c048434869196b2ab7b70dcf091
+	source = spectra-0.0.11.tar.gz::https://pypi.python.org/packages/50/50/ae8d87ab681a58e246215e51715566df8074a86d244fee31fa8585fe5f9f/spectra-0.0.11.tar.gz
+	sha256sums = 8eb362a5187cb63cee13cd01186799c0c791a3ad3bec57b279132e12521762b8
 
 pkgname = python-spectra
 	depends = python
