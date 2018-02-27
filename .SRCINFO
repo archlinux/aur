@@ -1,0 +1,19 @@
+pkgbase = openauto-git
+	pkgdesc = AndroidAuto headunit emulator
+	pkgver = 640c0c6
+	pkgrel = 1
+	url = https://github.com/f1xpl/openauto
+	arch = x86_64
+	license = GPL3
+	makedepends = aasdk-git
+	depends = qt5-connectivity
+	depends = qt5-multimedia
+	depends = pulseaudio
+	depends = gst-libav
+	provides = openauto
+	conflicts = openauto
+	source = openauto-git::git+https://github.com/f1xpl/openauto.git
+	md5sums = SKIP
+
+pkgname = openauto-git
+
