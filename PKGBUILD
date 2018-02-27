@@ -3,7 +3,7 @@
 pkgname=mingw-w64-rust-bin
 _pkgname=rust
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
 url='https://www.rust-lang.org/'
@@ -82,9 +82,9 @@ package() {
 linker = "/usr/bin/i686-w64-mingw32-gcc"
 ar = "/usr/i686-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" ; then
+  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-runner = "wine"
+runner = "/usr/bin/i686-w64-mingw32-wine"
 EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
@@ -105,9 +105,9 @@ EOF
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
 ar = "/usr/x86_64-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" ; then
+  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-runner = "wine"
+runner = "/usr/bin/x86_64-w64-mingw32-wine"
 EOF
   fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
