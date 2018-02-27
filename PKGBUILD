@@ -11,7 +11,7 @@ depends=('')
 makedepends=('git')
 provides=('')
 conflicts=('')
-source=('git+https://github.com/F123/Files-F123Light.git')
+source=('git+https://github.com/F123/files-F123Light.git')
 md5sums=('SKIP')
 
 pkgver() {
