@@ -1,37 +1,48 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=ola-git
-pkgver=0.9.8.r571.g3028d51
+pkgver=0.10.6.r1195.g79c4fd762
 pkgrel=1
+
+python="python"
+# uncomment for python2 libs
+# python="python2"
+
 pkgdesc="The Open Lighting Architecture (OLA) provides a plugin framework for distributing DMX512 control signals on Mac and Linux"
 arch=('i686' 'x86_64')
 url="https://www.openlighting.org/ola/"
 license=('LGPL2.1' 'GPL2')
-provides=('ola')
+
 makedepends=('git')
-depends=('libmicrohttpd' 'cppunit' 'protobuf' 'python2-protobuf' 'python2')
-optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp' 'flex' 'bison')
+depends=('libmicrohttpd' 'cppunit' 'protobuf')
+optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp' 'flex' 'bison' "${python}" "${python}-protobuf")
+
+provides=('ola')
 conflicts=('ola')
+
 source=("git+https://github.com/OpenLightingProject/ola.git")
-# uncomment for 0.10.0
-#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.10.0")
+# uncomment for 0.10.6
+# source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.10.6")
 sha256sums=('SKIP')
 
 _gitname="ola"
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+	cd $_gitname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
+	cd $_gitname
 	autoreconf -i
-	# since protobuf isnt ported to python 3 we have to choose python 2 
-	PYTHON=python2 ./configure --prefix=/usr --enable-python-libs --disable-unittests --disable-fatal-warnings
+	PYTHON=$python ./configure \
+		--prefix=/usr \
+		--enable-python-libs \
+		--disable-unittests
 	make
 }
 
 package() {
-	make -C "${srcdir}/${_gitname}" DESTDIR="${pkgdir}" install
+	cd $_gitname
+	make DESTDIR="${pkgdir}" install
 }
