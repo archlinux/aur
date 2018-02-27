@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme
-	pkgdesc = A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 20180224
+	pkgdesc = A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie
+	pkgver = 20180228
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1187179
 	arch = any
@@ -8,10 +8,18 @@ pkgbase = matcha-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = matcha-gtk-theme-20180224.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1519452930/s/04d198f21a36fae978d0b27fe7a34f96/t/1519476084/Matcha.tar.xz
-	source = matcha-gtk-theme-dark-20180224.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1519452934/s/04d198f21a36fae978d0b27fe7a34f96/t/1519476084/Matcha-dark.tar.xz
-	sha256sums = 93b5b1ebf43e4bf5ae75f93181a59fd54c2a72afccaa2ccec38418c48238dc2a
-	sha256sums = ec61f755258a76d783b4b0995074de0ebe4f10d2e1773f943e457228080d2528
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519752012/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-sea.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519752000/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-azul.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519751997/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-aliz.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519752010/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-dark-sea.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519752007/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-dark-azul.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519752002/s/715cc90911d17d6eddfa1edafa2c2c5c/t/1519766283/Matcha-dark-aliz.tar.xz
+	sha256sums = 47131a6c86fa874a4455118e4bca6fb25bd23d18b8b125930fe5e7f6114d13a1
+	sha256sums = f68d4fc043aacddfcdcc324145ca850fcc5469f93b6cfbd9deac895e45fbaa51
+	sha256sums = 07bc015150e9b957e884c5aed80769f6ba91a100ceb6d16b2a5a8377e72600e0
+	sha256sums = 407c390147ab812418708a79c89a269a3f7af96db83713d5d2d3208932649b4e
+	sha256sums = 54923fa331a5e23baacee4f8e62173a262804dd389ffa9dd223fc9a1547dd4ba
+	sha256sums = 36f6281df90ec3b9632ef9797aa0bbc014f3a59ac0f21072e3327253af2ea9ba
 
 pkgname = matcha-gtk-theme
 
