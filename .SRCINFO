@@ -1,0 +1,24 @@
+pkgbase = limesurvey2
+	pkgdesc = The open source survey application
+	pkgver = 2.73.1.build171220
+	pkgrel = 1
+	url = http://www.limesurvey.org
+	arch = any
+	license = GPL2
+	depends = php>=5.3
+	optdepends = apache: a supported application server
+	optdepends = nginx: a supported application server
+	optdepends = tomcat6: a supported application server
+	optdepends = tomcat7: a supported application server
+	optdepends = mariadb: MariaDB database support
+	optdepends = mysql: MySQL database support
+	optdepends = postgresql: PostgreSQL database support
+	provides = limesurvey
+	conflicts = limesurvey
+	source = http://download.limesurvey.org/archived-releases/limesurvey2.73.1-build171220.zip
+	source = apache.example.conf
+	sha256sums = 8ce7c05304b1d192aa4cfef8af1cdf38338b96c64f5fb50c671e17f2826436fb
+	sha256sums = 325eefd06cd8e9502b90ff13739f9f3a2d405ab30728c109de202847086357c5
+
+pkgname = limesurvey2
+
