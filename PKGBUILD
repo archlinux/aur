@@ -19,7 +19,7 @@ sha256sums=('9e68ee3fbdb80ab73d097b9c8e99f82bf4674397a1e59593f42bb78f1c1ad449'
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/etc/profile.d"
-  cp -r --reflink=always "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
+  cp -r --reflink=auto "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
   mv "${pkgdir}/opt/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
   cp "${srcdir}/freesurfer.sh" "${pkgdir}/etc/profile.d/"
   find "${pkgdir}/opt/${_pkgname}/lib" -mindepth 2 -name \*.so\* -exec mv "{}" "${pkgdir}/opt/${_pkgname}/lib/" \;
