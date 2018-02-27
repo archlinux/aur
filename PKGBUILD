@@ -86,11 +86,11 @@ then
     makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
     optdepends=(${optdepends[@]/*32-*/})
     provides=("wine=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git')
+    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'wine-git')
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
     provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
+    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64' 'wine-git')
     replaces=('bin32-wine')
 fi
 
