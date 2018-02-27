@@ -1,8 +1,8 @@
 # Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
 
 pkgname=lazyusf2-git
-pkgver=r69.ab6a646
-pkgrel=2
+pkgver=r83.95d71f6
+pkgrel=1
 pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/lazyusf2'
@@ -11,11 +11,9 @@ depends=(glibc zlib)
 makedepends=(git grep)
 source=(${pkgname}::git+https://bitbucket.org/kode54/lazyusf2.git
         makefile.patch
-        makefile-i686.patch
         LICENSE.CC0)
 sha256sums=('SKIP'
-            '7a48693ef6e9d41d7f0fa93094603b5decad888454a1fc9bbf6de8fdf88e3995'
-            'cc7592e8f50a89725949b6e69079104ded03cdbb7173cf2da82c2f3c4cae2e4d'
+            '42eda354f4e97a0235ea747a1b0b1edf3c4e9eeec3655d3f9f9514605c2a9180'
             'a90051e82202a5dc51162127c6834f8434fb2ece57795317951420fe6a8f4562')
 
 pkgver() {
@@ -29,25 +27,25 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch Makefile "$srcdir"/makefile.patch
-  if [[ $CARCH = i686 ]]; then
-    patch Makefile "$srcdir"/makefile-i686.patch
-  fi
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  ROPTS="-c -O3 -I."
-  CFLAGS="$CFLAGS -fPIC"
-  { grep \^flags /proc/cpuinfo | fgrep -qw ssse3 && CFLAGS+=" -mssse3" && ROPTS+=" -DARCH_MIN_SSSE3"; } ||
-    { grep \^flags /proc/cpuinfo | fgrep -qw sse2 && CFLAGS+=" -msse2" && ROPTS+=" -DARCH_MIN_SSE2"; }
-  make liblazyusf.{a,so} CFLAGS="$CFLAGS" ROPTS="$ROPTS"
+  OPTFLAGS=$CFLAGS
+  { grep \^flags /proc/cpuinfo | fgrep -qw ssse3 && OPTFLAGS+=" -mssse3 -DARCH_MIN_SSSE3"; } ||
+    { grep \^flags /proc/cpuinfo | fgrep -qw sse2 && OPTFLAGS+=" -msse2 -DARCH_MIN_SSE2"; }
+  export LDFLAGS="$LDFLAGS -Wl,-Bsymbolic"
+  make liblazyusf.{a,so} OPTFLAGS="$OPTFLAGS -Irsp_hle/msvc-compat"
 }
 
 package() {
   cd "$srcdir/$pkgname"
   install -D -m644 -t "$pkgdir/usr/include" usf/usf.h
-  install -D -m644 -t "$pkgdir/usr/lib" liblazyusf.{a,so}
+  install -D -m644 -t "$pkgdir/usr/lib" liblazyusf.{a,so.*}
   install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir"/LICENSE.CC0
+  ldconfig -n "$pkgdir/usr/lib"
+  cd "$pkgdir/usr/lib"
+  ln -sf liblazyusf.so.*.0 liblazyusf.so
 }
 
 # vim:set sw=2 et:
