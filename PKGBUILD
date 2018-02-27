@@ -7,7 +7,7 @@ pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/lazyusf2'
 license=(GPL2 custom:CC0)
-depends=(glibc zlib)
+depends=(zlib)
 makedepends=(git grep)
 source=(${pkgname}::git+https://bitbucket.org/kode54/lazyusf2.git
         makefile.patch

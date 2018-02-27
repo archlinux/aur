@@ -9,7 +9,6 @@ pkgbase = lazyusf2-git
 	license = custom:CC0
 	makedepends = git
 	makedepends = grep
-	depends = glibc
 	depends = zlib
 	source = lazyusf2-git::git+https://bitbucket.org/kode54/lazyusf2.git
 	source = makefile.patch
