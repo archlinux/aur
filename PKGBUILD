@@ -1,6 +1,6 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=debian-whois-mkpasswd
-pkgver=5.2.20
+pkgver=5.3.0
 _debian_backport=''
 pkgrel=1
 pkgdesc="A features-rich front end to the password encryption function crypt(3)."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/whois"
 license=('GPL')
 source=("http://ftp.de.debian.org/debian/pool/main/w/whois/whois_${pkgver}${_debian_backport}.tar.xz")
-sha256sums=('6848ab671750ab3782fe4ab2a47910fe4e25aa93894e4d0f3f67b5fcee06c009')
+sha256sums=('4d789c403bfb5833c8ae168a5f31be70e34b045bd5d95a54c82a27b0ff135723')
 
 build() {
 	cd "${srcdir}/whois-${pkgver}${_debian_backport}"
