@@ -3,8 +3,8 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 
 pkgname=cloud-init
-pkgver=17.2
-pkgrel=5
+pkgver=18.1
+pkgrel=1
 pkgdesc="The standard for customising cloud instances"
 arch=('any')
 url="https://cloud-init.io"
@@ -19,7 +19,7 @@ backup=('etc/cloud/cloud.cfg' 'etc/cloud/cloud.cfg.d/05_logging.cfg')
 source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-lib.patch
         archlinux.cloud.cfg)
-sha256sums=('f00338767a8877c8d72fe64a78d3897da822b3c1f47779ae31adc4815275594f'
+sha256sums=('49d8b7b56adbc6b8bc2aac966954c6c192382ea0500497577f8867e7e25e1ae6'
             '0ace6a9e4156145e5b50bd5fa75d6aeefe8e5c10a63f8d9e0d3c7be4c9b53942'
             '109dd4500593c2fb7b2f7bf05eaf1835be8062c4f7b3025a0371184a691950da')
 
