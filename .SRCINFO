@@ -1,0 +1,13 @@
+pkgbase = sbm
+	pkgdesc = simple bandwidth monitor
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://git.2f30.org/sbm
+	arch = x86_64
+	license = custom:MIT/X Consortium
+	makedepends = git
+	source = git://git.2f30.org/sbm.git
+	sha512sums = SKIP
+
+pkgname = sbm
+
