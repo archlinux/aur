@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r206.g313aa682
+	pkgver = 4.1.1.r253.g986f5d99
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = linphone-desktop-git
 	makedepends = pkg-config
 	makedepends = python-pystache
 	makedepends = perl-xml-parser
-	depends = bcg729
+	depends = bcg729-git
 	depends = belcard-git
 	depends = belle-sip-git
 	depends = belr-git

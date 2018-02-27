@@ -2,13 +2,13 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r206.g313aa682
+pkgver=4.1.1.r253.g986f5d99
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
 url="http://www.linphone.org"
 license=('GPL')
-depends=('bcg729' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
+depends=('bcg729-git' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
     'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 
     'libsoup' 'libnotify' 'qt5-svg'
     'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-tools')
