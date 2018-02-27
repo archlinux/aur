@@ -3,7 +3,7 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
-pkgver=2017.1.2
+pkgver=2018.1.0
 pkgrel=1
 license=('custom')
  
@@ -12,7 +12,7 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/irpf/arquivos/IRPF2017-1.2.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/irpf/arquivos/IRPF2018-1.0.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
@@ -20,7 +20,7 @@ source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/irpf/arquivos/IRPF
 		$pkgname)
  
 
-md5sums=('6411a515412b59fa8c7f0d41256c97ea'
+md5sums=('e4fc95d07e233ae39264384db0c6fd83'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
@@ -32,8 +32,8 @@ install=$pkgname.install
  
  
 package() {
-        cd "$srcdir"/IRPF2017
-        rm -f IRPF2017.exe
+        cd "$srcdir"/IRPF2018
+        rm -f IRPF2018.exe
 		rm -f exec.sh
         mkdir -p "$pkgdir"/usr/share/{icons/hicolor/128x128/apps,applications,licenses/irpf,irpf}
 		mkdir "$pkgdir"/usr/bin
@@ -43,8 +43,8 @@ package() {
 		cp -rf help "$pkgdir"/usr/share/irpf/
        
         install -Dm644 irpf.jar "$pkgdir"/usr/share/irpf/
-        install -Dm644 IRPF2017.ini "$pkgdir"/usr/share/irpf/
-        install -Dm644 IRPF2017.acb "$pkgdir"/usr/share/irpf/
+        install -Dm644 IRPF2018.ini "$pkgdir"/usr/share/irpf/
+        install -Dm644 IRPF2018.acb "$pkgdir"/usr/share/irpf/
 
         install -Dm644 Leia-me.htm "$pkgdir"/usr/share/irpf/
         install -Dm644 offline.png "$pkgdir"/usr/share/irpf/
