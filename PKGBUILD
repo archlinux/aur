@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=openauto-git
 _pkgname=openauto
-pkgver=640c0c6
+pkgver=1.0.rc4.r3.g640c0c6
 pkgrel=1
 pkgdesc="AndroidAuto headunit emulator"
 arch=('x86_64')
@@ -13,6 +13,11 @@ depends=('qt5-connectivity' 'qt5-multimedia' 'pulseaudio' 'gst-libav')
 makedepends=('aasdk-git' 'git')
 source=("$pkgname::git+https://github.com/f1xpl/openauto.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+}
 
 build() {
   cd $pkgname
