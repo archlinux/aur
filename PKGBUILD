@@ -1,7 +1,7 @@
 pkgname=mingw-w64-exprtk-git
 pkgver=r173.bc53259
 pkgrel=1
-pkgdesc="C++ Mathematical Expression Library"
+pkgdesc="C++ Mathematical Expression Library (mingw-w64)"
 arch=('any')
 url="http://www.partow.net/programming/exprtk/index.html"
 license=('CPL')
