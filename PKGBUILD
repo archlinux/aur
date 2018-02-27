@@ -19,7 +19,7 @@ install=
 changelog=
 source=("http://john.piasetzki.name/projects/$pkgname/$pkgname-$pkgver"
         'dyndns.service' 'dyndnsd')
-noextract=
+noextract=()
 md5sums=('17312c8594295c723f8d4021b282f168'
          'bdb2511c0e00fa8a346dfce72887e7a7'
          '2fc56497ed300dc095e65ecfd0391512')
