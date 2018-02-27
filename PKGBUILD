@@ -138,7 +138,7 @@ build() {
         
         local _wine32opts=(
                     '--libdir=/usr/lib32'
-                    "--with-wine64=${srcdir}/${pkgname}-64-build"
+                    "--with-wine64=${srcdir}/wine-git-64-build"
         )
         
         export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
@@ -147,7 +147,7 @@ build() {
     # build wine 32-bit
     msg2 'Building Wine-32...'
     
-    cd "${srcdir}/${pkgname}"-32-build
+    cd "${srcdir}/wine-git"-32-build
     
     ../"wine-git"/configure \
                       --prefix='/usr' \
@@ -177,7 +177,7 @@ package() {
         # package wine 64-bit
         msg2 'Packaging Wine-64...'
         
-        cd "${srcdir}/${pkgname}"-64-build
+        cd "${srcdir}/wine-git"-64-build
         
         make prefix="$pkgdir/usr" \
              libdir="$pkgdir/usr/lib" \
