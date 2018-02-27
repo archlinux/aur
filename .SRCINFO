@@ -1,0 +1,17 @@
+pkgbase = uecide-git
+	pkgdesc = Universal Embedded Computing IDE
+	pkgver = latest
+	pkgrel = 1
+	url = https://uecide.org/
+	arch = any
+	license = GPL2
+	makedepends = apache-ant
+	makedepends = jdk8-openjdk
+	depends = java-environment>7
+	provides = uecide
+	conflicts = uecide
+	source = uecide::git+https://github.com/UECIDE/UECIDE.git
+	sha256sums = SKIP
+
+pkgname = uecide-git
+
