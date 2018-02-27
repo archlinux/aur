@@ -1,0 +1,18 @@
+pkgbase = clipmanager
+	pkgdesc = Python Qt GUI clipboard manager
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/scottwernervt/clipmanager
+	install = clipmanager.install
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-pyside
+	depends = python2-xlib
+	optdepends = xdotool: paste into active window
+	source = https://github.com/scottwernervt/clipmanager/archive/v0.4.0.tar.gz
+	md5sums = 70d67ef14797ca8149dffc55dbf0cc88
+
+pkgname = clipmanager
+
