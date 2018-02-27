@@ -74,7 +74,7 @@ optdepends=(
     'dosbox'
 )
 options=('staticlibs')
-source=("$pkgname"::'git+https://github.com/roderickc/wine-vulkan.git'
+source=("wine-git"::'git+https://github.com/roderickc/wine-vulkan.git'
         '30-win32-aliases.conf')
 sha256sums=('SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
@@ -95,7 +95,7 @@ else
 fi
 
 prepare() {
-    cd "$pkgname"
+    cd "wine-git"
     autoconf # to make sure configure is up to date with the vulkan patches
     
     # fix path of opencl headers
@@ -103,15 +103,15 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "wine-git"
     #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" # wine-vulkan doesn't have tags
 }
 
 build() {
     # delete old build dirs (from previous builds) and make new ones
-    rm    -rf "$pkgname"-{32,64}-build
-    mkdir -p  "$pkgname"-32-build
+    rm    -rf "wine-git"-{32,64}-build
+    mkdir -p  "wine-git"-32-build
     
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
@@ -125,10 +125,10 @@ build() {
     then
         msg2 'Building Wine-64...'
 
-        mkdir "$pkgname"-64-build
-        cd    "$pkgname"-64-build
+        mkdir "wine-git"-64-build
+        cd    "wine-git"-64-build
         
-        ../"$pkgname"/configure \
+        ../"wine-git"/configure \
                           --prefix='/usr' \
                           --libdir='/usr/lib' \
                           --with-x \
@@ -149,7 +149,7 @@ build() {
     
     cd "${srcdir}/${pkgname}"-32-build
     
-    ../"$pkgname"/configure \
+    ../"wine-git"/configure \
                       --prefix='/usr' \
                       --with-x \
                       --with-gstreamer \
@@ -164,7 +164,7 @@ package() {
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
     msg2 'Packaging Wine-32...'
     
-    cd "$pkgname"-32-build
+    cd "wine-git"-32-build
     
     if [ "$CARCH" = 'i686' ] 
     then
