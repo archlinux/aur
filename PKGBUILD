@@ -4,11 +4,10 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r3075.700f4a54
+pkgver=r3246.60ed3b05
 pkgrel=1
-
 pkgdesc="Linux Infrared Remote Control utils. Git version."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.lirc.org/"
 license=('GPL')
 depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
@@ -19,14 +18,21 @@ conflicts=('lirc-utils' 'lirc')
 replaces=('lirc-utils')
 backup=('etc/lirc/lirc_options.conf' 'etc/lirc/lircd.conf' 'etc/lirc/lircmd.conf')
 source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
-lirc.logrotate lirc.tmpfiles)
+lirc.logrotate lirc.tmpfiles
+unfuck_build.patch)
 md5sums=('SKIP'
          '3deb02604b37811d41816e9b4385fcc3'
-         'febf25c154a7d36f01159e84f26c2d9a')
+         'febf25c154a7d36f01159e84f26c2d9a'
+         '14fed9e6f95888e0649cf1caadb6e043')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -Np1 -i ../unfuck_build.patch
 }
 
 build() {
