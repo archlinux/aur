@@ -1,13 +1,13 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=pyruse
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Route systemd-journal logs to filters and actions (ban, report, etc.)"
 arch=('any')
 url="https://yalis.fr/git/yves/pyruse"
 license=('GPL3')
-depends=('python>=3.1' 'python-systemd')
+depends=('python>=3.4' 'python-systemd')
 makedepends=('git' 'python-setuptools')
 source=("git+https://yalis.fr/git/yves/pyruse.git#tag=${pkgver}")
 sha1sums=('SKIP')
