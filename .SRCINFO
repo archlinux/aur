@@ -1,0 +1,15 @@
+pkgbase = uecide
+	pkgdesc = Universal Embedded Computing IDE
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://uecide.org/
+	arch = any
+	license = GPL2
+	makedepends = apache-ant
+	makedepends = jdk8-openjdk
+	depends = java-environment>7
+	source = uecide-0.9.1.tar.gz::https://github.com/UECIDE/UECIDE/archive/0.9.1.tar.gz
+	sha256sums = 380258455d05d652200d3c1650e2dcec8f80f4f47a115e207529e9eb24b2bef0
+
+pkgname = uecide
+
