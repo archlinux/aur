@@ -2,22 +2,19 @@
 
 pkgname=nutstore-experimental
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Nutstore experimental version.'
-arch=(x86_64 i686)
+arch=(x86_64)
 url='https://jianguoyun.com/'
 license=(custom)
-depends=(gtk2
-         java-runtime
-         python2-notify)
-optdepends=('nautilus-nutstore: Nautilus plugin')
+depends=(gtk2 java-runtime)
+optdepends=('nautilus-nutstore: Nautilus plugin'
+            'python2-notify: Showing notifications')
 source=(nutstore license)
 source_x86_64=("https://jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x64-public.tar.gz")
-source_i686=("https://jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x86-public.tar.gz")
 sha256sums=('3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384'
             'f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e')
 sha256sums_x86_64=('fac9773875a5391a047f342414e988dd0df7f7938f14833f4b1352d3e4c64a00')
-sha256sums_i686=('48de3e2f062f47ff48980422115102e4460f5be38643d14e91e4e7e82cabf64e')
 conflicts=(nutstore)
 provides=(nutstore)
 
