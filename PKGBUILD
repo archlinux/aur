@@ -7,7 +7,7 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=64.0.3282.168
+pkgver=64.0.3282.186
 pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/edgy.patch
 )
 
 
-sha256sums=('64993e7b1f15ae0bcce5c8fa6e3a8e2efe59f9cdba9112afd07850c79801a97b'
+sha256sums=('5fd0218759231ac00cc729235823592f6fd1e4a00ff64780a5fed7ab210f1860'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -209,6 +209,7 @@ sha256sums=('64993e7b1f15ae0bcce5c8fa6e3a8e2efe59f9cdba9112afd07850c79801a97b'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
             '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+
 
 
 
