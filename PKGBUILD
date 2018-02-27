@@ -25,13 +25,15 @@ pkgver() {
 build() {
   rm -rf quicklisp bin
   mkdir -p quicklisp bin
-  maxima --lisp=sbcl <<END
+  maxima <<END
 parse_string("1");
 :lisp (load "quicklisp.lisp")
 :lisp (quicklisp-quickstart:install :path "quicklisp")
 :lisp (ql:quickload "cffi")
+:lisp (ql:quickload "trivial-dump-core")
 :lisp (load "maxima-jupyter-git/load-maxima-jupyter.lisp")
-:lisp (sb-ext:save-lisp-and-die "bin/maxima-jupyter" :toplevel 'cl-jupyter:kernel-start :executable t)
+:lisp (trivial-dump-core:save-executable "bin/maxima-jupyter" #'cl-jupyter:kernel-start)
+quit();
 END
 }
 
