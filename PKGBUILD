@@ -1,7 +1,7 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml-git
-pkgver=0.r124.25e945f
+pkgver=0.r129.abec1be
 pkgrel=1
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
