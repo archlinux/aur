@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Bitmask
+Exec=/opt/bitmask/bitmask
+Terminal=false
+Type=Application
+Path=/opt/bitmask

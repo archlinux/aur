@@ -1,0 +1,15 @@
+pkgbase = bitmask
+	pkgdesc = easy and secure encrypted communication
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://bitmask.net/
+	arch = x86_64
+	groups = base-devel
+	license = GPL3
+	source = https://dl.bitmask.net/client/linux/stable/Bitmask-linux64-latest.tar.gz
+	source = bitmask.desktop
+	md5sums = 94bb24e9068d9ca71ced7469aa18a43d
+	md5sums = 20f1f868f64ce2144e73eb29bd50777d
+
+pkgname = bitmask
+
