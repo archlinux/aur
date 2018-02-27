@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-headers-more
 pkgver=0.32
-pkgrel=9
+pkgrel=10
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.7
+_nginxver=1.13.9
 
 pkgdesc="Set and clear input and output headers (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c'
+sha256sums=('5faea18857516fe68d30be39c3032bd22ed9cf85e1a6fdf32e3721d96ff7fa42'
             'c6d9dab8ea1fc997031007e2e8f47cced01417e203cd88d53a9fe9f6ae138720')
 
 build() {
