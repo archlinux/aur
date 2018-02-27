@@ -1,4 +1,4 @@
-# Maintainer: Shatur95 <genaloner@gmail.com>
+# Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=crow-translate-git
 pkgver=r15.766cc68
