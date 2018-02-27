@@ -1,7 +1,7 @@
-# Maintainer: Breizh <breizh.craft.98@openmailbox.org>
+# Maintainer: Breizh <breizh@breizh.me>
 pkgname=zest-writer
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline editor for Zeste de Savoir"
 arch=('i686' 'x86_64')
 url="https://github.com/firm1/zest-writer"
