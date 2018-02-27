@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-  git describe --tags | sed 's/ver_//;s/_/./g;s/-/.r/;s/-/./'
+  git describe --tags | sed 's/ver_//;s/_/./g;s/-/.r/;s/-/./g'
 }
 
 
