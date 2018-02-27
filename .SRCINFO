@@ -1,6 +1,6 @@
 pkgbase = citus-git
 	pkgdesc = Scalable PostgreSQL for multi-tenant and real-time workloads
-	pkgver = 6.1.0.rc2.r663.g666e3727
+	pkgver = 7.3.devel.r8516d863
 	pkgrel = 1
 	url = https://github.com/citusdata/citus
 	arch = any

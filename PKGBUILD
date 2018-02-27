@@ -1,6 +1,6 @@
 # Maintainer: vltr <rkuesters@gmail.com>
 pkgname=citus-git
-pkgver=v6.1.0.rc2.833.raee0be88
+pkgver=7.3.devel.r8516d863
 pkgrel=1
 pkgdesc="Scalable PostgreSQL for multi-tenant and real-time workloads"
 url="https://github.com/citusdata/citus"
@@ -14,9 +14,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  # credits for the "version snippe"t to the `pyenv-virtualenv-git` package author in aur
-  # Get the first part of the latest tag and append the current revision
-  echo "$(git describe --long --tags | sed 's/\(^.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
+  #echo "$(git describe --long --tags | sed 's/\(^.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
+  echo "$(cat configure.in | grep AC_INIT | cut -d'[' -f3 | sed 's/\(])\)//g' | sed 's/devel/\.devel/g').r$(git log --pretty=format:'%h' -n 1)"
 }
 
 build() {
