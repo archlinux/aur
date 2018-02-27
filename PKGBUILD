@@ -2,7 +2,7 @@
 # Maintainer: Wess Cope <wess@metismachine.com>
 pkgname=skafos
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line utility to the Metis Machine platform"
 arch=(x86_64)
 url="https://metismachine.com"
