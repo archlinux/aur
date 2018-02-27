@@ -6,7 +6,7 @@ pkgdesc="A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)"
 arch=("x86_64")
 url="https://github.com/robert-dodier/maxima-jupyter"
 license=('BSD')
-depends=("maxima" "sbcl")
+depends=("maxima")
 source=(
   "$pkgname::git+https://github.com/robert-dodier/maxima-jupyter"
   'https://beta.quicklisp.org/quicklisp.lisp'
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   rm -rf quicklisp bin
   mkdir -p quicklisp bin
-  maxima <<END
+  maxima --lisp=sbcl <<END
 parse_string("1");
 :lisp (load "quicklisp.lisp")
 :lisp (quicklisp-quickstart:install :path "quicklisp")
