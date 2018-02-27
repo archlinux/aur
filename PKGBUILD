@@ -6,14 +6,14 @@
 
 pkgname=php-docs
 pkgver=7.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of HTML documentation for PHP."
 arch=('any')
 url="http://www.php.net/docs.php"
 license=('PHP')
 options=('docs' '!strip')
 source=(php_manual_en-$pkgver.tar.gz::http://www.php.net/distributions/manual/php_manual_en.tar.gz)
-sha256sums=('5d67f0f1c1cbe869c883486fb16afbdd45ee2e32174d97efd9bbda2646309a7d')
+sha256sums=('ff0e34526e9e7a932f33d7930d8e15fcdec8337df248e651cf5e3a60d21cd091')
 
 package(){
   cd "$srcdir"
