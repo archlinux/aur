@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="AceProxy allows you to watch Ace Stream live streams or BitTorrent files over HTTP"
 arch=("any")
 url="https://github.com/ValdikSS/aceproxy"
-license=("GPL")
+license=("MIT")
 depends=("acestream-engine" "python2-gevent" "python2-psutil")
 provides=("acestream-proxy")
 source=("https://github.com/ValdikSS/aceproxy/archive/v$pkgver.tar.gz")
@@ -28,4 +28,3 @@ package() {
 
   rm -R "$pkgdir/opt/aceproxy/systemd"
 }
-
