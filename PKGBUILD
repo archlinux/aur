@@ -10,7 +10,7 @@ license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('qt5-connectivity' 'qt5-multimedia' 'pulseaudio' 'gst-libav')
-makedepends=('aasdk-git')
+makedepends=('aasdk-git' 'git')
 source=("$pkgname::git+https://github.com/f1xpl/openauto.git")
 md5sums=('SKIP')
 

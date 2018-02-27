@@ -6,6 +6,7 @@ pkgbase = openauto-git
 	arch = x86_64
 	license = GPL3
 	makedepends = aasdk-git
+	makedepends = git
 	depends = qt5-connectivity
 	depends = qt5-multimedia
 	depends = pulseaudio
