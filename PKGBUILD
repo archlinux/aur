@@ -1,7 +1,7 @@
 # Maintainer: Breizh <breizh@breizh.me>
 pkgname=zest-writer
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An offline editor for Zeste de Savoir"
 arch=('i686' 'x86_64')
 url="https://github.com/firm1/zest-writer"
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/firm1/${pkgname}/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('2997057df1de21accba5677cd051b774')
+md5sums=('dbdb385746f5dd40a0e88ab469166c06')
 validpgpkeys=()
 
 build() {
