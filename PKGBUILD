@@ -2,7 +2,7 @@
 
 _plug=vsrawsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.3.3.17.g9052cb0
+pkgver=0.3.3.22.g42cca26
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/walisser/${_plug}.git")
+source=("git+https://github.com/maki-rxrz/${_plug}.git")
 sha1sums=('SKIP')
 
 pkgver() {
