@@ -1,0 +1,16 @@
+pkgbase = pwpw-card
+	pkgdesc = PKCS#11 driver for PWPW (and CryptoTech) cards, as distributed by LT ADIC
+	pkgver = 2.1.0.r345
+	pkgrel = 1
+	url = http://www.nsc.vrm.lt/
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	depends = gtk3
+	depends = pcsclite
+	optdepends = ccpkip11: the older CryptoTech driver
+	source = http://www.nsc.vrm.lt/files/pwpw_v2_1_0_linux.zip
+	sha256sums = 5e469cebf94b5adfe725016de646127e4ec4e295e35b0c9eeecf32400310aa93
+
+pkgname = pwpw-card
+
