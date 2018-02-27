@@ -2,13 +2,13 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=4.1.1.39.g0598b95
+pkgver=4.5.0.8.gbcd4a95
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 license=('MIT')
-depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss' 'avahi')
+depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss' 'avahi' 'wget')
 makedepends=('nodejs' 'electron' 'npm' 'git' 'gcc' 'libx11')
 optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'desktop-file-utils: Needed to update desktop icon database')
 provides=('gpmdp')
