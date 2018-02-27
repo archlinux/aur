@@ -1,0 +1,10 @@
+[Unit]
+Description=update modules cache for active kernel
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/make-kmod-cache
+ExecRestart=/usr/bin/make-kmod-cache
+
+[Install]
+WantedBy=multi-user.target

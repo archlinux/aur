@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+moddir=/lib/modules/`uname -r`
+[ -d "$moddir" ]
+rm -f /var/cache/kmods/osrelease
+rm -rf /var/cache/kmods
+cp -r -L --preserve=all --reflink=auto "$moddir" /var/cache/kmods
+cp -a /proc/sys/kernel/osrelease /var/cache/kmods/osrelease

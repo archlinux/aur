@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if cmp /proc/sys/kernel/osrelease /var/cache/kmods/osrelease 2>/dev/null; then
+    exec /sbin/modprobe -S "cached" "$@"
+else
+    exec /sbin/modprobe "$@"
+fi
