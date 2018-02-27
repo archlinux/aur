@@ -1,6 +1,6 @@
 pkgbase = winetricks-git
 	pkgdesc = Script to install various redistributable runtime libraries in Wine.
-	pkgver = 20171222.r1.gd30478d
+	pkgver = 20180217.r9.g807ed1f
 	pkgrel = 1
 	url = http://wiki.winehq.org/winetricks
 	arch = any
