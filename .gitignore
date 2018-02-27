@@ -1,3 +1,4 @@
-mat-git-*.log
-mat/
-src/
+/mat-git-*.log
+/mat/
+/PKGBUILD-namcap.log
+/src/

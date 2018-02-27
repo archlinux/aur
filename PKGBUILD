@@ -3,8 +3,8 @@
 
 gitname=mat
 pkgname=${gitname}-git
-pkgver=0.5.4.30.g3cf80e8
-pkgrel=2
+pkgver=0.6.1.8.g8f6303a
+pkgrel=1
 pkgdesc="Metadata anonymisation toolkit (git version)"
 arch=('any')
 url="https://mat.boum.org"
@@ -13,7 +13,7 @@ conflicts=('mat')
 provides=('mat')
 depends=('python2-distutils-extra' 'python2' 'hachoir-core' 'hachoir-parser' 'python2-cairo' 'python2-poppler' 'python2-pdfrw' 'mutagen' 'python2-gobject' 'git')
 optdepends=('perl-image-exiftool: extended image support')
-source=("git+https://git.torproject.org/user/jvoisin/mat.git")
+source=("git+https://0xacab.org/mat/mat.git")
 sha256sums=('SKIP')
 
 pkgver() {
