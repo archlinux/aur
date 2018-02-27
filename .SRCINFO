@@ -1,0 +1,13 @@
+pkgbase = skroll
+	pkgdesc = text scroller
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://git.2f30.org/skroll
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	source = git://git.2f30.org/skroll.git
+	sha512sums = SKIP
+
+pkgname = skroll
+
