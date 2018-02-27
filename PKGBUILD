@@ -26,7 +26,6 @@ conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master"
        "git+https://github.com/Mixer/ftl-sdk.git")
 md5sums=("SKIP" "SKIP")
-options=(!ccache)
 
 pkgver() {
   cd $pkgname
