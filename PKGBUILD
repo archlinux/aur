@@ -1,9 +1,10 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
+_branch=0.16
 ## Build from latest tag
 #_tag=$(git ls-remote -t --refs https://github.com/bitcoin/bitcoin.git | awk '{print $2}' | LC_ALL=C sort -bfV | sed  '/rc[0-9]/d' | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=bitcoin-gui-git
-pkgver=v0.15.1.r16.gcb7ef312ff
+pkgver=v0.16.0.r1.gb0f692f81e
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.15'
+source=("git+https://github.com/bitcoin/bitcoin.git#branch=${_branch}"
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
@@ -33,7 +34,6 @@ build() {
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --without-miniupnpc
-  make -j$(nproc)
   make -j$(nproc) check
 
 }
