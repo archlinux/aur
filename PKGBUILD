@@ -32,8 +32,8 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   OPTFLAGS=$CFLAGS
-  { grep \^flags /proc/cpuinfo | fgrep -qw ssse3 && OPTFLAGS+=" -mssse3 -DARCH_MIN_SSSE3"; } ||
-    { grep \^flags /proc/cpuinfo | fgrep -qw sse2 && OPTFLAGS+=" -msse2 -DARCH_MIN_SSE2"; }
+  { gcc $CFLAGS -dM -E - </dev/null | fgrep -qw __SSSE3__ && OPTFLAGS+=" -DARCH_MIN_SSSE3"; } ||
+    { gcc $CFLAGS -dM -E - </dev/null | fgrep -qw __SSE2__ && OPTFLAGS+=" -DARCH_MIN_SSE2"; }
   export LDFLAGS="$LDFLAGS -Wl,-Bsymbolic"
   make liblazyusf.{a,so} OPTFLAGS="$OPTFLAGS -Irsp_hle/msvc-compat"
 }
