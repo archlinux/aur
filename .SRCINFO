@@ -1,6 +1,6 @@
 pkgbase = bitwarden-git
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = v0.0.16
+	pkgver = v1.0.1.r7.ge6a51b0
 	pkgrel = 1
 	url = https://bitwarden.com
 	install = bitwarden-git.install

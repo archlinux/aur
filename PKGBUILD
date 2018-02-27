@@ -2,8 +2,8 @@
 
 pkgname=bitwarden-git
 _pkgname=desktop
-pkgver=v0.0.16
-_pkgver=0.0.16
+pkgver=v1.0.1.r7.ge6a51b0
+_pkgver=1.0.2
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
