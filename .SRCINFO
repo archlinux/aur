@@ -20,11 +20,13 @@ pkgbase = lazyman
 	source = lazyman.sh
 	source = lazyman.desktop
 	source = lazyman.png
+	source = lazyman.svg
 	md5sums = SKIP
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = b76d76bc5941418f8f3048b941fa8228
 	md5sums = 298ca421d04992c9a9c224dff3a459a3
 	md5sums = 41aebb968e8b6856d1b73cabd6a8c5d2
+	md5sums = 838805914545f8ece3df2115b638252f
 
 pkgname = lazyman
 
