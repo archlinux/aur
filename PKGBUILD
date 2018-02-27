@@ -2,7 +2,7 @@
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman-git
-pkgver=2.3.0.20180222
+pkgver=2.3.0.20180226
 pkgrel=1
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 url="https://github.com/StevensNJD4/LazyMan"
@@ -13,11 +13,13 @@ makedepends=('java-environment>=8' 'apache-ant' 'git')
 backup=('usr/share/java/lazyman/config.properties')
 
 source=('git+https://github.com/StevensNJD4/LazyMan.git'
+        'remove_privileged_actions.patch'
         'config.properties'
         'lazyman.sh'
         'lazyman.desktop'
         'lazyman.png')
 md5sums=('SKIP'
+         '69efa50d0ca27032a1b6b911f7760d7a'
          '401d37812b1a6a9c699a4ec574732148'
          'b76d76bc5941418f8f3048b941fa8228'
          '1b259947cc8e14cd1b0bcad4d05094d9'
@@ -26,6 +28,11 @@ md5sums=('SKIP'
 pkgver() {
     cd "$srcdir/LazyMan"
     cat VERSION
+}
+
+prepare() {
+    cd "$srcdir/LazyMan"
+    patch -Np1 -i "../remove_privileged_actions.patch"
 }
 
 build() {
