@@ -10,6 +10,7 @@ pkgbase = aasdk-git
 	makedepends = boost
 	makedepends = libusb
 	makedepends = openssl
+	makedepends = git
 	provides = aasdk
 	conflicts = aasdk
 	source = aasdk-git::git+https://github.com/f1xpl/aasdk.git

@@ -9,7 +9,7 @@ url="https://github.com/f1xpl/${_pkgname}"
 license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
-makedepends=('cmake' 'protobuf' 'boost' 'libusb' 'openssl')
+makedepends=('cmake' 'protobuf' 'boost' 'libusb' 'openssl' 'git')
 source=("$pkgname::git+https://github.com/f1xpl/aasdk.git")
 md5sums=('SKIP')
 
