@@ -4,7 +4,7 @@
 # Contributor: phi-mah
 
 pkgname=toggldesktop
-pkgver=7.4.122
+pkgver=7.4.107
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://github.com/toggl/toggldesktop"
 license=('BSD')
 depends=('libxss'
          'openssl'
+         'poco'
          'qt5-base'
          'qt5-declarative'
          'qt5-location'
@@ -22,10 +23,12 @@ depends=('libxss'
          'qt5-x11extras')
 makedepends=('readline' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/archive/v${pkgver}.tar.gz"
-        "production.patch")
+        "production.patch"
+        "systemlibs.patch")
 
-sha512sums=('c6bec5cd729cb77a82293b953ae9db82d549f1fd15a2bd940451659e7ef4ef01293e7bccb4d030a1f1ef1749b9e7ed11459e9e68f5cf2b9c1339714301c6791c'
-            '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428')
+sha512sums=('b38e205eb8e2c8f65a1f8e3609b0263b55d84fdb8751346d786ce0657fcb8c4ec04a9a7b6c37300b57c89ef20eadd7bf5b39f3c0c5b9207426087006816cd079'
+            '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428'
+            'e2084ecaf7ba3d3c630597450f5aff6bb65844002f2f7332a01228f0f0f0a2c8dae7b7af5f28063db63c5ce10dcd0b21d92adfb5fd8e25677e94eaa0c578c34d')
 
 conflicts=('toggldesktop-bin' 'toggl-bin')
 
@@ -39,6 +42,10 @@ prepare() {
     # https://github.com/toggl/toggldesktop/wiki/Building-Toggl-Desktop-from-source-for-usage-with-live-servers
     msg2 "production patch"
     patch -p1  < ../production.patch
+
+    # patch to use sytem openssl and poco libs
+    msg2 "systmlibs patch"
+    patch -p1  < ../systemlibs.patch
   )
 
   # make the run script
