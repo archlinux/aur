@@ -1,7 +1,7 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp-git
-pkgver=0.r1575.5e6d583
+pkgver=0.r1615.230d989
 pkgrel=1
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libcxml-git' 'libsndfile' 'openssl' 'libxml++>=2.6' 'xmlsec' 'imagemag
 makedepends=('python2' 'boost>=1.45' 'pkg-config')
 provides=('libdcp=1.4.3devel')
 conflicts=('libdcp')
-source=("libdcp-git::git+https://github.com/cth103/libdcp.git#branch=1.0")
+source=("libdcp-git::git+https://github.com/cth103/libdcp.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {
