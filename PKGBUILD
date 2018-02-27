@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r16.9cbbd7f
+pkgver=r18.0eb7396
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk')
 conflicts=('vulkan-amdvlk')
 makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'git')
-source=('llvm-amdvlk::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-master'
+source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-master'
 	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
@@ -41,8 +41,7 @@ prepare() {
 build() {
   msg "building xgl..."
   cd xgl
-  cmake -H. -Bbuilds/Release64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_MODULE_PATH=$PWD/../pal/cmake/Modules -DXGL_PAL_PATH:PATH=$PWD/../pal \
-        -DCMAKE_C_FLAGS="-DLINUX -D__x86_64__ -D__AMD64__" -DCMAKE_CXX_FLAGS="-DLINUX -D__x86_64__ -D__AMD64__" -DXGL_LLVM_SRC_PATH=$PWD/../llvm-amdvlk
+  cmake -H. -Bbuilds/Release64 -DCMAKE_BUILD_TYPE=Release
   cd builds/Release64
   make
   msg "bulding xgl finished!"
