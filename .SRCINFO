@@ -1,21 +1,21 @@
-pkgbase = libstorj-git
+pkgbase = libstorj
 	pkgdesc = Asynchronous C library and CLI for encrypted file transfer on the Storj network
-	pkgver = v1.0.1.r5.gd5c5393
+	pkgver = v1.0.2
 	pkgrel = 1
 	url = https://github.com/Storj/libstorj
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = libmicrohttpd
 	makedepends = bsdmainutils
-	depends = libcurl-gnutls
+	depends = curl
 	depends = nettle
-	depends = libjson
+	depends = json-c
 	depends = libuv
 	provides = libstorj
 	conflicts = libstorj
-	source = libstorj-git::git+https://github.com/Storj/libstorj.git
-	sha256sums = SKIP
+	source = https://github.com/Storj/libstorj/archive/v1.0.2.tar.gz
+	sha256sums = 1d355f2663fd7701c49a5d696e38e1e9bfb48829fca314c47f043d8e3fa8468e
 
-pkgname = libstorj-git
+pkgname = libstorj
 

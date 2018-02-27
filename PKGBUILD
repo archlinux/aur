@@ -1,27 +1,24 @@
-# Maintainer: Premysl Srubar <premysl.srubar[äT]gmail(.)com>
-pkgname=libstorj-git
-pkgver=v1.0.1.r5.gd5c5393
+# Maintainer: Shai Jo <shaiJo4U[äT]protonmail(.)com>
+# Contributor: Premysl Srubar <premysl.srubar[äT]gmail(.)com>
+pkgname=libstorj
+_pkgver=1.0.2
+pkgver=v${_pkgver}
 pkgrel=1
 pkgdesc="Asynchronous C library and CLI for encrypted file transfer on the Storj network"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Storj/libstorj"
 license=("GPL")
-depends=("libcurl-gnutls" "nettle" "libjson" "libuv")
+depends=("curl" "nettle" "json-c" "libuv")
 makedepends=("git" "libmicrohttpd" "bsdmainutils")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --tags | sed 's/ver_//;s/_/./g;s/-/.r/;s/-/./g'
-}
+source=("https://github.com/Storj/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('1d355f2663fd7701c49a5d696e38e1e9bfb48829fca314c47f043d8e3fa8468e')
 
 
 build() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}-${_pkgver}"
   ./autogen.sh
   ./configure --with-pic --prefix=/usr
   make
@@ -30,17 +27,18 @@ build() {
 
 check() {
   export TMPDIR=/tmp/
-  "$srcdir/${pkgname}"/test/tests
+  "$srcdir/${pkgname}-${_pkgver}"/test/tests
 }
 
+
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}-${_pkgver}"
         make DESTDIR="$pkgdir" install
 }
 
+
 package() {
-  cd "$srcdir/${pkgname}"  
+  cd "$srcdir/${pkgname}-${_pkgver}"
   make DESTDIR="$pkgdir" install
   mv "${pkgdir}"/usr/bin/storj "${pkgdir}"/usr/bin/storj-cli
-  
 }
