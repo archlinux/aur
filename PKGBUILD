@@ -2,8 +2,9 @@
 
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
-pkgver=7.5
-pkgrel=2
+_shortver=7.5
+pkgver=$_shortver.b1001
+pkgrel=1
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
 url="http://www.memtest86.com"
@@ -20,17 +21,17 @@ source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_
 	"systemd-boot.conf"
 	"memtest86-efi-update.hook"
 	"memtest86-efi-remove.hook")
-md5sums=('ad2cc0bd9c7aa830a820f152685c6ccf'
-         '9d970ce33ec9633fc823916faf614b61'
-         '6c096df3f55baf3e27c3bd605a418aa2'
-         '8b4aa0e2f5d769d902459c8f8d514336'
-         '496120c33c2af986933bf33456fa6cf3'
-         'f73ea56bd54ad1b51337046d4ef61a94'
-         '6027c3cc551663a604520a82cdc78b08')
+sha512sums=('200b955147b10c5fc084f3413f710bb4563ae293fad45144a0178cdada92f3043e61f5b9a2534a5a9991ca646e91a31ee54258d8b9c86f98b7d36ff571861c84'
+            '001151346736fc901dac0f5f2b07557b049f2e2cf2a7de0aae7019e7fde126e4e6cf291328dea920d5af45b21b08366b6465b8a8aa453f7af0fd760ced3952aa'
+            '947df5f141bdb00a007a796c74f862d6ca41f74b4e5b28d1a444b4b8e538114e7f404f54420508639a77e554c2477ad324570ada0462c9fd7b058ed51e0ea8d8'
+            'df883042a5bad262e74b69e2ca0cd8c9c21a4e4eb5132aed0041a07050b5ab7f280e94681ffe106e6de547d00b621fd2a019cf5b669e00876a32e637687395f8'
+            '1ece1ca18d53a19eff8341cce0c6099ac6b8d27ebad176c9a85714a7cac24cef7dfa2b462d8a0160dc8eb71f21aca1ee2469ebdf095083dcd77fa0b0f90f1812'
+            '6952376b601b84da5fba14a7a5316d37b6083bae20f68f5b90b22d2728a19bf6d1fb367cf1adecfb82bf03e339b7dbf91f6d23f0d59731f89cf45240f16d5614'
+            '1fe55a642e36005f5b7b58e5fb245e8029bb1a19b5f30d8ddba6bbf5a4b96c1bba35be0dfacee478034b8367fdde62d34a934dcd787f4c6702889615bac9f78a')
 
 prepare() {
 	msg2 "Extract ISO..."
-	bsdtar -xf "Memtest86-$pkgver.iso"
+	bsdtar -xf "Memtest86-$_shortver.iso"
 }
 
 package() {
