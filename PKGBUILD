@@ -1,6 +1,6 @@
 
 pkgname=piwigo
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures."
 arch=(any)
@@ -15,7 +15,7 @@ options=(emptydirs)
 source=('http::http://piwigo.org/download/dlcounter.php?code=latest'
 	'apache.conf'
 	'piwigo.perm.sh')
-md5sums=('8eb7df8d35b5a73d73223eaa9a8509ca'
+md5sums=('fea760ae0c41b25211706f7457dee4ff'
          '5d1da01ee31fa1ad7a2b7e11766ec1f7'
          'a855fa62a5ae3595f3361ae42c3cdf2f')
 
