@@ -1,6 +1,6 @@
 pkgbase = git-extras-git
 	pkgdesc = GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
-	pkgver = 4.4.0.r4.gc59ddb7
+	pkgver = 4.5.0.r1.gebf7903
 	pkgrel = 1
 	url = https://github.com/tj/git-extras
 	arch = any
