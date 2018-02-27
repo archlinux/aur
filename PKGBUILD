@@ -7,11 +7,11 @@ pkgdesc="System and user configuration files, scripts and other files specific t
 arch=(any)
 url="http://f123.org"
 license=('GPL3')
-depends=
+depends=('')
 makedepends=('git')
-provides=
-conflicts=
-options=
+provides=('')
+conflicts=('')
+options=('')
 source=('git+https://github.com/F123/Files-F123Light.git')
 md5sums=('SKIP')
 
