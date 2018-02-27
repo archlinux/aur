@@ -1,0 +1,14 @@
+pkgbase = delta-app
+	pkgdesc = Cryptocurrency portfolio tracker
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://getdelta.io
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	options = !strip
+	source = https://static-assets.getdelta.io/desktop_app/Delta-0.9.2-x86_64.AppImage
+	md5sums = f64186387931dba704f2fbeef74a229d
+
+pkgname = delta-app
+
