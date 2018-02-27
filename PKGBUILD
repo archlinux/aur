@@ -13,6 +13,7 @@ depends=('java-runtime>=8' 'streamlink')
 makedepends=('java-environment>=8' 'apache-ant' 'git')
 optdepends=('vlc: requires a video player - choose one' 'mpv: requires a video player - choose one')
 backup=('usr/share/java/lazyman/config.properties')
+conflicts=('lazyman' 'lazyman-git')
 
 source=('git+https://github.com/StevensNJD4/LazyMan.git#commit=30374572eed67f134cc9b54b4601233fc4b52c7b'
 	'config.properties'

@@ -12,6 +12,8 @@ pkgbase = lazyman
 	depends = streamlink
 	optdepends = vlc: requires a video player - choose one
 	optdepends = mpv: requires a video player - choose one
+	conflicts = lazyman
+	conflicts = lazyman-git
 	backup = usr/share/java/lazyman/config.properties
 	source = git+https://github.com/StevensNJD4/LazyMan.git#commit=30374572eed67f134cc9b54b4601233fc4b52c7b
 	source = config.properties
