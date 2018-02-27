@@ -15,6 +15,7 @@ pkgbase = ungoogled-chromium
 	makedepends = clang
 	makedepends = llvm
 	makedepends = lld
+	makedepends = quilt
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
