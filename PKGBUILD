@@ -1,47 +1,43 @@
- 
+# Maintainer: Prasad Kumar
 pkgname=stremio-beta
-pkgver=3.6.5
+pkgver=4.0.4
 pkgrel=1
-pkgdesc="Watch instantly all the video content you enjoy in one place."
+pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=('x86_64')
-url="https://strem.io"
-depends=('ffmpeg' 'gconf' 'gtk2' 'nss')
+url="https://stremio.com"
 license=('custom')
-install=stremio-beta.install
-source=("http://dl.strem.io/Stremio${pkgver}.linux.tar.gz"
-        "https://strem.io/favicon-32x32.png"
-        "https://strem.io/favicon-96x96.png"
-        "stremio-beta.desktop")
-md5sums=('266a1ee67ea1d98830d6d37fa30abd93'
-         '17a3ae27d06908138317c3a9b8d03898'
-         'e3b38592637449733618d73b45293b09'
-         'a9381ff162484cd8c847eaa364e51e62')
+provides=('stremio-beta')
+makedepends=('sed')
+options=('!strip')
+source=("${pkgname}.appimage::https://dl.strem.io/linux/v${pkgver}/Stremio+${pkgver}.appimage")
+sha512sums=('9c5a6fa70b4a6dbdaab8119085c936bd46a8a63eda397d25126e2e48b798870eef9b8cb432137911092721d7aea06b82ff02d69b41f106dcf54d4d3b3f70268f')
 
 prepare() {
-  sed -i "s#\$(dirname \$0)#/usr/share/stremio-beta#" Stremio.sh
+  chmod +x ${pkgname}.appimage
+  ./${pkgname}.appimage --appimage-extract
+  find ${srcdir}/squashfs-root/ -type d -exec chmod 755 {} \;
 }
 
 package() {
-  install -Dm644 stremio-beta.desktop "$pkgdir/usr/share/applications/stremio-beta.desktop"
-  install -Dm644 favicon-32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/stremio-beta.png"
-  install -Dm644 favicon-96x96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/stremio-beta.png"
+  cd "${srcdir}/squashfs-root/"
+  install -d $pkgdir/{opt/$pkgname,usr/bin}
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/stremio-beta/LICENSE"
-  install -Dm755 Stremio.sh "$pkgdir/usr/bin/stremio-beta"
+  cp -r "lib" "${pkgdir}/opt/${pkgname}/"
+  cp -r "libexec" "${pkgdir}/opt/${pkgname}/"
+  cp -r "plugins" "${pkgdir}/opt/${pkgname}/"
+  cp -r "qml" "${pkgdir}/opt/${pkgname}/"
+  cp -r "resources" "${pkgdir}/opt/${pkgname}/"
+  cp -r "translations" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 node "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 qt.conf "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 server.js "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 start-linux.sh "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 stremio "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 stremio.asar "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 'stremio web.sh' "${pkgdir}/opt/${pkgname}/"
 
-  install -dm755 "$pkgdir/usr/share/stremio-beta"
-
-  install -Dm644 content_shell.pak "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 icudtl.dat "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 libgcrypt.so.11 "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 libnode.so "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 libnotify.so.4 "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 natives_blob.bin "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 snapshot_blob.bin "$pkgdir/usr/share/stremio-beta/"
-  install -Dm755 Stremio-runtime "$pkgdir/usr/share/stremio-beta/"
-  install -Dm644 version "$pkgdir/usr/share/stremio-beta/"
-
-  cp -pr locales "$pkgdir/usr/share/stremio-beta/"
-  cp -pr resources "$pkgdir/usr/share/stremio-beta/"
-  cp -pr WCjs "$pkgdir/usr/share/stremio-beta/"
+  ln -s /opt/${pkgname}/stremio "${pkgdir}"/usr/bin/stremio-beta
+  install -Dm644 stremio.desktop "$pkgdir/usr/share/applications/stremio-beta.desktop"
+  sed -i 's/Name=Stremio/Name=Stremio\ Beta/g; s/Exec=.\/stremio/Exec=stremio-beta/g; s/Icon=stremio/Icon=stremio-beta/g' $pkgdir/usr/share/applications/stremio-beta.desktop
+  install -Dm644 "stremio.png" "$pkgdir/usr/share/icons/stremio-beta.png"
 }
