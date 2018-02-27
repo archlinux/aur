@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta id="bb-bootstrap" data-current-user="{&quot;isKbdShortcutsEnabled&quot;: true, &quot;isSshEnabled&quot;: false, &quot;isAuthenticated&quot;: false}"
+ />
+  
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>
+  danielrangel / rsign   &mdash; Bitbucket
+</title>
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwMGVVZSGwIIUFBQDwU="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>
+  
+
+
+<meta id="bb-canon-url" name="bb-canon-url" content="https://bitbucket.org">
+<meta name="bb-api-canon-url" content="https://api.bitbucket.org">
+
+
+<meta name="bb-commit-hash" content="0a57154758e8">
+<meta name="bb-app-node" content="app-167">
+<meta name="bb-view-name" content="bitbucket.apps.repo2.views.landing">
+<meta name="ignore-whitespace" content="False">
+<meta name="tab-size" content="None">
+<meta name="locale" content="en">
+
+<meta name="application-name" content="Bitbucket">
+<meta name="apple-mobile-web-app-title" content="Bitbucket">
+
+
+<meta name="theme-color" content="#0049B0">
+<meta name="msapplication-TileColor" content="#0052CC">
+<meta name="msapplication-TileImage" content="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/logos/bitbucket/mstile-150x150.png">
+<link rel="apple-touch-icon" sizes="180x180" type="image/png" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/logos/bitbucket/apple-touch-icon.png">
+<link rel="icon" sizes="192x192" type="image/png" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/logos/bitbucket/android-chrome-192x192.png">
+
+<link rel="icon" sizes="16x16 24x24 32x32 64x64" type="image/x-icon" href="/favicon.ico?v=2">
+<link rel="mask-icon" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/logos/bitbucket/safari-pinned-tab.svg" color="#0052CC">
+
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Bitbucket">
+
+  <meta name="description" content="
+  
+    Rsign is a dead simple clone of minisign, used to sign files and verify signatures.
+  
+">
+  
+  
+    
+  
+
+
+
+  <link rel="stylesheet" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/css/entry/vendor.css" />
+<link rel="stylesheet" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/css/entry/app.css" />
+
+
+
+  <link rel="stylesheet" href="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/css/entry/adg3.css">
+  
+  <script nonce="k3jXXGSHAtpEBbIF">
+  window.__sentry__ = {"dsn": "https://ea49358f525d4019945839a3d7a8292a@sentry.io/159509", "release": "0a57154758e8 (production)", "tags": {"project": "bitbucket-core"}, "environment": "production"};
+</script>
+<script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/dist/webpack/sentry.js" nonce="k3jXXGSHAtpEBbIF"></script>
+  <script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/dist/webpack/early.js" nonce="k3jXXGSHAtpEBbIF"></script>
+  
+  
+  
+  
+    <link href="/danielrangel/rsign/rss" rel="alternate nofollow" type="application/rss+xml" title="RSS feed for rsign" />
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@bitbucket"/>
+  <meta name="og:type" content="bitbucket:gitrepository"/>
+  <meta name="og:title" content="danielrangel / rsign"/>
+  <meta name="og:url" content="https://bitbucket.org/danielrangel/rsign"/>
+  
+    <meta name="og:description" content="Rsign is a dead simple clone of minisign, used to sign files and verify signatures."/>
+  
+  
+    <meta name="og:image" content="https://bitbucket.org/danielrangel/rsign/avatar/xxxlarge/?ts=1510850530"/>
+
+</head>
+<body class="production adg3  "
+    data-static-url="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/"
+data-base-url="https://bitbucket.org"
+data-no-avatar-image="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg"
+data-current-user="{&quot;isKbdShortcutsEnabled&quot;: true, &quot;isSshEnabled&quot;: false, &quot;isAuthenticated&quot;: false}"
+data-atlassian-id="{&quot;loginStatusUrl&quot;: &quot;https://id.atlassian.com/profile/rest/profile&quot;}"
+data-settings="{&quot;MENTIONS_MIN_QUERY_LENGTH&quot;: 3}"
+
+data-current-repo="{&quot;scm&quot;: &quot;git&quot;, &quot;readOnly&quot;: false, &quot;mainbranch&quot;: {&quot;name&quot;: &quot;master&quot;}, &quot;uuid&quot;: &quot;ea70ef44-8702-4e7b-b533-ceaad187ad8a&quot;, &quot;language&quot;: &quot;rust&quot;, &quot;owner&quot;: {&quot;username&quot;: &quot;danielrangel&quot;, &quot;uuid&quot;: &quot;5e181d75-7367-4e13-a48a-2d5375f4bf28&quot;, &quot;isTeam&quot;: false}, &quot;fullslug&quot;: &quot;danielrangel/rsign&quot;, &quot;slug&quot;: &quot;rsign&quot;, &quot;id&quot;: 27749568, &quot;pygmentsLanguage&quot;: &quot;rust&quot;}"
+
+
+
+
+
+
+
+data-browser-monitoring="true"
+data-switch-create-pullrequest-commit-status="true"
+
+
+
+
+>
+<div id="page">
+  
+    <div id="adg3-navigation"
+  
+  
+  
+  >
+  <nav class="skeleton-nav">
+    <div class="skeleton-nav--left">
+      <div class="skeleton-nav--left-top">
+        <ul class="skeleton-nav--items">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li class="skeleton--icon"></li>
+          <li class="skeleton--icon-sub"></li>
+          <li class="skeleton--icon-sub"></li>
+          <li class="skeleton--icon-sub"></li>
+          <li class="skeleton--icon-sub"></li>
+          <li class="skeleton--icon-sub"></li>
+          <li class="skeleton--icon-sub"></li>
+        </ul>
+      </div>
+      <div class="skeleton-nav--left-bottom">
+        <div class="skeleton-nav--left-bottom-wrapper">
+          <div class="skeleton-nav--item-help"></div>
+          <div class="skeleton-nav--item-profile"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skeleton-nav--right">
+      <ul class="skeleton-nav--items-wide">
+        <li class="skeleton--icon-logo-container">
+          <div class="skeleton--icon-container"></div>
+          <div class="skeleton--icon-description"></div>
+          <div class="skeleton--icon-logo"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+        <li>
+          <div class="skeleton--icon-small"></div>
+          <div class="skeleton-nav--item-wide-content"></div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+    <div id="wrapper">
+      
+  
+
+
+      
+  <div id="nps-survey-container"></div>
+
+ 
+
+      
+  
+
+<div id="account-warning" data-module="header/account-warning"
+  data-unconfirmed-addresses="false"
+  data-no-addresses="false"
+  
+></div>
+
+
+
+      
+  
+<header id="aui-message-bar">
+  
+</header>
+
+
+      <div id="content" role="main">
+
+        
+          <header class="app-header">
+            <div class="app-header--primary">
+              
+                <div class="app-header--context">
+                  <div class="app-header--breadcrumbs">
+                    
+  <ol class="aui-nav aui-nav-breadcrumbs">
+    <li>
+  <a href="/danielrangel/">Daniel Rangel</a>
+</li>
+
+<li>
+  <a href="/danielrangel/rsign">rsign</a>
+</li>
+    
+  </ol>
+
+                  </div>
+                  <h1 class="app-header--heading">
+                    Overview
+                  </h1>
+                </div>
+              
+            </div>
+
+            <div class="app-header--secondary">
+              
+                
+              
+            </div>
+          </header>
+        
+
+        
+        
+  <div class="aui-page-panel ">
+    <div class="hidden">
+  
+  
+  </div>
+    <div class="aui-page-panel-inner">
+
+      <div
+        id="repo-content"
+        class="aui-page-panel-content forks-enabled"
+        data-module="repo/index"
+        
+      >
+        
+  
+
+        
+  <div id="repo-overview"
+      data-module="repo/overview/index"
+      data-admin-url="/danielrangel/rsign/admin/hipchat-integration">
+  
+  
+    <div class="repository-overview-main">
+      <div class="page-actions--primary">
+        <div class="aui-buttons" id="repo-clone-sourcetree">
+  <button class="aui-button" id="repo-clone-sourcetree-trigger"
+    data-module="repo/overview/sourcetree-dialog"
+    title="Clone in Sourcetree">
+    <span class="aui-icon aui-icon-small aui-iconfont-devtools-clone">Clone in Sourcetree</span>
+  </button>
+</div>
+<div id="repo-clone-sourcetree-dialog" class="hidden">
+  
+  <div class="sourcetree-callout clone-in-sourcetree"
+  data-module="components/clone/clone-in-sourcetree"
+  data-https-url="https://bitbucket.org/danielrangel/rsign.git"
+  data-ssh-url="git@bitbucket.org:danielrangel/rsign.git">
+
+  <div>
+    <button class="aui-button aui-button-primary">
+      
+        Clone in Sourcetree
+      
+    </button>
+  </div>
+
+  <p class="windows-text">
+    
+      <a href="http://www.sourcetreeapp.com/?utm_source=internal&amp;utm_medium=link&amp;utm_campaign=clone_repo_win" target="_blank">Atlassian Sourcetree</a>
+      is a free Git and Mercurial client for Windows.
+    
+  </p>
+  <p class="mac-text">
+    
+      <a href="http://www.sourcetreeapp.com/?utm_source=internal&amp;utm_medium=link&amp;utm_campaign=clone_repo_mac" target="_blank">Atlassian Sourcetree</a>
+      is a free Git and Mercurial client for Mac.
+    
+  </p>
+</div>
+</div>
+        
+
+
+
+
+
+  
+
+<div class="clone-url" data-module="components/clone/url-dropdown" data-owner="5e181d75-7367-4e13-a48a-2d5375f4bf28"
+     data-location-context="overview"
+     data-fetch-url="https://bitbucket.org/danielrangel/rsign.git"
+     data-push-url="https://bitbucket.org/danielrangel/rsign.git"
+     
+      data-preselect-preferred-upstream="true"
+      data-urlonly="true"
+     >
+  <div class="aui-buttons">
+    
+    <button class="aui-button aui-dropdown2-trigger protocol-trigger"
+            data-command-prefix="git clone"
+            data-primary-https="https://bitbucket.org/danielrangel/rsign.git"
+            data-primary-ssh="git@bitbucket.org:danielrangel/rsign.git"
+            aria-controls="protocols-list-overview">
+      <span class="dropdown-text">HTTPS</span>
+    </button>
+    <aui-dropdown-menu id="protocols-list-overview" data-aui-alignment="bottom left">
+      <aui-section id="protocols-list-section" class="aui-list-truncate">
+        <aui-item-radio class="item-link https" checked>HTTPS</aui-item-radio>
+        <aui-item-radio class="item-link ssh">SSH</aui-item-radio>
+      </aui-section>
+    </aui-dropdown-menu>
+    <input type="text" readonly="readonly" class="clone-url-input"
+           value="https://bitbucket.org/danielrangel/rsign.git">
+  </div>
+  
+</div>
+
+      </div>
+
+      <div class="repo-info">
+        <div id="repo-metadata" class="repo-metadata">
+          <div class="metadata-labels-column">
+            <div class="metadata-label">
+              Last updated
+            </div>
+            
+            
+            
+              <div class="metadata-label">
+                Language
+              </div>
+            
+            <div class="metadata-label">
+              Access level
+            </div>
+          </div>
+
+          <div class="metadata-contents-column">
+            <div class="metadata-content">
+              
+              <time datetime="2017-11-16T16:42:10.282693">2017-11-16</time>
+            </div>
+            
+            
+            
+              <div class="metadata-content">
+                Rust
+              </div>
+            
+            <div class="metadata-content">
+              
+              
+              
+                <span title="You have read access">Read</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="repo-stats" id="repo-stats" data-module="repo/overview/repo-stats" >
+          
+          
+          
+          
+          
+    
+    
+  
+          
+    
+    
+  
+
+          <div class="repo-stats-column">
+            <div class="repo-stats-item">
+              <a id ="pull-requests-repo-stats"
+                 href="/danielrangel/rsign/pull-requests/"
+                 title="View open pull requests for this repository">
+                <div class="stat-value">0</div>
+                <div class="stat-label">
+                  
+                    Open PRs
+                  
+                </div>
+              </a>
+            </div>
+            <hr>
+            <div class="repo-stats-item">
+              <a id="branches-repo-stats"
+                 href="/danielrangel/rsign/branches/"
+                 title="View branches for this repository">
+                <div class="stat-value">4</div>
+                <div class="stat-label">
+                  
+                    Branches
+                  
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="repo-stats-column">
+            <div class="repo-stats-item">
+              <a href="#followers" id="followers-dialog-trigger"
+                data-module="repo/overview/followers-dialog"
+                title="View watchers of this repository"
+                data-url="/api/1.0/repositories/danielrangel/rsign/followers"
+                data-template="watchers-overview-template">
+                <div class="stat-value">1</div>
+                <div class="stat-label">
+                  
+                    Watcher
+                  
+                </div>
+              </a>
+            </div>
+            <hr>
+            <div class="repo-stats-item">
+              <a href="#forks" id="forks-dialog-trigger"
+                data-module="repo/overview/filterable-list-dialog"
+                title="View forks of this repository"
+                data-url="/api/1.0/repositories/danielrangel/rsign/forks"
+                data-template="forks-overview-template">
+                <div class="stat-value">1</div>
+                <div class="stat-label">
+                  
+                    Fork
+                  
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+        
+          <section id="overview-panel-4qe9y" class="repo-overview-web-panel">
+            
+<div class="ap-container"
+     id="ap-namespace"
+     data-source="https://bitbucket-pipelines.prod.public.atl-paas.net/repoOverviewWebPanel.html?displayName=Daniel+Rangel&amp;repoUuid=%7Bea70ef44-8702-4e7b-b533-ceaad187ad8a%7D&amp;accountUuid=%7B5e181d75-7367-4e13-a48a-2d5375f4bf28%7D&amp;xdm_c=channel-7b17d826-54ee-40a6-9115-33026b3a9fe3&amp;xdm_e=https%3A%2F%2Fbitbucket.org&amp;crev=0a57154758e8&amp;addonKey=pipelines&amp;environment=%2F2.0&amp;repoPath=danielrangel%2Frsign&amp;userUuid=&amp;jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25uZWN0aW9uOjE1ODU5NjkiLCJpYXQiOjE1MTk3MzQwODEsInFzaCI6ImNmMzY0MzdkMzZjOWQxNzgwYTg3MDMyZWI2OTQ0MTE2ZGU5M2E4ZGU0NWNjOTJiYzBjMzc2OTU3MTZmY2Q1OWIiLCJhdWQiOiJjb25uZWN0aW9uOjE1ODU5NjkiLCJleHAiOjE1MTk3Mzc2ODF9.wA-F_hoHN-0N_AL5ZzBiwkyijzUhOgKhJOgD7Oz_d40" data-key="pipelines"
+     data-name="Pipelines"
+     data-module-key="repoOverviewBuildStatus"
+     data-width="" data-height=""
+     data-dlg="false" data-general="true"
+     data-enc-context="gAAAAABalU1BP_Trpu2s2x2grEKzB9e4AEI1ZHvkaLM_al18-_tIe1zNoXXDRG6j28KpgspyUM7pAYcDcgotFNjYmx5mo0bYFN2-tvx_l6PHbEvR_o4P0ctnSvAFhTLG0kYZwJDY6f06MYgq5aQOp0CLKeMhMvYGnZ1JZe96YIpSgbNZE2GNXNlotJuYDaLPAQgXTXRLyqjdHRgqDkcJGLKjEvi-9F0b2ToNQMFz9X-oBfzQ9cwzIyHLREPJ-JXXPRveH9RjYmKrxLqx9-kScnZTcbeDl3VcEPmJasSrto98X6hAvevQqDicTdpKzkfkf1zNaob1oo20Fg2K9IhTSy81OMaoihb_KSk6Gs-951tcyQ0Q4tvwI-k_eQ_StoDAAiniZx3xc9F7rOFUvS4rxOms0l1zkM94ywGJ_XjT8Dv19wZN0Y0vyvA2K7vK8sY8Uwa_WikFhxXziHT2DPgvW6CM6b0VwDLtZ3wk9GhgZV1Jhm_NvdkLVSGT2M4SI5Gcm1pO9JSg3k70bAG0sUkh3Tkx2e9tIqoFHPnCUlFF1GmbABV3zWRwv5w5luSlkAD8gM58ju7wcUnQu_OS4LR0ubdyWjyTmBGZtg8IpHL9Bb_p4KFAuJ7LHB_xI8bHDWcyzI86Gp78zbJQCigUSPDjN_vJDIfNYvdiRsylyhfv669-Nb0Oed2SwAkLAtSk5RPucWYP1SnOy8_sb1bv23PsKZWfqNNOBOxnAXIhrzYXaOWvRLqXv5GAh6JGLKXgTVkRSuBPhu8dj7PpJxnIZuT8akDQ9segRvtHKb9YFN7uoKASNV0_IXdrnuYQDWOcFx3-NrWd8mNE9xLnGaaW9XBRxGXz9GOSViqpOZTfZOOnTacTqNCcYsOZ5jN4jRZH4H4cxUN22nTgcp9k94BzM4FODbMyk9eMbZdEt5Ru7KLFiGmYyGSJOoNMDZRjg1yGbiZqoLO0hKHzmP07RtMMIsU8C88CLljv72MqDw=="
+     
+         data-proxy-base-api-url="https://api.bitbucket.io/addons/pipelines/danielrangel/"
+     
+     >
+  <div class="ap-content" id="embedded-namespace"></div>
+  <div class="ap-stats hidden">
+    <div class="ap-loading ap-status hidden">
+      <small>
+        <div class="small-spinner"></div>
+        <div class="description">
+          
+            Loading add-on <a href="https://bitbucket-pipelines.prod.public.atl-paas.net" class="ap-doc-url" target="_blank">Pipelines</a>.
+          
+        </div>
+      </small>
+    </div>
+    <div class="ap-load-timeout ap-status hidden">
+      <small>
+        <div class="small-spinner"></div>
+        <div class="description">
+          
+            Add-on <a href="https://bitbucket-pipelines.prod.public.atl-paas.net" class="ap-doc-url" target="_blank">Pipelines</a> is not responding.
+            Wait or <a href="#" class="ap-btn-cancel">cancel</a>?
+          
+        </div>
+      </small>
+    </div>
+    <div class="ap-load-error ap-status hidden">
+      <small>
+        <div class="description">
+          
+            Add-on <a href="https://bitbucket-pipelines.prod.public.atl-paas.net" class="ap-doc-url" target="_blank">Pipelines</a> failed to load.
+          
+        </div>
+      </small>
+    </div>
+  </div>
+</div>
+
+          </section>
+        
+      
+      
+        <div id="readme" class="maskable">
+          
+            
+            
+              <div class="readme file wiki-content" >
+                
+                <h1 id="markdown-header-rsign">rsign</h1>
+<h2 id="markdown-header-disclaimer-this-is-a-toy-this-has-not-undergone-any-formal-security-analysis-i-am-not-a-security-expert-use-at-your-own-risk"><strong><em>DISCLAIMER:</em></strong> This is a toy. This has not undergone any formal security analysis. I am not a security expert. Use at your own risk</h2>
+<p><a href="https://app.codeship.com/projects/244452" rel="nofollow"> <img alt="Codeship Status for danielrangel/rsign" src="https://app.codeship.com/projects/60b28d80-7645-0135-4402-1639b58199d0/status?branch=master" /></a>
+<a href="https://opensource.org/licenses/MIT" rel="nofollow"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a></p>
+<p>A simple rust implementation of <a href="https://jedisct1.github.io/minisign/" rel="nofollow">Minisign</a> tool. All signatures produced by rsign can be verified with minisign including trusted comments. Minisign is also able to sign files with keys generated by rsign.</p>
+<p>It uses an <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" rel="nofollow">asymmetric encryption</a> system <a href="https://ed25519.cr.yp.to/" rel="nofollow">(Ed25519)</a> to produce a pair of keys used to sign and verify the files. It also uses a particular combination of <a href="https://dnaq.github.io/sodiumoxide/sodiumoxide/crypto/pwhash/scryptsalsa208sha256/index.html" rel="nofollow">Scrypt, Salsa20 / 8 and SHA-256</a> as key derivation function <a href="https://en.wikipedia.org/wiki/Key_derivation_function" rel="nofollow">(KDF)</a> to encrypt and decrypt the keys. </p>
+<p><a href="https://blake2.net/" rel="nofollow">BLAKE2b</a> is used to confirm the integrity of the secret key as well to create a unique identifier for files larger than 1Gb.</p>
+<ul>
+<li>
+<p><a href="https://download.libsodium.org/doc/public-key_cryptography/public-key_signatures.html" rel="nofollow">Ed25519</a></p>
+</li>
+<li>
+<p><a href="https://download.libsodium.org/doc/hashing/generic_hashing.html" rel="nofollow">Generic Hashing</a></p>
+</li>
+<li>
+<p><a href="https://download.libsodium.org/doc/password_hashing/" rel="nofollow">Scrypt</a></p>
+</li>
+</ul>
+<p>Tarballs and pre-compiled binaries can be found <a href="https://bitbucket.org/danielrangel/rsign/downloads/" rel="nofollow">here</a></p>
+<h2 id="markdown-header-compilation-installation">Compilation / Installation</h2>
+<p>Dependencies:
+* <a href="http://doc.libsodium.org/" rel="nofollow">libsodium</a></p>
+<p>Make sure you have libsodium in your default lib path before compiling rsign.</p>
+<p>Compilation:</p>
+<div class="codehilite"><pre><span></span>$ git clone https://danielrangel@bitbucket.org/danielrangel/rsign.git
+$ <span class="nb">cd</span> rsign
+$ cargo build --release
+</pre></div>
+
+
+<h2 id="markdown-header-usage">Usage</h2>
+<div class="codehilite"><pre><span></span>$ rsign generate
+</pre></div>
+
+
+<p>Generates a new key pair. The public key is printed in the screen and stored in <code>rsign.pub</code> by default. The secret key will be written at <code>~/.rsign/rsign.key</code>. You can change the default paths with <code>-p</code> and <code>-s</code> respectively. </p>
+<div class="codehilite"><pre><span></span>$ rsign sign myfile.txt
+</pre></div>
+
+
+<p>Sign <code>myfile.txt</code> with your secret key. You can add a signed trusted comment with:</p>
+<div class="codehilite"><pre><span></span>$ rsign sign myfile.txt -t <span class="s2">&quot;my trusted comment&quot;</span>
+</pre></div>
+
+
+<p>If you are signing files larger than 1Gb you must use <code>-H</code> to first hash the file and sign the hash after that:</p>
+<div class="codehilite"><pre><span></span>$ rsign sign mylargefile.bin -H
+</pre></div>
+
+
+<p>And to verify the signature with a given public key you can use:</p>
+<div class="codehilite"><pre><span></span>$ rsign verify myfile.txt -p rsign.pub
+</pre></div>
+
+
+<p>Or if you have saved the signature file with a custom name other than <code>myfile.txt.rsign</code> and want to use a public key string you can use:</p>
+<div class="codehilite"><pre><span></span>$ rsign verify myfile.txt -P <span class="o">[</span>PUBLIC KEY STRING<span class="o">]</span> -x mysignature.file
+</pre></div>
+
+
+<p>You can find more information using the help subcommand as in:</p>
+<div class="codehilite"><pre><span></span>$ rsign <span class="nb">help</span> <span class="o">[</span>SUBCOMMAND<span class="o">]</span>
+
+USAGE:
+    rsign <span class="o">[</span>SUBCOMMAND<span class="o">]</span>
+
+FLAGS:
+    -h, --help       Prints <span class="nb">help</span> information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    generate    Generate public and private keys
+    <span class="nb">help</span>        Prints this message or the <span class="nb">help</span> of the given subcommand<span class="o">(</span>s<span class="o">)</span>
+    sign        Sign a file with a given private key
+    verify      Verify a signed file with a given public key
+</pre></div>
+              </div>
+            
+          
+        </div>
+    </div>
+
+    <div class="sidebar">
+      
+      
+        
+        
+      
+      
+      
+        
+      
+
+      <section id="repo-activity" class="activity">
+        <h2>
+          Recent activity
+          
+          <a href="/danielrangel/rsign/rss"
+            title="Subscribe to activity updates for this repository"
+            class="subscribe">
+            <span class="aui-icon aui-icon-small aui-iconfont-rss rss-icon"></span>
+          </a>
+        </h2>
+        
+          
+  <div class="newsfeed">
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/8a9d852dfdc1bc4db99897918483f6e8da2de5a3">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/8a9d852dfdc1bc4db99897918483f6e8da2de5a3" class="changeset-hash">8a9d852</a>
+          
+            v0.1.2
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-10-05T12:53:42+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/b4bc172513fb8bfb6a11d86bb7a032702351cc1b">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/b4bc172513fb8bfb6a11d86bb7a032702351cc1b" class="changeset-hash">b4bc172</a>
+          
+            fixing test issues
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-10-05T12:50:19+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/ed24e098987630f7769eed9d734e8ebc4450d892">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/ed24e098987630f7769eed9d734e8ebc4450d892" class="changeset-hash">ed24e09</a>
+          
+            refactoring project files
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-27T19:54:31+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/all">2 commits</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/34e8b8762a44e1d342815c2388ef66cebfb88a41" class="changeset-hash">34e8b87</a>
+          
+            moved generate, sign and verify functions to librs
+          
+        
+      </div>
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/7f5b60de64afcc47ccbbe98e77c6ecd59d110170" class="changeset-hash">7f5b60d</a>
+          
+            minor stetic changes
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-17T23:38:33+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/9c8ccd2bdee8a292cc3345ebc14a9d4822506af4">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/9c8ccd2bdee8a292cc3345ebc14a9d4822506af4" class="changeset-hash">9c8ccd2</a>
+          
+            On branch v0.1.1
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-16T20:23:12+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item cset_like" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+    <a href="/danielrangel/rsign/commits/aea9804fc9b30e5a11674ef7d40379e6#comment-None" class="changeset-hash">aea9804</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Changeset <span class="changeset-hash">aea9804</span> approved in 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-13T22:30:52+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/aea9804fc9b30e5a11674ef7d40379e6f11a5fb6">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/aea9804fc9b30e5a11674ef7d40379e6f11a5fb6" class="changeset-hash">aea9804</a>
+          
+            bitbucket-pipelines.yml edited online with Bitbucket
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-13T17:18:58+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/2110fd05c508bdc827549097eed4a5cbd376019b">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/2110fd05c508bdc827549097eed4a5cbd376019b" class="changeset-hash">2110fd0</a>
+          
+            bitbucket-pipelines.yml edited online with Bitbucket
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-13T17:13:23+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/990943048c90a22113e41c8a89e24b325eb073f7">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/990943048c90a22113e41c8a89e24b325eb073f7" class="changeset-hash">9909430</a>
+          
+            Dockerfile
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-13T10:03:54+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/ea57d047724387ddbd67712519cbfba5d1661f44">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/ea57d047724387ddbd67712519cbfba5d1661f44" class="changeset-hash">ea57d04</a>
+          
+            Initial Bitbucket Pipelines configuration
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-11T23:38:46+00:00"></time>
+  </div>
+</article>
+      
+    
+      
+        
+
+<article class="news-item pushed" data-author="danielrangel">
+  
+    <a href="/danielrangel/">
+      <div class="aui-avatar aui-avatar-small">
+          <div class="aui-avatar-inner">
+            <img alt="Daniel Rangel" src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/img/default_avatar/user_blue.svg" class="deferred-image" data-src-url="https://bitbucket.org/account/danielrangel/avatar/48/?ts=1517964475" data-src-url-2x="https://bitbucket.org/account/danielrangel/avatar/96/?ts=1517964475">
+          </div>
+      </div>
+    </a>
+  
+
+  <div class="news-item-title">
+    
+  
+  
+  
+    <a href="/danielrangel/rsign/commits/77ee8b80e27c152beebcf8612d5f91491b28c934">1 commit</a>
+  
+
+  </div>
+  <div class="news-item-description">
+    
+  Pushed to 
+    
+    <a href="/danielrangel/rsign" title="danielrangel/rsign">
+      danielrangel/rsign
+    </a>
+  
+
+  </div>
+  
+  <div class="changesets">
+    
+      <div class="changeset">
+        
+          <a href="/danielrangel/rsign/commits/77ee8b80e27c152beebcf8612d5f91491b28c934" class="changeset-hash">77ee8b8</a>
+          
+            README.md edited online with Bitbucket
+          
+        
+      </div>
+    
+    
+  </div>
+
+  <div class="news-item-info">
+    
+    
+  
+
+  
+    <a href="/danielrangel/">Daniel Rangel</a>
+  
+    &middot;
+    <time datetime="2017-09-11T21:09:50+00:00"></time>
+  </div>
+</article>
+      
+    
+  </div>
+
+        
+      </section>
+    </div>
+  </div>
+
+  
+
+
+  
+
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  
+</div>
+
+<div id="adg3-dialog"></div>
+
+
+  
+
+<div data-module="components/mentions/index">
+  
+    
+    
+  
+  
+    
+    
+  
+  
+    
+    
+  
+</div>
+<div data-module="components/typeahead/emoji/index">
+  
+    
+    
+  
+</div>
+
+<div data-module="components/repo-typeahead/index">
+  
+    
+    
+  
+</div>
+
+    
+    
+  
+
+    
+    
+  
+
+    
+    
+  
+
+    
+    
+  
+
+
+  <aui-inline-dialog
+    id="help-menu-dialog"
+    data-aui-alignment="bottom right"
+
+    
+    data-aui-alignment-static="true"
+    data-module="header/help-menu"
+    responds-to="toggle"
+    aria-hidden="true">
+
+  <div id="help-menu-section">
+    <h1 class="help-menu-heading">Help</h1>
+
+    <form id="help-menu-search-form" class="aui" target="_blank" method="get"
+        action="https://support.atlassian.com/customer/search">
+      <span id="help-menu-search-icon" class="aui-icon aui-icon-large aui-iconfont-search"></span>
+      <input id="help-menu-search-form-input" name="q" class="text" type="text" placeholder="Ask a question">
+    </form>
+
+    <ul id="help-menu-links">
+      <li>
+        <a class="support-ga" data-support-gaq-page="DocumentationHome"
+            href="https://confluence.atlassian.com/x/bgozDQ" target="_blank">
+          Online help
+        </a>
+      </li>
+      <li>
+        <a class="support-ga" data-support-gaq-page="GitTutorials"
+            href="https://www.atlassian.com/git?utm_source=bitbucket&amp;utm_medium=link&amp;utm_campaign=help_dropdown&amp;utm_content=learn_git"
+            target="_blank">
+          Learn Git
+        </a>
+      </li>
+      <li>
+        <a id="keyboard-shortcuts-link"
+           href="#">Keyboard shortcuts</a>
+      </li>
+      <li>
+        <a class="support-ga" data-support-gaq-page="DocumentationTutorials"
+            href="https://confluence.atlassian.com/x/Q4sFLQ" target="_blank">
+          Bitbucket tutorials
+        </a>
+      </li>
+      <li>
+        <a class="support-ga" data-support-gaq-page="SiteStatus"
+            href="https://status.bitbucket.org/" target="_blank">
+          Site status
+        </a>
+      </li>
+      <li>
+        <a class="support-ga" data-support-gaq-page="Home"
+            href="https://support.atlassian.com/bitbucket-cloud/" target="_blank">
+          Support
+        </a>
+      </li>
+    </ul>
+  </div>
+</aui-inline-dialog>
+  
+
+
+
+
+
+  
+
+  <div class="_mustache-templates">
+    
+      <script id="forks-overview-template" type="text/html">
+        
+
+<div class="tabbed-filter-widget repo-stats-dialog forks" id="forks-dialog">
+    <div class="tabbed-filter">
+      <input placeholder="Filter forks" class="filter-box" autosave="fork-dropdown-27749568" type="text">
+    </div>
+    <div class="tab-pane active-pane forks" id="fork-list">
+    <ol class="filter-list[[^forks]] empty[[/forks]]">
+      <li class="empty-msg">No matching forks</li>
+      [[#forks]]
+        <li class="comprev filter-item">
+          <a href="/[[owner.username]]/[[slug]]" 
+             class="filter-item-link" title="[[owner.username]]/[[slug]]">[[owner.username]]/[[slug]]</a>
+          <a rel="nofollow" class="compare"
+             href="/danielrangel/rsign/branches/compare/[[owner.username]]/[[slug]].."
+             title="Show changes between [[owner.username]]/[[slug]] and this repository.">Compare</a>
+        </li>
+      [[/forks]]
+    </ol>
+  </div>
+</div>
+
+      </script>
+    
+      <script id="watchers-overview-template" type="text/html">
+        
+
+<div class="followers-dialog repo-stats-dialog" id="followers-dialog">
+  <div id="followers-list" class="followers-list">
+    <ol[[^followers]] class="empty"[[/followers]]>
+      <li class="empty-msg">No watchers yet</li>
+      [[#followers]]
+        <li>
+          <a href="/[[username]]/" title="[[display_name]]">
+            <span class="aui-avatar aui-avatar-medium">
+              <span class="aui-avatar-inner">
+                <img src="[[avatar]]">
+              </span>
+            </span>
+          </a>
+        </li>
+      [[/followers]]
+    </ol>
+  </div>
+</div>
+
+      </script>
+    
+      <script id="mention-result" type="text/html">
+        
+<span class="mention-result">
+  <span class="aui-avatar aui-avatar-small mention-result--avatar">
+    <span class="aui-avatar-inner">
+      <img src="[[avatar_url]]">
+    </span>
+  </span>
+  [[#display_name]]
+    <span class="display-name mention-result--display-name">[[&display_name]]</span> <small class="username mention-result--username">[[&username]]</small>
+  [[/display_name]]
+  [[^display_name]]
+    <span class="username mention-result--username">[[&username]]</span>
+  [[/display_name]]
+  [[#is_teammate]][[^is_team]]
+    <span class="aui-lozenge aui-lozenge-complete aui-lozenge-subtle mention-result--lozenge">teammate</span>
+  [[/is_team]][[/is_teammate]]
+</span>
+      </script>
+    
+      <script id="mention-call-to-action" type="text/html">
+        
+[[^query]]
+<li class="bb-typeahead-item">Begin typing to search for a user</li>
+[[/query]]
+[[#query]]
+<li class="bb-typeahead-item">Continue typing to search for a user</li>
+[[/query]]
+
+      </script>
+    
+      <script id="mention-no-results" type="text/html">
+        
+[[^searching]]
+<li class="bb-typeahead-item">Found no matching users for <em>[[query]]</em>.</li>
+[[/searching]]
+[[#searching]]
+<li class="bb-typeahead-item bb-typeahead-searching">Searching for <em>[[query]]</em>.</li>
+[[/searching]]
+
+      </script>
+    
+      <script id="emoji-result" type="text/html">
+        
+<span class="emoji-result">
+  <span class="emoji-result--avatar">
+    <img class="emoji" src="[[src]]">
+  </span>
+  <span class="name emoji-result--name">[[&name]]</span>
+</span>
+
+      </script>
+    
+      <script id="repo-typeahead-result" type="text/html">
+        <span class="aui-avatar aui-avatar-project aui-avatar-xsmall">
+  <span class="aui-avatar-inner">
+    <img src="[[avatar]]">
+  </span>
+</span>
+<span class="owner">[[&owner]]</span>/<span class="slug">[[&slug]]</span>
+
+      </script>
+    
+      <script id="share-form-template" type="text/html">
+        
+
+<div class="error aui-message hidden">
+  <span class="aui-icon icon-error"></span>
+  <div class="message"></div>
+</div>
+<form class="aui">
+  <table class="widget bb-list aui">
+    <thead>
+    <tr class="assistive">
+      <th class="user">User</th>
+      <th class="role">Role</th>
+      <th class="actions">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr class="form">
+        <td colspan="2">
+          <input type="text" class="text bb-user-typeahead user-or-email"
+                 placeholder="Username or email address"
+                 autocomplete="off"
+                 data-bb-typeahead-focus="false"
+                 [[#disabled]]disabled[[/disabled]]>
+        </td>
+        <td class="actions">
+          <button type="submit" class="aui-button aui-button-light" disabled>Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+      </script>
+    
+      <script id="share-detail-template" type="text/html">
+        
+
+[[#username]]
+<td class="user
+    [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]"
+    [[#error]]data-error="[[error]]"[[/error]]>
+  <div title="[[displayName]]">
+    <a href="/[[username]]/" class="user">
+      <span class="aui-avatar aui-avatar-xsmall">
+        <span class="aui-avatar-inner">
+          <img src="[[avatar]]">
+        </span>
+      </span>
+      <span>[[displayName]]</span>
+    </a>
+  </div>
+</td>
+[[/username]]
+[[^username]]
+<td class="email
+    [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]"
+    [[#error]]data-error="[[error]]"[[/error]]>
+  <div title="[[email]]">
+    <span class="aui-icon aui-icon-small aui-iconfont-email"></span>
+    [[email]]
+  </div>
+</td>
+[[/username]]
+<td class="role
+    [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]">
+  <div>
+    [[#group]]
+      [[#hasCustomGroups]]
+        <select class="group [[#noGroupChoices]]hidden[[/noGroupChoices]]">
+          [[#groups]]
+            <option value="[[slug]]"
+                [[#isSelected]]selected[[/isSelected]]>
+              [[name]]
+            </option>
+          [[/groups]]
+        </select>
+      [[/hasCustomGroups]]
+      [[^hasCustomGroups]]
+      <label>
+        <input type="checkbox" class="admin"
+            [[#isAdmin]]checked[[/isAdmin]]>
+        Administrator
+      </label>
+      [[/hasCustomGroups]]
+    [[/group]]
+    [[^group]]
+      <ul>
+        <li class="permission aui-lozenge aui-lozenge-complete
+            [[^read]]aui-lozenge-subtle[[/read]]"
+            data-permission="read">
+          read
+        </li>
+        <li class="permission aui-lozenge aui-lozenge-complete
+            [[^write]]aui-lozenge-subtle[[/write]]"
+            data-permission="write">
+          write
+        </li>
+        <li class="permission aui-lozenge aui-lozenge-complete
+            [[^admin]]aui-lozenge-subtle[[/admin]]"
+            data-permission="admin">
+          admin
+        </li>
+      </ul>
+    [[/group]]
+  </div>
+</td>
+<td class="actions
+    [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]">
+  <div>
+    <a href="#" class="delete">
+      <span class="aui-icon aui-icon-small aui-iconfont-remove">Delete</span>
+    </a>
+  </div>
+</td>
+
+      </script>
+    
+      <script id="share-team-template" type="text/html">
+        
+
+<div class="clearfix">
+  <span class="team-avatar-container">
+    <span class="aui-avatar aui-avatar-medium">
+      <span class="aui-avatar-inner">
+        <img src="[[avatar]]">
+      </span>
+    </span>
+  </span>
+  <span class="team-name-container">
+    [[display_name]]
+  </span>
+</div>
+<p class="helptext">
+  
+    Existing users are granted access to this team immediately.
+    New users will be sent an invitation.
+  
+</p>
+<div class="share-form"></div>
+
+      </script>
+    
+      <script id="scope-list-template" type="text/html">
+        <ul class="scope-list">
+  [[#scopes]]
+    <li class="scope-list--item">
+      <span class="scope-list--icon aui-icon aui-icon-small [[icon]]"></span>
+      <span class="scope-list--description">[[description]]</span>
+    </li>
+  [[/scopes]]
+</ul>
+
+      </script>
+    
+  </div>
+
+
+
+
+  
+  
+
+
+<script nonce="k3jXXGSHAtpEBbIF">
+  window.__initial_state__ = {"section": {"repository": {"connectActions": [], "cloneProtocol": "https", "currentRepository": {"scm": "git", "website": "", "name": "rsign", "language": "rust", "description": "Rsign is a dead simple clone of minisign, used to sign files and verify signatures.", "links": {"clone": [{"href": "https://bitbucket.org/danielrangel/rsign.git", "name": "https"}, {"href": "git@bitbucket.org:danielrangel/rsign.git", "name": "ssh"}], "self": {"href": "https://bitbucket.org/!api/2.0/repositories/danielrangel/rsign"}, "html": {"href": "https://bitbucket.org/danielrangel/rsign"}, "avatar": {"href": "https://bitbucket.org/danielrangel/rsign/avatar/32/"}}, "full_name": "danielrangel/rsign", "owner": {"username": "danielrangel", "website": null, "display_name": "Daniel Rangel", "account_id": "557058:70af2645-18b7-4ea9-ae0b-a184ff6dfdbd", "links": {"self": {"href": "https://bitbucket.org/!api/2.0/users/danielrangel"}, "html": {"href": "https://bitbucket.org/danielrangel/"}, "avatar": {"href": "https://bitbucket.org/account/danielrangel/avatar/32/"}}, "created_on": "2015-12-11T15:00:51.272633+00:00", "is_staff": false, "location": null, "type": "user", "uuid": "{5e181d75-7367-4e13-a48a-2d5375f4bf28}"}, "type": "repository", "slug": "rsign", "is_private": false, "uuid": "{ea70ef44-8702-4e7b-b533-ceaad187ad8a}"}, "menuItems": [{"analytics_label": "repository.overview", "is_client_link": false, "icon_class": "icon-overview", "badge_label": null, "weight": 100, "url": "/danielrangel/rsign/overview", "tab_name": "overview", "can_display": true, "label": "Overview", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-overview-link", "icon": "icon-overview"}, {"analytics_label": "repository.source", "is_client_link": false, "icon_class": "icon-source", "badge_label": null, "weight": 200, "url": "/danielrangel/rsign/src", "tab_name": "source", "can_display": true, "label": "Source", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": ["/diff", "/history-node"], "target": "_self", "id": "repo-source-link", "icon": "icon-source"}, {"analytics_label": "repository.commits", "is_client_link": false, "icon_class": "icon-commits", "badge_label": null, "weight": 300, "url": "/danielrangel/rsign/commits/", "tab_name": "commits", "can_display": true, "label": "Commits", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-commits-link", "icon": "icon-commits"}, {"analytics_label": "repository.branches", "is_client_link": false, "icon_class": "icon-branches", "badge_label": null, "weight": 400, "url": "/danielrangel/rsign/branches/", "tab_name": "branches", "can_display": true, "label": "Branches", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-branches-link", "icon": "icon-branches"}, {"analytics_label": "repository.pullrequests", "is_client_link": false, "icon_class": "icon-pull-requests", "badge_label": "0 open pull requests", "weight": 500, "url": "/danielrangel/rsign/pull-requests/", "tab_name": "pullrequests", "can_display": true, "label": "Pull requests", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-pullrequests-link", "icon": "icon-pull-requests"}, {"analytics_label": "user.addon", "is_client_link": false, "icon_class": "aui-iconfont-build", "badge_label": null, "weight": 550, "url": "/danielrangel/rsign/addon/pipelines/home", "tab_name": "repopage-64KXp6-add-on-link", "can_display": true, "label": "Pipelines", "icon_url": null, "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "type": "connect_menu_item", "id": "repopage-64KXp6-add-on-link", "target": "_self"}, {"analytics_label": "issues", "is_client_link": false, "icon_class": "icon-issues", "badge_label": "0 active issues", "weight": 600, "url": "/danielrangel/rsign/issues?status=new&status=open", "tab_name": "issues", "can_display": true, "label": "Issues", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-issues-link", "icon": "icon-issues"}, {"analytics_label": "repository.downloads", "is_client_link": false, "icon_class": "icon-downloads", "badge_label": null, "weight": 800, "url": "/danielrangel/rsign/downloads/", "tab_name": "downloads", "can_display": true, "label": "Downloads", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-downloads-link", "icon": "icon-downloads"}], "bitbucketActions": [{"analytics_label": "repository.clone", "is_client_link": false, "icon_class": "icon-clone", "badge_label": null, "weight": 100, "url": "#clone", "tab_name": "clone", "can_display": true, "label": "<strong>Clone<\/strong> this repository", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-clone-button", "icon": "icon-clone"}, {"analytics_label": "repository.compare", "is_client_link": false, "icon_class": "aui-icon-small aui-iconfont-devtools-compare", "badge_label": null, "weight": 400, "url": "/danielrangel/rsign/branches/compare", "tab_name": "compare", "can_display": true, "label": "<strong>Compare<\/strong> branches or tags", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-compare-link", "icon": "aui-icon-small aui-iconfont-devtools-compare"}, {"analytics_label": "repository.fork", "is_client_link": false, "icon_class": "icon-fork", "badge_label": null, "weight": 500, "url": "/danielrangel/rsign/fork", "tab_name": "fork", "can_display": true, "label": "<strong>Fork<\/strong> this repository", "type": "menu_item", "anchor": true, "analytics_payload": {}, "matching_url_prefixes": [], "target": "_self", "id": "repo-fork-link", "icon": "icon-fork"}], "activeMenuItem": "overview"}}, "global": {"targetFeatures": {"cache-ref-adverts": true, "evolution": false, "dashboard-single-page-app": true, "app-passwords": true, "diff-renames-internal": true, "search-syntax-highlighting": true, "clonebundles": true, "deployments": true, "fe_word_diff": true, "trello-boards": true, "atlassian-editor": true, "use-moneybucket": true, "show-guidance-message": true, "diff-renames-public": true, "lfs_post_beta": true, "new-source-browser": false}, "targetUser": {"username": "danielrangel", "website": null, "display_name": "Daniel Rangel", "account_id": "557058:70af2645-18b7-4ea9-ae0b-a184ff6dfdbd", "links": {"self": {"href": "https://bitbucket.org/!api/2.0/users/danielrangel"}, "html": {"href": "https://bitbucket.org/danielrangel/"}, "avatar": {"href": "https://bitbucket.org/account/danielrangel/avatar/32/"}}, "created_on": "2015-12-11T15:00:51.272633+00:00", "is_staff": false, "location": null, "type": "user", "uuid": "{5e181d75-7367-4e13-a48a-2d5375f4bf28}"}, "features": {"cache-ref-adverts": true, "diff-renames-public": true, "app-passwords": true, "diff-renames-internal": true, "search-syntax-highlighting": true, "deployments": true, "fe_word_diff": true, "trello-boards": true, "use-moneybucket": true, "lfs_post_beta": true}, "isNavigationOpen": true, "locale": "en", "path": "/danielrangel/rsign.git", "geoip_country": null, "focusedTaskBackButtonUrl": null, "isFocusedTask": false}, "connect": {}};
+  window.__settings__ = {"JIRA_ISSUE_COLLECTORS": {"source-browser": {"url": "https://jira.atlassian.com/s/42e64237a0aa70b2fff514729f4cc549-T/ubr4ye/78000/d09c6b3599a0a8533f4324e4b45ccfea/2.0.26/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-UK&collectorId=c780a8ac", "id": "c780a8ac"}, "code-review": {"url": "https://jira.atlassian.com/s/42e64237a0aa70b2fff514729f4cc549-T/ubr4ye/78000/d09c6b3599a0a8533f4324e4b45ccfea/2.0.26/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-UK&collectorId=76ebbf00", "id": "76ebbf00"}}, "SOCIAL_AUTH_ATLASSIANID_LOGOUT_URL": "https://id.atlassian.com/logout", "CANON_URL": "https://bitbucket.org", "API_CANON_URL": "https://api.bitbucket.org"};
+</script>
+
+<script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/jsi18n/en/djangojs.js" nonce="k3jXXGSHAtpEBbIF"></script>
+
+  <script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/dist/webpack/locales/en.js"></script>
+
+<script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/dist/webpack/vendor.js" nonce="k3jXXGSHAtpEBbIF"></script>
+<script src="https://d301sr5gafysq2.cloudfront.net/0a57154758e8/dist/webpack/app.js" nonce="k3jXXGSHAtpEBbIF"></script>
+
+
+<script async src="https://www.google-analytics.com/analytics.js" nonce="k3jXXGSHAtpEBbIF"></script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"a2cef8c3d3","agent":"","transactionName":"Z11RZxdWW0cEVkYLDV4XdUYLVEFdClsdAAtEWkZQDlJBGgRFQhFMQl1DXFcZQ10AQkFYDlFWV1oLUA==","applicationID":"1841284","errorBeacon":"bam.nr-data.net","applicationTime":281}</script>
+</body>
+</html>
