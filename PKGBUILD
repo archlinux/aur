@@ -3,14 +3,14 @@
 
 pkgbase=otf-fira-code
 pkgname=('otf-fira-code' 'ttf-fira-code')
-pkgver=1.204
-pkgrel=2
+pkgver=1.205
+pkgrel=1
 url="https://github.com/tonsky/FiraCode"
 pkgdesc="monospaced font with programming ligatures"
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 source=($pkgname-$pkgver.tar.gz::https://github.com/tonsky/FiraCode/archive/${pkgver}.tar.gz)
-sha256sums=('18747eed28dcc65cc4fa4bfe9a61358dd96f148d2cbc50d61b4f7172aeb13312')
+sha256sums=('e00dd9f6076dd3a525135e79e48544723797daaaf7b15e4199637d804e50a468')
 install=${pkgname}.install
 license=("custom: SIL Open Font License")
 
