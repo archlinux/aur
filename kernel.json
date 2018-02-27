@@ -1,0 +1,8 @@
+{
+ "argv": [
+  "/usr/share/jupyter/kernels/maxima/maxima-jupyter",
+  "{connection_file}"
+ ],
+ "display_name": "Maxima",
+ "language": "maxima"
+}

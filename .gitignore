@@ -1,0 +1,5 @@
+maxima-jupyter-git/
+pkg/
+src/
+*.pkg.tar.xz
+quicklisp.lisp
