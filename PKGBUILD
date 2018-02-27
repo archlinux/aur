@@ -1,5 +1,6 @@
 # Maintainer:  Paul Wilk <paul.wilk@null.net>
 # Contributor: ReNoM <renom@list.ru>
+# Contributir: Jiri Novak <jiri.bati.novak@gmail.com>
 
 pkgname=vmware-vcli
 _pkgver=6.5.0-4566394
@@ -30,14 +31,14 @@ package() {
   cd "vmware-vsphere-cli-distrib"
 
   mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/lib/perl5/core_perl
+  mkdir -p "$pkgdir"/usr/lib/perl5/5.26/core_perl
 
   ./vmware-install.pl --prefix="$pkgdir"
 
-  rm "$pkgdir"/usr/lib/perl5/core_perl/Data/Dumper.pm
-  rm "$pkgdir"/usr/lib/perl5/core_perl/auto/Data/Dumper/Dumper.so
-  rm -rf "$pkgdir"/usr/lib/perl5/core_perl/MIME/
-  rm -rf "$pkgdir"/usr/lib/perl5/core_perl/auto/MIME/
+  rm "$pkgdir"/usr/lib/perl5/5.26/core_perl/Data/Dumper.pm
+  rm "$pkgdir"/usr/lib/perl5/5.26/core_perl/auto/Data/Dumper/Dumper.so
+  rm -rf "$pkgdir"/usr/lib/perl5/5.26/core_perl/MIME/
+  rm -rf "$pkgdir"/usr/lib/perl5/5.26/core_perl/auto/MIME/
 
   mv "$pkgdir"/bin/* "$pkgdir"/usr/bin/
   rmdir "$pkgdir"/bin
