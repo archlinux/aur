@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=LazyMan
 Version=1.0
-Comment=None
-Exec=/usr/bin/lazyman
-Icon=/opt/lazyman/lazyman.png
+Comment=Stream every NHL and MLB game
+Path=/usr/bin
+Exec=lazyman
+Icon=/usr/share/icons/lazyman.png
 Terminal=false
 Type=Application
-Categories=Video,Player
+Categories=Video;AudioVideo;TV;Player;
 StartupNotify=false
