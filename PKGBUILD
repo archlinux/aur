@@ -4,7 +4,7 @@
 pkgname=wine-staging-lutris-git
 _winesrc=wine-git
 _stgver=3.2
-pkgver=3.2.r3559.41645dc0+wine.3.2.r167.g7be8beab68
+pkgver=3.2.r3566.7ae8e84d+wine.3.2.r206.g9ae8b8c00f
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -101,7 +101,7 @@ then
         "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
         "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
     )
-    conflicts=('wine' 'wine-git' 'wine-staging' 'wine-staging-git')
+    conflicts=('wine' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine')
 else
 	makedepends=("${makedepends[@]}" "${_depends[@]}")
 	provides=(
@@ -111,7 +111,7 @@ else
 		"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
 		"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
 	)
-	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-git' 'wine-wow64' 'bin32-wine')
+	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-wow64' 'bin32-wine')
 	replaces=('bin32-wine')
 fi 
 
