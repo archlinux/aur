@@ -17,8 +17,7 @@
 # sudo pacman -U ...  (makepkg -i doesn't work with git packages)
 # sudo systemctl start urbackup-server.service
 
-# Build-n-observe: makepkg -sCf
-# Fix-n-rebuild:   makepkg -ef
+# For major version changes clean or rename /urbackup and /var/urbackup
 
 # See the btrfs section in the UrBackup Administration Manual for special instructions.
 # The best configuration is where whole drive btrfs is mounted on /urbackup. The data
@@ -45,8 +44,8 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.1.20.r15.g4d2bebba
-pkgrel=2
+pkgver=2.2.6.r19.g3face36a
+pkgrel=1
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, builds server or client'
 arch=('i686' 'x86_64')
 url='https://www.urbackup.org/'
@@ -65,8 +64,11 @@ _scripts=(
   'lvm_create_filesystem_snapshot'
   'lvm_remove_filesystem_snapshot'
 )
-_branch='2.1.x' # git branch does not work correctly which breaks
-source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branch}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branch}" "${_scripts[@]}"  'defaults_client')
+_branchb='dev'
+_branchf='dev'
+source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branchb}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branchf}")
+#source=("git+https://github.com/uroni/urbackup_backend.git#commit=9df2ba394f29ee86ad56fdd93179768aca3691fa" "git+https://github.com/uroni/urbackup_frontend_wx.git#commit=70378bf100c5d88e3342a4448c11a0cce83edc30")
+source+=("${_scripts[@]}"  'defaults_client')
 _cryptopp='cryptopp565.zip'
 source+=("https://www.cryptopp.com/${_cryptopp}")
 noextract=("${_cryptopp}")
@@ -117,14 +119,19 @@ _fn_getversion() {
         ;;
       esac
     fi
-  done < <(curl -s "http://buildserver.urbackup.org/urbackup_build_version_${_branch}.json")
+  done < <(curl -s "http://buildserver.urbackup.org/urbackup_build_version_${_branchb}.json")
   _urversion['server.full_rev']="${_urversion[server.full]} Rev. $(git rev-parse HEAD)"
   echo "server.full_rev=${_urversion['server.full_rev']}"
   local _clar
   # _urversion['client.full']='03.000.02' # for testing zero trim
   IFS='.' _clar=(${_urversion['client.full']}) # split
+  printf ' %s' "${_clar[@]}"; echo ''
   local _clarkey
   for _clarkey in "${!_clar[@]}"; do
+    echo "${_clarkey}:${_clar[${_clarkey}]}"
+    if [[ ! "${_clar[${_clarkey}]}" =~ ^[0-9]+$ ]]; then
+      _clar["${_clarkey}"]="${_clar[${_clarkey}]%%[^0-9]*}" # it's a git package, we don't need beta
+    fi
     _clar["${_clarkey}"]=$((_clar[${_clarkey}]+0)) # trim leading zeros
   done
   _urversion['client.ver_major']="${_clar[0]}"
@@ -157,11 +164,12 @@ prepare() {
   git reset --hard
 
   # Some patches
-  local _sbinfiles
-  IFS=$'\n' _sbinfiles=($(grep --exclude-dir='.git' -lrF '/sbin/')) # IFS only word splits inside the array during an assignment
+  local _files
+  readarray -t _files <<<"$(grep --exclude-dir='.git' -lrF '/sbin/')"
   sed -e 's:/usr/sbin/:/usr/bin/:g' \
       -e 's:/sbin/:/usr/bin/:g' \
-    -i "${_sbinfiles[@]}"
+    -i "${_files[@]}"
+  unset _files
 
   sed -e 's,"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\n"/urbackup"\n#endif\n,g' -i 'urbackupserver/server_settings.cpp' # Irksome bug!
 
@@ -170,45 +178,50 @@ prepare() {
 
   sed -e '# Block make so makepkg -e so works properly' \
       -e 's:^make:# &:g' \
-      -e "# We'll do git reset so we can make a few changes afterwards" \
+      -e '# git reset does not apply to us. It would undo all my patches' \
       -e 's:^git reset:#&:g' \
       -e "# Version updates are now done here in PKGBUILD" \
       -e '/replace_versions.py/ s:^:#&:g' \
     -i 'build_server.Arch.sh' 'build_client.Arch.sh'
 
   _fn_getversion
+  # We don't need this. This is to make it readable to ensure we're doing the same thing.
   expand -i -t8 'build/replace_versions.py' | \
   sed -e 's:\r$::g' > 'build/replace_versions.Arch.py'
 
+  # Branding
   sed -e 's:\$version_short\$'":${_urversion[server.short]} Arch Linux:g" -i 'urbackupserver/www/index.htm'
 
-  local _clientfiles
-  IFS=$'\n' _clientfiles=($(grep --exclude-dir='.git' --include '*client*' -lrF '$version_short$'))
-  sed -e 's:\$version_short\$'":${_urversion[client.short]}:g" -i "${_clientfiles[@]}"  # must be done first
+  local _files
+  readarray -t _files <<<"$(grep --exclude-dir='.git' --include '*client*' -lrF '$version_short$')"
+  sed -e 's:\$version_short\$'":${_urversion[client.short]}:g" -i "${_files[@]}"  # must be done first
+  unset _files
 
-  local _verfiles
-  IFS=$'\n' _verfiles=($(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$'))
+  local _files
+  readarray -t _files <<<"$(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$')"
   sed -e 's:\$version_short\$'":${_urversion[server.short]}:g" \
       -e 's:\$version_full_numeric\$'":${_urversion[server.full_numeric]}:g" \
       -e 's:\$version_full\$'":${_urversion[server.full_rev]}:g" \
       -e 's:\$version_num_short\$'":${_urversion[client.num_short]}:g" \
       -e 's:\$version_maj\$'":${_urversion[client.ver_major]}:g" \
       -e 's:\$version_min\$'":${_urversion[client.ver_minor]}:g" \
-    -i "${_verfiles[@]}"
+    -i "${_files[@]}"
+  unset _files
   test -z "$(grep --exclude-dir='.git' -lrF '$version_')" || echo "${}" # more $versions were added
   # replace_in_file("client/urbackup.wxi", "$product_id$", str(uuid.uuid1())) # Don't need this!
 
-  # Correct some CRLF
-  local _crlfs
-  IFS=$'\n' _crlfs=($(grep --exclude-dir='.git' -lrF $'\r'))
-  sed -e 's:\r$::g' -i "${_crlfs[@]}"
+  # Correct some CRLF. cryptopp will be converted by unzip -a
+  local _files
+  readarray -t _files <<<"$(grep --exclude-dir='.git' -lrF $'\r')"
+  sed -e 's:\r$::g' -i "${_files[@]}"
+  unset _files
 
   # Doing the hashes is easier in sed too. We catch a few that the py misses.
   pushd 'urbackupserver/www' > /dev/null
   local _hashfile _newhashfile _hashmd5
   local _sedcmds=()
   for _hashfile in css/* js/*; do
-    if grep -qF "${_hashfile}" 'help.htm' 'index.htm' 'license.htm'; then
+    if [ -f "${_hashfile}" ] && grep -qFe "${_hashfile}" 'help.htm' 'index.htm' 'license.htm'; then
       _hashmd5="$(md5sum < "${_hashfile}" | cut -d' ' -f1)"
       _newhashfile="${_hashfile/\./.chash-${_hashmd5}.}"
       _sedcmds+=('-e' "s:${_hashfile}:${_newhashfile}:g")
@@ -216,20 +229,25 @@ prepare() {
     fi
   done
   sed "${_sedcmds[@]}" -i 'help.htm' 'index.htm' 'license.htm'
+  unset _sedcmds
   popd > /dev/null
 
   # Change wget to symlink
-  sed -e 's:^\s*wget '":ln -s '../../${_cryptopp}' # &:g" -i 'download_cryptopp.sh'
+  sed -e 's:^\s*wget :ln -s "../../\${CRYPTOPP_NAME}" # &:g' \
+      -e '# Fix CRLF -> LF' \
+      -e 's:unzip -:&a:g' \
+    -i 'download_cryptopp.sh'
 
   local CRYPTOPP_NAME=''
   source <(grep '^CRYPTOPP_NAME=' 'download_cryptopp.sh')
   test ! -z "${CRYPTOPP_NAME}" || echo "${}"
-  if ! [ "${CRYPTOPP_NAME}" = "${_cryptopp}" ]; then
+  if [ "${CRYPTOPP_NAME}" != "${_cryptopp}" ]; then
     set +u
     msg "Update PKGBUILD with _cryptopp='${CRYPTOPP_NAME}'"
     false
   fi
 
+  sed -e 's:byte digest:unsigned char digest:g' -i 'md5.h'
   cat >> 'cryptoplugin/cryptopp_inc.h' <<EOL
 
 #if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
@@ -244,10 +262,12 @@ EOL
 
     # replace_in_file("urbackupserver_installer_win/urbackup_server.wxi", "$product_id$", str(uuid.uuid1())) Don't need this!
     pushd 'client' > /dev/null
-    IFS=$'\n' _verfiles=($(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$'))
+    local _files
+    readarray -t _files <<<"$(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$')"
     sed -e 's:\$version_short\$'":${_urversion[client.short]}:g" \
         -e 's:\$version_full_numeric\$'":${_urversion[client.full_numeric]}:g" \
-      -i "${_verfiles[@]}"
+      -i "${_files[@]}"
+    unset _files
     test -z "$(grep --exclude-dir='.git' -lrF '$version_')" || echo "${}" # more $versions were added
     popd > /dev/null
 
