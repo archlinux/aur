@@ -2,6 +2,7 @@ pkgbase = xrasengan
 	pkgdesc = An xrandr wrapper to make your multi-monitor setup easier
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/geyslan/xrasengan
 	arch = any
 	license = Apache
 	depends = bash
