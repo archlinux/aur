@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=aasdk-git
 _pkgname=aasdk
-pkgver=1.0.rc2.r2.ga36db60
+pkgver=r12.a36db60
 pkgrel=1
 pkgdesc="Library to build AndroidAuto headunit"
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

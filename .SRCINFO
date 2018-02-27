@@ -1,6 +1,6 @@
 pkgbase = aasdk-git
 	pkgdesc = Library to build AndroidAuto headunit
-	pkgver = 1.0.rc2.r2.ga36db60
+	pkgver = r12.a36db60
 	pkgrel = 1
 	url = https://github.com/f1xpl/aasdk
 	arch = x86_64
