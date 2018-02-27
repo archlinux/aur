@@ -9,7 +9,9 @@ pkgbase = ethminer-cuda
 	makedepends = python
 	depends = mesa
 	depends = cuda
+	provides = ethminer
 	conflicts = ethereum
+	conflicts = ethminer
 	source = ethminer-cuda-0.13.0.tar.gz::https://github.com/ethereum-mining/ethminer/archive/v0.13.0.tar.gz
 	sha256sums = 72bf827a922b797d556f8f03980185c4857bb82074b4c8b5f63b5d5e140893b8
 

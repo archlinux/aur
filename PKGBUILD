@@ -18,7 +18,11 @@ makedepends=(
   'cmake'
   'python'
 )
-conflicts=('ethereum')
+provides=('ethminer')
+conflicts=(
+  'ethereum'
+  'ethminer'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ethereum-mining/ethminer/archive/v$pkgver.tar.gz")
 sha256sums=('72bf827a922b797d556f8f03980185c4857bb82074b4c8b5f63b5d5e140893b8')
 
