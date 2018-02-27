@@ -1,0 +1,23 @@
+pkgbase = filezilla-storj
+	pkgdesc = Fast and reliable Storj, FTP, FTPS and SFTP client
+	pkgver = 3.31.0
+	pkgrel = 1
+	url = http://filezilla-project.org/
+	arch = x86_64
+	license = GPL
+	depends = dbus
+	depends = xdg-utils
+	depends = wxgtk3
+	depends = libidn
+	depends = hicolor-icon-theme
+	depends = sqlite
+	depends = gnutls
+	depends = libfilezilla
+	depends = libstorj
+	provides = filezilla
+	conflicts = filezilla
+	source = http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.31.0/FileZilla_3.31.0_src.tar.bz2
+	md5sums = 0eee1369904e9b0b60500a1068ca5a85
+
+pkgname = filezilla-storj
+
