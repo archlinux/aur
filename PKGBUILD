@@ -11,7 +11,6 @@ depends=('boost-libs>=1.45')
 makedepends=('python2' 'boost>=1.45')
 provides=('liblocked-sstream-git')
 conflicts=('liblocked-sstream')
-#source=("libsub-git::git+https://github.com/cth103/libsub.git#branch=1.0")
 source=("liblocked-sstream-git::git://git.carlh.net/git/locked_sstream.git")
 sha512sums=('SKIP')
 
