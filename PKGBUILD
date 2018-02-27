@@ -2,7 +2,7 @@
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=mytourbook_bin
-pkgver=17.9.0
+pkgver=18.2.0
 pkgrel=1
 pkgdesc="A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer."
 arch=('i686' 'x86_64')
@@ -17,13 +17,13 @@ md5sums=('428a78ad67746b149ccb8e70cc8b086b')
 [ "$CARCH" = "i686"   ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux-32.zip")
 [ "$CARCH" = "x86_64" ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux-64.zip")
 
-[ "$CARCH" = "i686"   ] && md5sums=(${md5sums[@]} '4832b0d36ee18dc4864fff938ef8bb4d')
-[ "$CARCH" = "x86_64" ] && md5sums=(${md5sums[@]} 'd7003dde81941023365b1806626caad5')
+[ "$CARCH" = "i686"   ] && md5sums=(${md5sums[@]} '108c890d866e130c6952e5d1640eec08')
+[ "$CARCH" = "x86_64" ] && md5sums=(${md5sums[@]} 'ca92974ba90506f13235cc153ac37c4b')
 
 package() {
   mkdir -p ${pkgdir}/usr/{bin,share/mytourbook}
   cd ${srcdir}/mytourbook
-  tar cf - * --exclude=.PKGINFO | ( cd ${pkgdir}/usr/share/mytourbook; tar xfp -)
+  tar cf - --exclude=.PKGINFO * | ( cd ${pkgdir}/usr/share/mytourbook; tar xfp -)
   find ${pkgdir}/usr/share/mytourbook -type f -print0 | xargs -0 chmod 644
   chmod 755 ${pkgdir}/usr/share/mytourbook/mytourbook
   ln -s /usr/share/mytourbook/mytourbook ${pkgdir}/usr/bin/mytourbook
