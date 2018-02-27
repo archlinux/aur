@@ -1,7 +1,7 @@
 pkgbase = freesurfer-bin
 	pkgdesc = An open source software suite for processing and analyzing (human) brain MRI images. (Precompiled binary version)
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://surfer.nmr.mgh.harvard.edu/
 	arch = i686
 	arch = x86_64

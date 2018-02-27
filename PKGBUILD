@@ -3,7 +3,7 @@
 _pkgname=freesurfer
 pkgname=$_pkgname-bin
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source software suite for processing and analyzing (human) brain MRI images. (Precompiled binary version)"
 arch=("i686" "x86_64")
 url="https://surfer.nmr.mgh.harvard.edu/"
