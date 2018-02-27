@@ -1,12 +1,12 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 pkgname=xrasengan
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An xrandr wrapper to make your multi-monitor setup easier"
 arch=("any")
 url="https://github.com/geyslan/xrasengan"
 license=('Apache')
-depends=('bash' 'xorg-xrandr' 'arandr')
+depends=('xorg-xrandr' 'arandr')
 optdepends=('bash-completion')
 options=('!strip')
 source=("git+https://github.com/geyslan/xrasengan.git")
