@@ -7,6 +7,8 @@ arch=("x86_64")
 url="https://github.com/robert-dodier/maxima-jupyter"
 license=('BSD')
 depends=("maxima")
+conflicts('maxima-ecl')
+options=('!strip')
 source=(
   "$pkgname::git+https://github.com/robert-dodier/maxima-jupyter"
   'https://beta.quicklisp.org/quicklisp.lisp'
@@ -14,7 +16,6 @@ source=(
 sha256sums=('SKIP'
             '4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17'
             'f322412b5d9ec8907f35000d87c26767bb014b73bff8399ac90371c6adae5697')
-options=('!strip')
 
 pkgver() {
   cd $pkgname
