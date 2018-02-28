@@ -1,11 +1,9 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 _author=D/DC/DCONWAY
 _perlmod=Perl6-Perldoc
 pkgname=perl-perl6-perldoc
-pkgver=0.000009
+pkgver=0.000013
 pkgrel=1
 pkgdesc='Perl6::Perldoc - Use Perl 6 documentation in a Perl 5 program'
 arch=('any')
@@ -22,31 +20,40 @@ optdepends=()
 provides=(
 perl-perl6-perldoc-parser
 perl-perl6-perldoc-to-text
-perl-perl6-perldoc-to-xhtml 
+perl-perl6-perldoc-to-xhtml
 )
-conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-noextract=()
+sha256sums=('2e31a9830a2cfb5dd802a0fe52a640ed7c1b0356623c6478be54e21621bbdf7f')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
 build(){
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir"/$_perlmod-$pkgver
 
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
+    make
+  else
+    perl Build.PL
+    ./Build
+  fi
 }
 check(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make test
+  cd "$srcdir"/$_perlmod-$pkgver
+
+  if [ -f Makefile.PL ]; then
+    make test
+  else
+    ./Build test
+  fi
 }
 package(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir"/$_perlmod-$pkgver
+
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+  fi
 }
-md5sums=('2ad1abf8df325d2c5bd5b2b4d235676d')
