@@ -2,7 +2,7 @@
 
 pkgname=biglybt
 pkgver=1.4.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
@@ -13,13 +13,15 @@ install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
 md5sums=('1e059362ac473e4a8c386bb5115bffa4')
 
-package() {
+prepare() {
   rm -rf $pkgname
   
   msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
   export app_java_home=/usr/lib/jvm/default
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
+}
 
+package() {
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
