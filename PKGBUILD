@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.22
+pkgver=4.14.23
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -39,7 +39,7 @@ for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '6df3b1cea7091380949dcb33a8313bdfd4b26227584569753ff6c8d161ee1cf7'
+            '65987b047297e03246f31c64a2afc79bee2f3de336d7079ce690853bead56d24'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
