@@ -1,7 +1,7 @@
 # Maintainer: Julian Wolff <wolff@julianwolff.de>
 pkgname=moc-mpris-git
 pkgver=1.0.r3.ccfadf7
-pkgrel=1
+pkgrel=2
 pkgdesc="MPRIS2 support for local or remote instances of MOC - music on console"
 arch=(any)
 url="https://github.com/progwolff/moc-mpris"
