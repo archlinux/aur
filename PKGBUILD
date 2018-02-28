@@ -32,7 +32,7 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.5
+pkgver=4.15.6
 pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
@@ -60,13 +60,13 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'b5dc7021bd0c08e4a58b59035f9b757ce6909b46067950ac56d2ad68c1b69dd1'
+            '79832aa2c9bc661ef1b4b8d55e6eff346cf23fd6c7dfd1ff0f1a7239cf2b8072'
             'SKIP'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
+            '738f96d2cdc52a04b6e6959f3436c0388db38d18a4ac47fb0a82021faff8f9c5'
             'feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c'
             '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
             'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7')
