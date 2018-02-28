@@ -7,6 +7,7 @@ pkgbase = vim-rails
 	groups = vim-plugins
 	license = custom:vim
 	depends = vim
+	options = !strip
 	source = vim-rails.zip::http://www.vim.org/scripts/download_script.php?src_id=25295
 	source = license.txt
 	sha256sums = 2c17cf2f51bb86da797768a78603d208f27b1a6e0301bd9bfed30dec5ac45b57

@@ -12,6 +12,7 @@ url='http://www.vim.org/scripts/script.php?script_id=1567'
 license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
+options=('!strip')
 source=("$pkgname.zip::http://www.vim.org/scripts/download_script.php?src_id=${pkgver#*_}"
         license.txt)
 sha256sums=('2c17cf2f51bb86da797768a78603d208f27b1a6e0301bd9bfed30dec5ac45b57'
