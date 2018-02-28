@@ -1,6 +1,6 @@
 pkgbase = alert-after
 	pkgdesc = Get a desktop notification after a command finishes executing
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/frewsxcv/alert-after
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = alert-after
 	license = Apache
 	makedepends = cargo
 	depends = dbus
-	source = https://github.com/frewsxcv/alert-after/archive/1.4.1/alert-after-1.4.1.tar.gz
-	sha256sums = c6ef20ed97d114b2bde8442e214847b3ed878ef0b3add903c2486f2cd7732333
+	source = https://github.com/frewsxcv/alert-after/archive/1.4.3/alert-after-1.4.3.tar.gz
+	sha256sums = e0d80e1b4c9cb78f4759a78495f197fa3865eacf9658653ec14ddb010e117b3d
 
 pkgname = alert-after
 
