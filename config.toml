@@ -1,0 +1,15 @@
+[gernal]
+password = "test"
+
+[local]
+listenAddr = '127.0.0.2'
+listenPort = 4566
+poolSize = 50
+
+[proxy]
+proxyAddr = '127.0.0.2'
+proxyPort = 4567
+
+[reuseCheck]
+service = false
+port = 1050

@@ -1,7 +1,7 @@
 pkgbase = ktproxy
 	pkgdesc = a websocket like proxy by kotlin
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sherlock-Holo/ktproxy
 	arch = x86_64
 	arch = i686
@@ -9,12 +9,14 @@ pkgbase = ktproxy
 	depends = java-runtime>=9
 	source = https://github.com/Sherlock-Holo/ktproxy/releases/download/0.1/ktproxy-client.jar
 	source = https://github.com/Sherlock-Holo/ktproxy/releases/download/0.1/ktproxy-server.jar
+	source = https://raw.githubusercontent.com/Sherlock-Holo/ktproxy/5891990e35f24c62342fa566550a5482a02cfc88/src/main/kotlin/ktproxy/config/config.toml
 	source = ktproxy-client
 	source = ktproxy-server
 	source = ktproxy-client@.service
 	source = ktproxy-server@.service
 	md5sums = dd5aefe44befca7c44056d3761f697e4
 	md5sums = 168abbc4cb4c4a3f0cca7eb8d04e1ded
+	md5sums = 9aae34cd6aa70f6a0a93705bdd4f4985
 	md5sums = 03faf6ae95f1865fa42bcae69e9cf071
 	md5sums = 79e2a773c9e1b7140b04c9de8bb84a17
 	md5sums = 0d7a86dee623d84e4c4cabce9a2cfcbf
