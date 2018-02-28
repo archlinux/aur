@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/relea
         'stp_remove_install_hooks.patch')
 sha512sums=('6036ed1b5189fd3fcfdeeaa526a3539ac632d0b687a063b5e3424e8f613bfc2c8d079742b0262b547128e97e30e4beb61898b23761657aee519e61346ac92e94'
             'SKIP'
-            'f33d81d2e4d0892cb248e89eb11b76d390f78ef7e50dca8d15e0a868c1a42fb0fc40ea69d6d967ebd65dd7d7a910bf8b2faf31378dc744ef1e13aeb423a2572b')
+            '1d2758e9f875e06d08d37679587454fb43e025aa83ceeb405b1bc8d3277476502f2d67cf9e8383cc4c63ae545d7d0e9ebaab814f880b2f53bba47bef4afcd537')
 install='systemtap.install'
 validpgpkeys=('5D38116FA4D3A7CC77E378D37E83610126DCC2E8')
 
