@@ -3,12 +3,12 @@
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
 pkgver='1.4.1.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://influxdata.com/time-series-platform/chronograf/'
 license=('AGPL')
-makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs')
+makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs' 'python2')
 backup=('etc/chronograf/chronograf.conf')
 install="chronograf.install"
 source=("git+https://github.com/influxdata/chronograf#tag=$pkgver"
