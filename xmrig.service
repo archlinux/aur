@@ -3,6 +3,8 @@ Description=XMRig Daemon for %i
 After=network.target
 
 [Service]
+User=xmrig
+Group=xmrig
 Type=forking
 ExecStart=/usr/bin/xmrig -c %i.conf -B
 WorkingDirectory=/etc/xmrig
