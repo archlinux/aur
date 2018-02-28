@@ -1,7 +1,7 @@
 # Maintainer: 6arms1leg <m.brnsfld {at} googlemail {d0t} com>
 # Contributor: Tom Wallroth <tomwallroth {at} gmail {d0t} com>
 pkgname=cherrymusic
-pkgver=0.41.1
+pkgver=0.41.2
 pkgrel=1
 pkgdesc="A standalone HTML5 (with Flash fallback) music streaming server based on CherryPy and jPlayer."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('lame' 'vorbis-tools' 'flac' 'faad2' 'mpg123' 'opus-tools' 'ffmpeg' 
 options=(!emptydirs)
 install=cherrymusic.install
 source=($pkgname-${pkgver//_/-}.tar.gz::https://github.com/devsnd/cherrymusic/archive/${pkgver}.tar.gz 'cherrymusic@.service')
-sha512sums=('da82a136a161249560ec3333c0acb1e8f3a2417e4dd2107b2a840d39e5bfcd3eaef4daf203f798db049041f3578d45286b46dfc469bbee1f20465017f7746357'
+sha512sums=('414eabfaeb590e52ee33c04cb41d4634fa731ee8ac6b856a3eeea7b06473258528b06d6d0f74c6f2c4e1945b55da532af849485c550f15eaf223ee2bb502c024'
             '9d336a06492df0bb5718848f161895922d08171ab637b54fffad42fc5c12cd22d00f2408dabffc3617f0a59512276e38553f1c63a0ea68028982076b7f115165')
 
 _mandir=/usr/share/man
