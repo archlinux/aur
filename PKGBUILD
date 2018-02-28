@@ -6,23 +6,17 @@ pkgrel=1
 pkgdesc="wifi jamming tool"
 url="http://git.2f30.org/wificurse"
 license=('GPL')
-source=("git://git.2f30.org/wificurse.git")
-sha512sums=('SKIP')
+source=("https://dl.2f30.org/releases/${pkgname}-${pkgver}.tar.gz")
+md5sums=('fd788fec74a88882fa5cc7c4cbf11aaf')
 arch=('x86_64')
-makedepends=('git')
-
-prepare() {
-    cd "${pkgname}"
-    git checkout "v${pkgver}"
-}
 
 build() {
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

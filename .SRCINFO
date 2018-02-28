@@ -5,9 +5,8 @@ pkgbase = wificurse
 	url = http://git.2f30.org/wificurse
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	source = git://git.2f30.org/wificurse.git
-	sha512sums = SKIP
+	source = https://dl.2f30.org/releases/wificurse-0.3.9.tar.gz
+	md5sums = fd788fec74a88882fa5cc7c4cbf11aaf
 
 pkgname = wificurse
 
