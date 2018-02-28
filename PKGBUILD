@@ -1,32 +1,14 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ccstudio
-pkgver=7.3.0.00019
+pkgver=7.4.0.00015
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
 license=('custom:TSPA')
 
-# BitRock InstallBuilder installer breaks with glibc 2.25 (hangs on exit):
-#   https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/583306
-#   https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/594586
-#
-# To build in chroot with glibc 2.24 (2016/10/31), follow [[DeveloperWiki:Building in a Clean Chroot]]:
-#   Create pacman.conf.20161031 with:
-#    [core]
-#    SigLevel = PackageRequired
-#    Server=https://archive.archlinux.org/repos/2016/10/31/$repo/os/$arch
-#    # same for [extra], [community], [multilib]
-#
-#   pacman -S devtools
-#   mkdir ~/chroot
-#   CHROOT=$HOME/chroot
-#   mkarchroot -C pacman.conf.20161031 $CHROOT/root base-devel lib32-glibc lib32-gcc-libs
-#   makechrootpkg -c -r $CHROOT
-#
-# deps: lib32* are needed because one of the installers is 32-bit
-makedepends=('glibc<2.25' 'lib32-glibc<2.25' 'lib32-gcc-libs')
+makedepends=('glibc')
 
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib')
@@ -36,12 +18,12 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_3_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_4_0/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
 
-md5sums=('67ad7fe7b2a895e9218ec4bde5f2eba4'
+md5sums=('71ae53956f68e2a28d4fb89d5730bb61'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
@@ -50,7 +32,7 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 7.3.0.desktop"
+_desktop="Code Composer Studio 7.4.0.desktop"
 
 _destdir=opt
 _installdir=installdir
