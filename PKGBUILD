@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <thelinuxguy on freenode>
 pkgname=onionshare
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you securely and anonymously share a file of any size with someone"
 url="https://github.com/micahflee/onionshare"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     nautilus-python.patch
     )
 sha512sums=('910928cf6e3672a8e59e452da1c5297b18f98854dbde836c02ef3458c33339f77cf16a0c5f2559ff364801a0e5ca2091bbb242aea8f6eaf00b0e8cbb6f261956'
-            '6cc3b3d178bea9cd9fecaf735e82ad7ff7161ad4396086881d7e45a9a70bd55c1074ec65c6359a64417a42493f305caf7ba89e1c40c9a9def03dd1d11cb7efb7')
+            'd884248099f22ba72e99d40bce49d262ef2a481cc29af1d8b726c5d39eba2f6f21987317d44fea1eb46f136249da008523e6e6ae7d3f6be551966d5bfdd72552')
 
 
 prepare() {
