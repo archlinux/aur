@@ -1,11 +1,13 @@
 pkgbase = osx-arc-aurorae-theme
 	pkgdesc = An Aurorae theme designed to compliment @LinxGem33's OSX-Arc gtk themes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iboyperson/OSX-Arc-Aurorae
 	arch = x86_64
 	license = GPL 3.0
 	depends = kwin
+	provides = osx-arc-aurorae-theme
+	conflicts = osx-arc-aurorae-theme
 	source = https://github.com/iboyperson/OSX-Arc-Aurorae/archive/1.0.0.tar.gz
 	sha256sums = 28e1e6f13bcc524b7714e0bab0b1817601f477196fbff905066f3eb2aefeef9a
 
