@@ -1,7 +1,7 @@
 pkgbase = vgmstream-kode54-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games (kode54's fork)
 	pkgver = r1020.r1169.gc3d3aaee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kode54/vgmstream
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,10 @@ pkgbase = vgmstream-kode54-git
 	optdepends = audacious: to use the bundled plugin
 	source = vgmstream-kode54-git::git+https://github.com/kode54/vgmstream.git
 	source = install-headers.patch
+	source = no-link-audacious.patch
 	sha256sums = SKIP
 	sha256sums = 8f723536321480bb46b731f66c29a5f5354834094458f93de7539bbe4465b824
+	sha256sums = bacb229eeea75a6c00761c6c446cc34f25cd7ca938f7b4241f793d036f738554
 
 pkgname = vgmstream-kode54-git
 
