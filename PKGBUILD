@@ -25,11 +25,17 @@ package() {
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/applications
     install -dm755 "$pkgdir"/usr/share/icons
+    install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/16/apps
+    install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/22/apps
+    install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/24/apps
     install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/48/apps
     install -dm777 "$pkgdir"/usr/share/java/lazyman
     install -Dm755 lazyman.sh                "$pkgdir"/usr/bin/lazyman
     install -Dm644 lazyman.desktop           "$pkgdir"/usr/share/applications/lazyman.desktop
     install -Dm644 lazyman.png               "$pkgdir"/usr/share/icons/lazyman.png
+    install -Dm644 lazyman.svg               "$pkgdir"/usr/share/icons/Numix-Circle/16/apps/lazyman.svg
+    install -Dm644 lazyman.svg               "$pkgdir"/usr/share/icons/Numix-Circle/22/apps/lazyman.svg
+    install -Dm644 lazyman.svg               "$pkgdir"/usr/share/icons/Numix-Circle/24/apps/lazyman.svg
     install -Dm644 lazyman.svg               "$pkgdir"/usr/share/icons/Numix-Circle/48/apps/lazyman.svg
     install -Dm777 config.properties         "$pkgdir"/usr/share/java/lazyman/config.properties
     install -Dm644 LazyMan.jar               "$pkgdir"/usr/share/java/lazyman/LazyMan.jar
@@ -38,6 +44,7 @@ package() {
 md5sums=('8e8b9b2f7b322917c9bd2cf32b5df18c'
          'd41d8cd98f00b204e9800998ecf8427e'
          'b387dc6c2bdf54718d6d2e48f9f37e3d'
-         '298ca421d04992c9a9c224dff3a459a3'
+         'cc5998a228727420cbf7d07fc5318920'
          '41aebb968e8b6856d1b73cabd6a8c5d2'
          '838805914545f8ece3df2115b638252f')
+
