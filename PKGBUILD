@@ -1,26 +1,27 @@
 # Maintainer: Fabian Zaremba <fabian at youremail dot eu>
 
 pkgname=sslyze-git
-pkgver=0.13.5.r15.g771fb17
+pkgver=1.3.4.r19.g57e99f7
 pkgrel=1
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
 url="https://github.com/nabla-c0d3/sslyze"
 license=('GPL2')
-depends=('python2')
-makedepends=('git')
+depends=('python2' 'python2-typing' 'python2-enum34' 'python2-cryptography')
+makedepends=('git' 'perl')
 provides=('sslyze')
 conflicts=('sslyze')
 options=('!makeflags')
 source=("git+https://github.com/nabla-c0d3/nassl.git"
-"git+https://github.com/nabla-c0d3/sslyze.git"
-"git+https://github.com/PeterMosmans/openssl.git"
-"http://zlib.net/zlib-1.2.8.tar.gz")
+        "git+https://github.com/nabla-c0d3/sslyze.git"
+        "git+https://github.com/nabla-c0d3/tls_parser.git"
+        "git+https://github.com/openssl/openssl.git"
+        "http://zlib.net/zlib-1.2.11.tar.gz")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d')
-
+            'SKIP'
+            'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1')
 
 pkgver() {
 
@@ -33,8 +34,14 @@ build() {
 
 cd "$srcdir/"
 
-mv "$srcdir/openssl" "$srcdir/nassl/openssl"
-mv "$srcdir/zlib-1.2.8" "$srcdir/nassl/"
+cp -r openssl openssl-1.0.2e
+cd openssl-1.0.2e
+git checkout OpenSSL_1_0_2e
+cd ..
+
+mv "$srcdir/openssl" "$srcdir/nassl/openssl-master"
+mv "$srcdir/openssl-1.0.2e" "$srcdir/nassl/openssl-1.0.2e"
+mv "$srcdir/zlib-1.2.11" "$srcdir/nassl/"
 
 cd "$srcdir/nassl"
 
@@ -42,25 +49,39 @@ cd "$srcdir/nassl"
 find "$srcdir/nassl/bin" -type f -delete
 
 python2.7 build_from_scratch.py
-python2.7 run_tests.py
-
-cd "$srcdir/nassl/nassl"
-rm *.pyc
-
-mv "$srcdir/nassl/nassl" "$srcdir/sslyze/"
 
 }
 
+check() {
+	
+cd "$srcdir/tls_parser"
+python2.7 run_tests.py
+
+# nassl tests are already run from build_from_scratch.py
+
+# Some sslyze tests are failing
+# TODO: file upstream issue
+
+#cp -r "$srcdir/sslyze" "$srcdir/sslyze_test"
+#cp -r "$srcdir/tls_parser/tls_parser" "$srcdir/sslyze_test/"
+#cp -r "$srcdir/nassl/nassl" "$srcdir/sslyze_test/"
+#cd "$srcdir/sslyze_test"
+#python2.7 run_tests.py
+#rm -rf "$srcdir/sslyze_test"
+	
+}
+
 package() {
+	
+cd "$srcdir/tls_parser"
+python2.7 setup.py install --root="$pkgdir" --optimize=1
 
-# Install files in /opt
-mkdir -p "$pkgdir/opt/sslyze"
-cp -a "$srcdir/sslyze/." "$pkgdir/opt/sslyze"
-rm -rf "$pkgdir/opt/sslyze/.git"
+cd "$srcdir/nassl"
+python2.7 setup.py install --root="$pkgdir" --optimize=1
 
-# Create cli launcher symlink in /usr/bin
-mkdir -p "$pkgdir/usr/bin"
-ln -s /opt/sslyze/sslyze_cli.py "$pkgdir/usr/bin/sslyze"
-chmod 755 "$pkgdir/opt/sslyze/sslyze_cli.py"
+cd "$srcdir/sslyze"
+python2.7 setup.py install --root="$pkgdir" --optimize=1
+
+# CLI launcher is now created by setup.py
 
 }
