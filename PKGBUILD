@@ -5,22 +5,27 @@
 
 _npmname=mocha
 pkgname=nodejs-$_npmname
-pkgver=4.0.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Simple, flexible, fun test framework."
 arch=(any)
 url="https://mochajs.org"
 license=('MIT')
-depends=('nodejs' 'npm')
-options=( '!strip' )
+depends=('nodejs')
+makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('9da50190aa315ddedf8db4c84bb682dafd0f10ec8c99a9f76b0372eeef4e737b')
+sha256sums=('113dc11c894f8cff01ae6c46b45504af890600e8c905e3bbe8e7dca32d09e7ec')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install \
+    --user root --global \
+    --prefix "$pkgdir/usr" \
+    "$srcdir"/$_npmname-$pkgver.tgz
+
+  rm -r "$pkgdir"/usr/etc
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
