@@ -3,8 +3,8 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.19.6 # http://lists.x.org/archives/xorg/2017-December/059095.html
-pkgrel=2 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=94da807f6fb18360c36249eea7cbbf52cef624ee
+pkgver=1.19.99.901 # 1.20 RC1: http://lists.x.org/archives/xorg/2018-February/059152.html
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -17,42 +17,24 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
-        nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
         xvfb-run
-        xvfb-run.1
-        udev-changes.diff
-        xwrap-suid-race.patch)
+        xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
               '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha256sums=('3c0e4a354a6b1d5d357b121357946ee8ffdb2f52158b2e63e105be9cef013168'
+sha256sums=('3654e69e19426d9738381abbe0c325082be42971535eb791fb3604f60499a36e'
             'SKIP'
-            '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa'
-            'bce0e105386d75239f473b867d8ea6bc60e5302d87e03fdc720f48f43f5454f1')
-
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
-  msg2 "merged upstream in trunk"
-  patch -Np1 -i ../nvidia-add-modulepath-support.patch
-
   msg2 "patch from Fedora, not yet merged"
   patch -Np1 -i ../xserver-autobind-hotplug.patch
-
-  msg2 "https://bugs.archlinux.org/task/56804 
-     https://bugs.freedesktop.org/show_bug.cgi?id=104382"
-  patch -Rp1 -i ../udev-changes.diff
-
-  msg2 "https://bugs.archlinux.org/task/56893
-     Fixes Makefile race condition when installing Xorg.wrap"
-  patch -Np1 -i ../xwrap-suid-race.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -vfi
