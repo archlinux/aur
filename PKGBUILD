@@ -2,7 +2,7 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2017.2.1
+pkgver=2017.2.2
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -10,13 +10,13 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=('https://download.jetbrains.com/teamcity/TeamCity-2017.2.1.tar.gz'
+source=('https://download.jetbrains.com/teamcity/TeamCity-2017.2.2.tar.gz'
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('5e59854af9ac84db7c460160332987f38ad369849f5226c229a7ee5afc932e6d'
+sha256sums=('cd735330e800473c5f1a5df8c6d55238d9931464cf14ead8cb8c4e8edfa38238'
             'b66ca4d1963138be8f88c4bf7cf358b1bf096711a618f2f501ce9805fafdbb20'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
