@@ -1,0 +1,30 @@
+pkgbase = brother-mfc-j4910cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J4910CDW printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: Printing text files from lpr
+	optdepends = brscan4: Scanner support
+	source = http://download.brother.com/welcome/dlf102747/mfcj4910cdwcupswrapper-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf102746/mfcj4910cdwlpr-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf102750/mfcj4910cdw_cupswrapper_GPL_source_1.0.0-1.tar.gz
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 4a0c04490130ed9ec0db6bd577274d82
+	md5sums = 3e60363241584feb2f6fc4b66a6bf433
+	md5sums = a57eeaca67ae67ccd0c9f2bb5986c2d7
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j4910cdw
+
