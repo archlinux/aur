@@ -1,15 +1,15 @@
 pkgbase = marvin
 	pkgdesc = Intuitive applications and API for chemical sketching, visualization and data exploration
-	pkgver = 18.4.0
+	pkgver = 18.5.0
 	pkgrel = 1
 	url = http://www.chemaxon.com
 	arch = any
 	license = proprietary
 	depends = jre8-openjdk
-	source = https://dl.chemaxon.com/marvin/18.4.0/Marvin_linux_18.4.0.rpm
+	source = https://dl.chemaxon.com/marvin/18.5.0/Marvin_linux_18.5.0.rpm
 	source = MarvinSketch.desktop
 	source = marvin-sketch-symbolic.svg
-	md5sums = 7a548025d2748dc22888f9f485bf86ff
+	md5sums = be8e6c0354eb8e91ff500ba54c44849f
 	md5sums = 63b667e3188ffe688f516848e5db66c6
 	md5sums = e6758f94b843b97804112fa0420ba1bb
 
