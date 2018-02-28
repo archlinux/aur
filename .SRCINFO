@@ -1,0 +1,16 @@
+pkgbase = eslint-plugin-vue
+	pkgdesc = ESLint Plugin for Vue.js
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/vuejs/eslint-plugin-vue
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = eslint
+	noextract = eslint-plugin-vue-4.3.0.tgz
+	source = http://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-4.3.0.tgz
+	md5sums = ce3b968076f310f617d5313e96242517
+
+pkgname = eslint-plugin-vue
+
