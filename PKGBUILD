@@ -1,19 +1,22 @@
 # $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Mingye Wang <arthur2e5@aosc.io>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=fontconfig
-pkgver=2.12.6+5+g665584a
+pkgname=fontconfig-srb
+pkgver=2.12.93
 pkgrel=1
-pkgdesc="A library for configuring and customizing font access"
+pkgdesc="A library for configuring and customizing font access (michalsrb performance patch, AOSC variant)"
 arch=(x86_64)
-url="https://www.freedesktop.org/wiki/Software/fontconfig/"
+url="https://github.com/AOSC-Dev/fontconfig"
 license=(custom)
 depends=(expat freetype2)
 makedepends=(git autoconf-archive gperf python-lxml python-six docbook-utils docbook-sgml
              perl-sgmls 'texlive-formatsextra>=2017' lynx)
+provides=(fontconfig)
+conflicts=(fontconfig)
 install=fontconfig.install
-_commit=665584a19b0ec227c93643ffb0540d11ac8ecf7f # fc-2-12
-source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=$_commit"
+_commit=a4e6fc6ae509da8194b79006e747467bf672c1ed # 2.12.93+srb, latest fixes
+source=("git+https://github.com/AOSC-Dev/fontconfig#commit=$_commit"
         fontconfig.hook)
 sha256sums=('SKIP'
             '672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274')
