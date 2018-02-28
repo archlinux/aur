@@ -1,6 +1,6 @@
 pkgbase = rapid-photo-downloader-bzr
 	pkgdesc = Photo and video downloader
-	pkgver = 0.9.8.r1071
+	pkgver = 0.9.9b1.r1072
 	pkgrel = 1
 	url = http://www.damonlynch.net/rapid/
 	arch = any
@@ -31,6 +31,7 @@ pkgbase = rapid-photo-downloader-bzr
 	depends = python-pyzmq
 	depends = python-rawkit
 	depends = python-sortedcontainers
+	depends = python-tornado
 	depends = python-xdg
 	depends = qt5-imageformats
 	depends = udisks2

@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=rapid-photo-downloader-bzr
-pkgver=0.9.8.r1071
+pkgver=0.9.9b1.r1072
 pkgrel=1
 pkgdesc="Photo and video downloader"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('desktop-file-utils' 'gstreamer' 'hicolor-icon-theme'
          'python-gobject' 'python-gphoto2' 'python-psutil'
          'python-pymediainfo' 'python-pyprind' 'python-pyqt5'
          'python-pyzmq' 'python-rawkit' 'python-sortedcontainers'
-         'python-xdg' 'qt5-imageformats' 'udisks2')
+         'python-tornado' 'python-xdg' 'qt5-imageformats' 'udisks2')
 makedepends=('bzr' 'gobject-introspection' 'intltool' 'python-setuptools')
 optdepends=('gst-libav: for extra video thumbnails'
             'gst-plugins-good: for extra video thumbnails')
