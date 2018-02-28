@@ -1,12 +1,10 @@
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Created: 29/11/2011
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 _author=D/DC/DCONWAY
 _perlmod=Perl6-Form
-pkgname='perl-perl6-form'
-pkgver='0.04'
-pkgrel='2'
+pkgname=perl-perl6-form
+pkgver=0.06
+pkgrel=1
 pkgdesc="Perl6::Form - Implements the Perl 6 'form' built-in"
 arch=('any')
 url='http://search.cpan.org/~dconway/Perl6-Form'
@@ -16,23 +14,36 @@ depends=('perl-perl6-export')
 makedepends=('perl')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+sha256sums=('98e4615aac7954ac2c3faf199a3ee042c6063c41a0ccfeb7631e1de5aed55bbc')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
 build(){
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir"/$_perlmod-$pkgver
 
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
+    make
+  else
+    perl Build.PL
+    ./Build
+  fi
 }
 check(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make test
+  cd "$srcdir"/$_perlmod-$pkgver
+
+  if [ -f Makefile.PL ]; then
+    make test
+  else
+    ./Build test
+  fi
 }
 package(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+  cd "$srcdir"/$_perlmod-$pkgver
 
-md5sums=('e3109dc701d99ed81f4d39a2605ac86a')
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+  fi
+}
