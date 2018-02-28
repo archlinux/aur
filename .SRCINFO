@@ -1,6 +1,6 @@
 pkgbase = kencfs-plasma
 	pkgdesc = KDE-Plasma compatible GUI frontend for encfs. Create, mount, umount and delete your encrypted fs.
-	pkgver = 2.0.1a
+	pkgver = 2.0.2a
 	pkgrel = 1
 	url = https://www.linux-apps.com/p/1170068/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kencfs-plasma
 	depends = encfs>=1.7.4-8
 	depends = fuse>=2.9.2-1
 	depends = kdelibs
-	source = kencfs-plasma-2.0.1a.tar.gz
-	md5sums = a618ac4dc43e93d0e497c34108a45272
+	source = kencfs-plasma-2.0.2a.tar.gz
+	md5sums = bfe58c4a80eb2e8c45f74fc12165c4f3
 
 pkgname = kencfs-plasma
 
