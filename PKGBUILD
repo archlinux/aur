@@ -3,12 +3,12 @@ pkgver=r1020.r1169.gc3d3aaee
 pkgrel=1
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/vgmstream'
+url='https://github.com/kode54/vgmstream'
 license=(BSD)
 depends=(glibc libogg libvorbis mpg123 ffmpeg)
 makedepends=(audacious git)
 optdepends=('audacious: to use the bundled plugin')
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/vgmstream.git
+source=(${pkgname}::git+https://github.com/kode54/vgmstream.git
         install-headers.patch)
 sha256sums=('SKIP'
             '8f723536321480bb46b731f66c29a5f5354834094458f93de7539bbe4465b824')
