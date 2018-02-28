@@ -1,14 +1,14 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=pyzo
-pkgver=4.4.2
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Pyzo is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing."
 url="http://pyzo.org"
 license=("BSD")
 arch=('any')
-depends=('python-pyzolib')
-replaces=('iep')
-conflicts=('iep')
+#depends=('python-pyzolib')
+#replaces=('iep')
+#conflicts=('iep')
 optdepends=(
    'python-pyqt4: At least one qt4 python bindings should be installed'
    'python-pyside: At lease one qt4 python bindings should be installed'
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 
 source=("https://github.com/pyzo/pyzo/archive/v${pkgver}.tar.gz")
 
-sha1sums=('f0d99253bd53902854b0fc995f61818eb79ca212')
+sha1sums=('12d2e934f88c453e755e1e7c8984e495c45fe748')
 
 
 build(){
