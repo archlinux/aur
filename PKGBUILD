@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r1974.9191af0c
+pkgver=r2136.a645e57b
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -51,8 +51,8 @@ source=("plugins.ini"
         "QuickBox::git+https://github.com/QuickBox/club-QuickBox.git"
         "git+https://github.com/exetico/FlatUI.git")
 
-md5sums=('SKIP'
-         '3e0002fe9ce69f43513152c515944559'
+md5sums=('21b595d878e49dde91fca665a0a8effb'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
