@@ -3,7 +3,7 @@
 pkgname=biglybt-extreme-mod
 pkgver=1.4.0.0b1
 _ver=${pkgver/b*}
-pkgrel=1
+pkgrel=2
 pkgdesc="A modded version of the BiglyBT client with multiple spoofing capabilities"
 arch=('x86_64')
 url="http://www.sb-innovation.de/f41/"
