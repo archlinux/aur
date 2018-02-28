@@ -1,17 +1,17 @@
 pkgname=libsolv
-pkgver=0.6.32
+pkgver=0.6.33
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
 license=('BSD')
-depends=('expat' 'xz' 'zlib')
-makedepends=('cmake' 'perl' 'python' 'rpm-org' 'ruby' 'swig')
+depends=('expat' 'rpm-org' 'xz' 'zlib')
+makedepends=('cmake' 'perl' 'python' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('338a945701c8990d4020c82c40444a08')
+md5sums=('8f6387dd9344282efc58e3a70befb6a4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
