@@ -33,7 +33,7 @@ md5sums=('SKIP'
          'ddd572887957fd5cdfde3469bd8c1102'
          'bb822961716efd40d570a07a34c9c373'
          '0e03798b8e53096c4a906bde05e32378'
-         '625896d99d6f3367304e728da34d33eb')
+         'a095c1c62270a1997a5d158144394dbb')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
