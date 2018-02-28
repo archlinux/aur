@@ -1,12 +1,11 @@
 pkgbase = xrasengan
 	pkgdesc = An xrandr wrapper to make your multi-monitor setup easier
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/geyslan/xrasengan
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = bash
 	depends = xorg-xrandr
 	depends = arandr
 	optdepends = bash-completion
