@@ -1,5 +1,5 @@
 pkgname=subtitleedit
-pkgver=3.5.5
+pkgver=3.5.6
 pkgrel=1
 pkgdesc="A subtitle editor"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
     "subtitleedit.desktop"
 )
 sha256sums=(
-    'eba03ab1d0ab4e472b28d3804d055fd3f6fe389ec7f597d57f5e5685126afa4d'
+    '4fa62c4ea05173ee5076cd0e0164c6f90fd7984767340508213a2354ebc72434'
     'a2d211e7ce3597b25db9f921590169c89d0b47dad48669dfffb6795a7ba534cd'
     'f1e7b1ef8116afaaac61a6ddd871fb6ec349ab729d068f1c3195d0fbabafc2bc'
     '32977a0b82619f04e1ce904ac9c02ced410aa6cb563e86e90ce46225dc63adee'
