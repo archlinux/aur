@@ -2,8 +2,8 @@
 
 _npmname=markdown-pdf
 pkgname=nodejs-$_npmname
-pkgver=7.0.0
-pkgrel=2
+pkgver=8.1.1
+pkgrel=1
 pkgdesc="Markdown to PDF converter"
 arch=('any')
 url="https://github.com/alanshaw/markdown-pdf"
@@ -12,7 +12,7 @@ depends=('nodejs' 'phantomjs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-${pkgver//_/-}.tgz)
 noextract=($_npmname-${pkgver//_/-}.tgz)
-sha1sums=('3c70e09a6ef3dae2c5059b3a2294bd6581d269ce')
+sha1sums=('25c025d4f4f91869ac0f3f6fd7f7d32237669438')
 
 package() {
   cd "$srcdir"
