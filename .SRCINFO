@@ -53,7 +53,9 @@ pkgbase = ungoogled-chromium
 	optdepends = libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs
 	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
-	conflicts = chromium,inox,iridium
+	conflicts = chromium
+	conflicts = inox
+	conflicts = iridium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-64.0.3282.186.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = chromium-64.0.3282.186.txt::https://chromium.googlesource.com/chromium/src.git/+/64.0.3282.186?format=TEXT
