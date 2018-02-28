@@ -1,4 +1,5 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Co-maintainer: Dmitriy Morozov <archlinux@foxcub.org>
 
 _name=fastcluster
 pkgbase='python-fastcluster'
@@ -33,7 +34,7 @@ package_python2-fastcluster() {
 
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING.txt
 }
 
 package_python-fastcluster() {
@@ -41,5 +42,5 @@ package_python-fastcluster() {
 
   cd "${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING.txt
 }
