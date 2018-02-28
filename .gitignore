@@ -1,0 +1,5 @@
+opentheory/
+/opentheory.tar.gz
+/*.tar.xz
+pkg/
+src/
