@@ -17,8 +17,8 @@ license=('GPL3')
 depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'lame' 'libmodplug'
          'libtheora' 'libwebp'
-         'opencore-amr' 'openjpeg2' 'opus' 'speex'
-         'v4l-utils' 'xz' 'zlib'
+         'libxml2' 'opencore-amr' 'openjpeg2' 'opus'
+         'speex' 'v4l-utils' 'xz' 'zlib'
          'libbluray.so'
          'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
@@ -82,6 +82,7 @@ build() {
     --enable-libx264 \
     --enable-libx265 \
     --disable-libxcb \
+    --enable-libxml2 \
     --enable-libxvid \
     --enable-shared \
     --enable-version3 \
