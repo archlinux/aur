@@ -1,7 +1,7 @@
 pkgbase = mythtv
 	pkgdesc = A Homebrew PVR project
 	pkgver = 29.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.mythtv.org/
 	install = mythtv.install
@@ -57,7 +57,7 @@ pkgbase = mythtv
 	source = mythbackend.service
 	source = 99-mythbackend.rules
 	source = mythtv.install
-	sha512sums = 0ac0dc2061ac6165d2a5eb14a4cd984d5d79aadc3452f3df5c02c86ba057285a29b20f29fed4381c5867aaee7b0088797f588e69a0d9d225be2edac600c885fd
+	sha512sums = 66fda29bd645b4c9a90600414193f46b99b9b8d60d033828f0eeb44e1c3820a7781d93c7010fc1e0affa83be93896231ba91409ccb7dba38190a5809752beedd
 	sha512sums = 41533da5d8ef694d8c12f60d956673d9e49fb6781ae58d6bfd0bf31e4f380fddb508f9cad3b91264a3ad55853c24c6932bdf83bb5b711c34c0836d71b46be02c
 	sha512sums = fc02c190f01dbfb803b87ea0a6cdf408ce7706dc1ed74fba939931c129fdeb5dab1105caf9f71f029843a4d74db888084f92173c3be240d8492454633311f7c8
 	sha512sums = db78be27826be44e97d8680aa860f2e85c94e017aa649d183ee5d71310c95e31669330d3b4496c52143892f238300e57ae88ab0a737ca135ab6f2ce361814e36
