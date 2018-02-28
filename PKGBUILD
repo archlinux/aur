@@ -1,7 +1,7 @@
 # Maintainer: Ben Morgan <neembi@gmail.com>
 # vim: set ts=2 sw=2:
 pkgname=repoctl
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64' 'armv7h')
@@ -42,4 +42,4 @@ package() {
   install -Dm644 contrib/repoctl_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_repoctl"
   install -Dm644 contrib/repoctl_completion.bash "$pkgdir/usr/share/bash-completion/completions/repoctl"
 }
-md5sums=('9c7d2a8c717fdc712ed5f099132b9473')
+md5sums=('1f1cec5a5a76ca89e21866ccc81ee6cc')
