@@ -1,0 +1,16 @@
+diff --git src/Makefile.autotools.am src/Makefile.autotools.am
+index a15eb51f..d6be8b5c 100644
+--- src/Makefile.autotools.am
++++ src/Makefile.autotools.am
+@@ -1,5 +1,11 @@
+ ## vgmstream autotools script
+ 
++include_HEADERS = ../ext_includes/clHCA.h
++__vgmstream_includedir = $(includedir)/vgmstream
++__vgmstream_include_HEADERS = vgmstream.h streamfile.h util.h streamtypes.h
++__coding_includedir = $(includedir)/vgmstream/coding
++__coding_include_HEADERS = coding/acm_decoder.h coding/nwa_decoder.h coding/g72x_state.h
++
+ lib_LTLIBRARIES = libvgmstream.la
+ 
+ AM_CFLAGS = -I$(top_builddir) -I$(top_srcdir) -I$(top_srcdir)/ext_includes/
