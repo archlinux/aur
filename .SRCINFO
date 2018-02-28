@@ -1,7 +1,7 @@
 pkgbase = docker-stable-bin
 	pkgdesc = Pack, ship and run any application as a lightweight container, using official binaries
-	pkgver = 17.12.0
-	pkgrel = 2
+	pkgver = 17.12.1
+	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
 	license = Apache
@@ -23,11 +23,11 @@ pkgbase = docker-stable-bin
 	conflicts = docker-ce
 	conflicts = docker-git
 	options = !strip
-	source = https://download.docker.com/linux/static/stable/x86_64/docker-17.12.0-ce.tgz
-	source = https://github.com/docker/docker-ce/archive/v17.12.0-ce.tar.gz
+	source = https://download.docker.com/linux/static/stable/x86_64/docker-17.12.1-ce.tgz
+	source = https://github.com/docker/docker-ce/archive/v17.12.1-ce.tar.gz
 	source = docker.sysusers
-	md5sums = 55bcb35391d28fff350076dce4b82d25
-	md5sums = 545b780b4cf5bb1c83c5615d7153e9c7
+	md5sums = c15b6bb81873e12afd769339e0d98841
+	md5sums = cac2dbd0f4588900e3f302207ec45910
 	md5sums = 9a8b2744db23b14ca3cd350fdf73c179
 
 pkgname = docker-stable-bin
