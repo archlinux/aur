@@ -2,9 +2,10 @@
 
 pkgname=ttf-font-logos
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An icon font providing popular Linux distro logos."
 arch=(any)
+replaces=('ttf-font-linux')
 url="https://github.com/lukas-w/font-logos"
 license=('Unilicense')
 depends=(fontconfig xorg-font-utils)
