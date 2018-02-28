@@ -3,14 +3,14 @@
 # check for new commits:
 #   https://github.com/stylish-userstyles/stylish-chrome/commits/master
 
-gitname=stylish-chrome
+gitname=stylus
 pkgname=${gitname}-git
-pkgver=418.b4b972e
+pkgver=2164.0ba2607
 pkgrel=1
 pkgdesc="User styles manager extension for Chrome and Chrome-like things"
 arch=('any')
-url="https://github.com/stylish-userstyles/${gitname}"
-license=('GPL')
+url="https://github.com/openstyles/${gitname}"
+license=('GPL3')
 makedepends=(git)
 source=("git+${url}.git")
 sha512sums=('SKIP')
