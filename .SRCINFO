@@ -1,6 +1,6 @@
 pkgbase = nvme-cli
 	pkgdesc = NVM-Express user space tooling for Linux
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/linux-nvme/nvme-cli
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = nvme-cli
 	makedepends = git
 	depends = systemd
 	conflicts = nvme-cli-git
-	source = https://github.com/linux-nvme/nvme-cli/archive/v1.4.tar.gz
-	md5sums = d3b43b7a8b7387ac4b52a9e1a44fba75
+	source = https://github.com/linux-nvme/nvme-cli/archive/v1.5.tar.gz
+	md5sums = 822e68fb530457f4af6ba9ac5b8c0af8
 
 pkgname = nvme-cli
 
