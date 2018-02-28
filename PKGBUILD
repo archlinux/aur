@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=sysdweb
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Control systemd services through Web or REST API'
 arch=('any')
 url='https://github.com/ogarcia/sysdweb'
@@ -11,7 +11,7 @@ depends=('python-bottle' 'python-dbus' 'python-pam' 'python-setuptools' 'python-
 makedepends=('python-setuptools')
 backup=("etc/${pkgname}.conf")
 source=("https://github.com/ogarcia/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b18d1d22fe6ac5a46f2185b796a7d2d71cdb6e3e38b20d42ede4739bfadcd693')
+sha256sums=('b21a159c67e1de312682946bf4fa60c23375e58a91aed134bc8ef5283475f871')
 
 package() {
   cd "${pkgname}-${pkgver}"
