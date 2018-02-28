@@ -11,9 +11,6 @@
 
 #define EMPTY (-999)
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stddef.h>
 #include <curl/curl.h>
 #include <json-c/json_tokener.h>
@@ -30,8 +27,6 @@ struct info {
 };
 
 typedef struct info Info;
-
-typedef struct json_object Json;
 
 /**
  * Creates and returns an Info object

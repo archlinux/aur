@@ -4,10 +4,13 @@
 #define PASS_MAX 32
 #define BACKSPACE 127
 #define KEY_SCHEDULE_LENGTH 256
+#define DECRYPT 0
+#define ENCRYPT 1
 
-#include <stdlib.h>
-#include <string.h>
 #include <ncurses.h>
+#include <json-c/json_tokener.h>
+#include <unistd.h>
+#include "string-tick.h"
 
 /**
  * Takes a password from user input and returns it (max 32 chars)
@@ -36,6 +39,17 @@ char* rc4_prga(int keySchedule[KEY_SCHEDULE_LENGTH], size_t len);
  * @param message portoflio string
  * @param len length of portfolio in bytes
  */
-void rc4_execute(char* output, char* message, size_t len);
+void rc4_execute(char* output, String* pString);
+
+/**
+ * Returns an either encrypted or decrypted string of the input
+ * @param input the string to encrypt or decrypt
+ * @param input_len the length of the string
+ * @param password the password to encrypt or decrypt with
+ * @return encrypted or decrypted string
+ */
+char* rc4_encode_string(String* pString, char* password);
+
+String* rc4_get_crypted_string(String* input_pString, char* password, int option);
 
 #endif

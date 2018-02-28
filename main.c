@@ -10,14 +10,8 @@ int main(int argc, char* argv[]) {
     strcpy(cmd, argv[1]);
     strtolower(cmd);
 
-    // Init/open portfolio
+    // Init portfolio path
     portfolio_file_init();
-    FILE* fp = fopen(portfolio_file, "r+");
-    if (fp == NULL) {
-        printf("Could not open portfolio file\n");
-        free(portfolio_file);
-        return 0;
-    }
 
     // Portfolio modify operation
     int modop = -1;
@@ -28,16 +22,40 @@ int main(int argc, char* argv[]) {
             news_print_top_three(argv[2]);
         else printf("Invalid symbol.\n");
     }
-        //Convert
-    else if (strcmp(cmd, "convert") == 0 && argc == 2)
-        portfolio_legacy_convert();
 
         //Encrypt/decrypt
-    else if (strcmp(cmd, "encrypt") == 0 && argc == 2)
-        portfolio_encrypt_decrypt(ENCRYPT, fp, NULL);
-    else if (strcmp(cmd, "decrypt") == 0 && argc == 2)
-        portfolio_encrypt_decrypt(DECRYPT, fp, NULL);
-
+    else if (strcmp(cmd, "encrypt") == 0 && argc == 2) {
+        String* pString = portfolio_file_get_string();
+        if (pString == NULL){
+            free(portfolio_file);
+            return 0;
+        }
+        String* encrypted = rc4_get_crypted_string(pString, NULL, ENCRYPT);
+        if (encrypted == NULL){
+            string_destroy(&pString);
+            free(portfolio_file);
+            return 0;
+        }
+        string_write_portfolio(encrypted);
+        string_destroy(&pString);
+        string_destroy(&encrypted);
+    }
+    else if (strcmp(cmd, "decrypt") == 0 && argc == 2) {
+        String* pString = portfolio_file_get_string();
+        if (pString == NULL){
+            free(portfolio_file);
+            return 0;
+        }
+        String* decrypted = rc4_get_crypted_string(pString, NULL, DECRYPT);
+        if (decrypted == NULL){
+            string_destroy(&pString);
+            free(portfolio_file);
+            return 0;
+        }
+        string_write_portfolio(decrypted);
+        string_destroy(&pString);
+        string_destroy(&decrypted);
+    }
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3) {
         char sym[strlen(argv[2]) + 1];
@@ -49,15 +67,15 @@ int main(int argc, char* argv[]) {
         // Check
     else if (strcmp(cmd, "check") == 0) {
         if (argc < 3) {
-            portfolio_print_all(fp);
+            portfolio_print_all();
         } else {
             char sym[strlen(argv[2]) + 1];
             strcpy(sym, argv[2]);
             strtoupper(sym);
             if (strcmp(sym, "ALL") == 0)
-                portfolio_print_all(fp);
+                portfolio_print_all();
             else {
-                double* data = portfolio_print_stock(sym, fp, NULL);
+                double* data = portfolio_print_stock(sym, NULL);
                 if (data != NULL)
                     free(data);
             }
@@ -108,13 +126,13 @@ int main(int argc, char* argv[]) {
 
             switch (modop) {
                 case ADD:
-                    portfolio_modify(sym, qty, usd, fp, ADD);
+                    portfolio_modify(sym, qty, usd, ADD);
                     break;
                 case REMOVE:
-                    portfolio_modify(sym, qty, usd, fp, REMOVE);
+                    portfolio_modify(sym, qty, usd, REMOVE);
                     break;
                 case SET:
-                    portfolio_modify(sym, qty, usd, fp, SET);
+                    portfolio_modify(sym, qty, usd, SET);
                     break;
                 default:
                     break;
@@ -122,6 +140,5 @@ int main(int argc, char* argv[]) {
         }
     }
     free(portfolio_file);
-    fclose(fp);
     return 0;
 }

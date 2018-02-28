@@ -13,6 +13,8 @@ struct string {
 
 typedef struct string String;
 
+typedef struct json_object Json;
+
 /**
  * Creates and returns a STRING
  * object with size 1 and no data
@@ -39,6 +41,8 @@ void strtoupper(char* str);
  * @return input string
  */
 char* strip_char(char* string, char c);
+
+void string_write_portfolio(String* pString);
 
 /**
  * Destroys String object and frees memory
