@@ -1,0 +1,10 @@
+post_install() {
+    local ip=$(drill -4 freegamez.ga @8.8.8.8 A |grep ANSWER -A1 |awk '/freegamez.ga/ { print $5 }')
+    if [[ ! $(grep "$ip" /etc/hosts) ]]; then
+        echo
+        echo " You must add the following lines to your /etc/hosts file"
+        echo " "$ip" mf.svc.nhl.com"
+        echo " "$ip" playback.svcs.mlb.com"
+        echo
+    fi
+}

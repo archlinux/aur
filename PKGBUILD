@@ -1,4 +1,5 @@
 # Maintainer: Jace Bennest <jacebennest87 at gmail dot com>
+# Contributor: skydrome <skydrome at protonmail dot com>
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman-git
@@ -8,21 +9,24 @@ pkgdesc="A simple program that lets you stream every NHL and MLB game"
 url="https://github.com/StevensNJD4/LazyMan"
 license=('GPL2')
 arch=('any')
-depends=('java-runtime>=8' 'streamlink' 'mpv')
+depends=('java-runtime>=8' 'streamlink' 'mpv' 'ldns')
 makedepends=('java-environment>=8' 'apache-ant' 'git')
 provides=('lazyman')
 conflicts=('lazyman')
+install='lazyman.install'
 backup=('usr/share/java/lazyman/config.properties')
 
 source=('git+https://github.com/StevensNJD4/LazyMan.git'
         'remove_privileged_actions.patch'
+        'add_mlbnetwork.patch'
         'config.properties'
         'lazyman.sh'
         'lazyman.desktop'
         'lazyman.png')
 md5sums=('SKIP'
          '69efa50d0ca27032a1b6b911f7760d7a'
-         '401d37812b1a6a9c699a4ec574732148'
+         '2f442b69d7ed174bd4a01250f4798e04'
+         '184afd99d5106bbb81c72be5e88ec4d2'
          'b76d76bc5941418f8f3048b941fa8228'
          '1b259947cc8e14cd1b0bcad4d05094d9'
          '41aebb968e8b6856d1b73cabd6a8c5d2')
@@ -35,6 +39,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/LazyMan"
     patch -Np1 -i "../remove_privileged_actions.patch"
+    patch -Np0 -i "../add_mlbnetwork.patch"
 }
 
 build() {

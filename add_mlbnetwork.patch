@@ -1,0 +1,56 @@
+diff -Naur src.orig/lazyman/MainGUI.java src/lazyman/MainGUI.java
+--- src.orig/lazyman/MainGUI.java	2018-02-27 21:10:13.063807000 -0500
++++ src/lazyman/MainGUI.java	2018-02-27 21:15:49.161380432 -0500
+@@ -155,9 +155,11 @@
+         //jMenuItem1 = new javax.swing.JMenuItem();
+         //jMenuItem2 = new javax.swing.JMenuItem();
+         jMenu3 = new javax.swing.JMenu();
++        jMenu4 = new javax.swing.JMenu();
+         guidesMI = new javax.swing.JMenuItem();
+         AboutMI = new javax.swing.JMenuItem();
+         updateMI = new javax.swing.JMenuItem();
++        otherstreams = new javax.swing.JMenuItem();
+ 
+         consolePM.setLabel("popupMenu1");
+ 
+@@ -656,6 +658,24 @@
+ 
+                 jMenuBar1.add(jMenu3);
+ 
++                jMenu4.setMnemonic(KeyEvent.VK_H);
++                jMenu4.setText("Other Streams");
++
++                otherstreams.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
++                otherstreams.setText("Open MLB Network");
++                otherstreams.addActionListener(new java.awt.event.ActionListener() {
++                    public void actionPerformed(java.awt.event.ActionEvent evt) {
++                        Process m;
++                        try {
++                            m = new ProcessBuilder("/bin/bash", "-c", "mpv http://mlblive-akc.mlb.com/ls01/mlbam/mlb_network/NETWORK_LINEAR_1/master_wired.m3u8").start();
++                        } catch (IOException ex) {
++                            ex.printStackTrace();
++                        }
++                    }
++                });
++                jMenu4.add(otherstreams);
++                jMenuBar1.add(jMenu4);
++
+                 setJMenuBar(jMenuBar1);
+ 
+                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+@@ -1018,6 +1038,7 @@
+     private javax.swing.JMenu jMenu1;
+     private javax.swing.JMenu jMenu2;
+     private javax.swing.JMenu jMenu3;
++    private javax.swing.JMenu jMenu4;
+     private javax.swing.JMenuBar jMenuBar1;
+     //private javax.swing.JMenuItem jMenuItem1;
+     //private javax.swing.JMenuItem jMenuItem2;
+@@ -1041,6 +1062,7 @@
+     private javax.swing.JCheckBox restartCB;
+     private javax.swing.JCheckBox saveStreamCB;
+     private javax.swing.JMenuItem updateMI;
++    private javax.swing.JMenuItem otherstreams;
+     // End of variables declaration//GEN-END:variables
+ 
+     class newDay extends Thread {
