@@ -2,13 +2,13 @@
 
 pkgname=libretro-hatari2-enhanced-git
 pkgver=6470.5bf52cd4
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Hatari v2.0 (Atari ST/STE/TT/Falcon) with IPF support"
 arch=('i686' 'x86_64')
 url="https://github.com/r-type/hatari2"
 license=('GPL2')
 groups=('libretro')
-depends=('capsimage4' 'zlib' 'glibc' 'libretro-core-info' 'sdl2')
+depends=('capsimage' 'zlib' 'glibc' 'libretro-core-info' 'sdl2')
 makedepends=('git')
 
 _libname=hatari2_enhanced_libretro
