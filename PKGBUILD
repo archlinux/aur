@@ -4,7 +4,7 @@
 pkgname=wine-staging-lutris-git
 _winesrc=wine-git
 _stgver=3.2
-pkgver=3.2.r3566.7ae8e84d+wine.3.2.r206.g9ae8b8c00f
+pkgver=3.2.r3570.d3bcb614+wine.3.2.r256.g7b62a970e9
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
 arch=('i686' 'x86_64')
