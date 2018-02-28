@@ -3,7 +3,7 @@
 _pkgname=jre
 pkgname=jre-devel
 _major=10
-_build=44
+_build=45
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
@@ -37,7 +37,7 @@ install=$pkgname.install
 source=("https://download.java.net/java/jdk${_major}/archive/${_build}/BCL/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('836a3be8463e5383d6aa4a1947287ab9ba643362d2edfc5aba5f48dfc51db3ec'
+sha256sums=('eb3c05fba2e0c56a9878f06c068bf28ee9f85c902ea92c201a084ab93af2d638'
             '011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
