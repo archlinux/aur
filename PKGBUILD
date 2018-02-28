@@ -51,7 +51,7 @@ source=("plugins.ini"
         "QuickBox::git+https://github.com/QuickBox/club-QuickBox.git"
         "git+https://github.com/exetico/FlatUI.git")
 
-md5sums=('21b595d878e49dde91fca665a0a8effb'
+md5sums=('SKIP'
          '3e0002fe9ce69f43513152c515944559'
          'SKIP'
          'SKIP'
