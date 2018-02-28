@@ -5,7 +5,7 @@
 
 gitname=stylish-chrome
 pkgname=${gitname}-git
-pkgver=416.c6df61b
+pkgver=418.b4b972e
 pkgrel=1
 pkgdesc="User styles manager extension for Chrome and Chrome-like things"
 arch=('any')
