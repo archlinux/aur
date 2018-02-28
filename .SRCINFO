@@ -1,0 +1,12 @@
+pkgbase = openbsd-manpages
+	pkgdesc = The OpenBSD manual pages.
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://man.openbsd.org/
+	arch = x86_64
+	license = BSD
+	source = https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/man62.tgz
+	sha256sums = 7e47ac7364ffad253ba7b3e759e7e4e8f16da58d7f320eb0b47f09c3e647f408
+
+pkgname = openbsd-manpages
+
