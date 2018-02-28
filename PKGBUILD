@@ -21,7 +21,6 @@ source=(
 md5sums=(
   "b8f8baa599a43b9db34c1ee2e49c2745"
 )
-install=vivaldi-codecs-ffmpeg-extra-bin.install
 
 prepare() {
   cd "$srcdir"
@@ -29,8 +28,6 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir"
-  mkdir -p "$pkgdir/usr/share/vivaldi-codecs"
-  cp "$srcdir/usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/usr/share/vivaldi-codecs/libffmpeg.so"
+  install -Dm644 "$srcdir/usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/opt/vivaldi/libffmpeg.so"
 }
 

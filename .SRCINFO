@@ -3,7 +3,6 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	pkgver = 64.0.3282.167
 	pkgrel = 1
 	url = https://packages.ubuntu.com/artful/amd64/chromium-codecs-ffmpeg-extra/download
-	install = vivaldi-codecs-ffmpeg-extra-bin.install
 	arch = x86_64
 	license = LGPL
 	depends = vivaldi
