@@ -1,7 +1,7 @@
 pkgbase = biglybt-extreme-mod
 	pkgdesc = A modded version of the BiglyBT client with multiple spoofing capabilities
 	pkgver = 1.4.0.0b1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.sb-innovation.de/f41/
 	install = biglybt-extreme-mod.install
 	arch = x86_64

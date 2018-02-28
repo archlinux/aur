@@ -3,7 +3,7 @@
 pkgname=biglybt-extreme-mod
 pkgver=1.4.0.0b1
 _ver=${pkgver/b*}
-pkgrel=2
+pkgrel=1
 pkgdesc="A modded version of the BiglyBT client with multiple spoofing capabilities"
 arch=('x86_64')
 url="http://www.sb-innovation.de/f41/"
@@ -17,13 +17,15 @@ noextract=($(basename ${source[1]}))
 md5sums=('1e059362ac473e4a8c386bb5115bffa4'
          'de9fa89bafd150041855857243b3cbde')
 
-package() {
+prepare() {
   rm -rf $pkgname
   
   msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
   export app_java_home=/usr/lib/jvm/default
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
-
+}
+  
+package() {
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
