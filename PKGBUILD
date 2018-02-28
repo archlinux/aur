@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=arrongin-gtk-theme
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
 url="https://www.opendesktop.org/p/1215199/"
