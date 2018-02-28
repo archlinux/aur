@@ -1,7 +1,7 @@
 pkgbase = pdf2htmlex-git
 	pkgdesc = Convert PDF to HTML without losing format. Text is preserved as much as possible.
 	pkgver = 1742.f12fc15
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/coolwanglu/pdf2htmlEX
 	arch = i686

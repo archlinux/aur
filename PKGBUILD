@@ -3,7 +3,7 @@
 
 pkgname=pdf2htmlex-git
 pkgver=1742.f12fc15
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Convert PDF to HTML without losing format. Text is preserved as much as possible."
 arch=('i686' 'x86_64')
@@ -32,6 +32,9 @@ pkgver() {
 prepare() {
   cd "${_gitname}"
   patch -p1 < "${srcdir}/735.patch"
+
+  cd 3rdparty/poppler/git
+  sed -i 's|globalParams->getStrokeAdjust()|gTrue|' CairoOutputDev.cc
 }
 
 build() {
