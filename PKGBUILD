@@ -8,21 +8,21 @@
 _gitname=alot
 pkgname=alot-git
 pkgrel=1
-pkgver=r2938.8fabf1cf
+pkgver=r3273.444abb20
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
 license=('GPL3')
 depends=(notmuch
-         python2
-         python2-gpg
-         python2-magic
-         python2-configobj
-         python2-urwid
-         python2-urwidtrees
-         python2-twisted
-         python2-setuptools)
-makedepends=(python2-sphinx git)
+         python
+         python-gpgme
+         python-magic
+         python-configobj
+         python-urwid
+         python-urwidtrees
+         python-twisted
+         python-setuptools)
+makedepends=(python-sphinx git)
 provides=(alot)
 conflicts=(alot)
 options=(!emptydirs !strip libtool staticlibs zipman)
@@ -37,21 +37,21 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname"
 
-    # The archlinux package python2-magic's egg calls itself
+    # The archlinux package python-magic's egg calls itself
     # "file-magic", as opposed to the python-magic on pypi. The
     # result is that the alot executable can't find the module, so we patch
     # setup.py to fix the dependency:
     sed -i -e 's/python-magic/file-magic/' setup.py
-    python2 setup.py build
-    make SPHINXBUILD=sphinx-build2 PYTHON=python2 -C docs man html
+    python setup.py build
+    make SPHINXBUILD=sphinx-build PYTHON=python -C docs man html
 }
 
 package() {
     cd "$srcdir/$_gitname"
-    python2 setup.py install --optimize=1 --root="$pkgdir"
+    python setup.py install --optimize=1 --root="$pkgdir"
 
     # Delete tests
-    rm -rvf "$pkgdir/usr/lib/python2.7/site-packages/tests"
+    rm -rvf "$pkgdir/usr/lib/python3.6/site-packages/tests"
 
     # Install extra data
     install -Dm644 extra/completion/alot-completion.zsh \
