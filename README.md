@@ -70,12 +70,6 @@ $ tick news [symbol]
 If you wish to use spaces in your input, you can either surround the phrase
 with quotes or replace spaces with underscores.
 
-Note: As of version 1.7, the portfolio file has been reconstructed and formatted
-in JSON. To convert your existing portfolio, run
-```bash
-$ tick convert
-```
-
 Once installed, you may read the man page for more information.
 
 #### License
@@ -88,16 +82,14 @@ API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
 #### Future Ideas/To-do
-* Historical support -- 7d/28d profits (wait for coinmarketcap release)
+* Historical support -- 7d/28d profits (wait for coinmarketcap historical release)
 * Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
 * DEB/RPM package
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
-* Make printouts pretty with ncurses??
-* Check without re-encrypting in case sigint
-* Format prices with commas (set locale)
+* Make printouts pretty with ncurses (graph plots with historical prices?)
+* Format prices with commas (set locale?)
 * Function to add new attributes to portfolio if not found
 * Improve code documentation
-* Round doubles

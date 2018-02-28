@@ -1,4 +1,4 @@
-.TH TICK "1" "February 2018" "Tick 1.9.0" "User Commands"
+.TH TICK "1" "March 2018" "Tick 1.10.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -8,7 +8,7 @@ tick COMMAND [ARGUMENTS]
 
 .SH DESCRIPTION
 Create your portfolio by adding your current holdings. You can see information about your holdings with the command "check".
-You may also see information about securities that you may not own with commands "info"and "news".
+You may also see information about securities that you may not own with commands "info" and "news".
 
 .SS
 Portfolio:
@@ -30,11 +30,6 @@ You may also specify the share price instead of the total amount you spent by ap
 Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword "all"
 will print information about all your current holdings, as well as a grand total. Running only 'tick check' will do the same
 thing as 'tick check all'.
-
-.TP
-[convert]
-If it exists, removes $HOME/.tick_portfolio.json and adds your current holding from the legacy portfolio, located at
-$HOME/.tick_portfolio.
 
 .TP
 [encrypt/decrypt]
@@ -96,7 +91,9 @@ Portfolio file.
 Portfolio file (legacy).
 
 .SH GITHUB
-Please report any bugs using the GitHub issue tracker: https://github.com/aokellermann/tick/issues
+Please report any bugs using the GitHub issue tracker:
+
+https://github.com/aokellermann/tick/issues
 
 .SH AUTHORS
 Antony Kellermann -- https://github.com/aokellermann
