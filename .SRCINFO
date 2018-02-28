@@ -80,7 +80,7 @@ pkgname = xorg-server-dev
 	depends = libdrm
 	depends = libxshmfence
 	provides = xorg-server=1.19.99.901
-	provides = X-ABI-VIDEODRV_VERSION=23
+	provides = X-ABI-VIDEODRV_VERSION=24
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
