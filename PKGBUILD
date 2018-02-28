@@ -2,7 +2,7 @@
 
 pkgname=biglybt
 pkgver=1.4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
