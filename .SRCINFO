@@ -1,15 +1,15 @@
 pkgbase = jdk-devel-docs
 	pkgdesc = Documentation for Oracle Java 10 Development Kit Snapshot
-	pkgver = 10b44
+	pkgver = 10b45
 	pkgrel = 1
 	url = http://jdk.java.net/10/
 	arch = any
 	license = custom:Oracle
 	optdepends = java-environment>=10: Compile and run examples
 	options = !strip
-	source = https://download.java.net/java/jdk10/archive/44/BCL/jdk-10+44_doc-all.zip
+	source = https://download.java.net/java/jdk10/archive/45/BCL/jdk-10+45_doc-all.zip
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
-	sha256sums = e7428531a7f4f7d0755eeae97f5d41958796f37d551bf31013e37f762fecb9e4
+	sha256sums = 7540eda8a0bdb69d8d7523fc3a9f7e01d1658fa0a745acb9f47614f8170807b6
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jdk-devel-docs
