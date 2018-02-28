@@ -1,19 +1,19 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-pagespeed
-pkgver=1.12.34.3
-pkgrel=4
+pkgver=1.13.35.2
+pkgrel=1
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
-_nginxver=1.13.7
+_nginxver=1.13.9
 _pagespeedver=$pkgver-stable
-_psolver=1.12.34.2
+_psolver=$pkgver
 
 pkgdesc="PageSpeed module for mainline nginx"
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
-url="https://modpagespeed.com"
+url="https://www.ngxpagespeed.com/"
 license=('Apache')
 
 source=(
@@ -23,20 +23,20 @@ source=(
 source_i686=(pagespeed-$_psolver-i686.tar.gz::https://dl.google.com/dl/page-speed/psol/$_psolver-ia32.tar.gz)
 source_x86_64=(pagespeed-$_psolver-x86_64.tar.gz::https://dl.google.com/dl/page-speed/psol/$_psolver-x64.tar.gz)
 
-sha256sums=('beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c'
-            '7bc56a2fd9c0ac435df6d0f1242b8e9311e0389dfb095e5fc901c122ca368aef')
-sha256sums_i686=('cf54611bf8713a0dcb13ff274b011cb2a00c738b53afacb39edc64df7687f7fc')
-sha256sums_x86_64=('f5e53a07dff6b38075aa811f8a973b10db9f7c1d61464fd76b55b398f478e2c5')
+sha256sums=('5faea18857516fe68d30be39c3032bd22ed9cf85e1a6fdf32e3721d96ff7fa42'
+            '68242a30308b21f13de9a36f2aea5c3e34e8a4c0b7c6a37d3369334f6f847d36')
+sha256sums_i686=('9155acfc1764c3554ef21b17b00739d6879822eabeada9a1578a848b0b2d70d0')
+sha256sums_x86_64=('df3ba3c8fc54e13845d0a1daa7a6e3d983126c23912851bbf8ba35be646a434f')
 
 prepare() {
-	cd "$srcdir"/$_modname-$_pagespeedver
+	cd "$srcdir"/incubator-pagespeed-ngx-$_pagespeedver
 	ln -s ../psol
 	sed -r 's@^pagespeed_libs="(\$psol_binary.*)"@pagespeed_libs="\1 -Wl,-z,noexecstack"@' -i config
 }
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure --with-compat --add-dynamic-module=../$_modname-$_pagespeedver
+	./configure --with-compat --add-dynamic-module=../incubator-pagespeed-ngx-$_pagespeedver
 	make modules
 }
 
