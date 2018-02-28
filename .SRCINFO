@@ -1,7 +1,7 @@
 pkgbase = hass-configurator
 	pkgdesc = Configuration UI for Home Assistant
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielperna84/hass-configurator
 	arch = any
 	license = MIT

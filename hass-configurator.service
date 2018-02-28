@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=hass
 #Set the path to your configurator.py location
-WorkingDirectory=/var/lib/hass/hass-configurator
-ExecStart=/usr/bin/hass-configurator settings.conf
+WorkingDirectory=/var/lib/hass
+ExecStart=/usr/bin/hass-configurator hass-configurator/settings.conf
 Restart=always
 
 [Install]

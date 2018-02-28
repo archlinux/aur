@@ -2,7 +2,7 @@
 
 pkgname=hass-configurator
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration UI for Home Assistant"
 arch=('any')
 url="https://github.com/danielperna84/hass-configurator"
