@@ -1,7 +1,7 @@
 pkgbase = dosbox-daum
 	pkgdesc = Emulator with builtin DOS for running DOS Games (Daum version)
 	pkgver = 20150125
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ykhwong.x-y.net/
 	arch = i686
 	arch = x86_64

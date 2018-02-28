@@ -2,7 +2,7 @@
 
 pkgname=dosbox-daum
 pkgver=20150125
-pkgrel=3
+pkgrel=4
 pkgdesc="Emulator with builtin DOS for running DOS Games (Daum version)"
 arch=('i686' 'x86_64')
 url="http://ykhwong.x-y.net/"
@@ -64,6 +64,14 @@ build(){
 	cd "${srcdir}"
 
 	./autogen.sh
+
+	# disable fluidsynth for now until the issue with the midi parser gets resolved.
+	# see:
+	#  * https://github.com/FluidSynth/fluidsynth/commit/5f45c6d97b241ed250272e4a523d19dbc2bac414
+	#  * https://github.com/FluidSynth/fluidsynth/commit/51cc2656e1b4a36c13f81ad838c4f520adc3d776
+	#
+	sed -i 's/have_fluidsynth_lib=yes/have_fluidsynth_lib=no/' configure
+
 	./configure --prefix=/usr --sysconfdir=/etc/dosbox
 
 	make
