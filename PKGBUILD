@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-test-portability-files
-pkgver=0.07
+pkgver=0.09
 pkgrel=1
 _author="A/AB/ABRAXXA"
 _perlmod="Test-Portability-Files"
@@ -13,7 +13,7 @@ depends=(perl)
 checkdepends=(perl-test-mojibake)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('5563cb65346e294bfbd732e195ab55198a978de3d810235a3568d80b676cb985')
+sha256sums=('16d31fa941af1a79faec0192e09880cb19225cde649c03d2e3ceda9b455a621c')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
