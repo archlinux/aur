@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-shell-config-generate
-pkgver=0.29
+pkgver=0.31
 pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="Shell-Config-Generate"
@@ -13,9 +13,10 @@ makedepends=(perl-shell-guess)
 depends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('40bc26591759063cc7d33bf8469676b3a4538866f3bfe07dfd16f1fd704d1443')
+sha256sums=('2678db9bb57a2754cfc0addc1127f1d8d807503cc5498874f3412eaef7e3590c')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
+
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
