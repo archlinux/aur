@@ -10,6 +10,8 @@ license=('GPL2')
 arch=('any')
 depends=('java-runtime>=8' 'streamlink' 'mpv')
 makedepends=('java-environment>=8' 'apache-ant' 'git')
+provides=('lazyman')
+conflicts=('lazyman')
 backup=('usr/share/java/lazyman/config.properties')
 
 source=('git+https://github.com/StevensNJD4/LazyMan.git'
