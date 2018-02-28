@@ -10,6 +10,3 @@ pkgbase = ttf-ibm-plex
 pkgname = ttf-ibm-plex
 	pkgdesc = IBM Plex Mono, Sans, and Serif typefaces in truetype format
 
-pkgname = otf-ibm-plex
-	pkgdesc = IBM Plex Mono, Sans, and Serif typefaces in opentype format
-
