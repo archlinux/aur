@@ -8,6 +8,7 @@ pkgbase = vim-jq-git
 	depends = vim
 	provides = vim-jq
 	conflicts = vim-jq
+	options = !strip
 	source = vim-jq::git+https://github.com/vito-c/jq.vim
 	md5sums = SKIP
 
