@@ -16,7 +16,7 @@ provides=(fontconfig)
 conflicts=(fontconfig)
 install=fontconfig.install
 _commit=a4e6fc6ae509da8194b79006e747467bf672c1ed # 2.12.93+srb, latest fixes
-source=("git+https://github.com/AOSC-Dev/fontconfig#commit=$_commit"
+source=("$pkgname::git+https://github.com/AOSC-Dev/fontconfig#commit=$_commit"
         fontconfig.hook)
 sha256sums=('SKIP'
             '672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274')

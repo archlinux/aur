@@ -20,7 +20,7 @@ pkgbase = fontconfig-srb
 	depends = freetype2
 	provides = fontconfig
 	conflicts = fontconfig
-	source = git+https://github.com/AOSC-Dev/fontconfig#commit=a4e6fc6ae509da8194b79006e747467bf672c1ed
+	source = fontconfig-srb::git+https://github.com/AOSC-Dev/fontconfig#commit=a4e6fc6ae509da8194b79006e747467bf672c1ed
 	source = fontconfig.hook
 	sha256sums = SKIP
 	sha256sums = 672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274
