@@ -137,6 +137,7 @@ build() {
   export PATH="$srcdir/python2-path:$PATH"
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
+  mkdir -p out/Default
 
   export CC=clang
   export CXX=clang++
@@ -219,13 +220,13 @@ build() {
   fi
 
   msg2 'Building GN'
-  python2 tools/gn/bootstrap/bootstrap.py -s -j 4 --no-clean
+  python2 tools/gn/bootstrap/bootstrap.py -o out/Default/gn -s -j 4 --no-clean
   msg2 'Configuring Chromium'
-  out/Release/gn gen out/Release --args="${_flags[*]}" \
+  out/Default/gn gen out/Default --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2 --fail-on-unused-args
 
   msg2 'Building Chromium'
-  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
+  ninja -C out/Default chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
@@ -236,9 +237,9 @@ package() {
 
   cd "$srcdir/chromium-$pkgver"
 
-  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
+  install -D out/Default/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -Dm4755 out/Default/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  install -D out/Default/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
   ln -s /usr/lib/$pkgname/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
@@ -253,13 +254,13 @@ package() {
     "$pkgdir/usr/share/man/man1/chromium.1"
 
   cp \
-    out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/{*.bin,libwidevinecdmadapter.so} \
+    out/Default/{chrome_{100,200}_percent,resources}.pak \
+    out/Default/{*.bin,libwidevinecdmadapter.so} \
     "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Default/locales/*.pak
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+    cp out/Default/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
 
   for size in 22 24 48 64 128 256; do
