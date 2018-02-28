@@ -9,16 +9,17 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.2.4.r431.g46c58b32
+pkgver=2.3.0.r500.c167a0d
 pkgrel=1
-pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
+pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassxc"
 license=('GPL2')
-depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 
-         'desktop-file-utils' 'yubikey-personalization' 'libsodium')
+depends=('qt5-base' 'qt5-x11extras' 'libxtst' 'shared-mime-info'
+         'hicolor-icon-theme' 'desktop-file-utils' 'yubikey-personalization'
+         'curl' 'libsodium' 'libgcrypt' 'argon2' 'zlib')
 install=keepassxc.install
-makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
+makedepends=('git' 'intltool' 'cmake' 'qt5-tools')
 conflicts=('keepassxc')
 replaces=('keepassx-http' 'keepassx-reboot-git')
 options=(!emptydirs)
@@ -43,12 +44,8 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=ON \
-        -DWITH_XC_AUTOTYPE=ON \
-        -DWITH_XC_HTTP=ON \
-        -DWITH_XC_YUBIKEY=ON \
-        -DWITH_XC_SSHAGENT=ON \
-        -DWITH_XC_BROWSER=ON \
-        -DCMAKE_BUILD_TYPE=Release ..
+        -DWITH_XC_ALL=ON \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
     make
 }
 
