@@ -2,7 +2,7 @@
 
 pkgname=ffnvcodec-headers-git
 pkgver=8.0.14.1.r0.g12712ab
-pkgrel=1
+pkgrel=2
 pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs (git version)'
 arch=('any')
 url='https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git'
@@ -13,11 +13,6 @@ conflicts=('ffnvcodec-headers')
 source=("$pkgname"::'git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git')
 sha256sums=('SKIP')
 
-prepare() {
-    cd "$pkgname"
-    sed -i 's|/usr/local|/usr|g' Makefile
-}
-
 pkgver() {
     cd "$pkgname"
     
@@ -27,12 +22,12 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    make  # using PREFIX='/usr' seems not to work
+    make PREFIX='/usr'
 }
 
 package() {
     cd "$pkgname"
-    make DESTDIR="$pkgdir" install
+    make PREFIX='/usr' DESTDIR="$pkgdir" install
     
     # license
     sed -n '4,25p' include/ffnvcodec/nvEncodeAPI.h > LICENSE  # create file

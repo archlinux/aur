@@ -1,7 +1,7 @@
 pkgbase = ffnvcodec-headers-git
 	pkgdesc = FFmpeg version of headers required to interface with Nvidias codec APIs (git version)
 	pkgver = 8.0.14.1.r0.g12712ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 	arch = any
 	license = MIT
