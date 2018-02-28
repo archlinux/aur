@@ -1,6 +1,6 @@
 pkgbase = mopidy-git
 	pkgdesc = An extensible music server written in Python
-	pkgver = 2.1.0.r55.g9e31e76a
+	pkgver = 2.1.0.r57.g79d42c34
 	pkgrel = 1
 	url = https://github.com/mopidy/mopidy
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mopidy-git
 	optdepends = mopidy-spotify: Spotify backend
 	optdepends = mopidy-scrobbler: Last.FM scrobbler
 	optdepends = mopidy-mpris: MPRIS frontend
-	provides = mopidy=2.1.0.r55.g9e31e76a-1
+	provides = mopidy=2.1.0.r57.g79d42c34-1
 	conflicts = mopidy
 	source = git+https://github.com/mopidy/mopidy
 	source = mopidy@.service

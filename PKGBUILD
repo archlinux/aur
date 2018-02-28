@@ -4,7 +4,7 @@
 _pkgname=mopidy
 _owner=mopidy
 pkgname=mopidy-git
-pkgver=2.1.0.r55.g9e31e76a
+pkgver=2.1.0.r57.g79d42c34
 pkgrel=1
 pkgdesc='An extensible music server written in Python'
 arch=('any')
