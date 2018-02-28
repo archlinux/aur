@@ -1,7 +1,7 @@
 pkgbase = arrongin.left.button-gtk-theme
-	pkgdesc = Arrongin GTK theme with window-control-buttons on the left-side.
+	pkgdesc = Adapted version of Arrongin GTK theme with window-control-buttons on the left-side.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA

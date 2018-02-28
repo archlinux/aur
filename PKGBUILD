@@ -1,8 +1,8 @@
 # Maintainer: Prasad Kumar
 pkgname=arrongin.left.button-gtk-theme
 pkgver=1.4
-pkgrel=1
-pkgdesc="Arrongin GTK theme with window-control-buttons on the left-side."
+pkgrel=2
+pkgdesc="Adapted version of Arrongin GTK theme with window-control-buttons on the left-side."
 arch=('any')
 url="https://www.opendesktop.org/p/1215199/"
 license=("CC BY-NC-SA")
