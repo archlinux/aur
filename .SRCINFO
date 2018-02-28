@@ -9,6 +9,7 @@ pkgbase = vim-go
 	depends = vim
 	optdepends = go-tools: developer tools
 	optdepends = gocode-daemon: autocompletion support
+	options = !strip
 	source = https://github.com/fatih/vim-go/archive/v1.16.tar.gz
 	sha256sums = 1cc594e90ebfd069fafec52e34611bfa16cd4c58cb30e0629a69b67cccdeed4d
 

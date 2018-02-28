@@ -10,6 +10,7 @@ arch=(any)
 url=https://github.com/fatih/vim-go
 license=('BSD')
 groups=('vim-plugins')
+options=('!strip')
 depends=(vim)
 optdepends=(
 	'go-tools: developer tools'
