@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54342
+pkgver=1.1.54343
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -14,17 +14,17 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
         https://github.com/edenhill/librdkafka/archive/c3d50eb.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
-        https://github.com/ClickHouse-Extras/zookeeper/archive/5aa9e88.tar.gz
+        https://github.com/ClickHouse-Extras/zookeeper/archive/438afae.tar.gz
         https://github.com/facebook/zstd/archive/f4340f4.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
         https://github.com/ClickHouse-Extras/poco/archive/81d4fdf.tar.gz
         clickhouse-server.service
         libunwind.patch)
-md5sums=('c2613b6952fadb2a057c5e16f4bac030'
+md5sums=('b1462bc8d95af168261ca0e879e44292'
          '5323f7ba2565a84a80a93edde95eb4fe'
          'ea7f52489fead0712f7d20c450a4b7a0'
          '7b92f0554687e6a8949adc5c10aeff78'
-         'eebe2918fb575297ecc60016442a749d'
+         '822fa96f5ceb235f06d22d2e0c7175a2'
          'e3212525a38d6cc38e26979a10c174ed'
          '87676f8d7fcdea908476029f92b8103f'
          '1bc2bbf8b5c26f6685cca8f8b7525d4c'
@@ -42,7 +42,7 @@ prepare() {
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-c3d50eb*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
-  mv ../zookeeper-5aa9e88*/* contrib/zookeeper/
+  mv ../zookeeper-438afae*/* contrib/zookeeper/
   mv ../zstd-f4340f4*/* contrib/zstd/
   mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
   mv ../poco-81d4fdf*/* contrib/poco/
