@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+java -jar /opt/ktproxy/ktproxy-client.jar

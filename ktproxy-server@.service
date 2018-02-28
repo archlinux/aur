@@ -1,0 +1,11 @@
+[Unit]
+Description=ktproxy service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ktproxy-server -c /etc/ktproxy/%i.toml
+MemoryAccounting=true
+
+[Install]
+WantedBy=multi-user.target
+
