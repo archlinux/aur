@@ -7,7 +7,7 @@ index 4baf9e5..2b5e2e8 100755
  
  liblazyusf.so: $(OBJS)
 -	$(CC) $^ -shared -Wl,-soname -Wl,$@.2 -o $@.2.0
-+	$(CC) $(LDFLAGS) $^ -shared -Wl,-soname -Wl,$@.2 -o $@.2.0
++	$(CC) $^ $(LDFLAGS) -shared -Wl,-soname -Wl,$@.2 -o $@.2.0
  
  bench : test/bench.o liblazyusf.a
  	$(CC) -o $@ $^ ../psflib/libpsflib.a -lz -lm

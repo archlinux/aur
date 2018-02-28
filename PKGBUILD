@@ -2,7 +2,7 @@
 
 pkgname=lazyusf2-git
 pkgver=r83.95d71f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/lazyusf2'
@@ -13,7 +13,7 @@ source=(${pkgname}::git+https://gitlab.kode54.net/kode54/lazyusf2.git
         makefile.patch
         LICENSE.CC0)
 sha256sums=('SKIP'
-            '42eda354f4e97a0235ea747a1b0b1edf3c4e9eeec3655d3f9f9514605c2a9180'
+            '25ab13f0f3ed10b12fa378d07219e71c533fd38e0875d8bb046b6637ce2bcfe1'
             'a90051e82202a5dc51162127c6834f8434fb2ece57795317951420fe6a8f4562')
 
 pkgver() {
@@ -34,7 +34,7 @@ build() {
   OPTFLAGS=$CFLAGS
   { gcc $CFLAGS -dM -E - </dev/null | fgrep -qw __SSSE3__ && OPTFLAGS+=" -DARCH_MIN_SSSE3"; } ||
     { gcc $CFLAGS -dM -E - </dev/null | fgrep -qw __SSE2__ && OPTFLAGS+=" -DARCH_MIN_SSE2"; }
-  export LDFLAGS="$LDFLAGS -Wl,-Bsymbolic"
+  export LDFLAGS="$LDFLAGS -Wl,-Bsymbolic -lm -lz"
   make liblazyusf.{a,so} OPTFLAGS="$OPTFLAGS -Irsp_hle/msvc-compat"
 }
 
