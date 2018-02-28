@@ -19,7 +19,7 @@ pkgbase = plover-git
 	depends = python-wcwidth
 	depends = python-xlib
 	provides = plover
-	conflicts = plover-git
+	conflicts = plover
 	source = plover-git::git+https://github.com/openstenoproject/plover.git
 	sha1sums = SKIP
 

@@ -24,7 +24,7 @@ makedepends=(
   'python-setuptools-scm'
 )
 provides=('plover')
-conflicts=('plover-git')
+conflicts=('plover')
 url="http://www.openstenoproject.org/plover/"
 source=($pkgname::git+https://github.com/openstenoproject/plover.git)
 sha1sums=(SKIP)
