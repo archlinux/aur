@@ -9,13 +9,15 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
 pkgname=sks-local
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A modified version of AUR/sks that can be used in tandem to perform localized keydumps"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/skskeyserver/sks-keyserver/"
 license=('GPL')
 optdepends=('sks: for running a public instance (to be peered with)')
-makedepends=('ocaml' 'db' 'camlp4')
+# See https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
+# Currently doesn't build on ocaml 4.06
+makedepends=('ocaml<=4.05.0' 'db' 'camlp4<4.06')
 _pkgname=sks
 install=sks-local.install
 backup=('etc/sks-local/sksconf'
@@ -51,7 +53,7 @@ sha512sums=('f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c911751943
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  for f in $(find ${srcdir} -maxdepth 1 -type f -name '*.patch');
+  for f in $(find ${srcdir} -maxdepth 1 -type l -name '*.patch');
   do
     sed -re 's@/var/lib/sks@/var/lib/sks-local@g' ${f} > ${f}.local
   done
@@ -80,6 +82,9 @@ package() {
   install -Dm644 "${srcdir}/sks-db-local.service" "${pkgdir}/usr/lib/systemd/system/sks-db-local.service"
   install -Dm644 "${srcdir}/sks-recon-local.service" "${pkgdir}/usr/lib/systemd/system/sks-recon-local.service"
   mv ${pkgdir}/usr/bin/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
+  mv ${pkgdir}/usr/bin/sks_add_mail ${pkgdir}/usr/bin/sks-local_add_mail
+  mv ${pkgdir}/usr/bin/sks_build.sh  ${pkgdir}/usr/bin/sks-local_build.sh
+  sed -i -e 's#/usr/sbin/sks#/usr/bin/sks-local#g' -e 's#/var/lib/sks#/var/lib/sks-local#g' ${pkgdir}/usr/bin/sks-local_build.sh
   # directories
   for d in etc/${pkgname} var/run/${pkgname} var/log/${pkgname} var/lib/${pkgname} var/spool/${pkgname};
   do
@@ -89,8 +94,13 @@ package() {
   chmod 0775 ${pkgdir}/var/run/${pkgname}
 
   cp -a ${srcdir}/${_pkgname}-${pkgver}/sampleWeb/OpenPKG "${pkgdir}/var/lib/${pkgname}"
-  cp -a ${srcdir}/${_pkgname}-${pkgver}/sampleConfig/debian "${pkgdir}/etc/${pkgname}"
+
+  for f in sksconf forward.postfix forward.exim mailsync membership procmail;
+  do
+    install -D -m0644 ${srcdir}/${_pkgname}-${pkgver}/sampleConfig/debian/${f} ${pkgdir}/etc/${pkgname}/${f}
+  done
 
   sed -i -e 's#/usr/lib/sendmail#/usr/sbin/sendmail#g' "${pkgdir}/etc/${pkgname}/sksconf"
+  sed -i -e 's#/usr/lib/sks/sks_add_mail#/usr/bin/sks-local_add_mail#g' "${pkgdir}/etc/${pkgname}/procmail"
 }
 
