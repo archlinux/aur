@@ -3,13 +3,13 @@
 
 pkgname=mgmt
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Next generation config management.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 pkggopath='github.com/purpleidea/mgmt'
 url="https://${pkggopath}"
-license=('AGPL3')
+license=('GPL3')
 makedepends=('augeas' 'go' 'go-md2man' 'go-tools' 'libpcap' 'libvirt' 'mercurial' 'ruby')
 depends=('augeas' 'libvirt')
 # don't strip binaries! A sha1 is used to check binary consistency.

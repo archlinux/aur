@@ -1,14 +1,14 @@
 pkgbase = mgmt
 	pkgdesc = Next generation config management.
 	pkgver = 0.0.15
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/purpleidea/mgmt
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
-	license = AGPL3
+	license = GPL3
 	makedepends = augeas
 	makedepends = go
 	makedepends = go-md2man
