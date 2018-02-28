@@ -17,15 +17,13 @@ noextract=($(basename ${source[1]}))
 md5sums=('1e059362ac473e4a8c386bb5115bffa4'
          'de9fa89bafd150041855857243b3cbde')
 
-prepare() {
+package() {
   rm -rf $pkgname
-
+  
   msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
   export app_java_home=/usr/lib/jvm/default
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
-}
 
-package() {
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
