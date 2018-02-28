@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.324.2"
+pkgver="7.0.324.3"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -13,7 +13,7 @@ _x86file="EditorV7.x86.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x86file)
-sha256sums=('febe72cb6f091c2a95b02292961f2a7a7ecefc3bb765f2eed1ff81a31f87d1b0')
+sha256sums=('8f3014d0e3d8c1690d6ce2b391c3730e91a6872726d65ccdc4502a2525f00a78')
 
 prepare()
 {
@@ -315,7 +315,6 @@ package()
  install -Dm644 "$srcdir/FID_EDT_uk_UA" "$pkgdir${_installdir}/$pkgname/Languages/Strings.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_EDT_zh_CN" "$pkgdir${_installdir}/$pkgname/Languages/Strings.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_EDT_zh_TW" "$pkgdir${_installdir}/$pkgname/Languages/Strings.zh-TW.xcl"
-
 
  install -Dm644 "$srcdir/FID_OCR_dat_ces" "$pkgdir${_installdir}/$pkgname/PluginsData/OCRLanguages/ces_pxvocr.dat"
  install -Dm644 "$srcdir/FID_OCR_dat_spa" "$pkgdir${_installdir}/$pkgname/PluginsData/OCRLanguages/spa_pxvocr.dat"
