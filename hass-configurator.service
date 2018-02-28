@@ -1,0 +1,14 @@
+[Unit]
+Description=HASS-Configurator
+After=network.target
+
+[Service]
+Type=simple
+User=hass
+#Set the path to your configurator.py location
+WorkingDirectory=/var/lib/hass/hass-configurator
+ExecStart=/usr/bin/hass-configurator settings.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
