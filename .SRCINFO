@@ -1,7 +1,7 @@
 pkgbase = biglybt
 	pkgdesc = Feature-filled Bittorrent client based on the Azureus project
 	pkgver = 1.4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.biglybt.com/
 	install = biglybt.install
 	arch = x86_64
