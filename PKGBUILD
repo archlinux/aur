@@ -2,7 +2,7 @@
 
 pkgname=sslyze-git
 pkgver=1.3.4.r19.g57e99f7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
 url="https://github.com/nabla-c0d3/sslyze"
@@ -37,6 +37,10 @@ cd "$srcdir/"
 cp -r openssl openssl-1.0.2e
 cd openssl-1.0.2e
 git checkout OpenSSL_1_0_2e
+cd ..
+
+cd openssl
+git checkout 1f5878b8e25a785dde330bf485e6ed5a6ae09a1a
 cd ..
 
 mv "$srcdir/openssl" "$srcdir/nassl/openssl-master"
