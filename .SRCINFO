@@ -8,7 +8,6 @@ pkgbase = vgmstream-kode54-git
 	license = BSD
 	makedepends = audacious
 	makedepends = git
-	depends = glibc
 	depends = libogg
 	depends = libvorbis
 	depends = mpg123
