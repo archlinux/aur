@@ -1,15 +1,15 @@
 pkgbase = nodejs-clean-css
 	pkgdesc = A fast, efficient, and well tested CSS minifier for node.js.
-	pkgver = 3.3.9
+	pkgver = 4.1.9
 	pkgrel = 1
 	url = https://github.com/jakubpawlowicz/clean-css
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	noextract = clean-css-3.3.9.tgz
-	source = https://registry.npmjs.org/clean-css/-/clean-css-3.3.9.tgz
-	sha256sums = d0351fd10618317d2117cce9d1e1dab7600426ed6f163b45039f0ad592f3588f
+	noextract = clean-css-4.1.9.tgz
+	source = https://registry.npmjs.org/clean-css/-/clean-css-4.1.9.tgz
+	sha256sums = a474469c4af681b798f5e9a6e97c1309a3124ad333e4e6f562ab8b3f8f19e04d
 
 pkgname = nodejs-clean-css
 
