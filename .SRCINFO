@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-lqx
 	pkgver = 5.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
@@ -12,14 +12,14 @@ pkgbase = virtualbox-modules-lqx
 pkgname = virtualbox-host-modules-lqx
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-lqx.
 	license = GPL
-	depends = linux-lqx>=4.13
-	depends = linux-lqx<4.14
+	depends = linux-lqx>=4.15
+	depends = linux-lqx<4.15
 	provides = VIRTUALBOX-HOST-MODULES
 
 pkgname = virtualbox-guest-modules-lqx
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-lqx.
 	license = GPL
-	depends = linux-lqx>=4.13
-	depends = linux-lqx<4.14
+	depends = linux-lqx>=4.15
+	depends = linux-lqx<4.16
 	provides = VIRTUALBOX-GUEST-MODULES
 

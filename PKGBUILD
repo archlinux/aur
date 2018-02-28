@@ -6,13 +6,13 @@
 pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx' 'virtualbox-guest-modules-lqx')
 pkgver=5.2.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.13-lqx
+_extramodules=extramodules-4.15-lqx
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -31,7 +31,7 @@ package_virtualbox-host-modules-lqx() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-lqx>=4.13' 'linux-lqx<4.14')
+	depends=('linux-lqx>=4.15' 'linux-lqx<4.15')
 	
         cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
         install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
@@ -48,7 +48,7 @@ package_virtualbox-guest-modules-lqx() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
 	provides=("VIRTUALBOX-GUEST-MODULES")
-	depends=('linux-lqx>=4.13' 'linux-lqx<4.14')
+	depends=('linux-lqx>=4.15' 'linux-lqx<4.16')
 
 	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
         install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
