@@ -1,14 +1,13 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
-_author=L/LB/LBROCARD
+_author=B/BP/BPS
 _perlmod=Test-Expect
 pkgname=perl-test-expect
-pkgver=0.31
-pkgrel=3
+pkgver=0.34
+pkgrel=1
 pkgdesc='Test::Expect - Automated driving and testing of terminal-based programs'
 arch=('any')
-url='http://search.cpan.org/~lbrocard/Test-Expect/'
+url='http://search.cpan.org/dist/Test-Expect/'
 license=('GPL' 'PerlArtistic')
 depends=(
 perl
@@ -18,22 +17,36 @@ perl-class-accessor-chained
 makedepends=(perl-expect)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('48a0b892d4e63ec5328b85ef7e1804304b4ca63c345c84a233734b3aa312f3cd')
-build(){
-  cd "$srcdir/$_perlmod-$pkgver"
+sha256sums=('2628fcecdda5f649bd25323f646b96a1a07e4557cadcb327c9bad4dc41bbb999')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+build(){
+  cd "$srcdir"/$_perlmod-$pkgver
+
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
+    make
+  else
+    perl Build.PL
+    ./Build
+  fi
 }
 check(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make test
+  cd "$srcdir"/$_perlmod-$pkgver
+
+  if [ -f Makefile.PL ]; then
+    make test
+  else
+    ./Build test
+  fi
 }
 package(){
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  cd "$srcdir"/$_perlmod-$pkgver
 
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+  fi
 }
