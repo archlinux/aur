@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3ecfe23a6..35d280d68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -445,7 +445,7 @@ if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+ 
+ # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=677598
+ # Acceptable versions of Python
+-set(Python_ADDITIONAL_VERSIONS "2.7")
++set(Python_ADDITIONAL_VERSIONS "3.6")
+ 
+ # For building on OS X
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

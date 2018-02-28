@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/freecad-python3/bin/FreeCAD "$@"
