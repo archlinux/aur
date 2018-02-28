@@ -1,25 +1,18 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 pkgname="brlaser"
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="CUPS driver for the Brother DCP-7065DN"
 arch=('x86_64')
 url="https://github.com/pdewacht/brlaser"
 license=('GPL2')
 depends=('cups')
-source=("https://github.com/pdewacht/${pkgname}/archive/v${pkgver}.tar.gz" "0001-Add-missing-include-string.patch")
-sha512sums=('79c4709e0db48fc4b359297f44c2ad35633e65210fdb941aea7a9a613de4d341319aaa7e72748f7ed821400c564b9a5c63677692103130e3a6ec5ff938e0cccf' '51f21653433adf2ba564aaee4fdda4c99132e8ffa802562f282d75a7d3d2ab61ff0a9b574164ba7e67b739595836960836668fe618b3961d0ea83dcf09536cc0')
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-	patch -p1 < $srcdir/${source[1]}
-}
+source=("https://github.com/pdewacht/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('1e08091adc371a35f75c245fd86f132aae7811a00bd7e9d194c47038dc9aa29296fbf8769cef6b8ea42d82467857195ba8024a9d6de8048174ecc44e0bb76067')
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+	cmake .
 }
 
 check() {
