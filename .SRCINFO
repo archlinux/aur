@@ -1,7 +1,7 @@
 pkgbase = wificurse
 	pkgdesc = wifi jamming tool
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.2f30.org/wificurse
 	arch = x86_64
 	license = GPL

@@ -2,7 +2,7 @@
 
 pkgname='wificurse'
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="wifi jamming tool"
 url="http://git.2f30.org/wificurse"
 license=('GPL')
