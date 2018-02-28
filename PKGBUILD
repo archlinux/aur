@@ -25,7 +25,7 @@ build() {
   mkdir -p build
   cd build
   cmake -DPYTHON_INCLUDE_PATH=/usr/include/python3.6m -DPYBIND11_INCLUDE_PATH=/usr/include/pybind11 -DHDF5_INCLUDE_PATH=/usr/include -DHDF5_LIBRARIES="hdf5_cpp hdf5" ../src
-  make -j
+  make
 }
 
 package() {
