@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=nnn-git
-pkgver=1.6.r0.gcd17708
+pkgver=1.7.r3.g1ad5a7b
 pkgrel=1
 pkgdesc='A lightweight terminal file browser'
 arch=(x86_64)
