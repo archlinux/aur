@@ -1,11 +1,10 @@
 post_install() {
-  # Create plex user
   systemd-sysusers ombi.conf
-  chown -R ombi:ombi /opt/ombi
+  chown -R ombi:ombi /opt/Ombi
 }
 
 post_upgrade() {
-  chown -R ombi:ombi /opt/ombi
+  chown -R ombi:ombi /opt/Ombi
   systemctl daemon-reload
 }
 
