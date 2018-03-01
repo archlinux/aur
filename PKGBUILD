@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pacpush
-pkgver=2.4.1
+pkgver=2.5
 pkgrel=1
 pkgdesc="Utility to push an Arch host's package and AUR caches to other hosts. Previously named pacsync."
 url="https://github.com/bulletmark/$pkgname"
@@ -11,7 +11,7 @@ depends=("python" "rsync" "sudo" "openssh" "python-requests" "python-ruamel-yaml
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 replaces=("pacsync")
 conflicts=("pacsync")
-md5sums=('99884b1cf7a95705c7cea79cb3380d07')
+md5sums=('54a25208f667d2ad113439a1f6d7533f')
 
 package() {
   cd "$pkgname-$pkgver"
