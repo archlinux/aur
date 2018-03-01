@@ -1,8 +1,8 @@
 pkgbase = android-google-apis-x86
 	pkgdesc = Android Google APIs x86 System Image, latest API
-	pkgver = 27_r02
+	pkgver = 27_r04
 	pkgrel = 1
-	url = http://code.google.com/android/add-ons/google-apis
+	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = custom
 	depends = android-platform
@@ -11,10 +11,10 @@ pkgbase = android-google-apis-x86
 	provides = android-google-apis-x86-27
 	conflicts = android-google-apis-x86-27
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-27_r02.zip
+	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-27_r04.zip
 	source = source.properties
-	sha1sums = 1b4557f27fe0220e9e54e5c4eadfec5abd194cf3
-	sha1sums = 9c1445f63b9136732818eb54925db41b4c59ba4c
+	sha1sums = 0771704f8c12ef86d02278659694ba543354b097
+	sha1sums = 8cb7cfdf81b81d55ab3c83cd1a8d4142dfbc3c53
 
 pkgname = android-google-apis-x86
 
