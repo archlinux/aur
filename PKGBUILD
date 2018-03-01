@@ -1,7 +1,7 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=qemu-arm-static
-pkgver=2.10.1r2
+pkgver=2.10.1r3
 _pkgver=${pkgver/r/-r}
 pkgrel=2
 pkgdesc='Statically linked qemu-arm, qemu-armeb and qemu-aarch64 executables from Alpine'
@@ -14,9 +14,9 @@ source=(http://rsync.alpinelinux.org/alpine/v3.7/main/x86_64/qemu-aarch64-$_pkgv
         http://rsync.alpinelinux.org/alpine/v3.7/main/x86_64/qemu-armeb-$_pkgver.apk
         aarch64.binfmt arm.binfmt armeb.binfmt
 )
-sha256sums=('89d0a4b4318dbd6a3fc19c502069cd580aebffd842edb92514834cbebd351812'
-            '1a207a5624da2d39ada1a0032f5a95b8c6e8803ba00baaa8a0f4ce5c92f394e3'
-            '22fd99391ae04e79adebb7b6911a5e461fc291f3ad788bbbb6f382505d3f584f'
+sha256sums=('f2c993d6cecd2b5f5215955242eb028c7bf1c36e3773a469fa3b356745b9ed36'
+            '6aca1475eef3149d0de57c1e7a54440a6aff515ff84c0f49ef01c92b00d250f6'
+            'ce6078f3678ee89d28942160d56880574999cc057fb8b90fd9f76c3fc80c01ef'
             'b013b13d3b304a6d66c332828be3c93e8643c0c1ee217b0f1152d0c9dc78c059'
             '805ab50d386b5e17c5a072217ed8d49450df079fcb76d6826427cea5b862474f'
             'fdaa63e61e625457c7de848cbcec8e6c6864a3cd12d8c3ee8e24cdd861be32b0')
