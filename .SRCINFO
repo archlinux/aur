@@ -1,0 +1,23 @@
+pkgbase = openvas-scanner-systemd
+	pkgdesc = The OpenVAS scanning Daemon with proper systemd service files
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = http://www.openvas.org/
+	arch = x86_64
+	groups = openvas
+	license = GPL
+	makedepends = cmake
+	makedepends = xmltoman
+	makedepends = doxygen
+	depends = openvas-libraries
+	depends = redis
+	depends = openvas-systemd
+	provides = openvas-scanner
+	source = http://wald.intevation.org/frs/download.php/2423/openvas-scanner-5.1.1.tar.gz
+	source = http://wald.intevation.org/frs/download.php/2424/openvas-scanner-5.1.1.tar.gz.sig
+	validpgpkeys = C3B468D2288C68B9D526452248479FF648DB4530
+	sha512sums = 8ca23fe9581c98381c030ee8e30a09876d538133980a589eff357321d2ceea0b24dbf8965ef7417e12abb9af240c6a26413b3041b219d28017c7f9ea04779fe1
+	sha512sums = SKIP
+
+pkgname = openvas-scanner-systemd
+
