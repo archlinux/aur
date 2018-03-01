@@ -48,7 +48,7 @@ package() {
   sed -i 's|"`dirname "$0"`/../../|"`dirname "$0"`/../lib/node_modules/npm/|' "$pkgdir"/usr/bin/node-gyp
 
   # Experimental dedup
-  cd "$pkgdir"/usr/lib/node_modules/$pkgname/node_modules
+  cd "$pkgdir"/usr/lib/node_modules/npm/node_modules
   for dep in semver; do
     rm -r $dep;
     node "$srcdir"/npm-$pkgver/cli.js link $dep;
