@@ -1,7 +1,7 @@
 pkgbase = onehouronelife-bin
 	pkgdesc = Binary package for One Hour One Life game by Jason Rohrer
 	pkgver = 58
-	pkgrel = 1
+	pkgrel = 2
 	url = http://onehouronelife.com
 	arch = x86_64
 	license = custom:Public Domain
