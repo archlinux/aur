@@ -1,0 +1,21 @@
+pkgbase = protonmail-bridge
+	pkgdesc = Application to use IMAP/SMTP with your paid ProtonMail account
+	pkgver = 1.0.1.4
+	pkgrel = 1
+	url = https://protonmail.com/bridge/
+	arch = x86_64
+	license = custom
+	license = MIT
+	depends = gst-plugins-base-libs
+	depends = gtk3
+	depends = libpulse
+	depends = libsecret
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = ttf-dejavu
+	options = !strip
+	source = https://protonmail.com/download/protonmail-bridge_1.0.1-4_amd64.deb
+	sha256sums = e8e65eac68dea73a05529eb0452760ad2c5bcf43bcd6c7ecef05d54bab58c3f6
+
+pkgname = protonmail-bridge
+
