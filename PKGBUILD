@@ -1,35 +1,46 @@
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Tinu Weber <http://ayekat.ch>
 
-pkgname=ttylog
-pkgver=0.29
-pkgrel=1
-arch=(x86_64)
-
+set -u
+pkgname='ttylog'
+pkgver='0.31'
+pkgrel='1'
 pkgdesc='A serial port logger'
-url='http://ttylog.sourceforge.net/'
-license=(GPL2)
-
-makedepends=(cmake)
-
-source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
-        'bindir.patch')
-md5sums=(1cefb8acc85b9d7daf211e2cf08ecc04
-         b7316a7afe36d858cf4d6c47f05b0d2a)
+arch=('x86_64')
+#url='http://ttylog.sourceforge.net/'
+url='https://github.com/rocasa/ttylog'
+license=('GPL2')
+makedepends=('cmake')
+_verwatch=("${url}/releases.atom" '\s\+<title>\([0-9\.]\+\)</title>.*' 'f') # RSS
+# https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rocasa/ttylog/archive/${pkgver}.tar.gz")
+sha256sums=('5a063a57fff0239a511f1964efc8aa9cedf099f9e2cd9c33e33ea8dc8149015d')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 -i ../bindir.patch
+  set -u
+  cd "${pkgname}-${pkgver}"
+  sed -e 's:sbin:bin:g' -i 'INSTALL' 'CMakeLists.txt' 'TODO'
+  set +u
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  mkdir build
-  cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr ..
-  make
+  set -u
+  cd "${pkgname}-${pkgver}"
+  if [ ! -d 'build' ]; then
+    mkdir 'build'
+    cd 'build'
+    cmake -D CMAKE_INSTALL_PREFIX='/usr' '..'
+  else
+    cd 'build'
+  fi
+  make -j1 # no speed benefit
+  set +u
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir/" install
+  set -u
+  cd "${pkgname}-${pkgver}/build"
+  make -j1 DESTDIR="${pkgdir}/" install
+  set +u
 }
+set +u
