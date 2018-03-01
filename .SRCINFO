@@ -1,16 +1,20 @@
 pkgbase = expressionmatrix2-git
 	pkgdesc = Software for exploration of gene expression data from single-cell RNA sequencing.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chanzuckerberg/ExpressionMatrix2
 	arch = x86_64
 	license = MIT
 	depends = python
-	depends = python-numpy
+	depends = boost
+	depends = boost-libs
 	depends = cmake
 	depends = make
 	depends = pybind11
-	source = expressionmatrix2-git::git+https://github.com/iosonofabio/ExpressionMatrix2.git#branch=master
+	depends = graphviz
+	depends = hdf5
+	depends = python-h5py
+	source = expressionmatrix2-git::git+https://github.com/chanzuckerberg/ExpressionMatrix2.git#branch=master
 	md5sums = SKIP
 
 pkgname = expressionmatrix2-git
