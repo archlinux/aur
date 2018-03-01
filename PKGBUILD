@@ -29,12 +29,12 @@ build() {
 
   msg2 'Building dcrd and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrd"
-  dep ensure
+  dep -v ensure
   go install . ./cmd/...
 
   msg2 'Building dcrwallet and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrwallet"
-  dep ensure
+  dep -v ensure
   go install . ./cmd/...
 
   msg2 'Prepending dcr to unqualified binaries...'
