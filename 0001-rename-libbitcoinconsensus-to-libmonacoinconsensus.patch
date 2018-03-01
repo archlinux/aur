@@ -1,6 +1,7 @@
-From 195c3fc052d8c94377d584123fa1961ba2255afe Mon Sep 17 00:00:00 2001
+0001-rename-libbitcoinconsensus-to-libmonacoinconsensus.patch
+:00 2001
 From: Musee Ullah <lae@lae.is>
-Date: Tue, 1 Aug 2017 19:10:45 -0700
+Date: Fri, 2 Mar 2018 03:55:35 +0900
 Subject: [PATCH] rename libbitcoinconsensus to libmonacoinconsensus
 
 ---
@@ -25,10 +26,10 @@ Subject: [PATCH] rename libbitcoinconsensus to libmonacoinconsensus
  create mode 100644 src/script/monacoinconsensus.h
 
 diff --git a/.gitignore b/.gitignore
-index 6a57bd3..dcfd49c 100644
+index 8e66176..df7bd69 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -108,5 +108,5 @@ qa/cache/*
+@@ -107,5 +107,5 @@ test/cache/*
  
  /doc/doxygen/
  
@@ -36,7 +37,7 @@ index 6a57bd3..dcfd49c 100644
 +libmonacoinconsensus.pc
  contrib/devtools/split-debug.sh
 diff --git a/Makefile.am b/Makefile.am
-index f372f7d..595ecdc 100644
+index b3c9b2f..7959280 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -14,7 +14,7 @@ export PYTHONPATH
@@ -49,10 +50,10 @@ index f372f7d..595ecdc 100644
  
  BITCOIND_BIN=$(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)
 diff --git a/configure.ac b/configure.ac
-index 26ed039..1dd296f 100644
+index a7f5a08..fa9e6e9 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -930,7 +930,7 @@ AC_MSG_CHECKING([whether to build libraries])
+@@ -1050,7 +1050,7 @@ AC_MSG_CHECKING([whether to build libraries])
  AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test x$build_bitcoin_libs = xyes])
  if test x$build_bitcoin_libs = xyes; then
    AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
@@ -80,7 +81,7 @@ index eb920c4..47960d2 100644
  Cflags: -I${includedir}
  Requires.private: libcrypto
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 3850915..e1e19a6 100644
+index f4799d8..30f1b64 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -26,7 +26,7 @@ BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
@@ -117,8 +118,8 @@ index 3850915..e1e19a6 100644
  
  bin_PROGRAMS =
  noinst_PROGRAMS =
-@@ -260,9 +260,9 @@ crypto_libbitcoin_crypto_a_SOURCES = \
-   crypto/sha512.h 
+@@ -278,9 +278,9 @@ crypto_libbitcoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+ endif
  
  # consensus: shared between all executables that validate any consensus rules.
 -libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -130,7 +131,7 @@ index 3850915..e1e19a6 100644
    amount.h \
    arith_uint256.cpp \
    arith_uint256.h \
-@@ -279,7 +279,7 @@ libbitcoin_consensus_a_SOURCES = \
+@@ -297,7 +297,7 @@ libbitcoin_consensus_a_SOURCES = \
    primitives/transaction.h \
    pubkey.cpp \
    pubkey.h \
@@ -139,7 +140,7 @@ index 3850915..e1e19a6 100644
    script/interpreter.cpp \
    script/interpreter.h \
    script/script.cpp \
-@@ -392,7 +392,7 @@ monacoind_LDADD = \
+@@ -409,7 +409,7 @@ monacoind_LDADD = \
    $(LIBBITCOIN_UTIL) \
    $(LIBBITCOIN_WALLET) \
    $(LIBBITCOIN_ZMQ) \
@@ -147,8 +148,8 @@ index 3850915..e1e19a6 100644
 +  $(LIBMONACOIN_CONSENSUS) \
    $(LIBBITCOIN_CRYPTO) \
    $(LIBLEVELDB) \
-   $(LIBMEMENV) \
-@@ -433,26 +433,26 @@ monacoin_tx_LDADD = \
+   $(LIBLEVELDB_SSE42) \
+@@ -451,26 +451,26 @@ monacoin_tx_LDADD = \
    $(LIBUNIVALUE) \
    $(LIBBITCOIN_COMMON) \
    $(LIBBITCOIN_UTIL) \
@@ -185,10 +186,10 @@ index 3850915..e1e19a6 100644
  endif
  #
 diff --git a/src/Makefile.bench.include b/src/Makefile.bench.include
-index 28938d4..4e491c9 100644
+index 0b2060d..84a9410 100644
 --- a/src/Makefile.bench.include
 +++ b/src/Makefile.bench.include
-@@ -35,7 +35,7 @@ bench_bench_monacoin_LDADD = \
+@@ -36,7 +36,7 @@ bench_bench_monacoin_LDADD = \
    $(LIBBITCOIN_SERVER) \
    $(LIBBITCOIN_COMMON) \
    $(LIBBITCOIN_UTIL) \
@@ -196,21 +197,21 @@ index 28938d4..4e491c9 100644
 +  $(LIBMONACOIN_CONSENSUS) \
    $(LIBBITCOIN_CRYPTO) \
    $(LIBLEVELDB) \
-   $(LIBMEMENV) \
+   $(LIBLEVELDB_SSE42) \
 diff --git a/src/Makefile.qt.include b/src/Makefile.qt.include
-index 0445433..a53f7bf 100644
+index cd5a40f..0c68320 100644
 --- a/src/Makefile.qt.include
 +++ b/src/Makefile.qt.include
-@@ -404,7 +404,7 @@ endif
+@@ -423,7 +423,7 @@ endif
  if ENABLE_ZMQ
  qt_monacoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
  endif
--qt_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
-+qt_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBMONACOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+-qt_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
++qt_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBMONACOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
    $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
    $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
  qt_monacoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-@@ -415,7 +415,7 @@ QT_QM=$(QT_TS:.ts=.qm)
+@@ -434,7 +434,7 @@ QT_QM=$(QT_TS:.ts=.qm)
  
  SECONDARY: $(QT_QM)
  
@@ -220,40 +221,37 @@ index 0445433..a53f7bf 100644
  	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
  
 diff --git a/src/Makefile.qttest.include b/src/Makefile.qttest.include
-index 51f9193..c2024aa 100644
+index 50a09c4..a50b26d 100644
 --- a/src/Makefile.qttest.include
 +++ b/src/Makefile.qttest.include
-@@ -44,7 +44,7 @@ endif
+@@ -57,7 +57,7 @@ endif
  if ENABLE_ZMQ
  qt_test_test_monacoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
  endif
 -qt_test_test_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) \
 +qt_test_test_monacoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBMONACOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) \
-   $(LIBMEMENV) $(BOOST_LIBS) $(QT_DBUS_LIBS) $(QT_TEST_LIBS) $(QT_LIBS) \
+   $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(QT_DBUS_LIBS) $(QT_TEST_LIBS) $(QT_LIBS) \
    $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
    $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 diff --git a/src/Makefile.test.include b/src/Makefile.test.include
-index 528e094..8e16a65 100644
+index 46fc660..70fac57 100644
 --- a/src/Makefile.test.include
 +++ b/src/Makefile.test.include
-@@ -147,14 +147,14 @@ endif
- 
- test_test_monacoin_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
- test_test_monacoin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
--test_test_monacoin_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
-+test_test_monacoin_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBMONACOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
-   $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS)
- test_test_monacoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+@@ -99,11 +99,11 @@ test_test_monacoin_LDADD =
  if ENABLE_WALLET
  test_test_monacoin_LDADD += $(LIBBITCOIN_WALLET)
  endif
+-test_test_monacoin_LDADD += $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) \
++test_test_monacoin_LDADD += $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBMONACOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) \
+   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
+ test_test_monacoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
  
 -test_test_monacoin_LDADD += $(LIBBITCOIN_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
 +test_test_monacoin_LDADD += $(LIBMONACOIN_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
  test_test_monacoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
  
  if ENABLE_ZMQ
-@@ -173,7 +173,7 @@ test_test_monacoin_fuzzy_LDADD = \
+@@ -122,7 +122,7 @@ test_test_monacoin_fuzzy_LDADD = \
    $(LIBBITCOIN_SERVER) \
    $(LIBBITCOIN_COMMON) \
    $(LIBBITCOIN_UTIL) \
@@ -263,7 +261,7 @@ index 528e094..8e16a65 100644
    $(LIBSECP256K1)
  
 diff --git a/src/bench/verify_script.cpp b/src/bench/verify_script.cpp
-index 23bbadc..d3076bf 100644
+index ef7381c..e9924c6 100644
 --- a/src/bench/verify_script.cpp
 +++ b/src/bench/verify_script.cpp
 @@ -5,7 +5,7 @@
@@ -275,7 +273,7 @@ index 23bbadc..d3076bf 100644
  #endif
  #include "script/script.h"
  #include "script/sign.h"
-@@ -89,7 +89,7 @@ static void VerifyScriptBench(benchmark::State& state)
+@@ -95,7 +95,7 @@ static void VerifyScriptBench(benchmark::State& state)
  #if defined(HAVE_CONSENSUS_LIB)
          CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
          stream << txSpend;
@@ -286,7 +284,7 @@ index 23bbadc..d3076bf 100644
              txCredit.vout[0].nValue,
 diff --git a/src/script/bitcoinconsensus.h b/src/script/bitcoinconsensus.h
 deleted file mode 100644
-index 1bef4fe..0000000
+index 33bf80e..0000000
 --- a/src/script/bitcoinconsensus.h
 +++ /dev/null
 @@ -1,83 +0,0 @@
@@ -355,7 +353,7 @@ index 1bef4fe..0000000
 -/// Returns 1 if the input nIn of the serialized transaction pointed to by
 -/// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 -/// the additional constraints specified by flags.
--/// If not NULL, err will contain an error/success code for the operation
+-/// If not nullptr, err will contain an error/success code for the operation
 -EXPORT_SYMBOL int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
 -                                                 const unsigned char *txTo        , unsigned int txToLen,
 -                                                 unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
@@ -377,7 +375,7 @@ diff --git a/src/script/bitcoinconsensus.cpp b/src/script/monacoinconsensus.cpp
 similarity index 75%
 rename from src/script/bitcoinconsensus.cpp
 rename to src/script/monacoinconsensus.cpp
-index c4ab441..fbfffd7 100644
+index 0312891..b6164e8 100644
 --- a/src/script/bitcoinconsensus.cpp
 +++ b/src/script/monacoinconsensus.cpp
 @@ -3,7 +3,7 @@
@@ -430,7 +428,7 @@ index c4ab441..fbfffd7 100644
 +        set_error(err, monacoinconsensus_ERR_OK);
  
          PrecomputedTransactionData txdata(tx);
-         return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), &tx.vin[nIn].scriptWitness, flags, TransactionSignatureChecker(&tx, nIn, amount, txdata), NULL);
+         return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), &tx.vin[nIn].scriptWitness, flags, TransactionSignatureChecker(&tx, nIn, amount, txdata), nullptr);
      } catch (const std::exception&) {
 -        return set_error(err, bitcoinconsensus_ERR_TX_DESERIALIZE); // Error deserializing
 +        return set_error(err, monacoinconsensus_ERR_TX_DESERIALIZE); // Error deserializing
@@ -473,7 +471,7 @@ index c4ab441..fbfffd7 100644
  }
 diff --git a/src/script/monacoinconsensus.h b/src/script/monacoinconsensus.h
 new file mode 100644
-index 0000000..fb87a75
+index 0000000..6616af1
 --- /dev/null
 +++ b/src/script/monacoinconsensus.h
 @@ -0,0 +1,83 @@
@@ -542,7 +540,7 @@ index 0000000..fb87a75
 +/// Returns 1 if the input nIn of the serialized transaction pointed to by
 +/// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 +/// the additional constraints specified by flags.
-+/// If not NULL, err will contain an error/success code for the operation
++/// If not nullptr, err will contain an error/success code for the operation
 +EXPORT_SYMBOL int monacoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
 +                                                 const unsigned char *txTo        , unsigned int txToLen,
 +                                                 unsigned int nIn, unsigned int flags, monacoinconsensus_error* err);
@@ -561,7 +559,7 @@ index 0000000..fb87a75
 +
 +#endif // BITCOIN_MONACOINCONSENSUS_H
 diff --git a/src/test/script_tests.cpp b/src/test/script_tests.cpp
-index 3218416..a6feed0 100644
+index 06b8274..e913b89 100644
 --- a/src/test/script_tests.cpp
 +++ b/src/test/script_tests.cpp
 @@ -16,7 +16,7 @@
@@ -573,7 +571,7 @@ index 3218416..a6feed0 100644
  #endif
  
  #include <fstream>
-@@ -170,13 +170,13 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, const CScript
+@@ -169,13 +169,13 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, const CScript
  #if defined(HAVE_CONSENSUS_LIB)
      CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
      stream << tx2;
@@ -581,17 +579,17 @@ index 3218416..a6feed0 100644
 +    int libconsensus_flags = flags & monacoinconsensus_SCRIPT_FLAGS_VERIFY_ALL;
      if (libconsensus_flags == flags) {
 -        if (flags & bitcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS) {
--            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect, message);
+-            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect, message);
 +        if (flags & monacoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS) {
-+            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect, message);
++            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect, message);
          } else {
--            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect, message);
--            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect,message);
-+            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect, message);
-+            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect,message);
+-            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect, message);
+-            BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect,message);
++            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect, message);
++            BOOST_CHECK_MESSAGE(monacoinconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect,message);
          }
      }
  #endif
 -- 
-2.13.3
+2.16.2
 
