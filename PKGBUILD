@@ -1,6 +1,6 @@
 # Maintainer: vltr <rkuesters@gmail.com>
 pkgname=citus-git
-pkgver=7.3.devel.r8516d863
+pkgver=7.3.devel.1729.r8e2c72c0
 pkgrel=1
 pkgdesc="Scalable PostgreSQL for multi-tenant and real-time workloads"
 url="https://github.com/citusdata/citus"
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   #echo "$(git describe --long --tags | sed 's/\(^.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
-  echo "$(cat configure.in | grep AC_INIT | cut -d'[' -f3 | sed 's/\(])\)//g' | sed 's/devel/\.devel/g').r$(git log --pretty=format:'%h' -n 1)"
+  echo "$(cat configure.in | grep AC_INIT | cut -d'[' -f3 | sed 's/\(])\)//g' | sed 's/devel/\.devel/g').$(git shortlog | grep -E '^[ ]+\w+' | wc -l).r$(git log --pretty=format:'%h' -n 1)"
 }
 
 build() {
