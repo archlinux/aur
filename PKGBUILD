@@ -3,9 +3,9 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
-pkgname=hmmer
+pkgname=hmmer3-2
 pkgver=3
-pkgrel=2
+pkgrel=1
 _hmmer3_pkgver=3.1b2
 _hmmer2_pkgver=2.4i
 pkgdesc="Profile hidden Markov models (HMMs) for database searching using consensus sequences containing the version 2 and 3 implementations."

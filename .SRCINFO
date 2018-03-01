@@ -1,7 +1,7 @@
-pkgbase = hmmer
+pkgbase = hmmer3-2
 	pkgdesc = Profile hidden Markov models (HMMs) for database searching using consensus sequences containing the version 2 and 3 implementations.
 	pkgver = 3
-	pkgrel = 2
+	pkgrel = 1
 	url = http://hmmer.org/
 	arch = i686
 	arch = x86_64
@@ -21,5 +21,5 @@ pkgbase = hmmer
 	md5sums = c8c141018bc0ccd7fc37b33f2b945d5f
 	md5sums = dab234c87e026ac1de942450750acd20
 
-pkgname = hmmer
+pkgname = hmmer3-2
 
