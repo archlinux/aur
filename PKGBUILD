@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.06.09.20171114
+pkgver=8.07.07.20180301
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
@@ -14,17 +14,15 @@ optdepends=('wget: for web/gethttp addon'
             'lapack: for math/lapack addon')
 source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j806_env_20171113.tar.gz')
-md5sums=('SKIP' 'SKIP' '374ef64891b621a63d7b9a027a58cef2')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20180301.tar.gz')
+md5sums=('SKIP' 'SKIP' '6b09e6e968f97ec055dc6d0a59152840')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
 _jarch=j64
-_avx=avx
 else
 _xarch=x86
 _jarch=j32
-_avx=''
 fi
 
 pkgver() {
@@ -34,7 +32,7 @@ echo "$(head -c 7 jenv/usr/lib/j8/system/config/version.txt)"."$(date +%Y%m%d)"
 
 prepare() {
 cd ${srcdir}/jsource-master
-echo '#define jversion "806"' > jsrc/jversion.h
+echo '#define jversion "807"' > jsrc/jversion.h
 echo '#define jplatform "linux"' >> jsrc/jversion.h
 echo '#define jtype "build"' >> jsrc/jversion.h
 echo '#define jlicense "GPL3"' >> jsrc/jversion.h
@@ -57,7 +55,7 @@ mkdir -p jbld/jout
 mkdir jbld/${_jarch}
 cp -r jlibrary/* jbld/${_jarch}
 make/build_jconsole.sh ${_jarch}
-make/build_libj.sh ${_jarch}${_avx}
+make/build_libj.sh ${_jarch}
 # qtide
 cd ${srcdir}/qtide-master/lib
 qmake && make
@@ -69,7 +67,7 @@ package() {
 cd ${srcdir}
 cp -a jenv/* ${pkgdir}/
 cp -a jsource-master/jbld/${_jarch}/bin/jconsole ${pkgdir}/usr/lib/j8/bin/jconsole
-cp -a jsource-master/jbld/${_jarch}/bin/libj${_avx}.so ${pkgdir}/usr/lib/j8/bin/libj.so
+cp -a jsource-master/jbld/${_jarch}/bin/libj.so ${pkgdir}/usr/lib/j8/bin/libj.so
 cp -a qtide-master/bin/linux-${_xarch}/release/*  ${pkgdir}/usr/lib/j8/bin/
 echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > ${pkgdir}/usr/lib/j8/bin/installer.txt
 }
