@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 pkgname=substance-player
-pkgver=2017.2.3
-_build=893
+pkgver=2017.2.5
+_build=993
 pkgrel=1
 pkgdesc="PBR material preview, visualization and tweaking software."
 arch=('x86_64')
@@ -14,9 +14,9 @@ source=("https://download.allegorithmic.com/substance-player/2017.x/Substance_Pl
         'substance-player-icon.png'
         'substance-player.desktop'
         'substance-player')
-sha256sums=('1852281400deface80c394c57567e6fab8aa9a5fb17b368110bceee3b210927b'
+sha256sums=('794be1865c82711ffbc92892f29071dc5f1105bfb6cf17ab6611ba0a97a8c910'
             '87d2e879c24a26e63334614b9f1c5d24bfb2eb2b606762b63ce5a2fe6a54345e'
-            'c4b3d0efdfdf00ef1e770f3e69ea30214f26ef2cde80aa5e5157bb0eda8dca31'
+            '205ce579ae86b1c5c4b14be301954f3b1823eb3e2e72dc6f54e3fc9c86f56a3b'
             'f024998986230fe480ea77c62c655e0e468e0b3664dbc0120d865311db19944e')
 validpgpkeys=()
 
