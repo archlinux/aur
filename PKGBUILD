@@ -4,7 +4,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cryptx'
-pkgver='0.057'
+pkgver='0.058'
 pkgrel='1'
 pkgdesc="Cryptographic toolkit (self-contained, no external libraries needed)"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/CryptX'
 source=("https://cpan.metacpan.org/authors/id/M/MI/MIK/CryptX-${pkgver}.tar.gz")
-md5sums=('e713a27293b655a03b56c013cd244f36')
-sha512sums=('6467ae7becaa3a57507de1b59ed665af5932fc5c646df7d7c54bd268cbe0e01fd8c98873dd07e8c9d770bc32a535be525d1a69bb854dcb5d997713b4df50113b')
+md5sums=('d0c35a8251a9d81af8a2a17a03246c6f')
+sha512sums=('ba5b19c27b1fc5b81911886bc4b764ca98dd01d8ecdb85e436b0cc5946cdde8f331ed83235015eab6e79f8f3740d8f89f84c699509d450f18daf1c984297821b')
 _distdir="CryptX-${pkgver}"
 
 build() {
