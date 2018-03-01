@@ -39,10 +39,6 @@ cd openssl-1.0.2e
 git checkout OpenSSL_1_0_2e
 cd ..
 
-cd openssl
-git checkout 1f5878b8e25a785dde330bf485e6ed5a6ae09a1a
-cd ..
-
 mv "$srcdir/openssl" "$srcdir/nassl/openssl-master"
 mv "$srcdir/openssl-1.0.2e" "$srcdir/nassl/openssl-1.0.2e"
 mv "$srcdir/zlib-1.2.11" "$srcdir/nassl/"
@@ -52,26 +48,27 @@ cd "$srcdir/nassl"
 # Delete binaries that are shipped within the git repository
 find "$srcdir/nassl/bin" -type f -delete
 
-python2.7 build_from_scratch.py
+# Test nassl in check()
+grep -v NASSL_TEST_TASKS build_from_scratch.py > build_from_scratch_notest.py
+python2.7 build_from_scratch_notest.py
 
 }
 
 check() {
+export TRAVIS=true #Accept inconsistent result from ROBOT test
 	
 cd "$srcdir/tls_parser"
 python2.7 run_tests.py
 
-# nassl tests are already run from build_from_scratch.py
+cd "$srcdir/nassl"
+python2.7 run_tests.py
 
-# Some sslyze tests are failing
-# TODO: file upstream issue
-
-#cp -r "$srcdir/sslyze" "$srcdir/sslyze_test"
-#cp -r "$srcdir/tls_parser/tls_parser" "$srcdir/sslyze_test/"
-#cp -r "$srcdir/nassl/nassl" "$srcdir/sslyze_test/"
-#cd "$srcdir/sslyze_test"
-#python2.7 run_tests.py
-#rm -rf "$srcdir/sslyze_test"
+cp -r "$srcdir/sslyze" "$srcdir/sslyze_test"
+cp -r "$srcdir/tls_parser/tls_parser" "$srcdir/sslyze_test/"
+cp -r "$srcdir/nassl/nassl" "$srcdir/sslyze_test/"
+cd "$srcdir/sslyze_test"
+python2.7 run_tests.py
+rm -rf "$srcdir/sslyze_test"
 	
 }
 
