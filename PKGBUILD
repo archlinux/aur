@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=rust-clippy
-pkgver=0.0.186
+pkgver=0.0.187
 pkgrel=1
 pkgdesc="A bunch of lints to catch common mistakes and improve your Rust code"
 arch=('i686' 'x86_64')
