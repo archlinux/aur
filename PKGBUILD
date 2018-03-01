@@ -71,9 +71,10 @@
 ## updated to upstream 5.2.3
 ## updated to upstream 5.3.0
 ## updated to upstream 6.0.1
+## updated to upstream 6.0.2
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('i686' 'x86_64')
@@ -85,11 +86,11 @@ optdepends=('jre7-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plu
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 if [ "$(uname -m)" == "i686" ]; then  ## convert bit architecture to libreoffice format
   arch_mod='x86';
-  sha256sums+=('722ab3d224f08a4b36600955da14a43007749eff5c8fd610f272e49dd132dc86');
+  sha256sums+=('ef8e05aca65f2e02badec8488a79d4448f4cd081f8022f92ec3955b24594611f');
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
  else
   arch_mod='x86_64';
-  sha256sums+=('fd3bce0246fff46cc1627a000f42b157304f74132421c8370817fdfa675b61b6')
+  sha256sums+=('5e084daa8c139980dd5ce471eceb6035ef7e5d69416d1d38ae8c0c982ccf0b06')
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 fi;
 
