@@ -1,13 +1,13 @@
 pkgbase = relion-git
 	pkgdesc = REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy
-	pkgver = r55.e7607a8
+	pkgver = r124.ce6420a
 	pkgrel = 1
 	url = https://github.com/3dem/relion
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc5
+	makedepends = gcc
 	depends = fftw
 	depends = tcsh
 	depends = openmpi

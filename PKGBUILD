@@ -1,6 +1,6 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=relion-git
-pkgver=r55.e7607a8
+pkgver=r124.ce6420a
 pkgrel=1
 pkgdesc="REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/3dem/relion"
 license=('GPL')
 depends=('fftw' 'tcsh' 'openmpi' 'fltk' 'cuda' 'evince')
 optdepends=('ctffind4' 'gctf' 'unblur' 'summovie' 'resmap' 'motioncor2')
-makedepends=('git' 'cmake' 'gcc5')
+makedepends=('git' 'cmake' 'gcc')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}" 'relion')
 source=("git+https://github.com/3dem/relion" "relion.sh" "relion.csh")
@@ -25,8 +25,8 @@ build() {
 	mkdir -p build
 	cd build	
 	_NPROC=$(nproc --all)
-	export CC=/usr/bin/gcc-5
-	export CXX=/usr/bin/g++-5
+#	export CC=/usr/bin/gcc-5
+#	export CXX=/usr/bin/g++-5
 	cmake ..
 	make -j $_NPROC
 }
