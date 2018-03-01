@@ -9,7 +9,6 @@ depends=('mono>=5.4.0' 'xterm' 'msbuild-stable')
 optdepends=('dotnet-sdk')
 makedepends=(
     'scons>=3.0' 
-    'msbuild'
     'libxcursor' 
     'libxinerama' 
     'libxi' 
