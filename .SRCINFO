@@ -29,7 +29,7 @@ pkgbase = gradio
 	conflicts = gradio-bin
 	options = !emptydirs
 	source = https://github.com/haecker-felix/gradio/archive/v7.1.tar.gz
-	sha256sums = b223b371bfc82831fcbf3699bb4bfa7288438d02e9351b707b1f32db7ea5f7e3
+	sha256sums = 7b350583124f00f9030daaf4042cd54c9d340d67124dad298266d2dfa81ba766
 
 pkgname = gradio
 
