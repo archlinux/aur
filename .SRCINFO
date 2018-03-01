@@ -1,0 +1,21 @@
+pkgbase = onehouronelife-latest
+	pkgdesc = One Hour One Life game by Jason Rohrer. Builds the latest release tagged on github
+	pkgver = 60.d_a9e1abf.o_83d4bc6.m_06eb4a5
+	pkgrel = 1
+	url = http://onehouronelife.com
+	arch = x86_64
+	license = custom:Public Domain
+	makedepends = git
+	depends = imagemagick
+	depends = xclip
+	depends = sdl
+	conflicts = onehouronelife-bin
+	source = git+https://github.com/jasonrohrer/OneLifeData7.git
+	source = git+https://github.com/jasonrohrer/minorGems.git
+	source = git+https://github.com/jasonrohrer/OneLife.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = onehouronelife-latest
+
