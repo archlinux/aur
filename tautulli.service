@@ -1,0 +1,12 @@
+[Unit]
+Description=Tautulli Service
+After=plexmediaserver.service
+
+[Service]
+User=tautulli
+Group=tautulli
+Type=simple
+ExecStart=/usr/bin/python2 /usr/lib/tautulli/PlexPy.py --nolaunch --config /var/lib/tautulli/config.ini --datadir /var/lib/tautulli
+
+[Install]
+WantedBy=default.target
