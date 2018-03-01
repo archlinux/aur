@@ -3,7 +3,7 @@
 pkgname=rambox
 pkgver=0.5.15
 _menupatchver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
 depends=(electron)
@@ -11,10 +11,10 @@ makedepends=(desktop-file-utils asar ruby npm sencha-cmd-6)
 url='http://rambox.pro/'
 license=(GPL3)
 source=("https://github.com/saenzramiro/$pkgname/archive/$pkgver.tar.gz"
-        "https://github.com/saenzramiro/$pkgname/releases/download/v$pkgver/Rambox-$pkgver-x64.tar.gz"
+        "https://github.com/saenzramiro/$pkgname/releases/download/$pkgver/Rambox-$pkgver-x64.tar.gz"
         "context-menu-$_menupatchver.patch::https://github.com/saenzramiro/rambox/pull/1074/commits/c27f5d1771666766e983424b223e2072f839ee41.patch"
         "$pkgname.desktop" "$pkgname.js")
-sha256sums=('ae35c4b8e0ae24449fdaf480c7000a2fd5b6e6e721f99afcb942f1b898f1268c'
+sha256sums=('dacccd6b9ed847f351a8dfbe1eee45c9adf3826aba57fb4eefa2c39ebaf69175'
             '9b02f4501816a167f80df4d120115226bf45203142fd6cccf6eaa42169a3f7e6'
             '25569a4ef5569a49f8873e7e9699b116f72a66ad22719f4e486499e7629332db'
             '61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524'
