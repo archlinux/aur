@@ -3,13 +3,12 @@
 pkgname=ttf-bazin-proposed-punctuation
 _fname=Bazin
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='A TrueType implementation of proposed, non-canonical punctuation marks from Hervé Bazin'
 arch=('any')
 url='http://jonathanzong.github.io/proposed-punctuation/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=("https://github.com/jonathanzong/proposed-punctuation/raw/master/assets/${_fname}.ttf"
         "https://github.com/jonathanzong/proposed-punctuation/raw/master/LICENSE")
 sha256sums=('f7880d91b2698a7646f87fc46ce9c549eebf3d78ab5cbceb570bd1c0c20e37b6'
