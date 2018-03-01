@@ -6,7 +6,7 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 
 pkgname=josm-latest
-pkgver=11283
+pkgver=13478
 pkgrel=1
 pkgdesc="Nightly build of an editor for OpenStreetMap written in Java"
 arch=('any')
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 prepare() {
-    bsdtar -xf josm-latest.jar --strip-components 1 images/logo.png
+    bsdtar -xf josm-latest.jar --strip-components 1 images/logo_48x48x32.png
 
     sed -i 's/-latest//g' josm.1.man
 }
@@ -48,7 +48,7 @@ package() {
 
     # desktop integration
     install -Dm644 josm.desktop "$pkgdir/usr/share/applications/josm.desktop"
-    install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/josm.png"
+    install -Dm644 logo_48x48x32.png "$pkgdir/usr/share/pixmaps/josm.png"
 
     # man page
     install -Dm644 josm.1.man "$pkgdir/usr/share/man/man1/josm.1"
