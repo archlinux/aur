@@ -16,7 +16,7 @@ groups=('mingw-w64-toolchain' 'mingw-w64')
 options=('!strip' '!libtool' '!emptydirs')
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2{,.sig})
-sha256sums=('7a07d3f7cca5c0b38ca811984ef8da536da32932d68c1a6cce33ec2462b930bf'
+sha256sums=('2a601db99ef579b9be69c775218ad956a24a09d7dabc9ff6c5bd60da9ccc9cb4'
             'SKIP')
 
 build() {
