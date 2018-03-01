@@ -2,8 +2,8 @@
 
 pkgname=accel-ppp-ipoe-dkms-git
 _pkgname=accel-ppp
-pkgver=r1443.34fac26
-pkgrel=3
+pkgver=r1574.8ab2f62
+pkgrel=1
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
