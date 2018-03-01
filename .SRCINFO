@@ -20,7 +20,7 @@ pkgbase = godot-mono
 	makedepends = pkg-config
 	depends = mono>=5.4.0
 	depends = xterm
-	depends = msbuild
+	depends = msbuild-stable
 	optdepends = dotnet-sdk
 	provides = godot-mono
 	conflicts = godot-mono-bin
