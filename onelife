@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if readlink $0 > /dev/null; then
+   DIR=$(dirname $(readlink $0))
+else
+   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+fi
+
+if ! [[ -d ~/.config/onelife/settings ]]; then
+   mkdir -p ~/.config/onelife/settings >/dev/null || true
+fi
+
+cp -n /opt/OneLife-bin/settings_default/* ~/.config/onelife/settings/
+find ~/.config/onelife -depth -maxdepth 1 -type l -delete
+ln -st ~/.config/onelife/ $DIR/*
+cd ~/.config/onelife
+./OneLifeApp
