@@ -1,6 +1,6 @@
 pkgbase = systray-mdstat
 	pkgdesc = System tray icon indicating the state of local Linux Software (MD) RAID by checking /proc/mdstat periodically
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/xtaran/systray-mdstat
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = systray-mdstat
 	depends = perl-file-sharedir
 	depends = perl-try-tiny
 	optdepends = mdadm: making this tool functional
-	source = https://github.com/xtaran/systray-mdstat/releases/download/1.0.1/systray-mdstat-1.0.1.tar.gz
-	sha256sums = 4cac16618e8af65b963a969c16d3f19eae251b0773fdf95df74c2670413deb93
+	source = https://github.com/xtaran/systray-mdstat/releases/download/1.1.0/systray-mdstat_1.1.0.orig.tar.xz
+	sha256sums = 8110f1e1167dc128e67079752b46481d543daa2a1082181b8e4b120f49a69874
 
 pkgname = systray-mdstat
 
