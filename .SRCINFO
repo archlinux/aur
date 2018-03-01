@@ -1,6 +1,6 @@
 pkgbase = java-8-openjdk-shenandoah
 	pkgdesc = OpenJDK Java 8 development kit with ultra-low pause time Shenandoah GC
-	pkgver = b145
+	pkgver = b157
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/shenandoah/Main
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = java-8-openjdk-shenandoah
 	provides = java-runtime-openjdk=8
 	provides = java-runtime-headless-jre=8
 	provides = java-environment-openjdk=8
-	source = https://builds.shipilev.net/openjdk-shenandoah-jdk8/openjdk-shenandoah-jdk8-b145-x86_64-release.tar.xz
+	source = https://builds.shipilev.net/openjdk-shenandoah-jdk8/openjdk-shenandoah-jdk8-b157-x86_64-release.tar.xz
 	sha256sums = be6fc4cf14a94f342aef28a86c63479caa2c0139619bc42000f90b7a2c5a73dc
 
 pkgname = java-8-openjdk-shenandoah
