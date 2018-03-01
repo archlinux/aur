@@ -3,7 +3,7 @@
 
 pkgname=nzbget-git
 pkgver=20.0.r2170
-pkgrel=2
+pkgrel=3
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbget/nzbget"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  printf "%s.r%s" "$(git describe --tags | cut -d- -f1)" "$(git rev-list --count HEAD)"
+  git describe --tags --long | sed -r 's/-[0-9].*//' | sed 's/-/./;s/v//'
 }
 
 build() {
