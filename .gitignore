@@ -1,0 +1,5 @@
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./fix_non_i386.patch
+*
