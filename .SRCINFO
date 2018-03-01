@@ -1,6 +1,6 @@
 pkgbase = kcli
 	pkgdesc = kcli is a CLI wrapper around libvirt
-	pkgver = 10.5
+	pkgver = 10.6
 	pkgrel = 1
 	url = https://github.com/karmab/kcli
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = kcli
 	optdepends = libvirt: locally managed VMs
 	optdepends = qemu: libvirt KVM driver
 	optdepends = docker: interaction with local docker daemon
-	provides = kcli=10.5
-	source = kcli-10.5.tar.gz::https://pypi.python.org/packages/76/16/b12f451186fc3b1ee170eef83f4d50ab2a647207b442ce51be6178b77a7b/kcli-10.5.tar.gz
-	md5sums = c2abc17c371b4d39a9c1a9dd7d06dba7
+	provides = kcli=10.6
+	source = kcli-10.6.tar.gz::https://github.com/karmab/kcli/archive/v10.6.tar.gz
+	md5sums = 5ff1b01e3f6eec98f441b821b3aba685
 
 pkgname = kcli
 

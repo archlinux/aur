@@ -1,6 +1,6 @@
 # Maintainer: Sergi Jimenez <sjr@redhat.com>
 pkgname=kcli
-pkgver=10.5
+pkgver=10.6
 pkgrel=1
 pkgdesc="kcli is a CLI wrapper around libvirt"
 arch=('any')
@@ -18,9 +18,9 @@ makedepends=('python2-setuptools')
 optdepends=('libvirt: locally managed VMs'
             'qemu: libvirt KVM driver'
             'docker: interaction with local docker daemon')
-provides=('kcli=10.5')
-source=($pkgname-$pkgver.tar.gz::"https://pypi.python.org/packages/76/16/b12f451186fc3b1ee170eef83f4d50ab2a647207b442ce51be6178b77a7b/$pkgname-$pkgver.tar.gz")
-md5sums=('c2abc17c371b4d39a9c1a9dd7d06dba7')
+provides=("kcli=${pkgver}")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/karmab/kcli/archive/v${pkgver}.tar.gz")
+md5sums=('5ff1b01e3f6eec98f441b821b3aba685')
 
 package() {
   cd "$pkgname-$pkgver"
