@@ -1,4 +1,5 @@
-# ignore everything
-*.pkg.tar
-*.src.tar.gz
-*.zip
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./wxlstate.patch
+*
