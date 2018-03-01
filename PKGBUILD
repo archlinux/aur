@@ -6,7 +6,7 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.39.1_alpha
+pkgver=1.39.1
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ checkdepends=('perl-io-stringy' 'perl-local-lib')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-net-bonjour: support for autodiscovery of printers on network (octoprint)'
             'perl-class-xsaccessor: creating faster accessor methods')
-source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_1.39.1-alpha"
+source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_${pkgver}"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
