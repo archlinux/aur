@@ -1,4 +1,5 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
+# Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
 pkgver=7.4.0.00015
