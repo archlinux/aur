@@ -7,8 +7,8 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=65.0.3325.88
-pkgrel=5
+pkgver=65.0.3325.108
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/k3.patch
 )
 
 
-sha256sums=('7eac048f2e0682b2742010c331c59e3ca41e909dd49369adc7f4f8ca4636bbcd'
+sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -215,6 +215,7 @@ sha256sums=('7eac048f2e0682b2742010c331c59e3ca41e909dd49369adc7f4f8ca4636bbcd'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             '11b66c829c124cf764a0e6971dc0cf67adea5058b5777355b85b2a0540f550d6'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
+
 
 
 
