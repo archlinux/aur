@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=20.0.r2169
+pkgver=20.0.r2170
 pkgrel=2
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
@@ -11,21 +11,21 @@ license=('GPL')
 depends=('libxml2')
 makedepends=('git')
 optdepends=('python: run scripts'
-			'unrar: unpacking archives' 
-			'p7zip: unpacking archives' 
-			'par2cmdline: verificate and repair PAR 2.0 files')
+            'unrar: unpacking archives' 
+            'p7zip: unpacking archives' 
+            'par2cmdline: verificate and repair PAR 2.0 files')
 provides=('nzbget'
 		  'nzbget-systemd')
 conflicts=('nzbget')
 install=nzbget.install
 source=("$pkgname::git+https://github.com/nzbget/nzbget.git"
-		"nzbget.service")
+        "nzbget.service")
 sha256sums=('SKIP'
             '66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2')
 
 pkgver() {
-	cd "$pkgname"
-	printf "%s.r%s" "$(git describe --tags | cut -d- -f1)" "$(git rev-list --count HEAD)"
+  cd "$pkgname"
+  printf "%s.r%s" "$(git describe --tags | cut -d- -f1)" "$(git rev-list --count HEAD)"
 }
 
 build() {
