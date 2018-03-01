@@ -5,9 +5,9 @@ _pypiname=usfm2osis
 pkgver=r94.c52fc37
 pkgrel=1
 _branch=master
-pkgdesc="Tools for converting Bibles from USFM to OSIS XML"
+pkgdesc='Tools for converting Bibles from USFM to OSIS XML'
 arch=('any')
-url="https://github.com/chrislit/usfm2osis"
+url='https://github.com/chrislit/usfm2osis'
 license=('GPLv3')
 makedepends=('git' 'python-setuptools')
 depends=('python')
@@ -18,20 +18,18 @@ source=("git://github.com/chrislit/${_pypiname}.git#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pypiname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pypiname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pypiname}"
-  mv usfm2osis/scripts/*py usfm2osis/
-  sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
-  python setup.py build
+    cd "${_pypiname}"
+    mv usfm2osis/scripts/*py usfm2osis/
+    sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
+    python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pypiname}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "${_pypiname}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
-# vim:set ts=2 sw=2 et: 
