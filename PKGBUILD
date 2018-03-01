@@ -14,7 +14,7 @@ source=('pkgdistcache-client'
         'pkgdistcache-daemon'
         'pkgdistcache.conf'
         'pkgdistcached.service')
-sha256sums=('bef0809d86e151a4551a122b29f4c90d2f06ab34459a8ff91a37a29a6fd2a3f7'
+sha256sums=('eac5e8c4afebdbb3b93d9d50d10abdaa3cdbd9da796d969f2cd9db2064a69d8d'
             '10379b95265e7aa3c6334197ef255327281e35b958c3c062ae893dd3a646a66e'
             '5628cf4d81adaf7a3dd7243f51af1a30fff73a31b421615a7c0051280618f457'
             'b98bccb089bc0025b0f9b4b949b691e5564b0e40778a263a5bb6ffa5f01d04a2')

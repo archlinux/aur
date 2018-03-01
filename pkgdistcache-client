@@ -155,7 +155,8 @@ class AvahiBrowser(object):
             printwarn(ex)
 
     def _item_remove(self, *args):
-        self.services.remove(AvahiService(*args))
+        # The key will be missing if ResolveService raised an exception
+        self.services.pop(AvahiService(*args), None)
 
     def _failure(self, error):
         printwarn(error)
