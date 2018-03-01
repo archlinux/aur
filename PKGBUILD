@@ -38,20 +38,21 @@ build() {
         --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --disable-static \
         --libexecdir=/usr/lib/gvfs \
-        --disable-keyring \
+        --disable-static \
+        --disable-rpath \
         --disable-http \
         --disable-avahi \
-        --disable-nfs \
+        --disable-gdu \
+        --disable-cdda \
+        --disable-afc \
+        --disable-goa \
         --disable-google \
+        --disable-keyring \
+        --disable-bluray \
         --disable-samba \
         --disable-afp \
-        --disable-afc \
-        --disable-cdda \
-        --disable-bluray \
-        --disable-gdu \
-        --disable-goa
+        --disable-nfs
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
