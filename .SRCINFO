@@ -1,7 +1,7 @@
 pkgbase = ombi-beta
 	pkgdesc = Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves
 	pkgver = 3.0.2938
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.ombi.io
 	install = ombi.install
 	arch = any
