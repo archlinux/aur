@@ -1,14 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20170914
-pkgrel=2
+pkgver=20180227
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
 depends=('boost'
          'boost-libs'
          'zeromq')
+checkdepends=('python')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -17,7 +18,6 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
@@ -59,6 +59,7 @@ build() {
     --enable-hardening \
     --with-gui=no \
     --disable-wallet \
+    --without-miniupnpc \
     --with-gnu-ld
   make -j$_nproc
 }
