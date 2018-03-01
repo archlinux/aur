@@ -3,7 +3,7 @@
 # Maintainer: Jose Negron <josenj.arch@mailnull.net>
 
 pkgname=sdcc
-pkgver=3.7.0_rc1
+pkgver=3.7.0
 pkgrel=4
 pkgdesc="Retargettable ANSI C compiler (Intel 8051, Maxim 80DS390, Zilog Z80 and the Motorola 68HC08)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="http://sdcc.sourceforge.net/"
 options=(!strip  staticlibs)
 source=(https://downloads.sourceforge.net/sourceforge/sdcc/$pkgname-src-${pkgver//_/-}.tar.bz2
         glibc220-build-fix.patch)
-md5sums=('50be5303864a1a86e116df118f9f703b'
+md5sums=('76cc85d7ff27c46b930d309ea940a02f'
          'de3be2a60baaafbdbfe5efaaacbb3028')
 
 prepare() {
