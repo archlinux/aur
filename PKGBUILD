@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 
 pkgname=kadnode-git
-pkgver=2.2.0
+pkgver=0.2.2
 pkgrel=1
 
 pkgdesc='A P2P based DNS resolver'

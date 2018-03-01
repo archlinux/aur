@@ -1,6 +1,6 @@
 pkgbase = kadnode-git
 	pkgdesc = A P2P based DNS resolver
-	pkgver = 2.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://github.com/mwarning/KadNode
 	install = kadnode.install
