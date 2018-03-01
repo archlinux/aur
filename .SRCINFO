@@ -1,6 +1,6 @@
 pkgbase = vuvuzela-git
 	pkgdesc = Scalable Private Messaging
-	pkgver = r104.b7327a9
+	pkgver = r105.eaebd07
 	pkgrel = 1
 	url = https://vuvuzela.io/
 	arch = x86_64
