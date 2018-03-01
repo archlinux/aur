@@ -18,6 +18,7 @@ pkgbase = fontconfig-srb
 	makedepends = lynx
 	depends = expat
 	depends = freetype2
+	depends = gettext
 	provides = fontconfig
 	conflicts = fontconfig
 	source = fontconfig-srb::git+https://github.com/AOSC-Dev/fontconfig#commit=a4e6fc6ae509da8194b79006e747467bf672c1ed
