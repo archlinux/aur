@@ -14,7 +14,7 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
 pkgver=29.1
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url="http://www.mythtv.org"

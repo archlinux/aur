@@ -1,6 +1,6 @@
 pkgbase = mythplugins
 	pkgver = 29.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.mythtv.org
 	arch = x86_64
