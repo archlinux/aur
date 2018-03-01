@@ -1,12 +1,12 @@
 # Maintainer: Fabio Zanini <fabio.zanini __AT_ fastmail.fm>
 pkgname=expressionmatrix2-git
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for exploration of gene expression data from single-cell RNA sequencing."
 url="https://github.com/chanzuckerberg/ExpressionMatrix2"
 arch=('x86_64')
 license=("MIT") 
-depends=('python' 'boost' 'boost-libs' 'cmake' 'make' 'pybind11' 'graphviz' 'hdf5' 'python-h5py')
+depends=('python' 'boost' 'cmake' 'make' 'pybind11' 'graphviz' 'hdf5' 'python-h5py')
 source=("expressionmatrix2-git::git+https://github.com/chanzuckerberg/ExpressionMatrix2.git#branch=master")
 md5sums=('SKIP')
 

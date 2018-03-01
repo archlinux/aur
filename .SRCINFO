@@ -1,13 +1,12 @@
 pkgbase = expressionmatrix2-git
 	pkgdesc = Software for exploration of gene expression data from single-cell RNA sequencing.
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chanzuckerberg/ExpressionMatrix2
 	arch = x86_64
 	license = MIT
 	depends = python
 	depends = boost
-	depends = boost-libs
 	depends = cmake
 	depends = make
 	depends = pybind11
