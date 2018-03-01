@@ -30,7 +30,7 @@ build() {
 
   msg2 'Building dcraddrgen and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcraddrgen"
-  dep -v ensure
+  dep ensure -v
   go install
 }
 
