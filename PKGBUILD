@@ -1,17 +1,17 @@
 # Maintainer: SeeLook <seelook@gmail.com>
 pkgname=qrab
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Simply grabs QR code from screen and copies decoded text into clipboard"
 arch=('x86_64' 'i686')
 url="http://qrab.sourceforge.net/"
 license=('GPL3')
 groups=()
-depends=('qt5-quickcontrols2' 'zbar' 'qml-material')
+depends=('qt5-quickcontrols2' 'zbar' 'fluid')
 optdepends=()
-makedepends=('qt5-quickcontrols2' 'zbar' 'qml-material')
+makedepends=('qt5-quickcontrols2' 'zbar' 'fluid')
 source=("https://sourceforge.net/projects/qrab/files/QRab-$pkgver/qrab-$pkgver-source.tar.bz2")
-md5sums=('68f67e3efd321bba892c838df5387265')
+md5sums=('4a198f2fdf297152eed43665a540471e')
 
 build() {
   cd "$srcdir/qrab-$pkgver-source"
