@@ -20,13 +20,16 @@ optdepends=('ccstudio' 'ti-cgt-arm')
 _bundle=ble_sdk_2_02_01_18
 _installer=${_bundle}_setup.exe
 
+# to get the download key, follow the link above and click through
+_key=KS6V9FEICJSWPWYWAYHF6X6UQ542PAFS
+
 # This particular version of TI-RTOS is installed by this PKGBUILD
 # because the path patch applies to both of them.
 _tirtos_installer=tirtos_cc13xx_cc26xx_setuplinux_2_20_01_08.bin
 
 # NOTE: patch is compressed because of AUR's 250KB limit
 
-source=("http://software-dl.ti.com/download/lprf/GQ6NMS9R5GKUVISHMYWTKBMJEVFEQ5F8/${_installer}"
+source=("http://software-dl.ti.com/download/lprf/${_key}/${_installer}"
         "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/2_20_01_08/exports/${_tirtos_installer}"
         "fix-paths-for-linux.patch.xz"
         "fix-example-projects-import.patch")
