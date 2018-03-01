@@ -2,7 +2,7 @@
 
 pkgname=libsignal-protocol-c
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Signal Protocol C Library"
 arch=('i686' 'x86_64')
 url="https://github.com/WhisperSystems/libsignal-protocol-c"
@@ -25,6 +25,7 @@ build() {
   mkdir -p build && cd build
 
   cmake \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=True \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=0 \
@@ -39,6 +40,7 @@ check() {
 
   # Build with tests
   cmake \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=True \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=1 \
