@@ -1,9 +1,10 @@
-# Maintainer: mortzu <me@mortzu.de>
+# Maintainer: Anselmo L. S. Melo <anselmolsm@gmail.com>
+# Contributor: mortzu <me@mortzu.de>
 # Contributor: David Manouchehri <d@32t.ca>
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks-git
-pkgver=0.1.r87.gda0f774
+pkgver=0.5.r7.g5df6a30
 pkgrel=1
 pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall'
 arch=('i686' 'x86_64')
@@ -51,7 +52,7 @@ package() {
   install -Dm644 "$srcdir/redsocks.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/redsocks.conf"
 
   install -Dm755 "redsocks" "$pkgdir/usr/bin/redsocks"
-  install -Dm644 "README" "$pkgdir/usr/share/doc/redsocks/README"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/redsocks/README.md"
   install -Dm644 "redsocks.service" "$pkgdir/usr/lib/systemd/system/redsocks.service"
   install -Dm644 "redsocks.conf.example" "$pkgdir/usr/share/doc/redsocks/redsocks.conf.example"
 }
