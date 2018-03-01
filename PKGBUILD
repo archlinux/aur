@@ -29,7 +29,7 @@ build() {
 
   msg2 'Building dcrdata and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrdata"
-  dep ensure
+  dep ensure -v
   go install . ./cmd/...
 }
 
