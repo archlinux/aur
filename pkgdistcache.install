@@ -5,8 +5,7 @@ post_install() {
 
 *** SERVER MODE ***
 Start and enable service:
- $ sudo systemctl start pkgdistcached
- $ sudo systemctl enable pkgdistcached
+ $ sudo systemctl enable --now pkgdistcached
 
 *** CLIENT MODE ***
 1) Make sure avahi-daemon is enabled:
