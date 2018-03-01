@@ -3,7 +3,7 @@
 
 pkgname=otf-montserrat
 pkgver=7.200
-pkgrel=2
+pkgrel=3
 _fontname=Montserrat
 pkgdesc='Geometric font in many weights with Cyrillic and extended Latin support (Regular, Alternates), original concept by Julieta Ulanovsky'
 url='http://montserrat.zkysky.com.ar/en'
