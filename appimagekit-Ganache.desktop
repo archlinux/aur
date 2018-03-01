@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ganache
+Comment=Personal Blockchain for Ethereum
+Exec="/usr/bin/ganache" %U
+Terminal=false
+Type=Application
+Icon=appimagekit-Ganache
+Categories=Development;
+TryExec=/usr/bin/ganache
