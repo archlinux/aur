@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 _commit=6f7b2f4b18f85766b6199b574f42c72ef4539c45
 pkgname=wego
