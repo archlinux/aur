@@ -24,65 +24,58 @@ sha256sums=('SKIP'
             'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1')
 
 pkgver() {
-
-cd "$srcdir/sslyze"
-git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-
+  cd "$srcdir/sslyze"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 } 
 
 build() {
+  cd "$srcdir/"
 
-cd "$srcdir/"
+  cp -r openssl openssl-1.0.2e
+  cd openssl-1.0.2e
+  git checkout OpenSSL_1_0_2e
+  cd ..
 
-cp -r openssl openssl-1.0.2e
-cd openssl-1.0.2e
-git checkout OpenSSL_1_0_2e
-cd ..
+  mv "$srcdir/openssl" "$srcdir/nassl/openssl-master"
+  mv "$srcdir/openssl-1.0.2e" "$srcdir/nassl/openssl-1.0.2e"
+  mv "$srcdir/zlib-1.2.11" "$srcdir/nassl/"
 
-mv "$srcdir/openssl" "$srcdir/nassl/openssl-master"
-mv "$srcdir/openssl-1.0.2e" "$srcdir/nassl/openssl-1.0.2e"
-mv "$srcdir/zlib-1.2.11" "$srcdir/nassl/"
+  cd "$srcdir/nassl"
 
-cd "$srcdir/nassl"
+  # Delete binaries that are shipped within the git repository
+  find "$srcdir/nassl/bin" -type f -delete
 
-# Delete binaries that are shipped within the git repository
-find "$srcdir/nassl/bin" -type f -delete
-
-# Test nassl in check()
-grep -v NASSL_TEST_TASKS build_from_scratch.py > build_from_scratch_notest.py
-python2.7 build_from_scratch_notest.py
-
+  # Test nassl in check()
+  grep -v NASSL_TEST_TASKS build_from_scratch.py > build_from_scratch_notest.py
+  python2.7 build_from_scratch_notest.py
 }
 
 check() {
-export TRAVIS=true #Accept inconsistent result from ROBOT test
+  export TRAVIS=true # Accept inconsistent result from ROBOT test
 	
-cd "$srcdir/tls_parser"
-python2.7 run_tests.py
+  cd "$srcdir/tls_parser"
+  python2.7 run_tests.py
 
-cd "$srcdir/nassl"
-python2.7 run_tests.py
+  cd "$srcdir/nassl"
+  python2.7 run_tests.py
 
-cp -r "$srcdir/sslyze" "$srcdir/sslyze_test"
-cp -r "$srcdir/tls_parser/tls_parser" "$srcdir/sslyze_test/"
-cp -r "$srcdir/nassl/nassl" "$srcdir/sslyze_test/"
-cd "$srcdir/sslyze_test"
-python2.7 run_tests.py
-rm -rf "$srcdir/sslyze_test"
-	
+  cp -r "$srcdir/sslyze" "$srcdir/sslyze_test"
+  cp -r "$srcdir/tls_parser/tls_parser" "$srcdir/sslyze_test/"
+  cp -r "$srcdir/nassl/nassl" "$srcdir/sslyze_test/"
+  cd "$srcdir/sslyze_test"
+  python2.7 run_tests.py
+  rm -rf "$srcdir/sslyze_test"
 }
 
 package() {
-	
-cd "$srcdir/tls_parser"
-python2.7 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/tls_parser"
+  python2.7 setup.py install --root="$pkgdir" --optimize=1
 
-cd "$srcdir/nassl"
-python2.7 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/nassl"
+  python2.7 setup.py install --root="$pkgdir" --optimize=1
 
-cd "$srcdir/sslyze"
-python2.7 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/sslyze"
+  python2.7 setup.py install --root="$pkgdir" --optimize=1
 
-# CLI launcher is now created by setup.py
-
+  # CLI launcher is now created by setup.py
 }
