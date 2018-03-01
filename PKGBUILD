@@ -7,7 +7,7 @@
 # ... there's gotta be a better way
 pkgname="onehouronelife-bin"
 pkgver="58"
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Binary package for One Hour One Life game by Jason Rohrer"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('onehouronelife-latest')
 replaces=()
 backup=()
 options=()
@@ -41,6 +41,7 @@ validpgpkeys=()
 
 prepare() {
    cd $_folder
+   rm -rf settings_default >/dev/null || true
    mv settings settings_default
 }
 
@@ -53,10 +54,11 @@ prepare() {
 #}
 
 package() {
-    install -dm755 $pkgdir/opt/$pkgname
-    cp -r $_folder/* $pkgdir/opt/$pkgname/
-    install -m755  $startdir/onelife $pkgdir/opt/$pkgname
+    instdir=${pkgname%-latest}
+    install -dm755 $pkgdir/opt/$instdir
+    cp -r $_folder/* $pkgdir/opt/$instdir/
+    install -m755  $startdir/onelife $pkgdir/opt/$instdir
     install -dm755 $pkgdir/usr/local/bin
-    ln -s /opt/$pkgname/onelife $pkgdir/usr/local/bin/onelife
-    ln -s /opt/$pkgname/no_copyright.txt $pkgdir/opt/$pkgname/LICENSE
+    ln -s /opt/$instdir/onelife $pkgdir/usr/local/bin/onelife
+    ln -s /opt/$instdir/no_copyright.txt $pkgdir/opt/$instdir/LICENSE
 }

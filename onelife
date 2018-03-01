@@ -10,7 +10,14 @@ if ! [[ -d ~/.config/onelife/settings ]]; then
    mkdir -p ~/.config/onelife/settings >/dev/null || true
 fi
 
-cp -n /opt/onehouronelife-bin/settings_default/* ~/.config/onelife/settings/
+## writeable stuff
+#copy cache directories so we don't have to build from scratch
+cp -rn /opt/onehouronelife/*Cache ~/.config/onelife/
+#copy settings directory
+cp -n /opt/onehouronelife/settings_default/* ~/.config/onelife/settings/
+
+## read-only stuff
+#remove all links and make new ones to everything else
 find ~/.config/onelife -depth -maxdepth 1 -type l -delete
 ln -st ~/.config/onelife/ $DIR/*
 cd ~/.config/onelife

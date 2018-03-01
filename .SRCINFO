@@ -1,12 +1,13 @@
 pkgbase = onehouronelife-bin
 	pkgdesc = Binary package for One Hour One Life game by Jason Rohrer
 	pkgver = 58
-	pkgrel = 2
+	pkgrel = 3
 	url = http://onehouronelife.com
 	arch = x86_64
 	license = custom:Public Domain
 	depends = xclip
 	depends = lib32-sdl
+	conflicts = onehouronelife-latest
 	source = http://download5.onehouronelife.com/downloads/OneLife_v58_Linux.tar.gz
 	sha256sums = 1099672b88ab7e4e801a22a24a36195e2f59a76345224cb7e9bd73c91cea99a9
 
