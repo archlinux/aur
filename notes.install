@@ -1,5 +1,5 @@
 post_upgrade() {
-      usr/lib/vlc/vlc-cache-gen -f /usr/lib/vlc/plugins
+      /usr/lib/vlc/vlc-cache-gen /usr/lib/vlc/plugins
 }
 
 post_remove() {
