@@ -10,6 +10,7 @@ pkgbase = libvirt-autoballoon-git
 	depends = systemd
 	depends = bash
 	depends = libvirt
+	depends = libvirt-python
 	source = libvirt-autoballoon-git::git+https://github.com/Nefelim4ag/libvirt-autoballoon.git#branch=master
 	md5sums = SKIP
 
