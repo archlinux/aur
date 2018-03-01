@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse-git
-pkgver=0.22.1.r49.g934ab768
+pkgver=0.26.0.r348.g9cb3a190b
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -29,12 +29,10 @@ optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
 	    'python2-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)')
 
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
-        'sysusers-synapse.conf'
-        'deps-relax-checks.patch')
+        'sysusers-synapse.conf')
 
 md5sums=('SKIP'
-         'ecd9f66fb57fe1a2e1e2df07a460a35b'
-         '74d3d018e588d70ff0a22863d3d7aa4e')
+         'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
@@ -47,10 +45,9 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/-r/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd synapse
-	git apply -3 "${srcdir}/deps-relax-checks.patch"
-}
+#prepare() {
+#	cd synapse
+#}
 
 build() {
 	cd synapse
