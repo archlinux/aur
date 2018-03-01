@@ -4,8 +4,8 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-beta
-pkgver=$(curl -s https://ci.appveyor.com/api/projects/tidusjar/requestplex | grep -Pom 1 '"version":"\K[^"]*')
-pkgrel=2
+pkgver=3.0.2938
+pkgrel=1
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"
 arch=('any')
 url='https://www.ombi.io'
