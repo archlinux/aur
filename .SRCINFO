@@ -1,0 +1,16 @@
+pkgbase = goimpl-git
+	pkgdesc = impl generates method stubs for implementing an interface.
+	pkgver = 22.20180228
+	pkgrel = 1
+	url = https://github.com/josharian/impl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/josharian/impl
+	md5sums = SKIP
+
+pkgname = goimpl-git
+
