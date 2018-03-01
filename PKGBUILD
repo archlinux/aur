@@ -3,7 +3,7 @@ pkgname=tc-twitch-git
 _pkgname=tc-twitch
 _realname=tc
 _icons_dir="additional-icons"
-pkgver=11.0.0.r16.g4aaa142
+pkgver=11.0.0.r18.gf5c1df7
 pkgrel=1
 pkgdesc="The chat client for Twitch™"
 arch=('any')
@@ -34,8 +34,6 @@ build() {
   cp src/tc-renderer/index.html _build/index.html
   cp src/package.json _build/package.json
   npm run dist:linux
-  # license
-  sed -n '/### License/,/You may not/p' README.md > LICENSE
 }
 
 package() {
@@ -43,7 +41,7 @@ package() {
   cp -a $srcdir/$pkgname/dist/linux-unpacked $pkgdir/opt/$_pkgname
   ln -s $pkgdit/opt/$_pkgname/tc $pkgdir/usr/bin/tc-twitch
   install -Dm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
-  install -Dm644 $srcdir/$pkgname/LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm644 $srcdir/$pkgname/LICENSE.md $pkgdir/usr/share/licenses/$_pkgname/LICENSE
   # icons
   install -Dm644 $srcdir/$pkgname/src/assets/icon16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png
   install -Dm644 $srcdir/$pkgname/src/assets/icon256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png
