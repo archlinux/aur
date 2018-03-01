@@ -44,8 +44,8 @@ package() {
   install -Dm644 "version.txt" "${pkgdir}/usr/lib/tautulli/"
 
   msg2 "To migrate your plexpy config and db, run the following commands:"
-  msg2 "  mv /var/lib/plexpy/* /var/lib/tautulli/"
-  msg2 "  sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
+  msg2 "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
+  msg2 "  sudo sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
   msg2 "  sudo chown -R tautulli: /var/lib/tautulli"
 }
 
