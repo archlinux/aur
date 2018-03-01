@@ -1,6 +1,6 @@
 pkgbase = aurman-git
 	pkgdesc = aurman AUR helper
-	pkgver = 1.8.r0.gb11d68b
+	pkgver = 1.9.r0.g40385ff
 	pkgrel = 1
 	url = https://github.com/polygamma/aurman
 	arch = x86_64
