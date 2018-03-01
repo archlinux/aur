@@ -1,0 +1,240 @@
+From 65595c191d2a01b2486ba10618f743c930af362b Mon Sep 17 00:00:00 2001
+From: Andrew Comminos <andrew@comminos.com>
+Date: Sat, 24 Feb 2018 14:38:59 -0800
+Subject: [PATCH 4/8] wined3d: Implement aligned persistent heaps for
+ persistently mapped UBOs.
+
+---
+ dlls/wined3d/buffer.c          | 16 ++++++++++++----
+ dlls/wined3d/buffer_heap.c     | 12 +++++++++---
+ dlls/wined3d/cs.c              | 15 ++++++++++++++-
+ dlls/wined3d/device.c          | 15 ++++++++++++++-
+ dlls/wined3d/state.c           | 11 ++++++++++-
+ dlls/wined3d/wined3d_private.h |  5 ++++-
+ 6 files changed, 63 insertions(+), 11 deletions(-)
+
+diff --git a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
+index ccb090c907..7d7e506817 100644
+--- a/dlls/wined3d/buffer.c
++++ b/dlls/wined3d/buffer.c
+@@ -279,14 +279,16 @@ static BOOL buffer_alloc_persistent_map(struct wined3d_buffer *buffer, struct wi
+     struct wined3d_map_range map_range;
+     HRESULT hr;
+ 
+-    if (buffer->resource.usage & WINED3DUSAGE_WRITEONLY)
++    if (buffer->bind_flags & WINED3D_BIND_CONSTANT_BUFFER)
+     {
+-        heap = device->wo_buffer_heap;
++        // Use a heap aligned to constant buffer offset requirements.
++        heap = device->cb_buffer_heap;
+     }
+     else
+     {
+-        FIXME("Using write-only heap for a persistent buffer without WINED3DUSAGE_WRITEONLY.\n");
+-        heap = device->rw_buffer_heap;
++        if (!(buffer->resource.usage & WINED3DUSAGE_WRITEONLY))
++            FIXME("Using a write-only persistent buffer for %p without WINED3DUSAGE_WRITEONLY.\n", buffer);
++        heap = device->wo_buffer_heap;
+     }
+ 
+     buffer->buffer_heap = heap;
+@@ -791,6 +793,7 @@ DWORD wined3d_buffer_get_memory(struct wined3d_buffer *buffer,
+     {
+         data->buffer_object = buffer->buffer_object;
+         data->addr = NULL;
++        data->length = buffer->resource.size;
+         return WINED3D_LOCATION_BUFFER;
+     }
+     if (locations & WINED3D_LOCATION_PERSISTENT_MAP)
+@@ -798,12 +801,17 @@ DWORD wined3d_buffer_get_memory(struct wined3d_buffer *buffer,
+         // FIXME(acomminos): should we expose a buffer object we don't wholly own here?
+         data->buffer_object = buffer->buffer_heap->buffer_object;
+         data->addr = buffer->cs_persistent_map.offset;
++        // Note that the size of the underlying buffer allocation may be larger
++        // than the buffer knows about. In this case, we've rounded it up to be
++        // aligned (e.g. for uniform buffer offsets).
++        data->length = buffer->cs_persistent_map.size;
+         return WINED3D_LOCATION_PERSISTENT_MAP;
+     }
+     if (locations & WINED3D_LOCATION_SYSMEM)
+     {
+         data->buffer_object = 0;
+         data->addr = buffer->resource.heap_memory;
++        data->length = buffer->resource.size;
+         return WINED3D_LOCATION_SYSMEM;
+     }
+ 
+diff --git a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
+index f24fddffb4..02b925b658 100644
+--- a/dlls/wined3d/buffer_heap.c
++++ b/dlls/wined3d/buffer_heap.c
+@@ -95,7 +95,7 @@ static void element_merge_adjacent(struct wined3d_buffer_heap *heap, struct wine
+ }
+ 
+ /* Context activation is done by the caller. */
+-HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr size, BOOL write_only, struct wined3d_buffer_heap **buffer_heap)
++HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr size, GLsizeiptr alignment, BOOL write_only, struct wined3d_buffer_heap **buffer_heap)
+ {
+     const struct wined3d_gl_info *gl_info = context->gl_info;
+     const GLenum buffer_target = GL_ARRAY_BUFFER;
+@@ -133,6 +133,7 @@ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr s
+ 
+     object->free_list_head = element_new(0, size);
+     object->fenced_head = object->fenced_tail = NULL;
++    object->alignment = alignment;
+     InitializeCriticalSection(&object->temp_lock);
+ 
+     *buffer_heap = object;
+@@ -147,12 +148,17 @@ HRESULT wined3d_buffer_heap_destroy(struct wined3d_buffer_heap *heap, struct win
+     return WINED3D_OK;
+ }
+ 
+-HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr size, struct wined3d_map_range *out_range) {
++HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr size, struct wined3d_map_range *out_range)
++{
+     EnterCriticalSection(&heap->temp_lock);
+ 
+     // TODO(acomminos): free list binning?
+     struct wined3d_buffer_heap_element *elem = heap->free_list_head;
+-    // XXX(acomminos): Avoid fragmentation by rounding to nearest power of two.
++
++    // Round up the size to a multiple of the heap's alignment.
++    if (heap->alignment)
++        size += heap->alignment - (size % heap->alignment);
++
+     while (elem != NULL)
+     {
+         TRACE("allocation at %p, size %lld\n", heap->map_ptr + elem->range.offset, elem->range.size);
+diff --git a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
+index edcf521b72..d7bdc21a25 100644
+--- a/dlls/wined3d/cs.c
++++ b/dlls/wined3d/cs.c
+@@ -2668,7 +2668,20 @@ static void wined3d_cs_exec_discard_buffer(struct wined3d_cs *cs, const void *da
+ 
+     buffer->cs_persistent_map = op->map_range;
+ 
+-    device_invalidate_state(cs->device, STATE_STREAMSRC);
++    // TODO(acomminos): merge this logic with buffer.c functions for standalone BOs
++    if (buffer->bind_flags & WINED3D_BIND_VERTEX_BUFFER)
++        device_invalidate_state(cs->device, STATE_STREAMSRC);
++    if (buffer->bind_flags & WINED3D_BIND_INDEX_BUFFER)
++        device_invalidate_state(cs->device, STATE_INDEXBUFFER);
++    if (buffer->bind_flags & WINED3D_BIND_CONSTANT_BUFFER)
++    {
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_VERTEX));
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_HULL));
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_DOMAIN));
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_GEOMETRY));
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_PIXEL));
++        device_invalidate_state(cs->device, STATE_CONSTANT_BUFFER(WINED3D_SHADER_TYPE_COMPUTE));
++    }
+ 
+     wined3d_resource_release(&op->buffer->resource);
+ }
+diff --git a/dlls/wined3d/device.c b/dlls/wined3d/device.c
+index 363dcb17f0..e0871d1636 100644
+--- a/dlls/wined3d/device.c
++++ b/dlls/wined3d/device.c
+@@ -853,12 +853,22 @@ static void create_buffer_heap(struct wined3d_device *device, struct wined3d_con
+     // TODO(acomminos): definitely don't take up all of vram. this is gonna get
+     //                  paged anyway, though.
+     const GLsizeiptr HBO_SIZE = device->adapter->vram_bytes / 4;
++    const struct wined3d_gl_info *gl_info = &device->adapter->gl_info;
++
++    GLint ub_alignment;
++    gl_info->gl_ops.gl.p_glGetIntegerv(GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT, &ub_alignment);
+ 
+     HRESULT hr;
+-    if (FAILED(hr = wined3d_buffer_heap_create(context, HBO_SIZE, TRUE, &device->wo_buffer_heap)))
++    if (FAILED(hr = wined3d_buffer_heap_create(context, HBO_SIZE, 0, TRUE, &device->wo_buffer_heap)))
+     {
+         ERR("Failed to create write-only persistent buffer heap, hr %#x.\n", hr);
+     }
++
++    // TODO(acomminos): can likely use a way smaller heap for CBs by querying limits
++    if (FAILED(hr = wined3d_buffer_heap_create(context, HBO_SIZE, ub_alignment, TRUE, &device->cb_buffer_heap)))
++    {
++        ERR("Failed to create persistent buffer heap for constant buffers, hr %#x.\n", hr);
++    }
+ }
+ 
+ /* Context activation is done by the caller. */
+@@ -866,6 +876,9 @@ static void destroy_buffer_heap(struct wined3d_device *device, struct wined3d_co
+ {
+     if (device->wo_buffer_heap)
+         wined3d_buffer_heap_destroy(device->wo_buffer_heap, context);
++
++    if (device->cb_buffer_heap)
++        wined3d_buffer_heap_destroy(device->cb_buffer_heap, context);
+ }
+ 
+ static LONG fullscreen_style(LONG style)
+diff --git a/dlls/wined3d/state.c b/dlls/wined3d/state.c
+index 142a932d07..ce007d1a8e 100644
+--- a/dlls/wined3d/state.c
++++ b/dlls/wined3d/state.c
+@@ -4980,6 +4980,7 @@ static void state_cb(struct wined3d_context *context, const struct wined3d_state
+     enum wined3d_shader_type shader_type;
+     struct wined3d_buffer *buffer;
+     unsigned int i, base, count;
++    struct wined3d_bo_address bo_addr;
+ 
+     TRACE("context %p, state %p, state_id %#x.\n", context, state, state_id);
+ 
+@@ -4992,7 +4993,15 @@ static void state_cb(struct wined3d_context *context, const struct wined3d_state
+     for (i = 0; i < count; ++i)
+     {
+         buffer = state->cb[shader_type][i];
+-        GL_EXTCALL(glBindBufferBase(GL_UNIFORM_BUFFER, base + i, buffer ? buffer->buffer_object : 0));
++        if (buffer)
++        {
++            wined3d_buffer_get_memory(buffer, &bo_addr, buffer->locations);
++            GL_EXTCALL(glBindBufferRange(GL_UNIFORM_BUFFER, base + i, bo_addr.buffer_object, bo_addr.addr, bo_addr.length));
++        }
++        else
++        {
++            GL_EXTCALL(glBindBufferBase(GL_UNIFORM_BUFFER, base + i, 0));
++        }
+     }
+     checkGLcall("bind constant buffers");
+ }
+diff --git a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+index d049d57206..cfa48a5f3e 100644
+--- a/dlls/wined3d/wined3d_private.h
++++ b/dlls/wined3d/wined3d_private.h
+@@ -1462,6 +1462,7 @@ struct wined3d_bo_address
+ {
+     GLuint buffer_object;
+     BYTE *addr;
++    GLsizeiptr length;
+ };
+ 
+ struct wined3d_const_bo_address
+@@ -2972,6 +2973,7 @@ struct wined3d_device
+ 
+     /* Dynamic buffer heap */
+     struct wined3d_buffer_heap *wo_buffer_heap;
++    struct wined3d_buffer_heap *cb_buffer_heap;
+ };
+ 
+ void device_clear_render_targets(struct wined3d_device *device, UINT rt_count, const struct wined3d_fb_state *fb,
+@@ -3671,6 +3673,7 @@ struct wined3d_buffer_heap
+ {
+     GLuint buffer_object;
+     void *map_ptr;
++    GLsizeiptr alignment;
+     CRITICAL_SECTION temp_lock; // Temporary lock while we implement the fenced free list.
+ 
+     // TODO: add buckets for free regions of a given size.
+@@ -3684,7 +3687,7 @@ struct wined3d_buffer_heap
+     struct wined3d_buffer_heap_fenced_element *fenced_tail;
+ };
+ 
+-HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr size, BOOL write_only, struct wined3d_buffer_heap **heap) DECLSPEC_HIDDEN;
++HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr size, GLsizeiptr alignment, BOOL write_only, struct wined3d_buffer_heap **heap) DECLSPEC_HIDDEN;
+ HRESULT wined3d_buffer_heap_destroy(struct wined3d_buffer_heap *heap, struct wined3d_context *context) DECLSPEC_HIDDEN;
+ // Fetches a buffer from the heap of at least the given size.
+ HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr size, struct wined3d_map_range* out_range) DECLSPEC_HIDDEN;
+-- 
+2.16.2
+

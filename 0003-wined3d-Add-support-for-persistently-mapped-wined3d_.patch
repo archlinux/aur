@@ -1,0 +1,701 @@
+From 3e72163af5712be1a51957effa183edc7a9fb2a6 Mon Sep 17 00:00:00 2001
+From: Andrew Comminos <andrew@comminos.com>
+Date: Fri, 23 Feb 2018 17:41:43 -0800
+Subject: [PATCH 3/8] wined3d: Add support for persistently mapped
+ wined3d_buffer resources.
+
+---
+ dlls/wined3d/buffer.c          | 211 ++++++++++++++++++++++++++++++++++++++++-
+ dlls/wined3d/buffer_heap.c     |   8 +-
+ dlls/wined3d/cs.c              |  62 +++++++++++-
+ dlls/wined3d/drawprim.c        |   7 +-
+ dlls/wined3d/query.c           |   2 +-
+ dlls/wined3d/resource.c        |  20 +++-
+ dlls/wined3d/state.c           |   6 +-
+ dlls/wined3d/texture.c         |  13 +++
+ dlls/wined3d/utils.c           |   1 +
+ dlls/wined3d/wined3d_private.h |  13 +++
+ 10 files changed, 326 insertions(+), 17 deletions(-)
+
+diff --git a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
+index d61321e1a5..ccb090c907 100644
+--- a/dlls/wined3d/buffer.c
++++ b/dlls/wined3d/buffer.c
+@@ -28,12 +28,14 @@
+ #include "wined3d_private.h"
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(d3d);
++WINE_DECLARE_DEBUG_CHANNEL(d3d_perf);
+ 
+ #define WINED3D_BUFFER_HASDESC      0x01    /* A vertex description has been found. */
+ #define WINED3D_BUFFER_USE_BO       0x02    /* Use a buffer object for this buffer. */
+ #define WINED3D_BUFFER_PIN_SYSMEM   0x04    /* Keep a system memory copy for this buffer. */
+ #define WINED3D_BUFFER_DISCARD      0x08    /* A DISCARD lock has occurred since the last preload. */
+ #define WINED3D_BUFFER_APPLESYNC    0x10    /* Using sync as in GL_APPLE_flush_buffer_range. */
++#define WINED3D_BUFFER_PERSISTENT   0x20    /* Uses a persistent-mapped buffer via ARB_buffer_storage. */
+ 
+ #define VB_MAXDECLCHANGES     100     /* After that number of decl changes we stop converting */
+ #define VB_RESETDECLCHANGE    1000    /* Reset the decl changecount after that number of draws */
+@@ -269,6 +271,50 @@ fail:
+     return FALSE;
+ }
+ 
++/* Context activation is done by the caller. */
++static BOOL buffer_alloc_persistent_map(struct wined3d_buffer *buffer, struct wined3d_context *context)
++{
++    struct wined3d_device *device = buffer->resource.device;
++    struct wined3d_buffer_heap *heap;
++    struct wined3d_map_range map_range;
++    HRESULT hr;
++
++    if (buffer->resource.usage & WINED3DUSAGE_WRITEONLY)
++    {
++        heap = device->wo_buffer_heap;
++    }
++    else
++    {
++        FIXME("Using write-only heap for a persistent buffer without WINED3DUSAGE_WRITEONLY.\n");
++        heap = device->rw_buffer_heap;
++    }
++
++    buffer->buffer_heap = heap;
++    if (FAILED(hr = wined3d_buffer_heap_alloc(heap, buffer->resource.size, &map_range)))
++    {
++        goto fail;
++    }
++    buffer->cs_persistent_map = map_range;
++    buffer->mt_persistent_map = map_range;
++    return TRUE;
++
++fail:
++    // FIXME(acomminos): fall back to standalone BO here?
++    ERR("Failed to create persistent map for buffer %p, hr=%x\n", buffer, hr);
++    buffer->buffer_heap = NULL;
++    return FALSE;
++}
++
++static void buffer_free_persistent_map(struct wined3d_buffer *buffer)
++{
++    if (!buffer->buffer_heap)
++        return;
++
++    // TODO(acomminos): get the CS thread to free pending main thread buffers.
++    wined3d_buffer_heap_free(buffer->buffer_heap, buffer->cs_persistent_map);
++    buffer->buffer_heap = NULL;
++}
++
+ static BOOL buffer_process_converted_attribute(struct wined3d_buffer *buffer,
+         const enum wined3d_buffer_conversion_type conversion_type,
+         const struct wined3d_stream_info_element *attrib, DWORD *stride_this_run)
+@@ -630,6 +676,16 @@ static BOOL wined3d_buffer_prepare_location(struct wined3d_buffer *buffer,
+                 return FALSE;
+             }
+             return buffer_create_buffer_object(buffer, context);
++        case WINED3D_LOCATION_PERSISTENT_MAP:
++            if (buffer->buffer_heap)
++                return TRUE;
++
++            if (!(buffer->flags & WINED3D_BUFFER_PERSISTENT))
++            {
++                WARN("Trying to map a persistent region for buffer %p without WINED3D_BUFFER_PERSISTENT.\n", buffer);
++                return FALSE;
++            }
++            return buffer_alloc_persistent_map(buffer, context);
+ 
+         default:
+             ERR("Invalid location %s.\n", wined3d_debug_location(location));
+@@ -688,16 +744,32 @@ BOOL wined3d_buffer_load_location(struct wined3d_buffer *buffer,
+                 buffer_conversion_upload(buffer, context);
+             break;
+ 
++        case WINED3D_LOCATION_PERSISTENT_MAP:
++            // TODO(acomminos): are we guaranteed location_sysmem to be kept?
++            // no.
++            if (buffer->conversion_map)
++                FIXME("Attempting to use conversion map with persistent mapping.\n");
++            memcpy(buffer->buffer_heap->map_ptr +
++                   buffer->cs_persistent_map.offset,
++                   buffer->resource.heap_memory, buffer->resource.size);
++            break;
++
+         default:
+             ERR("Invalid location %s.\n", wined3d_debug_location(location));
+             return FALSE;
+     }
+ 
+     wined3d_buffer_validate_location(buffer, location);
+-    if (buffer->resource.heap_memory && location == WINED3D_LOCATION_BUFFER
++    if (buffer->resource.heap_memory
++            && location & WINED3D_LOCATION_BUFFER
+             && !(buffer->resource.usage & WINED3DUSAGE_DYNAMIC))
+         wined3d_buffer_evict_sysmem(buffer);
+ 
++    // FIXME(acomminos)
++    if (buffer->resource.heap_memory
++           && location & WINED3D_LOCATION_PERSISTENT_MAP)
++        wined3d_buffer_evict_sysmem(buffer);
++
+     return TRUE;
+ }
+ 
+@@ -721,6 +793,13 @@ DWORD wined3d_buffer_get_memory(struct wined3d_buffer *buffer,
+         data->addr = NULL;
+         return WINED3D_LOCATION_BUFFER;
+     }
++    if (locations & WINED3D_LOCATION_PERSISTENT_MAP)
++    {
++        // FIXME(acomminos): should we expose a buffer object we don't wholly own here?
++        data->buffer_object = buffer->buffer_heap->buffer_object;
++        data->addr = buffer->cs_persistent_map.offset;
++        return WINED3D_LOCATION_PERSISTENT_MAP;
++    }
+     if (locations & WINED3D_LOCATION_SYSMEM)
+     {
+         data->buffer_object = 0;
+@@ -760,6 +839,8 @@ static void buffer_unload(struct wined3d_resource *resource)
+         buffer->flags &= ~WINED3D_BUFFER_HASDESC;
+     }
+ 
++    buffer_free_persistent_map(buffer);
++
+     resource_unload(resource);
+ }
+ 
+@@ -783,6 +864,8 @@ static void wined3d_buffer_destroy_object(void *object)
+         HeapFree(GetProcessHeap(), 0, buffer->conversion_map);
+     }
+ 
++    buffer_free_persistent_map(buffer);
++
+     HeapFree(GetProcessHeap(), 0, buffer->maps);
+     HeapFree(GetProcessHeap(), 0, buffer);
+ }
+@@ -899,6 +982,13 @@ void wined3d_buffer_load(struct wined3d_buffer *buffer, struct wined3d_context *
+ 
+     buffer_mark_used(buffer);
+ 
++    if (buffer->flags & WINED3D_BUFFER_PERSISTENT)
++    {
++        if (!wined3d_buffer_load_location(buffer, context, WINED3D_LOCATION_PERSISTENT_MAP))
++            ERR("Failed to preload persistent mapping.\n");
++        return;
++    }
++
+     /* TODO: Make converting independent from VBOs */
+     if (!(buffer->flags & WINED3D_BUFFER_USE_BO))
+     {
+@@ -1009,6 +1099,25 @@ static HRESULT wined3d_buffer_map(struct wined3d_buffer *buffer, UINT offset, UI
+ 
+     count = ++buffer->resource.map_count;
+ 
++    if (buffer->locations & WINED3D_LOCATION_PERSISTENT_MAP)
++    {
++        const struct wined3d_gl_info *gl_info;
++        context = context_acquire(device, NULL, 0);
++
++        FIXME_(d3d_perf)("Fences not used for persistent buffer maps on CS thread, using glFinish.\n");
++
++        gl_info = context->gl_info;
++        gl_info->gl_ops.gl.p_glFinish();
++
++        base = buffer->buffer_heap->map_ptr
++             + buffer->cs_persistent_map.offset;
++        *data = base + offset;
++
++        context_release(context);
++
++        return WINED3D_OK;
++    }
++
+     if (buffer->buffer_object)
+     {
+         unsigned int dirty_offset = offset, dirty_size = size;
+@@ -1151,6 +1260,12 @@ static void wined3d_buffer_unmap(struct wined3d_buffer *buffer)
+         return;
+     }
+ 
++    if (buffer->flags & WINED3D_BUFFER_PERSISTENT)
++    {
++        TRACE("Persistent buffer, ignore unmap.\n");
++        return;
++    }
++
+     if (buffer->map_ptr)
+     {
+         struct wined3d_device *device = buffer->resource.device;
+@@ -1273,6 +1388,64 @@ static void buffer_resource_preload(struct wined3d_resource *resource)
+ 
+ static HRESULT buffer_resource_sub_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+         struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
++{
++    struct wined3d_buffer *buffer = buffer_from_resource(resource);
++    UINT offset = box ? box->left : 0;
++
++    if (sub_resource_idx)
++    {
++        WARN("Invalid sub_resource_idx %u.\n", sub_resource_idx);
++        return E_INVALIDARG;
++    }
++
++    // Support immediate mapping of persistent buffers off the command thread,
++    // which require no GL calls to interface with.
++    if (buffer->locations & WINED3D_LOCATION_PERSISTENT_MAP)
++    {
++        map_desc->row_pitch = map_desc->slice_pitch = buffer->desc.byte_width;
++        if (flags & WINED3D_MAP_DISCARD)
++        {
++            HRESULT hr;
++            struct wined3d_map_range map_range;
++            if (FAILED(hr = wined3d_buffer_heap_alloc(buffer->buffer_heap, resource->size, &map_range)))
++            {
++                FIXME("Failed to allocate new buffer, falling back to sync path.\n");
++                return hr;
++            }
++            map_desc->data = buffer->buffer_heap->map_ptr + map_range.offset + offset;
++            resource->map_count++;
++
++            buffer->mt_persistent_map = map_range;
++
++            // Discard handler on CSMT thread is responsible for returning the
++            // currently used buffer to the free pool, along with the fence that
++            // must be called before the buffer can be reused.
++            wined3d_cs_emit_discard_buffer(resource->device->cs, buffer, map_range);
++            return WINED3D_OK;
++        }
++        else if (flags & WINED3D_MAP_NOOVERWRITE)
++        {
++            // Allow immediate access for persistent buffers without a fence.
++            // Always use the latest buffer in this case in case the latest
++            // DISCARDed one hasn't reached the command stream yet.
++            struct wined3d_map_range map_range = buffer->mt_persistent_map;
++            map_desc->data = buffer->buffer_heap->map_ptr + map_range.offset + offset;
++            resource->map_count++;
++            return WINED3D_OK;
++        }
++        else
++        {
++            // TODO(acomminos): Should check mapped ranges to see if the region is writeable even though NOOVERWRITE is specified.
++            WARN_(d3d_perf)("Mapping persistent buffer %p in sync with CS thread.\n", buffer);
++            // XXX(acomminos): kill this early return. they're the worst.
++        }
++    }
++
++    return E_NOTIMPL;
++}
++
++static HRESULT buffer_resource_sub_resource_map_cs(struct wined3d_resource *resource, unsigned int sub_resource_idx,
++        struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
+ {
+     struct wined3d_buffer *buffer = buffer_from_resource(resource);
+     UINT offset, size;
+@@ -1316,6 +1489,18 @@ static HRESULT buffer_resource_sub_resource_map_info(struct wined3d_resource *re
+ }
+ 
+ static HRESULT buffer_resource_sub_resource_unmap(struct wined3d_resource *resource, unsigned int sub_resource_idx)
++{
++    struct wined3d_buffer *buffer = buffer_from_resource(resource);
++    if (buffer->locations & WINED3D_LOCATION_PERSISTENT_MAP)
++    {
++        // Nothing to be done to unmap a region of a persistent buffer.
++        resource->map_count--;
++        return WINED3D_OK;
++    }
++    return E_NOTIMPL;
++}
++
++static HRESULT buffer_resource_sub_resource_unmap_cs(struct wined3d_resource *resource, unsigned int sub_resource_idx)
+ {
+     if (sub_resource_idx)
+     {
+@@ -1334,8 +1519,10 @@ static const struct wined3d_resource_ops buffer_resource_ops =
+     buffer_resource_preload,
+     buffer_unload,
+     buffer_resource_sub_resource_map,
++    buffer_resource_sub_resource_map_cs,
+     buffer_resource_sub_resource_map_info,
+     buffer_resource_sub_resource_unmap,
++    buffer_resource_sub_resource_unmap_cs,
+ };
+ 
+ static GLenum buffer_type_hint_from_bind_flags(const struct wined3d_gl_info *gl_info,
+@@ -1411,12 +1598,32 @@ static HRESULT buffer_init(struct wined3d_buffer *buffer, struct wined3d_device
+         buffer->flags |= WINED3D_BUFFER_PIN_SYSMEM;
+     }
+ 
++    // FIXME(acomminos)
++    if (buffer->resource.usage & WINED3DUSAGE_DYNAMIC)
++    {
++        // FIXME(acomminos): why is this returning false?
++        if (FALSE && !gl_info->supported[ARB_BUFFER_STORAGE])
++        {
++            WARN_(d3d_perf)("Not creating a persistent mapping for a dynamic buffer because ARB_buffer_storage is unsupported.\n");
++        }
++        else
++        {
++            // If supported, use persistent mapped buffers instead of a
++            // standalone BO for dynamic buffers.
++            buffer->flags |= WINED3D_BUFFER_PERSISTENT;
++        }
++    }
++
+     /* Observations show that draw_primitive_immediate_mode() is faster on
+      * dynamic vertex buffers than converting + draw_primitive_arrays().
+      * (Half-Life 2 and others.) */
+     dynamic_buffer_ok = gl_info->supported[APPLE_FLUSH_BUFFER_RANGE] || gl_info->supported[ARB_MAP_BUFFER_RANGE];
+ 
+-    if (!gl_info->supported[ARB_VERTEX_BUFFER_OBJECT])
++    if (buffer->flags & WINED3D_BUFFER_PERSISTENT)
++    {
++        TRACE("Not creating a BO because a persistent mapped buffer will be used.\n");
++    }
++    else if (!gl_info->supported[ARB_VERTEX_BUFFER_OBJECT])
+     {
+         TRACE("Not creating a BO because GL_ARB_vertex_buffer is not supported.\n");
+     }
+diff --git a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
+index 900e2d24bb..f24fddffb4 100644
+--- a/dlls/wined3d/buffer_heap.c
++++ b/dlls/wined3d/buffer_heap.c
+@@ -114,14 +114,11 @@ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr s
+     {
+         access_flags |= GL_MAP_READ_BIT;
+     }
+-    storage_flags = access_flags; // XXX(acomminos): will we need dynamic storage?
++    storage_flags = access_flags;
+ 
+     // TODO(acomminos): where should we be checking for errors here?
+-
+-    // TODO(acomminos): assert from CS thread?
+     GL_EXTCALL(glGenBuffers(1, &object->buffer_object));
+ 
+-    // XXX(acomminos): use glNamedBufferStorage?
+     context_bind_bo(context, buffer_target, object->buffer_object);
+ 
+     // TODO(acomminos): assert glBufferStorage supported?
+@@ -129,7 +126,6 @@ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr s
+ 
+     if (!(object->map_ptr = GL_EXTCALL(glMapBufferRange(buffer_target, 0, size, access_flags))))
+     {
+-        // TODO(acomminos): include error message
+         ERR("Couldn't map persistent buffer.\n");
+         return -1; // FIXME(acomminos): proper error code, cleanup
+     }
+@@ -147,7 +143,7 @@ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr s
+ /* Context activation is done by the caller. */
+ HRESULT wined3d_buffer_heap_destroy(struct wined3d_buffer_heap *heap, struct wined3d_context *context)
+ {
+-    // TODO
++    FIXME("Unimplemented, leaking buffer");
+     return WINED3D_OK;
+ }
+ 
+diff --git a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
+index 7e72b30933..edcf521b72 100644
+--- a/dlls/wined3d/cs.c
++++ b/dlls/wined3d/cs.c
+@@ -73,6 +73,7 @@ enum wined3d_cs_op
+     WINED3D_CS_OP_COPY_UAV_COUNTER,
+     WINED3D_CS_OP_COPY_SUB_RESOURCE,
+     WINED3D_CS_OP_GENERATE_MIPS,
++    WINED3D_CS_OP_DISCARD_BUFFER,
+     WINED3D_CS_OP_STOP,
+ };
+ 
+@@ -444,6 +445,13 @@ struct wined3d_cs_generate_mips
+     struct wined3d_shader_resource_view *view;
+ };
+ 
++struct wined3d_cs_discard_buffer
++{
++    enum wined3d_cs_op opcode;
++    struct wined3d_buffer *buffer;
++    struct wined3d_map_range map_range;
++};
++
+ struct wined3d_cs_stop
+ {
+     enum wined3d_cs_op opcode;
+@@ -1986,7 +1994,7 @@ static void wined3d_cs_exec_map(struct wined3d_cs *cs, const void *data)
+     const struct wined3d_cs_map *op = data;
+     struct wined3d_resource *resource = op->resource;
+ 
+-    *op->hr = resource->resource_ops->resource_sub_resource_map(resource,
++    *op->hr = resource->resource_ops->resource_sub_resource_map_cs(resource,
+             op->sub_resource_idx, op->map_desc, op->box, op->flags);
+ }
+ 
+@@ -2020,7 +2028,7 @@ static void wined3d_cs_exec_unmap(struct wined3d_cs *cs, const void *data)
+     const struct wined3d_cs_unmap *op = data;
+     struct wined3d_resource *resource = op->resource;
+ 
+-    *op->hr = resource->resource_ops->resource_sub_resource_unmap(resource, op->sub_resource_idx);
++    *op->hr = resource->resource_ops->resource_sub_resource_unmap_cs(resource, op->sub_resource_idx);
+ }
+ 
+ HRESULT wined3d_cs_unmap(struct wined3d_cs *cs, struct wined3d_resource *resource, unsigned int sub_resource_idx)
+@@ -2630,6 +2638,55 @@ void wined3d_cs_emit_generate_mips(struct wined3d_cs *cs, struct wined3d_shader_
+     cs->ops->submit(cs, WINED3D_CS_QUEUE_DEFAULT);
+ }
+ 
++static void wined3d_cs_exec_discard_buffer(struct wined3d_cs *cs, const void *data)
++{
++    const struct wined3d_cs_discard_buffer *op = data;
++    struct wined3d_buffer *buffer = op->buffer;
++    HRESULT hr;
++    struct wined3d_fence *fence;
++
++    // Poll for discarded buffers whose fenced have been triggered here to avoid
++    // excessive VRAM consumption.
++    wined3d_buffer_heap_cs_poll_fences(buffer->buffer_heap, cs->device);
++
++    // TODO(acomminos): should call into buffer.c here instead.
++    // XXX(acomminos): should we always create a new fence here?
++    if (!FAILED(hr = wined3d_fence_create(cs->device, &fence)))
++    {
++        // TODO(acomminos): make more informed fences based on prior info. for now,
++        // we do this because allocating and deleting fences repeatedly is brutal
++        // for performance. look into why.
++        wined3d_fence_issue(fence, cs->device);
++
++        wined3d_buffer_heap_free_fenced(buffer->buffer_heap, buffer->cs_persistent_map, fence);
++    }
++    else
++    {
++        ERR("Failed to create fence for discarded buffer %p, hr %x\n. Freeing anyway.", buffer, hr);
++        wined3d_buffer_heap_free(buffer->buffer_heap, buffer->cs_persistent_map);
++    }
++
++    buffer->cs_persistent_map = op->map_range;
++
++    device_invalidate_state(cs->device, STATE_STREAMSRC);
++
++    wined3d_resource_release(&op->buffer->resource);
++}
++
++void wined3d_cs_emit_discard_buffer(struct wined3d_cs *cs, struct wined3d_buffer *buffer, struct wined3d_map_range map_range)
++{
++    struct wined3d_cs_discard_buffer *op;
++
++    op = cs->ops->require_space(cs, sizeof(*op), WINED3D_CS_QUEUE_DEFAULT);
++    op->opcode = WINED3D_CS_OP_DISCARD_BUFFER;
++    op->buffer = buffer;
++    op->map_range = map_range;
++
++    wined3d_resource_acquire(&buffer->resource);
++
++    cs->ops->submit(cs, WINED3D_CS_QUEUE_DEFAULT);
++}
++
+ static void wined3d_cs_emit_stop(struct wined3d_cs *cs)
+ {
+     struct wined3d_cs_stop *op;
+@@ -2690,6 +2747,7 @@ static void (* const wined3d_cs_op_handlers[])(struct wined3d_cs *cs, const void
+     /* WINED3D_CS_OP_COPY_UAV_COUNTER            */ wined3d_cs_exec_copy_uav_counter,
+     /* WINED3D_CS_OP_COPY_SUB_RESOURCE           */ wined3d_cs_exec_copy_sub_resource,
+     /* WINED3D_CS_OP_GENERATE_MIPS               */ wined3d_cs_exec_generate_mips,
++    /* WINED3D_CS_OP_DISCARD_BUFFER              */ wined3d_cs_exec_discard_buffer,
+ };
+ 
+ #if defined(STAGING_CSMT)
+diff --git a/dlls/wined3d/drawprim.c b/dlls/wined3d/drawprim.c
+index 404623c9ac..7b622c9b14 100644
+--- a/dlls/wined3d/drawprim.c
++++ b/dlls/wined3d/drawprim.c
+@@ -688,7 +688,12 @@ void draw_primitive(struct wined3d_device *device, const struct wined3d_state *s
+     if (parameters->indexed)
+     {
+         struct wined3d_buffer *index_buffer = state->index_buffer;
+-        if (!index_buffer->buffer_object || !stream_info->all_vbo)
++        if (index_buffer->locations & WINED3D_LOCATION_PERSISTENT_MAP)
++        {
++            idx_data = index_buffer->cs_persistent_map.offset;
++            ib_fence = index_buffer->fence; // FIXME(acomminos): use this fence or not?
++        }
++        else if (!index_buffer->buffer_object || !stream_info->all_vbo)
+         {
+             idx_data = index_buffer->resource.heap_memory;
+         }
+diff --git a/dlls/wined3d/query.c b/dlls/wined3d/query.c
+index f394af87c7..cf665bfd11 100644
+--- a/dlls/wined3d/query.c
++++ b/dlls/wined3d/query.c
+@@ -88,7 +88,7 @@ static BOOL wined3d_fence_supported(const struct wined3d_gl_info *gl_info)
+     return gl_info->supported[ARB_SYNC] || gl_info->supported[NV_FENCE] || gl_info->supported[APPLE_FENCE];
+ }
+ 
+-static enum wined3d_fence_result wined3d_fence_test(const struct wined3d_fence *fence,
++enum wined3d_fence_result wined3d_fence_test(const struct wined3d_fence *fence,
+         const struct wined3d_device *device, DWORD flags)
+ {
+     const struct wined3d_gl_info *gl_info;
+diff --git a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
+index 78deb5078b..9b3a303b08 100644
+--- a/dlls/wined3d/resource.c
++++ b/dlls/wined3d/resource.c
+@@ -358,13 +358,18 @@ static DWORD wined3d_resource_sanitise_map_flags(const struct wined3d_resource *
+ HRESULT CDECL wined3d_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+         struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
+ {
++    HRESULT hr;
+     TRACE("resource %p, sub_resource_idx %u, map_desc %p, box %s, flags %#x.\n",
+             resource, sub_resource_idx, map_desc, debug_box(box), flags);
+ 
+     flags = wined3d_resource_sanitise_map_flags(resource, flags);
+-    wined3d_resource_wait_idle(resource);
+-
+-    return wined3d_cs_map(resource->device->cs, resource, sub_resource_idx, map_desc, box, flags);
++    if (FAILED(hr = resource->resource_ops->resource_sub_resource_map(resource, sub_resource_idx, map_desc, box, flags)))
++    {
++        TRACE_(d3d_perf)("Mapping resource %p on the command stream.\n", resource);
++        wined3d_resource_wait_idle(resource);
++        hr = wined3d_cs_map(resource->device->cs, resource, sub_resource_idx, map_desc, box, flags);
++    }
++    return hr;
+ }
+ 
+ HRESULT CDECL wined3d_resource_map_info(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+@@ -377,9 +382,16 @@ HRESULT CDECL wined3d_resource_map_info(struct wined3d_resource *resource, unsig
+ 
+ HRESULT CDECL wined3d_resource_unmap(struct wined3d_resource *resource, unsigned int sub_resource_idx)
+ {
++    HRESULT hr;
+     TRACE("resource %p, sub_resource_idx %u.\n", resource, sub_resource_idx);
+ 
+-    return wined3d_cs_unmap(resource->device->cs, resource, sub_resource_idx);
++    if (FAILED(hr = resource->resource_ops->resource_sub_resource_unmap(resource, sub_resource_idx)))
++    {
++        TRACE_(d3d_perf)("Unmapping resource %p on the command stream.\n", resource);
++        hr = wined3d_cs_unmap(resource->device->cs, resource, sub_resource_idx);
++    }
++    return hr;
++
+ }
+ 
+ UINT CDECL wined3d_resource_update_info(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+diff --git a/dlls/wined3d/state.c b/dlls/wined3d/state.c
+index f5b9eca520..142a932d07 100644
+--- a/dlls/wined3d/state.c
++++ b/dlls/wined3d/state.c
+@@ -4910,7 +4910,11 @@ static void indexbuffer(struct wined3d_context *context, const struct wined3d_st
+     else
+     {
+         struct wined3d_buffer *ib = state->index_buffer;
+-        GL_EXTCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->buffer_object));
++        // FIXME(acomminos): disasterous.
++        if (ib->locations & WINED3D_LOCATION_PERSISTENT_MAP)
++            GL_EXTCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->buffer_heap->buffer_object));
++        else
++            GL_EXTCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->buffer_object));
+     }
+ }
+ 
+diff --git a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
+index 69565f355d..51c37762cd 100644
+--- a/dlls/wined3d/texture.c
++++ b/dlls/wined3d/texture.c
+@@ -2297,6 +2297,12 @@ static void wined3d_texture_unload(struct wined3d_resource *resource)
+ 
+ static HRESULT texture_resource_sub_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+         struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
++{
++    return E_NOTIMPL;
++}
++
++static HRESULT texture_resource_sub_resource_map_cs(struct wined3d_resource *resource, unsigned int sub_resource_idx,
++        struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
+ {
+     const struct wined3d_format *format = resource->format;
+     struct wined3d_texture_sub_resource *sub_resource;
+@@ -2464,6 +2470,11 @@ static HRESULT texture_resource_sub_resource_map_info(struct wined3d_resource *r
+ }
+ 
+ static HRESULT texture_resource_sub_resource_unmap(struct wined3d_resource *resource, unsigned int sub_resource_idx)
++{
++    return E_NOTIMPL;
++}
++
++static HRESULT texture_resource_sub_resource_unmap_cs(struct wined3d_resource *resource, unsigned int sub_resource_idx)
+ {
+     struct wined3d_texture_sub_resource *sub_resource;
+     struct wined3d_device *device = resource->device;
+@@ -2514,8 +2525,10 @@ static const struct wined3d_resource_ops texture_resource_ops =
+     texture_resource_preload,
+     wined3d_texture_unload,
+     texture_resource_sub_resource_map,
++    texture_resource_sub_resource_map_cs,
+     texture_resource_sub_resource_map_info,
+     texture_resource_sub_resource_unmap,
++    texture_resource_sub_resource_unmap_cs,
+ };
+ 
+ static HRESULT texture1d_init(struct wined3d_texture *texture, const struct wined3d_resource_desc *desc,
+diff --git a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
+index ee519d2b32..25626749fa 100644
+--- a/dlls/wined3d/utils.c
++++ b/dlls/wined3d/utils.c
+@@ -6264,6 +6264,7 @@ const char *wined3d_debug_location(DWORD location)
+     LOCATION_TO_STR(WINED3D_LOCATION_DRAWABLE);
+     LOCATION_TO_STR(WINED3D_LOCATION_RB_MULTISAMPLE);
+     LOCATION_TO_STR(WINED3D_LOCATION_RB_RESOLVED);
++    LOCATION_TO_STR(WINED3D_LOCATION_PERSISTENT_MAP);
+ #undef LOCATION_TO_STR
+     if (location) FIXME("Unrecognized location flag(s) %#x.\n", location);
+ 
+diff --git a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+index 96bda81eb9..d049d57206 100644
+--- a/dlls/wined3d/wined3d_private.h
++++ b/dlls/wined3d/wined3d_private.h
+@@ -1701,6 +1701,9 @@ void wined3d_fence_destroy(struct wined3d_fence *fence) DECLSPEC_HIDDEN;
+ void wined3d_fence_issue(struct wined3d_fence *fence, const struct wined3d_device *device) DECLSPEC_HIDDEN;
+ enum wined3d_fence_result wined3d_fence_wait(const struct wined3d_fence *fence,
+         const struct wined3d_device *device) DECLSPEC_HIDDEN;
++// XXX(acomminos): really expose this?
++enum wined3d_fence_result wined3d_fence_test(const struct wined3d_fence *fence,
++        const struct wined3d_device *device, DWORD flags) DECLSPEC_HIDDEN;
+ 
+ /* Direct3D terminology with little modifications. We do not have an issued
+  * state because only the driver knows about it, but we have a created state
+@@ -3009,9 +3012,12 @@ struct wined3d_resource_ops
+     void (*resource_unload)(struct wined3d_resource *resource);
+     HRESULT (*resource_sub_resource_map)(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+             struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags);
++    HRESULT (*resource_sub_resource_map_cs)(struct wined3d_resource *resource, unsigned int sub_resource_idx,
++            struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags);
+     HRESULT (*resource_map_info)(struct wined3d_resource *resource, unsigned int sub_resource_idx,
+             struct wined3d_map_info *info, DWORD flags);
+     HRESULT (*resource_sub_resource_unmap)(struct wined3d_resource *resource, unsigned int sub_resource_idx);
++    HRESULT (*resource_sub_resource_unmap_cs)(struct wined3d_resource *resource, unsigned int sub_resource_idx);
+ };
+ 
+ struct wined3d_resource
+@@ -3266,6 +3272,7 @@ void wined3d_texture_validate_location(struct wined3d_texture *texture,
+ #define WINED3D_LOCATION_DRAWABLE       0x00000040
+ #define WINED3D_LOCATION_RB_MULTISAMPLE 0x00000080
+ #define WINED3D_LOCATION_RB_RESOLVED    0x00000100
++#define WINED3D_LOCATION_PERSISTENT_MAP 0x00000200
+ 
+ const char *wined3d_debug_location(DWORD location) DECLSPEC_HIDDEN;
+ 
+@@ -3622,6 +3629,7 @@ void wined3d_cs_emit_copy_sub_resource(struct wined3d_cs *cs, struct wined3d_res
+         unsigned int dst_sub_resource_idx, const struct wined3d_box *dst_box, struct wined3d_resource *src_resource,
+         unsigned int src_sub_resource_idx, const struct wined3d_box *src_box) DECLSPEC_HIDDEN;
+ void wined3d_cs_emit_generate_mips(struct wined3d_cs *cs, struct wined3d_shader_resource_view *view) DECLSPEC_HIDDEN;
++void wined3d_cs_emit_discard_buffer(struct wined3d_cs *cs, struct wined3d_buffer *buffer, struct wined3d_map_range map_range) DECLSPEC_HIDDEN;
+ void wined3d_cs_init_object(struct wined3d_cs *cs,
+         void (*callback)(void *object), void *object) DECLSPEC_HIDDEN;
+ HRESULT wined3d_cs_map(struct wined3d_cs *cs, struct wined3d_resource *resource, unsigned int sub_resource_idx,
+@@ -3712,6 +3720,11 @@ struct wined3d_buffer
+     UINT stride;                                            /* 0 if no conversion */
+     enum wined3d_buffer_conversion_type *conversion_map;    /* NULL if no conversion */
+     UINT conversion_stride;                                 /* 0 if no shifted conversion */
++
++    /* persistent mapped buffer */
++    struct wined3d_buffer_heap *buffer_heap;
++    struct wined3d_map_range cs_persistent_map;
++    struct wined3d_map_range mt_persistent_map; // TODO: make struct list?
+ };
+ 
+ static inline struct wined3d_buffer *buffer_from_resource(struct wined3d_resource *resource)
+-- 
+2.16.2
+

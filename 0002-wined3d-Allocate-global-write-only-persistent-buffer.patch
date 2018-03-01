@@ -1,0 +1,81 @@
+From 7f141de6d631a6e0c9cd778f6b3259d41a700bb4 Mon Sep 17 00:00:00 2001
+From: Andrew Comminos <andrew@comminos.com>
+Date: Fri, 23 Feb 2018 17:42:21 -0800
+Subject: [PATCH 2/8] wined3d: Allocate global write-only persistent buffer
+ heap at device initialization.
+
+---
+ dlls/wined3d/device.c          | 28 ++++++++++++++++++++++++++++
+ dlls/wined3d/wined3d_private.h |  3 +++
+ 2 files changed, 31 insertions(+)
+
+diff --git a/dlls/wined3d/device.c b/dlls/wined3d/device.c
+index 58f4993abe..363dcb17f0 100644
+--- a/dlls/wined3d/device.c
++++ b/dlls/wined3d/device.c
+@@ -845,6 +845,29 @@ static void destroy_default_samplers(struct wined3d_device *device, struct wined
+     device->null_sampler = NULL;
+ }
+ 
++/* Context activation is done by the caller. */
++static void create_buffer_heap(struct wined3d_device *device, struct wined3d_context *context)
++{
++    // TODO(acomminos): check if ARB_buffer_storage is supported, first-
++    //                  possibly make wined3d_buffer_heap_create fail.
++    // TODO(acomminos): definitely don't take up all of vram. this is gonna get
++    //                  paged anyway, though.
++    const GLsizeiptr HBO_SIZE = device->adapter->vram_bytes / 4;
++
++    HRESULT hr;
++    if (FAILED(hr = wined3d_buffer_heap_create(context, HBO_SIZE, TRUE, &device->wo_buffer_heap)))
++    {
++        ERR("Failed to create write-only persistent buffer heap, hr %#x.\n", hr);
++    }
++}
++
++/* Context activation is done by the caller. */
++static void destroy_buffer_heap(struct wined3d_device *device, struct wined3d_context *context)
++{
++    if (device->wo_buffer_heap)
++        wined3d_buffer_heap_destroy(device->wo_buffer_heap, context);
++}
++
+ static LONG fullscreen_style(LONG style)
+ {
+     /* Make sure the window is managed, otherwise we won't get keyboard input. */
+@@ -1013,6 +1036,8 @@ static void wined3d_device_delete_opengl_contexts_cs(void *object)
+     device->shader_backend->shader_free_private(device);
+     destroy_dummy_textures(device, context);
+     destroy_default_samplers(device, context);
++    destroy_buffer_heap(device, context);
++
+     context_release(context);
+ 
+     while (device->context_count)
+@@ -1060,6 +1085,9 @@ static void wined3d_device_create_primary_opengl_context_cs(void *object)
+     context = context_acquire(device, target, 0);
+     create_dummy_textures(device, context);
+     create_default_samplers(device, context);
++
++    create_buffer_heap(device, context);
++
+     context_release(context);
+ }
+ 
+diff --git a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+index 4d0555a76c..96bda81eb9 100644
+--- a/dlls/wined3d/wined3d_private.h
++++ b/dlls/wined3d/wined3d_private.h
+@@ -2966,6 +2966,9 @@ struct wined3d_device
+     /* Context management */
+     struct wined3d_context **contexts;
+     UINT context_count;
++
++    /* Dynamic buffer heap */
++    struct wined3d_buffer_heap *wo_buffer_heap;
+ };
+ 
+ void device_clear_render_targets(struct wined3d_device *device, UINT rt_count, const struct wined3d_fb_state *fb,
+-- 
+2.16.2
+

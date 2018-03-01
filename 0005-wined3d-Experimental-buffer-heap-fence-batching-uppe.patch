@@ -1,0 +1,455 @@
+From 7a630d56cb1bddfd03cae3cdc43aee949b04abe2 Mon Sep 17 00:00:00 2001
+From: Andrew Comminos <andrew@comminos.com>
+Date: Mon, 26 Feb 2018 21:35:40 -0800
+Subject: [PATCH 5/8] wined3d: Experimental buffer heap fence batching, upper
+ bound on heap size.
+
+---
+ dlls/wined3d/buffer.c          |  11 +-
+ dlls/wined3d/buffer_heap.c     | 232 ++++++++++++++++++++++++-----------------
+ dlls/wined3d/cs.c              |  15 +--
+ dlls/wined3d/device.c          |   5 +-
+ dlls/wined3d/wined3d_private.h |  12 ++-
+ 5 files changed, 154 insertions(+), 121 deletions(-)
+
+diff --git a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
+index 7d7e506817..fbec613c92 100644
+--- a/dlls/wined3d/buffer.c
++++ b/dlls/wined3d/buffer.c
+@@ -992,9 +992,12 @@ void wined3d_buffer_load(struct wined3d_buffer *buffer, struct wined3d_context *
+ 
+     if (buffer->flags & WINED3D_BUFFER_PERSISTENT)
+     {
+-        if (!wined3d_buffer_load_location(buffer, context, WINED3D_LOCATION_PERSISTENT_MAP))
+-            ERR("Failed to preload persistent mapping.\n");
+-        return;
++        if (wined3d_buffer_load_location(buffer, context, WINED3D_LOCATION_PERSISTENT_MAP))
++            return;
++
++        ERR("Failed to preload persistent mapping for %p, falling back to BO.\n", buffer);
++        buffer->flags |= WINED3D_BUFFER_USE_BO;
++        buffer->flags &= ~WINED3D_BUFFER_PERSISTENT;
+     }
+ 
+     /* TODO: Make converting independent from VBOs */
+@@ -1417,7 +1420,7 @@ static HRESULT buffer_resource_sub_resource_map(struct wined3d_resource *resourc
+             struct wined3d_map_range map_range;
+             if (FAILED(hr = wined3d_buffer_heap_alloc(buffer->buffer_heap, resource->size, &map_range)))
+             {
+-                FIXME("Failed to allocate new buffer, falling back to sync path.\n");
++                FIXME_(d3d_perf)("Failed to allocate new buffer, falling back to sync path.\n");
+                 return hr;
+             }
+             map_desc->data = buffer->buffer_heap->map_ptr + map_range.offset + offset;
+diff --git a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
+index 02b925b658..165a957edd 100644
+--- a/dlls/wined3d/buffer_heap.c
++++ b/dlls/wined3d/buffer_heap.c
+@@ -22,6 +22,7 @@
+ #include "wined3d_private.h"
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(d3d);
++WINE_DECLARE_DEBUG_CHANNEL(d3d_perf);
+ 
+ struct wined3d_buffer_heap_element
+ {
+@@ -33,7 +34,7 @@ struct wined3d_buffer_heap_element
+ 
+ struct wined3d_buffer_heap_fenced_element
+ {
+-    struct wined3d_map_range range;
++    struct wined3d_buffer_heap_element *ranges;
+     struct wined3d_fence *fence;
+ 
+     struct wined3d_buffer_heap_element *next;
+@@ -52,19 +53,19 @@ static struct wined3d_buffer_heap_element* element_new(GLintptr offset, GLsizeip
+     return elem;
+ }
+ 
+-static struct wined3d_buffer_heap_fenced_element* fenced_element_new(struct wined3d_map_range range, struct wined3d_fence* fence)
++static struct wined3d_buffer_heap_fenced_element* fenced_element_new(struct wined3d_buffer_heap_element *ranges, struct wined3d_fence* fence)
+ {
+     struct wined3d_buffer_heap_fenced_element* elem;
+     elem = HeapAlloc(GetProcessHeap(), 0, sizeof(struct wined3d_buffer_heap_fenced_element));
+     if (!elem)
+         return NULL;
+-    elem->range = range;
++    elem->ranges = ranges;
+     elem->fence = fence;
+     elem->next = NULL;
+     return elem;
+ }
+ 
+-static void element_merge_adjacent(struct wined3d_buffer_heap *heap, struct wined3d_buffer_heap_element *elem)
++static void element_merge_adjacent(struct wined3d_buffer_heap_element **head, struct wined3d_buffer_heap_element *elem)
+ {
+     struct wined3d_buffer_heap_element *cur_prev = elem->prev;
+     struct wined3d_buffer_heap_element *cur_next = elem->next;
+@@ -77,8 +78,8 @@ static void element_merge_adjacent(struct wined3d_buffer_heap *heap, struct wine
+         if (cur_prev->prev)
+             cur_prev->prev->next = elem;
+ 
+-        if (cur_prev == heap->free_list_head)
+-            heap->free_list_head = elem;
++        if (cur_prev == *head)
++            *head = elem;
+ 
+         HeapFree(GetProcessHeap(), 0, cur_prev);
+     }
+@@ -94,6 +95,69 @@ static void element_merge_adjacent(struct wined3d_buffer_heap *heap, struct wine
+     }
+ }
+ 
++// Inserts a range into the list starting at `elem`.
++// Updates the head of the list, if necessary.
++static void element_insert_range(struct wined3d_buffer_heap_element **head, struct wined3d_map_range range)
++{
++    struct wined3d_buffer_heap_element *elem = *head;
++    struct wined3d_buffer_heap_element *new_elem;
++    struct wined3d_buffer_heap_element *last_elem = NULL;
++
++    // Special case where the head doesn't exist.
++    if (!elem)
++    {
++        new_elem = element_new(range.offset, range.size);
++        *head = new_elem;
++        return;
++    }
++
++    while (elem)
++    {
++        struct wined3d_map_range *erange = &elem->range;
++        if (range.offset + range.size == erange->offset)
++        {
++            // Left side merge
++            erange->offset = range.offset;
++            erange->size += range.size;
++            // Check if this causes a merge with elem->prev
++            element_merge_adjacent(head, elem);
++            return;
++        }
++        else if (erange->offset + erange->size == range.offset)
++        {
++            // Right side merge
++            erange->size += range.size;
++            // Check if this causes a merge with elem->prev
++            element_merge_adjacent(head, elem);
++            return;
++        }
++        else if (range.offset < erange->offset)
++        {
++            // Append to left, non-merge case.
++            new_elem = element_new(range.offset, range.size);
++            new_elem->prev = elem->prev;
++            new_elem->next = elem;
++            if (elem->prev)
++            {
++                elem->prev->next = new_elem;
++            }
++            if (*head == elem)
++            {
++                *head = new_elem;
++            }
++            elem->prev = new_elem;
++            return;
++        }
++        last_elem = elem;
++        elem = elem->next;
++    }
++
++    // Larger offset than all other elements in the list, append to the end.
++    new_elem = element_new(range.offset, range.size);
++    new_elem->prev = last_elem;
++    last_elem->next = new_elem;
++}
++
+ /* Context activation is done by the caller. */
+ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr size, GLsizeiptr alignment, BOOL write_only, struct wined3d_buffer_heap **buffer_heap)
+ {
+@@ -134,6 +198,9 @@ HRESULT wined3d_buffer_heap_create(struct wined3d_context *context, GLsizeiptr s
+     object->free_list_head = element_new(0, size);
+     object->fenced_head = object->fenced_tail = NULL;
+     object->alignment = alignment;
++    object->pending_fenced_bytes = 0;
++    object->pending_fenced_head = NULL;
++    object->pending_fenced_threshold_bytes = size / 4; // FIXME(acomminos): make this externally declared
+     InitializeCriticalSection(&object->temp_lock);
+ 
+     *buffer_heap = object;
+@@ -155,6 +222,9 @@ HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr s
+     // TODO(acomminos): free list binning?
+     struct wined3d_buffer_heap_element *elem = heap->free_list_head;
+ 
++    // Round to the nearest power of two to reduce fragmentation.
++    size = 1ULL << (int)ceil(log2(size));
++
+     // Round up the size to a multiple of the heap's alignment.
+     if (heap->alignment)
+         size += heap->alignment - (size % heap->alignment);
+@@ -188,6 +258,7 @@ HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr s
+                 }
+                 HeapFree(GetProcessHeap(), 0, elem);
+             }
++
+             LeaveCriticalSection(&heap->temp_lock);
+             return WINED3D_OK;
+         }
+@@ -201,87 +272,53 @@ HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr s
+ HRESULT wined3d_buffer_heap_free(struct wined3d_buffer_heap *heap, struct wined3d_map_range range)
+ {
+     EnterCriticalSection(&heap->temp_lock);
+-    struct wined3d_buffer_heap_element *new_elem;
+-    struct wined3d_buffer_heap_element *elem = heap->free_list_head;
+-    struct wined3d_buffer_heap_element *last_elem = NULL;
+ 
+-    // Special case where the head doesn't exist.
+-    if (!elem)
+-    {
+-        new_elem = element_new(range.offset, range.size);
+-        heap->free_list_head = new_elem;
+-        goto success;
+-    }
++    element_insert_range(&heap->free_list_head, range);
+ 
+-    while (elem)
++    LeaveCriticalSection(&heap->temp_lock);
++    return WINED3D_OK;
++}
++
++HRESULT wined3d_buffer_heap_free_fenced(struct wined3d_buffer_heap *heap, struct wined3d_device *device, struct wined3d_map_range range)
++{
++    element_insert_range(&heap->pending_fenced_head, range);
++
++    heap->pending_fenced_bytes += range.size;
++    if (heap->pending_fenced_bytes >= heap->pending_fenced_threshold_bytes)
+     {
+-        struct wined3d_map_range *erange = &elem->range;
+-        if (range.offset + range.size == erange->offset)
++        // TODO(acomminos): break this out into a separate function
++        struct wined3d_buffer_heap_fenced_element *fenced_elem;
++        struct wined3d_fence *fence;
++        HRESULT hr;
++
++        if (FAILED(hr = wined3d_fence_create(device, &fence)))
+         {
+-            // Left side merge
+-            erange->offset = range.offset;
+-            erange->size += range.size;
+-            // Check if this causes a merge with elem->prev
+-            element_merge_adjacent(heap, elem);
+-            goto success;
++            ERR("Failed to create fence.\n");
++            return hr;
+         }
+-        else if (erange->offset + erange->size == range.offset)
++
++        fenced_elem = fenced_element_new(heap->pending_fenced_head, fence);
++        if (!fenced_elem)
++            return E_OUTOFMEMORY;
++
++        TRACE_(d3d_perf)("Dispatching fenced buffer set.\n");
++        heap->pending_fenced_bytes = 0;
++        heap->pending_fenced_head = NULL;
++
++        // Append to end of fenced list, which works well if you assume that buffers
++        // are freed in some ascending draw call ordering.
++        if (!heap->fenced_head)
+         {
+-            // Right side merge
+-            erange->size += range.size;
+-            // Check if this causes a merge with elem->prev
+-            element_merge_adjacent(heap, elem);
+-            goto success;
++            heap->fenced_head = fenced_elem;
++            heap->fenced_tail = fenced_elem;
+         }
+-        else if (range.offset < erange->offset)
++        else
+         {
+-            // Append to left, non-merge case.
+-            new_elem = element_new(range.offset, range.size);
+-            new_elem->prev = elem->prev;
+-            new_elem->next = elem;
+-            if (elem->prev)
+-            {
+-                elem->prev->next = new_elem;
+-            }
+-            if (heap->free_list_head == elem)
+-            {
+-                heap->free_list_head = new_elem;
+-            }
+-            elem->prev = new_elem;
+-            goto success;
++            heap->fenced_tail->next = fenced_elem;
++            heap->fenced_tail = fenced_elem;
+         }
+-        last_elem = elem;
+-        elem = elem->next;
+-    }
+-
+-    // Larger offset than all other elements in the list, append to the end.
+-    new_elem = element_new(range.offset, range.size);
+-    new_elem->prev = last_elem;
+-    last_elem->next = new_elem;
+-
+-success:
+-    LeaveCriticalSection(&heap->temp_lock);
+-    return WINED3D_OK;
+-}
+-
+-HRESULT wined3d_buffer_heap_free_fenced(struct wined3d_buffer_heap *heap, struct wined3d_map_range range, struct wined3d_fence *fence)
+-{
+-    struct wined3d_buffer_heap_fenced_element *elem;
+-    elem = fenced_element_new(range, fence);
+-    if (!elem)
+-        return E_OUTOFMEMORY;
+ 
+-    // Append to end of fenced list, which works well if you assume that buffers
+-    // are freed in some ascending draw call ordering.
+-    if (!heap->fenced_head)
+-    {
+-        heap->fenced_head = elem;
+-        heap->fenced_tail = elem;
+-    }
+-    else
+-    {
+-        heap->fenced_tail->next = elem;
+-        heap->fenced_tail = elem;
++        wined3d_fence_issue(fence, device);
+     }
+ 
+     return WINED3D_OK;
+@@ -294,29 +331,32 @@ HRESULT wined3d_buffer_heap_cs_poll_fences(struct wined3d_buffer_heap *heap, str
+     if (!elem)
+         return WINED3D_OK;
+ 
+-    while (elem)
++    res = wined3d_fence_test(elem->fence, device, 0);
++    switch (res)
+     {
+-        res = wined3d_fence_test(elem->fence, device, 0);
+-        switch (res)
+-        {
+-            case WINED3D_FENCE_OK:
+-            case WINED3D_FENCE_NOT_STARTED:
++        case WINED3D_FENCE_OK:
++        case WINED3D_FENCE_NOT_STARTED:
++            {
++                TRACE_(d3d_perf)("Freed fence group.\n");
++                struct wined3d_buffer_heap_element *range_elem = elem->ranges;
++                // FIXME(acomminos): this might take a while. incrementally do this?
++                while (range_elem)
+                 {
+-                    struct wined3d_buffer_heap_fenced_element *next = elem->next;
+-
+-                    wined3d_fence_destroy(elem->fence);
+-                    wined3d_buffer_heap_free(heap, elem->range);
++                    struct wined3d_buffer_heap_element *next = range_elem->next;
++                    wined3d_buffer_heap_free(heap, range_elem->range);
++                    HeapFree(GetProcessHeap(), 0, range_elem);
++                    range_elem = next;
++                }
+ 
+-                    heap->fenced_head = elem->next;
+-                    HeapFree(GetProcessHeap(), 0, elem);
+-                    // TODO(acomminos): bother to null out fenced_tail?
++                wined3d_fence_destroy(elem->fence);
+ 
+-                    elem = next;
+-                    break;
+-                }
+-            default:
+-                return WINED3D_OK;
+-        }
++                heap->fenced_head = elem->next;
++                HeapFree(GetProcessHeap(), 0, elem);
++                // TODO(acomminos): bother to null out fenced_tail?
++                break;
++            }
++        default:
++            return WINED3D_OK;
+     }
+ 
+     return WINED3D_OK;
+diff --git a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
+index d7bdc21a25..bae5d9f4a1 100644
+--- a/dlls/wined3d/cs.c
++++ b/dlls/wined3d/cs.c
+@@ -2643,26 +2643,15 @@ static void wined3d_cs_exec_discard_buffer(struct wined3d_cs *cs, const void *da
+     const struct wined3d_cs_discard_buffer *op = data;
+     struct wined3d_buffer *buffer = op->buffer;
+     HRESULT hr;
+-    struct wined3d_fence *fence;
+ 
+     // Poll for discarded buffers whose fenced have been triggered here to avoid
+     // excessive VRAM consumption.
+     wined3d_buffer_heap_cs_poll_fences(buffer->buffer_heap, cs->device);
+ 
+     // TODO(acomminos): should call into buffer.c here instead.
+-    // XXX(acomminos): should we always create a new fence here?
+-    if (!FAILED(hr = wined3d_fence_create(cs->device, &fence)))
++    if (FAILED(hr = wined3d_buffer_heap_free_fenced(buffer->buffer_heap, cs->device, buffer->cs_persistent_map)))
+     {
+-        // TODO(acomminos): make more informed fences based on prior info. for now,
+-        // we do this because allocating and deleting fences repeatedly is brutal
+-        // for performance. look into why.
+-        wined3d_fence_issue(fence, cs->device);
+-
+-        wined3d_buffer_heap_free_fenced(buffer->buffer_heap, buffer->cs_persistent_map, fence);
+-    }
+-    else
+-    {
+-        ERR("Failed to create fence for discarded buffer %p, hr %x\n. Freeing anyway.", buffer, hr);
++        ERR("Failed to do a fenced free on discarded buffer %p, hr %x\n. Freeing anyway.", buffer, hr);
+         wined3d_buffer_heap_free(buffer->buffer_heap, buffer->cs_persistent_map);
+     }
+ 
+diff --git a/dlls/wined3d/device.c b/dlls/wined3d/device.c
+index e0871d1636..bdab83b935 100644
+--- a/dlls/wined3d/device.c
++++ b/dlls/wined3d/device.c
+@@ -850,9 +850,8 @@ static void create_buffer_heap(struct wined3d_device *device, struct wined3d_con
+ {
+     // TODO(acomminos): check if ARB_buffer_storage is supported, first-
+     //                  possibly make wined3d_buffer_heap_create fail.
+-    // TODO(acomminos): definitely don't take up all of vram. this is gonna get
+-    //                  paged anyway, though.
+-    const GLsizeiptr HBO_SIZE = device->adapter->vram_bytes / 4;
++    // TODO(acomminos): 512MB is sane for geometry, maybe not for PBO.
++    const GLsizeiptr HBO_SIZE = min(512000000, device->adapter->vram_bytes / 4);
+     const struct wined3d_gl_info *gl_info = &device->adapter->gl_info;
+ 
+     GLint ub_alignment;
+diff --git a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+index cfa48a5f3e..62433a39b1 100644
+--- a/dlls/wined3d/wined3d_private.h
++++ b/dlls/wined3d/wined3d_private.h
+@@ -3679,10 +3679,12 @@ struct wined3d_buffer_heap
+     // TODO: add buckets for free regions of a given size.
+     struct wined3d_buffer_heap_element *free_list_head;
+ 
+-    // store in FIFO order? that way, we can minimize our amount of time
+-    // waiting on fences?
+-    // XXX(acomminos): are fences guaranteed to be triggered in a serial
+-    //                 ordering? if so, we can early-terminate our polling
++    // Elements that need to be fenced, but haven't reached the required size.
++    struct wined3d_buffer_heap_element *pending_fenced_head;
++    GLsizeiptr pending_fenced_bytes; // Number of free bytes in the active fenced region.
++    GLsizeiptr pending_fenced_threshold_bytes; // Number of bytes required before fencing.
++
++    // List of sets of buffers behind a common fence, in FIFO order.
+     struct wined3d_buffer_heap_fenced_element *fenced_head;
+     struct wined3d_buffer_heap_fenced_element *fenced_tail;
+ };
+@@ -3694,7 +3696,7 @@ HRESULT wined3d_buffer_heap_alloc(struct wined3d_buffer_heap *heap, GLsizeiptr s
+ // Immediately frees a heap-allocated buffer segment.
+ HRESULT wined3d_buffer_heap_free(struct wined3d_buffer_heap *heap, struct wined3d_map_range range) DECLSPEC_HIDDEN;
+ // Enqueues a buffer segment to return to the heap once its fence has been signaled.
+-HRESULT wined3d_buffer_heap_free_fenced(struct wined3d_buffer_heap *heap, struct wined3d_map_range range, struct wined3d_fence *fence) DECLSPEC_HIDDEN;
++HRESULT wined3d_buffer_heap_free_fenced(struct wined3d_buffer_heap *heap, struct wined3d_device *device, struct wined3d_map_range range) DECLSPEC_HIDDEN;
+ // Moves a buffers with a signaled fence from the fenced list to the free list.
+ // Must be executed on the CS thread.
+ HRESULT wined3d_buffer_heap_cs_poll_fences(struct wined3d_buffer_heap *heap, struct wined3d_device *device) DECLSPEC_HIDDEN;
+-- 
+2.16.2
+
