@@ -3,8 +3,8 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=urbanterror
-pkgver=4.3.2
-pkgrel=3
+pkgver=4.3.3
+pkgrel=1
 epoch=1
 pkgdesc="A team-based tactical shooter based on the Quake 3 Engine"
 arch=('x86_64')
@@ -14,15 +14,11 @@ depends=('sdl' 'openal' 'curl')
 backup=('opt/urbanterror/q3ut4/server.cfg' 'opt/urbanterror/q3ut4/mapcycle.txt')
 makedepends=('mesa')
 source=("http://www.happyurtday.com/releases/4x/UrbanTerror${pkgver//.}_full.zip"
-        "https://github.com/Barbatos/ioq3-for-UrbanTerror-4/releases/download/release-4.3.2-hotfix/Quake3-UrT-Ded.x86_64"
-        "https://github.com/Barbatos/ioq3-for-UrbanTerror-4/releases/download/release-4.3.2-hotfix/Quake3-UrT.x86_64"
         "urbanterror.sh"
         "urbanterror-server.sh"
         "urbanterror.desktop"
         "urbanterror.png")
-sha512sums=('6611fd9c6309a95e479015764b082934f072a17394764491d8b025ab0eb977954807cc942ca5bd54bc9cfa512850e0f4d3994c94e91eb27eeffbde805a749d2a'
-            'a1e599ba8daf5f36c6edc18700677f2c47f25c719b27a1895899800b9588c8b5fa2dbc8557939bb6a90d17468dc8b41a634bb76a7424dbb740c1527fdbb11c5a'
-            'a29a9a0ac5625e243614289dda49512fed55b372d663ec582a7e69a8f0db5f12a3b00b9dd574b4e82bc6b7f2978bb96d644d8d5879fc53c7543052202bfd5aeb'
+sha512sums=('85f1311d26a510f7a3cf71447c506b486a0c8d6dad83038e2b1ace662b125ba904bcb91ec036e8468277671bcaff84a99a82e4663790ff2136e150637483f490'
             'd296cee59c9a344b03485b2400278f05d4a4edd8f782f72b10857d4654d46ff1b6f181c51abb5a718d6b4a7227601d67fb2ba2b3fe7876bfec17b7c9827525a0'
             '6f444b1203b8c1a66c86a2112f3565059ba1135940cef37208ea05933290e1b3b9d8325c7fc86466fd8646338c8deaa168a22049104bda0631eab76a21a77e51'
             '33cb13820002f6620075143a1729018caf70a7cceb9b606db295fd621833add127474f1399626d722a3a8a7d9ba001b6dada4ca877ec87251a32d616367991d4'
@@ -33,9 +29,9 @@ package() {
 
   cd "${pkgdir}/opt/urbanterror"
 
-  # Copy patched binaries.
-  install -m755 "${srcdir}/Quake3-UrT.x86_64" urbanterror
-  install -m755 "${srcdir}/Quake3-UrT-Ded.x86_64" urbanterror-ded
+  # Copy binaries.
+  install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT.x86_64" urbanterror
+  install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT-Ded.x86_64" urbanterror-ded
 
   # Copy data
   cp -r "${srcdir}/UrbanTerror43/q3ut4" "${pkgdir}/opt/urbanterror/q3ut4"  
