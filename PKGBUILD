@@ -1,13 +1,13 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=r1443.34fac26
-pkgrel=3
+pkgver=r1574.8ab2f62
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
 license=('GPL')
-depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0')
-makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x' 'lua')
+depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0' 'lua')
+makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git' 'logrotate')
 conflicts=('accel-ppp')
 install='accel-ppp.install'
