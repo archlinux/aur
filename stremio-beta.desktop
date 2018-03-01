@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Stremio-beta
-GenericName=Media Center
-Comment=Watch instantly all the video content you enjoy in one place
-Icon=stremio-beta
-TryExec=stremio-beta
-Exec=stremio-beta
-Categories=AudioVideo;Video;Player;

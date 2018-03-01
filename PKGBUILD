@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=stremio-beta
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=('x86_64')
 url="https://stremio.com"
@@ -28,7 +28,7 @@ package() {
   cp -r "qml" "${pkgdir}/opt/${pkgname}/"
   cp -r "resources" "${pkgdir}/opt/${pkgname}/"
   cp -r "translations" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 node "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 node "${pkgdir}/opt/${pkgname}/"
   install -Dm644 qt.conf "${pkgdir}/opt/${pkgname}/"
   install -Dm644 server.js "${pkgdir}/opt/${pkgname}/"
   install -Dm644 start-linux.sh "${pkgdir}/opt/${pkgname}/"
