@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdata
-pkgver=0.8.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Decred block explorer"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('dep' 'git' 'go')
@@ -11,11 +11,11 @@ url="https://explorer.dcrdata.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/decred/$pkgname/tar.gz/v$pkgver)
-sha256sums=('4f5ef533f6fce93f2d69670bd62ed3f8f530903669094548f0521204b3e3fc86')
+sha256sums=('d94b2f199b58c616a6bc31397a20ad61d8da87faa1dc63ac5017d88b131288e0')
 
 prepare() {
   export GOPATH="$srcdir"
-  mkdir -p "$GOPATH/src/github.com/$pkgname"
+  mkdir -p "$GOPATH/src/github.com/decred"
   cp -dpr --no-preserve=ownership "$srcdir/$pkgname-$pkgver" \
     "$GOPATH/src/github.com/decred/dcrdata"
 }
@@ -25,7 +25,7 @@ build() {
 
   msg2 'Building dcrdata and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrdata"
-  dep ensure
+  dep ensure -v
   go install . ./cmd/...
 }
 
