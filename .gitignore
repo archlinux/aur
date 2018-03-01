@@ -1,0 +1,6 @@
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./config.php
+!./tempfile.patch
+*
