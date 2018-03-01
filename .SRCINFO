@@ -6,6 +6,7 @@ pkgbase = godot-mono
 	arch = x86_64
 	license = MIT
 	makedepends = scons>=3.0
+	makedepends = msbuild
 	makedepends = libxcursor
 	makedepends = libxinerama
 	makedepends = libxi
@@ -19,6 +20,7 @@ pkgbase = godot-mono
 	makedepends = pkg-config
 	depends = mono>=5.4.0
 	depends = xterm
+	depends = msbuild
 	optdepends = dotnet-sdk
 	provides = godot-mono
 	conflicts = godot-mono-bin
