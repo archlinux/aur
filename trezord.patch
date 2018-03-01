@@ -1,8 +1,8 @@
 diff --git a/release/linux/trezor.rules b/release/linux/trezor.rules
-index 54bd9fd..7eea376 100644
+index c937ad7..4fd234f 100644
 --- a/release/linux/trezor.rules
 +++ b/release/linux/trezor.rules
-@@ -3,9 +3,9 @@
+@@ -3,10 +3,10 @@
  # Put this file into /usr/lib/udev/rules.d
  
  # TREZOR
@@ -14,5 +14,7 @@ index 54bd9fd..7eea376 100644
  # TREZOR v2
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+-KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
 +SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 +SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"

@@ -3,7 +3,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}-go"
 pkgrel=1
-pkgver=2.0.7.r0.g2c070a8
+pkgver=2.0.8.r0.g83471aa
 pkgdesc='TREZOR Communication Daemon'
 url='https://trezor.io/'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 sha256sums=(
     'SKIP'
     'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
-    '9d7d361911e717637af3674b82f6919e6f76c2a915e2a24d7f28f716caa5b70c'
+    'ae9a00171c7542de802346ca364d0f463a64f97b72298af886d45a97a604f4ea'
 )
 
 _importpath="github.com/trezor/${gitname}"
