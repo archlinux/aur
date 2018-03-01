@@ -1,39 +1,22 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-arm
-pkgver=5.2.9
+pkgver=18.1.1
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM"
 arch=('x86_64')
-url="http://software-dl.ti.com/codegen/non-esd/downloads/index.htm"
+url="http://www.ti.com/tool/download/ARM-CGT-17"
+#url="http://www.ti.com/tools-software/compilers/download.html"
+#url="http://software-dl.ti.com/codegen/non-esd/downloads/index.htm"
 license=('custom')
 
-# BitRock InstallBuilder installer breaks with glibc 2.25 (hangs on exit):
-#   https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/583306
-#   https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/594586
-#
-# To build in chroot with glibc 2.24 (2016/10/31), follow [[DeveloperWiki:Building in a Clean Chroot]]:
-#   Create pacman.conf.20161031 with:
-#    [core]
-#    SigLevel = PackageRequired
-#    Server=https://archive.archlinux.org/repos/2016/10/31/$repo/os/$arch
-#    # same for [extra], [community], [multilib]
-#
-#   pacman -S devtools
-#   mkdir ~/chroot
-#   CHROOT=$HOME/chroot
-#   mkarchroot -C pacman.conf.20161031 $CHROOT/root base-devel lib32-glibc lib32-gcc-libs
-#   makechrootpkg -c -r $CHROOT
-#
-# deps: lib32* are needed because the installers is 32-bit
-makedepends=('glibc<2.25' 'lib32-glibc<2.25' 'lib32-gcc-libs')
 optdepends=('ccstudio')
 
-_key="1498567832_371f115bafa0544a3f0554f3ada95299"
-_installer=ti_cgt_tms470_${pkgver}_linux_installer_x86.bin
-source=("${_installer}::https://downloads.ti.com/downloads/codegen/esd/cgt_registered_sw/TMS470/5.2.9/${_installer}?__gda__=${_key}")
+_fullver=${pkgver}.LTS
+_installer="ti_cgt_tms470_${_fullver}_linux_installer_x86.bin"
+source=("http://software-dl.ti.com/codegen/esd/cgt_public_sw/TMS470/${_fullver}/${_installer}")
 
-md5sums=('ca3b062fc108aa9ef89e6c2e12a0f051')
+md5sums=('366b61dc339afdaa53285f3e92ff158d')
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -42,7 +25,6 @@ _destdir=opt
 _installdir=installdir
 _installloc=$_ccsdir/ccsv7/tools/compiler
 _installpath=$_installdir/$_destdir/$_installloc
-_tooldir=${pkgname}_${pkgver}
 
 prepare() {
     cd $srcdir
@@ -65,5 +47,5 @@ package() {
     # Match permissions to ccstudio package (see notes in ccstudio.install)
     find $pkgdir/$_destdir/$_ccsdir -type d -exec chmod 0775 {} \;
 
-    install -D -m0644 $srcdir/${_installpath}/${_tooldir}/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m0644 $srcdir/${_installpath}/${pkgname}_${_fullver}/ARM_RTS_18.1.0.LTS.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
