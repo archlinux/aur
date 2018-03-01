@@ -1,6 +1,6 @@
 pkgname="gnome-shell-extension-laine-git"
 pkgdesc="Gnome extension which allows the control of the volume of individual applications as well as a more in depth control of mpris aware applications from a single applet"
-pkgver=3.24.r2.g838d89e
+pkgver=v3.26.10.r0.gd0c9774
 pkgrel=1
 arch=(any)
 url="https://github.com/johnhoran/Laine"
@@ -14,7 +14,7 @@ conflicts+=($_gitname)
 
 pkgver() {
   cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   [ ${PIPESTATUS[0]} -ne 0 ] && \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
