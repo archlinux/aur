@@ -1,0 +1,30 @@
+pkgbase = compton-blackcapcoder-git
+	pkgdesc = BlackCapCoder's patched fork of compton
+	pkgver = 0.1_beta2.118.g37e48fd
+	pkgrel = 1
+	url = https://github.com/BlackCapCoder/compton
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = mesa
+	depends = libgl
+	depends = libdbus
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrandr
+	depends = pcre
+	depends = libconfig
+	depends = libxinerama
+	depends = hicolor-icon-theme
+	optdepends = dbus: To control compton via D-Bus
+	optdepends = xorg-xwininfo: For compton-trans
+	optdepends = xorg-xprop: For compton-trans
+	provides = compton
+	conflicts = compton
+	source = git://github.com/BlackCapCoder/compton.git
+	md5sums = SKIP
+
+pkgname = compton-blackcapcoder-git
+
