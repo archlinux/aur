@@ -3,7 +3,7 @@
 pkgname=cevelop
 pkgver=1.9.1
 _srctimestamp=201802220948
-pkgrel=1
+pkgrel=2
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(cevelop.sh
         https://github.com/Cevelop/cevelop.github.io/raw/master/img/logo-square.svg)
 source_i686=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86.tar.gz)
 source_x86_64=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86_64.tar.gz)
-sha256sums=('cedcc248a90de4b96277ffc788371db2f2090d9a6c285db3b14e3d6a27f5cb30'
+sha256sums=('a811c104796573d5652ff8314bf00f3e1bc75c142658b5f6767a5e7c91a3540e'
             '578aea66235898a6f6d25420f5251b4df0e2a08be4302d9ab2a9e7e54359cb1b'
             'e88728544af4f6924784cb2885f3d86d4bd5cceb918f8fc552126b3f93288830'
             '7c31396b3facdf0a5ff57e2ee8a5ea0ff741955048e34116d4296ffa35e74218'
@@ -41,10 +41,14 @@ package() {
   bsdtar cf - --cd $pkgname-$pkgver \
     --exclude ./icon.xpm \
     --exclude ./cevelop.desktop \
+    --exclude ./cevelop.ini \
     --exclude ./cevelop.sh . | bsdtar xf - --cd $pkgdir/usr/lib/$pkgname/
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname-$pkgver/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
+  # OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0
+  sed -i '/MaxPermSize/ d' "$pkgname-$pkgver/cevelop.ini"
+  install -Dm644 "$pkgname-$pkgver/cevelop.ini" "$pkgdir/usr/lib/$pkgname/runner.ini"
   for _i in 16 32 48 256; do
     install -Dm644 $srcdir/logo-square-${_i}.png \
       "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/${pkgname}.png"
