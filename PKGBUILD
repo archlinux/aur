@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=66.0.3357.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
@@ -298,7 +298,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -i ../pt.patch
+#patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -328,7 +328,7 @@ patch -Np1 -i ../a.patch
 patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
-patch -Np1 -i ../e.patch
+#patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
@@ -338,7 +338,7 @@ patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
-patch -Np1 -i ../e3.patch
+#patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
 
 
