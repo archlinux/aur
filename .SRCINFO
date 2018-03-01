@@ -1,7 +1,7 @@
 pkgbase = monacoin-bin
 	pkgdesc = Monacoin is a peer-to-peer network based digital currency. This packages provides already compiled binaries.
-	pkgver = 0.14.2
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = https://monacoin.org/en/index.html
 	install = monacoin.install
 	arch = i686
@@ -23,10 +23,10 @@ pkgbase = monacoin-bin
 	source = monacoin256.xpm
 	sha256sums = 4af25bac0076c6d2060832b66819741d3e049a71d6ad5f1a26a2700415d23cfc
 	sha256sums = ddf39249561bc216d67194d6d87582e5738af0625fd1b6abe8f277851f7fe5bc
-	source_i686 = https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.14.2/monacoin-0.14.2-i686-pc-linux-gnu.tar.gz
-	sha256sums_i686 = 0fc3fdfd2f77d70d062eb7b91c8271e017a6929d6233d4d578c88ea07cacc7b1
-	source_x86_64 = https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.14.2/monacoin-0.14.2-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5eddc3763bec694babf4137c09af2b55e9a8534030dfd40e449a9688c036a687
+	source_i686 = https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-i686-pc-linux-gnu.tar.gz
+	sha256sums_i686 = 3cda32ac704ef88f5cff4d3349dadf1ec84ebad3f250854142dccc366d0bc974
+	source_x86_64 = https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8199f92d4296ea99891db34f5d779d7e95a2338425544b82b04fd8b427dae905
 
 pkgname = monacoin-bin
 
