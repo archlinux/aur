@@ -1,5 +1,4 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-#
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=(lua-zlib lua51-zlib lua52-zlib)
