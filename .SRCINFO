@@ -1,0 +1,16 @@
+pkgbase = openvas-gvm-tools-git
+	pkgdesc = Greenbone Vulnerability Management Tools
+	pkgver = 1.3.1.121.803303d
+	pkgrel = 1
+	url = http://www.openvas.org/
+	arch = x86_64
+	groups = openvas
+	license = GPL
+	depends = python-paramiko
+	depends = python-lxml
+	depends = python-pythondialog
+	source = git+https://github.com/greenbone/gvm-tools
+	sha256sums = SKIP
+
+pkgname = openvas-gvm-tools-git
+
