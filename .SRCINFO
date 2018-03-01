@@ -1,0 +1,19 @@
+pkgbase = iget-git
+	pkgdesc = A command-line program to give you the number of days until or since certain events.
+	pkgver = 1.0.1_1_g53cd567.53cd567
+	pkgrel = 1
+	url = https://gitlab.com/ammongit/iget
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	provides = iget
+	conflicts = iget
+	source = git+https://gitlab.com/ammongit/iget.git
+	source = iget-wrapper.sh
+	sha256sums = SKIP
+	sha256sums = 184c33840db24b394e76d143534a9f80b8a355c31f0635287286e0791704c1ee
+
+pkgname = iget-git
+
