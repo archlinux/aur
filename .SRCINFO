@@ -1,7 +1,7 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
 	pkgver = 3.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mikutter.hachune.net/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = mikutter
 	optdepends = libnotify: notify support
 	source = http://mikutter.hachune.net/bin/mikutter.3.6.4.tar.gz
 	source = mikutter.desktop
+	source = twitter-text.patch
 	md5sums = e83f488aa9d1278f6abf27ca655f572d
 	md5sums = 18e28a76097af88457462b08752382df
+	md5sums = 6dc497afdbea6de76d0023e541f5d39c
 
 pkgname = mikutter
 

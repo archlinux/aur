@@ -1,0 +1,20 @@
+--- configuration_old.rb	2018-03-01 16:52:34.000000000 +0900
++++ configuration.rb	2018-03-01 16:56:17.495500046 +0900
+@@ -6,7 +6,7 @@
+       require 'json'
+ 
+       PARSER_VERSION_CLASSIC = "v1"
+-      PARSER_VERSION_DEFAULT = "v2"
++      PARSER_VERSION_DEFAULT = "configuration"
+ 
+       class << self
+         attr_accessor :default_configuration
+@@ -21,7 +21,7 @@
+       )
+ 
+       CONFIG_V2 = File.join(
+-        File.expand_path('../../../config', __FILE__), # project root
++        File.expand_path('../../../core/plugin/twitter', __FILE__), # project root
+         "#{PARSER_VERSION_DEFAULT}.json"
+       )
+ 

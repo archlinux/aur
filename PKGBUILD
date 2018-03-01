@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=3.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -18,7 +18,13 @@ source=(
 #http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
 http://mikutter.hachune.net/bin/$pkgname.`echo "$pkgver" | tr "_" '-'`.tar.gz
 mikutter.desktop
+twitter-text.patch
 )
+
+prepare() {
+  cd $pkgname/vendor/twitter-text
+  patch -u configuration.rb < "${srcdir}/twitter-text.patch"
+}
 
 package() {
   mkdir "$pkgdir/opt"
@@ -37,4 +43,5 @@ EOF
 }
 
 md5sums=('e83f488aa9d1278f6abf27ca655f572d'
-         '18e28a76097af88457462b08752382df')
+         '18e28a76097af88457462b08752382df'
+         '6dc497afdbea6de76d0023e541f5d39c')
