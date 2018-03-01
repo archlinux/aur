@@ -2,7 +2,7 @@
 
 pkgname=sslyze-git
 pkgver=1.3.4.r19.g57e99f7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
 url="https://github.com/nabla-c0d3/sslyze"
