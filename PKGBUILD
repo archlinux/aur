@@ -4,7 +4,6 @@
 pkgname=vlc-plugin-fluidsynth
 pkgver=3.0.1
 pkgrel=1
-_pkgrel_status=
 pkgdesc="FluidSynth plugin for VLC"
 arch=('x86_64')
 url="http://www.videolan.org/vlc/"
