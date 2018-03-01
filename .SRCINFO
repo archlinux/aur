@@ -1,7 +1,7 @@
 pkgbase = ktproxy
 	pkgdesc = a websocket like proxy by kotlin
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Sherlock-Holo/ktproxy
 	arch = x86_64
 	arch = i686
