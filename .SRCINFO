@@ -1,0 +1,32 @@
+pkgbase = greenbone-security-assistant-alternative
+	pkgdesc = Greenbone Security Assistant (gsa) - OpenVAS web frontend with locale , full doc and systemd service
+	pkgver = 7.0.2
+	pkgrel = 1
+	url = http://www.openvas.org/
+	arch = x86_64
+	groups = openvas
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = xmltoman
+	depends = openvas-systemd
+	depends = libmicrohttpd
+	depends = python-polib
+	depends = gettext
+	depends = gnutls
+	depends = libgcrypt
+	depends = libxml2
+	depends = openvas-libraries
+	depends = libxslt
+	provides = gsa
+	conflicts = gsa
+	replaces = gsa
+	backup = etc/openvas/gsad_log.conf
+	source = http://wald.intevation.org/frs/download.php/2429/greenbone-security-assistant-7.0.2.tar.gz
+	source = http://wald.intevation.org/frs/download.php/2430/greenbone-security-assistant-7.0.2.tar.gz.sig
+	validpgpkeys = C3B468D2288C68B9D526452248479FF648DB4530
+	sha512sums = e3ccc8704845d8271a8628a19f7a79aea6c19f2cd52f4c69ee698b314c3b8de1099831394c8b474fa79fb1bba4dc5c42e88351edeca82e1c1b4f46f625f746ae
+	sha512sums = SKIP
+
+pkgname = greenbone-security-assistant-alternative
+
