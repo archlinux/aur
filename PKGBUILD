@@ -5,7 +5,7 @@
 
 pkgname=ombi-beta
 pkgver=3.0.2938
-pkgrel=1
+pkgrel=4
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"
 arch=('any')
 url='https://www.ombi.io'
