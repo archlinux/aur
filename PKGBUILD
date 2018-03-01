@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -9,6 +9,7 @@ url="https://bitcoin.org"
 depends=('boost'
          'boost-libs'
          'zeromq')
+checkdepends=('python')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -16,14 +17,13 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('34de2dbe058c1f8b6464494468ebe2ff0422614203d292da1c6458d6f87342b4'
+sha256sums=('8cbec0397d932cab7297a8c23c918392f6eebd410646b4b954787de9f4a3ee40'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
@@ -53,6 +53,7 @@ build() {
     --enable-hardening \
     --with-gui=no \
     --disable-wallet \
+    --without-miniupnpc \
     --with-gnu-ld
   make -j$_nproc
 }
