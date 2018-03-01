@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=fontconfig-srb
-pkgver=2.12.93+srb+7+ga4e6fc6
+pkgver=2.12.93+aosc+rel2
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (michalsrb performance patch, AOSC variant)"
 arch=(x86_64)
@@ -25,10 +25,10 @@ sha256sums=('SKIP'
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 # http://getemoji.com/
 
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed -e '^v//g' -e 's/-/+/g'
-}
+#pkgver() {
+#  cd $pkgname
+#  git describe --tags | sed -e 's/^v//g' -e 's/-/+/g'
+#}
 
 prepare() {
   cd $pkgname

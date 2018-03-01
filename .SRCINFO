@@ -1,6 +1,6 @@
 pkgbase = fontconfig-srb
 	pkgdesc = A library for configuring and customizing font access (michalsrb performance patch, AOSC variant)
-	pkgver = 2.12.93+srb+7+ga4e6fc6
+	pkgver = 2.12.93+aosc+rel2
 	pkgrel = 1
 	url = https://github.com/AOSC-Dev/fontconfig
 	install = fontconfig.install
