@@ -10,7 +10,9 @@ pkgbase = streem-git
 	provides = streem
 	conflicts = streem
 	source = git+https://github.com/matz/streem.git
+	source = streem-git-164.patch::https://github.com/matz/streem/pull/164.patch
 	md5sums = SKIP
+	md5sums = d285857bd0804471aa6560ccf4f2e295
 
 pkgname = streem-git
 

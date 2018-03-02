@@ -12,12 +12,20 @@ provides=('streem')
 conflicts=('streem')
 depends=('glibc')
 makedepends=('git')
-source=('git+https://github.com/matz/streem.git')
-md5sums=('SKIP')
+source=('git+https://github.com/matz/streem.git'
+        "${pkgname}-164.patch::https://github.com/matz/streem/pull/164.patch")
+md5sums=('SKIP'
+         'd285857bd0804471aa6560ccf4f2e295')
 
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+
+  patch src/Makefile "${srcdir}/${pkgname}-164.patch"
 }
 
 build() {
