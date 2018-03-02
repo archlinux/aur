@@ -1,0 +1,12 @@
+--- main.cpp	2018-02-17 20:02:37.000000000 -0500
++++ main.new.cpp	2018-03-01 21:53:36.670188087 -0500
+@@ -39,7 +39,8 @@
+ 
+     askpass.append("/aurbrowser-askpass");
+     qputenv("SUDO_ASKPASS", askpass.toStdString().c_str());
+-    a.setApplicationName("AUR Browser");
++    a.setApplicationDisplayName("AUR Browser");
++    a.setApplicationName("aurbrowser");
+     a.setApplicationVersion("1.3.0");
+     a.setDesktopFileName("AUR-Browser.desktop");
+     a.setOrganizationName("B_and_RTechnicalSolutions");
