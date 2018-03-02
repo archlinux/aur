@@ -1,0 +1,18 @@
+pkgbase = python-google-auth
+	pkgdesc = Google Auth Python Library
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/kubernetes-client/python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-rsa,
+	depends = python-pyasn1-modules
+	depends = python-cachetools
+	source = https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-1.4.1.tar.gz
+	sha256sums = 9051802d3dae256036cca9e34633a32c0ed1427730d4ebc513dff91ec8b6dd45
+
+pkgname = python-google-auth
+
