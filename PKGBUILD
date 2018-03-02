@@ -1,8 +1,8 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
-pkgver=2.1.20
-pkgrel=2
+pkgver=2.2.8
+pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -12,7 +12,7 @@ depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
 source=("https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
 install='urbackup.install'
-sha512sums=('6bd41d6d51c9a4b43f9e4b04eb76c46cd268e8195399f68c0ca3b2ceb0f0a14bf9b459db84cac9b7078123687d7354dbc6465c0abff96b27a524feb45bdc7408')
+sha512sums=('5cc4e039f74b0776192413c2520dc9499ba1ee213953b86b0c654d737ba7f962dcec89f990f09ac9cd3dd380d0340632c242fb4dc9471bd91bff72cf095601ab')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -ansi"
 CXXFLAGS="${CFLAGS}"
@@ -21,14 +21,8 @@ MAKEFLAGS="-j$(nproc)"
 build() {
 	sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-server-${pkgver}/cryptoplugin/AESGCMDecryption.h"
 
-	cat >> "${srcdir}/urbackup-server-${pkgver}/cryptoplugin/cryptopp_inc.h" <<EOL
-
-#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
-    using byte = CryptoPP::byte;
-#else
-    typedef unsigned char byte;
-#endif
-EOL
+	patch -d"${srcdir}/urbackup-server-${pkgver}/cryptoplugin" -p0 < ../cryptopp-bytes.patch
+	patch -d"${srcdir}/urbackup-server-${pkgver}" -p0 < ../md5-bytes.patch
 
 	cd "${srcdir}/urbackup-server-${pkgver}"
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
