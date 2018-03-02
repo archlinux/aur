@@ -1,0 +1,19 @@
+pkgbase = filefinder-git
+	pkgdesc = A GTK3 lightweight file finder app written in Vala
+	pkgver = r82.8c4616a
+	pkgrel = 1
+	url = https://github.com/konkor/filefinder
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	optdepends = python-nautilus: for "Advanced Search..." support in nautilus
+	provides = filefinder-git
+	conflicts = filefinder-git
+	source = git+https://github.com/konkor/filefinder
+	sha512sums = SKIP
+
+pkgname = filefinder-git
+
