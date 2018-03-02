@@ -1,6 +1,6 @@
 # Maintainer: zimbatm <zimbatm@zimbatm.com>
 pkgname=direnv
-pkgver=2.15.1
+pkgver=2.15.2
 pkgrel=1
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686')
@@ -33,4 +33,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-sha256sums=('249dec1c9bc86a4d2382670a0c9a17e59197171ac889c3427bfb2d5929438978')
+sha256sums=('35076978e2ccbd367043e8aa33ba4268c03270a68bac3789262dacb3b26115c2')
