@@ -1,6 +1,6 @@
 --- a/services/menuManager.js
 +++ b/services/menuManager.js
-@@ -14,11 +14,6 @@
+@@ -13,11 +13,6 @@
          label: appName,
          submenu: [
            { role: 'about' },
@@ -12,7 +12,7 @@
            {
              label: 'Preferences',
              accelerator: 'CmdOrCtrl+,',
-@@ -347,11 +342,6 @@
+@@ -346,11 +341,6 @@
          label: 'Help',
          role: 'help',
          submenu: [
@@ -26,7 +26,7 @@
              click: function (menuItem, browserWindow, options) { menuManager.handleMenuAction('openCustomUrl', 'https://www.getpostman.com/docs/', options); }
 --- a/js/requester.js
 +++ b/js/requester.js
-@@ -545597,9 +545597,6 @@
+@@ -546470,9 +546470,6 @@
                  _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_PROXY },
                    _react2.default.createElement(_SettingsProxyContainer2.default, null)),
  
@@ -36,7 +36,7 @@
                  _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_ABOUT },
                    _react2.default.createElement(_SettingsAboutContainer2.default, null)))))));
  
-@@ -545656,3 +545653,2 @@
+@@ -546529,3 +546526,2 @@
              _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_PROXY }, 'Proxy'),
 -            _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_UPDATE }, 'Update'),
              _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_ABOUT }, 'About'))));
