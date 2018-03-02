@@ -1,6 +1,6 @@
 pkgbase = openhab-beta
 	pkgdesc = openHAB2 open source home automation software
-	pkgver = 2.3.0_20180118
+	pkgver = 2.3.0_20180302
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any

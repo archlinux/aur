@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
 pkgname=openhab-beta
 _pkgver=2.3.0
-pkgver=2.3.0_20180118
+pkgver=2.3.0_20180302
 pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
