@@ -35,7 +35,7 @@ sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e4
 
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_realname}-${pkgver}"
 
   mkdir build
   cd build
