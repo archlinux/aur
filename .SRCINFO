@@ -1,14 +1,14 @@
 pkgbase = python-binarytree
 	pkgdesc = A Python library which provides a simple API to generate, visualize, inspect and manipulate binary trees
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joowani/binarytree
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/joowani/binarytree/archive/3.0.1.tar.gz
+	source = python-binarytree3.0.1.tar.gz::https://github.com/joowani/binarytree/archive/3.0.1.tar.gz
 	sha256sums = af7c683e307792c07c7698c3070af99247c17eb0143f7b81fcf085d8e638b6f9
 
 pkgname = python-binarytree
