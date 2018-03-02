@@ -6,7 +6,7 @@
 
 pkgname=bacula5-client
 pkgver=5.2.13
-pkgrel=3
+pkgrel=4
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
 conflicts=('bacula' 'bacula-client' 'bacula-fd')
 depends=('openssl')
@@ -19,23 +19,25 @@ backup=('etc/bacula/bconsole.conf'
 # verification fails for DSA signatures, so disabled for now...
 #validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD') # Bacula Distribution Verification Key (www.bacula.org)
 source=("https://kent.dl.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz" #{,.sig}
-	'bacula-fd.service')
+	      "bacula-fd.service")
 sha256sums=('a4bed458bf001889bd06bf31671b5d9908055a1d1e8113fd750ae4d326607ad8'
-            '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
+            '45d71c8118e08c0939c87cf2c8e20bb31d1b344fa24ba3f0ac41ae50bc12b7e4')
 
 build() {
 	cd bacula-${pkgver}/
-
-	./configure \
-		--prefix=/usr \
-		--sbindir=/usr/bin \
-		--enable-client-only \
-		--with-systemd=/usr/lib/systemd/system/ \
-		--with-openssl \
-		--sysconfdir=/etc/bacula \
-		--with-scriptdir=/etc/bacula/scripts
-
-	make
+  CPPFLAGS=-I/usr/include/openssl-1.0/
+  LIBS=-L/usr/lib/openssl-1.0/
+  
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --enable-client-only \
+    --with-systemd=/usr/lib/systemd/system/ \
+    --with-openssl=/usr/lib/openssl-1.0/ \
+    --sysconfdir=/etc/bacula \
+    --with-scriptdir=/etc/bacula/scripts
+	
+  make
 }
 
 package() {
