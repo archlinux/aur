@@ -21,12 +21,8 @@ backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
 ) 
-source=(
-	https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
-)
-sha1sums=('df2c53c733b9e08904f5cbd508e20d5abeb40579')
-sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
-sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e444f53010ad53c6b1adf28c75aa482403c06052314a91636c2a8baa30e09af')
+) 
+
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
