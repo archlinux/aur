@@ -1,7 +1,7 @@
 # Maintainer: Bradford Smith <aur@bradfords.me>
 
 pkgname=informant
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="An Arch Linux News reader and pacman hook"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/bradford-smith94/$pkgname"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-dateutil' 'python-feedparser')
 source=("https://github.com/bradford-smith94/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0a62e196a53f46569af03ee626eafec3df72045512c832c1a83ce3187edc2308')
+sha256sums=('e1593c67a515e5adafaab85c01c8241614d316c4c759e2bf3fef36e710a5c3af')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
