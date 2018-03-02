@@ -3,6 +3,7 @@ pkgbase = osx-arc-aurorae-theme-git
 	pkgver = 1.0.0.r0.g0b376e3
 	pkgrel = 1
 	url = https://github.com/iboyperson/OSX-Arc-Aurorae
+	arch = i686
 	arch = x86_64
 	license = GPL 3.0
 	depends = kwin
