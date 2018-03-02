@@ -4,8 +4,8 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-beta
-pkgver=3.0.2938
-pkgrel=5
+pkgver=3.0.2956
+pkgrel=1
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"
 arch=('any')
 url='https://www.ombi.io'
@@ -23,9 +23,13 @@ noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore"
         'ombi.service'
         'ombi.sysusers')
-sha256sums=('2523a1a37d7aef2efd52c5ee580e08d2fb968e66ef8ae54fe481641f8d6eeeee'
+sha256sums=('ea39e4beab15894e5c9d2f1973db240dea8ec5ddc55526a611467e6b85df13e0'
             '601f9ba604c6767722397db977a9d73e800127d4a33c5511439e112d22660eba'
             '480941bb5c96b9e6a155d6feca16f56c74d7f13a49fc94f36132a548bd53dc0a')
+
+pkgver() {
+  curl -s https://ci.appveyor.com/api/projects/tidusjar/requestplex | grep -Pom 1 '"version":"\K[^"]*'
+}
 
 package() {
   install -dm755 "${pkgdir}/opt/Ombi"
