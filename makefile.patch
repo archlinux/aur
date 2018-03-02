@@ -1,0 +1,12 @@
+diff -Naur pachi-pachi-12.00-jowa.orig/Makefile pachi-pachi-12.00-jowa.new/Makefile
+--- pachi-pachi-12.00-jowa.orig/Makefile	2018-02-18 03:22:05.000000000 +0100
++++ pachi-pachi-12.00-jowa.new/Makefile	2018-03-01 22:15:58.954787036 +0100
+@@ -276,7 +276,7 @@
+          DOUBLE_FLOATING=$(DOUBLE_FLOATING) BOARDSIZE=$(BOARDSIZE) ./spudfrog
+ 
+ # Build info
+-build.h: .git/HEAD .git/index Makefile
++build.h: Makefile
+ 	+@make spudfrog
+ 	@echo "[make] build.h"
+ 	@CC="$(CC)" CFLAGS="$(CFLAGS)" ./genbuild > $@
