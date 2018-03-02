@@ -1,8 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=duniter-desktop-bin
 _pkgname=duniter-desktop
-pkgver=1.5.9
+pkgver=1.6.21
 pkgrel=1
+_gitlab_job_id=3296
 pkgdesc="Crypto-currency software to manage libre currency such as Ğ1"
 arch=("x86_64")
 url="https://duniter.org/fr/"
@@ -10,8 +11,8 @@ license=("AGPL3")
 provides=("duniter-desktop")
 conflicts=("duniter-desktop")
 options=('!strip')
-source=("https://github.com/duniter/duniter/releases/download/v$pkgver/${_pkgname}-v$pkgver-linux-x64.tar.gz")
-sha256sums=('c6b423340132ca53f48fdfdb0ec65c54613208d91bb8544e017c785ef79f579d')
+source=("https://git.duniter.org/nodes/typescript/duniter/-/jobs/${_gitlab_job_id}/artifacts/raw/work/bin/duniter-desktop-v$pkgver-linux-x64.tar.gz")
+sha256sums=('85743b202eccc871805620fd3523409938d814d683648c18168a4091b61781f0')
 
 prepare() {
   cd "$srcdir"
@@ -50,7 +51,7 @@ package() {
           "$pkgdir/usr/share/licenses/duniter-desktop/LICENSE"
 
   install -d -m755 "$pkgdir/opt"
-  rm duniter-desktop-v1.5.9-linux-x64.tar.gz
+  rm "duniter-desktop-v$pkgver-linux-x64.tar.gz"
   cd ../
   cp -R src "$pkgdir/opt/duniter-desktop"
 }
