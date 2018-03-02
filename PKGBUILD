@@ -1,14 +1,14 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=pyt-git
-pkgver=r1115.43adcaa
+pkgver=r1126.640b2c0
 pkgrel=1
-pkgdesc='Find security vulnerabilities in Python web applications using static analysis'
+pkgdesc='Find security vulnerabilities in Python web applications using static analysis (Git version)'
 arch=('any')
 url=https://github.com/python-security/pyt
 license=('GPL')
 depends=('python-gitpython' 'python-graphviz' 'python-requests')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=("git+$url")
 sha512sums=('SKIP')
 
