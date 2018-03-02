@@ -4,7 +4,7 @@
 pkgname=wine-staging-lutris-git
 _winesrc=wine-git
 _stgver=3.2
-pkgver=3.2.r3570.d3bcb614+wine.3.2.r256.g7b62a970e9
+pkgver=3.2.r3573.745e1c5f+wine.3.2.r346.gb1aee9c391
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -175,7 +175,9 @@ build() {
                         --with-x \
                         --with-gstreamer \
                         --enable-win64 \
-                        --with-xattr
+                        --with-xattr \
+			            --disable-tests
+
         make
         local _wine32opts=(
                     '--libdir=/usr/lib32'
@@ -192,6 +194,7 @@ build() {
                     --with-x \
                     --with-gstreamer \
                     --with-xattr \
+		            --disable-tests \
                     "${_wine32opts[@]}"
     make
 }
