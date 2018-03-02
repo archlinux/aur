@@ -4,31 +4,38 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=roxterm
-pkgver=3.3.2
-pkgrel=3
+pkgver=3.5.2
+pkgrel=1
 pkgdesc='Tabbed, VTE-based terminal emulator'
 arch=('x86_64')
 url='https://sourceforge.net/projects/roxterm/'
 license=('GPL3')
 depends=('dbus-glib' 'vte3' 'hicolor-icon-theme' 'libsm')
-makedepends=('docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile'
+makedepends=('docbook-xsl' 'xmlto' 'po4a' 'cmake'
              'imagemagick' 'librsvg' 'itstool')
-source=("http://downloads.sourceforge.net/roxterm/roxterm-$pkgver.tar.xz"
-        "http://downloads.sourceforge.net/roxterm/roxterm-$pkgver.tar.xz.sign")
-sha512sums=('6489d8c736d38d624967cf779820414c106a15b423cfc3c8ceed57093e3ff9bd66bf9979eee4361f331766807e17993ce4b4dfd71381aeae5f9d20462ff9ed5e'
-            'SKIP')
-validpgpkeys=('2FF283656D0745E54850B1C0BF0EBCD13D97CD09') # Tony Houghton
+source=("https://github.com/realh/roxterm/archive/${pkgver}.tar.gz")
+sha512sums=('e34fdf1e8e8e8638273930e616b47be958a796678fe9f63e95b496c8fcdb97688ac5b6a3b7745ae524c0eca34609f060d2cc8120032aba73a2f7198eae5f8c7f')
 
 build() {
   cd "${srcdir}/roxterm-${pkgver}"
+ if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build && cd build
 
-  python2 mscript.py configure --prefix='/usr'
-  python2 mscript.py build
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DCMAKE_SKIP_RPATH='TRUE' 
+  make
+
+
 }
 
 package() {
   cd "${srcdir}/roxterm-${pkgver}"
-  python2 mscript.py install --destdir="${pkgdir}"
+  make -C build DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
