@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=torrential
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple torrent client for elementary OS"
@@ -12,16 +12,16 @@ makedepends=(cmake vala)
 source=("https://github.com/davidmhewitt/torrential/archive/$pkgver.tar.gz")
 
 build() {
-  cd $pkgname-$pkgver
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .. 
-  make
+	cd $pkgname-$pkgver
+	mkdir build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  cd build
-  make DESTDIR=$pkgdir install
+	cd $pkgname-$pkgver
+	cd build
+	make DESTDIR=$pkgdir install
 }
 
-md5sums=('e00e7cf2440f96a010ecca9bec7d4712')
+md5sums=('80aca3575752093b7b14cd4793c5b138')
