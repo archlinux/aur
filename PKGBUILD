@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=moony.lv2
 pkgname=moony-lv2-git
-pkgver=r2361.60282c8
+pkgver=0.22.0.r2371.fc1e8ab
 pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2 - git master"
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+    printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
   # pwd
 }
