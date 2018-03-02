@@ -1,8 +1,8 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.1.17
-pkgrel=2
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -19,7 +19,7 @@ source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${p
 	'lvm_create_filesystem_snapshot'
 	'lvm_remove_filesystem_snapshot')
 
-sha512sums=('3e45a3df24fda61e5bedfac5f28d2ae539cb604ffb28bc9ed0e76012b2759cd681eb974a571abfa9d5e93192936c86c8d81f0e51690d8fbd72e65ccddfea4d1b'
+sha512sums=('649deb36108faf80815f79470c2004c374c7a82c7354a837446088820dec3109d585f772da544c505bc586e66590ef195d9f9532efd43b373327d928f63e0d10'
          '416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca'
          '860021ce5b8d92ff58e8286991162c7bab45493c3b9c87577a43764f6b416397448bb99b8fcb850c4c5853927cb0a8637792b75ff53ee7ee257da3f5d29ae3a7'
          'fde5912b589a495dc03a26d174d7673ff746eed34d6b1ed64758b2dc2ec2ec53e02e6a28b04734a7112f16687b31d25123e99dbc69e9dcab48773675382ec582'
@@ -35,14 +35,8 @@ MAKEFLAGS="-j$(nproc)"
 build() {
 	sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-client-${pkgver}.0/cryptoplugin/AESGCMDecryption.h"
 
-	cat >> "${srcdir}/urbackup-client-${pkgver}.0/cryptoplugin/cryptopp_inc.h" <<EOL
-
-#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
-    using byte = CryptoPP::byte;
-#else
-    typedef unsigned char byte;
-#endif
-EOL
+	patch -d"${srcdir}/urbackup-client-${pkgver}.0/cryptoplugin" -p0 < ../cryptopp-bytes.patch
+	patch -d"${srcdir}/urbackup-client-${pkgver}.0" -p0 < ../md5-bytes.patch
 
 	cd "${srcdir}/urbackup-client-${pkgver}.0"
 	./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc
