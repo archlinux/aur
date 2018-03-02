@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=maxima-jupyter-git
-pkgver=r157.155a290
+pkgver=r175.b121c57
 pkgrel=1
 pkgdesc="A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
   'kernel.json')
 sha256sums=('SKIP'
             '4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17'
-            'f322412b5d9ec8907f35000d87c26767bb014b73bff8399ac90371c6adae5697')
+            'a637eae8a7c50e0253c1ec29c26e3eda23b15b68cdf893bde67cf67cd658f2f1')
 
 pkgver() {
   cd $pkgname
@@ -38,6 +38,7 @@ END
 }
 
 package() {
-  install -Dm755 bin/maxima-jupyter "$pkgdir/usr/share/jupyter/kernels/maxima/maxima-jupyter"
+  install -Dm755 bin/maxima-jupyter "$pkgdir/usr/bin/maxima-jupyter"
   install -Dm644 kernel.json "$pkgdir/usr/share/jupyter/kernels/maxima/kernel.json"
+  install -Dm644 maxima-jupyter-git/LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter-git/LICENSE" 
 }
