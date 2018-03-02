@@ -27,11 +27,11 @@ conflicts=('chromium' 'inox' 'iridium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        'ungoogled-chromium::git+https://github.com/Eloston/ungoogled-chromium.git')
+        'https://github.com/Eloston/ungoogled-chromium/archive/64.0.3282.186-1.tar.gz')
 sha256sums=('5fd0218759231ac00cc729235823592f6fd1e4a00ff64780a5fed7ab210f1860'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'e73f69942af1ba730a700151973fa6309b0586ff45bf35a7fea43f52b54a9cb5'
-            'SKIP')
+            'd392b0a5da90d92a989c63b4d80da5ca18071e1faf4f1aefe773349e67457a29')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -65,9 +65,7 @@ readonly _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]} freetype2 harfbuzz)
 
 prepare() {
-  cd "$srcdir/ungoogled-chromium"
-
-  git checkout develop
+  cd "$srcdir/ungoogled-chromium-64.0.3282.186-1"
 
   msg2 'Processing sources'
   python3 buildkit-launcher.py genbun -u "$srcdir/chromium-$pkgver/ungoogled" archlinux

@@ -59,11 +59,11 @@ pkgbase = ungoogled-chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-64.0.3282.186.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = chromium-64.0.3282.186.txt::https://chromium.googlesource.com/chromium/src.git/+/64.0.3282.186?format=TEXT
-	source = ungoogled-chromium::git+https://github.com/Eloston/ungoogled-chromium.git
+	source = https://github.com/Eloston/ungoogled-chromium/archive/64.0.3282.186-1.tar.gz
 	sha256sums = 5fd0218759231ac00cc729235823592f6fd1e4a00ff64780a5fed7ab210f1860
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = e73f69942af1ba730a700151973fa6309b0586ff45bf35a7fea43f52b54a9cb5
-	sha256sums = SKIP
+	sha256sums = d392b0a5da90d92a989c63b4d80da5ca18071e1faf4f1aefe773349e67457a29
 
 pkgname = ungoogled-chromium
 
