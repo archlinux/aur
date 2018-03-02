@@ -1,0 +1,24 @@
+diff --git a/developer/deken.hy b/developer/deken.hy
+index 7921bcd..e383a31 100644
+--- a/developer/deken.hy
++++ b/developer/deken.hy
+@@ -527,7 +527,7 @@
+                    (% "Couldn't upload to %s!\n" url)
+                    (% "Are you sure you have the correct username and password set for '%s'?\n" host)
+                    (% "Please ensure the folder '%s' exists on the server and is writeable." path))))))
+-  (import easywebdav)
++  (import [easywebdav2 :as easywebdav])
+   (if filepath
+     (do
+      (setv filename (os.path.basename filepath))
+diff --git a/developer/requirements.txt b/developer/requirements.txt
+index 7904770..c76f5a4 100644
+--- a/developer/requirements.txt
++++ b/developer/requirements.txt
+@@ -1,5 +1,5 @@
+ hy==0.12.1
+-easywebdav==1.2.0
++easywebdav2==1.3.0
+ pyelftools==0.24
+ macholib==1.9
+ pefile==2017.11.5
