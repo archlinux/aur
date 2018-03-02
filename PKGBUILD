@@ -39,7 +39,8 @@ prepare() {
 
   mkdir build
   cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr ../
+  export PYTHON=$(which python2)
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D WITH_PYTHON=ON ../
 
 }
 
