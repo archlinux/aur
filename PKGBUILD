@@ -3,7 +3,7 @@
 pkgname=tarantool
 _commit=330a607af2b2cfbbf4608ec15d46082177804f58
 pkgver=1.9.0.r16
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -30,7 +30,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '3849ddd5071a2dd8ff6f158d8e7e8578887ca691')
+          '9021b3d50e45f719f0304ab529627cac69a7a149')
 
 pkgver() {
   cd tarantool
