@@ -16,7 +16,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
 pkgver=0.8.92
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
@@ -32,7 +32,7 @@ depends=(
     'python-lxml'
     'python-wheezy'
 )
-makedepends=()
+makedepends=('npm')
 checkdepends=()
 optdepends=()
 provides=()
