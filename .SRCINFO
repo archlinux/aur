@@ -1,6 +1,6 @@
 pkgbase = crow-translate-git
 	pkgdesc = A simple and lightweight translator that allows to translate and speak the selected text using the Google Translate API
-	pkgver = r15.766cc68
+	pkgver = r26.abe8009
 	pkgrel = 1
 	url = https://github.com/Shatur95/Crow
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = crow-translate-git
 	depends = gst-plugins-good
 	depends = openssl
 	provides = crow
-	source = git+https://github.com/Shatur95/CrowTranslate.git
+	source = crow-translate::git+https://github.com/Shatur95/CrowTranslate.git
 	sha256sums = SKIP
 
 pkgname = crow-translate-git
