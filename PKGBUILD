@@ -64,6 +64,10 @@ prepare() {
 build() {
 	cd "$srcdir/osu"
 
+	# Symlink netstandard for xbuild
+	mkdir -p "osu.Game/bin/Release"
+	ln -s "/lib/mono/4.5/Facades/netstandard.dll" "osu.Game/bin/Release"
+
 	# Build
 	export MONO_IOMAP="case"
 	xbuild /property:Configuration=Release
