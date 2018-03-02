@@ -1,15 +1,15 @@
 # Maintainer: Mattias Giese <mattias.giese@posteo.net>
 
 pkgname=pdk
-_pkgver=1.3.2.0-1xenial
-pkgver=1.3.2.0
+_pkgver=1.4.1.1-1xenial
+pkgver=1.4.1.1
 pkgrel=1
 pkgdesc='Puppet Development Kit bundles tools and helpers to create high quality puppet modules'
 arch=('x86_64')
 url='https://github.com/puppetlabs/pdk'
 options=(staticlibs !strip)
-md5sums=('66999e125e67c5cd314dc5e6b0c1d016')
 source=("http://apt.puppetlabs.com/pool/xenial/puppet5/p/pdk/pdk_${_pkgver}_amd64.deb")
+md5sums=('753a7fab6286c3a43e10f11122fffe5b')
 
 package() {
   tar xJf data.tar.xz
