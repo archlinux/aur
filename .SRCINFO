@@ -9,7 +9,6 @@ pkgbase = filefinder-git
 	makedepends = git
 	makedepends = vala
 	depends = gtk3
-	optdepends = python-nautilus: for "Advanced Search..." support in nautilus
 	provides = filefinder-git
 	conflicts = filefinder-git
 	source = git+https://github.com/konkor/filefinder

@@ -9,7 +9,6 @@ arch=('x86_64' 'i686')
 url="https://github.com/konkor/filefinder"
 license=('GPL3')
 depends=('gtk3')
-optdepends=('python-nautilus: for "Advanced Search..." support in nautilus')
 makedepends=('git' 'vala')
 provides=('filefinder-git')
 conflicts=('filefinder-git')
