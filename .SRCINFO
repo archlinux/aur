@@ -3,7 +3,7 @@
 pkgbase = gnucash
 	pkgdesc = A personal and small-business financial-accounting application
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnucash.org
 	arch = i686
 	arch = x86_64
