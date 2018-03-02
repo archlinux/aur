@@ -1,13 +1,15 @@
 pkgbase = streem
 	pkgdesc = prototype of stream based programming language
 	pkgver = 201611
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matz/streem
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	source = streem-201611.tar.gz::https://github.com/matz/streem/archive/201611.tar.gz
+	source = streem-201611-164.patch::https://github.com/matz/streem/pull/164.patch
 	sha256sums = 807a9ccf3162efb061a15a333943050b329f0232cceb55492e5cd582c09a7fb4
+	sha256sums = 46e021ff9aff8e31670f738dfd7239d14cf53c77cfa7f5ed589e28c85b7d04de
 
 pkgname = streem
 
