@@ -3,7 +3,7 @@
 # Maintainer: Evert Vorster <evorster-at-gmail-dot-com>
 
 pkgname=amarok-kf5-git
-pkgver=v2.8.90.176.gc9b5bbb727
+pkgver=v2.8.90.206.g0d7ae231ee
 pkgrel=1
 pkgdesc="The powerful music player for KDE - KF5 GIT version"
 arch=("i686" "x86_64")

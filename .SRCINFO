@@ -1,6 +1,6 @@
 pkgbase = amarok-kf5-git
 	pkgdesc = The powerful music player for KDE - KF5 GIT version
-	pkgver = v2.8.90.176.gc9b5bbb727
+	pkgver = v2.8.90.206.g0d7ae231ee
 	pkgrel = 1
 	url = http://amarok.kde.org
 	arch = i686
