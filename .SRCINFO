@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
-	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)
-	pkgver = 17.12.0.r8592.91186164a
+	pkgdesc = A non-linear video editor. Following latest released branch in git.
+	pkgver = 17.12.3.r8607.5a05e9d50
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install
