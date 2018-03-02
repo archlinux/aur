@@ -1,13 +1,14 @@
 pkgbase = pvs-studio
 	pkgdesc = Static code analyzer for C, C++ and C#
 	pkgver = 6.22.25371.2151
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.viva64.com/en/pvs-studio
 	install = pvs-studio.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
+	optdepends = bash-completion: for bash completion
 	options = !strip
 	source = http://files.viva64.com/pvs-studio-6.22.25371.2151-x86_64.tgz
 	sha256sums = b95dc8adaf5f3333fd04c9ee8cf6d6ebba19856bd704a81f89b03a89b1a7e5cf

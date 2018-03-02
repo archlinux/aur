@@ -2,13 +2,14 @@
 
 pkgname=pvs-studio
 pkgver=6.22.25371.2151
-pkgrel=1
+pkgrel=2
 pkgdesc='Static code analyzer for C, C++ and C#'
 arch=('i686' 'x86_64')
 url=http://www.viva64.com/en/$pkgname
 license=('unknown')
 depends_i686=('qemu-headless-arch-extra')
-optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code')
+optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code'
+            'bash-completion: for bash completion')
 options=('!strip')
 install=$pkgname.install
 source=(http://files.viva64.com/$pkgname-$pkgver-${arch[1]}.tgz)
@@ -21,9 +22,12 @@ package() {
     install -D -m 644 $pkgname.binfmt.d $pkgdir/usr/lib/binfmt.d/$pkgname.conf
   fi
 
-  cd $pkgname-$pkgver-${arch[1]}/bin
+  cd $srcdir/$pkgname-$pkgver-${arch[1]}/bin
   install -D -m 755 -t $pkgdir/usr/bin \
     $pkgname \
     $pkgname-analyzer \
     plog-converter
+
+  cd $srcdir/$pkgname-$pkgver-${arch[1]}/etc/bash_completion.d
+  install -D -m 644 -t $pkgdir/etc/bash_completion.d $pkgname.sh
 }
