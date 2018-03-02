@@ -1,6 +1,6 @@
 pkgbase = openauto-git
 	pkgdesc = AndroidAuto headunit emulator
-	pkgver = r30.640c0c6
+	pkgver = r31.88aeb59
 	pkgrel = 1
 	url = https://github.com/f1xpl/openauto
 	arch = x86_64
