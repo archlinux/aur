@@ -11,8 +11,8 @@
 #
 
 pkgname=codelite
-pkgver=11.0
-pkgrel=2
+pkgver=12.0
+pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -20,7 +20,7 @@ license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
 depends=('wxgtk'
           'clang' 'lldb'
-          'libedit' 
+          'libedit'
           'libssh'
           'libmariadbclient'
           'ncurses'
@@ -36,8 +36,9 @@ optdepends=('graphviz: callgraph visualization'
 
 source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
 
-md5sums=('5e1c798d42ca0e1425fb6d71a4099c64'
+md5sums=('674287c16de4744726afd5fd6521ee4f'
          '20f3428eb831c3ff2539a7228afaa3b4')
+
 
 #if [[ "$CARCH" == 'i686' ]]; then
 #  source+=(http://repos.codelite.org/wxCrafterLibs/ArchLinux/32/wxCrafter.so)
