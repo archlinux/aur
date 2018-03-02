@@ -1,14 +1,14 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=ffmpegyag
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple FFmpeg GUI for Linux & Windows"
 arch=("i686" "x86_64")
 url="https://sourceforge.net/projects/ffmpegyag"
 license=('MIT')
 
 depends=("ffmpeg2.8" "wxgtk3")
-makedepends=(gcc grep findutils make coreutils)
+makedepends=('gcc' 'ninja' 'meson')
 _short="${pkgname}-${pkgver}"
 source=("https://github.com/SolarAquarion/ffmpegyag/archive/${pkgver}.tar.gz")
 
