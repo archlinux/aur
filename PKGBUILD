@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=20180213_2_g22192c456
+pkgver=2018.301.0_40_ge7b99a97c
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -63,10 +63,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/osu"
-
-	# Symlink netstandard for xbuild
-	mkdir -p "osu.Game/bin/Release"
-	ln -s "/lib/mono/4.5/Facades/netstandard.dll" "osu.Game/bin/Release"
 
 	# Build
 	export MONO_IOMAP="case"
