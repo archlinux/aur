@@ -1,16 +1,16 @@
 pkgbase = electron-ssr-source
 	pkgdesc = Install electron-ssr from tarball
-	pkgver = 0.2.0stable
-	pkgrel = 2
+	pkgver = 0.2.1stable
+	pkgrel = 1
 	url = https://github.com/erguotou520/electron-ssr
 	arch = x86_64
 	license = MIT
-	provides = electron-ssr-0.2.0-beta-5
+	provides = electron-ssr-0.2.1
 	provides = electron-ssr-appimage
-	source = https://github.com/erguotou520/electron-ssr/releases/download/v0.2.0/electron-ssr-0.2.0.tar.gz
+	source = https://github.com/erguotou520/electron-ssr/releases/download/v0.2.1/electron-ssr-0.2.1.tar.gz
 	source = desktop.tar.gz
 	source = icons.tar.gz
-	md5sums = 9b2629bb5c729581571b1f1d364b9785
+	md5sums = 8287af4f1cfc1a20606714afedc64074
 	md5sums = 4abbf552004cddffc22230070b622f7b
 	md5sums = 679cf82afcc498d1db4dba5aed8bd0a0
 
