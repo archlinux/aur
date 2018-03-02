@@ -1,6 +1,6 @@
 pkgbase = kdenlive-testing-git
-	pkgdesc = A non-linear video editor for Linux using the MLT video framework. (Development testing GIT Version)
-	pkgver = 17.11.70.r9432.0de81d990
+	pkgdesc = A non-linear video editor. Following the refactoring timeline branch in git.
+	pkgver = 17.11.70.r9579.d19bb34ae
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-testing-git.install
