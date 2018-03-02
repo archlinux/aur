@@ -1,7 +1,7 @@
 # Maintainer: Janek Thomaschewski <janek@jbbr.net>
 
 pkgname=signal-desktop-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('signal')
 options=(!strip)
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 
-sha512sums=('5bb4d632adc03bcad46e7534a9f214b809ab1f158301ac16902edf3bd78933db923bc70a16c6d9f8c9cf517f730d2980056e6ee5340988171474c2c236372b4e'
+sha512sums=('10f6a0bfb1947620d2ce71f7e8dc6b9f6fe9c95556f3ae1b9b34aa5d84db0f357b78634e7ff815f9e7d2d3a6d0d628e20adb1817a027a32b2021c24ef8d4441e'
             '7db7ee79a07fb86fec471e63c5189d61e8a2ca8fc2e659ea89ef22516e24e0a3c9f32c93f8ee520f56abc187b9b9304355e8aadb427c4920cda4f663ab1489fa')
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb"
         'signal-desktop')
