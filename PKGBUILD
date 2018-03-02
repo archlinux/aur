@@ -1,6 +1,6 @@
 # Maintainer: Jonni Westphalen <jonny.westphalen@googlemail.com>
 pkgname=aurman-git
-pkgver=1.9.r0.g40385ff
+pkgver=2.r0.g3be4fc6
 pkgrel=1
 pkgdesc="aurman AUR helper"
 arch=('x86_64')
@@ -23,4 +23,5 @@ pkgver() {
 package() {
     cd "$srcdir/aurman_sources"
     python setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm644 ./bash.completion "$pkgdir/usr/share/bash-completion/completions/aurman"
 }
