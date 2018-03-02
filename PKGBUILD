@@ -26,9 +26,7 @@ sha512sums=('5ec13b8abe1520a7e614ceeca4c41d5dba3ebae4ec965918584963022ceb5cb3b85
 backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
-) 
-) 
-
+)
 
 prepare() {
   cd "${srcdir}"
