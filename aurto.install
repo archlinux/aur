@@ -33,16 +33,6 @@ post_install() {
   echo "aurto: Passwordless usage available for \`wheel\` group"
 }
 
-post_upgrade() {
-  if ! initialised; then
-    exit 0
-  fi
-
-  ## clean legacy additions to the sudoers file
-  ## removes everything between `## aurto rules` & `## /aurto rules` in the sudoers file
-  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
-}
-
 pre_remove() {
   if ! initialised; then
     exit 0
