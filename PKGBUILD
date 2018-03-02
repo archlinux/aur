@@ -2,7 +2,7 @@
 
 pkgname=dxvk-bin
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine (binary files). Requires Wine with Vulkan support (wine-staging, wine-vulkan or wine >=3.3)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ build() {
 package() {
         mkdir -p $pkgdir/opt/dxvk
 	cp -r "dxvk-$pkgver"/x64  $pkgdir/opt/dxvk
-	cp -r "dxvk-$pkgver"/x64  $pkgdir/opt/dxvk
+	cp -r "dxvk-$pkgver"/x32  $pkgdir/opt/dxvk
 	mkdir -p $pkgdir/usr/local/bin
 	ln -s "/opt/dxvk/x64/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk64"
         ln -s "/opt/dxvk/x32/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk32"
