@@ -38,10 +38,12 @@ package() {
   install -Dm755 "../pea" "$_resdir/pea"
   install -Dm755 "../pealauncher" "$_resdir/pealauncher"
   install -Dm644 "../peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
-  ## Install res directory
-  for _file in arc/{arc,*.sfx}; do install -Dm755 "$_file" "$_resdir/$_file"; done
-  for _file in *.txt lang/* themes/{*-embedded/*,*.7z} arc/arc.{ini,groups}
-    do install -Dm644 "$_file" "$_resdir/$_file"; done
+
+  for _file in arc/{arc,*.sfx} *.txt lang/* themes/{*-embedded/*,*.7z} arc/arc.{ini,groups}; do
+    _octal=$(stat -c "%a" "$_file")
+    install -Dm"${_octal}" "$_file" "$_resdir/$_file"
+  done
+
   ln -sf -T /usr/lib/p7zip "$_resdir/7z"
   for _file in quad/{balz,quad} unace/unace upx/upx lpaq/lpaq8 paq/paq8o zpaq/zpaq; do
     install -d "$_resdir/$(dirname $_file)/"
@@ -51,7 +53,7 @@ package() {
   for _file in /opt/peazip/{peazip,res/pea,res/pealauncher}; do
     ln -sf "$_file" "$pkgdir/usr/bin/$(basename $_file)"
   done
-  ##
+
   desktop-file-install --dir="$pkgdir/usr/share/applications/" --set-icon="peazip"\
   --remove-key="Name[en_US]" "$srcdir/peazip-$pkgver.src/FreeDesktop_integration/peazip.desktop"
 }
