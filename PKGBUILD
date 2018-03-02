@@ -1,4 +1,4 @@
-# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
+# Maintainer: aimileus <me at aimileus dot nl>
 # Maintainer: rich_o <aurua@riseup.net>
 
 pkgname=paperkey
