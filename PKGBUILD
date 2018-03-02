@@ -1,6 +1,6 @@
 # Maintainer: Mewp <aur.archlinux.org@mewp.pl>
 pkgname=emptyepsilon
-pkgver=2017.05.06
+pkgver=2018.02.15
 pkgrel=1
 epoch=
 pkgdesc="Open source spaceship bridge simulator"
