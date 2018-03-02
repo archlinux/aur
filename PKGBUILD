@@ -1,4 +1,4 @@
-# Contributor: kaptoxic <kaptoxic@yahoo.com>
+# Maintainer: kaptoxic <kaptoxic@yahoo.com>
 # Contributor: dhamp <dhamp@ya.ru>
 
 _name=eiskaltdcpp
@@ -6,7 +6,7 @@ _tarver=2.2.10
 pkgbase=${_name}
 pkgname=(${_name}-gtk ${_name}-qt ${_name}-daemon ${_name}-core ${_name}-data)
 pkgver=${_tarver}
-pkgrel=3
+pkgrel=4
 license=('GPL3')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
 url="http://code.google.com/p/eiskaltdc/"
@@ -20,7 +20,7 @@ build() {
   rm -rf ${srcdir}/${_name}-${_tarver}/build
   mkdir ${srcdir}/${_name}-${_tarver}/build
   cd ${srcdir}/${_name}-${_tarver}/build
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig CFLAGS=" -I/usr/include/openssl-1.0" LDFLAGS="-I/usr/lib/openssl-1.0" cmake ../ -DENABLE_STACKTRACE=ON -DCMAKE_INSTALL_PREFIX=/usr -DUSE_MINIUPNP=ON -DLOCAL_MINIUPNP=ON -DPERL_REGEX=ON -DLOCAL_BOOST=ON -DLUA_SCRIPT=ON -DWITH_LUASCRIPTS=ON -DWITH_DHT=ON -DUSE_QT=OFF
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig CFLAGS=" -I/usr/include/openssl-1.0" LDFLAGS="-I/usr/lib/openssl-1.0" cmake ../ -DENABLE_STACKTRACE=ON -DCMAKE_INSTALL_PREFIX=/usr -DUSE_MINIUPNP=ON -DLOCAL_MINIUPNP=ON -DPERL_REGEX=ON -DLOCAL_BOOST=OFF -DLUA_SCRIPT=ON -DWITH_LUASCRIPTS=ON -DWITH_DHT=ON -DUSE_QT=OFF
 }
 
 package_eiskaltdcpp-gtk() {
