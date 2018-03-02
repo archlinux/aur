@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=66.0.3355.0
+pkgver=66.0.3359.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/k3.patch
 )
 
 
-sha256sums=('efeaa64d1057238f3a8021624128de68c9b92cc4fb95bd8be8679de43122d3a4'
+sha256sums=('5992754681401e4910c8150a775045b4a701386d8e303cc68a1278652cbb3344'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -333,7 +333,7 @@ patch -Np1 -i ../a.patch
 patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
-patch -Np1 -i ../e.patch
+#patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
@@ -343,7 +343,7 @@ patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
-patch -Np1 -i ../e3.patch
+#patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
 
 
