@@ -5,10 +5,10 @@
 
 pkgname=roxterm
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tabbed, VTE-based terminal emulator'
 arch=('x86_64')
-url='https://sourceforge.net/projects/roxterm/'
+url='https://github.com/realh/roxterm'
 license=('GPL3')
 depends=('dbus-glib' 'vte3' 'hicolor-icon-theme' 'libsm')
 makedepends=('docbook-xsl' 'xmlto' 'po4a' 'cmake'
