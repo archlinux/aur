@@ -29,11 +29,9 @@ package() {
                  "$pkgdir/usr/lib/peazip/peazip"
 
   cd "$srcdir/usr/local/share/PeaZip/res"
-  for _file in altconf.txt lang/*.txt pea pealauncher rnd; do
-    install -Dm755 "$_file" "$_pkgres/$_file"
-  done
-  for _file in themes/{*.7z,*-embedded/*}; do
-    install -Dm777 "$_file" "$_pkgres/$_file"
+  for _file in altconf.txt lang/*.txt pea pealauncher rnd themes/{*.7z,*-embedded/*}; do
+    _octal=$(stat -c "%a" "$_file")
+    install -Dm"${_octal}" "$_file" "$_pkgres/$_file"
   done
   cd "$srcdir"
 
