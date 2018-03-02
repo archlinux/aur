@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=peazip-gtk2-portable
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies"
 arch=(x86_64)
@@ -12,25 +12,32 @@ provides=('peazip')
 conflicts=('peazip-gtk2' 'peazip-qt')
 options=('!strip')
 install=peazip.install
-source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz"
-        'peazip.png')
-sha256sums=('a2d91987d7915ae93b1bddb4c3e9acbf7edc5507b9d9790c4d3fc301090a3ce5'
-            'b8c7f3d52309cc9d39db57d2d785a03b3611f48fc0446cc10592112fdf599aff')
+source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz")
+sha256sums=('cd74bc43fd812c7c0e58b6c78b4b15f897b5e58f38d32f455db4527c76c7e857')
 
 package() {
-    install -Dm755 "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/peazip"\
-                   "$pkgdir/opt/$pkgname/peazip"
-    install -Dm644 "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/copying.txt"\
-                   "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
-    install -Dm644 "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/peazip_help.pdf"\
-                   "$pkgdir/usr/share/doc/$pkgname/peazip_help.pdf"
-    install -Dm644 "$srcdir/peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
-    mv "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/res" "$pkgdir/opt/$pkgname"
+  _srcpea="$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2"
+  _pkgres="$pkgdir/opt/$pkgname/res"
+  install -Dm755 "$_srcpea/peazip" "$pkgdir/opt/$pkgname/peazip"
+  install -Dm644 "$_srcpea/copying.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
+  install -Dm644 "$_srcpea/peazip_help.pdf" "$pkgdir/usr/share/doc/$pkgname/peazip_help.pdf"
+  install -Dm644 "$_srcpea/FreeDesktop_integration/peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
+  cp "$_srcpea/FreeDesktop_integration/peazip-alt(multilingual).desktop" "$srcdir/peazip.desktop"
 
-    cd "$srcdir"
-    cp "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/FreeDesktop_integration/peazip-alt(multilingual).desktop"\
-       "$srcdir/peazip.desktop"
-    cd "$srcdir"
-    desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" --set-key="Exec" --set-value="gksu peazip %F" "peazip.desktop"
-    cd "$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2/FreeDesktop_integration"
+  cd "$_srcpea/res"
+  install -d "$_pkgres/icons"
+  install -d "$_pkgres/unace"
+  for _file in *.txt lang/*.txt pea* rnd 7z/{7z*,*.txt,Codecs/*} arc/* lang/* *paq/* quad/* themes/{*.7z,*-embedded/*} upx/*; do
+    _octal=$(stat -c "%a" "$_file")
+    install -Dm"${_octal}" "$_file" "$_pkgres/$_file"
+  done
+  cd "$srcdir"
+
+  install -d "$pkgdir/usr/bin/"
+  for _file in ${pkgdir}/opt/${pkgname}/{peazip,res/pea,res/pealauncher}; do
+    ln -sf "$_file" "$pkgdir/usr/bin/$(basename "$_file")"
+  done
+
+  desktop-file-install -m 755 "$srcdir/peazip.desktop" --dir "$pkgdir/usr/share/applications/"
+
 }
