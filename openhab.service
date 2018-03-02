@@ -1,11 +1,13 @@
 [Unit]
 Description=OpenHAB home automation software
-After=syslog.target network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/opt/openhab/start.sh
+ExecStart=/opt/openhab/start.sh server
 ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

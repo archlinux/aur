@@ -10,7 +10,7 @@ license=('EPL')
 depends=('java-runtime-headless>=8')
 makedepends=('unzip')
 
-conflicts=('openhab-runtime' 'openhab-addons')
+conflicts=('openhab-runtime' 'openhab-addons' 'openhab2')
 
 backup=('etc/openhab/conf/services/addons.cfg'
 		'etc/openhab/conf/services/runtime.cfg')
@@ -21,7 +21,7 @@ source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfu
 noextract=("openhab-${_pkgver}-SNAPSHOT.zip")
 
 sha256sums=('SKIP'
-            '92be5e206c878bb1a1b476f62b815f24dca198e8e0055095f797d264d8521bfe')
+            '79b57f9f6b6e832f1bc60649990c147825a36e76858c43d3f1464f6b98530bdb')
 
 pkgver() {
     printf "${_pkgver}_%s" "$(date +%Y%m%d)"
