@@ -4,7 +4,7 @@ _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
 pkgver=r90.f5f5f6f
-pkgrel=7
+pkgrel=8
 pkgdesc='A configurable system monitoring applet'
 arch=('any')
 url='https://github.com/fossfreedom/indicator-sysmonitor'
@@ -14,9 +14,9 @@ provides=('indicator-sysmonitor')
 depends=('python' 'python-psutil')
 makedepends=('git' 'libappindicator-gtk3')
 source=('git+https://github.com/fossfreedom/indicator-sysmonitor.git'
-        'https://github.com/fossfreedom/indicator-sysmonitor/pull/80.patch')
+        "${pkgbase}-80.patch::https://github.com/fossfreedom/indicator-sysmonitor/pull/80.patch")
 md5sums=('SKIP'
-         'SKIP')
+         '02c52d9d2f45c57ff4f6f6e5dcc47973')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -26,18 +26,24 @@ pkgver() {
 prepare() {
   cd "${_pkgbase}"
 
-  patch Makefile "${srcdir}/80.patch"
+  patch Makefile "${srcdir}/${pkgbase}-80.patch"
 }
 
 package_indicator-sysmonitor-budgie-git() {
-  pkgdesc="${pkgdesc}, budgie-panel version"
+  pkgdesc+=", budgie-panel version"
+  conflicts+=('indicator-sysmonitor-budgie')
+  provides+=('indicator-sysmonitor-budgie')
+
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" installbudgie
 }
 
 package_indicator-sysmonitor-appindicator-git() {
-  pkgdesc="${pkgdesc}, appindicator version"
+  pkgdesc+=", appindicator version"
   depends+=('libappindicator-gtk3')
+  conflicts+=('indicator-sysmonitor-appindicator')
+  provides+=('indicator-sysmonitor-appindicator')
+
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install
 }

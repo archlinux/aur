@@ -1,7 +1,7 @@
 pkgbase = indicator-sysmonitor-git
 	pkgdesc = A configurable system monitoring applet
 	pkgver = r90.f5f5f6f
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/fossfreedom/indicator-sysmonitor
 	arch = any
 	license = GPL3
@@ -12,16 +12,24 @@ pkgbase = indicator-sysmonitor-git
 	provides = indicator-sysmonitor
 	conflicts = indicator-sysmonitor
 	source = git+https://github.com/fossfreedom/indicator-sysmonitor.git
-	source = https://github.com/fossfreedom/indicator-sysmonitor/pull/80.patch
+	source = indicator-sysmonitor-git-80.patch::https://github.com/fossfreedom/indicator-sysmonitor/pull/80.patch
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 02c52d9d2f45c57ff4f6f6e5dcc47973
 
 pkgname = indicator-sysmonitor-budgie-git
 	pkgdesc = A configurable system monitoring applet, budgie-panel version
+	provides = indicator-sysmonitor
+	provides = indicator-sysmonitor-budgie
+	conflicts = indicator-sysmonitor
+	conflicts = indicator-sysmonitor-budgie
 
 pkgname = indicator-sysmonitor-appindicator-git
 	pkgdesc = A configurable system monitoring applet, appindicator version
 	depends = python
 	depends = python-psutil
 	depends = libappindicator-gtk3
+	provides = indicator-sysmonitor
+	provides = indicator-sysmonitor-appindicator
+	conflicts = indicator-sysmonitor
+	conflicts = indicator-sysmonitor-appindicator
 
