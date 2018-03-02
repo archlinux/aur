@@ -1,0 +1,56 @@
+pkgbase = linux-vfio-selinux
+	pkgver = 4.15.7
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.7.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.7.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = add-acs-overrides.patch
+	source = i915-vga-arbiter.patch
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
+	sha256sums = SKIP
+	sha256sums = 0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02
+	sha256sums = SKIP
+	sha256sums = d06d81416611619a150a757d8827b0aa13c40adc0ee03762a9b9c217c4810bb9
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5
+	sha256sums = 99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9
+	sha256sums = 1a4a992199d4d70f7f35735f63a634bb605c2b594b7352ad5fd54512737d2784
+	sha256sums = 7cb4a5da6bf551dbb2db2e0b4e4d0774ee98cc30d9e617e030b27e6cba3e6293
+	sha256sums = 7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc
+	sha256sums = ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215
+
+pkgname = linux-vfio-selinux
+	pkgdesc = The Linux-vfio-selinux kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-vfio-selinux.preset
+
+pkgname = linux-vfio-selinux-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vfio-selinux kernel
+
+pkgname = linux-vfio-selinux-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio-selinux kernel
+
