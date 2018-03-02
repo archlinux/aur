@@ -1,13 +1,13 @@
 pkgbase = shim-signed
-	pkgdesc = Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments.
+	pkgdesc = Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments
 	pkgver = 13.f0.7
 	pkgrel = 1
 	url = https://apps.fedoraproject.org/packages/shim-signed
 	arch = x86_64
 	license = BSD
 	options = !strip
-	source = https://kojipkgs.fedoraproject.org/packages/shim-signed/13/0.7/x86_64/shim-x64-13-0.7.x86_64.rpm
-	sha512sums = e3b6baecf012ea4009e8d86c0151c4d38f0dc1741201480a81420ae78defac5d04a327ed1b0099a20b6843f460bab69bb5fde416e2c82c4a3b1b4eb8189b3b45
+	source_x86_64 = https://kojipkgs.fedoraproject.org/packages/shim-signed/13/0.7/x86_64/shim-x64-13-0.7.x86_64.rpm
+	sha512sums_x86_64 = e3b6baecf012ea4009e8d86c0151c4d38f0dc1741201480a81420ae78defac5d04a327ed1b0099a20b6843f460bab69bb5fde416e2c82c4a3b1b4eb8189b3b45
 
 pkgname = shim-signed
 
