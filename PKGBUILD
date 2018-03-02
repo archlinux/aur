@@ -1,15 +1,16 @@
-#Maintainer: ente <mail@ck76.de>
+#Maintainer: AwesomeHaircut <jesusbalbastro@gmail.com>
+#Previous Maintainer: ente <mail@ck76.de>
 #Previous Maintainer: Christoph Seitz <seitz.christop@gmail.com>
 #Previous Maintainer: Gianluca Boiano (aka M0Rf30)
 
 pkgname=me-tv-bzr
 pkgver=1.4.0
-pkgrel=58
+pkgrel=59
 pkgdesc="A digital television (DVB) viewer for GNOME."
 arch=('i686' 'x86_64')
 url="https://code.launchpad.net/me-tv"
 license=('GPL')
-depends=('gtkmm' 'gconfmm' 'libxml++' 'libunique' 'vlc' 'gstreamer0.10-base')
+depends=('gtkmm' 'gconfmm' 'libxml++' 'libunique' 'vlc' 'gstreamer0.10-base' 'libxml++2.6')
 optdepends=('linuxtv-dvb-apps: dvb tools'
 'w_scan: generation of channels.conf')
 makedepends=('intltool' 'gnome-common' 'bzr')
