@@ -4,9 +4,9 @@ pkgname=encarne
 pkgver=1.3.1
 pkgrel=1
 arch=('any')
-pkgdesc='A command scheduler for shells'
+pkgdesc='A command scheduler and manager for shell commands'
 license=('MIT')
-depends=('python-daemonize' 'python-terminaltables-git' 'python-colorclass-git' 'mediainfo' 'pueue' 'python-lxml')
+depends=('mediainfo' 'pueue' 'python-lxml' 'python-sqlalchemy' 'python-sqlalchemy-utils' 'python-humanfriendly')
 makedepends=('python-setuptools')
 provides=('encarne')
 conflicts=('encarne-git')
@@ -15,18 +15,20 @@ source=("https://github.com/Nukesor/encarne/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-  # We don't need anything related to git in the package
-  rm -rf .git*
+    # We don't need anything related to git in the package
+    rm -rf .git*
 
-  # Install
-  python setup.py install --optimize=1 --root="${pkgdir}"
+    # Install
+    python setup.py install --optimize=1 --root="${pkgdir}"
 
-  # Place systemd user service
-  install -Dm644 "utils/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -dm777 "${pkgdir}/var/lib/encarne"
 
-  # Install License
-  # MIT/X11 license
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Place systemd user service
+    install -Dm644 "utils/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+
+    # Install License
+    # MIT/X11 license
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
