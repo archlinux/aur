@@ -2,8 +2,9 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=20.0.r2170
-pkgrel=3
+pkgver=20.0.r2159
+pkgrel=1
+epoch=1
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbget/nzbget"
@@ -15,7 +16,7 @@ optdepends=('python: run scripts'
             'p7zip: unpacking archives' 
             'par2cmdline: verificate and repair PAR 2.0 files')
 provides=('nzbget'
-		  'nzbget-systemd')
+          'nzbget-systemd')
 conflicts=('nzbget')
 install=nzbget.install
 source=("$pkgname::git+https://github.com/nzbget/nzbget.git"
