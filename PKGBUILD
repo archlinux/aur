@@ -2,7 +2,7 @@
 # Contributor:Lucas Castro <lucascastroborges@gmail.com>
 
 pkgname=squidview
-pkgver=0.83
+pkgver=0.86
 pkgrel=1
 pkgdesc="Is an interactive console program which monitors and displays squid logs in a nice fashion. "
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.rillion.net/squidview/"
 optdepends=('squid')
 license=('GPL')
 source=("http://www.rillion.net/squidview/$pkgname-$pkgver.tar.gz")
-sha256sums=('54c1440bf27a0eea0684d7180eb77ae234b0a521f0eec0d62185a0edfb3a7ec6')
+sha256sums=('bc63dcb2266a6a2a6256b77712d22d5df8d307807e074b128562feb8a2d1704e')
 
 build() {
 
