@@ -5,7 +5,7 @@ pkgname=${_gitname}-git
 pkgver='1.3.0.r0.gfbee758'
 pkgrel=1
 arch=('any')
-pkgdesc='A command scheduler for shells'
+pkgdesc='A command scheduler and manager for shell commands'
 license=('MIT')
 depends=('mediainfo' 'pueue' 'python-lxml' 'python-sqlalchemy' 'python-sqlalchemy-utils' 'python-humanfriendly')
 makedepends=('git' 'python-setuptools')
@@ -32,7 +32,6 @@ package() {
     install -dm777 "${pkgdir}/var/lib/encarne"
 
     # Place systemd user service
-    install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
     install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
 
     # Install License
