@@ -92,4 +92,4 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Make printouts pretty with ncurses (graph plots with historical prices?)
 * Format prices with commas (set locale?)
 * Function to add new attributes to portfolio if not found
-* Improve code documentation
+* Maybe replace News API with IEX news endpoint

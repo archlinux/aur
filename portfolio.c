@@ -29,7 +29,6 @@ String* portfolio_file_get_string(void) {
     fseek(fp, 0, SEEK_SET);
     if (fread(pString->data, sizeof(char), pString->len, fp) != pString->len) {
         fclose(fp);
-        printf("Returning null\n");
         return NULL;
     }
     fclose(fp);
@@ -61,11 +60,9 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
         String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
         string_destroy(&pString);
         pString = temp;
-        jobj = json_tokener_parse(pString->data);
-        if (pString == NULL) {
-            free(password);
+        if (pString == NULL)
             return;
-        }
+        jobj = json_tokener_parse(pString->data);
     }
     int index = portfolio_symbol_index(ticker_name_string, jobj);
     if (index == -1) { //if not already in portfolio
@@ -162,6 +159,8 @@ void portfolio_print_all(void) {
         String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
         string_destroy(&pString);
         pString = temp;
+        if (pString == NULL)
+            return;
         jobj = json_tokener_parse(pString->data);
     }
     int num_symbols = (int) json_object_array_length(jobj);
@@ -185,12 +184,6 @@ void portfolio_print_all(void) {
 }
 
 double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
-    /**
-     * Values in USD
-     * a[0] -- current balance
-     * a[1] -- amount spent
-     * a[2] -- 1d gain
-     */
     char symbol[32];
     double* data = malloc(sizeof(double) * 3);
     if (data == NULL) {
@@ -215,11 +208,11 @@ double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
             String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
             string_destroy(&pString);
             pString = temp;
-            jobj = json_tokener_parse(pString->data);
             if (pString == NULL) {
-                free(password);
+                free(data);
                 return NULL;
             }
+            jobj = json_tokener_parse(pString->data);
         }
         int index = portfolio_symbol_index(symbol, jobj);
         if (index == -1) {
