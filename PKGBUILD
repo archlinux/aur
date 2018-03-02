@@ -7,9 +7,8 @@
 
 pkgname=gnucash-python
 _realname=gnucash
-pkgver=2.6.18
+pkgver=2.6.19
 pkgrel=2
-_sourcerel=1
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -23,8 +22,14 @@ optdepends=('evince: for print preview'
 options=('!makeflags' '!emptydirs')
 provides=('gnucash')
 conflicts=('gnucash')
-source=(https://github.com/Gnucash/${_realname}/releases/download/${pkgver}/${_realname}-${pkgver}-${_sourcerel}.tar.bz2)
-sha1sums=('41b2580ba1fe586fbdb4629f2b36b12e9161b546')
+source=(https://github.com/Gnucash/${_realname}/releases/download/${pkgver}/${_realname}-${pkgver}.tar.bz2)
+backup=(
+	'etc/gnucash/config'
+	'etc/gnucash/environment'
+) 
+sha1sums=('d2ae5c7855fac30d88fe889d47a441e8a887b19c')
+sha256sums=('50b89367246ec2d51e9765bd6bd8c669e35ceb4ac5ab92636f76758a9f3f7fd1')
+sha512sums=('0a979caf48ba96d6f37a929036e7172855cfb03af8832f479966bce72fad3400903925134d33aaa31eb6b36a2041f5e0d3f74b88e95b83c7d76e96b1503bec13')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
