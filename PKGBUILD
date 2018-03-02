@@ -1,7 +1,7 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=alternating-layouts-git
-pkgver=r27.7e8d75e
+pkgver=r29.507c84a
 pkgrel=1
 pkgdesc="Alternating split directions for the i3-wm"
 _repo=i3-alternating-layout
@@ -9,8 +9,8 @@ url="https://github.com/olemartinorg/$_repo"
 arch=('any')
 license=('MIT')
 depends=('i3-wm'
-	'python-i3-git'
-	'xorg-utils')
+	'python-i3-py'
+	'xorg-util-macros')
 conflicts=('alternating-layouts')
 makedepends=('git')
 install=alternating-layouts.install
