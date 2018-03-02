@@ -9,6 +9,8 @@ url=https://github.com/python-security/pyt
 license=('GPL')
 depends=('python-gitpython' 'python-graphviz' 'python-requests')
 makedepends=('git' 'python-setuptools')
+provides=('pyt')
+conflicts=('pyt')
 source=("git+$url")
 sha512sums=('SKIP')
 
