@@ -1,0 +1,13 @@
+pkgbase = vgo-git
+	pkgdesc = Versioned Go (git version)
+	pkgver = r34.88f0e96
+	pkgrel = 1
+	url = https://github.com/golang/vgo
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = git+https://github.com/golang/vgo
+	sha256sums = SKIP
+
+pkgname = vgo-git
+

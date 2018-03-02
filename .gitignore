@@ -1,0 +1,4 @@
+vgo/
+pkg/
+src/
+*.pkg.tar.xz
