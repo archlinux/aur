@@ -1,6 +1,6 @@
 pkgbase = matterhorn
 	pkgdesc = A terminal-based chat client for MatterMost
-	pkgver = 40600.1.0
+	pkgver = 40700.0.0
 	pkgrel = 1
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = matterhorn
 	depends = ncurses5-compat-libs
 	provides = matterhorn
 	conflicts = matterhorn-git
-	source = https://github.com/matterhorn-chat/matterhorn/releases/download/40600.1.0/matterhorn-40600.1.0-ubuntu-x86_64.tar.bz2
-	sha1sums = d1f6a96e83996c3d61a2e25039f4c737b44a89ac
+	source = https://github.com/matterhorn-chat/matterhorn/releases/download/40700.0.0/matterhorn-40700.0.0-ubuntu-x86_64.tar.bz2
+	sha1sums = d1e2e7ddd94fa9665e5e3986ec159607872df727
 
 pkgname = matterhorn
 
