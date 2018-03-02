@@ -5,7 +5,7 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -14,8 +14,8 @@ makedepends=('python2' 'npm' 'yarn' 'git')
 provides=('signal')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
 arch=("i686" "x86_64")
-url='https://github.com/WhisperSystems/Signal-Desktop'
-source=("${pkgname}-${pkgver}::git+https://github.com/WhisperSystems/Signal-Desktop.git#tag=v${pkgver}"
+url='https://github.com/signalapp/Signal-Desktop'
+source=("${pkgname}-${pkgver}::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}-tray.desktop")
