@@ -17,6 +17,8 @@ pkgbase = godot-mono
 	makedepends = freetype2
 	makedepends = gcc
 	makedepends = pkg-config
+	makedepends = msbuild
+	makedepends = rsync
 	depends = mono>=5.4.0
 	depends = xterm
 	depends = msbuild-stable

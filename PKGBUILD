@@ -20,6 +20,8 @@ makedepends=(
     'freetype2'
     'gcc'
     'pkg-config'
+    'msbuild'
+    'rsync'
 )
 provides=('godot-mono')
 conflicts=('godot-mono-bin')
