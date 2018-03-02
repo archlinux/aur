@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=38418dbaf533ffbb374075a47dcd258ff457faa7
-pkgver=1.7.6.r13
+_commit=330a607af2b2cfbbf4608ec15d46082177804f58
+pkgver=1.9.0.r16
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
@@ -12,14 +12,14 @@ depends=(readline ncurses zlib libyaml openssl libunwind curl icu)
 makedepends=(git cmake systemd)
 checkdepends=(python2-daemon python2-gevent python2-tarantool)
 source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
-        git+https://github.com/tarantool/luajit.git
+        git+https://github.com/tarantool/luajit.git#branch=tarantool-1.7
         git+https://github.com/tarantool/msgpuck.git
         git+https://github.com/rtsisyk/luafun.git
         git+https://github.com/tarantool/libyaml.git
         git+https://github.com/tarantool/zstd.git
         git+https://github.com/tarantool/test-run.git
         git+https://github.com/tarantool/small.git
-	git+https://github.com/tarantool/luarocks.git
+	git+https://github.com/tarantool/luarocks.git#branch=tarantool-1.7
 	tarantool.sysusers)
 sha1sums=('SKIP'
           'SKIP'
@@ -47,6 +47,7 @@ prepare() {
   git config -f .gitmodules 'submodule.third_party/zstd.url' "$srcdir/zstd"
   git config -f .gitmodules 'submodule.test-run.url' "$srcdir/test-run"
   git config -f .gitmodules 'submodule.src/lib/small.url' "$srcdir/small"
+  git config -f .gitmodules 'submodule.third_party/luarocks.url' "$srcdir/luarocks"
 
   git submodule sync
   git submodule update
