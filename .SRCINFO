@@ -10,6 +10,7 @@ pkgbase = play-with-mpv-git
 	depends = youtube-dl
 	depends = mpv
 	optdepends = peerflix
+	optdepends = mkchromecast-git
 	provides = play-with-mpv
 	conflicts = play-with-mpv
 	source = play-with-mpv-git::git+https://github.com/Thann/play-with-mpv.git
