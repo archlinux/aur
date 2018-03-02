@@ -1,7 +1,7 @@
 # Maintainer: Max Bruckner <max at maxbruckner dot de>
 
 pkgname=cjson
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Ultralightweight JSON parser in ANSI C"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/DaveGamble/cJSON"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DaveGamble/cJSON/archive/v$pkgver.tar.gz")
-sha512sums=('6b85f161ef5fa7bcee66fdfac5e586d2d322fe76621d8d4592287962eba462b08c68b3a0718a5a5430aed20e529efc44f39d1335bcc4684d4eb821464787a4ae')
+sha512sums=('e7b39e867ec88a692554ad312c84db72839824f4630fd90355397c19e2c1f6a90000115219a8ab5f7fd06654ed026cacdb8e1ab46f12eabc8ae708938144b0a2')
 
 build() {
 	cd "$srcdir/cJSON-$pkgver" || return 1
