@@ -13,7 +13,7 @@ depends=(balz desktop-file-utils lib32-{curl,gmp4,libx11,ncurses,qt4pas} p7zip u
 [[ $CARCH == "i686" ]] && depends=(${depends[@]/lib32-/})
 optdepends=(quad unace)
 provides=(peazip)
-conflicts=("peazip-gtk2" "peazip-qt-build")
+conflicts=("peazip" "peazip-gtk2" "peazip-gtk2-build" "peazip-gtk2-portable" "peazip-qt-opensuse-latest" "peazip-qt-build")
 options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt.tgz"
@@ -29,21 +29,17 @@ package() {
                  "$pkgdir/usr/lib/peazip/peazip"
 
   cd "$srcdir/usr/local/share/PeaZip/res"
-  for _file in altconf.txt lang/*.txt pea pealauncher rnd; do
-    install -Dm755 "$_file" "$_pkgres/$_file"
-  done
-  for _file in themes/{*.7z,*-embedded/*}; do
-    install -Dm777 "$_file" "$_pkgres/$_file"
+  for _file in altconf.txt lang/*.txt pea pealauncher rnd themes/{*.7z,*-embedded/*}; do
+    _octal=$(stat -c "%a" "$_file")
+    install -Dm"${_octal}" "$_file" "$_pkgres/$_file"
   done
   cd "$srcdir"
 
   ln -sf -T "/usr/lib/p7zip" "$_pkgres/7z"
-
   for _file in arc/{arc,marc} quad/{balz,quad} lpaq/lpaq8 paq/paq8o upx/upx unace/unace zpaq/zpaq; do
     install -d "$_pkgres/$(dirname $_file)/"
     ln -sf -T "/usr/bin/$(basename $_file)" "$_pkgres/$_file"
   done
-
   install -d "$pkgdir/usr/bin/"
   for _file in /usr/lib/peazip/{peazip,res/pea,res/pealauncher}; do
     ln -sf "$_file" "$pkgdir/usr/bin/$(basename $_file)"
