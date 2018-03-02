@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r302.g4d6601924a
+pkgver=0.28.2.r318.g3263f47d33
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -31,7 +31,7 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('mesa' 'python-docutils' 'ladspa' 'x264-git' 'x265' 'openal' 'jack'
+makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
               'streamlink' 'youtube-dl')
 # check kind of graphic card
