@@ -29,14 +29,21 @@ struct info {
 typedef struct info Info;
 
 /**
- * Creates and returns an Info object
+ * Creates and returns an Info object. name and symbol are allocated 64 bytes. the doubles and long are set to EMPTY
  * @return Info object
  */
 Info* api_info_init(void);
 
 /**
- * GETs data from API server and returns it in a String
- * @param url API url to GET
+ * writefunction for cURL HTTP GET/POST
+ * stolen from a nice man on stackoverflow
+ */
+size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hString);
+
+/**
+ * If post_field is not NULL, performs a HTTP POST with the given parameters. Otherwise, performs a HTTP GET. Response
+ * data is stored and returned in a String.
+ * @param url API url to GET/POST
  * @param post_field data needed for POST
  * @return NULL if no response from server. Otherwise, String containing data.
  */
@@ -46,20 +53,15 @@ String* api_curl_data(char* url, char* post_field);
  * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
  * [0] = current intraday price
  * [1] = last close price
- * Order:
+ * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
+ * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
  * 1. IEX -- NASDAQ/NYSE/NYSEARCA
  * 2. Morningstar -- MUTF/OTCMKTS
  * 3. Coinmarketcap -- CRYPTO
- * @param ticker_name_string symbol
+ * @param ticker_name_string security symbol or name to get prices of
  * @return price data or NULL if invalid symbol
  */
 double* api_get_current_price(const char* ticker_name_string);
-
-/**
- * writefunction for cURL HTTP GET
- * stolen from a nice man on stackoverflow
- */
-size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hString);
 
 /**
  * Returns current and yesterday's price of a stock with data from IEX.
@@ -87,26 +89,29 @@ double* morningstar_get_price(const char* ticker_name_string);
 double* coinmarketcap_get_price(const char* ticker_name_string);
 
 /**
- * Prints top three news articles in the past week based on the given string
- * @param ticker_name_string the string
+ * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
+ * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
+ * @param ticker_name_string the string to query
  */
 void news_print_top_three(const char* ticker_name_string);
 
 /**
- * Given a JSON formatted string, print title, source, author, and url of articles
- * @param data the json formatted data
+ * Prints relevant information about up to three articles given a News API JSON formatted response object. Title, source,
+ * and URL will always be printed. The URL will be shortened by Google's URL-shortener API. If the author and date
+ * are specified, those will be printed as well.
+ * @param jobj the JSON array
  */
 void json_print_news(Json* jobj);
 
 /**
- * Prints info about the given symbol
- * @param ticker_name_string the symbol
+ * Prints information about the symbol ticker_name_string by calling the function json_print_news.
+ * @param ticker_name_string
  */
 void api_print_info(const char* ticker_name_string);
 
 /**
  * Returns a pointer to an Info object containing info pertaining
- * to the given symbol
+ * to the given symbol with data from IEX.
  * @param ticker_name_string stock/etf symbol
  * @return Info object
  */
@@ -114,31 +119,30 @@ Info* iex_get_info(const char* ticker_name_string);
 
 /**
  * Returns a pointer to an Info object containing info pertaining
- * to the given symbol
+ * to the given symbol with data from Morningstar
  * @param ticker_name_string mutf/otc symbol
  * @return Info object
  */
 Info* morningstar_get_info(const char* ticker_name_string);
 
 /**
- * Returns a pointer to an Info object containing info pertaining
- * to the given crypto
+ * Returns a pointer to an Info object containing info pertaining to the given cryptocurrency from Coinmarketcap.
  * @param ticker_name_string the crypto's name
  * @return Info object
  */
 Info* coinmarketcap_get_info(const char* ticker_name_string);
 
 /**
- * Given a url, returns a shorter link using goo.gl
+ * Given a url, returns a shorter link using Google's URL-shortener API.
  * @param url_string the link to shorten
  * @return the shortened link
  */
 char* google_shorten_link(const char* url_string);
 
 /**
- * Destroys Info object and frees memory
+ * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
  * @param phInfo the Info to destroy
  */
-void api_info_destroy(Info** phString);
+void api_info_destroy(Info** phInfo);
 
 #endif
