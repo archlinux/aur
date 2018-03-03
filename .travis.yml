@@ -1,5 +1,8 @@
 sudo: required
 
+services:
+- docker
+
 arch:
   packages:
     - namcap 
@@ -10,6 +13,5 @@ arch:
     - pacman -Qip java-8-openjdk-shenandoah-*
     - pacman -Qlp java-8-openjdk-shenandoah-*
   
-
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
