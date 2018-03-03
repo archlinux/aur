@@ -1,24 +1,27 @@
 # Maintainer: Savino Jossi <savino.jossi@gmail.com>
-# Maintainer: Harry Law <hasld@fea.st>
+# Maintainer: Harry Law <hasld@0x9.pw>
 
 _pkgname=scientifica
 pkgname=${_pkgname}-font
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Tall and condensed bitmap font for geeks.'
+license=('custom:SIL')
 arch=(any)
 url='https://github.com/NerdyPepper/scientifica'
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
 conflicts=(scientifica-font)
 provides=(scientifica-font)
-install=$pkgname.install
+install=${pkgname}.install
 source=(https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/regular/${_pkgname}-11.bdf
-        https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}Bold-11.bdf)
-md5sums=('1b23c948030e09bcac0bae375a0fca37'
-         '3767c286c70e670a86ee50c3e30ebfac')
+		https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/bold/${_pkgname}Bold-11.bdf
+		https://raw.githubusercontent.com/NerdyPepper/${_pkgname}/master/LICENSE)
+md5sums=('cc934bd8cb8710f19986029d1dfba949'
+		 '51307d6f31c7dcb1ffa7c081a5204b69'
+		 '77b104b57cdfb5a0e62b76a0057009df')
 
 build() {
-	cat << EOF > 75-yes-scientifica.conf
+	cat << EOF > "75-yes-${_pkgname}.conf"
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -28,6 +31,7 @@ build() {
 			<pattern>
 				<patelt name="family">
 					<string>scientifica</string>
+					<string>scientificaBold</string>
 				</patelt>
 			</pattern>
 		</acceptfont>
@@ -37,17 +41,14 @@ EOF
 }
 
 package() {
-  install -Dm644 scientifica-11.bdf "${pkgdir}/usr/share/fonts/misc/scientifica-11.bdf"
-	install -Dm644 scientificaBold-11.bdf "${pkgdir}/usr/share/fonts/misc/scientificaBold-11.bdf"
-	install -Dm644 75-yes-scientifica.conf "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica.conf"
-	install -dm755 "${pkgdir}/etc/fonts/conf.d"
-	install -dm755 "${pkgdir}/usr/share/fonts"
-	rm -vf "${pkgdir}/etc/fonts/conf.d/10-autohint.conf" "${pkgdir}/etc/fonts/conf.d/10-scale-bitmap-fonts.conf"
-	rm -vf "${pkgdir}/etc/fonts/conf.d/70-no-bitmaps.conf"
-	if [[ ! -f /etc/fonts/conf.d/70-yes-bitmaps.conf ]]; then
-		ln -vfs -t "${pkgdir}/etc/fonts/conf.d" "${pkgdir}/etc/fonts/conf.avail/70-yes-bitmaps.conf"
-  fi
-	ln -vfs -t "${pkgdir}/etc/fonts/conf.d" "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica.conf"
+	# Install actual font
+	install -d "${pkgdir}/usr/share/fonts/misc"
+	install -m644 "${srcdir}/${_pkgname}-11.bdf" "${pkgdir}/usr/share/fonts/misc/${_pkgname}-11.bdf"
+	install -m644 "${srcdir}/${_pkgname}Bold-11.bdf" "${pkgdir}/usr/share/fonts/misc/"
+	# Install font conf and link to conf.d
+	install -d "${pkgdir}/etc/fonts/conf.avail"
+	install -m644 "${srcdir}/75-yes-${_pkgname}.conf" "${pkgdir}/etc/fonts/conf.avail/"
+	# Install license
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# vim: set ft=sh ts=2 sw=2 et:
