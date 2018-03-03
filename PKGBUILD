@@ -1,10 +1,10 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
-url="https://hsiumingstimer.sourceforge.io/"
+url="https://github.com/cges30901/hmtimer"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'qt5-multimedia' 'hicolor-icon-theme')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install="$pkgname.install"
 changelog=
-source=("https://sourceforge.net/projects/hsiumingstimer/files/hmtimer-$pkgver/hmtimer-$pkgver-src.tar.bz2")
+source=("https://github.com/cges30901/hmtimer/releases/download/hmtimer-$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()
-md5sums=('9e5b4460d28ae9b12cb0e5a11d8c8579')
+md5sums=('0d98643b1315def00a902f1d96e89df9')
 
 build() {
   cd "$pkgname-$pkgver"
