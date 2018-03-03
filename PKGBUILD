@@ -1,15 +1,17 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
 pkgname=deken-git
 _pkgname=deken
-pkgver=v0.2.6.r92.ga427c41
-pkgrel=1
+pkgver=v0.2.6.r125.gcb599c6
+pkgrel=2
 epoch=
 pkgdesc="Externals wrangler for Pure Data"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://puredata.info/docs/Deken"
 license=('custom:BSD')
 groups=()
-depends=('python')
+depends=('hy' 'python-easywebdav' 'python-pyelftools' 'python-macholib'
+         'python-pefile' 'python-gnupg' 'python-keyring'
+         'python-ndg-httpsclient' 'python-pyasn1' 'python-pyopenssl')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,11 +23,9 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/pure-data/$_pkgname"
-        'deken.sh'
-        'easywebdav2.diff')
+        'hy-0.14.diff')
 md5sums=('SKIP'
-         'bed7b62180a82ff6f89d414cccc70af1'
-         'd2a170f510cea077e0a27b99628eaa46')
+         '9f6911515de9a79f81a0f385aed1f772')
 noextract=()
 validpgpkeys=()
 
@@ -36,21 +36,11 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  # easywebdav2 for python3 compatibility
-  if ! grep -q easywebdav2 developer/requirements.txt; then
-      patch -p1 -i "$srcdir/easywebdav2.diff"
-  fi
+  patch -Np1 -i "$srcdir"/hy-0.14.diff
 }
 
 package() {
   cd "$_pkgname"
-  local DEKEN_HOME="$pkgdir/usr/lib/deken"
-  install -D -m644 developer/requirements.txt "$DEKEN_HOME/requirements.txt"
-  install -D -m644 developer/deken.hy "$DEKEN_HOME/deken.hy"
-  DEKEN_HOME="$DEKEN_HOME" DEKEN_ROOT=1 developer/deken install
-  "$pkgdir/usr/lib/deken/virtualenv-source/virtualenv.py" --relocatable "$pkgdir/usr/lib/deken/virtualenv"
-  rm -f "$pkgdir"/usr/lib/deken/virtualenv/bin/activate{,.csh,.fish}
-  rm -rf "$pkgdir"/usr/lib/deken/virtualenv{-source,.tar.gz}
-  install -D -m755 "$srcdir/deken.sh" "$pkgdir/usr/bin/deken"
+  install -D -m755 "developer/deken.hy" "$pkgdir/usr/bin/deken"
   install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }

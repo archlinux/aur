@@ -1,0 +1,15 @@
+diff --git a/developer/deken.hy b/developer/deken.hy
+index 4fb4c30..ec9f41a 100644
+--- a/developer/deken.hy
++++ b/developer/deken.hy
+@@ -66,6 +66,10 @@
+ (defn cut-slice [x y z] (cut x y z))
+ (try (cut []) (except [e NameError] (defn cut-slice [x y z] (slice x y z))))
+ 
++;; apply has been removed from hy-0.12
++(defmacro apply [f &optional (args []) (kwargs {})]
++ `(~f #* ~args #** ~kwargs))
++
+ ;; convert a string into bytes
+ (defn str-to-bytes [s] (try (bytes s) (except [e TypeError] (bytes s "utf-8"))))
+ 

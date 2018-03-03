@@ -1,20 +1,26 @@
 pkgbase = deken-git
 	pkgdesc = Externals wrangler for Pure Data
-	pkgver = v0.2.6.r92.ga427c41
-	pkgrel = 1
+	pkgver = v0.2.6.r125.gcb599c6
+	pkgrel = 2
 	url = https://puredata.info/docs/Deken
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:BSD
-	depends = python
+	depends = hy
+	depends = python-easywebdav
+	depends = python-pyelftools
+	depends = python-macholib
+	depends = python-pefile
+	depends = python-gnupg
+	depends = python-keyring
+	depends = python-ndg-httpsclient
+	depends = python-pyasn1
+	depends = python-pyopenssl
 	provides = deken
 	conflicts = deken
 	source = git+https://github.com/pure-data/deken
-	source = deken.sh
-	source = easywebdav2.diff
+	source = hy-0.14.diff
 	md5sums = SKIP
-	md5sums = bed7b62180a82ff6f89d414cccc70af1
-	md5sums = d2a170f510cea077e0a27b99628eaa46
+	md5sums = 9f6911515de9a79f81a0f385aed1f772
 
 pkgname = deken-git
 
