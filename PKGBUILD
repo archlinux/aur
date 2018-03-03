@@ -3,9 +3,9 @@
 # Credit: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-git
-pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
+pkgname=('systemd-git' 'libsystemd-git')
 pkgdesc="systemd from git"
-pkgver=234.r203.g850c8bd7b
+pkgver=237.r492.gcb77e1228
 pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
@@ -81,9 +81,9 @@ package_systemd-git() {
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
+  provides=('nss-myhostname' 'systemd-sysvcompat' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd' 'systemd-sysvcompat-git' 'systemd-sysvcompat')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
@@ -177,25 +177,3 @@ package_libsystemd-git() {
   cp --archive "$srcdir"/full-install/usr/lib/lib{nss_*,systemd,udev}.so* "$pkgdir"/usr/lib/
 }
 
-package_systemd-sysvcompat-git() {
-  pkgdesc="sysvinit compat for systemd"
-  license=('GPL2')
-  groups=('base')
-  conflicts=('sysvinit' 'systemd-sysvcompat')
-  depends=('systemd-git')
-  provides=('systemd-sysvcompat')
-
-  install -dm755 "$pkgdir"/usr/share/man/man8
-  cp -d --no-preserve=ownership,timestamp \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
-    "$pkgdir"/usr/share/man/man8
-
-  install -dm755 "$pkgdir/usr/bin"
-  for tool in runlevel reboot shutdown poweroff halt telinit; do
-    ln -s 'systemctl' "$pkgdir/usr/bin/$tool"
-  done
-
-  ln -s '../lib/systemd/systemd' "$pkgdir/usr/bin/init"
-}
-
-# vim: ft=sh syn=sh et
