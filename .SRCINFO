@@ -1,0 +1,18 @@
+pkgbase = rtklib-git
+	pkgdesc = An Open Source Program Package for GNSS Positioning
+	pkgver = 2.4.3b29
+	pkgrel = 1
+	url = http://www.rtklib.com/
+	arch = x86_64
+	groups = rtklib-group
+	license = GPL
+	makedepends = git
+	makedepends = gcc-fortran
+	depends = glibc
+	provides = rtklib
+	conflicts = rtklib
+	source = RTKLIB::git+https://github.com/tomojitakasu/RTKLIB.git#branch=rtklib_2.4.3
+	md5sums = SKIP
+
+pkgname = rtklib-git
+
