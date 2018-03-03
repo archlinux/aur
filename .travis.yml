@@ -1,5 +1,8 @@
 sudo: required
 
+services:
+- docker
+
 arch:
   packages:
     - namcap 
@@ -9,7 +12,6 @@ arch:
     - namcap coursier-*  
     - pacman -Qip coursier-*
     - pacman -Qlp coursier-*
-  
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
