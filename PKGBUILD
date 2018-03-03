@@ -4,12 +4,12 @@
 pkgname=octopi-kde-git
 _pkgver=0.8.1
 pkgver=0.8.1.1349
-pkgrel=1
+pkgrel=2
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
 url="https://octopiproject.wordpress.com/"
 arch=('x86_64')
 license=('GPL2')
-depends=('pkgfile' 'knotifications' 'alpm_octopi_utils' 'kdesu' 'qtermwidget')
+depends=('pkgfile' 'knotifications' 'alpm_octopi_utils' 'kdesu')
 optdepends=('gist: for SysInfo report'
             'yaourt: for AUR support'
             'pacmanlogviewer: to view pacman log files')
@@ -21,9 +21,11 @@ conflicts=('octopi' 'octopi-git' 'octopi-notifier-frameworks' 'octopi-notifier-q
            'octopi-pacmanhelper')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/aarnt/octopi.git"
-        "icons::git+https://github.com/kikadf/octopicons.git")
+        "icons::git+https://github.com/kikadf/octopicons.git"
+        "https://code.chakralinux.org/packages/desktop/raw/master/octopi/0001-remove-qtermwidget.patch")
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         '5b56cd3d5d6e25a62c94055b2384aff3')
 
 pkgver() {
     cd ${pkgname}
@@ -32,6 +34,10 @@ pkgver() {
 
 prepare() {
     cd ${pkgname}
+
+    # disable lxqt qtermwidget
+    patch -Np1 -i ../0001-remove-qtermwidget.patch
+    rm -rfv src/termwidget.{cpp,h}
 
     # enable the kstatus switch to build with Plasma/knotifications support
     sed -e "s|DEFINES += ALPM_BACKEND #KSTATUS|DEFINES += ALPM_BACKEND KSTATUS|" -i notifier/octopi-notifier/octopi-notifier.pro
@@ -44,7 +50,7 @@ prepare() {
 
 build() {
     cd ${pkgname}
-
+    export QTERMWIDGET=off
     msg "Building octopi..."
     qmake-qt5 octopi.pro
     make
@@ -54,7 +60,7 @@ build() {
     qmake-qt5 pacmanhelper.pro
     make
 
-    cd ../../notifier/octopi-notifier
+    cd ../octopi-notifier
     msg "Building octopi-notifier..."
     qmake-qt5 octopi-notifier.pro
     make

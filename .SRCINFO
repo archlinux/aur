@@ -1,7 +1,7 @@
 pkgbase = octopi-kde-git
 	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)
 	pkgver = 0.8.1.1349
-	pkgrel = 1
+	pkgrel = 2
 	url = https://octopiproject.wordpress.com/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,6 @@ pkgbase = octopi-kde-git
 	depends = knotifications
 	depends = alpm_octopi_utils
 	depends = kdesu
-	depends = qtermwidget
 	optdepends = gist: for SysInfo report
 	optdepends = yaourt: for AUR support
 	optdepends = pacmanlogviewer: to view pacman log files
@@ -32,8 +31,10 @@ pkgbase = octopi-kde-git
 	conflicts = octopi-pacmanhelper
 	source = octopi-kde-git::git+https://github.com/aarnt/octopi.git
 	source = icons::git+https://github.com/kikadf/octopicons.git
+	source = https://code.chakralinux.org/packages/desktop/raw/master/octopi/0001-remove-qtermwidget.patch
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 5b56cd3d5d6e25a62c94055b2384aff3
 
 pkgname = octopi-kde-git
 
