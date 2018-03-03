@@ -29,11 +29,11 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'y-is-broken-cogl.patch'
         'autohide-evbox.patch')
 sha256sums=('SKIP'
-            'bb9aa2a62256dc45633a7ee9fd9e0f3536f5dbce01e13ed138a8e7cb5a1da83a'
+            '4d413e38bdb0dc408dbbe115c0cf192172dd5efb8a8e28b2b2a2c809f6bf7f5c'
             '49e077acacfec80696a3ec29f13ed1e3c7cdcae54b53a419f5e9bc853c4684e3'
             '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            '9e436ff3da488ed2ce9b74a3714d2766a19f27e54d48694d126d3d1db572c06d')
+            '8d676eec464795cf5e484b9993ac4a1d25b44c758bda695a202a8b9f6b9cbfff')
 
 pkgver() {
   cd wingpanel
@@ -44,6 +44,10 @@ pkgver() {
 prepare() {
   cd wingpanel
 
+  #autohide
+  msg2 "autohide"
+  patch -Np2 < ../autohide-evbox.patch
+
   #Standalone patches
   msg2 "minus background manager"
   patch -Np2 < ../minus-backgroundmanager.patch
@@ -51,10 +55,6 @@ prepare() {
   patch -Np2 < ../minus-galaplugin.patch
   msg2 "minus gala"
   patch -Np2 < ../minus-gala.patch
-
-  #autohide
-  msg2 "autohide"
-  patch -Np2 < ../autohide-evbox.patch
 
   #Cogl can't be found when not using gala's cmake package; wtf?
   msg2 "minus cogl"

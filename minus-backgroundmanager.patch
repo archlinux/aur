@@ -7,7 +7,7 @@
 -        Services.BackgroundManager.initialize (this.monitor_number, panel_height);
 +        //Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
-         Timeout.add (300 / panel_height, animation_step);
+         timeout = Timeout.add (100 / panel_height, animation_step);
      }
 @@ -152,7 +152,7 @@
  
