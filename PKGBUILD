@@ -298,7 +298,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-#patch -Np1 -i ../pt.patch
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
