@@ -1,8 +1,7 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-lmfit
-pkgver=0.9.3
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Least-Squares Minimization with Constraints for Python"
 arch=('any')
@@ -18,10 +17,10 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd "$srcdir/lmfit-py-$pkgver"
-  nosetests3 tests
-}
+#check() {
+#  cd "$srcdir/lmfit-py-$pkgver"
+#  nosetests3 tests
+#}
 
 package(){
   cd "$srcdir/lmfit-py-$pkgver"
@@ -29,4 +28,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('440d681d1c4dbc0b8c40ef66cc0300f8')
+md5sums=('56744e7bb1033a8ff0a69b6365c8b323')
