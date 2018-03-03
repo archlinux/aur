@@ -1,4 +1,4 @@
-  # Maintainer: James An <james@jamesan.ca>
+# Maintainer: James An <james@jamesan.ca>
 # Contributor: Tess 'socketwench' Flynn <tess@deninet.com>
 
 pkgname=drush-git
