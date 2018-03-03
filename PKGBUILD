@@ -1,7 +1,7 @@
 # Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
 
 pkgname=python-azure
-pkgver=2.0.0rc6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Microsoft Azure SDK for Python"
 arch=('any')
@@ -10,15 +10,15 @@ license=('MIT')
 depends=('python-azure-storage' 'python-msrestazure')
 makedepends=('python-setuptools')
 conflicts=('python-azure-git')
-source=("https://github.com/Azure/azure-sdk-for-python/archive/v2.0.0rc6.tar.gz")
-md5sums=('bc2b1084396a0dfb5f2646cec2469b64')
+source=("https://github.com/Azure/azure-sdk-for-python/archive/azure_${pkgver}.tar.gz")
+md5sums=('6fc80614be49e9c9447c24be894c69e1')
 
 build() {
-  cd "azure-sdk-for-python-$pkgver"
+  cd "azure-sdk-for-python-azure_$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "azure-sdk-for-python-$pkgver"
+  cd "azure-sdk-for-python-azure_$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 }
