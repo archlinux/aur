@@ -2,7 +2,7 @@
 # Contributor: Milo Mirate <mmirate@gmx.com>
 _pkgname=plumbum
 pkgname=python-plumbum
-pkgver=1.6.3
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Shell combinators library."
 arch=('any')
@@ -18,8 +18,9 @@ backup=()
 # plumbum is plain python and therefore we don't need to run strip
 options=(!emptydirs !strip)
 install=
-source=("https://pypi.python.org/packages/50/15/f26f60e1bb82aabed7ff86f3fd2976784047f9a291c63ac9019086a69559/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0249e708459f1b05627a7ca8787622c234e4db495a532acbbd1f1f17f28c7320')
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('d179b90a9927f91427a28c1bac2864c61342cb43ef39aa7324c7c9a96bcc23eb')
+
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
