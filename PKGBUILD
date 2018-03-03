@@ -2,9 +2,9 @@
 
 pkgname=libsafec
 _pkgname=safeclib
-pkgver=3.2
-_ver=15012018
-_gitver=ge0f580
+pkgver=3.3
+_ver=03032018
+_gitver=g570fa5
 pkgrel=1
 _pkgver="${_ver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -12,11 +12,11 @@ arch=('i686' 'x86_64')
 url='https://rurban.github.io/safeclib'
 _url='https://github.com/rurban/safeclib'
 depends=('pkgconfig')
-makedepends=('gcc')
-license=('Unkown')
+makedepends=('clang')
+license=('MIT')
 # https://github.com/rurban/safeclib/releases/download/v15012018/libsafec-15012018.0-ge0f580.tar.bz2
 source=("${_url}/releases/download/v${_ver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('5be339acc97b86f4c76c7c7a966e251b7ba533451eaaf0861581f70de5df0265')
+sha256sums=('caeb1c4104e0f1cccbe6f354b1456d7f5096df2363292017618804cef72eca7d')
 
 # prepare() {
 #   cd "${srcdir}/${pkgname}-${_pkgver}"
@@ -25,13 +25,13 @@ sha256sums=('5be339acc97b86f4c76c7c7a966e251b7ba533451eaaf0861581f70de5df0265')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
-  ./configure --prefix=/usr
+  CC="clang -march=native -fstrict-aliasing" ./configure --prefix=/usr
   make
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
-  make check
+  # make check
 }
 
 package() {
