@@ -1,7 +1,7 @@
 # Maintainer: nic96
 pkgname=kiwix-bin
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Offline reader for Web content. It's especially intended to make Wikipedia available offline."
 arch=('i686' 'x86_64')
 url="http://www.kiwix.org"
@@ -10,8 +10,8 @@ depends=('rpcbind' 'gtk2' 'alsa-lib' 'libxt' 'libcanberra' 'sqlite3' 'java-envir
 provides=('kiwix')
 conflicts=('kiwix')
 install='kiwix.install'
-[[ "$CARCH" == 'x86_64' ]] && source=("http://sourceforge.net/projects/kiwix/files/$pkgver/kiwix-$pkgver-linux-x86_64.tar.bz2" "kiwix.desktop") && md5sums=('df6216ba851819d9c3d0208d3ea639df' '28f6bc22e23a3a73e60bbcf632b65827')
-[[ "$CARCH" == 'i686' ]] && source=("http://sourceforge.net/projects/kiwix/files/$pkgver/kiwix-$pkgver-linux-i686.tar.bz2" "kiwix.desktop") && md5sums=('b61fdc3937aa226f34f685ba0bc29db1' '28f6bc22e23a3a73e60bbcf632b65827')
+[[ "$CARCH" == 'x86_64' ]] && source=("https://ftp.nluug.nl/pub/kiwix/bin/$pkgver/kiwix-$pkgver-linux-x86_64.tar.bz2" "kiwix.desktop") && md5sums=('df6216ba851819d9c3d0208d3ea639df' '28f6bc22e23a3a73e60bbcf632b65827')
+[[ "$CARCH" == 'i686' ]] && source=("https://ftp.nluug.nl/pub/kiwix/bin/$pkgver/kiwix-$pkgver-linux-i686.tar.bz2" "kiwix.desktop") && md5sums=('b61fdc3937aa226f34f685ba0bc29db1' '28f6bc22e23a3a73e60bbcf632b65827')
 
 #build() {
 #}
