@@ -7,11 +7,11 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-lutris-git
-pkgver=3.2.r3574.6d7bf6bd+wine.3.2.r346.gb1aee9c391
+pkgver=3.3.r3576.1fdaf4c4+wine.3.3.r0.gf17120d11b
 pkgrel=1
-_pkgbasever=3.2
+_pkgbasever=3.3
 _winesrcdir=wine-git
-pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
+pkgdesc='A compatibility layer for running Windows programs (staging branch with some extra tweaks, git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/wine-staging/wine-staging'
 license=('LGPL')
