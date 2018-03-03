@@ -13,10 +13,10 @@ optdepends=('perl-crypt-pwsafe3: import Password Safe v3 files'
             'perl-capture-tiny'
             'perl-clipboard')
 url='http://sourceforge.net/projects/kpcli/'
-source=("http://downloads.sourceforge.net/project/kpcli/kpcli-$pkgver.pl"
-        "http://downloads.sourceforge.net/project/kpcli/README")
+source=("https://kent.dl.sourceforge.net/project/kpcli/kpcli-$pkgver.pl"
+        "http://kent.dl.sourceforge.net/project/kpcli/README")
 sha256sums=('615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687'
-            '30e0e44651bf0dcb08a53c974450acae82857b462dab1b02a5911217a6b936a1')
+            '8d81478c10a5c364e015429aed16cb8618ab04277162a687d7ca970e9e2b34c6')
 
 package() {
   install -Dm755 "kpcli-${pkgver}.pl" "${pkgdir}/usr/bin/kpcli"
