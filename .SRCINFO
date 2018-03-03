@@ -1,0 +1,16 @@
+pkgbase = zipper-git
+	pkgdesc = Zipper zips directories
+	pkgver = 20180303.a0490e9
+	pkgrel = 1
+	url = https://github.com/ugjka/zipper
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = go-tools
+	makedepends = git
+	makedepends = make
+	source = zipper::git+http://github.com/ugjka/zipper.git
+	md5sums = SKIP
+
+pkgname = zipper-git
+
