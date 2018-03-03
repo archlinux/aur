@@ -5,6 +5,9 @@ pkgbase = python-plexapi
 	url = https://github.com/pkkid/python-plexapi
 	arch = any
 	license = BSD
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-websocket-client
 	source = python-plexapi::git://github.com/pkkid/python-plexapi.git#tag=3.0.6
 	md5sums = SKIP
 

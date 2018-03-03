@@ -7,7 +7,9 @@ pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/pkkid/python-plexapi"
 license=('BSD')
-depends=()
+depends=('python-requests'
+         'python-tqdm'
+         'python-websocket-client')
 makedepends=()
 source=("$pkgname"::"git://github.com/pkkid/python-plexapi.git#tag=${pkgver}")
 md5sums=('SKIP')
