@@ -55,6 +55,8 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname}"
+    sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh
+    sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh
     sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' scylla-housekeeping
     sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' seastar/scripts/dpdk_nic_bind.py
     sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' dist/common/scripts/scylla_config_get.py
