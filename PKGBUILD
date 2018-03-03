@@ -1,37 +1,31 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=0.4.4
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
-arch=(x86_64)
+arch=(any)
 provides=(scanpy python-scanpy)
 url='https://github.com/theislab/scanpy'
-license=(GPL3)
+license=(BSD)
 depends=(
-	cython
-	'python-anndata>=0.5'
+	'python-anndata>=0.5.8'
+	'python-matplotlib>=2.2'
 	'python-pandas>=0.21'
-	'python-scikit-learn>=0.19.1'
 	python-scipy
-	python-statsmodels
-	python-matplotlib
 	python-seaborn
-	python-psutil
-	python-xlrd
 	python-h5py
+	python-pytables
+	'python-scikit-learn>=0.19.1'
+	python-statsmodels
 	python-networkx
-	python-louvain-igraph
 	python-natsort
 	python-joblib
-	python-profilehooks
-)
-optdepends=(
-	'python-umap-learn: UMAP dimension reduction'
-)
-_wheel="$pkgname-$pkgver-cp36-cp36m-manylinux1_x86_64.whl"
-source=("https://files.pythonhosted.org/packages/cp36/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('c89b8c05c321f6e75997c6ff8172159fe773cc10bdf1fcb9c8c09596eb1aecf9')
+	python-numba)
+optdepends=(python-multicoretsne)
+_wheel="$pkgname-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
+sha256sums=('34eac67035c33f3f392f615fe53622261a613b44d657364973a51a2c947fc94f')
 noextract=("$_wheel")
 
 package() {
