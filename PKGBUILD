@@ -1,15 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wxglterm-git
 _pkgname=wxglterm
-pkgver=r179.a3869ea
+pkgver=r301.5d3d038
 pkgrel=1
 pkgdesc="a cross platform terminal emulator using wxWidgets and python, drawing using OpenGL"
 arch=('x86_64')
@@ -29,7 +21,6 @@ pkgver() {
 }
 
 prepare (){
-  cd "${srcdir}/${_pkgname}"
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -37,14 +28,16 @@ prepare (){
 }
 build() {
   #you need to go into $srcdir/build and do it manually
-  cd "${srcdir}/${_pkgname}"
-  export LDFLAGS="$LDFLAGS -lutil"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6m.a
-    make
-
+  cd "build"
+  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DBUILD_WXWIDGETS_UI=ON -DBUILD_OPENGL_UI=ON -DCMAKE_BUILD_TYPE="RedWithDebInfo"  -DBUILD_SCINTILLA_EDITOR=ON 
+ 
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "build"
 	make DESTDIR="$pkgdir/" install
+	rm -rf $pkgdir/home
+	install -D $pkgdir/usr/share/wxglterm/etc/wxglterm.json $pkgdir/etc/wxglterm.json
+	rm -rf $pkgdir/usr/share/wxglterm/etc
 }
