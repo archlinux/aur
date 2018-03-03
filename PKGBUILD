@@ -17,6 +17,12 @@ optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
+source=(
+       https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
+)
+sha1sums=('df2c53c733b9e08904f5cbd508e20d5abeb40579')
+sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
+sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e444f53010ad53c6b1adf28c75aa482403c06052314a91636c2a8baa30e09af')
 backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
@@ -25,22 +31,22 @@ backup=(
 
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
 
   mkdir build
   cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr ../
+  cmake -D CMAKE_INSTALL_PREFIX=/usr "${srcdir}/${pkgname}-${pkgver}"
 
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
   make -j $(cat /proc/cpuinfo | grep -ci '^processor')
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
