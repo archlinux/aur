@@ -2,9 +2,10 @@
 # Contributor: MaryJaneInChain <gmail.com@maryjaneinchain>
 # Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
-pkgname=remarkable-webkit2gtk
+pkgname=('remarkable-webkit2gtk')
+conflicts=('remarkable')
 pkgver=1.87
-pkgrel=2
+pkgrel=5
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
 url="http://remarkableapp.github.io"
@@ -19,8 +20,9 @@ depends=('python'
          'webkit2gtk'
          'wkhtmltopdf'
          'gtksourceview3'
+         'remarkable'
          )
-makedepends=('python')
+makedepends=('python' 'remarkable')
 optdepends=('python-lxml: export to HTML format support')
 
 install="remarkable.install"
