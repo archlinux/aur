@@ -1,15 +1,21 @@
+# $Id$
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Eduardo Romero <eduardo@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-lutris-git
-_winesrc=wine-git
-_stgver=3.2
-pkgver=3.2.r3573.745e1c5f+wine.3.2.r346.gb1aee9c391
+pkgver=3.2.r3574.6d7bf6bd+wine.3.2.r346.gb1aee9c391
 pkgrel=1
+_pkgbasever=3.2
+_winesrcdir=wine-git
 pkgdesc='A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/wine-staging/wine-staging'
 license=('LGPL')
+
 _depends=(
     'attr'                  'lib32-attr'
     'fontconfig'            'lib32-fontconfig'
@@ -80,12 +86,14 @@ optdepends=(
     'dosbox'
 )
 options=('staticlibs')
-source=("$_winesrc"::'git://source.winehq.org/git/wine.git'
+source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
         "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
+		'harmony-fix.diff'
         '30-win32-aliases.conf'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
             'SKIP'
+			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
 install=wine.install
@@ -116,7 +124,7 @@ else
 fi 
 
 prepare() {
-    cd "${_winesrc}"
+    cd "${_winesrcdir}"
     
     # restore the wine tree to its git origin state, without wine-staging patches
     # (necessary for reapllying wine-staging patches in succedent builds,
@@ -128,7 +136,9 @@ prepare() {
     # change back to the wine upstream commit that this version of wine-staging is based in
     msg2 'Changing wine HEAD to the wine-staging base commit...'
     git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
-		
+	
+	patch -Np1 < ../'harmony-fix.diff'
+
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
@@ -139,12 +149,12 @@ pkgver() {
     local _staging_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 
 	# retrieve current wine development version
-    cd "${srcdir}/${_winesrc}"
+    cd "${srcdir}/${_winesrcdir}"
     local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
     
-	# create our version string, add our predefined _stgver, 
+	# create our version string, add our predefined _pkgbasever, 
 	# as there are no official correct releases or tags as of making this! 
-    printf '%s.%s+%s' "$_stgver" "$_staging_version" "$_wine_version"
+    printf '%s.%s+%s' "$_pkgbasever" "$_staging_version" "$_wine_version"
 }
 
 build() {
@@ -154,7 +164,7 @@ build() {
     
     # apply all wine-staging patches
     msg2 'Applying wine-staging patches...'
-    ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrc}" --all
+    ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrcdir}" --all
     
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
@@ -169,7 +179,7 @@ build() {
         msg2 'Building Wine-64...'
         mkdir -p "$pkgname"-64-build
         cd  "$pkgname"-64-build
-        ../${_winesrc}/configure \
+        ../${_winesrcdir}/configure \
                         --prefix='/usr' \
                         --libdir='/usr/lib' \
                         --with-x \
@@ -189,7 +199,7 @@ build() {
     # build wine-staging 32-bit
     msg2 'Building Wine-32...'
     cd "${srcdir}/${pkgname}"-32-build
-    ../${_winesrc}/configure \
+    ../${_winesrcdir}/configure \
                     --prefix='/usr' \
                     --with-x \
                     --with-gstreamer \

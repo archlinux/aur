@@ -1,6 +1,6 @@
 pkgbase = wine-staging-lutris-git
 	pkgdesc = A compatibility layer for running Windows programs (LutrisGaming staging branch, git version)
-	pkgver = 3.2.r3573.745e1c5f+wine.3.2.r346.gb1aee9c391
+	pkgver = 3.2.r3574.6d7bf6bd+wine.3.2.r346.gb1aee9c391
 	pkgrel = 1
 	url = https://github.com/wine-staging/wine-staging
 	install = wine.install
@@ -137,7 +137,7 @@ pkgbase = wine-staging-lutris-git
 	provides = wine-git=3.2.r346.gb1aee9c391
 	provides = bin32-wine=3.2.r346.gb1aee9c391
 	provides = wine-wow64=3.2.r346.gb1aee9c391
-	provides = wine-staging=3.2.r3573.745e1c5f
+	provides = wine-staging=3.2.r3574.6d7bf6bd
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
@@ -151,10 +151,12 @@ pkgbase = wine-staging-lutris-git
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
 	source = wine-staging-lutris-git::git+https://github.com/wine-staging/wine-staging.git
+	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152
 
