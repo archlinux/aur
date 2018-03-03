@@ -1,7 +1,7 @@
 pkgbase = deken-git
 	pkgdesc = Externals wrangler for Pure Data
-	pkgver = v0.2.6.r125.gcb599c6
-	pkgrel = 3
+	pkgver = v0.2.6.r129.g33a15cb
+	pkgrel = 1
 	url = https://puredata.info/docs/Deken
 	arch = any
 	license = custom:BSD
