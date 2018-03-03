@@ -2,8 +2,8 @@
 
 _pkgname=glava
 pkgname=${_pkgname}-git
-pkgver=r126.318b4b3
-pkgrel=2
+pkgver=r128.8adc8fe
+pkgrel=1
 pkgdesc='OpenGL audio spectrum visualizer'
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
@@ -13,11 +13,9 @@ makedepends=('git' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('git+https://github.com/wacossusca34/glava'
-        'git+https://github.com/Dav1dde/glad'
-        "${pkgname}-26.patch::https://github.com/wacossusca34/glava/pull/26.patch")
+        'git+https://github.com/Dav1dde/glad')
 md5sums=('SKIP'
-         'SKIP'
-         '4d4f002ec5285157e679aaeebaf5f14c')
+         'SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -26,9 +24,6 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}"
-
-	# Fix LDFLAGS https://github.com/wacossusca34/glava/pull/26
-	patch Makefile "${srcdir}/${pkgname}-26.patch"
 
 	git submodule init
 	git config submodule.glad.url "${srcdir}/glad"
