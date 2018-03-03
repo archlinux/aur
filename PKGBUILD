@@ -1,7 +1,7 @@
 # Maintainer: Anders Skaalsveen <anders[at]bakkenbaeck[dot]no>
 pkgname=adb-screen-tools
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=3
 pkgbase=
 pkgdesc="Extra screen-utilities for android-devices"
 arch=('any')
@@ -12,8 +12,8 @@ provides=('adb-screen-tools')
 conflicts=('adb-screen-tools')
 depends=()
 makedepends=('git')
-source=("$pkgname::git+https://github.com/bakkenbaeck/adb-screen-tools.git")
-md5sums=(SKIP)
+source=("$pkgname::git+https://github.com/bakkenbaeck/adb-screen-tools.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
   true
