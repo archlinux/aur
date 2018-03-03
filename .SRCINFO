@@ -13,7 +13,8 @@ pkgbase = smarttrafficmeter
 	makedepends = binutils
 	makedepends = gzip
 	depends = boost-libs
-	depends = curl
+	depends = curl,
+	depends = xdg-utils
 	provides = smarttrafficmeter
 
 pkgname = smarttrafficmeter
