@@ -1,7 +1,7 @@
 pkgbase = ombi-beta
 	pkgdesc = Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves
-	pkgver = 3.0.2956
-	pkgrel = 2
+	pkgver = 3.0.2959
+	pkgrel = 1
 	url = https://www.ombi.io
 	install = ombi.install
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = ombi-beta
 	provides = ombi
 	conflicts = ombi
 	replaces = plexrequests
-	noextract = ombi-beta-3.0.2956.tar.gz
+	noextract = ombi-beta.tar.gz
 	options = staticlibs
 	backup = opt/Ombi/Ombi.sqlite
-	source = ombi-beta-3.0.2956.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore
+	source = ombi-beta.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore
 	source = ombi.service
 	source = ombi.sysusers
 	sha256sums = 1e6b2e0c1fa00734d7dd17e0967412d1c47f2a96339a6129aa7d65e5c516298d

@@ -4,8 +4,8 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-beta
-pkgver=3.0.2956
-pkgrel=2
+pkgver=3.0.2959
+pkgrel=1
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"
 arch=('any')
 url='https://www.ombi.io'
@@ -19,8 +19,8 @@ conflicts=('ombi')
 options=('staticlibs')
 backup=('opt/Ombi/Ombi.sqlite')
 install='ombi.install'
-noextract=("${pkgname}-${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore"
+noextract=("${pkgname}.tar.gz")
+source=("${pkgname}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore"
         'ombi.service'
         'ombi.sysusers')
 sha256sums=('1e6b2e0c1fa00734d7dd17e0967412d1c47f2a96339a6129aa7d65e5c516298d'
@@ -33,7 +33,7 @@ pkgver() {
 
 package() {
   install -dm755 "${pkgdir}/opt/Ombi"
-  tar xzf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/Ombi"
+  tar xzf "${pkgname}.tar.gz" -C "${pkgdir}/opt/Ombi"
   chmod +x "${pkgdir}/opt/Ombi/Ombi"
   install -Dm644 "${srcdir}/ombi.service" "${pkgdir}/usr/lib/systemd/system/ombi.service"
   install -Dm644 "${srcdir}/ombi.sysusers" "${pkgdir}/usr/lib/sysusers.d/ombi.conf"
