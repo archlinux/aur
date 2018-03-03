@@ -1,6 +1,6 @@
 # Maintainer: Rafał Frączek <rafalfr@protonmail.ch>
 pkgname=smarttrafficmeter
-pkgver=2.1.1230.6885
+pkgver=2.1.1256.7033
 pkgrel=1
 pkgdesc="Software for measuring network usage."
 arch=('x86_64')
@@ -32,4 +32,7 @@ package() {
     install -D -m755 ${srcdir}/smarttrafficmeter/bin/release/smarttrafficmeter ${pkgdir}/usr/bin/smarttrafficmeter
     install -D -m755 ${srcdir}/smarttrafficmeter/install/arch/smarttrafficmeter.service ${pkgdir}/usr/lib/systemd/system/smarttrafficmeter.service
     install -D -m755 ${srcdir}/smarttrafficmeter/man/smarttrafficmeter.1 ${pkgdir}/usr/share/man/man1/smarttrafficmeter.1
+    install -D -m755 ${srcdir}/smarttrafficmeter/install/desktop/smarttrafficmeter.desktop ${pkgdir}/usr/share/applications/smarttrafficmeter.desktop
+    install -D -m755 ${srcdir}/smarttrafficmeter/install/desktop/smarttrafficmeter.png ${pkgdir}/usr/share/pixmaps/smarttrafficmeter.png
+    install -D -m755 ${srcdir}/smarttrafficmeter/install/desktop/smarttrafficmeter.appdata.xml ${pkgdir}/usr/share/appdata/smarttrafficmeter.appdata.xml
 }
