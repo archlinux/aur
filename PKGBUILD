@@ -1,8 +1,8 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=xmlcutty
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="xmlcutty is a simple tool for carving out elements from large XML files, fast"
 arch=('i686' 'x86_64')
 url="https://github.com/miku/xmlcutty"
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 conflicts=("${pkgname}-bin")
 replaces=("${pkgname}-bin")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bd5319813b4888abe5abf73733928ac3dda43e8e53f5bc7bd0b41e84b1d6740d')
+sha256sums=('a10fbfac4c18af71cacfcf60b2c486f85891acb0e75f9745db0e2f1890d8b317')
 _gourl='github.com/miku/xmlcutty/cmd/xmlcutty'
 
 prepare() {
