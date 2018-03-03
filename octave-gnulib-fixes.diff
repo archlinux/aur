@@ -1,0 +1,592 @@
+diff -ru octave-4.0.3.orig/libgnu/Makefile.in octave-4.0.3/libgnu/Makefile.in
+--- octave-4.0.3.orig/libgnu/Makefile.in	2016-07-01 20:44:48.000000000 +0200
++++ octave-4.0.3/libgnu/Makefile.in	2018-03-01 11:26:53.437030700 +0100
+@@ -932,7 +932,7 @@
+ HAVE_DECL_GETPAGESIZE = @HAVE_DECL_GETPAGESIZE@
+ HAVE_DECL_GETUSERSHELL = @HAVE_DECL_GETUSERSHELL@
+ HAVE_DECL_LDEXPL = @HAVE_DECL_LDEXPL@
+-HAVE_DECL_LOCALTIME_R = @HAVE_DECL_LOCALTIME_R@
++HAVE_DECL_LOCALTIME_R = 1
+ HAVE_DECL_LOG10L = @HAVE_DECL_LOG10L@
+ HAVE_DECL_LOG2 = @HAVE_DECL_LOG2@
+ HAVE_DECL_LOG2F = @HAVE_DECL_LOG2F@
+diff -ru octave-4.0.3.orig/libgnu/mktime.c octave-4.0.3/libgnu/mktime.c
+--- octave-4.0.3.orig/libgnu/mktime.c	2016-07-01 20:43:44.000000000 +0200
++++ octave-4.0.3/libgnu/mktime.c	2018-03-01 08:51:30.571844300 +0100
+@@ -34,6 +34,7 @@
+ # define LEAP_SECONDS_POSSIBLE 1
+ #endif
+ 
++#define _POSIX_C_SOURCE 1
+ #include <time.h>
+ 
+ #include <limits.h>
+diff -ru octave-4.0.3.orig/libgnu/strptime.c octave-4.0.3/libgnu/strptime.c
+--- octave-4.0.3.orig/libgnu/strptime.c	2016-07-01 20:43:45.000000000 +0200
++++ octave-4.0.3/libgnu/strptime.c	2018-03-01 08:53:08.758545200 +0100
+@@ -19,6 +19,7 @@
+ # include <config.h>
+ #endif
+ 
++#define _POSIX_C_SOURCE 1
+ #include <time.h>
+ 
+ #include <assert.h>
+diff -ru octave-4.0.3.orig/libgnu/time.in.h octave-4.0.3/libgnu/time.in.h
+--- octave-4.0.3.orig/libgnu/time.in.h	2016-07-01 20:43:45.000000000 +0200
++++ octave-4.0.3/libgnu/time.in.h	2018-03-01 09:27:49.362764000 +0100
+@@ -31,12 +31,14 @@
+       && !defined __MINGW32__)                         \
+      || defined _@GUARD_PREFIX@_TIME_H)
+ 
++#define _POSIX_C_SOURCE 1
+ # @INCLUDE_NEXT@ @NEXT_TIME_H@
+ 
+ #else
+ 
+ # define _@GUARD_PREFIX@_TIME_H
+ 
++#define _POSIX_C_SOURCE 1
+ # @INCLUDE_NEXT@ @NEXT_TIME_H@
+ 
+ /* NetBSD 5.0 mis-defines NULL.  */
+diff -ru octave-4.0.3.orig/libgnu/time_rz.c octave-4.0.3/libgnu/time_rz.c
+--- octave-4.0.3.orig/libgnu/time_rz.c	2016-07-01 20:43:42.000000000 +0200
++++ octave-4.0.3/libgnu/time_rz.c	2018-03-01 08:53:45.508591900 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include <config.h>
+ 
++#define _POSIX_C_SOURCE 1
+ #include <time.h>
+ 
+ #include <errno.h>
+diff -ru octave-4.0.3.orig/libgnu/timegm.c octave-4.0.3/libgnu/timegm.c
+--- octave-4.0.3.orig/libgnu/timegm.c	2016-07-01 20:43:42.000000000 +0200
++++ octave-4.0.3/libgnu/timegm.c	2018-03-01 08:54:31.977398700 +0100
+@@ -20,6 +20,7 @@
+ # include <config.h>
+ #endif
+ 
++#define _POSIX_C_SOURCE 1
+ #include <time.h>
+ 
+ #ifdef _LIBC
+diff -ru octave-4.0.3.orig/libinterp/corefcn/data.cc octave-4.0.3/libinterp/corefcn/data.cc
+--- octave-4.0.3.orig/libinterp/corefcn/data.cc	2016-07-01 20:40:27.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/data.cc	2018-03-01 08:13:34.078298700 +0100
+@@ -4718,7 +4718,7 @@
+                   else
+                     {
+                       int expon;
+-                      gnulib::frexpf (val, &expon);
++                      frexpf (val, &expon);
+                       epsval(i) = std::pow (2.0f,
+                                             static_cast<float> (expon - 24));
+                     }
+@@ -4744,7 +4744,7 @@
+                   else
+                     {
+                       int expon;
+-                      gnulib::frexp (val, &expon);
++                      frexp (val, &expon);
+                       epsval(i) = std::pow (2.0,
+                                             static_cast<double> (expon - 53));
+                     }
+diff -ru octave-4.0.3.orig/libinterp/corefcn/gcd.cc octave-4.0.3/libinterp/corefcn/gcd.cc
+--- octave-4.0.3.orig/libinterp/corefcn/gcd.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/gcd.cc	2018-03-01 08:13:34.092947000 +0100
+@@ -64,8 +64,8 @@
+ divide (const std::complex<FP>& a, const std::complex<FP>& b,
+         std::complex<FP>& q, std::complex<FP>& r)
+ {
+-  FP qr = gnulib::floor ((a/b).real () + 0.5);
+-  FP qi = gnulib::floor ((a/b).imag () + 0.5);
++  FP qr = floor ((a/b).real () + 0.5);
++  FP qi = floor ((a/b).imag () + 0.5);
+ 
+   q = std::complex<FP> (qr, qi);
+ 
+@@ -131,7 +131,7 @@
+ 
+   while (bb != 0)
+     {
+-      double qq = gnulib::floor (aa / bb);
++      double qq = floor (aa / bb);
+       double tt = fmod (aa, bb);
+ 
+       aa = bb;
+diff -ru octave-4.0.3.orig/libinterp/corefcn/graphics.cc octave-4.0.3/libinterp/corefcn/graphics.cc
+--- octave-4.0.3.orig/libinterp/corefcn/graphics.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/graphics.cc	2018-03-01 08:13:34.124344800 +0100
+@@ -6876,7 +6876,7 @@
+     }
+   else
+     {
+-      b = static_cast<int> (gnulib::floor (std::log10 (std::abs (x))));
++      b = static_cast<int> (floor (std::log10 (std::abs (x))));
+       a = x / std::pow (10.0, b);
+     }
+ }
+@@ -6974,14 +6974,14 @@
+           if (min_val > 0)
+             {
+               // Log plots with all positive data
+-              min_val = pow (10, gnulib::floor (log10 (min_val)));
++              min_val = pow (10, floor (log10 (min_val)));
+               max_val = pow (10, std::ceil (log10 (max_val)));
+             }
+           else
+             {
+               // Log plots with all negative data
+               min_val = -pow (10, std::ceil (log10 (-min_val)));
+-              max_val = -pow (10, gnulib::floor (log10 (-max_val)));
++              max_val = -pow (10, floor (log10 (-max_val)));
+             }
+         }
+       else
+@@ -7000,7 +7000,7 @@
+             }
+ 
+           double tick_sep = calc_tick_sep (min_val , max_val);
+-          double min_tick = gnulib::floor (min_val / tick_sep);
++          double min_tick = floor (min_val / tick_sep);
+           double max_tick = std::ceil (max_val / tick_sep);
+           // Prevent round-off from cropping ticks
+           min_val = std::min (min_val, tick_sep * min_tick);
+@@ -7062,7 +7062,7 @@
+   else
+     tick_sep = calc_tick_sep (lo , hi);
+ 
+-  int i1 = static_cast<int> (gnulib::floor (lo / tick_sep));
++  int i1 = static_cast<int> (floor (lo / tick_sep));
+   int i2 = static_cast<int> (std::ceil (hi / tick_sep));
+ 
+   if (limmode_is_auto)
+@@ -7143,9 +7143,9 @@
+       for (int i = 0; i < values.numel (); i++)
+         {
+           if (values(i) < 0.)
+-            exponent = gnulib::floor (std::log10 (-values(i)));
++            exponent = floor (std::log10 (-values(i)));
+           else
+-            exponent = gnulib::floor (std::log10 (values(i)));
++            exponent = floor (std::log10 (values(i)));
+           significand = values(i) * std::pow (10., -exponent);
+           os.str (std::string ());
+           os << significand;
+diff -ru octave-4.0.3.orig/libinterp/corefcn/pr-output.cc octave-4.0.3/libinterp/corefcn/pr-output.cc
+--- octave-4.0.3.orig/libinterp/corefcn/pr-output.cc	2016-04-20 20:23:56.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/pr-output.cc	2018-03-01 08:13:34.139958300 +0100
+@@ -238,7 +238,7 @@
+   if (x != 0)
+     {
+       double absval = (x < 0.0 ? -x : x);
+-      int logabsval = static_cast<int> (gnulib::floor (log10 (absval)));
++      int logabsval = static_cast<int> (floor (log10 (absval)));
+       /* Avoid using modulo function with negative arguments for portability.
+        * See extended comment at calc_scale_exp */
+       if (logabsval < 0.0)
+@@ -254,7 +254,7 @@
+ {
+   return 1 + (print_eng
+               ? engineering_exponent (x)
+-              : static_cast<int> (gnulib::floor (log10 (x))));
++              : static_cast<int> (floor (log10 (x))));
+ }
+ 
+ class
+@@ -3258,7 +3258,7 @@
+             {
+               int new_digits
+                 = static_cast<int>
+-                  (gnulib::floor (log10 (double (abs (nda(i).value ()))) + 1.0));
++                  (floor (log10 (double (abs (nda(i).value ()))) + 1.0));
+ 
+               if (new_digits > digits)
+                 digits = new_digits;
+diff -ru octave-4.0.3.orig/libinterp/corefcn/quadcc.cc octave-4.0.3/libinterp/corefcn/quadcc.cc
+--- octave-4.0.3.orig/libinterp/corefcn/quadcc.cc	2016-04-20 20:23:56.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/quadcc.cc	2018-03-01 08:13:34.155680300 +0100
+@@ -1673,7 +1673,7 @@
+       wrap = true;
+       for (i = 0; i < nivals + 1; i++)
+         if (xisinf (iivals[i]))
+-          iivals[i] = gnulib::copysign (1.0, iivals[i]);
++          iivals[i] = copysign (1.0, iivals[i]);
+         else
+           iivals[i] = 2.0 * atan (iivals[i]) / M_PI;
+     }
+@@ -2037,7 +2037,7 @@
+                                   && ivl->c[0] / iv->c[0] > 2);
+           if (ivl->ndiv > ndiv_max && 2 * ivl->ndiv > ivl->rdepth)
+             {
+-              igral = gnulib::copysign (octave_Inf, igral);
++              igral = copysign (octave_Inf, igral);
+               warning ("quadcc: divergent integral detected");
+               break;
+             }
+@@ -2133,7 +2133,7 @@
+                                   && ivr->c[0] / iv->c[0] > 2);
+           if (ivr->ndiv > ndiv_max && 2 * ivr->ndiv > ivr->rdepth)
+             {
+-              igral = gnulib::copysign (octave_Inf, igral);
++              igral = copysign (octave_Inf, igral);
+               warning ("quadcc: divergent integral detected");
+               break;
+             }
+diff -ru octave-4.0.3.orig/libinterp/corefcn/rand.cc octave-4.0.3/libinterp/corefcn/rand.cc
+--- octave-4.0.3.orig/libinterp/corefcn/rand.cc	2016-04-20 20:23:56.000000000 +0200
++++ octave-4.0.3/libinterp/corefcn/rand.cc	2018-03-01 08:13:34.186606100 +0100
+@@ -1205,7 +1205,7 @@
+               for (octave_idx_type i = 0; i < m; i++)
+                 {
+                   octave_idx_type k = i +
+-                                      gnulib::floor (rvec[i] * (n - i));
++                                      floor (rvec[i] * (n - i));
+ 
+                   //For shuffling first m entries, no need to use extra
+                   //storage
+@@ -1229,7 +1229,7 @@
+               for (octave_idx_type i = 0; i < m; i++)
+                 {
+                   octave_idx_type k = i +
+-                                      gnulib::floor (rvec[i] * (n - i));
++                                      floor (rvec[i] * (n - i));
+                   std::swap (ivec[i], ivec[k]);
+                 }
+             }
+diff -ru octave-4.0.3.orig/libinterp/octave-value/ov-cell.cc octave-4.0.3/libinterp/octave-value/ov-cell.cc
+--- octave-4.0.3.orig/libinterp/octave-value/ov-cell.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/libinterp/octave-value/ov-cell.cc	2018-03-01 08:13:34.202242900 +0100
+@@ -1141,7 +1141,7 @@
+   for (octave_idx_type i = 0; i < nel; i++)
+     {
+       std::ostringstream buf;
+-      int digits = static_cast<int> (gnulib::floor (::log10 (static_cast<double>
++      int digits = static_cast<int> (floor (::log10 (static_cast<double>
+                                      (nel)) + 1.0));
+       buf << "_" << std::setw (digits) << std::setfill ('0') << i;
+       std::string s = buf.str ();
+diff -ru octave-4.0.3.orig/libinterp/octave-value/ov-float.cc octave-4.0.3/libinterp/octave-value/ov-float.cc
+--- octave-4.0.3.orig/libinterp/octave-value/ov-float.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/libinterp/octave-value/ov-float.cc	2018-03-01 08:13:34.218031200 +0100
+@@ -318,7 +318,7 @@
+       SCALAR_MAPPER (exp, ::expf);
+       SCALAR_MAPPER (expm1, ::expm1f);
+       SCALAR_MAPPER (fix, ::fix);
+-      SCALAR_MAPPER (floor, gnulib::floorf);
++      SCALAR_MAPPER (floor, floorf);
+       SCALAR_MAPPER (log, rc_log);
+       SCALAR_MAPPER (log2, rc_log2);
+       SCALAR_MAPPER (log10, rc_log10);
+diff -ru octave-4.0.3.orig/libinterp/octave-value/ov-scalar.cc octave-4.0.3/libinterp/octave-value/ov-scalar.cc
+--- octave-4.0.3.orig/libinterp/octave-value/ov-scalar.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/libinterp/octave-value/ov-scalar.cc	2018-03-01 08:13:34.233708600 +0100
+@@ -340,7 +340,7 @@
+       SCALAR_MAPPER (exp, ::exp);
+       SCALAR_MAPPER (expm1, ::expm1);
+       SCALAR_MAPPER (fix, ::fix);
+-      SCALAR_MAPPER (floor, gnulib::floor);
++      SCALAR_MAPPER (floor, floor);
+       SCALAR_MAPPER (log, rc_log);
+       SCALAR_MAPPER (log2, rc_log2);
+       SCALAR_MAPPER (log10, rc_log10);
+diff -ru octave-4.0.3.orig/liboctave/array/Range.cc octave-4.0.3/liboctave/array/Range.cc
+--- octave-4.0.3.orig/liboctave/array/Range.cc	2016-04-20 20:23:56.000000000 +0200
++++ octave-4.0.3/liboctave/array/Range.cc	2018-03-01 08:13:34.249575500 +0100
+@@ -495,11 +495,11 @@
+ 
+   double rmax = q / (2.0 - ct);
+ 
+-  double t1 = 1.0 + gnulib::floor (x);
++  double t1 = 1.0 + floor (x);
+   t1 = (ct / q) * (t1 < 0.0 ? -t1 : t1);
+   t1 = rmax < t1 ? rmax : t1;
+   t1 = ct > t1 ? ct : t1;
+-  t1 = gnulib::floor (x + t1);
++  t1 = floor (x + t1);
+ 
+   if (x <= 0.0 || (t1 - x) < rmax)
+     return t1;
+diff -ru octave-4.0.3.orig/liboctave/cruft/Faddeeva/Faddeeva.cc octave-4.0.3/liboctave/cruft/Faddeeva/Faddeeva.cc
+--- octave-4.0.3.orig/liboctave/cruft/Faddeeva/Faddeeva.cc	2016-04-20 20:23:56.000000000 +0200
++++ octave-4.0.3/liboctave/cruft/Faddeeva/Faddeeva.cc	2018-03-01 08:13:34.265323200 +0100
+@@ -210,8 +210,8 @@
+ // has to do with floor(-0), which doesn't occur in the usage below, but
+ // the Octave developers prefer that we silence the warning.
+ #  ifdef GNULIB_NAMESPACE
+-#    define floor GNULIB_NAMESPACE::floor
+-#    define log GNULIB_NAMESPACE::log
++#    define floor ::floor
++#    define log ::log
+ #  endif
+ 
+ #else // !__cplusplus, i.e. pure C (requires C99 features)
+diff -ru octave-4.0.3.orig/liboctave/numeric/lo-mappers.cc octave-4.0.3/liboctave/numeric/lo-mappers.cc
+--- octave-4.0.3.orig/liboctave/numeric/lo-mappers.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/liboctave/numeric/lo-mappers.cc	2018-03-01 08:13:34.280819400 +0100
+@@ -45,24 +45,24 @@
+ double
+ xtrunc (double x)
+ {
+-  return gnulib::trunc (x);
++  return trunc (x);
+ }
+ 
+ double
+ xcopysign (double x, double y)
+ {
+-  return gnulib::copysign (x, y);
++  return copysign (x, y);
+ }
+ 
+ double xfloor (double x)
+ {
+-  return gnulib::floor (x);
++  return floor (x);
+ }
+ 
+ double
+ xround (double x)
+ {
+-  return gnulib::round (x);
++  return round (x);
+ }
+ 
+ double
+@@ -92,7 +92,7 @@
+ double
+ xlog2 (double x)
+ {
+-  return gnulib::log2 (x);
++  return log2 (x);
+ }
+ 
+ Complex
+@@ -101,7 +101,7 @@
+ #if defined (M_LN2)
+   static double ln2 = M_LN2;
+ #else
+-  static double ln2 = gnulib::log (2);
++  static double ln2 = log (2);
+ #endif
+ 
+   return std::log (x) / ln2;
+@@ -116,7 +116,7 @@
+ #if defined (M_LN2)
+   static double ln2 = M_LN2;
+ #else
+-  static double ln2 = gnulib::log (2);
++  static double ln2 = log (2);
+ #endif
+ 
+   return exp (x * ln2);
+@@ -126,7 +126,7 @@
+ double
+ xlog2 (double x, int& exp)
+ {
+-  return gnulib::frexp (x, &exp);
++  return frexp (x, &exp);
+ }
+ 
+ Complex
+@@ -280,24 +280,24 @@
+ float
+ xtrunc (float x)
+ {
+-  return gnulib::truncf (x);
++  return truncf (x);
+ }
+ 
+ float
+ xcopysign (float x, float y)
+ {
+-  return gnulib::copysignf (x, y);
++  return copysignf (x, y);
+ }
+ 
+ float xfloor (float x)
+ {
+-  return gnulib::floorf (x);
++  return floorf (x);
+ }
+ 
+ float
+ xround (float x)
+ {
+-  return gnulib::roundf (x);
++  return roundf (x);
+ }
+ 
+ float
+@@ -327,7 +327,7 @@
+ float
+ xlog2 (float x)
+ {
+-  return gnulib::log2f (x);
++  return log2f (x);
+ }
+ 
+ FloatComplex
+@@ -363,7 +363,7 @@
+ float
+ xlog2 (float x, int& exp)
+ {
+-  return gnulib::frexpf (x, &exp);
++  return frexpf (x, &exp);
+ }
+ 
+ FloatComplex
+@@ -561,7 +561,7 @@
+ rc_log (double x)
+ {
+   const double pi = 3.14159265358979323846;
+-  return x < 0.0 ? Complex (gnulib::log (-x), pi) : Complex (gnulib::log (x));
++  return x < 0.0 ? Complex (log (-x), pi) : Complex (log (x));
+ }
+ 
+ FloatComplex
+@@ -569,8 +569,8 @@
+ {
+   const float pi = 3.14159265358979323846f;
+   return (x < 0.0f
+-          ? FloatComplex (gnulib::logf (-x), pi)
+-          : FloatComplex (gnulib::logf (x)));
++          ? FloatComplex (logf (-x), pi)
++          : FloatComplex (logf (x)));
+ }
+ 
+ Complex
+diff -ru octave-4.0.3.orig/liboctave/numeric/lo-mappers.h octave-4.0.3/liboctave/numeric/lo-mappers.h
+--- octave-4.0.3.orig/liboctave/numeric/lo-mappers.h	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/liboctave/numeric/lo-mappers.h	2018-03-01 08:13:34.296672500 +0100
+@@ -377,7 +377,7 @@
+ T
+ xsignbit (T x)
+ {
+-  return signbit (x);
++  return std::signbit (x);
+ }
+ 
+ #endif
+diff -ru octave-4.0.3.orig/liboctave/numeric/lo-specfun.cc octave-4.0.3/liboctave/numeric/lo-specfun.cc
+--- octave-4.0.3.orig/liboctave/numeric/lo-specfun.cc	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.3/liboctave/numeric/lo-specfun.cc	2018-03-01 08:13:34.312276100 +0100
+@@ -633,7 +633,7 @@
+       retval = 2 * (s + 1) * u;
+     }
+   else
+-    retval = gnulib::log (1 + x);
++    retval = log (1 + x);
+ 
+   return retval;
+ }
+@@ -692,7 +692,7 @@
+       retval = 2 * (s + 1.0f) * u;
+     }
+   else
+-    retval = gnulib::logf (1.0f + x);
++    retval = logf (1.0f + x);
+ 
+   return retval;
+ }
+@@ -2978,7 +2978,7 @@
+ {
+   const double pi = 3.14159265358979323846;
+   return (x < -1.0
+-          ? Complex (gnulib::log (-(1.0 + x)), pi)
++          ? Complex (log (-(1.0 + x)), pi)
+           : Complex (log1p (x)));
+ }
+ 
+@@ -2986,7 +2986,7 @@
+ {
+   const float pi = 3.14159265358979323846f;
+   return (x < -1.0f
+-          ? FloatComplex (gnulib::logf (-(1.0f + x)), pi)
++          ? FloatComplex (logf (-(1.0f + x)), pi)
+           : FloatComplex (log1pf (x)));
+ }
+ 
+@@ -3040,7 +3040,7 @@
+   else if (ax < 1.0)
+     {
+       // Tail region.
+-      const double q = sqrt (-2*gnulib::log (0.5*(1-ax)));
++      const double q = sqrt (-2*log (0.5*(1-ax)));
+       const double yn = ((((c[0]*q + c[1])*q + c[2])*q + c[3])*q + c[4])*q + c[5];
+       const double yd = (((d[0]*q + d[1])*q + d[2])*q + d[3])*q + 1.0;
+       y = yn / yd * signum (-x);
+@@ -3119,8 +3119,8 @@
+     {
+       // Tail region.
+       const double q = (x < 1
+-                        ? sqrt (-2*gnulib::log (0.5*x))
+-                        : sqrt (-2*gnulib::log (0.5*(2-x))));
++                        ? sqrt (-2*log (0.5*x))
++                        : sqrt (-2*log (0.5*(2-x))));
+ 
+       const double yn = ((((c[0]*q + c[1])*q + c[2])*q + c[3])*q + c[4])*q + c[5];
+ 
+@@ -3243,8 +3243,8 @@
+ 
+       if (temp <= acu && temp <= acu * value)
+         {
+-          value = value * exp (pp * gnulib::log (xx)
+-                               + (qq - 1.0) * gnulib::log (cx) - beta) / pp;
++          value = value * exp (pp * log (xx)
++                               + (qq - 1.0) * log (cx) - beta) / pp;
+ 
+           if (indx)
+             {
+@@ -3342,7 +3342,7 @@
+ 
+   //  Calculate the initial approximation.
+ 
+-  r = sqrt (- gnulib::log (a * a));
++  r = sqrt (- log (a * a));
+ 
+   ycur = r - (2.30753 + 0.27061 * r) / (1.0 + (0.99229 + 0.04481 * r) * r);
+ 
+@@ -3363,7 +3363,7 @@
+ 
+       if (t <= 0.0)
+         {
+-          value = 1.0 - exp ((gnulib::log ((1.0 - a) * qq) + beta) / qq);
++          value = 1.0 - exp ((log ((1.0 - a) * qq) + beta) / qq);
+         }
+       else
+         {
+@@ -3371,7 +3371,7 @@
+ 
+           if (t <= 1.0)
+             {
+-              value = exp ((gnulib::log (a * pp) + beta) / pp);
++              value = exp ((log (a * pp) + beta) / pp);
+             }
+           else
+             {
+@@ -3413,8 +3413,8 @@
+         }
+ 
+       xin = value;
+-      ycur = (ycur - a) * exp (beta + r * gnulib::log (xin)
+-                               + t * gnulib::log (1.0 - xin));
++      ycur = (ycur - a) * exp (beta + r * log (xin)
++                               + t * log (1.0 - xin));
+ 
+       if (ycur * yprev <= 0.0)
+         {
+diff -ru octave-4.0.3.orig/src/Makefile.in octave-4.0.3/src/Makefile.in
+--- octave-4.0.3.orig/src/Makefile.in	2016-07-01 20:44:53.000000000 +0200
++++ octave-4.0.3/src/Makefile.in	2018-03-02 03:32:36.955223700 +0100
+@@ -1334,7 +1334,7 @@
+ # List of libraries and their special compilation flags
+ LIBOCTINTERP = @LIBOCTINTERP@
+ LIBPRE = @LIBPRE@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -lz
+ LIBSOCKET = @LIBSOCKET@
+ LIBTOOL = @LIBTOOL@
+ LIB_CRYPTO = @LIB_CRYPTO@
