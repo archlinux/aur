@@ -8,12 +8,11 @@ pkgbase = python-meh-git
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = python
+	depends = python-dbus
+	depends = libreport-git
 	source = git+https://github.com/rhinstaller/python-meh.git
 	sha256sums = SKIP
 
 pkgname = python-meh-git
-	pkgdesc = Python module for handling exceptions - python 3.x pkg
-	depends = python
-	depends = python-dbus
-	depends = libreport-git
 
