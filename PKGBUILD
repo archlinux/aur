@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=mmake
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Modern Make'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ replaces=('mmake-bin')
 provides=("mmake=${pkgver}")
 source=("${url}/archive/v${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('b6b22b7c9b64b5f158971e737bae86e5477e1697a8d5e8223dbcfa154f1eaa3a')
+sha256sums=('000ba7c0d16cb55d0d03325547b266da60cec31c25690c22707ef88994497dba')
 _gourl="github.com/tj/${pkgname}/cmd/${pkgname}"
 
 build() {
