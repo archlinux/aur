@@ -3,13 +3,14 @@
 _pkgname=glew
 pkgver=1.13.0
 pkgname=glew-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
 url="http://glew.sourceforge.net"
 license=('BSD' 'MIT' 'GPL')
 depends=('libxmu' 'libxi' 'glu')
-source=(http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tgz)
+#      https://freefr.dl.sourceforge.net/project/glew/glew/1.13.0/glew-1.13.0.tgz
+source=(http://freefr.dl.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tgz)
 sha1sums=('d5b1c499f429aa91c466193b4e8ea94a84019e37')
 
 build() {

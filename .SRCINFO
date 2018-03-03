@@ -1,7 +1,7 @@
 pkgbase = glew-1.13.0
 	pkgdesc = The OpenGL Extension Wrangler Library
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glew.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = glew-1.13.0
 	depends = libxmu
 	depends = libxi
 	depends = glu
-	source = http://downloads.sourceforge.net/glew/glew-1.13.0.tgz
+	source = http://freefr.dl.sourceforge.net/project/glew/glew/1.13.0/glew-1.13.0.tgz
 	sha1sums = d5b1c499f429aa91c466193b4e8ea94a84019e37
 
 pkgname = glew-1.13.0
