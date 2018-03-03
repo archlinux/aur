@@ -1,13 +1,13 @@
 # Maintainer: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=betaflight-configurator
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
-source=("https://github.com/betaflight/betaflight-configurator/releases/download/$pkgver/Betaflight-Configurator_linux64_$pkgver.zip")
-md5sums=('feceea8247823f9a9074efe33298acda')
+source=("https://github.com/betaflight/betaflight-configurator/releases/download/$pkgver/betaflight-configurator_"$pkgver"_linux64.zip")
+md5sums=('8c2be4a4167516f16eb9374007de69a2')
 options=(!strip)
 license=('custom')
 provides=("$pkgname")
