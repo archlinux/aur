@@ -2,7 +2,7 @@
 
 pkgname=macos-arc-white-theme
 _pkgname=macOS-Arc-White
-pkgver=1.5
+pkgver=1.10
 pkgrel=1
 pkgdesc="A flat theme for Cinnamon, GNOME, GTK+ 2, GTK+ 3, Pantheon, Unity and Xfce4"
 arch=('i686' 'x86_64')
