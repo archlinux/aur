@@ -2,25 +2,25 @@
 
 _name=azure-storage
 pkgname=python-$_name
-pkgver=0.37.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Library for Python"
 arch=('any')
 url="https://github.com/Azure/azure-storage-python"
 license=('Apache')
 makedepends=('python-setuptools')
-source=("https://github.com/Azure/azure-storage-python/archive/v${pkgver}-common.tar.gz"
+source=("git+https://github.com/Azure/azure-storage-python.git#tag=v${pkgver}-common"
         "setup.patch")
-md5sums=('4256e38c4b6520790b1a6351fea1b404'
+md5sums=('SKIP'
          '3529e82ae379ecaa14a938fda53275a1')
 
 _packages=('azure-storage-common' 'azure-storage-blob'
            'azure-storage-file' 'azure-storage-queue')
 build() {
-  patch -p0 < setup.patch
-  cd "$_name-python-$pkgver-common"
+  cd "$_name-python"
+  patch -p1 < ../setup.patch
 
-  for package in $_packages;
+  for package in ${_packages[@]}
   do
     cd $package
     python setup.py build
@@ -29,9 +29,9 @@ build() {
 }
 
 package() {
-  cd "$_name-python-$pkgver-common"
+  cd "$_name-python"
 
-  for package in $_packages;
+  for package in ${_packages[@]}
   do
     cd $package
     python setup.py install --root="$pkgdir" --optimize=1
