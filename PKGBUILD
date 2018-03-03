@@ -1,7 +1,7 @@
 # Maintainer: goodguy <lists.cinelerra-cv.org>
 pkgname=cin
 pkgver=5.1
-pkgrel=20171231
+pkgrel=20180302
 pkgdesc="Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git ($pkgrel)"
 arch=('x86_64')
 url="http://www.cinelerra-cv.org"
@@ -11,7 +11,7 @@ depends=('xorg-server' 'libpng' 'libxv' 'libva'
 makedepends=('yasm' 'nasm' 'cmake'
 	 'libxml2' 'perl-xml-libxml' 'perl-xml-parser'  'wget' 'curl')
 conflicts=()
-source=('https://cinelerra-cv.org/five/src/cin_5.1.20171231-src.tgz' 
+source=('https://cinelerra-cv.org/five/pkgs/src/cin_5.1.20180302-src.tgz' 
 'unblock.patch' )
 md5sums=('3ad63897f753e1ba47e722096b76aeef'
          '25541f98ed8565176ce466558c90b7eb')
