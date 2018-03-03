@@ -1,14 +1,15 @@
-# Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
+# Maintainer: Barry Smith <brrtsm at gmail. ddot com>
+# Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 _gemname=erubis
 pkgname=ruby-$_gemname
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, secure, and very extensible implementation of eRuby."
 arch=(any)
 url="http://www.kuwata-lab.com/erubis/"
 license=('MIT')
 depends=(ruby)
-makedepends=(rubygems ruby-rdoc)
+makedepends=(ruby-rdoc)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha256sums=('63653f5174a7997f6f1d6f465fbe1494dcc4bdab1fb8e635f6216989fb1148ba')
