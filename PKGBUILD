@@ -2,23 +2,41 @@
 
 _name=azure-storage
 pkgname=python2-$_name
-pkgver=0.34.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Microsoft Azure Storage Client Library for Python"
+pkgdesc="Microsoft Azure Storage Library for Python"
 arch=('any')
 url="https://github.com/Azure/azure-storage-python"
 license=('Apache')
-depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.zip")
-md5sums=('6342a92b968cf350193e460a6329f3f0')
+source=("git+https://github.com/Azure/azure-storage-python.git#tag=v${pkgver}-common"
+        "setup.patch")
+md5sums=('SKIP'
+         '3529e82ae379ecaa14a938fda53275a1')
 
+_packages=('azure-storage-common' 'azure-storage-blob'
+           'azure-storage-file' 'azure-storage-queue')
 build() {
-  cd "$_name-$pkgver"
-  python2 setup.py build
+  cd "$_name-python"
+  patch -p1 < ../setup.patch
+
+  for package in ${_packages[@]}
+  do
+    cd $package
+    python2 setup.py build
+    cd ..
+  done
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "$_name-python"
+
+  for package in ${_packages[@]}
+  do
+    cd $package
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    cd ..
+  done
+    
+  rm "$pkgdir"/usr/lib/python2.?/site-packages/azure/__init__.*
 }
