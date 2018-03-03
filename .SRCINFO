@@ -1,19 +1,20 @@
 pkgbase = vale
 	pkgdesc = A customizable, syntax-aware linter for prose.
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://github.com/ValeLint/vale
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = ruby
+	makedepends = python-docutils
 	provides = vale
 	options = !emptydirs
-	source = https://github.com/ValeLint/vale/archive/0.9.0.zip
+	source = https://github.com/ValeLint/vale/archive/0.10.1.zip
 	source = enable_local_build.patch
-	sha256sums = 9f561d157e0a4179c5f2ad880d74fd6f52b3f7aa22d93b57af5fa739aeac7d16
-	sha256sums = 03be0c5d6b4e4c70346c8da348f5d8a51daffdc203f1f1d022a890da4d34e9f4
+	sha256sums = 8210ecea53c6715a3022dcb723f626f467072b8f7062fa9bb6d29a486278b6c8
+	sha256sums = 69f1efbd1f638cd601a0f5583b85a052aa5bbb6433a9d4a24dba11b29f703422
 
 pkgname = vale
 

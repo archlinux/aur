@@ -1,19 +1,19 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
 arch=('i686' 'x86_64')
 url="https://github.com/ValeLint/vale"
 license=('MIT')
 depends=('')
-makedepends=('go' 'ruby')
+makedepends=('go' 'ruby' 'python-docutils')
 options=('!emptydirs')
 source=("https://github.com/ValeLint/${pkgname}/archive/${pkgver}.zip"
         'enable_local_build.patch')
-sha256sums=('9f561d157e0a4179c5f2ad880d74fd6f52b3f7aa22d93b57af5fa739aeac7d16'
-            '03be0c5d6b4e4c70346c8da348f5d8a51daffdc203f1f1d022a890da4d34e9f4')
+sha256sums=('8210ecea53c6715a3022dcb723f626f467072b8f7062fa9bb6d29a486278b6c8'
+            '69f1efbd1f638cd601a0f5583b85a052aa5bbb6433a9d4a24dba11b29f703422')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,7 +29,7 @@ build() {
     mkdir -p "${srcdir}/ruby"
     export HOME="${srcdir}/ruby"
     export GEM_HOME="${HOME}/.gem/ruby/${RUBY_VER}"
-    export GEM_HOME_OLD="${HOME}/.gem/ruby/2.4.0"
+    export GEM_HOME_OLD="${HOME}/.gem/ruby/2.5.0"
     export PATH="${srcdir}/gopath/bin:${GEM_HOME}/bin:${GEM_HOME_OLD}/bin:$PATH"
     mkdir -p "${srcdir}/gopath/src/github.com/ValeLint/vale"
     rsync -az "${srcdir}/${pkgname}-${pkgver}/" "${srcdir}/gopath/src/github.com/ValeLint/vale/"
@@ -38,8 +38,7 @@ build() {
     go env
     export BUNDLE_GEMFILE=$PWD/Gemfile
     export PATH="${srcdir}/bin:${PATH}"
-    pip install --user docutils
-    gem install asciidoctor
+    gem install --no-rdoc --no-ri asciidoctor
     make setup
 
     msg2 'Compiling...'
