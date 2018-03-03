@@ -2,11 +2,13 @@
 # Based on the DCP-J552DW PKGBUILD -> Marius Rejdak <mariuswol at gmail dot com>
 pkgname=brother-dcpj562dw
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for the Brother DCP-J562DW wifi multifunctional printer"
-url="http://solutions.brother.com/linux/en_us/index.html"
+url="http://support.brother.com/g/b/downloadlist.aspx?c=eu_ot&lang=en&prod=dcpj562dw_eu_as&os=127"
 license=('custom:brother')
-depends=('a2ps' 'cups')
+optdepends=('brscan4: scanner support'
+            'brscan-skey: remote scan support')
+makedepends=('bash')
 install='brother-dcpj562dw.install'
 arch=('i686' 'x86_64')
 
@@ -28,7 +30,6 @@ build() {
 package()
 {
     install -d "$pkgdir"/usr/bin
-    install -d "$pkgdir"/var/spool/lpd
     install -Dm755 "$srcdir"/usr/bin/brprintconf_dcpj562dw "$pkgdir"/usr/bin/
     cp -R "$srcdir"/opt "$pkgdir"/opt
 }

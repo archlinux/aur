@@ -1,14 +1,15 @@
 pkgbase = brother-dcpj562dw
 	pkgdesc = Driver for the Brother DCP-J562DW wifi multifunctional printer
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = http://solutions.brother.com/linux/en_us/index.html
+	pkgrel = 3
+	url = http://support.brother.com/g/b/downloadlist.aspx?c=eu_ot&lang=en&prod=dcpj562dw_eu_as&os=127
 	install = brother-dcpj562dw.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother
-	depends = a2ps
-	depends = cups
+	makedepends = bash
+	optdepends = brscan4: scanner support
+	optdepends = brscan-skey: remote scan support
 	source = fix_lp.patch
 	source = http://download.brother.com/welcome/dlf102101/dcpj562dwlpr-1.0.0-0.i386.rpm
 	source = http://download.brother.com/welcome/dlf102102/dcpj562dwcupswrapper-1.0.0-0.i386.rpm
