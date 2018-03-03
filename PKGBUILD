@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-escreen  
-pkgver=1.18
+pkgver=1.20
 pkgrel=1
 _emacs=emacs
 pkgdesc="Window configuration management for emacs"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('emacs')
 install=escreen.install
 source=(http://www.splode.com/~friedman/software/emacs-lisp/src/escreen.el dotemacs)
-md5sums=('51d8040fb0fa0ab6f8be7d6785cee0c0'
+md5sums=('43182159eeb5eb141fe3254eaf9fef22'
          '41c28902d9d9ff178e0048418af2b972')
 build() {
   cd $srcdir
