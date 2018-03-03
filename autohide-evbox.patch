@@ -1,3 +1,27 @@
+--- src/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml	2017-12-26 14:53:03.354809958 +0900
++++ src/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml.new	2018-01-21 23:41:18.703206040 +0900
+@@ -6,5 +6,10 @@
+ 			<summary>Sets if the panel uses transparency.</summary>
+ 			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
+ 		</key>
++		<key type="b" name="autohide">
++			<default>false</default>
++			<summary>Sets if the panel will autohide.</summary>
++			<description>Enable this to increase available desktop area and reduce clutter.</description>
++		</key>
+ 	</schema>
+ </schemalist>
+--- src/wingpanel/src/Services/Settings.vala	2017-12-26 14:53:03.354809958 +0900
++++ src/wingpanel/src/Services/Settings.vala.new	2018-01-21 23:46:25.919860486 +0900
+@@ -23,6 +23,8 @@
+ 
+         public bool use_transparency { get; set; }
+ 
++        public bool autohide { get; set; }
++
+         public PanelSettings () {
+             base ("org.pantheon.desktop.wingpanel");
+         }
 --- src/wingpanel/src/PanelWindow.vala	2017-06-01 02:18:32.090889031 +0900
 +++ src/wingpanel/src/PanelWindow.vala.patched	2017-06-01 02:11:40.814767918 +0900
 @@ -22,4 +22,9 @@
@@ -10,6 +34,14 @@
 +
      private int monitor_number;
      private int monitor_width;
+@@ -35,6 +35,7 @@
+     private bool expanded = false;
+     private int panel_displacement;
+     private uint shrink_timeout = 0;
++    private bool autohide = Services.PanelSettings.get_default ().autohide;
+ 
+     public PanelWindow (Gtk.Application application) {
+         Object (
 @@ -61,6 +61,9 @@
          update_visual ();
  
@@ -20,14 +52,16 @@
  
          panel = new Widgets.Panel (popover_manager);
          panel.realize.connect (on_realize);
-@@ -80,17 +83,35 @@
+@@ -80,17 +83,40 @@
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
  
 -        add (panel);
 +        box.add(panel);
-+        box.enter_notify_event.connect (reactivate);
-+        box.leave_notify_event.connect (on_idle);
++        if (autohide == true) {
++            box.enter_notify_event.connect (reactivate);
++            box.leave_notify_event.connect (on_idle);
++        }
 +
 +        add (box);
      }
@@ -39,8 +73,11 @@
          }
  
          panel_displacement--;
- 
+
++        if (autohide == false) { 
 -        update_panel_dimensions ();
++            update_panel_dimensions ();
++        }
 +        animate_panel ();
 +
 +        return true;

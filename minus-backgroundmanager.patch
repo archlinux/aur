@@ -54,9 +54,19 @@
 -    }
 +    } */
  }
---- src/wingpanel/src/Services/BackgroundManager.vala	2017-10-13 02:50:16.753650103 +0900
-+++ /dev/null	2017-10-13 01:49:26.502721048 +0900
-@@ -1,132 +0,0 @@
+--- src/wingpanel/src/CMakeLists.txt	2017-10-13 03:28:23.119421691 +0900
++++ src/wingpanel/src/CMakeLists.txt.new	2017-10-13 03:30:12.838158479 +0900
+@@ -10,7 +10,6 @@
+   Services/IndicatorSorter.vala
+   Services/PopoverManager.vala
+   Services/Settings.vala
+-  Services/BackgroundManager.vala
+ )
+ 
+ vala_precompile (CLIENT_VALA_C ${CMAKE_PROJECT_NAME}
+--- src/wingpanel/src/Services/BackgroundManager.vala	2018-03-04 00:30:27.781440874 +0900
++++ /dev/null	2018-03-03 20:05:09.041298375 +0900
+@@ -1,133 +0,0 @@
 -/*
 - * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
 - *
@@ -81,7 +91,8 @@
 -        LIGHT,
 -        DARK,
 -        MAXIMIZED,
--        TRANSLUCENT
+-        TRANSLUCENT_DARK,
+-        TRANSLUCENT_LIGHT
 -    }
 -
 -    [DBus (name = "org.pantheon.gala.WingpanelInterface")]
@@ -189,13 +200,3 @@
 -        }
 -    }
 -}
---- src/wingpanel/src/CMakeLists.txt	2017-10-13 03:28:23.119421691 +0900
-+++ src/wingpanel/src/CMakeLists.txt.new	2017-10-13 03:30:12.838158479 +0900
-@@ -10,7 +10,6 @@
-   Services/IndicatorSorter.vala
-   Services/PopoverManager.vala
-   Services/Settings.vala
--  Services/BackgroundManager.vala
- )
- 
- vala_precompile (CLIENT_VALA_C ${CMAKE_PROJECT_NAME}

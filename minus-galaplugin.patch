@@ -204,9 +204,9 @@
 -        return instance;
 -    }
 -}
---- src/wingpanel/wingpanel-interface/BackgroundManager.vala	2017-10-13 03:00:24.840092343 +0900
-+++ /dev/null	2017-10-13 01:49:26.502721048 +0900
-@@ -1,187 +0,0 @@
+--- src/wingpanel/wingpanel-interface/BackgroundManager.vala	2018-03-04 00:34:31.570427741 +0900
++++ /dev/null	2018-03-03 20:05:09.041298375 +0900
+@@ -1,200 +0,0 @@
 -/*
 - * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
 - *
@@ -230,7 +230,8 @@
 -    LIGHT,
 -    DARK,
 -    MAXIMIZED,
--    TRANSLUCENT
+-    TRANSLUCENT_DARK,
+-    TRANSLUCENT_LIGHT
 -}
 -
 -public class WingpanelInterface.BackgroundManager : Object {
@@ -378,15 +379,27 @@
 -        if (has_maximized_window) {
 -            new_state = BackgroundState.MAXIMIZED;
 -        } else if (bk_color_info == null) {
--            new_state = BackgroundState.TRANSLUCENT;
+-            new_state = BackgroundState.TRANSLUCENT_LIGHT;
 -        } else {
 -            var luminance_std = Math.sqrt (bk_color_info.luminance_variance);
--            
--            new_state = luminance_std > STD_THRESHOLD ||
+-
+-            bool bg_is_busy = luminance_std > STD_THRESHOLD ||
 -                (bk_color_info.mean_luminance < LUMINANCE_THRESHOLD &&
--                    bk_color_info.mean_luminance + 1.645 * luminance_std > LUMINANCE_THRESHOLD ) || 
--                bk_color_info.mean_acutance > ACUTANCE_THRESHOLD ? BackgroundState.TRANSLUCENT :
--                    bk_color_info.mean_luminance > LUMINANCE_THRESHOLD ? BackgroundState.DARK : BackgroundState.LIGHT;
+-                bk_color_info.mean_luminance + 1.645 * luminance_std > LUMINANCE_THRESHOLD ) ||
+-                bk_color_info.mean_acutance > ACUTANCE_THRESHOLD;
+-
+-            bool bg_is_dark = bk_color_info.mean_luminance > LUMINANCE_THRESHOLD;
+-            bool bg_is_busy_dark = bk_color_info.mean_luminance * 1.25 > LUMINANCE_THRESHOLD;
+-
+-            if (bg_is_busy && bg_is_busy_dark) {
+-                new_state = BackgroundState.TRANSLUCENT_DARK;
+-            } else if (bg_is_busy) {
+-                new_state = BackgroundState.TRANSLUCENT_LIGHT;
+-            } else if (bg_is_dark) {
+-                new_state = BackgroundState.DARK;
+-            } else {
+-                new_state = BackgroundState.LIGHT;
+-            } 
 -        }
 -
 -        if (new_state != current_state) {
@@ -639,8 +652,8 @@
 -    }
 -
 -}
---- src/wingpanel/wingpanel-interface/CMakeLists.txt	2017-10-13 03:17:01.659234024 +0900
-+++ /dev/null	2017-10-13 01:49:26.502721048 +0900
+--- src/wingpanel/wingpanel-interface/CMakeLists.txt	2018-03-04 00:44:38.725395035 +0900
++++ /dev/null	2018-03-03 20:05:09.041298375 +0900
 @@ -1,80 +0,0 @@
 -find_package (PkgConfig)
 -
@@ -707,7 +720,7 @@
 -)
 -
 -add_library (${WINGPANELINTERFACE} MODULE ${VALA_C})
--target_link_libraries(${WINGPANELINTERFACE} ${PLUGIN_LIBRARIES} ${PLUGIN_MUTTER_LIBRARIES})
+-target_link_libraries(${WINGPANELINTERFACE} ${PLUGIN_LIBRARIES} ${PLUGIN_MUTTER_LIBRARIES} m)
 -
 -# Add -rpath ldflag if libgala is using mutter >= 3.21 to pick up libmutter-*.so
 -if (MUTTER326_FOUND)
