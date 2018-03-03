@@ -39,14 +39,15 @@ prepare() {
 
   mkdir build
   cd build
-  export PYTHON=$(which python2)
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D WITH_PYTHON=ON "${srcdir}/${_realname}-${pkgver}"
+  cmake -D CMAKE_INSTALL_PREFIX=/usr \
+	-D WITH_PYTHON=ON \
+	-D PYTHON_EXECUTABLE=$(which python2) \
+	"${srcdir}/${_realname}-${pkgver}"
 
 }
 
 build() {
   cd "${srcdir}/build"
-  export PYTHON=$(which python2)
 
   make -j $(cat /proc/cpuinfo | grep -ci '^processor')
 }
