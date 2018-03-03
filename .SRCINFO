@@ -1,13 +1,15 @@
 pkgbase = hivex
 	pkgdesc = System for extracting the contents of Windows Registry.
-	pkgver = 1.3.14
-	pkgrel = 3
+	pkgver = 1.3.15
+	pkgrel = 1
 	url = http://libguestfs.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = python2
 	makedepends = ruby
+	makedepends = ruby-rake
+	makedepends = ruby-rdoc
 	makedepends = perl-io-stringy
 	makedepends = perl-test-simple
 	makedepends = ocaml-findlib
@@ -19,8 +21,8 @@ pkgbase = hivex
 	optdepends = ocaml: for ocaml bindings
 	options = !emptydirs
 	options = !libtool
-	source = http://libguestfs.org/download/hivex/hivex-1.3.14.tar.gz
-	md5sums = 9fb5ed4525d30a84b216a05150be1558
+	source = http://libguestfs.org/download/hivex/hivex-1.3.15.tar.gz
+	md5sums = 7ba11dd842cf8dae9adeace6d3e58efc
 
 pkgname = hivex
 
