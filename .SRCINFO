@@ -1,7 +1,7 @@
 pkgbase = mega-sdk
 	pkgdesc = Official mega.nz SDK
-	pkgver = 3.2.7
-	pkgrel = 2
+	pkgver = 3.3.2
+	pkgrel = 1
 	url = https://github.com/meganz/sdk
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = mega-sdk
 	depends = readline
 	depends = sqlite
 	depends = zlib
-	source = https://github.com/meganz/sdk/archive/v3.2.7.tar.gz
-	md5sums = 3d5ea4035d761178890fc26975a86cd2
+	source = https://github.com/meganz/sdk/archive/v3.3.2.tar.gz
+	md5sums = 81e544bccf6c41336363a5611af3fb6e
 
 pkgname = mega-sdk
 
