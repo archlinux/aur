@@ -1,5 +1,5 @@
 pkgname=groonga
-pkgver=7.0.9
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -37,5 +37,5 @@ package() {
 
     install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
 }
-sha1sums=('a24c6663ca405fa33decce66022d4f45a1f8eede'
+sha1sums=('aa7a24741d6286cc9eb7d5453ce91b5c6cc15366'
           '56b68b5ebfc6785f08ce101b263d6f56acd74d8a')
