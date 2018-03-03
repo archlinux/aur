@@ -1,0 +1,29 @@
+pkgbase = libreport-git
+	pkgdesc = Generic library for reporting various problems
+	pkgver = 155127e
+	pkgrel = 1
+	url = https://github.com/abrt/libreport
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = asciidoc
+	makedepends = python
+	makedepends = python2
+	depends = satyr
+	depends = augeas
+	depends = libtar
+	depends = libffi
+	depends = libnewt
+	depends = gtk3
+	depends = xmlto
+	depends = xmlrpc-c
+	depends = json-c
+	depends = nss
+	optdepends = python: python 3.x bindings
+	optdepends = python2: python 2.x bindings
+	source = git+https://github.com/abrt/libreport.git
+	sha256sums = SKIP
+
+pkgname = libreport-git
+
