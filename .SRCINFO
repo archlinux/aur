@@ -1,6 +1,6 @@
 pkgbase = smsync-git
 	pkgdesc = smsync (Smart Music Sync) is an easy-to-use command line application for Linux. It helps to keep huge music collections in sync and is also taking care of conversions between different formats
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://github.com/mipimipi/smsync/
 	arch = x86_64
