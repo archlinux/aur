@@ -1,0 +1,15 @@
+pkgbase = gst-plugin-qrcode
+	pkgdesc = QRCode decoder plugin for GStreamer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fabrixxm/gst-plugin-qrcode
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = gstreamer
+	depends = quirc
+	source = https://github.com/fabrixxm/gst-plugin-qrcode/archive/v0.1.1.tar.gz
+	md5sums = b4759fc6fbe1e9650279b691a3120254
+
+pkgname = gst-plugin-qrcode
+
