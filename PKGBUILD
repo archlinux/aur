@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=svg2vd
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Batch converter of SVG images to Android VectorDrawable XML resource files."
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/a-student/SvgToVectorDrawableConverter/releases/download/v${pkgver}/SvgToVectorDrawableConverter_v${pkgver}.zip")
-sha256sums=('371dde90e3c9bb82f2827786ddb4c3c0d6fdeecf9ff27385581d30995121eb6b')
+sha256sums=('956dddf9d8488ced7ced3f95c64f58d45aec59e2a7fb92069d7e3b2da5da7b15')
 
 package() {
     cd "${srcdir}/"
