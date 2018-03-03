@@ -3,9 +3,9 @@
 pkgname=can-utils
 pkgver=2018.02.0
 _pkgname=can-utils-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux-CAN / SocketCAN user space applications"
-arch=('x86_64')
+arch=('x86_64' 'armv6h')
 url="https://github.com/linux-can/can-utils"
 license=('GPLv2')
 conflicts=("can-utils-git")

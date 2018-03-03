@@ -1,9 +1,10 @@
 pkgbase = can-utils
 	pkgdesc = Linux-CAN / SocketCAN user space applications
 	pkgver = 2018.02.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
+	arch = armv6h
 	license = GPLv2
 	conflicts = can-utils-git
 	source = can-utils-2018.02.0.tar.gz::https://github.com/linux-can/can-utils/archive/v2018.02.0.tar.gz
