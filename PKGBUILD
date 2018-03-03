@@ -12,21 +12,21 @@ depends=('wxgtk2' 'python2')
 makedepends=('mesa' 'glu')
 provides=('wxpython')
 conflicts=('wxpython')
-source=("https://downloads.sourceforge.net/wxpython/wxPython-src-${pkgver}.tar.bz2"
+source=("https://github.com/wxWidgets/wxPython/archive/wxPy-${pkgver}.tar.gz"
         "fix-plot.patch")
-sha256sums=('d54129e5fbea4fb8091c87b2980760b72c22a386cb3b9dd2eebc928ef5e8df61'
+sha256sums=('b068d76e9773c5b0cb0620a66827fca35b8ab9364a2fc8b865ef125720b26afc'
             '2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65')
 
 prepare() {
     find . -type f -exec sed -i 's/env python/env python2/' {} \;
 
-    cd wxPython-src-${pkgver}/wxPython
+    cd wxPython-wxPy-${pkgver}/wxPython
     # Fix plot library (FS#42807)
     patch -Np1 -i ../../fix-plot.patch
 }
 
 build() {
-    cd wxPython-src-${pkgver}
+    cd wxPython-wxPy-${pkgver}
     ./configure \
         --prefix=/usr \
         --libdir=/usr/lib \
@@ -43,11 +43,12 @@ build() {
         --with-libtiff=sys
 #        --with-wx-config=/usr/bin/wx-config-gtk3
     cd wxPython
+    bin/subrepos-make
     python2 setup.py WXPORT=gtk2 UNICODE=1 build
 }
 
 package() {
-    cd wxPython-src-${pkgver}/wxPython
+    cd wxPython-wxPy-${pkgver}/wxPython
     python2 setup.py WXPORT=gtk2 UNICODE=1 install --root="${pkgdir}"
     install -Dm644 ../docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

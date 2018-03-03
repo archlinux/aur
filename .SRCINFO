@@ -11,9 +11,9 @@ pkgbase = wxpython-gtk2
 	depends = python2
 	provides = wxpython
 	conflicts = wxpython
-	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
+	source = https://github.com/wxWidgets/wxPython/archive/wxPy-3.0.2.0.tar.gz
 	source = fix-plot.patch
-	sha256sums = d54129e5fbea4fb8091c87b2980760b72c22a386cb3b9dd2eebc928ef5e8df61
+	sha256sums = b068d76e9773c5b0cb0620a66827fca35b8ab9364a2fc8b865ef125720b26afc
 	sha256sums = 2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65
 
 pkgname = wxpython-gtk2
