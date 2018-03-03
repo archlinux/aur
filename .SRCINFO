@@ -1,7 +1,7 @@
 pkgbase = electroneum
 	pkgdesc = Secure, private, mobile based cryptocurrency
-	pkgver = 0.11.1.0
-	pkgrel = 1
+	pkgver = 0.11.0.0.revert
+	pkgrel = 2
 	url = https://electroneum.com
 	arch = any
 	license = custom
@@ -15,8 +15,8 @@ pkgbase = electroneum
 	optdepends = expat: XML parsing
 	optdepends = doxygen: documentation
 	optdepends = graphviz: documentation
-	source = https://github.com/electroneum/electroneum/archive/v0.11.1.0.tar.gz
-	md5sums = 368005dbbd07fa8b0a90f8b9efda4ff2
+	source = https://github.com/electroneum/electroneum/archive/v0.11.0.0-revert.tar.gz
+	md5sums = ecaa9b3aaa47db4b45c1d6ab4b3274b9
 
 pkgname = electroneum
 

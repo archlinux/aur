@@ -1,15 +1,15 @@
 # Maintainer: Tim Diels <timdiels.m@gmail.com>
 
 pkgname=electroneum
-pkgver=0.11.1.0
-pkgrel=1
+pkgver=0.11.0.0.revert
+real_pkgver=0.11.0.0-revert
+pkgrel=2
 pkgdesc='Secure, private, mobile based cryptocurrency '
 arch=('any')
 url='https://electroneum.com'
 license=('custom')
 makedepends=('cmake')
 depends=('boost' 'openssl' 'unbound')
-#checkdepends=('gtest')
 optdepends=(
     'miniupnpc: NAT punching'
     'libunwind: stack traces'
@@ -18,24 +18,18 @@ optdepends=(
     'doxygen: documentation'
     'graphviz: documentation'
 )
-source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('368005dbbd07fa8b0a90f8b9efda4ff2')
+source=("https://github.com/$pkgname/$pkgname/archive/v$real_pkgver.tar.gz")
+md5sums=('ecaa9b3aaa47db4b45c1d6ab4b3274b9')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$real_pkgver"
     # Note: plain make fails with undeclared DIFFICULTY_TARGET_V1
     # make release-static fails when compiling with e.g. -j8
     make -j1 release-static
 }
 
-# Tests always fail due to DIFFICULT_TARGET_V1 error, so we don't run them
-#check() {
-#    cd "$pkgname-$pkgver"
-#    #make release-test
-#}
-
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$real_pkgver"
     # Note: make has no install target. Static build means we don't need to
     # install lib.
     install -dm755 "$pkgdir/usr/bin/"
