@@ -1,8 +1,8 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
 pkgname=deken-git
 _pkgname=deken
-pkgver=v0.2.6.r125.gcb599c6
-pkgrel=2
+pkgver=v0.2.6.r129.g33a15cb
+pkgrel=1
 epoch=
 pkgdesc="Externals wrangler for Pure Data"
 arch=('any')
@@ -22,21 +22,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/pure-data/$_pkgname"
-        'hy-0.14.diff')
-md5sums=('SKIP'
-         '9f6911515de9a79f81a0f385aed1f772')
+source=("git+https://github.com/pure-data/$_pkgname")
+md5sums=('SKIP')
 noextract=()
 validpgpkeys=()
 
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-  patch -Np1 -i "$srcdir"/hy-0.14.diff
 }
 
 package() {
