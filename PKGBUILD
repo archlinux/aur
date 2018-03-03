@@ -1,29 +1,28 @@
-# Maintainer:
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Sabart Otto - Seberm <seberm[at]gmail[dot].com
 
 pkgname=ttyqr-git
 pkgver=r5.56f7658
-pkgrel=1
+pkgrel=2
 pkgdesc="Draw QR codes straight into the terminal"
 url="https://github.com/oskar456/ttyqr"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 depends=('qrencode')
 makedepends=('git')
-source=("git+https://github.com/oskar456/ttyqr.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/oskar456/ttyqr.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${pkgname%-git}
-  gcc $CFLAGS $CPPFLAGS -std=c99 -o ttyqr -lqrencode $LDFLAGS ttyqr.c
+  make -C "$pkgname"
 }
 
 package() {
-  cd ${pkgname%-git}
-  install -Dm755 ttyqr "${pkgdir}"/usr/bin/ttyqr
+  cd "$pkgname"
+  install -Dm 0755 ttyqr "$pkgdir/usr/bin/ttyqr"
 }

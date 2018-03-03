@@ -3,13 +3,12 @@ pkgbase = ttyqr-git
 	pkgver = r5.56f7658
 	pkgrel = 1
 	url = https://github.com/oskar456/ttyqr
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qrencode
 	source = git+https://github.com/oskar456/ttyqr.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ttyqr-git
 
