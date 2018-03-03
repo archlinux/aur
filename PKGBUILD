@@ -109,7 +109,8 @@ then
         "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
         "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
     )
-    conflicts=('wine' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine')
+    conflicts=('wine' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-staging-lutris-git')
+	replaces=('wine-staging-lutris-git')
 else
 	makedepends=("${makedepends[@]}" "${_depends[@]}")
 	provides=(
@@ -119,8 +120,8 @@ else
 		"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
 		"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
 	)
-	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-wow64' 'bin32-wine')
-	replaces=('bin32-wine')
+	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-wow64' 'bin32-wine' 'wine-staging-lutris-git')
+	replaces=('bin32-wine' 'wine-staging-lutris-git')
 fi 
 
 prepare() {
