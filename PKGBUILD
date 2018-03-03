@@ -1,11 +1,12 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite-git"
 pkgver=r45.ece430f
-pkgrel=3
+pkgrel=4
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
 url="www.github.com/hnicke/sodalite"
 license=('GPL')
+conflicts=('sodalite')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-npyscreen-git' 'sqlite' )
 source=('git+https://github.com/hnicke/sodalite.git')
