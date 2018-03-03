@@ -35,22 +35,24 @@ sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e4
 
 
 prepare() {
-  cd "${srcdir}"
+  cd "${srcdir}/${_realname}-${pkgver}"
 
   mkdir build
   cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D WITH_PYTHON=ON -D PYTHON_EXECUTABLE=$(which python2) "${srcdir}/${_realname}-${pkgver}" | tee log.log
+  export PYTHON=$(which python2)
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D WITH_PYTHON=ON ../
 
 }
 
 build() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${_realname}-${pkgver}/build"
+  export PYTHON=$(which python2)
 
   make -j $(cat /proc/cpuinfo | grep -ci '^processor')
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${_realname}-${pkgver}/build"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
