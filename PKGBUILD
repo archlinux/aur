@@ -2,7 +2,7 @@
 # Contributor: Sebastian Krebs <sebastian[at]krebs[dot]one>
 
 pkgname=telegraf-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,11 +13,11 @@ backup=('etc/telegraf/telegraf.conf')
 install=telegraf.install
 
 source_i686=(telegraf-${pkgver}.tar.gz::"https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_i386.tar.gz")
-md5sums_i686=('f3815a4d748fc71eb4a6dd8a6f027e66')
+md5sums_i686=('240f447271635c72dc1bc98a590bd107')
 source_x86_64=(telegraf-${pkgver}.tar.gz::"https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_amd64.tar.gz")
-md5sums_x86_64=('e8647bb3f0d0e898b4a904953fdf1e22')
+md5sums_x86_64=('eeacef838e856bb0f036750fa43dcd52')
 source_armv6h=(telegraf-${pkgver}.tar.gz::"https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_armhf.tar.gz")
-md5sums_armv6h=('338850785ff33a4f7b686289abd25d29')
+md5sums_armv6h=('e7918184c2a934140220fe57a78730ae')
 source_armv7h=(telegraf-${pkgver}.tar.gz::"https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_armhf.tar.gz")
 md5sums_armv7h=('338850785ff33a4f7b686289abd25d29')
 source=('telegraf.sysusers' 'telegraf.tmpfiles' 'LICENSE')
