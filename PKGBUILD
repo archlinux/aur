@@ -2,7 +2,7 @@
 #Contributor: Dmitry Batenkov <dima dot batenkov at gmail dot com>
 
 pkgname=rabbitvcs-thunar
-pkgver=0.17
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Thunar front-end for RabbitVCS"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://rabbitvcs.org/"
 depends=('thunar>=0.4.0' 'thunarx-python>=0.2.0' 'dbus-python>=0.80' "rabbitvcs>=${pkgver}")
 license=('GPL')
 source=(https://github.com/rabbitvcs/rabbitvcs/archive/v${pkgver}.tar.gz)
-md5sums=('a3c3104375e4b309b98613834dba61ec')
+md5sums=('95b7c30945f10333588a39b5f6766136')
 package(){
   cd ${srcdir}/rabbitvcs-${pkgver}
   mkdir -p $pkgdir/usr/lib/thunarx-2/python
