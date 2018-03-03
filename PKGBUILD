@@ -2,8 +2,8 @@
 
 _name=hidapi-cffi
 pkgname=python-$_name
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="CFFI wrapper for hidapi"
 arch=('any')
 url="https://pypi.python.org/pypi/$_name/"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python' 'python-cffi')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('02ef3c8c387834ace30a1ec9c41df06f4df71fe6372124c253029e3a94304064a8d1e22a67b8a14fc913b3acfe2eb5384b41cffd212a77982efeaddfb3e830d3')
+sha512sums=('e72ca5050dc1d877ad28e1bab46fadd94ada3ba2e2c8b0b4c3a40559f982a36f41018ff068c6c0c9c3d74e61f59e7bc6130e1b34be3d97f1d8cd30065c072070')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
