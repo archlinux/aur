@@ -1,0 +1,14 @@
+pkgbase = python-lark
+	pkgdesc = A modern parsing library for Python, implementing Earley & LALR(1) and an easy interface
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/erezsh/lark
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lark-parser/lark-parser-0.5.4.tar.gz
+	sha256sums = 8e0b2d0d210b6debc2211c1c7bf4649cb6ccf1b3328ec8f62049e4ab8a13bcd1
+
+pkgname = python-lark
+
