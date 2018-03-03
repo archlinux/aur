@@ -1,15 +1,15 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=uno
-pkgver=2.13
-pkgrel=2
+pkgver=2.14
+pkgrel=1
 pkgdesc="A simple tool for source code analysis, for ANSI-C programs."
 arch=('i686' 'x86_64')
 url="http://spinroot.com/uno/"
 license=('custom')
 source=("http://www.spinroot.com/uno/${pkgname}_v${pkgver//./}.tar.gz")
-md5sums=('96ef927107462b2b22da3adc4cae71c6')
-sha1sums=('299b810cb213a23d81c2abb24a6b13e6eec3617d')
-sha256sums=('c688a5f7c68ba4b7c0907c6c2603703535c37b99b2a3927a391bd48c43d7bcbe')
+md5sums=('c393358e9c12438f776aa2da7d8b7ec3')
+sha1sums=('5da48c5d02c5b8c77bfb40c49b783652dab64a33')
+sha256sums=('a3b897350988e94a9727babe6b794b67b558f18b0766bbcb344e8db30b0fe5d3')
 
 build() {
   cd "$srcdir/$pkgname/src"
@@ -25,5 +25,7 @@ package() {
   install -Dm644 ../doc/uno_short.pdf $pkgdir/usr/share/doc/$pkgname/uno_short.pdf
   install -Dm644 ../doc/uno_man.pdf $pkgdir/usr/share/doc/$pkgname/uno_man.pdf
   install -Dm644 ../doc/uno_manpage.pdf $pkgdir/usr/share/doc/$pkgname/uno_manpage.pdf
+  sed '3,9!d' uno.c > COPYING
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
