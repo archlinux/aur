@@ -2,7 +2,7 @@
 
 _name='git-praise'
 pkgname='praise'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=2
 pkgdesc='A nicer git blame'
 url='https://github.com/sigvef/git-praise'
@@ -13,7 +13,7 @@ depends=('python' 'python-gitpython' 'python-pygments' 'python-click'
 provides=("${pkgname}=${pkgver}")
 # https://github.com/sigvef/git-praise/archive/v1.2.0.tar.gz
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3aacd1b2795d9e84980a642ff7eac9163eed98b61f9b1d33d2d0f18f3e83366b')
+sha256sums=('a29879edf9b976f700df4f588667580d37bd4f1602605b255948f84fa8049ff3')
 
 # Enable for tests
 check() {
