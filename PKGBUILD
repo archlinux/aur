@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <fatmike303@gmail.com>
 pkgname=advancemame
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial MAME/MESS version with an advanced video support for use with TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.advancemame.it"
@@ -26,9 +26,9 @@ sha256sums=(
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   if [ "$CARCH" == 'armv7h' ]; then # Do not link SDL into Raspberry Pi build
-    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char" --prefix=/usr --disable-sdl --disable-sdl2
+    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char -fno-stack-protector" --prefix=/usr --disable-sdl --disable-sdl2
   else
-    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char" --prefix=/usr
+    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char -fno-stack-protector" --prefix=/usr
   fi
   make || return 1
 }
