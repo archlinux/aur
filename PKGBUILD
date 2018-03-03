@@ -1,4 +1,5 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
 pkgver="0.17.2"
