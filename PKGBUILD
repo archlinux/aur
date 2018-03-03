@@ -2,7 +2,7 @@
 
 _name=sshtunnel
 pkgname=python-$_name
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Pure python SSH tunnels"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-paramiko')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('e99dbebe0b643f6d68b26ed434f3acd9')
+md5sums=('4a6fce36dec45ebff11422565303b9c2')
 
 build() {
   cd "$_name-$pkgver"
