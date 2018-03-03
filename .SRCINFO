@@ -1,7 +1,7 @@
 pkgbase = doomseeker
 	pkgdesc = A cross-platform Doom server browser
 	pkgver = 1.2
-	pkgrel = 20180228
+	pkgrel = 20180303
 	url = http://doomseeker.drdteam.org/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,17 @@ pkgbase = doomseeker
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = make
+	makedepends = mercurial
 	depends = qt4
 	depends = zlib
 	depends = bzip2
+	depends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
 	optdepends = zandronum2: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
-	source = hg+ssh://hg@bitbucket.org/Doomseeker/doomseeker
+	source = hg+https://bitbucket.org/Doomseeker/doomseeker#revision=5aaddc0
 	source = doomseeker.desktop
 	source = doomseeker-launch-script.sh
 	sha256sums = SKIP
