@@ -3,7 +3,7 @@
 
 pkgname=razercommander
 _pkgname=razerCommander
-pkgver=1.2.1.1
+pkgver=1.2.1.2
 pkgrel=1
 pkgdesc='Razer device manager for Linux'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python-openrazer' 'gtk3' 'python')
 makedepends=('meson')
 source=("razercommander-$pkgver.tar.gz::https://github.com/GabMus/razerCommander/archive/$pkgver.tar.gz")
-sha512sums=('2904f934d75e3336f1bbe2e90f570feae282bab423abcde6598e4af035489147293ba1efb0631d6af666565631116129489ae059dc3188e2f2237fda638f164b')
+sha512sums=('3eabe79ee8b0f625aaf567b6d5707aadd1fbba3cc0840a8cabe12c0dd2f0617ea7b2aa328366a88c07bd5cadf5fd228f74512d6a0df2a98474a4d88e98431c54')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
