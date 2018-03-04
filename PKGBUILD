@@ -1,16 +1,16 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=xmlcopyeditor
 pkgver=1.2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="XML editor based on Scintilla."
 arch=('i686' 'x86_64')
 url="http://xml-copy-editor.sourceforge.net"
 license=('custom')
-depends=('wxgtk' 'libxslt' 'xerces-c' 'enchant' 'desktop-file-utils')
+depends=('wxgtk' 'libxslt' 'xerces-c' 'enchant=1.6.1')
 makedepends=('boost' 'intltool')
 install="xmlcopyeditor.install"
-source=(http://downloads.sourceforge.net/xml-copy-editor/$pkgname-$pkgver.tar.gz) 
-md5sums=('b8ec66bbf41d6dd10ffe704e5b5f4b5e')
+source=(https://sourceforge.net/projects/xml-copy-editor/files/$pkgname-linux/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('9b684b5042b4af85d3626fd55108bd1d63c0007b5c794ef7cc4b026012b29d2f')
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr
@@ -29,3 +29,4 @@ package() {
   install -d $pkgdir/usr/share/licenses/$pkgname
   cp -R $srcdir/$pkgname-$pkgver/src/copying/* $pkgdir/usr/share/licenses/$pkgname
 }
+
