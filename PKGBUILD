@@ -3,7 +3,7 @@
 # Contributor: scan
 
 pkgname=obsidian-2-theme-git
-pkgver=v2.3.1.r0.g674abd0
+pkgver=2.3.1.r0.g674abd0
 pkgrel=1
 pkgdesc="Obsidian 2 theme for Gnome 3.22+"
 arch=('any')
@@ -21,8 +21,8 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
