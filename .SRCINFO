@@ -1,0 +1,19 @@
+pkgbase = rofi-twitch
+	pkgdesc = rofi-based launcher for Twitch streams
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = rofi
+	depends = streamlink
+	depends = python-requests
+	options = !strip
+	source = rofi-twitch
+	source = rofi-twitch.desktop
+	source = rofi-twitch.png
+	sha1sums = 30fd3bb07d37917d7d9d2f1709344525d91801e3
+	sha1sums = 97bafd654648421e7437d7ee113e5411e5f79212
+	sha1sums = ca4eeea9f1b3671fe231853639672bffa9be7d82
+
+pkgname = rofi-twitch
+

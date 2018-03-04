@@ -1,0 +1,202 @@
+#!/usr/bin/env python
+
+from collections import defaultdict
+import requests
+import subprocess
+import sys
+
+s = requests.session()
+s.headers['Client-ID'] = 'jnx6yo007d0ota439ikx5g8v26qzr8'
+s.headers['User-agent'] = 'rofi-twitch v1.0 (compatible)'
+
+MANY_RESULTS = 100
+FEW_RESULTS = 10
+
+CACHE = defaultdict(list)
+
+
+def rofi(*args, body=None, prompt='', msg=''):
+    if prompt:
+        prompt += ' '
+    args = [
+        'rofi', '-dmenu', '-i', '-no-auto-select', '-p', prompt + '❯', '-mesg',
+        msg, *args
+    ]
+    p = subprocess.run(
+        args, input=body or None, stdout=subprocess.PIPE, encoding='utf-8')
+    return p.returncode, p.stdout.strip()
+
+
+def message(msg):
+    subprocess.run(['rofi', '-e', "rofi-twitch\n\n" + msg])
+
+
+def req(url, **kwargs):
+    p = s.get('https://api.twitch.tv/' + url, params=kwargs)
+    p.raise_for_status()
+    return p.json()
+
+
+def cached(key, getter, *args):
+    key += '\0'.join(map(str, args))
+    data = CACHE[key]
+    if data:
+        return data
+    data = CACHE[key] = getter(*args)
+    return data
+
+
+def game_list():
+    def getter():
+        return req('helix/games/top', first=MANY_RESULTS)['data']
+
+    games = cached('games', getter)
+    if not games:
+        message("No games found. No connectivity? Twitch API broken?")
+        return exit, 1
+
+    gamestr = '\n'.join(g['name'] for g in games)
+    rc, gid = rofi(
+        '-no-custom',
+        '-format',
+        'i',
+        '-kb-custom-1',
+        'F2',
+        '-kb-custom-2',
+        'F3',
+        body=gamestr,
+        msg="F2: search games ⋅ F3: search streams")
+    if rc == 10:
+        return game_search,
+    if rc == 11:
+        return stream_search,
+    if rc != 0:
+        return
+    try:
+        game = games[int(gid)]
+        return stream_list, game['id'], game['name']
+    except (KeyError, ValueError):
+        pass
+
+
+def game_search():
+    rc, query = rofi(prompt="Search games")
+    if rc != 0:
+        return
+
+    def getter(query):
+        return req(
+            'kraken/search/games',
+            query=query,
+            type='suggest',
+            limit=FEW_RESULTS)['games']
+
+    games = cached('gsearch', getter, query)
+    if not games:
+        message(f"No game matching “{query}”.")
+        return game_search,
+
+    gamestr = '\n'.join(g['localized_name'] for g in games)
+    rc, gid = rofi('-no-custom', '-format', 'i', body=gamestr)
+    if rc != 0:
+        return
+    try:
+        game = games[int(gid)]
+        return stream_list, game['_id'], game['localized_name']
+    except (KeyError, ValueError):
+        pass
+
+
+def stream_search(input=''):
+    rc, query = rofi(prompt="Search streams")
+    if rc != 0:
+        return
+
+    def getter(query):
+        return req(
+            'kraken/search/streams',
+            type='suggest',
+            query=query,
+            limit=FEW_RESULTS)['streams']
+
+    streams = cached('ssearch', getter, query)
+    if not streams:
+        message(f"No stream matching “{query}”.")
+        return stream_search,
+
+    streamstr = '\n'.join(f"{s['viewers']:>7,d} "
+                          f"{s['channel']['display_name']:<22s} "
+                          f"⋅ {s['game']:<22s} "
+                          f"⋅ {s['channel']['status']}" for s in streams)
+    rc, sid = rofi('-no-custom', '-format', 'i', body=streamstr)
+    if rc != 0:
+        return
+    try:
+        return launch_stream, streams[int(sid)]['channel']['name']
+    except (KeyError, ValueError):
+        pass
+
+
+def stream_list(game_id, game_name):
+    def getter(game_id):
+        return req(
+            'helix/streams', type='live', game_id=game_id,
+            first=MANY_RESULTS)['data']
+
+    streams = cached('streams', getter, game_id)
+    if not streams:
+        message(f"No stream for {game_name}.")
+        return
+
+    def user_getter(ids):
+        return req('helix/users', id=ids)['data']
+
+    ids = [s['user_id'] for s in streams]
+    users = {u['id']: u for u in cached('users', user_getter, ids)}
+    sstr = '\n'.join(f"{s['viewer_count']:>7,d} "
+                     f"{users[s['user_id']]['display_name']:<22s} "
+                     f"⋅ {s['title']}" for s in streams)
+    rc, sid = rofi(
+        '-no-custom',
+        '-format',
+        'i',
+        body=sstr,
+        msg=f"Top streams for {game_name}")
+    if rc != 0:
+        return
+    try:
+        return launch_stream, users[streams[int(sid)]['user_id']]['login']
+    except (KeyError, ValueError):
+        pass
+
+
+def launch_stream(user):
+    link = f'https://www.twitch.tv/{user}'
+    streamlink = ['streamlink', link, 'best']
+    subprocess.run(['i3-msg', 'exec', ' '.join(streamlink)])
+    message(f"Starting streamlink for {link}. Enjoy!")
+    return exit,
+
+
+def exit(code=0):
+    sys.exit(code)
+
+
+def main():
+    state = [(game_list, )]
+
+    while state:
+        func, *args = state[-1]
+        ret = func(*args)
+        if ret is None:
+            # back
+            state.pop(-1)
+        else:
+            newfunc, *newargs = ret
+            # don't stack the same func twice
+            if newfunc != func:
+                state.append(ret)
+
+
+if __name__ == '__main__':
+    main()

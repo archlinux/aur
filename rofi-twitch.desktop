@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Twitch
+Comment=rofi-based launcher for Twitch streams
+Exec=/usr/bin/rofi-twitch
+Icon=rofi-twitch
+Type=Application
+
