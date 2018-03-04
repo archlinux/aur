@@ -1,7 +1,7 @@
 pkbase=python-speechrecognition
 pkgname=('python-speechrecognition' 'python2-speechrecognition')
 _pkgname=speech_recognition
-pkgver=3.7.1
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
 makedepends=('flac' 'python-setuptools' 'python2-setuptools' 'python-pyaudio' 'python2-pyaudio' 'python-pocketsphinx' 'python2-pocketsphinx' 'python2-monotonic')
 source=("https://github.com/Uberi/speech_recognition/archive/${pkgver}.tar.gz")
-sha256sums=('2caafe07a1557a77f9e0bb38e1a05f6cd48a52486b91d51c720fcead9202e33f')
+sha256sums=('82d3313db383409ddaf3e42625fb0c3518231a1feb5e2ed5473b10b3d5ece7bd')
 
 prepare () {
   cp -r "$srcdir"/$_pkgname-$pkgver "$srcdir"/$_pkgname-$pkgver-py2
