@@ -1,4 +1,4 @@
-# Maintainer: Anna Ivanova <kalterfx@gmail.com>
+# Maintainer: Akrai <drokergeek@gmail.com>
 
 pkgname=systemd-guest-user
 pkgver=13.7db882f
