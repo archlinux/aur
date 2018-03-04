@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-markdown
 _releasename=files_markdown
-pkgver=2.0.1
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Extends the Nextcloud text editor with a live preview for markdown files"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
     cp --no-preserve=owner -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('c95dbcd2a470262973c7f19b3445a82717acaa7702579f57167842596b04e7a4')
+sha256sums=('78958cd743e101251dea70a262646250ea78318c2546f088f8ea89b586507565')
