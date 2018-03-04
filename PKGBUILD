@@ -1,7 +1,8 @@
 # Contributor: Jesse Juhani Jaara <gmail.com: jesse.jaara>
 
 pkgname=mingw-w64-pugixml
-pkgver=1.8
+_majordotminor=1.8
+pkgver=${_majordotminor}.1
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++ with XPath support (mingw-w64)"
 arch=('any')
@@ -12,11 +13,11 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://github.com/zeux/pugixml/releases/download/v${pkgver}/pugixml-${pkgver}.tar.gz")
 sha256sums=('8ef26a51c670fbe79a71e9af94df4884d5a4b00a2db38a0608a87c14113b2904')
-
+sha256sums=('00d974a1308e85ca0677a981adc1b2855cb060923181053fb0abf4e2f37b8f39')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/pugixml-${pkgver}"
+  cd "${srcdir}/pugixml-${_majordotminor}"
   for _arch in ${_architectures}; do
 
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
@@ -38,10 +39,10 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/pugixml-${pkgver}/build-${_arch}-static"
+    cd "${srcdir}/pugixml-${_majordotminor}/build-${_arch}-static"
     make install DESTDIR="$pkgdir"
     
-    cd "${srcdir}/pugixml-${pkgver}/build-${_arch}"
+    cd "${srcdir}/pugixml-${_majordotminor}/build-${_arch}"
     make install DESTDIR="$pkgdir"
 
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
