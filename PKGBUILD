@@ -2,7 +2,7 @@
 
 pkgbase=python-mamba
 pkgname=('python-mamba' 'python2-mamba')
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-clint' 'python2-cl
              'python-coverage' 'python2-coverage' 'python-watchdog' 'python2-watchdog')
 checkdepends=('python-doublex-expects' 'python2-doublex-expects')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/nestorsalceda/mamba/archive/v$pkgver.tar.gz")
-sha512sums=('37a3e453fae7c17892b680a940ab0f4d9120021751f9b4e4e030221b0fe2c3f536a99a0f896d075f0923a3ae2b96b7798e44eb4b64807695ba86258657a029d8')
+sha512sums=('3f9999233a0f7d76f918148d1aa6f994f2ac460cd60df60468ca3bf831e0590fe2169a56bbdae88b4386e45f4df64cefa4c3b5e153cf859a0275d3e2edf768b3')
 
 prepare() {
   cp -a mamba-$pkgver{,-py2}
