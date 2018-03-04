@@ -3,12 +3,12 @@
 pkgname=systemd-guest-user
 pkgver=13.7db882f
 pkgrel=1
-url='https://github.com/kalterfive/systemd-guest-user'
+url='https://github.com/a-m-s/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
 arch=(any)
 license=(GPL3)
 depends=(systemd)
-source=("${pkgname}::git://github.com/kalterfive/$pkgname")
+source=("${pkgname}::git://github.com/a-m-s/$pkgname")
 md5sums=(SKIP)
 
 function pkgver() {
