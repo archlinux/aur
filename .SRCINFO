@@ -22,7 +22,6 @@ pkgbase = polybar-git
 	optdepends = libmpdclient: mpd module support
 	optdepends = wireless_tools: network module support
 	optdepends = jsoncpp: i3 module support
-	optdepends = i3ipc-glib-git: i3 module support
 	optdepends = ttf-unifont: Font used in example config
 	optdepends = siji-git: Font used in example config
 	optdepends = curl: github module support
