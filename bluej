@@ -1,6 +1,5 @@
 #!/bin/sh
 java -Djavafx.embed.singleThread=true \
         -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/bluej/bluej.jar:/usr/lib/jvm/$(archlinux-java get)/lib/tools.jar \
-        bluej.Boot \
+        -cp /opt/bluej/bluej.jar:/usr/lib/jvm/default/lib/tools.jar bluej.Boot \
         "$@"
