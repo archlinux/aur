@@ -2,7 +2,7 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 pkgname=kitty
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('imagemagick: viewing images with icat')
 provides=('kitty')
 conflicts=('kitty' 'kitty-git')
 source=("https://github.com/kovidgoyal/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d21c0837f480643c45ad4f75b5c37259')
+md5sums=('d4fd1ed4703894edaded54a752994ff8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
