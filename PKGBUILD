@@ -2,8 +2,8 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=leao
-pkgver=2017.1.0
-pkgrel=2
+pkgver=2018.1.0
+pkgrel=1
 license=('custom')
  
 arch=(any)
@@ -11,14 +11,16 @@ pkgdesc='O Carnê-leão é o programa para a tributação do Imposto sobre a Ren
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2017/carne-leao/LEAO2017v1.0.zip
-        $pkgname.png
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/carne-leao/LEAO2018v1.0.zip
+	$pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
+
+noextract=(LEAO2018v1.0.zip)
  
 
-md5sums=('2c68ac1ad195f129c54ace1387a41829'
+md5sums=('584a72244dd343e19986cab77c5e69ba'
          '725dc07b10c6debced300e9aa106e8fa'
          'f676220f7e42fd6ae2cd7172cd5807f9'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
@@ -26,12 +28,17 @@ md5sums=('2c68ac1ad195f129c54ace1387a41829'
  
 depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
+makedepends=('unzip')
+
 install=$pkgname.install
- 
+
+prepare() {
+  unzip LEAO2018v1.0.zip
+} 
  
 package() {
-        cd "$srcdir"/LEAO2017
-        rm -f LEAO2017.exe
+        cd "$srcdir"/LEAO2018
+        rm -f LEAO2018.exe
 		rm -f exec.sh
 		rm -f Leia_me.htm
 		rm -f exec.bat
