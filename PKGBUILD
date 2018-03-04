@@ -1,7 +1,7 @@
 # Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
 
 pkgname=faience-ng-icon-theme-git
-pkgver=v20180126.r0.g6fbf798
+pkgver=20180217.r0.g15c909e
 pkgrel=1
 pkgdesc="Continued development of Faenza\Faience Icon Theme"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = faience-ng-icon-theme-git
 	pkgdesc = Continued development of Faenza\Faience Icon Theme
-	pkgver = v20180126.r0.g6fbf798
+	pkgver = 20180217.r0.g15c909e
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1210208/
 	arch = any
