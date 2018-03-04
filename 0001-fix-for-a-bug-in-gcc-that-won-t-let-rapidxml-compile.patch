@@ -7,10 +7,10 @@ Subject: [PATCH] fix for a bug in gcc that won't let rapidxml compile on clang
  rapidxml_print.hpp | 14 ++++++++++++++
  1 file changed, 14 insertions(+)
 
-diff --git a/rapidxml-1.13/rapidxml_print.hpp b/rapidxml-1.13/rapidxml_print.hpp
+diff --git a/RapidXml/rapidxml_print.hpp b/RapidXml/rapidxml_print.hpp
 index d03d5f5..7ef305e 100755
---- a/rapidxml-1.13/rapidxml_print.hpp
-+++ b/rapidxml-1.13/rapidxml_print.hpp
+--- a/RapidXml/rapidxml_print.hpp
++++ b/RapidXml/rapidxml_print.hpp
 @@ -102,6 +102,20 @@ namespace rapidxml
          ///////////////////////////////////////////////////////////////////////////
          // Internal printing operations
