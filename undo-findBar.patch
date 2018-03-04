@@ -29,20 +29,9 @@ diff --git a/remarkable/RemarkableWindow.py b/remarkable/RemarkableWindow.py
 index 71cab5c..fb8c5af 100644
 --- a/remarkable/RemarkableWindow.py
 +++ b/remarkable/RemarkableWindow.py
-@@ -36,11 +36,11 @@ import pdfkit
- import re, subprocess, datetime, os, webbrowser, _thread, sys, locale
- import tempfile
- import traceback
--import styles
-+from remarkable import styles
- import unicodedata
- import warnings
+@@ -42,2 +42,1 @@
  import datetime
 -from findBar import FindBar
-+
- 
- #Check if gtkspellcheck is installed
- try:
 @@ -143,17 +143,6 @@ class RemarkableWindow(Window):
  
          text = ""

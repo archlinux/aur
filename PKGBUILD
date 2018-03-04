@@ -31,7 +31,7 @@ source=("git+https://github.com/jamiemcg/Remarkable.git"
 
 sha1sums=('SKIP'
           'bdbfb750df9e5fb3022f47a46a80555259628cd1'
-          '76a8a61ed2bcf08e71971a52597fb4b638963a2c'
+          '54f7a4461607dd578132f7a7612a814e3bc38263'
           '6e5ea06076c85fdd25b79bfc41588f7f7ee9ba29')
 
 pkgver() {
@@ -42,10 +42,13 @@ pkgver() {
 
 prepare() {
     msg2 "Removing findbar patches.."
-    msg2 "Fix imports in RemarkableWindow.py"
     # Does not run with findbar patches.
-    # Also changes imports in RemarkableWindow
     cat *.patch | patch -p1 -d "${srcdir}/Remarkable"
+    
+    msg2 "Fix imports in RemarkableWindow.py"
+    # Also changes imports in RemarkableWindow
+    sed -i "s/import styles/from remarkable import styles/" \
+        "Remarkable/remarkable/RemarkableWindow.py"
 }
 
 package() {

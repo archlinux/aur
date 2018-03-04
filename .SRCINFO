@@ -27,7 +27,7 @@ pkgbase = remarkable-git
 	source = LICENSE
 	sha1sums = SKIP
 	sha1sums = bdbfb750df9e5fb3022f47a46a80555259628cd1
-	sha1sums = 76a8a61ed2bcf08e71971a52597fb4b638963a2c
+	sha1sums = 54f7a4461607dd578132f7a7612a814e3bc38263
 	sha1sums = 6e5ea06076c85fdd25b79bfc41588f7f7ee9ba29
 
 pkgname = remarkable-git
