@@ -7,6 +7,7 @@ pkgbase = morfeusz2
 	license = BSD
 	makedepends = python2
 	makedepends = python2-setuptools
+	makedepends = swig
 	source = LICENCE
 	source = http://sgjp.pl/morfeusz/download/20180204/morfeusz-src-20180204.tar.gz
 	sha256sums = 16c7ca379ef9fb6368c20d0ee71a9c83dd9c55e3b9fc34aade443c33d731d829
@@ -20,4 +21,9 @@ pkgname = python2-morfeuszbuilder
 	arch = any
 	depends = python2
 	depends = python2-pyparsing
+
+pkgname = python2-morfeusz2
+	pkgdesc = Morfeusz python wrapper
+	depends = morfeusz2
+	depends = python2
 
