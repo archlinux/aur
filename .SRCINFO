@@ -1,7 +1,7 @@
 pkgbase = dhcp_probe
-	pkgdesc = Allows network administrators to make calculations that will assist in subnetting a network
+	pkgdesc = Discover DHCP and BootP servers on a directly-attached Ethernet network
 	pkgver = 1.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.net.princeton.edu/software/dhcp_probe/
 	arch = x86_64
 	license = GPL2

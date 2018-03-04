@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=dhcp_probe
 pkgver=1.3.0
-pkgrel=5
-pkgdesc="Allows network administrators to make calculations that will assist in subnetting a network"
+pkgrel=6
+pkgdesc="Discover DHCP and BootP servers on a directly-attached Ethernet network"
 arch=('x86_64')
 url="https://www.net.princeton.edu/software/dhcp_probe/"
 license=('GPL2')
