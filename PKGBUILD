@@ -1,23 +1,24 @@
-# Maintainer: Tom < reztho at archlinux dot us >
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com > 
+# Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=16.10.5.r3.bb8c682
+pkgver=18.04.13.r3.gad32cf9
 pkgrel=1
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
-url="https://bitbucket.org/ubuntu-mate/mate-tweak"
+url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
 depends=('python' 'gtk3' 'dconf' 'gdk-pixbuf2' 'libnotify' 'python-gobject' 'python-psutil' 'python-configobj' 'mesa-demos' 'python-setproctitle')
-optdepends=('plank' 'docky' 'synapse' 'topmenu-gtk' 'gnome-main-menu' 'mate-menu' 'mate-netbook' 'mate-applet-dock-git' 'mutter' 'compiz')
+optdepends=('plank' 'docky' 'synapse' 'topmenu-gtk' 'mate-menu' 'mate-netbook' 'mate-applet-dock-git' 'mutter' 'compiz')
 makedepends=('git' 'bzr' 'python-setuptools' 'python-distutils-extra') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('mate-tweak::git+https://bitbucket.org/ubuntu-mate/mate-tweak.git'
-               'ubuntu-mate-settings::bzr+lp:~ubuntu-mate-dev/ubuntu-mate/ubuntu-mate-settings')
-md5sums=('SKIP' 'SKIP')
+source=('mate-tweak::git+https://github.com/ubuntu-mate/mate-tweak.git'
+	'ubuntu-mate-settings::bzr+lp:~ubuntu-mate-dev/ubuntu-mate/ubuntu-mate-settings')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
