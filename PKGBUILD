@@ -4,7 +4,7 @@ _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
 pkgver=r90.f5f5f6f
-pkgrel=8
+pkgrel=9
 pkgdesc='A configurable system monitoring applet'
 arch=('any')
 url='https://github.com/fossfreedom/indicator-sysmonitor'
@@ -36,6 +36,9 @@ package_indicator-sysmonitor-budgie-git() {
 
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" installbudgie
+
+  python -m compileall -d '/' "${pkgdir}/"
+  python -O -m compileall -d '/' "${pkgdir}/"
 }
 
 package_indicator-sysmonitor-appindicator-git() {
@@ -46,4 +49,7 @@ package_indicator-sysmonitor-appindicator-git() {
 
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install
+
+  python -m compileall -d '/' "${pkgdir}/"
+  python -O -m compileall -d '/' "${pkgdir}/"
 }

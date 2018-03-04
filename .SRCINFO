@@ -1,7 +1,7 @@
 pkgbase = indicator-sysmonitor-git
 	pkgdesc = A configurable system monitoring applet
 	pkgver = r90.f5f5f6f
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/fossfreedom/indicator-sysmonitor
 	arch = any
 	license = GPL3
