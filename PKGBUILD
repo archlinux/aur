@@ -16,7 +16,7 @@ optdepends=('pass: password manager support'
 provides=('pext')
 conflicts=('pext')
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('ee55b0b2205d7482b4d01defa8b307545604850b67fa34e9839bf162d603484e')
+sha256sums=('0c407a1ff7bb8edc45b64560705d9b16622dc1a03f95325e5169e01c9818c98a')
 
 prepare() {
   sed "s/'pyqt5'//g" -i $srcdir/$appname-$pkgver/setup.py
