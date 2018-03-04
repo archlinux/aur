@@ -1,5 +1,5 @@
 pkgbase = wine-staging-dev
-	pkgdesc = A compatibility layer for running Windows programs (staging branch with some extra tweaks, git version)
+	pkgdesc = Staging branch of wine, with various extra patches including gallium nine. Git versions.
 	pkgver = 3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
 	pkgrel = 1
 	url = https://github.com/wine-staging/wine-staging
@@ -138,24 +138,25 @@ pkgbase = wine-staging-dev
 	provides = bin32-wine=3.3.r0.gf17120d11b
 	provides = wine-wow64=3.3.r0.gf17120d11b
 	provides = wine-staging=3.3.r0.ge09e1fd3
+	conflicts = bin32-wine
 	conflicts = wine
-	conflicts = wine-wow64
+	conflicts = wine-gaming-nine
 	conflicts = wine-git
 	conflicts = wine-staging
-	conflicts = wine-staging-nine
 	conflicts = wine-staging-git
-	conflicts = wine-gaming-nine
-	conflicts = wine-wow64
-	conflicts = bin32-wine
 	conflicts = wine-staging-lutris-git
+	conflicts = wine-staging-nine
+	conflicts = wine-wow64
 	replaces = bin32-wine
 	replaces = wine-staging-lutris-git
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
+	source = wine-d3d9::git+https://github.com/kytulendu/wine-d3d9-patches.git
 	source = wine-staging-dev::git+https://github.com/wine-staging/wine-staging.git
 	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1

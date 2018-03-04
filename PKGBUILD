@@ -1,17 +1,13 @@
 # $Id$
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
-# Contributor: Daniel Bermond < yahoo-com: danielbermond >
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: Eduardo Romero <eduardo@archlinux.org>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Based on wine & wine-staging PKGBUILDs
 
 pkgname=wine-staging-dev
 pkgver=3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
 pkgrel=1
-#_pkgbasever=3.3
-_winesrcdir=wine-git
-pkgdesc='A compatibility layer for running Windows programs (staging branch with some extra tweaks, git version)'
+_winesrcdir='wine-git'
+_ninesrcdir='wine-d3d9'
+pkgdesc='Staging branch of wine, with various extra patches including gallium nine. Git versions.'
 arch=('i686' 'x86_64')
 url='https://github.com/wine-staging/wine-staging'
 license=('LGPL')
@@ -33,7 +29,14 @@ _depends=(
     'libpcap'               'lib32-libpcap'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
+makedepends=(
+	'git' 
+	'autoconf' 
+	'ncurses' 
+	'bison' 
+	'perl' 
+	'fontforge' 
+	'flex'
     'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
@@ -87,11 +90,13 @@ optdepends=(
 )
 options=('staticlibs')
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
+		"$_ninesrcdir"::'git+https://github.com/kytulendu/wine-d3d9-patches.git'
         "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
 		'harmony-fix.diff'
         '30-win32-aliases.conf'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
@@ -109,7 +114,15 @@ then
         "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
         "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
     )
-    conflicts=('wine' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-staging-lutris-git')
+    conflicts=(
+		'wine' 
+		'wine-gaming-nine' 
+		'wine-git' 
+		'wine-staging' 
+		'wine-staging-git' 
+		'wine-staging-lutris-git'
+		'wine-staging-nine' 
+	)
 	replaces=('wine-staging-lutris-git')
 else
 	makedepends=("${makedepends[@]}" "${_depends[@]}")
@@ -120,7 +133,17 @@ else
 		"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
 		"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
 	)
-	conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging' 'wine-staging-nine' 'wine-staging-git' 'wine-gaming-nine' 'wine-wow64' 'bin32-wine' 'wine-staging-lutris-git')
+	conflicts=(
+		'bin32-wine' 
+		'wine' 
+		'wine-gaming-nine' 
+		'wine-git' 
+		'wine-staging' 
+		'wine-staging-git' 
+		'wine-staging-lutris-git'
+		'wine-staging-nine' 
+		'wine-wow64' 
+	)
 	replaces=('bin32-wine' 'wine-staging-lutris-git')
 fi 
 
@@ -157,9 +180,6 @@ pkgver() {
     cd "${srcdir}/${_winesrcdir}"
     local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
     
-	# create our version string, add our predefined _pkgbasever, 
-	# as there are no official correct releases or tags as of making this! 
-	#printf '%s.%s+%s' "$_pkgbasever" "$_staging_version" "$_wine_version"
 	printf '%s+%s' "$_staging_version" "$_wine_version"
 }
 
@@ -172,6 +192,10 @@ build() {
     msg2 'Applying wine-staging patches...'
     ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrcdir}" --all
     
+	# Apply nine patches
+	patch -d "${srcdir}/${_winesrcdir}" -Np1 < $_ninesrcdir/staging-helper.patch
+	patch -d "${srcdir}/${_winesrcdir}" -Np1 < $_ninesrcdir/wine-d3d9.patch
+
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
     # https://bugs.winehq.org/show_bug.cgi?id=43530
@@ -190,6 +214,7 @@ build() {
                         --libdir='/usr/lib' \
                         --with-x \
                         --with-gstreamer \
+						--with-d3d9-nine \
                         --enable-win64 \
                         --with-xattr \
 			            --disable-tests
@@ -209,6 +234,7 @@ build() {
                     --prefix='/usr' \
                     --with-x \
                     --with-gstreamer \
+					--with-d3d9-nine \
                     --with-xattr \
 		            --disable-tests \
                     "${_wine32opts[@]}"
