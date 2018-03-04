@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=2.21.r0.g90679f2f+wine.2.21.r0.g53290d2ec4
+pkgver=3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -47,6 +47,8 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'libva'                 'lib32-libva'
     'gtk3'                  'lib32-gtk3'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
+    'sdl2'                  'lib32-sdl2'
     'samba'
     'opencl-headers'
 )
@@ -67,22 +69,27 @@ optdepends=(
     'ncurses'               'lib32-ncurses'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
-    'libtxc_dxtn'           'lib32-libtxc_dxtn'
     'libva'                 'lib32-libva'
     'gtk3'                  'lib32-gtk3'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
+    'sdl2'                  'lib32-sdl2'
     'cups'
     'samba'
     'dosbox'
 )
 options=('staticlibs')
+install="$pkgname".install
 source=('wine-git'::'git://source.winehq.org/git/wine.git'
-        "$pkgname"::'git+https://github.com/wine-compholio/wine-staging.git'
-        '30-win32-aliases.conf')
+        "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
+        'harmony-fix.diff'
+        '30-win32-aliases.conf'
+        'wine-binfmt.conf')
 sha256sums=('SKIP'
             'SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
+            '50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -123,6 +130,9 @@ prepare() {
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    
+    # freetype harmony fix
+    patch -Np1 -i "${srcdir}/harmony-fix.diff"
 }
 
 pkgver() {
@@ -213,5 +223,8 @@ package() {
     # font aliasing settings for Win32 applications
     install -d "$pkgdir"/etc/fonts/conf.{avail,d}
     install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    
+    # wine binfmt
+    install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
