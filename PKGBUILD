@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Lucas Hoffmann <l-m-h at web dot de>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: tardo <tardo@nagi-fanboi.net>
 # Contributor: Rohan Dhruva (rohandhruva at gmail dot com)
