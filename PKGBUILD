@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             '49e077acacfec80696a3ec29f13ed1e3c7cdcae54b53a419f5e9bc853c4684e3'
             '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            '8d676eec464795cf5e484b9993ac4a1d25b44c758bda695a202a8b9f6b9cbfff')
+            '1f4ca296885c1c47724c13e5911b8f23fa674cfba1ae4fa922a733a59e74c29d')
 
 pkgver() {
   cd wingpanel

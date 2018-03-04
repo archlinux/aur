@@ -84,7 +84,7 @@
 +    }
 +
 +    private bool animation_unstep () {
-+        if (panel_displacement >= -1) {
++        if (panel_displacement >= -1 || popover_manager.current_indicator != null) {
 +            timeout = 0;
 +            return false;
 +        }
