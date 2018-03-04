@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo Disclaimer
+  echo ---------------------
+  echo Please note that shut-up-bird is a hobby project. I SHALL NOT be held liable in case you lose any data by using this tool!
+  echo ----------------------
+  echo
+}
+

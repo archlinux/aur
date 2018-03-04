@@ -1,0 +1,14 @@
+pkgbase = shut-up-bird
+	pkgdesc = Create an ePub e-book from your Twitter posts or likes and then (optionally) delete them from your timeline.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/petarov/shut-up-bird
+	install = shut-up-bird.install
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/petarov/shut-up-bird/archive/1.0.tar.gz
+	sha1sums = 1677c6dba6cc6187ac0b27cabd4e53f617708985
+
+pkgname = shut-up-bird
+
