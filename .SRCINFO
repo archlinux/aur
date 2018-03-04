@@ -1,13 +1,13 @@
 pkgbase = sejda-desktop
 	pkgdesc = PDF editor
-	pkgver = 3.3.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = http://www.sejda.com/desktop
 	arch = x86_64
 	license = custom:EULA
 	options = !strip
-	source = https://bitbucket.org/sejdapdf/sejda-desktop-public/downloads/sejda-desktop_3.3.0_amd64.deb
-	sha512sums = 13f8ab22b83a0ba8220cda89e63888b638e9aa1920d13c22f21155cd2e8e0933500eb0cee32686e3eeaabcc8bd0a2ffd0fdc1d5e9d71eaa24acc159b7090a484
+	source = https://bitbucket.org/sejdapdf/sejda-desktop-public/downloads/sejda-desktop_3.3.2_amd64.deb
+	sha512sums = e6b2267494553b7afa728ce5e786b41d513d0115c62f1f93da5e60bb40e8a6882de0cb13c0e371815aee312dc9f063c129a2a462e2334c93921c691fcb9bb6c8
 
 pkgname = sejda-desktop
 
