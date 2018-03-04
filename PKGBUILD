@@ -2,12 +2,12 @@
 
 pkgname=emby-server-unlocked
 pkgver=3.3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nvllsvm/emby-unlocked'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'mono-git' 'referenceassemblies-pcl' 'sqlite')
+depends=('ffmpeg' 'imagemagick' 'mono' 'referenceassemblies-pcl' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 conflicts=('emby-server')
