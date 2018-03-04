@@ -1,15 +1,15 @@
 _name=altgraph
 pkgname=python-altgraph
-pkgver=0.12
+pkgver=0.15
 pkgrel=1
 pkgdesc='altgraph is a fork of graphlib: a graph (network) package for constructing graphs'
-arch=('i686' 'x86_64')
+arch=(any)
 url="https://pypi.python.org/pypi/$_name"
-license=('MIT')
-depends=('python2')
-makedepends=('python2-distribute')
-source=("https://pypi.python.org/packages/source/a/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b90db0dba36d9ece282b6a95ae3d324b63239694ce2cf2fd07d3efd7f2f7cab2')
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('fc28b986a68fde8d3ff0e6d6ba3fbdd2cd562d11d45ef7c7735fbd826c9eec2e')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
