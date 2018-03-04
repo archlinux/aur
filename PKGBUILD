@@ -29,7 +29,7 @@ build() {
 	cd "$srcdir/$_reponame-$pkgver"
 	cd build
 	
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 	make
 }
 
