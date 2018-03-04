@@ -24,7 +24,7 @@ sha256sums=('83f96109c7d83ccf99e34003a0bf6f13b7e39bfc017cdc1c9eca7e31d72e314e'
             'dcaf43586125e07488e338438158097b31ba335fcb238127dfb785a41d223f49'
             '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
             'bfefd169626c3aff072e361a0517f2fbc0d2d403c8c61e1659c0bd0174d3d14a')
-noextract=('asf-3.1.0.1.zip')
+noextract=("${source[@]%%::*}")
 
 prepare() {
     7z x -o"${srcdir}/asf" ${pkgname}-${pkgver}.zip
