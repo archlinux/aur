@@ -1,20 +1,26 @@
-# Maintainer: Noeljunior <liamgliam {at} gmail {dot} com>
+# Maintainer: Noeljnuior <liamgliamgmailcom>
+
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 # Contributor: zach <zach {at} zach-adams {dot} com>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
+# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 
 pkgname=gtk-theme-arc-solid-git
 _pkgname=arc-theme
-_pkgauthor=horst3180
-pkgver=663.8290cb8
+pkgdesc="A flat theme for GTK 3, GTK 2 and Gnome-Shell (without transparency)"
+pkgver=712.51d88f1
 pkgrel=1
-pkgdesc="A flat theme without transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github."
 arch=('any')
-url="https://github.com/horst3180/${_pkgname}"
+# Upstream url: https://github.com/horst3180/arc-theme
+# Now using soft fork: https://github.com/horst3180/arc-theme/issues/840
+url="https://github.com/nicohood/arc-theme"
 license=('GPL3')
-depends=('gtk3' 'gtk-engine-murrine')
-makedepends=('git')
-source=(${_pkgname}::"git+https://github.com/horst3180/${_pkgname}.git")
-sha256sums=('SKIP')
+optdepends=('arc-icon-theme: recommended icon theme'
+            'gtk-engine-murrine: for gtk2 themes'
+            'gnome-themes-standard: for gtk2 themes')
+makedepends=('git' 'gtk3' 'sassc')
+source=(${_pkgname}::"git+https://github.com/nicohood/${_pkgname}.git")
+sha512sums=('SKIP')
 conflicts=('arc-gtk-theme')
 provides=('arc-gtk-theme')
 
@@ -24,10 +30,14 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	./autogen.sh --prefix=/usr --disable-transparency
+    cd ${_pkgname}
+    ./autogen.sh --prefix=/usr
+
+    cd ../${_pkgname}
+    ./autogen.sh --prefix=/usr --disable-transparency
 }
 
 package() {
-	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+    cd ${_pkgname}
+    make DESTDIR="${pkgdir}" install
 }
