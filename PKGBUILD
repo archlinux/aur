@@ -15,6 +15,12 @@ backup=()
 install=
 source=("git+https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid.git")
 md5sums=("SKIP")
+pkgver() {
+  cd "$srcdir/${pkgname}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  printf "%s" "$(git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
 build() {
 	cd kde-arch-update-plasmoid
 	mkdir build
@@ -25,9 +31,4 @@ package(){
 	cd ${srcdir}/kde-arch-update-plasmoid/build
 	make DESTDIR="$pkgdir" install
 	
-}
-pkgver() {
-  cd "$srcdir/${pkgname}"
-  # cutting off 'foo-' prefix that presents in the git tag
-  printf "%s" "$(git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
