@@ -1,7 +1,7 @@
 pkgbase = vault-bin
 	pkgdesc = A tool for managing secrets
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vaultproject.io/
 	install = vault.install
 	arch = i686
@@ -20,13 +20,13 @@ pkgbase = vault-bin
 	sha512sums = 8f8769f2c285f77b10c1f96e43acb233c70509ca657a8113f9d1f13a73ba55de6acdc6984597a4e1da19d6a7748e05f3523461a3b4bce10b9541aa5340400dd6
 	sha512sums = dd6de68678d972517c135992217f625a3bc728a6495e1f6052df9926cf9cbc212dfa2a612be5a25d7ce5eeeef41e2b12f0d82af6176a6e0ca043b43c622c6347
 	source_i686 = https://releases.hashicorp.com/vault/0.9.5/vault_0.9.5_linux_386.zip
-	sha256sums_i686 = 332ed6343c38d3f6cd98d82d099343beaecf8be70dc60818f80236f4a6fc84e5
+	sha256sums_i686 = 22360d682714a873316eaf93c3dc3db607bbd4a33ae66521ed65bd06fbf85632
 	source_x86_64 = https://releases.hashicorp.com/vault/0.9.5/vault_0.9.5_linux_amd64.zip
-	sha256sums_x86_64 = d7041dc8fed3ff150341310ceab08f9ef178045372a28e3e102508f94eba0724
+	sha256sums_x86_64 = f6dbc9fdac00598d2a319c9b744b85bf17d9530298f93d29ef2065bc751df099
 	source_armv7h = https://releases.hashicorp.com/vault/0.9.5/vault_0.9.5_linux_arm.zip
-	sha256sums_armv7h = 9a87778a6267d5ac2d01052417979d2e1764ecbc825dae32ad71b03a50f06ebd
+	sha256sums_armv7h = cd7b5291a15338997a5e3c5a24e782dbaf28e0e23e13cb15e66671c30b36f704
 	source_aarch64 = https://releases.hashicorp.com/vault/0.9.5/vault_0.9.5_linux_arm64.zip
-	sha256sums_aarch64 = 3cf2e3985f342f8e770b9a128fe3b2d041bac49c1b7c38a3217456c8227c64f7
+	sha256sums_aarch64 = 67e38966550ccb249298f908a1d1c136c543c20ff24c093e1d1f424e82dd1e8b
 
 pkgname = vault-bin
 
