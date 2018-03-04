@@ -1,0 +1,22 @@
+Description: Forced whole instruction cache flushing on Loongson.
+ Workaround for instruction cache flushing malfunction on Loongson systems
+ that occasionally cause failures under stress test conditions.
+Author: Dusan Milosavljevic <dusan.milosavljevic@rt-rk.com>
+Origin:upstream,https://github.com/paul99/v8m-rb/commit/ded6c2c2.patch
+Last-Update: 2012-06-13
+--- a/src/mips/cpu-mips.cc
++++ b/src/mips/cpu-mips.cc
+@@ -72,6 +72,13 @@
+ #else  // ANDROID
+   int res;
+   // See http://www.linux-mips.org/wiki/Cacheflush_Syscall.
++  if (kArchVariant==kLoongson) {
++    // Force flushing of whole instruction cache on Loongson. This is a
++    // workaround for problem when under stress tests cache lines are not
++    // flushed through syscall for some reasons.
++    size_t iCacheSize = 64 * KB;
++    size = iCacheSize + 1;
++  }
+   res = syscall(__NR_cacheflush, start, size, ICACHE);
+   if (res) {
+     V8_Fatal(__FILE__, __LINE__, "Failed to flush the instruction cache");

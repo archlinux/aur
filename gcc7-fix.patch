@@ -1,0 +1,223 @@
+diff -up v8-3.14.5.10/src/arm/assembler-arm.cc.gcc7 v8-3.14.5.10/src/arm/assembler-arm.cc
+diff -up v8-3.14.5.10/src/deoptimizer.cc.gcc7 v8-3.14.5.10/src/deoptimizer.cc
+--- v8-3.14.5.10/src/deoptimizer.cc.gcc7	2012-10-22 09:09:53.000000000 -0400
++++ v8-3.14.5.10/src/deoptimizer.cc	2017-02-28 16:55:25.553045035 -0500
+@@ -1141,7 +1141,7 @@ bool Deoptimizer::DoOsrTranslateCommand(
+       }
+       output->SetRegister(output_reg, static_cast<int32_t>(uint32_value));
+     }
+-
++    // intentional fallthrough
+ 
+     case Translation::DOUBLE_REGISTER: {
+       // Abort OSR if we don't have a number.
+diff -up v8-3.14.5.10/src/ia32/assembler-ia32.cc.gcc7 v8-3.14.5.10/src/ia32/assembler-ia32.cc
+--- v8-3.14.5.10/src/ia32/assembler-ia32.cc.gcc7	2017-03-01 10:21:11.271775490 -0500
++++ v8-3.14.5.10/src/ia32/assembler-ia32.cc	2017-03-01 10:21:44.242983779 -0500
+@@ -420,6 +420,7 @@ void Assembler::Nop(int bytes) {
+     switch (bytes) {
+       case 2:
+         EMIT(0x66);
++        // intentional fallthrough
+       case 1:
+         EMIT(0x90);
+         return;
+@@ -436,6 +437,7 @@ void Assembler::Nop(int bytes) {
+         return;
+       case 6:
+         EMIT(0x66);
++        // intentional fallthrough
+       case 5:
+         EMIT(0xf);
+         EMIT(0x1f);
+@@ -456,12 +458,15 @@ void Assembler::Nop(int bytes) {
+       case 11:
+         EMIT(0x66);
+         bytes--;
++        // intentional fallthrough
+       case 10:
+         EMIT(0x66);
+         bytes--;
++        // intentional fallthrough
+       case 9:
+         EMIT(0x66);
+         bytes--;
++        // intentional fallthrough
+       case 8:
+         EMIT(0xf);
+         EMIT(0x1f);
+diff -up v8-3.14.5.10/src/ic.cc.gcc7 v8-3.14.5.10/src/ic.cc
+--- v8-3.14.5.10/src/ic.cc.gcc7	2012-10-22 09:09:53.000000000 -0400
++++ v8-3.14.5.10/src/ic.cc	2017-02-28 16:55:25.554045011 -0500
+@@ -1989,8 +1989,8 @@ void KeyedStoreIC::UpdateCaches(LookupRe
+             name, receiver, field_index, transition, strict_mode);
+         break;
+       }
+-      // fall through.
+     }
++    // intentional fallthrough
+     case NORMAL:
+     case CONSTANT_FUNCTION:
+     case CALLBACKS:
+diff -up v8-3.14.5.10/src/objects.cc.gcc7 v8-3.14.5.10/src/objects.cc
+--- v8-3.14.5.10/src/objects.cc.gcc7	2017-02-28 16:55:25.516045908 -0500
++++ v8-3.14.5.10/src/objects.cc	2017-02-28 16:55:25.555044988 -0500
+@@ -10302,7 +10302,7 @@ void JSObject::GetElementsCapacityAndUsa
+         *used = Smi::cast(JSArray::cast(this)->length())->value();
+         break;
+       }
+-      // Fall through if packing is not guaranteed.
++      // intentional fallthrough
+     case FAST_HOLEY_SMI_ELEMENTS:
+     case FAST_HOLEY_ELEMENTS:
+       backing_store = FixedArray::cast(backing_store_base);
+@@ -10324,7 +10324,7 @@ void JSObject::GetElementsCapacityAndUsa
+         *used = Smi::cast(JSArray::cast(this)->length())->value();
+         break;
+       }
+-      // Fall through if packing is not guaranteed.
++      // intentional fallthrough
+     case FAST_HOLEY_DOUBLE_ELEMENTS: {
+       FixedDoubleArray* elms = FixedDoubleArray::cast(elements());
+       *capacity = elms->length();
+diff -up v8-3.14.5.10/src/objects.h.gcc7 v8-3.14.5.10/src/objects.h
+--- v8-3.14.5.10/src/objects.h.gcc7	2017-02-28 16:55:25.517045885 -0500
++++ v8-3.14.5.10/src/objects.h	2017-02-28 16:55:25.556044964 -0500
+@@ -2785,24 +2785,10 @@ class HashTable: public FixedArray {
+     USE_CUSTOM_MINIMUM_CAPACITY
+   };
+ 
+-  // Wrapper methods
+-  inline uint32_t Hash(Key key) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHash(key,
+-          GetHeap()->HashSeed());
+-    } else {
+-      return Shape::Hash(key);
+-    }
+-  }
+-
+-  inline uint32_t HashForObject(Key key, Object* object) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHashForObject(key,
+-          GetHeap()->HashSeed(), object);
+-    } else {
+-      return Shape::HashForObject(key, object);
+-    }
+-  }
++  // Wrapper methods.  Defined in src/objects-inl.h
++  // to break a cycle with src/heap/heap.h.
++  inline uint32_t Hash(Key key);
++  inline uint32_t HashForObject(Key key, Object* object);
+ 
+   // Returns the number of elements in the hash table.
+   int NumberOfElements() {
+diff -up v8-3.14.5.10/src/objects-inl.h.gcc7 v8-3.14.5.10/src/objects-inl.h
+--- v8-3.14.5.10/src/objects-inl.h.gcc7	2017-02-28 16:55:25.517045885 -0500
++++ v8-3.14.5.10/src/objects-inl.h	2017-02-28 16:55:25.556044964 -0500
+@@ -52,6 +52,26 @@
+ namespace v8 {
+ namespace internal {
+ 
++template<typename Shape, typename Key>
++uint32_t HashTable<Shape, Key>::Hash(Key key) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHash(key,
++        GetHeap()->HashSeed());
++  } else {
++    return Shape::Hash(key);
++  }
++}
++
++template<typename Shape, typename Key>
++uint32_t HashTable<Shape, Key>::HashForObject(Key key, Object* object) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHashForObject(key,
++        GetHeap()->HashSeed(), object);
++  } else {
++    return Shape::HashForObject(key, object);
++  }
++}
++
+ PropertyDetails::PropertyDetails(Smi* smi) {
+   value_ = smi->value();
+ }
+diff -up v8-3.14.5.10/src/parser.cc.gcc7 v8-3.14.5.10/src/parser.cc
+--- v8-3.14.5.10/src/parser.cc.gcc7	2017-02-28 16:55:25.450047466 -0500
++++ v8-3.14.5.10/src/parser.cc	2017-02-28 16:55:25.557044941 -0500
+@@ -3649,8 +3649,7 @@ Expression* Parser::ParsePrimaryExpressi
+         result = ParseV8Intrinsic(CHECK_OK);
+         break;
+       }
+-      // If we're not allowing special syntax we fall-through to the
+-      // default case.
++      // intentional fallthrough
+ 
+     default: {
+       Token::Value tok = Next();
+@@ -5376,8 +5375,8 @@ RegExpTree* RegExpParser::ParseDisjuncti
+       if (ParseIntervalQuantifier(&dummy, &dummy)) {
+         ReportError(CStrVector("Nothing to repeat") CHECK_FAILED);
+       }
+-      // fallthrough
+     }
++    // intentional fallthrough
+     default:
+       builder->AddCharacter(current());
+       Advance();
+diff -up v8-3.14.5.10/src/spaces.h.gcc7 v8-3.14.5.10/src/spaces.h
+--- v8-3.14.5.10/src/spaces.h.gcc7	2012-10-22 09:09:53.000000000 -0400
++++ v8-3.14.5.10/src/spaces.h	2017-02-28 16:55:25.557044941 -0500
+@@ -2613,15 +2613,15 @@ class PointerChunkIterator BASE_EMBEDDED
+           return old_pointer_iterator_.next();
+         }
+         state_ = kMapState;
+-        // Fall through.
+       }
++      // intentional fallthrough
+       case kMapState: {
+         if (map_iterator_.has_next()) {
+           return map_iterator_.next();
+         }
+         state_ = kLargeObjectState;
+-        // Fall through.
+       }
++      // intentional fallthrough
+       case kLargeObjectState: {
+         HeapObject* heap_object;
+         do {
+diff -up v8-3.14.5.10/src/x64/assembler-x64.cc.gcc7 v8-3.14.5.10/src/x64/assembler-x64.cc
+--- v8-3.14.5.10/src/x64/assembler-x64.cc.gcc7	2017-03-01 10:19:40.086088012 -0500
++++ v8-3.14.5.10/src/x64/assembler-x64.cc	2017-03-01 10:20:51.859241627 -0500
+@@ -1800,6 +1800,7 @@ void Assembler::Nop(int n) {
+     switch (n) {
+       case 2:
+         emit(0x66);
++        // intentional fallthrough
+       case 1:
+         emit(0x90);
+         return;
+@@ -1816,6 +1817,7 @@ void Assembler::Nop(int n) {
+         return;
+       case 6:
+         emit(0x66);
++        // intentional fallthrough
+       case 5:
+         emit(0x0f);
+         emit(0x1f);
+@@ -1836,12 +1838,15 @@ void Assembler::Nop(int n) {
+       case 11:
+         emit(0x66);
+         n--;
++        // intentional fallthrough
+       case 10:
+         emit(0x66);
+         n--;
++        // intentional fallthrough
+       case 9:
+         emit(0x66);
+         n--;
++        // intentional fallthrough
+       case 8:
+         emit(0x0f);
+         emit(0x1f);

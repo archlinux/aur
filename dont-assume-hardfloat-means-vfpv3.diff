@@ -1,0 +1,13 @@
+Description: don't assume hardfloat means vfpv3
+Author: Peter Michael Green <plugwash@raspbian.org>
+
+--- a/build/common.gypi
++++ b/build/common.gypi
+@@ -170,7 +170,6 @@
+           [ 'v8_use_arm_eabi_hardfloat=="true"', {
+             'defines': [
+               'USE_EABI_HARDFLOAT=1',
+-              'CAN_USE_VFP3_INSTRUCTIONS',
+             ],
+             'target_conditions': [
+               ['_toolset=="target"', {

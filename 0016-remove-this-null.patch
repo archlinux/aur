@@ -1,0 +1,202 @@
+From 94dcbe59a9f324089f9f5195635ee031063078cf Mon Sep 17 00:00:00 2001
+From: "dcarney@chromium.org"
+ <dcarney@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date: Thu, 12 Jun 2014 12:01:01 +0000
+Subject: [PATCH 16/16] remove this == null
+
+R=danno@chromium.org
+
+BUG=chromium:381910
+
+Review URL: https://codereview.chromium.org/336483002
+
+git-svn-id: https://v8.googlecode.com/svn/branches/bleeding_edge@21807 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+Conflicts:
+	src/api.cc
+	src/factory.cc
+	src/heap.cc
+	src/hydrogen-load-elimination.cc
+	src/spaces.cc
+	src/spaces.h
+	src/x64/assembler-x64-inl.h
+	test/cctest/test-spaces.cc
+
+Back-port to v3.14.5.8 by Balint Reczey
+---
+ src/api.cc    | 27 +++++++++++++++------------
+ src/heap.cc   | 15 +++++++++------
+ src/spaces.cc | 18 ++++++++++++------
+ src/spaces.h  |  8 ++++++--
+ 4 files changed, 42 insertions(+), 26 deletions(-)
+
+diff --git a/src/api.cc b/src/api.cc
+index f168398..5308485 100644
+--- a/src/api.cc
++++ b/src/api.cc
+@@ -1120,12 +1120,15 @@ void FunctionTemplate::AddInstancePropertyAccessor(
+ 
+ 
+ Local<ObjectTemplate> FunctionTemplate::InstanceTemplate() {
+-  i::Isolate* isolate = Utils::OpenHandle(this)->GetIsolate();
+-  if (IsDeadCheck(isolate, "v8::FunctionTemplate::InstanceTemplate()")
+-      || EmptyCheck("v8::FunctionTemplate::InstanceTemplate()", this))
++  i::Handle<i::FunctionTemplateInfo> handle = Utils::OpenHandle(this, true);
++  if (!Utils::ApiCheck(!handle.is_null(),
++                       "v8::FunctionTemplate::InstanceTemplate()",
++                       "Reading from empty handle")) {
+     return Local<ObjectTemplate>();
++  }
++  i::Isolate* isolate = handle->GetIsolate();
+   ENTER_V8(isolate);
+-  if (Utils::OpenHandle(this)->instance_template()->IsUndefined()) {
++  if (handle->instance_template()->IsUndefined()) {
+     Local<ObjectTemplate> templ =
+         ObjectTemplate::New(v8::Handle<FunctionTemplate>(this));
+     Utils::OpenHandle(this)->set_instance_template(*Utils::OpenHandle(*templ));
+@@ -2683,14 +2686,14 @@ int32_t Value::Int32Value() const {
+ 
+ bool Value::Equals(Handle<Value> that) const {
+   i::Isolate* isolate = i::Isolate::Current();
+-  if (IsDeadCheck(isolate, "v8::Value::Equals()")
+-      || EmptyCheck("v8::Value::Equals()", this)
+-      || EmptyCheck("v8::Value::Equals()", that)) {
++  i::Handle<i::Object> obj = Utils::OpenHandle(this, true);
++  if (!Utils::ApiCheck(!obj.is_null() && !that.IsEmpty(),
++                       "v8::Value::Equals()",
++                       "Reading from empty handle")) {
+     return false;
+   }
+   LOG_API(isolate, "Equals");
+   ENTER_V8(isolate);
+-  i::Handle<i::Object> obj = Utils::OpenHandle(this);
+   i::Handle<i::Object> other = Utils::OpenHandle(*that);
+   // If both obj and other are JSObjects, we'd better compare by identity
+   // immediately when going into JS builtin.  The reason is Invoke
+@@ -2710,13 +2713,13 @@ bool Value::Equals(Handle<Value> that) const {
+ 
+ bool Value::StrictEquals(Handle<Value> that) const {
+   i::Isolate* isolate = i::Isolate::Current();
+-  if (IsDeadCheck(isolate, "v8::Value::StrictEquals()")
+-      || EmptyCheck("v8::Value::StrictEquals()", this)
+-      || EmptyCheck("v8::Value::StrictEquals()", that)) {
++  i::Handle<i::Object> obj = Utils::OpenHandle(this, true);
++  if (!Utils::ApiCheck(!obj.is_null() && !that.IsEmpty(),
++                       "v8::Value::StrictEquals()",
++                       "Reading from empty handle")) {
+     return false;
+   }
+   LOG_API(isolate, "StrictEquals");
+-  i::Handle<i::Object> obj = Utils::OpenHandle(this);
+   i::Handle<i::Object> other = Utils::OpenHandle(*that);
+   // Must check HeapNumber first, since NaN !== NaN.
+   if (obj->IsHeapNumber()) {
+diff --git a/src/heap.cc b/src/heap.cc
+index e3fcb93..46e1e3d 100644
+--- a/src/heap.cc
++++ b/src/heap.cc
+@@ -3630,8 +3630,9 @@ MaybeObject* Heap::CreateCode(const CodeDesc& desc,
+   // Initialize the object
+   result->set_map_no_write_barrier(code_map());
+   Code* code = Code::cast(result);
+-  ASSERT(!isolate_->code_range()->exists() ||
+-      isolate_->code_range()->contains(code->address()));
++  ASSERT(isolate_->code_range() == NULL ||
++         !isolate_->code_range()->valid() ||
++         isolate_->code_range()->contains(code->address()));
+   code->set_instruction_size(desc.instr_size);
+   code->set_relocation_info(reloc_info);
+   code->set_flags(flags);
+@@ -3683,8 +3684,9 @@ MaybeObject* Heap::CopyCode(Code* code) {
+   CopyBlock(new_addr, old_addr, obj_size);
+   // Relocate the copy.
+   Code* new_code = Code::cast(result);
+-  ASSERT(!isolate_->code_range()->exists() ||
+-      isolate_->code_range()->contains(code->address()));
++  ASSERT(isolate_->code_range() == NULL ||
++         !isolate_->code_range()->valid() ||
++         isolate_->code_range()->contains(code->address()));
+   new_code->Relocate(new_addr - old_addr);
+   return new_code;
+ }
+@@ -3733,8 +3735,9 @@ MaybeObject* Heap::CopyCode(Code* code, Vector<byte> reloc_info) {
+   memcpy(new_code->relocation_start(), reloc_info.start(), reloc_info.length());
+ 
+   // Relocate the copy.
+-  ASSERT(!isolate_->code_range()->exists() ||
+-      isolate_->code_range()->contains(code->address()));
++  ASSERT(isolate_->code_range() == NULL ||
++         !isolate_->code_range()->valid() ||
++         isolate_->code_range()->contains(code->address()));
+   new_code->Relocate(new_addr - old_addr);
+ 
+ #ifdef VERIFY_HEAP
+diff --git a/src/spaces.cc b/src/spaces.cc
+index cc84180..c541f49 100644
+--- a/src/spaces.cc
++++ b/src/spaces.cc
+@@ -307,9 +307,12 @@ void MemoryAllocator::FreeMemory(VirtualMemory* reservation,
+     size_executable_ -= size;
+   }
+   // Code which is part of the code-range does not have its own VirtualMemory.
+-  ASSERT(!isolate_->code_range()->contains(
+-      static_cast<Address>(reservation->address())));
+-  ASSERT(executable == NOT_EXECUTABLE || !isolate_->code_range()->exists());
++  ASSERT(isolate_->code_range() == NULL ||
++         !isolate_->code_range()->contains(
++             static_cast<Address>(reservation->address())));
++  ASSERT(executable == NOT_EXECUTABLE ||
++         isolate_->code_range() == NULL ||
++         !isolate_->code_range()->valid());
+   reservation->Release();
+ }
+ 
+@@ -327,11 +330,14 @@ void MemoryAllocator::FreeMemory(Address base,
+     ASSERT(size_executable_ >= size);
+     size_executable_ -= size;
+   }
+-  if (isolate_->code_range()->contains(static_cast<Address>(base))) {
++  if (isolate_->code_range() != NULL &&
++      isolate_->code_range()->contains(static_cast<Address>(base))) {
+     ASSERT(executable == EXECUTABLE);
+     isolate_->code_range()->FreeRawMemory(base, size);
+   } else {
+-    ASSERT(executable == NOT_EXECUTABLE || !isolate_->code_range()->exists());
++    ASSERT(executable == NOT_EXECUTABLE ||
++           isolate_->code_range() == NULL ||
++           !isolate_->code_range()->valid());
+     bool result = VirtualMemory::ReleaseRegion(base, size);
+     USE(result);
+     ASSERT(result);
+@@ -512,7 +518,7 @@ MemoryChunk* MemoryAllocator::AllocateChunk(intptr_t body_size,
+ 
+     // Allocate executable memory either from code range or from the
+     // OS.
+-    if (isolate_->code_range()->exists()) {
++    if (isolate_->code_range() != NULL && isolate_->code_range()->valid()) {
+       base = isolate_->code_range()->AllocateRawMemory(chunk_size, &chunk_size);
+       ASSERT(IsAligned(reinterpret_cast<intptr_t>(base),
+                        MemoryChunk::kAlignment));
+diff --git a/src/spaces.h b/src/spaces.h
+index 95c63d6..d590d3b 100644
+--- a/src/spaces.h
++++ b/src/spaces.h
+@@ -834,9 +834,13 @@ class CodeRange {
+   // manage it.
+   void TearDown();
+ 
+-  bool exists() { return this != NULL && code_range_ != NULL; }
++  bool valid() { return code_range_ != NULL; }
++  Address start() {
++    ASSERT(valid());
++    return static_cast<Address>(code_range_->address());
++  }
+   bool contains(Address address) {
+-    if (this == NULL || code_range_ == NULL) return false;
++    if (!valid()) return false;
+     Address start = static_cast<Address>(code_range_->address());
+     return start <= address && address < start + code_range_->size();
+   }
+-- 
+2.1.4
+

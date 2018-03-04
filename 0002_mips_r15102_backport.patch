@@ -1,0 +1,17 @@
+Description: upstream fix needed by mips arch
+Origin: https://code.google.com/p/v8/source/detail?r=15102
+
+--- a/test/cctest/test-mark-compact.cc
++++ b/test/cctest/test-mark-compact.cc
+@@ -545,9 +545,9 @@
+       }
+     } else {
+       if (v8::internal::Snapshot::IsEnabled()) {
+-        CHECK_LE(delta, 2500 * 1024);  // 2400.
++        CHECK_LE(delta, 2942 * 1024);  // 2400.
+       } else {
+-        CHECK_LE(delta, 2860 * 1024);  // 2760.
++        CHECK_LE(delta, 3400 * 1024);  // 2760.
+       }
+     }
+   }

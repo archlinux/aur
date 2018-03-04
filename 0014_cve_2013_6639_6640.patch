@@ -1,0 +1,303 @@
+From: "jkummerow@chromium.org" <jkummerow@chromium.org>
+Date: Fri, 13 Dec 2013 14:21:10 -0700
+Subject: [PATCH] v8: backport fix for CVE-2013-{6639|6640}
+Origin: https://github.com/joyent/node/commit/39e2426
+
+This is a backport of upstream commit r17801. Original commit log:
+
+    Limit size of dehoistable array indices
+
+    LOG=Y
+    BUG=chromium:319835,chromium:319860
+    R=dslomov@chromium.org
+
+    Review URL: https://codereview.chromium.org/74113002
+---
+ src/elements-kind.cc                       | 30 +++++++++++++
+ src/elements-kind.h                        |  2 +
+ src/hydrogen-instructions.h                |  9 ++++
+ src/hydrogen.cc                            |  2 +-
+ src/lithium.cc                             | 30 -------------
+ src/lithium.h                              |  3 --
+ test/mjsunit/regress/regress-crbug-319835.js   | 51 ++++++++++++++++++++++
+ test/mjsunit/regress/regress-crbug-319860.js   | 47 ++++++++++++++++++++
+ 8 files changed, 140 insertions(+), 34 deletions(-)
+ create mode 100644 test/mjsunit/regress/regress-crbug-319835.js
+ create mode 100644 test/mjsunit/regress/regress-crbug-319860.js
+
+--- a/src/elements-kind.cc
++++ b/src/elements-kind.cc
+@@ -35,6 +35,36 @@
+ namespace internal {
+ 
+ 
++int ElementsKindToShiftSize(ElementsKind elements_kind) {
++  switch (elements_kind) {
++    case EXTERNAL_BYTE_ELEMENTS:
++    case EXTERNAL_PIXEL_ELEMENTS:
++    case EXTERNAL_UNSIGNED_BYTE_ELEMENTS:
++      return 0;
++    case EXTERNAL_SHORT_ELEMENTS:
++    case EXTERNAL_UNSIGNED_SHORT_ELEMENTS:
++      return 1;
++    case EXTERNAL_INT_ELEMENTS:
++    case EXTERNAL_UNSIGNED_INT_ELEMENTS:
++    case EXTERNAL_FLOAT_ELEMENTS:
++      return 2;
++    case EXTERNAL_DOUBLE_ELEMENTS:
++    case FAST_DOUBLE_ELEMENTS:
++    case FAST_HOLEY_DOUBLE_ELEMENTS:
++      return 3;
++    case FAST_SMI_ELEMENTS:
++    case FAST_ELEMENTS:
++    case FAST_HOLEY_SMI_ELEMENTS:
++    case FAST_HOLEY_ELEMENTS:
++    case DICTIONARY_ELEMENTS:
++    case NON_STRICT_ARGUMENTS_ELEMENTS:
++      return kPointerSizeLog2;
++  }
++  UNREACHABLE();
++  return 0;
++}
++
++
+ void PrintElementsKind(FILE* out, ElementsKind kind) {
+   ElementsAccessor* accessor = ElementsAccessor::ForKind(kind);
+   PrintF(out, "%s", accessor->name());
+--- a/src/elements-kind.h
++++ b/src/elements-kind.h
+@@ -77,6 +77,8 @@
+ const int kFastElementsKindCount = LAST_FAST_ELEMENTS_KIND -
+     FIRST_FAST_ELEMENTS_KIND + 1;
+ 
++int ElementsKindToShiftSize(ElementsKind elements_kind);
++
+ void PrintElementsKind(FILE* out, ElementsKind kind);
+ 
+ ElementsKind GetInitialFastElementsKind();
+--- a/src/hydrogen-instructions.h
++++ b/src/hydrogen-instructions.h
+@@ -4240,6 +4240,7 @@
+   virtual HValue* GetKey() = 0;
+   virtual void SetKey(HValue* key) = 0;
+   virtual void SetIndexOffset(uint32_t index_offset) = 0;
++  virtual int MaxIndexOffsetBits() = 0;
+   virtual bool IsDehoisted() = 0;
+   virtual void SetDehoisted(bool is_dehoisted) = 0;
+   virtual ~ArrayInstructionInterface() { };
+@@ -4274,6 +4275,7 @@
+   void SetIndexOffset(uint32_t index_offset) {
+     bit_field_ = IndexOffsetField::update(bit_field_, index_offset);
+   }
++  int MaxIndexOffsetBits() { return 25; }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return IsDehoistedField::decode(bit_field_); }
+@@ -4343,6 +4345,7 @@
+   HValue* dependency() { return OperandAt(2); }
+   uint32_t index_offset() { return index_offset_; }
+   void SetIndexOffset(uint32_t index_offset) { index_offset_ = index_offset; }
++  int MaxIndexOffsetBits() { return 25; }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return is_dehoisted_; }
+@@ -4420,6 +4423,7 @@
+   ElementsKind elements_kind() const { return elements_kind_; }
+   uint32_t index_offset() { return index_offset_; }
+   void SetIndexOffset(uint32_t index_offset) { index_offset_ = index_offset; }
++  int MaxIndexOffsetBits() { return 25; }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return is_dehoisted_; }
+@@ -4595,6 +4599,7 @@
+   }
+   uint32_t index_offset() { return index_offset_; }
+   void SetIndexOffset(uint32_t index_offset) { index_offset_ = index_offset; }
++  int MaxIndexOffsetBits() { return 25; }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return is_dehoisted_; }
+@@ -4648,6 +4653,7 @@
+   HValue* value() { return OperandAt(2); }
+   uint32_t index_offset() { return index_offset_; }
+   void SetIndexOffset(uint32_t index_offset) { index_offset_ = index_offset; }
++  int MaxIndexOffsetBits() { return 25; }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return is_dehoisted_; }
+@@ -4706,6 +4712,9 @@
+   ElementsKind elements_kind() const { return elements_kind_; }
+   uint32_t index_offset() { return index_offset_; }
+   void SetIndexOffset(uint32_t index_offset) { index_offset_ = index_offset; }
++  int MaxIndexOffsetBits() {
++    return 31 - ElementsKindToShiftSize(elements_kind_);
++  }
+   HValue* GetKey() { return key(); }
+   void SetKey(HValue* key) { SetOperandAt(1, key); }
+   bool IsDehoisted() { return is_dehoisted_; }
+--- a/src/hydrogen.cc
++++ b/src/hydrogen.cc
+@@ -3737,7 +3737,7 @@
+   int32_t value = constant->Integer32Value() * sign;
+   // We limit offset values to 30 bits because we want to avoid the risk of
+   // overflows when the offset is added to the object header size.
+-  if (value >= 1 << 30 || value < 0) return;
++  if (value >= 1 << array_operation->MaxIndexOffsetBits() || value < 0) return;
+   array_operation->SetKey(subexpression);
+   if (index->HasNoUses()) {
+     index->DeleteAndReplaceWith(NULL);
+--- a/src/lithium.cc
++++ b/src/lithium.cc
+@@ -227,36 +227,6 @@
+ }
+ 
+ 
+-int ElementsKindToShiftSize(ElementsKind elements_kind) {
+-  switch (elements_kind) {
+-    case EXTERNAL_BYTE_ELEMENTS:
+-    case EXTERNAL_PIXEL_ELEMENTS:
+-    case EXTERNAL_UNSIGNED_BYTE_ELEMENTS:
+-      return 0;
+-    case EXTERNAL_SHORT_ELEMENTS:
+-    case EXTERNAL_UNSIGNED_SHORT_ELEMENTS:
+-      return 1;
+-    case EXTERNAL_INT_ELEMENTS:
+-    case EXTERNAL_UNSIGNED_INT_ELEMENTS:
+-    case EXTERNAL_FLOAT_ELEMENTS:
+-      return 2;
+-    case EXTERNAL_DOUBLE_ELEMENTS:
+-    case FAST_DOUBLE_ELEMENTS:
+-    case FAST_HOLEY_DOUBLE_ELEMENTS:
+-      return 3;
+-    case FAST_SMI_ELEMENTS:
+-    case FAST_ELEMENTS:
+-    case FAST_HOLEY_SMI_ELEMENTS:
+-    case FAST_HOLEY_ELEMENTS:
+-    case DICTIONARY_ELEMENTS:
+-    case NON_STRICT_ARGUMENTS_ELEMENTS:
+-      return kPointerSizeLog2;
+-  }
+-  UNREACHABLE();
+-  return 0;
+-}
+-
+-
+ LLabel* LChunk::GetLabel(int block_id) const {
+   HBasicBlock* block = graph_->blocks()->at(block_id);
+   int first_instruction = block->first_instruction_index();
+--- a/src/lithium.h
++++ b/src/lithium.h
+@@ -704,9 +704,6 @@
+ };
+ 
+ 
+-int ElementsKindToShiftSize(ElementsKind elements_kind);
+-
+-
+ } }  // namespace v8::internal
+ 
+ #endif  // V8_LITHIUM_H_
+--- /dev/null
++++ b/test/mjsunit/regress/regress-crbug-319835.js
+@@ -0,0 +1,51 @@
++// Copyright 2013 the V8 project authors. All rights reserved.
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++//       notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++//       copyright notice, this list of conditions and the following
++//       disclaimer in the documentation and/or other materials provided
++//       with the distribution.
++//     * Neither the name of Google Inc. nor the names of its
++//       contributors may be used to endorse or promote products derived
++//       from this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++// Flags: --allow-natives-syntax
++
++try {} catch(e) {}  // No need to optimize the top level.
++
++var size = 0x20000;
++var a = new Float64Array(size);
++var training = new Float64Array(10);
++function store(a, index) {
++  var offset = 0x20000000;
++  for (var i = 0; i < 1; i++) {
++    a[index + offset] = 0xcc;
++  }
++}
++
++store(training, -0x20000000);
++store(training, -0x20000000 + 1);
++store(training, -0x20000000);
++store(training, -0x20000000 + 1);
++%OptimizeFunctionOnNextCall(store);
++
++// Segfault maybe?
++for (var i = -0x20000000; i < -0x20000000 + size; i++) {
++  store(a, i);
++}
+--- /dev/null
++++ b/test/mjsunit/regress/regress-crbug-319860.js
+@@ -0,0 +1,47 @@
++// Copyright 2013 the V8 project authors. All rights reserved.
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++//       notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++//       copyright notice, this list of conditions and the following
++//       disclaimer in the documentation and/or other materials provided
++//       with the distribution.
++//     * Neither the name of Google Inc. nor the names of its
++//       contributors may be used to endorse or promote products derived
++//       from this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++// Flags: --allow-natives-syntax
++
++function read(a, index) {
++  var offset = 0x2000000;
++  var result;
++  for (var i = 0; i < 1; i++) {
++    result = a[index + offset];
++  }
++  return result;
++}
++
++var a = new Int8Array(0x2000001);
++read(a, 0);
++read(a, 0);
++%OptimizeFunctionOnNextCall(read);
++
++// Segfault maybe?
++for (var i = 0; i > -1000000; --i) {
++  read(a, i);
++}

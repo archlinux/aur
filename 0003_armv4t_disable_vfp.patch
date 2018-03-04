@@ -1,0 +1,15 @@
+Description: disable ARM vfpv3 detection at runtime - breaks when true
+Forwarded: not-needed, armv4t not supported upstream
+Last-Update: 2014-04-24
+Author: Jérémy Lal <kapouer@melix.org>
+--- a/src/platform-linux.cc
++++ b/src/platform-linux.cc
+@@ -143,7 +143,7 @@
+       search_string = "vfp";
+       break;
+     case VFP3:
+-      search_string = "vfpv3";
++      search_string = "vfpv3-disabled";
+       break;
+     case ARMv7:
+       search_string = "ARMv7";

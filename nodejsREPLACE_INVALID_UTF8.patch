@@ -1,0 +1,18 @@
+Description: nodejs 0.10.29 adds this option and its addons (node-nan)
+ expects REPLACE_INVALID_UTF8 to exist - or else it defines it to be 0.
+ Simplify its job by just setting it to 0 too.
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2015-08-18
+Forwarded: not-needed
+--- a/include/v8.h
++++ b/include/v8.h
+@@ -1076,7 +1076,8 @@
+     NO_OPTIONS = 0,
+     HINT_MANY_WRITES_EXPECTED = 1,
+     NO_NULL_TERMINATION = 2,
+-    PRESERVE_ASCII_NULL = 4
++    PRESERVE_ASCII_NULL = 4,
++    REPLACE_INVALID_UTF8 = 0
+   };
+ 
+   // 16-bit character codes.

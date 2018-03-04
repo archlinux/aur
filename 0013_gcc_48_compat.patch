@@ -1,0 +1,28 @@
+Description: gcc 4.8 compatibility fixes
+Bug: https://code.google.com/p/v8/issues/detail?id=2149
+Bug: https://code.google.com/p/v8/issues/detail?id=2767
+Bug-Debian: http://bugs.debian.org/701312
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2013-07-06
+--- a/src/checks.h
++++ b/src/checks.h
+@@ -248,7 +248,7 @@
+ #define STATIC_CHECK(test)                                                    \
+   typedef                                                                     \
+     StaticAssertionHelper<sizeof(StaticAssertion<static_cast<bool>((test))>)> \
+-    SEMI_STATIC_JOIN(__StaticAssertTypedef__, __LINE__)
++    SEMI_STATIC_JOIN(__StaticAssertTypedef__, __LINE__) __attribute__((unused))
+ 
+ 
+ extern bool FLAG_enable_slow_asserts;
+--- a/test/cctest/test-macro-assembler-x64.cc
++++ b/test/cctest/test-macro-assembler-x64.cc
+@@ -2185,7 +2185,7 @@
+ TEST(OperandOffset) {
+   v8::internal::V8::Initialize(NULL);
+   int data[256];
+-  for (int i = 0; i < 256; i++) { data[i] = i * 0x01010101; }
++  for (int i = 0; i < 256; i++) { data[i] = (long)i * 0x01010101; }
+ 
+   // Allocate an executable page of memory.
+   size_t actual_size;

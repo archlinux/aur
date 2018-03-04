@@ -1,0 +1,41 @@
+Description: Needed for kfreebsd-* arch
+ Fix link_settings.
+ Use python multiprocessing.dummy module to run tests.
+Forwarded: not-needed
+Author: Steven Chamberlain <steven@pyro.eu.org>
+Author: Jérémy Lal <kapouer@melix.org>
+Bug-Debian: http://bugs.debian.org/670836
+Last-Update: 2013-05-02
+--- a/tools/gyp/v8.gyp
++++ b/tools/gyp/v8.gyp
+@@ -676,7 +676,7 @@
+             ['OS=="freebsd"', {
+                 'link_settings': {
+                   'libraries': [
+-                    '-L/usr/local/lib -lexecinfo',
++                    '-L/usr/local/lib -lpthread',
+                 ]},
+                 'sources': [
+                   '../../src/platform-freebsd.cc',
+--- a/tools/run-tests.py
++++ b/tools/run-tests.py
+@@ -28,7 +28,7 @@
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ 
+-import multiprocessing
++import multiprocessing.dummy as multiprocessing
+ import optparse
+ import os
+ from os.path import join
+--- a/tools/testrunner/local/execution.py
++++ b/tools/testrunner/local/execution.py
+@@ -26,7 +26,7 @@
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ 
+-import multiprocessing
++import multiprocessing.dummy as multiprocessing
+ import os
+ import threading
+ import time

@@ -1,0 +1,29 @@
+From be3df35d659a9dd3c59eb29abdcc10d74b8fc90a Mon Sep 17 00:00:00 2001
+From: Balint Reczey <balint@balintreczey.hu>
+Date: Mon, 9 Jan 2017 18:12:23 +0100
+Subject: [PATCH 15/16] Backport Utils::ApiCheck()
+
+---
+ src/api.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/api.h b/src/api.h
+index 7197b6c..c7877aa 100644
+--- a/src/api.h
++++ b/src/api.h
+@@ -183,6 +183,12 @@ class RegisteredExtension {
+ class Utils {
+  public:
+   static bool ReportApiFailure(const char* location, const char* message);
++  static inline bool ApiCheck(bool condition,
++                              const char* location,
++                              const char* message) {
++    if (!condition) Utils::ReportApiFailure(location, message);
++    return condition;
++  }
+ 
+   static Local<FunctionTemplate> ToFunctionTemplate(NeanderObject obj);
+   static Local<ObjectTemplate> ToObjectTemplate(NeanderObject obj);
+-- 
+2.1.4
+

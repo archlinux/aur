@@ -1,0 +1,935 @@
+Description: mips arch support backported to v8 3.14 branch
+Origin: https://github.com/paul99/v8m-rb/tree/dm-mipsbe-3.14
+Last-Update: 2014-04-09
+Acked-by: Jérémy Lal <kapouer@melix.org>
+
+--- a/Makefile
++++ b/Makefile
+@@ -133,7 +133,7 @@
+ 
+ # Architectures and modes to be compiled. Consider these to be internal
+ # variables, don't override them (use the targets instead).
+-ARCHES = ia32 x64 arm mipsel
++ARCHES = ia32 x64 arm mipsel mips
+ DEFAULT_ARCHES = ia32 x64 arm
+ MODES = release debug
+ ANDROID_ARCHES = android_ia32 android_arm
+@@ -168,10 +168,6 @@
+ 	$(MAKE) -C "$(OUTDIR)" BUILDTYPE=$(BUILDTYPE) \
+ 	        builddir="$(abspath $(OUTDIR))/$(BUILDTYPE)"
+ 
+-mips mips.release mips.debug:
+-	@echo "V8 does not support big-endian MIPS builds at the moment," \
+-	      "please use little-endian builds (mipsel)."
+-
+ # Compile targets. MODES and ARCHES are convenience targets.
+ .SECONDEXPANSION:
+ $(MODES): $(addsuffix .$$@,$(DEFAULT_ARCHES))
+--- a/build/common.gypi
++++ b/build/common.gypi
+@@ -176,7 +176,7 @@
+           'V8_TARGET_ARCH_IA32',
+         ],
+       }],  # v8_target_arch=="ia32"
+-      ['v8_target_arch=="mipsel"', {
++      ['v8_target_arch=="mipsel" or v8_target_arch=="mips"', {
+         'defines': [
+           'V8_TARGET_ARCH_MIPS',
+         ],
+@@ -187,12 +187,17 @@
+           ['mipscompiler=="yes"', {
+             'target_conditions': [
+               ['_toolset=="target"', {
+-                'cflags': ['-EL'],
+-                'ldflags': ['-EL'],
+                 'conditions': [
++                  ['v8_target_arch=="mipsel"', {
++                    'cflags': ['-EL'],
++                    'ldflags': ['-EL'],
++                  }],
++                  ['v8_target_arch=="mips"', {
++                    'cflags': ['-EB'],
++                    'ldflags': ['-EB'],
++                  }],
+                   [ 'v8_use_mips_abi_hardfloat=="true"', {
+                     'cflags': ['-mhard-float'],
+-                    'ldflags': ['-mhard-float'],
+                   }, {
+                     'cflags': ['-msoft-float'],
+                     'ldflags': ['-msoft-float'],
+@@ -202,7 +207,8 @@
+                   }],
+                   ['mips_arch_variant=="loongson"', {
+                     'cflags': ['-mips3', '-Wa,-mips3'],
+-                  }, {
++                  }],
++                  ['mips_arch_variant=="mips32r1"', {
+                     'cflags': ['-mips32', '-Wa,-mips32'],
+                   }],
+                 ],
+@@ -290,7 +296,7 @@
+       ['(OS=="linux" or OS=="freebsd" or OS=="openbsd" or OS=="solaris" \
+          or OS=="netbsd" or OS=="mac" or OS=="android") and \
+         (v8_target_arch=="arm" or v8_target_arch=="ia32" or \
+-         v8_target_arch=="mipsel")', {
++         v8_target_arch=="mipsel" or v8_target_arch=="mips")', {
+         # Check whether the host compiler and target compiler support the
+         # '-m32' option and set it if so.
+         'target_conditions': [
+--- a/build/standalone.gypi
++++ b/build/standalone.gypi
+@@ -68,6 +68,7 @@
+     'conditions': [
+       ['(v8_target_arch=="arm" and host_arch!="arm") or \
+         (v8_target_arch=="mipsel" and host_arch!="mipsel") or \
++        (v8_target_arch=="mips" and host_arch!="mips") or \
+         (v8_target_arch=="x64" and host_arch!="x64") or \
+         (OS=="android")', {
+         'want_separate_host_toolset': 1,
+--- a/src/conversions-inl.h
++++ b/src/conversions-inl.h
+@@ -75,7 +75,11 @@
+   if (x < k2Pow52) {
+     x += k2Pow52;
+     uint32_t result;
++#ifndef BIG_ENDIAN_FLOATING_POINT
+     Address mantissa_ptr = reinterpret_cast<Address>(&x);
++#else
++    Address mantissa_ptr = reinterpret_cast<Address>(&x) + 4;
++#endif
+     // Copy least significant 32 bits of mantissa.
+     memcpy(&result, mantissa_ptr, sizeof(result));
+     return negative ? ~result + 1 : result;
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -83,7 +83,7 @@
+ #if CAN_USE_UNALIGNED_ACCESSES
+ #define V8_HOST_CAN_READ_UNALIGNED 1
+ #endif
+-#elif defined(__MIPSEL__)
++#elif defined(__MIPSEL__) || defined(__MIPSEB__)
+ #define V8_HOST_ARCH_MIPS 1
+ #define V8_HOST_ARCH_32_BIT 1
+ #else
+@@ -101,13 +101,17 @@
+ #define V8_TARGET_ARCH_IA32 1
+ #elif defined(__ARMEL__)
+ #define V8_TARGET_ARCH_ARM 1
+-#elif defined(__MIPSEL__)
++#elif defined(__MIPSEL__) || defined(__MIPSEB__)
+ #define V8_TARGET_ARCH_MIPS 1
+ #else
+ #error Target architecture was not detected as supported by v8
+ #endif
+ #endif
+ 
++#if defined(__MIPSEB__)
++#define BIG_ENDIAN_FLOATING_POINT 1
++#endif
++
+ // Check for supported combinations of host and target architectures.
+ #if defined(V8_TARGET_ARCH_IA32) && !defined(V8_HOST_ARCH_IA32)
+ #error Target architecture ia32 is only supported on ia32 host
+--- a/src/mips/assembler-mips.cc
++++ b/src/mips/assembler-mips.cc
+@@ -1631,10 +1631,17 @@
+ void Assembler::ldc1(FPURegister fd, const MemOperand& src) {
+   // Workaround for non-8-byte alignment of HeapNumber, convert 64-bit
+   // load to two 32-bit loads.
++#ifndef BIG_ENDIAN_FLOATING_POINT
+   GenInstrImmediate(LWC1, src.rm(), fd, src.offset_);
+   FPURegister nextfpreg;
+   nextfpreg.setcode(fd.code() + 1);
+   GenInstrImmediate(LWC1, src.rm(), nextfpreg, src.offset_ + 4);
++#else
++  GenInstrImmediate(LWC1, src.rm(), fd, src.offset_ + 4);
++  FPURegister nextfpreg;
++  nextfpreg.setcode(fd.code() + 1);
++  GenInstrImmediate(LWC1, src.rm(), nextfpreg, src.offset_);
++#endif
+ }
+ 
+ 
+@@ -1646,10 +1653,17 @@
+ void Assembler::sdc1(FPURegister fd, const MemOperand& src) {
+   // Workaround for non-8-byte alignment of HeapNumber, convert 64-bit
+   // store to two 32-bit stores.
++#ifndef BIG_ENDIAN_FLOATING_POINT
+   GenInstrImmediate(SWC1, src.rm(), fd, src.offset_);
+   FPURegister nextfpreg;
+   nextfpreg.setcode(fd.code() + 1);
+   GenInstrImmediate(SWC1, src.rm(), nextfpreg, src.offset_ + 4);
++#else
++  GenInstrImmediate(SWC1, src.rm(), fd, src.offset_ + 4);
++  FPURegister nextfpreg;
++  nextfpreg.setcode(fd.code() + 1);
++  GenInstrImmediate(SWC1, src.rm(), nextfpreg, src.offset_ );
++#endif
+ }
+ 
+ 
+--- a/src/mips/assembler-mips.h
++++ b/src/mips/assembler-mips.h
+@@ -74,6 +74,13 @@
+   static const int kNumRegisters = v8::internal::kNumRegisters;
+   static const int kNumAllocatableRegisters = 14;  // v0 through t7.
+   static const int kSizeInBytes = 4;
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++  static const int kMantissaOffset = 0;
++  static const int kExponentOffset = 4;
++#else
++  static const int kMantissaOffset = 4;
++  static const int kExponentOffset = 0;
++#endif
+ 
+   static int ToAllocationIndex(Register reg) {
+     return reg.code() - 2;  // zero_reg and 'at' are skipped.
+--- a/src/mips/builtins-mips.cc
++++ b/src/mips/builtins-mips.cc
+@@ -869,9 +869,7 @@
+       ASSERT_EQ(3 * kPointerSize, JSObject::kHeaderSize);
+       __ LoadRoot(t7, Heap::kUndefinedValueRootIndex);
+       if (count_constructions) {
+-        __ lw(a0, FieldMemOperand(a2, Map::kInstanceSizesOffset));
+-        __ Ext(a0, a0, Map::kPreAllocatedPropertyFieldsByte * kBitsPerByte,
+-                kBitsPerByte);
++        __ lbu(a0, FieldMemOperand(a2, Map::kPreAllocatedPropertyFieldsOffset));
+         __ sll(t0, a0, kPointerSizeLog2);
+         __ addu(a0, t5, t0);
+         // a0: offset of first field after pre-allocated fields
+@@ -899,14 +897,12 @@
+       __ lbu(a3, FieldMemOperand(a2, Map::kUnusedPropertyFieldsOffset));
+       // The field instance sizes contains both pre-allocated property fields
+       // and in-object properties.
+-      __ lw(a0, FieldMemOperand(a2, Map::kInstanceSizesOffset));
+-      __ Ext(t6, a0, Map::kPreAllocatedPropertyFieldsByte * kBitsPerByte,
+-             kBitsPerByte);
++      __ lbu(t6, FieldMemOperand(a2, Map::kPreAllocatedPropertyFieldsOffset));
+       __ Addu(a3, a3, Operand(t6));
+-      __ Ext(t6, a0, Map::kInObjectPropertiesByte * kBitsPerByte,
+-              kBitsPerByte);
++      __ lbu(t6, FieldMemOperand(a2, Map::kInObjectPropertiesOffset));
+       __ subu(a3, a3, t6);
+ 
++
+       // Done if no extra properties are to be allocated.
+       __ Branch(&allocated, eq, a3, Operand(zero_reg));
+       __ Assert(greater_equal, "Property allocation count failed.",
+--- a/src/mips/code-stubs-mips.cc
++++ b/src/mips/code-stubs-mips.cc
+@@ -536,13 +536,8 @@
+ 
+ 
+ void ConvertToDoubleStub::Generate(MacroAssembler* masm) {
+-#ifndef BIG_ENDIAN_FLOATING_POINT
+   Register exponent = result1_;
+   Register mantissa = result2_;
+-#else
+-  Register exponent = result2_;
+-  Register mantissa = result1_;
+-#endif
+   Label not_special;
+   // Convert from Smi to integer.
+   __ sra(source_, source_, kSmiTagSize);
+@@ -679,9 +674,8 @@
+   } else {
+     ASSERT(destination == kCoreRegisters);
+     // Load the double from heap number to dst1 and dst2 in double format.
+-    __ lw(dst1, FieldMemOperand(object, HeapNumber::kValueOffset));
+-    __ lw(dst2, FieldMemOperand(object,
+-        HeapNumber::kValueOffset + kPointerSize));
++    __ lw(dst1, FieldMemOperand(object, HeapNumber::kMantissaOffset));
++    __ lw(dst2, FieldMemOperand(object, HeapNumber::kExponentOffset));
+   }
+   __ Branch(&done);
+ 
+@@ -1075,6 +1069,11 @@
+     // a0-a3 registers to f12/f14 register pairs.
+     __ Move(f12, a0, a1);
+     __ Move(f14, a2, a3);
++  } else {
++#ifdef BIG_ENDIAN_FLOATING_POINT
++    __ Swap(a0, a1);
++    __ Swap(a2, a3);
++#endif
+   }
+   {
+     AllowExternalCallThatCantCauseGC scope(masm);
+@@ -1088,8 +1087,13 @@
+     __ sdc1(f0, FieldMemOperand(heap_number_result, HeapNumber::kValueOffset));
+   } else {
+     // Double returned in registers v0 and v1.
++#ifndef BIG_ENDIAN_FLOATING_POINT
+     __ sw(v1, FieldMemOperand(heap_number_result, HeapNumber::kExponentOffset));
+     __ sw(v0, FieldMemOperand(heap_number_result, HeapNumber::kMantissaOffset));
++#else
++    __ sw(v0, FieldMemOperand(heap_number_result, HeapNumber::kExponentOffset));
++    __ sw(v1, FieldMemOperand(heap_number_result, HeapNumber::kMantissaOffset));
++#endif
+   }
+   // Place heap_number_result in v0 and return to the pushed return address.
+   __ pop(ra);
+@@ -1320,8 +1324,8 @@
+     __ ldc1(f12, FieldMemOperand(lhs, HeapNumber::kValueOffset));
+   } else {
+     // Load lhs to a double in a2, a3.
+-    __ lw(a3, FieldMemOperand(lhs, HeapNumber::kValueOffset + 4));
+-    __ lw(a2, FieldMemOperand(lhs, HeapNumber::kValueOffset));
++    __ lw(a3, FieldMemOperand(lhs, HeapNumber::kExponentOffset));
++    __ lw(a2, FieldMemOperand(lhs, HeapNumber::kMantissaOffset));
+ 
+     // Write Smi from rhs to a1 and a0 in double format. t5 is scratch.
+     __ mov(t6, rhs);
+@@ -1366,11 +1370,11 @@
+     __ pop(ra);
+     // Load rhs to a double in a1, a0.
+     if (rhs.is(a0)) {
+-      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kValueOffset + 4));
+-      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kValueOffset));
++      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kExponentOffset));
++      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kMantissaOffset));
+     } else {
+-      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kValueOffset));
+-      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kValueOffset + 4));
++      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kMantissaOffset));
++      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kExponentOffset));
+     }
+   }
+   // Fall through to both_loaded_as_doubles.
+@@ -1378,7 +1382,6 @@
+ 
+ 
+ void EmitNanCheck(MacroAssembler* masm, Condition cc) {
+-  bool exp_first = (HeapNumber::kExponentOffset == HeapNumber::kValueOffset);
+   if (CpuFeatures::IsSupported(FPU)) {
+     CpuFeatures::Scope scope(FPU);
+     // Lhs and rhs are already loaded to f12 and f14 register pairs.
+@@ -1391,10 +1394,10 @@
+     __ mov(t2, a2);  // a2 has LS 32 bits of lhs.
+     __ mov(t3, a3);  // a3 has MS 32 bits of lhs.
+   }
+-  Register rhs_exponent = exp_first ? t0 : t1;
+-  Register lhs_exponent = exp_first ? t2 : t3;
+-  Register rhs_mantissa = exp_first ? t1 : t0;
+-  Register lhs_mantissa = exp_first ? t3 : t2;
++  Register rhs_exponent = t1;
++  Register lhs_exponent = t3;
++  Register rhs_mantissa = t0;
++  Register lhs_mantissa = t2;
+   Label one_is_nan, neither_is_nan;
+   Label lhs_not_nan_exp_mask_is_loaded;
+ 
+@@ -1445,7 +1448,6 @@
+   if (cc == eq) {
+     // Doubles are not equal unless they have the same bit pattern.
+     // Exception: 0 and -0.
+-    bool exp_first = (HeapNumber::kExponentOffset == HeapNumber::kValueOffset);
+     if (CpuFeatures::IsSupported(FPU)) {
+       CpuFeatures::Scope scope(FPU);
+       // Lhs and rhs are already loaded to f12 and f14 register pairs.
+@@ -1458,10 +1460,10 @@
+       __ mov(t2, a2);  // a2 has LS 32 bits of lhs.
+       __ mov(t3, a3);  // a3 has MS 32 bits of lhs.
+     }
+-    Register rhs_exponent = exp_first ? t0 : t1;
+-    Register lhs_exponent = exp_first ? t2 : t3;
+-    Register rhs_mantissa = exp_first ? t1 : t0;
+-    Register lhs_mantissa = exp_first ? t3 : t2;
++    Register rhs_exponent = t1;
++    Register lhs_exponent = t3;
++    Register rhs_mantissa = t0;
++    Register lhs_mantissa = t2;
+ 
+     __ xor_(v0, rhs_mantissa, lhs_mantissa);
+     __ Branch(&return_result_not_equal, ne, v0, Operand(zero_reg));
+@@ -1495,6 +1497,11 @@
+       // a0-a3 registers to f12/f14 register pairs.
+       __ Move(f12, a0, a1);
+       __ Move(f14, a2, a3);
++    } else {
++#ifdef BIG_ENDIAN_FLOATING_POINT
++    __ Swap(a0, a1);
++    __ Swap(a2, a3);
++#endif
+     }
+ 
+     AllowExternalCallThatCantCauseGC scope(masm);
+@@ -1582,14 +1589,14 @@
+     __ ldc1(f12, FieldMemOperand(lhs, HeapNumber::kValueOffset));
+     __ ldc1(f14, FieldMemOperand(rhs, HeapNumber::kValueOffset));
+   } else {
+-    __ lw(a2, FieldMemOperand(lhs, HeapNumber::kValueOffset));
+-    __ lw(a3, FieldMemOperand(lhs, HeapNumber::kValueOffset + 4));
++    __ lw(a2, FieldMemOperand(lhs, HeapNumber::kMantissaOffset));
++    __ lw(a3, FieldMemOperand(lhs, HeapNumber::kExponentOffset));
+     if (rhs.is(a0)) {
+-      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kValueOffset + 4));
+-      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kValueOffset));
++      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kExponentOffset));
++      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kMantissaOffset));
+     } else {
+-      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kValueOffset));
+-      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kValueOffset + 4));
++      __ lw(a0, FieldMemOperand(rhs, HeapNumber::kMantissaOffset));
++      __ lw(a1, FieldMemOperand(rhs, HeapNumber::kExponentOffset));
+     }
+   }
+   __ jmp(both_loaded_as_doubles);
+@@ -5902,14 +5909,18 @@
+   __ Branch(&simple_loop, eq, scratch4, Operand(zero_reg));
+ 
+   // Loop for src/dst that are not aligned the same way.
+-  // This loop uses lwl and lwr instructions. These instructions
+-  // depend on the endianness, and the implementation assumes little-endian.
+   {
+     Label loop;
+     __ bind(&loop);
++#if __BYTE_ORDER == __BIG_ENDIAN
++    __ lwl(scratch1, MemOperand(src));
++    __ Addu(src, src, Operand(kReadAlignment));
++    __ lwr(scratch1, MemOperand(src, -1));
++#else
+     __ lwr(scratch1, MemOperand(src));
+     __ Addu(src, src, Operand(kReadAlignment));
+     __ lwl(scratch1, MemOperand(src, -1));
++#endif
+     __ sw(scratch1, MemOperand(dest));
+     __ Addu(dest, dest, Operand(kReadAlignment));
+     __ Subu(scratch2, limit, dest);
+@@ -6616,6 +6627,11 @@
+   // in a little endian mode).
+   __ li(t2, Operand(2));
+   __ AllocateAsciiString(v0, t2, t0, t1, t5, &call_runtime);
++#if __BYTE_ORDER == __BIG_ENDIAN
++  __ sll(t0, a2, 8);
++  __ srl(t1, a2, 8);
++  __ or_(a2, t0, t1);
++#endif
+   __ sh(a2, FieldMemOperand(v0, SeqAsciiString::kHeaderSize));
+   __ IncrementCounter(counters->string_add_native(), 1, a2, a3);
+   __ DropAndRet(2);
+--- a/src/mips/codegen-mips.cc
++++ b/src/mips/codegen-mips.cc
+@@ -210,8 +210,8 @@
+                                             a1,
+                                             t7,
+                                             f0);
+-    __ sw(a0, MemOperand(t3));  // mantissa
+-    __ sw(a1, MemOperand(t3, kIntSize));  // exponent
++    __ sw(a0, MemOperand(t3, Register::kMantissaOffset));  // mantissa
++    __ sw(a1, MemOperand(t3, Register::kExponentOffset));  // exponent
+     __ Addu(t3, t3, kDoubleSize);
+   }
+   __ Branch(&entry);
+@@ -225,8 +225,8 @@
+     __ LoadRoot(at, Heap::kTheHoleValueRootIndex);
+     __ Assert(eq, "object found in smi-only array", at, Operand(t5));
+   }
+-  __ sw(t0, MemOperand(t3));  // mantissa
+-  __ sw(t1, MemOperand(t3, kIntSize));  // exponent
++  __ sw(t0, MemOperand(t3, Register::kMantissaOffset));  // mantissa
++  __ sw(t1, MemOperand(t3, Register::kExponentOffset));  // exponent
+   __ Addu(t3, t3, kDoubleSize);
+ 
+   __ bind(&entry);
+@@ -273,7 +273,7 @@
+   __ sw(t5, MemOperand(t2, HeapObject::kMapOffset));
+ 
+   // Prepare for conversion loop.
+-  __ Addu(t0, t0, Operand(FixedDoubleArray::kHeaderSize - kHeapObjectTag + 4));
++  __ Addu(t0, t0, Operand(FixedDoubleArray::kHeaderSize - kHeapObjectTag + Register::kExponentOffset));
+   __ Addu(a3, t2, Operand(FixedArray::kHeaderSize));
+   __ Addu(t2, t2, Operand(kHeapObjectTag));
+   __ sll(t1, t1, 1);
+@@ -282,7 +282,7 @@
+   __ LoadRoot(t5, Heap::kHeapNumberMapRootIndex);
+   // Using offsetted addresses.
+   // a3: begin of destination FixedArray element fields, not tagged
+-  // t0: begin of source FixedDoubleArray element fields, not tagged, +4
++  // t0: begin of source FixedDoubleArray element fields, not tagged, points to the exponent
+   // t1: end of destination FixedArray, not tagged
+   // t2: destination FixedArray
+   // t3: the-hole pointer
+@@ -296,7 +296,7 @@
+   __ Branch(fail);
+ 
+   __ bind(&loop);
+-  __ lw(a1, MemOperand(t0));
++  __ lw(a1, MemOperand(t0, 0)); // exponent
+   __ Addu(t0, t0, kDoubleSize);
+   // a1: current element's upper 32 bit
+   // t0: address of next element's upper 32 bit
+@@ -305,7 +305,8 @@
+   // Non-hole double, copy value into a heap number.
+   __ AllocateHeapNumber(a2, a0, t6, t5, &gc_required);
+   // a2: new heap number
+-  __ lw(a0, MemOperand(t0, -12));
++  // Load mantissa of current element, t0 point to exponent of next element.
++  __ lw(a0, MemOperand(t0, (Register::kMantissaOffset - Register::kExponentOffset - kDoubleSize)));
+   __ sw(a0, FieldMemOperand(a2, HeapNumber::kMantissaOffset));
+   __ sw(a1, FieldMemOperand(a2, HeapNumber::kExponentOffset));
+   __ mov(a0, a3);
+--- a/src/mips/constants-mips.h
++++ b/src/mips/constants-mips.h
+@@ -69,6 +69,15 @@
+ #endif
+ 
+ 
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++const uint32_t kHoleNanUpper32Offset = 4;
++const uint32_t kHoleNanLower32Offset = 0;
++#else
++const uint32_t kHoleNanUpper32Offset = 0;
++const uint32_t kHoleNanLower32Offset = 4;
++#endif
++
++
+ // Defines constants and accessor classes to assemble, disassemble and
+ // simulate MIPS32 instructions.
+ //
+--- a/src/mips/lithium-codegen-mips.cc
++++ b/src/mips/lithium-codegen-mips.cc
+@@ -2699,7 +2699,7 @@
+   }
+ 
+   if (instr->hydrogen()->RequiresHoleCheck()) {
+-    __ lw(scratch, MemOperand(elements, sizeof(kHoleNanLower32)));
++    __ lw(scratch, MemOperand(elements, kHoleNanUpper32Offset));
+     DeoptimizeIf(eq, instr->environment(), scratch, Operand(kHoleNanUpper32));
+   }
+ 
+@@ -4869,15 +4869,14 @@
+           Handle<FixedDoubleArray>::cast(elements);
+       for (int i = 0; i < elements_length; i++) {
+         int64_t value = double_array->get_representation(i);
+-        // We only support little endian mode...
+         int32_t value_low = static_cast<int32_t>(value & 0xFFFFFFFF);
+         int32_t value_high = static_cast<int32_t>(value >> 32);
+         int total_offset =
+             elements_offset + FixedDoubleArray::OffsetOfElementAt(i);
+         __ li(a2, Operand(value_low));
+-        __ sw(a2, FieldMemOperand(result, total_offset));
++        __ sw(a2, FieldMemOperand(result, total_offset + Register::kMantissaOffset));
+         __ li(a2, Operand(value_high));
+-        __ sw(a2, FieldMemOperand(result, total_offset + 4));
++        __ sw(a2, FieldMemOperand(result, total_offset + Register::kExponentOffset));
+       }
+     } else if (elements->IsFixedArray()) {
+       Handle<FixedArray> fast_elements = Handle<FixedArray>::cast(elements);
+--- a/src/mips/macro-assembler-mips.cc
++++ b/src/mips/macro-assembler-mips.cc
+@@ -3300,6 +3300,7 @@
+ 
+   // TODO(kalmard) check if this can be optimized to use sw in most cases.
+   // Can't use unaligned access - copy byte by byte.
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+   sb(scratch, MemOperand(dst, 0));
+   srl(scratch, scratch, 8);
+   sb(scratch, MemOperand(dst, 1));
+@@ -3307,6 +3308,16 @@
+   sb(scratch, MemOperand(dst, 2));
+   srl(scratch, scratch, 8);
+   sb(scratch, MemOperand(dst, 3));
++#else
++  sb(scratch, MemOperand(dst, 3));
++  srl(scratch, scratch, 8);
++  sb(scratch, MemOperand(dst, 2));
++  srl(scratch, scratch, 8);
++  sb(scratch, MemOperand(dst, 1));
++  srl(scratch, scratch, 8);
++  sb(scratch, MemOperand(dst, 0));
++#endif
++
+   Addu(dst, dst, 4);
+ 
+   Subu(length, length, Operand(kPointerSize));
+@@ -3412,9 +3423,8 @@
+   bind(&have_double_value);
+   sll(scratch1, key_reg, kDoubleSizeLog2 - kSmiTagSize);
+   Addu(scratch1, scratch1, elements_reg);
+-  sw(mantissa_reg, FieldMemOperand(scratch1, FixedDoubleArray::kHeaderSize));
+-  uint32_t offset = FixedDoubleArray::kHeaderSize + sizeof(kHoleNanLower32);
+-  sw(exponent_reg, FieldMemOperand(scratch1, offset));
++  sw(mantissa_reg, FieldMemOperand(scratch1, FixedDoubleArray::kHeaderSize + kHoleNanLower32Offset));
++  sw(exponent_reg, FieldMemOperand(scratch1, FixedDoubleArray::kHeaderSize + kHoleNanUpper32Offset));
+   jmp(&done);
+ 
+   bind(&maybe_nan);
+@@ -3459,8 +3469,8 @@
+     CpuFeatures::Scope scope(FPU);
+     sdc1(f0, MemOperand(scratch1, 0));
+   } else {
+-    sw(mantissa_reg, MemOperand(scratch1, 0));
+-    sw(exponent_reg, MemOperand(scratch1, Register::kSizeInBytes));
++    sw(mantissa_reg, MemOperand(scratch1, Register::kMantissaOffset));
++    sw(exponent_reg, MemOperand(scratch1, Register::kExponentOffset));
+   }
+   bind(&done);
+ }
+--- a/src/mips/stub-cache-mips.cc
++++ b/src/mips/stub-cache-mips.cc
+@@ -2195,7 +2195,7 @@
+ 
+   // Start checking for special cases.
+   // Get the argument exponent and clear the sign bit.
+-  __ lw(t1, FieldMemOperand(v0, HeapNumber::kValueOffset + kPointerSize));
++  __ lw(t1, FieldMemOperand(v0, HeapNumber::kExponentOffset));
+   __ And(t2, t1, Operand(~HeapNumber::kSignMask));
+   __ srl(t2, t2, HeapNumber::kMantissaBitsInTopWord);
+ 
+@@ -3768,8 +3768,8 @@
+         __ ldc1(f0, MemOperand(t3, 0));
+       } else {
+         // t3: pointer to the beginning of the double we want to load.
+-        __ lw(a2, MemOperand(t3, 0));
+-        __ lw(a3, MemOperand(t3, Register::kSizeInBytes));
++        __ lw(a2, MemOperand(t3, Register::kMantissaOffset));
++        __ lw(a3, MemOperand(t3, Register::kExponentOffset));
+       }
+       break;
+     case FAST_ELEMENTS:
+@@ -4132,8 +4132,8 @@
+         CpuFeatures::Scope scope(FPU);
+         __ sdc1(f0, MemOperand(a3, 0));
+       } else {
+-        __ sw(t2, MemOperand(a3, 0));
+-        __ sw(t3, MemOperand(a3, Register::kSizeInBytes));
++        __ sw(t2, MemOperand(a3, Register::kMantissaOffset));
++        __ sw(t3, MemOperand(a3, Register::kExponentOffset));
+       }
+       break;
+     case FAST_ELEMENTS:
+@@ -4296,8 +4296,8 @@
+         __ sll(t8, key, 2);
+         __ addu(t8, a3, t8);
+         // t8: effective address of destination element.
+-        __ sw(t4, MemOperand(t8, 0));
+-        __ sw(t3, MemOperand(t8, Register::kSizeInBytes));
++        __ sw(t4, MemOperand(t8, Register::kMantissaOffset));
++        __ sw(t3, MemOperand(t8, Register::kExponentOffset));
+         __ mov(v0, a0);
+         __ Ret();
+       } else {
+@@ -4497,11 +4497,11 @@
+   __ lw(scratch, FieldMemOperand(elements_reg, FixedArray::kLengthOffset));
+   __ Branch(&miss_force_generic, hs, key_reg, Operand(scratch));
+ 
+-  // Load the upper word of the double in the fixed array and test for NaN.
++  // Load the exponent in the fixed array and test for NaN.
+   __ sll(scratch2, key_reg, kDoubleSizeLog2 - kSmiTagSize);
+   __ Addu(indexed_double_offset, elements_reg, Operand(scratch2));
+-  uint32_t upper_32_offset = FixedArray::kHeaderSize + sizeof(kHoleNanLower32);
+-  __ lw(scratch, FieldMemOperand(indexed_double_offset, upper_32_offset));
++  __ lw(scratch, FieldMemOperand(indexed_double_offset,
++                                 FixedArray::kHeaderSize + kHoleNanUpper32Offset));
+   __ Branch(&miss_force_generic, eq, scratch, Operand(kHoleNanUpper32));
+ 
+   // Non-NaN. Allocate a new heap number and copy the double value into it.
+@@ -4509,12 +4509,12 @@
+   __ AllocateHeapNumber(heap_number_reg, scratch2, scratch3,
+                         heap_number_map, &slow_allocate_heapnumber);
+ 
+-  // Don't need to reload the upper 32 bits of the double, it's already in
++  // Don't need to reload the exponent (the upper 32 bits of the double), it's already in
+   // scratch.
+   __ sw(scratch, FieldMemOperand(heap_number_reg,
+                                  HeapNumber::kExponentOffset));
+   __ lw(scratch, FieldMemOperand(indexed_double_offset,
+-                                 FixedArray::kHeaderSize));
++                                 FixedArray::kHeaderSize + kHoleNanLower32Offset));
+   __ sw(scratch, FieldMemOperand(heap_number_reg,
+                                  HeapNumber::kMantissaOffset));
+ 
+--- a/src/objects.h
++++ b/src/objects.h
+@@ -1344,8 +1344,13 @@
+   // is a mixture of sign, exponent and mantissa.  Our current platforms are all
+   // little endian apart from non-EABI arm which is little endian with big
+   // endian floating point word ordering!
++#ifndef BIG_ENDIAN_FLOATING_POINT
+   static const int kMantissaOffset = kValueOffset;
+   static const int kExponentOffset = kValueOffset + 4;
++#else
++  static const int kMantissaOffset = kValueOffset + 4;
++  static const int kExponentOffset = kValueOffset;
++#endif
+ 
+   static const int kSize = kValueOffset + kDoubleSize;
+   static const uint32_t kSignMask = 0x80000000u;
+--- a/src/profile-generator.cc
++++ b/src/profile-generator.cc
+@@ -1819,7 +1819,9 @@
+     Address field = obj->address() + offset;
+     ASSERT(!Memory::Object_at(field)->IsFailure());
+     ASSERT(Memory::Object_at(field)->IsHeapObject());
+-    *field |= kFailureTag;
++    Object* untagged = *reinterpret_cast<Object**>(field);
++    intptr_t tagged  = reinterpret_cast<intptr_t>(untagged) | kFailureTag;
++    *reinterpret_cast<Object**>(field) = reinterpret_cast<Object*>(tagged);
+   }
+ 
+  private:
+--- a/src/runtime.cc
++++ b/src/runtime.cc
+@@ -8553,8 +8553,15 @@
+ #else
+ typedef uint64_t ObjectPair;
+ static inline ObjectPair MakePair(MaybeObject* x, MaybeObject* y) {
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+   return reinterpret_cast<uint32_t>(x) |
+       (reinterpret_cast<ObjectPair>(y) << 32);
++#elif __BYTE_ORDER == __BIG_ENDIAN
++  return reinterpret_cast<uint32_t>(y) |
++      (reinterpret_cast<ObjectPair>(x) << 32);
++#else
++#error Unknown endianess
++#endif
+ }
+ #endif
+ 
+--- a/test/cctest/cctest.gyp
++++ b/test/cctest/cctest.gyp
+@@ -118,7 +118,7 @@
+             'test-disasm-arm.cc'
+           ],
+         }],
+-        ['v8_target_arch=="mipsel"', {
++        ['v8_target_arch=="mipsel" or v8_target_arch=="mips"', {
+           'sources': [
+             'test-assembler-mips.cc',
+             'test-disasm-mips.cc',
+--- a/test/cctest/test-assembler-mips.cc
++++ b/test/cctest/test-assembler-mips.cc
+@@ -537,11 +537,21 @@
+   USE(dummy);
+ 
+   CHECK_EQ(0x11223344, t.r1);
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+   CHECK_EQ(0x3344, t.r2);
+   CHECK_EQ(0xffffbbcc, t.r3);
+   CHECK_EQ(0x0000bbcc, t.r4);
+   CHECK_EQ(0xffffffcc, t.r5);
+   CHECK_EQ(0x3333bbcc, t.r6);
++#elif __BYTE_ORDER == __BIG_ENDIAN
++  CHECK_EQ(0x1122, t.r2);
++  CHECK_EQ(0xffff99aa, t.r3);
++  CHECK_EQ(0x000099aa, t.r4);
++  CHECK_EQ(0xffffff99, t.r5);
++  CHECK_EQ(0x99aa3333, t.r6);
++#else
++#error Unknown endianess
++#endif
+ }
+ 
+ 
+@@ -955,6 +965,7 @@
+   Object* dummy = CALL_GENERATED_CODE(f, &t, 0, 0, 0, 0);
+   USE(dummy);
+ 
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+   CHECK_EQ(0x44bbccdd, t.lwl_0);
+   CHECK_EQ(0x3344ccdd, t.lwl_1);
+   CHECK_EQ(0x223344dd, t.lwl_2);
+@@ -974,6 +985,29 @@
+   CHECK_EQ(0xbbccdd44, t.swr_1);
+   CHECK_EQ(0xccdd3344, t.swr_2);
+   CHECK_EQ(0xdd223344, t.swr_3);
++#elif __BYTE_ORDER == __BIG_ENDIAN
++  CHECK_EQ(0x11223344, t.lwl_0);
++  CHECK_EQ(0x223344dd, t.lwl_1);
++  CHECK_EQ(0x3344ccdd, t.lwl_2);
++  CHECK_EQ(0x44bbccdd, t.lwl_3);
++
++  CHECK_EQ(0xaabbcc11, t.lwr_0);
++  CHECK_EQ(0xaabb1122, t.lwr_1);
++  CHECK_EQ(0xaa112233, t.lwr_2);
++  CHECK_EQ(0x11223344, t.lwr_3);
++
++  CHECK_EQ(0xaabbccdd, t.swl_0);
++  CHECK_EQ(0x11aabbcc, t.swl_1);
++  CHECK_EQ(0x1122aabb, t.swl_2);
++  CHECK_EQ(0x112233aa, t.swl_3);
++
++  CHECK_EQ(0xdd223344, t.swr_0);
++  CHECK_EQ(0xccdd3344, t.swr_1);
++  CHECK_EQ(0xbbccdd44, t.swr_2);
++  CHECK_EQ(0xaabbccdd, t.swr_3);
++#else
++#error Unknown endianess
++#endif
+ }
+ 
+ 
+--- a/test/mjsunit/mjsunit.status
++++ b/test/mjsunit/mjsunit.status
+@@ -49,7 +49,7 @@
+ ##############################################################################
+ # These use a built-in that's only present in debug mode. They take
+ # too long to run in debug mode on ARM and MIPS.
+-fuzz-natives-part*: PASS, SKIP if ($mode == release || $arch == arm || $arch == android_arm || $arch == mipsel)
++fuzz-natives-part*: PASS, SKIP if ($mode == release || $arch == arm || $arch == android_arm || $arch == mipsel || $arch == mips)
+ 
+ big-object-literal: PASS, SKIP if ($arch == arm || $arch == android_arm)
+ 
+@@ -57,7 +57,7 @@
+ array-constructor: PASS || TIMEOUT
+ 
+ # Very slow on ARM and MIPS, contains no architecture dependent code.
+-unicode-case-overoptimization: PASS, TIMEOUT if ($arch == arm || $arch == android_arm || $arch == mipsel)
++unicode-case-overoptimization: PASS, TIMEOUT if ($arch == arm || $arch == android_arm || $arch == mipsel || $arch == mips)
+ 
+ ##############################################################################
+ # This test sets the umask on a per-process basis and hence cannot be
+@@ -127,7 +127,7 @@
+ math-floor-of-div-minus-zero: SKIP
+ 
+ ##############################################################################
+-[ $arch == mipsel ]
++[ $arch == mipsel || $arch == mips ]
+ 
+ # Slow tests which times out in debug mode.
+ try: PASS, SKIP if $mode == debug
+--- a/test/mozilla/mozilla.status
++++ b/test/mozilla/mozilla.status
+@@ -126,13 +126,13 @@
+ ecma/Date/15.9.2.2-6: PASS || FAIL
+ 
+ # 1026139: These date tests fail on arm and mips
+-ecma/Date/15.9.5.29-1: PASS || FAIL if ($arch == arm || $arch == mipsel)
+-ecma/Date/15.9.5.34-1: PASS || FAIL if ($arch == arm || $arch == mipsel)
+-ecma/Date/15.9.5.28-1: PASS || FAIL if ($arch == arm || $arch == mipsel)
++ecma/Date/15.9.5.29-1: PASS || FAIL if ($arch == arm || $arch == mipsel || $arch == mips)
++ecma/Date/15.9.5.34-1: PASS || FAIL if ($arch == arm || $arch == mipsel || $arch == mips)
++ecma/Date/15.9.5.28-1: PASS || FAIL if ($arch == arm || $arch == mipsel || $arch == mips)
+ 
+ # 1050186: Arm/MIPS vm is broken; probably unrelated to dates
+-ecma/Array/15.4.4.5-3: PASS || FAIL if ($arch == arm || $arch == mipsel)
+-ecma/Date/15.9.5.22-2: PASS || FAIL if ($arch == arm || $arch == mipsel)
++ecma/Array/15.4.4.5-3: PASS || FAIL if ($arch == arm || $arch == mipsel || $arch == mips)
++ecma/Date/15.9.5.22-2: PASS || FAIL if ($arch == arm || $arch == mipsel || $arch == mips)
+ 
+ # Flaky test that fails due to what appears to be a bug in the test.
+ # Occurs depending on current time
+@@ -854,6 +854,28 @@
+ 
+ # Times out and print so much output that we need to skip it to not
+ # hang the builder.
++js1_5/extensions/regress-342960: SKIP
++
++# BUG(3251229): Times out when running new crankshaft test script.
++ecma_3/RegExp/regress-311414: SKIP
++ecma/Date/15.9.5.8: SKIP
++ecma/Date/15.9.5.10-2: SKIP
++ecma/Date/15.9.5.11-2: SKIP
++ecma/Date/15.9.5.12-2: SKIP
++js1_5/Array/regress-99120-02: SKIP
++js1_5/extensions/regress-371636: SKIP
++js1_5/Regress/regress-203278-1: SKIP
++js1_5/Regress/regress-404755:  SKIP
++js1_5/Regress/regress-451322: SKIP
++
++
++# BUG(1040): Allow this test to timeout.
++js1_5/GC/regress-203278-2: PASS || TIMEOUT
++
++[ $arch == mips ]
++
++# Times out and print so much output that we need to skip it to not
++# hang the builder.
+ js1_5/extensions/regress-342960: SKIP
+ 
+ # BUG(3251229): Times out when running new crankshaft test script.
+--- a/test/sputnik/sputnik.status
++++ b/test/sputnik/sputnik.status
+@@ -229,3 +229,17 @@
+ S15.1.3.4_A2.3_T1: SKIP
+ S15.1.3.1_A2.5_T1: SKIP
+ S15.1.3.2_A2.5_T1: SKIP
++
++[ $arch == mips ]
++
++# BUG(3251225): Tests that timeout with --nocrankshaft.
++S15.1.3.1_A2.5_T1: SKIP
++S15.1.3.2_A2.5_T1: SKIP
++S15.1.3.1_A2.4_T1: SKIP
++S15.1.3.1_A2.5_T1: SKIP
++S15.1.3.2_A2.4_T1: SKIP
++S15.1.3.2_A2.5_T1: SKIP
++S15.1.3.3_A2.3_T1: SKIP
++S15.1.3.4_A2.3_T1: SKIP
++S15.1.3.1_A2.5_T1: SKIP
++S15.1.3.2_A2.5_T1: SKIP
+--- a/test/test262/test262.status
++++ b/test/test262/test262.status
+@@ -74,7 +74,7 @@
+ S15.1.3.1_A2.5_T1: PASS, SKIP if $mode == debug
+ S15.1.3.2_A2.5_T1: PASS, SKIP if $mode == debug
+ 
+-[ $arch == arm || $arch == mipsel ]
++[ $arch == arm || $arch == mipsel || $arch == mips ]
+ 
+ # TODO(mstarzinger): Causes stack overflow on simulators due to eager
+ # compilation of parenthesized function literals. Needs investigation.
+--- a/tools/gyp/v8.gyp
++++ b/tools/gyp/v8.gyp
+@@ -564,7 +564,7 @@
+                 '../../src/ia32/stub-cache-ia32.cc',
+               ],
+             }],
+-            ['v8_target_arch=="mipsel"', {
++            ['v8_target_arch=="mipsel" or v8_target_arch=="mips"', {
+               'sources': [
+                 '../../src/mips/assembler-mips.cc',
+                 '../../src/mips/assembler-mips.h',
+--- a/tools/run-tests.py
++++ b/tools/run-tests.py
+@@ -65,6 +65,7 @@
+                    "arm",
+                    "ia32",
+                    "mipsel",
++                   "mips",
+                    "x64"]
+ 
+ 
+@@ -268,7 +269,7 @@
+   timeout = options.timeout
+   if timeout == -1:
+     # Simulators are slow, therefore allow a longer default timeout.
+-    if arch in ["android", "arm", "mipsel"]:
++    if arch in ["android", "arm", "mipsel", "mips"]:
+       timeout = 2 * TIMEOUT_DEFAULT;
+     else:
+       timeout = TIMEOUT_DEFAULT;
+--- a/tools/test-wrapper-gypbuild.py
++++ b/tools/test-wrapper-gypbuild.py
+@@ -151,7 +151,7 @@
+       print "Unknown mode %s" % mode
+       return False
+   for arch in options.arch:
+-    if not arch in ['ia32', 'x64', 'arm', 'mipsel', 'android_arm',
++    if not arch in ['ia32', 'x64', 'arm', 'mipsel', 'mips', 'android_arm',
+                     'android_ia32']:
+       print "Unknown architecture %s" % arch
+       return False
+--- a/tools/test.py
++++ b/tools/test.py
+@@ -1282,7 +1282,7 @@
+     options.scons_flags.append("arch=" + options.arch)
+   # Simulators are slow, therefore allow a longer default timeout.
+   if options.timeout == -1:
+-    if options.arch in ['android', 'arm', 'mipsel']:
++    if options.arch in ['android', 'arm', 'mipsel', 'mips']:
+       options.timeout = 2 * TIMEOUT_DEFAULT;
+     else:
+       options.timeout = TIMEOUT_DEFAULT;
+--- a/tools/testrunner/local/statusfile.py
++++ b/tools/testrunner/local/statusfile.py
+@@ -59,7 +59,7 @@
+ # Support arches, modes to be written as keywords instead of strings.
+ VARIABLES = {ALWAYS: True}
+ for var in ["debug", "release", "android_arm", "android_ia32", "arm", "ia32",
+-            "mipsel", "x64"]:
++            "mipsel", "mips", "x64"]:
+   VARIABLES[var] = var
+ 
+ 

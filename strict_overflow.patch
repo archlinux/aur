@@ -1,0 +1,15 @@
+Description: silence strict-overflow error when building with gcc5
+Forwarded: not-yet
+Author: Jérémy Lal <kapoure@melix.org>
+Last-Update: 2015-08-18
+--- a/src/bignum.cc
++++ b/src/bignum.cc
+@@ -105,7 +105,7 @@
+   const int kMaxUint64DecimalDigits = 19;
+   Zero();
+   int length = value.length();
+-  int pos = 0;
++  uint pos = 0;
+   // Let's just say that each digit needs 4 bits.
+   while (length >= kMaxUint64DecimalDigits) {
+     uint64_t digits = ReadUInt64(value, pos, kMaxUint64DecimalDigits);

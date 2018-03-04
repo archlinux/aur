@@ -1,0 +1,71 @@
+Description: upstream fix needed by mips arch
+Origin: https://code.google.com/p/v8/source/detail?r=19121
+
+--- a/src/mips/code-stubs-mips.cc
++++ b/src/mips/code-stubs-mips.cc
+@@ -7808,9 +7808,16 @@
+   const int32_t kReturnAddressDistanceFromFunctionStart =
+       Assembler::kCallTargetAddressOffset + (2 * Assembler::kInstrSize);
+ 
+-  // Save live volatile registers.
+-  __ Push(ra, t1, a1);
+-  const int32_t kNumSavedRegs = 3;
++  // This should contain all kJSCallerSaved registers.
++  const RegList kSavedRegs =
++     kJSCallerSaved |  // Caller saved registers.
++     s5.bit();         // Saved stack pointer.
++
++  // We also save ra, so the count here is one higher than the mask indicates.
++  const int32_t kNumSavedRegs = kNumJSCallerSaved + 2;
++
++  // Save all caller-save registers as this may be called from anywhere.
++  __ MultiPush(kSavedRegs | ra.bit());
+ 
+   // Compute the function's address for the first argument.
+   __ Subu(a0, ra, Operand(kReturnAddressDistanceFromFunctionStart));
+@@ -7822,32 +7829,36 @@
+   // Align the stack if necessary.
+   int frame_alignment = masm->ActivationFrameAlignment();
+   if (frame_alignment > kPointerSize) {
+-    __ mov(t1, sp);
+     ASSERT(IsPowerOf2(frame_alignment));
++    __ mov(s5, sp);
+     __ And(sp, sp, Operand(-frame_alignment));
+   }
+-
++    // Allocate space for arg slots.
++  __ Subu(sp, sp, kCArgsSlotsSize);
+ #if defined(V8_HOST_ARCH_MIPS)
+-  __ li(at, Operand(reinterpret_cast<int32_t>(&entry_hook_)));
+-  __ lw(at, MemOperand(at));
++  __ li(t9, Operand(reinterpret_cast<int32_t>(&entry_hook_)));
++  __ lw(t9, MemOperand(t9));
+ #else
+   // Under the simulator we need to indirect the entry hook through a
+   // trampoline function at a known address.
+   Address trampoline_address = reinterpret_cast<Address>(
+       reinterpret_cast<intptr_t>(EntryHookTrampoline));
+   ApiFunction dispatcher(trampoline_address);
+-  __ li(at, Operand(ExternalReference(&dispatcher,
++  __ li(t9, Operand(ExternalReference(&dispatcher,
+                                       ExternalReference::BUILTIN_CALL,
+                                       masm->isolate())));
+ #endif
+-  __ Call(at);
+-
++  // Call C function through t9 to conform ABI for PIC.
++  __ Call(t9);
+   // Restore the stack pointer if needed.
+   if (frame_alignment > kPointerSize) {
+-    __ mov(sp, t1);
++    __ mov(sp, s5);
++  } else {
++    __ Addu(sp, sp, kCArgsSlotsSize);
+   }
+ 
+-  __ Pop(ra, t1, a1);
++  // Also pop ra to get Ret(0).
++  __ MultiPop(kSavedRegs | ra.bit());
+   __ Ret();
+ }
+ 
