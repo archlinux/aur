@@ -8,7 +8,7 @@
 
 pkgname=wine-staging-pba
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -34,7 +34,7 @@ sha512sums=('4e3fe2eb81360bfa095194ab5b9647636cbeac0dc3955e6a3ee26062f650c66a4bd
             'd326b8da8fb02462bac178a23e18f5468de62780717c24eadb453201b2b6b6439d2be7dda38e40f24fdc570dd5bc54102e7bf05868c53b17b27f6b9a06fccdb0'
             '04b41d4198138dbfe1399e7ed1e406fb265472d08a3e4de3c5c8584574b167613c598d7fa397c6944b809a96f699a4447694291296fa01a8e07b8ea96026ed2f'
             '9f90b7adc0ed87daac0f453caf2fff8b338061d96a9cd890f305704f9b22581232c6a207eb9eb1670c69b083caa780a6e44280df47c95b4e6e8e73f046f7c8a5'
-            '8fd8d2e262327e78dad69186ebf091dbc034fab2675f0be91df75c88ae6f5e5ae6f456a2098c460861946390ce139e998f4b0f77e33671c8a7062a5e06b6e4ca')
+            '4b94c8374ecb459c35df9950b8cc4bcac5d4ccb4102e83ea9092de3e387e6f998af2968232816a94b4f21317dca6210a90ab4657f7f940072df7b050a84ad735')
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch"
 url="http://www.wine-staging.com"
