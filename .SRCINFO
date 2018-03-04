@@ -1,0 +1,33 @@
+pkgbase = shadowsocksrr-libev-git
+	pkgdesc = A ShadowsocksR fork
+	pkgver = 2.5.1.gbc1bbec
+	pkgrel = 1
+	url = https://github.com/shadowsocksrr/shadowsocksr-libev
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = zlib
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = openssl
+	depends = libev
+	depends = libsodium
+	depends = udns
+	depends = pcre
+	optdepends = mbedtls: another choice of SSL/TLS library
+	options = docs
+	options = !strip
+	source = shadowsocksrr-libev-git::git+https://github.com/shadowsocksrr/shadowsocksr-libev.git#branch=Akkariiin/develop
+	source = shadowsocksrr-libev-redir@.service
+	source = shadowsocksrr-libev-server@.service
+	source = shadowsocksrr-libev-tunnel@.service
+	source = shadowsocksrr-libev@.service
+	sha256sums = SKIP
+	sha256sums = 037a2803047bb0800d5aa059e3331090d7b94d8fab5552f564b4ed7455b7efad
+	sha256sums = 8c086ee6988bcac34e85d2ec5c7487f92b3dd026bfa886fe8fec4aa484c61b9e
+	sha256sums = c24d4d16291535015d30b274af466ffabf6cc02e0b7c61c206aa326746cfedc2
+	sha256sums = c4d5f2dc5d4fce9680623de2a665e8f0df9783946162314cc5103d6c1f16d510
+
+pkgname = shadowsocksrr-libev-git
+

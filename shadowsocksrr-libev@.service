@@ -1,0 +1,12 @@
+[Unit]
+Description=ShadowsocksRR-Libev Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/ssrr-local -c /etc/shadowsocksrr/%i.json
+
+[Install]
+WantedBy=multi-user.target
