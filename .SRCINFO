@@ -1,6 +1,6 @@
 pkgbase = myrdp
 	pkgdesc = RDP client using freerdp. Similar to Remmina, mRemoteNG, RDCMan.
-	pkgver = 2018.1
+	pkgver = 2018.1.1
 	pkgrel = 1
 	url = https://github.com/devqore/myrdp
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = myrdp
 	depends = python2-pycryptodomex
 	source = myrdp.sh
 	source = myrdp.desktop
-	source = myrdp::git://github.com/szatanszmatan/myrdp
+	source = myrdp::git://github.com/szatanszmatan/myrdp#tag=2018.1.1
 	sha256sums = 7ca211c23f2600d4406058f32cc22b8a42f0c9874b366496e3d0bda0c05ea4b5
 	sha256sums = 3fae3a047a78501872577f21b65026f69ba5e918d47565c60362cef223f66876
 	sha256sums = SKIP
