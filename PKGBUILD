@@ -3,7 +3,7 @@
 pkgname='remarkable-git'
 conflicts=('remarkable')
 provides=('remarkable')
-pkgver=1.87
+pkgver=1.87.r27.gda0d88c
 pkgrel=1
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python'
          'wkhtmltopdf'
          'gtksourceview3'
          )
-makedepends=('python')
+makedepends=('python' 'git')
 optdepends=('python-lxml: export to HTML format support')
 
 install="remarkable.install"
@@ -33,6 +33,12 @@ sha1sums=('SKIP'
           'bdbfb750df9e5fb3022f47a46a80555259628cd1'
           '76a8a61ed2bcf08e71971a52597fb4b638963a2c'
           '6e5ea06076c85fdd25b79bfc41588f7f7ee9ba29')
+
+pkgver() {
+  cd Remarkable
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     msg2 "Removing findbar patches.."
