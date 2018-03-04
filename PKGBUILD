@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-test-mocktime'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Replaces actual time with simulated time "
 arch=('any')
@@ -12,10 +12,10 @@ options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
 url='https://metacpan.org/release/Test-MockTime'
-source=('http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/Test-MockTime-0.15.tar.gz')
-md5sums=('af7374d01a2d6a0a9a341543ab8619e1')
-sha512sums=('8a91eb39e7ff68d6ac1cbd149ee8acdbdc2bf6c99bcd71decc38fb2c71f5ed6bdb32336c4e07a922e7d8dd1b2d084306a232e008a0a8587720fff60a3ba325d0')
-_distdir="Test-MockTime-0.15"
+source=('http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/Test-MockTime-0.16.tar.gz')
+md5sums=('624d6976d57a79c9cd14237168424f44')
+sha512sums=('158026f9b1590131b51a004c0b8ecc7e190d0bd90da13ae56f645909e30ce6830deae1821874d71a1ad4d0dee84cd9e2b50aeacf7ef1d9cd465332823da0f927')
+_distdir="Test-MockTime-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
