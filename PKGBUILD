@@ -18,7 +18,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pkg:0:1}/${_pkg}/${_p
 md5sums=('ccbde0ffaeffa3d9a802b7704aa38e21')
 
 package_python2-datafreeze() {
-  depends=('python2' 'python2-sqlalchemy' 'python2-alembic')
+  depends=('python2' 'python2-sqlalchemy' 'python2-alembic' 'python2-yaml' 'python2-normality' 'python2-banal')
   cd "${_pkg}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize 1
   install -D PKG-INFO "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -26,7 +26,7 @@ package_python2-datafreeze() {
 
 
 package_python-datafreeze() {
-  depends=('python' 'python-sqlalchemy' 'python-alembic')
+  depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-yaml' 'python-normality' 'python-banal')
   cd "${_pkg}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize 1
   install -D PKG-INFO "$pkgdir"/usr/share/licenses/$pkgname/LICENSE

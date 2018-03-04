@@ -14,9 +14,15 @@ pkgname = python-datafreeze
 	depends = python
 	depends = python-sqlalchemy
 	depends = python-alembic
+	depends = python-yaml
+	depends = python-normality
+	depends = python-banal
 
 pkgname = python2-datafreeze
 	depends = python2
 	depends = python2-sqlalchemy
 	depends = python2-alembic
+	depends = python2-yaml
+	depends = python2-normality
+	depends = python2-banal
 
