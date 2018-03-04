@@ -1,6 +1,6 @@
 pkgbase = squishyball
-	pkgdesc = Perform sample comparison testing on the command line
-	pkgver = 19599
+	pkgdesc = Perform ABX audio sample comparison testing on the command line
+	pkgver = 19643
 	pkgrel = 1
 	url = https://svn.xiph.org/trunk/squishyball/
 	arch = i686
