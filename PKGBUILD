@@ -1,6 +1,6 @@
 pkgbase=python-transitions
 pkgname=('python-transitions' 'python2-transitions')
-pkgver=0.4.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A lightweight, object-oriented finite state machine implementation in Python"
 url="http://github.com/tyarkoni/transitions"
@@ -8,7 +8,7 @@ arch=(any)
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six')
 source=("https://github.com/tyarkoni/transitions/archive/${pkgver}.tar.gz")
-md5sums=('69af441d2ff8e7041f8d3cc6c92ad1d5')
+md5sums=('c87ad738a331ae2b2cda373e918aafb8')
 
 prepare() {
   cd "${srcdir}"/transitions-$pkgver
