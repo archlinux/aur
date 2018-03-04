@@ -1,7 +1,7 @@
 # Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
 
 pkgname=faience-ng-icon-theme
-pkgver=20180126
+pkgver=20180217
 pkgrel=1
 pkgdesc="Continued development of Faenza\Faience Icon Theme"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('faience-ng-icon-theme')
 conflicts=('faience-ng-icon-theme')
 options=(!strip)
 source=("https://github.com/faience/faience-ng-icon-theme/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('dd9bfcc215345e16cd6559915d40bb6c')
+md5sums=('abab160ebde05226351bff5c2b92e132')
 
 package() {
   install -d ${pkgdir}/usr/share/icons
