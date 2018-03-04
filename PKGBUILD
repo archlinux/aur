@@ -3,7 +3,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=openage-git
-pkgver=v0.3.0.r1181.g11a54bf7
+pkgver=0.3.0.r1187.g78c6d7ed
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ source=("$pkgname::git+https://github.com/SFTtech/openage")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
   cd "$srcdir/$pkgname"
