@@ -2,7 +2,7 @@
 # https://github.com/FabioLolix
 
 pkgname=obsidian-icon-theme-git
-pkgver=v3.3.r3.ga00ec9a7
+pkgver=3.7.r0.g9ba2200f
 pkgrel=1
 pkgdesc="Gnome Icon Pack based upon Faenza, optimized for dark themes. All colors"
 arch=('any')
@@ -16,8 +16,8 @@ source=("iconpack::git+https://github.com/madmaxms/iconpack-obsidian.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/iconpack"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/iconpack"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
