@@ -1,5 +1,5 @@
-# Maintainer: edward-p <micro.fedora@gmail.com>
 # Maintainer: Skywol <skywol@qq.com>
+# Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-wine-binfmt
 deepin_name=deepin-wine-binfmt
 pkgvers=2.18-5~rc6
