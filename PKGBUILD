@@ -2,7 +2,7 @@
 # Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
 
 pkgname=kitty-git
-pkgver=v0.7.1.r1.ga9be05c
+pkgver=0.8.0.r38.g54ed08c
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd kitty
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

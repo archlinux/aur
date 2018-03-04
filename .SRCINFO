@@ -1,6 +1,6 @@
 pkgbase = kitty-git
 	pkgdesc = A modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = v0.7.1.r1.ga9be05c
+	pkgver = 0.8.0.r38.g54ed08c
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/kitty
 	arch = i686
