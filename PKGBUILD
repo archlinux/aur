@@ -1,13 +1,13 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=zcoin-git
-pkgver=318.708491e
+pkgver=v0.13.4.2.r97.g62f1a32
 pkgrel=1
 pkgdesc='The Zerocoin Cryptocurrency'
 arch=('any')
 url='https://github.com/zcoinofficial/zcoin'
 license=('MIT')
-depends=('db4.8' 'boost' 'miniupnpc' 'qt5-base' 'qt5-tools' 'openssl-1.0' 'qrencode' 'libevent')
+depends=('db4.8' 'boost' 'miniupnpc' 'qt5-base' 'qt5-tools' 'openssl' 'qrencode' 'libevent' 'libcap' 'zstd')
 source=("$pkgname::git+https://github.com/zcoinofficial/zcoin.git"
         "${pkgname/-git/}.desktop")
 md5sums=('SKIP'
@@ -15,13 +15,15 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "$pkgname"
     ./autogen.sh
-    LDFLAGS=" -L/usr/lib/openssl-1.0 -lssl" CXXFLAGS="-I/usr/include/openssl-1.0" PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig" ./configure
+    LDFLAGS=" -lseccomp -lzstd -lcap" ./configure
+    # Please uncomment this if you face build errors
+    # make clean
     make
 }
 
