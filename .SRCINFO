@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.13.694834.e16e1739c334
+	pkgver = 4.15.725280.8a2a2ac361e6
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = linux-amd-staging-git
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.13
+	source = linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.15
 	source = config.x86_64
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 5831f5896c50159704e112d26c58954977cd891cb20523359b707dc434f6a8f9
+	sha256sums = e5b8525c62d9adb078913b40d5871b03170fcb3fcdb8c25498e063f928578d9d
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
