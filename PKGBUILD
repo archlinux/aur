@@ -4,7 +4,7 @@
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.3.r57.g7190192
+pkgver=2.4.3.r59.gfa967b9
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
