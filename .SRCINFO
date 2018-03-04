@@ -1,0 +1,18 @@
+pkgbase = bitcoin-com
+	pkgdesc = Bitcoin.com Bitcoin Wallet
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://www.bitcoin.com/
+	arch = x86_64
+	license = MIT
+	makedepends = zip
+	depends = npm
+	depends = python2
+	options = !strip
+	source = bitcoin-com.desktop
+	md5sums = a48078782a2a0650271317e9be091f4c
+	source_x86_64 = bitcoin-com-4.5.0::git+https://github.com/Bitcoin-com/Wallet.git#tag=4.5.0
+	md5sums_x86_64 = SKIP
+
+pkgname = bitcoin-com
+
