@@ -1,9 +1,12 @@
 # Maintainer: Yiyao Yu <yuydevel@protonmail.com>
 
+# Change the following to 1 if you want to run tests before packaging
+_enabletests=0
+
 _pkgname=shadowsocks
 pkgname="${_pkgname}-git"
-pkgver=2.9.1.r21.g2ab8c6b
-pkgrel=2
+pkgver=2.9.1.r24.ge332ec9
+pkgrel=1
 pkgdesc="A lightweight tunnel proxy"
 license=('Apache')
 _url="https://github.com/shadowsocks/shadowsocks"
@@ -33,7 +36,12 @@ prepare(){
 
 check() {
   cd shadowsocks
-  tests/jenkins.sh || warning "Tests failed"
+  if [ ${_enabletests} -eq 1 ]; then
+	echo Running tests, this might take a while...
+    tests/jenkins.sh || warning "Tests failed"
+  else
+    echo Tests have been disabled, set _enabletests to 1 if you want to run them.
+  fi
 }
 
 package() {
