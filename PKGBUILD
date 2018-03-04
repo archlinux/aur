@@ -1,7 +1,7 @@
 # Contributor Andrew Gunnerson <andrewgunnerson@gmail.com>
 
 pkgname=mingw-w64-lz4
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Very fast lossless compression algorithm (mingw-w64)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/lz4/lz4/archive/v${pkgver}.tar.gz")
-sha256sums=('2ca482ea7a9bb103603108b5a7510b7592b90158c151ff50a28f1ca8389fccf6')
+sha256sums=('fc2de900b63cc6e708d5d79a1d961fbc23e13a0a16ad230f27533d637eb7b349')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
