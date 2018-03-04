@@ -71,10 +71,10 @@ _ibus_mozc="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
-_mozcver=2.20.2673.102
+_mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
+_mozcver=2.23.2815.102
 _utdicver=20171008
-_zipcoderel=201801
+_zipcoderel=201802
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
@@ -99,9 +99,10 @@ sha1sums=('SKIP'
           '9f88c5f12b3d9b1190c8ec046c6693483af3ba3f'
           'e085ab894d415ce318cf91de64f017d505f1d14e'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '7daa1745bafe1d5e6572f0b3fdb3d2215422f8f0'
-          'a4d6dc99c9daf55b4bd359fdf967c2c2792ad5d5'
-          'd4f21a1684244387904b152f969a5e631f825af4')
+          '23e6c06ae55c7e7f4b3f4f80132725b37d55270a'
+          '260b382b3d8fa2743184ed851e78616feafb6dc3'
+          'd4f21a1684244387904b152f969a5e631f825af4'
+          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -148,6 +149,14 @@ prepare() {
     # Extract license part of uim-mozc
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
+    sed -i.bak \
+        -e 's/make_pair/std::make_pair/g' \
+        unix/uim/key_translator.cc \
+        unix/uim/mozc.cc
+    sed -i.bak \
+        -e 's/typedef map</typedef std::map</g' \
+        -e 's/ pair</ std::pair</g' \
+        unix/uim/key_translator.h
   fi
 }
 
