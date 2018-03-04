@@ -95,12 +95,17 @@
  
          return true;
      }
-@@ -85,7 +110,27 @@
+@@ -85,7 +110,32 @@
  
          Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
 -        Timeout.add (300 / panel_height, animation_step);
-+        timeout = Timeout.add (100 / panel_height, animation_step);
++        if (autohide == false) { 
++            timeout = Timeout.add (300 / panel_height, animation_step);
++        } else {
++            panel_displacement--;
++            animate_panel ();
++        }
 +    }
 +
 +    private bool on_idle () {
