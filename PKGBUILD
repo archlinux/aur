@@ -16,7 +16,7 @@ makedepends=(
 )
 provides=("plasma5-applets-caffeine-plus")
 conflicts=("plasma5-applets-caffeine-plus")
-source=("https://github.com/qunxyz/plasma-applet-caffeine-plus/archive/v$pkgver.tar.gz")
+source=("https://github.com/qunxyz/$_reponame/archive/v$pkgver.tar.gz")
 sha256sums=('935beb6d536e1dba81b320d9f6c27dff2d96ad85f40ea608ae7ea63ec6ea5521')
 
 prepare() {
