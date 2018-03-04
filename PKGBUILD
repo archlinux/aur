@@ -11,10 +11,10 @@ license=('custom:MIT')
 depends=('openssl-1.0' 'qt5-base' 'qt5-webengine' 'qt5-webchannel' 'qt5-location' 'qt5-declarative')
 replaces=('sielo-navigateur')
 source=(https://www.feldrise.com/Sielo/Linux/$pkgname-$pkgver.tar.gz)
-md5sums=('d644516b61621802d7a365d5b19e8a22')
+md5sums=('ebe412268ca59eda9807e01c203ba823')
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	mkdir build && cd build && cmake .. && make -j2
+	mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j2
 	cp -r ../usr $pkgdir/
 	cp sielo-browser $pkgdir/usr/bin
 	cp SNCompiler/sielo-compiler $pkgdir/usr/bin
