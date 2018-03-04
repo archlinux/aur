@@ -2,8 +2,8 @@
 # Contributor: Grey Christoforo <grey@christoforo.net>
 pkgname=lib32-tclkit
 pkgver=8.6.6
-_kit_commit=c21eeb1e379bd5acb5b304f0784877b8e8dd31ca
-pkgrel=1
+_kit_commit=cc4b5d74b6f236dc72f126d30d32bf55e9e9875f
+pkgrel=2
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime (32 bits version)"
 arch=('x86_64')
 url="https://github.com/patthoyts/kitgen"
@@ -19,7 +19,7 @@ source=("kitgen-${_kit_commit}.tar.gz::https://github.com/patthoyts/kitgen/archi
         "http://downloads.sourceforge.net/tcl/tk${pkgver}-src.tar.gz"
         "kitgen-cflags-quoting.patch")
 
-md5sums=('2053997a397309fa10d0b62a3df114ae'
+md5sums=('269b5090f3e99ff7d35424d95e189246'
          '5193aea8107839a79df8ac709552ecb7'
          'dd7dbb3a6523c42d05f6ab6e86096e99'
          '36c54854ce1992944eed7671f8742bad')
@@ -36,7 +36,10 @@ build() {
   ln -sf ../../tcl${pkgver} 8.6/tcl
   local options="thread allenc cli dyn"
   ./config.sh 8.6/kit-large thread allenc cli dyn
-  make -C 8.6/kit-large CFLAGS="-m32 -O2"
+
+  # UPX seems to corrupt things, so replace it with a dummy "true" command.
+  # https://github.com/upx/upx/issues/150#issuecomment-346538721
+  make -C 8.6/kit-large CFLAGS="-m32 -O2" UPX=true
 }
 
 package() {
