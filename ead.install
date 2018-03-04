@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo Disclaimer
+  echo ---------------------
+  echo Please note that e-additives is a hobby project. I SHALL NOT be held liable in case of any damages incurring from the usage of this data!
+  echo ----------------------
+  echo
+}
+

@@ -1,8 +1,9 @@
 pkgbase = e-additives.cli
 	pkgdesc = Brings food additives info to your console.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vexelon-dot-net/e-additives.cli
+	install = ead.install
 	arch = any
 	license = MIT
 	depends = python

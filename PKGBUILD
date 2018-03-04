@@ -1,7 +1,7 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=e-additives.cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brings food additives info to your console."
 arch=('any')
 url="https://github.com/vexelon-dot-net/e-additives.cli"
@@ -16,6 +16,7 @@ replaces=()
 backup=()
 options=()
 changelog=
+install=ead.install
 source=(https://github.com/vexelon-dot-net/e-additives.cli/archive/$pkgver.tar.gz 
 	https://github.com/vexelon-dot-net/e-additives.cli/releases/download/1.0.0/eadditives.sqlite3.gz)
 sha1sums=('d01b32875402384b62669532b32a1e78ae7fca6f'
