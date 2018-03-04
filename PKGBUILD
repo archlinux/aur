@@ -10,7 +10,7 @@ url="https://github.com/fusion809/macOS-Arc-White"
 license=("GPL3")
 optdepends=('plank' 'cinnamon' 'gnome-shell' 'gtk2' 'gtk3' 'xfce4')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('344b805dd6a0b7795f84cec4ccbbe173')
+md5sums=('4abdcc7007e38c67d1721aede1c11fb4')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
