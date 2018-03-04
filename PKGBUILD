@@ -1,7 +1,8 @@
-# Maintainer: Flow
+# Maintainer: xavinou51
+# Contributor: Flow
 
 pkgname=swift-explorer
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="User-friendly tool to manage files in an OpenStack Storage system (SWIFT)"
 license=('apachev2')
@@ -15,7 +16,7 @@ source=("SwiftExplorer-${pkgver}-jar-with-dependencies.jar::https://bintray.com/
         "swift-explorer.png"
         "swift-explorer.desktop"
         "LICENSE")
-md5sums=('6ac8027644a95b2eebd9c8d194fffa16'
+md5sums=('94b82d4c5614d2efcbfbc77114cee7e0'
          '0f2a52319a239eb70d0849b0223aad3b'
          '2a8d702d3c76a5c627dacd4534d5581d'
          'd64f444c2a263ec4db1a584b88b117ef'
