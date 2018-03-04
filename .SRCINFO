@@ -1,7 +1,7 @@
 pkgbase = netbeans-cpp
 	pkgdesc = Netbeans IDE development platform - C/C++ only
 	pkgver = 8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbeans.org/
 	install = netbeans.install
 	arch = i686

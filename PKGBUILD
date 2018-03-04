@@ -5,7 +5,7 @@
 # Adapted/copied from netbeans-cpp 6.9.1 (Thanks wimvdh)
 pkgname=netbeans-cpp
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Netbeans IDE development platform - C/C++ only"
 arch=('i686' 'x86_64')
 url="https://netbeans.org/"
@@ -31,6 +31,11 @@ package() {
   rm $pkgdir/usr/share/netbeans/bin/netbeans.exe
   rm -f $pkgdir/usr/share/netbeans/bin/netbeans64.exe
   rm $pkgdir/usr/share/netbeans/uninstall.sh
+  
+  # Use Arch default JRE instead of builtin JRE
+  rm -r $pkgdir/usr/share/netbeans/bin/jre
+  sed -i "s|netbeans_jdkhome=.*|netbeans_jdkhome=\"/usr/lib/jvm/default\"|g" $pkgdir/usr/share/netbeans/etc/netbeans.conf
+  
   install -D -m644 $srcdir/netbeans.desktop $pkgdir/usr/share/applications/netbeans.desktop
   for licensefile in LICENSE.txt THIRDPARTYLICENSE.txt
   do
