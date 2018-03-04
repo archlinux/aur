@@ -1,22 +1,24 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 _gitrel=d2622a7fbea0
+_pkgrel=1
 pkgname=omnikey_ifdokccid-git
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x"
 arch=('i686' 'x86_64')
 url="http://www.hidglobal.com/"
 license=('unknown')
 depends=('libusb' 'pcsclite')
-source=("https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.${pkgver}-${pkgrel}-${_gitrel}.tar.gz")
+conflicts=('omnikey_ifdokccid')
+source=("https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.${pkgver}-${_pkgrel}-${_gitrel}.tar.gz")
 md5sums=('11b6bedbe2d7578c17ccfc7fd58f5059')
 
 package() {
     # Extract the multi-package first
-    cd $srcdir/ifdokccid_linux_v.${pkgver}-${pkgrel}-${_gitrel}
+    cd $srcdir/ifdokccid_linux_v.${pkgver}-${_pkgrel}-${_gitrel}
 
     # Temporary variable
-    _PACKAGE_NAME="ifdokccid_linux_${CARCH}-v.${pkgver}-${pkgrel}-${_gitrel}"
+    _PACKAGE_NAME="ifdokccid_linux_${CARCH}-v.${pkgver}-${_pkgrel}-${_gitrel}"
 
     # Extract the platform package
     tar xzf ${_PACKAGE_NAME}.tar.gz
