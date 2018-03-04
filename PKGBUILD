@@ -3,7 +3,7 @@
 # Contributor: Jonas Strassel <jo.strassel@gmail.com>
 
 pkgname=pdfbeads
-pkgver=1.1.2
+pkgver=1.1.2.pre.beta
 pkgrel=0
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=(any)
@@ -14,6 +14,7 @@ depends=(
 'ruby>=2.0.0'
 'jbig2enc-git'
 'openjpeg2'
+'imagemagick6'
 )
 
 optdepends=(
@@ -29,8 +30,9 @@ md5sums=('68beffdd3b50d581a5325e68d43999c2')
 
 package() {
   cd "$srcdir"
+  mkdir  -p "$pkgdir"/usr/bin
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   gem install \
     --no-user-install \
     --verbose \
