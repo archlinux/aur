@@ -2,12 +2,12 @@
 
 pkgname=mill
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="shiny new Scala build tool"
 arch=(any)
 url="http://www.lihaoyi.com/mill/index.html"
 license=('custom')
-depends=('bash' 'java-environment')
+depends=('bash' 'java-environment<9')
 
 source=("$pkgname-$pkgver.sh::https://github.com/lihaoyi/mill/releases/download/$pkgver/$pkgver"
         "$pkgname-LICENSE::https://github.com/lihaoyi/mill/blob/$pkgver/LICENSE")
