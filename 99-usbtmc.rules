@@ -1,0 +1,8 @@
+SUBSYSTEMS=="usb", ATTRS{bDeviceClass}=="fe", ATTRS{bDeviceSubClass}=="03", ACTION=="add", GROUP="usbtmc", MODE="0666"
+SUBSYSTEMS=="usb", ATTRS{bDeviceClass}=="fe", ATTRS{bDeviceSubClass}=="3", ACTION=="add", GROUP="usbtmc", MODE="0666"
+SUBSYSTEMS=="usb", ATTRS{bInterfaceClass}=="fe", ATTRS{bInterfaceSubClass}=="03", ACTION=="add", GROUP="usbtmc", MODE="0666"
+SUBSYSTEMS=="usb", ATTRS{bInterfaceClass}=="fe", ATTRS{bInterfaceSubClass}=="3", ACTION=="add", GROUP="usbtmc", MODE="0666"
+
+# Devices
+KERNEL=="usbtmc/*",       MODE="0666", GROUP="usbtmc"
+KERNEL=="usbtmc[0-9]*",   MODE="0666", GROUP="usbtmc"

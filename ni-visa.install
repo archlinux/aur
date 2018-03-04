@@ -1,0 +1,20 @@
+post_install() {
+
+    getent group usbtmc || groupadd -r usbtmc
+    udevadm control --reload-rules 2>/dev/null
+
+    cat << EOF
+===> 
+===> Please re-login to renew environment variable.
+===> If USB-based devices do not run properly, check the following:
+===> # gpasswd -a <user> usbtmc
+===> # rmmod usbtmc
+===> refs: http://digital.ni.com/public.nsf/allkb/A10090850FF0887A86257926007A7E96
+===>       https://github.com/python-ivi/python-usbtmc#configuring-udev
+===> 
+EOF
+}
+
+post_remove() {
+    groupdel usbtmc >/dev/null 2>&1 || true
+}

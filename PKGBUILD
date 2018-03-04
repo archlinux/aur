@@ -1,57 +1,51 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
-
-pkgname=ni-visa
-pkgver=16.0.0
-_f_number=0
+# Maintainer: Tomoya Onozuka <t [dot] (family name in lower case) [dot] 1990 [at] gmail [dot] com>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
+pkgname=('ni-visa')
+_pkgbase=('ni-visa')
+pkgver=17.0.0
 _short_ver=${pkgver%.0}
 pkgrel=1
-pkgdesc="National Instruments NI-VISA(TM) Software for Linux"
-url="http://www.ni.com/download/ni-visa-5.4.1/4629/en/"
-arch=('i686' 'x86_64')
-[ "$CARCH" = 'i686' ] && _suffix=i386
-[ "$CARCH" = 'x86_64' ] && _suffix=x86_64
+pkgdesc="National Instruments NI-VISA(TM) Library for Linux."
+url="https://www.ni.com/visa/"
+arch=('x86_64')
 license=('custom')
-makedepends=('rpmextract')
+depends=('gcc-libs')
 optdepends=('python2-pyvisa: python 2 frontend'
 'python-pyvisa: python 3 frontend')
+source=("http://ftp.ni.com/support/softlib/visa/NI-VISA/${_short_ver}/Linux/NI-VISA-${pkgver}.iso"
+"99-usbtmc.rules")
+md5sums=('d114b70ce0802fa6bd7173a6f23f7257'
+         'cdfd2e18de4370001bfbe0226cf04b18')
+install='ni-visa.install'
 
-source=("http://download.ni.com/support/softlib/visa/NI-VISA/${_short_ver}/Linux/NI-VISA-${pkgver}.iso")
-md5sums=('7bd345779ce11ff79d5cb970d3bf99b3')
+prepare() {
+  bsdtar -xvf ${srcdir}/nivisa-${pkgver}f*.tar.gz
 
-build () {
-  mkdir -p extracted
-  bsdtar -xvf nivisa-${pkgver}f${_f_number}.tar.gz -C extracted
-  cd extracted/rpms
-  echo "do a thing"
-  for f in *.noarch.rpm *.${_suffix}.rpm
-  do
-     echo "Processing $f"
-     bsdtar -xvf $f
+  cd "${srcdir}"
+  for f in ${srcdir}/rpms/*.rpm; do
+    bsdtar -xf $f
   done
-  rm -rf *.rpm
+  sed -i -e 's/passportEnabled2 = 1/passportEnabled2 = 0/' "${srcdir}/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini"
+  sed -i -e 's/passportEnabled2 = 1/passportEnabled3 = 0/' "${srcdir}/usr/local/vxipnp/linux/NIvisa/Passport/nivisa.ini"
 }
 
-
 package() {
-  mv "${srcdir}/extracted/rpms" "${pkgdir}/"
-  cd "${pkgdir}/rpms"
-  mv * ..
-  cd "${srcdir}"
-  rm -rf "${srcdir}/extracted"
-  rm -rf "${pkgdir}/rpms"
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -a * "${pkgdir}/opt/${pkgname}/."
+  _vxipnppath="opt/${_pkgbase}/usr/local/vxipnp"
+  mkdir -p "${pkgdir}/usr/"{include,lib} "${pkgdir}/${_vxipnppath}/linux/" "${pkgdir}/etc/profile.d"
 
-  cd "${pkgdir}/opt/${pkgname}"
-  rm *.iso
-  rm *.tar.gz
+  cp -R "${srcdir}/usr/local/vxipnp/linux/"{include,lib64} "${pkgdir}/${_vxipnppath}/linux/"
+  install -Dm644 "${srcdir}/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini" "${pkgdir}/${_vxipnppath}/linux/NIvisa/Passport64/nivisa.ini"
 
-  cd "${pkgdir}/usr/local"
-  mv * ..
-  rm -rf "${pkgdir}/usr/local"
-  mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
-  
-  install -Dm644 "${srcdir}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  for f in "${pkgdir}/${_vxipnppath}/linux/lib64/"*.so; do
+    ln -s "${f#${pkgdir}}" "${pkgdir}/usr/lib/"
+  done
+  for f in "${pkgdir}/${_vxipnppath}/linux/include/"*.h; do
+    ln -s "${f#${pkgdir}}" "${pkgdir}/usr/include/"
+  done
+
+  install -Dm644 99-usbtmc.rules "${pkgdir}/usr/lib/udev/rules.d/99-usbtmc.rules"
+  echo "export VXIPNPPATH=/${_vxipnppath}" > "${pkgdir}/etc/profile.d/vxipnppath.sh"
+  install -D -m644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
