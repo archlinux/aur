@@ -2,13 +2,13 @@
 # Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=lumina-desktop-git
-pkgver=v1.4.0.r220.g8dc98653
+pkgver=v1.4.0.r229.gb9776293
 pkgrel=1
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD -- git version"
 arch=('x86_64' 'i686')
 url="https://github.com/pcbsd/lumina"
 license=('BSD')
-depends=('poppler-qt5' 'qt5-x11extras' 'qt5-multimedia')
+depends=('poppler-qt5' 'qt5-x11extras' 'qt5-multimedia' 'libmupdf')
 optdepends=('xorg-xbacklight: required for changing screen brightness'
             'alsa-utils: required for adjusting audio volume'
             'acpi: required for monitoring battery life'
