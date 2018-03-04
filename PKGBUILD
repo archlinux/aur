@@ -1,6 +1,6 @@
 #Maintainer Mike Harris <mike.a.harris@outlook.com>
 pkgname=plasma5-applets-kde-arch-update-notifier-git
-pkgver=4.0.5
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A KDE plasmoid for your system tray notifying you of available updates with AUR Support"
 url="https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid"
@@ -25,4 +25,9 @@ package(){
 	cd ${srcdir}/kde-arch-update-plasmoid/build
 	make DESTDIR="$pkgdir" install
 	
+}
+pkgver() {
+  cd "$srcdir/${pkgname}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  printf "%s" "$(git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
