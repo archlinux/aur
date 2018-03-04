@@ -3,11 +3,11 @@ _gitrel=d2622a7fbea0
 _pkgrel=1
 pkgname=omnikey_ifdokccid-git
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x"
 arch=('i686' 'x86_64')
 url="http://www.hidglobal.com/"
-license=('unknown')
+license=('custom:HID_OK_Drivers_EULA')
 depends=('libusb' 'pcsclite')
 conflicts=('omnikey_ifdokccid')
 source=("https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.${pkgver}-${_pkgrel}-${_gitrel}.tar.gz")
@@ -33,4 +33,6 @@ package() {
     install -m0644 z98_omnikey.rules $pkgdir/etc/udev/rules.d/z98_omnikey.rules
     mkdir -p $pkgdir/usr/lib/udev
     install -m0744 ok_pcscd_hotplug.sh $pkgdir/usr/lib/udev/ok_pcscd_hotplug.sh
+    mkdir -p $pkgdir/usr/share/licenses/$pkgname
+    install -Dm644 HID_OK_Drivers_EULA "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
