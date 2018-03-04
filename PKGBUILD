@@ -2,7 +2,7 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=python-telegram-bot
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper around the Telegram Bot API"
 url="https://github.com/python-telegram-bot/python-telegram-bot"
 depends=('python-future' 'python-urllib3')
@@ -12,7 +12,8 @@ optdepends=('python-ujson: Ultra fast JSON parsing'
 
 license=('LGPL3')
 arch=('any')
-source=("https://pypi.python.org/packages/f9/89/b946d746abb68588efd57297a9490ccc2e9faaae6c5f20712495d132588e/python-telegram-bot-10.0.0.tar.gz")
+#source=("https://pypi.python.org/packages/f9/89/b946d746abb68588efd57297a9490ccc2e9faaae6c5f20712495d132588e/python-telegram-bot-10.0.0.tar.gz")
+source=("https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v10.0.0/python-telegram-bot-$pkgver.tar.gz")
 sha256sums=('2e93d129d4b013b5b383c67c8dbfd8d791be23e58c1c3dfe5ad2aeaeba5bf037')
 
 prepare(){
