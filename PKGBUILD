@@ -5,7 +5,7 @@
 
 _pkgname=gcstar
 pkgname="${_pkgname}-gitlab"
-pkgver=1.7.1.1
+pkgver=1.7.1.2
 pkgrel=1
 pkgdesc="A collection management application"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
          'perl-archive-zip' 'perl-datetime-format-strptime'
          'perl-gdgraph' 'perl-mp3-info')
 # 'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
-makedepends=('subversion')
+makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+https://gitlab.com/Kerenoc/GCstar.git")
