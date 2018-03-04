@@ -1,0 +1,22 @@
+pkgbase = python-datafreeze
+	pkgdesc = Dump (freeze) SQL query results from a database into a selection of file formats
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/datafreeze
+	arch = x86_64
+	license = BSD
+	makedepends = python-pkgconfig
+	makedepends = python2-pkgconfig
+	source = https://files.pythonhosted.org/packages/source/d/datafreeze/datafreeze-0.1.0.tar.gz
+	md5sums = ccbde0ffaeffa3d9a802b7704aa38e21
+
+pkgname = python-datafreeze
+	depends = python
+	depends = python-sqlalchemy
+	depends = python-alembic
+
+pkgname = python2-datafreeze
+	depends = python2
+	depends = python2-sqlalchemy
+	depends = python2-alembic
+
