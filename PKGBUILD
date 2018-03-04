@@ -1,4 +1,5 @@
-# Maintainer: mibbio <contact at mibbiodev dot de>
+# Maintainer: jsonn <jaso35 at googlemail dot com
+# Contributor: mibbio <contact at mibbiodev dot de>
 # Contributor: jjacky
 # Contributor: dunningd <duncansdunning at yahoo dot co dot uk>
 # Adapted/copied from netbeans-cpp 6.9.1 (Thanks wimvdh)
@@ -19,11 +20,10 @@ backup=('usr/share/netbeans/etc/netbeans.conf')
 source_x86_64=(netbeans-$pkgver-cpp-linux.sh::http://download.netbeans.org/netbeans/$pkgver/final/bundles/netbeans-$pkgver-cpp-linux-x64.sh)
 source_i686=(netbeans-$pkgver-cpp-linux.sh::http://download.netbeans.org/netbeans/$pkgver/final/bundles/netbeans-$pkgver-cpp-linux-x86.sh)
 source=(netbeans.desktop)
-md5sums=('eb9c35b558997f62a52bddad16dba248')
-sha256sums_i686=('5e152971e57af1a94a4888217de4b59b0a2729a19b7a557dcb36e691c6bfa9bc')
-sha256sums_x86_64=('d6a89152b36be513c50764fcbfdd975076727f8333b46d1e60798c9fb79196e5')
-# md5sums_i686=('3c3d7f2ac6a2e5a4fa380611aac3a6c5')
-# md5sums_x86_64=('0d58114beabc57b134abeaf9c66adbf7')
+sha256sums=('b06afe8a2c8684956422b7ecb8a3d7a2aad6540619caa73ee39327fce5abfe5f')
+sha256sums_i686=('52cbd7b071573d2f8baecb10b430b895be6f06e7c8f9b7ef75ba59afc9ae1342')
+sha256sums_x86_64=('ba788a537fcdeb1e6b4963eebf9e7ea195723be85c03be693970eed8fb4e3777')
+
 
 package() {
   mkdir -p $pkgdir/usr/share/netbeans
