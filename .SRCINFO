@@ -1,0 +1,16 @@
+pkgbase = receptor-git
+	pkgdesc = Web frontend for the synapse bittorrent client
+	pkgver = r120.a730ef1
+	pkgrel = 1
+	url = https://github.com/SirCmpwn/receptor
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = npm
+	provides = synapse
+	conflicts = synapse
+	source = git+https://github.com/SirCmpwn/receptor
+	sha256sums = SKIP
+
+pkgname = receptor-git
+
