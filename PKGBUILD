@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-fonts-wine
-pkgvers=2.18-4
-pkgver=2.18_4
+pkgvers=2.18-5~rc6
+pkgver=2.18_5~rc6
 pkgrel=2
 epoch=
 pkgdesc="Deepin Wine Fonts"
