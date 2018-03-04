@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=MyRDP
-Comment=Remote Desktop client
+Comment=Remote Desktop manager
 Path=/usr/share/myrdp
 Exec=/usr/bin/myrdp
 Icon=/usr/share/myrdp/app/resources/myrdp.svg

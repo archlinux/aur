@@ -2,7 +2,7 @@
 pkgname=myrdp
 pkgver=2018.1.1
 pkgrel=1
-pkgdesc="RDP client using freerdp. Similar to Remmina, mRemoteNG, RDCMan."
+pkgdesc="RDP manager using freerdp. Similar to Remmina, mRemoteNG, RDCMan."
 arch=('any')
 url="https://github.com/devqore/myrdp"
 license=('GPL')
@@ -13,7 +13,7 @@ source=("myrdp.sh"
         "myrdp.desktop"
         "$pkgname::git://github.com/szatanszmatan/myrdp#tag=$pkgver")
 sha256sums=('7ca211c23f2600d4406058f32cc22b8a42f0c9874b366496e3d0bda0c05ea4b5'
-            '3fae3a047a78501872577f21b65026f69ba5e918d47565c60362cef223f66876'
+            '2caadd2656255a47876ab8717afd7c622013da9d2f92cb43e229f489e4e562d8'
             'SKIP')
 
 package() {
