@@ -1,0 +1,20 @@
+pkgbase = python-timezonefinder
+	pkgdesc = Fast and lightweight project for looking up the timezone for a given lat/lng
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/MrMinimal64/timezonefinder
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/t/timezonefinder/timezonefinder-2.1.0.tar.gz
+	sha256sums = f68fdc1d58f227598553a798768045407a5628b9d29ab1b26b7a24c08c74d16d
+
+pkgname = python-timezonefinder
+	depends = python-numpy
+
+pkgname = python2-timezonefinder
+	depends = python2-numpy
+
