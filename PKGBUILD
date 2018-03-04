@@ -6,7 +6,7 @@
 
 pkgname=greenfoot
 pkgver=3.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('any')
 url="https://www.${pkgname}.org"
@@ -17,7 +17,7 @@ source=("https://www.${pkgname}.org/download/files/Greenfoot-linux-${pkgver//.}.
         "${pkgname}.desktop")
 noextract=("Greenfoot-linux-${pkgver//.}.deb")
 sha256sums=('edf1e727386217a299e9fcd57a6d5c60a724a811d90d7ddec5fa05cc28631695'
-            'e1dc21a1a19dcaba1bc2bc0d5590ea928bad7441111d447f0a0010ceb19a164c'
+            '9709e4c1f1f0a65897b79db5ecc5cf2ac91420f7576ce8e3ed3fb4fe8537452e'
             '14f2f06b8566cb2d5f6369303420e5e08d031b37a6c1e06da47b58b7ca4eaec0')
 
 package() {

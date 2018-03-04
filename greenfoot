@@ -1,6 +1,6 @@
 #!/bin/sh
 java -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/greenfoot/bluej.jar bluej.Boot \
+        -cp /opt/greenfoot/bluej.jar:/usr/lib/jvm/default/lib/tools.jar bluej.Boot \
         -greenfoot=true \
         -bluej.compiler.showunchecked=false \
         -greenfoot.url.javadoc=file:///usr/share/doc/greenfoot/API \
