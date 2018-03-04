@@ -13,7 +13,7 @@ depends=(libutil-linux openssl)
 makedepends=(libyaml trousers)
 source=(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/refs/heads/$_tag.tar.gz
         no_static.patch)
-sha1sums=('ded3cfbe21f4cb0f1f9dd194e8dd72d7a8ed23fb'
+sha1sums=('SKIP'
           'b45016e2f1a9833d24d68a3d35a043258cab9405')
 
 prepare() {
