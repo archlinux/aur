@@ -7,9 +7,9 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-dev
-pkgver=3.3.r3576.1fdaf4c4+wine.3.3.r0.gf17120d11b
+pkgver=3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
 pkgrel=1
-_pkgbasever=3.3
+#_pkgbasever=3.3
 _winesrcdir=wine-git
 pkgdesc='A compatibility layer for running Windows programs (staging branch with some extra tweaks, git version)'
 arch=('i686' 'x86_64')
@@ -147,7 +147,11 @@ prepare() {
 pkgver() {
 	# retrieve current staging version
     cd "$pkgname"
-    local _staging_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+	#local _staging_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+	local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+	local _staging_version="$(git describe --long --tags \
+								| sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+								| sed "s/^latest.release/${_staging_tag}/")"
 
 	# retrieve current wine development version
     cd "${srcdir}/${_winesrcdir}"
@@ -155,7 +159,8 @@ pkgver() {
     
 	# create our version string, add our predefined _pkgbasever, 
 	# as there are no official correct releases or tags as of making this! 
-    printf '%s.%s+%s' "$_pkgbasever" "$_staging_version" "$_wine_version"
+	#printf '%s.%s+%s' "$_pkgbasever" "$_staging_version" "$_wine_version"
+	printf '%s+%s' "$_staging_version" "$_wine_version"
 }
 
 build() {

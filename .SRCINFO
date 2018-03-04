@@ -1,6 +1,6 @@
 pkgbase = wine-staging-dev
 	pkgdesc = A compatibility layer for running Windows programs (staging branch with some extra tweaks, git version)
-	pkgver = 3.3.r3576.1fdaf4c4+wine.3.3.r0.gf17120d11b
+	pkgver = 3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
 	pkgrel = 1
 	url = https://github.com/wine-staging/wine-staging
 	install = wine.install
@@ -137,7 +137,7 @@ pkgbase = wine-staging-dev
 	provides = wine-git=3.3.r0.gf17120d11b
 	provides = bin32-wine=3.3.r0.gf17120d11b
 	provides = wine-wow64=3.3.r0.gf17120d11b
-	provides = wine-staging=3.3.r3576.1fdaf4c4
+	provides = wine-staging=3.3.r0.ge09e1fd3
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
