@@ -1,6 +1,6 @@
 pkgbase = freeciv-sdl
 	pkgdesc = A multiuser clone of the famous Microprose game of Civilization - SDL Client
-	pkgver = 2.5.9
+	pkgver = 2.5.10
 	pkgrel = 1
 	url = http://freeciv.org
 	install = freeciv.install
@@ -14,8 +14,8 @@ pkgbase = freeciv-sdl
 	depends = sdl_ttf
 	conflicts = freeciv
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/freeciv/freeciv-2.5.9.tar.bz2
-	md5sums = dfae0812bb72b19e366f9d5c72e6c3f1
+	source = http://files.freeciv.org/stable/freeciv-2.5.10.tar.bz2
+	md5sums = b0b0e95f9d04816ade2ecbccd408a4f3
 
 pkgname = freeciv-sdl
 
