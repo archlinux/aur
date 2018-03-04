@@ -1,0 +1,13 @@
+pkgbase = mnsymbol
+	pkgdesc = MnSym­bol is a sym­bol font fam­ily, de­signed to be used in con­junc­tion with Adobe Min­ion Pro and similar fonts
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://www.ctan.org/tex-archive/fonts/mnsymbol/
+	arch = any
+	license = pd
+	makedepends = texlive-latexextra
+	source = http://mirrors.ctan.org/fonts/mnsymbol.zip
+	md5sums = SKIP
+
+pkgname = mnsymbol
+
