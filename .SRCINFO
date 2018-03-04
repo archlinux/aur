@@ -10,6 +10,8 @@ pkgbase = pat-bin
 	optdepends = gpsd>=2.90
 	optdepends = hamlib>=1.2
 	optdepends = ncurses
+	provides = pat
+	conflicts = pat
 	options = !strip
 	options = !emptydirs
 	source_i686 = https://github.com/la5nta/pat/releases/download/v0.6.0/pat_0.6.0_linux_i386.deb
