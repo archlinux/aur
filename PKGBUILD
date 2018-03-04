@@ -2,7 +2,7 @@
 # Contributors: OttoA (AUR), hoschi (AUR), samlt (AUR), andreyv (AUR)
 
 pkgname=ioquake3-git
-pkgver=20170407.g7ea46532
+pkgver=20180304.gd28e667e
 pkgrel=1
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
@@ -98,7 +98,7 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/q3a.service"
 
     # Patch systemd service file
-    sed -i -e "s/ioq3ded.x86_64/q3ded/" \
+    sed -i -e "s@/usr/local/games/quake3/ioq3ded.x86_64@/opt/quake3/q3ded@" \
         "${pkgdir}/usr/lib/systemd/system/q3a.service"
 
     # Install Desktop File
