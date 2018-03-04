@@ -8,7 +8,7 @@
 
 pkgname=bluej
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
 arch=('any')
 url="https://www.${pkgname}.org"
@@ -19,7 +19,7 @@ source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}.desktop")
 noextract=("BlueJ-linux-${pkgver//.}.deb")
 sha256sums=('aa9012357226a314be9239e4c08ca8f566785acd8b622f50b55c3d99c236306a'
-            'aece3532d8da39128554c262d4c2c7bca1e08a17af5d34e735634bc255c77d9a'
+            'f3f96e2220e96700c5e619d2278c8bbcd518e4777075c94d9b994cbc3eb5c1ca'
             'd48f47e2a16cef483ded299e37016a5172829303fc6ac43cab486049e9f61711')
 
 package() {
