@@ -1,8 +1,8 @@
 # Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 pkgname=gcovr
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="The gcovr script applies the Unix gcov command and generate a simple report that summarizes the coverage."
 arch=('any')
 url="http://gcovr.com"
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python2')
 makedepends=('python2-distribute')
 source=("https://github.com/gcovr/gcovr/archive/${pkgver}.tar.gz")
-sha256sums=('8a60ba6242d67a58320e9e16630d80448ef6d5284fda5fb3eff927b63c8b04a2')
+sha256sums=('1c52a71f245adfe1b45e30fbe5015337fe66546f17f40038b3969b7b42acceed')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
