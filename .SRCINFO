@@ -1,0 +1,21 @@
+pkgbase = swftools-git
+	pkgdesc = Utilities for editing and generating Adobe Flash (SWF) files
+	pkgver = r5100.eeede5d8
+	pkgrel = 1
+	url = https://github.com/matthiaskramm/swftools
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libjpeg-turbo
+	depends = giflib
+	depends = fontconfig
+	depends = fftw
+	depends = pdflib-lite
+	depends = zziplib
+	provides = swftools
+	conflicts = swftools
+	source = git+https://github.com/matthiaskramm/swftools
+	md5sums = SKIP
+
+pkgname = swftools-git
+
