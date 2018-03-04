@@ -1,7 +1,7 @@
 # Maintainer: Jörg Schuck <joerg_schuck@web.de>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 pkgname=gnucash-docs
-pkgver=2.6.16
+pkgver=2.6.19
 pkgrel=1
 pkgdesc="GnuCash documentation package"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('yelp')
 makedepends=('rarian' 'libxslt')
 source=("gnucash-docs-$pkgver.tar.gz::http://sourceforge.net/projects/gnucash/files/gnucash-docs/$pkgver/gnucash-docs-$pkgver.tar.gz/download")
-sha1sums=('ea7dc41476b28f2b67897e183ebd77f04d55be98')
+sha1sums=('f09f3d718887943602067609bec607fbed6ee05e')
 
 build() {
   cd $pkgname-$pkgver
