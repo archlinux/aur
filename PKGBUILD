@@ -1,6 +1,6 @@
 pkgbase=python-salib
 pkgname=('python-salib' 'python2-salib')
-pkgver=1.0.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Sensitivity Analysis Library in Python (Numpy). Contains Sobol, Morris, and FAST methods."
 url="https://github.com/jdherman/SALib"
@@ -8,7 +8,7 @@ arch=(any)
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy' 'python-pyscaffold' 'python2-pyscaffold' 'git')
 source=("https://github.com/jdherman/SALib/archive/v$pkgver.tar.gz")
-sha1sums=('e4d619726bb977029f112fd5e7576caaadd26e49')
+sha256sums=('e6256c2dfcffb98bb975fcd6fd2330e1a5d2727da648b23f0938ad35d552206b')
 
 build() {
   cp -r "${srcdir}"/SALib-$pkgver "${srcdir}"/SALib-$pkgver-py2
