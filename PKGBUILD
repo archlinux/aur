@@ -2,7 +2,7 @@
 # Contributor: Ali Ukani <ali.ukani@gmail.com>
 
 pkgname=voltra
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Material design music player, based on Electron'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://s3.amazonaws.com/download.voltra.co/Voltra-${pkgver}.tar.gz"
         'voltra_EULA.html'
         'voltra_privacy_policy.html'
         'voltra_terms_of_services.html')
-md5sums=('58a4ccc3f5a0abd4563b0eefb7b1d24f'
+md5sums=('7d944950290c8f131c3d5fc0f25a3971'
          '86625b67e901dd6556ea691b3ba466fb'
          'be9f4e3cbcb7495c9b670737406572e3'
          'bad5ffe34c28e007c0b76453082f59fd'
