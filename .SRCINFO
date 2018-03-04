@@ -6,10 +6,13 @@ pkgbase = pdfbeads
 	arch = any
 	license = GPL
 	makedepends = ruby
-	depends = imagemagick6
 	depends = ruby>=2.0.0
 	depends = jbig2enc-git
 	depends = openjpeg2
+	depends = imagemagick6
+	optdepends = ruby-iconv>=1.0.0
+	optdepends = ruby-nokogiri>=1.7.0.0
+	optdepends = ruby-rmagick>=2.0.0
 	noextract = pdfbeads-1.1.2.pre.beta.gem
 	source = https://github.com/boredland/pdfbeads/releases/download/1.1.2.pre.beta/pdfbeads-1.1.2.pre.beta.gem
 	md5sums = 68beffdd3b50d581a5325e68d43999c2
