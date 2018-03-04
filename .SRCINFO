@@ -10,6 +10,7 @@ pkgbase = curr
 	depends = python-setuptools
 	depends = python-click
 	depends = python-toml
+	depends = python-logzero
 	source = https://github.com/Granitosaurus/curr/archive/v1.12.tar.gz
 	md5sums = d4c098e9df3efe68b59b3b7c045ef735
 
