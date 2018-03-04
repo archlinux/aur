@@ -6,7 +6,7 @@
 
 pkgname=dvdstyler
 pkgver=3.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform DVD authoring application"
 arch=('i686' 'x86_64')
 url="http://www.dvdstyler.de/"
@@ -17,7 +17,6 @@ optdepends=('dvdisaster: ECC support'
 	    'xine-ui: DVD preview player'
 	    'vlc: DVD preview player'
 	    'smplayer: DVD preview player')
-options=('!makeflags')
 source=(http://downloads.sourceforge.net/dvdstyler/${pkgver}/DVDStyler-${pkgver}.tar.bz2)
 sha1sums=('0ff6de099d177c05c34f536defc1562e520b9703')
 

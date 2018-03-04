@@ -1,7 +1,7 @@
 pkgbase = dvdstyler
 	pkgdesc = Cross-platform DVD authoring application
 	pkgver = 3.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.dvdstyler.de/
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = dvdstyler
 	optdepends = xine-ui: DVD preview player
 	optdepends = vlc: DVD preview player
 	optdepends = smplayer: DVD preview player
-	options = !makeflags
 	source = http://downloads.sourceforge.net/dvdstyler/3.0.4/DVDStyler-3.0.4.tar.bz2
 	sha1sums = 0ff6de099d177c05c34f536defc1562e520b9703
 
