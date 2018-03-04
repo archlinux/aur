@@ -3,7 +3,7 @@
 
 pkgname=rainbowstream
 pkgver=1.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A smart and nice Twitter client on terminal written in Python"
 url="http://www.rainbowstream.org/"
 license=('MIT')
@@ -36,6 +36,7 @@ build() {
 package() {
   cd "$srcdir/rainbowstream-${pkgver}/"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sts=2 sw=2 et ft=PKGBUILD
