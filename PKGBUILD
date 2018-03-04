@@ -1,38 +1,40 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
+# Maintainer: Skywol <skywol@qq.com>
 pkgname=deepin-wine
-pkgvers=2.18-4
-pkgver=2.18_4
-pkgrel=7
+deepin_name=deepin-wine
+pkgvers=2.18-5~rc6
+pkgver=2.18_5~rc6
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine32' 'deepin-wine-helper' 'deepin-fonts-wine' 'deepin-libwine' 'deepin-wine-uninstaller' 'deepin-udis86' 'lib32-fontconfig' 'lib32-alsa-lib' 'lib32-mesa' 'fontconfig' 'lcms2' 'lib32-lcms2' 'libxml2' 'lib32-libxml2' 'libxcursor'  'libxrandr' 'lib32-libxrandr' 'libxdamage' 'lib32-libxdamage' 'libxi' 'lib32-libxi' 'gettext' 'lib32-gettext' 'freetype2' 'lib32-freetype2' 'glu' 'lib32-glu' 'libsm' 'lib32-libsm' 'gcc-libs' 'lib32-gcc-libs' 'libpcap' 'lib32-libpcap' 'desktop-file-utils' 'p7zip' 'lib32-libldap')
+depends=('deepin-wine32' 'deepin-wine32-preloader' 'deepin-wine32-tools'  'deepin-wine-binfmt' 'deepin-wine-helper' 'deepin-fonts-wine' 'deepin-libwine' 'deepin-wine-uninstaller' 'deepin-udis86' 'lib32-fontconfig' 'lib32-alsa-lib' 'lib32-mesa')
 makedepends=('tar')
 checkdepends=()
-optdepends=()
+optdepends=('lib32-freetype2-infinality-ultimate: for better font view')
 provides=()
-conflicts=()
+conflicts=('deepin-wine')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgvers}_all.deb")
-noextract=("${pkgname}_${pkgvers}_all.deb")
+source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${deepin_name}/${deepin_name}_${pkgvers}_all.deb")
+noextract=("${deepin_name}_${pkgvers}_all.deb")
 md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${pkgname}_${pkgvers}_all.deb
-	mkdir ${pkgname}-${pkgvers}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgvers}"	
+	ar -x ${deepin_name}_${pkgvers}_all.deb
+	mkdir ${deepin_name}-${pkgvers}
+	tar -xf data.tar.xz --directory="${deepin_name}-${pkgvers}"	
 }
 
 package() {
-	cd "${pkgname}-${pkgvers}"
+	cd "${deepin_name}-${pkgvers}"
 	cp ./lib ./usr/ -rf
 	rm ./lib -rf
 	cp -r ./ ${pkgdir}/
