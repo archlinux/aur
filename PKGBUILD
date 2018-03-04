@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _stagingversion="$pkgver"
@@ -36,7 +36,7 @@ source=(
 sha512sums=(
 			'c9e4c75e94d745837208bf877b19c4e4e46df1e78082d21e716f52c9f9d93eaabbec8bf34783cda68e4275f53e37929b81ac128e5b8a13c1e5035223b2621d6a'
 			'02d48a9c403b93d01ca37b74af5dc81f86e49c72d67f194c71ccebd4556fa72c473728a1b1f9d5325c6f85f4e41bb7072a1183a2d81cafa8888e00dc53d12166'
-			'8570d60cdfceed4d3539dfd7e6bebc0679b6f6db657ce628a5dd89191c4ec3903f7adc64e7fc085a60fb90801d4b3ce71d1962a6716b53932f30ecd4ddbc64bb'
+			'69807ceeaea812f07166294a8615d2ee0d7067d2e323d551e4dc521a4b000f6761d762fbda2e1d51019ebbda06a03d4b4a6cf940841bb8d78e0ad742ef0cea2f'
 #			'c6fb9e57cd092869b1370cc90e8fe9d4afd71042649b3ff3345677fef2c39b4ba26ce37999bc80af82dfb99b86b7847de61ca7a49ae9b558032617f23642a9ee'
             'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
@@ -52,6 +52,7 @@ url="http://www.winehq.com"
 arch=(x86_64)
 options=(staticlibs)
 license=(LGPL)
+
 depends=(
   fontconfig      lib32-fontconfig
   lcms2           lib32-lcms2
@@ -118,6 +119,8 @@ optdepends=(
   cups
   samba           dosbox
 )
+provides=("wine=$pkgver" "wine-wow64=$pkgver" "wine-staging=$pkgver")
+conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
