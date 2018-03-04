@@ -2,7 +2,7 @@
 
 pkgname=antergos-wallpapers
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The default wallpapers for Antergos"
 arch=('any')
 url="http://www.antergos.com"
