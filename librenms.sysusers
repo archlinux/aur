@@ -1,0 +1,4 @@
+# Type  Name      ID        GECOS                   Home directory
+######################################################################
+u       librenms  -         "LibreNMS user"         /usr/share/webapps/librenms
+m       http      librenms
