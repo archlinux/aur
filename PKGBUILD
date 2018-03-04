@@ -2,7 +2,7 @@
 
 pkgname=(morfeusz2 python2-morfeuszbuilder)
 pkgver=20180204
-pkgrel=1
+pkgrel=2
 pkgdesc="Morphological analyser Morfeusz"
 arch=('x86_64')
 url='http://sgjp.pl/morfeusz/'
@@ -34,14 +34,17 @@ function build {
 
 function package_morfeusz2 {
 	depends=('gcc-libs')
+
 	cd "$srcdir/trunk"
 	make DESTDIR="$pkgdir/" install
 	install -D -t "$pkgdir/usr/share/licenses/morfeusz2" "$srcdir/LICENCE"
 }
 
 function package_python2-morfeuszbuilder {
+	pkgdesc="Morfeusz dictionary builder"
 	depends=('python2' 'python2-pyparsing')
 	arch=('any')
+
 	cd "$srcdir/trunk/fsabuilder"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 	install -D -t "$pkgdir/usr/share/licenses/python2-morfeuszbuilder" "$srcdir/LICENCE"
