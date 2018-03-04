@@ -1,0 +1,20 @@
+pkgbase = python-pytzwhere
+	pkgdesc = Python library to lookup the timezone for a given lat/lng entirely offline
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/pegler/pytzwhere/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://github.com/pegler/pytzwhere/archive/2.3.1.tar.gz
+	sha256sums = 84a838d0e4d30f49016c6bf354b3975c76ee1653affc38f1ab9beaafd1c454b8
+
+pkgname = python-pytzwhere
+	depends = python-shapely
+
+pkgname = python2-pytzwhere
+	depends = python2-shapely
+
