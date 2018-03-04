@@ -1,0 +1,11 @@
+pkgbase = blockstack-core
+	pkgver = 0.18.0.0
+	pkgrel = 1
+	arch = any
+	depends = python2
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/b/blockstack/blockstack-0.18.0.0.tar.gz
+	md5sums = 57310ab73a79a1b5a4874abfa314637f
+
+pkgname = blockstack-core
+
