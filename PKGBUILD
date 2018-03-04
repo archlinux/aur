@@ -1,4 +1,4 @@
-# Maintainer: Alexandre Filgueira <faidoc@gmail.com>
+# Maintainer: Christian Humm <mail@c-m-l.net>
 
 pkgname=antergos-wallpapers
 pkgver=0.7
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.antergos.com"
 license=('CCPL:by-nc-sa')
 source=("http://repo.antergos.info/antergos/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
-sha256sums=('00a03ab227bb25cc4fa170c60b95f0464c930e58fac5870cbb99b267ad162789')
+sha256sums=('15b255ebf16fa4910b08ff59a0421b75d0b5289ffc62227990d619a730105fff')
 
 package() {
   cd "${srcdir}"
