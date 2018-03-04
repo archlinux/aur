@@ -5,7 +5,7 @@
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
 pkgname=chrome-remote-desktop
-pkgver=63.0.3239.17
+pkgver=65.0.3325.39
 pkgrel=1
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
