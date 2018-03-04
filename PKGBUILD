@@ -1,6 +1,6 @@
 # Maintainer: Romain GERARD <erebe@erebe.eu>
 
-pkgname=greenclip
+pkgname=rofi-greenclip
 pkgver=2.1
 epoch=0
 pkgrel=0
@@ -14,8 +14,8 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("greenclip")
-conflicts=()
-replaces=()
+conflicts=("greenclip")
+replaces=("greenclip")
 backup=()
 options=('!strip')
 install=
@@ -25,6 +25,6 @@ noextract=()
 sha256sums=("9964a6520f3ec6c935e3f6ef4b4b6235d79aab38060305673a66a5c71e7c9e57")
 
 package() {
-        install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+        install -Dm 755 greenclip "$pkgdir/usr/bin/greenclip"
 }
 
