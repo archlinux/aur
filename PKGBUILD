@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools
-pkgver=160217
+pkgver=160308
 pkgrel=1
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
@@ -21,9 +21,9 @@ changelog=
 install=
 source=("https://github.com/n-t-roff/${pkgname}/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('0ece3bd6be8601cb64bc4aec7833b4ad')
-sha1sums=('960a4ddd54ab8a883ae04909b31414fc237ea7ea')
-sha256sums=('56b6a82941b42c45f0a4282b7647a172b304c351950cd7168bb5acb675fdb24a')
+md5sums=('f9759a099fca6b3021da33b94b1f37a9')
+sha1sums=('d5e58c868237b247f660161d5fa514834f337027')
+sha256sums=('d54e22e89acfddae4cd7a1fb583ca5fce097ba4c91c7b32f634944f137af175b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
