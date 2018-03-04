@@ -21,7 +21,7 @@ source_x86_64=("http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb")
 source=("$pkgname.service"
         "crd")
 #md5sums_i686=('bf9135f439fa4bfa1daf16e96c62d87a')
-md5sums_x86_64=('a933a425339b7d5da9dcb71fca15611f')
+md5sums_x86_64=('8e51f304797206e4b0ea0ca421d13115')
 md5sums=('6f6083ff37f036f590702c7b1319445b'
          'ad1e228db2a456bb9e5b11258bc58bf7')
 
