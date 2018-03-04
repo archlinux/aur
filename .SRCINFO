@@ -1,0 +1,18 @@
+pkgbase = wireguard-module-arch
+	pkgdesc = wireguard kernel module for Arch Kernel
+	pkgver = 0.0.20180218
+	pkgrel = 1
+	url = http://www.wireguard.com/
+	arch = x86_64
+	license = GPL
+	makedepends = linux>=4.15
+	makedepends = linux<4.16
+	makedepends = linux-headers>=4.15
+	makedepends = linux-headers<4.16
+	makedepends = wireguard-dkms>=0.0.20180218
+	provides = WIREGUARD-MODULE
+	conflicts = wireguard-dkms
+	replaces = wireguard-dkms
+
+pkgname = wireguard-module-arch
+
