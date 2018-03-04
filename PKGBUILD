@@ -8,7 +8,7 @@ pkgdesc="Bus interface to change screen brightness and capture frames from webca
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
-depends=('systemd' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit' 'libxss')
+depends=('systemd>=221' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit' 'libxss' 'ddcutil')
 makedepends=('git')
 optdepends=('clight-git: user service to automagically change screen backlight matching ambient brightness.')
 source=("git://github.com/FedeDP/${_gitname}.git")
@@ -26,5 +26,5 @@ build() {
 
 package() {
     cd $srcdir/$_gitname
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install WITH_DDC=1
 }
