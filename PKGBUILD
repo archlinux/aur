@@ -2,7 +2,7 @@
 
 appname=Pext
 pkgname=pext
-pkgver=0.11.1
+pkgver=0.12
 pkgrel=1
 pkgdesc="Python-based extendable tool"
 arch=('any')
