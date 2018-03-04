@@ -1,0 +1,21 @@
+pkgbase = rust-qt-binding-generator-git
+	pkgdesc = Generates Qt binding for Rust code from a JSON file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KDE/rust-qt-binding-generator
+	arch = any
+	license = GPLv2
+	makedepends = git
+	makedepends = cmake
+	makedepends = rustup
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	provides = rust-qt-binding-generator
+	conflicts = rust-qt-binding-generator
+	source = git+http://github.com/KDE/rust-qt-binding-generator.git
+	md5sums = SKIP
+
+pkgname = rust-qt-binding-generator-git
+
