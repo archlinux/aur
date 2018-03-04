@@ -13,7 +13,7 @@ url="http://www.php.net/docs.php"
 license=('PHP')
 options=('docs' '!strip')
 source=(php_manual_en-$pkgver.tar.gz::http://www.php.net/distributions/manual/php_manual_en.tar.gz)
-sha256sums=('ff0e34526e9e7a932f33d7930d8e15fcdec8337df248e651cf5e3a60d21cd091')
+sha256sums=('743cfec1c357360326aa72c8151092d5d79323c003f74413c74464c50541ed54')
 
 package(){
   cd "$srcdir"
