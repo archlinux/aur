@@ -2,8 +2,8 @@
 
 pkgname=hss
 pkgver=1.6
-pkgrel=1
-arch=(x86_64)
+pkgrel=2
+arch=('x86_64' 'i686')
 pkgdesc="Interactive ssh client for multiple servers."
 url="https://github.com/six-ddc/hss"
 license=('GPL')
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
-  make INSTALL_BIN="$pkgdir" install
+  make INSTALL_BIN="$pkgdir/usr/bin" install
 }

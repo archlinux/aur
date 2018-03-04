@@ -1,9 +1,10 @@
 pkgbase = hss
 	pkgdesc = Interactive ssh client for multiple servers.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/six-ddc/hss
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = readline
 	source = hss-1.6.tar.gz::https://github.com/six-ddc/hss/archive/v1.6.tar.gz
