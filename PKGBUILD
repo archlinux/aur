@@ -3,11 +3,11 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=3.0rc1.r0.g5a7ce7ccb1
+pkgver=3.3.r0.gf17120d11b
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
-url='https://www.winehq.org'
+url='https://www.winehq.org/'
 license=('LGPL')
 _depends=(
     'fontconfig'            'lib32-fontconfig'
@@ -72,10 +72,15 @@ optdepends=(
     'dosbox'
 )
 options=('staticlibs')
+install="$pkgname".install
 source=("$pkgname"::'git://source.winehq.org/git/wine.git'
-        '30-win32-aliases.conf')
+        'harmony-fix.diff'
+        '30-win32-aliases.conf'
+        'wine-binfmt.conf')
 sha256sums=('SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
+            '50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -97,6 +102,9 @@ prepare() {
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    
+    # freetype harmony fix
+    patch -Np1 -i "${srcdir}/harmony-fix.diff"
 }
 
 pkgver() {
@@ -183,5 +191,8 @@ package() {
     # font aliasing settings for Win32 applications
     install -d "$pkgdir"/etc/fonts/conf.{avail,d}
     install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    
+    # wine binfmt
+    install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
