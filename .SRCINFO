@@ -1,6 +1,6 @@
 pkgbase = ipwaiter-git
 	pkgdesc = ipwaiter serves iptables
-	pkgver = r34.f226048
+	pkgver = r36.01c7de0
 	pkgrel = 1
 	url = https://github.com/pyamsoft/ipwaiter
 	arch = any
