@@ -4,7 +4,7 @@
 _name=adminapi
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.0.r1662.1e52149
+pkgver=1.2.r1760.d69b8ed
 pkgrel=1
 pkgdesc='The adminapi provides a python module which can talk to the InnoGames serveradmin via an API'
 arch=('any')
@@ -27,12 +27,13 @@ package_python2-adminapi-git() {
 	depends=('python2' 'python2-ipaddress' 'python2-netaddr')
 	cd "${srcdir}/${_name}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
-	install -Dm644 {,"${pkgdir}/usr/share/licenses/${pkgname}/"}LICENSE
+	mv "${pkgdir}/usr/bin/adminapi"  "${pkgdir}/usr/bin/adminapi2"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
 
 package_python-adminapi-git() {
 	depends=('python' 'python-ipaddress' 'python-netaddr')
 	cd "${srcdir}/${_name}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-	install -Dm644 {,"${pkgdir}/usr/share/licenses/${pkgname}/"}LICENSE
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
