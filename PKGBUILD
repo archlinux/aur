@@ -1,6 +1,6 @@
 pkgbase=wxgtk-dev
 pkgname=(wxgtk2-dev wxgtk3-dev wxgtk-common-dev)
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://wxwidgets.org"
@@ -11,7 +11,7 @@ source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidg
         make-abicheck-non-fatal.patch wxgtk-webkit2gtk.patch::"https://github.com/wxWidgets/wxWidgets/commit/ec6e54bc.patch"
         wxgtk2-fix-webview.patch::"https://github.com/wxWidgets/wxWidgets/commit/fd247cca.patch"
         wxgtk-filezilla-assert.patch::"https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch")
-sha1sums=('2170839cfa9d9322e8ee8368b21a15a2497b4f11'
+sha1sums=('f999c3cf1887c0a60e519214c14b15cb9bb5ea6e'
           'dfe38650c655395b90bf082b5734c4093508bfa3'
           'c9d013552b3078d7a9700df897333c2960207b0f'
           '550c368a68eec8b6c32c61da289df76e4dd5a798'
@@ -22,15 +22,15 @@ prepare() {
 
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  patch -Np1 -i ../make-abicheck-non-fatal.patch
+  #patch -Np1 -i ../make-abicheck-non-fatal.patch
 
   # Support webkit2gtk
-  sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
+  #sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
   #patch -p1 -i ../wxgtk-webkit2gtk.patch
   # fix webview after webkit2gtk port
   #patch -p1 -i ../wxgtk2-fix-webview.patch
   # fix assert in FileZilla
-  patch -p1 -i ../wxgtk-filezilla-assert.patch
+  #patch -p1 -i ../wxgtk-filezilla-assert.patch
 
   cd ..
   cp -r wxWidgets-${pkgver} wxWidgets-${pkgver}-gtk3
