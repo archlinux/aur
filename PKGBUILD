@@ -5,7 +5,7 @@
 
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: M. Jarvis 
-pkgbase=python-piff-git
+pkgbase=python-piff
 pkgname=('python-piff' 'python2-piff')
 pkgver=v0.2.1.r0.00ce142
 pkgrel=1
