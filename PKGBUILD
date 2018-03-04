@@ -2,7 +2,7 @@
 # Contributor: Haskellfant <moritz.kiefer@purelyfunctional.org
 
 pkgname=zam-plugins-git
-pkgver=3.10.r0.ga3321af
+pkgver=3.10.r3.g68b2969
 pkgrel=1
 pkgdesc="Collection of LV2/LADSPA/VST audio plugins for high quality processing."
 arch=('i686' 'x86_64')
@@ -24,9 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-*}"
-  git submodule init
-  git config submodule.dpf.url "$srcdir/dpf"
-  git submodule update
+  git submodule update --init
 }
 
 build() {
