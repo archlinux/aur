@@ -1,1 +1,3 @@
-d /run/adchpp 0755 adchpp adchpp
+d /run/adchpp 0755 adchpp adchpp -
+d /var/lib/adchpp 0750 adchpp adchpp -
+d /var/log/adchpp 0750 adchpp adchpp -

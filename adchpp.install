@@ -4,15 +4,6 @@ yellow="${bold}$(tput setaf 3)"
 blue="${bold}$(tput setaf 4)"
 green="${bold}$(tput setaf 2)"
 
-post_install() {
-  post_upgrade $1
-}
-
-post_upgrade() {
-  install -dm744 -o adchpp -g adchpp /var/log/adchpp
-  install -dm744 -o adchpp -g adchpp /var/lib/adchpp
-}
-
 post_remove() {
   paths=(/etc/adchpp /var/lib/adchpp /var/log/adchpp)
 

@@ -2,10 +2,10 @@
 
 pkgname=adchpp
 pkgver=2.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ADCH++ is a hub software for the ADC network."
 url='http://adchpp.sourceforge.net'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=("GPL")
 depends=('ruby'
          'python2'
@@ -26,13 +26,13 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'adchpp.sysuser'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
-        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
-        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch'
+        'adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch::https://sl1pkn07.wtf/paste/view/raw/9b86555d'
+        'adchpp-2.9.0-fix_log_path.patch::https://sl1pkn07.wtf/paste/view/raw/9e06ad93'
         )
 sha256sums=('ee839daa4d392e01da204475d625f92050ba3370a3a20c5288d8d37e7dcbcbb6'
             '408dace5cbe39f93b814b517250ba0ca5729f2d01e2183a467c5acdbbefb78f2'
             'a538ea4dbbbf2f0519f28ac070750d951828902d1c7df658718158f85bf7d524'
-            '926f5200487aeba02a4bfb5b110653d33865f1e4320b191385aec3c936f1681d'
+            '636dd60195cd41255bd7e24b17776dea5e52c10d65037b2742ba1de6ebd9402e'
             'a561c8eeeb9f94518b95a231fdbd12ba35d8099fce4930b445e7a6a618ecc60b'
             '7a112f77e3d995a102703b85230610643f69cd4f99b35fcb22c3edc7c5e7a85b'
             '7ae9129d2c4480c3b82bdfc487adc59bc3025ca924fb6ee3b161373b0c7ca4d7'
@@ -40,9 +40,6 @@ sha256sums=('ee839daa4d392e01da204475d625f92050ba3370a3a20c5288d8d37e7dcbcbb6'
             '7e0f8a76678e9ddd598217f2de6d38261540b03208474ebca6c928c4f563c703'
             )
 install=adchpp.install
-
-[ "$CARCH" = "i686" ] && _arch="x86"
-[ "$CARCH" = "x86_64" ] && _arch="x64"
 
 prepare() {
   # Use python2
@@ -61,7 +58,10 @@ prepare() {
       -e "s|%%ADCHPPSHARE%%|/usr/share/adchpp|g" \
       -e "s|%%ADCHPPETC%%|/etc/adchpp|g" \
       -e "s|%%ADCHPPLOG%%|/var/log/adchpp|g" \
-      -i etc/adchpp.xml -i etc/Script.xml -i rbutil/adchpp.rb -i pyutil/adchpp.py
+      -i etc/adchpp.xml \
+      -i etc/Script.xml \
+      -i rbutil/adchpp.rb \
+      -i pyutil/adchpp.py
 
   # Ugly patch: set path for volatile files created by lua scripts
   sed -e "/luadchpp.)/a-- set path of volatile files\nlocal varfilepath = \"/var/lib/adchpp/\"\n" \
@@ -77,16 +77,16 @@ prepare() {
 
 build() {
   cd "adchpp_${pkgver}_source"
-  scons -j"$(nproc)" mode=release docs=yes ssl=yes langs=all tools=default systemboost=yes ruby=ruby arch="${_arch}" #systemlua=yes lua=lua5.1
+  scons -j"$(nproc)" mode=release docs=yes ssl=yes langs=all tools=default systemboost=yes ruby=ruby arch=x64 #systemlua=yes lua=lua5.1
 }
 
 package() {
   cd "adchpp_${pkgver}_source"
 
   install -Dm755 ../adchpp.sh "${pkgdir}/usr/bin/adchpp"
-  install -Dm755 "build/release-default-${_arch}/bin/adchppd" "${pkgdir}/usr/lib/adchpp/adchpp"
+  install -Dm755 "build/release-default-x64/bin/adchppd" "${pkgdir}/usr/lib/adchpp/adchpp"
 
-  (cd "build/release-default-${_arch}/bin"; for i in $(find . -maxdepth 1 -type f -name "*.so"); do install -Dm755 "${i}" "${pkgdir}/usr/lib/adchpp/${i}"; done)
+  (cd "build/release-default-x64/bin"; for i in $(find . -maxdepth 1 -type f -name "*.so"); do install -Dm755 "${i}" "${pkgdir}/usr/lib/adchpp/${i}"; done)
 
   install -Dm755 linux/generate_certs.sh "${pkgdir}/usr/share/adchpp/generate_certs.sh"
 
