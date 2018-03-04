@@ -2,10 +2,10 @@
 
 pkgname=python-forecastio
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A thin Python Wrapper for the Dark Sky (formerly Forecast.io) weather API"
 url="http://zeevgilovitz.com/python-forecast.io"
-license=('BSD 2-clause')
+license=('BSD')
 arch=('any')
 depends=(
 'python'
@@ -25,6 +25,7 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}/"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sts=2 sw=2 et ft=PKGBUILD
