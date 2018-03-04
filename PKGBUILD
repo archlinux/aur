@@ -7,11 +7,11 @@ _bldtype=Release
 #_bldtype=Debug
 
 _uimmozcrev=321.3ea28b1
-_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
+_mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.20.2673.102
+pkgver=2.23.2815.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -51,6 +51,14 @@ prepare() {
   # Extract license part of uim-mozc
   head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
+  sed -i.bak \
+      -e 's/make_pair/std::make_pair/g' \
+      unix/uim/key_translator.cc \
+      unix/uim/mozc.cc
+  sed -i.bak \
+      -e 's/typedef map</typedef std::map</g' \
+      -e 's/ pair</ std::pair</g' \
+      unix/uim/key_translator.h
 }
 
 
