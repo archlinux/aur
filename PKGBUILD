@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=67.0.3360.0
+pkgver=67.0.3361.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('90d190e3ba3e8ec355522457a8aa64babd690bab43aa08b3da56bc118e07f956'
+sha256sums=('c38867ac36f75e38ea602a0e152a8db651e5ba0af0eeb7bbcceff13e904994c9'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -298,7 +298,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -i ../pt.patch
+#patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
