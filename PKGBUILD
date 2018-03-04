@@ -4,7 +4,7 @@
 # Contributor: Olivier Ramonat <olivier at ramonat dot fr>
 
 pkgname=gource-git
-pkgver=gource.0.47.r1.gb227b93
+pkgver=0.48.r1.g68a7041
 pkgrel=1
 pkgdesc="software version control visualization"
 license=('GPL3')
@@ -16,8 +16,8 @@ source=("${pkgname}::git+https://github.com/acaudwell/Gource.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname}"
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/gource.//'
 }
 
 build() {
