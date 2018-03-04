@@ -6,7 +6,7 @@
 
 pkgname=php-docs
 pkgver=7.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of HTML documentation for PHP."
 arch=('any')
 url="http://www.php.net/docs.php"
