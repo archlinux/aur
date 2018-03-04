@@ -4,7 +4,7 @@
 
 pkgname=sun-wtk
 pkgver="2.5.2_01"
-pkgrel=2
+pkgrel=3
 pkgdesc="Sun Java Wireless Toolkit for CLDC (J2ME, MIDP)."
 arch=('i686' 'x86_64')
 url='http://www.oracle.com/technetwork/java/index-jsp-137162.html'
@@ -39,10 +39,8 @@ sha256sums=('416ea8c8dc56e3563fc92e89bb9dde243662272bc4c88121d8fc1074044b4bb2'
 
 
 prepare() {
-  # In case makepkg couldn't extract *.bin.sh file for some reason,
-  # here is the way the *.bin.sh script is supposed to extract data from itself:
-  #dd bs=1024 if="${srcdir}/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh" of="${srcdir}/j2mewtk-unix.zip" skip=26 2>/dev/null
-  #unzip -oq "${srcdir}/j2mewtk-unix.zip" -d "${srcdir}/"
+  dd bs=1024 if="${srcdir}/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh" of="${srcdir}/j2mewtk-unix.zip" skip=26 2>/dev/null
+  unzip -oq "${srcdir}/j2mewtk-unix.zip" -d "${srcdir}/"
 
   # By default WTK saves some configuration files in ~/j2mewtk/
   # Usually, you don't need to access it, so it is possible to hack WTK files a bit

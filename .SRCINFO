@@ -1,7 +1,7 @@
 pkgbase = sun-wtk
 	pkgdesc = Sun Java Wireless Toolkit for CLDC (J2ME, MIDP).
 	pkgver = 2.5.2_01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.oracle.com/technetwork/java/index-jsp-137162.html
 	install = sun-wtk.install
 	arch = i686
