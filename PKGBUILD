@@ -1,7 +1,7 @@
 # Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-_emacs_mozc="yes"
+#_emacs_mozc="yes"
 
 ## If you will not be using ibus (only use uim), comment out below.
 _ibus_mozc="yes"
@@ -11,8 +11,8 @@ _ibus_mozc="yes"
 _zipcode="yes"
 
 ## Mozc compile option
-#_bldtype=Release
-_bldtype=Debug
+_bldtype=Release
+#_bldtype=Debug
 
 #*************************************************************
 # Upstreams:
@@ -27,14 +27,14 @@ _bldtype=Debug
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201801
-_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
+_zipcoderel=201802
+_mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.20.2673.102
-pkgrel=2
+pkgver=2.23.2815.102
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
 license=('BSD' 'custom')
@@ -46,8 +46,8 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          '8226fde66360ef99127e2e8ce8df41ff1452f938'
-          'a4d6dc99c9daf55b4bd359fdf967c2c2792ad5d5')
+          'eb7fc1320a0ddcb5dd10d086211c5ae834cad73a'
+          '260b382b3d8fa2743184ed851e78616feafb6dc3')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
@@ -74,9 +74,6 @@ prepare() {
   git submodule update --init --recursive
 
   cd "${srcdir}/${pkgbase}/src/"
-
-  # Extract liccense part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
 
   # Generate zip code dictionary seed
   if [[ "$_zipcode" == "yes" ]]; then
@@ -135,12 +132,12 @@ package_mozc() {
   conflicts=('mozc-server' 'mozc-utils-gui')
   optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 
-  cd "${srcdir}/${pkgbase}/src"
-  install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
+  cd "${srcdir}/${pkgbase}/"
+  install -D -m 755 src/out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
+  install    -m 755 src/out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/share/licenses/mozc/"
-  install -m 644 LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/mozc/"
+  install -m 644 LICENSE src/data/installer/*.html "${pkgdir}/usr/share/licenses/mozc/"
 }
 
 package_ibus-mozc() {
