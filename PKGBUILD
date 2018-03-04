@@ -1,8 +1,8 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=sdlada
-pkgver=2.1.7
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="An Ada binding to SDL"
 
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('zlib')
 
 depends=("gcc-ada" "sdl2")
 
-source=(https://github.com/Lucretia/sdlada/archive/v2.1.7.tar.gz
+source=(https://github.com/Lucretia/sdlada/archive/v$pkgver.tar.gz
         patch-makefile)
-md5sums=('255a57dc59d250af12dbe3cb7be76e58'
-         '43906f6de67f33578375fe83468073e1')
+md5sums=('84ef633ff97b9dc6cb68b6230787cc0e'
+         '6e9a0befc816ef87ed7d6dace43a5dd9')
 
 
 prepare()
