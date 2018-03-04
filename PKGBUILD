@@ -8,6 +8,8 @@ arch=('i686' 'x86_64' 'armhf')
 url="http://getpat.io"
 license=('MIT')
 groups=('')
+provides=('pat')
+conflicts=('pat')
 optdepends=('gpsd>=2.90'
             'hamlib>=1.2'
             'ncurses')
