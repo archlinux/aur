@@ -1,7 +1,7 @@
 # Maintainer: Egidio Caprino <me@egidiocaprino.it>
 
 pkgname=dataloader
-pkgver=40.0.0
+pkgver=42.0
 pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
@@ -18,6 +18,12 @@ md5sums=('b519f96b515793fa80cd820e25d70d68'
          '895815be928816f9ace42c3135a428b5')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git checkout "tags/V$pkgver"
+  echo "$pkgver"
+}
 
 build() {
   cd "$srcdir/$pkgname"
@@ -36,7 +42,7 @@ package() {
   touch "$pkgdir/opt/$pkgname/dataloader.sh"
   chmod +x "$pkgdir/opt/$pkgname/dataloader.sh"
   echo "#!/bin/bash" >> "$pkgdir/opt/$pkgname/dataloader.sh"
-  echo "java -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
+  echo "java -jar \"/opt/$pkgname/target/dataloader-$pkgver.0-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
   ln -s "/opt/$pkgname/dataloader.sh" "$pkgdir/usr/bin/dataloader"
 
   install -m 644 "$srcdir/dataloader.desktop" "$pkgdir/usr/share/applications/"
