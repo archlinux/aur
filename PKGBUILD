@@ -12,8 +12,8 @@ depends=('python-aiohttp' 'python-appdirs' 'python-configargparse'
          'python-mechanicalsoup' 'python-protobuf' 'python-readlike'
          'python-reparser' 'python-requests' 'python-urwid')
 checkdepends=('python-httpretty' 'python-pytest')
-source=("hangups-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fee1dfce02d2cddfb6cba1e5a71d67a53732d2edb98d224289a5cd6da1d2cc246a9a4744501594cf91dd3b971b55eca96d4bb7c968bd7e2ff70b3e3f7f1d365d')
+source=("https://files.pythonhosted.org/packages/source/h/hangups/hangups-$pkgver.tar.gz")
+sha512sums=('d89050e9c7374785be07e88013b98c893cd091ccf93f72c0da787f6390378bccf88058622f683a8a73ae611bc828119c6267cf947963ed8f0277165879823f69')
 
 prepare() {
   cd hangups-$pkgver
