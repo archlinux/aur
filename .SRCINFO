@@ -1,6 +1,6 @@
 pkgbase = libsafec
 	pkgdesc = Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface
-	pkgver = 3.3
+	pkgver = 03032018
 	pkgrel = 1
 	url = https://rurban.github.io/safeclib
 	arch = i686
