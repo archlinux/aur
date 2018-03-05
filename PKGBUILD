@@ -1,8 +1,8 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-alien-build
-pkgver=1.18
-pkgrel=2
+pkgver=1.37
+pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="Alien-Build"
 pkgdesc="Alien::Build::MM - Alien::Build installer code for ExtUtils::MakeMaker"
@@ -67,12 +67,12 @@ perl-test-alien-synthetic
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('8ebeaffcda2bac6fe65b64458d8c69865cf3275dce6fd6471861671ea97616f9')
+sha256sums=('0d2365a21c6dab9ad35b2bd7401339bc0aff6e5355a190721524b90164d481e6')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
+
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-
   if [ -f Makefile.PL ]; then
     perl Makefile.PL
     make
@@ -83,7 +83,6 @@ build(){
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
   if [ -f Makefile.PL ]; then
     make test
   else
@@ -92,7 +91,6 @@ check(){
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-
   if [ -f Makefile.PL ]; then
     make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
   else
