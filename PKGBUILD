@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=65.0.3325.53
+pkgver=66.0.3343.3
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   'chromium-last-commit-position-r1.patch'
   'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('86683bd173292b86871d7bd175a457da0c94589e8283ec3c2ee21c4b3685c5f7013374dd1deff841ea45c747fe85bf8e9ef5c98e2417381e72e73aa3763dd7c9'
+sha512sums=('e5425b12104ed40acb60ad81a422a9cee5ce1d35693483e1812f631c2652cb8ff9e3580462200b28856a457aa04eb6e93f51c262bf50798de1d8631db0d9b40e'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
