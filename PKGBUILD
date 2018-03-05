@@ -1,5 +1,6 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
+_name=milksnake
 pkgname=python-milksnake
 pkgver=0.1.2
 pkgrel=1
@@ -9,16 +10,16 @@ url=https://github.com/getsentry/milksnake
 license=('Apache')
 depends=('python-cffi')
 makedepends=('python-setuptools')
-source=("milksnake-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('7b4f9f86861856f2440cf26aa7de8608c358fad4b63aec61472f626d0119e42e1cf7e4aaea0a7cb28a2528a7b8452c946f4c5c66ed0c5c59f58b6a49c14d6f65')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
+sha512sums=('18843b66d249d4d8d4dff222f01194c17c07eceb1a7aa117163046593542e613e442a19d3ecbe6bba9ea9e4ba3e59acb66909d4b68d1c96764c4b80750288e87')
 
 build() {
-  cd milksnake-$pkgver
+  cd $_name-$pkgver
   python setup.py build
 }
 
 package() {
-  cd milksnake-$pkgver
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
