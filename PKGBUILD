@@ -58,7 +58,12 @@ build() {
     sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh repair/repair.cc
     sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh repair/repair.cc
     ./configure.py --mode=release
-    ninja -j`nproc --all` build/release/scylla build/release/iotune
+    JOBS=`nproc --all`
+    # It turns out that on maximum jobs compiler often runs out of memory and crashes
+    # Let's be conservative and assign only half of the available CPU threads
+    # It will make compilation slower but increase the chance of success
+    if [ "$JOBS" -gt 1 ]; then JOBS=$((JOBS / 2)); fi
+    ninja -j${JOBS} build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
     sed -i -e "s#@@SYSCONFDIR@@#${_sysconfdir}/sysconfig#g" build/scylla-server.service
 }
