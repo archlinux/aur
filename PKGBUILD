@@ -1,8 +1,8 @@
 # Maintainer: Oliver Mangold <o.mangold@gmail.com>
 
 pkgname=kmodcache
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Scripts to make a copy of installed kernel modules, which will be used for on-demand loading from then point on, thus make reboots unnecessary after kernel updates."
 arch=('any')
 license=('GPL3')
