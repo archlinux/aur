@@ -1,31 +1,24 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
+
 model="l8900cdw"
 pkgname="brother-mfc-${model}"
 pkgver="1.2.0"
+_cupsver="1.3.0"
 pkgrel=0
 _revision=0
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8900CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license=('unknown')
+license=('EULA')
 install="brother-mfc-${model}.install"
-depends=('tcsh' 'deb2targz' 'perl' 'a2ps' 'lib32-libcups')
-source=("http://download.brother.com/welcome/dlf103242/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
-        "http://download.brother.com/welcome/dlf103251/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
-sha256sums=('27acea938b3224b67bc049c8c3fbfcdff6e1c1eb60e3ff22479c36346844310c'
-            'f97be40c1c435d4be3b4db5efa082084ffe270771fbfcc7e78f280090e8403e2')
+depends=('tcsh' 'perl' 'a2ps' 'lib32-libcups')
+source=("mfc${model}lpr-${pkgver}-${_revision}.i386.rpm::http://download.brother.com/welcome/dlf103216/mfc${model}lpr-${pkgver}-${_revision}.i386.rpm"
+        "mfc${model}cupswrapper-${_cupsver}-${_revision}.i386.rpm::http://download.brother.com/welcome/dlf103225/mfc${model}cupswrapper-${_cupsver}-${_revision}.i386.rpm")
+sha256sums=('82cb8b3710523b546e40e1280275ecc1689b50294644d6b81a25cbffc385e8c4'
+            'd92bbb84b6b66aad097b705dd6b2a53d19cab79fde546ad7a25e4952ee4547fa')
 
 
 package() {
-    deb2targz *.deb >/dev/null || return 1
-    rm -f *.deb || return 1
-    cd $srcdir || return 1
-    [ -d "mfc${model}" ] || (mkdir mfc${model} || return 1)
-    for i in *.tar.gz;do tar xfz $i -C mfc${model};done || return 1
-    cd mfc${model} || return 1
-    cd opt/brother/Printers/mfc${model} || return 1
-    perl -i -pe 's#/etc/init.d#/etc/rc.d#g' ./cupswrapper/cupswrappermfc${model} || return 1
-    perl -i -pe 's#printcap\.local#printcap#g' $srcdir/mfc${model}/opt/brother/Printers/mfc${model}/inf/setupPrintcapij || return 1
-    cp -rf $srcdir/mfc${model}/usr/ $pkgdir/ || return 1
-    cp -rf $srcdir/mfc${model}/opt/ $pkgdir/ || return 1
+    cp -rf $srcdir/usr/ $pkgdir/ || return 1
+    cp -rf $srcdir/opt/ $pkgdir/ || return 1
 }
