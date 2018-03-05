@@ -55,8 +55,8 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh
-    sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh
+    sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh repair/repair.cc
+    sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh repair/repair.cc
     ./configure.py --mode=release
     ninja -j`nproc --all` build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
