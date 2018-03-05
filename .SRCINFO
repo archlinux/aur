@@ -1,13 +1,13 @@
 pkgbase = diceware
 	pkgdesc = Wordlist-based password generator.
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/ulif/diceware
 	arch = any
 	license = GPL3
 	depends = python-setuptools
-	source = diceware-0.9.3.tar.gz::https://github.com/ulif/diceware/archive/v0.9.3.tar.gz
-	sha512sums = 133fcead6084d35472832b7e665c7d40fa2884e0dc09324c8bba3403310241d8c3aff4f7d36767b1017ea6ce9a397567e691b8514e40e112c11bef0fa61377df
+	source = diceware-0.9.4.tar.gz::https://github.com/ulif/diceware/archive/v0.9.4.tar.gz
+	sha512sums = 26a274d4cb4dc3461a817d7b4eed4e40b3b16808d695017c86c86fc237c2873b2558d4368892b46854b135fcf12962749f13f5a1e87a3f5ace35382706deff81
 
 pkgname = diceware
 
