@@ -1,0 +1,12 @@
+pkgbase = circleci-cli
+	pkgdesc = A CircleCI client for building conda packages locally for example.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://circle-downloads.s3.amazonaws.com/releases/build_agent_wrapper/circleci
+	md5sums = 6b0d27cacf7294f3c04e4434f4dbbd8a
+
+pkgname = circleci-cli
+
