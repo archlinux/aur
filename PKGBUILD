@@ -1,7 +1,7 @@
 # Maintainer: Bernd Kast < kastbernd at gmx dot de >
 
 pkgname=r8169aspm-dkms
-pkgver=v4.15
+pkgver=v4.15.2
 pkgrel=2
 pkgdesc="Driver for Realtek Ethernet chips with aspm enabled for power saving"
 arch=('any')
@@ -18,7 +18,7 @@ source=("$_pkgname::git+https://github.com/KastB/r8169.git"
         "blacklist-r8169-dkms.conf")
                
 sha256sums=('SKIP'
-            'e3290e0cfb55875f16e9962138240ff9cdd32ec5da285b0474a8a4fd1e6de40f'
+            '15f16660a1a57337a78e3753d265510920857d84e9e3dd41df38fa9366806c95'
             '47c992bfbd98403d9aa80b5ed00408af43c57ab0f5960f270d9d9b9f000618b3')
 
 package() {
