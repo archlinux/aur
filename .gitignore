@@ -1,2 +1,4 @@
-*.tar.gz
-python-pyshp-*.log
+/*.tar.gz
+/PKGBUILD-namcap.log
+/python-pyshp-*.log
+/python-pyshp-*.pkg.tar.xz
