@@ -3,7 +3,7 @@
 pkgname=('anki-drive-sdk-git')
 pkgdesc="C SDK for message protocols and data parsing to communicate with Anki Drive vehicles"
 pkgver=0.3.0.r40.20180115
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/anki/drive-sdk"
 license=('Apache')
@@ -27,23 +27,20 @@ pkgver() {
 	# add ".r*.*" to package version
 	echo "$_pkgverTriple.r$_commitCount.$_commitTime"
 }
-prepare() {
-	cd $pkgname
-}
 build() {
-	echo "BUILD..."
 	cd "$pkgbase"
 	mkdir -p build
 	cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX= -DBUILD_EXAMPLES=ON
 }
 package() {
-	cd "$pkgbase/build/src"
-	make DESTDIR="${pkgdir}/usr" install
+	pushd "$pkgbase/build/src"
+	make DESTDIR="$pkgdir/usr" install
+	popd
 	cd "$pkgbase/build/examples"
-	make DESTDIR="${pkgdir}/usr" install
+	make DESTDIR="$pkgdir/usr" install
 	install -Dm644 '../../include/ankidrive.h' "${pkgdir}/usr/include/ankidrive.h"
-	install -dm755 "${pkgdir}/usr/include/ankidrive"
-	cp -a ../../include/ankidrive/*.h "${pkgdir}/usr/include/ankidrive/."
-	install -Dm644 "../../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -dm755 "$pkgdir/usr/include/ankidrive"
+	cp -a ../../include/ankidrive/*.h "$pkgdir/usr/include/ankidrive/."
+	install -Dm644 "../../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
