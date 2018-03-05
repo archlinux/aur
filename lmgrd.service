@@ -1,0 +1,11 @@
+[Unit]
+Description=FlexNet server daemon
+After=network.target
+
+[Service]
+User=nobody
+Type=simple
+ExecStart=/usr/bin/lmgrd -c /etc/flexnet/license.dat -l /var/log/flexnet/flexnet.log
+
+[Install]
+WantedBy=multi-user.target
