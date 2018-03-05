@@ -1,8 +1,7 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-archive-any
-pkgver=0.0942
+pkgver=0.0945
 pkgrel=1
 _author="O/OA/OALDERS"
 _perlmod="Archive-Any"
@@ -29,50 +28,33 @@ checkdepends=(perl-test-warn)
 makedepends=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('552fb7a086e4a950c707c730b90c04af52e597635692a26a41d8665f1b371b2d')
+sha256sums=('8c176cf649a7c3ef2cc2cc2d87eae79cfc0c13316cd4581404a99bc1a41a568f')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
     make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
+  else
+    perl Build.PL
+    ./Build
   fi
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
+  if [ -f Makefile.PL ]; then
     make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
+  else
+    ./Build test
   fi
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
   fi
-
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
