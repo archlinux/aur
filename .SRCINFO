@@ -1,0 +1,15 @@
+pkgbase = lepton-git
+	pkgdesc = Tool and file format for losslessly compressing JPEGs
+	pkgver = 1.2.1+162+gea9bc15
+	pkgrel = 1
+	url = https://github.com/dropbox/lepton
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	source = git+https://github.com/dropbox/lepton
+	md5sums = SKIP
+
+pkgname = lepton-git
+
