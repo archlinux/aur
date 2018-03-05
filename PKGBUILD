@@ -2,7 +2,7 @@
 
 _pkgname=indy-node
 pkgname=hyperledger-${_pkgname}
-pkgver=1.3.307
+pkgver=1.3.324
 pkgrel=1
 pkgdesc="A self-sovereign identity ecosystem on top of a distributed ledger. It is the core project for Indy"
 arch=(i686 x86_64)
@@ -60,8 +60,8 @@ EOF
 	cp ../indy-node.conf $pkgdir/usr/lib/sysusers.d
 }
 
-md5sums=('d2123e6f07dd4fb040deaaca98fda3b1'
-	'800c812d8a6bfb1cbc9a2361413746db'
+md5sums=('7f8510393022c61b019bbb76d59fd352'
+	'43505a7341a671fd343dd13bd49e9ab2'
 	'02486863bad2eab23a40510a3d6f0747'
 	'6d0ef3bcbfe3dead0a875768f8d133eb'
 	'1882142ad925365e0aa4ce269ce6b7ed'
