@@ -1,7 +1,7 @@
 # Maintainer: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko-git
-pkgver=0.1.0.r347.e1a4458a
+pkgver=0.2.0.r520.d703377a
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -17,12 +17,11 @@ md5sums=("SKIP")
 
 prepare() {
   cd "$pkgname"
-  git submodule update --init --recursive
 }
 
 pkgver() {
     cd "$pkgname"
-    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
