@@ -5,7 +5,7 @@
 
 pkgname=tautulli
 pkgver=2.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/Tautulli/Tautulli"
@@ -26,10 +26,6 @@ sha256sums=('c8745abb43e201f48dcdc0815a8f46d98188e2ce9a6a94d9a45d0b84081cb333'
             '3385a234ece298cd1589d06fb60ea07aade778127117f32692d3cdb134023d42'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
-prepare() {
-  echo "v${pkgver}" > "${srcdir}/Tautulli-${pkgver}-beta/version.txt"
-}
-
 package() {
   cd "${srcdir}/Tautulli-${pkgver}-beta"
   install -Dm755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
@@ -42,7 +38,6 @@ package() {
 
   install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
   install -Dm644 "${srcdir}/tautulli.sysusers" "${pkgdir}/usr/lib/sysusers.d/tautulli.conf"
-  install -Dm644 "version.txt" "${pkgdir}/usr/lib/tautulli/"
 
   msg2 "To migrate your plexpy config and db, run the following commands:"
   msg2 "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
