@@ -4,7 +4,7 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-14.04
-pkgver=6.204.11
+pkgver=6.210.5
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -31,9 +31,9 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('dbd67354af51d65bf61c949e02c41b781327445b6fe7840d20eba0cab7d06b73'
+sha256sums=('998e4c5127a9f177089bf27e0c1a86e2f1f268eccfd3a504e9348bf987eee661'
             '943056f6643f110d94663e4bbf1650850d49ea0adb48cc0355ad5b4f6112da24'
-            '94fff65cc3a6cfbc79d4f7bdb6ef1c3855a032e52932de6051867a1f99119257'
+            'dbe0e241bc352b170577725c6f8b86922b36757f1cc82b6d16f967fe5f398266'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
             '3c6d72cdb51dab05682d0c84153171de68ef14cf8b593dfd44123a9365dd1f1e')
 
@@ -53,18 +53,27 @@ build() {
 package() {
   export XDG_DATA_HOME+=:${pkgdir}/usr/share
   export XDG_DATA_DIRS+=:${pkgdir}/usr/share
-  install -d ${pkgdir}/opt/memsource-editor/{fonts,lib/imageformats,spelling}
+  install -d ${pkgdir}/opt/memsource-editor
   install -d ${pkgdir}/usr/{bin,share/{mime/packages,applications}}
   install -d ${pkgdir}/usr/share/licenses/memsource-editor
 
-  install -Dm 775 ${srcdir}/build/memsource-editor/TranslationEditor ${pkgdir}/opt/memsource-editor/
-  install -Dm 664 ${srcdir}/build/memsource-editor/fonts/*.ttf ${pkgdir}/opt/memsource-editor/fonts/
-  install -Dm 664 ${srcdir}/build/memsource-editor/lib/*.* ${pkgdir}/opt/memsource-editor/lib/
-  install -Dm 664 ${srcdir}/build/memsource-editor/lib/imageformats/* ${pkgdir}/opt/memsource-editor/lib/imageformats/
+  #install -Dm 775 ${srcdir}/build/memsource-editor/TranslationEditor ${pkgdir}/opt/memsource-editor/
+  #install -Dm 664 ${srcdir}/build/memsource-editor/fonts/*.ttf ${pkgdir}/opt/memsource-editor/fonts/
+  #install -Dm 664 ${srcdir}/build/memsource-editor/lib/*.* ${pkgdir}/opt/memsource-editor/lib/
+  #install -Dm 664 ${srcdir}/build/memsource-editor/lib/imageformats/* ${pkgdir}/opt/memsource-editor/lib/imageformats/
   install -Dm 755 ${srcdir}/memsource ${pkgdir}/usr/bin/
   install -Dm 644 ${srcdir}/memsource-editor.desktop ${pkgdir}/usr/share/applications/
   install -Dm 644 ${srcdir}/memsource-editor.xml ${pkgdir}/usr/share/mime/packages/
   install -Dm 755 ${srcdir}/license.desktop ${pkgdir}/usr/share/licenses/memsource-editor/
+
+  rm -f "${srcdir}/build/memsource-editor/install.log" \
+    "${srcdir}/build/memsource-editor/Uninstall Memsource Editor.desktop" \
+    "${srcdir}/build/memsource-editor/TranslationEditorUpdater" \
+    "${srcdir}/build/memsource-editor/uninstall" \
+    "${srcdir}/build/memsource-editor/uninstall.dat" \
+    "${srcdir}/build/memsource-editor/MemsourceEditor.desktop"
+
+  cp -a ${srcdir}/build/memsource-editor ${pkgdir}/opt/memsource-editor
 
   for sz in 16 24 32 36 48 64 96 128 192 256; do
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps
