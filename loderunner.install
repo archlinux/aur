@@ -4,7 +4,7 @@ post_upgrade() {
   echo
   echo
   echo
-  echo 'Delete the ~/.loderunner directory when updating. Make sure to backup your config and save files.'
+  echo 'Delete the $XDG_DATA_HOME/.loderunner directory when updating. Make sure to backup your config and save files.'
   echo
   echo
   echo

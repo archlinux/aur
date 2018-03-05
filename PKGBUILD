@@ -3,15 +3,16 @@
 
 pkgname=loderunner
 pkgver=1.50
-pkgrel=4
+pkgrel=5
 pkgdesc="Lode Runner Online: Mad Monks' Revenge. A puzzle video game from 1995"
-arch=any
+arch=('any')
 url=http://www.daggert.net/Folio/Programming/Presage/LodeRunner/Loderunner1.htm
 license=('custom-freeware Abandonware')
 depends=(wine winetricks unionfs-fuse xorg-xrefresh)
 makedepends=(imagemagick)
 options=(!strip)
 install=$pkgname.install
+_install_dir=${XDG_DATA_HOME:-${HOME}/.local/share}/${pkgname}
 source=(http://www.daggert.net/Folio/Programming/Presage/LodeRunner/Downloads/lro_install.zip)
 md5sums=('ea39770395db0998b3dc3cad052a1977')
 
@@ -54,7 +55,7 @@ EOF
 set -e
 
 function atexit {
-	fusermount -zu "\$HOME"/.$pkgname/lro/
+	fusermount -zu $_install_dir/lro/
 	xrefresh
 	echo "Goodbye from Lode Runner!"
 	exit 0
@@ -62,16 +63,15 @@ function atexit {
 
 export WINEARCH=win32
 export WINEDLLOVERRIDES="mscoree,mshtml="
-export WINEPREFIX="\$HOME"/.$pkgname/winefs
-export XDG_DATA_HOME=/dev/null
+export WINEPREFIX=$_install_dir/winefs
 export WINEDEBUG=-all
 
 echo "Starting..."
 
-if [ ! -d "\$HOME"/.$pkgname/ ] ;then
+if [ ! -d $_install_dir/ ] ;then
 	echo "Initializing the wine prefix."
-	mkdir -p "\$HOME"/.$pkgname/lro
-	cd "\$HOME"/.$pkgname/
+	mkdir -p $_install_dir/lro
+	cd $_install_dir
 	#setup wine prefix
 	mkdir lro_diff
 	wineboot -u
@@ -81,15 +81,15 @@ if [ ! -d "\$HOME"/.$pkgname/ ] ;then
 	cd winefs/dosdevices
 	ln -s ../../ x:
 	#copy support file
-	cp /usr/share/$pkgname/SIERRA.INI "\$HOME"/.$pkgname/winefs/drive_c/windows/
+	cp /usr/share/$pkgname/SIERRA.INI $_install_dir/winefs/drive_c/windows/
 	sleep 5
 fi
 
 #mount lro at drive x:
-unionfs -o relaxed_permissions -o cow "\$HOME"/.$pkgname/lro_diff/=RW:/usr/share/$pkgname=RO "\$HOME"/.$pkgname/lro/
+unionfs -o relaxed_permissions -o cow $_install_dir/lro_diff/=RW:/usr/share/$pkgname=RO $_install_dir/lro/
 trap atexit SIGHUP SIGINT SIGTERM EXIT
 
-cd "\$HOME"/.$pkgname/winefs/dosdevices/x:/lro/
+cd $_install_dir/winefs/dosdevices/x:/lro/
 wine 'x:\lro\LODERUNN.EXE' "\$@" &>/dev/null
 
 EOF
