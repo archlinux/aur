@@ -6,7 +6,7 @@ pkgdesc="Play an image/video in your terminal!"
 arch=("x86_64")
 url="https://github.com/jD91mZM2/termplay"
 license=("MIT" "custom")
-makedepends=("cargo" "openal" "libsndfile")
+makedepends=("rust" "openal" "libsndfile")
 optdepends=(
     "ffmpeg: Video support"
     "maim: Screen-mirroring support"
