@@ -6,16 +6,15 @@ pkgbase = brother-mfc-l8900cdw
 	install = brother-mfc-l8900cdw.install
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = EULA
 	depends = tcsh
-	depends = deb2targz
 	depends = perl
 	depends = a2ps
 	depends = lib32-libcups
-	source = http://download.brother.com/welcome/dlf103242/mfcl8900cdwlpr-1.2.0-0.i386.deb
-	source = http://download.brother.com/welcome/dlf103251/mfcl8900cdwcupswrapper-1.2.0-0.i386.deb
-	sha256sums = 27acea938b3224b67bc049c8c3fbfcdff6e1c1eb60e3ff22479c36346844310c
-	sha256sums = f97be40c1c435d4be3b4db5efa082084ffe270771fbfcc7e78f280090e8403e2
+	source = mfcl8900cdwlpr-1.2.0-0.i386.rpm::http://download.brother.com/welcome/dlf103216/mfcl8900cdwlpr-1.2.0-0.i386.rpm
+	source = mfcl8900cdwcupswrapper-1.3.0-0.i386.rpm::http://download.brother.com/welcome/dlf103225/mfcl8900cdwcupswrapper-1.3.0-0.i386.rpm
+	sha256sums = 82cb8b3710523b546e40e1280275ecc1689b50294644d6b81a25cbffc385e8c4
+	sha256sums = d92bbb84b6b66aad097b705dd6b2a53d19cab79fde546ad7a25e4952ee4547fa
 
 pkgname = brother-mfc-l8900cdw
 
