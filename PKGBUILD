@@ -3,7 +3,7 @@
 cpaname=CSS-Inliner
 cpanauthor=KAMELKEV
 pkgname=perl-css-inliner
-pkgver=3948
+pkgver=4008
 pkgrel=1
 pkgdesc="Perl CSS::Inliner CPAN module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-html-query' 'perl-html-treebuilder-xpath' 'perl-libwww' 'perl-uri')
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('463b99cbbaf32b05ddf9ff1615e53eae54cbc028b819e84f04e6c3d1d3c575a3')
+sha256sums=('14c2214a5e6c3941d0b0eed04832ed1df08466beef60a2e9adedb0c1d97b9a1b')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
