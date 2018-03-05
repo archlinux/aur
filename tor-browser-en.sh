@@ -68,7 +68,7 @@ Options:
 EOF
 }
 
-DIRECTORY="~/.$NAME"
+DIRECTORY="$HOME/.$NAME"
 args=()
 for arg; do
 	case "$arg" in
