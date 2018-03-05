@@ -1,7 +1,7 @@
 pkgbase = clblast-git
 	pkgdesc = Tuned OpenCL BLAS library (works with OpenCL 1.1)
 	pkgver = 1.3.0.35.g269bddb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CNugteren/CLBlast
 	arch = i686
 	arch = x86_64
