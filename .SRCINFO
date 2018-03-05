@@ -1,0 +1,15 @@
+pkgbase = ots
+	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = https://github.com/khaledhosny/ots
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = freetype2
+	conflicts = ots-git
+	source = https://github.com/khaledhosny/ots/releases/download/v6.1.1/ots-6.1.1.tar.gz
+	sha512sums = d7c6f77496a4b0867731e066d6c33642141b7a2ec3c4c4b323e4a350331d0360d4c58e7c8a9e996afb15dc150e62a98a5c484e25be9da2d6cbcd3b32fdd6bc9b
+
+pkgname = ots
+
