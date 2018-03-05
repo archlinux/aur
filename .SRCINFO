@@ -1,7 +1,7 @@
 pkgbase = ombi
 	pkgdesc = Simple automated way for users to request new content for Plex
 	pkgver = 3.0.2970
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tidusjar/Ombi
 	install = ombi.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ombi
 	arch = armv7h
 	license = GPL2
 	depends = libunwind
+	depends = libssl-1.0
 	optdepends = sonarr: TV daemon for usenet & torrents
 	optdepends = radarr: Movie daemon for usenet & torrents (sonarr fork)
 	optdepends = sickrage: TV daemon for usenet & torrents (sickbeard fork)
