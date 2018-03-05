@@ -1,13 +1,13 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=radare2-cutter-git
-pkgver=1.0.r9.gb331dfd
+pkgver=1.0.r225.gfa7da35
 pkgrel=1
-pkgdesc="A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)"
-url="https://github.com/radareorg/cutter"
+pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
+url='https://github.com/radareorg/cutter'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'icu')
+depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=('radare2-cutter')
@@ -36,8 +36,8 @@ build() {
 package() {
   cd ${pkgname}
 
-  install -DTm755 build/cutter "${pkgdir}/usr/bin/cutter"
-  install -DTm644 src/cutter.desktop "${pkgdir}/usr/share/applications/cutter.desktop"
+  install -DTm755 build/Cutter "${pkgdir}/usr/bin/Cutter"
+  install -DTm644 src/Cutter.desktop "${pkgdir}/usr/share/applications/Cutter.desktop"
   install -DTm644 src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
   install -DTm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
