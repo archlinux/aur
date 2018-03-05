@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
-license=('Custom:MPLv2' 'GPL3')
+license=('GPL3' 'MPL2')
 depends=('gcc-libs' 'gmp' 'openssl')
 makedepends=('rust')
 source=("rink-$pkgver.tar.gz::https://crates.io/api/v1/crates/rink/$pkgver/download")
@@ -24,7 +24,6 @@ check() {
 
 package() {
   cd rink-$pkgver
-  install -Dm644 LICENSE-MPL "$pkgdir"/usr/share/licenses/rink/LICENSE
   install -Dm755 target/release/rink "$pkgdir"/usr/bin/rink
 }
 
