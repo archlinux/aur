@@ -10,8 +10,8 @@ license=('custom:Public domain')
 depends=('python-requests' 'python-tqdm')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-requests-mock')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('119dbaad082fab70c7e2d4d3b3167f338421ceee0378dd53204ea1e7624c1e3275f3cc36817bce86a337862dc164256481f52f32c64dc62a3566d0f58d637615')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('9ef554cf3668fb60fadea1d48c1f651fac05686939309fb0b6d9fd66aa8008c9db04929c9d557ca3156f4161a8257a270f2f4628289b725fbc04fcb35ea8c4aa')
 
 build() {
   cd $pkgname-$pkgver
