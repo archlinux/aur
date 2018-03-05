@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-rust-bin
 _pkgname=rust
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.24.1
+pkgrel=1
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
 url='https://www.rust-lang.org/'
@@ -19,11 +19,11 @@ makedepends=()
 source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('336cf7af6c857cdaa110e1425719fa3a1652351098dc73f156e5bf02ed86443c'
+sha256sums=('4567e7f6e5e0be96e9a5a7f5149b5452828ab6a386099caca7931544f45d5327'
             'SKIP'
-            'bbc1bfd742c459bf5b7d6bfc798f93b2f1f1c15f617daaa7631a347d9c6ae7cf'
+            '3e7a89df5aaf1e8d704badaaf415a2430340df67e0e3a314efd6b5bdb589caa6'
             'SKIP'
-            'd1b2c34f1519f9ed01109dd23c7280e122e92251f1a3f24d0b0ce546ca1ca41b'
+            '16dbd953ad16787cb28cccf37b89e320b16613c0f0967d42173b67d063f39ced'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
