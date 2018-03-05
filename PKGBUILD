@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=python2-cybox
-pkgver=2.1.0.14
+pkgver=2.1.0.17
 pkgrel=1
 pkgdesc="A Python library for parsing and generating CybOX 2.1.0 content."
 url="https://github.com/CybOXProject/python-cybox"
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/CybOXProject/python-cybox/archive/v${pkgver}.tar.gz")
-sha512sums=('80bdbf1db78f62017708aac8b0df7ca2833a167991cff8c73117533f3fd1519b60d122c93730abc3e80386bbd72e52aa469335759dc928d922313b6bb69fe40a')
+sha512sums=('e9b6cee6bcd7703c758a55a76424882b8d7e14fe4cdcfa8bdfe64e3613a9b02a26714f529e8a42d99c665f2aec7b5adedfe81467535a44c6bbbf1995ea9c7a9d')
 
 build() {
   cd python-cybox-"${pkgver}"
