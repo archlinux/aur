@@ -2,8 +2,8 @@
 
 pkgname=visidata
 pkgver=1.0
-pkgrel=1
-pkgdesc='A console spreadsheet tool for discovering and arranging data'
+pkgrel=2
+pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
 url='http://visidata.org'
 _url='https://github.com/saulpw/visidata/'
