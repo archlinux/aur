@@ -3,7 +3,7 @@
 
 pkgname=wine-staging-vulkan-git
 pkgver=3.3.r0.ge09e1fd3+
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches'
 arch=('i686' 'x86_64')
 url='https://www.wine-staging.com/'
@@ -126,8 +126,8 @@ prepare() {
     git clean -xdf             # delete untracked files
     
     # change back to the wine upstream commit that this version of wine-staging is based in
-    msg2 'Changing wine HEAD to the wine-staging base commit...'
-    git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
+    #msg2 'Changing wine HEAD to the wine-staging base commit...'
+    #git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
