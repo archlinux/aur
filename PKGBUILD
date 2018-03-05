@@ -9,8 +9,8 @@ url=https://github.com/google/pulldown-cmark
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1635b1696ddf04977ef2dc8fd08127b5434b1e091e5da8d5bbce4b1e9d660918d8fd56645ea5ca152392cc7e722b8ec78e47f37e21756080412fe4fa75c60299')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha512sums=('098608de00c986cbd08ed940829238c2534807be91a3c49c2fc6ee81bb5fa1005ae7cfff85657d8af1b0d53cf90087f49d58b64cb308abfda9384401814b6ee3')
 
 build() {
   cd $pkgname-$pkgver
