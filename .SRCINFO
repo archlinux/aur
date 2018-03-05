@@ -1,7 +1,7 @@
 pkgbase = imagescan
 	pkgdesc = EPSON Image Scan v3 front-end for scanners and all-in-ones
 	pkgver = 3.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = imagescan
 	makedepends = boost
 	depends = sane
 	depends = gtkmm
-	depends = imagemagick6
+	depends = graphicsmagick
 	depends = libtiff
 	optdepends = tesseract: OCR support
-	conflicts = libmagick
 	backup = etc/utsushi/utsushi.conf
 	source = http://support.epson.net/linux/src/scanner/imagescanv3/fedora/imagescan-3.36.0-1epson4fedora27.src.rpm
 	source = utsushi-scan-gtkmm.desktop
