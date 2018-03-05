@@ -2,8 +2,8 @@
 # Contributor: hotaru70o, ilearn32
 pkgbase=sielo-browser
 pkgname=sielo-browser
-pkgver=1.8.00
-pkgrel=3
+pkgver=1.8.10
+pkgrel=1
 pkgdesc="A simple, customizable and fast web browser"
 arch=(x86_64)
 url="https://feldrise.com/Sielo"
