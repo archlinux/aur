@@ -9,8 +9,10 @@ url=https://github.com/yandex/gixy
 license=('custom:MPLv2')
 depends=('python-argparse' 'python-cached-property' 'python-configargparse' 'python-jinja' 'python-pyparsing' 'python-six')
 checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/g/gixy/gixy-$pkgver.tar.gz")
-sha512sums=('ba1ea71c205e5f520dcf22b2adc2eb1125623beae82f843b5da1934c33a93a11d850112ae388269bc3aed770709b844d23c4a0908a1eb134cfb5ef6431655b0c')
+source=("https://files.pythonhosted.org/packages/source/g/gixy/gixy-$pkgver.tar.gz"
+        "https://github.com/yandex/gixy/blob/v$pkgver/LICENSE")
+sha512sums=('ba1ea71c205e5f520dcf22b2adc2eb1125623beae82f843b5da1934c33a93a11d850112ae388269bc3aed770709b844d23c4a0908a1eb134cfb5ef6431655b0c'
+            '34f29fd93ea70ffb4d2362897780ab00b496844f08709da3dea1d9683e2909352772d9457e07e3248e4c792e9639a3f52a8c72bd0d1b9a60b23c0237f8851d84')
 
 build() {
   cd gixy-$pkgver
@@ -25,7 +27,7 @@ check() {
 package() {
   cd gixy-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/gixy/LICENSE
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/gixy/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
