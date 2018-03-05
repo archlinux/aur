@@ -3,8 +3,8 @@
 
 pkgname=mingw-w64-wxmsw3.1
 epoch=1
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (development branch, mingw-w64)"
 arch=(any)
 url="http://wxwidgets.org"
@@ -13,15 +13,26 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-expat mingw-w64-libpng mingw-w64-libjpeg-turbo mingw-w64-libtiff)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha256sums=('e082460fb6bf14b7dd6e8ac142598d1d3d0b08a7b5ba402fdbf8711da7e66da8')
+sha256sums=('c925dfe17e8f8b09eb7ea9bfdcfcc13696a3e14e92750effd839f5e10726159e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+# HACK: wxWidgets' configure script chokes at '--enable-static' from ${_arch}-configure
+# this function body is equivalent to 'mingw-w64-configure=0.1-1'
+_configure() {
+  mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+  LDFLAGS=""
+  export CFLAGS="$mingw_c_flags $CFLAGS"
+  export CXXFLAGS="$mingw_c_flags $CXXFLAGS"
+  ../configure --host=${_arch} --target=${_arch} --build="$CHOST" \
+    --prefix=/usr/${_arch} --libdir=/usr/${_arch}/lib --includedir=/usr/${_arch}/include \
+    "$@"
+}
 
 build() {
   local _build_flags="\
         --with-msw \
         --with-opengl \
-        --disable-mslu \
         --enable-unicode \
         --with-regex=builtin \
         --disable-precomp-headers \
@@ -35,19 +46,22 @@ build() {
 
   # Fix for current libuuid.a issues
   # see: https://github.com/Alexpux/MINGW-packages/issues/1761
-  _build_flags="${_build_flags} LDFLAGS=-Wl,--allow-multiple-definition"
+  # looks like this was fixed, uncomment if needed
+  # _build_flags="${_build_flags} LDFLAGS=-Wl,--allow-multiple-definition"
 
   cd "${srcdir}/wxWidgets-${pkgver}"
   for _arch in ${_architectures}; do
     # shared build
     mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
-    ${_arch}-configure ${_build_flags} --enable-monolithic ..
     make
+    # ${_arch}-configure ${_build_flags} --enable-monolithic ..
+    _configure ${_build_flags} --enable-shared --enable-monolithic
     popd
 
     # static build
     mkdir -p build-static-${_arch} && pushd build-static-${_arch}
-    ${_arch}-configure ${_build_flags} --disable-shared ..
+    # ${_arch}-configure ${_build_flags} --disable-shared ..
+    _configure ${_build_flags} --disable-shared
     make
     popd
   done
