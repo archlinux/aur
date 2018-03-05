@@ -1,36 +1,29 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=rink
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
 license=('Custom:MPLv2' 'GPL3')
 depends=('gcc-libs' 'gmp' 'openssl')
 makedepends=('rust')
-source=("rink-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'https://github.com/tiffany352/rink-rs/commit/b91f9c1031fc39e298d25efde8b27f26f1061542.patch')
-sha512sums=('fa35afd1ea25a0bb3d2963281205f61fb585dd03f60c74771dca8958583389c48d1919c411c8232a8d1da1d6ed06fed9543f200796a682066875d38c69a63218'
-            'b2d78026052fdeb86402a6384e15a2edc441426d03ea4cdba0beb37930a5aa004043d33ba93d2b8b76dffa687f5b681adfee5b69939a48fd840fd6b66f76bbdf')
-
-prepare() {
-  cd rink-rs-$pkgver
-  patch -p1 -i ../b91f9c1031fc39e298d25efde8b27f26f1061542.patch
-}
+source=("rink-$pkgver.tar.gz::https://crates.io/api/v1/crates/rink/$pkgver/download")
+sha512sums=('f2af9c2f78a230f0b94789c7e1308fc4d619ac9a04381ef60452f71e95f5ae591a897eaa1bb85286e7a191af209fd9a40e035a06360fde629fe63f4f0e3e9c32')
 
 build() {
-  cd rink-rs-$pkgver
+  cd rink-$pkgver
   cargo build --release
 }
 
 check() {
-  cd rink-rs-$pkgver
+  cd rink-$pkgver
   cargo test --release
 }
 
 package() {
-  cd rink-rs-$pkgver
+  cd rink-$pkgver
   install -Dm644 LICENSE-MPL "$pkgdir"/usr/share/licenses/rink/LICENSE
   install -Dm755 target/release/rink "$pkgdir"/usr/bin/rink
 }
