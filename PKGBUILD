@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -21,24 +21,49 @@ optdepends=('apache: Web server to run MantisBT'
             'nginx: Web server to run MantisBT'
             'php-pgsql: PostgreSQL database'
             'uwsgi: Application server to run MantisBT')
-backup=('etc/webapps/mantisbt/config_inc.php')
+backup=('etc/webapps/mantisbt/config_inc.php'
+        'etc/webapps/mantisbt/custom_strings_inc.php'
+        'etc/webapps/mantisbt/custom_relationships_inc.php'
+        'etc/webapps/mantisbt/custom_functions_inc.php'
+        'etc/webapps/mantisbt/custom_constants_inc.php'
+)
 source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('09073bb30b378143704b444cbe40f7162d257baadf5bac3343d6034b6c22455b3f723f18bee3e5a5655644d549586ef55f3eec56569f56d5b05cc2b6ce2e1d87')
+sha512sums=('a796463464cb0179272b373094d24b7c624ed1c20e472cb209344971f5bf5a049f69a837fe279fd93c0dae759f90110bd91c7dbc270dd1b4d794db53e355384b')
 install="${pkgname}.install"
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  find . -type f -exec chmod 0644 {} \;
-  find . -type d -exec chmod 0755 {} \;
+  find . -type f -exec chmod -c 0644 {} \;
+  find . -type d -exec chmod -c 0755 {} \;
 }
 
 package() {
-  install -dm 755 "${pkgdir}"/{etc/webapps/mantisbt,usr/share/webapps}
-  cp -dr --no-preserve='ownership' "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  install -vdm 755 "${pkgdir}"/{etc/webapps,usr/share/webapps}/"${pkgname}"
 
-  #configuration
-  cp "${pkgdir}"/usr/share/webapps/mantisbt/config/config_inc.php.sample "${pkgdir}/etc/webapps/mantisbt/config_inc.php"
-  ln -s /etc/webapps/mantisbt/config_inc.php "${pkgdir}/usr/share/webapps/mantisbt/config/config_inc.php"
+  # configuration
+  install -vDm644 config/config_inc.php.sample \
+    "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
+
+  # readme
+  install -vDm644 readme.md "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
+  cp -av --no-preserve='ownership' ../${pkgname}-${pkgver}/* \
+    "${pkgdir}/usr/share/webapps/${pkgname}"
+
+  # create customization files
+  touch "${pkgdir}/etc/webapps/${pkgname}"/custom_{strings,relationships,functions,constants}_inc.php
+
+  # symlink configuration and configuration
+  ln -sv "/etc/webapps/${pkgname}/config_inc.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config/config_inc.php"
+  ln -sv "/etc/webapps/${pkgname}/custom_strings_inc.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config/custom_strings_inc.php"
+  ln -sv "/etc/webapps/${pkgname}/custom_relationships_inc.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config/custom_relationships_inc.php"
+  ln -sv "/etc/webapps/${pkgname}/custom_functions_inc.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config/custom_functions_inc.php"
+  ln -sv "/etc/webapps/${pkgname}/custom_constants_inc.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config/custom_constants_inc.php"
 }
 
 # vim: ts=2 sw=2 et:
