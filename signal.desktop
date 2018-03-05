@@ -1,0 +1,14 @@
+
+[Desktop Entry]
+Version=0.9.9
+Name=Signet
+GenericName=Signet
+Comment=Desktop Client for Signet
+Categories=Utility;
+Exec=signet
+Icon=signet
+Terminal=false
+Type=Application
+Name[en_US]=Signet
+GenericName[en_US]=Signet
+Comment[en_US]=Desktop Client for Signet
