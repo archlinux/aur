@@ -1,7 +1,7 @@
 pkgbase = wine-staging-vulkan-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches
 	pkgver = 3.3.r0.ge09e1fd3+
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wine-staging.com/
 	install = wine-staging-vulkan-git.install
 	arch = i686
