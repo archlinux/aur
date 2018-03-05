@@ -1,0 +1,20 @@
+pkgbase = visidata
+	pkgdesc = A console spreadsheet tool for discovering and arranging data
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://visidata.org
+	arch = any
+	license = GPLv3
+	depends = python
+	optdepends = python-dateutil: for converting string column to datetime
+	optdepends = python-openpyxl: for opening .xlsx files
+	optdepends = python-h5py: for opening .hdf5 files
+	optdepends = python-google-api-python-client: for opening Google sheets
+	provides = visidata=1.0
+	conflicts = visidata-git
+	replaces = visidata-git
+	source = https://github.com/saulpw/visidata//archive/v1.0.tar.gz
+	sha256sums = 8098c926a8065f0a71e5c81bb076c1c92c75e0e7345417b0c197bfb1fc518bc1
+
+pkgname = visidata
+
