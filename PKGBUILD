@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=python-evic-git
-pkgver=121.12d0059
+pkgver=124.ef62fa6
 pkgrel=1
 pkgdesc="Python Evic for E-Cigs"
 arch=('any')
