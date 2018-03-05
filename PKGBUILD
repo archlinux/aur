@@ -9,12 +9,12 @@ url=https://github.com/bichenkk/coinmon
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("coinmon-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("${source[@]%%::*}")
-sha512sums=('85b7b638e2009bf312d54833b3c45991ae46a9429ff9ba6a402cd782846df04569300ae862da1d2561219c00cd251b3c4cf4f48fc9c52abebfe5d8ac47e692a1')
+source=("https://registry.npmjs.org/coinmon/-/coinmon-$pkgver.tgz")
+noextract=("${source[@]##*/}")
+sha512sums=('2222f96db8ac9d9e14dc854d9f797967c77546743dcafcd6ba100953956d486a1e61f7429fb8d49658b01f4daf6853928200e432829d87c7a1e8e960aa632eea')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production coinmon-$pkgver.tar.gz
+  npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production coinmon-$pkgver.tgz
 
   cd "$pkgdir"
   mkdir -p usr/share/licenses/coinmon
