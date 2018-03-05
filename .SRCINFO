@@ -1,0 +1,25 @@
+pkgbase = pycflow2dot-git
+	pkgdesc = Layout C call graphs from cflow using GraphViz dot
+	pkgver = 0.2.1.r1.g4a043ea
+	pkgrel = 1
+	url = https://github.com/johnyf/pycflow2dot
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = cflow
+	depends = graphviz
+	depends = python
+	depends = python-pydot
+	depends = python-networkx
+	depends = python-decorator
+	provides = pycflow2dot
+	conflicts = pycflow2dot
+	options = !emptydirs
+	source = pycflow2dot::git+https://github.com/johnyf/pycflow2dot.git
+	source = pycflow2dot-0.2.1-fix-install-requires.patch
+	md5sums = SKIP
+	md5sums = 69d5c78fb719661f900741f82bfffa64
+
+pkgname = pycflow2dot-git
+
