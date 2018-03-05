@@ -1,0 +1,23 @@
+pkgbase = task-dev
+	pkgdesc = A command-line todo list manager
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://taskwarrior.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = util-linux
+	depends = gnutls
+	optdepends = bash-completion: for bash completion
+	optdepends = python: for python export addon
+	optdepends = ruby: for ruby export addon
+	optdepends = perl: for perl export addon
+	optdepends = perl-json: for perl export addon
+	provides = task
+	conflicts = task
+	source = https://github.com/GothenburgBitFactory/taskwarrior/archive/s2.6.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = task-dev
+
