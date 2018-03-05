@@ -1,8 +1,16 @@
-post_install() {
+hints() {
     echo "-------------------------------------------------------------------------------------------------------"
     echo "Run 'systemctl --user start bing-wallpaper.service' to start the service"
     echo "Run 'systemctl --user enable bing-wallpaper.service' for autostart bing-wallpaper."
     echo "You may need set the enviroment variables to make it works."
     echo "See https://wiki.archlinux.org/index.php/Systemd/User#Environment_variables"
     echo "-------------------------------------------------------------------------------------------------------"
+}
+
+post_install() {
+    hints
+}
+
+post_upgrade() {
+    hints
 }
