@@ -1,8 +1,9 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 
-# The current relase v0.4 is broken and we the commit following the
+# The current relase v0.4 is broken and we need the commit following the
 # release tag, too. So we currently cannot use "#tag=v${pkgver}" in the
-# git url, but we do not want to use git-HEAD.
+# git url, but we also do not want to use git-HEAD, so we use the commit
+# hash.
 
 pkgname=pusher
 pkgver=0.4_1
