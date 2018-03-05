@@ -1,8 +1,8 @@
 pkgbase = noson-app
 	pkgdesc = The essential to control music from your SONOS devices on Linux platforms
 	pkgver = 3.3.1
-	pkgrel = 1
-	url = https://janbar.github.io/noson-app/
+	pkgrel = 2
+	url = https://janbar.github.io/noson-app
 	arch = x86_64
 	groups = base-devel
 	license = GPL3

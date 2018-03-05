@@ -1,7 +1,7 @@
 # Maintainer: Matthias Baur  <aur@matthiasbaur.me>
 pkgname=noson-app
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The essential to control music from your SONOS devices on Linux platforms"
 arch=('x86_64')
 url="https://janbar.github.io/noson-app"
@@ -21,7 +21,9 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
   cmake "$srcdir/${pkgname%-git}" \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/lib
   make
 }
 
