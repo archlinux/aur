@@ -1,7 +1,7 @@
 # Maintainer: Daniel T. Borelli < danieltborelli@gmail.com>
 
-pkgbase=xlesspass
-pkgname=$pkgbase-git
+pkgbase=xlesspass-git
+pkgname=$pkgbase
 pkgver=2.2
 pkgrel=1
 _gitname=XLessPass
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd $_gitname
-  install -Dm755 $pkgbase "$pkgdir/usr/bin/$pkgbase"
-  install -Dm644 $pkgbase.desktop "$pkgdir/usr/share/applications/$pkgbase.desktop"
-  install -Dm644 icons/key.png "$pkgdir/usr/share/pixmaps/$pkgbase.png"
+  install -Dm755 xlesspass "$pkgdir/usr/bin/xlesspass"
+  install -Dm644 xlesspass.desktop "$pkgdir/usr/share/applications/xlesspass.desktop"
+  install -Dm644 icons/key.png "$pkgdir/usr/share/pixmaps/xlesspass.png"
 }
