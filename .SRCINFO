@@ -3,7 +3,7 @@
 pkgbase = hifi-git
 	pkgdesc = High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. This provides the client, servers and dev tools. (git - master)
 	pkgver = r50816.f4e57898c6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/highfidelity/hifi
 	install = hifi-git.install
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = hifi-git
 	depends = sdl2>=2.0.3
 	depends = bullet>=2.82
 	depends = libsoxr>=0.1.1
-	depends = qxmpp-qt5
+	depends = qxmpp
 	provides = hifi
 	conflicts = hifi
 	source = hifi::git+https://github.com/highfidelity/hifi.git
@@ -54,4 +54,3 @@ pkgbase = hifi-git
 	md5sums = ff5de09932f33f6e4f4e4093a4b5e1d8
 
 pkgname = hifi-git
-
