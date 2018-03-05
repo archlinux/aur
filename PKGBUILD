@@ -10,8 +10,8 @@ url=https://tectonic-typesetting.github.io/en-US/
 license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tectonic-typesetting/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('4d9d942d6b2617a58b1a18d8ec91c374b3f3f4c808f6c365c58129194b0fa66d9552dee58c42e499b349ccb753b7378223eaeb75c87b9afbf417bee3585265ac')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/tectonic/0.1.7/download")
+sha512sums=('b835563ddf43f346365f51a3d257c3b44073100934e1630d52e5f8ad20e49e35b227fd0f1f272a6037d4691d9b62a0294308b4338dcb090002fa47f4b399d326')
 
 build() {
 	cd $pkgname-$pkgver
