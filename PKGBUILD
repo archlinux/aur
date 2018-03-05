@@ -5,7 +5,7 @@
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz
         'dlopen.c' 'utf8.patch')
 backup=("etc/$pkgname.conf")
 #options=('!makeflags')
-sha512sums=('72436e2e56f92ec33ab2ff6b11607aac94e41216098f6141bc00b643c60a8b320ce5dfbf7cd870399479a3c328c08b9f0d1d628e7a8f618b446afb010a773b9b'
+sha512sums=('ad3b93d18aaa05d0eb00f1089b68d1f077f316042e64fff511ad1bbac06d35105adcb503490faaac4c9fe720dd45a9f350115b6c5d0f41fe198f228213a7a3a3'
             'SKIP'
             'e1d254a6adae76198f7e20729aaff5d01a0947cb07faed560574886c1ce3794242204ec0c2f5905584240b243bf36103fffbb06f4154c022228c1b701a070e5c'
             '7966d4d42994e44a0e571b89f1c66cb41f672d75e6ced7051d1ece23d8c209059c3565b41de950bf9c907701ce7a5e33a215b637587075ed300a002a58eda503')
