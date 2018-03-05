@@ -1,0 +1,18 @@
+pkgbase = python-ompython
+	pkgdesc = OpenModelica-Python API Interface
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://openmodelica.org/
+	arch = any
+	license = OSMC-PL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-future
+	optdepends = python-pyzmq
+	source = https://files.pythonhosted.org/packages/source/o/ompython/OMPython-3.0.2.tar.gz
+	md5sums = 2931024d24c0bd43d739a0c9ba2f2f1a
+
+pkgname = python-ompython
+	depends = python
+	depends = python-future
+
