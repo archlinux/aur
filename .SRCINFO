@@ -1,15 +1,15 @@
 pkgbase = ruby-rake-compiler
 	pkgdesc = Rake-based Ruby Extension (C, Java) task generator.
-	pkgver = 0.9.5
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/rake-compiler/rake-compiler
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = rake-compiler-0.9.5.gem
+	noextract = rake-compiler-1.0.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rake-compiler-0.9.5.gem
-	sha512sums = 0891a57a226b0b25b8f3f06c79b6caf3770982280bbbc16fdb2f6ecb0ad9b19ff09721e95ab32c40af4821ed76cde2e80679a59e9e04d6eb3c3ec093802bdb42
+	source = https://rubygems.org/downloads/rake-compiler-1.0.4.gem
+	sha512sums = 009118df874ec63ea1257b6b2e8626848df6f223e16dfc834d6346ffad6ac4b7acaabfe9d5f4a97591f725ba3353ed5329f67ce9cf7564c71855f4aeed2727b0
 
 pkgname = ruby-rake-compiler
 
