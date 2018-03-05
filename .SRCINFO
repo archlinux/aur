@@ -1,0 +1,23 @@
+pkgbase = stm32cubel4
+	pkgdesc = Embedded software for STM32 L4 series
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-embedded-software/stm32cubel4.html
+	arch = any
+	license = custom:MCD-ST Liberty SW License Agreement V2
+	makedepends = unzip
+	depends = bash
+	depends = perl
+	optdepends = arm-none-eabi-gcc: ARM compiler
+	optdepends = arm-none-eabi-gdb: ARM GDB
+	optdepends = arm-none-eabi-newlib: ARM bare metal files
+	optdepends = arm-none-eabi-binutils: ARM binutils
+	optdepends = openocd: firmware flashing tool
+	options = !strip
+	source = stm32cubel4.zip::http://www.st.com/content/ccc/resource/technical/software/firmware/ca/20/a3/1a/24/48/42/24/stm32cubel4.zip/files/stm32cubel4.zip/_jcr_content/translations/en.stm32cubel4.zip
+	source = LICENSE
+	sha512sums = 208ee694a5eb13e65bb9fc966572a4bc484a55fea7d10413e98dc9cae09fa9a15f78e18f932fc3f694df13746c867bae6d4f36f0b26190aceb1d95391dc5fbef
+	sha512sums = 56b5435d98843b02ad3b735cce67b37a98e56095e7377710708c8ce9b72fc4451a314109536bcc48229697c054479b422977d337e701a07014c84fcb97cb04d8
+
+pkgname = stm32cubel4
+
