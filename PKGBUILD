@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=3.3pre+287+gee9736fbb
+pkgver=3.3pre+560+gadae6c19b
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -46,10 +46,10 @@ conflicts=("${_name}")
 replaces=("${_name}1-git")
 source=("${_name}::git://github.com/coelckers/${_name}.git"
         "${_name}.desktop"
-        '0001-Fix-path-to-FluidR3-soundfont.patch')
+        '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '30c431cbf51602581bf2bdc66552c1228c50bcf4a4bb5d63eb80d6bc3c79abcf')
+            '066f1e3433ec3762ab9f91b72f6ec89bdb140a990d338d63fda68b33e4d19e22')
 
 pkgver() {
     cd $_name
@@ -60,7 +60,7 @@ pkgver() {
 prepare() {
     cd $_name
 
-    patch -p1 -i"$srcdir"/0001-Fix-path-to-FluidR3-soundfont.patch
+    patch -p1 -i"$srcdir"/0001-Fix-soundfont-search-path.patch
 }
 
 build() {
@@ -81,7 +81,8 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
-    install -D -m644 ${_name}.sf2 "$pkgdir"/usr/share/$_name
+    install -D -m644 soundfonts/gzdoom.sf2 \
+            "$pkgdir"/usr/share/$_name/soundfonts/gzdoom.sf2
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
