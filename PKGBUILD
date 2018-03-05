@@ -8,17 +8,12 @@ arch=('any')
 url=https://github.com/RDCH106/pycoinmon
 license=('MIT')
 depends=('python-colorama' 'python-humanize' 'python-py-spin' 'python-requests' 'python-tabulate')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('39bc9e19d26ecf3db3df93cb14a9ae54f122c7e1b9f888a9f4fee0d8fcd2873aa34b6ee6c7847cb63c65442a17380e45bdfe4ea9cbd1b7c7dac410799f8d9dcf')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('92a237926907e80bcc39fc8f7b853d373579366ec37c54af4d87a9a6b6fcb37fdffd63e3456c2a35322ee0f7535464436d67d5a597748c394092857d4ff89aa8')
 
 build() {
   cd $pkgname-$pkgver
   python setup.py build
-}
-
-check() {
-  cd $pkgname-$pkgver
-  python -m unittest discover tests
 }
 
 package() {
