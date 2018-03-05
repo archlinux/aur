@@ -1,7 +1,7 @@
 pkgbase = python2-flask-assets
 	pkgdesc = Asset management for Flask, to compress and merge CSS and Javascript files
-	pkgver = 0.11
-	pkgrel = 2
+	pkgver = 0.12
+	pkgrel = 1
 	url = http://flask-assets.readthedocs.org
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = python2-flask-assets
 	depends = python2
 	depends = python2-flask
 	depends = python2-webassets
-	source = https://pypi.python.org/packages/source/F/Flask-Assets/Flask-Assets-0.11.tar.gz
+	source = https://pypi.python.org/packages/source/F/Flask-Assets/Flask-Assets-0.12.tar.gz
 	md5sums = d7fa762f704ab5eb62e6801d43ce2300
 
 pkgname = python2-flask-assets
