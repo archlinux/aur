@@ -1,9 +1,9 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=xandikos
 pkgver=0.0.6
 pkgrel=1
-pkgdesc='CardDAV/CalDAV server that backs onto a Git repository'
+pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://www.xandikos.org/
 license=('GPL3')
