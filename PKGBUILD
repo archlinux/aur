@@ -1,7 +1,7 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=quagga
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.ta
         'ripd.service'
         'ripngd.service'
         'zebra.service')
-md5sums=('e84be2938c26c0c872792090f1a6a866'
+md5sums=('eced21b054d71c9e1b7c6ac43286a166'
          'SKIP'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
