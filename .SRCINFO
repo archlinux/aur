@@ -1,7 +1,7 @@
 pkgbase = flake8-docstrings
 	pkgdesc = A plugin to flake8 to include checks provided by pydocstyle
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://gitlab.com/pycqa/flake8-docstrings
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = flake8-docstrings
 	depends = flake8
 	depends = pydocstyle
 	depends = python-flake8-polyfill
-	source = https://github.com/PyCQA/flake8-docstrings/archive/1.1.0.tar.gz
-	sha256sums = 3b2348201a7cf9f0268cd7b8d09f9bc6a158f67b3c93d008761b70c1d890bba2
+	source = https://github.com/PyCQA/flake8-docstrings/archive/1.2.0.tar.gz
+	sha256sums = 64973d2e4a7c6d4a59e89703a780e5f89e0d527228ceebf70e97aff748467f07
 
 pkgname = flake8-docstrings
 
