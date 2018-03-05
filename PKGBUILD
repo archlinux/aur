@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r4148.397e821a48c5
-pkgrel=3
+pkgver=r4435.17e54014214b
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://furius.ca/beancount/"
 license=('GPL')
@@ -13,7 +13,8 @@ depends=('python>=3.5' 'mpdecimal' 'python-ply' 'python-dateutil'
 		 'python-bottle' 'python-lxml' 'python-google-api-python-client')
 makedepends=('mercurial' 'python-nose' 'make')
 replaces=('ledgerhub-hg')
-provides=('ledgerhub-hg')
+provides=('ledgerhub-hg' 'beancount')
+conflicts=('beancount')
 
 pkgver () {
 	cd "${pkgname}"
