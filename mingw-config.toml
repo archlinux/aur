@@ -136,7 +136,7 @@ python = "python2.7"
 locked-deps = false
 
 # Indicate whether the vendored sources are used for Rust dependencies or not
-vendor = false
+vendor = true
 
 # Typically the build system will build the rust compiler twice. The second
 # compiler, however, will simply use its own libraries to link against. If you
@@ -149,7 +149,7 @@ full-bootstrap = false
 # but also tools such as Cargo. This will also produce "combined installers"
 # which are used to install Rust and Cargo together. This is disabled by
 # default.
-extended = true
+extended = false
 
 # Verbosity level: 0 == not verbose, 1 == verbose, 2 == very verbose
 verbose = 0

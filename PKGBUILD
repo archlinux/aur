@@ -6,8 +6,8 @@
 
 pkgname=mingw-w64-rust
 _pkgname=rust
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.24.1
+pkgrel=1
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
 url='https://www.rust-lang.org/'
@@ -23,9 +23,9 @@ makedepends=('rust' 'gdb' 'libffi' 'perl' 'python2' 'nodejs' 'cmake')
 source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz"{,.asc}
         mingw-config.toml)
 
-sha256sums=('bb8276f6044e877e447f29f566e4bbf820fa51fea2f912d59b73233ffd95639f'
+sha256sums=('3ea53d45e8d2e9a41afb3340cf54b9745f845b552d802d607707cf04450761ef'
             'SKIP'
-            '22fe91f166703ea0bbf81a4d3d1cde7c8e5020540df3a1bb1b67c0c8160859f9')
+            '73b17e4a45bf86c26083d417a1e2ed5a401314fcb5bb739e27a13b99ec8e3d23')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
