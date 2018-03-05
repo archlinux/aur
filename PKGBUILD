@@ -4,7 +4,7 @@
 
 pkgname=prometheus
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
 url="http://$pkgname.io"
@@ -21,6 +21,7 @@ sha256sums=('c6fc92d695c9af30574eb41af5e0e89f4fde9a04a3169ba58aa2b2f80d5862a4'
 prepare() {
     cd "$srcdir/$pkgname-$pkgver" || exit 1
     export GOPATH="$srcdir/gopath"
+    export GOBIN="$GOPATH/bin"
     mkdir -p "$GOPATH/src/github.com/$pkgname"
     rm -f "$GOPATH/src/github.com/$pkgname/$pkgname"
     ln -sr "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/$pkgname/$pkgname"
@@ -28,6 +29,7 @@ prepare() {
 
 build() {
     export GOPATH="$srcdir/gopath"
+    export GOBIN="$GOPATH/bin"
     cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
     make build
 
@@ -36,6 +38,7 @@ check() {
     echo "Tests are skipped because they fail even with more than 4GB free space in /tmp."
     echo "See https://github.com/prometheus/prometheus/issues/3299 for more informations."
     export GOPATH="$srcdir/gopath"
+    export GOBIN="$GOPATH/bin"
     cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
     # make tests
 }
