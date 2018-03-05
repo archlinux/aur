@@ -3,10 +3,11 @@
 pkgname=plasma5-applets-caffeine-plus
 _reponame=plasma-applet-caffeine-plus
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Disable screensaver and auto suspend"
 arch=('i686' 'x86_64')
 url="https://github.com/qunxyz/plasma-applet-caffeine-plus"
+license=('GPL2')
 makedepends=(
 	gcc
 	make
