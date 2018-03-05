@@ -2,7 +2,7 @@
 
 pkgname=flashrom-chromeos
 pkgdesc='Flashrom with Chromium project modifications'
-pkgver=48.7647
+pkgver=66.10452
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 arch=(i686 x86_64)
