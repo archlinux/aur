@@ -1,0 +1,30 @@
+pkgbase = ombi-dev
+	pkgdesc = Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves
+	pkgver = 3.0.2980
+	pkgrel = 1
+	url = https://www.ombi.io
+	install = ombi.install
+	arch = any
+	license = GPL2
+	makedepends = tar
+	depends = libunwind
+	optdepends = sonarr
+	optdepends = radarr
+	optdepends = plex-media-server
+	optdepends = emby-server
+	provides = ombi
+	conflicts = ombi
+	replaces = plexrequests
+	replaces = ombi-beta
+	noextract = ombi-dev.tar.gz
+	options = staticlibs
+	backup = opt/Ombi/Ombi.sqlite
+	source = ombi-dev.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz
+	source = ombi.service
+	source = ombi.sysusers
+	sha256sums = c29353ff9b608a869a286190ba4c7f28fb51623e9998ee62ca715f5cacdae09a
+	sha256sums = 601f9ba604c6767722397db977a9d73e800127d4a33c5511439e112d22660eba
+	sha256sums = 480941bb5c96b9e6a155d6feca16f56c74d7f13a49fc94f36132a548bd53dc0a
+
+pkgname = ombi-dev
+
