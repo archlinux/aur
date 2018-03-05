@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='cadabra2-git'
-pkgver=r1429.2fd1e6b970
+pkgver=r1527.5a4be48ceb
 pkgrel=1
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
