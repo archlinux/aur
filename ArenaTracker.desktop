@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Arena Tracker
+GenericName=Hearthstone Tracking Software
+Comment=A deck tracker that gives you a lot of extra info while playing Hearthstone
+Exec=ArenaTracker
+Icon=ArenaTracker
+Terminal=false
+Type=Application
+Categories=Games;Tools;
+StartupNotify=true
