@@ -1,9 +1,10 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
+# Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
-pkgname=wine-staging-git
-pkgver=3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
+pkgname=wine-staging-vulkan-git
+pkgver=3.3.r0.ge09e1fd3+
 pkgrel=1
-pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
+pkgdesc='A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches'
 arch=('i686' 'x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL')
@@ -80,7 +81,7 @@ optdepends=(
 )
 options=('staticlibs')
 install="$pkgname".install
-source=('wine-git'::'git://source.winehq.org/git/wine.git'
+source=('wine-git'::'git+https://github.com/roderickc/wine-vulkan.git'
         "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
         'harmony-fix.diff'
         '30-win32-aliases.conf'
