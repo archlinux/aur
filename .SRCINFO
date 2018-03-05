@@ -1,6 +1,6 @@
 pkgbase = binaryninja-personal
 	pkgdesc = Binary Ninja is a binary multi-tool and reversing platform
-	pkgver = 1.1.989
+	pkgver = 1.1.1038
 	pkgrel = 1
 	url = https://binary.ninja
 	install = binaryninja.install
@@ -32,7 +32,7 @@ pkgbase = binaryninja-personal
 	conflicts = binaryninja
 	source = file://BinaryNinja-personal.zip
 	source = binaryninja.png
-	sha256sums = b0df189961d3f37949ec2b22125c66dfc91970536eddd7ca23a3e2563b35567d
+	sha256sums = 7b1a8a7af61e7add060082033e4d20307e9c8278e9c1a4c2d2657afed09d625b
 	sha256sums = ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8
 
 pkgname = binaryninja-personal

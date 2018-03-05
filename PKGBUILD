@@ -14,7 +14,7 @@ license=('custom:Binary Ninja License Agreement')
 arch=('x86_64')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-pkgver=1.1.989
+pkgver=1.1.1038
 pkgrel=1 # reset after new release, and .srcinfo
 install="${_pkgname}.install"
 makedeps=('curl' 'perl')
@@ -22,8 +22,9 @@ depends=(
 	'python2' 'glibc' 'glib2' 'gcc-libs-multilib' 'pcre' 'zlib'
 	'libssh2' 'libnghttp2' 'libpsl' 'libxcb' 'icu' 'keyutils'
 	'libxext' 'libx11' 'libglvnd' 'krb5' 'e2fsprogs' 'libffi'
-	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl-1.0'
+	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl-1.0' 'qt5-base'
 )
+optdepends=('gtk-update-icon-cache: icon support')
 # https://binary.ninja/recover/
 source=(
 	"file://BinaryNinja${_edition}.zip"
