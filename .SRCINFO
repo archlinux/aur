@@ -1,0 +1,16 @@
+pkgbase = astylewx
+	pkgdesc = A Graphical User Interface for Artistic Style Using wxWidgets
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://astyle.sourceforge.net/astylewx/
+	arch = x86_64
+	license = MIT
+	depends = wxgtk2
+	depends = astyle
+	source = https://downloads.sourceforge.net/project/astylewx.astyle.p/astylewx/astylewx 3.1/astylewx_3.1_linux.tar.gz
+	source = astylewx-destdir.patch
+	md5sums = 06a72203f953440ff254eb69940b4517
+	md5sums = cb9226bb562f88b09f57f3fd708fff3b
+
+pkgname = astylewx
+
