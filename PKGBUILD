@@ -1,7 +1,7 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.20.29
-_pkgver=$pkgver
+pkgver=0.20.46
+_pkgver="$pkgver"dev
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
@@ -12,12 +12,17 @@ makedepends=('npm' 'python2' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("browser-laptop-"$_pkgver"dev.tar.gz::https://github.com/brave/browser-laptop/archive/v"$_pkgver"dev.tar.gz")
+source=("browser-laptop-"$_pkgver".tar.gz::https://github.com/brave/browser-laptop/archive/v"$_pkgver".tar.gz")
+md5sums=('baf0e1ddc0748ec663d4145d7a57b4e9')
 
 build() {
-	cd "$srcdir"/browser-laptop-"$_pkgver"dev
+	cd "$srcdir"/browser-laptop-"$_pkgver"
 
 	npm install
+
+	# Workaround for https://github.com/brave/browser-laptop/issues/12667
+	sed -i "s/require('git-rev-sync').long()/'$_pkgver'/" tools/buildPackage.js
+
 	CHANNEL=dev npm run build-package
 
 	if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
@@ -26,7 +31,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/browser-laptop-"$_pkgver"dev
+	cd "$srcdir"/browser-laptop-"$_pkgver"
 
 	install -dm0755 "$pkgdir"/usr/lib
 
@@ -173,4 +178,3 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('920dc12c6c6985d07d35bc5398aa749a')
