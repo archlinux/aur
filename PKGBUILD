@@ -20,7 +20,7 @@ pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
 _codename=Leia
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -93,7 +93,7 @@ build() {
 # components: kodi, kodi-bin
 
 package_kodi-pre-release() {
-  pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
+  pkgdesc="Alpha, Beta, or RC version of a media player and entertainment hub for digital media."
   depends=(
     'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
