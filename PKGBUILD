@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('python-click' 'python-dateutil' 'python-pyfiglet')
 makedepends=('python-setuptools')
 optdepends=('espeak: for spoken countdown')
-source=("termdown-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c4d9fe4ea653677fa99c3d0309b6cf1f3c2ebd8153c32a5870111f25cfed5c1381b33262c3b6c6f00ce95b6e52cfdc83e9f5b60d9b27a2252001970b714f19a1')
+source=("https://files.pythonhosted.org/packages/source/t/termdown/termdown-$pkgver.tar.gz")
+sha512sums=('ebed27528ab049a96fbd05108fdbfdb26673dbd7584f2a0a86516958d711e403263c3bb056b47a59a939c7b0ae025088813313c66d1220d59a7e80c3e8218257')
 
 build() {
   cd termdown-$pkgver
