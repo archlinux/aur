@@ -1,4 +1,4 @@
-pkgbase = xlesspass
+pkgbase = xlesspass-git
 	pkgdesc = Front-End for lesspass-cli
 	pkgver = 2.2
 	pkgrel = 1
