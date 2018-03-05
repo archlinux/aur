@@ -1,7 +1,7 @@
 pkgbase = hiri
 	pkgdesc = A cross-platform, Exchange-ready email client aiming to replace Outlook
 	pkgver = 1.3.6.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.hiri.com/
 	install = hiri.install
 	arch = x86_64
