@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-gtk-theme
-pkgver=20180302
+pkgver=20180305
 pkgrel=1
 pkgdesc="A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
@@ -9,19 +9,19 @@ url='https://www.gnome-look.org/p/1187179'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 _hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1519962314/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-sea.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1519962308/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-azul.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1519962307/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-aliz.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1519962313/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-sea.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1519962311/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-azul.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1519962310/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-aliz.tar.xz")
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1520269849/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-sea.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1520269858/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-azul.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1520269860/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-aliz.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1520269852/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-sea.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1520269853/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-azul.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1520269856/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-aliz.tar.xz")
 
-sha256sums=('10a2c4a3d92fb4c50cc97eff1f1edd7b2d741c9b14bbf90b69755b9d21b1dec4'
-            'b3b05e077bac560c19b06bfc295770e0a790ec226c0679427efa81b52bc35979'
-            '889ab0fa2273b256d2024708710e707869220bbd77f11ec2e74ce5a29039bf07'
-            'ea2e1fddd915248f65159aaec3bf483c8ae73789b50e5389b4097eabb2f75f77'
-            'a087aca6822ad1ecc8158f1a0170a36674135ae54fffc6dde4e817d0aeff8b18'
-            '0ae8e72284d2df20d4e9b81fec39861e4f43cb93a9d16e6b6762f03860f3a67c')
+sha256sums=('1b580a7cf8a3b660d33916bc002f7b5baaccfb65923d94dfb7db043902b0c1f8'
+            'b9f90b4e3fc66d2f28190a685083125c0bbd83cac2dca1912e1e43bd4613aa27'
+            '7dfcbd59a18310ddbfdd3dce085780fb4cea4be6323ae50ba61ebdcf122e15d6'
+            'f7d4f6a8830d414a04b5a25564d663beadf2480831dd9e54f52c217439de03bc'
+            'e808e530a0208b1c62b8389a853caf16cd493b350fbaa1592283daeb9dba256c'
+            'fde47233b23bf4963ebdeb9026c97fb8ee06ec6db8b26e2efe152b041ea525bf')
 
 
 prepare() {
