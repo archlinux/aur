@@ -1,5 +1,4 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
-# Co-maintainer: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
 _name="jira"
