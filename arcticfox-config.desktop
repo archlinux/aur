@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Arcticfox Config
+Comment=Configuration Tool for Vape Battery Mods with Arcticfox Firmware. Works on MacOS and Linux.
+Exec="/opt/Arcticfox Config/arcticfox-config" %U
+Terminal=false
+Type=Application
+Icon=arcticfox-config
+Categories=Utility;

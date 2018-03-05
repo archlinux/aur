@@ -1,0 +1,8 @@
+post_install() {
+    :
+#!/bin/bash
+GROUP="arcticfox"
+echo "creating group $GROUP"
+groupadd $GROUP
+echo "to get access to the arcticfox device add your user to the group $GROUP"
+}
