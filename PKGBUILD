@@ -2,12 +2,12 @@
 
 pkgname=photocollage
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical tool to make photo collage posters.'
 url='https://github.com/adrienverge/PhotoCollage'
 license=('GPLv2')
 arch=('any')
-depends=('python-pillow' 'python-gobject')
+depends=('python-pillow' 'python-gobject' 'python-cairo')
 source=("https://github.com/adrienverge/PhotoCollage/archive/v${pkgver}.zip")
 sha256sums=('880400f36df03a1c784ded99652dc9515b95cb2063ca05d7192e03e3cbaf0172')
 
