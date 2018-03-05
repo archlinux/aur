@@ -1,13 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='scc-git'
 pkgdesc='The Suckless C Compiler'
-pkgver=r2448.c6dd2da
-pkgrel=2
+pkgver=r2688.f75308d
+pkgrel=1
 arch=('x86_64')
 depends=('qbe-git' 'sh')
 license=('custom:ISC')
-url='http://git.suckless.org/scc/'
-source=("${pkgname}::git+${url}")
+url='https://git.2f30.org/scc'
+source=("${pkgname}::${url/https:/git:}")
 sha512sums=('SKIP')
 
 pkgver () {
@@ -26,11 +26,27 @@ prepare () {
 
 build () {
 	cd "${pkgname}"
-	make PREFIX=/usr
+	for i in config.mk dep all ; do
+		make PREFIX=/usr $i
+	done
 }
 
 package () {
 	cd "${pkgname}"
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	mkdir -p "${pkgdir}/usr/lib"
+
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Workaround quirk in "install" target.
+	ln -s ../libexec/scc "${pkgdir}/usr/lib/scc"
+
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
+
+	# Move things around.
+	rm "${pkgdir}/usr/lib/scc"
+	mkdir -p "${pkgdir}/usr/lib"
+	mv "${pkgdir}/usr/libexec/scc" "${pkgdir}/usr/lib"
+	rmdir "${pkgdir}/usr/libexec"
+	mkdir -p "${pkgdir}/usr/share/man"
+	mv "${pkgdir}/man1" "${pkgdir}/usr/share/man/"
 }
