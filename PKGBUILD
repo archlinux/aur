@@ -1,71 +1,55 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 _author=Z/ZE/ZEFRAM
 _perlmod=Data-Alias
 pkgname=perl-data-alias
-pkgver=1.16
-pkgrel=3
+pkgver=1.21
+pkgrel=1
 pkgdesc='Data::Alias - Comprehensive set of aliasing operations'
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Data-Alias/"
 license=('GPL' 'PerlArtistic')
-groups=()
-depends=('perl>=5.10.0')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
+makedepends=(
+perl-module-install
+# perl-devel-callparser
+)
+depends=(perl)
 options=(!emptydirs)
-install=
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-noextract=()
+sha512sums=('19714402da3b0930c23407872d8122fb3f45a4d4a974a8afd4c4edf4d452748529619bfed3be592daa511f91e145084d177383937ef17dfc7c3a3b87512b5831')
+unset PERL5LIB PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 \
+  PERL_AUTOINSTALL=--skipdeps \
+  PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+  PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'"
+  MODULEBUILDRC=/dev/null \
 
+prepare(){
+  cd $srcdir/$_perlmod-$pkgver
+}
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
     make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
+  else
+    perl Build.PL
+    ./Build
   fi
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
+  if [ -f Makefile.PL ]; then
     make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
+  else
+    ./Build test
   fi
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
   fi
-
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-md5sums=('f53a4f654d57671fe0bd2cdcd6974e41')
