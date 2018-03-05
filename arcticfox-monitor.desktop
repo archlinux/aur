@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Arcticfox Monitor
+Comment=A simple device monitoring tool for vape devices with Arcticfox firmware
+Exec="/opt/Arcticfox Monitor/arcticfox-monitor" %U
+Terminal=false
+Type=Application
+Icon=arcticfox-monitor
+Categories=Utility;
