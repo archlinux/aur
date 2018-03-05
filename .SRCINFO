@@ -1,5 +1,5 @@
 pkgbase = linux-disable-tsq
-	pkgver = 4.14.14
+	pkgver = 4.14.23
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,17 +12,16 @@ pkgbase = linux-disable-tsq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.14.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.14.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.23.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.23.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 	source = disable-tsq.patch
+	source = ath.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 

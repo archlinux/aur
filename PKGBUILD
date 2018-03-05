@@ -5,7 +5,7 @@
 pkgbase=linux-disable-tsq               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-pkgver=4.14.14
+pkgver=4.14.23
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,9 +23,8 @@ source=(
   'linux.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   disable-tsq.patch
+  ath.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
