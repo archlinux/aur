@@ -51,13 +51,14 @@ package()
   # as a threat in the manpages, even if it you live in some part of the world
   # where the regime and police are a serious threat to Freedom. For users in
   # a Free part of the world. you've implicated them with criminal intent when
-  # they otherwise have none. i.e. protecting against identity theft, by far
-  # the most common cyber-crime, now have the presumption of cybercrime
-  # themselves
+  # they otherwise have none: i.e. protecting against identity theft, by far
+  # the most common cyber-crime, now have the presumption of being
+  # cybercriminals themselves
   #
-  # I say this again, there is no good reason to ever list "Law Enforcement", or
-  # any part of a regime security apparatus as a threat in software
-  # documentation. Ever. This does nothing more than implicate the user.
+  # Secure Delete, I say again, has use as a legitimate defensive security tool.
+  #
+  # There is no good reason to ever list "Law Enforcement", or any part of a
+  # regime security apparatus as a threat in software documentation. Ever.
   #
   # Van Hausen, if you ever read this, pls fix this upstream.
   
