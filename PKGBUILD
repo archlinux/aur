@@ -1,7 +1,7 @@
 # Maintainer: Fabio Comuni <fabrix.xm@gmail.com> 
 
 pkgname=gst-plugin-qrcode
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="QRCode decoder plugin for GStreamer"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('LGPL3')
 url="https://github.com/fabrixxm/gst-plugin-qrcode"
 depends=('gstreamer' 'quirc')  
 source=("https://github.com/fabrixxm/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('b4759fc6fbe1e9650279b691a3120254')
+md5sums=('242fbdbe3df92565ae4629db21bb2e37')
 
 build() {
 	cd "$pkgname-$pkgver"
