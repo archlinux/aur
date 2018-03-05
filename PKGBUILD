@@ -9,8 +9,8 @@ url=https://github.com/yandex/gixy
 license=('custom:MPLv2')
 depends=('python-argparse' 'python-cached-property' 'python-configargparse' 'python-jinja' 'python-pyparsing' 'python-six')
 checkdepends=('python-nose')
-source=("gixy-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('adee99151330ff1f6aa4bed6baca6e54489c4e57eab692e716a7fd1e9aa78d80360aa3778dc1e1ab588ef2c03b9b98d69469f9dc1a5d039dff90606e2ed2f6bc')
+source=("https://files.pythonhosted.org/packages/source/g/gixy/gixy-$pkgver.tar.gz")
+sha512sums=('ba1ea71c205e5f520dcf22b2adc2eb1125623beae82f843b5da1934c33a93a11d850112ae388269bc3aed770709b844d23c4a0908a1eb134cfb5ef6431655b0c')
 
 build() {
   cd gixy-$pkgver
