@@ -3,7 +3,7 @@
 
 _basename=gperftools
 pkgname=lib32-$_basename
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools (32-bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('libtcmalloc.so'
           'libtcmalloc_and_profiler.so'
           'libtcmalloc_minimal.so'
           'libtcmalloc_minimal_debug.so')
-makedepends=('gcc-multilib' 'git')
+makedepends=('git')
 source=("git+https://github.com/gperftools/gperftools#tag=$_basename-$pkgver")
 sha256sums=('SKIP')
 
