@@ -1,5 +1,5 @@
 pkgname=flexnet
-pkgver=v11.14.1.0
+pkgver=11.14.1.0
 pkgrel=1
 arch=('x86_64')
 url='https://developer.arm.com/products/software-development-tools/license-management/downloads'
