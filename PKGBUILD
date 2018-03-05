@@ -13,11 +13,9 @@ install=$pkgname.install
 source=(
         "https://github.com/hobbyquaker/arcticfox-config/releases/download/v$pkgver/arcticfox-config-$pkgver.tar.gz"
         "arcticfox-config.desktop"
-        "99-arcticfox.rules"
         "https://github.com/hobbyquaker/arcticfox-config/raw/master/icon.png"
 )
 md5sums=(
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -26,11 +24,11 @@ md5sums=(
 package() {
         mkdir -p "${pkgdir}/opt/"
         mv -v "${srcdir}/arcticfox-config-$pkgver"                "${pkgdir}/opt/Arcticfox Config"
-        install -Dm644 "${srcdir}/arcticfox-config.desktop"       "${pkgdir}/usr/share/applications/arcticfox-config.desktop"
-        install -Dm644 "${srcdir}/99-arcticfox.rules"             "${pkgdir}/etc/udev/rules.d/99-arcticfox.rules"
 
-        mkdir -p "${pkgname}/usr/bin/"
-        ln -svr "${pkgdir}/opt/Arcticfox Config/arcticfox-config" "${pkgname}/usr/bin/"
+        install -Dm644 "${srcdir}/arcticfox-config.desktop"       "${pkgdir}/usr/share/applications/arcticfox-config.desktop"
+
+        mkdir -p "${pkgdir}/usr/bin/"
+        ln -svrf "${pkgdir}/opt/Arcticfox Config/arcticfox-config" "${pkgdir}/usr/bin/arcticfox-config"
 
         mkdir -p "${pkgname}/usr/share/icons/hicolor/512x512/apps/"
         mv -v icon.png "${pkgname}/usr/share/icons/hicolor/512x512/apps/arcticfox-config.png"
