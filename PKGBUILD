@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-cpan-reporter
-pkgver=1.2017
+pkgver=1.2018
 _author=D/DA/DAGOLDEN
 _perlmod=CPAN-Reporter
 pkgrel=1
@@ -38,24 +37,33 @@ perl-cpan-reporter-prereqcheck
 optdepends=('perl-test-reporter-transport-metabase: Metabase transport')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('fb8e3050ff5332881b3c63d34a8e960e7d02d16f79c6e360f7a489c4e656b36c')
+sha256sums=('2dc561c42f4644747a05e516221da731b8e260e082f1be594b98af7efe90ddc1')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
+
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
-  /usr/bin/perl Makefile.PL
-  make
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
+    make
+  else
+    perl Build.PL
+    ./Build
+  fi
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
+  if [ -f Makefile.PL ]; then
+    make test
+  else
+    ./Build test
+  fi
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+  fi
 }
