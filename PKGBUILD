@@ -1,6 +1,6 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
-_pkgname=flake8-bugbear
+_name=flake8-bugbear
 pkgname=python-flake8-bugbear
 pkgver=18.2.0
 pkgrel=1
@@ -10,21 +10,21 @@ url=https://github.com/PyCQA/flake8-bugbear
 license=('MIT')
 depends=('flake8' 'python-attrs')
 makedepends=('python-setuptools')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('b46594a325066f1a2694babf01cfc87e73a392e9bb821d4b5d568ec4f96c04b564bdebf6e3fe2c57a6e788a179988e5ee76c9990dcdf34211e5d987af13f7f7b')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('b4aec1a0361a8360328fe824deb74dd006f85fafcf36c113d0b19d4da5cd3a5cbd0eeab95167ef116fbe4d1920337cd6584e4d1fefad00748d409b67b8b4733e')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_name-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $_pkgname-$pkgver
+  cd $_name-$pkgver
   python -m tests.test_bugbear
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
