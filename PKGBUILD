@@ -1,8 +1,8 @@
 # Maintainer: Alex Tharp <toastercup@gmail.com>
 # Original Maintainer: Muratcan Sisek <mail@muratcansimsek.com.tr>
 pkgname=hiri
-pkgver=1.3.5.0
-pkgrel=2
+pkgver=1.3.6.1
+pkgrel=1
 pkgdesc="A cross-platform, Exchange-ready email client aiming to replace Outlook"
 arch=('x86_64')
 url="https://www.hiri.com/"
@@ -15,7 +15,7 @@ source=('https://feedback.hiri.com/dist/downloads/Hiri-'$arch'-'$pkgver'.tar.gz'
         'https://feedback.hiri.com/dist/downloads/license.txt'
         'hiri.desktop'
         'hiri.sh')
-sha512sums=('a12ff88d1fd9139cc25dc6bedd2f78d49ba20d0546c3530b08f9d95236820b572f32cfe0f0b8b74f895bbe6d9a1e5666d7a92ff292e69ba4b3f3aeaa34bef22e'
+sha512sums=('58b9a2e5977662f746a99665ecb007e72205d75e9060a252dac991d4ed1bc57c739f7fd547b9c5d12ff2a4e653a3802447395e3558bdc2cdb72900246d8f51da'
             'ae8274026cb1b68f9b3f4cb66348952e19e31d477602a3d6d529121010260727824d0a060303e10fa8c5661f0b336ceabb0b472ad1cb74835ff5d6f3d3d53636'
             '4bf85f50fe25aa4980f97f5fdc5111d4e77af7268f70407f897252fc9cc4901f2d7d148172e242f33856b2839378996ca72c0314a9f8b3673e2449067b19baad'
             'cafbf1f327618cb1d8914babf9cc9c2013b5db27df2a463329f9d366952c5ee592e946e727f991c8f7f558bdf7e625b91e0e029fa193650c197c6c9c6a57676d')
