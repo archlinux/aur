@@ -13,16 +13,17 @@ _face_landmakr_model_commit='8afa57abc8229d611c4937165d20e2a2d9fc5a12'
 
 pkgname=opencv-gstreamer
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
 license=('BSD')
 depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'v4l-utils'
-         'libdc1394' 'gtkglext' 'libwebp' 'cblas' 'lapack' 'libgphoto2')
+         'libdc1394' 'libwebp' 'cblas' 'lapack' 'libgphoto2')
 makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5'
-             'lapacke')
+             'gtkglext' 'lapacke')
 optdepends=('opencv-samples'
+            'gtkglext: for the HighGUI module'
             'hdf5: support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL'
             'python-numpy: Python 3 interface'
@@ -73,6 +74,7 @@ sha256sums_x86_64=('9a4b14a24d31768c3ead0720f27d55dcf80723b5ba1cd8903bed1fd69f1b
 prepare() {
     # cmake downloads some needed files, but here they have been already downloaded by makepkg.
     # place these needed files in cmake cache directory to not redownload them during cmake execution.
+    
     [ "$CARCH" = 'i686'   ] && local _ippicv_arch='ia32'
     [ "$CARCH" = 'x86_64' ] && local _ippicv_arch='intel64'
     
@@ -143,7 +145,7 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -D CMAKE_INSTALL_LIBDIR='lib' \
+        -DCMAKE_INSTALL_LIBDIR='lib' \
         -DCMAKE_SKIP_RPATH='ON' \
         -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib-${pkgver}/modules" \
         -DLAPACK_LIBRARIES='/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so' \
