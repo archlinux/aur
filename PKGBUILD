@@ -2,7 +2,7 @@
 # Original Maintainer: Muratcan Sisek <mail@muratcansimsek.com.tr>
 pkgname=hiri
 pkgver=1.3.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A cross-platform, Exchange-ready email client aiming to replace Outlook"
 arch=('x86_64')
 url="https://www.hiri.com/"
