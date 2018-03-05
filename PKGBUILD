@@ -66,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.23
+pkgver=4.14.24
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -135,7 +135,7 @@ source=(# mainline kernel patches
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '65987b047297e03246f31c64a2afc79bee2f3de336d7079ce690853bead56d24'
+            '6183a67253cf4792431e541fe41e5054665396294cd7e41b94122db195a01357'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '8b8f4d9cc2f868b3627fa67d955fcbd7e78c63eb5f6c254688f9f779d01907f1'
