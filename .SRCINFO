@@ -1,15 +1,15 @@
 pkgbase = signet
 	pkgdesc = Desktop Client for Signet
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://nthdimtech.com/signet-releases/
 	arch = x86_64
 	license = GPLv3
 	provides = signet
-	source_x86_64 = http://nthdimtech.com/downloads/signet-releases/0.9.8/gnu-linux/signet-0.9.8.1
-	source_x86_64 = http://nthdimtech.com/downloads/signet-releases/0.9.8/gnu-linux/50-signet.rules
+	source_x86_64 = http://nthdimtech.com/downloads/signet-releases/0.9.9/gnu-linux/signet-0.9.9
+	source_x86_64 = http://nthdimtech.com/downloads/signet-releases/0.9.9/gnu-linux/50-signet.rules
 	source_x86_64 = https://www.gnu.org/licenses/gpl.txt
-	sha256sums_x86_64 = ca35680459a88abbfc5850cdce387a8804ca35f2e8fce50a1ae6b601ef82b5cd
+	sha256sums_x86_64 = 91a0b02a8b2696c88e9decc2c8248b880a0d4f53909ee7bbfb0f5833b103ab87
 	sha256sums_x86_64 = af34a217fee566de4c149429459e4cd13f38435857ff8c9f5fd7bb0199e86820
 	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
