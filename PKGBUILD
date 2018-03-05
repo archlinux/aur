@@ -68,24 +68,24 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "${pkgdir}/usr/bin"
   for _arch in ${_architectures}; do
     for _build in "shared" "static"; do
       cd "${srcdir}/wxWidgets-${pkgver}/build-${_build}-${_arch}"
-      make DESTDIR="$pkgdir" install
+      make DESTDIR="${pkgdir}" install
     done
 
-    mv "$pkgdir/usr/${_arch}/lib/"*.dll "$pkgdir/usr/${_arch}/bin"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
+    mv "${pkgdir}/usr/${_arch}/lib/"*.dll "${pkgdir}/usr/${_arch}/bin"
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
+    find "${pkgdir}/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
+    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
 
-    ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" "$pkgdir/usr/bin/${_arch}-wx-config-3.1"
+    ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" "${pkgdir}/usr/bin/${_arch}-wx-config-3.1"
 
     # conflicts with stable package
-    mv "$pkgdir/usr/${_arch}/bin/wx-config"{,-3.1}
-    rm -r "$pkgdir/usr/${_arch}/share"
+    mv "${pkgdir}/usr/${_arch}/bin/wx-config"{,-3.1}
+    rm -r "${pkgdir}/usr/${_arch}/share"
 
-    # rm "$pkgdir/usr/${_arch}/bin/wxrc-3.1"
+    # rm "${pkgdir}/usr/${_arch}/bin/wxrc-3.1"
   done
 }
