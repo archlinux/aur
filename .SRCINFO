@@ -1,0 +1,18 @@
+pkgbase = maxcso-git
+	pkgdesc = Fast ISO to CSO compressor
+	pkgver = 1.9.0.r2.f0798c12
+	pkgrel = 1
+	url = https://github.com/unknownbrackets/maxcso
+	arch = x86_64
+	license = custom:ISCL
+	makedepends = git
+	depends = libuv
+	depends = lz4
+	depends = zlib
+	provides = maxcso
+	conflicts = maxcso
+	source = maxcso::git+https://github.com/unknownbrackets/maxcso.git
+	md5sums = SKIP
+
+pkgname = maxcso-git
+
