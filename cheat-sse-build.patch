@@ -1,0 +1,11 @@
+--- a/cmake/modules/FindSSE.cmake	2017-08-22 09:29:22.000000000 +0200
++++ b/cmake/modules/FindSSE.cmake	2018-01-06 19:36:32.716303559 +0100
+@@ -4,7 +4,7 @@
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    if(CPU MATCHES "x86_64" OR CPU MATCHES "i.86")
+-     exec_program(cat ARGS "/proc/cpuinfo" OUTPUT_VARIABLE CPUINFO)
++     exec_program(cat ARGS "/build/kodi/src/cpuinfo" OUTPUT_VARIABLE CPUINFO)
+ 
+      string(REGEX REPLACE "^.*(sse).*$" "\\1" _SSE_THERE ${CPUINFO})
+      string(COMPARE EQUAL "sse" "${_SSE_THERE}" _SSE_TRUE)

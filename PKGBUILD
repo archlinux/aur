@@ -19,35 +19,42 @@
 pkgbase=kodi-pre-release
 _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
-pkgver=17.4rc1
-_codename=Krypton
+pkgver=18.0a1
+_codename=Leia
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'glew'
+  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'doxygen' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
-  'python2-pybluez' 'python2-simplejson' 'rtmpdump'
-  'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid'
+  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
+  'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump'
+  'shairplay' 'smbclient' 'speex' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
+  'yajl' 'zip' 'git' 'giflib' 'rapidjson'
+  # AUR packages needed
+  'fmt' 
 )
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
-  'fix-python-lib-path.patch'
+  'cheat-sse-build.patch'
+  'cpuinfo'
 )
-sha256sums=('dd0604419528e00e14669c5c2ae9285ea60a7588eebf203bd2f399f9b8033e8c'
-            '1c07c9fdd8e2958262cf917e4266c4933fcd06529c111e3cb0cbaaa05c934033')
+sha256sums=('8892498d5248eea29c30db7c128a5910afc60d1b0b894aea472604bb879a0310'
+            '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
 
   cd "xbmc-$pkgver-$_codename"
-  patch -p1 -i "$srcdir/fix-python-lib-path.patch"
+  # detect if building in arch chroot
+  if [[ "$srcdir" =~ ^\/build.* ]]; then
+    patch -Np1 -i "$srcdir/cheat-sse-build.patch"
+  fi
 }
 
 build() {
@@ -56,7 +63,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
-    ../"xbmc-$pkgver-$_codename"/project/cmake
+    ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
 }
