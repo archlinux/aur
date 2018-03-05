@@ -17,11 +17,10 @@
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 pkgbase=kodi-pre-release
-_suffix=pre-release
-pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
+pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
 _codename=Leia
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -37,12 +36,30 @@ makedepends=(
   # AUR packages needed
   'fmt' 
 )
+_libdvdcss_commit="2f12236bc1c92f73c21e973363f79eb300de603f"
+_libdvdnav_commit="981488f7f27554b103cca10c1fbeba027396c94a"
+_libdvdread_commit="6f3f53a63549d937e75c0db132fb1bce6b71a496"
+_ffmpeg_version="3.4.1-$_codename-Alpha-1"
 source=(
-  "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
+  "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
+  "${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_commit.tar.gz"
+  "${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_commit.tar.gz"
+  "${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_commit.tar.gz"
+  "${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
+noextract=(
+  "${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz"
+  "${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz"
+  "${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz"
+  "${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz"
+)
 sha256sums=('8892498d5248eea29c30db7c128a5910afc60d1b0b894aea472604bb879a0310'
+            'b6eb2d929ff56cb051152c32010afc5e7cf5fe8c5ae32dca412a2b46b6b57e34'
+            '312b3d15bc448d24e92f4b2e7248409525eccc4e75776026d805478e51c5ef3d'
+            'ca9e510f4dd6a903de7ab27fe5d27714e6fad498ed9a595e3199f8b44761de36'
+            '5f7b367f2b451098302f5a78a73e35924bbea24e9b1ac0af73cd32b4ee5942e3'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -63,6 +80,10 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
+    -Dlibdvdcss_URL="$srcdir/${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz" \
+    -Dlibdvdnav_URL="$srcdir/${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz" \
+    -Dlibdvdread_URL="$srcdir/${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz" \
+    -DFFMPEG_URL="$srcdir/${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz" \
     ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
@@ -74,11 +95,11 @@ build() {
 package_kodi-pre-release() {
   pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
   depends=(
-    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'bluez-libs'
-    'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio' 'libjpeg-turbo'
-    'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau'
-    'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'mesa'
-    'desktop-file-utils'
+    'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
+    'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
+    'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr'
+    'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
+    'speex' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -125,18 +146,15 @@ package_kodi-pre-release() {
 }
 
 # kodi-eventclients
-# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
+# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-xbmc-send
 
 package_kodi-eventclients-pre-release() {
-  pkgdesc="Kodi Event Clients (Beta or RC versions)"
+  pkgdesc="Kodi Event Clients (pre-release versions)"
   conflicts=('kodi-eventclients')
-
-  depends=('cwiid')
 
   _components=(
     'kodi-eventclients-common'
     'kodi-eventclients-ps3'
-    'kodi-eventclients-wiiremote'
     'kodi-eventclients-xbmc-send'
   )
 
@@ -157,7 +175,7 @@ package_kodi-eventclients-pre-release() {
 # components: kodi-tools-texturepacker
 
 package_kodi-tools-texturepacker-pre-release() {
-  pkgdesc="Kodi Texturepacker tool (Beta or RC versions)"
+  pkgdesc="Kodi Texturepacker tool (pre-release versions)"
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
   _components=(
@@ -177,8 +195,8 @@ package_kodi-tools-texturepacker-pre-release() {
 # components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
 
 package_kodi-dev-pre-release() {
-  pkgdesc="Kodi dev files (Beta or RC versions)"
-  depends=('kodi')
+  pkgdesc="Kodi dev files (pre-release versions)"
+  depends=('kodi-pre-release')
 
   _components=(
     'kodi-addon-dev'
