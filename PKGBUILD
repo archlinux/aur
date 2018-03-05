@@ -7,7 +7,7 @@
 
 pkgname=cin-git
 _pkgname=cinelerra-gg
-pkgver=5.1.20170731
+pkgver=5.1.20180302
 _pkgver=5.1
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
