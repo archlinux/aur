@@ -5,7 +5,7 @@ set -u
 _pyver="python2"
 _pybase='behave'
 pkgname="${_pyver}-${_pybase}"
-pkgver='1.2.5'
+pkgver='1.2.6'
 pkgrel='1'
 pkgdesc='behaviour-driven development, Python style'
 arch=('any')
@@ -27,7 +27,7 @@ _srcdir="${_pybase}-${pkgver}"
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 #_verwatch=("https://pypi.python.org/simple/${_pybase//_/-}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 #source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('15b63ba5b29ba0045807e7d057893d9ec44fc9afd8a4e71966b15df0ea86323f')
+sha256sums=('5178c98857830810d7f7d8b35207e0e4f72999810c1241dec39e753898fab796')
 
 build() {
   set -u
