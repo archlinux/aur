@@ -10,11 +10,11 @@ url="https://pypi.python.org/pypi/django-auth-ldap"
 license=('LGPL')
 depends=('python' 'python-django')
 makedepends=('python-setuptools')
-source=(https://bitbucket.org/psagers/django-auth-ldap/get/$_pkgver.tar.bz2)
-md5sums=('e9790d0d7baeb26273364fcd37d6ee44')
+source=(https://files.pythonhosted.org/packages/32/67/f13dcca1aae0fa6ae06d36a73137cfe80b67ed7c52fd75b5d76480c665b1/$_pkgname-$_pkgver.tar.gz)
+md5sums=('28c82540580b08388fe56082b152f82f')
 
 package() {
-  cd psagers-django-auth-ldap*
+  cd "$_pkgname-$_pkgver"
   python setup.py build
   python setup.py install --root=$pkgdir 
 }
