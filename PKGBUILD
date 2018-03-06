@@ -12,36 +12,30 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0_devel.98979.adfb9c5c7b
-pkgrel=1
+pkgver=18.1.0_devel.100651.e96e6f60f7
+pkgrel=2
 arch=('x86_64')
-makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
-             'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
-             'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
+makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
+              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
 depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'vulkan-driver' 'opencl-driver' 'opengl-driver' 'libtxc_dxtn')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'libtxc_dxtn')
+provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'glvnd-fix-gl-dot-pc.patch'
 )
+#	5dd385f378a7e264f79ce2004aef815b3d9e3388
+#	5b14e06d8b42e2b08ebc52b6c314ef8647d87a1f
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 prepare() {
   cd mesa
-
-  # glvnd support patches - from Fedora
-  # non-upstreamed ones
-  patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
-  autoreconf -fi
-
+  autoreconf -vfi
 }
 
 pkgver() {
