@@ -1,21 +1,21 @@
 pkgbase = pdfbeads
 	pkgdesc = A small utility written in Ruby which takes scanned page images and converts them into a single PDF file
 	pkgver = 1.1.2.pre.beta
-	pkgrel = 0
-	url = http://rubygems.org/gems/pdfbeads
+	pkgrel = 2
+	url = https://github.com/boredland/pdfbeads
 	arch = any
 	license = GPL
-	makedepends = ruby
-	depends = ruby>=2.0.0
+	depends = ruby
 	depends = jbig2enc-git
 	depends = openjpeg2
 	depends = imagemagick6
+	depends = ruby-rmagick>=2.0.0
 	optdepends = ruby-iconv>=1.0.0
-	optdepends = ruby-nokogiri>=1.7.0.0
-	optdepends = ruby-rmagick>=2.0.0
+	optdepends = ruby-nokogiri>=1.7.0.0: to create hidden text layer from hOCR files
+	optdepends = ruby-hpricot>=0.8.3: to read data from hOCR files
 	noextract = pdfbeads-1.1.2.pre.beta.gem
 	source = https://github.com/boredland/pdfbeads/releases/download/1.1.2.pre.beta/pdfbeads-1.1.2.pre.beta.gem
-	md5sums = 68beffdd3b50d581a5325e68d43999c2
+	sha256sums = e25dba6e172136f38fa4947a7c017d5f3a2ba5bb548d9e46632e568e7ebf51e9
 
 pkgname = pdfbeads
 
