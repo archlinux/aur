@@ -2,16 +2,16 @@
 # Contributor: Janne Haapsaari	<iki.fi: haaja>
 
 pkgname=hfstospell
-pkgver=0.4.1
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Helsinki Finite-State Transducer Technology (HFST) tools'
 arch=('i686' 'x86_64')
 url='http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/'
 license=('APACHE')
-depends=('libxml++' 'libarchive' 'icu')
+depends=('libxml++2.6' 'libarchive')
 options=(!libtool)
 source=(https://github.com/hfst/hfst-ospell/archive/v${pkgver}.tar.gz)
-md5sums=('0cd7ab3498a6fb39c402a99eebe04e55')
+md5sums=('efeaa3808274bacb509292e3398c3eec')
 
 build() {
   cd "${srcdir}/hfst-ospell-${pkgver}"
