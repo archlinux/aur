@@ -1,26 +1,34 @@
 # Maintainer: Santiago Torres-Arias <santiago@archlinux.org>
 
-pkgbase=python-securesystemslib
 pkgname=('python-securesystemslib')
-pkgver=0.10.8
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU"
 arch=('any')
 license=('MIT')
 url="https://github.com/secure-systems-lab/securesystemslib"
-provides=("python-securesystemslib")
-depends=('python-cryptography')
+depends=('python-cryptography' 'python-pynacl' 'python-colorama' 'python-six')
 optdepends=()
-makedepends=('python' 'python-setuptools')
-source=("git+https://github.com/secure-systems-lab/securesystemslib#commit=3db6a951d175e0d98468e86a2949292e765780a8")
-sha512sums=('SKIP')
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/secure-systems-lab/securesystemslib/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/secure-systems-lab/securesystemslib/releases/download/v${pkgver}/securesystemslib-${pkgver}.tar.gz.asc")
+
+md5sums=('2b8999ec9b6695a7bee49a72c616eac6'
+         'SKIP')
+sha256sums=('ea2c4f8353dc33e7e90f15b3ddff27bbc4210c815ef82c7477acba22f40aed09'
+            'SKIP')
+sha512sums=('d4eb34952d755a4b9b589c71739d11ed98cb395e0a8cea356c8763d7f4017410a2c6092f52f28bc541dd1a984d256e3311b22e6e1dc73a64c2b45663c460b5f8'
+            'SKIP')
+validpgpkeys=("3E87BB339378BC7B3DD0E5B25DEE9B97B0E2289A")
 
 build() { 
-    cd ${srcdir}/securesystemslib
+    cd ${srcdir}/securesystemslib-${pkgver}
     python setup.py build
 }
 
-package() {
-    cd securesystemslib
+package_python-securesystemslib() {
+	depends=("python")
+
+    cd securesystemslib-${pkgver}
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
