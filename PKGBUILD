@@ -2,7 +2,7 @@
 
 pkgname=webkit2gtk-unstable
 pkgver=2.19.91
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
 url="http://webkitgtk.org/"
@@ -28,6 +28,9 @@ prepare() {
   cd webkitgtk-$pkgver
   sed -i '1s/python$/&2/' Tools/gtk/generate-gtkdoc
   rm -r Source/ThirdParty/gtest/
+  sed -i Source/cmake/FindEnchant.cmake \
+    -e 's/(PC_ENCHANT enchant)/(PC_ENCHANT enchant-2)/' \
+    -e 's/NAMES enchant$/NAMES enchant-2/'
 }
 
 build() {
@@ -36,7 +39,6 @@ build() {
         -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIB_INSTALL_DIR=/usr/lib -DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
         -DENABLE_GTKDOC=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 ../webkitgtk-$pkgver \
-        -DENABLE_SPELLCHECK=OFF \
         -G Ninja
   ninja
 }
