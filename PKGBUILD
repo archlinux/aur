@@ -6,7 +6,7 @@
 
 pkgname=libvirt-git
 pkgver=4.1.0.47.gb704d60e8
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -113,7 +113,8 @@ build() {
 	--with-storage-lvm --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--with-netcf --with-interface --with-numad
+	--with-netcf --with-interface
+	# --with-numad
 	# --with-audit
   make
 }
