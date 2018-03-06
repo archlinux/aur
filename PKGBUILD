@@ -1,3 +1,5 @@
+#Maintainer: wickdchromosome <capsule.edu@gmail.com>
+
 _gemname=blankslate
 pkgname=ruby-$_gemname-2
 pkgver=2.1.2.4
