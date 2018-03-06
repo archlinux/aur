@@ -1,7 +1,7 @@
 # Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 
 pkgname=tempus-themes-tilix
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Tempus themes for Tilix terminal (minimum WCAG AA colour contrast compliance)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('tilix')
 url="https://github.com/protesilaos/$pkgname"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('83cf6b5b050601d7eda710db6c648183fa88c2e19aa1cd4dc8c1a79ed7ec4ca6f749ffe404c615e3c8bbc6cc4c987845a2a213072d321e2d952675b457df3420')
+sha512sums=('23f7d83cc904df130ccdbd06ca2d89ae3ef2c417008f4e34d28776594420a3328cf1581241b787a2044338d6e18fbf1223fa94f3ff4c74a37e145e314835b79e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
