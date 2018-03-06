@@ -1,10 +1,10 @@
 # Maintainer: Karl Tarbe <karulont@gmail.com>
 
 pkgname=i3lock-blur
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with background blurring filter"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://github.com/karulont/i3lock-blur/"
 license=('MIT')
 provides=('i3lock')
@@ -12,26 +12,24 @@ conflicts=('i3lock')
 depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11' 'pam')
 options=('docs')
 backup=("etc/pam.d/i3lock")
-source=("git+https://github.com/karulont/$pkgname/#tag=$pkgver")
-sha512sums=("SKIP")
+source=("https://github.com/karulont/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('3b6eeff9dd839b66263098be50c23cb878ae9472ce05e4058434173446cc9309cdae04108d599f161b7b7185b526c888c9045d3fba1c12d915f5eb87afc6803c')
 
 build() {
   cd "${srcdir}/$pkgname"
   
   # Fix ticket FS#31544, sed line taken from gentoo
-  sed -i -e 's:login:system-auth:' i3lock.pam
+  sed -i -e 's:login:system-auth:' pam/i3lock
 
+  autoreconf -fi
+  ./configure --prefix="$pkgdir/usr/" --sysconfdir="$pkgdir/etc/"
   make
-  gzip i3lock.1
 }
 
 package() {
   cd "${srcdir}/$pkgname"
-  make DESTDIR="${pkgdir}" install
-  
-  install -Dm644 i3lock.1.gz ${pkgdir}/usr/share/man/man1/i3lock.1.gz
+  make install
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  make clean
 }
 
 # vim:set ts=2 sw=2 et:
