@@ -1,50 +1,46 @@
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-test-script'
-pkgver='1.18'
-pkgrel='1'
-pkgdesc="Basic cross-platform tests for scripts"
+pkgname=perl-test-script
+pkgver=1.23
+pkgrel=1
+_author="P/PL/PLICEASE"
+_perlmod="Test-Script"
+url="http://search.cpan.org/dist/Test-Script"
+pkgdesc="Test::Script - Basic cross-platform tests for scripts"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-ipc-run3>=0.034' 'perl-probe-perl>=0.01' 'perl>=5.006')
 makedepends=()
-url='https://metacpan.org/release/Test-Script'
-source=('http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Test-Script-1.18.tar.gz')
-md5sums=('50a6a63b270c44c9250d25aaedf080c9')
-sha512sums=('c89e1dd68ca275744ac12811f0d66d42f8fd76766cc515e11e0df2a82beb8cc052253e19b04f5bc86d45e3a9a2a1d6afd5cd4707e8a97f3a9d4c1dd28e4a72b4')
-_distdir="Test-Script-1.18"
+source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+sha256sums=('33a1e71b9797228c2124eea76831492ca9372e8f8075f3d8cded3ef818af44b1')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+build(){
+  cd "$srcdir"/$_perlmod-$pkgver
+  if [ -f Makefile.PL ]; then
+    perl Makefile.PL
     make
-  )
+  else
+    perl Build.PL
+    ./Build
+  fi
 }
-
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check(){
+  cd "$srcdir"/$_perlmod-$pkgver
+  if [ -f Makefile.PL ]; then
     make test
-  )
+  else
+    ./Build test
+  fi
 }
-
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package(){
+  cd "$srcdir"/$_perlmod-$pkgver
+  if [ -f Makefile.PL ]; then
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  else
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+  fi
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
