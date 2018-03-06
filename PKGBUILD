@@ -6,8 +6,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=tvbrowser
-pkgver=4
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Java-based TV guide which is easily extensible using plugins"
 arch=('any')
 url="http://www.tvbrowser.org"
@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/project/tvbrowser/TV-Browser%20Releases
         http://www.tvbrowser.org/images/$pkgname/${pkgname}_logo.svg
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('c969e561dd0b0227ea9b2c209c95029f7f5e0cb9b215a9b00ea390e19fafad85'
+sha256sums=('f51eb0f419169cd14eadf8c3eb7bbed2f032ac619aaf373d2ffa2b665c8e1a2a'
             'd5bcdf07965ef86fcaa0cb3e0dbde07ff370dd8af4e89d0d75f328e3c1631c4e'
             '9dce6d4532bd1404088010cdd8a73d5b591bc827d0f4f4c76074e003a2136c68'
             '61fe7278dcfb3a8b4557af36890cd68bc2e804b1e9bd1b6187e581c6d05e5693')
