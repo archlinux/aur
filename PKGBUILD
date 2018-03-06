@@ -20,6 +20,6 @@ package(){
 
 	# Symlink
 	install -d "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/Bitwarden/${pkgname} ${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/Bitwarden/bitwarden ${pkgdir}/usr/bin/${pkgname}"
 }
 
