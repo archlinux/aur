@@ -1,7 +1,7 @@
 # Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=py-trello
-pkgver=0.6.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Python wrapper around the Trello API"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/sarumont/py-trello"
 license=("BSD")
 depends=("python-requests-oauthlib" "python-dateutil" "python-pytz")
 source=("https://github.com/sarumont/py-trello/archive/${pkgver}.tar.gz")
-md5sums=('115e251abf1b00c4aaef9d01ceea0370')
+md5sums=('73b6c8df079d0ed40edc5a5d5060f6eb')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
