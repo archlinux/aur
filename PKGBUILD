@@ -24,11 +24,13 @@ depends=(
     pango
     libsystemd
     libxcb
+    libxkbcommon-x11
     util-linux
     xcb-util
     xcb-util-wm
 )
 makedepends=(
+    git
     meson
     pkg-config
     ninja
