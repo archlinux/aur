@@ -25,4 +25,5 @@ package() {
   rm -r $pkgdir/usr/include/libndpi-${pkgver}*
   sed -i 's|\/libndpi-2.0.0||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
 }
+
 md5sums=('e5f73354c082c7136572c846d166d3cb')
