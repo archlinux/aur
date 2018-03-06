@@ -12,8 +12,8 @@ source=("https://github.com/leapcode/pysqlcipher/archive/${pkgver}.tar.gz")
 
 
 package(){
-  cd $srcdir/pysqlcipher-${pkgver}
+	cd $srcdir/pysqlcipher-${pkgver}
 
-  python2 setup.py install --root="$pkgdir"
+	python2 setup.py install --root="$pkgdir"
 }
 md5sums=('502c1543199f53c561a9d649abc1fb77')
