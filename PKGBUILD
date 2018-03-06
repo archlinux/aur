@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r280.g2cea7200
+pkgver=2.5.git.r287.g5961250e
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
@@ -34,6 +34,9 @@ pkgver() {
 
 prepare() {
 	cd openvpn/
+
+	# add a 2.5 tag for proper versioning
+	git tag '2.5_git' 'e1dd49a38875909bda218c0c3f772e791681ac36'
 
 	# regenerate configure script
 	autoreconf -vi
