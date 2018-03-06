@@ -2,7 +2,7 @@
 
 _pkgname=moviepy
 pkgname=python2-${_pkgname}
-pkgver=0.2.2
+pkgver=0.2.3.2
 pkgrel=1
 pkgdesc="Script-based movie editing with python2"
 arch=('any')
@@ -14,8 +14,9 @@ depends=('ffmpeg' 'imagemagick' 'opencv'
 	 'python2-scikit-image' 'python2-scipy' 'python2-tqdm')
 provides=('python2-moviepy-git')
 conflicts=('python2-moviepy-git')
-source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('7211b27da68a5cd21dd7d1f03131181287a82060fbccdbb72b22337bcc204186')
+hashish=46/b3/bd19188e23af213a3bcaa10451aaa16e88fe3cc0b8a55f9599d6a2d116bb
+source=(https://pypi.python.org/packages/${hashish}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('c733967656fa4be4c37ec48af72b63ab2991455aa862321437a013705797c4ab')
 
 package() {
 	 cd "${srcdir}/${_pkgname}-${pkgver}"
