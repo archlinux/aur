@@ -3,7 +3,7 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v4.6.0.beta1.r415.g48d9d0d35
+pkgver=v5.0.0.r67.g1a16e588f
 pkgrel=1
 pkgdesc=" The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More"
 url="https://grafana.com"
@@ -31,6 +31,7 @@ build() {
 	mkdir -p "$GOPATH/src/github.com/${_pkgname}/"
 	ln -nfs "${srcdir}/grafana" "$GOPATH/src/github.com/${_pkgname}/${_pkgname}"
 	cd "$GOPATH/src/github.com/${_pkgname}/${_pkgname}"
+        git pull origin master
 	go run build.go setup
 	go run build.go build
 	# Build frontend assets
