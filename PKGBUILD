@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wxglterm-git
 _pkgname=wxglterm
-pkgver=r301.5d3d038
+pkgver=r314.10272b9
 pkgrel=1
 pkgdesc="a cross platform terminal emulator using wxWidgets and python, drawing using OpenGL"
 arch=('x86_64')
