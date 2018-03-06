@@ -9,7 +9,7 @@ arch=(any)
 license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/f/$_pypkgname/$_pypkgname-$pkgver.tar.bz2")
+source=("https://pypi.python.org/packages/source/f/$_pypkgname/$_pypkgname-$pkgver.tar.bz2")
 md5sums=('b0da79254d69ab38796167a2f55a1dd5')
 
 build() {
