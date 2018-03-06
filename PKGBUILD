@@ -2,10 +2,10 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=59.0b1
+pkgver=59.0b2
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=14
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
 )
 
-sha512sums=('9fa452db4fcd487691bf154dcff7159b7b38acc721f2d40cc44c7e3806ed4d7c3f4245ac8fe34445425b6f66cd75c4503bf352f38c437e3c913154de5eebe5b0'
+sha512sums=('566efce0bad28639dd5065c91250e7a6b68b991ff89fa53ba4a799f82516ca8347f6637bf64c4a8f56658986649be9d20de68acfd062cfedbfbf0f1f9cf0177b'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '33f5c73b18b078c49b97ebd526a8d07eb091deb223018068434cec0ff95e4ac64dbde70f1c2ccf46f833a17f898bb9a916357eebac05f39399f23a08f79149f7'
             '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
