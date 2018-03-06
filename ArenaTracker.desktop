@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Arena Tracker
+GenericName=Arena Tracking Software
+Comment=Free and open source software to track your Hearthstone Arena runs
+Exec=/usr/bin/ArenaTracker
+Icon=/usr/share/icons/ArenaTracker.ico
+Terminal=false
+Type=Application
+Categories=Games;Tools;
+StartupNotify=true
