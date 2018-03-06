@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.3.0.r13.gc167a0d1
+pkgver=2.3.1.r20.gaa632771
 pkgrel=1
 pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
 arch=('i686' 'x86_64')
