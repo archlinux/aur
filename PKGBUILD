@@ -4,13 +4,13 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.12.0
-pkgrel=8
+pkgver=4.13.0
+pkgrel=9
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
 license=('APACHE')
-depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran')
+depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran' 'gtest')
 optdepends=('python2: build python wrapping'
             'ruby'
             'tcl: build tcl wrapping (currently not supported)'
@@ -23,7 +23,7 @@ optdepends=('python2: build python wrapping'
 	    'castxml-git: for ITK')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:4}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('b0ed1a9e02d238783edf68706ae9bdd23d2cf3e90274caa0f09faafab2d55729663a45f4ef4f5884f07a2160c5dcfb179ec445718b83e235007a0002a7e19e96')
+sha512sums=('5ab7b411f70c39a937baee03e75df18fdd53479691b7829c37637163314c26a01cf50628ce3c9503f952eb02c1746688719fdca525650f0747af184117680006')
 
 _usepython=false
 
@@ -55,6 +55,8 @@ build() {
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
+    -DModule_ITKIOMINC:BOOL=ON \
+    -DModule_ITKIOTransformMINC:BOOL=ON \
     ../InsightToolkit-${pkgver}
 
   make
