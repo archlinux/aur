@@ -2,7 +2,7 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=bitwarden
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
@@ -17,5 +17,9 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
+
+	# Symlink
+	install -d "${pkgdir}/usr/bin"
+	ln -s "${pkgdir}/opt/Bitwarden/${pkgname} ${pkgdir}/usr/bin/${pkgname}"
 }
 
