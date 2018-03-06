@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90181.gf9cb17f988
+pkgver=3.5.r90232.g0645698ecc
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -64,9 +64,9 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        local _cuda='--enable-cuda'
         local _cudasdk='--enable-cuda-sdk'
         local _cuvid='--enable-cuvid'
+        local _ffnvcodec='--enable-ffnvcodec'
         local _libnpp='--enable-libnpp'
         local _cflags='-I/opt/cuda/include'
         
@@ -188,9 +188,9 @@ build() {
         --enable-xlib \
         --enable-zlib \
         \
-        $_cuda \
         $_cudasdk \
         $_cuvid \
+        $_ffnvcodec \
         --enable-libdrm \
         --enable-libmfx \
         $_libnpp \
