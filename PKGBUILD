@@ -12,10 +12,10 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0_devel.98979.adfb9c5c7b
+pkgver=18.1.0_devel.100651.e96e6f60f7
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'dri2proto' 'dri3proto' 'presentproto' 
+makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
@@ -27,17 +27,13 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'glvnd-fix-gl-dot-pc.patch'
 )
 
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 prepare() {
   cd mesa
-
-  patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
   autoreconf -fi
 }
 
@@ -58,7 +54,7 @@ build () {
                --libdir=/usr/lib32 \
                --prefix=/usr \
                --sysconfdir=/etc \
-               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
