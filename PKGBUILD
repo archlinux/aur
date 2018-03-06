@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.19.90
+pkgver=2.19.91
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('1ed0dce02eb46949defb9cdb32fa5ca8b559688f')
+sha1sums=('d9e09c12989431b2992dfeea903923e8dec45748')
 
 prepare() {
   [ -d build ] && rm -rf build
@@ -37,7 +37,7 @@ build() {
         -DLIB_INSTALL_DIR=/usr/lib -DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
         -DENABLE_GTKDOC=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 ../webkitgtk-$pkgver \
         -DENABLE_SPELLCHECK=OFF \
-	-G Ninja
+        -G Ninja
   ninja
 }
 
