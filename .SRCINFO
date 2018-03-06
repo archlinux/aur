@@ -1,0 +1,24 @@
+pkgbase = klee
+	pkgdesc = Symbolic virtual machine built on top of the LLVM compiler infrastructure
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://klee.github.io/
+	arch = x86_64
+	license = custom:UIUC
+	makedepends = llvm=5.0.1-2
+	makedepends = cmake
+	makedepends = git
+	depends = gperftools
+	depends = z3
+	depends = libcap
+	depends = python
+	depends = llvm-libs>=5.0
+	provides = klee=1.4.0-1
+	provides = klee-uclibc
+	source = git+https://github.com/jirislaby/klee.git#branch=llvm_50
+	source = git+https://github.com/klee/klee-uclibc.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = klee
+
