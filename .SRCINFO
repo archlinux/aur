@@ -7,6 +7,7 @@ pkgbase = lib32-tevent
 	license = GPL3
 	makedepends = lib32-python2
 	depends = lib32-talloc
+	depends = tevent
 	optdepends = lib32-python2: for python bindings
 	source = https://samba.org/ftp/tevent/tevent-0.9.36.tar.gz
 	sha256sums = bd2b6be3fd1601ed7f176e99111e322c57d58e425cc149ee80c7dd4fed263b4c
