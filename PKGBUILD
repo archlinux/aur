@@ -5,11 +5,12 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=58.0.2
+pkgver=58.0.5
 pkgrel=1
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
+meme=FIREFOX_BETA_59_END
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse)
@@ -21,7 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
-source=("https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_58_0_2_RELEASE.tar.gz"
+source=("https://hg.mozilla.org/mozilla-unified/archive/$meme.tar.gz"
         wifi-disentangle.patch wifi-fix-interface.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         no-plt.diff plugin-crash.diff glibc-2.26-fix.diff
@@ -32,7 +33,9 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch)
-sha256sums=('c6d58f5e9e4c46e4eed7a9ce435f42e41e2f91a0d85216d26c4da347b45bae09'
+
+
+sha256sums=('331d4a9789fd1df525a203f500d1f65518bc23fa59e5c1127735edb21c795d82'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
@@ -66,8 +69,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
-  patch -Np1 -i ../firefox-install-dir.patch
+  cd mozilla-unified-$meme
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
@@ -146,7 +148,7 @@ END
 }
 
 build() {
-  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
+  cd mozilla-unified-$meme
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -162,7 +164,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified-FIREFOX_58_0_2_RELEASE
+  cd mozilla-unified-$meme
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
