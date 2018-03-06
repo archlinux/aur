@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'automake' 'bzip2' 'make' 'gcc' 'git' 'openssl' 'patch')
 depends=('openssl')
 provides=('proxysql')
 source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('d8a00eadd7100cb405d05e166daf9a44')
+sha256sums=('b9fa3c9c20174ca3ad575946acabf7432e787a1fe21272a134a1870d39a301fc')
 
 build() {
 	cd "${pkgname}-${pkgver}"
