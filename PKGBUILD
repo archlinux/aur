@@ -11,7 +11,7 @@ url="https://github.com/fcitx/fcitx-ui-light"
 license=('GPL2')
 depends=('fcitx' 'libxpm')
 makedepends=('cmake' 'intltool')
-source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.bz2")
+source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.bz2")
 md5sums=('633e8b018da9c8f09f99567b5479cf18')
 
 build() {
