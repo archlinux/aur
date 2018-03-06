@@ -13,8 +13,6 @@ url="http://www.glfw.org/"
 license=('custom:ZLIB')
 optdepends=('doxygen: build glfw html documentation')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon' 'mesa')
-conflicts=("$_pkgbase")
-provides=("$_pkgbase=3.3")
 source=("$_pkgbase::git+https://github.com/glfw/glfw")
 md5sums=('SKIP')
 
@@ -52,6 +50,8 @@ build() {
 }
 
 package_glfw-x11-git() {
+  conflicts=('glfw' 'glfw-x11')
+  provides=('glfw' 'glfw-x11')
   depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor')
   optdepends=('libgl: for OpenGL support'
               'opengl-driver: for OpenGL support'
@@ -65,6 +65,8 @@ package_glfw-x11-git() {
 }
 
 package_glfw-wayland-git() {
+  conflicts=('glfw' 'glfw-wayland')
+  provides=('glfw' 'glfw-wayland')
   depends=('wayland' 'libxkbcommon')
   optdepends=('libgl: for OpenGL support'
               'opengl-driver: for OpenGL support'
