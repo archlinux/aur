@@ -1,12 +1,12 @@
-#post_install() {
-#  cryptogen generate > /dev/null
-#  mv /crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/* /etc/hyperledger/fabric/tls
-#  chmod 644 /etc/hyperledger/fabric/tls/*
-#  rm -rf /crypto-config
-#}
+post_install() {
+    cryptogen generate > /dev/null
+    mv /crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/* /etc/hyperledger/fabric/tls
+    chmod 644 /etc/hyperledger/fabric/tls/*
+    rm -rf /crypto-config
+}
 
 post_remove() {
-cat << EOF
+    cat << EOF
 ===> WARNING!!!"
  Be sure to save your backup data"
  /etc/hyperledger/fabric/tls should be deleted manually"
