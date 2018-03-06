@@ -12,19 +12,7 @@ license=('GPL2')
 makedepends=('arm-none-eabi-gcc')
 provides=('linux-firmware')
 conflicts=('linux-firmware'
-           'linux-firmware-git'
-           'kernel26-firmware'
-           'ar9170-fw'
-           'iwlwifi-1000-ucode'
-           'iwlwifi-3945-ucode'
-           'iwlwifi-4965-ucode'
-           'iwlwifi-5000-ucode'
-           'iwlwifi-5150-ucode'
-           'iwlwifi-6000-ucode'
-           'rt2870usb-fw'
-           'rt2x00-rt61-fw'
-           'rt2x00-rt71w-fw'
-           'amd-ucode')
+           'linux-firmware-git')
 source=("https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz"
         "https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz.asc")
 sha512sums=('4ef111f86e8a87bab31e02be171e09f47d71884f1737f5329e9dd07e9f799436d8ff2de5aa0b2cfb4bc921ed02bb2b59b9a1ea69176dcef5f902364d8725e75a'
