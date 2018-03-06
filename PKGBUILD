@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -51,6 +51,7 @@ build() {
           -DENABLE_SOLVER_Z3=ON \
           -DENABLE_SOLVER_STP=OFF \
           -DCMAKE_INSTALL_PREFIX="/usr" \
+          -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
           "$srcdir/$pkgname"
     make -j$(nproc)
 }
