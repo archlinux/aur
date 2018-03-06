@@ -2,7 +2,7 @@
 
 _hkgname=ghc-events
 pkgname=haskell-ghc-events
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Parses .eventlog files emitted by GHC 6.12.1 and later. Includes the ghc-events tool permitting, in particular, to dump an event log file as text."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ license=('custom:BSD3')
 depends=('ghc-libs')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('afaa3cb31fd8bf7532e5b9badfec6dd196cc5434a6d02271c6221d622b90e51432a5c1115e598d1315d65d96b983474802bdf7944d640be4107d7b09b77760e9')
+sha512sums=('c2a2367f0893f2f08cff11255e6dbd6b372633bbdf938b5f37cce115374ed3a847fd73c630d26b3bfad3f932ac026c64b73d3426ddc1f07c44091f27d5ea0383')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
