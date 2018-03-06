@@ -15,6 +15,9 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-botocore"{'>=1.3.0','<2.0.0'} # AUR
 )
 depends=("${_pyver}" "${_pydepends[@]}")
+if [ "${_pyver}" = 'python2' ]; then
+  depends+=("${_pyver}-futures")
+fi
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases.atom" '\s\+<title>\([^<]\+\)</title>.*' 'f') # RSS
