@@ -1,7 +1,7 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=redshift-minimal-git
-pkgver=1.11.r31.gd51c25e
+pkgver=1.11.r132.g91e1d30
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies (development version)'
 arch=('i686' 'x86_64')
