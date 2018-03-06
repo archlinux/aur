@@ -14,7 +14,7 @@ url="http://www.gnu.org/software/libtool"
 license=('GPL')
 groups=('base-devel')
 depends=('sh' 'tar' 'mingw-w64-crt')
-makedepends=("mingw-w64-gcc=$_gccver")
+makedepends=("mingw-w64-gcc=$_gccver" "mingw-w64-configure")
 options=('staticlibs' '!strip' '!buildflags')
 provides=("mingw-w64-libltdl=$pkgver" "mingw-w64-libtool-multilib=$pkgver")
 conflicts=('mingw-w64-libltdl' 'mingw-w64-libtool-multilib')
