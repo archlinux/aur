@@ -5,13 +5,13 @@
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
 license=('GPL2')
 depends=('libnm' 'ppp' 'xl2tpd' 'libsecret')
-makedepends=('libnm-gtk' 'intltool')
+makedepends=('libnm-gtk' 'intltool' 'python')
 optdepends=(
   'libreswan: IPSec support (recommended)'
   'strongswan: IPSec support'
