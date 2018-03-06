@@ -1,13 +1,13 @@
 pkgbase = python2-pyee
 	pkgdesc = A port of node.js's EventEmitter to python
-	pkgver = 0.0.9
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = https://github.com/jesusabdullah/pyee
+	url = https://github.com/jfhbrook/pyee
 	arch = any
 	license = MIT
 	depends = python2
-	source = https://pypi.python.org/packages/source/p/pyee/pyee-0.0.9.tar.gz
-	md5sums = d72a257a2507ab2376746bfd75c402be
+	source = https://pypi.python.org/packages/c6/35/b37e4ffbf46063c883675e028e38e2a24b67433fd587f188e2a5005d9329/pyee-5.0.0.tar.gz
+	md5sums = 5e7dd623f031e8b22a9e1fa64bf00a5c
 
 pkgname = python2-pyee
 
