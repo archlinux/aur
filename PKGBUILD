@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext-hg
-pkgver=r289.3235507055c9
-pkgrel=2
+pkgver=r328.0a13899d53f0
+pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
 license=('custom:BSD')
@@ -29,7 +29,7 @@ pkgver() {
 package() {
   cd textext/
   install -d "$pkgdir"/usr/share/inkscape/extensions
-  for _i in asktext.py default_packages.tex latexlogparser.py textext.{inx,py} typesetter.py
+  for _i in asktext.py default_packages.tex latexlogparser.py textext.{inx,py} typesetter.py win_app_paths.py
   do install ${_i} "$pkgdir"/usr/share/inkscape/extensions/$_i
   done
   install -d "$pkgdir"/usr/share/licenses/$pkgname
