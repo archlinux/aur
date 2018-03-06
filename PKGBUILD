@@ -1,7 +1,9 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
+
 pkgname=gplaycli
-pkgver=3.19
-pkgrel=2
+pkgver=3.20
+pkgrel=1
 pkgdesc="command line tool to search/install/update Android applications Google PlayStore able to run with cronjob, in order to automatically update an F-Droid server instance"
 arch=('any')
 url="https://github.com/matlink/gplaycli"
@@ -11,13 +13,8 @@ optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matlink/gplaycli/archive/${pkgver}.tar.gz"
         "$pkgname.install")
-md5sums=('a232ca0cc3800d1bff260fc79230081e'
+md5sums=('d2fde1b9ed2aa763f6074485e9759210'
          'e993658f9913493bb4336d73f23a3195')
-
-prepare() {
-    # temporary backport, fixed upstream
-    sed -i.bak 's/gpapi == 0.4.1/gpapi == 0.4.2/' $pkgname-$pkgver/setup.py
-}
 
 package() {
     cd $pkgname-$pkgver
