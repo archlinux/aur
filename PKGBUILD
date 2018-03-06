@@ -30,8 +30,8 @@ package() {
   python3 setup.py install --root="$pkgdir/" --optimize=1
 
     # installs config to build user home - moving to /usr/share
-    mkdir -p "$pkgdir/usr/share/$pkgname/"
-    mv "${pkgdir}${HOME}/.config/$pkgname/" "$pkgdir/usr/share/$pkgname/config"
+    mkdir -p "$pkgdir/usr/share/gplaycli/"
+    mv "${pkgdir}${HOME}/.config/gplaycli/" "$pkgdir/usr/share/gplaycli/config"
     rm -rf "$pkgdir/home"
 }
 
