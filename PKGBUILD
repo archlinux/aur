@@ -2,7 +2,7 @@
 #
 pkgname=sch_cake-dkms
 _modname=sch_cake
-pkgver=r424.b8b6ad1
+pkgver=r427.d2d6780
 pkgver() {
 	cd "sch_cake"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
