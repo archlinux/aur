@@ -5,7 +5,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=3.4.0.103.g992bf863f
+pkgver=4.1.0.47.gb704d60e8
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph' 'libssh2' 'netcf' 'perl-xml-xpath')
+	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2' 'netcf' 'perl-xml-xpath')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq'
 	     'libiscsi'
 	     'perl-xml-xpath' 'libxslt'
@@ -87,7 +87,7 @@ prepare() {
   done
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
-    daemon/libvirtd.service.in \
+    src/remote/libvirtd.service.in \
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
     src/locking/virtlockd.service.in
   sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
@@ -97,7 +97,7 @@ prepare() {
     src/qemu/qemu{.conf,_conf.c} \
     src/qemu/test_libvirtd_qemu.aug.in
 
-  sed -i 's/notify/simple/' daemon/libvirtd.service.in
+  sed -i 's/notify/simple/' src/remote/libvirtd.service.in
 }
 
 build() {
@@ -113,7 +113,7 @@ build() {
 	--with-storage-lvm --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--with-netcf --with-interface
+	--with-netcf --with-interface --with-numad
 	# --with-audit
   make
 }
