@@ -2,7 +2,7 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r71697.18965905d0f
+pkgver=2.8_r74298.2adece9fbb6
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ prepare() {
   git submodule update --init --recursive
   git submodule foreach git checkout master
   git submodule foreach git pull --rebase origin master
-  patch -Np1 -i ../SelectCudaComputeArch.cmake.patch
+#  patch -Np1 -i ../SelectCudaComputeArch.cmake.patch
   patch -Np1 -i ../openvdb4.revert.patch
 }
 
