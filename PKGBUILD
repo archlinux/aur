@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -15,11 +15,11 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('fb12d0c4452f85b67b78bbeabd4c762d8feb8ff83e39d044d285120c2c488247')
+sha256sums=('316d04fa9fbabad6f2739fe68e1928778af4866265409119aba6ef3435c8fe8d')
 
-build() {
+prepare() {
   cd samba-${pkgver}
-
+  
   SAVEIFS=${IFS}
   IFS=$(echo -en "\n\b")
   PYTHON_CALLERS="$(find ${srcdir}/samba-${pkgver} -name '*.py')
@@ -33,6 +33,10 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
          -e 's|bin/python|bin/python2-32|' \
       ${PYTHON_CALLERS}
   IFS=${SAVEIFS}
+}
+
+build() {
+  cd samba-${pkgver}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
