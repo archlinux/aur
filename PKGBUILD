@@ -6,7 +6,7 @@
 
 pkgname=flann
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FLANN is a library for performing fast approximate nearest neighbor searches in high dimensional spaces"
 arch=('i686' 'x86_64')
 url='http://www.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN'
@@ -17,7 +17,7 @@ optdepends=('python2: python bindings'
             'cuda: cuda support')
 source=("https://github.com/mariusmuja/flann/archive/${pkgver}.tar.gz" "system_lz4.patch")
 md5sums=('73adef1c7bf8e8b978987e7860926ea6'
-         '67aef022b455bbbd5a08920f70eb589d')
+         'af01e25f6b090c1c1f266797a03f4766')
 
 prepare() {
   cd "$srcdir/flann-${pkgver}"
