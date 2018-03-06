@@ -1,7 +1,7 @@
 # Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=lib32-kmod
-pkgver=23
+pkgver=25
 pkgrel=1
 pkgdesc="Linux kernel module handling"
 arch=('x86_64')
@@ -10,8 +10,9 @@ license=('GPL2')
 depends=('lib32-zlib' 'lib32-xz')
 makedepends=('gcc-multilib')
 options=('!libtool')
-source=("http://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar.xz")
-md5sums=('3cf469f40ec2ed51f56ba45ea03793e7')
+validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
+source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign})
+md5sums=('34f325cab568f842fdde4f8b2182f220' 'SKIP')
 
 build() {
   export CC="gcc -m32"
