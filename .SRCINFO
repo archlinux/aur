@@ -1,6 +1,6 @@
 pkgbase = netdata-ts3-git
 	pkgdesc = TS3 statistics for netdata
-	pkgver = 30.9146dbe
+	pkgver = 31.0b62d96
 	pkgrel = 1
 	url = https://github.com/coraxx/netdata_ts3_plugin
 	arch = i686
