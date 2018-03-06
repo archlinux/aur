@@ -1,7 +1,7 @@
 pkgbase = firefox-eme-free
 	pkgdesc = Deblobbed and EME free Firefox
 	pkgver = 58.0.5
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,8 @@ pkgbase = firefox-eme-free
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch
+	source = https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
+	source = https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 	sha256sums = 331d4a9789fd1df525a203f500d1f65518bc23fa59e5c1127735edb21c795d82
 	sha256sums = f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed
 	sha256sums = e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1
@@ -76,6 +78,8 @@ pkgbase = firefox-eme-free
 	sha256sums = a72c657784dc5804509456d9ba39ccc8d5e5998c847f49abbcfeb2a547290815
 	sha256sums = 24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040
 	sha256sums = 80d6181d11c200aca2781f69ffeafb59ea23952304d161c2812a2f5a98b273b0
+	sha256sums = 32d04bf9c5c76ec3803aa7e1f82ca11dc5ea3d32b86d054168f4cc1e1ef9960c
+	sha256sums = 7e44dc0dc836a31c6f8e3e3461aeb636de210fb5a238e58a0eb10787ca4ad958
 
 pkgname = firefox-eme-free
 

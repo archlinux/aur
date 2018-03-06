@@ -6,7 +6,7 @@
 pkgname=firefox-eme-free
 name=firefox
 pkgver=58.0.5
-pkgrel=1
+pkgrel=4
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -32,7 +32,10 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-reader.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch)
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
+https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
+)
 
 
 sha256sums=('331d4a9789fd1df525a203f500d1f65518bc23fa59e5c1127735edb21c795d82'
@@ -50,7 +53,10 @@ sha256sums=('331d4a9789fd1df525a203f500d1f65518bc23fa59e5c1127735edb21c795d82'
             '7f171b7d69866ac6d8945ab0867b2646964362c791875c6428b4c2c8e3f3fb5b'
             'a72c657784dc5804509456d9ba39ccc8d5e5998c847f49abbcfeb2a547290815'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
-            '80d6181d11c200aca2781f69ffeafb59ea23952304d161c2812a2f5a98b273b0')
+            '80d6181d11c200aca2781f69ffeafb59ea23952304d161c2812a2f5a98b273b0'
+            '32d04bf9c5c76ec3803aa7e1f82ca11dc5ea3d32b86d054168f4cc1e1ef9960c'
+            '7e44dc0dc836a31c6f8e3e3461aeb636de210fb5a238e58a0eb10787ca4ad958')
+
 
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -70,11 +76,10 @@ prepare() {
   ln -s /usr/bin/python2 path/python
 
   cd mozilla-unified-$meme
-
+patch -Np1 -i ../fix.patch
+patch -Np1 -i ../fix2.patch
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i ../wifi-disentangle.patch
-  patch -Np1 -i ../wifi-fix-interface.patch
-
+ 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
@@ -165,6 +170,17 @@ build() {
 
 package() {
   cd mozilla-unified-$meme
+  cd browser/branding/official/content
+msg2 'Fixing some buildbugs'
+cp ../default16.png icon16.png
+cp ../default32.png icon32.png
+cp ../default48.png icon48.png
+cp ../default64.png icon64.png
+cp ../default128.png icon128.png
+cp ../default128.png ../mozicon128.png
+
+cd ../../../../
+
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
