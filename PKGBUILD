@@ -1,3 +1,5 @@
+# Maintainer: wickdchromosome <capsule.edu@gmail.com>
+
 _gemname=parslet
 pkgname=ruby-$_gemname-1.5
 pkgver=1.5.0
