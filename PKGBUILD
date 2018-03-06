@@ -14,10 +14,10 @@ license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-botocore"{'>=1.3.0','<2.0.0'} # AUR
 )
-depends=("${_pyver}" "${_pydepends[@]}")
 if [ "${_pyver}" = 'python2' ]; then
-  depends+=("${_pyver}-futures")
+  _pydepends+=('python2-futures')
 fi
+depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases.atom" '\s\+<title>\([^<]\+\)</title>.*' 'f') # RSS
@@ -41,7 +41,7 @@ check() {
 
 package() {
   set -u
-  depends=("${_pyver}") # "${_pydepends[@]}")
+  #depends=("${_pyver}") # "${_pydepends[@]}")
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   #install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
