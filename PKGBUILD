@@ -1,4 +1,4 @@
-
+# Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
