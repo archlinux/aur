@@ -1,0 +1,11 @@
+--- plugins/Make-arch	2016-10-22 00:34:39.000000000 +0300
++++ plugins/Make-arch	2018-03-06 18:44:30.357726391 +0300
+@@ -342,7 +342,7 @@
+ 	"DEF = -D" \
+ 	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
+ 	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
+-	"TCLLDFLAGS = -ltcl8.5 -ldl" \
++	"TCLLDFLAGS = -ltcl8.6 -ldl" \
+ 	"NETCDFLDFLAGS = -lnetcdf " \
+ 	"AR = ar" \
+ 	"NM = nm -p" \

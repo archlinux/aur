@@ -1,0 +1,19 @@
+pkgbase = plumed-vmd-plugins
+	pkgdesc = Visual Molecular Dynamics plugins for use with plumed
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = http://www.ks.uiuc.edu/Research/vmd/
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	depends = tcl
+	depends = netcdf
+	optdepends = plumed: analyze trajectories
+	source = local://vmd-1.9.3.src.tar.gz
+	source = Make-arch.patch
+	md5sums = 5706f88b9b77cc5fafda6fef3a82d6fa
+	md5sums = 68d8f47c6e85795003d8e1fbc18b0f1d
+
+pkgname = plumed-vmd-plugins
+
