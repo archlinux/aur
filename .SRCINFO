@@ -1,0 +1,20 @@
+pkgbase = nheko
+	pkgdesc = Desktop client for the Matrix protocol
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mujx/nheko
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = fontconfig
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = lmdb
+	depends = qt5-multimedia
+	source = https://github.com/mujx/nheko/archive/v0.2.0.tar.gz
+	sha512sums = 3b2a5980e1e0fa38c481a768a4e6511e94d9f38e1457400fcd696cb95d8e86162ff0f468856bdd07b003dc24f21da9edac16d0793952ec3e6c5d9424b5090e2e
+
+pkgname = nheko
+
