@@ -1,63 +1,50 @@
-# $Id: PKGBUILD 81537 2012-12-23 19:51:51Z seblu $
-# Maintainer: scadu <scadu at yandex dot com>
-# Maintainer: speps <speps at aur dot archlinux dot org>
-# Maintainer: Sébastien Luttringer <seblu@archlinux.org>
+# Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
+# Contributor: scadu <scadu at yandex dot com>
+# Contributor: speps <speps at aur dot archlinux dot org>
+# Contributor: Sébastien Luttringer <seblu@archlinux.org>
 # Contributor: Alain Kalker <a dot c dot kalker at gmail dot com>
 
 _pkgbase=lgi
-pkgname=luajit-lgi
-pkgver=0.9.1
+pkgname=('luajit-lgi')
+pkgver=0.9.2
 pkgrel=1
-pkgdesc='Lua binadings for gnome/gobject using gobject-introspection library'
-arch=('i686' 'x86_64')
+pkgdesc='LuaJIT bindings for gnome/gobject using gobject-introspection library'
 url='https://github.com/pavouk/lgi'
-license=('custom:MIT')
-depends=('libffi' 'luajit' 'gobject-introspection-runtime')
+arch=('x86_64')
+license=('MIT')
+depends=('glibc' 'glib2' 'libffi' 'luajit' 'gobject-introspection-runtime')
 makedepends=('gobject-introspection')
-source=("$_pkgbase-$pkgver.tar.gz::https://github.com/pavouk/$_pkgbase/archive/$pkgver.tar.gz")
-sha256sums=('0c70fb2b1ca17d333b7e2c18d5fc943944b5872e063de60df3035ee20b6dafba')
+replaces=('lgi')
+conflicts=('lgi')
+source=(${_pkgbase}-${pkgver}.tar.gz::https://github.com/pavouk/lgi/archive/${pkgver}.tar.gz)
+sha512sums=('755a96b78530f42da6d4e2664f8e37cb07a356419e7e6448003c3f841c9d98ad18b851715d9eb203ea7eb27b13ec46223fa8a1c90a99fd12960ce85b0a695335')
 
 build() {
-  cd $_pkgbase-$pkgver
-
+  cd ${_pkgbase}-${pkgver}
   make LUA_INCDIR=/usr/include/luajit-2.0/ \
-    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2"
-}
-
-package() {
-  cd $_pkgbase-$pkgver
-
-  make \
-    LUA_LIBDIR=/usr/lib/lua/5.1 \
-    LUA_SHAREDIR=/usr/share/lua/5.1 \
-    DESTDIR="$pkgdir/" install
-
-  # dump typelib tool
-  install -Dm755 tools/dump-typelib.lua \
-    "$pkgdir/usr/bin/dump-typelib-luajit"
-
-  # docs
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 docs/* \
-    "$pkgdir/usr/share/doc/$pkgname"
-
-  # samples
-  install -d "$pkgdir/usr/share/$pkgname/samples/gtk-demo"
-  install -Dm644 samples/*.lua \
-    "$pkgdir/usr/share/$pkgname/samples"
-  install -Dm644 samples/gtk-demo/* \
-    "$pkgdir/usr/share/$pkgname/samples/gtk-demo"
-
-  # license
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+       LUA_CFLAGS="$(pkg-config --cflags luajit) -O2"
 }
 
 check() {
-  cd $_pkgbase-$pkgver
-
-  make LUA=luajit LUA_INCDIR=/usr/include/luajit-2.0/ \
-    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2" check
+  cd ${_pkgbase}-${pkgver}
+  # TODO: fix cairo-gobject dependency
+  # make check
 }
 
-# vim:set ts=2 sw=2 et:
+package_luajit-lgi() {
+  cd ${_pkgbase}-${pkgver}
+  make \
+    LUA_LIBDIR=/usr/lib/lua/5.1 \
+    LUA_SHAREDIR=/usr/share/lua/5.1 \
+    DESTDIR="${pkgdir}/" install
+
+  install -Dm 755 tools/dump-typelib.lua "${pkgdir}/usr/bin/dump-typelib-luajit"
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 samples/*.lua -t "${pkgdir}/usr/share/${pkgname}/samples"
+  install -Dm 644 samples/gtk-demo/* -t "${pkgdir}/usr/share/${pkgname}/samples/gtk-demo"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
