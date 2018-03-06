@@ -3,7 +3,7 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0.beta2.r304.g0190bb80
+pkgver=4.0.0.beta2+357+g6f4e17f4
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
@@ -24,14 +24,14 @@ optdepends=('python2-feedparser: podcasts plugin'
             'mate-screensaver: Pause on screensaver plugin'
             'cinnamon-screensaver: Pause on screensaver plugin')
 
-provides=("${_pkgname}=${pkgver%.r*}")
+provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::git+https://github.com/exaile/exaile.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/+/g'
+  git describe --long --tags | sed 's/-beta/.beta/;s/-/+/g'
 }
 
 build() {
