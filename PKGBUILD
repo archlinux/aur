@@ -12,15 +12,15 @@ license=('GPL2')
 source=("https://github.com/martijnvanbrummelen/nwipe/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  ./init.sh
-  ./configure --prefix=/usr
-  make
+	cd "${srcdir}"/${pkgname}-${pkgver}
+	./init.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+	cd "${srcdir}"/${pkgname}-${pkgver}
+	make DESTDIR="${pkgdir}" install
 }
 
 md5sums=('902ce622c67a639a247c55be399ccc0e')
