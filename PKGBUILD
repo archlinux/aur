@@ -10,10 +10,11 @@ pkgrel=5
 pkgdesc='Pinyin (Chinese) input method for the IBus framework'
 arch=('x86_64')
 license=('GPL')
-url='http://ibus.googlecode.com'
+source="https://github.com/phuang/ibus-pinyin/"
 depends=('ibus' 'pyzy' 'lua51' 'python2-xdg')
 makedepends=('intltool')
-source=("https://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${pkgname}-${pkgver}.tar.gz")
+md5sums=('f7728b5b785fae58e2b4de8dfda45612')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -32,5 +33,3 @@ package() {
 
   make NO_INDEX=true DESTDIR="${pkgdir}" install
 }
-
-md5sums=('f7728b5b785fae58e2b4de8dfda45612')
