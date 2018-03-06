@@ -1,7 +1,7 @@
 # Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 
 pkgname=tempus-themes-konsole
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tempus themes for KDE Konsole (minimum WCAG AA colour contrast compliance)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('konsole')
 url="https://github.com/protesilaos/$pkgname"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('5c0181548c7955d86147ecde099d1d4f9e1e5c880161f50994b6554e4bc2551783a0ba054d7fb32347aee908cfc5bbcbef31c682d37981272d9c50db1d9d431d')
+sha512sums=('33fadcca6400d129eca5a79a7aed70fa080c70010a8b10d6d1fd57ef8779ff2a98f00758a131fc2ca82c8e5d16c0d133cfd901b2720db1c1606c3e9bea5259b7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
