@@ -17,7 +17,7 @@ makedepends=("python-pbr"
 #             "python2-pbr>=1.9"
 #             "python2-configparser>=3.5")
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
-md5sums=('2b5db36652400cd9073f2e246848215f')
+md5sums=('cf69015caca511524653538a26b33b28')
 
 build() {
     cd "$_name-$pkgver"
