@@ -6,6 +6,7 @@ pkgbase = kapacitor
 	install = kapacitor.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = go
 	makedepends = git
