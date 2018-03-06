@@ -1,0 +1,15 @@
+pkgbase = log-malloc2-git
+	pkgdesc = Memory allocation tracking library
+	pkgver = r18.dd2d44b
+	pkgrel = 1
+	url = http://devel.dob.sk/log-malloc2/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = libunwind
+	source = log-malloc2::git+https://github.com/samsk/log-malloc2.git
+	md5sums = SKIP
+
+pkgname = log-malloc2-git
+
