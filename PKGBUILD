@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
 pkgname=liggghts
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
 arch=('any')
@@ -9,12 +9,12 @@ url="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC"
 license=('GPL')
 depends=('paraview' 'openmpi' 'voro++' 'fftw') 
 makedepends=('git')
-source=('fftw3.patch' 'usrlocal.patch')
-md5sums=('20fb3f88185884af9f0e16477671ca8e' 'ea4006138a0750ab6223678bb767ef0c')
+source=('liggghts.patch')
+md5sums=('fcecfe6b91ce6d74a84b7ecd09be8f38')
 
 _gitroot="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git"
 _gitname="liggghts-public"
-
+_make="mpi"
 
 build() {
   cd "$srcdir"
@@ -34,27 +34,26 @@ build() {
   cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build/"
 
-  patch -Np0 < ../fftw3.patch
-  patch -Np0 < ../usrlocal.patch # diff -Naur Makefile.lammps.old Makefile.lammps > usrlocal.patch
-
+  patch -Np0 < ../liggghts.patch # diff -Naur Makefile.mpi.old Makefile.mpi > liggghts.patch
   cd src
   make  clean-all
-  make openmpi || return 1
+  make $_make || return 1
 }
 
  package() {
-  mkdir -p $pkgdir/usr/share/$pkgname
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
-  mkdir -p $pkgdir/usr/share/$pkgname/examples
-  mkdir -p $pkgdir/usr/share/doc/$pkgname/PDF/
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+  mkdir -p "$pkgdir/usr/share/$pkgname/examples"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname/PDF/"
+  mkdir -p "$pkgdir/usr/bin/"
   
-  cd $srcdir/$_gitname-build
-  install -Dm 755 src/lmp_openmpi $pkgdir/usr/bin/$pkgname
+  cd "$srcdir/$_gitname-build"
+  install -Dm 755 src/lmp_$_make "$pkgdir/usr/bin/$pkgname"
   
-  cp -r --no-preserve='ownership' examples/LIGGGHTS/Tutorials_public/* $pkgdir/usr/share/$pkgname/examples
+  cp -r --no-preserve='ownership' examples/LIGGGHTS/Tutorials_public/* "$pkgdir/usr/share/$pkgname/examples"
 #   install -Dm644 examples/LIGGGHTS/Tutorials_public/ $pkgdir/usr/share/$pkgname/examples
-  cp -r --no-preserve='ownership' doc/*.{html,pdf} $pkgdir/usr/share/doc/$pkgname/
-  cp -r --no-preserve='ownership' doc/PDF/*.pdf $pkgdir/usr/share/doc/$pkgname/PDF/
+  cp -r --no-preserve='ownership' doc/*.{html,pdf} "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r --no-preserve='ownership' doc/PDF/*.pdf "$pkgdir/usr/share/doc/$pkgname/PDF/"
 #   install -Dm644 doc/* $pkgdir/usr/share/doc/$pkgname
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
