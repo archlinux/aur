@@ -2,25 +2,26 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=lib32-talloc
+_name=talloc
+pkgname=lib32-${_name}
 pkgver=2.1.11
 pkgrel=1
 pkgdesc='A hierarchical pool based memory allocator with destructors'
 arch=('x86_64')
 url='http://talloc.samba.org/'
 license=('GPL3')
-source=("https://samba.org/ftp/talloc/talloc-${pkgver}.tar.gz")
+source=("https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz")
 depends=('lib32-glibc' 'talloc')
 makedepends=('lib32-python2')
 sha256sums=('639eb35556a0af999123c4d883e79be05ff9f00ab4f9e4ac2e5775f9c5eeeed3')
 
 prepare() {
-  cd talloc-${pkgver}
-  sed -i 's/python/python2/g' buildtools/bin/waf
+  cd ${_name}-${pkgver}
+  sed -i -e "s|/usr/bin/env python$|/usr/bin/env python2|" buildtools/bin/waf
 }
 
 build() {
-  cd talloc-${pkgver}
+  cd ${_name}-${pkgver}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -40,9 +41,7 @@ build() {
 }
 
 package() {
-  cd talloc-${pkgver}
+  cd ${_name}-${pkgver}
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share}
 }
-
-# vim: ts=2 sw=2 et:
