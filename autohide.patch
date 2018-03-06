@@ -1,0 +1,197 @@
+diff --git a/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml b/wingpanel-qq/schemas/org.pantheon.desktop.wingpanel.gschema.xml
+index c81abd5..890e277 100644
+--- a/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml
++++ b/wingpanel-qq/schemas/org.pantheon.desktop.wingpanel.gschema.xml
+@@ -6,5 +6,15 @@
+ 			<summary>Sets if the panel uses transparency.</summary>
+ 			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
+ 		</key>
++		<key type="s" name="autohide">
++			<choices>
++				<choice value='Autohide'/>
++				<choice value='Float'/>
++				<choice value='Disabled'/>
++			</choices>
++			<default>'Float'</default>
++			<summary>Sets if and how the panel will autohide.</summary>
++			<description>Enable this to increase available desktop area and reduce clutter.</description>
++		</key>
+ 	</schema>
+ </schemalist>
+diff --git a/wingpanel/src/PanelWindow.vala b/wingpanel-qq/src/PanelWindow.vala
+index c48b5ea..81ec2f2 100644
+--- a/wingpanel/src/PanelWindow.vala
++++ b/wingpanel-qq/src/PanelWindow.vala
+@@ -21,6 +21,9 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+     public Services.PopoverManager popover_manager;
+ 
+     private Widgets.Panel panel;
++
++    uint timeout;
++
+     private int monitor_number;
+     private int monitor_width;
+     private int monitor_height;
+@@ -30,6 +33,9 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+     private bool expanded = false;
+     private int panel_displacement;
+     private uint shrink_timeout = 0;
++    private bool hiding = false;
++    private bool restrut = true;
++    private string autohide = Services.PanelSettings.get_default ().autohide;
+ 
+     public PanelWindow (Gtk.Application application) {
+         Object (
+@@ -52,6 +58,8 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+         this.screen.size_changed.connect (update_panel_dimensions);
+         this.screen.monitors_changed.connect (update_panel_dimensions);
+         this.screen_changed.connect (update_visual);
++        this.enter_notify_event.connect (show_panel);
++        this.leave_notify_event.connect (hide_panel);
+ 
+         update_visual ();
+ 
+@@ -71,17 +79,33 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+         application.add_accelerator ("<Control>Tab", "app.cycle", null);
+         application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
+ 
++        Services.PanelSettings.get_default ().notify["autohide"].connect (() => {
++            autohide = Services.PanelSettings.get_default ().autohide;
++            update_autohide_mode ();
++        });
++
+         add (panel);
+     }
+ 
+     private bool animation_step () {
+-        if (panel_displacement <= panel_height * (-1)) {
+-            return false;
++        if (hiding != true) {
++            if (panel_displacement <= panel_height * (-1)) {
++                timeout = 0;
++                return false;
++            }
++            panel_displacement--;
++        } else {
++            if (panel_displacement >= -1 || popover_manager.current_indicator != null) {
++                timeout = 0;
++                return false;
++            }
++            panel_displacement++;
+         }
+ 
+-        panel_displacement--;
+-
+-        update_panel_dimensions ();
++        if (restrut == true) {
++            update_panel_dimensions ();
++        }
++        animate_panel ();
+ 
+         return true;
+     }
+@@ -91,7 +115,65 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+ 
+         Services.BackgroundManager.initialize (this.monitor_number, panel_height);
+ 
+-        Timeout.add (300 / panel_height, animation_step);
++        if (autohide == "Disabled" || autohide == "Dodge") {
++            hiding = false;
++            restrut = true;
++            timeout = Timeout.add (300 / panel_height, animation_step);
++        } else {
++            panel_displacement--;
++            animate_panel ();
++        }
++    }
++
++    private bool hide_panel () {
++        if (autohide != "Disabled") {
++            hiding = true;
++            if (timeout > 0) {
++                Source.remove (timeout);
++            }
++            if (autohide == "Dodge") {
++                restrut = true;
++                timeout = Timeout.add (300 / panel_height, animation_step);
++            } else if (autohide == "Autohide") {
++                restrut = true;
++                timeout = Timeout.add (100 / panel_height, animation_step);
++            } else if (autohide == "Float") {
++                restrut = false;
++                timeout = Timeout.add (100 / panel_height, animation_step);
++            }
++        }
++        return true;
++    }
++
++    private bool show_panel () {
++        if (autohide != "Disabled") {
++            hiding = false;
++            if (timeout > 0) {
++                Source.remove (timeout);
++            }
++            if (autohide == "Dodge") {
++                restrut = true;
++                timeout = Timeout.add (300 / panel_height, animation_step);
++            } else if (autohide == "Autohide") {
++                restrut = true;
++                timeout = Timeout.add (100 / panel_height, animation_step);
++            } else if (autohide == "Float") {
++                restrut = false;
++                timeout = Timeout.add (100 / panel_height, animation_step);
++            }
++        }
++        return true;
++    }
++
++    private void update_autohide_mode () {
++        restrut = true;
++        if (autohide == "Disabled" || autohide == "Dodge") {
++            hiding = false;
++            timeout = Timeout.add (300 / panel_height, animation_step);
++        } else {
++            hiding = true;
++            timeout = Timeout.add (100 / panel_height, animation_step);
++        }
+     }
+ 
+     private void update_panel_dimensions () {
+@@ -114,6 +196,24 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+         update_struts ();
+     }
+ 
++    private void animate_panel () {
++        panel_height = panel.get_allocated_height ();
++
++        monitor_number = screen.get_primary_monitor ();
++        Gdk.Rectangle monitor_dimensions;
++        this.screen.get_monitor_geometry (monitor_number, out monitor_dimensions);
++
++        monitor_width = monitor_dimensions.width;
++        monitor_height = monitor_dimensions.height;
++
++        this.set_size_request (monitor_width, (popover_manager.current_indicator != null ? monitor_height : -1));
++
++        monitor_x = monitor_dimensions.x;
++        monitor_y = monitor_dimensions.y;
++
++        this.move (monitor_x, monitor_y - (panel_height + panel_displacement));
++    }
++
+     private void update_visual () {
+         var visual = this.screen.get_rgba_visual ();
+ 
+diff --git a/wingpanel/src/Services/Settings.vala b/wingpanel-qq/src/Services/Settings.vala
+index 3bcd0a7..eeecbb8 100644
+--- a/wingpanel/src/Services/Settings.vala
++++ b/wingpanel-qq/src/Services/Settings.vala
+@@ -23,6 +23,8 @@ namespace Wingpanel.Services {
+ 
+         public bool use_transparency { get; set; }
+ 
++        public string autohide { get; set; }
++
+         public PanelSettings () {
+             base ("org.pantheon.desktop.wingpanel");
+         }

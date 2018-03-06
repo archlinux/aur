@@ -1,58 +1,102 @@
 --- src/wingpanel/src/PanelWindow.vala	2016-10-21 23:51:49.434036000 +0900
 +++ src/wingpanel/src/PanelWindow.vala.new	2016-10-22 00:21:00.991151961 +0900
-@@ -86,7 +86,7 @@
+@@ -86,7 +86,6 @@
      private void on_realize () {
          update_panel_dimensions ();
  
 -        Services.BackgroundManager.initialize (this.monitor_number, panel_height);
-+        //Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
          timeout = Timeout.add (100 / panel_height, animation_step);
      }
-@@ -152,7 +152,7 @@
+@@ -152,7 +152,6 @@
  
      public void set_expanded (bool expanded) {
          if (expand && !this.expanded) {
 -            Services.BackgroundManager.get_default ().remember_window ();
-+            //Services.BackgroundManager.get_default ().remember_window ();
  
              this.expanded = true;
  
-@@ -163,7 +163,7 @@
+@@ -163,7 +163,6 @@
  
              this.set_size_request (monitor_width, monitor_height);
          } else if (!expand) {
 -            Services.BackgroundManager.get_default ().restore_window ();
-+            //Services.BackgroundManager.get_default ().restore_window ();
  
              this.expanded = false;
  
 --- src/wingpanel/src/Widgets/Panel.vala	2016-10-22 00:14:45.485792472 +0900
 +++ src/wingpanel/src/Widgets/Panel.vala.new	2016-10-22 00:15:13.386112571 +0900
-@@ -60,7 +60,7 @@
+@@ -25,7 +25,6 @@
+     private MenuBar center_menubar;
+ 
+     private Gtk.StyleContext style_context;
+-    private Gtk.CssProvider? style_provider = null;
+ 
+     public Panel (Services.PopoverManager popover_manager) {
+         Object (popover_manager : popover_manager, orientation: Gtk.Orientation.HORIZONTAL);
+@@ -60,7 +60,6 @@
  
          style_context = this.get_style_context ();
  
 -        Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
-+        //Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
      }
  
      private void add_indicator (Indicator indicator) {
-@@ -102,7 +102,7 @@
+@@ -228,55 +227,4 @@
          }
      }
  
 -    private void update_background (Services.BackgroundState state, uint animation_duration) {
-+    /* private void update_background (Services.BackgroundState state, uint animation_duration) {
-         if (style_provider == null) {
-             style_provider = new Gtk.CssProvider ();
-             style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-@@ -146,5 +146,5 @@
-                 style_context.remove_class ("maximized");
-                 break;
-         }
+-        if (style_provider == null) {
+-            style_provider = new Gtk.CssProvider ();
+-            style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+-        }
+-
+-        string css = """
+-            .panel {
+-                transition: all %ums ease-in-out;
+-            }
+-        """.printf (animation_duration);
+-
+-        try {
+-            style_provider.load_from_data (css, css.length);
+-        } catch (Error e) {
+-            warning ("Parsing own style configuration failed: %s", e.message);
+-        }
+-
+-        switch (state) {
+-            case Services.BackgroundState.DARK :
+-                style_context.add_class ("color-light");
+-                style_context.remove_class ("color-dark");
+-                style_context.remove_class ("maximized");
+-                style_context.remove_class ("translucent");
+-                break;
+-            case Services.BackgroundState.LIGHT:
+-                style_context.add_class ("color-dark");
+-                style_context.remove_class ("color-light");
+-                style_context.remove_class ("maximized");
+-                style_context.remove_class ("translucent");
+-                break;
+-            case Services.BackgroundState.MAXIMIZED:
+-                style_context.add_class ("maximized");
+-                style_context.remove_class ("color-light");
+-                style_context.remove_class ("color-dark");
+-                style_context.remove_class ("translucent");
+-                break;
+-            case Services.BackgroundState.TRANSLUCENT_DARK:
+-                style_context.add_class ("translucent");
+-                style_context.add_class ("color-light");
+-                style_context.remove_class ("color-dark");
+-                style_context.remove_class ("maximized");
+-                break;
+-            case Services.BackgroundState.TRANSLUCENT_LIGHT:
+-                style_context.add_class ("translucent");
+-                style_context.add_class ("color-dark");
+-                style_context.remove_class ("color-light");
+-                style_context.remove_class ("maximized");
+-                break;
+-        }
 -    }
-+    } */
  }
 --- src/wingpanel/src/CMakeLists.txt	2017-10-13 03:28:23.119421691 +0900
 +++ src/wingpanel/src/CMakeLists.txt.new	2017-10-13 03:30:12.838158479 +0900

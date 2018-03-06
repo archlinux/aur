@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r345.ec08fc6
-pkgrel=2
+pkgver=r346.61c4f9f
+pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -27,13 +27,13 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-galaplugin.patch'
         'minus-gala.patch'
         'y-is-broken-cogl.patch'
-        'autohide-evbox.patch')
+        'autohide.patch')
 sha256sums=('SKIP'
-            '4d413e38bdb0dc408dbbe115c0cf192172dd5efb8a8e28b2b2a2c809f6bf7f5c'
-            '49e077acacfec80696a3ec29f13ed1e3c7cdcae54b53a419f5e9bc853c4684e3'
+            '37b3853f5e8a84a4d86c392beb0b422e03c71c7c53519f49883bfa5550979ae8'
+            'e56bc3b154539b6ae2ca7494f46f6f68c55f167b73203b92d645839bf8e9a5ea'
             '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            '548ae13c920e61ba9a479b0a9bb200575b5cbd8e3218aebec3486e7f95ef3213')
+            '7c0bdc8418111c4cc2d74c8c2e2a658ff4c7446f316f0e4e4b823e77a7247598')
 
 pkgver() {
   cd wingpanel
@@ -44,20 +44,21 @@ pkgver() {
 prepare() {
   cd wingpanel
 
-  #autohide
-  msg2 "autohide"
-  patch -Np2 < ../autohide-evbox.patch
+  #Autohide
+  msg2 "Autohide"
+  patch -Np2 < ../autohide.patch
+  #patch -Np2 < ../autohide-testing.patch
 
   #Standalone patches
-  msg2 "minus background manager"
+  msg2 "Remove background manager (Gala dependent)"
   patch -Np2 < ../minus-backgroundmanager.patch
-  msg2 "minus gala plugin"
+  msg2 "Remove Gala plugin"
   patch -Np2 < ../minus-galaplugin.patch
-  msg2 "minus gala"
+  msg2 "Remove Gala dependency"
   patch -Np2 < ../minus-gala.patch
 
   #Cogl can't be found when not using gala's cmake package; wtf?
-  msg2 "minus cogl"
+  msg2 "Remove CoglFixes (broken)"
   patch -Np2 < ../y-is-broken-cogl.patch
 
   if [[ -d build ]]; then
