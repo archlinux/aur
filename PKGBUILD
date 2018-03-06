@@ -82,11 +82,11 @@ fi
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 if $_testing; then
-  _pkgvermajmin="5.10"
+  _pkgvermajmin="5.11"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
-  _dev_suffix="beta3"
-  pkgrel=3
+  _dev_suffix="alpha"
+  pkgrel=1
 else
   _pkgvermajmin="5.10"
   _pkgverpatch=".0"
@@ -274,7 +274,7 @@ _core_configure_options="\
                  -reduce-exports"
 
 if $_testing; then
-  _tar_xz_sha256="7139adf57f703761fd4cac29bf6ee81a10b93c1fa11e5643d4c98e1367e20972"
+  _tar_xz_sha256="7f9f1afc7720f529a7b77cc2bf9337ec7c48e014ebf0acd16441784d6d71a7d3"
 else
   _tar_xz_sha256="936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e"
 fi
