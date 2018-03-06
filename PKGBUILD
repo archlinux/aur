@@ -7,7 +7,7 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=lib32-libpng12
-pkgver=1.2.57
+pkgver=1.2.59
 pkgrel=1
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
@@ -16,16 +16,16 @@ license=('custom')
 depends=('lib32-glibc' 'lib32-zlib')
 makedepends=('gcc-multilib')
 source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
-        "https://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
+        "https://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
 validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson
-sha256sums=('0f4620e11fa283fedafb474427c8e96bf149511a1804bdc47350963ae5cf54d8'
+sha256sums=('b4635f15b8adccc8ad0934eea485ef59cc4cae24d0f0300a9a941e51974ffcc7'
             'SKIP'
-            '7cae56ef3b8101d2106fc9c487c53ac600d8699913422b80e068bb50c41bebb6')
+            '281fd5f0165762967a18302dca217de3212be4a3437f95805be44f1ac9db1a5d')
 
 prepare() {
   cd libpng-${pkgver}
 
-  patch -Np0 -i ../libpng-${pkgver}-apng.patch
+  patch -Np1 -i ../libpng-${pkgver}-apng.patch
 
   libtoolize --force --copy
   aclocal
