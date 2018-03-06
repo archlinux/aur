@@ -16,7 +16,6 @@ pkgbase = webvirtmgr
 	depends = ebtables
 	depends = dmidecode
 	depends = python2
-	depends = supervisor
 	depends = websockify
 	depends = python2-django
 	depends = python2-lockfile

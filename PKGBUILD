@@ -8,7 +8,7 @@ pkgrel=2
 arch=('i686' 'x86_64')
 url='https://www.webvirtmgr.net/'
 license=('Apache')
-depends=('libvirt' 'libvirt-python' 'qemu' 'dnsmasq' 'bridge-utils' 'ebtables' 'dmidecode' 'python2' 'supervisor'
+depends=('libvirt' 'libvirt-python' 'qemu' 'dnsmasq' 'bridge-utils' 'ebtables' 'dmidecode' 'python2'
          'websockify' 'python2-django' 'python2-lockfile' 'python2-gunicorn' 'python2-django-auth-ldap')
 makedepends=('python2-pip')
 options=('!strip' '!emptydirs')
@@ -22,7 +22,7 @@ sha512sums=('68bd127874e07c37bef0c6e3fd49dece306f2e2f0c5c111c7339638284937e86275
 
 package() {
   outputdir="${pkgdir}/usr/lib/webvirtmgr"
-  install -Dm0644 'webvirtmgr.ini' "${pkgdir}/etc/supervisor.d/webvirtmgr.ini"
+  install -Dm0644 'webvirtmgr.ini' "${pkgdir}/usr/lib/systemd/system/webvirtmgr.service"
   install -Dm0644 'webvirtmgr-novnc.service' "${pkgdir}/usr/lib/systemd/system/webvirtmgr-novnc.service"
   install -dm0755 "${outputdir}" "${pkgdir}/var/lib/webvirtmgr"
   cp -r "${srcdir}/webvirtmgr" "${pkgdir}/usr/lib"
