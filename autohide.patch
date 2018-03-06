@@ -12,7 +12,7 @@ index c81abd5..890e277 100644
 +				<choice value='Float'/>
 +				<choice value='Disabled'/>
 +			</choices>
-+			<default>'Float'</default>
++			<default>'Disabled'</default>
 +			<summary>Sets if and how the panel will autohide.</summary>
 +			<description>Enable this to increase available desktop area and reduce clutter.</description>
 +		</key>
