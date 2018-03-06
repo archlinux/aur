@@ -1,7 +1,7 @@
 diff -rupN ./a/include/uapi/linux/pkt_sched.h ./b/include/uapi/linux/pkt_sched.h
 --- a/include/uapi/linux/pkt_sched.h	2018-01-29 11:08:52.000000000 -0500
-+++ b/include/uapi/linux/pkt_sched.h	2018-02-11 21:56:46.281099613 -0500
-@@ -934,4 +934,85 @@ enum {
++++ b/include/uapi/linux/pkt_sched.h	2018-03-05 21:28:19.597938282 -0500
+@@ -934,4 +934,75 @@ enum {
  
  #define TCA_CBS_MAX (__TCA_CBS_MAX - 1)
  
@@ -34,62 +34,52 @@ diff -rupN ./a/include/uapi/linux/pkt_sched.h ./b/include/uapi/linux/pkt_sched.h
 +};
 +
 +#define TC_CAKE_MAX_TINS (8)
-+struct tc_cake_xstats {
-+	__u16 version;  /* == 5, increments when struct extended */
-+	__u8  max_tins; /* == TC_CAKE_MAX_TINS */
-+	__u8  tin_cnt;  /* <= TC_CAKE_MAX_TINS */
++struct tc_cake_tin_stats {
 +
-+	__u32 threshold_rate   [TC_CAKE_MAX_TINS];
-+	__u32 target_us        [TC_CAKE_MAX_TINS];
-+	struct tc_cake_traffic_stats sent      [TC_CAKE_MAX_TINS];
-+	struct tc_cake_traffic_stats dropped   [TC_CAKE_MAX_TINS];
-+	struct tc_cake_traffic_stats ecn_marked[TC_CAKE_MAX_TINS];
-+	struct tc_cake_traffic_stats backlog   [TC_CAKE_MAX_TINS];
-+	__u32 interval_us      [TC_CAKE_MAX_TINS];
-+	__u32 way_indirect_hits[TC_CAKE_MAX_TINS];
-+	__u32 way_misses       [TC_CAKE_MAX_TINS];
-+	__u32 way_collisions   [TC_CAKE_MAX_TINS];
-+	__u32 peak_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to bulk flows */
-+	__u32 avge_delay_us    [TC_CAKE_MAX_TINS];
-+	__u32 base_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to sparse flows */
-+	__u16 sparse_flows     [TC_CAKE_MAX_TINS];
-+	__u16 bulk_flows       [TC_CAKE_MAX_TINS];
-+	__u16 unresponse_flows [TC_CAKE_MAX_TINS]; /* v4 - was u32 last_len  */
-+	__u16 spare            [TC_CAKE_MAX_TINS]; /* v4 - split last_len */
-+	__u32 max_skblen       [TC_CAKE_MAX_TINS];
-+	__u32 capacity_estimate;  /* version 2 */
-+	__u32 memory_limit;       /* version 3 */
-+	__u32 memory_used;        /* version 3 */
-+	struct tc_cake_traffic_stats ack_drops [TC_CAKE_MAX_TINS]; /* version 5 */
++	__u32 threshold_rate;
++	__u32 target_us;
++	struct tc_cake_traffic_stats sent;
++	struct tc_cake_traffic_stats dropped;
++	struct tc_cake_traffic_stats ecn_marked;
++	struct tc_cake_traffic_stats backlog;
++	__u32 interval_us;
++	__u32 way_indirect_hits;
++	__u32 way_misses;
++	__u32 way_collisions;
++	__u32 peak_delay_us; /* ~= bulk flow delay */
++	__u32 avge_delay_us;
++	__u32 base_delay_us; /* ~= sparse flows delay */
++	__u16 sparse_flows;
++	__u16 bulk_flows;
++	__u16 unresponse_flows;
++	__u16 spare;
++	__u32 max_skblen;
++	struct tc_cake_traffic_stats ack_drops;
 +};
 +
-+struct tc_cake_old_xstats {
-+	__u16 type;  /* constant magic 0xCAFE */
-+	__u16 class_cnt;
-+	struct {
-+		__u32 rate;
-+		__u32 target_us;
-+		__u32 packets;
-+		__u32 interval_us;
-+		__u64 bytes;
-+		__u32 dropped;
-+		__u32 ecn_marked;
-+		__u32 way_indirect_hits;
-+		__u32 way_misses;
-+		__u32 way_collisions;
-+		__u32 backlog_bytes;
-+		__u32 peak_delay; /* delay to fat flows */
-+		__u32 avge_delay;
-+		__u32 base_delay; /* delay to sparse flows */
-+		__u16 sparse_flows;
-+		__u16 bulk_flows;
-+	} cls[8];
++struct tc_cake_xstats {
++	__u16 version;
++	__u16 tin_stats_size; /* == sizeof(struct tc_cake_tin_stats) */
++	__u32 capacity_estimate;
++	__u32 memory_limit;
++	__u32 memory_used;
++	__u8  tin_cnt;
++	__u8  avg_trnoff;
++	__u16 max_trnlen;
++	__u16 max_adjlen;
++	__u16 min_trnlen;
++	__u16 min_adjlen;
++
++	__u16 spare1;
++	__u32 spare2;
++
++	struct tc_cake_tin_stats tin_stats[0]; /* keep last */
 +};
 +
  #endif
 diff -rupN ./a/man/man8/tc-cake.8 ./b/man/man8/tc-cake.8
 --- a/man/man8/tc-cake.8	1969-12-31 19:00:00.000000000 -0500
-+++ b/man/man8/tc-cake.8	2018-02-11 21:57:23.784123762 -0500
++++ b/man/man8/tc-cake.8	2018-03-05 21:29:19.447904250 -0500
 @@ -0,0 +1,530 @@
 +.TH CAKE 8 "15 October 2015" "iproute2" "Linux"
 +.SH NAME
@@ -431,7 +421,7 @@ diff -rupN ./a/man/man8/tc-cake.8 ./b/man/man8/tc-cake.8
 +.B interplanetary
 +.br
 +	So named because Jupiter is about 1 light-hour from Earth.  Use this to (almost) completely disable AQM actions.  Equivalent to
-+.B rtt 3600s.
++.B rtt 1000s.
 +
 +.SH FLOW ISOLATION PARAMETERS
 +With flow isolation enabled, CAKE places packets from different flows into different queues,
@@ -623,7 +613,7 @@ diff -rupN ./a/man/man8/tc-cake.8 ./b/man/man8/tc-cake.8
 +to the Linux Networking mailing list <netdev@vger.kernel.org>.
 diff -rupN ./a/tc/Makefile ./b/tc/Makefile
 --- a/tc/Makefile	2018-01-29 11:08:52.000000000 -0500
-+++ b/tc/Makefile	2018-02-11 21:58:11.261655453 -0500
++++ b/tc/Makefile	2018-03-05 21:30:08.061438949 -0500
 @@ -66,6 +66,7 @@ TCMODULES += q_codel.o
  TCMODULES += q_fq_codel.o
  TCMODULES += q_fq.o
@@ -634,8 +624,8 @@ diff -rupN ./a/tc/Makefile ./b/tc/Makefile
  TCMODULES += e_bpf.o
 diff -rupN ./a/tc/q_cake.c ./b/tc/q_cake.c
 --- a/tc/q_cake.c	1969-12-31 19:00:00.000000000 -0500
-+++ b/tc/q_cake.c	2018-02-11 21:58:39.979171243 -0500
-@@ -0,0 +1,728 @@
++++ b/tc/q_cake.c	2018-03-05 21:30:40.552790835 -0500
+@@ -0,0 +1,747 @@
 +/*
 + * Common Applications Kept Enhanced  --  CAKE
 + *
@@ -1185,6 +1175,11 @@ diff -rupN ./a/tc/q_cake.c ./b/tc/q_cake.c
 +	return 0;
 +}
 +
++#define FOR_EACH_TIN(xstats, tst, i)				\
++	for(tst = xstats->tin_stats, i = 0;			\
++	i < xstats->tin_cnt;						\
++	    i++, tst = ((void *) xstats->tin_stats) + xstats->tin_stats_size * i)
++
 +static int cake_print_xstats(struct qdisc_util *qu, FILE *f,
 +				 struct rtattr *xstats)
 +{
@@ -1227,17 +1222,15 @@ diff -rupN ./a/tc/q_cake.c ./b/tc/q_cake.c
 +				fprintf(f, " drop_next %s",
 +					sprint_time(st->class_stats.drop_next, b1));
 +		}
-+	} else if (stnc->version >= 1 && stnc->version < 0xFF
-+				&& stnc->max_tins == TC_CAKE_MAX_TINS
-+				&& RTA_PAYLOAD(xstats) >= offsetof(struct tc_cake_xstats, capacity_estimate))
++	} else if (stnc->version > 0x100
++		&& RTA_PAYLOAD(xstats) >= (sizeof(struct tc_cake_xstats) +
++					stnc->tin_stats_size * stnc->tin_cnt))
 +	{
++		struct tc_cake_tin_stats  *tst;
 +		int i;
 +
-+		if(stnc->version >= 3)
-+			fprintf(f, " memory used: %s of %s\n", sprint_size(stnc->memory_used, b1), sprint_size(stnc->memory_limit, b2));
-+
-+		if(stnc->version >= 2)
-+			fprintf(f, " capacity estimate: %s\n", sprint_rate(stnc->capacity_estimate, b1));
++		fprintf(f, " memory used: %s of %s\n", sprint_size(stnc->memory_used, b1), sprint_size(stnc->memory_limit, b2));
++		fprintf(f, " capacity estimate: %s\n", sprint_rate(stnc->capacity_estimate, b1));
 +
 +		switch(stnc->tin_cnt) {
 +		case 3:
@@ -1260,97 +1253,113 @@ diff -rupN ./a/tc/q_cake.c ./b/tc/q_cake.c
 +		};
 +
 +		fprintf(f, "  thresh  ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_rate(stnc->threshold_rate[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_rate(tst->threshold_rate, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  target  ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_time(stnc->target_us[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_time(tst->target_us, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  interval");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_time(stnc->interval_us[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_time(tst->interval_us, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  pk_delay");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_time(stnc->peak_delay_us[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_time(tst->peak_delay_us, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  av_delay");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_time(stnc->avge_delay_us[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_time(tst->avge_delay_us, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  sp_delay");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12s", sprint_time(stnc->base_delay_us[i], b1));
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12s", sprint_time(tst->base_delay_us, b1));
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  pkts    ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->sent[i].packets);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->sent.packets);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  bytes   ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12llu", stnc->sent[i].bytes);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12llu", tst->sent.bytes);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  way_inds");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->way_indirect_hits[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->way_indirect_hits);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  way_miss");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->way_misses[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->way_misses);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  way_cols");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->way_collisions[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->way_collisions);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  drops   ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->dropped[i].packets);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->dropped.packets);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  marks   ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->ecn_marked[i].packets);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->ecn_marked.packets);
 +		fprintf(f, "\n");
 +
-+		if(stnc->version >= 5) {
-+			fprintf(f, "  ack_drop");
-+			for(i=0; i < stnc->tin_cnt; i++)
-+				fprintf(f, "%12u", stnc->ack_drops[i].packets);
-+			fprintf(f, "\n");
-+		}
++		fprintf(f, "  ack_drop");
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->ack_drops.packets);
++		fprintf(f, "\n");
 +
 +		fprintf(f, "  sp_flows");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->sparse_flows[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->sparse_flows);
 +		fprintf(f, "\n");
 +
 +		fprintf(f, "  bk_flows");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->bulk_flows[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->bulk_flows);
 +		fprintf(f, "\n");
 +
-+		if(stnc->version >= 4) {
-+			fprintf(f, "  un_flows");
-+			for(i=0; i < stnc->tin_cnt; i++)
-+				fprintf(f, "%12u", stnc->unresponse_flows[i]);
-+			fprintf(f, "\n");
-+		}
++		fprintf(f, "  un_flows");
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->unresponse_flows);
++		fprintf(f, "\n");
 +
 +		fprintf(f, "  max_len ");
-+		for(i=0; i < stnc->tin_cnt; i++)
-+			fprintf(f, "%12u", stnc->max_skblen[i]);
++		FOR_EACH_TIN(stnc, tst, i)
++			fprintf(f, "%12u", tst->max_skblen);
++		fprintf(f, "\n");
++
++		fprintf(f, "  max_tran");
++		fprintf(f, "%12u", stnc->max_trnlen);
++		fprintf(f, "\n");
++
++		fprintf(f, "  max_adj ");
++		fprintf(f, "%12u", stnc->max_adjlen);
++		fprintf(f, "\n");
++
++		fprintf(f, "  min_tran");
++		fprintf(f, "%12u", stnc->min_trnlen);
++		fprintf(f, "\n");
++
++		fprintf(f, "  min_adj ");
++		fprintf(f, "%12u", stnc->min_adjlen);
++		fprintf(f, "\n");
++
++		fprintf(f, "  avg_off ");
++		fprintf(f, "%12u", stnc->avg_trnoff);
 +		fprintf(f, "\n");
 +	} else {
 +		return -1;

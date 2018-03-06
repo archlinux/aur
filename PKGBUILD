@@ -6,7 +6,7 @@
 
 pkgname=iproute2-cake
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP Routing Utilities'
 arch=('x86_64')
 license=('GPL2')
@@ -65,4 +65,4 @@ package() {
 md5sums=('0681bf4664b2649ad4e12551a3a7a1f9'
          'SKIP'
          '5345bd18b521fb2f305acb2ab1203269'
-         '227492c1a9f2ee4b3897f609ea049274')
+         'b0d5b1925f30285050faa9f681d22f73')
