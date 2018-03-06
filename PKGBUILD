@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=lib32-talloc
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc='A hierarchical pool based memory allocator with destructors'
 arch=('x86_64')
@@ -10,12 +11,11 @@ url='http://talloc.samba.org/'
 license=('GPL3')
 source=("https://samba.org/ftp/talloc/talloc-${pkgver}.tar.gz")
 depends=('lib32-glibc' 'talloc')
-makedepends=('gcc-multilib' 'lib32-python2')
-sha256sums=('c985e94bebd6ec2f6af3d95dcc3fcb192a2ddb7781a021d70ee899e26221f619')
+makedepends=('lib32-python2')
+sha256sums=('639eb35556a0af999123c4d883e79be05ff9f00ab4f9e4ac2e5775f9c5eeeed3')
 
 prepare() {
   cd talloc-${pkgver}
-
   sed -i 's/python/python2/g' buildtools/bin/waf
 }
 
@@ -28,20 +28,20 @@ build() {
   export PYTHON='/usr/bin/python2-32'
   export PYTHON_CONFIG='/usr/bin/python2-32-config'
 
-  ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --localstatedir='/var'\
-    --sysconfdir='/etc/samba' \
-    --enable-talloc-compat1
+  ./configure --prefix=/usr \
+     --libdir='/usr/lib32' \
+     --sysconfdir=/etc/samba \
+     --localstatedir=/var \
+     --bundled-libraries=NONE \
+     --builtin-libraries=replace \
+     --enable-talloc-compat1
+
   make
 }
 
 package() {
   cd talloc-${pkgver}
-
   make DESTDIR="${pkgdir}" install
-
   rm -rf "${pkgdir}"/usr/{include,share}
 }
 
