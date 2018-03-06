@@ -10,7 +10,7 @@ pkgbase = astylewx
 	source = https://downloads.sourceforge.net/project/astylewx.astyle.p/astylewx/astylewx 3.1/astylewx_3.1_linux.tar.gz
 	source = astylewx-destdir.patch
 	md5sums = 06a72203f953440ff254eb69940b4517
-	md5sums = cb9226bb562f88b09f57f3fd708fff3b
+	md5sums = fb3b2f359c4faef4087331e71471b7c2
 
 pkgname = astylewx
 
