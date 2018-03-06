@@ -1,6 +1,6 @@
 # Maintainer: Francisco Giordano <frangio.1@gmail.com>
 pkgname=truffle
-pkgver=4.0.4
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='A development framework for Ethereum'
 url='https://github.com/trufflesuite/truffle'
@@ -11,7 +11,7 @@ noextract=("truffle-${pkgver}.tgz")
 makedepends=('npm')
 depends=('nodejs')
 conflicts=('truffle-git')
-sha1sums=('b447cb3b0469054413b5ff421f6e8baeefddb2be')
+sha1sums=('2a4e13f86a0aaf816721f060d7e95844c6e8963c')
 provides=('truffle')
 
 package() {
