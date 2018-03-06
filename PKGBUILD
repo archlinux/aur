@@ -17,7 +17,6 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
-        xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -26,15 +25,11 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
 sha256sums=('3654e69e19426d9738381abbe0c325082be42971535eb791fb3604f60499a36e'
             'SKIP'
-            'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
-
-  msg2 "patch from Fedora, not yet merged"
-  patch -Np1 -i ../xserver-autobind-hotplug.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -vfi

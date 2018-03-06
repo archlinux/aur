@@ -56,12 +56,10 @@ pkgbase = xorg-server-dev
 	makedepends = wayland-protocols
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.99.901.tar.bz2
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.99.901.tar.bz2.sig
-	source = xserver-autobind-hotplug.patch
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = 3654e69e19426d9738381abbe0c325082be42971535eb791fb3604f60499a36e
 	sha256sums = SKIP
-	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 
