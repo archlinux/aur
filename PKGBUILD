@@ -2,9 +2,9 @@
 
 pkgname=vmaf
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/netflix/vmaf/'
 license=('APACHE')
 depends=('gcc-libs')
