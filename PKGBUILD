@@ -7,20 +7,19 @@ pkgrel="1"
 pkgdesc="Library containing various image processing algorithms"
 url="https://github.com/jflesch/libpillowfight"
 depends=('python' )
-makedepends=('python' 'python-setuptools')
+makedepends=('python' 'python-setuptools' 'git')
 license=('GPL3')
 arch=('any')
 changelog="ChangeLog"
-source=("https://github.com/jflesch/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('50d3837c227b6153d34b826c0a940809')
+source=("git+https://github.com/jflesch/${_pkgname}#tag=${pkgver}")
+md5sums=('SKIP')
 
 build() {
-    cd ${srcdir}/libpillowfight-${pkgver}
-    make version
-    python setup.py build
+    cd ${srcdir}/${_pkgname}
+    make build
 }
 
 package() {
-    cd ${srcdir}/libpillowfight-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd ${srcdir}/${_pkgname}
+    PIP_ARGS="--root=\"${pkgdir}\" --optimize=1" make install_py
 }
