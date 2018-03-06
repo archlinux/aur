@@ -21,6 +21,7 @@ pkgbase = eventd-git
 	depends = pango
 	depends = libsystemd
 	depends = libxcb
+	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = util-linux
 	depends = xcb-util

@@ -24,6 +24,7 @@ depends=(
     pango
     libsystemd
     libxcb
+    libxkbcommon
     libxkbcommon-x11
     util-linux
     xcb-util
