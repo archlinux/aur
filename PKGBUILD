@@ -11,7 +11,7 @@ depends=('wxgtk2' 'astyle')
 source=("https://downloads.sourceforge.net/project/$pkgname.astyle.p/$pkgname/$pkgname $pkgver/${pkgname}_${pkgver}_linux.tar.gz"
         'astylewx-destdir.patch')
 md5sums=('06a72203f953440ff254eb69940b4517'
-         'cb9226bb562f88b09f57f3fd708fff3b')
+         'fb3b2f359c4faef4087331e71471b7c2')
 
 prepare() {
     cd "${pkgname}_${pkgver}_linux/$pkgname/build/gcc"

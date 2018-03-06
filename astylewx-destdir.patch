@@ -1,31 +1,40 @@
 --- astylewx/build/gcc/Makefile	2017-08-02 16:25:49.551415970 +0300
 +++ astylewx/build/gcc/Makefile 2017-08-02 16:28:48.864180891 +0300
+@@ -57,7 +57,7 @@
+ -I../../src -I../../dialog -I../../image
+ LDBASEFLAGS = -L../../../AStyle/build/gcc/bin  -L../../../astyle/build/gcc/bin
+ CXX = g++
+-INSTALL=install -o $(USER) -g $(USER)
++INSTALL=install
+ 
+ ##################################################
+ 
 @@ -162,20 +162,20 @@
  # The two last install commands will fail if Gnome is not installed or is not at $(prefix).
  # This is OK - just means no AStyleWx in the Gnome Applications menu
  install:
 -	$(INSTALL) -m 755 -d $(ibindir)
 -	$(INSTALL) -m 755 $(bindir)/astylewx  $(ibindir)
-+	$(INSTALL) -m 755 -d $(DESTDIR)/$(ibindir)
-+	$(INSTALL) -m 755 $(bindir)/astylewx  $(DESTDIR)/$(ibindir)
++	$(INSTALL) -m 755 -d $(DESTDIR)$(ibindir)
++	$(INSTALL) -m 755 $(bindir)/astylewx  $(DESTDIR)$(ibindir)
  
 -	$(INSTALL) -m 755 -d $(SYSCONF_PATH)
 -	@mkdir -p $(SYSCONF_PATH)/html;
-+	$(INSTALL) -m 755 -d $(DESTDIR)/$(SYSCONF_PATH)
-+	@mkdir -p $(DESTDIR)/$(SYSCONF_PATH)/html;
++	$(INSTALL) -m 755 -d $(DESTDIR)$(SYSCONF_PATH)
++	@mkdir -p $(DESTDIR)$(SYSCONF_PATH)/html;
  	@for files in ../../doc/*.html  ../../doc/*.css; \
  	do \
 -		$(INSTALL)  -m 644  "$$files"  $(SYSCONF_PATH)/html; \
-+		$(INSTALL)  -m 644  "$$files"  $(DESTDIR)/$(SYSCONF_PATH)/html; \
++		$(INSTALL)  -m 644  "$$files"  $(DESTDIR)$(SYSCONF_PATH)/html; \
  	done
  
  ifdef gnomeprefix
 -	$(INSTALL) -m 755 -d $(idatadir)/applications $(ipixmapdir)
 -	$(INSTALL) -m 755 ../../image/AStyleWx.desktop $(idatadir)/applications/astylewx.desktop
 -	$(INSTALL) -m 644 ../../image/AStyle_32.xpm $(ipixmapdir)/astyle-32.xpm
-+	$(INSTALL) -m 755 -d $(DESTDIR)/$(idatadir)/applications $(DESTDIR)/$(ipixmapdir)
-+	$(INSTALL) -m 755 ../../image/AStyleWx.desktop $(DESTDIR)/$(idatadir)/applications/astylewx.desktop
-+	$(INSTALL) -m 644 ../../image/AStyle_32.xpm $(DESTDIR)/$(ipixmapdir)/astyle-32.xpm
++	$(INSTALL) -m 755 -d $(DESTDIR)$(idatadir)/applications $(DESTDIR)$(ipixmapdir)
++	$(INSTALL) -m 755 ../../image/AStyleWx.desktop $(DESTDIR)$(idatadir)/applications/astylewx.desktop
++	$(INSTALL) -m 644 ../../image/AStyle_32.xpm $(DESTDIR)$(ipixmapdir)/astyle-32.xpm
  endif
  
  uninstall:
