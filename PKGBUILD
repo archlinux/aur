@@ -8,7 +8,7 @@ name=firefox-beta
 pkgver=60.0.1
 pkgrel=1
 meme=DEVEDITION_60_0b1_RELEASE
-pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
+pkgdesc="Standalone web browser from mozilla.org, with telemetry and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
@@ -100,7 +100,7 @@ ac_add_options --enable-system-ffi
 ac_add_options --disable-gamepad
 ac_add_options --disable-necko-wifi 
 ac_add_options --disable-webspeech
-ac_add_options --disable-webrtc
+
 
 # Features
 ac_add_options --enable-alsa
