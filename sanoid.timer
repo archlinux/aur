@@ -1,0 +1,9 @@
+[Unit]
+Description=Sanoid timer
+
+[Timer]
+OnBootSec=0min
+OnCalendar=*:0/1
+
+[Install]
+WantedBy=timers.target
