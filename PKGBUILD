@@ -15,6 +15,7 @@ depends=('python'
   'python-gpapi'
   'python-pycryptodome')
 optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
+conflicts=('gplaycli')
 source=("gplaycli::git+https://github.com/matlink/gplaycli.git")
 md5sums=("SKIP")
 
