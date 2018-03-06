@@ -3,21 +3,27 @@
 
 _npmname=express
 pkgname=nodejs-$_npmname
-pkgver=4.14.0
+pkgver=4.16.2
 pkgrel=1
 pkgdesc="Fast, unopinionated, minimalist web framework."
 arch=('any')
-url="http://expressjs.com"
+url="https://expressjs.com"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e21c61034b8d836ca5d68de4b3365012548e8c57af4a6047026b21797efd8c80')
+sha256sums=('30b8dd924dd2452ecd85ad400f104b5ad723f32296e7bd183550ffbb8539d662')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install \
+    --user root --global \
+    --prefix "$pkgdir/usr" \
+    "$srcdir"/$_npmname-$pkgver.tgz
+
+  rm -r "$pkgdir"/usr/etc
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
