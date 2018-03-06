@@ -28,6 +28,11 @@ pkgver() {
 package() {
   cd gplaycli
   python3 setup.py install --root="$pkgdir/" --optimize=1
+
+    # installs config to build user home - moving to /usr/share
+    mkdir -p "$pkgdir/usr/share/$pkgname/"
+    mv "${pkgdir}${HOME}/.config/$pkgname/" "$pkgdir/usr/share/$pkgname/config"
+    rm -rf "$pkgdir/home"
 }
 
 # vim:set ts=2 sw=2 et:
