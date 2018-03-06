@@ -26,7 +26,7 @@
              click: function (menuItem, browserWindow, options) { menuManager.handleMenuAction('openCustomUrl', 'https://www.getpostman.com/docs/', options); }
 --- a/js/requester.js
 +++ b/js/requester.js
-@@ -546470,9 +546470,6 @@
+@@ -546654,9 +546654,6 @@
                  _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_PROXY },
                    _react2.default.createElement(_SettingsProxyContainer2.default, null)),
  
@@ -36,7 +36,7 @@
                  _react2.default.createElement(_SettingsTabContent2.default, { key: _SettingsTypeConstants.SETTINGS_ABOUT },
                    _react2.default.createElement(_SettingsAboutContainer2.default, null)))))));
  
-@@ -546529,3 +546526,2 @@
+@@ -546713,3 +546710,2 @@
              _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_PROXY }, 'Proxy'),
 -            _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_UPDATE }, 'Update'),
              _react2.default.createElement(_Tabs.Tab, { refKey: _SettingsTypeConstants.SETTINGS_ABOUT }, 'About'))));
