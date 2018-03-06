@@ -20,7 +20,9 @@ pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
 _codename=Leia
-pkgrel=3
+_rtype=Alpha
+_rver=1
+pkgrel=4
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -36,29 +38,37 @@ makedepends=(
   # AUR packages needed
   'fmt' 
 )
-_libdvdcss_commit="2f12236bc1c92f73c21e973363f79eb300de603f"
-_libdvdnav_commit="981488f7f27554b103cca10c1fbeba027396c94a"
-_libdvdread_commit="6f3f53a63549d937e75c0db132fb1bce6b71a496"
-_ffmpeg_version="3.4.1-$_codename-Alpha-1"
+# Found on their respective github release pages. One can check them against
+# what is pulled down when not specifying them in the cmake step.
+# $CHROOT/build/kodi-pre-release/src/kodi-build/build/download
+#
+# https://github.com/xbmc/FFmpeg/tags
+# https://github.com/xbmc/libdvdread/tags
+# https://github.com/xbmc/libdvdnav/tags
+# https://github.com/xbmc/libdvdcss/tags
+_ffmpeg_version="3.4.1-$_codename-$_rtype-$_rver"
+_libdvdcss_version="1.4.1-$_codename-$_rtype-$_rver"
+_libdvdnav_version="6.0.0-$_codename-$_rtype-$_rver"
+_libdvdread_version="6.0.0-$_codename-$_rtype-$_rver"
 source=(
   "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
-  "${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_commit.tar.gz"
-  "${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_commit.tar.gz"
-  "${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_commit.tar.gz"
-  "${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.1-$_codename-$_rtype-$_rver.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-$_codename-$_rtype-$_rver.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-$_codename-$_rtype-$_rver.tar.gz"
+  "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
 noextract=(
-  "${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz"
-  "${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz"
-  "${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz"
-  "${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz"
+  "ffmpeg-$_ffmpeg_version.tar.gz"
 )
 sha256sums=('8892498d5248eea29c30db7c128a5910afc60d1b0b894aea472604bb879a0310'
-            'b6eb2d929ff56cb051152c32010afc5e7cf5fe8c5ae32dca412a2b46b6b57e34'
-            '312b3d15bc448d24e92f4b2e7248409525eccc4e75776026d805478e51c5ef3d'
-            'ca9e510f4dd6a903de7ab27fe5d27714e6fad498ed9a595e3199f8b44761de36'
+            '6e89b7fc36e26d27fcc8fadf97176ca7684f1702634ecdbe4d8df62a4a967de3'
+            '4af19a750f468a0b926ce5051e70951ee5815d5913d3dd44260dd93ca74fc4c1'
+            'd2c19c1d719caba031241fa9f4f7740ab84ad8033ab381bf9f7b8c59f259b441'
             '5f7b367f2b451098302f5a78a73e35924bbea24e9b1ac0af73cd32b4ee5942e3'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
@@ -80,10 +90,10 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
-    -Dlibdvdcss_URL="$srcdir/${pkgbase%%-*}-libdvdcss-$_libdvdcss_commit.tar.gz" \
-    -Dlibdvdnav_URL="$srcdir/${pkgbase%%-*}-libdvdnav-$_libdvdnav_commit.tar.gz" \
-    -Dlibdvdread_URL="$srcdir/${pkgbase%%-*}-libdvdread-$_libdvdread_commit.tar.gz" \
-    -DFFMPEG_URL="$srcdir/${pkgbase%%-*}-ffmpeg-$_ffmpeg_version.tar.gz" \
+    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
+    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
+    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
+    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
     ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
