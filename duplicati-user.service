@@ -2,6 +2,7 @@
 Description=Duplicati
 
 [Service]
+ExecStartPre=/usr/bin/sleep 5
 ExecStart=/usr/bin/mono /opt/duplicati-latest/Duplicati.GUI.TrayIcon.exe --webservice-port=8200
 Restart=on-abort
 
