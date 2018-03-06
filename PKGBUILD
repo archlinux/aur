@@ -1,29 +1,35 @@
 pkgname=xenia-git
-pkgver=r4173.09d16f4b
+pkgver=r4251.6b8a34c9
 pkgrel=1
 pkgdesc="Xenia is an experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
 license=('BSD')
-depends=('gtk3' 'lz4' 'glew' 'libx11' 'libc++' 'yaml-cpp')
+depends=('gtk3' 'lz4' 'glew' 'libx11' 'libc++')
 # TODO use installed premake5 instead of building it
 # premake: powerpc patch added
-makedepends=('python' 'clang' 'vulkan-headers' 'git' 'clang' 'libpthread-stubs' 'catch2')
+makedepends=('python' 'clang' 'vulkan-headers' 'git' 'clang' 'libpthread-stubs')
 provides=('xenia')
 conflicts=('xenia')
 # TODO: Use system installed deps for non-forked libs
 source=("git+https://github.com/benvanik/xenia.git"
         "git+https://github.com/benvanik/binutils-ppc-cygwin"
         "git+https://github.com/xenia-project/capstone.git"
+        "git+https://github.com/catchorg/Catch2"  # catch-git
         "git+https://github.com/benvanik/gflags.git"
         "git+https://github.com/ocornut/imgui.git"
         "git+https://github.com/xenia-project/libav.git"
         "git+https://github.com/xenia-project/premake-core.git"
         "git+https://github.com/xenia-project/premake-export-compile-commands.git"
         "git+https://github.com/xenia-project/snappy.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers"  # spirv-headers or glslang
         "git+https://github.com/xenia-project/SPIRV-Tools.git"
-        "git+https://github.com/xenia-project/xbyak.git")
+        "git+https://github.com/xenia-project/xbyak.git"
+        "git+https://github.com/jbeder/yaml-cpp.git")  # yaml-cpp
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
