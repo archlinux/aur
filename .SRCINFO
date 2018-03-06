@@ -1,7 +1,7 @@
 pkgbase = litecoin-qt
 	pkgdesc = Peer-to-peer network based digital currency (QT)
-	pkgver = 0.14.2
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = http://www.litecoin.org/
 	install = litecoin-qt.install
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = litecoin-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = litecoin
-	source = https://github.com/litecoin-project/litecoin/archive/v0.14.2.tar.gz
+	source = https://github.com/litecoin-project/litecoin/archive/v0.15.1.tar.gz
 	source = litecoin-qt.desktop
-	sha256sums = 4db5473be17fc707acfa4bc5d13b5c07915fa8c28b404ca0e6969fecc41744b2
+	sha256sums = 570adae0d4a9567110967aba2ea5d90ce8c421313f453523c4fd23b9339c7d2b
 	sha256sums = cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559
 
 pkgname = litecoin-qt
