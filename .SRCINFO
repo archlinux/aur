@@ -1,0 +1,16 @@
+pkgbase = go-revel
+	pkgdesc = Command line tools for Revel.
+	pkgver = 20180306
+	pkgrel = 1
+	url = https://github.com/revel/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-revel
+
