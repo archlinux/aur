@@ -8,11 +8,12 @@ arch=('i686' 'x86_64')
 url="http://www.tedunangst.com/flak/post/sct-set-color-temperature"
 license=('Public Domain')
 depends=()
-makedepends=()
+makedepends=('libx11' 'libxrandr')
 source=("http://www.tedunangst.com/flak/files/sct.c")
-md5sums=('1d110264e8a13f7f9259643c2fa402b4')
-# Upstream uses an invalid cert. This is okay since we validate md5sum:
-DLAGENTS=("http::/usr/bin/curl -Ok")
+sha256sums=('0dda697ec3f4129d793f8896743d82be09934883f5aeda05c4a2193d7ab3c305')
+# Upstream uses an invalid cert. This is acceptable since we validate
+# checksums.
+DLAGENTS=("http::/usr/bin/curl -Ok -sSL")
 
 build() {
   cd "$srcdir/"
