@@ -1,0 +1,3 @@
+post_install() {
+	echo ">>> Remember to set THEOS=/opt/theos as an environment variable"
+}

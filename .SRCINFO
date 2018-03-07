@@ -1,8 +1,9 @@
 pkgbase = theos-git
 	pkgdesc = A cross-platform suite of tools for building and deploying software for iOS and other platforms
 	pkgver = 2.3.r10.g7a9ec0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://theos.github.io/
+	install = theos.install
 	arch = any
 	license = GPL3
 	depends = perl
