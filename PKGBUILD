@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90240.g8b0a9f79c8
-pkgrel=2
+pkgver=3.5.r90242.g5ab0ecf283
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -20,7 +20,7 @@ depends=(
         'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'codec2' 'libilbc' 'kvazaar'
+        'chromaprint-fftw' 'libbs2b' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
         'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk'
         'libmysofa' 'rockchip-mpp'
 )
@@ -130,7 +130,7 @@ build() {
         --enable-libcodec2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
-        --disable-libflite \
+        --enable-libflite \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
