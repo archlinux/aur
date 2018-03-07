@@ -1,0 +1,13 @@
+pkgbase = theos-ios-toolchain
+	pkgdesc = CoolStar's theos toolchain for iOS
+	pkgver = 2017.03.08
+	pkgrel = 1
+	url = https://github.com/theos/theos/wiki/Installation
+	arch = any
+	license = custom
+	depends = theos
+	source = https://developer.angelxwind.net/Linux/ios-toolchain_clang%2bllvm%2bld64_2017-03-08_linux_x86_64.zip
+	sha256sums = 973e29443b62d867dc40a289ae5cdebe5fc30a1f718f0ef60cbf16fcdd412d07
+
+pkgname = theos-ios-toolchain
+
