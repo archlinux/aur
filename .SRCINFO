@@ -26,6 +26,7 @@ pkgbase = eventd-git
 	depends = util-linux
 	depends = xcb-util
 	depends = xcb-util-wm
+	depends = xkeyboard-config
 	optdepends = avahi: DNS-SD support
 	optdepends = gssdp: SSDP support
 	optdepends = librsvg: SVG images support

@@ -29,6 +29,7 @@ depends=(
     util-linux
     xcb-util
     xcb-util-wm
+    xkeyboard-config
 )
 makedepends=(
     git
