@@ -1,13 +1,15 @@
 pkgbase = hdtv-git
 	pkgdesc = Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit
 	pkgver = r973.ba14694
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.ikp.uni-koeln.de/staging/hdtv
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = libx11
 	makedepends = python-docutils
+	depends = glibc
 	depends = python
 	depends = root
 	depends = libmfile
