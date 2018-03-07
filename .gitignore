@@ -1,4 +1,4 @@
 src
 pkg
-vendorlint
+vendorlint-git
 *pkg.tar.xz

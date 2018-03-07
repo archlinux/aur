@@ -8,7 +8,7 @@ pkgbase = vendorlint-git
 	license = Apache
 	makedepends = go
 	makedepends = go-bindata
-	source = vendorlint::git+https://github.com/mephux/vendorlint.git
+	source = vendorlint-git::git+https://github.com/mephux/vendorlint.git
 	md5sums = SKIP
 
 pkgname = vendorlint-git
