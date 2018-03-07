@@ -26,7 +26,6 @@ build() {
   rm -rf quicklisp bin
   mkdir -p quicklisp bin
   maxima <<END
-parse_string("1");
 :lisp (load "quicklisp.lisp")
 :lisp (quicklisp-quickstart:install :path "quicklisp")
 :lisp (ql:quickload "cffi")
@@ -40,5 +39,5 @@ END
 package() {
   install -Dm755 bin/maxima-jupyter "$pkgdir/usr/bin/maxima-jupyter"
   install -Dm644 kernel.json "$pkgdir/usr/share/jupyter/kernels/maxima/kernel.json"
-  install -Dm644 maxima-jupyter-git/LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter-git/LICENSE" 
+  install -Dm644 maxima-jupyter-git/LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter-git/LICENSE"
 }
