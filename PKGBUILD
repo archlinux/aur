@@ -2,13 +2,13 @@
 _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r5516.1aa4cdc3
-pkgrel=2
+pkgver=r5919.5750f6f0
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu/"
 license=('GPL2')
-makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'python2')
 source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
         'git+https://github.com/yuzu-emu/ext-boost'
         'git+https://github.com/philsquared/Catch'

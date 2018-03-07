@@ -1,7 +1,7 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = r5516.1aa4cdc3
-	pkgrel = 2
+	pkgver = r5919.5750f6f0
+	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = yuzu-git
 	makedepends = qt5-base
 	makedepends = shared-mime-info
 	makedepends = desktop-file-utils
+	makedepends = python2
 	source = yuzu::git+https://github.com/yuzu-emu/yuzu
 	source = git+https://github.com/yuzu-emu/ext-boost
 	source = git+https://github.com/philsquared/Catch
