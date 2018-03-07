@@ -9,7 +9,7 @@ url="http://www.tedunangst.com/flak/post/sct-set-color-temperature"
 license=('Public Domain')
 depends=()
 makedepends=('libx11' 'libxrandr')
-source=("http://www.tedunangst.com/flak/files/sct.c")
+source=("https://www.tedunangst.com/flak/files/sct.c")
 sha256sums=('0dda697ec3f4129d793f8896743d82be09934883f5aeda05c4a2193d7ab3c305')
 # Upstream uses an invalid cert. This is acceptable since we validate
 # checksums.
