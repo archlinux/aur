@@ -1,0 +1,17 @@
+pkgbase = narnia
+	pkgdesc = Multiprocess sandboxed webhook daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/narnia
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = AGPL3
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libseccomp
+	source = narnia-0.1.0.tar.gz::https://github.com/kpcyrd/narnia/archive/v0.1.0.tar.gz
+	sha512sums = 4af37ba49f5ff0181bdfc9a1f6e4c893fbefbf80fe01b31eb292152b95c0d61e457dc9b03f1ada320069176875ed3b769aa718fae4a7a137df29aa57eb75a972
+
+pkgname = narnia
+
