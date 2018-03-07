@@ -1,0 +1,22 @@
+pkgbase = lua-xmlrpc
+	pkgdesc = Lua XML-RPC is a Lua package to access and provide XML-RPC services
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://keplerproject.github.com/lua-xmlrpc/
+	arch = any
+	license = GPL
+	makedepends = lua51
+	makedepends = lua52
+	source = lua-xmlrpc-1.2.2.tar.gz::https://github.com/timn/lua-xmlrpc/archive/1.2.2.tar.gz
+	md5sums = 6e3164e70dd1a67b86eda6caf517a4ae
+
+pkgname = lua51-xmlrpc
+	depends = lua51
+	depends = lua51-expat
+	depends = lua51-socket
+
+pkgname = lua52-xmlrpc
+	depends = lua52
+	depends = lua52-expat
+	depends = lua52-socket
+
