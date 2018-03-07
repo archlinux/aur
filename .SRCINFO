@@ -1,7 +1,7 @@
 pkgbase = zfs-utils-common
 	pkgdesc = Kernel module support files for the Zettabyte File System.
 	pkgver = 0.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://zfsonlinux.org/
 	install = zfs-utils.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = zfs-utils-common
 	sha256sums = 1687f4041a990e35caccc4751aa736e8e55123b81d5f5a35b11916d9e580c23d
 	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
 	sha256sums = e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4
-	sha256sums = b5f87d1d1d10443d8919125a4c139d5f4c579ca4433b2905ee826bb01defa56a
+	sha256sums = 3eb874cf2cbb6c6a0e1c11a98af54f682d6225667af944b43435aeabafa0112f
 
 pkgname = zfs-utils-common
 

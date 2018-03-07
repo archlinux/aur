@@ -113,7 +113,17 @@ run_hook() {
     # Wait 15 seconds for ZFS devices to show up
     [ "${zfs_wait}" = "" ] && ZFS_WAIT="15" || ZFS_WAIT="${zfs_wait}"
 
-    [ "${root}" = "zfs" ] && mount_handler="zfs_mount_handler"
+    case ${root} in
+        # root=zfs
+        "zfs")
+            mount_handler="zfs_mount_handler"
+            ;;
+        # root=ZFS=... syntax (grub)
+        "ZFS="*)
+            mount_handler="zfs_mount_handler"
+            ZFS_DATASET="${root#*[=]}"
+            ;;
+    esac
 
     case ${zfs} in
         "")
