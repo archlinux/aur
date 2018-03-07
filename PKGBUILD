@@ -4,7 +4,7 @@
 
 pkgname=lib32-liblphobos
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Runtime and Phobos library for the LLVM based D compiler. (32-bit)"
 arch=('x86_64')
 url="https://github.com/ldc-developers/ldc"
@@ -37,10 +37,10 @@ build() {
 
 package() {
   cd ldc-$pkgver-src/build
+  make DESTDIR="${pkgdir}" install
 
-  # Libraries
-  install -d "${pkgdir}/usr/lib32"
-  install -m755 ./lib32/*.so* "${pkgdir}/usr/lib32"
+  # Remove conflicting files.
+  rm -rf "${pkgdir}"/{etc,usr/{bin,include,lib}}
 
   # License
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
