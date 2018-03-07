@@ -1,0 +1,18 @@
+pkgbase = lix-ereader
+	pkgdesc = A proprietary e-reader
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = https://www.lix.com/
+	arch = x86_64
+	license = unknown
+	depends = alsa-lib
+	depends = libxss
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = libxtst
+	source = https://download.lix.com/linux/latest
+	md5sums = 2df5cc1ecc8830edd941032e6e4b53b0
+
+pkgname = lix-ereader
+
