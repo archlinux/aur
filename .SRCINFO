@@ -1,16 +1,14 @@
 pkgbase = rgbds-git
-	pkgdesc = Rednex GameBoy Development System
-	pkgver = v0.0.2.r25.g3ecd169
+	pkgdesc = Rednex GameBoy Development System (development version)
+	pkgver = 0.3.5.r23.g8744d36
 	pkgrel = 1
-	url = https://github.com/bentley/rgbds/
+	url = https://github.com/rednex/rgbds/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = git
-	makedepends = gcc
-	makedepends = bison
-	depends = glibc
-	source = rgbds-git::git+https://github.com/bentley/rgbds/
+	depends = libpng
+	source = rgbds-git::git+https://github.com/rednex/rgbds
 	md5sums = SKIP
 
 pkgname = rgbds-git

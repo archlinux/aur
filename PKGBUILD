@@ -1,34 +1,30 @@
-# Maintainer: Jaume <jaume@delclos.com>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: Jaume <jaume@delclos.com>
+
 pkgname=rgbds-git
-pkgver=v0.0.2.r25.g3ecd169
+pkgver=0.3.5.r23.g8744d36
 pkgrel=1
-pkgdesc="Rednex GameBoy Development System"
+pkgdesc="Rednex GameBoy Development System (development version)"
 arch=('i686' 'x86_64')
-url="https://github.com/bentley/rgbds/"
-license=('custom')
-depends=('glibc')
-makedepends=('git' 'gcc' 'bison')
-source=("$pkgname::git+https://github.com/bentley/rgbds/")
+url="https://github.com/rednex/rgbds/"
+license=('MIT')
+depends=('libpng')
+makedepends=('git')
+source=($pkgname::"git+https://github.com/rednex/rgbds")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make -j1
+  cd $pkgname
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  # It has no DESTDIR option, just PREFIX
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/man/man7"
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  make PREFIX="$pkgdir/usr" MANPREFIX="$pkgdir/usr/share/man" install
-  install -D LICENSE "$pkgdir/usr/share/licenses/rgbds-git/LICENSE"
+  cd $pkgname
+  make DESTDIR="$pkgdir" PREFIX=/usr mandir=/usr/share/man install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
