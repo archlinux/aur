@@ -17,15 +17,15 @@
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
 
-pkgver=2018.03.02.r3346.5666a994f.4.13.12.2
+pkgver=2018.03.06.r3353.639b18944.4.15.2.1
 pkgrel=1
-makedepends=("linux-vfio-headers=4.13.12-2" "git" "spl-linux-vfio-git-headers")
+makedepends=("linux-vfio-headers=4.15.2-1" "git" "spl-linux-vfio-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2018.03.02.r3346.5666a994f" "linux-vfio=4.13.12-2")
+depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2018.03.06.r3353.639b18944" "linux-vfio=4.15.2-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.6 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.13.12-2-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.13.12-2-vfio/build
+                --with-linux=/usr/lib/modules/4.15.2-1-vfio/build \
+                --with-linux-obj=/usr/lib/modules/4.15.2-1-vfio/build
     make
 }
 
@@ -55,10 +55,10 @@ package_zfs-linux-vfio-git() {
 
 package_zfs-linux-vfio-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers'  'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-threadripper-headers' 'zfs-linux-threadripper-git-headers' 'zfs-linux-vfio-headers'  'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.13.12-2-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.15.2-1-vfio/Module.symvers
 }
