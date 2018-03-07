@@ -35,10 +35,9 @@ package() {
 
   install -Dm644 sysconfig.btrfsmaintenance "$pkgdir/etc/default/btrfsmaintenance"
 
-  install -dm755 "$pkgdir/"{usr/lib/systemd/system,usr/share/btrfsmaintenance/systemd}
-  install -Dm755 btrfs-*.sh btrfsmaintenance* README.md "$pkgdir/usr/share/btrfsmaintenance"
+  install -dm755 "$pkgdir/"{usr/lib/systemd/system,usr/share/btrfsmaintenance}
+  install -Dm755 btrfs-*.sh btrfsmaintenance-{functions,refresh-cron.sh,refresh.path} README.md "$pkgdir/usr/share/btrfsmaintenance"
   install -Dm644 *.service *.timer "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 *.path "$pkgdir/usr/share/btrfsmaintenance/systemd"
 
   #./dist-install.sh "$pkgdir/etc/default"
 }
