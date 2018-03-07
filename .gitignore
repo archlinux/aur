@@ -1,0 +1,5 @@
+pkg/
+src/
+atlassian-jira-*.tar.gz
+atlassian-jira-*.pkg.tar
+
