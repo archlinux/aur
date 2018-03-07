@@ -1,6 +1,6 @@
 pkgbase = find-the-command
 	pkgdesc = Advanced command-not-found hook for bash and zsh using the power of pacman
-	pkgver = 1.2.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/agura-lex/find-the-command
 	install = find-the-command.install
@@ -11,8 +11,8 @@ pkgbase = find-the-command
 	optdepends = sudo: for root access (needed for packages installation)
 	backup = usr/lib/systemd/system/pacman-files.service
 	backup = usr/lib/systemd/system/pacman-files.timer
-	source = https://github.com/agura-lex/find-the-command/archive/1.2.1.tar.gz
-	md5sums = a389b63732d44f5ab77dad3c524fa6d4
+	source = https://github.com/agura-lex/find-the-command/archive/1.3.tar.gz
+	md5sums = 4191949a8b394f3bad5a427bc2089704
 
 pkgname = find-the-command
 
