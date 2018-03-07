@@ -8,7 +8,7 @@ pkgname=git-ssh-git
 # shellcheck disable=SC2034
 pkgdesc="A wrapper around git to work with multiple SSH keys"
 # shellcheck disable=SC2034
-pkgver=r161.09f422c
+pkgver=r181.0ffd8e6
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -16,7 +16,7 @@ arch=('any')
 # shellcheck disable=SC2034
 makedepends=('git')
 # shellcheck disable=SC2034
-depends=('git')
+depends=('git' 'python' 'python-setuptools' 'python-sh')
 # shellcheck disable=SC2034
 optdepends=()
 # shellcheck disable=SC2034
@@ -61,7 +61,7 @@ package() {
   }
 
   # shellcheck disable=SC2154
-  install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 }
 
