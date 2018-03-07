@@ -1,0 +1,14 @@
+pkgbase = theos-ios-sdks-git
+	pkgdesc = Patched iOS sdks that include private framework tbds
+	pkgver = r5.90da563
+	pkgrel = 1
+	url = https://github.com/theos/sdks
+	arch = any
+	license = custom
+	depends = theos
+	provides = theos-ios-sdks
+	source = git+https://github.com/theos/sdks
+	sha256sums = SKIP
+
+pkgname = theos-ios-sdks-git
+
