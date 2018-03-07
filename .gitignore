@@ -1,0 +1,5 @@
+pkg/
+src/
+atlassian-confluence-*.tar.gz
+atlassian-confluence-*.pkg.tar
+
