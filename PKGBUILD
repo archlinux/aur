@@ -3,12 +3,12 @@
 
 pkgname=subgraph-firewall
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Subgraph Application Firewall"
 arch=('any')
 url="https://github.com/subgraph/fw-daemon"
 license=('BSD3')
-depends=('oz')
+depends=('subgraph-oz')
 source=("subgraph-firewall-${pkgver}.tar.gz::https://github.com/subgraph/fw-daemon/archive/v${pkgver}.tar.gz"
 	"https://raw.githubusercontent.com/subgraph/fw-daemon/debian/debian/fw-daemon.service")
 sha512sums=("1c1b164fdd3784f8458666754d03ee43ea06843fdf6b3869683a552b3bcf2ca4c0152a8cacfde7e9d9590d3e669942ae874fffdd25d552c7f717b5e7fbfa01c9"
