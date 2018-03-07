@@ -7,7 +7,7 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=adapta-gtk-theme-wal
-pkgver=3.93.0.1
+pkgver=3.93.0.106
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
@@ -21,10 +21,8 @@ source=(
   "git+https://github.com/adapta-project/adapta-gtk-theme.git#tag=${pkgver}"
   "colors.sh"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            '830c99f4419532049a23f6e5499b249e1dc2cd132d8caacd2e41b4f60e3d79f7')
 
 provides=('adapta-gtk-theme')
 conflicts=('adapta-gtk-theme')
@@ -40,11 +38,11 @@ build() {
     --enable-plank \
     --enable-telegram \
     --disable-unity \
-    --enable-gtk_next \
     --with-selection_color="$color4" \
     --with-accent_color="$color6" \
     --with-suggestion_color="$color5" \
     --with-destruction_color="$color2"
+ 
   make
 }
 
