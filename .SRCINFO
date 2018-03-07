@@ -1,0 +1,14 @@
+pkgbase = git-sizer-bin
+	pkgdesc = Compute various size metrics for a Git repository, flagging those that might cause problems
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/github/git-sizer
+	arch = x86_64
+	license = MIT
+	depends = git
+	conflicts = git-sizer
+	source = git-sizer_1.0.0.zip::https://github.com/github/git-sizer/releases/download/v1.0.0/git-sizer-1.0.0-linux-amd64.zip
+	sha256sums = 88449a38f4dc4703b1401ba20ffe14318c3b74d6ff964f4eead290d6b5a64ad2
+
+pkgname = git-sizer-bin
+
