@@ -1,0 +1,12 @@
+pkgbase = ricoh-sp150-util
+	pkgdesc = Ricoh utility for SP150 series
+	pkgver = 1.0
+	pkgrel = 12
+	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp150/sp150.htm
+	arch = x86_64
+	license = unknown
+	source = http://support.ricoh.com/bb/pub_e/dr_ut_e/0001297/0001297723/V10_12/r77142L2.exe
+	md5sums = 33e894bf665ef8cef324f466eb48e750
+
+pkgname = ricoh-sp150-util
+
