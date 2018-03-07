@@ -46,11 +46,11 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
-# set extraversion to pkgrel
-sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  # set extraversion to pkgrel
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
-# rewrite configuration
-yes "" | make ARCH=um config >/dev/null
+  # rewrite configuration
+  yes "" | make ARCH=um config >/dev/null
 }
 
 build() {
@@ -61,22 +61,22 @@ build() {
 }
 
 package_linux-usermode() {
-cd "${srcdir}/${_srcname}"
-mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/kernel-usermode"
-install -m 644 System.map ${pkgdir}/usr/share/kernel-usermode/System.map
-install -m 755 vmlinux ${pkgdir}/usr/bin/
+  cd "${srcdir}/${_srcname}"
+  mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/kernel-usermode"
+  install -m 644 System.map ${pkgdir}/usr/share/kernel-usermode/System.map
+  install -m 755 vmlinux ${pkgdir}/usr/bin/
 }
 
 package_linux-usermode-modules() {
-install=modules.install
+  install=modules.install
 
-cd "${srcdir}/${_srcname}"
-#  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
-rm -f $pkgdir/usr/lib/modules/${pkgver}${_kernelname}/{source,build}
-sed \
-  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=$pkgver${_kernelname}/g" \
-  -i "${startdir}/modules.install"
+  cd "${srcdir}/${_srcname}"
+  #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
+  rm -f $pkgdir/usr/lib/modules/${pkgver}${_kernelname}/{source,build}
+  sed \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=$pkgver${_kernelname}/g" \
+    -i "${startdir}/modules.install"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
