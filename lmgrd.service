@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=nobody
-Type=simple
-ExecStart=/usr/bin/lmgrd -c /etc/flexnet/license.dat -l /var/log/flexnet/flexnet.log
+Type=forking
+ExecStart=/usr/bin/nohup /usr/bin/lmgrd -l +/var/log/flexnet/flexnet.log -c /etc/flexnet/license.dat
 
 [Install]
 WantedBy=multi-user.target
