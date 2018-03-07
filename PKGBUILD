@@ -2,14 +2,15 @@
 pkgname=hdtv
 _commit=701eecd65e6708e4ff6c0123c2f4972d56b3d499
 pkgver=18.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
 url="https://gitlab.ikp.uni-koeln.de/staging/hdtv"
 license=('GPL')
 conflicts=('hdtv')
 provides=('hdtv')
-depends=('python'
+depends=('glibc'
+         'python'
          'root'
          'libmfile'
          'python-setuptools'
@@ -28,5 +29,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}-${_commit}"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --root="${pkgdir}/" --optimize=1
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
