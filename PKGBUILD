@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
@@ -31,6 +31,10 @@ package() {
 	cd "${srcdir}/${pkgname}" || exit 1
 	sed -i -e "s/VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+	make
+	for lang in fr ru; do
+		install -Dm644 "locale/${lang}.mo" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
+	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cp -r "${srcdir}/${pkgname}/packaging/"* "${pkgdir}"
 }
