@@ -19,7 +19,7 @@ pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
 
 pkgver=2018.02.24.r1068.3673d03.4.14.23.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.14.23-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -53,7 +53,7 @@ package_spl-linux-lts-git() {
 
 package_spl-linux-lts-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers'  'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers'  'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
