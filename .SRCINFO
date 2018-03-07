@@ -1,6 +1,6 @@
 pkgbase = eventd-git
 	pkgdesc = A small daemon to act on remote or local events
-	pkgver = 0.23.0.r0.gd963e2b9
+	pkgver = 0.24.0.r0.gd96eae93
 	pkgrel = 1
 	url = https://www.eventd.org
 	arch = i686
@@ -26,7 +26,6 @@ pkgbase = eventd-git
 	depends = util-linux
 	depends = xcb-util
 	depends = xcb-util-wm
-	depends = xkeyboard-config
 	optdepends = avahi: DNS-SD support
 	optdepends = gssdp: SSDP support
 	optdepends = librsvg: SVG images support

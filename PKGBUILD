@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.23.0.r0.gd963e2b9
+pkgver=0.24.0.r0.gd96eae93
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
@@ -29,7 +29,6 @@ depends=(
     util-linux
     xcb-util
     xcb-util-wm
-    xkeyboard-config
 )
 makedepends=(
     git
@@ -81,11 +80,11 @@ prepare() {
 build() {
     local params=(
         --prefix=/usr
-        -Denable-systemd=true
-        -Denable-introspection=false
-        -Denable-nd-wayland=false
-        -Denable-im=false
-        -Denable-sound=false
+        -Dsystemd=true
+        -Dintrospection=false
+        -Dnd-wayland=false
+        -Dim=false
+        -Dsound=false
     )
 
     cd "${srcdir}"/${_pkgdir}
