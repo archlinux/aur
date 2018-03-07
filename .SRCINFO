@@ -1,6 +1,6 @@
 pkgbase = zfs-linux-hardened
 	pkgver = 0.7.6_4.15.7.a.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
@@ -29,6 +29,8 @@ pkgname = zfs-linux-hardened-headers
 	conflicts = zfs-linux-lts-git-headers
 	conflicts = zfs-linux-headers
 	conflicts = zfs-linux-git-headers
+	conflicts = zfs-linux-threadripper-headers
+	conflicts = zfs-linux-threadripper-git-headers
 	conflicts = zfs-linux-vfio-headers
 	conflicts = zfs-linux-vfio-git-headers
 	conflicts = zfs-linux-zen-headers
