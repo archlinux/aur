@@ -2,7 +2,7 @@
 
 _gitname=uWebSockets
 pkgname=${_gitname,,}
-pkgver=0.14.3
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="µWS is one of the most lightweight, efficient & scalable WebSocket & HTTP server implementations available"
 #arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ conflicts=('uwebsockets')
 provides=('uwebsockets')
 replaces=('uwebsockets')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('22f8e1a69ffec8c0e50251fe34d7788330af241b7fd92b5a3542f57884fcf2f8')
+sha256sums=('4e4a4bcde543baae57ca8f327304874d1bb1fb11b2c4f71618d2b3279003f2d5')
 #options+=(!strip)
 
 build()
