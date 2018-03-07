@@ -1,3 +1,23 @@
+2018-03-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.1.0-1:
+    [!] Fixed recent Steam breaking change regarding ASF 2FA confirmations (yes, for the second time).
+    IPC GUI improvements, new features, optimizations and bugfixes.
+    ASF HttpClient (http stack) was rewritten for better compatibility and performance regarding session validation. This further reduces amount of requests, memory consumption, network bandwidth and CPU usage for all active bots.
+    ASF FileSystemWatcher (configs auto-reload) was rewritten for better compatibility and stability. It also supports watching for all file extensions now, which is important for new *.keys recognition.
+    Added background games redeemer feature, together with /Api/GamesToRedeemInBackground IPC endpoint.
+    Added GamesCount property to ASF STM listing.
+    Added IdlePriorityQueueOnly bot configuration property.
+    Added IPC anti-bruteforce mechanism when IPCPassword global configuration property is used.
+    Rewritten IPC /Api/Type endpoint in order to include more data.
+    Improved /Api/ASF IPC endpoint with a possibility of fetching/editing GlobalConfig.
+    Improved !owns command that now returns total bots owned data on per-game basis.
+    Removed IPCHost and IPCPort properties, added IPCPrefixes that allows specifying multiple IPC listening addresses. This allows you to listen e.g. on both IPv4 and IPv6 local addresses, without exposing external interface. Previously it wasn't possible.
+    Fixed ASF wrongly detecting Complimentary packages as refundable.
+    Fixed AutoSteamSaleEvent trying to send requests when bot is not running.
+    Fixed ASF idling only up to 31 (and not 32) games when custom name is used.
+    Fixed ASF improperly rejecting trades from people with trade hold if they asked for winter/summer sale non-cards items.
+    Major amount of other code improvements, optimizations and bugfixes.
+    package: scripted noextract
 2018-02-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.0.1-1:
     Turned off linker optimizations in OS-specific builds due to a few more bugs that need correction.
