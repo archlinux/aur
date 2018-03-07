@@ -1,6 +1,6 @@
 pkgbase = hastebin
 	pkgdesc = Upload data to hastebin.com via stdin
-	pkgver = r5.ef0fd37
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/kevr/sprunge
 	arch = any
