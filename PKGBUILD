@@ -1,6 +1,7 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
-pkgname=tev
-pkgver=1.6
+_pkgname=tev
+pkgname=${_pkgname}
+pkgver=v1.6.r8.g97a48ea
 pkgrel=1
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
@@ -8,30 +9,29 @@ arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
 license=('BSD-3-Clause')
 depends=("zenity" "mesa" "zlib")
-makedepends=("cmake")
+makedepends=("cmake" "git")
 provides=("tev")
 conflicts=("tev")
 install=
-source=("tev::git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
 
 pkgver() {
-    git -C "tev" describe --long --tags | sed "s/-/.r/;s/-/./g"
+    git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
 }
 
 prepare() {
-    git -C "tev" submodule update --init --recursive
-    mkdir -p "tev/build"
+  git -C "${_pkgname}" submodule update --init --recursive
+  mkdir -p "${_pkgname}/build"
 }
 
 build() {
-    cd "tev/build" || exit 1
-    cmake ..
-    make -j
+  cd "${_pkgname}/build" || exit 1
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake --build .
 }
 
 package() {
-    cd "tev/build" || exit 1
-    make install
-    install -Dm644 "tev/LICENSE" "${pkgdir}/usr/share/licenses/tev/LICENSE"
+  cmake --build "${_pkgname}/build" --target install -- DESTDIR="${pkgdir}"
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
