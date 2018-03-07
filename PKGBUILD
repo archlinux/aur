@@ -2,9 +2,9 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 _pkgrel=0
-pkgdesc="A powerful frontend for MPV with media server and torrent streaming capabilities"
+pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
@@ -25,6 +25,7 @@ package() {
   
     cp -r "${_app_dir}" "${pkgdir}/opt/${pkgname}"
     
+    sed -i "s/usr\/share/opt/g" "${pkgdir}/opt/${pkgname}/${pkgname}"
     ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
   
