@@ -2,7 +2,7 @@
 
 pkgname=dynalist-desktop
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynalist lets you organize your ideas and tasks in simple lists. It's powerful, yet easy to use."
 arch=("any")
 url="https://dynalist.io"
@@ -15,7 +15,7 @@ source=(
   "icon.png"
 )
 sha512sums=(
-  "d151d33fe17c11abf229fa951a1ab836dff544417c1354a2190fc955a903fd27f98ad4f74b8cf8c3559d3d64bc0d65cfcc4ee94333798cc1e9ca55fd46c1aac1"
+  "18dc5dc0c6d510c85fa7b979e81d4eca39a328047ecc0c1a064042c3a98ad90df12cc41c10b1907cbd2ec7a5a7c485a8d9af2fd6866cdd034a7f1add9d336aa7"
   "45db3d2068fbd4eb58a73a3244064aacb8410f934a08309f525faca21f321c6e1c38cffb9ebefcafdcc6903496e2b21cba679263d848e8b35a3f0388e95e8ade"
   "80b8c4d7749905f4163caf5fc8d74bb139cad782f74242870ee5f6a107059b780ad779117107690af4ec6b059f1cc52f4f4627476d0499a2fa54e4ea9ca645e8"
 )
