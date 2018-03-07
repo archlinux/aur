@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh [at] lutzhaase [dot] com>
 
 pkgname=lib32-liblphobos
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Runtime and Phobos library for the LLVM based D compiler. (32-bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'llvm' 'libconfig' 'cmake')
 provides=("d-runtime" "d-stdlib")
 replaces=("lib32-liblphobos-devel")
 source=("$url/releases/download/v${pkgver}/ldc-${pkgver}-src.tar.gz")
-sha256sums=('7cd46140ca3e4ca0d52c352e5b694d4d5336898ed4f02c3e18e0eafd69dd18bd')
+sha256sums=('e421a1f4bbf97d173bd277125794862ca5b6a09409586b806cec23b922955c7f')
 
 build() {
   cd ldc-$pkgver-src
@@ -39,10 +39,8 @@ package() {
   cd ldc-$pkgver-src/build
 
   # Libraries
-  install -D -m644 ./lib32/libphobos2-ldc.so $pkgdir/usr/lib32/liblphobos2.so
-  install -D -m644 ./lib32/libdruntime-ldc.so $pkgdir/usr/lib32/libldruntime.so
-  install -D -m644 ./lib32/libphobos2-ldc-debug.so $pkgdir/usr/lib32/liblphobos2-debug.so
-  install -D -m644 ./lib32/libdruntime-ldc-debug.so $pkgdir/usr/lib32/libldruntime-debug.so
+  install -d "${pkgdir}/usr/lib32"
+  install -m755 ./lib32/*.so* "${pkgdir}/usr/lib32"
 
   # License
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
