@@ -1,29 +1,28 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: Jason Gauci <contact+jgmath2000@gmail.com>
+# Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 _ghname='EternalTCP'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='3.1.1'
+pkgver='4.2.1'
 pkgrel=1
 arch=('x86_64')
 depends=(
-	'boost-libs' 'libsodium' 'gflags' 'google-glog' 'ncurses' 'protobuf'
+	'libsodium' 'gflags' 'google-glog' 'protobuf' 'libutempter'
 )
 makedepends=(
-	'boost' 'libsodium' 'gflags' 'google-glog' 'ncurses' 'protobuf' 'cmake'
-	'unzip' 'wget'
+	'libsodium' 'gflags' 'google-glog' 'protobuf' 'libutempter'
+	'cmake' 'unzip' 'wget'
 )
-url='https://mistertea.github.io/EternalTCP/'
+url='https://mistertea.github.io/EternalTerminal/'
 license=('Apache')
 
 source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
-		'et.patch'
 )
 sha256sums=(
-		'04c131b095d149b6dfc364b8f6984a8f68dab6eea5668392fc668ff147787615'
-		'35961939cf852c327913e9fea698168966c7b492cb6f19e19321d9f9fa4fb292'
+		'86a3bc75a1cdc9c9d9078d0d33197817337779c07b12ba1240babe0717bf7aaa'
 )
 
 prepare() {
@@ -31,9 +30,6 @@ prepare() {
 
 	msg2 'Preparing directories'
 	mkdir -p build
-
-	msg2 'Applying patches'
-	patch -p1 <"${srcdir}/et.patch"
 }
 
 build() {
@@ -53,8 +49,7 @@ package_eternalterminal-client() {
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
 
 	msg2 "Installing ${_ghname} client to package root"
-	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etclient" "${pkgdir}/usr/bin/etclient"
-	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/launcher/et" "${pkgdir}/usr/bin/et"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/et"
 }
 
 package_eternalterminal-server() {
@@ -76,8 +71,7 @@ package_eternalterminal() {
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
 
 	msg2 "Installing ${_ghname} to package root"
-	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etclient" "${pkgdir}/usr/bin/etclient"
-	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/launcher/et" "${pkgdir}/usr/bin/et"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/et"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etserver"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/debian/et.service" "${pkgdir}/usr/lib/systemd/system/et.service"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/etc/et.cfg" "${pkgdir}/etc/et.cfg"
