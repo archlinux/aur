@@ -1,12 +1,13 @@
 # $Id: PKGBUILD 240850 2015-06-15 06:19:33Z giovanni $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Lin Ruoshui <lin.ruohshoei@gmail.com>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Henrik Ronellenfitsch <searinox@web.de>
 # Contributor: Alessio Sergi <sergi.alessio {at} gmail.com>
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-dlp
-pkgver=10871
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network"
 arch=('i686' 'x86_64')
@@ -17,25 +18,34 @@ optdepends=('antileech')
 provides=(amule)
 conflicts=(amule)
 install=amule.install
-source=("http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2"
+source=("https://github.com/persmule/amule-dlp/archive/${pkgver}-dlp.tar.gz"
+	#"https://nchc.dl.sourceforge.net/project/amule/aMule/2.3.2/aMule-${pkgver}.tar.bz2"
         'amuled.systemd'
         'amuleweb.systemd'
-        'amule-dlp.patch'
+	'crypto++.patch'
         )
-md5sums=('f3c666b6fa518a3e6e2c21670c243292'
+md5sums=('a53d8a746e2632007b9d864f4ac13c20'
          '59772c41860e238f1c822feb8ca8d47f'
          '05975c5d94bfc41fddb894d98b1115d5'
-         '8f3bc2d105b6acf2d25b19b01bdfbe30')
-prepare() {
-    cd "${srcdir}/aMule-SVN-r${pkgver}"
-    patch -p1 < ../amule-dlp.patch
-    
-}
-         
+         'e231999919fc01123db59bf002ffef3b')
+
+#manually dlp patch 
+#prepare() {
+#    cd "${srcdir}/${pkgname}-${pkgver}-dlp"
+#    patch -p1 < ../amule-dlp.patch
+#    
+#}
+
+#add crypto++.patch from Tommy Jerry Mairo
+prepare(){
+  cd "${srcdir}/${pkgname}-${pkgver}-dlp"
+  patch -p1 -i ../crypto++.patch 
+  cp src/aMule.xpm amule.xpm
+}         
          
 build() {
-  cd "${srcdir}/aMule-SVN-r${pkgver}"
-
+  cd "${srcdir}/${pkgname}-${pkgver}-dlp"
+./autogen.sh
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --enable-cas \
@@ -58,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/aMule-SVN-r${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}-dlp"
 
   make DESTDIR=${pkgdir} install
 

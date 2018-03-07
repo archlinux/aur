@@ -1,6 +1,6 @@
 pkgbase = amule-dlp
 	pkgdesc = An eMule-like client for ed2k p2p network
-	pkgver = 10871
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = http://www.amule.org
 	install = amule.install
@@ -17,14 +17,14 @@ pkgbase = amule-dlp
 	optdepends = antileech
 	provides = amule
 	conflicts = amule
-	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r10871.tar.bz2
+	source = https://github.com/persmule/amule-dlp/archive/2.3.2-dlp.tar.gz
 	source = amuled.systemd
 	source = amuleweb.systemd
-	source = amule-dlp.patch
-	md5sums = f3c666b6fa518a3e6e2c21670c243292
+	source = crypto++.patch
+	md5sums = a53d8a746e2632007b9d864f4ac13c20
 	md5sums = 59772c41860e238f1c822feb8ca8d47f
 	md5sums = 05975c5d94bfc41fddb894d98b1115d5
-	md5sums = 8f3bc2d105b6acf2d25b19b01bdfbe30
+	md5sums = e231999919fc01123db59bf002ffef3b
 
 pkgname = amule-dlp
 
