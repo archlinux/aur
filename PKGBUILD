@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/$_authorUP/$_perlmod-$pkgver.tar.gz")
-md5sums=('992c47349a20c5529f1e817e32a761f9')
+md5sums=('c30a7364cdab76f656253280a7a2b63d')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
