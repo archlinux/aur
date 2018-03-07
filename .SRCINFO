@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.11.1.r0.g489ec3fc
+	pkgver = 3.1.0.r42.g26bd3268
 	pkgrel = 1
 	url = https://osquery.io
 	arch = i686
@@ -47,18 +47,20 @@ pkgbase = osquery-git
 	makedepends = augeas>=1.9.0
 	makedepends = boost>=1.65.1
 	makedepends = boost-libs>=1.65.1
+	makedepends = libc++
+	makedepends = cppcheck
 	depends = wget
 	depends = unzip
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=b1f2888c8f101f1941a4377635e35f0b4ad9980e
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=26bd32687a1abbad9cb21b762bc33f9ea184d26e
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
 	sha256sums = SKIP
 	sha256sums = ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec
-	sha256sums = 0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4
-	sha256sums = 97b9f3b92f07797cc8027b4dcaef2ae9025d08367030364befe3a8895ededeb3
+	sha256sums = 82611f3296d1d5b68d2cb32200c95a9ae3469dc5a9696643b69e89a5b9798a72
+	sha256sums = c2d4b7e5e85cef135af82ca627f0c05e40ef5e2ffb9e128f01caacd8665c6c15
 
 pkgname = osquery-git
 

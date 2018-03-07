@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=3.0.0.r17.gbf2b4643
+pkgver=3.1.0.r42.g26bd3268
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit='bf2b464301d96b0033a21978faaf3f41719ae04d'
+_gitcommit='26bd32687a1abbad9cb21b762bc33f9ea184d26e'
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -27,19 +27,17 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 		"arch-linux.patch")
 sha256sums=('SKIP'
             'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
-            '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
-            'bf524b6f0f65e6add6c265082315ac7df9461f7a8a2acfbc840e336794d12a78')
-
-_gitname=${pkgname}
+            '82611f3296d1d5b68d2cb32200c95a9ae3469dc5a9696643b69e89a5b9798a72'
+            'c2d4b7e5e85cef135af82ca627f0c05e40ef5e2ffb9e128f01caacd8665c6c15')
 
 #pkgver() {
-#	cd $_gitname
+#	cd ${pkgname}
 #
 #	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 #}
 
 prepare() {
-	cd $_gitname
+	cd ${pkgname}
 
 	git reset HEAD --hard
 	git submodule update --init
@@ -54,7 +52,7 @@ prepare() {
 }
 
 build() {
-	cd $_gitname
+	cd ${pkgname}
 
 	#SANITIZE_THREAD=True # Add -fsanitize=thread when using "make sanitize"
 	#OPTIMIZED=True # Enable specific CPU optimizations (not recommended)
@@ -64,7 +62,7 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
-	export CC=/usr/bin/gcc CXX=/usr/bin/g++
+	export CC=/usr/bin/gcc CXX=/usr/bin/g++ USE_RTTI=1
 
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \
@@ -80,7 +78,7 @@ build() {
 }
 
 package() {
-	cd $_gitname
+	cd ${pkgname}
 
 	make DESTDIR="${pkgdir}" install
 
