@@ -1,13 +1,14 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
-	pkgver = 0.23.0
-	pkgrel = 4
+	pkgver = 0.24.0
+	pkgrel = 1
 	url = https://www.eventd.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
 	license = MIT
+	makedepends = git
 	makedepends = meson
 	makedepends = pkg-config
 	makedepends = ninja
@@ -20,6 +21,8 @@ pkgbase = eventd
 	depends = pango
 	depends = libsystemd
 	depends = libxcb
+	depends = libxkbcommon>=0.4.1
+	depends = libxkbcommon-x11
 	depends = util-linux
 	depends = xcb-util
 	depends = xcb-util-wm
@@ -28,8 +31,8 @@ pkgbase = eventd
 	optdepends = librsvg: SVG images support
 	optdepends = libsoup: WebSocket support
 	options = !strip
-	source = https://www.eventd.org/download/eventd/eventd-0.23.0.tar.xz
-	sha256sums = fe4905d79c8312686c11db28783364b84216289fd1a7fa58db3137135047dc9e
+	source = https://www.eventd.org/download/eventd/eventd-0.24.0.tar.xz
+	sha256sums = 668f5a56eb156712181176fc4b4f87cd52de919af6e661504ae9e543b4b226a3
 
 pkgname = eventd
 

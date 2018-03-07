@@ -1,9 +1,9 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.23.0
+pkgver=0.24.0
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=4
+pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -23,11 +23,14 @@ depends=(
     pango
     libsystemd
     libxcb
+    'libxkbcommon>=0.4.1'
+    libxkbcommon-x11
     util-linux
     xcb-util
     xcb-util-wm
 )
 makedepends=(
+    git
     meson
     pkg-config
     ninja
@@ -47,17 +50,17 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    fe4905d79c8312686c11db28783364b84216289fd1a7fa58db3137135047dc9e
+    668f5a56eb156712181176fc4b4f87cd52de919af6e661504ae9e543b4b226a3
 )
 
 build() {
     local params=(
         --prefix=/usr
-        -Denable-systemd=true
-        -Denable-introspection=false
-        -Denable-nd-wayland=false
-        -Denable-im=false
-        -Denable-sound=false
+        -Dsystemd=true
+        -Dintrospection=false
+        -Dnd-wayland=false
+        -Dim=false
+        -Dsound=false
     )
 
     cd "${srcdir}"/${_pkgdir}
