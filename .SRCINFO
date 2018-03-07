@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64

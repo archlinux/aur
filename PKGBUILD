@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -59,6 +59,10 @@ sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
 prepare() {
     cd "${_srcname}-${pkgver}"
     
+    # strictly specifying nvcc path is needed if package is installing
+    # cuda for the first time (nvcc path will be in $PATH only after relogin)
+    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
+    
     patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-build-fix.patch"
     patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-remove-stream-start.patch"
 }
@@ -69,34 +73,28 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        local _cuda='--enable-cuda'
         local _cudasdk='--enable-cuda-sdk'
-        local _cuvid='--enable-cuvid'
         local _libnpp='--enable-libnpp'
-        local _cflags='-I/opt/cuda/include'
         
-        # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
-        # systems with nvidia-340xx-utils or nvidia-304xx-utils
-        if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
-           pacman -Qqs '^nvidia-304xx-utils$' | grep -q '^nvidia-304xx-utils$'
+        local _cflags='-I/opt/cuda/include'
+        local _ldflags='-L/opt/cuda/lib64'
+        
+        # set path of -lcuda (libcuda.so.x, required by cuda_sdk)
+        # on systems with legacy nvidia drivers
+        if pacman -Qs '^nvidia-340xx-utils' >/dev/null 2>&1
         then
-            local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
+            _ldflags="${_ldflags} -L/usr/lib/nvidia"
         fi
         
-        local _ldflags="-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
-        local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
-        
-        # strictly specifying nvcc path is needed if package is installing
-        # cuda for the first time (nvcc path will be in $PATH only after relogin)
-        sed -i "s@^nvcc_default=.*@nvcc_default='/opt/cuda/bin/nvcc'@" configure
+        _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags="${_cflags}" \
-        --extra-ldflags="${_ldflags}" \
+        --extra-cflags="$_cflags" \
+        --extra-ldflags="$_ldflags" \
         \
         --disable-rpath \
         --enable-gpl \
@@ -190,9 +188,9 @@ build() {
         --enable-xlib \
         --enable-zlib \
         \
-        $_cuda \
+        --enable-cuda \
         $_cudasdk \
-        $_cuvid \
+        --enable-cuvid \
         --enable-libdrm \
         --enable-libmfx \
         $_libnpp \
@@ -202,6 +200,7 @@ build() {
         --enable-rkmpp \
         --enable-vaapi \
         --enable-vdpau
+        
     make
     make tools/qt-faststart
 }
