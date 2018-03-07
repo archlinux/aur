@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=libxc
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="library of exchange-correlation functionals for density-functional theory"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 makedepends=('gcc' 'gcc-fortran')
 optdepends=()
 source=(http://www.tddft.org/programs/octopus/down.php?file=libxc/$pkgver/libxc-$pkgver.tar.gz)
-sha1sums=('86522bb3699941f72bf9d0ed2a437080e772357f')
+sha1sums=('e3b7c72e0d121ff329f5723ac115423e43cf1ba3')
 options=(staticlibs)
 
 build() {
