@@ -1,0 +1,17 @@
+pkgbase = theos-git
+	pkgdesc = A cross-platform suite of tools for building and deploying software for iOS and other platforms
+	pkgver = 2.3.r10.g7a9ec0e
+	pkgrel = 1
+	url = https://theos.github.io/
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-compress-raw-lzma
+	optdepends = theos-ios-toolchain: For compiling for iOS
+	optdepends = theos-ios-sdks: For compiling for iOS
+	provides = theos
+	source = git+https://github.com/theos/theos
+	sha256sums = SKIP
+
+pkgname = theos-git
+
