@@ -26,6 +26,7 @@ build() {
   rm -rf quicklisp bin
   mkdir -p quicklisp bin
   maxima <<END
+parse_string("1");
 :lisp (load "quicklisp.lisp")
 :lisp (quicklisp-quickstart:install :path "quicklisp")
 :lisp (ql:quickload "cffi")
