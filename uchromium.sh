@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/chromium
+exec /usr/lib/chromium/chromium

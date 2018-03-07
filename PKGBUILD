@@ -3,7 +3,7 @@
 
 pkgname=ungoogled-chromium-bin
 pkgver=64.0.3282.186
-pkgrel=1
+pkgrel=2
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparencyi (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
