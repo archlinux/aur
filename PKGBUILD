@@ -3,13 +3,15 @@
 
 pkgname=pd-lua-git
 pkgver=36.0d61232
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua bindings for Pd"
 arch=("i686" "x86_64")
 license=('GPL')
 url="https://github.com/agraef/pd-lua"
 depends=('pd' 'lua')
 makedepends=('pkg-config')
+provides=('pd-lua')
+conflicts=('pd-lua')
 source=("git+https://github.com/agraef/pd-lua.git")
 md5sums=('SKIP')
 
