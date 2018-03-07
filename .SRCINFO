@@ -20,20 +20,20 @@ pkgbase = eternalterminal
 	depends = ncurses
 	depends = protobuf
 	depends = libutempter
-	source = https://github.com/MisterTea/EternalTCP/archive/et-v4.2.1.tar.gz
+	source = https://github.com/MisterTea/EternalTerminal/archive/et-v4.2.1.tar.gz
 	sha256sums = 86a3bc75a1cdc9c9d9078d0d33197817337779c07b12ba1240babe0717bf7aaa
 
 pkgname = eternalterminal-client
-	pkgdesc = Re-Connectable TCP connection. Includes only the client.
+	pkgdesc = Re-Connectable Terminal connection. Includes only the client.
 	conflicts = eternalterminal
 	conflicts = eternalterminal-server
 
 pkgname = eternalterminal-server
-	pkgdesc = Re-Connectable TCP connection. Includes only the server.
+	pkgdesc = Re-Connectable Terminal connection. Includes only the server.
 	conflicts = eternalterminal
 	conflicts = eternalterminal-client
 
 pkgname = eternalterminal
-	pkgdesc = Re-Connectable TCP connection. Includes both client and server.
+	pkgdesc = Re-Connectable Terminal connection. Includes both client and server.
 	conflicts = eternalterminal-client
 	conflicts = eternalterminal-server

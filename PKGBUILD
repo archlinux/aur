@@ -1,7 +1,7 @@
 # Maintainer: Jason Gauci <contact+jgmath2000@gmail.com>
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
-_ghname='EternalTCP'
+_ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
@@ -43,7 +43,7 @@ build() {
 }
 
 package_eternalterminal-client() {
-	pkgdesc='Re-Connectable TCP connection. Includes only the client.'
+	pkgdesc='Re-Connectable Terminal connection. Includes only the client.'
 	conflicts=('eternalterminal' 'eternalterminal-server')
 
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
@@ -53,7 +53,7 @@ package_eternalterminal-client() {
 }
 
 package_eternalterminal-server() {
-	pkgdesc='Re-Connectable TCP connection. Includes only the server.'
+	pkgdesc='Re-Connectable Terminal connection. Includes only the server.'
 	conflicts=('eternalterminal' 'eternalterminal-client')
 
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
@@ -65,7 +65,7 @@ package_eternalterminal-server() {
 }
 
 package_eternalterminal() {
-	pkgdesc='Re-Connectable TCP connection. Includes both client and server.'
+	pkgdesc='Re-Connectable Terminal connection. Includes both client and server.'
 	conflicts=('eternalterminal-client' 'eternalterminal-server')
 
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
