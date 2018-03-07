@@ -1,6 +1,6 @@
 pkgbase = spl-linux-hardened-git
 	pkgver = 2018.02.24.r1068.3673d03.4.15.7.a.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
@@ -28,6 +28,8 @@ pkgname = spl-linux-hardened-git-headers
 	conflicts = spl-linux-lts-git-headers
 	conflicts = spl-linux-headers
 	conflicts = spl-linux-git-headers
+	conflicts = spl-linux-threadripper-headers
+	conflicts = spl-linux-threadripper-git-headers
 	conflicts = spl-linux-vfio-headers
 	conflicts = spl-linux-vfio-git-headers
 	conflicts = spl-linux-zen-headers
