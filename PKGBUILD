@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.15
-_stable=4.15.6
-_patchver=4.15.7
+_stable=4.15.7
+_patchver=4.15.8
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -24,10 +24,10 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz
-  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign
   https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz
   https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign
+  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -41,9 +41,9 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
             '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            '79832aa2c9bc661ef1b4b8d55e6eff346cf23fd6c7dfd1ff0f1a7239cf2b8072'
+            '107e2ed1ba1cb8011e6084dcd663f922b099e216d01f6ab26dc498dda1827577'
             'SKIP'
-            'f24f0743b03f9ec34f310e9922e781853e78868b9099ce9f0c050e4382e31d69'
+            '0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02'
             'SKIP')
 
 _kernelname=${pkgbase#linux}
