@@ -1,29 +1,27 @@
 # Maintainer: Adria Arrufat (archdria) <swiftscythe@gmail.com>
 pkgname=pyuv
-pkgver=0.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A raw video sequence player"
 arch=('i686' 'x86_64')
-url="http://dsplab.diei.unipg.it/pyuv_raw_video_sequence_player_original_one"
-license=('unknown')
+url="https://github.com/gbaruffa/pyuv-player"
+license=('GPL')
 depends=('wxgtk')
+source=("https://github.com/gbaruffa/pyuv-player/archive/v${pkgver}.tar.gz")
+md5sums=('d0d32e9c8b9b32e57b3264a0b1ad0f6b')
 
-if [ "${CARCH}" = 'x86_64' ]; then
-  ARCH='amd64'
-  md5sums=('5e6a89fab944c36fd689790a24f32477')
-  source=(http://dsplab.diei.unipg.it/~baruffa/dvbt/binaries/player/lin64/pyuv_0.5-1_x86_64.deb)
-else
-  ARCH='i386'
-  md5sums=('0e79185d6de4bfeb8c3ab56a26459cd6')
-  source=(http://dsplab.diei.unipg.it/~baruffa/dvbt/binaries/player/lin32/pyuv_0.5-1_i386.deb)
-fi
+build() {
+  cd ${pkgname}-player-${pkgver}
+  aclocal
+  autoconf
+  autoheader
+  automake --add-missing
+  ./configure --prefix=/usr
+  make
+}
 
 package() {
-  msg "Extracting..."
-  tar -xvf data.tar.gz || return 1
-  msg2 "Done extracting!"
-  msg "Moving files"
-  mv $srcdir/usr $pkgdir
-  msg2 "Done moving files"
-
+  cd ${pkgname}-player-${pkgver}
+  make DESTDIR=${pkgdir} install
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
