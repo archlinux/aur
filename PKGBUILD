@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=2018.03.02.r3346.5666a994f.4.15.7.a.1
-pkgrel=1
+pkgver=2018.03.06.r3353.639b18944.4.15.7.a.1
+pkgrel=2
 makedepends=("linux-hardened-headers=4.15.7.a-1" "git" "spl-linux-hardened-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=5666a994f2b17f1d720efa83d4c64b1ed7bb53d0")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=639b18944a6a3483c02039621c02dac08a954a90")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git=2018.03.02.r3346.5666a994f" "linux-hardened=4.15.7.a-1")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git=2018.03.06.r3353.639b18944" "linux-hardened=4.15.7.a-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -55,7 +55,7 @@ package_zfs-linux-hardened-git() {
 
 package_zfs-linux-hardened-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers'  'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers'  'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-threadripper-headers' 'zfs-linux-threadripper-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
