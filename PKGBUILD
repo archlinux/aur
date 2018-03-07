@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn-client-manager
-pkgver=v4.20_9608
+pkgver=v4.25_9656
 pkgrel=1
 pkgdesc="SoftEther VPN Client Manager"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=('file://hamcore.se2'
         'vpncmgr.sh'
         'vpncmgr-remote.desktop'
         'vpncmgr-remote.sh')
-md5sums=('0713e1667e06f7f181aaa9bfee7a4dc7'
-         'd6e42a7d8d2a4d61e4dc08748960c542'
+md5sums=('94f9d978c38732513b889087298ca874'
+         '19f7374da1603b186a1a91b007514195'
          '98c8ca04d44309eb6902e6db718a78e3'
          '2700860e1d40d685894aa88b0e0d42f1'
          '72769397b0ca79ff92de136dbf8ec7ad'
