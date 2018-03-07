@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -61,7 +61,7 @@ prepare()
     rmdir 3rdparty/zlib
     ln --symbolic --force ../../zlib-1.2.11 3rdparty/zlib
     rmdir Vulkan/Vulkan-LoaderAndValidationLayers
-    ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-85926a33d427ee62f395a50886db980127063c72 Vulkan/Vulkan-LoaderAndValidationLayers
+    ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-28d93dfc0f24d65237fd773d74a284bf6e399222 Vulkan/Vulkan-LoaderAndValidationLayers
     rmdir Vulkan/glslang
     ln --symbolic --force ../../glslang-e22e3473958e9bf3536f6c2133d66e5808816b78 Vulkan/glslang
     rmdir asmjit
