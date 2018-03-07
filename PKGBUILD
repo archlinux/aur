@@ -2,14 +2,16 @@
 pkgname=libmfile-git
 _pkgname=libmfile
 pkgver=r57.a18a066
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for compressed storage of spectroscopy data in nuclear physics"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://gitlab.ikp.uni-koeln.de/jmayer/libmfile"
 license=('BSD')
 conflicts=('libmfile')
 provides=('libmfile')
-makedepends=('git' 'cmake')
+depends=('glibc')
+makedepends=('git'
+             'cmake')
 options=(!emptydirs)
 source=('git+https://gitlab.ikp.uni-koeln.de/jmayer/libmfile.git#branch=anniversary')
 sha256sums=('SKIP')
@@ -28,4 +30,6 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     make DESTDIR=${pkgdir} install
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
