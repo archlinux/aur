@@ -1,0 +1,18 @@
+pkgbase = envy
+	pkgdesc = Shell helper that automatically sets and unsets environment variables
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wojas/envy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/wojas/envy/archive/v0.1.0.tar.gz
+	source = envy.sh
+	sha256sums = f679cd32168db3d748464383f41a6a362124660bc8c230d6314de2f852326812
+	sha256sums = b2581587b19848f0d3d6dfce4871fe6abcb57fd207f7d39a0ae171835bada862
+
+pkgname = envy
+
