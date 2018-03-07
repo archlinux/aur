@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.5.r90240.g8b0a9f79c8
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -78,6 +78,7 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
+        local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
         local _libnpp='--enable-libnpp'
         
@@ -164,7 +165,7 @@ build() {
         --enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
-        --enable-libvmaf \
+        $_libvmaf \
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
