@@ -1,6 +1,6 @@
 pkgbase = xmrig-bin
 	pkgdesc = Monero cryptocurrency CPU miner, HTTP API disabled
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	install = xmrig.install
@@ -9,10 +9,10 @@ pkgbase = xmrig-bin
 	license = GPL
 	depends = glibc
 	optdepends = monero: wallet
-	source = https://github.com/xmrig/xmrig/releases/download/v2.4.4/xmrig-2.4.4-gcc7-xenial-amd64-no-api.tar.gz
-	source = https://raw.githubusercontent.com/xmrig/xmrig/v2.4.4/README.md
-	md5sums = 964fbc0ee038cd3c0bf99ac7629ad053
-	md5sums = fd2b9292d4a69bbc42b506fc276e9ea2
+	source = https://github.com/xmrig/xmrig/releases/download/v2.4.5/xmrig-2.4.5-gcc7-xenial-amd64-no-api.tar.gz
+	source = https://raw.githubusercontent.com/xmrig/xmrig/v2.4.5/README.md
+	md5sums = 1a139c54c353ac5e660686ab19cbc369
+	md5sums = 421660aca4c27e3f51ed790313045b50
 
 pkgname = xmrig-bin
 
