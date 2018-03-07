@@ -2,7 +2,7 @@
 
 pkgname=trenchbroom-git
 pkgver=r5067.769b7e04d
-pkgrel=2
+pkgrel=3
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
 url="http://kristianduske.com/trenchbroom"
