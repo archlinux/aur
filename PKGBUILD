@@ -4,7 +4,7 @@
 
 pkgname='skype'
 pkgdesc='P2P software for high-quality voice communication'
-pkgver='8.17.76.1'
+pkgver='8.17.76.3'
 pkgrel=1
 _pkgbranch='skypeforlinux'
 arch=('x86_64')
@@ -14,13 +14,13 @@ depends=('gtk2' 'libxss' 'gconf' 'alsa-lib' 'libxtst' 'libsecret' 'nss')
 optdepends=('gnome-keyring: for credentials storage')
 conflicts=('skypeforlinux' 'skypeforlinux-preview' 'skypeforlinux-preview-bin')
 source=("https://repo.skype.com/deb/pool/main/s/${_pkgbranch}/${_pkgbranch}_${pkgver}_amd64.deb")
-sha256sums=('393f5156b914c9f8e7f1b1f38d8de5bf7c7f93cb1b22fc1fe8bdc49282eee696')
+sha256sums=('ac25cccb44e3872b0d8ba41cf0d49a69403d6d82a920705ba57ea191179cc926')
 
 package() {
 
 	tar -xJC "${pkgdir}" -f data.tar.xz
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	mv "${pkgdir}/usr/share/${_pkgbranch}/LICENSES.chromium.html"	"${pkgdir}/usr/share/licenses/${pkgname}/"
+	mv "${pkgdir}/usr/share/${_pkgbranch}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
 	rm -rf "${pkgdir}/opt"
 
 }
