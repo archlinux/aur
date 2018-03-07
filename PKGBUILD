@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -35,7 +35,11 @@ makedepends=(
     # official repositories:
         'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx' 'vmaf'
+        'blackmagic-decklink-sdk' 'libmfx'
+)
+makedepends_x86_64=(
+    # AUR:
+        'vmaf'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
@@ -73,6 +77,7 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
+        local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
         local _libnpp='--enable-libnpp'
         
@@ -157,7 +162,7 @@ build() {
         --enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
-        --enable-libvmaf \
+        $_libvmaf \
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \

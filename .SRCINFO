@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = ffmpeg-full
 	makedepends = opencl-headers
 	makedepends = blackmagic-decklink-sdk
 	makedepends = libmfx
-	makedepends = vmaf
 	depends = glibc
 	depends = alsa-lib
 	depends = jack
@@ -128,6 +127,7 @@ pkgbase = ffmpeg-full
 	depends_x86_64 = cuda
 	depends_x86_64 = nvidia-utils
 	optdepends_x86_64 = intel-media-sdk: for Intel QSV support (experimental)
+	makedepends_x86_64 = vmaf
 
 pkgname = ffmpeg-full
 
