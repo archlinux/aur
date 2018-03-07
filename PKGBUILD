@@ -7,7 +7,7 @@
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=26b.r90.g1dcb5f8
+pkgver=26b.r102.g42faa5a
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -79,7 +79,7 @@ package() {
 
   # helper scripts
   cd misc/
-  for i in dicx dllpp llppac; do
+  for i in dicx dllpp llpp.inotify llppac llpphtml; do
     install -Dm755 $i $pkgdir/usr/bin/$i
   done
 
