@@ -1,8 +1,8 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=wxgtk-trenchbroom
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.1.1
+pkgrel=6
 pkgdesc="GTK+2 implementation of wxWidgets API for GUI with TrenchBroom patches."
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -14,13 +14,10 @@ makedepends=('gst-plugins-base' 'gconf' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
 options=('!emptydirs')
 
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2
-	make-abicheck-non-fatal.patch
-	wxGLContext_ctor_x11Direct20160316.patch
-        wxgtk-filezilla-assert.patch::"https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch")
-sha1sums=('2170839cfa9d9322e8ee8368b21a15a2497b4f11'
+	make-abicheck-non-fatal.patch)
+sha1sums=('f999c3cf1887c0a60e519214c14b15cb9bb5ea6e'
 	'dfe38650c655395b90bf082b5734c4093508bfa3'
-	'6941a40b202f29f4ae36ff332fb8f1ff95244737'
-	'1da8af91ef6c590da9c43dd115f52d605730f16a')
+	)
 
 prepare() {
 	cd wxWidgets-${pkgver}
@@ -28,12 +25,6 @@ prepare() {
 	# C++ ABI check is too strict and breaks with GCC 5.1
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1200611
 	patch -Np1 -i ../make-abicheck-non-fatal.patch
-
-	# Apply TrenchBroom patch
-	patch -p0 < ../wxGLContext_ctor_x11Direct20160316.patch
-
-	# fix assert in FileZilla
-	patch -p1 -i ../wxgtk-filezilla-assert.patch
 }
 
 build() {
