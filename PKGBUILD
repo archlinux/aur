@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3282.r5.e7a562f72
-pkgrel=2
+pkgver=3325.r3.e839a6adb
+pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -56,7 +56,7 @@ prepare() {
 
   # Patch BUILD.gn to build a shared library
   cd "$srcdir/pdfium"
-  sed -i 's/static_library("pdfium")/shared_library("pdfium")/g' BUILD.gn
+  sed -i 's/jumbo_static_library("pdfium")/shared_library("pdfium")/g' BUILD.gn
 
   # 'source_set' builds faster and is more reliable for shared libraries
   sed -i 's/static_library/source_set/g' BUILD.gn
@@ -95,6 +95,7 @@ build() {
       'use_system_freetype=true'
       'use_system_lcms2=true'
       'use_system_libpng=true'
+      'use_custom_libcxx=false'
       'use_gio=false'
   )
 
