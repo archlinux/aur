@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.14
-_pkgver=4.14.20
-_rtpatchver=rt17
+_pkgver=4.14.24
+_rtpatchver=rt19
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -29,7 +29,6 @@ source=(
   '90-linux-rt.hook'  # pacman hook for initramfs regeneration
   'linux-rt.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
@@ -42,16 +41,15 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ec38313c7ff463f781fb36502d4b49811a903462f031c5392b95231cc371190f'
+            '6183a67253cf4792431e541fe41e5054665396294cd7e41b94122db195a01357'
             'SKIP'
-            'e513beee302919078c213d4f4f5bfdc8ccbdd777042a4bd87ae06aaa03704efb'
+            '25a97ea6a090d1453ef504ea6d6e79a1840b9409717f31f85a07fb730438ca46'
             'SKIP'
             'be24c49a01142458458516972d427fb2e341f9e16b8e631055bcf19e87e94d7b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
             'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
@@ -71,9 +69,6 @@ prepare() {
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
