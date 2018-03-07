@@ -3,7 +3,7 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.5.0+2146+g283f03c825
+pkgver=1.6.0+rc1+1055+g99de182664
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -47,13 +47,13 @@ prepare() {
 }
 
 build() {
-  _bazel_09_fix="--incompatible_load_argument_is_label=false"
+  # _bazel_09_fix="--incompatible_load_argument_is_label=false"
   cd ${srcdir}/tensorflow
 
   export TF_NEED_CUDA=0
 
   ./configure
-  bazel build --config=opt --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package ${_bazel_09_fix}
+  bazel build --config=opt --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 
   cd ${srcdir}/tensorflow-cuda
@@ -67,7 +67,7 @@ build() {
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
   export TF_CUDA_COMPUTE_CAPABILITIES=3.0,3.5,5.2,6.1,6.2
   ./configure
-  bazel build --config=opt --config=cuda --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package ${_bazel_09_fix}
+  bazel build --config=opt --config=cuda --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmpcuda
 }
 
