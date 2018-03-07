@@ -1,3 +1,5 @@
+# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
+
 pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
