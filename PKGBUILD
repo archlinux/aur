@@ -3,14 +3,15 @@
 
 pkgname=ungoogled-chromium-bin
 pkgver=64.0.3282.186
-pkgrel=2
+pkgrel=3
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparencyi (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
-depends=("libjpeg6-turbo" "icu57" "libevent-compat" "re2")
+depends=("libjpeg6-turbo" "icu57" "libevent-compat" "nss" "libxss" "snappy" "gtk3" "minizip"
+		"libxslt")
 provides=("chromium")
-conflicts=("chromium" "inox" "iridium" "ungoogled-chromium")
+conflicts=("chromium" "iridium" "ungoogled-chromium")
 optdepends=("ffmpeg: H264/AAC/MP3 decoding")
 source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/placeholder/ungoogled-chromium_${pkgver}-1.stretch_amd64.deb"
 		"ungoogled-chromium-common.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/placeholder/ungoogled-chromium-common_${pkgver}-1.stretch_amd64.deb"
@@ -18,7 +19,7 @@ source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-b
 noextract=("ungoogled-chromium-common.deb")
 sha256sums=("714ff700d02b60233ccf92a54ebbd2b8eeb1499bb9097322e3874dc3a111e0ec"
 			"653e0ddd5636ef39f56a86baac8d3a9796af8fbcfdbfc8e91d8121d9e34cba0a"
-			"541f4518aa949a45bc961336d045d2402265b7379ae9ac3e19f40d9acffaad4f")
+			"1d5f907cadc73071f1770cfed92211d88a3c9b19e6bf24be8208bb4da5d73c4a")
 install=ungoogled-chromium-bin.install
 
 prepare() {
