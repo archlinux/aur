@@ -1,0 +1,14 @@
+pkgbase = jif
+	pkgdesc = Security-typed programming language that extends Java with support for information flow control and access control, enforced at both compile time and run time
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://www.cs.cornell.edu/jif/
+	arch = any
+	license = LGPL2
+	makedepends = apache-ant
+	depends = java-environment
+	source = http://www.cs.cornell.edu/jif/releases/jif-3.5.0.zip
+	sha256sums = 1ef1603183234474d903b6c4bc7fea734c82827f6a6d7e2eecb3a873f617f57e
+
+pkgname = jif
+
