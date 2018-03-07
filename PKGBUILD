@@ -19,7 +19,7 @@ pkgbase="spl-linux-hardened"
 pkgname=("spl-linux-hardened" "spl-linux-hardened-headers")
 
 pkgver=0.7.6_4.15.7.a.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-hardened-headers=4.15.7.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -53,7 +53,7 @@ package_spl-linux-hardened() {
 
 package_spl-linux-hardened-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers'  'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers'  'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl-0.7.6"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
