@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=2.5.0rc0+1603+g0c1ea1cee1
+pkgver=2.5.1rc0+530+g5f35b041c2
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ url="https://www.wireshark.org/"
 license=('GPL2')
 depends=(
         'c-ares'
-        'geoip'
         'glib2'
         'libcap'
         'libpcap'
         'lua52'
+        'libmaxminddb'
 
         # wireshark-qt dependencies
         'qt5-multimedia'
@@ -33,7 +33,7 @@ depends=(
         'sbc'                   # Bluetooth audio codec in RTP player
         'snappy' 'lz4'          # for cql dissector
         'spandsp'               # for G.722/G.726 codec support in RTP player
-        'bcg729'                # for G.729 codec support in RTP player
+        #'bcg729'               # for G.729 codec support in RTP player
 
         # extcap (sshdump, etc.)
         'libssh'
