@@ -3,7 +3,7 @@
 pkgname=eventd
 pkgver=0.24.0
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -50,7 +50,7 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    668f5a56eb156712181176fc4b4f87cd52de919af6e661504ae9e543b4b226a3
+    d4a3cc34c626a3ce6ebedff8b0c276e0ae7d658968d1f36605b5daa44915e9c7
 )
 
 build() {

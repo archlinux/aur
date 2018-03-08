@@ -1,7 +1,7 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eventd.org
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = eventd
 	optdepends = libsoup: WebSocket support
 	options = !strip
 	source = https://www.eventd.org/download/eventd/eventd-0.24.0.tar.xz
-	sha256sums = 668f5a56eb156712181176fc4b4f87cd52de919af6e661504ae9e543b4b226a3
+	sha256sums = d4a3cc34c626a3ce6ebedff8b0c276e0ae7d658968d1f36605b5daa44915e9c7
 
 pkgname = eventd
 
