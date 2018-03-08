@@ -1,0 +1,13 @@
+pkgbase = python-humanhash3
+	pkgdesc = Human-readable representations of digests
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/blag/humanhash
+	arch = any
+	license = Public Domain
+	depends = python
+	source = https://pypi.python.org/packages/01/06/733ffbb45b78c34eba21d72e71a67f44af6efcdfb2e31ccaa837eb5144be/humanhash3-0.0.6.tar.gz
+	md5sums = c892640cca499ba5a83cfe152d295b9d
+
+pkgname = python-humanhash3
+
