@@ -1,0 +1,5 @@
+
+post_install() {
+	echo "config file stored in /etc/musnify-mpd.config"
+	echo "If you want, copy the /usr/share/doc/musnify-mpd/musnify-mpdconfig.example to ~/.config/musnify-mpd/musnify-mpd.config to set up your user config"
+}
