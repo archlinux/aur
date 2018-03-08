@@ -19,7 +19,7 @@ source=("git+https://github.com/floweethehub/hub.git#branch=master"
 
 sha256sums=('SKIP'
     "d09fe561ed2b5fa0abf40bb5bfce0d6294b3747f97b94b473d040bda7b212985"
-    "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
+    "c02e66610a93f1f8b302b5409aa094ec8fd842698f2f7b54d8645bebae3da98b"
     "635bf93ae346f7a8f4baf61d2d8316aa24647e87d23847876302330cb1e1191b")
 
 pkgver() {
