@@ -1,6 +1,6 @@
 pkgbase = lidarr
 	pkgdesc = Music downloader for usenet and torrents.
-	pkgver = 0.2.0.284
+	pkgver = 0.2.0.291
 	pkgrel = 1
 	url = https://github.com/lidarr/Lidarr
 	install = lidarr.install
@@ -18,10 +18,10 @@ pkgbase = lidarr
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
 	optdepends = libgdiplus: provides a gdi+ compatible api
-	source = https://ci.appveyor.com/api/buildjobs/o1c3v7ef88xbst2v/artifacts/Lidarr.develop.0.2.0.284.linux.tar.gz
+	source = https://ci.appveyor.com/api/buildjobs/e9247o9i1s614hc2/artifacts/Lidarr.develop.0.2.0.291.linux.tar.gz
 	source = lidarr.service
 	source = lidarr.sysusers
-	sha512sums = c2db15f0e4d58911b836c4ae8bbcb6154c43690b2131766d7f1d02f93a9564964b171ab7d4774b67821bfc731f557b9ce4625f47c6811d3d81ef44244ca954af
+	sha512sums = c6cc4a281b43a0ab3560f25044884c50b44364e2d52211cf099a34de5b7bc54ae89031b93d9c6777569d3b6d34af6060387fb3145d9cc3158f81c4fd50ef5ede
 	sha512sums = 47bdb3bcefa39fd095aeae7b8ed19c80b43f9d3a90e2537088ee6ec0fdbe3472c7524e9adbe5a949dc800ff47d98f4edd8e1e5427a1a6cd730305d4be65f04cf
 	sha512sums = ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622
 
