@@ -13,19 +13,9 @@ post_install() {
 	echo "  the program."
 	echo ""
 
-	# Set environment variables
-	if echo "$0" | grep -q bash || echo "$SHELL" | grep -q bash; then
-		# shellcheck disable=1091
-		source /etc/profile.d/jrebel.sh
-		echo -e "  ${BL}\$REBEL_HOME${NC} set to ${CY}$REBEL_HOME${NC}\\n" 
-	elif echo "$0" | grep -q csh || echo "$SHELL" | grep -q csh; then
-		# shellcheck disable=1091
-		source /etc/profile.d/jrebel.csh
-		echo -e "  ${BL}\$REBEL_HOME${NC} set to ${CY}$REBEL_HOME${NC}\\n" 
-	else
-		echo -e "  Depending on your current shell, you should ${GR}source${NC} either"
-		echo -e "  ${CY}/etc/profile.d/jrebel.sh${NC} or ${CY}/etc/profile.d/jrebel.csh${NC} to set ${BL}\$REBEL_HOME${NC}. The"
-		echo -e "  easiest way to do this may be to log out, then  log back in."
-		echo ""
-	fi
+	# Warn about environment variables
+	echo -e "  Depending on your current shell, you should ${GR}source${NC} either"
+	echo -e "  ${CY}/etc/profile.d/jrebel.sh${NC} or ${CY}/etc/profile.d/jrebel.csh${NC} to set ${BL}\$REBEL_HOME${NC}. The"
+	echo -e "  easiest way to do this may be to log out, then  log back in."
+	echo ""
 }

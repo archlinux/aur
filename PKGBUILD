@@ -2,7 +2,7 @@
 
 pkgname=jrebel
 pkgver=7.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying."
 url="http://zeroturnaround.com/software/jrebel/"
 license=('custom')
@@ -25,7 +25,7 @@ source=("$_pkgfile::$_downloadurl"
 
 sha256sums=('4dd54ad2efa4ea3efae1dad88805966af057f1fc78d1d507487884ac2316d570'
 			'7dbc38b6bfc45a037620bd8a21583e00308d53311285c98215b660efdb007431'
-			'072cd02bf057919121e0255bd12fe77f1d4abdc6b390e0d76a66d8cc7151c1c0'
+			'7616bc4c74f15c49c25c9db78aa0490a2cb88e37fe848c9e866c11ea16d0ad66'
 			'd1a5193a071eeedb4d5e96a0eb90aaa4f7daad0cdfbe54ff9c89967c50634635')
 
 package() {
