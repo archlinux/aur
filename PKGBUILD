@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'update.sh'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            'a8b0c3796114a7182b1b3944b8e170b64614373f2f4570bd827fff1146bbb176'
+            '2526783eb9c39495f4eb090afe781d8b3204812a83f7b79f5c4ffef31298ea0a'
             '3bce3e9adce8ae3f826eebab75e9784ca92a914e526ae352de61c1da93aab8d3'
             '5171cc759f66c1c8366f78ec6a574a9b698b3b4429f512a110ba2ac94c5a2742'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
