@@ -1,6 +1,6 @@
 pkgname=('alacritty-git' 'alacritty-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.1.0.573.gb92ba65
+pkgver=0.1.0.741.gf298ebb
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -26,6 +26,9 @@ package_alacritty-git() {
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "$srcdir/$_pkgname/Alacritty.desktop" "$pkgdir/usr/share/applications/Alacritty.desktop"
+	install -D -m644 "$srcdir/$_pkgname/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
 }
 
 package_alacritty-terminfo-git() {
