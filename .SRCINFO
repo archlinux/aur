@@ -1,0 +1,15 @@
+pkgbase = python-aiml
+	pkgdesc = An interpreter module for AIML (Artificial Intelligence Markup Language), implemented in pure Python (python3 fork)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/paulovn/python-aiml
+	arch = any
+	license = BSD-2-Clause
+	license = LGPL
+	makedepends = python2
+	depends = python
+	source = https://github.com/paulovn/python-aiml/archive/0.9.0.tar.gz
+	sha256sums = dd8ece9aa324b1c4fd3404b1f5ecd79d2d0b30d22d730ee7269e7781e93e851e
+
+pkgname = python-aiml
+
