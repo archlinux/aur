@@ -1,0 +1,13 @@
+pkgbase = python-xmlrunner
+	pkgdesc = PyUnit-based test runner with JUnit like XML reporting.
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = https://github.com/jaraco/wolframalpha
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/57/c0/a19e29bc6038a56bb690549573af6ea11a9d2a5c07aff2e27ed308c2cab9/xmlrunner-1.7.7.tar.gz
+	md5sums = 7b0b152ed2d278516aedbc0cac22dfb3
+
+pkgname = python-xmlrunner
+
