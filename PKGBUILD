@@ -1,6 +1,6 @@
 # Maintainer: Anatolii Sakhnik <sakhnik at gmail dot com>
 pkgname=kerberosio-machinery
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 _revision=v${pkgver}
 pkgdesc="An image processing framework, which uses your USB-, IP- or RPi-camera to recognize events (e.g. motion)."
@@ -12,8 +12,8 @@ makedepends=('cmake' 'autoconf' 'automake')
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
         0002-Fix-for-distcc.patch)
-sha1sums=('08a4a99af75152055696aecae9d09c083d2c1c98'
-          '79502d1498b507064e7485c743d9f2dc8b5062c4'
+sha1sums=('79b774b5fd48d22ecfb53ce430881772bcf152ee'
+          'd05ed01303a09d103f703118126348b1402b3950'
           'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
 prepare()
