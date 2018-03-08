@@ -2,7 +2,7 @@
 
 pkgname=veyon
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -46,4 +46,10 @@ build() {
 package_veyon() {
     cd build
     make DESTDIR="${pkgdir}" install
+
+    cd ${pkgdir}/usr/lib/${pkgname}
+    for lib in $(ls *.so)
+    do
+       ln -s "/usr/lib/veyon/$lib" "${pkgdir}/usr/lib/$lib"
+    done
 }
