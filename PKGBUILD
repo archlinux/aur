@@ -6,8 +6,8 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 pkgname=gitkraken
-pkgrel=3
-pkgver=3.3.4
+pkgrel=1
+pkgver=3.4.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
 provides=('gitkraken')
@@ -25,11 +25,11 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-sha256sums=('43f232c4ab0c5fef8217dd7c5182f5b9c8fa7fcd2c296e59bbe957ce2dea1ddd'
+sha256sums=('220f3b2ee176362e5ec46227a4d56d3c1cf5e3ab245a20222d03e337f22c6f40'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
-            'dd389b58ce1fadd7e8258a88404ad23a7b8c857f4203b5b2a286e6597df520c3')
+            '0346815a2d43887c2f7715384043ee9674c30eebd2d6cc4d9c788238cb8ce87e')
 
 package() {
     install -d "$pkgdir"/opt
