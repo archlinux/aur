@@ -3,10 +3,10 @@
 _pkgname=gnoMint
 pkgname=gnomint
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Certification Authority management made easy."
 arch=("i686" "x86_64")
-url="htt://gnomint.sf.net"
+url="http://gnomint.sf.net"
 license=("GPL3")
 depends=("gconf" "gtk2" "sqlite")
 optdepends=()
