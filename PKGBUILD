@@ -14,28 +14,28 @@ source=("https://download.lix.com/linux/latest")
 md5sums=("2df5cc1ecc8830edd941032e6e4b53b0")
 
 prepare() {
-	cd "${srcdir}"
+    cd "${srcdir}"
 
-	# Remove libraries, they are dependencies
-	rm -r usr/lib
+    # Remove libraries, they are dependencies
+    rm -r usr/lib
 
-	# Desktop Entry
-	mkdir -p usr/share/applications
-	mv lix.desktop usr/share/applications
+    # Desktop Entry
+    mkdir -p usr/share/applications
+    mv lix.desktop usr/share/applications
 
-	# Move the main chunk of it into opt
-	mkdir -p opt/lix
-	mv usr/bin/* opt/lix
+    # Move the main chunk of it into opt
+    mkdir -p opt/lix
+    mv usr/bin/* opt/lix
 
-	# Add a symlink for the executable
-	ln -s /opt/lix/lix usr/bin/lix
+    # Add a symlink for the executable
+    ln -s /opt/lix/lix usr/bin/lix
 
-	# Make the usr/share/icons have the world executable bit set
-	chmod -R a+xr usr/share/icons
+    # Make the usr/share/icons have the world executable bit set
+    chmod -R a+xr usr/share/icons
 }
 
 package() {
-	cd "${srcdir}"
-	cp -rp usr "${pkgdir}/usr"
+    cd "${srcdir}"
+    cp -rp usr "${pkgdir}/usr"
     cp -rp opt "${pkgdir}/opt"
 }
