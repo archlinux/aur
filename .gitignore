@@ -2,3 +2,4 @@ python-fuzzywuzzy*
 pkg/
 src/
 fuzzywuzzy-*
+*.tar.gz
