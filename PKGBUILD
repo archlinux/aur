@@ -2,15 +2,15 @@
 
 pkgname=ryzen-stabilizator-git
 _pkgname=ryzen-stabilizator
-pkgver=r18.9f22cb3
+pkgver=r19.90a2f7a
 pkgrel=1
 pkgdesc="Simple Go program to enable/disable C6 C-state, processor boosting, address space layout
-randoization (ASLR) and the Power Supply Idle Control workaround on an AMD Ryzen processor, in
+randomization (ASLR) and the Power Supply Idle Control workaround on an AMD Ryzen processor, in
 order to help with the infamous 'MCE-random-reboots-while-idle' issue."
 arch=("x86_64")
 url="https://github.com/qrwteyrutiyoup/ryzen-stabilizator"
 license=("Apache")
-makedepends=(go)
+makedepends=(git go)
 source=("${_pkgname}"::git+https://github.com/qrwteyrutiyoup/ryzen-stabilizator.git
         ryzen-stabilizator.conf
 )
