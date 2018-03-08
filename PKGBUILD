@@ -6,7 +6,7 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='1.4.3'
+pkgver='1.5.0'
 pkgrel='1'
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
