@@ -1,9 +1,8 @@
 pkgbase = softethervpn-server-manager
 	pkgdesc = SoftEther VPN Server Manager
 	pkgver = v4.25_9656
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.softether.org/
-	install = vpnsmgr.install
 	arch = i686
 	arch = x86_64
 	license = GPL

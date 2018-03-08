@@ -2,13 +2,12 @@
 pkgname=softethervpn-server-manager
 pkgver=v4.25_9656
 _realpkgver=${pkgver//_/-}-rtm-2018.01.15
-pkgrel=1
+pkgrel=2
 pkgdesc="SoftEther VPN Server Manager"
 arch=('i686' 'x86_64')
 url="https://www.softether.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'wine')
-install="vpnsmgr.install"
 source=("http://www.softether-download.com/files/softether/${_realpkgver}-tree/Windows/Admin_Tools/VPN_Server_Manager_and_Command-line_Utility_Package/softether-vpn_admin_tools-${_realpkgver}-win32.zip"
         'vpnsmgr.desktop'
         'vpnsmgr.png'
