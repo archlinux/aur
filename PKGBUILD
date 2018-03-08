@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=65.0.3325.106
+pkgver=66.0.3359.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-beta.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/ih-beta/master/bnox.desktop
+        https://raw.githubusercontent.com/bn0785ac/ih-beta/master/dnox.desktop
         https://raw.githubusercontent.com/bn0785ac/ih-beta/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/ih-beta/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/ih-beta/master/chromium-gn-bootstrap-r17.patch
@@ -117,9 +117,9 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/k3.patch
 )
 
 
-sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
+sha256sums=('5992754681401e4910c8150a775045b4a701386d8e303cc68a1278652cbb3344'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
+            'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
@@ -138,7 +138,7 @@ sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
             'b5532de9e402a7d0b12258e9de56722e7eec84dc54cd53b9fe25d62c7354c0af'
             'f4af2787f31abe66ab1180affed6f4c97daaad9151de429c9f5dc3e223cc8d87'
-            '3a451ca37ff6f47d8e8a84ecde8c24179a74991bfae4ff1a3ca94131ca0a11f4'
+            '0aeb560922cb5d628528fbd33fad23a3d33c3b0caa06a6fa799da2e55741f5cb'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
             'e6a3490da7b98e3c2d9d04bc595a3349779a0426dfe61aa955d6fb7daa816c12'
             '9be24cb424d59cea12944bdb451690728e373ece6e4e93dbae8b92078da2130d'
@@ -166,7 +166,7 @@ sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             '41fa66c8a12d3341010a58e1c78d005a10d3ac7527a88b7a8c005b35de58c0bb'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
-            'b80b351152d3415b5b7dbfaf07edd94bb8f7dd56eab4380c577b102c6b758c10'
+            '88839d1b570304a162a5f012432badfccc926d30a22ec3481d7167ee616f2880'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '8d9ebc86511704bfd27d18e5e917ae6c0fc44c2e16520dfb98e14f18fe40a6ee'
@@ -179,7 +179,7 @@ sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             '2c0c865c325db53da6066afe4c9f81c156b8add0428068c0725d8a84d738e1b5'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '96fed3b7de6ffceee1e89d8459acbc6c990ec828f60b93385fa414bfe1453819'
+            '0618b9fc3f63920d29802b3ac3936ccbba5669ca399ca7eb00b7d087a0eb5559'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -201,7 +201,7 @@ sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            'eea10be17469d859f6731e056d9914e91e8049698012ba399d441846d218d68b'
+            'f2fa24d65ef4afc21e658ed476884a543ebcb78135693c77a5f14007c0a5e064'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -209,11 +209,11 @@ sha256sums=('283ca28ccad7f0f221bf10a1dfdab0af7bbab7b22cd3d9ccc40e55ec237e7c43'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
-            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
+            '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            '11b66c829c124cf764a0e6971dc0cf67adea5058b5777355b85b2a0540f550d6'
+            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
 
 
@@ -302,7 +302,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -i ../pt.patch
+#patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -332,7 +332,7 @@ patch -Np1 -i ../a.patch
 patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
-patch -Np1 -i ../e.patch
+#patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
@@ -342,7 +342,7 @@ patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
-patch -Np1 -i ../e3.patch
+#patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
 
 
