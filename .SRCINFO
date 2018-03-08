@@ -1,7 +1,7 @@
 pkgbase = visidata
 	pkgdesc = A terminal spreadsheet multitool for discovering and arranging data
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://visidata.org
 	arch = any
 	license = GPLv3
@@ -10,11 +10,11 @@ pkgbase = visidata
 	optdepends = python-openpyxl: for opening .xlsx files
 	optdepends = python-h5py: for opening .hdf5 files
 	optdepends = python-google-api-python-client: for opening Google sheets
-	provides = visidata=1.0
+	provides = visidata=1.1
 	conflicts = visidata-git
 	replaces = visidata-git
-	source = https://github.com/saulpw/visidata//archive/v1.0.tar.gz
-	sha256sums = 8098c926a8065f0a71e5c81bb076c1c92c75e0e7345417b0c197bfb1fc518bc1
+	source = https://github.com/saulpw/visidata//archive/v1.1.tar.gz
+	sha256sums = 55cafd91e9729f5dbaa76e3cf37a3fbb2975b5fb4425682004f380594a96ca60
 
 pkgname = visidata
 
