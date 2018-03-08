@@ -5,12 +5,17 @@ pkgname=python-padatious
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="A neural network intent parser"
-url=" http://github.com/MycroftAI/padatious"
+url="http://github.com/MycroftAI/padatious"
 license=("Apache2.0")
 arch=("any")
-depends=('python')
-source=("https://pypi.python.org/packages/04/bb/940bbff7722580544956aad19751bfc7912e5bd58b4a9f373ad8a14c2d2d/$_pkgsrcname-$pkgver.tar.gz#md5=0e3482a08120250a41f13a3c69d9eb8d")
-md5sums=('0e3482a08120250a41f13a3c69d9eb8d')
+depends=('python' 'python-xxhash' 'python-fann2')
+source=("https://github.com/MycroftAI/$_pkgsrcname/archive/v$pkgver.tar.gz")
+sha256sums=('ade78780cd6f140501969cc7a83c2ad3c1c7a0823162b00e34c82e853a10fd44')
+
+build() {
+  cd $srcdir/${_pkgsrcname}-$pkgver
+  python3 setup.py build
+}
 
 package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
