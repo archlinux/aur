@@ -2,7 +2,7 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=simian
-pkgver=2.5.8
+pkgver=2.5.10
 pkgrel=1
 pkgdesc="A similarity analyser that identifies duplication in Java, C-sharp, C, C++, COBOL, Ruby, JSP, ASP, HTML, XML, Visual Basic, Groovy source code and even plain text files"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('java-runtime')
 source=("http://harukizaemon.com/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname")
-md5sums=('a8cadeb2eb75a6cce1c7e0b1fa0c1a6c'
+md5sums=('4778ff9355dc701b9b23924af0c38551'
          '83707665662bb85d5878ff13421f4c4a')
 
 package() {
