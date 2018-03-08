@@ -12,12 +12,12 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0_devel.100651.e96e6f60f7
-pkgrel=2
+pkgver=18.1.0_devel.100784.9b7db12815
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
+             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols' 'valgrind')
 depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -28,8 +28,6 @@ license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
 )
-#	5dd385f378a7e264f79ce2004aef815b3d9e3388
-#	5b14e06d8b42e2b08ebc52b6c314ef8647d87a1f
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
