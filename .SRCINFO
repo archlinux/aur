@@ -1,7 +1,7 @@
 pkgbase = python-adapt-parser
 	pkgdesc = A text-to-intent parsing framework
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MycroftAI/adapt
 	arch = any
 	license = LGPL3

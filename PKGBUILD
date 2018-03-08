@@ -3,7 +3,7 @@
 _pkgsrcname=adapt-parser
 pkgname=python-adapt-parser
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A text-to-intent parsing framework"
 url="https://github.com/MycroftAI/adapt"
 license=("LGPL3")
