@@ -1,7 +1,7 @@
-# Maintainer: Greg Fitzgerald <gregf@hugops.pw>
+# Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=chef-dk
-pkgver=2.4.17
+pkgver=2.5.3
 pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo chef-client )
 source=("https://packages.chef.io/files/stable/chefdk/${pkgver}/debian/8/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('999badc0f9d66bd1d60e3c447ba7f433c642b7ceede95edc3b19cd90058ee45063cdd567cf0c7711b7187b5297347fee0876a5b4020aed1f00d37c549fbb96b9')
+sha512sums=('0ccc599eba251a9f295e570deadc576619c1a1873084b4a0b603eab139402613824cef087b9b8e25f459cf46344cfeaf24b6ed84ba4abd6102cd83f85e749be6')
 
 package() {
   cd "$srcdir"
