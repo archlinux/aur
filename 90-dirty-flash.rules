@@ -1,0 +1,2 @@
+# Set deadline scheduler for non-rotational disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{removable}=="1", ATTR{bdi/dirty_bytes}="4194304"
