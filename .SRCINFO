@@ -165,9 +165,9 @@ pkgbase = wine-staging-pba-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.3.r3583.04283ef5+wine.3.3.r88.g813ab925ab+pba.r24.b33e274
-	provides = wine-wow64=3.3.r3583.04283ef5+wine.3.3.r88.g813ab925ab+pba.r24.b33e274
-	provides = wine-staging=3.3.r3583.04283ef5+wine.3.3.r88.g813ab925ab+pba.r24.b33e274
+	provides = wine
+	provides = wine-wow64
+	provides = wine-staging
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging

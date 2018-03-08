@@ -6,13 +6,12 @@ pkgver=3.3.r3583.04283ef5+wine.3.3.r88.g813ab925ab+pba.r24.b33e274
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
-_pbadir='wine-pba'
+_pbasrcdir='wine-pba'
 pkgdesc='Wine staging branch with PBA patches for increased D3D performance applied. Git versions.'
 url='https://github.com/acomminos/wine-pba'
 arch=('x86_64')
 options=('staticlibs')
 license=('LGPL')
-
 depends=(
 	'attr'						'lib32-attr'
 	'fontconfig'				'lib32-fontconfig'
@@ -94,7 +93,7 @@ optdepends=(
 )
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
-		"$_pbadir"::'git+https://github.com/acomminos/wine-pba.git'
+		"$_pbasrcdir"::'git+https://github.com/acomminos/wine-pba.git'
 		'harmony-fix.diff'
 		'30-win32-aliases.conf'
 		'wine-binfmt.conf')
@@ -105,10 +104,29 @@ sha256sums=('SKIP'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
 
-provides=("wine=$pkgver" "wine-wow64=$pkgver" "wine-staging=$pkgver")
+provides=('wine' 'wine-wow64' 'wine-staging')
 conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
+
+pkgver() {
+	# retrieve current staging version
+	cd "${srcdir}/${_stgsrcdir}"
+	local _stagingTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+	local _stagingVer=$( printf "%s.r%s.%s" "$_stagingTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+
+	# retrieve current wine development version
+	cd "${srcdir}/${_winesrcdir}"
+	local _wineVer="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+
+	# retrieve current wine-pba version
+	cd "${srcdir}/${_pbasrcdir}"
+	local _pbaVer=$( printf 'pba.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+
+	# version string might be a bit over the top, 
+	# but I want the build versions of all the 3 source repositories in it.
+	printf '%s+%s+%s' "$_stagingVer" "$_wineVer" "$_pbaVer"
+}
 
 prepare() {
 	cd "${srcdir}"/"${_winesrcdir}"
@@ -137,8 +155,8 @@ prepare() {
 	"${srcdir}"/"${_stgsrcdir}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrcdir}" --all
 	
 	# apply wine-pba patches
-	for _f in $(ls "${srcdir}"/"${_pbadir}"/'patches'); do
-		patch -d "${srcdir}"/"${_winesrcdir}" -Np1 < "${srcdir}"/"${_pbadir}"/'patches'/"${_f}"
+	for _f in $(ls "${srcdir}"/"${_pbasrcdir}"/'patches'); do
+		patch -d "${srcdir}"/"${_winesrcdir}" -Np1 < "${srcdir}"/"${_pbasrcdir}"/'patches'/"${_f}"
 	done
 
 	# fix path of opencl headers
@@ -149,25 +167,6 @@ prepare() {
 	mkdir -p "${srcdir}"/"${pkgname}"-64-build
 	mkdir -p  "${srcdir}"/"${pkgname}"-32-build
 
-}
-
-pkgver() {
-	# retrieve current wine development version
-	cd "${srcdir}/${_winesrcdir}"
-	_wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
-
-	# retrieve current staging version
-	cd "${srcdir}/${_stgsrcdir}"
- 	_staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-	_staging_version=$(printf "%s.r%s.%s" "${_staging_tag}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-   
-	# retrieve current wine-pba version
-	cd "${srcdir}/${_pbadir}"
-	_pba_version=$(printf "pba.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-
-	# version string might be a bit over the top, 
-	# but I want the build versions of all the 3 source repositories in it.
-	printf '%s+%s+%s' "$_staging_version" "$_wine_version" "$_pba_version"
 }
 
 build() {
@@ -187,7 +186,7 @@ build() {
 		--disable-tests
 		# Gstreamer was disabled for FS#33655
 
-	make -j 7
+	make 
 
 	# build wine-staging 32-bit
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
@@ -202,7 +201,7 @@ build() {
 		--with-wine64="${srcdir}/${pkgname}"-64-build \
 		--disable-tests 
 
-	make -j 7
+	make 
 }
 
 package() {
@@ -211,16 +210,16 @@ package() {
 	# (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
 	msg2 'Packaging Wine-32...'
 	cd "${srcdir}/${pkgname}"-32-build
-	make -j 7 	prefix="${pkgdir}/usr" \
-				libdir="${pkgdir}/usr/lib32" \
-				dlldir="${pkgdir}/usr/lib32/wine" install
+	make 	prefix="${pkgdir}/usr" \
+			libdir="${pkgdir}/usr/lib32" \
+			dlldir="${pkgdir}/usr/lib32/wine" install
 	
 	# package wine-staging 64-bit
 	msg2 'Packaging Wine-64...'
 	cd "${srcdir}/${pkgname}"-64-build
-	make -j 7 	prefix="${pkgdir}/usr" \
-				libdir="${pkgdir}/usr/lib" \
-				dlldir="${pkgdir}/usr/lib/wine" install
+	make 	prefix="${pkgdir}/usr" \
+			libdir="${pkgdir}/usr/lib" \
+			dlldir="${pkgdir}/usr/lib/wine" install
 	
 	# freetype font smoothing for win32 applications
 	install -d "$pkgdir"/etc/fonts/conf.{avail,d}
