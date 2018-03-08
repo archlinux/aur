@@ -2,7 +2,7 @@
 
 pkgname=plymouth-theme-arch-beat
 pkgver='0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Plymouth theme with pulsating Arch Linux logo.'
 arch=('any')
 url="https://github.com/nenadstojanovikj/arch-beat/"
@@ -11,6 +11,7 @@ depends=('plymouth')
 makedepends=('git')
 source=("https://github.com/nenadstojanovikj/arch-beat/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
+install=plymouth-theme-arch-beat.install
 
 package() {
   cd "arch-beat-${pkgver}"
