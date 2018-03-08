@@ -1,0 +1,13 @@
+pkgbase = python-pyjokes
+	pkgdesc = One line jokes for programmers (jokes as a service)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/pyjokes/pyjokes
+	arch = any
+	license = Public Domain
+	depends = python
+	source = https://pypi.python.org/packages/b4/62/79a5aa98d2db64eb4925e7ae7b9de1fa9f2e78050b5410a69371ba13a86f/pyjokes-0.5.0.tar.gz
+	md5sums = a357877ddbdffb73d88eea3963ac4f3b
+
+pkgname = python-pyjokes
+
