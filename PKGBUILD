@@ -5,16 +5,17 @@
 # Contributer: Colin Woodbury <colingw@gmail.com>
 
 pkgname=xmobar-git
-pkgver=0.24.5+7+ga7bc612
+pkgver=0.25+14+g2e28ddc
 pkgrel=1
 pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom:BSD3')
-depends=('libxft' 'libxinerama' 'wireless_tools' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
-         'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri' 'haskell-hinotify'
-         'haskell-stm' 'haskell-parsec' 'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
-         'haskell-http' 'haskell-dbus' 'haskell-libmpd')
+depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
+         'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
+         'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-mtl'
+         'haskell-regex-base' 'haskell-regex-compat' 'haskell-http'
+         'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib' 'wireless_tools')
 makedepends=('git' 'ghc')
 conflicts=('xmobar')
 provides=('xmobar')
@@ -28,18 +29,18 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  runhaskell Setup configure -O \
+  runhaskell setup configure -O \
     --enable-shared \
     --prefix=/usr \
     --enable-executable-dynamic \
     --disable-library-vanilla \
     --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_mpd with_dbus"
-  runhaskell Setup build
+  runhaskell setup build
 }
 
 package() {
   cd ${pkgname}
-  runhaskell Setup copy --destdir="${pkgdir}"
+  runhaskell setup copy --destdir="${pkgdir}"
   install -Dm 644 license "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
