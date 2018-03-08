@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -66,6 +66,8 @@ package() {
   install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-2.2.17_to_2.3.0{,-mysql}.sh \
                       "${pkgdir}"/usr/lib/sogo/scripts/
   install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-3.0.0-to-combined{,-mysql}.sh \
+                      "${pkgdir}"/usr/lib/sogo/scripts/
+  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-3.2.10_to_4.0.0{,-mysql}.sh \
                       "${pkgdir}"/usr/lib/sogo/scripts/
   install -D -m 0644 "${srcdir}"/sogo.confd \
                      "${pkgdir}"/etc/conf.d/sogo
