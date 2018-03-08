@@ -11,3 +11,13 @@ index 1cf388a..3c6d79e 100644
  	version string = "1.1.0"
  )
  
+diff --git a/meta/kurly.man b/meta/kurly.man
+index d13c702..10b78cc 100644
+--- a/meta/kurly.man
++++ b/meta/kurly.man
+@@ -1,4 +1,4 @@
+-.TH kurly 1 "January 03, 2018" "kurly 1.1.0" "kurly Manual"
++.TH kurly 1 "@@DATE@@" "kurly @@VERSION@@" "kurly Manual"
+ 
+ .SH NAME
+ kurly \- alternative to the popular program curl

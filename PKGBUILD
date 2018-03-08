@@ -30,6 +30,7 @@ package() {
   go get -v -d ./...
   CGO_ENABLED=0 go build -ldflags "-w -s -X 'main.version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")'" -o kurly
   install -D -m 0755 kurly $pkgdir/usr/bin/kurly
+  sed -i -e "s/@@DATE@@/$(date +"%B %d, %Y")/g" -e "s/@@VERSION@@/$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")/g" meta/kurly.man
   gzip meta/kurly.man
   install -D -m 0644 meta/kurly.man.gz $pkgdir/usr/share/man/man1/kurly.1.gz
   install -D -m 0644 LICENSE $pkgdir/usr/share/licenses/kurly/LICENCE
