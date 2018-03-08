@@ -1,0 +1,18 @@
+pkgbase = avr-fboot-git
+	pkgdesc = CLI host software for Peter Dannegger's fastboot Atmel AVR bootloader
+	pkgver = r56.255941b
+	pkgrel = 1
+	url = https://github.com/Boregard/FBoot-Linux
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	source = avr-fboot::git+https://github.com/Boregard/FBoot-Linux.git
+	md5sums = SKIP
+
+pkgname = avr-fboot-git
+
