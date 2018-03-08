@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=stremio-beta
-pkgver=4.0.4
-pkgrel=2
+pkgver=4.0.10
+pkgrel=1
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=('x86_64')
 url="https://stremio.com"
@@ -10,7 +10,7 @@ provides=('stremio-beta')
 makedepends=('sed')
 options=('!strip')
 source=("${pkgname}.appimage::https://dl.strem.io/linux/v${pkgver}/Stremio+${pkgver}.appimage")
-sha512sums=('9c5a6fa70b4a6dbdaab8119085c936bd46a8a63eda397d25126e2e48b798870eef9b8cb432137911092721d7aea06b82ff02d69b41f106dcf54d4d3b3f70268f')
+sha512sums=('419db687b19ab52bb202ddb78e254a3117aa5acab54d362ff3c3c6efcc5c155a78ac5c8e943448d2819fc4156a3674deeedce222bdbc39abb5ffe1158387d3d7')
 
 prepare() {
   chmod +x ${pkgname}.appimage
