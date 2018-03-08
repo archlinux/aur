@@ -1,6 +1,6 @@
 # Maintainer: madflow <madflow@web.de>
 pkgname="omnidb-app"
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Web tool for database management. This is a standalone version that can be used to connect to any database server."
 arch=('i686' 'x86_64')
