@@ -1,7 +1,7 @@
 pkgbase = emby-server-unlocked
 	pkgdesc = Emby Server compiled with a patch to unlock Emby Premiere features
 	pkgver = 3.3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nvllsvm/emby-unlocked
 	install = emby-server.install
 	arch = i686

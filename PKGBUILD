@@ -2,7 +2,7 @@
 
 pkgname=emby-server-unlocked
 pkgver=3.3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nvllsvm/emby-unlocked'
@@ -30,6 +30,9 @@ prepare() {
   cd Emby-${pkgver}
 
   sed 's/libMagickWand-6.Q8.so/libMagickWand-6.Q16HDRI.so/' -i MediaBrowser.Server.Mono/ImageMagickSharp.dll.config
+
+  # Workaround for mono bug https://github.com/mono/mono/issues/6752#issuecomment-365212655
+  export TERM=xterm
 }
 
 build() {
