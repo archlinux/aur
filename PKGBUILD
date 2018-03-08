@@ -1,22 +1,23 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn-client-manager
 pkgver=v4.25_9656
-pkgrel=1
+_realpkgver=${pkgver//_/-}-rtm-2018.01.15
+_exe="softether-vpnclient-${_realpkgver}-windows-x86_x64-intel.exe"
+pkgrel=2
 pkgdesc="SoftEther VPN Client Manager"
 arch=('i686' 'x86_64')
 url="https://www.softether.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'wine')
+makedepends=('gzip' 'icoutils')
 install="vpncmgr.install"
-source=('file://hamcore.se2'
-        'file://vpncmgr.exe'
+source=("http://www.softether-download.com/files/softether/${_realpkgver}-tree/Windows/SoftEther_VPN_Client/${_exe}"
         'vpncmgr.desktop'
         'vpncmgr.png'
         'vpncmgr.sh'
         'vpncmgr-remote.desktop'
         'vpncmgr-remote.sh')
-md5sums=('94f9d978c38732513b889087298ca874'
-         '19f7374da1603b186a1a91b007514195'
+md5sums=('6a16068ae89f59f56b720cd590f62221'
          '98c8ca04d44309eb6902e6db718a78e3'
          '2700860e1d40d685894aa88b0e0d42f1'
          '72769397b0ca79ff92de136dbf8ec7ad'
@@ -26,8 +27,9 @@ md5sums=('94f9d978c38732513b889087298ca874'
 package() {
   install -D -m 755 vpncmgr.sh "${pkgdir}/usr/bin/vpncmgr"
   install -D -m 755 vpncmgr-remote.sh "${pkgdir}/usr/bin/vpncmgr-remote"
-  install -D -m 644 hamcore.se2 "${pkgdir}/usr/lib/softethervpn/vpncmgr/hamcore.se2"
-  install -D -m 644 vpncmgr.exe "${pkgdir}/usr/lib/softethervpn/vpncmgr/vpncmgr.exe"
+  install -d "${pkgdir}/usr/lib/softethervpn/vpncmgr"
+  wrestool -x --type='DATAFILE' --name=RAW_HAMCORE.SE2 --raw "${_exe}" > "${pkgdir}/usr/lib/softethervpn/vpncmgr/hamcore.se2"
+  (printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"; wrestool -x --type='DATAFILE' --name=VPNCMGR.EXE --raw "${_exe}" | tail -c +5) | gzip -dc > "${pkgdir}/usr/lib/softethervpn/vpncmgr/vpncmgr.exe" 2>/dev/null || true
   install -D -m 644 vpncmgr.desktop "${pkgdir}/usr/share/applications/vpncmgr.desktop"
   install -D -m 644 vpncmgr-remote.desktop "${pkgdir}/usr/share/applications/vpncmgr-remote.desktop"
   install -D -m 644 vpncmgr.png "${pkgdir}/usr/share/pixmaps/vpncmgr.png"
