@@ -1,0 +1,14 @@
+pkgbase = python-pyric
+	pkgdesc = Linux wireless library for the Python Wireless Developer and Pentester
+	pkgver = 0.1.6.3
+	pkgrel = 1
+	url = http://wraith-wireless.github.io/PyRIC/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-twisted
+	source = https://pypi.python.org/packages/08/64/a99f27d3b4347486c7bfc0aa516016c46dc4c0f380ffccbd742a61af1eda/PyRIC-0.1.6.3.tar.gz
+	md5sums = c711069b2c1cb4fcc16312fed9b4d287
+
+pkgname = python-pyric
+
