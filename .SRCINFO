@@ -1,0 +1,34 @@
+pkgbase = noto-fonts-emoji-marshmallow
+	pkgdesc = Google Noto emoji fonts (Android 6.0.1 blob version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = custom: SIL Open Font License
+	makedepends = python2
+	makedepends = python2-fonttools
+	makedepends = python2-pillow
+	makedepends = python2-virtualenv
+	makedepends = optipng
+	makedepends = cairo
+	makedepends = pango
+	makedepends = pygtk
+	makedepends = imagemagick
+	makedepends = harfbuzz
+	makedepends = python2-booleanoperations
+	makedepends = python2-defcon
+	makedepends = python2-pyclipper
+	makedepends = python2-ufolib
+	depends = fontconfig
+	provides = noto-fonts-emoji
+	conflicts = noto-fonts-emoji
+	source = old.zip::https://codeload.github.com/googlei18n/noto-emoji/zip/7c0d24f2f2f3c44aa04c78df55bab5bc7deeb5c4
+	source = new.zip::https://codeload.github.com/googlei18n/noto-emoji/zip/153e1d4c026c124fbac6ee93e559b5df375f24f5
+	source = nototools::git+https://github.com/googlei18n/nototools.git
+	source = Makefile.patch
+	sha256sums = 279dd15d00eb8cb5aa45730c6d773b8ca2d9e92ad1977875df0847e8b3e656d4
+	sha256sums = da62d5c87f80ec41ff83efaa4aca2018fe1fc7d9d3efd718ea63993d75054267
+	sha256sums = SKIP
+	sha256sums = bcb5bebfde727ffb605ed4b2403e34fd47c615d31f5c1714f71b39e706c9d3da
+
+pkgname = noto-fonts-emoji-marshmallow
+

@@ -1,0 +1,11 @@
+--- a/Makefile	2018-03-08 08:57:46.745559445 -0600
++++ b/Makefile	2018-03-08 08:57:56.474684693 -0600
+@@ -166,7 +166,7 @@
+ 	@convert $(IMOPS) "$<" -composite "PNG32:$@"
+
+ $(FLAGS_DIR)/%.png: $(FLAGS_SRC_DIR)/%.png ./waveflag $(PNGQUANT) | $(FLAGS_DIR)
+-	@./waveflag $(FLAGS_DIR)/ "$<"
++	@./waveflag "$<" "$@"
+
+ $(RESIZED_FLAGS_DIR)/%.png: $(FLAGS_DIR)/%.png | $(RESIZED_FLAGS_DIR)
+ 	@convert $(IMOPS) "$<" -composite "PNG32:$@"
