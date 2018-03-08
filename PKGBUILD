@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r59.3160091
+pkgver=r61.0a509fa
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -59,12 +59,11 @@ package() {
         return 1
   }
 
-  # shellcheck disable=SC2154
-  python setup.py install --root="${pkgdir}" --optimize=1
+  # The install script will run
+  #   python setup.py install --root="${pkgdir}" --optimize=1
+  # as well as install system files to the correct locations
 
-  # Install the systemd service file
-  mkdir -p "${pkgdir}"/usr/lib/systemd/system/
-  cp conf/systemd/ipwaiter.service "${pkgdir}"/usr/lib/systemd/system/
-  chmod 644 "${pkgdir}"/usr/lib/systemd/system/ipwaiter.service
+  # shellcheck disable=SC2154
+  DESTDIR="${pkgdir}" ./install.sh
 }
 
