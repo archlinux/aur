@@ -1,14 +1,15 @@
+# Maintainer: CountMurphy <spartan1086@gmail.com>
 # Maintainer: Shelvacu <aur@shelvacu.com>
 
 _gitname=libserial
 pkgname="${_gitname}-git"
-pkgver=r148.80e5f25
+pkgver=r168.1201211
 pkgrel=1
 pkgdesc="A library for accessing serial ports on POSIX systems (git version)"
 arch=('x86_64')
 url="https://github.com/crayzeewulf/${_gitname}/"
 license=('GPL2')
-makedepends=('git' 'python2-sip')
+makedepends=('git' 'python2-sip' 'gtest')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 source=("$pkgname"::"git+https://github.com/crayzeewulf/${_gitname}.git")
@@ -22,19 +23,12 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  make -f Makefile.dist
-
-  ./configure --prefix=/usr
-
-  cd sip
-  python2 configure.py #Workaround from https://github.com/crayzeewulf/libserial/issues/62
-  cd ..
-
-  make
+  sed -i '1i#!/usr/bin/bash' compile.sh
+  ./compile.sh
 }
 
 package() {
   cd "$pkgname"
-
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+ mkdir -p $pkgdir/usr/lib
+ install -Dm555 build/lib/libserial.so  "$pkgdir/usr/lib/"
 }
