@@ -3,14 +3,13 @@ pkgname=softethervpn-client-manager
 pkgver=v4.25_9656
 _realpkgver=${pkgver//_/-}-rtm-2018.01.15
 _exe="softether-vpnclient-${_realpkgver}-windows-x86_x64-intel.exe"
-pkgrel=2
+pkgrel=3
 pkgdesc="SoftEther VPN Client Manager"
 arch=('i686' 'x86_64')
 url="https://www.softether.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'wine')
 makedepends=('gzip' 'icoutils')
-install="vpncmgr.install"
 source=("http://www.softether-download.com/files/softether/${_realpkgver}-tree/Windows/SoftEther_VPN_Client/${_exe}"
         'vpncmgr.desktop'
         'vpncmgr.png'
