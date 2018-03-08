@@ -2,7 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext
-pkgver=0.7
+_pkgname=TexText
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
@@ -10,8 +11,9 @@ license=('custom:BSD')
 url="http://pav.iki.fi/software/textext/"
 depends=('inkscape' 'texlive-core' 'python2')
 optdepends=('pdf2svg' 'pygtk')
-source=("https://bitbucket.org/pitgarbe/textext/downloads/TexText-Linux-0.7.tgz")
-md5sums=('ddeddf0f4bb3af5d497389c913ba0145')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/textext/textext/releases/download/$pkgver/${_pkgname}-Linux-$pkgver.tgz")
+sha256sums=('5f409bec9bdeb9ab2eff9d8608d518f7f1156cfcc187caef9638371b5c2a9bbb')
+
 prepare() {
   sed -i '1s|python\>|python2|' $pkgname-$pkgver-linux/extension/textext.py
 }
