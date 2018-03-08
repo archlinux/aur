@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.13.r10.g2c5d6ef
+pkgver=0.13.r11.g0780b6f
 pkgrel=1
 pkgdesc="League Of Legends: Install/Run wrapper"
 arch=('any')
