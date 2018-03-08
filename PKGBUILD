@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r36.01c7de0
+pkgver=r37.6cacc54
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -16,7 +16,7 @@ arch=('any')
 # shellcheck disable=SC2034
 makedepends=('git')
 # shellcheck disable=SC2034
-depends=('iptables')
+depends=('iptables' 'git' 'python' 'python-setuptools' 'python-sh')
 # shellcheck disable=SC2034
 optdepends=()
 # shellcheck disable=SC2034
@@ -35,6 +35,8 @@ url="https://github.com/pyamsoft/ipwaiter"
 sha256sums=('SKIP')
 # shellcheck disable=SC2034
 source=("${_gitname}::git+${url}")
+# shellcheck disable=SC2034
+source=("${_gitname}::git+${url}#branch=master")
 
 ###############################################################################
 
@@ -58,6 +60,6 @@ package() {
   }
 
   # shellcheck disable=SC2154
-  DESTDIR="${pkgdir}" ./install.sh
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
