@@ -1,6 +1,6 @@
 pkgbase = elementary-add-icon-theme-git
 	pkgdesc = Additional icons for elementary OS Freya.
-	pkgver = 205.d1b5acd
+	pkgver = 380.f7a89bf
 	pkgrel = 1
 	url = https://github.com/varlesh/elementary-add
 	install = elementary-add-icon-theme.install
