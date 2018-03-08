@@ -2,7 +2,7 @@
 
 pkgname=tilix-git
 _pkgname=tilix
-pkgver=1.7.5.r36.4031575
+pkgver=1.7.5.r49.aba1c15
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64' 'i686')
@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd ${_pkgname}
   # in many cases po4a-translate is not in the PATH
-  ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace -defaultlib=phobos2-ldc-shared,druntime-ldc-shared'
+  ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
   make
 }
 
