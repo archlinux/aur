@@ -1,10 +1,10 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Chris Tam <lchris314 at gmail.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Alexej Magura <sickhadas.nix*gmail*>
 
 pkgname=libtinfo5
 pkgver=5
-pkgrel=18
+pkgrel=19
 pkgdesc="symlink to ncurses for use in cuda and other packages (legacy)"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
@@ -13,5 +13,5 @@ depends=('ncurses')
 
 package() {
   install -d "${pkgdir}/usr/lib"
-  ln -s "/usr/lib/libncursesw.so.6.0" -T "${pkgdir}/usr/lib/libtinfo.so.5"
+  ln -s "/usr/lib/libncursesw.so.6" -T "${pkgdir}/usr/lib/libtinfo.so.5"
 }
