@@ -1,0 +1,16 @@
+pkgbase = python-wolframalpha
+	pkgdesc = Wolfram|Alpha 2.0 API client
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/jaraco/wolframalpha
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-six
+	depends = python-xmltodict
+	depends = python-jaraco
+	source = https://pypi.python.org/packages/65/6e/1516f03f6fbd9b93f856637394b1e467c0ae07975882425af7b0564c258e/wolframalpha-3.0.1.tar.gz
+	md5sums = 74ab78e33fc0affbef9fce2c3d63bac9
+
+pkgname = python-wolframalpha
+
