@@ -12,7 +12,7 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -56,9 +56,16 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver/.0}.tar.gz"
   "${pkgname}.install"
+  "0001-prevent-requirements.txt-from-being-installed-to-usr.patch"
 )
 sha256sums=('abc7806fdea08c42579614ad15c3521b13fdee4724170c373a260bc08b35f019'
-            'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073')
+            'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073'
+            'c16d0cbb44f6446bfdeb1d5d539a799aa84ced067b269ab4bf95e6a1ab0d4f9f')
+
+prepare() {
+  cd "${pkgname/on-cash/um}-${pkgver/.0}"
+  patch -Np1 -i "${srcdir}/0001-prevent-requirements.txt-from-being-installed-to-usr.patch"
+}
 
 build() {
   cd "${pkgname/on-cash/um}-${pkgver/.0}"
