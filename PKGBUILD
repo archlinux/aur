@@ -12,12 +12,12 @@ _idct=idct-mjpeg-mmx
 
 pkgname=projectx
 pkgver=0.91.0.08
-pkgrel=2
+pkgrel=3
 license=('GPL')
 arch=('i686' 'x86_64')
 pkgdesc="DVB demux tool for repairing and analyzing different stream types"
 makedepends=('make')
-depends=('java-runtime' 'java-environment' 'bash')
+depends=('java-runtime<=8' 'java-environment' 'bash')
 url="http://sourceforge.net/projects/project-x"
 source=(http://downloads.sourceforge.net/project/project-x/project-x/ProjectX_0.91.0.00/ProjectX_0.91.0.zip
 	http://gentoo.sbriesen.de/distfiles/projectx-idctfast.tar.xz 
