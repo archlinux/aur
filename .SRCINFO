@@ -1,0 +1,24 @@
+pkgbase = textext-git
+	pkgdesc = An inkscape extension which lets you add LaTeX equations to your drawings
+	pkgver = 20180206
+	pkgrel = 1
+	url = https://bitbucket.org/pitgarbe/textext
+	arch = any
+	license = custom:BSD
+	makedepends = mercurial
+	depends = inkscape
+	depends = python2
+	depends = texlive-core
+	optdepends = pygtk
+	optdepends = python2-lxml
+	optdepends = pdf2svg
+	optdepends = pstoedit
+	optdepends = ghostscript
+	optdepends = imagemagick6
+	provides = textext
+	conflicts = textext
+	source = textext::git+https://github.com/textext/textext.git
+	md5sums = SKIP
+
+pkgname = textext-git
+
