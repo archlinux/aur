@@ -1,0 +1,16 @@
+pkgbase = xsr-git
+	pkgdesc = X Steps Recorder is a clone of PSR for Windows, a program that allows users to make a recording of all of the steps they took.
+	pkgver = r133.6c87ad2
+	pkgrel = 1
+	url = https://github.com/nonnymoose/xsr
+	arch = any
+	license = MIT
+	depends = perl
+	depends = scrot
+	provides = xsr
+	conflicts = xsr
+	source = git+https://github.com/nonnymoose/xsr.git
+	sha256sums = SKIP
+
+pkgname = xsr-git
+
