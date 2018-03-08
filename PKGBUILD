@@ -2,7 +2,7 @@
 
 pkgname=rocksdb-lite
 pkgver=5.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd rocksdb-$pkgver
-  CXXFLAGS='-DROCKSDB_LITE -DROCKSDB_USE_RTTI' make shared_lib
+  CFLAGS='-DROCKSDB_LITE -DROCKSDB_USE_RTTI' make shared_lib
 }
 
 package() {
