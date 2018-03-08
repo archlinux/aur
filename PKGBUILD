@@ -1,12 +1,12 @@
-# Maintainer: Deon Spengler <deon[at]spengler[dot]co[dot]za>
+# Maintainer: Deon Spengler <deon at spengler dot co dot za>
 # Contributor: DJ Lucas <dj_AT_linuxfromscratch_DOT_ort>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=3.2.10
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgver=4.0.0
+pkgrel=1
+arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
 options=('!strip')
@@ -35,7 +35,7 @@ source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
         "sogo_configure.patch"
         "sogo.service"
         "sogo.confd")
-sha256sums=('63828a93d15c30c84a7955d44962373d428697770e875ce5a9a5367378caf04e'
+sha256sums=('b7f3fc762259f63f05b3d9fcfe3eca5126dc0a1183135fd7c29ddecd5dd9e25c'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
