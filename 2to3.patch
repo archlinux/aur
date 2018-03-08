@@ -1,0 +1,43 @@
+--- ./duckduckgo.py     (original)
++++ ./duckduckgo.py     (refactored)
+@@ -1,5 +1,5 @@
+-import urllib
+-import urllib2
++import urllib.request, urllib.parse, urllib.error
++import urllib.request, urllib.error, urllib.parse
+ import json as j
+ import sys
+ 
+@@ -40,11 +40,11 @@
+         'd': meanings,
+         }
+     params.update(kwargs)
+-    encparams = urllib.urlencode(params)
++    encparams = urllib.parse.urlencode(params)
+     url = 'http://api.duckduckgo.com/?' + encparams
+ 
+-    request = urllib2.Request(url, headers={'User-Agent': useragent})
+-    response = urllib2.urlopen(request)
++    request = urllib.request.Request(url, headers={'User-Agent': useragent})
++    response = urllib.request.urlopen(request)
+     json = j.loads(response.read())
+     response.close()
+ 
+@@ -167,13 +167,13 @@
+ def main():
+     if len(sys.argv) > 1:
+         q = query(' '.join(sys.argv[1:]))
+-        keys = q.json.keys()
++        keys = list(q.json.keys())
+         keys.sort()
+         for key in keys:
+             sys.stdout.write(key)
+-            if type(q.json[key]) in [str,unicode]: print(':', q.json[key])
++            if type(q.json[key]) in [str,str]: print((':', q.json[key]))
+             else: 
+                 sys.stdout.write('\n')
+-                for i in q.json[key]: print('\t',i)
++                for i in q.json[key]: print(('\t',i))
+     else:
+-        print('Usage: %s [query]' % sys.argv[0])
++        print(('Usage: %s [query]' % sys.argv[0]))

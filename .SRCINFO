@@ -1,0 +1,15 @@
+pkgbase = python-duckduckgo2
+	pkgdesc = Library for querying the DuckDuckGo API
+	pkgver = 0.242
+	pkgrel = 1
+	url = http://github.com/crazedpsyc/python-duckduckgo/
+	arch = any
+	license = BSD
+	depends = python
+	source = https://pypi.python.org/packages/6c/2f/33c29da133061032843aed6630bdcda8456dbb5f6026e091ff6a3176c8e7/duckduckgo2-0.242.tar.gz
+	source = 2to3.patch
+	md5sums = d9668a03c41a34d7a43275303172cc3e
+	md5sums = 50abb22432941daae37240283795f171
+
+pkgname = python-duckduckgo2
+
