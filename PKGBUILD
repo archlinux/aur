@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 
 pkgname=gnome-shell-extension-gsconnect
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 source=("https://github.com/andyholmes/$pkgname/releases/download/v$pkgver/gsconnect.andyholmes.github.io.zip")
 noextract=('gsconnect.andyholmes.github.io.zip')
-sha256sums=('938c21b644338f70f2e57966d5f7f22db4ad15f3ada2f741ea6b822f8d3fb69b')
+sha256sums=('5d90c070f83d0578d655ac95e13aeb9fb99f72074ca6ea489898a800b42032ef')
 
 package() {
   mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/"
