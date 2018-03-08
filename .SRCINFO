@@ -1,7 +1,7 @@
 pkgbase = python-padatious
 	pkgdesc = A neural network intent parser
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/MycroftAI/padatious
 	arch = any
 	license = Apache2.0

@@ -3,7 +3,7 @@
 _pkgsrcname=padatious
 pkgname=python-padatious
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A neural network intent parser"
 url="http://github.com/MycroftAI/padatious"
 license=("Apache2.0")
