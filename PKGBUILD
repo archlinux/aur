@@ -1,12 +1,12 @@
 # Maintainer: Jonni Westphalen <jonny.westphalen@googlemail.com>
 pkgname=aurman-git
-pkgver=2.7.r0.g728bb60
+pkgver=2.8.r0.g35e1fad
 pkgrel=1
 pkgdesc="aurman AUR helper"
 arch=('x86_64')
 url="https://github.com/polygamma/aurman"
 license=('MIT')
-depends=('python' 'expac' 'python-requests' 'pyalpm' 'pacman' 'sudo' 'git')
+depends=('python' 'expac' 'python-requests' 'pyalpm' 'pacman' 'sudo' 'git' 'python-regex')
 source=('aurman_sources::git+https://github.com/polygamma/aurman.git#branch=master')
 md5sums=('SKIP')
 
