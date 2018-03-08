@@ -17,7 +17,7 @@ depends=(freetype2 libxdg-basedir pango xcb-util-xrm wayland-wall)
 optdepends=('sway: use as application runner'
             'wlc-wall-injector: injects wall wayland protocol in wlc based compositors'
             'orbment: use as application runner')
-makedepends=('git')
+makedepends=('git' 'wayland')
 provides=('rofi')
 conflicts=('rofi')
 source=("git+https://github.com/DaveDavenport/rofi#branch=wip/wayland")
