@@ -2,7 +2,7 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=selfoss
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -22,14 +22,7 @@ backup=('etc/webapps/selfoss/config.ini'
         'usr/share/webapps/selfoss/config.ini')
 install=${pkgname}.install
 source=("https://github.com/SSilence/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('5c880fe79326c0e584be21faeaebe805fac792f2c56b7fd5144584e5137a608d')
-
-prepare() {
-  cd "${srcdir}/data/fulltextrss/standard"
-
-  # Fix error with translating pathname to UTF-8
-  mv pérotin.com.txt perotin.com.txt
-}
+sha256sums=('0b3d46b0b25170f99e3e29c9fc6a2e5235b0449fecbdad902583c919724aa6ed')
 
 package() {
   rm -rf "${srcdir}"/{README.md,${pkgname}-${pkgver}.zip}
