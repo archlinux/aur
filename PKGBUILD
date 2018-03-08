@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.306.0_30_gd486a5548
+pkgver=2018.306.0_78_gc11f6efab
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -58,6 +58,7 @@ prepare() {
 	git submodule update --recursive
 
 	# Download dependencies
+	export TERM='xterm'
 	nuget restore
 }
 
@@ -69,7 +70,8 @@ build() {
 	ln -s "/lib/mono/4.5/Facades/netstandard.dll" "osu.Game/bin/Release"
 
 	# Build
-	export MONO_IOMAP="case"
+	export MONO_IOMAP='case'
+	export TERM='xterm'
 	xbuild /property:Configuration=Release
 
 	# Cleanup
