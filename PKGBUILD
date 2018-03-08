@@ -2,44 +2,22 @@
 
 pkgname="museeks-bin"
 _pkgname="museeks"
-pkgver="0.8.1"
+pkgver="0.9.0"
 pkgrel="1"
 pkgdesc="A lightweight and cross-platform music player."
 arch=("x86_64" "i686")
 url="http://museeks.io"
 license=("MIT")
 depends=("gtk2" "cairo" "freetype2" "fontconfig" "gconf" "nss" "alsa-lib" "ttf-font")
-makedepends=("gendesk")
 provides=("museeks")
 conflicts=("museeks" "museeks-git")
-md5sums=("77e73d47252b3c333d42770d373afb45")
 
-_platform="x64"
-if [ "$CARCH" = "i686" ]; then
-  _platform="ia32"
-  md5sums=("50a3d4ed5294e9f38378dc67c87de9cf")
-fi
+md5sums=("148fc27e1bd6e8a025d3998e5c3482b2")
+[ "$CARCH" = "i686" ] && md5sums=("5fe0afb518c384d514a47b374fc6d1ca")
 
-source=("https://github.com/KeitIG/museeks/releases/download/${pkgver}/museeks-linux-${_platform}.zip")
-
-prepare() {
-  gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc"
-}
+source=("https://github.com/KeitIG/museeks/releases/download/${pkgver}/museeks-${CARCH}.rpm")
 
 package() {
-  _base_dir="${srcdir}/museeks-linux-${_platform}"
-
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-  install -dm755 "${pkgdir}/usr/bin"
-
-  install -Dm755 "${_base_dir}/Museeks" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
-  install -Dm644 "${_base_dir}/"{content_shell.pak,icudtl.dat,libffmpeg.so,libnode.so,natives_blob.bin,snapshot_blob.bin,version,LICENSE} "${pkgdir}/usr/share/${_pkgname}/"
-
-  cp -a "${_base_dir}/"{locales,resources} "${pkgdir}/usr/share/${_pkgname}/"
-
-  ln -s "/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-  install -Dm644 "${_base_dir}/resources/app/src/images/logos/museeks.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-
-  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cp -a $srcdir/opt $pkgdir/
+  cp -a $srcdir/usr $pkgdir/
 }
