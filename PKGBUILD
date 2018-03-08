@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=2.5.1rc0+530+g5f35b041c2
+pkgver=2.5.1rc0+544+g1ac90d5254
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ depends=(
         # wireshark-qt dependencies
         'qt5-multimedia'
         'qt5-tools'
+        'qt5-svg'               # for SVG icons in the Qt GUI
         # wireshark-gtk (deprecated) depedencies
         #'portaudio'
         # shared between the GUI (for post-installation hook)
@@ -37,9 +38,6 @@ depends=(
 
         # extcap (sshdump, etc.)
         'libssh'
-)
-optdepends=(
-        'qt5-svg: for SVG icons in the Qt GUI'
 )
 # perl-parse-yapp is only needed as build-time dependency if you are actually
 # going to regenerate pidl dissectors (unlikely for the majority of users).
