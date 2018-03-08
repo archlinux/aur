@@ -1,7 +1,7 @@
 pkgbase = qtfm
 	pkgdesc = A lightweight file manager
 	pkgver = 5.9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://qt-apps.org/content/show.php/QtFM?content=158787
 	changelog = qtfm.changelog
 	arch = i686

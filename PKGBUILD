@@ -5,7 +5,7 @@
 
 pkgname=qtfm
 pkgver=5.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight file manager"
 arch=('i686' 'x86_64')
 url="http://qt-apps.org/content/show.php/QtFM?content=158787"
@@ -23,13 +23,11 @@ prepare() {
 
 build() {
   cd $pkgname
-
   qmake
   make
 }
 
 package() {
   cd $pkgname
-
   make INSTALL_ROOT="${pkgdir}" install
 }
