@@ -2,16 +2,15 @@
 
 _pkgbasename=pcre
 pkgname=lib32-$_pkgbasename
-pkgver=8.40
+pkgver=8.41
 pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
-url="http://pcre.sourceforge.net"
+url="https://www.pcre.org"
 license=('custom')
 depends=('lib32-gcc-libs' $_pkgbasename)
-makedepends=('gcc-multilib')
-source=("https://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$_pkgbasename-$pkgver.tar.bz2"{,.sig})
-md5sums=('41a842bf7dcecd6634219336e2167d1d'
+source=("https://ftp.pcre.org/pub/pcre/$_pkgbasename-$pkgver.tar.bz2"{,.sig})
+md5sums=('c160d22723b1670447341b08c58981c1'
          'SKIP')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
 
@@ -34,8 +33,13 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./configure --prefix=/usr --libdir=/usr/lib32 \
-    --enable-utf --enable-unicode-properties --enable-pcre16 --enable-pcre32 --enable-jit
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --enable-unicode-properties \
+    --enable-pcre16 \
+    --enable-pcre32 \
+    --enable-jit
   make
 }
 
