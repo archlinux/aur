@@ -1,20 +1,5 @@
 pkgbase = nodejs-tldr
 	pkgdesc = Simplified and community-driven man pages
-	pkgver = 3.0.1
-	pkgrel = 1
-	url = https://github.com/tldr-pages/tldr
-	arch = any
-	license = MIT
-	depends = nodejs
-	depends = npm
-	noextract = tldr-3.0.1.tgz
-	source = https://registry.npmjs.org/tldr/-/tldr-3.0.1.tgz
-	sha256sums = 232694cd7df5627035a18a3dd92982e1a8eef64f3879ef290f8668816a8f6aac
-
-pkgname = nodejs-tldr
-
-pkgbase = nodejs-tldr
-	pkgdesc = Simplified and community-driven man pages
 	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/tldr-pages/tldr
