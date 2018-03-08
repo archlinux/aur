@@ -1,0 +1,15 @@
+--- /usr/share/applications/lix.desktop	2017-11-30 09:38:30.000000000 +0100
++++ lix.desktop	2018-03-08 14:45:04.467068555 +0100
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=Lix
+ Comment=Lix E-Reader for Linux
+-Exec=AppRun
++Exec=/usr/bin/lix
+ Terminal=false
+ Type=Application
+-Icon=lix
++Icon=/usr/share/icons/default/48x48/apps/lix.png
+ X-AppImage-Version=1.0.15
+ X-AppImage-BuildId=d7f115e0-d5a9-11a7-0154-3952b44ca794
+ Categories=Education;

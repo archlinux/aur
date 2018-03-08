@@ -2,7 +2,7 @@
 
 pkgname=lix-ereader
 pkgver=1.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary e-reader"
 arch=('x86_64')
 url='https://www.lix.com/'
@@ -20,6 +20,7 @@ prepare() {
     rm -r usr/lib
 
     # Desktop Entry
+	patch -uN lix.desktop ../lix.desktop.patch || return 1
     mkdir -p usr/share/applications
     mv lix.desktop usr/share/applications
 
