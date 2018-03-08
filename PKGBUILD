@@ -1,0 +1,28 @@
+# Maintainer: Nenad Stojanovikj <nekk1@live.com>
+
+pkgname=plymouth-theme-arch-beat
+pkgver='0.1'
+pkgrel=1
+pkgdesc='Plymouth theme with pulsating Arch Linux logo.'
+arch=('any')
+url="https://github.com/nenadstojanovikj/arch-beat/"
+license=('MIT')
+depends=('plymouth')
+makedepends=('git')
+source=("https://github.com/nenadstojanovikj/arch-beat/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  cd "arch-beat-${pkgver}"
+
+  _themedir="$pkgdir/usr/share/plymouth/themes/arch-beat"
+
+  for N in *.png arch-beat.plymouth arch-beat.script; do
+    install -Dm644 $N "${_themedir}/$N"
+  done
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
+
+# vim:set ts=2 sw=2 et:
