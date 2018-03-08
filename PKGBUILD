@@ -3,16 +3,17 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=kuickshow
-pkgver=0.9.1
-pkgrel=9
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A very fast and convenient image viewer"
 url="http://userbase.kde.org/KuickShow"
 arch=('x86_64')
 license=('GPL')
-depends=('kdebase-runtime' 'imlib')
-makedepends=('pkg-config' 'cmake' 'automoc4' 'docbook-xsl')
-source=(http://hosti.leonde.de/~gis/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('9427a563cd48b968230743d73de74a1d802666e996866b365c2f52708d428850')
+depends=('hicolor-icon-theme' 'imlib' 'qt5-base' 'qt5-x11extras'
+         'kdoctools' 'ki18n' 'kiconthemes' 'kio' 'kxmlgui' 'kinit')
+makedepends=('cmake' 'docbook-xsl' 'extra-cmake-modules')
+source=($pkgname-$pkgver.tar.gz::https://github.com/KDE/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=('1b80e62e32991c9f246fef9db3a4bf36b547b8dbadeb4fb27caef5e73692637a')
 
 build() {
   cd "${srcdir}"
@@ -21,7 +22,9 @@ build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=YES
   make
 }
 
