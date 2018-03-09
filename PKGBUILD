@@ -1,3 +1,4 @@
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Maintainer: fusion809 <CONTACT via comments at https://aur.archlinux.org/packages/jucipp>
 # Contributor: archshift
 
@@ -5,9 +6,9 @@ pkgname=jucipp
 ghub="https://github.com"
 cpp="$ghub/cppit"
 pkgdesc='A lightweight cross-platform C++ IDE'
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="$cpp/jucipp"
 license=('MIT')
 depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2' 'ctags')
