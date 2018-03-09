@@ -10,5 +10,5 @@ PIDFile=/var/run/sks-local/sksrecon.pid
 ExecStart=/usr/bin/sks-local recon
 
 [Install]
-Wants=sks-db.service
+Wants=sks-db-local.service
 WantedBy=multi-user.target
