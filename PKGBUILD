@@ -1,4 +1,4 @@
-# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=cutecw
 pkgver=1.0
