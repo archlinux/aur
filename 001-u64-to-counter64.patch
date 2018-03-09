@@ -1,0 +1,106 @@
+diff --git a/src/defaults/node-libvirtGuestCpuTime.m2d b/src/defaults/node-libvirtGuestCpuTime.m2d
+index 795f697..9889f77 100644
+--- a/src/defaults/node-libvirtGuestCpuTime.m2d
++++ b/src/defaults/node-libvirtGuestCpuTime.m2d
+@@ -11,7 +11,7 @@
+ ## If you do, it is likely to break lots of generated code that
+ ## you will have to fix.
+ ##
+-## @eval $m2c_decl = U64@
++## @eval $m2c_decl = struct counter64@
+ ##
+ ########################################################################
+ ## Generate/use mapping functions? Useful if the MIB defines
+diff --git a/src/libvirtGuestTable-README-libvirtGuestTable.txt b/src/libvirtGuestTable-README-libvirtGuestTable.txt
+index 5a74dae..2383e8b 100644
+--- a/src/libvirtGuestTable-README-libvirtGuestTable.txt
++++ b/src/libvirtGuestTable-README-libvirtGuestTable.txt
+@@ -722,7 +722,7 @@ The CPU time used by the virtual guest, in nanoseconds.
+  *
+  *
+  * Its syntax is COUNTER64 (based on perltype COUNTER64)
+- * The net-snmp type is ASN_COUNTER64. The C type decl is U64 (U64)
++ * The net-snmp type is ASN_COUNTER64. The C type decl is struct counter64 (U64)
+  */
+ /*---------------------------------------------------------------------
+  * LIBVIRT-MIB::libvirtGuestEntry.libvirtGuestRowStatus
+diff --git a/src/libvirtGuestTable.h b/src/libvirtGuestTable.h
+index ca27abd..fcb3194 100644
+--- a/src/libvirtGuestTable.h
++++ b/src/libvirtGuestTable.h
+@@ -121,7 +121,7 @@ typedef struct libvirtGuestTable_data_s {
+         /*
+          * libvirtGuestCpuTime(7)/COUNTER64/ASN_COUNTER64/U64(U64)//l/A/w/e/r/d/h
+          */
+-   U64   libvirtGuestCpuTime;
++   struct counter64   libvirtGuestCpuTime;
+ 
+         /*
+          * libvirtGuestRowStatus(9)/RowStatus/ASN_INTEGER/long(u_long)//l/A/W/E/r/d/h
+diff --git a/src/libvirtGuestTable_data_get.c b/src/libvirtGuestTable_data_get.c
+index b252bdd..7334743 100644
+--- a/src/libvirtGuestTable_data_get.c
++++ b/src/libvirtGuestTable_data_get.c
+@@ -442,7 +442,7 @@ The CPU time used by the virtual guest, in nanoseconds.
+  *
+  *
+  * Its syntax is COUNTER64 (based on perltype COUNTER64)
+- * The net-snmp type is ASN_COUNTER64. The C type decl is U64 (U64)
++ * The net-snmp type is ASN_COUNTER64. The C type decl is struct counter64 (U64)
+  */
+ /**
+  * Extract the current value of the libvirtGuestCpuTime data.
+@@ -459,7 +459,7 @@ The CPU time used by the virtual guest, in nanoseconds.
+  * @retval MFD_ERROR           : Any other error
+  */
+ int
+-libvirtGuestCpuTime_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, U64 * libvirtGuestCpuTime_val_ptr )
++libvirtGuestCpuTime_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, struct counter64 * libvirtGuestCpuTime_val_ptr )
+ {
+    /** we should have a non-NULL pointer */
+    netsnmp_assert( NULL != libvirtGuestCpuTime_val_ptr );
+diff --git a/src/libvirtGuestTable_data_get.h b/src/libvirtGuestTable_data_get.h
+index 450d112..6a0e7ff 100644
+--- a/src/libvirtGuestTable_data_get.h
++++ b/src/libvirtGuestTable_data_get.h
+@@ -55,7 +55,7 @@ extern "C" {
+     int libvirtGuestCpuCount_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long * libvirtGuestCpuCount_val_ptr );
+     int libvirtGuestMemoryCurrent_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long * libvirtGuestMemoryCurrent_val_ptr );
+     int libvirtGuestMemoryLimit_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long * libvirtGuestMemoryLimit_val_ptr );
+-    int libvirtGuestCpuTime_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, U64 * libvirtGuestCpuTime_val_ptr );
++    int libvirtGuestCpuTime_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, struct counter64 * libvirtGuestCpuTime_val_ptr );
+     int libvirtGuestRowStatus_get( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long * libvirtGuestRowStatus_val_ptr );
+ 
+ 
+diff --git a/src/libvirtGuestTable_data_set.h b/src/libvirtGuestTable_data_set.h
+index cce0fe7..873f9f5 100644
+--- a/src/libvirtGuestTable_data_set.h
++++ b/src/libvirtGuestTable_data_set.h
+@@ -80,9 +80,9 @@ int libvirtGuestMemoryLimit_undo_setup( libvirtGuestTable_rowreq_ctx *rowreq_ctx
+ int libvirtGuestMemoryLimit_set( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long libvirtGuestMemoryLimit_val );
+ int libvirtGuestMemoryLimit_undo( libvirtGuestTable_rowreq_ctx *rowreq_ctx );
+ 
+-int libvirtGuestCpuTime_check_value( libvirtGuestTable_rowreq_ctx *rowreq_ctx, U64 libvirtGuestCpuTime_val);
++int libvirtGuestCpuTime_check_value( libvirtGuestTable_rowreq_ctx *rowreq_ctx, struct counter64 libvirtGuestCpuTime_val);
+ int libvirtGuestCpuTime_undo_setup( libvirtGuestTable_rowreq_ctx *rowreq_ctx );
+-int libvirtGuestCpuTime_set( libvirtGuestTable_rowreq_ctx *rowreq_ctx, U64 libvirtGuestCpuTime_val );
++int libvirtGuestCpuTime_set( libvirtGuestTable_rowreq_ctx *rowreq_ctx, struct counter64 libvirtGuestCpuTime_val );
+ int libvirtGuestCpuTime_undo( libvirtGuestTable_rowreq_ctx *rowreq_ctx );
+ 
+ int libvirtGuestRowStatus_check_value( libvirtGuestTable_rowreq_ctx *rowreq_ctx, u_long libvirtGuestRowStatus_val);
+diff --git a/src/libvirtGuestTable_interface.c b/src/libvirtGuestTable_interface.c
+index ce29c3b..75616d1 100644
+--- a/src/libvirtGuestTable_interface.c
++++ b/src/libvirtGuestTable_interface.c
+@@ -844,9 +844,9 @@ rc = libvirtGuestMemoryLimit_get(rowreq_ctx, (u_long *)var->val.string );
+ 
+     /* libvirtGuestCpuTime(7)/COUNTER64/ASN_COUNTER64/U64(U64)//l/A/w/e/r/d/h */
+     case COLUMN_LIBVIRTGUESTCPUTIME:
+-    var->val_len = sizeof(U64);
++    var->val_len = sizeof(struct counter64);
+     var->type = ASN_COUNTER64;
+-rc = libvirtGuestCpuTime_get(rowreq_ctx, (U64 *)var->val.string );
++rc = libvirtGuestCpuTime_get(rowreq_ctx, (struct counter64 *)var->val.string );
+         break;
+ 
+     /* libvirtGuestRowStatus(9)/RowStatus/ASN_INTEGER/long(u_long)//l/A/W/E/r/d/h */
