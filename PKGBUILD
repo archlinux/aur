@@ -12,7 +12,7 @@ source=("https://github.com/JulienPalard/$pkgname/archive/$pkgname-$pkgver.tar.g
 md5sums=('3323a9ab12e4884eebe32e48ff1f245d')
 
 package() {
-  cd "$pkgname-$pkgname-$pkgver"
+	cd "$pkgname-$pkgname-$pkgver"
 
 	make DESTDIR=$pkgdir install
 
