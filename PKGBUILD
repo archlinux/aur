@@ -22,7 +22,7 @@ pkgver=18.0a1
 _codename=Leia
 _rtype=Alpha
 _rver=1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -60,10 +60,10 @@ source=(
   'cpuinfo'
 )
 noextract=(
-  "libdvdcss-$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz"
-  "ffmpeg-$_ffmpeg_version.tar.gz"
+  "1.4.1-$_codename-$_rtype-$_rver.tar.gz"
+  "6.0.0-$_codename-$_rtype-$_rver.tar.gz"
+  "6.0.0-$_codename-$_rtype-$_rver.tar.gz"
+  "$_ffmpeg_version.tar.gz"
 )
 sha256sums=('8892498d5248eea29c30db7c128a5910afc60d1b0b894aea472604bb879a0310'
             '6e89b7fc36e26d27fcc8fadf97176ca7684f1702634ecdbe4d8df62a4a967de3'
