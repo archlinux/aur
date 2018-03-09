@@ -8,8 +8,7 @@ User=sks
 Group=sks
 PIDFile=/var/run/sks-local/sksrecon.pid
 ExecStart=/usr/bin/sks-local recon
-RuntimeDirectory=sks-local
-RuntimeDirectoryMode=0755
 
 [Install]
+Wants=sks-db.service
 WantedBy=multi-user.target
