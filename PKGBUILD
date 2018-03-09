@@ -2,7 +2,7 @@
 
 pkgname=f27-backgrounds
 pkgver=27.0.1
-pkgrel=1
+pkgrel=3
 _rhver="1.fc28"
 pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
