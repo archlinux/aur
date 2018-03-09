@@ -4,14 +4,14 @@
 # Contributor: Preecha Patumchareonpol <yumyai at gmail.com> 
 
 pkgname=podofo-git
-pkgver=r1599.5b2f441
+pkgver=r1605.4f872fd
 pkgrel=1
 pkgdesc="A C++ library to work with the PDF file format"
 arch=('x86_64')
 url="http://podofo.sourceforge.net"
 license=('GPL')
-depends=('lua' 'openssl' 'fontconfig' 'libtiff' 'libidn' 'libjpeg-turbo')
-makedepends=('cmake')
+depends=('lua' 'openssl' 'fontconfig' 'libtiff' 'libidn' 'libjpeg-turbo' 'libunistring')
+makedepends=('cmake' 'git')
 conflicts=('podofo')
 provides=('podofo')
 source=("git://github.com/svn2github/podofo.git")
