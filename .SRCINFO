@@ -1,6 +1,6 @@
 pkgbase = pet-git
 	pkgdesc = Simple command-line snippet manager, written in Go.
-	pkgver = 0.2.2
+	pkgver = VERSION
 	pkgrel = 1
 	url = https://github.com/knqyf263/pet
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = pet-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	depends = peco
+	depends = fzf
 	provides = pet
 	conflicts = pet
 

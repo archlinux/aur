@@ -1,17 +1,20 @@
 # Maintainer: NAME <EMAIL>
 pkgname=pet-git
-pkgver=0.2.2
+pkgver=VERSION
 pkgrel=1
 pkgdesc='Simple command-line snippet manager, written in Go.'
 arch=('i686' 'x86_64')
 url='https://github.com/knqyf263/pet'
 license=('MIT')
-depends=('peco')
+depends=('fzf')
 makedepends=('go' 'git')
 provides=('pet')
 conflicts=('pet')
 _gourl=github.com/knqyf263/pet
 
+pkgver() {
+  date +%Y%m%d
+}
 
 
 build() {
