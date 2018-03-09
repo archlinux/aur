@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd $pkgname
-  bash
   mkdir -p openauto_build
   cd openauto_build
   cmake -DCMAKE_BUILD_TYPE=Release -DRPI3_BUILD=FALSE -DAASDK_INCLUDE_DIRS="/opt/aasdk/include" -DAASDK_LIBRARIES="/opt/aasdk/lib/libaasdk.so" -DAASDK_PROTO_INCLUDE_DIRS="/opt/aasdk/aasdk_build" -DAASDK_PROTO_LIBRARIES="/opt/aasdk/lib/libaasdk_proto.a" ../ 
