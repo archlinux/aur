@@ -1,3 +1,4 @@
+# Maintainer : Javier Jardón <jjardon@gnome.org>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: Gereon Schomber <Gereon_Schomber@fastmail.fm>
