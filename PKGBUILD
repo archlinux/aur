@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-beta
-pkgver=v4.24.9652.beta
-pkgrel=3
+pkgver=v4.25.9656.rtm
+pkgrel=1
 pkgdesc="Multi-protocol VPN software from University of Tsukuba build with source code from 
 official website's download center."
 url="http://www.softether.org/"
@@ -16,15 +16,15 @@ sha1sums=('12a3919aabcdd7531320056a4b43072892232925'
           '06cd320553daf0dffdf6a81a22d630fbe211fc33')
 license=('GPL2')
 depends=('bash' 'openssl' 'zlib')
-makedepends=('tar')
+makedepends=('tar' 'wget')
 conflicts=('softethervpn' 'softethervpn-git')
 
 prepare() {
   # clean existing sources if any
   rm -rf "${srcdir}"/SoftEtherVPN
-  wget http://www.softether-download.com/files/softether/v4.24-9652-beta-2017.12.21-tree/Source_Code/softether-src-v4.24-9652-beta.tar.gz
-  tar xzvf softether-src-v4.24-9651-beta.tar.gz
-  mv v4.24-9651 SoftEtherVPN
+  wget http://www.softether-download.com/files/softether/v4.25-9656-rtm-2018.01.15-tree/Source_Code/softether-src-v4.25-9656-rtm.tar.gz
+  tar xzvf softether-src-v4.25-9656-rtm.tar.gz
+  mv v4.25-9656 SoftEtherVPN
 }
 
 build() {
@@ -39,7 +39,7 @@ build() {
   # Patches
 
   # Disable client SSLv3
-  patch --binary -p1 < "${srcdir}"/disable_client_sslv3.patch
+  #patch --binary -p1 < "${srcdir}"/disable_client_sslv3.patch
 
   make
 }
