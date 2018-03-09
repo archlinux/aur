@@ -92,7 +92,7 @@ post_upgrade() {
 
 New!
 
-Some fixes rtapp.conf 
+Fix for rtirq.conf new location
 
 "
 }
