@@ -1,0 +1,80 @@
+# general build setup
+mk_add_options PYTHON=/usr/bin/python2
+
+mk_add_options MOZ_CO_PROJECT=browser
+ac_add_options --enable-application=browser
+
+# number of cores your processor has
+mk_add_options MOZ_MAKE_FLAGS="-j8" 
+
+export CC=gcc-5
+export CXX=g++-5
+export CXXFLAGS="-fPIC"
+export CFLAGS="-fPIC"
+
+# let's do some ricing
+ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse -march=native -mtune=native"
+
+# strip debugging symbols
+ac_add_options --enable-strip
+
+# library and chrome format
+ac_add_options --enable-chrome-format=omni
+ac_add_options --x-libraries=/usr/lib
+
+# Use System libraries
+#ac_add_options --enable-default-toolkit=cairo-gtk3 # breaks the build, gtk3 support is not ready
+#ac_add_options --with-system-nss # build stops and informs us that system nss is not currently supported
+#ac_add_options --enable-system-cairo # system cairo may result in choppy video playback without layer acceleration
+ac_add_options --with-system-nspr
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-png
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-icu
+ac_add_options --with-system-webp
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+ac_add_options --enable-jemalloc
+ac_add_options --with-pthreads
+
+mk_add_options MOZ_CO_PROJECT=browser
+ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
+
+ac_add_options --enable-shared-js
+ac_add_options --enable-devtools
+
+# Elfhack Breaks Builds
+ac_add_options --disable-elf-hack
+
+# Disable geolocation web services
+ac_add_options --disable-necko-wifi
+
+# Disable webrtc (I think this is actually removed in palemoon)
+ac_add_options --disable-webrtc
+
+# Disable contacting anyone about anything (also removed in palemoon)
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --enable-pulseaudio
+
+# disable stuff we probably don't need or want
+ac_add_options --disable-gamepad
+ac_add_options --disable-logging
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+ac_add_options --disable-websms-backend
+ac_add_options --disable-mobile-optimize
+ac_add_options --disable-codesighs
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-codesighs
