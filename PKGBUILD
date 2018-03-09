@@ -2,18 +2,18 @@
 
 pkgname=myetherwallet
 _pkgname=etherwallet
-pkgver=3.20.03
-pkgrel=2
+pkgver=3.21.0
+pkgrel=1
 pkgdesc='Free, open-source, client-side tool for easily & securely interacting with the Ethereum network'
 arch=('any')
 depends=('xdg-utils')
 url='https://github.com/kvhnuke/etherwallet'
 license=('MIT')
-source=("$url/releases/download/v$pkgver-GPG/$_pkgname-v$pkgver.zip"{,.asc}
+source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver.zip"{,.sig}
         'myetherwallet.desktop'
         'myetherwallet'
         'LICENSE')
-sha256sums=('cd0e671cf098da357edc1119478f8c2ca927f1ae9241890364b0e75a147740e4'
+sha256sums=('b8cb3e55602f73db55435eac68ba546c7cc24fa475fcab2c2a07db560c93e3c3'
             'SKIP'
             '9fb1e89ff5a138b8e2577e3d82b0c1b9f938c38f846c01d8cadd357c6eb4ee23'
             'a723f0ba81f225d7a7bd083db89c50673e1fd11bb608d11c72efe5b9283a2524'
