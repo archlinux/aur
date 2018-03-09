@@ -5,25 +5,18 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.12.0
-pkgrel=4
+pkgver=2.13.0
+pkgrel=1
 arch=('x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc}
-        pidgin-py3-fixes.patch)
-sha256sums=('8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
-            'SKIP'
-            '2ae003adc19c2012186a2efc68163843d2037bdaf7540347185bb872424e18da')
-validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032')
-
-prepare() {
-  cd $pkgbase-$pkgver
-  patch -Np1 -i ../pidgin-py3-fixes.patch
-}
+source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc})
+sha256sums=('2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
+            'SKIP')
+validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032') # Gary Kramlich (grim) <grim@reaperworld.com>
 
 build() {
   cd $pkgbase-$pkgver
