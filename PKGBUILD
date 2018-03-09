@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=brook-systemd
-pkgver=v20180112
-pkgrel=3
+pkgver=v20180227
+pkgrel=1
 epoch=
 pkgdesc="Install brook(client) with systemd"
 arch=('x86_64')
