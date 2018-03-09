@@ -5,7 +5,7 @@
 pkgname=printrun-git
 _gitname='Printrun'
 pkgver=1.6.0.1.g91720dc
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun')
 conflicts=('printrun')
-depends=('python2-pyserial' 'wxpython' 'pyglet' 'desktop-file-utils')
+depends=('python2-pyserial' 'wxpython' 'python2-pyglet' 'desktop-file-utils')
 optdepends=(
   'python2-cairo: to use Projector feature'
   'python2-cairosvg: to use Projector feature'
