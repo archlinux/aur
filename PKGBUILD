@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 pkgname=python2-internetarchive
-pkgver=1.7.6
-pkgrel=2
+pkgver=1.7.7
+pkgrel=1
 pkgdesc="A python interface to archive.org"
 arch=('any')
 url="https://github.com/jjjake/internetarchive"
