@@ -66,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.24
+pkgver=4.14.25
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -119,7 +119,6 @@ source=(# mainline kernel patches
         "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
         "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
         "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
-        "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -135,7 +134,7 @@ source=(# mainline kernel patches
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '6183a67253cf4792431e541fe41e5054665396294cd7e41b94122db195a01357'
+            'a4d4dbbe1b8c21e963e470d80efb596c070c58a4a5ef8d21ed459cb8e29e3b26'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '8b8f4d9cc2f868b3627fa67d955fcbd7e78c63eb5f6c254688f9f779d01907f1'
@@ -147,7 +146,6 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b'
             'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
-            '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
             '472e17f1a637228ef10d6bcf29e266e8d745f2a86bcbbdb7985545b37f9be1cf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
