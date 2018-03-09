@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.1.1r2164.ad3e2a5d
+pkgver=0.1.1r2346.2e010c60
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('llvm' 'clang')
 makedepends=('cmake')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git")
+source=("git://github.com/zig-lang/zig.git#commit=2e010c60ae006944ae20ab8b3445598471c9f1e8")
 md5sums=('SKIP')
 
 pkgver() {
