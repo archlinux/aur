@@ -1,0 +1,12 @@
+diff -ura mullvad-67/src/mullvad/mullvad.desktop mullvad-67.new/src/mullvad/mullvad.desktop
+--- mullvad-67/src/mullvad/mullvad.desktop	2017-07-10 23:17:20.000000000 -0700
++++ mullvad-67.new/src/mullvad/mullvad.desktop	2018-03-09 11:22:35.401620836 -0800
+@@ -5,7 +5,7 @@
+ Comment=Anonymity and privacy
+ Comment[en]=Anonymity and privacy
+ Comment[sv]=Anonymitet och avlyssningsskydd
+-Exec=mullvad
++Exec=env MULLVAD_USE_GTK3=yes mullvad
+ Terminal=false
+ Type=Application
+ Icon=mullvad.png
