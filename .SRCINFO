@@ -1,12 +1,12 @@
 pkgbase = lima
 	pkgdesc = Personal Cloud software
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meetlima.com
 	install = lima.install
 	arch = x86_64
 	license = custom
-	makedepends = prelink
+	makedepends = execstack
 	depends = python2
 	depends = fuse
 	depends = libyaml
