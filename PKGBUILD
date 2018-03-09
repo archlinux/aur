@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 pkgver='2.4.5'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High Perf CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
@@ -14,8 +14,10 @@ conflicts=('xmrig-bin' 'xmrig')
 license=('GPL')
 backup=("etc/xmrig/xmrig.conf")
 source=("xmrig.service"
+	"xmrig.sysusers"
 	"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2107c5ca279a1184d0052a9e4fce4d70f0472354807adb1faa1fd6ff3925cdac'
+sha256sums=('0559837edbe069158909c8379041c01d9e98fb2ec4a62d3fa26b95741b463275'
+            'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
             'cd292a0395702fd1e7ee84f5f4018f037bc91a1d4723f54bfbaa771f46e67422')
 prepare() {
   cd "xmrig-${pkgver}"
@@ -35,4 +37,5 @@ package() {
   install -Dm775 "build/xmrig" "${pkgdir}/usr/bin/xmrig"
   install -Dm644 "src/config.json" "${pkgdir}/etc/xmmrig/xmrig.conf"
   install -Dm644 "${srcdir}/xmrig.service" "${pkgdir}/usr/lib/systemd/system/xmrig@.service"
+  install -Dm0644 "${srcdir}/xmrig.sysusers" "${pkgdir}/usr/lib/sysusers.d/xmrig.conf"
 }
