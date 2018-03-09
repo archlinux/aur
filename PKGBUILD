@@ -1,4 +1,4 @@
-# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 # Contributor: Bernardo Barros <bernardobarros@gmail.com>
 # Contributor: Adrien Sohier <adrien.sohier@art-software.fr>
 
