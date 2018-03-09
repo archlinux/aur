@@ -1,0 +1,11 @@
+[Unit]
+Description=libvirt SNMP sub-agent
+Requires=snmpd.service
+After=snmpd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/libvirtMib_subagent -f -L
+
+[Install]
+WantedBy=multi-user.target
