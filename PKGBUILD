@@ -11,15 +11,18 @@ depends=()
 makedepends=('make' 'gcc' 'binutils' 'patch' 'cmake' 'autoconf' 'automake' 'git')
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
+        0001-Use-shallow-git-clone.patch
         0002-Fix-for-distcc.patch)
 sha1sums=('79b774b5fd48d22ecfb53ce430881772bcf152ee'
           'd05ed01303a09d103f703118126348b1402b3950'
+          'e0e4de705bc092c029bebfa2fe3773dafa71a18e'
           'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
 prepare()
 {
     cd ${srcdir}/machinery-${pkgver}
     patch -Np1 -i "${srcdir}/0001-Avoid-using-TLS.patch"
+    patch -Np1 -i "${srcdir}/0001-Use-shallow-git-clone.patch"
     patch -Np1 -i "${srcdir}/0002-Fix-for-distcc.patch"
 }
 

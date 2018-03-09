@@ -1,0 +1,110 @@
+From 0a32d32f710fe5c1ce16a45f3f38b992af64b6eb Mon Sep 17 00:00:00 2001
+From: Anatolii Sakhnik <sakhnik@gmail.com>
+Date: Fri, 9 Mar 2018 15:56:10 +0200
+Subject: [PATCH] Use shallow git clone
+
+---
+ cmake/External-Googletest.cmake     | 1 +
+ cmake/External-Mosquitto.cmake      | 1 +
+ cmake/External-Mosquitto.cmake.orig | 1 +
+ cmake/External-OpenCV.cmake         | 4 +++-
+ cmake/External-OpenMax.cmake        | 1 +
+ cmake/External-RaspiCam.cmake       | 1 +
+ cmake/External-Restclient.cmake     | 1 +
+ 7 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/External-Googletest.cmake b/cmake/External-Googletest.cmake
+index 4b9cb55..8107838 100755
+--- a/cmake/External-Googletest.cmake
++++ b/cmake/External-Googletest.cmake
+@@ -3,6 +3,7 @@ message("External project: Googletest")
+ ExternalProject_Add(googletest
+   GIT_REPOSITORY https://github.com/google/googletest
+   GIT_TAG 673c975a963f356b19fea90cb57b69192253da2a
++  GIT_SHALLOW ON
+   SOURCE_DIR googletest
+   BUILD_IN_SOURCE 1
+   UPDATE_COMMAND ""
+diff --git a/cmake/External-Mosquitto.cmake b/cmake/External-Mosquitto.cmake
+index 8af2600..8b20648 100644
+--- a/cmake/External-Mosquitto.cmake
++++ b/cmake/External-Mosquitto.cmake
+@@ -3,6 +3,7 @@ message("External project: Mosquitto")
+ ExternalProject_Add(mosquitto
+   GIT_REPOSITORY ${git_protocol}://github.com/eclipse/mosquitto.git
+   GIT_TAG ff55499725e8ae5cf4ab6a441541f0a6d1fe30f1
++  GIT_SHALLOW ON
+   SOURCE_DIR mosquitto
+   BINARY_DIR mosquitto-build
+   UPDATE_COMMAND ""
+diff --git a/cmake/External-Mosquitto.cmake.orig b/cmake/External-Mosquitto.cmake.orig
+index 06594b6..dd93565 100644
+--- a/cmake/External-Mosquitto.cmake.orig
++++ b/cmake/External-Mosquitto.cmake.orig
+@@ -3,6 +3,7 @@ message("External project: Mosquitto")
+ ExternalProject_Add(mosquitto
+   GIT_REPOSITORY ${git_protocol}://github.com/eclipse/mosquitto.git
+   GIT_TAG ff55499725e8ae5cf4ab6a441541f0a6d1fe30f1
++  GIT_SHALLOW ON
+   SOURCE_DIR mosquitto
+   BINARY_DIR mosquitto-build
+   UPDATE_COMMAND ""
+diff --git a/cmake/External-OpenCV.cmake b/cmake/External-OpenCV.cmake
+index 25adc1e..1337271 100755
+--- a/cmake/External-OpenCV.cmake
++++ b/cmake/External-OpenCV.cmake
+@@ -3,6 +3,8 @@ message("External project: OpenCV")
+ ExternalProject_Add(opencv
+   GIT_REPOSITORY ${git_protocol}://github.com/cedricve/opencv
+   GIT_TAG h264-preset
++  GIT_SHALLOW ON
++  GIT_PROGRESS ON
+   SOURCE_DIR opencv
+   BINARY_DIR opencv-build
+   UPDATE_COMMAND ""
+@@ -68,4 +70,4 @@ if(EXISTS "${CMAKE_BINARY_DIR}/thirdparty/share/OpenCV/OpenCVConfig.cmake")
+     add_custom_target(rerun)
+ else()
+     add_custom_target(rerun ${CMAKE_COMMAND} ${CMAKE_SOURCE_DIR} DEPENDS opencv)
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/cmake/External-OpenMax.cmake b/cmake/External-OpenMax.cmake
+index 90cc7c3..c832ee0 100755
+--- a/cmake/External-OpenMax.cmake
++++ b/cmake/External-OpenMax.cmake
+@@ -17,6 +17,7 @@ message("External project: OpenMaxIL-cpp")
+ ExternalProject_Add(openmax
+   GIT_REPOSITORY ${git_protocol}://github.com/dridri/OpenMaxIL-cpp
+   GIT_TAG 905b9c0ad45b32c4fb0bd7a169bc1f1b06b534c1
++  GIT_SHALLOW ON
+   SOURCE_DIR openmax
+   BINARY_DIR openmax-build
+   UPDATE_COMMAND ""
+diff --git a/cmake/External-RaspiCam.cmake b/cmake/External-RaspiCam.cmake
+index cce13c0..e787688 100755
+--- a/cmake/External-RaspiCam.cmake
++++ b/cmake/External-RaspiCam.cmake
+@@ -16,6 +16,7 @@ message("External project: RaspiCam")
+ 
+ ExternalProject_Add(raspicamera
+   GIT_REPOSITORY ${git_protocol}://github.com/cedricve/raspicam
++  GIT_SHALLOW ON
+   SOURCE_DIR raspicamera
+   BINARY_DIR raspicamera-build
+   UPDATE_COMMAND ""
+diff --git a/cmake/External-Restclient.cmake b/cmake/External-Restclient.cmake
+index cbb9c1a..e291ce7 100755
+--- a/cmake/External-Restclient.cmake
++++ b/cmake/External-Restclient.cmake
+@@ -3,6 +3,7 @@ message("External project: Restclient")
+ ExternalProject_Add(restclient
+   GIT_REPOSITORY ${git_protocol}://github.com/cedricve/restclient-cpp
+   GIT_TAG master
++  GIT_SHALLOW ON
+   SOURCE_DIR restclient
+   BUILD_IN_SOURCE 1
+   UPDATE_COMMAND ""
+-- 
+2.16.2
+
