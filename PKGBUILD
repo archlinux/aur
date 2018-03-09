@@ -2,7 +2,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r209.33f5539
+pkgver=r219.c32e006
 pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com'
@@ -35,6 +35,7 @@ prepare() {
 build() {
   cd $_pkgname/src
   make
+  make install
 }
 
 package() {
@@ -48,6 +49,7 @@ package() {
   install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 
   install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -R scripts "$pkgdir/usr/share/$_pkgname/scripts"
   cp -R examples "$pkgdir/usr/share/$_pkgname/examples"
   cp -R images "$pkgdir/usr/share/$_pkgname/images"
   cp -R docs "$pkgdir/usr/share/$_pkgname/docs"
