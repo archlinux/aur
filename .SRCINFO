@@ -1,0 +1,18 @@
+pkgbase = gmenu-dbusmenu-proxy-git
+	pkgdesc = Proxy that allows to display GTK applications menus in Plasma global menu
+	pkgver = r6488.915f4e91
+	pkgrel = 1
+	url = https://www.kde.org/plasma-desktop
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = kdesignerplugin
+	makedepends = kdoctools
+	depends = plasma-workspace
+	source = git://git.kde.org/plasma-workspace.git
+	sha256sums = SKIP
+
+pkgname = gmenu-dbusmenu-proxy-git
+
