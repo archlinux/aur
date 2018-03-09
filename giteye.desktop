@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=GitEye
-Comment=Graphical Git/Hg client
-Comment[de]=Ein grafischer Git/Hg Client
+Comment=CollabNet GitEye is a desktop for Git
+Comment[de]=CollabNet GitEye ist ein Desktop für Git
 Exec=/opt/giteye/GitEye
 Icon=giteye.xpm
 Terminal=false

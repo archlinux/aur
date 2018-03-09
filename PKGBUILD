@@ -5,26 +5,23 @@
 # Contributor: Holodoc <archlinux@bananapro.de>
 
 pkgname=giteye
-pkgver=2.0.0
-pkgrel=2
-pkgdesc="A desktop for Git. It works with TeamForge, CloudForge, GitHub and other Git services."
-arch=('i686' 'x86_64')
-url="http://www.collab.net/giteyeapp"
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="CollabNet GitEye is a desktop for Git. It works with TeamForge, CloudForge and other Git services."
+arch=('x86_64')
+url="https://www.collab.net/products/giteye"
 license=('custom')
 depends=('git' 'java-environment>=8' 'python')
 makedepends=('unzip')
 options=('!strip')
 source=("LICENSE"
-        "${pkgname}.desktop")
-md5sums=('a0a7e9e58de4ec20a975b50948b779f0'
-         '3144b18d4ddf6ac166afe374872ce4b4')
-md5sums_i686=('3755b166120d4512cd25afaf931fa15d')
-md5sums_x86_64=('ca6b969ca89d40f6f1cf154c7dbc76e6')
-
-source_x86_64=("https://downloads-guests.open.collab.net/files/documents/61/13437/GitEye-${pkgver}-linux.x86_64.zip")
-source_i686=("https://downloads-guests.open.collab.net/files/documents/61/13436/GitEye-${pkgver}-linux.x86.zip")
-
+        "${pkgname}.desktop"
+	"https://downloads-guests.open.collab.net/files/documents/61/18801/GitEye-${pkgver}-linux.x86_64.zip")
+md5sums=('78ba2a04c6b766a778681705d40abbb4'
+         '8568d68fd910cde0befad2c7be52336e'
+         '3734ec716b426095d09d1d131066d028')
 noextract=(*.zip) # extract nothing
+
 
 package() {
     cd "${srcdir}"
@@ -33,22 +30,16 @@ package() {
     install -Ddm755 "${pkgdir}/opt/${pkgname}/"
     install -Ddm755 "${pkgdir}/usr/bin/"
 
-    if [[ "$CARCH" = "i686" ]]; then
-        unzip -q "GitEye-${pkgver}-linux.x86.zip" -d "${pkgdir}/opt/${pkgname}/"
-    else
-        unzip -q "GitEye-${pkgver}-linux.x86_64.zip" -d "${pkgdir}/opt/${pkgname}/"
-    fi
+    unzip -q "GitEye-${pkgver}-linux.x86_64.zip" -d "${pkgdir}/opt/${pkgname}/"
 
-    msg2 "Linking executable..."
+    msg2 "Adding GitEye executable to default path..."
     ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/"
+    ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/giteye"
 
     msg2 "Installing LICENSE..."
-    if [[ "$CARCH" = "i686" ]]; then
-	sed -i 's/64-bit/32-bit/' LICENSE
-    fi
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    msg2 "Installing desktop file..."
+    msg2 "Installing desktop file and icon..."
     install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
 }
