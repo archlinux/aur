@@ -4,8 +4,8 @@
 
 pkgname=printrun-git
 _gitname='Printrun'
-pkgver=1.6.0.1.g91720dc
-pkgrel=2
+pkgver=1.6.0.20.g20c18cc
+pkgrel=1
 epoch=1
 pkgdesc='Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
