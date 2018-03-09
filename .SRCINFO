@@ -1,0 +1,17 @@
+pkgbase = asc-compositor-git
+	pkgdesc = A simple and tiny wayland compositor, written in c and lua.
+	pkgver = 0.01.9592cee
+	pkgrel = 1
+	url = https://github.com/vktec/asc
+	arch = any
+	license = GPL
+	depends = wayland
+	provides = asc-compositor
+	provides = asc-compositor-git
+	source = asc-compositor-git::git://github.com/EndlessEden/asc.git
+	source = asc.desktop
+	md5sums = SKIP
+	md5sums = 505301e6fd4ae300b5b7bb3867800e70
+
+pkgname = asc-compositor-git
+
