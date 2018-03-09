@@ -2,17 +2,17 @@
 
 pkgname=emercoin
 pkgver=0.6.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('i686' 'x86_64')    
 url="http://emercoin.com/"
 license=('GPL3')
 source_i686=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux32.tar.gz")
 source_x86_64=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux64.tar.gz")
-sha256sums_i686=('bcb9c2f055288238234cf15b65a19a82c50b4a612fccd886f57296b6820fc03a')
-sha256sums_x86_64=('560ac91d93d94319ff2d1dc1896bf123f79b59895a1dfa952171a6c09dbe9e26')
+sha256sums_i686=('a395b315c67c5abbb2ffbf75f18dbaf73469ddd32416ed8e2f904b764a55fb8c')
+sha256sums_x86_64=('5045f4c20a7060e610847f9ffd01048601266640007e97d9bc245202f59f5ef5')
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-0.6.3"
     mkdir -p $pkgdir/usr/bin
     install -D -m755 ./bin/emercoind $pkgdir/usr/bin/emercoind
     install -D -m755 ./bin/emercoin-qt $pkgdir/usr/bin/emercoin-qt
