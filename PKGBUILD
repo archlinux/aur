@@ -2,13 +2,13 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=27.7.0a2+ce1aca868
+pkgver=27.9.0a1+e9a220677
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
+depends=('gtk2' 'dbus-glib' 'libxt' 'alsa-lib')
 makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc5')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
@@ -18,13 +18,11 @@ conflicts=('palemoon')
 provides=('palemoon' 'firefox')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
-		rhbz-966424.patch
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
-         '95d212604b6c8354f9e255db5c3ce0ea'
          '32231f6e6a532021fd04c6d7b32f4270'
-         '74a2f5867bde16f004535e70a675823a')
+         '0606604e202ac09797247108582e6a9d')
          
 pkgver() {
 	cd Pale-Moon
@@ -41,16 +39,13 @@ prepare() {
   
 build() {
   cd Pale-Moon
-  
-  patch -Np0 -i ../rhbz-966424.patch
 
   export CC=gcc-5
   export CXX=g++-5
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
-  export CPPFLAGS="$CPPFLAGS -O3 -msse2 -mfpmath=sse -march=native -mtune=native"
+  export CPPFLAGS="$CPPFLAGS -O2 -msse2 -mfpmath=sse -march=native -mtune=native"
   export LDFLAGS="$LDFLAGS -Wl,-z,norelro,-O3,--sort-common,--as-needed,--relax,-z,combreloc,-z,global,--no-omagic"
-  python2 mach build || echo "Next =>"
   python2 mach build
 }
 
@@ -59,7 +54,8 @@ package() {
   make package
   cd dist
   install -d "$pkgdir"/usr/{bin,lib}
-  cp -r palemoon/ "$pkgdir/usr/lib/palemoon"
+  install -d "$pkgdir"/usr/lib/palemoon
+  cp -r palemoon/* "$pkgdir/usr/lib/palemoon/"
   ln -s "../lib/palemoon/palemoon" "$pkgdir/usr/bin/palemoon"
   install -Dm644 "$srcdir/palemoon.desktop" "$pkgdir/usr/share/applications/palemoon.desktop"
 
