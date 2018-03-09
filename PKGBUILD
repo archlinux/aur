@@ -8,7 +8,7 @@
 
 pkgname=wine-staging-pba
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -17,26 +17,18 @@ source=(https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz{,.sign}
         harmony-fix.diff
         30-win32-aliases.conf
         wine-binfmt.conf
-        0001-wined3d-Initial-implementation-of-a-persistent-mappe.patch
-        0002-wined3d-Add-support-for-backing-dynamic-wined3d_buff.patch
-        0003-wined3d-Use-ARB_multi_bind-to-speed-up-UBO-updates.patch
-        0004-wined3d-Use-GL_CLIENT_STORAGE_BIT-for-persistent-map.patch
-        0005-wined3d-Experimental-support-for-persistent-buffer-t.patch)
+        "pba-patches::git+https://github.com/acomminos/wine-pba.git")
 sha512sums=('c9e4c75e94d745837208bf877b19c4e4e46df1e78082d21e716f52c9f9d93eaabbec8bf34783cda68e4275f53e37929b81ac128e5b8a13c1e5035223b2621d6a'
             'SKIP'
             '02d48a9c403b93d01ca37b74af5dc81f86e49c72d67f194c71ccebd4556fa72c473728a1b1f9d5325c6f85f4e41bb7072a1183a2d81cafa8888e00dc53d12166'
             'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-            'b68f09aa0688ba52e40dd9a22c99699d28b3e1a7028d1c39e5705cad345e17535d9b1066babf6881668be23ab43ca7ed0203aa5a287ed343ec4383b58358f6ab'
-            'e7a1ab3ea00dc257de3dfdeab61df4dcd1ba3b448d3d323a5c7fed7da0b9a0ddb0b00eb6bc3f72b1fc1b10c61e181e8fe4f413a64b59d740371b2852686ce0c8'
-            '643b7575bd3e5a080c98e4435747942d39a072a662d26aefacec512263889dfda1fa154b77c6323d0cb69b5cab357258906cf17ad5013af09eda3d255706b5fe'
-            '095ad54ea35f2e8317ab42a24fb92cbc214c6c3b53be165a6ddec9ef31f97b989befac4a3b51a1fcfbf5ead11b0ab3ca57ac34ad41621e81fdaa96aed17815cb'
-            'a58ae6201bfab1ddbda4d789054ce384434d4eb5e3d5845e995caa81b41c2814bb625216ce09c0e4bae92e3e6a45771d28ee4ef09b7c587cd56ec17d577a37a8')
+            'SKIP')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
-pkgdesc="A compatibility layer for running Windows programs - Staging branch"
+pkgdesc="A compatibility layer for running Windows programs - Staging branch with PBA patches"
 url="http://www.wine-staging.com"
 arch=(x86_64)
 options=(staticlibs)
@@ -134,11 +126,13 @@ prepare() {
 
   patch -d $pkgname -Np1 < harmony-fix.diff
 
-  patch -d $pkgname -Np1 < 0001-wined3d-Initial-implementation-of-a-persistent-mappe.patch
-  patch -d $pkgname -Np1 < 0002-wined3d-Add-support-for-backing-dynamic-wined3d_buff.patch
-  patch -d $pkgname -Np1 < 0003-wined3d-Use-ARB_multi_bind-to-speed-up-UBO-updates.patch
-  patch -d $pkgname -Np1 < 0004-wined3d-Use-GL_CLIENT_STORAGE_BIT-for-persistent-map.patch
-  patch -d $pkgname -Np1 < 0005-wined3d-Experimental-support-for-persistent-buffer-t.patch
+  pushd pba-patches
+  git checkout 4b64220635c9eb0aeee34c451421085d1a71bb6b
+  popd
+
+  for f in $(ls pba-patches/patches); do
+    patch -d $pkgname -Np1 < "pba-patches/patches/${f}"
+  done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
 
