@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=parquet-cpp
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A C++ library to read and write the Apache Parquet columnar data format."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=()
 makedepends=('boost' 'cmake' 'git' 'thrift-static')
 source=("https://github.com/apache/parquet-cpp/archive/apache-parquet-cpp-$pkgver.tar.gz")
-sha256sums=('8dd6837076f2e903ff6c509d06c98e72ece55cf329ea158ca612a643b1436333')
+sha256sums=('52899be6c9dc49a14976d4ad84597243696c3fa2882e5c802b56e912bfbcc7ce')
 
 build(){
   cd "$srcdir/$pkgname-apache-$pkgname-${pkgver}"
@@ -35,7 +35,7 @@ package(){
 }
 
 #check(){
-#  cd "$srcdir/$pkgname-apache-$pkgname-${pkgver/_/-}/build"
+#  cd "$srcdir/$pkgname-apache-$pkgname-${pkgver}/build"
 #  make test
 #}
 # vim:ts=2:sw=2:et:
