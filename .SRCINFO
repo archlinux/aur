@@ -1,0 +1,16 @@
+pkgbase = thesafe
+	pkgdesc = Bup Frontend
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/thesafe
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bup
+	depends = qt5-base
+	depends = the-libs
+	source = thesafe-1.0::git+https://github.com/vicr123/thesafe.git
+	md5sums = SKIP
+
+pkgname = thesafe
+
