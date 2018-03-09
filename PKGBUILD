@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=66.0.3359.0
-pkgrel=2
+pkgver=67.0.3365.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -113,11 +113,10 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/k2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
-https://raw.githubusercontent.com/bn0785ac/in-dev/master/k3.patch
 )
 
 
-sha256sums=('5992754681401e4910c8150a775045b4a701386d8e303cc68a1278652cbb3344'
+sha256sums=('07a0135e87341094b0cfd8e6ceeb6633b457222a78965e7c546b0ef6d179c330'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -164,9 +163,9 @@ sha256sums=('5992754681401e4910c8150a775045b4a701386d8e303cc68a1278652cbb3344'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            '41fa66c8a12d3341010a58e1c78d005a10d3ac7527a88b7a8c005b35de58c0bb'
+            'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
-            '88839d1b570304a162a5f012432badfccc926d30a22ec3481d7167ee616f2880'
+            'b4417fd2c24bc8e71d671c902989298f0924527e1e5267eb4e0d9a885f27740f'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '52a3e05fed6d7486a15c336ba57180218e040b38702ab4ef79d97e2a2c293162'
@@ -210,11 +209,11 @@ sha256sums=('5992754681401e4910c8150a775045b4a701386d8e303cc68a1278652cbb3344'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
-            'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
+            '7ab0a9ad9a7c19864b72118773d289d6fe550ea1ae0c58562ee59cbb9be9dc07'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
-            '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
+            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -261,6 +260,8 @@ prepare() {
     return 1
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
+
+
 
 
 
@@ -333,7 +334,6 @@ patch -Np1 -i ../a.patch
 patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
-#patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
@@ -343,7 +343,6 @@ patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
-#patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
 
 
@@ -357,21 +356,17 @@ patch -Np1 -i ../16.patch
 
 
 patch -Np1 -i ../k1.patch
+patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
-  #patch -Np1 -i ../gna.patch
+patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
-  patch -Np1 -i ../k3.patch
+patch -Np1 -i ../desu.patch
 
-  patch -Np1 -i ../k2.patch
-
-  patch -Np1 -i ../desu.patch
-
-
-  # Fix incorrect inclusion of <string_view> in modes other than >= C++17
+# Fix incorrect inclusion of <string_view> in modes other than >= C++17
   
   # Fixes from Gentoo
 
