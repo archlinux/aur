@@ -85,7 +85,7 @@ if $_testing; then
   _pkgvermajmin="5.11"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
-  _dev_suffix="beta1"
+  _dev_suffix="alpha"
   pkgrel=1
 else
   _pkgvermajmin="5.10"
@@ -118,7 +118,7 @@ case ${_piver} in
   _mkspec="linux-rpi${_piver}-g++"
 ;;
 3)
-  _toolchain_name=aarch64-rpi3-linux-gnu
+  _toolchain_name=aarch64-rpi3-linux-gnueabi
   _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
   _mkspec="linux-rpi${_piver}-g++"
@@ -274,7 +274,7 @@ _core_configure_options="\
                  -reduce-exports"
 
 if $_testing; then
-  _tar_xz_sha256="4884a2a122da603343f5066147be7be32a9cadc7daa017980bf47731d15699b5"
+  _tar_xz_sha256="7f9f1afc7720f529a7b77cc2bf9337ec7c48e014ebf0acd16441784d6d71a7d3"
 else
   _tar_xz_sha256="936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e"
 fi
@@ -359,12 +359,6 @@ build() {
   fi
 
   cd ${_srcdir}
-
-  # work around packaging muppetry
-  sed -i '/jaheikki/d' ${_srcdir}/qtbase/include/QtGui/headers.pri
-  sed -i '/jaheikki/d' ${_srcdir}/qtbase/include/QtCore/headers.pri
-
-  sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
 
 if ! $_target_host; then
   # Get our mkspec
