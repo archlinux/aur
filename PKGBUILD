@@ -1,4 +1,4 @@
-# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 # Contributor: N. Izumi - izmntuk
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jan Fader <jan.fader@web.de>
