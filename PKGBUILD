@@ -1,4 +1,4 @@
-# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 pkgname=urxvt-vtwheel-vte
 pkgver=1.0
 pkgrel=1
