@@ -6,7 +6,6 @@ Subject: [PATCH] Use shallow git clone
 ---
  cmake/External-Googletest.cmake     | 1 +
  cmake/External-Mosquitto.cmake      | 1 +
- cmake/External-Mosquitto.cmake.orig | 1 +
  cmake/External-OpenCV.cmake         | 4 +++-
  cmake/External-OpenMax.cmake        | 1 +
  cmake/External-RaspiCam.cmake       | 1 +
@@ -29,18 +28,6 @@ diff --git a/cmake/External-Mosquitto.cmake b/cmake/External-Mosquitto.cmake
 index 8af2600..8b20648 100644
 --- a/cmake/External-Mosquitto.cmake
 +++ b/cmake/External-Mosquitto.cmake
-@@ -3,6 +3,7 @@ message("External project: Mosquitto")
- ExternalProject_Add(mosquitto
-   GIT_REPOSITORY ${git_protocol}://github.com/eclipse/mosquitto.git
-   GIT_TAG ff55499725e8ae5cf4ab6a441541f0a6d1fe30f1
-+  GIT_SHALLOW ON
-   SOURCE_DIR mosquitto
-   BINARY_DIR mosquitto-build
-   UPDATE_COMMAND ""
-diff --git a/cmake/External-Mosquitto.cmake.orig b/cmake/External-Mosquitto.cmake.orig
-index 06594b6..dd93565 100644
---- a/cmake/External-Mosquitto.cmake.orig
-+++ b/cmake/External-Mosquitto.cmake.orig
 @@ -3,6 +3,7 @@ message("External project: Mosquitto")
  ExternalProject_Add(mosquitto
    GIT_REPOSITORY ${git_protocol}://github.com/eclipse/mosquitto.git
