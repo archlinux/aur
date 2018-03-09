@@ -1,6 +1,6 @@
 pkgbase = netlifyctl-git
 	pkgdesc = CLI to manage and deploy sites on Netlify.
-	pkgver = v0.3.2.r2.g80a78fe
+	pkgver = 0.3.2.r2.g80a78fe
 	pkgrel = 1
 	url = https://github.com/netlify/netlifyctl
 	arch = i686
