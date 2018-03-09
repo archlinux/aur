@@ -7,60 +7,91 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'sdl_image' 'libdvdnav'
-         'libtiger' 'lua' 'libmatroska' 'zvbi' 'taglib' 'libmpcdec' 'ffmpeg'
-         'faad2' 'libupnp' 'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms'
-         'libtar' 'libxinerama' 'libsecret' 'libarchive')
-makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'libdc1394'
-             'libavc1394' 'lirc' 'libcaca' 'librsvg' 'portaudio'
-             'libgme' 'xosd' 'projectm' 'twolame' 'aalib' 'libmtp' 'libdvdcss'
-             'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa' 'protobuf'
-             'libnfs' 'mpg123' 'schroedinger')
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
+         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+         'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
+         'gnutls' 'libplacebo')
+makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
+             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
+             'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
+             'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
+             'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
+             'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
+             'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
+             'lirc' 'libgoom2' 'projectm' 'chromaprint')
 optdepends=('avahi: service discovery using bonjour protocol'
-            'libnotify: notification plugin'
-            'ncurses: ncurses interface support'
             'libdvdcss: decoding encrypted DVDs'
-            'lirc: lirc control plugin'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
             'libva-vdpau-driver: vdpau backend nvidia'
-            'libva-intel-driver: backend intel cards'
-            'libbluray: Blu-Ray video support'
+            'libva-intel-driver: video backend intel'
+            'libbluray: Blu-Ray video input'
             'flac: Free Lossless Audio Codec plugin'
-            'portaudio: portaudio support'
             'twolame: TwoLAME mpeg2 encoder plugin'
-            'projectm: ProjectM visualisation plugin'
-            'libcaca: colored ASCII art video output'
-            'libgme: libgme plugin'
-            'librsvg: SVG plugin'
-            'libgoom2: libgoom plugin'
+            'libgme: Game Music Emu plugin'
             'vcdimager: navigate VCD with libvcdinfo'
-            'aalib: ASCII art plugin'
-            'libmtp: MTP devices support'
+            'libmtp: MTP devices discovery'
+            'libsystemd: udev services discovery'
             'smbclient: SMB access plugin'
-            'libcdio: audio CD playback support'
+            'libcdio: audio CD playback'
             'ttf-freefont: subtitle font '
             'ttf-dejavu: subtitle font'
-            'opus: opus codec support'
-            'libssh2: sftp access support'
-            'libnfs: NFS access support'
-            'mpg123: mpg123 codec support'
-            'schroedinger: schroedinger codec support'
-            'protobuf: chromecast support'
-            'lua-socket: for http interface')
+            'libssh2: sftp access'
+            'opencv: opencv video'
+            'libnfs: NFS access'
+            'mpg123: mpg123 codec'
+            'protobuf: chromecast streaming'
+            'libmicrodns: mDNS services discovery (chromecast etc)'
+            'lua-socket: http interface'
+            'live-media: RTSP input'
+            'libdvdread: DVD input module'
+            'libdvdnav: DVD with navigation input module'
+            'libogg: Ogg and OggSpots codec'
+            'libshout: shoutcast/icecast output plugin'
+            'libmodplug: MOD output plugin'
+            'libvpx: VP8 and VP9 codec'
+            'libvorbis: Vorbis decoder/encoder'
+            'speex: Speex codec'
+            'opus: opus codec'
+            'libtheora: theora codec'
+            'libpng: PNG support'
+            'libjpeg-turbo: JPEG support'
+            'librsvg: SVG plugin'
+            'libx264: H264 encoding'
+            'x265: HEVC/H.265 encoder'
+            'zvbi: VBI/Teletext decoding'
+            'libass: Subtitle support'
+            'libkate: Kate codec'
+            'libtiger: Tiger rendering for Kate streams'
+            'sdl_image: SDL image support'
+            'aalib: ASCII art video output'
+            'libcaca: colored ASCII art video output'
+            'libpulse: PulseAudio audio output'
+            'alsa-lib: ALSA audio output'
+            'jack: jack audio server'
+            'libsamplerate: audio Resampler'
+            'libsoxr: SoX audio Resampler'
+            'chromaprint: Chromaprint audio fingerprinter'
+            'lirc: lirc control'
+            'libgoom2: Goom visualization'
+            'projectm: ProjectM visualisation'
+            'ncurses: ncurses interface'
+            'libnotify: notification plugin')
 conflicts=('vlc' 'vlc-plugin' 'vlc-git')
 replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
         lua53_compat.patch)
-sha512sums=('9bdc64e16ddd2e8d2693179f2fcac8462d7defff186262a049ba325ef00882fbd75a9d323b506ba06876a8168fd5e90319837c8dcd136b206161e67748c2a9f7'
+sha512sums=('f2ba7586e8fb8c04484e62809265ec998e875b1eff03262bbf463370277a318816cbb8d260901c774e59443393b16b040cb714019c80e051578008abbf91b13c'
             '80357bae69e32b353d3784932d854e294906798e14faffb87c3383c3b6f6bdc57cbabb9c6e3f3c1adf0f8ddbb24153e72104c963cf1934970c2983c96daef9df'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 
@@ -84,18 +115,94 @@ build() {
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
-              --disable-qt \
-              --disable-wayland \
               --disable-rpath \
-              --enable-faad \
               --enable-nls \
-              --enable-lirc \
-              --enable-ncurses \
+              --enable-archive \
+              --enable-live555 \
+              --enable-dc1394 \
+              --enable-dv1394 \
+              --enable-dvdread \
+              --enable-dvdnav \
+              --enable-bluray \
+              --disable-opencv \
+              --enable-smbclient \
+              --enable-sftp \
+              --enable-nfs \
               --enable-realrtsp \
-              --enable-aa \
-              --enable-upnp \
+              --enable-dvbpsi \
+              --enable-gme \
+              --enable-ogg \
+              --enable-shout \
+              --enable-matroska \
+              --enable-mod \
+              --enable-mpc \
+              --enable-mad \
+              --enable-mpg123 \
+              --enable-gst-decode \
+              --enable-avcodec \
+              --enable-libva \
+              --enable-avformat \
+              --enable-postproc \
+              --enable-faad \
+              --enable-vpx \
+              --enable-twolame \
+              --disable-fdkaac \
+              --enable-a52 \
+              --enable-dca \
+              --enable-flac \
+              --enable-libmpeg2 \
+              --enable-vorbis \
+              --enable-speex \
               --enable-opus \
-              --enable-sftp
+              --enable-oggspots \
+              --disable-schroedinger \
+              --enable-png \
+              --enable-jpeg \
+              --enable-x264 \
+              --enable-x265 \
+              --enable-zvbi \
+              --enable-libass \
+              --enable-kate \
+              --enable-tiger \
+              --enable-vdpau \
+              --disable-wayland \
+              --enable-sdl-image \
+              --enable-freetype \
+              --enable-fribidi \
+              --enable-harfbuzz \
+              --enable-fontconfig \
+              --enable-svg \
+              --enable-svgdec \
+              --enable-aa \
+              --enable-caca \
+              --enable-pulse \
+              --enable-alsa \
+              --enable-jack \
+              --enable-samplerate \
+              --enable-soxr \
+              --enable-chromaprint \
+              --enable-chromecast \
+              --disable-qt \
+              --disable-skins2 \
+              --enable-libtar \
+              --enable-ncurses \
+              --enable-lirc \
+              --enable-goom \
+              --enable-projectm \
+              --enable-avahi \
+              --enable-mtp \
+              --enable-upnp \
+              --enable-microdns \
+              --enable-libxml2 \
+              --disable-libgcrypt \
+              --enable-gnutls \
+              --enable-taglib \
+              --enable-secret \
+              --disable-kwallet \
+              --disable-update-check \
+              --disable-notify \
+              --enable-libplacebo \
+              --enable-vlc
   make
 }
 
