@@ -1,0 +1,4 @@
+src/
+pkg/
+java-hotswapagent-*
+*.pkg.tar.xz
