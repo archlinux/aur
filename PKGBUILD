@@ -2,7 +2,7 @@
 
 pkgname=scrcpy
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Display and control your Android device'
 arch=('i686' 'x86_64')
 url='https://github.com/Genymobile/scrcpy'
@@ -14,6 +14,15 @@ sha256sums=('fda84b2fc6a60bf808f7b87f7c9a985a446bad69d4de8e63e9ce699871f8026f')
 
 
 build() {
+    if [[ -z "${ANDROID_HOME}" ]]; then
+        if [[ -d ~/.android/sdk ]]; then
+            echo '$ANDROID_HOME' not set. Using ~/.android/sdk
+            export ANDROID_HOME=~/.android/sdk
+        else
+            echo Cannot determine '$ANDROID_HOME'
+            exit 1
+        fi
+    fi
     cd scrcpy-${pkgver}
     meson build --buildtype release --strip -Db_lto=true \
         -Doverride_server_path=/usr/share/scrcpy/scrcpy-server.jar
