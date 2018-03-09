@@ -1,6 +1,6 @@
 # Maintainer: Rohan Rao	<rao.rohan.a@gmail.com>
 pkgname=rust-nightly-src
-pkgver=1.16.0_2017.01.21
+pkgver=nightly
 pkgrel=1
 pkgdesc="Rust source files"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = rust-nightly-src
 	pkgdesc = Rust source files
-	pkgver = 1.16.0_2017.01.21
+	pkgver = nightly
 	pkgrel = 1
 	url = http://rust-lang.org
 	arch = any
