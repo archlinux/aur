@@ -1,4 +1,4 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=f27-backgrounds
 pkgver=27.0.1
