@@ -4,8 +4,8 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=tao
-pkgver=6.3.2
-pkgrel=3
+pkgver=6.4.6
+pkgrel=0
 pkgdesc="Standards-based, CORBA middleware framework"
 url="http://www.dre.vanderbilt.edu/~schmidt/TAO.html"
 license=('custom')
@@ -37,5 +37,5 @@ package() {
   cd $srcdir/ACE_wrappers/TAO
   make DESTDIR="$pkgdir/" install
 }
-sha1sums=('7b182a23ac1c04ac2012316062338e31c7fd54eb'
+sha1sums=('e903c6efe144c9a79daf33328732714b5966a96b'
           'b21054d0aa546fabe4bb0c2769401314d4a5bfe3')
