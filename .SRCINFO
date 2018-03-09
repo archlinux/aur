@@ -1,0 +1,15 @@
+pkgbase = vim-bufkill-git
+	pkgdesc = Unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)
+	pkgver = 0cb3672
+	pkgrel = 1
+	url = https://github.com/qpkorr/vim-bufkill
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	makedepends = git
+	depends = vim-runtime
+	source = vim-bufkill-git::git+https://github.com/qpkorr/vim-bufkill
+	sha512sums = SKIP
+
+pkgname = vim-bufkill-git
+
