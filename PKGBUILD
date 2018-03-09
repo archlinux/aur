@@ -1,11 +1,12 @@
-# Maintainer: Larry Hajali <larryhaja[at]gmail[dot]com>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: Larry Hajali <larryhaja[at]gmail[dot]com>
 # Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: archtux <antonio.arias99999 at gmail.com>
 
 pkgname=bitfighter
-pkgver=0.19e
-pkgrel=2
+pkgver=0.19f
+pkgrel=1
 pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
@@ -14,20 +15,14 @@ depends=('sdl2' 'libpng' 'libvorbis' 'libmodplug' 'openal' 'speex')
 makedepends=('cmake' 'libmariadbclient' 'glu')
 install=${pkgname}.install
 source=("http://${pkgname}.org/files/${pkgname}-${pkgver/./}.tar.gz"
-        "https://$pkgname.googlecode.com/files/classic_level_pack.zip"
+        "http://bitfighter.org/files/classic_level_pack.zip"
         "$pkgname.png"
-        "$pkgname.desktop"
-        "gcc-5.X.patch")
-md5sums=('66ff2a80f4ffd7cd354667e906323759'
-         'cb32039b47026e176d3f1f3639bd1a9f'
-         '8b28490af9deadd0a1a104ae372f5b08'
-         '657e0ff146dd3dac682e15be5a74fbf0'
-         '5e908bcd41b746bb45a56c69fb819b04')
+        "$pkgname.desktop")
 
-prepare() {
-  cd ${pkgname}-${pkgver/./}
-  patch -p1 < ${srcdir}/gcc-5.X.patch
-}
+sha256sums=('3ca8dd7fc26febc1f7705da3c32bf91e7b23a55869bd3138d5b091fe4f006803'
+            'd628a2b0af024a965b92877f321f2174d6309b7ce9236775af3bd86a67fcc72b'
+            '67fa2789e9ba0f51a6b6e3a84bcafab2e2104f131d964039707932b8c228db65'
+           'feca79af829cdf9331d6934af5d7f60cb99513f42edf28c98fbc72e7a09337c4')
 
 build() {
   cd ${pkgname}-${pkgver/./}/build
@@ -47,7 +42,7 @@ package() {
   # install game ressources and executable
   install -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/bin
   cp "${srcdir}"/classic_level_pack/* resource/levels
-  cp -r resource/* exe/*.ini "$pkgdir"/usr/share/$pkgname
+  cp -r resource/* exe/* "$pkgdir"/usr/share/$pkgname
   install -m755 exe/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   # install a desktop entry
@@ -58,3 +53,5 @@ package() {
   install -Dm644 doc/README.txt "$pkgdir"/usr/share/doc/$pkgname/README
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+
