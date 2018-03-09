@@ -1,0 +1,34 @@
+# HG changeset patch
+# User Evangelos Foutras <evangelos@foutrelis.com>
+# Date 1520583640 -7200
+#      Fri Mar 09 10:20:40 2018 +0200
+# Branch release-2.x.y
+# Node ID ac2e05444162f1dc0fd60e4d5c8b4cbe2969b695
+# Parent  02df346d26d00cb9a1420c11a59fccb35d92f04e
+Adjust purple-remote to work with Python 3
+
+Fixes the following error:
+
+    Traceback (most recent call last):
+      File "./libpurple/purple-remote", line 241, in <module>
+        print("No existing libpurple instance detected.")
+      File "/usr/lib/python3.6/codecs.py", line 377, in write
+        self.stream.write(data)
+    TypeError: write() argument must be str, not bytes
+
+diff -r 02df346d26d0 -r ac2e05444162 libpurple/purple-remote
+--- a/libpurple/purple-remote	Thu Mar 08 22:51:37 2018 -0600
++++ b/libpurple/purple-remote	Fri Mar 09 10:20:40 2018 +0200
+@@ -13,8 +13,10 @@
+ 
+ import xml.dom.minidom 
+ 
+-sys.stdin = codecs.getwriter('utf-8')(sys.stdin);
+-sys.stdout = codecs.getwriter('utf-8')(sys.stdout);
++if hasattr(sys.stdout, 'buffer'):
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer)
++else:
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+ 
+ xml.dom.minidom.Element.all   = xml.dom.minidom.Element.getElementsByTagName
+ 

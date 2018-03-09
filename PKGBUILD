@@ -13,10 +13,19 @@ license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc})
+source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc}
+        purple-remote-python3.patch)
 sha256sums=('2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
-            'SKIP')
+            'SKIP'
+            '4eb6be9310e4d5d1b906b1d579c395000ee0af6d6f5056307233512151d1f4b1')
 validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032') # Gary Kramlich (grim) <grim@reaperworld.com>
+
+prepare() {
+  cd $pkgbase-$pkgver
+
+  # https://developer.pidgin.im/ticket/17065
+  patch -Np1 -i ../purple-remote-python3.patch
+}
 
 build() {
   cd $pkgbase-$pkgver
