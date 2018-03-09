@@ -360,6 +360,9 @@ build() {
 
   cd ${_srcdir}
 
+  # enable reduce relocations
+  sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
+
 if ! $_target_host; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
