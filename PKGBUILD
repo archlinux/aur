@@ -1,7 +1,7 @@
 # Asc - A simple compositor
 #
 # Maintainer: Eden Rose(EndlessEden) <eenov1988 [at] gmail [dot] com>
-pkgname=asc-compositor-git
+pkgname=asc-compositor
 pkgver=0.01.9592cee
 pkgrel=1
 pkgdesc="A simple and tiny wayland compositor, written in c and lua."
@@ -9,9 +9,8 @@ arch=('any')
 url="https://github.com/vktec/asc"
 license=('GPL')
 depends=('wayland')
-provides=('asc-compositor'
-		  'asc-compositor-git')
-source=("asc-compositor-git::git://github.com/EndlessEden/asc.git"
+provides=('asc-compositor')
+source=("$pkgname::git://github.com/EndlessEden/asc.git"
         "asc.desktop")
 md5sums=('SKIP'
 		 '505301e6fd4ae300b5b7bb3867800e70')
