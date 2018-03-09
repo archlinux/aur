@@ -8,7 +8,7 @@
 pkgname=rofi-wayland-git
 _gitname=rofi
 pkgver=1.3.1.r384.g3a29d3ec
-pkgrel=1
+pkgrel=2
 pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
@@ -17,7 +17,7 @@ depends=(freetype2 libxdg-basedir pango xcb-util-xrm wayland-wall)
 optdepends=('sway: use as application runner'
             'wlc-wall-injector: injects wall wayland protocol in wlc based compositors'
             'orbment: use as application runner')
-makedepends=('git' 'wayland')
+makedepends=('git' 'wayland' 'libxkbcommon' 'xcb-util-wm')
 provides=('rofi')
 conflicts=('rofi')
 source=("git+https://github.com/DaveDavenport/rofi#branch=wip/wayland")
