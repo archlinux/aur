@@ -9,7 +9,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
 pkgname=sks-local
 pkgver=1.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A modified version of AUR/sks that can be used in tandem to perform localized keydumps"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/skskeyserver/sks-keyserver/"
@@ -84,14 +84,13 @@ package() {
   mv ${pkgdir}/usr/bin/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
   mv ${pkgdir}/usr/bin/sks_add_mail ${pkgdir}/usr/bin/sks-local_add_mail
   mv ${pkgdir}/usr/bin/sks_build.sh  ${pkgdir}/usr/bin/sks-local_build.sh
+  mv ${pkgdir}/usr/share/man/man8/sks.8.gz ${pkgdir}/usr/share/man/man8/sks-local.8.gz
   sed -i -e 's#/usr/sbin/sks#/usr/bin/sks-local#g' -e 's#/var/lib/sks#/var/lib/sks-local#g' ${pkgdir}/usr/bin/sks-local_build.sh
   # directories
-  for d in etc/${pkgname} var/run/${pkgname} var/log/${pkgname} var/lib/${pkgname} var/spool/${pkgname};
+  for d in etc/${pkgname} var/log/${pkgname} var/lib/${pkgname} var/spool/${pkgname};
   do
     install -d -m0755 ${pkgdir}/${d}
   done
-  # tweaks
-  chmod 0775 ${pkgdir}/var/run/${pkgname}
 
   cp -a ${srcdir}/${_pkgname}-${pkgver}/sampleWeb/OpenPKG "${pkgdir}/var/lib/${pkgname}"
 

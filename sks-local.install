@@ -10,7 +10,7 @@ post_install() {
   echo
 
   # chowns
-  for d in /var/run/${dname} /var/log/${dname} /var/lib/${dname} /var/spool/${dname}
+  for d in /var/log/${dname} /var/lib/${dname} /var/spool/${dname}
   do
 	  chown sks:sks ${d}
   done
@@ -26,7 +26,7 @@ post_remove() {
   echo -n -e "\nremoving sks system user (if needed)... "
   pacman -Q sks > /dev/null 2>&1 || userdel sks && echo "done."
  
-  rm -r /var/run/sks-local
+  rm -rf /var/run/sks-local
 
   echo "Keeping /var/lib/sks-local, /var/spool/sks-local, and /var/log/sks-local;"
   echo "Remove them manually if you want."
