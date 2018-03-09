@@ -1,6 +1,6 @@
 pkgbase = contao-lts
 	pkgdesc = small yet powerful Content Management System (CMS) based on php, LTS version
-	pkgver = 3.5.33
+	pkgver = 3.5.34
 	pkgrel = 1
 	url = https://contao.org
 	install = contao-lts.install
@@ -10,9 +10,9 @@ pkgbase = contao-lts
 	depends = php-gd
 	depends = mysql
 	optdepends = php-mcrypt: data encryption
-	source = contao-3.5.33.tar::https://download.contao.org/3.5.33/tar
+	source = contao-3.5.34.tar::https://download.contao.org/3.5.34/tar
 	source = contao-lts.install
-	md5sums = 176a7a537b015718af4e9909ffdc8668
+	md5sums = dbff58cd3f064d15ca528127385e64c1
 	md5sums = d8536f9c9a77cbbbcce86cb1931c5c5a
 
 pkgname = contao-lts
