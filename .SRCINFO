@@ -1,0 +1,17 @@
+pkgbase = qtdmm-qt5-git
+	pkgdesc = Qt5 port of QtDMM: a DMM readout software including a configurable recorder
+	pkgver = 0.9.8.r23.gc8a2714
+	pkgrel = 1
+	url = https://github.com/tuxmaster/QtDMM
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = git
+	depends = qt5-serialport
+	provides = QtDMM
+	conflicts = QtDMM
+	source = qtdmm-qt5-git::git+https://github.com/tuxmaster/QtDMM.git
+	md5sums = SKIP
+
+pkgname = qtdmm-qt5-git
+
