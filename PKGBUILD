@@ -2,7 +2,7 @@
 # Contributor: hotaru70o, ilearn32
 pkgbase=sielo-browser
 pkgname=sielo-browser
-pkgver=1.8.12
+pkgver=1.8.14
 pkgrel=1
 pkgdesc="A simple, customizable and fast web browser"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('custom:MIT')
 depends=('openssl-1.0' 'qt5-base' 'qt5-webengine' 'qt5-webchannel' 'qt5-location' 'qt5-declarative')
 replaces=('sielo-navigateur')
 source=(https://www.feldrise.com/Sielo/Linux/$pkgname-$pkgver.tar.gz)
-md5sums=('4b63aa674d75d615a67f5989b1b1f3b3')
+md5sums=('ca2dc2f2937a733222f1f66cedf7d27e')
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j2
