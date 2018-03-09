@@ -8,7 +8,7 @@ license=(BSD)
 makedepends=(git)
 source=(${pkgname}::git+https://gitlab.kode54.net/kode54/aopsf.git makefile.patch decl.patch LICENSE.BSD)
 sha256sums=('SKIP'
-            '4855f2d7969a595e1dae79a3cb600ae0cd73e5a7f2b1c838f3014c6211abf1c0'
+            '63033efed8fbbe7fb357e9204c00977ec41c0c58518441e2d9d60412e21c8229'
             'b807bf78052965584faff4d3767c2ed9974c74c61fa469727b309bf263b6777f'
             '3fb3258f12e481be1326b6931269b55866bb3ed5c0e769ecad83f9e71c3cdfca')
 
