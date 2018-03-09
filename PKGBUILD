@@ -5,7 +5,7 @@
 
 # This package is a copy of wine-git with minor changes to build wine-vulkan.
 pkgname=wine-vulkan-git
-pkgver=r122676.5557ebd4ff
+pkgver=r123139.4e181f459b
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version with vulkan patches)'
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ _depends=(
     'gcc-libs'              'lib32-gcc-libs'
     'libpcap'               'lib32-libpcap'
     'desktop-file-utils'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gcc>=4.5.0-2'
