@@ -40,18 +40,26 @@ makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu'
 			'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 
 			'libtool' 'freetds' 'pcre' 'c-client')
 
-source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'enchant-2.patch' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 
-        )
-sha256sums=('4b2bc823e806dbf7b62fe0b92b0d14b0c6e03f88c3fc5d96278416c54ce11f6c'
-            'SKIP'
-            '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
-            'df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874'
-            '75322f9b38c5961faddcb4f5333fbcb5ea5955e4f54f1eec223fc4367eb3b247'
-            'b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27'
-            '2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9'
-            'da784a8fc52285e64d88ca40cd9d71b31074a5644827fcabd33dcc1f8da5ed3f'
-            )
+source=(
+    "https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+    'apache.patch'
+    'apache.conf'
+    'enchant-2.patch'
+    'php-fpm.patch'
+    'php-fpm.tmpfiles'
+    'php.ini.patch'
+)
+sha512sums=(
+    '1987ad5573fdcbd5c8d92fdbf5ba8dca6e9621d89d30f66a003338467e31f09f9e8ceb5cdcb2ddf24ec7aa5acf0c8e33c3774e586e7682667eb3ed148237d1bb'
+    '7cf5d041e801fee2d67167a54353dcffb2fcff1329ca2af73e1906f123eed41780ab1b1f71cc5b076384503e7e7cf99e9a580ee75f67e713400f4b73a85acc1a'
+    'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
+    '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
+    '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
+    'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
+    'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
+    'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
+)
+
 # keys from http://php.net/downloads.php#gpg-7.0
 #
 #pub   2048R/9C0D5763 2015-06-09 [expires: 2024-06-06]
