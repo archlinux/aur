@@ -1,4 +1,4 @@
-# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 # Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
