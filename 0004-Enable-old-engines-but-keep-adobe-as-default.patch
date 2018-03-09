@@ -1,7 +1,7 @@
-From 026fd5f70d81f719773247d4d0086c6023c23436 Mon Sep 17 00:00:00 2001
-Message-Id: <026fd5f70d81f719773247d4d0086c6023c23436.1513462508.git.jan.steffens@gmail.com>
-In-Reply-To: <c7a6a2312313a971089fb592deb8c476be4dca0f.1513462508.git.jan.steffens@gmail.com>
-References: <c7a6a2312313a971089fb592deb8c476be4dca0f.1513462508.git.jan.steffens@gmail.com>
+From 9ff9495f79984c56961d8239a0d203924b8b9cba Mon Sep 17 00:00:00 2001
+Message-Id: <9ff9495f79984c56961d8239a0d203924b8b9cba.1520586205.git.jan.steffens@gmail.com>
+In-Reply-To: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
+References: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 16 Dec 2017 23:08:02 +0100
 Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
@@ -14,7 +14,7 @@ Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
  4 files changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 832c9c3cd200f91a..dc3417d73e99d987 100644
+index d27e9150d..7052eb97a 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -775,7 +775,7 @@ FT_BEGIN_HEADER
@@ -36,7 +36,7 @@ index 832c9c3cd200f91a..dc3417d73e99d987 100644
  
    /*************************************************************************/
 diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
-index d4b6e5941ac44b58..c520f97f667f5d9a 100644
+index a2d7aec65..bc7dc16f8 100644
 --- a/src/cff/cffobjs.c
 +++ b/src/cff/cffobjs.c
 @@ -1163,11 +1163,7 @@
@@ -52,7 +52,7 @@ index d4b6e5941ac44b58..c520f97f667f5d9a 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/cid/cidobjs.c b/src/cid/cidobjs.c
-index ed1dca2656b0c66c..2c02e1ce7d330fc3 100644
+index 77afe1c87..e1ea64cd6 100644
 --- a/src/cid/cidobjs.c
 +++ b/src/cid/cidobjs.c
 @@ -472,11 +472,7 @@
@@ -68,7 +68,7 @@ index ed1dca2656b0c66c..2c02e1ce7d330fc3 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/type1/t1objs.c b/src/type1/t1objs.c
-index c00b322b138f8a95..c30a49d4e2b55e92 100644
+index 7333c4c95..4cc27fe9e 100644
 --- a/src/type1/t1objs.c
 +++ b/src/type1/t1objs.c
 @@ -587,11 +587,7 @@
@@ -84,5 +84,5 @@ index c00b322b138f8a95..c30a49d4e2b55e92 100644
      driver->no_stem_darkening = TRUE;
  
 -- 
-2.15.1
+2.16.2
 
