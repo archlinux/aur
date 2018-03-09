@@ -11,7 +11,7 @@ pkgver=18.01
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=18.01-1516985668
 _pkgverpostfix=""
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -49,6 +49,7 @@ options=(!strip)
 prepare() {
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
 
+  sed -i "s/    \(var rev =.*;\)/    \/\/ \1/" Gruntfile.js
   sed -i "s/pkg.version =.*;/pkg.version = \"${_buildver}\";/" Gruntfile.js
   if [ ! -f package.original.json ]; then
     cp package.json package.original.json
