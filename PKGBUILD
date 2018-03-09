@@ -3,7 +3,7 @@
 pkgname=ktproxy
 release=0.2
 pkgver=${release}_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="a websocket like proxy by kotlin"
 url="https://github.com/Sherlock-Holo/$pkgname"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("https://github.com/Sherlock-Holo/ktproxy/releases/download/$release/ktp
         "ktproxy-server@.service")
 md5sums=('97c061c54cb028cecc3f4c93edf7e7b5'
          '8fa7115156115d49f28185cfa932f06a'
-         '9aae34cd6aa70f6a0a93705bdd4f4985'
+         'de919c80b6a138af40046f859826cb7b'
          '5ef7f416a6c7e222b8fa29fd5ed81147'
          '7460ce881efa6b52076f8d7bbf3d5a86'
          '0d7a86dee623d84e4c4cabce9a2cfcbf'
