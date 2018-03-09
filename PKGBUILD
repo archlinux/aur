@@ -1,22 +1,23 @@
 # Maintainer: Sherlock-Holo <sherlockya@gmail.com>
 
 pkgname=ktproxy
-pkgver=0.1.1_beta
+release=0.2
+pkgver=${release}_beta
 pkgrel=1
 pkgdesc="a websocket like proxy by kotlin"
 url="https://github.com/Sherlock-Holo/$pkgname"
 arch=('x86_64' 'i686')
 license=('MPL')
 depends=('java-runtime>=9')
-source=("https://github.com/Sherlock-Holo/ktproxy/releases/download/0.1.1/ktproxy-client.jar"
-        "https://github.com/Sherlock-Holo/ktproxy/releases/download/0.1.1/ktproxy-server.jar"
+source=("https://github.com/Sherlock-Holo/ktproxy/releases/download/$release/ktproxy-client.jar"
+        "https://github.com/Sherlock-Holo/ktproxy/releases/download/$release/ktproxy-server.jar"
         "https://raw.githubusercontent.com/Sherlock-Holo/ktproxy/master/src/main/kotlin/ktproxy/config/config.toml"
         "ktproxy-client"
         "ktproxy-server"
         "ktproxy-client@.service"
         "ktproxy-server@.service")
-md5sums=('94f1908da34749c00c1daf54ec15e647'
-         '581e83c4d8ef07b4c7ace3fde37691c1'
+md5sums=('97c061c54cb028cecc3f4c93edf7e7b5'
+         '8fa7115156115d49f28185cfa932f06a'
          '9aae34cd6aa70f6a0a93705bdd4f4985'
          '5ef7f416a6c7e222b8fa29fd5ed81147'
          '7460ce881efa6b52076f8d7bbf3d5a86'
