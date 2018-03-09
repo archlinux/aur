@@ -2,7 +2,7 @@
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
 pkgname=i3blocks-gaps-git
 _pkgname=i3blocks-gaps
-pkgver=1.4.r31.ge14ccbd
+pkgver=1.4.r40.g2d91d2c
 pkgrel=1
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
