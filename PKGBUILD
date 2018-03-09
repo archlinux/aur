@@ -15,7 +15,7 @@ source=(${url}/archive/${_revision}.tar.gz
         0002-Fix-for-distcc.patch)
 sha1sums=('79b774b5fd48d22ecfb53ce430881772bcf152ee'
           'd05ed01303a09d103f703118126348b1402b3950'
-          'e0e4de705bc092c029bebfa2fe3773dafa71a18e'
+          'be10386bded8449e31630bde3666678464ccc3c7'
           'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
 prepare()
