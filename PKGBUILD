@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.3.r3583.04283ef5+wine.3.3.r88.g813ab925ab+pba.r24.b33e274
+pkgver=3.3.r3584.2ee460d6+wine.3.3.r104.g661791cb7e+pba.r28.4b64220
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
