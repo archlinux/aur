@@ -9,8 +9,8 @@ url="https://github.com/tuxmaster/${_pkgname}"
 license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('qt5-serialport')
-makedepends=('qt5-base' 'git')
+depends=('qt5-base' 'qt5-serialport')
+makedepends=('qt5-base' 'qt5-serialport' 'git')
 source=("$pkgname::git+https://github.com/tuxmaster/QtDMM.git")
 md5sums=('SKIP')
 
