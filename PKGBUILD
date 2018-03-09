@@ -33,6 +33,9 @@ package() {
         "$pkgdir/usr/share/licenses/$pkgname/$f"
     fi
   done
+  	cd "$srcdir"/src/github.com/knqyf263/pet/misc/completions/zsh/
+	install -m0755 -d "$pkgdir"/usr/share/zsh/site-functions
+	install -m0644 _* "$pkgdir"/usr/share/zsh/site-functions
 }
 
 # vim:set ts=2 sw=2 et:
