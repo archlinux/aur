@@ -1,7 +1,7 @@
 pkgbase = ombi-dev
 	pkgdesc = Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves
 	pkgver = 3.0.3004
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.ombi.io
 	install = ombi.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ombi-dev
 	noextract = ombi-dev.tar.gz
 	options = staticlibs
 	backup = opt/Ombi/Ombi.sqlite
-	source = ombi-dev.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz
+	source = ombi-dev.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=develop
 	source = ombi.service
 	source = ombi.sysusers
 	sha256sums = SKIP
