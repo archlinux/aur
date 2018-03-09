@@ -1,4 +1,10 @@
 #!/bin/sh
-/usr/bin/transition \
-  --configuration_file=/opt/ankama/dofus-beta/transition.conf \
-  --application-id=ankama-dofus-beta-transition
+
+game=/opt/ankama/dofus-beta/DofusBeta
+# Use padsp or the game may not play sounds with PulseAudio
+if which padsp
+then
+  padsp "$game" "$@"
+else
+  "$game" "$@"
+fi
