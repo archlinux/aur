@@ -1,16 +1,14 @@
 # Maintainer: DanManN <dnahimov@gmail.com>
 pkgname=python-qiskit-sdk-git
-pkgver=0.3.8.r42.g1a80896
+pkgver=0.4.8.r62.gcd1b106
 pkgrel=1
 pkgdesc="Python software development kit for writing quantum computing experiments, programs, and applications."
 arch=('any')
 url="http://www.qiskit.org"
 license=('Apache-2.0')
 groups=('QISKit')
-depends=('python' 'python-requests' 'python-networkx' 'python-ply'
-'python-numpy' 'python-scipy' 'python-matplotlib' 'python-sphinx'
-'python-sympy' 'python-qiskit-api')
-makedepends=('git' 'python-setuptools')
+depends=('python' 'python-networkx' 'python-ply' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pillow' 'python-sympy' 'python-qiskit-api')
+makedepends=('git' 'cmake' 'python-setuptools' 'python-pylint' 'python-pycodestyle' 'python-sphinx' 'python-sphinxcontrib-fulltoc' 'python-coverage' 'python-better-apidoc')
 provides=('python-qiskit-sdk')
 conflicts=('python-qiskit-sdk')
 source=("git+https://github.com/QISKit/qiskit-sdk-py.git")
@@ -23,6 +21,7 @@ pkgver() {
 
 package() {
   cd qiskit-sdk-py
+  cmake .
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
