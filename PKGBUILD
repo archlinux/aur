@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.15
-pkgver=4.15.7
+pkgver=4.15.8
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -91,7 +91,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02'
+            '93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0'
             'SKIP'
             'ea0dbe0c3cf14be9fafeddfa809cd80a50cc59437663f969637013c3859c05a8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
