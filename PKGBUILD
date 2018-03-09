@@ -2,8 +2,8 @@
 
 pkgname=f27-backgrounds
 pkgver=27.0.1
-pkgrel=3
-_rhver="1.fc28"
+pkgrel=2
+_rhver="3.fc28"
 pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F27_Artwork"
