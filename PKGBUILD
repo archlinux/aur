@@ -3,7 +3,7 @@
 
 pkgname=printrun
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 _projectname='Printrun'
 _gittag="printrun-${pkgver}"
@@ -13,7 +13,7 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun-git')
 conflicts=('printrun-git')
-depends=('python2-pyserial' 'wxpython' 'pyglet')
+depends=('python2-pyserial' 'wxpython' 'python2-pyglet')
 optdepends=(
   'python2-cairo: to use Projector feature'
   'python2-cairosvg: to use Projector feature'
