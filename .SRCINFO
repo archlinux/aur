@@ -1,7 +1,7 @@
 pkgbase = linux-libre-firmware
 	pkgdesc = Firmware files for Linux-libre
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jxself.org/firmware
 	arch = any
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = linux-libre-firmware
 	provides = linux-firmware
 	conflicts = linux-firmware
 	conflicts = linux-firmware-git
+	options = !buildflags
 	source = https://jxself.org/firmware/linux-libre-firmware-1.1.tar.lz
 	source = https://jxself.org/firmware/linux-libre-firmware-1.1.tar.lz.asc
 	validpgpkeys = F611A908FFA165C699584ED49D0DB31B545A3198
