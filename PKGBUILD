@@ -3,7 +3,7 @@
 pkgname=etc-update-git
 _name=${pkgname%-git}
 pkgver=2.3.24.r48.g15b849853
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI to interactively merge .pacnew in /etc (git version)"
 url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash')
 makedepends=('git')
 conflicts=('etc-update')
-source=("$pkgname::git+https://github.com/gentoo/portage.git")
+source=("$pkgname::git+https://github.com/kewlfft/portage.git")
 sha256sums=('SKIP')
 
 pkgver() {
