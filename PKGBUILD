@@ -1,8 +1,7 @@
-# $Id: PKGBUILD 246343 2017-07-25 17:22:46Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proguard
-pkgver=5.3.3
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="free Java class file shrinker, optimizer, obfuscator, and preverifier"
 arch=(any)
@@ -10,7 +9,7 @@ url="http://proguard.sourceforge.net/"
 license=('GPL2')
 depends=('java-runtime')
 source=(http://downloads.sourceforge.net/proguard/proguard$pkgver.tar.gz)
-sha256sums=('95bf9580107f00d0e26f01026dcfe9e7a772e5449488b03ba832836c3760b3af')
+sha256sums=('14af3e318660bf51693b63eba3a54d742676c3dc058891668c4b8811791e298c')
 
 package() {
   cd "$srcdir/$pkgname$pkgver/lib"
