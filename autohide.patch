@@ -42,11 +42,12 @@ index c48b5ea..81ec2f2 100644
  
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -52,6 +58,8 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -52,6 +58,9 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          this.screen.size_changed.connect (update_panel_dimensions);
          this.screen.monitors_changed.connect (update_panel_dimensions);
          this.screen_changed.connect (update_visual);
 +        this.enter_notify_event.connect (show_panel);
++        this.motion_notify_event.connect (show_panel);
 +        this.leave_notify_event.connect (hide_panel);
  
          update_visual ();
