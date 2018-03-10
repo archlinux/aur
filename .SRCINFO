@@ -1,0 +1,17 @@
+pkgbase = mod-host-git
+	pkgdesc = LV2 host for Jack controllable via socket or command line
+	pkgver = 0.10.6.r270.g1726ad0
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-host
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = lilv>=0.14.2
+	depends = fftw
+	provides = mod-host
+	conflicts = mod-host
+	source = git+https://github.com/moddevices/mod-host
+	md5sums = SKIP
+
+pkgname = mod-host-git
+
