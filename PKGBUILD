@@ -3,8 +3,8 @@
 _npmname=carto
 
 pkgname=nodejs-carto
-pkgver=0.17.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Mapnik Stylesheet Compiler"
 arch=(any)
 url="https://github.com/mapbox/carto"
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('0982baab13dcc9a8943d2db7ab31024b993cdd2d64f065b7442198d0c618d74a')
+sha256sums=('dd3d7cd2a8f14619c400c1fd6c79b0edf76f457732b8480333e439d2370f8705')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
