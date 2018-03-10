@@ -1,7 +1,7 @@
 pkgbase = tamzen-font
-	pkgdesc = Programmatic fork of the Tamsyn monospace font.
-	pkgver = 1.11
-	pkgrel = 2
+	pkgdesc = A monospaced bitmap font for the console and X11 (tamsyn-font fork)
+	pkgver = 1.11.4
+	pkgrel = 1
 	url = https://github.com/sunaku/tamzen-font
 	install = tamzen-font.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = tamzen-font
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/sunaku/tamzen-font/archive/v1.11.tar.gz
-	sha256sums = 997e9dd2eaf647bddb72eced541ed9d65e2fc5d1883caaf811331fdd43fc82ec
+	source = https://github.com/sunaku/tamzen-font/archive/Tamzen-1.11.4.tar.gz
+	sha256sums = da677aaa4bb7a30fd23f92c0e93b6a3e66ca27817561390ec78a476cee3bcde7
 
 pkgname = tamzen-font
 
