@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=aasdk-git
 _pkgname=aasdk
-pkgver=r12.a36db60
+pkgver=r13.7062840
 pkgrel=1
 pkgdesc="Library to build AndroidAuto headunit"
 arch=('x86_64')
@@ -9,7 +9,8 @@ url="https://github.com/f1xpl/${_pkgname}"
 license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
-makedepends=('cmake' 'protobuf' 'boost' 'libusb' 'openssl' 'git')
+depends=('libusb' 'protobuf' 'openssl' 'boost-libs')
+makedepends=('cmake' 'boost' 'git')
 source=("$pkgname::git+https://github.com/f1xpl/aasdk.git")
 md5sums=('SKIP')
 
@@ -27,6 +28,10 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/opt/aasdk"
-  cp -Rv $pkgname/* "$pkgdir/opt/aasdk/"
+  cd $pkgname
+  install -D -m755 lib/libaasdk.so "$pkgdir/usr/lib/libaasdk.so"
+  install -d "$pkgdir/usr/include/aasdk_proto"
+  install -D aasdk_build/aasdk_proto/*.h "$pkgdir/usr/include/aasdk_proto"
+  install -D -m644 "lib/libaasdk_proto.a" "$pkgdir/usr/lib/libaasdk_proto.a"
+  cp -Rv include/f1x/ "$pkgdir/usr/include/"
 }
