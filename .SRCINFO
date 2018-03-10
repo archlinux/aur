@@ -1,6 +1,6 @@
 pkgbase = gprbuild-git
 	pkgdesc = Build system for multi-language systems
-	pkgver = r3152.ba7dba01
+	pkgver = r3307.832b1ce6
 	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686

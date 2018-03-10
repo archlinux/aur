@@ -2,7 +2,7 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=gprbuild-git
-pkgver=r3152.ba7dba01
+pkgver=r3307.832b1ce6
 pkgrel=1
 pkgdesc="Build system for multi-language systems"
 arch=('i686' 'x86_64')
@@ -43,8 +43,8 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    make prefix=/usr PROCESSORS="$(nproc)" setup
-    make GPRBUILD_OPTIONS=-R
+    make prefix=/usr BUILD=production PROCESSORS="$(nproc)" setup
+    make GPRBUILD_OPTIONS=-R BUILD=production
 }
 
 package() {
@@ -52,7 +52,7 @@ package() {
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
-    make prefix="$pkgdir/usr" install -j1
+    make prefix="$pkgdir/usr" install -j1  BUILD=production
 
     # We don't need to distribute the installation script
     rm -f -- "$pkgdir/usr/doinstall"
