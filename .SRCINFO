@@ -1,6 +1,6 @@
 pkgbase = marker
 	pkgdesc = Markdown editor for linux made with Gtk+-3.0
-	pkgver = 2018.01.28
+	pkgver = 2018.03.09
 	pkgrel = 1
 	url = https://github.com/fabiocolacio/Marker
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = marker
 	depends = gtkspell3
 	depends = webkit2gtk
 	optdepends = pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX
-	source = marker-2018.01.28.tar.gz::https://github.com/fabiocolacio/Marker/archive/2018.01.28.tar.gz
-	sha256sums = c356ff5766d6a41012c1ee61229ff8c9d45126fb953229d1f39852d8b62b1acf
+	source = marker-2018.03.09.tar.xz::https://github.com/fabiocolacio/Marker/releases/download/Marker.2018.03.09.tar.xz
+	sha256sums = 3ea9a962735ad7ad6ba6fbe3686a7aada9d1fbdb20ee90b1fca3623253cd3513
 
 pkgname = marker
 
