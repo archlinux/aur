@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-	sudo pip install pycaption
+        PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps pycaption
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1
 
