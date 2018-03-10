@@ -1,7 +1,7 @@
 # Maintainer: scan
 
 pkgname=numix-cursor-maia-git
-pkgver=r14.95330c1
+pkgver=r15.2cefdb1
 pkgrel=1
 pkgdesc='Maia Colored Numix Cursor theme'
 arch=('any')
