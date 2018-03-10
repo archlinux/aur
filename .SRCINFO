@@ -8,8 +8,8 @@ pkgbase = git-annex-remote-googledrive
 	makedepends = python-setuptools
 	depends = python-annexremote
 	depends = python-pydrive
-	source = https://files.pythonhosted.org/packages/15/f5/592e71a9a2aaedf2f22dac66173b2eb972aa87c4c6cfe1bb23033632975c/git-annex-remote-googledrive-0.9.tar.gz
-	sha256sums = 4ebabd7ed31754d4f63e9383b984610d1adf4b12b7403ec15a3bb9496a7c4402
+	source = https://github.com/Lykos153/git-annex-remote-googledrive/archive/v0.9.zip
+	sha256sums = 797f026c4e9f9f924ced683a99d98111825872528d459656b8c05be11075419b
 
 pkgname = git-annex-remote-googledrive
 
