@@ -1,7 +1,7 @@
 pkgbase = scrcpy
 	pkgdesc = Display and control your Android device
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Genymobile/scrcpy
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = scrcpy
 	optdepends = android-sdk-platform-tools: required if adb is not already installed
 	source = https://github.com/Genymobile/scrcpy/archive/v1.0.tar.gz
 	source = scrcpy-server.jar::https://github.com/Genymobile/scrcpy/releases/download/v1.0/scrcpy-server-v1.0.jar
+	source = fix_decoder_memory_leak.patch
 	sha256sums = fda84b2fc6a60bf808f7b87f7c9a985a446bad69d4de8e63e9ce699871f8026f
 	sha256sums = b573b06a6072476b85b6308e3ad189f2665ad5be4f8ca3a6b9ec81d64df20558
+	sha256sums = aabef958c4736cb31d81ebdbe2e87f8a63b096d47a8fc1ec5f5678f0bd41a20d
 
 pkgname = scrcpy
 

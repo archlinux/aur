@@ -1,0 +1,18 @@
+--- a/app/src/decoder.c
++++ b/app/src/decoder.c
+@@ -106,6 +106,7 @@
+             push_frame(decoder);
+         } else if (ret != AVERROR(EAGAIN)) {
+             LOGE("Could not receive video frame: %d", ret);
++            av_packet_unref(&packet);
+             goto run_quit;
+         }
+ #else
+@@ -123,6 +124,7 @@
+             packet.data += len;
+         }
+ #endif
++        av_packet_unref(&packet);
+     }
+ 
+     LOGD("End of frames");
