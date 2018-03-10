@@ -7,8 +7,8 @@ pkgbase = obexfs
 	license = GPL
 	depends = fuse2
 	depends = obexftp>=0.22
-	source = http://triq.net/obexftp/obexfs-0.12.tar.gz
-	md5sums = 0f505672b025cdb505e215ee707a2e2f
+	source = https://downloads.sourceforge.net/openobex/obexfs-0.12.tar.gz
+	sha512sums = f9b9c7c220271b7bf538d748beb3cb7fabd0377ef74855a959f7595755904be739ed5995909f423a40218d05a71de6b48a5ef471e2dc0934164aba2805c7e2e0
 
 pkgname = obexfs
 
