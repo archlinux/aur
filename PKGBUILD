@@ -4,7 +4,7 @@
 pkgname=pachi
 pkgver=12.00
 _pkgcodename=jowa
-pkgrel=1
+pkgrel=2
 pkgdesc="A reasonably strong engine for the board game go" 
 arch=('i686' 'x86_64')
 depends=('glibc')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgname-$pkgver-$_pkgcodename
-  make DCNN=0 
+  make 
 }
 
 package() {
