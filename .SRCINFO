@@ -10,6 +10,7 @@ pkgbase = protonmail-bridge
 	depends = gnome-keyring
 	depends = qt5-svg
 	depends = qt5-declarative
+	depends = qt5-multimedia
 	depends = ttf-dejavu
 	options = !strip
 	source = https://protonmail.com/download/protonmail-bridge_1.0.1-4_amd64.deb

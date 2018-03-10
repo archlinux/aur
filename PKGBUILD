@@ -13,6 +13,7 @@ depends=(
   'gnome-keyring'
   'qt5-svg'
   'qt5-declarative'
+  'qt5-multimedia'
   'ttf-dejavu'
 )
 options=('!strip')
