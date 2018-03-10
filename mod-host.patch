@@ -1,0 +1,41 @@
+diff -ura mod-host-0.10.6/Makefile mod-host-0.10.6.new/Makefile
+--- mod-host-0.10.6/Makefile	2014-10-04 22:09:50.000000000 +0200
++++ mod-host-0.10.6.new/Makefile	2018-03-10 17:35:00.844263032 +0100
+@@ -53,7 +53,8 @@
+ 
+ # install rule
+ install: install_man
+-	install $(PROG) $(BINDIR)
++	install -d $(DESTDIR)$(BINDIR)
++	install $(PROG) $(DESTDIR)$(BINDIR)
+ 
+ # clean rule
+ clean:
+@@ -67,7 +68,8 @@
+ 
+ # install manual page rule
+ install_man:
+-	install doc/*.1 $(MANDIR)
++	install -d $(DESTDIR)$(MANDIR)
++	install doc/*.1 $(DESTDIR)$(MANDIR)
+ 
+ # generate the source file with the help message
+ A=`grep -n 'The commands supported' README.md | cut -d':' -f1`
+diff -ura mod-host-0.10.6/utils/txt2cvar.py mod-host-0.10.6.new/utils/txt2cvar.py
+--- mod-host-0.10.6/utils/txt2cvar.py	2014-10-04 22:09:50.000000000 +0200
++++ mod-host-0.10.6.new/utils/txt2cvar.py	2018-03-10 17:19:56.484289237 +0100
+@@ -3,7 +3,7 @@
+ import sys, os
+ 
+ if len(sys.argv) < 2:
+-    print 'Usage:', sys.argv[0], '<file_path> [var_name]'
++    print ('Usage:', sys.argv[0], '<file_path> [var_name]')
+     exit(1)
+ 
+ f = open(sys.argv[1])
+@@ -23,4 +23,4 @@
+             output += '\n'
+ 
+ output += '0x00\n};'
+-print output
++print(output)
