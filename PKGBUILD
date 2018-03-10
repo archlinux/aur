@@ -5,8 +5,8 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.23
-_srcname=linux-4.14
+pkgver=4.15.8
+_srcname=linux-4.15
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
 arch=('x86_64')
@@ -15,12 +15,12 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=64dde16452b6629496a605ba9c840644bfbb47fb
+arch_config_trunk=8bf91ab3f60005767a118c90bf00659e9bf0db69
 
 # Arch additional patches
 arch_patches=(
-        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -31,23 +31,23 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         # Arch stock configuration files are directly pulled from specefic trunk
-        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}"
+        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
-for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
+for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '65987b047297e03246f31c64a2afc79bee2f3de336d7079ce690853bead56d24'
+            '93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426'
-            '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
+            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
+            '5b06300c5bf7e206a53e483820b8e8bc37415cd15ac7e0e5354ec8fd3023df02'
+            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
+            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -87,8 +87,6 @@ prepare() {
 
   cp -Tf ../config .config
 
-  # Add BPF_JIT_ALWAYS_ON, missing in Arch repos for branch 4.14
-  echo "CONFIG_BPF_JIT_ALWAYS_ON=y" >> .config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -280,6 +278,9 @@ package_linux-bld-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
