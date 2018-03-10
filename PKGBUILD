@@ -1,8 +1,8 @@
-# Mantainer:  David Fabijan <mclenin.at.gmail.com>
+# Maintainer:  David Fabijan <mclenin.at.gmail.com>
 
 pkgname=latexdraw
-pkgver=3.3.6
-pkgrel=2
+pkgver=3.3.8
+pkgrel=1
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
 url="http://latexdraw.sourceforge.net"
@@ -13,8 +13,6 @@ optdepends=('texlive-pstricks: use generated code in LaTeX documents'
   'texlive-langcyrillic: support LaTeX renderig')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/LaTeXDraw-${pkgver}-bin.zip
         latexdraw.sh)
-md5sums=('5688a2024a1dc2b61e2a1942e7e8ce63'
-         '8f7e3de38675797b824c5a8878e4c694')
 
 package() {
     cd ${srcdir}/LaTeXDraw-${pkgver}/data
@@ -43,3 +41,9 @@ package() {
     
 
 }
+md5sums=('7799e524778877b5230e1572b9f87b77'
+         '8f7e3de38675797b824c5a8878e4c694')
+sha1sums=('07fb2a20bc0372aebbd059d4c182aa022e9c173b'
+          'd53cc9f75f931eaee25de1d421aeadbd2b2f1623')
+sha256sums=('9929c75388d3a96298a14c321ca7a17905d78b20a947133418dd5bb4739ed01e'
+            '341de73de077f2a85a79084a07a535a5dc399f19f873f8e54c2f000d7380f98b')
