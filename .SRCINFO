@@ -1,6 +1,6 @@
 pkgbase = libgpr-git
 	pkgdesc = Ada library to handle GPRbuild project files
-	pkgver = r3152.ba7dba01
+	pkgver = r3307.832b1ce6
 	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686

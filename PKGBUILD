@@ -2,7 +2,7 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=libgpr-git
-pkgver=r3152.ba7dba01
+pkgver=r3307.832b1ce6
 pkgrel=1
 pkgdesc="Ada library to handle GPRbuild project files"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
     cd "$srcdir/gprbuild"
-    for k in static shared
+    for k in static static-pic shared
     do
         make prefix=/usr PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R \
             libgpr.build.$k
@@ -48,7 +48,7 @@ build() {
 package() {
     cd "$srcdir/gprbuild"
 
-    for k in static shared
+    for k in static static-pic shared
     do
         make prefix="$pkgdir/usr" PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R \
             libgpr.install.$k
