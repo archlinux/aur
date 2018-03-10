@@ -1,12 +1,13 @@
 pkgbase = ruby-compass
 	pkgdesc = A Real Stylesheet Framework
 	pkgver = 1.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://compass-style.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-bundler
 	noextract = compass-1.0.3.gem

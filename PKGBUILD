@@ -3,13 +3,13 @@
 
 pkgname=ruby-compass
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A Real Stylesheet Framework"
 arch=(i686 x86_64)
 url="http://compass-style.org"
 license=("MIT")
 depends=("ruby" "ruby-bundler")
-makedepends=("rubygems")
+makedepends=("rubygems" "ruby-rdoc")
 source=("http://gems.rubyforge.org/gems/compass-${pkgver}.gem"
         "Gemfile"
         "Gemfile.lock"
