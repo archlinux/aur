@@ -18,7 +18,7 @@
 
 set -u
 pkgname='bios-lenovo-thinkserver-ts140'
-pkgver='20180104.CQA'
+pkgver='20180221.CVA'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -42,13 +42,13 @@ _ver="${_ver,,}"
 source=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.txt")
 source_i686=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.tgz")
 source_x86_64=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux64.tgz")
-sha256sums=('8ae2cf28af95d56b8dfcec8caffd0e9cca55a5fd89a28fd0a6f238026a3f4f2c')
-sha256sums_i686=('2acd5cd3eb459c259d8e450c7387611f8a2bc76510bae77c4e14230936b78e1e')
-sha256sums_x86_64=('c8bf72c99aad25a55cce5523fe3280b88e7ff452f493ed2635755c38f0c447ff')
+sha256sums=('303e0c1095e985b2548395d686c2a0e9e02af50d6b7e8bcc1a87874c3fe4791c')
+sha256sums_i686=('50f21fb7a34320490959cd9c35ec281422db7055a0dcf2187f523973fc3d4c5a')
+sha256sums_x86_64=('f788b9b867a37503a244786777e9bccacea446276700873da387b3df59c6dc85')
 
-declare -gA _srcdir; _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
-declare -gA _exe; _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
-declare -gA _sh; _sh=(['i686']='Linux32.sh' ['x86_64']='Linux64.sh')
+declare -gA _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
+declare -gA _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
+declare -gA _sh=(['i686']='Linux32.sh' ['x86_64']='Linux64.sh')
 
 prepare() {
   set -u
@@ -61,10 +61,11 @@ prepare() {
   set +u
 }
 
-_build_disable() {
+build() {
   set -u
   cd "${_srcdir[${CARCH}]}"
   "./${_exe[${CARCH}]}" /MAKEDRV # amifldrv_mod.o
+  rm 'amifldrv_mod.o' # All we want to know is if it builds.
   set +u
 }
 
