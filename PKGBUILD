@@ -35,5 +35,6 @@ package()
   make install DESTDIR="$pkgdir"
   rm -r "$pkgdir"/usr/share
   rm "$pkgdir"/usr/psp/lib/crt0.o # provided by psp-sdk
+  rm "$pkgdir"/usr/psp/include/pthread.h "$pkgdir"/usr/psp/include/sched.h  # provided by psp-pthreads-emb
 }
 
