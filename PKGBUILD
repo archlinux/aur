@@ -3,7 +3,7 @@
 pkgname=ds9-bin  
 _pkgname=ds9
 pkgver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(http://ds9.si.edu/download/centos6/${_pkgname}.centos6.${pkgver}.tar.gz
         ds9.desktop
         ds9.png)
 md5sums=('66fa22d30803ecf69e06465d2e5cd234'
-         '11578c2ec2ad76e3fe47be0804e0083e'
+         'f1738e4ec665ae9afd1b65b86e6a07f1'
          '9297d5738f5f462831075c483dc785d5')
 
 # Older PKGBUILD stuff when 32 and 64 bit were supported
