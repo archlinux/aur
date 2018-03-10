@@ -1,8 +1,8 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.19.91
-pkgrel=2
+pkgver=2.19.92
+pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
 url="http://webkitgtk.org/"
@@ -19,7 +19,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('d9e09c12989431b2992dfeea903923e8dec45748')
+sha1sums=('f2d5bccc236ae9bf75a5e7fb39ac91dfe81164d8')
 
 prepare() {
   [ -d build ] && rm -rf build
@@ -28,18 +28,20 @@ prepare() {
   cd webkitgtk-$pkgver
   sed -i '1s/python$/&2/' Tools/gtk/generate-gtkdoc
   rm -r Source/ThirdParty/gtest/
-  sed -i Source/cmake/FindEnchant.cmake \
-    -e 's/(PC_ENCHANT enchant)/(PC_ENCHANT enchant-2)/' \
-    -e 's/NAMES enchant$/NAMES enchant-2/'
 }
 
 build() {
   cd build
-  cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIB_INSTALL_DIR=/usr/lib -DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
-        -DENABLE_GTKDOC=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 ../webkitgtk-$pkgver \
-        -G Ninja
+  cmake \
+    -G Ninja \
+    -DPORT=GTK \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_GTKDOC=ON \
+    -DLIB_INSTALL_DIR=/usr/lib \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    ../webkitgtk-$pkgver
   ninja
 }
 
