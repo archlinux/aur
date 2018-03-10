@@ -26,31 +26,22 @@ prepare() {
     cd "$srcdir/$pkgbase"
 }
 
-build(){
+build() {
     # Build for python2.
     cd "$srcdir"/$pkgbase/sources/shiboken2
+    cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF"
     mkdir -p build-py2 && cd build-py2
     cmake \
-        -DCMAKE_C_COMPILER=/usr/bin/clang \
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTS=OFF \
         -DUSE_PYTHON_VERSION=2 \
-        -DBUILD_TESTS=OFF ..
+        ${cmake_args} ..
     make
 
     # Build for python3.
     cd "$srcdir"/$pkgbase/sources/shiboken2
     mkdir -p build-py3 && cd build-py3
     cmake \
-        -DCMAKE_C_COMPILER=/usr/bin/clang \
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTS=OFF \
         -DUSE_PYTHON_VERSION=3 \
-        -DBUILD_TESTS=OFF ..
+        ${cmake_args} ..
     make
 }
 
