@@ -2,7 +2,7 @@
 _pkgname='elementary-xfce'
 pkgname="${_pkgname}-icons-git"
 pkgver=0.10.r2.g9ff56ee0
-pkgrel=1
+pkgrel=2
 pkgdesc='Elementary icon-theme with improved Xfce support'
 arch=('any')
 url="https://github.com/shimmerproject/${_pkgname}"
@@ -10,6 +10,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('adwaita-icon-theme')
 conflicts=("${_pkgname}-icons")
+provides=("${_pkgname}-icons")
 options=(!strip)
 source=("git+${url}")
 sha256sums=('SKIP')
