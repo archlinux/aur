@@ -7,7 +7,6 @@ pkgbase = hmcl
 	license = GPL3
 	makedepends = unzip
 	depends = java-environment>=8
-	depends = bash
 	depends = hicolor-icon-theme
 	noextract = HMCL-2.7.9.55.jar
 	source = hmcl-launch-script
