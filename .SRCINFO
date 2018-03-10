@@ -1,10 +1,9 @@
 pkgbase = linux-gc
-	pkgver = 4.15.7
+	pkgver = 4.15.8
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
@@ -12,13 +11,13 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.7.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.7.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.8.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.8.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
+	source = enable_additional_cpu_optimizations-20180310.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180310.tar.gz
 	source = v4.15_pds098k.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
@@ -26,13 +25,13 @@ pkgbase = linux-gc
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
 	sha256sums = SKIP
-	sha256sums = 0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02
+	sha256sums = 93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0
 	sha256sums = SKIP
 	sha256sums = f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 738f96d2cdc52a04b6e6959f3436c0388db38d18a4ac47fb0a82021faff8f9c5
+	sha256sums = b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815
 	sha256sums = feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c
 	sha256sums = 19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9
 	sha256sums = f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7
@@ -45,12 +44,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.15.7
+	provides = linux-gc=4.15.8
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.15.7
-	provides = linux-headers=4.15.7
+	provides = linux-gc-headers=4.15.8
+	provides = linux-headers=4.15.8
 

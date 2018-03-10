@@ -1,7 +1,7 @@
 # Maintainer: Leonidas Spyropoulos <artafinde AT gmail DOT com>
 # Credit to graysky for shamelessly copying PKGBUILD from linux-ck
 
-## BUILD OPTIONS
+### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
@@ -32,16 +32,16 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.7
+pkgver=4.15.8
 pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _psd_patch="v4.15_pds${_pdsversion}.patch"
+_gcc_more_v='20180310'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
@@ -49,7 +49,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
@@ -60,13 +60,13 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02'
+            '93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0'
             'SKIP'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '738f96d2cdc52a04b6e6959f3436c0388db38d18a4ac47fb0a82021faff8f9c5'
+            'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c'
             '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
             'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7')
@@ -93,7 +93,7 @@ prepare() {
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
-  patch -Np1 -i "../${_gcc_patch}"
+  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
   make mrproper
 
@@ -102,6 +102,13 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
+
+  ### Optionally disable NUMA for 64-bit kernels only
+  # (x86 kernels do not support NUMA)
   if [ -n "$_NUMAdisable" ]; then
     msg "Disabling NUMA from kernel config..."
     sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
@@ -115,11 +122,6 @@ END
       -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
-
-  # set extraversion to pkgrel and empty localversion
-  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -145,7 +147,7 @@ END
 
   # rewrite configuration
   yes "" | make config >/dev/null
-  
+
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
 }
