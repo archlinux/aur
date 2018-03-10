@@ -13,12 +13,12 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir"/pthreads-emb
-  make -C platform/psp
+  make -C platform/psp TARGET_LIB=libpthread.a
 }
 
 package() {
   cd "$srcdir"/pthreads-emb
-  make -C platform/psp DESTDIR="$pkgdir" install
+  make -C platform/psp DESTDIR="$pkgdir" TARGET_LIB=libpthread.a install
   
   # FIXME: already owned by newlib
   rm "$pkgdir"/usr/psp/include/pthread.h
