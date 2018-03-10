@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=1.5.0
+pkgver=1.5.0.5+12+g943608f3
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix and Materia (ex-Flat-Plat) themes (GTK2, GTK3),
@@ -18,8 +18,10 @@ source=(
 	"git+https://github.com/actionless/oomox-archdroid-icon-theme.git#branch=master"
 	"git+https://github.com/actionless/oomox-gnome-colors-icon-theme.git#branch=master"
 	"git+https://github.com/actionless/oomoxify.git#branch=master"
+	"git+https://github.com/base16-builder/base16-builder#branch=master"
 )
 md5sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -73,6 +75,7 @@ prepare(){
 	git config submodule.archdroid-icon-theme.url $srcdir/oomox-archdroid-icon-theme
 	git config submodule.gnome-colors-icon-theme.url $srcdir/oomox-gnome-colors-icon-theme
 	git config submodule.oomoxify.url $srcdir/oomoxify
+	git config submodule.base16-builder.url $srcdir/base16-builder
 	git submodule update
 }
 
