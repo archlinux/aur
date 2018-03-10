@@ -1,4 +1,4 @@
-pkgbase = scantailor
+pkgbase = scantailor-git
 	pkgdesc = Interactive post-processing tool for scanned pages
 	pkgver = RELEASE_0_9_12_1.r5.g67a8466
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = scantailor
 	source = scantailor::git+https://github.com/scantailor/scantailor
 	sha256sums = SKIP
 
-pkgname = scantailor
+pkgname = scantailor-git
 
