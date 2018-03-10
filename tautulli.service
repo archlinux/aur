@@ -5,13 +5,8 @@ After=plexmediaserver.service
 [Service]
 User=tautulli
 Group=tautulli
-GuessMainPID=no
-Type=forking
-
-PermissionsStartOnly=true
-ExecStartPre=-/usr/bin/mkdir -p /var/lib/tautulli
-ExecStartPre=/usr/bin/chown -R tautulli:tautulli /var/lib/tautulli/
-ExecStart=/usr/bin/python2 /opt/tautulli/PlexPy.py --quiet --daemon --nolaunch --config /var/lib/tautulli/config.ini --datadir /var/lib/tautulli --nolaunch
+Type=simple
+ExecStart=/usr/bin/python2 /usr/lib/tautulli/Tautulli.py --nolaunch --config /var/lib/tautulli/config.ini --datadir /var/lib/tautulli
 
 [Install]
 WantedBy=default.target

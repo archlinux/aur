@@ -5,7 +5,7 @@
 
 pkgname=tautulli-beta
 pkgver=2.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/Tautulli/Tautulli"
@@ -16,27 +16,32 @@ conflicts=('plexpy-git' 'tautulli' 'plexpy')
 provides=("tautulli")
 replaces=("plexpy")
 install='tautulli.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver-beta.tar.gz" 
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver-beta.tar.gz"
+        'tautulli.install'
         'tautulli.service'
-        'tautulli.install')
-sha256sums=('f6baa56f8ba3a66caab8eef3f59e7335908502d36ace1508cc3cfdbc3f7809b7'
-            '7aaf4461f0798bf12553eb647b8ee6b0553b38e23673cf78f5514e6d416512f4'
-            'a6527e268daa0e58eb3cfb03e404e0038d0a21d331abff9f5aef16534b77a6cc')
+        'tautulli.sysusers')
 
-prepare() {
-	echo "v${pkgver}" > "${srcdir}/Tautulli-${pkgver}-beta/version.txt"
-}
+sha256sums=('f6baa56f8ba3a66caab8eef3f59e7335908502d36ace1508cc3cfdbc3f7809b7'
+            '7e959ab5cd7343c1fd21fbd4e14d0740a391b67b01d421ec8c96a7d52527a1d4'
+            'd755d5eae3d6b7332505654cc196406eeddefa08f90399c875118b6c295f5dd4'
+            'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
 package() {
-	cd "${srcdir}/Tautulli-${pkgver}-beta"
-	install -Dm755 PlexPy.py "${pkgdir}/opt/tautulli/PlexPy.py"
-	install -Dm644 pylintrc  "${pkgdir}/opt/tautulli/"
-	install -Dm644 CHANGELOG.md "${pkgdir}/opt/tautulli/"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/tautulli/LICENSE"
+  cd "${srcdir}/Tautulli-${pkgver}-beta"
+  install -Dm755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
+  install -Dm755 Tautulli.py "${pkgdir}/usr/lib/tautulli/Tautulli.py"
+  install -Dm644 pylintrc  "${pkgdir}/usr/lib/tautulli/"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/lib/tautulli/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/tautulli/LICENSE"
 
-	cp -a data/ lib/ plexpy/ "${pkgdir}/opt/tautulli/"
+  cp -a data/ lib/ plexpy/ "${pkgdir}/usr/lib/tautulli/"
 
-	install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
-	install -Dm644 "version.txt" "${pkgdir}/opt/tautulli/"
+  install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
+  install -Dm644 "${srcdir}/tautulli.sysusers" "${pkgdir}/usr/lib/sysusers.d/tautulli.conf"
+
+  msg2 "To migrate your plexpy config and db, run the following commands:"
+  msg2 "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
+  msg2 "  sudo sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
+  msg2 "  sudo chown -R tautulli: /var/lib/tautulli"
 }
 

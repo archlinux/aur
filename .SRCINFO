@@ -1,7 +1,7 @@
 pkgbase = tautulli-beta
 	pkgdesc = A Python based monitoring and tracking tool for Plex Media Server.
 	pkgver = 2.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tautulli/Tautulli
 	install = tautulli.install
 	arch = any
@@ -14,11 +14,13 @@ pkgbase = tautulli-beta
 	conflicts = plexpy
 	replaces = plexpy
 	source = tautulli-beta-2.0.22.tar.gz::https://github.com/Tautulli/Tautulli/archive/v2.0.22-beta.tar.gz
-	source = tautulli.service
 	source = tautulli.install
+	source = tautulli.service
+	source = tautulli.sysusers
 	sha256sums = f6baa56f8ba3a66caab8eef3f59e7335908502d36ace1508cc3cfdbc3f7809b7
-	sha256sums = 7aaf4461f0798bf12553eb647b8ee6b0553b38e23673cf78f5514e6d416512f4
-	sha256sums = a6527e268daa0e58eb3cfb03e404e0038d0a21d331abff9f5aef16534b77a6cc
+	sha256sums = 7e959ab5cd7343c1fd21fbd4e14d0740a391b67b01d421ec8c96a7d52527a1d4
+	sha256sums = d755d5eae3d6b7332505654cc196406eeddefa08f90399c875118b6c295f5dd4
+	sha256sums = e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8
 
 pkgname = tautulli-beta
 
