@@ -3,7 +3,7 @@
 
 _pkgbase=v4l2loopback
 pkgname=${_pkgbase}-dkms-git
-pkgver=0.9.1.r12.g22ec879
+pkgver=0.10.0.r12.gfe07b6f
 pkgrel=1
 pkgdesc="v4l2-loopback device"
 url="https://github.com/umlaeute/v4l2loopback"
