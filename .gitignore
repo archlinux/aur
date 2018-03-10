@@ -1,0 +1,4 @@
+gnatcoll-core
+pkg
+src
+*.pkg.tar.xz
