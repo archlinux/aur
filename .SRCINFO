@@ -6,7 +6,6 @@ pkgbase = git-annex-remote-googledrive
 	arch = any
 	license = GPLv3+
 	makedepends = python-setuptools
-	depends = python
 	depends = python-annexremote
 	depends = python-pydrive
 	source = https://files.pythonhosted.org/packages/15/f5/592e71a9a2aaedf2f22dac66173b2eb972aa87c4c6cfe1bb23033632975c/git-annex-remote-googledrive-0.9.tar.gz
