@@ -3,7 +3,7 @@
 
 pkgname=electrumx
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
