@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer: Jonas Strassel <info@jonas-strassel.de>
 # Contributor: Denis Terskov aka neurosurgeon <terskov.den@gmail.com>
 
-pkgname=scantailor
+pkgname=scantailor-git
 pkgver=RELEASE_0_9_12_1.r5.g67a8466
 pkgrel=1
 pkgdesc="Interactive post-processing tool for scanned pages"
