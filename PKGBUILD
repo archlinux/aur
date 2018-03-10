@@ -5,7 +5,7 @@ pkgver=10.2.0
 _buildver=7259539
 _pkgver=${pkgver}_${_buildver}
 _vmware_ver=14.1.1_7528167
-pkgrel=1
+pkgrel=2
 pkgdesc='The proprietary implementation of VMware Tools'
 arch=('i686' 'x86_64')
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=(
   p7zip
-  vmware-component-extractor
+  vmware-component-extractor-git
 )
 optdepends=(
   'cups: print using ThinPrint'

@@ -1,14 +1,14 @@
 pkgbase = vmware-tools
 	pkgdesc = The proprietary implementation of VMware Tools
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-tools.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = p7zip
-	makedepends = vmware-component-extractor
+	makedepends = vmware-component-extractor-git
 	depends = fuse2
 	depends = net-tools
 	optdepends = cups: print using ThinPrint
