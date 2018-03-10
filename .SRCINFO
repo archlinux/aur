@@ -1,6 +1,6 @@
 pkgbase = glorytun
 	pkgdesc = A small, simple and secure VPN
-	pkgver = 0.0.93_mud
+	pkgver = 0.0.96_mud
 	pkgrel = 1
 	url = https://github.com/angt/glorytun
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = glorytun
 	makedepends = pkgconfig
 	depends = libsodium
 	depends = iproute2
-	source = https://github.com/angt/glorytun/releases/download/v0.0.93-mud/glorytun-0.0.93-mud.tar.gz
-	md5sums = 92300f047f2ea75c06de122f17d7e756
+	source = https://github.com/angt/glorytun/releases/download/v0.0.96-mud/glorytun-0.0.96-mud.tar.gz
+	md5sums = bd2022ea8ae493c8ffcef5e969a03367
 
 pkgname = glorytun
 
