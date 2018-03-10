@@ -1,7 +1,7 @@
 # Maintainer: tsonntig
 
 pkgname=fanicontrol
-pkgver=0.30
+pkgver=0.31
 pkgrel=1
 pkgdesc="a new way controling your fans"
 arch=('any')
