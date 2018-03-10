@@ -1,0 +1,14 @@
+post_install() {
+  echo -n "Updating font cache ... "
+  fc-cache -s
+  mkfontscale /usr/share/fonts/revelation
+  mkfontdir /usr/share/fonts/revelation
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  post_install "$@"
+}
