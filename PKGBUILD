@@ -1,16 +1,16 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=qtdmm-qt5-git
-_pkgname=QtDMM
+_pkgname=qtdmm
 pkgver=0.9.8.r23.gc8a2714
 pkgrel=1
-pkgdesc="Qt5 port of QtDMM: a DMM readout software including a configurable recorder"
+pkgdesc="A DMM readout software including a configurable recorder (QT5 port)"
 arch=('x86_64')
 url="https://github.com/tuxmaster/${_pkgname}"
 license=('GPL3')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=('qtdmm' 'qtdmm-qt5')
+conflicts=('qtdmm' 'qtdmm-qt5')
 depends=('qt5-base' 'qt5-serialport')
-makedepends=('qt5-base' 'qt5-serialport' 'git')
+makedepends=('qt5-tools' 'git')
 source=("$pkgname::git+https://github.com/tuxmaster/QtDMM.git")
 md5sums=('SKIP')
 
