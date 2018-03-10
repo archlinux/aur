@@ -6,6 +6,7 @@ pkgbase = gnomecast-git
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = gtk3
 	depends = python
 	depends = ffmpeg
