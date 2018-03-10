@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         bs.logrotate
         bs-init.service
         bs.service)
-sha256sums=('aa4c500e8dc23e72e90b672b463d8b7a366f6553f4ca7e1f04a0be3e5472d47f'
+sha256sums=('37ef8d572fb7400565655501ffdea5d07a1de10f3d9fa823d33e2bf68ef8c3ce'
             'SKIP'
             'a2e4a1d6aaabcec9c57207a7e92b004c2dfa4a2d15c0ecfc05eefbf307783a49'
             'f110eb59cdd18a8ad0a512604370f912e65b0525e8bb08b463af3e62a920b47d'
