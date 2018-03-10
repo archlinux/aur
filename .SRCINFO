@@ -1,7 +1,7 @@
 pkgbase = gtk2-theme-slickness
 	pkgdesc = A nice, dark (black & white) theme for gnome desktop.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome-look.org/content/show.php/SlicknesS?content=71993
 	install = info.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gtk2-theme-slickness
 	groups = gtk2-themes
 	license = GPL
 	depends = gtk2
-	source = http://www.deviantart.com/download/83117411/SlicknesS_by_Th3R0b.gz
+	source = https://orig00.deviantart.net/eeb1/f/2008/331/9/8/slickness_by_th3r0b.gz
 	md5sums = 565fa215c272d8e6340fc0a33049aa15
 
 pkgname = gtk2-theme-slickness
