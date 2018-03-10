@@ -22,7 +22,7 @@ pkgver=18.0a1
 _codename=Leia
 _rtype=Alpha
 _rver=1
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -35,8 +35,6 @@ makedepends=(
   'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'speex' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
   'yajl' 'zip' 'git' 'giflib' 'rapidjson'
-  # AUR packages needed
-  'fmt' 
 )
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -90,6 +88,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
+    -DENABLE_INTERNAL_FMT=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
