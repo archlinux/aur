@@ -9,10 +9,8 @@ arch=('x86_64')
 url="https://protonmail.com/bridge/"
 license=('custom' 'MIT')
 depends=(
-  'gst-plugins-base-libs'
-  'gtk3'
-  'libpulse'
   'libsecret'
+  'gnome-keyring'
   'qt5-svg'
   'qt5-declarative'
   'ttf-dejavu'
