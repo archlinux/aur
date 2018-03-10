@@ -1,5 +1,5 @@
 pkgname=gmt-dcw
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="The Digital Chart of the World Polygon data for the Generic Mapping Tools."
 arch=('any')
@@ -9,6 +9,7 @@ depends=()
 makedepends=()
 provides=()
 source=(ftp://ftp.soest.hawaii.edu/gmt/dcw-gmt-${pkgver}.tar.gz)
+md5sums=('57b9bf8f6c266fbc379ebe75ce78c3d4')
 
 build() {
   echo "Nothing to build."
@@ -20,4 +21,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('45c99d30026742dbc0b1644ea64f496d')
