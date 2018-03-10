@@ -1,11 +1,14 @@
 pkgbase = asc-compositor
 	pkgdesc = A simple and tiny wayland compositor, written in c and lua.
-	pkgver = 0.01.9592cee
+	pkgver = 0.01.decafa3
 	pkgrel = 1
 	url = https://github.com/vktec/asc
 	arch = any
 	license = GPL
+	makedepends = wlc
+	makedepends = lua
 	depends = wayland
+	optdepends = wlc-static-git: For Static Builds, a static copy of WLC is required
 	provides = asc-compositor
 	source = asc-compositor::git://github.com/EndlessEden/asc.git
 	source = asc.desktop
