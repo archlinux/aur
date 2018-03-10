@@ -3,7 +3,7 @@
 _pkgname=ttf-revelation
 pkgname="${_pkgname}"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="The hand-written font for Myst IV Revelation journals."
 arch=('any')
 url="http://www.rshayter.com/downloads/"
@@ -19,12 +19,10 @@ makedepends=(
   "xorg-xset"
 )
 
-provides=("ttf-dniscript=${pkgver}")
-
 install='revelation.install'
 
 source=(
-  "revelation.ttf::http://www.rshayter.com/files/Revelation.ttf"
+  "Revelation.ttf::http://www.rshayter.com/files/Revelation.ttf"
   "license-dummy.txt"
   "${install}"
 )
@@ -43,8 +41,7 @@ prepare() {
 package() {
   cd "${srcdir}"
 
-  install -D -v -m644 'revelation.ttf' "${pkgdir}/usr/share/fonts/revelation
-  /revelation.ttf"
+  install -D -v -m644 'Revelation.ttf' "${pkgdir}/usr/share/fonts/revelation/Revelation.ttf"
 
   install -D -v -m644 license-dummy.txt "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
   install -D -v -m644 website.url "${pkgdir}/usr/share/doc/${_pkgname}/website.url"

@@ -1,7 +1,7 @@
 pkgbase = ttf-revelation
 	pkgdesc = The hand-written font for Myst IV Revelation journals.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rshayter.com/downloads/
 	install = revelation.install
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = ttf-revelation
 	makedepends = xorg-mkfontscale
 	makedepends = xorg-mkfontdir
 	makedepends = xorg-xset
-	provides = ttf-dniscript=latest
-	source = revelation.ttf::http://www.rshayter.com/files/Revelation.ttf
+	source = Revelation.ttf::http://www.rshayter.com/files/Revelation.ttf
 	source = license-dummy.txt
 	source = revelation.install
 	sha256sums = 0e0fde843486d814f3831f9f482884543d315e90e05cb539e8a6bce678b88c74
