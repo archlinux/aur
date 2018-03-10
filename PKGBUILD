@@ -1,27 +1,28 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
-# Maintainer: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
+# Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
+# Maintainer: Evert Vorster <evorster-at-gmail-dot-com>
 
 pkgname=amarok-git
-pkgver=v2.8.90.17.g9308403
+pkgver=v2.9.0.147.gf96d0d159d
 pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
 license=('GPL2' 'LGPL2.1' 'FDL')
-depends=('kdebase-runtime' 'mariadb' 'qtscriptgenerator' 'taglib-extras'
-        'liblastfm' 'ffmpeg2.8' 'libofa' 'qjson')
-makedepends=('pkgconfig' 'automoc4' 'cmake' 'libgpod' 'libmtp' 'loudmouth'
-             'libmygpo-qt' 'mesa' 'clamz' 'git' 'gmock')
+depends=('kdelibs4support' 'threadweaver' 'plasma-framework'
+         'kcmutils' 'knewstuff' 'ktexteditor' 'knotifyconfig' 'kdnssd'
+         'libmariadbclient' 'taglib-extras' 'gst-plugins-bad'
+         'qca-qt5' 'liblastfm' 'qjson' 'qt5-webkit' 'ffmpeg' 'gmock')
+makedepends=('pkgconfig' 'extra-cmake-modules' 'kdoctools')
 optdepends=("libgpod: support for Apple iPod audio devices"
-            "libmtp: support for portable media devices"
+	    "libmtp: support for portable media devices"
             "loudmouth: backend needed by mp3tunes for syncing"
             "ifuse: support for Apple iPod Touch and iPhone"
-            "libmygpo-qt: gpodder.net Internet Service"
+            "libmygpo-qt5-git: gpodder.net Internet Service"
             "clamz: allow to download songs from Amazon.com")
 conflicts=('amarok' 'amarok2')
 provides=('amarok')
-replaces=('amarok-svn' 'amarok2-svn')
-install="${pkgname}.install"
+#install="${pkgname}.install"
 #source=(${pkgname}::git://anongit.kde.org/amarok.git)
 source=(git://anongit.kde.org/amarok.git)
 sha1sums=('SKIP')
@@ -34,16 +35,16 @@ pkgver() {
 #prepare(){
 #cd amarok
 #pwd;
-#patch -Np1 <../amarok-git.patch
+#patch -Np1 <../../amarok.kf5-git-savechanges.patch
 #}
 
 build() {
     rm -rf build
     mkdir -p build
     cd build
-    export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
     cmake "../amarok" -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR:STRING=/usr/lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE4_BUILD_TESTS=OFF \
         -DWITH_NepomukCore=OFF \
