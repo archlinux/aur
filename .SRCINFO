@@ -1,0 +1,20 @@
+pkgbase = python-pivy-git
+	pkgdesc = Coin binding for Python
+	pkgver = 0.6.3.r6.g6502b59
+	pkgrel = 1
+	url = https://github.com/FreeCAD/pivy
+	arch = x86_64
+	license = other
+	makedepends = git
+	makedepends = cmake
+	makedepends = swig
+	depends = python
+	depends = coin-hg
+	depends = python-pyside2-git
+	provides = python-pivy
+	conflicts = python-pivy
+	source = pivy::git+https://github.com/FreeCAD/pivy.git
+	md5sums = SKIP
+
+pkgname = python-pivy-git
+
