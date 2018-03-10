@@ -4,5 +4,5 @@ Type=Application
 Categories=Network
 GenericName=mikutter
 Icon=/opt/mikutter/core/skin/data/icon.png
-Exec=/usr/bin/ruby /opt/mikutter/mikutter.rb
+Exec=/usr/bin/mikutter
 Terminal=false
