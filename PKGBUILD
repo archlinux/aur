@@ -1,15 +1,15 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.54.1
+pkgver=2.56.0
 pkgrel=1
 pkgdesc="Network extensions for GLib"
 url="https://git.gnome.org/browse/glib-networking"
 arch=(x86_64)
 license=(GPL2)
 depends=(glib2 libproxy gnutls ca-certificates gsettings-desktop-schemas)
-makedepends=(intltool git)
-_commit=5c3ae946ea5f97ad606d0598e42f786139eca0be  # tags/2.54.1^0
+makedepends=(meson git)
+_commit=d99151580b1ba0efcf737d8b936ae08d02ddac88  # tags/2.56.0^0
 source=("git+https://git.gnome.org/browse/glib-networking#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -20,25 +20,21 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --libexecdir=/usr/lib/$pkgname --disable-static \
-    --disable-installed-tests
-  make
+  arch-meson $pkgname build
+  ninja -C build
 }
 
 check() {
-  cd $pkgname
-  make check
+  cd build
+  meson test
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
+  rm -r "$pkgdir/usr/share/installed-tests"
 }
 
 # vim:set ts=2 sw=2 et:
