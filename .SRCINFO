@@ -1,0 +1,20 @@
+pkgbase = python-discord-git
+	pkgdesc = Rewrite version of discord.py, an API wrapper for Discord
+	pkgver = r1450.8ba7816
+	pkgrel = 1
+	url = https://github.com/Rapptz/discord.py.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-websockets
+	depends = python-aiohttp
+	optdepends = python-pynacl: Voice support
+	optdepends = libffi: Voice support
+	provides = python-discord
+	conflicts = python-discord
+	source = python-discord-git::git+https://github.com/Rapptz/discord.py.git#branch=rewrite
+	md5sums = SKIP
+
+pkgname = python-discord-git
+
