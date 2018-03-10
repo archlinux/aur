@@ -12,7 +12,7 @@ pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
 pkgver=0.27.2
-pkgrel=1
+pkgrel=2
 _waf_version=1.9.8
 pkgdesc='mpv with Raspberry Pi support'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -61,6 +61,9 @@ build() {
   cd ${_pkgname}-${pkgver}
 
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CFLAGS+=" -fPIC" && CXXFLAGS+=" -fPIC"
+
+  # https://github.com/mpv-player/mpv-build/issues/84
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/vc/lib/pkgconfig"
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
