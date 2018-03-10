@@ -11,7 +11,7 @@ pkgbase = nomad-plasma-look-and-feel-git
 	depends = plasma-desktop
 	depends = luv-icon-theme-git
 	depends = kvantum-qt5
-	optdepends = nomad-gtk-themes
+	optdepends = nomad-gtk-themes-git
 	source = git+https://github.com/nomad-desktop/nomad-plasma-look-and-feel.git
 	sha256sums = SKIP
 
