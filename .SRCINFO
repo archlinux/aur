@@ -1,0 +1,19 @@
+pkgbase = radvd-git
+	pkgdesc = IPv6 router advertisement daemon
+	pkgver = 2.17.r8.g7488976
+	pkgrel = 1
+	url = http://www.litech.org/radvd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	checkdepends = check
+	makedepends = git
+	depends = glibc
+	provides = radvd
+	conflicts = radvd
+	backup = etc/radvd.conf
+	source = git+https://github.com/reubenhwk/radvd.git
+	sha256sums = SKIP
+
+pkgname = radvd-git
+
