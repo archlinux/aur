@@ -21,7 +21,7 @@ package() {
   make -C platform/psp DESTDIR="$pkgdir" TARGET_LIB=libpthread.a install
   
   # FIXME: already owned by newlib
-  rm "$pkgdir"/usr/psp/include/pthread.h
-  rm "$pkgdir"/usr/psp/include/sched.h
+  #rm "$pkgdir"/usr/psp/include/pthread.h
+  #rm "$pkgdir"/usr/psp/include/sched.h
 }
 
