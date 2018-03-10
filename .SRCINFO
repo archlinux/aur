@@ -1,7 +1,7 @@
 pkgbase = synthpod-git
 	pkgdesc = Lightweight non-linear plugin host
-	pkgver = 0.1.5537
-	pkgrel = 4
+	pkgver = 0.1.5565
+	pkgrel = 1
 	url = http://open-music-kontrollers.ch/lv2/synthpod/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = synthpod-git
 	depends = lilv
 	depends = jack
 	depends = libgl
+	depends = zita-alsa-pcmi
 	optdepends = gtk2
 	optdepends = gtk3
 	optdepends = qt4
