@@ -3,6 +3,7 @@ pkgbase = python-pip-bootstrap
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://bootstrap.pypa.io/
+	arch = i486
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -11,6 +12,10 @@ pkgbase = python-pip-bootstrap
 	sha512sums = 29971130c5d1d1baf2b51ef689b40c91fcd0d1e62de6f99d6abef6879684a59843be539cd112dfddc3637cc3d1a91c79f775d80f6aa2fe920252710d48d2934d
 
 pkgname = python-pip-bootstrap
+	install = install.sh
+	depends = python
 
 pkgname = python2-pip-bootstrap
+	install = install2.sh
+	depends = python2
 
