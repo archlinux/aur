@@ -1,7 +1,7 @@
 pkgbase = protonmail-bridge
 	pkgdesc = Application to use IMAP/SMTP with your paid ProtonMail account
 	pkgver = 1.0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonmail.com/bridge/
 	arch = x86_64
 	license = custom
