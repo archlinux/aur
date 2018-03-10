@@ -1,12 +1,13 @@
 pkgbase = lute-git
 	pkgdesc = A rom library management system for organised gamers
-	pkgver = 0.1.0
+	pkgver = 0.1.0.88.gd93dfa5
 	pkgrel = 1
 	url = https://github.com/ingolemo/lute
 	arch = x86_64
 	license = GPL3
 	depends = python
 	depends = python-click
+	depends = python-parsimonious
 	depends = python-requests
 	depends = python-toml
 	source = git://github.com/ingolemo/lute.git
