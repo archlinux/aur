@@ -10,7 +10,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build 
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 23.
+# generic (default) option is 24.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -34,7 +34,9 @@ _makenconfig=
 #  20. Intel Haswell (MHASWELL)
 #  21. Intel Broadwell (MBROADWELL)
 #  22. Intel Skylake (MSKYLAKE)
-#  23. Generic-x86-64 (GENERIC_CPU)
+#  23. Intel Skylake X (MSKYLAKEX)
+#  24. Generic-x86-64 (GENERIC_CPU)
+#  25. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
@@ -63,7 +65,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcname=linux-4.15
 pkgver=4.15.8
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -71,7 +73,7 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchname="patch-4.15-ck${_ckpatchversion}"
-_gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
+_gcc_more_v='20180310'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
@@ -80,7 +82,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "http://ck.kolivas.org/patches/4.0/4.15/4.15-ck${_ckpatchversion}/${_ckpatchname}.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
@@ -97,10 +99,10 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '738f96d2cdc52a04b6e6959f3436c0388db38d18a4ac47fb0a82021faff8f9c5'
+            'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'af51d2433340fdd88a73fdfdfa88b304b3933a937c7ef16a22ba73950360de71'
-            'c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863'
-            'b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676')
+            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
+            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -128,7 +130,7 @@ prepare() {
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
-  patch -Np1 -i "../${_gcc_patch}"
+  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
   # Clean tree and copy ARCH config over
   make mrproper
