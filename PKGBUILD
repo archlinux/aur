@@ -45,9 +45,9 @@ pkgver() {
 prepare() {
        cd "$srcdir/$_gitname"
 
-       git remote add up $_upstream
-
-       git pull --no-edit up refs/pull/3121/head # fix cmake install path for libwallet api
+       # To apply PRs
+       #git remote add up $_upstream
+       #git pull --no-edit up refs/pull/xxxx/head
 }
 
 build() {
