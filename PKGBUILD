@@ -3,7 +3,7 @@
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
-pkgver=3.8.6
+pkgver=3.8.6+13+gff9b88f
 pkgrel=1
 pkgdesc="Easily send files via mail"
 url="https://git.gnome.org/browse/nautilus-sendto"
@@ -11,8 +11,8 @@ arch=(x86_64)
 license=(GPL)
 depends=(glib2)
 makedepends=(gobject-introspection git meson appstream-glib)
-groups=('gnome-extra')
-_commit=c1a5c66701c80eab5df5f8a66595c686df12aa84  # tags/NAUTILUS_SENDTO_3_8_6^0
+groups=(gnome-extra)
+_commit=ff9b88f4e4a1df4ce322426adc6feda5f9a56e37  # master
 source=("git+https://git.gnome.org/browse/nautilus-sendto#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -22,17 +22,14 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build
   cd $pkgname
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release ../$pkgname
-  ninja
+  arch-meson $pkgname build
+  ninja -C build
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja -C build install
 }
