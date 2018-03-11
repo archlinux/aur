@@ -9,6 +9,9 @@ _opts=(
 	-DCMAKE_INSTALL_PREFIX=/usr
 	-DCMAKE_INSTALL_LIBDIR=lib
 	-DCMAKE_INSTALL_LIBEXECDIR=lib
+    -DENABLE_APPMENU_GTK_MODULE=OFF
+    -DENABLE_REGISTRAR=OFF
+    -DENABLE_JAYATANA=OFF
 )
 
 pkgname=(
@@ -60,7 +63,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 pkgver=0.6.93
-pkgrel=3
+pkgrel=4
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -86,7 +89,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  cmake ./ "${_opts[@]}" -DENABLE_APPMENU_GTK_MODULE=OFF -DENABLE_REGISTRAR=OFF -DENABLE_JAYATANA=OFF
+  cmake ./ "${_opts[@]}"
   make
 }
 
