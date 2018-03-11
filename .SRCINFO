@@ -25,9 +25,11 @@ pkgbase = openms
 	source = https://download.sourceforge.net/project/open-ms/OpenMS/OpenMS-2.3/OpenMS-2.3.0-src.tar.gz
 	source = OpenMS-TOPPView.desktop
 	source = OpenMS-TOPPAS.desktop
+	source = OpenMS.sh
 	sha256sums = 6ddc56811e1bcb67f28b8c55781229bbe10cc8250b59e76ba1f2a3b52e142ba5
-	sha256sums = 06819f1899b6122d513e67f2427c0c07bab522f859a79b6c7dd56e7d627d0d23
-	sha256sums = 866f5c99e9516af943e06f3407bad6abbb24167f90e351e4727edb2c5cf058cf
+	sha256sums = 4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac
+	sha256sums = 9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0
+	sha256sums = 2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d
 
 pkgname = openms
 

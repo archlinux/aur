@@ -12,10 +12,11 @@ license=('BSD')
 depends=('boost' 'qt4' 'qtwebkit' 'xerces-c' 'bzip2' 'eigen' 'glpk' 'zlib')
 makedepends=('autoconf' 'automake' 'binutils' 'cmake' 'fakeroot' 'gcc' 'make' 'patch')
 source=("https://download.sourceforge.net/project/open-ms/${_pkgname}/${_pkgname}-${_pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
-        OpenMS-TOPPView.desktop OpenMS-TOPPAS.desktop)
+        OpenMS-TOPPView.desktop OpenMS-TOPPAS.desktop OpenMS.sh)
 sha256sums=('6ddc56811e1bcb67f28b8c55781229bbe10cc8250b59e76ba1f2a3b52e142ba5'
             '4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac'
-            '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0')
+            '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0'
+	    '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d')
 build() {
   cd "${srcdir}/"
   rm -rf ${_pkgname}-${pkgver}-build
@@ -38,4 +39,5 @@ package() {
   install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 ${srcdir}/OpenMS-TOPPView.desktop ${pkgdir}/usr/share/applications/OpenMS-TOPPView.desktop
   install -D -m644 ${srcdir}/OpenMS-TOPPAS.desktop ${pkgdir}/usr/share/applications/OpenMS-TOPPAS.desktop
+  install -D -m644 ${srcdir}/OpenMS.sh ${pkgdir}/etc/profile.d/OpenMS.sh
 }
