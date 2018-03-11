@@ -1,6 +1,6 @@
 pkgbase = erika-git
 	pkgdesc = A GTK+ podcast manager
-	pkgver = v0.1.r9.g494af6d
+	pkgver = v0.1.1
 	pkgrel = 1
 	url = https://github.com/Muges/erika
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = erika-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
+	depends = webkitgtk
 	source = erika-git::git+https://github.com/Muges/erika.git
 	sha1sums = SKIP
 
