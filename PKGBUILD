@@ -4,13 +4,13 @@
 
 pkgname=mozilla-firefox-sync-server
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync"
 arch=('any')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
 license=('GPL')
 depends=('python2' 'python2-pyramid' 'python2-mozsvc' 'python2-konfig' 'python2-configparser' 'python2-tokenserver'
-         'python2-simplejson' 'python2-paste-deploy' 'python2-syncstorage' 'python2-pyramid-hawkauth' 'python2-tokenlib')
+         'python2-simplejson' 'python2-paste-deploy' 'python2-syncstorage' 'python2-pyramid-hawkauth' 'python2-tokenlib' 'python2-sqlalchemy')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-services/syncserver/archive/v${pkgver}.tar.gz"
         'ffsync.service'
