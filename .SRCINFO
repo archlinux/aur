@@ -1,0 +1,13 @@
+pkgbase = keepass-plugin-yet-another-favicon-downloader
+	pkgdesc = Yet Another Favicon Downloader for KeePass 2.x
+	pkgver = 1.1.1.0
+	pkgrel = 1
+	url = https://github.com/navossoc/KeePass-Yet-Another-Favicon-Downloader
+	arch = any
+	license = GPLv2
+	depends = keepass>=2.34
+	source = YetAnotherFaviconDownloader.plgx::https://github.com/navossoc/KeePass-Yet-Another-Favicon-Downloader/releases/download/v1.1.1.0/YetAnotherFaviconDownloader.plgx
+	sha256sums = 61d1f75fe5ac45d047e540c741a138d356a3c0a458781b641857efb994824559
+
+pkgname = keepass-plugin-yet-another-favicon-downloader
+
