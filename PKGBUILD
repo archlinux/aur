@@ -9,7 +9,7 @@
 pkgbase=libdbusmenu-ubuntu
 pkgname=(libdbusmenu-glib-ubuntu libdbusmenu-gtk2-ubuntu libdbusmenu-gtk3-ubuntu)
 _actual_ver=16.04.1
-_extra_ver=+16.10.20160927.2
+_extra_ver=+17.04.20170109.1
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="A small little library that was created by pulling out some common code out of indicator-applet"
@@ -20,7 +20,7 @@ makedepends=(gobject-introspection gtk-doc gtk2-ubuntu gtk3-ubuntu intltool json
 groups=(unity)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/libdbusmenu_${_actual_ver}${_extra_ver}.orig.tar.gz"
         0001_autoconf.patch)
-sha512sums=('3f3582ba6a3d83ef4837dd2f253ff525d16dcfa2eb56a4ff2e6ba273bfe60b79b1bba97c4a5661d9a1394e95377e2c63bad762ec5da70512d970fe71c766a08f'
+sha512sums=('011aa75de053b3dcf6c134662098aeea4b70022cbe67608948d165b7d15664a74ce3d348ef8a897ccfeb9640fe246f230afa052a754e1cf3ec4179dc579cfe59'
             '303eae41659c29a78bd1f24aa7a01b35987049f6213d23fc6ecd5a7e72109d277fd6d443414750274f1fc75cee567285ca8d9d49887e6ab19e36565630fdf08b')
 
 prepare() {
