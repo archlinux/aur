@@ -1,0 +1,55 @@
+pkgbase = linux-threadripper-vfio
+	pkgver = 4.15.8
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.8.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.8.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0003-restore-pci-bridge-configuration-space-on-bridge-reset.patch
+	source = 0004-add-acs-overrides.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
+	sha256sums = SKIP
+	sha256sums = 93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0
+	sha256sums = SKIP
+	sha256sums = f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9
+	sha256sums = f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7
+	sha256sums = b3437e2c9f6ebb90f293b24fa1a988a309eb05b61c5733c41ec8a3481e8c5d7f
+	sha256sums = 1a4a992199d4d70f7f35735f63a634bb605c2b594b7352ad5fd54512737d2784
+
+pkgname = linux-threadripper-vfio
+	pkgdesc = The Linux-threadripper-vfio kernel and modules with PCIe reset fix and ACS Override Patch
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-threadripper-vfio.preset
+
+pkgname = linux-threadripper-vfio-headers
+	pkgdesc = Header files and scripts for building modules for Linux-threadripper-vfio kernel
+
+pkgname = linux-threadripper-vfio-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-threadripper-vfio kernel
+
