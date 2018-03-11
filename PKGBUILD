@@ -4,14 +4,14 @@ _pkgbase=vala-panel-extras
 pkgbase=vala-panel-extras-git
 pkgname=('vala-panel-extras-battery-git' 'vala-panel-extras-volume-git' 'vala-panel-extras-xkb-git' 'vala-panel-extras-gtop-git' 'vala-panel-extras-weather-git' 'vala-panel-extras-common-git' 'vala-panel-extras-xkb-flags-git')
 _cmakename=cmake-vala
-pkgver=0.1.2.r0.ga50a288
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Simple StatusNotifierItems for Indicator plugins"
 url="https://github.com/rilian-la-te/vala-panel-extras"
 arch=('i686' 'x86_64')
 license=('GPL3')
 replaces=('vala-panel-extras-meta-git')
-makedepends=('cmake' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libgweather>=3.12.0' 'libx11' 'libgtop')
+makedepends=('cmake' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libcanberra' 'libgweather>=3.12.0' 'libx11' 'libgtop')
 source=("git://github.com/rilian-la-te/${_pkgbase}.git"
         "git://github.com/rilian-la-te/${_cmakename}.git")
 sha256sums=('SKIP'
@@ -38,7 +38,7 @@ build() {
 
 package_vala-panel-extras-volume-git() {
   pkgdesc="Simple volume indicator"
-  depends=('gtk3' 'alsa-lib>=1.0.26' 'vala-panel-extras-common-git')
+  depends=('gtk3' 'alsa-lib>=1.0.26' 'libcanberra' 'vala-panel-extras-common-git')
   optdepends=('xfce4-sntray-plugin: for showing in Xfce'
             'vala-panel-sntray: for showing in vala-panel'
             'xfce4-snw-plugin: for showing in Xfce, alternate way'
@@ -46,7 +46,6 @@ package_vala-panel-extras-volume-git() {
             'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
-  install=vala-panel-extras.install
   
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/volume" DESTDIR="${pkgdir}" install
@@ -63,7 +62,6 @@ package_vala-panel-extras-xkb-git() {
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4'
             'vala-panel-extras-xkb-flags: builtin flags')
-  install=vala-panel-extras.install
 
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/xkb" DESTDIR="${pkgdir}" install
@@ -80,7 +78,6 @@ package_vala-panel-extras-gtop-git() {
             'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
-  install=vala-panel-extras.install
 
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/gtop" DESTDIR="${pkgdir}" install
@@ -96,7 +93,6 @@ package_vala-panel-extras-weather-git() {
             'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
-  install=vala-panel-extras.install
   
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/weather" DESTDIR="${pkgdir}" install
@@ -106,7 +102,6 @@ package_vala-panel-extras-xkb-flags-git() {
   arch=('any')
   pkgdesc="Flags for XKB plugin"
   optdepends=('vala-panel-extras-xkb-git')
-  install=vala-panel-extras.install
   
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/xkb" DESTDIR="${pkgdir}" install
@@ -123,7 +118,6 @@ package_vala-panel-extras-battery-git() {
             'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
-  install=vala-panel-extras.install
   
   cd "${srcdir}/${_pkgbase}"
   make -C "applets/batt" DESTDIR="${pkgdir}" install
