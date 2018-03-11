@@ -1,0 +1,24 @@
+pkgbase = budgie-extras
+	pkgdesc = Additional Budgie Desktop enhancements for the user experience https://ubuntubudgie.org
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/UbuntuBudgie/budgie-extras
+	arch = any
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = budgie-desktop
+	depends = xorg-xprop
+	depends = xorg-xinput
+	depends = xorg-xrandr
+	depends = xdotool
+	depends = wmctrl
+	depends = xprintidle
+	depends = python-pyudev
+	source = budgie-extras-0.4.2.tar.gz::https://github.com/UbuntuBudgie/budgie-extras/archive/64846b0822d20c9150259d1152a6d75b36950c9a.tar.gz
+	sha256sums = cf4cb35af9db62801c90160a654d193fd3d7a908b2004388649cb14f31b23784
+
+pkgname = budgie-extras
+
