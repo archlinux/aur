@@ -8,7 +8,7 @@ pkgdesc="Python implementation of the Sane API (using ctypes) and abstration lay
 arch=('any')
 url="https://github.com/jflesch/pyinsane"
 license=('GPL3')
-makedepends=('python' 'python-setuptools')
+makedepends=('python' 'python-setuptools' 'git')
 depends=('python' 'python-pillow' 'sane')
 changelog="ChangeLog"
 source=("git+https://github.com/jflesch/${_pkgname}#tag=${pkgver}")
