@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=64.0.3282.186
+pkgver=65.0.3325.146
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -32,39 +32,33 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        chromium-use-fromUTF8-for-UnicodeString-construction.patch
-        chromium-omnibox-unescape-fragment.patch
         chromium-skia-harmony.patch
-        chromium-memcpy-r0.patch
         chromium-clang-r2.patch
+        chromium-math.h-r0.patch
+        chromium-stdint.patch
         chromium-widevine.patch
-        chromium-vaapi-move.patch.gz
-        chromium-vaapi-init.patch
-        chromium-vaapi-rgbx.patch
+        chromium-vaapi-init-r16.patch
         chromium-vaapi-r16.patch)
 
-sha256sums=('5fd0218759231ac00cc729235823592f6fd1e4a00ff64780a5fed7ab210f1860'
+sha256sums=('cb4f2f3f5a3344f7c452b61f8086d4b4e56af6f5bc34309c3ede8be6b4ab81a3'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'e73f69942af1ba730a700151973fa6309b0586ff45bf35a7fea43f52b54a9cb5'
-            'c82c830bac7ab328a76d85fb141e150a17d02d97138a6daa4720a8a8c371a402'
-            '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
+            'adfeb830af4c9b55c4a6481ef245e82ad2b9fc3cfe0fe339b30baa8573f701e7'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            '455f0029987d9f0532bd9a5250669af5146a9c2b65b776d4a6e2499e8aca7bb4'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
+            'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
+            'c00d2506f1078b38a8ebec474a7318e76a61db1298afb40088a34210f137210f'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            '12d6663bc61845414b284bb9e2d455e0f4e40f5ae69d035f00505ce9c9403169'
-            '8a81a14af625c8b79006d1b9b4321d5487bc2e56a3fb3a677f9a8dab369be7af'
-            '0a9186ab591773f8fb6cbc908f9bbf4bc1508f1095b6c1cd7479aac945045373'
-            'b82047df666e6bbf66e0c0911d20c5001bd1100fd08adafa92cac5f02a887a01')
+            'acae2de43c123f19523c4fca3af19c671acbe76f76bd40e285fe3b08cddb7044'
+            '5bc4f5dc5e9c8d71cf273338f65e82efcebc902e645affb35659532dcf9ad1af')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 readonly -A _system_libs=(
   #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
-  #[fontconfig]=fontconfig    # Enable for M65
-  #[freetype]=freetype2       # Using 'use_system_freetype=true' until M65
-  #[harfbuzz-ng]=harfbuzz     # Using 'use_system_harfbuzz=true' until M65
+  [fontconfig]=fontconfig 
+  [freetype]=freetype2       
+  [harfbuzz-ng]=harfbuzz     
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
@@ -82,10 +76,8 @@ readonly -A _system_libs=(
 readonly _unwanted_bundled_libs=(
   ${!_system_libs[@]}
   ${_system_libs[libjpeg]+libjpeg_turbo}
-  freetype
-  harfbuzz-ng
 )
-depends+=(${_system_libs[@]} freetype2 harfbuzz)
+depends+=(${_system_libs[@]})
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -112,18 +104,13 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # https://crbug.com/772655
-  patch -Np1 -i ../chromium-use-fromUTF8-for-UnicodeString-construction.patch
-
-  # https://crbug.com/789163
-  patch -Np1 -i ../chromium-omnibox-unescape-fragment.patch
-
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-memcpy-r0.patch
   patch -Np1 -i ../chromium-clang-r2.patch
+  patch -Np1 -i ../chromium-math.h-r0.patch
+  patch -Np1 -i ../chromium-stdint.patch
 
   # Remove compiler flags not supported by our system clang
   sed -i \
@@ -144,10 +131,9 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # VA-API patch
-  patch -Np1 -i "${srcdir}/chromium-vaapi-move.patch"
-  patch -Np1 -i "${srcdir}/chromium-vaapi-init.patch"
-  patch -Np1 -i "${srcdir}/chromium-vaapi-rgbx.patch"
-  patch -Np1 -i "${srcdir}/chromium-vaapi-r16.patch"
+  msg2 'Applying VA-API patches'
+  patch -Np1 -i ../chromium-vaapi-init-r16.patch
+  patch -Np1 -i ../chromium-vaapi-r16.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -158,7 +144,7 @@ prepare() {
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
       \! -path './base/third_party/icu/*' \
-      \! -path './third_party/freetype/src/src/psnames/pstables.h' \
+      \! -path './third_party/pdfium/third_party/freetype/include/pstables.h' \
       \! -path './third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
@@ -200,9 +186,6 @@ build() {
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
-    'use_system_freetype=true'
-    'use_system_harfbuzz=true'
-    'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
     'use_lld=false'
