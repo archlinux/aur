@@ -1,5 +1,5 @@
 pkgbase = gotop
-	pkgdesc = A TUI graphical activity monitor inspired by gtop
+	pkgdesc = A TUI graphical activity monitor inspired by gtop and vtop
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/cjbassi/gotop

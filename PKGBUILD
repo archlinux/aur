@@ -3,7 +3,7 @@
 pkgname=gotop
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="A TUI graphical activity monitor inspired by gtop"
+pkgdesc="A TUI graphical activity monitor inspired by gtop and vtop"
 arch=("x86_64" "i686")
 url="https://github.com/cjbassi/gotop"
 license=("AGPLv3")
