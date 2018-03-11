@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-        PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" pycaption
+        PIP_CONFIG_FILE=/dev/null pip install --isolated --no-deps --root="$pkgdir" pycaption enum34
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
