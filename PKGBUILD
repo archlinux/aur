@@ -4,7 +4,7 @@
 
 pkgname=devkitppc-bin
 pkgver=r29.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PowerPC toolchain for Nintendo Gamecube/Wii/Wii U homebrew development (precompiled)'
 arch=('i686' 'x86_64')
 url="http://devkitpro.org"
@@ -20,8 +20,8 @@ optdepends_x86_64=('expat: for powerpc-eabi-gdb'
 install=devkitppc.install
 source=("devkitppc.sh"
         "devkitppc.fish")
-source_i686=("http://downloads.sourceforge.net/sourceforge/devkitpro/devkitPPC_${pkgver/./-}-i686-linux.tar.bz2")
-source_x86_64=("http://downloads.sourceforge.net/sourceforge/devkitpro/devkitPPC_${pkgver/./-}-x86_64-linux.tar.bz2")
+source_i686=("https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_${pkgver/./-}/devkitPPC_${pkgver/./-}-i686-linux.tar.bz2")
+source_x86_64=("https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_${pkgver/./-}/devkitPPC_${pkgver/./-}-x86_64-linux.tar.bz2")
 sha256sums=('3e7ab84e123f76c65a92c27932b4f80df598b9da6b0f44745d8d465120449d1d'
             'ab0c74e766fab7ada98541c530593b9f717a72d386f9bb9dad2779a080c66b9d')
 sha256sums_i686=('3683abfbe0b359a209bfcaa7902075232b999aa6f623b0eb17d0d1ceafe09ba9')
