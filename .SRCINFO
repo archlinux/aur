@@ -1,0 +1,12 @@
+pkgbase = ttf-sil-kawkab-mono
+	pkgdesc = A monospaced Arabic typeface.
+	pkgver = 0.500
+	pkgrel = 1
+	url = https://makkuk.com/kawkab-mono/
+	arch = any
+	license = custom:OFL
+	source = https://makkuk.com/kawkab-mono/downloads/kawkab-mono-0.500.zip
+	sha256sums = 2c96c5ddfe952b46baf8894112c4e675e7aa34542380d6223021a8d4b378e3a0
+
+pkgname = ttf-sil-kawkab-mono
+
