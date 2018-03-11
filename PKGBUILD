@@ -2,14 +2,15 @@
 
 _appname=freecad-python3
 pkgname=freecad-python3-git
-pkgver=r13344.404452d6e
+pkgver=0.17_pre.r6689.g4af69bf3f
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('netcdf' 'boost-libs' 'coin' 'med' 'python-pyside2-git' 'opencascade7'
-         'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme')
+depends=('netcdf' 'boost-libs' 'coin-hg' 'med' 'opencascade7'
+         'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme'
+         'python-pyside2-git' 'python-pivy-git')
 makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools'
              'python-pyside2-tools-git')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
@@ -27,7 +28,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/${_appname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
