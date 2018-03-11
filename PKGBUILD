@@ -60,7 +60,7 @@ pkgbase=vala-panel-sntray-git
 _pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.4.8.r4.gcb7c65f
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
@@ -116,7 +116,6 @@ package_xfce4-panel-sntray-git(){
 }
 
 package_mate-panel-sntray-git(){
-	install=vala-panel-sntray.install
 	pkgdesc="Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 	depends=('gtk3' 'mate-panel' 'sntray-plugin-translations-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
@@ -139,7 +138,6 @@ package_mate-panel-sntray-git(){
 package_vala-panel-sntray-git(){
 	pkgdesc="Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 	depends=('gtk3' 'vala-panel' 'libpeas' 'sntray-plugin-translations-git')
-	install=vala-panel-sntray.install
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
@@ -160,7 +158,6 @@ package_vala-panel-sntray-git(){
 }
 
 package_budgie-sntray-git(){
-	install=vala-panel-sntray.install
 	pkgdesc="Plugin for budgie to show StatusNotifierItems (AppIndicators) via FlowBox"
 	depends=('budgie-desktop' 'gtk3' 'libpeas' 'sntray-plugin-translations-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
