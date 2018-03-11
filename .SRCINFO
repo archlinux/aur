@@ -1,19 +1,21 @@
 pkgbase = gsettings-desktop-schemas-ubuntu
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.22.0
-	pkgrel = 2
-	url = https://www.gnome.org/
+	pkgver = 3.27.90
+	pkgrel = 1
+	url = https://git.gnome.org/browse/gsettings-desktop-schemas
 	arch = any
 	license = GPL
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = intltool
 	depends = glib2
-	provides = gsettings-desktop-schemas=3.22.0
+	depends = dconf
+	provides = gsettings-desktop-schemas
 	conflicts = gsettings-desktop-schemas
-	source = http://ftp.gnome.org/pub/gnome/sources/gsettings-desktop-schemas/3.22/gsettings-desktop-schemas-3.22.0.tar.xz
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_3.22.0-1ubuntu1.debian.tar.xz
-	sha512sums = 653198f78f8108222e84c0e94b6b914e03597234a627f1c205fc58a7bf54fdde073ff98cfdce1dccec7da1d8a7cbf648004cd392382d4ff617245cc3e581dfd1
-	sha512sums = e71dc5c3b01ecb8156aebe260d450c0f35aa6816a6b3acc43298a5e2e0f9134f8bdef6b19992d31f80d7d5333eec43d125b5c95ca1781dfd13d099ab0745bee4
+	source = git+https://git.gnome.org/browse/gsettings-desktop-schemas#commit=b452abef71429f92e43a9ce2fb14d50c9edce964
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_3.27.90-1ubuntu1.debian.tar.xz
+	sha512sums = SKIP
+	sha512sums = a2a2799409be1098f5abe852affbc1cc28b1716c18f38cad7cf4dcf0bb2c97910ec4eb8969298b8f7dab86f093bb527198807ca48f5e2db4c8d7b765829a199d
 
 pkgname = gsettings-desktop-schemas-ubuntu
 

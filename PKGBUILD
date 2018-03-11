@@ -5,30 +5,36 @@
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname%-*}, repo=zesty
+# vercheck-ubuntu: name=${pkgname%-*}, repo=bionic
 # vercheck-archlinux: name=${pkgname%-*}, repo=extra, arch=x86_64
-# vercheck-gnome: name=${pkgname%-*}, majorver=3.22
+# vercheck-gnome: name=${pkgname%-*}, majorver=3.27
 
 pkgname=gsettings-desktop-schemas-ubuntu
-_ubuntu_ver=3.22.0
+_ubuntu_ver=3.27.90
 _ubuntu_rel=1ubuntu1
-pkgver=3.22.0
-pkgrel=2
+pkgver=3.27.90
+pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(any)
-url="https://www.gnome.org/"
+url="https://git.gnome.org/browse/gsettings-desktop-schemas"
 license=(GPL)
-depends=(glib2)
-makedepends=(gobject-introspection intltool)
-provides=("${pkgname%-*}=${pkgver}")
-conflicts=("${pkgname%-*}")
-source=("http://ftp.gnome.org/pub/gnome/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.xz"
+depends=(glib2 dconf)
+makedepends=(git gobject-introspection intltool)
+provides=(gsettings-desktop-schemas)
+conflicts=(gsettings-desktop-schemas)
+_commit=b452abef71429f92e43a9ce2fb14d50c9edce964  # 3.27.90
+source=("git+https://git.gnome.org/browse/gsettings-desktop-schemas#commit=$_commit"
         "https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
-sha512sums=('653198f78f8108222e84c0e94b6b914e03597234a627f1c205fc58a7bf54fdde073ff98cfdce1dccec7da1d8a7cbf648004cd392382d4ff617245cc3e581dfd1'
-            'e71dc5c3b01ecb8156aebe260d450c0f35aa6816a6b3acc43298a5e2e0f9134f8bdef6b19992d31f80d7d5333eec43d125b5c95ca1781dfd13d099ab0745bee4')
+sha512sums=('SKIP'
+            'a2a2799409be1098f5abe852affbc1cc28b1716c18f38cad7cf4dcf0bb2c97910ec4eb8969298b8f7dab86f093bb527198807ca48f5e2db4c8d7b765829a199d')
+
+pkgver(){
+  cd ${pkgname%-*}
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-    cd "${pkgname%-*}-${pkgver}"
+  cd ${pkgname%-*}
 
     # Apply Ubuntu's patches
 
@@ -36,10 +42,13 @@ prepare() {
         msg "Applying ${i} ..."
         patch -p1 -i "../debian/patches/${i}"
     done
+
+  intltoolize
+  autoreconf -fvi
 }
 
 build() {
-    cd "${pkgname%-*}-${pkgver}"
+    cd ${pkgname%-*}
 
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
         --disable-schemas-compile
@@ -47,7 +56,8 @@ build() {
 }
 
 package() {
-    cd "${pkgname%-*}-${pkgver}"
+    cd ${pkgname%-*}
 
     make DESTDIR="${pkgdir}" install
 }
+
