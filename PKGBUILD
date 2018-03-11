@@ -1,7 +1,9 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer: wickdchromosome <capsule [at] gmail [dot] com>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
+
 
 pkgname=lucidor
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="A program for reading and handling EPUB e-books and OPDS catalogs"
 arch=('i686' 'x86_64')
@@ -10,7 +12,7 @@ license=('GPL3')
 depends=('xulrunner' 'desktop-file-utils')
 install=$pkgname.install
 source=(${pkgname}_${pkgver}.tar.gz::"http://lucidor.org/get.php?id=${pkgname}_${pkgver}.tar.gz")
-md5sums=('95679ba7b136b21f3353082e851ca7fc')
+md5sums=('f0377c1c504227fe83e4db1fc56cc6ad')
 
 build()
 {
