@@ -3,19 +3,15 @@
 _pkgname=umemcache
 pkgname=python2-$_pkgname
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra fast memcache client written in highly optimized C++ with Python bindings"
 arch=('i686' 'x86_64')
-url=('https://github.com/esnme/ultramemcache')
+url='https://github.com/esnme/ultramemcache'
 license=("GPL")
 depends=('python2')
 source=(
-  "http://pypi.python.org/packages/source/u/$_pkgname/$_pkgname-$pkgver.zip"
+  "https://pypi.python.org/packages/source/u/$_pkgname/$_pkgname-$pkgver.zip"
 )
-
-build() {
-  :
-}
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
