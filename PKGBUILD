@@ -7,13 +7,15 @@ pkgver=r112.16356a4
 pkgrel=1
 pkgdesc="Nomad Look and Feel package."
 arch=('any')
-url="https://github.com/nomad-desktop/nomad-plasma-look-and-feel"
+url="https://github.com/nomad-desktop"
 license=('GPL')
 depends=('plasma-desktop' 'luv-icon-theme-git' 'kvantum-qt5')
 optdepends=('nomad-gtk-themes-git')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}/nomad-plasma-look-and-feel.git"
+        "git+${url}/nomad-kvantum-theme")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   
@@ -30,12 +32,13 @@ build() {
    mkdir build && cd build
    cmake .. \
      -DCMAKE_INSTALL_PREFIX=/usr
-   
+ 
 }
 
 package() {
    
-   make -C ${srcdir}/${_gitname}/build DESTDIR="$pkgdir" install        
-
+   make -C ${srcdir}/${_gitname}/build DESTDIR=${pkgdir} install        
+   mkdir -p ${pkgdir}/usr/share/Kvantum/{KvNomad,KvNomadDark}
+   cp -r ${srcdir}/nomad-kvantum-theme/themes/{KvNomad,KvNomadDark} ${pkgdir}/usr/share/Kvantum/
+ 
 }
-
