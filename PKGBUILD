@@ -4,7 +4,6 @@ _disable_mate=0
 _disable_xfce=0
 _disable_vala=0
 _disable_budgie=0
-_disable_unity_gtk_module=o
 
 _opts=(
 	-DCMAKE_INSTALL_PREFIX=/usr
@@ -55,20 +54,13 @@ else
 	_opts+=(-DENABLE_BUDGIE=OFF)
 fi
 
-if (("${_disable_unity_gtk_module}" == 0));then
-	_opts+=(-DENABLE_APPMENU_GTK_MODULE=ON)
-	pkgname+=('appmenu-gtk-module-git')
-	makedepends+=('gtk2')
-	msg "AppMenu GTK+ module enabled"
-else
-	_opts+=(-DENABLE_APPMENU_GTK_MODULE=OFF)
-fi
+
 msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
 
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
-pkgver=0.6.92
+pkgver=0.6.93
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -97,7 +89,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  cmake ./ "${_opts[@]}"
+  cmake ./ "${_opts[@]}" -DENABLE_APPMENU_GTK_MODULE=OFF -DENABLE_REGISTRAR=OFF -DENABLE_JAYATANA=OFF
   make
 }
 
@@ -186,24 +178,4 @@ package_vala-panel-appmenu-translations-git() {
   rm -rf "${pkgdir}/usr/share/dbus-1"
   rm -rf "${pkgdir}/usr/share/mate-panel"
   rm -rf "${pkgdir}/usr/share/xfce4"
-}
-
-package_appmenu-gtk-module-git()
-{
-  pkgdesc="Gtk module for exporting menus"
-  depends=('gtk3' 'gtk2')
-  provides=(unity-gtk-module)
-  cd "${srcdir}/${_pkgbase}"
-  make -C "subprojects/appmenu-gtk-module" DESTDIR="${pkgdir}" install
-  install -dm755 "${pkgdir}/etc/X11/xinit/xinitrc.d/"
-  install -m755  "${srcdir}/80appmenu-gtk-module" "${pkgdir}/etc/X11/xinit/xinitrc.d/"
-}
-
-package_vala-panel-appmenu-registrar-git()
-{
-  pkgdesc="Gtk module for exporting menus"
-  provides=(vala-panel-appmenu-registrar)
-  depends=('glib2')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "subprojects/registrar" DESTDIR="${pkgdir}" install
 }
