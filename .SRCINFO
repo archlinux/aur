@@ -1,0 +1,21 @@
+pkgbase = smb4k-git
+	pkgdesc = A KDE program that browses samba shares
+	pkgver = 2.0.80.r28.b95a5eb
+	pkgrel = 1
+	url = https://smb4k.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = python
+	makedepends = plasma-framework
+	depends = kparts
+	depends = hicolor-icon-theme
+	provides = smb4k
+	conflicts = smb4k
+	source = git+git://anongit.kde.org/smb4k.git
+	sha256sums = SKIP
+
+pkgname = smb4k-git
+
