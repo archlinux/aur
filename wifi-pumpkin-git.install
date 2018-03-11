@@ -1,0 +1,33 @@
+package() {
+	cp -r "$srcdir/$_gitname/" /usr/share/
+}
+
+post_install() {
+	echo "cd /usr/share/WiFi-Pumpkin/ && sudo python2 wifi-pumpkin.py" > /usr/share/WiFi-Pumpkin/wifi-pumpkin
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	pip2 install -r /usr/share/WiFi-Pumpkin/requirements.txt
+	chmod +x /usr/share/WiFi-Pumpkin/wifi-pumpkin
+	chown root:root /usr/share/WiFi-Pumpkin/wifi-pumpkin.desktop
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	if [ -d "/usr/share/WiFi-Pumpkin" ]; then
+	    # Delete every *.pyc file
+	    find /usr/share/WiFi-Pumpkin -name "*.pyc" |
+	    while read p; do
+	        rm -rf $p
+	    done
+
+	    rm -rf /usr/share/WiFi-Pumpkin/templates/Update
+	fi
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	update-desktop-database -q
+}

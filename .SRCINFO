@@ -1,0 +1,29 @@
+pkgbase = wifi-pumpkin-git
+	pkgdesc = WiFi-Pumpkin. A tool for creating a WiFi-Hotspot and executing MitM-Attacks
+	pkgver = v0.8.5.r61.g493d29c
+	pkgrel = 1
+	url = https://github.com/P0cL4bs/WiFi-Pumpkin
+	install = wifi-pumpkin-git.install
+	arch = any
+	license = GPL
+	depends = git
+	depends = hicolor-icon-theme
+	depends = hostapd
+	depends = libarchive
+	depends = libffi
+	depends = libnetfilter_queue
+	depends = libpcap
+	depends = libxml2
+	depends = libxslt
+	depends = mitmproxy
+	depends = openssl
+	depends = python
+	depends = python-pyqt4
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source = git://github.com/P0cL4bs/WiFi-Pumpkin.git
+	sha1sums = SKIP
+
+pkgname = wifi-pumpkin-git
+
