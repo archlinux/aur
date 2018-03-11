@@ -11,7 +11,7 @@ url="https://github.com/Muges/erika"
 depends=('gtk3' 'python-gobject' 'python-feedparser' 'python-lxml'
          'python-mutagen' 'python-mygpoclient' 'python-peewee' 'python-pillow'
          'python-requests' 'gst-plugins-base' 'gst-plugins-good'
-         'gst-plugins-ugly')
+         'gst-plugins-ugly' 'webkitgtk')
 source=(${pkgname}::git+https://github.com/Muges/erika.git)
 sha1sums=('SKIP')
 
