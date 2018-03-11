@@ -1,8 +1,8 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnx
-pkgver=1.0.0
-_pkgverexamples=20180218
+pkgver=1.1.0
+_pkgverexamples=20180302
 pkgrel=1
 pkgdesc="Library for Nintendo Switch (NX) homebrew development"
 arch=('any')
@@ -11,8 +11,8 @@ license=('custom: ISC')
 depends=('devkita64')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/switchbrew/libnx/archive/v$pkgver.tar.gz"
         "https://github.com/switchbrew/switch-examples/releases/download/v$_pkgverexamples/switch-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('14bca9efe9b3c1d46c2f442bf09eaac2bd415ac7d27a1dddcd1af2428574aecf'
-            '24b00060974e70be6ebf85addb35feb22146b1fcce28fb16b9c378097462b97b')
+sha256sums=('b61fa5cb4bed92877cd472731db46afe8e637502abdddbfab06a549541f31655'
+            'a2028fe2dcf1217144ca0663b52109ebc5096263df6464a4e68dd5cc197e60cc')
 noextract=("switch-examples-$_pkgverexamples.tar.bz2")
 options=(!strip staticlibs)
 

@@ -1,18 +1,18 @@
 pkgbase = libnx
 	pkgdesc = Library for Nintendo Switch (NX) homebrew development
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://devkitpro.org
 	arch = any
 	license = custom: ISC
 	depends = devkita64
-	noextract = switch-examples-20180218.tar.bz2
+	noextract = switch-examples-20180302.tar.bz2
 	options = !strip
 	options = staticlibs
-	source = libnx-1.0.0.tar.gz::https://github.com/switchbrew/libnx/archive/v1.0.0.tar.gz
-	source = https://github.com/switchbrew/switch-examples/releases/download/v20180218/switch-examples-20180218.tar.bz2
-	sha256sums = 14bca9efe9b3c1d46c2f442bf09eaac2bd415ac7d27a1dddcd1af2428574aecf
-	sha256sums = 24b00060974e70be6ebf85addb35feb22146b1fcce28fb16b9c378097462b97b
+	source = libnx-1.1.0.tar.gz::https://github.com/switchbrew/libnx/archive/v1.1.0.tar.gz
+	source = https://github.com/switchbrew/switch-examples/releases/download/v20180302/switch-examples-20180302.tar.bz2
+	sha256sums = b61fa5cb4bed92877cd472731db46afe8e637502abdddbfab06a549541f31655
+	sha256sums = a2028fe2dcf1217144ca0663b52109ebc5096263df6464a4e68dd5cc197e60cc
 
 pkgname = libnx
 
