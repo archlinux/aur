@@ -1,7 +1,7 @@
 pkgbase = tautulli
 	pkgdesc = A Python based monitoring and tracking tool for Plex Media Server.
 	pkgver = 2.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tautulli/Tautulli
 	install = tautulli.install
 	arch = any

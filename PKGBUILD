@@ -5,7 +5,7 @@
 
 pkgname=tautulli
 pkgver=2.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/Tautulli/Tautulli"
@@ -27,7 +27,7 @@ sha256sums=('19adaf2c4565380af46c79507aa436f9fe2b23c9e092f655437bd1a8d2536a0a'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
 package() {
-  cd "${srcdir}/Tautulli-${pkgver}-beta"
+  cd "${srcdir}/Tautulli-${pkgver}"
   install -Dm755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
   install -Dm755 Tautulli.py "${pkgdir}/usr/lib/tautulli/Tautulli.py"
   install -Dm644 pylintrc  "${pkgdir}/usr/lib/tautulli/"
