@@ -1,5 +1,5 @@
 pkgname=chromium-vaapi-bin
-pkgver=64.0.3282.186
+pkgver=65.0.3325.146
 pkgrel=1
 pkgdesc='Chromium compiled with VA-API support for Intel Graphics'
 url='https://www.chromium.org/Home'
@@ -18,7 +18,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('d8e5c61a4dbcbfae53e370272c71044048a416b6ecd0d356184cfa19137d9908')
+sha256sums_x86_64=('db0f29a7e0c0bfd046fbb5910680e8de9f4cce84fa278e92d738431c4ee3ac6f')
 
 # Keep in sync with AUR/chromium-vaapi:
 #
@@ -27,9 +27,9 @@ sha256sums_x86_64=('d8e5c61a4dbcbfae53e370272c71044048a416b6ecd0d356184cfa19137d
 readonly -A _system_libs=(
   #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
-  #[fontconfig]=fontconfig    # Enable for M65
-  #[freetype]=freetype2       # Using 'use_system_freetype=true' until M65
-  #[harfbuzz-ng]=harfbuzz     # Using 'use_system_harfbuzz=true' until M65
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
@@ -44,7 +44,7 @@ readonly -A _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-depends+=(${_system_libs[@]} freetype2 harfbuzz)
+depends+=(${_system_libs[@]})
 
 package() {
   cp -ar "$srcdir/usr" "$pkgdir/usr"
