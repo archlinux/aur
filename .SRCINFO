@@ -1,0 +1,25 @@
+pkgbase = arch-security
+	pkgdesc = Display current vulnerabilities for installed packages and scan for some possible security issues
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.marc-jose.de/marc.jose/arch-security
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = awk
+	makedepends = coreutils
+	makedepends = grep
+	makedepends = python-pip
+	depends = python
+	depends = pacman
+	depends = sudo
+	provides = arch-security
+	source = git+https://gitlab.marc-jose.de/marc.jose/arch-security.git
+	source = arch-security.hook
+	source = arch-security.sh
+	sha512sums = SKIP
+	sha512sums = 8e107f81db0345c320d8291a5e210685ced10ab0799d63a84946146ef721a340feb7dcdda8b7c849e4a837f8cbbe38653d0a8a9a2531237a2494661ff930f91c
+	sha512sums = abaad6469ff25fcec1fd5c045cdfab3129d4abd868948030633b1afcef4d282d8569d2bdafd56cb9d1487c6ddea5a2034f1a8e9a228fb469f271dcd837107184
+
+pkgname = arch-security
+
