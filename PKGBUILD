@@ -1,9 +1,9 @@
 # Maintainer: edward-p <micro.fedora@gmail.com>
 pkgname=deepin-wine32-tools
 deepin_name=deepin-wine32-tools
-pkgvers=2.18-5~rc6
-pkgver=2.18_5~rc6
-pkgrel=2
+pkgvers=2.18-5
+pkgver=2.18_5
+pkgrel=3
 epoch=
 pkgdesc="Deepin Wine Tools"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/${deepin_name}_${pkgvers}_i386.deb")
 noextract=("${deepin_name}_${pkgvers}_i386.deb")
-md5sums=('SKIP')
+md5sums=('945013b48ad8b71c47fac878905fb649')
 validpgpkeys=()
 
 prepare() {
