@@ -1,20 +1,20 @@
+_cache() {
+  fc-cache -fs
+  mkfontscale /usr/share/fonts/misc
+  mkfontdir /usr/share/fonts/misc
+}
+
 post_install() {
-	[[ -L /etc/fonts/conf.d/70-no-bitmaps.conf ]] && rm "/etc/fonts/conf.d/70-no-bitmaps.conf"
-	[[ ! -L /etc/fonts/conf.d/70-yes-bitmaps.conf ]] && ln -s -t "/etc/fonts/conf.d/" "/etc/fonts/conf.avail/70-yes-bitmaps.conf"
-	[[ ! -L /etc/fonts/conf.d/75-yes-scientifica.conf ]] && ln -s -t "/etc/fonts/conf.d/" "/etc/fonts/conf.avail/75-yes-scientifica.conf"
-	fc-cache -s
-	mkfontscale /usr/share/fonts/misc
-	mkfontdir /usr/share/fonts/misc
+  ln -fs -t /etc/fonts/conf.d/ /etc/fonts/conf.avail/70-yes-bitmaps.conf
+  ln -fs -t /etc/fonts/conf.d/ /etc/fonts/conf.avail/75-yes-scientifica.conf
+  _cache
 }
 
 post_upgrade() {
-	fc-cache -s
-	mkfontscale /usr/share/fonts/misc
-	mkfontdir /usr/share/fonts/misc
+  post_install ${1}
 }
 
 post_remove() {
-	fc-cache -s
-	mkfontscale /usr/share/fonts/misc
-	mkfontdir /usr/share/fonts/misc
+  rm -f /etc/fonts/conf.d/75-yes-scientifica.conf
+  _cache
 }

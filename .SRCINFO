@@ -1,22 +1,23 @@
 pkgbase = scientifica-font
 	pkgdesc = Tall and condensed bitmap font for geeks.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/NerdyPepper/scientifica
 	install = scientifica-font.install
 	arch = any
-	license = custom:SIL
+	license = SIL
 	depends = xorg-fonts-encodings
 	depends = xorg-fonts-alias
 	depends = xorg-font-utils
 	depends = fontconfig
 	provides = scientifica-font
 	conflicts = scientifica-font
+	replaces = scientifica-font
 	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf
 	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf
 	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/LICENSE
-	md5sums = cc934bd8cb8710f19986029d1dfba949
-	md5sums = 51307d6f31c7dcb1ffa7c081a5204b69
+	md5sums = 69560467cea171345f88649f9086d477
+	md5sums = 8302661686292da3b2fffc21c561fb21
 	md5sums = 77b104b57cdfb5a0e62b76a0057009df
 
 pkgname = scientifica-font
