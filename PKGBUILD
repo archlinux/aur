@@ -2,7 +2,7 @@
 
 pkgname=ares
 pkgver=2.4.6.3072
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open source file sharing program that enables users to share any digital file including images, audio, video, software, documents, etc. (via wine)"
 arch=(i686 x86_64)
 url="https://aresgalaxy.io/"
@@ -13,7 +13,7 @@ source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/aresregular246_insta
 md5sums=('c7bc3239f0a3f6e001942823f882bdcb'
          '22084eb3acd121ef811180f7f238047c'
          'f89b51f21633e02c9017222b33544c1b'
-         'ef4b60475076c91b3d552b6c4c59fdf4')
+         '17a4d80bd942e53a183aed27136c7337')
 
 noextract=()
 options=(!strip)
