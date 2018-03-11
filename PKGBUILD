@@ -1,13 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - OpenCV 3.x."
-url='http://opencv.org'
+url='https://github.com/ros-gbp/opencv3-release'
 
 pkgname='ros-lunar-opencv3'
-pkgver='3.2.0'
-_pkgver_patch=6
+pkgver='3.3.1'
+_pkgver_patch=1
 arch=('any')
-pkgrel=7
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
@@ -21,7 +21,7 @@ makedepends=('cmake' 'ros-build-tools'
   zlib
   v4l-utils
   protobuf
-  libwebp-dev
+  libwebp
   libpng
   python2)
 
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
   vtk
   zlib
   protobuf
-  libwebp-dev
+  libwebp
   libpng
   python2)
 
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="opencv3-release-release-lunar-opencv3-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/opencv3-release/archive/release/lunar/opencv3/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9d84a39c982e6e7e011cf12ddb6962117dcd07e0a9ab5a5ddd096c4d5aeded29')
+sha256sums=('cf612e2043206bfad3924a5d0874c2d6af3546cb11d27f1f702079bb962b2244')
 
 build() {
   # Use ROS environment variables
