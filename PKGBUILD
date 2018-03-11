@@ -3,12 +3,12 @@
 
 pkgname=klayout
 pkgver=0.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
 license=('GPL')
-depends=('qt4' 'ruby2.4' 'python')
+depends=('qt5-base' 'ruby2.4' 'python')
 source=(
 	http://www.klayout.org/downloads/source/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
@@ -21,7 +21,7 @@ prepare() {
 }
 build() {
 	cd "$srcdir/klayout-${pkgver}"
-	build_opt="-qmake /usr/lib/qt4/bin/qmake
+	build_opt="-qmake /usr/bin/qmake
 		-ruby /opt/ruby2.4/bin/ruby
 		-python /usr/bin/python"
 	./build.sh $build_opt
