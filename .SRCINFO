@@ -1,12 +1,13 @@
 pkgbase = ys-git
-	pkgdesc = An interpreter for the YodaScirpt Language
-	pkgver = v0.0.9.alpha.r128.g0f794f9
+	pkgdesc = Official interpreter for the YodaScript Language
+	pkgver = v0.1.7.beta.r16.gd7a9ce9
 	pkgrel = 1
 	url = https://github.com/dvtate/yoda
 	arch = any
 	license = GPL
 	makedepends = git
 	provides = ys
+	provides = yslib.so=1
 	source = ys-git::git+https://github.com/dvtate/yoda
 	md5sums = SKIP
 
