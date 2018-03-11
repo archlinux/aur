@@ -3,7 +3,7 @@
 # Contributor: Christopher Reimer <github@creimer.net>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=gtk+2.0, repo=zesty
+# vercheck-ubuntu: name=gtk+2.0, repo=bionic
 # vercheck-archlinux: name=gtk2, repo=extra, arch=x86_64
 # vercheck-gnome: name=gtk+, majorver=2.24
 
