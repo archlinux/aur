@@ -1,21 +1,21 @@
 pkgbase = python-django2
 	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.djangoproject.com/
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = python-pytz
+	optdepends = python-psycopg2: for PostgreSQL backend
+	provides = python-django
+	conflicts = python-django
 	source = Django-2.0.3.tar.gz::https://www.djangoproject.com/download/2.0.3/tarball/
 	sha256sums = 769f212ffd5762f72c764fa648fca3b7f7dd4ec27407198b68e7c4abf4609fd0
 	sha512sums = 75272abe88ffc5f0beb15222cab499d93605838b5bf0a5f0de461209825b8a61f9aff1105366aa5a036a2b7790b53962706ff27505f400ffc8bda2bccda64446
 
 pkgname = python-django2
-	depends = python
-	depends = python-setuptools
-	depends = python-pytz
-	optdepends = python-psycopg2: for PostgreSQL backend
-	provides = python-django2
-	conflicts = python-django
 
