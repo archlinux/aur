@@ -13,6 +13,7 @@ pkgbase = gnomecast-git
 	depends = python-paste
 	depends = python-bottle
 	depends = python-pychromecast-git
+	depends = python-pycaption
 	provides = gnomecast
 	source = gnomecast-git::git://github.com/keredson/gnomecast.git
 	sha512sums = SKIP
