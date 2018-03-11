@@ -1,7 +1,7 @@
-diff -Naupr ipt-netflow-2.2_orig/compat.h ipt-netflow-2.2/compat.h
+diff -Naupr ipt-netflow-2.2_orig/compat.h ipt-netflow/compat.h
 --- ipt-netflow-2.2_orig/compat.h	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/compat.h	2018-03-05 11:16:00.364925236 +0700
-@@ -589,13 +589,61 @@ out:
++++ ipt-netflow/compat.h	2018-03-11 19:50:52.050634765 +0700
+@@ -589,13 +589,85 @@ out:
  # define vlan_tx_tag_present skb_vlan_tag_present
  #endif
  
@@ -67,12 +67,36 @@ diff -Naupr ipt-netflow-2.2_orig/compat.h ipt-netflow-2.2/compat.h
 +
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
 +# define timer_setup setup_timer
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
++static int dev_get_alias(const struct net_device *dev, char *name, size_t len)
++{
++	return snprintf(name, len, "%s", dev->ifalias);
++}
++#else
++/* no static because defined in include/linux/netdevice.h,
++ * but forgot to create EXPORT_SYMBOL,
++ * probably will collide with some future kernel */
++int dev_get_alias(const struct net_device *dev, char *name, size_t len)
++{
++	const struct dev_ifalias *alias;
++	int ret = 0;
++
++	rcu_read_lock();
++	alias = rcu_dereference(dev->ifalias);
++	if (alias)
++		ret = snprintf(name, len, "%s", alias->ifalias);
++	rcu_read_unlock();
++
++	return ret;
++}
  #endif
  
  #endif /* COMPAT_NETFLOW_H */
-diff -Naupr ipt-netflow-2.2_orig/configure ipt-netflow-2.2/configure
+diff -Naupr ipt-netflow-2.2_orig/configure ipt-netflow/configure
 --- ipt-netflow-2.2_orig/configure	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/configure	2018-03-05 11:16:00.365925242 +0700
++++ ipt-netflow/configure	2018-03-11 19:50:52.050634765 +0700
 @@ -152,6 +152,34 @@ iptables_find_version() {
    fi
  }
@@ -149,9 +173,9 @@ diff -Naupr ipt-netflow-2.2_orig/configure ipt-netflow-2.2/configure
  test "$IPTBIN" || IPTBIN=`which iptables`
  
  iptables_find_version	#IPTVER
-diff -Naupr ipt-netflow-2.2_orig/CREDITS ipt-netflow-2.2/CREDITS
+diff -Naupr ipt-netflow-2.2_orig/CREDITS ipt-netflow/CREDITS
 --- ipt-netflow-2.2_orig/CREDITS	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/CREDITS	2018-03-05 11:16:00.362925223 +0700
++++ ipt-netflow/CREDITS	2018-03-11 19:50:52.049634760 +0700
 @@ -67,17 +67,20 @@ Patch authors and submitters:
     uropek [2013]
     shaman [2013]
@@ -174,9 +198,9 @@ diff -Naupr ipt-netflow-2.2_orig/CREDITS ipt-netflow-2.2/CREDITS
  
  
  Extensive testing and other help:
-diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
+diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
 --- ipt-netflow-2.2_orig/ipt_NETFLOW.c	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/ipt_NETFLOW.c	2018-03-05 11:16:00.366925248 +0700
++++ ipt-netflow/ipt_NETFLOW.c	2018-03-11 19:50:52.052634775 +0700
 @@ -209,6 +209,10 @@ MODULE_PARM_DESC(maxflows, "maximum numb
  static int peakflows = 0;
  static unsigned long peakflows_at; /* jfffies */
@@ -626,27 +650,22 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
  
  static const unsigned short netdev_type[] =
  {ARPHRD_NETROM, ARPHRD_ETHER, ARPHRD_AX25,
-@@ -4039,9 +4141,17 @@ static void export_dev(struct net_device
+@@ -4039,9 +4141,11 @@ static void export_dev(struct net_device
  			 * then ethtool driver name with basic info,
  			 * finally net_device.type is a last resort */
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28)
 -			if (dev->ifalias)
-+			if (dev->ifalias) {
-+# if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
- 				n = scnprintf(ptr, size, "%s", dev->ifalias);
+-				n = scnprintf(ptr, size, "%s", dev->ifalias);
 -			else
-+# else
-+				char tmp[IFALIASZ];
-+
-+				n = dev_get_alias(dev, tmp, sizeof(tmp));
-+				if (n > 0)
-+					n = scnprintf(ptr, size, "%s", tmp);
-+# endif
++			if (dev->ifalias) {
++				n = dev_get_alias(dev, ptr, size);
++				if (n >= size)
++					n = size - 1;
 +			} else
  #endif
  				n = ethtool_drvinfo(ptr, size, dev);
  			if (!n)
-@@ -4350,7 +4460,13 @@ static void netflow_work_fn(struct work_
+@@ -4350,7 +4454,13 @@ static void netflow_work_fn(struct work_
  #define CALC_RATE(ewma, cur, minutes) ewma += _A(cur - ewma, minutes)
  
  // calculate EWMA throughput rate for whole module
@@ -661,7 +680,7 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
  {
  	static u64 old_pkt_total = 0;
  	static u64 old_traf_total = 0;
-@@ -4761,8 +4877,8 @@ static unsigned int netflow_target(
+@@ -4761,8 +4871,8 @@ static unsigned int netflow_target(
  			   const void *targinfo
  # endif
  #else /* since 2.6.28 */
@@ -672,7 +691,7 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
  # if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
  			   const struct xt_target_param *par
  # else
-@@ -4786,10 +4902,10 @@ static unsigned int netflow_target(
+@@ -4786,10 +4896,10 @@ static unsigned int netflow_target(
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,28)
  	const int family = target->family;
  #else
@@ -687,7 +706,7 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
  #endif
  	struct ipt_netflow_tuple tuple;
  	struct ipt_netflow *nf;
-@@ -5518,7 +5634,7 @@ static int __init ipt_netflow_init(void)
+@@ -5518,7 +5628,7 @@ static int __init ipt_netflow_init(void)
  
  	netflow_switch_version(protocol);
  	_schedule_scan_worker(0);
@@ -696,9 +715,9 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.c ipt-netflow-2.2/ipt_NETFLOW.c
  	mod_timer(&rate_timer, jiffies + (HZ * SAMPLERATE));
  
  	peakflows_at = jiffies;
-diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.h ipt-netflow-2.2/ipt_NETFLOW.h
+diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.h ipt-netflow/ipt_NETFLOW.h
 --- ipt-netflow-2.2_orig/ipt_NETFLOW.h	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/ipt_NETFLOW.h	2018-03-05 11:16:00.366925248 +0700
++++ ipt-netflow/ipt_NETFLOW.h	2018-03-11 19:50:52.052634775 +0700
 @@ -194,11 +194,11 @@ enum {
  };
  
@@ -734,9 +753,9 @@ diff -Naupr ipt-netflow-2.2_orig/ipt_NETFLOW.h ipt-netflow-2.2/ipt_NETFLOW.h
  			__get_cpu_var(ipt_netflow_stat).count.first = kts;	 \
  		__get_cpu_var(ipt_netflow_stat).count.last = kts;		 \
  	} while (0);
-diff -Naupr ipt-netflow-2.2_orig/Makefile.in ipt-netflow-2.2/Makefile.in
+diff -Naupr ipt-netflow-2.2_orig/Makefile.in ipt-netflow/Makefile.in
 --- ipt-netflow-2.2_orig/Makefile.in	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/Makefile.in	2018-03-05 11:16:00.363925229 +0700
++++ ipt-netflow/Makefile.in	2018-03-11 19:50:52.049634760 +0700
 @@ -64,10 +64,10 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-
  	fi
  
@@ -750,9 +769,9 @@ diff -Naupr ipt-netflow-2.2_orig/Makefile.in ipt-netflow-2.2/Makefile.in
  
  version.h: ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
  	@./version.sh --define > version.h
-diff -Naupr ipt-netflow-2.2_orig/README ipt-netflow-2.2/README
+diff -Naupr ipt-netflow-2.2_orig/README ipt-netflow/README
 --- ipt-netflow-2.2_orig/README	2016-02-21 20:24:29.000000000 +0600
-+++ ipt-netflow-2.2/README	2018-03-05 11:16:00.364925236 +0700
++++ ipt-netflow/README	2018-03-11 19:50:52.050634765 +0700
 @@ -224,11 +224,6 @@ ipt_NETFLOW linux 2.6.x-4.x kernel modul
       --enable-aggregation
           enables aggregation rules. Read below for explanation of aggregation.
