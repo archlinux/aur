@@ -2,7 +2,7 @@
 # Maintainer: Muges <git@muges.fr>
 
 pkgname=erika-git
-pkgver=v0.1.r9.g494af6d
+pkgver=v0.1.1
 pkgrel=1
 pkgdesc="A GTK+ podcast manager"
 arch=('any')
