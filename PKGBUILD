@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
 pkgver=4.14.25
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -60,7 +60,7 @@ options=('!strip')
 #makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
 _uksm_patch="uksm-4.14.patch"
-_gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
+_gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -366,9 +366,9 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'SKIP'
             'd15875cd3063c6bac5f8e94ba8dd7349b138241c67912ed0723b728a5f302ac9213729171b98664871d14b38670c7868ff64b8f45d0488fe26528935a641b678'
             'SKIP'
-            '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
+            '01be98361d8e3e84bda6767de63c7893838c73880eb632824b1222326db3603550942daa12bfa11701caeaf1cfe7520a5062540eabcd64d8f8fda74b7e863269'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
-            'e1b9f1e8c16996a77288449e63ea7c1a8788db25bfd537436abb75f98c5ecfaa828d5be5ed853505ae7cb7f36280636fe1745a83da4d9eefa3e3317385903b20'
+            'be4f2f71f16b157e6cd765086867510ed61a1c96bf37e235d09f20f21a20efbde1200e5e0777577be45791e5d30acf139ba44e05d7826713ca40dc1b674953a5'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
