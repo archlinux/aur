@@ -1,7 +1,7 @@
 pkgbase = ssr-git
 	pkgdesc = A tool for real-time spatial audio reproduction providing a variety of rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and binaural techniques.
 	pkgver = 0.4.2.r78.g989568c
-	pkgrel = 6
+	pkgrel = 7
 	url = http://spatialaudio.net/ssr/
 	arch = x86_64
 	license = GPL3

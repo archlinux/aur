@@ -2,7 +2,7 @@
 pkgname=ssr-git
 _pkg=ssr
 pkgver=0.4.2.r78.g989568c
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool for real-time spatial audio reproduction providing a variety of
 rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and
 binaural techniques."
@@ -30,6 +30,7 @@ prepare(){
   autoreconf -vfi
   export QT_SELECT=4
   export CPPFLAGS="${CPPFLAGS} -D_REENTRANT"
+  export LIBS="${LIBS} -lpthread"
 }
 
 build() {
