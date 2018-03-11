@@ -1,0 +1,14 @@
+pkgbase = foyer
+	pkgdesc = Self contained modular start page webserver.
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/Kiniamaro/Foyer
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = tar
+	source = https://github.com/Kiniamaro/Foyer/releases/download/v0.1/foyer-unix-v0.1.tgz
+	md5sums = cb59585a2eed28095c1924559b3dce8b
+
+pkgname = foyer
+
