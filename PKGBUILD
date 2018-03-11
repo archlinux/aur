@@ -5,12 +5,12 @@
 
 pkgname=freefilesync
 pkgver=9.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
 license=('GPLv3')
-depends=(wxgtk-common-dev wxgtk2-dev wxgtk3-dev webkit2gtk boost-libs)
+depends=(wxgtk-common-dev webkit2gtk boost-libs)
 makedepends=(boost)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::https://doc-14-a8-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/b6kbcbhg0cvom3hp3v8al83rk0lb2uqc/1520798400000/06806984287875468759/*/1v9WRaJGYqloH_U_ywDk10Jzqt7lGA9Vo?e=download"		#ffs

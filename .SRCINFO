@@ -1,15 +1,13 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
 	pkgver = 9.9
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.freefilesync.org/
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = boost
 	depends = wxgtk-common-dev
-	depends = wxgtk2-dev
-	depends = wxgtk3-dev
 	depends = webkit2gtk
 	depends = boost-libs
 	source = FreeFileSync_9.9_Source.zip::https://doc-14-a8-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/b6kbcbhg0cvom3hp3v8al83rk0lb2uqc/1520798400000/06806984287875468759/*/1v9WRaJGYqloH_U_ywDk10Jzqt7lGA9Vo?e=download
