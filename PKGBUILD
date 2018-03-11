@@ -20,7 +20,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/$pkgname/$pkgname.1.gz" "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+    cd "$srcdir/$pkgname"
+    make DESTDIR="'$pkgdir'/usr" install
 }
