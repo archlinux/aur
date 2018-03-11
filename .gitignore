@@ -1,0 +1,4 @@
+gnatcoll-bindings
+pkg
+src
+*.pkg.tar.xz
