@@ -1,0 +1,28 @@
+diff -ur a/indenters/uigui_uncrustify.ini b/indenters/uigui_uncrustify.ini
+--- a/indenters/uigui_uncrustify.ini	2018-03-11 18:42:45.149597018 -0400
++++ b/indenters/uigui_uncrustify.ini	2018-03-11 18:48:23.309592423 -0400
+@@ -1733,10 +1733,10 @@
+ 
+ [Align Number Left]
+ Category=3
+-Description="<html>Whether to left-align numbers</html>"
++Description="<html>Whether to right-align numbers</html>"
+ Enabled=false
+ EditorType=boolean
+-TrueFalse=align_number_left=true|align_number_left=false
++TrueFalse=align_number_right=true|align_number_right=false
+ ValueDefault=0
+ 
+ [Align Func Params]
+diff -ur a/tools/uncrustify.cfg b/tools/uncrustify.cfg
+--- a/tools/uncrustify.cfg	2018-03-11 18:42:45.149597018 -0400
++++ b/tools/uncrustify.cfg	2018-03-11 18:48:23.379592422 -0400
+@@ -32,7 +32,7 @@
+ align_keep_tabs=false
+ align_with_tabs=false
+ align_on_tabstop=false
+-align_number_left=false
++align_number_right=false
+ align_func_params=false
+ align_same_func_call_params=false
+ align_var_def_colon=false
