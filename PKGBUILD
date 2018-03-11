@@ -1,5 +1,6 @@
-# $Id: PKGBUILD 130872 2015-04-07 09:31:38Z jsteel $
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
+#
+# Kaintainer: Sledge Sulaweyo <sledge.sulaweyo (at) gmail.com>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Greg Sutcliffe <puppet-aur (at) emeraldreverie (dot) org>
 # Contributor: Hyacinthe Cartiaux <hyacinthe (dot) cartiaux (at) free (dot) fr>
 # Contributor: Thomas S Hatch <thatch45 (at) Gmail (dot) com>
@@ -10,7 +11,7 @@
 
 pkgname=puppet3
 pkgver=3.8.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="http://puppetlabs.com/puppet/puppet-open-source"

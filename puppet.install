@@ -2,6 +2,7 @@ pre_install() {
   getent group puppet &>/dev/null || groupadd -r puppet -g 52
   getent passwd puppet &>/dev/null || useradd -r -u 52 -g puppet \
     -d /var/lib/puppet -s /usr/bin/nologin -c "Puppet" puppet
+  gem install --no-user-install --no-document xmlrpc
 }
 
 pre_upgrade() {
