@@ -3,7 +3,7 @@
 pkgbase=xlesspass-git
 pkgname=$pkgbase
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 _gitname=XLessPass
 _gittag="v${pkgver}"
 pkgdesc="Front-End for lesspass-cli"
@@ -13,10 +13,13 @@ license=('GPL3')
 depends=('gtk2')
 install=xlesspass-git.install
 makedepends=('git' 'lazarus-gtk2')
-source=('xlesspass-git.install' "git+${url}.git#tag=$_gittag")
-sha1sums=('54336d3c364cf41bcf357968983a3fb8c0c0ef8c'
-          'SKIP')
+source=('xlesspass-git.install')
+sha1sums=('54336d3c364cf41bcf357968983a3fb8c0c0ef8c')
 
+
+prepare() {
+	git clone --single-branch --depth=1 --branch $_gittag "$url.git"
+}
 
 build() {
   cd $_gitname
