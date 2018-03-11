@@ -94,8 +94,8 @@ build() {
 
 package_gtk3-ubuntu() {
     depends+=(gtk-update-icon-cache)
-    provides=(gtk3-print-backends)
-    conflicts=(gtk3-print-backends)
+    provides=(gtk3 gtk3-print-backends)
+    conflicts=(gtk3 gtk3-print-backends)
     replaces=("gtk3-print-backends<=3.22.26-1")
     install=gtk3.install
 
