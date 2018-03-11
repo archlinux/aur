@@ -1,6 +1,6 @@
 # Maintainer: Jonas Strassel <info@jonas-strassel.de>
 
-pkgname=budgie-extra
+pkgname=budgie-extras
 pkgver=0.4.2
 _commit=64846b0822d20c9150259d1152a6d75b36950c9a
 pkgrel=1
