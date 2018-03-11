@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=3.0.24
+pkgver=3.0.26
 pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
 url="https://git.gnome.org/browse/clutter-gst"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev)
 makedepends=(gobject-introspection gtk-doc git)
-_commit=e2bad4876a4c4be3997c04736066bb683ee71284  # tags/3.0.24^0
+_commit=7e191b675decc87bca263f08c1b01a694c74d44a  # clutter-gst-3.0~1
 source=("git+https://git.gnome.org/browse/clutter-gst#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  git tag -f 3.0.26 7e191b675decc87bca263f08c1b01a694c74d44a  # Fixup missing tag
   NOCONFIGURE=1 ./autogen.sh
 }
 
