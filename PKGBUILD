@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
 makedepends=('meson')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
-source=("$pkgname-$pkgver.tar.xz::$url/releases/download/Marker.$pkgver.tar.xz")
+source=("$pkgname-$pkgver.tar.xz::$url/releases/download/$pkgver/Marker.$pkgver.tar.xz")
 sha256sums=('3ea9a962735ad7ad6ba6fbe3686a7aada9d1fbdb20ee90b1fca3623253cd3513')
 
 build() {
