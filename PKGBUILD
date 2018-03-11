@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=nem-wallet
-pkgver=2.0.14
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Nano Wallet"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/NemProject/NanoWallet"
 license=('MIT')
 options=('!strip')
 source=(https://github.com/NemProject/NanoWallet/releases/download/$pkgver/NanoWallet-$pkgver-linux64.zip)
-sha256sums=('3c31222a9eb12f9f4394cec0dcc72a95211723f8b85e752b585048c1bdd05503')
+sha256sums=('9fe84700c5e97ed1fc2aec3b78be8237dc418fec597d573ec39083d90284a93c')
 
 package() {
     install -dm755 $pkgdir/usr/bin
