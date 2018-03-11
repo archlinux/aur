@@ -8,10 +8,10 @@
 # vercheck-gnome: name=gtk+, majorver=2.24
 
 pkgname=gtk2-ubuntu
-_ubuntu_rel=2ubuntu1
+_ubuntu_rel=4ubuntu1
 _ubuntu_ver=2.24.31
 pkgver=2.24.31
-pkgrel=3
+pkgrel=4
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy)"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
@@ -30,7 +30,7 @@ source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz"
         gtk-query-immodules-2.0.hook
         xid-collision-debug.patch)
 sha512sums=('75b846661308d94b5236e7e1c367deabf57753792ca87e92f9769822dd5ec90e00cd8d5574adcc12162e3702e1ae6dc152278a1d218f9bd9e4d1c8dc1dd520c1'
-            '4a0dac203698ec759d3a507b538db9593195904d6d4d224a5b0e35c98fefbe194ca5a76073d04546e04c41f87831676ec1287c27a7b361a7db96e5a4ade4954b'
+            '9fffb60274ee3a2250e4be34f40a526f93d49aacc994b8267f04fc8de9417582d4319385adec91eebe8e6b6215ec9269617140a21a35e1e826b0985ca72236e7'
             'b124433dd4b20d1d62f073df87e253ca23b3b51625cce55f29a220a4369eda5108c0de07fdc686f570232322c3ff04f7758383f2be5aeace40f843907aa3696d'
             'be7a807046f27e5796f6069dfd2c88f9b7508e3b9e209d97c1575e0d809b279aacacd0e1247f1f7643fa47eede2d987bf433cd17cea0524526ad31982ae8d90d'
             '89e3223c86731a76b12d39245f1ec4cf8b4860ab1d11d74a10e5deb0db302f20b4bb5d9034da1d8aeb96369dbdeddcdd2f28943270dc501476c694562b960159')
