@@ -2,8 +2,8 @@
 # Contributor: scarecrow <gorillaki at gmail dot com>
 
 pkgname=scid_vs_pc
-pkgver=4.18.1
-pkgrel=2
+pkgver=4.19
+pkgrel=1
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
@@ -16,7 +16,7 @@ source=("scid_vs_pc-"$pkgver".tgz::http://sourceforge.net/projects/scidvspc/file
         $pkgname.desktop
         $pkgname.install
         scidlet)
-md5sums=('f4976b6393cf579cd6290c365f1996b7'
+md5sums=('f85554718dc22c0548b991d243911fc9'
          '48f02834420046d1ebd2de22f07ba87c'
          '1df155b3ff86a505dc51a29fa7bfc172'
          'c9ba274c986122ca4c1cd202431b64ce'
@@ -42,10 +42,13 @@ package() {
     # Create directories
     install -dm755 $pkgdir/usr/bin
     install -dm755 $pkgdir/usr/share/scid/{bases,bin,bitmaps,books,data,html,lang,sounds}
+    install -dm755 $pkgdir/usr/share/scid/bin/scripts
     install -dm755 $pkgdir/usr/share/fonts/truetype/Scid
         
     # Data
-    install -m 755 scid sc_* scidpgn pgnfix spliteco pgnscid tkscid tcscid scmerge scidlet* scidt $pkgdir/usr/share/scid/bin
+    install -m 755 scid sc_* scidpgn pgnscid tkscid tcscid scmerge scidlet* scidt $pkgdir/usr/share/scid/bin
+    rm -r scripts/CB-Mega
+    install -m 755 scripts/[a-z]* $pkgdir/usr/share/scid/bin/scripts
     install -m 644  scid.eco $pkgdir/usr/share/scid/data
     install -m 644  spelling.ssp $pkgdir/usr/share/scid
 
