@@ -1,0 +1,18 @@
+pkgbase = axon-git
+	pkgdesc = The synpase TUI
+	pkgver = r97.4e518f9
+	pkgrel = 1
+	url = https://axon.synapse-bt.org
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = axon
+	conflicts = axon
+	source = git+https://github.com/ParadoxSpiral/axon
+	sha256sums = SKIP
+
+pkgname = axon-git
+
