@@ -1,11 +1,12 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
 	pkgver = 3.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mikutter.hachune.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = gobject-introspection
 	depends = ruby-bundler
 	optdepends = libnotify: notify support
 	source = http://mikutter.hachune.net/bin/mikutter.3.6.5.tar.gz
