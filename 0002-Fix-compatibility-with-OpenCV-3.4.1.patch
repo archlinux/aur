@@ -1,0 +1,75 @@
+From 5897545a4149c68e3996cfbe1e13894f03aaa307 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 11 Mar 2018 20:23:42 +0100
+Subject: [PATCH 2/2] Fix compatibility with OpenCV 3.4.1
+
+---
+ modules/video_filter/Makefile.am                              | 2 +-
+ modules/video_filter/{opencv_wrapper.c => opencv_wrapper.cpp} | 6 +++---
+ po/POTFILES.in                                                | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+ rename modules/video_filter/{opencv_wrapper.c => opencv_wrapper.cpp} (98%)
+
+diff --git a/modules/video_filter/Makefile.am b/modules/video_filter/Makefile.am
+index af190d16e3..d1703a7ed3 100644
+--- a/modules/video_filter/Makefile.am
++++ b/modules/video_filter/Makefile.am
+@@ -147,7 +147,7 @@ endif
+ libdeinterlace_plugin_la_LIBADD = libdeinterlace_common.la
+ video_filter_LTLIBRARIES += libdeinterlace_plugin.la
+ 
+-libopencv_wrapper_plugin_la_SOURCES = video_filter/opencv_wrapper.c
++libopencv_wrapper_plugin_la_SOURCES = video_filter/opencv_wrapper.cpp
+ libopencv_wrapper_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) $(OPENCV_CFLAGS)
+ libopencv_wrapper_plugin_la_LIBADD = $(OPENCV_LIBS)
+ libopencv_wrapper_plugin_la_LDFLAGS = $(AM_LDFLAGS) -rpath '$(video_filterdir)'
+diff --git a/modules/video_filter/opencv_wrapper.c b/modules/video_filter/opencv_wrapper.cpp
+similarity index 98%
+rename from modules/video_filter/opencv_wrapper.c
+rename to modules/video_filter/opencv_wrapper.cpp
+index 525e55db1b..1e4f19c871 100644
+--- a/modules/video_filter/opencv_wrapper.c
++++ b/modules/video_filter/opencv_wrapper.cpp
+@@ -154,7 +154,7 @@ static int Create( vlc_object_t *p_this )
+     char *psz_chroma, *psz_output;
+ 
+     /* Allocate structure */
+-    p_filter->p_sys = malloc( sizeof( filter_sys_t ) );
++    p_filter->p_sys = reinterpret_cast<filter_sys_t*>( malloc( sizeof( filter_sys_t ) ) );
+     if( p_filter->p_sys == NULL )
+         return VLC_ENOMEM;
+ 
+@@ -167,7 +167,7 @@ static int Create( vlc_object_t *p_this )
+      * We don't need to set up video formats for this filter as it not
+      * actually using a picture_t.
+      */
+-    p_filter->p_sys->p_opencv = vlc_object_create( p_filter, sizeof(filter_t) );
++    p_filter->p_sys->p_opencv = reinterpret_cast<filter_t*>( vlc_object_create( p_filter, sizeof(filter_t) ) );
+     if( !p_filter->p_sys->p_opencv ) {
+         free( p_filter->p_sys );
+         return VLC_ENOMEM;
+@@ -315,7 +315,7 @@ static void VlcPictureToIplImage( filter_t* p_filter, picture_t* p_in )
+ {
+     int planes = p_in->i_planes;    //num input video planes
+     // input video size
+-    CvSize sz = cvSize(abs(p_in->format.i_width), abs(p_in->format.i_height));
++    CvSize sz = cvSize(abs(static_cast<int>(p_in->format.i_width)), abs(static_cast<int>(p_in->format.i_height)));
+     video_format_t fmt_out;
+     filter_sys_t* p_sys = p_filter->p_sys;
+ 
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 528249a98c..78d2128373 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1145,7 +1145,7 @@ modules/video_filter/motionblur.c
+ modules/video_filter/motiondetect.c
+ modules/video_filter/oldmovie.c
+ modules/video_filter/opencv_example.cpp
+-modules/video_filter/opencv_wrapper.c
++modules/video_filter/opencv_wrapper.cpp
+ modules/video_filter/posterize.c
+ modules/video_filter/postproc.c
+ modules/video_filter/psychedelic.c
+-- 
+2.16.2
+

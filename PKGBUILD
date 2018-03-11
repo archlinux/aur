@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180306
+pkgver=4.0.0v20180311
 _pkgver=4.0.0
-_snapshot_=20180306
-_snapver_=1038
+_snapshot_=20180311
+_snapver_=0236
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -16,54 +16,103 @@ pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-_undetected_depends=()
-depends=('libmatroska' 'a52dec' 'sidplay2-libs' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
-         'libdvdnav' 'libmad' 'libmpcdec' 'libmpeg2'
-         'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'sndio' 'wayland' 'wayland-protocols'
-         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'qt5-svg' 'libglvnd'
-         'hicolor-icon-theme' 'qt5-x11extras' "${_detected_depends[@]}")
-makedepends=('aalib' 'flac' 'git'
-             'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
-             'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
-             'libssh2' 'lirc' 'live-media'  'opus'
-             'portaudio' 'projectm' 'twolame' 'vcdimager' 'smbclient')
-optdepends=('aalib: for ASCII art plugin'
-            'avahi: for service discovery using bonjour protocol'
-            'flac: for Free Lossless Audio Codec plugin'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
+         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+         'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
+         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
+         'wayland-protocols')
+makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+             'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
+             'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'opencv' 'libnfs' 'mpg123'
+             'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
+             'libvorbis' 'speex' 'opus' 'libtheora' 'libpng'
+             'libjpeg-turbo' 'libx265.so' 'libx264.so' 'zvbi' 'libass'
+             'libkate' 'libtiger' 'sdl_image' 'libpulse' 'alsa-lib' 'jack'
+             'libsamplerate' 'libsoxr' 'lirc' 'libgoom2' 'projectm'
+             'chromaprint'
+
+             'libfdk-aac' 'portaudio' 'sidplay2-libs' 'daala-git' 'sndio')
+optdepends=('avahi: service discovery using bonjour protocol'
+            'gst-plugins-base-libs: for libgst plugins'
+            'libdvdcss: decoding encrypted DVDs'
+            'libavc1394: devices using the 1394ta AV/C'
+            'libdc1394: IEEE 1394 access plugin'
             'kdelibs: KDE Solid hardware integration'
-            'libavc1394: for devices using the 1394ta AV/C'
-            'libbluray: for Blu-Ray support'
-            'libcaca: for colored ASCII art video output'
-            'libcdio: for audio CD playback support'
-            'libdc1394: for IEEE 1394 plugin'
-            'libdvdcss: for decoding encrypted DVDs'
-            'libgme: for libgme plugin'
-            'libgoom2: for libgoom plugin'
-            'libmtp: for MTP devices support'
-            'libnotify: for notification plugin'
-            'librsvg: for SVG plugin'
-            'libssh2: for sftp support'
-            'libva-intel-driver: back-end for intel cards'
-            'libva-vdpau-driver: vdpau back-end for nvidia'
-            'lirc: for lirc plugin'
-            'lua-socket: for http interface'
-            'ncurses: for ncurses interface support'
-            'opus: for opus support'
-            'portaudio: for portaudio support'
-            'projectm: for ProjectM visualisation plugin'
-            'smbclient: for SMB access plugin'
-            'ttf-dejavu: for subtitle font'
-            'ttf-freefont: for subtitle font'
-            'twolame: for TwoLAME mpeg2 encoder plugin'
-            'vcdimager: navigate VCD with libvcdinfo')
+            'kwallet: kwallet keystore'
+            'libva-vdpau-driver: vdpau backend nvidia'
+            'libva-intel-driver: video backend intel'
+            'libbluray: Blu-Ray video input'
+            'flac: Free Lossless Audio Codec plugin'
+            'twolame: TwoLAME mpeg2 encoder plugin'
+            'libgme: Game Music Emu plugin'
+            'vcdimager: navigate VCD with libvcdinfo'
+            'libmtp: MTP devices discovery'
+            'libsystemd: udev services discovery'
+            'smbclient: SMB access plugin'
+            'libcdio: audio CD playback'
+            'ttf-freefont: subtitle font '
+            'ttf-dejavu: subtitle font'
+            'libssh2: sftp access'
+            'opencv: opencv video'
+            'libnfs: NFS access'
+            'mpg123: mpg123 codec'
+            'protobuf: chromecast streaming'
+            'libmicrodns: mDNS services discovery (chromecast etc)'
+            'lua-socket: http interface'
+            'live-media: RTSP input'
+            'libdvdread: DVD input module'
+            'libdvdnav: DVD with navigation input module'
+            'libogg: Ogg and OggSpots codec'
+            'libshout: shoutcast/icecast output plugin'
+            'libmodplug: MOD output plugin'
+            'libvpx: VP8 and VP9 codec'
+            'libvorbis: Vorbis decoder/encoder'
+            'speex: Speex codec'
+            'opus: opus codec'
+            'libtheora: theora codec'
+            'libpng: PNG support'
+            'libjpeg-turbo: JPEG support'
+            'librsvg: SVG plugin'
+            'libx264: H264 encoding'
+            'x265: HEVC/H.265 encoder'
+            'zvbi: VBI/Teletext decoding'
+            'libass: Subtitle support'
+            'libkate: Kate codec'
+            'libtiger: Tiger rendering for Kate streams'
+            'sdl_image: SDL image support'
+            'aalib: ASCII art video output'
+            'libcaca: colored ASCII art video output'
+            'libpulse: PulseAudio audio output'
+            'alsa-lib: ALSA audio output'
+            'jack: jack audio server'
+            'libsamplerate: audio Resampler'
+            'libsoxr: SoX audio Resampler'
+            'chromaprint: Chromaprint audio fingerprinter'
+            'lirc: lirc control'
+            'libgoom2: Goom visualization'
+            'projectm: ProjectM visualisation'
+            'ncurses: ncurses interface'
+            'libnotify: notification plugin'
+            'gtk3: notification plugin'
+
+            'libfdk-aac: FDK AAC codec'
+            'portaudio: portaudio support'
+            'vcdimager: navigate VCD with libvcdinfo'
+            'schroedinger: schroedinger codec support'
+            'sidplay2-libs: for C64 sid demuxer'
+            'daala-git: for Daala video support'
+            'sndio: for OpenBSD sndio audio output')
 conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
 options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
-        'https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc'
+        '0001-lua-fix-build-using-lua-5.3.patch'
+        '0002-Fix-compatibility-with-OpenCV-3.4.1.patch'
         'find-deps.py')
 
 pkgver() {
@@ -75,9 +124,12 @@ prepare() {
 
   ./bootstrap
 
-  patch -Np1 -i "${srcdir}/vlc"
+  patch -Np1 -i "${srcdir}/0001-lua-fix-build-using-lua-5.3.patch"
+  patch -Np1 -i "${srcdir}/0002-Fix-compatibility-with-OpenCV-3.4.1.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
+  sed 's|whoami|echo builduser|g' -i configure
+  sed 's|hostname -f|echo arch|g' -i configure
 }
 
 build() {
@@ -90,27 +142,100 @@ build() {
   export LUA_LIBS="`pkg-config --libs lua`"
   export RCC=/usr/bin/rcc-qt5
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --disable-rpath \
-    --disable-fribidi \
-    --enable-faad \
-    --enable-nls \
-    --enable-lirc \
-    --enable-ncurses \
-    --enable-realrtsp \
-    --enable-aa \
-    --enable-upnp \
-    --enable-opus \
-    --enable-sftp \
-    --enable-fdkaac \
-    --enable-archive \
-    --enable-bluray \
-    --enable-daala
-
-  ./compile
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --disable-rpath \
+              --enable-nls \
+              --enable-archive \
+              --enable-live555 \
+              --enable-dc1394 \
+              --enable-dv1394 \
+              --enable-dvdread \
+              --enable-dvdnav \
+              --enable-bluray \
+              --enable-opencv \
+              --enable-smbclient \
+              --enable-sftp \
+              --enable-nfs \
+              --enable-realrtsp \
+              --enable-dvbpsi \
+              --enable-gme \
+              --enable-ogg \
+              --enable-shout \
+              --enable-matroska \
+              --enable-mod \
+              --enable-mpc \
+              --enable-mad \
+              --enable-mpg123 \
+              --enable-gst-decode \
+              --enable-avcodec \
+              --enable-libva \
+              --enable-avformat \
+              --enable-postproc \
+              --enable-faad \
+              --enable-vpx \
+              --enable-twolame \
+              --enable-a52 \
+              --enable-dca \
+              --enable-flac \
+              --enable-libmpeg2 \
+              --enable-vorbis \
+              --enable-speex \
+              --enable-opus \
+              --enable-oggspots \
+              --disable-schroedinger \
+              --enable-png \
+              --enable-jpeg \
+              --enable-x264 \
+              --enable-x265 \
+              --enable-zvbi \
+              --enable-libass \
+              --enable-kate \
+              --enable-tiger \
+              --enable-vdpau \
+              --enable-wayland \
+              --enable-sdl-image \
+              --enable-freetype \
+              --enable-fribidi \
+              --enable-harfbuzz \
+              --enable-fontconfig \
+              --enable-svg \
+              --enable-svgdec \
+              --enable-aa \
+              --enable-caca \
+              --enable-pulse \
+              --enable-alsa \
+              --enable-jack \
+              --enable-samplerate \
+              --enable-soxr \
+              --enable-chromaprint \
+              --enable-chromecast \
+              --enable-qt \
+              --enable-skins2 \
+              --enable-libtar \
+              --enable-ncurses \
+              --enable-lirc \
+              --enable-goom \
+              --enable-projectm \
+              --enable-avahi \
+              --enable-mtp \
+              --enable-upnp \
+              --enable-microdns \
+              --enable-libxml2 \
+              --disable-libgcrypt \
+              --enable-gnutls \
+              --enable-taglib \
+              --enable-secret \
+              --enable-kwallet \
+              --disable-update-check \
+              --enable-notify \
+              --enable-libplacebo \
+              --enable-vlc \
+              \
+              --libexecdir=/usr/lib \
+              --enable-daala \
+              --enable-fdkaac
+  make V=1
 }
 
 package() {
@@ -133,7 +258,8 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('11fc458a8e5ecfafa9ee2604406de52d0ab3cb0d3449dc27ae1d79fe2ed31d9a'
+sha256sums=('822e8b447522d9ce67f46fca84cd3cb55109d4088efac2a5eb2b72150e4ef4d1'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
-            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
+            '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
+            '4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')

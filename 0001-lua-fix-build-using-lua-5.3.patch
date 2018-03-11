@@ -1,0 +1,21 @@
+From 5824efb5fbb8aa00773aa2ff891645d17e68efc8 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 24 Feb 2018 01:32:40 +0100
+Subject: [PATCH] lua: fix build using lua 5.3
+
+---
+ modules/lua/vlc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/modules/lua/vlc.h b/modules/lua/vlc.h
+index 71f381d334a..b46b5f67a1b 100644
+--- a/modules/lua/vlc.h
++++ b/modules/lua/vlc.h
+@@ -38,6 +38,7 @@
+ #include <vlc_stream.h>
+ #include <vlc_demux.h>
+ 
++#define LUA_COMPAT_APIINTCASTS
+ #define LUA_COMPAT_MODULE
+ #include <lua.h>        /* Low level lua C API */
+ #include <lauxlib.h>    /* Higher level C API */
