@@ -2,6 +2,7 @@
 /src/
 
 /Dockerfile
+/.dockerignore
 /dotty-*.tar.gz
 /scala-dotty-*.pkg.tar
 /scala-dotty-*-package.log
