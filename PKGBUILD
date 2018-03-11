@@ -1,13 +1,13 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-distributed
-pkgver=1.20.0
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="A python library for distributed computation."
 arch=('any')
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD-3-clause')
 depends=('python>=3.5' 'python-tornado>=4.5.1' 'python-toolz>=0.7.4'
-    'python-cloudpickle>=0.2.2' 'python-dask>=0.16.0' 'python-click>=6.6'
+    'python-cloudpickle>=0.2.2' 'python-dask>=0.17.0' 'python-click>=6.6'
     'python-psutil' 'python-zict>=0.1.3' 'python-sortedcontainers' 'python-six'
     'python-tblib' 'python-msgpack')
 # For supporting other versions of python:
@@ -24,7 +24,7 @@ optdepends=(
     'python-ipywidgets' # crick, hdfs-3
 )
 source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('a73564778771a62a871d53ccfe04663985a654451a67ebb119dbe9999c9ac001')
+sha256sums=('4adfe09d05ba5c0dc45a4e47a8168f42c209ca8173d3043bf8a9a9d3eb3890b9')
 
 package() {
   cd $srcdir/distributed-$pkgver
