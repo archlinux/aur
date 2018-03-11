@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.15
-_pkgver=4.15.7
+_pkgver=4.15.8
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -26,11 +26,11 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 replaces=('linux-grsec')
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02'
+            '93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0'
             'SKIP'
-            '7b461574bc65060bb320de9c095ecce79543d7c64e1e1cfb458263c03d00620a'
+            'fc90ce5a332c7a46bd7b43e1df105606b02b8f767df286946aabec2dafc2852c'
             'SKIP'
-            'b01ddd0ae91bf8cc699d275071254a3c580b78ce94d1a8f4077ae4dc65d7bb77'
+            '749dc7ef84e39d6240953ec72a7673dd9b550c42814fd29b33c2994d6bb0f6e1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
