@@ -2,9 +2,9 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.2.1
+_pkgver=0.2.2
 _branch=v${_pkgver}-dev
-pkgver=0.2.1.r23.bedc2a6
+pkgver=0.2.2.r26.1052008
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -23,12 +23,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git describe --always)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  # Build fails when GMock is found, so don't check for it, don't compile tests
-  sed -i 's:if (GMOCK_FOUND):if (GMOCK_FOUND AND ENABLE_GMOCK):' CMakeLists.txt
 }
 
 build() {
