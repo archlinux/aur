@@ -1,24 +1,20 @@
 pkgbase = libwebp-git
 	pkgdesc = WebP library and conversion tools
-	pkgver = v0.4.1.530.g39216e5
+	pkgver = 0.6.1.r50.gb2db361ca
 	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = x86_64
 	arch = i686
 	license = BSD
+	makedepends = git
 	depends = libpng
 	depends = libjpeg
 	depends = libtiff
 	depends = giflib
 	provides = libwebp
 	conflicts = libwebp
-	options = !libtool
-	source = git+https://chromium.googlesource.com/webm/libwebp
-	source = 0001-fix-gcc-5.1-error-where-c-14-string-literals-are-det.patch
-	source = 0002-add-libgl-to-LD-line.patch
+	source = libwebp-git::git+https://chromium.googlesource.com/webm/libwebp
 	sha256sums = SKIP
-	sha256sums = 921596773f784832cf7c6fd5988b4272baa209cc959f658a894c9b1fdc5225df
-	sha256sums = c5390acae9739f9c5c8a47677194c7f24d317bee6003d4fa1886f93fab1226ad
 
 pkgname = libwebp-git
 
