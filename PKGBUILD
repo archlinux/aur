@@ -12,13 +12,13 @@ _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
 pkgver=0.6.93
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk module for exporting menus"
 depends=('gtk3' 'gtk2')
 provides=(unity-gtk-module)
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('LGPL3')
 
 source=("git://github.com/rilian-la-te/${_pkgbase}.git"
 		80appmenu-gtk-module)
