@@ -19,10 +19,9 @@ pkgver() {
 }
 
 package() {
-        PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps pycaption
+        PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" pycaption
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm0644 icons/gnomecast_48.png "$pkgdir/usr/share/pixmaps/gnomecast.png"
 }
 
 
