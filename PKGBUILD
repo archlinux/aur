@@ -13,7 +13,6 @@ _opts=(
 
 pkgname=(
 'vala-panel-appmenu-translations-git'
-'vala-panel-appmenu-registrar-git' 
 )
 
 makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
@@ -61,7 +60,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 pkgver=0.6.93
-pkgrel=1
+pkgrel=2
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
