@@ -1,13 +1,13 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 _pkgname=backupninja
 pkgname=$_pkgname-git
-pkgver=1.0.2.b0b492d
-pkgrel=2
+pkgver=1.0.2.14.ge0b4375
+pkgrel=1
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
 url="https://labs.riseup.net/code/projects/backupninja"
 license=('GPL')
-depends=('bash')
+depends=('bash dialog')
 makedepends=('git')
 optdepends=('rdiff-backup: rdiff backups'
             'gzip: compress backups'
