@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-systemqt-notoemoji
-pkgver=1.2.8
-pkgrel=2
+pkgver=1.2.11
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -40,7 +40,7 @@ sha256sums=('SKIP'
             '0b520c1227010f2357c52208c3937a394534bd3aa30c78810cd4d309afa94bd7'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            'c0a71a540c6263d4e6cbba326a9b9d61cd57ef6db6054e87058dc49cbb707a23'
+            '6b4cc00293dac9973dc4ef28449eef4ad7d63a16b6ba394c3322af90baacb0b0'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6'
             '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075')
 
