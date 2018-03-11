@@ -2,6 +2,133 @@ Changelog
 =========
 
 
+v2.2.0 (2018-03-07)
+-------------------
+- V2.2.0. [Martin Hořeňovský]
+- Don't build `dev-appveyor*` branches on TravisCI. [Martin Hořeňovský]
+- Merge pull request #1206 from zemasoft/master. [Martin Hořeňovský]
+
+  Introduce support for DJGPP cross compiler
+- Merge branch 'master' into master. [Martin Hořeňovský]
+- Fixup various spelling errors (#1208) [Josh Soref]
+- Ensure Catch2ConfigVersion.cmake is installed properly. [Bastian
+  Dörig]
+
+  The old version would lead to error when Catch was installed
+  as a subproject. The file would be written to the subproject's
+  build directory and then would not be installed properly.
+- Speed up AppVeyor build times. [Martin Hořeňovský]
+
+  * Examples are no longer built for all images
+  * Coverage is no longer collected from every build
+  * The number of configurations is reduced
+- Simplify internal configuration of POSIX signals. [Martin Hořeňovský]
+- Stop installing lcov in builds without COVERAGE=1. [Martin Hořeňovský]
+- Speed up TravisCI build. [Martin Hořeňovský]
+
+  * Examples are no longer built on all travis images
+  * Coverage is no longer collected from all travis images
+  * Valgrind is no longer used with all travis images
+
+  This should greatly reduce the amount of compiling, downloading
+  binaries and general work the common images do.
+- Fix C++14 toggle for OSX build. [Martin Hořeňovský]
+- Use char const * const * for Session::run. [Martin Hořeňovský]
+
+  Needed to embed newer version of Clara
+
+  Closes #1178
+  Closes #1031
+- Cleanup for performance reasons. [Martin Hořeňovský]
+
+  * Eliminated some copies
+  * Made makeTestCase fit into 4 arguments -- avoids spills on Win64
+  * Made string literals into StringRef literals
+- Introduce support for DJGPP cross compiler. [Tomas Zeman]
+
+  DJGPP cross compiler is targeting DOS which does not support POSIX
+  signals. Probably for the same reason (targeting DOS) this compiler
+  does not support wide characters.
+- Introduce conditional wchar_t (and std::wstring) support. [Tomas
+  Zeman]
+
+  The support is turned on by default but the user might need to be able
+  to turn it off which is now possible by defining CATCH_CONFIG_NO_WCHAR.
+- Fix 'defined but not used' warning. [Tomas Zeman]
+
+  The warning occurred when !CATCH_CONFIG_WINDOWS_SEH
+  && !CATCH_CONFIG_POSIX_SIGNALS.
+- Provide a public method to get StringRef's underlying pointer. [Martin
+  Hořeňovský]
+
+  This allows reducing the amount of friends needed for its interface
+  and some extra tricks later.
+
+  The bad part is that the pointer can become invalidated via
+  calls to other StringRef's public methods, but c'est la vie.
+- StringRef appends itself to std::string efficiently. [Martin
+  Hořeňovský]
+- Document CATCH_CONFIG_CPP17_UNCAUGHT_EXCEPTIONS macro. [Martin
+  Hořeňovský]
+
+  Also fix how it can be disabled.
+- Simplify logic selecting between signal handling/SEH/nothing. [Martin
+  Hořeňovský]
+
+  It was a bit of a mess previously
+- Fix how windows.h is included in our files. [Martin Hořeňovský]
+
+  To prevent bugs with stitching system headers inside Catch,
+  the proxy header is responsible for guarding against inclusion
+  on Linux, rather than the includers.
+
+  Might be related to #1197
+- StringRef will not take ownership when writing itself to stream.
+  [Martin Hořeňovský]
+
+  This also fixes some tests that were previously failing unnoticed - WTF?
+- Fix doubled line in baselines. [Martin Hořeňovský]
+- Covered more translation possibilities. [Martin Hořeňovský]
+- Cleanup some tests. [Martin Hořeňovský]
+- Move fallback conversion after enum-check. [Martin Hořeňovský]
+- Add test for overriding the fallback stringifier. [Martin Hořeňovský]
+- Removed unnecessary use of ostringstream from catch_enforce.h. [Phil
+  Nash]
+- Add SpECTRE project to list of users. [Nils Deppe]
+- Document CATCH_CONFIG_DEFAULT_REPORTER macro. [Martin Hořeňovský]
+- Add a way to change fallback stringifier. [Martin Hořeňovský]
+
+  This allows reuse of projects existing stringification machinery
+
+  Closes #1024
+- Fix typos in documentation. [Martin Hořeňovský]
+- Disable POSIX signals for Emscripten. [Martin Hořeňovský]
+
+  Related to #1114
+- Add another known bug to limitations.md. [Martin Hořeňovský]
+
+  Related to #1183
+- Set patch coverage check to target 80% [Martin Hořeňovský]
+- Https://github.com/catchorg/Catch2/issues/1175 - don't list hidden
+  tests by default. [dvirtz]
+- Add option to warn when no tests ran. [dvirtz]
+
+  Closes #1158
+
+
+v1.12.1 (2018-03-02)
+--------------------
+- V1.12.1. [Martin Hořeňovský]
+- Fix deprecation warning in ~ScopedMessage. [Martin Hořeňovský]
+- Wrap all uses in min and max in extra parentheses. [Martin Hořeňovský]
+
+  This prevents `min` and `max` macros from windows headers (!@#$)
+  from breaking compilation.
+
+  Related to #1191
+- Update path for catch-classic vcpkg's portfile. [Martin Hořeňovský]
+
+
 v2.1.2 (2018-02-09)
 -------------------
 - V2.1.2. [Martin Hořeňovský]
