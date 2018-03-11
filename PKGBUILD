@@ -2,7 +2,7 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX 8"
 arch=('any')
@@ -16,14 +16,11 @@ depends=('java-environment=8' 'java-openjfx>=8.u76')
 _commitId='18927ddfde5ac008e5f14320340138786fcdfb0f'
 
 source=(
-    # Release 1.5.6 is buggy. This commit provides a hotfix. Using patch
-    # manually was not working, it's better to use the tar.gz code directly
-    # rather than trying to patch manually, for now.
-    "https://github.com/asciidocfx/AsciidocFX/archive/${_commitId}.tar.gz"
+    "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
     'asciidocfx'
 )
 sha512sums=(
-    'e817c96fa3213d27ecd77c48db25bc67ab611aef36bcd480dbecd98f343211eb10ddc33840433366bc9a82cdf751c3060a42beef87350963ef5b338706053512'
+    '2e412a8af37deb2d889778f1de4653f79d68c7d1ec9101f11d73ee471411a6f9ca16c6aa18bb862430604b7e7f33283890b1472ac7c6fabe8d8e57e5fa8a3ff5'
     'e37a5331244d2784dabfffe3e360998e69ec0cc84dbd716e98d80de72c80c34e0791772d8277897b2fc479498860ef70293072956f2a991fcb59beec448d689f'
 )
 
@@ -43,14 +40,14 @@ prepare() {
 }
 
 build() {
-    cd "AsciidocFX-${_commitId}"
+    cd "AsciidocFX-${pkgver}"
 
     # "install" seemingly means "build and ready for installation"
     mvn clean install
 }
 
 package() {
-    cd "AsciidocFX-${_commitId}"
+    cd "AsciidocFX-${pkgver}"
 
     install -dm755 "${pkgdir}/usr/share/java/asciidocfx"
     install -dm755 "${pkgdir}/usr/bin"
