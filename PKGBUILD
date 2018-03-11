@@ -19,8 +19,8 @@ conflicts=(
     'waveform-bundle'
     'tracktion-waveform-beta'
 )
-source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/9033/Waveform-installer-64bit-linux-9.0.33.deb)
-md5sums=('6ad4aa2675bf74c523b547209bc10be0')
+source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/9037/Waveform-installer-64bit-linux-9.0.37.deb)
+md5sums=('b387119212a8994f0abfad546c9e2015')
 
 package() {
     executable=Waveform9
