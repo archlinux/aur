@@ -4,7 +4,7 @@ pkgname=langkit-git
 pkgver=r4919.15d0f2f2
 pkgrel=1
 
-pkgdesc='Compiler for syntactic and semantic libraries'
+pkgdesc='Compiler for syntactic and semantic language analysis libraries'
 url='https://github.com/AdaCore/langkit/'
 arch=('any')
 license=('GPL')
