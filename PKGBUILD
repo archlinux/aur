@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
@@ -10,14 +10,14 @@ license=('BSD')
 depends=('qbs')
 groups=('liri')
 source=("https://github.com/lirios/qbs-shared/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('cc815da918e0f703239518f6bca2691a4c3ade270114cd3e043cff6426a23e8c')
+sha256sums=('1cbf3475bef23f3533bb164ad9eda7042d488a0e7a6a954b48cfb4c8cee1d1aa')
 
 build() {
 	cd ${pkgname}-${pkgver}
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 modules.qbs.installRoot:/ modules.qbs.installPrefix:usr
+	qbs build --no-install -d build profile:qt5 project.prefix:/usr
 }
 
 package() {
