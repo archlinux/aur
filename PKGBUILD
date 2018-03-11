@@ -8,7 +8,7 @@ url=https://github.com/jessfraz/weather
 arch=('x86_64')
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go-pie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('9023e47e97e04510677da5c85f38bcd9bed4f2111c2a40ff6117b37eb73bf16c290c7c8dc4e89f44e508a9593b5d5369ed5281db1d9033e32a6fa3ac60f24ef0')
 
