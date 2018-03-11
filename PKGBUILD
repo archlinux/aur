@@ -2,7 +2,7 @@
 
 pkgbase=xlesspass-git
 pkgname=$pkgbase
-pkgver=2.4
+pkgver=2.6
 pkgrel=1
 _gitname=XLessPass
 _gittag="v${pkgver}"
@@ -28,4 +28,6 @@ package() {
   install -Dm755 xlesspass "$pkgdir/usr/bin/xlesspass"
   install -Dm644 xlesspass.desktop "$pkgdir/usr/share/applications/xlesspass.desktop"
   install -Dm644 icons/key.png "$pkgdir/usr/share/pixmaps/xlesspass.png"
+  mkdir -p "$pkgdir/usr/share/xlesspass/i18n"
+  install -Dm644 i18n/* "$pkgdir/usr/share/xlesspass/i18n/"
 }
