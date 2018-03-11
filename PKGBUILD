@@ -1,6 +1,6 @@
 # Maintainer: Zakary Kamal Ismail <zakary.kamal.fs@outlook.com>
 pkgname=rust-qt-binding-generator-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Generates Qt binding for Rust code from a JSON file"
 arch=('any')
@@ -14,8 +14,20 @@ source=("git+http://github.com/KDE/${pkgname%-git}.git")
 md5sums=(SKIP)
 
 prepare() {
-	cd $srcdir/${pkgname%-git}
-}
+
+	# Make sure that a default toolchain is setup
+	{ # try
+		cargo
+	} || { # catch
+		setterm -foreground red
+		echo "You have no default toolchain installed"
+		echo "Installing and/or setting stable as your default toolchain"
+		setterm -foreground default
+		rustup default stable
+	}
+
+		cd $srcdir/${pkgname%-git}
+	}
 
 build() {
 	cd $srcdir/${pkgname%-git}

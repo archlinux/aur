@@ -1,6 +1,6 @@
 pkgbase = rust-qt-binding-generator-git
 	pkgdesc = Generates Qt binding for Rust code from a JSON file
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/KDE/rust-qt-binding-generator
 	arch = any
