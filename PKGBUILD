@@ -66,7 +66,7 @@ _rtver=19
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -76,7 +76,7 @@ _bfq_sq_mq_ver='20180227'
 _bfq_sq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
-_gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
+_gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -444,9 +444,9 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '27b68107c4920baf85a5b1e1636d523399bcc1c7bce5e238ee321c666bb79f0124890577b3cba16a99d7da406015401324e8d04b91a1f73e4093473033ae237a'
             '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
-            '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
+            '01be98361d8e3e84bda6767de63c7893838c73880eb632824b1222326db3603550942daa12bfa11701caeaf1cfe7520a5062540eabcd64d8f8fda74b7e863269'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            'a1858fc0b7ce27af13b8bef5d285b5f4cdc2d89f9864b6e945572114cf92b8111624b4e2d6487fbaef4165d24889967f84e2b74ebb7a11edb77e823a15cde34c'
+            '549fb4a15b2cc34a45c7eba570c3b54bc06afa37c08164be337eb7f42c2f563f6dbd13d67ad233459c38bead446b057fed75510218cd91b33f05d8c23b0a7d93'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
