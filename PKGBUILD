@@ -4,8 +4,8 @@
 _pkgname=radeontop
 pkgname=$_pkgname-git
 epoch=1
-pkgver=1.0.r0.gc0abadf
-pkgrel=3
+pkgver=1.0.r6.g07ec134
+pkgrel=1
 pkgdesc='Radeon cards monitoring utility'
 arch=('i686' 'x86_64')
 url='https://github.com/clbr/radeontop'
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('radeontop')
 conflicts=('radeontop')
 source=('git+https://github.com/clbr/radeontop.git')
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -28,8 +28,9 @@ prepare() {
 }
 
 build() {
+	export amdgpu=1
 	cd "$srcdir/$_pkgname"
-	amdgpu=1 make
+	make
 }
 
 package() {
