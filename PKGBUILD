@@ -3,13 +3,13 @@
 # Contributor: thn81 <root@scrat>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=libdbusmenu, repo=zesty
+# vercheck-ubuntu: name=libdbusmenu, repo=bionic
 # vercheck-launchpad: name=dbusmenu, tarname=libdbusmenu
 
 pkgbase=libdbusmenu-ubuntu
 pkgname=(libdbusmenu-glib-ubuntu libdbusmenu-gtk2-ubuntu libdbusmenu-gtk3-ubuntu)
 _actual_ver=16.04.1
-_extra_ver=+17.04.20170109.1
+_extra_ver=+18.04.20171206
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="A small little library that was created by pulling out some common code out of indicator-applet"
@@ -20,7 +20,7 @@ makedepends=(gobject-introspection gtk-doc gtk2-ubuntu gtk3-ubuntu intltool json
 groups=(unity)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/libdbusmenu_${_actual_ver}${_extra_ver}.orig.tar.gz"
         0001_autoconf.patch)
-sha512sums=('011aa75de053b3dcf6c134662098aeea4b70022cbe67608948d165b7d15664a74ce3d348ef8a897ccfeb9640fe246f230afa052a754e1cf3ec4179dc579cfe59'
+sha512sums=('f5fa487c94aada665000436361cf4cfd40747662b855a2f06bdeb65b555483d6e0ab8395c2943f86add03c8ae5b93a942f7cd8ea44e67c1a89f73f57bbabd0d4'
             '303eae41659c29a78bd1f24aa7a01b35987049f6213d23fc6ecd5a7e72109d277fd6d443414750274f1fc75cee567285ca8d9d49887e6ab19e36565630fdf08b')
 
 prepare() {
