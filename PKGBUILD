@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=openauto-git
 _pkgname=openauto
-pkgver=r35.f46ab5b
+pkgver=r36.2b75c4e
 pkgrel=1
 pkgdesc="AndroidAuto headunit emulator"
 arch=('x86_64')
@@ -24,12 +24,12 @@ build() {
   cd $pkgname
   mkdir -p openauto_build
   cd openauto_build
-  cmake -DCMAKE_BUILD_TYPE=Release -DRPI3_BUILD=FALSE -DAASDK_INCLUDE_DIRS="/usr/include" -DAASDK_LIBRARIES="/usr/lib/libaasdk.so" -DAASDK_PROTO_INCLUDE_DIRS="/usr/include" -DAASDK_PROTO_LIBRARIES="/usr/lib/libaasdk_proto.a" ../ 
+  cmake -DCMAKE_BUILD_TYPE=Release -DRPI3_BUILD=FALSE -DAASDK_INCLUDE_DIRS="/usr/include" -DAASDK_LIBRARIES="/usr/lib/libaasdk.so" -DAASDK_PROTO_INCLUDE_DIRS="/usr/include" -DAASDK_PROTO_LIBRARIES="/usr/lib/libaasdk_proto.so" ../ 
   make
 }
 
 package() {
   cd $pkgname
-  chrpath -d bin/autoapp
+  #chrpath -d bin/autoapp
   install -D -m755 bin/autoapp "$pkgdir/usr/bin/autoapp"
 }
