@@ -1,0 +1,4 @@
+langkit
+pkg
+src
+*.pkg.tar.xz
