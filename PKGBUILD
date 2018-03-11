@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-core-git
 pkgver=r2835.ed921e27
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT Components Collection - Core packages'
 url='https://github.com/AdaCore/gnatcoll-core/'
@@ -13,7 +13,7 @@ depends=('gcc-ada' 'libgpr')
 makedepends=('git' 'gprbuild')
 
 provides=('gnatcoll-core')
-conflicts=('gnatcoll-core')
+conflicts=('gnatcoll-core' 'gnatcoll')
 
 source=('git+https://github.com/AdaCore/gnatcoll-core.git')
 sha1sums=('SKIP')

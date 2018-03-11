@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-core-git
 	pkgdesc = GNAT Components Collection - Core packages
 	pkgver = r2835.ed921e27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gnatcoll-core/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = gnatcoll-core-git
 	depends = libgpr
 	provides = gnatcoll-core
 	conflicts = gnatcoll-core
+	conflicts = gnatcoll
 	source = git+https://github.com/AdaCore/gnatcoll-core.git
 	sha1sums = SKIP
 
