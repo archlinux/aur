@@ -29,7 +29,7 @@ prepare() {
 build() {
     # Build for python2.
     cd "$srcdir"/$pkgbase/sources/shiboken2
-    cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF"
+    cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_CXX_COMPILER=/usr/bin/clang++"
     mkdir -p build-py2 && cd build-py2
     cmake \
         -DUSE_PYTHON_VERSION=2 \
