@@ -11,8 +11,8 @@ url="http://mikutter.hachune.net/"
 license=('MIT')
 depends=('ruby-bundler')
 makedepends=('gobject-introspection')
-optdepends=('libnotify: notify support'
-            'alsa-utils: sound notification support')
+optdepends=('alsa-utils: sound notification support'
+            'libnotify: notify support')
 source=(
 http://mikutter.hachune.net/bin/$pkgname.`echo "$pkgver" | tr "_" '-'`.tar.gz
 mikutter.desktop
