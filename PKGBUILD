@@ -1,6 +1,6 @@
-# Maintainer: masutu Subric <masutu dot arch at gmail dot com>
+# Maintainer: Lukasz Pozarlik <lpozarlik at gmail dot com>
+# Contributor: Masutu Subric <masutu dot arch at gmail dot com>
 # Contributor: Michal Marek <reqamst at gmail dot com>
-# Contributor: Lukasz Pozarlik <lpozarlik at gmail dot com>
 
 pkgname=python-pyephem
 pkgver=3.7.6.0
