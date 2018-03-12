@@ -9,7 +9,7 @@ _realpkg=${pkgbase%-noconflict}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,mcrypt,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"-noconflict")
 pkgver=7.1.14
-pkgrel=2
+pkgrel=3
 pkgdesc="php 7.1 compiled as to not conflict with php 7.2+"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -269,8 +269,9 @@ package_php71-embed-noconflict() {
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
-# move libphp7.so to libphp71.so
-mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp71.so
+# move libphp7.so to libphp-71.so -- note well: this is to prevent ldconfig
+# from complaining about libphp7.so not being a symbolic link if another php7 is installed.
+mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-71.so
 }
 
 package_php71-phpdbg-noconflict() {
