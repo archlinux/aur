@@ -7,7 +7,7 @@
 # a hint in the comment of the last commit.
 
 pkgname="sdl2-rbp-bin"
-pkgver="2.0.7+2rpi"
+pkgver="2.0.8+1rpi"
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (debian binary)"
 arch=('arm' 'armv6h' 'armv7h')
@@ -27,8 +27,8 @@ source=(
 )
 
 md5sums=(
-  '3d39db04765be92b942f94ab2e94d9a5'
-  'ed4d0c3ff122fcd78cae54a3878660a2'
+  '200a2fd711d29f8093caf45010bdd65d'
+  '6a1f1d168ffbc30cb9e55a812d93a997'
 )
 
 build() {
