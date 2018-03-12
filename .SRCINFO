@@ -4,6 +4,7 @@ pkgbase = passhole
 	pkgrel = 1
 	arch = any
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-future
 	depends = python-future
 	depends = python-pykeepass
