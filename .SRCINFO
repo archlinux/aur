@@ -1,0 +1,15 @@
+pkgbase = cdrip-tools
+	pkgdesc = Command-line accuraterip verifier and rip offset fixer
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/spadev/cdrip-tools/tree/vmaster
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = libsndfile
+	source = https://github.com/spadev/cdrip-tools/archive/master.zip
+	sha512sums = 43493a2f7b0f8cd0fc9f3de82cc3d1f0bb81b770e468ba7bf3259c89cbd7de3d1ba1295d1f628cf3dc7d65ab8fbc4cca7d73b85309932dd81eb0369d9137c20a
+
+pkgname = cdrip-tools
+
