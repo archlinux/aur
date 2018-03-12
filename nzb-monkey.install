@@ -1,0 +1,19 @@
+post_install() {
+	echo "update desktop mime database..."
+	update-desktop-database -q
+    echo "For a working pyperclip it is necessary to install one of its optional dependencies xsel or xclip"
+
+    echo "you need to run nzbmonkey once as root to create the nzbmonkey.cfg file"
+    echo "which you will then need to adapt according to your environment"
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+
+post_remove() {
+    rm /usr/share/applications/nzblnk.desktop
+    echo "update desktop mime database..."
+	update-desktop-database -q
+}
