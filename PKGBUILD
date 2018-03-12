@@ -1,37 +1,38 @@
 # Maintainer: Benjamin Bukowski <bbukowski@posteo.de>
 pkgname=firebird-superserver
-pkgver=2.5.7.27050
-pkgrel=4
+_pkgver=2.5.8
+pkgver=$_pkgver.27089
+pkgrel=1
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
 license=('custom:IPL' 'custom:IDPL')
 depends=('icu' 'libedit')
-provides=("libfbclient=${pkgver}")
+provides=("libfbclient=$pkgver")
 conflicts=('firebird-classicserver' 'libfbclient')
 options=('!makeflags')
 install=firebird-superserver.install
 
-source=("http://downloads.sourceforge.net/firebird/Firebird-$pkgver-0.tar.bz2"
+source=("https://github.com/FirebirdSQL/firebird/releases/download/R${_pkgver//./_}/Firebird-${pkgver}-0.tar.bz2"
         'default.password'
         'firebird-tmpfiles.conf'
         'firebird-sysusers.conf'
         'firebird.service'
-        'firebird-c++11.patch'
-        'firebird-c++14.patch')
+        'firebird-icu60.patch'
+        'firebird-gcc6.patch')
 
-md5sums=('fb34241e96f9707604bf6cd78357d5a2'
+md5sums=('38862a3da39cf91f4f2366fb510f18a6'
          'ee601f52f1ba2481fe1f05b25d000bb8'
          '79a1416e307e4dfb99640311b8defe07'
          'a43ab472f4d95e48ac21910bb33a5e86'
          'bd75e6d2afcbc000e3593b1a66ea4ef7'
-         '5094347a8298143ca147edd49b552fe9'
-         'a02710203cee81b4f48b7bdca3b1b33f')
+         '70197fc801f9c66a6a1d7710e0c63718'
+         '9ab88cfcda674f9d28850a4f86f23741')
 
 prepare() {
-  cd $srcdir/Firebird-$pkgver-0
-  patch -Np1 -i ../firebird-c++11.patch
-  patch -Np0 -i ../firebird-c++14.patch
+    cd $srcdir/Firebird-$pkgver-0
+    patch -Np1 -i ../firebird-icu60.patch
+    patch -Np1 -i ../firebird-gcc6.patch
 }
 
 build() {
@@ -61,7 +62,8 @@ build() {
     --with-system-icu \
     --with-system-editline
 
-  CXXFLAGS+=' -flifetime-dse=1' make
+  #CXXFLAGS+=' -flifetime-dse=1' make
+  make
 }
 
 package() {
