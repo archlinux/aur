@@ -1,7 +1,7 @@
 # Maintainer: Mirko Scholz <mirko dot scholz nine at gmail dot com>
 pkgname=folie
-pkgver=2.14
-pkgrel=4
+pkgver=2.15
+pkgrel=1
 pkgdesc="Forth Live Explorer is a command-line utility to talk to a micro-controller via a serial port."
 arch=('i686' 'x86_64')
 url="https://github.com/jeelabs/folie"
@@ -9,7 +9,7 @@ license=('custom:UNLICENSE')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 _serial_ver=eae1344f9f90101f887b08d13391c34399f97873
-_readline_ver=94eaec69a77412489ca2cc8916c6e0bc12c40bf1
+_readline_ver=f6d7a1f6fbf35bbf9beb80dc63c56a29dcfb759f
 _select_ver=528c74964609a58f7c17471525659c9b71cd499b
 source=(
 folie.tgz::https://github.com/jeelabs/folie/archive/v$pkgver.tar.gz
@@ -18,9 +18,9 @@ readline.tgz::https://github.com/chzyer/readline/archive/$_readline_ver.tar.gz
 goselect.tgz::https://github.com/creack/goselect/archive/$_select_ver.tar.gz
 )
 noextract=("${source[@]%%::*}")
-sha1sums=('07ece548fa5b9bc1837f45e6a5eb0b5696c071bb'
+sha1sums=('97b0afb7f594ec964dba14d816520beea6ef0a28'
           '0aacc9a8c0d536776385216fe4a5e1f0a0e2a75b'
-          'e8ce5320ec02e6432d28189e02dfe2eb3a4b10a8'
+          '5d962a13a4b15827c50f004ecc52e06be6d5d6a0'
           'c5416088463b0f4bf7ceb7062bbd6bce50f4a8fa')
 
 prepare() {
