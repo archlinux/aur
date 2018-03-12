@@ -103,6 +103,13 @@ double* api_get_hist_5y(const char* ticker_name_string);
 double* iex_get_hist_5y(const char* ticker_name_string);
 
 /**
+ * Returns an array of doubles containing the close price each day in the past 5 years
+ * @param ticker_name_string symbol of mutf/otcmkts
+ * @return double array of close prices
+ */
+double* morningstar_get_hist_5y(const char* ticker_name_string);
+
+/**
  * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
  * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
  * @param ticker_name_string the string to query

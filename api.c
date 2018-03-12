@@ -171,9 +171,12 @@ double* coinmarketcap_get_price(const char* ticker_name_string) {
     return ret;
 }
 
-double* api_get_hist_5y(const char* ticker_name_string){
+double* api_get_hist_5y(const char* ticker_name_string) {
     double* val;
     val = iex_get_hist_5y(ticker_name_string); //First tries IEX for intraday prices
+    if (val != NULL)
+        return val;
+    val = morningstar_get_hist_5y(ticker_name_string);
     if (val != NULL)
         return val;
     return NULL; //Invalid symbol
@@ -189,17 +192,51 @@ double* iex_get_hist_5y(const char* ticker_name_string) {
     }
     Json* jobj = json_tokener_parse(pString->data);
     size_t len = json_object_array_length(jobj);
-    double* ret = malloc(sizeof(double) * (len + 1));
-    ret[len] = '\0';
+    double* ret = calloc(len + 1, sizeof(double));
     if (ret == NULL) {
         fprintf(stderr, "malloc() failed\n");
         exit(EXIT_FAILURE);
     }
     Json* temp;
-    for (int i = 0; i < (int)len; i++) {
+    for (int i = 0; i < (int) len; i++) {
         temp = json_object_array_get_idx(jobj, (size_t) i);
         ret[i] = json_object_get_double(json_object_object_get(temp, "close"));
     }
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return ret;
+}
+
+double* morningstar_get_hist_5y(const char* ticker_name_string) {
+    char today_char[16], yesterday_char[16], morningstar_api_string[512];
+    time_t now = time(NULL);
+    struct tm* ts = localtime(&now);
+    mktime(ts);
+    strftime(today_char, 16, "%Y-%m-%d", ts);
+    ts->tm_year -= 5; //get info from past 5 days
+    mktime(ts);
+    strftime(yesterday_char, 16, "%Y-%m-%d", ts);
+    sprintf(morningstar_api_string,
+            "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
+                    "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
+            ticker_name_string, yesterday_char, today_char);
+    String* pString = api_curl_data(morningstar_api_string, NULL);
+    if (strcmp("null", pString->data) == 0) { //Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+    Json* jobj = json_tokener_parse(pString->data);
+    Json* datapoints = json_object_object_get(
+            json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
+    size_t len = json_object_array_length(datapoints);
+    double* ret = calloc(len + 1, sizeof(double)); // Must calloc() because some data points don't exist
+    if (ret == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i < (int)len; i++)
+        ret[i] = json_object_get_double(
+                json_object_array_get_idx(json_object_array_get_idx(datapoints, (size_t) i), 0));
     json_object_put(jobj);
     string_destroy(&pString);
     return ret;
