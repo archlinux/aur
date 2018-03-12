@@ -2,6 +2,17 @@ Changelog
 =========
 
 
+v2.2.1 (2018-03-11)
+-------------------
+- V2.2.1. [Martin Hořeňovský]
+- Bring in Clara v1.1.4. [Martin Hořeňovský]
+
+  This fixes #1214
+- Fix incorrectly clamped return value. [Martin Hořeňovský]
+
+  Fixes #1215
+
+
 v2.2.0 (2018-03-07)
 -------------------
 - V2.2.0. [Martin Hořeňovský]

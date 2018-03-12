@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen at gmail dot com>
 pkgname=('catch2')
 pkgbase='catch2'
-pkgver=v2.2.0_0_gd14b7563
+pkgver=v2.2.1_0_g0a34cc20
 pkgrel=1
 epoch=
 pkgdesc="A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later"
@@ -13,14 +13,14 @@ depends=()
 makedepends=(cmake make git)
 checkdepends=()
 optdepends=()
-provides=('catch2=v2.2.0_0_gd14b7563')
+provides=('catch2=v2.2.1_0_g0a34cc20')
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=catch2.changelog
-source=('catch2::git+https://github.com/catchorg/Catch2.git#commit=d14b7563c2f493ad1e1113e18b98409f91b6cde2')
+source=('catch2::git+https://github.com/catchorg/Catch2.git#commit=0a34cc201ef28bf25c88b0062f331369596cb7b7')
 noextract=()
 validpgpkeys=()
 
