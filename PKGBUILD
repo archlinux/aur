@@ -2,7 +2,7 @@
 
 pkgbase=xlesspass-git
 pkgname=$pkgbase
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 _gitname=XLessPass
 _gittag="v${pkgver}"
