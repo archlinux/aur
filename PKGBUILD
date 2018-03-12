@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=svtplay-dl
-pkgver=1.9.10
+pkgver=1.9.11
 pkgrel=1
 pkgdesc="Media downloader for play sites (e.g. SVT Play)"
 url="https://github.com/spaam/svtplay-dl"
@@ -9,7 +9,7 @@ arch=('any')
 depends=('rtmpdump' 'python-crypto' 'python-requests' 'ffmpeg')
 makedepends=('python-setuptools')
 source=(https://github.com/spaam/svtplay-dl/archive/$pkgver.tar.gz)
-sha256sums=('0bf9e4593d2d6b7d75f28fdb068a2f7a4ccf1e1d43b758652c759a3c4a3ad3ed')
+sha256sums=('4fc1c1a7429c9086347d1dd60251372050fc93220a9dd597c43f7c9e7868e230')
 
 package() {
 
