@@ -4,9 +4,9 @@
 
 pkgname=liquidshell-git
 _gitname=liquidshell
-pkgver=r97.f8f17c8
+pkgver=r164.e60d77e
 pkgrel=1
-pkgdesc='liquidshell is an alternative to plasmashell'
+pkgdesc='Alternative desktop replacement for Plasma, using QtWidgets instead of QtQuick to ensure hardware acceleration is not required'
 arch=('x86_64')
 url='https://cgit.kde.org/liquidshell.git/'
 license=('GPL3')
@@ -30,7 +30,6 @@ build() {
    cmake .. \
          -DCMAKE_INSTALL_PREFIX=/usr
    make fetch-translations
-   
 
 }
 
