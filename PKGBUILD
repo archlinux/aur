@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.28.2.r279.g6751b5b1c2
+pkgver=0.28.2.r374.g12b90e744d
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-validation-layers'
              'wayland-protocols')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
