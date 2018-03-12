@@ -2,8 +2,8 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock-git
-gitname=latte-dock
-pkgver=0.7.1.r333.g4b0a134
+_gitname=latte-dock
+pkgver=0.7.1.r573.g587d5786
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
@@ -18,14 +18,14 @@ source=("git+git://anongit.kde.org/latte-dock.git")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd ${gitname}
+   cd ${_gitname}
 
    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
    
 }
 
 build() {
-   cd ${gitname}
+   cd ${_gitname}
 
    mkdir build && cd build
    cmake -DCMAKE_INSTALL_PREFIX=/usr \
@@ -38,6 +38,6 @@ build() {
 
 package() {
   
-   make -C ${gitname}/build DESTDIR=${pkgdir} install
+   make -C ${_gitname}/build DESTDIR=${pkgdir} install
 
 }
