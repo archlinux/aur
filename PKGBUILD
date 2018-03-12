@@ -1,33 +1,28 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Giovanni Cucca <giovanni.cucca@gmail.com>
 # Contributor: Dany Martineau <dany.luc.martineau gmail.com>
+# Contributor: frsfnrrg
 
 pkgname=trackballs
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Simple game similar to the classical game Marble Madness on the Amiga in the 80's"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://trackballs.github.io/"
 install=trackballs.install
-depends=('guile' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
+depends=('guile' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme' 'gettext')
 source=(https://github.com/trackballs/trackballs/archive/v${pkgver}.tar.gz)
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
-  sed -i '/Icon=/s%.*%Icon=trackballs-64x64.png%' share/icons/trackballs.desktop
   [ ! -d build ] && mkdir build
   cd build
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  sed -i '/trackballs\.6/s%/man/%/share/man/%' cmake_install.cmake
 }
 
 package() {
   cd ${srcdir}/$pkgname-$pkgver/build
   make DESTDIR=${pkgdir} install
-  
-  mkdir -p ${pkgdir}/usr/share/{applications,pixmaps}
-  install -m644 ../share/icons/trackballs.desktop ${pkgdir}/usr/share/applications
-  install -m644 ../share/icons/*.png ${pkgdir}/usr/share/pixmaps
 }
-md5sums=('e95cb7aa9d344daa4e136dcd67b31b5f')
+md5sums=('399a1b75af998c4565600a6809c5adc5')
