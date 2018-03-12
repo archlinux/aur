@@ -1,5 +1,5 @@
 diff --git a/main.go b/main.go
-index 1cf388a..3c6d79e 100644
+index 7d5586b..2963011 100644
 --- a/main.go
 +++ b/main.go
 @@ -30,7 +30,7 @@ var (
@@ -8,15 +8,15 @@ index 1cf388a..3c6d79e 100644
  
 -const (
 +var (
- 	version string = "1.1.0"
+ 	version string = "1.2.1"
  )
  
 diff --git a/meta/kurly.man b/meta/kurly.man
-index d13c702..10b78cc 100644
+index 4248d88..a09db64 100644
 --- a/meta/kurly.man
 +++ b/meta/kurly.man
 @@ -1,4 +1,4 @@
--.TH kurly 1 "January 03, 2018" "kurly 1.1.0" "kurly Manual"
+-.TH kurly 1 "March 12, 2018" "kurly 1.2.1" "kurly Manual"
 +.TH kurly 1 "@@DATE@@" "kurly @@VERSION@@" "kurly Manual"
  
  .SH NAME
