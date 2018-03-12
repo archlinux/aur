@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Open Jardin
 Version=1.0
-Exec=open_jardin
+Exec=/usr/bin/openjardin
 Comment=gestion des jardins
 Icon=open-jardin
 Type=Application
