@@ -2,7 +2,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3' 'python-yarl-gns3' 'python-jinja' 'python-raven' 'python-psutil' 'python-zipstream' 'python-typing' 'python-multidict-gns3' 'python-prompt_toolkit')
+depends=('python-jsonschema' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3' 'python-yarl' 'python-jinja' 'python-raven' 'python-psutil' 'python-zipstream' 'python-typing' 'python-prompt_toolkit')
 optdepends=('dynamips: Cisco router emulator.'
             'gns3-gui: graphical user interface for GNS3 server.'
             'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
@@ -22,7 +22,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}@.service")
 
-sha256sums=('0453c6ef785c14f30f7b4d47bb13d7c19b563f705ddeb4544f5b2307f1863e27'
+sha256sums=('dd723814e57aa3e12b57889349de70fbc390473f6d3cc2c4b1552593b63b64a8'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 package() {
