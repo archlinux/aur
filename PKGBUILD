@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=osu-wine-git
-pkgver=1.0.r0.ge5483b0
+pkgver=1.0.r1.gc36d24f
 pkgrel=1
 pkgdesc="osu!"
 arch=('any')
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname}/"
-    ./install.sh PREFIX="$pkgdir"
+    make install PREFIX="$pkgdir"
 }
