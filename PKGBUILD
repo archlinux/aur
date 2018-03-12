@@ -36,5 +36,5 @@ package() {
 	mkdir --parents "$pkgdir/usr/share/gnirehtet"
 	cp "$srcdir/gnirehtet-rust-linux64/gnirehtet.apk" "$pkgdir/usr/share/gnirehtet"
 	mkdir --parents "$pkgdir/usr/bin"
-    cp "$srcdir/gnirehtet-${_commit}/relay-rust/target/release/gnirehtet" "$pkgdir/usr/bin"
+	cp "$srcdir/gnirehtet-${_commit}/relay-rust/target/release/gnirehtet" "$pkgdir/usr/bin"
 }
