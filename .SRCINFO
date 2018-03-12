@@ -1,10 +1,9 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library for regional holiday information
-	pkgver = r520.1e34852
+	pkgver = latest
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/kholidays
-	arch = i686
-	arch = x86_64
+	url = https://projects.kde.org/projects/kde/pim/
+	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
@@ -13,7 +12,7 @@ pkgbase = kholidays-git
 	provides = kholidays
 	conflicts = kholidays
 	source = git://anongit.kde.org/kholidays.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kholidays-git
 

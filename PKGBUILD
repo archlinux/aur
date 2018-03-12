@@ -1,32 +1,33 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kholidays
-pkgname=$_gitname-git
-pkgver=r520.1e34852
+_pkgname=kholidays
+pkgname=$_pkgname-git
+pkgver=latest
 pkgrel=1
 pkgdesc="KDE library for regional holiday information"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://projects.kde.org/projects/kde/pim/$_gitname"
 license=('LGPL')
 depends=('kdelibs4support')
 makedepends=('extra-cmake-modules-git' 'git' 'python')
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git://anongit.kde.org/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p ${srcdir}/${_pkgname}/build
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
+  cd ${srcdir}/${_pkgname}/build
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -35,6 +36,6 @@ build() {
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  cd ${srcdir}/${_pkgname}/build
+  make DESTDIR="${pkgdir}" install
 }
