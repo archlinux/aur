@@ -4,7 +4,7 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=4.5
+pkgver=4.5.2
 pkgrel=1
 #_pkgchangeset=8cd204ac208a
 pkgdesc="Graphical tools for Mercurial"
@@ -37,8 +37,8 @@ package() {
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 
 	# already provided by hg 4.0
-	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.py"
-	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
+	rm -f "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.py"
+	rm -f "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('7377978a32a4c609ddc7d08e262430e5b26cc2d65655acd3a30b062f7284a286')
+sha256sums=('09929ac96f821a8084911c8b7d6a3f03bd22bc536486a12d81ac39f5aefc2260')
