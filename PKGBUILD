@@ -3,8 +3,8 @@
 # Contributor: David Gippner davidgippner at googlemail dot com
 pkgbase=gregorio
 pkgname=$pkgbase
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 _pkgver_underscores=$(echo $pkgver | sed -e 's/\./_/g')
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
@@ -14,7 +14,7 @@ depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra
 conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
 source=("https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/gregorio-$pkgver.tar.bz2" "https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/supp_fonts-$_pkgver_underscores.zip")
-sha256sums=("79fea3d8292ed079ff524b7fdb3fee81ac032e6903158aa484ffc722ce9a0d99" "33f90a700c45896e99ab63ac45ff2e983305efa3f13cd495aa1e6eef797b1604")
+sha256sums=("8cd3af62d6ce9bbf68988b6d2d7dcadbb1f6330fa59ab4f3fbdb6b6707b1b2fb" "342ed10656f64b5ca70af040ae84b8106996660714975daa37a8f2c56421b380")
 
 
 prepare() {
