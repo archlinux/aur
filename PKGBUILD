@@ -1,20 +1,22 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'armv7h')
 url="https://rspamd.com"
 license=('BSD')
-depends=('file' 'glib2' 'icu' 'libevent' 'libfann' 'luajit' 'sqlite')
+depends=('file' 'glib2' 'icu' 'libevent' 'luajit' 'sqlite')
 makedepends=('cmake' 'pkg-config' 'ragel')
 
 backup=('etc/rspamd/2tld.inc'
+		'etc/rspamd/actions.conf'
 		'etc/rspamd/common.conf'
 		'etc/rspamd/composites.conf'
 		'etc/rspamd/dmarc_whitelist.inc'
+		'etc/rspamd/groups.conf'
 		'etc/rspamd/logging.inc'
 		'etc/rspamd/maillist.inc'
 		'etc/rspamd/metrics.conf'
@@ -30,8 +32,8 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/dkim.conf'
 		'etc/rspamd/modules.d/dkim_signing.conf'
 		'etc/rspamd/modules.d/dmarc.conf'
+		'etc/rspamd/modules.d/elastic.conf'
 		'etc/rspamd/modules.d/emails.conf'
-		'etc/rspamd/modules.d/fann_redis.conf'
 		'etc/rspamd/modules.d/force_actions.conf'
 		'etc/rspamd/modules.d/forged_recipients.conf'
 		'etc/rspamd/modules.d/fuzzy_check.conf'
@@ -47,6 +49,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/mime_types.conf'
 		'etc/rspamd/modules.d/multimap.conf'
 		'etc/rspamd/modules.d/mx_check.conf'
+		'etc/rspamd/modules.d/neural.conf'
 		'etc/rspamd/modules.d/once_received.conf'
 		'etc/rspamd/modules.d/phishing.conf'
 		'etc/rspamd/modules.d/ratelimit.conf'
@@ -67,6 +70,17 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/options.inc'
 		'etc/rspamd/redirectors.inc'
 		'etc/rspamd/rspamd.conf'
+		'etc/rspamd/scores.d/fuzzy_group.conf'
+		'etc/rspamd/scores.d/headers_group.conf'
+		'etc/rspamd/scores.d/hfilter_group.conf'
+		'etc/rspamd/scores.d/mime_types_group.conf'
+		'etc/rspamd/scores.d/mua_group.conf'
+		'etc/rspamd/scores.d/phishing_group.conf'
+		'etc/rspamd/scores.d/policies_group.conf'
+		'etc/rspamd/scores.d/rbl_group.conf'
+		'etc/rspamd/scores.d/statistics_group.conf'
+		'etc/rspamd/scores.d/subject_group.conf'
+		'etc/rspamd/scores.d/surbl_group.conf'
 		'etc/rspamd/spf_dkim_whitelist.inc'
 		'etc/rspamd/statistic.conf'
 		'etc/rspamd/surbl-whitelist.inc'
@@ -83,7 +97,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('3ae2064ae379adb575bb4f1edd05830a6643d362f22779947fccb18a51f8bfe2'
+sha256sums=('cf8bd3cbe3e6e146dbb9c5d6c0098ccfe69dda5a672b9cf6af629e9fbbdba039'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
