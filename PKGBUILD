@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3365.0
+pkgver=67.0.3368.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('07a0135e87341094b0cfd8e6ceeb6633b457222a78965e7c546b0ef6d179c330'
+sha256sums=('83cce5c624cbad31c32dea5df7138e27e5b3b52c48f2caf709815c80905477bd'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
