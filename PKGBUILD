@@ -1,17 +1,17 @@
 # Maintainer: juantascon <juantascon.aur@horlux.org>
 
 pkgname=plantuml
-pkgver=1.2018.1
+pkgver=1.2018.2
 pkgrel=2
 pkgdesc="Component that allows to quickly write uml diagrams"
 arch=(any)
 url="http://plantuml.com/"
 license=('GPL')
 depends=("java-runtime" "graphviz")
-makedepends=("apache-ant" "java-environment")
+makedepends=("apache-ant" "java-environment=8")
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.run")
-sha256sums=('57ea4641cea6db9d2a0e6fd4a111f0f4baa44e1cf29af4698024583fc2c27595'
+sha256sums=('c326fd164ff1a741aaf1cc2003c258d7d727aaec370e5a7b3e9ef70d99442196'
             'dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5')
 optdepends=('plantuml-ascii-math')
 
