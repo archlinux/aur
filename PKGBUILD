@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=quickbms
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
@@ -11,7 +11,7 @@ depends_i686=('lzo' 'bzip2' 'zlib' 'openssl')
 depends_x86_64=('lib32-lzo' 'lib32-bzip2' 'lib32-zlib' 'lib32-openssl' 'lib32-gcc-libs')
 makedepends_x86_64=('gcc-multilib')
 source=("quickbms_${pkgver}.zip::http://aluigi.altervista.org/papers/quickbms_src.zip")
-sha512sums=('ca868b82941e94d89d498d6f49d6c0db155ca8cb0554e8237e5bb5559d00dfc9a1ea5b5f0cf0cb1d17aaee8e7cea0fad69f4412976d539048bc72748f2cb424f')
+sha512sums=('566e6e64168fae0c95022372f213082e4e3b79cb2e27cf090f4b17d82d19410a7af7b9a885286ba8ed8e0f5768294f9be4ee5697e88ef8af51183a83010ba57d')
 
 build() {
   cd "$srcdir"/src
