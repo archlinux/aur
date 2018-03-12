@@ -2,19 +2,16 @@
 
 pkgbase=xlesspass-git
 pkgname=$pkgbase
-pkgver=2.6
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 _gitname=XLessPass
 _gittag="v${pkgver}"
-pkgdesc="Front-End for lesspass-cli"
+pkgdesc="Allows you to use a single master key to obtain the key of your saved sessions."  
 arch=('x86_64')
 url='https://github.com/daltomi/XLessPass'
 license=('GPL3')
 depends=('gtk2')
-install=xlesspass-git.install
 makedepends=('git' 'lazarus-gtk2')
-source=('xlesspass-git.install')
-sha1sums=('54336d3c364cf41bcf357968983a3fb8c0c0ef8c')
 
 
 prepare() {
