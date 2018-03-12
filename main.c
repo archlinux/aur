@@ -51,17 +51,8 @@ int main(int argc, char* argv[]) {
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
         api_print_info(sym);
-    else if (strcmp(cmd, "graph") == 0 && argc == 3) {
-        double* data = api_get_hist_5y(sym);
-        if (data != NULL) {
-            time_t now = time(NULL);
-            struct tm* ts = localtime(&now);
-            ts->tm_year -= 5; // Lowerbound date is 14 days earlier
-            graph_print(data, ts);
-            free(data);
-        }
-        else printf("Invalid symbol.\n");
-    }
+    else if (strcmp(cmd, "graph") == 0 && argc == 3)
+        graph_main(sym);
 
         // Check
     else if (strcmp(cmd, "check") == 0) {
