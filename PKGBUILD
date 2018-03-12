@@ -2,21 +2,21 @@
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=mingw-w64-librsvg
-pkgver=2.42.2
+pkgver=2.42.3
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=(any)
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
 license=("LGPL")
 makedepends=(mingw-w64-configure mingw-w64-rust gdk-pixbuf2 intltool setconf)
-depends=(mingw-w64-gdk-pixbuf2 mingw-w64-pango mingw-w64-libcroco)
+depends=(mingw-w64-gdk-pixbuf2 mingw-w64-pango mingw-w64-cairo mingw-w64-libcroco mingw-w64-freetype2)
 options=(staticlibs !strip !buildflags)
 source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-$pkgver.tar.xz"
         "configure-fix.patch"
         "makefile-fix.patch")
-sha256sums=('0c550a0bffef768a436286116c03d9f6cd3f97f5021c13e7f093b550fac12562'
-            'bfdeb5e47a473994e4bc17c52c3482fbb0c07a34e36a0752f826e7084f012f26'
-            'f8479f7497abad01e0df81a93ed495e578c3adaf0f612e2c78a90177188b42b1')
+sha256sums=('704f2c44b9b170fc5498de36a161d01ca8f584ba9c42654b98565a7b7bcbe657'
+            'fc77e9abc35af2502de7f8273913b10d2684f422012652822741194d4b35b6fc'
+            '38b3b7dfffb709121f1154427238fc7fc92825687c00959235b1d0b5909ac4d0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
