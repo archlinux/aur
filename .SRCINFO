@@ -1,19 +1,19 @@
 pkgbase = kr
 	pkgdesc = SSH using a key stored in Krypton
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/kryptco/kr
 	install = kr.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = rust
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = go
+	makedepends = rsync
 	depends = gcc-libs-multilib
 	provides = kr
 	conflicts = kr
-	source = git+https://github.com/kryptco/kr#tag=2.3.1
+	source = git+https://github.com/kryptco/kr#tag=2.4.0
 	md5sums = SKIP
 
 pkgname = kr
