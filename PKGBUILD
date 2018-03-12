@@ -1,17 +1,17 @@
 pkgname=synapse-rs-git
-_pkgname='synapse-rs'
-pkgdesc='Synapse BitTorrent Daemon.'
+_pkgname="synapse-rs"
+pkgdesc="Synapse BitTorrent Daemon."
 pkgver=0.1.0.699
 pkgrel=1
-arch=('x86_64')
-conflicts=('synapse-rs')
-provides=('synapse-rs')
+arch=("x86_64")
+conflicts=("synapse-rs")
+provides=("synapse-rs")
 url='https://github.com/luminarys/synapse.git'
 license=('ISC')
-depends=('openssl' 'pkg-config' 'gcc' 'c-ares')
+depends=("openssl" "pkg-config" "gcc" "c-ares")
 optdepends=()
-makedepends=('git' 'cargo')
-source=('git://github.com/luminarys/synapse.git')
+makedepends=("git" "cargo")
+source=("git://github.com/luminarys/synapse.git")
 sha256sums=('SKIP')
 
 pkgver() {
