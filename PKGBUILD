@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54343
+pkgver=1.1.54362
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -17,17 +17,19 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/ClickHouse-Extras/zookeeper/archive/438afae.tar.gz
         https://github.com/facebook/zstd/archive/f4340f4.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
-        https://github.com/ClickHouse-Extras/poco/archive/81d4fdf.tar.gz
+        https://github.com/ClickHouse-Extras/poco/archive/8238852.tar.gz
+        https://github.com/ClickHouse-Extras/boost/archive/5121cc9.tar.gz
         clickhouse-server.service
         libunwind.patch)
-md5sums=('b1462bc8d95af168261ca0e879e44292'
+md5sums=('e941e503e404f14bc874d6e8c2ea1758'
          '5323f7ba2565a84a80a93edde95eb4fe'
          'ea7f52489fead0712f7d20c450a4b7a0'
          '7b92f0554687e6a8949adc5c10aeff78'
          '822fa96f5ceb235f06d22d2e0c7175a2'
          'e3212525a38d6cc38e26979a10c174ed'
          '87676f8d7fcdea908476029f92b8103f'
-         '1bc2bbf8b5c26f6685cca8f8b7525d4c'
+         'fc643caa1710523bbd1d69f72577afbe'
+         '0eedc70c486ae679da354fb7599f2851'
          'f9f5663b0a9a58e99f481efe9d193e85'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
@@ -38,14 +40,15 @@ prepare() {
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../libunwind.patch
   mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zookeeper contrib/zstd
-  rm -rf contrib/{cctz,librdkafka,lz4,zookeeper,zstd,zlib-ng,poco}/*
+  rm -rf contrib/{cctz,librdkafka,lz4,zookeeper,zstd,zlib-ng,poco,boost}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-c3d50eb*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zookeeper-438afae*/* contrib/zookeeper/
   mv ../zstd-f4340f4*/* contrib/zstd/
   mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
-  mv ../poco-81d4fdf*/* contrib/poco/
+  mv ../poco-8238852*/* contrib/poco/
+  mv ../boost-5121cc9*/* contrib/boost/
   for dir in contrib/*/; do
     rmdir $dir &> /dev/null || true
   done
@@ -67,6 +70,7 @@ package() {
   cp dbms/src/Server/clickhouse $pkgdir/usr/bin/clickhouse-client
   cp dbms/src/Server/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
   cp dbms/libclickhouse.so.1 $pkgdir/usr/lib/libclickhouse.so.$pkgver
+  cp contrib/librdkafka/src/librdkafka.so $pkgdir/usr/lib/librdkafka.so
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::<%::1<%' -i $pkgdir/etc/clickhouse-server/config.xml
   cp $startdir/clickhouse-server.service $pkgdir/usr/lib/systemd/system
