@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=390.25
+pkgver=390.42
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -27,10 +27,10 @@ fi
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('e41e28d1f380c64ec2eacae344fb5017'
+md5sums=('2b2e4c8b4174b542774d82c66ba69e91'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='24e514b160490dbbd86b5aefd17e9e6a'
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='41456a83e39bf0088c30247cd1536559'
 
 # Patch
 #source+=('linux-4.11.patch')
@@ -137,20 +137,20 @@ package_nvidia-libgl-full-beta-all() {
   mkdir -p "${pkgdir}/usr/lib/"
 
   # libGL (link)
-  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
+  ln -s /usr/lib/nvidia/libGL.so.1.7.0 "$pkgdir"/usr/lib/libGL.so.1
   ln -s libGL.so.1 "$pkgdir"/usr/lib/libGL.so
 
   # EGL (link)
-  ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
+  ln -s /usr/lib/nvidia/libEGL.so.1.1.0 "$pkgdir"/usr/lib/libEGL.so.1
   ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so
 
   # OpenGL ES 1 (link)
-  ln -s /usr/lib/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.1
+  ln -s /usr/lib/nvidia/libGLESv1_CM.so.1.2.0 "$pkgdir"/usr/lib/libGLESv1_CM.so.1
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
-  ln -s /usr/lib/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.2
-  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
+  ln -s /usr/lib/nvidia/libGLESv2_CM.so.2.1.0 "$pkgdir"/usr/lib/libGLESv2_CM.so.2
+  ln -s libGLESv2_CM.so.2 "$pkgdir"/usr/lib/libGLESv2_CM.so
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
@@ -191,7 +191,7 @@ package_nvidia-utils-full-beta-all() {
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so     # X doesn't find glx otherwise
 
   # libGL & OpenGL
-  install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.0.0
+  install -Dm755 libGL.so.1.7.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.7.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
@@ -203,16 +203,16 @@ package_nvidia-utils-full-beta-all() {
   #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL
-  install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
+  install -Dm755 libEGL.so.1.1.0 "$pkgdir"/usr/lib/nvidia/libEGL.so.1.1.0
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
   install -Dm644 10_nvidia.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia.json
   install -Dm644 10_nvidia_wayland.json "$pkgdir"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json
 
   # OpenGL ES
-  install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
+  install -Dm755 libGLESv1_CM.so.1.2.0 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1.2.0
   install -Dm755 libGLESv1_CM_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM_nvidia.so.$pkgver
-  install -Dm755 libGLESv2.so.2 "$pkgdir"/usr/lib/nvidia/libGLESv2.so.2
+  install -Dm755 libGLESv2.so.2.1.0 "$pkgdir"/usr/lib/nvidia/libGLESv2.so.2.1.0
   install -Dm755 libGLESv2_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLESv2_nvidia.so.$pkgver
   install -Dm755 libnvidia-glsi.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glsi.so.$pkgver
 
@@ -400,19 +400,19 @@ package_lib32-nvidia-libgl-full-beta-all() {
   mkdir -p "${pkgdir}/usr/lib32/"
 
   # libGL (link)
-  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
+  ln -s /usr/lib32/nvidia/libGL.so.1.7.0 "$pkgdir"/usr/lib32/libGL.so.1
   ln -s libGL.so.1 "$pkgdir"/usr/lib32/libGL.so
 
   # EGL (link)	
-  ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
+  ln -s /usr/lib32/nvidia/libEGL.so.1.1.0 "$pkgdir"/usr/lib32/libEGL.so.1
   ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so
 
   # OpenGL ES 1 (link)
-  ln -s /usr/lib32/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
+  ln -s /usr/lib32/nvidia/libGLESv1_CM.so.1.2.0 "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
-  ln -s /usr/lib32/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so.2
+  ln -s /usr/lib32/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib32/libGLESv2.so.2
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so
 
   # License (link)
@@ -429,7 +429,7 @@ package_lib32-nvidia-utils-full-beta-all() {
   cd $_pkg
 
   # libGL & OpenGL
-  install -Dm755 32/libGL.so.1.0.0 "$pkgdir"/usr/lib32/nvidia/libGL.so.1.0.0
+  install -Dm755 32/libGL.so.1.7.0 "$pkgdir"/usr/lib32/nvidia/libGL.so.1.7.0
   install -Dm755 32/libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
   install -Dm755 32/libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 32/libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
@@ -441,14 +441,15 @@ package_lib32-nvidia-utils-full-beta-all() {
   #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
   # EGL
-  install -Dm755 32/libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
+  install -Dm755 32/libEGL.so.1.1.0 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1.1.0
   install -Dm755 32/libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libEGL_nvidia.so.$pkgver
   install -Dm755 32/libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
+  install -Dm755 32/libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.2
 
   # OpenGL ES
-  install -Dm755 32/libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1
+  install -Dm755 32/libGLESv1_CM.so.1.2.0 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1.2.0
   install -Dm755 32/libGLESv1_CM_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLESv1_CM_nvidia.so.$pkgver
-  install -Dm755 32/libGLESv2.so.2 "$pkgdir"/usr/lib32/nvidia/libGLESv2.so.2
+  install -Dm755 32/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib32/nvidia/libGLESv2.so.2.1.0
   install -Dm755 32/libGLESv2_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLESv2_nvidia.so.$pkgver
   install -Dm755 32/libnvidia-glsi.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glsi.so.$pkgver
 
