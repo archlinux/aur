@@ -13,9 +13,10 @@ depends=('bzip2' 'double-conversion' 'fftw' 'freetype2' 'fxload'
          'libpng' 'libsystemd' 'libusb' 'libx11' 'libxau'
          'libxcb' 'libxdmcp' 'libxext' 'lz4' 'pcre'
          'pcre2' 'qt5-base' 'xz' 'zlib')
+makedepends=('git' 'cmake' 'binutils' 'fakeroot')
 provides=("$_name")
 conflicts=("$_name" "$pkgname")
-makedepends=('git' 'cmake' 'binutils' 'fakeroot')
+install=$pkgname.install
 source=('git+https://github.com/OpenHantek/openhantek.git')
 sha256sums=('SKIP')
 
