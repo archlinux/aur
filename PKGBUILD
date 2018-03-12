@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=pcem-wx-sdl2-git
-pkgver=r284.c5517fa
+pkgver=r36.82160f6
 pkgrel=1
 pkgdesc="Unofficial version of PCem that uses wxWidgets/SDL2"
 url="https://github.com/mborjesson/PCem-wx-SDL2"
