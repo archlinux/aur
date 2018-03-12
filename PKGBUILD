@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <devriesb@gmail.com>
 
 pkgname=snapcast
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,16 +19,13 @@ backup=('etc/default/snapserver' 'etc/default/snapclient')
 options=()
 install=snapcast.install
 changelog=
-source=("git+https://github.com/badaix/${pkgname}.git#tag=v${pkgver//_/-}"
-        "${pkgname}-systemd.patch")
+source=("git+https://github.com/badaix/${pkgname}.git#tag=v${pkgver//_/-}")
 noextract=()
 validpgpkeys=()
-md5sums=('SKIP'
-         '374f174354508e3a3e2ab28910a9eb5c')
+md5sums=('SKIP')
 
 prepare() {
         cd "$pkgname"
-        patch -p1 -i "$srcdir/$pkgname-systemd.patch"
         cd externals
         # update all submodules
         git submodule update --init --recursive
