@@ -171,11 +171,45 @@ double* coinmarketcap_get_price(const char* ticker_name_string) {
     return ret;
 }
 
+double* api_get_hist_5y(const char* ticker_name_string){
+    double* val;
+    val = iex_get_hist_5y(ticker_name_string); //First tries IEX for intraday prices
+    if (val != NULL)
+        return val;
+    return NULL; //Invalid symbol
+}
+
+double* iex_get_hist_5y(const char* ticker_name_string) {
+    char iex_api_string[64];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart/5y", ticker_name_string);
+    String* pString = api_curl_data(iex_api_string, NULL);
+    if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+    Json* jobj = json_tokener_parse(pString->data);
+    size_t len = json_object_array_length(jobj);
+    double* ret = malloc(sizeof(double) * (len + 1));
+    ret[len] = '\0';
+    if (ret == NULL) {
+        fprintf(stderr, "malloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    Json* temp;
+    for (int i = 0; i < (int)len; i++) {
+        temp = json_object_array_get_idx(jobj, (size_t) i);
+        ret[i] = json_object_get_double(json_object_object_get(temp, "close"));
+    }
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return ret;
+}
+
 void news_print_top_three(const char* ticker_name_string) {
     char* url_encoded_string = calloc(128, 1);
     if (url_encoded_string == NULL) {
         fprintf(stderr, "malloc() failed\n");
-        return;
+        exit(EXIT_FAILURE);
     }
     for (int i = 0, j = 0; i < 128; i++, j++) { //Replace underscores and spaces with url encoded '%20's
         if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
@@ -248,15 +282,15 @@ void api_print_info(const char* ticker_name_string) {
     if (strcmp(ticker_info->symbol, "") != 0)
         printf("Symbol: %s\n", ticker_info->symbol);
     if (ticker_info->price != EMPTY)
-        printf("Price: $%lf\n", ticker_info->price);
+        printf("Price: $%.2lf\n", ticker_info->price);
     if (ticker_info->change_1d != EMPTY)
-        printf("Percent change 24h: %lf%%\n", ticker_info->change_1d);
+        printf("Percent change 24h: %.2lf%%\n", ticker_info->change_1d);
     if (ticker_info->change_7d != EMPTY)
-        printf("Percent change 7d: %lf%%\n", ticker_info->change_7d);
+        printf("Percent change 7d: %.2lf%%\n", ticker_info->change_7d);
     if (ticker_info->change_30d != EMPTY)
-        printf("Percent change 30d: %lf%%\n", ticker_info->change_30d);
+        printf("Percent change 30d: %.2lf%%\n", ticker_info->change_30d);
     if (ticker_info->div_yield != EMPTY)
-        printf("Dividend yield: %lf%%\n", ticker_info->div_yield);
+        printf("Dividend yield: %.2lf%%\n", ticker_info->div_yield);
     if (ticker_info->marketcap != EMPTY)
         printf("Market Cap: $%ld\n", ticker_info->marketcap);
     if (ticker_info->volume_1d != EMPTY)
@@ -293,7 +327,7 @@ Info* iex_get_info(const char* ticker_name_string) {
     struct tm* ts = localtime(&now);
     mktime(ts);
     int after_close = ts->tm_hour > 16 && ts->tm_wday != 0 && ts->tm_wday != 6;
-    Json* d_30 = json_object_array_get_idx(jobj, (size_t)after_close);
+    Json* d_30 = json_object_array_get_idx(jobj, (size_t) after_close);
     Json* d_7 = json_object_array_get_idx(jobj, json_object_array_length(jobj) - 6 + after_close);
     Json* d_1 = json_object_array_get_idx(jobj, json_object_array_length(jobj) - 2 + after_close);
     ticker_info->change_30d = 100 / ticker_info->price *

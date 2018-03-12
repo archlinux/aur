@@ -89,6 +89,20 @@ double* morningstar_get_price(const char* ticker_name_string);
 double* coinmarketcap_get_price(const char* ticker_name_string);
 
 /**
+ * Returns an array of doubles containing the close price each day in the past 5 years
+ * @param ticker_name_string symbol
+ * @return double array of close prices
+ */
+double* api_get_hist_5y(const char* ticker_name_string);
+
+/**
+ * Returns an array of doubles containing the close price each day in the past 5 years
+ * @param ticker_name_string symbol of stock or etf
+ * @return double array of close prices
+ */
+double* iex_get_hist_5y(const char* ticker_name_string);
+
+/**
  * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
  * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
  * @param ticker_name_string the string to query
