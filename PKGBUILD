@@ -181,12 +181,6 @@ build() {
 
     export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
 
-    # FIXME: Temporary fix for LLVM bug 35053:
-    # "error: undefined reference to 'pthread_atfork'"
-    # Ref: https://bugs.llvm.org/show_bug.cgi?id=35053
-    # Credit: SolarAquarion @ AUR
-    export LDFLAGS="${LDFLAGS} -pthread -lpthread -lm"
-
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
     # LLVM_LINK_LLVM_DYLIB:  Link our own tools against the libLLVM dynamic library, too.
     # LLVM_BINUTILS_INCDIR:  Set to binutils' plugin-api.h location in order to build LLVMgold.
