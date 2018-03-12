@@ -17,4 +17,6 @@ md5sums_x86_64=('471a8398e3083b8fc971e3c1e0df2ba5')
 
 package() {
   install -Dm 755 "$srcdir/$_kubectl_file" "$pkgdir/usr/bin/kubectl"
+  install -d 755 "$pkgdir/usr/share/bash-completion/completions"
+  "$pkgdir/usr/bin/kubectl" completion bash > "$pkgdir/usr/share/bash-completion/completions/kubectl"
 }
