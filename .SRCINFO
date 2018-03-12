@@ -1,0 +1,26 @@
+pkgbase = pcsxr
+	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df project
+	pkgver = 1.9.93
+	pkgrel = 5
+	url = http://pcsxr.codeplex.com/
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = intltool
+	makedepends = nasm
+	depends = libcdio
+	depends = libxv
+	depends = sdl
+	depends = gtk3
+	source = https://sources.archlinux.org/other/community/pcsxr/pcsxr-1.9.93.tar.bz2
+	md5sums = d75725b4c3fcb2cb11d39b3ace10dc31
+	depends_x86_64 = lib32-libcdio
+	depends_x86_64 = lib32-libxv
+	depends_x86_64 = lib32-sdl
+	depends_x86_64 = lib32-gtk3
+	optdepends_x86_64 = lib32-libpulse: Pulseaudio support
+	optdepends_x86_64 = lib32-alsa-plugins: ALSA support
+	makedepends_x86_64 = lib32-mesa
+
+pkgname = pcsxr
+
