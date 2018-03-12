@@ -1,0 +1,13 @@
+pkgbase = lesspassgo
+	pkgdesc = LessPass password generator cli written in Go
+	pkgver = 2017.06.09
+	pkgrel = 1
+	url = https://github.com/tuxlinuxien/lesspassgo
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://github.com/tuxlinuxien/lesspassgo/archive/c94e9ccd04047f5461e155c54907feaa2e14035a.tar.gz
+	sha256sums = 53e04f19e6576fbf4db132d1beaf600ce4ba3d365c9e11aa73d006bd67f15ef4
+
+pkgname = lesspassgo
+
