@@ -2,7 +2,7 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=4.2
+pkgver=4.2.29
 pkgrel=1
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
