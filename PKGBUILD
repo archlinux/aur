@@ -13,13 +13,6 @@
 # Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
 _use_tentative_patches=
 
-### Use mailing-list patches; many thanks to Piotr "sir_lucjan" Gorski
-# ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-_use_ml1_patches=
-
-# ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
-_use_ml2_patches=
-
 # Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
@@ -73,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.15.0.g0fde9c192625
+pkgver=4.15.0.g4cb5de6add7d
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -82,42 +75,19 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-#_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
-_mlpath_2="${_bfqpath}/mailing-list/block-bfq-disable-wbt"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
+_gcc_name="kernel_gcc_patch"
+_gcc_rel='20180310'
+_gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
+
 source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
-        # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
-        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/${_gcc_patch}"
+        "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # tentative patches
         "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
-        # mailing-list (ML1) patches
-        #"${_mlpath_1}/ML1-0001-blk-mq-sched-fix-scheduler-bad-performance.patch"
-        #"${_mlpath_1}/ML1-0002-sbitmap-introduce-__sbitmap_for_each_set.patch"
-        #"${_mlpath_1}/ML1-0003-blk-mq-introduce-blk_mq_dispatch_rq_from_ctx.patch"
-        #"${_mlpath_1}/ML1-0004-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        #"${_mlpath_1}/ML1-0005-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        #"${_mlpath_1}/ML1-0006-blk-mq-sched-don-t-dequeue-request-until-all-in-disp.patch"
-        #"${_mlpath_1}/ML1-0007-blk-mq-sched-introduce-blk_mq_sched_queue_depth.patch"
-        #"${_mlpath_1}/ML1-0008-blk-mq-sched-use-q-queue_depth-as-hint-for-q-nr_requ.patch"
-        #"${_mlpath_1}/ML1-0009-block-introduce-rqhash-helpers.patch"
-        #"${_mlpath_1}/ML1-0010-block-move-actual-bio-merge-code-into-__elv_merge.patch"
-        #"${_mlpath_1}/ML1-0011-block-add-check-on-elevator-for-supporting-bio-merge.patch"
-        #"${_mlpath_1}/ML1-0012-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
-        #"${_mlpath_1}/ML1-0013-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
-        #"${_mlpath_1}/ML1-0014-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
-        "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
-        "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
-        "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
-        "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
-        "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
-        # mailing-list (ML2) patches
-        "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -129,18 +99,9 @@ source=(# bfq-mq repository
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
+            'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b'
-            'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
-            '40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a'
-            'f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97'
-            '2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b'
-            'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
-            '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
-            '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
-            '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            'b299b5e05aa2ad0da865c580b6cf5fd04aa074e32b730c3dc9c366add453bed4'
+            'c7c341d8eaeca59d778ac88f32079ac7d53e4ef4ecf2c59acab596934059f9fa'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -164,30 +125,12 @@ prepare() {
     for p in ../T000*.patch; do patch -Np1 -i "$p"; done
   fi
 
-  ### Patches from mailing-list
-  # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-  if [ -n "$_use_ml1_patches" ]; then
-    msg "Apply mailing-list patches 1"
-    #for p in ../ML1*.patch; do
-    for p in ../*-blk-mq*.patch*; do
-      msg " $p"
-    patch -Np1 -i "$p"; done
-  fi
-
-  # ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
-  if [ -n "$_use_ml2_patches" ]; then
-    msg "Apply mailing-list patches 2"
-    for p in ../ML2*.patch; do
-      msg " $p"
-    patch -Np1 -i "$p"; done
-  fi
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i ../${_gcc_patch}
+  patch -Np1 -i ../kernel_gcc_patch-${_gcc_rel}/${_gcc_patch}
 
   # Clean tree and copy ARCH config over
   make mrproper

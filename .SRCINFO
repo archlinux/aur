@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.15.0.g0fde9c192625
+	pkgver = 4.15.0.g4cb5de6add7d
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -13,35 +13,17 @@ pkgbase = linux-bfq-mq-git
 	makedepends = libelf
 	options = !strip
 	source = git+https://github.com/Algodev-github/bfq-mq
-	source = https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch
+	source = kernel_gcc_patch-20180310.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180310.tar.gz
 	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch
-	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/mailing-list/block-bfq-disable-wbt/ML2-0001-block-bfq-Disable-writeback-throttling.patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = 99-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
+	sha256sums = b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = 388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b
-	sha256sums = ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94
-	sha256sums = 40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a
-	sha256sums = f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97
-	sha256sums = 2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b
-	sha256sums = cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6
-	sha256sums = 19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0
-	sha256sums = 7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5
-	sha256sums = 5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa
-	sha256sums = b299b5e05aa2ad0da865c580b6cf5fd04aa074e32b730c3dc9c366add453bed4
+	sha256sums = c7c341d8eaeca59d778ac88f32079ac7d53e4ef4ecf2c59acab596934059f9fa
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
@@ -56,19 +38,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.15.0.g0fde9c192625
-	provides = linux=4.15.0.g0fde9c192625
+	provides = linux-bfq-mq-git=4.15.0.g4cb5de6add7d
+	provides = linux=4.15.0.g4cb5de6add7d
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.15.0.g0fde9c192625
-	provides = linux-bfq-mq-git-headers=4.15.0.g0fde9c192625
-	provides = linux-headers=4.15.0.g0fde9c192625
+	depends = linux-bfq-mq-git=4.15.0.g4cb5de6add7d
+	provides = linux-bfq-mq-git-headers=4.15.0.g4cb5de6add7d
+	provides = linux-headers=4.15.0.g4cb5de6add7d
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.15.0.g0fde9c192625
-	provides = linux-bfq-mq-git-docs=4.15.0.g0fde9c192625
-	provides = linux-docs=4.15.0.g0fde9c192625
+	depends = linux-bfq-mq-git=4.15.0.g4cb5de6add7d
+	provides = linux-bfq-mq-git-docs=4.15.0.g4cb5de6add7d
+	provides = linux-docs=4.15.0.g4cb5de6add7d
 
