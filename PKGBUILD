@@ -1,12 +1,13 @@
-# Contributor: Alexander R. <sbir@list.ru>
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Jonathon Fernyhough <jonathon_at manjaro_dot org>
+# Contributor: John Trengrove
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=tcc-git
-pkgver=0.9.26.r819.g7e7f2e5
+pkgver=0.9.27.r11.ge76058c
 pkgrel=1
 pkgdesc='Tiny C Compiler'
 arch=('x86_64' 'i686')
-url='http://bellard.org/tcc/'
+url='https://bellard.org/tcc/'
 license=('LGPL2.1')
 makedepends=('texi2html' 'git')
 provides=('tcc')
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd tinycc
-  git describe | sed 's/^release_//; s/_/./g; s/-/.r/; s/-/./'
+  git describe --tags --long | sed 's/^release_//; s/_/./g; s/-/.r/; s/-/./'
 }
 
 build() {
