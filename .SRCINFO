@@ -1,6 +1,6 @@
 pkgbase = dcmtk
 	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = http://dicom.offis.de/dcmtk
 	arch = i686
@@ -13,14 +13,10 @@ pkgbase = dcmtk
 	depends = libtiff
 	depends = libxml2
 	depends = openssl
-	depends = charls
 	depends = libssh
-	noextract = dcmtk-3.6.2-1.fc28.src.rpm
 	options = !buildflags
-	source = ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk362/dcmtk-3.6.2.tar.gz
-	source = http://kojipkgs.fedoraproject.org/packages/dcmtk/3.6.2/1.fc28/src/dcmtk-3.6.2-1.fc28.src.rpm
-	sha512sums = a3190287b068ae17984909dd9e8d920ddea3b590fc3888c42fc33fca4a3cdcf7dcc9bd64d994620303eef7c7ab7b4184ac21ebd1167ae2c17e4a88f641d7ef94
-	sha512sums = 403b844a003c90afa696e4739fd687f0ea2ce8dd76e473c384738ab4190857ba39ea553e6eeaff39b8b2ddfe420aae1c131a14f7c622f34a2f6863f142cc1382
+	source = ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk363/dcmtk-3.6.3.tar.gz
+	sha512sums = 5b907422d2d80e417ae8239e159d1300da4ed8db7e92cee619cc1d37116165e8824f8a9103605e07a95b1bffe94bbd2d5e05125f068281d241e8e78755d0b5e8
 
 pkgname = dcmtk
 
