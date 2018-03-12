@@ -2,16 +2,16 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20180228
+pkgver=20180306
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
 url="http://www.iti.gov.br/repositorio/repositorio-ac-raiz"
-license=('GPL')
+license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
 source=("icpbr_certs-${pkgver}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('5cea5170cf93e33f27d634654ea8afb710037c0f70cf551413c6750c6f908a0a4be85bd4e27e571c0fdb4e82ade021841675ad9b780f66b7ab6bb9613d259964')
+sha512sums=('86ec35dafc14e63835925d06782c4b3afc84ccd5f7e2a95615a2e157f6ace779e263acc8c749ae5e62418880a625f83acaa79918161adf2190367f3ccb81dc24')
 
 package() {
   local cert_tag='icp_br'
