@@ -5,11 +5,11 @@
 
 pkgname=redsocks-git
 pkgver=0.5.r7.g5df6a30
-pkgrel=1
+pkgrel=2
 pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall'
 arch=('i686' 'x86_64')
 url='http://darkk.net.ru/redsocks/'
-license=('GPL3')
+license=('Apache')
 depends=('libevent')
 makedepends=('git')
 conflicts=('redsocks')
