@@ -2,7 +2,7 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=4.1.9
+pkgver=4.2
 pkgrel=1
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
@@ -12,18 +12,18 @@ depends=('evdi>=1.5.0' 'libusb>=1.0.0')
 makedepends=('grep' 'gawk' 'wget')
 install=
 changelog="release-note.txt"
-source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file?id=1087
+source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file?id=1123
 	udev.sh
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
-md5sums=('d18b6512b6519a0e119c10c0acf14d0a'
+md5sums=('ab920bea23a265516e3d0097992c62f3'
          'd5de775e41af06edbd8073adc490139d'
          '20495d81c7d2540910ef86dc437b7fac'
          'c141a15e973481c7d961f8e135627ca4'
          '7cbd9ab2ac79ba66e8297689c6e5483e')
 
-DLAGENTS=('http::/usr/bin/wget -O %o --post-data=fileId=1087&accept_submit=Accept %u')
+DLAGENTS=('http::/usr/bin/wget -O %o --post-data=fileId=1123&accept_submit=Accept %u')
 
 # Update with > updpkgsums
 

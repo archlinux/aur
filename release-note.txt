@@ -3,13 +3,13 @@
 
 DisplayLink Ubuntu Software Release Note
 
-Version: 4.1.9
-Date: 20th Dec 2017
+Version: 4.2.29
+Date: 23th Feb 2018
 
-DisplayLink DL-3xx0 / DL-5xx0 Firmware Version: 9.4.43.91185
-DisplayLink DL-41xx Firmware Version: 9.4.43.91190
-DisplayLink DL-6xxx Firmware Version: 9.4.43.91186
-Extensible Virtual Display Interface version included: 1.5.0-r1
+DisplayLink DL-3xx0 / DL-5xx0 Firmware Version: 9.5.18.93117
+DisplayLink DL-41xx Firmware Version: 9.5.20.93215
+DisplayLink DL-6xxx Firmware Version: 9.5.18.93117
+Extensible Virtual Display Interface version included: 1.5.0-r2
 
 =============================================================================
 =============================================================================
@@ -18,7 +18,7 @@ Extensible Virtual Display Interface version included: 1.5.0-r1
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software 4.1.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software 4.2.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -47,18 +47,15 @@ I.  Future Development
 C. Issues fixed
 ===============
 
-Issues fixed since DisplayLink Driver Software v1.4.0 for Ubuntu (1.4.210)
+Issues fixed since DisplayLink Driver Software v4.1.0 for Ubuntu (4.1.9)
 --------------------------------------------------------------------------
 
-EVDI does not compile with Linux Kernel newer than 4.14.
-Low Ethernet performance on DL-6xxx device when external screen is set to resolutions below 1080p. (25932)
-On some DL-6xxx the Ethernet activity LED 0 stays blank. (26129)
-Headset may have a pop noise on DL-6950 based docking stations. (26486)
+Sometimes PC may become unresponsive when a DisplayLink display is connected. (27139)
 
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 17.04 and Ubuntu 16.04. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+This release has been prepared to be compatible with Ubuntu 17.10 and Ubuntu 16.04. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on Intel x86 platform (32 bit and 64 bit).
 Minimum supported Linux Kernel version is 3.16.
