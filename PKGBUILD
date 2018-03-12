@@ -1,5 +1,5 @@
 pkgname=synapse-rs-git
-_pkgname="synapse-rs"
+_pkgname="synapse"
 pkgdesc="Synapse BitTorrent Daemon."
 pkgver=0.1.0.699
 pkgrel=1
