@@ -1,0 +1,20 @@
+pkgbase = aurs-git
+	pkgdesc = An AUR helper written in Rust
+	pkgver = 0.1.0.r0.g91d8bf7
+	pkgrel = 1
+	url = https://gitlab.com/hpdeifel/aurs
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = clang
+	depends = sudo
+	depends = ranger
+	depends = git
+	depends = pacman
+	provides = aurs
+	conflicts = aurs
+	source = aurs-git::git+https://gitlab.com/hpdeifel/aurs.git
+	sha256sums = SKIP
+
+pkgname = aurs-git
+
