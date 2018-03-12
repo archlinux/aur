@@ -1,14 +1,14 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=zam-plugins
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of LADSPA/LV2/VST/JACK audio plugins for high-quality processing"
 arch=('x86_64')
 url="https://github.com/zamaudio/zam-plugins"
 license=('GPL2')
-groups=('pro-audio' 'lv2-plugins')
-depends=('fftw' 'ladspa' 'lv2' 'libglvnd' 'jack' 'liblo' 'zita-convolver')
-makedepends=('git' 'libx11' 'libgl' 'liblo' 'jack' 'ladspa')
+groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio' 'vst-plugins')
+depends=('fftw' 'libglvnd' 'jack' 'liblo' 'zita-convolver')
+makedepends=('git' 'ladspa' 'libx11' 'libgl' 'liblo' 'lv2')
 source=("$pkgname-$pkgver::git+https://github.com/zamaudio/${pkgname}.git#tag=${pkgver}"
         "git+https://github.com/distrho/dpf.git")
 md5sums=('SKIP'
@@ -32,4 +32,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" PREFIX='/usr' install
+  # docs
+  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+    -vDm644 {README.md,changelog}
 }
