@@ -1,6 +1,6 @@
 pkgbase = flare-engine-git
 	pkgdesc = Free/Libre Action Roleplaying Engine - Git version
-	pkgver = v0.20.r0.gd2a10ed
+    pkgver = v1.0.r0.g5928be81
 	pkgrel = 1
 	url = http://www.flarerpg.org/
 	install = flare-engine-git.install
