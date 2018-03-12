@@ -5,33 +5,37 @@
 # Contributor: thn81 <root@scrat>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname%-*}, repo=yakkety
+# vercheck-ubuntu: name=${pkgname%-*}, repo=xenial
 # vercheck-archlinux: name=${pkgname%-*}, repo=extra, arch=x86_64
-# vercheck-gnome: name=${pkgname%-*}, majorver=3.22
+# vercheck-gnome: name=${pkgname%-*}, majorver=3.24
 # vercheck-ppa: name=${pkgname%-*}, url=ppa:gnome3-team/gnome3-staging
 
 pkgname=gnome-settings-daemon-elementary
-_use_ppa=false
-#_ppa_rel=2ubuntu1~ubuntu16.04.1
-#_ppa_ver=3.20.1
-_ubuntu_rel=0ubuntu2
-#_ubuntu_ver=3.22.1
-pkgver=3.22.1
-pkgrel=2
-pkgdesc="GNOME Settings Daemon (with ElementaryOS patches)"
-url="https://git.gnome.org/browse/gnome-settings-daemon"
+_use_ppa=true
+_ppa_rel=0ubuntu0~bionic1
+_ppa_ver=3.27.91
+_ubuntu_rel=0ubuntu0.1
+_ubuntu_ver=3.24.2
+if [[ "${_use_ppa}" == "true" ]]; then
+    _commit=08c416c68f7becc75ea43723fc956436d4976e79 # tags/GNOME_SETTINGS_DAEMON_3_27_91^0
+else
+    _commit=2ff67385f2b7c7adb0ab438cb41d114235a8e40a # tags/GNOME_SETTINGS_DAEMON_3_24_2^0
+fi
+pkgver=3.27.91
+pkgrel=0
+pkgdesc="GNOME Settings Daemon (with elementary OS patch)"
+url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(dconf geoclue2 geocode-glib gnome-desktop gsettings-desktop-schemas-ubuntu
+depends=(dconf geoclue2 geocode-glib gnome-desktop 'gsettings-desktop-schemas-ubuntu>=3.24.0'
 	gtk3-print-backends libcanberra-pulse libgudev libgweather libnotify librsvg 
 	libsystemd libwacom nss pulseaudio pulseaudio-alsa upower)
 makedepends=(docbook-xsl git gnome-common intltool libxslt python xf86-input-wacom)
 groups=(gnome unity pantheon-qq)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
-_commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d  # tags/GNOME_SETTINGS_DAEMON_3_22_1^0
-source=("git://git.gnome.org/gnome-settings-daemon#commit=${_commit}"
-        "git://git.gnome.org/libgnome-volume-control"
+source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git/#commit=${_commit}"
+        "git+https://git.gnome.org/browse/libgnome-volume-control.git/"
         'manage-dpms.patch')
 
 if [[ "${_use_ppa}" == "true" ]]; then
@@ -42,8 +46,8 @@ fi
 
 sha512sums=('SKIP'
             'SKIP'
-            '60e1442552907ba6b5bf561b349a651676ff98aa54d6a80556311311b4e33bb2ab11214b198ad021d6a6c05de8f52037a44fadd7e91870ba6cea556e65b40db2'
-            'c1e270e5a1eb89d929d7a5d6b5e538bee3798c64e66ad31b722dd857e80ea288095f6d74867c64708366e151a64ed1607c2584d75c578491cafcc1bf6c170e28')
+            '08b95b9892ed004c3da1506e272ea895885c47d70632f26edd8e5101bcb5936494b6419f4ea8a56f18964e89918401603188fd1f376795b42b2a1c7107706f2a'
+            '9203c13a2b8526dec82e838e46c62919cd2dd38224a8aca942bc3821cc662cee2dcc459241f363f047475dc7c4800616078201eb1a5e1e4ac6d003a0f3231fe3')
 
 pkgver() {
     cd "${pkgname%-*}"
@@ -51,46 +55,73 @@ pkgver() {
 }
 
 prepare() {
-    cd "${pkgname%-*}"
+  cd "${pkgname%-*}"
 
     git submodule init
     git config --local submodule."panels/media-keys/gvc".url "${srcdir}/libgnome-volume-control"
     git submodule update
 
-    # Apply Ubuntu's patches
-    for i in $(grep -v '#' "$srcdir/debian/patches/series" | sort); do
-      [[ "${i}" =~ ^# || -z "${i}" || "${i}" == *git* ]] && continue # Skip comments, newlines, and git patches
-      [[ "${i}" == 53_sync_input_sources_to_accountsservice.patch ]] && continue
-      msg2 "Applying $i ..."
-      patch -Np1 < "$srcdir/debian/patches/$i"
-    done
+  # Apply Ubuntu's patches
+  for i in $(grep -v '#' "$srcdir/debian/patches/series"); do
+    [[ "${i}" =~ ^# || -z "${i}" || "${i}" == *git* ]] && continue # Skip comments, newlines, and git patches
+    [[ "${i}" == 53_sync_input_sources_to_accountsservice.patch ]] && continue #Cannot build with this patch; don't ask me how Canonical makes it work
+    msg2 "Applying $i ..."
+    patch -Np1 < "$srcdir/debian/patches/$i"
+  done
 
-    # Apply Elementary's patches
-    patch -Np0 < ../manage-dpms.patch
+  # Apply Elementary's patches
+  msg2 "Applying manage-dpms.patch ..."
+  patch -Np0 < ../manage-dpms.patch
 
-    NOCONFIGURE=1 ./autogen.sh
+  #NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
     cd "${pkgname%-*}"
 
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib/gnome-settings-daemon \
-        --disable-static
-      
-    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    if [[ "${_use_ppa}" == "true" ]]; then
+        meson \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --libexecdir=/usr/lib/gnome-settings-daemon \
+            -Dstatic-false=true \
+            builddir
 
-    make
+        ninja -C builddir
+
+    #"-Dstatic-false=true"
+    #According to the GNOME initiative the format should be -Dstatic-false
+    #meson says it needs to be followed by =bool
+    #Rediculous, utterly rediculous and probably wrong.
+    else
+        ./configure \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --libexecdir=/usr/lib/gnome-settings-daemon \
+            --disable-static
+
+        # https://bugzilla.gnome.org/show_bug.cgi?id=656231
+        sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+        make
+    fi
 }
 
 package() {
     cd "${pkgname%-*}"
-    make DESTDIR="${pkgdir}" install
-    cp "${pkgdir}"/etc/xdg/autostart/gnome-settings-daemon{,-pantheon}.desktop
-    sed -i 's|OnlyShowIn=GNOME;|OnlyShowIn=Pantheon;|g' "${pkgdir}"/etc/xdg/autostart/gnome-settings-daemon-pantheon.desktop
+    if [[ "${_use_ppa}" == "true" ]]; then
+        DESTDIR="${pkgdir}" ninja -C builddir install
+    else
+        make DESTDIR="${pkgdir}" install
+    fi
+
+    # Elementary is shipping these with pantheon-session-git; not sure how good an idea that is (upstream gsd could change before they can react)
+    #cd "${pkgdir}"
+    #for i in $(grep -Rl OnlyShowIn etc/xdg/autostart/); do
+    #  cp "${i%.*}"{,-pantheon}.desktop
+    #  sed -i 's|OnlyShowIn=GNOME;|OnlyShowIn=Pantheon;|g' "${i%.*}"-pantheon.desktop
+    #done
 
 }

@@ -1,18 +1,18 @@
 === modified file 'data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in'
---- data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in	2016-05-13 19:33:51 +0000
-+++ data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in	2016-05-13 19:57:07 +0000
+--- data/org.gnome.settings-daemon.plugins.power.gschema.xml.in	2016-05-13 19:33:51 +0000
++++ data/org.gnome.settings-daemon.plugins.power.gschema.xml.in	2016-05-13 19:57:07 +0000
 @@ -5,6 +5,11 @@
        <_summary>Activation of this plugin</_summary>
-       <_description>Whether this plugin would be activated by gnome-settings-daemon or not</_description>
+       <_description>Whether this plugin would be activated by unity-settings-daemon or not</_description>
      </key>
 +    <key name="manage-dpms-defaults" type="b">
 +      <default>false</default>
 +      <summary>Reset X DPMS values</summary>
 +      <description>Whether DPMS values will be adjusted by gnome-settings-daemon</description>
 +    </key>
-     <key name="priority" type="i">
-       <default>0</default>
-       <_summary>Priority to use for this plugin</_summary>
+     <key name="idle-brightness" type="i">
+       <default>30</default>
+       <summary>The brightness of the screen when idle</summary>
 
 === modified file 'plugins/power/gpm-common.c'
 --- plugins/power/gpm-common.c	2016-05-13 19:33:51 +0000
