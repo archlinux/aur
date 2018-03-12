@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.13.r11.g0780b6f
+pkgver=0.13.r14.g243a74d
 pkgrel=1
 pkgdesc="League Of Legends: Install/Run wrapper"
 arch=('any')
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname}/"
-    ./install.sh PREFIX="$pkgdir"
+    make install PREFIX="$pkgdir"
 }
