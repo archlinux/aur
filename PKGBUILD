@@ -3,9 +3,9 @@
 
 pkgname=vivaldi-rpi
 pkgver=1.14.1077.45
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('armv6h' 'armv7h')
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
