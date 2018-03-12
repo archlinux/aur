@@ -4,7 +4,7 @@
 _realname="DirSync Pro"
 _pkgname=DirSyncPro
 pkgname=dirsyncpro
-pkgver=1.52
+pkgver=1.53
 pkgrel=1
 pkgdesc="A small but powerfull utility for file and folder synchronisation"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("http://downloads.sourceforge.net/project/directorysync/DirSync%20Pro%20
         "dirsyncpro-home-wd.patch"
         "dirsyncpro.desktop"
         "dirsyncpro.install")
-md5sums=('cd0b7ba71b65bb8fa2834e9a5eb766a1'
+md5sums=('3f80ccdfcb967e0500e74cbcc948ddfb'
          '08ad637c654d21fb52a86d252ac89865'
          'd72d5899c667e572b54646ad9da0c839'
          '0b6211b511da48346cecdc1d2f963c76')
