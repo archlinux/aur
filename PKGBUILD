@@ -32,8 +32,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  source /usr/share/nvm/init-nvm.sh
-  nvm install
+  source /usr/share/nvm/init-nvm.sh --install
   
   yarn install
   yarn pack-prod
