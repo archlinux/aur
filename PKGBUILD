@@ -2,7 +2,7 @@
 # Contributor: Christian Sturm <reezer@reezer.org>
 
 pkgname=perl-ppix-regexp
-pkgver=0.037
+pkgver=0.056
 pkgrel=1
 pkgdesc="Represent a regular expression of some sort"
 arch=(any)
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-list-moreutils' 'perl-params-util' 'perl-readonly' 'perl-task-weaken' 'perl-ppi')
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/W/WY/WYANT/PPIx-Regexp-${pkgver}.tar.gz)
-sha256sums=('f68d88c008e6a6f2b438048e9c3cfe3cfab3225ba8b55ed3cf07f7161702ef37')
+sha256sums=('37992de526a368d120506e8c6c0498266e4de81942658cf0af1db89b12302f15')
 
 build() {
   cd "${srcdir}/PPIx-Regexp-${pkgver}"
