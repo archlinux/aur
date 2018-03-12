@@ -5,15 +5,17 @@
 
 pkgname=freefilesync
 pkgver=9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
 license=('GPLv3')
-depends=(wxgtk-common-dev webkit2gtk boost-libs)
+depends=(wxgtk-common-dev wxgtk2-dev wxgtk3-dev webkit2gtk boost-libs)
 makedepends=(boost)
+xbrzver=1.6
 source=(
-	"FreeFileSync_${pkgver}_Source.zip::https://doc-14-a8-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/b6kbcbhg0cvom3hp3v8al83rk0lb2uqc/1520798400000/06806984287875468759/*/1v9WRaJGYqloH_U_ywDk10Jzqt7lGA9Vo?e=download"		#ffs
+	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
+	"xBRZ_${xbrzver}.zip::https://cfhcable.dl.sourceforge.net/project/xbrz/xBRZ/xBRZ_${xbrzver}.zip"		#xbrz
 	FreeFileSync.desktop
 	ffsicon.png
 	RealTimeSync.desktop
@@ -21,17 +23,18 @@ source=(
 	)
 
 sha256sums=(
-	 '1ba04b3c3f86865c2e429afa1614f40a9108d4bef99404416df3e0bf49b74281'	#ffs source
+	 '43edd3c8546bd5a44c5d353811389a68b148f0655c006c13f4357f3579b9a970'	#ffs source
+	 '8d51e52a9264d09117cf434b7fcb46a17ee4285a00432554ba47fa86ac4511ce'	#xbrz
 	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
 	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
 	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
 	 'f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e'	#rtsicon.png
 	 )
 	 
-# DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
 
 prepare() {
-# wxgtk >= 3.1.0
+# wxgtk < 3.1.0
     sed -i 's/m_listBoxHistory->GetTopItem()/0/g'		FreeFileSync/Source/ui/main_dlg.cpp
 
 # gcc 6.3.1
@@ -46,6 +49,19 @@ prepare() {
 
 # install error
     cp ${srcdir}/Changelog.txt ${srcdir}/FreeFileSync/Build
+
+# make directory
+    mkdir -p ${srcdir}/xBRZ/src/
+
+# copy needed files into directory
+    cp ${srcdir}/xbrz_config.h ${srcdir}/xBRZ/src/
+    cp ${srcdir}/xbrz.cpp ${srcdir}/xBRZ/src/
+    cp ${srcdir}/xbrz.h ${srcdir}/xBRZ/src/
+    cp ${srcdir}/xbrz_tools.h ${srcdir}/xBRZ/src/
+
+# add xbrz.cpp entries in Makefile
+    sed -i "/zlib_wrap.cpp/ a CPP_LIST+=../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/Makefile
+    sed -i "/popup_dlg_generated.cpp/ a CPP_LIST+=../../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/RealTimeSync/Makefile
 }
 
 build() {
