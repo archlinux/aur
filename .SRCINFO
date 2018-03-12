@@ -1,13 +1,13 @@
 pkgbase = i3blocks-gaps-git
 	pkgdesc = Define blocks for your i3bar status line
 	pkgver = 1.4.r40.g2d91d2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Airblader/i3blocks-gaps
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = ruby-ronn
+	makedepends = pandoc
 	optdepends = acpi: For example battery script
 	optdepends = bc: For bandwidth script
 	optdepends = lm_sensors: For temperature script
