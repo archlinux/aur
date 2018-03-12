@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+
+arch:
+  packages:
+    - mlton
+  script:
+    - makepkg
+
+script:
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
