@@ -2,7 +2,7 @@
 
 pkgname=hdf5-salome
 _pkgname=hdf5
-pkgver=1.8.19
+pkgver=1.8.20
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data. This version is specifically compiled to be linked angains salome-platform."
@@ -12,7 +12,7 @@ depends=('zlib' 'sh')
 provides=('hdf5_18')
 conflicts=('hdf5_18')
 makedepends=('time')
-source=("ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-${pkgver:0:3}/hdf5-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2")
+source=("https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.20.tar.bz2")
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver/_/-}"
@@ -53,5 +53,4 @@ package() {
           "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" 
  
 }
-
-md5sums=('6f0353ee33e99089c110a1c8d2dd1b22')
+md5sums=('23078d57975903e9536d1e7b299cc39c')
