@@ -1,5 +1,7 @@
 # $Id$
-# Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
+# maintainer: Michael Taboada <michael@2mb.solutions>
+
+# this package is heavily based off of the aur php70 package, as well as the php71 package in community.
 
 pkgbase=php71-noconflict
 _pkgbase=${pkgbase%71-noconflict}
@@ -216,8 +218,8 @@ package_php71-noconflict() {
 }
 
 package_php71-cgi-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+       local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='CGI and FCGI SAPI for PHP'
 	depends=("${pkgbase}")
 	provides=("${_pkgprovide}=${pkgver}")
@@ -227,8 +229,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-apache-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Apache SAPI for PHP'
 	depends=("${pkgbase}" 'apache')
 	backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
@@ -243,8 +245,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-fpm-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='FastCGI Process Manager for PHP'
 	depends=("${pkgbase}" 'systemd')
 	backup=("etc/${_realpkg}/php-fpm.conf" "etc/${_realpkg}/php-fpm.d/www.conf")
@@ -258,8 +260,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-embed-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Embedded PHP SAPI library'
 	depends=("${pkgbase}" 'libsystemd')
 	options=('!emptydirs')
@@ -270,8 +272,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-phpdbg-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Interactive PHP debugger'
 	depends=("${pkgbase}")
 	options=('!emptydirs')
@@ -282,8 +284,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-dblib-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='dblib module for PHP'
 	depends=("${pkgbase}" 'freetds')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -292,8 +294,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-enchant-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='enchant module for PHP'
 	depends=("${pkgbase}" 'enchant')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -302,8 +304,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-gd-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='gd module for PHP'
 	depends=("${pkgbase}" 'gd')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -312,8 +314,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-imap-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='imap module for PHP'
 	depends=("${pkgbase}" 'c-client')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -322,8 +324,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-intl-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='intl module for PHP'
 	depends=("${pkgbase}" 'icu')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -332,8 +334,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-mcrypt-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='mcrypt module for PHP'
 	depends=("${pkgbase}" 'libmcrypt' 'libtool')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -342,8 +344,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-odbc-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='ODBC modules for PHP'
 	depends=("${pkgbase}" 'unixodbc')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -353,8 +355,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-pgsql-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        loca_pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='PostgreSQL modules for PHP'
 	depends=("${pkgbase}" 'postgresql-libs')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -364,8 +366,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-pspell-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='pspell module for PHP'
 	depends=("${pkgbase}" 'aspell')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -374,8 +376,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-snmp-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='snmp module for PHP'
 	depends=("${pkgbase}" 'net-snmp')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -384,8 +386,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-sqlite-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='sqlite module for PHP'
 	depends=("${pkgbase}" 'sqlite')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -395,8 +397,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-tidy-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='tidy module for PHP'
 	depends=("${pkgbase}" 'tidy')
 	provides=("${_pkgprovide}=${pkgver}")
@@ -405,8 +407,8 @@ _pkgprovide=${_pkgprovide/-noconflict/}
 }
 
 package_php71-xsl-noconflict() {
-_pkgprovide=${pkgname/71/}
-_pkgprovide=${_pkgprovide/-noconflict/}
+        local _pkgprovide=${pkgname/71/}
+        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='xsl module for PHP'
 	depends=("${pkgbase}" 'libxslt')
 	provides=("${_pkgprovide}=${pkgver}")
