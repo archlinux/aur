@@ -10,7 +10,7 @@ pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron')
-makedepends=('python2' 'npm' 'yarn' 'git')
+makedepends=('python2' 'npm' 'yarn' 'git' 'nvm')
 provides=('signal')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
 arch=("i686" "x86_64")
@@ -32,6 +32,9 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+  source /usr/share/nvm/init-nvm.sh
+  nvm install
+  
   yarn install
   yarn pack-prod
 }
