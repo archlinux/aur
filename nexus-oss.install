@@ -39,10 +39,11 @@ EOF
 
 pre_remove()
 {
-	systemctl stop nexus-oss
+	systemctl disable --now nexus-oss
 }
 
 post_remove()
 {
 	systemctl daemon-reload
 }
+
