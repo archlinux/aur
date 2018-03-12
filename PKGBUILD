@@ -2,13 +2,13 @@
 
 _pkgbase=gslx680-acpi
 pkgname=${_pkgbase}-dkms-git
-pkgrel=2
+pkgrel=3
 pkgver=r149.667efce
 pkgdesc="ACPI/x86 compatible driver for Silead GSLx680 touchscreens."
 arch=('i686' 'x86_64')
 url="https://github.com/onitake/gslx680-acpi"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms' 'linux-headers')
 makedepends=('git')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")

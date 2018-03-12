@@ -1,7 +1,7 @@
 pkgbase = gslx680-acpi-dkms-git
 	pkgdesc = ACPI/x86 compatible driver for Silead GSLx680 touchscreens.
 	pkgver = r149.667efce
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/onitake/gslx680-acpi
 	install = gslx680-acpi-dkms-git.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = gslx680-acpi-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
+	depends = linux-headers
 	provides = gslx680-acpi
 	conflicts = gslx680-acpi
 	source = gslx680-acpi-dkms-git::git+https://github.com/onitake/gslx680-acpi.git
