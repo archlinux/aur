@@ -6,14 +6,14 @@
 
 _locale='en-GB'
 pkgname=palemoon-i18n-en-gb
-pkgver=27.6.0
+pkgver=27.8.0
 pkgrel=1
 pkgdesc="English (United Kingdom) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"http://addons.palemoon.org/?component=download&version=latest&id=langpack-${_locale}@palemoon.org")
-sha256sums=('ff65694382777a03d9489b94a6984491053308b2bdaeabaf36fca9e76179edc8')
+sha256sums=('43f417ad35c090f32840c30e1985fb40ba49c4d3cec2b20c36f1c815718fd733')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
