@@ -4,16 +4,16 @@
 
 pkgname=mikutter
 pkgver=3.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
 depends=('ruby-bundler')
 makedepends=('gobject-introspection')
-optdepends=('libnotify: notify support')
+optdepends=('libnotify: notify support'
+            'alsa-utils: sound notification support')
 source=(
-#http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
 http://mikutter.hachune.net/bin/$pkgname.`echo "$pkgver" | tr "_" '-'`.tar.gz
 mikutter.desktop
 )
