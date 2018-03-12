@@ -1,0 +1,13 @@
+pkgbase = mpv-prescalers-git
+	pkgdesc = User shaders for prescaling in mpv
+	pkgver = r117.e93d8b3
+	pkgrel = 1
+	url = https://github.com/bjin/mpv-prescalers/tree/master
+	arch = any
+	license = LGPL3
+	depends = mpv-build-git
+	source = git+https://github.com/bjin/mpv-prescalers.git
+	sha256sums = SKIP
+
+pkgname = mpv-prescalers-git
+
