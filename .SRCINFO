@@ -10,6 +10,7 @@ pkgbase = signal
 	makedepends = npm
 	makedepends = yarn
 	makedepends = git
+	makedepends = nvm
 	depends = electron
 	provides = signal
 	conflicts = signal-desktop
