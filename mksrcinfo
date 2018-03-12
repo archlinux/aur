@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ -f .SRCINFO ]]; then
+    makepkg --printsrcinfo > .SRCINFO
+else
+    echo "No .SRCINFO file found."
+fi
