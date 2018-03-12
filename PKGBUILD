@@ -6,14 +6,14 @@
 
 _locale='nl'
 pkgname=palemoon-i18n-nl
-pkgver=27.6.0
+pkgver=27.8.0
 pkgrel=1
 pkgdesc="Dutch (Netherlands) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"http://addons.palemoon.org/?component=download&version=latest&id=langpack-${_locale}@palemoon.org")
-sha256sums=('f475d737273a32bf79fdee85ccc0506f819c68fd1f59faf5f3471335318f2020')
+sha256sums=('1f28fda79fa5cf5272901229b97220dbe53ec7dc71d3262362f18e6baee8978b')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
