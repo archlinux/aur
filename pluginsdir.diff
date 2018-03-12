@@ -8,14 +8,13 @@
    g_object_unref (manager);
  }
  
---- a/embed/Makefile.am.orig	2017-04-08 12:22:50.192861523 +0000
-+++ b/embed/Makefile.am	2017-04-08 12:23:13.926290709 +0000
-@@ -61,6 +61,7 @@
- 	libephyembed_la_CFLAGS = \
- 	-DDATADIR="\"$(datadir)\""	\
- 	-DSHARE_DIR=\"$(pkgdatadir)\"	\
-+	-DEPHY_PLUGINS_DIR=\""$(libdir)/epiphany/plugins"\" \
- 	-DEPHY_WEB_EXTENSIONS_DIR=\""$(libdir)/epiphany/$(EPIPHANY_MAJOR)/web-extensions"\" \
- 	$(DEPENDENCIES_CFLAGS) 	\
- 	$(CODE_COVERAGE_CFLAGS) \
-
+--- a/meson.build
++++ a/meson.build
+@@ -17,6 +17,7 @@
+ pkglibdir = join_paths(libdir, 'epiphany')
+ pkglibexecdir = join_paths(libexecdir, 'epiphany')
+ webextensionsdir = join_paths(pkglibdir, 'web-extensions')
++pluginsdir = join_paths(pkglibdir, 'plugins')
+ 
+ iso_codes = dependency('iso-codes')
+ iso_codes_prefix = iso_codes.get_pkgconfig_variable('prefix')
