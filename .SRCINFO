@@ -1,6 +1,6 @@
 pkgbase = tokei-git
 	pkgdesc = A blazingly fast CLOC(Count Lines Of Code) program
-	pkgver = v7.0.1.r17.16d49fc
+	pkgver = 7.0.1.r17.16d49fc
 	pkgrel = 1
 	url = https://github.com/Aaronepower/tokei
 	arch = i686
