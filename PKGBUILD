@@ -1,5 +1,5 @@
 # $Id$
-# maintainer: Michael Taboada <michael@2mb.solutions>
+# Maintainer: Michael Taboada <michael@2mb.solutions>
 
 # this package is heavily based off of the aur php70 package, as well as the php71 package in community.
 
@@ -9,7 +9,7 @@ _realpkg=${pkgbase%-noconflict}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,mcrypt,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"-noconflict")
 pkgver=7.1.14
-pkgrel=3
+pkgrel=4
 pkgdesc="php 7.1 compiled as to not conflict with php 7.2+"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -218,23 +218,19 @@ package_php71-noconflict() {
 }
 
 package_php71-cgi-noconflict() {
-       local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='CGI and FCGI SAPI for PHP'
 	depends=("${pkgbase}")
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-cgi=${pkgver}")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php71-apache-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Apache SAPI for PHP'
 	depends=("${pkgbase}" 'apache')
 	backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-apache=${pkgver}")
         echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
         echo "LoadModule php7_module modules/libphp71.so"
         echo "AddHandler php7-script .php"
@@ -245,13 +241,11 @@ package_php71-apache-noconflict() {
 }
 
 package_php71-fpm-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='FastCGI Process Manager for PHP'
 	depends=("${pkgbase}" 'systemd')
 	backup=("etc/${_realpkg}/php-fpm.conf" "etc/${_realpkg}/php-fpm.d/www.conf")
 	options=('!emptydirs')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-fpm=${pkgver}")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-fpm
@@ -260,12 +254,10 @@ package_php71-fpm-noconflict() {
 }
 
 package_php71-embed-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Embedded PHP SAPI library'
 	depends=("${pkgbase}" 'libsystemd')
 	options=('!emptydirs')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-embed=${pkgver}")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
@@ -275,146 +267,118 @@ mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-71.so
 }
 
 package_php71-phpdbg-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='Interactive PHP debugger'
 	depends=("${pkgbase}")
 	options=('!emptydirs')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-phpdbg=${pkgver}")
 
 	cd ${srcdir}/build-phpdbg
 	make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
 package_php71-dblib-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='dblib module for PHP'
 	depends=("${pkgbase}" 'freetds')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-dblib=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_dblib.so
 }
 
 package_php71-enchant-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='enchant module for PHP'
 	depends=("${pkgbase}" 'enchant')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-enchant=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${_realpkg}/modules/enchant.so
 }
 
 package_php71-gd-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='gd module for PHP'
 	depends=("${pkgbase}" 'gd')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-gd=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${_realpkg}/modules/gd.so
 }
 
 package_php71-imap-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='imap module for PHP'
 	depends=("${pkgbase}" 'c-client')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-imap=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${_realpkg}/modules/imap.so
 }
 
 package_php71-intl-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='intl module for PHP'
 	depends=("${pkgbase}" 'icu')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-intl=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${_realpkg}/modules/intl.so
 }
 
 package_php71-mcrypt-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='mcrypt module for PHP'
 	depends=("${pkgbase}" 'libmcrypt' 'libtool')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-mcrypt=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}/usr/lib/${_realpkg}/modules/mcrypt.so
 }
 
 package_php71-odbc-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='ODBC modules for PHP'
 	depends=("${pkgbase}" 'unixodbc')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-odbc=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/odbc.so
 	install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_odbc.so
 }
 
 package_php71-pgsql-noconflict() {
-        loca_pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='PostgreSQL modules for PHP'
 	depends=("${pkgbase}" 'postgresql-libs')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-pgsql=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pgsql.so
 	install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_pgsql.so
 }
 
 package_php71-pspell-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='pspell module for PHP'
 	depends=("${pkgbase}" 'aspell')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-pspell=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${_realpkg}/modules/pspell.so
 }
 
 package_php71-snmp-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='snmp module for PHP'
 	depends=("${pkgbase}" 'net-snmp')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-snmp=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${_realpkg}/modules/snmp.so
 }
 
 package_php71-sqlite-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='sqlite module for PHP'
 	depends=("${pkgbase}" 'sqlite')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-sqlite=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${_realpkg}/modules/sqlite3.so
 	install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_sqlite.so
 }
 
 package_php71-tidy-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='tidy module for PHP'
 	depends=("${pkgbase}" 'tidy')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-tidy=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${_realpkg}/modules/tidy.so
 }
 
 package_php71-xsl-noconflict() {
-        local _pkgprovide=${pkgname/71/}
-        _pkgprovide=${_pkgprovide/-noconflict/}
 	pkgdesc='xsl module for PHP'
 	depends=("${pkgbase}" 'libxslt')
-	provides=("${_pkgprovide}=${pkgver}")
+	provides=("${_pkgbase}-xsl=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
 }
