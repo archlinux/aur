@@ -11,7 +11,7 @@ url="http://www.openstm32.org/System+Workbench+for+STM32"
 license=('unknown')
 depends=('java-environment'
 'lib32-ncurses5-compat-libs')
-makedependa=('imagemagick')
+makedepends=('imagemagick')
 
 source=(http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-$pkgver.run
 	sw4stm32
