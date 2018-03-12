@@ -1,26 +1,33 @@
-# PKGBUILD file for Arch Linux packaging
+# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
-pkgname=danmaku2ass-git
-pkgver=20140615
+_pkgname=danmaku2ass
+pkgname="${_pkgname}-git"
+pkgver=r214.3dd20e4
 pkgrel=1
+epoch=1
 pkgdesc="Convert comments from Niconico/AcFun/bilibili to ASS format"
 arch=('any')
 url="https://github.com/m13253/danmaku2ass"
 license=('GPL3')
 depends=('python>=3')
 makedepends=('git')
-provides=('danmaku2ass')
-conflicts=('danmaku2ass')
-source=('danmaku2ass::git://github.com/m13253/danmaku2ass.git')
-md5sums=('SKIP')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/m13253/danmaku2ass.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/danmaku2ass"
-  git log -1 --format="%cd" --date=short | tr -d -
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-  cd "$srcdir/danmaku2ass"
-  make install DESTDIR="$pkgdir" PREFIX=/usr
+  cd "${srcdir}/${_pkgname}"
+  make install DESTDIR="${pkgdir}" PREFIX='/usr'
 }
