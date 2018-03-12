@@ -8,6 +8,7 @@ pkgbase = numix-kde-theme-git
 	makedepends = git
 	depends = numix-circle-icon-theme-git
 	optdepends = numix-gtk-theme-git
+	optdepends = numix-cursor-theme-git
 	source = git+https://github.com/varlesh/numix-kde-theme.git
 	sha256sums = SKIP
 
