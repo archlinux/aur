@@ -1,0 +1,15 @@
+pkgbase = karton
+	pkgdesc = A tool to transparently run Linux programs on macOS or on another Linux distro, or a different architecture
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://karton.github.io/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = docker
+	provides = karton
+	source = https://github.com/karton/karton/archive/v1.0.0.tar.gz
+	sha256sums = 90d8931ccc61a69c2fe3dc5a4754c67fa5ed5f00a71a89e432150f3cbff97e45
+
+pkgname = karton
+
