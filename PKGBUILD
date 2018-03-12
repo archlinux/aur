@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
 pkgver=4.14.26
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -60,14 +60,16 @@ options=('!strip')
 #makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
 _uksm_patch="uksm-4.14.patch"
-_gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
+_gcc_name="kernel_gcc_patch"
+_gcc_rel='20180310'
+_gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_gcc_path}/${_gcc_patch}"
+        "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         "${_uksm_path}/${_uksm_patch}"
          # the main kernel config files
         'config'
@@ -105,7 +107,7 @@ prepare() {
     
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
-	patch -Np1 -i ../${_gcc_patch}
+	patch -Np1 -i ../kernel_gcc_patch-${_gcc_rel}/${_gcc_patch}
     
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -366,7 +368,7 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'SKIP'
             '9659875861cf2fbc04e8f21343d7a29ddbabdaf230f6061fce816677d7ffbb297ab57eba5a47b8415c2c110260b8085b9b168aacd7741addb3ebdb1db2f9e44e'
             'SKIP'
-            '01be98361d8e3e84bda6767de63c7893838c73880eb632824b1222326db3603550942daa12bfa11701caeaf1cfe7520a5062540eabcd64d8f8fda74b7e863269'
+            '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
             'be4f2f71f16b157e6cd765086867510ed61a1c96bf37e235d09f20f21a20efbde1200e5e0777577be45791e5d30acf139ba44e05d7826713ca40dc1b674953a5'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
