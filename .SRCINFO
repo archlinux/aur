@@ -1,0 +1,21 @@
+pkgbase = getaltname-git
+	pkgdesc = Script that can extract Subject Alt Names for SSL Certificates directly from HTTPS web sites which can provide you with DNS names or virtual servers
+	pkgver = 1.0.0.r18.g574e38a
+	pkgrel = 1
+	url = https://github.com/franccesco/getaltname
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-ndg-httpsclient
+	depends = python-pyperclip
+	depends = python-requests
+	depends = python-tldextract
+	depends = xclip
+	source = git+https://github.com/franccesco/getaltname.git
+	sha256sums = SKIP
+
+pkgname = getaltname-git
+
