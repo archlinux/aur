@@ -13,7 +13,7 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://binaries.symless.com/v2.0.7/synergy_2.0.7.stable_b1477+e4d1ed68_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
+source_x86_64=("https://binaries.symless.com/v2.0.7/synergy_2.0.7.stable_b1477%2Be4d1ed68_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
 sha512sums_x86_64=('4c1b9b87c4b33d894bad30f6c040507fb491ebf7e51d341d53b2d4fd2db278e405e5defa5c823ff6dc55313f6b34e15a1d283116cef18fbfa986883d9d0a92c9' "9c818d4f4929d156a6926336048cab4e398047037f45a177cdb71ede9c54d7b16992b7e5437999b2c72d3604c22092790e112abb234647abb0b34adf8e56b76b")
 package(){
 	# Extract package data
