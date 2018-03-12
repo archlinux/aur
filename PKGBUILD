@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=4.10
+pkgver=4.15
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -32,7 +32,7 @@ _mplabcomm_dir="/opt/microchip/mplabcomm"
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
         "LICENSE")
 
-md5sums=('0ab5568a5e1d66a2280d4eb363e2e752'
+md5sums=('83242bc5ca1bb42ed47905599ac9d1e8'
          'a34a85b2600a26f1c558bcd14c2444bd')
 
 backup=("etc/mplab_ide.conf")
