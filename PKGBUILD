@@ -66,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.25
+pkgver=4.14.26
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -91,7 +91,7 @@ source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
-        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/${_gcc_patch}"
+        "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/${_gcc_patch}"
         # bfq-mq patch
         #"${_bfqpath}/${_bfq_mq_patch}"
         "${_lucjanpath}/${_bfq_mq_patch}"
@@ -134,9 +134,9 @@ source=(# mainline kernel patches
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'a4d4dbbe1b8c21e963e470d80efb596c070c58a4a5ef8d21ed459cb8e29e3b26'
+            'dae5ed2632b6f328bfc93751159a1edb15384e0cb43392c0810b5f6943e5bf88'
             'SKIP'
-            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
+            '58d6512678511b5e4ad1384ac1f556246fd83db0111a14c9cb5d020f590d4b07'
             '8b8f4d9cc2f868b3627fa67d955fcbd7e78c63eb5f6c254688f9f779d01907f1'
             '3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
@@ -146,7 +146,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b'
             'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
-            '472e17f1a637228ef10d6bcf29e266e8d745f2a86bcbbdb7985545b37f9be1cf'
+            '6af9e4f8cb27a7c0f351b010dbf7b0edc24ff987789d5c4a0afa3b8e21b97e5e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
