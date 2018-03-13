@@ -5,6 +5,7 @@ pkgbase = img
 	url = https://github.com/genuinetools/img
 	arch = x86_64
 	license = MIT
+	depends = runc
 	source = https://github.com/genuinetools/img/releases/download/v0.3.0/img-linux-amd64
 	source = https://raw.githubusercontent.com/genuinetools/img/master/LICENSE
 	md5sums = 13f503ce935641c9b485767981887433
