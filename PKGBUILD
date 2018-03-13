@@ -3,8 +3,8 @@
 
 pkgname=tilix-bin
 _pkgname=tilix
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.7.7
+pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (binary distribution)"
 arch=('x86_64')
 url="http://github.com/gnunn1/tilix"
@@ -17,7 +17,7 @@ optdepends=('python-nautilus: for "Open Tilix Here" support in nautilus'
 provides=('terminix' 'tilix')
 conflicts=('terminix' 'tilix')
 source_x86_64=(${_pkgname}-${pkgver}.zip::https://github.com/gnunn1/tilix/releases/download/${pkgver}/${_pkgname}.zip)
-md5sums_x86_64=('2b4699e1413465b2cf43f6c936015004')
+md5sums_x86_64=('d27a938f3fe97a242e7c5634c6eb707f')
 
 package() {
 	cp -ar $srcdir/usr $pkgdir/usr
