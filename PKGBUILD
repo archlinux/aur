@@ -1,24 +1,22 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer Valantin <valantin89 [at] gmail [dot] com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=ruby-awesome_print
-pkgver=1.7.0
+_gemname=awesome_print
+pkgname=ruby-$_gemname
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="Pretty print your Ruby objects with style"
-arch=('any')
+pkgdesc='Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins.'
+arch=(i686 x86_64)
+url='https://github.com/awesome-print/awesome_print'
+license=(MIT)
 depends=('ruby')
-url="https://github.com/michaeldv/awesome_print"
-license=('MIT')
-source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('a4ea7e755c4aab68157ea3d67b94aa375d01b85c4670db3d3afcc7296f0c1e7e')
-noextract=("${pkgname#*-}-${pkgver}.gem")
+options=(!emptydirs)
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=($_gemname-$pkgver.gem)
+sha256sums=('50b0cab61afe582bc675202dc8f6745b97aae7fefe29d06a91a669d763805991')
 
 package() {
-  cd "$srcdir"
-
-  msg2 'Installing...'
-  gem install \
-    --no-user-install \
-    --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname#*-}-$pkgver.gem
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install --no-document -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" $_gemname-$pkgver.gem
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
