@@ -8,3 +8,4 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Applications;Development
+StartupWMClass=Eclipse

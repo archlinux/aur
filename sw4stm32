@@ -1,3 +1,5 @@
 #!/bin/sh
 
-/opt/sw4stm32/eclipse
+export ECLIPSE_HOME=/usr/lib/sw4stm32
+export PATH=/usr/lib/sw4stm32/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.15.0.201708311556/tools/st-gnu-arm-gcc-6-2017-q2-update_gdb-5_4-2016q3/bin:$PATH
+exec $ECLIPSE_HOME/eclipse "$@"
