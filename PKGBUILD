@@ -4,7 +4,7 @@
 
 pkgname='skype'
 pkgdesc='P2P software for high-quality voice communication'
-pkgver='8.17.76.3'
+pkgver='8.18.76.1'
 pkgrel=1
 _pkgbranch='skypeforlinux'
 arch=('x86_64')
