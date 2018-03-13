@@ -1,0 +1,18 @@
+pkgbase = curate-pkg-git
+	pkgdesc = curate-pkg: that script you craved for to keep a consistent image of installed packages across **ALL** package managers
+	pkgver = r36.92c9d88
+	pkgrel = 1
+	url = https://github.com/andrei-pavel/curate-pkg
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash-spinner
+	depends = unp
+	depends = yq
+	provides = curate-pkg
+	source = git+https://github.com/andrei-pavel/curate-pkg.git
+	md5sums = SKIP
+
+pkgname = curate-pkg-git
+
