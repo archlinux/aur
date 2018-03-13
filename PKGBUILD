@@ -26,11 +26,11 @@ package() {
 	mv "${pkgdir}/usr/share/${_pkgbranch}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	for _filefound in `find "${pkgdir}" -type d -name "${_pkgbranch}"` ; do
-		mv "${_filefound}" "${_filefound%""${_pkgbranch}""}${pkgname}"
+		mv "${_filefound}" "${_filefound%${_pkgbranch}}${pkgname}"
 	done
 
 	for _filefound in `find "${pkgdir}" -type f \( -name "${_pkgbranch}" -o -name "${_pkgbranch}.*" \)` ; do
-		mv "${_filefound}" $([[ "${_filefound}" == *"${_pkgbranch}" ]] && echo "${_filefound%""${_pkgbranch}""}${pkgname}" || echo "${_filefound%""${_pkgbranch}.*""}${pkgname}.${_filefound##*.}")
+		mv "${_filefound}" $([[ "${_filefound}" == *"${_pkgbranch}" ]] && echo "${_filefound%${_pkgbranch}}${pkgname}" || echo "${_filefound%${_pkgbranch}.*}${pkgname}.${_filefound##*.}")
 	done
 
 	sed -i "s/${_pkgbranch}/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
