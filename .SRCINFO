@@ -1,0 +1,15 @@
+pkgbase = uvesafb-dkms
+	pkgdesc = uvesafb kernel module - dkms
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jghodd/uvesafb-dkms
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = linux-headers
+	depends = dkms
+	source = https://github.com/jghodd/uvesafb-dkms/archive/uvesafb-dkms-1.0.0.tar.gz
+	md5sums = 038809de05feccdb2543f3285d3716d2
+
+pkgname = uvesafb-dkms
+
