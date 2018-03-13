@@ -3,8 +3,8 @@
 # Contributer: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-server
-pkgver=2.3.17
-_reldate=2017-05-05
+pkgver=2.5.0
+_reldate=2018-03-02
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
