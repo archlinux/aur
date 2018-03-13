@@ -16,7 +16,9 @@ makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
 install=metronome.install
 source=('metronome::git+https://github.com/maranda/metronome.git'
-        'metronome.service')
+        'metronome.service'
+        'metronome.sysusers'
+        'metronome.tmpfiles')
 
 _repo='metronome'
 
@@ -42,8 +44,14 @@ package() {
   install -Dm644 scripts/logrotate $pkgdir/etc/logrotate.d/metronome
   install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
   install -Dm644 $srcdir/metronome.service $pkgdir/usr/lib/systemd/system/metronome.service
+
+  cd ..
+  install -Dm644 metronome.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 metronome.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
 # vim:set ts=2 sw=2 et:
 sha256sums=('SKIP'
-            '86fe5add63a84762433219969a914dd3e680cc4bd6e73904b72ada470666c541')
+            '86fe5add63a84762433219969a914dd3e680cc4bd6e73904b72ada470666c541'
+            '6b1fed75dd6fcd23023cb0da1509afc7f12eb9d3948cf9f328a22608acdcb889'
+            '378ca207ffc02824282de9c477f945c4cb9cabc41b73a39eeeb136e7e9178a36')

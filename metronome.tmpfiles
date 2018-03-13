@@ -1,0 +1,2 @@
+d /var/lib/metronome  0755  metronome metronome
+d /var/log/metronome  0700  metronome metronome
