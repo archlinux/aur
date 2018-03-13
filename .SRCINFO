@@ -1,7 +1,7 @@
 pkgbase = wine-staging-vulkan-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches
-	pkgver = 3.3+20180304.58661056ff
-	pkgrel = 1
+	pkgver = 3.3.r0.ge09e1fd3+
+	pkgrel = 2
 	url = https://www.wine-staging.com/
 	install = wine-staging-vulkan-git.install
 	arch = i686
@@ -137,17 +137,17 @@ pkgbase = wine-staging-vulkan-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.3+20180304.58661056ff
-	provides = wine-wow64=3.3+20180304.58661056ff
-	provides = wine-git=3.3+20180304.58661056ff
-	provides = wine-staging=3.3+20180304.58661056ff
+	provides = wine=3.3.r0.ge09e1fd3+
+	provides = wine-wow64=3.3.r0.ge09e1fd3+
+	provides = wine-git=3.3.r0.ge09e1fd3+
+	provides = wine-staging=3.3.r0.ge09e1fd3+
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
 	conflicts = wine-staging
 	options = staticlibs
 	source = wine-git::git+https://github.com/roderickc/wine-vulkan.git
-	source = staging.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.3.tar.gz
+	source = wine-staging-vulkan-git::git+https://github.com/wine-staging/wine-staging.git
 	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf

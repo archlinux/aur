@@ -2,9 +2,8 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-vulkan-git
-_staging_ver=3.3
-pkgver=3.3+20180304.58661056ff
-pkgrel=1
+pkgver=3.3.r0.ge09e1fd3+
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches'
 arch=('i686' 'x86_64')
 url='https://www.wine-staging.com/'
@@ -83,7 +82,7 @@ optdepends=(
 options=('staticlibs')
 install="$pkgname".install
 source=('wine-git'::'git+https://github.com/roderickc/wine-vulkan.git'
-        "staging.tar.gz"::'https://github.com/wine-staging/wine-staging/archive/v3.3.tar.gz'
+        "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
         'harmony-fix.diff'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
@@ -117,9 +116,6 @@ else
 fi
 
 prepare() {
-    tar xvf staging.tar.gz
-    rm -rf $pkgname
-    mv wine-staging-* $pkgname
     cd 'wine-git'
     
     # restore the wine tree to its git origin state, without wine-staging patches
@@ -141,8 +137,15 @@ prepare() {
 }
 
 pkgver() {
+    cd "$pkgname"
+    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+    local _staging_version="$(git describe --long --tags \
+                                | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+                                | sed "s/^latest.release/${_staging_tag}/")"
     cd "${srcdir}/wine-git"
-    echo $_staging_ver+$(git log -1 --format=%cd.%h --date=short|tr -d -)
+    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+    
+    printf '%s+%s' "$_staging_version" "$_wine_version"
 }
 
 build() {
