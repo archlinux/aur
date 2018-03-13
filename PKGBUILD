@@ -1,24 +1,26 @@
+# Maintainer: Fredy García <frealgagu at gmail dot com>
 pkgname=whatsapp-purple-git
-pkgver=v0.8.3.r73.07ed931
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+pkgver=latest
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (Pidgin)"
-arch=(i686 x86_64)
+arch=('any')
 url="https://github.com/davidgfnet/whatsapp-purple"
 license=('GPL')
 depends=('libpurple' 'freeimage')
-source=("git+https://github.com/davidgfnet/whatsapp-purple.git")
+source=("git+https://github.com/davidgfnet/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="${pkgdir}/" install
 }
