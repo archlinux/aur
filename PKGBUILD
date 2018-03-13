@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-tree-tabs
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Manage your tabs in the sidebar'
 url=https://addons.mozilla.org/en-US/firefox/addon/tree-tabs
@@ -10,7 +10,7 @@ license=('MPL2')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/809637/tree_tabs-$pkgver-an+fx-linux.xpi")
 noextract=("${source##*/}")
-sha256sums=('d0ccf96ada57331554a637c58849f044890f20bc33d54ba03a4d093c515b6864')
+sha256sums=('9254b291ce7cc145cb164205e895da7131fb6205848bc8aa87ecf74a632973c5')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/TreeTabs@jagiello.it.xpi
