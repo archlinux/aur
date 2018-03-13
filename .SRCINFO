@@ -3,7 +3,6 @@ pkgbase = metronome-git
 	pkgver = 3.8
 	pkgrel = 1
 	url = https://metronome.im/
-	install = metronome.install
 	arch = i686
 	arch = x86_64
 	license = MIT

@@ -14,7 +14,6 @@ depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'lua51-event'
 optdepends=('lua51-zlib: compression support')
 makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
-install=metronome.install
 source=('metronome::git+https://github.com/maranda/metronome.git'
         'metronome.service'
         'metronome.sysusers'
