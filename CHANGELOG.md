@@ -1,3 +1,35 @@
+# [v2.1.3 - 2018-03-06](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.1.2)
+
+## Fixed
+
+- Fixed failure to clone when the URL contains leading or trailing whitespace.
+- Fixed failure to identify the correct SSH key file when using an ssh: style URL.
+- Fixed unexpected quit after adding a valid license when the evaluation is expired.
+- (Win) Fixed intermittent indexer crash.
+
+# [v2.1.2 - 2018-03-01](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.1.1)
+
+## Added
+
+- Added privacy statement.
+
+## Fixed
+
+- Fixed crash on conflicted diffs after all conflicts have been resolved.
+- Fixed possible indexer crash.
+- (Win) Fixed failure to connect to GitHub through HTTPS on Windows 7.
+
+# [v2.1.1 - 2018-02-27](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.1.0)
+
+## Added
+
+- Allow 'Remove Untracked Files' context menu actions to remove untracked directories.
+- (Win) Generate crash dump file when the indexer process crashes.
+
+## Changed
+
+- Show commit list times in the local time zone. The detail view still shows time in the author's time zone offset from UTC.
+
 # [v2.1.0 - 2018-02-15](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.6)
 
 ## Added
