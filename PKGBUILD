@@ -9,8 +9,7 @@ pkgdesc="SystemWorkbench for STM32"
 arch=('x86_64')
 url="http://www.openstm32.org/System+Workbench+for+STM32"
 license=('CUSTOM')
-depends=("java-environment>=8"
-'lib32-ncurses5-compat-libs')
+depends=("java-environment>=8")
 options=(!emptydirs !strip)
 source=("http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v$pkgver.run"
 	$pkgname
