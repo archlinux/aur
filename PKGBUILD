@@ -1,6 +1,6 @@
 # Maintainer: Andrei Pavel <andrei.pavel@cti.pub.ro>
 pkgname='curate-pkg-git'
-pkgver='r36.92c9d88'
+pkgver='r37.a2c4607'
 pkgrel=1
 epoch=
 pkgdesc='curate-pkg: that script you craved for to keep a consistent image of installed packages across **ALL** package managers'
