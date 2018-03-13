@@ -14,7 +14,7 @@ depends=('gtk2' 'libxss' 'gconf' 'alsa-lib' 'libxtst' 'libsecret' 'nss')
 optdepends=('gnome-keyring: for credentials storage')
 conflicts=('skypeforlinux' 'skypeforlinux-preview' 'skypeforlinux-preview-bin')
 source=("https://repo.skype.com/deb/pool/main/s/${_pkgbranch}/${_pkgbranch}_${pkgver}_amd64.deb")
-sha256sums=('ac25cccb44e3872b0d8ba41cf0d49a69403d6d82a920705ba57ea191179cc926')
+sha256sums=('fe1055817a65675cfd127e6705617156e3c5fb75d99e6559b56ac4b10830a6fa')
 
 package() {
 
