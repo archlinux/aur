@@ -1,19 +1,18 @@
 pkgbase = chunksync
 	pkgdesc = An incremental backup program, especially suited for encrypted disks.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = http://chunksync.florz.de/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
 	makedepends = perl
 	depends = openssl
 	optdepends = chunkfs
 	provides = chunksync
 	conflicts = chunksync
-	source = http://chunksync.florz.de/chunksync_0.3.tar.gz
+	source = http://chunksync.florz.de/chunksync_0.4.tar.gz
 	source = LICENSE
-	sha256sums = e0c27f925c5cf811798466312a56772864b633728c433fb2fcce23c8712b52fc
+	sha256sums = 003836fee599f30746bc732786e6340cb0f7ef8753d1683de495412e67b898bf
 	sha256sums = 30b7bcf5380a107e9508394efd22ef46281abfd7ef1abc5ad39d1d1583423e77
 
 pkgname = chunksync
