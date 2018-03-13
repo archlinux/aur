@@ -10,8 +10,10 @@ pkgbase = jackett
 	depends = curl
 	source = Jackett.Binaries.Mono-0.8.749.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.8.749/Jackett.Binaries.Mono.tar.gz
 	source = jackett.service
-	md5sums = 3f093c17ec9e1b64889db054365d5145
-	md5sums = 1c3c0b8c8114d121060eacea251eaf28
+	source = jackett.sysusers
+	sha256sums = ef27eeb95249c33ab5e4f12c103e872aa9944a842748ced62bc81a4dad2a3055
+	sha256sums = 47326614002708a829e8ce6b7d5fc5a068125e8d64ff47fdb5f3ab09d0c4b0c8
+	sha256sums = f48165d816e2b2f9a94f816e5deed58326fa23d7a3dfeaab95473899b554c6db
 
 pkgname = jackett
 
