@@ -18,22 +18,22 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 
-pkgver=2018.02.24.r1068.3673d03.4.15.7.a.1
-pkgrel=2
-makedepends=("linux-hardened-headers=4.15.7.a-1" "git")
+pkgver=2018.03.09.r1069.43983eb.4.15.8.a.1
+pkgrel=1
+makedepends=("linux-hardened-headers=4.15.8.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=3673d032850c3b54b8b2cc74cf1782a75cc9b2a9")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=43983eb2024ec6b3280e6e06a6fb621ee3bb2a41")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.02.24.r1068.3673d03" "kmod" "linux-hardened=4.15.7.a-1")
+depends=("spl-utils-common-git=2018.03.09.r1069.43983eb" "kmod" "linux-hardened=4.15.8.a-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.15.7-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.15.7-1-hardened/build \
+                --with-linux=/usr/lib/modules/4.15.8-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.15.8-1-hardened/build \
                 --with-config=kernel
     make
 }
@@ -53,10 +53,10 @@ package_spl-linux-hardened-git() {
 
 package_spl-linux-hardened-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers'  'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers'  'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-threadripper-vfio-headers' 'spl-linux-threadripper-vfio-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.7-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.8-1-hardened/Module.symvers
 }
