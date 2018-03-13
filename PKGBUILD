@@ -51,6 +51,9 @@ package() {
 
 	# Clean the fakeroot
 	rm -rf $pkgdir/$HOME/{.installation,stlinkserver/st-stlink*,.desktop_shortcut.sh,uninstall.jar}
+
+	# Change configuration folder
+	echo "-Dosgi.configuration.area=@user.home/.sw4stm32" >> $pkgdir/$HOME/eclipse.bin.ini
 }
 
 md5sums=('e3d18ed7c5efd5aec32be55a6eccff55'
