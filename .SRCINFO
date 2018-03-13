@@ -1,0 +1,14 @@
+pkgbase = reg
+	pkgdesc = Docker registry v2 command line client
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/genuinetools/reg
+	arch = x86_64
+	license = MIT
+	source = https://github.com/genuinetools/reg/releases/download/v0.13.0/reg-linux-amd64
+	source = https://raw.githubusercontent.com/genuinetools/reg/master/LICENSE
+	md5sums = 88b90e7d3d7ac99c880cf3c804440d15
+	md5sums = 48ef0979a2bcc3fae14ff30b8a7f5dbf
+
+pkgname = reg
+
