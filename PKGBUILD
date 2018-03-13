@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
-pkgver=0.9.3.r0.gaaa40ede
+pkgver=0.9.5.r0.g256fa119
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
@@ -43,7 +43,8 @@ build() {
               --enable-fuse \
 	      --enable-opus \
 	      --enable-mp3lame \
-	      --enable-pixman
+	      --enable-pixman \
+	      --enable-vsock
   make V=0
 }
 
