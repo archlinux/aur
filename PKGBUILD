@@ -6,14 +6,16 @@
 
 pkgname=php-docs
 pkgver=7.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of HTML documentation for PHP."
 arch=('any')
 url="http://www.php.net/docs.php"
 license=('PHP')
 options=('docs' '!strip')
 source=(php_manual_en-$pkgver.tar.gz::http://www.php.net/distributions/manual/php_manual_en.tar.gz)
-sha256sums=('743cfec1c357360326aa72c8151092d5d79323c003f74413c74464c50541ed54')
+# The upstream file changes every once in a while without a file name change.
+# This is not the right but arguably the simplest solution:
+sha256sums=(SKIP)
 
 package(){
   cd "$srcdir"
