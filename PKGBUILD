@@ -44,7 +44,7 @@ package() {
 	done
 
 	# Extracting arm cross-compiler
-	CROSSPATH="$pkgdir/$HOME/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.15.0.201708311556/tools/st-gnu-arm-gcc-6-2017-q2-update_gdb-5_4-2016q3-20160926-linux.tar.bz2" 	
+	CROSSPATH="$pkgdir/$HOME/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.15.0.201708311556/tools/st-gnu-arm-gcc-6-2017-q2-update_gdb-5_4-2016q3-20160926-linux.tar.bz2"
 	CROSSDEST=$(dirname $CROSSPATH)
 	tar -xf $CROSSPATH -C $(dirname $CROSSPATH)
 	rm $CROSSPATH
@@ -55,6 +55,6 @@ package() {
 }
 
 md5sums=('e3d18ed7c5efd5aec32be55a6eccff55'
-         '4bebd032d4833a94731324e44b31ea53'
-         '1abad981624008108a0651b9847e183e'
-         'ff9b48b50dc8a1845d002bc1f1ddb50a')
+	'4bebd032d4833a94731324e44b31ea53'
+	'1abad981624008108a0651b9847e183e'
+'ff9b48b50dc8a1845d002bc1f1ddb50a')
