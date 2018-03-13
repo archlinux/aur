@@ -7,13 +7,13 @@
 _pkgname=mygpoclient
 pkgname=python-$_pkgname
 pkgver=1.8
-pkgrel=0
+pkgrel=1
 pkgdesc="Client library for the my.gpodder.org web service"
 arch=('any')
 url="https://github.com/gpodder/mygpoclient"
 license=('GPL3')
 depends=('python')
-source=(https://github.com/gpodder/$_pkgname/archive/$pkgver.tar.gz)
+source=($_pkgname-$pkgver.tar.gz::https://github.com/gpodder/$_pkgname/archive/$pkgver.tar.gz)
 md5sums=('e9648674b842ce5f6bb77a379eeb5908')
 
 package() {
