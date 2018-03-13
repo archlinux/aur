@@ -6,12 +6,15 @@
 # http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
 # NOTE (2):
-# Change font directories bellow to match yours.
-# DeJaVu and GhostScript font directories provided bellow are the default ones.
-# Windows font directory provided bellow is set according to the example in Arch Linux Wiki.
-# This Windows font directory example is for people that copy/link fonts from a Windows
-# installation. If you prefer, you can choose an AUR package that provides the Windows fonts
-# as described in the Wiki and change the directory accordingly.
+# change font directories bellow to match yours:
+#   - deJaVu and GhostScript font directories provided bellow are
+#     the default ones
+#   - Windows font directory provided bellow is set according to
+#     the example in Arch Linux Wiki
+#   - this Windows font directory example is for people that
+#     copy/link fonts from a Windows installation. If you prefer,
+#     you can choose an AUR package that provides the Windows fonts
+#     as described in the Wiki and change the directory accordingly.
 
 _dejavu_font_dir='/usr/share/fonts/TTF'
 _gs_font_dir='/usr/share/fonts/gsfonts'
@@ -19,22 +22,13 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_digest='http://www.imagemagick.org/download/digest.rdf'
-_srcname='ImageMagick'
-_srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" |
-                                sed 's/[^0-9\.-]*//g'                     |
-                                sed -r 's/.//;s/.{2}$//'                  |
-                                sort -r                                   |
-                                head -n1)"
-_srcver_regex="$(printf '%s' "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
-_majorver="${_srcver%%.*}"
-_etcdir="${_srcname}-${_majorver}"
+_commit='17a986472f5555d301651637f042540e9b8b8b7e'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
-pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=1
+pkgver=7.0.7.25
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -61,23 +55,20 @@ makedepends=(
     # AUR:
         'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
 )
-source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz"
+source=("${pkgbase}-git"::"git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff')
-sha256sums=("$(curl -s "$_digest" | grep -A5 "${_srcname}-${_srcver_regex}\.tar\.xz" |
-                                    grep 'sha256'                                    |
-                                    grep -oE '>[[:alnum:]]*?<'                       |
-                                    sed 's/[><]//g')"
+sha256sums=('SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
-  cd "${_srcname}-${_srcver}"
-  
-  # fix up typemaps to match Arch Linux packages, where possible
-  patch -Np1 -i "${srcdir}/arch-fonts.diff"
+    cd "${pkgbase}-git"
+    
+    # fix up typemaps to match Arch Linux packages, where possible
+    patch -Np1 -i "${srcdir}/arch-fonts.diff"
 }
 
 build() {
-    cd "${_srcname}-${_srcver}"
+    cd "${pkgbase}-git"
     
     CFLAGS="${CFLAGS} -I/usr/include/FLIF" \
     ./configure \
@@ -146,6 +137,10 @@ build() {
 }
 
 package_libmagick-full() {
+    local _srcver="${pkgver%.*}-${pkgver##*.}"
+    local _majorver="${_srcver%%.*}"
+    local _etcdir="ImageMagick-${_majorver}"
+    
     pkgdesc+=" (library)"
     backup=(etc/"$_etcdir"/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
@@ -156,7 +151,7 @@ package_libmagick-full() {
     conflicts=('libmagick' 'libmagick-fftw' 'libmagick-no-hdri'
                'libmagick-git' 'libmagick-full-git')
     
-    cd "${_srcname}-${_srcver}"
+    cd "${pkgbase}-git"
     make DESTDIR="$pkgdir" install
     
     rm -f "$pkgdir"/usr/lib/*.la
@@ -175,7 +170,7 @@ package_libmagick-full() {
     mv -f "${pkgdir}/usr/share/man" usr/share/
     
     # split docs
-    cd "${srcdir}/${_srcname}-${_srcver}/docpkg"
+    cd "${srcdir}/${pkgbase}-git/docpkg"
     mv -f "${pkgdir}/usr/share/doc" usr/share/
     
     # security fix
@@ -204,7 +199,7 @@ package_imagemagick-full() {
                'imagemagick-git' 'imagemagick-full-git')
     options=('!emptydirs')
     
-    cd "${_srcname}-${_srcver}"
+    cd "${pkgbase}-git"
     
     mv -f binpkg/* "$pkgdir"
     
@@ -229,7 +224,7 @@ package_imagemagick-full-doc() {
     provides=('imagemagick-doc')
     conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
     
-    cd "${_srcname}-${_srcver}"
+    cd "${pkgbase}-git"
     
     mv -f docpkg/* "$pkgdir"
     
