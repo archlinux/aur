@@ -1,6 +1,8 @@
 # Submitter: Marco Cirillo <maranda@lightwitch.org>
 # Maintainer: Marco Cirillo <maranda@lightwitch.org>
-pkgname=metronome-dev
+# Co-Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
+
+pkgname=metronome-git
 pkgver=3.8
 pkgrel=1
 pkgdesc="Metronome IM XMPP Server Development"
@@ -13,10 +15,8 @@ optdepends=('lua51-zlib: compression support')
 makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
 install=metronome.install
-source=('metronome.service'
-        'metronome::git+https://github.com/maranda/metronome.git')
-md5sums=('1f2e66ce577c22ad07b7876cfc379b79'
-         'SKIP')
+source=('metronome::git+https://github.com/maranda/metronome.git'
+        'metronome.service')
 
 _repo='metronome'
 
@@ -37,11 +37,13 @@ build() {
 package() {
   cd "$srcdir/$_repo"
   make DESTDIR="$pkgdir" install
-  
-  # install -dm755 $pkgdir/var/log/metronome # $pkgdir/run/metronome
+
+  install -dm755 $pkgdir/var/log/metronome $pkgdir/run/metronome
   install -Dm644 scripts/logrotate $pkgdir/etc/logrotate.d/metronome
   install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
   install -Dm644 $srcdir/metronome.service $pkgdir/usr/lib/systemd/system/metronome.service
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('SKIP'
+            '86fe5add63a84762433219969a914dd3e680cc4bd6e73904b72ada470666c541')

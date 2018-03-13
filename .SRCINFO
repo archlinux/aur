@@ -1,4 +1,4 @@
-pkgbase = metronome-dev
+pkgbase = metronome-git
 	pkgdesc = Metronome IM XMPP Server Development
 	pkgver = 3.8
 	pkgrel = 1
@@ -20,10 +20,10 @@ pkgbase = metronome-dev
 	depends = libevent-compat
 	optdepends = lua51-zlib: compression support
 	backup = etc/metronome/metronome.cfg.lua
-	source = metronome.service
 	source = metronome::git+https://github.com/maranda/metronome.git
-	md5sums = 1f2e66ce577c22ad07b7876cfc379b79
-	md5sums = SKIP
+	source = metronome.service
+	sha256sums = SKIP
+	sha256sums = 86fe5add63a84762433219969a914dd3e680cc4bd6e73904b72ada470666c541
 
-pkgname = metronome-dev
+pkgname = metronome-git
 
