@@ -24,7 +24,7 @@ build() {
   gem install --no-document --no-user-install -i $_gemdir rake
   bundle install --path vendor/bundle --without test
 
-  rm -rf $gemdir/{build_info,cache,doc}
+  rm -rf $_gemdir/{build_info,cache,doc}
 }
 
 package() {
