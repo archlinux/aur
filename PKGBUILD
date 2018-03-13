@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.15
-pkgver=4.15.2
+pkgver=4.15.8
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -27,21 +27,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915-vga-arbiter.patch'
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
         0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-        0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
+            '93e9495e5d43f3ff6695b50ba74fc17d8feef670c16c08acd005059b54db1ef0'
             'SKIP'
-            '57400ed3b21281ad84d72756ce98815c8f6073b8c53b3bc6d73120c47902a263'
+            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             '1a4a992199d4d70f7f35735f63a634bb605c2b594b7352ad5fd54512737d2784'
             '7cb4a5da6bf551dbb2db2e0b4e4d0774ee98cc30d9e617e030b27e6cba3e6293'
             '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
-            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215'
-            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
+            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -66,9 +64,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-
-  # https://bugs.archlinux.org/task/57327
-  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
