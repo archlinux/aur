@@ -40,10 +40,11 @@ package() {
   cd "$srcdir/$_repo"
   make DESTDIR="$pkgdir" install
 
-  install -dm755 $pkgdir/var/log/metronome $pkgdir/run/metronome
-  install -Dm644 scripts/logrotate $pkgdir/etc/logrotate.d/metronome
-  install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
-  install -Dm644 $srcdir/metronome.service $pkgdir/usr/lib/systemd/system/metronome.service
+  install -dm755 "$pkgdir/var/log/metronome" "$pkgdir/run/metronome"
+  install -Dm644 scripts/logrotate "$pkgdir/etc/logrotate.d/metronome"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENCE"
+  install -Dm644 "$srcdir/metronome.service" \
+    "$pkgdir/usr/lib/systemd/system/metronome.service"
 
   cd ..
   install -Dm644 metronome.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
