@@ -7,7 +7,7 @@
 # ... there's gotta be a better way
 pkgname="onehouronelife-bin"
 pkgver="58"
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Binary package for One Hour One Life game by Jason Rohrer"
 arch=('x86_64')
@@ -27,7 +27,7 @@ install=
 changelog=
 _folder=OneLife_v${pkgver}
 _tarname=${_folder}_Linux
-source=(http://download5.onehouronelife.com/downloads/$_tarname.tar.gz)
+source=(http://download$(( (RANDOM % 8) + 1)).onehouronelife.com/downloads/$_tarname.tar.gz)
 #source=(git+https://github.com/jasonrohrer/OneLifeData7.git
 #        git+https://github.com/jasonrohrer/minorGems.git
 #        git+https://github.com/jasonrohrer/OneLife.git
