@@ -5,7 +5,7 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -27,12 +27,14 @@ sha512sums=('SKIP'
 prepare() {
   cd "${pkgname}-${pkgver}"
   # Fix issues/1988
-  sed -i 's/"electron": "1.7.12"/"electron": "1.8.2"/' package.json
+  #sed -i 's/"electron": "1.7.12"/"electron": "1.8.2"/' package.json
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   source /usr/share/nvm/init-nvm.sh --install
+  nvm install && nvm use
+  nvm unalias default
   
   yarn install
   yarn pack-prod
