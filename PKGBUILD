@@ -7,28 +7,15 @@ arch=('any')
 url="https://github.com/KDE/rust-qt-binding-generator"
 license=('GPLv2')
 depends=('qt5-base' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2')
-makedepends=('git' 'cmake' 'rustup')
+makedepends=('git' 'cmake' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+http://github.com/KDE/${pkgname%-git}.git")
 md5sums=(SKIP)
 
 prepare() {
-
-	# Make sure that a default toolchain is setup
-	{ # try
-		cargo
-	} || { # catch
-		setterm -foreground red
-		echo "You have no default toolchain installed"
-		echo "Installing and/or setting stable as your default toolchain"
-		setterm -foreground default
-		rustup default stable
-	}
-
-		cd $srcdir/${pkgname%-git}
-	}
-
+	cd $srcdir/${pkgname%-git}
+}
 build() {
 	cd $srcdir/${pkgname%-git}
 
