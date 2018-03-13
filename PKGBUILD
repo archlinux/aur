@@ -167,7 +167,7 @@ prepare() {
     
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
-	patch -Np1 -i ../kernel_gcc_patch-${_gcc_rel}/${_gcc_patch}
+	patch -Np1 -i ../${_gcc_name}-${_gcc_rel}/${_gcc_patch}
     
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
