@@ -7,7 +7,7 @@
 
 pkgname=db5.1
 pkgver=5.1.29
-pkgrel=1
+pkgrel=2
 pkgdesc="The Berkeley DB embedded database system 5.1"
 arch=('any')
 license=('custom')

@@ -1,7 +1,7 @@
 pkgbase = db5.1
 	pkgdesc = The Berkeley DB embedded database system 5.1
 	pkgver = 5.1.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
 	arch = any
 	license = custom
