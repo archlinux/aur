@@ -12,12 +12,12 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0_devel.100784.9b7db12815
+pkgver=18.1.0_devel.100868.b2653007b9
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols' 'valgrind')
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols' 'valgrind')
 depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -47,7 +47,7 @@ build () {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+    --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
     --with-platforms=x11,drm,wayland \
     --with-vulkan-drivers=intel,radeon \
