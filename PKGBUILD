@@ -25,7 +25,6 @@ build() {
   ./autogen.sh
   ./configure --with-gui=qt5
    make -j$(nproc)
-
 }
 
 package() {
@@ -36,13 +35,13 @@ package() {
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/bitcoin-qt.desktop"
 	
 	# install bitcoin-daemon
-	msg2 'Installing bitcoin-daemon...'
-	install -Dm755 "$srcdir/$_gitname/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin.conf.5" "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
+        msg2 'Installing bitcoin-daemon...'
+        install -Dm755 "$srcdir/$_gitname/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
+        install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
+        install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
+        install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
+        install -Dm644 "$srcdir/$_gitname/doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
+        install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-tx.1" "$pkgdir/usr/share/man/man1/bitcoin-tx.1"
 
 	# install bitcoin-cli
 	msg2 'Installing bitcoin-cli...'
