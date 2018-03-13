@@ -2,7 +2,7 @@
 # Contributor: Erik Dubbelboer <erik@dubbelboer.com>
 
 pkgname=phpredisadmin
-pkgver=1.8.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="phpRedisAdmin is a simple web interface to manage Redis databases"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/erikdubbelboer/phpRedisAdmin"
 license=('GPL')
 source=("https://github.com/erikdubbelboer/phpRedisAdmin/archive/v${pkgver}.tar.gz"
         "https://github.com/nrk/predis/archive/v1.1.1.zip")
-md5sums=('686624244e0e63b7d07ea3c1e86a38d7'
+md5sums=('bf2cd15ef2e7369f8e55e6a2c4a2b9eb'
          '8755fd28c226c5ac2b73c09b0dce70de')
 
 package() {
