@@ -1,12 +1,11 @@
-# $Id: PKGBUILD 274560 2017-12-16 10:45:58Z arojas $
-# Maintainer:
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=python-btchip
 pkgname=(python-btchip python2-btchip)
-pkgver=0.1.24
-pkgrel=2
+pkgver=0.1.26
+pkgrel=1
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 makedepends=(python-setuptools python2-setuptools)
