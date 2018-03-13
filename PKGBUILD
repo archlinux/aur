@@ -2,13 +2,13 @@
 
 pkgname=aerospike-amc-community
 pkgrealname=aerospike-tools
-pkgver=4.0.13
-pkgrel=2
+pkgver=4.0.15
+pkgrel=1
 pkgdesc="Aerospike Management Console (AMC) is a web-based tool to monitor/manage an Aerospike cluster"
 arch=('x86_64')
-url="http://www.aerospike.com/"
+url="https://www.aerospike.com/download/amc/"
 license=('AGPLv3')
-sha256sums=('dfccbfb3f712e66baa1bde3e7fbeae4955bf33dcb518b496eb780e01dc3a8e98')
+sha256sums=('9d0533f344b325a91d1a3e0c6c5c73226fdcdc5fb2b3c33766e539ec1923598d')
 source=("http://www.aerospike.com/download/amc/${pkgver}/artifact/linux")
 
 package() {
