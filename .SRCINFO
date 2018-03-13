@@ -1,6 +1,6 @@
 pkgbase = cockatrice-client
 	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network.
-	pkgver = 2.3.17
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://cockatrice.github.io/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = cockatrice-client
 	depends = qt5-multimedia
 	provides = cockatrice-client
 	conflicts = cockatrice-client
-	source = https://github.com/Cockatrice/Cockatrice/archive/2017-05-05-Release-2.3.17.tar.gz
+	source = https://github.com/Cockatrice/Cockatrice/archive/2018-03-02-Release-2.5.0.tar.gz
 	sha256sums = 95f78db3c2f4f93e2b007b92687cb1655ce5d6b23d72aeb85fc043f60748701e
 
 pkgname = cockatrice-client

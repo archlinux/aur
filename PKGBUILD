@@ -3,8 +3,8 @@
 # Contributer: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-client
-pkgver=2.3.17
-_reldate=2017-05-05
+pkgver=2.5.0
+_reldate=2018-03-02
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('cockatrice-client')
 conflicts=('cockatrice-client')
 _relname="$_reldate-Release-$pkgver"
 source=("https://github.com/Cockatrice/Cockatrice/archive/$_relname.tar.gz")
-sha256sums=('95f78db3c2f4f93e2b007b92687cb1655ce5d6b23d72aeb85fc043f60748701e')
+sha256sums=('4fbec9054ad0c64382e484ff42b9166676b4be3110e48bb3819a6f45316d9fd2')
 
 build() {
   cd "$srcdir/Cockatrice-$_relname"
