@@ -1,0 +1,31 @@
+pre_install() {
+    if [ -z "`grep '^metronome:' /etc/group`" ]; then
+        groupadd --system metronome
+    fi
+    if [ -z "`grep '^metronome:' /etc/passwd`" ]; then
+        useradd --system -d /var/lib/metronome -g metronome -s /bin/false metronome
+    fi
+
+    chown metronome:metronome var/lib/metronome var/log/metronome
+}
+
+pre_upgrade() {
+    pre_install $1
+}
+
+post_remove() {
+    userdel metronome
+
+    paths=(/etc/metronome /var/lib/metronome /var/log/metronome)
+
+    first=true
+    for path in ${paths[@]}; do
+        if [ -d $path ]; then
+            if $first; then
+                first=false
+                echo "==> Leftover Paths:"
+            fi
+            echo "==> $path"
+        fi
+    done
+}
