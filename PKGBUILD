@@ -13,19 +13,32 @@ arch=('any')
 license=('custom')
 url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
 depends=('gcc-libs')
-options=('!libtool')
-source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz)
-md5sums=('a94ea755ab695bc04f82b94d2e24a1ef')
-sha256sums=('a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182')
+options=('!libtool' '!makeflags')
+source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz
+        'CVE-2017-10140-cwd-db_config.patch')
+md5sums=('a94ea755ab695bc04f82b94d2e24a1ef'
+         'f961c86ffd1d92da87be2eb9742d1d72')
+sha256sums=('a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182'
+            'b315706d1cfc5b20f291a2994f6e3c8fe7b10e2f3d6ef92a07d890381e296e40')
+
+prepare() {
+  cd "$srcdir/db-$pkgver/"
+
+  patch -u -p1 < "$srcdir"/CVE-2017-10140-cwd-db_config.patch
+}
 
 build() {
-  cd "$srcdir/db-$pkgver/build_unix"
+  cd "$srcdir/db-$pkgver/"
+
+  cd "build_unix"
   ../dist/configure --prefix=/usr --enable-compat185 --enable-shared --enable-static --enable-cxx
   make LIBSO_LIBS=-lpthread || return 1
 }
 
 package() {  
-  cd "$srcdir/db-$pkgver/build_unix"
+  cd "$srcdir/db-$pkgver/"
+  
+  cd "build_unix"
   make prefix="$pkgdir/usr" includedir="$pkgdir/usr/include/db5.1" install
 
 # Remove documents to save space, these can be found online if needed.

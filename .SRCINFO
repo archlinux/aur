@@ -7,9 +7,13 @@ pkgbase = db5.1
 	license = custom
 	depends = gcc-libs
 	options = !libtool
+	options = !makeflags
 	source = http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz
+	source = CVE-2017-10140-cwd-db_config.patch
 	md5sums = a94ea755ab695bc04f82b94d2e24a1ef
+	md5sums = f961c86ffd1d92da87be2eb9742d1d72
 	sha256sums = a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182
+	sha256sums = b315706d1cfc5b20f291a2994f6e3c8fe7b10e2f3d6ef92a07d890381e296e40
 
 pkgname = db5.1
 
