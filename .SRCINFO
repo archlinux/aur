@@ -1,6 +1,6 @@
 pkgbase = lib32-smbclient
 	pkgdesc = Tools to access a server's filespace and printers via SMB
-	pkgver = 4.7.5
+	pkgver = 4.7.6
 	pkgrel = 1
 	url = http://www.samba.org
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = lib32-smbclient
 	makedepends = lib32-jansson
 	makedepends = smbclient
 	makedepends = libwbclient
-	source = https://www.samba.org/samba/samba/ftp/stable/samba-4.7.5.tar.gz
-	sha256sums = 316d04fa9fbabad6f2739fe68e1928778af4866265409119aba6ef3435c8fe8d
+	source = https://www.samba.org/samba/samba/ftp/stable/samba-4.7.6.tar.gz
+	sha256sums = 1eede30fc8ef6504e24602fb72b00baa0a7b73b59f16d25cb0771dc8c7c57d6e
 
 pkgname = lib32-libwbclient
 	pkgdesc = Samba winbind client library
