@@ -49,6 +49,6 @@ build() {
 package() {
   cd "os-patch-epiphany-browser-$ubunturel"
   DESTDIR="${pkgdir}" ninja -C build install
-  install -Dm 644 {"${srcdir}","${pkgdir}"/usr/bin}/epiphany-sync
+  install -Dm 755 {"${srcdir}","${pkgdir}"/usr/bin}/epiphany-sync
   install -Dm 644 {"${srcdir}","${pkgdir}"/usr/lib/systemd/user}/epiphany-sync.service
 }
