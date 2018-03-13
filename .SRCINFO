@@ -1,7 +1,7 @@
 pkgbase = epiphany-pantheon-bzr
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine, with Elementary OS patches
 	pkgver = 3.27.90.1ubuntu1.r19
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnome.org/projects/epiphany/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = epiphany-pantheon-bzr
 	makedepends = yelp-tools
 	makedepends = autoconf-archive
 	makedepends = appstream-glib
-	makedepends = git
+	makedepends = bzr
 	depends = webkit2gtk>=2.19.4
 	depends = gcr
 	depends = libhttpseverywhere

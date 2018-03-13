@@ -6,14 +6,14 @@ pkgname=$_pkgname-pantheon-bzr
 ephyver=3.27.90-1ubuntu1
 ubunturel=bionic
 pkgver=3.27.90.1ubuntu1.r19
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNOME web browser based on the WebKit rendering engine, with Elementary OS patches"
 url="http://www.gnome.org/projects/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('webkit2gtk>=2.19.4' gcr libhttpseverywhere libdazzle)
 makedepends=(meson docbook-xml startup-notification lsb-release
-             gobject-introspection yelp-tools autoconf-archive appstream-glib git)
+             gobject-introspection yelp-tools autoconf-archive appstream-glib bzr)
 groups=(pantheon-unstable pantheon-qq)
 replaces=(epiphany)
 provides=(epiphany epiphany-sync)
