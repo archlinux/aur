@@ -1,0 +1,18 @@
+pkgbase = ncrack-git
+	pkgdesc = High-speed network authentication cracking tool
+	pkgver = 0.6.0.r20.g1a4232d
+	pkgrel = 1
+	url = https://nmap.org/ncrack/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	provides = ncrack
+	conflicts = ncrack
+	source = git+https://github.com/nmap/ncrack.git
+	sha256sums = SKIP
+
+pkgname = ncrack-git
+
