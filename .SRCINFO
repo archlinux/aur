@@ -1,7 +1,7 @@
 pkgbase = jackett
-	pkgdesc = Use many trackers with Sonarr
+	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
 	pkgver = 0.8.749
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jackett/Jackett
 	install = jackett.install
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = jackett
 	source = jackett.service
 	source = jackett.sysusers
 	sha256sums = ef27eeb95249c33ab5e4f12c103e872aa9944a842748ced62bc81a4dad2a3055
-	sha256sums = 47326614002708a829e8ce6b7d5fc5a068125e8d64ff47fdb5f3ab09d0c4b0c8
-	sha256sums = f48165d816e2b2f9a94f816e5deed58326fa23d7a3dfeaab95473899b554c6db
+	sha256sums = 7d5396611df22b5a7605dda533ab876cd6647272eb56ad9d22e2f9b2b6fdff6a
+	sha256sums = d005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590
 
 pkgname = jackett
 

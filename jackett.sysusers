@@ -1,1 +1,1 @@
-u jackett - "Jackett daemon" /usr/share/Jackett
+u jackett - "Jackett daemon" /var/lib/jackett

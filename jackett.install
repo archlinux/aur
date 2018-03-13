@@ -1,9 +1,28 @@
 post_install() {
-  systemd-sysusers jackett.conf
-
-  chown -R jackett: /usr/share/Jackett /opt/Jackett
+  chown -R jackett: /usr/lib/jackett /var/lib/jackett
 }
 
 post_upgrade() {
-	post_install $1
+  # At version 0.8.749-2 we moved configs to /var/lib/jackett, so
+  # migrate old config directory.
+  if [[ $(vercmp "0.8.749-2" "$2") -eq 1 ]]; then
+
+    # Check for existing old config directory and non-existance of new config file.
+    if [[ -d /usr/share/Jackett/.config/Jackett && ! -f /var/lib/jackett/ServerConfig.json ]]; then
+      cp -a /usr/share/Jackett/.config/Jackett/* /var/lib/jackett/
+    fi
+
+    # Check for existing old mono config directory and non-existance of new mono config directory.
+    if [[ -d /usr/share/Jackett/.config/.mono && ! -d /var/lib/jackett/.config/.mono ]]; then
+      mkdir -p /var/lib/jackett/.config/
+      cp -a /usr/share/Jackett/.config/.mono /var/lib/jackett/.config/
+    fi
+
+    # The jackett user's home directory needs to change too.
+    if [[ "$( getent passwd jackett | cut -d: -f6 )" != "/var/lib/jackett" ]]; then
+      usermod -d /var/lib/jackett jackett
+    fi
+  fi
+
+  post_install "$1"
 }
