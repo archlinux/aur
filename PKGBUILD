@@ -34,7 +34,7 @@ package() {
 
     # Patch package.json
     sed -i 's/"updates": 1/"updates": 0/g' "${pkgdir}/usr/lib/vk/resources/app/package.json"
-    sed -i '/custom_install/d' "${pkgdir}/usr/lib/vk/resources/app/package.json"
+    sed -i 's/"custom_install": 1/"custom_install": 0/g' "${pkgdir}/usr/lib/vk/resources/app/package.json"
 
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
