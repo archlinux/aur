@@ -15,16 +15,22 @@ url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
 depends=('gcc-libs')
 options=('!libtool' '!makeflags')
 source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz
+        'db-atomic.patch'
         'CVE-2017-10140-cwd-db_config.patch')
 md5sums=('a94ea755ab695bc04f82b94d2e24a1ef'
+         'd56cef85d0fc9432b54a32993d4c9f06'
          'f961c86ffd1d92da87be2eb9742d1d72')
 sha256sums=('a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182'
+            '7ab718c5624b4724a585c91f4cfdcd3830cfaf0ce1e865a4a79b316ba35990c0'
             'b315706d1cfc5b20f291a2994f6e3c8fe7b10e2f3d6ef92a07d890381e296e40')
 
 prepare() {
   cd "$srcdir/db-$pkgver/"
 
-  patch -u -p1 < "$srcdir"/CVE-2017-10140-cwd-db_config.patch
+  cd "src/"
+  patch -p1 < "$srcdir"/db-atomic.patch
+
+  patch -u -p2 < "$srcdir"/CVE-2017-10140-cwd-db_config.patch
 }
 
 build() {
