@@ -16,7 +16,7 @@ makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
 sha256sums=('15b630811b8b017276767f1e0e8713c5fbf223d7dd90f75a740535652c066d85')
 
 _gourl=github.com/snapcore/snapd
