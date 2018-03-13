@@ -1,6 +1,10 @@
 *.pkg.tar*
 *.src.tar*
-*.7z
+*.tgz
+*.tar.gz
 *.zip
+*.7z
+*.tar
 src
+*~
 pkg
