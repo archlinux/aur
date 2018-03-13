@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.6.0
+pkgver=52.7.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         rust-i686.patch
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
         nvidia-GLSL-version.patch)
-sha256sums=('587cd94a315f5a94bf5c1f85e4a0ea92c9103503b51d649a3c4a4a122d691e42'
+sha256sums=('293c8394ed7dab1ea833c50a7b19a2fa3432e7c2f9edd891403bca12fc0fed33'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
