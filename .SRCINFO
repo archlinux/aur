@@ -1,0 +1,23 @@
+pkgbase = python-nipy
+	pkgdesc = Analysis of structural and functional neuroimaging data.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://nipy.org/nipy/
+	arch = x86_64
+	license = BSD 3-clause
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy>=1.6.0
+	depends = python-scipy>=0.9.0
+	depends = python-sympy>=0.7.0
+	depends = python-nibabel>=1.2.0
+	source = python-nipy-0.4.2.tar.gz::https://github.com/nipy/nipy/archive/0.4.2.tar.gz
+	source = http://nipy.org/data-packages/nipy-templates-0.2.tar.gz
+	source = http://nipy.org/data-packages/nipy-data-0.2.tar.gz
+	md5sums = f8162b019845c41b57b44d181763e85a
+	md5sums = 8e7d607a3b83ba1216432907f0c954c8
+	md5sums = ea94bd420ce103d920cfcd0e3b551424
+
+pkgname = python-nipy
+
