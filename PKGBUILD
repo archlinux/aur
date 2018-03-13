@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=59.0rc5
+pkgver=60.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -24,7 +24,7 @@ install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         "$_pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c2498690540fd0c7457d7f0a565af8e18e0bd7bcbb8ad47667ac37f15f1efd14'
+sha256sums=('ab2543c0ce39c7b1e2bbffee41fe60504084df905210f837a647a48c776c9882'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             '92f58532757365f38382e016d250836e4faf8415599cefb6ddace0de77486658')
 # RC
