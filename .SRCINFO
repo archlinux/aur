@@ -1,6 +1,6 @@
 pkgbase = buku-git
 	pkgdesc = Powerful command-line bookmark manager.
-	pkgver = 1114.fd49d30
+	pkgver = 1172.33c126a
 	pkgrel = 1
 	url = https://github.com/jarun/Buku
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = buku-git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-cryptography
-	depends = python-requests
 	depends = python-urllib3
 	provides = buku
 	conflicts = buku
