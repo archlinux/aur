@@ -1,6 +1,6 @@
 pkgbase = ombi
 	pkgdesc = Simple automated way for users to request new content for Plex
-	pkgver = 3.0.3000
+	pkgver = 3.0.3020
 	pkgrel = 1
 	url = https://github.com/tidusjar/Ombi
 	install = ombi.install
@@ -18,20 +18,20 @@ pkgbase = ombi
 	optdepends = plex-media-server-plexpass: Media server (plexpass version)
 	optdepends = emby-server: Media server
 	replaces = plexrequests
-	noextract = ombi-x86_64-3.0.3000.tar.gz
-	noextract = ombi-i686-3.0.3000.tar.gz
-	noextract = ombi-armv7h-3.0.3000.tar.gz
+	noextract = ombi-x86_64-3.0.3020.tar.gz
+	noextract = ombi-i686-3.0.3020.tar.gz
+	noextract = ombi-armv7h-3.0.3020.tar.gz
 	options = staticlibs
 	source = ombi.service
 	source = ombi.sysusers
 	sha256sums = d5893f6b665a0646054343a051e462a49569d51de224b45d3d2542b6c4e3d168
 	sha256sums = 6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa
-	source_x86_64 = ombi-x86_64-3.0.3000.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3000/linux.tar.gz
-	sha256sums_x86_64 = 715e873d43e094e636f9b12f34a505ce15700b5d46a68d6c77673c996d7c302a
-	source_i686 = ombi-i686-3.0.3000.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3000/linux.tar.gz
-	sha256sums_i686 = 715e873d43e094e636f9b12f34a505ce15700b5d46a68d6c77673c996d7c302a
-	source_armv7h = ombi-armv7h-3.0.3000.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3000/linux-arm.tar.gz
-	sha256sums_armv7h = 59a765edcd71fea9ff5f5c4b96b15cfdee86903f4327b9eff98fe8e95ce43e79
+	source_x86_64 = ombi-x86_64-3.0.3020.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3020/linux.tar.gz
+	sha256sums_x86_64 = 478eefeedc17b649d3bb424a366dc4bfc854953a44f00928358b111b31901570
+	source_i686 = ombi-i686-3.0.3020.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3020/linux.tar.gz
+	sha256sums_i686 = 478eefeedc17b649d3bb424a366dc4bfc854953a44f00928358b111b31901570
+	source_armv7h = ombi-armv7h-3.0.3020.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v3.0.3020/linux-arm.tar.gz
+	sha256sums_armv7h = cc10719454264cdeaf6d209b62f627c50a0e3165dbee20de6fee23dbdabf7a72
 
 pkgname = ombi
 
