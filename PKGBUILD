@@ -3,14 +3,14 @@
 
 pkgname=kirigami2
 pkgver=5.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 groups=(kf5)
 depends=(qt5-quickcontrols2 qt5-graphicaleffects)
-makedepends=(extra-cmake-modules qt5-tools qt5-svg kpackage)
+makedepends=(extra-cmake-modules qt5-tools qt5-svg kpackage doxygen)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 sha256sums=('d0c8a798bc9aa448ba87473d20e2694e0334e3e610b151e7b307ec24051b78ef'
             'SKIP')
@@ -26,7 +26,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_EXAMPLES=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 
