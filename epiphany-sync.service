@@ -1,0 +1,11 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Epiphany profiles
+
+[Service]
+Type=idle
+RemainAfterExit=true
+ExecStart=/usr/bin/epiphany-sync
+ExecStop=/usr/bin/epiphany-sync
+
+[Install]
+WantedBy=default.target

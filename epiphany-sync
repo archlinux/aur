@@ -1,0 +1,68 @@
+#!/bin/bash
+STATIC=main
+LINK=epiphany
+VOLATILE=/dev/shm/$USER/epiphany
+PROFDIR=~/.config/
+
+usage()
+{
+  echo "Usage: epiphany-sync [-dh] [-p profile-basename]"
+}
+
+longhelp()
+{
+  usage
+  cat <<EOF
+
+This program syncs your Epiphany profile to a ramdisk (/dev/shm) and back.
+
+-h prints this help message
+-d prints the default profile directory
+-p [dir] set the profile basename
+-r restores on-disk profile (use only before uninstalling epiphany-sync)
+EOF
+exit 0
+}
+
+while getopts dhp: options
+do
+case $options in
+  d) echo "default profile directory is "$PROFDIR"$LINK"
+     exit 0;;
+  h) longhelp;;
+  p) LINK="$OPTARG";;
+  r) mv "$VOLATILE" "$PROFDIR$LINK-copy"
+     mv "$PROFDIR$LINK"{,-trash}
+     mv "$PROFDIR$STATIC"{,-trash}
+     mv "$PROFDIR$LINK"{-copy,}
+     rm -rf "$PROFDIR"{"$LINK","$STATIC"}-trash;;
+  ?) usage
+     exit 0;;
+  esac
+done
+
+if [ -z "$LINK" ]; then
+  echo "Profile directory not set. Try the -p option" > /dev/stderr
+  exit 1
+fi
+
+[[ -r $VOLATILE ]] || install -dm700 $VOLATILE
+
+cd "$PROFDIR"
+
+if [ ! -e "$LINK" ]; then
+  echo "$PROFDIR$LINK does not exist" > /dev/stderr
+  exit 1
+fi
+
+if [[ `readlink $LINK` != $VOLATILE ]]; then
+  mv $LINK $STATIC
+  ln -s $VOLATILE $LINK
+fi
+
+if [[ -e $LINK/.unpacked ]]; then
+  rsync -av --delete --exclude .unpacked ./$LINK/ ./$STATIC/
+else
+  rsync -av ./$STATIC/ ./$LINK/
+  touch $LINK/.unpacked
+fi
