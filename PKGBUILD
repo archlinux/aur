@@ -2,8 +2,8 @@
 
 pkgname=xfce4-indicator-plugin
 _maj=2.3
-pkgver=$_maj.3
-pkgrel=3
+pkgver=$_maj.4
+pkgrel=1
 pkgdesc="Plugin to display information from applications in the Xfce4 panel"
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/panel-plugins/$pkgname"
@@ -19,7 +19,7 @@ optdepends=('indicator-application-gtk2: take menus from applications and place 
             'indicator-sound: unified sound menu')
 install=$pkgname.install
 source=(http://archive.xfce.org/src/panel-plugins/$pkgname/$_maj/$pkgname-$pkgver.tar.bz2)
-sha256sums=('c46b529b0f31c8ba9401fdc3e245ed3f30e61fadc0e8d2ddb6aaa10b02edbd52')
+sha256sums=('02773722cf99113bc64cc399df47c3a639e206a864c6995be68fe8281076582e')
 
 build() {
   cd $pkgname-$pkgver
