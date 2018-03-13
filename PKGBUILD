@@ -4,7 +4,7 @@
 
 pkgname=dcmtk
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
@@ -28,6 +28,8 @@ build() {
   cmake . \
     -DCMAKE_BUILD_TYPE:STRING="Release" \
     -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+	-DCMAKE_INSTALL_LIBEXECDIR:PATH=lib \
     -DDCMTK_WITH_OPENSSL:BOOL=ON \
     -DDCMTK_WITH_PNG:BOOL=ON \
     -DDCMTK_WITH_PRIVATE_TAGS:BOOL=ON \
@@ -51,7 +53,7 @@ package() {
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
 
   install -dm755 "${pkgdir}/usr/lib/"
-  
+
   # Install ld config file
   install -dm755 "${pkgdir}/etc/ld.so.conf.d/"
   echo "/usr/lib/" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
