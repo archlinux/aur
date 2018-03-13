@@ -17,7 +17,7 @@
 pkgbase="spl-linux-vfio-git"
 pkgname=("spl-linux-vfio-git" "spl-linux-vfio-git-headers")
 
-pkgver=2018.02.24.r1068.3673d03.4.15.2.1
+pkgver=2018.03.09.r1069.43983eb.4.15.2.1
 pkgrel=1
 makedepends=("linux-vfio-headers=4.15.2-1" "git")
 arch=("x86_64")
@@ -25,7 +25,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git>=2018.02.24.r1068.3673d03" "kmod" "linux-vfio=4.15.2-1")
+depends=("spl-utils-common-git>=2018.03.09.r1069.43983eb" "kmod" "linux-vfio=4.15.2-1")
 
 build() {
     cd "${srcdir}/spl"
@@ -53,7 +53,7 @@ package_spl-linux-vfio-git() {
 
 package_spl-linux-vfio-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-vfio-headers'  'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-threadripper-headers' 'spl-linux-threadripper-git-headers' 'spl-linux-threadripper-vfio-headers' 'spl-linux-threadripper-vfio-git-headers' 'spl-linux-vfio-headers'  'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
