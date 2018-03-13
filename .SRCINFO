@@ -1,6 +1,6 @@
 pkgbase = vk-messenger
 	pkgdesc = VK Messenger for Linux
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://vk.com/messenger
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = vk-messenger
 	depends = nss
 	depends = xdg-utils
 	optdepends = gnome-keyring
-	source = vk-3.1.0-1.zip::https://desktop.userapi.com/linux64/master/vk.zip
-	sha256sums = 8146cff575180ad731e5e2aa60d5212a8b808d4982f2c4def188692a9ec029f3
+	source = vk-3.2.0-1.zip::https://desktop.userapi.com/linux64/master/vk.zip
+	sha256sums = 3032a4c0fc1c9dd417e255fc8a6fb40845ec0059bfd058b8c3b37817047c135a
 
 pkgname = vk-messenger
 
