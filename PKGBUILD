@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('jack' 'hicolor-icon-theme' 'qt5-x11extras')
 url="https://qjackctl.sourceforge.io/"
 makedepends=('git')
-provides=(qjackctl)
-conflicts=(qjackctl-svn)
+provides=('qjackctl')
+conflicts=('qjackctl' 'qjackctl-svn')
 # sf.net is the original repository, but has connection problems
 #source=("${pkgname}"'::git+http://git.code.sf.net/p/qjackctl/code')
 source=("${pkgname}"'::git+https://github.com/rncbc/qjackctl.git')
