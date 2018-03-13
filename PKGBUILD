@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://metronome.im/"
 license=('MIT' 'ISC')
 depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'lua51-event'
-   'lua51-sec' 'libidn' 'openssl', 'libevent-compat')
+   'lua51-sec' 'libidn' 'openssl' 'libevent-compat')
 optdepends=('lua51-zlib: compression support')
 makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
