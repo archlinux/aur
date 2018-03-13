@@ -58,6 +58,7 @@ _localetor() {
 	else
 		echo -n 'en-US'
 	fi
+
 }
 
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
@@ -103,7 +104,7 @@ prepare() {
 	fi
 
 	# we search and replace using sed with / as delimiter below so don't allow slashes in these vars.
-	# makepkg already enforces that there're no slashes in $pkgname, so we don't check that again here.
+	# makepkg already enforces that there're no slashes in ${pkgname}, so we don't check that again here.
 	if [[ ${pkgver} = */* || ${_language} = */* || ${pkgdesc} = */* ]]; then
 		error '${pkgver}, ${_language} and ${pkgdesc} for this package are not allowed to contain /' >&2
 		return 1
@@ -117,15 +118,15 @@ package() {
 
 	sed -i "s/__REPL_LANGUAGE__/${_language}/g" "${pkgname}.desktop"
 
-	sed -i "s/__REPL_NAME__/${pkgname}/g"       "${pkgname}.sh"
-	sed -i "s/__REPL_VERSION__/${pkgver}/g"     "${pkgname}.sh"
-	sed -i "s/__REPL_RELEASE__/${pkgrel}/g"     "${pkgname}.sh"
-	sed -i "s/__REPL_LANGUAGE__/${_language}/g" "${pkgname}.sh"
-	sed -i "s/__REPL_ARCH__/${_archstr}/g"      "${pkgname}.sh"
+	sed -i "s/__REPL_NAME__/${pkgname}/g"		"${pkgname}.sh"
+	sed -i "s/__REPL_VERSION__/${pkgver}/g"		"${pkgname}.sh"
+	sed -i "s/__REPL_RELEASE__/${pkgrel}/g"		"${pkgname}.sh"
+	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"${pkgname}.sh"
+	sed -i "s/__REPL_ARCH__/${_archstr}/g"		"${pkgname}.sh"
 
-	install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm 644 "${pkgname}.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 755 "${pkgname}.sh"      "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${pkgname}.png"	"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 755 "${pkgname}.sh"	"${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm 644 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
