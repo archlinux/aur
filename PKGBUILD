@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=delta-media-player
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc='IPTV program stream player for DMPlayer'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(vlc gcc-libs qt5-tools 'libevent>=2.1.8')
 makedepends=(chrpath)
 provides=(dmplayer)
 source=("https://www.deltamediaplayer.com/playercode/download/DeltaMediaPlayer-$pkgver.deb")
-sha256sums=('b42f89d48a82df7d3dcb4dc92b76e9dabf57455ede8a9cd26e251274b76a2962')
+sha256sums=('e7e86e4a5802f3a0d86043289d037d6f5aa505923d9baf7a59fc1d6c9c73d601')
 
 package(){
   cd "$srcdir"
