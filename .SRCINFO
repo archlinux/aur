@@ -1,13 +1,13 @@
 pkgbase = kubernetes-helm-bin
 	pkgdesc = The Kubernetes Package Manager
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/kubernetes/helm
 	arch = x86_64
 	license = Apache
 	optdepends = kubectl-bin: to manage the cluster
-	source = https://storage.googleapis.com/kubernetes-helm/helm-v2.8.1-linux-amd64.tar.gz
-	sha256sums = 7df7e9eb1b7fde74cc9741682944e620793e618761ccfa8d4bfb355791b76f1d
+	source = https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
+	sha256sums = 614b5ac79de4336b37c9b26d528c6f2b94ee6ccacb94b0f4b8d9583a8dd122d3
 
 pkgname = kubernetes-helm-bin
 
