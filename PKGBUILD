@@ -31,15 +31,15 @@ prepare() {
 
 build() {
     cd "${srcdir}/mypaint"
-    python2 setup.py clean --all
-    python2 setup.py build
+    python setup.py clean --all
+    python setup.py build
 }
 
 package() {
     cd "${srcdir}/mypaint"
     echo "root: ${pkgdir}"
 	
-    python2 setup.py install \
+    python setup.py install \
      --root="${pkgdir}" --skip-build
 }
 
