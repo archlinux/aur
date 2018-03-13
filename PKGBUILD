@@ -3,12 +3,12 @@
 
 pkgname='frr'
 pkgver='4.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
-depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp')
+depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp' 'rtrlib')
 makedepends=('patch' 'gcc' 'net-snmp' 'json-c' 'bison' 'c-ares' 'perl-xml-libxml' 'rtrlib')
 conflicts=('quagga' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
@@ -44,6 +44,7 @@ prepare() {
     --enable-configfile-mask="0640" \
     --enable-logfile-mask="0640" \
     --enable-shell-access \
+    --enable-realms \
     --enable-pcreposix \
     --enable-systemd \
     --enable-poll="yes" \
