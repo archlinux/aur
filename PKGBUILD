@@ -9,14 +9,13 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=60.0a1
-pkgver=60.0a1.20180123
+_version=61.0a1
+pkgver=61.0a1.20180313
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
-            'gtk2: flash plugin support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation'
