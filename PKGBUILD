@@ -1,4 +1,5 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Lin Ruoshui <lin.ruohshoei@gmail.com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=fsport
 pkgver=3.5
@@ -7,16 +8,17 @@ pkgdesc="The original FreeSpace campaigns ported to FreeSpace 2"
 arch=('any')
 url="http://fsport.hard-light.net/website/"
 license=('custom:noncommercial')
+makedepends=('p7zip')
 depends=('fs2_open')
 optdepends=('fs2_open-mediavps: Hi-res FS2 resources'
             'fsport-mediavps: Hi-res FS1 resources'
             'fsport-tangovps: Hi-res Command Brief animations')
 source=(fsport.sh fsport.desktop LICENSE
-        'http://fsport.freespacemods.net/releases/fsport3_5.7z'
-        'http://fsport.freespacemods.net/releases/fsport-missions.7z'
-        'http://fsport.freespacemods.net/releases/odeon_fs1.zip'
-        'http://fsport.freespacemods.net/releases/sparky_hi_fs1.7z'
-        'http://fsport.freespacemods.net/releases/stu_fs1.7z')
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/fsport3_5.7z'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/fsport-missions.7z'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/odeon_fs1.zip'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/sparky_hi_fs1.7z'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/stu_fs1.7z')
 sha256sums=('e443c079fe7c2bc6ed85028aa16cfe83d4b159511e83f0ae2448bb8f845e8b2f'
             'c7c64510205f78eabc4ff52fa134da7a0877e1a768253cd2e8de9c67af994f3e'
             '79462ffe82b8cf371f37a3444a8e17165d293e797a865b9c4312f86d00ddf4ec'
