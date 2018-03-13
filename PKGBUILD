@@ -6,7 +6,7 @@
 _srcname=vlc
 pkgname=vlc-decklink
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ makedepends=(
         'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
         'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
         'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
-        'vcdimager' 'libssh2' 'mesa' 'protobuf' 'opencv' 'libnfs' 'mpg123'
+        'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
         'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
         'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
         'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
@@ -53,7 +53,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'ttf-freefont: subtitle font '
             'ttf-dejavu: subtitle font'
             'libssh2: sftp access'
-            'opencv: opencv video'
+            #'opencv: opencv video'
             'libnfs: NFS access'
             'mpg123: mpg123 codec'
             'protobuf: chromecast streaming'
@@ -139,7 +139,7 @@ build() {
         --enable-dvdread \
         --enable-dvdnav \
         --enable-bluray \
-        --enable-opencv \
+        --disable-opencv \
         --enable-smbclient \
         --enable-sftp \
         --enable-nfs \
