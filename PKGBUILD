@@ -1,18 +1,17 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bettercap-git
-pkgver=1.5.3.775.097478a
-pkgrel=2
-pkgdesc='Complete, modular, portable and easily extensible MITM framework'
-url='https://github.com/evilsocket/bettercap'
-arch=('any')
+pkgver=2.1.849.b63c20b
+pkgrel=1
+pkgdesc='Swiss army knife for network attacks and monitoring'
+url='https://github.com/bettercap/bettercap'
+arch=('x86_64')
 license=('GPL3')
-depends=('net-tools' 'ruby' 'ruby-network_interface' 'ruby-pcaprub' 'ruby-packetfu' 'ruby-colorize' 'ruby-net-dns' 'ruby-em-proxy' 'ruby-rubydns')
-makedepends=('git')
+depends=('libpcap')
+makedepends=('go-pie' 'git')
 provides=('bettercap')
 conflicts=('bettercap')
-options=('!emptydirs')
-source=(${pkgname}::git+https://github.com/evilsocket/bettercap)
+source=(${pkgname}::git+https://github.com/bettercap/bettercap)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,17 +20,23 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare(){
+  export GOPATH="${srcdir}"
+  mkdir -p src/github.com/bettercap
+  ln -rTsf ${pkgname} src/github.com/bettercap/bettercap
+}
+
 build() {
-  cd ${pkgname}
-  gem build bettercap.gemspec
+  cd src/github.com/bettercap/bettercap
+  export GOPATH="${srcdir}"
+  go get -v
+  go build -o bettercap
 }
 
 package() {
   cd ${pkgname}
-  local _gemdir="$(gem env gemdir)"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" bettercap*.gem
+  install -Dm 755 ../bin/bettercap -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
