@@ -2,16 +2,32 @@
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 pkgname=db4.8
 pkgver=4.8.30
-pkgrel=5
+pkgrel=6
 pkgdesc="The Berkeley DB embedded database system 4.8"
 arch=('any')
 license=('custom')
 url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
 depends=('gcc-libs')
 options=('!libtool' '!makeflags')
-source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz)
-md5sums=('f80022099c5742cd179343556179aa8c')
-sha256sums=('e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a')
+source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz
+        'db-atomic.patch'
+        'CVE-2017-10140-cwd-db_config.patch')
+md5sums=('f80022099c5742cd179343556179aa8c'
+	 'd56cef85d0fc9432b54a32993d4c9f06'
+         'c2d29f72c20625c09f30e35af3c4f2ff')
+sha256sums=('e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a'
+            '7ab718c5624b4724a585c91f4cfdcd3830cfaf0ce1e865a4a79b316ba35990c0'
+            '7dfea34368f4d3d5b81973f7b0dbb8a54cdd09effb09b2b28763b2470833a614')
+
+prepare() {
+  cd "$srcdir/db-$pkgver/"
+
+  chmod +w dbinc/atomic.h
+  patch -p1 < "$srcdir"/db-atomic.patch
+  
+  chmod +w env/env_open.c
+  patch -u -p1 < "$srcdir"/CVE-2017-10140-cwd-db_config.patch
+}
 
 build() {
   cd "$srcdir/db-$pkgver/"
