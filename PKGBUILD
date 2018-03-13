@@ -4,8 +4,8 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=pcsxr
-pkgver=1.9.93
-pkgrel=7
+pkgver=1.9.94
+pkgrel=1
 pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df project'
 arch=('any')
 url='http://pcsxr.codeplex.com'
@@ -16,14 +16,14 @@ provides=('pcsxr')
 conflicts=('pcsxr' 'pcsx-df')
 
 # Accessible through /srv/ftp/other/community on nymeria.
-source=("https://sources.archlinux.org/other/community/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('4d114bb8cd6a278d28c35020d62b928be4be7d6a1d45d7da3c808e4a4681fd9d')
+source=("http://ftp.debian.org/debian/pool/main/p/pcsxr/${pkgname}_${pkgver}.orig.tar.xz")
+sha256sums=('8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660')
 
 build() {
   cd "${srcdir}/${pkgname}"
 
   #zlib >= 1.2.11 has a new function that is called uncompress2 that conflicts with the one in cdriso.c line 916 and line 995
-  sed -i "s/uncompress2/uncompress3/g" libpcsxcore/cdriso.c
+  sed -i "s/uncompress2/cdriso_uncompress2/g" libpcsxcore/cdriso.c
   
   autoreconf -f -i
   intltoolize --force

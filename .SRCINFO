@@ -1,7 +1,7 @@
 pkgbase = pcsxr
 	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df project
-	pkgver = 1.9.93
-	pkgrel = 6
+	pkgver = 1.9.94
+	pkgrel = 1
 	url = http://pcsxr.codeplex.com
 	arch = any
 	license = GPL
@@ -25,13 +25,11 @@ pkgbase = pcsxr
 	depends = libxxf86vm
 	depends = sdl2
 	depends = zlib
-	optdepends = lib32-libpulse: Pulseaudio support
-	optdepends = lib32-alsa-plugins: ALSA support
 	provides = pcsxr
 	conflicts = pcsxr
 	conflicts = pcsx-df
-	source = https://sources.archlinux.org/other/community/pcsxr/pcsxr-1.9.93.tar.bz2
-	sha256sums = 4d114bb8cd6a278d28c35020d62b928be4be7d6a1d45d7da3c808e4a4681fd9d
+	source = http://ftp.debian.org/debian/pool/main/p/pcsxr/pcsxr_1.9.94.orig.tar.xz
+	sha256sums = 8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660
 
 pkgname = pcsxr
 
