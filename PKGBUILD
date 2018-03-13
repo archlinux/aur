@@ -7,14 +7,14 @@ pkgname=("python-$_module")
 #pkgname=("python-$_module" "python2-$_module") 
 pkgdesc="Set of tools for automatic astrophotography images acquisition and processing"
 pkgver="0.2.13"
-pkgrel=1
+pkgrel=2
 url="https://github.com/pozar87/apts"
 license=('Apache 2')
 arch=('any')
 makedepends=("python-pbr"
              "python-igraph"
-             "python-pyephem")
-#             "python2-pbr>=1.9"
+             "python-pyephem"
+             "python-timezonefinder")
 #             "python2-configparser>=3.5")
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
 md5sums=('cf69015caca511524653538a26b33b28')
@@ -32,7 +32,8 @@ package_python-apts(){
              'python-pyephem'
              'python-igraph'
              'python-pint'
-             'python-seaborn')
+             'python-seaborn'
+             'python-timezonefinder')
     cd "$_name-$pkgver"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE

@@ -1,13 +1,14 @@
 pkgbase = python-apts
 	pkgdesc = Set of tools for automatic astrophotography images acquisition and processing
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pozar87/apts
 	arch = any
 	license = Apache 2
 	makedepends = python-pbr
 	makedepends = python-igraph
 	makedepends = python-pyephem
+	makedepends = python-timezonefinder
 	source = https://github.com/pozar87/apts/archive/v0.2.13.tar.gz
 	md5sums = cf69015caca511524653538a26b33b28
 
@@ -19,4 +20,5 @@ pkgname = python-apts
 	depends = python-igraph
 	depends = python-pint
 	depends = python-seaborn
+	depends = python-timezonefinder
 
