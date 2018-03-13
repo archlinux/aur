@@ -4,7 +4,7 @@
 _pkgname=openssl
 _branch=master
 pkgname=${_pkgname}-tls1.3-git
-pkgver=1.1.1.pre1.r130.g60595292ae # updated by pkgver() below
+pkgver=1.1.1.pre2.r113.gd3bc941df4 # updated by pkgver() below
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support'
 arch=('i686' 'x86_64')
@@ -45,11 +45,18 @@ build() {
 		optflags=''
 	fi
 
+	# openssl doesn't accept mixed commandline / environment settings anymore,
+	# so we copy them via a custom variable and unset the originals.
+	# https://github.com/openssl/openssl/commit/b92013602b6666314ad200d48e10a1aaa2c5b2fa#diff-f1206f9fadc5ce41694f69129aecac26
+	compileflags="${CFLAGS} ${CPPFLAGS} ${LDFLAGS}"
+	unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
+	compileflags="-Wa,--noexecstack ${compileflags}"
+
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared no-ssl3-method enable-tls1_3 ${optflags} \
-		"${openssltarget}" \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+		"${openssltarget}" "${compileflags}"
 
 	make depend
 	make
