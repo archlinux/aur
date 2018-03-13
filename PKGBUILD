@@ -5,7 +5,7 @@
 _pkgname="amazon-dash"
 pkgname="${_pkgname}-git"
 source=("$_pkgname::git+https://github.com/Nekmo/amazon-dash.git")
-pkgver=v0.4.0.r0.g17672a1
+pkgver=v1.0.0.r0.g01a1396
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
