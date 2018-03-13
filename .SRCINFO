@@ -11,6 +11,7 @@ pkgbase = logmein-hamachi-beta
 	license = custom
 	depends = glibc>=2.26
 	conflicts = hamachi
+	conflicts = logmein-hamachi
 	replaces = hamachi
 	options = !strip
 	source = systemd

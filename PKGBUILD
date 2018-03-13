@@ -12,7 +12,7 @@ pkgdesc="A zero-configuration VPN service"
 url="https://www.vpn.net/linux"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h")
 license=("custom")
-conflicts=("hamachi")
+conflicts=("hamachi" "logmein-hamachi")
 replaces=("hamachi")
 options=("!strip")
 depends=('glibc>=2.26')
