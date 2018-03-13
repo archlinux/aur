@@ -15,12 +15,12 @@ source=('git+https://github.com/andrei-pavel/curate-pkg.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd 'curate-pkg-git'
+  cd 'curate-pkg'
   printf 'r%s.%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd 'curate-pkg-git'
+  cd 'curate-pkg'
   ./install
 }
 
