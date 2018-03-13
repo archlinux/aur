@@ -1,0 +1,14 @@
+pkgbase = topgit
+	pkgdesc = A different patch queue manager
+	pkgver = 0.19.10
+	pkgrel = 1
+	url = https://github.com/mackyle/topgit
+	arch = any
+	license = GPL2
+	depends = gawk
+	depends = bash
+	source = https://github.com/mackyle/topgit/archive/topgit-0.19.10.tar.gz
+	sha256sums = 8a334ac1b3dfa2bf0b0612cf565e6077b42b7b4029db1b5f54322c84ef8deb9c
+
+pkgname = topgit
+
