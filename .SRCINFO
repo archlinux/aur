@@ -11,6 +11,7 @@ pkgbase = sodalite-git
 	depends = python-binaryornot
 	depends = python-npyscreen-git
 	depends = python-yaml
+	conflicts = sodalite
 	source = git+https://github.com/hnicke/sodalite.git
 	md5sums = SKIP
 

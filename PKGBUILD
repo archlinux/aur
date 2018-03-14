@@ -6,6 +6,7 @@ pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
 url="www.github.com/hnicke/sodalite"
 license=('GPL')
+conflicts=('sodalite')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-npyscreen-git' 'python-yaml')
 source=('git+https://github.com/hnicke/sodalite.git')
