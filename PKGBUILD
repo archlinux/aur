@@ -25,7 +25,4 @@ package() {
 
     install -D -m644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -D -m644 "$srcdir/jackett.sysusers" "$pkgdir/usr/lib/sysusers.d/jackett.conf"
-
-    msg2 "Configs copied from /usr/share/Jackett/.config/Jackett -> /var/lib/jackett/."
-    msg2 "After confirming, rm -rf /opt/Jackett /usr/share/Jackett."
 }
