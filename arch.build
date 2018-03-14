@@ -67,6 +67,7 @@ set -E
 	start_vm $img
 	ssh $vhost 'sudo pacman --noconfirm -Syu'
 	ssh $vhost 'sudo pacman --noconfirm -Su'
+	ssh $vhost 'sudo paccache --remove --keep 0'
 	stop_vm
 }
 
