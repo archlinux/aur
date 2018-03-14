@@ -7,15 +7,15 @@
 pkgname=logmein-hamachi-beta
 _pkgname=logmein-hamachi
 pkgver=2.1.0.189
-pkgrel=1
-pkgdesc="A zero-configuration VPN service"
-url="https://www.vpn.net/linux"
+pkgrel=2
+pkgdesc="A zero-configuration VPN service with glibc 2.26 support, beta version"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h")
+url="https://www.vpn.net/linux"
 license=("custom")
-conflicts=("hamachi" "logmein-hamachi")
-replaces=("hamachi")
-options=("!strip")
 depends=('glibc>=2.26')
+provides=('logmein-hamachi')
+conflicts=("logmein-hamachi")
+options=("!strip")
 
 sha1sums=('2b8052f91bb47beac1fdab0c0c455a36f8876671')
 [ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums+=('d0547257141f5c9446df1abc1820e45584781d32')
@@ -24,7 +24,7 @@ sha1sums=('2b8052f91bb47beac1fdab0c0c455a36f8876671')
 [ "${CARCH}" == "armv6h" ] && _filearch_=armel && sha1sums+=('e980a86f5d658d51622533560305057116a06df6')
 [ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums+=('2b64ae08808c90877a302e5090a2cdd3cf7e5f13')
 
-source=("systemd")
+source=("logmein-hamachi-beta.service")
 if [ "${CARCH}" == "i686" ] || [ "${CARCH}" == "x86_64" ]; then
 	source+=("https://www.vpn.net/installers/${_pkgname}-${pkgver}-${_filearch_}_beta.tgz")
 elif [ "${CARCH}" == "arm" ] || [ "${CARCH}" == "armv6h" ] || [ "${CARCH}" == "armv7h" ]; then
@@ -48,7 +48,7 @@ package() {
 	install -m 444 LICENSE "${pkgdir}"/opt/${_pkgname}
 	install -m 444 CHANGES "${pkgdir}"/opt/${_pkgname}
 	ln -sf "/opt/${_pkgname}/bin/hamachid" "${pkgdir}"/usr/bin/hamachi
-	install -m 644 "${srcdir}"/systemd "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
+	install -m 644 "${srcdir}"/${pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
 
 	# License
 	ln -sf "/opt/${_pkgname}/LICENSE" "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
