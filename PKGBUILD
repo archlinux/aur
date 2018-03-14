@@ -3,7 +3,7 @@
 # Contributor: csicar
 pkgname=mos-bin
 pkgver=1.26+feba795
-pkgrel=1
+pkgrel=2
 pkgdesc="This package contains the Mongoose OS CLI tool."
 arch=('x86_64' 'i686')
 url="https://mongoose-os.com"
@@ -12,7 +12,7 @@ groups=('')
 depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_1.26+feba795~artful0_amd64.deb")
-source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_1.24+bd8e2958~zesty0_i386.deb")
+source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_1.26+feba795~artful0_i386.deb")
 sha512sums_x86_64=('8c8e4154a33265c9f4d37a5568f2b034f0c9c27c1ac36ee513ca1632870750ca')
 sha512sums_i686=('4887ee71c23c7c2f89e11e1186c8150a9c35e4e83234fdab9e58ce3459ddd7cc')
 
