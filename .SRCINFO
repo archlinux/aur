@@ -1,0 +1,13 @@
+pkgbase = python-django-csp
+	pkgdesc = Django Content Security Policy support.
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://github.com/mozilla/django-csp
+	arch = any
+	license = BSD
+	depends = python-django
+	source = django_csp-3.3.tar.gz::https://pypi.python.org/packages/20/f7/00681fc37fbb359dd2796e16073e1d7cf50b0c42cceeb7d6b3f127ba8f34/django_csp-3.3.tar.gz
+	sha512sums = 92a101eeae11551f6ff59df2ffba78e155f827e05a21aef99873f2cc3d192cbe558c98eb6e34eee1ee2202756c27ce20caacfc3b410a200454e6076fd62e1d0a
+
+pkgname = python-django-csp
+
