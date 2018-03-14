@@ -3,13 +3,13 @@
 pkgname=strapi
 pkgver=3.0.0.alpha.11
 _pkgver=3.0.0-alpha.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Content Management Framework (headless-CMS) to build powerful API with no effort"
 arch=('any')
 url="https://strapi.io"
 license=('MIT')
-depends=('nodejs' 'mongodb')
-makedepends=('npm')
+depends=('nodejs>=9.0.0' 'mongodb>=3.4.0')
+makedepends=('npm>=5.0.0')
 provides=('strapi')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz"
         LICENSE)

@@ -1,13 +1,13 @@
 pkgbase = strapi
 	pkgdesc = Content Management Framework (headless-CMS) to build powerful API with no effort
 	pkgver = 3.0.0.alpha.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strapi.io
 	arch = any
 	license = MIT
-	makedepends = npm
-	depends = nodejs
-	depends = mongodb
+	makedepends = npm>=5.0.0
+	depends = nodejs>=9.0.0
+	depends = mongodb>=3.4.0
 	provides = strapi
 	noextract = strapi-3.0.0-alpha.11.tgz
 	source = https://registry.npmjs.org/strapi/-/strapi-3.0.0-alpha.11.tgz
