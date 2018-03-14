@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=65.0.3325.146
+pkgver=65.0.3325.162
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -40,9 +40,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-vaapi-init-r16.patch
         chromium-vaapi-r16.patch)
 
-sha256sums=('cb4f2f3f5a3344f7c452b61f8086d4b4e56af6f5bc34309c3ede8be6b4ab81a3'
+sha256sums=('627e7bfd84795de1553fac305239130d25186acf2d3c77d39d824327cd116cce'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'adfeb830af4c9b55c4a6481ef245e82ad2b9fc3cfe0fe339b30baa8573f701e7'
+            'bed2a7ef4b1ebd53b28e2f38963a2dd761267ccc8818693c34ce8596db53dd4c'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
@@ -53,12 +53,12 @@ sha256sums=('cb4f2f3f5a3344f7c452b61f8086d4b4e56af6f5bc34309c3ede8be6b4ab81a3'
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-readonly -A _system_libs=(
+declare -gA _system_libs=(
   #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
-  [fontconfig]=fontconfig 
-  [freetype]=freetype2       
-  [harfbuzz-ng]=harfbuzz     
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
@@ -73,7 +73,7 @@ readonly -A _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-readonly _unwanted_bundled_libs=(
+_unwanted_bundled_libs=(
   ${!_system_libs[@]}
   ${_system_libs[libjpeg]+libjpeg_turbo}
 )
