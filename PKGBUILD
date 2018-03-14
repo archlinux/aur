@@ -3,9 +3,9 @@
 pkgname=sops
 pkgver=3.0.2
 pkgrel=1
-pkgdesc="Editor of encrypted files that supports YAML, JSON and BINARY formats"
+pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64')
-url="https://github.com/mozilla/sops"
+url='https://github.com/mozilla/sops'
 license=('MPL2')
 depends=('glibc')
 makedepends=('go')
