@@ -3,7 +3,7 @@
 pkgname=pspg
 pkgver=0.9.3
 pkgrel=1
-pkgdesc="Tabular data pager designed to be used with psql"
+pkgdesc='Tabular data pager designed to be used with psql'
 arch=('i686' 'x86_64')
 url="https://github.com/okbob/pspg"
 license=('BSD')
