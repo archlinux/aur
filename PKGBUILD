@@ -4,7 +4,7 @@ _name=netbox
 pkgname=${_name}
 pkgver=2.3.1
 _realver="${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -55,7 +55,8 @@ backup=('etc/netbox/gunicorn_config.py' 'etc/netbox/configuration.py')
 
 package() {
 	install -d -m775 "$pkgdir/etc/${_name}"
-	cp -r ${_name}-${_realver}/${_name} "$pkgdir/opt/"
+	install -d "$pkgdir/opt/"${_name}
+	cp -r ${_name}-${_realver}/${_name}/. "$pkgdir/opt/${_name}"
 
 	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"
 	install -D -m644 ${_name}.tmpfile "$pkgdir/usr/lib/tmpfiles.d/${_name}.conf"
