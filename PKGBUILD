@@ -1,12 +1,12 @@
 pkgname=alsa-tray
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A systray icon and a command line interface for setting the volume of the ALSA Mixers."
 arch=('any')
-url="http://software.flogisoft.com/$pkgname/en/"
+url="https://projects.flogisoft.com/$pkgname/"
 license=('GPL3')
 depends=('alsa-lib' 'python2' 'pygtk' 'python2-pyalsaaudio')
-source=("http://projects.flogisoft.com/$pkgname/download/${pkgname}_${pkgver}_src.tar.gz")
+source=("${url}download/${pkgname}_${pkgver}_src.tar.gz")
 md5sums=('59038e18afa94bcf08dc3bec3f19f23a')
 
 build() {
