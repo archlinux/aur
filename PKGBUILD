@@ -11,8 +11,8 @@
 # Based on the plex-media-server package by Maxime Gauduin.
 
 pkgname=plex-media-server-plexpass
-pkgver=1.12.0.4829
-_pkgsum=6de959918
+pkgver=1.12.1.4871
+_pkgsum=6daee94e2
 pkgrel=1
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
@@ -20,42 +20,42 @@ url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
 provides=('plex-media-server')
-conflicts=('plex-media-server' 'plex-media-server-plexpass-dvr' 'plex-media-server-plexpass-hwenc')
+conflicts=('plex-media-server')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
         'plex.sysusers'
         'terms.txt')
+
 source_armv7h=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/PlexMediaServer-${pkgver}-${_pkgsum}-arm7.spk")
 source_i686=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.i386.rpm")
 source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
 
-sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
-            '9da45cc3951ae03086ec663e6273c2de0183495fd15dc34ddd9aa100346d4d3a'
-            'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
+sha256sums=('88779d4d04e44de05428754481c2b67a0e2bf47795dce875819bf7308de49025'
+            '348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf'
+            'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
-sha256sums_armv7h=('1f7b4ee947a82866ca910af489d367dc0308f01cb0a7b7c280dad02b1e8de4a4')
-sha256sums_i686=('c66737222d1e4605660465d98c2bf9038bb29cf0b359d68d6b2c8b49f4fa045f')
-sha256sums_x86_64=('5d5977dab72a31e51b58273b83175a87d61edec1b6ce6c43b686219e75e25d3a')
-
+sha256sums_armv7h=('c44bd31a91bb2a3e2f6c14ac43df51b5937ce6962da960f7e8c00ef6f7c30a07')
+sha256sums_i686=('203d1848b49f8d41bc4d562c08ae2c70260da1c2a9d529bd045a10f581115a41')
+sha256sums_x86_64=('50dfdde05e84fa4da04083590447b30ac0fe1cb38c7599446bb6c22dae75f05d')
 
 prepare() {
-  if [[ $CARCH =~ arm* ]]; then
+  if [[ $CARCH = arm* ]]; then
     mkdir -p usr/lib/plexmediaserver
-    tar -xf package.tgz -C usr/lib/plexmediaserver/
+    bsdtar -xf package.tgz -C usr/lib/plexmediaserver/
   fi
 }
 
 package() {
-  install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/lib/systemd/system}
-  cp -dr --no-preserve='ownership' usr/lib/plexmediaserver "${pkgdir}"/opt/
-  install -m 644 plexmediaserver.service "${pkgdir}"/usr/lib/systemd/system/
-  install -m 644 plexmediaserver.conf.d "${pkgdir}"/etc/conf.d/plexmediaserver
-  install -Dm644 "$srcdir/plex.sysusers" "$pkgdir/usr/lib/sysusers.d/plex.conf"
+  install -d -m 755 "${pkgdir}/usr/lib/plexmediaserver"
+  cp -dr --no-preserve='ownership' "${srcdir}/usr/lib/plexmediaserver" "${pkgdir}/usr/lib/"
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -D -m 644 "${srcdir}/plexmediaserver.conf.d" "${pkgdir}/etc/conf.d/plexmediaserver"
+  install -D -m 644 "${srcdir}/plexmediaserver.service" "${pkgdir}/usr/lib/systemd/system/plexmediaserver.service"
+  install -D -m 644 "${srcdir}/plex.sysusers" "${pkgdir}/usr/lib/sysusers.d/plex.conf"
+
+  install -D -m 644 "${srcdir}/terms.txt" "${pkgdir}/usr/share/licenses/${pkgname}/terms.txt"
 }
 
 # vim: ts=2 sw=2 et:
