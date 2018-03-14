@@ -1,5 +1,5 @@
 pkgname=chromium-vaapi-bin
-pkgver=65.0.3325.146
+pkgver=65.0.3325.162
 pkgrel=1
 pkgdesc='Chromium compiled with VA-API support for Intel Graphics'
 url='https://www.chromium.org/Home'
@@ -18,13 +18,13 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('db0f29a7e0c0bfd046fbb5910680e8de9f4cce84fa278e92d738431c4ee3ac6f')
+sha256sums_x86_64=('44fa93b92f06d9d276df7fb18fed39a876ccca27334c161c9506f2d643175ac7')
 
 # Keep in sync with AUR/chromium-vaapi:
 #
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-readonly -A _system_libs=(
+declare -gA _system_libs=(
   #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
   [fontconfig]=fontconfig
