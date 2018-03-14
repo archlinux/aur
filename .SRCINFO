@@ -1,11 +1,12 @@
 pkgbase = qrab
 	pkgdesc = Simply grabs QR code from screen and copies decoded text into clipboard
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qrab.sourceforge.net/
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = cmake
 	makedepends = qt5-quickcontrols2
 	makedepends = zbar
 	makedepends = fluid
