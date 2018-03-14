@@ -1,10 +1,12 @@
 _cache() {
+  echo "Updating font cache..."
   fc-cache -fs
   mkfontscale /usr/share/fonts/misc
   mkfontdir /usr/share/fonts/misc
 }
 
 post_install() {
+  echo "Enabling fontconfig files..."
   ln -fs -t /etc/fonts/conf.d/ /etc/fonts/conf.avail/70-yes-bitmaps.conf
   ln -fs -t /etc/fonts/conf.d/ /etc/fonts/conf.avail/75-yes-scientifica.conf
   _cache
@@ -15,6 +17,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm -f /etc/fonts/conf.d/75-yes-scientifica.conf
   _cache
 }
