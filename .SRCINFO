@@ -1,6 +1,6 @@
 pkgbase = scrcpy-prebuiltserver
 	pkgdesc = Display and control of Android devices connected on USB (prebuilt server)
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = scrcpy-prebuiltserver
 	depends = sdl2
 	depends = android-tools
 	conflicts = scrcpy
-	source = https://github.com/Genymobile/scrcpy/archive/v1.0.tar.gz
-	source = https://github.com/Genymobile/scrcpy/releases/download/v1.0/scrcpy-server-v1.0.jar
-	sha256sums = fda84b2fc6a60bf808f7b87f7c9a985a446bad69d4de8e63e9ce699871f8026f
-	sha256sums = b573b06a6072476b85b6308e3ad189f2665ad5be4f8ca3a6b9ec81d64df20558
+	source = https://github.com/Genymobile/scrcpy/archive/v1.1.tar.gz
+	source = https://github.com/Genymobile/scrcpy/releases/download/v1.1/scrcpy-server-v1.1.jar
+	sha256sums = 1b56caa4aad5add2c49ea436e9f26282b55a413003d0d73b029a1fbf48da0a1c
+	sha256sums = 14826512bf38447ec94adf3b531676ce038d19e7e06757fb4e537882b17e77b3
 
 pkgname = scrcpy-prebuiltserver
 

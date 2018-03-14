@@ -1,6 +1,6 @@
 pkgname=scrcpy-prebuiltserver
 _appname=scrcpy
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Display and control of Android devices connected on USB (prebuilt server)"
 arch=(x86_64)
@@ -11,8 +11,8 @@ makedepends=(meson)
 conflicts=(scrcpy)
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/scrcpy-server-v${pkgver}.jar")
-sha256sums=('fda84b2fc6a60bf808f7b87f7c9a985a446bad69d4de8e63e9ce699871f8026f'
-            'b573b06a6072476b85b6308e3ad189f2665ad5be4f8ca3a6b9ec81d64df20558')
+sha256sums=('1b56caa4aad5add2c49ea436e9f26282b55a413003d0d73b029a1fbf48da0a1c'
+            '14826512bf38447ec94adf3b531676ce038d19e7e06757fb4e537882b17e77b3')
 
 package() {
   cd "scrcpy-${pkgver}"
