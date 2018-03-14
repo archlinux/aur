@@ -40,12 +40,10 @@ install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
-        "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
 sha256sums=('90c4ea877e816e3440862cfa36341bc87d05373d53389ec0f2d54d4e8c95daa2'
             '100fd0162a4be04371d9d53121bd511aeb0a230475497a8c19ed0cff20915efc'
             'e4059de8ec0dee1a5eabd1d67a053509aa0009ba6e08739b11140c26f2fcc55a'
-            '1f74cc627bd6a934681fe2d453058c21794d1435205c501f7fecdaf2c94f5485'
             'ff6684d7d5c26cc805e6f3918284a95b48223db4f37956f35a344373a2931aa4')
 
 package() {
