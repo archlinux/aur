@@ -17,7 +17,7 @@ pkgbase = python-apts
 	makedepends = python-pytz
 	makedepends = python-timezonefinder
 	source = https://github.com/pozar87/apts/archive/v0.2.14.tar.gz
-	md5sums = cf69015caca511524653538a26b33b28
+	md5sums = 6c0624fd89f15813eac6f90ac53396da
 
 pkgname = python-apts
 	depends = python-matplotlib
