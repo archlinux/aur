@@ -3,9 +3,11 @@
 # Contributer: Janusz Lewandowski <lew21@enves.pl>
 # Contributor: ushi <ushi+arch@honkgong.info>
 # Maintainer: dequis <dx@dxzone.com.ar>
+# Maintainer: sxw <sxw@chronowerks.de>
 
 pkgname=jabberd2
-pkgver=2.5.0
+_pkgname=jabberd
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,18 +15,14 @@ url='http://jabberd2.org/'
 license=('GPL')
 options=('!libtool')
 depends=('udns' 'expat' 'gsasl' 'libidn' 'openssl')
-optdepends=('sqlite3' 'postgresql-libs' 'libmysqlclient')
-makedepends=('sqlite3' 'postgresql-libs' 'libmysqlclient')
+optdepends=('sqlite3' 'postgresql-libs')
+makedepends=('sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
 
 source=(
   "https://github.com/jabberd2/jabberd2/releases/download/jabberd-${pkgver}/jabberd-${pkgver}.tar.xz"
+  "https://patch-diff.githubusercontent.com/raw/jabberd2/jabberd2/pull/129.patch"
   'pam_jabberd'
-)
-
-sha256sums=(
-  '9ec4a8be6c01fe68cccee347e08aab34399205ecfe3557985debc368b86aeb8a'
-  '89809dbf3f42f9df4690c3f98c1c74174f53774859d88374947b4123552c2dc8'
 )
 
 backup=(
@@ -39,6 +37,16 @@ backup=(
   'etc/pam.d/jabberd'
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 < ../129.patch
+  libtoolize --force
+  aclocal
+  autoheader
+  automake --add-missing --force-missing
+  autoconf
+}
+
 build() {
   cd "${srcdir}/jabberd-${pkgver}"
 
@@ -47,7 +55,6 @@ build() {
     --localstatedir=/var/lib \
     --sysconfdir=/etc/jabberd \
     --enable-sqlite \
-    --enable-mysql \
     --enable-pgsql \
     --enable-pam \
     --enable-pipe \
@@ -73,3 +80,7 @@ package() {
   rm -f "${pkgdir}/etc/jabberd/"jabberd-*.conf
   rm -f "${pkgdir}/etc/jabberd/"{,templates/}*.dist
 }
+
+sha512sums=('845347d2b812f6232ac84771e276c0783636406d73ae3cedbc5c28119f33c40a1c995827050c0227d7260dadba81434692059ff5a0b911e1c0c92f821e33eeea'
+            'f3bdd2d35ca76e13532b890aff4d36d925f9832ffb300a70b637a6d68c6fa56761bdc67a1bc3befbfe3a3465ee4ca6f271d053df3e29f7a2708b7835c9d4dd00'
+            'e6507a2a7e226398253623bb46db7ae853b01649b7ac00f3eee0a9b57c2ef0e8ac1f90c4934269f5fe2b7667e56572bed233b847d0b66a3fd37a88b7ed8adc31')
