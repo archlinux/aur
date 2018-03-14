@@ -1,5 +1,5 @@
 pkgbase = iget-git
-	pkgdesc = A command-line program to give you the number of days until or since certain events.
+	pkgdesc = A no-hassle command-line image downloader.
 	pkgver = 1.2.0.109d7a4
 	pkgrel = 1
 	url = https://gitlab.com/ammongit/iget

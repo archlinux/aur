@@ -3,7 +3,7 @@
 pkgname="iget-git"
 pkgver=1.2.0.109d7a4
 pkgrel=1
-pkgdesc='A command-line program to give you the number of days until or since certain events.'
+pkgdesc='A no-hassle command-line image downloader.'
 arch=('any')
 url="https://gitlab.com/ammongit/${pkgname%-git}"
 license=('MIT')
