@@ -5,9 +5,9 @@ pkgbase = nodejs-wintersmith
 	url = https://wintersmith.io
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	noextract = wintersmith-.tgz
+	noextract = wintersmith-2.4.1.tgz
 	source = https://registry.npmjs.org/wintersmith/-/wintersmith-2.4.1.tgz
 	sha256sums = d6c6116cf36550c4f691c40258e68ab006a357c6afe9e29fa774adad7e5c2267
 
