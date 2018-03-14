@@ -1,14 +1,14 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=0.3.3.76.ge10cf0e
+pkgver=0.3.8.135.ga647b92
 pkgrel=1
 pkgdesc="a document viewer"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura"
 license=('custom')
 depends=('girara-git' 'gtk3>=3.10' 'cairo>=1.8.8')
-makedepends=('git' 'python-docutils' 'intltool')
+makedepends=('git' 'python-sphinx' 'intltool' 'meson')
 conflicts=('zathura')
 provides=('zathura')
 source=('zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop')
@@ -22,15 +22,19 @@ optdepends=(
   'zathura-ps-git: PostSctipt support by using libspectre'
 )
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd "$srcdir/$_gitname"
-  make
+  cd build
+  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
+  ninja
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd build
+  DESTDIR="$pkgdir/" ninja install
 }
 
 pkgver() {
