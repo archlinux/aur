@@ -7,7 +7,7 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=65.0.3325.146
+pkgver=65.0.3325.162
 pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/k3.patch
 )
 
 
-sha256sums=('cb4f2f3f5a3344f7c452b61f8086d4b4e56af6f5bc34309c3ede8be6b4ab81a3'
+sha256sums=('627e7bfd84795de1553fac305239130d25186acf2d3c77d39d824327cd116cce'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -243,9 +243,6 @@ declare -rgA _system_libs=(
 )
 depends+=(${_system_libs[@]})
 
-# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys.
 
 
 prepare() {
