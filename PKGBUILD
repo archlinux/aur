@@ -17,9 +17,6 @@ _makexconfig=
 ### Tweak kernel options prior to a build via gconfig
 _makegconfig=
 
-### Running with a 1000 HZ tick rate 
-_1k_HZ_ticks=y
-
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -50,16 +47,16 @@ _use_current=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_srcname=linux-4.14
-pkgver=4.14.26
-pkgrel=2
+_srcname=linux-4.15
+pkgver=4.15.9
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
 #makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
-_uksm_patch="uksm-4.14.patch"
+_uksm_patch="uksm-4.15.patch"
 _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180310'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
@@ -84,7 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
-_kernelname=${pkgbase#linux} 
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-uksm} 
 
 prepare() {
     cd ${_srcname}
@@ -113,7 +111,10 @@ prepare() {
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 	
-	cp -Tf ../config .config
+	cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
         
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -129,19 +130,6 @@ prepare() {
 			exit
 		fi
 	fi    
-        
-    ### Optionally set tickrate to 1000 
-	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1k..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-	fi
-   
-	if [ "${_kernelname}" != "" ]; then
-		sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-	fi
 
 	### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
@@ -159,8 +147,10 @@ prepare() {
                 -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
         fi
 
-	### Set extraversion to pkgrel
-	sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+	### Set extraversion to pkgrel and empty localversion
+        sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+            -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+            -i Makefile
 
 	### Don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
@@ -209,7 +199,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -219,19 +209,17 @@ _package() {
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
-    cd ${_srcname}
-
     # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _kernver="$(make kernelrelease)"
     _basekernel=${_kernver%%-*}
     _basekernel=${_basekernel%.*}
 
     mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
     cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
     # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    local _extramodules="extramodules-${_basekernel}${_kernelname}"
     ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
     # add real version for building modules and running depmod from hook
@@ -364,19 +352,19 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
+sha512sums=('c00d92659df815a53dcac7dde145b742b1f20867d380c07cb09ddb3295d6ff10f8931b21ef0b09d7156923a3957b39d74d87c883300173b2e20690d2b4ec35ea'
             'SKIP'
-            '9659875861cf2fbc04e8f21343d7a29ddbabdaf230f6061fce816677d7ffbb297ab57eba5a47b8415c2c110260b8085b9b168aacd7741addb3ebdb1db2f9e44e'
+            '60d24d79c19ab44520e4b583c74ca30045dc72bebd426a802c84d62c369fbda5bd7016aee1f5fa3931937cd31f17d6c0867080eb26949dedbd2d9522ee13143d'
             'SKIP'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
-            '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
-            'be4f2f71f16b157e6cd765086867510ed61a1c96bf37e235d09f20f21a20efbde1200e5e0777577be45791e5d30acf139ba44e05d7826713ca40dc1b674953a5'
+            '337b220e5c5f240bf195fcf174974c03b127598723fc4ea5813e5c32154048ac4193737418b21e720e9034ad53589b59b898d0e648925db7e2db2ad57acd7fe7'
+            '51b44739223b368560f80de670191be867dc04193c8a5e87fcc362167d0a5d1069f65c68507bff37c51c8facdf37144b9379dd6c5e8bd9c53c7d619ab816be49'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '4586b3fcdf2696b23f1a03007505229074e3a1af98cfdb21ef902f72e1d3b475b7ffbf62cc8607fb1107ead870a9de49a52eed22a516ced803c9f00c079fab76'
-            'e28a7dffc33dedff84e93d99aa1e9d6af07d4b9429062934991d5555e2d655da7566a1390c1c9381738d2afc0b33e28b1196697fd234b18113593276493407a3')
+            '99c4b03829317b03839c4bcf8a5ffead5918504b95b4bf2733ca38ec5a153a03781aa4b5e6f4297cc12c1e63a07a74da04b730f107ede212fe247e658933853b'
+            '7621840ad2f9760b30885b46b1b4e5b2b51d726a7ee771ce7649fb217c3af16577edb65c326b0754cf1a87b00fb981f0697ce916b3dcaf80731bc9a373aa685c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
