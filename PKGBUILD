@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=204.b66415a
+pkgver=223.7184600
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -31,6 +31,7 @@ build() {
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DPISTACHE_BUILD_TESTS=true \
     -DCMAKE_INSTALL_PREFIX="/usr"
   make
 }
