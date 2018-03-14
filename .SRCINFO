@@ -1,7 +1,7 @@
 pkgbase = opencv-gstreamer
 	pkgdesc = Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opencv.org/
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = opencv-gstreamer
 	depends = cblas
 	depends = lapack
 	depends = libgphoto2
+	depends = jasper
 	optdepends = opencv-samples
 	optdepends = gtkglext: for the HighGUI module
 	optdepends = hdf5: support for HDF5 format

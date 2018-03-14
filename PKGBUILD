@@ -13,13 +13,13 @@ _face_landmakr_model_commit='8afa57abc8229d611c4937165d20e2a2d9fc5a12'
 
 pkgname=opencv-gstreamer
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
 license=('BSD')
 depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'v4l-utils'
-         'libdc1394' 'libwebp' 'cblas' 'lapack' 'libgphoto2')
+         'libdc1394' 'libwebp' 'cblas' 'lapack' 'libgphoto2' 'jasper')
 makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5'
              'gtkglext' 'lapacke')
 optdepends=('opencv-samples'
