@@ -4,9 +4,9 @@
 pkgname=awless
 pkgver=0.1.9
 pkgrel=1
-pkgdesc="A command line interface for Amazon Web Services (AWS)"
+pkgdesc='A command line interface for Amazon Web Services (AWS)'
 arch=('i686' 'x86_64')
-url="https://github.com/wallix/awless"
+url='https://github.com/wallix/awless'
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
