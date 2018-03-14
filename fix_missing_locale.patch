@@ -1,0 +1,10 @@
+--- a/data/i18n/updateTranslations.sh	2016-11-05 09:22:50.000000000 +0100
++++ b/data/i18n/updateTranslations.sh	2017-07-28 12:25:19.230534851 +0200
+@@ -35,6 +35,7 @@
+ $CMD ../../data/i18n/hydrogen.de.ts
+ $CMD ../../data/i18n/hydrogen.sv.ts
+ $CMD ../../data/i18n/hydrogen.hr.ts
++$CMD ../../data/i18n/hydrogen.ca.ts
+ $CMD ../../data/i18n/hydrogen.cs.ts
+ $CMD ../../data/i18n/hydrogen.el.ts
+ $CMD ../../data/i18n/hydrogen.gl.ts

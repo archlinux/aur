@@ -1,24 +1,28 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: hbdee <hbdee.arch@gmail.com>
 
-pkgname=hydrogen-git
 _pkgname=hydrogen
-pkgver=0.9.7.r2953.9c99b935
+pkgname="${_pkgname}-git"
+pkgver=1.0.0.beta1.r3003.36fc60c7
 pkgrel=1
-pkgdesc="An advanced drum machine - git version"
+pkgdesc="An advanced drum machine (git version)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/hydrogen-music/hydrogen"
 depends=('libarchive' 'liblrdf' 'qt5-xmlpatterns' 'libpulse' 'lash' 'liblo')
-optdepends=('rubberband: Audio Time Stretcher Library')
-makedepends=('git' 'cmake')
-source=("$_pkgname"::'git://github.com/hydrogen-music/hydrogen.git')
-provides=('hydrogen')
-conflicts=('hydrogen')
-md5sums=('SKIP')
+makedepends=('git' 'cmake' 'docbook-xml' 'docbook-sgml' 'docbook-utils' 'docbook-xsl' 'poxml' 'xmlto')
+source=("${_pkgname}"::'git://github.com/hydrogen-music/hydrogen.git'
+        'fix_dtd_version.patch'
+        'fix_missing_locale.patch')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+md5sums=('SKIP'
+         '67122f71e3be7546d0b483f6fc923b19'
+         '90ca9817a9976c483fbe0e9605d73058')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
+
   local version="$(git describe --tags | sed -e 's/-[^-]*-[^-]*$//;s/-/./g')"
   local revision=$(git rev-list --count HEAD)
   local hash=$(git rev-parse --short HEAD)
@@ -26,7 +30,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
 
   if [[ -d build ]]; then
     rm -rf build
@@ -34,34 +38,53 @@ prepare() {
 
   mkdir build
 
-  # fix some pngs that break with newer libpng
-  # see https://mailman.archlinux.org/pipermail/arch-dev-public/2013-May/024872.html
-  #msg2 "Fixing PNGs, please wait..."
-  #find -name '*.png' -exec optipng -quiet -force -fix {} +
+  # get docs sources
+  git submodule update --init
+
+  # various fixes
+  patch -Np1 -i "${srcdir}/fix_dtd_version.patch" || true
+  patch -Np1 -i "${srcdir}/fix_missing_locale.patch" || true
+
+  # fix python2 shebang
+  sed -e 's/python/python2/' -i data/i18n/stats.py
+  # Fix none FHS-compliant installation paths
+  sed -i \
+    -e 's|/usr/share/pixmaps|${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps|' \
+    -e 's|/man/man1|/share/man/man1|' \
+    CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}/build"
 
-  cmake ../$_pkgname \
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWANT_DEBUG=OFF \
     -DWANT_LASH=ON \
     -DWANT_LRDF=ON \
+    -DWANT_DEBUG=OFF \
     -DWANT_CPPUNIT=OFF
   make
+  # build html manual & tutorial
+  cd "$srcdir/$_pkgname/data/doc"
+  make
+  # update translations
+  cd "$srcdir/$_pkgname/data/i18n"
+  ./updateTranslations.sh
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}/build"
 
   make DESTDIR="${pkgdir}" install
 
-  # Fix none FHS-compliant installation paths
-  rm -rf "${pkgdir}/usr/share/man"
-  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
-  # Remove empty dir
-  rmdir "${pkgdir}/usr/share/hydrogen/data/doc"
+  # docs
+  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    -vDm644 ../{ChangeLog,DEVELOPERS,INSTALL.txt,README.txt}
+
+  # clean up data dir
+  # https://github.com/hydrogen-music/hydrogen/issues/559
+  rm -v "${pkgdir}/usr/share/${_pkgname}/data/i18n/"{*.ts,stats.py,updateTranslations.sh} \
+   "${pkgdir}/usr/share/${_pkgname}/data/doc/"{*.docbook,*.po,*.pot,Makefile,TODO}
 }
 
 # vim:set ts=2 sw=2 et:
