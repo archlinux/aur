@@ -1,43 +1,32 @@
-# $Id$
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
-pkgbase=etc-update
-pkgname=('etc-update')
-pkgdesc="CLI to interactively merge *.pacnew in /etc"
-pkgver=13723
-pkgrel=9
+pkgname='etc-update'
+pkgdesc="CLI to interactively merge .pacnew in /etc"
+pkgver=2.3.24
+pkgrel=1
 arch=('any')
 url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
 license=('GPL')
-depends=('diffutils')
-makedepends=('diffutils' 'patch')
-options=()
-source=(
-	etc-update-arch_port.patch
-	etc-update.gentoo
-	etc-update.conf
-)
-md5sums=(
-	'e1ae7d15f9ee7ad276c7d486cd597a34'
-	'85b9025638ead2d9db9322bb22c53d75'
-	'a36bb6f6363a429a0cedd8bcab235fff'
-)
-#_svntrunk=svn://anonsvn.gentoo.org/portage/main/trunk/
+depends=('bash')
+makedepends=('git')
+source=("https://github.com/gentoo/portage/archive/portage-$pkgver.tar.gz")
+md5sums=('27e4be95612157b29725a49fffd33b9e')
 
 prepare() {
-  cd "${srcdir}"
-
-#  msg "Downloading base versions from Gentoo SVN..."
-#  svn export ${_svntrunk}bin/etc-update
-#  svn export ${_svntrunk}cnf/etc-update.conf
-  mv etc-update.gentoo etc-update
-
-  msg "Applying Gentoo -> Arch conversion patch..."
-  patch --follow-symlinks -i "${srcdir}/etc-update-arch_port.patch"
+  sed -e "/Public License v2/a # Ported to Arch Linux by:\n# Kewl <xrjy@nygb.rh.bet(rot13)>
+    /^OS_RELEASE_ID=/c\OS_RELEASE_ID=arch
+    s/suse|opensuse/arch/
+    s/'suse'/'arch'/g
+    s/\.rpmnew/\.pacnew/g
+    s/Gentoo's/Arch/g
+    s/PROTECT='\/etc'/PROTECT='\/etc \/usr\/lib \/usr\/share\/config'/
+    s/PROTECT_MASK=''/PROTECT_MASK='\/etc\/udev\/rules.d'/
+    s/local file ofile /local file ofile='.pacnew' /
+    s/file:10/file::-7/g" "portage-portage-$pkgver/bin/$pkgname" > "$pkgname"
 }
 
 package() {
-  cd "${srcdir}"
-  install -D -m644 etc-update.conf "${pkgdir}/etc/etc-update.conf"
-  install -D -m755 etc-update "${pkgdir}/usr/bin/etc-update"
+  install -Dm 0755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 0644 "portage-portage-$pkgver/cnf/$pkgname.conf" "$pkgdir/etc/$pkgname.conf"
 }
