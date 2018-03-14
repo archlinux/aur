@@ -8,11 +8,13 @@ url=https://github.com/pcarrier/afuse/
 license=(GPL2)
 arch=(i686 x86_64)
 depends=(fuse)
-source=(https://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=(317efdda85d5585d085c61a0d262b83b)
+makedepends(autoconf automake pkg-config m4 make gcc)
+source=(https://github.com/pcarrier/afuse/archive/v${pkgver}.tar.gz)
+md5sums=(827e70b219402fc01e599bd385d4a04b)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
