@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname="iget-git"
-pkgver=1.1.1_1_g1436e7a.1436e7a
+pkgver=1.2.0.109d7a4
 pkgrel=1
 pkgdesc='A command-line program to give you the number of days until or since certain events.'
 arch=('any')
