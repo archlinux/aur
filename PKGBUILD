@@ -45,9 +45,6 @@ package() {
   cd $srcdir/$_name/build
   make DESTDIR="$pkgdir" install
 
-  mkdir -p $pkgdir/usr/share/openhantek
-  cp -a $srcdir/$_name/openhantek/res/firmware/*.hex $pkgdir/usr/share/openhantek/
-
   mv $pkgdir/lib $pkgdir/usr/lib
 
   mv $pkgdir/usr/bin/OpenHantek $pkgdir/usr/bin/openhantek
