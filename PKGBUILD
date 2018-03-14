@@ -5,7 +5,7 @@
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/"
@@ -15,18 +15,19 @@ makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
 optdepends=('openxcom-data-steam: Original XCom data files from steam')
 install="${pkgname}.install"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
-        "abs-fix.patch"
-        "auto_ptr-fix.patch"
-        "${pkgname}.install")
+        "openxcom-abs-fix.patch"
+        "openxcom-auto_ptr-fix.patch"
+        "openxcom-cmath-algorithm-fixes.patch")
 sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
             'd80c75b8fe3b5404a10f550f66307abfabc6bec5ed88b417f36222293ccda06c'
             '40b52c623a71fa8986296e8e6c3c775fe4751fe1846722ef1442bd171ac31a8b'
-            '33a412d870d8c1399738b71f772aaa5954d0028a9c42373ca4a27124c154956d')
+            '3b285e666fc3d37486861b3a17ff156d9b8804167403c58a267bdb69e55c8b86')
 
 prepare() {
   cd OpenXcom-${pkgver}
-  patch -p1 -i "${srcdir}/abs-fix.patch"
-  patch -p1 -i "${srcdir}/auto_ptr-fix.patch"
+  patch -Np1 -i "${srcdir}/openxcom-abs-fix.patch"
+  patch -Np1 -i "${srcdir}/openxcom-auto_ptr-fix.patch"
+  patch -Np1 -i "${srcdir}/openxcom-cmath-algorithm-fixes.patch"
 }
 
 build() {
