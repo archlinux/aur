@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xorg-twm-git
-pkgver=1.0.9.r3.gc5abcb6
+pkgver=1.0.10.r0.gca032d1
 pkgrel=1
 pkgdesc="Tab Window Manager for the X Window System"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url="http://xorg.freedesktop.org/"
 backup=(usr/share/X11/twm/system.twmrc)
 license=('custom')
 depends=('libxmu')
-makedepends=('xorg-util-macros')
+makedepends=('git' 'xorg-util-macros')
 source=($pkgname::git://anongit.freedesktop.org/xorg/app/twm)
 sha256sums=('SKIP')
 provides=('xorg-twm')
