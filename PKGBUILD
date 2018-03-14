@@ -28,8 +28,7 @@
 #    Fonts are located in 'sources/install.wim' file on the ISO, which
 #    is a 'Windows Imaging Format' (WIM) archive.
 #
-#    You can extract WIM using wimextract ('wimlib' package from AUR) or
-#    7z ('p7zip').
+#    You can extract WIM using wimextract ('wimlib' package) or 7z ('p7zip').
 #
 #    Put the following script together with previously extracted
 #    'install.wim' and execute:
