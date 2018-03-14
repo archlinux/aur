@@ -1,6 +1,6 @@
 pkgbase = wireless-regdb-git
 	pkgdesc = Central Regulatory Domain Database
-	pkgver = r318.60ddaa9
+	pkgver = r380.1c1aec3
 	pkgrel = 1
 	url = http://wireless.kernel.org/en/developers/Regulatory
 	install = wireless-regdb.install

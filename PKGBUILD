@@ -2,7 +2,7 @@
 
 _pkgname=wireless-regdb
 pkgname=$_pkgname-git
-pkgver=r318.60ddaa9
+pkgver=r380.1c1aec3
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
 arch=('any')
@@ -40,6 +40,9 @@ package() {
   install -D -m644 "${srcdir}"/${_pkgname}/sforshee.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/sforshee.key.pub.pem
   install -D -m644 "${srcdir}"/${_pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/wireless-regdb/LICENSE
   install -D -m644 "${srcdir}"/${_pkgname}/regulatory.bin.5 "${pkgdir}"/usr/share/man/man5/regulatory.bin.5
+  install -D -m644 "${srcdir}"/${_pkgname}/regulatory.db "${pkgdir}"/usr/lib/firmware/regulatory.db
+  install -D -m644 "${srcdir}"/${_pkgname}/regulatory.db.p7s "${pkgdir}"/usr/lib/firmware/regulatory.db.p7s
+  install -D -m644 "${srcdir}"/${_pkgname}/regulatory.db.5 "${pkgdir}"/usr/share/man/man5/regulatory.db.5
 
   msg "Installing /etc/conf.d/wireless-regdom ..."
   install -D -m644 "${srcdir}"/crda.conf.d "${pkgdir}"/etc/conf.d/wireless-regdom
