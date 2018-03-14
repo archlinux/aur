@@ -1,0 +1,14 @@
+pkgbase = vim-wildgitignore-git
+	pkgdesc = This plugin just turns gitignore rules into vim wildignore rules.
+	pkgver = e863d50
+	pkgrel = 1
+	url = https://github.com/jason0x43/vim-wildgitignore
+	arch = any
+	groups = vim-plugins
+	makedepends = git
+	depends = vim-runtime
+	source = vim-wildgitignore-git::git+https://github.com/jason0x43/vim-wildgitignore
+	sha512sums = SKIP
+
+pkgname = vim-wildgitignore-git
+
