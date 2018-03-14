@@ -1,7 +1,7 @@
 pkgbase = sodalite
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = www.github.com/hnicke/sodalite
 	install = sodalite.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sodalite
 	makedepends = git
 	makedepends = awk
 	depends = python-binaryornot
-	depends = python-npyscreen-git
+	depends = python-npyscreen-git, python-yaml
 	source = https://github.com/hnicke/sodalite/archive/v0.7.0.tar.gz
 	md5sums = SKIP
 
