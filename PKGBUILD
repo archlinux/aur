@@ -2,7 +2,7 @@
 
 _pkgname=wireless-regdb
 pkgname=$_pkgname-git
-pkgver=r380.1c1aec3
+pkgver=20171223.1c1aec3
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
 arch=('any')
@@ -20,8 +20,14 @@ sha256sums=('SKIP'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Mimics ABS pkgver described like this:
+  # Commit date + git rev-parse --short origin/master
+  cd ${_pkgname}
+  (
+  git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+  echo .
+  git rev-parse --short master
+  ) | tr -d '\n'
 }
 
 package() {
