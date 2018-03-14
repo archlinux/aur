@@ -14,8 +14,7 @@ post_upgrade() {
 
     # Check for existing old mono config directory and non-existance of new mono config directory.
     if [[ -d /usr/share/Jackett/.config/.mono && ! -d /var/lib/jackett/.config/.mono ]]; then
-      mkdir -p /var/lib/jackett/.config/
-      cp -a /usr/share/Jackett/.config/.mono /var/lib/jackett/.config/
+      cp -a /usr/share/Jackett/.config/.mono /var/lib/jackett/
     fi
 
     # The jackett user's home directory needs to change too.
