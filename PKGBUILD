@@ -1,7 +1,7 @@
 # Maintainer: Amadeus Folego <amadeusfolego@gmail.com>
 # Maintainer: Terje Larsen <terlar@gmail.com>
 pkgname=oni
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An IDE built around Neovim'
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-$
         "oni.sh"
         "oni.desktop"
         "icons.tar.gz")
-sha256sums=('b74018259ee2aa5efca093bc5accbdf2173f787b38d02a82c4cf7393d5e04ad5'
+sha256sums=('85b917d0859d1346d244d53118259f8eedfde7718b70367f64639823d262f256'
             '72a945d501f33cfc2fd0d8e832942ba75c09518abd2248973c4df461c3229aee'
             '72420b6c8588df601b973b715fc88f3d9e4d75ce53b633abff8c7ff848aed59a'
             '9b09686c82ac5670ece59608288ab2124ee3147d404b77ac58c6ba332a6a148a')
