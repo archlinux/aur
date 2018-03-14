@@ -1,6 +1,6 @@
 pkgbase = eclipse-pydev
 	pkgdesc = Python IDE for Eclipse
-	pkgver = 6.2.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = http://pydev.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = eclipse-pydev
 	depends = java-environment>=8
 	depends = eclipse>=4.6
 	conflicts = eclipse-aptana
-	source = PyDev_6.2.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%206.2.0/PyDev%206.2.0.zip
-	sha1sums = 4e3d0af831466d2dde7aa5d7ce523fb36de0822d
+	source = PyDev_6.3.1.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%206.3.1/PyDev%206.3.1.zip
+	sha1sums = dd84ccdf3b6b30cd33bc9c43fa69c14451a6f95e
 
 pkgname = eclipse-pydev
 
