@@ -1,15 +1,16 @@
 pkgbase = quteqoin-git
 	pkgdesc = Tool based on Qt framework to allow effective mouling on bouchots.
-	pkgver = r678.9dc4ed9
+	pkgver = r684.f992910
 	pkgrel = 1
-	url = https://github.com/ototu/quteqoin
+	url = https://github.com/dguihal/quteqoin
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-multimedia
 	provides = quteqoin
-	source = quteqoin::git+https://github.com/ototu/quteqoin.git
+	source = quteqoin::git+https://github.com/dguihal/quteqoin.git
 	sha1sums = SKIP
 
 pkgname = quteqoin-git

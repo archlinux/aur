@@ -1,13 +1,13 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
-
+# Do not forget SRCINFO :  makepkg --printsrcinfo > .SRCINFO
 pkgname=quteqoin-git
-pkgver=r678.9dc4ed9
+pkgver=r684.f992910
 pkgrel=1
 pkgdesc="Tool based on Qt framework to allow effective mouling on bouchots."
 arch=('i686' 'x86_64')
 url="https://github.com/dguihal/quteqoin"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-multimedia')
 makedepends=('git')
 provides=('quteqoin')
 source=('quteqoin::git+https://github.com/dguihal/quteqoin.git')
