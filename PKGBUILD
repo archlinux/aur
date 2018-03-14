@@ -3,7 +3,7 @@
 pkgname=myetherwallet
 _pkgname=etherwallet
 pkgver=3.21.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open-source, client-side tool for easily & securely interacting with the Ethereum network'
 arch=('any')
 depends=('xdg-utils')
@@ -15,8 +15,8 @@ source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver.zip"{,.sig}
         'LICENSE')
 sha256sums=('051f8aad379b603b3f225388f79162895d52db0e77ff9d0528ee8dc4a3806aac'
             'SKIP'
-            '9fb1e89ff5a138b8e2577e3d82b0c1b9f938c38f846c01d8cadd357c6eb4ee23'
-            'a723f0ba81f225d7a7bd083db89c50673e1fd11bb608d11c72efe5b9283a2524'
+            '08fca55eaa60eca466f75a9961aa792442e36ae6740f31ff9c0dbfa888f9a45f'
+            '7f53205c3ee5ca028aa9ef69544de8befdc25670dfbd45203ea8d81539e3ca7e'
             'c834d53db7382f39e38e49e72ca27c79353e3be00e47e40705c2e5b9be964b57')
 validpgpkeys=('2FCA4A1E3AF4278F7AD3B7637F059C0F7B9A12F0')
 

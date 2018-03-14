@@ -5,3 +5,20 @@ Comment=Free, open-source, client-side tool for easily & securely interacting wi
 Icon=myetherwallet
 Exec=myetherwallet
 Categories=Network;
+Actions=send-transaction;send-offline;check-tx-status;view-wallet-info;
+
+[Desktop Action send-transaction]
+Name=Send Transaction
+Exec=myetherwallet '#send-transaction'
+
+[Desktop Action send-offline]
+Name=Send Offline
+Exec=myetherwallet '#offline-transaction'
+
+[Desktop Action check-tx-status]
+Name=Check TX Status
+Exec=myetherwallet '#check-tx-status'
+
+[Desktop Action view-wallet-info]
+Name=View Wallet Info
+Exec=myetherwallet '#view-wallet-info'
