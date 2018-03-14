@@ -4,7 +4,7 @@
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
 arch=('x86_64')
@@ -39,8 +39,8 @@ package() {
   # Place desktop entry and icons
   sed -i 's/opt/usr\/lib/' "${srcdir}/usr/share/applications/${_pkgname}.desktop"
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-  install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
-  cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256"
+  cp -R "${srcdir}/usr/share/icons/hicolor/0x0/"* "${pkgdir}/usr/share/icons/hicolor/256x256/"
 
   # Place license files
   for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do

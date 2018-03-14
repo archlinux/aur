@@ -1,7 +1,7 @@
 pkgbase = nteract-bin
 	pkgdesc = Interactive literate coding notebook
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nteract.io
 	install = nteract-bin.install
 	arch = x86_64
