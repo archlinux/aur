@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=390.25
-pkgrel=6
+pkgver=390.42
+pkgrel=1
 epoch=1
 _extramodules=extramodules-4.15-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -20,7 +20,7 @@ license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
         4.15-FS57305.patch)
-sha256sums=('02263bc81b66e68fc8224447b249f4f0ca4ae201c467e236d917be2fe187f3d6'
+sha256sums=('5f242cf0f7f4dcc45759eee3b4973191114842fe7c146c5ae7a12a2ebea394aa'
             '145d436f117455a1a8315b31dc2c9fce3c90c135d8c530b8b8da0e70548f48d9')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
