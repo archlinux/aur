@@ -45,5 +45,5 @@ build() {
 
 package() {
   cd "${srcdir}/DeepSpeech-${pkgver}/native_client"
-  PREFIX=${pkgdir}/usr/local make install
+  PREFIX="${pkgdir}/usr" make install
 }
