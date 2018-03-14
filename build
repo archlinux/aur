@@ -5,7 +5,7 @@ make_srcinfo () {
 }
 
 build () {
-  makepkg -s "${@}"
+  updpkgsums && makepkg -s "${@}"
 }
 
 clean () {
