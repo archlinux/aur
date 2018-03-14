@@ -30,10 +30,10 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.4.9.r3808.1714bf15
+pkgver=2.4.9.r3867.1a72e729
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
-url="https://git.purrdata.net/jwilkes/purr-data"
+url="https://agraef.github.io/purr-data/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
@@ -57,7 +57,7 @@ options=('!makeflags' '!strip')
 # depend on upstream tagging releases and candidates, and also allows us to
 # deal with situations where upstream lags behind on already submitted merge
 # requests with important bugfixes and additions.
-source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
+source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release"
 	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"gem-magick6-fixes.patch")
 md5sums=('SKIP'
@@ -85,11 +85,10 @@ fi
 # pd-l2ork package.
 prefix=${prefix:-/opt/purr-data}
 
-# Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
-# Gem which takes a *long* time to build). Note that this will only produce a
-# proper package if src still contains the results of a previous full build,
-# otherwise Gem will be missing in the resulting package!
-buildopt=${buildopt:--B}
+# Run 'makepkg buildopt=incremental' for an incremental build (this skips
+# recompiling Gem which takes a *long* time to build) or 'makepkg
+# buildopt=light' for a light one (only essential externals).
+buildopt=${buildopt:-}
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -98,11 +97,11 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
-  # first make sure that we get any checked out submodules in pristine state
-  # again, so that our patches apply cleanly
-  git submodule foreach git checkout .
+  # first make sure that we get the sources in pristine state again, so that
+  # our patches apply cleanly
+  make realclean
   # check out the latest source of all submodules
-  git submodule update --init
+  make checkout
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
@@ -113,17 +112,15 @@ prepare() {
 }
 
 build() {
-  unset CFLAGS
-  unset LDFLAGS
-  unset INCLUDES
-
-  cd $srcdir/$pkgname/l2ork_addons
-  inst_dir=$prefix ./tar_em_up.sh $buildopt -n
+  unset CFLAGS CPPFLAGS CXXFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS LDFLAGS INCLUDES
+  cd $srcdir/$pkgname
+  make prefix="$prefix" $buildopt
 }
 
 package() {
+  cd $srcdir/$pkgname
+  make install prefix="$prefix" DESTDIR="$pkgdir"
   cd "$srcdir/$pkgname/packages/linux_make/build"
-  cp -a * "$pkgdir"
   # Create a link to the executable.
   mkdir -p "$pkgdir/usr/bin"
   ln -sf $prefix/bin/pd-l2ork "$pkgdir/usr/bin/purr-data"
@@ -132,12 +129,12 @@ package() {
   ln -sf $prefix/include/pd-l2ork "$pkgdir/usr/include/purr-data"
   mkdir -p "$pkgdir/usr/lib"
   ln -sf $prefix/lib/pd-l2ork "$pkgdir/usr/lib/purr-data"
-  # Just remove all the /etc stuff and the Emacs mode for now, we don't really
-  # need most of these.
-  rm -rf "$pkgdir/etc" "$pkgdir/usr/share/emacs"
-  # Add the bash completion file again, and edit it accordingly.
-  mkdir -p "$pkgdir/etc/bash_completion.d"
-  sed -e 's/pd-l2ork/purr-data/g' < "$srcdir/$pkgname/scripts/bash_completion/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
+  # Edit bash completion file.
+  sed -e 's/pd-l2ork/purr-data/g' < "$pkgdir/etc/bash_completion.d/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
+  rm -f "$pkgdir/etc/bash_completion.d/pd-l2ork"
+  # For now we just remove the Emacs mode as it will conflict with the
+  # pd-l2ork package.
+  rm -rf "$pkgdir/usr/share/emacs/site-lisp"
   # Edit the library paths in the default user.settings file so that it
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
