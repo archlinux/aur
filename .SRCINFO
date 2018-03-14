@@ -1,12 +1,12 @@
 pkgbase = qldv-git
 	pkgdesc = create a patched ld-linux.so without version information warnings
-	pkgver = r8.665b5ee
+	pkgver = r14.918e661
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = lldb
+	depends = binutils
 	depends = coreutils
 	depends = glibc
 	depends = patchelf
