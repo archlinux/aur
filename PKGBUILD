@@ -126,7 +126,7 @@ package() {
 
 	install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm 644 "${pkgname}.png"	"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 755 "${pkgname}.sh"	"${pkgdir}/usr/bin/${pkgname}"
+	install -Dm 755 "${pkgname}.sh"		"${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm 644 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
