@@ -4,9 +4,9 @@
 _gemname=awesome_print
 pkgname=ruby-$_gemname
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins.'
-arch=(i686 x86_64)
+arch=(any)
 url='https://github.com/awesome-print/awesome_print'
 license=(MIT)
 depends=('ruby')
