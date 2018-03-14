@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-night-light-slider-git
 	pkgdesc = Manage GNOME night light temperature intensity from the panel.
 	pkgver = v6.0.r0.gedf5967
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension
 	arch = any
 	license = unknow
 	makedepends = git
 	depends = gnome-shell
-	source = git://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension.git
+	source = git+https://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-night-light-slider-git
