@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=dwarftherapist
-pkgver=39.2.0
+pkgver=39.2.1
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
@@ -11,12 +11,12 @@ depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('cmake')
 install="dwarftherapist.install"
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('adee70c7ffed5f2af5af7d3a1d9cffc0')
-sha256sums=('7ac1bcb2835127aa4c1c38ba08e32dcfb66b8363125ac1a985ce1624d803c7aa')
+md5sums=('eb9a2b523dd7c5de68dda1c1ad8ce9d8')
+sha256sums=('5b2ea34b4514c2eed1941c7e9fc9be63a51aa1c5bacec4d1c2fde541426a8538')
 
 build() {
   cd Dwarf-Therapist-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" .
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" .
   make
 }
 
