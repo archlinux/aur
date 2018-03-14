@@ -12,8 +12,8 @@ _dnn_face_detector_commit='b2bfc75f6aea5b1f834ff0f0b865a7c18ff1459f'
 _face_landmakr_model_commit='8afa57abc8229d611c4937165d20e2a2d9fc5a12'
 
 pkgname=opencv-gstreamer
-pkgver=3.4.0
-pkgrel=4
+pkgver=3.4.1
+pkgrel=1
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
@@ -52,8 +52,8 @@ source_x86_64=("https://github.com/opencv/opencv_3rdparty/raw/${_ippicv_commit}/
 noextract=("ippicv_${_ippicv_ver}_lnx_ia32_general_${_ippicv_date}.tgz"
            "ippicv_${_ippicv_ver}_lnx_intel64_general_${_ippicv_date}.tgz"
            "tinydnn-${_tinydnn_ver}.tar.gz")
-sha256sums=('678cc3d2d1b3464b512b084a8cca1fad7de207c7abdf2caa1fed636c13e916da'
-            '699ab3eee7922fbd3e8f98c68e6d16a1d453b20ef364e76172e56466dc9c16cd'
+sha256sums=('f1b87684d75496a1054405ae3ee0b6573acaf3dad39eaf4f1d66fdd7e03dc852'
+            '298c69ee006d7675e1ff9d371ba8b0d9e7e88374bb7ba0f9d0789851d352ec6e'
             'e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b'
             '2a56a11a57a4a295956b0660b4a3d76bbdca2206c4961cea8efe7d95c7cb2f2d'
             'eeab592db2861a6c94d592a48456cf59945d31483ce94a6bc4d3a4e318049ba3'
@@ -145,7 +145,6 @@ build() {
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_LIBDIR='lib' \
-        -DCMAKE_SKIP_RPATH='ON' \
         -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib-${pkgver}/modules" \
         -DLAPACK_LIBRARIES='/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so' \
         -DLAPACK_CBLAS_H='/usr/include/cblas.h' \
