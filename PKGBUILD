@@ -2,7 +2,7 @@
 
 pkgname=afuse
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Automounting file system implemented in user-space using FUSE'
 url=https://github.com/pcarrier/afuse/
 license=(GPL2)
