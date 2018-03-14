@@ -1,7 +1,7 @@
 pkgbase = deepin-topbar
 	pkgdesc = This is topbar for Deepin.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kirigayakazushin/deepin-topbar
 	arch = i686
 	arch = x86_64
