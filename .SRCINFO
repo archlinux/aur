@@ -1,7 +1,7 @@
 pkgbase = opencv-gstreamer
 	pkgdesc = Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)
 	pkgver = 3.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://opencv.org/
 	arch = i686
 	arch = x86_64

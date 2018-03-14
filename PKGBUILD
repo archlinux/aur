@@ -13,7 +13,7 @@ _face_landmakr_model_commit='8afa57abc8229d611c4937165d20e2a2d9fc5a12'
 
 pkgname=opencv-gstreamer
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
@@ -142,7 +142,6 @@ build() {
         -DBUILD_EXAMPLES='ON' \
         -DINSTALL_C_EXAMPLES='ON' \
         -DINSTALL_PYTHON_EXAMPLES='ON' \
-        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_LIBDIR='lib' \
