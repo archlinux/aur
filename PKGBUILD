@@ -8,7 +8,7 @@ url=https://github.com/pcarrier/afuse/
 license=(GPL2)
 arch=(i686 x86_64)
 depends=(fuse)
-makedepends(autoconf automake pkg-config m4 make gcc)
+makedepends=(autoconf automake pkg-config m4 make gcc)
 source=(https://github.com/pcarrier/afuse/archive/v${pkgver}.tar.gz)
 md5sums=(827e70b219402fc01e599bd385d4a04b)
 
