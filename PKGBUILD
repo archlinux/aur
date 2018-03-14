@@ -9,7 +9,7 @@
 # what the heck
 
 pkgname=oracle-sqldeveloper
-pkgver=17.4.0.355.2349
+pkgver=17.4.1.054.0712
 pkgrel=1
 pkgdesc="A graphical tool for database development"
 arch=('any')
@@ -23,7 +23,7 @@ source=(manual://sqldeveloper-$pkgver-no-jre.zip
         LICENSE
         java_home.patch)
 DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html.; exit 1;')
-md5sums=('856c70371862f2f404aff1aed2400cbd'
+md5sums=('e252a0af1f482861af70653e4efe14e8'
          '59783d9d8c5f9da8256fa14d0e61a35e'
          '26c1dc933a9ab58a4245f4f351717645'
          '71a4092467209c160d0f34abbc08e049'
