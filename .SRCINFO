@@ -1,7 +1,7 @@
 pkgbase = fimfic2epub
 	pkgdesc = Tool to generate improved EPUB ebooks from Fimfiction stories
 	pkgver = 1.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daniel-j/fimfic2epub
 	arch = any
 	license = MIT

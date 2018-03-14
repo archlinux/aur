@@ -2,7 +2,7 @@
 
 pkgname=fimfic2epub
 pkgver=1.7.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to generate improved EPUB ebooks from Fimfiction stories"
 arch=('any')
 url="https://github.com/daniel-j/fimfic2epub"
@@ -20,7 +20,7 @@ package() {
   npm install --user root --cache="${srcdir}/npm-cache"
   npm install --user root --cache="${srcdir}/npm-cache" --prefix "${srcdir}" removeNPMAbsolutePaths
   "${srcdir}/node_modules/.bin/removeNPMAbsolutePaths" . 2>&1
-  npm run dev webpack -- --standalone
+  npm run build webpack -- --standalone
   install -D "bin/fimfic2epub-static" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
