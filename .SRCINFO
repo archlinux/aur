@@ -1,7 +1,7 @@
 pkgbase = wine-staging-vulkan-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches
-	pkgver = 3.3.r0.ge09e1fd3+
-	pkgrel = 2
+	pkgver = 3.3.r15.gcea60071+
+	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-vulkan-git.install
 	arch = i686
@@ -137,10 +137,10 @@ pkgbase = wine-staging-vulkan-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.3.r0.ge09e1fd3+
-	provides = wine-wow64=3.3.r0.ge09e1fd3+
-	provides = wine-git=3.3.r0.ge09e1fd3+
-	provides = wine-staging=3.3.r0.ge09e1fd3+
+	provides = wine=3.3.r15.gcea60071+
+	provides = wine-wow64=3.3.r15.gcea60071+
+	provides = wine-git=3.3.r15.gcea60071+
+	provides = wine-staging=3.3.r15.gcea60071+
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
