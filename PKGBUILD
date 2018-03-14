@@ -4,7 +4,7 @@
 
 pkgname=mozilla-firefox-sync-server
 pkgver=1.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync"
 arch=('any')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
@@ -14,7 +14,7 @@ depends=('python2' 'python2-pyramid' 'python2-mozsvc' 'python2-konfig' 'python2-
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-services/syncserver/archive/v${pkgver}.tar.gz")
 sha512sums=('c66aed1195138f15729ed7ef3fb31837bd74f751c0df4f93d0d6c3a8b34687d7dc02e201cfb6c218aab1d769698950ea316f688b51d90b87e8c495d573b85cc3')
 backup=('etc/webapps/mozilla-firefox-sync-server/syncserver.ini')
-install=('mozilla-firefox-sync-server.install')
+install='mozilla-firefox-sync-server.install'
 
 prepare() {
   cd "syncserver-${pkgver}"
