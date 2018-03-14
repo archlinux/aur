@@ -3,9 +3,9 @@
 pkgname=gops
 pkgver=0.3.3
 pkgrel=1
-pkgdesc="A tool to list and diagnose Go processes currently running on your system"
+pkgdesc='A tool to list and diagnose Go processes currently running on your system'
 arch=('i686' 'x86_64')
-url="https://github.com/google/gops"
+url='https://github.com/google/gops'
 license=('BSD')
 depends=('glibc')
 makedepends=('go')
