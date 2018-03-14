@@ -2,14 +2,14 @@
 pkgname=xorg-transset
 _pkgname=transset
 pkgdesc="X.org's transset"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libx11')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('4afa9e30637171ae9e557a986e423720')
+md5sums=('5ea9927569e9c862abe00fa45ead1d56')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
