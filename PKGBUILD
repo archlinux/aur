@@ -209,6 +209,8 @@ _package() {
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
+    cd ${_srcname}
+    
     # get kernel version
     _kernver="$(make kernelrelease)"
     _basekernel=${_kernver%%-*}
