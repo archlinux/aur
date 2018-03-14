@@ -1,17 +1,18 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gnome-usage
-pkgver=3.27.90
-pkgrel=2
+pkgver=3.28.0
+pkgrel=1
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
 license=('GPL3')
-depends=('gtk3' 'libgtop' 'accountsservice')
+depends=('gtk3' 'libgtop')
 makedepends=('git' 'vala' 'gobject-introspection' 'meson')
+optdepends=('accountsservice: support for process user tags')
 provides=("$pkgname")
 conflicts=("$pkgname")
-_tag=v3.27.90
+_tag=v3.28.0
 source=("git+https://gitlab.gnome.org/GNOME/$pkgname.git#tag=$_tag")
 sha256sums=('SKIP')
 
