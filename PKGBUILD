@@ -4,7 +4,7 @@
 pkgbase="wxwidgets2.8-light"
 pkgname=('wxbase2.8-light' 'wxgtk2.8-light' 'wxcommon2.8-light')
 pkgver=2.8.12.1
-pkgrel=10
+pkgrel=11
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -23,6 +23,10 @@ sha1sums=('SKIP'
           '4156d992b8fbbdc8e596a7c4e548e90295d3cf95'
           'dfe38650c655395b90bf082b5734c4093508bfa3'
           'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9')
+
+# This flag will set a fixed ABI version. That's needed for safesignidentityclient,
+# so it can load this lib without warnings
+CXXFLAGS="-fabi-version=2"
 
 prepare() {
   patch -d wxwidgets -p1 -i ../wxwidgets-2.8-collision.patch
