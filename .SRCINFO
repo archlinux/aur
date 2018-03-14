@@ -1,0 +1,15 @@
+pkgbase = lambda-mod-zsh-theme-git
+	pkgdesc = A ZSH theme optimized for people who use git and unicode-compatible fonts and terminals
+	pkgver = r21.61c373c
+	pkgrel = 1
+	url = https://github.com/halfo/lambda-mod-zsh-theme/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = oh-my-zsh-git
+	source = git+https://github.com/halfo/lambda-mod-zsh-theme.git
+	sha256sums = SKIP
+
+pkgname = lambda-mod-zsh-theme-git
+
