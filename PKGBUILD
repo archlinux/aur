@@ -3,7 +3,7 @@
 # Previous Maintainer of dehydrated: Alexander Görtz <aur@nyloc.de>
 
 pkgname=dehydrated
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
