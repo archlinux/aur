@@ -1,6 +1,6 @@
 pkgbase = parity-git
 	pkgdesc = Fast, light, robust Ethereum implementation
-	pkgver = 1.10.0.10872
+	pkgver = 1.11.0.11056
 	pkgrel = 1
 	url = https://github.com/paritytech/parity
 	arch = i686
