@@ -28,7 +28,7 @@ package() {
         install -Dm644 "${srcdir}/arcticfox-monitor.desktop"       "${pkgdir}/usr/share/applications/arcticfox-monitor.desktop"
 
         mkdir -p "${pkgdir}/usr/bin/"
-        ln -svrf "${pkgdir}/opt/Arcticfox Config/arcticfox-monitor" "${pkgdir}/usr/bin/arcticfox-monitor"
+        ln -svrf "${pkgdir}/opt/Arcticfox Monitor/arcticfox-monitor" "${pkgdir}/usr/bin/arcticfox-monitor"
 
         mkdir -p "${pkgname}/usr/share/icons/hicolor/512x512/apps/"
         mv -v icon.png "${pkgname}/usr/share/icons/hicolor/512x512/apps/arcticfox-monitor.png"
