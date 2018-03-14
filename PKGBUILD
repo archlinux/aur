@@ -2,14 +2,14 @@
 # Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
-pkgver=1.1+git.57.g7003d5b
+pkgver=1.1+git.76.g476ece7
 pkgrel=1
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
 url="http://birdieapp.github.io"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite-git' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkitgtk') 
-makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite-git' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkit2gtk') 
+makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja')
 options=('!libtool')
 conflicts=('birdie' 'birdie-bzr')
 provides=('birdie')
@@ -23,14 +23,11 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-        mkdir build
-        cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-	make
+	arch-meson build
+	ninja -C build
 }
 
 package() {
 	cd "${_pkgname}"
-	cd build
-	make DESTDIR="${pkgdir}/" install
+	DESTDIR="${pkgdir}/" ninja -C build install
 }
