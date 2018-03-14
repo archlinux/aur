@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=11.3.0_devel.80901.3950aa4
+pkgver=18.1.0_devel.100894.fcf267ba08
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
@@ -17,6 +17,9 @@ source=('anvil::git://anongit.freedesktop.org/mesa/mesa'
         LICENSE)
 sha256sums=('SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
+
+#options=(debug !strip)
+
 pkgver() {
   cd anvil
   echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
@@ -36,7 +39,7 @@ build() {
     --with-egl-platforms=x11,drm,wayland \
     --with-gallium-drivers= \
     --with-vulkan-drivers=intel \
-#    --with-vulkan-icddir="$srcdir/fakeinstall/etc/vulkan/icd.d"
+    --with-vulkan-icddir="$srcdir/fakeinstall/usr/share/vulkan/icd.d"
 
   make
 
@@ -47,9 +50,9 @@ build() {
 
 package() {
   cd "${srcdir}/anvil"
-  
-  install -m755 -d "${pkgdir}"/etc
-  mv -v "${srcdir}"/fakeinstall/etc/vulkan "${pkgdir}"/etc/
+
+  install -m755 -d "${pkgdir}"/usr/share/vulkan
+  mv -v "${srcdir}"/fakeinstall/usr/share/vulkan/icd.d "${pkgdir}"/usr/share/vulkan/
 
   install -m755 -d "${pkgdir}"/usr/{include/vulkan,lib}
   mv -v "${srcdir}"/fakeinstall/usr/lib/libvulkan_intel.so "${pkgdir}"/usr/lib/
