@@ -5,8 +5,8 @@
 # Contributor: funkyou
 
 # Set this to 'true' to build and install the plugins
-_plugin_feedreader=true
-_plugin_voip=true
+#_plugin_feedreader=true
+#_plugin_voip=true
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -20,7 +20,7 @@ _plugin_voip=true
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -34,7 +34,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('ddb64aa5148fdc950d4426f52f1cbb11578619b1242614e3c4ca4792ee5ce30b')
+sha256sums=('8aa80d7069919688aee8e20a49edd3de1a1bdf84ecaa5d21d100c169f8b0bc5d')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
@@ -45,14 +45,15 @@ sha256sums=('ddb64aa5148fdc950d4426f52f1cbb11578619b1242614e3c4ca4792ee5ce30b')
 # Set options for qmake
 _optClang=''
 _optAutol=''
+_optPlugin=''
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
+([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 
 # Handle unofficial plugins
 if [[ "$_plugin_lua4rs" == 'true' ]] ; then
 	depends=(${depends[@]} 'lua')
         source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
-        sha256sums=(${sha256sums[@]} 'SKIP')
 fi
 
 build() {
@@ -79,7 +80,7 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		${_optAutol} ${_optClang} \
+		${_optAutol} ${_optClang} ${_optPlugin} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
