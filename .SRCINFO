@@ -1,7 +1,7 @@
 pkgbase = scenarist-bin
 	pkgdesc = Screenwriting software, which developed in Russia.
 	pkgver = 0.7.2.beta6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kitscenarist.ru
 	arch = x86_64
 	license = GPL3

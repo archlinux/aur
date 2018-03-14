@@ -2,7 +2,7 @@
 
 pkgname=scenarist-bin
 pkgver=0.7.2.beta6
-pkgrel=1
+pkgrel=2
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
 arch=('x86_64')
@@ -16,5 +16,5 @@ PKGEXT=.tar
 
 package() {
   tar xf data.tar.xz -C "${pkgdir}"
-  find "${pkgdir}" -not -path "${pkgdir}/usr/share/KIT*" -exec chmod g-w '{}' +
+  chmod g-w -R "${pkgdir}"
 }
