@@ -3,7 +3,7 @@
 
 pkgname=xorg-editres
 _pkgname=editres
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="a dynamic resource editor for X Toolkit applications"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libxt' 'libxaw')
 makedepends=('xorg-util-macros')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('623322610e4040393e0ff2a69e6612cd')
+md5sums=('526cf79edc0c5e379aefb21539243f96')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
