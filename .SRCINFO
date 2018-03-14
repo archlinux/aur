@@ -1,0 +1,16 @@
+pkgbase = icu55-staticlibs
+	pkgdesc = International Components for Unicode library (static libraries only)
+	pkgver = 55.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	makedepends = clang
+	depends = gcc-libs>=4.7.1-5
+	depends = sh
+	source = http://downloads.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz
+	sha256sums = e16b22cbefdd354bec114541f7849a12f8fc2015320ca5282ee4fd787571457b
+
+pkgname = icu55-staticlibs
+
