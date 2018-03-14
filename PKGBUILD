@@ -8,7 +8,7 @@ url="www.github.com/hnicke/sodalite"
 license=('GPL')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-npyscreen-git, python-yaml')
-source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 install=sodalite.install
 
