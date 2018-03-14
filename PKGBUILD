@@ -2,14 +2,14 @@
 pkgname=xorg-viewres
 _pkgname=viewres
 pkgdesc="Graphical class/resource browser for Xt"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libxaw')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('e4651e55dccb0ae234e49bdc0b984fc9')
+md5sums=('08def461f135832136624855763b20fa')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
