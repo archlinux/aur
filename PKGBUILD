@@ -1,26 +1,23 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
-_gemname=jekyll-feed
-pkgname=ruby-${_gemname}
-pkgver=0.9.1
+pkgname=ruby-jekyll-feed
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts"
 arch=('any')
-depends=('ruby' 'ruby-jekyll')
+depends=('ruby' 'jekyll')
 makedepends=('ruby-bundler' 'ruby-nokogiri' 'ruby-rspec' 'ruby-typhoeus' 'ruby-rubocop')
-url="https://rubygems.org/gems/${_gemname}"
-noextract=($_gemname-$pkgver.gem)
+url="https://rubygems.org/gems/jekyll-feed"
+noextract=("jekyll-feed-${pkgver}.gem")
 license=('MIT')
-source=(
-	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
-)
-sha256sums=(
-	'5e6d8cca482d3a09d7e00d6351dbbc4bdff0e602b0c43ac0b1736a19fc1346b6'
-)
+source=("https://rubygems.org/downloads/jekyll-feed-${pkgver}.gem")
+sha256sums=('a9d605e884d5375900b5d89ebb37d566d3de97091079656c8f727c82959f234f')
 
 package() {
-	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-	rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-	install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "jekyll-feed-${pkgver}.gem"
+    rm "${pkgdir}/${_gemdir}/cache/jekyll-feed-${pkgver}.gem"
+
+    install -Dm644 "${pkgdir}/${_gemdir}/gems/jekyll-feed-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
