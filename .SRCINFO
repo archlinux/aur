@@ -1,0 +1,16 @@
+pkgbase = ruby-clamp-1.1.2
+	pkgdesc = a minimal framework for command-line utilities
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://github.com/mdub/clamp
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ruby-clamp=1.1.2
+	noextract = clamp-1.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/clamp-1.1.2.gem
+	sha256sums = f338133cf34d9a2b8d51d5b545f29c1455e5a3c631b62a4c19504ad50eb9a250
+
+pkgname = ruby-clamp-1.1.2
+
