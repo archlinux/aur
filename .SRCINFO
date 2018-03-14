@@ -1,0 +1,16 @@
+pkgbase = ruby-json-schema
+	pkgdesc = Ruby JSON Schema Validator
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/ruby-json-schema/json-schema
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable>=2.4
+	noextract = json-schema-2.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/json-schema-2.8.0.gem
+	sha256sums = bf7a949c1b9629097af506900668d4c463f5321b6eefed80c57599aa3c46b185
+
+pkgname = ruby-json-schema
+
