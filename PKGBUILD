@@ -6,7 +6,7 @@ __basekernel=4.15
 _minor=9
 pkgver=${__basekernel}.${_minor}
 _clearver=${__basekernel}.7-536
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -18,7 +18,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
-  'https://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz'
+  'https://downloadmirror.intel.com/27591/eng/microcode-20180312.tgz'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
@@ -33,7 +33,7 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'f3070554bd5f1640085cc35ae2f4bc23a94f9cf47b562140e5c2ec9a16d6b52e'
             'SKIP'
             'SKIP'
-            '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
+            '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
