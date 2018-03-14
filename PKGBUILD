@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-no-title-bar-git
 _gitname=no-title-bar
 pkgver=v8.r6.g8fe9355
-pkgrel=0
+pkgrel=1
 pkgdesc="No Title Bar removes the title bar, moves the window title and buttons to the top panel."
 arch=('any')
 url="https://github.com/franglais125/no-title-bar"
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('gnome-shell-extension-no-title-bar-git')
 conflicts=('gnome-shell-extension-no-title-bar' 'gnome-shell-extension-pixel-saver' 'gnome-shell-extension-pixel-saver-git')
 install=${pkgname%-*}.install
-source=('git://github.com/franglais125/no-title-bar.git')
+source=('git+https://github.com/franglais125/no-title-bar.git')
 sha256sums=('SKIP')
 
 pkgver() {
