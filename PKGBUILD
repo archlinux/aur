@@ -2,25 +2,27 @@
 
 _gemname=hammer_cli
 pkgname=ruby-${_gemname/_/-}
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Hammer cli provides universal extendable CLI interface for ruby apps'
-arch=(i686 x86_64)
+arch=(any)
 url='http://github.com/theforeman/hammer-cli'
 license=(GPLv3)
 depends=('ruby'
          'ruby-apipie-bindings>=0.2.0'
          'ruby-awesome_print'
-         'ruby-clamp>1.0'
+         'ruby-clamp>=1.0'
+         'ruby-clamp<1.2.0'
          'ruby-fast_gettext'
          'ruby-highline'
          'ruby-locale>=2.0.6'
          'ruby-logging'
+         'ruby-unicode'
          'ruby-unicode-display_width')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('93c666a13301cd99f97556498605194cc7f4563040690b444abd595d194c8db0')
+sha256sums=('de36086ce61257c7ce88bd51e0c79d1d36623c0d8efc08a5a6303bbe32545549')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
