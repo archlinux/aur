@@ -3,14 +3,15 @@
 
 _pkgname=gnome-usage
 pkgname=$_pkgname-git
-pkgver=3.27.90.2.g3908ab6
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
 license=('GPL3')
-depends=('gtk3' 'libgtop' 'accountsservice')
+depends=('gtk3' 'libgtop')
 makedepends=('git' 'vala' 'gobject-introspection' 'meson')
+optdepends=('accountsservice: support for process user tags')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
