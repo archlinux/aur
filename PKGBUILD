@@ -11,10 +11,7 @@ license=('APACHE')
 groups=('hyperledger')
 depends=('go')
 makedepends=('git' 'docker')
-install=$pkgname.install
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz"
-	${_pkgname}-peer.conf
-	${_pkgname}-peer.service
 arm-support.patch)
 
 export GOOS=linux
@@ -48,17 +45,7 @@ package() {
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
 	cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
-	install -dm 755 $pkgdir/etc/hyperledger/fabric/tls
-	cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
-
-	msg2 "Install systemd service"
-	install -Dm644 $srcdir/${_pkgname}-peer.service $pkgdir/usr/lib/systemd/system/${_pkgname}-peer.service
-
-	msg2 "Install conf file"
-	install -Dm644 $srcdir/${_pkgname}-peer.conf $pkgdir/usr/lib/environment.d/${_pkgname}-peer.conf
 }
 
 md5sums=('0a114daece3c8851c8964aea57798f32'
-	'a0bafaaeb3be191ed2893662fe9a6fc7'
-	'19a55d9a62f467235b51b2e4d7b3c523'
-'2e0e11a95f75e66b08206b685d21eb36')
+         '2e0e11a95f75e66b08206b685d21eb36')
