@@ -1,8 +1,9 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=libclc-git
-pkgver=505.20180315
+pkgver=r505.0023627
 pkgrel=1
+epoch=1
 groups=('mesagit')
 pkgdesc="Library requirements of the OpenCL C programming language (git version)"
 arch=('i686' 'x86_64')
@@ -18,8 +19,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd libclc
-
-  echo $(git rev-list --count master).$(date +%Y%m%d)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
