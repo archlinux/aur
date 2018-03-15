@@ -1,9 +1,34 @@
 [Unit]
 Description=Wesnoth-devel Server Daemon
+Documentation=https://www.wesnoth.org/wiki/ServerAdministration
+Documentation=man:/usr/share/man/wesnoth-devel/man6/wesnothd.6.gz
 After=network.target
+Conflicts=wesnothd.service
 
 [Service]
-ExecStart=/usr/bin/wesnothd-devel
+ExecStart=/usr/bin/wesnothd-devel -t 2 -T 5
+# you can use -c to specify the same configuration file
+# which is used when starting wensothd from the wesnoth UI
+# (and make sure wesnothd has the required access permissions)
+
+SyslogIdentifier=Wesnothd-devel
+User=nobody
+Group=nobody
+ExecStopPost=/usr/bin/rm -f /run/wesnothd-devel/socket
+
+# Additional security-related features
+ProtectSystem=yes
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+RestrictNamespaces=yes
 
 [Install]
 WantedBy=multi-user.target

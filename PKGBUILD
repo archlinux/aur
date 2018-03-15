@@ -2,81 +2,83 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
-pkgver=1.13.8
+pkgver=1.13.11
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
-url="http://www.wesnoth.org/"
+url="https://www.wesnoth.org/"
 license=('GPL')
-depends=('pango>=1.14.8' 'sdl2_ttf>=2.0.0' 'sdl2_net>=2.0.0' 'sdl2_mixer>=2.0.0' 'sdl2_image>=2.0.0' 'fribidi>=0.10.9' 'dbus' 'python2' 'boost-libs' 'lua' 'desktop-file-utils')
-makedepends=('boost>=1.60.0' 'scons>=0.98.3')
+depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'pango' 'fribidi' 'lua' 'dbus' 'openssl' 'boost-libs' 'desktop-file-utils' 'ttf-dejavu' 'ttf-droid' 'ttf-lato')
+optdepends=('python:  some tools for UMC developers'
+            'python2: some tools for UMC developers'
+            'tk: for GUI.pyw, a gui for some of these tools'
+            'gettext: for creating translation files with wmlxgettext'
+            'python-pyenchant: spellchecking with wmllint'
+            'optipng: png optimization with wesnoth-optipng / woptipng'
+            'advancecomp: png optimization with wesnoth-optipng / woptipng'
+            'imagemagick: png optimization with wesnoth-optipng / woptipng'
+            'libpng:  png screenshots')
+makedepends=('boost' 'scons' 'libpng')
 install=${pkgname}.install
-source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.tar.bz2"
-    "${pkgname}.desktop"
-    "wesnoth_editor-devel.desktop"
-    "wesnoth-devel-icon.xpm"
-    "wesnoth-devel_editor-icon.xpm"
-    "wesnothd-devel.tmpfiles.conf"
-    "wesnothd-devel.service"
-    "patch_gcc6.patch")
- 
-md5sums=('8f931a2f5a53b8d41c8fb9b47c1eef6d'
-'a906eae5d541a51de77038469b1f794b'
-'b9de9e7ee16f757aa406466657c274a9'
-'b73f4fdefd3e7daa158cce278f11be64'
-'931e7443fe37b2862ca59f65ded74a0b'
-'ffc4b6c06dcd187855710ed96a55fc8f'
-'959aea3af36e7b2a1be6bf4537ec54b7'
-'5182ce65c28a8bd62043c3a7fc09e642')
+options=('!emptydirs')
+#options=('!emptydirs' '!strip') #use this when building with debugging symbols
+source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.tar.bz2"
+        "${pkgname}.desktop"
+        "wesnoth_editor-devel.desktop"
+        "wesnoth-devel-icon.xpm"
+        "wesnoth-devel_editor-icon.xpm"
+        "wesnothd-devel.tmpfiles.conf"
+        "wesnothd-devel.service"
+        "wesnoth-devel.appdata.xml")
+
+md5sums=('e1c22dd75f4d3edb1504a1dbd51ff750'
+         'fb3c2d5cfb93c8e8bce213f562c366e9'
+         'b9de9e7ee16f757aa406466657c274a9'
+         'b73f4fdefd3e7daa158cce278f11be64'
+         '931e7443fe37b2862ca59f65ded74a0b'
+         'd9d4677b083eab179200e34c6dea8899'
+         '93f1afc41c66eb324a45ca26055f1507'
+         'b6da095ff0849b5fd95204702a257496')
 
 PKGEXT='.pkg.tar'
 
 prepare() {
-  cd "${srcdir}/wesnoth-$pkgver"
+  cd "$srcdir/wesnoth-$pkgver"
 
-  #How to manually create a patch 
+  #How to manually create a patch
   #diff -rupN src/ src_new/ > patch_name.patch
 
-  #Patching due to boost 1.60
-  #[https://gna.org/bugs/?24227]
-  #patch -p1 < ../boost1_60.patch
-  #patch -p1 < ../boost1_600tests.patch
+  #How to apply a patch
+  #patch -p1 < ../../sdlmixer_2.0.2.patch
 }
 
 build() {
-  cd "${srcdir}/wesnoth-$pkgver"
- 
-  #gcc 6 patching
-  #patch -p1 < ../../patch_gcc6.patch
+  cd "$srcdir/wesnoth-$pkgver"
 
-  scons jobs=4 desktop_entry=False  prefix=/usr program_suffix=-devel datadirname=wesnoth-devel prefsdir=.wesnoth-devel fifodir=/run/wesnothd-devel \
-  boostdir=/usr/include boostlibdir=/usr/include \
-  localedir=/usr/share/locale docdir=/usr/share/doc/wesnoth-devel mandir=/usr/share/man/wesnoth-devel python_site_packages_dir=/lib/python/site-packages/wesnoth wesnoth wesnothd campaignd
+  #the option build=debug can be useful if the game crashes and you would like to report a bug
+  scons jobs=4 desktop_entry=False prefix=/usr version_suffix=-devel prefsdir=.wesnoth-devel \
+  docdir=/usr/share/doc/wesnoth-devel mandir=/usr/share/man/wesnoth-devel fifodir=/run/wesnothd-devel \
+  appdata_file=False enable_lto=True openmp=True wesnoth wesnothd
 }
 
 package(){
- cd "${srcdir}/wesnoth-$pkgver"
- scons destdir=${pkgdir} boostdir=/usr/include boostlibdir=/usr/include install
- 
- #INSTALLING of menu entry and icons:
- install -D -m644 ../../wesnoth-devel.desktop ${pkgdir}/usr/share/applications/wesnoth-devel.desktop
- install -D -m644 ../../wesnoth-devel-icon.xpm ${pkgdir}/usr/share/pixmaps/wesnoth-devel-icon.xpm
- install -D -m644 ../../wesnoth-devel-icon.xpm ${pkgdir}/usr/share/icons/wesnoth-devel-icon.xpm
- 
- install -D -m644 ../../wesnoth_editor-devel.desktop ${pkgdir}/usr/share/applications/wesnoth_editor-devel.desktop
- install -D -m644 ../../wesnoth-devel_editor-icon.xpm ${pkgdir}/usr/share/pixmaps/wesnoth-devel_editor-icon.xpm
- install -D -m644 ../../wesnoth-devel_editor-icon.xpm ${pkgdir}/usr/share/icons/wesnoth-devel_editor-icon.xpm
- 
- #chmod +x ${pkgdir}/var/run/wesnothd-devel
- #chmod o+r ${pkgdir}/var/run/wesnothd-devel
- 
- #rm -f ${pkgdir}/usr/share/applications/wesnoth.desktop
- #rm -f ${pkgdir}/usr/share/applications/wesnoth_editor.desktop
- #rm -f ${pkgdir}/usr/share/icons/wesnoth-icon.png
- #rm -f ${pkgdir}/usr/share/icons/wesnoth_editor-icon.png
- rm -rf ${pkgdir}/run/wesnothd-devel/
- rm -rf ${pkgdir}/run/
+  cd "$srcdir/wesnoth-$pkgver"
 
- install -Dm644 "$srcdir/wesnothd-devel.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-devel.conf"
- install -Dm644 "$srcdir/wesnothd-devel.service" "$pkgdir/usr/lib/systemd/system/wesnothd-devel.service"
+  scons destdir="$pkgdir" install
+  cp -r "$srcdir/wesnoth-$pkgver/utils" "$pkgdir/usr/share/$pkgname/"
+
+  #INSTALLING of menu entry and icons and appstream information:
+  install -D -m644 "$srcdir/wesnoth-devel.desktop" "$pkgdir/usr/share/applications/wesnoth-devel.desktop"
+  install -D -m644 "$srcdir/wesnoth-devel-icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname-icon.xpm"
+
+  install -D -m644 "$srcdir/wesnoth_editor-devel.desktop" "$pkgdir/usr/share/applications/wesnoth_editor-devel.desktop"
+  install -D -m644 "$srcdir/wesnoth-devel_editor-icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname_editor-icon.xpm"
+
+  install -D -m644 "$srcdir/wesnothd-devel.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-devel.conf"
+  install -D -m644 "$srcdir/wesnothd-devel.service" "$pkgdir/usr/lib/systemd/system/wesnothd-devel.service"
+
+  install -D -m644 "$srcdir/wesnoth-devel.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-devel.appdata.xml"
+
+  #clean up, in case you will use these files not just for building a package
+  sed '/destdir = /d' -i "$srcdir/wesnoth-$pkgver/.scons-option-cache"
 }
