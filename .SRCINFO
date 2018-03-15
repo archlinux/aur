@@ -1,4 +1,4 @@
-pkgbase = cath-tool-git
+pkgbase = cath-tools-git
 	pkgdesc = Protein structure comparison tools such as SSAP and SNAP
 	pkgver = 1
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = cath-tool-git
 	source = cath-tools::git+https://github.com/anadon/cath-tools
 	md5sums = SKIP
 
-pkgname = cath-tool-git
+pkgname = cath-tools-git
 
