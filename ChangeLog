@@ -1,0 +1,7 @@
+2018-03-15 Christopher Arndt <chris@chrisarndt.de>
+
+	* 20180312-1:
+	package forked from 'hydrogen-drumkits'
+	add ForzeeStereo drumkit
+	add SF3007-2011-Set-03 drumkit
+	convert all samples to FLAC during package build
