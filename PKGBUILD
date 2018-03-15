@@ -1,8 +1,9 @@
+# Maintainer: Eric Liu <eric@hnws.me>
 # former Maintainer: Daniele Vazzola <daniele.vazzola@gmail.com>
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.8
+pkgver=13.9
 pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
