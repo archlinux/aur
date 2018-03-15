@@ -1,8 +1,8 @@
 # Maintainer: TheSilentDrifter a.k.a Larry Dewey <larry.j.dewey@gmail.com>
 
 pkgname=tutanota-electron-git
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="A secure email client"
 arch=('x86_64')
 url="https://bitbucket.org/Thesilentdrifter/tutanota-electron"
