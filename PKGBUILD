@@ -66,10 +66,10 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.26
+pkgver=4.14.27
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -123,7 +123,7 @@ source=(# mainline kernel patches
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'dae5ed2632b6f328bfc93751159a1edb15384e0cb43392c0810b5f6943e5bf88'
+            '74211925a4f15245001836eb8f89568c5b76591cc65d3c006d9198780c51850e'
             'SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             '8b8f4d9cc2f868b3627fa67d955fcbd7e78c63eb5f6c254688f9f779d01907f1'
@@ -197,7 +197,7 @@ prepare() {
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i ../kernel_gcc_patch-${_gcc_rel}/${_gcc_patch}
+  patch -Np1 -i ../${_gcc_name}-${_gcc_rel}/${_gcc_patch}
   
   # Clean tree and copy ARCH config over
   make mrproper
