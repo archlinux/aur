@@ -18,11 +18,12 @@ backup=()
 options=()
 install=()
 changeLog=()
-source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/8ca2bfecf1df17c0444bc27fcc9e187f3d88553d/tutanota-electron-git.tar.gz")
-md5sums=('b31cbabdee3abefc90cc77879c203a09')
-sha512sums=('d11862b21e32dd4d7b5800c4bb4148e332e07aa369080259c5fe619de6b3f5cd7bfe3943f75a742518d9abfa6d31d0c15c52f889c9ed805d63cf612bd9f8e653')
+source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/9d6c55637db9cf4349307a146674004d67c0ee5c/tutanota-electron-git.tar.gz")
+md5sums=('d4fbf97885f431ca97d5ff9a59b274db')
+sha512sums=('6fa9dc14288a623236b8148488b554ef8aa65a300fba3685b9dc02d5904517a50af08edec71957bdbf5939688517f4d7af62c69906523480e3e4a26f458c3209')
 build() {
   cd "$pkgname"
+  npm install -g electron-packager
   ./build.sh
 }
 
