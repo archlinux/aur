@@ -5,7 +5,7 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=60.0.3
+pkgver=60.3
 pkgrel=1
 meme=FIREFOX_60_0b3_RELEASE
 meme2=DEVEDITION_60_0b3_RELEASE
@@ -22,7 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://hg.mozilla.org/mozilla-unified/archive/$meme2.tar.gz"
+source=("https://hg.mozilla.org/mozilla-unified/archive/$meme.tar.gz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
@@ -60,7 +60,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
   patch -Np1 -i ../id.patch
 
 
@@ -129,7 +129,7 @@ END
 }
 
 build() {
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -145,7 +145,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
