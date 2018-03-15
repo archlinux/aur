@@ -32,12 +32,21 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+  
+  _npm_prefix=$(npm config get prefix)
+  npm config delete prefix
+  
+  # Switch to required node version
   source /usr/share/nvm/init-nvm.sh --install
   nvm install && nvm use
-  nvm unalias default
   
+  # Download modules and build Signal
   yarn install
   yarn pack-prod
+  
+  # Restore config
+  npm config set prefix ${_npm_prefix}
+  nvm unalias default
 }
 
 package() {
