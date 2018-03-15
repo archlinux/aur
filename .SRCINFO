@@ -1,9 +1,9 @@
 pkgbase = opennic-up
 	pkgdesc = OpenNIC auto DNS updater using Network Manager
 	pkgver = 0.83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewlfft/opennic-up
-	arch = x86_64
+	arch = any
 	license = LGPL3
 	depends = fping
 	depends = curl
