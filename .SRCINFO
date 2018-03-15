@@ -1,6 +1,6 @@
 pkgbase = giada
 	pkgdesc = A looper, drum machine, sequencer, live sampler and plugin host
-	pkgver = 0.14.5
+	pkgver = 0.14.6
 	pkgrel = 1
 	url = http://www.giadamusic.com/
 	changelog = ChangeLog
@@ -13,10 +13,10 @@ pkgbase = giada
 	depends = libpulse
 	depends = libxpm
 	depends = rtmidi
-	source = giada-0.14.5-src.tar.gz::http://www.giadamusic.com/download/grab/source
+	source = giada-0.14.6-src.tar.gz::http://www.giadamusic.com/download/grab/source
 	source = giada.desktop
 	source = giada.png
-	md5sums = c83bfd7280dd0408dc1315f4df750ab2
+	md5sums = f5610aa6bf82b3749290b88746e1dec3
 	md5sums = 06238158680470ab01fbbeb33353e58e
 	md5sums = f9b6e4233890720af50c536c4b2c92c0
 

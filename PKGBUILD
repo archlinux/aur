@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.14.5
+pkgver=0.14.6
 pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('steinberg-vst36')
 source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source"
         "$pkgname.desktop"
         "$pkgname.png")
-md5sums=('c83bfd7280dd0408dc1315f4df750ab2'
+md5sums=('f5610aa6bf82b3749290b88746e1dec3'
          '06238158680470ab01fbbeb33353e58e'
          'f9b6e4233890720af50c536c4b2c92c0')
 changelog='ChangeLog'
