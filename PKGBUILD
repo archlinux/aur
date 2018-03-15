@@ -1,8 +1,8 @@
 # Maintainer: Mustafa Gönül <mustafagonul@gmail.com>
 pkgname=vim-fixkey-git
 pkgver=0.3.8
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Fixkey helps Vim use the non-ASCII keys of a terminal emulator, permitting mapping of several classes of characters."
 arch=('any')
 url="https://github.com/drmikehenry/vim-fixkey"
 license=('')
