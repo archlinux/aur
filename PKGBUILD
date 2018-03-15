@@ -3,7 +3,7 @@ pkgbase=qt5-mvvm
 pkgname=(qt5-mvvmcore qt5-mvvmwidgets qt5-mvvmquick qt5-mvvmdatasynccore qt5-mvvmdatasyncwidgets qt5-mvvmdatasyncquick qt5-mvvm-doc)
 group=qt5-mvvm
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtMvvm"
@@ -24,8 +24,8 @@ sha256sums=('SKIP'
             'c69a4d6f324019d30a6f3d5dac00760af670c8f14b5064e6f4c08072a34ab5b8'
             '1a1ad4f7468f0b78cbe64e4a25f6ecbba2e6d94c79c4aecc54ca23f45fc791d7'
             '312675fe1ef88356119d62b9c4e4f481b21b189bc1d32954ecdeb88c73eba382'
-            '9d14762455458b3bb414c714dbdc572212cf2c3e2cd6e6719c855ab9ec210191'
-            '9d14762455458b3bb414c714dbdc572212cf2c3e2cd6e6719c855ab9ec210191')
+            'b974d9a7d88fcc9bde60ce6af3bac3c5f7374e07f635f8a90ef05e2791c99eae'
+            '8a6d5cc54a0eae285296c11de1e1ea02583cf8271ba87219c4fcfdcdf9907786')
 
 prepare() {
   mkdir -p build
@@ -114,7 +114,7 @@ package_qt5-mvvmdatasynccore() {
 }
 
 package_qt5-mvvmdatasyncwidgets() {
-  depends=('qt5-mvvmdatasynccore')
+  depends=('qt5-mvvmdatasynccore' 'qt5-mvvmwidgets')
   optdepends=()
 
   cd build
@@ -130,7 +130,7 @@ package_qt5-mvvmdatasyncwidgets() {
 }
 
 package_qt5-mvvmdatasyncquick() {
-  depends=('qt5-mvvmdatasynccore')
+  depends=('qt5-mvvmdatasynccore' 'qt5-mvvmquick')
   optdepends=()
 
   cd build
