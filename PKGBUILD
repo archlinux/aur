@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=resource-agents
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('libxslt' 'python' 'docbook-xsl')
 depends=('bash' 'perl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('b094238ef7fd65ff8a28611da5a3be97aa599796a8efd2771acecf1e82840a8484e871fb4ef0d1ae5f8009a06196056ba7d93ebab271cb3c9288a60b5934c695')
+sha512sums=('be34ac83d3fe49beabff647d23cf420356c6708f0acd8f1b51e4362e30d02adf2adadbd69bd24f300a9ded736c3884d4780d8221506ea1d35f12060470afdb56')
 
 prepare() {
   cd $pkgname-$pkgver
