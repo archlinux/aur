@@ -8,7 +8,7 @@
 pkgname='tor-browser-fr'
 pkgver='7.5.1'
 _language='fr'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -32,7 +32,7 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('ff47bc0c4c630543a44b5dbdf34538c4f240d5119a53f29dfbf635e43ec6dcf7' 'SKIP')
+sha256sums_x86_64=('a2487b8154b54d6f8cd8a64fad3573a2f5763bcf43fde8473b8e27633645a524' 'SKIP')
 sha256sums_i686=(  'd4ba9cec95884f57cf4475ffd2678e0ee1b268f703b744541f7a8a1fccf682c2' 'SKIP')
 sha256sums+=('2217f011197329019ae3d282d95623e0230f8f7a3a604290744280530cf1698a'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
