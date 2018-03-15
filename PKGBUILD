@@ -2,7 +2,7 @@
 
 pkgname=python-trollius
 _pyname=trollius
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Port of the Tulip project (asyncio module, PEP 3156)'
 url='https://github.com/haypo/trollius'
@@ -11,13 +11,15 @@ license=('Apache')
 depends=('python')
 makedepends=('python-sphinx')
 checkdepends=('python-pytest')
+options=('!makeflags')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/haypo/trollius/archive/trollius-${pkgver}.tar.gz)
-sha256sums=('c9f7f35b011afa6adbd92d91ca347e76412ac3ff56a53133d36800892e5e6383')
-sha512sums=('30e9234fcd702dfb2a843efeab00a499f83e5e3621d19b0468fa77827697d730d69a24917db259349b6d59340a07e035098a8e57f3719993ae6374127ae06b1c')
+sha256sums=('51606712247fb10e5f2bc9a750c7b72a2fce1300d518b08e26fe1262d0e2d26f')
+sha512sums=('ab59d8a10f70691f2c63aba5be99df605701fff71f16f6d8e3ddd85ab9e2e255ff8adbe32a5d8ac3645ee8c115eb80201651b92adad99a9439306501e00d0a17')
 
 build() {
-  cd ${_pyname}-${_pyname}-${pkgver}/doc
-  make man text
+  cd ${_pyname}-${_pyname}-${pkgver}
+  python setup.py build
+  make -C doc man text
 }
 
 check() {
@@ -27,7 +29,7 @@ check() {
 
 package() {
   cd ${_pyname}-${_pyname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}"
+  python setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgbase}"
   install -Dm 644 doc/build/text/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 doc/build/man/trollius.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
