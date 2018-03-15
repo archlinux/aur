@@ -6,7 +6,7 @@
 pkgname=firefox-eme-free
 name=firefox
 pkgver=59.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -130,7 +130,7 @@ ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
 
-
+MOZ_SOURCE_CHANGESET=534bbc15b994
 
 # please put 1.25 times your number of threads
 
