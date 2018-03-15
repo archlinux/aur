@@ -1,6 +1,6 @@
 pkgbase = lib32-libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, git 32-bit version
-	pkgver = 2.4.91.r2.g45eee3fd
+	pkgver = 2.4.91.r10.ga58490de
 	pkgrel = 1
 	url = http://dri.freedesktop.org/
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = lib32-libdrm-git
 	checkdepends = lib32-bcunit
 	checkdepends = bcunit-cunit-compat
 	makedepends = gcc-multilib
-	makedepends = valgrind-multilib
 	depends = libdrm-git
 	depends = lib32-libpciaccess
 	provides = lib32-libdrm
