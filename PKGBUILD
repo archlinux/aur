@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-slang
-pkgver=2.3.1a
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lib32-glibc' 'lib32-pcre' 'lib32-zlib' 'slang')
 makedepends=('gcc-multilib')
 options=('!makeflags')
 source=("http://www.jedsoft.org/releases/slang/slang-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('54f0c3007fde918039c058965dffdfd6c5aec0bad0f4227192cc486021f08c36'
+sha256sums=('fc9e3b0fc4f67c3c1f6d43c90c16a5c42d117b8e28457c5b46831b8b5d3ae31a'
             'SKIP')
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A') # John E. Davis
 
