@@ -188,7 +188,7 @@ build() {
     CPPFLAGS+=' -DNO_UNWIND_TABLES'
   fi
 
-  python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
+  python2 tools/gn/bootstrap/bootstrap.py -s --no-clean
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
