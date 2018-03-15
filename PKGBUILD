@@ -2,7 +2,7 @@
 
 pkgbase=python-django-q
 pkgname=('python-django-q' 'python2-django-q')
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python2-django' 'python2-setuptools' 'python2-six'
              'python-django' 'python-setuptools' 'python-six')
 source=("django-q-${pkgver}.tar.gz::https://github.com/Koed00/django-q/archive/v${pkgver}.tar.gz")
-sha256sums=('e3426190fa40c2ccfa251bcd92eb5c009d7234309829fff9ab4c4d58f0f79feb')
+sha256sums=('f920453fdab30da4da8bb27bfdd97d9aa3a7088925fa5d6324a001b377e4910a')
 
 prepare() {
   cp -r {,python-}django-q-${pkgver}
