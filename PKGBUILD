@@ -4,13 +4,13 @@
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.91.r2.g45eee3fd
+pkgver=2.4.91.r10.ga58490de
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
 depends=('libpciaccess')
-makedepends=('valgrind' 'libxslt' 'docbook-xsl' 'meson')
+makedepends=('libxslt' 'docbook-xsl' 'meson')
 checkdepends=('cairo' 'bcunit-cunit-compat')
 url="http://dri.freedesktop.org/"
 provides=('libdrm')
@@ -33,15 +33,22 @@ pkgver() {
 }
 
 build() {
-    arch-meson "$_realname" build  -D udev=true
-    ninja -C build
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+    meson setup libdrm _build \
+        --prefix /usr \
+        --buildtype plain \
+        --wrap-mode      nofallback \
+        -D udev=true
+    ninja -C _build
 }
 
 check() {
-   meson test -C build
+   meson test -C _build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C _build install
   install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" -m644 COPYING
 }
