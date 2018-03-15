@@ -1,6 +1,6 @@
 pkgbase = resource-agents-git
 	pkgdesc = OCF resource agents for rgmanager and pacemaker
-	pkgver = 4.0.1.r76.gc5715c96
+	pkgver = 4.1.1.r0.g5a1edf2b
 	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = i686
