@@ -1,0 +1,13 @@
+pkgbase = micro_httpd
+	pkgdesc = really small HTTP server
+	pkgver = 14Aug2014
+	pkgrel = 1
+	url = https://acme.com/software/micro_httpd/
+	arch = x86_64
+	license = custom
+	depends = xinetd
+	source = https://acme.com/software/micro_httpd/micro_httpd_14Aug2014.tar.gz
+	md5sums = a5bb659491e6b01111c58f928cef29e6
+
+pkgname = micro_httpd
+
