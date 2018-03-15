@@ -2,13 +2,18 @@
 
 pkgname=xcursor-atto
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A non-conventional circular cursor theme, built with pen and touch based input in mind"
 arch=('any')
 url="https://www.gnome-look.org/p/999542/"
 license=('GPL')
 depends=()
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1460734305/s/4b0e9c9000653d8c27dfd79cfcbc5408/t/1515865201/u//167180-Atto-cursor.tar.gz")
+
+# Hash and Timestamp
+_p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
+read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
+
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1460734305/s/$_s/t/$_t/u//167180-Atto-cursor.tar.gz")
 md5sums=('b53e4df14519c675cf973f2f44257555')
 
 package() {
