@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/kantord/i3-gnome-pomodoro"
 license=('unknown')
 
-depends=('python' 'gnome-shell-pomodoro ' 'python-click>=6.7' 'python-pydbus>=0.6.0' 'i3ipc-python-git')
+depends=('python' 'gnome-shell-pomodoro' 'python-click>=6.7' 'python-pydbus>=0.6.0' 'i3ipc-python-git')
 makedepends=('git')
 provides=("$_srcname")
 
