@@ -1,7 +1,7 @@
 pkgbase = tekaim
 	pkgdesc = A simple tool to take and upload screenshots to teknik.io
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IvanFon/tekaim
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = tekaim
 	depends = curl
 	depends = xclip
 	source = https://github.com/IvanFon/tekaim/releases/download/1.2.0/tekaim-1.2.0.tar.gz
-	sha256sums = 95be027d1508f38a847409b65d4c64f09f7f47f720c4413cefc594efaa0f5d70
+	sha256sums = d67a9a5f7f689e6d0a2524c623f929c40c0e5a9231e7d184acab5c49bbae6a8c
 
 pkgname = tekaim
 
