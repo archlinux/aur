@@ -1,17 +1,17 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
-pkgver="3.4.6"
-pkgrel="2"
+pkgver="3.4.8"
+pkgrel="1"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
 url="http://www.obdautodoctor.com/"
-license=('LGPL3')
+license=('Proprietary')
 
 source_i686=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_i386.tar.gz")
 source_x86_64=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_amd64.tar.gz")
 
 depends=("qt5-base>=5.5.1")
-optdepends=("bluez: for bluetooth support")
+optdepends=("bluez: for bluetooth support" "bluez-libs")
 
 [[ "$CARCH" = "i686" ]] && _parch='i386'
 [[ "$CARCH" = "x86_64" ]] && _parch='amd64'
@@ -26,5 +26,5 @@ package() {
 	install -D -m644 "./license.txt" "${pkgdir}/usr/share/licenses/obdautodoctor/LICENSE"
 }
 
-md5sums_i686=('6d487df0ecce486cfe28bc58bcfe12f3')
-md5sums_x86_64=('a271aa852565198ae355a0f72a29c5e4')
+md5sums_i686=('834df9c278bd72c0fe2ae3822d9f7ce2')
+md5sums_x86_64=('49d6ad8c20c984e788adac9510c3579b')
