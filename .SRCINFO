@@ -1,7 +1,7 @@
 pkgbase = tutanota-electron-git
 pkgdesc = A secure email client
-pkgver = 0.0.2
-pkgrel = 2
+pkgver = 0.0.3
+pkgrel = 1
 url = https://bitbucket.org/Thesilentdrifter/tutanota-electron
 arch = x86_64
 depends = gconf
