@@ -1,14 +1,13 @@
 # Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.0.101
-pkgrel=4
+pkgrel=5
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('i686' 'x86_64')
 url="http://www.validcertificadora.com.br/SafeSignLinux"
 license=('custom:copyright')
-depends=('pcsclite' 'gdbm183' 'wxgtk2.8-light' 'openssl098' 'xdg-utils' 'libmspack')
-optdepends=('ccid: generic USB Chip/Smart card interface devices driver',
-            'acsccid: ACS CCID PC/SC driver',
+depends=('pcsclite' 'gdbm183' 'wxgtk2.8-light' 'openssl098' 'xdg-utils' 'libmspack' 'ccid')
+optdepends=('acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
 source_i686=("https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC$pkgver-i386-deb6-admin.deb")
 source_x86_64=("https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC$pkgver-x86_64-deb6-admin.deb")
@@ -17,20 +16,6 @@ sha512sums_x86_64=('b41e8e0b9bcb2ad4eb7e73b065951e46138105672f1885f97b584fdb94b5
 
 prepare() {
   tar zxf data.tar.gz
-}
-
-build() {
-  cd ${srcdir}
-  local _filename
-  if [[ arch == "i686" ]]; then
-    _filename=${pkgver}-i386
-  else
-    _filename=${pkgver}-x86_64
-  fi
-
-  # Use deb2targz to extract the beefy parts of the files
-  deb2targz SafeSignIC$_filename-deb6-admin.deb
-  tar xvf SafeSignIC$_filename-deb6-admin.tar.gz
 }
 
 package() {

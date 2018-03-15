@@ -1,7 +1,7 @@
 pkgbase = safesignidentityclient
 	pkgdesc = Smart card PKCS#11 provider and token manager
 	pkgver = 3.0.101
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.validcertificadora.com.br/SafeSignLinux
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = safesignidentityclient
 	depends = openssl098
 	depends = xdg-utils
 	depends = libmspack
-	optdepends = ccid: generic USB Chip/Smart card interface devices driver,
+	depends = ccid
 	optdepends = acsccid: ACS CCID PC/SC driver,
 	optdepends = scmccid: binary driver for the SCM Smart Card Readers
 	source_i686 = https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC3.0.101-i386-deb6-admin.deb
