@@ -6,15 +6,15 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.2.8
+pkgver=1.2.12
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl-1.0' 'libappindicator-gtk3')
-makedepends=('cmake' 'git' 'gyp' 'libexif' 'libva' 'libwebp' 'mtdev' 'range-v3' 'python' 'python2' 'gtk3' 'dee')
-install=telegram-desktop-dev.install
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl-1.0')
+makedepends=('cmake' 'git' 'gyp' 'range-v3' 'python' 'libappindicator-gtk3')
+optdepends=('libnotify: desktop notifications')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=(
@@ -23,22 +23,25 @@ source=(
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
     "Catch::git+https://github.com/philsquared/Catch"
-    "telegram-desktop-dev.desktop"
-    "tg.protocol"
-    "CMakeLists.inj"
+    "https://raw.github.com/telegramdesktop/tdesktop/dev/lib/xdg/tg.protocol"
+    # These files might require modifications to be up-to-date. If that is the
+    # case, they will be updated in place and untracked temporarily.
+    "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
     "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+    #"tdesktop_fixed.patch"
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
+    "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '85232aeebebcb4105f4af23a3de1c61401f7592a025f9b5bbe0ce980f014da1a'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            '9011d01340549d8a7b6627c44de5355356342a7e83789672e9e0aa92657ee04f'
-            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075')
+            '36b817ec9843b261af7a246f9ec51feb828203bd90e76aef7383457f23a0d4cb'
+            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075'
+            '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -48,7 +51,15 @@ prepare() {
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git submodule update
+
+    # Cheating! Linking fixed patches to their usual place
+    for fixed in $srcdir/*_fixed*
+    do
+        ln -s $fixed ${fixed/_fixed/}
+    done
+
     patch -Np1 -i "$srcdir/tdesktop.patch"
+    patch -Np1 -i "$srcdir/no-gtk2.patch"
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
@@ -77,7 +88,7 @@ package() {
     install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
     install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/telegram-desktop-dev.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
+    install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
 
     install -d "$pkgdir/usr/share/kservices5"
     install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
