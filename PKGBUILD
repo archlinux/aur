@@ -140,7 +140,7 @@ package() {
     fi
 
     msg2 "Setting up WolframScript"
-    mkdir ${srcdir}/WolframScript
+    mkdir -p ${srcdir}/WolframScript
     mkdir -p ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
     bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.2.0-22_amd64.deb data.tar.xz
