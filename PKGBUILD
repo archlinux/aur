@@ -45,7 +45,9 @@ package() {
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
 	cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
+	install -dm 755 $pkgdir/etc/hyperledger/fabric/tls
+        install -dm 755 $pkgdir/etc/hyperledger/fabric/msp
 }
 
 md5sums=('0a114daece3c8851c8964aea57798f32'
-         '2e0e11a95f75e66b08206b685d21eb36')
+'2e0e11a95f75e66b08206b685d21eb36')
