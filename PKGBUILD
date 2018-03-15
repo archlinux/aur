@@ -1,32 +1,32 @@
 # Maintainer: <andrew dot myers at fdservices  dot co dot uk>
 pkgname=vpacman
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A programme to view and manage the pacman database - built with Tcl/Tk"
 arch=('any')
-url="http://sourceforge.net/projects/vpacman"
+url="https://github.com/fdservices/vpacman"
 license=('GPL')
 depends=('tcl' 'tk' 'wmctrl')
 optdepends=('xorg-xwininfo: for fine control of terminal windows'
 			'pkgfile: for faster retrieval of package files'
 			)
-source=(http://sourceforge.net/projects/vpacman/files/vpacman-$pkgver.tar.gz)
-md5sums=('f230f91bac6a2812b369c9daac681052')
+source=(http://github.com/fdservices/$pkgname/archive/$pkgver.tar.gz)
+md5sums=('0816483db482618585408aaa2bdacda0')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-#   /opt/local/vpacman
-    install -d "$pkgdir"/opt/local/vpacman
-    install -m755 vpacman.tcl "$pkgdir"/opt/local/vpacman
-    install -m644 README.txt "$pkgdir"/opt/local/vpacman
-#   /opt/local/vpacman/icons
-    install -d "$pkgdir"/opt/local/vpacman/icons
-    install -d "$pkgdir"/opt/local/vpacman/icons/medium
-    install -d "$pkgdir"/opt/local/vpacman/icons/small
-    install -d "$pkgdir"/opt/local/vpacman/icons/tiny
-    install -m644 icons/medium/* "$pkgdir"/opt/local/vpacman/icons/medium
-    install -m644 icons/small/* "$pkgdir"/opt/local/vpacman/icons/small
-    install -m644 icons/tiny/* "$pkgdir"/opt/local/vpacman/icons/tiny
+#   /usr/share/vpacman
+    install -d "$pkgdir"/usr/share/vpacman
+    install -m755 vpacman.tcl "$pkgdir"/usr/share/vpacman
+    install -m644 README.txt "$pkgdir"/usr/share/vpacman
+#   /usr/share/pixmaps/vpacman
+    install -d "$pkgdir"/usr/share/pixmaps/vpacman
+    install -d "$pkgdir"/usr/share/pixmaps/vpacman/medium
+    install -d "$pkgdir"/usr/share/pixmaps/vpacman/small
+    install -d "$pkgdir"/usr/share/pixmaps/vpacman/tiny
+    install -m644 icons/medium/* "$pkgdir"/usr/share/pixmaps/vpacman/medium
+    install -m644 icons/small/* "$pkgdir"/usr/share/pixmaps/vpacman/small
+    install -m644 icons/tiny/* "$pkgdir"/usr/share/pixmaps/vpacman/tiny
 #   /usr/bin
     install -d "$pkgdir"/usr/bin
     install -m755 vpacman "$pkgdir"/usr/bin/
@@ -34,6 +34,15 @@ package() {
     install -d "$pkgdir"/usr/share/applications
     install -m644 vpacman.desktop "$pkgdir"/usr/share/applications/
 }
+
+
+
+
+
+
+
+
+
 
 
 

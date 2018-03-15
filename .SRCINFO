@@ -1,8 +1,8 @@
 pkgbase = vpacman
 	pkgdesc = A programme to view and manage the pacman database - built with Tcl/Tk
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = http://sourceforge.net/projects/vpacman
+	url = https://github.com/fdservices/vpacman
 	arch = any
 	license = GPL
 	depends = tcl
@@ -10,8 +10,8 @@ pkgbase = vpacman
 	depends = wmctrl
 	optdepends = xorg-xwininfo: for fine control of terminal windows
 	optdepends = pkgfile: for faster retrieval of package files
-	source = http://sourceforge.net/projects/vpacman/files/vpacman-1.0.3.tar.gz
-	md5sums = f230f91bac6a2812b369c9daac681052
+	source = http://github.com/fdservices/vpacman/archive/1.1.1.tar.gz
+	md5sums = 0816483db482618585408aaa2bdacda0
 
 pkgname = vpacman
 
