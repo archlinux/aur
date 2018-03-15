@@ -1,5 +1,5 @@
 pkgname=storjshare-daemon
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 epoch=
 pkgdesc="A CLI Client for running a farming node"
@@ -21,7 +21,7 @@ changelog=
 source=("https://github.com/Storj/storjshare-daemon/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
 validpgpkeys=()
-sha256sums=('3d35d7e6990958066a7f8899dc0f4f09aecb70443527667e9fcfbc1adcd182b6')
+sha256sums=('56b29b13dc85035f00477ec28b203c1699dbb86efdc8e239c9c2dfb1458d764e')
 
 package() {
 	cd "$srcdir"
@@ -29,5 +29,3 @@ package() {
 
 	chmod -R o-w "$pkgdir"
 }
-
-
