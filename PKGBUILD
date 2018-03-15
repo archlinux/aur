@@ -1,20 +1,20 @@
 # Maintainer: Michael Egger <michael.egger@tsn.at>
 
 pkgname=inox-bin
-pkgver=63.0.3239.132
-pkgrel=3
+pkgver=65.0.3325.162
+pkgrel=1
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google. (binary version)"
 arch=('x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 provides=('inox')
 conflicts=('inox')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl-file-basedir'
-         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme'
-         'flac' 'libjpeg' 'libwebp' 'freetype2' 'harfbuzz'
-         'libxml2' 'libxslt' 'snappy' 'minizip' 're2' 'opus'
-         'libxss' 'minizip' 'nss' 'json-glib')
+depends=('alsa-lib' 'dbus' 'desktop-file-utils' 'flac' 'fontconfig' 'freetype2'
+         'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'icu' 'json-glib' 'libcups'
+         'libgcrypt' 'libjpeg' 'libpulse' 'libvpx' 'libwebp' 'libxslt'
+         'libxss' 'minizip' 'nss' 'opus' 'pciutils' 're2' 'snappy' 'systemd'
+         'ttf-font' 'xdg-utils'
+)
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -23,8 +23,8 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 options=('!strip')
-source=(inox.pkg.tar.xz::https://github.com/gcarq/inox-patchset/releases/download/$pkgver-2/inox-$pkgver-2-$arch.pkg.tar.xz)
-sha256sums=('f57951b700ed4c52aafe5255ff94a1a7dceb6d4790af3f307bf25ef0c25e9e45')
+source=(inox.pkg.tar.xz::https://github.com/gcarq/inox-patchset/releases/download/$pkgver/inox-$pkgver-1-$arch.pkg.tar.xz)
+sha256sums=('18340de63716bd078e26c68ae7fafc3383587e18d4087cd13df0cae4e6341dc8')
 
 package() {
   tar xJvf ${srcdir}/inox.pkg.tar.xz -C ${pkgdir}/
