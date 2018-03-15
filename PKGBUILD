@@ -3,7 +3,7 @@
 
 pkgname=foyer
 pkgver=v0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Self contained modular start page webserver."
 arch=('i686' 'x86_64')
 url="https://github.com/Kiniamaro/Foyer"
@@ -16,6 +16,7 @@ md5sums=('cb59585a2eed28095c1924559b3dce8b')
 
 package() {
 	install -dm755 "$pkgdir/usr/share/$pkgname"
+	cp -r $srcdir/$pkgname/* "$pkgdir/usr/share/$pkgname/"
 }
 
 post_install() {

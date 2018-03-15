@@ -1,7 +1,7 @@
 pkgbase = foyer
 	pkgdesc = Self contained modular start page webserver.
 	pkgver = v0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kiniamaro/Foyer
 	arch = i686
 	arch = x86_64
