@@ -2,7 +2,7 @@
 
 pkgname=dfhack-bin
 _pkgname=dfhack
-pkgver=0.44.05
+pkgver=0.44.07
 _pkgver=$pkgver-alpha1
 pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
@@ -14,15 +14,15 @@ depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freety
 conflicts=(dfhack dfhack-git)
 provides=(dfhack)
 
-source_i686=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-32-gcc-5.4.0.tar.bz2)
-source_x86_64=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-5.4.0.tar.bz2)
+source_i686=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-32-gcc-7.tar.bz2)
+source_x86_64=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-7.tar.bz2)
 source=(dfhack.sh
         dfhack-run.sh)
 
 md5sums=('81f5909c1a32391679f968e40f24d5ca'
          '3853c6f890d3541f710f2c4833a9e696')
-md5sums_x86_64=('234649c8b59ab1b5dd46f511ac3b992b')
-md5sums_i686=('298c178fff17fa22c38a0db6834197fb')
+md5sums_x86_64=('8be95f06f18eba7cee2f485259c0b0ec')
+md5sums_i686=('f31d28aec161e112fd64a195456e6497')
 
 prepare() {
   sed -e 's|setarch i386 -R ||' \
