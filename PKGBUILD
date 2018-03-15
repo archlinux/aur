@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kscd-git
-pkgver=v17.03.80.7.g57b6870
+pkgver=v17.08.3.16.gd36df5c
 pkgrel=1
 pkgdesc="KDE CD player. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/multimedia/kscd/'
 license=('GPL2')
-depends=('libmusicbrainz3'
+depends=('libmusicbrainz5'
          'kdelibs4support'
          'hicolor-icon-theme'
          )
