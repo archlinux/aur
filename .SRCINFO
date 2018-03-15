@@ -1,0 +1,20 @@
+pkgbase = badtouch-git
+	pkgdesc = Scriptable network authentication cracker
+	pkgver = 0.1.0.r0.g5a7a2d4
+	pkgrel = 1
+	url = https://github.com/kpcyrd/badtouch
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = badtouch
+	conflicts = badtouch
+	source = git+https://github.com/kpcyrd/badtouch.git
+	sha512sums = SKIP
+
+pkgname = badtouch-git
+
