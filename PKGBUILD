@@ -4,14 +4,14 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=libvncserver-git
-pkgver=0.9.11.r108.gada4b4f
+pkgver=0.9.11.r126.gc49204c
 pkgrel=1
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
 arch=('i686' 'x86_64')
 license=('GPL')
 options=('!emptydirs')
-depends=('libpng' 'libjpeg' 'gnutls' 'libgcrypt')
+depends=('libpng' 'libjpeg' 'gnutls' 'libgcrypt' 'libsystemd' 'libsasl')
 provides=('libvncserver')
 conflicts=('libvncserver')
 makedepends=('git' 'cmake')
