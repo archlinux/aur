@@ -6,15 +6,15 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=dmenu
-pkgver=4.7
-pkgrel=2
+pkgver=4.8
+pkgrel=1
 pkgdesc='Generic menu for X'
 url='https://tools.suckless.org/dmenu/'
 arch=('x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 source=(https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz)
-sha512sums=('67a184f3ddb018e7b372e049052662955403e3367639b9c2284939d6f105ae74c995fe38f126d8ff75886831c8add8b50e338a1bfb0d8620b7fb1457cf88a00c')
+sha512sums=('fa2700018cfb912a21f867ef3ca771a58a25c2cb8e1fb37acef046bb15d8d8b92dcc5bfce486befae0f143495d0283910988e181a9eb143be3bb1b5be9738d77')
 
 prepare() {
   cd ${pkgname}-${pkgver}
