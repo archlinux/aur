@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc-git
-pkgver=492.20180226
+pkgver=505.20180315
 pkgrel=1
 groups=('mesagit')
 pkgdesc="Library requirements of the OpenCL C programming language (git version)"
