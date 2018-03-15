@@ -1,7 +1,7 @@
-# Maintainer: Mustafa Gönül <mustafagonul@gmail.com> pointfree on irc.freenode.net
+# Maintainer: Mustafa Gönül <mustafagonul@gmail.com>
 pkgname=vim-bufkill-git
 pkgver=0cb3672
-pkgrel=1
+pkgrel=2
 pkgdesc="Unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)"
 arch=('any')
 url="https://github.com/qpkorr/vim-bufkill"
