@@ -3,7 +3,7 @@
 
 _pkgname=xtitle
 pkgname=${_pkgname}-git
-pkgver=43
+pkgver=44
 pkgrel=1
 pkgdesc='Outputs X window titles'
 arch=('i686' 'x86_64')
