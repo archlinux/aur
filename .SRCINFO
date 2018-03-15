@@ -1,0 +1,14 @@
+pkgbase = vim-fixkey-git
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/drmikehenry/vim-fixkey
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	makedepends = git
+	depends = vim-runtime
+	source = vim-fixkey-git::git+https://github.com/drmikehenry/vim-fixkey
+	sha512sums = SKIP
+
+pkgname = vim-fixkey-git
+
