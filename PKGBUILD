@@ -3,17 +3,26 @@
 
 pkgbase=python-jedihttp-git
 pkgname=(python-jedihttp-git python2-jedihttp-git)
-pkgver=r172.3d3dcf4
-pkgrel=1
+pkgver=r178.d283a73
+pkgrel=3
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
 arch=('any')
 url='https://github.com/vheon/JediHTTP'
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
+makedepends=('python-setuptools' 'python2-setuptools' 'git'
+             'python2-bottle' 'python2-jedi' 'python2-waitress'
+             'python-bottle' 'python-jedi' 'python-waitress')
+# See test_requirements.txt for checkdepends
 checkdepends=(
     'python-tox'
-    'python2-bottle' 'python2-jedi' 'python2-waitress'
-    'python-bottle' 'python-jedi' 'python-waitress')
+    # XXX: webtest and coverage are installed by tox anyway as jedihttp requires older versions for them,
+    # while the nosetests command uses globally-installed packages
+    'python2-flake8' 'python2-nose' 'python2-webtest' 'python2-pyhamcrest' 'python2-requests' 'python2-coverage'
+    'flake8' 'python-nose' 'python-webtest' 'python-pyhamcrest' 'python-requests' 'python-coverage'
+    # Missing packages. They are not necessary for packaging as we don't run flake8 tests in check().
+    # 'python2-pep8-naming'
+    # 'python-pep8-naming'
+    )
 source=('git+https://github.com/vheon/JediHTTP'
         'setup.py'
         'allow-missing-vendor.patch')
@@ -38,8 +47,8 @@ prepare() {
 check() {
     cd "${srcdir}/JediHTTP"
 
-    tox -e py27 --sitepackages
-    tox -e py36 --sitepackages
+    tox -vv -e py27 --sitepackages
+    tox -vv -e py36 --sitepackages
 }
 
 package_python-jedihttp-git() {
