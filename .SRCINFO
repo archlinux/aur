@@ -1,7 +1,7 @@
 pkgbase = cwiid
 	pkgdesc = Linux Nintendo Wiimote interface
-	pkgver = 0.6.00+svn201
-	pkgrel = 3
+	pkgver = svn_history
+	pkgrel = 1
 	url = http://abstrakraft.org/cwiid
 	install = cwiid.install
 	arch = x86_64
