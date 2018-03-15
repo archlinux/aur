@@ -1,4 +1,4 @@
-# Maintainer: Asterios Dimitriou <asterios at pci dot .gr>
+# Maintainer: Asterios Dimitriou <asterios at pci dot gr>
 
 pkgname=git-sizer-bin
 _pkgname=git-sizer
@@ -9,7 +9,7 @@ url="https://github.com/github/git-sizer"
 license=('MIT')
 arch=('x86_64')
 depends=('git')
-#conflicts=('git-sizer') # build with Go from sources
+conflicts=('git-sizer' 'git-sizer-git') # build with Go from sources
 
 source=(git-sizer_${pkgver}.zip::https://github.com/github/git-sizer/releases/download/v${pkgver}/git-sizer-${pkgver}-linux-amd64.zip)
 sha256sums=('545899fdd078cc3bb7c579a99e236a77670114988a97b88d971f520fdf820589')
