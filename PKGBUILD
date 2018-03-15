@@ -1,6 +1,6 @@
 # Maintainer: Josh Marshall <jrmarsha@mtu.edu>
 
-pkgname=cath-tool-git
+pkgname=cath-tools-git
 pkgver=1
 pkgrel=1
 pkgdesc="Protein structure comparison tools such as SSAP and SNAP"
