@@ -1,12 +1,12 @@
 pkgbase = fsleyes
 	pkgdesc = FSLeyes is the FSL image viewer
-	pkgver = 0.21.1
-	pkgrel = 2
+	pkgver = 0.22.1
+	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
 	license = Apache
 	depends = python
-	depends = desktop-file-utils
+	depends = python-sphinx
 	depends = python-six
 	depends = python-numpy
 	depends = python-matplotlib
@@ -16,18 +16,17 @@ pkgbase = fsleyes
 	depends = python-opengl
 	depends = python-pyparsing
 	depends = python-scipy
-	depends = python-sphinx_rtd_theme
 	depends = python-opengl-accelerate
 	depends = python-wxpython-phoenix
 	depends = fsl
-	depends = fsleyes-widgets>=0.4.1
-	depends = fsleyes-props>=1.4.0
+	depends = fsleyes-widgets>=0.5.4
+	depends = fsleyes-props>=1.5.1
 	depends = python-wxnatpy>=0.3.0
 	depends = python-indexed-gzip>=0.7.0
-	source = fsleyes-0.21.1.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=0.21.1
+	source = fsleyes-0.22.1.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=0.22.1
 	source = fsleyes.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png
 	source = fsleyes.desktop
-	sha256sums = 0759c5c1a46260eb6f78fc22484088307a7b5f0692c092d8b2d59e57cad7c3f5
+	sha256sums = 8cd311d73b9b3a7a0f1bc43163c1596dca3a259e793300b960d99f04add91bfc
 	sha256sums = c7211ee624483a272f280b3aa772046ec9226d838f9c3023450888abddf9d71a
 	sha256sums = 6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb
 
