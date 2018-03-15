@@ -3,7 +3,7 @@
 _gitname=badtouch
 pkgname=badtouch-git
 pkgver=0.1.0.r0.g5a7a2d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scriptable network authentication cracker"
 url="https://github.com/kpcyrd/badtouch"
 depends=('gcc-libs')
