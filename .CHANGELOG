@@ -1,6 +1,41 @@
 Version history
 ===============
 
+0.9.13
+------
+
+2018-03-14
+
+Close to the Edge, save 46/50->16/20. Building Block Maze, SI 32->50. The
+Abominable Snowlix, save 15/30->5/10. Block Chaos, walkers 20->60, overtime
+1:00->2:00.
+
+Fix #312: Splat ruler option is now public. Choose one of three ruler designs.
+Default is the 3-bar ruler with huge snap distance from 0.9.5 to 0.9.10.
+
+Fix #308: Include Zanzindorf's lasers.
+
+Fix #305: Autosave 4 pairs of savestates, not 3, on most maps, for performant
+framestepping/multiplayer.
+
+Fix #55: Remove dialog on winning singleplayer. You go to the browser
+immediately after winning the level. Game pauses after losing, allowing you to
+framestep backwards or restart with the regular commands. I hope this
+satisfies the desire for a next-level button in the old dialog.
+
+Fix #302: Remove end-of-multiplayer dialog. You go to the lobby immediately after finishing a networking game. The lobby console shows the result, but I plan to show better statistics here. This fixes the bug where observers were shown instead of players in the end-of-multiplayer dialog.
+
+Fix #309: Show indexing progress of the search dialog. I still don't cache the
+search results; maybe the indexing feels still too slow on older computers
+even when its progress is shown.
+
+When you show FPS and Phyus, I don't display VRAM anymore. Reason: Once VRAM got cached on huge maps, the Lix-estimated VRAM usage didn't match the real VRAM usage anyway.
+
+New build dependency, Optional type. This is a source-only dependency and is
+automatically fetched by dub.
+
+Batch file to build Lix on Windows conveniently by double-clicking.
+
 0.9.12
 ------
 

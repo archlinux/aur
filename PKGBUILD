@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
@@ -35,6 +35,8 @@ build()
 	dub add-local derelict-enet-*/derelict-enet
 	dub add-local derelict-util-*/derelict-util
 	dub add-local enumap-*/enumap
+	dub add-local optional-*/optional
+	dub add-local bolts-*/bolts
 	
 	# force FHS compatibility with '-b releaseXDG'
 	dub build -f -b releaseXDG --cache=local || _r=$?
@@ -44,6 +46,8 @@ build()
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
 	dub remove-local enumap-*/enumap
+	dub remove-local optional-*/optional
+	dub remove-local bolts-*/bolts
 	dub clean-caches
 	
 	if [[ "$_r" != 0 ]] ; then
@@ -65,6 +69,8 @@ check()
 	dub add-local derelict-enet-*/derelict-enet
 	dub add-local derelict-util-*/derelict-util
 	dub add-local enumap-*/enumap
+	dub add-local optional-*/optional
+	dub add-local bolts-*/bolts
 	
 	dub test --cache=local || _r=$?
 	
@@ -73,6 +79,8 @@ check()
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
 	dub remove-local enumap-*/enumap
+	dub remove-local optional-*/optional
+	dub remove-local bolts-*/bolts
 	dub clean-caches
 	
 	if [[ "$_r" != 0 ]] ; then
