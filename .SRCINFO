@@ -1,6 +1,6 @@
 pkgbase = libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, master git version
-	pkgver = 2.4.91.r2.g45eee3fd
+	pkgver = 2.4.91.r10.ga58490de
 	pkgrel = 1
 	url = http://dri.freedesktop.org/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = libdrm-git
 	license = custom
 	checkdepends = cairo
 	checkdepends = bcunit-cunit-compat
-	makedepends = valgrind
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = meson
