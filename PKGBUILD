@@ -1,6 +1,6 @@
 # Maintainer: madflow <madflow@web.de>
 pkgname="omnidb-server"
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Web tool for database management. Install this in any server, and it allows anybody with a web browser to connect to any database server."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('python')
 source_i686=("https://omnidb.org/dist/${pkgver}/omnidb-server_${pkgver}-debian-i386.deb")
 source_x86_64=("https://omnidb.org/dist/${pkgver}/omnidb-server_${pkgver}-debian-amd64.deb")
 options=("!strip")
-sha256sums_i686=('9922c4fd97574f457ac95e47b5fb23afd092dad13c652c0e3759ef7c74999c64')
-sha256sums_x86_64=('d3c9d53a199822e1231ba170d09ccf2883a2038341f08853ccd0dc63cdbe35d8')
+sha256sums_i686=('bdf61cb9f1719f749c26f7765719cc89d13bbf9455e615cbaae7262eadcd18dd')
+sha256sums_x86_64=('ce1249b8f66fab8c620adcd6b8cb4136daf02bb2bcdc296c71a540d6113a977e')
 
 package() {
     cd "$pkgdir"
