@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=11.2.0
+pkgver=11.3.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
@@ -74,7 +74,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-sha256sums=('4a1293cc1c404303aa1cab1bd273c7be151d37ac5ed928fbbb18e9c5ab2d8df9')
+sha256sums=('5b07d83cc79c08ce50ecdd7fab8f4a4a8bc7f16a7cc589a972399268426d73e7')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -143,8 +143,9 @@ package() {
     mkdir -p ${srcdir}/WolframScript
     mkdir -p ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
-    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.2.0-22_amd64.deb data.tar.xz
-    tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
+    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.2.0-36_amd64.deb data.tar.gz
+    tar -xf data.tar.gz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
+
 
     msg2 "Copying menu and mimetype information"
     mkdir -p \
@@ -194,6 +195,10 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/SemanticImport/Binaries/Linux" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/SpellCorrect/LibraryResources/Linux" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/TextSearch/Binaries/Linux" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/Mathematica/WSMLink/SystemFiles/Libraries/Linux" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/Activation/Linux" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/Libraries/Linux" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/WSM/Binaries/Linux" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Converters/Binaries/Linux" \
            "${pkgdir}/opt/Mathematica/SystemFiles/FrontEnd/Binaries/Linux" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Graphics/Binaries/Linux" \
@@ -263,6 +268,12 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/SemanticImport/Binaries/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/SpellCorrect/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Components/TextSearch/Binaries/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/Mathematica/WSMLink/SystemFiles/Libraries/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/Activation/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/Libraries/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/WSM/Binaries/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WebUnit/Resources/DriverBinaries/ChromeDriver/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Components/WebUnit/Resources/DriverBinaries/GeckoDriver/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Converters/Binaries/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/FrontEnd/Binaries/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Graphics/Binaries/Linux-x86-64" \
@@ -275,11 +286,14 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/CURLLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/CalendarTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/CloudObject/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/DAALLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/DTWTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/FDLLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/GIFTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/GeometryTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/HDF5Tools/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/HTTPLink/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/IMAQTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/IPOPTLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/JLink/Kernel/SystemResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/JLink/SystemFiles/Libraries/Linux-x86-64" \
@@ -301,12 +315,15 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/RAWTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/RLink/SystemFiles/Libraries/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SVTools/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/SecureShellLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SerialLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SocketLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SoundFileTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SpeechSynthesisTools/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/SpeechVocoderTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/StreamLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/SystemTools/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/TINSLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/TesseractTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/TetGenLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/TinkerForgeWeatherStationTools/Binaries/Linux-x86-64" \
@@ -315,6 +332,7 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/VernierLink/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/WebpTools/LibraryResources/Linux-x86-64" \
+           "${pkgdir}/opt/Mathematica/SystemFiles/Links/XLTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/XMPTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/ZeroMQLink/LibraryResources/Linux-x86-64"
     fi
