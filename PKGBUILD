@@ -52,6 +52,9 @@ package() {
      install -Dm644 $i "$pkgdir"/usr/share/licenses/$pkgname/$i
   done
 
+  msg2 "Removing the Debian-intended cron job and duplicated images..."
+  rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/$_instdir/product_logo_*.png
+
   # Fix Search
   msg2 "Attempting fix for search..."
   sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "$pkgdir"/$_instdir/googleearth
