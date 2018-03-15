@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 18.1.0_devel.100868.b2653007b9
+	pkgver = 18.1.0_devel.100911.6332893594
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = mesa-git
 	makedepends = vulkan-icd-loader
 	makedepends = libgcrypt
 	makedepends = wayland-protocols
-	makedepends = valgrind
 	depends = libdrm
 	depends = wayland
 	depends = libxxf86vm
