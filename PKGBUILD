@@ -7,7 +7,7 @@
 
 pkgname=spriteilluminator
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating Normal Maps, also known as Dot3 Bump Maps, which generate a 2.5D effect in different game engines including Cocos2D-X"
 arch=('x86_64')
 url="http://www.codeandweb.com/$pkgname"
@@ -32,15 +32,19 @@ package() {
     # Enter $pkgdir.
     cd ${pkgdir}/usr/lib/$pkgname/
 
-    # Delete all the extra lib folders.
-    rm -rf generic/ grantlee/ iconengines/ imageformats/ platforminputcontexts/ platforms/ \
-           QtGraphicalEffects/ QtQml/ QtQuick/ QtQuick.2/ xcbglintegrations/
+	# FIXME: There's a symbol in the spriteilluminator Qt library that's not in
+	# the official repository. Double check if we can use the Qt library from
+	# the official repository on future versions
 
-    # Delete the useless lib files.
-    rm -rf libGrantlee* libicudata* libicui18n* libicuuc* libQt5*
+    ## Delete all the extra lib folders.
+    #rm -rf generic/ grantlee/ iconengines/ imageformats/ platforminputcontexts/ platforms/ \
+    #       QtGraphicalEffects/ QtQml/ QtQuick/ QtQuick.2/ xcbglintegrations/
 
-    # Get rid of the Qt configuration that messes up LD_LIBRARY_PATH.
-    rm -rf qt.conf
+    ## Delete the useless lib files.
+    #rm -rf libGrantlee* libicudata* libicui18n* libicuuc* libQt5*
+
+    ## Get rid of the Qt configuration that messes up LD_LIBRARY_PATH.
+    #rm -rf qt.conf
 
     install -Dm644 "${pkgdir}/usr/share/$pkgname/documents/LicenseAgreement.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LicenseAgreement.txt"
