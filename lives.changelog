@@ -1,7 +1,13 @@
+2018-03-15 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Replace ffmpeg2.8 dependency with ffmpeg
+	Add glu and schroedinger to the depends array
+
 2017-07-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
-	Updated the optional dependency array
+	Updated the optdepends array
 
 2017-06-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
