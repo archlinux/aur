@@ -3,7 +3,7 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.0.1
+_pkgver=6.0.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
