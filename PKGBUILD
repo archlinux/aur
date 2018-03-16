@@ -55,4 +55,6 @@ package() {
   install AMDVLK/json/Redhat/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/
   install AMDVLK/LICENSE.txt "${pkgdir}"/usr/share/licenses/amdvlk-git/
   install amdPalSettings.cfg "${pkgdir}"/etc/amd/
+
+  sed -i "s/\/lib64/\/lib/g" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
 }
