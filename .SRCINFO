@@ -1,0 +1,22 @@
+pkgbase = insteadman
+	pkgdesc = Manager for INSTEAD interpreter.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/jhekasoft/insteadman
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	depends = instead
+	source = https://github.com/jhekasoft/insteadman/archive/v2.1.0.tar.gz
+	source = build-x86.js
+	source = build-x64.js
+	source = insteadman.desktop
+	sha256sums = b582bce4188ff4c98bd90484422599407073e9fced21c1bc988c6a01959d741d
+	sha256sums = a041a851218b1e8a769becff26e5ec6ba5b4b5021c6463977f03b997c576ddb9
+	sha256sums = efef590ba7d432cc74ea03315ba9f363ac15fb58f9d324ae0d25e6df4bffe041
+	sha256sums = 90d7d51b416ae51bdd8091fd12fef953e67f6c951f714a19ce954d39ddfecee7
+
+pkgname = insteadman
+
