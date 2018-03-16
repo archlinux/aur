@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="An EteSync storage plugin for Radicale"
 arch=('any')
 url="https://pypi.python.org/pypi/${_name}/"
-license=('LGPL')
+license=('GPL')
 depends=('python-etesync'
          'radicale'
 )
