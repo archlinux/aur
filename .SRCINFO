@@ -1,5 +1,5 @@
 pkgbase = gnunet-fuse
-	pkgdesc = Mounting directories published on GNUnet as read-only file-systems
+	pkgdesc = Read-only mounting of GNUnet directories as file systems using FUSE
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gnunet.org/

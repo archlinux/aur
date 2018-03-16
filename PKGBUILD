@@ -3,7 +3,7 @@
 pkgname='gnunet-fuse'
 pkgver='0.10.0'
 pkgrel=1
-pkgdesc='Mounting directories published on GNUnet as read-only file-systems'
+pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
 url='https://gnunet.org/'
 license=('GPL')
