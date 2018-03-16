@@ -2,32 +2,30 @@
 
 pkgname=lazylibrarian
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://github.com/DobyTang/LazyLibrarian"
 license=('GPL3')
 depends=('python2')
-install='lazylibrarian.install'
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DobyTang/LazyLibrarian/archive/${pkgver}.tar.gz"
         'lazylibrarian.service'
+        'lazylibrarian.tmpfiles'
         'lazylibrarian.sysusers')
 
 sha256sums=('7d94686085916a984ab89a76b0823695d784ef785368b175a89bd1077d6cc2cd'
             'ad571025028f86c6fbd867ea32e7d7b78d51f604f0bc3b1e373df642fe6c177c'
+            '2e54152e221241d116ed9e63b08718bec41bfb7c6576eccc683c294702b07650'
             '1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/lazylibrarian"
   cp -dpr --no-preserve=ownership "$srcdir/LazyLibrarian-${pkgver}"/* "${pkgdir}/usr/lib/lazylibrarian"
 
-  install -d -m 755 "${pkgdir}/var/lib/lazylibrarian"
-
-  install -d -m 755 "${pkgdir}/etc/lazylibrarian"
-
-  install -Dm644 "${srcdir}/lazylibrarian.service" "${pkgdir}/usr/lib/systemd/system/lazylibrarian.service"
-  install -Dm644 "${srcdir}/lazylibrarian.sysusers" "${pkgdir}/usr/lib/sysusers.d/lazylibrarian.conf"
+  install -D -m 644 "${srcdir}/lazylibrarian.service" "${pkgdir}/usr/lib/systemd/system/lazylibrarian.service"
+  install -D -m 644 "${srcdir}/lazylibrarian.sysusers" "${pkgdir}/usr/lib/sysusers.d/lazylibrarian.conf"
+  install -D -m 644 "${srcdir}/lazylibrarian.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/lazylibrarian.conf"
 }

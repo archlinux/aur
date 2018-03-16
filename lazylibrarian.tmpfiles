@@ -1,0 +1,5 @@
+d /var/lib/lazylibrarian 0755 lazylibrarian lazylibrarian
+Z /var/lib/lazylibrarian - lazylibrarian lazylibrarian
+Z /usr/lib/lazylibrarian - lazylibrarian lazylibrarian
+d /etc/lazylibrarian 0755 lazylibrarian lazylibrarian
+Z /etc/lazylibrarian - lazylibrarian lazylibrarian
