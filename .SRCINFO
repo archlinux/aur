@@ -1,0 +1,15 @@
+pkgbase = python2-tinydav
+	pkgdesc = An easy-to-use HTTP and WebDAV client library..
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://gitlab.helduel.de/open-source/tinydav
+	arch = any
+	license = LGPL3
+	checkdepends = python2-coverage
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/t/tinydav/tinydav-0.7.5.tar.gz
+	md5sums = 33024f7c66b536ff5b45a42f57da405c
+
+pkgname = python2-tinydav
+
