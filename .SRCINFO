@@ -7,8 +7,8 @@ pkgbase = bibata-cursor-theme
 	license = GPL
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
-	source = git+https://github.com/KaizIqbal/Bibata_Cursor
-	sha256sums = SKIP
+	source = https://github.com/KaizIqbal/Bibata_Cursor/archive/v0.3.1.tar.gz
+	sha256sums = a26ed94fceaebb41ca3240acebeb435b632fa3f9ff0cc16f1dd544a9fffb8a95
 
 pkgname = bibata-cursor-theme
 

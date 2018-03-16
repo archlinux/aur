@@ -6,11 +6,11 @@ arch=('any')
 url="https://github.com/KaizIqbal/Bibata_Cursor.git"
 license=('GPL')
 makedepends=('inkscape' 'xorg-xcursorgen')
-source=('git+https://github.com/KaizIqbal/Bibata_Cursor')
-sha256sums=('SKIP')
+source=("https://github.com/KaizIqbal/Bibata_Cursor/archive/v${pkgver}.tar.gz")
+sha256sums=('a26ed94fceaebb41ca3240acebeb435b632fa3f9ff0cc16f1dd544a9fffb8a95')
 
 build() {
-	cd "$srcdir/Bibata_Cursor"
+	cd "$srcdir/Bibata_Cursor-${pkgver}"
 
 	# Bibata Default
 	RAWSVGS_Bibata="src/Bibata_Oil/svgs"
@@ -115,6 +115,6 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/share/icons"
-	mv "$srcdir/Bibata_Cursor/Bibata_Ice" "$pkgdir/usr/share/icons/Bibata_Ice"
-	mv "$srcdir/Bibata_Cursor/Bibata_Oil" "$pkgdir/usr/share/icons/Bibata_Oil"
+	mv "$srcdir/Bibata_Cursor-${pkgver}/Bibata_Ice" "$pkgdir/usr/share/icons/Bibata_Ice"
+	mv "$srcdir/Bibata_Cursor-${pkgver}/Bibata_Oil" "$pkgdir/usr/share/icons/Bibata_Oil"
 }
