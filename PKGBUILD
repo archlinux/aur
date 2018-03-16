@@ -10,9 +10,9 @@ arch=(x86_64)
 url="https://github.com/GPUOpen-Drivers"
 license=('MIT')
 depends=('vulkan-icd-loader')
-provides=('vulkan-amdvlk')
+provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk')
-makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'git')
+makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'libxml2' 'git')
 source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-dev'
 	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
@@ -39,7 +39,9 @@ prepare() {
 build() {
   msg "building xgl..."
   cd xgl
-  cmake -H. -Bbuilds/Release64 -DCMAKE_BUILD_TYPE=Release
+  cmake -H. -Bbuilds/Release64 \
+    -DCMAKE_BUILD_TYPE=Release
+
   cd builds/Release64
   make
   msg "building xgl finished!"
