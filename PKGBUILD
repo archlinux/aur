@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.26.r1049.g3e3c904dae
+pkgver=2.27.r209.gc553cd6f7e
 pkgrel=1
 pkgdesc='GNU C Library, from git'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=('git+https://sourceware.org/git/glibc.git'
         'locale-gen'
         'bz20338.patch')
 sha256sums=('SKIP'
-            'cdbd47144b319b0b0eca8d0488dc5173bf24158ab888340920ffe6c3d252dfa6'
+            '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
             '959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a')
 
 pkgver() {

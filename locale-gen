@@ -6,20 +6,27 @@ if [ ! -d /etc/locales ]; then
     exit 1
 fi
 
-for locale in /etc/locales/*; do
-    if [ -f "$locale" ]; then
-        read -r charset < "$locale"
-        charset=${charset:-UTF-8}
-        locale=${locale##*/}
-    else
-        continue
-    fi
+localegen() {
+    printf '%s: generating locale\n' "$1"."$2" >&2
 
-    printf '%s: generating locale\n' "$locale"."$charset" >&2
-
-    localedef -i "$locale" -f "$charset" -c "$locale"."$charset"
+    localedef -i "$1" -f "$2" -c "$1"."$2"
 
     case $? in
-        4) printf '%s: invalid locale\n' "$locale"."$charset" >&2
+        4) printf '%s: invalid locale\n' "$1"."$2" >&2
     esac
+}
+
+for locale in /etc/locales/*; do
+    if [ -f "$locale" ]; then
+        if [ -s "$locale" ]; then
+            while read -r charset; do
+
+                # This will run for empty lines.  Doing this means we can
+                # ensure at least a UTF-8 based locale is generated.
+                localegen "${locale##*/}" "${charset:-UTF-8}"
+            done < "$locale"
+        else
+            localegen "${locale##*/}" UTF-8
+        fi
+    fi
 done
