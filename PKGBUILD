@@ -32,7 +32,7 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.9
+pkgver=4.15.10
 pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
