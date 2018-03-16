@@ -1,0 +1,19 @@
+pkgbase = python-clickhouse-cli-git
+	pkgdesc = Third-party client for the Clickhouse DBMS server
+	pkgver = r107.9be5d7a
+	pkgrel = 1
+	url = https://github.com/hatarist/clickhouse-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-sqlparse
+	depends = python-pygments
+	depends = python-prompt_toolkit
+	depends = python-click
+	provides = clickhouse-cli
+	options = !emptydirs
+	source = clickhouse-cli::git+https://github.com/hatarist/clickhouse-cli.git
+	md5sums = SKIP
+
+pkgname = python-clickhouse-cli-git
+
