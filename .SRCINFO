@@ -1,7 +1,7 @@
 pkgbase = iproute2-cake
 	pkgdesc = IP Routing Utilities
 	pkgver = 4.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
 	groups = base
@@ -32,7 +32,7 @@ pkgbase = iproute2-cake
 	md5sums = 0681bf4664b2649ad4e12551a3a7a1f9
 	md5sums = SKIP
 	md5sums = 5345bd18b521fb2f305acb2ab1203269
-	md5sums = b0d5b1925f30285050faa9f681d22f73
+	md5sums = a9f986fbe42eb0390f41c94af1672ee2
 
 pkgname = iproute2-cake
 
