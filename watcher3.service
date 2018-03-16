@@ -6,9 +6,7 @@ After=network.target
 User=watcher
 Group=watcher
 
-GuessMainPID=no
-Type=forking
-ExecStart=/usr/bin/python /opt/watcher3/watcher.py -d
+ExecStart=/usr/bin/python /opt/watcher3/watcher.py
 Restart=no
 
 [Install]

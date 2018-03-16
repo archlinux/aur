@@ -1,6 +1,6 @@
 pkgbase = watcher3
 	pkgdesc = Automated movie NZB & Torrent searcher and snatcher
-	pkgver = 744.c28d755
+	pkgver = 819.7d8d79a
 	pkgrel = 2
 	url = https://github.com/nosmokingbandit/Watcher3
 	install = watcher3.install
@@ -17,7 +17,7 @@ pkgbase = watcher3
 	source = watcher3.service
 	source = watcher3.install
 	md5sums = SKIP
-	md5sums = dd12df67e981c96571be99f5f22440d9
+	md5sums = 3c3c11ea82d64953917a1b649d1211cb
 	md5sums = 7eb1be1e1a08716e11d18c3ea7dd5e54
 
 pkgname = watcher3
