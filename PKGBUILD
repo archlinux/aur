@@ -1,5 +1,5 @@
 pkgname=bellepoule
-pkgver=4.43
+pkgver=4.44
 pkgrel=1
 pkgdesc="Fencing tournament management software"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="http://betton.escrime.free.fr/fencing-tournament-software/en/bellepoule/ind
 license=('GPL3')
 depends=('gtk2>=2.24.0' 'xml2' 'curl' 'libmicrohttpd' 'goocanvas1' 'qrencode' 'openssl' 'lighttpd' 'php-cgi' 'gksu')
 source=("https://launchpad.net/~betonniere/+archive/ubuntu/bellepoule/+files/${pkgname}_${pkgver}ubuntu1~xenial1.tar.gz")
-sha256sums=('2a45cac4d89f046691c80fef68d556ac930a0b50a41817eca5560d3a8e847dbf')
+sha256sums=('0c337138bf16a7d3297ce081be329bd1c9dcb7fab9e7ed75f62cdb6ac5dda6db')
 
 build() {
     cd "${pkgname}_${pkgver}"
