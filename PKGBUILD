@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.sh::https://github.com/lihaoyi/mill/releases/download/
         "$pkgname-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/$pkgver/LICENSE")
 
 md5sums=('930fa2f02e1bf6f25887274a9110f2c2'
-         '80863d861ff68efa0d3ece5cafe295e4')
+         '08a3c7271d440a2388964b1d9289507a')
 
 package() {
   install -Dm755 $srcdir/$pkgname-$pkgver.sh $pkgdir/usr/bin/$pkgname
