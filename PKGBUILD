@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.6.1.r703.ge30781ff80
+pkgver=1.7.0.r177.g2640f25072
 pkgrel=1
-pkgdesc="VP8 and VP9 video codecs (Git version with all possible options)"
+pkgdesc='VP8 and VP9 video codecs (with all possible options, git version)'
 arch=('i686' 'x86_64')
-url="http://www.webmproject.org/code/"
+url='http://www.webmproject.org/code/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'yasm')
@@ -16,31 +16,27 @@ source=("$pkgname"::'git+https://chromium.googlesource.com/webm/libvpx') # offic
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
-    # Git, tags available
+    # git, tags available
     printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
-    # Select target architecture
-    if [ "$CARCH" = "x86_64" ] 
+    # select target architecture
+    if [ "$CARCH" = 'x86_64' ] 
     then
-        _target="--target=x86_64-linux-gcc"
+        _target='--target=x86_64-linux-gcc'
         
-    elif [ "$CARCH" = "i686" ] 
+    elif [ "$CARCH" = 'i686' ] 
     then
-        _target="--target=x86-linux-gcc"
-        
-    else
-        _target=""
-        
+        _target='--target=x86-linux-gcc'
     fi
     
     ./configure \
-        --prefix=/usr \
+        --prefix='/usr' \
         $_target \
         --disable-werror \
         --enable-optimizations \
@@ -61,7 +57,7 @@ build() {
         --disable-unit-tests \
         --disable-decode-perf-tests \
         --disable-encode-perf-tests \
-        --as=yasm \
+        --as='yasm' \
         --disable-codec-srcs \
         --disable-debug-libs \
         --enable-static-msvcrt \
@@ -86,7 +82,6 @@ build() {
         --enable-temporal-denoising \
         --enable-vp9-temporal-denoising \
         --enable-experimental \
-        --enable-spatial-svc \
         --enable-webm-io \
         --enable-libyuv \
         --enable-vp8-encoder \
@@ -98,8 +93,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    make DESTDIR="$pkgdir/" install
+    cd "$pkgname"
+    
+    make DESTDIR="$pkgdir" install
+    
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
