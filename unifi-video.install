@@ -1,11 +1,14 @@
 post_install() {
-  systemd-sysusers unifi-video.conf
   chown -R unifi-video:unifi-video /usr/lib/unifi-video/
   ln -s $( which mongod) /usr/lib/unifi-video/bin/
 
   if ! [[ -x $( which java ) ]]; then
     echo "Could not find java, please use archlinux-java to select a default."
   fi
+}
+
+post_upgrade() {
+  post_install "$1"
 }
 
 # vim:set ts=2 sw=2 et:
