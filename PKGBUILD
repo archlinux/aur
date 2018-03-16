@@ -17,31 +17,26 @@ provides=("tautulli")
 replaces=("plexpy")
 install='tautulli.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver.tar.gz"
-        'tautulli.install'
+        'tautulli.tmpfile'
         'tautulli.service'
         'tautulli.sysusers')
 
 sha256sums=('19adaf2c4565380af46c79507aa436f9fe2b23c9e092f655437bd1a8d2536a0a'
-            '7e959ab5cd7343c1fd21fbd4e14d0740a391b67b01d421ec8c96a7d52527a1d4'
+            'ce823ace8bea33964860ea3a19461c2ce2eecd4ad1ea29643aff5d5edfd594ab'
             '3385a234ece298cd1589d06fb60ea07aade778127117f32692d3cdb134023d42'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
 package() {
   cd "${srcdir}/Tautulli-${pkgver}"
-  install -Dm755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
-  install -Dm755 Tautulli.py "${pkgdir}/usr/lib/tautulli/Tautulli.py"
-  install -Dm644 pylintrc  "${pkgdir}/usr/lib/tautulli/"
-  install -Dm644 CHANGELOG.md "${pkgdir}/usr/lib/tautulli/"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/tautulli/LICENSE"
+  install -D -m 755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
+  install -D -m 755 Tautulli.py "${pkgdir}/usr/lib/tautulli/Tautulli.py"
+  install -D -m 644 pylintrc  "${pkgdir}/usr/lib/tautulli/"
+  install -D -m 644 CHANGELOG.md "${pkgdir}/usr/lib/tautulli/"
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/tautulli/LICENSE"
 
   cp -a data/ lib/ plexpy/ "${pkgdir}/usr/lib/tautulli/"
 
-  install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
-  install -Dm644 "${srcdir}/tautulli.sysusers" "${pkgdir}/usr/lib/sysusers.d/tautulli.conf"
-
-  msg2 "To migrate your plexpy config and db, run the following commands:"
-  msg2 "  sudo mv /var/lib/plexpy/* /var/lib/tautulli/"
-  msg2 "  sudo sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini"
-  msg2 "  sudo chown -R tautulli: /var/lib/tautulli"
+  install -D -m 644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
+  install -D -m 644 "${srcdir}/tautulli.sysusers" "${pkgdir}/usr/lib/sysusers.d/tautulli.conf"
+  install -D -m 644 "${srcdir}/tautulli.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/tautulli.conf"
 }
-
