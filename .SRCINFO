@@ -17,8 +17,6 @@ pkgbase = mate-hud
 	depends = python-setproctitle
 	depends = python-xlib
 	optdepends = appmenu-qt
-	provides = ${pkgname}
-	conflicts = ${pkgname}
 	source = https://github.com/ubuntu-mate/mate-hud/archive/18.04.7.tar.gz
 	sha256sums = 9c73b279033b43c03b3695ae617109fefe3fc8d8547f74a6da10df09b08f09c6
 
