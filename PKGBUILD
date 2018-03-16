@@ -28,4 +28,5 @@ package() {
 	cd $_pkgname
 	install -D -m755 "$srcdir/$_pkgname/target/release/synapse" "$pkgdir/usr/bin/synapse-rs"
 	install -D -m755 "$srcdir/$_pkgname/target/release/sycli" "$pkgdir/usr/bin/sycli"
+	install -D -m755 "$srcdir/$_pkgname/example_config.toml" "$pkgdir/usr/share/synapse/example_config.toml"
 }
