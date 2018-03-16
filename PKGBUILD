@@ -1,7 +1,7 @@
 # Maintainer: kirigaya <kirigaya@mkacg.com>
 pkgname=deepin-topbar
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="This is topbar for Deepin."
 arch=('i686' 'x86_64')
 url="https://github.com/kirigayakazushin/deepin-topbar"
