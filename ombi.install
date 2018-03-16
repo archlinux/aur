@@ -1,9 +1,0 @@
-post_install() {
-  # Create ombi user
-  systemd-sysusers ombi.conf
-  chown -R ombi:ombi /var/lib/ombi
-}
-
-post_upgrade() {
-  post_install $1
-}
