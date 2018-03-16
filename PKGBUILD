@@ -1,29 +1,28 @@
 # Maintainer: James An <james@jamesan.ca>
 
+pkgname=cloudfusion-git
 _pkgname=CloudFusion
-pkgname="${_pkgname,,}-git"
-pkgver=v.7.5.19.r0.gc4b9412
+pkgver=7.5.19.r0.gc4b9412
 pkgrel=1
-pkgdesc='FUSE userspace filesystem to access Dropbox, Sugarsync, Amazon S3, Google Storage, Google Drive or WebDAV servers.'
+pkgdesc='Linux file system (FUSE) to access Dropbox, Sugarsync, Amazon S3, Google Storage, Google Drive or WebDAV servers.'
 arch=('any')
 url="http://joe42.github.com/$_pkgname"
 license=('GPL')
 depends=('fuse'
          'python2-argparse'
          'python2-beautifulsoup4'
+         'python2-gsutil'
          'python2-httplib2'
          'python2-nose'
+         'python2-ntplib'
          'python2-profilehooks'
          'python2-psutil'
+         'python2-pydrive'
          'python2-requests'
-         'python2-setuptools'
          'python2-sh'
          'python2-simplejson'
+         'python2-tinydav'
 )
-#~ 'ntplib', 
-#~ 'gsutil', 
-#~ 'tinydav', 
-#~ 'PyDrive', 
 optdepends=('opencv: automatic registration'
             'sikuli-ide: automatic registration'
             'openssl: Google Storage'
@@ -45,7 +44,7 @@ pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v\.//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
