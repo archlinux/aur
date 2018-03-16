@@ -1,0 +1,37 @@
+# Maintainer: Shaleen Jain <shaleen(at)jain(dot)sh>
+
+_pkgname=system76
+pkgname=system76-dkms-git
+pkgver=48
+pkgrel=1
+pkgdesc="The system76 driver kernel module (DKMS)"
+arch=('i686' 'x86_64')
+url="https://github.com/pop-os/system76-dkms"
+license=('GPL2')
+depends=('dkms')
+makedepends=('git')
+conflicts=("${_pkgbase}")
+source=("system76::git+https://github.com/pop-os/system76-dkms.git#branch=dkms_bionic"
+        'dkms.conf')
+md5sums=('SKIP'
+         '654623daac5a4c9d69883d7b2b5ddac8')
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git rev-list --count HEAD
+}
+
+package() {
+  local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+
+  # Copy dkms.conf
+  install -Dm644 dkms.conf ${install_dir}/dkms.conf
+
+  # Set name and version
+  sed -e "s/@_PKGBASE@/${_pkgname}/" \
+      -e "s/@PKGVER@/${pkgver}/" \
+      -i "${install_dir}"/dkms.conf
+
+  # Copy sources (including Makefile)
+  cp -r ${_pkgname}/* ${install_dir}/
+}
