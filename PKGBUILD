@@ -1,13 +1,14 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=crux-toolkit-bin
 pkgver=3.1.a892254
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass spectrometry analysis toolkit"
 arch=('x86_64' 'i686')
 url="http://crux.ms"
 license=('Apache')
 depends=('gcc-libs')
-provides=('crux-toolkit')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}-git")
 source=("https://noble.gs.washington.edu/crux-downloads/daily/crux-${pkgver}.Linux.${CARCH}.zip")
 noextract=()
 if [ "$CARCH" == 'i686' ]; then
