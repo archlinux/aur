@@ -1,8 +1,8 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.5.0.5
-_numix_ver=1.6.1
-_materia_ver=20180110
+_oomox_ver=1.6.0
+_numix_ver=1.7.0
+_materia_ver=20180311
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
 _oomoxify_ver=675fedce9a47745212b062e13a7e51b01f2bb581
@@ -30,6 +30,7 @@ depends=(
     'parallel'
     'polkit'
     'python-gobject'
+    'python-pillow'
     'sassc'
     'zip'
 )
@@ -51,9 +52,9 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
-md5sums=('dc098ad18b68d276a91b0c68f6ffc6a6'
-         '7b86af8b2a5eb1f9b0152ea609060b31'
-         '982ef08f7d5d6229e3b0fcbd1896ebfc'
+md5sums=('8212ed0e001806133ffe346ce0d237b6'
+         '19816351f949963a240dd13bc0530952'
+         'd34fd7d7f765c38d8be95b778a90ea2b'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
          'f3a30f186dc92a972b88975fcbd321ed'
          'fbef02b2584fbafb009309eca6d28a54')
