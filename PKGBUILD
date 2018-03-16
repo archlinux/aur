@@ -3,7 +3,7 @@
 _name=dwgsim
 pkgname="${_name}"-git
 pkgver=r159.39a1bbb
-pkgrel=2
+pkgrel=3
 pkgdesc="Whole genome read simulator for Next-Generation Sequencing data"
 arch=('x86_64')
 url=https://github.com/lh3/"${_name}"
@@ -32,5 +32,5 @@ build() {
 package() {
   cd "${srcdir}"/"${_name}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/doc/"${_name}"/LICENSE
-  install -Dm755 "${_name}" "${pkgdir}"/usr/sbin/"${_name}"
+  install -Dm755 "${_name}" "${pkgdir}"/usr/bin/"${_name}"
 }

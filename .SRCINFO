@@ -1,7 +1,7 @@
 pkgbase = dwgsim-git
 	pkgdesc = Whole genome read simulator for Next-Generation Sequencing data
 	pkgver = r159.39a1bbb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lh3/dwgsim
 	arch = x86_64
 	license = GPL2
