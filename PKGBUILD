@@ -1,8 +1,7 @@
 # Maintainer: Bjoern Franke  <bjo@nord-west.org>
 
-pkgbase=dnssec-reverb
-_pkgname=dnssec-reverb
-pkgname=${_pkgname}-git
+pkgname=dnssec-reverb
+pkgbase=${pkgname}-git
 pkgver=r13.376067d
 pkgrel=1
 pkgdesc="Shell script based DNSSEC key management tool"
