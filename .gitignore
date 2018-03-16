@@ -1,0 +1,6 @@
+/src
+/pkg
+/*.pkg.tar*
+
+/mumble*.tar.gz*
+*.patch

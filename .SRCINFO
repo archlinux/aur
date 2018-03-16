@@ -1,0 +1,27 @@
+pkgbase = mumble-minimal
+	pkgdesc = A voice chat application similar to TeamSpeak, bare minimum client
+	pkgver = 1.2.19
+	pkgrel = 1
+	url = https://www.mumble.info/
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = mesa
+	depends = qt4
+	depends = speex
+	depends = lsb-release
+	depends = protobuf
+	depends = libpulse
+	depends = opus
+	provides = mumble=1.2.19
+	conflicts = mumble
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.19/mumble-1.2.19.tar.gz
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.19/mumble-1.2.19.tar.gz.sig
+	source = https://github.com/mumble-voip/mumble/commit/ea861fe86743c8402bbad77d8d1dd9de8dce447e.patch
+	validpgpkeys = C4666C6767A26017CE68406988048D0D625297A0
+	sha512sums = f91111194a899149b500a94afcf7cc5b9691c7ce8669f07fca2c66adbb3916ddb863bf703d04fb8387133fb75f3c8edb52974d1acf3febfafa1f73da19946de4
+	sha512sums = SKIP
+	sha512sums = fcdaf2a3575e3871fe4003b93364a70a7c7029beb64ba5e24931abbe3898b72791848b5cf78ccf48eee5942a37f696a5134d061c2b8d60b66913abd701758330
+
+pkgname = mumble-minimal
+
