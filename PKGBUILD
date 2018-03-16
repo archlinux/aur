@@ -13,7 +13,7 @@ license=('GPL')
 arch=('x86_64')
 depends=('net-tools')
 optdepends=('polkit: to run XAMPP Manager from menu')
-makedepends=('fakeuser' 'proot-3.2.1')
+makedepends=('fakeuser-git' 'proot-3.2.1')
 source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png')
