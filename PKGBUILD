@@ -2,13 +2,16 @@
 
 pkgname=nutstore-experimental
 pkgver=3.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Nutstore experimental version.'
 arch=(x86_64)
 url='https://jianguoyun.com/'
 license=(custom)
-depends=(gtk2 java-runtime python2-notify)
-optdepends=('nautilus-nutstore: Nautilus plugin')
+depends=(gtk2 java-runtime)
+optdepends=(
+    'nautilus-nutstore: Nautilus plugin'
+    'python2-notify: desktop notification'
+)
 source=(nutstore license)
 source_x86_64=("https://jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x64-public.tar.gz")
 sha256sums=('3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384'
@@ -17,8 +20,7 @@ sha256sums_x86_64=('fac9773875a5391a047f342414e988dd0df7f7938f14833f4b1352d3e4c6
 conflicts=(nutstore)
 provides=(nutstore)
 
-build()
-{
+build() {
     cd $srcdir
     sed -i '1s/python/python2/' bin/nutstore-pydaemon.py
     cd gnome-config
@@ -26,8 +28,7 @@ build()
     sed -i '/Exec=/s|~/\.nutstore/dist|/opt/nutstore|' autostart/nutstore-daemon.desktop
 }
 
-package()
-{
+package() {
     cd $srcdir
     install -D -m755 nutstore $pkgdir/usr/bin/nutstore
     install -D -m644 license $pkgdir/usr/share/licenses/nutstore/license
