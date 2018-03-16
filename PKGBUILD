@@ -22,7 +22,7 @@ else
     _commit=2ff67385f2b7c7adb0ab438cb41d114235a8e40a # tags/GNOME_SETTINGS_DAEMON_3_24_2^0
 fi
 pkgver=3.27.91
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME Settings Daemon (with elementary OS patch)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=(i686 x86_64)
@@ -46,8 +46,12 @@ fi
 
 sha512sums=('SKIP'
             'SKIP'
-            '08b95b9892ed004c3da1506e272ea895885c47d70632f26edd8e5101bcb5936494b6419f4ea8a56f18964e89918401603188fd1f376795b42b2a1c7107706f2a'
-            '9203c13a2b8526dec82e838e46c62919cd2dd38224a8aca942bc3821cc662cee2dcc459241f363f047475dc7c4800616078201eb1a5e1e4ac6d003a0f3231fe3')
+            '08b95b9892ed004c3da1506e272ea895885c47d70632f26edd8e5101bcb5936494b6419f4ea8a56f18964e89918401603188fd1f376795b42b2a1c7107706f2a')
+if [[ "${_use_ppa}" == "true" ]]; then
+    sha512sums+=('9203c13a2b8526dec82e838e46c62919cd2dd38224a8aca942bc3821cc662cee2dcc459241f363f047475dc7c4800616078201eb1a5e1e4ac6d003a0f3231fe3')
+else
+    sha512sums+=('f6d7746ab353be390682a791047819d11e94715620c62e0ab89c72752b8d134a25d8859e009b64f5e381472cc438e7167320fa7fde9ab9bc9fd037adbd0c5382')
+fi
 
 pkgver() {
     cd "${pkgname%-*}"
@@ -73,7 +77,7 @@ prepare() {
   msg2 "Applying manage-dpms.patch ..."
   patch -Np0 < ../manage-dpms.patch
 
-  #NOCONFIGURE=1 ./autogen.sh
+  [[ "${_use_ppa}" == "true" ]] || NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
