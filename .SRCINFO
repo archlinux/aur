@@ -1,7 +1,7 @@
 pkgbase = plex-media-server-plexpass
 	pkgdesc = Plex Media Server (PlexPass version)
 	pkgver = 1.12.1.4871
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = armv7h
@@ -15,17 +15,19 @@ pkgbase = plex-media-server-plexpass
 	source = plexmediaserver.conf.d
 	source = plexmediaserver.service
 	source = plex.sysusers
+	source = plex.tmpfiles
 	source = terms.txt
 	sha256sums = 88779d4d04e44de05428754481c2b67a0e2bf47795dce875819bf7308de49025
 	sha256sums = 348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf
 	sha256sums = c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557
+	sha256sums = e9bb0a54944f892ab2a747ae4d387f4ab023dda6c524533fe4bf902483fb599b
 	sha256sums = 7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a
 	source_armv7h = https://downloads.plex.tv/plex-media-server/1.12.1.4871-6daee94e2/PlexMediaServer-1.12.1.4871-6daee94e2-arm7.spk
-	sha256sums_armv7h = 1f7b4ee947a82866ca910af489d367dc0308f01cb0a7b7c280dad02b1e8de4a4
+	sha256sums_armv7h = c44bd31a91bb2a3e2f6c14ac43df51b5937ce6962da960f7e8c00ef6f7c30a07
 	source_i686 = https://downloads.plex.tv/plex-media-server/1.12.1.4871-6daee94e2/plexmediaserver-1.12.1.4871-6daee94e2.i386.rpm
-	sha256sums_i686 = c66737222d1e4605660465d98c2bf9038bb29cf0b359d68d6b2c8b49f4fa045f
+	sha256sums_i686 = 203d1848b49f8d41bc4d562c08ae2c70260da1c2a9d529bd045a10f581115a41
 	source_x86_64 = https://downloads.plex.tv/plex-media-server/1.12.1.4871-6daee94e2/plexmediaserver-1.12.1.4871-6daee94e2.x86_64.rpm
-	sha256sums_x86_64 = 5d5977dab72a31e51b58273b83175a87d61edec1b6ce6c43b686219e75e25d3a
+	sha256sums_x86_64 = 50dfdde05e84fa4da04083590447b30ac0fe1cb38c7599446bb6c22dae75f05d
 
 pkgname = plex-media-server-plexpass
 

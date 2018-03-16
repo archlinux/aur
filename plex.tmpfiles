@@ -1,0 +1,2 @@
+d /var/lib/plex 0755 plex plex
+Z /var/lib/plex - plex plex
