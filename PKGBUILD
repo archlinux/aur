@@ -7,7 +7,7 @@
 _pkgname=mumble
 pkgname=$_pkgname-minimal
 pkgver=1.2.19
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="A voice chat application similar to TeamSpeak, bare minimum client"
 license=('BSD')
@@ -56,6 +56,6 @@ package() {
   install -m755 -d "$pkgdir"/usr/share/man/man1
   install -m644 -D ./man/mum* "$pkgdir"/usr/share/man/man1/
   install -m644 -D ./icons/mumble.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/mumble.svg
-  install -m644 -D ./LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  install -m644 -D ./LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 # vim: sw=2:ts=2 et:
