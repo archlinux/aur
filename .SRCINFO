@@ -1,11 +1,10 @@
 pkgbase = python2-ntplib
 	pkgdesc = Python NTP library
 	pkgver = 0.3.3
-	pkgrel = 1
-	url = http://code.google.com/p/$_pkgname
+	pkgrel = 2
+	url = http://code.google.com/p/ntplib
 	arch = any
 	license = MIT
-	makedepends = python2
 	makedepends = python2-setuptools
 	depends = python2
 	source = https://files.pythonhosted.org/packages/source/n/ntplib/ntplib-0.3.3.tar.gz

@@ -3,15 +3,15 @@
 pkgname=python2-ntplib
 _pkgname=${pkgname#python2-}
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python NTP library"
 arch=('any')
-url='http://code.google.com/p/$_pkgname'
+url="http://code.google.com/p/$_pkgname"
 license=('MIT')
 depends=('python2')
-makedepends=('python2' 'python2-setuptools')
+makedepends=('python2-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/n/ntplib/ntplib-0.3.3.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('c7cc8e9b09f40c84819859d70b7784ca')
 
 prepare() {
