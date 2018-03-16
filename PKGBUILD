@@ -3,7 +3,7 @@
 _name=slackclient
 pkgbase='python-slackclient'
 pkgname=('python-slackclient' 'python2-slackclient')
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=2
 pkgdesc="Python Slack API clients for Web API and RTM API"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/08/6e/c84dcf7c18c0a79c17a3dec971bcfa746ea1e23d4f41ba1de7eead203266/slackclient-1.1.2.tar.gz)
-sha256sums=('2e5840eba5af71487803b4eb8427ba19e1347fae6ed25cff53e0a6ea6c6832f5')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/6b/66/c421967368e8be43c5e09f50ae10f4d730c20e87d7e81841bc79a0bebcb2/slackclient-1.1.3.tar.gz)
+sha256sums=('146f5b1b7f4761fc8da8ac102c0f1fdc6f00a458c0b8349e156f93f7fef817f7')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
