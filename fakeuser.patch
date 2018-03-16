@@ -1,0 +1,11 @@
+--- fakeuser		2018-03-16 20:33:21.101608444 +0100
++++ aur-fakeuser	2018-03-16 20:31:28.549404000 +0100
+@@ -26,7 +26,7 @@
+ 	exit
+ fi
+ 
+-LIB="libfakeuser.so"
++LIB="/usr/lib/libfakeuser/libfakeuser.so"
+ 
+ # Keep preloaded libs
+ if test -n "$LD_PRELOAD"; then

@@ -12,13 +12,22 @@ license=('GPL')
 depends=('bash')
 provides=("${_appname}")
 conflicts=("${_appname}")
-source=("git+https://github.com/progandy/${_appname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/progandy/${_appname}.git"
+        'fakeuser.patch')
+md5sums=('SKIP'
+         'db7536ff3a3d751ea9dd5f7580b610d1')
 
 pkgver() {
 
 	cd "${_appname}"
 	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+
+prepare() {
+
+	cd "${srcdir}/${_appname}"
+	patch -p0 < "${srcdir}/fakeuser.patch"
 
 }
 
@@ -36,8 +45,8 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 	
 	install -Dm755 'fakeadd' "${pkgdir}/usr/bin/fakeadd"
-	install -Dm755 'fakeuser' "${pkgdir}/usr/bin/"
-	install -Dm755 'libfakeuser.so' "${pkgdir}/usr/lib/${_appname}/libfakeuser.so"
+	install -Dm755 'fakeuser' "${pkgdir}/usr/bin/fakeuser"
+	install -Dm755 'libfakeuser.so' "${pkgdir}/usr/lib/lib${_appname}/libfakeuser.so"
 	cp 'example-makepkg/'* "${pkgdir}/usr/share/doc/${_appname}/example-makepkg"
 	install -Dm644 "${srcdir}/${_appname}/"{README.md,LICENSE} "${pkgdir}/usr/share/doc/${_appname}"
 	
