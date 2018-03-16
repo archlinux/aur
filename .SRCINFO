@@ -1,0 +1,15 @@
+pkgbase = keybase-bash-completion
+	pkgdesc = Bash completion for keybase CLI
+	pkgver = r12.6a59dad
+	pkgrel = 1
+	url = https://github.com/dtiersch/keybase-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash-completion
+	depends = keybase
+	source = git+https://github.com/dtiersch/keybase-completion
+	md5sums = SKIP
+
+pkgname = keybase-bash-completion
+
