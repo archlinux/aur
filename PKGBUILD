@@ -1,4 +1,4 @@
-# Mantainer: grufo <madmurphy333 at gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Julio González <juliolokoo at gmail dot com>
 # Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
@@ -31,11 +31,11 @@ sha256sums_x86_64=('56936439c458202b766fdf2e84136a104a475166c65c0cfa43fe722a9bca
 
 _warning() {
 
-	echo "Due to limitations of the .run file of this package, you now must"
-	echo "have a mysql user in your system prior to its build."
-	echo "You can either create a mysql user manually or just run fakepkg"
-	echo "instead of makepkg. You can pass normal makepkg parameters to it,"
-	echo "such as fakepkg -si".
+	echo 'Due to limitations of the .run file of this package, you must have a mysql user'
+	echo 'in your system prior to its build.'
+	echo 'You can either create a mysql user manually or just run `fakepkg` instead of'
+	echo '`makepkg`. You can pass normal `makepkg` parameters to it,'
+	echo 'such as `makepkg -si`'.
 
 }
 
@@ -48,7 +48,7 @@ package() {
 	getent group  mysql >/dev/null || fakeadd -G -n mysql -g 713        || _warning
 	getent passwd mysql >/dev/null || fakeadd -U -n mysql -g 713 -u 713 || _warning
 
-	msg "Extracting package (this might take several minutes, don't give up!)..."
+	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 
@@ -59,6 +59,8 @@ package() {
 		-b "${pkgdir}/opt/lampp:/opt/lampp" \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
 		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 --debugtrace 'bitrock_debug.log'
+
+	msg 'Copying executables and launcher...'
 
 	chmod g-s -R "${pkgdir}/opt/lampp"
 
