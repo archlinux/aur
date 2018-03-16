@@ -1,0 +1,3 @@
+d /var/lib/radarr 0755 radarr radarr
+Z /var/lib/radarr - radarr radarr
+Z /usr/lib/radarr - radarr radarr
