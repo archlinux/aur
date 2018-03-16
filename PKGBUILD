@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
@@ -49,5 +49,5 @@ package() {
         install -dm 755 $pkgdir/etc/hyperledger/fabric/msp
 }
 
-md5sums=('0a114daece3c8851c8964aea57798f32'
-'2e0e11a95f75e66b08206b685d21eb36')
+md5sums=('3c9fcd96296a4f699f8f79fd96718b0f'
+         'a3b4e6d9f3c0675e9d53894e4e17cd15')
