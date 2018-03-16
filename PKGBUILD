@@ -8,9 +8,9 @@ pkgdesc='Mounting directories published on GNUnet as read-only file-systems'
 arch=('i686' 'x86_64')
 url='https://gnunet.org/'
 license=('GPL')
+provides=("${_appname}")
+conflicts=("${_appname}")
 depends=('gnunet' 'fuse2')
-provides=('gnunet-fuse')
-conflicts=('gnunet-fuse')
 makedepends=('autoconf')
 source=("git+https://gnunet.org/git/${_appname}.git")
 
