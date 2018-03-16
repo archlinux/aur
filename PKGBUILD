@@ -6,48 +6,49 @@
 
 pkgname=alacarte-xfce
 _pkgname=${pkgname%-xfce}
-pkgver=3.11.91
+pkgver=3.11.91.r18.g40c8c60
 pkgrel=1
 pkgdesc="Menu editor for Xfce"
-provides=("$_pkgname=$pkgver")
-arch=(any)
+arch=('any')
 license=('LGPL')
 url="http://www.gnome.org"
-depends=('gnome-menus' 'hicolor-icon-theme' 'python2-gobject' 'gtk3' 'exo')
-makedepends=('intltool' 'libxslt' 'docbook-xsl')
-conflicts=('alacarte' 'alacarte-git' 'alacarte-xfce-devel')
-install=alacarte.install
-options=('!libtool')
 groups=('xfce4-goodies')
-source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz"
-        unicode-fixes.patch
-        $_pkgname.desktop)
-md5sums=('03209a293a904cd3c47336ba0f3e8fc2'
-         'c9b2d6bca7e6cfa92f5c8bf09f179926'
-         'b927a3927560037c87dab73ef2d3d38b')
+depends=('gnome-menus' 'hicolor-icon-theme' 'python2-gobject' 'gtk3')
+makedepends=('intltool' 'libxslt' 'docbook-xsl' 'git' 'gnome-common')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-xfce-devel")
+install="$_pkgname.install"
+source=("$_pkgname"::"git+https://git.gnome.org/browse/$_pkgname"
+        'unicode.patch')
+md5sums=('SKIP'
+         '716728870e130fce53c412be5bb93d72')
+
+pkgver() {
+  cd "$_pkgname"
+  (
+    set -o pipefail
+    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd $_pkgname
 
-  patch -p1 -i ../unicode-fixes.patch
-  sed -e 's/gnome-desktop-item-edit/exo-desktop-item-edit/g' -i Alacarte/MainWindow.py
+  patch -p1 < ../unicode.patch
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd $_pkgname
 
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python2
   make
 }
 
-check() {
-  cd "$_pkgname-$pkgver"
-
-  make check
-}
-
 package() {
-  cd "$_pkgname-$pkgver"
+  cd $_pkgname
+
   make DESTDIR="$pkgdir" install
   python2 -m compileall "$pkgdir"/usr/lib/python2.7/site-packages/Alacarte/
 }

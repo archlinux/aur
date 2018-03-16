@@ -1,27 +1,28 @@
-diff -aur alacarte-3.7.90/Alacarte/MenuEditor.py alacarte-3.7.90.new/Alacarte/MenuEditor.py
---- alacarte-3.7.90/Alacarte/MenuEditor.py  2013-02-16 03:23:57.000000000 +0200
-+++ alacarte-3.7.90.new/Alacarte/MenuEditor.py  2013-04-24 22:48:57.876017889 +0300
-@@ -262,6 +263,7 @@
+diff --git a/Alacarte/MenuEditor.py b/Alacarte/MenuEditor.py
+index b07690c..72ba22d 100644
+--- a/Alacarte/MenuEditor.py
++++ b/Alacarte/MenuEditor.py
+@@ -260,6 +260,7 @@ class MenuEditor(object):
          out_path = os.path.join(util.getUserItemPath(), file_id)
  
          contents, length = keyfile.to_data()
 +        contents = unicode(contents, 'utf8')
  
-         with codecs.open(out_path, 'w', 'utf8') as f:
+         with open(out_path, 'w') as f:
              f.write(contents)
-@@ -402,6 +404,7 @@
+@@ -400,6 +401,7 @@ class MenuEditor(object):
              file_id = util.getUniqueFileId(keyfile.get_string(GLib.KEY_FILE_DESKTOP_GROUP, 'Name'), '.desktop')
  
          contents, length = keyfile.to_data()
 +        contents = unicode(contents, 'utf8')
  
          path = os.path.join(util.getUserItemPath(), file_id)
-         with codecs.open(path, 'w', 'utf8') as f:
-@@ -424,6 +427,7 @@
+         with open(path, 'w') as f:
+@@ -422,6 +424,7 @@ class MenuEditor(object):
          util.fillKeyFile(keyfile, kwargs)
  
          contents, length = keyfile.to_data()
 +        contents = unicode(contents, 'utf8')
  
          path = os.path.join(util.getUserDirectoryPath(), file_id)
-         with codecs.open(path, 'w', 'utf8') as f:
+         with open(path, 'w') as f:

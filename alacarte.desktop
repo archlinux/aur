@@ -1,8 +1,0 @@
-[Desktop Entry]
-Comment=Alacarte Menu Editor
-Terminal=false
-Name=Alacarte
-Exec=/usr/bin/alacarte
-Type=Application
-Categories=Settings;
-Icon=alacarte
