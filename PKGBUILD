@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=gr-gsm-git
-pkgver=8f121c1
+pkgver=r903.c097ce7
 pkgrel=1
 pkgdesc="Gnuradio blocks and tools for receiving GSM transmissions"
 arch=('any')
@@ -16,7 +16,7 @@ _gitname=gr-gsm
 
 pkgver() {
   cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  printf "v%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
