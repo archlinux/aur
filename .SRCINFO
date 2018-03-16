@@ -1,26 +1,28 @@
 pkgbase = xampp
 	pkgdesc = A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages
-	pkgver = 7.1.1
+	pkgver = 7.2.3
 	pkgrel = 1
 	url = http://www.apachefriends.org/
 	install = xampp.install
 	arch = x86_64
 	license = GPL
+	makedepends = fakeuser
+	makedepends = proot-3.2.1
 	depends = net-tools
 	optdepends = polkit: to run XAMPP Manager from menu
 	options = !strip
 	source = lampp.service
 	source = xampp-manager.desktop
 	source = xampp-manager.png
-	md5sums = db1881f9564f18ed34d877035c28a4b8
-	md5sums = cbf909c2c3ad89470463eed2ce003f97
-	md5sums = f214711d95b8135f16974e36128f3a68
-	source_x86_64 = https://sourceforge.net/projects/xampp-linux/files/xampp-linux-x64-7.1.1-0.tar.xz
+	sha256sums = 9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150
+	sha256sums = 595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6
+	sha256sums = 3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a
+	source_x86_64 = https://www.apachefriends.org/xampp-files/7.2.3/xampp-linux-x64-7.2.3-0-installer.run
 	source_x86_64 = org.freedesktop.xampp-manager.policy
 	source_x86_64 = xampp-manager-polkit
-	md5sums_x86_64 = a9ba3b9cc901065885bcd3a871a6a5a9
-	md5sums_x86_64 = ba7853fd8b3125b0a783753ca5e23447
-	md5sums_x86_64 = 9d246102ea20f27a13d119e57741ce7d
+	sha256sums_x86_64 = 56936439c458202b766fdf2e84136a104a475166c65c0cfa43fe722a9bca3a33
+	sha256sums_x86_64 = 4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418
+	sha256sums_x86_64 = 210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b
 
 pkgname = xampp
 

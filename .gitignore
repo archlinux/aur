@@ -1,0 +1,8 @@
+pkg/
+src/
+
+# Source files
+xampp-linux-*-*-*-installer.run
+
+# Compressed package
+xampp-*-*.pkg.tar.xz
