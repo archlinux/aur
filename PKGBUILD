@@ -5,11 +5,11 @@ _numix_ver=1.7.0
 _materia_ver=20180311
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
-_oomoxify_ver=675fedce9a47745212b062e13a7e51b01f2bb581
+_oomoxify_ver=1.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -50,14 +50,14 @@ source=(
     "materia-theme-${_materia_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_ver}.tar.gz"
     "oomox-archdroid-icon-theme-${_archdroid_ver}.tar.gz::https://github.com/actionless/oomox-archdroid-icon-theme/archive/${_archdroid_ver}.tar.gz"
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
-    "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
+    "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.tar.gz"
 )
 md5sums=('8212ed0e001806133ffe346ce0d237b6'
          '19816351f949963a240dd13bc0530952'
          'd34fd7d7f765c38d8be95b778a90ea2b'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
          'f3a30f186dc92a972b88975fcbd321ed'
-         'fbef02b2584fbafb009309eca6d28a54')
+         'df970e658de7668a7088bd445e4634fb')
 
 prepare() {
     cd ${srcdir}
