@@ -42,7 +42,7 @@ package() {
 	install -Dm644 "${srcdir}/${_appname}/"{README.md,LICENSE} "${pkgdir}/usr/share/doc/${_appname}"
 	
 	cat <<EOF > "${pkgdir}/usr/bin/fakepkg"
-BASEDIR="/usr/lib/${_appname}"
+BASEDIR=/usr/lib/${_appname}
 PATH="\$PATH:\$BASEDIR/" LD_PRELOAD="\$BASEDIR/libfakeuser.so" exec makepkg "\$@"
 EOF
 
