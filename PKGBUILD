@@ -7,7 +7,7 @@ pkgver=3.1.1
 pkgrel=2
 pkgdesc="Python toolkit for building, comparing, annotating, manipulating and visualising phylogenetic trees"
 arch=('any')
-url="https://pypi.python.org/pypi/ete"
+url=http://etetoolkit.org/
 license=('GPL3')
 makedepends=(
   'python' 'python-setuptools'
