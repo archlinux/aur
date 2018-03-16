@@ -1,0 +1,79 @@
+diff --git a/.travis.yml b/.travis.yml
+index 213b493..bb5c9a8 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -7,6 +7,7 @@ group: edge
+ php:
+   - 7.0
+   - 7.1
++  - 7.2
+ 
+ env:
+   - CC=gcc-4.8 CFLAGS=""
+diff --git a/php_suhosin7.h b/php_suhosin7.h
+index fb9cf90..2435196 100644
+--- a/php_suhosin7.h
++++ b/php_suhosin7.h
+@@ -23,8 +23,8 @@ extern zend_module_entry suhosin7_module_entry;
+ 
+ #define SUHOSIN7_EXT_VERSION  "0.10.0dev"
+ 
+-#if PHP_VERSION_ID < 70000 | PHP_VERSION_ID >= 70200
+-#error Suhosin7 works with PHP 7.0 and 7.1 only! Looking for Suhosin for PHP 5.x? Take a look at https://www.suhosin.org/
++#if PHP_VERSION_ID < 70000 | PHP_VERSION_ID >= 70300
++#error Suhosin7 works with PHP 7.0 and 7.1 and 7.2 only! Looking for Suhosin for PHP 5.x? Take a look at https://www.suhosin.org/
+ #endif
+ 
+ #ifdef PHP_WIN32
+diff --git a/tests/session/PHPSESSID_max_id_length_ok.phpt b/tests/session/PHPSESSID_max_id_length_ok.phpt
+index 2673d08..5d7772f 100644
+--- a/tests/session/PHPSESSID_max_id_length_ok.phpt
++++ b/tests/session/PHPSESSID_max_id_length_ok.phpt
+@@ -5,6 +5,8 @@ PHPSESSID session id not too long
+ --INI--
+ suhosin.session.max_id_length=32
+ session.hash_bits_per_character=4
++session.sid_length=32
++session.sid_bits_per_character=4
+ --COOKIE--
+ PHPSESSID=12345678901234567890123456789012;
+ --FILE--
+diff --git a/tests/session/PHPSESSID_max_id_length_toolong.phpt b/tests/session/PHPSESSID_max_id_length_toolong.phpt
+index 6bd71fb..9909757 100644
+--- a/tests/session/PHPSESSID_max_id_length_toolong.phpt
++++ b/tests/session/PHPSESSID_max_id_length_toolong.phpt
+@@ -5,6 +5,8 @@ PHPSESSID session id too long
+ --INI--
+ suhosin.session.max_id_length=32
+ session.hash_bits_per_character=4
++session.sid_length=32
++session.sid_bits_per_character=4
+ --COOKIE--
+ PHPSESSID=123456789012345678901234567890123;
+ --FILE--
+diff --git a/tests/session/max_id_length_ok.phpt b/tests/session/max_id_length_ok.phpt
+index dbecebd..15f46a9 100644
+--- a/tests/session/max_id_length_ok.phpt
++++ b/tests/session/max_id_length_ok.phpt
+@@ -5,6 +5,8 @@ session id not too long
+ --INI--
+ suhosin.session.max_id_length=32
+ session.hash_bits_per_character=4
++session.sid_length=32
++session.sid_bits_per_character=4
+ session.use_strict_mode=0
+ --FILE--
+ <?php
+diff --git a/tests/session/max_id_length_toolong.phpt b/tests/session/max_id_length_toolong.phpt
+index a8ec4cc..a7dd652 100644
+--- a/tests/session/max_id_length_toolong.phpt
++++ b/tests/session/max_id_length_toolong.phpt
+@@ -5,6 +5,8 @@ session id too long
+ --INI--
+ suhosin.session.max_id_length=32
+ session.hash_bits_per_character=4
++session.sid_length=32
++session.sid_bits_per_character=4
+ --FILE--
+ <?php
+ session_id('123456789012345678901234567890123');

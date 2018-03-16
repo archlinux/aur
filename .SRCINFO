@@ -1,7 +1,7 @@
 pkgbase = php-suhosin7-git
 	pkgdesc = An advanced protection system for PHP installations
 	pkgver = 0.10.0dev.r58.ge55e273
-	pkgrel = 1
+	pkgrel = 2
 	url = http://suhosin.org/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = php-suhosin7-git
 	depends = php
 	provides = php-suhosin7=0.10.0dev.r58.ge55e273
 	conflicts = php-suhosin7
-	backup = etc/php/conf.d/$__pkgname.ini
+	backup = etc/php/conf.d/suhosin7.ini
 	source = php-suhosin7::git+https://github.com/sektioneins/suhosin7.git
+	source = php-7.2.patch
 	md5sums = SKIP
+	md5sums = 70da87c05c34e16f6953f27b9cc13e74
 
 pkgname = php-suhosin7-git
 
