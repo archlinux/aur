@@ -4,7 +4,7 @@ pkgver=2.2.1
 pkgrel=2
 pkgdesc="Utility to evaluate the quality of next-generation sequencing data"
 arch=('any')
-url=https://qualimap.bioinfo.cipf.es
+url=http://qualimap.bioinfo.cipf.es/
 license=('GPL2')
 depends=('r' 'java-runtime>=6' 'java-runtime-openjdk>=6')
 install="${pkgname}".install
