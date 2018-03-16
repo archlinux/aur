@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A CalDAV and CardDAV front-end/proxy for EteSync "
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/"
-license=('LGPL')
+license=('GPL')
 depends=('python-appdirs'
          'python-radicale-storage-etesync'
 )
