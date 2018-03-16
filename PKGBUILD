@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/systemd/systemd-netlogd"
 license=('LGPL')
 depends=('libsystemd')
-makedepends=('meson')
+makedepends=('gperf' 'meson' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "systemd-netlogd.sysusers")
 md5sums=('eb7c9a9c24ef0b6acb10d9756b62f03c'
