@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=17.10.23
+pkgver=17.10.25
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -33,7 +33,7 @@ source=(
 	'gtk.patch'
 	'cli.patch'
 	'hidpi.patch')
-sha1sums=('a35a853892d0d61c636d4816b6375bf6880e28ca'
+sha1sums=('80d987648e753ae3275f7de06dfeba98bc890761'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
