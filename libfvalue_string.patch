@@ -1,0 +1,31 @@
+diff --git a/libfvde/libfvde_libfvalue.h b/libfvde/libfvde_libfvalue.h
+index 6b1e87e..264552a 100644
+--- a/libfvde/libfvde_libfvalue.h
++++ b/libfvde/libfvde_libfvalue.h
+@@ -33,12 +33,15 @@
+ #include <libfvalue_definitions.h>
+ #include <libfvalue_floating_point.h>
+ #include <libfvalue_integer.h>
+-#include <libfvalue_split_string.h>
++#include <libfvalue_split_utf16_string.h>
++#include <libfvalue_split_utf8_string.h>
+ #include <libfvalue_string.h>
+ #include <libfvalue_table.h>
+ #include <libfvalue_types.h>
+ #include <libfvalue_value.h>
+ #include <libfvalue_value_type.h>
++#include <libfvalue_utf16_string.h>
++#include <libfvalue_utf8_string.h>
+ 
+ #else
+ 
+@@ -51,7 +54,7 @@
+ 
+ #include <libfvalue.h>
+ 
+-#endif
++#endif /* defined( HAVE_LOCAL_LIBFVALUE ) */
+ 
+-#endif
++#endif /* !defined( _LIBFVDE_LIBFVALUE_H ) */
+ 
