@@ -1,0 +1,12 @@
+pkgbase = wgsim-git
+	pkgdesc = Whole genome read simulator from a reference genome
+	pkgver = r14.a12da33
+	pkgrel = 1
+	url = https://github.com/lh3/wgsim
+	arch = x86_64
+	license = custom:Heng Li
+	source = wgsim::git+https://github.com/lh3/wgsim.git
+	sha256sums = SKIP
+
+pkgname = wgsim-git
+
