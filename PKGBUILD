@@ -1,7 +1,7 @@
 # Maintainer: Mattias Giese <mattiasgiese@posteo.net>
 
 _pkgname=keybase-completion
-pkgname=keybase-bash-completion
+pkgname=keybase-bash-completion-git
 pkgdesc="Bash completion for keybase CLI"
 pkgver=r12.6a59dad
 pkgrel=1
