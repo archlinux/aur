@@ -1,0 +1,2 @@
+Z /usr/lib/unifi-video - unifi-video unifi-video
+L /usr/lib/unifi-video/bin/mongod - - - - /usr/bin/mongod

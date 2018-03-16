@@ -1,4 +1,5 @@
 /*.deb
 /*.xz
+/*.log
 /src/
 /pkg/
