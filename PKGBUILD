@@ -19,33 +19,33 @@ source_i686=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download
 source_x86_64=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v${pkgver}/openbazaar2_${pkgver}_amd64.deb")
 
 case "$CARCH" in
-  x86_64) export GOARCH=amd64 ;;
-  i686) export GOARCH=i386 ;;
+	x86_64) export GOARCH=amd64 ;;
+	i686) export GOARCH=i386 ;;
 esac
 
 package() {
-    tar -xf data.tar.xz -C $pkgdir
+	tar -xf data.tar.xz -C $pkgdir
 
-    chmod -R 755 $pkgdir/usr/
+	chmod -R 755 $pkgdir/usr/
 
-    install -Dm644 $pkgdir/usr/lib/openbazaar2/LICENSES.chromium.html $pkgdir/usr/share/licenses/${_name}/LICENSES.chromium.html
+	install -Dm644 $pkgdir/usr/lib/openbazaar2/LICENSES.chromium.html $pkgdir/usr/share/licenses/${_name}/LICENSES.chromium.html
 
-    cd $pkgdir	
-    rm -rf usr/share/lintian
-    mv usr/lib/openbazaar2 usr/lib/openbazaar
-    rm usr/bin/openbazaar2
-    ln -sr /usr/lib/openbazaar/openbazaar2 $pkgdir/usr/bin/openbazaar
-    cp $srcdir/${_name}.desktop usr/share/applications/
-    rm usr/share/applications/openbazaar2.desktop
-    mv usr/share/doc/openbazaar2 usr/share/doc/openbazaar
+	cd $pkgdir
+	rm -rf usr/share/lintian
+	mv usr/lib/openbazaar2 usr/lib/openbazaar
+	rm usr/bin/openbazaar2
+	ln -sr /usr/lib/openbazaar/openbazaar2 $pkgdir/usr/bin/openbazaar
+	cp $srcdir/${_name}.desktop usr/share/applications/
+	rm usr/share/applications/openbazaar2.desktop
+	mv usr/share/doc/openbazaar2 usr/share/doc/openbazaar
 
-    cd $pkgdir/usr/lib/openbazaar/resources/app
-    npm prune --production
-    rm -rf ../openbazaar-go
-    find . -name "example" -prune -exec rm -r '{}' \; \
-      	 	-or -name "examples" -prune -exec rm -r '{}' \; \
-        	-or -name "test" -prune -exec rm -r '{}' \; \
-        	-or -name "temp" -prune -exec rm -r '{}' \; 
+	cd $pkgdir/usr/lib/openbazaar/resources/app
+	npm prune --production
+	rm -rf ../openbazaar-go
+	find . -name "example" -prune -exec rm -r '{}' \; \
+		-or -name "examples" -prune -exec rm -r '{}' \; \
+		-or -name "test" -prune -exec rm -r '{}' \; \
+		-or -name "temp" -prune -exec rm -r '{}' \;
 }
 
 md5sums=('e547247b5aa7cd2c195286e2ec760883')
