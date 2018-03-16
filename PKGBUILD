@@ -4,25 +4,28 @@
 # Contributor: GordonGR <gordongr@freemail.gr>
 
 pkgname=lib32-polkit
-pkgver=0.113+29+g3272a98
+pkgver=0.113+34+g29ba7af
 pkgrel=1
-pkgdesc="Application development toolkit for controlling system-wide privileges (32-bit)"
-arch=(x86_64)
-license=(LGPL)
-url="https://www.freedesktop.org/wiki/Software/polkit/"
-depends=(lib32-glib2 lib32-pam lib32-expat lib32-systemd polkit)
-makedepends=(intltool gtk-doc gobject-introspection git autoconf-archive gcc-multilib)
-_commit=3272a988655c3236b55bad70e9a3af20857f384b  # master
+pkgdesc='Application development toolkit for controlling system-wide privileges'
+arch=('x86_64')
+license=('LGPL')
+url='https://www.freedesktop.org/wiki/Software/polkit/'
+depends=('lib32-expat' 'lib32-glib2' 'lib32-pam' 'lib32-systemd' 'polkit')
+makedepends=('autoconf-archive' 'gcc-multilib' 'git' 'gobject-introspection'
+             'gtk-doc' 'intltool')
+_commit='29ba7afba1b79a325183a71966f35926dfdf506e'  # master
 source=("git+https://anongit.freedesktop.org/git/polkit#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd polkit
+
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
   cd polkit
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -33,10 +36,15 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib32 \
-      --localstatedir=/var --libexecdir=/usr/lib32/polkit-1 \
-      --enable-libsystemd-login=yes --disable-static \
-      --with-os-type=redhat
+  ./configure \
+    --prefix='/usr' \
+    --sysconfdir='/etc' \
+    --libdir='/usr/lib32' \
+    --localstatedir='/var' \
+    --libexecdir='/usr/lib32' \
+    --disable-static \
+    --enable-libsystemd-login='yes' \
+    --with-os-type='redhat'
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
@@ -48,11 +56,10 @@ build() {
 
 package() {
   cd polkit
-  make -C src/polkit DESTDIR="$pkgdir" \
-    lib_LTLIBRARIES="libpolkit-gobject-1.la" install-libLTLIBRARIES
-  make -C src/polkitagent DESTDIR="$pkgdir" \
-    lib_LTLIBRARIES="libpolkit-agent-1.la" install-libLTLIBRARIES
-  make -C data DESTDIR="$pkgdir" install-pkgconfigDATA
+
+  make -C src/polkit DESTDIR="${pkgdir}" lib_LTLIBRARIES='libpolkit-gobject-1.la' install-libLTLIBRARIES
+  make -C src/polkitagent DESTDIR="${pkgdir}" lib_LTLIBRARIES='libpolkit-agent-1.la' install-libLTLIBRARIES
+  make -C data DESTDIR="${pkgdir}" install-pkgconfigDATA
 }
 
 # vim: ts=2 sw=2 et:
