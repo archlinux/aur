@@ -15,5 +15,7 @@ sha512sums=('2bbf62008707ea88113434adf0bdd6d999ecd1b85a020de0106e1f4c5b34a143b0a
 
 package() {
   install -D -m 644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -D -m 755 ${srcdir}/psalm.phar ${pkgdir}/usr/bin/${pkgname}
+  install -D -m 755 ${srcdir}/psalm.phar ${pkgdir}/usr/share/webapps/bin/${pkgname}.phar
+  install -d ${pkgdir}/usr/bin
+  ln -s /usr/share/webapps/bin/${pkgname}.phar ${pkgdir}/usr/bin/${pkgname}
 }
