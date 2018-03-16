@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://gnunet.org/'
 license=('GPL')
 depends=('gnunet' 'fuse2')
-conflicts=('gnunet-fuse-git')
+conflicts=("${pkgname}-git")
 
 # GNU mirrors
 _pkg_mirrors=("ftp://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"
