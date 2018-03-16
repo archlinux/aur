@@ -8,10 +8,8 @@ pkgbase = getgauge
 	license = GPL3
 	makedepends = go
 	makedepends = godep
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/getgauge/gauge/archive/v0.9.4.tar.gz
-	sha256sums = b517997c5675b6997cb0707ab81b86053a10937b186458a96b65c3ec64caffc6
+	source = https://github.com/getgauge/gauge/archive/v0.9.7.tar.gz
+	sha256sums = e656d32a55505d0c862ecd808309aa36d5538702ecc97f2f9ec9437580fa3b27
 
 pkgname = getgauge
 
