@@ -1,34 +1,32 @@
 # Maintainer: Lettier <gifcurry_aur a@@at@t lettier dd.ot..t ccommm>
 
-_hkgname=Gifcurry
-_ver=2.3.0.0
+_name=gifcurry
+_ver=3.0.0.0
 _xrev=0
 
-pkgname=gifcurry
+pkgname=${_name}
 pkgver=${_ver}_${_xrev}
 pkgrel=1
-pkgdesc="Open source video to GIF maker that allows overlaid text."
+pkgdesc="Your open source video to GIF maker built with Haskell."
 url="https://github.com/lettier/gifcurry"
 license=("BSD3")
-arch=("i686" "x86_64")
-makedepends=("make" "gobject-introspection" "git" "gmp" "zlib")
-depends=("gtk3" "ffmpeg" "imagemagick")
-options=("strip" "staticlibs")
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")
-sha256sums=('906119e22e7a358ddd48fe7350757502bce9b274e24ed46bacb59e8e4c9e95f7')
-
-build() {
-  cd "${srcdir}"
-  if [ ! `command -v stack` ]; then
-    git clone https://aur.archlinux.org/stack-bin.git
-    cd "stack-bin"
-    makepkg -sic
-  fi
-  cd "${srcdir}/${_hkgname}-${_ver}"
-  make PREFIX="/usr" arch_os_build_gifcurry
-}
+arch=("x86_64")
+makedepends=()
+depends=("gtk3" "ffmpeg" "imagemagick" "gstreamer" "gst-libav" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad")
+options=()
+source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
+md5sums=('cdcd747dce6bc20ae47db0044b826099')
 
 package() {
-  cd "${srcdir}/${_hkgname}-${_ver}"
-  make PREFIX="/usr" DESTDIR="$pkgdir" arch_os_install_gifcurry
+  cd "${srcdir}/${_name}-linux-${_ver}"
+  mkdir -p \
+    "${pkgdir}/opt/${_name}-linux-${_ver}/" \
+    "${pkgdir}/usr/bin/" \
+    "${pkgdir}/usr/share/applications/" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  cp -RP . "${pkgdir}/opt/${_name}-linux-${_ver}/"
+  cp ./share/applications/gifcurry.desktop "${pkgdir}/usr/share/applications/"
+  cp ./share/icons/hicolor/scalable/apps/gifcurry-icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  ln -s "/opt/${_name}-linux-${_ver}/bin/gifcurry_gui" "${pkgdir}/usr/bin/gifcurry_gui"
+  ln -s "/opt/${_name}-linux-${_ver}/bin/gifcurry_cli" "${pkgdir}/usr/bin/gifcurry_cli"
 }
