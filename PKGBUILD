@@ -6,15 +6,15 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=20.2
-_docver=20.2
+pkgver=20.3
+_docver=20.3
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64')
 url='http://www.erlang.org/'
 license=('Apache')
 depends=('ncurses' 'openssl')
-makedepends=('lksctp-tools' 'unixodbc' 'git' 'libxslt' 'fop' 'java-environment')
+makedepends=('fop' 'git' 'java-environment' 'libxslt' 'lksctp-tools' 'unixodbc')
 conflicts=('erlang')
 optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
@@ -22,11 +22,9 @@ optdepends=('erlang-unixodbc: database support'
 options=('staticlibs')
 source=("git+https://github.com/erlang/otp.git#tag=OTP-$pkgver"
         "http://www.erlang.org/download/otp_doc_man_$_docver.tar.gz"
-        'epmd.service'
-        'epmd.socket'
-        'epmd.conf')
+        'epmd.service' 'epmd.socket' 'epmd.conf')
 sha256sums=('SKIP'
-            '950e088f9e47fc10a98e3f67d6420a990650836c648686a2f5dafe331747cbdf'
+            '17e0b2f94f11576a12526614a906ecad629b8804c25e6c18523f7c4346607112'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
