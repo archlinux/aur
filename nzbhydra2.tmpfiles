@@ -1,0 +1,3 @@
+d /var/lib/nzbhydra2 0755 nzbhydra2 nzbhydra2
+Z /var/lib/nzbhydra2 - nzbhydra2 nzbhydra2
+Z /usr/lib/nzbhydra2 - nzbhydra2 nzbhydra2
