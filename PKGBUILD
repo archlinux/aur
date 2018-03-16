@@ -3,8 +3,8 @@
 
 pkgname=pybind11
 pkgver=2.2.2
-pkgrel=2
-pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code'
+pkgrel=3
+pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
 license=('BSD')
@@ -13,6 +13,7 @@ optdepends=('python: to target bindings supporting python 3'
 makedepends=(
     # official repositories:
         'cmake' 'python' 'python-setuptools' 'python-pytest' 'python-sphinx' 'doxygen'
+        'python2' 'python2-setuptools'
     # AUR:
         'python-breathe'
 )
@@ -20,11 +21,21 @@ checkdepends=('cmake' 'python-pytest' 'python-numpy')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
 sha256sums=('b639a2b2cbf1c467849660801c4665ffc1a4d0a9e153ae1996ed6f21c492064e')
 
+prepare() {
+    cp -a "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-py2"
+}
+
 build () {
-    msg2 'Building cmake files...'
+    msg2 'Building Python3 modules...'
     cd "${pkgname}-${pkgver}"
-    mkdir -p build
-    cd build
+    python setup.py build
+    
+    msg2 'Building Python2 modules...'
+    cd "${srcdir}/${pkgname}-${pkgver}-py2"
+    python2 setup.py build
+    
+    msg2 'Building cmake files...'
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
     cmake ..
     make mock_install
     
@@ -44,8 +55,17 @@ build () {
 #}
 
 package() {
+    # python modules
     cd "${pkgname}-${pkgver}"
-    python setup.py install_headers --install-dir "${pkgdir}/usr/include/${pkgname}"
+    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python3.6" --optimize='1'
+    
+    # python2 modules
+    cd "${srcdir}/${pkgname}-${pkgver}-py2"
+    python2 setup.py install_lib --install-dir="${pkgdir}/usr/lib/python2.7" --optimize='1'
+    
+    # C++ headers
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install_headers --install-dir="${pkgdir}/usr/include/${pkgname}"
     
     # cmake files
     mkdir -p "${pkgdir}/usr/share/cmake/${pkgname}"
