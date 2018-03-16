@@ -3,11 +3,13 @@
 _name=dwgsim
 pkgname="${_name}"-git
 pkgver=r159.39a1bbb
-pkgrel=1
+pkgrel=2
 pkgdesc="Whole genome read simulator for Next-Generation Sequencing data"
 arch=('x86_64')
 url=https://github.com/lh3/"${_name}"
 license=('GPL2')
+conflicts=('dwgsim')
+provides=('dwgsim')
 source=('dwgsim::git+https://github.com/nh13/DWGSIM.git')
 sha256sums=('SKIP')
 
