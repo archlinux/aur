@@ -5,8 +5,8 @@
 
 pkgname='kapacitor'
 _gitname='kapacitor'
-pkgver='1.4.0'
-pkgrel='2'
+pkgver='1.4.1'
+pkgrel='1'
 pkgdesc='Open source framework for processing, monitoring, and alerting on time series data'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://influxdb.org/'
