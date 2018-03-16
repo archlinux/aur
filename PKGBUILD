@@ -11,7 +11,8 @@ license=('MIT')
 depends=('python' 'python-pykeepass' 'python-pyuserinput-git')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
-            'rofi: either dmenu or rofi is required')
+            'rofi: either dmenu or rofi is required'
+            'xdotool: required for typing non-U.S. Unicode characters')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git://github.com/firecat53/$_gitname.git")

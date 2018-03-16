@@ -12,6 +12,7 @@ pkgbase = python-keepmenu-git
 	depends = python-pyuserinput-git
 	optdepends = dmenu: either dmenu or rofi is required
 	optdepends = rofi: either dmenu or rofi is required
+	optdepends = xdotool: required for typing non-U.S. Unicode characters
 	provides = python-keepmenu
 	conflicts = python-keepmenu
 	source = git://github.com/firecat53/keepmenu.git
