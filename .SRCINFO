@@ -1,0 +1,50 @@
+pkgbase = ffmpeg-compat-57
+	pkgdesc = Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
+	pkgver = 3.3.4
+	pkgrel = 2
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	depends = bzip2
+	depends = fribidi
+	depends = glibc
+	depends = gmp
+	depends = gnutls
+	depends = gsm
+	depends = lame
+	depends = libmodplug
+	depends = libtheora
+	depends = libva
+	depends = libwebp
+	depends = opencore-amr
+	depends = openjpeg2
+	depends = opus
+	depends = schroedinger
+	depends = speex
+	depends = v4l-utils
+	depends = xz
+	depends = zlib
+	depends = libbluray.so>=2-64
+	depends = libvorbisenc.so>=2-64
+	depends = libvorbis.so>=0-64
+	depends = libvpx.so>=5-64
+	depends = libx264.so>=152-64
+	depends = libx265.so>=146-64
+	depends = libxvidcore.so>=4-64
+	depends = rtmpdump
+	provides = libavcodec.so=57
+	provides = libavdevice.so=57
+	provides = libavformat.so=57
+	provides = libavutils.so=55
+	source = http://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz.asc
+	source = ffmpeg-openjpeg2.2.patch
+	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
+	sha256sums = 98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957
+	sha256sums = SKIP
+	sha256sums = 490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68
+
+pkgname = ffmpeg-compat-57
+
