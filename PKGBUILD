@@ -3,7 +3,7 @@
 
 pkgname=gns3-gui
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -17,7 +17,7 @@ optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, Virt
             'wireshark-qt: Live packet capture.')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz"
         'gns3.desktop')
-sha256sums=('cebcf59a1f7381b91a59dc773636e92f50974e0be05a0728e8b86a781ac73e44'
+sha256sums=('da2517881307c86229693bfc01e3dd98cfa67fd91f5403f4a7ab7b6619b6efe0'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
 
 package() {
