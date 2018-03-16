@@ -1,5 +1,5 @@
 pkgname=bibata-cursor-theme
-pkgver=1.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Material Based Cursor Theme."
 arch=('any')
