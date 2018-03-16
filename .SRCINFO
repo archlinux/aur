@@ -1,8 +1,8 @@
 pkgbase = powerpanel
 	pkgdesc = CyberPower UPS daemon
 	pkgver = 1.3.2
-	pkgrel = 5 
-	url = http://www.cyberpowersystems.com
+	pkgrel = 5
+	url = https://www.cyberpowersystems.com
 	arch = x86_64
 	arch = i686
 	license = custom:CyberPower
@@ -11,6 +11,10 @@ pkgbase = powerpanel
 	backup = etc/powerpanel/pwrstatd-lowbatt.sh
 	backup = etc/powerpanel/pwrstatd-email.sh
 	backup = etc/pwrstatd.conf
+	source = pwrstatd.service
+	source = https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-132-x86_64.tar.gz
+	sha256sums = 2bcf5ba2c5d8c9ab886b6a5aba06f0da1630fabb440621860b2da221fcf9eb34
+	sha256sums = 265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36
 
 pkgname = powerpanel
 
