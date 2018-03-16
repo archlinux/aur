@@ -1,0 +1,18 @@
+pkgbase = php-facedetect-git
+	pkgdesc = PHP extension for opencv face detection
+	pkgver = 1.1.0.r15.gc717941
+	pkgrel = 1
+	url = https://github.com/infusion/PHP-Facedetect
+	install = php-facedetect.install
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = php>=5.3
+	depends = opencv>=2.0
+	depends = gtkglext
+	backup = etc/php/conf.d/facedetect.ini
+	source = php-facedetect::git+https://github.com/infusion/PHP-Facedetect.git
+	sha512sums = SKIP
+
+pkgname = php-facedetect-git
+
