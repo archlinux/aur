@@ -22,8 +22,6 @@ build() {
 }
 
 package() {
-    mkdir -pv "$pkgdir/usr/bin"
-    mv "$pkgname-$pkgver/target/release/fselect" "$pkgdir/usr/bin"
-    mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
-    mv $(readlink "$srcdir/LICENSE") "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "$pkgname-$pkgver/target/release/fselect" "$pkgdir/usr/bin/fselect"
+    install -Dm644 "$pkgname-$pkgver/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
