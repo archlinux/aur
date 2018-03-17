@@ -1,19 +1,18 @@
 pkgbase = nodejs-profitbricks-cli
 	pkgdesc = ProfitBricks Cross Platform Command Line tool
-	pkgver = 1.1.1.r1.g2c4535b
+	pkgver = 4.1.0
 	pkgrel = 1
-	url = https://github.com/profitbricks/profitbricks-cli
+	url = https://devops.profitbricks.com/tools/cli/
 	arch = any
 	license = Apache
-	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	provides = profitbricks-cli=1.1.1.r1.g2c4535b
+	provides = profitbricks-cli=4.1.0
 	conflicts = profitbricks-cli
-	source = profitbricks-cli::git+https://github.com/profitbricks/profitbricks-cli.git
-	source = bash-completion
-	md5sums = SKIP
-	md5sums = 657152bc10770c22c3cf696bf02bb962
+	noextract = profitbricks-cli-4.1.0.tgz
+	options = !emptydirs
+	source = http://registry.npmjs.org/profitbricks-cli/-/profitbricks-cli-4.1.0.tgz
+	md5sums = ffd80bb29cb15807f922bf31b7e8b1c9
 
 pkgname = nodejs-profitbricks-cli
 

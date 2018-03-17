@@ -1,37 +1,28 @@
 # Maintainer: James An <james@jamesan.ca>
 
-_pkgname=profitbricks-cli
-pkgname="nodejs-$_pkgname"
-pkgver=1.1.1.r1.g2c4535b
+pkgname=nodejs-profitbricks-cli
+_pkgname=${pkgname#nodejs-}
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="ProfitBricks Cross Platform Command Line tool"
 arch=('any')
-url="https://github.com/profitbricks/$_pkgname"
+url="https://devops.profitbricks.com/tools/cli/"
 license=('Apache')
 depends=('nodejs')
-makedepends=('git' 'npm')
+makedepends=('npm')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=(
-  "$_pkgname"::"git+https://github.com/profitbricks/$_pkgname.git"
-  bash-completion
-)
-md5sums=('SKIP'
-         '657152bc10770c22c3cf696bf02bb962')
-
-#~ pkgver() {
-    #~ cd "$_pkgname"
-    #~ (
-        #~ set -o pipefail
-        #~ git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-        #~ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    #~ )
-#~ }
+options=(!emptydirs)
+source=("http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
+noextract=($_pkgname-$pkgver.tgz)
+md5sums=('ffd80bb29cb15807f922bf31b7e8b1c9')
 
 package() {
-  install -Dm644 bash-completion "$pkgdir/usr/share/bash-completion/completion/profitbricks"
-  install -dm755 "$pkgdir/usr/lib/node_modules"
+    npm install -g $_pkgname-$pkgver.tgz --prefix "$pkgdir/usr"
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
-  cd "$pkgdir/usr/lib/node_modules"
-  npm install -g --prefix "$pkgdir/usr" $srcdir/$_pkgname
+    # Configure shell autocompletion.
+    install -Dm644 "$pkgdir/usr/lib/node_modules/$_pkgname/autocomplete" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 }
