@@ -21,7 +21,7 @@ source=("harmony-$pkgver.tar.xz::https://github.com/vincelwt/harmony/releases/do
         "harmony-32.png"
         "harmony-256.png"
         "harmony")
-md5sums=('2a9dcf0e6bf82ca1b03d492e22d19159'
+md5sums=('a98b5dbfcb614ac93ccae8f9eb8555ee'
          '776af71320e401646bf96a7d4c721d27'
          '9ff4e602debeaf6d88c625189342db52'
          'd3ff15f6c1dd18a81a933242aae9c892'
