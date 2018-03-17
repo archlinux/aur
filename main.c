@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2) {
         cryptopt = strcmp(cmd, "encrypt") == 0; // 1 if encrypting, 0 if decrypting
         String* pString = portfolio_file_get_string();
-        if (pString != NULL) { // NULL if error opening portfolio
+        if (pString != NULL && pString->len != 0) { // NULL if error opening portfolio
             String* crypted = rc4_get_crypted_string(pString, NULL, cryptopt);
             string_destroy(&pString);
             if (crypted != NULL) { // NULL if password error
@@ -47,6 +47,7 @@ int main(int argc, char* argv[]) {
                 string_destroy(&crypted);
             }
         }
+        string_destroy(&pString);
     }
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
