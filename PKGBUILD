@@ -1,8 +1,8 @@
 # Maintainer: Morgana <morganamilo@gmail.com>
 pkgname=superproductivity
 _pkgname=superProductivity
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
 url="http://super-productivity.com/"
@@ -12,7 +12,7 @@ depends=('gtk2' 'libxss' 'gconf' 'nss' 'nspr' 'libnotify' 'libappindicator'
 makedepends=()
 source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity_${pkgver}_amd64.deb" "LICENSE")
 noextract=()
-md5sums=('63b8ea044f7115d147141d70277275c9'
+md5sums=('8b6e954e7202ef34525f3bfde909c7dd'
          '66b9e0d3d2b55636d9687b1381f5f97d')
 
 prepare() {
