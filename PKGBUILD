@@ -1,14 +1,14 @@
-# Maintainer: John W. Trengrove <john@retrofilter.com>
+# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Contributor: John W. Trengrove <john@retrofilter.com>
 
 pkgname=stagit-git
-_pkgname=stagit
-pkgver=0.5.0.g82aefe6
+pkgver=0.7.2.r5.g20c37e4
 pkgrel=1
-pkgdesc="static git page generator"
-arch=('x86_64' 'i686')
+pkgdesc="static git page generator (Git Version)"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://git.2f30.org/stagit"
-license=('MIT')
-source=("git://git.2f30.org/stagit.git")
+license=('custom:MIT/X Consortium')
+source=("stagit-git::git://git.2f30.org/stagit.git")
 depends=('libgit2')
 makedepends=('git')
 conflicts=('stagit')
@@ -16,17 +16,17 @@ provides=('stagit')
 md5sums=('SKIP')
 
 pkgver() {
-  cd stagit
-  echo "$(git describe --long --tags | tr - .)"
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd stagit
+  cd "${pkgname}"
   make
 }
 
 package() {
-  cd stagit
+  cd "${pkgname}"
   make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
