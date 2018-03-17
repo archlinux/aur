@@ -1,6 +1,6 @@
 pkgbase = cef-standard
 	pkgdesc = Chromium Embedded Framework standard release
-	pkgver = 3.3325.1749.ga42963a
+	pkgver = 3.3325.1750.gaabe4c4
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = i686
@@ -11,21 +11,22 @@ pkgbase = cef-standard
 	depends = nss
 	depends = alsa-lib
 	depends = atk
-	depends = gconf
 	depends = pango
 	depends = libxrandr
 	depends = libxcursor
 	depends = libxss
 	depends = libxtst
 	depends = libxcomposite
-	depends = gtk2
+	depends = libglvnd
+	depends = dbus
 	provides = cef
 	provides = cef-minimal
 	conflicts = cef-minimal
-	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3325.1749.ga42963a_linux32.tar.bz2
-	sha1sums_i686 = bf0f94f2faa756a40a6c67ecacd458c941a5a30e
-	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3325.1749.ga42963a_linux64.tar.bz2
-	sha1sums_x86_64 = fb887f8470eb7f78bd04ca0cd9564566a253f5f7
+	conflicts = cef-git
+	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3325.1750.gaabe4c4_linux32.tar.bz2
+	sha1sums_i686 = db25843b9280df979c0006f85102751c8b5c43e2
+	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3325.1750.gaabe4c4_linux64.tar.bz2
+	sha1sums_x86_64 = 8faca2790ab313cd58428828319ec5aa2ee0f034
 
 pkgname = cef-standard
 
