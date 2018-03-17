@@ -14,7 +14,7 @@ void portfolio_file_init(void) {
 }
 
 String* portfolio_file_get_string(void) {
-    FILE* fp = fopen(portfolio_file, "w+"); // Must be w+ because r will fail if portfolio doesn't exist
+    FILE* fp = fopen(portfolio_file, "r"); // Must be w+ because r will fail if portfolio doesn't exist
     if (fp == NULL)
         return NULL;
     String* pString = string_init();
@@ -46,12 +46,15 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
     }
     String* pString = portfolio_file_get_string();
     if (pString == NULL) {
-        printf("Error reading portfolio.\n");
-        return;
+        FILE* fp = fopen(portfolio_file, "a"); // Creates if doesn't exist
+        fclose(fp);
     }
     Json* jobj = NULL;
-    if (pString->len == 0) //new file
+    if (pString == NULL || pString->len == 0) { //new file
+        if (pString != NULL && pString->len == 0)
+            string_destroy(&pString);
         jobj = json_object_new_array();
+    }
     else jobj = json_tokener_parse(pString->data); //existing file
     char* password = NULL;
     if (jobj == NULL) { //ENCRYPTED PORTFOLIO
@@ -129,16 +132,26 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
                                    json_object_new_double(round(current_spent * 100) / 100));
         }
     }
+    if (pString == NULL){
+        pString = string_init();
+        free(pString->data);
+        pString->len = strlen(json_object_to_json_string(jobj));
+        pString->data = malloc(pString->len + 1);
+        if (pString->data == NULL){
+            fprintf(stderr, "malloc() failed\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+    strcpy(pString->data, json_object_to_json_string(jobj));
     if (password != NULL) { // If data must be re-encrypted
         printf("Encrypting portfolio...\n");
-        strcpy(pString->data, json_object_to_json_string(jobj));
         String* temp = rc4_get_crypted_string(pString, password, ENCRYPT);
         string_destroy(&pString);
         pString = temp;
         free(password);
     }
-    json_object_put(jobj);
     string_write_portfolio(pString);
+    json_object_put(jobj);
     string_destroy(&pString);
 }
 
