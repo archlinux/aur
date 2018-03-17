@@ -2,7 +2,7 @@
 
 pkgname=fselect
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/jhspetersson/fselect"
 license=("MIT")
@@ -13,6 +13,9 @@ source=("$pkgver.tar.gz::https://github.com/jhspetersson/$pkgname/archive/$pkgve
 md5sums=('90500ab06feb075317fa0b2fdd2b8f68' 'b377b220f43d747efdec40d69fcaa69d')
 makedepends=('rust')
 depends=('gcc-libs')
+conflicts=('fselect-git')
+provides=('fselect')
+
 build() {
     cd "$pkgname-$pkgver"
     cargo build --release
