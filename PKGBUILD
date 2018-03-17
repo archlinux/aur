@@ -7,7 +7,7 @@
 pkgname=alacarte-xfce
 _pkgname=${pkgname%-xfce}
 pkgver=3.11.91.r18.g40c8c60
-pkgrel=1
+pkgrel=2
 pkgdesc="Menu editor for Xfce"
 arch=('any')
 license=('LGPL')
@@ -21,7 +21,7 @@ install="$_pkgname.install"
 source=("$_pkgname"::"git+https://git.gnome.org/browse/$_pkgname"
         'unicode.patch')
 md5sums=('SKIP'
-         '716728870e130fce53c412be5bb93d72')
+         '171d6819609a8e16d7950314dc78b352')
 
 pkgver() {
   cd "$_pkgname"

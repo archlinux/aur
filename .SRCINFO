@@ -1,7 +1,7 @@
 pkgbase = alacarte-xfce
 	pkgdesc = Menu editor for Xfce
 	pkgver = 3.11.91.r18.g40c8c60
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org
 	install = alacarte.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = alacarte-xfce
 	source = alacarte::git+https://git.gnome.org/browse/alacarte
 	source = unicode.patch
 	md5sums = SKIP
-	md5sums = 716728870e130fce53c412be5bb93d72
+	md5sums = 171d6819609a8e16d7950314dc78b352
 
 pkgname = alacarte-xfce
 
