@@ -15,7 +15,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 package() {
   cd "$_gitname"
   mkdir -p "${pkgdir}/usr/share/bashrc-aosc"
