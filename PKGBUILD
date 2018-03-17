@@ -20,7 +20,7 @@ makedepends=("git" "python-setuptools-scm"
              'python-milksnake')
 checkdepends=("python-hypothesis>=3.1"
               "python-pytest" "python-pytest-localserver" "python-pytest-subtesthack")
-source=("git://github.com/pimutils/${_pkgname}.git")
+source=("https://github.com/pimutils/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('vdirsyncer')
 provides=("vdirsyncer=${pkgver}")
