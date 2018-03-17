@@ -5,13 +5,14 @@
 
 pkgname=freefilesync
 pkgver=9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
 license=('GPLv3')
-depends=(wxgtk-common-dev wxgtk2-dev wxgtk3-dev webkit2gtk boost-libs)
-makedepends=(boost)
+depends=(webkit2gtk boost-libs)
+makedepends=(wxgtk-common-dev wxgtk2-dev wxgtk3-dev boost)
+install=${pkgname}.install
 xbrzver=1.6
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
@@ -20,6 +21,8 @@ source=(
 	ffsicon.png
 	RealTimeSync.desktop
 	rtsicon.png
+	freefilesync.install
+	wxgtk_fix.sh
 	)
 
 sha256sums=(
@@ -29,6 +32,8 @@ sha256sums=(
 	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
 	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
 	 'f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e'	#rtsicon.png
+	 'a071bbb79fd490001713de7eb0165f37d2f0bba067af152424b3cc50133aa1a3'	#freefilesync.install
+	 '6cc7a2272f063e58d4b3f4519326d4a7b1d14c742eda0e1991c7959f00ffbf75'	#wxgtk_fix.sh
 	 )
 	 
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
@@ -62,6 +67,9 @@ prepare() {
 # add xbrz.cpp entries in Makefile
     sed -i "/zlib_wrap.cpp/ a CPP_LIST+=../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/Makefile
     sed -i "/popup_dlg_generated.cpp/ a CPP_LIST+=../../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/RealTimeSync/Makefile
+
+# copy shell file to /usr/bin/
+    cp ${srcdir}/wxgtk_fix.sh /usr/bin/
 }
 
 build() {

@@ -1,0 +1,20 @@
+#function to tell user to run shell script to reinstall wxgtk and extract libwx*3.1.so* items from wxgtk-dev packages after installation/upgrade of freefilesync
+reinstall_and_extract_message() {
+	echo -e "\n\n$(tput bold)$(tput setaf 7)$(tput setab 1)Run 'sudo sh /usr/bin/wxgtk_fix.sh' after this finishes"'!'"$(tput sgr 0)\n\n"
+}
+
+# send message after installation of freefilesync
+post_install() {
+	reinstall_and_extract_message
+}
+
+# send message after upgrade of freefilesync
+post_upgrade() {
+	reinstall_and_extract_message
+}
+
+# remove the libwx*3.1.so* files from /usr/lib/ and wxgtk_fix.sh from /usr/bin after removal of freefilesync
+post_remove() {
+	rm /usr/lib/libwx*3.1.so*
+	rm /usr/bin/wxgtk_fix.sh
+}
