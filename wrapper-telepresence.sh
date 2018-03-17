@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/telepresence/dumb-init /bin/sh
 
 # wrap the virtualenv and extend $PATH to include telepresence
 

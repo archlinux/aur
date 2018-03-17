@@ -1,10 +1,11 @@
 pkgbase = telepresence
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io
 	pkgver = 0.75
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/datawire/telepresence
 	arch = any
 	license = Apache
+	depends = curl
 	depends = conntrack-tools
 	depends = git
 	depends = python
