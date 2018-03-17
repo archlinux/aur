@@ -1,16 +1,13 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
 	pkgver = 9.9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freefilesync.org/
-	install = freefilesync.install
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	makedepends = wxgtk-common-dev
-	makedepends = wxgtk2-dev
-	makedepends = wxgtk3-dev
 	makedepends = boost
+	depends = wxgtk
 	depends = webkit2gtk
 	depends = boost-libs
 	source = FreeFileSync_9.9_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_9.9_Source.zip
@@ -19,16 +16,12 @@ pkgbase = freefilesync
 	source = ffsicon.png
 	source = RealTimeSync.desktop
 	source = rtsicon.png
-	source = freefilesync.install
-	source = wxgtk_fix.sh
 	sha256sums = 43edd3c8546bd5a44c5d353811389a68b148f0655c006c13f4357f3579b9a970
 	sha256sums = 8d51e52a9264d09117cf434b7fcb46a17ee4285a00432554ba47fa86ac4511ce
 	sha256sums = b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b
 	sha256sums = 31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb
 	sha256sums = 1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4
 	sha256sums = f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e
-	sha256sums = a071bbb79fd490001713de7eb0165f37d2f0bba067af152424b3cc50133aa1a3
-	sha256sums = 6cc7a2272f063e58d4b3f4519326d4a7b1d14c742eda0e1991c7959f00ffbf75
 
 pkgname = freefilesync
 
