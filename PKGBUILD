@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-contrib-git
-pkgver=r162.936560e
+pkgver=r190.aeb3f6b
 pkgrel=1
 pkgdesc="Contribution resotiry for stumpwm"
 arch=('any')
@@ -9,7 +9,8 @@ url="https://github.com/stumpwm/stumpwm-contrib.git"
 license=('GPL2')
 depends=('bash' 'stumpwm')
 makedepends=('git')
-conflicts=('stumpwm-git')
+conflicts=('stumpwm-contrib')
+provides=('stumpwm-contrib')
 source=("git+https://github.com/stumpwm/stumpwm-contrib.git")
 md5sums=('SKIP')
 
