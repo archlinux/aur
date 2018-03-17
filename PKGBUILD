@@ -19,10 +19,10 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
+pkgrel=8
 _codename=Leia
 _rtype=Alpha
 _rver=1
-pkgrel=7
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -84,15 +84,21 @@ prepare() {
 
 build() {
   cd kodi-build
+
+  ### Optionally uncomment and setup to your liking
+  # export CFLAGS+=" -march=native -fdiagnostics-color"
+  # export CXXFLAGS="${CFLAGS}"
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
-    -DENABLE_INTERNAL_FMT=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
+    -DENABLE_INTERNAL_FMT=ON \
+    -DENABLE_VERBOSE=ON \
     ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
@@ -155,11 +161,12 @@ package_kodi-pre-release() {
 }
 
 # kodi-eventclients
-# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-xbmc-send
+# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
 
 package_kodi-eventclients-pre-release() {
   pkgdesc="Kodi Event Clients (pre-release versions)"
   conflicts=('kodi-eventclients')
+  optdepends=('python2: most eventclients are implemented in python2')
 
   _components=(
     'kodi-eventclients-common'
