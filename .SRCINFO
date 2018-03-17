@@ -1,15 +1,17 @@
 pkgbase = php-behat
 	pkgdesc = An open source behavior-driven development framework for PHP 5.3 and 5.4
-	pkgver = 3.0.15
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = http://behat.org
 	arch = any
 	license = MIT
+	makedepends = composer
+	makedepends = php-box
 	depends = php
-	source = https://github.com/downloads/Behat/Behat/behat.phar
-	source = https://raw.githubusercontent.com/Behat/Behat/master/LICENSE
-	md5sums = f0c9117837449fbfcfd32840a7bb66d4
-	md5sums = bb73430c2c40651766d639dd4bf7f9e7
+	source = https://github.com/Behat/Behat/archive/v3.4.3.tar.gz
+	source = https://raw.githubusercontent.com/Behat/Behat/v3.4.3/box.json
+	md5sums = 975a437b022f6e58704f03d7ed714052
+	md5sums = 4fbe3a7e61f9e10e2beecd872bdb34a9
 
 pkgname = php-behat
 
