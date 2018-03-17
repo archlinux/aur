@@ -5,20 +5,19 @@
 # Contributor: Lukas Werling <lukas.werling@gmail.com>
 
 pkgname=openclonk
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
 license=('custom')
-depends=('zlib' 'libpng' 'libgl' 'libjpeg-turbo' 'freetype2' 'glew' 'freealut' 'libogg' 'libvorbis' 'gtk3>=3.4' 'libupnp' 'libxrandr' 'sdl>=1.2' 'sdl_mixer>=1.2' 'hicolor-icon-theme' 'desktop-file-utils')
-install=openclonk.install
+depends=('glew' 'freealut' 'libvorbis' 'qt5-base' 'sdl2' 'miniupnpc' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'mesa')
 optdepends=('openclonk-music: proprietary music package')
 conflicts=('clonk_rage')
 source=("https://git.openclonk.org/openclonk.git/archive/$pkgname-release-$pkgver-src.tar.bz2"
         'directories.patch')
-sha256sums=('6fc88e8c9bb0ca7eb3e3c8f60af80f77bd6d8f23632bb03f4f5e6ac4e97ae354'
+sha256sums=('337677f25457e7137eac7818adb4ad02992d562593386c19b885738aaec4b346'
             'b3104190549b35206158b58c61b80b26f300efd9dd30f507361234d7d70fd10a')
 
 prepare() {
