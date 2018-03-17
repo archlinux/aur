@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.13.2
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
 depends=('awk' 'glib2' 'libcap' 'libdbi' 'glib2' 'udev')
-makedepends=('flex' 'pkg-config' 'python2' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
+makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
 optdepends=('logrotate: for rotating log files'
             'json-c: for json-plugin'
             'curl: for the HTTP module'
@@ -31,20 +31,12 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf
         syslog-ng.conf.d
         syslog-ng.logrotate
-        syslog-ng.rc
-        syslog-ng-json-c-0.13.patch::"https://github.com/balabit/syslog-ng/commit/1b824dd6.patch")
-sha256sums=('9a3d31df93698080180057ca9bd57b59d06b74fc426c602ce102a2a5437ad3e8'
-            '887e4d0e0a0e8d31b639215c36892d90cd32123465d685ae95bbeb0793363544'
+        syslog-ng.rc)
+sha256sums=('0245260dc9942a9a07110948151654a60992e039821358da348fb34356c4e944'
+            '40dee47045c814fc1ec8537a450ae2de849ab5f931ecc6de1bfde26573839b2b'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
-            'c55c1d78d81f7cda543b8391aa5aaa786224071707b924d43b80749678daf452'
-            '6c1b29e18e502ca670b8f6e519fc6f5525fc384632ea3a036167d68b7f69ccc5')
-
-prepare() {
-  cd "syslog-ng-$pkgver"
-
-  patch -p1 -i ../syslog-ng-json-c-0.13.patch # Fix build with json-c 0.13
-}
+            'c55c1d78d81f7cda543b8391aa5aaa786224071707b924d43b80749678daf452')
 
 build() {
   cd "syslog-ng-$pkgver"
