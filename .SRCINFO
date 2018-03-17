@@ -1,6 +1,6 @@
 pkgbase = harmony-player
 	pkgdesc = A next-gen music player built with Electron.
-	pkgver = 0.8.2
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://getharmony.xyz/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = harmony-player
 	depends = alsa-lib
 	depends = nss
 	depends = gtk2
-	source = harmony-0.8.2.tar.xz::https://github.com/vincelwt/harmony/releases/download/v0.8.2/harmony-0.8.2-x64.tar.xz
+	source = harmony-0.9.1.tar.xz::https://github.com/vincelwt/harmony/releases/download/v0.9.1/harmony-0.9.1-x64.tar.xz
 	source = Harmony.desktop
 	source = harmony-16.png
 	source = harmony-32.png

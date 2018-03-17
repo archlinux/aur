@@ -1,6 +1,6 @@
 # Maintainer: Emilien Devos <contact@emiliendevos.be>
 pkgname=harmony-player
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A next-gen music player built with Electron."
 arch=('x86_64')
