@@ -7,7 +7,7 @@ url='https://github.com/AOSC-Dev/bash-config'
 license=('MIT')
 depends=('bash')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/AOSC-Dev/bash-config.git")
+source=("git+https://github.com/AOSC-Dev/bash-config.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -18,7 +18,6 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-
   mkdir -p "${pkgdir}/usr/share/bashrc-aosc"
   cp -r bashrc.d bashrc "${pkgdir}/usr/share/bashrc-aosc/"
 }
