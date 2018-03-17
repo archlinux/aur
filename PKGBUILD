@@ -2,7 +2,7 @@
 
 pkgname=wwphone
 pkgver=2.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2018 by wwcom ag"')
@@ -35,4 +35,5 @@ package() {
 	install -Dm 0755 usr/local/bin/wwphone "${pkgdir}"/usr/bin/wwphone
 	install -Dm 0644 usr/share/applications/wwphone.desktop \
 	 	"${pkgdir}"/usr/share/applications/wwphone.desktop
+	sed -e 's|/usr/local/bin|/usr/bin|' -i "${pkgdir}"/usr/share/applications/wwphone.desktop
 }

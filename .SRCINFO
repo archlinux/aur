@@ -1,7 +1,7 @@
 pkgbase = wwphone
 	pkgdesc = A proprietary CTI and SIP client from wwcom
 	pkgver = 2.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wwcom.ch/
 	arch = x86_64
 	license = custom:"Copyright (c) 2018 by wwcom ag"
