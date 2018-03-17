@@ -1,0 +1,13 @@
+[Unit]
+Description=Backup Btrfs Data Stream Receiver Daemon
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/backup_btrfsd.sh -c /run/backup_btrfsd -g backup_btrfs
+ExecStop=/usr/bin/kill -TERM ${MAINPID}
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

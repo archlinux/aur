@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup Btrfs
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/bin/backup_btrfs.sh -C /etc/backup_btrfs.conf -c /run/backup_btrfsd -u %i
+

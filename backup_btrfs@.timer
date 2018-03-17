@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup Btrfs regularly
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1hour
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

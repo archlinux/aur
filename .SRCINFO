@@ -1,0 +1,25 @@
+pkgbase = backup_btrfs
+	pkgdesc = Backup tools for environment using Btrfs.
+	pkgver = 1.0_0
+	pkgrel = 1
+	url = https://github.com/nagasuk/backup_btrfs
+	install = backup_btrfs.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = btrfs-progs
+	depends = inotify-tools
+	backup = etc/backup_btrfs.conf
+	source = https://github.com/nagasuk/backup_btrfs/archive/release-1.0_0.tar.gz
+	source = backup_btrfs.conf
+	source = backup_btrfs@.service
+	source = backup_btrfs@.timer
+	source = backup_btrfsd.service
+	sha256sums = f0bcf36778b0f17345cc4dd2b58be841c62aacfdb661c1fe779298d68f06ebd6
+	sha256sums = e65a1ace874ec9c70a3e2b79201e3d0ed2e962ffc0476f499068585e1e08d760
+	sha256sums = 6e6466380fb4b0b4fa2d299b4ffb44be482f0eacd9f4aba969aae80208bf7c14
+	sha256sums = b9b6bb3fe49a59d48452d5864a79975d31a867e7792dcb8744b8f7b35909887a
+	sha256sums = c15e994ef81d0f24b5e87ea8784b6c0d58058ebf4a3ebe02e86882bb60694b63
+
+pkgname = backup_btrfs
+

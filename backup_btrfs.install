@@ -1,0 +1,25 @@
+function post_install()
+{
+	systemctl daemon-reload
+}
+
+function post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+function pre_remove()
+{
+	systemctl disable --now 'backup_btrfsd.service'
+}
+
+function post_remove()
+{
+	systemctl daemon-reload
+
+	cat <<-EOS
+	Removed backup_btrfs, but any services or timers may be active.
+	Please check them and turn them off if required.
+	EOS
+}
+
