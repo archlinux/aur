@@ -1,7 +1,7 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Travis Glenn Hansen <travisghansen@yahoo.com>
 
 pkgname=casperjs
-pkgver=1.1.3
+pkgver=1.1.4_2
 pkgrel=1
 pkgdesc="a browser navigation scripting & testing utility written in Javascript on top of PhantomJS."
 arch=('any')
@@ -12,14 +12,14 @@ optdepends=('ruby')
 makedepends=()
 conflicts=()
 provides=()
-source=("https://github.com/casperjs/casperjs/archive/${pkgver}.tar.gz")
-sha256sums=('3e9c385a2e3124a44728b24d3b4cad05a48e2b3827e9350bdfe11c9a6d4a4298')
+source=("https://github.com/casperjs/casperjs/archive/${pkgver//_/-}.tar.gz")
+sha256sums=('239b9c95c0e4ab534a3939a8769b5a552315b986472dee967850a407e9b60062')
 
 
 package() {
   mkdir -p "$pkgdir/opt"
-  cp -a "$srcdir/casperjs-$pkgver" "$pkgdir/opt/$pkgname"
+  cp -a "$srcdir/casperjs-${pkgver//_/-}" "$pkgdir/opt/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   ln -sf /opt/$pkgname/bin/casperjs $pkgdir/usr/bin/casperjs
-  install -Dm644 "$srcdir/casperjs-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/casperjs-${pkgver//_/-}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
