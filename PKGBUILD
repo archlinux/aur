@@ -2,14 +2,14 @@
 
 pkgname=kicad-scripting-git
 pkgver=r9486.28f1209ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools, build from latest git with scripting enabled"
 arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython-gtk2' 'oce' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
-optdepends=('kicad-library: for footprints')
+optdepends=('kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 install=kicad.install
