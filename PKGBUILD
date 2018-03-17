@@ -2,7 +2,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=pure-docs-git
-pkgver=r68.fcbe28c
+pkgver=r77.c739b4d
 pkgrel=1
 pkgdesc="Pure Language and Library Documentation, latest snapshot"
 arch=('any')
@@ -11,22 +11,22 @@ license=('FDL')
 provides=('pure-docs')
 conflicts=('pure-docs')
 replaces=('pure-docs-hg')
-source=("git+https://bitbucket.org/puredocs/puredocs.bitbucket.org")
+source=("pure-docs::git+https://github.com/agraef/pure-docs.git")
 makedepends=('git')
 md5sums=(SKIP)
 
 pkgver() {
-  cd $srcdir/puredocs.bitbucket.org
+  cd $srcdir/pure-docs
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd $srcdir/puredocs.bitbucket.org
+  cd $srcdir/pure-docs
   make -j1
 }
 
 package() {
-  cd $srcdir/puredocs.bitbucket.org
+  cd $srcdir/pure-docs
   make -j1 DESTDIR="$pkgdir" install install-tm
 }
 
