@@ -13,9 +13,11 @@ depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}")
 source=("system76::git+https://github.com/pop-os/system76-dkms.git#branch=dkms_bionic"
-        'dkms.conf')
+        'dkms.conf'
+        'system76.conf')
 md5sums=('SKIP'
-         '654623daac5a4c9d69883d7b2b5ddac8')
+         '654623daac5a4c9d69883d7b2b5ddac8'
+         '1e988cc5cf05cec741f78fe90f2054d7')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}

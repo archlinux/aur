@@ -11,8 +11,10 @@ pkgbase = system76-dkms-git
 	conflicts = system76-dkms
 	source = system76::git+https://github.com/pop-os/system76-dkms.git#branch=dkms_bionic
 	source = dkms.conf
+	source = system76.conf
 	md5sums = SKIP
 	md5sums = 654623daac5a4c9d69883d7b2b5ddac8
+	md5sums = 1e988cc5cf05cec741f78fe90f2054d7
 
 pkgname = system76-dkms-git
 
