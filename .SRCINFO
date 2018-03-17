@@ -12,7 +12,7 @@ pkgbase = gromacs-plumed
 	makedepends = gcc6
 	depends = lapack
 	depends = zlib
-	depends = plumed=2.4.0
+	depends = plumed=2.4.1
 	optdepends = cuda: Nvidia GPU support
 	optdepends = opencl-mesa: OpenCL support for AMD GPU
 	optdepends = opencl-nvidia: OpenCL support for Nvidia GPU
