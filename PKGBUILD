@@ -1,67 +1,36 @@
 # Maintainer: David Pugnasse <david.pugnasse@gmail.com>
 pkgname=pmd
-pkgver=5.2.3
+pkgver=6.1.0
 pkgrel=1
-pkgdesc="A java source code scanner for detecting possible bugs, dead code, overcomplicated expressions and more"
+pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
-url="http://pmd.sourceforge.net/"
-license=('custom:BSD-style' 'Apache')
+url="http://pmd.github.io"
+license=('BSD' 'Apache')
 depends=('java-environment')
-makedepends=('maven' 'unzip')
-checkdepends=('maven')
-source=(
-    "http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-src-$pkgver.zip"
-    run.patch
-)
-md5sums=(
-    'c468e0f3e2ec85bd6decda5a4570e4ec'
-    'd565ff42cfcb1110dc74c504b9a619ec'
-)
-_M2_REPO=repo
-
-prepare() {
-    test -d "$_M2_REPO" || mkdir "$_M2_REPO"
-    cd "$pkgname-src-$pkgver"
-    mvn -Dmaven.repo.local="$srcdir/$_M2_REPO" \
-        -Dmaven.test.skip=true \
-        clean \
-        validate
-
-    patch -p1 -d "$pkgname-dist/src/main/scripts" < ../run.patch
-}
+makedepends=('java-environment-common' 'maven')
+source=("https://github.com/$pkgname/$pkgname/releases/download/${pkgname}_releases/$pkgver/$pkgname-src-$pkgver.zip"
+        pmdapp)
+md5sums=('0f7ac91b14d57b18bf4c2192ce5c8152'
+         '170b76a131d4651f24213f273164d175')
 
 build() {
     cd "$pkgname-src-$pkgver"
-    mvn -Dmaven.repo.local="$srcdir/$_M2_REPO" \
-        -Dmaven.test.skip=true \
-        compile
 
-    for BIN in bgastviewer cpd cpdgui pmd pmd-designer; do
-        printf "#%c/bin/sh\nexec /usr/bin/$pkgname-run $BIN \"\$@\"\n" ! > "../$BIN"
-    done
-}
-
-check() {
-    cd "$pkgname-src-$pkgver"
-    mvn -Dmaven.repo.local="$srcdir/$_M2_REPO" \
-        test
+    sh mvnw clean package -DskipTests=true -Dmaven.javadoc.skip=true
+    bsdtar -xzf pmd-dist/target/pmd-bin-6.1.0.zip --strip-components 1 pmd-bin-6.1.0/lib
 }
 
 package() {
     cd "$pkgname-src-$pkgver"
-    mvn -Dmaven.repo.local="$srcdir/$_M2_REPO" \
-        -Dmaven.test.skip=true \
-        verify
-    unzip -o "$pkgname-dist/target/$pkgname-bin-$pkgver.zip" -d "$srcdir"
 
-    cd "$srcdir/$pkgname-bin-$pkgver"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 bin/run.sh "$pkgdir/usr/bin/$pkgname-run"
-    for BIN in bgastviewer cpd cpdgui pmd pmd-designer; do
-        install -Dm755 "../$BIN" "$pkgdir/usr/bin/$BIN"
+
+    for app in pmd-bgastviewer pmd-cpd pmd-cpdgui pmd-designer pmd-designerold pmd; do
+        install -Dm755 "../pmdapp" "$pkgdir/usr/bin/$app"
     done
+
     cd lib
-    for JAR in *.jar; do
-        install -Dm644 "$JAR" "$pkgdir/usr/share/java/$pkgname/$JAR"
+    for file in *.jar; do
+        install -Dm644 "$file" "$pkgdir/usr/share/java/$pkgname/$file"
     done
 }

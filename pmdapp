@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+app=$(basename $0)
+case "$app" in
+  'pmd')
+    readonly class='net.sourceforge.pmd.PMD'
+    ;;
+  'pmd-cpd')
+    readonly class='net.sourceforge.pmd.cpd.CPD'
+    ;;
+  'pmd-designer')
+    readonly class='net.sourceforge.pmd.util.fxdesigner.Designer'
+    ;;
+  'pmd-designerold')
+    readonly class='net.sourceforge.pmd.util.designer.Designer'
+    ;;
+  'pmd-bgastviewer')
+    readonly class='net.sourceforge.pmd.util.viewer.Viewer'
+    ;;
+  'pmd-cpdgui')
+    readonly class='net.sourceforge.pmd.cpd.GUI'
+    ;;
+esac
+
+for file in /usr/share/java/pmd/*.jar; do
+  CP="$CP:$file"
+done
+
+exec /usr/bin/java -cp "$CP" "$class" "$@"

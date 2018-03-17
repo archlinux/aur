@@ -1,19 +1,18 @@
 pkgbase = pmd
-	pkgdesc = A java source code scanner for detecting possible bugs, dead code, overcomplicated expressions and more
-	pkgver = 5.2.3
+	pkgdesc = An extensible cross-language static code analyzer.
+	pkgver = 6.1.0
 	pkgrel = 1
-	url = http://pmd.sourceforge.net/
+	url = http://pmd.github.io
 	arch = any
-	license = custom:BSD-style
+	license = BSD
 	license = Apache
-	checkdepends = maven
+	makedepends = java-environment-common
 	makedepends = maven
-	makedepends = unzip
 	depends = java-environment
-	source = http://sourceforge.net/projects/pmd/files/pmd/5.2.3/pmd-src-5.2.3.zip
-	source = run.patch
-	md5sums = c468e0f3e2ec85bd6decda5a4570e4ec
-	md5sums = d565ff42cfcb1110dc74c504b9a619ec
+	source = https://github.com/pmd/pmd/releases/download/pmd_releases/6.1.0/pmd-src-6.1.0.zip
+	source = pmdapp
+	md5sums = 0f7ac91b14d57b18bf4c2192ce5c8152
+	md5sums = 170b76a131d4651f24213f273164d175
 
 pkgname = pmd
 
