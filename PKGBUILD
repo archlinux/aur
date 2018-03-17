@@ -2,7 +2,7 @@
 pkgname=choria-git
 pkgver=v0.4.2.r1305.g87ee046d
 pkgrel=1
-pkgdesc="a 2D MMORPG that's all about grinding and doing chores."
+pkgdesc="A 2D MMORPG that's all about grinding and doing chores (git version)."
 arch=('i686' 'x86_64')
 url="https://github.com/jazztickets/choria"
 license=('GPL3')
