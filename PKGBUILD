@@ -2,7 +2,7 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=plumed
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed-code.org/"
@@ -12,8 +12,8 @@ depends=('lapack' 'zlib' 'gsl' 'libmatheval')
 makedepends=()
 provides=('plumed')
 #install=$pkgname.install
-source=( https://github.com/plumed/plumed2/releases/download/v2.4.0/plumed-2.4.0.tgz)
-sha1sums=('be74b18cae192737e0b99ec354bae05e2011a633')
+source=( https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
+sha1sums=('bd112fb04555d2ed29201f2b4d66ec14b500d1ff')
 #options=(!buildflags)
 
 build() {
