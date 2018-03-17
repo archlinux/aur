@@ -1,14 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi-git
-pkgver=1.0.5.r0.g0cf6d2a
+pkgver=1.0.7.r17.g2a9c851
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL')
-depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'gawk' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 'util-linux' 'wget')
+depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 'util-linux' 'wget')
 makedepends=('git')
 install=
 source=("simonpi::git+https://github.com/M0Rf30/simonpi.git")
