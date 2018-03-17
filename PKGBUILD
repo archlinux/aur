@@ -1,6 +1,6 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 pkgname=teleirc
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=
 pkgdesc="NodeJS Telegram to IRC bridge bot"
@@ -23,7 +23,7 @@ install="teleirc.install"
 changelog=
 source=("https://github.com/ritlug/teleirc/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('e1beed01fbe8bdcfe08ab79a2982aeca6bb527de4b17d7b4392d9b1daa31b8a5')
+sha256sums=('c9df67622e652ef9627938f5b72ef59e28810438fadae920c74efe188320356c')
 
 prepare() {
         cd $srcdir/$pkgname-$pkgver
