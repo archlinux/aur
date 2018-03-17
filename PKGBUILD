@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3368.0
+pkgver=67.0.3371.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('83cce5c624cbad31c32dea5df7138e27e5b3b52c48f2caf709815c80905477bd'
+sha256sums=('83210a6053642c9ea40b9269ea1df00b74d217c211ffb96443b6f90cac00d9f7'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -178,7 +178,7 @@ sha256sums=('83cce5c624cbad31c32dea5df7138e27e5b3b52c48f2caf709815c80905477bd'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '0618b9fc3f63920d29802b3ac3936ccbba5669ca399ca7eb00b7d087a0eb5559'
+            'db4886745eb447b1b1bd74351f1d65da6e7c5b98242dcd9a11b424cf2aef88e8'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -200,7 +200,7 @@ sha256sums=('83cce5c624cbad31c32dea5df7138e27e5b3b52c48f2caf709815c80905477bd'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            'f2fa24d65ef4afc21e658ed476884a543ebcb78135693c77a5f14007c0a5e064'
+            '7262bd74a164b2ac083bd7c2def7b430e60db9ed7a5b1baf9be378d211359d6b'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -359,7 +359,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
+patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
