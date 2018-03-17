@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.3.r3596.fa354f3c+wine.3.3.r263.gbf7b21ec7b+pba.r29.87307b1
+pkgver=3.3.r3597.3f981ccb+wine.3.3.r263.gbf7b21ec7b+pba.r29.87307b1
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
@@ -94,12 +94,16 @@ optdepends=(
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
 		"$_pbasrcdir"::'git+https://github.com/acomminos/wine-pba.git'
+		'steam.patch'
+		'poe-fix.patch'
 		'harmony-fix.diff'
 		'30-win32-aliases.conf'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
 			'SKIP'
 			'SKIP'
+			'972d6b114f7621c5f3bd34b1105dd390b318db18fbc76328001c984db488a9b0'
+			'a45b31be24638450a43031dae1b3126a1364da22ec5212bf9cdf66caa037dcf8'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
@@ -148,7 +152,26 @@ prepare() {
 	export CFLAGS="${CFLAGS/-fno-plt/}"
 	export LDFLAGS="${LDFLAGS/,-z,now/}"
 
+	# patch for 32bit font smoothing
 	patch -Np1 < ../'harmony-fix.diff'
+
+	# Patch to allow Path of Exile to run with DirectX11
+	# https://bugs.winehq.org/show_bug.cgi?id=42695
+	# 
+	# Make a fresh 64bit wine prefix, and set the wine version to windows10. 
+	# Disable antialiasing as this does not work at all in DirectX11.
+	#
+	# 	Run Path of Exile with the following line: 
+	# 	wine 'PathOfExile_x64.exe' --garbage-generation 1 --waitforpreload
+	# 
+	# Note: Initial loading time after the grinding gears animation is higher, 
+	# but stuttering in-game is reduced to a tolerable level. 
+	# Maps are missing with DirectX11, no current way around this.
+	patch -Np1 < ../'poe-fix.patch'
+	
+	# steam crossover hack for store/web functionality
+	# https://bugs.winehq.org/show_bug.cgi?id=39403
+	patch -Np1 < ../'steam.patch'
 
 	# apply all wine-staging patches
 	msg2 'Applying wine-staging patches...'
