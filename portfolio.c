@@ -14,7 +14,7 @@ void portfolio_file_init(void) {
 }
 
 String* portfolio_file_get_string(void) {
-    FILE* fp = fopen(portfolio_file, "r");
+    FILE* fp = fopen(portfolio_file, "w+"); // Must be w+ because r will fail if portfolio doesn't exist
     if (fp == NULL)
         return NULL;
     String* pString = string_init();
