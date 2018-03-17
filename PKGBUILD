@@ -1,6 +1,6 @@
 # Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
 pkgname=fricas
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="An advanced computer algebra system"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('sbcl' 'libx11' 'texlive-core')
 options=('!strip' '!emptydirs')
 url="http://fricas.sourceforge.net"
 source=("http://downloads.sourceforge.net/project/fricas/fricas/${pkgver}/fricas-${pkgver}-full.tar.bz2" "http://fricas.sourceforge.net/copyright.txt")
-md5sums=('0d3af65758ce93b1cc52c2511e73e674' '147828bf0b62e1f7d0c600a1c377669c')
+md5sums=('2d7696656b6aa69de4bcbbf0429aad41' '147828bf0b62e1f7d0c600a1c377669c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
