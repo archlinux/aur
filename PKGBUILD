@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=rstcheck
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='Checks syntax of reStructuredText and code blocks nested within it'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-docutils')
 optdepends=('python-sphinx: Sphinx support')
 source=("https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-$pkgver.tar.gz")
-sha512sums=('eb7be5a612673242e56570796b0f324f0300b55726ac705c58b9d96a9b6e200a75c03e741033081a849012c7838ffad31265cb18cc34f95423a55b0d3bddefc0')
+sha512sums=('d5288adbd3853a0392679862edef65f8219476b8976446fd3ab5f9ec759437657d37f51125746648d5390300f6362a99fc86aa4303e2f009db715b92fe5086c8')
 
 build() {
   cd rstcheck-$pkgver
