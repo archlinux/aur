@@ -1,17 +1,17 @@
 pkgbase = tgt
 	pkgdesc = iSCSI Target STGT for Arch Linux
-	pkgver = 1.0.69
+	pkgver = 1.0.73
 	pkgrel = 1
 	url = http://stgt.sourceforge.net/
 	arch = x86_64
 	arch = i686
+	arch = arm
 	license = GPL
 	depends = perl-config-general
 	depends = libxslt
 	optdepends = sg3_utils
 	backup = etc/tgt/targets.conf
-	source = https://github.com/ksovi/tgt/archive/v1.0.69.tar.gz
-	md5sums = SKIP
+	source = https://github.com/fujita/tgt/archive/v1.0.73.tar.gz
 
 pkgname = tgt
 
