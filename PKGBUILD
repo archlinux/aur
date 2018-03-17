@@ -3,7 +3,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
 pkgver='1.4.2.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://influxdata.com/time-series-platform/chronograf/'
@@ -46,6 +46,6 @@ package() {
         install -Dm644 etc/scripts/chronograf.service \
 		"$pkgdir/usr/lib/systemd/system/chronograf.service"
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chronograf/LICENSE"
-        install -dm755 "$pkgdir/usr/share/canned/"
-        install -Dm644 canned/*.json "$pkgdir/usr/share/canned/"
+        install -dm755 "$pkgdir/usr/share/chronograf/canned/"
+        install -Dm644 canned/*.json "$pkgdir/usr/share/chronograf/canned/"
 }
