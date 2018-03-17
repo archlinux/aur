@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
-pkgver=4.2.14
+pkgver=4.2.15
 pkgrel=1
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'python-srcinfo' 'asp' 'git')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3b0efaaad04d9e45c8d9001414d5aaf3')
+md5sums=('17ce7100fb3a356564648e315e8f3246')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
