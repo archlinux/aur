@@ -1,0 +1,19 @@
+pkgbase = kicad-symbols
+	pkgdesc = Official KiCad schematic symbol libraries -- stable release
+	pkgver = 5.0.0rc1
+	pkgrel = 1
+	url = https://kicad.github.io/symbols
+	arch = any
+	license = GPL
+	makedepends = cmake
+	provides = kicad-symbols
+	conflicts = kicad-library-bzr
+	conflicts = kicad-library-git
+	conflicts = kicad-library-3d
+	conflicts = kicad-library
+	conflicts = kicad-symbols-git
+	source = https://github.com/KiCad/kicad-symbols/archive/5.0.0-rc1.tar.gz
+	md5sums = 6287e48816ae4c4ae778c9fbceb7181d
+
+pkgname = kicad-symbols
+
