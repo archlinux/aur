@@ -12,6 +12,7 @@ pkgbase = kicad-symbols
 	conflicts = kicad-library-3d
 	conflicts = kicad-library
 	conflicts = kicad-symbols-git
+	conflicts = kicad-pretty-git
 	source = https://github.com/KiCad/kicad-symbols/archive/5.0.0-rc1.tar.gz
 	md5sums = 6287e48816ae4c4ae778c9fbceb7181d
 
