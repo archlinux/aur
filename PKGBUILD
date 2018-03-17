@@ -1,6 +1,6 @@
 pkgname=lm_sensors-git
 pkgdesc="Collection of user space tools for general SMBus access and hardware monitoring"
-pkgver=r5142.34627e46
+pkgver=r5161.219008be
 pkgrel=1
 arch=('x86_64')
 url="http://www.lm-sensors.org/"
@@ -12,11 +12,9 @@ makedepends=('git' 'rrdtool')
 optdepends=('rrdtool: for logging with sensord')
 backup=('etc/sensors3.conf' 'etc/conf.d/sensord')
 source=(git+https://github.com/groeck/lm-sensors.git
-    sensord.conf lm_sensors-fancontrol.patch)
+    sensord.conf)
 sha1sums=('SKIP'
-          'f4b5f21fdb3b2a55aa353afa1603f953b207b73b'
-          'b0bc977348610d6a008d75a43f65800251c4c9f7')
-
+          'f4b5f21fdb3b2a55aa353afa1603f953b207b73b')
 _pkgname1=${pkgname%-git}
 
 pkgver() {
@@ -31,7 +29,6 @@ prepare() {
   cd "$srcdir/${_pkgname1/_/-}"
   sed -i 's|/etc/sysconfig|/etc/conf.d|' prog/{detect/sensors-detect,init/{sensord,lm_sensors}.service}
   sed -i 's/EnvironmentFile=/EnvironmentFile=-/' prog/init/lm_sensors.service
-  patch -p0 -i "${srcdir}/lm_sensors-fancontrol.patch"
 }
 
 build() {

@@ -27,3 +27,4 @@
  		  then # if fan was stopped start it using a safe value
  		  	echo $minsa > $pwmo
  			# Sleep while still handling signals
+
