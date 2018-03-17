@@ -12,6 +12,7 @@ pkgbase = tgt
 	optdepends = sg3_utils
 	backup = etc/tgt/targets.conf
 	source = https://github.com/fujita/tgt/archive/v1.0.73.tar.gz
+	md5sums = SKIP
 
 pkgname = tgt
 
