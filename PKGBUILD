@@ -5,7 +5,7 @@
 
 _pkgname=xvidcore
 pkgname=lib32-$_pkgname
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="XviD is an open source MPEG-4 video codec (32-bit)"
 arch=('x86_64')
@@ -15,7 +15,8 @@ depends=('lib32-glibc' "$_pkgname")
 makedepends=('nasm')
 provides=('libxvidcore.so')
 source=("http://downloads.xvid.org/downloads/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('5e68b84e3286b7bbaa95ddc34f0fcace')
+md5sums=('6877498cfc5b7f652e1a564699dba655')
+
 
 build() {
 
