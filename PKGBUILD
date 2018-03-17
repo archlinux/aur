@@ -9,8 +9,7 @@ depends=('bash')
 makedepends=('git')
 #install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/AOSC-Dev/bash-config.git")
-sha256sums=('SKIP'
-            'SKTP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
