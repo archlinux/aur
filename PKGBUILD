@@ -1,13 +1,13 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
 pkgver=4.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
 license=('apache')
 provides=()
-depends=('insight-toolkit')
+depends=('insight-toolkit' 'ann')
 makedepends=('cmake')
 optdepends=()
 conflicts=('elastix-git' 'elastix-bin')
