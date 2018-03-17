@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pg_stat_kcache-git
 _gitname=pg_stat_kcache
-pkgver=cc9477f
+pkgver=7740021
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/dalibo/pg_stat_kcache.git')
+source=('git://github.com/powa-team/pg_stat_kcache.git')
 md5sums=('SKIP')
 install='pg_stat_kcache-git.install'
 
