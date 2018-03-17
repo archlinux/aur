@@ -7,7 +7,6 @@ url='https://github.com/AOSC-Dev/bash-config'
 license=('MIT')
 depends=('bash')
 makedepends=('git')
-#install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/AOSC-Dev/bash-config.git")
 sha256sums=('SKIP')
 
