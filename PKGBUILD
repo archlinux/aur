@@ -33,5 +33,6 @@ package() {
       -i "${install_dir}"/dkms.conf
 
   # Copy sources (including Makefile)
-  cp -r ${_pkgname}/* ${install_dir}/
+  cp ${_pkgname}/*.c      ${install_dir}/
+  cp ${_pkgname}/Makefile ${install_dir}/Makefile
 }
