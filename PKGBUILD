@@ -5,7 +5,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-dev
-pkgver=2.7.5
+pkgver=2.7.6
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -20,8 +20,9 @@ makedepends=('git' 'intltool' 'boost' 'swig' 'gtest' 'gmock' 'cmake' 'sqlite3' '
 options=('!emptydirs')
 conflicts=('gnucash' 'gnucash-devel' 'gnucash-latest' 'gnucash-git' 'gnucash-python' 'gnucash-xbt')
 provides=('gnucash')
-source=("https://github.com/Gnucash/gnucash/releases/download/${pkgver}/gnucash-${pkgver}.tar.bz2")
-sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
+#source=("https://github.com/Gnucash/gnucash/releases/download/${pkgver}/gnucash-${pkgver}.tar.bz2")
+source=("http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-${pkgver}.tar.bz2")
+
 
 build() {
 	cd "$srcdir/${pkgname/-dev}-$pkgver"
@@ -52,3 +53,4 @@ package() {
 	# to the location that it was built at.
 	rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
 }
+md5sums=('f866f4eeb8c98e6c01b6e26ef4793c3d')
