@@ -6,12 +6,15 @@ pkgname=insync
 pkgver=1.3.22
 _pkgver=36179
 _dist=trusty
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip !upx)
 depends=('xdg-utils' 'glibc' 'python2')
+optdepends=(
+    'sni-qt: system tray icon'
+)
 arch=('i686' 'x86_64')
 source=('insync@.service' 'insync.service')
 sha256sums=('cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
@@ -21,7 +24,7 @@ sha256sums_x86_64=('10ac022ac45f837a9b900005e9f508f67e8bce3054e34583ac128347bf67
 source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_i386.deb")
 source_x86_64=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_amd64.deb")
 package() {
-   tar xvf data.tar.gz
+   tar xf data.tar.gz
    cp -rp usr ${pkgdir}/
 
    # Patch files for Arch
