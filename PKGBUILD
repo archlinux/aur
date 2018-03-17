@@ -1,38 +1,41 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=terminus
-pkgver=0.11.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform https://pantheon.io"
 arch=('any')
 url="https://github.com/pantheon-systems/$pkgname"
 license=('MIT')
-depends=('php')
-makedepends=('git')
-checkdepends=('php-behat' 'phpunit')
-optdepends=('composer' 'drush' 'git')
-source=("https://github.com/pantheon-systems/$pkgname/releases/download/$pkgver/$pkgname.phar"
-        "https://raw.githubusercontent.com/pantheon-systems/$pkgname/$pkgver/LICENSE.txt"
-        "https://raw.githubusercontent.com/pantheon-systems/$pkgname/$pkgver/utils/$pkgname-completion.bash")
-md5sums=('3d502ca3bf6c24fc4164f8c0a17523c6'
-         '727fd1133932956555ff7dbbf03f8d19'
-         'ee0ac20ffb763afccf64234c96575b8c')
+depends=('php' 'composer' 'git')
+optdepends=('drush: Useful to run incompatible-with-Terminus Drush commands'
+            'wp-cli: Useful to run incompatible-with-Terminus WP-CLI commands')
+source=("https://github.com/pantheon-systems/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('2752d60abe3c3e523c249ccfb2ff4a30')
 
 pkgver() {
   curl "https://api.github.com/repos/pantheon-systems/$pkgname/releases/latest" | grep tag_name | cut -f4 -d\"
 }
 
-check() {
-  cd "$_pkgname"
+prepare() {
+  cd "$pkgname-$pkgver"
 
-  php -d phar.readonly=Off /usr/bin/php-box verify $_pkgname.phar
+  composer install --no-interaction --no-dev --prefer-dist
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  scripts/test.sh
 }
 
 package() {
-  install -Dm755 "$pkgname.phar" "$pkgdir/usr/share/webapps/$pkgname/$pkgname.phar"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/license/$pkgname/LICENSE"
-  install -Dm644 "$pkgname-completion.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  cd "$pkgname-$pkgver"
 
-  install --directory "$pkgdir/usr/bin"
-  ln --symbolic "/usr/share/webapps/$pkgname/$pkgname.phar" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/license/$pkgname/LICENSE"
+
+  install -d -m755 "$pkgdir/usr/share/webapps/$pkgname"
+  cp -at "$pkgdir/usr/share/webapps/$pkgname" assets bin composer.json composer.lock config src templates vendor
+  install -d -m755 "$pkgdir/usr/bin"
+  ln --symbolic "/usr/share/webapps/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
