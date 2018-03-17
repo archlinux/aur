@@ -8,6 +8,7 @@ pkgbase = system76-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
+	conflicts = system76-dkms
 	source = system76::git+https://github.com/pop-os/system76-dkms.git#branch=dkms_bionic
 	source = dkms.conf
 	md5sums = SKIP

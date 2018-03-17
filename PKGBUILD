@@ -1,6 +1,7 @@
 # Maintainer: Shaleen Jain <shaleen(at)jain(dot)sh>
 
 _pkgname=system76
+_pkgbase=system76-dkms
 pkgname=system76-dkms-git
 pkgver=48
 pkgrel=1
@@ -35,4 +36,7 @@ package() {
   # Copy sources (including Makefile)
   cp ${_pkgname}/*.c      ${install_dir}/
   cp ${_pkgname}/Makefile ${install_dir}/Makefile
+
+  # Load the module at boot
+  install -Dm644 system76.conf ${pkgdir}/etc/modules-load.d/system76.conf
 }
