@@ -1,19 +1,19 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=3.42.03.a
+pkgver=4.00.00
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('cmake')
-source=(https://github.com/team-eternity/eternity/archive/${pkgver/\.a/a}.tar.gz)
-sha512sums=('89fe30774fb249d9bf26946d84818f5ff41593538a6157ebf7d80f8ad8cbf17ac41016462976b344363608dda2f638f0cf1688ae3d7499d9b882d5a97894da94')
+source=(https://github.com/team-eternity/eternity/archive/${pkgver}.tar.gz)
+sha512sums=('1d78e8db65d8d2da4bea00944304ec4d6bbfab90d6ef913c1e1d64f7cbf6162284f5861e3356c501731ab3b8708e8310286f16e8430aeb50d79cfc2bd8ff7a9f')
 
 prepare() {
-  cd "eternity-${pkgver/\.a/a}"
+  cd "eternity-${pkgver}"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -28,7 +28,7 @@ build() {
   # Cannot do in-tree build.
   mkdir "ee-build"
   cd "ee-build"
-  cmake ../eternity-${pkgver/\.a/a} -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../eternity-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
