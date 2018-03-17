@@ -1,0 +1,19 @@
+pkgbase = selfspy-vis-git
+	pkgdesc = Visualization of Selfspy Database. Using @gurgeh /selfspy.
+	pkgver = 0.3.r11.ge31c023
+	pkgrel = 1
+	url = https://perso.crans.org/besson/publis/selfspy-vis
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2-matplotlib
+	depends = python2-pandas
+	depends = python2-seaborn
+	depends = selfspy
+	provides = selfspy-vis=0.3.r11.ge31c023
+	conflicts = selfspy-vis
+	source = selfspy-vis::git+https://github.com/Naereen/selfspy-vis.git
+	md5sums = SKIP
+
+pkgname = selfspy-vis-git
+
