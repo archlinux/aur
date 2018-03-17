@@ -1,17 +1,17 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=hypopg-git
 _gitname=hypopg
-pkgver=b78049e
+pkgver=0de9755
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/dalibo/hypopg"
+url="https://github.com/HypoPG/hypopg"
 license=('BSD')
 depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/dalibo/hypopg.git')
+source=('git://github.com/HypoPG/hypopg.git')
 md5sums=('SKIP')
 install='hypopg-git.install'
 
