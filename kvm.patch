@@ -1,0 +1,38 @@
+From 2911d3320b6414efdabe8aef874857855042424d Mon Sep 17 00:00:00 2001
+From: Joey Pabalinas <joeypabalinas@gmail.com>
+Date: Thu, 15 Mar 2018 03:40:23 -1000
+Subject: [PATCH] x86/kvm: replace TASK_UNINTERRUPTIBLE with TASK_KILLABLE
+
+There doesn't seem to be any advantage to having a *completely*
+uninterruptible task here. For most users, allowing a task to respond
+to the SIGKILL interrupt signal (all other signals are ignored just like
+TASK_UNINTERRUPTIBLE) will not impact them at all.
+
+However, for the rare edge-cases where a task becomes stuck, maybe due to
+snapshot corruption or some other similarly unrecoverable error, it
+is *much* more convenient for a user to be able to have the additional
+option of nuking that task with SIGKILL, rather than annoying them by
+forcing them to reboot in order to remove the immortal process.
+
+Signed-off-by: Joey Pabalinas <joeypabalinas@gmail.com>
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/x86/kernel/kvm.c b/arch/x86/kernel/kvm.c
+index bc1a27280c4bf77899..7d4faee962e0c2e3c1 100644
+--- a/arch/x86/kernel/kvm.c
++++ b/arch/x86/kernel/kvm.c
+@@ -154,8 +154,8 @@ void kvm_async_pf_task_wait(u32 token, int interrupt_kernel)
+ 
+ 	for (;;) {
+ 		if (!n.halted)
+-			prepare_to_swait(&n.wq, &wait, TASK_UNINTERRUPTIBLE);
+-		if (hlist_unhashed(&n.link))
++			prepare_to_swait(&n.wq, &wait, TASK_KILLABLE);
++		if (hlist_unhashed(&n.link) || fatal_signal_pending(current))
+ 			break;
+ 
+ 		rcu_irq_exit();
+-- 
+2.16.2
+

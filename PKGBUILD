@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.16rc5.r0.g0c8efd610b58cb23ce
+pkgver=4.16rc5.r80.ge2c15aff5f353ba80b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -10,55 +10,70 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=(
-  # 'git+https://github.com/alyptik/linux.git#branch=master'
-  'git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
-  'config' 'config.x86_64' 'config.sp3'
-  'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
+  # "git+https://github.com/alyptik/linux.git#branch=master"
+  "git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
   # standard config files for mkinitcpio ramdisk
-  "${pkgbase}.preset")
+  "${pkgbase}.preset"
+  "config" "config.x86_64" "config.sp3"
+  "touchscreen_multitouch_fixes1.patch"
+  "touchscreen_multitouch_fixes2.patch"
+  "kvm.patch")
 sha256sums=('SKIP'
+            '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            'ea2636e52a365353bf5481f87168804c407481f2b176f53358b9dca994a9c4a8'
+            '7ad6ea51df1f89477f1d8aa94e972b79f4c19d1266b0670eac0f24b7a96bff76'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
-            '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3')
+            '80ea7d3afaa333572d79fbf39c0370641faea3a013f76747a7465c3a96a58be6')
 
-sp3config='y'
+_sp3config="y"
+# _makenconfig="y"
+_interactive="y"
+_kvmkillable_patch="y"
+_touchscreen_patch="n"
 
 _kernelname="${pkgbase#linux}"
 
 pkgver() {
-  cd "${_srcname}"
+  cd "$_srcname"
 
   git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
 }
 
 prepare() {
-  cd "${_srcname}"
+  cd "$_srcname"
 
   # These patches work around buggy hardware implementations
   # in the surface pro 3 touchscreen module.
-  patch -p1 -F5 -i "${srcdir}/touchscreen_multitouch_fixes1.patch"
-  patch -p1 -F5 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
+  if [[ "$_touchscreen_patch" == y ]]; then
+    patch -p1 -F5 -i "$srcdir/touchscreen_multitouch_fixes1.patch"
+    patch -p1 -F5 -i "$srcdir/touchscreen_multitouch_fixes2.patch"
+  fi
+
+  # This patch replaces the TASK_UNINTERRUPTIBLE
+  # wait implementation with a TASK_KILLABLE one.
+  if [[ "$_kvmkillable_patch" == y ]]; then
+    patch -p1 -F5 -i "$srcdir/kvm.patch"
+  fi
 
   ## If sp3config='y' use personal config as a base
-  if [[ "$sp3config" == y ]]; then
-    cat "${srcdir}/config.sp3" >./.config
+  if [[ "$_sp3config" == y ]]; then
+    cat "$srcdir/config.sp3" >.config
   elif [[ "$CARCH" == x86_64 ]]; then
-    cat "${srcdir}/config.x86_64" >./.config
+    cat "$srcdir/config.x86_64" >.config
   else
-    cat "${srcdir}/config" > ./.config
+    cat "$srcdir/config" > .config
   fi
 
   # set localversion to kernel name
-  if [[ -n "${_kernelname}" ]]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  if [[ -n "$_kernelname" ]]; then
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"$_kernelname\"|g" .config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" .config
   else
     # set localversion to git commit
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" .config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" .config
   fi
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
@@ -67,34 +82,40 @@ prepare() {
   # get kernel version
   make prepare
 
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  # make menuconfig # CLI menu for configuration
-  # make xconfig # X-based configuration
-  # make oldconfig # using old config from previous kernel verson
-  # make nconfig # new CLI menu for configuration
-  # make olddefconfig # old config from previous kernel, defaults for new options
-  # ... or manually edit .config
+  if [[ "$_interactive" == y ]]; then
 
-  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
-  read -r; echo; case "${REPLY:0:1}" in
-  [Mm])
-    make localmodconfig ;;
-  [Yy])
-    make localyesconfig ;;
-  *)
-    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
-  esac
+    printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
+    read -r; echo; case "${REPLY:0:1}" in
+    [Mm])
+      make localmodconfig ;;
+    [Yy])
+      make localyesconfig ;;
+    *)
+      printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
+    esac
 
-  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
-  read -r; echo; case "${REPLY:0:1}" in
-  [Nn])
-    make nconfig ;;
-  [Oo])
-    make olddefconfig ;;
-  *)
-    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
-  esac
+    printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
+    read -r; echo; case "${REPLY:0:1}" in
+    [Nn])
+      make nconfig ;;
+    [Oo])
+      make olddefconfig ;;
+    *)
+      printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
+    esac
+
+  else
+
+   # load configuration
+   # Configure the kernel. Replace the line below with one of your choice.
+   # make menuconfig # CLI menu for configuration
+   # make xconfig # X-based configuration
+   # make oldconfig # using old config from previous kernel verson
+   # make nconfig # new CLI menu for configuration
+   make olddefconfig # old config from previous kernel, defaults for new options
+   # ... or manually edit .config
+
+  fi
 
   # rewrite configuration
   yes "" | make config >/dev/null
