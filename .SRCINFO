@@ -1,7 +1,7 @@
 pkgbase = kicad-symbols
 	pkgdesc = Official KiCad schematic symbol libraries -- stable release
 	pkgver = 5.0.0rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kicad.github.io/symbols
 	arch = any
 	license = GPL
