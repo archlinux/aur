@@ -30,11 +30,6 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-check() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  make test
-}
-
 build() {
   # Build vdirsyncer
   cd "${srcdir}/${_pkgname}"
@@ -61,7 +56,7 @@ check(){
     export LANG=$(locale -a | grep utf8 | head -n1)
   fi
 
-  make test
+  make DETERMINISTIC_TESTS=true test
 }
 
 package() {
