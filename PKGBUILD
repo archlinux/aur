@@ -14,11 +14,11 @@ source=("http://code.jquery.com/jquery-${pkgver}.min.js"
 		"http://code.jquery.com/jquery-${pkgver}.slim.min.js"
 		"http://code.jquery.com/jquery-${pkgver}.slim.js"
 		"http://code.jquery.com/jquery-${pkgver}.slim.min.map")
-sha256sums=('87083882cc6015984eb0411a99d3981817f5dc5c90ba24f0940420c5548d82de'
-            'b024550e593343d10f9c7a7121f976dd8619a768c2d663fa29d68952de9a94bd'
-            '9365920887b11b33a3dc4ba28a0f93951f200341263e3b9cefd384798e4be398'
-            'b40f32d17aa2c27a7098e225dd218070597646fc478c0f2aa74fb5b821a64668'
-            '15b8947a001bc43ce62c97d5fd7f53e17ca64dae25ca1cdd7eb148d2f34e2ee6')
+sha256sums=('160a426ff2894252cd7cebbdd6d6b7da8fcd319c65b70468f10b6690c45d02ef'
+            '14a62d0001cecb74956ef6e883b6ff7b1ac1cf4883ec6b769555aa8f3fe34cb4'
+            'dde76b9b2b90d30eb97fc81f06caa8c338c97b688cea7d2729c88f529f32fbb1'
+            '7cd5c914895c6b4e4120ed98e73875c6b4a12b7304fbf9586748fe0a1c57d830'
+            '4d1b350208787a6f321d3ed90e5b9fb2925efdcd4063e9ed4cdf761d809d315e')
 
 package() {
     cd "${srcdir}"
