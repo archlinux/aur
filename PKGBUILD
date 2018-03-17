@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgver=0.71
-pkgrel=12
+pkgver=0.75
+pkgrel=13
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
     'git'
     'python'
     'python-virtualenv'
+    'sshuttle'
     'socat'
     'sshfs'
     'torsocks'
@@ -24,13 +25,21 @@ md5sums=('SKIP')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make virtualenv/bin/sshuttle-telepresence
+  virtualenv --python=python3 telepresence-venv
+  telepresence-venv/bin/pip install -r dev-requirements.txt
+  telepresence-venv/bin/pip install .
+
 }
 
 package(){
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/cli/stamp-telepresence" "${pkgdir}/usr/bin/stamp-telepresence"
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/cli/telepresence" "${pkgdir}/usr/bin/telepresence"
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/virtualenv/bin/sshuttle-telepresence" "${pkgdir}/usr/bin/sshuttle-telepresence"
+
+  sed -i "s+${srcdir}/${pkgname}-${pkgver}+/opt/telepresence+g" "${srcdir}/${pkgname}-${pkgver}/telepresence-venv/bin/"*
+  mkdir -p "${pkgdir}/opt/telepresence/telepresence-venv"
+  rsync -ra "${srcdir}/${pkgname}-${pkgver}/telepresence-venv/" "${pkgdir}/opt/telepresence/telepresence-venv/"
+
+  install -Dm 755 "../wrapper-telepresence.sh"       "${pkgdir}/usr/bin/telepresence"
+  install -Dm 755 "../wrapper-stamp-telepresence.sh" "${pkgdir}/usr/bin/stamp-telepresence"
+
 }
 
 # vim:set ts=2 sw=2 et:
