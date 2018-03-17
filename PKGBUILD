@@ -96,7 +96,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             # Misc Patches
-            '83d1ba905ff8ad41ada7d87963cf7b5e1c3a7ece5690e595dfb762ac30695637'
+            '809f3a8939259b2a346935bcf414b88155db28b355b689532ae5b88c714d822f'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
 #             'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
