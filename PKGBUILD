@@ -5,12 +5,12 @@
 
 pkgname=aseprite
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
 license=('custom')
-depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'harfbuzz' 'allegro4')
+depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'harfbuzz')
 makedepends=('cmake')
 conflicts=("aseprite-git" "aseprite-gpl")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/Aseprite-v${pkgver}-Source.zip"
@@ -28,6 +28,10 @@ build() {
   fi
 
   mkdir -p build && cd build
+
+  # CMake config notes:
+  # Do not build using the shared allegro4. Weird graphical glitches happen when linking to the library from the official repo
+
   cmake -DUSE_SHARED_PIXMAN=ON \
     -DWITH_WEBP_SUPPORT=ON \
     -DUSE_SHARED_LIBWEBP=ON \
@@ -42,7 +46,7 @@ build() {
     -DUSE_SHARED_CMARK=ON \
     -DENABLE_UPDATER=OFF \
     -DUSE_SHARED_FREETYPE=ON \
-    -DUSE_SHARED_ALLEGRO4=ON \
+    -DUSE_SHARED_ALLEGRO4=OFF \
     -DCMAKE_INSTALL_PREFIX:STRING=/usr ..
 
   make $MAKEFLAGS
