@@ -1,0 +1,15 @@
+pkgbase = ttf-crewniverse
+	pkgdesc = Crewniverse is a font that replicates the one used for the title cards of the TV show Steven Universe(tm), as well as the logo of the Steven Crewniverse's Tumblr (hence the name, originally).
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://www.deviantart.com/art/Crewniverse-Font-V-5-MORE-ACCENTS-AND-SYMBOLS-540122768
+	arch = any
+	license = Unknown proprietary
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://dl.tyzoid.com/arch/package-dl/ttf-crewniverse-v0.5.tar.gz
+	sha512sums = 9adfe3224b89ee5f0b70a0b0048b1b8c7845cdbcf412bce17ee9c3049df0e3bedfeb81f41bc217ae657a578b3f4bc2e01d9676332ee062884b56d78a0b67b170
+
+pkgname = ttf-crewniverse
+
