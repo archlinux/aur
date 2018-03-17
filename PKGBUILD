@@ -1,16 +1,16 @@
 _npmprefix=@mapbox
 _npmname=geojsonhint
-_npmver=2.0.1
+_npmver=2.1.0
 pkgname=nodejs-geojsonhint # All lowercase
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Validate and sanity-check geojson files (geojsonlint)"
 arch=(any)
 url="https://github.com/mapbox/geojsonhint#readme"
 license=()
 depends=('nodejs' 'npm' )
 optdepends=()
-source=(http://registry.npmjs.org/$_npmprefix/$_npmname/-/$_npmname-$_npmver.tgz)
+source=(https://registry.npmjs.org/$_npmprefix/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
@@ -22,5 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('32dac7300f04b3ebaec74b5ba9853dfb42532354')
-sha512sums=('82ff6a864938a9acb581d784f623df31768ec65b54b71ace809fe915563a0473ec55225b95026158cd4a2ef8776dd19b6bcaa6b4802dd624dd87897834080e73')
+sha256sums=('9067522a29396f212b5ffd592474537e9ff3151df050fc2c77f629d13fb7ac68')
