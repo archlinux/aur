@@ -1,0 +1,19 @@
+pkgbase = python2-pytype
+	pkgdesc = Static type checking for Python 2 and 3
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/google/pytype
+	arch = i686
+	arch = x86_64
+	license = apache-2.0
+	makedepends = git
+	depends = python2
+	depends = python2-pyaml
+	provides = pytype
+	conflicts = pytype
+	options = !emptydirs
+	source = git+git://github.com/google/pytype.git
+	md5sums = SKIP
+
+pkgname = python2-pytype
+

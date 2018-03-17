@@ -1,0 +1,4 @@
+pkg/
+src/
+pytype/
+python2-pytype*.pkg*
