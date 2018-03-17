@@ -1,11 +1,12 @@
-# Maintainer: Grégoire Seux <grego_aur@familleseux.net>
+# Maintainer: Ethan Skinner <aur@etskinner.com>
+# Contributor: Grégoire Seux <grego_aur@familleseux.net>
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.63.2
-pkgrel=2
+pkgver=0.65.5
+pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -15,7 +16,8 @@ makedepends=('python-setuptools')
 depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
          'python-vincenty' 'python-voluptuous>=0.9.3' 'python-netifaces'
          'python-webcolors' 'python-async-timeout>=2.0.0' 'python-aiohttp' 'python-aiohttp-cors>=0.5.3'
-         'python-jinja>=2.9.5' 'python-yarl' 'python-chardet>=3.0.4' 'python-astral' 'python-certifi' 'python-attrs')
+         'python-jinja>=2.9.5' 'python-yarl' 'python-chardet>=3.0.4' 'python-astral' 'python-certifi' 
+         'python-attrs' 'python-async-timeout')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
@@ -23,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('59d9dda2228b826795030d3b0db7e55b8d24664c3d39ec95ae83ccc72d2ca69f7059e8d2f096199ae450c0ac6f20f3de8242e99f308cead6686b39ab4cd6763b'
+sha512sums=('8b34d9e39aec7b0be8247659faada3ee305f6686d1a8a5d2a431646c1fdef60f767a4abdb8cb1902f89e03b5605f788f074f5c383d82690b10158b5d88bf6680'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
@@ -35,12 +37,9 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # TODO remove in future versions https://github.com/home-assistant/home-assistant/issues/9525
   replace '==' '>=' setup.py
-
+  
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
-
-  replace 'aiohttp>=2.3.10' 'aiohttp>=2.3.9' setup.py
-
 
   echo Patching for home-assistant/home-assistant#11906
   sed -i 's/from yarl import unquote/from yarl import URL/' homeassistant/components/http/static.py
