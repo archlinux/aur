@@ -1,5 +1,5 @@
 pkgname=python-orange
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting."
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python-beautifulsoup4' 'python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-recommonmark' 'python-sqlparse' 'python-psycopg2' 'python-bottlechest' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt' 'python-dill' 'python-pip' 'python-serverfiles')
 source=("https://github.com/biolab/orange3/archive/${pkgver}.tar.gz")
-sha256sums=('3a4ded83ce94b72d79d8e6f5f3b8371f0d64da7d1d56789cd2b15954bbcebb12')
+sha256sums=('252e19a1919a4d1c2bbe0b10c7d32324b222fcf82689fae727d616814ec9f42d')
 
 build() {
   cd "${srcdir}/orange3-$pkgver"
