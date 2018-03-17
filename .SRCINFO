@@ -1,6 +1,6 @@
 pkgbase = trojan
 	pkgdesc = An unidentifiable mechanism that helps you bypass GFW.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/trojan-gfw/trojan
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = trojan
 	depends = ca-certificates
 	backup = etc/trojan.json
 	backup = etc/systemd/system/trojan.service
-	source = https://github.com/trojan-gfw/trojan/archive/v0.6.1.tar.gz
-	md5sums = b0b092e9d302ddd4857be9de3d567bf9
+	source = https://github.com/trojan-gfw/trojan/archive/v0.7.0.tar.gz
+	md5sums = c0eb0c3ced0929f7939215b205b35b06
 
 pkgname = trojan
 
