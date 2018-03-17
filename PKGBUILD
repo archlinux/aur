@@ -3,7 +3,7 @@
 
 pkgname=fselect-git
 pkgrel=1
-pkgver=0.3.2.r16.g5bfe8e4
+pkgver=0.3.2.r19.gc75c630
 url="https://github.com/jhspetersson/fselect"
 license=("MIT")
 arch=(i686 x86_64)
@@ -27,8 +27,6 @@ build() {
 }
 
 package() {
-    mkdir -pv "$pkgdir/usr/bin"
-    mv "$pkgname/target/release/fselect" "$pkgdir/usr/bin"
-    mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
-    mv "$srcdir/$pkgname/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "$pkgname/target/release/fselect" "$pkgdir/usr/bin/fselect"
+    install -Dm644 "$srcdir/$pkgname/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
