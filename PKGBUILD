@@ -9,15 +9,14 @@ depends=('bash')
 makedepends=('git')
 source=("git+https://github.com/AOSC-Dev/bash-config.git")
 sha256sums=('SKIP')
-
+_gitname='bash-config'
 pkgver() {
-  cd ${pkgname}
+  cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 package() {
-  cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/bashrc-aosc"
   cp -r bashrc.d bashrc "${pkgdir}/usr/share/bashrc-aosc/"
 }
