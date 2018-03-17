@@ -10,7 +10,7 @@ url="http://www.corosync.org/"
 license=('BSD')
 depends=('libstatgrab' 'net-snmp' 'libdbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/corosync/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7e9b72c21817bb6630c9bfaaa4076420')
+
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -44,5 +44,6 @@ package() {
   echo "d /var/log/cluster 0755 root root -" \
     >"${pkgdir}/usr/lib/tmpfiles.d/corosync.conf"
 }
+md5sums=(SKIP)
 
 # vim: set sw=2 et:
