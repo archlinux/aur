@@ -1,9 +1,9 @@
-# Maintainer: James An <james@jamesan.ca>
-# Contributor: AwesomeHaircut <jesusbalbastro at gmail com>
+# Maintainer: AwesomeHaircut <jesusbalbastro at gmail com>
+# Past Contributor: James An <james@jamesan.ca>
 
 pkgname=droidcam
-pkgver=6.0
-pkgrel=10
+pkgver=6.0.1
+pkgrel=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('i686' 'x86_64')
 url="https://www.dev47apps.com/$pkgname/linuxx"
@@ -20,8 +20,8 @@ source_x86_64=("$pkgname.tar.bz2"::"https://www.dev47apps.com/files/600/$pkgname
 noextract=("$pkgname.tar.bz2")
 md5sums=('199d8f3dbc6697f06350b00de99f2274'
          '0f0e1d04146dd5be70d5028f144bd0a2')
-md5sums_i686=('c8baa64b3f1e1d9b9051ece23474e58f')
-md5sums_x86_64=('ad14437f0556d80f981d1027766afe29')
+md5sums_i686=('20166fd23adfc826e26952d0837a2df1')
+md5sums_x86_64=('525718dab42ad5868a67844736bd3c6c')
 
 prepare() {
   # Extract source from within leading arcqh-specific folder
