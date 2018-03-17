@@ -5,7 +5,7 @@
 
 pkgname=hexchat-purelua
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A popular and easy to use graphical IRC (chat) client (build for ppl who need a sandboxable Lua VM and have been using Lua 5.3 scripts since the plugin came out)'
 arch=('x86_64')
 url='https://hexchat.github.io/'
@@ -14,7 +14,7 @@ provides=('hexchat')
 conflicts=('hexchat')
 depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
          'libcanberra' 'libnotify' 'libproxy' 'openssl' 'pango' 'pciutils')
-makedepends=('intltool' 'iso-codes' 'luajit' 'meson' 'perl' 'python')
+makedepends=('intltool' 'iso-codes' 'lua' 'meson' 'perl' 'python')
 optdepends=('enchant: Spell check'
             'iso-codes: Display language names instead of codes'
             'lua: Lua plugin'

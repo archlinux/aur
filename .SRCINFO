@@ -1,13 +1,13 @@
 pkgbase = hexchat-purelua
 	pkgdesc = A popular and easy to use graphical IRC (chat) client (build for ppl who need a sandboxable Lua VM and have been using Lua 5.3 scripts since the plugin came out)
 	pkgver = 2.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hexchat.github.io/
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
 	makedepends = iso-codes
-	makedepends = luajit
+	makedepends = lua
 	makedepends = meson
 	makedepends = perl
 	makedepends = python
