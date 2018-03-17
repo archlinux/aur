@@ -1,0 +1,17 @@
+pkgbase = dotfiles-git
+	pkgdesc = A tool to make managing your dotfile symlinks in $HOME easy, allowing you to keep all of them in a single directory.
+	pkgver = r358.8998a93
+	pkgrel = 1
+	url = https://github.com/jbernard/dotfiles
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python python-py
+	provides = dotfiles
+	conflicts = dotfiles
+	source = git+https://github.com/jbernard/dotfiles.git
+	md5sums = SKIP
+
+pkgname = dotfiles-git
+
