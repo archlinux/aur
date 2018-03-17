@@ -1,7 +1,7 @@
 #Maintainer: ovi chis <ovi@ovios.org>
 
 pkgname=corosync
-pkgver=2.99.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within 
 applications."
