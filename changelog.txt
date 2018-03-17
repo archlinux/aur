@@ -1,3 +1,7 @@
+v2.0.1 -- Sat, 17 Mar 2018 11:39:27 GMT
+
+Fixes color picker issues when editing values.
+
 v2.0.0 -- Fri, 17 Mar 2017 09:42:36 GMT
 
 Adds 6 new built in theme presets
