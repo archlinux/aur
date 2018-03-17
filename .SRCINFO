@@ -1,0 +1,28 @@
+pkgbase = smplayer-svn-notitlebar
+	pkgdesc = Advanced front-end for MPlayer/MPV + Patch to disable titlebar in compact mode
+	pkgver = 18.2.2.r8954M
+	pkgrel = 1
+	url = http://smplayer.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = subversion
+	depends = qt5-script
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	optdepends = smplayer-themes-svn: icon themes collection
+	optdepends = smplayer-skins-svn: skin themes collection
+	optdepends = smtube-svn: browse and play YouTube videos
+	optdepends = youtube-dl: play streaming videos
+	optdepends = mplayer: backend for video playback
+	optdepends = mpv: alternative modern backend, based on MPlayer/MPlayer2
+	provides = smplayer
+	conflicts = smplayer
+	source = smplayer-svn-notitlebar::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/
+	source = hidetitlebar.patch
+	sha256sums = SKIP
+	sha256sums = 3f1be6b18805af4f8a2f1958aa8ce45b7053b476f6c6d5d27e60fa6822edab40
+
+pkgname = smplayer-svn-notitlebar
+

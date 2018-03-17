@@ -1,0 +1,26 @@
+Index: src/basegui.cpp
+===================================================================
+--- src/basegui.cpp	(revision 8954)
++++ src/basegui.cpp	(working copy)
+@@ -5635,12 +5635,20 @@
+ 
+ void BaseGui::aboutToEnterCompactMode() {
+ 	menuBar()->hide();
+-	statusBar()->hide();
++    statusBar()->hide();
++
++    Qt::WindowFlags flags = Qt::Window;
++    flags |= windowFlags() & Qt::WindowStaysOnTopHint ? Qt::WindowStaysOnTopHint : Qt::Window;
++    setWindowFlags(flags | Qt::CustomizeWindowHint);
++    show();
+ }
+ 
+ void BaseGui::aboutToExitCompactMode() {
+ 	menuBar()->show();
+ 	statusBar()->show();
++
++    setWindowFlags(windowFlags() & ~Qt::CustomizeWindowHint);
++    show();
+ }
+ 
+ void BaseGui::setStayOnTop(bool b) {
