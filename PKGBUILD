@@ -1,5 +1,5 @@
 pkgname=bashrc-aosc
-pkgver=1.0
+pkgver=0.4.5.1
 pkgrel=1
 pkgdesc="A bashrc AOSC path"
 arch=('any')
