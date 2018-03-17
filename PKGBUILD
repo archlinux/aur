@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-nvidia'
-pkgver=2.4.5
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('GPL')
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/xmrig/xmrig-nvidia/v${pkgver}/README.md")
-sha256sums=('b8865a332c5202031c56141a4b0ae4d2034c4998923749a0d68f2a2f16af9b49'
-            'a202320bf2916f44813dd217d8ba0930fe062e3ec8b2492b2e6ee562039c2b8a')
+sha256sums=('459c072f4aaf1c6eb0d35d14a2c7acdb62204bb249aba79f47853c5a3068bf17'
+            '261a0ff3bf231aa7df694b9794a22defd3232df7ee1d6d5bcef29eda3a6dddf7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
