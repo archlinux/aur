@@ -5,30 +5,18 @@
 
 pkgname=openvpn-pkcs11
 _pkgname=openvpn
-pkgver=2.4.2
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://openvpn.net/index.php/open-source.html'
-depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper' 'pam')
+depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper')
 conflicts=('openvpn')
 provides=('openvpn')
 optdepends=('easy-rsa: easy CA and certificate handling')
 license=('custom')
-source=("https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz"
-        '0004-openssl-1-1-0.patch')
-sha256sums=('df5c4f384b7df6b08a2f6fa8a84b9fd382baf59c2cef1836f82e2a7f62f1bff9'
-            'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03')
-
-prepare() {
-  cd "${srcdir}"/${_pkgname}-${pkgver}
-
-  # allow to build against openssl 1.1.0
-  patch -Np1 < "${srcdir}"/0004-openssl-1-1-0.patch
-
-  # regenerate configure script
-  autoreconf -fi
-}
+source=("https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('43c0a363a332350f620d1cd93bb431e082bedbc93d4fb872f758650d53c1d29e')
 
 build() {
   cd "${srcdir}"/${_pkgname}-${pkgver}
@@ -75,4 +63,3 @@ package() {
     esac
   done
 }
-
