@@ -1,0 +1,15 @@
+pkgbase = kicad-packages3d
+	pkgdesc = Official KiCad 3D model libraries -- stable release
+	pkgver = 5.0.0rc1
+	pkgrel = 1
+	url = https://kicad.github.io/packages3d
+	arch = any
+	license = GPL
+	makedepends = cmake
+	provides = kicad-packages3d
+	conflicts = kicad-packages3d-git
+	source = https://github.com/KiCad/kicad-packages3d/archive/5.0.0-rc1.tar.gz
+	md5sums = d288cb87bf3a12cd180365cb23214b40
+
+pkgname = kicad-packages3d
+
