@@ -4,7 +4,7 @@
 pkgname=mingw-w64-wxmsw3.1
 epoch=1
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Win32 implementation of wxWidgets API for GUI (development branch, mingw-w64)"
 arch=(any)
 url="http://wxwidgets.org"
