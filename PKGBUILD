@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
 pkgver=0.75
-pkgrel=14
+pkgrel=15
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -25,7 +25,7 @@ source=("https://github.com/datawire/telepresence/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build(){
-  curl -s "https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64" -o dumb-init
+  curl -Ls "https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64" -o dumb-init
   chmod +x dumb-init
   cd "${srcdir}/${pkgname}-${pkgver}"
   virtualenv --python=python3 telepresence-venv
