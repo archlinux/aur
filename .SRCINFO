@@ -1,0 +1,15 @@
+pkgbase = ttf-crystal-universe
+	pkgdesc = A recreation of the Steven Universe logotype.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://maxigamer.deviantart.com/art/Crystal-Universe-FONT-580280358
+	arch = any
+	license = Unknown proprietary
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://dl.tyzoid.com/arch/package-dl/ttf-crystal-universe-1.0.tar.gz
+	sha512sums = ceb8a93b7602e362f544912332ab7601d81096b7020d42444e85859633bcdec154d35ff68194860feaa936e47ccb14599f04b901e93b22ee39112de604d2bb4b
+
+pkgname = ttf-crystal-universe
+
