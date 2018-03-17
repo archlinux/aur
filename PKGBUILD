@@ -1,46 +1,34 @@
 # Maintainer: James An <james@jamesan.ca>
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 
-_pkgname=pmd
-pkgname="$_pkgname-bin"
-pkgver=5.2.3
-pkgrel=2
-pkgdesc="A java source code scanner for detecting possible bugs, dead code, overcomplicated expressions and more"
+pkgname="pmd-bin"
+_pkgname=${pkgname%-bin}
+pkgver=6.1.0
+pkgrel=1
+pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
-url="http://pmd.sourceforge.net/"
-license=('custom:BSD-style' 'Apache')
+url="http://pmd.github.io"
+license=('BSD' 'Apache')
 depends=('java-environment')
 makedepends=('unzip')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=(
-    "http://sourceforge.net/projects/$_pkgname/files/$_pkgname/$pkgver/$_pkgname-bin-$pkgver.zip"
-    run.patch
-)
-md5sums=(
-    'b66632f523cbeef93dd3c820f7007a4a'
-    '764732c9d41b5f2d7d15af1f7f819f27'
-)
-
-prepare() {
-    patch -p1 -d "$_pkgname-bin-$pkgver/bin" < run.patch
-}
-
-build() {
-    for BIN in bgastviewer cpd cpdgui pmd pmd-designer; do
-        printf "#%c/bin/sh\nexec /usr/bin/$_pkgname-run $BIN \"\$@\"\n" ! > "$BIN"
-    done
-}
+source=("https://github.com/$_pkgname/$_pkgname/releases/download/${_pkgname}_releases/$pkgver/$pkgname-$pkgver.zip"
+        pmdapp)
+md5sums=('566855f2010cfd6aa3a4957d00183197'
+         '7026fc0d1d333c8c2728ed8d9ca4f453')
 
 package() {
     cd "$_pkgname-bin-$pkgver"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-    install -Dm755 bin/run.sh "$pkgdir/usr/bin/$_pkgname-run"
-    for BIN in bgastviewer cpd cpdgui pmd pmd-designer; do
-        install -Dm755 "../$BIN" "$pkgdir/usr/bin/$BIN"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    for app in pmd-bgastviewer pmd-cpd pmd-cpdgui pmd-designer pmd-designerold pmd; do
+        install -Dm755 "../pmdapp" "$pkgdir/usr/bin/$app"
     done
+
     cd lib
-    for JAR in *.jar; do
-        install -Dm644 "$JAR" "$pkgdir/usr/share/java/$_pkgname/$JAR"
+    for file in *.jar; do
+        install -Dm644 "$file" "$pkgdir/usr/share/java/$pkgname/$file"
     done
 }
