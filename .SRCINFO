@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-vfio
-	pkgver = 0.7.6.4.15.2.1
+	pkgver = 0.7.6.4.15.8.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-vfio-headers=4.15.2-1
+	makedepends = linux-vfio-headers=4.15.8-1
 	makedepends = spl-linux-vfio-headers
 	depends = kmod
 	depends = spl-linux-vfio
 	depends = zfs-utils-common=0.7.6
-	depends = linux-vfio=4.15.2-1
+	depends = linux-vfio=4.15.8-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/zfs-0.7.6.tar.gz
 	sha256sums = 1687f4041a990e35caccc4751aa736e8e55123b81d5f5a35b11916d9e580c23d
 
@@ -19,6 +19,7 @@ pkgname = zfs-linux-vfio
 	groups = archzfs-linux-vfio
 	provides = zfs
 	conflicts = zfs-linux-vfio-git
+	replaces = zfs-git
 
 pkgname = zfs-linux-vfio-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
@@ -30,8 +31,6 @@ pkgname = zfs-linux-vfio-headers
 	conflicts = zfs-linux-lts-git-headers
 	conflicts = zfs-linux-headers
 	conflicts = zfs-linux-git-headers
-	conflicts = zfs-linux-threadripper-headers
-	conflicts = zfs-linux-threadripper-git-headers
 	conflicts = zfs-linux-vfio-git-headers
 	conflicts = zfs-linux-zen-headers
 	conflicts = zfs-linux-zen-git-headers
