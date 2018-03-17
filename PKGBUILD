@@ -11,14 +11,15 @@ license=('GPL')
 makedepends=('cmake')
 conflicts=('kicad-packages3d-git')
 provides=($pkgname)
-source=("https://github.com/KiCad/kicad-packages3d/archive/${_pkgver}.tar.gz")
+source=("https://github.com/KiCad/${pkgname}/archive/${_pkgver}.tar.gz")
 md5sums=('d288cb87bf3a12cd180365cb23214b40')
 
 build() {
   cd "$srcdir"
   mkdir -p "$srcdir/build/"
   cd "$srcdir/build"
-  cmake ../${pkgname}-${_pkgver} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  #cmake ../${pkgname}-${_pkgver} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../kicad-packages3D-${_pkgver} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
