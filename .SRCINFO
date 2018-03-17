@@ -1,7 +1,7 @@
 pkgbase = truestudio
 	pkgdesc = A flexible and extensible Arm development and debugging IDE by Atollic.
 	pkgver = 9.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://atollic.com/truestudio/
 	arch = x86_64
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = truestudio
 	depends = libusb
 	depends = ncurses5-compat-libs
 	depends = webkit2gtk
+	depends = jlink-software-and-documentation
 	options = !strip
 	source = http://download.atollic.com/TrueSTUDIO/installers/Atollic_TrueSTUDIO_for_STM32_linux_x86_64_v9.0.0_20180117-1023.tar.gz
 	sha256sums = 450a1ae159ff58799af9a8190b801ac11c02e11c1578d23120689074c60a444b
