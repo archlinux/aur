@@ -17,6 +17,7 @@ pkgver() {
 
 
 package() {
+  cd "$_gitname"
   mkdir -p "${pkgdir}/usr/share/bashrc-aosc"
   cp -r bashrc.d bashrc "${pkgdir}/usr/share/bashrc-aosc/"
 }
