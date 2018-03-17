@@ -3,7 +3,7 @@
 
 pkgname=pianoteq-standard-trial-bin
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/home"
@@ -18,7 +18,7 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _downfname=pianoteq_linux_trial_v${pkgver//./}.7z
 # Define its checksum:
-_downsha256sum=62ec1855de74a82de3a9447da908cc50ceb374c5e89c72b169a83b6000cda1d2
+_downsha256sum=85c1b417945be03718441de65c2559a9a80fef1c67e646a35863fb417b8c1f21
 
 prepare(){
 	# The archive download link needs to be retrieved. Retrieve download page source:
