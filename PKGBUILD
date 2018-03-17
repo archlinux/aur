@@ -3,7 +3,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
 pkgver='1.4.2.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://influxdata.com/time-series-platform/chronograf/'
@@ -32,6 +32,9 @@ build() {
 }
 
 package() {
+        export GOPATH="$srcdir"
+        export GOBIN="$GOPATH/bin"
+
 	cd "$srcdir"
 	install -Dm644 chronograf.sysusers "$pkgdir/usr/lib/sysusers.d/chronograf.conf"
 	install -Dm644 chronograf.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/chronograf.conf"
@@ -43,4 +46,6 @@ package() {
         install -Dm644 etc/scripts/chronograf.service \
 		"$pkgdir/usr/lib/systemd/system/chronograf.service"
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chronograf/LICENSE"
+        install -dm755 "$pkgdir/usr/share/canned/"
+        install -Dm644 canned/*.json "$pkgdir/usr/share/canned/"
 }
