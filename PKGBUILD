@@ -69,7 +69,7 @@ prepare() {
     sed -i "/popup_dlg_generated.cpp/ a CPP_LIST+=../../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/RealTimeSync/Makefile
 
 # copy shell file to /usr/bin/
-    cp ${srcdir}/wxgtk_fix.sh /usr/bin/
+    sudo cp ${srcdir}/wxgtk_fix.sh /usr/bin/
 }
 
 build() {
