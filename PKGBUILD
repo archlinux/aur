@@ -4,11 +4,11 @@
 
 pkgname=jquery
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
 arch=('any')
 url="http://jquery.com"
-license=('MIT' 'GPL2')
+license=('MIT')
 source=("http://code.jquery.com/jquery-${pkgver}.min.js"
 		"http://code.jquery.com/jquery-${pkgver}.min.map"
 		"http://code.jquery.com/jquery-${pkgver}.slim.min.js"
