@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=powa-archivist-git
 _gitname=powa-archivist
-pkgver=8d9878f
+pkgver=5182d7b
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('pg_qualstats-git: capture predicate statistics in PostgreSQL'
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/dalibo/powa-archivist.git')
+source=('git://github.com/powa-team/powa-archivist.git')
 md5sums=('SKIP')
 install='powa-archivist-git.install'
 
