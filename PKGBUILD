@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab
 pkgver=2016.12
-pkgrel=5
+pkgrel=6
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -9,10 +9,15 @@ provides=('meshlab')
 license=('GPL2')
 depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script')
 makedepends=('git')
+#options=(debug !strip)
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1"
+        "filter_measure.patch"
+        "filter_mutualinfo.patch"
+        "filter_sketchfab.patch"
+        "filter_voronoi.patch"
         "ssynth.patch"
         "screened_poisson.patch"
         "plugin_dir.patch"
@@ -31,6 +36,10 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
+         '4926e8a14215fc33167208d629678a18'
+         'b3401d7bc450d0785ac8798abf276aca'
+         'c74be839f3efa9341472357b3e238ea8'
+         '8f58bb2aee9855d7aea88a00e4186770'
          'fcf9148ad21706f4fef558a254bee4e2'
          'd9c9e9160ee16694a225819ee4598be4'
          'f13d58ca07fa74b3d7c8f7f9d4ee6a93'
@@ -84,6 +93,16 @@ prepare() {
   patch -Np1 -i ../screened_poisson.patch
   msg "compile ssynth with -fopenmp flag"
   patch -Np1 -i ../ssynth.patch
+  
+  msg "fix filter measure plugin"
+  patch -Np1 -i ../filter_measure.patch
+  msg "fix filter mutualinfo plugin"
+  patch -Np1 -i ../filter_mutualinfo.patch
+  msg "fix filter skatchfab plugin"
+  patch -Np1 -i ../filter_sketchfab.patch
+  msg "fix filter voronoi.patch"
+  patch -Np1 -i ../filter_voronoi.patch 
+
   msg "fix bundel/nvm ReadHeader"
   cd ${srcdir}/vcglib
   patch -Np1 -i ../import_bundle_out.patch
