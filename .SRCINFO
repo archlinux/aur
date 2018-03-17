@@ -1,6 +1,6 @@
 pkgbase = liquidshell-git
 	pkgdesc = Alternative desktop replacement for Plasma, using QtWidgets instead of QtQuick to ensure hardware acceleration is not required
-	pkgver = r164.e60d77e
+	pkgver = r165.4b30397
 	pkgrel = 1
 	url = https://cgit.kde.org/liquidshell.git/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = liquidshell-git
 	depends = hicolor-icon-theme
 	optdepends = ksysguard
 	optdepends = kconfig
-	source = git://anongit.kde.org/liquidshell.git
+	source = git+git://anongit.kde.org/liquidshell.git
 	sha256sums = SKIP
 
 pkgname = liquidshell-git
