@@ -1,7 +1,7 @@
 # Maintainer:  Nate Levesque <public at thenaterhood dot com>
 
 pkgname=python-pymlconf
-pkgver=0.3.21
+pkgver=0.8.6
 pkgrel=1
 epoch=
 pkgdesc="Python high level configuration library"
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/pylover/pymlconf/archive/02578fb7597f86f99abfd8e29afac991dd67af55.tar.gz")
+source=("https://github.com/pylover/pymlconf/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('823154b454041132a19949e6bb488ef3fba21ed25af7294196841bef53323661')
+sha256sums=('1ed41f0bf6c82221cf43da8cc46ddc1a27270304e94d03263834120dd1abca7a')
 validpgpkeys=()
 
 build() {
