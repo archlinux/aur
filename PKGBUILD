@@ -7,13 +7,13 @@
 
 pkgname=autotrace
 pkgver=0.31.1
-pkgrel=17
+pkgrel=18
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
 url='http://autotrace.sourceforge.net/'
 license=('GPL' 'LGPL')
-depends=('imagemagick>=6.5.3.10' 'libpng')
-optdepends=('pstoedit')
+depends=('libpng')
+optdepends=('pstoedit: for postprocessing of postscript files')
 makedepends=('pstoedit')
 options=('!libtool')
 source=("https://sourceforge.net/projects/$pkgname/files/AutoTrace/$pkgver/$pkgname-$pkgver.tar.gz"
