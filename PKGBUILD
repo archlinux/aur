@@ -10,7 +10,6 @@ arch=('any')
 url="http://pmd.github.io"
 license=('BSD' 'Apache')
 depends=('java-environment')
-makedepends=('unzip')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://github.com/$_pkgname/$_pkgname/releases/download/${_pkgname}_releases/$pkgver/$pkgname-$pkgver.zip"
