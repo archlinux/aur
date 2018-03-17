@@ -2,21 +2,21 @@
 # Contributor:
 
 pkgname=notes-up-git
-pkgver=1.4.7.r26.gd6bf17b
+pkgver=1.5.2.r9.g855d213
 pkgrel=1
 pkgdesc="Notes Up is a notes manager written for elementary OS"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Philip-Scott/Notes-up"
 license=('GPL2')
-depends=('gtksourceview3' 'gtkspell3' 'libgranite.so' 'webkit2gtk')
-makedepends=('cmake' 'git' 'vala')
+depends=('discount' 'gtksourceview3' 'gtkspell3' 'libgranite.so' 'webkit2gtk')
+makedepends=('cmake' 'git' 'vala>=0.39.0')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+${url}.git")
+source=("${pkgname%-*}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd Notes-up
+  cd "${pkgname%-*}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -26,7 +26,10 @@ prepare() {
 
 build() {
   cd build
-  cmake ../Notes-up -Dnoele=1 -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../"${pkgname%-*}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Dnoele=1
   make
 }
 
