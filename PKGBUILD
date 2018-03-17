@@ -2,10 +2,11 @@
 
 # Until there are actual releases, get the most recent nightly build using @binhex fancy curl + regex for ease of use.
 # https://ci.appveyor.com/project/lidarr/lidarr/branch/develop/artifacts
-lidarr_url=$(curl -s "https://services.lidarr.audio/v1/update/nightly/changes?os=linux" | grep -P -o -m 1 '(?<=url":")[^"]+' | head -1 )
+# lidarr_url=$(curl -s "https://services.lidarr.audio/v1/update/nightly/changes?os=linux" | grep -P -o -m 1 '(?<=url":")[^"]+' | head -1 )
 
 pkgname="lidarr"
 pkgver="0.2.0.306"
+_urlhash="hp3q5iu2chre0ic3"
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -22,7 +23,7 @@ optdepends=("sabnzbd: usenet downloader"
             "jackett: torrent indexer proxy"
             "libgdiplus: provides a gdi+ compatible api")
 
-source=("${lidarr_url}"
+source=("https://ci.appveyor.com/api/buildjobs/${_urlhash}/artifacts/Lidarr.develop.${pkgver}.linux.tar.gz"
         "lidarr.service"
         "lidarr.tmpfiles"
         "lidarr.sysusers")
