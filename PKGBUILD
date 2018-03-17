@@ -1,79 +1,54 @@
-# Maintainer: Sebastian Wilzbach < sebi at wilzbach dot me >
-pkgname=biopieces
-pkgver=r2311
-pkgrel=1
-epoch=
-pkgdesc="Bioinformatic framework of tools easily used and easily created"
-arch=("any")
-url="http://biopieces.googlecode.com/"
-license=('GPL2')
-groups=()
-depends=('perl' 'ruby' "perl-svg" "perl-bit-vector" "perl-term-readkey" "perl-dbi" "perl-xml-parser" "perl-carp-clan" 
-	"perl-class-inspector" "perl-html-parser" "perl-soap-lite" "perl-uri" "perl-inline" "perl-parse-recdescent" "perl-dbd-mysql"
-	'ruby-gnuplot' 'ruby-narray' 'perl-json-xs' 'python2' 'ruby-rubyinline' 'ruby-terminal-table')
-makedepends=("svn")
-checkdepends=()
-optdepends=('rubyinline' 'blast: legacy blast'  'gnuplot' 'blat' 'ray' 'bwa' 'bowtie' 'bowtie2' 'hmmer' 'mummer' 'muscle' 'velvet')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("biopieces::svn+http://biopieces.googlecode.com/svn/trunk"
-"biopieces/bp_usage::svn+http://biopieces.googlecode.com/svn/wiki"        
-"biopieces.sh")
-noextract=()
-md5sums=('SKIP'
-'SKIP'
-'8ebebd698533ae818c8cfbef4fa8e9ca')
+# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Contributer: Sebastian Wilzbach <sebi at wilzbach dot me>
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	local ver="$(svnversion)"
-	printf "r%s" "${ver//[[:alpha:]]}"
-}
+pkgname=biopieces
+pkgver=2.0
+pkgrel=1
+pkgdesc='Bioinformatic framework of tools easily used and easily created'
+arch=('any')
+url='http://maasha.github.io/biopieces/'
+license=('GPL2')
+depends=(
+  'perl'
+  'ruby'
+  'perl-svg'
+  'perl-bit-vector'
+  'perl-term-readkey'
+  'perl-dbi'
+  'perl-xml-parser'
+  'perl-carp-clan' 
+  'perl-class-inspector'
+  'perl-html-parser'
+  'perl-soap-lite'
+  'perl-uri'
+  'perl-inline'
+  'perl-parse-recdescent'
+  'perl-dbd-mysql'
+  'ruby-gnuplot'
+  'perl-json-xs'
+  'python2'
+  'ruby-terminal-table'
+)
+optdepends=(
+  'blast: legacy blast'
+  'gnuplot'
+  'blat'
+  'bwa'
+  'bowtie'
+  'bowtie2'
+  'hmmer'
+  'mummer'
+  'muscle'
+  'velvet'
+)
+source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/maasha/"${pkgname}"/archive/"${pkgver}".tar.gz)
+sha256sums=('484877c4a844ed1e6c70594248c44b9f19a6e7a1fd08456e28f2cc83425151e8')
 
 package() {
-	cd "$pkgdir"
-	mkdir -p "opt/$pkgname"
+  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
 
-	cp -a "$srcdir/biopieces" "opt/"
-
-	# remove svn history
-	rm -r -f "opt/$pkgname/.svn"
-	rm -r -f "opt/$pkgname/bp_usage/.svn"
-	rm -r -f "opt/$pkgname/.makepkg"
-
-	# patch python2 scripts
-	find "opt/$pkgname/code_python" -type f -exec sed -i 's/#!\/usr\/bin\/python/&2/' {} \;
-
-	# install exports
-	install -Dm755 "$srcdir/$pkgname.sh" etc/profile.d/$pkgname.sh
-	source etc/profile.d/$pkgname.sh
-}
-
-check() {
-	cd "$srcdir/biopieces"
-
-	# set the constant for the test suite
-	export BP_DIR=$(pwd)
-	export BP_TMP=$BP_DIR"/tmp"
-	export BP_LOG="$BP_TMP/log"
-	mkdir -p $BP_LOG
-
-	# source the config
-	source "bp_conf/bashrc"
-
-	# permission to write on bp_test
-	chmod a+w "bp_test"
-	chmod a+w "bp_test/in"
-	chmod a+w "bp_test/out"
-
-	# calling test
-	/bin/bash "bp_test/test_all"
-
-	# remove unnecessary test output
-	rm -r -f $BP_TMP
+  for script in bin/*; do
+    if [[ "${script}" =~ README ]]; then continue; fi
+    install -Dm755 "${script}" "${pkgdir}"/opt/"${pkgname}"/"${pkgname}"-"$( basename "${script}" )"
+  done
 }
