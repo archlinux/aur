@@ -3,7 +3,7 @@
 pkgbase=opencascade7
 pkgname=('opencascade7' 'opencascade7-docs')
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="3D modeling & numerical simulation SDK"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ prepare(){
   cd "occt-V${pkgver//./_}"
   patch -Np1 -i "$srcdir/fix-install-dir-references.patch"
   sed -i 's,#include <xlocale.h>,#include <X11/Xlocale.h>,g' src/Standard/Standard_CLocaleSentry.hxx
+  sed -i s/InsertNextTupleValue/InsertNextTypedTuple/ src/IVtkVTK/IVtkVTK_ShapeData.cxx
 }
 
 build() {
