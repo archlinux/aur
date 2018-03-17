@@ -5,12 +5,12 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=59.0
-pkgrel=2
+pkgver=59.0.1
+pkgrel=1
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
-meme=FIREFOX_59_0_RELEASE
+meme=FIREFOX_59_0_1_RELEASE
 meme2=FIREFOX_BETA_59_END
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
@@ -38,7 +38,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 )
 
-sha256sums=('0655b42e52bd914a39bf0dc98229ec3b051a8bd6363ae70811f45377d68a4893'
+sha256sums=('697b4caabc9e86489c8b376d227a211c59aad5c58da9e511e492411f0627aac7'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
@@ -130,7 +130,7 @@ ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
 
-MOZ_SOURCE_CHANGESET=534bbc15b994
+MOZ_SOURCE_CHANGESET=0ae512558ada
 
 # please put 1.25 times your number of threads
 
