@@ -1,6 +1,6 @@
-pkgbase = terminus
+pkgbase = terminus-git
 	pkgdesc = The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform https://pantheon.io
-	pkgver = 1.7.1
+	pkgver = 1.7.2_dev
 	pkgrel = 1
 	url = https://github.com/pantheon-systems/terminus
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = terminus
 	depends = git
 	optdepends = drush: Useful to run incompatible-with-Terminus Drush commands
 	optdepends = wp-cli: Useful to run incompatible-with-Terminus WP-CLI commands
-	source = https://github.com/pantheon-systems/terminus/archive/1.7.1.tar.gz
-	md5sums = 2752d60abe3c3e523c249ccfb2ff4a30
+	provides = terminus=1.7.2_dev
+	conflicts = terminus
+	source = terminus::git+https://github.com/pantheon-systems/terminus.git
+	md5sums = SKIP
 
-pkgname = terminus
+pkgname = terminus-git
 
