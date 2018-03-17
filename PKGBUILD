@@ -4,6 +4,7 @@ _kernver="$(uname -r)"
 _kernver_base="$(echo $_kernver | cut -d- -f1)"
 pkgname=btusb-qca-0x3004
 _pkgname=btusb
+url=https://github.com/kmoe/btusb-qca-0x3004
 pkgver=0.9
 pkgrel=1
 pkgdesc="patch btusb so it works on QCA devices with id 0x3004"
