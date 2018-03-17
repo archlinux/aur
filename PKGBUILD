@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.17.8
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("MicroSIP-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=Micr
 		"${pkgname}"
 		"${pkgname}.desktop")
 
-sha256sums=('a677ba37f0dcef8d365f00bbc4e4ea09374fc3922fcb5d74208295668a7dc267'
+sha256sums=('11f7cd683931106c308a8dc77bc77574dfd90647686c9ba1fa767d42a7d2d4d1'
             '5aec6639c625bfa73edcdbc90ddbd59e730b31651c9b4249254a54fe63f2563a'
             'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2')
 
