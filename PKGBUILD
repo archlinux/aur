@@ -1,7 +1,7 @@
 pkgname=bashrc-aosc
 pkgver=0.4.5.1
 pkgrel=1
-pkgdesc="A bashrc AOSC path"
+pkgdesc="Bash config from AOSC OS"
 arch=('any')
 url='https://github.com/AOSC-Dev/bash-config'
 license=('MIT')
