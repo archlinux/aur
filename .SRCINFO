@@ -1,0 +1,28 @@
+pkgbase = cef-git
+	pkgdesc = Chromium Embedded Framework
+	pkgver = 3.3325.1748.g4fb6e1b
+	pkgrel = 1
+	url = https://bitbucket.org/chromiumembedded/cef
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	makedepends = python2
+	makedepends = ninja
+	makedepends = unzip
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libglvnd
+	provides = cef
+	provides = cef-minimal
+	conflicts = cef-standard
+	conflicts = cef-minimal
+	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	source = https://bitbucket.org/chromiumembedded/cef/raw/master/tools/automate/automate-git.py
+	sha256sums = SKIP
+	sha256sums = 1ea166c531f2ab71e45c56baae386d4baa983248f31b8d5854d42c07ead94e19
+
+pkgname = cef-git
+
