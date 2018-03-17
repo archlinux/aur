@@ -21,3 +21,5 @@ package() {
   make DESTDIR="$pkgdir" sbindir=/usr/bin install
   install -Dm644 "$srcdir/$pkgname-$pkgver/scripts/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
 }
+md5sums=(SKIP)
+
