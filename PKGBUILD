@@ -18,5 +18,5 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
   install -Dm644 bashrc "$pkgdir/etc/bash.bashrc"
-  install -Dm644 bashrc.d "$pkgdir/etc/bashrc.d"
+  install -Dpm644 bashrc.d/* "$pkgdir/etc/bashrc.d/*"
 }
