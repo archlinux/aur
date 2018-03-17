@@ -61,9 +61,16 @@ To get information about a security, you can use the info command.
 $ tick info tsla
 ```
 
+The graph command will print out a graph in your terminal of the historic
+price of the given security. Cryptocurrencies aren't supported yet, due to
+API constraints. You may press the UP arrow key to zoom in, the DOWN arrow
+key to zoom out, or the letter "q" to quit.
+```bash
+$ tick graph tsla
+```
+
 To get the top three news articles on a specific stock or cryptocurrency,
 you can run
-
 ```bash
 $ tick news [symbol]
 ```
@@ -89,7 +96,6 @@ intraday data (wait for iex v2 probably)
 * DEB/RPM package
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
-* Make printouts pretty with ncurses (graph plots with historical prices?)
 * Format prices with commas (set locale?)
 * Function to add new attributes to portfolio if not found
 * Maybe replace News API with IEX news endpoint
