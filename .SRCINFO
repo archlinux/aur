@@ -1,14 +1,14 @@
 pkgbase = vim-voom
 	pkgdesc = VOoM - Vim two-pane outliner. Support mediawiki,rest,markdown,...
 	pkgver = 5.3
-	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=2657
+	pkgrel = 2
+	url = https://www.vim.org/scripts/script.php?script_id=2657
 	arch = any
 	groups = vim-plugins
 	license = CCPL
 	depends = vim
 	depends = python2
-	source = vim-voom-5.3.zip::http://www.vim.org/scripts/download_script.php?src_id=25011
+	source = vim-voom-5.3.zip::https://www.vim.org/scripts/download_script.php?src_id=25011
 	sha1sums = 52eab705d1f5640753213496befcab310633c844
 
 pkgname = vim-voom

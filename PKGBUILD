@@ -5,15 +5,14 @@
 
 pkgname=vim-voom
 pkgver=5.3
-_scriptid=25011
-pkgrel=1
+pkgrel=2
 pkgdesc="VOoM - Vim two-pane outliner. Support mediawiki,rest,markdown,..."
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=2657"
+url="https://www.vim.org/scripts/script.php?script_id=2657"
 license=('CCPL')
 depends=('vim' 'python2')
 groups=('vim-plugins')
-source=("${pkgname}-${pkgver}.zip::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}")
+source=("${pkgname}-${pkgver}.zip::https://www.vim.org/scripts/download_script.php?src_id=25011")
 sha1sums=('52eab705d1f5640753213496befcab310633c844')
 
 package() {
