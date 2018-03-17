@@ -33,7 +33,7 @@ optdepends=(
 provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 source=("http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-md5sums=('068178a2eca931eb06fd536b586bcdf6')
+sha256sums=('838ea7385092cd898369f9ec9e52abcd5d9ec4d154f44cbddb2ed1ac3278c911')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
