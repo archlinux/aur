@@ -1,17 +1,16 @@
 # Maintainer: Jesús Castro <x51v4n@gmail.com>
-# Contributors: @killajoe, @Snowmobil, @ThomasWeiser (GitHub)
 
 pkgname=i3-gnome
-pkgver=3.0
-pkgrel=8
+pkgver=3.26.2
+pkgrel=9
 epoch=1
-pkgdesc="Starts i3 inside a gnome session."
+pkgdesc="Use i3 with GNOME Session integration."
 arch=('any')
 url="https://github.com/51v4n/i3-gnome/"
 license=('MIT')
 depends=('i3-wm')
-source=(i3-gnome-3.0.zip::https://github.com/51v4n/i3-gnome/archive/3.0.zip)
-md5sums=('bf68e20252e6ae9dcc386b868a20f591')
+source=(i3-gnome-3.26.2.zip::https://github.com/51v4n/i3-gnome/archive/3.26.2.zip)
+md5sums=('1873c021339073c6204c349bf1677bc9')
 
 build() {
   cd "$pkgname-$pkgver"
