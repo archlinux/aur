@@ -6,17 +6,11 @@ pkgbase = corosync
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = nss
 	depends = libstatgrab
 	depends = net-snmp
 	depends = libdbus
-	depends = libqb
-	provides = corosync=2.4.2
-	conflicts = corosync1
-	source = http://build.clusterlabs.org/corosync/releases/corosync-2.4.3.tar.gz
-	source = corosync.service
-	md5sums = bf0ede13018aadc8a046183bc593b0e0
-	md5sums = 93d77bf4963852cf842497d5da92dc82
+	source = corosync-2.4.3.tar.gz::https://github.com/corosync/corosync/archive/v2.4.3.tar.gz
+	md5sums = SKIP
 
 pkgname = corosync
 

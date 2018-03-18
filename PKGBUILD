@@ -1,20 +1,22 @@
-#Maintainer: ovi chis <sonekken@gmail.com>
+#Maintainer: ovi chis <ovi@ovios.org>
 
 pkgname=corosync
 pkgver=2.4.3
 pkgrel=1
-pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
+pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within 
+applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
-depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
-provides=('corosync=2.4.2')
-conflicts=('corosync1')
-source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
-	"corosync.service")
-md5sums=('bf0ede13018aadc8a046183bc593b0e0'
-         '93d77bf4963852cf842497d5da92dc82')
+depends=('libstatgrab' 'net-snmp' 'libdbus')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/corosync/$pkgname/archive/v$pkgver.tar.gz")
 
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  echo ${pkgver} >.tarball-version
+  GIT_DIR=`pwd`/.git ./autogen.sh
+}
 build() {
   cd ${pkgname}-${pkgver}
   GIT_DIR=`pwd`/.git ./configure --sbindir=/usr/bin \
@@ -42,5 +44,6 @@ package() {
   echo "d /var/log/cluster 0755 root root -" \
     >"${pkgdir}/usr/lib/tmpfiles.d/corosync.conf"
 }
+md5sums=(SKIP)
 
-
+# vim: set sw=2 et:
