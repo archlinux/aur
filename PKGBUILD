@@ -9,27 +9,28 @@ url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
           # OpenPegasus site don't like wget/curl. :/
 depends=('sqlite')
-makedepends=('lynx'
+makedepends=(
+             #'lynx'
              'icu'
              'openssl'
              'net-snmp'
              'openslp'
              'setconf'
              )
-DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
-          'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
-          )
-source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move this file to other place
+# DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
+#           'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
+#           )
+source=(
+        #'lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move this file to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
-        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-openssl-1.1-fix.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
+        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-openssl-1.1-fix.patch'
         )
-sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
-            '9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
+sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             'e3924bdb81a4dd2cedfb9c7ba669cb01b32f4c4e16b3af4c06f9a2426a9274d1'
             '66141323d6de100d9a1805f614a950944e223a36026b62b1a823c8aa148f26df'
             '8a68ecbd383f9121e54bd32f6094b2793367c15d8960ea5f92691e5b9bbcad99'
