@@ -1,6 +1,6 @@
 pkgbase = pass-import
 	pkgdesc = A pass extension for importing data from most of the existing password manager.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/roddhjav/pass-import
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = pass-import
 	depends = pass
 	depends = python
 	depends = python-defusedxml
-	source = https://github.com/roddhjav/pass-import/releases/download/v2.1/pass-import-2.1.tar.gz
-	source = https://github.com/roddhjav/pass-import/releases/download/v2.1/pass-import-2.1.tar.gz.asc
+	source = https://github.com/roddhjav/pass-import/releases/download/v2.2/pass-import-2.2.tar.gz
+	source = https://github.com/roddhjav/pass-import/releases/download/v2.2/pass-import-2.2.tar.gz.asc
 	validpgpkeys = 06A26D531D56C42D66805049C5469996F0DF68EC
-	sha512sums = 73b3dd0e184fbf38885cceeadfd6ee9a8ae76af64920eeb734a59cffa13009c929c341f439c562ea8efb884f6c5b7c50fd2ed1bf8ccd4397b0d705172a218c12
-	sha512sums = c0b84baceb54495d7e8d37689e2b1ccc466cae1afe14c38e6900f0c32e1915ddaa77d0227450869a21074a589cbde4679b3b9ecafd46b1c77ab9205edc664221
+	sha512sums = 9028c779dcfe7cf51b7ef011f334d0723504aeb341c6f1fde3fca4021bd4446dea8f1ee224230aa9cd9ad2c3a6d439f6beae56f88bb77443586c0667897791d5
+	sha512sums = 1d86ad1c167b3af1a6e1620434bb0fae4c452a0bcfe0121134722b179b1ec524b7a9dfe79c7b076b851c9f503e037ad1dc9961f403714492b9c103a23c48441c
 
 pkgname = pass-import
 
