@@ -23,6 +23,7 @@ start() {
 
     for (i = 0; i < cpucount; i++) {
       print mem_per_cpu > "/sys/block/zram" i "/disksize"
+      print "lz4" > "/sys/block/zram" i "/comp_algorithm"
       system("mkswap /dev/zram" i " -L zram" i)
       swapdevs = swapdevs " /dev/zram" i
     }

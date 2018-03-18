@@ -15,7 +15,7 @@ license=('GPL')
 depends=('bash')
 source=("zramctrl"
         "zramswap.service")
-md5sums=('709480a5f46fc4b6bea16800823240c1'
+md5sums=('70e8a5cc219e3fc3c16350b8fa7afb92'
          'a6c029dc942c85704b0f6ac1ca078a24')
 
 package() {
