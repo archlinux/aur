@@ -15,16 +15,24 @@
 #define COLS_SPACING 12
 #define DAYS_TO_BUSINESS_DAYS_RATIO (29.0/20.0)
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
 #include "api.h"
 
+int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1};
+
+int zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
+
 /**
- * Main input loop
- * Entering the key UP or DOWN will zoom in or out one level
+ * -- Main input loop for graphing --
+ *
+ * Initially prints a five-year graph of the given security. The user may input keystrokes to manipulate the graph
+ * Valid keystrokes:
+ * q: Quits program
+ * UP: increase zoom level by one and moves start date forward by one year, three months, or two months.
+ * DOWN: decreases zoom level by one and moves start date backward by one year, three months, or two months.
+ * LEFT: moves start date backward by one year, three months, or one month.
+ * RIGHT: moves start date forward by one year, three months, or one month.
  * @param ticker_name_string symbol
  */
 void graph_main(const char* ticker_name_string);
@@ -33,8 +41,9 @@ void graph_main(const char* ticker_name_string);
  * Prints out a NCurses based graph given an array of daily close prices.
  * x-axis -- close price
  * y-axis -- date
- * @param points daily close prices
- * @param start_time the starting date
+ * @param points daily close prices of past five years
+ * @param start_time the starting date of prices to print
+ * @param zoom the zoom level
  */
 void graph_print(const double* points, struct tm* start_time, int zoom);
 

@@ -100,3 +100,4 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Function to add new attributes to portfolio if not found
 * Maybe replace News API with IEX news endpoint
 * Bookmark certain stocks (not included in portfolio)
+* Zoom in more than one month for graph
