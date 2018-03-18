@@ -9,12 +9,16 @@ url="https://github.com/vinibali/kingston_fw_updater"
 license=('GPLv2')
 depends=(fontconfig freetype2 gcc-libs glibc libice libjpeg6-turbo libpng12 libsm libx11 libxext libxrender zlib)
 source=(https://github.com/vinibali/kingston_fw_updater/archive/master.zip)
-md5sums=(c99b7ff77f0236a4921c042406ae6f53)
+md5sums=(bbb635fdcb0271017edd533bd008d87e)
 
 package() {
-	mkdir -p "${pkgdir}"/opt/kfu/firmware
 	mkdir "${pkgdir}"/custom
-	install -Dm755 "${srcdir}"/kingston_fw_updater-master/bin/kfu "${pkgdir}"/opt/kfu/kfu
+	mkdir -p "${pkgdir}"/opt/kfu/firmware
+	mkdir -p "${pkgdir}"/usr/bin
+
+	install -Dm755 "${srcdir}"/kingston_fw_updater-master/bin/kfu "${pkgdir}"/opt/kfu/bin/kfu
 	cp -a "${srcdir}"/kingston_fw_updater-master/firmware/ "${pkgdir}"/opt/kfu/
 	ln -s /opt/kfu/firmware "${pkgdir}"/custom/firmware
+	ln -s /opt/kfu/bin "${pkgdir}"/custom/bin
+	ln -s /opt/kfu/bin/kfu "${pkgdir}"/usr/bin/kfu
 }

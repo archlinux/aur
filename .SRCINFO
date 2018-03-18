@@ -19,7 +19,7 @@ pkgbase = kingston_fw_updater
 	depends = libxrender
 	depends = zlib
 	source = https://github.com/vinibali/kingston_fw_updater/archive/master.zip
-	md5sums = c99b7ff77f0236a4921c042406ae6f53
+	md5sums = bbb635fdcb0271017edd533bd008d87e
 
 pkgname = kingston_fw_updater
 
