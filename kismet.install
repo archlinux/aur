@@ -1,9 +1,8 @@
 post_install() {
-    post_upgrade
-
     cat << EOP
+
     If you have not done so already, read the README file and the FAQ file. Additional
-    documentation is in the /usr/share/doc/kismet-git/ directory.  You MUST edit
+    documentation is in the /usr/share/docs/ directory.  You MUST edit
     /etc/kismet/kismet.conf and configure Kismet for your system, or it will NOT run
     properly!
     
@@ -18,9 +17,4 @@ post_install() {
     Check the output of the 'groups' command to make sure your user has the proper group!
     
 EOP
-}
-
-post_upgrade() {
-    # Add the group needed to use the limited-functionality binary "kismet_capture"
-    getent group "kismet" &>/dev/null || /usr/sbin/groupadd -r -g 315 kismet &>/dev/null
 }
