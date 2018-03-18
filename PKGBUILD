@@ -22,13 +22,13 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_commit='b9cf73a9e1600c84b1b695447433850bd7d28e19'
+_commit='734b146dfe3fd8382b052a8419081b3bb905a93c'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver=7.0.7.27
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -143,11 +143,10 @@ build() {
 }
 
 package_libmagick-full() {
-    local _srcver="${pkgver%.*}-${pkgver##*.}"
-    local _majorver="${_srcver%%.*}"
+    local _majorver="${pkgver%%.*}"
     local _etcdir="ImageMagick-${_majorver}"
     
-    pkgdesc+=" (library)"
+    pkgdesc+=' (library)'
     backup=(etc/"$_etcdir"/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
     provides=('libmagick'
@@ -225,7 +224,7 @@ package_imagemagick-full() {
 }
 
 package_imagemagick-full-doc() {
-    pkgdesc+=" (utilities manuals and libraries API)"
+    pkgdesc+=' (manual and API docs)'
     arch=('any')
     provides=('imagemagick-doc')
     conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
