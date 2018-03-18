@@ -2,7 +2,7 @@
 # Maintainer: Alastair Pharo  asppsa at gmail dot com
 
 pkgname=pure-reduce-git
-pkgver=r5652.82501d5
+pkgver=r5841.a01d555c
 pkgrel=1
 pkgdesc="Computer Algebra with Pure: A Reduce Interface"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ provides=('pure-reduce')
 conflicts=('pure-reduce')
 replaces=('pure-reduce-hg')
 _reduce_rev=2204
-source=("git+https://bitbucket.org/purelang/pure-lang"
+source=("git+https://github.com/agraef/pure-lang.git"
         "https://bitbucket.org/purelang/pure-lang/downloads/reduce-algebra-csl-r$_reduce_rev.tar.bz2")
 md5sums=(SKIP 'dafc1f135921aa7f161fb2ff45675e65')
 
