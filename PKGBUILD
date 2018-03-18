@@ -1,3 +1,4 @@
+# Maintainer: Rysh Glene <thereisnoescape18751 at protonmail dot ch>
 # Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
 # Maintainer: Michał Lemke <lemke.michal@gmail.com>
 
