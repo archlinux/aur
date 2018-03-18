@@ -11,9 +11,7 @@ pkgbase = fselect
 	provides = fselect
 	conflicts = fselect-git
 	source = 0.3.2.tar.gz::https://github.com/jhspetersson/fselect/archive/0.3.2.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/jhspetersson/fselect/master/LICENSE-MIT
 	md5sums = 90500ab06feb075317fa0b2fdd2b8f68
-	md5sums = b377b220f43d747efdec40d69fcaa69d
 
 pkgname = fselect
 

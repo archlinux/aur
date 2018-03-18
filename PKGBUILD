@@ -9,8 +9,8 @@ license=("MIT")
 
 pkgdesc='Find files with SQL-like queries'
 
-source=("$pkgver.tar.gz::https://github.com/jhspetersson/$pkgname/archive/$pkgver.tar.gz" "LICENSE::https://raw.githubusercontent.com/jhspetersson/fselect/master/LICENSE-MIT")
-md5sums=('90500ab06feb075317fa0b2fdd2b8f68' 'b377b220f43d747efdec40d69fcaa69d')
+source=("$pkgver.tar.gz::https://github.com/jhspetersson/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('90500ab06feb075317fa0b2fdd2b8f68')
 makedepends=('rust')
 depends=('gcc-libs')
 conflicts=('fselect-git')
