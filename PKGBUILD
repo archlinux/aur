@@ -115,6 +115,10 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -m644 "${srcdir}/meshlab.desktop" "${pkgdir}/usr/share/applications"
   sed -i "s#Version=.*#Version=$pkgver#" "${pkgdir}/usr/share/applications/meshlab.desktop"
+  
+  # add xml symlinks to propper show info in "help>plugin info" dialog
+  cd ${pkgdir}/usr/lib/meshlab/plugins
+  for xml in *.xml ; do ln -s $xml lib${xml} ; done
 }
 
 # vim:set ts=2 sw=2 et:
