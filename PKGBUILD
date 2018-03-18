@@ -2,7 +2,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.198
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -33,7 +33,8 @@ prepare() {
   #sed -i 's,export LD_LIBRARY_PATH=.*,export LD_LIBRARY_PATH=/usr/lib,g' Albion-Online
   #sed -i 's,export QT_QPA_PLATFORM_PLUGIN_PATH=.*,export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins/platforms,g' Albion-Online
   #sed -i 's,export QT_PLUGIN_PATH=.*,export QT_PLUGIN_PATH=/usr/lib/qt/plugins,g' Albion-Online
-  sed -i 's,.*launcher/Albion-Online",QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 LD_PRELOAD=/usr/lib/libsndio.so "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
+  #sed -i 's,.*launcher/Albion-Online",QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 LD_PRELOAD=/usr/lib/libsndio.so "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
+  sed -i 's,.*launcher/Albion-Online",sed -i -e "/Screenmanager Resolution Height/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"; sed -i -e "/Screenmanager Resolution Width/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"; QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
   popd
 }
 
@@ -48,6 +49,10 @@ package() {
   chmod 775 "${pkgdir}/opt/${pkgname}/game_x64"
 
   chmod 775 "${pkgdir}/opt/${pkgname}/launcher"
+
+  # make the game think it's using the right version of libsndio
+  mkdir -p "${pkgdir}/usr/lib"
+  ln -s /usr/lib/libsndio.so "${pkgdir}/usr/lib/libsndio.so.6.1"
   
   # link launcher launcher
   mkdir -p "${pkgdir}/usr/bin"
