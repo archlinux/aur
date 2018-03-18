@@ -1,6 +1,6 @@
 pkgbase = onepaq
 	pkgdesc = A cross platform 1password read-only client
-	pkgver = v0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = http://github.com/hspak/onepaq
 	install = onepaq.install
@@ -10,9 +10,9 @@ pkgbase = onepaq
 	makedepends = go
 	provides = onepaq
 	conflicts = onepaq
-	source = https://github.com/hspak/onepaq/archive/v0.9.0.tar.gz
+	source = https://github.com/hspak/onepaq/archive/0.10.0.tar.gz
 	source = onepaq.service
-	sha256sums = b5f452b37d8d56904141792240e888d6842831ed02181dae5e2e1958fc3c56ac
+	sha256sums = fc6026cec6c52354ee7132668b8a13c47f9f45c7d1637779a574176ada0f3e0a
 	sha256sums = b2cb6b881d53f3e2e7230dab6ec94ec09f4b46b60cb97bfa9f8cccb1cba05b0d
 
 pkgname = onepaq
