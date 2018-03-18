@@ -1,0 +1,25 @@
+pkgbase = kingston_fw_updater
+	pkgdesc = Kingston's utility to update SSD firware on Sandforce based drives, created by James Huey. For more information please look the project's github page.
+	pkgver = 205
+	pkgrel = 010
+	url = https://github.com/vinibali/kingston_fw_updater
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = libice
+	depends = libjpeg6-turbo
+	depends = libpng12
+	depends = libsm
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = zlib
+	source = https://github.com/vinibali/kingston_fw_updater/archive/master.zip
+	md5sums = c99b7ff77f0236a4921c042406ae6f53
+
+pkgname = kingston_fw_updater
+
