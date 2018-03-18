@@ -1,8 +1,8 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
