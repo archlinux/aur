@@ -26,5 +26,5 @@ build() {
 package() {
     cd human
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/human/LICENSE
+    install -D -m 0644 LICENSE "$pkgdir"/usr/share/licenses/human/LICENSE
 }
