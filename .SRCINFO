@@ -7,7 +7,7 @@ pkgbase = giteye
 	license = custom
 	makedepends = unzip
 	depends = git
-	depends = java-environment=8
+	depends = jdk8-openjdk
 	depends = python
 	noextract = GitEye-1.12.0-linux.x86_64.zip
 	noextract = GitEye-2.0.0-linux.x86_64.zip

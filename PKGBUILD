@@ -6,12 +6,12 @@
 
 pkgname=giteye
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CollabNet GitEye is a desktop for Git. It works with TeamForge, CloudForge and other Git services."
 arch=('x86_64')
 url="https://www.collab.net/products/giteye"
 license=('custom')
-depends=('git' 'java-environment=8' 'python')
+depends=('git' 'jdk8-openjdk' 'python')
 makedepends=('unzip')
 options=('!strip')
 source=("LICENSE"
