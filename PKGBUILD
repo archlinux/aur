@@ -2,15 +2,15 @@
 # Contributor: Bjoern Lindig <bjoern dot lindig at googlemail dot com>
 
 pkgname=pure-docs
-pkgver=0.66
+pkgver=0.67
 pkgrel=1
 pkgdesc="Pure Language and Library Documentation"
 arch=('any')
 url="http://purelang.bitbucket.org/"
 license=('FDL')
 groups=(pure-complete pure-base)
-source=(https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('359f39d328a18e790a8352e94e5ade2a')
+source=(https://github.com/agraef/pure-lang/releases/download/pure-$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('ad49192a36b8463fdadf1c3532a7a627')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
