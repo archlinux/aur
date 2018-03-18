@@ -23,9 +23,7 @@ _qdepth='32'
 
 pkgbase=imagemagick-full-git
 pkgname=('libmagick-full-git' 'imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.0.7.16.r13021.g45f72690a
-_majorver="${pkgver%%.*}"
-_etcdir="ImageMagick-${_majorver}"
+pkgver=7.0.7.28.r13846.g32fafbf71
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features, git version)"
@@ -60,10 +58,13 @@ sha256sums=('SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
-  cd "$pkgbase"
-  
-  # fix up typemaps to match Arch Linux packages, where possible
-  patch -Np1 -i "${srcdir}/arch-fonts.diff"
+    cd "$pkgbase"
+    
+    # fix for 'sh: gitversion.sh: command not found' during autoreconf
+    sed -i 's|(gitversion|(./gitversion|' configure.ac
+    
+    # fix up typemaps to match Arch Linux packages, where possible
+    patch -Np1 -i "${srcdir}/arch-fonts.diff"
 }
 
 pkgver() {
@@ -79,7 +80,10 @@ pkgver() {
 build() {
     cd "$pkgbase"
     
-    CFLAGS="${CFLAGS} -I/usr/include/FLIF" \
+    export CFLAGS="${CFLAGS} -I/usr/include/FLIF"
+    
+    autoreconf -fis
+    
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
@@ -146,7 +150,10 @@ build() {
 }
 
 package_libmagick-full-git() {
-    pkgdesc+=" (library)"
+    local _majorver="${pkgver%%.*}"
+    local _etcdir="ImageMagick-${_majorver}"
+    
+    pkgdesc+=' (library)'
     backup=(etc/"$_etcdir"/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
     provides=('libmagick' 'libmagick-git'
@@ -211,7 +218,7 @@ package_imagemagick-full-git() {
     find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     
     # template start; name=perl-binary-module-dependency; version=1;
-    if [ $(find "${pkgdir}/usr/lib/perl5/" -name '*.so') ] 
+    if [ "$(find "${pkgdir}/usr/lib/perl5/" -name '*.so')" ] 
     then
         local _perlver_min="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')"
         local _perlver_max="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')"
@@ -224,7 +231,7 @@ package_imagemagick-full-git() {
 }
 
 package_imagemagick-full-doc-git() {
-    pkgdesc+=" (utilities manuals and libraries API)"
+    pkgdesc+=' (manual and API docs)'
     arch=('any')
     provides=('imagemagick-doc')
     conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc')
