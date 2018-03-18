@@ -1,3 +1,19 @@
 post_remove() {
-    echo "Home Assistant data directory '/var/lib/hass' is left untouched. Remove it if you are really sure you won't need your data in the future."
+  echo "Home Assistant data directory '/var/lib/hass' is left untouched. Remove it if you are really sure you won't need your data in the future."
+}
+
+post_upgrade() {
+  if [ "$(vercmp $2 '0.65.5-2')" -lt 0 ]; then
+    echo ""
+    echo "Notice: Home Assistant now defaults to purge recorded history that is older than 10 days. If you want to keep your recorded data for longer than that, you must configure the number of days to retain before starting 0.64+ for the first time, for example:"
+    echo ""
+    echo "recorder:"
+    echo "  purge_keep_days: 30"
+    echo ""
+    echo "If you want to keep the previous default of never deleting history, use this configuration:"
+    echo ""
+    echo "recorder:"
+    echo "  purge_interval: 0"
+    echo ""
+  fi
 }
