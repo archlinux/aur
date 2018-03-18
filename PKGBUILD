@@ -1,13 +1,13 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=alchemy-git
 pkgver=r596.93aeeb3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Nonorthodox painting software exploring and experimenting with alternative ways of drawing"
 url="http://al.chemy.org/"
 license=('GPL')
 conflicts=('alchemy')
-depends=('sh' 'java-environment=7' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst')
+depends=('sh' 'java-environment=7' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst' 'libxml2')
 makedepends=('git' 'apache-ant' 'imagemagick')
 source=("${pkgname}::git+https://github.com/karldd/Alchemy.git"
 	"alchemy.desktop"
@@ -45,5 +45,5 @@ package() {
 	install -Dm644 "alchemy-3.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/alchemy.png"
 	install -Dm644 "alchemy-4.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/alchemy.png"
 	install -Dm644 "alchemy-5.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/alchemy.png"
-	install -Dm644 "../../alchemy.desktop" "${pkgdir}/usr/share/applications/alchemy.desktop"
+	install -Dm644 "../alchemy.desktop" "${pkgdir}/usr/share/applications/alchemy.desktop"
 }

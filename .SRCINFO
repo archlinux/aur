@@ -1,7 +1,7 @@
 pkgbase = alchemy-git
 	pkgdesc = Nonorthodox painting software exploring and experimenting with alternative ways of drawing
 	pkgver = r596.93aeeb3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://al.chemy.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = alchemy-git
 	depends = libxrender
 	depends = libxcomposite
 	depends = libxtst
+	depends = libxml2
 	conflicts = alchemy
 	source = alchemy-git::git+https://github.com/karldd/Alchemy.git
 	source = alchemy.desktop
