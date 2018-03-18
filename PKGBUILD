@@ -7,7 +7,7 @@ pkgdesc="Xamarin implementation of the Microsoft bui    ld system"
 arch=('x86_64')
 depends=('mono>=5.0.0')
 provides=('msbuild')
-conflicts=('msbuild')
+conflicts=('msbuild' 'dotnet-sdk' )
 url="https://github.com/mono/msbuild"
 license=('MIT')
 source=("msbuild-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
