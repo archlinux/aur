@@ -2,7 +2,7 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=v1.r16.g818d21d
+pkgver=1.r16.g818d21d
 pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
@@ -17,20 +17,18 @@ optdepends=(
 provides=('nougat')
 conflicts=('nougat')
 
-pkgver() {
-  cd "$_pkgname"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 source=(
   "nougat::git+https://github.com/Sweets/nougat.git"
 )
 
 sha512sums=('SKIP')
 
-package() {
-  install -dm755 "$pkgdir"/usr/bin
+pkgver() {
+  cd "$_pkgname"
+  git describe --tags --long | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^v//g'
+}
 
+package() {
   install -Dm755 "$srcdir"/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "$srcdir"/$_pkgname/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
