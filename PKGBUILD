@@ -14,7 +14,7 @@ url="http://pidgin.im/"
 license=('GPL')
 depends=('enchant1.6' 'meanwhile' 'farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss'
   'libgnome-keyring' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
-    'hicolor-icon-theme' 'dbus-glib' 'webkitgtk3' 'json-glib')
+    'hicolor-icon-theme' 'dbus-glib' 'webkitgtk' 'json-glib')
 optdepends=('avahi: Bonjour protocol support'
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
