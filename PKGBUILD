@@ -1,16 +1,15 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=tucnak
-pkgver=4.08
+pkgver=4.11
 pkgrel=1
 pkgdesc="Ham Radio - VHF/HF contest logbook"
 arch=('i686' 'x86_64')
 url="http://tucnak.nagano.cz/"
 license=('GPL')
-depends=('libzia' 'fftw' 'libftdi-compat' 'portaudio' 'hamlib' 'gpm' 'desktop-file-utils')
+depends=("libzia=${pkgver}" 'fftw' 'libftdi-compat' 'portaudio' 'hamlib' 'gpm')
 makedepends=('pkg-config')
 conflicts=('tucnak3')
-install=$pkgname.install
 source=("http://tucnak.nagano.cz/$pkgname-$pkgver.tar.gz"
 	diff.misc.c
 	diff.subwin.c)
@@ -32,9 +31,9 @@ package() {
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR=$pkgdir install
 }
-md5sums=('badf0a33c42b0ff8c9f4f7ef14768be4'
+md5sums=('5532c403b973dd3752cef1801278d0f9'
          'c69ecca9cfe4a5094f39b72503d1c270'
          'c30358bfb7316ce34924f9aed10883da')
-sha256sums=('da59a9c38fa2a34aa57c3c5c84367a87a8a91f581e0f60e1005da77f899ab4fe'
+sha256sums=('0aa1661a2a65d43218e9e17a373078efa417cabeeacfe25fa15f9c2840567946'
             '91dcdb41fcf3c427587d5ab909db87de01f1d0bc4ea76909b2846488a262990a'
             'fe9455bd8d1dc528d4d5d8637eefcfcbe784a2698d6b7ac131f5efa6fc9f3404')
