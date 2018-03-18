@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -30,6 +30,7 @@ sha512sums=('649deb36108faf80815f79470c2004c374c7a82c7354a837446088820dec3109d58
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS} -ansi -std=gnu++11"
+CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 MAKEFLAGS="-j$(nproc)"
 
 build() {
