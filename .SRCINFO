@@ -1,0 +1,15 @@
+pkgbase = libjit-git
+	pkgdesc = Generic just-in-time compiler library
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gnu.org/software/libjit/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libjit
+	conflicts = libjit
+	source = git://git.savannah.gnu.org/libjit.git
+	md5sums = SKIP
+
+pkgname = libjit-git
+
