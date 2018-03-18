@@ -156,12 +156,7 @@ pre_remove() {
 	  done
 	}
 
-	    stop_sensu_services
-
-	# wait for services to stop
-	sleep 6
-
-	EOF
+    stop_sensu_services
 }
 
 post_remove() {

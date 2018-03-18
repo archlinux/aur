@@ -3,7 +3,7 @@
 # Contributor:
 pkgname=sensu
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
