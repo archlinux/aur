@@ -1,0 +1,14 @@
+pkgbase = terraform-index-bin
+	pkgdesc = A simple tool which prints the AST of a HCL file
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/mauve/terraform-index
+	arch = x86_64
+	license = BSD
+	source = https://github.com/mauve/terraform-index/releases/download/0.0.2/terraform-index-0.0.2-linux-amd64.zip
+	source = LICENSE
+	sha256sums = b10de458b0414a76ea2e18d3ebe3df54e212e09a4b64f8fefecf9f08e906b2d1
+	sha256sums = 8d30e4d4e52fc07a98e90dcbbe71284520019b51b4beb95509b12a04e2cc5cf5
+
+pkgname = terraform-index-bin
+
