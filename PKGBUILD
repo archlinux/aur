@@ -1,14 +1,14 @@
-# Contributor: Storm Dragon <support@stormdragon.tk>
+# Maintainer: Storm Dragon <support@stormdragon.tk>
 pkgname=fortune-mod-confucius
-pkgver=20100915
-pkgrel=2
+pkgver=20180317
+pkgrel=1
 pkgdesc="Fortune cookies: Confucius sayings.)"
 arch=('any')
 url="http://stormdragon.tk/fortunes/confucius"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('cd21d241904c473b00f4c630e0208615')
+md5sums=('669a24f7832bda49ff3b2a64ad09bba0')
 
 build()
 {
