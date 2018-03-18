@@ -1,15 +1,15 @@
-# Maintainer: Your Name <Alchemy-aur@bartus.33mail.com>
+# Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=alchemy-svn
-pkgver=r574
-pkgrel=2
+pkgver=r596.93aeeb3
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Nonorthodox painting software exploring and experimenting with alternative ways of drawing"
 url="http://al.chemy.org/"
 license=('GPL')
 conflicts=('alchemy')
 depends=('sh' 'java-environment=7' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst')
-makedepends=('subversion' 'apache-ant' 'imagemagick')
-source=("${pkgname}::svn+http://svn.al.chemy.org/svn/"
+makedepends=('git' 'apache-ant' 'imagemagick')
+source=("${pkgname}::git+https://github.com/karldd/Alchemy.git"
 	"alchemy.desktop"
 	)
 md5sums=('SKIP'
@@ -17,18 +17,17 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${pkgname}
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 export PATH=/usr/lib/jvm/java-7-openjdk/jre/bin/:$PATH
-	cd ${pkgname}/Alchemy
+	cd ${pkgname}
 	ant
 }
 
 package() {
-	cd ${pkgname}/Alchemy/
+	cd ${pkgname}
 	chmod -R o+r dist/*
 	install -dm755 ${pkgdir}/opt/alchemy
         cp -r -t ${pkgdir}/opt/alchemy dist/Alchemy/*
