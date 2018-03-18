@@ -4,7 +4,7 @@
 
 pkgname=cyrus-imapd
 pkgver=2.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyrus IMAP mail server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.cyrusimap.org/"
