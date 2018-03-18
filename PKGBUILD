@@ -6,7 +6,7 @@
 # Contributor: mystilleef
 
 pkgname=zramswap
-pkgver=1.1
+pkgver=2
 pkgrel=1
 pkgdesc="Sets up zram-based swap devices on boot"
 arch=('any')
