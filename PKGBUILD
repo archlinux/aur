@@ -3,11 +3,11 @@
 
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=1.43
+pkgver=1.44
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
-url=http://www.microchip.com/xc${_number_of_bits}
+url=https://www.microchip.com/development-tools/downloads-archive
 license=(custom)
 depends_i688=(gcc-libs)
 depends_x86_64=(lib32-gcc-libs)
@@ -19,7 +19,7 @@ options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
         "bitrock-unpacker.tcl")
 
-md5sums=('8cba570dea965bb7f595b8548f6d1e38'
+md5sums=('0c9654134abcddbd7f8aefdec6ccab87'
          '70dedba4c417f8c0bb07c32d19e9d197')
 install=$pkgname.install
 
@@ -33,10 +33,10 @@ build() {
 package() {
   mkdir -p "${pkgdir}${instdir}"
   mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
-  mv unpacked.vfs/licensecomponent/xclmallBin/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  mv unpacked.vfs/licensecomponent/xclmBinlinux32/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
   sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" \
-  unpacked.vfs/licensecomponent/xclmallBin/etc/xclm.conf
-  mv unpacked.vfs/licensecomponent/xclmallBin/etc "${pkgdir}${instdir}"
+  unpacked.vfs/licensecomponent/xclmBinlinux32/etc/xclm.conf
+  mv unpacked.vfs/licensecomponent/xclmBinlinux32/etc/* "${pkgdir}${instdir}/etc/."
   mv unpacked.vfs/licensecomponent/xclmallDocs "${pkgdir}${instdir}/docs/xclm"
   cp "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}/docs" 2>/dev/null || true
   mv "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}" 2>/dev/null || true
