@@ -1,16 +1,16 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-slab-custom-git
-pkgver=r1020.6144b95
-pkgrel=1
+pkgver=r1101.8a860c1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 makedepends=('git' 'nodejs' 'npm' 'ttfautohint' 'otfcc')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=(ttf-iosevka-slab)
-provides=('ttf-iosevka-slab')
+conflicts=()
+provides=()
 source=("git+https://github.com/be5invis/Iosevka")
 md5sums=('SKIP')
 
@@ -24,7 +24,7 @@ build() {
   [[ $IOSEVKA_DESIGN = *slab* ]] && design="$IOSEVKA_DESIGN" || design="slab $IOSEVKA_DESIGN"
   cd Iosevka
   npm install
-  make custom-config design="$design"
+  make custom-config design="$design" family='Iosevka Slab Custom'
   make custom
 }
 
@@ -90,6 +90,9 @@ package() {
 #   v-zero-slashed : Slashed Zero 0 (default).
 #   v-zero-dotted : Dotted Zero 0.
 #   v-zero-unslashed : O-like 0.
+# three (3):
+#   v-three-flattop : Flat top 3 (Like Museo Sans / Montserrat).
+#   v-three-twoarks : Arched top 3 (default).
 # ASCII tilde (~), asterisk (*), paragaraph(¶), underscore (_) and ASCII Caret (^):
 #   v-tilde-high : Higher tilde ~.
 #   v-tilde-low : Lower tilde ~ (default).
