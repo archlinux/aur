@@ -1,0 +1,15 @@
+--- htapp.cc.orig	2014-09-14 11:55:26.000000000 -0400
++++ htapp.cc	2018-03-18 15:31:13.604092939 -0400
+@@ -3021,11 +3021,11 @@ void do_modal_resize()
+ 
+ static uint isqr(uint u)
+ {
+ 	uint a = 2;
+ 	uint b = u/a;
+-	while (abs(a - b) > 1) {
++	while (a>b && a-b>1 || b>a && b-a>1) {
+ 		a = (a+b)/2;
+ 		b = u/a;
+         }
+ 	return MIN(a, b);
+ }
