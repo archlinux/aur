@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash
-pkgver=2.7.5
+pkgver=2.7.6
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
@@ -18,11 +18,11 @@ optdepends=('evince: for print preview'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
 source=(
-       https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
+	http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2
 )
-sha1sums=('df2c53c733b9e08904f5cbd508e20d5abeb40579')
-sha256sums=('1d1596ce367e4e027ff63cb6b3502a1306a3045882caa567ca82e76c28ef224e')
-sha512sums=('68cd6e6f61a43b8837e9efe693d22f62ebe10a8bb7d593814fb6a12d035d74ec1e444f53010ad53c6b1adf28c75aa482403c06052314a91636c2a8baa30e09af')
+sha1sums=('c9f27303bb178a02de5d8f03cba7bcc700cdb532')
+sha256sums=('73f9afbff0dbafca04e4cddb6d8fe643975e6ffd4c4218ed8158f937a4bfdf28')
+sha512sums=('4bf813f68987bcd8784e5cba3662b544bf2c28bad8dad71c728fda67970c1b2c221b027ab9c3fffd1c7e4024fd46ba054cbc9b8fa6de91ad50915610b1fd77f4')
 backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
