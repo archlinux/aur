@@ -1,23 +1,22 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=wxhexeditor
-pkgver=0.23
-pkgrel=2
-pkgdesc="a free hex editor / disk editor for Linux, Windows and MacOSX"
+pkgver=0.24
+pkgrel=1
+pkgdesc="A free hex editor / disk editor for Linux, Windows and MacOSX"
 arch=('i686' 'x86_64')
-url="http://wxhexeditor.sourceforge.net/"
-license=('GPL')
+url="http://www.wxhexeditor.org"
+license=('GPL2')
 makedepends=('wxgtk')
-source=("http://downloads.sourceforge.net/project/wxhexeditor/wxHexEditor/v${pkgver}%20Beta/wxHexEditor-v${pkgver}-src.tar.bz2")
-md5sums=('d0e785c95cf40737246e5b2cc4cb7204')
-
+source=("https://github.com/EUA/wxHexEditor/archive/v$pkgver.tar.gz")
+md5sums=('1b77bddc026e22797fd0e7a82e52cd28')
 
 build() {
-  cd "$srcdir/wxHexEditor"
-  make CC=gcc CPP=cpp CXX=g++
+	cd "$srcdir/wxHexEditor-$pkgver"
+	make
 }
 
 package() {
-  cd "$srcdir/wxHexEditor"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+	cd "$srcdir/wxHexEditor-$pkgver"
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
