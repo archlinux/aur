@@ -22,13 +22,13 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_commit='17a986472f5555d301651637f042540e9b8b8b7e'
+_commit='b9cf73a9e1600c84b1b695447433850bd7d28e19'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.7.25
-pkgrel=2
+pkgver=7.0.7.27
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -206,7 +206,7 @@ package_imagemagick-full() {
     find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     
     # template start; name=perl-binary-module-dependency; version=1;
-    if [ $(find "${pkgdir}/usr/lib/perl5/" -name '*.so') ] 
+    if [ "$(find "${pkgdir}/usr/lib/perl5/" -name '*.so')" ] 
     then
         local _perlver_min="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')"
         local _perlver_max="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')"
