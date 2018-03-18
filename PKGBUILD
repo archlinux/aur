@@ -3,8 +3,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=urjtag-svn
-pkgver=0.10.r2040
-pkgrel=2
+pkgver=0.10.r2056
+pkgrel=1
 pkgdesc="Enhanced, modern tool for communicating over JTAG with flash chips, CPUs,and many more"
 arch=("i686" "x86_64")
 url="http://urjtag.org/"
@@ -14,7 +14,7 @@ makedepends=('svn' 'gcc' 'libftd2xx' 'flex' 'bison')
 #makedepends=(svn gcc flex bison)
 conflicts=('urjtag')
 options=('!strip')
-source=('svn+http://urjtag.svn.sourceforge.net/svnroot/urjtag/trunk'
+source=('svn://svn.code.sf.net/p/urjtag/svn/trunk'
         'urjtag_libftd2xx.patch')
 md5sums=('SKIP'
          '366620fd96427e69e37dd761dd173be9')
