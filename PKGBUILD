@@ -34,7 +34,7 @@ prepare() {
   #sed -i 's,export QT_QPA_PLATFORM_PLUGIN_PATH=.*,export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins/platforms,g' Albion-Online
   #sed -i 's,export QT_PLUGIN_PATH=.*,export QT_PLUGIN_PATH=/usr/lib/qt/plugins,g' Albion-Online
   #sed -i 's,.*launcher/Albion-Online",QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 LD_PRELOAD=/usr/lib/libsndio.so "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
-  sed -i 's,.*launcher/Albion-Online",sed -i -e "/Screenmanager Resolution Height/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"; sed -i -e "/Screenmanager Resolution Width/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"; QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
+  sed -i 's,.*launcher/Albion-Online",sed -i -e "/Screenmanager Resolution Height/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"\nsed -i -e "/Screenmanager Resolution Width/d" "$HOME/.config/unity3d/Sandbox Interactive GmbH/Albion Online Client/prefs"\nQT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
   popd
 }
 
