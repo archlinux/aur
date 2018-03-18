@@ -1,0 +1,54 @@
+From 7d4360c64d94de53d907f13ca99837285e972ec6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Wed, 17 May 2017 14:33:30 +0100
+Subject: xdg-open: Fixes LXQt behavior
+
+Commit 6387086e4938d568c2bab185632f60e1619b3f68 introduced LXQt support.
+In xdg-open it assumed that LXQt and LXDE are the same. They aren't. LXQt
+does not have pcmanfm, it has pcmanfm-qt.
+LXQt doesn't want to rely on pcmamfm-qt to handle it: LXQt is very modular
+and can be deployed without pcmanfm-qt.
+
+open_generic() works for LXQt but it depends on mimeopen and mimetype. In
+the future we will want, for sure, to drop those dependencies. That's the
+reason for the existence of open_lxqt().
+---
+ scripts/xdg-open.in | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
+index 9817c5f..2972257 100644
+--- a/scripts/xdg-open.in
++++ b/scripts/xdg-open.in
+@@ -447,6 +447,11 @@ open_lxde()
+     fi
+ }
+ 
++open_lxqt()
++{
++    open_generic "$1"
++}
++
+ [ x"$1" != x"" ] || exit_failure_syntax
+ 
+ url=
+@@ -511,10 +516,14 @@ case "$DE" in
+     open_xfce "$url"
+     ;;
+ 
+-    lxde|lxqt)
++    lxde)
+     open_lxde "$url"
+     ;;
+ 
++    lxqt)
++    open_lxqt "$url"
++    ;;
++
+     enlightenment)
+     open_enlightenment "$url"
+     ;;
+-- 
+cgit v1.1
+
+
