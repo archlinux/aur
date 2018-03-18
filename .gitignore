@@ -1,0 +1,4 @@
+libadalang-tools
+pkg
+src
+*.pkg.tar.xz
