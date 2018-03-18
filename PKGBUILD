@@ -1,7 +1,7 @@
 # Maintainer: Cedric Meury <cedric@meury.com>
 pkgname=uchiwa
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.3
+pkgrel=2
 pkgdesc="A simple dashboard for the Sensu monitoring framework, built with Go and AngularJS."
 arch=('x86_64' 'i686')
 url="https://www.uchiwa.io/"
@@ -14,8 +14,8 @@ source_x86_64=("http://dl.bintray.com/palourde/uchiwa/uchiwa-${pkgver}-${pkgrel}
 source=('LICENSE'
         'uchiwa.service')
 
-md5sums_i686=('96f5271f6fb3207727d155ba00aa0fa1')
-md5sums_x86_64=('4b0e4eb1a9bcff2ce28925ec392adf86')
+md5sums_i686=('c1c563b95c5f305c1445f6ee463f2f23')
+md5sums_x86_64=('875480ad3870f4f0f41b7036bafb70d9')
 md5sums=('598261aece4dcb18f35ce5435b652d8a'
         'a7222f9eac2a36b5e5c27a7377831dc5')
 
