@@ -1,5 +1,5 @@
 pkgbase = python-datrie
-	pkgdesc = LZ-string compression for Python
+	pkgdesc = Super-fast, efficiently stored Trie for Python
 	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/datrie
