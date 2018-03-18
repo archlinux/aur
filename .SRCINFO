@@ -19,6 +19,7 @@ pkgbase = synergy2-bin
 	depends = qt5-base>=5.5.0
 	depends = qt5-declarative>=5.5.0
 	depends = qt5-quickcontrols>=5.5.0
+	depends = qt5-svg>=5.5.0
 	conflicts = synergy
 	conflicts = synergy2
 	options = !strip
