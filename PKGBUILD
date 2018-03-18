@@ -1,14 +1,14 @@
 # Maintainer: Stefano Angeleri <weltall2 AT gmail DOT com>
 # Contributor: Boris Shomodjvarac <spam AT shomodj DOT com>
 pkgname=vmtouch
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Portable file system cache diagnostics and control"
 arch=('any')
 url="https://github.com/hoytech/vmtouch"
 license=('BSD')
 source=("https://github.com/hoytech/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('09dad8440bad936e8b8accedd7a6b317')
+md5sums=('deaa76af2cadfde293547f1940208b0f')
 depends=('glibc')
 makedepends=('perl')
 
