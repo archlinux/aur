@@ -1,7 +1,7 @@
 pkgbase = choria-git
-	pkgdesc = a 2D MMORPG that's all about grinding and doing chores.
+	pkgdesc = A 2D MMORPG that's all about grinding and doing chores (development version).
 	pkgver = v0.4.2.r1305.g87ee046d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazztickets/choria
 	arch = i686
 	arch = x86_64
