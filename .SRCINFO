@@ -1,0 +1,12 @@
+pkgbase = otf-ocr-a
+	pkgdesc = A font that was designed to be easy for computers to read (OTF version)
+	pkgver = 2008
+	pkgrel = 1
+	url = http://luc.devroye.org/fonts-48501.html
+	arch = any
+	license = custom
+	source = http://luc.devroye.org/OCRA.zip
+	sha256sums = 694371f1c48abc87bbdc42c8ab69666aa51a49c9abe95d73b547bfc2af080f08
+
+pkgname = otf-ocr-a
+
