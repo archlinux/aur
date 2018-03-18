@@ -1,0 +1,12 @@
+pkgbase = ttf-tratex
+	pkgdesc = Typsnittet som används på svenska vägskyltar / The font that is used on Swedish road signs
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.transportstyrelsen.se/sv/vagtrafik/Trafikregler/Om-vagmarken/Teckensnitt
+	arch = any
+	license = custom
+	source = https://www.transportstyrelsen.se/globalassets/global/vag/vagmarken/teckensnitt/tratex_win.zip
+	sha256sums = d84e3526ee9e9b8fe644f2f16cb8dfd08e20c99d5c7e214dcd8355da805771ea
+
+pkgname = ttf-tratex
+
