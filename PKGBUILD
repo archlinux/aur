@@ -32,6 +32,10 @@ package() {
 
     unzip -q "GitEye-${pkgver}-linux.x86_64.zip" -d "${pkgdir}/opt/${pkgname}/"
 
+    msg2 "Adding GitEye executable to default path..."
+    ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/"
+    ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/giteye"
+
     msg2 "Installing LICENSE..."
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
