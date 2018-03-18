@@ -1,8 +1,8 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=music21
 pkgname=python-$_pkgname
-pkgver=4.1.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="A toolkit for computer-aided musical analysis"
 arch=('any')
 url="http://web.mit.edu/music21"
@@ -15,8 +15,8 @@ optdepends=('python-matplotlib: graphing support'
             'python-pillow: resources for transforming and editing graphics files'
             'lilypond: automatically generate PDF or PNG files')
 makedepends=('python-setuptools')
-source=(https://github.com/cuthbertLab/music21/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha512sums=('9be1cab600b92774ea18354ac473ecb27550ecf135719fe38d203462110d10cdedf666196beed29bdc6bdcb125f7424927c30bcc4ed128ce6dcdf6c3ad22197b')
+source=(https://github.com/cuthbertLab/music21/releases/download/v.$pkgver/$_pkgname-$pkgver.tar.gz)
+sha512sums=('a3e749d5253ac423d715783da61f66f1f46ca76398233881c5be57fdc5db7aab722cfbe1e639089fb67e105cb6fa25408cba1a6b299b733c244cfe97dfda09ec')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
