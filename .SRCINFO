@@ -1,0 +1,21 @@
+pkgbase = python-datrie
+	pkgdesc = LZ-string compression for Python
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/datrie
+	arch = any
+	license = (L)GPL2
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-datrie-0.7.1.tar.gz::https://pypi.python.org/packages/44/5f/bf7e4711f6aa95edb2216b3487eeac719645802259643d341668e65636db/datrie-0.7.1.tar.gz
+	sha256sums = 7a11371cc2dbbad71d6dfef57ced6e8b384bb377eeb847c63d58f8dc8e8b2023
+
+pkgname = python-datrie
+	depends = python
+
+pkgname = python2-datrie
+	depends = python2
+
