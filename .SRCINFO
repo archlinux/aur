@@ -6,11 +6,13 @@ pkgbase = corosync
 	arch = i686
 	arch = x86_64
 	license = BSD
+	depends = nss
 	depends = libstatgrab
 	depends = net-snmp
 	depends = libdbus
+	depends = libqb
 	source = corosync-2.4.3.tar.gz::https://github.com/corosync/corosync/archive/v2.4.3.tar.gz
-	md5sums = SKIP
+	md5sums = bf0ede13018aadc8a046183bc593b0e0
 
 pkgname = corosync
 
