@@ -1,15 +1,14 @@
 # Maintainer: levinit <levinit at outlook>
 
 pkgname=wechat_web_devtools
-pkgver=1.02.1802270
+pkgver=1.02.1803130
 pkgrel=1
 pkgdesc="wechat web devtools 微信web开发工具"
 arch=('any')
 url="https://github.com/cytle/wechat_web_devtools"
 license=('custom')
 
-depends=('wine' 'wine-mono' 'httpie' 'wget')
-makedepends=('wine_gecko')
+depends=('wine' 'wine-mono' 'httpie' 'wget' 'wine_gecko')
 
 source=("https://github.com/cytle/wechat_web_devtools/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
