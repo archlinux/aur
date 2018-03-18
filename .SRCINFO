@@ -1,0 +1,18 @@
+pkgbase = python-bibtexparser-git
+	pkgdesc = Bibtex parser in Python
+	pkgver = 20180312.e23122d
+	pkgrel = 1
+	url = https://bibtexparser.readthedocs.org/
+	arch = any
+	license = LGPL3
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-future
+	provides = python-bibtexparser
+	conflicts = python-bibtexparser
+	source = git+https://github.com/sciunto-org/python-bibtexparser.git
+	md5sums = SKIP
+
+pkgname = python-bibtexparser-git
+
