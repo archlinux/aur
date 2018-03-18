@@ -4,3 +4,4 @@ src/
 pkg/
 *.run
 *.pkg.tar
+*.xml
