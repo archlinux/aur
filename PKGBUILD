@@ -28,5 +28,5 @@ build() {
 package() {
     cd mxt-app
     make DESTDIR="$pkgdir" install
-    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/mxt-app/LICENSE
+    install -D -m 0644 LICENSE "$pkgdir"/usr/share/licenses/mxt-app/LICENSE
 }
