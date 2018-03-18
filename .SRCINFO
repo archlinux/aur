@@ -1,0 +1,17 @@
+pkgbase = nougat-git
+	pkgdesc = Screenshot wrapper for scrot and maim
+	pkgver = v1.r14.g2cd377e
+	pkgrel = 1
+	url = https://github.com/Sweets/nougat
+	arch = any
+	license = MIT
+	optdepends = scrot
+	optdepends = slop
+	optdepends = maim
+	provides = nougat
+	conflicts = nougat
+	source = nougat::git+https://github.com/Sweets/nougat.git
+	sha512sums = SKIP
+
+pkgname = nougat-git
+
