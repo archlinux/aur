@@ -6,7 +6,7 @@
 
 pkgname=giteye
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="CollabNet GitEye is a desktop for Git. It works with TeamForge, CloudForge and other Git services."
 arch=('x86_64')
 url="https://www.collab.net/products/giteye"
@@ -18,7 +18,7 @@ source=("LICENSE"
         "${pkgname}.desktop"
         "https://downloads-guests.open.collab.net/files/documents/61/18801/GitEye-${pkgver}-linux.x86_64.zip")
 md5sums=('78ba2a04c6b766a778681705d40abbb4'
-         '49ac32371bce35a3fb1494be3bd595b7'
+         '0299696f06b199eb9b5735057f503fe9'
          '3734ec716b426095d09d1d131066d028')
 noextract=(*.zip) # extract nothing
 
