@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=python-doit
 _pyname=doit
-pkgver=0.31.0
+pkgver=0.31.1
 pkgrel=1
 pkgdesc='doit automation tool'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 depends=('python' 'python-pyinotify' 'python-six' 'python-setuptools' 'python-cloudpickle')
-md5sums=('4e6935453061d45149403a17b3af61a5')
+md5sums=('932b415ff967d2fc911641c321f5c61a')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
