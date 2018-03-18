@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.9.r0.gb31dc2b
+pkgver=0.2.9.r97.gf364891
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
@@ -11,8 +11,7 @@ url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)'
-            'libappindicator-gtk3: Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)')
+optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)')
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
 provides=('ckb-next')
 install=ckb-next-git.install
@@ -29,21 +28,16 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-VCS}"
-  ./qmake-auto
-  make -j$(nproc --all)
+
+  cmake -H. -Bbuild \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_BUILD_TYPE="Release" \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib"
+  cmake --build build --target all
 }
 
 package() {
   cd "$srcdir/${pkgname%-VCS}"
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/lib/ckb-animations"
-  install -Dm755 bin/ckb{,-daemon} "$pkgdir/usr/bin/"
-  install -D bin/ckb-animations/* "$pkgdir/usr/lib/ckb-animations/"
-
-  install -Dm644 usr/ckb.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ckb.png"
-  install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
-
-  install -Dm644 service/systemd/ckb-daemon.service "${pkgdir}/usr/lib/systemd/system/ckb-daemon.service"
-  install -Dm644 udev/99-ckb-daemon.rules "${pkgdir}/etc/udev/rules.d/99-ckb-daemon.rules"
+  DESTDIR="$pkgdir" cmake --build build --target install
 }
