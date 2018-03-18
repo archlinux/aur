@@ -2,7 +2,7 @@
 Name=GitEye
 Comment=CollabNet GitEye is a desktop for Git
 Comment[de]=CollabNet GitEye ist ein Desktop für Git
-Exec=/opt/giteye/GitEye
+Exec=/usr/lib/jvm/java-9-openjdk/bin/java /opt/giteye/GitEye
 Icon=giteye.xpm
 Terminal=false
 X-MultipleArgs=false
