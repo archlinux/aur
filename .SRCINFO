@@ -1,0 +1,17 @@
+pkgbase = chameleon-git
+	pkgdesc = A color picker for X11 written in python
+	pkgver = r10.8643e5e
+	pkgrel = 1
+	url = https://github.com/seebye/chameleon
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3.5.0
+	depends = python-xlib
+	depends = python-pillow
+	depends = python-docopt
+	source = git://github.com/seebye/chameleon.git
+	md5sums = SKIP
+
+pkgname = chameleon-git
+
