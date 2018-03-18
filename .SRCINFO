@@ -8,6 +8,7 @@ pkgbase = albion-online-live-game-data-bin
 	makedepends = wget
 	depends = libgl
 	depends = albion-online-launcher-bin
+	depends = sndio
 	options = !strip
 	options = docs
 	options = libtool

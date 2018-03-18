@@ -8,7 +8,7 @@ url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
 makedepends=('wget')
-depends=('libgl' 'albion-online-launcher-bin')
+depends=('libgl' 'albion-online-launcher-bin' 'sndio')
 _URL_PREFIX="https://live.albiononline.com/autoupdate/perfileupdate/linux_${pkgver}"
 source=(toc-${pkgver}.xml::"${_URL_PREFIX}/toc_linux.xml" "albion-online-live.desktop")
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
@@ -51,7 +51,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/bin"
   echo "#!/bin/sh" > "${pkgdir}/usr/bin/albion-online-live"
-  echo "LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 /opt/albion-online-launcher-bin/game_x64/Albion-Online" >> "${pkgdir}/usr/bin/albion-online-live"
+  echo "LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 LD_PRELOAD=/usr/lib/libsndio.so /opt/albion-online-launcher-bin/game_x64/Albion-Online" >> "${pkgdir}/usr/bin/albion-online-live"
   chmod +x "${pkgdir}/usr/bin/albion-online-live"
 
   # install .desktop file
