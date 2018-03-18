@@ -1,0 +1,18 @@
+pkgbase = python-pypi2pkgbuild-git
+	pkgdesc = Convert PyPI packages to Arch Linux packages
+	pkgver = 0.1.r26.g2c0e9c5
+	pkgrel = 1
+	url = https://github.com/anntzer/pypi2pkgbuild
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pip
+	depends = namcap
+	depends = pkgfile
+	conflicts = python-pypi2pkgbuild
+	source = git+https://github.com/anntzer/pypi2pkgbuild.git
+	sha512sums = SKIP
+
+pkgname = python-pypi2pkgbuild-git
+
