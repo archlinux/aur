@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=arcticfox-config-bin
-pkgver=1.11.8
+pkgver=1.11.9
 pkgrel=1
 pkgdesc="Configuration Tool for Vape Battery Mods with Arcticfox Firmware. Works on MacOS and Linux."
 arch=('any')
@@ -30,6 +30,5 @@ package() {
         mkdir -p "${pkgdir}/usr/bin/"
         ln -svrf "${pkgdir}/opt/Arcticfox Config/arcticfox-config" "${pkgdir}/usr/bin/arcticfox-config"
 
-        mkdir -p "${pkgname}/usr/share/icons/hicolor/512x512/apps/"
-        mv -v icon.png "${pkgname}/usr/share/icons/hicolor/512x512/apps/arcticfox-config.png"
+        install -vDm644 icon.png "${pkgname}/usr/share/icons/hicolor/512x512/apps/arcticfox-config.png"
 }
