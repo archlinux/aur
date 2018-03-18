@@ -4,11 +4,16 @@ pkgname=nougat-git
 _pkgname=nougat
 pkgver=v1.r14.g2cd377e
 pkgrel=1
-pkgdesc=' Screenshot wrapper for scrot and maim'
+pkgdesc='Screenshot wrapper'
 arch=(any)
 url='https://github.com/Sweets/nougat'
 license=('MIT')
-optdepends=('scrot' 'slop' 'maim')
+optdepends=(
+  'maim: Maim backend support'
+  'imagemagick: ImageMagick backend support'
+  'slop: ImageMagick backend support'
+  'xclip: Clipboard support'
+)
 provides=('nougat')
 conflicts=('nougat')
 
