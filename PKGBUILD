@@ -1,18 +1,20 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=dnsbalancer
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Daemon to balance UDP DNS requests over DNS servers"
 arch=('x86_64')
-url="https://github.com/LanetNetwork/${pkgname}"
+url="https://github.com/pfactum/${pkgname}"
 license=('GPL')
-depends=('libmicrohttpd' 'libbsd' 'ldns' 'openssl' 'libunwind')
-optdepends=('gperftools: faster memory allocation with tcmalloc')
-makedepends=('git' 'gcc' 'cmake' 'make')
+makedepends=('git' 'gcc' 'cmake' 'ninja')
 
-source=("${pkgname}-git::git+https://github.com/LanetNetwork/${pkgname}.git")
+source=(
+	"${pkgname}-git::git+https://github.com/pfactum/${pkgname}.git"
+	"dnsbalancer.service"
+	)
 
-sha256sums=("SKIP")
+sha256sums=('SKIP'
+            '02011cfedb857d958aa3cfd5f3cd6c1e621b138f869d362f548ae49f93c52403')
 
 build() {
 	cd "${srcdir}/${pkgname}-git"
@@ -20,16 +22,16 @@ build() {
 	mkdir -p build
 	cd build
 
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr ..
-	make -j$(nproc)
+	CC=gcc cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ..
+	cmake --build .
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-git/build"
 
-	make install
+	cmake --build . --target install
 
-	install -Dm0644 ../configs/${pkgname}.conf.sample ${pkgdir}/etc/${pkgname}/${pkgname}.conf.sample
-	install -Dm0644 ../configs/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+	install -Dm0644 ../${pkgname}.conf.sample ${pkgdir}/etc/${pkgname}/${pkgname}.conf.sample
+	install -Dm0644 ../../${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
 }
 

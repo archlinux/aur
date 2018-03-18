@@ -1,0 +1,13 @@
+[Unit]
+Description=UDP DNS balancer
+After=network.target
+
+[Service]
+Type=forking
+PrivateTmp=true
+ExecStart=/usr/bin/dnsbalancer --config=/etc/dnsbalancer/dnsbalancer.conf --daemonize --syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
