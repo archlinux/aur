@@ -1,0 +1,16 @@
+pkgbase = minizip-git
+	pkgver = 1.2.11
+	pkgrel = 1
+	epoch = 2
+	url = https://www.zlib.net/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	conflicts = minizip
+	source = git+https://github.com/nmoinvaz/minizip.git
+	sha256sums = SKIP
+
+pkgname = minizip-git
+
