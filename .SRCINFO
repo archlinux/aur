@@ -5,13 +5,18 @@ pkgbase = python-lmfit
 	url = http://lmfit.github.io/lmfit-py/
 	arch = any
 	license = BSD
-	checkdepends = python-nose
-	makedepends = python-setuptools
-	depends = python
-	depends = python-numpy
-	depends = python-scipy
 	source = https://github.com/lmfit/lmfit-py/archive/0.9.8.tar.gz
 	md5sums = 56744e7bb1033a8ff0a69b6365c8b323
 
 pkgname = python-lmfit
+	checkdepends = python-nose
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+
+pkgname = python2-lmfit
+	checkdepends = python2-nose
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
 
