@@ -15,7 +15,7 @@ source=("Jackett.Binaries.Mono-${pkgver}.tar.gz::https://github.com/Jackett/Jack
 sha256sums=('fa9882b6d2d415185dbfa2768e09db27f26264983de3b46948ef40b6466f7fad'
             '75837fe04f5afd30cdbdd3349bb27b43994dc672202f886382903f7fbc92dc89'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
-            '289b7ea9394fe7d97a2fb8fdc1e67168ab7858ed2aa8fa881038eb70666ddec3')
+            '79ec8a9a072c3ca69556102edc50ad97fc65565d18b19ff054993a176e8e3898')
 
 package() {
     cd "$srcdir"

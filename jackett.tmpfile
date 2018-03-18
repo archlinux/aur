@@ -1,1 +1,3 @@
 d /var/lib/jackett 0755 jackett jackett
+Z /var/lib/jackett - jackett jackett
+Z /usr/lib/jackett - jackett jackett
