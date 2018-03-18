@@ -2,8 +2,8 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=1.r16.g818d21d
-pkgrel=1
+pkgver=r40.818d21d
+pkgrel=3
 pkgdesc='Screenshot wrapper'
 arch=(any)
 url='https://github.com/Sweets/nougat'
@@ -25,7 +25,10 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --long | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^v//g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
