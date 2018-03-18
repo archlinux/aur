@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Alchemy
+Comment="Program for nonarthodox painting expriments exploring alternative ways of drawing"
+Icon=alchemy
+Exec=alchemy
+Terminal=false
+Type=Application
+Categories=Graphics;

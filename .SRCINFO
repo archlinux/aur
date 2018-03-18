@@ -1,0 +1,25 @@
+pkgbase = alchemy-git
+	pkgdesc = Nonorthodox painting software exploring and experimenting with alternative ways of drawing
+	pkgver = r596.93aeeb3
+	pkgrel = 1
+	url = http://al.chemy.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = apache-ant
+	makedepends = imagemagick
+	depends = sh
+	depends = java-environment=7
+	depends = hicolor-icon-theme
+	depends = libxrender
+	depends = libxcomposite
+	depends = libxtst
+	conflicts = alchemy
+	source = alchemy-git::git+https://github.com/karldd/Alchemy.git
+	source = alchemy.desktop
+	md5sums = SKIP
+	md5sums = c7cffede4dda0acd94aa94deec037720
+
+pkgname = alchemy-git
+
