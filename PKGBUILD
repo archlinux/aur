@@ -6,7 +6,7 @@
 
 pkgname=giteye
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CollabNet GitEye is a desktop for Git. It works with TeamForge, CloudForge and other Git services."
 arch=('x86_64')
 url="https://www.collab.net/products/giteye"
@@ -18,7 +18,7 @@ source=("LICENSE"
         "${pkgname}.desktop"
         "https://downloads-guests.open.collab.net/files/documents/61/18801/GitEye-${pkgver}-linux.x86_64.zip")
 md5sums=('78ba2a04c6b766a778681705d40abbb4'
-         '2cb87a4b45b803d9ff58d84954d9797f'
+         '49ac32371bce35a3fb1494be3bd595b7'
          '3734ec716b426095d09d1d131066d028')
 noextract=(*.zip) # extract nothing
 
@@ -31,10 +31,6 @@ package() {
     install -Ddm755 "${pkgdir}/usr/bin/"
 
     unzip -q "GitEye-${pkgver}-linux.x86_64.zip" -d "${pkgdir}/opt/${pkgname}/"
-
-    msg2 "Adding GitEye executable to default path..."
-    ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/giteye"
 
     msg2 "Installing LICENSE..."
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
