@@ -2,7 +2,7 @@
 
 pkgname=wart-git
 pkgver=4130.279344c0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small, readable lisp with thorough unit tests and extensible functions/macros."
 arch=('i686' 'x86_64')
 url="https://github.com/akkartik/wart"
@@ -39,4 +39,5 @@ package() {
     $pkgdir/usr/bin/wart_bin
   rm $pkgdir/usr/share/wart/wart_bin
   install -Dm755 $srcdir/wart.sh $pkgdir/usr/bin/wart
+  rm -r "$pkgdir"/usr/share/wart/.git
 }
