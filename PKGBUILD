@@ -1,6 +1,6 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=bcnc
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="GRBL CNC command sender, autoleveler and g-code editor"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("bcnc")
 conflicts=("bcnc-git")
 source=("https://github.com/vlachoudis/bCNC/archive/${pkgver}.tar.gz"
         "bcnc.desktop")
-md5sums=('86c78473c896197add1ca11e52a78e42'
+md5sums=('fba1c786ba65264d479bfd247a9f7678'
          '96bb9218018772b0de84d257452295c0')
 
 
