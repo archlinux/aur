@@ -1,14 +1,13 @@
 pkgbase = albion-online-live-game-data-bin
 	pkgdesc = The first true cross-platform Sandbox MMO -- game data files for live server
 	pkgver = 1.11.357.113848
-	pkgrel = 1
+	pkgrel = 2
 	url = https://albiononline.com/
 	arch = x86_64
 	license = custom
 	makedepends = wget
 	depends = libgl
 	depends = albion-online-launcher-bin
-	depends = sndio
 	options = !strip
 	options = docs
 	options = libtool
