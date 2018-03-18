@@ -2,7 +2,7 @@
 
 pkgname=python2-opengl-accelerate
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Acceleration code for PyOpenGL"
 _name=PyOpenGL-accelerate
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="http://pyopengl.sourceforge.net/"
 license=('BSD')
 depends=('python2-opengl')
 makedepends=('cython2')
+optdepends=('python2-numpy' 'freeglut' 'python2-pillow')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('927f4670b893d46e2f6273ae938bf0a1db27ffae3336eba94813ccef6260c410')
