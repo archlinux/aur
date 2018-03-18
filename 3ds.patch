@@ -1,6 +1,8 @@
---- ../meshlab/src/meshlabplugins/io_3ds/io_3ds.pro	2016-10-31 00:00:28.662690502 +0100
-+++ meshlab/src/meshlabplugins/io_3ds/io_3ds.pro	2016-11-01 00:28:59.485188734 +0100
-@@ -14,7 +14,7 @@
+diff --git a/src/meshlabplugins/io_3ds/io_3ds.pro b/src/meshlabplugins/io_3ds/io_3ds.pro
+index 85b4a744..74ba5c6e 100644
+--- a/src/meshlabplugins/io_3ds/io_3ds.pro
++++ b/src/meshlabplugins/io_3ds/io_3ds.pro
+@@ -14,7 +14,7 @@ DEFINES += LIB3DS_STATIC
  
  TARGET        = io_3ds
  
@@ -9,7 +11,7 @@
  
  # Notes on the paths of lib3ds files.
  # Once you have compiled the library put the lib files in a dir named lib/XXX/ 
-@@ -25,11 +25,11 @@
+@@ -26,11 +26,11 @@ win32-msvc2015:LIBS += ../../external/lib/win32-msvc2015/3ds.lib
  win32-msvc2005:LIBS	+= ../../external/lib/win32-msvc2005/3ds.lib
  win32-msvc2008:LIBS	+= ../../external/lib/win32-msvc2008/3ds.lib
  win32-g++:LIBS		+= ../../external/lib/win32-gcc/lib3ds.a

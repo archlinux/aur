@@ -1,17 +1,14 @@
---- meshlab.orig/src/meshlabserver/meshlabserver.pro	2016-10-30 12:35:34.339895028 +0100
-+++ meshlab/src/meshlabserver/meshlabserver.pro	2016-10-30 12:34:55.426965662 +0100
-@@ -29,11 +29,11 @@
+diff --git a/src/meshlabserver/meshlabserver.pro b/src/meshlabserver/meshlabserver.pro
+index e97962a1..6f3e9f92 100644
+--- a/src/meshlabserver/meshlabserver.pro
++++ b/src/meshlabserver/meshlabserver.pro
+@@ -29,8 +29,8 @@ win32-msvc2010:  LIBS += -L../distrib -lcommon -lopengl32 -lGLU32
  win32-msvc2012:  LIBS += -L../distrib -lcommon -lopengl32 -lGLU32
  win32-msvc2015:  LIBS += -L../distrib -lcommon -lopengl32 -lGLU32
  win32-g++:  LIBS += -L../distrib -lcommon      
--linux-g++:  LIBS += -L../distrib -lcommon
-+linux-g++:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
--linux-g++-32:  LIBS += -L../distrib -lcommon
-+linux-g++-32:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
--linux-g++-64:  LIBS += -L../distrib -lcommon
-+linux-g++-64:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
+-linux:  LIBS += -L../distrib -lcommon
++linux:  LIBS += -L../distrib -lcommon -lGLU
+ linux:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  #CONFIG (release,debug | release) {
  #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
+ #	win32-msvc2008:release:  LIBS += -L../common/release -lcommon

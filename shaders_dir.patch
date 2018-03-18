@@ -1,7 +1,7 @@
 diff --git a/src/meshlabplugins/render_gdp/meshrender.cpp b/src/meshlabplugins/render_gdp/meshrender.cpp
-index 5841ce66..3e0cbe5e 100644
+index 2d9f7565..f00bcb8c 100644
 --- a/src/meshlabplugins/render_gdp/meshrender.cpp
-+++ meshlab/src/meshlabplugins/render_gdp/meshrender.cpp
++++ b/src/meshlabplugins/render_gdp/meshrender.cpp
 @@ -29,6 +29,9 @@
  #include <QTextStream>
  #include "../../meshlab/glarea.h"
@@ -24,7 +24,7 @@ index 5841ce66..3e0cbe5e 100644
 diff --git a/src/meshlabplugins/render_gdp/shaderDialog.cpp b/src/meshlabplugins/render_gdp/shaderDialog.cpp
 index 13157579..1f14b7bf 100644
 --- a/src/meshlabplugins/render_gdp/shaderDialog.cpp
-+++ meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp
++++ b/src/meshlabplugins/render_gdp/shaderDialog.cpp
 @@ -32,6 +32,8 @@
  #include <QCheckBox>
  #include <QPushButton>
@@ -46,7 +46,7 @@ index 13157579..1f14b7bf 100644
 diff --git a/src/plugins_experimental/render_splatpyramid/dialog.cpp b/src/plugins_experimental/render_splatpyramid/dialog.cpp
 index 589ba482..f0225c40 100644
 --- a/src/plugins_experimental/render_splatpyramid/dialog.cpp
-+++ meshlab/src/plugins_experimental/render_splatpyramid/dialog.cpp
++++ b/src/plugins_experimental/render_splatpyramid/dialog.cpp
 @@ -3,6 +3,8 @@
  #include <QFileDialog>
  #include <QMessageBox>
@@ -68,7 +68,7 @@ index 589ba482..f0225c40 100644
 diff --git a/src/plugins_experimental/render_splatpyramid/splat_pyramid.cc b/src/plugins_experimental/render_splatpyramid/splat_pyramid.cc
 index a4915d10..d6325aa4 100644
 --- a/src/plugins_experimental/render_splatpyramid/splat_pyramid.cc
-+++ meshlab/src/plugins_experimental/render_splatpyramid/splat_pyramid.cc
++++ b/src/plugins_experimental/render_splatpyramid/splat_pyramid.cc
 @@ -18,6 +18,8 @@
  #include <QTextStream>
  #include <wrap/gl/trimesh.h>
