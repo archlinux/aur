@@ -1,33 +1,34 @@
 # Maintainer: James An <james@jamesan.ca>
-# Contributor: Jeff <jecxjo@sdf.lonestar.org> 
-_pkgname=geeknote
-pkgname=$_pkgname-git
-pkgver=r205.192a0c5
+# Contributor: Jeff <jecxjo@sdf.lonestar.org>
+
+pkgname=geeknote-git
+_pkgname=${pkgname%-git}
+pkgver=r254.8489a87
 pkgrel=1
-pkgdesc="Work with Evernote from command line"
-arch=(any)
+pkgdesc='Console client for Evernote.'
+arch=('any')
 url="http://www.geeknote.me"
 license=('GPL')
-depends=('python2' 'python2-setuptools' \
-         'thrift-python2' 'python2-beautifulsoup4' 'python-markdown2' \
-         'python2-sqlalchemy' 'python2-html2text' 'python2-oauth2' \
-         'evernote-sdk-python-git')
-makedepends=('git')
-provides=($_pkgname)
-conflicts=()
-replaces=()
-backup=()
-source=("$_pkgname::git://github.com/VitaliyRodnenko/$_pkgname.git")
-options=(!emptydirs)
-install=
+depends=('python2-html2text'
+         'python2-markdown2'
+         'python2-sqlalchemy'
+         'evernote-sdk-python')
+makedepends=('git' 'python2-setuptools')
+provides=($_pkgname=$pkgver)
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/VitaliyRodnenko/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd $_pkgname
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
