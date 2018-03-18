@@ -2,7 +2,7 @@
 # Contributor: Alain Kalker <a.c.kalker at gmail dot com>
 
 pkgname=texmacs-pure
-pkgver=0.64
+pkgver=0.67
 pkgrel=1
 pkgdesc="Pure plugin for GNU TeXmacs"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ license=('LGPL3')
 url="https://bitbucket.org/purelang/pure-lang/wiki/TeXmacs"
 depends=('texmacs' "pure")
 groups=(pure-complete pure-math)
-source=("https://bitbucket.org/purelang/pure-lang/downloads/pure-$pkgver.tar.gz")
-md5sums=('399b0a5cb6bbf0042ce42f9a857e332e')
+source=("https://github.com/agraef/pure-lang/releases/download/pure-$pkgver/pure-$pkgver.tar.gz")
+md5sums=('2d8c705f1016b4860ba743e9bbf8b5e5')
 
 build() {
   cd $srcdir/pure-$pkgver
