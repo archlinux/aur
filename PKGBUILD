@@ -27,6 +27,6 @@ build() {
 package() {
     cd dlm
     make PREFIX=/usr LIBNUM=lib BINDIR=/usr/bin DESTDIR="$pkgdir" install
-    install -Dm644 init/dlm.service "$pkgdir"/usr/lib/systemd/system/dlm.service
-    install -Dm644 init/dlm.sysconfig "$pkgdir"/etc/sysconfig/dlm
+    install -D -m 0644 init/dlm.service "$pkgdir"/usr/lib/systemd/system/dlm.service
+    install -D -m 0644 init/dlm.sysconfig "$pkgdir"/etc/sysconfig/dlm
 }
