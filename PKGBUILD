@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
     cd notmuch-extract-patch
-    install -D -m755 notmuch-extract-patch "$pkgdir"/usr/bin/notmuch-extract-patch
+    install -D -m 0755 notmuch-extract-patch "$pkgdir"/usr/bin/notmuch-extract-patch
 }
