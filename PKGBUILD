@@ -2,14 +2,13 @@
 
 pkgname=bumpversion
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Version-bump your software with a single command!'
 arch=('any')
 url='https://github.com/peritus/bumpversion'
 license=('MIT')
 depends=('python')
-source=("http://pypi.python.org/packages/source/b/bumpversion/bumpversion-${pkgver}.tar.gz")
-
+source=("https://pypi.python.org/packages/source/b/bumpversion/bumpversion-${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}/bumpversion-${pkgver}"
