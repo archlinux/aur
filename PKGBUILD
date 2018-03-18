@@ -1,8 +1,8 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=vim-gitgutter
-_gitcommit=72226496b335193d7ac7ed5b043cfd8ec95db499
-pkgver=487.7222649
+_gitcommit=37bdd03d176c5e182c7e8dbdc79c3f71d2a04898
+pkgver=490.37bdd03
 pkgrel=1
 pkgdesc='Vim plugin which shows a git diff in the gutter (sign column)'
 url='https://github.com/airblade/vim-gitgutter'
