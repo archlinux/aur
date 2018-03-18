@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=menulibre
-pkgver=2.1.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='An advanced menu editor that provides modern features in a clean, easy-to-use interface. All without GNOME dependencies.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gdk-pixbuf2' 'gnome-menus' 'gsettings-desktop-schemas' 'gtksourceview3
 makedepends=('python-distutils-extra')
 install=menulibre.install
 source=("$pkgname-$pkgver::https://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-md5sums=('efc7edb49bb0e5fea49e158b40573334')
+md5sums=("9690848dbf9196c3f7baa574e90378d8")
 
 package() {
   cd $pkgname-$pkgver
