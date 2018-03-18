@@ -3,7 +3,7 @@
 # Contributor:
 pkgname=sensu
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
@@ -14,6 +14,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_1.2.1-2_amd64.deb")
 sha256sums=('001b65b30666a97979ca2abc60a463fa91e05957bdaded4812d5bc23c12ebe9b')
+optdepends=('redis: data store and sensu transport'
+            'rabbitmq: sensu transport')
 
 package() {
 	# Extract package data

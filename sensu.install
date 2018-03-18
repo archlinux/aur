@@ -1,10 +1,3 @@
-pre_install() {
-	#
-	# Perform necessary sensu setup steps
-	# before package is installed.
-	#
-}
-
 post_install() {
 	#
 	# WARNING: REQUIRES /usr/bin/sh
@@ -189,19 +182,10 @@ post_remove() {
 	# after package is uninstalled.
 	#
 
-
-	{
-	# this is a noop on debian
-	}
-
-	{
-	  if [ -d /opt/sensu ]; then
-	    rm -r /opt/sensu
-	  fi
-	  if [ -d /var/cache/sensu ]; then
-	    rm -rf /var/cache/sensu
-	  fi
-	}
-
-
+    if [ -d /opt/sensu ]; then
+        rm -r /opt/sensu
+    fi
+    if [ -d /var/cache/sensu ]; then
+        rm -rf /var/cache/sensu
+    fi
 }
