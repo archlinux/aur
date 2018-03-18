@@ -1,17 +1,18 @@
-# Maintainer: Gore Liu <goreliu@126.com>
+# Maintainer: Jure Varlec <jure at varlec dot si>
+# Contributor: Gore Liu <goreliu@126.com>
 # Contributor: codestation <codestation404 at gmail dot com>
 
 pkgname=prll
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A utility for parallelizing execution in bash or zsh"
 arch=('i686' 'x86_64')
 url="https://github.com/exzombie/prll"
 license=('GPL')
 
-source=(http://downloads.sourceforge.net/sourceforge/prll/$pkgname-$pkgver.tar.bz2)
+source=($pkgname-$pkgver.tar.gz::https://github.com/exzombie/$pkgname/archive/$pkgver.tar.gz)
 
-md5sums=('b62cf29faf9031b288f7f9871bb9c33b')
+md5sums=('852b906050ab61de5738d491b94b2b79')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -19,11 +20,6 @@ build() {
 }
 
 package() {
-  install -D -m755 "${srcdir}/$pkgname-$pkgver/${pkgname}_qer" "${pkgdir}/usr/bin/${pkgname}_qer"
-  install -D -m755 "${srcdir}/$pkgname-$pkgver/${pkgname}_bfr" "${pkgdir}/usr/bin/${pkgname}_bfr"
-  install -D -m755 "${srcdir}/$pkgname-$pkgver/$pkgname.sh" "${pkgdir}/etc/profile.d/$pkgname.sh"
-  install -D -m644 "${srcdir}/$pkgname-$pkgver/AUTHORS" "${pkgdir}/usr/share/doc/$pkgname/AUTHORS"
-  install -D -m644 "${srcdir}/$pkgname-$pkgver/README" "${pkgdir}/usr/share/doc/$pkgname/README"
-  install -D -m644 "${srcdir}/$pkgname-$pkgver/NEWS" "${pkgdir}/usr/share/doc/$pkgname/NEWS"
-  install -D -m644 "${srcdir}/$pkgname-$pkgver/COPYING" "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+  cd "${srcdir}"/$pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
