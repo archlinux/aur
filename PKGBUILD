@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=fontconfig-srb
-pkgver=2.12.93+aosc+rel2
+pkgver=2.13.0+aosc+rel0
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (michalsrb performance patch, AOSC variant)"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(git autoconf-archive gperf python-lxml python-six docbook-utils doc
 provides=(fontconfig)
 conflicts=(fontconfig)
 install=fontconfig.install
-_commit=a4e6fc6ae509da8194b79006e747467bf672c1ed # 2.12.93+srb, latest fixes
+_commit=bdee8c0781eb8ab1af69d34e6360b2fd2338bccc
 source=("$pkgname::git+https://github.com/AOSC-Dev/fontconfig#commit=$_commit"
         fontconfig.hook)
 sha256sums=('SKIP'
