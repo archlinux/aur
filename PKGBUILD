@@ -1,11 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=003.020.000.000
-pkgrel=3
+pkgver=004.057.000.000
+pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('i686' 'x86_64')
-url='http://www.avagotech.com/products/server-storage'
+url='https://www.broadcom.com/products/storage'
 license=('custom:LSI')
 depends=('openslp'
          'lsi-openpegasus'
@@ -13,21 +13,21 @@ depends=('openslp'
          )
 makedepends=('chrpath')
 source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers/pub-005092_2015-11-25_LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf'
-        'LSI_Storage_Authority_Software_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers/DB15-001161-03_pub-005290_2015-11-25_LSI_Storage_Authority_Software_User_Guide.pdf'
+        'LSI_Storage_Authority_Software_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers-common-files/DB15-001161-10_LSI%20Storage%20Authority%20Software%20User%20Guide.pdf'
         'lsi_lsa.service'
         'lsa_launcher.sh'
         'https://trac.nginx.org/nginx/export/HEAD/nginx/docs/html/50x.html'
         )
-source_i686=("${pkgver}_LSA_Linux-x86.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x86.zip")
-source_x86_64=("${pkgver}_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip")
+source_i686=("${pkgver}_LSA_Linux-x86.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x86.zip")
+source_x86_64=("${pkgver}_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads//docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip")
 sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
-            'e3dd9b9466d7c51529a37d90a3acb4f82c4ca0f4eab1246ab693873356e88d7a'
+            'aea22917f5f3680fb19b9b219ac4775434f500946f579a58242a07bc1e66f209'
             '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
             '05bdeae736b4b06546ea669a5b2764f2410ec8f20873505fee9a8205eccf4190'
             '3c264d74770fd706d59c68d90ca1eb893ac379a666ff136f9acc66ca01daec02'
             )
-sha256sums_i686=('0ebd01f419ccace6a3d37543309dcb7e684b0b842bdde505fd199c80f94c389e')
-sha256sums_x86_64=('4325ee1f6d9f7eeb887e532834ce2e1ed86f7887c3b8b3b6162cb0a52a49dede')
+sha256sums_i686=('17844fc1dcf52bfbeb749bcf827242649d2507cd7cf9b6a76d3172b4807c00c9')
+sha256sums_x86_64=('3d88c0adc1e7d6fbdf2f3e8365885eb87af811c7eee3c44dd974b8b0e8a15f8c')
 install=lsi-lsa.install
 backup=('opt/lsi/LSIStorageAuthority/installtype'
         'opt/lsi/LSIStorageAuthority/conf/LSA.conf'
