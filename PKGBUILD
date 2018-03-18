@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=67.0.3373.0
+pkgver=67.0.3374.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('8a3d8b33acd573f19eadd1763be01a9290d31fbfb2d4206d617cc509f9d26b50'
+sha256sums=('2966a54c2248652471a58c1c2817e6edd317f7279db3f10bd8e675487a1d3088'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -354,7 +354,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-patch -Np1 -i ../r21.patch
+#patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
