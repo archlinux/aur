@@ -8,6 +8,7 @@ pkgbase = msbuild-15.3-bin
 	depends = mono>=5.0.0
 	provides = msbuild
 	conflicts = msbuild
+	conflicts = dotnet-sdk
 	source = msbuild-amd64-v15.3+xamarinxplat.2017.07.20.13.52-0xamarin3+ubuntu1404b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.3+xamarinxplat.2017.07.20.13.52-0xamarin3+ubuntu1404b1_all.deb
 	sha256sums = 82dd69ce80fad051d93bb432bfc83228b300ecd8e9209695b0f4823c0c5427a5
 
