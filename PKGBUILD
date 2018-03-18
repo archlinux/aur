@@ -2,7 +2,7 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=trayer
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='lightweight GTK2-based systray for UNIX desktop'
 url='https://github.com/sargon/trayer-srg'
@@ -13,7 +13,7 @@ makedepends=('libxmu')
 provides=('trayer-srg')
 conflicts=('trayer-srg')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/sargon/trayer-srg/archive/trayer-${pkgver}.tar.gz)
-sha512sums=('5bb049af01c3f3f62dc8a5c1932985b92c98e4e2083aebd1dc09256746e097239be54ebc739801773878882a5c8f168a4a13bdac292388f79079ad52c41b2cad')
+sha512sums=('5ae92fdcee64ad1ca59846874dcd4bd4859adeeb80a86f1ed97d62e6306f8ec62d1ee26dba251257242dc25d158a6a550e69f2fcc8739242a2311e37fe1ce310')
 
 build() {
   cd trayer-srg-${pkgname}-${pkgver}
