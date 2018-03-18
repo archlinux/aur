@@ -2,7 +2,7 @@
 # Contributor: Musikolo <musikolo at protonmail dot com>
 
 pkgname=autofirma
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Spanish Government digital signature client'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL' 'EUPL')
 depends=('java-runtime=8' 'nss' 'firefox')
 makedepends=('binutils')
 source=('http://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip')
-md5sums=('7a9b303bab747e84290f4d36c0261662')
-sha512sums=('e7352c513686a33371ce9e00ef8da877f619930c60519131d9ab94b67a2e399f18f94bde162f09ba4582a9ef40d4226afbbb005ce35011872b8f69218347b6a9')
+md5sums=('b60cf28417f65f7e1ec757158be4bfbb')
+sha512sums=('239feb7e4a27c802e850e9e8b701b793c86ca514905e98b228fd09b524f925d21e37bd5d580eecd89fd4c197ad3b7cec0b43b29079534f7729055ab25549cc2a')
 
 prepare() {
 	ar -x AutoFirma_`echo "${pkgver}"| tr '.' '_'`.deb
