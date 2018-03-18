@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.0.34.169
+pkgver=1.0.34.198
 pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
@@ -15,7 +15,7 @@ source=("https://live.albiononline.com/autoupdate/launcher-linux-setup-${pkgver}
 
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('db72e3b97a0094b8bbdf337f2e8bd3bf'
+md5sums=('8d6b35ac72f9706063b5597895b6db39'
          '14b5dfae0a7b3b0dc5e2f2975aa4892c')
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
   #sed -i 's,export LD_LIBRARY_PATH=.*,export LD_LIBRARY_PATH=/usr/lib,g' Albion-Online
   #sed -i 's,export QT_QPA_PLATFORM_PLUGIN_PATH=.*,export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins/platforms,g' Albion-Online
   #sed -i 's,export QT_PLUGIN_PATH=.*,export QT_PLUGIN_PATH=/usr/lib/qt/plugins,g' Albion-Online
-  sed -i 's,.*launcher/Albion-Online",QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
+  sed -i 's,.*launcher/Albion-Online",QT_AUTO_SCREEN_SCALE_FACTOR=0 LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 LD_PRELOAD=/usr/lib/libsndio.so "$SCRIPTPATH/launcher/Albion-Online",g' Albion-Online
   popd
 }
 
