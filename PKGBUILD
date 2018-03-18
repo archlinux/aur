@@ -28,7 +28,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver=7.0.7.27
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -63,6 +63,9 @@ sha256sums=('SKIP'
 prepare() {
     cd "${pkgbase}-git"
     
+    # fix for 'sh: gitversion.sh: command not found' during autoreconf
+    sed -i 's|(gitversion|(./gitversion|' configure.ac
+    
     # fix up typemaps to match Arch Linux packages, where possible
     patch -Np1 -i "${srcdir}/arch-fonts.diff"
 }
@@ -70,7 +73,10 @@ prepare() {
 build() {
     cd "${pkgbase}-git"
     
-    CFLAGS="${CFLAGS} -I/usr/include/FLIF" \
+    export CFLAGS="${CFLAGS} -I/usr/include/FLIF"
+    
+    autoreconf -fis
+    
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
