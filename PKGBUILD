@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xcl-git
 pkgver=0.0.0.291.673.ge576a5e
-pkgrel=2
+pkgrel=4
 pkgdesc="An native-code implementation of Common Lisp"
 arch=('i686' 'x86_64')
 url="http://armedbear.org/"
 license=('GPL')
 depends=('gcc-libs') 
-makedepends=('git' 'gcc47')
+makedepends=('git' 'gcc49')
 provides=('common-lisp' 'xcl')
 conflicts=('xcl')
 source=('git://github.com/gnooth/xcl.git' 'etcxclrc')
@@ -25,10 +25,11 @@ pkgver() {
 
 prepare() {
    cd $_gitname/kernel
-   sed -i 's/CC=g++/CC=g++-4.7/' Makefile
+   sed -i 's/CC=g++/CC=g++-4.9/' Makefile
    sed -i 's/-m64/-m64 -fPIC/' Makefile 
    cd ../gc
-   sed -i 's/CC=gcc/CC=gcc-4.7/' Makefile
+   sed -i 's/CC=gcc/CC=gcc-4.9/' Makefile
+   sed -i 's/CC=g++/CC=g++-4.9/' Makefile
 }
 
 build() {
