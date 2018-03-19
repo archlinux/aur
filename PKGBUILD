@@ -32,5 +32,4 @@ cp -R ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}
 
 }
 
-
 # vim: ts=2 sw=2 et:

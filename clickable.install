@@ -1,22 +1,26 @@
 post_install() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
   
-  echo "Add clickable to PATH\n"
-  echo "export PATH=\$PATH:\/opt/clickable" >> ~/.$(echo ${SHELL##*/})rc
-  source ~/.$(echo ${SHELL##*/})rc
-  echo "Configure docker for clickable\n"
+  echo "Add clickable to PATH"
+  echo "export PATH=\$PATH:\/opt/clickable" >> /$HOME/.$(echo ${SHELL##*/})rc
+  source /$HOME/.$(echo ${SHELL##*/})rc
+  echo "Configure docker for clickable"
   clickable setup-docker
-  }
+  
+}
 
 post_upgrade() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+
+  sed -n -i '/clickable/!p' /$HOME/.$(echo ${SHELL##*/})rc
+  echo "export PATH=\$PATH:\/opt/clickable" >> /$HOME/.$(echo ${SHELL##*/})rc
+  source /$HOME/.$(echo ${SHELL##*/})rc
+
 }
 
 post_remove() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+
+  sed -n -i '/clickable/!p' /$HOME/.$(echo ${SHELL##*/})rc
+  source /$HOME/.$(echo ${SHELL##*/})rc
+
 }
 
 # vim: ts=2 sw=2 et:
