@@ -22,7 +22,7 @@ conflicts=("mylar")
 options=(!strip)
 install='mylar.install'
 
-source=('git://github.com/evilhero/mylar.git'
+source=('git+https://github.com/evilhero/mylar.git'
         'mylar.service'
         'mylar.tmpfiles'
         'mylar.sysusers')
