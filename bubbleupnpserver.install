@@ -1,9 +1,9 @@
 ownership() {
     systemd-sysusers bubbleupnpserver.conf
 
-    [ -e var/lib/bubbleupnp ] || mkdir var/lib/bubbleupnp
-    chown bubbleupnp:bubbleupnp var/lib/bubbleupnp
-    
+    [ -e var/lib/bubbleupnp ] || mkdir /var/lib/bubbleupnp
+    chown bubbleupnp:bubbleupnp /var/lib/bubbleupnp
+    chown bubbleupnp:bubbleupnp /usr/share/bubbleupnpserver/    
 }
 
 post_install() {
@@ -53,4 +53,8 @@ Full documentation is available at:
 ========================================================================
 "
 ownership
+}
+
+post_remove() {
+rm -rf /usr/share/bubbleupnpserver
 }
