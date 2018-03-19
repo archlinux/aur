@@ -1,22 +1,7 @@
 post_install() {
-	#
-	# WARNING: REQUIRES /usr/bin/sh
-	#
-	# - must run on /usr/bin/sh on solaris 9
-	# - must run on /usr/bin/sh on AIX 6.x
-	# - if you think you are a bash wizard, you probably do not understand
-	#   this programming language.  do not touch.
-	# - if you are under 40, get peer review from your elders.
-	#
 	# Perform necessary sensu setup steps
 	# after package is installed.
-	#
 
-
-	using_systemd()
-	{
-	    [ -e "/proc/1/comm" ] && grep -q "^systemd$" /proc/1/comm
-	}
 
 	PROGNAME=`basename $0`
 
@@ -104,9 +89,9 @@ post_install() {
 
 	create_system_services()
 	{
-	        # this function is a noop on debian
+	    # this function is a noop on debian
 	    return
-	    }
+	}
 
 }
 
@@ -115,25 +100,9 @@ post_upgrade() {
 }
 
 pre_remove() {
-	#
-	# WARNING: REQUIRES /usr/bin/sh
-	#
-	# - must run on /usr/bin/sh on solaris 9
-	# - must run on /usr/bin/sh on AIX 6.x
-	# - if you think you are a bash wizard, you probably do not understand
-	#   this programming language.  do not touch.
-	# - if you are under 40, get peer review from your elders.
-	#
-	#
 	# Perform necessary sensu setup steps
-	# prior to installing package.
-	#
+	# prior to uninstalling package.
 
-
-	using_systemd()
-	{
-	  [ -e "/proc/1/comm" ] && grep -q "^systemd$" /proc/1/comm
-	}
 
 	PROGNAME=`basename $0`
 
@@ -148,11 +117,7 @@ pre_remove() {
 	  sensu_services="client server api"
 	  for sensu_service in $sensu_services; do
 	    set +e
-	    if using_systemd; then
-	      systemctl stop "sensu-${sensu_service}"
-	    else
-	      /etc/init.d/sensu-$sensu_service stop
-	    fi
+	    systemctl stop "sensu-${sensu_service}"
 	  done
 	}
 
@@ -160,18 +125,8 @@ pre_remove() {
 }
 
 post_remove() {
-	#
-	# WARNING: REQUIRES /usr/bin/sh
-	#
-	# - must run on /usr/bin/sh on solaris 9
-	# - must run on /usr/bin/sh on AIX 6.x
-	# - if you think you are a bash wizard, you probably do not understand
-	#   this programming language.  do not touch.
-	# - if you are under 40, get peer review from your elders.
-	#
 	# Perform necessary sensu removal steps
 	# after package is uninstalled.
-	#
 
     if [ -d /opt/sensu ]; then
         rm -r /opt/sensu

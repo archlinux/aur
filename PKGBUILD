@@ -3,19 +3,21 @@
 # Contributor:
 pkgname=sensu
 pkgver=1.2.1
-pkgrel=4
+_pkgver='1.2.1-2'
+pkgrel=5
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
-license=('custom')
+license=('MIT')
 groups=('')
 backup=('etc/default/sensu' 'etc/logrotate.d/sensu')
 options=('!strip' '!emptydirs')
+depends=('redis')
 install=${pkgname}.install
-source=("https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_1.2.1-2_amd64.deb")
+source=("https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_${_pkgver}_amd64.deb")
 sha256sums=('001b65b30666a97979ca2abc60a463fa91e05957bdaded4812d5bc23c12ebe9b')
-optdepends=('redis: data store and sensu transport'
-            'rabbitmq: sensu transport')
+optdepends=('rabbitmq: sensu transport'
+            'uchiwa: simple web dashboard')
 
 package() {
 	# Extract package data
@@ -24,8 +26,7 @@ package() {
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
-	#install -D -m644 "/opt/sensu/embedded/lib/ruby/site_ruby/2.4.0/rubygems/util/licenses.rb" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	mkdir -p usr/lib 2> /dev/null
+	mkdir -p usr/lib
     mv lib/* usr/lib
     rm -rf lib
 }

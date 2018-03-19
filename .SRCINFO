@@ -1,13 +1,14 @@
 pkgbase = sensu
 	pkgdesc = A monitoring framework that aims to be simple, malleable, and scalable.
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sensuapp.org
 	install = sensu.install
 	arch = x86_64
-	license = custom
-	optdepends = redis: data store and sensu transport
+	license = MIT
+	depends = redis
 	optdepends = rabbitmq: sensu transport
+	optdepends = uchiwa: simple web dashboard
 	options = !strip
 	options = !emptydirs
 	backup = etc/default/sensu
