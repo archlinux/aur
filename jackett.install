@@ -1,19 +1,14 @@
 post_upgrade() {
-  # At version 0.8.749-2 we moved configs to /var/lib/jackett, so
-  # migrate old config directory.
-  if [[ $(vercmp "0.8.749-2" "$2") -eq 1 ]]; then
-    # Check for existing old config directory and non-existance of new config file.
+  if (( $(vercmp "0.8.749-2" "$2") > 0 )); then
     if [[ -d /usr/share/Jackett/.config/Jackett && ! -f /var/lib/jackett/ServerConfig.json ]]; then
       cp -a /usr/share/Jackett/.config/Jackett/* /var/lib/jackett/
+      echo "Copied config and db from /usr/share/Jackett/.config/Jackett/ -> /var/lib/jackett/"
     fi
 
-    # Check for existing old mono config directory and non-existance of new mono config directory.
     if [[ -d /usr/share/Jackett/.config/.mono && ! -d /var/lib/jackett/.mono ]]; then
       cp -a /usr/share/Jackett/.config/.mono /var/lib/jackett/
+      echo "Copied mono configs from /usr/share/Jackett/.config/.mono -> /var/lib/jackett/"
     fi
-
-    echo "Configs copied from /usr/share/Jackett/.config/Jackett -> /var/lib/jackett/."
-    echo "After confirming, rm -rf /opt/Jackett /usr/share/Jackett."
   fi
 
   if [[ "$( getent passwd jackett | cut -d: -f6 )" != "/var/lib/jackett" ]]; then
@@ -22,5 +17,9 @@ post_upgrade() {
       echo "Could not change jackett users home directory."
       echo "Run: sudo systemctl stop jackett ; sudo usermod -d /var/lib/jackett jackett ; sudo systemctl start jackett"
     fi
+  fi
+
+  if [[ -d /usr/share/Jackett/ ]]; then
+    echo "Remove /usr/share/Jackett if everything is working correctly from /var/lib/jackett now."
   fi
 }
