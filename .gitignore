@@ -1,4 +1,5 @@
 /LazyLibrarian/
 /*.xz
+/*.log
 /src/
 /pkg/

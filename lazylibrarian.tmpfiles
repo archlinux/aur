@@ -1,0 +1,3 @@
+d /var/lib/lazylibrarian 0755 lazylibrarian lazylibrarian
+Z /var/lib/lazylibrarian - lazylibrarian lazylibrarian
+Z /usr/lib/lazylibrarian - lazylibrarian lazylibrarian

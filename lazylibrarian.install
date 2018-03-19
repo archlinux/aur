@@ -1,15 +1,24 @@
-CP_USER="lazylibrarian"
-CP_GROUP="lazylibrarian"
-CP_DIR="/opt/lazylibrarian"
-
-## arg 1:  the new package version
-post_install() {
-  systemd-sysusers lazylibrarian.conf
-  chown -R ${CP_USER}:${CP_GROUP} ${CP_DIR}
-  echo "  >> If you want a custom user or path for LazyLibrarian, remember to edit the service file as well."
-}
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
-  chown -R ${CP_USER}:${CP_GROUP} ${CP_DIR}
+  if [[ $(vercmp "r2866.61caa2d5-1" "$2") -eq 1 ]]; then
+    if [[ -f /opt/lazylibrarian/lazylibrarian.ini && ! -f /var/lib/lazylibrarian/lazylibrarian.ini ]]; then
+      cp /opt/lazylibrarian/lazylibrarian.ini /var/lib/lazylibrarian/lazylibrarian.ini
+      echo "Copied lazylibrarian.ini from /opt/lazylibrarian/ -> /var/lib/lazylibrarian/"
+    fi
+    if [[ -d /opt/lazylibrarian/.lazylibrarian && ! -f /var/lib/lazylibrarian/lazylibrarian.db ]]; then
+      cp -a /opt/lazylibrarian/.lazylibrarian/* /var/lib/lazylibrarian/
+      echo "Copied files from /opt/lazylibrarian/.lazylibrarian/ -> /var/lib/lazylibrarian/"
+    fi
+  fi
+
+  if [[ "$( getent passwd lazylibrarian | cut -d: -f6 )" != "/var/lib/lazylibrarian" ]]; then
+    usermod -d /var/lib/lazylibrarian lazylibrarian
+    if [[ $? -ne 0 ]]; then
+      echo "Could not change lazylibrarian users home directory."
+      echo "Run: sudo systemctl stop lazylibrarian ; sudo usermod -d /var/lib/lazylibrarian lazylibrarian ; sudo systemctl start lazylibrarian"
+    fi
+  fi
+
+  if [[ -d /opt/lazylibrarian ]]; then
+    echo "Remove /opt/lazylibrarian if everything is working correctly from /var/lib/lazylibrarian now."
+  fi
 }
