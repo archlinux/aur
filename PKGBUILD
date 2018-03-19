@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
 arch=('any')
 license=('GPL')
 depends=('bash')
-makedepends=('guile-reader' 'ploticus')
+makedepends=('guile2.0' 'guile-reader' 'ploticus')
 optdepends=('texlive-core: for postscript or pdf output' 
 	    'lout: for postscript or pdf output'
 	    'ploticus: for pie-charts'
