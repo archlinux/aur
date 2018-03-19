@@ -1,4 +1,5 @@
 pkgbase = chipdisco
+	pkgdesc = a dual-deck DJ app for tracker modules (.MOD/.XM/.S3M)
 	pkgver = 6.1
 	pkgrel = 1
 	url = https://echolevel.co.uk/post/1486312636973-Chipdisco
