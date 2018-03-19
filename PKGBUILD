@@ -1,34 +1,28 @@
 # Maintainer: Vincent Hourdin <aur at vinvin dot tf>
 pkgname=ser-player
-pkgver=v1.6.0.r36.gfef5030
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A simple SER files player, a file format used in astronomy."
 url="https://github.com/cgarry/ser-player"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('qt5-base')
+depends=('qt5-base' 'libpng')
 makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("git+https://github.com/cgarry/ser-player.git" "AppImage.patch")
-sha1sums=('SKIP' '73f2645bd9d5534a7d03b8f2222f3a69f54109fb')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("https://github.com/cgarry/ser-player/archive/v1.7.2.tar.gz")
+sha1sums=('b77169046704453c7e22eb591da6b3b0db457534')
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  patch -p0 < ../AppImage.patch
-  qmake-qt5 ser-player.pro
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  qmake-qt5 ser-player.pro DEFINES+=DISABLE_NEW_VERSION_CHECK CONFIG+=release APPIMAGE=
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm755 bin/ser-player "$pkgdir/usr/bin/ser_player"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make INSTALL_ROOT="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
