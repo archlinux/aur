@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
 
-pkgver=0.7.6_4.15.9.a.1
+pkgver=0.7.6_4.15.10.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.15.9.a-1" "spl-linux-hardened-headers")
+makedepends=("linux-hardened-headers=4.15.10.a-1" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/zfs-0.7.6.tar.gz")
 sha256sums=("1687f4041a990e35caccc4751aa736e8e55123b81d5f5a35b11916d9e580c23d")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened" "zfs-utils-common=0.7.6" "linux-hardened=4.15.9.a-1")
+depends=("kmod" "spl-linux-hardened" "zfs-utils-common=0.7.6" "linux-hardened=4.15.10.a-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.6"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.6 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.15.9-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.15.9-1-hardened/build
+                --with-linux=/usr/lib/modules/4.15.10-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.15.10-1-hardened/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-hardened-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.15.9-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.15.10-1-hardened/Module.symvers
 }
