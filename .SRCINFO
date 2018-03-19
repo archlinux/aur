@@ -1,7 +1,7 @@
 pkgbase = xforms
 	pkgdesc = A graphical user interface toolkit for X Window Systems.
 	pkgver = 1.2.5pre1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://xforms-toolkit.org/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = xforms
 	depends = libxpm
 	depends = libjpeg
 	depends = libgl
-	source = http://download.savannah.gnu.org/releases/xforms/xforms-1.2.5pre1.tar.gz
-	md5sums = a710237662e3e3350e9f4309d7dcf14d
+	source = http://download.savannah.nongnu.org/releases/xforms/xforms-1.2.5pre1.tar.xz
+	sha256sums = 52d0358f384db0ebf053dc1ae5f98446b1ae3ad75ebdd4438da8c023acbf9dba
 
 pkgname = xforms
 

@@ -2,18 +2,18 @@
 
 pkgname=xforms
 pkgver=1.2.5pre1
-pkgrel=1
+pkgrel=3
 pkgdesc="A graphical user interface toolkit for X Window Systems."
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://xforms-toolkit.org/'
 depends=('libxpm' 'libjpeg' 'libgl')
 makedepends=('texlive-plainextra')
-source=(http://download.savannah.gnu.org/releases/xforms/$pkgname-$pkgver.tar.gz)
-md5sums=('a710237662e3e3350e9f4309d7dcf14d')
+source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz")
+sha256sums=('52d0358f384db0ebf053dc1ae5f98446b1ae3ad75ebdd4438da8c023acbf9dba')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr 
   make
   cd doc
@@ -22,12 +22,12 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir/ install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir"/ install
   rm $pkgdir/usr/lib/*.la
-  install -d $pkgdir/usr/share/info 
-  install -m644 $srcdir/$pkgname-$pkgver/doc/$pkgname.info* \
-    $pkgdir/usr/share/info
-  install -Dm644 $srcdir/$pkgname-$pkgver/doc/$pkgname.pdf \
-    $pkgdir/usr/share/doc/$pkgname/$pkgname.pdf
+  install -d "$pkgdir"/usr/share/info 
+  install -m644 doc/$pkgname.info* \
+    "$pkgdir"/usr/share/info
+  install -Dm644 doc/$pkgname.pdf \
+    "$pkgdir"/usr/share/doc/$pkgname/$pkgname.pdf
 }
