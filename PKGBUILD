@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=redis-desktop-manager
-_pkgver=0.9.0-5
+_pkgver=0.9.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
@@ -21,12 +21,12 @@ depends=(
   'libssh2')
 makedepends=('git' 'gcc')
 conflicts=('redis-desktop-manager-bin')
-source=("rdm::git://github.com/uglide/RedisDesktopManager.git#commit=0ebbfd88683cc12637282063ff4f9b8e47a8d29f"
+source=("rdm::git://github.com/uglide/RedisDesktopManager.git#tag=${_pkgver}"
         'rdm.sh'
         'rdm.desktop')
 sha256sums=('SKIP'
             'f469d9a5adce723904efe0f1b1db5d79807410f90aafb117f18ae108d8b2d391'
-            '4fac85cec4a7abe7254ff3a6f0382d9a6f2b712372ecbd74474a2f8efe9c4e3c')
+            '9ca6cfe0fc1a050552ec2fa009a2d517de3b049ff6f379f0fda849e4dbca3f68')
 
 prepare() {
   cd rdm/

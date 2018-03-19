@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Redis Desktop Manager
-Comment=Redis Desktop Manager
+Comment=Cross-platform GUI management tool for Redis
 Type=Application
 Categories=Development;
 Exec=rdm
