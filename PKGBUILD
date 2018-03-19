@@ -2,7 +2,8 @@
 pkgname=cliqz-bin
 _vendorname=cliqz
 pkgver=1.18.0
-_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
+#_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
+_cqzbuildid=20180209180319
 _mozver=58.0.2
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
@@ -18,7 +19,7 @@ source=("http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/pool/m
 
 deb_sha=$(curl -s http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/dists/stable/main/binary-amd64/Packages | sed -n 's/^SHA256: \(.*\)$/\1/p')
 sha256sums=("$deb_sha"
-            '866824541983ecabc2a8de3296d780e6a22dccba12f3b74ef9abf4f87d71bcbf')
+            '7827ad0dcea64dde261a0def466acf701ace81c5b31b4f2f69403c6502411581')
 
 prepare() {
   cd $srcdir
