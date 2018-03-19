@@ -1,7 +1,7 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
-	pkgver = 3.10.8
-	pkgrel = 2
+	pkgver = 3.11.1
+	pkgrel = 1
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = xx-net
 	optdepends = miredo: a Teredo server/client, x86_64
 	optdepends = miredo-debian: a Teredo client, armv7
 	options = !strip
-	source = https://codeload.github.com/XX-net/XX-Net/tar.gz/3.10.8
+	source = https://codeload.github.com/XX-net/XX-Net/tar.gz/3.11.1
 	source = XX-net.ini
-	md5sums = fcf197bf6d45800de7e805bd713dd722
+	md5sums = 52aad7f989824a0453537d8be5a50c4c
 	md5sums = d439251c0022e4537231bbde87d36bac
 
 pkgname = xx-net
