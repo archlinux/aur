@@ -1,6 +1,6 @@
 pkgname=stack-client
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The STACK Client provides file sync to desktop clients."
 arch=('x86_64')
 url='https://www.transip.nl/stack/'
@@ -36,7 +36,9 @@ build() {
         -DWITH_DOC=FALSE \
         -DOEM_THEME_DIR=${srcdir}/transiptheme \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
-        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/
+        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
+        -DMIRALL_VERSION_SUFFIX= \
+        -DMIRALL_VERSION_BUILD=70896
   make
 }
  
