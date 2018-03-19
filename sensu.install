@@ -2,61 +2,10 @@ post_install() {
 	# Perform necessary sensu setup steps
 	# after package is installed.
 
+	#OPTIONS="-c /etc/sensu/config.json -d /etc/sensu/conf.d -e /etc/sensu/extensions -l /var/log/sensu/sensu-client.log -L info"
 
-	PROGNAME=`basename $0`
-
-	ETC_DIR=/etc
-
-	INSTALLER_DIR=/opt/sensu
-	EMBEDDED_DIR=$INSTALLER_DIR/embedded
-	EMBEDDED_BIN_DIR=$EMBEDDED_DIR/bin
-	SHARE_DIR=$EMBEDDED_DIR/share
-	LOG_DIR=/var/log/sensu
-	PID_DIR=/var/run/sensu
-	TMP_DIR=/var/cache/sensu
-	CONFIG_DIR=$ETC_DIR/sensu
-	CONFD_DIR=$CONFIG_DIR/conf.d
-	PLUGINS_DIR=$CONFIG_DIR/plugins
-	EXTENSIONS_DIR=$CONFIG_DIR/extensions
-	DEFAULTS_DIR=$ETC_DIR/default
-
-	LOG_FILE=$LOG_DIR/sensu-client.log
-	CONFIG_FILE=$CONFIG_DIR/config.json
-
-	LOG_LEVEL=info
-
-	OPTIONS="-c $CONFIG_FILE -d $CONFD_DIR -e $EXTENSIONS_DIR -l $LOG_FILE -L $LOG_LEVEL"
-
-	SENSU_PATHS=$EMBEDDED_BIN_DIR:$PATH:$PLUGINS_DIR:$HANDLERS_DIR
-	SENSU_GEM_PATHS=$EMBEDDED_DIR/lib/ruby/gems/2.2.0:$GEM_PATH
-
-	SYSV_SCRIPTS_EXIST=false
-
-	SENSU_USER=sensu
-	SENSU_GROUP=sensu
-
-	error_exit()
-	{
-	    echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
-	    exit 1
-	}
-
-	create_sensu_user_aix()
-	{
-	    # add /usr/bin/false to the list of allowed shells
-	    # NOTE: this is all terrible and makes kittens cry.
-	    # it should all be replaced by a single, idempotent command
-	    set +e
-	    /usr/bin/lssec -f /etc/security/login.cfg -s usw -a shells | /usr/bin/grep "/usr/bin/false" > /dev/null
-	    RC=$?
-	    if [ "${RC}" != "0" ]; then
-		SHVAL=`/usr/bin/lssec -f /etc/security/login.cfg -s usw -a shells | /usr/bin/cut -d '=' -f2`
-		/usr/bin/chsec -f /etc/security/login.cfg -s usw -a shells="${SHVAL},/usr/bin/false"
-	    fi
-
-	    # create the system user
-	    mkuser pgrp="sensu" shell="/usr/bin/false" home="/opt/sensu" sensu
-	}
+	#SENSU_PATHS=$EMBEDDED_BIN_DIR:$PATH:$PLUGINS_DIR:$HANDLERS_DIR
+	#SENSU_GEM_PATHS=$EMBEDDED_DIR/lib/ruby/gems/2.2.0:$GEM_PATH
 
 	create_sensu_user_group()
 	{
@@ -66,7 +15,7 @@ post_install() {
 	        RC=$?
 	    if [ "${RC}" != "0" ]; then
 			groupadd -r sensu
-		    fi
+		fi
 
 	    # create sensu user
 	    set +e
@@ -74,25 +23,21 @@ post_install() {
 	        RC=$?
 	    if [ "${RC}" != "0" ]; then
 			useradd -r -g sensu -d /opt/sensu -s /usr/bin/false -c "Sensu Monitoring Framework" sensu
-		    fi
+		fi
 	}
 
 	chown_sensu_dirs()
 	{
 	    # Ensure all files/directories in $INSTALLER_DIR are owned by root.
-	    chown -Rh 0:0 $INSTALLER_DIR
-	    chown -R $SENSU_USER:$SENSU_GROUP $CONFIG_DIR
-	    chown -R $SENSU_USER:$SENSU_GROUP $LOG_DIR
-	    chown -R $SENSU_USER:$SENSU_GROUP $PID_DIR
-	    chown -R $SENSU_USER:$SENSU_GROUP $TMP_DIR
+	    chown -Rh 0:0 /opt/sensu
+	    chown -R sensu:sensu /etc/sensu
+	    chown -R sensu:sensu /var/log/sensu
+	    chown -R sensu:sensu /var/run/sensu
+	    chown -R sensu:sensu /var/cache/sensu
 	}
 
-	create_system_services()
-	{
-	    # this function is a noop on debian
-	    return
-	}
-
+	create_sensu_user_group
+	chown_sensu_dirs
 }
 
 post_upgrade() {
