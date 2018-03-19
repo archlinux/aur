@@ -80,7 +80,7 @@ md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '1faebf39e7a665d756cae3e0e33831a9'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
-         'a171d28760bf411be85dc4a964df2c0a'
+         '2cc98daa5fbd5b1163e5613e49fc9ef4'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
          '7e58716f1249f924ce218bd348d4c03a'
          'c203b966d62f3b04bf413f7b46af4212')
