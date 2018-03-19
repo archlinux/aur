@@ -1,0 +1,3 @@
+d /var/lib/ubooquity 0755 ubooquity ubooquity
+Z /var/lib/ubooquity - ubooquity ubooquity
+Z /usr/lib/ubooquity - ubooquity ubooquity
