@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('git')
 install='lazylibrarian.install'
-source=('git://github.com/DobyTang/LazyLibrarian.git'
+source=('git+https://github.com/DobyTang/LazyLibrarian.git'
         'lazylibrarian.service'
         'lazylibrarian.tmpfiles'
         'lazylibrarian.sysusers')
