@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework (git version)
-	pkgver = 6.0.1.165.g3a81c2b58
+	pkgver = 6.0.1.274.g876085c6f
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install

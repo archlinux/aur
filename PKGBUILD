@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 binaryname='pwsh'
-pkgver=6.0.1.165.g3a81c2b58
+pkgver=6.0.1.274.g876085c6f
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd $_pkgname
-  $srcdir/build.sh
+  TERM=xterm $srcdir/build.sh
 }
 
 check() {
