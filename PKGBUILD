@@ -4,7 +4,7 @@
 
 pkgname=headphones-git
 pkgver=0.5.18.r159.gda9287d7
-pkgrel=2
+pkgrel=3
 pkgdesc="Music downloader for usenet and torrents."
 arch=('any')
 url="https://github.com/rembo10/headphones"
@@ -24,14 +24,12 @@ conflicts=('headphones')
 options=('!strip')
 install='headphones.install'
 source=('git+https://github.com/rembo10/headphones.git'
-        'headphones-system.service'
-        'headphones-user.service'
+        'headphones.service'
         'headphones.sysusers'
         'headphones.tmpfiles')
 
 sha256sums=('SKIP'
             '60ef2bc4c0bc1d23d4fe43202759cb24d9f456bd00cb8841ee11b2c4cbce917e'
-            '9b753f7c3a7f81db01e814b2edb6b44a8c7b1e755c70a394082ca5fce5e2c5d7'
             '348abc0627d63762a97655b5893c306e5b923857be5d0b876e9df5fea7ef9ed9'
             'f1e537c6853c3d641ec2266283b726a8fa5ed8f78c4325d295e66bb4d4868585')
 
@@ -45,8 +43,7 @@ package() {
   cp -a "${srcdir}/headphones"/* "${pkgdir}/usr/lib/headphones"
   rm -rf "${pkgdir}/usr/lib/headphones/.git"
 
-  install -D -m 644 headphones-system.service "${pkgdir}/usr/lib/systemd/system/headphones.service"
-  install -D -m 644 headphones-user.service "${pkgdir}/usr/lib/systemd/user/headphones.service"
+  install -D -m 644 headphones.service "${pkgdir}/usr/lib/systemd/system/headphones.service"
   install -D -m 644 headphones.sysusers "${pkgdir}/usr/lib/sysusers.d/headphones.conf"
   install -D -m 644 headphones.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/headphones.conf"
 }

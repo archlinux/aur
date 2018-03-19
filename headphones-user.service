@@ -1,8 +1,0 @@
-[Unit]
-Description=Headphones Daemon
-
-[Service]
-ExecStart=/usr/bin/python2 /usr/lib/headphones/Headphones.py --config %h/.headphones/config.ini --datadir %h/.headphones
-
-[Install]
-WantedBy=default.target
