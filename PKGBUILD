@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd lib
-	svn info | grep Revision | sed 's/Revision: /0.7.r/'
+	svn info | head -7 | tail -1 | cut -d' ' -f2
 }
 
 build() {
