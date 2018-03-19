@@ -2,7 +2,7 @@
 
 pkgname=lazylibrarian
 pkgver=1.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://github.com/DobyTang/LazyLibrarian"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
+install='lazylibrarian.install'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DobyTang/LazyLibrarian/archive/${pkgver}.tar.gz"
         'lazylibrarian.service'
