@@ -1,7 +1,7 @@
 pkgbase = ccnet
 	pkgdesc = A framework for writing networked applications in C.
-	pkgver = 6.1.5
-	pkgrel = 3
+	pkgver = 6.1.6
+	pkgrel = 1
 	url = https://github.com/haiwen/ccnet
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ccnet
 	depends = libevent
 	depends = libsearpc
 	conflicts = ccnet-server
-	source = ccnet-v6.1.5-server.tar.gz::https://github.com/haiwen/ccnet/archive/v6.1.5.tar.gz
+	source = ccnet-v6.1.6-server.tar.gz::https://github.com/haiwen/ccnet/archive/v6.1.6.tar.gz
 	source = libccnet.pc.patch
-	sha256sums = 763296486f8cc51b439355e87dac8cb71975689024bddb359b0456aa8dbd518f
+	sha256sums = c6ecec39b21dc92489f77b1975d808f6e7898fcbe623e3fb22dd5a39e1a8faf4
 	sha256sums = 66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f
 
 pkgname = ccnet
