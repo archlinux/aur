@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=r1574.8ab2f62
+pkgver=r1598.99fc79f
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
@@ -52,6 +52,7 @@ build() {
 		-DCMAKE_SYSTEM_NAME=Linux \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Debug \
+                -DMEMDEBUG=TRUE \
 		-DLOG_FILE=TRUE \
 		-DLOG_PGSQL=FALSE \
 		-DSHAPER=TRUE \
