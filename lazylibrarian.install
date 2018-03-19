@@ -1,0 +1,20 @@
+post_upgrade() {
+  if [[ $(vercmp "1.5.0-5" "$2") -eq 1 ]]; then
+    if [[ -f /etc/lazylibrarian/lazylibrarian.ini && ! -f /var/lib/lazylibrarian/lazylibrarian.ini ]]; then
+      cp /etc/lazylibrarian/lazylibrarian.ini /var/lib/lazylibrarian/lazylibrarian.ini
+      echo "Copied lazylibrarian.ini from /etc/lazylibrarian/ -> /var/lib/lazylibrarian/"
+    fi
+  fi
+
+  if [[ "$( getent passwd lazylibrarian | cut -d: -f6 )" != "/var/lib/lazylibrarian" ]]; then
+    usermod -d /var/lib/lazylibrarian lazylibrarian
+    if [[ $? -ne 0 ]]; then
+      echo "Could not change lazylibrarian users home directory."
+      echo "Run: sudo systemctl stop lazylibrarian ; sudo usermod -d /var/lib/lazylibrarian lazylibrarian ; sudo systemctl start lazylibrarian"
+    fi
+  fi
+
+  if [[ -d /etc/lazylibrarian ]]; then
+    echo "Remove /etc/lazylibrarian if everything is working correctly from /var/lib/lazylibrarian now."
+  fi
+}
