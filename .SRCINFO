@@ -1,6 +1,6 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
-	pkgver = 2.2.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://www.transip.nl/stack/
 	arch = x86_64
@@ -13,14 +13,11 @@ pkgbase = stack-client
 	depends = xdg-utils
 	optdepends = python2-nautilus: integration with Nautilus
 	optdepends = nemo-python: integration with Nemo
-	provides = mirall-git
-	provides = owncloud-client
-	provides = owncloud-client-ngs
 	conflicts = stack-client-bin
-	source = http://mirror.transip.net/stack/software/source/stackclient-2.2.4-sources.zip
-	source = SSLeay_OpenSSL.diff
-	sha256sums = 65540597542b2af3f195742ffb4983cdb9030370f44482451d7a622d033ae661
-	sha256sums = fd07efe4d09a086ec827e9618818a7839fae43db6192b693307977fa84842582
+	source = client-v2.4.1.tar.gz::https://github.com/owncloud/client/archive/v2.4.1.tar.gz
+	source = http://mirror.transip.net/stack/software/source/stack-client-source-2.4.1.tar.gz
+	sha256sums = 89a29ce91f49160cae4f04129a9d1e0757b665300db68d4449849c847627d337
+	sha256sums = 802b9032408118cff2852965f8c0ae87733205db86a8d386c2a4fb3c43e9a4d8
 
 pkgname = stack-client
 
