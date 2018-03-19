@@ -1,6 +1,6 @@
 pkgbase = linux-surfacepro3-git
-	pkgver = 4.16rc5.r114.g8f5fd927c3a7576d57
-	pkgrel = 2
+	pkgver = 4.16rc6.r0.gc698ca5278934c0ae3
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
