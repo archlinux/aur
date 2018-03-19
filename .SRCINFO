@@ -19,6 +19,7 @@ pkgbase = openshadinglanguage-1.9
 	depends = libtiff
 	depends = zlib
 	depends = ncurses
+	provides = openshadinglanguage
 	conflicts = openshadinglanguage
 	options = !strip
 	source = https://github.com/imageworks/OpenShadingLanguage/archive/Release-1.9.7.tar.gz

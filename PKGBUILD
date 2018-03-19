@@ -10,6 +10,7 @@ depends=('boost-libs' 'openimageio' 'openexr' 'intel-tbb' 'freetype2' 'libpng'
          'libtiff' 'zlib' 'ncurses')
 makedepends=('boost' 'cmake' 'llvm' 'clang')
 conflicts=('openshadinglanguage')
+provides=('openshadinglanguage')
 options=(!strip)
 source=(https://github.com/imageworks/OpenShadingLanguage/archive/Release-${pkgver}.tar.gz
         )
