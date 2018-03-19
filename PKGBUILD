@@ -1,8 +1,8 @@
 # Maintainer: Mrmaxmeier <Mrmaxmeier+aur at gmail dot com>
-# TODO: dynamically choose between /builds/.. and /builds/old/..
+# TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.4.133
+pkgver=1.4.134
 pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'i686')
@@ -13,10 +13,10 @@ source=('bombsquad.sh' 'bombsquad.desktop')
 sha256sums=('850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515' '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c')
 
 source_i686=("http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_32bit_${pkgver}.tar.gz")
-sha256sums_i686=('9e9c061289951e5a81577fafe6aac1d2c7d97dbe75a503c470403f3f4314d836')
+sha256sums_i686=('e9f554cb219dd82d184d89c787283b8d1fa2323df86f9f949b935654e4f3c71c')
 
 source_x86_64=("http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_${pkgver}.tar.gz")
-sha256sums_x86_64=('655e1583c2a15c712ce2ab1b2e252b127d2bd5aa526580ef2506e20ec6040954')
+sha256sums_x86_64=('eded50c2886f8ff05e926f5e2c7f1080e8f76a4efdbf28b1786d867cec16c681')
 
 
 package() {
