@@ -1,7 +1,7 @@
 # Maintainer: muzhed <chustokes@126.com>
 
 pkgname=din
-pkgver=31
+pkgver=30
 pkgrel=1
 pkgdesc="A sound synthesizer and musical instrument."
 arch=("i686" "x86_64")
@@ -11,11 +11,17 @@ depends=('jack' 'libgl' 'sdl' 'tcl')
 makedepends=('boost')
 source=("https://archive.org/download/dinisnoise_source_code/$pkgname-$pkgver.tar.gz"
         din.png
-        din.desktop)
-md5sums=('6631aec32aa80178699cfd8dec259821'
+        din.desktop
+	path.patch)
+md5sums=('6630aec32aa80178699cfd8dec259821'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
-         'e38840354b0f197079e6bbeda03c8613')
+         'e38840354b0f197079e6bbeda03c8613'
+         'ceb6b3e310e1244d09be00113f459acf')
 
+prepare() {
+  cd "$srcdir"/"$pkgname-$pkgver"/src
+  patch -p0 -i "$srcdir"/path.patch
+}
 
 build() {
   cd "$srcdir"/"$pkgname-$pkgver"
@@ -23,7 +29,7 @@ build() {
   autoreconf -fvi
   # use alsa instead of jack
   # ./configure CXXFLAGS="-O3 -D__UNIX_ALSA__" CFLAGS=-O3
-  ./configure CXXFLAGS="-O3 -D__UNIX_JACK__" CFLAGS=-O3
+  ./configure --prefix=/usr CXXFLAGS="-O3 -D__UNIX_JACK__" CFLAGS=-O3
   make
 }
 
