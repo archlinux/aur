@@ -1,0 +1,28 @@
+pkgbase = openshadinglanguage-1.9
+	pkgdesc = Advanced shading language for production GI renderers
+	pkgver = 1.9.7
+	pkgrel = 1
+	url = https://github.com/imageworks/OpenShadingLanguage
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = clang
+	depends = boost-libs
+	depends = openimageio
+	depends = openexr
+	depends = intel-tbb
+	depends = freetype2
+	depends = libpng
+	depends = libtiff
+	depends = zlib
+	depends = ncurses
+	conflicts = openshadinglanguage
+	options = !strip
+	source = https://github.com/imageworks/OpenShadingLanguage/archive/Release-1.9.7.tar.gz
+	md5sums = 973e6302c89d9d8090b47587cf21bcf6
+
+pkgname = openshadinglanguage-1.9
+
