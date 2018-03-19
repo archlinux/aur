@@ -5,10 +5,11 @@
 _pkgname=gogs
 _orga=gogits
 _gourl=github.com/gogits/$_pkgname
+_userid=511
 
 pkgname=$_pkgname
 pkgver=0.11.34
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -25,7 +26,6 @@ makedepends=('go>=1.3')
 conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
 options=('!strip')
 backup=("etc/$_pkgname/app.ini")
-install=$_pkgname.install
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
@@ -71,20 +71,33 @@ build() {
 
   go fix
   go build -x -ldflags="-s -w" -tags='sqlite pam cert'
+
+  echo "u $_pkgname $_userid \"$_pkgname user\" /var/lib/$_pkgname" > "$srcdir/$_pkgname.sysusers"
+  echo "#!/usr/bin/bash
+if [[ \$USER != $_pkgname ]]; then
+    echo \"Must run as user $_pkgname!\"
+    exit -1
+fi
+export GOGS_CUSTOM=/var/lib/$_pkgname/custom
+/usr/bin/$_pkgname backup --config /etc/$_pkgname/app.ini \$@" > "$srcdir/$_pkgname-backup.sh"
 }
 
 package() {
   install -Dm0755 "$srcdir/build/src/${_gourl}/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm0755 "$srcdir/$_pkgname-backup.sh" "$pkgdir/usr/bin/$_pkgname-backup"
 
   mkdir -p "$pkgdir/usr/share/${_pkgname}"
   cp -r "$srcdir/build/src/${_gourl}/conf" "$pkgdir/usr/share/${_pkgname}"
   cp -r "$srcdir/build/src/${_gourl}/public" "$pkgdir/usr/share/${_pkgname}"
   cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/${_pkgname}"
 
-  install -Dm0644 "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/etc/$_pkgname/app.ini"
+  install -Dm0664 -g "$_userid" "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/etc/$_pkgname/app.ini"
   install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
-
-  install -dm0700 "$pkgdir/var/log/$_pkgname"
-  install -dm0700 "$pkgdir/var/lib/$_pkgname"
+  install -Dm0644 "${srcdir}/$_pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$_pkgname.conf"
+  install -dm0700 -o "$_userid" -g "$_userid" "$pkgdir/var/lib/$_pkgname"
+  install -dm0700 -o "$_userid" -g "$_userid" "$pkgdir/var/log/$_pkgname"
+  for subdir in avatars repos certs data/sessions data/tmp; do
+    install -dm0700 -o "$_userid" -g "$_userid" "$pkgdir/var/lib/$_pkgname/$subdir"
+  done
 }
