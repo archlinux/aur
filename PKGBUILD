@@ -2,11 +2,11 @@
 
 _gitname=badtouch
 pkgname=badtouch-git
-pkgver=0.1.0.r0.g5a7a2d4
-pkgrel=2
+pkgver=0.2.0.r15.ge621cb3
+pkgrel=1
 pkgdesc="Scriptable network authentication cracker"
 url="https://github.com/kpcyrd/badtouch"
-depends=('gcc-libs')
+depends=('openssl')
 makedepends=('cargo' 'git')
 provides=('badtouch')
 conflicts=('badtouch')
@@ -33,6 +33,7 @@ check() {
 package() {
   cd "$_gitname"
   install -Dm755 "target/release/$_gitname" -t "$pkgdir/usr/bin"
+  install -Dm644 docs/badtouch.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname"
 }
 
