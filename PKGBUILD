@@ -2,8 +2,8 @@
 
 pkgname=sbt-latest
 _pkgname=${pkgname%-*}
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
@@ -11,10 +11,11 @@ license=('BSD')
 depends=('java-runtime-headless=8'
          'rsync'
          'sh')
+provides=('sbt')
 conflicts=('sbt')
 source=("https://github.com/sbt/sbt/releases/download/v$pkgver/sbt-$pkgver.tgz"
         "https://raw.githubusercontent.com/$_pkgname/$_pkgname/v$pkgver/LICENSE")
-sha256sums=('9d8cb24b297507ed4c49b476d3050da0abe2c39f7e7d97ba6d48c1b17854e2d7'
+sha256sums=('8a9072155578f06c861be406e7f9fe989b3770d8da4069dd3cb5ad6c6d25c03b'
             '4a63870e342ef614e3ba2d5e1de3fcc5543504df6e96ecafac00f674a7972ab2')
 
 package() {
