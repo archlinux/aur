@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=markdowner
+Name=Markdowner
+Type=Application
+Terminal=false
+Icon=/usr/share/markdowner/icon.png
+Caption=A light/feature free markdown editor.
+Categories=Utility;TextEditor;

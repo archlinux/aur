@@ -1,0 +1,22 @@
+pkgbase = markdowner-bzr
+	pkgdesc = Markdowner is a simple markdown editor that will allow a user to write markdown text and view the parsed HTML output.
+	pkgver = 15
+	pkgrel = 2
+	url = http://www.jezra.net/projects/markdowner
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	depends = python2
+	depends = gtk2
+	depends = libwebkit
+	depends = python2-markdown
+	depends = pywebkitgtk
+	optdepends = python2-gtkspell: spellcheck support
+	provides = markdowner
+	source = markdowner.desktop
+	source = markdowner.sh
+	sha256sums = c069fef73c49405b744481c5e62e654d19f3940d731af061220753fba4835df3
+	sha256sums = 88c04192feaa631f253da412401d28306149bc995cf6c907c9d351bf0b189cd3
+
+pkgname = markdowner-bzr
+
