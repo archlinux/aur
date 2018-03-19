@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus exporter for PostgreSQL
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus-push-gateway
+
+[Install]
+WantedBy=multi-user.target
