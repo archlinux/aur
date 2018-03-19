@@ -1,4 +1,4 @@
-# Maintainer: Kevin Haroldsen <kupiakos@gmail.com>
+# Maintainer: Alyssa Haroldsen <kupiakos@gmail.com>
 
 pkgname=hivex-git
 pkgver=1.3.13.r3.gcb6cc65
