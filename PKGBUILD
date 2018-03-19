@@ -9,7 +9,7 @@ then
 pkgname+=('gostcoin-qt-git')
 fi
 
-pkgver=0.8.5.10
+pkgver=0.8.5.11
 pkgrel=1
 pkgdesc="Coin based on GOST R 34.10 and GOST R 34.11-2012 with I2P support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ url="http://gostcoin.i2p"
 license=('MIT')
 makedepends=('boost' 'cmake')
 
-depends=('boost-libs' 'openssl-1.0')
+depends=('boost-libs' 'openssl')
 if [ ! -z "$_BUILD_QT_GUI" ]
 then
 depends+=('qt5-base')
@@ -37,10 +37,7 @@ pkgver() {
 build() {
   cd $srcdir/${pkgbase%%-git}/src
 
-  make \
-      OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 \
-      OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 \
-      -f makefile.unix
+  make -f makefile.unix
 }
 
 package_gostcoind-git(){
@@ -66,9 +63,7 @@ package_gostcoin-qt-git(){
   provides=('gostcoin-qt')
   conflicts=('gostcoin-qt')
 
-  qmake DEFINES+=BOOST_ASIO_ENABLE_OLD_SERVICES \
-      OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 \
-      OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 \
+  qmake DEFINES+=BOOST_ASIO_ENABLE_OLD_SERVICES
   
   make
 
