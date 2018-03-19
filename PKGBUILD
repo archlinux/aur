@@ -1,8 +1,8 @@
 # Maintainer: Alexey <pozitiffcat2@gmail.com>
 
 pkgname='plantumlqeditor-git'
-pkgver='2.1_20170801'
-pkgrel=2
+pkgver='3.0_20180319'
+pkgrel=3
 pkgdesc='PlantUML QEditor is a simple editor written in Qt5 for PlantUML'
 arch=('any')
 url='https://github.com/borco/plantumlqeditor'
