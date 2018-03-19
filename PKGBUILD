@@ -5,7 +5,7 @@
 # * Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ce
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source_i686=(https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linu
 source_x86_64=(https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('f1dd2cd13732d00a36d95218d59423689112b343b2212744f6c7b6893381ce78'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_i686=('3a9cf35c962f164cfdf3c97eb079e4473abe76e9d38720a9d97e1e574d7963bf')
-sha256sums_x86_64=('1b2ab5441338f2a39361298e931909ffc6f9e003b66d04ecb5e80b00e03df458')
+sha256sums_i686=('347262e3916f24649f6b897d78ef9436c956391caa8d9c86835c8d868c3ced14')
+sha256sums_x86_64=('87622ac295dc27132becedd57f8ef58212f73bf2d67803c051d3779807572108')
 
 # https://dbeaver.jkiss.org/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz.sha256
 # https://dbeaver.jkiss.org/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz.sha256
