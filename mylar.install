@@ -18,7 +18,3 @@ post_upgrade() {
     echo "Remove /etc/mylar if everything is working correctly from /var/lib/mylar now."
   fi
 }
-
-post_install() {
-  post_upgrade "$1" "$2"
-}
