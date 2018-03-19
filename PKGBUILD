@@ -5,7 +5,7 @@ pkgname=powershell
 binaryname=pwsh
 _pkgver=6.0.2
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  $srcdir/build.sh
+  TERM=xterm $srcdir/build.sh
 }
 
 check() {
