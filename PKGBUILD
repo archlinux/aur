@@ -1,7 +1,7 @@
 # Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=ccv
-pkgver=0.7.r1447
+pkgver=0.7.r1618
 pkgrel=1
 pkgdesc='The C-based/Cached/Core Computer Vision Library'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd lib
-	svn info | head -7 | tail -1 | cut -d' ' -f2
+	echo 0.7.r`svn info | head -7 | tail -1 | cut -d' ' -f2`
 }
 
 build() {
