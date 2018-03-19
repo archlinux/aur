@@ -1,15 +1,15 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
-	pkgver = 2017.3.4
-	pkgrel = 2
+	pkgver = 2017.3.5
+	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2017.3.4.tar.gz
-	md5sums = 84e7374f7cab5b5e5a9c202fc4f046ca
+	source = https://download.jetbrains.com/idea/ideaIC-2017.3.5.tar.gz
+	md5sums = 7272d4d2a0eb0a6cbbfba62e2f883fbc
 
 pkgname = intellij-idea-ce
 
