@@ -1,25 +1,32 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: wedjat <wedjat@protonmail.com>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
-_pyname=nitime
-pkgname=python-$_pyname
-pkgver=0.6
+pkgname=python-nitime
+pkgver=0.7
 pkgrel=1
-pkgdesc='timeseries analysis for neuroscience data'
-url='http://nipy.org/nitime'
-depends=('python-matplotlib' 'python-scipy')
-optdepends=('python-networkx' 'python-nibabel')
+pkgdesc="A library for time-series analysis of neuroscience data."
+arch=("x86_64")
+url="http://nipy.org/nitime/"
 license=('BSD')
-arch=('i686' 'x86_64')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('43d92863b8792a50336b40635999f909')
+depends=('python' 'python-numpy' 'python-matplotlib' 'python-scipy') # ('python-sphinx' 'python-nibabel' 'python-networkx) # building documentation (but did not try so far)
+makedepends=('python-setuptools' 'cython')
+checkdepends=()
+optdepends=('python-nibabel: for reading in data from fMRI data files' 'python-networkx: for some visualization functions')
+options=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nipy/nitime/archive/rel/$pkgver.tar.gz")
+md5sums=('6b5896db6b7d65660291640bf4027681')
 
-build() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build
+
+build() 
+{
+	cd "$srcdir/nitime-rel-$pkgver"
+	python setup.py build
+
 }
 
-package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() 
+{
+	cd "$srcdir/nitime-rel-$pkgver"
+	python setup.py install --root="$pkgdir"/ --skip-build --optimize=1
+
 }
