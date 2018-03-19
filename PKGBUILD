@@ -3,7 +3,7 @@
 # Contributor: yujmo <yujmo94@gmail.com>
 
 pkgname=yujmo_libfreenect2
-pkgver=0.2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(Apache GPL)
 depends=(libusb glfw turbojpeg ocl-icd)
 makedepends=(cmake opencl-headers)
 source=("https://github.com/yujmo/libfreenect2/archive/v${pkgver}.tar.gz")
-sha512sums=('3525e3f21462cecd3b198f64545786ffddc2cafdfd8146e5a46f0300b83f29f1ad0739618a07ab195c276149d7e2e909f7662e2d379a2880593cac75942b0666')
+sha512sums=('c8b2e26f8cdb832edd0171d08af631ac37a5b59339cbd96a020582098396c12e9acf836cc4a98fff459350717129f84ebea51d80186a95e10e8d830c378e6ed7')
 
 prepare() {
 	cd "${srcdir}/libfreenect2-$pkgver"
