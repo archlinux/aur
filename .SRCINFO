@@ -1,10 +1,11 @@
 pkgbase = git-latexdiff
 	pkgdesc = Simple but very convenient wrapper around Git and latexdiff
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/git-latexdiff/git-latexdiff
 	arch = any
 	license = GPL
+	makedepends = asciidoc
 	depends = texlive-core
 	depends = texlive-bin
 	depends = git

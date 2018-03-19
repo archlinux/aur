@@ -2,11 +2,12 @@
 # Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
 pkgname=git-latexdiff
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple but very convenient wrapper around Git and latexdiff"
 arch=('any')
 url="https://gitlab.com/git-latexdiff/git-latexdiff"
 license=('GPL')
+makedepends=('asciidoc')
 depends=('texlive-core' 'texlive-bin' 'git')
 source=("v${pkgver}.tar.gz"::"https://gitlab.com/${pkgname}/${pkgname}/repository/archive.tar.gz?ref=v${pkgver}")
 sha256sums=('76b19b623749025bde0617776237dbd6763a21d19cd6b6b353765846dac766ec')
