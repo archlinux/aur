@@ -1,11 +1,11 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=ciel-git 
-pkgver=r293.4e27ba4
+pkgver=r297.c1540a4
 pkgrel=1 
 pkgdesc="A tool for controlling multi-layer file systems and containers." 
 arch=('i686' 'x86_64') url="https://github.com/AOSC-Dev/ciel" 
 license=('MIT') 
-makedepends=('git' 'make' 'go') 
+makedepends=('git' 'make' 'go' 'curl') 
 source=($pkgname::git+https://github.com/AOSC-Dev/ciel.git
         'LICENSE') 
 md5sums=('SKIP'
