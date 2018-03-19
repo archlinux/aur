@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
 arch=('any')
@@ -17,14 +17,14 @@ md5sums=('e7623d5a7adbaf302bb7e63b7ab5101a')
 options=('!makeflags')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   GUILE_EFFECTIVE_VERSION=2.0 GUILE=/usr/bin/guile2.0 ./configure --prefix=/usr
   make 
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  rm $pkgdir/usr/share/info/*.png
-  install -d $pkgdir/usr/share/doc/$pkgname
-  find $srcdir/ -name "*.png" -exec install -m644 {} $pkgdir/usr/share/doc/$pkgname \;
+  cd /$pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  rm "$pkgdir"/usr/share/info/*.png
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  find $srcdir/ -name "*.png" -exec install -m644 {} "$pkgdir"/usr/share/doc/$pkgname \;
 }
