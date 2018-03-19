@@ -3,15 +3,15 @@
 
 pkgname=python-prometheus_client
 _pkgname=client_python
-pkgver=0.0.19
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Prometheus instrumentation library for Python 3 applications"
 url="https://github.com/prometheus/client_python"
 arch=('any')
 license=('APACHE')
 depends=('python')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/prometheus/client_python/archive/${pkgver}.tar.gz)
-sha512sums=('0ee5d95c27f7be5f88d462d8a851f6072af49421788c6b3e9f4f51aa5dd1ecd9324539405c1873a3becd62c0cb03bd540c0c29d8fd2115e865bf53189740b0da')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/prometheus/client_python/archive/v${pkgver}.tar.gz)
+sha512sums=('ac343f416dc4f9907e4da0de19d2005375102fb552491025d76466dee1fb1be753a8e20380c83276116a1606a32a9373db53e8a2952669d511255438d74ba217')
 
 build() {
   cd ${_pkgname}-${pkgver}
