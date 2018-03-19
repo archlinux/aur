@@ -1,11 +1,11 @@
 pkgbase = lazylibrarian
 	pkgdesc = Automatic Book Downloading via NZBs & Torrent
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DobyTang/LazyLibrarian
 	arch = any
 	license = GPL3
-	depends = python2
+	depends = python
 	provides = lazylibrarian
 	conflicts = lazylibrarian-git
 	source = lazylibrarian-1.5.0.tar.gz::https://github.com/DobyTang/LazyLibrarian/archive/1.5.0.tar.gz

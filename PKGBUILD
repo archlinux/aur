@@ -2,12 +2,12 @@
 
 pkgname=lazylibrarian
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://github.com/DobyTang/LazyLibrarian"
 license=('GPL3')
-depends=('python2')
+depends=('python')
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
 
@@ -23,7 +23,7 @@ sha256sums=('7d94686085916a984ab89a76b0823695d784ef785368b175a89bd1077d6cc2cd'
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/lazylibrarian"
-  cp -dpr --no-preserve=ownership "$srcdir/LazyLibrarian-${pkgver}"/* "${pkgdir}/usr/lib/lazylibrarian"
+  cp -dpr --no-preserve=ownership "${srcdir}/LazyLibrarian-${pkgver}"/* "${pkgdir}/usr/lib/lazylibrarian"
 
   install -D -m 644 "${srcdir}/lazylibrarian.service" "${pkgdir}/usr/lib/systemd/system/lazylibrarian.service"
   install -D -m 644 "${srcdir}/lazylibrarian.sysusers" "${pkgdir}/usr/lib/sysusers.d/lazylibrarian.conf"
