@@ -6,7 +6,7 @@ pkgdesc="Breeze Contrast cursor theme."
 arch=('any')
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://web.archive.org/web/https://share.kde.org/index.php/s/3e86f7cd39dd9db909da9c7ba5b3de5d/download")
+source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-contrast-cursor-theme.zip")
 makedepends=('unzip')
 
 sha256sums=('055356ae4fe6050fe403b82a16abb909ef7e459cc3f64be77ca660bb951dcb61')
