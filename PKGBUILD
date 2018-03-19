@@ -7,7 +7,7 @@
 pkgname=awn-extras-applets
 _pkgname=awn-extras
 pkgver=0.4.0
-pkgrel=16
+pkgrel=17
 pkgdesc='Collection of applets for avant-window-navigator'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/awn-extras'
@@ -28,7 +28,8 @@ optdepends=('python2-feedparser: comics, feeds, mail applets'
             'upower: battery applet'
             'gnome-applets: cpufreq applet'
             'hddtemp: hardware-sensors applet (optional)'
-            'lm_sensors: hardware-sensors applet (optional)')
+            'lm_sensors: hardware-sensors applet (optional)'
+            'gstreamer0.10-good-plugins: control the volume via Pulseaudio')
 options=('!libtool')
 install=$pkgname.install
 source=(http://launchpad.net/$_pkgname/0.4/$pkgver/+download/$_pkgname-$pkgver.tar.gz
