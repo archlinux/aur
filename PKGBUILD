@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Malah <malah@neuf.fr>
+# Maintainer: Doctorzeus <simmlog@gmail.com>
+# Contributor: Malah <malah@neuf.fr>
 # Contributor: Brenton Horne <brentonhorne77@gmail.com>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Timm Preetz <timm@preetz.us>
@@ -7,21 +8,22 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=7.1.5.2
+pkgver=7.5.0.646
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono>=5.4.0' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-15-bin')
-makedepends=('rsync' 'cmake' 'git' 'nuget' 'openssl-1.0')
+depends=('mono-stable' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-stable')
+makedepends=('rsync' 'cmake' 'git' 'nuget' 'openssl-1.0' 'xterm')
 replaces=('monodevelop-debugger-gdb')
 provides=('monodevelop' 'monodevelop-debugger-gdb')
 conflicts=('monodevelop')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
 source=(git://github.com/mono/monodevelop.git#tag=monodevelop-$pkgver)
-md5sums=('SKIP')
+sha256sums=('SKIP')
+TERM=xterm
 
 prepare() {
   cd $_pkgname
@@ -37,8 +39,8 @@ build() {
   export CFLAGS+=" -I/usr/include/openssl-1.0"
   export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
 
-  ./configure --prefix=/usr --profile=stable 
-  XDG_CONFIG_HOME="$srcdir"/config LD_PRELOAD="" make
+  ./configure --prefix=/usr --profile=stable
+  XDG_CONFIG_HOME="$srcdir"/config make
 }
 
 package() {
@@ -49,6 +51,6 @@ package() {
   find "$pkgdir"/usr/share/mime/ -type f -delete
 
   # NuGet.exe is missing somehow, fixed FS#43423
-  install -Dm755 "${srcdir}"/monodevelop/main/external/nuget-binary/nuget.exe "${pkgdir}"/usr/lib/monodevelop/AddIns/MonoDevelop.PackageManagement/nuget.exe
+  #install -Dm755 "${srcdir}"/monodevelop/main/external/nuget-binary/nuget.exe "${pkgdir}"/usr/lib/monodevelop/AddIns/MonoDevelop.PackageManagement/nuget.exe
 }
 
