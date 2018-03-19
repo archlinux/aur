@@ -12,9 +12,8 @@ pkgbase = libretro-fsuae-git
 	license = GPL3
 	makedepends = git
 	depends = zlib
+	depends = libretro-core-info-git
 	source = git+https://github.com/libretro/libretro-fsuae.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/fsuae_libretro.info
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libretro-fsuae-git
