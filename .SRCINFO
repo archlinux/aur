@@ -6,6 +6,7 @@ pkgbase = akira-git
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
+	makedepends = vala
 	provides = akira
 	source = git+https://github.com/Alecaddd/Akira.git
 	sha256sums = SKIP
