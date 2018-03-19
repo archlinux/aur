@@ -3,16 +3,16 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=libical
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('x86_64')
 url='https://github.com/libical/libical'
 license=('LGPL' 'MPL')
 depends=('glibc' 'glib2' 'icu' 'db')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6405964d596aac64fc82c03c4486387fd6a9c09b1f7af1ff251238e66b9e66e1')
+sha256sums=('ef9f64540332c2aeb57f299a73c3b0de136f733ae61a281f449013159da94e7c')
 
 prepare() {
   mkdir build
@@ -22,14 +22,18 @@ build() {
   cd build
 
   cmake ../"${pkgname}-${pkgver}" \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DSHARED_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make
+  ninja
+}
+
+check() {
+  ninja -C build test
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
