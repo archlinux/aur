@@ -1,6 +1,6 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=mylar-git
-pkgver=1072.9c65a0d
+pkgver=r1072.9c65a0d
 pkgrel=1
 pkgdesc="Comic book downloader for usenet and torrents"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/mylar"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

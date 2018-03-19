@@ -1,6 +1,6 @@
 pkgbase = mylar-git
 	pkgdesc = Comic book downloader for usenet and torrents
-	pkgver = 1072.9c65a0d
+	pkgver = r1072.9c65a0d
 	pkgrel = 1
 	url = https://github.com/evilhero/mylar
 	arch = i686
