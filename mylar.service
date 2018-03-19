@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=mylar
 Group=mylar
-ExecStart=/usr/bin/python2 /usr/lib/mylar/Mylar.py --nolaunch --config /etc/mylar/config.ini --datadir /var/lib/mylar
+ExecStart=/usr/bin/python2 /usr/lib/mylar/Mylar.py --nolaunch --config /var/lib/mylar/config.ini --datadir /var/lib/mylar
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=mylar-git
 pkgver=r1072.9c65a0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Comic book downloader for usenet and torrents"
 arch=('i686' 'x86_64')
 url="https://github.com/evilhero/mylar"
@@ -20,6 +20,7 @@ makedepends=('git')
 provides=("mylar")
 conflicts=("mylar")
 options=(!strip)
+install='mylar.install'
 
 source=('git://github.com/evilhero/mylar.git'
         'mylar.service'
@@ -27,8 +28,8 @@ source=('git://github.com/evilhero/mylar.git'
         'mylar.sysusers')
 
 sha256sums=('SKIP'
-            '1d840481b2544003e10bc91e7958deabb2692249b251af7c606d025ab8477691'
-            '8bd3e83b8fbfc781a44d37af7c2101d061e17cfe61c07e1d2cb75daecca708c8'
+            '42f8929aed076868512dbf285d3bc1341cba57069fde8430b5ba46536085ed5f'
+            '4d393042e6f1b7233abbefeb92f1b706d16b040e55dc92cf8bda08d34755398f'
             '619a6266ad56e8363296b2ae7e2428c0f433f8c73a57d9bdf55ffba179f6c81d')
 
 pkgver() {

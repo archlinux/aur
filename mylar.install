@@ -1,0 +1,24 @@
+post_upgrade() {
+  if (( $(vercmp "r1072.9c65a0d-2" "$2") > 0 )); then
+    if [[ -f /etc/mylar/config.ini && ! -f /var/lib/mylar/config.ini ]]; then
+      cp /etc/mylar/config.ini /var/lib/mylar/config.ini
+      echo "Copied config.ini from /etc/mylar/ -> /var/lib/mylar/"
+    fi
+  fi
+
+  if [[ "$( getent passwd mylar | cut -d: -f6 )" != "/var/lib/mylar" ]]; then
+    usermod -d /var/lib/mylar mylar
+    if [[ $? -ne 0 ]]; then
+      echo "Could not change mylar users home directory."
+      echo "Run: sudo systemctl stop mylar ; sudo usermod -d /var/lib/mylar mylar ; sudo systemctl start mylar"
+    fi
+  fi
+
+  if [[ -d /etc/mylar ]]; then
+    echo "Remove /etc/mylar if everything is working correctly from /var/lib/mylar now."
+  fi
+}
+
+post_install() {
+  post_upgrade "$1" "$2"
+}
