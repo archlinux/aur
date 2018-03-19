@@ -1,7 +1,7 @@
 # Maintainer: Alyssa Haroldsen <kupiakos@gmail.com>
 
 pkgname=hivex-git
-pkgver=1.3.13.r3.gcb6cc65
+pkgver=1.3.15.r1.891c426
 pkgrel=1
 pkgdesc="System for extracting the contents of Windows Registry - git checkout"
 conflicts=('hivex')
