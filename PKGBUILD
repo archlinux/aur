@@ -1,17 +1,16 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 # Contributor: Constantin Lorenz <Cons27773964@aol.com>
 
-_tbver=7.5a10
+_tbver=8.0a4
 pkgname=sandboxed-tor-browser
 pkgver=0.0.16
-pkgrel=2
-pkgdesc="A sandboxed version of the Tor Browser"
+pkgrel=3
+pkgdesc='A sandboxed version of the Tor Browser (bin)'
 arch=(x86_64)
 url=https://trac.torproject.org/projects/tor/wiki/doc/TorBrowser/Sandbox/Linux
 license=(AGPL3)
-depends=(bubblewrap gtk3 gnome-themes-standard)
-makedepends=(make gcc libnotify)
-optdepends=(libnotify)
+depends=(bubblewrap gtk3)
+optdepends=(pulseaudio gnome-themes-standard libnotify)
 conflicts=($pkgname-git)
 source=($pkgname.desktop
         $pkgname.png)
@@ -24,7 +23,6 @@ validpgpkeys=(EF6E286DDA85EA2A4BA7DE684E2C6E8793298290)
 
 package() {
   cd $srcdir
-
   install -Dm 644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm 644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
   install -Dm 755 $srcdir/sandbox/$pkgname $pkgdir/usr/bin/$pkgname
