@@ -1,7 +1,7 @@
 post_install() {
   
   echo "To finish installation you have to add clickable to your PATH:"
-  echo 'echo "export PATH=\$PATH:\$HOME/clickable" >> ~/.bashrc'
+  echo 'echo "export PATH=\$PATH:\/opt/clickable" >> ~/.bashrc'
   echo "Read the new .bashrc file: source ~/.bashrc"
   echo "Configure docker for clickable: clickable setup-docker"
   
