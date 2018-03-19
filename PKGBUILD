@@ -15,7 +15,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd $srcdir/samples
-	svn info | head -7 | tail -1 | cut -d' ' -f2
+	echo 0.7.r`svn info | head -7 | tail -1 | cut -d' ' -f2`
 }
 
 package() {
