@@ -1,0 +1,3 @@
+d /var/lib/tautulli 0755 tautulli tautulli
+Z /var/lib/tautulli - tautulli tautulli
+Z /usr/lib/tautulli - tautulli tautulli
