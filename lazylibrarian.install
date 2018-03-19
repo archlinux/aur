@@ -1,5 +1,5 @@
 post_upgrade() {
-  if [[ $(vercmp "r2866.61caa2d5-1" "$2") -eq 1 ]]; then
+  if (( $(vercmp "r2866.61caa2d5-1" "$2") > 0 )); then
     if [[ -f /opt/lazylibrarian/lazylibrarian.ini && ! -f /var/lib/lazylibrarian/lazylibrarian.ini ]]; then
       cp /opt/lazylibrarian/lazylibrarian.ini /var/lib/lazylibrarian/lazylibrarian.ini
       echo "Copied lazylibrarian.ini from /opt/lazylibrarian/ -> /var/lib/lazylibrarian/"
