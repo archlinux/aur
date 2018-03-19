@@ -1,16 +1,15 @@
 pkgbase = ttf-nanum
 	pkgdesc = Nanum series TrueType fonts
-	pkgver = 3.1
-	pkgrel = 6
+	pkgver = 2017
+	pkgrel = 2
 	url = http://hangeul.naver.com/
-	install = ttf.install
 	arch = any
 	license = OFL
 	makedepends = p7zip
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://appdown.naver.com/naver/font/NanumFont/setup/NanumFontSetup_TTF_ALL_totalsearch.exe
-	md5sums = 1de7736a48dfaed5eb70ca2c4ce315b9
+	sha256sums = 63cbbe0fef0a509bed8031976b30a0fa30d1a49c41a0942ea436db9ccec6a849
 
 pkgname = ttf-nanum
 
