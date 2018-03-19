@@ -8,15 +8,13 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-fsuae"
 license=('GPL3')
 groups=('libretro')
-depends=('zlib')
+depends=('zlib' 'libretro-core-info')
 makedepends=('git')
 
 _libname=fsuae_libretro
 _gitname=libretro-fsuae
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
