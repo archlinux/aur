@@ -1,8 +1,8 @@
 post_install() {
   
   echo "Add clickable to PATH"
-  echo "export PATH=\$PATH:\/opt/clickable" >> /$HOME/.$(echo ${SHELL##*/})rc
-  source /$HOME/.$(echo ${SHELL##*/})rc
+  echo "export PATH=\$PATH:\/opt/clickable" >> /home/$USER/.$(echo ${SHELL##*/})rc
+  source /home/$USER/.$(echo ${SHELL##*/})rc
   echo "Configure docker for clickable"
   clickable setup-docker
   
@@ -10,16 +10,16 @@ post_install() {
 
 post_upgrade() {
 
-  sed -n -i '/clickable/!p' /$HOME/.$(echo ${SHELL##*/})rc
-  echo "export PATH=\$PATH:\/opt/clickable" >> /$HOME/.$(echo ${SHELL##*/})rc
-  source /$HOME/.$(echo ${SHELL##*/})rc
+  sed -n -i '/clickable/!p' /home/$USER/.$(echo ${SHELL##*/})rc
+  echo "export PATH=\$PATH:\/opt/clickable" >> /home/$USER/.$(echo ${SHELL##*/})rc
+  source /home/$USER/.$(echo ${SHELL##*/})rc
 
 }
 
 post_remove() {
 
-  sed -n -i '/clickable/!p' /$HOME/.$(echo ${SHELL##*/})rc
-  source /$HOME/.$(echo ${SHELL##*/})rc
+  sed -n -i '/clickable/!p' /home/$USER/.$(echo ${SHELL##*/})rc
+  source /home/$USER/.$(echo ${SHELL##*/})rc
 
 }
 
