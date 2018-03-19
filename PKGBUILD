@@ -2,13 +2,13 @@
 
 pkgname=adom-noteye
 pkgver=3.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
 conflicts=('adom' 'adom-restricted' 'adom-noteye')
 provides=('adom')
-depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51' 'libbsd')
+depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51' 'libbsd' 'libmad' 'fluidsynth' 'libpng12')
 _repo_url="https://repo.sshadm.in/archlinux/eldios"
 
 license=('custom:adom')
