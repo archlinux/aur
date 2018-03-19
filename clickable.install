@@ -2,10 +2,13 @@ post_install() {
 
   glib-compile-schemas usr/share/glib-2.0/schemas
   gtk-update-icon-cache -ftq usr/share/icons/hicolor  
+  
   echo "To finish installation you have to add clickable to your PATH:"
-  echo 'echo "export PATH=\$PATH:\/opt/clickable" >> ~/.bashrc'
-  echo "Read the new .bashrc file: source ~/.bashrc"
-  echo "Configure docker for clickable: clickable setup-docker"
+  echo ' echo "export PATH=\$PATH:\/opt/clickable" >> ~/.bashrc'
+  echo "Read the new .bashrc file:" 
+  echo " source ~/.bashrc"
+  echo "Configure docker for clickable:"
+  echo " clickable setup-docker"
   
 }
 
