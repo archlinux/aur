@@ -3,8 +3,8 @@ post_install() {
   gtk-update-icon-cache -ftq usr/share/icons/hicolor
   
   echo "Add clickable to PATH\n"
-  echo "export PATH=\$PATH:\/opt/clickable" >> ~/.bashrc
-  source ~/.bashrc
+  echo "export PATH=\$PATH:\/opt/clickable" >> ~/.$(echo ${SHELL##*/})rc
+  source ~/.$(echo ${SHELL##*/})rc
   echo "Configure docker for clickable\n"
   clickable setup-docker
   }
