@@ -3,9 +3,9 @@
 
 pkgbase=linux-clear
 __basekernel=4.15
-_minor=10
+_minor=11
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.9-537
+_clearver=${__basekernel}.9-538
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'bbc4e9dc11c15493bd74bf1aae76741ea0e170bc3a07ba9489048bdc9ff85671'
+            'ad74ca849d66056ac453d004caa36f20c56fe5eedb4370e279b55b4e7b02ccc2'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
