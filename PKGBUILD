@@ -7,7 +7,7 @@ pkgdesc="Breeze Obsidian cursor theme."
 arch=('any')
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://web.archive.org/web/https://share.kde.org/index.php/s/6524eea49b2f0f30be31e98e9fe6b731/download")
+source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-obsidian-cursor-theme.zip")
 makedepends=('unzip')
 
 sha256sums=('2f8b9f8dd1bbf3e8ea6d5ab649d59ec7a0136658b2fd3368a87958c6975d48cb')
