@@ -1,7 +1,7 @@
 pkgbase = xmobar-alsa
 	pkgdesc = A Minimalistic Text Based Status Bar compiled with ALSA
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/xmobar
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = xmobar-alsa
 	depends = haskell-libmpd
 	depends = haskell-iwlib
 	depends = wireless_tools
+	depends = haskell-text
 	conflicts = xmobar
 	source = xmobar-alsa-0.25.tar.gz::https://github.com/jaor/xmobar/archive/0.25.tar.gz
 	sha512sums = ca11d93d7bff9e6fd623607b25dbbd3d38c9f7b356183616d2c2050597b56b5f4636351a606d32acab232b32315f3639b78ae9f7e4385f68c810af30895c5717
