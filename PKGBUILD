@@ -2,9 +2,9 @@
 _gitrepository='curate-pkg'
 _gitbranch='master'
 pkgname='curate-pkg-git'
-pkgver=r42.7182b4f
+pkgver=r59.80e3e99
 pkgrel=1
-pkgdesc='curate-pkg: that script you craved for to keep a consistent image of installed packages across **ALL** package managers'
+pkgdesc='curate-pkg: script to keep a consistent state of installed packages across **ALL** package managers'
 arch=('i686' 'x86_64')
 url='https://github.com/andrei-pavel/curate-pkg'
 license=('MIT')
