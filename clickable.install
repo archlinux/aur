@@ -10,9 +10,7 @@ post_install() {
 
 post_upgrade() {
 
-  sed -n -i '/clickable/!p' /home/$USER/.$(echo ${SHELL##*/})rc
-  echo "export PATH=\$PATH:\/opt/clickable" >> /home/$USER/.$(echo ${SHELL##*/})rc
-  source /home/$USER/.$(echo ${SHELL##*/})rc
+
 
 }
 
