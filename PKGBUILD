@@ -9,7 +9,7 @@ then
 pkgname+=('gostcoin-qt-git')
 fi
 
-pkgver=v0.8.5.10
+pkgver=0.8.5.10
 pkgrel=1
 pkgdesc="Coin based on GOST R 34.10 and GOST R 34.11-2012 with I2P support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -31,7 +31,7 @@ source=("${pkgbase%%-git}::git+https://github.com/GOSTSec/gostcoin"
 
 pkgver() {
   cd ${pkgbase%%-git}
-  echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  echo $(git describe --tags --long | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 build() {
