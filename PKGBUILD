@@ -3,15 +3,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=amberfish
-pkgver=1.6.4
-pkgrel=4
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A general purpose text retrieval software"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/amberfish/"
 license=('GPL2')
 depends=('xerces-c')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('155ac6e6b9b76fb7cbd94952548f718ab6add72c3b4fd2482d89abb39d96ce76')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nassibnassar/amberfish/archive/v${pkgver}.tar.gz")
+sha256sums=('73ebf5a6b8105b41055c6ec6ed7c820621ef064414d190dad6c80b0f78fae175')
+LANG=C
 
 build() {
   cd ${pkgname}-${pkgver}
