@@ -1,10 +1,9 @@
 post_install() {
   
-  echo "Add clickable to PATH"
-  echo "export PATH=\$PATH:\/opt/clickable" >> /home/$USER/.$(echo ${SHELL##*/})rc
-  source /home/$USER/.$(echo ${SHELL##*/})rc
-  echo "Configure docker for clickable"
-  clickable setup-docker
+  echo "To finish installation you have to add clickable to your PATH:"
+  echo 'echo "export PATH=\$PATH:\$HOME/clickable" >> ~/.bashrc'
+  echo "Read the new .bashrc file: source ~/.bashrc"
+  echo "Configure docker for clickable: clickable setup-docker"
   
 }
 
@@ -16,8 +15,8 @@ post_upgrade() {
 
 post_remove() {
 
-  sed -n -i '/clickable/!p' /home/$USER/.$(echo ${SHELL##*/})rc
-  source /home/$USER/.$(echo ${SHELL##*/})rc
+
+
 
 }
 
