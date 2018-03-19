@@ -1,6 +1,6 @@
 # Maintainer: Andreas Bosch <admin@progandy.de>
 pkgname=iucode-tool
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Tool to manipulate Intel® IA-32/X86-64 microcode bundles"
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ depends=(glibc)
 source=("https://gitlab.com/iucode-tool/releases/raw/master/${pkgname}_${pkgver}.tar.xz"
     "https://gitlab.com/iucode-tool/releases/raw/master/${pkgname}_${pkgver}.tar.xz.asc")
 noextract=()
-sha256sums=('02826643315760f985bc806797dd0832e7561e58e8aaccec3049cbf54029a4f2'
+sha256sums=('12b88efa4d0d95af08db05a50b3dcb217c0eb2bfc67b483779e33d498ddb2f95'
             'SKIP')
 validpgpkeys=('C467A717507BBAFED3C160920BD9E81139CB4807') # Henrique de Moraes Holschuh <hmh@hmh.eng.br>
 
