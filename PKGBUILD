@@ -16,7 +16,7 @@ source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86_64.tar.gz"
         "pgi-compilers.sh")
 sha256sums=('9da8f869fb9b70c0c4423c903d40a9e22d54b997af359a43573c0841165cd1b6'
             '78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270'
-            '23d71aa379bed34f72eb47cc3e03ef189261b172d3a07bc9c7e472d34288a244')
+            '4aa862aece1c4df8a67b6677837fd4827d576619c67fed80af1578346c11f497')
 options=(!strip)
 
 package(){
