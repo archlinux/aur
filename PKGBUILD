@@ -1,16 +1,16 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=badtouch
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Scriptable network authentication cracker"
 url="https://github.com/kpcyrd/badtouch"
-depends=('gcc-libs')
+depends=('openssl')
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kpcyrd/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('717fbd4bbf022751538f4883684eefadf05479e880074f3ad2ba4918f7479f76f7b3c7a477c43907f40c9710ce5575f1c4122f9a67040a01b24a8b33ac5525b5')
+sha512sums=('c0eff9add9196bac3bf65f1304631ed60256f53f35d6f91c7abfa726385bd787611bf32caf4415e2eb8756b0c401b09f12a2793627506a96027014dd3024956b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -25,7 +25,9 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 docs/badtouch.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 scripts/* -t "$pkgdir/usr/share/doc/$pkgname/examples"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

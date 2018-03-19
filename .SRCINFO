@@ -1,6 +1,6 @@
 pkgbase = badtouch
 	pkgdesc = Scriptable network authentication cracker
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kpcyrd/badtouch
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = badtouch
 	arch = aarch64
 	license = GPL3
 	makedepends = cargo
-	depends = gcc-libs
-	source = badtouch-0.2.0.tar.gz::https://github.com/kpcyrd/badtouch/archive/v0.2.0.tar.gz
-	sha512sums = 717fbd4bbf022751538f4883684eefadf05479e880074f3ad2ba4918f7479f76f7b3c7a477c43907f40c9710ce5575f1c4122f9a67040a01b24a8b33ac5525b5
+	depends = openssl
+	source = badtouch-0.3.0.tar.gz::https://github.com/kpcyrd/badtouch/archive/v0.3.0.tar.gz
+	sha512sums = c0eff9add9196bac3bf65f1304631ed60256f53f35d6f91c7abfa726385bd787611bf32caf4415e2eb8756b0c401b09f12a2793627506a96027014dd3024956b
 
 pkgname = badtouch
 
