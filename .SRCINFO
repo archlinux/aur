@@ -1,0 +1,12 @@
+pkgbase = chipdisco
+	pkgver = 6.1
+	pkgrel = 1
+	url = https://echolevel.co.uk/post/1486312636973-Chipdisco
+	arch = x86_64
+	license = unknown
+	depends = unzip
+	source = https://firebasestorage.googleapis.com/v0/b/echolevel-b069e.appspot.com/o/files%2FChipdisco6.1_Linux.zip?alt=media&token=82d65992-6dc9-4acc-8c05-4b3e0011884d
+	md5sums = SKIP
+
+pkgname = chipdisco
+
