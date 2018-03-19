@@ -2,22 +2,26 @@
 # Contributor: Nathan Ringo <tikiking1@gmail.com>
 
 pkgname=libfreenect2
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.0.p1
+_commit=e38cf32a4401b904c437fbfdb4051d0d75d9a79b
+pkgrel=1
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(i686 x86_64)
 url="http://openkinect.org"
 license=(Apache GPL)
 depends=(libusb glfw turbojpeg ocl-icd)
 makedepends=(cmake opencl-headers)
-source=("https://github.com/OpenKinect/libfreenect2/archive/v${pkgver}.tar.gz")
-sha512sums=('3525e3f21462cecd3b198f64545786ffddc2cafdfd8146e5a46f0300b83f29f1ad0739618a07ab195c276149d7e2e909f7662e2d379a2880593cac75942b0666')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenKinect/$pkgname/archive/$_commit.tar.gz")
+sha512sums=('44319c2ad503f76de31976b5a33ac5963d03fbea6e953b798980b6ca4ba0f8f4388acd7fed07a53fb5930bffde818b77c6b99a82cd90990a43104285a22376c8')
 
 prepare() {
-	cd "${srcdir}/libfreenect2-$pkgver"
-	sed -i -e 's/MODE="0666"/TAG+="uaccess"/' platform/linux/udev/90-kinect2.rules
-	sed -i -e '93aINSTALL(TARGETS Protonect DESTINATION bin)' examples/CMakeLists.txt
-	cmake \
+	rm -rf "$srcdir/build"
+	mkdir -p "$srcdir/build"
+	cd "$srcdir/build"
+
+	sed -i -e 's/MODE="0666"/TAG+="uaccess"/' "$srcdir/$pkgname-$_commit/platform/linux/udev/90-kinect2.rules"
+	sed -i -e '93aINSTALL(TARGETS Protonect DESTINATION bin)' "$srcdir/$pkgname-$_commit/examples/CMakeLists.txt"
+	cmake "$srcdir/$pkgname-$_commit" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DENABLE_CXX11=ON \
@@ -27,13 +31,13 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/libfreenect2-$pkgver"
+	cd "$srcdir/build"
 	make
 }
 
 package() {
-	cd "${srcdir}/libfreenect2-$pkgver"
-	make DESTDIR="${pkgdir}" install
-	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	install platform/linux/udev/90-kinect2.rules ${pkgdir}/usr/lib/udev/rules.d/65-kinect2.rules
+	cd "$srcdir/build"
+	make DESTDIR="$pkgdir" install
+	install -d "$pkgdir/usr/lib/udev/rules.d"
+	install "$srcdir/$pkgname-$_commit/platform/linux/udev/90-kinect2.rules" "$pkgdir/usr/lib/udev/rules.d/65-kinect2.rules"
 }
