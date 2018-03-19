@@ -1,61 +1,55 @@
-# Maintainer: Devaux Fabien <fdev31@gmail.com>
-pkgname=kvazaar-git
-pkgver=0.8.3
-pkgrel=1
-pkgdesc="An open-source HEVC encoder"
-arch=('i686' 'x86_64')
-url="https://github.com/ultravideo/kvazaar"
-license=('GPL2')
-groups=()
-depends=()
-makedepends=('git' 'yasm')
-provides=('kvazaar')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Devaux Fabien <fdev31@gmail.com>
 
-_gitroot=https://github.com/ultravideo/kvazaar.git
-_gitname=kvazaar
+pkgname=kvazaar-git
+pkgver=1.2.0.r59.g01642916
+pkgrel=1
+pkgdesc='An open-source HEVC encoder licensed under LGPLv2.1 (git version)'
+arch=('i686' 'x86_64')
+url='http://ultravideo.cs.tut.fi/#encoder'
+license=('LGPL2.1')
+depends=('glibc' 'gcc-libs' 'crypto++')
+makedepends=('git' 'yasm')
+provides=('kvazaar' 'libkvazaar.so')
+conflicts=('kvazaar')
+source=("$pkgname"::'git+https://github.com/ultravideo/kvazaar.git'
+        'kvazaar-submodule-greatest'::'git+https://github.com/ultravideo/greatest.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+    cd "$pkgname"
+    
+    git submodule init
+    git config --local submodule.greatest.url "${srcdir}/kvazaar-submodule-greatest"
+    git submodule update
+}
+
+pkgver() {
+    cd "$pkgname"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  ./autogen.sh
-  ./configure --prefix=/usr/
-  make
+    cd "$pkgname"
+    
+    ./autogen.sh
+    
+    ./configure \
+        --prefix='/usr' \
+        --enable-largefile \
+        --enable-static='no' \
+        --enable-shared='yes' \
+        --enable-fast-install='yes' \
+        --with-cryptopp
+        
+    make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir/" install
-
-#  mkdir -p "$pkgdir/usr/bin"
-#  mkdir -p "$pkgdir/usr/share/doc/$_gitname"
-#  cp src/$_gitname "$pkgdir/usr/bin/"
-#  cp README.md "$pkgdir/usr/share/doc/$_gitname/"
+    cd "$pkgname"
+    
+    make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
