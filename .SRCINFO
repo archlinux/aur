@@ -1,7 +1,7 @@
 pkgbase = gedit2
 	pkgdesc = A text editor for GNOME
 	pkgver = 2.30.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gedit2
 	makedepends = python
 	depends = gconf-gtk2
 	depends = pygtksourceview2
-	depends = enchant1
+	depends = enchant1.6
 	depends = desktop-file-utils
 	depends = iso-codes
 	depends = libsm

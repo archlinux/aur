@@ -5,11 +5,11 @@
 pkgname=gedit2
 _pkgname=gedit
 pkgver=2.30.4
-pkgrel=8
+pkgrel=9
 pkgdesc="A text editor for GNOME"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gconf-gtk2' 'pygtksourceview2' 'enchant1' 'desktop-file-utils' 'iso-codes' 'libsm' 'python2')
+depends=('gconf-gtk2' 'pygtksourceview2' 'enchant1.6' 'desktop-file-utils' 'iso-codes' 'libsm' 'python2')
 makedepends=('gnome-doc-utils>=0.20.2' 'intltool' 'python')
 provides=($_pkgname)
 conflicts=($_pkgname)
