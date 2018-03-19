@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=bisonc++
-pkgver=6.00.00
+pkgver=6.01.03
 pkgrel=1
 pkgdesc='C++ parser generator'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('icmake>=8.01.00' 'yodl>=3.08.01')
 optdepends=()
 source=("https://github.com/fbb-git/bisoncpp/archive/${pkgver}.tar.gz"
         'manual_license.patch')
-md5sums=('8d658a685e0c84839daf6c014bd001af'
+md5sums=('f847ccb05583a8ac309c4a91ed9f6f93'
          'bab1f76582bd7518df6debe7265fdd7c')
 
 build() {
