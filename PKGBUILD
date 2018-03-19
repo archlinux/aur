@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-_pkgcode=0.1.9
+_pkgcode=0.1.11
 _pkgstate=beta
 pkgver=${_pkgcode}_${_pkgstate}
 _pkgver=${_pkgcode}-${_pkgstate}
