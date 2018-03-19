@@ -14,6 +14,7 @@ depends=(
          'python-xlib'
          'python-pillow'
          'python-docopt'
+         'python-setuptools'
         )
 
 makedepends=('git')

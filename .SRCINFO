@@ -10,6 +10,7 @@ pkgbase = chameleon-git
 	depends = python-xlib
 	depends = python-pillow
 	depends = python-docopt
+	depends = python-setuptools
 	source = git://github.com/seebye/chameleon.git
 	md5sums = SKIP
 
