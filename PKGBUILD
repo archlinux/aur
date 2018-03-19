@@ -1,33 +1,36 @@
-# Maintainer: Eric Biggers <ebiggers3@gmail.com>
+# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Contributer: Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=dwgsim
-pkgver=0.1.10
-pkgrel=3
-pkgdesc='Software for simulating reads from whole genomes'
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Main_Page"
+pkgver=0.1.11
+pkgrel=1
+pkgdesc="Whole genome read simulator for Next-Generation Sequencing data"
+arch=('x86_64')
+url=https://github.com/nh13/DWGSIM
 license=('GPL2')
-depends=('zlib' 'perl')
-conflicts=('dnaa')
-
-# Upstream doesn't provide a way to use already-installed samtools...
 source=(
-"http://downloads.sourceforge.net/project/samtools/samtools/0.1.18/samtools-0.1.18.tar.bz2"
-"http://downloads.sourceforge.net/project/dnaa/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}"-"${pkgver}".tar.gz::https://github.com/nh13/DWGSIM/archive/"${pkgname}"."${pkgver}".tar.gz
+  git+https://github.com/samtools/samtools.git#commit=28391e5898804ce6b805016d8c676fdf61442eb3
+)
+sha256sums=(
+  '49e4b558e313f4cd5755961f7f24ba48ad580c0324772d7080b59cb69ce0148b'
+  'SKIP'
 )
 
+prepare() {
+  # Remove empty left-over submodule dir from the release and fill link in
+  # the right dependency git repository.
+  cd "${srcdir}"/DWGSIM-"${pkgname}"."${pkgver}"
+  rm -rf samtools && ln -s ../samtools samtools
+}
+
 build() {
-  cd ${pkgname}-${pkgver}
-  [[ ! -L samtools ]] && ln -s ../samtools-0.1.18 samtools
-  sed -i -e '1s@#!/bin/perl@#!/usr/bin/perl@' scripts/*.pl
+  cd "${srcdir}"/DWGSIM-"${pkgname}"."${pkgver}"
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  mkdir -p ${pkgdir}/usr/bin
-  install -m755 dwgsim dwgsim_eval scripts/*.pl ${pkgdir}/usr/bin
-  install -Dm644 README ${pkgdir}/usr/share/doc/dwgsim/README
+  cd "${srcdir}"/DWGSIM-"${pkgname}"."${pkgver}"
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/doc/"${pkgname}"/LICENSE
+  install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
 }
-md5sums=('71dab132e21c0766f0de84c2371a9157'
-         '7453baf4b1058a214e91d703d331ee3e')
