@@ -2,7 +2,7 @@
 
 _pkgname=dexed-vst
 pkgname="${_pkgname}-git"
-pkgver=0.9.4.r175.d14ac25
+pkgver=0.9.4.r222.618b318
 pkgrel=1
 pkgdesc="A VST plugin synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
@@ -49,6 +49,7 @@ package() {
   cd "${srcdir}/${_pkgname}/Builds/Linux"
 
   install -Dm755 build/Dexed.so "${pkgdir}/usr/lib/vst/Dexed.so"
+  install -Dm755 build/Dexed "${pkgdir}/usr/bin/dexed"
 }
 
 # vim:set ts=2 sw=2 et:
