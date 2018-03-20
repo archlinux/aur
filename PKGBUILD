@@ -29,7 +29,7 @@ source=(https://github.com/vmware/open-vm-tools/archive/master.zip
         0005-Remove-new_sync-for-Linux-4.1.patch
         0006-vmhgfs-support-linux-4.2.x-kernel.patch
         dkms.conf.in)
-sha256sums=('5adef80f43186aff426f4f22b4b31b514d18a1dcc3334d56ed22d2e308803971'
+sha256sums=('833e27584ccbc449af9e8260b6f99f4f09edf090b285b500d42e4e439748ba1f'
             '6684cf4cd9a492b82b24dff076fbbafef19e59ef969f532ee3da1501136a7c48'
             'dac377beb660dc6c143356255346b34db0986511dcb74f051e06f243a0078af8'
             '38e2ae573a849251abde79c82b694d76f32cc75c9ff60878ebcb23f2f8c86928'
