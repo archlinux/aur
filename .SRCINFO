@@ -1,6 +1,6 @@
 pkgbase = clearine-git
 	pkgdesc = Yet Another GTK3-based logout-window overlay for independent windowmanager. Inspired from oblogout and Android Oreo's power menu
-	pkgver = 0.1.r0.g718d70f
+	pkgver = 0.2.r0.ga068eba
 	pkgrel = 1
 	url = https://github.com/yuune/clearine
 	arch = any
