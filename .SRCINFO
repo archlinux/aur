@@ -1,7 +1,7 @@
 pkgbase = lib32-libcdio
 	pkgdesc = GNU Compact Disc Input and Control Library (32-bit)
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libcdio/
 	arch = x86_64
 	license = GPL3
