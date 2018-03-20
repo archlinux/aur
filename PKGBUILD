@@ -1,8 +1,8 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-icon-theme
-pkgver=20180129
-pkgrel=2
+pkgver=20180320
+pkgrel=1
 pkgdesc="A Matcha icon theme based on Arc"
 arch=('any')
 url='https://www.gnome-look.org/p/1187179'
