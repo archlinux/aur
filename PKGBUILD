@@ -8,7 +8,7 @@
 pkgname="spl-utils-common-git"
 
 pkgver=2018.03.09.r1069.43983eb
-pkgrel=3
+pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
