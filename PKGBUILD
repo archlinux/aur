@@ -2,7 +2,7 @@
 
 pkgname=subrepo
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Git & Mercurial subrepos done right"
 arch=('any')
 depends=('git' 'mercurial')
@@ -12,8 +12,8 @@ source=(subgit
         subhg)
 sha256sums=('f627c66bd7203b91b48822f5fe535ea10e5370b94886bd450d98050e2ec7bb03'
             '8cef86a2ea6f8961ed984528e3add2048cb8f2bfee9ee2d9d0cb8ec997019d61')
-provides=('subgit subhg')
-conflicts=('subgit-git subhg-git')
+provides=('subgit' 'subhg')
+conflicts=('subgit' 'subhg')
 
 package() {
   cd $srcdir
