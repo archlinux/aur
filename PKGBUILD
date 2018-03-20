@@ -7,7 +7,6 @@ pkgdesc="osquery is an operating system instrumentation framework."
 arch=('x86_64')
 url="https://osquery.io/"
 license=('Apache License 2.0')
-provides=('osquery-git' 'kolide-git')
 depends=('glibc' 'bash' 'zlib')
 conflicts=('osquery-git' 'kolide-git')
 sha256sums=('6b9f032bf04a0a938c4cd2a7f24f0f4fef1aca8593661f3801822760b178fdbd')
