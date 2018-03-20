@@ -1,7 +1,7 @@
 pkgbase = python2-pwntools
 	pkgdesc = A CTF framework and exploit development library.
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gallopsled/pwntools
 	arch = any
 	license = MIT
@@ -30,7 +30,7 @@ pkgbase = python2-pwntools
 	conflicts = python2-pwntools
 	conflicts = python2-pwntools-git
 	options = strip
-	source = https://github.com/Gallopsled/pwntools/archive/3.12.0.tar.gz
+	source = python2-pwntools-3.12.0.tar.gz::https://github.com/Gallopsled/pwntools/archive/3.12.0.tar.gz
 	sha256sums = e743daa158a3ac1e958b52e61de47f3db6cec701379712eeda4f4a977ca32309
 
 pkgname = python2-pwntools
