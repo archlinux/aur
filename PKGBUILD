@@ -1,32 +1,25 @@
-# $Id: PKGBUILD 111287 2014-05-16 00:49:12Z bgyorgy $
-# Maintainer:  Federico Cinelli <cinelli@aur.archlinux.org>
-# Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
-# Contributor: William Rea <sillywilly@gmail.com>
-
+# Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 pkgname=kiwi
-pkgver=1.9.29
-pkgrel=4
-pkgdesc="A set of classes and wrappers for PyGTK"
+pkgver=1.11.1
+pkgrel=1
+pkgdesc="Framework for Python GUI applications."
 arch=('any')
-url="http://www.async.com.br/projects/kiwi"
-license=("LGPL")
-depends=('pygtk')
-options=(!emptydirs)
-source=("http://download.gnome.org/sources/$pkgname/1.9/$pkgname-$pkgver.tar.bz2")
-sha256sums=('0ffa912cd180b3092b3ff636c582ab2c40f0f8eb541ada07b1432631a2d49e90')
+url="https://github.com/stoq/${pkgname}"
+license=('LGPL')
+depends=('python2' 'python2-setuptools'
+ 'gtk2' 'pygtk')
+makedepends=('git')
+optdepends=('python2-sqlobject' 'python2-zope-interface')
+conflicts=('kiwi-git')
+source=("https://github.com/stoq/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('3ecd5bdca3d636cfa7246de9adcbb8be')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Apply Python2 fix.
-  for file in bin/{kiwi-i18n,kiwi-ui-test} setup.py kiwi/i18n/msgfmt.py; do
-    echo "Applying python2 fix for $file"
-    sed -i 's_/usr/bin/env python_/usr/bin/env python2_' "$file"
-  done
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python2 setup.py install --root="$pkgdir"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }

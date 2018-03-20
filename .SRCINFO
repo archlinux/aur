@@ -1,14 +1,20 @@
 pkgbase = kiwi
-	pkgdesc = A set of classes and wrappers for PyGTK
-	pkgver = 1.9.29
-	pkgrel = 4
-	url = http://www.async.com.br/projects/kiwi
+	pkgdesc = Framework for Python GUI applications.
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/stoq/kiwi
 	arch = any
 	license = LGPL
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = gtk2
 	depends = pygtk
-	options = !emptydirs
-	source = http://download.gnome.org/sources/kiwi/1.9/kiwi-1.9.29.tar.bz2
-	sha256sums = 0ffa912cd180b3092b3ff636c582ab2c40f0f8eb541ada07b1432631a2d49e90
+	optdepends = python2-sqlobject
+	optdepends = python2-zope-interface
+	conflicts = kiwi-git
+	source = https://github.com/stoq/kiwi/archive/1.11.1.tar.gz
+	md5sums = 3ecd5bdca3d636cfa7246de9adcbb8be
 
 pkgname = kiwi
 
