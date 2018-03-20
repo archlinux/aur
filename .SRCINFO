@@ -1,0 +1,17 @@
+pkgbase = android-google-apis-x86-system-image-23
+	pkgdesc = Android Google APIs x86 System Image, API-23
+	pkgver = r26
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	depends = android-platform-23
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-google-apis-x86-system-image-23
+	conflicts = android-google-apis-x86-system-image-23
+	options = !strip
+	source = https://dl.google.com/android/repository/sys-img/google_apis/x86-23_r26.zip
+	sha1sums = 2b65941874839287225b5b4852b291516bd895f4
+
+pkgname = android-google-apis-x86-system-image-23
