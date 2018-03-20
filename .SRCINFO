@@ -1,7 +1,7 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library for regional holiday information
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/pim/
 	arch = any
 	license = LGPL
