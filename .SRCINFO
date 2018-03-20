@@ -5,9 +5,18 @@ pkgbase = pipsi
 	url = https://github.com/mitsuhiko/pipsi/
 	arch = any
 	license = BSD
-	depends = python2-click
-	source = http://pypi.python.org/packages/source/p/pipsi/pipsi-0.9.tar.gz
+	makedepends = python2
+	makedepends = python
+	source = https://pypi.python.org/packages/source/p/pipsi/pipsi-0.9.tar.gz
 	sha256sums = 688b688cc8a7a76612c0d4d1839aaef98ece8382d4382b9d8b6f0caa65f0ed34
 
 pkgname = pipsi
+	depends = python
+	depends = python-click
+	depends = python-virtualenv
+
+pkgname = pipsi2
+	depends = python2
+	depends = python2-click
+	depends = python2-virtualenv
 
