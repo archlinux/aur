@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	make
+	make build
 }
 
 check() {
 	cd "$srcdir/$_pkgname"
-	make test
+	make RUN_VALGRIND=no test
 }
 
 package() {
