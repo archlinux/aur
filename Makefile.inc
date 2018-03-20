@@ -9,7 +9,7 @@
 #   This defines some parameters dependent on your platform; you should
 #   look for the approriate file in the directory ./Make.inc/ and copy it
 #   into a file called Makefile.inc. For example, from the MUMPS root
-#   directory, use 
+#   directory, use
 #   "cp Make.inc/Makefile.inc.generic ./Makefile.inc"
 #   (see the main README file for details)
 #
@@ -46,7 +46,7 @@ ISCOTCH    = -I$(SCOTCHDIR)/include/scotch
 # You have to choose one among the following two lines depending on
 # the type of analysis you want to perform. If you want to perform only
 # sequential analysis choose the first (remember to add -Dscotch in the ORDERINGSF
-# variable below); for both parallel and sequential analysis choose the second 
+# variable below); for both parallel and sequential analysis choose the second
 # line (remember to add -Dptscotch in the ORDERINGSF variable below)
 
 LSCOTCH    = -L$(SCOTCHDIR)/lib -lesmumps -lbz2 -lz -lscotch -lscotcherr
@@ -63,7 +63,7 @@ IMETIS    = -I/usr/include/metis
 # You have to choose one among the following two lines depending on
 # the type of analysis you want to perform. If you want to perform only
 # sequential analysis choose the first (remember to add -Dmetis in the ORDERINGSF
-# variable below); for both parallel and sequential analysis choose the second 
+# variable below); for both parallel and sequential analysis choose the second
 # line (remember to add -Dparmetis in the ORDERINGSF variable below)
 
 LMETIS    = -L$(LMETISDIR) -lmetis
@@ -88,12 +88,12 @@ IORDERINGSC = $(IMETIS) $(IPORD) $(ISCOTCH)
 # DEFINE HERE SOME COMMON COMMANDS, THE COMPILER NAMES, ETC...
 
 # PLAT : use it to add a default suffix to the generated libraries
-PLAT    = 
+PLAT    =
 # Library extension, + C and Fortran "-o" option
 # may be different under Windows
 LIBEXT  = .a
-OUTC    = -o 
-OUTF    = -o 
+OUTC    = -o
+OUTF    = -o
 # RM : remove files
 RM      = /bin/rm -f
 # CC : C compiler
@@ -164,5 +164,5 @@ LIBSEQNEEDED = libseqneeded
 #Parallel:
 INCS = $(INCPAR)
 LIBS = $(LIBPAR)
-#LIBSEQNEEDED = 
+#LIBSEQNEEDED =
 
