@@ -5,10 +5,10 @@ pkgbase = gimp-plugin-export-layers
 	url = https://github.com/khalim19/gimp-plugin-export-layers
 	arch = any
 	license = GPL3
-	makedepends = git
+	makedepends = unzip
 	depends = gimp
 	depends = python
-	source = https://github.com/khalim19/gimp-plugin-export-layers/archive/master.zip
+	source = https://github.com/khalim19/gimp-plugin-export-layers/releases/download/3.0-RC2/export_layers-3.0-RC2.zip
 	md5sums = SKIP
 
 pkgname = gimp-plugin-export-layers

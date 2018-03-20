@@ -8,13 +8,14 @@ arch=(any)
 url="https://github.com/khalim19/gimp-plugin-export-layers"
 license=('GPL3')
 depends=('gimp' 'python')
-makedepends=('git')
+makedepends=('unzip')
 
-source=("https://github.com/khalim19/gimp-plugin-export-layers/archive/master.zip")
+source=("https://github.com/khalim19/gimp-plugin-export-layers/releases/download/3.0-RC2/export_layers-$pkgver-RC$pkgrel.zip")
+
 md5sums=('SKIP')
 
 package() {
     install -Ddm755 $pkgdir/usr/lib/gimp/$gimpver/plug-ins
-    cd $srcdir/$pkgname-master/
+    cd $srcdir
     cp -r export_layers.py export_layers pygimplib -t $pkgdir/usr/lib/gimp/2.0/plug-ins
 }
