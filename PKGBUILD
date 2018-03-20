@@ -2,8 +2,8 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=r40.818d21d
-pkgrel=3
+pkgver=r42.32ea49c
+pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
 url='https://github.com/Sweets/nougat'
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir"/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$srcdir"/$_pkgname/${_pkgname}.sh "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "$srcdir"/$_pkgname/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
