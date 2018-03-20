@@ -1,11 +1,11 @@
 # Maintainer: Xiangru Lian <xlian@gmx.com>
 
 pkgname=python-gitlab
-pkgver=0.18
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Interact with GitLab API"
 arch=(any)
-url="https://github.com/gpocentek/python-gitlab"
+url="https://github.com/python-gitlab/python-gitlab"
 license=('LGPLv3')
 groups=()
 depends=('python' 'python-requests' 'python-six')
@@ -16,8 +16,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(https://github.com/gpocentek/python-gitlab/archive/${pkgver}.tar.gz)
-md5sums=('68b8cefc5028e41dd1a564b211b15cb6')
+source=(${url}/archive/${pkgver}.tar.gz)
+md5sums=('c76c10eb12036239ca04a49b8d8daf52')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
