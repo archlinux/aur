@@ -1,7 +1,7 @@
 pkgbase = wine-staging-pba
 	pkgdesc = A compatibility layer for running Windows programs - Staging branch with PBA patches
-	pkgver = 3.3
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
 	arch = x86_64
@@ -135,24 +135,24 @@ pkgbase = wine-staging-pba
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.3
-	provides = wine-wow64=3.3
+	provides = wine=3.4
+	provides = wine-wow64=3.4
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.3.tar.xz
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.3.tar.xz.sign
-	source = wine-staging-v3.3.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.3.tar.gz
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.4.tar.xz
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.4.tar.xz.sign
+	source = wine-staging-v3.4.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.4.tar.gz
 	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = pba-patches::git+https://github.com/acomminos/wine-pba.git
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = c9e4c75e94d745837208bf877b19c4e4e46df1e78082d21e716f52c9f9d93eaabbec8bf34783cda68e4275f53e37929b81ac128e5b8a13c1e5035223b2621d6a
+	sha512sums = 5787bf3fa13d363302ee26f86b96ed728b2b06184572021efdbb00b2c8ebd088056c6d9e22c6c78f0edc0a0b12e26facccc51f08970c8c5eaab4309e86b4286c
 	sha512sums = SKIP
-	sha512sums = 02d48a9c403b93d01ca37b74af5dc81f86e49c72d67f194c71ccebd4556fa72c473728a1b1f9d5325c6f85f4e41bb7072a1183a2d81cafa8888e00dc53d12166
+	sha512sums = f0cc2b3d91589a4d9536c1011001edf7db428387592407a64949381c0ac2f0bb79b0fbf04d3c85db50adbecba716188a8249e1ff166b5ec3004d9eb5f9e92f3f
 	sha512sums = b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
