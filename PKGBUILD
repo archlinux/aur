@@ -19,7 +19,7 @@ prepare() {
   
 package() {
   cd $pkgname
-  python2 setup.py install --root=$pkgdir
+  python2 setup.py install --root="$pkgdir"
 
   # copying license information
   install -D -m644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
