@@ -1,7 +1,7 @@
 pkgbase = android-x86-system-image-23
 	pkgdesc = Android x86 Atom System Image, API-23
 	pkgver = r10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = custom
