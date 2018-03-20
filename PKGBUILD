@@ -8,19 +8,15 @@ pkgdesc="Remote console for VMware Server"
 arch=('x86_64')
 url="http://www.vmware.com/products/server/"
 license=('custom')
-depends=('lib32-glibmm' 'lib32-libgnomecanvas' 'lib32-libxdamage' 'lib32-libxt' 'lib32-libxtst' 'lib32-libstdc++5' 'perl')
+depends=('lib32-glibmm' 'libgnomecanvas' 'lib32-libxdamage' 'lib32-libxt' 'lib32-libxtst' 'lib32-libstdc++5' 'perl')
 options=('!strip' '!libtool')
 install=bin32-vmware-server-console.install
 noextract=(bin32-vmware-server-console-add-libs.tar.gz)
 source=(http://download3.vmware.com/software/vmserver/VMware-mui-${pkgver}-203137.tar.gz
-        https://mortzu.de/files/aur/bin32-vmware-server-console/vmware-server-console_1.0.8-intrepid-patch.tar.xz
-        https://mortzu.de/files/aur/bin32-vmware-server-console/bin32-vmware-server-console-add-libs.tar.xz
         vmware-server-console.desktop
         wrapper-gtk24.patch
         wrapper-gtk24-2.patch)
 md5sums=('0f01e9bdeee3fa2aa84f87f66b69dc83'
-         'b8923f2ae7eb8729b9337e152c4ffcc2'
-         'ff02106a33ced366b54b5220e1212fb7'
          'd5f9319812fffe7bd832a64e1f333231'
          '444b6865f665813aaaf751c8ef0c7cd3'
          '1e69aaf7c72cf2347d8d552e2954f686')
@@ -29,10 +25,6 @@ package() {
   # unpack the server console package
   cd "$srcdir/vmware-mui-distrib/console-distrib"
   tar -xzf VMware-server-console-${pkgver}-203137.tar.gz
-
-  msg "Patching because of 32bit libraries..."
-  cd "$srcdir/vmware-mui-distrib/console-distrib/vmware-server-console-distrib/lib/lib"
-  patch -Np1 -i "$srcdir/wrapper-gtk24.patch"
 
   cd "$srcdir/vmware-mui-distrib/console-distrib/vmware-server-console-distrib"
 
