@@ -1,6 +1,6 @@
 pkgbase = gausssum
 	pkgdesc = A Program for getting results of Gaussian and GAMESS
-	pkgver = 3.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://gausssum.sourceforge.net
 	install = gausssum.install
@@ -11,8 +11,9 @@ pkgbase = gausssum
 	depends = gnuplot
 	depends = python-numpy
 	depends = python-matplotlib
-	source = http://prdownloads.sourceforge.net/gausssum/GaussSum-3.0.tar.gz
-	sha1sums = 42af09793dc4a74557f8a3d3aed1a1a5bb66a7d3
+	depends = python-cclib
+	source = http://prdownloads.sourceforge.net/gausssum/GaussSum-3.0.2.tar.gz
+	sha1sums = 5ca1761ac8d306354a25990da6207b23100f229c
 
 pkgname = gausssum
 

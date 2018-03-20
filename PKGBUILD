@@ -2,15 +2,15 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 # Contributor: Xyne <xyne at archlinux dot us>
 pkgname=gausssum
-pkgver=3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A Program for getting results of Gaussian and GAMESS"
-depends=('tcl' 'tk' 'gnuplot' 'python-numpy' 'python-matplotlib')
+depends=('tcl' 'tk' 'gnuplot' 'python-numpy' 'python-matplotlib' 'python-cclib')
 arch=('any')
 license=('GPL')
 url="http://gausssum.sourceforge.net"
 source=(http://prdownloads.sourceforge.net/gausssum/GaussSum-${pkgver}.tar.gz)
-sha1sums=('42af09793dc4a74557f8a3d3aed1a1a5bb66a7d3')
+sha1sums=('5ca1761ac8d306354a25990da6207b23100f229c')
 install=gausssum.install
 
 package() {
