@@ -1,15 +1,15 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.7.0
-pkgrel=1
+pkgver=1.7.1
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'armv7h')
 url="https://rspamd.com"
 license=('BSD')
 depends=('file' 'glib2' 'icu' 'libevent' 'luajit' 'sqlite')
-makedepends=('cmake' 'pkg-config' 'ragel')
+makedepends=('cmake' 'pkg-config' 'ragel' 'ninja')
 
 backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/actions.conf'
@@ -97,7 +97,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('cf8bd3cbe3e6e146dbb9c5d6c0098ccfe69dda5a672b9cf6af629e9fbbdba039'
+sha256sums=('3dd083e68edc800b3174563db41166734bebc6dff2df8d7d7a1ced4ba10b880d'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
@@ -112,6 +112,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	cmake \
+		-G Ninja \
 		-DNO_SHARED=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCONFDIR=/etc/rspamd \
@@ -127,7 +128,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
+
+	DESTDIR="${pkgdir}/" cmake --build . --target install
 
 	install -Dm0644 "LICENSE" "${pkgdir}/usr/share/${pkgname}/LICENSE"
 	install -Dm0644 "../${pkgname}.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
