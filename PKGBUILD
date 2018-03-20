@@ -9,7 +9,7 @@ url='https://github.com/Genymobile/scrcpy'
 license=('Apache')
 depends=('ffmpeg' 'sdl2')
 makedepends=('gcc' 'meson')
-optdepends=('android-sdk-platform-tools: required if adb is not already installed')
+optdepends=('android-tools: required if adb is not already installed')
 source=("https://github.com/Genymobile/scrcpy/archive/v${pkgver}.tar.gz"
         "https://github.com/Genymobile/scrcpy/releases/download/v${pkgver}/scrcpy-server-v${pkgver}.jar")
 sha256sums=('1b56caa4aad5add2c49ea436e9f26282b55a413003d0d73b029a1fbf48da0a1c'
