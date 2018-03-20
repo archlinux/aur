@@ -1,9 +1,9 @@
-# Maintainer: Xiangru Lian <xlian@gmx.com>
+# Maintainer: crab2313 <crab2313@gmail.com>
 
 pkgname=python-gitlab
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="Interact with GitLab API"
+pkgdesc="Python wrapper for the GitLab API"
 arch=(any)
 url="https://github.com/python-gitlab/python-gitlab"
 license=('LGPLv3')
