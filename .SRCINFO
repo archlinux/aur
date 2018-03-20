@@ -1,0 +1,20 @@
+pkgbase = libretro-thepowdertoy-git
+	pkgdesc = A port of The Powder Toy to LibRetro.
+	pkgver = 41.df783fa
+	pkgrel = 1
+	url = https://github.com/libretro/ThePowderToy
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/libretro/ThePowderToy.git
+	md5sums = SKIP
+
+pkgname = libretro-thepowdertoy-git
+
