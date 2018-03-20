@@ -2,17 +2,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aoeui
-pkgver=1.6
+pkgver=1.6.98
 pkgrel=1
 pkgdesc="Lightweight and unobtrusive visual text editor optimized for Dvorak keyboard users."
 arch=('i686' 'x86_64')
 url="http://sites.google.com/site/aoeuiandasdfg/"
 depends=('glibc')
+makedepends=('git')
 license=('GPL2')
-source=(http://aoeui.googlecode.com/files/$pkgname-$pkgver.tgz)
-md5sums=('8eee06ba3cbacd4984730c2d5f17a593')
+source=(git+https://github.com/blinkkin/aoeui.git#commit=5a45ee9f710577da91c670ad1d26a87c478f3ee4)
+md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname
   make INST_DIR="$pkgdir"/usr install
 }
