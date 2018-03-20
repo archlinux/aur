@@ -3,7 +3,7 @@
 pkgname=melonds-git
 _gitname=melonds
 _releasever=0.6
-pkgver=${_releasever}.3881b26
+pkgver=0.6.r478.aab0030
 pkgdesc='DS emulator, sorta. also 1st quality melon.'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 pkgver()
 {
   cd "${_gitname}"
-  echo "${_releasever}.$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "${_releasever}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build()
