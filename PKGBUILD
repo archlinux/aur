@@ -10,8 +10,8 @@ url="http://blog.rusty.io/2010/01/24/submodules-and-subrepos-done-right/"
 license=('Apache')
 source=(subgit
         subhg)
-sha256sums=('f1fc0854c4162c0e1da5640e3609e10e2641b25835b05b9bb0c8d8ee0d9e12b6'
-            '8fb862db6f0953f125ab3ad1c136b97f86c685c05f27a64df0b7c939147c4c3b')
+sha256sums=('f627c66bd7203b91b48822f5fe535ea10e5370b94886bd450d98050e2ec7bb03'
+            '8cef86a2ea6f8961ed984528e3add2048cb8f2bfee9ee2d9d0cb8ec997019d61')
 provides=('subgit subhg')
 conflicts=('subgit-git subhg-git')
 
