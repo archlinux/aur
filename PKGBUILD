@@ -17,10 +17,10 @@ prepare() {
 }
 
 build() {
-  install -d bind
-  texlua $srcdir/arch-install-dir2pdf
+  install -d bin
+  texlua "$srcdir"/arch-install-dir2pdf
 }
 
 package() {
-  install -Dm755 bin/dir2pdf $pkgdir/usr/bin/dir2pdf
+  install -Dm755 "$srcdir"/bin/dir2pdf "$pkgdir"/usr/bin/dir2pdf
 }
