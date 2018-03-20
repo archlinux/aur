@@ -1,0 +1,17 @@
+pkgbase = zebu
+	pkgdesc = A Jinja2 + YAML based config templater written in python
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-argcomplete
+	depends = python-colorlog
+	depends = python-jinja
+	depends = python-pyaml
+	depends = python-termcolor
+	depends = python-watchdog
+	options = !emptydirs
+
+pkgname = zebu
+
