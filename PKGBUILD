@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gperftools'
          'libcap'
          'python'
          'llvm-libs>=5.0')
-makedepends=('llvm=5.0.1-2'
+makedepends=('llvm>=5.0.1-2'
              'cmake'
              'git')
 checkdepends=()
@@ -27,14 +27,18 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/jirislaby/klee.git#branch=llvm_50"
-        "git+https://github.com/klee/klee-uclibc.git")
+        "git+https://github.com/klee/klee-uclibc.git"
+        "llvm_6.0.patch")
 noextract=()
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         '45bbe884565b7cede2a84f8e8d9edcde')
 validpgpkeys=()
 
 prepare() {
     mkdir -p "build"
+    cd "$srcdir/klee"
+    patch -p1 -i "$srcdir/llvm_6.0.patch"
 }
 
 build() {
