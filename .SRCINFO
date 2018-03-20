@@ -1,0 +1,21 @@
+pkgbase = minikube-git
+	pkgdesc = Minikube is a tool that makes it easy to run Kubernetes locally.
+	pkgver = v0.25.0.r95.g6bf2661ca
+	pkgrel = 1
+	url = https://github.com/kubernetes/minikube
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = glibc
+	optdepends = kubtctl-bin: to manage the cluster
+	optdepends = virtualbox
+	optdepends = docker-machine-driver-kvm2
+	provides = minikube
+	conflicts = minikube
+	source = minikube-git::git+https://github.com/kubernetes/minikube.git
+	md5sums = SKIP
+
+pkgname = minikube-git
+
