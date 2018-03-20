@@ -12,7 +12,7 @@ pkgver=0.11.34
 pkgrel=2
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://$_pkgname.io"
 license=('MIT')
 depends=('git>=1.7.1' 'pam')
