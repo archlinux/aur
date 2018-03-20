@@ -1,0 +1,15 @@
+pkgbase = python-retdec-python
+	pkgdesc = A Python library and tools providing easy access to the retdec.com decompilation service through their public REST API.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/s3rvac/retdec-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/retdec-python/retdec-python-0.5.2.tar.gz
+	md5sums = d6b3c37bc26bd116896d4dc23c8a9432
+
+pkgname = python-retdec-python
+	depends = python
+
