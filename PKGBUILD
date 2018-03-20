@@ -1,6 +1,6 @@
 # Maintainer: Jonni Westphalen <jonny.westphalen@googlemail.com>
 pkgname=aurman-git
-pkgver=2.9.10.r0.g9543d96
+pkgver=2.9.11.r0.g7558296
 pkgrel=1
 pkgdesc="aurman AUR helper"
 arch=('x86_64')
