@@ -1,9 +1,9 @@
 # Maintainer: Will Price <will.price94@gmail.com>
 
-_version=2017-06-09
+_version=2018-02-27
 _lang=english
 pkgname=stanford-corenlp-models-$_lang
-pkgver=3.8.0
+pkgver=3.9.1
 pkgrel=2
 pkgdesc="Parser models for the $_lang language for the Stanford parser."
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('d8e04b649c28b87465eccc263d9b827e')
 noextract=("stanford-${_lang}-corenlp-${_version}-models.jar")
 
 package() {
-    mkdir -p "${pkgdir}"/usr/share/stanford-corenlp
+    mkdir -p "${pkgdir}"/usr/share/stanford-corenlp/models
     cp  "stanford-${_lang}-corenlp-${_version}-models.jar" \
-        "${pkgdir}/usr/share/stanford-corenlp/"
+        "${pkgdir}/usr/share/stanford-corenlp/models"
 }
