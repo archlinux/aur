@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20180227
+pkgver=20180320
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -23,12 +23,14 @@ source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
-        bitcoin-reindex.service)
+        bitcoin-reindex.service
+        bitcoin-sysusers.conf)
 sha256sums=('SKIP'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
-            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679')
+            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
+            'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-tx')
@@ -103,6 +105,10 @@ package() {
   install -Dm 644 "$srcdir/bitcoin.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin-reindex.service" \
     -t "$pkgdir/usr/lib/systemd/system"
+
+  msg2 'Installing bitcoin-sysusers.conf...'
+  install -Dm 644 "$srcdir/bitcoin-sysusers.conf" \
+    "$pkgdir/usr/lib/sysusers.d/bitcoin.conf"
 
   msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
