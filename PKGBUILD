@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20170307
-pkgrel=5
+pkgver=20180309
+pkgrel=1
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -30,12 +30,14 @@ source=(git+https://github.com/libbitcoin/libbitcoin-node
         git+https://github.com/libbitcoin/libbitcoin-node.wiki
         bn.logrotate
         bn-init.service
-        bn.service)
+        bn.service
+        obelisk-sysusers.conf)
 sha256sums=('SKIP'
             'SKIP'
             'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
             'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
-            'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43')
+            'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43'
+            '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f')
 provides=('libbitcoin-node')
 conflicts=('libbitcoin-node')
 backup=('etc/obelisk/bn/bn.cfg'
@@ -114,6 +116,10 @@ package() {
   msg2 'Installing systemd service files...'
   install -Dm 644 "$srcdir/bn-init.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bn.service" -t "$pkgdir/usr/lib/systemd/system"
+
+  msg2 'Installing systemd sysusers configuration file...'
+  install -Dm 644 "$srcdir/obelisk-sysusers.conf" \
+    "$pkgdir/usr/lib/sysusers.d/obelisk.conf"
 
   msg2 'Installing logrotate conf...'
   install -Dm 644 "$srcdir/bn.logrotate" "$pkgdir/etc/logrotate.d/bn"
