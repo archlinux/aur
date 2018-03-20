@@ -67,7 +67,6 @@ prepare() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
 
-    msg2 'Configuring...'
     CFLAGS="${CFLAGS} -pthread" \
     CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
