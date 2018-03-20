@@ -1,0 +1,31 @@
+pkgbase = namd
+	pkgdesc = Scalable molecular dynamic engine
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://www.ks.uiuc.edu/Research/namd/
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	depends = openmpi
+	depends = cuda-8.0
+	depends = plumed
+	depends = plumed-namd
+	depends = fftw-static
+	depends = tcl85-static
+	depends = fakeroot
+	depends = gsl
+	depends = zlib
+	depends = lapack
+	depends = blas
+	depends = gcc-libs
+	options = staticlibs
+	source = local://NAMD_2.12_Source.tar.gz
+	source = charm++.patch
+	source = namd.patch
+	md5sums = 2a1191909b1ab03bf0205971ad4d8ee9
+	md5sums = cdec864324573d6a16a09d6503ae3f3e
+	md5sums = a1291b5f794008ce5b1912c9b806739c
+
+pkgname = namd
+
