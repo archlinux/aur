@@ -1,13 +1,10 @@
 pkgbase = gausssum
 	pkgdesc = A Program for getting results of Gaussian and GAMESS
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gausssum.sourceforge.net
-	install = gausssum.install
 	arch = any
 	license = GPL
-	depends = tcl
-	depends = tk
 	depends = gnuplot
 	depends = python-numpy
 	depends = python-matplotlib
