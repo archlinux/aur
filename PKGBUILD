@@ -2,7 +2,7 @@
 
 pkgname=scrcpy
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Display and control your Android device'
 arch=('i686' 'x86_64')
 url='https://github.com/Genymobile/scrcpy'
@@ -32,10 +32,6 @@ build() {
 }
 
 package() {
-    mkdir -p \
-        "${pkgdir}"/usr/bin \
-        "${pkgdir}"/"$(dirname "${server_path}")"
-
-    install -m 755 "${src_name}"/build/app/scrcpy "${pkgdir}"/usr/bin/
-    install -m 755 "${src_server}"                "${pkgdir}"/"${server_path}"
+    install -Dm 755 "${src_name}"/build/app/scrcpy "${pkgdir}"/usr/bin/scrcpy
+    install -Dm 644 "${src_server}"                "${pkgdir}"/"${server_path}"
 }
