@@ -2,7 +2,7 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=r45.1066662
+pkgver=r46.d69756d
 pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
