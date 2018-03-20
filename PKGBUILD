@@ -2,16 +2,16 @@
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=kodi-addon-inputstream-adaptive-18-git
-pkgver=r232.9af2121
+pkgver=r291.622d59d
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 19"
 arch=('x86_64' 'i686')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
-makedepends=('kodi-dev' 'cmake' 'git')
+makedepends=('kodi-dev-git' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git')
+source=('kodi-addon-inputstream-adaptive-18-git::git+https://github.com/peak3d/inputstream.adaptive.git')
 md5sums=('SKIP')
 
 pkgver() {
