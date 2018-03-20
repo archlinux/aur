@@ -1,0 +1,15 @@
+pkgbase = moxygen
+	pkgdesc = Doxygen XML to Markdown converter
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = https://github.com/sourcey/moxygen
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = doxygen
+	depends = nodejs
+	source = moxygen-0.7.12.tar.gz::https://github.com/sourcey/moxygen/archive/0.7.12.tar.gz
+	sha512sums = ee4f1a653ed14cfd7172c317d02a118406582b5b31286a46f0037ee0b59f54e79783af64cd25d25d514695b88e045153ddbc5d78a0540da3a7d91e57a2f72f1d
+
+pkgname = moxygen
+
