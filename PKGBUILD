@@ -1,6 +1,5 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
-pkgbase=nikola
 _pyname=Nikola
 pkgname=nikola
 pkgver=7.8.13
@@ -31,14 +30,13 @@ source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz"
         "make_tab_completion.py")
 md5sums=('896bbfbbd39a0fb785355735db71f032' '0c5b36c239ac465da024dac76e4892e7')
 conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola-git')
-replaces=('python-nikola' 'python2-nikola')
+replaces=('python-nikola' 'python2-nikola' 'python-nikola-doc')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
 }
 
-package_nikola() {
-  replaces=('python-nikola' 'python2-nikola' 'python-nikola-doc')
+package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   ln -s ${pkgbase} "${pkgdir}/usr/bin/${pkgbase}3"

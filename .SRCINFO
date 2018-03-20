@@ -43,6 +43,7 @@ pkgbase = nikola
 	conflicts = nikola-git
 	replaces = python-nikola
 	replaces = python2-nikola
+	replaces = python-nikola-doc
 	options = !emptydirs
 	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.8.13.tar.gz
 	source = make_tab_completion.py
@@ -50,7 +51,4 @@ pkgbase = nikola
 	md5sums = 0c5b36c239ac465da024dac76e4892e7
 
 pkgname = nikola
-	replaces = python-nikola
-	replaces = python2-nikola
-	replaces = python-nikola-doc
 
