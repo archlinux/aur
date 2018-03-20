@@ -3,8 +3,8 @@
 pkgbase=nikola-git
 _pyname=nikola
 _gitname=nikola
-pkgname=('nikola-git' 'python-nikola-doc-git')
-pkgver=7.8.8.r175.g8367f952
+pkgname=nikola-git
+pkgver=7.8.13.r0.ge8f38cae
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
 md5sums=('SKIP' '0c5b36c239ac465da024dac76e4892e7')
 conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola')
-replaces=('python-nikola-git' 'python2-nikola-git')
+replaces=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -46,17 +46,13 @@ package_nikola-git() {
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
+  install -m644 docs/manual.txt "${pkgdir}/usr/share/doc/${pkgbase}/manual.txt"
+  install -m644 docs/theming.txt "${pkgdir}/usr/share/doc/${pkgbase}/theming.txt"
+  install -m644 docs/extending.txt "${pkgdir}/usr/share/doc/${pkgbase}/extending.txt"
 
   export pkgdir
   python3 ../make_tab_completion.py
-}
-
-package_python-nikola-doc-git() {
-  pkgdesc="(deprecated -- merged into 'nikola-git')"
-  install='python-nikola-doc-git.install'
-  optdepends=()
-  depends=('nikola-git')
-  echo "WARNING: python-nikola-doc-git is deprecated, please uninstall it"
 }
 
 # vim:set ts=2 sw=2 et:

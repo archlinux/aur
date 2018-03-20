@@ -1,6 +1,6 @@
 pkgbase = nikola-git
 	pkgdesc = A modular, fast, simple, static website generator. (git version)
-	pkgver = 7.8.8.r175.g8367f952
+	pkgver = 7.8.13.r0.ge8f38cae
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -44,6 +44,7 @@ pkgbase = nikola-git
 	conflicts = nikola
 	replaces = python-nikola-git
 	replaces = python2-nikola-git
+	replaces = python-nikola-doc-git
 	options = !emptydirs
 	source = git+https://github.com/getnikola/nikola.git
 	source = make_tab_completion.py
@@ -51,10 +52,4 @@ pkgbase = nikola-git
 	md5sums = 0c5b36c239ac465da024dac76e4892e7
 
 pkgname = nikola-git
-
-pkgname = python-nikola-doc-git
-	pkgdesc = (deprecated -- merged into 'nikola-git')
-	install = python-nikola-doc-git.install
-	depends = nikola-git
-	optdepends = 
 
