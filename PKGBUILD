@@ -1,5 +1,5 @@
 # Maintainer: Pablo <pablo1@mailbox.org>
-pkgname=zebu
+pkgname=zenbu
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Jinja2 + YAML based config templater written in python"
