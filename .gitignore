@@ -1,6 +1,7 @@
 pkg/
 src/
 .AURINFO
+robtk-*.tar.gz
+meters-lv2-*.tar.gz
 meters-lv2-*.tar.xz
 meters-lv2-*.src.tar.gz
-v*.tar.gz
