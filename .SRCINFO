@@ -1,23 +1,18 @@
 pkgbase = cardano-sl
 	pkgdesc = Cryptographic currency implementing Ouroboros PoS protocol
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-sl/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = ncurses5-compat-libs
-	makedepends = npm
 	makedepends = stack
-	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=0c1fab91a7358fcb4c151a3a028ed650f7a36cbd
-	sha256sums = SKIP
-
-pkgname = cardano-sl
-	pkgdesc = Cryptographic currency implementing Ouroboros PoS protocol
 	depends = gmp
 	depends = openssl
 	depends = rocksdb
+	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=cb3643f57e98f4190cd0132ddb8dd9010094f288
+	sha256sums = SKIP
 
-pkgname = daedalus-bridge
-	pkgdesc = Cryptographic currency implementing Ouroboros PoS protocol
+pkgname = cardano-sl
 
