@@ -39,7 +39,7 @@ install=$_pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
 sha256sums=('331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705'
-            'de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694')
+            '82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e')
 
 package() {
     cd $_pkgname-$pkgver

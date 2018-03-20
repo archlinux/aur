@@ -35,7 +35,7 @@ pkgbase = jre9
 	source = http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_linux-x64_bin.tar.gz
 	source = policytool-jre9.desktop
 	sha256sums = 331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705
-	sha256sums = de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694
+	sha256sums = 82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e
 
 pkgname = jre9
 
