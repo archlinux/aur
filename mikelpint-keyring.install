@@ -3,7 +3,7 @@ post_upgrade() {
     usr/bin/pacman-key --populate mikelpint
   else
     echo " >>> Run \`pacman-key --init\` to set up your pacman keyring."
-    echo " >>> Then run \`pacman-key --populate arsch\` to install the arsch keyring."
+    echo " >>> Then run \`pacman-key --populate mikelpint\` to install the mikelpint keyring."
   fi
 }
 
