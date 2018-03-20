@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=17.12.3.r8607.5a05e9d50
+pkgver=18.03.80.r8628.b558147ba
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive#branch=Applications/17.12')
+source=('git://anongit.kde.org/kdenlive#branch=Applications/18.04')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)
