@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=3.1.0.r42.g26bd3268
+pkgver=3.1.0.r50.g06117da0
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit='26bd32687a1abbad9cb21b762bc33f9ea184d26e'
+_gitcommit='06117da0f1407214fa59cc3afeff834193c8e0de'
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -42,7 +42,7 @@ prepare() {
 	git reset HEAD --hard
 	git submodule update --init
 
-	patch -p1 -i "${srcdir}/arch-linux.patch"
+	patch -F3 -p1 -i "${srcdir}/arch-linux.patch"
 
 	find . -type f -name '*apt_sources*' -delete
 	find . -type f -name '*deb_package*' -delete
@@ -62,7 +62,7 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
-	export CC=/usr/bin/gcc CXX=/usr/bin/g++ USE_RTTI=1
+	export CC=/usr/bin/gcc CXX=/usr/bin/g++
 
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \
