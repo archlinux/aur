@@ -1,27 +1,27 @@
-# Maintainer: pzl <alsoelp@gmail.com>
-# Contributor: Dennis Fink <dennis.fink@c3l.lu>
-# Submitter: Simon Sapin <simon dot sapin at exyr dot org>
+# Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
+_pkgname=CairoSVG
 pkgname=python2-cairosvg
-pkgver=1.0.9
+pkgver=2.1.3
 pkgrel=1
-pkgdesc="A Simple SVG Converter for Cairo"
+pkgdesc="Convert your SVG files to PDF and PNG."
 arch=('any')
-url="http://cairosvg.org/"
-license=('LGPL3')
-depends=('python2' 'python2-cairo')
-optdepends=('python2-lxml: To use lxml to parse SVG files'
-'python2-tinycss: Apply CSS not included in the style attribute of the tags'
-'python2-cssselect: Apply CSS not included in the style attribute of the tags'
-'python2-pillow: To handle embedded raster images other than PNG')
-source=("http://pypi.python.org/packages/source/C/CairoSVG/CairoSVG-${pkgver}.tar.gz")
-md5sums=('4a15e7cf8debd205f6a9cc4b17c2e411')
+url="http://cairosvg.org"
+license=('GPL')
+depends=('python2' 'python2-cairocffi' 'python2-cffi' 'python2-pycparser')
+makedepends=('git')
+optdepends=('python2-lxml')
+conflicts=()
+source=("https://github.com/Kozea/${_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('71a576e0e0fa43fbce678e13053e2c02')
 
 build() {
-  cd "$srcdir/CairoSVG-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's/import re/import re\nimport io/' setup.py
+  sed -i 's/open/\io.open/' setup.py
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/CairoSVG-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
