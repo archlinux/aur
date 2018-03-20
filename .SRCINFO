@@ -1,0 +1,17 @@
+pkgbase = dloopdetector-free
+	pkgdesc = Fast loop detector for sequences of monocular images. No SURF support
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/dorian3d/DLoopDetector
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gcc
+	depends = dlib-free
+	conflicts = dloopdetector-nonfree
+	source = https://github.com/dorian3d/DLoopDetector/archive/v1.1-free.tar.gz
+	md5sums = cf31ccd487503da36f7320dbb15a6513
+
+pkgname = dloopdetector-free
+
