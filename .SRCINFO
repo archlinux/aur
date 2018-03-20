@@ -1,7 +1,7 @@
 pkgbase = spl-utils-common
 	pkgdesc = Solaris Porting Layer kernel module support files.
-	pkgver = 0.7.6
-	pkgrel = 3
+	pkgver = 0.7.7
+	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	groups = archzfs-linux
@@ -15,8 +15,8 @@ pkgbase = spl-utils-common
 	conflicts = spl-utils-linux-lts-git
 	replaces = spl-utils-linux,
 	replaces = spl-utils-linux-lts
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/spl-0.7.6.tar.gz
-	sha256sums = 648148762969d1ee94290c494c4f022aeacabe0e84cddf65906af608be666f95
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/spl-0.7.7.tar.gz
+	sha256sums = 9e98af3daaf1a6605b34f8b709a60cfc52dbf2bedcfc01d919d1f77c695247de
 
 pkgname = spl-utils-common
 
