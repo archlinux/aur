@@ -1,10 +1,11 @@
 # Maintainer: Pablo <pablo1@mailbox.org>
 pkgname=zenbu-git
-pkgver=1.0.0
+_pkgname=zenbu
+pkgver=1.0.5.141
 pkgrel=1
 pkgdesc="A Jinja2 + YAML based config templater written in python"
 arch=(any)
-url=""
+url="https://github.com/metakirby5/zenbu"
 license=('MIT')
 groups=()
 depends=('python' 'python-argcomplete' 'python-colorlog' 'python-jinja' 'python-pyaml' 'python-termcolor' 'python-watchdog')
@@ -15,12 +16,21 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=()
-md5sums=()
+source=('git://github.com/metakirby5/zenbu.git')
+md5sums=('SKIP')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+pkgver() {
+  cd $_pkgname
+  echo "$(python setup.py --version).$(git rev-list --count HEAD)"
 }
 
+build() {
+  cd $_pkgname
+  python setup.py build
+}
+
+package() {
+  cd $_pkgname
+  python setup.py install --prefix="$pkgdir/usr"
+}
 # vim:set ts=2 sw=2 et:
