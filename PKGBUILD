@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 _pkgname=CairoSVG
 pkgname=python2-cairosvg
-pkgver=2.1.3
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Convert your SVG files to PDF and PNG."
 arch=('any')
@@ -12,12 +12,10 @@ makedepends=('git')
 optdepends=('python2-lxml')
 conflicts=()
 source=("https://github.com/Kozea/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('71a576e0e0fa43fbce678e13053e2c02')
+md5sums=('2d8cdd9870050bf0a923ec4345c7e879')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i 's/import re/import re\nimport io/' setup.py
-  sed -i 's/open/\io.open/' setup.py
   python2 setup.py build
 }
 
