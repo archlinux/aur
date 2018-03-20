@@ -6,7 +6,6 @@ pkgbase = stoqdrivers
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = kiwi
 	depends = python2
 	depends = kiwi
 	depends = python2-pyserial
