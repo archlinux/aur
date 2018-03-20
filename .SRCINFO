@@ -1,0 +1,21 @@
+pkgbase = stoq-server
+	pkgdesc = Stoq server.
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/stoq/stoq-server
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = kiwi
+	makedepends = stoqdrivers
+	makedepends = stoq
+	depends = python2
+	depends = python2-twisted
+	depends = python2-requests
+	depends = python2-netifaces
+	conflicts = stoq-server-git
+	source = https://github.com/stoq/stoq-server/archive/0.14.1.tar.gz
+	md5sums = a7689059dcd43d74da5c6a8a20184129
+
+pkgname = stoq-server
+
