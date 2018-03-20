@@ -1,4 +1,4 @@
-pkgbase = zebu
+pkgbase = zenbu
 	pkgdesc = A Jinja2 + YAML based config templater written in python
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = zebu
 	depends = python-watchdog
 	options = !emptydirs
 
-pkgname = zebu
+pkgname = zenbu
 
