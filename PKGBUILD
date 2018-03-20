@@ -2,7 +2,7 @@
 
 
 pkgname=dnscrypt-proxy-gui
-pkgver=1.11.14
+pkgver=1.11.15
 pkgrel=1
 pkgdesc='Qt/KF5 GUI wrapper over dnscrypt-proxy'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('kauth' 'knotifications' 'hicolor-icon-theme' 'dnscrypt-proxy')
 makedepends=('cmake' 'extra-cmake-modules' 'desktop-file-utils')
 conflicts=('dnscrypt-proxy-gui-git')
 source=("${pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('990a99400c3494b607df0b30447ca35c2ecc3b3639484443960b9ede2b19871f')
+sha256sums=('1a3a32f252cd6146d40c9835d6878a4279427de23dbcc89f69ce89aaab52bbdf')
 
 
 build() {
