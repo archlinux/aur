@@ -39,14 +39,14 @@ build() {
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  ln -s ${pkgbase} "${pkgdir}/usr/bin/${pkgbase}3"
+  ln -s ${pkgname} "${pkgdir}/usr/bin/${pkgname}3"
 
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
-  install -m644 docs/manual.txt "${pkgdir}/usr/share/doc/${pkgbase}/manual.txt"
-  install -m644 docs/theming.txt "${pkgdir}/usr/share/doc/${pkgbase}/theming.txt"
-  install -m644 docs/extending.txt "${pkgdir}/usr/share/doc/${pkgbase}/extending.txt"
+  install -m644 docs/manual.txt "${pkgdir}/usr/share/doc/${pkgname}/manual.txt"
+  install -m644 docs/theming.txt "${pkgdir}/usr/share/doc/${pkgname}/theming.txt"
+  install -m644 docs/extending.txt "${pkgdir}/usr/share/doc/${pkgname}/extending.txt"
 
   export pkgdir
   python3 ../make_tab_completion.py
