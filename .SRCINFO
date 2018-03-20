@@ -1,7 +1,7 @@
 pkgbase = skafos
 	pkgdesc = Command line utility to the Metis Machine platform
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://metismachine.com
 	install = skafos.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = skafos
 	depends = libgit2>=1:0.26.0
 	depends = curl>=7.0.0
 	depends = libcurl-compat>=7.0.0
-	source = skafos-1.2.tar.gz::https://github.com/MetisMachine/skafos/archive/1.2.tar.gz
+	source = skafos-1.3.0.tar.gz::https://github.com/MetisMachine/skafos/archive/1.3.0.tar.gz
 	md5sums = 0fdd3adad1c1c3063c1154bbd04e5385
 	sha1sums = 8ec597c25f100e7c8792a2cdde7912d7790cd29b
 	sha256sums = fedff898ef97280712ea4bc5ae8b9c696e09b698b3cc035b4fb88d7134ae8018
