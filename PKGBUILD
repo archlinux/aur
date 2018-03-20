@@ -3,7 +3,7 @@
 
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
-pkgver=0.22.0
+pkgver=0.22.2
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-pyopenssl' 'python
              'python-mock' 'python2-mock')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('b08320ff077177228824fd20eda404ac0c0924ed3bd8776fab8d1a65e525a8133b84f38a237fcfae74eb9b7481b6bb6c3a078355ebb12eab4f1b77404d135c41')
+sha512sums=('87cc7e7804473d39c35d5ccd6e9012fc6e1ac60657ebd20de233c4245bd0b5192892ca701bca391a21892ceda7ba80a1d9b203dd3a8b34d2bb85d98b1a8585ca')
 
 prepare() {
   cp -a acme-$pkgver{,-py2}
