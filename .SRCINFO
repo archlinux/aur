@@ -1,7 +1,7 @@
 pkgbase = git-latexdiff
 	pkgdesc = Simple but very convenient wrapper around Git and latexdiff
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/git-latexdiff/git-latexdiff
 	arch = any
 	license = GPL
