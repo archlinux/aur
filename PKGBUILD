@@ -31,6 +31,6 @@ build() {
 
 package() {
   cd $_pkgname
-  python setup.py install --prefix="$pkgdir/usr"
+  python setup.py install --prefix="/usr" --root="$pkgdir"
 }
 # vim:set ts=2 sw=2 et:
