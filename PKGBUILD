@@ -43,9 +43,9 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash
         "jmc-$_jname.desktop"
         "policytool-$_jname.desktop")
 sha256sums=('90c4ea877e816e3440862cfa36341bc87d05373d53389ec0f2d54d4e8c95daa2'
-            '100fd0162a4be04371d9d53121bd511aeb0a230475497a8c19ed0cff20915efc'
-            'e4059de8ec0dee1a5eabd1d67a053509aa0009ba6e08739b11140c26f2fcc55a'
-            'ff6684d7d5c26cc805e6f3918284a95b48223db4f37956f35a344373a2931aa4')
+            '76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
+            '9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab'
+            'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013')
 
 package() {
     cd $_pkgname-$pkgver
