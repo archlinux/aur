@@ -1,24 +1,25 @@
-# Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Maintaner: GFdevelop
+# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r01
-_sdkver=6.0
-_sdkint=23
-pkgname=android-sources-${_sdkint}
-pkgver=${_sdkver}_${_rev}
+_apilevel=23
+pkgname=android-sources-${_apilevel}
+pkgver=r01
 pkgrel=1
-pkgdesc="Android SDK Sources, API-${_sdkint}"
+pkgdesc="Android SDK Sources, API-${_apilevel}"
 arch=('any')
-url="http://developer.android.com/sdk/index.html"
+url="https://developer.android.com/studio/index.html"
 license=('custom')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 options=('!strip')
-conflicts=("android-sources==${_sdkint,,}")
-source=("http://dl.google.com/android/repository/sources-${_sdkint}_${_rev}.zip")
+source=("https://dl.google.com/android/repository/sources-${_apilevel}_${pkgver}.zip")
 sha1sums=('b0f15da2762b42f543c5e364c2b15b198cc99cc2')
 
 package() {
-  mkdir -p "${pkgdir}/opt/android-sdk/sources/"
-  cp -dpr --no-preserve=ownership "${srcdir}/src" "${pkgdir}/opt/android-sdk/sources/android-${_sdkint}"
+  _destdir="${pkgdir}/opt/android-sdk/sources/"
+  mkdir -p "${_destdir}"
+  mv "${srcdir}/src" "${_destdir}/android-${_apilevel}"
   chmod -R ugo+rX "${pkgdir}/opt"
 }
