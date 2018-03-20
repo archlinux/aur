@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 9.0.4
+	pkgver = 10
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
@@ -13,29 +13,29 @@ pkgbase = jre
 	depends = xdg-utils
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=9
-	provides = java-runtime-headless=9
-	provides = java-web-start=9
-	provides = java-runtime-jre=9
-	provides = java-runtime-headless-jre=9
-	provides = java-web-start-jre=9
-	provides = java-openjfx=9
-	conflicts = java-runtime-jre=9
-	backup = etc/java-jre9/management/jmxremote.access
-	backup = etc/java-jre9/management/management.properties
-	backup = etc/java-jre9/security/java.policy
-	backup = etc/java-jre9/security/java.security
-	backup = etc/java-jre9/security/javaws.policy
-	backup = etc/java-jre9/fontconfig.properties.src
-	backup = etc/java-jre9/logging.properties
-	backup = etc/java-jre9/net.properties
-	backup = etc/java-jre9/psfont.properties.ja
-	backup = etc/java-jre9/psfontj2d.properties
-	backup = etc/java-jre9/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_linux-x64_bin.tar.gz
-	source = policytool-jre9.desktop
-	sha256sums = 331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705
-	sha256sums = de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694
+	provides = java-runtime=10
+	provides = java-runtime-headless=10
+	provides = java-web-start=10
+	provides = java-runtime-jre=10
+	provides = java-runtime-headless-jre=10
+	provides = java-web-start-jre=10
+	provides = java-openjfx=10
+	conflicts = java-runtime-jre=10
+	backup = etc/java-jre10/management/jmxremote.access
+	backup = etc/java-jre10/management/management.properties
+	backup = etc/java-jre10/security/java.policy
+	backup = etc/java-jre10/security/java.security
+	backup = etc/java-jre10/security/javaws.policy
+	backup = etc/java-jre10/fontconfig.properties.src
+	backup = etc/java-jre10/logging.properties
+	backup = etc/java-jre10/net.properties
+	backup = etc/java-jre10/psfont.properties.ja
+	backup = etc/java-jre10/psfontj2d.properties
+	backup = etc/java-jre10/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jre-10_linux-x64_bin.tar.gz
+	source = policytool-jre10.desktop
+	sha256sums = 9c147ae25aceccf5bc2c9a878d0e7e5885b21ffbd861db6f8241d10915e38ab2
+	sha256sums = 175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f
 
 pkgname = jre
 

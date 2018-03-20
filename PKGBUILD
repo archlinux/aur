@@ -1,10 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jre
-pkgver=9.0.4
+pkgver=10
 _major=${pkgver/.*}
-_build=11
-_hash=c2514751926b4512b076cc82f959763f
+_build=46
+_hash=76eac37278c24557a3c4199677f19b62
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
 arch=('x86_64')
@@ -37,8 +37,8 @@ backup=("etc/java-$_jname/management/jmxremote.access"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
-sha256sums=('331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705'
-            'de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694')
+sha256sums=('9c147ae25aceccf5bc2c9a878d0e7e5885b21ffbd861db6f8241d10915e38ab2'
+            '175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f')
 
 package() {
     cd $pkgname-$pkgver
@@ -117,13 +117,6 @@ package() {
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
     ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
-
-    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # # things like 256-bit AES. Enabled by default in OpenJDK:
-    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:

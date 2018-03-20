@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-9-jre/jre/bin/policytool
-Icon=sun-java-jre9
+Exec=/usr/lib/jvm/java-10-jre/jre/bin/policytool
+Icon=sun-java-jre10
 Name=Java Policy Settings
 StartupNotify=true
 Terminal=false
