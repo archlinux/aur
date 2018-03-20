@@ -1,0 +1,16 @@
+pkgbase = dbow2-free
+	pkgdesc = Enhanced hierarchical bag-of-word library for C++. No support for non-free features
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/dorian3d/DBoW2
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	depends = dlib-free
+	conflicts = dbow2-nonfree
+	source = https://github.com/dorian3d/DBoW2/archive/v1.1-free.tar.gz
+	md5sums = 2764979e5be6bc7a7f041892d6527af4
+
+pkgname = dbow2-free
+
