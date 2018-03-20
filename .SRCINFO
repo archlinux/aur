@@ -1,0 +1,16 @@
+pkgbase = oselas-arm-v7a-linux-gnueabihf
+	pkgdesc = OSELAS cross toolchain for ARMv7a hardfloat
+	pkgver = 2018.02.0
+	pkgrel = 1
+	url = https://www.pengutronix.de/en/software/toolchain.html
+	arch = x86_64
+	license = GPL
+	makedepends = ptxdist-2018.02>=2018.02.0
+	makedepends = gcc>=7.2.1
+	depends = ncurses
+	options = !strip
+	source = https://public.pengutronix.de/oselas/toolchain/OSELAS.Toolchain-2018.02.0.tar.bz2
+	sha256sums = a5292724dc06e814d8f6d4712146e712d77d48872335595eca12ce80f83adb92
+
+pkgname = oselas-arm-v7a-linux-gnueabihf
+
