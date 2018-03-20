@@ -1,0 +1,16 @@
+pkgbase = plumed-namd
+	pkgdesc = Patches for using Plumed with NAMD
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.plumed.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = plumed
+	source = namd-2.12.config
+	source = namd-2.12.diff
+	md5sums = 94bd3234b0c2b27b0373422787ece713
+	md5sums = c94a2d7edea0e400e7bd14e22b8f96f8
+
+pkgname = plumed-namd
+
