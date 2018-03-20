@@ -1,7 +1,7 @@
 pkgbase = emacs-elscreen-dnd
 	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
 	arch = any
 	license = GPL
