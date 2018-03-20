@@ -1,7 +1,7 @@
 pkgbase = acpilight
 	pkgdesc = A backward-compatibile xbacklight replacement based on ACPI
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wavexx/acpilight
 	install = acpilight.install
 	arch = any

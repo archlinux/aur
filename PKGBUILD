@@ -4,7 +4,7 @@
 
 pkgname=acpilight
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A backward-compatibile xbacklight replacement based on ACPI"
 arch=('any')
 url="https://github.com/wavexx/acpilight"
@@ -23,7 +23,5 @@ package() {
 
     install -Dm755 xbacklight ${pkgdir}/usr/bin/xbacklight
     install -Dm644 xbacklight.1 "${pkgdir}/usr/share/man/man1/xbacklight.1"
-
-    install -Dm644 90-backlight.rules \
-        ${pkgdir}/etc/udev/rules.d/90-backlight.rules
+    install -Dm644 90-backlight.rules ${pkgdir}//usr/lib/udev/rules.d/90-backlight.rules
 }
