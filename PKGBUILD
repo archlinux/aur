@@ -1,10 +1,11 @@
 # Maintainer: Giga300 <giga300@protonmail.com>
+# Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
 _pkgname=desktop
-pkgver=v1.0.5.r21.gf45f511
-_pkgver=1.0.5
-pkgrel=1
+pkgver=v1.1.0.r1.g2590812
+_pkgver=1.1.0
+pkgrel=4
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
@@ -14,18 +15,21 @@ makedepends=('nodejs' 'npm')
 conflicts=('bitwarden')
 options=('!strip' '!emptydirs')
 
-source=(git+https://github.com/bitwarden/${_pkgname}.git package.json)
-sha512sums=('SKIP' '0207e1612a684d602f6eea0fdce54fb6663ab2fcafaf180bd964355fdbb804b3f1946f6b9451d84512f746cc8345dc21f27a38c9d1e8ebf947f1372bd66779e4')
+source=(git+https://github.com/bitwarden/${_pkgname}.git)
+sha512sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	#Copy package.json with only DEB compilation
-	cp --force package.json $_pkgname/package.json
+prepare() {
+	cd "$_pkgname"	
+	sed -i '109,112d' package.json
+	sed -i 's/"deb",/"deb"/g' package.json
+}
 
+build() {
 	cd "$_pkgname"
 
 	# Install Dependencies

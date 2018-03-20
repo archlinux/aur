@@ -1,7 +1,7 @@
 pkgbase = bitwarden-git
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = v1.0.5.r21.gf45f511
-	pkgrel = 1
+	pkgver = v1.1.0.r1.g2590812
+	pkgrel = 4
 	url = https://bitwarden.com
 	arch = x86_64
 	license = GPL-3.0
@@ -41,9 +41,7 @@ pkgbase = bitwarden-git
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/bitwarden/desktop.git
-	source = package.json
 	sha512sums = SKIP
-	sha512sums = 0207e1612a684d602f6eea0fdce54fb6663ab2fcafaf180bd964355fdbb804b3f1946f6b9451d84512f746cc8345dc21f27a38c9d1e8ebf947f1372bd66779e4
 
 pkgname = bitwarden-git
 
