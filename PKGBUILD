@@ -2,7 +2,7 @@
 
 _basename=renderdoc
 pkgname=${_basename}-bin
-pkgver=0.34
+pkgver=1.0
 _branch=v${pkgver}
 _tarname=${_basename}_${pkgver}
 pkgrel=1
@@ -12,13 +12,13 @@ url="https://github.com/baldurk/renderdoc"
 license=('MIT')
 conflicts=('renderdoc')
 makedepends=()
-depends=("mesa" "fontconfig" "hicolor-icon-theme")
+depends=("mesa" "qt5-base" "qt5-svg" "qt5-x11extras" "python")
 source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
         "https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz.sig"
         "https://raw.githubusercontent.com/baldurk/$_basename/$_branch/LICENSE.md")
-sha256sums=('04d11028c53c0cd1d4f20bcbf68c51e183601fcf30a9f0e29bcd7cda0fea0f08'
+sha256sums=('591c4f1c897b521056824f04ddc44f6eab7fc9d985cda802966d1cb7c84a78fd'
             'SKIP'
-            'e52150c6d24d3bd7d002c394f02947136bc2c7bf85caf2fe4636db0c0155a7aa')
+            '6026dd733f5afcd01c3cb00d61b09979d014302540e9352172af39d303855c1a')
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
 
 package() {
