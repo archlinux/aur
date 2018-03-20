@@ -20,7 +20,7 @@ install=open-vm-tools-dkms.install
 _name='open-vm-tools'
 _dirname='stable-10.0.x'
 _version="${pkgver}-${_pkgsubver}"
-_full_name="${_name}-${_version}"
+_full_name="${_version}"
 _dkms_version='2015.01.29'
 
 source=(https://github.com/vmware/open-vm-tools/tarball/${pkgver}-0-${_pkgsubver}
