@@ -1,7 +1,7 @@
 pkgbase = charm++-mpi
 	pkgdesc = Parallel programming framework in C++ supported by an adaptive runtime system. MPI version
 	pkgver = 6.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://charm.cs.illinois.edu/research/charm
 	arch = x86_64
 	license = custom

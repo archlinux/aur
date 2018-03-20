@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=charm++-mpi
 pkgver=6.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel programming framework in C++ supported by an adaptive runtime system. MPI version"
 url="http://charm.cs.illinois.edu/research/charm"
 license=('custom')
@@ -30,6 +30,6 @@ package() {
   cd ${srcdir}/charm-v${pkgver}
 
   mkdir -p ${pkgdir}/opt/charm++
-  cp -ar bin doc include lib lib_so examples tests tmp mpi-linux-x86_64 ${pkgdir}/opt/charm++
+  cp -ar bin doc include lib lib_so examples tests tmp mpi-linux-x86_64 src ${pkgdir}/opt/charm++
 }
 
