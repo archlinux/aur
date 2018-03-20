@@ -3,21 +3,21 @@
 # Contributor:
 pkgname=sensu
 pkgver=1.2.1
-_pkgver='1.2.1-2'
-pkgrel=6
+_debver='1.2.1-2'
+pkgrel=7
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
 license=('MIT')
 groups=('')
 backup=('etc/default/sensu' 'etc/logrotate.d/sensu')
-options=('!strip' '!emptydirs')
+options=('!strip')
 depends=('redis')
-install=${pkgname}.install
-source=("https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_${_pkgver}_amd64.deb")
-sha256sums=('001b65b30666a97979ca2abc60a463fa91e05957bdaded4812d5bc23c12ebe9b')
 optdepends=('rabbitmq: sensu transport'
             'uchiwa: simple web dashboard')
+install=${pkgname}.install
+source=("https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_${_debver}_amd64.deb")
+sha256sums=('001b65b30666a97979ca2abc60a463fa91e05957bdaded4812d5bc23c12ebe9b')
 
 package() {
 	# Extract package data

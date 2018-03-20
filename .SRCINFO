@@ -10,7 +10,6 @@ pkgbase = sensu
 	optdepends = rabbitmq: sensu transport
 	optdepends = uchiwa: simple web dashboard
 	options = !strip
-	options = !emptydirs
 	backup = etc/default/sensu
 	backup = etc/logrotate.d/sensu
 	source = https://repositories.sensuapp.org/apt/pool/jessie/main/s/sensu/sensu_1.2.1-2_amd64.deb
