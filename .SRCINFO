@@ -1,0 +1,13 @@
+pkgbase = teamspeak3-massmover
+	pkgdesc = Plugin for Teamspeak 3. TS3MassMover by Mr. S
+	pkgver = 0.61.22
+	pkgrel = 1
+	arch = x86_64
+	license = Unknown
+	makedepends = teamspeak3-pluginsdk>=3.1.0.1
+	depends = teamspeak3>=3.1.0.1
+	source = TS3MassMover-v0.61.22.zip
+	md5sums = 381bd5ee4d80df77a68d4ef9c7065e24
+
+pkgname = teamspeak3-massmover
+
