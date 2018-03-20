@@ -1,13 +1,14 @@
 pkgbase = nytl-git
 	pkgdesc = C++17 header-only utility library
-	pkgver = v0.3.alpha.r1.832e271
+	pkgver = v0.5.r9.0916d47
 	pkgrel = 1
 	url = https://github.com/nyorain/nytl
 	arch = any
 	license = Boost
 	makedepends = git
-	makedepends = cmake
+	makedepends = meson
 	makedepends = gcc
+	makedepends = ninja
 	source = git+https://github.com/nyorain/nytl.git
 	md5sums = SKIP
 

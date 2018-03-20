@@ -1,6 +1,6 @@
 # Maintainer: nyorain <nyorain at gmail dot com>
-pkgname=nytl-git 
-pkgver=v0.3.alpha.r1.832e271
+pkgname=nytl-git
+pkgver=v0.5.r9.0916d47
 pkgrel=1
 pkgdesc="C++17 header-only utility library"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/nyorain/nytl"
 license=('Boost')
 groups=()
 depends=()
-makedepends=('git' 'cmake' 'gcc') 
+makedepends=('git' 'meson' 'gcc' 'ninja')
 provides=()
 conflicts=()
 replaces=()
@@ -26,17 +26,17 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	rm -rf build && mkdir build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	rm -rf build
+	meson --prefix=/usr build
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}/build"
-	make
+	ninja
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" ninja -C build install
 }
