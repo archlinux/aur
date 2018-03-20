@@ -2,7 +2,7 @@
 
 pkgname=nyacc 
 pkgver=0.83.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
 arch=('any')
@@ -21,9 +21,9 @@ build() {
  
 package() {
   cd $pkgname-$pkgver
-  make SITE_SCM_DIR=$pkgdir/usr/share/guile/2.2/ \
-       SITE_SCM_GO_dir=$pkgdir/usr/lib/guile/2.2/ccache install-srcs
-  install -d $pkgdir/usr/share/doc/$pkgname
+  make SITE_SCM_DIR="$pkgdir"/usr/share/guile/2.2/ \
+       SITE_SCM_GO_dir="$pkgdir"/usr/lib/guile/2.2/ccache install-srcs
+  install -d "$pkgdir"/usr/share/doc/$pkgname
   cd doc/$pkgname
-  cp nyacc*.{pdf,html} $pkgdir/usr/share/doc/$pkgname
+  cp nyacc*.{pdf,html} "$pkgdir"/usr/share/doc/$pkgname
 }
