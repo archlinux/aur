@@ -3,7 +3,7 @@
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas@gmail.com>
 
 pkgname=vit-git
-pkgver=r175.d72d6e0
+pkgver=r183.12d03e9
 pkgrel=2
 pkgdesc="A terminal interface for Taskwarrior with Vim key bindings and colorization support. GIT version."
 arch=('any')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}
-  ./configure --prefix=/usr
+  PERL=/usr/bin/perl ./configure --prefix=/usr
   make
 }
 
