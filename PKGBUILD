@@ -2,12 +2,12 @@
 
 pkgname=open-vm-tools-dkms
 epoch=6
-pkgver=10.0.0
+pkgver=10.2.0
 _pkgsubver=3000743
 pkgrel=4
 pkgdesc='Open Virtual Machine Tools kernel modules (DKMS)'
 arch=('i686' 'x86_64')
-url='http://open-vm-tools.sourceforge.net/'
+url='https://github.com/vmware/open-vm-tools'
 license=('GPL2')
 conflicts=('open-vm-tools-modules' 'vmware-modules-dkms')
 
@@ -23,7 +23,7 @@ _version="${pkgver}-${_pkgsubver}"
 _full_name="${_name}-${_version}"
 _dkms_version='2015.01.29'
 
-source=(http://downloads.sourceforge.net/${_name}/${_full_name}.tar.gz
+source=(https://github.com/vmware/open-vm-tools/archive/master.zip
         0001-Fix-vmxnet-module-on-kernels-3.16.patch
         0004-Support-backing-dev-info-kernel-4.0.patch
         0005-Remove-new_sync-for-Linux-4.1.patch
