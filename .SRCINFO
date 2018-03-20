@@ -1,15 +1,15 @@
 pkgbase = jdk-docs
 	pkgdesc = Documentation for Oracle Java Development Kit
-	pkgver = 9.0.4
+	pkgver = 10
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
 	license = custom:Oracle
-	optdepends = java-environment>=9: Compile and run examples
+	optdepends = java-environment>=10: Compile and run examples
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_doc-all.zip
+	source = http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jdk-10_doc-all.zip
 	source = LICENSE-Oracle-Legal-Notices.txt
-	sha256sums = 66a7e0948f109020bfb5483848e9998b2624043074d7aae974e89e85a6e14d37
+	sha256sums = 3bd4c890f6bfaef61141f0720457d6c82a8c479b22a591631cc2b3d741a205bb
 	sha256sums = 01ce75a25c01b3984ff8ad08b0ad8bb24b071316d2ebf5113661ceda76f51a81
 
 pkgname = jdk-docs
