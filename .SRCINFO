@@ -1,0 +1,41 @@
+pkgbase = jre9
+	pkgdesc = Oracle Java 9 Runtime Environment
+	pkgver = 9.0.4
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jre.install
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-runtime=9
+	provides = java-runtime-headless=9
+	provides = java-web-start=9
+	provides = java-runtime-jre=9
+	provides = java-runtime-headless-jre=9
+	provides = java-web-start-jre=9
+	provides = java-openjfx=9
+	conflicts = java-runtime-jre=9
+	backup = etc/java-jre9/management/jmxremote.access
+	backup = etc/java-jre9/management/management.properties
+	backup = etc/java-jre9/security/java.policy
+	backup = etc/java-jre9/security/java.security
+	backup = etc/java-jre9/security/javaws.policy
+	backup = etc/java-jre9/fontconfig.properties.src
+	backup = etc/java-jre9/logging.properties
+	backup = etc/java-jre9/net.properties
+	backup = etc/java-jre9/psfont.properties.ja
+	backup = etc/java-jre9/psfontj2d.properties
+	backup = etc/java-jre9/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_linux-x64_bin.tar.gz
+	source = policytool-jre9.desktop
+	sha256sums = 331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705
+	sha256sums = de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694
+
+pkgname = jre9
+
