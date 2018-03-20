@@ -1,6 +1,6 @@
 pkgbase = kubectl-beta-bin
 	pkgdesc = Kubernetes.io client binary (beta)
-	pkgver = 1.10.0.beta3
+	pkgver = 1.10.0.rc1
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = kubectl-beta-bin
 	provides = kubectl-bin
 	conflicts = kubernetes>=1.4.6
 	conflicts = kubectl-bin
-	source_i686 = kubectl-1.10.0.beta3::https://storage.googleapis.com/kubernetes-release/release/v1.10.0-beta.3/bin/linux/386/kubectl
-	md5sums_i686 = 319b2140f3a55fb9a8e04672ce2b34e0
-	source_x86_64 = kubectl-1.10.0.beta3::https://storage.googleapis.com/kubernetes-release/release/v1.10.0-beta.3/bin/linux/amd64/kubectl
-	md5sums_x86_64 = f754e0f1686e413cfda3e819332f8240
+	source_i686 = kubectl-1.10.0.rc1::https://storage.googleapis.com/kubernetes-release/release/v1.10.0-rc.1/bin/linux/386/kubectl
+	md5sums_i686 = 953232748d86c663187e5e967b0da7a2
+	source_x86_64 = kubectl-1.10.0.rc1::https://storage.googleapis.com/kubernetes-release/release/v1.10.0-rc.1/bin/linux/amd64/kubectl
+	md5sums_x86_64 = 2d97daa5b77f4ab5c1cac069dafa94c6
 
 pkgname = kubectl-beta-bin
 
