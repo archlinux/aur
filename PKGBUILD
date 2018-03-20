@@ -3,7 +3,7 @@
 # Ported from the package by AlexanderR <alexander r at gmx com>
 
 pkgname=fdroidserver
-pkgver=0.8
+pkgver=1.0.2
 epoch=2
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
@@ -34,7 +34,7 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('af5a58da9592f40623229328d9d96998ebfd448d3ccd5f134a5ee53d7c4ef786')
+sha256sums=('e112482f246c78bc1f5d62190de71133142ecb027866179435f6ed2a0c4027d9')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-"*
@@ -44,7 +44,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/bin"
     install "fdroid" "$pkgdir/usr/bin"
-    install "fd-commit" "$pkgdir/usr/bin"
+    #install "fd-commit" "$pkgdir/usr/bin"
 
     install -D completion/bash-completion "$pkgdir/usr/share/bash-completion/completions/fdroidserver"
 
