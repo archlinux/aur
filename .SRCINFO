@@ -1,0 +1,16 @@
+pkgbase = dlib-free
+	pkgdesc = C++ library with several utilities. No support for non-free features
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/dorian3d/DLib
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	depends = opencv
+	conflicts = dlib-nonfree
+	source = https://github.com/dorian3d/DLib/archive/v1.1-free.tar.gz
+	md5sums = 808b3aa44eb781012892f6aaa403c3ff
+
+pkgname = dlib-free
+
