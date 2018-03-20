@@ -1,6 +1,6 @@
 pkgbase = gretl
 	pkgdesc = A cross-platform software package for econometric analysis, written in the C programming language
-	pkgver = 2017d
+	pkgver = 2018a
 	pkgrel = 1
 	url = http://gretl.sourceforge.net/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = gretl
 	optdepends = readline: provides a nice editable command line in gretlcli
 	optdepends = JSON-GLib: provides for parsing of data from various websites
 	options = !makeflags
-	source = https://downloads.sourceforge.net/project/gretl/gretl/2017d/gretl-2017d.tar.xz
-	sha256sums = e6639471a7e6b1c2f365088bebcae7048a7f7d14f392fafffb66a67913b12680
+	source = https://downloads.sourceforge.net/project/gretl/gretl/2018a/gretl-2018a.tar.xz
+	sha256sums = f961fe48613cffd263bcb7ee3dff0bf5189d75b45a5cd03a062cfca381b455b7
 
 pkgname = gretl
 
