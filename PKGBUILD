@@ -1,5 +1,5 @@
 # Maintainer: pat-s <patrick.schratz@gmail.com>
-# Contributor: chendaniely
+# Maintainer: chendaniely
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 # Get download links and md5sums for latest version of RStudio desktop
