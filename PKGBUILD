@@ -5,17 +5,16 @@
 
 pkgname=pcsxr
 pkgver=1.9.94
-pkgrel=1
-pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df project'
-arch=('any')
+pkgrel=2
+pkgdesc="A Sony PlayStation (PSX) emulator based on the PCSX-df project"
+arch=("any")
 url="http://${pkgname}.codeplex.com"
-license=('GPL')
-depends=('ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libarchive' 'libcdio' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxtst' 'libxv' 'libxxf86vm' 'sdl2' 'zlib')
-makedepends=('cmake' 'intltool' 'mesa' 'nasm' 'valgrind')
-provides=("${pkgname}")
-conflicts=("${pkgname}" "pcsx-df")
+license=("GPL")
+depends=("ffmpeg" "gdk-pixbuf2" "glib2" "glibc" "gtk3" "libarchive" "libcdio" "libgl" "libpulse" "libx11" "libxext" "libxtst" "libxv" "libxxf86vm" "sdl2" "zlib")
+makedepends=("cmake" "intltool" "mesa" "nasm" "valgrind")
+conflicts=("pcsx-df")
 source=("http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660')
+sha256sums=("8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660")
 
 build() {
   cd "${srcdir}/${pkgname}"
