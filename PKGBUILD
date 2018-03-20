@@ -1,68 +1,118 @@
-# Maintainer: chendaniely
+# Maintainer: pat-s <patrick.schratz@gmail.com>
+# Contributor: chendaniely
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
+# Get download links and md5sums for latest version of RStudio desktop
+## R code #############
+#
+#  require(XML)
+#  page = htmlTreeParse("http://www.rstudio.com/products/rstudio/download/",useInternalNodes = T)
+#  links = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]'),xmlGetAttr,'href')
+#  md5sums = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]/../..//code'),xmlValue)
+#  print(cbind(links,md5sums))
+#
+#######################
+
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.414
+pkgver=1.1.442
 pkgrel=1
-pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
+pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'gstreamer0.10-base' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'gtk2')
-makedepends=('patchelf')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr')
+#makedepends=('patchelf')
+optdepends=('pandoc: markdown support'
+            'pandoc-citeproc: markdown support')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
-optdepends=('pandoc-bin'
-	    'pandoc-cabal'
-	    'pandoc-static'
-            'pandoc-lite')
-provides=("rstudio-desktop-preview=${pkgver}")
-#options=(!strip)
+provides=("rstudio-desktop=${pkgver}")
+options=(!strip)
 
-#_x86md5=21ca14bffcdc1a2361ead2d763d0313d
-_x64md5=759fd531bfbfc47a6f211953750de9e4
+md5sums_i686=('090fcb1fec90e3d621bc89e113c8dc28'
+              '795a3ca3f2048c4dc32d25560e191c35'
+              'eca697b2b8efbed3d2241f6b0c8c15e4')
+md5sums_x86_64=('2c0805a6a8f12b06c7e6b343692288fd'
+                '84e61f5eda991b978fa168d6762f7990'
+                '391ba54997d6faddbfe41a185a823ee4')
 
-case "$CARCH" in
-	'i686')
-		_arch=i386
-		md5sums=($_x86md5)
-		;;
-	'x86_64')
-		_arch=amd64
-		md5sums=($_x64md5)
-		;;
-esac
-
-#source=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-${pkgver}-${_arch}.deb")
-source=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-${pkgver}-amd64.deb")
-#source=(https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-${pkgver}-amd64.deb)
+source_i686=("https://download1.rstudio.org/rstudio-${pkgver}-i386.deb"
+"http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_i386.deb"
+"http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_i386.deb")
+source_x86_64=("https://download1.rstudio.org/rstudio-${pkgver}-amd64.deb"
+"http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_amd64.deb"
+"http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_amd64.deb")
 
 install="$pkgname".install
 
 package() {
+
+	shopt -s extglob
+
   msg "Converting debian package..."
 
   cd "$srcdir"
   tar zxpf data.tar.gz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
+  ARCH=${CARCH/686/386/}
+  ARCH=${ARCH/x86_64/amd64}
+
+  ar x libgstreamer0.10-0_0.10.36-1.2ubuntu3_${ARCH}.deb
+  tar Jxf data.tar.xz \
+      --wildcards \
+      -C "${pkgdir}/usr/lib/rstudio/bin" \
+      ./usr/lib/${CARCH/686/386}-linux-gnu/libgstreamer-0.10.so.\* \
+      ./usr/lib/${CARCH/686/386}-linux-gnu/libgstbase-0.10.so.\* \
+      --strip-components=4
+
+  ar x libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_${ARCH}.deb
+  tar Jxf data.tar.xz \
+      --wildcards \
+      -C "${pkgdir}/usr/lib/rstudio/bin" \
+      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstapp-0.10.so.\* \
+      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstinterfaces-0.10.so.\* \
+      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstpbutils-0.10.so.\* \
+      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstvideo-0.10.so.\* \
+      --strip-components=4
+
   #cd "$pkgdir/usr/lib/rstudio/bin"
-  #ls lib*.so.* | grep -v libedit | grep -v libtinfo | tr \\n \\0 |xargs -0 rm
-  #rm -rf plugins
+  #ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
+  #ln -sf /usr/lib/libedit.so.0  libedit.so.2
 
-  #cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
-  #ln -sf /usr/lib/libclang.so ./
+#  cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
+#  patchelf --set-rpath '$ORIGIN/..' libclang.so
 
-  cd "$pkgdir/usr/lib/rstudio/bin"
-  ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
-  ln -sf /usr/lib/libedit.so.0  libedit.so.2
+  cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
+  ln -sf /usr/bin/pandoc ./
+  ln -sf /usr/bin/pandoc-citeproc ./
 
-  cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
-  patchelf --set-rpath '$ORIGIN/..' libclang.so
-
-  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
-  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
+#  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
+#  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
+  find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
+
+  cd "$pkgdir/usr/lib/rstudio/bin"
+  ls libQt*.so.*| grep '\.[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
+  while read x;do
+    if [[ ! -e "${x%.+([0-9]).+([0-9])}" ]];then
+      ln -s "$x" "${x%.+([0-9]).+([0-9])}"
+    fi
+  done
+  ls lib*.so.* | grep '\.so\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
+  while read x;do
+    if [[ ! -e "${x%.+([0-9])}" ]];then
+      ln -s "$x" "${x%.+([0-9])}"
+    fi
+  done
+
+  ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
+  ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
+      /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
+      while read x;do
+          ln -sf "$x" ./
+      done
+
 
   cd "$pkgdir/usr/bin"
   #ln -s -f ../lib/rstudio/bin/rstudio rstudio-bin
@@ -71,25 +121,10 @@ export QT_DIR=/usr/lib/rstudio/bin
 export QT_PLUGIN_PATH=$QT_DIR/plugins
 export QT_QPA_PLATFORM_PLUGIN_PATH=$QT_PLUGIN_PATH/platforms
 export KDEDIRS=/usr
-# exec /usr/lib/rstudio/bin/rstudio
 exec /usr/lib/rstudio/bin/rstudio "$@"
-' > "$pkgdir/usr/bin/rstudio-preview-bin"
-  chmod 755 "$pkgdir/usr/bin/rstudio-preview-bin"
+' > "$pkgdir/usr/bin/rstudio-bin"
+  chmod 755 "$pkgdir/usr/bin/rstudio-bin"
 
-  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-preview-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
-
-  # pandoc fix
-  ## uncomment double hashes for preview fix
-  ##SYS_PANDOC=`which pandoc`
-  ##SYS_PANDOC_CITEPROC=`which pandoc-citeproc`
-   ##cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
-   ##mv pandoc pandoc_rstudio
-   # ln -sf /usr/bin/pandoc pandoc
-   # ln -sf $SYS_PANDOC pandoc
-   ##ln -sf $SYS_PANDOC $pkgdir/usr/lib/rstudio/bin/pandoc/pandoc
-   ##mv pandoc-citeproc pandoc-citeproc_rstudio
-   # ln -sf /usr/bin/pandoc-citeproc pandoc-citeproc
-   # ln -sf $SYS_PANDOC_CITEPROC pandoc-citeproc
-   ##ln -sf $SYS_PANDOC_CITEPROC $pkgdir/usr/lib/rstudio/bin/pandoc/pandoc-citeproc
+  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
 # vim:ft=sh tabstop=2 expandtab
