@@ -1,6 +1,7 @@
 src
 pkg
-v*.tar.gz
+robtk-*.tar.gz
+tuna-lv2-*.tar.gz
 tuna-lv2-*.src.tar.gz
 tuna-lv2-*.tar.xz
 .AURINFO

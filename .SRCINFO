@@ -1,7 +1,7 @@
 pkgbase = tuna-lv2
 	pkgdesc = A musical instrument strobe tuner as a stand-alone JACK client and LV2 plugin.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://x42-plugins.com/x42/x42-tuner
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = tuna-lv2
 	conflicts = tuna.lv2
 	conflicts = lv2-tuna
 	conflicts = x42-plugins
-	source = https://github.com/x42/tuna.lv2/archive/v0.4.4.tar.gz
-	source = https://github.com/x42/robtk/archive/v0.5.3.tar.gz
+	source = tuna-lv2-0.4.4.tar.gz::https://github.com/x42/tuna.lv2/archive/v0.4.4.tar.gz
+	source = robtk-0.5.4.tar.gz::https://github.com/x42/robtk/archive/v0.5.4.tar.gz
 	md5sums = 86c81f87e3507b7abbbecb687c7fcc1d
-	md5sums = cf03f8276146cf8950578350158381c6
+	md5sums = 91ef2dc49f5349d43607bf140f2818ba
 
 pkgname = tuna-lv2
 
