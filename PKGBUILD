@@ -2,7 +2,7 @@
 
 pkgname=findbugs-contrib
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A FindBugs/SpotBugs plugin for doing static code analysis for java code bases"
 arch=("any")
 url="https://github.com/mebigfatguy/fb-contrib"
@@ -24,6 +24,6 @@ sha256sums=('58e705232f10b06cf66d71c70ad6b76cc547c4d77eda3c2bf0dfd2e53dfe63d2'
 
 package() {
     cd "${srcdir}"
-    install -Dm644 ${_findbugs_jar} "${pkgdir}/usr/share/java/${pkgname}/${_findbugs_jar}"
-    install -Dm644 ${_spotbugs_jar} "${pkgdir}/usr/share/java/${pkgname}/"
+    install -Dm644 ${_findbugs_jar} "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -Dm644 ${_spotbugs_jar} "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.sb.jar"
 }
