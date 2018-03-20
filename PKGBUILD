@@ -127,4 +127,3 @@ exec /usr/lib/rstudio/bin/rstudio "$@"
 
   sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
-# vim:ft=sh tabstop=2 expandtab
