@@ -20,7 +20,7 @@ install=open-vm-tools-dkms.install
 _name='open-vm-tools'
 _dirname='stable-10.0.x'
 _version="${pkgver}-${_pkgsubver}"
-_full_name="${_name}-${_version}"
+_full_name="master"
 _dkms_version='2015.01.29'
 
 source=(https://github.com/vmware/open-vm-tools/archive/master.zip
