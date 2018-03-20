@@ -1,11 +1,12 @@
 pkgbase = yaml2argdata
 	pkgdesc = C++ header-only library for converting YAML to Argdata
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NuxiNL/yaml2argdata
 	arch = any
 	license = BSD
 	depends = argdata
+	depends = yaml-cpp
 	source = yaml2argdata-0.3.tar.gz::https://github.com/NuxiNL/yaml2argdata/archive/v0.3.tar.gz
 	sha512sums = 62a710a45dc971e48d3475654e32446a1a481689cb8a12bdc4ec0e8970f9f0d965a1c00d3c758eda374dd43a6585a9453274a7e45aa35e8dc4098c01c4f49698
 
