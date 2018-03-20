@@ -1,6 +1,5 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
-pkgbase=nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=nikola-git
@@ -39,7 +38,7 @@ pkgver() {
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
-package_nikola-git() {
+package() {
   cd "${srcdir}/${_gitname}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   ln -s ${_gitname} "${pkgdir}/usr/bin/${_gitname}3"
