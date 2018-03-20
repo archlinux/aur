@@ -1,6 +1,6 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
-	pkgver = 9.0.4
+	pkgver = 10
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk.install
@@ -15,37 +15,37 @@ pkgbase = jdk
 	optdepends = alsa-lib: for basic sound support
 	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=9
-	provides = java-runtime-headless=9
-	provides = java-web-start=9
-	provides = java-environment=9
-	provides = java-runtime-jre=9
-	provides = java-runtime-headless-jre=9
-	provides = java-web-start-jre=9
-	provides = java-environment-jdk=9
-	provides = java-openjfx=9
-	conflicts = java-runtime-jre=9
-	conflicts = java-environment-jdk=9
+	provides = java-runtime=10
+	provides = java-runtime-headless=10
+	provides = java-web-start=10
+	provides = java-environment=10
+	provides = java-runtime-jre=10
+	provides = java-runtime-headless-jre=10
+	provides = java-web-start-jre=10
+	provides = java-environment-jdk=10
+	provides = java-openjfx=10
+	conflicts = java-runtime-jre=10
+	conflicts = java-environment-jdk=10
 	options = !strip
-	backup = etc/java-jdk9/management/jmxremote.access
-	backup = etc/java-jdk9/management/management.properties
-	backup = etc/java-jdk9/security/java.policy
-	backup = etc/java-jdk9/security/java.security
-	backup = etc/java-jdk9/security/javaws.policy
-	backup = etc/java-jdk9/fontconfig.properties.src
-	backup = etc/java-jdk9/logging.properties
-	backup = etc/java-jdk9/net.properties
-	backup = etc/java-jdk9/psfont.properties.ja
-	backup = etc/java-jdk9/psfontj2d.properties
-	backup = etc/java-jdk9/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-x64_bin.tar.gz
-	source = jconsole-jdk9.desktop
-	source = jmc-jdk9.desktop
-	source = policytool-jdk9.desktop
-	sha256sums = 90c4ea877e816e3440862cfa36341bc87d05373d53389ec0f2d54d4e8c95daa2
-	sha256sums = 100fd0162a4be04371d9d53121bd511aeb0a230475497a8c19ed0cff20915efc
-	sha256sums = e4059de8ec0dee1a5eabd1d67a053509aa0009ba6e08739b11140c26f2fcc55a
-	sha256sums = ff6684d7d5c26cc805e6f3918284a95b48223db4f37956f35a344373a2931aa4
+	backup = etc/java-jdk10/management/jmxremote.access
+	backup = etc/java-jdk10/management/management.properties
+	backup = etc/java-jdk10/security/java.policy
+	backup = etc/java-jdk10/security/java.security
+	backup = etc/java-jdk10/security/javaws.policy
+	backup = etc/java-jdk10/fontconfig.properties.src
+	backup = etc/java-jdk10/logging.properties
+	backup = etc/java-jdk10/net.properties
+	backup = etc/java-jdk10/psfont.properties.ja
+	backup = etc/java-jdk10/psfontj2d.properties
+	backup = etc/java-jdk10/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jdk-10_linux-x64_bin.tar.gz
+	source = jconsole-jdk10.desktop
+	source = jmc-jdk10.desktop
+	source = policytool-jdk10.desktop
+	sha256sums = ac487a2738d3d59f7a4b95095207970b811143068752b6b4ec404d5a3aa8680c
+	sha256sums = 5ddf1c0da441d095fce41cef7acfbff7c82d89da1b62aa57adcaeab544fb31de
+	sha256sums = ea8dda965af272a95e9559c54332752bd686276216244c44267717df1483e0b1
+	sha256sums = 32b7791d31bafbba38f9637e7541c43f419bf6650504ee41a3c04ec632245f11
 
 pkgname = jdk
 
