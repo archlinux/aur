@@ -1,3 +1,4 @@
-src
-pkg
-ptxdist-2018.02.*.tar.bz2
+/src
+/pkg
+/ptxdist-2018.02.*.tar.bz2
+/ptxdist-2018.02-*.pkg.tar.xz
