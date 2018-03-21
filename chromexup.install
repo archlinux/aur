@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOM
+:: Instructions
+1. Create the configuration file '~/.config/chromexup/config.ini' using the template at
+   '/usr/share/chromexup/config.ini.example' and edit it to your liking.
+2. For automatic updates enable one of the systemd user timers 'chromexup-{daily,weekly}.timer'.
+3. Run 'chromexup' manually if needed.
+EOM
+}
