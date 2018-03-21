@@ -4,7 +4,7 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-kinetic-rosnode'
-pkgver='1.12.12'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9a0c733748ed57c7d1816476befcc7c233b3702985a2037312f669631010c982')
+sha256sums=('2f395e52e8f193b90aba6cd5bb08e27d167a1d382bc024368e5c4ef1e844fb5a')
 
 build() {
   # Use ROS environment variables
