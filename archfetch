@@ -23,10 +23,6 @@ shell="$(basename ${SHELL})"
 if [ -z "${WM}" ]; then
 	WM="$(tail -n 1 "${HOME}/.xinitrc" | cut -d ' ' -f 2)"
 fi
-if [[ -f "${temp_dir}" ]]; then
-  deg="$(< "$temp_dir")"
-  deg="$((deg * 100 / 10000))"
-fi
 
 ## Basic Colors
 
@@ -59,6 +55,6 @@ ${fc}     /  ${sc}__  \     ${lc}UPTIME:    ${ic}${uptime}${rc}
 ${sc}    /  (  )  \    ${lc}PACKAGES:  ${ic}${packages}${rc}
 ${sc}   / __|  |__\\\\   ${lc}SHELL:     ${ic}${shell}${rc}
 ${sc}  ///        \\\\\  ${lc}WM:        ${ic}${WM}${rc}
-${sc} ///          \\\\\ ${lc}CPU TEMP:  ${ic}${temp_dir}${rc}
+
 EOF
  
