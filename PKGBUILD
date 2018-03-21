@@ -4,7 +4,7 @@ pkgdesc="ROS - This package retrieves data from url-format files such as http://
 url='http://ros.org/wiki/resource_retriever'
 
 pkgname='ros-kinetic-resource-retriever'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,13 +15,15 @@ ros_makedepends=(ros-kinetic-roslib
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  curl)
+  curl
+  boost)
 
 ros_depends=(ros-kinetic-roslib
   ros-kinetic-rosconsole)
 depends=(${ros_depends[@]}
   python2-rospkg
-  curl)
+  curl
+  boost)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/resource_retriever/${pkgver}-${_pkgver_patch}
@@ -32,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="resource_retriever-release-release-kinetic-resource_retriever-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/resource_retriever-release/archive/release/kinetic/resource_retriever/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7f5525a0fbcb897d2035fe1f061148313b6fef9d6c64142174aeb09378ba8d4c')
+sha256sums=('f6aac9d4aa943865c0e177c5dc2073c28673ab875fc851a4452acf089e9eba20')
 
 build() {
   # Use ROS environment variables
