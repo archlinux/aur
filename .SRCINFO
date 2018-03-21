@@ -1,0 +1,16 @@
+pkgbase = vim-tickscript-git
+	pkgdesc = Vim syntax highlighting for TICKscript
+	pkgver = r8.399e332
+	pkgrel = 1
+	url = https://github.com/nathanielc/vim-tickscript
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-tickscript
+	conflicts = vim-tickscript
+	source = git+https://github.com/nathanielc/vim-tickscript
+	md5sums = SKIP
+
+pkgname = vim-tickscript-git
+
