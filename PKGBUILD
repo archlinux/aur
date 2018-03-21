@@ -1,25 +1,18 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=2
 pkgdesc="A columnar in-memory analytics layer for big data."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
 depends=('flatbuffers' 'rapidjson' 'boost-libs')
 checkdepends=('gflags')
 optdepends=()
 makedepends=('cmake' 'boost' 'brotli' 'lz4-static' 'zlib-static' 'zstd-static' 'snappy-static')
-source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
-  "brotli-static.patch")
-sha256sums=('c61a60c298c30546fc0b418a35be66ef330fb81b06c49928acca7f1a34671d54'
-            '1d245694b82d0fc9aed566c4873acba7f2dcb3d359bd924d848613eea77a771e')
-
-prepare() {
-  cd "$srcdir/$pkgname-apache-$pkgname-$pkgver"
-  patch -p1 < ../brotli-static.patch
-}
+source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
+sha256sums=('65f89a3910b6df02ac71e4d4283db9b02c5b3f1e627346c7b6a5982ae994af91')
 
 build(){
   cd "$srcdir"
