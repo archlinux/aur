@@ -34,7 +34,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("https://download.java.net/java/early_access/jdk${_major}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
+source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('bdebda3cbaa0f5a78670ea6f242a6b2897e1f9356626f89fb29652a4e83d3eb4'
