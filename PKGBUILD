@@ -4,7 +4,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-kinetic-catkin'
-pkgver='0.7.9'
+pkgver='0.7.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-kinetic-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d4ce26525bab7a1914ca1a0880430c7eef40a6d874d1fa9c6cb7a21c9a260489')
+sha256sums=('54cba1b4b0d1ec74d168004e44a002e2f0a6d3794f455605c466f8f8ef911d20')
 
 build() {
   # Use ROS environment variables
