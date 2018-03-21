@@ -12,7 +12,7 @@ depends=('libmupdf' 'imlib2' 'openjpeg2' 'jbig2dec')
 conflicts=('jfbpdf')
 replaces=('jfbpdf')
 source=("https://github.com/jichu4n/JFBView/archive/${pkgver}.tar.gz")
-sha512sums=('2bedee11e2b5b4fb21832524f17d26bf612d2530deb3fb604ca732bf594ec057d5da526880bb3bafe01cab01980b21800551f8d2f8e4ae857af7e7e0aeec28bd')
+sha512sums=('ee42bacac85daa532e694c9da5c4a900b6d06f11090a3210f8f6da841569d57ecbbbb65dd26a11edcb0598096973cfd67c21f9ad344d15f42733deae53836183')
 
 _pkgname='JFBView'
 _binname='jfbview'
