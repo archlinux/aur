@@ -2,28 +2,27 @@
 
 pkgname=gifsicle-lossy
 _pkgname=giflossy
-pkgver=1.82.1
+pkgver=1.91
 pkgrel=1
 pkgdesc="Based on gifsicle which implements lossy LZW compression.  It can reduce animgif file sizes 30%—50% at a cost of some dithering/noise."
 arch=('i686' 'x86_64')
-url="https://github.com/pornel/${_pkgname}"
+url="https://github.com/kornelski/${_pkgname}"
 license=('GPL2')
 depends=('libx11')
-makedepends=('git')
+makedepends=('autoconf' 'automake')
 provides=('gifsicle')
 conflicts=('gifsicle')
-source=(${_pkgname}::"git+https://github.com/pornel/${_pkgname}.git")
-md5sums=('SKIP')
+source=(https://github.com/kornelski/${_pkgname}/archive/${pkgver}.tar.gz)
+sha1sums=('e80102f10f2ff79e8ce370cf176c9aa263e30c78')
 
 build() {
-        cd "$srcdir/$_pkgname"
-        autoreconf -i
-	./configure --prefix=/usr
-        make
+  cd ${_pkgname}-${pkgver}
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-        cd "$srcdir/$_pkgname"
-        make DESTDIR="$pkgdir/" install
+        cd ${srcdir}/${_pkgname}-${pkgver}
+        make DESTDIR="${pkgdir}" install
 }
-

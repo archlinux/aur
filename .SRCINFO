@@ -1,17 +1,18 @@
 pkgbase = gifsicle-lossy
 	pkgdesc = Based on gifsicle which implements lossy LZW compression. It can reduce animgif file sizes 30%—50% at a cost of some dithering/noise.
-	pkgver = 1.82.1
+	pkgver = 1.91
 	pkgrel = 1
-	url = https://github.com/pornel/giflossy
+	url = https://github.com/kornelski/giflossy
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
 	depends = libx11
 	provides = gifsicle
 	conflicts = gifsicle
-	source = giflossy::git+https://github.com/pornel/giflossy.git
-	md5sums = SKIP
+	source = https://github.com/kornelski/giflossy/archive/1.91.tar.gz
+	sha1sums = e80102f10f2ff79e8ce370cf176c9aa263e30c78
 
 pkgname = gifsicle-lossy
 
