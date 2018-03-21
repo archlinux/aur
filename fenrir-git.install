@@ -1,21 +1,6 @@
-post_install() {
-_alert
+pre_upgrade() {
+    if [[ -d /etc/fenrir ]]; then
+        [[ -d /etc/fenrirscreenreader ]] || cp -r /etc/fenrir /etc/fenrirscreenreader
+    fi
+    echo "Fenrir's settings directory is now located at /etc/fenrirscreenreader. Your settings have been copied over to the new location. You can remove the old /etc/fenrir directory when you are sure you no longer need it."
 }
-
-post_upgrade() {
-_alert
-}
-
-_alert() {
-fold -s << EOF
-To have fenrir start at boot:
-sudo systemctl enable fenrir
-Pulseaudio users may want to run
-/usr/share/fenrir/tools/configure_pulse.sh
-once as their user account and once as root.
-The files located at /opt/fenrir are no longer needed. Run:
-rm -rf /opt/fenrir
-if you wish to be rid of them.
-EOF
-}
-
