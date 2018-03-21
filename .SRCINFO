@@ -7,6 +7,7 @@ pkgbase = stoq
 	license = LGPL
 	makedepends = git
 	depends = python2
+	depends = python2-service_identity
 	depends = kiwi
 	depends = stoqdrivers
 	depends = ntp
