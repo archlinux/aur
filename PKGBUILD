@@ -16,8 +16,7 @@ md5sums=('abba27bc112513a57a0fd0ed71bec366')
 
 build() {
   cd ${pkgname}-${pkgver}
-  PKG_CONFIG_PATH=/usr/lib/ffmpeg2.8/pkgconfig\
-    ./configure --prefix=/usr --enable-turbo --disable-doxygen
+  ./configure --prefix=/usr --enable-turbo --disable-doxygen
   make
 }
 
