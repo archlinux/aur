@@ -1,0 +1,17 @@
+pkgbase = perl6-redis-async
+	pkgdesc = A high performance client for Redis
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/CurtTilmes/perl6-eredis
+	arch = any
+	groups = perl6
+	license = custom
+	checkdepends = perl
+	makedepends = git
+	depends = eredis
+	depends = perl6
+	source = perl6-redis-async-0.6::git+https://github.com/CurtTilmes/perl6-eredis
+	sha256sums = SKIP
+
+pkgname = perl6-redis-async
+
