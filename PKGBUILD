@@ -2,12 +2,12 @@
 _pkgname=backupninja
 pkgname=$_pkgname-git
 pkgver=1.0.2.14.ge0b4375
-pkgrel=1
+pkgrel=2
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
 url="https://labs.riseup.net/code/projects/backupninja"
 license=('GPL')
-depends=('bash dialog')
+depends=('bash' 'dialog')
 makedepends=('git')
 optdepends=('rdiff-backup: rdiff backups'
             'gzip: compress backups'
@@ -15,7 +15,7 @@ optdepends=('rdiff-backup: rdiff backups'
             'mariadb-clients: mysql backups'
             'rsync: secure and reliable remote syncronisation tool'
             'duplicity: duplicity backups')
-source=('git+https://0xacab.org/riseuplabs/backupninja.git')
+source=('backupninja::git+https://0xacab.org/riseuplabs/backupninja.git')
 md5sums=('SKIP')
 backup=('etc/backupninja.conf')
 
