@@ -4,10 +4,10 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-rosbag-storage'
-pkgver='1.12.12'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-roslz4
@@ -18,9 +18,9 @@ ros_makedepends=(ros-kinetic-roslz4
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  console-bridge
   bzip2
-  boost)
+  boost
+  console-bridge)
 
 ros_depends=(ros-kinetic-roslz4
   ros-kinetic-roscpp-serialization
@@ -28,9 +28,9 @@ ros_depends=(ros-kinetic-roslz4
   ros-kinetic-cpp-common
   ros-kinetic-roscpp-traits)
 depends=(${ros_depends[@]}
-  console-bridge
   bzip2
-  boost)
+  boost
+  console-bridge)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/rosbag_storage/${pkgver}-${_pkgver_patch}
@@ -41,14 +41,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0f1e0e3fb6286c5973bcd46ad64533910dc8fd2d97e07db9791c628fb0980d5f')
-
-prepare() {
-  cd ${srcdir}
-  find . -iname *.cpp \
-	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
-	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \;
-}
+sha256sums=('d7fb2535bb3fe6f0d96d3d790b6cb21ded4b9cbf2f39c8eed13cadd5cfa01745')
 
 build() {
   # Use ROS environment variables
