@@ -11,11 +11,12 @@ makedepends=("cmake qt5-tools")
 provides=("coolreader")
 conflicts=("coolreader3" "coolreader-git" "cr3")
 install="${pkgname}.install"
-source=("https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2" "cr3.1.2.71-r1_qt5_wx.diff" "cr3ini.diff" "lvstsheet.diff")
+source=("https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2" "cr3.1.2.71-r1_qt5_wx.diff" "cr3ini.diff" "lvstsheet.diff"  "coolreader.install")
 sha256sums=("746345984be549284713a450686f0c8b04f1485f9a28bedc457940ea1b52f7d1" 
 	    "54090908b2e20a33888a85cf8d5a371b624c54a002ea164b1a01ff5cfe856838" 
 	    "8028aaf8bb1b3dbf0d48333240f83bbb9ef1b71a344b1ddce4bbe47cd9c35f29" 
-	    "108881fa591be677d4a78444557d543d47b3ec8fd22f6c665a764edcf3fb25e6")
+	    "108881fa591be677d4a78444557d543d47b3ec8fd22f6c665a764edcf3fb25e6"
+	    "e84837cb485712690df4e0034e2d402d259813aae1b58b411919afc8df3b7c97")
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
