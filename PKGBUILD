@@ -1,15 +1,15 @@
 pkgname=spotifyd-bin
-pkgver=49c75d3077998929f42e
-pkgrel=1
+pkgver=f40914fedc45c74a3412
+pkgrel=2
 arch=('armv7h' 'x86_64')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
-source_x86_64=("https://github.com/Spotifyd/spotifyd/releases/download/untagged-49c75d3077998929f42e/spotifyd-2018-02-28-amd64.zip" "spotifyd.service")
-sha256sums_armv7h=('966ddc7e9fba7a921f3e0103410661648634bd6a578edeb91782953f02cbca6e'
+source_x86_64=("https://github.com/Spotifyd/spotifyd/releases/download/untagged-f40914fedc45c74a3412/spotifyd-2018-03-20-amd64.zip" "spotifyd.service")
+sha256sums_armv7h=('ad62824b7cd43b5ecd4780e828e01df0f4497a7efb66093289c38cacb4349964'
                    '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
-sha256sums_x86_64=('0533fa33a84eaa55abc95b4204de994802efb086e0d9cf85079fbfeb05a41486'
+sha256sums_x86_64=('20e0802c40ab5810ba6a89b9cdce9a293b8ed8f1c5541cb1508ca41a5ea8a4d0'
                    '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
-source_armv7h=("https://github.com/Spotifyd/spotifyd/releases/download/untagged-49c75d3077998929f42e/spotifyd-2018-02-28-armv6.zip" "spotifyd.service")
+source_armv7h=("https://github.com/Spotifyd/spotifyd/releases/download/untagged-f40914fedc45c74a3412/spotifyd-2018-03-20-armv6.zip" "spotifyd.service")
 
 package() {
     install -D -m 755 spotifyd "${pkgdir}/usr/bin/spotifyd"
