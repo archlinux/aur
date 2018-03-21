@@ -4,7 +4,7 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-kinetic-pluginlib'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="pluginlib-release-release-kinetic-pluginlib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pluginlib-release/archive/release/kinetic/pluginlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b4d5e930606975d7e2865759665a9bfe793ec816f9f2a79883bd09e04d9043b7')
+sha256sums=('6721d4877042f9f9f665f0415841b232cde3ce94f8af1ecb426ebcb292e327ad')
 
 build() {
   # Use ROS environment variables
