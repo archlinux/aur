@@ -1,6 +1,6 @@
 pkgname=jackett
 pkgver=0.8.763
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('any')
 license=('GPL')
@@ -24,6 +24,6 @@ package() {
     cp -dpr --no-preserve=ownership "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
 
     install -D -m 644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
-    install -D -m 644 "${srcdir}/jackett.sysusers" "{$pkgdir}/usr/lib/sysusers.d/jackett.conf"
-    install -D -m 644 "${srcdir}/jackett.tmpfiles" "{$pkgdir}/usr/lib/tmpfiles.d/jackett.conf"
+    install -D -m 644 "${srcdir}/jackett.sysusers" "${pkgdir}/usr/lib/sysusers.d/jackett.conf"
+    install -D -m 644 "${srcdir}/jackett.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/jackett.conf"
 }

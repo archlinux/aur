@@ -1,7 +1,7 @@
 pkgbase = jackett
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
 	pkgver = 0.8.763
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jackett/Jackett
 	install = jackett.install
 	arch = any
