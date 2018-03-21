@@ -16,11 +16,11 @@ md5sums=('34fabf3f4dbc578abba27540491185de')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
