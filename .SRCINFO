@@ -10,8 +10,8 @@ pkgbase = docker-compose-bin
 	options = !strip
 	source = https://github.com/docker/compose/releases/download/1.20.1/docker-compose-Linux-x86_64
 	source = https://github.com/docker/compose/archive/1.20.1.tar.gz
-	sha256sums = 3099f4087251c06e8d693877adb571365fcdf0819eeaa6ed37097978d2c50e83
-	sha256sums = 676844cb0a910684c55a61f9236ef402c7458c8ccea8404f5bd4989419751b59
+	sha256sums = 11a6923c2a589b946598fe205c8f645e57f3f4ee153d3b7315b7e1993c1b2ad1
+	sha256sums = 49a0e2c7a49a5b161c3e74dfdae8173e18174b1fcd8d7675c556a988f0ed95d1
 
 pkgname = docker-compose-bin
 
