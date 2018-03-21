@@ -3,11 +3,11 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-plugins-git
-pkgver=1.2.191.0.g4915f009
+pkgver=1.3.307.1.g336c5f62
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
-url="http://psi-plus.com"
+url="https://psi-plus.com"
 license=('GPL2')
 depends=('qt5-base' 'qt5-multimedia' 'psi-plus-git' 'qt5-webengine')
 conflicts=('psi-plus-plugins' 'psi-plus-plugins-qt5-git')
