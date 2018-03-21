@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fontview-git
-pkgver=r181.0a9e036
+pkgver=r211.ed212ae
 pkgrel=1
 epoch=
 pkgdesc="A simple font viewer."
@@ -9,7 +9,7 @@ url="https://github.com/khaledhosny/fontview"
 license=('GPLv2')
 groups=()
 depends=('gtk3' 'cairo' 'freetype2' 'harfbuzz' 'intltool')
-makedepends=('git')
+makedepends=('git' 'meson')
 optdepends=()
 checkdepends=()
 provides=()
@@ -30,14 +30,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  meson --prefix /usr . build
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR=$pkgdir ninja -C build install
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
