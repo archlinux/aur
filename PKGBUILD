@@ -13,18 +13,12 @@ depends=('fftw' 'ffmpeg' 'libsamplerate' 'taglib' 'libyaml'
 provides=('essentia')
 conflicts=('essentia' 'essentia-acousticbrainz'
            'lib32-essentia-acousticbrainz')
-source=('git+https://github.com/MTG/essentia.git#branch=master'
-        'pthread_flag.patch')
-md5sums=('SKIP'
-         '172b1a047ab19d3a11affe47204fc540')
+source=('git+https://github.com/MTG/essentia.git#branch=master')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/essentia"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    patch -f "$srcdir/essentia/wscript" pthread_flag.patch
 }
 
 build() {
