@@ -5,10 +5,10 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="Double-entry accounting system"
 arch=('any')
-depends=('perl6'
+depends=('mktxn'
+         'perl6'
          'perl6-config-toml'
-         'perl6-file-presence'
-         'perl6-txn')
+         'perl6-file-presence')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
