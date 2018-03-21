@@ -1,6 +1,6 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
-pkgname=playbluray-mkv
+pkgname=playbluray-makemkv
 pkgver=1.2
 pkgrel=1
 pkgdesc="Blu-ray UHD Playback Script with makemkv and mpv"
