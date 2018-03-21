@@ -2,31 +2,21 @@
 # Maintainer: Stefan Husmann <Stefan-Husmann@t-online.de>
 
 pkgname=emacs-pov-mode
-pkgver=v3.3
-_pkgver=3.3
-_imname=povray-imenu
-_imver=3.6
-pkgrel=3
+pkgver=3.3
+pkgrel=4
 pkgdesc='POV-Ray mode for Emacs'
 arch=('any')
 url='http://xahlee.org/3d/povray_emacs.html'
 license=('GPL3')
 depends=('emacs')
-install="${pkgname}.install"
-changelog="${pkgname}.changelog"
-source=("http://www.imagico.de/imenu/${_imname}-${_imver}.tar.gz" 'git+https://github.com/melmothx/pov-mode')
+source=("http://www.imagico.de/imenu/povray-imenu-3.6.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/emacsmirror/pov-mode/archive/v$pkgver.tar.gz")
 sha256sums=('c99e00f3ba1de305b9859af43be4fbb4caf54426479461b9922dd7b2989c038b'
-            'SKIP')
-noextract=("${_imname}-${_imver}.tar.gz")
-_gitname=pov-mode
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-  echo $(git describe --tags|sed 's/-/./g')
-}
+            'e2fc53d4f41b90b626d11c778ab7cd20a0d26efd8abb3ce860d47c695121bae7')
+noextract=(povray-imenu-3.6.tar.gz)
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname#emacs-}-$pkgver
   sed -e '/pov-include-dir/ s|3.6|3.7|' \
       -e '/pov-include-dir/ s|/local||' \
       -e '/pov-documentation-directory/ s|3.6|3.7|' \
@@ -35,16 +25,16 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd ${pkgname#emacs-}-$pkgver
   
-  local _infodir="${pkgdir}/usr/share/info"
-  local _installdir="${pkgdir}/usr/share/emacs/site-lisp/pov-mode"
+  local _infodir="${pkgdir}"/usr/share/info
+  local _installdir="${pkgdir}"/usr/share/emacs/site-lisp/pov-mode
   
-  install -d "${_infodir}" "${_installdir}/InsertMenu"
+  install -d ${_infodir} ${_installdir}/InsertMenu
   
-  install -m 644 pov-mode.info "$_infodir"
-  install -m 644 pov-mode.el povrender.xpm povview.xpm "$_installdir"
+  install -m 644 pov-mode.info $_infodir
+  install -m 644 pov-mode.el povrender.xpm povview.xpm $_installdir
   
-  bsdtar -xof "${srcdir}/${_imname}-${_imver}.tar.gz" \
-	 -C "${_installdir}/InsertMenu"
+  bsdtar -xof "${srcdir}"/povray-imenu-3.6.tar.gz \
+	 -C ${_installdir}/InsertMenu
 }
