@@ -1,20 +1,22 @@
-# $Id$
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 # Contributor: Mark Lee <mark@markelee.com>
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r284.g3b6978839
+pkgver=3.12.0.r324.g7c712bbec
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('alsa-lib' 'ffmpeg' 'speex' 'libv4l' 'v4l-utils'
-	 'libpulse' 'libxv' 'bctoolbox-git' 'belle-sip-git' 'belcard-git' 'belr-git' 'bzrtp-git'
-     'mediastreamer-git' 'ortp-git' 'libsoup' 'belle-sip-git' 'libnotify')
-makedepends=('cmake' 'doxygen' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
+    'libpulse' 'libxv' 'bctoolbox-git' 'belle-sip-git' 'belcard-git' 'belr-git'
+    'bzrtp-git' 'mediastreamer-git' 'ortp-git' 'libsoup' 'belle-sip-git'
+    'libnotify')
+makedepends=('cmake' 'doxygen' 'graphviz' 'pkg-config' 'python-pystache'
+    'perl-xml-parser' 'intltool')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone')
