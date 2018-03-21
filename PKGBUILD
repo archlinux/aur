@@ -9,7 +9,7 @@ _realpkg=${pkgbase%-noconflict}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,mcrypt,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"-noconflict")
 pkgver=7.1.14
-pkgrel=4
+pkgrel=5
 pkgdesc="php 7.1 compiled as to not conflict with php 7.2+"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -40,7 +40,7 @@ sha256sums=('c09f0c1074f5689b492d79034adb84e6a6c6d08c6763c02282e6318d41156779'
             'SKIP'
             '786e3d550c96959e6d0b813595599492d29cd93ae36fcbca29cdea32b60e373b'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
-            'fe2799bdb3714d89c7bac72f0173041da8ed1d0773271fffe87f40601be861f8'
+            '846f4a781d1438b0dc4eb0a7285e6641392c5451a44c4bdebc8ce45768bcfd6d'
             '3f4625d50cf50ce828c6c23f20e1292a0e009fe2c8922368cddda9d44dbc1cc8'
             '13769da10778dfe1595938b3884ea7ffdfe4e7f95ffa72f134cedfa4c44c4775'
             'b11c3de747ef222696f5135556d624e3f7f0135a3cb1b06082f1ec8e9b7eeb0a')

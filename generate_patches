@@ -24,6 +24,7 @@ sed \
 
 sed \
 	-e 's#^PIDFile=.*#PIDFile=/run/php71-fpm/php-fpm.pid#' \
+        -e 's#^ExecStart=.*#ExecStart=/usr/bin/php-fpm71 --nodaemonize --fpm-config /etc/php71/php-fpm.conf#' \
 	-i.orig sapi/fpm/php-fpm.service.in
 
 extensions=";extension=bcmath.so\n;extension=bz2.so\n;extension=calendar.so\nextension=curl.so\n;extension=dba.so\n;extension=enchant.so\n;extension=exif.so\n;extension=ftp.so\n;extension=gd.so\n;extension=gettext.so\n;extension=gmp.so\n;extension=iconv.so\n;extension=imap.so\n;extension=intl.so\n;extension=ldap.so\n;extension=mcrypt.so\n;extension=mysqli.so\n;extension=odbc.so\n;zend_extension=opcache.so\n;extension=pdo_dblib.so\n;extension=pdo_mysql.so\n;extension=pdo_odbc.so\n;extension=pdo_pgsql.so\n;extension=pdo_sqlite.so\n;extension=pgsql.so\n;extension=pspell.so\n;extension=shmop.so\n;extension=snmp.so\n;extension=soap.so\n;extension=sockets.so\n;extension=sqlite3.so\n;extension=sysvmsg.so\n;extension=sysvsem.so\n;extension=sysvshm.so\n;extension=tidy.so\n;extension=xmlrpc.so\n;extension=xsl.so\nextension=zip.so\n"
