@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-tls
-pkgver=0.7
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="Libraries for building reactive services in Perl6 - TLS part"
+pkgdesc="TLS support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
 depends=('perl6'
          'perl6-cro-core'
@@ -13,18 +13,18 @@ makedepends=('git')
 groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-tls"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/croservices/cro-tls)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
+sha256sums=('46091b5c5f62cd16e9f6a33cd9ba86bb1cd9d121a8003786dd438638a9a4846b')
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Running tests...'
   PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
