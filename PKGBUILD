@@ -2,8 +2,8 @@
 
 _pkgname=jre
 pkgname=jre-devel
-_major=10
-_build=46
+_major=11
+_build=5
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
@@ -34,11 +34,11 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("https://download.java.net/java/jdk${_major}/archive/${_build}/BCL/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+source=("https://download.java.net/java/early_access/jdk${_major}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('426c6bbe3410c496620856e6c4e26e6d6431eed299ad040cd6c57ab66cfce7d0'
-            '011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390'
+sha256sums=('bdebda3cbaa0f5a78670ea6f242a6b2897e1f9356626f89fb29652a4e83d3eb4'
+            '23953c49dc164c0ff2b1ea6702a12d1a6f5a546aa1b0f4a9ade1c664e88e69ba'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {

@@ -1,8 +1,8 @@
 pkgbase = jre-devel
-	pkgdesc = Oracle Java 10 Runtime Environment Snapshot
-	pkgver = 10b46
+	pkgdesc = Oracle Java 11 Runtime Environment Snapshot
+	pkgver = 11b5
 	pkgrel = 1
-	url = http://jdk.java.net/10/
+	url = http://jdk.java.net/11/
 	install = jre-devel.install
 	arch = x86_64
 	license = custom:Oracle
@@ -13,30 +13,30 @@ pkgbase = jre-devel
 	depends = xdg-utils
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=10
-	provides = java-runtime-headless=10
-	provides = java-web-start=10
-	provides = java-runtime-jre=10
-	provides = java-runtime-headless-jre=10
-	provides = java-web-start-jre=10
-	provides = java-openjfx=10
-	conflicts = java-runtime-jre=10
-	backup = etc/java-jre10/management/jmxremote.access
-	backup = etc/java-jre10/management/management.properties
-	backup = etc/java-jre10/security/java.policy
-	backup = etc/java-jre10/security/java.security
-	backup = etc/java-jre10/security/javaws.policy
-	backup = etc/java-jre10/fontconfig.properties.src
-	backup = etc/java-jre10/logging.properties
-	backup = etc/java-jre10/net.properties
-	backup = etc/java-jre10/psfont.properties.ja
-	backup = etc/java-jre10/psfontj2d.properties
-	backup = etc/java-jre10/sound.properties
-	source = https://download.java.net/java/jdk10/archive/46/BCL/jre-10+46_linux-x64_bin.tar.gz
-	source = policytool-jre10.desktop
+	provides = java-runtime=11
+	provides = java-runtime-headless=11
+	provides = java-web-start=11
+	provides = java-runtime-jre=11
+	provides = java-runtime-headless-jre=11
+	provides = java-web-start-jre=11
+	provides = java-openjfx=11
+	conflicts = java-runtime-jre=11
+	backup = etc/java-jre11/management/jmxremote.access
+	backup = etc/java-jre11/management/management.properties
+	backup = etc/java-jre11/security/java.policy
+	backup = etc/java-jre11/security/java.security
+	backup = etc/java-jre11/security/javaws.policy
+	backup = etc/java-jre11/fontconfig.properties.src
+	backup = etc/java-jre11/logging.properties
+	backup = etc/java-jre11/net.properties
+	backup = etc/java-jre11/psfont.properties.ja
+	backup = etc/java-jre11/psfontj2d.properties
+	backup = etc/java-jre11/sound.properties
+	source = https://download.java.net/java/early_access/jdk11/BCL/jre-11-ea+5_linux-x64_bin.tar.gz
+	source = policytool-jre11.desktop
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
-	sha256sums = 426c6bbe3410c496620856e6c4e26e6d6431eed299ad040cd6c57ab66cfce7d0
-	sha256sums = 011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390
+	sha256sums = bdebda3cbaa0f5a78670ea6f242a6b2897e1f9356626f89fb29652a4e83d3eb4
+	sha256sums = 23953c49dc164c0ff2b1ea6702a12d1a6f5a546aa1b0f4a9ade1c664e88e69ba
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jre-devel
