@@ -1,0 +1,15 @@
+pkgbase = python2-htsql
+	pkgdesc = A comprehensive navigational query language for relational databases.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://htsql.org
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-pyaml
+	source = http://dist.htsql.org/source/HTSQL-2.3.3.tar.gz
+	md5sums = 34fabf3f4dbc578abba27540491185de
+
+pkgname = python2-htsql
+
