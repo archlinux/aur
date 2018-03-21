@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=black
-pkgver=18.3a2
+pkgver=18.3a3
 pkgrel=1
 pkgdesc='Uncompromising code formatter'
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/ambv/black
 license=('MIT')
 depends=('python-attrs' 'python-click')
 source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz")
-sha512sums=('2ce4703ba37b1484c2c2de4cd39a1d9fb3128b48b418cd060b12825e3f754dd5a75c3079a450dd6885d064c17f9117808215c3539bbf90316032b3560074440d')
+sha512sums=('1f490b4d6f6d760c930c7615f50a9d1269f750a91d645f42e222e5bf40919c22a6a5d4c00fad4b5bf0750728096d4ac7d71ab40f248a2b09aa3f32ff281ddeee')
 
 build() {
   cd black-$pkgver
