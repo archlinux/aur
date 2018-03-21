@@ -1,6 +1,6 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Not Another Aur MANager"
 arch=("any")
@@ -11,7 +11,7 @@ optdepends=("bash-completion: for bash completions"
             "git: for installing packages (instead of tar)")
 makedepends=('help2man')
 source=("https://github.com/enckse/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b5a0cfcc511e882d3860520bc01f859e4704a88e5d11aed0eaf8d494c03fc946')
+sha256sums=('da90e0c42f3ae9c4792dd641f451ee3c840b39b67b7fd8e70727ee177c83cca9')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
