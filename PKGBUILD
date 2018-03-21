@@ -3,8 +3,8 @@
 pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -17,7 +17,7 @@ source=(https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz
         peercoin-qt@.service
         peercoin-qt-tor@.service
         )
-sha256sums=('f6ce0647c9f3b4b4c28c5b77955c9ae4808a8c7f5e55a99f1337317a29a0bc1b'
+sha256sums=('d64a8fdcd874d2e211f5dd3002e187769b3ec656f985f538ea0510f1b58ac2b6'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
             '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f')
 
