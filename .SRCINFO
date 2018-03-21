@@ -1,0 +1,11 @@
+pkgbase = archfetch
+	pkgdesc = Neofetch, but simplified. For Arch Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xxczaki/archfetch/
+	arch = i686
+	arch = x86_64
+	license = MIT
+
+pkgname = archfetch
+
