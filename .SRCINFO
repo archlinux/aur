@@ -1,0 +1,17 @@
+pkgbase = docker-volume-gc-storage-git
+	pkgdesc = Docker Volume Plugin for Google Cloud Storage (Buckets)
+	pkgver = 0.0.1.751a752
+	pkgrel = 1
+	url = https://github.com/craimbert/docker-volume-gc-storage
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = go
+	depends = gcsfuse
+	provides = docker-volume-gc-storage
+	conflicts = docker-volume-gc-storage
+	source = git://github.com/MarSoft/docker-volume-gc-storage
+	sha1sums = SKIP
+
+pkgname = docker-volume-gc-storage-git
+
