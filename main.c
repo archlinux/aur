@@ -47,7 +47,6 @@ int main(int argc, char* argv[]) {
                 string_destroy(&crypted);
             }
         }
-        string_destroy(&pString);
     }
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
