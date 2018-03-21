@@ -4,10 +4,10 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.2.162.0.g71b60606
-pkgrel=2
-pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
-url="http://psi-plus.com"
+pkgver=1.3.307.1.g336c5f62
+pkgrel=1
+pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
+url="https://psi-plus.com"
 license=('GPL2')
 arch=('x86_64')
 depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
