@@ -7,5 +7,5 @@ pkgbase = libsass-git
 	source = libsass-3.5.2.tar.gz::https://github.com/sass/libsass/archive/3.5.2.tar.gz
 	sha256sums = 9914239d73fc0882f09e0d67e89260d661c3a76940550034722f492d178b57e2
 
-pkgname = libsass
+pkgname = libsass-git
 
