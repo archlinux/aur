@@ -4,7 +4,7 @@ pkgdesc="ROS - position_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-kinetic-position-controllers'
-pkgver='0.13.0'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-kinetic-position_controllers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/position_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b5ff3c6fb3b754324ddad6a8d6e6733f5cdb995642eb4a5414b396aaf4ed665f')
+sha256sums=('37f1608016099d163f50c678f6005b65f79468572fabf7b866af45785703adda')
 
 build() {
   # Use ROS environment variables
