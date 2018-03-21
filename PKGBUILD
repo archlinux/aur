@@ -1,64 +1,49 @@
-# Maintainer : Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Maintainer : Fredy García <frealgagu at gmail dot com>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: JIN Xiao-Yong <jinxiaoyong@gmail.com>
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=freetype2-infinality
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
-arch=(armv7h i686 x86_64)
-license=('GPL')
-url="http://www.freetype.org/"
+arch=("armv7h" "i686" "x86_64")
+license=("GPL")
+url="http://www.${pkgname%2-infinality}.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
-depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
-makedepends=('libx11')
-conflicts=('freetype2')
-provides=("freetype2=$pkgver" 'libfreetype.so' 'freetype2-infinality-ultimate')
-install=freetype2.install
-backup=('etc/profile.d/freetype2.sh')
-_abs_commit=c419271e92acf355fc52824eb93e69b5c9f29d40
-_infinality_commit=4db742f46f3b790d90183d44b166b44fb8e8197c
-source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
-        http://download.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.bz2{,.sig}
-        "0001-Enable-table-validation-modules.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?id=${_abs_commit}"
-        "0004-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Enable-long-PCF-family-names.patch?id=${_abs_commit}"
-        "freetype2.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/freetype2.sh?id=${_abs_commit}"
-        "https://raw.githubusercontent.com/djpohly/infinality_bundle/${_infinality_commit}/01_freetype2-iu/0002-infinality-2.8-2017.05.24.patch")
-sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
-          'SKIP'
-          '5b221ee14fe674cd5f6db0193d55360bc0bd3655'
-          'SKIP'
-          'c3e91e668936206d3c158bffde0f69788a086a5b'
-          '334f229875039794adeb574e27d365bb445fb314'
-          'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
-          '4b442f097eeae28516b43c659a3d7a679129052c')
-validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
-
-prepare() {
-  cd freetype-${pkgver}
-
-  patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
-  patch -Np1 -i ../0002-infinality-2.8-2017.05.24.patch
-}
+depends=("bzip2" "harfbuzz" "libpng" "sh" "zlib")
+makedepends=("libx11")
+conflicts=("${pkgname%-infinality}")
+provides=("${pkgname%-infinality}=${pkgver}" "${pkgname}-ultimate" "lib${pkgname%2-infinality}.so")
+install="${pkgname%-infinality}.install"
+backup=("etc/profile.d/${pkgname%-infinality}.sh")
+source=(http://download.savannah.gnu.org/releases/${pkgname%2-infinality}/${pkgname%2-infinality}-${pkgver}.tar.gz{,.sig}
+        http://download.savannah.gnu.org/releases/${pkgname%2-infinality}/${pkgname%2-infinality}-doc-${pkgver}.tar.gz{,.sig}
+        "${pkgname%-infinality}.sh::https://raw.githubusercontent.com/archfan/infinality_bundle/master/01_${pkgname%-infinality}-iu/${pkgname%-infinality}.sh")
+sha256sums=("bf380e4d7c4f3b5b1c1a7b2bf3abb967bda5e9ab480d0df656e0e08c5019c5e6"
+            "06460168615c4c69293e4126c7e69731b7cc7d4db5470bca3cb95c05807993e2"
+            "9312f7d2e5c798684d39e1fecddfed8e29d2102f035c4bd765157e2d077175f8"
+            "37c0ee3d983769a50a33292f547bec8d0dc064da62090dd7690bedf2d1dba7d0"
+            "f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467")
+validpgpkeys=("58E0C111E39F5408C5D3EC76C1A60EACE707FDA5")
 
 build() {
-  cd freetype-${pkgver}
+  cd "${pkgname%2-infinality}-${pkgver}"
   ./configure --prefix=/usr --disable-static
   make
 }
 
 check() {
-  cd freetype-${pkgver}
+  cd "${pkgname%2-infinality}-${pkgver}"
   make -k check
 }
 
 package() {
-  cd freetype-${pkgver}
+  cd "${pkgname%2-infinality}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../freetype2.sh "${pkgdir}/etc/profile.d/freetype2.sh"
+  install -Dm644 ../${pkgname%-infinality}.sh "${pkgdir}/etc/profile.d/${pkgname%-infinality}.sh"
 
   # Package docs
   install -dm755 "${pkgdir}/usr/share/doc"
