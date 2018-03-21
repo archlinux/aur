@@ -1,7 +1,7 @@
 # Maintainer: Clement Poisson <clement@poisson.me>
 pkgname=kx3util
 pkgver=1.16.6.25
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Elecraft KX3 Utility"
 arch=("x86_64")
@@ -25,21 +25,28 @@ md5sums=('1c63b7f43b994ddf4f1c12add2cfaa36')
 validpgpkeys=()
 
 package() {
-	mkdir -p $pkgdir/usr/share/applications
 
-	cp ../kx3util.desktop $pkgdir/usr/share/applications
+	# Desktop Entry
+	install -Dm644 ../kx3util.desktop "${pkgdir}/usr/share/applications/kx3util.desktop"
 
-	cd "$srcdir/kx3util_1_16_6_25"
+	# License
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	mkdir -p $pkgdir/usr/local/bin 
-	cp kx3util $pkgdir/usr/local/bin
+	cd "${srcdir}/kx3util_1_16_6_25"
 
-	mkdir -p $pkgdir/usr/local/lib/kx3util 
-	cp 'kx3util Libs'/* $pkgdir/usr/local/lib/kx3util
-	ln -s "$pkgdir/usr/local/lib/kx3util" "$pkgdir/usr/local/bin/kx3util Libs"
+	# Main Binary
+	install -Dm755 kx3util "${pkgdir}/usr/local/bin/kx3util"
 
-	mkdir -p $pkgdir/etc/kx3util
-	cp -r 'Help' $pkgdir/etc/kx3util
-	ln -s "$pkgdir/etc/kx3util/Help" "$pkgdir/usr/local/bin/Help"
-	chmod +r -R "$pkgdir/etc/kx3util/Help"
+	# Libraries
+	install -d "${pkgdir}/usr/local/lib/${pkgname}"
+	install -Dm755 "kx3util Libs"/* "${pkgdir}/usr/local/lib/${pkgname}"
+	# -- create a link to the expected install location
+	ln -s "/usr/local/lib/${pkgname}" "${pkgdir}/usr/local/bin/kx3util Libs"
+
+	# Help
+	install -d "${pkgdir}/etc/${pkgname}/Help"
+	# -- help files need world read in order to open in the browser
+	install -Dm744 "Help"/* "${pkgdir}/etc/${pkgname}/Help"
+	# -- create a link to the expected install location
+	ln -s "/etc/${pkgname}/Help" "${pkgdir}/usr/local/bin/Help"
 }

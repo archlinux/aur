@@ -1,7 +1,7 @@
 pkgbase = kx3util
 	pkgdesc = Elecraft KX3 Utility
 	pkgver = 1.16.6.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.elecraft.com/KX3/KX3_software.htm
 	arch = x86_64
 	license = custom
