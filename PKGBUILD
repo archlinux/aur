@@ -4,7 +4,7 @@ pkgdesc="ROS - The control toolbox contains modules that are useful across all c
 url='http://ros.org/wiki/control_toolbox'
 
 pkgname='ros-kinetic-control-toolbox'
-pkgver='1.15.0'
+pkgver='1.16.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="control_toolbox-release-release-kinetic-control_toolbox-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/control_toolbox-release/archive/release/kinetic/control_toolbox/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3c028853a3da9c66e0495035e02aaa3e9a24578d3e1e3e73bc831281456d93df')
+sha256sums=('7e30e354e7759ff18761aab851d6c88a87295474bb6f628ee67a562a0e0794ee')
 
 build() {
   # Use ROS environment variables
