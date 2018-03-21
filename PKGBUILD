@@ -2,7 +2,7 @@
 pkgname=firebird-superserver
 _pkgver=2.5.8
 pkgver=$_pkgver.27089
-pkgrel=1
+pkgrel=2
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -25,7 +25,7 @@ md5sums=('38862a3da39cf91f4f2366fb510f18a6'
          'ee601f52f1ba2481fe1f05b25d000bb8'
          '79a1416e307e4dfb99640311b8defe07'
          'a43ab472f4d95e48ac21910bb33a5e86'
-         'bd75e6d2afcbc000e3593b1a66ea4ef7'
+         '90b4631c9bff99aab08511b3a184593e'
          '70197fc801f9c66a6a1d7710e0c63718'
          '9ab88cfcda674f9d28850a4f86f23741')
 
@@ -47,7 +47,6 @@ build() {
     --with-fbhelp=/usr/share/doc/firebird/help \
     --with-fbinclude=/usr/include/firebird \
     --with-fblib=/usr/lib \
-    --with-fblock=/run/firebird \
     --with-fblog=/var/log/ \
     --with-fbmsg=/usr/lib/firebird/msg \
     --with-fbplugins=/usr/lib/firebird/plugins \
@@ -62,8 +61,7 @@ build() {
     --with-system-icu \
     --with-system-editline
 
-  #CXXFLAGS+=' -flifetime-dse=1' make
-  make
+    make
 }
 
 package() {
@@ -74,7 +72,7 @@ package() {
   cd $srcdir/Firebird-$pkgver-0
   
   cp -av gen/buildroot/* $pkgdir/
-  
+
   install -Dm644 $srcdir/firebird-tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/firebird.conf
   install -Dm644 $srcdir/firebird-sysusers.conf $pkgdir/usr/lib/sysusers.d/firebird.conf
   install -Dm644 $srcdir/firebird.service $pkgdir/usr/lib/systemd/system/firebird.service
