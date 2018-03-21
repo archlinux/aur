@@ -1,4 +1,4 @@
-# Maintainer: Adam Levy <adam@aslevy.com>
+# Maintainer: Adam S Levy <adam@aslevy.com>
 pkgname=vim-jq-git
 _pkgname=${pkgname%-git}
 pkgver=r20.99d55a3
