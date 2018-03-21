@@ -1,5 +1,5 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
-# Maintainer: Adam S Levy <adam at aslevy.com>
+# Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='telegraf'
 pkgver='1.5.3'
