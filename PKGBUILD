@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=rundeck
-pkgver=2.10.6
+pkgver=2.10.7
 pkgrel=1
 pkgdesc="Open source automation service with a web console, command line tools and a WebAPI"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 makedepends=('java-environment')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rundeck/rundeck/archive/v${pkgver}.tar.gz"
         'start.sh')
-sha256sums=('b6dde4ae74ad00a3c2fac3b05f894cf3e2d9e7e8e27a118e64d15813619f4458'
+sha256sums=('c5abaebc1a2ae161a1156a1360eb7724aa7b020478be21fbbd8df2ef060dfa16'
             '02f7b0b770e44c182e9aa79f4381e0ded19b538dc6248708638dc3dfd01d64b9')
 
 build() {
