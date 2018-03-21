@@ -3,14 +3,14 @@
 
 pkgname=sendanywhere
 pkgver=8.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
 arch=('x86_64')
 url="http://send-anywhere.com"
 license=('custom:sendanywhere_eula')
 options=('!strip' '!emptydirs')
-depends=('gtk3')
-source=('https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb')
+depends=('nss' 'libxtst' 'libxss' 'gconf' 'gtk2' 'alsa-lib')
+source=("${pkgname}-${pkgver}.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb")
 sha512sums=('294525a6440a8eb7a263993ee655a57b1f40c76c476e231ec1b974e8a3a85dfdc763555be368e200a21d065746f2e271855ee34a6107e308618b6cdd0d1a0532')
 
 package(){
