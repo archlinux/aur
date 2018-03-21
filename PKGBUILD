@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python-fafclient-icetest
-pkgver=0.18.13
+pkgver=0.18.15
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("git+https://github.com/muellni/client.git#branch=feature/ice-adapter" 'FAForeverPy36ICE.desktop')
 sha256sums=('SKIP'
-            '56d4146fa15b45a1fb7659383fe9a3cbe8a1531b19b1083c893e015e8f52e7d7')
+            'cecaf64a35078084bb568dfad57503eaf7351a7e96653586f053184c9a005cfb')
 noextract=()
 validpgpkeys=()
 
