@@ -1,6 +1,6 @@
 pkgbase = nzb-monkey
 	pkgdesc = A Reference implementation of how to handle a NZBLNK-URI, with support for SABnzbd, NZBGet and Synology Download Station
-	pkgver = v0.2.1
+	pkgver = v0.2.2
 	pkgrel = 1
 	url = http://nzblnk.tech/nzb-monkey/
 	install = nzb-monkey.install
@@ -13,8 +13,8 @@ pkgbase = nzb-monkey
 	depends = python-colorama
 	depends = python-cryptography
 	depends = xdg-utils
-	source = https://github.com/nzblnk/nzb-monkey/releases/download/v0.2.1/nzbmonkey-v0.2.1-linux.tbz2
-	sha256sums = 5095a3d1f6bbe1ce18950851481d36e5fccdf01acd36f9fef27410abf7b9edc9
+	source = https://github.com/nzblnk/nzb-monkey/releases/download/v0.2.2/nzbmonkey-v0.2.2-linux.tbz2
+	sha256sums = c776e6a3c9e900c67cb96e9697a69b4e210a24d2e312cd89c97bdbac0e3035f1
 
 pkgname = nzb-monkey
 
