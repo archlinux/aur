@@ -1,7 +1,6 @@
-# Maintainer: Adam S Levy <theadamlevy@gmail.com>
+# Maintainer: Adam S Levy <adam@aslevy.com>
 # Contributor: yesuu zhang <yesuu79@qq.com>
 # Contributor: Tomasz Żok <tomasz.zok [at] gmail.com>
-
 pkgname=vim-go
 pkgver=1.16
 pkgrel=1
