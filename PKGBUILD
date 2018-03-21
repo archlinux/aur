@@ -4,7 +4,7 @@ pkgdesc="ROS - Unit-testing package for ROS."
 url='http://ros.org/wiki/rosunit'
 
 pkgname='ros-kinetic-rosunit'
-pkgver='1.13.6'
+pkgver='1.14.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-rosunit-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/rosunit/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('15702a1e17f0db1e13ed498234d348ce4dc0446a010ba1951306a0e9e9279444')
+sha256sums=('554baa06771fc60fa6d318d13ac7e0f94779b3603dadeb48e89da4a456d8d175')
 
 build() {
   # Use ROS environment variables
