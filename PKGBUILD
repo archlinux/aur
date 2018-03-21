@@ -2,7 +2,7 @@
 
 pkgname='arrow'
 pkgver=0.9.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
@@ -25,6 +25,8 @@ build(){
                                       -DARROW_ALTIVEC=OFF \
                                       -DCMAKE_INSTALL_PREFIX="/usr" \
                                       -DCMAKE_INSTALL_LIBDIR="lib" \
+                                      -DARROW_PLASMA=ON \
+                                      -DARROW_ORC=ON \
                                       -DARROW_USE_SSE=ON
   make
 }
