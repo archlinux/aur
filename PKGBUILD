@@ -1,25 +1,28 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
-pkgname=pdmenu
-pkgver=1.3.2
-pkgrel=2
-pkgdesc="simple full screen menu program"
+pkgname='pdmenu'
+pkgver='1.3.4'
+pkgrel='1'
+pkgdesc='simple full screen menu program'
 arch=('x86_64')
-url="http://packages.debian.org/unstable/source/pdmenu"
+# url='https://joeyh.name/code/pdmenu/'
+url='https://packages.debian.org/unstable/source/pdmenu'
 license=('GPL')
 depends=('gpm' 'slang')
 optdepends=('perl')
-source=(http://ftp.debian.org/debian/pool/main/p/pdmenu/pdmenu_$pkgver.tar.gz)
-md5sums=('a7d5315119fd18a81cc3d1e578f8d3f8')
+changelog='ChangeLog'
+source=("http://ftp.debian.org/debian/pool/main/p/pdmenu/pdmenu_${pkgver}.tar.gz")
+md5sums=('0623b992572511d5fd90d481c426fa40')
+sha256sums=('302aa81b8868133ff5a0f3e3e897f71d425bc628c0d7439addb623f12c277bea')
 
 build() {
-  cd "$srcdir"/pdmenu
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
+  cd 'pdmenu'
+  ./configure --prefix='/usr' --sysconfdir='/etc'
+  make -s
 }
 
 package() {
-  cd "$srcdir"/pdmenu
-  make INSTALL_PREFIX="$pkgdir" install
+  cd 'pdmenu'
+  make INSTALL_PREFIX="${pkgdir}" install
 }
