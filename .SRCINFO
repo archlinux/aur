@@ -1,0 +1,18 @@
+pkgbase = kaggle-api
+	pkgdesc = Kaggle API CLI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://kaggle.com/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urllib3
+	depends = python-six
+	depends = python-certifi
+	depends = python-dateutil
+	source = https://github.com/Kaggle/kaggle-api/archive/a97e7bf1f7f6d89a4c4c7ce6595eecab50ff334d.tar.gz
+	md5sums = cafb51206bf9677f70bb3951bbca15f5
+
+pkgname = kaggle-api
+
