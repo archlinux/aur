@@ -4,10 +4,10 @@ pkgdesc="ROS - forward_command_controller."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-kinetic-forward-command-controller'
-pkgver='0.13.0'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-realtime-tools
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-kinetic-forward_command_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/forward_command_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a441201fc3421b6db23baa6a71f03a1ecd537bdf5d9b5d4a1d9c041238a98d0e')
+sha256sums=('96c5734cdc625293128698f59cfb04c11c578c299c8ceb03c8ddf0a0c4821e63')
 
 build() {
   # Use ROS environment variables
