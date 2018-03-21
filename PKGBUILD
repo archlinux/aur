@@ -1,39 +1,21 @@
-# Maintainer: Ashwin Vishnu <ashuwish+arch at gmail dot com>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Contributor: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=latest
+pkgver=8.2.13
 pkgrel=1
-pkgdesc="Direct file sharing across all platforms/devices. Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
-arch=('i686' 'x86_64')
-url="https://www.send-anywhere.com"
+pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
+arch=('x86_64')
+url="http://send-anywhere.com"
 license=('custom:sendanywhere_eula')
-provides=('sendanywhere')
-makedepends=('chrpath' 'xdg-utils' 'desktop-file-utils')
-install=$pkgname.install
-depends=('postgresql-libs' 'qt5-svg' 'gtk3' 'libmariadbclient')
-source_i686=("https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_i386.deb")
-source_x86_64=("https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb")
-md5sums_i686=('SKIP')
-md5sums_x86_64=('SKIP')
+options=('!strip' '!emptydirs')
+depends=('gtk3')
+source=('https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb')
+sha512sums=('294525a6440a8eb7a263993ee655a57b1f40c76c476e231ec1b974e8a3a85dfdc763555be368e200a21d065746f2e271855ee34a6107e308618b6cdd0d1a0532')
 
-prepare() {
-   bsdtar xJf data.tar.xz
-   bsdtar xzf control.tar.gz
-   echo '==> Checking integrity with MD5sums.'
-   md5sum -c md5sums --strict --quiet
+package(){
+	tar xf data.tar.xz -C "$pkgdir"
 
-   # Remove insecure RPATH
-   chrpath --delete "opt/estmob/sendanywhere/sendanywhere"
-}
-
-pkgver() {
-   awk -F": " '/Version/{print $2}' control
-}
-
-package() {
-   mv usr opt $pkgdir
-
-   echo '==> Copying license.'
-   install -Dm644 "$pkgdir/usr/share/doc/sendanywhere/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-   rm -r "$pkgdir/usr/share/doc"
+  install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
+  install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
