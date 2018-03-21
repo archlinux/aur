@@ -2,7 +2,7 @@
 
 pkgname=pqp
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for performing proximity queries on a pair of geometric models composed of triangles"
 arch=('i686' 'x86_64')
 url="http://gamma.cs.unc.edu/SSV/"
@@ -26,21 +26,22 @@ sha512sums=('baad7b050b13a6d13de5110cdec443048a3543b65b0d3b30d1b5f737b4671505266
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/PQP_v1.3"
-	
+
+  sed -i '47,50d' src/PQP_Compile.h
   patch -p2 < ${srcdir}/fpic.patch
-	
+
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/PQP_v1.3"
-	
+
   install -dm755 "${pkgdir}/usr/include/"
   install -dm755 "${pkgdir}/usr/lib/"
-	
+
   install include/* "${pkgdir}/usr/include/"
   install lib/libPQP.a "${pkgdir}/usr/lib/"
-	
+
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
