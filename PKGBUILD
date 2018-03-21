@@ -6,7 +6,7 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_2586_g894ade2
+pkgver=1.3.0_2717_gb25db3e
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,17 +22,17 @@ install=murmur.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
 	murmur.tmpfilesd
 	murmur.sysusers)
-sha256sums=('a0b8720e01495c399d14c2051bcf5e7356ceea8e0162a75cc4e10039a5324f7e'
+sha256sums=('ce4647fd7f525edf8ac00880682715d88c93160fa2a25666b16c6e41d21d3c41'
             'SKIP'
             '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
             'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
-validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
+validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
 options=('emptydirs')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
-    qmake-qt5 main.pro CONFIG+="no-client no-bonjour optimize" INCLUDEPATH+="/usr/include/openssl-1.0" QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
+    qmake-qt5 main.pro CONFIG+="no-client no-bonjour optimize"
     make release
 }
 
