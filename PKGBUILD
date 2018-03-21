@@ -1,5 +1,5 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
-# Contributor: Adam S. Levy <adam at aslevy.com>
+# Maintainer: Adam S Levy <adam@aslevy.com>
 # Contributor: Charles B. Johnson <mail@cbjohnson.info>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
