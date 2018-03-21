@@ -1,0 +1,17 @@
+pkgbase = perl6-digest-hmac
+	pkgdesc = Generic HMAC implementation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/retupmoca/p6-Digest-HMAC
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-digest
+	source = perl6-digest-hmac-1.0.0::git+https://github.com/retupmoca/p6-Digest-HMAC
+	sha256sums = SKIP
+
+pkgname = perl6-digest-hmac
+
