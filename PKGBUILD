@@ -3,11 +3,11 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=v1.1.371.r851
+pkgver=v1.1.371.r1321
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=5.0.1
-_qtver=5.10.0
+_qtver=5.10.1
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=("git+https://github.com/rstudio/rstudio.git"
 md5sums=('SKIP'
          'e2617189fe5c138945b8cc95f26bd476'
          'ddd572887957fd5cdfde3469bd8c1102'
-         'bb822961716efd40d570a07a34c9c373'
+         'a07084d60807d4643738d8bdee87117b'
          '0e03798b8e53096c4a906bde05e32378'
          'a095c1c62270a1997a5d158144394dbb')
 
