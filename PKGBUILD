@@ -3,8 +3,8 @@
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=vim-rails
-pkgver=5.3_25295
-pkgrel=2
+pkgver=5.4_25852
+pkgrel=1
 pkgdesc='ViM plugin for enhanced Ruby on Rails application development'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=1567'
@@ -18,14 +18,11 @@ sha256sums=('2c17cf2f51bb86da797768a78603d208f27b1a6e0301bd9bfed30dec5ac45b57'
             '446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
 
 package() {
-  local installpath="$pkgdir/usr/share/vim/vimfiles"
+        install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 autoload/rails.vim "$installpath/autoload/rails.vim"
-  install -Dm644 doc/rails.txt "$installpath/doc/rails.txt"
-  install -Dm644 plugin/rails.vim "$installpath/plugin/rails.vim"
-  install -Dm644 compiler/rails.vim "$installpath/compiler/rails.vim"
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        local vimdir="$pkgdir/usr/share/vim/vimfiles"
+        install --directory "$vimdir"
+        for dir in autoload/ compiler/ doc/ plugin/; do
+                cp --recursive "${dir}" "$vimdir/"
+        done
 }
-
-# getver: -u 3 www.vim.org/scripts/script.php?script_id=1567
-# vim:set ts=2 sw=2 et:
