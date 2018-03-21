@@ -1,0 +1,14 @@
+pkgbase = mac80211_hwsim_mgmt
+	pkgdesc = Management tool for mac80211_hwsim kernel module
+	pkgver = d6a7e3b
+	pkgrel = 1
+	url = https://github.com/patgrosse/mac80211_hwsim_mgmt/
+	arch = x86_64
+	license = MIT
+	depends = libevent
+	depends = libnl
+	source = https://github.com/patgrosse/mac80211_hwsim_mgmt/archive/d6a7e3bf683731805c761dbd56af11fb6d6c7e76.tar.gz
+	sha256sums = 4e4fed9738764b883a5ca2291253a1386085122d443205bef7eb73c78a536e32
+
+pkgname = mac80211_hwsim_mgmt
+
