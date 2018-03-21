@@ -42,7 +42,7 @@ package() {
     fi
     install -d "${pkgdir}"/usr/{lib,bin}
     install -m777 -d "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngine,libirina}.so "${pkgdir}/usr/lib"
+    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngineV1,libirina}.so "${pkgdir}/usr/lib"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas "${pkgdir}/usr/bin"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas.py "${pkgdir}/opt/${_pkgname}"
     install -m777 -d "${pkgdir}/opt/${_pkgname}/Code"
