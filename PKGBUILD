@@ -1,4 +1,5 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Romain Porte <microjoe@microjoe.org>
+# Previous maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 # Contributor: valvetime <valvetimepackages@gmail.com>
 # Contributor: Dan McCurry <dan.mccurry at linux dot com>
 # Contributor: Tom Swartz <tom@tswartz.net>
@@ -14,7 +15,8 @@ url="https://github.com/cjcliffe/CubicSDR"
 license=('GPL')
 depends=(
   'libpulse'
-  'wxgtk'
+  'wxgtk2-dev'
+  'wxgtk-command-dev'
   'soapysdr-git'
   'liquid-dsp-git'
 )
