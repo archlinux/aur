@@ -3,7 +3,7 @@
 pkgname=perl6-cro-ssl
 pkgver=0.7
 pkgrel=1
-pkgdesc="Libraries for building reactive services in Perl6 - SSL part"
+pkgdesc="SSL support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
 depends=('perl6'
          'perl6-cro-core'
