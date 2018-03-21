@@ -17,6 +17,7 @@ pkgbase = cozy-audiobooks
 	depends = python-gobject
 	depends = python-mutagen
 	depends = python-peewee
+	depends = python-cairo
 	depends = gst-plugins-good
 	source = https://github.com/geigi/cozy/archive/0.5.4.tar.gz
 	sha256sums = 32b1f06e773305f73a4432804a5a6a50fd88593ed06451c96e1376ec4d8800b5
