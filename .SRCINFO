@@ -1,6 +1,6 @@
 pkgbase = xmobar-git
 	pkgdesc = Minimalistic Text Based Status Bar
-	pkgver = 0.25+14+g2e28ddc
+	pkgver = 0.25+18+g14122cd
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/xmobar
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = xmobar-git
 	depends = haskell-libmpd
 	depends = haskell-iwlib
 	depends = wireless_tools
+	depends = haskell-text
 	provides = xmobar
 	conflicts = xmobar
 	source = xmobar-git::git+https://github.com/jaor/xmobar.git
