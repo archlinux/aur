@@ -1,21 +1,38 @@
 #include "graph.h"
 
+int zoom_months[9], zoom_change_x_months[9];
+
 void graph_main(const char* ticker_name_string) {
+    int temp[] = {60, 48, 36, 24, 12, 9, 6, 3, 1};
+    memcpy(zoom_months, temp, sizeof(zoom_months));
+    int temp2[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
+    memcpy(zoom_change_x_months, temp2, sizeof(zoom_change_x_months));
+
+    double* price_data = api_get_hist_5y(ticker_name_string);
+    if (price_data == NULL) { // If invalid symbol or cryptocurrency
+        puts("Invalid symbol.");
+        return;
+    }
     initscr();
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(0); // Hides cursor
-    double* price_data = api_get_hist_5y(ticker_name_string);
-    if (price_data == NULL) { // If invalid symbol or cryptocurrency
-        puts("Invalid symbol.");
-        endwin();
-        return;
-    }
-
     time_t now = time(NULL);
     struct tm today_date = *localtime(&now), start_date = today_date, furthest_back_date = today_date, end;
     start_date.tm_year -= 5, furthest_back_date.tm_year -= 5;
     int ch, zoom = ZOOM_5y;
+
+    double seconds = difftime(mktime(&today_date), mktime(&furthest_back_date));
+    int trading_days = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0); // Total trading days to print
+
+    int total_data_points = 0;
+    for (int i = 0; price_data[i] != '\0'; i++)
+        total_data_points++;
+
+    int difference = trading_days - total_data_points;
+    if (difference > 0) // On initial print, scrub to make sure that there are 5 years worth of data points
+        price_data = graph_fill_empty(price_data, total_data_points, trading_days);
+
     graph_print(price_data, &start_date, zoom); // Initial graph of 5 year history
 
     while (1) { // Main input loop
@@ -77,11 +94,19 @@ void graph_print(const double* points, struct tm* start_time, int zoom) {
     int starting_index = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0);
 
     double max = points[starting_index], min = points[starting_index];
+    int k = 0;
+    while (max == EMPTY) // If initial max is EMPTY, get first non-EMPTY value
+        max = points[++k];
+    if (k > 0) // Do the same thing with min
+        min = max;
+
     for (int i = starting_index + 1; i < trading_days + starting_index; i++) {
-        if (points[i] > max) // Find max and min values for graph upper/lower bounds
-            max = points[i];
-        if (points[i] < min)
-            min = points[i];
+        if (points[i] != EMPTY) { // Ignore EMPTY values
+            if (points[i] > max) // Find max and min values for graph upper/lower bounds
+                max = points[i];
+            if (points[i] < min)
+                min = points[i];
+        }
     }
     double line_diff = (max - min) / rows, dat; // Each line includes data point up to line_diff below
 
@@ -130,4 +155,18 @@ void graph_print(const double* points, struct tm* start_time, int zoom) {
         attroff(A_STANDOUT);
         addch(' ');
     }
+}
+
+double* graph_fill_empty(double* points, int size, int trading_days) {
+    int difference = trading_days - size;
+    points = realloc(points, (size_t) sizeof(double) * (trading_days + 1)); // Realloc for number of trading days
+    if (points == NULL) {
+        fprintf(stderr, "realloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    points[trading_days] = '\0';
+    memmove(&points[difference], points, sizeof(double) * size); // Move points to end
+    for (int i = 0; i < difference; i++) // Initialize newly allocated bytes as EMPTY
+        points[i] = EMPTY;
+    return points;
 }

@@ -19,9 +19,7 @@
 #include <ncurses.h>
 #include "api.h"
 
-int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1};
-
-int zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
+extern int zoom_months[9], zoom_change_x_months[9];
 
 /**
  * -- Main input loop for graphing --
@@ -46,5 +44,15 @@ void graph_main(const char* ticker_name_string);
  * @param zoom the zoom level
  */
 void graph_print(const double* points, struct tm* start_time, int zoom);
+
+/**
+ * Reallocates the given array with size trading days. Moves all values to end of the array and sets
+ * values not initialized as EMPTY.
+ * @param points the array to realloc
+ * @param size the size of points
+ * @param trading_days the size to realloc
+ * @return the reallocated array
+ */
+double* graph_fill_empty(double* points, int size, int trading_days);
 
 #endif
