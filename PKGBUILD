@@ -3,11 +3,11 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-l10n-git
-pkgver=1.2.105.0.g4ad4c94
+pkgver=1.3.300.0.g60c134e
 pkgrel=1
 pkgdesc="Language packs for Psi+ (Qt 5.x build)"
 arch=('any')
-url="http://psi-plus.com"
+url="https://psi-plus.com"
 license=('GPL2')
 makedepends=('qt5-tools')
 depends=('psi-plus-git')
