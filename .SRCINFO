@@ -1,0 +1,20 @@
+pkgbase = perl6-json-jwt
+	pkgdesc = JWT signing and verifying using OpenSSL
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/retupmoca/p6-JSON-JWT
+	arch = any
+	groups = perl6
+	license = MIT
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-digest-hmac
+	depends = perl6-json-fast
+	depends = perl6-mime-base64
+	depends = perl6-openssl
+	source = perl6-json-jwt-1.0::git+https://github.com/retupmoca/p6-JSON-JWT
+	sha256sums = SKIP
+
+pkgname = perl6-json-jwt
+
