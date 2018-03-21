@@ -2,8 +2,8 @@
 
 _pkgname=jdk
 pkgname=jdk-devel
-_major=10
-_build=46
+_major=11
+_build=5
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
@@ -36,15 +36,15 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("https://download.java.net/java/jdk${_major}/archive/${_build}/BCL/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+source=("https://download.java.net/java/early_access/jdk${_major}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('624516adec2a391f37cbfe97135478de12e1d98297603cd9ccea9b5dd8de8164'
-            '2e429abf6f14f506f8caa643eeed10921ef3c9b6820850778822f6e95a5fc956'
-            'c163f149154d8a3f76ba916d49215673f3056595d857b2f2b7074e88496bbd32'
-            '2dfc037e6ffc5a2bba31afe44a6a0e1e6e4eb7bb105256793372a21083b1e3be'
+sha256sums=('e4b138d6f741a5c8b76adde8adaf2ef6c11e4d73e3dad5207698ba56b1ac7832'
+            '04c9eda961ab7188a2d047c3c90f3e7e6622b7f301df2dd42f889f6846af8d90'
+            'b7d170dfec71c54841b56d980e5e1ae98b7f7bb9b9b3ac175fd067f09c7ad73c'
+            '629a0570d23fbde46224cb2495759b4728f30f40b5e5102ee90dc1352fb3e9d7'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
