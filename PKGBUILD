@@ -4,7 +4,7 @@ pkgdesc="ROS - effort_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-kinetic-effort-controllers'
-pkgver='0.13.0'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-kinetic-effort_controllers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/effort_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a1c68d5b80867b539da67339c555326a0818adee3198083ad9c39e94523be74a')
+sha256sums=('afa702e7e9f66bee58382d6cfcd09959413d4eef489d4de9a8159caa0c4d30e3')
 
 build() {
   # Use ROS environment variables
