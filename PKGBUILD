@@ -14,8 +14,8 @@ source=('https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_am
 sha512sums=('294525a6440a8eb7a263993ee655a57b1f40c76c476e231ec1b974e8a3a85dfdc763555be368e200a21d065746f2e271855ee34a6107e308618b6cdd0d1a0532')
 
 package(){
-	tar xf data.tar.xz -C "$pkgdir"
+    tar xf data.tar.xz -C "$pkgdir"
 
-  install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
-  install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
+    install -Dm644 "$pkgdir/opt/SendAnywhere/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
