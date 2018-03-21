@@ -1,4 +1,5 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Maintainer: Adam S Levy <adam@aslevy.com>
 # Contributor: Chris Clonch <chris at theclonchs dot com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
