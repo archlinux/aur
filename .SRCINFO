@@ -1,0 +1,20 @@
+pkgbase = perl6-libgit2
+	pkgdesc = A Perl 6 interface to libgit2
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/CurtTilmes/perl6-libgit2
+	arch = any
+	groups = perl6
+	license = custom
+	checkdepends = perl
+	checkdepends = perl6-file-temp
+	checkdepends = perl6-test-meta
+	checkdepends = perl6-test-when
+	makedepends = git
+	depends = libgit2
+	depends = perl6
+	source = perl6-libgit2-0.1::git+https://github.com/CurtTilmes/perl6-libgit2
+	sha256sums = SKIP
+
+pkgname = perl6-libgit2
+
