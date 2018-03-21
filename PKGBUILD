@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 199166 2016-12-13 07:29:21Z arodseth $
-# Maintainer:
+# Maintainer: Adam S Levy <adam@aslevy.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
