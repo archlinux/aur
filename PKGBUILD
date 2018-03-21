@@ -23,8 +23,9 @@ pkgver() {
 
 package() {
         cd "$srcdir/$_pkgname"
-	install --directory "${pkgdir}/usr/share/vim/vimfiles/"
-	for dir in autoload/ ftdetect/ plugin/ syntax/; do
-		cp --recursive "${dir}" "${pkgdir}/usr/share/vim/vimfiles/"
-	done
+        local vimdir="$pkgdir/usr/share/vim/vimfiles"
+        install --directory "$vimdir"
+        for dir in autoload/ ftdetect/ plugin/ syntax/; do
+                cp --recursive "${dir}" "$vimdir"
+        done
 }
