@@ -20,7 +20,9 @@ pkgver() {
 }
 
 package() {
-  VIMFILES=usr/share/vim/vimfiles
-  install -Dm755 "$srcdir/$_pkgname/ftdetect/jq.vim" "$pkgdir/$VIMFILES/ftdetect/jq.vim"
-  install -Dm755 "$srcdir/$_pkgname/syntax/jq.vim" "$pkgdir/$VIMFILES/syntax/jq.vim"
+        local vimdir="$pkgdir/usr/share/vim/vimfiles"
+        install --directory "$vimdir"
+        for dir in ftdetect/ syntax/; do
+                cp --recursive "${dir}" "$vimdir/"
+        done
 }
