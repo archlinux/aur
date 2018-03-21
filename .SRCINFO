@@ -1,7 +1,7 @@
 pkgbase = polybar-git
 	pkgdesc = A fast and easy-to-use status bar
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaagr/polybar
 	install = polybar.install
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = polybar-git
 	optdepends = libmpdclient: mpd module support
 	optdepends = wireless_tools: network module support
 	optdepends = jsoncpp: i3 module support
+	optdepends = i3-wm: i3 module support
 	optdepends = ttf-unifont: Font used in example config
 	optdepends = siji-git: Font used in example config
 	optdepends = curl: github module support
