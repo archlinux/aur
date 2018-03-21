@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-fast
-pkgver=0.6
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 pkgdesc="A naive, fast json parser and serializer"
 arch=('any')
 depends=('perl6')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  PERL6LIB=lib prove -r -e perl6
+  PERL6LIB=lib prove -r -e perl6 t/
 }
 
 package() {
