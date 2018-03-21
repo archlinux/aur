@@ -1,22 +1,20 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse libvpx icu libevent libpng libjpeg-turbo)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm libnotify)
+             autoconf2.13 rust clang llvm libnotify gtk2)
 conflicts=(cliqz-bin)
-source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch)
-sha256sums=('34fe2236256603a2b74249c34dd9832015c6c9547928d795106c9efcfed7d9ef'
-            'e8a695bd6a007525390c502739c0f00d5d753a1bde7053c21c712075f2c2994d')
+source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
+sha256sums=('352e68c9cf1c72f6776c66c017219821fc8d9e548ec9a9032993773454c0132a')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -42,9 +40,6 @@ END
 
   # Remove -lcrmf from old configure scripts
   sed -i 's/NSS_LIBS="$NSS_LIBS -lcrmf"/NSS_LIBS="$NSS_LIBS"/' old-configure.in
-
-  # https://bugs.archlinux.org/task/57285
-  patch -Np1 -i "$srcdir/0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch"
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -132,18 +127,18 @@ package() {
   install -D -m644 /dev/stdin "$_vendorjs" <<END
 // Disable update check
 pref("app.update.enabled", false);
-
-// Disable tracking (don't know if still used)
-pref("beacon.enabled", false);
+// But keep search engines updates
+pref("browser.search.update", true);
 
 // Use the classical backspace action
 pref("browser.backspace_action", 0);
 
-// Weird disabled options
-pref("browser.search.update", true);
-
 // Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
+pref("intl.locale.requested", "");
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
 END
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
