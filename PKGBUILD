@@ -1,6 +1,6 @@
 pkgname=spotifyd-bin
-pkgver=f40914fedc45c74a3412
-pkgrel=2
+pkgver=20180320
+pkgrel=1
 arch=('armv7h' 'x86_64')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
