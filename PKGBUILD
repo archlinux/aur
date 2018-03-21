@@ -3,7 +3,7 @@
 pkgname=kicad-symbols
 _pkgver="5.0.0-rc1"
 pkgver=${_pkgver//-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Official KiCad schematic symbol libraries -- stable release"
 arch=('any')
 url="https://kicad.github.io/symbols"
@@ -36,4 +36,7 @@ package() {
   cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
+
+  cp -a ../${pkgname}-${_pkgver}/legacy "${pkgdir}/usr/share/kicad/library/."
+
 }
