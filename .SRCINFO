@@ -1,9 +1,10 @@
 pkgbase = stoq-server
 	pkgdesc = Stoq server.
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stoq/stoq-server
-	arch = x86_64
+	install = stoq-server.install
+	arch = any
 	license = LGPL
 	makedepends = git
 	depends = python2

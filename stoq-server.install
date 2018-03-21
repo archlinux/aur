@@ -1,0 +1,94 @@
+post_install() {
+  # Make sure stoqserver's home exists
+  if [ ! -d '/usr/share/stoqserver' ]; then
+    mkdir -p '/usr/share/stoqserver'
+  fi
+  
+  # Try to find the stoq database
+  if [ -d "/var/run/postgresql" ]; then
+    for socket in `find /var/run/postgresql -regex '.*\.s\.PGSQL\.[0-9]+'`; do
+      PORT="`echo $PORT | sed -e 's/\(.*\.\)\([0-9]\+\)/\2/' | xargs`"
+      [ -z "$PORT" ] && continue
+      set +e
+      # TODO: Improve code when we find more than one database candidates
+      DBNAME=`sudo -u postgres psql -p $PORT -AtqwlF \| | cut -d \| -f 1 | grep stoq | head -n1`
+      set -e
+      [ ! -z "$DBNAME" ] && break
+    done
+  fi
+
+  # If the process above failed for some reason, use the default 5432
+  if [ -z "$PORT" ]; then
+    PORT="5432"
+  fi
+  if [ -z "$DBNAME" ]; then
+    DBNAME="stoq"
+  fi
+
+  # Create .stoq dir and configuration if they don't exist
+  if [ ! -f /usr/share/stoqserver/.stoq/stoq.conf ]; then
+    mkdir -p /usr/share/stoqserver/.stoq
+  cat <<EOF > /usr/share/stoqserver/.stoq/stoq.conf
+[General]
+logfile = /usr/share/stoqserver/.stoq/stoqserver.log
+
+[Database]
+rdbms = postgres
+address = 
+port = $PORT
+dbname = $DBNAME
+dbusername = stoqserver
+
+[Backup]
+key = 
+EOF
+  fi
+
+  # Create stoqserver user if it doesn't exist
+  if ! getent group stoqserver >/dev/null; then
+    groupadd stoqserver
+  fi
+  if ! getent passwd stoqserver >/dev/null; then
+    useradd -c 'stoqserver user' -g stoqserver -d '/usr/share/stoqserver' -s /bin/bash stoqserver
+    passwd -l stoqserver >/dev/null
+  fi
+  
+  # Add stoqserver on dialout group so it can interact with usb/serial devices
+  gpasswd -a stoqserver storage
+  gpasswd -a stoqserver uucp
+  
+  # Create a ssh key for stoqserver
+  if [ ! -f /usr/share/stoqserver/.ssh/id_rsa ]; then
+    mkdir -p /usr/share/stoqserver/.ssh
+    ssh-keygen -t rsa -N "" -f /usr/share/stoqserver/.ssh/id_rsa
+  fi
+  
+  # Create a .pgpass file stoqserverl
+  if [ ! -f /usr/share/stoqserver/.pgpass ]; then
+    PG_PASSWORD="`cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c32`"
+    sudo -u postgres psql -p $PORT -c "ALTER USER stoqserver WITH PASSWORD '$PG_PASSWORD';"
+    echo "*:*:*:stoqserver:$PG_PASSWORD" > /usr/share/stoqserver/.pgpass
+    chmod 0600 /usr/share/stoqserver/.pgpass
+  fi
+  
+  # Fix directory permissions
+  chown -R stoqserver:stoqserver /usr/share/stoqserver
+}
+
+post_upgrade() {
+  post_install $1
+  # FS#23858, fix postgres user shell issue
+  stoqserver_shell=$(getent passwd stoqserver | cut -d: -f7)
+  if [ "$stoqserver_shell" = "/sbin/nologin" ]; then
+    chsh -s /bin/bash stoqserver
+  fi
+}
+
+post_remove() {
+  if getent passwd stoqserver >/dev/null; then
+    userdel stoqserver
+  fi
+  if getent group stoqserver >/dev/null; then
+    groupdel stoqserver
+  fi
+}
