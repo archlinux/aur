@@ -1,11 +1,12 @@
 pkgbase = bumpversion
 	pkgdesc = Version-bump your software with a single command!
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/peritus/bumpversion
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-setuptools
 	source = https://pypi.python.org/packages/source/b/bumpversion/bumpversion-0.5.3.tar.gz
 	sha256sums = 6744c873dd7aafc24453d8b6a1a0d6d109faf63cd0cd19cb78fd46e74932c77e
 

@@ -1,13 +1,14 @@
+# Maintainer: Michael J. Pento <mjpento@verizon.net>
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=bumpversion
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Version-bump your software with a single command!'
 arch=('any')
 url='https://github.com/peritus/bumpversion'
 license=('MIT')
-depends=('python')
+depends=('python' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/b/bumpversion/bumpversion-${pkgver}.tar.gz")
 
 build() {
