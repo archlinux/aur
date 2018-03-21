@@ -2,7 +2,7 @@
 
 pkgname=extractpdfmark
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract page mode and named destinations as PDFmark from PDF"
 url="https://www.ctan.org/pkg/extractpdfmark"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ sha256sums=('63f3ababd5b1081ef92ff7a417597302327c1db3902cdb9827fade147558e6db'
             'SKIP')
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
