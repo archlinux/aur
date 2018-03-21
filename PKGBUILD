@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-core
-pkgver=0.7
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="Libraries for building reactive services in Perl6 - core"
+pkgdesc="The heart of the Cro library for building distributed systems in Perl 6, including pipeline composition and TCP support"
 arch=('any')
 depends=('perl6')
 checkdepends=('perl')
@@ -11,18 +11,18 @@ makedepends=('git')
 groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-core"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/croservices/cro-core)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
+sha256sums=('7ea9a03a0638a142afa5251fb5529b4308bcda0c8184f1943f897317df5b56a7')
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Running tests...'
   PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
