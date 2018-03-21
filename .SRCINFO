@@ -1,7 +1,7 @@
 pkgbase = chromexup
 	pkgdesc = External extension updater for Chromium based browsers
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xsmile/chromexup
 	install = chromexup.install
 	arch = any
