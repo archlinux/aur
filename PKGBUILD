@@ -6,7 +6,9 @@ pkgdesc="Stoq server."
 arch=('x86_64')
 url="https://github.com/stoq/${pkgname}"
 license=('LGPL')
-depends=('python2' 'kiwi' 'stoqdrivers' 'stoq' 'python2-twisted' 'python2-requests' 'python2-netifaces')
+depends=('python2' 'kiwi' 'stoqdrivers' 'stoq' 'python2-twisted' 'python2-requests' 'python2-netifaces'
+ 'binutils' 'supervisor' 'duplicity' 'openvpn' 'postgresql' 'postgresql-libs'
+ 'avahi' 'python2-htsql' 'python2-htsql-pgsql')
 makedepends=('git')
 conflicts=('stoq-server-git')
 source=("https://github.com/stoq/${pkgname}/archive/${pkgver}.tar.gz")
