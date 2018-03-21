@@ -6,12 +6,12 @@
 pkgname='kapacitor'
 _gitname='kapacitor'
 pkgver='1.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open source framework for processing, monitoring, and alerting on time series data'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/InfluxData/kapacitor'
 license=('MIT')
-depends=('')
+provides=('kapacitor' 'tickfmt')
 makedepends=('go' 'git')
 provides=('kapacitor')
 backup=('etc/kapacitor/kapacitor.conf')
