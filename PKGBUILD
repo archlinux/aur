@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-xnatpy
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="A new XNAT client that exposes XNAT objects/functions as python objects/functions."
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://bitbucket.org/bigr_erasmusmc/xnatpy/get/${pkgver}.tar.bz2")
-sha256sums=('3c8b24247ca0e189fc40d7ee194fcda706084b4efe6036f4765d4fc4c4790a75')
+sha256sums=('f2517d6bebd258412d0d7df02a91b2e98f6e68a6f5851a3f14aa68f0809324dc')
 
 package() {
   cd "$srcdir"/bigr_erasmusmc-xnatpy-*
