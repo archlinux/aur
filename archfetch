@@ -1,0 +1,64 @@
+
+#!/bin/sh
+#                                                                                           
+#                                   88            ad88                             88         
+#                                   88           d8"               ,d              88         
+#                                   88           88                88              88         
+#  ,adPPYYba, 8b,dPPYba,  ,adPPYba, 88,dPPYba, MM88MMM ,adPPYba, MM88MMM ,adPPYba, 88,dPPYba, 
+#  ""     `Y8 88P'   "Y8 a8"     "" 88P'    "8a  88   a8P_____88   88   a8"     "" 88P'    "8a
+#  ,adPPPPP88 88         8b         88       88  88   8PP"""""""   88   8b         88       88
+#  88,    ,88 88         "8a,   ,aa 88       88  88   "8b,   ,aa   88,  "8a,   ,aa 88       88
+#  `"8bbdP"Y8 88          `"Ybbd8"' 88       88  88    `"Ybbd8"'   "Y888 `"Ybbd8"' 88       88
+#
+#
+
+## Basic Configuration
+
+hostname="$(hostname)"
+os='Arch Linux'
+kernel="$(uname -sr)"
+uptime="$(uptime -p | sed 's/up //')"
+packages="$(pacman -Q | wc -l)"
+shell="$(basename ${SHELL})"
+if [ -z "${WM}" ]; then
+	WM="$(tail -n 1 "${HOME}/.xinitrc" | cut -d ' ' -f 2)"
+fi
+if [[ -f "${temp_dir}" ]]; then
+  deg="$(< "$temp_dir")"
+  deg="$((deg * 100 / 10000))"
+fi
+
+## Basic Colors
+
+bc="$(tput bold)"		  # bold
+c0="$(tput setaf 0)"	# black
+c1="$(tput setaf 1)"	# red
+c2="$(tput setaf 2)"	# green
+c3="$(tput setaf 3)"	# yellow
+c4="$(tput setaf 4)"	# blue
+c5="$(tput setaf 5)"	# magenta
+c6="$(tput setaf 6)"	# cyan
+c7="$(tput setaf 7)"	# white
+rc="$(tput sgr0)"		  # reset
+
+## Color Configuration
+
+lc="${rc}${bc}${c6}"	# labels
+nc="${rc}${bc}${c6}"	# user and hostname
+ic="${rc}${bc}${c7}"	# info
+fc="${rc}${bc}${c6}"	# first color
+sc="${rc}${c6}"			  # second color
+
+## Generate & Present the output
+
+cat <<EOF
+${fc}        /\        ${nc}${USER}${ic}@${nc}${hostname}${rc}
+${fc}       /^^\       ${lc}OS:        ${ic}${os}${rc}
+${fc}      /\   \      ${lc}KERNEL:    ${ic}${kernel}${rc}
+${fc}     /  ${sc}__  \     ${lc}UPTIME:    ${ic}${uptime}${rc}
+${sc}    /  (  )  \    ${lc}PACKAGES:  ${ic}${packages}${rc}
+${sc}   / __|  |__\\\\   ${lc}SHELL:     ${ic}${shell}${rc}
+${sc}  ///        \\\\\  ${lc}WM:        ${ic}${WM}${rc}
+${sc} ///          \\\\\ ${lc}CPU TEMP:  ${ic}${temp_dir}${rc}
+EOF
+ 
