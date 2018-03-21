@@ -4,7 +4,7 @@ pkgdesc="ROS - Standalone Python library for generating ROS message and service 
 url='http://www.ros.org/wiki/genmsg'
 
 pkgname='ros-kinetic-genmsg'
-pkgver='0.5.9'
+pkgver='0.5.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="genmsg-release-release-kinetic-genmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genmsg-release/archive/release/kinetic/genmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4e135c1c4d2ec611cb3efd0543a773833667968ea487a1251b0b606518805f73')
+sha256sums=('108c7f2260cd80e85dee63a8dc2c56ff477339548f078b165481ed7a98cb11a2')
 
 build() {
   # Use ROS environment variables
