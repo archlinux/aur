@@ -14,7 +14,7 @@ pkgbase = google-drive-ocamlfuse
 	makedepends = dune
 	makedepends = ocaml-ounit
 	options = staticlibs
-	source = https://github.com/astrada/google-drive-ocamlfuse/archive/v0.6.23.tar.gz
+	source = https://github.com/astrada/google-drive-ocamlfuse/archive/v0.6.25.tar.gz
 	sha256sums = 5ef3c8093978b4ced0b5bbefdcc56bfb3cbf34a06065a30b631d4099c56e082a
 
 pkgname = google-drive-ocamlfuse
