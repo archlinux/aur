@@ -1,0 +1,15 @@
+pkgbase = gdb-mini
+	pkgdesc = The GNU Debugger without useless dependencies
+	pkgver = 8.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	makedepends = texinfo
+	provides = gdb
+	conflicts = gdb
+	source = https://ftp.gnu.org/gnu/gdb/gdb-8.1.tar.xz
+	sha1sums = 641861f7d3f22b6a23bc3e801f0ff29a78375490
+
+pkgname = gdb-mini
+
