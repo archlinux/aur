@@ -4,7 +4,7 @@
 pkgbase=pipsi
 pkgname=('pipsi' 'pipsi2')
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Wraps pip and virtualenv to install scripts'
 arch=('any')
 url='https://github.com/mitsuhiko/pipsi/'
