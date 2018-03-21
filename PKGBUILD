@@ -1,10 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
 _vendorname=cliqz
-pkgver=1.18.0
-#_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
-_cqzbuildid=20180209180319
-_mozver=58.0.2
+pkgver=1.19.0
+_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
+#_cqzbuildid=20180209180319
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
 arch=('x86_64')
@@ -35,13 +34,13 @@ package() {
   install -D -m644 usr/local/share/applications/${_vendorname}.desktop \
 		  ${pkgdir}/usr/share/applications/${_vendorname}.desktop
 
-  for size in 16x16 22x22 24x24 32x32 48x48 256x256; do
+  for size in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
 	install -D -m644 usr/local/share/icons/hicolor/${size}/apps/${_vendorname}.png \
 			${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_vendorname}.png
   done
 
   install -d -m755 ${pkgdir}/usr/lib
-  cp -R usr/local/lib/${_vendorname}-${_mozver} ${pkgdir}/usr/lib/${_vendorname}
+  cp -R usr/local/lib/${_vendorname} ${pkgdir}/usr/lib/${_vendorname}
 
   install -d -m755 ${pkgdir}/usr/bin
   ln -s /usr/lib/${_vendorname}/${_vendorname} ${pkgdir}/usr/bin/${_vendorname}
