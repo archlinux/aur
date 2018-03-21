@@ -1,14 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-svg-clock  
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Analog clock which uses Scalable Vector Graphics for rendering"
-url="http://old.nabble.com/attachment/32520777/0/svg-clock.el"
+url="https://elpa.gnu.org/packages/svg-clock.html"
 arch=('any')
 license=('GPL')
-source=(http://old.nabble.com/attachment/32520777/0/svg-clock.el)
-md5sums=('5027fea60b90ecc233d1386554c7232b')
+source=(https://elpa.gnu.org/packages/svg-clock-1.0.el)
+md5sums=('5ab157f4bee2f0992d6e08d2703062a6')
 install=svg-clock.install
+
 package() {
-  install -Dm644 svg-clock.el $pkgdir/usr/share/emacs/site-lisp/svg-clock.el
+  install -Dm644 svg-clock.el "$pkgdir"/usr/share/emacs/site-lisp/svg-clock.el
 }
