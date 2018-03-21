@@ -21,9 +21,7 @@ pkgbase = essentia-git
 	conflicts = essentia-acousticbrainz
 	conflicts = lib32-essentia-acousticbrainz
 	source = git+https://github.com/MTG/essentia.git#branch=master
-	source = pthread_flag.patch
 	md5sums = SKIP
-	md5sums = 172b1a047ab19d3a11affe47204fc540
 
 pkgname = essentia-git
 
