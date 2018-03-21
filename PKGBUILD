@@ -1,7 +1,7 @@
 # Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
 pkgname=cirkuit-kf5-git
-pkgver=r406.d9ff4c1
-pkgrel=3
+pkgver=r407.c75e966
+pkgrel=1
 pkgdesc="KDE interface for LaTeX graphic tools (such as TikZ, Gnuplot, Circuit Macros) to produce publication-ready pictures"
 arch=('i686' 'x86_64')
 url="git://anongit.kde.org/cirkuit.git"
@@ -22,13 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_gitname"/src/backends
-  sed -i 's/SERVICE_TYPES cirkuit_backend.desktop/DEFAULT_SERVICE_TYPE/g' circuitmacros/CMakeLists.txt
-  sed -i 's/SERVICE_TYPES cirkuit_backend.desktop/DEFAULT_SERVICE_TYPE/g' gnuplot/CMakeLists.txt
-  sed -i 's/SERVICE_TYPES cirkuit_backend.desktop/DEFAULT_SERVICE_TYPE/g' null/CMakeLists.txt
-  sed -i 's/SERVICE_TYPES cirkuit_backend.desktop/DEFAULT_SERVICE_TYPE/g' pstricks/CMakeLists.txt
-  sed -i 's/SERVICE_TYPES cirkuit_backend.desktop/DEFAULT_SERVICE_TYPE/g' tikz/CMakeLists.txt
-  cd ..
+  cd "$_gitname"/src/
   sed -i 's/loadFile(filename)/loadFile(KUrl(filename))/g' mainwindow.cpp
 }
 
