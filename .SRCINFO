@@ -1,4 +1,4 @@
-pkgbase = libsass
+pkgbase = libsass-git
 	pkgver = 3.5.2
 	pkgrel = 1
 	url = http://sass-lang.com/libsass
