@@ -1,12 +1,12 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxpanel-git
-pkgver=0.9.3.r2417.20170120
+pkgver=0.9.3.r2441.20180305
 pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE'
 arch=('i686' 'x86_64')
 license=('GPL2')
-url='http://lxde.org/'
+url='https://lxde.org/'
 groups=('lxde-git')
 depends=('alsa-lib' 'lxmenu-data' 'libwnck' 'libfm' 'libkeybinder2')
 makedepends=('intltool' 'docbook-xml' 'docbook-xsl' 'wireless_tools' 'git')
