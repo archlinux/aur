@@ -1,7 +1,7 @@
 # Contributor: Rasi <rasi@xssn.at>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ncmpc-git
-pkgver=0.27.24.gdb8a107
+pkgver=0.29.283.g8bb65be
 pkgrel=1
 pkgdesc="A fully featured MPD client, which runs in a terminal (using ncurses)." 
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('ncurses' 'glib2' 'libmpdclient' 'python' 'expat')
 makedepends=('git' 'meson')
 conflicts=('ncmpc' 'ncmpc-svn')
-source=("$pkgname::git+git://git.musicpd.org/master/ncmpc.git")
+source=("$pkgname::git+https://github.com/MusicPlayerDaemon/ncmpc.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -42,5 +42,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   DESTDIR=$pkgdir ninja -C output install
+  rm $pkgdir/usr/share/doc/${pkgname%-*}/{AUTHORS,COPYING,NEWS}
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 } 
 
