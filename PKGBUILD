@@ -4,10 +4,10 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-kinetic-dynamic-reconfigure'
-pkgver='1.5.48'
+pkgver='1.5.49'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-message-generation
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="dynamic_reconfigure-release-release-kinetic-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/kinetic/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ce9303a71a6489f1fa2bf2ac95cc63ba13e4053f54085242a1b8014feb466658')
+sha256sums=('53d2a4bc2bb11dd4c12bff7d3b100b744add644b96b41419dec310055ce68079')
 
 build() {
   # Use ROS environment variables
