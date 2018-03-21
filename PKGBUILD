@@ -1,7 +1,7 @@
 # Maintainer: Amal Karunarathna <nasashinega@gmail.com>
 
 pkgname=hakuneko-desktop
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Electron based Manga Downloader for Linux, Windows & MacOS. Also known as HakuNeko-S."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=(
     "${pkgname}.sh"
 )
 sha512sums_x86_64=(
-    '1c773ead8387f1544cfd3dfdc60b9cbfcf537876e211062a705e84019fda690054bda272236843837d2becb2f51a7391adcd34db740627279e5f0c224386cf65'
+    'aa7089f6e536251ab2358b9df9615b2a1068109cb8a3cf2d373102f77065af551d19314551f2f25ed2527262dcdad58f56045b8b73b2f1ea650a94b392cccf78'
     '18c99d1f4f0d2cb889e5e3ec541c26842bd128af68018780d3d43bcd147e0b9cf99260f9c79f506b383f9d9946c3f92577a6c71ea647b1ea7936f4031e628601'
 )
 
