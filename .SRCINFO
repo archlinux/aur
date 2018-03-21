@@ -1,0 +1,26 @@
+pkgbase = python2-service_identity
+	pkgdesc = Service identity verification for pyOpenSSL.
+	pkgver = 17.0.0
+	pkgrel = 1
+	url = https://service-identity.readthedocs.io
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-attrs
+	depends = python2-pyopenssl
+	depends = python2-pyasn1
+	depends = python2-pyasn1-modules
+	depends = python2-cryptography
+	depends = python2-six
+	depends = python2-idna
+	depends = python2-asn1crypto
+	depends = python2-cffi
+	depends = python2-enum34
+	depends = python2-ipaddress
+	depends = python2-pycparser
+	source = https://pypi.python.org/packages/de/2a/cab6e30be82c8fcd2339ef618036720eda954cf05daef514e386661c9221/service_identity-17.0.0.tar.gz
+	md5sums = f509cb41ca2f8420bd8496291136d6cc
+
+pkgname = python2-service_identity
+
