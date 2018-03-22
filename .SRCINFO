@@ -1,7 +1,7 @@
 pkgbase = copyq
 	pkgdesc = Clipboard manager with searchable and editable history
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hluk/copyq
 	arch = x86_64
 	license = GPL3

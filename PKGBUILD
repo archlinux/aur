@@ -3,7 +3,7 @@
 
 pkgname=copyq
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard manager with searchable and editable history"
 url="https://github.com/hluk/${pkgname}"
 depends=('libxtst' 'qt5-script' 'hicolor-icon-theme')
@@ -16,7 +16,7 @@ sha256sums=('910a3b0e6410b461795af2dbde970960ae77cfdacebbc5e3ef6b5707baa74fba')
 
 build() {
     cd "CopyQ-${pkgver}"
-    cmake -DWITH_WEBKIT=0 -DCMAKE_INSTALL_PREFIX=/usr -DWITH_QT5=TRUE .
+    cmake -DCMAKE_BUILD_TYPE=Release -DWITH_WEBKIT=0 -DCMAKE_INSTALL_PREFIX=/usr -DWITH_QT5=TRUE .
     make
 }
 
