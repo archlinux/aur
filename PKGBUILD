@@ -8,8 +8,8 @@ _pkgbase=${pkgbase%71-noconflict}
 _realpkg=${pkgbase%-noconflict}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,mcrypt,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"-noconflict")
-pkgver=7.1.14
-pkgrel=5
+pkgver=7.1.15
+pkgrel=1
 pkgdesc="php 7.1 compiled as to not conflict with php 7.2+"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -36,7 +36,7 @@ validpgpkeys=(
 )
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' enchant-2.patch)
-sha256sums=('c09f0c1074f5689b492d79034adb84e6a6c6d08c6763c02282e6318d41156779'
+sha256sums=('0e17192fb43532e4ebaa190ecec9c7e59deea7dadb7dab67b19c2081a68bd817'
             'SKIP'
             '786e3d550c96959e6d0b813595599492d29cd93ae36fcbca29cdea32b60e373b'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
