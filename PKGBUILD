@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-kinetic-rviz'
-pkgver='1.12.13'
+pkgver='1.12.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ ros_makedepends=(ros-kinetic-map-msgs
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt5-base
-  ogre-1.9
+  ogre
   urdfdom-headers
   assimp
   eigen3
@@ -68,7 +68,7 @@ ros_depends=(ros-kinetic-resource-retriever
   ros-kinetic-laser-geometry)
 depends=(${ros_depends[@]}
   qt5-base
-  ogre-1.9
+  ogre
   urdfdom-headers
   assimp
   eigen3
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-kinetic-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/kinetic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e7b2e601775dbe8b6c1af35cdb7908ca2218451c7670a26f01195a8d3fb4bc7c')
+sha256sums=('f37baddc01fdc63586de61b5266c4d7bbcfac9d3f8696804e54e3d2165295afa')
 
 build() {
   # Use ROS environment variables
@@ -98,8 +98,6 @@ build() {
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
-  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/OGRE-1.9/lib/pkgconfig/
 
   # Build project
   cmake ${srcdir}/${_dir} \
