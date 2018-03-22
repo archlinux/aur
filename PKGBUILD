@@ -3,7 +3,7 @@
 
 _pkgbase=papirus-icon-theme
 pkgname=papirus-maia-icon-theme-git
-pkgver=20180322.102d72b7e
+pkgver=20180322.2ddbc103b
 pkgrel=1
 pkgdesc="Manjaro variation of Papirus icon theme (git version)"
 arch=('any')
