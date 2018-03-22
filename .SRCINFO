@@ -1,7 +1,7 @@
 pkgbase = naaman
 	pkgdesc = Not Another Aur MANager
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/enckse/naaman
 	arch = any
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = naaman
 	depends = sudo
 	depends = git
 	optdepends = bash-completion: for bash completions
-	source = https://github.com/enckse/naaman/archive/v0.6.0.tar.gz
-	sha256sums = 12cc4e78c8f4834f05906e1085b565cd6d036595cb69df8cb3c880a84282c062
+	source = https://github.com/enckse/naaman/archive/v0.6.1.tar.gz
+	sha256sums = a4ba8c79c0645997d0b2bcdedc66b6774edd599cace650b788b3bec3bcecadf6
 
 pkgname = naaman
 
