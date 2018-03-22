@@ -1,6 +1,6 @@
 # Maintainer: sardo <sardonimous@hotmail.com>
 pkgname=oorexx-beta
-pkgver=5.0.0.r11357
+pkgver=5.0.0.r11376
 pkgrel=1
 pkgdesc="open source implementation of Object Rexx"
 arch=('x86_64')
