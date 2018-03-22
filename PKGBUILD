@@ -19,21 +19,21 @@ _gitname="ninja-ide"
 
 
 prepare() {
-  cd $startdir
+  cd "$startdir"
   msg "Connecting to GIT server...."
 
-  if  [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
+  if  [ -d "$_gitname" ] ; then
+    cd "$_gitname" && git pull origin
     msg "The local files are updated."
   else
-    git clone $_gitroot $_gitname
+    git clone "$_gitroot" "$_gitname"
   fi
 
   msg "GIT checkout done or server timeout"
 }
 
 pkgver() {
-  cd $startdir/$_gitname
+  cd "$startdir/$_gitname"
   git log -1 --date=short --pretty=format:%ad | sed 's/-//g'
 }
 
