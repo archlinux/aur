@@ -21,11 +21,13 @@ conflicts=('luxrender')
 source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
         'boost-15500.patch'
         'luxrender-gcc7.patch'
-        'force_python3.diff')
+        'force_python3.diff'
+        'embree2-bvh.patch')
 md5sums=('SKIP'
          'b9e5c442093e69485752e6395c931b27'
          'fa680b0d621b42c8e7440056bf26ec1c'
-         '42692e65eabc5828693e2682e94b7c64')
+         '42692e65eabc5828693e2682e94b7c64'
+         '94bed504af9aa7710875310d4cd4fb45')
 
 pkgver() {
   cd "$srcdir/lux"
@@ -40,6 +42,9 @@ prepare() {
 
   # patch for gcc 7 missing argument error
   patch -Np1 -i ${srcdir}/luxrender-gcc7.patch
+  
+  #patch against embree2-bvh_build
+  patch -Np1 -i ${srcdir}/embree2-bvh.patch
   
   # remove reference to export_defs.h from liblux.cmake as it was removed from tree
   sed -i '/export_defs/d' cmake/liblux.cmake
