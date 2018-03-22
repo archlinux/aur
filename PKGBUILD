@@ -7,7 +7,7 @@ pkgver=1.3.7
 pkgrel=1
 pkgdesc="heads up display for the command line that will show git information"
 url="http://hackage.haskell.org/package/$_hkgname"
-license=("BSD3")
+license=("BSD")
 arch=('x86_64')
 depends=('ghc' 'ghc-libs' 'haskell-mtl' 'haskell-parsec' 'haskell-text' 'haskell-unix' 'haskell-process')
 makedepends=('ghc')
@@ -18,7 +18,7 @@ build() {
     cd "$srcdir/$_hkgname-$pkgver"
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --prefix=/usr \
         --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
         -fcurl -fpkgconfig -f-static -fterminfo -fthreaded -fexecutable \
         -f-rts -foptimize -f-warn-as-error -f-libiconv
@@ -34,6 +34,7 @@ package() {
 
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    install -D -m644 LICENSE       "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     runhaskell Setup copy --destdir="${pkgdir}"
 
     # The generated binary is called gitHUD, but it's probably convenient to be able to call it
