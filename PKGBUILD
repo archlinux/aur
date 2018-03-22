@@ -1,7 +1,7 @@
 # Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=5.0.2
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Rock solid SIP server"
 url="http://www.kamailio.org/"
@@ -17,7 +17,7 @@ optdepends=('mariadb: mysql support'
 	    'postgresql: postgresql backend')
 arch=('x86_64' 'i686')
 source=(http://www.kamailio.org/pub/kamailio/$pkgver/src/kamailio-${pkgver}_src.tar.gz)
-sha256sums=('f4aea852a888081defffb9430b477542c29a427329752e8d3ac9985473a95b40')
+sha256sums=('6ec9cefa1fa0b7e2090e41f34172db511dafa27c0c11e2b8c2140bc875b16b5d')
 provides=()
 conflicts=()
 replaces=()
