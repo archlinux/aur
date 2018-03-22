@@ -1,17 +1,19 @@
 # Maintainer: Your Name <iamjacksemail@hackermail.com>
+
+# Interesting package I found on github for car hacking. you need to make you
+# own dongle. instructions included
+
 pkgname=cbm-git
 pkgver=r13.00595d8
 pkgrel=1
 pkgdesc="Car Backdoor Maker : A hardware backdoor tool is presented having several advanced features"
 arch=('i686' 'x86_64')
 url="https://github.com/UnaPibaGeek/CBM"
-license=('GPL')
-groups=()
+license=('UNKNOWN')
 depends=('qt5-base')
 makedepends=('git' 'qt5-base')
 provides=("cbm")
 conflicts=("cbm")
-install=
 source=("${pkgname}::git+https://github.com/UnaPibaGeek/CBM.git"
 	"cbm.desktop")
 sha256sums=('SKIP'
