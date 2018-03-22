@@ -5,7 +5,7 @@
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 
 pkgname=lib32-libfdk-aac
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Fraunhofer FDK AAC codec library (32-bit)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('git')
 provides=('lib32-libfdk-aac.so')
-_commit='74c1a2a4f831285cbd93ec1427f1670d3c5c5e52'
+_commit='a30bfced6b6d6d976c728552d247cb30dd86e238'
 source=("git+https://github.com/mstorsjo/fdk-aac.git#commit=${_commit}")
 sha256sums=('SKIP')
 
