@@ -2,7 +2,7 @@
 pkgname=kismet-git
 pkgver=20180318
 pkgrel=1
-pkgdesc="Current development version based on git repo, many crucial changes since official stable Release 2017_07_R1-1"
+pkgdesc="Current development version based on git repo, many crucial changes since official stable Release 2016_07_R1-1"
 arch=('x86_64')
 url="https://www.kismetwireless.net/"
 license=('GPL')
@@ -11,8 +11,10 @@ optdepends=('hackrf: use with HackRF compatible software defined radio (SDR)')
 conflicts=('kismet')
 backup=('etc/kismet/kismet.conf' 'etc/kismet/kismet_alerts.conf' 'etc/kismet/kismet_httpd.conf' 'etc/kismet/kismet_logging.conf' 'etc/kismet/kismet_memory.conf' 'etc/kismet/kismet_storage.conf')
 install=kismet.install
-source=("https://github.com/kismetwireless/kismet/archive/master.zip")
-md5sums=('SKIP')
+source=("https://github.com/kismetwireless/kismet/archive/master.zip"
+        "${pkgname}-sysusers.conf")
+sha256sums=('SKIP'
+            '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
 
 build() {
     cd "kismet-master"
