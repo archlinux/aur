@@ -1,0 +1,16 @@
+--- a/ompl-release-release-kinetic-ompl-1.2.1-1/CMakeLists.txt	2016-11-19 10:12:22.000000000 -0800
++++ b/ompl-release-release-kinetic-ompl-1.2.1-1/CMakeLists.txt	2018-03-21 22:46:16.837486644 -0700
+@@ -116,13 +116,6 @@
+   include_directories(SYSTEM ${TRIANGLE_INCLUDE_DIR})
+ endif()
+ 
+-# If FLANN is installed, a wrapper for its nearest neighbor data structures can be used
+-find_package(flann 1.8.3 QUIET)
+-if (FLANN_FOUND)
+-    set(OMPL_HAVE_FLANN 1)
+-    include_directories(SYSTEM "${FLANN_INCLUDE_DIRS}")
+-endif()
+-
+ # R is needed for running Planner Arena locally
+ find_program(R_EXEC R)
+ 

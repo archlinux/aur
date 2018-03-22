@@ -7,7 +7,7 @@ pkgname='ros-kinetic-ompl'
 pkgver='1.2.1'
 _pkgver_patch=1
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=()
@@ -29,8 +29,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="ompl-release-release-kinetic-ompl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ompl-release/archive/release/kinetic/ompl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('391308ebe4feb777c6b6dc8eb7ae3b4657ac33e23abce3c2d3b3d7aa77af5b1a')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ompl-release/archive/release/kinetic/ompl/${pkgver}-${_pkgver_patch}.tar.gz"
+		remove_flann.patch)
+sha256sums=('391308ebe4feb777c6b6dc8eb7ae3b4657ac33e23abce3c2d3b3d7aa77af5b1a'
+            '467f87f21feababfb43e1b7f581f756333e9a80fd1dd43d64d451c3cf71fe9fc')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 < remove_flann.patch
+}
 
 build() {
   # Use ROS environment variables
