@@ -1,6 +1,6 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 6.0.10.1.2
+	pkgver = 6.0.11.1.1
 	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
@@ -12,10 +12,8 @@ pkgbase = wingide
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = http://wingware.com/pub/wingide/6.0.10/wingide-6.0.10-1-x86_64-linux.tar.bz2
-	source = http://wingware.com/pub/wingide/6.0.10/patches/fix-remote-data-loss-6.0.10p1-all.tar
-	md5sums = ba9aa7cd9671978a8a84275851dfcd4c
-	md5sums = b7726df8d91f0a7d2726980f4cdefb2a
+	source = http://wingware.com/pub/wingide/6.0.11/wingide-6.0.11-1-x86_64-linux.tar.bz2
+	md5sums = 68a85363c2183e9acf236829990e0d29
 
 pkgname = wingide
 
