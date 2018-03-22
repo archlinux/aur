@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -21,23 +21,23 @@ sha256sums=('d64a8fdcd874d2e211f5dd3002e187769b3ec656f985f538ea0510f1b58ac2b6'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
             '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f')
 
+prepare() {
+	cd "$srcdir/${_gitname}-${pkgver}ppc"
+	./autogen.sh
+}
+
 build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-	
-	## make qt gui
-	qmake-qt5 USE_QRCODE=1 USE_UPNP=1 USE_DBUS=1 \
-	    QMAKE_CFLAGS="${CFLAGS}"\
-    	QMAKE_CXXFLAGS="${CXXFLAGS} -pie"
-	make
 
-	## make peercoind
-  	make -f makefile.unix USE_UPNP=1 -e PIE=1 -C src
+	msg2 'Building...'
+	./configure --with-incompatible-bdb --with-gui=qt5
+  	make
 }
 
 check() {
   cd "$srcdir/${_gitname}-${pkgver}ppc"
   
-  make -f makefile.unix test_${_gitname} -C src
+  make check
 }
 
 package_peercoin-qt() {
