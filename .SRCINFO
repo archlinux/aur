@@ -1,6 +1,6 @@
 pkgbase = libgcj17-bin
 	pkgdesc = Dynamically load and interpret java class files. Built from binary executables available in Debian repositories.
-	pkgver = 6.4.0_15
+	pkgver = 6.4.0_13
 	pkgrel = 1
 	url = http://gcc.gnu.org/java/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = libgcj17-bin
 	license = GPL
 	depends = zlib
 	conflicts = gcc-gcj
-	source_i686 = http://ftp.debian.org/debian/pool/main/g/gcc-6/libgcj17_6.4.0-15_i386.deb
+	source_i686 = http://ftp.debian.org/debian/pool/main/g/gcc-6/libgcj17_6.4.0-13_i386.deb
 	sha1sums_i686 = 949796af87b86f808b20818fde45b8a735fcad5a
-	source_x86_64 = http://ftp.debian.org/debian/pool/main/g/gcc-6/libgcj17_6.4.0-15_amd64.deb
+	source_x86_64 = http://ftp.debian.org/debian/pool/main/g/gcc-6/libgcj17_6.4.0-13_amd64.deb
 	sha1sums_x86_64 = 2841f49b2f785d38367973b71ccd1907e1dc6c88
 
 pkgname = libgcj17-bin
