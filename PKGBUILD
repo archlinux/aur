@@ -7,7 +7,7 @@
 
 _pkgname="elementary-xfce"
 pkgname="${_pkgname}-icons"
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='Elementary icon theme with improved XFCE support'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('adwaita-icon-theme')
 conflicts=("${pkgname}-git")
 options=(!strip)
 source=("${url}/archive/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0526480846cfa20d2232e0ba2e4f2b5a68a4a5dc9f5691ab2ca623a2615d937b')
+sha256sums=('4323cd2d2ffa9439c4d7965fe06535321f6b1cdc2b47731549d1e0880e3074c7')
 
 package() {
   cd "${_pkgname}-${_pkgname}-${pkgver}"
