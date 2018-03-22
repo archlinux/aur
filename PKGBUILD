@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -71,7 +71,8 @@ package_peercoind() {
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm755 "src/peercoind" "$pkgdir/usr/bin/$pkgname"
-        install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
-        install -Dm644 "contrib/systemd/${_gitname}d@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d@.service"
+    install -Dm755 "src/peercoin-cli" "$pkgdir/usr/bin/peercoin-cli"
+    install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
+    install -Dm644 "contrib/systemd/${_gitname}d@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d@.service"
 
 }
