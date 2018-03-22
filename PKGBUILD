@@ -1,31 +1,26 @@
-# Maintainer: Harry Larsson <h@gkd.pw>
-# Maintainer: Savino Jossi <savino.jossi@gmail.com>
+# Maintainer: Harry Law <h@lsf.pw>
+# Contributor: Savino Jossi <savino.jossi@gmail.com>
 
-_pkgname=scientifica
 pkgname=scientifica-font
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc='Tall and condensed bitmap font for geeks.'
-license=('SIL')
-arch=(any)
+license=( 'SIL' )
+arch=( 'any' )
 url='https://github.com/NerdyPepper/scientifica'
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
-provides=(${pkgname})
-conflicts=(${pkgname})
-replaces=(${pkgname})
+depends=( 'xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig' )
+optdepends=( 'xorg-fonts-alias' )
 install=scientifica-font.install
-_gitrepo='https://raw.githubusercontent.com/NerdyPepper'
-source=("${_gitrepo}/scientifica/master/regular/scientifica-11.bdf"
-        "${_gitrepo}/scientifica/master/bold/scientificaBold-11.bdf"
-        "${_gitrepo}/scientifica/master/LICENSE")
-md5sums=('69560467cea171345f88649f9086d477'
-         '8302661686292da3b2fffc21c561fb21'
-         '77b104b57cdfb5a0e62b76a0057009df')
+source=( 'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf'
+         'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf'
+         'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/LICENSE' )
+md5sums=( '2eccb0b8d69c781ff1a26b6e4093121c'
+          '0965772b2f69aeec0d2f60194a167fc0'
+          '77b104b57cdfb5a0e62b76a0057009df' )
 
 build(){
-  cd ${srcdir}
   msg2 "Creating font config files..."
-  cat > 75-yes-scientifica.conf << EOF
+  cat > "${srcdir}/75-yes-scientifica.conf" << EOF
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -33,8 +28,9 @@ build(){
   <selectfont>
    <acceptfont>
       <pattern>
-  	  <patelt name="family">
-  		<string>scientifica</string>
+  	  <patelt name="file">
+  		<string>scientifica-11.bdf</string>
+		<string>scientfiicaBold-11.bdf</string>
   	  </patelt>
   	</pattern>
     </acceptfont>
@@ -44,21 +40,17 @@ EOF
 }
 
 package() {
-  cd ${srcdir}
-  _bdfdir=/usr/share/fonts/misc
-  _avail=/etc/fonts/conf.avail
-  _license=/usr/share/licenses
-
   msg2 "Installing bitmap font files..."
-  install -d "${pkgdir}${_bdfdir}"
-  install -m0644 *.bdf "${pkgdir}${_bdfdir}/"
+  install -Dm0644 "${srcdir}/scientifica-11.bdf" \
+	  "${pkgdir}/usr/share/fonts/misc/scientifica-11.bdf"
+  install -Dm0644 "${srcdir}/scientificaBold-11.bdf" \
+	  "${pkgdir}/usr/share/fonts/misc/scientificaBold-11.bdf"
 
   msg2 "Installing font config files..."
-  install -d "${pkgdir}${_avail}"
-  install -m0644 *.conf "${pkgdir}${_avail}/"
+  install -Dm0644 "${srcdir}/75-yes-scientifica.conf" \
+	  "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica"
 
   msg2 "Installing license..."
-  install -d "${pkgdir}${_license}/${pkgname}"
-  install -D -m0644 "LICENSE" \
-    "${pkgdir}${_license}/${pkgname}/"
+  install -Dm0644 "${srcdir}/LICENSE" \
+	  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
