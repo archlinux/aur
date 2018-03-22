@@ -1,9 +1,10 @@
 pkgbase = libee
 	pkgdesc = event expression library inspired by CEE
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.libee.org/
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = LGPL2.1
 	depends = libestr
 	depends = glibc

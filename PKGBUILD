@@ -4,10 +4,10 @@
 
 pkgname=libee
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="event expression library inspired by CEE"
 url="http://www.libee.org/"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('LGPL2.1')
 depends=('libestr' 'glibc')
 makedepends=()
