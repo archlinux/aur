@@ -1,12 +1,12 @@
 pkgbase = uget-integrator-browsers
-	pkgver = 0.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ugetdm/uget-integrator
 	arch = any
 	license = GPL3
 	depends = uget-integrator
-	source = ugetdm-chrome-0.0.1::https://raw.githubusercontent.com/ugetdm/uget-integrator/v0.0.1/conf/com.ugetdm.chrome.json
-	source = ugetdm-firefox-0.0.1::https://raw.githubusercontent.com/ugetdm/uget-integrator/v0.0.1/conf/com.ugetdm.firefox.json
+	source = ugetdm-chrome-1.0.0::https://raw.githubusercontent.com/ugetdm/uget-integrator/v1.0.0/conf/com.ugetdm.chrome.json
+	source = ugetdm-firefox-1.0.0::https://raw.githubusercontent.com/ugetdm/uget-integrator/v1.0.0/conf/com.ugetdm.firefox.json
 	md5sums = 09303ac5e041a9788cf0748929cbd827
 	md5sums = 14049191a778e186d6805b65972245d9
 
