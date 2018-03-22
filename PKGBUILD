@@ -1,11 +1,12 @@
 # Maintainer: edward-p <micro.fedora@gmail.com>
 pkgname=ttf-consolas-with-yahei-powerline-git
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel=0
 pkgdesc="Consolas-with-Yahei with powerline patched with nerd-fonts)"
 arch=(any)
 url=https://github.com/crvdgc/Consolas-with-Yahei
 depends=(fontconfig xorg-font-utils)
+conflicts=(ttf-consolas-with-yahei)
 makedepends=(tar)
 fontname='consolas-with-yahei'
 install=$pkgname.install
