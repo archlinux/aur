@@ -2,12 +2,12 @@
 _name=pyxstitch
 pkgname=python-$_name
 pkgver=1.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="takes source code files and produces syntax-highlighted patterns for cross stitching."
 arch=("any")
 url="https://github.com/enckse/$_name"
 license=('MIT')
-depends=('python' 'python-pillow' 'python-pygments')
+depends=('python' 'python-pillow' 'python-setuptools' 'python-pygments')
 optdepends=("bash-completion: for bash completions")
 _md5='ddbd4b9af33c8928d485a40991503e10'
 _rawcontent="https://raw.githubusercontent.com/enckse/$_name/v$pkgver/"
