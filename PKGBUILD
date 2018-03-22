@@ -44,18 +44,3 @@ package() {
   install -D -m644 application-x-reaper.xml "${pkgdir}/usr/share/mime/packages/application-x-reaper.xml"
 }
 
-
-post_install() {
-  update-mime-database usr/share/mime &>/dev/null
-  update-desktop-database -q &>/dev/null
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-}
-
-post_upgrade() {
-  post_install
-}
-
-post_remove() {
-  post_install
-}
-
