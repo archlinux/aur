@@ -11,26 +11,24 @@ if [[ -z $_piver ]]; then
   exit 1
 fi
 
-if [[ -n "$_piver" ]]; then
-  _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
-fi
-
 _pkgname=qpi
 
 case $_piver in
 1)
   _toolchainname=armv6-rpi-linux-gnueabihf
+  pkgver=6.1.0
 ;;
 2)
   _toolchainname=armv7-rpi2-linux-gnueabihf
+  pkgver=6.1.0
 ;;
 3)
-  _toolchainname=aarch64-rpi3-linux-gnueabi
+  _toolchainname=aarch64-rpi3-linux-gnu
+  pkgver=7.3.0
 ;;
 esac
 
 pkgname=qpi${_piver}-toolchain
-pkgver=6.1.0
 pkgrel=4
 pkgdesc="cross-tool-ng compiled GCC toolchain for the pi"
 arch=("x86_64")
