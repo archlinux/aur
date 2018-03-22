@@ -3,7 +3,7 @@
 
 _pkgbase=v4l2loopback
 pkgname=${_pkgbase}-dkms-git
-pkgver=0.10.0.r12.gfe07b6f
+pkgver=0.11.0.r0.g05a03e2
 pkgrel=1
 pkgdesc="v4l2-loopback device"
 url="https://github.com/umlaeute/v4l2loopback"
@@ -11,8 +11,8 @@ arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('dkms')
 makedepends=('git' 'help2man' 'linux-headers')
-conflicts=("${_pkgbase}")
-provides=('v4l2loopback-dkms')
+conflicts=("${_pkgbase}-dkms")
+provides=("${_pkgbase}-dkms")
 install="${pkgname}.install"
 source=("git://github.com/umlaeute/v4l2loopback.git"
         "${pkgname}.install")
