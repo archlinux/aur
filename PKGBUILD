@@ -2,14 +2,14 @@
 
 _pkgname=citra
 pkgname=$_pkgname-qt-canary-git
-pkgver=r5876.0a2fbb53
+pkgver=r5878.66312b56
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra-canary/tree/master"
 license=('GPL2')
-depends=('shared-mime-info' 'desktop-file-utils')
-makedepends=('git' 'sdl2' 'qt5-base' 'cmake')
+depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base')
+makedepends=('git' 'cmake')
 optdepends=('libxkbcommon-x11: for X11 support'
 	'qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary#branch=master"
