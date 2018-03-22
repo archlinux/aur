@@ -4,9 +4,9 @@
 
 pkgname=libfastjson
 pkgver=0.99.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A performance-focused json library for C"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/rsyslog/libfastjson"
 license=('GPL')
 depends=()
