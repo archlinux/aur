@@ -40,7 +40,7 @@ _static_build=false
 _build_from_head=false
 _patching=true
 _minimal=true
-_uberminimal=false
+_uber_minimal=false
 _testing=false
 
 if [[ -z ${startdir} ]]; then
@@ -54,6 +54,7 @@ fi
 
 if [[ -f static ]]; then
   _static_build=true
+  _uber_minimal=true
 fi
 
 if [[ -f testing ]]; then
@@ -62,6 +63,10 @@ fi
 
 if [[ -f full-build ]]; then
   _minimal=false
+fi
+
+if [[ -f uber-minimal ]]; then
+  _uber_minimal=false
 fi
 
 # Sanity check options
@@ -132,15 +137,6 @@ case ${_piver} in
 ;;
 esac
 
-if $_building && $_uberminimal; then
-  _skip_qtwidgets=true
-fi
-
-if $_building && $_minimal; then
-  _skip_qtscript=true
-  _skip_qtwebengine=true
-fi
-
 if $_target_host; then
   _use_mesa=true
 else
@@ -167,8 +163,16 @@ provides=($pkgname)
 
 if $_static_build; then
   pkgname="${pkgname}-static"
+  _uber_minimal=true
+fi
+
+if $_building && $_uber_minimal; then
   _debug=false
+  _minimal=true
   _skip_qtwidgets=true
+fi
+
+if $_building && $_minimal; then
   _skip_qtscript=true
   _skip_qtwebengine=true
 fi
@@ -212,13 +216,13 @@ _arch_specific_configure_options="\
     -no-rpath \
 "
 
-if $_static_build; then
+if $_uber_minimal; then
     if $_target_host; then
         _additional_configure_flags="$_additional_configure_flags -no-eglfs"
     else
         _additional_configure_flags="$_additional_configure_flags -no-xcb"
     fi
-    _exhaustive_static_specific_configure_options="\
+    _exhaustive_uber_minimal_specific_configure_options="\
         -no-direct2d \
         -no-directfb \
         -no-gbm \
@@ -236,9 +240,8 @@ if $_static_build; then
         -no-qml-debug \
     "
 
-    _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
-    _additional_configure_flags="$_additional_configure_flags
-        -ltcg \
+    _additional_configure_flags="$_additional_configure_flags $_exhaustive_uber_minimal_specific_configure_options"
+    _additional_configure_flags="$_additional_configure_flags \
         -no-ico \
         -no-glib \
         -no-fontconfig \
@@ -249,15 +252,20 @@ else
     _additional_configure_flags="$_additional_configure_flags \
         -hostprefix ${_installprefix} \
         -fontconfig \
-        -system-sqlite \
         -system-freetype \
         -system-harfbuzz \
     "
 fi
 
-# Seems to be creating a large amount of breakage
-_core_configure_options="\
+if $_static_build; then
+    _additional_configure_flags="$_additional_configure_flags \
+        -ltcg \
+    "
+fi
+
+_core_configure_options=" \
                  -prefix ${_installprefix} \
+                 -qt-sqlite \
                  -optimized-qmake \
                  -optimized-tools \
                  -optimize-size \
@@ -271,7 +279,8 @@ _core_configure_options="\
                  -make libs \
                  -nomake tools \
                  \
-                 -reduce-exports"
+                 -reduce-exports \
+        "
 
 if $_testing; then
   _tar_xz_sha256="9482538af151454f79def3df1f4f76fc9475372b96cc9ca8515d7b2112a7d8cf"
@@ -350,13 +359,13 @@ build() {
   local _basedir="${_srcdir}/qtbase"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
-  if $_static_build; then
-    local _qtpro=${_srcdir}/qt.pro
-    local _tmp_qtpro=$(mktemp)
-    cp $_qtpro $_tmp_qtpro
-    echo "QT_BUILD_MODULES = qtbase qtdeclarative" > $_qtpro
-    cat $_tmp_qtpro >> $_qtpro
-  fi
+if $_uber_minimal; then
+  local _qtpro=${_srcdir}/qt.pro
+  local _tmp_qtpro=$(mktemp)
+  cp $_qtpro $_tmp_qtpro
+  echo "QT_BUILD_MODULES = qtbase qtdeclarative" > $_qtpro
+  cat $_tmp_qtpro >> $_qtpro
+fi
 
   cd ${_srcdir}
 
@@ -407,7 +416,7 @@ fi
   local _configure_line_fn=configure_line
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
-  ${_configure_line} || ${_configure_line} || exit 1
+  ${_configure_line} || exit 1
   make || exit 1
 }
 
