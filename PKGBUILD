@@ -6,6 +6,7 @@ pkgver="1.2.0"
 _cupsver="1.3.0"
 pkgrel=0
 _revision=0
+epoch=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8900CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')

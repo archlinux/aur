@@ -2,6 +2,7 @@ pkgbase = brother-mfc-l8900cdw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-L8900CDW
 	pkgver = 1.2.0
 	pkgrel = 0
+	epoch = 1
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-l8900cdw.install
 	arch = i686
