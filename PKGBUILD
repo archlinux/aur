@@ -32,8 +32,8 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.10
-pkgrel=2
+pkgver=4.15.11
+pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -60,7 +60,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'bbc4e9dc11c15493bd74bf1aae76741ea0e170bc3a07ba9489048bdc9ff85671'
+            'ad74ca849d66056ac453d004caa36f20c56fe5eedb4370e279b55b4e7b02ccc2'
             'SKIP'
             'de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
