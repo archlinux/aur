@@ -2,7 +2,7 @@
 # Maintainer: Jguer <joaogg3@gmail.com>
 pkgname="yay-git"
 _pkgname="yay"
-pkgver=3.440.r35.g3576903
+pkgver=4.505.r63.g82124c1
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('git: devel update support')
 makedepends=('git' 'go')
 conflicts=('yay-bin' 'yay')
 provides=('yay')
-source=("git+https://github.com/Jguer/yay/")
+source=("yay::git+https://github.com/Jguer/yay.git#branch=master")
 md5sums=("SKIP")
 
 pkgver() {
@@ -42,14 +42,14 @@ package() {
   install -Dm755 "${_output}/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 
   # Install manpage
-  install -Dm644 "${_output}/yay.8" "${pkgdir}/usr/share/man/man8/yay.8"
+  install -Dm644 "${_output}/doc/yay.8" "${pkgdir}/usr/share/man/man8/yay.8"
 
   # Install bash completion
-  install -Dm644 "${_output}/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/yay"
+  install -Dm644 "${_output}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/yay"
 
   # Install zsh completion
-  install -Dm644 "${_output}/zsh-completion" "${pkgdir}/usr/share/zsh/site-functions/_yay"
+  install -Dm644 "${_output}/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_yay"
 
   # Install fish completion
-  install -Dm644 "${_output}/yay.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/yay.fish"
+  install -Dm644 "${_output}/completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/yay.fish"
 }
