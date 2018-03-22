@@ -1,9 +1,10 @@
 pkgbase = rsyslog
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability
 	pkgver = 8.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rsyslog.com/
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = postgresql-libs>=8.4.1
 	makedepends = libmariadbclient

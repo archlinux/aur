@@ -3,10 +3,10 @@
 
 pkgname=rsyslog
 pkgver=8.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('libestr' 'liblogging' 'librelp' 'libfastjson')
 makedepends=('postgresql-libs>=8.4.1' 'libmariadbclient' 'net-snmp' 'gnutls'
