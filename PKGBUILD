@@ -9,8 +9,8 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.6
 pkgver=${_pkgvermajmin}.0
-_verpostfix="beta1"
-pkgrel=1
+_verpostfix="rc1"
+pkgrel=2
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
@@ -38,7 +38,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('f7368153d4527a9058e11c5e61e9e719896d2b1f7411f5a81c82aed0f7cdb9cf')
+sha256sums=('ce6225b2d5283fbd0c96c000952d247ecd9a537038375914374952f78b215e9d')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
@@ -61,7 +61,11 @@ build() {
   local src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
 
-  qbs ${_qbs_settings} -d build -f ${src_dir} --all-products project.withAutotests:false profile:${_qbs_profile} release
+  cd ${src_dir}
+  qmake
+  make
+
+  #qbs ${_qbs_settings} -d build -f ${src_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
   set +o nounset
 }
 
@@ -70,7 +74,9 @@ package() {
   local _src_dir=${srcdir}/${_filename}
   local _pkg_dir=${pkgdir}/usr/
 
-  qbs install ${_qbs_settings} -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false profile:${_qbs_profile} release
+  #qbs install ${_qbs_settings} -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
+  cd ${src_dir}
+  make install
 
   # Workaround for FS#40583
   mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
@@ -83,6 +89,6 @@ package() {
   set +o nounset
 }
 
-if $_building; then
-  qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
-fi
+#if $_building; then
+#  qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
+#fi
