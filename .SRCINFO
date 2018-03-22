@@ -1,5 +1,5 @@
 pkgbase = perl6-cro-http-session-redis
-	pkgdesc = SSL support for the Cro library for building distributed systems in Perl 6
+	pkgdesc = A role to help with persisting Cro HTTP sessions using Redis
 	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/croservices/cro-http-session-redis

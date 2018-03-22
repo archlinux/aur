@@ -3,7 +3,7 @@
 pkgname=perl6-cro-http-session-redis
 pkgver=0.7.3
 pkgrel=1
-pkgdesc="SSL support for the Cro library for building distributed systems in Perl 6"
+pkgdesc="A role to help with persisting Cro HTTP sessions using Redis"
 arch=('any')
 depends=('perl6'
          'perl6-cro-http'
