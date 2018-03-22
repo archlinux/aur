@@ -1,8 +1,9 @@
 pkgbase = icinga2
 	pkgdesc = An open source host, service and network monitoring program
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = http://www.icinga.org
+	changelog = icinga2.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,8 +16,8 @@ pkgbase = icinga2
 	depends = libedit
 	depends = openssl
 	depends = yajl
-	source = https://github.com/Icinga/icinga2/archive/v2.8.1.tar.gz
-	sha256sums = 83930bf95a5c6562cc31c37ddb01b361665497ef7001e9cc8763fd499a4d709d
+	source = https://github.com/Icinga/icinga2/archive/v2.8.2.tar.gz
+	sha256sums = 508820905c86906117a616e90eb16b646007e178621b0df9f27fcaf1a491151c
 
 pkgname = icinga2-common
 	pkgdesc = Common files for Icinga2

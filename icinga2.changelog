@@ -1,0 +1,13 @@
+2.8.2-1
+  - New upstream version 2.8.2, including security fixes for:
+    - CVE-2017-16933: chmod on user-writable symlinks, allowing privilege
+      escalation.
+    - CVE-2018-6532: Denial of service by memory exhaustion if the API
+      component is enabled.
+    - CVE-2018-6533: Possible privilege escalation via init.conf.
+    - CVE-2018-6534: Denial of service due to a NULL pointer dereference.
+    - CVE-2018-6535: API lacks a constant-time password comparison.
+    - CVE-2018-6536: (not affected when using systemd) The init.d script kills
+      a PID supplied by the icinga user as root.
+  - As the update removes /etc/icinga2/init.conf, you have to update
+    /etc/default/icinga2 if you changed the user or group in init.conf.
