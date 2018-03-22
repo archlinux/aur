@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.8.10
+Version=0.10.0
 Name=Ethereum Wallet
 Comment=Ethereum wallet for Ether accounts, wallets and smart contracts
 Path=/usr/share/ethereumwallet
