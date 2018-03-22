@@ -4,7 +4,7 @@ pkgdesc="ROS - Utility functions for displaying and debugging data in Rviz via p
 url='https://github.com/davetcoleman/rviz_visual_tools'
 
 pkgname='ros-kinetic-rviz-visual-tools'
-pkgver='3.4.1'
+pkgver='3.6.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -51,7 +51,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz_visual_tools-release-release-kinetic-rviz_visual_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/davetcoleman/rviz_visual_tools-release/archive/release/kinetic/rviz_visual_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c68300087770ff5e54127d23c5896d415761e47af18aa6315be937799db2be6e')
+sha256sums=('c31874ae535654e6ef65b52efae8b86799ffcbe0afadf58e13dc22838dd754b6')
 
 build() {
   # Use ROS environment variables
