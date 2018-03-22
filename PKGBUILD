@@ -1,4 +1,4 @@
-# Maintainer: Giorgio Wicklein <giowckln@gmail.com>
+# Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=passiflora
 pkgver=2.3
 pkgrel=1
