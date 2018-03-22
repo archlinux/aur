@@ -1,9 +1,10 @@
 pkgbase = liblogging
 	pkgdesc = easy to use, portable, open source library for system logging
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.liblogging.org/
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = python-docutils
 	depends = systemd

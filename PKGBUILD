@@ -4,10 +4,10 @@
 
 pkgname=liblogging
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="easy to use, portable, open source library for system logging"
 url="http://www.liblogging.org/"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('GPL')
 depends=('systemd')
 makedepends=('python-docutils')
