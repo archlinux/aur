@@ -1,13 +1,11 @@
 pkgbase = m64py
-	pkgdesc = M64Py is a Qt5 front-end (GUI) for Mupen64Plus, a cross-platform plugin-based Nintendo 64 emulator
+	pkgdesc = A Qt5 front-end (GUI) for Mupen64Plus, a cross-platform plugin-based Nintendo 64 emulator
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mupen64plus/mupen64plus-ui-python
-	install = m64py.install
 	arch = any
 	license = GPL
 	makedepends = python-distribute
-	depends = desktop-file-utils
 	depends = libxkbcommon-x11
 	depends = mupen64plus
 	depends = python-pyqt5
