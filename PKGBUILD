@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt that offer visualization."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-visualization'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,7 +24,7 @@ ros_makedepends=(ros-kinetic-object-recognition-msgs
   ros-kinetic-moveit-ros-perception)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen
+  eigen3
   pkg-config)
 
 ros_depends=(ros-kinetic-object-recognition-msgs
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_visualization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_visualization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('74b1616abaafd91a3db6bf5fb97e6e6c4d78ec9037ebdffda364f436751316fb')
+sha256sums=('7facf4dcc230cb36340dc11d91fa87fe82c8443a63f60f1dbe5d932376c70aa9')
 
 build() {
   # Use ROS environment variables
