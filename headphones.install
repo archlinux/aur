@@ -1,26 +1,26 @@
 post_upgrade() {
-  # needed because started before hooks
-  sysemd-sysusers
-  systemd-tmpfiles --create
 
   if (( $(vercmp "0.5.18.r159.gda9287d7-2" "$2") > 0 )); then
+    # needed because started before hooks
+    systemd-tmpfiles --create
+
     if [[ -f /opt/headphones/config.ini && ! -f /var/lib/headphones/config.ini ]]; then
-      cp -a /opt/headphones/config.ini /var/lib/headphones/config.ini
+      cp -a {/opt,/var/lib}/headphones/config.ini
       echo "Copied config.ini from /opt/headphones/ -> /var/lib/headphones/"
     fi
 
     if [[ -f /opt/headphones/headphones.db && ! -f /var/lib/headphones/headphones.db ]]; then
-      cp -a /opt/headphones/headphones.db /var/lib/headphones/headphones.db
+      cp -a {/opt,/var/lib}/headphones/headphones.db
       echo "Copied headphones.db from /opt/headphones/ -> /var/lib/headphones/"
     fi
 
     if [[ -d /opt/headphones/logs && ! -d /var/lib/headphones/logs ]]; then
-      cp -a /opt/headphones/logs /var/lib/headphones/logs
+      cp -a {/opt,/var/lib}/headphones/logs
       echo "Copied logs from /opt/headphones/ -> /var/lib/headphones/"
     fi
 
     if [[ -d /opt/headphones/cache && ! -d /var/lib/headphones/cache ]]; then
-      cp -a /opt/headphones/cache /var/lib/headphones/cache
+      cp -a {/opt,/var/lib}/headphones/cache
       echo "Copied cache from /opt/headphones/ -> /var/lib/headphones/"
     fi
   fi
