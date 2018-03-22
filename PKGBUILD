@@ -1,17 +1,29 @@
 pkgname=linvst
-pkgver=1.9.1
+pkgver=1.9.r40.221b3cf
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine')
-source=("https://github.com/osxmidi/LinVst/releases/download/1.9/LinVst-${pkgver}-Debian-Stretch.zip")
-sha256sums=('b81ea4ace70b0e70e6641a795dab523aa8f1a3d7ddcfd15980132576f87050d8')
+source=('git+https://github.com/osxmidi/LinVst.git' 'https://download.steinberg.net/sdk_downloads/vstsdk369_01_03_2018_build_132.zip')
+sha256sums=('SKIP'
+            '7c6c2a5f0bcbf8a7a0d6a42b782f0d3c00ec8eafa4226bbf2f5554e8cd764964')
+
+pkgver() {
+    cd "LinVst"
+    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    ln -sf "${srcdir}/VST_SDK/VST2_SDK/pluginterfaces" "LinVst/"
+}
+
+build() {
+    cd "${srcdir}/LinVst"
+    make -f Makefile-embed-6432 DESTDIR="${pkgdir}" all
+}
 
 package() {
-  for file in "${srcdir}/LinVst-${pkgver}-Debian-Stretch/embedded-version/"*.{exe,so}; do
-     filename=`basename "${file}"`
-     install -D -m755 "${file}" "${pkgdir}/usr/bin/${filename}"
-  done
+    cd "${srcdir}/LinVst"
+    make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/lib/vst/"  install
 }
-                                                                                                                                                                                                                            
