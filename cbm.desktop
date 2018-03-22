@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CBM
+GenericName=Car Back Door
+Exec=CBM
+Terminal=false
+Icon=car_backdoor.png
+Type=Application
+Categories=Application;Utility
+Comment=Car Backdoor Building Application
