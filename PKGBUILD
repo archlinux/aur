@@ -10,7 +10,7 @@ url="https://symless.com/synergy"
 license=('unknown')
 groups=('')
 depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme' 'openssl-1.0' 'libx11>=1.2.99.901' 'libxext' 'libxi>=1.2.99.4' 'libxtst' 'openssl-1.0>=1.0.0' 'qt5-base>=5.5.0' 'qt5-declarative>=5.5.0' 'qt5-quickcontrols>=5.5.0' 'qt5-svg>=5.5.0')
-conflicts=('synergy' 'synergy2')
+conflicts=('synergy' 'synergy2-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://binaries.symless.com/v2.0.7/synergy_2.0.7.stable_b1477%2Be4d1ed68_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
