@@ -1,4 +1,4 @@
-# Maintainer: Giorgio Wicklein <giowckln@gmail.com>
+# Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=megacmd-bin
 pkgver=0.9.8
 pkgrel=1
