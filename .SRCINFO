@@ -1,12 +1,12 @@
 pkgbase = naaman
 	pkgdesc = Not Another Aur MANager
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/enckse/naaman
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	depends = python-xdg
 	depends = pyalpm
 	depends = sudo
