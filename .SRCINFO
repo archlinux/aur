@@ -1,0 +1,22 @@
+pkgbase = python-pysnmp
+	pkgdesc = Pure Python, open source and free implementation of v1/v2c/v3 SNMP engine
+	pkgver = 4.4.4
+	pkgrel = 1
+	url = https://github.com/etingof/pysnmp
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://github.com/etingof/pysnmp/#tag=v4.4.4
+	sha256sums = SKIP
+
+pkgname = python-pysnmp
+	depends = python
+	depends = python-pysmi
+	depends = python-pyasn1
+
+pkgname = python2-pysnmp
+	depends = python2
+	depends = python2-pysmi
+	depends = python2-pyasn1
+
