@@ -1,6 +1,6 @@
-pkgbase = flowee
+pkgbase = flowee-git
 	pkgdesc = Flowee the Hub
-	pkgver = 0.1
+	pkgver = git
 	pkgrel = 1
 	url = http://flowee.org/
 	install = flowee.install
@@ -12,6 +12,10 @@ pkgbase = flowee
 	depends = boost-libs
 	depends = libevent
 	depends = openssl
+	optdepends = zeromq: for backwards compatibility in the hub,
+	optdepends = miniupnpc: allows the hub to open port-forwarding,
+	optdepends = qt5-base: for the hub-gui,
+	optdepends = qt5-quickcontrols2: builds the Point-of-Sales component
 	provides = flowee-hub
 	backup = etc/flowee/flowee.conf
 	source = git+https://github.com/floweethehub/hub.git#branch=master
@@ -23,5 +27,5 @@ pkgbase = flowee
 	sha256sums = c02e66610a93f1f8b302b5409aa094ec8fd842698f2f7b54d8645bebae3da98b
 	sha256sums = 635bf93ae346f7a8f4baf61d2d8316aa24647e87d23847876302330cb1e1191b
 
-pkgname = flowee
+pkgname = flowee-git
 

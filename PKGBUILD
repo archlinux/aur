@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
-pkgname=flowee
-pkgver=ecc0613f
+pkgname=flowee-git
+pkgver=git
 pkgrel=1
 pkgdesc="Flowee the Hub"
 arch=('i686' 'x86_64')
@@ -9,6 +9,10 @@ url="http://flowee.org/"
 license=('GPL')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake')
+optdepends=('zeromq: for backwards compatibility in the hub',
+    'miniupnpc: allows the hub to open port-forwarding',
+    'qt5-base: for the hub-gui',
+    'qt5-quickcontrols2: builds the Point-of-Sales component')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
