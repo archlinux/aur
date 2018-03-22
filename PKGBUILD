@@ -3,7 +3,7 @@
 pkgbase=xlesspass-git
 pkgname=$pkgbase
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 _gitname=XLessPass
 _gittag="v${pkgver}"
 pkgdesc="Allows you to use a single master key to obtain the key of your saved sessions."  
@@ -11,6 +11,7 @@ arch=('x86_64')
 url='https://github.com/daltomi/XLessPass'
 license=('GPL3')
 depends=('gtk2')
+conflicts=('xlesspass-bin')
 makedepends=('git' 'lazarus-gtk2')
 
 
