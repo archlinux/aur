@@ -1,7 +1,7 @@
 pkgbase = skribilo
 	pkgdesc = The Ultimate Document Programming Framework
 	pkgver = 0.9.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.nongnu.org/skribilo/
 	arch = any
 	license = GPL

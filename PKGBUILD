@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo
 pkgver=0.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
 arch=('any')
@@ -22,7 +22,7 @@ build() {
   make 
 }
 package() {
-  cd /$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/share/info/*.png
   install -d "$pkgdir"/usr/share/doc/$pkgname
