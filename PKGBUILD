@@ -3,7 +3,7 @@
 pkgname=perl6-libgit2
 pkgver=0.1
 pkgrel=1
-pkgdesc="A Perl 6 interface to libgit2"
+pkgdesc="Direct access to Git via libgit2 library"
 arch=('any')
 depends=('libgit2' 'perl6')
 checkdepends=('perl'

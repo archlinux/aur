@@ -1,5 +1,5 @@
 pkgbase = perl6-libgit2
-	pkgdesc = A Perl 6 interface to libgit2
+	pkgdesc = Direct access to Git via libgit2 library
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/CurtTilmes/perl6-libgit2
