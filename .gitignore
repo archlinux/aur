@@ -1,1 +1,5 @@
-/*
+/v*.tar.gz
+/*.pkg.tar.xz
+/*.log
+/src/
+/pkg/
