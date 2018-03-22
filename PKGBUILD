@@ -1,14 +1,13 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Another Aur MANager"
 arch=("any")
 url="https://github.com/enckse/$pkgname"
 license=('MIT')
-depends=('python' 'python-xdg' 'pyalpm' 'sudo')
-optdepends=("bash-completion: for bash completions"
-            "git: for installing packages (instead of tar)")
+depends=('python' 'python-xdg' 'pyalpm' 'sudo' 'git')
+optdepends=("bash-completion: for bash completions")
 makedepends=('help2man')
 source=("https://github.com/enckse/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('da90e0c42f3ae9c4792dd641f451ee3c840b39b67b7fd8e70727ee177c83cca9')
