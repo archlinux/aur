@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-zeromq
-pkgver=0.8
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="Libraries for building reactive services in Perl6 - ZeroMQ part"
+pkgdesc="ZeroMQ support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
 depends=('cro'
          'perl6'
@@ -14,18 +14,18 @@ makedepends=('git')
 groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-zeromq"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/croservices/cro-zeromq)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
+sha256sums=('7c368f9476163a7952d2d6c682a7b08318fad5c7980cddee7faec68fe482ca91')
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Running tests...'
   PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
