@@ -4,10 +4,10 @@
 
 pkgname=libestr
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="essentials for string handling (and a bit more)"
 url="http://libestr.adiscon.com/"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('LGPL2.1')
 depends=()
 source=("http://libestr.adiscon.com/files/download/libestr-$pkgver.tar.gz")

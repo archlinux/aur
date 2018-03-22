@@ -1,9 +1,10 @@
 pkgbase = libestr
 	pkgdesc = essentials for string handling (and a bit more)
 	pkgver = 0.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libestr.adiscon.com/
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = LGPL2.1
 	source = http://libestr.adiscon.com/files/download/libestr-0.1.10.tar.gz
 	md5sums = f4c9165a23587e77f7efe65d676d5e8e
