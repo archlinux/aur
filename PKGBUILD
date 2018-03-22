@@ -1,7 +1,7 @@
 # Maintainer: Sanya Rajan <$(echo "c2FueWFyYWphbkBnbWFpbC5jb20K" | base64 -d)>
 # Contributor: Edison Ibañez <edison@opmbx.org>
 pkgname=camunda-modeler-alpha-bin
-pkgver=1.12.0_alpha_3
+pkgver=1.12.0_alpha_5
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=('camunda-modeler')
 
 _packagename=camunda-modeler
-_packageversion=1.12.0-alpha-3
+_packageversion=1.12.0-alpha-5
 
 source=('camunda-modeler.sh'
         'camunda-modeler.desktop'
@@ -25,8 +25,8 @@ md5sums=('9580e90224bd893ea6e070e399b25b01'
          'bc08d6679ab052bd7c936954f0a8d97c'
          '2d041c2f1a6cafa0d0079d207eb635fd'
          '22f05a8460e7b0d823dc65a2ee3f5a0e')
-md5sums_i686=('c119ff2bcd81a459d3264337e732b3ca')
-md5sums_x86_64=('c1e9270d8f1a7a3f9ccd7a5be7636e4b')
+md5sums_i686=('5786a177bbc0f8dd8db5dd224e19ba4c')
+md5sums_x86_64=('294adefaaf7177390e9f440f79a232e2')
 
 depends=('libnotify')
 
