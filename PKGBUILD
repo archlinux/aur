@@ -1,7 +1,7 @@
 # Maintainer: Miguel Useche <migueluseche@skatox.com>
 # Contributor: mncarbone <mncarbone@gmail.com>
 pkgname=pseint
-pkgver=20170523
+pkgver=20180202
 pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ makedepends=()
 optdepends=()
 if [ "${CARCH}" = 'x86_64' ]; then
     _pkgarch="l64"
-    _sha256sum="fa3f47c70ca96f895f212556ed62bda32abca09d20eace7dccf06d7d4e5a4c30"
+    _sha256sum="7f5faa531670999e6ca37c039c0f133398e2ba1ef5215272c93ce815d358be57"
 elif [ "${CARCH}" = 'i686' ]; then
     _pkgarch="l32"
-    _sha256sum="b10b8bffed0bc9981e8e01d31bc5200a2ba87ab858b041495e007310b87e9b67"
+    _sha256sum="da8656142c4ef5179a2b3c874ca1c6dec6b37bd784abd41cead1c13a550e7351"
 fi
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${_pkgarch}-${pkgver}.tgz)
 noextract=()

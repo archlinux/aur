@@ -1,14 +1,14 @@
 pkgbase = pseint
 	pkgdesc = A tool for learning programming basis with a simple spanish pseudocode
-	pkgver = 20170523
+	pkgver = 20180202
 	pkgrel = 1
 	url = http://pseint.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libpng12
-	source = http://downloads.sourceforge.net/project/pseint/20170523/pseint-l64-20170523.tgz
-	sha256sums = fa3f47c70ca96f895f212556ed62bda32abca09d20eace7dccf06d7d4e5a4c30
+	source = http://downloads.sourceforge.net/project/pseint/20180202/pseint-l64-20180202.tgz
+	sha256sums = 7f5faa531670999e6ca37c039c0f133398e2ba1ef5215272c93ce815d358be57
 
 pkgname = pseint
 
