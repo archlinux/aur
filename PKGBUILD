@@ -1,9 +1,10 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
-_pkgname='gilt'
+
 pkgbase="python-gilt"
 pkgname=("python-gilt" "python2-gilt")
-pkgver=1.1
-pkgrel=6
+_pkgname='gilt'
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A GIT layering tool'
 url='https://github.com/metacloud/gilt'
 arch=('any')
@@ -16,17 +17,26 @@ checkdepends=('python' 'python-click' 'python-colorama'
               'python2-colorama' 'python2-fasteners' 'python2-yaml'
               'python2-sh' 'python2-giturlparse' 'python-tox')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metacloud/gilt/archive/${pkgver}.tar.gz")
-sha256sums=('b5110ac91e85a62fc6971ef8d4f0e6808b9872f83ac943ca91dae52ddd098c19')
+sha256sums=('f5e37e0e50bd88579e721a992f7a24bb1a3b119f2b71d511f38cf9fb802adbbc')
+
+prepare() {
+  cp -a ${_pkgname}-$pkgver{,-py2}
+}
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
     export PBR_VERSION="${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py build
+
+    cd "${srcdir}/${_pkgname}-${pkgver}-py2"
     python2 setup.py build
 }
 
 check(){
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    tox -e py3
+
+    cd "${srcdir}/${_pkgname}-${pkgver}-py2"
     tox -e py2,py3
 }
 
@@ -43,7 +53,7 @@ package_python2-gilt() {
     depends=('python2' 'python2-click' 'python2-colorama'
              'python2-fasteners' 'python2-yaml' 'python2-sh'
              'python2-giturlparse')
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}-py2"
     export PBR_VERSION="${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
