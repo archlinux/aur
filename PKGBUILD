@@ -3,7 +3,7 @@
 
 pkgname=ats2-postiats
 _pkgname=ATS2-Postiats
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Statically typed programming language"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ options=('staticlibs' '!emptydirs' '!makeflags')
 install="${pkgname}.install"
 source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 
-sha1sums=('e350b7872cbac5ab1c3a539c7e35d176e39eb378')
+sha1sums=('6a83800770cc50a7722c07e8c11122a901524ef8')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	# NOTE: Before update a version check if has been correctly packaged
 	# sed -i "s/0.2.11/${pkgver}/g" VERSION
-	# sed -i "s/0.2.10/${pkgver}/g" configure.ac
+	sed -i "49s/0.3.9/${pkgver}/g" configure.ac
 	autoconf
 	./configure --prefix=/usr
 	make all
