@@ -2,9 +2,9 @@
 # Maitnainer: Morten Linderud <morten@linderud.pw>
 
 pkgbase=python-pychromecast
-_pkgname=pychromecast
 pkgname=('python-pychromecast' 'python2-pychromecast')
-pkgver=1.0.3
+_pkgname=pychromecast
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Library for Python 2 and 3 to communicate with the Google Chromecast'
 arch=('any')
@@ -13,17 +13,17 @@ license=('MIT')
 makedepends=('python' 'python-setuptools'
              'python2' 'python2-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('48f0d7ae9fb00f4c5c469d805ae70ff612f7b2b47399cd568d2445998da248e33879af5e80406f63c312ef75732780375aca2ab0b9abf64158b8be05d80cf0d5')
+sha512sums=('d532bfe50118c647a69f26c7dffe25dc30ede80253f7eb6d33f67ba5bddaf189608285559a5d3be80110300ca7b217ae384b1ad323a0241bc7756903939e2c0f')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 
-  cd ../$_pkgname-$pkgver-py2
+  cd "$srcdir/$_pkgname-$pkgver-py2"
   python2 setup.py build
 }
 
