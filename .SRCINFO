@@ -1,9 +1,10 @@
 pkgbase = tnef
 	pkgdesc = Program which operates like tar to unpack the files inside an ms-tnef MIME attachment
 	pkgver = 1.4.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/verdammelt/tnef
 	arch = x86_64
+	arch = i686
 	license = GPL
 	source = tnef-1.4.17.tar.gz::https://github.com/verdammelt/tnef/archive/1.4.17.tar.gz
 	sha256sums = 1dd87ebc0ff32c60ce2bc87362b880dc885525051bf3da55e11492565831c6da

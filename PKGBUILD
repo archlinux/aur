@@ -4,8 +4,8 @@
 
 pkgname=tnef
 pkgver=1.4.17
-pkgrel=1
-arch=(x86_64)
+pkgrel=2
+arch=('x86_64' 'i686')
 pkgdesc="Program which operates like tar to unpack the files inside an ms-tnef MIME attachment"
 url="https://github.com/verdammelt/tnef"
 license=('GPL')
