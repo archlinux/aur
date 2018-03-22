@@ -4,7 +4,7 @@ pkgdesc="ROS - Controller for executing joint-space trajectories on a group of j
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-kinetic-joint-trajectory-controller'
-pkgver='0.13.0'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-kinetic-joint_trajectory_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/joint_trajectory_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b6258e166caa69ce920207296a0a91cbc11f5ad78e638c859b116990d57acf39')
+sha256sums=('74d04edb1995743a92896f21e58aae9ed7d708014b145b512d4eb8f06b2fedc1')
 
 build() {
   # Use ROS environment variables
