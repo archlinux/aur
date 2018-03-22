@@ -3,7 +3,7 @@
 
 pkgname=smplayer-svn-notitlebar
 pkgver=18.3.0.r8959M
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced front-end for MPlayer/MPV + Patch to disable titlebar in compact mode"
 arch=('i686' 'x86_64')
 url="http://smplayer.sourceforge.net/"
@@ -20,16 +20,16 @@ provides=('smplayer')
 conflicts=('smplayer')
 source=(
   "$pkgname::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/"
-  "hidetitlebar.patch"
+  "hidetitlebar::git+https://github.com/snqlby/smplayer-svn-notitlebar"
 )
 sha256sums=(
   'SKIP'
-  '3f1be6b18805af4f8a2f1958aa8ce45b7053b476f6c6d5d27e60fa6822edab40'
+  'SKIP'
 )
 
 prepare() {
     cd $srcdir/$pkgname
-    patch -p0 -i "$srcdir/hidetitlebar.patch"
+    patch -p0 -i "$srcdir/hidetitlebar/hidetitlebar.patch"
 }
 
 pkgver() {
