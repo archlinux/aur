@@ -2,8 +2,8 @@
 # Contributor: Hugo Osvaldo Barrera <hugo ät barrera.io>
 
 pkgname=gog-thimbleweedpark
-pkgver=1.0.938.14433
-pkgrel=2
+pkgver=1.0.958.19330
+pkgrel=1
 epoch=1
 pkgdesc='Thimbleweed Park'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'thimbleweedpark.shim'
 )
 sha512sums=(
-    '2db274b477307efaecd4bbc2e1916fb833b12b9f3615cce217dea3aa4995576dd1fdd26ea012f2ff12f959743b1176e04fa5d1508699f0f42bd53a97f5119125'
+    '93970bcfca4d201abf5858559f0fe33d2d3e18930d10e1c6e1691fee1075d82f5e6f6b51b0200d55276ce1546308ffc8ad9db5bbb5185af90f2caf092a4adf05'
     'e769cb50a03620f41d864c296224e3a3c7bce93613b714590caabb8cd726ccef5f1a08a664a6018ef7fd74a836340ae6165cb0801e86424639adba3513d96d18'
 )
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
