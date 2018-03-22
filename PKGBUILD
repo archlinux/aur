@@ -2,8 +2,8 @@
 # Comaintainer : bartus <aur@bartus.33mail.com>
 _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname=luxrender-hg
-pkgver=4917+.0f023b130007+
-pkgrel=1
+pkgver=4918+.f56582df55f4+
+pkgrel=2
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
@@ -19,9 +19,11 @@ makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
 provides=('luxrender')
 conflicts=('luxrender')
 source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
+        'boost-15500.patch'
         'luxrender-gcc7.patch'
         'force_python3.diff')
 md5sums=('SKIP'
+         'b9e5c442093e69485752e6395c931b27'
          'fa680b0d621b42c8e7440056bf26ec1c'
          '42692e65eabc5828693e2682e94b7c64')
 
@@ -41,13 +43,17 @@ prepare() {
   
   # remove reference to export_defs.h from liblux.cmake as it was removed from tree
   sed -i '/export_defs/d' cmake/liblux.cmake
+  
+  # fix deprecated function in boost,asio,basic_stream_socket::native() replace with native_handle()
+  patch -Np1 -i ${srcdir}/boost-15500.patch
 }
 
 build() {
   cd "$srcdir/lux"
+  mkdir -p build
+  cd build
 
-
-  cmake . \
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLUX_DOCUMENTATION=OFF \
     -DLUXRAYS_DISABLE_OPENCL=OFF \
@@ -59,7 +65,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/lux"
+  cd "$srcdir/lux/build"
   make DESTDIR="$pkgdir" install
 
   # fix library path on x86_64

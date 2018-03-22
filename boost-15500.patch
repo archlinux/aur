@@ -1,0 +1,12 @@
+diff -r f56582df55f4 core/renderfarm.cpp
+--- a/core/renderfarm.cpp	Sun Jul 23 13:46:05 2017 +0200
++++ b/core/renderfarm.cpp	Thu Mar 22 10:38:17 2018 +0100
+@@ -892,7 +892,7 @@
+ 			stream.rdbuf()->set_option(boost::asio::socket_base::keep_alive(true));
+ #if defined(__linux__) || defined(__MACOSX__)
+ 			// Set keep alive parameters on *nix platforms
+-			const int nativeSocket = static_cast<int>(stream.rdbuf()->native());
++			const int nativeSocket = static_cast<int>(stream.rdbuf()->native_handle());
+ 			int optval = 3; // Retry count
+ 			const socklen_t optlen = sizeof(optval);
+ 			setsockopt(nativeSocket, SOL_TCP, TCP_KEEPCNT, &optval, optlen);
