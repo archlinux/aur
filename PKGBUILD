@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=ldcad
-pkgver=1.6a
+pkgver=1.6b
 pkgrel=1
 epoch=1
 pkgdesc="A multiplatform LDraw (virtual LEGO) editor that lets you edit LDraw model documents in real-time"
@@ -11,7 +11,7 @@ depends=('gtk2' 'glu' 'xdg-utils')
 backup=('etc/LDCad.cfg')
 source=("http://www.melkert.net/action/download/LDCad-${pkgver//./-}-Linux.tar.bz2"
         "license.txt")
-sha256sums=('916f1ec917e404b522f5f368790e07a8ccb3d23bfcc3bf896c4c4cd0a455a313'
+sha256sums=('02b7e5b5b3d6e0b7e31c78d59812d450b826d44afda8d89944ea3e9878eaea28'
             '9f94daabad96e05f398e634ab1ed713a1c1326c147825896d8af1b251035e217')
 
 
