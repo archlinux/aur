@@ -56,7 +56,7 @@ if [[ -f static ]]; then
   _static_build=true
 fi
 
-if [[ -f test_new_qt ]]; then
+if [[ -f testing ]]; then
   _testing=true
 fi
 
@@ -85,8 +85,8 @@ if $_testing; then
   _pkgvermajmin="5.11"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
-  _dev_suffix="alpha"
-  pkgrel=1
+  _dev_suffix="beta2"
+  pkgrel=3
 else
   _pkgvermajmin="5.10"
   _pkgverpatch=".0"
@@ -274,7 +274,7 @@ _core_configure_options="\
                  -reduce-exports"
 
 if $_testing; then
-  _tar_xz_sha256="7f9f1afc7720f529a7b77cc2bf9337ec7c48e014ebf0acd16441784d6d71a7d3"
+  _tar_xz_sha256="9482538af151454f79def3df1f4f76fc9475372b96cc9ca8515d7b2112a7d8cf"
 else
   _tar_xz_sha256="936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e"
 fi
