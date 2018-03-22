@@ -1,0 +1,16 @@
+pkgbase = python-envparse
+	pkgdesc = Simple environment variable parsing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/envparse
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/2f/8d/bee8a59732c169a455627ff1557d0db180f7c352b0274480267ad3e46875/envparse-0.2.0.tar.gz
+	sha256sums = 4f3b9a27bb55d27f124eb4adf006fec05e4588891c9a054a183a112645056eb7
+
+pkgname = python-envparse
+
+pkgname = python2-envparse
+
