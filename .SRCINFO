@@ -1,14 +1,13 @@
 pkgbase = arrongin-gtk-theme
 	pkgdesc = An individual and unique looking theme with an interesting design of Nautilus sidebar
-	pkgver = 1.4
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA
-	depends = bash
 	provides = arrongin-gtk-theme
-	source = arrongin-gtk-theme::https://dl.opendesktop.org/api/files/downloadfile/id/1519768997/s/a9ad8c01a5b923afaff0d41785bf56fe/t/1519795001/u//Arrongin-1.4.tar.xz
-	sha512sums = 31a6575828ee87f82b6001846578dc328e84686455ba83f52150089849a31e98466027f1b613d94b51f56bc0d15f136fb7b2005eb2ca35707193c937679f1c77
+	source = arrongin-gtk-theme-2.0.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1521662287/s/c907d42087b841b70d2919dd922c074e/t/1521744972/u/455718/Arrongin-2.0.tar.xz
+	sha512sums = b37a6b753281c8035d09623e2e615c2c94c4681307942d559f383028fd08fe742046b867a321875b13ec32db99f16d9b073e949c8151916a6ba8eed8bed3a36d
 
 pkgname = arrongin-gtk-theme
 
