@@ -15,8 +15,3 @@ pkgname = python-pysnmp
 	depends = python-pysmi
 	depends = python-pyasn1
 
-pkgname = python2-pysnmp
-	depends = python2
-	depends = python2-pysmi
-	depends = python2-pyasn1
-
