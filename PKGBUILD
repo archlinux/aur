@@ -119,7 +119,7 @@ case ${_piver} in
 ;;
 3)
   _toolchain_name=aarch64-rpi3-linux-gnu
-  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
   _mkspec="linux-rpi${_piver}-g++"
 ;;
