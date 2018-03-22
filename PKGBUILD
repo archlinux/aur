@@ -250,7 +250,6 @@ if $_uber_minimal; then
     "
 else
     _additional_configure_flags="$_additional_configure_flags \
-        -hostprefix ${_installprefix} \
         -fontconfig \
         -system-freetype \
         -system-harfbuzz \
@@ -260,6 +259,10 @@ fi
 if $_static_build; then
     _additional_configure_flags="$_additional_configure_flags \
         -ltcg \
+    "
+else
+    _additional_configure_flags="$_additional_configure_flags \
+        -hostprefix ${_installprefix} \
     "
 fi
 
