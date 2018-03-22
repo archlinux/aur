@@ -4,10 +4,10 @@
 
 pkgname='librelp'
 pkgver=1.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="The Reliable Event Logging Protocol"
 url="http://www.librelp.com/"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('gnutls')
 source=("http://download.rsyslog.com/librelp/librelp-${pkgver}.tar.gz")
