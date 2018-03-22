@@ -1,7 +1,7 @@
 pkgbase = sch_cake-dkms
 	pkgdesc = The CAKE scheduler, bufferbloat.net
-	pkgver = r427.d2d6780
-	pkgrel = 2
+	pkgver = r428.0afc1be
+	pkgrel = 1
 	url = bufferbloat.net
 	arch = i686
 	arch = x86_64

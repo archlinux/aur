@@ -2,12 +2,12 @@
 #
 pkgname=sch_cake-dkms
 _modname=sch_cake
-pkgver=r427.d2d6780
+pkgver=r428.0afc1be
 pkgver() {
 	cd "sch_cake"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=1
 pkgdesc="The CAKE scheduler, bufferbloat.net"
 arch=('i686' 'x86_64')
 license=('GPL')
