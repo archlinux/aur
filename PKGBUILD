@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=v1.1.371.r1321
+pkgver=v1.1.371.r1395
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=5.0.1
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('boost-libs>=1.63' 'r>=2.11.1' hicolor-icon-theme shared-mime-info pango hunspell-en mathjax pandoc clang qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
-makedepends=(git 'cmake>=2.8' 'boost>=1.63' java-environment apache-ant unzip openssl libcups pam wget)
+makedepends=(git 'cmake>=2.8' 'boost>=1.63' java-environment apache-ant unzip openssl libcups pam patchelf wget)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')

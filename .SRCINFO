@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = v1.1.371.r1321
+	pkgver = v1.1.371.r1395
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
@@ -16,6 +16,7 @@ pkgbase = rstudio-desktop-git
 	makedepends = openssl
 	makedepends = libcups
 	makedepends = pam
+	makedepends = patchelf
 	makedepends = wget
 	depends = boost-libs>=1.63
 	depends = r>=2.11.1
