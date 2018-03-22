@@ -1,0 +1,20 @@
+pkgbase = perl6-cro-http-session-redis
+	pkgdesc = SSL support for the Cro library for building distributed systems in Perl 6
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/croservices/cro-http-session-redis
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	checkdepends = perl6-test-meta
+	makedepends = git
+	depends = perl6
+	depends = perl6-cro-http
+	depends = perl6-redis-async
+	source = perl6-cro-http-session-redis-0.7.3::git+https://github.com/croservices/cro-http-session-redis
+	sha256sums = SKIP
+
+pkgname = perl6-cro-http-session-redis
+
