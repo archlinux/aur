@@ -1,0 +1,18 @@
+pkgbase = pony-stable-git
+	pkgdesc = A simple dependency manager for the Pony language.
+	pkgver = 0.1.0.13.g8b4f3ac
+	pkgrel = 1
+	url = https://github.com/ponylang/pony-stable
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git sed
+	depends = ponyc
+	provides = pony-stable
+	conflicts = pony-stable
+	backup = etc/pony-stable/pony-stable.conf
+	source = pony-stable::git+https://github.com/ponylang/pony-stable.git
+	md5sums = SKIP
+
+pkgname = pony-stable-git
+
