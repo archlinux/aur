@@ -29,7 +29,7 @@ case $_piver in
 esac
 
 pkgname=qpi${_piver}-toolchain
-pkgrel=4
+pkgrel=5
 pkgdesc="cross-tool-ng compiled GCC toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
