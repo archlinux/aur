@@ -1,6 +1,6 @@
 # Maintainer: ferreum <code.danielk at gmail com>
 pkgname=i3-match-git
-pkgver=0.1.26.r8dfdab5
+pkgver=0.1.34.r6bce2d9
 pkgrel=1
 pkgdesc="Match and query i3 window properties and events"
 arch=('i686' 'x86_64')
