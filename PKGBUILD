@@ -66,7 +66,7 @@ if [[ -f full-build ]]; then
 fi
 
 if [[ -f uber-minimal ]]; then
-  _uber_minimal=false
+  _uber_minimal=true
 fi
 
 # Sanity check options
