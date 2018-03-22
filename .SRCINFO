@@ -1,7 +1,7 @@
 pkgbase = payara
 	pkgdesc = A Java EE application server, drived from GlassFish Open Source Edition.
-	pkgver = 4.1.2.181
-	pkgrel = 2
+	pkgver = 5.181
+	pkgrel = 1
 	url = http://www.payara.fish/
 	arch = any
 	license = CDDL
@@ -10,9 +10,9 @@ pkgbase = payara
 	provides = payara
 	conflicts = payara
 	options = !strip
-	source = payara-4.1.2.181.zip::https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/4.1.2.181/payara-4.1.2.181.zip
+	source = payara-5.181.zip::https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.181/payara-5.181.zip
 	source = payara.service
-	sha256sums = 22715740317b665a35ba4d02e84b62c0c54471143503a35ff8aa2d3c59f622a0
+	sha256sums = b2e96f1ad5deb2e8dcd854944dde86225d58de5f1326824b17f1b6a58a31bc7f
 	sha256sums = ab5c47bdba5daf459b6422e4eeaa9a609a8d0e25a942f7c6a9e891098e9b6232
 
 pkgname = payara
