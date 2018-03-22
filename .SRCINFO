@@ -8,7 +8,6 @@ pkgbase = texlive-cleanthesis
 	license = LPPL
 	depends = texlive-core
 	depends = texlive-latexextra
-	depends = koma-script
 	source = cleanthesis-0.3.1.tar.gz::https://github.com/derric/cleanthesis/archive/v0.3.1.tar.gz
 	sha256sums = 386000ab2e603d8865df0ac5d93406a9bdeaefa9328bf90ece0a16f1d76b3b93
 
