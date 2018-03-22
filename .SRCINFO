@@ -1,7 +1,7 @@
 pkgbase = remind-me
 	pkgdesc = A simple reminder application for desktop and mobile, with synchronized reminders
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/RemindMe
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = remind-me
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-datasync
-	depends = qt5-mvvmwidgets qt5-mvvmdatasyncwidgets
+	depends = qt5-mvvmwidgets
+	depends = qt5-mvvmdatasyncwidgets
 	optdepends = knotifications: Adds support for KDE notifications, which are more advanced (recompile required)
 	optdepends = repkg: Automatically rebuild the package on dependency updates
 	source = remind-me-2.0.0::git+https://github.com/Skycoder42/RemindMe.git#tag=2.0.0

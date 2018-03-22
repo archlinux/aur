@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=remind-me
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple reminder application for desktop and mobile, with synchronized reminders"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/RemindMe"
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'qt5-datasync' 'qt5-mvvmwidgets'' qt5-mvvmdatasyncwidgets')
+depends=('qt5-base' 'qt5-svg' 'qt5-datasync' 'qt5-mvvmwidgets' 'qt5-mvvmdatasyncwidgets')
 makedepends=('qt5-tools' 'git' 'qpmx-qpmsource' 'qt5-mvvmdatasyncquick')
 optdepends=("knotifications: Adds support for KDE notifications, which are more advanced (recompile required)"
 			"repkg: Automatically rebuild the package on dependency updates")
