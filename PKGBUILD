@@ -1,4 +1,5 @@
-# Maintainer: Giorgio Wicklein <giowckln@gmail.com>
+# Past Maintainer: Giorgio Wicklein <giowckln@gmail.com>
+# Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=symphytum
 pkgver=2.3
 pkgrel=1
