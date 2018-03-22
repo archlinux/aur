@@ -6,7 +6,7 @@
 _pkgname=libtool
 pkgname=mingw-w64-${_pkgname}
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 _gccver=7.3.0
 pkgdesc="A generic library support script (mingw-w64)"
 arch=('any')
