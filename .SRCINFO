@@ -1,6 +1,6 @@
 pkgbase = camunda-modeler-alpha-bin
 	pkgdesc = An integrated modeling solution for BPMN and DMN based on bpmn.io
-	pkgver = 1.12.0_alpha_3
+	pkgver = 1.12.0_alpha_5
 	pkgrel = 1
 	url = https://camunda.org/features/modeler/
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = camunda-modeler-alpha-bin
 	md5sums = bc08d6679ab052bd7c936954f0a8d97c
 	md5sums = 2d041c2f1a6cafa0d0079d207eb635fd
 	md5sums = 22f05a8460e7b0d823dc65a2ee3f5a0e
-	source_i686 = https://camunda.org/release/camunda-modeler/1.12.0-alpha-3/camunda-modeler-1.12.0-alpha-3-linux-ia32.tar.gz
-	md5sums_i686 = c119ff2bcd81a459d3264337e732b3ca
-	source_x86_64 = https://camunda.org/release/camunda-modeler/1.12.0-alpha-3/camunda-modeler-1.12.0-alpha-3-linux-x64.tar.gz
-	md5sums_x86_64 = c1e9270d8f1a7a3f9ccd7a5be7636e4b
+	source_i686 = https://camunda.org/release/camunda-modeler/1.12.0-alpha-5/camunda-modeler-1.12.0-alpha-5-linux-ia32.tar.gz
+	md5sums_i686 = 5786a177bbc0f8dd8db5dd224e19ba4c
+	source_x86_64 = https://camunda.org/release/camunda-modeler/1.12.0-alpha-5/camunda-modeler-1.12.0-alpha-5-linux-x64.tar.gz
+	md5sums_x86_64 = 294adefaaf7177390e9f440f79a232e2
 
 pkgname = camunda-modeler-alpha-bin
 
