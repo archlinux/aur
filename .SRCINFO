@@ -1,7 +1,7 @@
 pkgbase = conkeror
 	pkgdesc = A highly programmable web browser based on Mozilla XULRunner
 	pkgver = 1.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://conkeror.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = conkeror
 	source = conkeror-1.0.4.tar.gz::http://repo.or.cz/conkeror.git/snapshot/685f24e3aeffc408dcea883e1d0c738cb18bbe8d.tar.gz
 	source = conkeror.sh
 	sha256sums = 0cc13ac0415f6f8d9f1641f45b00bcd173347c45aba3b3de6d7951b1d1f03dbe
-	sha256sums = 83b99b57ff5f397ff97561dc82bf604a223b3fdb2e80716edf12f006ae94d88c
+	sha256sums = 64aa16cbb2f6485439ad877a34bc372e162a9fc8aad330355515d1b4f09a75b4
 
 pkgname = conkeror
 
