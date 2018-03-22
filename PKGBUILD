@@ -2,7 +2,7 @@
 
 # maintenance, zip files
 pkgver="0.10.0"
-pkgrel=1
+pkgrel=2
 # linux32 zip
 sha256sums_i686=("f8fbd1bd24e6e6532ce664caa987f49768817439967c2d63301f694718b03789")
 # linux64 zip
@@ -43,7 +43,7 @@ optdepends=(
 
 # 32 and 64 file sources, checksums at top of file
 source_i686=("${url}/download/v${pkgver}/Ethereum-Wallet-linux32-${_strver}.zip")
-source_x86_64=("${url}/download/v${pkgver}/Ethereum-Wallet-linux64-$_strver.zip")
+source_x86_64=("${url}/download/v${pkgver}/Ethereum-Wallet-linux64-${_strver}.zip")
 
 # desktop file and icon
 source=(
@@ -63,17 +63,23 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/lib"
 
+    if [ $CARCH == "x86_64" ]; then
+      rm "${srcdir}/Ethereum-Wallet-linux64-${_strver}.zip"
+    else
+      rm "${srcdir}/Ethereum-Wallet-linux32-${_strver}.zip"
+    fi
+
     # install
-    cp -a   "${srcdir}/linux-unpacked"                     "${pkgdir}/usr/share/${_binname}"
+    cp -a   "${srcdir}"                                    "${pkgdir}/usr/share/${_binname}"
     install "${pkgdir}/usr/share/${_binname}/libnode.so"   "${pkgdir}/usr/lib/libnode.so"
     install "${pkgdir}/usr/share/${_binname}/libffmpeg.so" "${pkgdir}/usr/lib/libffmpeg.so"
     ln -s            "/usr/share/${_binname}/${_binname}"  "${pkgdir}/usr/bin/${_binname}"
     rm      "${pkgdir}/usr/share/${_binname}/libnode.so"
     rm      "${pkgdir}/usr/share/${_binname}/libffmpeg.so"
 
-    # installing desktop file and icon
-    cp "${srcdir}/icon.png"               "${pkgdir}/usr/share/${_binname}"
+    # desktop file
     cp "${srcdir}/EthereumWallet.desktop" "${pkgdir}/usr/share/applications"
+    rm "${pkgdir}/usr/share/ethereumwallet/EthereumWallet.desktop"
 
     # modes
     find "${pkgdir}" -type d -exec chmod 755 {} +
