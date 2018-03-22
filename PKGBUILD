@@ -27,5 +27,4 @@ package(){
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 	sed -i "s/{DISPLAY}/${DISPLAY}/g" "${pkgdir}/usr/lib/systemd/system/synergy.service"
 	cd ..
-	tput setaf 1; echo "\nthis is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
 }
