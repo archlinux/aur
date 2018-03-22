@@ -1,6 +1,6 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
-pkgname=('python-pysnmp')
+pkgname=('python-pysnmp' 'python2-pysnmp')
 pkgver=4.4.4
 pkgrel=1
 pkgdesc="Pure Python, open source and free implementation of v1/v2c/v3 SNMP engine"
