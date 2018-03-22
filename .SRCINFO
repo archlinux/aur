@@ -8,6 +8,7 @@ pkgbase = bilibili-live-helper-git
 	license = MIT
 	makedepends = yarn
 	makedepends = git
+	makedepends = npm
 	depends = libxtst
 	depends = gtk2
 	depends = libxss
