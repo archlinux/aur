@@ -1,0 +1,19 @@
+pkgbase = iotacooler
+	pkgdesc = Cold transaction signer for IOTA
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joshirio/iota-cooler
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-imageformats
+	options = !strip
+	source = https://github.com/joshirio/iota-cooler/releases/download/v1.0/iotacooler-1.0-src.tar.gz
+	md5sums = 413e143bca4bad7bc1a818f9081030c2
+
+pkgname = iotacooler
+
