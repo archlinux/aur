@@ -1,19 +1,17 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=pcsxr-pgxp-git
-pkgver=1.9.94.r1711.a5c4f4a4
-pkgrel=1
-pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline'
+pkgver=1.9.94.r1714.6f760410
+pkgrel=2
+pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline'
 arch=('x86_64')
 url='http://ngemu.com/threads/pcsxr-pgxp.186369/'
 license=('GPL')
-depends=('ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libarchive' 'libcdio'
-         'libgl' 'libpulse' 'libx11' 'libxext' 'libxtst' 'libxv' 'libxxf86vm'
-         'sdl2' 'zlib')
+depends=('ffmpeg' 'gtk3' 'libarchive' 'libcdio' 'libxv')
 makedepends=('cmake' 'git' 'intltool' 'mesa')
 provides=('pcsxr' "${pkgname/%-git/}")
 conflicts=('pcsxr' "${pkgname/%-git/}")
-source=("${pkgname/%-git/}::git+https://github.com/loathingKernel/pcsxr.git")
+source=("${pkgname/%-git/}::git+https://github.com/iCatButler/pcsxr.git")
 md5sums=('SKIP')
 
 pkgver() {
