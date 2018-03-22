@@ -1,0 +1,16 @@
+pkgbase = niftyreg
+	pkgdesc = Open-source software for efficient medical image registration
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
+	arch = any
+	license = BSD
+	makedepends = cmake
+	depends = zlib
+	depends = libpng
+	optdepends = cuda
+	source = https://downloads.sourceforge.net/project/niftyreg/nifty_reg-1.3.9/nifty_reg-1.3.9.tar.gz
+	md5sums = 5d5b5d43cfe14c31a74ea958eee4e41e
+
+pkgname = niftyreg
+
