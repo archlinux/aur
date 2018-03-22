@@ -1,0 +1,23 @@
+diff -Naur FreeCAD-0.16.orig/src/Gui/DownloadManager.cpp FreeCAD-0.16/src/Gui/DownloadManager.cpp
+--- FreeCAD-0.16.orig/src/Gui/DownloadManager.cpp	2016-04-07 03:39:34.000000000 +0200
++++ FreeCAD-0.16/src/Gui/DownloadManager.cpp	2017-02-07 17:05:51.753657498 +0100
+@@ -33,7 +33,6 @@
+ #include <QMetaEnum>
+ #include <QSettings>
+ #include <QFileIconProvider>
+-#include <QWebSettings>
+ 
+ #include "DownloadItem.h"
+ #include "DownloadManager.h"
+@@ -224,11 +223,6 @@
+     ui->downloadsView->setRowHeight(row, item->minimumSizeHint().height());
+ 
+     bool remove = false;
+-    QWebSettings *globalSettings = QWebSettings::globalSettings();
+-    if (!item->downloading()
+-        && globalSettings->testAttribute(QWebSettings::PrivateBrowsingEnabled))
+-        remove = true;
+-
+     if (item->downloadedSuccessfully()
+         && removePolicy() == DownloadManager::SuccessFullDownload) {
+         remove = true;

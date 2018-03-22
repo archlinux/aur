@@ -1,0 +1,124 @@
+diff -Naur FreeCAD-0.16.orig/src/Mod/Arch/ArchServer.py FreeCAD-0.16/src/Mod/Arch/ArchServer.py
+--- FreeCAD-0.16.orig/src/Mod/Arch/ArchServer.py	2016-04-07 03:39:34.000000000 +0200
++++ FreeCAD-0.16/src/Mod/Arch/ArchServer.py	2017-02-07 18:55:34.918643280 +0100
+@@ -36,20 +36,6 @@
+ __url__ = "http://www.freecadweb.org"
+ 
+ 
+-class _CommandBimserver:
+-    "the Arch Bimserver command definition"
+-    def GetResources(self):
+-        return {'Pixmap'  : 'Arch_Bimserver',
+-                'MenuText': QtCore.QT_TRANSLATE_NOOP("Arch_Bimserver","BIM server"),
+-                'ToolTip': QtCore.QT_TRANSLATE_NOOP("Arch_Bimserver","Opens a browser window and connects to a BIM server instance")}
+-
+-    def Activated(self):
+-        p = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Arch")
+-        url = p.GetString("BimServerUrl","http://localhost:8082")
+-        FreeCADGui.addModule("WebGui")
+-        FreeCADGui.doCommand("WebGui.openBrowser(\""+url+"\")")
+-  
+-
+ class _CommandGit:
+     "the Arch Git Commit command definition"
+     def GetResources(self):
+@@ -161,5 +147,4 @@
+ 
+ 
+ if FreeCAD.GuiUp:
+-    FreeCADGui.addCommand('Arch_Bimserver',_CommandBimserver())
+     FreeCADGui.addCommand('Arch_Git',_CommandGit())
+diff -Naur FreeCAD-0.16.orig/src/Mod/Arch/InitGui.py FreeCAD-0.16/src/Mod/Arch/InitGui.py
+--- FreeCAD-0.16.orig/src/Mod/Arch/InitGui.py	2016-04-07 03:39:34.000000000 +0200
++++ FreeCAD-0.16/src/Mod/Arch/InitGui.py	2017-02-07 18:54:19.949158114 +0100
+@@ -44,7 +44,7 @@
+                      "Arch_SelectNonSolidMeshes","Arch_RemoveShape",
+                      "Arch_CloseHoles","Arch_MergeWalls","Arch_Check",
+                      "Arch_IfcExplorer","Arch_ToggleIfcBrepFlag","Arch_3Views",
+-                     "Arch_Bimserver","Arch_Git","Arch_IfcSpreadsheet"]
++                     "Arch_Git","Arch_IfcSpreadsheet"]
+ 
+         # draft tools
+         self.drafttools = ["Draft_Line","Draft_Wire","Draft_Circle","Draft_Arc","Draft_Ellipse",
+diff -Naur FreeCAD-0.16.orig/src/Mod/Drawing/Gui/Command.cpp FreeCAD-0.16/src/Mod/Drawing/Gui/Command.cpp
+--- FreeCAD-0.16.orig/src/Mod/Drawing/Gui/Command.cpp	2016-04-07 03:39:34.000000000 +0200
++++ FreeCAD-0.16/src/Mod/Drawing/Gui/Command.cpp	2017-02-07 18:52:19.077843909 +0100
+@@ -427,43 +427,6 @@
+ 
+ 
+ //===========================================================================
+-// Drawing_OpenBrowserView
+-//===========================================================================
+-
+-DEF_STD_CMD_A(CmdDrawingOpenBrowserView);
+-
+-CmdDrawingOpenBrowserView::CmdDrawingOpenBrowserView()
+-  : Command("Drawing_OpenBrowserView")
+-{
+-    // seting the
+-    sGroup        = QT_TR_NOOP("Drawing");
+-    sMenuText     = QT_TR_NOOP("Open &browser view");
+-    sToolTipText  = QT_TR_NOOP("Opens the selected page in a browser view");
+-    sWhatsThis    = "Drawing_OpenBrowserView";
+-    sStatusTip    = QT_TR_NOOP("Opens the selected page in a browser view");
+-    sPixmap       = "actions/drawing-openbrowser";
+-}
+-
+-void CmdDrawingOpenBrowserView::activated(int iMsg)
+-{
+-    unsigned int n = getSelection().countObjectsOfType(Drawing::FeaturePage::getClassTypeId());
+-    if (n != 1) {
+-        QMessageBox::warning(Gui::getMainWindow(), QObject::tr("Wrong selection"),
+-            QObject::tr("Select one Page object."));
+-        return;
+-    }
+-    std::vector<Gui::SelectionSingleton::SelObj> Sel = getSelection().getSelection();
+-    doCommand(Doc,"PageName = App.activeDocument().%s.PageResult",Sel[0].FeatName);
+-    doCommand(Doc,"import WebGui");
+-    doCommand(Doc,"WebGui.openBrowser(PageName)");
+-}
+-
+-bool CmdDrawingOpenBrowserView::isActive(void)
+-{
+-    return (getActiveGuiDocument() ? true : false);
+-}
+-
+-//===========================================================================
+ // Drawing_Annotation
+ //===========================================================================
+ 
+@@ -786,7 +749,6 @@
+     rcCmdMgr.addCommand(new CmdDrawingNewA3Landscape());
+     rcCmdMgr.addCommand(new CmdDrawingNewView());
+     rcCmdMgr.addCommand(new CmdDrawingOrthoViews());
+-    rcCmdMgr.addCommand(new CmdDrawingOpenBrowserView());
+     rcCmdMgr.addCommand(new CmdDrawingAnnotation());
+     rcCmdMgr.addCommand(new CmdDrawingClip());
+     rcCmdMgr.addCommand(new CmdDrawingSymbol());
+diff -Naur FreeCAD-0.16.orig/src/Mod/Drawing/Gui/Workbench.cpp FreeCAD-0.16/src/Mod/Drawing/Gui/Workbench.cpp
+--- FreeCAD-0.16.orig/src/Mod/Drawing/Gui/Workbench.cpp	2016-04-07 03:39:34.000000000 +0200
++++ FreeCAD-0.16/src/Mod/Drawing/Gui/Workbench.cpp	2017-02-07 19:10:18.512913826 +0100
+@@ -61,7 +61,6 @@
+     *part << "Drawing_NewPage";
+     *part << "Drawing_NewView";
+     *part << "Drawing_OrthoViews";
+-    *part << "Drawing_OpenBrowserView";
+     *part << "Drawing_Annotation";
+     *part << "Drawing_Clip";
+     *part << "Drawing_Symbol";
+@@ -84,7 +83,6 @@
+     *part << "Drawing_NewPage";
+     *part << "Drawing_NewView";
+     *part << "Drawing_OrthoViews";
+-    *part << "Drawing_OpenBrowserView";
+     *part << "Drawing_Annotation";
+     *part << "Drawing_Clip";
+     *part << "Drawing_Symbol";
+@@ -106,7 +104,6 @@
+   //*img << "Drawing_NewA3Landscape";
+     *img << "Drawing_NewPage";
+     *img << "Drawing_OrthoViews";
+-    *img << "Drawing_OpenBrowserView";
+     *img << "Drawing_Annotation";
+     *img << "Drawing_Clip";
+     *img << "Drawing_DraftView";
