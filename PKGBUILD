@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -53,7 +53,7 @@ package_peercoin-qt() {
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm644 "contrib/debian/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm755 peercoin-qt "${pkgdir}/usr/bin/$pkgname"
+	install -Dm755 "src/qt/peercoin-qt" "${pkgdir}/usr/bin/$pkgname"
 	#install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
 	install -Dm644 "src/qt/res/icons/peercoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
 	
