@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r1105.g867d3ce1f
+pkgver=0.8.1.r1400.ga63ed730f
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,6 @@ source=(
         'submodule-nervanagpu'::'git+https://github.com/NervanaSystems/nervanagpu.git'
         'submodule-benchmark'::'git+https://github.com/google/benchmark.git'
         'submodule-protobuf'::'git+https://github.com/google/protobuf.git'
-        'submodule-android-cmake'::'git+https://github.com/Yangqing/android-cmake.git'
         'submodule-ios-cmake'::'git+https://github.com/Yangqing/ios-cmake.git'
         'submodule-NNPACK'::'git+https://github.com/Maratyszcza/NNPACK.git'
         'submodule-gloo'::'git+https://github.com/facebookincubator/gloo'
@@ -55,8 +54,11 @@ source=(
         'submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
         'submodule-python-peachpy'::'git+https://github.com/Maratyszcza/PeachPy.git'
         'submodule-python-six'::'git+https://github.com/benjaminp/six.git'
+        'submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
+        'submodule-onnx'::'git+https://github.com/onnx/onnx.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,10 +85,10 @@ sha256sums=('SKIP'
 prepare() {
     cd "$pkgname"
     local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
-                           protobuf android-cmake ios-cmake NNPACK gloo \
-                           NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
-                           NNPACK_deps/psimd aten zstd cpuinfo python-enum python-peachpy \
-                           python-six"
+                           protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
+                           NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd \
+                           aten zstd cpuinfo python-enum python-peachpy \
+                           python-six ComputeLibrary onnx"
     git submodule init
     for _submodule in $_submodule_list
     do
@@ -134,7 +136,7 @@ build() {
         -DPYTHON_LIBRARY:FILEPATH="/usr/lib/libpython${_pythonver}m.so" \
         \
         -DUSE_ATEN:BOOL='ON' \
-        -DUSE_ASAN:BOOL='ON' \
+        -DUSE_ASAN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
@@ -155,11 +157,11 @@ build() {
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
-        -DUSE_THREADS:BOOL='ON' \
         -DUSE_ZMQ:BOOL='ON' \
         \
         -Wno-dev \
         ..
+        
     make
 }
 
