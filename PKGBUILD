@@ -2,7 +2,7 @@
 
 pkgname=frp
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 license=('Apache')
 url="https://github.com/fatedier/frp"
