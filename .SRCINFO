@@ -1,0 +1,19 @@
+pkgbase = copac-git
+	pkgdesc = An AUR helper
+	pkgver = r7.58838f2
+	pkgrel = 1
+	url = https://gitlab.com/dasith.gunawardhana/copac.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nlohmann-json
+	depends = pacman
+	depends = libgit2
+	depends = curl
+	provides = copac
+	conflicts = copac
+	source = git+https://gitlab.com/dasith.gunawardhana/copac.git
+	md5sums = SKIP
+
+pkgname = copac-git
+
