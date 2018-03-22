@@ -2,7 +2,7 @@
 # Old Maintainer: Alex Taber <aft dot pokemon at gmail dot com>
 
 pkgname=teamviewer13
-pkgver=13.0.9865
+pkgver=13.1.3026
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('x86_64' 'i686')
@@ -36,9 +36,9 @@ source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamvi
                "https://archive.archlinux.org/packages/l/lib32-freetype2/lib32-freetype2-2.8-2-x86_64.pkg.tar.xz")
 source_i686=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb"
              "https://archive.archlinux.org/packages/f/freetype2/freetype2-2.8-2-i686.pkg.tar.xz")
-sha256sums_x86_64=('d3895d2dfab8fb951ee0d2c362647bbea62cef2be0241ae489901b3c71132779'
+sha256sums_x86_64=('33eacc8ebeaf34aea5fa932e3d80553f358629ad454740f05aafba267b50ea93'
                    '4f39c9bd52579ac5d13980d760a5434fdb0f0638df07d2abca9ea44a779185e3')
-sha256sums_i686=('058bdae8b40c356cc92cd6cb96cb0e9bfb5a6c16e1c0ee521a1efeb275562b37'
+sha256sums_i686=('46f1b697a113f304ff8e5792f9893319c0de6b802355e7e5fdf7dba6f4b415c8'
                  'd33cf8be0c4be1c602d368fb363c9029d87f2bc4fdfcae5063595ac482ca39e8')
 
 prepare() {
