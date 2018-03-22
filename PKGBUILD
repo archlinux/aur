@@ -5,8 +5,8 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=173.3801.283
-_pkgver=2017.3-EAP1
+_buildver=181.4035.533
+_pkgver=2018.1-EAP3
 _eap="True"
 pkgver="${_pkgver//-/.}.${_buildver}"
 pkgrel=1
@@ -22,10 +22,10 @@ provides=("rider")
 conflicts=("rider")
 groups=("development" "IDE" "editor" "jetbrains")
 
-_srcfile="JetBrains.Rider-${_pkgver}-${_buildver}.tar.gz"
-source=("https://download.jetbrains.com/resharper/${_srcfile}"
+_srcfile="JetBrains.Rider-${_pkgver}-${_buildver}.Checked.tar.gz"
+source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         "${pkgname}.desktop")
-sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
+sha256sums=('bd04d3973c8505d4ecc42b3b3d64ddb513041c53ee2f76fb8aff54379c937af1' # wget returns 403 for me causing build to fail
             'f9311f901c27f3dc17dc9e9ede3698ccfda8f9e07a9827d174655e90d352e734')
 
 package() {
@@ -50,4 +50,3 @@ package() {
 
     ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
 }
-

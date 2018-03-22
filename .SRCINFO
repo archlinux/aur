@@ -1,6 +1,6 @@
 pkgbase = rider-eap
 	pkgdesc = A cross-platform C# IDE by JetBrains.
-	pkgver = 2017.3.EAP1.173.3801.283
+	pkgver = 2018.1.EAP3.181.4035.533
 	pkgrel = 1
 	epoch = 1
 	url = https://www.jetbrains.com/rider/
@@ -16,9 +16,9 @@ pkgbase = rider-eap
 	provides = rider
 	conflicts = rider
 	options = !strip
-	source = https://download.jetbrains.com/resharper/JetBrains.Rider-2017.3-EAP1-173.3801.283.tar.gz
+	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2018.1-EAP3-181.4035.533.Checked.tar.gz
 	source = rider-eap.desktop
-	sha256sums = 11e77fdacfc89cd2867efa5119eee1898c5eacc26fde0e235d7f18bbe4d08365
+	sha256sums = bd04d3973c8505d4ecc42b3b3d64ddb513041c53ee2f76fb8aff54379c937af1
 	sha256sums = f9311f901c27f3dc17dc9e9ede3698ccfda8f9e07a9827d174655e90d352e734
 
 pkgname = rider-eap
