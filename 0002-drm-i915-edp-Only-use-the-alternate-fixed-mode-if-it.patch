@@ -1,7 +1,7 @@
-From 3383f4060f7fe25afd5f863fe169fd2f286ab237 Mon Sep 17 00:00:00 2001
-Message-Id: <3383f4060f7fe25afd5f863fe169fd2f286ab237.1517188106.git.jan.steffens@gmail.com>
-In-Reply-To: <4aefcc4253233dce6ac5938e01371074958b8f1c.1517188106.git.jan.steffens@gmail.com>
-References: <4aefcc4253233dce6ac5938e01371074958b8f1c.1517188106.git.jan.steffens@gmail.com>
+From 704e31424615c87ad82424a9b09a452d762daed0 Mon Sep 17 00:00:00 2001
+Message-Id: <704e31424615c87ad82424a9b09a452d762daed0.1520639721.git.jan.steffens@gmail.com>
+In-Reply-To: <188720e92122385994143a06cb16a930053eb503.1520639721.git.jan.steffens@gmail.com>
+References: <188720e92122385994143a06cb16a930053eb503.1520639721.git.jan.steffens@gmail.com>
 From: Jim Bride <jim.bride@linux.intel.com>
 Date: Mon, 6 Nov 2017 13:38:57 -0800
 Subject: [PATCH 2/2] drm/i915/edp: Only use the alternate fixed mode if it's
@@ -24,7 +24,7 @@ Signed-off-by: Jim Bride <jim.bride@linux.intel.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
-index 158438bb0389..69b16df868ea 100644
+index add4b2434aa3..14a8bef9fdfe 100644
 --- a/drivers/gpu/drm/i915/intel_dp.c
 +++ b/drivers/gpu/drm/i915/intel_dp.c
 @@ -1616,7 +1616,8 @@ static bool intel_edp_compare_alt_mode(struct drm_display_mode *m1,
@@ -38,5 +38,5 @@ index 158438bb0389..69b16df868ea 100644
  }
  
 -- 
-2.16.1
+2.16.2
 
