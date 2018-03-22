@@ -1,5 +1,16 @@
 post_install() {
+	chmod 777 /var/log/synergy
+	chmod 777 /var/lib/synergy
+	chmod 777 /etc/synergy
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	if [ "upgrade" != $1 ]; then
+		systemctl enable synergy.service >/dev/null || true
+		if [ -d /run/systemd/system ]; then
+			systemctl --system daemon-reload >/dev/null || true
+			systemctl restart synergy.service >/dev/null || true
+		fi
+	fi
+
 	if which update-icon-caches >/dev/null 2>&1 ; then
 		update-icon-caches /usr/share/icons/synergy.svg
 	fi
@@ -7,13 +18,40 @@ post_install() {
 }
 
 post_upgrade() {
-	post_install
+	post_install "upgrade"
+}
+
+pre_remove() {
+	if [ -d /run/systemd/system ]; then
+		systemctl stop synergy.service >/dev/null
+	fi
 }
 
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	if which update-icon-caches >/dev/null 2>&1 ; then
 		update-icon-caches /usr/share/icons/synergy.svg
+	fi
+	if [ -d /run/systemd/system ]; then
+		systemctl --system daemon-reload >/dev/null || true
+	fi
+	
+	# In case this system is running systemd, we make systemd reload the unit files
+	# to pick up changes.
+	if [ -d /run/systemd/system ] ; then
+		systemctl --system daemon-reload >/dev/null || true
+	fi
+	if [ "$1" = "remove" ]; then
+		if [ -x "/usr/bin/deb-systemd-helper" ]; then
+			deb-systemd-helper mask synergy.service >/dev/null
+		fi
+	fi
+
+	if [ "$1" = "purge" ]; then
+		if [ -x "/usr/bin/deb-systemd-helper" ]; then
+			deb-systemd-helper purge synergy.service >/dev/null
+			deb-systemd-helper unmask synergy.service >/dev/null
+		fi
 	fi
 	update-desktop-database -q
 }
