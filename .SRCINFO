@@ -1,7 +1,7 @@
 pkgbase = ethereumwallet-bin
 	pkgdesc = Ethereum Wallet from git releases
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/mist/releases
 	arch = i686
 	arch = x86_64
