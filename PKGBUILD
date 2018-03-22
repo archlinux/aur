@@ -2,7 +2,7 @@
 # Maintainer: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.7
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ makedepends=('ncurses')
 url="http://st.suckless.org"
 source=(http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
         config.h)
-md5sums=('29b2a599cf1511c8062ed8f025c84c63'
-         '9cb789e3912df36f296a219e1b9da850')
+sha256sums=('c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926'
+            'bed7977c855f02e3968a754e813015e4214b52102e3c54712d8a52245bcceeec')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   # skip terminfo which conflicts with nsurses
-  sed -i '/\@tic /d' Makefile
+  sed -i '/tic /d' Makefile
   cp $srcdir/config.h config.h
 }
 
