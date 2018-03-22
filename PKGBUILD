@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2017.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
@@ -9,6 +9,7 @@ license=('LGPL')
 depends=('openblas')
 makedepends=()
 optdepends=()
+options=('!strip')
 provides=('salome-meca')
 source=("https://www.code-aster.org/FICHIERS/Salome-Meca-${pkgver}-LGPL-1.tgz")
 md5sums=('e65b4da01a8200492b94a278db621029')
