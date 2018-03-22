@@ -43,7 +43,7 @@ sha256sums=("SKIP")
 options=('!strip')
 
 package() {
-  local destdir="${pkgdir}/opt"
+  local destdir="${pkgdir}/opt/x-tools"
   mkdir -p "${destdir}"
   cp -r "${srcdir}/${_toolchainreponame}/${_toolchainname}" "${destdir}"
 }
