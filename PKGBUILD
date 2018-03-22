@@ -1,15 +1,16 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=20180321.c248b812
+pkgver=20180321.fcf8cbbe
 pkgrel=1
 pkgdesc="script to get system information (git version)"
 arch=('any')
 url="https://github.com/smxi/inxi"
 license=('GPL')
 depends=('coreutils' 'gawk' 'grep' 'pciutils' 'procps-ng' 'sed')
-conflicts=('inxi')
-replaces=('inxi')
+makedepends=('git')
+conflicts=("${pkgname/-git/}")
+replaces=("${pkgname/-git/}")
 optdepends=(
   "dmidecode: inxi -M if no sys machine data"
   "file: inxi -o unmounted file system"
