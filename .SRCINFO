@@ -1,0 +1,23 @@
+pkgbase = python2-pyca-git
+	pkgdesc = Python for Computational Anatomy
+	pkgver = 0.01.r434.gf31ab43
+	pkgrel = 1
+	url = http://bitbucket.org/scicompanat/pyca
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = python2
+	makedepends = swig>=3.0.10
+	makedepends = fftw
+	makedepends = boost
+	depends = python2-numpy
+	optdepends = insight-toolkit: ITK file support
+	optdepends = cuda: for GPU computing
+	optdepends = python2-matplotlib: for full functionality in PyCA.Display and reading/writing png images
+	optdepends = python2-scipy: some additional image/linear algebra functionality
+	source = git+https://bitbucket.org/scicompanat/pyca.git
+	md5sums = SKIP
+
+pkgname = python2-pyca-git
+
