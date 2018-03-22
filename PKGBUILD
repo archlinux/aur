@@ -11,16 +11,16 @@ url='https://github.com/NerdyPepper/scientifica'
 depends=( 'xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig' )
 optdepends=( 'xorg-fonts-alias' )
 install=scientifica-font.install
-source=( 'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf'
-         'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf'
-         'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/LICENSE' )
-md5sums=( '2eccb0b8d69c781ff1a26b6e4093121c'
-          '0965772b2f69aeec0d2f60194a167fc0'
-          '77b104b57cdfb5a0e62b76a0057009df' )
+source=('https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf'
+        'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf'
+        'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/LICENSE')
+md5sums=('2eccb0b8d69c781ff1a26b6e4093121c'
+         '0965772b2f69aeec0d2f60194a167fc0'
+         '77b104b57cdfb5a0e62b76a0057009df')
 
 build(){
-  msg2 "Creating font config files..."
-  cat > "${srcdir}/75-yes-scientifica.conf" << EOF
+  msg2 "Creating font config file..."
+  cat << EOF > 75-yes-scientifica.conf
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -28,10 +28,7 @@ build(){
   <selectfont>
    <acceptfont>
       <pattern>
-  	  <patelt name="file">
-  		<string>scientifica-11.bdf</string>
-		<string>scientfiicaBold-11.bdf</string>
-  	  </patelt>
+  	  <patelt name="family"><string>Scientifica</string></patelt>
   	</pattern>
     </acceptfont>
   </selectfont>
@@ -41,16 +38,16 @@ EOF
 
 package() {
   msg2 "Installing bitmap font files..."
-  install -Dm0644 "${srcdir}/scientifica-11.bdf" \
+  install -Dm0644 scientifica-11.bdf \
 	  "${pkgdir}/usr/share/fonts/misc/scientifica-11.bdf"
-  install -Dm0644 "${srcdir}/scientificaBold-11.bdf" \
+  install -Dm0644 scientificaBold-11.bdf \
 	  "${pkgdir}/usr/share/fonts/misc/scientificaBold-11.bdf"
 
   msg2 "Installing font config files..."
-  install -Dm0644 "${srcdir}/75-yes-scientifica.conf" \
+  install -Dm0644 75-yes-scientifica.conf \
 	  "${pkgdir}/etc/fonts/conf.avail/75-yes-scientifica"
 
   msg2 "Installing license..."
-  install -Dm0644 "${srcdir}/LICENSE" \
+  install -Dm0644 LICENSE \
 	  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
