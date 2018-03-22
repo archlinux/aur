@@ -13,7 +13,7 @@ source=("https://archive.org/download/dinisnoise_source_code/$pkgname-$pkgver.ta
         din.png
         din.desktop
 	path.patch)
-md5sums=('6630aec32aa80178699cfd8dec259821'
+md5sums=('45c5854b2b95d4c67f6771703cb2f155'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
          'e38840354b0f197079e6bbeda03c8613'
          'ceb6b3e310e1244d09be00113f459acf')
