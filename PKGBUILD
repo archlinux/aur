@@ -1,14 +1,14 @@
 # Maintainer: Carlos Galindo <carlos.s.galindo@gmail.com>
 
 pkgname=dmenu-lpass
-pkgver=v0.1.0
-pkgrel=1
+pkgver=0.1.0
+pkgrel=2
 pkgdesc="dmenu script for lastpass-cli"
 arch=("any")
 url="https://github.com/va7sdf/dmenu-lpass"
 license=("unknown")
 depends=("bash" "lastpass-cli" "awk" "dmenu")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("764f883842235d6d6f1fb0475f487b550ec700760fa09c38cebefc4613e67b0f")
 
 package() {

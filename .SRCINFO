@@ -1,7 +1,7 @@
 pkgbase = dmenu-lpass
 	pkgdesc = dmenu script for lastpass-cli
-	pkgver = v0.1.0
-	pkgrel = 1
+	pkgver = 0.1.0
+	pkgrel = 2
 	url = https://github.com/va7sdf/dmenu-lpass
 	arch = any
 	license = unknown
@@ -9,7 +9,7 @@ pkgbase = dmenu-lpass
 	depends = lastpass-cli
 	depends = awk
 	depends = dmenu
-	source = dmenu-lpass-v0.1.0.tar.gz::https://github.com/va7sdf/dmenu-lpass/archive/v0.1.0.tar.gz
+	source = dmenu-lpass-0.1.0.tar.gz::https://github.com/va7sdf/dmenu-lpass/archive/v0.1.0.tar.gz
 	sha256sums = 764f883842235d6d6f1fb0475f487b550ec700760fa09c38cebefc4613e67b0f
 
 pkgname = dmenu-lpass
