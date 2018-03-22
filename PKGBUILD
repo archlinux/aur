@@ -2,7 +2,7 @@
 # Based on smplayer-svn package
 
 pkgname=smplayer-svn-notitlebar
-pkgver=18.2.2.r8954M
+pkgver=18.3.0.r8959M
 pkgrel=1
 pkgdesc="Advanced front-end for MPlayer/MPV + Patch to disable titlebar in compact mode"
 arch=('i686' 'x86_64')

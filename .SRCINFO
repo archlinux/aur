@@ -1,6 +1,6 @@
 pkgbase = smplayer-svn-notitlebar
 	pkgdesc = Advanced front-end for MPlayer/MPV + Patch to disable titlebar in compact mode
-	pkgver = 18.2.2.r8954M
+	pkgver = 18.3.0.r8959M
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	arch = i686
