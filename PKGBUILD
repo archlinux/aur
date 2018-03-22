@@ -13,6 +13,7 @@ sha256sums=('SKIP')
 
 package_python-pysnmp() {
   depends=(python python-pysmi python-pyasn1)
+  provides=(pysnmp)
   cd "$srcdir/pysnmp"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
