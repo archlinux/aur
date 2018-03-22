@@ -1,19 +1,19 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -219,1 +219,0 @@
+@@ -268,1 +268,0 @@
 -        GuiAddons
-@@ -223,1 +222,0 @@
+@@ -272,1 +271,0 @@
 -        WindowSystem
 --- a/libs/widgets/CMakeLists.txt
 +++ a/libs/widgets/CMakeLists.txt
-@@ -102,1 +102,1 @@
+@@ -103,1 +103,1 @@
 -target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::GuiAddons KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
 +target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
 --- a/libs/widgetutils/CMakeLists.txt
 +++ b/libs/widgetutils/CMakeLists.txt
-@@ -117,1 +117,0 @@
+@@ -120,1 +120,0 @@
 -        KF5::GuiAddons
-@@ -119,1 +118,0 @@
+@@ -122,1 +121,0 @@
 -        KF5::WindowSystem
 --- a/libs/widgetutils/config/kcolorscheme.cpp
 +++ b/libs/widgetutils/config/kcolorscheme.cpp
@@ -223,7 +223,7 @@
 +++ b/libs/ui/widgets/KoDualColorButton.cpp
 @@ -22,1 +22,0 @@
 -#include <kcolormimedata.h>
-@@ -35,2 +34,40 @@
+@@ -37,2 +36,40 @@
  #include <QApplication>
 +
 +#include <qmimedata.h>
