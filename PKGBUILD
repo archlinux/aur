@@ -172,6 +172,10 @@ if $_building && $_uber_minimal; then
   _skip_qtwidgets=true
 fi
 
+if [[ -f debug ]]; then
+  _debug=true
+fi
+
 if $_building && $_minimal; then
   _skip_qtscript=true
   _skip_qtwebengine=true
