@@ -15,7 +15,7 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-pycups: Printing support' 'python2-netifaces: mdns'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
-            'gst-python2'
+            'gst-python2: Sound Forwarding'
             'pam-selinux: Proxy Server Support')
 conflicts=('xpra-winswitch')
 provides=('xpra-winswitch')
