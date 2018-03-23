@@ -11,7 +11,7 @@
 
 pkgname=anki20-bin
 _pkgname=anki
-pkgver=2.0.47
+pkgver=2.0.50
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -26,8 +26,8 @@ source=("anki")
 source_i686=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-i386.tar.bz2")
 source_x86_64=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-amd64.tar.bz2")
 sha256sums=('fc2316cf2428af18562cc13c6277ff70f8a974f1e7ef32631b8d7f81af60e0c4')
-sha256sums_i686=('5f5c440096850d643c97c5ae8697a0c746ad2aa59ef0cb14eae25f1f3ea4741b')
-sha256sums_x86_64=('84e3681e659ab7fb50c8f808aafe773759acef7fd9607f3c7900e7ab3667e1de')
+sha256sums_i686=('5dd579396d8c15ea3394c142e5d4b0c556a54e255ae8e12f8e6121c021c77416')
+sha256sums_x86_64=('9a246a7598bc0332de64704cb75db51f27e6f941051f82b43e8cf168a22eba08')
 options=(!strip)
 
 package() {
