@@ -2,7 +2,7 @@
 
 pkgname=libretro-mame-git
 pkgver=57546.893f1ac2231
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of MAME. (Arcade)"
 url="https://github.com/libretro/mame"
@@ -23,12 +23,10 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make NOWERROR=1 CONFIG="libretro"
-  # Suggestion by "Enverex". Works also.
-  # make OSD="retro" verbose=1 RETRO=1 NOWERROR=1 OS="linux" TARGETOS="linux" CONFIG="libretro" NO_USE_MIDI="1" PTR64=1 TARGET=mame SUBTARGET=arcade
+  make OSD="retro" verbose=1 RETRO=1 NOWERROR=1 OS="linux" TARGETOS="linux" CONFIG="libretro" NO_USE_MIDI="1" PTR64=1 TARGET=mame SUBTARGET=arcade
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "${_gitname}/mamearcade_libretro.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
   install -Dm644 "${_gitname}/docs/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
