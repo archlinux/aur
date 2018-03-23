@@ -1,7 +1,7 @@
 #Maintainer: ajs124 < aur AT ajs124 DOT de>
 
 pkgname=tgt-rdma
-pkgver=1.0.72
+pkgver=1.0.73
 pkgrel=1
 pkgdesc="iSCSI Target STGT with iSER/RDMA support"
 arch=('x86_64' 'i686' 'arm')
@@ -14,7 +14,7 @@ conflicts=('tgt')
 provides=('tgt')
 backup=('etc/tgt/targets.conf')
 source=(https://github.com/fujita/tgt/archive/v$pkgver.tar.gz)
-sha512sums=('9dce5f61561c53a11581da21e913e06df50b098c868f65ac43524ffcb8fea731e3d6bcacb6e3f798da5b1e295277e9b1c6023a1208ba39a552dd0a2a502948a5')
+sha512sums=('6d9bc3aaeb74f760454d6b5ac0df45a41f85cbe10280043ef750a88e3c9dc2f3fa16ff62908567833e930ed6d71c27985f93a7460f5742b2ae6f6777076d0de4')
 
 build() {
   cd "$srcdir/${pkgname/-rdma/}-$pkgver"
