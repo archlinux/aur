@@ -2,7 +2,7 @@
 
 pkgname=caffe2-cpu-git
 pkgver=0.8.1.r1400.ga63ed730f
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
 url='https://caffe2.ai/'
@@ -33,29 +33,29 @@ source=(
     # main source:
         "$pkgname"::'git+https://github.com/caffe2/caffe2.git'
     # git submodules:
-        'submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
-        'submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
-        'submodule-cub'::'git+https://github.com/NVlabs/cub.git'
-        'submodule-eigen'::'git+https://github.com/RLovelett/eigen.git'
-        'submodule-googletest'::'git+https://github.com/google/googletest.git'
-        'submodule-nervanagpu'::'git+https://github.com/NervanaSystems/nervanagpu.git'
-        'submodule-benchmark'::'git+https://github.com/google/benchmark.git'
-        'submodule-protobuf'::'git+https://github.com/google/protobuf.git'
-        'submodule-ios-cmake'::'git+https://github.com/Yangqing/ios-cmake.git'
-        'submodule-NNPACK'::'git+https://github.com/Maratyszcza/NNPACK.git'
-        'submodule-gloo'::'git+https://github.com/facebookincubator/gloo'
-        'submodule-NNPACK_deps-pthreadpool'::'git+https://github.com/Maratyszcza/pthreadpool.git'
-        'submodule-NNPACK_deps-FXdiv'::'git+https://github.com/Maratyszcza/FXdiv.git'
-        'submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
-        'submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
-        'submodule-aten'::'git+https://github.com/zdevito/ATen.git'
-        'submodule-zstd'::'git+https://github.com/facebook/zstd.git'
-        'submodule-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo.git'
-        'submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
-        'submodule-python-peachpy'::'git+https://github.com/Maratyszcza/PeachPy.git'
-        'submodule-python-six'::'git+https://github.com/benjaminp/six.git'
-        'submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
-        'submodule-onnx'::'git+https://github.com/onnx/onnx.git'
+        'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
+        'caffe2-submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
+        'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
+        'caffe2-submodule-eigen'::'git+https://github.com/RLovelett/eigen.git'
+        'caffe2-submodule-googletest'::'git+https://github.com/google/googletest.git'
+        'caffe2-submodule-nervanagpu'::'git+https://github.com/NervanaSystems/nervanagpu.git'
+        'caffe2-submodule-benchmark'::'git+https://github.com/google/benchmark.git'
+        'caffe2-submodule-protobuf'::'git+https://github.com/google/protobuf.git'
+        'caffe2-submodule-ios-cmake'::'git+https://github.com/Yangqing/ios-cmake.git'
+        'caffe2-submodule-NNPACK'::'git+https://github.com/Maratyszcza/NNPACK.git'
+        'caffe2-submodule-gloo'::'git+https://github.com/facebookincubator/gloo'
+        'caffe2-submodule-NNPACK_deps-pthreadpool'::'git+https://github.com/Maratyszcza/pthreadpool.git'
+        'caffe2-submodule-NNPACK_deps-FXdiv'::'git+https://github.com/Maratyszcza/FXdiv.git'
+        'caffe2-submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
+        'caffe2-submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
+        'caffe2-submodule-aten'::'git+https://github.com/zdevito/ATen.git'
+        'caffe2-submodule-zstd'::'git+https://github.com/facebook/zstd.git'
+        'caffe2-submodule-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo.git'
+        'caffe2-submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
+        'caffe2-submodule-python-peachpy'::'git+https://github.com/Maratyszcza/PeachPy.git'
+        'caffe2-submodule-python-six'::'git+https://github.com/benjaminp/six.git'
+        'caffe2-submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
+        'caffe2-submodule-onnx'::'git+https://github.com/onnx/onnx.git'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -92,7 +92,7 @@ prepare() {
     git submodule init
     for _submodule in $_submodule_list
     do
-        local _submodule_dir="submodule-$(printf '%s' "${_submodule}" | tr '/' '-')"
+        local _submodule_dir="caffe2-submodule-$(printf '%s' "${_submodule}" | tr '/' '-')"
         git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
     unset _submodule
