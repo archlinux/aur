@@ -12,7 +12,7 @@ pkgbase = fakeuser-git
 	source = git+https://github.com/progandy/fakeuser.git
 	source = fakeuser.patch
 	md5sums = SKIP
-	md5sums = db7536ff3a3d751ea9dd5f7580b610d1
+	md5sums = f09d97532d85fe51b0108e2f0c32acfc
 
 pkgname = fakeuser-git
 

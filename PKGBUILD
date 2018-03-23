@@ -15,7 +15,7 @@ conflicts=("${_appname}")
 source=("git+https://github.com/progandy/${_appname}.git"
         'fakeuser.patch')
 md5sums=('SKIP'
-         'db7536ff3a3d751ea9dd5f7580b610d1')
+         'f09d97532d85fe51b0108e2f0c32acfc')
 
 pkgver() {
 
@@ -46,7 +46,7 @@ package() {
 	
 	install -Dm755 'fakeadd' "${pkgdir}/usr/bin/fakeadd"
 	install -Dm755 'fakeuser' "${pkgdir}/usr/bin/fakeuser"
-	install -Dm755 'libfakeuser.so' "${pkgdir}/usr/lib/lib${_appname}/libfakeuser.so"
+	install -Dm755 'libfakeuser.so' "${pkgdir}/usr/lib/${_appname}/libfakeuser.so"
 	cp 'example-makepkg/'* "${pkgdir}/usr/share/doc/${_appname}/example-makepkg"
 	install -Dm644 "${srcdir}/${_appname}/"{README.md,LICENSE} "${pkgdir}/usr/share/doc/${_appname}"
 	

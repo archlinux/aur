@@ -5,7 +5,7 @@
  fi
  
 -LIB="libfakeuser.so"
-+LIB="/usr/lib/libfakeuser/libfakeuser.so"
++LIB="/usr/lib/fakeuser/libfakeuser.so"
  
  # Keep preloaded libs
  if test -n "$LD_PRELOAD"; then
