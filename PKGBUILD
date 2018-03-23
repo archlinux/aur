@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=lemonade-git
-pkgver=r63.ad249b1
+pkgver=r66.cf62242
 _pkgname=lemonade
 pkgrel=1
 pkgdesc="Lemonade is a remote utility tool. (copy, paste and open browser) over TCP. "
