@@ -29,13 +29,24 @@ sha256sums_x86_64=('56936439c458202b766fdf2e84136a104a475166c65c0cfa43fe722a9bca
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
 
-_warning() {
+_fakeadd_error() {
 
 	echo 'Due to limitations of the .run file of this package, you must have a mysql user'
 	echo 'in your system prior to its build.'
-	echo 'You can either create a mysql user manually or just run `fakepkg` instead of'
-	echo '`makepkg`. You can pass normal `makepkg` parameters to it,'
-	echo 'such as `makepkg -si`'.
+	echo
+	echo 'You can create a mysql user by doing:'
+	echo
+	echo '  groupadd mysql -g 992'
+	echo '  useradd -u 992 -r -g mysql -s /bin/false mysql'
+
+	return 1
+
+}
+
+prepare() {
+
+	# Enable fakeadd under fakeroot environment
+	export LD_PRELOAD='/usr/lib/fakeuser/libfakeuser.so'
 
 }
 
@@ -43,10 +54,10 @@ package() {
 
 	install -dm755 "${pkgdir}/opt/lampp"
 
-	msg 'Creating a temporary mysql user/group with fakeadd (fakeuser)...'
+	msg 'Creating a temporary mysql user/group with fakeadd...'
 
-	getent group  mysql >/dev/null || fakeadd -G -n mysql -g 713        || _warning
-	getent passwd mysql >/dev/null || fakeadd -U -n mysql -g 713 -u 713 || _warning
+	getent group mysql > /dev/null || fakeadd -G -n mysql -g 992 || _fakeadd_error
+	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 || _fakeadd_error
 
 	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
 
@@ -62,7 +73,7 @@ package() {
 
 	msg 'Copying executables and launcher...'
 
-	chmod g-s -R "${pkgdir}/opt/lampp"
+	#chmod g-s -R "${pkgdir}/opt/lampp"
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
@@ -86,3 +97,4 @@ package() {
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
 
 }
+
