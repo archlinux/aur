@@ -1,6 +1,6 @@
 # Maintainer: Hans-Peter Deifel <hpd@hpdeifel.de>
 pkgname=aurs-git
-pkgver=0.1.0.r0.g91d8bf7
+pkgver=0.2.1.r0.g4ee8c0a
 pkgrel=1
 pkgdesc="An AUR helper written in Rust"
 arch=('x86_64')
