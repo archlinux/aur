@@ -3,9 +3,16 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
+# Performance note: If you want to run on Nvidia closed drivers in X11
+# only then please remove the -Dwayland=true line below in build().
+# You will lose wayland support but it's not going to work well (with
+# acceleration) on proprietary nvidia drivers anyway. If you don't
+# disable this line and option then you'll find performance degreads in
+# enlightenment.
+
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.22.99.23236.g9581a4828
+pkgver=0.22.99.23255.g2a7312d2b
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
