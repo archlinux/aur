@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-mmod-panel-git
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/cyberlis/mmod-panel
+	source = git+https://github.com/cyberlis/mmod-panel.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-mmod-panel-git

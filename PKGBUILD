@@ -10,7 +10,7 @@ url="https://github.com/cyberlis/mmod-panel"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
-source=('git+https://github.com/cyberlis/mmod-panel')
+source=('git+https://github.com/cyberlis/mmod-panel.git')
 sha256sums=('SKIP')
 
 pkgver() {
