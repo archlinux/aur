@@ -1,4 +1,5 @@
-# Maintainer: SaultDon <sault.don gmail>
+# Maintainer: Brad Ackerman <brad at facefault dot org>
+# Contributor: SaultDon <sault.don gmail>
 # Contributor: Andre Klitzing <andre () incubo () de>
 
 pkgname=pgrouting
