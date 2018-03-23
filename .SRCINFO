@@ -1,6 +1,6 @@
 pkgbase = madonctl-git
 	pkgdesc = Golang command line interface for the Mastodon API
-	pkgver = r165.6fe231e
+	pkgver = r205.c8a7bb3
 	pkgrel = 1
 	url = https://github.com/McKael/madonctl
 	arch = any
