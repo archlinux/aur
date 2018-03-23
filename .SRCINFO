@@ -13,4 +13,4 @@ pkgbase = asciiquarium-lock
 	source = https://raw.githubusercontent.com/YanDoroshenko/asciiquarium-lock/master/asciiquarium-lock.sh
 	sha256sums = 6aea815606759713185a07b4d66e1c716aedeeac391ffd41ae45f8ac2c893665
 
-pkgname = asciiquarent-lock
+pkgname = asciiquarium-lock
