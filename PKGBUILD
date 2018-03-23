@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.4.r3598.495f9db4+wine.3.4.r0.gafe4f54bb4+pba.r29.87307b1
+pkgver=3.4.r3602.4d7af408+wine.3.4.r120.gafef57f872+pba.r29.87307b1
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
@@ -96,6 +96,7 @@ source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_pbasrcdir"::'git+https://github.com/acomminos/wine-pba.git'
 		'steam.patch'
 		'poe-fix.patch'
+		#'vsync.patch'
 		'harmony-fix.diff'
 		'30-win32-aliases.conf'
 		'wine-binfmt.conf')
@@ -104,6 +105,7 @@ sha256sums=('SKIP'
 			'SKIP'
 			'972d6b114f7621c5f3bd34b1105dd390b318db18fbc76328001c984db488a9b0'
 			'a45b31be24638450a43031dae1b3126a1364da22ec5212bf9cdf66caa037dcf8'
+			#'ce8831fc1631f1ef8a60237df3b61d7e62365713516c0d437202f9e321a0df88'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
@@ -181,6 +183,10 @@ prepare() {
 	for _f in $(ls "${srcdir}"/"${_pbasrcdir}"/'patches'); do
 		patch -d "${srcdir}"/"${_winesrcdir}" -Np1 < "${srcdir}"/"${_pbasrcdir}"/'patches'/"${_f}"
 	done
+
+	# vsync patch
+	# https://github.com/SveSop/wine-staging-pba-patched/commit/47404f07dc4f56e1eae2785eeee71be56c8fd9d0?diff=unified
+	#patch -Np1 < ../'vsync.patch'
 
 	# fix path of opencl headers
 	sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
