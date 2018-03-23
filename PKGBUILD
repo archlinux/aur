@@ -477,9 +477,17 @@ if $_debug; then
 
   sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild}
   sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild}
+if $_target_host || $_static_build; then
+  sed -i "s/libspkgname/${pkgname}/" ${_libsdebugpkgbuild}
+else
   sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild}
+fi
   sed -i "s/libsdebugpkgname/${_libsdebugpkgname}/" ${_libsdebugpkgbuild}
   sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild}
+
+  cd ${_libsdebugdir}
+  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
+  mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
 fi
 
   if $_static_build || $_target_host; then
@@ -513,10 +521,4 @@ fi
   fi
 
   cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
-
-if $_debug; then
-  cd ${_libsdebugdir}
-  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-  mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
-fi
 }

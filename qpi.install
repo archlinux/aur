@@ -1,0 +1,122 @@
+_piver=3
+_qmakepath=/opt/qt/qt-sdk-raspberry-pi3/bin/qmake
+_sysroot=/mnt/pi3
+_sdktool="/usr/lib/qtcreator/sdktool"
+_altsdktool="/usr/libexec/qtcreator/sdktool"
+_devicefamily="raspberrypi"
+_devicename="${_devicefamily}${_piver}"
+_familytext="Raspberry Pi"
+_devicetext="${_familytext} ${_piver}"
+
+if [[ -x ${_altsdktool} ]]; then
+    _sdktool=${_altsdktool}
+fi
+
+setup_toolchain() {
+    echo "Registering toolchain with Qt Creator"
+${_sdktool} addTC \
+    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
+    --name "${_familytext} toolchain" \
+    --path /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gcc \
+    --abi arm-linux-generic-elf-32bit \
+    --supportedAbis arm-linux-generic-elf-32bit
+
+    echo "Registering debugger with Qt Creator"
+${_sdktool} addDebugger \
+    --id "${_devicefamily}_gdb" \
+    --name "${_familytext} gdb" \
+    --binary /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gdb \
+    --abis arm-linux-generic-elf-32bit \
+    --engine 1
+}
+
+remove_toolchain() {
+#TODO: Don't remove if the other pi package is present
+#Not used at present
+${_sdktool} rmTC \
+    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}"
+
+${_sdktool} rmDebugger \
+    --id "${_devicefamily}_gdb"
+}
+
+remove_kit() {
+${_sdktool} rmQt \
+    --id "${_devicename}_qt"
+
+${_sdktool} rmKit \
+    --id "${_devicename}_kit"
+
+${_sdktool} rmDev \
+    --id "${_devicename}_device"
+}
+
+setup_kit() {
+  remove_kit
+  setup_toolchain
+ 
+    echo "Registering device with Qt Creator"
+${_sdktool} addDev \
+    --id "${_devicename}_device" \
+    --name "${_devicetext}" \
+    --host "qpi${_piver}.local" \
+    --uname "root" \
+    --password "root" \
+    --osType "GenericLinuxOsType" \
+    --type 0 \
+    --sshPort 22 \
+    --freePorts "10000-10100"
+
+    echo "Registering Qt install with Qt Creator"
+${_sdktool} addQt \
+    --id "${_devicename}_qt" \
+    --name "${_devicetext} Qt" \
+    --qmake ${_qmakepath} \
+    --type RemoteLinux.EmbeddedLinuxQt
+
+    echo "Creating Qt Creator Kit"
+${_sdktool} addKit \
+    --id "${_devicename}_kit" \
+    --name "${_devicetext} Kit" \
+    --debugger "${_devicefamily}_gdb" \
+    --devicetype GenericLinuxOsType \
+    --device "${_devicename}_device" \
+    --sysroot ${_sysroot} \
+    --toolchain "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
+    --qt "${_devicename}_qt" \
+    --mkspec "devices/linux-rpi${_piver}-g++" 
+}
+
+## arg 1:  the new package version
+pre_install() {
+    echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+  setup_kit
+}
+#post_install
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  setup_kit
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo ""
+}
+#pre_remove
+
+## arg 1:  the old package version
+post_remove() {
+  remove_kit
+}
