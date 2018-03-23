@@ -1,6 +1,6 @@
 pkgbase = verilator
 	pkgdesc = The fastest free Verilog HDL simulator
-	pkgver = 3.916
+	pkgver = 3.922
 	pkgrel = 1
 	url = http://www.veripool.org/projects/verilator/wiki/Intro
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = verilator
 	license = LGPL
 	makedepends = gcc
 	depends = gcc-libs
-	source = http://www.veripool.org/ftp/verilator-3.916.tgz
-	sha256sums = c8729b762bc40f90afecf5a412331d8c38ee751a177b2db925161da6e9d5b7f0
+	source = http://www.veripool.org/ftp/verilator-3.922.tgz
+	sha256sums = 8fba8da6d4fc0044180a1d75ea671b11a5c7757683dadfbca38bd7c143433beb
 
 pkgname = verilator
 

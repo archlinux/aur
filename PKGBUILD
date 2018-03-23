@@ -2,7 +2,7 @@
 # Contributor: Jeffrey Tolar <tolar.jeffrey at gmail dot com>
 
 pkgname=verilator
-pkgver=3.916
+pkgver=3.922
 pkgrel=1
 pkgdesc='The fastest free Verilog HDL simulator'
 url=http://www.veripool.org/projects/verilator/wiki/Intro
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('gcc')
 
 source=("http://www.veripool.org/ftp/${pkgname}-${pkgver}.tgz")
-sha256sums=('c8729b762bc40f90afecf5a412331d8c38ee751a177b2db925161da6e9d5b7f0')
+sha256sums=('8fba8da6d4fc0044180a1d75ea671b11a5c7757683dadfbca38bd7c143433beb')
 
 build() {
   cd "verilator-${pkgver}"
