@@ -1,0 +1,15 @@
+diff -Naur jacal.orig/Makefile jacal.new/Makefile
+--- jacal.orig/Makefile	2018-03-23 20:48:41.653359697 +0100
++++ jacal.new/Makefile	2018-03-23 20:50:17.185350568 +0100
+@@ -195,9 +195,9 @@
+ 	$(INSTALL_DATA) go-scm $(DESTDIR)$(jacallibdir)go.scm
+ 	rm go-scm
+ 	echo '#! /bin/sh'			   > jacal-script
+-	grep -h ^SCHEME_LIBRARY_PATH= `which slib`>> jacal-script
++	echo SCHEME_LIBRARY_PATH=/usr/share/slib/    >> jacal-script
+ 	echo export SCHEME_LIBRARY_PATH		  >> jacal-script
+-	echo JACALDIR=$(DESTDIR)$(jacallibdir)	  >> jacal-script
++	echo JACALDIR=/usr/lib/jacal/		  >> jacal-script
+ 	echo VERSION=$(VERSION)			  >> jacal-script
+ 	cat $<					  >> jacal-script
+ 	$(INSTALL_PROGRAM) jacal-script $(DESTDIR)$(bindir)jacal
