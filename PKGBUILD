@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r1400.ga63ed730f
-pkgrel=2
+pkgver=0.8.1.r1418.ge3a8ac07c
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
 url='https://caffe2.ai/'
@@ -12,8 +12,8 @@ depends=(
         # required:
             'google-glog' 'protobuf' 'lapack' 'python' 'python-numpy' 'python-protobuf'
         # not required but enabled in build:
-            'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
-            'hiredis' 'ffmpeg'
+            'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'numactl' 'openmpi' 'snappy'
+            'zeromq' 'hiredis' 'ffmpeg'
         # python:
             'python-flask' 'python-future' 'graphviz' 'python-hypothesis'
             'python-jupyter_core' 'python-matplotlib' 'python-pydot' 'python-yaml'
@@ -135,8 +135,9 @@ build() {
         -DPYTHON_INCLUDE_DIR:PATH="/usr/include/python${_pythonver}m" \
         -DPYTHON_LIBRARY:FILEPATH="/usr/lib/libpython${_pythonver}m.so" \
         \
+        -DUSE_ACL:BOOL='OFF' \
+        -DUSE_ASAN:BOOL='ON' \
         -DUSE_ATEN:BOOL='ON' \
-        -DUSE_ASAN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
@@ -152,12 +153,16 @@ build() {
         -DUSE_NERVANA_GPU:BOOL='OFF' \
         -DUSE_NNAPI:BOOL='OFF' \
         -DUSE_NNPACK:BOOL='ON' \
+        -DUSE_NUMA:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
         -DUSE_OPENCV:BOOL='OFF' \
         -DUSE_OPENMP:BOOL='ON' \
+        -dUSE_PROF:BOOL='OFF' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
+        -DUSE_SNPE:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
+        -DUSE_ZSTD:BOOL='ON' \
         \
         -Wno-dev \
         ..
