@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 provides=("prometheus-snmp-exporter")
 conflicts=("prometheus-snmp-exporter")
-backup=("etc/prometheus/snmp.yml")
+backup=("/etc/prometheus/snmp.yml")
 
 source_x86_64=("prometheus-snmp-exporter.service"
                "https://github.com/prometheus/snmp_exporter/releases/download/v${pkgver}/snmp_exporter-${pkgver}.linux-amd64.tar.gz")
