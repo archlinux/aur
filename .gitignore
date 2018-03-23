@@ -1,0 +1,6 @@
+dexed/
+src/
+pkg/
+dexed-git-*.tar.xz
+dexed-git-*.src.tar.gz
+.AURINFO
