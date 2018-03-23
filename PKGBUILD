@@ -3,26 +3,26 @@
 # Maintainer: oneup <oneup40 at gmail dot com>
 
 pkgname=python2-cle
-pkgver=7.7.9.21
+pkgver=7.8.2.21
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://github.com/angr/cle"
-depends=('python2' 'python2-archinfo>=7.7.9.14' 'python2-cffi' 'python2-idalink' 'python2-pefile' 'python2-pyelftools>=0.24' 'python2-pyvex>=7.7.9.14')
+depends=('python2' 'python2-archinfo>=7.8.2.21' 'python2-cffi' 'python2-idalink' 'python2-pefile' 'python2-pyelftools>=0.24' 'python2-pyvex>=7.8.2.21')
 makedepends=('python2-distribute' )
 license=('BSD')
 arch=('any')
-source=('https://pypi.python.org/packages/c6/c9/97532224a49d0f919051a65dd99952d50bcb6bc0975a1690c94933d9524a/cle-7.7.9.21.tar.gz'
+source=('https://pypi.python.org/packages/42/c6/31cdaac4f1b54b98e78154eea97737b1aaf359c1db983dd2aab5cfe8178d/cle-7.8.2.21.tar.gz'
         'https://raw.githubusercontent.com/angr/cle/master/LICENSE')
-md5sums=('6efd90cdc587fe428caeb3f52f227b55'
+md5sums=('e9664eb1ae7f460cc39734214d8d01ff'
          '92da168ebb0065f567f0ea48bed0f512')
 
 build() {
-    cd $srcdir/cle-7.7.9.21
+    cd $srcdir/cle-7.8.2.21
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/cle-7.7.9.21
+    cd $srcdir/cle-7.8.2.21
     python2 setup.py install --root="$pkgdir" --optimize=1 
     install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

@@ -1,21 +1,21 @@
 pkgbase = python2-cle
 	pkgdesc = CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory.
-	pkgver = 7.7.9.21
+	pkgver = 7.8.2.21
 	pkgrel = 1
 	url = https://github.com/angr/cle
 	arch = any
 	license = BSD
 	makedepends = python2-distribute
 	depends = python2
-	depends = python2-archinfo>=7.7.9.14
+	depends = python2-archinfo>=7.8.2.21
 	depends = python2-cffi
 	depends = python2-idalink
 	depends = python2-pefile
 	depends = python2-pyelftools>=0.24
-	depends = python2-pyvex>=7.7.9.14
-	source = https://pypi.python.org/packages/c6/c9/97532224a49d0f919051a65dd99952d50bcb6bc0975a1690c94933d9524a/cle-7.7.9.21.tar.gz
+	depends = python2-pyvex>=7.8.2.21
+	source = https://pypi.python.org/packages/42/c6/31cdaac4f1b54b98e78154eea97737b1aaf359c1db983dd2aab5cfe8178d/cle-7.8.2.21.tar.gz
 	source = https://raw.githubusercontent.com/angr/cle/master/LICENSE
-	md5sums = 6efd90cdc587fe428caeb3f52f227b55
+	md5sums = e9664eb1ae7f460cc39734214d8d01ff
 	md5sums = 92da168ebb0065f567f0ea48bed0f512
 
 pkgname = python2-cle
