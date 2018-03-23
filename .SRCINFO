@@ -1,19 +1,19 @@
 pkgbase = python2-pyvex
 	pkgdesc = A Python interface to libVEX and VEX IR
-	pkgver = 7.7.9.14
+	pkgver = 7.8.2.21
 	pkgrel = 1
 	url = https://github.com/angr/pyvex
 	arch = x86_64
 	license = BSD
 	makedepends = python2-distribute
 	depends = python2
-	depends = python2-archinfo>=7.7.9.14
+	depends = python2-archinfo>=7.8.2.21
 	depends = python2-bitstring
 	depends = python2-cffi>=1.0.3
 	depends = python2-pycparser
-	source = https://pypi.python.org/packages/ec/df/4ff2cab2e39236f3f2ee62f75369324e9b29c44f4aacae831b7551b88118/pyvex-7.7.9.14.tar.gz
+	source = https://pypi.python.org/packages/5c/4e/04244be4d05806e7971919da2f86e0fb9211791a035c3bd5c4063f56775c/pyvex-7.8.2.21.tar.gz
 	source = https://raw.githubusercontent.com/angr/pyvex/master/LICENSE
-	md5sums = e3c582a4b5b3cd01447d65f94400108b
+	md5sums = 72540241b1bc5ce93c4e1bffe8c79c02
 	md5sums = 92da168ebb0065f567f0ea48bed0f512
 
 pkgname = python2-pyvex

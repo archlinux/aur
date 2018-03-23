@@ -3,26 +3,26 @@
 # Maintainer: oneup <oneup40 at gmail dot com>
 
 pkgname=python2-pyvex
-pkgver=7.7.9.14
+pkgver=7.8.2.21
 pkgrel=1
 pkgdesc="A Python interface to libVEX and VEX IR"
 url="https://github.com/angr/pyvex"
-depends=('python2' 'python2-archinfo>=7.7.9.14' 'python2-bitstring' 'python2-cffi>=1.0.3' 'python2-pycparser')
+depends=('python2' 'python2-archinfo>=7.8.2.21' 'python2-bitstring' 'python2-cffi>=1.0.3' 'python2-pycparser')
 makedepends=('python2-distribute' )
 license=('BSD')
 arch=('x86_64')
-source=('https://pypi.python.org/packages/ec/df/4ff2cab2e39236f3f2ee62f75369324e9b29c44f4aacae831b7551b88118/pyvex-7.7.9.14.tar.gz'
+source=('https://pypi.python.org/packages/5c/4e/04244be4d05806e7971919da2f86e0fb9211791a035c3bd5c4063f56775c/pyvex-7.8.2.21.tar.gz'
         'https://raw.githubusercontent.com/angr/pyvex/master/LICENSE')
-md5sums=('e3c582a4b5b3cd01447d65f94400108b'
+md5sums=('72540241b1bc5ce93c4e1bffe8c79c02'
          '92da168ebb0065f567f0ea48bed0f512')
 
 build() {
-    cd $srcdir/pyvex-7.7.9.14
+    cd $srcdir/pyvex-7.8.2.21
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/pyvex-7.7.9.14
+    cd $srcdir/pyvex-7.8.2.21
     python2 setup.py install --root="$pkgdir" --optimize=1 
     install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
