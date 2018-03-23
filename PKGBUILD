@@ -4,15 +4,21 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-dev
-pkgver=3.0.3039
+pkgver=3.0.3072
 pkgrel=1
 pkgdesc="Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves"
 arch=('any')
-url='https://www.ombi.io'
+url='https://github.com/tidusjar/Ombi'
 license=('GPL2')
-depends=('libunwind')
+depends=('libunwind' 'openssl-1.0')
 makedepends=('tar')
-optdepends=('sonarr' 'radarr' 'plex-media-server' 'emby-server')
+optdepends=('sonarr: Automated TV show downloads'
+            'sickrage: Automated TV show downloads'
+            'radarr: Automated movie downloads'
+            'couchpotato: Automated movie downloads' 
+            'plex-media-server: Plex media server' 
+            'plex-media-server-plexpass: Plex media server (Plexpass version)'
+            'emby-server: Emby media server')
 replaces=('plexrequests' 'ombi-beta')
 provides=('ombi')
 conflicts=('ombi')
@@ -22,19 +28,29 @@ install='ombi.install'
 noextract=("${pkgname}.tar.gz")
 source=("${pkgname}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=develop"
         'ombi.service'
-        'ombi.sysusers')
+        'ombi.sysusers'
+        'ombi.tmpfiles')
 sha256sums=('SKIP'
-            '601f9ba604c6767722397db977a9d73e800127d4a33c5511439e112d22660eba'
-            '480941bb5c96b9e6a155d6feca16f56c74d7f13a49fc94f36132a548bd53dc0a')
+            '79f4860eaf9d00d3739c6d9fc5e9625ea68dc329bb1cbddae5b51ae4faaae20f'
+            '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
+            'afb971692d313d988096cb4447033f8ca2234016ccc2b3590afd5cbcb36a8e56')
 
 pkgver() {
   curl -s https://ci.appveyor.com/api/projects/tidusjar/requestplex/branch/develop | grep -Pom 1 '"version":"\K[^"]*'
 }
 
+prepare() {
+  mkdir -p "${srcdir}/ombi"
+  tar -xzf "${pkgname}.tar.gz" -C "${srcdir}/ombi"
+}
+
 package() {
   install -dm755 "${pkgdir}/opt/Ombi"
-  tar xzf "${pkgname}.tar.gz" -C "${pkgdir}/opt/Ombi"
+  cp -dpr --no-preserve=ownership "${srcdir}/ombi/"* "${pkgdir}/opt/Ombi/"
+  find ${pkgdir}/opt/Ombi/ -type f -exec chmod 644 '{}' ';'
+  find ${pkgdir}/opt/Ombi/ -type d -exec chmod 755 '{}' ';'
   chmod +x "${pkgdir}/opt/Ombi/Ombi"
+
   install -Dm644 "${srcdir}/ombi.service" "${pkgdir}/usr/lib/systemd/system/ombi.service"
   install -Dm644 "${srcdir}/ombi.sysusers" "${pkgdir}/usr/lib/sysusers.d/ombi.conf"
 }

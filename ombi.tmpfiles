@@ -1,0 +1,3 @@
+d /var/lib/ombi 0755 ombi ombi
+Z /var/lib/ombi - ombi ombi
+Z /opt/Ombi - ombi ombi
