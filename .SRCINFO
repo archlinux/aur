@@ -1,6 +1,6 @@
 pkgbase = deepin-topbar
 	pkgdesc = This is topbar for Deepin.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/kirigayakazushin/deepin-topbar
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = deepin-topbar
 	depends = dtkwm
 	depends = qt5-base
 	depends = deepin-qt-dbus-factory
-	source = deepin-topbar-0.4.1.tar.gz::https://github.com/kirigayakazushin/deepin-topbar/archive/0.4.1.tar.gz
+	source = deepin-topbar-0.4.2.tar.gz::https://github.com/kirigayakazushin/deepin-topbar/archive/0.4.2.tar.gz
 	md5sums = SKIP
 
 pkgname = deepin-topbar
