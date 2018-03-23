@@ -2,7 +2,7 @@
 _gitrepository='curate-pkg'
 _gitbranch='master'
 pkgname='curate-pkg-git'
-pkgver=1.62
+pkgver=1.63
 pkgrel=1
 pkgdesc='curate-pkg: the script that keeps a consistent state of installed packages across **ALL** Linux package managers and distributions'
 arch=('i686' 'x86_64')
