@@ -12,7 +12,7 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2268.d27563d2
+pkgver=r2282.788c293a
 pkgrel=2
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -41,7 +41,7 @@ pkgver() {
 }
 
 if [ "${_clang_completer}" == 'y' ]; then
-	depends+=('clang')
+	depends+=('clang>=6.0')
 fi
 
 prepare() {
