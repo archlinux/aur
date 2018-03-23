@@ -4,7 +4,7 @@
 
 pkgname=gst123
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A more flexible command line player in the spirit of ogg123 and mpg123, based on gstreamer"
 arch=('i686' 'x86_64')
 url="http://space.twc.de/~stefan/gst123.php"
@@ -15,7 +15,7 @@ makedepends=('ncurses')
 optdepends=('gst-libav: more codecs support'
             'gst-plugins-base: more codecs support'
             'gst-plugins-good: more codecs support'
-            'gst-plgusin-bad: more codecs support'
+            'gst-plugins-bad: more codecs support'
             'gst-plugins-ugly: more codecs support')
 source=("http://space.twc.de/~stefan/$pkgname/$pkgname-$pkgver.tar.bz2")
 md5sums=('42fb711480238b89db8889847c1ec99e')
