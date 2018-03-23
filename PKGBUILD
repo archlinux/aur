@@ -2,7 +2,7 @@
 
 _gitname=plasma-workspace
 pkgname=gmenu-dbusmenu-proxy-git
-pkgver=r6528.e37156b4
+pkgver=r6543.9b3115de
 pkgrel=1
 pkgdesc='Proxy that allows to display GTK applications menus in Plasma global menu'
 arch=(x86_64)
@@ -23,6 +23,7 @@ prepare() {
  
   cd $_gitname
   git revert -n e37156b404bffd4dc6fd0d1b2dbb5dc1ae0ddfa4 # Don't depend on plasma-framework git
+  git revert -n b64f0a28d014344e4f26c42a8c467cf9b7b73311
 }
 
 build() { 

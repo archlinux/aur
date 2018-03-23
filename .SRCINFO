@@ -1,6 +1,6 @@
 pkgbase = gmenu-dbusmenu-proxy-git
 	pkgdesc = Proxy that allows to display GTK applications menus in Plasma global menu
-	pkgver = r6528.e37156b4
+	pkgver = r6543.9b3115de
 	pkgrel = 1
 	url = https://www.kde.org/plasma-desktop
 	arch = x86_64
