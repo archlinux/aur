@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/tidusjar/Ombi'
 license=('GPL2')
 depends=('libunwind' 'openssl-1.0')
-makedepends=('bsdtar')
+makedepends=('libarchive')
 optdepends=('sonarr: Automated TV show downloads'
             'sickrage: Automated TV show downloads'
             'radarr: Automated movie downloads'
