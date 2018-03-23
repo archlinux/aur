@@ -2,12 +2,12 @@ pkgbase = python2-iniparse
 	pkgdesc = Better INI parser library for Python
 	pkgver = 0.4
 	pkgrel = 4
-	url = https://code.google.com/archive/p/iniparse/
+	url = https://code.google.com/archive/p/iniparse
 	arch = any
 	license = MIT
 	depends = python2
-	source = https://pypi.python.org/packages/source/i/iniparse/iniparse-0.4.tar.gz
-	sha1sums = 2b2af8a19f3e5c212c27d7c524cd748fa0b38650
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/iniparse/iniparse-0.4.tar.gz
+	sha256sums = abc1ee12d2cfb2506109072d6c21e40b6c75a3fe90a9c924327d80bc0d99c054
 
 pkgname = python2-iniparse
 
