@@ -22,7 +22,6 @@ pkgbase = ombi-dev
 	replaces = ombi-beta
 	noextract = ombi-dev-3.0.3072.tar.gz
 	options = staticlibs
-	backup = opt/Ombi/Ombi.sqlite
 	source = ombi-dev-3.0.3072.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=develop
 	source = ombi.service
 	source = ombi.sysusers

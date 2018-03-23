@@ -3,8 +3,12 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  if [ -f /opt/Ombi/Ombi.sqlite ]; then
-    mv /opt/Ombi/Ombi.sqlite /var/lib/ombi/Ombi.sqlite
+  if [ -f /opt/Ombi/Schedules.db ]; then
+    mv /opt/Ombi/Schedules.db /var/lib/ombi/Schedules.db
+  fi
+
+  if [ -f /opt/Ombi/Ombi.db ]; then
+    mv /opt/Ombi/Ombi.db /var/lib/ombi/Ombi.db
   fi
 
   systemctl daemon-reload

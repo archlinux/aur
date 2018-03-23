@@ -23,7 +23,6 @@ replaces=('plexrequests' 'ombi-beta')
 provides=('ombi')
 conflicts=('ombi')
 options=('staticlibs')
-backup=('opt/Ombi/Ombi.sqlite')
 install='ombi.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=develop"
         'ombi.service'
