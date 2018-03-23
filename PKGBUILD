@@ -1,7 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-
 pkgname=jupyterlab
-pkgver=0.31.10
+pkgver=0.31.12
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
@@ -9,7 +7,7 @@ url="https://github.com/jupyterlab/jupyterlab"
 license=(custom)
 depends=(jupyterlab_launcher)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/jupyterlab/archive/v$pkgver.tar.gz")
-sha256sums=('448393b9d36fe4178e66d33e246905ce7a2737aba93a069e71b8029ca1e3816e')
+sha256sums=('cc42993203d318e76af28759cb84dc9ce96aa779bca4e2059d0e841e25ea861d')
 
 build() {
   cd $pkgname-$pkgver
@@ -21,4 +19,8 @@ package() {
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # symlink to fix assets
+  install -d "$pkgdir"/usr/share/jupyter
+  ln -s "$pkgdir"/usr/lib/python3.6/site-packages/jupyterlab "$pkgdir"/usr/share/jupyter/lab
 }
