@@ -2,15 +2,15 @@
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 
 pkgname=rolldice
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="A virtual dice roller"
 arch=(i686 x86_64)
 url="http://packages.debian.org/source/sid/rolldice"
 license=('GPL2')
 depends=('readline')
-source=("https://github.com/sstrickl/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e3377623fa3ca21361ec10d53b431410')
+source=("http://http.debian.net/debian/pool/main/r/rolldice/${pkgname}_${pkgver}.orig.tar.gz")
+md5sums=('d2456d2411321167aeb0285bdd458e15')
 #source=(http://ftp.de.debian.org/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz rolldice.6)
 #mmaked5sums=('c65d37f81e80d0d5db6c49c08cf3b484' 'a4e0c4c28528b495690af2771daeb7b8')
 
