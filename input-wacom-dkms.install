@@ -1,7 +1,4 @@
 post_install() {
-	local version=${1%%-*}
-	dkms=$(which dkms)
-	$dkms install -m input-wacom -v $version
 	echo -e "\n"
 	echo "#####################################"
 	echo -e "\n"
