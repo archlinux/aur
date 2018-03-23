@@ -1,14 +1,12 @@
-post_install() {
-  systemd-sysusers ombi.conf
-  chown -R ombi:ombi /opt/Ombi
+pre_upgrade() {
+  systemctl stop ombi.service
 }
 
 post_upgrade() {
-  chown -R ombi:ombi /opt/Ombi
-  systemctl daemon-reload
-}
+  if [ -f /opt/Ombi/Ombi.sqlite ]; then
+    mv /opt/Ombi/Ombi.sqlite /var/lib/ombi/Ombi.sqlite
+  fi
 
-post_remove() {
-  systemctl stop ombi.service
-  true
+  systemctl daemon-reload
+  systemctl start ombi.service
 }
