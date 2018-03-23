@@ -3,29 +3,29 @@
 # Maintainer: oneup <oneup40 at gmail dot com>
 
 pkgname=python2-claripy
-pkgver=7.7.9.21
-pkgrel=2
+pkgver=7.8.2.21
+pkgrel=1
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
 depends=('python2' 'python2-ana' 'python2-future' 'z3')
 makedepends=('python2-distribute' )
 license=('BSD')
 arch=('any')
-source=('https://pypi.python.org/packages/b1/ab/323241b2f6ccb97828aa8221579905391d3103d4b45fba3c3d35fb244fc1/claripy-7.7.9.21.tar.gz'
+source=('https://pypi.python.org/packages/91/5f/2a8e413a68b21926d89b7aeb3bfc0d36e86a984c86e7489e85b0caa79a5d/claripy-7.8.2.21.tar.gz'
         'https://raw.githubusercontent.com/angr/claripy/master/LICENSE'
         'python-version.patch')
-md5sums=('0e2c8246e8b23849b5e97d4a0e9dc30e'
+md5sums=('f875d5a5e980d0cafbd6a9121b728645'
          '92da168ebb0065f567f0ea48bed0f512'
          '71519b586ac229fd40597714e1f66b85')
 
 build() {
-    cd $srcdir/claripy-7.7.9.21
+    cd $srcdir/claripy-7.8.2.21
     patch -p1 < $srcdir/python-version.patch
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/claripy-7.7.9.21
+    cd $srcdir/claripy-7.8.2.21
     python2 setup.py install --root="$pkgdir" --optimize=1 
     install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
