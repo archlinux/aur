@@ -7,7 +7,7 @@ User=ombi
 Group=ombi
 WorkingDirectory=/opt/Ombi
 Type=simple
-ExecStart=/opt/Ombi/Ombi --storage /var/lib/ombi
+ExecStart=/opt/Ombi/Ombi
 TimeoutStopSec=30
 Restart=always
 
