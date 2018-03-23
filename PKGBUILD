@@ -2,14 +2,14 @@
 # Maintainer: Oliver Mangold omangold at gmail dot com
 pkgname=python-plex
 pkgver=2.0.0dev
-pkgrel=1
+pkgrel=2
 pkgdesc="A lexical analysis module for Python."
 arch=('any')
 url="http://www.cosc.canterbury.ac.nz/greg.ewing/python/Plex/"
 license=('LGPL')
 makedepends=('python')
 replaces=('python3-plex')
-source=("http://pypi.python.org/packages/source/p/plex/plex-${pkgver}.tar.gz"
+source=("https://pypi.python.org/packages/source/p/plex/plex-${pkgver}.tar.gz"
         'machines.patch')
 sha256sums=('07b4ce0ea8fe5928f5c8abdbf08b80edfd44ea90cc9c8c2fe233f59890498d28'
             '4e62073f1fd3e1fddfe79ec3d26daff21607be6aeae46024c6aec99f802aec88')
