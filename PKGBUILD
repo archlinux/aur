@@ -3,7 +3,7 @@
 # Upstream: https://github.com/kubernetes/minikube
 
 pkgname=('minikube-git')
-pkgver=v0.25.0.r95.g6bf2661ca
+pkgver=v0.25.0.r96.ga000c35e1
 pkgrel=1
 pkgdesc='Minikube is a tool that makes it easy to run Kubernetes locally.'
 arch=('x86_64')
@@ -27,15 +27,19 @@ pkgver() {
 }
 
 prepare() {
-    export GOPATH="$srcdir"
     rm -rf "$srcdir/src"
-    git clone "$srcdir/$pkgname" "$GOPATH/src/k8s.io/minikube"
+    mkdir -p "$srcdir/src/k8s.io"
+    cp -r "$srcdir/$pkgname" "$srcdir/src/k8s.io"
+    mv "$srcdir/src/k8s.io/$pkgname" "$srcdir/src/k8s.io/minikube"
 }
 
-package() {
+build() {
     export GOPATH="$srcdir"
     cd "$GOPATH/src/k8s.io/minikube"
     make
-    install -Dm755 "out/minikube" "$pkgdir/usr/bin/minikube"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package() {
+    install -Dm755 "$srcdir/src/k8s.io/minikube/out/minikube" "$pkgdir/usr/bin/minikube"
+    install -Dm644 "$srcdir/src/k8s.io/minikube/LICENSE" "$pkgdir/usr/share/licenses/minikube/LICENSE"
 }
