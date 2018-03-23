@@ -3,14 +3,14 @@
 pkgname=lector-git
 _pkgname=lector
 pkgdesc="Qt based ebook reader"
-pkgver=r197.a62e681
+pkgver=r234.9c85a10
 pkgrel=1
 arch=('any')
 url="https://github.com/BasioMeusPuga/Lector"
 license=('GPL3')
 provides=('lector')
 conflicts=('lector')
-depends=('qt5-base' 'python' 'python-pyqt5' 'python-requests' 'python-beautifulsoup4' 'poppler-qt5' 'python-poppler-qt5')
+depends=('qt5-base' 'python' 'python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'poppler-qt5' 'python-poppler-qt5')
 makedepends=('git' 'python-setuptools')
 
 source=("git://github.com/basiomeuspuga/${_pkgname}.git")

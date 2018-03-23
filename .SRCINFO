@@ -1,6 +1,6 @@
 pkgbase = lector-git
 	pkgdesc = Qt based ebook reader
-	pkgver = r197.a62e681
+	pkgver = r234.9c85a10
 	pkgrel = 1
 	url = https://github.com/BasioMeusPuga/Lector
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = lector-git
 	depends = qt5-base
 	depends = python
 	depends = python-pyqt5
-	depends = python-requests
 	depends = python-beautifulsoup4
+	depends = python-lxml
 	depends = poppler-qt5
 	depends = python-poppler-qt5
 	provides = lector
