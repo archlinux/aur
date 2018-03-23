@@ -2,7 +2,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.3_679_gd4a6a4874
+pkgver=1.3_729_g6c3761b7f
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
