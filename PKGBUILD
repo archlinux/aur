@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=1
+pkgrel=2
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -36,7 +36,7 @@ prepare() {
         -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -D BUILD_SHARED_LIBS=ON \
         -D USE_ITK=OFF \
-        -D CUDA_ENABLED=OFF \
+        -D USE_CUDA=OFF \
         -D PYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -D PYTHON_INSTALL_DIR=/usr/lib/python2.7/site-packages \
         -D CUDA_NVCC_FLAGS_RELEASE=--pre-include\ $srcdir/$_gitname/preinc.h \
