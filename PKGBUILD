@@ -5,14 +5,16 @@
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv-git
-pkgver=0.1.5.25.g8547fbc
-pkgrel=1
+pkgver=0.1.5.27.gb1a0755
+pkgrel=2
 pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
 arch=('x86_64')
 url="http://naihe2010.github.com/apvlv/"
 license=('GPL2')
 depends=('gtk3' 'poppler-glib' 'djvulibre')
 makedepends=('git' 'cmake')
+conflicts=('apvlv')
+provids=('apvlv')
 source=(git+https://github.com/naihe2010/apvlv.git)
 backup=('etc/apvlvrc')
 md5sums=('SKIP')
