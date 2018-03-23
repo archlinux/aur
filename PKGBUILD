@@ -1,21 +1,25 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Giuseppe Borzi <gborzi@ieee.org>
-# Contributor: Brice M<E9>alier <mealier_brice@yahoo.fr>
+# Contributor: Brice Méalier <mealier_brice@yahoo.fr>
 # Contributor: Michele Mocciola <mickele>
 pkgname=opencascade
 pkgver=6.9.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation"
 arch=('i686' 'x86_64')
 url="http://www.opencascade.org"
 license=('custom')
 depends=('tk' 'mesa' 'libxmu' 'ftgl' 'vtk6')
-source=("https://sources.archlinux.org/other/community/opencascade/opencascade-$pkgver.tgz" "env.sh" "opencascade.sh" "opencascade.conf" 'salome-occt-6.9.1.patch')
+source=("https://sources.archlinux.org/other/community/opencascade/opencascade-$pkgver.tgz"
+        'env.sh' 'opencascade.sh' 'opencascade.conf' 'salome-occt-6.9.1.patch'
+        'configuration-problem-glibc-2.26.patch')
 md5sums=('7f2e645b5010d190c9bb35dc457f9a7c'
          'a96f28ee7f4273ae1771ee033a2a3af3'
          'd9368b8d348ced3ec4462012977552d2'
          '2924ecf57c95d25888f51071fdc72ad0'
-         '88db8e6b9afa132d1893bbb814250350')
+         '88db8e6b9afa132d1893bbb814250350'
+         '7087ef8f82913a73abf5e3bc81a186d4')
 
 # This works around a bug that is corrected in OCCT 7.0.0
 export CCFLAGS+=" -O2 -fno-delete-null-pointer-checks"
@@ -32,6 +36,9 @@ prepare() {
 
   # Included in OCCT 7.0.0
   patch -i "$srcdir/salome-occt-6.9.1.patch" -p1
+
+  # Included in OCCT 7.2.0
+  patch -i "$srcdir/configuration-problem-glibc-2.26.patch" -p1
 
   ./build_configure
 }
