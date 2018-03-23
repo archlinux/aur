@@ -1,6 +1,6 @@
 pkgbase = libcrossguid-git
 	pkgdesc = Lightweight cross platform C++ GUID/UUID library
-	pkgver = 0.2.1.r1.g71c709e
+	pkgver = 0.2.2.r15.g7a42917
 	pkgrel = 1
 	url = https://github.com/graeme-hill/crossguid
 	arch = i686

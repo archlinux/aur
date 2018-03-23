@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=libcrossguid-git
-pkgver=0.2.1.r1.g71c709e
+pkgver=0.2.2.r15.g7a42917
 pkgrel=1
 pkgdesc="Lightweight cross platform C++ GUID/UUID library"
 arch=('i686' 'x86_64')
@@ -27,13 +27,13 @@ build() {
 
 check(){
   cd "$srcdir"/libcrossguid
-  ./xgtest
+  ./crossguid-test
 }
 
 package() {
   cd "$srcdir"/libcrossguid
-  install -D -m644 libxg.a "${pkgdir}/usr/lib/libxg.a"
-  install -D -m644 Guid.hpp "${pkgdir}/usr/include/Guid.hpp"
+  install -D -m644 libcrossguid.a "${pkgdir}/usr/lib/libcrossguid.a"
+  install -D -m644 include/crossguid/guid.hpp "${pkgdir}/usr/include/guid.hpp"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
