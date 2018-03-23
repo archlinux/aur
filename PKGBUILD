@@ -3,7 +3,7 @@
 # Maintainer: oneup <oneup40 at gmail dot com>
 
 pkgname=python2-archinfo
-pkgver=7.7.9.14
+pkgver=7.8.2.21
 pkgrel=1
 pkgdesc="A collection of Python classes that contain architecture-specific information"
 url="https://github.com/angr/archinfo"
@@ -11,18 +11,18 @@ depends=('python2' )
 makedepends=('python2-distribute' )
 license=('BSD')
 arch=('any')
-source=('https://pypi.python.org/packages/a3/57/9a5c99efc258fd053d71412cfaccdd1752e446cc0aa2edd0d1bd2fc901f4/archinfo-7.7.9.14.tar.gz'
+source=('https://pypi.python.org/packages/71/cd/219ffc955d56987a281a2e9ea8a4d02c0e5c792e6d1567f871184268c06e/archinfo-7.8.2.21.tar.gz'
         'https://raw.githubusercontent.com/angr/archinfo/master/LICENSE')
-md5sums=('9c2ba84fa1a3bd40d853ba50e695bd49'
+md5sums=('3e4f18e5bc014be2794650d56cb5597e'
          '92da168ebb0065f567f0ea48bed0f512')
 
 build() {
-    cd $srcdir/archinfo-7.7.9.14
+    cd $srcdir/archinfo-7.8.2.21
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/archinfo-7.7.9.14
+    cd $srcdir/archinfo-7.8.2.21
     python2 setup.py install --root="$pkgdir" --optimize=1 
     install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
