@@ -55,6 +55,11 @@ prepare() {
 	sed -i \
 		-e '/Exec=/ c \Exec=keeweb %u' \
 	package/deb/usr/share/applications/keeweb.desktop
+
+	# downgrade broken bower package https://github.com/eligrey/FileSaver.js/issues/409
+	sed -i \
+		-e '/FileSaver.js/ s|eligrey/FileSaver.js|\0#1.3.4|' \
+	bower.json
 }
 
 build() {
