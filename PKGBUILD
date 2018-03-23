@@ -7,7 +7,7 @@ _pkgbase=bomi
 
 pkgname=$_pkgbase-git
 pkgver=0.9.11.r37.g2d2a3515
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv (git version)"
 arch=('i686' 'x86_64')
 url="http://bomi-player.github.io"
@@ -25,8 +25,10 @@ optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'libbdplus: BD+ decryption for Blu-ray support')
 provides=('bomi')
 conflicts=('cmplayer' 'bomi')
-source=(git+https://github.com/d-s-x/${_pkgbase}.git)
-md5sums=('SKIP')
+source=(git+https://github.com/d-s-x/${_pkgbase}.git
+        add_sup_subext.patch)
+md5sums=('SKIP'
+         'dacb0df199eea0f6e3d5c037c8c5429d')
 #options=(debug !strip)
 
 pkgver() {
@@ -36,6 +38,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
+
+    patch -p1 -i $srcdir/add_sup_subext.patch
 
     ./configure --prefix=/usr
 }
