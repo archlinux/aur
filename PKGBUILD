@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=remind-me
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A simple reminder application for desktop and mobile, with synchronized reminders"
 arch=('i686' 'x86_64')
