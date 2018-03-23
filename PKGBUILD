@@ -468,30 +468,9 @@ package() {
 
 if $_debug; then
   find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
-fi
 
-  if $_static_build; then
-    if ! $_target_host; then
-        mv `dirname ${_installed_dir}` ${_installed_dir_sans_sysroot_offset}
-    fi
-  else
-    mv `dirname ${_installed_dir}` ${_libspkgdir}
-  fi
-
-  cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
-  cp ${_bindir}/configure_line ${_bindir}/config.summary ${_libspkgdir}
-
-  cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
 
-  # set correct libs version
-  sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild}
-  sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild}
-  sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild}
-  sed -i "s/libspiver/${_piver}/" ${_libspkgbuild}
-
-  # debug
-if $_debug; then
   sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild}
   sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild}
   sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild}
@@ -499,20 +478,37 @@ if $_debug; then
   sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild}
 fi
 
-  if ! ${_target_host} && ! ${_static_build}; then
+  if $_static_build || $_target_host; then
+    if ! $_target_host; then
+        mv `dirname ${_installed_dir}` ${_installed_dir_sans_sysroot_offset}
+    fi
+  else
+    mv `dirname ${_installed_dir}` ${_libspkgdir}
+
+    cp ${_bindir}/configure_line ${_bindir}/config.summary ${_libspkgdir}
+
+    cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
+
+    # set correct libs version
+    sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild}
+    sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild}
+    sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild}
+    sed -i "s/libspiver/${_piver}/" ${_libspkgbuild}
+
     mkdir -p ${_pkgprofiled}
     mkdir -p ${_pkgbindir}
-    cp -L ${startdir}/${_profiledfn} ${_pkgprofiled} || exit 1
-    cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled} || exit 1
-    cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir} || exit 1
-    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
+
+    cp -L ${startdir}/${_profiledfn} ${_pkgprofiled}
+    cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled}
+    cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir}
+    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn}
+
+    cd ${_libsdir}
+    runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
+    mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
   fi
 
-if ! $_static_build; then
-  cd ${_libsdir}
-  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-  mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
-fi
+  cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
 
 if $_debug; then
   cd ${_libsdebugdir}
