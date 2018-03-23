@@ -14,7 +14,7 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream movies and TV shows from torrents (continuous integration builds)"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -30,8 +30,8 @@ source=("${_pkgname}.desktop")
 source_i686=("https://ci.popcorntime.sh/job/Popcorn-Time-Desktop/lastSuccessfulBuild/artifact/build/Popcorn-Time-${pkgver}_linux32.tar.xz")
 source_x86_64=("https://ci.popcorntime.sh/job/Popcorn-Time-Desktop/lastSuccessfulBuild/artifact/build/Popcorn-Time-${pkgver}_linux64.tar.xz")
 sha256sums=('4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
-sha256sums_i686=('6eb6a16cc40ed199c5e14b9a16f9dbb1bd45174b59a2a93271048ced21a2b618')
-sha256sums_x86_64=('2509fe735b6517f9fec38f9c7f5652840a5ee5a7148e31f813b0946db4bca43e')
+sha256sums_i686=('SKIP')
+sha256sums_x86_64=('SKIP')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
