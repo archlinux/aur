@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=pytradfri
 pkgname=python-$_pkgname
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Python class to communicate with the IKEA Trådfri Gateway"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'libcoap-dtls-git' 'python-dtlssocket')
 makedepends=('python-setuptools')
 source=("https://github.com/ggravlingen/pytradfri/archive/${pkgver}.tar.gz")
-sha512sums=('edb2a174d006bc780dea2dec8964452693a60f1df50bf5896b33d88957f6a33c6764398795a7d7e5c3b58073b33e98cac1ddc5fd407e97609b0a41bdb599e4af')
+sha512sums=('0b257c2927900adeee10c35ad306d3604162630355c2f179cf9e74bfa4386ed29f0a3e7575b83f4989498a606ad132fff7a184d4eb03581dbb65a21705d0b117')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
