@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3371.0
+pkgver=67.0.3377.1
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('83210a6053642c9ea40b9269ea1df00b74d217c211ffb96443b6f90cac00d9f7'
+sha256sums=('4253494a97d4322647c3550b528db6269dde66a273c8ce15d015a17007baa727'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -359,7 +359,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-patch -Np1 -i ../r21.patch
+#patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
