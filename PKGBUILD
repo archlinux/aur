@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=6
+pkgrel=7
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -53,17 +53,6 @@ build() {
 package() {
     cd "$srcdir/$_name/build"
     make install DESTDIR="$pkgdir"
-
-	# for some reason this is not generated automatically
-	cat > $pkgdir/usr/lib/python2.7/site-packages/PyCA/_Core.py <<-EOF
-		def __bootstrap__():
-		    global __bootstrap__, __loader__, __file__
-		    import sys, pkg_resources, imp
-		    __file__ = pkg_resources.resource_filename(__name__, '_Core.so')
-		    __loader__ = None; del __bootstrap__, __loader__
-		    imp.load_dynamic(__name__,__file__)
-		__bootstrap__()
-	EOF
 
 	install -D -m644 $srcdir/$_name/Copyright.txt \
                      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
