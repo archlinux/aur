@@ -8,7 +8,7 @@ arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?id=107164"
 license=('GPL')
 depends=('texlive-core' 'vim' 'xdotool' 'mupdf')
-source=(http://people.umass.edu/umass298y-klement/${pkgname}-${pkgver}.tar.gz)
+source=(http://the21stcenturymonads.net/misc/${pkgname}-${pkgver}.tar.gz)
 md5sums=('3a1d506673ba6c5556d502c0c9d4cdb3')
 
 package() {
