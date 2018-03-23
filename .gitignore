@@ -1,6 +1,6 @@
-dexed-vst
-src
-pkg
+dexed/
+src/
+pkg/
 dexed-vst-git-*.tar.xz
 dexed-vst-git-*.src.tar.gz
 .AURINFO

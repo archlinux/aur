@@ -1,3 +1,22 @@
+2018-03-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.4.r226.a08cc25-1
+    enable JACK audio output for standalone version
+    added 'juce' to makedepends
+    added 'hicolor-icon-theme' to depends
+	added desktop file
+	install icon and desktop file
+
+2018-03-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	0.9.4.r222.618b318-2
+	fixed missing new dependencies
+
+2018-03-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	0.9.4.r222.618b318-1
+	install new standalone version of dexed
+
 2017-06-15 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4.r175.d14ac25-1

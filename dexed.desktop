@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dexed
+Comment=A software synth closely modelled on the Yamaha DX7
+TryExec=dexed
+Exec=dexed %F
+Icon=dexed
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;Midi;Music
