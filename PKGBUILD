@@ -32,4 +32,5 @@ package() {
   cd $pkgname
   #chrpath -d bin/autoapp
   install -D -m755 bin/autoapp "$pkgdir/usr/bin/autoapp"
+  install -D -m755 bin/btservice "$pkgdir/usr/bin/btservice"
 }
