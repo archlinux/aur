@@ -15,7 +15,7 @@ arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse)
+         nss hunspell 'sqlite>=3.20' ttf-font libpulse)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 rust mercurial clang llvm jack)
 optdepends=('networkmanager: Location detection via available WiFi networks'

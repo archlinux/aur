@@ -34,7 +34,7 @@ pkgbase = firefox56
 	depends = ffmpeg
 	depends = nss
 	depends = hunspell
-	depends = sqlite
+	depends = sqlite>=3.20
 	depends = ttf-font
 	depends = libpulse
 	optdepends = networkmanager: Location detection via available WiFi networks
