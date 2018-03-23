@@ -2,7 +2,7 @@
 pkgname=keyleds
 pkgver=0.7.5
 pkgrel=1
-pkgdesc="Logitech Keyboard per-key lighting control"
+pkgdesc="➤ Advanced RGB LED driver/controller for G410, G610, G810, G910 and GPro"
 arch=('i686' 'x86_64')
 url="https://github.com/spectras/keyleds"
 license=('GPL3')
