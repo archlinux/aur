@@ -465,7 +465,10 @@ package() {
   INSTALL_ROOT="$pkgdir" make install || exit 1
 
   cd $(dirname ${_installed_dir})
+
+if $_debug; then
   find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
+fi
 
   if $_static_build; then
     if ! $_target_host; then
@@ -482,17 +485,19 @@ package() {
   cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
 
   # set correct libs version
-  sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild} || exit 1
-  sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild} || exit 1
-  sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild} || exit 1
-  sed -i "s/libspiver/${_piver}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild}
+  sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild}
+  sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild}
+  sed -i "s/libspiver/${_piver}/" ${_libspkgbuild}
 
   # debug
-  sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild} || exit 1
-  sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild} || exit 1
-  sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild} || exit 1
-  sed -i "s/libsdebugpkgname/${_libsdebugpkgname}/" ${_libsdebugpkgbuild} || exit 1
-  sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild} || exit 1
+if $_debug; then
+  sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild}
+  sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild}
+  sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild}
+  sed -i "s/libsdebugpkgname/${_libsdebugpkgname}/" ${_libsdebugpkgbuild}
+  sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild}
+fi
 
   if ! ${_target_host} && ! ${_static_build}; then
     mkdir -p ${_pkgprofiled}
