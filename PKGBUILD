@@ -1,7 +1,9 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=deepin-qq-im
-pkgver=8.9.19983deepin19
-_qqver=8.9.3
+_qqver=8.9
+_qqbuild=19983
+_deepinver=20
+pkgver=${_qqver}.${_qqbuild}deepin${_deepinver}
 pkgrel=1
 pkgdesc="Tencent QQ Client on Deepin Wine"
 arch=("x86_64")
@@ -10,11 +12,11 @@ license=('custom')
 depends=('p7zip' 'wine' 'xorg-xwininfo' 'xdotool' 'wine-mono')
 _mirror="https://mirrors.tuna.tsinghua.edu.cn/deepin"
 source=("$_mirror/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_${pkgver}_i386.deb"
-	"http://dldir1.qq.com/qqfile/qq/QQ${_qqver}/21149/QQ${_qqver}.exe"
+	"http://dldir1.qq.com/qqfile/qq/QQ${_qqver}/${_qqbuild}/QQ${_qqver}.exe"
 	"run.sh")
-md5sums=('e727b3dc87f2533aa36b489f38806060'
-         '53cbda2c19734160c75af43a6107b759'
-         '1572a7c41ef720f94bfed13e0e002d05')
+md5sums=('9d6fcd0a6086c068b9776a62a67f077d'
+         'a60127de3c7c11342f644ad87f4c7b7d'
+         '2946b58e28067f84186fc27c3e7a6dc0')
 
 package() {
 	cd ${srcdir}
