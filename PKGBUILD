@@ -91,7 +91,7 @@ if $_testing; then
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
   _dev_suffix="beta2"
-  pkgrel=3
+  pkgrel=4
 else
   _pkgvermajmin="5.10"
   _pkgverpatch=".0"
@@ -192,7 +192,7 @@ if [[ -n ${_dev_suffix} ]]; then
     _pkgver=${pkgver}-${_dev_suffix}
 fi
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
-_baseprefix=/opt
+_baseprefix=/opt/qt
 _installprefix=${_baseprefix}/${pkgname}
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
