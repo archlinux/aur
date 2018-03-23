@@ -6,7 +6,7 @@
 
 pkgname=filebot
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 _jnaver=4.5.1
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ url="http://filebot.sourceforge.net/"
 license=('GPL')
 install=$pkgname.install
 depends=('java-runtime>=9' 'fontconfig' 'chromaprint')
-makedepends=('unzip' 'apache-ivy')
+makedepends=('unzip' 'apache-ivy' 'jdk>=9')
 
 [[ $CARCH == "i686" ]]   && _intarch=x86
 [[ $CARCH == "x86_64" ]] && _intarch=x86-64
