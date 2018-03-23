@@ -58,10 +58,10 @@ prepare() {
 build() {
   export PATH=${startdir}:$PATH
   set -o nounset
-  local src_dir=${srcdir}/${_filename}
+  local _src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
 
-  cd ${src_dir}
+  cd ${_src_dir}
   qmake
   make
 
@@ -75,8 +75,8 @@ package() {
   local _pkg_dir=${pkgdir}/usr/
 
   #qbs install ${_qbs_settings} -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
-  cd ${src_dir}
-  make install
+  cd ${_src_dir}
+  INSTALL_ROOT=${_pkg_dir} make install
 
   # Workaround for FS#40583
   mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
