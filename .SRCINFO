@@ -1,6 +1,6 @@
 pkgbase = keyleds
 	pkgdesc = Logitech Keyboard per-key lighting control
-	pkgver = 0.7.1
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/spectras/keyleds
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = keyleds
 	depends = qt5-base
 	depends = luajit
 	backup = etc/keyledsd.conf
-	source = https://github.com/spectras/keyleds/archive/v0.7.1/keyleds-0.7.1.tar.gz
-	md5sums = a2b50379e80ab8629e69377c4d8c4d3a
+	source = https://github.com/spectras/keyleds/archive/v0.7.5/keyleds-0.7.5.tar.gz
+	md5sums = 5da0138484b45b2a9bca9c3f790d1f75
 
 pkgname = keyleds
 
