@@ -1,7 +1,18 @@
 post_install() {
-  odbcinst -i -d -f opt/microsoft/msodbcsql/etc/odbcinst.ini
+  local pkgver=$1
+  odbcinst -v -q -d -n "ODBC Driver ${pkgver%%.*} for SQL Server" >/dev/null || \
+    odbcinst -i -d -f opt/microsoft/msodbcsql/etc/odbcinst.ini
 }
 
 post_upgrade() {
-  post_install
+  local newver=$1
+  local oldver=$2
+
+  pre_remove "$oldver"
+  post_install "$newver"
+}
+
+pre_remove() {
+  local pkgver=$1
+  odbcinst -v -u -d -n "ODBC Driver ${pkgver%%.*} for SQL Server" >/dev/null
 }

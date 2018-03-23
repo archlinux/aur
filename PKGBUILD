@@ -2,8 +2,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=msodbcsql
-pkgver=13.1.9.2
+pkgver=17.0.1.1
 pkgrel=1
+_opensslver=1.0.2k-8
 pkgdesc="Microsoft® ODBC Driver 13 for SQL Server®"
 arch=('x86_64')
 url="https://blogs.msdn.microsoft.com/sqlnativeclient/"
@@ -11,18 +12,21 @@ license=('custom')
 depends=('unixodbc' 'krb5' 'curl')
 makedepends=('patchelf')
 options=('!strip')
-source=(https://packages.microsoft.com/rhel/7/prod/msodbcsql-$pkgver-1.x86_64.rpm
-        http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-libs-1.0.2k-8.el7.x86_64.rpm)
-sha256sums=('cff336d21b6ca4e48f0e297fbf64dc9cfb3d18e26d52950853062e5fda052068'
+source=(https://packages.microsoft.com/rhel/7/prod/msodbcsql17-$pkgver-1.x86_64.rpm
+        http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-libs-$_opensslver.el7.x86_64.rpm)
+sha256sums=('1d116c5ccfbef4b07237aa8a4431273337c8e1fe4274cdd3aea2cc1d6224ad45'
             '3e355d70d78d8578ccc1dc474948dc5a8fd4b4e4c9508ff7321488c0e4796bf1')
 install=msodbcsql.install
 
 package() {
-  mv usr/share/{doc,licenses}
-  mv usr/lib64/lib*.so.* opt/microsoft/msodbcsql/lib64/
-  rm -rf usr/lib64
-  mv usr opt "$pkgdir"
+  mv usr/lib64/lib*.so.* opt/microsoft/msodbcsql17/lib64/
+  install -Dm0644 usr/share/doc/msodbcsql17/RELEASE_NOTES "$pkgdir"/usr/share/doc/$pkgname/RELEASE_NOTES
+  install -Dm0644 usr/share/doc/msodbcsql17/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  mv opt "$pkgdir"
 
-  cd "$pkgdir"/opt/microsoft/msodbcsql/lib64/
-  patchelf --set-rpath /opt/microsoft/msodbcsql/lib64/ libmsodbcsql-*
+  mv "$pkgdir"/opt/microsoft/msodbcsql{17,}
+
+  cd "$pkgdir"/opt/microsoft/msodbcsql
+  sed 's/msodbcsql17/msodbcsql/g' -i etc/odbcinst.ini
+  patchelf --set-rpath /opt/microsoft/msodbcsql/lib64/ lib64/libmsodbcsql-*
 }
