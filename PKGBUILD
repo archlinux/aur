@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=remind-me
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A simple reminder application for desktop and mobile, with synchronized reminders"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/RemindMe"
@@ -44,11 +44,8 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
   cd ../..
 
+  # license
   cd "../$_pkgfqn"
-  # gui
-  install -D -m644 icon/remindme.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -D -m644 icon/remindme_error.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname-error.svg"
-
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
  
