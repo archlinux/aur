@@ -24,11 +24,11 @@ _source=("https://raw.githubusercontent.com/sfjro/aufs4-standalone/aufs${_kernel
 _md5sums=('SKIP'
           'SKIP'
           'SKIP'
-          '268b9bf297431dbc66cb7827263f3d5e')
+          '691bf49a7bad3214370c6debf985bcf6')
 _sha256sums=('SKIP'
              'SKIP'
              'SKIP'
-             '9a10dc166ef275fe5958bcc2523a47c35d642a17f18ce8aaaecde615ce1c474f')
+             'bca3d89a8ffb58cbeced34e277e6301b576fdd269e4d9eadad884ef168be2bc4')
 
 ## Fetch linux package sources from git
 if [ ! -d upstream-linux ];then
