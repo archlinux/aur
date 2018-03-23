@@ -2,7 +2,7 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=osl-git
-pkgver=0.9.1.r0.g403e15a
+pkgver=0.9.2.r0.gf32f625
 pkgrel=1
 pkgdesc="OpenScop Library"
 arch=(x86_64)
