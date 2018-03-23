@@ -1,8 +1,8 @@
 # Maintainer: fenuks
 
 pkgname=python-language-server
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="An implementation of the Language Server Protocol for Python"
 arch=("any")
 url="https://github.com/palantir/${pkgname}"
@@ -14,8 +14,8 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
 source=("https://github.com/palantir/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('deee6fe6776c4f59547939d356004650')
-sha256sums=('9a3880af5c2d0aa89e1ed46b9293dac0041a9219ce563f3e0d1ca0031098507d')
+md5sums=('ab24b76ef9ab7c9fa307a09b12855269')
+sha256sums=('e0ff928c6d1baae36856789f5fda44f1642ecf7d3faa505ca45e56ffe729a674')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
