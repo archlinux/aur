@@ -1,31 +1,30 @@
-# Maintainer: Benjamin Wilhelm <aur@hedgehogcode.de>
+# Maintainer: lukaszimmermann <luk.zim91 at gmail dot com> 
+# Contributor: Benjamin Wilhelm <aur@hedgehogcode.de>
 # Package creator: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="knime-sdk"
 _upstream_name="eclipse_knime"
-pkgver="3.3.2"
+pkgver="3.5.2"
 pkgrel="1"
 pkgdesc="Software Development Kit for Knime"
 url="http://www.knime.org/"
 license=('custom')
-arch=('i686' 'x86_64')
-depends=('java-environment' 'python')
-makedepends=('imagemagick')
+arch=('x86_64')
+depends=('java-environment' 'python' 'libxml2')
+makedepends=('binutils' 'fakeroot' 'imagemagick')
 optdepends=('bash: Required for bash-scriptable nodes'
             'r: Required for R-scriptable nodes')
 options=('!emptydirs')
 changelog="ChangeLog"
 _CARCH="${CARCH}"
-[ "${CARCH}" = 'i686' ] && _CARCH='x86'
 source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
-        'knime.sh'
+        'knime-sdk.sh'
         'knime-sdk.desktop'
         'LICENSE')
-md5sums=('e0ca6e4501a2a2b9e50327deca72691c'
-         '7240fa995f2be4df2bccc463f5875f49'
-         'e51afecee76a22937b5d5500056eeabd'
-         '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='2bf724bd62aa00297b7b874b3e8521b5'
+sha256sums=('a2a8c9fe3c815872c016453e755e84f7d4077bba3b71c6b727389b03b991c71b'
+            'fb0e03e46b1aff889fc4957258a75496399c803d2a67392c25236c616886d761'
+            '14521c9c333c06d39d69dc1cd35a41fc58854e5e8366502d7defad54ef02edd4'
+            'ecd59cb1a79d96474e732361fcd40417fd3352b3974be66add43f8f00c7e016a')
 
 package() {
     installpath="/usr/share/java"
@@ -37,7 +36,7 @@ package() {
 
     msg2 "Copy the launcher and the license"
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m755 "${srcdir}/knime.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m755 "${srcdir}/knime-sdk.sh" "${pkgdir}/usr/bin/${pkgname}"
     sed -i "s|__KNIMEHOME__|${programpath}|" "${pkgdir}/usr/bin/${pkgname}"
 
     msg2 "Install the desktop specification"
@@ -46,7 +45,7 @@ package() {
     convert "${srcdir}/${_upstream_name}_${pkgver}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     msg2 "Remove the provided libraries (jre)"
-    rm -r "${pkgdir}/${programpath}/jre/"             # Provided by `java-environment`
+    rm -rf "${pkgdir}/${programpath}/jre/"             # Provided by `java-environment`
 }
 
 # vim:set ts=4 sw=4 et:
