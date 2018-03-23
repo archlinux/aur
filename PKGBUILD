@@ -4,29 +4,37 @@
 
 pkgname=antimicro
 pkgver=2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
-arch=('i686' 'x86_64')
-url="https://github.com/AntiMicro/antimicro"
-license=('GPL3')
-depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
-makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
+arch=("i686" "x86_64")
+url="https://github.com/AntiMicro/${pkgname}"
+license=("GPL3")
+depends=("desktop-file-utils" "libxkbcommon-x11" "libxtst" "qt5-base" "sdl2" "shared-mime-info")
+makedepends=("cmake" "gettext" "itstool" "qt5-tools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('8656ce94a1eac2a0934e62db42e386bc481708bb')
+sha256sums=("ef309170612da805992f9194f1973bf38a3174a0856856afedab67f9d927a9ef")
 
-
+prepare() {
+  #Using fix suggested by rakuco by deleting lines with QT5_WRAP_CPP
+  #https://github.com/AntiMicro/antimicro/pull/207/files
+  sed -i "/QT5_WRAP_CPP/d" "${pkgname}-${pkgver}/CMakeLists.txt"
+}
 
 build() {
-  cd ${pkgname}-${pkgver}
+  mkdir -p "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
 
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SDL_2=ON -DWITH_XTEST=ON \
-      -DWITH_UINPUT=ON -DAPPDATA=ON ..
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SDL_2=ON \
+    -DWITH_XTEST=ON \
+    -DWITH_UINPUT=ON \
+    -DAPPDATA=ON
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}/build
+  cd "${pkgname}-${pkgver}/build"
 
   make DESTDIR="${pkgdir}" install
 }
