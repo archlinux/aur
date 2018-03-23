@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.2alpha9
-_commit=951bcc4750602c2eba1998c24bcad3714f24b6ef
+pkgver=0.2alpha11
+_commit=dbb4f5b467ef6af3f1337a2ffee0a4d0a035ab38
 pkgrel=1
 pkgdesc='A scala implementation of the Lightning Network'
 arch=('any')

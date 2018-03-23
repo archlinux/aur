@@ -1,6 +1,6 @@
 pkgbase = eclair
 	pkgdesc = A scala implementation of the Lightning Network
-	pkgver = 0.2alpha9
+	pkgver = 0.2alpha11
 	pkgrel = 1
 	url = https://github.com/ACINQ/eclair
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = eclair
 	makedepends = maven
 	depends = java-environment=8
 	depends = java-openjfx
-	source = git+https://github.com/ACINQ/eclair.git#commit=951bcc4750602c2eba1998c24bcad3714f24b6ef
+	source = git+https://github.com/ACINQ/eclair.git#commit=dbb4f5b467ef6af3f1337a2ffee0a4d0a035ab38
 	source = eclair.sh
 	sha256sums = SKIP
 	sha256sums = f70c72dfdcf25f09f1c72413b9302f81422db58bb8ed0c6c904ac2fb5432b414
