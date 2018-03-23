@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=5
+pkgrel=6
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -31,7 +31,9 @@ prepare() {
 	# temporary bugfix, a PR has already been submitted upstream
 	sed -i 's/<< std::cout <</<</g' "$srcdir/$_name/Code/Cxx/src/alg/MultiscaleManager.cxx"
 
-    cmake -D CMAKE_BUILD_TYPE=Release \
+    cmake \
+		-D CMAKE_INSTALL_PREFIX:PATH="/usr" \
+		-D CMAKE_BUILD_TYPE=Release \
         -D PYTHON_EXECUTABLE=/usr/bin/python2 \
         -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -D BUILD_SHARED_LIBS=ON \
