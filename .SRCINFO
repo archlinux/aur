@@ -1,15 +1,15 @@
 pkgbase = ruby-nanaimo
 	pkgdesc = A library for (de)serialization of ASCII Plists.
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/CocoaPods/Nanaimo
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = nanaimo-0.2.3.gem
+	noextract = nanaimo-0.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/nanaimo-0.2.3.gem
-	sha1sums = 1af1d87c972b8a1e7f6cf4b3a06fdc656db2c5fc
+	source = https://rubygems.org/downloads/nanaimo-0.2.4.gem
+	sha1sums = bd32b89a7e7cab749af16f1c2e0713c2df13cca6
 
 pkgname = ruby-nanaimo
 
