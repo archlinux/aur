@@ -12,7 +12,7 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.18.17
+pkgver=2.18.18
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='https://qgis.org/'
@@ -26,17 +26,15 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
             'python2-jinja: MetaSearch plugin'
             'python2-owslib: MetaSearch plugin'
-            'python2-pygments: MetaSearch plugin'
-            'python2-psycopg2: DB Manager plugin'
-            'python2-pygments: DB Manager plugin'
-            'python2-pyspatialite: DB Manager plugin'
-            'python2-psycopg2: Processing plugin'
-            'python2-pyspatialite: Processing plugin'
-            'python2-yaml: Processing plugin')
+            'python2-psycopg2: DB Manager plugin; Processing plugin'
+            'python2-pygments: MetaSearch plugin; DB Manager plugin'
+            'python2-pyspatialite: DB Manager plugin; Processing plugin'
+            'python2-yaml: Processing plugin'
+            'saga-gis-ltr: Saga processing tools')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('d3b23c76a84a8d050aa5f5e58c762347')
+md5sums=('297a0bf4e04e00f7f8d091691499f69d')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -65,8 +63,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
-    -DCMAKE_SKIP_RPATH=TRUE \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DWITH_QTWEBKIT=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
     -DWITH_INTERNAL_{MARKUPSAFE,OWSLIB,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
@@ -75,6 +71,7 @@ build() {
 
   make
 
+  # Rebuild srs database, QGIS distributes an old, buggy one
   LD_LIBRARY_PATH="$PWD/output/lib/" make synccrsdb
   mv /tmp/srs.db ../resources/
 }
@@ -83,10 +80,10 @@ package() {
   cd $_pkgname-$pkgver/build
 
   # Add optional deps based on selected or autodetected options
-  [[ -n "$(sed -n '/^GRASS_PREFIX:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass6: GRASS6 plugin')
-  [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass: GRASS7 plugin')
+  [[ -n "$(sed -n '/^GRASS_PREFIX:/  s/.*=//p' CMakeCache.txt)" ]]      && optdepends+=('grass6: GRASS6 plugin')
+  [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]]      && optdepends+=('grass: GRASS7 plugin')
   [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
-  [[ "$(sed -n '/^WITH_GLOBE:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth-qt4: Globe plugin')
+  [[ "$(sed -n '/^WITH_GLOBE:/  s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth-qt4: Globe plugin')
 
   make DESTDIR="$pkgdir" install
 
@@ -94,19 +91,19 @@ package() {
 
   # install desktop files and icons
   install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
-  for icon in qgis-icon{,-16x16,-60x60} qbrowser-icon{,-60x60}; do
-    local _resolution="${icon##*-}"; [[ "$_resolution" == "icon" ]] && _resolution="512x512"
-    install -Dm644 images/icons/$icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${icon%%-*}.png"
+  for _icon in qgis-icon{,-16x16,-60x60} qbrowser-icon{,-60x60}; do
+    local _resolution="${_icon##*-}"; [[ "$_resolution" == "icon" ]] && _resolution="512x512"
+    install -Dm644 images/icons/$_icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${_icon%%-*}.png"
   done
-  for prog in qgis qbrowser; do
-    install -Dm644 images/icons/${prog}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$prog.svg"
+  for _prog in qgis qbrowser; do
+    install -Dm644 images/icons/${_prog}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_prog.svg"
   done
 
   # install mime information and icons
-  install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
+  install -Dm644 debian/qgis.xml -t "$pkgdir/usr/share/mime/packages/"
   install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/qgis-mime.png"
-  for type in asc ddf dem dt0 dxf gml img mime mldata qgs qlr qml qpt shp sqlite; do
-    install -Dm644 images/icons/qgis_${type}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-$type.svg"
+  for _type in asc ddf dem dt0 dxf gml img mime mldata qgs qlr qml qpt shp sqlite; do
+    install -Dm644 images/icons/qgis_${_type}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-$_type.svg"
   done
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
