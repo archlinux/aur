@@ -6,7 +6,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-macbook       # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.4
+pkgver=4.15.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,12 +21,10 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   macbook-wakeup.service # service file for suspend/resume events
-  01-apple-gmux.patch # linux-macbook specific patches
-  02-macbook-suspend.patch
-  03-apple-poweroff-quirk-workaround.patch
+  RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
+  RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,19 +32,17 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '5f8344fcc6b15be5f53001bb18df342bf5877563239f03271c236e3a40db89e8'
+            '74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79'
             'SKIP'
-            '617d1a2b0160fc72098524a51501531556050cab0e466c9dbae5d60a78991bd2'
+            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
-            'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '7c99aaeaea7837f83a3ad215cf07277934ccf39720acee7f1c371dc86bdf89fc'
             '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
-            'c7951a3dfa6dcfd6f7c56d8d5c7c89cceb0e612ce3e6134d3fe23d1202b69863'
-            'b1485882a9d26fe49b9fb2530259c2c39e03a3346ff63edcbc746f47ef693676'
-            '54380eafa1dfb42f7860a5eee9f521c14aa5fd2c9f5bfaa6e0537d75800225b7')
+            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
+            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -61,9 +57,13 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # start of macbook specific patches
-  patch -Np1 -i ../01-apple-gmux.patch
-  patch -Np1 -i ../02-macbook-suspend.patch
-  patch -Np1 -i ../03-apple-poweroff-quirk-workaround.patch
+  # https://patchwork.kernel.org/patch/9140867/
+  msg "patch -Np1 -i ../RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch"
+  patch -Np1 -i ../RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
+
+  # https://patchwork.kernel.org/patch/9288825/
+  msg "patch -Np1 -i ../RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch"
+  patch -Np1 -i ../RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
@@ -71,16 +71,15 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  # https://bugs.archlinux.org/task/57500
-  patch -Np1 -i ../0003-x86-xen-init-gs-very-early-to-avoid-page-faults-with.patch
-
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
-  # set extraversion to pkgrel
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
+  # set extraversion to pkgrel and empty localversion
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -103,7 +102,7 @@ END
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -117,12 +116,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
