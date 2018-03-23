@@ -1,0 +1,23 @@
+pkgbase = sequeler-git
+	pkgdesc = SQL Client built in Vala and GTK3
+	pkgver = 03b81b4
+	pkgrel = 1
+	url = https://github.com/Alecaddd/sequeler
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = libxml2
+	depends = libgda
+	depends = libgda-mysql
+	depends = libgda-postgres
+	depends = gtksourceview3
+	source = git+https://github.com/Alecaddd/sequeler.git
+	md5sums = SKIP
+
+pkgname = sequeler-git
+
