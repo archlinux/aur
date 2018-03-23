@@ -1,12 +1,13 @@
 pkgbase = chromecast-wallpapers
 	pkgdesc = 700 Google Chromecast background images
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://chromecastbg.alexmeub.com/
 	arch = any
 	license = custom
-	source = https://dl.dropboxusercontent.com/u/535060/chromecast1200.zip
-	sha256sums = 1ef311714bb97004544ad9165a8498526f34f588bda591dd9ac7ff7d52a1a807
+	makedepends = python-requests
+	source = gdrive-download.py
+	sha256sums = f778abeee2b410eed75f405223a112680a02850aa425b8f924ed40dd32d384c8
 
 pkgname = chromecast-wallpapers
 
