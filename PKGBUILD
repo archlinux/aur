@@ -10,7 +10,7 @@ license=('GPL')
 depends=('awk' 'asciiquarium' 'xterm' 'xtrlock' 'xorg-server')
 optdepends=('xkblayout-state: Restore the selected layout after unlock', 'xorg-xrandr: Multihead support')
 source=("https://github.com/YanDoroshenko/"$pkgname"/raw/master/"$pkgname".sh")
-sha256sums=('6aea815606759713185a07b4d66e1c716aedeeac391ffd41ae45f8ac2c893665')
+sha256sums=('245a10aad4bf6ee17345ef0bef71f0276d217b36edfdeaa834d49b21162bf1b2')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
