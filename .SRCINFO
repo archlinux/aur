@@ -1,16 +1,15 @@
 pkgbase = ucon64
 	pkgdesc = A ROM backup tool and emulator's Swiss Army knife program.
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://ucon64.sourceforge.net/index.php
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = https://downloads.sourceforge.net/ucon64/ucon64-2.0.3-src.tar.gz
-	source = patch-ucon64_misc.c
-	sha256sums = fdf158a4bc7c3a7d45a60ef495151f635ce39938799d373a29628f5985790bd2
-	sha256sums = f52d6e0cb307a2c0bc4e4ede0673139f5ddd704199ee12d15f58d2e394f25c80
+	depends = libusb-compat
+	source = https://downloads.sourceforge.net/ucon64/ucon64-2.1.0-src.tar.gz
+	sha256sums = c99964060a5337cea811b27c4103e186a14ba1f04b19cff08bac0260271bc872
 
 pkgname = ucon64
 
