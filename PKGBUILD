@@ -217,11 +217,6 @@ _arch_specific_configure_options="\
 "
 
 if $_uber_minimal; then
-    if $_target_host; then
-        _additional_configure_flags="$_additional_configure_flags -no-eglfs"
-    else
-        _additional_configure_flags="$_additional_configure_flags -no-xcb"
-    fi
     _exhaustive_uber_minimal_specific_configure_options="\
         -no-direct2d \
         -no-directfb \
@@ -260,7 +255,9 @@ if $_static_build; then
     _additional_configure_flags="$_additional_configure_flags \
         -ltcg \
     "
-else
+fi
+
+if ! $_static_build && ! $_target_host; then
     _additional_configure_flags="$_additional_configure_flags \
         -hostprefix ${_installprefix} \
     "
@@ -404,6 +401,7 @@ if $_target_host; then
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
 else
+  # I harbour a certain amount of X11 prejudice
   local _configure_line="${_srcdir}/configure \
                  ${_core_configure_options} \
                  -qtlibinfix "Pi${_piver}" \
