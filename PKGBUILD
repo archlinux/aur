@@ -192,7 +192,7 @@ if [[ -n ${_dev_suffix} ]]; then
     _pkgver=${pkgver}-${_dev_suffix}
 fi
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
-_baseprefix=/opt/qt
+_baseprefix="/opt/qt"
 _installprefix=${_baseprefix}/${pkgname}
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
@@ -472,10 +472,10 @@ fi
 
   if $_static_build; then
     if ! $_target_host; then
-        mv ${_installed_dir} ${_installed_dir_sans_sysroot_offset}
+        mv `dirname ${_installed_dir}` ${_installed_dir_sans_sysroot_offset}
     fi
   else
-    mv ${_installed_dir} ${_libspkgdir}
+    mv `dirname ${_installed_dir}` ${_libspkgdir}
   fi
 
   cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
