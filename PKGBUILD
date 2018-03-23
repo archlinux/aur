@@ -468,10 +468,10 @@ package() {
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install || exit 1
 
-  cd $(dirname ${_installed_dir})
+  cd $(dirname $(dirname ${_installed_dir}))
 
 if $_debug; then
-  find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
+  find $(basename $(dirname ${_installed_dir})) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
 
   cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
 
