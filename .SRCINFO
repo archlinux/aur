@@ -1,6 +1,6 @@
 pkgbase = bibtex2html
 	pkgdesc = Collection of tools for producing HTML documents from bibtex-bibliographies
-	pkgver = 1.98.413
+	pkgver = 1.99.413
 	pkgrel = 1
 	url = http://www.lri.fr/~filliatr/bibtex2html/
 	arch = i686

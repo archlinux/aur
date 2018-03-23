@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtex2html
-pkgver=1.98.413
+pkgver=1.99.413
 pkgrel=1
 pkgdesc="Collection of tools for producing HTML documents from bibtex-bibliographies"
 url="http://www.lri.fr/~filliatr/bibtex2html/"
