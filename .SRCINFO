@@ -1,18 +1,19 @@
 pkgbase = skippy-xd-git
 	pkgdesc = A full-screen task-switcher for X11, similar to Apple's Expose.
-	pkgver = 0
+	pkgver = latest
 	pkgrel = 1
-	url = http://code.google.com/p/skippy-xd/
+	url = http://code.google.com/p/skippy-xd
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = libxinerama
+	depends = giflib
+	depends = libjpeg
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxft
+	depends = libxinerama
 	depends = xorg-server
-	depends = giflib
 	source = git://github.com/penguinpowernz/skippy-xd.git
 	md5sums = SKIP
 

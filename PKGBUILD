@@ -1,30 +1,29 @@
-# Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=skippy-xd-git
-pkgver=0
-pkgrel=2
+pkgver=latest
+pkgrel=1
 pkgdesc="A full-screen task-switcher for X11, similar to Apple's Expose."
-url="http://code.google.com/p/skippy-xd/"
-license=('GPL')
-depends=('libxinerama' 'libxcomposite' 'libxdamage' 'libxft' 'xorg-server' 'giflib')
-makedepends=('git')
-arch=('i686' 'x86_64')
-source=("git://github.com/penguinpowernz/skippy-xd.git")
-# Because the sources are not static, skip Git checksum:
-md5sums=('SKIP')
+url="http://code.google.com/p/${pkgname%-git}"
+license=("GPL")
+depends=("giflib" "libjpeg" "libxcomposite" "libxdamage" "libxft" "libxinerama" "xorg-server")
+makedepends=("git")
+arch=("i686" "x86_64")
+source=("git://github.com/penguinpowernz/${pkgname%-git}.git")
+md5sums=("SKIP")
 
-# see also https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
 pkgver() {
-	cd "$srcdir/skippy-xd"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${srcdir}/${pkgname%-git}"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-	cd "$srcdir/skippy-xd"
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  make
 }
 
 package() {
-	cd "$srcdir/skippy-xd"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname%-git}"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
