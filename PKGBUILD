@@ -1,4 +1,5 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: mickele
@@ -6,7 +7,7 @@
 
 pkgname=coin
 pkgver=3.1.3
-pkgrel=14
+pkgrel=15
 pkgdesc='A high-level 3D graphics toolkit on top of OpenGL'
 url='http://www.coin3d.org/'
 license=('GPL')
@@ -19,10 +20,12 @@ optdepends=('openal: sound/dynamic linking support'
             'freetype2: dynamic linking support'
             'js: dynamic linking support'
             'simage: image format support')
-source=("https://bitbucket.org/Coin3D/coin/downloads/Coin-${pkgver}.tar.gz")
-sha256sums=('583478c581317862aa03a19f14c527c3888478a06284b9a46a0155fa5886d417')
+source=("https://bitbucket.org/Coin3D/coin/downloads/Coin-${pkgver}.tar.gz"
+        'fixed-wrong-assignment.patch')
+sha256sums=('583478c581317862aa03a19f14c527c3888478a06284b9a46a0155fa5886d417'
+            'f71a13da97f6000ce66a63ae780a67226bcd906f9abf289436ea6e218d77fae0')
 
-build() {
+prepare() {
 	cd Coin-${pkgver}
 
 	# fix prefix in coin-config
@@ -33,6 +36,13 @@ build() {
 
 	# fix http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=667139
 	sed -i '/^#include <Inventor\/C\/basic.h>$/i #include <Inventor/C/errors/debugerror.h>' include/Inventor/SbBasic.h
+
+	# fixes char to pointer assignment
+	patch -i "$srcdir/fixed-wrong-assignment.patch" -p1
+}
+
+build() {
+	cd Coin-${pkgver}
 
 	./configure \
 		--prefix=/usr \
