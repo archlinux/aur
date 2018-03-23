@@ -1,0 +1,14 @@
+pkgbase = scry-git
+	pkgdesc = Scry is a code analysis server for Crystal.
+	pkgver = 129.2e988b7
+	pkgrel = 1
+	url = https://github.com/crystal-lang-tools/scry
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = crystal
+	source = git+https://github.com/crystal-lang-tools/scry
+	sha256sums = SKIP
+
+pkgname = scry-git
+
