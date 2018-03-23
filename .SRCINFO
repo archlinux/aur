@@ -1,6 +1,6 @@
 pkgbase = python2-angr
 	pkgdesc = A multi-architecture binary analysis toolkit, with the ability to perform dynamic symbolic execution and various static analyses on binaries
-	pkgver = 7.7.9.21
+	pkgver = 7.8.2.21
 	pkgrel = 1
 	url = https://github.com/angr/angr
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = python2-angr
 	makedepends = python2-distribute
 	depends = python2
 	depends = python2-ana
-	depends = python2-archinfo>=7.7.9.14
+	depends = python2-archinfo>=7.8.2.21
 	depends = python2-bintrees
 	depends = python2-cachetools
 	depends = python2-capstone
 	depends = python2-cffi>=1.7.0
-	depends = python2-claripy>=7.7.9.14
-	depends = python2-cle>=7.7.9.21
+	depends = python2-claripy>=7.8.2.21
+	depends = python2-cle>=7.8.2.21
 	depends = python2-cooldict
 	depends = python2-dpkt-fix
 	depends = python2-futures
@@ -22,13 +22,13 @@ pkgbase = python2-angr
 	depends = python2-networkx-1.11
 	depends = python2-progressbar
 	depends = python2-pygit
-	depends = python2-pyvex>=7.7.9.14
+	depends = python2-pyvex>=7.8.2.21
 	depends = python2-rpyc
 	depends = python2-unicorn
 	depends = glib2
-	source = https://pypi.python.org/packages/a7/76/837fc44460dadf1682e11d5f76b6b30ae9518b41ebcbb9b67e4019380526/angr-7.7.9.21.tar.gz
+	source = https://pypi.python.org/packages/4c/9a/74b52028e9b0bfa7de4c7af2f2c0d3cae48c4fa6dad719032b214703c419/angr-7.8.2.21.tar.gz
 	source = https://raw.githubusercontent.com/angr/angr/master/LICENSE
-	md5sums = ea1fac2e6aa0a77802285612039bcd65
+	md5sums = 7680a320514794fe693611b0fe6da5a2
 	md5sums = 92da168ebb0065f567f0ea48bed0f512
 
 pkgname = python2-angr
