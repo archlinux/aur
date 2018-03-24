@@ -42,7 +42,7 @@ if [[ $upstreamVersion -gt $pkgbuildVersion ]]; then
 
   git add PKGBUILD .SRCINFO
   git commit -m "Automatic update ($pkgbuildVersion->$upstreamVersion)"
-  # git push
+  git push
 else
   echo "No new upstream version found (upstream $upstreamVersion, PKGBUILD $pkgbuildVersion)."
 fi
