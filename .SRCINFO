@@ -1,7 +1,7 @@
 pkgbase = ser-player
 	pkgdesc = A simple SER files player, a file format used in astronomy.
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cgarry/ser-player
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = ser-player
 	depends = qt5-base
 	depends = libpng
 	source = https://github.com/cgarry/ser-player/archive/v1.7.2.tar.gz
+	source = ser-player.pro.patch
 	sha1sums = b77169046704453c7e22eb591da6b3b0db457534
+	sha1sums = 20da0e25af1fbc3007b9484b61a69de3ab905651
 
 pkgname = ser-player
 

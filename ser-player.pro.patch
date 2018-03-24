@@ -1,0 +1,10 @@
+--- ser-player.pro.old	2018-03-20 09:55:34.443523596 +0000
++++ ser-player.pro	2018-03-20 09:56:33.773882240 +0000
+@@ -50,6 +50,7 @@
+     APP_VERSION=$${APP_VERSION}."dirty"
+ }
+ 
++APP_VERSION="v1.7.2"
+ message("Version: $${APP_VERSION}")
+ DEFINES += APP_VERSION_STRING=\\\"$${APP_VERSION}\\\"
+ 
