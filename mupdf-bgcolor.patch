@@ -1,0 +1,81 @@
+diff --git a/platform/x11/x11_main.c b/platform/x11/x11_main.c
+index edbb9fa8..5cad8521 100644
+--- a/platform/x11/x11_main.c
++++ b/platform/x11/x11_main.c
+@@ -100,6 +100,8 @@ static char copyutf8[1024 * 48] = "";
+ static Time copytime;
+ static char *filename;
+ static char message[1024] = "";
++static char *shadecolor = 0;
++static char *papercolor = 0;
+ 
+ static pdfapp_t gapp;
+ static int closing = 0;
+@@ -133,6 +135,14 @@ static void showmessage(pdfapp_t *app, int timeout, char *msg)
+ 	}
+ }
+ 
++static int colorasrgb(const char *name, XColor *color) {
++	XColor dummy;
++	if(XAllocNamedColor(xdpy, DefaultColormap(xdpy, xscr), name, color, &dummy))
++		return 1;
++	fprintf(stderr, "mupdf: couldn't allocate color '%s'", name);
++	return 0;
++}
++
+ void winerror(pdfapp_t *app, char *msg)
+ {
+ 	fprintf(stderr, "mupdf: error: %s\n", msg);
+@@ -222,13 +232,17 @@ static void winopen(void)
+ 	xcwait = XCreateFontCursor(xdpy, XC_watch);
+ 	xccaret = XCreateFontCursor(xdpy, XC_xterm);
+ 
+-	xbgcolor.red = 0x7000;
+-	xbgcolor.green = 0x7000;
+-	xbgcolor.blue = 0x7000;
++	if (!papercolor || !colorasrgb(papercolor, &xbgcolor)) {
++		xbgcolor.red = 0x7000;
++		xbgcolor.green = 0x7000;
++		xbgcolor.blue = 0x7000;
++	}
+ 
+-	xshcolor.red = 0x4000;
+-	xshcolor.green = 0x4000;
+-	xshcolor.blue = 0x4000;
++	if (!shadecolor || !colorasrgb(shadecolor, &xshcolor)) {
++		xshcolor.red = 0x4000;
++		xshcolor.green = 0x4000;
++		xshcolor.blue = 0x4000;
++	}
+ 
+ 	XAllocColor(xdpy, DefaultColormap(xdpy, xscr), &xbgcolor);
+ 	XAllocColor(xdpy, DefaultColormap(xdpy, xscr), &xshcolor);
+@@ -845,6 +859,8 @@ static void usage(void)
+ 	fprintf(stderr, "\t-S -\tfont size for EPUB layout\n");
+ 	fprintf(stderr, "\t-U -\tuser style sheet for EPUB layout\n");
+ 	fprintf(stderr, "\t-X\tdisable document styles for EPUB layout\n");
++	fprintf(stderr, "\t-D -\tshade color\n");
++	fprintf(stderr, "\t-P -\tpaper color\n");
+ 	exit(1);
+ }
+ 
+@@ -876,7 +892,7 @@ int main(int argc, char **argv)
+ 
+ 	pdfapp_init(ctx, &gapp);
+ 
+-	while ((c = fz_getopt(argc, argv, "Ip:r:A:C:W:H:S:U:Xb:")) != -1)
++	while ((c = fz_getopt(argc, argv, "Ip:r:A:C:W:H:S:U:Xb:D:P:")) != -1)
+ 	{
+ 		switch (c)
+ 		{
+@@ -897,7 +913,9 @@ int main(int argc, char **argv)
+ 		case 'U': gapp.layout_css = fz_optarg; break;
+ 		case 'X': gapp.layout_use_doc_css = 0; break;
+ 		case 'b': bps = (fz_optarg && *fz_optarg) ? fz_atoi(fz_optarg) : 4096; break;
+-		default: usage();
++		case 'P': papercolor = fz_optarg; break;
++		case 'D': shadecolor = fz_optarg; break;
++                default: usage();
+ 		}
+ 	}
+ 
