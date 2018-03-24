@@ -1,7 +1,7 @@
 pkgbase = mstream
 	pkgdesc = Music player server with a web-based interface
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mstream.io
 	install = mstream.install
 	arch = any

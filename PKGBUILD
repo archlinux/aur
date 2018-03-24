@@ -2,7 +2,7 @@
 
 pkgname=mstream
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Music player server with a web-based interface'
 arch=('any')
 url="http://mstream.io"
@@ -19,6 +19,7 @@ package() {
   mkdir -p "${pkgdir}/var/lib/${pkgname}/media"
   mkdir -p "${pkgdir}/var/lib/${pkgname}/album-art"
   chown 49:49 -R "${pkgdir}/var/lib/${pkgname}/media"
+  chown 49:49 -R "${pkgdir}/var/lib/${pkgname}/album-art"
   npm install -g --user root --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
   install -d -g 49 -o 49 "${pkgdir}/var/lib/${pkgname}"
   install -Dm644 mstream.service "$pkgdir"/usr/lib/systemd/system/mstream.service
