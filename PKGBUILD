@@ -3,7 +3,7 @@
 
 pkgname=doomseeker
 pkgver=1.2
-pkgrel=20180303
+pkgrel=20180324
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
