@@ -15,7 +15,7 @@ pkgbase = cpu-x
 	depends = pciutils
 	depends = procps-ng
 	source = cpu-x-3.2.1.tar.gz::https://github.com/X0rg/CPU-X/archive/v3.2.1.tar.gz
-	md5sums = 92f003bdb557a140f717ba6836cfdec8
+	sha512sums = a5de3f91769f5a5983318e1c29b7c2734fdf481649f06f870162972d9a8a5d0b8a73060de6ca4673f1257881b60b99d3329edfac023c943e1d64a86634af1816
 
 pkgname = cpu-x
 

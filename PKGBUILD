@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3' 'ncurses' 'curl' 'libcpuid-git' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver.tar.gz")
-md5sums=('92f003bdb557a140f717ba6836cfdec8')
+sha512sums=('a5de3f91769f5a5983318e1c29b7c2734fdf481649f06f870162972d9a8a5d0b8a73060de6ca4673f1257881b60b99d3329edfac023c943e1d64a86634af1816')
 
 prepare() {
 	msg2 "Make 'build' directory..."
