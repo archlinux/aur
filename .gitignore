@@ -2,3 +2,7 @@
 ./*.deb
 ./pkg
 ./src
+**/pkg
+**/src
+**/*.deb
+**/*.tar.*
