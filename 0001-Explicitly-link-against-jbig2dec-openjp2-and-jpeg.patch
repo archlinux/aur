@@ -1,0 +1,40 @@
+From 3fb0ff750373d45d4f5172ce1d41b74183cd07e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20L=C3=B6thberg?= <johannes@kyriasis.com>
+Date: Sat, 24 Mar 2018 14:31:18 +0100
+Subject: [PATCH] Explicitly link against jbig2dec, openjp2, and jpeg
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Normally these are statically linked into libmupdfthird, but we delete
+those to make mupdf use the system libraries.  Previously
+zathura-pdf-mupdf explicitly linked against them, but this is
+technically incorrect since they are supposed to be in libmupdfthird so
+that was removed.  This commit essentially reverts that in the new build
+system.
+
+Signed-off-by: Johannes Löthberg <johannes@kyriasis.com>
+---
+ meson.build | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 3b0d7b7..ae2fc9c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -22,7 +22,11 @@ cairo = dependency('cairo')
+ mupdf = cc.find_library('mupdf')
+ mupdfthird = cc.find_library('mupdfthird')
+ 
+-build_dependencies = [zathura, girara, glib, cairo, mupdf, mupdfthird]
++jbig2dec = cc.find_library('jbig2dec')
++openjp2 = cc.find_library('openjp2')
++jpeg = cc.find_library('jpeg')
++
++build_dependencies = [zathura, girara, glib, cairo, mupdf, mupdfthird, jbig2dec, openjp2, jpeg]
+ 
+ # defines
+ defines = [
+-- 
+2.16.3
+
