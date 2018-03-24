@@ -2,7 +2,7 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=59.0b2
+pkgver=50.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=3
@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
 )
 
-sha512sums=('566efce0bad28639dd5065c91250e7a6b68b991ff89fa53ba4a799f82516ca8347f6637bf64c4a8f56658986649be9d20de68acfd062cfedbfbf0f1f9cf0177b'
+sha512sums=('620408f69087d3d36f60865389f0d9796f6e5b558ba4de84e97f6c84675eb32f1bea1e2be93c86dd77bfb5333baf6d6aaf5b1ca9027132cc40df8c983a42d9d8'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '33f5c73b18b078c49b97ebd526a8d07eb091deb223018068434cec0ff95e4ac64dbde70f1c2ccf46f833a17f898bb9a916357eebac05f39399f23a08f79149f7'
             '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
@@ -42,7 +42,7 @@ sha512sums=('566efce0bad28639dd5065c91250e7a6b68b991ff89fa53ba4a799f82516ca8347f
             'ba950af03a906918d0981e18c0c6e131d0ef2bfb890bedbc47215e82b354a34ade89de1655bd245e76301a08cd543a4522745da47d70939bfe8adeab51e60501'
             '71ccc1ab8c28c269d2dd52f474dcc59bdb48defc3f38efc2e0725c1581ab14497753a790dd17325b74545d22f99b7cbaa46d461cc8fe73898632bb69b4238b4f'
             'e43c3d5862f752dfbb7df2774bf57f675ee088985055a2d7fa67a5e6de864db4b5a25034854e9bd82b060fbff7668887f88b34e15cf61eb4de54fc6b0b60076f'
-            'bfe2fe62842939ffb2798a9948ef3dc83546dedf5cf47f9974635c65bb560111b6366b13440551bc1aa482d90f30a2bc3068966eb4247dd143bbcc6a7055206f')
+            '192b99ca24bce0c516d85fdd5da4ded66bcfe64b4b86024d61052b5e18caf99b3c04b0f9196483e59b752cc5ac1bc14310d575a92b7243aaeac2eee02ce6acfb')
 
 
 # RC
@@ -160,6 +160,13 @@ package() {
   cd thunderbird-$pkgver
 
 msg2 'fixing upstream error'
+
+
+cd $srcdir/thunderbird-$pkgver
+
+cp -r mail/branding/nightly other-licenses/branding/thunderbird 
+
+msg2 'fixing upstream error 2'
 cd other-licenses/branding/thunderbird
 cp default16.png mailicon16.png
 cp default22.png mailicon22.png
