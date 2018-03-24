@@ -1,9 +1,9 @@
 --- pkg/brother-mfcj5335dw/opt/brother/Printers/mfcj5335dw/cupswrapper/brother_lpdwrapper_mfcj5335dw	2016-08-17 07:39:28.000000000 +0200
-+++ brother-mfc-j5335dw.patch	2017-09-02 16:59:33.243622717 +0200
++++ brother_lpdwrapper_mfcj5335dw.patch	2018-03-24 16:59:33.243622717 +0200
 @@ -89,6 +89,9 @@
  $PRINTER =~ s/\/cupswrapper//g;
  $PRINTER =~ s/\///g;
- 
+
 +my $PRINTER = "mfcj5335dw";
 +my $basedir = "/opt/brother/Printers/mfcj5335dw";
 +
