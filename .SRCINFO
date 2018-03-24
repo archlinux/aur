@@ -1,0 +1,17 @@
+pkgbase = clcbrowser-git
+	pkgdesc = Fully Command line and remote controllable web browser
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://gitorious.org/clcbrowser/clcbrowser
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-webengine
+	source = clcbrowser::git+https://github.com/hl037/CLCBrowser.git
+	md5sums = SKIP
+
+pkgname = clcbrowser-git
+
