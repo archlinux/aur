@@ -12,18 +12,19 @@ url="https://github.com/onivim/oni"
 license=('MIT')
 depends=('neovim' 'nodejs' 'gconf' 'libxss')
 makedepends=('tar')
-source=("https://github.com/onivim/oni/archive/master.tar.gz"
-        "oni.sh"
+source=("oni.sh"
         "oni.desktop"
         "icons.tar.gz")
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
          'SKIP')
 
 package() {
-  cd ${srcdir}/oni-master
-  npm install -g yarn
+  cd ${srcdir}
+  git clone https://github.com/onivim/oni.git oni-master
+  cd oni-master
+  git submodule update --init --recursive
+  npm install
   npm run build
   install -d ${pkgdir}/opt/${pkgname}
   cp -R ${srcdir}/oni-master/* ${pkgdir}/opt/${pkgname}
