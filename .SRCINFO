@@ -1,7 +1,7 @@
 pkgbase = flashplayer-projector
 	pkgdesc = Standalone (a.k.a. projector) version of Adobe's Flash Player
 	pkgver = 29.0.0.113
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = x86_64
 	license = LGPL

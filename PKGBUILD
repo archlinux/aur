@@ -2,7 +2,7 @@
 
 pkgname=flashplayer-projector
 pkgver=29.0.0.113
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone (a.k.a. projector) version of Adobe's Flash Player"
 arch=('x86_64')
 url='http://www.adobe.com/support/flashplayer/debug_downloads.html'
@@ -27,5 +27,5 @@ prepare() {
 package() {
 	install -Dm644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/license.pdf"
 	install -Dm755 flashplayer "${pkgdir}/usr/bin/flashplayer"
-	install -Dm644 flashplayer.desktop "${pkgdir}/usr/share/applications/flashplayer.desktop"
+	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
