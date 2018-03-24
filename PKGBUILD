@@ -4,8 +4,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -15,17 +15,19 @@ license=('zlib')
 conflicts=('zathura-pdf-poppler')
 
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo' 'desktop-file-utils' 'openssl')
-makedepends=('libmupdf')
+makedepends=('libmupdf' 'meson' 'ninja')
 
-source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz)
+source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.xz)
 
-sha1sums=('b33c7ec1ac3cf2ee575b7cc1eae611f00b9ba8d7')
+sha1sums=('a9165f6aec134de86d6ee5c1a2ed5f1aa8f7d0b3')
 
 build() {
-  make -C zathura-pdf-mupdf-$pkgver MUPDF_LIB="-lmupdf -lmupdfthird"
+  cd zathura-pdf-mupdf-$pkgver
+  arch-meson build
+  ninja -C build
 }
 
 package(){
-  make -C zathura-pdf-mupdf-$pkgver DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C zathura-pdf-mupdf-$pkgver/build install
   install -Dm0644 zathura-pdf-mupdf-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
