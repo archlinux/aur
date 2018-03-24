@@ -1,6 +1,6 @@
 pkgname=mopidy-alarmclock
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension using it as an alarm clock."
 arch=('any')
 url="https://github.com/DavisNT/mopidy-alarmclock"
@@ -9,6 +9,7 @@ depends=(
 	'python2-setuptools'
 	'mopidy>=0.19'
 	'python2-pykka>=1.1'
+	'python2-monotonic'
 )
 makedepends=('python2' 'git')
 source=("https://github.com/DavisNT/${pkgname}/archive/v${pkgver}.tar.gz")
