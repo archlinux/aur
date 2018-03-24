@@ -2,7 +2,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 
 pkgname=grib_api
-pkgver=1.25.0
+pkgver=1.26.0
 _attnum=3473437
 pkgrel=1
 pkgdesc="A program interface for encoding and decoding GRIB messages"
@@ -16,7 +16,7 @@ provides=('grib_api')
 replaces=('grib_api' 'grib_def')
 conflicts=('grib_def' 'eccodes')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${pkgname}-${pkgver}-Source.tar.gz)
-md5sums=('c2f7cae662784d7fd15be6b90e7ff67d')
+md5sums=('10e3e3f47a495e4d1c62fcb30f7b988f')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}-Source
