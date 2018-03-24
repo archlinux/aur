@@ -2,6 +2,7 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=('python-pyfr')
+_pkgname=PyFR
 pkgver=1.7.6
 pkgrel=1
 pkgdesc="Python based framework for solving advection-diffusion type problems on streaming architectures"
@@ -11,8 +12,9 @@ license=('BSD')
 makedepends=('python-setuptools')
 source=("https://github.com/vincentlab/PyFR/archive/v${pkgver}.tar.gz")
 #mpi4py
+#	  'python-h5py>=2.6'
 depends=( 'python-gimmik>=2.0'
-	  'python-h5py>=2.6'
+	  'python-h5py-openmpi>=2.6'
 	  'python-numpy>=1.8'
 	  'python-pytools>=2016.2.1'
 	  'python-mako>=1.0.0'
@@ -32,12 +34,12 @@ sha256sums=('9a2f8aa91941e9af4aab40ede50666871a07afba5007454f54a23796d83c4280')
 
 build() {
   msg "Building pyfr"
-  cd "$srcdir"/PyFR-${pkgver}
+  cd "$srcdir"/${_pkgname}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "$srcdir"/PyFR-${pkgver}
+  cd "$srcdir"/${_pkgname}-${pkgver}
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
