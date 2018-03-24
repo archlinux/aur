@@ -12,20 +12,15 @@ makedepends=('git' 'valabind' 'swig')
 
 source=("${pkgname}::git://github.com/radare/radare2-bindings.git"
         "radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git"
-        "Makefile.patch")
+        )
 md5sums=('SKIP'
          'SKIP'
-         'c79cfc6a5650e347e253f132762ef961')
+         )
 
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${basename}"
-  patch -Np1 -i ../Makefile.patch
 }
 
 build() {
