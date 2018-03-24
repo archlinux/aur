@@ -14,7 +14,6 @@ pkgbase = oni-git
 	source = oni.sh
 	source = oni.desktop
 	source = icons.tar.gz
-	md5sums = SKIP
 
 pkgname = oni-git
 

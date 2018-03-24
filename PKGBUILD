@@ -16,8 +16,6 @@ source=("https://github.com/onivim/oni/archive/master.tar.gz"
         "oni.sh"
         "oni.desktop"
         "icons.tar.gz")
-md5sums=('SKIP')
-
 
 package() {
   install -d ${pkgdir}/opt/${pkgname}
