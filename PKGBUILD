@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rc-git
-pkgver=1.7.4.r499.c95bdf7
+pkgver=1.7.4.r547.47151e4
 pkgrel=1
 epoch=
 pkgdesc="Independent re-implementation for Unix of the Plan 9 shell (from circa 1992)."
@@ -40,6 +40,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 history.1 $pkgdir/usr/share/man/man1/history.1
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 NEWS $pkgdir/usr/share/doc/${pkgname%-*}/NEWS
   install -Dm644 EXAMPLES $pkgdir/usr/share/doc/${pkgname%-*}/EXAMPLES
   install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
