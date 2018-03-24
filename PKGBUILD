@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pdfgrep-git
-pkgver=1.4.1.r84.gcfbd65c
+pkgver=2.0.1.r28.g78b20c8
 pkgrel=1
 epoch=
 pkgdesc="A commandline utility to search text in PDF files."
