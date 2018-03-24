@@ -1,7 +1,8 @@
 [Desktop Entry]
 Name=Mist
 Comment=Ethereum wallet and Dapp browser
-Exec="/opt/Mist/mist"
+Path=/opt/mist
+Exec=/opt/mist/mist
 Terminal=false
 Type=Application
 Icon=mist
