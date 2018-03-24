@@ -1,6 +1,6 @@
 pkgbase = warzone2100-git
 	pkgdesc = 3D realtime strategy game on a future Earth (Git version)
-	pkgver = r13798.0b4012f09
+	pkgver = r14106.52089c899
 	pkgrel = 1
 	url = http://wz2100.net/
 	arch = i686
@@ -27,26 +27,8 @@ pkgbase = warzone2100-git
 	provides = warzone-svn
 	provides = warzone2100-beta
 	conflicts = warzone2100
-	source = git://github.com/Warzone2100/warzone2100.git
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_add_to_search_path.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_get_last_error.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_get_last_mod_time.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_get_user_dir.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/mods_regular_files.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_is_directory.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_read.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_remove_from_search_path.patch
-	source = http://developer.wz2100.net/raw-attachment/ticket/4693/physfs_write.patch
+	source = git+https://github.com/Warzone2100/warzone2100.git
 	sha256sums = SKIP
-	sha256sums = 9bdaf2a539c77952113b636aa16593e23e02d791269810eba42552f725681f19
-	sha256sums = 1bb6ade8105cb17de98e5efa5f296b5c118b98c6cf18215dee6a53c7970b96bd
-	sha256sums = aa51dfd85ecb1910f727f48d6bd3d63e395963f7d71db6299577e7d399f311fe
-	sha256sums = 160ae877fb60947b8b961883047cb8b6a12fe274f77fb8a7a29abe92c5a42d4c
-	sha256sums = 80a19c2f249fa15f6b98fb71b88e721756ec8388e2279fe63a9fb6d97332418e
-	sha256sums = 2b2f9d08fc4e78ed43d02c8cabe711aabc1f6886923b87158798f258f5dcb148
-	sha256sums = 24f5ff7b839eea202ad0fc1db74b8f4e65c8bb0e1b6c7e42e15949e322450d54
-	sha256sums = 7635cf79d2603cad88164ba2c1bf4f4edce75f1f0f47f6d4f44cf43127c1ed1c
-	sha256sums = 31041f89bc2998a46acbe303b80afbebb6c8661aefe32d165b38a021c989823a
 
 pkgname = warzone2100-git
 
