@@ -1,0 +1,13 @@
+--- radare2-bindings-git/libr/lang/p/Makefile	2016-03-09 01:49:09.985929885 +0100
++++ radare2-bindings-git.new/libr/lang/p/Makefile	2016-03-09 01:46:44.628414992 +0100
+@@ -87,8 +87,8 @@
+ 	-rm -f *.${EXT_SO} *.${EXT_AR} *.o
+ 	-rm -rf *.dSYM
+ 
+-#R2_PLUGIN_PATH=$(shell r2 -hh| grep PLUGINS|awk '{print $$2}')
+-R2_PLUGIN_PATH=$(shell r2 -nqc 'e dir.plugins' -)
++R2_PLUGIN_PATH=$(shell r2 -hh| grep LIBR_PLUGINS|awk '{print substr($$2,2)}')
++#R2_PLUGIN_PATH=$(shell r2 -nqc 'e dir.plugins' -)
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/$(R2_PLUGIN_PATH)
