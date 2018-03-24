@@ -12,7 +12,7 @@ makedepends=('make' 'gcc' 'binutils' 'patch' 'cmake' 'autoconf' 'automake' 'git'
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
         0002-Fix-for-distcc.patch)
-sha1sums=('79b774b5fd48d22ecfb53ce430881772bcf152ee'
+sha1sums=('a8e61416e98e1febc790ffe1aa0127961611d87a'
           'd05ed01303a09d103f703118126348b1402b3950'
           'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
