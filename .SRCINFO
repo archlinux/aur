@@ -1,16 +1,17 @@
 pkgbase = flashplayer-projector
 	pkgdesc = Standalone (a.k.a. projector) version of Adobe's Flash Player
-	pkgver = 28.0.0.126
+	pkgver = 29.0.0.113
 	pkgrel = 1
 	url = http://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = x86_64
 	license = LGPL
 	license = custom:Adobe
+	makedepends = gendesk
 	depends = gtk2
 	depends = nss
 	depends = libgl
-	source = https://fpdownload.macromedia.com/pub/flashplayer/updaters/28/flash_player_sa_linux.x86_64.tar.gz
-	sha256sums = 93557d22ceff2287b01c113b4f08eb995d382b5f992f6403a85ba62b7929b293
+	source = https://fpdownload.macromedia.com/pub/flashplayer/updaters/29/flash_player_sa_linux.x86_64.tar.gz
+	sha256sums = 888cc3d18131d197daa6a70ef43fd7bdf49612875f884c7035bae03502d7bc9f
 
 pkgname = flashplayer-projector
 
