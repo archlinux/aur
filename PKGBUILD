@@ -3,7 +3,7 @@
 
 pkgname=distrho-vst-git
 pkgver=r402.84f65e68
-pkgrel=1
+pkgrel=2
 pkgdesc="DISTRHO VST audio plugins ports."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
@@ -11,7 +11,7 @@ license=('GPL' 'LGPL')
 depends=('freetype2' 'alsa-lib' 'libxext')
 makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36' 'ladspa')
 provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git" "dexed-vst-git" "luftikus" "tal-plugins")
+conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git" "dexed" "dexed-git" "dexed-vst-git" "luftikus" "tal-plugins")
 source=("${pkgname%-*}::git://github.com/DISTRHO/DISTRHO-Ports")
 md5sums=('SKIP')
 
