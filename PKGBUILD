@@ -22,7 +22,7 @@ md5sums=('SKIP'
          'SKIP')
 
 package() {
-  cd ${srcdir}
+  cd ${srcdir}/oni-master
   npm install -g yarn
   npm run build
   install -d ${pkgdir}/opt/${pkgname}
