@@ -1,7 +1,6 @@
 # Maintainer: YOUNG HO CHA <ganadist@gmail.com>
 pkgname=uftrace
-_commit=8b723a6
-pkgver=0.8.3+$_commit
+pkgver=0.8.3
 pkgrel=0
 pkgdesc="Tool to trace and analyze execution of a program written in C/C++"
 arch=(arm x86_64)
@@ -18,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 changelog=
-source=("git+https://github.com/namhyung/$pkgname.git#commit=$_commit")
+source=("git+https://github.com/namhyung/$pkgname.git#tag=v$pkgver")
 noextract=()
 md5sums=('SKIP') #autofill using updpkgsums
 
