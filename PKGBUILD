@@ -13,7 +13,7 @@ depends=('libxml2' 'perl')
 provides=("osc-source_validator=$pkgver")
 conflicts=('osc-source_validator<=0.1')
 
-source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
+source=("http://download.opensuse.org/source/factory/repo/oss/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
 sha256sums=('bb6b9008648f991fa93a4f472c2aa0d3f96ab1ccbc8030dc7fc5dafa01eb5cc9')
 
 build() {
