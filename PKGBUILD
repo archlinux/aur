@@ -16,6 +16,7 @@ optdepends=('brltty: For Braille support'
   'python-espeak: TTS support'
   'python-pyttsx: TTS support'
   'python-pyenchant: for spell check functionality'
+  'python-pyte: for pty driver support (terminal emulators)'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
 makedepends=('git')
