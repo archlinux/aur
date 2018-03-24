@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.rstudio.com/shiny/server/install-opensource"
 license=('AGPL')
 depends=('r')
-makedepends=('git' 'python2' 'cmake' 'r' 'gcc5')
+makedepends=('git' 'python2' 'cmake' 'r' 'gcc6')
 install='accounts.install'
 backup=('etc/shiny-server/shiny-server.conf')
 source=('shiny-server::git+https://github.com/rstudio/shiny-server.git' 
@@ -41,8 +41,8 @@ build() {
   export PYTHON=`which python2`
 
   # Node fails with gcc7
-  export CC=/bin/gcc-5
-  export CXX=/bin/g++-5
+  export CC=/bin/gcc-6
+  export CXX=/bin/g++-6
 
   # CMake
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON="$_PYTHON" ../
