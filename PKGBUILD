@@ -1,11 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.28.0.74.ga9a4d6349a
+pkgver=v0.28.0.403.g59a04562b1
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
-arch=('x86_64' )
+arch=('x86_64')
 depends=(
+         'crossc'
          'desktop-file-utils'
          'fribidi'
          'hicolor-icon-theme'
