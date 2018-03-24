@@ -2,7 +2,7 @@
 
 _pkgname=antimicro
 pkgname=${_pkgname}-qt4
-pkgver=2.22
+pkgver=2.23
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons (QT4 version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'itstool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('165a0dbe5931783f0d2c035a87b8e6a1')
+md5sums=('b63397e9e6d0bb06d98b0931a86b3427')
 
 
 build() {
