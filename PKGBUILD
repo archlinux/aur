@@ -5,25 +5,20 @@
 
 pkgbase=digikam
 pkgname=(digikam kipi-plugins)
-_pkgver=5.8.0
+_pkgver=5.9.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
 url="http://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
-             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte)
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
-        digikam-opencv-3.4.patch::https://github.com/KDE/digikam/commit/6ea9e428.patch)
-sha256sums=('194a44cc3ca229d501acfba67a38d483d1d64069a85e0491dd28dc2b57091c6e'
-            '629851cf57e06877ac2a68cac9d258223483d9e54bccfe5a6fdc17c7d323cbae')
+             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu)
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
+sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b')
 
 prepare() {
   mkdir -p build
-
-  cd $pkgname-$_pkgver/core
-  patch -p1 -i ../../digikam-opencv-3.4.patch # Fix crash on face recognition
 }
 
 build() {
