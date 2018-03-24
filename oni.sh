@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/oni/oni "$@"
+exec /opt/oni-git/oni "$@"

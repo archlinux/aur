@@ -24,9 +24,9 @@ md5sums=('SKIP'
 package() {
   install -d ${pkgdir}/opt/${pkgname}
   cp -R ${srcdir}/oni-master/* ${pkgdir}/opt/${pkgname}
-  install -Dm755 $srcdir/oni.sh ${pkgdir}/usr/bin/oni
+  install -Dm755 $srcdir/oni.sh ${pkgdir}/usr/bin/oni-git
 
-  install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni.desktop"
+  install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni-git.desktop"
 
   tar -xf ${srcdir}/icons.tar.gz
   for i in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024; do
