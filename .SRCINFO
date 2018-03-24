@@ -1,16 +1,16 @@
 pkgbase = emerald-wallet-bin
 	pkgdesc = Ethereum Classic Wallet
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://github.com/ethereumproject/emerald-wallet
+	url = https://github.com/ETCDEVTeam/emerald-wallet
 	arch = x86_64
 	license = Apache
 	provides = emerald-wallet
 	conflicts = emerald-wallet
-	source = https://github.com/ethereumproject/emerald-wallet/releases/download/v0.8.1/EmeraldWallet-linux-x64-v0.8.0-7e80eed.tar.gz
+	source = https://github.com/ETCDEVTeam/emerald-wallet/releases/download/v0.9.0/EmeraldWallet-linux-x64-v0.9.0-1934efa.tar.gz
 	source = emeraldwallet.png
 	source = emeraldwallet.desktop
-	md5sums = 256c75a251316fd24ebd25c5f4626ea1
+	md5sums = 020ce73df2eb3a8e57c831ede634ad59
 	md5sums = 14df95dcbac7415ccca9fa3a2f4e1497
 	md5sums = 8664d6f53ef7fdfaa907cd8546184b57
 
