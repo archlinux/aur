@@ -1,4 +1,4 @@
-pkgbase = oni
+pkgbase = oni-git
 	pkgdesc = An IDE built around Neovim - Master Branch
 	pkgver = 0.0.0
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = oni
 	source = icons.tar.gz
 	md5sums = SKIP
 
-pkgname = oni
+pkgname = oni-git
 

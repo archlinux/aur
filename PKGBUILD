@@ -3,7 +3,7 @@
 # Based off of the `oni` package, which is maintained by:
 # - Amadeus Folego <amadeusfolego@gmail.com>
 # - Terje Larsen <terlar@gmail.com>
-pkgname=oni
+pkgname=oni-git
 pkgver=0.0.0
 pkgrel=1
 pkgdesc='An IDE built around Neovim - Master Branch'
