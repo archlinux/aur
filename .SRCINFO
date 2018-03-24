@@ -1,15 +1,14 @@
-pkgbase = mupdf-git
-	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20171213.308c8d8e
+pkgbase = mupdf-bgcolor-git
+	pkgdesc = Lightweight PDF, XPS, and E-book viewer. Patched to allow custom background color.
+	pkgver = 20180322.90defd07
 	pkgrel = 1
-	url = http://mupdf.com/
+	url = http://acidwords.com/posts/2016-07-26-hacking-mupdf-custom-background-colors.html
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = AGPL3
 	makedepends = git
-	depends = freeglut
-	depends = glu
+	depends = xorg-server
 	depends = harfbuzz
 	depends = jbig2dec
 	depends = libjpeg-turbo
@@ -20,10 +19,12 @@ pkgbase = mupdf-git
 	source = git://git.ghostscript.com/mujs.git
 	source = cmm_ctx_gone.patch
 	source = desktop
+	source = mupdf-bgcolor.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = df0d070fe988c5b1f610d21a90d3028f03c73829c026510b2789d7c1f285fbf5
-	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
+	sha256sums = f8e559042c46a0b2b82cfc480281d19fd51d9a6a7e1caac7630c91d642862d15
+	sha256sums = c402f2bfd3091d4c3f13721a040677159931191129ee5903a585094a8260a458
 
-pkgname = mupdf-git
+pkgname = mupdf-bgcolor-git
 
