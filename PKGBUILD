@@ -1,13 +1,13 @@
 # Maintainer: Anatolii Sakhnik <sakhnik at gmail dot com>
 pkgname=kerberosio-machinery
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 _revision=v${pkgver}
 pkgdesc="An image processing framework, which uses your USB-, IP- or RPi-camera to recognize events (e.g. motion)."
 arch=('x86_64' 'armv7h' 'armv6h')
 url="https://github.com/kerberos-io/machinery"
 license=('CC-NC-ND')
-depends=()
+depends=('ffmpeg')
 makedepends=('make' 'gcc' 'binutils' 'patch' 'cmake' 'autoconf' 'automake' 'git')
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
