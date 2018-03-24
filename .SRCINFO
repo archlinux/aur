@@ -12,6 +12,8 @@ pkgbase = lwt-git
 	depends = vte3
 	depends = iniparser
 	conflicts = lwt
+	source = git+https://github.com/mewkiz/lwt.git
+	md5sums = SKIP
 
 pkgname = lwt-git
 
