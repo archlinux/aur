@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Cabbage
+GenericName=Audio development toolkit
+Type=Application
+Categories=AudioVideo;Audio;Multimedia
+Exec=/opt/cabbage/Cabbage
+Terminal=false
+StartupNotify=false
+Icon=/opt/cabbage/cabbage.png
