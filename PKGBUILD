@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
          'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 
          'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'ndi-sdk' 'openal' 'opencore-amr'
-         'opencv' 'opencl-driver' 'opencl-icd-loader' 'openh264' 
+         'opencl-driver' 'opencl-icd-loader' 'openh264' 
          'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband' 'rtmpdump'
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
@@ -156,7 +156,7 @@ build() {
     --enable-libndi_newtek \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
-    --enable-libopencv \
+    --disable-libopencv \
     --enable-libopenh264 \
     --enable-libopenjpeg \
     --enable-libopenmpt \
