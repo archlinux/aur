@@ -4,14 +4,14 @@
 pkgbase=gods
 pkgname=('gods' 'gods-extra-music')
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Gods Deluxe, remake of the platform game Gods by Bitmap Brothers'
 arch=('any')
 url='http://jotd.pagesperso-orange.fr/gods/'
 license=('custom')
 depends=('java-runtime')
 makedepends=('setconf' 'gendesk')
-source=("https://jotd.pagesperso-orange.fr/gods/GodsDeluxe-${pkgver/./_}.zip"
+source=("http://jotd.pagesperso-orange.fr/gods/GodsDeluxe-${pkgver/./_}.zip"
         "http://jotd.free.fr/gods/Gods_extra_music.zip"
         "gods.png::http://www.androidfreeware.net/software_images/gods.thumb.png")
 sha256sums=('38fe593a9ed361c65e4a4c36dd4940cde8c847849f1d5e9f15eb940089428a9c'
