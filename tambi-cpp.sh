@@ -2,6 +2,6 @@
 
 cd /usr/share/tambi-git/c++
 
-./tambi
+./debug/tambi
 
 exit

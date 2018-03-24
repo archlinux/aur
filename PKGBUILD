@@ -2,7 +2,7 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=678
+pkgver=736
 pkgrel=1
 pkgdesc='A swiss army knife for studying the bible and much more'
 arch=('any')
