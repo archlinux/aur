@@ -1,0 +1,12 @@
+pkgbase = mrustc-git
+	pkgdesc = Alternative rust compiler written in C++
+	pkgver = 0.0.3012
+	pkgrel = 1
+	url = https://github.com/thepowersgang/mrustc
+	arch = x86_64
+	license = MIT
+	source = git+https://github.com/thepowersgang/mrustc.git
+	sha256sums = SKIP
+
+pkgname = mrustc-git
+
