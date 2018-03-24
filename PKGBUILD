@@ -2,10 +2,10 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=50.0b1
+pkgver=60.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=3
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
