@@ -1,6 +1,6 @@
 pkgbase = xcb-util-xrm-git
 	pkgdesc = XCB utility functions for the X resource manager
-	pkgver = v1.2.r0.ga45b3d0
+	pkgver = v1.3.r0.ga485748
 	pkgrel = 1
 	url = https://github.com/Airblader/xcb-util-xrm
 	arch = i686
