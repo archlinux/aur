@@ -1,0 +1,46 @@
+diff -ura src.old/extract/usr/local/vxipnp/linux/NIvisa/Passport/nivisa.ini src.new/extract/usr/local/vxipnp/linux/NIvisa/Passport/nivisa.ini
+--- src.old/extract/usr/local/vxipnp/linux/NIvisa/Passport/nivisa.ini	2017-03-25 08:52:05.000000000 +0900
++++ src.new/extract/usr/local/vxipnp/linux/NIvisa/Passport/nivisa.ini	2018-03-24 18:32:27.144522431 +0900
+@@ -9,7 +9,7 @@
+ passportEnabled2 = 1
+ LibName2 = libnivivxi.so
+ LibDescription2 = "NI-VISA Passport for VXI"
+-passportEnabled3 = 1
++passportEnabled3 = 0
+ LibName3 = libnivipxi.so
+ LibDescription3 = "NI-VISA Passport for PXI/PCI"
+ passportEnabled4 = 1
+diff -ura src.old/extract/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini src.new/extract/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini
+--- src.old/extract/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini	2017-03-25 08:52:02.000000000 +0900
++++ src.new/extract/usr/local/vxipnp/linux/NIvisa/Passport64/nivisa.ini	2018-03-24 18:31:09.164521694 +0900
+@@ -6,7 +6,7 @@
+ passportEnabled1 = 1
+ LibName1 = libnivi488.so
+ LibDescription1 = "NI-VISA Passport for GPIB"
+-passportEnabled2 = 1
++passportEnabled2 = 0
+ LibName2 = libnivipxi.so
+ LibDescription2 = "NI-VISA Passport for PXI/PCI"
+ passportEnabled3 = 1
+diff -ura src.old/extract/usr/local/vxipnp/linux/NIvisa/USB/AddUsbRawPermissions.sh src.new/extract/usr/local/vxipnp/linux/NIvisa/USB/AddUsbRawPermissions.sh
+--- src.old/extract/usr/local/vxipnp/linux/NIvisa/USB/AddUsbRawPermissions.sh	2017-03-25 08:52:05.000000000 +0900
++++ src.new/extract/usr/local/vxipnp/linux/NIvisa/USB/AddUsbRawPermissions.sh	2018-03-24 18:46:31.000000000 +0900
+@@ -189,12 +189,15 @@
+    NIVISA_USBRAW_VENDORID_BASE=`expr substr ${NIVISA_USBRAW_VENDORID} 3 4 | tr '[A-Z]' '[a-z]'`
+    NIVISA_USBRAW_PRODUCTID_BASE=`expr substr ${NIVISA_USBRAW_PRODUCTID} 3 4 | tr '[A-Z]' '[a-z]'`
+    # Adding this line to the file "/etc/udev/rules.d/nivisa_raw.rules"
+-   echo "SUBSYSTEM==\"usb\", ATTR{idProduct}==\"${NIVISA_USBRAW_PRODUCTID_BASE}\", ATTR{idVendor}==\"${NIVISA_USBRAW_VENDORID_BASE}\", RUN+=\"/etc/udev/agents.d/usb/nivisa_usbraw\"" >> "/etc/udev/rules.d/nivisa_usbraw.rules"
+-   echo "SUBSYSTEM==\"usb_device\", ATTR{idProduct}==\"${NIVISA_USBRAW_PRODUCTID_BASE}\", ATTR{idVendor}==\"${NIVISA_USBRAW_VENDORID_BASE}\", RUN+=\"/etc/udev/agents.d/usb/nivisa_usbraw\"" >> "/etc/udev/rules.d/nivisa_usbraw.rules"
++   echo "SUBSYSTEM==\"usb\", ATTR{idProduct}==\"${NIVISA_USBRAW_PRODUCTID_BASE}\", ATTR{idVendor}==\"${NIVISA_USBRAW_VENDORID_BASE}\", ACTION==\"add\", GROUP=\"usbraw\", MODE=\"0666\"" >> "/etc/udev/rules.d/99-nivisa_usbraw.rules"
++   echo "SUBSYSTEM==\"usb_device\", ATTR{idProduct}==\"${NIVISA_USBRAW_PRODUCTID_BASE}\", ATTR{idVendor}==\"${NIVISA_USBRAW_VENDORID_BASE}\", ACTION==\"add\", GROUP=\"usbraw\", MODE=\"0666\"" >> "/etc/udev/rules.d/99-nivisa_usbraw.rules"
+    if [ $? != 0 ] ; then
+-      echo "An error occurred while trying to write to \"/etc/udev/rules.d/nivisa_usbraw.rules\"."
++      echo "An error occurred while trying to write to \"/etc/udev/rules.d/99-nivisa_usbraw.rules\"."
+       echo "Aborted."
+       exit 1
++   else
++      echo "Added udev rules in \"/etc/udev/rules.d/99-nivisa_usbraw.rules\"."
++      echo ""
+    fi
+ 
+    # Ensure that udev will update the rules it uses

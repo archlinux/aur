@@ -1,20 +1,42 @@
 post_install() {
-
-    getent group usbtmc || groupadd -r usbtmc
-    udevadm control --reload-rules 2>/dev/null
+    echo 'Adding usbtmc and usbraw groups'
+    getent group usbtmc >/dev/null || groupadd -r usbtmc
+    getent group usbraw >/dev/null || groupadd -r usbraw
+    udevadm control --reload-rules
 
     cat << EOF
-===> 
-===> Please re-login to renew environment variable.
-===> If USB-based devices do not run properly, check the following:
-===> # gpasswd -a <user> usbtmc
-===> # rmmod usbtmc
+
+
+----------------------------------------------------------------------------------
+===> NOTES FOR USAGE
+===>
+===> 1) Please logout & login to renew environment variable before first use.
+===>
+===> 2) If Usb-raw devices do not work, try following (as root) and restart your PC:
+===>    # AddUsbRawPermissions.sh
+===>    # gpasswd -a <user> usbraw
+===>
+===> 3) If USB-TMC devices do not work, try following (as root) and restart your PC:
+===>    # gpasswd -a <user> usbtmc
+===>    # rmmod usbtmc
+===>    # echo 'blacklist usbtmc' > /etc/modprobe.d/nousbtmc.conf
 ===> refs: http://digital.ni.com/public.nsf/allkb/A10090850FF0887A86257926007A7E96
 ===>       https://github.com/python-ivi/python-usbtmc#configuring-udev
-===> 
+===>
+----------------------------------------------------------------------------------
+
+
 EOF
 }
 
+post_upgrade() {
+    post_install $1
+}
+
 post_remove() {
-    groupdel usbtmc >/dev/null 2>&1 || true
+    rm -f /etc/udev/rules.d/99-nivisa_usbraw.rules && echo 'Removed udev rules created by AddUsbRawPermissions.sh'
+    udevadm control --reload-rules
+    getent group usbtmc >/dev/null && groupdel usbtmc
+    getent group usbraw >/dev/null && groupdel usbraw
+    echo 'Removed usbtmc & usbraw groups'
 }
