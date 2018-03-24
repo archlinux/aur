@@ -13,7 +13,7 @@ makedepends=('binutils' 'tar')
 url="https://launchpad.net/gencfsm"
 
 source=("http://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_9.0/amd64/gnome-encfs-manager_${pkgver}_amd64.deb")
-sha256sums=('3a7fbd896d7e01b95a2619c4f5012dd43c3d21783abd3082e85a937da628d9a2')
+sha256sums=('7e8f782882d4f3d92667282913db5b3a126ce7d313a0ba651dbcbe4743e55f83')
 
 prepare() {
     cd ${srcdir}
