@@ -1,6 +1,6 @@
 pkgname=python-bcolz
 _pkgname=bcolz
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="columnar and compressed data containers."
 arch=('any')
@@ -10,8 +10,8 @@ depends=('python' 'python-numpy' 'blosc')
 optdepends=('python-numexpr')
 makedepends=('python-setuptools' 'cython')
 source=("https://github.com/Blosc/bcolz/archive/$pkgver.tar.gz" "fix_version")
-sha256sums=('99e86082b21b15c60c6dc2166804ec50b093857df283b09ce3d1117c6d6e65d2'
-            '08707674eb0c7cb12d70215408102b588a565d2457351bdfe57e7f56375419c7')
+sha256sums=('f60e77b5ee5c5e328eeefdea51b2a9159fb372bd3170f5253b4805e8e06d229f'
+            '689d566d0aa28ab78fa660f1323204dbb145cd32a98fab907839cde98894cb84')
 
 build() {
     cd "$_pkgname-$pkgver"
