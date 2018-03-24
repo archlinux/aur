@@ -1,7 +1,14 @@
 #!/bin/bash
 
+maxVersionDifference=20
+
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$scriptdir"
+
+if [[ -f STOP_AUTOMATIC_UPDATE ]]; then
+  >&2 echo "Automatic updates are disabled via STOP_AUTOMATIC_UPDATE."
+  exit 1
+fi
 
 upstreamVersion="$(curl -s "https://josm.openstreetmap.de/latest")"
 
@@ -14,6 +21,12 @@ pkgbuildVersion="$(grep -Po '(?<=pkgver=)\d+' PKGBUILD)"
 
 if [[ ! $pkgbuildVersion =~ ^[0-9]+$ ]]; then
   >&2 echo "Unable to fetch PKGBUILD version."
+  exit 1
+fi
+
+if [[ $((upstreamVersion - pkgbuildVersion)) -gt $maxVersionDifference ]]; then
+  >&2 echo "Update would exceed maxVersionDifference of $maxVersionDifference ($pkgbuildVersion->$upstreamVersion). Disabling further automatic updates."
+  touch STOP_AUTOMATIC_UPDATE
   exit 1
 fi
 
