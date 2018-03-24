@@ -1,7 +1,7 @@
 pkgbase = radare2-bindings-git
 	pkgdesc = Language bindings for radare2 (git version)
 	pkgver = 2.4.1.r3.gfe8bd26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://radare.org
 	arch = i686
 	arch = x86_64

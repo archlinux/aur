@@ -2,7 +2,7 @@
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
 pkgver=2.4.1.r3.gfe8bd26
-pkgrel=2
+pkgrel=3
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
@@ -31,6 +31,7 @@ build() {
       --enable="python"
 
   export PYTHON_CONFIG=python3.2-config
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/vala-0.38/"
   make
 
   #(cd r2pipe/python && python setup.py build)
