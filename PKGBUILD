@@ -6,7 +6,7 @@
 pkgname=firefox-eme-free
 name=firefox
 pkgver=59.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
