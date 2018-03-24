@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-wxmsw
 epoch=1
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
@@ -15,7 +15,7 @@ options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha256sums=('08c8033f48ec1b23520f036cde37b5ae925a6a65f137ded665633ca159b9307b')
+sha256sums=('96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,7 +37,8 @@ build() {
 
   # Fix for current libuuid.a issues
   # see: https://github.com/Alexpux/MINGW-packages/issues/1761
-  _build_flags="${_build_flags} LDFLAGS=-Wl,--allow-multiple-definition"
+  # looks like this was fixed, uncomment if needed
+  # _build_flags="${_build_flags} LDFLAGS=-Wl,--allow-multiple-definition"
 
   cd "${srcdir}/wxWidgets-${pkgver}"
   for _arch in ${_architectures}; do
