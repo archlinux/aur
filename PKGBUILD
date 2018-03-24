@@ -1,13 +1,17 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 
-# The MATLAB engine does not support Py3.6 so we masquerade as Py3.3 (the only
-# Py3 version supported by all engines so far, 2014b-2016b) during `setup.py`
+# We masquerade as the newest supported Python version during `setup.py`
 # using the `sitecustomize` mechanism, and then during execution by patching
 # `matlab/engine/__init__.py`.
 
+# This script can also be used independently of `makepkg`: run
+#     bash -c 'source PKGBUILD && build'
+# and copy the contents of the created, temporary site-packages to your main
+# site-packages.
+
 pkgname=matlab-engine-for-python
-pkgver=9.1
-pkgrel=2
+pkgver=9.4
+pkgrel=1
 pkgdesc='MATLAB Engine API for Python'
 arch=('any')
 url='http://www.mathworks.com/help/matlab/matlab-engine-for-python.html'
@@ -15,38 +19,47 @@ license=('custom')
 depends=('python') # and MATLAB >= 2014b.
 makedepends=()
 checkdepends=()
-source=('sitecustomize.py')
-sha512sums=('cdb6ccf8045e464bde011bdb3cda91ee21ddf9594327c49da1dbd9ecf7166fe783bae08c2e5b9bfb4f2273344ae35f45514ce2bb4f1b56cc7f2e35d123c21561')
 
 # Run MATLAB only once, as its startup is slow.
-_pkgver_and_root=$(\
+{ read _pkgver; read _matlabroot; } < <( \
     matlab -nosplash -nodesktop \
         -r "v = ver('MATLAB'); fprintf([v.Version, '\n', matlabroot, '\n']); quit" \
-    | tail -3 | head -2)
+        2>/dev/null |
+    tail -3 | head -2)
+_prefix="$(python -c 'import sys; print(sys.prefix)')"
 
 pkgver() {
-    readarray -t pkgver_and_root <<<"$_pkgver_and_root"
-    echo "${pkgver_and_root[0]}"
+    echo "$_pkgver"
 }
 
 # We need to run `setup.py` in `build()` as it can only be run from its original folder.
 
 build() {
-    readarray -t pkgver_and_root <<<"$_pkgver_and_root"
-    matlabroot="${pkgver_and_root[1]}"
-    cd "$matlabroot/extern/engines/python"
-    PYTHONPATH="$srcdir" python setup.py build --build-base="$srcdir" install --root="$srcdir" --optimize=1
-    cd "$srcdir"
-    mv usr/lib/python3.{3,6}
-    egg_info="$(ls usr/lib/python3.6/site-packages/*-py3.3.egg-info)"
-    mv "$egg_info" "${egg_info%-py3.3.egg-info}-py3.6.egg-info"
-    sed -i 's/sys.version_info/(3, 3, 0)/' usr/lib/python3.6/site-packages/matlab/engine/__init__.py
+    [[ -d "$srcdir" ]] || srcdir="$(mktemp -d)"
+    cd "$_matlabroot/extern/engines/python"
+    local py_minor mat_minor
+    py_minor="$(python -c 'import sys; print(sys.version_info.minor)')"
+    mat_minor="$(find . -name 'matlabengineforpython*.so' |
+                 sort | grep -Po '(?<=\d_)\d' | tail -1)"
+    cat <<EOF >"$srcdir/sitecustomize.py"
+import sys
+sys.version_info = (3, $mat_minor, 0)
+EOF
+    PYTHONPATH="$srcdir" python setup.py \
+        build --build-base="$srcdir" install --root="$srcdir" --optimize=1
+    if [[ "$py_minor" != "$mat_minor" ]]; then
+        mv "$srcdir/$_prefix/lib/python3".{"$mat_minor","$py_minor"}
+        local egg_info
+        egg_info="$(\
+            ls "$_prefix/lib/python3.$py_minor/site-packages/"*"-py3.$mat_minor.egg-info")"
+        mv "$egg_info" "${egg_info%-py3."$mat_minor".egg-info}-py3.$py_minor.egg-info"
+        sed -i "s/sys.version_info/(3, $mat_minor, 0)/" \
+            "$_prefix/lib/python3.$py_minor/site-packages/matlab/engine/__init__.py"
+    fi
 }
 
 package() {
-    readarray -t pkgver_and_root <<<"$_pkgver_and_root"
-    matlabroot="${pkgver_and_root[1]}"
-    cp -r "$srcdir/usr" "$pkgdir"
+    cp -r "$srcdir/$_prefix" "$pkgdir"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "$matlabroot/license_agreement.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    ln -s "$_matlabroot/license_agreement.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
