@@ -1,0 +1,24 @@
+pkgbase = dexed
+	pkgdesc = A software synth closely modelled on the Yamaha DX7
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://asb2m10.github.io/dexed/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	groups = vst-plugins
+	license = GPL3
+	makedepends = juce
+	makedepends = steinberg-vst36
+	depends = alsa-lib
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = freetype2
+	depends = libxinerama
+	source = dexed-0.9.4.tar.gz::https://github.com/asb2m10/dexed/archive/v0.9.4.tar.gz
+	source = dexed.desktop
+	md5sums = 0e69fdcc3c18a8ac083657213a7921a2
+	md5sums = d888f8f2c1a44ed75c77d43faee73361
+
+pkgname = dexed
+
