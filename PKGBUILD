@@ -1,6 +1,6 @@
 pkgname=('alacritty-scrollback-git' 'alacritty-scrollback-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.1.0.749.g6836308
+pkgver=0.1.0.782.g9ee1cf2
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -26,10 +26,10 @@ package_alacritty-scrollback-git() {
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "$srcdir/$_pkgname/Alacritty.desktop" "$pkgdir/usr/share/applications/Alacritty.desktop"
-	install -D -m644 "$srcdir/$_pkgname/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
-	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
-	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
-	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.fish" "$pkgdir/usr/share/fish/completions/alacritty.fish"
+	install -D -m644 "$srcdir/$_pkgname/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1" || true
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty" || true
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_alacritty" || true
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.fish" "$pkgdir/usr/share/fish/completions/alacritty.fish" || true
 }
 
 package_alacritty-scrollback-terminfo-git() {

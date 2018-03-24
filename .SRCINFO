@@ -1,5 +1,5 @@
 pkgbase = alacritty-scrollback-git
-	pkgver = 0.1.0.749.g6836308
+	pkgver = 0.1.0.782.g9ee1cf2
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
