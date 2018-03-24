@@ -1,15 +1,15 @@
 diff --git a/externals/Makefile b/externals/Makefile
-index e60a73c9..09066109 100644
+index 414e1e2e..b7cfa952 100644
 --- a/externals/Makefile
 +++ b/externals/Makefile
-@@ -658,6 +658,10 @@ $(gem_src)/Gem.pd_linux: $(gem_src)/configure
+@@ -667,6 +667,10 @@ $(gem_src)/Gem.pd_linux: $(gem_src)/configure
  	test -s $(gem_src)/Gem.pd_linux || \
  		cd $(gem_src) && ./configure \
  			CXXFLAGS="-DHAVE_S_STUFF_H" \
-+			PKG_IMAGEMAGICK___CFLAGS="$(shell pkg-config --cflags ImageMagick-6.Q16HDRI)" \
-+			PKG_IMAGEMAGICK___LIBS="$(shell pkg-config --libs ImageMagick-6.Q16HDRI)" \
-+			PKG_MAGICKCORE_CFLAGS="$(shell pkg-config --cflags MagickCore-6.Q16HDRI)" \
-+			PKG_MAGICKCORE_LIBS="$(shell pkg-config --libs MagickCore-6.Q16HDRI)" \
++			PKG_IMAGEMAGICK___CFLAGS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --cflags ImageMagick-6.Q16HDRI)" \
++			PKG_IMAGEMAGICK___LIBS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --libs ImageMagick-6.Q16HDRI)" \
++			PKG_MAGICKCORE_CFLAGS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --cflags MagickCore-6.Q16HDRI)" \
++			PKG_MAGICKCORE_LIBS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --libs MagickCore-6.Q16HDRI)" \
  			--prefix=$(prefix) \
  			--with-video=plugins \
  			--with-film=plugins \

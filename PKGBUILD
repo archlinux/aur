@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.5.0.r3907.d05f676a
+pkgver=2.5.0.r3910.66b9344d
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -58,11 +58,9 @@ options=('!makeflags' '!strip')
 # deal with situations where upstream lags behind on already submitted merge
 # requests with important bugfixes and additions.
 source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release"
-	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"gem-magick6-fixes.patch")
 md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa'
-         '63c6794adbc47e4c239eeb50ed30bfa8')
+         '6f9b87db6e73a35ec63327e97ad95d66')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.22.1
@@ -105,8 +103,6 @@ prepare() {
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
-  # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
   # make sure to link Gem with ImageMagick 6, it doesn't compile with 7
   cd $srcdir/$pkgname && patch -Np1 < $srcdir/gem-magick6-fixes.patch
 }
