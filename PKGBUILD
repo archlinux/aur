@@ -1,4 +1,5 @@
-# Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
+# Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
+# Contributor: Reotip Sakuraga <reotipfur@gmail.com>
 
 pkgname=doomseeker
 pkgver=1.2
@@ -14,7 +15,7 @@ makedepends=('gcc' 'cmake' 'make' 'mercurial')
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=5aaddc0"
+source=("hg+https://bitbucket.org/Doomseeker/doomseeker"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 
