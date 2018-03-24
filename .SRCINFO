@@ -1,9 +1,9 @@
-pkgbase = filebot
+pkgbase = filebot47
 	pkgdesc = The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums.
 	pkgver = 4.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://filebot.sourceforge.net/
-	install = filebot.install
+	install = filebot47.install
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -18,6 +18,8 @@ pkgbase = filebot
 	optdepends = libmediainfo: Episode naming / Sublight usage
 	optdepends = java-p7zip-binding: Extract archives
 	optdepends = gvfs: gvfs backends
+	provides = filebot
+	conflicts = filebot
 	source = http://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.9/FileBot_4.7.9-portable.tar.xz
 	source = https://github.com/java-native-access/jna/archive/4.3.0.tar.gz
 	source = filebot-arch.sh
@@ -29,5 +31,5 @@ pkgbase = filebot
 	md5sums = 04f46be047049448dba3f0de29fe192d
 	md5sums = f37edd0bba7570904d28ab1681c7a7f3
 
-pkgname = filebot
+pkgname = filebot47
 

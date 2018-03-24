@@ -1,11 +1,12 @@
+# Maintainer: Roman Vasilev <2rvasilev@live.ru>
 # Maintainer: max.bra <max dot bra at alice dot it>
 # Contributor: said
 # Contributor:  Kaurin <milos dot kaurin at gmail>
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
-pkgname=filebot
+pkgname=filebot47
 pkgver=4.7.9
-pkgrel=1
+pkgrel=2
 _jnaver=4.3.0
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -14,6 +15,8 @@ license=('GPL')
 install=$pkgname.install
 depends=('java-runtime>=8' 'fontconfig' 'chromaprint')
 makedepends=('unzip')
+provides=('filebot')
+conflicts=('filebot')
 
 [[ $CARCH == "i686" ]]   && _intarch=x86
 [[ $CARCH == "x86_64" ]] && _intarch=x86-64
@@ -21,9 +24,9 @@ makedepends=('unzip')
 [[ $CARCH == "armv6h" ]] && _intarch=arm
 [[ $CARCH == "armv7h" ]] && _intarch=arm
 
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/FileBot_$pkgver/FileBot_$pkgver-portable.tar.xz
+source=(http://downloads.sourceforge.net/project/filebot/filebot/FileBot_$pkgver/FileBot_$pkgver-portable.tar.xz
         https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
-        $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
+        filebot-arch.sh filebot.svg filebot.desktop)
 
 md5sums=('961dbdb7d6c62c133952df2f9f427d96'
          '2de8ba99fc91809935e6c2ab02f49a82'
@@ -48,9 +51,9 @@ prepare() {
 }
 
 package() {
-  install -Dm644 FileBot.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm644 jna-$_jnaver/lib/native/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
-  install -Dm755 $pkgname-arch.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 FileBot.jar "$pkgdir/usr/share/java/filebot/filebot.jar"
+  install -Dm644 jna-$_jnaver/lib/native/libjnidispatch.so "$pkgdir/usr/share/java/filebot/libjnidispatch.so"
+  install -Dm755 filebot-arch.sh "$pkgdir/usr/bin/filebot"
+  install -Dm644 filebot.svg "$pkgdir/usr/share/pixmaps/filebot.svg"
+  install -Dm644 filebot.desktop "$pkgdir/usr/share/applications/filebot.desktop"
 }
