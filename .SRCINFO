@@ -1,0 +1,13 @@
+pkgbase = ttf-opendyslexic
+	pkgdesc = OpenDyslexic is a new open source font created to increase readability for readers with dyslexia. It was built on Jim Lyles’s Bitstream Vera Sans, and is free for Commercial and Personal
+	pkgver = 1
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/opendyslexic
+	install = ttf-opendyslexic.install
+	arch = any
+	license = Bitstream Vera License
+	source = https://fontlibrary.org/assets/downloads/opendyslexic/b4e7d55cde7f4de04f5bff29c9f1a819/opendyslexic.zip
+	sha256sums = 3b4a84f573d3f5d75e198bbf362ff6fa812b33d6559dce651e44df455be929cc
+
+pkgname = ttf-opendyslexic
+
