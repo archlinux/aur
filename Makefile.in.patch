@@ -1,0 +1,25 @@
+diff -Naur artanis-0.2.4.orig/Makefile.in artanis-0.2.4.new/Makefile.in
+--- artanis-0.2.4.orig/Makefile.in	2018-03-24 11:27:29.787320685 +0100
++++ artanis-0.2.4.new/Makefile.in	2018-03-24 11:28:04.489317368 +0100
+@@ -143,21 +143,11 @@
+ 	$(CP) $(ARTANIS_PAGES) $(DESTDIR)/etc/artanis/
+ 	mkdir -p $(DESTDIR)/bin/
+ 	$(CP) $(BIN)/art $(DESTDIR)/bin/
+-	if [ -e /etc/bash_completion ]; then \
+-	  mkdir -p $(DESTDIR)/etc/bash_completion.d/; \
+-	  $(CP) $(CMDCOMP) $(DESTDIR)/etc/bash_completion.d/; \
+-	  source $(DESTDIR)/etc/bash_completion; \
+-	fi
+ else
+ 	$(CP) $(ARTANIS_ETC) /etc/
+ 	$(CP) $(ARTANIS_PAGES) /etc/artanis/
+ 	mkdir -p $(PREFIX)/bin/
+ 	$(CP) $(BIN)/art $(PREFIX)/bin/
+-	if [ -e /etc/bash_completion ]; then \
+-	  mkdir -p /etc/bash_completion.d/; \
+-	  $(CP) $(CMDCOMP) /etc/bash_completion.d/; \
+-	  source /etc/bash_completion; \
+-	fi
+ endif
+ 
+ 	if [ -e /etc/bash.bashrc ]; then source /etc/bash.bashrc; fi

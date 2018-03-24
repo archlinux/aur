@@ -1,19 +1,21 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
 arch=('x86_64')
 license=('GPL')
-source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-${pkgver}.tar.bz2")
-md5sums=('f5a074d04805d6538a32640d1edd204a')
+source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-${pkgver}.tar.bz2" Makefile.in.patch)
+md5sums=('4729b7cf8329b63778a6e4288642df02'
+         '84cb84c7b8b2f780d6777b8a7d15b6b0')
 options=('!strip')
 
 prepare() {
-  sed -i '/bash_completion/d' $pkgname-$pkgver/Makefile.in
+  cd $pkgname-$pkgver 
+  patch -Np1 < "$srcdir"/Makefile.in.patch
 }
 
 build() {
