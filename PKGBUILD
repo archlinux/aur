@@ -3,11 +3,11 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.9.3
-_strver=0-9-3
-pkgrel=2
+pkgver=0.10.0
+_strver=0-10-0
+pkgrel=1
 pkgdesc="Ethereum wallet and Dapp browser."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=(
   'alsa-lib'
   'gconf'
@@ -19,12 +19,9 @@ depends=(
 )
 provides=(
   'mist'
-  'libnode'
 )
 conflicts=(
   'mist-git'
-  'libnode'
-  'libnode-git'
 )
 optdepends=(
   'geth: The go-ethereum commandline client (geth cli).'
@@ -32,49 +29,29 @@ optdepends=(
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
-sha256sums_i686=('1c7928dcd8b26126d0f6ab5aae7251da85b9adcdfa1b0b36ffb36f87c64977d8')
-sha256sums_x86_64=('01e3df03dce3132f7521118e553468e0fad83f637233f1ff28cdaa7e5dffc245')
-source_i686=(
-  "${pkgname}-${_strver}-32.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux32-${_strver}.deb"
+sha256sums=('859752bb1e4560f7ba9aecbae300f7b80619a58a12fb222d1cccef9477236939'
+            '0b3bebf887730b51c82ad37d58550908563000ad134b22738f4cb91375c96790')
+sha256sums_x86_64=('f127e5cf6aa87d26c66c3e4d338a50d37670158fba496b44731dbae68e3c6106')
+source=(
+  "mist.desktop"
+  "mist.png"
 )
 source_x86_64=(
-  "${pkgname}-${_strver}-64.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux64-${_strver}.deb"
-
+  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux64-${_strver}.zip"
 )
 
-prepare() {
-  tar xf "$srcdir/data.tar.xz"
-}
 package() {
-  _arch="32"
-  if [ "${CARCH}" = "x86_64" ]; then
-    _arch="64"
-  fi
-
-  rm "${srcdir}/${pkgname}-${_strver}-${_arch}.deb"
-
   msg2 'Installing Mist...'
-  install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -a "${srcdir}/opt/Mist/." "${pkgdir}/usr/share/${pkgname}"
+  install -d "${pkgdir}/opt/Mist"
+  cp -a "${srcdir}/." "${pkgdir}/opt/Mist"
+  rm ${pkgdir}/opt/Mist/mist-*.zip ${pkgdir}/opt/Mist/mist.desktop ${pkgdir}/opt/Mist/mist.png
   install -d "${pkgdir}/usr/share/applications"
-  cp -a "${srcdir}/usr/share/." "${pkgdir}/usr/share/"
+  cp -aL "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/pixmaps"
+  cp -aL "${srcdir}/mist.png" "${pkgdir}/usr/share/pixmaps"
+
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/mist" "${pkgdir}/usr/bin/mist"
-
-  install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
-  sed -i 's/Exec="\/opt\/Mist\/mist"/Exec="\/usr\/bin\/mist"/' "${pkgdir}/usr/share/applications/mist.desktop";
-  sed -i 's/Categories=WebBrowser/Categories=Network;WebBrowser;/' "${pkgdir}/usr/share/applications/mist.desktop";
-
-  msg2 'Installing Libnode...'
-  install -d "${pkgdir}/usr/lib"
-  ln -s "/usr/share/${pkgname}/libnode.so" "${pkgdir}/usr/lib/libnode.so"
-
-  ln -sf "/usr/lib/libnotify.so.4" "${pkgdir}/usr/share/${pkgname}/libnotify.so.4"
-
-  find "${pkgdir}" -type d -exec chmod 755 {} +
-  find "${pkgdir}" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/mist"
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
+  ln -s "/opt/Mist/mist" "${pkgdir}/usr/bin/mist"
 }

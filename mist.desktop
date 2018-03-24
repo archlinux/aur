@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Mist
+Comment=Ethereum wallet and Dapp browser
+Exec="/opt/Mist/mist"
+Terminal=false
+Type=Application
+Icon=mist
+Categories=Network;WebBrowser;
