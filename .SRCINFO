@@ -1,0 +1,13 @@
+pkgbase = creeptd
+	pkgdesc = CreepTD is a multiplayer tower defense game
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.creeptd.com
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://www.creeptd.com/download/creeptd-linux.tar.gz
+	sha256sums = 5ecd7cedbba4f5a61bfd4c1a22eb519129e49498f85fa7d028c2074b48f740eb
+
+pkgname = creeptd
+
