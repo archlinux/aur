@@ -3,10 +3,10 @@ _pkgname="alacritty"
 pkgver=0.1.0.749.g6836308
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/neon64/alacritty"
+url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'freetype2' 'git' 'ncurses')
-source=("$_pkgname::git+https://github.com/neon64/alacritty.git")
+source=("$_pkgname::git+https://github.com/jwilm/alacritty.git#branch=scrollback")
 sha256sums=('SKIP')
 
 pkgver() {
