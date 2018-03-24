@@ -26,6 +26,10 @@ package_alacritty-scrollback-git() {
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "$srcdir/$_pkgname/Alacritty.desktop" "$pkgdir/usr/share/applications/Alacritty.desktop"
+	install -D -m644 "$srcdir/$_pkgname/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
+	install -D -m644 "$srcdir/$_pkgname/alacritty-completions.fish" "$pkgdir/usr/share/fish/completions/alacritty.fish"
 }
 
 package_alacritty-scrollback-terminfo-git() {
