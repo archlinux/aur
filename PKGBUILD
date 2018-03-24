@@ -15,7 +15,7 @@ _gitroot='https://github.com/mewkiz/lwt.git'
 _gitname='lwt'
 
 pkgver() {
-  cd ${srcdir}
+  cd ${srcdir}/${_pkgname}
   git log -1 --format="%cd" --date="format:%Y_%m_%d"
 }
 
