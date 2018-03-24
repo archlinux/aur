@@ -2,8 +2,8 @@
 
 pkgbase=xlesspass-git
 pkgname=$pkgbase
-pkgver=1.9
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 _gitname=XLessPass
 _gittag="v${pkgver}"
 pkgdesc="Allows you to use a single master key to obtain the key of your saved sessions."  
