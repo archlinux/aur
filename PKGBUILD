@@ -1,7 +1,7 @@
 # Maintainer: Yan Doroshenko <yandoroshenko@protonmail.com>
 
 pkgname=asciiquarium-lock
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Simple screen locker using ASCIIQuarium as a screensaver"
 arch=('any')
