@@ -4,7 +4,7 @@ _gitname=pyresample
 
 pkgname=pyresample
 pkgrel=1
-pkgver=v1.7.0
+pkgver=v1.8.3
 pkgdesc="Geospatial image resampling in Python"
 arch=('any')
 url="http://pyresample.readthedocs.org"
