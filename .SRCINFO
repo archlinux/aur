@@ -1,7 +1,7 @@
 pkgbase = authenticator
 	pkgdesc = Two-Factor Authentication code generator for Gnome
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bilelmoussaoui/Authenticator
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = authenticator
 	depends = pyzbar
 	depends = libsecret
 	depends = gnome-screenshot
-	depends = python-pyaml
 	provides = authenticator
 	source = https://github.com/bilelmoussaoui/Authenticator/archive/0.2.1.tar.gz
 	sha256sums = 251b7b2717b09c2f10eed1e1b6a5ac169c3fe4885e54e5003f8e259e2213448e
