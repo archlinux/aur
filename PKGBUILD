@@ -22,6 +22,9 @@ md5sums=('SKIP'
          'SKIP')
 
 package() {
+  cd ${srcdir}
+  npm install -g yarn
+  npm run build
   install -d ${pkgdir}/opt/${pkgname}
   cp -R ${srcdir}/oni-master/* ${pkgdir}/opt/${pkgname}
   install -Dm755 $srcdir/oni.sh ${pkgdir}/usr/bin/oni-git
