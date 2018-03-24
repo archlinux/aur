@@ -4,7 +4,8 @@ _gitname=keepmenu
 pkgname=$_pkgname-git
 pkgver=r8.7418838
 pkgrel=1
-pkgdesc="Read Keepass databases via dmenu/rofi"
+pkgdesc="Dmenu/Rofi frontend for Keepass databases."
+
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('MIT')
