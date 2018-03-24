@@ -1,7 +1,7 @@
 # Maintainer: Joshua Leahy <jleahy@gmail.com>
 
 pkgname=python-freetype-py
-pkgver=1.0.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'freetype2')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 install=
-source=("https://pypi.python.org/packages/source/f/freetype-py/freetype-py-${pkgver}.tar.gz")
-sha1sums=('33bfea26681827a6ab09a95adfa52194c9b4810f')
+source=("https://github.com/rougier/freetype-py/archive/${pkgver}.tar.gz")
+sha1sums=('ab2a8c09e1f34aa262f3a5bdcce2d692bc086155')
 
 package() {
   cd "$srcdir/freetype-py-$pkgver"
