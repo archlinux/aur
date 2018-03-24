@@ -2,3 +2,4 @@
 *.xz
 *.pkg
 *.sign
+*.pkg.tar.xz.sig
