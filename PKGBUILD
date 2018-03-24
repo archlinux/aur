@@ -5,7 +5,7 @@ _gitname=pyorbital
 
 pkgname=python2-pyorbital
 pkgrel=1
-pkgver=v1.1.1
+pkgver=v1.2.0
 pkgdesc="Computing orbital parameters from tle files, and making diverse astronomical computations"
 arch=('any')
 url="http://pyorbital.readthedocs.org"
