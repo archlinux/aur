@@ -1,6 +1,6 @@
 
 pkgname=('mingw-w64-llvm')
-pkgver=5.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Low Level Virtual Machine (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'llvm')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz")
-sha256sums=('5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0')
+sha256sums=('1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
