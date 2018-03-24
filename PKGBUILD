@@ -2,7 +2,7 @@
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
@@ -28,7 +28,9 @@ build() {
     python setup.py build
 
     # Build man pages
-    python setup.py build_docs -b man
+    #python setup.py build_docs -b man
+    # The previous line is broken in 0.3, because sphinx changed its internals
+    sphinx-build -b man docs build/docs/man
 }
 
 check() {
