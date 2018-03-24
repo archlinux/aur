@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=openclonk-music
-pkgver=7.0
-pkgrel=2
+pkgver=8.1
+pkgrel=1
 pkgdesc="Proprietary music addon package for openclonk"
 arch=('any')
 url="http://www.openclonk.org/"
@@ -10,7 +10,7 @@ depends=('openclonk')
 _filename='Music.ocg'
 source=("http://www.openclonk.org/download/$_filename")
 noextract=("$_filename")
-sha256sums=('d809790c0f75d8eddae0f4f98c58bb389e975ad5695d8a9eaa79a693d38b0988')
+sha256sums=('3327baa65d5e4a0110fef38b7c3b1d1c38e9da58dbddeb86281afbb37ebed96e')
 
 prepare() {
 	c4group "$_filename" -u
