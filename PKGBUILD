@@ -1,7 +1,7 @@
 # Maintainer: Espen Fossen <espfos@junta.no>
 
 pkgname=mstream
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Music player server with a web-based interface'
 arch=('any')
@@ -17,12 +17,13 @@ noextract=($pkgname-$pkgver.tgz)
 
 package() {
   mkdir -p "${pkgdir}/var/lib/${pkgname}/media"
-  chown 49:49 "${pkgdir}/var/lib/${pkgname}/media"
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+  mkdir -p "${pkgdir}/var/lib/${pkgname}/album-art"
+  chown 49:49 -R "${pkgdir}/var/lib/${pkgname}/media"
+  npm install -g --user root --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
   install -d -g 49 -o 49 "${pkgdir}/var/lib/${pkgname}"
   install -Dm644 mstream.service "$pkgdir"/usr/lib/systemd/system/mstream.service
-  install -Dm644 -g 49 -o 49 "${srcdir}/config.json" "${pkgdir}/var/lib/${pkgname}/config.json"
+  install -Dm644 -g 49 -o 49 config.json "${pkgdir}/var/lib/${pkgname}/config.json"
 }
-md5sums=('5ff5a5816f5196b28ba429e3e84ee991'
-         '0b309cbd40d88a64f2c9159833df53bf'
-         '483d0a108cc082df206437ba62b5ddc9')
+md5sums=('97e65ef5d2654541fe349b2970213000'
+         '6640e102dd29a6da5c4c075e4c4042d7'
+         '0bf80ec584f8b028628f4c684cdaf283')

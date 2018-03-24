@@ -3,7 +3,8 @@
   "database_plugin":{
     "dbPath":"/var/lib/mstream/mstream.db"
   },
+  "albumArtDir": "/var/lib/mstream/album-art",
   "folders": {
-    "media": "/var/lib/mstream/music"
+    "media": "/var/lib/mstream/media"
   }
 }

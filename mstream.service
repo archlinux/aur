@@ -6,7 +6,7 @@ After=network.target
 User=mstream
 Type=simple
 WorkingDirectory=/var/lib/mstream
-ExecStart=/usr/bin/mstream /var/lib/mstream/config.json -m /var/lib/mstream/media
+ExecStart=/usr/bin/mstream -j /var/lib/mstream/config.json
 
 [Install]
 WantedBy=multi-user.target
