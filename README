@@ -1,0 +1,48 @@
+            _   _               ___     ______  _   _
+           | \ | | ___  _ __ __| \ \   / /  _ \| \ | |
+           |  \| |/ _ \| '__/ _` |\ \ / /| |_) |  \| |
+           | |\  | (_) | | | (_| | \ V / |  __/| |\  |
+           |_| \_|\___/|_|  \__,_|  \_/  |_|   |_| \_|
+
+This package installs NordVPN's OpenVPN configuration files.
+Additionally it allows the storage of your username and optionally
+your password for automatic login. All OpenVPN configuration files are
+located in /etc/openvpn/client.
+
+To begin, you must put your username as the first line of
+/etc/nordvpn.conf. You should make the file only accessible to
+root as well. Optionally, put your password as the second line of
+/etc/nordvpn.conf to enable auto login. Note that your
+password will be stored in plain text!
+
+Although NordVPN does offer protection against IPv6 leakage,
+you should consider disabling it. [1,2] Ensure you are using NordVPN's
+DNS servers. [3]
+
+To run do pass the name of the configuration file to the
+"openvpn-client" systemd unit [4]:
+
+    # systemctl start openvpn-client@config-name
+
+where config-name is the name of the configuration file. For example,
+for us842.nordvpn.com.udp.conf do:
+
+    # systemctl start openvpn-client@us842.nordvpn.com.udp
+
+See /etc/openvpn/client for a list of files. To get a recommended
+server visit [5]. To test your setup visit [6] and [7].
+
+NordVPN does not version their files, but the pkgver() function in the
+PKGBUILD will automatically get the last date the file was modified
+and use it as your local package version. So if you believe your
+package is out of date, do not flag the package. Simply run the
+PKGBUILD script again. You may need to update the checksums in the
+PKGBUILD when updating.
+
+1. https://nanorep.nordvpn.com/Connectivity/Troubleshooting/1047408942/How-to-avoid-an-IPv6-Leak-with-NordVPN.htm
+2. https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
+3. https://support.nordvpn.com/#/Other/1047409702/What-are-your-DNS-server-addresses.htm
+4. https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN
+5. https://nordvpn.com/servers/#recommended
+6. https://nordvpn.com/features/dns-leak-test/
+7. https://ipleak.net 

@@ -1,0 +1,16 @@
+pkgbase = nordvpn
+	pkgdesc = NordVPN OpenVPN configuration files
+	pkgver = 2018.03.23.10.26.57
+	pkgrel = 1
+	url = https://www.nordvpn.com
+	install = nordvpn.install
+	arch = x86_64
+	license = none
+	depends = openvpn
+	source = https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+	source = README
+	sha512sums = abbe9d39cb1615f23cdfbeb2cc5ffa493b6017616378e73b84bd141e0d802a548930b3a0e30c79c33818c9e4a7e81d18ef86ed133199d19bf0ac0a62d8c8e36d
+	sha512sums = b9a9d754f269f42695016402beddc3e7325e4ded15165cf45ca0c091482312360701c191bca0307fae5c677d567dc1ad0229bd9854507b09fc63d1f35b6b140f
+
+pkgname = nordvpn
+
