@@ -24,7 +24,7 @@ md5sums=('SKIP'
 package() {
   install -d ${pkgdir}/opt/${pkgname}
   cp -R ${srcdir}/oni-master/* ${pkgdir}/opt/${pkgname}
-  install -Dm755 $srcdir/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 $srcdir/oni.sh ${pkgdir}/usr/bin/oni
 
   install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni.desktop"
 
