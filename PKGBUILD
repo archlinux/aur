@@ -5,7 +5,7 @@
 
 _sdkver=5.1
 _apilevel='22'
-_rev='r05'
+_rev='r06'
 _arch='x86_64'
 pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
 pkgver="${_sdkver}_${_rev}"
@@ -18,9 +18,9 @@ depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
 provides=("${pkgname/x86-/x86_}-${_apilevel}")
 conflicts=("${pkgname/x86-/x86_}-${_apilevel}")
-options=('!strip' '!upx')
-source=("https://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip")
-sha1sums=('8a04ff4fb30f70414e6ec7b3b06285f316e93d08')
+options=('!strip')
+source=("https://dl.google.com/android/repository/sys-img/android/${_arch}-${_apilevel}_${_rev}.zip")
+sha1sums=('5db3b27f78cd9c4c5092b1cad5a5dd479fb5b2e4')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
