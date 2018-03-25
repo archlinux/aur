@@ -1,0 +1,16 @@
+pkgbase = evolvere-icons-git
+	pkgdesc = Evolvere icons 2, flat with touches of realism
+	pkgver = r247.g56a331e
+	pkgrel = 1
+	url = https://github.com/franksouza183/Evolvere-Icons
+	arch = any
+	license = CC-BY-4.0
+	makedepends = git
+	provides = evolvere-icons
+	conflicts = evolvere-icons
+	options = !strip
+	source = evolvere-icons::git+https://github.com/franksouza183/Evolvere-Icons.git
+	sha256sums = SKIP
+
+pkgname = evolvere-icons-git
+
