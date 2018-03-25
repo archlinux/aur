@@ -1,6 +1,6 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Receiver for x86_64 (64bit) Linux (ICAClient)
-	pkgver = 13.9
+	pkgver = 13.9.1
 	pkgrel = 1
 	url = https://www.citrix.com/products/receiver/
 	install = citrix-client.install
@@ -41,10 +41,10 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-13.9.tar.gz::http://downloads.citrix.com/14366/linuxx64-13.9.0.102.tar.gz?__gda__=1521084031_aff6a4dce16041f5a012eef9122fa9d2
-	md5sums_x86_64 = c6cdb81abf6b14f74245a49406077906
-	source_i686 = icaclient-x86-13.9.tar.gz::http://downloads.citrix.com/14366/linuxx86-13.9.0.102.tar.gz?__gda__=1521084030_f82e26b920411185a274704e7fac9e1a
-	md5sums_i686 = e72ebbe140c393364d15d3b9fc893d4b
+	source_x86_64 = icaclient-x64-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx64-13.9.1.6.tar.gz?__gda__=1521949055_887addf2176228f3589dbc908f9fccd4
+	sha256sums_x86_64 = A9A9157CE8C287E8AA11447A0E3C3AB7C227330E9D8882C6F7B938A4DD5925BC
+	source_i686 = icaclient-x86-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx86-13.9.1.6.tar.gz?__gda__=1521949054_2c4fb84e7531de657bd6df8e295092ca
+	sha256sums_i686 = A93E9770FD10FDD3586A2D47448559EA037265717A7000B9BD2B1DCCE7B0A483
 
 pkgname = icaclient
 
