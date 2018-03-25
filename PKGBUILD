@@ -3,8 +3,8 @@
 
 pkgname=duply
 _mainver=2.0
-pkgver=$_mainver.3
-pkgrel=2
+pkgver=$_mainver.4
+pkgrel=1
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
 url="http://duply.net/"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('duplicity')
 makedepends=('txt2man')
 source=( "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
-md5sums=('3d68604a87103ee6ff1bfd029c0e1627')
+md5sums=('c7e3ba6e5f4b7b3ae0ebbe557ef28279')
 
 prepare() {
   cd "${srcdir}/${pkgname}_${pkgver}"
