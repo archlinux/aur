@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=embree-bvh_build-git
 pkgver=7289.1b82e5526
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom version of Embree exposing BVH builder for use with luxrays"
 arch=('x86_64')
 url="https://github.com/Dade916/embree/tree/bvh_build"
