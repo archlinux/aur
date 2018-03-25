@@ -20,7 +20,7 @@ pkgbase = natron-git
 	optdepends = openfx-io-git
 	optdepends = openfx-misc-git
 	optdepends = openfx-arena-git: Extra OpenFX plugins for Natron includes text node
-	optdepends = openfx-gmic-bin
+	optdepends = openfx-gmic-git
 	optdepends = natron-plugins
 	optdepends = firejail-extras: Run Natron with an isolated enviorment
 	source = natron::git+https://github.com/NatronGitHub/Natron.git#commit=14791a9bc8d732643471e90cce5c5a10b5592806

@@ -14,7 +14,8 @@ depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pi
 makedepends=('git' 'expat' 'boost')
 optdepends=('openfx-io-git' 'openfx-misc-git' 'openfx-arena-git: Extra 
 OpenFX 
-plugins for Natron includes text node' 'openfx-gmic-bin' 'natron-plugins' 'firejail-extras: Run Natron with an isolated enviorment')
+plugins for Natron includes text node' 'openfx-gmic-git' 'natron-plugins' 
+'firejail-extras: Run Natron with an isolated enviorment')
 com=14791a9bc8d732643471e90cce5c5a10b5592806
 source=("$name::git+https://github.com/NatronGitHub/Natron.git#commit=$com"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
