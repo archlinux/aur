@@ -1,0 +1,19 @@
+pkgbase = wmii
+	pkgdesc = A small, dynamic window manager for X11
+	pkgver = 3.9.2
+	pkgrel = 4
+	url = https://code.google.com/archive/p/wmii/
+	arch = i686
+	arch = x86_64
+	depends = libxft
+	depends = libxrandr
+	depends = libxinerama
+	depends = dash
+	options = !makeflags
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/wmii/wmii+ixp-3.9.2.tbz
+	source = fix-freetype-include.patch
+	md5sums = 3d480502b7b1e2a405d941df67f16bcf
+	md5sums = 97febd4a1df80aa4afbd126de1f36496
+
+pkgname = wmii
+

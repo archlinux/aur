@@ -1,0 +1,11 @@
+--- wmii+ixp-3.9.2/config.mk	2010-06-23 20:31:44.171778303 +0200
++++ wmii+ixp-3.9.2/config.mk~	2010-06-23 20:28:03.285253275 +0200
+@@ -10,7 +10,7 @@
+   INCLUDE = $(PREFIX)/include
+ 
+ # Includes and libs
+-INCLUDES = -I. -I$(ROOT)/include -I$(INCLUDE) -I/usr/include
++INCLUDES = -I. -I$(ROOT)/include -I$(INCLUDE) -I/usr/include/ -I/usr/include/freetype2
+ LIBS = -L$(ROOT)/lib -L/usr/lib
+ 
+ TERMINAL = xterm
