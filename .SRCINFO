@@ -1,7 +1,7 @@
 pkgbase = natron-git
 	pkgdesc = Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry.
-	pkgver = 2.3.7
-	pkgrel = 2
+	pkgver = 2.3.8
+	pkgrel = 1
 	url = https://github.com/mrkepzie/natron
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = natron-git
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
 	optdepends = firejail-extras: Run Natron with an isolated enviorment
-	source = natron::git+https://github.com/NatronGitHub/Natron.git#commit=ce744c5642053ecbdf4415507fc2abef637d735c
+	source = natron::git+https://github.com/NatronGitHub/Natron.git#commit=14791a9bc8d732643471e90cce5c5a10b5592806
 	source = https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v2.3.tar.gz
 	source = config.pri
 	sha512sums = SKIP
