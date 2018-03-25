@@ -4,7 +4,7 @@
 pkgname=breezemite-yakuake-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="Breezemite themes for Yakuake"
+pkgdesc="Yakuake recompiled with Brezemite themes"
 arch=('x86_64')
 url="https://github.com/matijaskala/breezemite-yakuake"
 license=('GPL2')

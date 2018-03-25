@@ -1,5 +1,5 @@
 pkgbase = breezemite-yakuake-git
-	pkgdesc = Breezemite themes for Yakuake
+	pkgdesc = Yakuake recompiled with Brezemite themes
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/matijaskala/breezemite-yakuake
