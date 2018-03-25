@@ -1,7 +1,7 @@
 pkgbase = iannix
 	pkgdesc = A graphical open-source sequencer, based on Iannis Xenakis works, for digital art
 	pkgver = 0.9.20b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.iannix.org/
 	arch = x86_64
 	groups = pro-audio
