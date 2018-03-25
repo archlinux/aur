@@ -12,7 +12,6 @@ pkgbase = indicator-kdeconnect
 	depends = kdeconnect
 	depends = python-requests-oauthlib
 	depends = python-gobject
-	conflicts = indicator-kdeconnect-git
 	source = indicator-kdeconnect-0.9.3.tar.gz::https://github.com/Bajoja/indicator-kdeconnect/archive/0.9.3.tar.gz
 	sha256sums = 6a75da2b87c8c23808376683db5a2563dc31fd9a38548ac1480682e53245bed0
 

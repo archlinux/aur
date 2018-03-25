@@ -11,7 +11,6 @@ pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.
 arch=('x86_64')
 url="https://github.com/bajoja/indicator-kdeconnect"
 license=('LGPL')
-conflicts=("${pkgname}-git")
 depends=('libappindicator-gtk3' 'kdeconnect' 'python-requests-oauthlib' 'python-gobject')
 makedepends=('cmake' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bajoja/indicator-kdeconnect/archive/${pkgver}.tar.gz")
