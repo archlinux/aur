@@ -1,6 +1,6 @@
 pkgbase = galactrum
 	pkgdesc = Galactrum is an autonomous self-governing digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 0
 	url = https://www.galactrum.org/
 	arch = i686
@@ -31,10 +31,10 @@ pkgbase = galactrum
 	sha256sums = aaf2da4aac835419a822d0315864df43f04834f3c9ab9f4f5478cf0f6e878060
 	sha256sums = 06cd16ebaddfc062912a8acf7a299c6317f79def5dec3ccabf4410ebd858a95a
 	sha256sums = e62ea9d131dfaabd2c16c54df309839e286afe83a31403bd3db2bf78cf083486
-	source_i686 = https://github.com/galactrum/galactrum/releases/download/v1.1.5/galactrum-1.1.5-linux32.tar.gz
-	sha256sums_i686 = a813a2d8ba7ec300e8dc244eebb73e16bbc398c027cfacfacd80b741f9cb63bf
-	source_x86_64 = https://github.com/galactrum/galactrum/releases/download/v1.1.5/galactrum-1.1.5-linux64.tar.gz
-	sha256sums_x86_64 = 2153efd6e65872d1910484d88f34becc7aa7b5af035447a61d498b72692aeff2
+	source_i686 = https://github.com/galactrum/galactrum/releases/download/v1.1.6/galactrum-1.1.6-linux32.tar.gz
+	sha256sums_i686 = 97daafec7a7e6661b749ec21b8adbfe320d221982b7f7e8aadeab3954a666038
+	source_x86_64 = https://github.com/galactrum/galactrum/releases/download/v1.1.6/galactrum-1.1.6-linux64.tar.gz
+	sha256sums_x86_64 = ed26c06779c8b4bc9855d125bb0b21152d1ec3fac8d465d10fa733962751d34a
 
 pkgname = galactrum
 

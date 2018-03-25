@@ -2,7 +2,7 @@
 # Based on PKGBUILD from dashcore maintained by GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
 
 pkgname='galactrum';
-pkgver=1.1.5;
+pkgver=1.1.6;
 pkgrel=0;
 arch=('i686' 'x86_64');
 url="https://www.galactrum.org/";
@@ -25,8 +25,8 @@ sha256sums=(
     '06cd16ebaddfc062912a8acf7a299c6317f79def5dec3ccabf4410ebd858a95a'
     'e62ea9d131dfaabd2c16c54df309839e286afe83a31403bd3db2bf78cf083486'
 );
-sha256sums_i686=('a813a2d8ba7ec300e8dc244eebb73e16bbc398c027cfacfacd80b741f9cb63bf');
-sha256sums_x86_64=('2153efd6e65872d1910484d88f34becc7aa7b5af035447a61d498b72692aeff2');
+sha256sums_i686=('97daafec7a7e6661b749ec21b8adbfe320d221982b7f7e8aadeab3954a666038');
+sha256sums_x86_64=('ed26c06779c8b4bc9855d125bb0b21152d1ec3fac8d465d10fa733962751d34a');
 
 package() {
     install -D -m755 "$srcdir/$pkgname-${pkgver}/bin/galactrum-qt" "$pkgdir/usr/bin/galactrum-qt";
