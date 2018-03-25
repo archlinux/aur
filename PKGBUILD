@@ -6,7 +6,7 @@
 
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="minimized build of Digikam for non-KDE users, without Plasma/KDE integration"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ depends=(liblqr libkipi libksane lensfun opencv knotifyconfig marble-common
 	threadweaver kcalcore exiv2)
 optdepends=('kipi-plugins: export to various online services'
             'hugin: panorama tool')
-makedepends=(extra-cmake-modules boost doxygen eigen kdoctools)
+makedepends=(extra-cmake-modules boost doxygen eigen kdoctools glu)
 conflicts=('digikam' 'digikam-git')
 provides=('digikam')
 source=("http://download.kde.org/stable/${_pkgname}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('194a44cc3ca229d501acfba67a38d483d1d64069a85e0491dd28dc2b57091c6e')
+sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
