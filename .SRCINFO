@@ -7,10 +7,17 @@ pkgbase = python-pyephem
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	depends = python
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/e/ephem/ephem-3.7.6.0.tar.gz
 	md5sums = 405a109f3017251ecd8c2890d850f649
 
 pkgname = python-pyephem
+	depends = python
+
+pkgname = python2-pyephem
+	depends = python2
 
