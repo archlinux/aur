@@ -1,0 +1,39 @@
+Description: fix spelling errors
+Author: IOhannes m zmölnig
+Bug: https://github.com/buzzinglight/IanniX/pull/25
+Last-Update: 2017-05-19
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- iannix.orig/gui/uiview.ui
++++ iannix/gui/uiview.ui
+@@ -1367,7 +1367,7 @@
+     <string>Imports SVG file to score</string>
+    </property>
+    <property name="statusTip">
+-    <string>SVG files|IanniX can import SVG files (open vectorial format). Be aware that IanniX tries to make the best it can to import data from SVG, but some of SVG features are not compatible with IanniX philosophy.\nFinaly, SVG is based on print or display units whereas IanniX is based on seconds; you may need to rescale the imported data.</string>
++    <string>SVG files|IanniX can import SVG files (open vectorial format). Be aware that IanniX tries to make the best it can to import data from SVG, but some of SVG features are not compatible with IanniX philosophy.\nFinally, SVG is based on print or display units whereas IanniX is based on seconds; you may need to rescale the imported data.</string>
+    </property>
+    <property name="shortcutContext">
+     <enum>Qt::ApplicationShortcut</enum>
+--- iannix.orig/objects/nxcursor.cpp
++++ iannix/objects/nxcursor.cpp
+@@ -163,7 +163,7 @@
+             time = time / curve->getPathLength() * fakeCurveLength + timeStartOffsetReal / curve->getPathLength();
+         }
+ 
+-        //Finaly
++        //Finally
+         nbLoopOld = nbLoop;
+         calculate();
+ 
+--- iannix.orig/transport/transport.ui
++++ iannix/transport/transport.ui
+@@ -777,7 +777,7 @@
+             <string>Rendering frame rate</string>
+            </property>
+            <property name="statusTip">
+-            <string>Rendering frame rate|IannIX refreshes your score at the displayed frame rate.\n You can also force IanniX to a specific framerate by typing a value in this field. 50fps is fluid but it can also be CPU intensive so feel free to decrease this value if needed.\n Finaly, be aware that graphical frame rate doesn't affect messages accuracy or sample rate.</string>
++            <string>Rendering frame rate|IannIX refreshes your score at the displayed frame rate.\n You can also force IanniX to a specific framerate by typing a value in this field. 50fps is fluid but it can also be CPU intensive so feel free to decrease this value if needed.\n Finally, be aware that graphical frame rate doesn't affect messages accuracy or sample rate.</string>
+            </property>
+            <property name="inputMask">
+             <string notr="true">009 fps</string>

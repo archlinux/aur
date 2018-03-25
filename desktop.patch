@@ -1,0 +1,23 @@
+Description: fixed description and binary in .desktop file
+ the binary is called "iannix", not "IanniX" (on case-sensitive filesystems).
+ the description should lack the .desktop extension
+Author: IOhannes m zmölnig
+Forwarded: no
+Last-Update: 2018-02-27
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- iannix.orig/iannix.desktop
++++ iannix/iannix.desktop
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=IanniX
+ Comment=Graphical sequencer for digital art
+-Exec=IanniX
++Exec=/usr/bin/iannix
+ Icon=/usr/share/pixmaps/IanniX.png
+ Terminal=false
+ Type=Application
+ X-MultipleArgs=false
+ Categories=Audio;AudioVideoEditing;AudioVideo;Video;Qt;
+-Name[en_US]=IanniX.desktop
++Name[en_US]=IanniX

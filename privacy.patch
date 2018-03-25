@@ -1,0 +1,15 @@
+Description: prevent checking upstream website for updates
+Author: IOhannes m zmölnig
+Last-Update: 2017-06-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- iannix.orig/iannix.cpp
++++ iannix/iannix.cpp
+@@ -51,6 +51,7 @@
+     //Updates
+     forceUpdate  = false;
+     forbidUpdate = !projectToLoad.isEmpty();
++    forbidUpdate = true;
+ 
+     //Default values
+     setCurrentDocument(0);
