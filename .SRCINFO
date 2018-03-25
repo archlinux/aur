@@ -1,6 +1,6 @@
 pkgbase = buildstream
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/BuildStream/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = buildstream
 	depends = python-pluginbase
 	depends = python-psutil
 	depends = python-ruamel-yaml
-	source = https://download.gnome.org/sources/BuildStream/1.1/BuildStream-1.1.1.tar.xz
-	sha256sums = a8ce204d5c56cd9f9dddbbd156161dbcbf71413207bd867efdd05588fd9a8432
+	source = https://download.gnome.org/sources/BuildStream/1.1/BuildStream-1.1.2.tar.xz
+	sha256sums = 47371c2aacdb4ea5efd3adda2ee4f872547ede310c4cb2381035ce184ad5cd57
 
 pkgname = buildstream
 
