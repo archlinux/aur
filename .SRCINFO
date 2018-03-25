@@ -1,6 +1,6 @@
 pkgbase = just-git
 	pkgdesc = Just a command runner, like make.
-	pkgver = 0.3.5.3.g573cebd
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/casey/just
 	arch = x86_64
