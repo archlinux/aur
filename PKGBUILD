@@ -1,18 +1,19 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=transifex-client-git
-pkgver=0.11.15.g655c5e9
+pkgver=0.13.1.9.g465be63
 pkgrel=1
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex (development version)"
 arch=('any')
 url="http://pypi.python.org/pypi/transifex-client"
 license=('GPL2')
-depends=('python2' 'python2-distribute' 'python2-urllib3')
+depends=('python-distribute' 'python-urllib3' 'python-six' 'python-requests'
+         'python-slugify')
 makedepends=('git')
 provides=('transifex-client')
 conflicts=('transifex-client' 'transifex-client-beta')
 source=("git://github.com/transifex/transifex-client.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -21,10 +22,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${pkgname%-*}"
-  python2 setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root=${pkgdir} --optimize=1
 }
