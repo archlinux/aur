@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$name"
-  make CONFIG=release 
+  make -j10 CONFIG=release 
 }
 
 package() {
