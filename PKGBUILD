@@ -2,7 +2,7 @@
 
 _module='shade'
 pkgname=('python-shade' 'python2-shade')
-pkgver='1.26.0'
+pkgver='1.27.1'
 pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
@@ -39,13 +39,15 @@ source=("git+https://git.openstack.org/openstack-infra/${_module}#tag=${pkgver}"
 sha256sums=('SKIP')
 
 prepare() {
+  # Fix test function name
+  cd "${srcdir}/${_module}"
+  sed -i 's/assertItemsEqual/assertCountEqual/g' shade/tests/unit/*.py
+
   cp -a "${srcdir}/${_module}"{,-py2}
 }   
     
 build() {
   cd "${srcdir}/${_module}"
-  # Fix test function name for Python 3
-  sed -i 's/assertItemsEqual/assertCountEqual/g' shade/tests/unit/*.py
   # Fix TypeError: a bytes-like object is required, not 'str' for Python 3
   sed -i 's/base64.b64encode(user_data)/base64.b64encode(user_data.encode())/g' shade/tests/unit/test_create_server.py
   python setup.py build

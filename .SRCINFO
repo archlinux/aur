@@ -1,6 +1,6 @@
 pkgbase = python-shade
 	pkgdesc = Simple client library for interacting with OpenStack clouds
-	pkgver = 1.26.0
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = http://docs.openstack.org/infra/shade
 	arch = any
@@ -60,7 +60,7 @@ pkgbase = python-shade
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack-infra/shade#tag=1.26.0
+	source = git+https://git.openstack.org/openstack-infra/shade#tag=1.27.1
 	sha256sums = SKIP
 
 pkgname = python-shade
