@@ -33,6 +33,7 @@ package() {
   depends=(${depends[@]} "torcs-data=$pkgver")
   cd "$srcdir"/$pkgname-${pkgver/_/-}
   make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" datainstall
   install -D -m644 Ticon.png "$pkgdir"/usr/share/pixmaps/torcs.png
   install -D -m644 torcs.desktop "$pkgdir"/usr/share/applications/torcs.desktop
   find "$pkgdir" -type d -exec chmod 755 {} \;
