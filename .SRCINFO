@@ -1,6 +1,6 @@
 pkgbase = xde-session
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = xde-session
 	depends = xde-menu
 	depends = xdg-launch
 	optdepends = xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser
-	source = https://github.com/bbidulock/xde-session/releases/download/1.4/xde-session-1.4.tar.xz
-	md5sums = bf71087acc6a00b114ed431a4ccbc138
+	source = https://github.com/bbidulock/xde-session/releases/download/1.5/xde-session-1.5.tar.xz
+	md5sums = dac8677d7cdce25b608da9aeb09e9d95
 
 pkgname = xde-session
 
