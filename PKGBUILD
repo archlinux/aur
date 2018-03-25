@@ -2,18 +2,25 @@
 
 pkgname=4kvideodownloader
 pkgver=4.4.6.2295
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-videodownloader"
 license=('custom:eula')
 depends=('qt5-script' 'portaudio' 'ffmpeg2.8')
+makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
 sha256sums=('9253931fc299df90e4ea920e3c96c84072a5eb373fbbf2ac4c6b92f2897c64ad'
             '6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952'
             '56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be')
+
+prepare() {
+  cd "${pkgname}"
+  # Remove insecure RPATH
+  chrpath --delete "${pkgname}-bin"
+}
 
 package() {
   # Install desktop file
