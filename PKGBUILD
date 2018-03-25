@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-ironicclient' 'python2-ironicclient')
-pkgver='2.2.0'
+pkgver='2.3.0'
 pkgrel='1'
 pkgdesc='Python client library for Ironic'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}"{,-py2}
