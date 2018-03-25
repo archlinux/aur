@@ -1,5 +1,5 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
-# Contributor: apodim
+# Contributor: nadolph
 # Contributor: said
 # Contributor:  Kaurin <milos dot kaurin at gmail>
 # Contributor: Nathan Owe <ndowens04 at gmail>
