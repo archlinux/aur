@@ -4,7 +4,7 @@
 # Contributor:	Andrea Scarpino <bash.lnx|at|gmail|dot|com>
 
 pkgname=pcalc
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="A command-line programmer's calculator handling HEX/DEC/OCT/BIN"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://pcalc.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz)
-sha512sums=('55b6644300a8eb5224df5a0885907c10847df7ab6296d012eb2bb638876687ddbe23d5b76e31ac6ff4c159e44940d5cf6ba747f2a410943fdc25c9d9855fd60e')
+sha512sums=('6492ca89c5f60549f9388d8b7edad21c1c912feea0ee1a1271d730a63832c3b562b1a6bc9f69a0bd3118407906646c8d8fbed6c6d9a62db6a6bbde22579c1fd0')
 
 build() {
   cd "$srcdir"
