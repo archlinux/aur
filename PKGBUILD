@@ -1,12 +1,12 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
 pkgver=6.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
 license=('GPL')
 depends=('rsync' 'wget')
-optdepends=('gtkdialog-svn: GUI wrapper' 'grub: Grub support' 'dosfstools: UEFI support' 'efibootmgr: UEFI support'
+optdepends=('gtkdialog: GUI wrapper' 'grub: Grub support' 'dosfstools: UEFI support' 'efibootmgr: UEFI support'
             'syslinux: Syslinux support' 'gptfdisk: GPT with Syslinux support' 'pigz: multicore compression' 'pbzip2: multicore compression'
             'pxz: multicore compression')
 url="https://github.com/tritonas00/system-tar-and-restore"

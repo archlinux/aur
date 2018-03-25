@@ -1,14 +1,14 @@
 pkgbase = system-tar-and-restore
 	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
 	pkgver = 6.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tritonas00/system-tar-and-restore
 	install = readme.install
 	arch = any
 	license = GPL
 	depends = rsync
 	depends = wget
-	optdepends = gtkdialog-svn: GUI wrapper
+	optdepends = gtkdialog: GUI wrapper
 	optdepends = grub: Grub support
 	optdepends = dosfstools: UEFI support
 	optdepends = efibootmgr: UEFI support
