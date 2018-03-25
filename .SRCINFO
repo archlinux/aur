@@ -1,6 +1,6 @@
 pkgbase = huggle
 	pkgdesc = diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://en.wikipedia.org/wiki/Wikipedia:Huggle
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = huggle
 	makedepends = unzip
 	depends = qt5-multimedia
 	depends = qt5-webengine
-	source = https://github.com/huggle/huggle3-qt-lx/archive/3.3.3.tar.gz
-	sha256sums = 7df6150503b8f5f54d511e38737a0533c88c44554eb333a9c4abf2a964deb093
+	source = https://github.com/huggle/huggle3-qt-lx/archive/3.3.4.tar.gz
+	sha256sums = 23f94987db999be5aa03e6f32adb21f0a8143278877b11f34173d34b872f9efa
 
 pkgname = huggle
 
