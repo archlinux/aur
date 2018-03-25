@@ -4,7 +4,7 @@
 pkgname=openfx-arena-git
 name=openfx-arena
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/MrKepzie/openfx-io"
