@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
