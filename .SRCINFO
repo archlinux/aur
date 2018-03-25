@@ -1,10 +1,11 @@
 pkgbase = xde-menu-git
 	pkgdesc = XDG compliant menu generator
 	pkgver = 0.6.0.g87b3493
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-menu
 	arch = i686
 	arch = x86_64
+	groups = xde
 	license = GPL
 	makedepends = git
 	depends = libwnck+-git

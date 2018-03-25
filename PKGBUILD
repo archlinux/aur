@@ -2,10 +2,11 @@
 
 pkgname=xde-menu-git
 pkgver=0.6.0.g87b3493
-pkgrel=1
+pkgrel=2
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-menu"
+groups=('xde')
 license=('GPL')
 provides=('xde-menu')
 conflicts=('xde-menu')
