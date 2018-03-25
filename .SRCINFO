@@ -1,0 +1,14 @@
+pkgbase = breezemite-yakuake-git
+	pkgdesc = Breezemite themes for Yakuake.
+	pkgver = r6.4adf479
+	pkgrel = 1
+	url = https://github.com/matijaskala/breezemite-yakuake
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = yakuake
+	source = git+https://github.com/matijaskala/breezemite-yakuake.git
+	sha256sums = SKIP
+
+pkgname = breezemite-yakuake-git
+
