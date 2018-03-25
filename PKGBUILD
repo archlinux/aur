@@ -6,7 +6,7 @@ pkgrel=1
 epoch=2
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
-url="http://www.pgmodeler.com.br/"
+url="https://pgmodeler.io/"
 license=('GPL3')
 
 arch=('i686' 'x86_64')
