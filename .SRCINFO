@@ -1,7 +1,7 @@
 pkgbase = kawaii-player
 	pkgdesc = A powerful Audio/Video manager, multimedia player and portable media server
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 3.3.1
+	pkgrel = 1
 	url = https://github.com/kanishka-linux/kawaii-player
 	install = kawaii-player.install
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = kawaii-player
 	depends = wget
 	depends = youtube-dl
 	conflicts = kawaii-player-git
-	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v3.3.0-0/kawaii-player-3.3.0-0.tar.bz2
-	md5sums = 6b50528d589250ac6ea6e0cd311f3a66
+	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v3.3.1-1/kawaii-player-3.3.1-1.tar.bz2
+	md5sums = 8cb5d2ecc909f93f222887f2a9607ed1
 
 pkgname = kawaii-player
 
