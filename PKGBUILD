@@ -2,7 +2,7 @@
 
 pkgname=mstream
 pkgver=3.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Music player server with a web-based interface'
 arch=('any')
 url="http://mstream.io"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('nodejs')
 makedepends=('npm')
 install=mstream.install
+backup=('var/lib/mstream/config.json')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
         mstream.service
 	config.json)
