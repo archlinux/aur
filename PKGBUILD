@@ -18,7 +18,7 @@ source_armv6h=("pup_armv6h.zip::https://github.com/ericchiang/pup/releases/downl
 source_armv7h=("pup_armv7h.zip::https://github.com/ericchiang/pup/releases/download/v$pkgver/pup_v${pkgver}_linux_arm.zip")
 source_aarch64=("pup_aarch64.zip::https://github.com/ericchiang/pup/releases/download/v$pkgver/pup_v${pkgver}_linux_arm64.zip")
 md5sums=('a98550ce25e61b1d40f1670e9857c6ff'
-         'a4b9322a6a38e3cdcd11f091241295d4')
+         '433d27029de6bf91620c4e67f3f1ac6f')
 md5sums_i686=('ea17c052261cf6d075e56d427baf8a91')
 md5sums_x86_64=('f008b357bc126fc018a9af5c2faa9c18')
 md5sums_arm=('ebb328b175d53a02529cc67d1a121ed3')
