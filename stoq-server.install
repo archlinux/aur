@@ -96,6 +96,11 @@ EOF
   # Fix directory permissions
   chown -R stoqserver:stoqserver /usr/share/stoqserver
   chmod g+rwx -R /usr/share/stoqserver
+  
+  stoq_sup=$(grep 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf)
+  if [ "$stoq_sup" != "files = /etc/supervisor/conf.d/*.conf" ]; then
+    echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
+  fi
 }
 
 post_upgrade() {
