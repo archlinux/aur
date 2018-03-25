@@ -1,6 +1,6 @@
 pkgbase = openfx-arena-git
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.3.7
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/MrKepzie/openfx-io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = openfx-arena-git
 	depends = ffmpeg
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
-	source = openfx-arena::git+https://github.com/NatronGitHub/openfx-arena.git#commit=ea53c749c81e8ce41de279edd911432fc4bb6aad
+	source = openfx-arena::git+https://github.com/NatronGitHub/openfx-arena.git#commit=b20da996f435f2ce981069f9510d9b2d45f6a7ae
 	sha512sums = SKIP
 
 pkgname = openfx-arena-git
