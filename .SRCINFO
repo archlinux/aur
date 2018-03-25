@@ -1,0 +1,17 @@
+pkgbase = roswell-git
+	pkgdesc = Lisp installer and launcher
+	pkgver = 18.3.10.89.r25.ge39397a
+	pkgrel = 1
+	url = https://github.com/roswell/roswell
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	provides = roswell
+	conflicts = roswell
+	source = git+https://github.com/roswell/roswell.git
+	md5sums = SKIP
+
+pkgname = roswell-git
+
