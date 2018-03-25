@@ -1,0 +1,18 @@
+pkgbase = just
+	pkgdesc = Just a command runner, like make.
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = https://github.com/casey/just
+	arch = x86_64
+	arch = i686
+	license = custom:WTFPL
+	license = custom:MIT
+	license = APACHE
+	license = https://github.com/casey//blob/master/LICENSE
+	makedepends = cargo
+	depends = gcc-libs
+	source = just-0.3.10.tar.gz::https://github.com/casey/just/archive/v0.3.10.tar.gz
+	sha256sums = b1b73609799883500bf57060ef48d056cc191662d67e18b300bbcc6e644d1529
+
+pkgname = just
+
