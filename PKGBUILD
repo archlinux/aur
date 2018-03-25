@@ -2,7 +2,7 @@
 pkgname=('mingw-w64-llvm')
 pkgver=6.0.0
 pkgrel=1
-pkgdesc="Low Level Virtual Machine (mingw-w64)"
+pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
