@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=1.14.1077.60
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -47,21 +47,5 @@ package() {
         | sed -rne 's/.*(<html lang.*>.*html>).*/\1/p' \
         | w3m -I 'utf-8' -T 'text/html' \
         > "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
-
-    # quick fix for the actions
-    if ! grep 'Desktop Action' "$pkgdir/usr/share/applications/vivaldi-stable.desktop" > /dev/null 2>&1; then
-        cat <<'EOF' >> "$pkgdir/usr/share/applications/vivaldi-stable.desktop"
-
-[Desktop Action new-window]
-Name=New Window
-Exec=/usr/bin/vivaldi-stable --new-window
-TargetEnvironment=Unity
-
-[Desktop Action new-private-window]
-Name=New Private Window
-Exec=/usr/bin/vivaldi-stable --incognito
-TargetEnvironment=Unity
-EOF
-    fi
 }
 
