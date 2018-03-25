@@ -1,6 +1,6 @@
 pkgbase = buildstream-git
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
-	pkgver = 1.1.1+1+g5a0f56a
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/BuildStream/
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.1.1+1+g5a0f56a
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
