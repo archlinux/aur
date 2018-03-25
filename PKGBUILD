@@ -5,7 +5,7 @@ true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.15
-pkgver=4.15.10
+pkgver=4.15.12
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
 
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'bbc4e9dc11c15493bd74bf1aae76741ea0e170bc3a07ba9489048bdc9ff85671'
+            '74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79'
             'SKIP'
-            '9bcc6de86245213256cbf674955b0e27cba5f025593d8eb26249b393dc785c08'
+            'f4912d6424bab4fd740171003fc19e2f7970ac85646a283bb8cb0b1e53312218'
             '9a7e0a9a2c3d4252cee29b4f5f61da00e98bd247cb5ceb22e31a7f782a45bddf')
 
 validpgpkeys=(
