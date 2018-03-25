@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=adriconf
+Comment=Advanded DRI Configurator for the Mesa drivers
+Exec=adriconf
+Icon=adriconf
+Terminal=false
+Type=Application
+Categories=System
