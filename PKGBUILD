@@ -1,4 +1,4 @@
-# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 # Contributor: Daniel Landau <daniel.landau@iki.fi>
 # Contributor: Xyne
 # Contributor: David Manouchehri <d@32t.ca>
@@ -7,7 +7,7 @@
 # Contributor: Hinrich Harms <arch hinrich de>
 
 pkgname=icedove-enigmail
-pkgver=1.9.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="Icedove extension that enables sending and receiving signed and encrypted e-mail messages"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('zip' 'python2' 'perl>=5.8')
 source=("https://www.enigmail.net/download/source/enigmail-${pkgver}.tar.gz"{,.asc}) # gpg --recv-keys 9369CDF3 DD5F693B
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha512sums=('39b37305362c88527d897ed95aa9d8457137d5f026359d19b838ab9df531c14099e157afdc8fefae78a6fa2ddded8dbfbeaf84eb91ac6cfbb05ae808731da2cb'
+sha512sums=('bbf7c743d51d6010e8dcca575e1530561944b552dd940119cda874c4b70109eedaaee437c108b1ead17a8414935f48083e2bde8020f3504f927bf9e01fb7b4ae'
             'SKIP')
 
 build() {
