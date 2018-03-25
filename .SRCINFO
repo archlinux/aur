@@ -1,6 +1,6 @@
 pkgbase = gvfs-light
 	pkgdesc = Virtual filesystem implementation for GIO, without network/optical/misc support.
-	pkgver = 1.34.2.1
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/gvfs
 	arch = i686
@@ -11,16 +11,19 @@ pkgbase = gvfs-light
 	makedepends = gtk-doc
 	makedepends = polkit
 	makedepends = libcap
+	makedepends = meson
+	makedepends = openssh
 	depends = udisks2
 	depends = gcr
 	depends = libarchive
-	depends = libgphoto2
 	depends = fuse
+	optdepends = gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support
 	optdepends = gvfs-mtp: MTP device support
 	optdepends = gtk3: Recent files support
-	provides = gvfs=1.34.2.1
+	provides = gvfs=1.36.0
 	conflicts = gvfs
-	source = git+https://git.gnome.org/browse/gvfs#commit=d988206659abcdf36838276c24963128642b626c
+	options = !emptydirs
+	source = git+https://git.gnome.org/browse/gvfs#commit=1d67d10e5bc41749c02dbca8a6cb84f6840de5cd
 	source = gvfsd.hook
 	sha256sums = SKIP
 	sha256sums = 478b9cf7b4c242959fc640dbf0cd4935f16c59b81f5828a3af102d608d7a9d72
