@@ -21,12 +21,12 @@ pkgbase = cabbage-git
 	provides = cabbage
 	source = git+https://github.com/rorywalsh/cabbage.git#branch=master
 	source = git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0
-	source = fix_paths.patch
+	source = buildCabbage.patch
 	source = Cabbage.desktop
 	source = CabbageLite.desktop
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 0c2ddec78ea91ed5736bad0d81f21ea7
+	md5sums = 14c1f8e2590b0a98b3448a4267e679f2
 	md5sums = c499a03801cf0e760c14759ab1927bef
 	md5sums = 39992361c05babc4d12cbdcd2c3f6e04
 

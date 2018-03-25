@@ -1,0 +1,15 @@
+diff --git a/Builds/LinuxMakefile/buildCabbage b/Builds/LinuxMakefile/buildCabbage
+index a8aba851..dbb6ceee 100755
+--- a/Builds/LinuxMakefile/buildCabbage
++++ b/Builds/LinuxMakefile/buildCabbage
+@@ -60,9 +60,4 @@ cp ./../opcodes.txt CabbageBuild/opcodes.txt
+ cp ./../../Images/cabbage.png CabbageBuild/cabbage.png
+ cp -rf ../../Examples/ CabbageBuild/Examples
+ 
+-g++ ../../Source/testCsoundFile.cpp -o testCsoundFile -I"/usr/local/include/csound" -lcsound64
+-
+-#cp -rf ../../Docs/_book CabbageBuild/Docs
+-
+-sed "s@CURRENTDIR@$(pwd)@" dummy.desktop > CabbageBuild/cabbage.desktop
+-cp CabbageBuild/cabbage.desktop ~/.local/share/applications/
++g++ ../../Source/testCsoundFile.cpp -o testCsoundFile -I"/usr/include/csound" -lcsound64

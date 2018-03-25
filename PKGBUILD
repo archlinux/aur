@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 pkgname=cabbage-git
 pkgrel=1 
-pkgver=1.0.0r1173
+pkgver=2.0.0r1173
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -9,15 +9,16 @@ license=('GPLv3')
 makedepends=('freeglut' 'curl' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
              'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim')
 depends=('csound' 'steinberg-vst36')
+conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=master'
         'git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0'
-        'fix_paths.patch'
+        'buildCabbage.patch'
         'Cabbage.desktop'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '0c2ddec78ea91ed5736bad0d81f21ea7'
+         '14c1f8e2590b0a98b3448a4267e679f2'
          'c499a03801cf0e760c14759ab1927bef'
          '39992361c05babc4d12cbdcd2c3f6e04')
 
@@ -86,12 +87,16 @@ prepare() {
   # Cabbage
 
   cd "${srcdir}/cabbage"
-  patch -p1 < ../../fix_paths.patch
+  for f in *jucer; do
+    sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$f"
+    sed -i "s@/usr/local/lib@/usr/lib@g" "$f"
+  done
+  patch -p1 < ../../buildCabbage.patch
 }
 
 pkgver() {
 	cd "${srcdir}/cabbage"
-	printf "1.0.0r%s" "$(git rev-list --count HEAD)"
+	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
 }
 
 build() {
@@ -105,16 +110,8 @@ package() {
 
   cd "${srcdir}/cabbage/Builds/LinuxMakefile/CabbageBuild/"
   install -d "${pkgdir}/opt/Cabbage"
-#  install -Dm644 Cabbage "${pkgdir}/opt/Cabbage/Cabbage"
-#  install -Dm644 CabbageLite "${pkgdir}/opt/Cabbage/CabbageLite"
-#  install -Dm644 CabbagePluginEffect.so "${pkgdir}/opt/Cabbage/CabbagePluginEffect.so"
-#  install -Dm644 CabbagePluginSynth.so "${pkgdir}/opt/Cabbage/CabbagePluginSynth.so"
-#  install -Dm644 cabbage.png "${pkgdir}/opt/Cabbage/cabbage.png"
-#  install -Dm644 opcodes.txt "${pkgdir}/opt/Cabbage/opcodes.txt"
-#  install -Dm644 Examples "${pkgdir}/opt/Cabbage/Examples"
   cp -R ./* "${pkgdir}/opt/Cabbage/"
-  
-
+  chmod -R 755 "${pkgdir}/opt/Cabbage"
 
   install -d "${pkgdir}/usr/bin"
   ln -s ../../opt/Cabbage/Cabbage "${pkgdir}/usr/bin/Cabbage"
