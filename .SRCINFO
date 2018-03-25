@@ -1,0 +1,15 @@
+pkgbase = bmm
+	pkgdesc = Simple Bookmark Manager
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/renat1sakenov/bmm
+	arch = any
+	license = GPL
+	makedepends = make
+	depends = python
+	depends = python-beautifulsoup4
+	source = bmm.tar.gz::https://codeload.github.com/renat1sakenov/bmm/tar.gz/v1.0
+	sha1sums = 1a619e96991bcb11830b7d48a3ed6879604aa5e9
+
+pkgname = bmm
+
