@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=181.4203.13
+_buildver=181.4203.502
 _pkgver=2018.1
 _verextra=
 pkgver="${_pkgver}.${_buildver}"
@@ -35,12 +35,12 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
 provides=("pycharm" "pycharm-professional")
 source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=("2ff63ec0585f4d1c3b9559ae2ad07e9b9c84535fd3a0d0d93f09d649c4ccfc63"
+sha256sums=("ba8886eaf97e6e2a45f3c127364e3d4efbffcff019d9704a9907f4d3a4315959"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
-	if [ -d $srcdir/pycharm-${_pkgver}.${_verextra} ]; then
-		mv $srcdir/pycharm-${_pkgver}.${_verextra} $srcdir/pycharm-${_buildver}
+	if [ -d $srcdir/pycharm-${_pkgver}${_verextra} ]; then
+		mv $srcdir/pycharm-${_pkgver}${_verextra} $srcdir/pycharm-${_buildver}
 	fi
 }
 
