@@ -3,21 +3,21 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.54.3+2+g94b38beff
-pkgrel=2
+pkgver=2.56.0+7+g66948ae23
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
 provides=("glib2=$pkgver")
 conflicts=('glib2')
-depends=(pcre libffi libutil-linux tumbler)
+depends=(pcre libffi libutil-linux zlib tumbler)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
 checkdepends=(desktop-file-utils)
-optdepends=('python: for gdbus-codegen and gtester-report'
+optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
-license=(LGPL)
-_commit=94b38beff1347ec4a733199f7a7abdacaa958678  # glib-2-54
+license=(LGPL2.1)
+_commit=66948ae231f75a548c8a2eb7b3a9d64cfd728b8e  # glib-2-56
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -47,13 +47,16 @@ prepare() {
 }
 
 build() {
+  local debug=minimum
+  check_option debug n && debug=yes
+
   cd glib
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --sysconfdir=/etc \
     --with-pcre=system \
-    --enable-debug=yes \
+    --enable-debug=$debug \
     --enable-gtk-doc \
     --disable-fam
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
