@@ -4,7 +4,7 @@
 _gemname=taffy
 pkgname=$_gemname
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line audio tagging tool'
 arch=(any)
 url='https://github.com/jangler/taffy'
