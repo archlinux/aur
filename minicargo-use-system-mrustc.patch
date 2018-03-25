@@ -1,0 +1,13 @@
+diff --git a/tools/minicargo/build.cpp b/tools/minicargo/build.cpp
+index bde2b09d..c1b1bbba 100644
+--- a/tools/minicargo/build.cpp
++++ b/tools/minicargo/build.cpp
+@@ -555,7 +555,7 @@ Builder::Builder(BuildOptions opts):
+ 
+     ::helpers::path minicargo_path { buf };
+     minicargo_path.pop_component();
+-    m_compiler_path = (minicargo_path / "../../bin/mrustc").normalise();
++    m_compiler_path = (minicargo_path / "mrustc").normalise();
+ #endif
+ }
+ 
