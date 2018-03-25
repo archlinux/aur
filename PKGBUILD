@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.15
-pkgver=4.15.10
+pkgver=4.15.12
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -30,16 +30,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'bbc4e9dc11c15493bd74bf1aae76741ea0e170bc3a07ba9489048bdc9ff85671'
+            '74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79'
             'SKIP'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
-            '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1a4a992199d4d70f7f35735f63a634bb605c2b594b7352ad5fd54512737d2784'
             '7cb4a5da6bf551dbb2db2e0b4e4d0774ee98cc30d9e617e030b27e6cba3e6293'
-            '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
-            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
+            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
+            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -71,15 +71,14 @@ prepare() {
   # Overrides for missing acs capabilities
   patch -p1 -i "${srcdir}/add-acs-overrides.patch"
 
-  cp -Tf ../config .config
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -102,7 +101,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -116,12 +115,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
