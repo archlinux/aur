@@ -3,7 +3,7 @@
 
 pkgname=pulseaudio-dlna
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio"
 arch=('i686' 'x86_64')
 url="https://github.com/masmu/pulseaudio-dlna"
@@ -12,7 +12,7 @@ depends=('python2-pip' 'python2-dbus' 'python2-docopt'
 		 'python2-requests' 'python2-setproctitle' 'python2-gobject2'
 		 'python2-protobuf' 'python2-notify2' 'python2-psutil'
 		 'python2-futures' 'python2-chardet' 'python2-netifaces'
-		 'python2-lxml' 'python2-zeroconf' 'python2-enum34')
+		 'python2-lxml' 'python2-zeroconf')
 makedepends=('python2-setuptools')
 optdepends=('lame: MP3 transcoding support'
 			'faac: AAC transcoding support'
