@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-magnumclient' 'python2-magnumclient')
-pkgver='2.7.0'
+pkgver='2.9.0'
 pkgrel='1'
 pkgdesc='Python client library for Magnum'
 arch=('any')
@@ -9,7 +9,7 @@ url="http://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}"{,-py2}

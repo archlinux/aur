@@ -1,6 +1,6 @@
 pkgbase = python-magnumclient
 	pkgdesc = Python client library for Magnum
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-magnumclient/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-magnumclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-magnumclient#tag=2.7.0
-	md5sums = SKIP
+	source = git+https://git.openstack.org/openstack/python-magnumclient#tag=2.9.0
+	sha512sums = SKIP
 
 pkgname = python-magnumclient
 	depends = python-decorator
