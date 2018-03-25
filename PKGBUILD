@@ -2,7 +2,7 @@
 
 pkgname=sierrabreeze-kwin-decoration-git
 _gitname=SierraBreeze
-pkgver=r18.56ea673
+pkgver=r26.6630456
 pkgrel=1
 pkgdesc="OSX-like window decoration for KDE Plasma written in C++ (git version)"
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://github.com/ishovkun/SierraBreeze"
 license=('GPL2')
 depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
+optdepends=('breezemite-yakuake-git: Matching theme for Yakuake')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
