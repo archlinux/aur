@@ -1,17 +1,17 @@
 pkgbase = enigmail-bin
 	pkgdesc = The Icedove / Thunderbird GnuPG encryption plugin. Binary version.
-	pkgver = 1.9.9
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://www.enigmail.net/
 	arch = any
 	license = MPL
 	depends = gnupg>=2.0.7
-	noextract = enigmail-1.9.9-sm+tb.xpi
-	source = https://www.enigmail.net/download/release/1.9/enigmail-1.9.9-sm+tb.xpi
-	source = https://www.enigmail.net/download/release/1.9/enigmail-1.9.9-sm+tb.xpi.asc
+	noextract = enigmail-2.0-sm+tb.xpi
+	source = https://www.enigmail.net/download/release/2.0/enigmail-2.0-sm+tb.xpi
+	source = https://www.enigmail.net/download/release/2.0/enigmail-2.0-sm+tb.xpi.asc
 	validpgpkeys = 10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3
 	validpgpkeys = 4F9F89F5505AC1D1A260631CDB1187B9DD5F693B
-	sha512sums = 8d83a4adf3a4432a7f88fcd29db12a6bec784c2b0650c5aec0f1feaeaedd06a7d40a9c83deee0b9b254b13ca3ea0fc1cab5bce401ed3bee54fc313a56c5c85e2
+	sha512sums = 5bec96f33a555a43c06f7dfa30335cd6add4814ee5fbac65315f1ebc6572da055d5376fb52e1f0cc5500ead676e2d864f6f4e97df5b1427824cc73024860e83b
 	sha512sums = SKIP
 
 pkgname = icedove-enigmail-bin
