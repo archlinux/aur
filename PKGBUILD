@@ -1,10 +1,10 @@
-# Maintainer : Matteo Rossillol--Laruelle <mbasiccomputing(at)gmail(dot)com>
+# Maintainer : Beatussum <echo 'YmVhdHVzc3VtQHByb3Rvbm1haWwuY29tCg==' | base64 -d>
 
 
 _reponame=USB-Rubber-Ducky
 pkgname=ducky-tools
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for USB Rubber Ducky by hak5darren"
 arch=('i686' 'x86_64')
 url="https://github.com/hak5darren/$_reponame"
@@ -14,19 +14,19 @@ provides=('duckencoder' 'ducky-encoder-gui' 'ducky-decode' 'ducky-flasher' 'duck
 conflicts=('duck-encoder')
 options=('!strip')
 source=("$pkgname::https://github.com/hak5darren/$_reponame/archive/v$pkgver.tar.gz"
-	"ducky-encoder-gui.desktop"
-	"ducky-encoder-gui.png"
-	"ducky")
+        "ducky-encoder-gui.desktop"
+        "ducky-encoder-gui.png"
+        "ducky")
 sha256sums=('0e8cc19fa90718953a8c6221c75429bc3970fecb6f000fe0b722568b46e966f4'
-            'eedcd70a5ef10ae7d0ae5b4a31e6912b2c15753d6fc817ab424afd5770cdc2f3'
-            'cbd5dbec562c01bbac94ca9a6b956591babd8c8ab3c2b10f4db6d9aca2250ff9'
-            'bdf984c1aa7951101d7d72109bebf6619b6462b0792f0ed45c3f42e8e6757be0')
+            '36aba97ddc5e484b76e575af970459ecb2d82a412f8b2761cae64ae947301f27'
+            'a722ebe52eaff600706e3d66d12c32324f2d57c402dff28d25e2974ff16dff57'
+            '9a3817d59380d1e7f9c5690a1dfc1d740d59c34d8e185d52d081f60e46b726b5')
 
 
 package(){
     cd $srcdir
     install -m755 -D "ducky" "$pkgdir/usr/bin/ducky"
-    install -m644 -D "ducky-encoder-gui.png" "$pkgdir/usr/share/icons/ducky-encoder-gui.png"
+    install -m644 -D "ducky-encoder-gui.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/ducky-encoder-gui.png"
     install -m755 -D "ducky-encoder-gui.desktop" "$pkgdir/usr/share/applications/ducky-encoder-gui.desktop"
     install -d "$pkgdir/opt"
     cp -r "$_reponame-$pkgver" "$pkgdir/opt/$_reponame"

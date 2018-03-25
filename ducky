@@ -1,18 +1,20 @@
 #!/usr/bin/sh
 
 
-readonly VERSION="v2.6.3-2"
+readonly VERSION="v2.6.3-3"
 readonly NAME=$(basename "${0}")
 
 usage(){
     echo "${NAME} :
     encode -i <file> [-o <file>] [-l <keyboardlayout>] : More info with '${NAME} encode -h'
     decode -f <file> [-l <keyboardlayout>]             : More info with '${NAME} decode -h'
-    flash <file>                                       : Flash your ducky with hexadecimal object file (see /opt/USB-Rubber-Ducky/Firmware)
+    flash <file>                                       : Flash your ducky with hexadecimal object file
     ducky-flasher                                      : Easily flash your USB Rubber ducky from Hak5
     dump <file>                                        : Dump your ducky into hexadecimal object file
     -h,--help                                          : Print this message
-    -v,--version                                       : Print the program's version"
+    -v,--version                                       : Print the program's version
+    
+    Hexadecimal files: /opt/USB-Rubber-Ducky/Firmware"
 }
 
 version(){
