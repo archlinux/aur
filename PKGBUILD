@@ -10,7 +10,7 @@ pkgrel=2
 _jnaver=4.5.1
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="http://filebot.sourceforge.net/"
+url="https://github.com/filebot/filebot"
 license=('GPL')
 install=$pkgname.install
 depends=('java-runtime>=9' 'fontconfig' 'chromaprint')
