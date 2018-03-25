@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck+-git
-pkgver=2.31.0.r21.g7c47201
+pkgver=2.31.0.r22.g129f5dc
 pkgrel=1
 pkgdesc="Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
