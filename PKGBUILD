@@ -22,13 +22,13 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_commit='734b146dfe3fd8382b052a8419081b3bb905a93c'
+_commit='edd71782e9d00e563ccb5c0f0f236a2915e439b2'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.7.27
-pkgrel=4
+pkgver=7.0.7.28
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
