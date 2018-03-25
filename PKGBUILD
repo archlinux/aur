@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Another Aur MANager"
 arch=("any")
 url="https://github.com/enckse/$pkgname"
