@@ -97,7 +97,7 @@ EOF
   chown -R stoqserver:stoqserver /usr/share/stoqserver
   chmod g+rwx -R /usr/share/stoqserver
   
-  grep -q 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf || echo 'files = /etc/supervisor/conf.d/*.conf' » /etc/supervisord.conf
+  grep -q 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf || echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
 }
 
 post_upgrade() {
