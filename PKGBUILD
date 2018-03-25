@@ -3,7 +3,7 @@
 pkgname=perl-goo-canvas2
 pkgver=0.06
 pkgrel=1
-pkgdesc="Perl binding for GooCanvas2 widget using Glib::Object::Introspection"
+pkgdesc="Perl bindings for GooCanvas2 widget using Glib::Object::Introspection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 depends=('perl-gtk3')
