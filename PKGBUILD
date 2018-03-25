@@ -2,7 +2,7 @@
 # Contributor: Shameempk <mailtoshameempk@gmail.com>
 pkgname=polarr
 pkgver=4.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Professional Photo Editing Tools for Everyone."
 arch=('x86_64')
 url="https://www.polarr.co"
@@ -27,6 +27,12 @@ package() {
 	cp -a ${srcdir}/snap/gui/icon.png ${pkgdir}/usr/lib/polarr/
 	mkdir -p ${pkgdir}/usr/share/applications
 	cp -a ${srcdir}/snap/gui/polarr.desktop ${pkgdir}/usr/share/applications/
+  ln -s /usr/lib/libIlmImf.so ${pkgdir}/usr/lib/libIlmImf-2_2.so.22
+	ln -s /usr/lib/libImath.so ${pkgdir}/usr/lib/libImath-2_2.so.12
+	ln -s /usr/lib/libHalf.so ${pkgdir}/usr/lib/libHalf.so.12
+	ln -s /usr/lib/libIex.so ${pkgdir}/usr/lib/libIex-2_2.so.12
+	ln -s /usr/lib/libIexMath.so ${pkgdir}/usr/lib/libIexMath-2_2.so.12
+	ln -s /usr/lib/libIlmThread.so ${pkgdir}/usr/lib/libIlmThread-2_2.so.12
 
 	sed -i 's/Icon=\${SNAP}\/meta\/gui\/icon\.png/Icon=\/usr\/lib\/polarr\/icon\.png/' ${pkgdir}/usr/share/applications/polarr.desktop
 	echo 'MimeType=image/jpeg;image/jpeg2000;image/bmp;image/gif;image/png;image/tiff;image/x-raw;' >> ${pkgdir}/usr/share/applications/polarr.desktop

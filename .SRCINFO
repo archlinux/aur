@@ -1,7 +1,7 @@
 pkgbase = polarr
 	pkgdesc = Professional Photo Editing Tools for Everyone.
 	pkgver = 4.4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.polarr.co
 	arch = x86_64
 	license = custom
