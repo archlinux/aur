@@ -1,12 +1,13 @@
 pkgbase = raktpdf
 	pkgdesc = A GTK+ based PDF viewer
 	pkgver = 20080320
-	pkgrel = 3
+	pkgrel = 4
 	url = ftp://code-monkey.de/pub/raktpdf
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = poppler-glib
+	depends = gtk2
 	source = https://github.com/bbidulock/raktpdf/releases/download/2008-03-20/raktpdf-2008-03-20.tar.gz
 	md5sums = 6492ae9cea1c2661f1c82b222ee5c4f3
 
