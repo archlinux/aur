@@ -6,7 +6,7 @@ pkgname=insync
 pkgver=1.4.4
 _pkgver=37065
 _dist=artful
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -37,5 +37,6 @@ package() {
    # End of patching
    install -Dm644 ${srcdir}/insync@.service ${pkgdir}/usr/lib/systemd/system/insync@.service
    install -Dm644 ${srcdir}/insync.service ${pkgdir}/usr/lib/systemd/user/insync.service
-   ln -sf "/usr/lib/libfontconfig.so.1" "${pkgdir}/usr/lib/insync/libfontconfig.so.1"
+   # insync provides its own libraries, so this appears to be unneeded
+   # ln -sf "/usr/lib/libfontconfig.so.1" "${pkgdir}/usr/lib/insync/libfontconfig.so.1"
 }
