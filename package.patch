@@ -1,0 +1,44 @@
+diff -aur -bZwB -x .git xeus-0.11.0.old/CMakeLists.txt xeus-0.11.0/CMakeLists.txt
+--- xeus-0.11.0.old/CMakeLists.txt	2018-03-25 09:33:11.000929782 -0400
++++ xeus-0.11.0/CMakeLists.txt	2018-03-25 09:34:42.577890245 -0400
+@@ -107,8 +107,8 @@
+ target_include_directories(xeus PUBLIC $<BUILD_INTERFACE:${XEUS_INCLUDE_DIR}>
+                                        $<INSTALL_INTERFACE:include>)
+ target_link_libraries(xeus
+-                      PUBLIC cppzmq
+-                      PRIVATE cryptopp-static
++                      PUBLIC zmq
++                      PRIVATE cryptopp
+                       PRIVATE xtl)
+ 
+ if(NOT MSVC)
+diff -aur -bZwB -x .git xeus-0.11.0.old/src/xauthentication.cpp xeus-0.11.0/src/xauthentication.cpp
+--- xeus-0.11.0.old/src/xauthentication.cpp	2018-03-25 09:33:11.001928616 -0400
++++ xeus-0.11.0/src/xauthentication.cpp	2018-03-25 09:33:15.811442497 -0400
+@@ -24,7 +24,7 @@
+     public:
+ 
+         using hmac_type = CryptoPP::HMAC<T>;
+-        using signature_type = std::array<byte, hmac_type::DIGESTSIZE>;
++        using signature_type = std::array<CryptoPP::byte, hmac_type::DIGESTSIZE>;
+ 
+         explicit xauthentication_impl(const std::string& key);
+         virtual ~xauthentication_impl() = default;
+@@ -101,7 +101,7 @@
+     template <class T>
+     xauthentication_impl<T>::xauthentication_impl(const std::string& key)
+     {
+-        m_hmac = hmac_type(reinterpret_cast<const byte*>(key.c_str()), key.size());
++        m_hmac = hmac_type(reinterpret_cast<const CryptoPP::byte*>(key.c_str()), key.size());
+     }
+ 
+     template <class T>
+@@ -137,7 +137,7 @@
+         std::string hex_sig = hex_string(sig);
+ 
+         // Reduces the vulnerability to timing attacks.
+-        bool res = CryptoPP::VerifyBufsEqual(reinterpret_cast<const byte*>(hex_sig.c_str()),
++        bool res = CryptoPP::VerifyBufsEqual(reinterpret_cast<const CryptoPP::byte*>(hex_sig.c_str()),
+                                              signature.data<const unsigned char>(),
+                                              hex_sig.size());
+         return res;

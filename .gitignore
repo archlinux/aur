@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.tar.xz
+xeus.tar.gz
+zmq_addon.hpp
