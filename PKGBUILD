@@ -1,5 +1,6 @@
-# Maintainer: Muflone http://www.muflone.com/#contacts
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Nicolas Joseph <nicolas.joseph@valaide.org>
+
 pkgname=valide
 pkgver=0.7.2
 pkgrel=2
