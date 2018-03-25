@@ -3,8 +3,8 @@
 
 _pkgname=bbcp
 pkgname=bbcp-git
-pkgver=15.02.03.00.1
-pkgrel=2
+pkgver=15.02.03.00.2
+pkgrel=1
 pkgdesc="A high-performance network file copy application."
 arch=('x86_64')
 url="http://www.slac.stanford.edu/~abh/bbcp/"
