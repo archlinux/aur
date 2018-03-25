@@ -1,5 +1,5 @@
-pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.20.2677.102.20171002.2
+pkgbase = mozc-neologd-ut
+	pkgver = 2.23.2815.102.20180301.1
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -11,32 +11,23 @@ pkgbase = fcitx-mozc-neologd-ut
 	makedepends = python2
 	makedepends = curl
 	makedepends = gtk2
-	makedepends = qt4
+	makedepends = qt5-base
 	makedepends = zinnia
 	makedepends = fcitx
-	makedepends = qt5-base
-	source = mozc-neologd-ut-2.20.2677.102.20171002.2.tar.xz::https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F16%2F16042%2Fmozc-neologd-ut-2.20.2677.102.20171002.2.tar.xz
-	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.18.2612.102.1.patch
+	makedepends = libxcb
+	makedepends = glib2
+	makedepends = bzip2
+	makedepends = unzip
+	source = mozc-neologd-ut-2.23.2815.102.20180301.1.tar.xz::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F16%2F16721%2Fmozc-neologd-ut-2.23.2815.102.20180301.1.tar.xz
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	sha1sums = 1f713933d3a15c15767b83635e63e0af5e98e533
-	sha1sums = afeef31bf3d640f9cc630c2187dbfd4507367d78
+	sha1sums = SKIP
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
-
-pkgname = fcitx-mozc-neologd-ut
-	pkgdesc = Fcitx engine module for Mozc
-	arch = i686
-	arch = x86_64
-	depends = mozc-neologd-ut=2.20.2677.102.20171002.2
-	depends = fcitx
-	replaces = fcitx-mozc
-	replaces = fcitx-mozc-ut2
-	replaces = fcitx-mozc-ut
 
 pkgname = mozc-neologd-ut
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
 	arch = i686
 	arch = x86_64
-	depends = qt4
+	depends = qt5-base
 	depends = zinnia
 	conflicts = fcitx-mozc
 	conflicts = mozc
@@ -44,4 +35,14 @@ pkgname = mozc-neologd-ut
 	conflicts = mozc-ut2
 	conflicts = fcitx-mozc-ut
 	conflicts = mozc-ut
+
+pkgname = fcitx-mozc-neologd-ut
+	pkgdesc = Fcitx engine module for Mozc
+	arch = i686
+	arch = x86_64
+	depends = mozc-neologd-ut=2.23.2815.102.20180301.1
+	depends = fcitx
+	replaces = fcitx-mozc
+	replaces = fcitx-mozc-ut2
+	replaces = fcitx-mozc-ut
 
