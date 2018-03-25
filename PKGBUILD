@@ -2,11 +2,11 @@
 
 pkgname=perl-goo-canvas2
 pkgver=0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl bindings for GooCanvas2 widget using Glib::Object::Introspection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-depends=('perl-gtk3')
+depends=('perl-gtk3' 'goocanvas')
 url='https://metacpan.org/release/GooCanvas2'
 source=("https://cpan.metacpan.org/authors/id/P/PE/PERLMAX/GooCanvas2-${pkgver}.tar.gz")
 sha256sums=('e24c87873e19063dd4d5e2c709caacf8c0ae8881044395bb865dc2b4fdd63b50')
