@@ -1,0 +1,18 @@
+pkgbase = iannix
+	pkgdesc = A graphical open-source sequencer, based on Iannis Xenakis works, for digital art
+	pkgver = 0.9.20b
+	pkgrel = 1
+	url = https://www.iannix.org/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = qt5-tools
+	depends = alsa-lib
+	depends = gdk-pixbuf2
+	depends = glu
+	depends = qt5-script
+	source = iannix-0.9.20b.tar.gz::https://github.com/buzzinglight/iannix/archive/v0.9.20-b.tar.gz
+	sha512sums = 9c46250bce9550abc4ece11720616f217513aefd62a7144f7aebdaf2e11b938dc2a551d066b748089bafffd8f7d9659e8b79f6318e250e522cf608f861951c90
+
+pkgname = iannix
+
