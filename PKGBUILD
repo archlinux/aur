@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0.r46896.30b5b59b69
+pkgver=18.0.r48667.03d453ae65
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -36,7 +36,7 @@ pkgver() {
   _major=$(grep 'VERSION_MAJOR' version.txt | sed 's/VERSION_MAJOR //')
   _minor=$(grep 'VERSION_MINOR' version.txt | sed 's/VERSION_MINOR //')
   _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-  echo "$_major.$_minor.$_revision" 
+  echo "$_major.$_minor.$_revision"
 }
 
 prepare() {
@@ -80,7 +80,7 @@ package_kodi-git() {
               'unrar: Archives support'
               'unzip: Archives support'
               'upower: Display battery level')
-  provides=('kodi' 'xbmc')
+  provides=("kodi=${pkgver}" "xbmc=${pkgver}")
   conflicts=('kodi' 'xbmc')
   replaces=('xbmc-git' 'xbmc-svn')
 
@@ -111,6 +111,7 @@ package_kodi-git() {
 
 package_kodi-eventclients-git() {
   pkgdesc="Kodi Event Clients (master branch)"
+  provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
   depends=('cwiid')
 
@@ -135,6 +136,8 @@ package_kodi-eventclients-git() {
 
 package_kodi-tools-texturepacker-git() {
   pkgdesc="Kodi Texturepacker tool (master branch)"
+  provides=("kodi-tools-texturepacker=${pkgver}")
+  conflicts=('kodi-tools-texturepacker')
   depends=('giflib' 'libjpeg-turbo' 'libpng' 'lzo')
 
   _components=('kodi-tools-texturepacker')
@@ -153,6 +156,8 @@ package_kodi-tools-texturepacker-git() {
 
 package_kodi-dev-git() {
   pkgdesc="Kodi dev files (master branch)"
+  provides=("kodi-dev=${pkgver}")
+  conflicts=('kodi-dev')
   depends=('kodi')
 
   _components=('kodi-addon-dev' 'kodi-audio-dev' 'kodi-eventclients-dev' 'kodi-game-dev'
