@@ -9,9 +9,9 @@ pkgbase = dict-devils
 	makedepends = dictd
 	optdepends = dictd: dict client and server
 	conflicts = dictd-devils
-	source = http://wiretap.area.com/Gopher/Library/Classic/devils.txt
+	source = http://http.debian.net/debian/pool/main/d/dict-devil/dict-devil_1.0.orig.tar.gz
 	source = http://http.debian.net/debian/pool/main/d/dict-devil/dict-devil_1.0-12.debian.tar.gz
-	sha512sums = a48631d40696bf7ebf0a30f464e1ddaccf5971aadf67c2e224bfbbff4c74f75cd68b322b8d1f9c658812590b8bccddf12217aa1a6aef30ce32a92b25c20998cb
+	sha512sums = 7dad3ab008ba976a0af58377bd206f2870617866b854b8a2cf588f6eefcaaab4a261e9f511b094410c9e454b7ee94b83ec1351774728b171f0e6cdbefa903fd1
 	sha512sums = 7156a48738dcae73c33f36924cc77523c36b0e2fc066793e96d94bd6efca1aaa9c77a62ba988feedaef8488c4269fc785d58b2f17dc5758cfec3bf3f4b1736db
 
 pkgname = dict-devils

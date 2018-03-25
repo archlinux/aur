@@ -1,7 +1,8 @@
 # Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=dict-devils
 pkgver=1
-_debver=${pkgver}-12
+_deb_srcver=1.0
+_debver=${_deb_srcver}-12
 pkgrel=1
 pkgdesc="The Devil's Dictionary by Ambrose Bierce for dictd et al."
 arch=('any')
@@ -12,31 +13,33 @@ makedepends=('dictd')
 conflicts=('dictd-devils')
 install=${pkgname}.install
 
-source=("http://wiretap.area.com/Gopher/Library/Classic/devils.txt"
-        "http://http.debian.net/debian/pool/main/d/dict-devil/dict-devil_1.0-12.debian.tar.gz")
-sha512sums=('a48631d40696bf7ebf0a30f464e1ddaccf5971aadf67c2e224bfbbff4c74f75cd68b322b8d1f9c658812590b8bccddf12217aa1a6aef30ce32a92b25c20998cb'
+source=("http://http.debian.net/debian/pool/main/d/dict-devil/dict-devil_${_deb_srcver}.orig.tar.gz"
+        "http://http.debian.net/debian/pool/main/d/dict-devil/dict-devil_${_debver}.debian.tar.gz")
+sha512sums=('7dad3ab008ba976a0af58377bd206f2870617866b854b8a2cf588f6eefcaaab4a261e9f511b094410c9e454b7ee94b83ec1351774728b171f0e6cdbefa903fd1'
             '7156a48738dcae73c33f36924cc77523c36b0e2fc066793e96d94bd6efca1aaa9c77a62ba988feedaef8488c4269fc785d58b2f17dc5758cfec3bf3f4b1736db')
 
 prepare()
 {
+	cd dict-devil-${_deb_srcver}
+
 	# Extract licensing statement.
 	grep -m1 -B1 'Public Domain' devils.txt > LICENSE
 
-	# "Convert" source from symbolic link to a regular file (necessary for
-	# patching).
-	cp --remove-destination "$(readlink devils.txt)" devils.txt
-
 	# Fix various typographical errors.
-	patch -p1 devils.txt debian/patches/debian-changes
+	patch -p1 devils.txt ../debian/patches/debian-changes
 }
 
 build()
 {
-	debian/devil2dict devils.txt devils
+	cd dict-devil-${_deb_srcver}
+
+	../debian/devil2dict devils.txt devils
 	dictzip devils.dict
 }
 
 package() {
+	cd dict-devil-${_deb_srcver}
+
 	install -m 0755 -d "${pkgdir}/usr/share/dictd"
 	install -m 0644 -t "${pkgdir}/usr/share/dictd/" devils.{dict.dz,index}
 	
