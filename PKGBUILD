@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('git')
 conflicts=('googler')
-source=('git://github.com/jarun/googler.git')
+source=('git+https://github.com/jarun/googler.git')
 md5sums=('SKIP')
 
 prepare() {
