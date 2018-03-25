@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=56.0.4.1.2
-pkgrel=1
+pkgver=56.0.4.1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
@@ -18,7 +18,7 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}_amd64.deb")
+source=("waterfox-kde_${pkgver}.2_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}.2_amd64.deb")
 sha256sums=('d60e0c914944a55071a69789b5c91e30eba43a33081f5c4e4e886562240f539c')
 
 package() {
