@@ -1,0 +1,21 @@
+pkgbase = infamousplugins
+	pkgdesc = A collection of open-source LV2 plugins
+	pkgver = 0.2.04
+	pkgrel = 1
+	url = https://ssj71.github.io/infamousPlugins/
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL2
+	makedepends = cmake
+	makedepends = lv2
+	depends = fftw
+	depends = ntk
+	depends = zita-resampler
+	provides = infamousplugins
+	conflicts = infamousplugins-git
+	source = infamousplugins-0.2.04.tar.gz::https://github.com/ssj71/infamousPlugins/archive/v0.2.04.tar.gz
+	sha512sums = 340de9a58f454c3998c71f8c0f004e541253b96ee4c5ac870d6ff0fe07c46764534467dca55046e2a160cfc40c4a252912788bd4140c58efcbe4234730305570
+
+pkgname = infamousplugins
+
