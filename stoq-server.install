@@ -88,6 +88,10 @@ EOF
     groupadd stoqserver
     useradd -m -s /bin/bash stoqserver
     gpasswd -a stoqserver stoqserver
+    
+  fi
+  
+  if getent group stoqserver | grep &>/dev/null "postgres"; then
     gpasswd -a postgres stoqserver
   fi
   
@@ -98,6 +102,7 @@ EOF
   
   # Fix directory permissions
   chown -R stoqserver:stoqserver /usr/share/stoqserver
+  chmod g+rwx -R /usr/share/stoqserver
 }
 
 post_upgrade() {
@@ -114,6 +119,6 @@ post_remove() {
     userdel stoqserver
   fi
   if getent group stoqserver >/dev/null; then
-    groupdel stoqserver
+    groupdel -r stoqserver
   fi
 }
