@@ -1,6 +1,6 @@
 pkgbase = gtk-vnc-gtk2
 	pkgdesc = A VNC viewer widget for GTK built for GTK2 only
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/gtk-vnc
 	arch = i686
@@ -16,11 +16,10 @@ pkgbase = gtk-vnc-gtk2
 	depends = libgcrypt
 	depends = gtk2
 	depends = libpulse
-	provides = gtk-vnc=0.7.0
+	provides = gtk-vnc=0.7.1
 	conflicts = gtk-vnc
-	replaces = gtk-vnc
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk-vnc/0.7/gtk-vnc-0.7.0.tar.xz
-	sha256sums = 3c2eae7c9053338939a32c9987156a12b802ffd5c7f80702ba8d483dfc6d483e
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk-vnc/0.7/gtk-vnc-0.7.1.tar.xz
+	sha256sums = f34baa696615ef67666e8465b4d0ac563355e999a77d2cc42ad4625a24f7aab1
 
 pkgname = gtk-vnc-gtk2
 
