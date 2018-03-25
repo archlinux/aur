@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-pkgver=5.0.0_beta.16
+pkgver=5.0.0_beta.17
 pkgrel=1
 pkgdesc="Free messaging app for services like WhatsApp, Slack, Messenger and many more."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('yarn' 'npm' 'git' 'python2')
 conflicts=('franz-bin')
 source=("https://github.com/meetfranz/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         "franz.desktop")
-sha256sums=('a8d9c3c0b43168d471acd01259e19489550036dd5371f6c9bc16486df256c661'
+sha256sums=('380874f4189a54994a46c99380bbda441ff563fe70e95062e12500dc5f8432be'
             '79813a0f7db258fc7c4969cc20b412771530865bec36c0a4b9e18a2e435d97b8')
 
 prepare() {
