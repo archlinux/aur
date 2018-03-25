@@ -31,6 +31,7 @@ depends=('gtk3' 'libsm')
 [[ "${_dvi}"        == "yes" ]] && depends+=('texlive-bin')
 [[ "${_xps}"        == "yes" ]] && depends+=('libgxps')
 [[ "${_comics}"     == "yes" ]] && depends+=('libarchive')
+[[ "${_nautilus}"   == "yes" ]] && depends+=('libnautilus-extension')
 
 makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc')
 
