@@ -1,4 +1,4 @@
-# Maintainer: Pablo Arias <pacloariasal@gmail.com>
+# Maintainer: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=googler
