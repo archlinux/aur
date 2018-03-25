@@ -1,6 +1,6 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/dask/dask
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = python-dask
 	optdepends = python-psutil
 	optdepends = python-sparse: sparse data support
 	optdepends = python-s3fs: S3 support
-	source = https://github.com/dask/dask/archive/0.17.1.tar.gz
-	sha256sums = 72bd9365afc86d37091180c8d8a1b45ab0ce4075b99ebcbc7ca9852430a79c5c
+	source = https://github.com/dask/dask/archive/0.17.2.tar.gz
+	sha256sums = b72c1a19e9a90d9ae9028a3a15b18a831789590d26f6056bffa8ff5d1c51def3
 
 pkgname = python-dask
 
