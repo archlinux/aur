@@ -12,7 +12,6 @@ pkgbase = stoq
 	depends = stoqdrivers
 	depends = ntp
 	depends = python2-zope-interface
-	depends = postgresql
 	depends = postgresql-libs
 	depends = python2-poppler
 	depends = python2-weasyprint
