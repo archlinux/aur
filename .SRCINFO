@@ -24,29 +24,26 @@ pkgbase = jdk-devel
 	provides = java-web-start-jre=11
 	provides = java-environment-jdk=11
 	provides = java-openjfx=11
-	conflicts = java-runtime-jre=11
-	conflicts = java-environment-jdk=11
+	provides = jdk11
+	conflicts = jdk11
 	options = !strip
 	backup = etc/java-jdk11/management/jmxremote.access
 	backup = etc/java-jdk11/management/management.properties
 	backup = etc/java-jdk11/security/java.policy
 	backup = etc/java-jdk11/security/java.security
 	backup = etc/java-jdk11/security/javaws.policy
-	backup = etc/java-jdk11/fontconfig.properties.src
 	backup = etc/java-jdk11/logging.properties
 	backup = etc/java-jdk11/net.properties
-	backup = etc/java-jdk11/psfont.properties.ja
-	backup = etc/java-jdk11/psfontj2d.properties
 	backup = etc/java-jdk11/sound.properties
 	source = https://download.java.net/java/early_access/jdk11/5/BCL/jdk-11-ea+5_linux-x64_bin.tar.gz
-	source = jconsole-jdk11.desktop
-	source = jmc-jdk11.desktop
-	source = policytool-jdk11.desktop
+	source = jconsole.desktop
+	source = jmc.desktop
+	source = policytool.desktop
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
 	sha256sums = e4b138d6f741a5c8b76adde8adaf2ef6c11e4d73e3dad5207698ba56b1ac7832
-	sha256sums = 04c9eda961ab7188a2d047c3c90f3e7e6622b7f301df2dd42f889f6846af8d90
-	sha256sums = b7d170dfec71c54841b56d980e5e1ae98b7f7bb9b9b3ac175fd067f09c7ad73c
-	sha256sums = 629a0570d23fbde46224cb2495759b4728f30f40b5e5102ee90dc1352fb3e9d7
+	sha256sums = 7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034
+	sha256sums = bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5
+	sha256sums = 79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jdk-devel

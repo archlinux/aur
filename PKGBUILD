@@ -4,6 +4,7 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=11
 _build=5
+_jname=${_pkgname}${_major}
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
@@ -16,128 +17,112 @@ optdepends=('alsa-lib: for basic sound support'
             'gtk2: for Gtk+ look and feel (desktop)')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major"
-          "java-openjfx=$_major")
-conflicts=("java-runtime-jre=$_major" "java-environment-jdk=$_major")
-
-# Variables
-_jname=${_pkgname}${_major}
+          "java-openjfx=$_major" "$_jname")
+conflicts=("$_jname")
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
-
 backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
         "etc/java-$_jname/security/java.policy"
         "etc/java-$_jname/security/java.security"
         "etc/java-$_jname/security/javaws.policy"
-        "etc/java-$_jname/fontconfig.properties.src"
         "etc/java-$_jname/logging.properties"
         "etc/java-$_jname/net.properties"
-        "etc/java-$_jname/psfont.properties.ja"
-        "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
-        "jconsole-$_jname.desktop"
-        "jmc-$_jname.desktop"
-        "policytool-$_jname.desktop"
+        "jconsole.desktop"
+        "jmc.desktop"
+        "policytool.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('e4b138d6f741a5c8b76adde8adaf2ef6c11e4d73e3dad5207698ba56b1ac7832'
-            '04c9eda961ab7188a2d047c3c90f3e7e6622b7f301df2dd42f889f6846af8d90'
-            'b7d170dfec71c54841b56d980e5e1ae98b7f7bb9b9b3ac175fd067f09c7ad73c'
-            '629a0570d23fbde46224cb2495759b4728f30f40b5e5102ee90dc1352fb3e9d7'
+            '7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034'
+            'bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5'
+            '79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
-    cd $_pkgname-$_major
+  cd $_pkgname-$_major
 
-    msg2 "Creating directory structure..."
-    install -d "$pkgdir"/etc/.java/.systemPrefs
-    install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
-    install -d "$pkgdir"/usr/lib/mozilla/plugins
-    install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
+  msg2 "Creating directory structure..."
+  install -d "$pkgdir"/etc/.java/.systemPrefs
+  install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
+  install -d "$pkgdir"/usr/lib/mozilla/plugins
+  install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
-    msg2 "Removing redundancies..."
-    rm -r lib/desktop/icons/HighContrast
-    rm -r lib/desktop/icons/HighContrastInverse
-    rm -r lib/desktop/icons/LowContrast
-    rm    lib/fontconfig.*.bfc
-    rm    lib/fontconfig.*.properties.src
+  msg2 "Removing redundancies..."
+  rm -r lib/desktop/icons/HighContrast
+  rm -r lib/desktop/icons/HighContrastInverse
+  rm -r lib/desktop/icons/LowContrast
+  rm  lib/fontconfig.*.bfc
+  rm  lib/fontconfig.*.properties.src
 
-    msg2 "Moving contents..."
-    mv * "$pkgdir"/$_jvmdir
+  msg2 "Moving contents..."
+  mv * "$pkgdir"/$_jvmdir
 
-    # Cd to the new playground
-    cd "$pkgdir"/$_jvmdir
+  # Cd to the new playground
+  cd "$pkgdir"/$_jvmdir
 
-    # Create a placeholder 'jre' link
-    ln -s . jre
+  msg2 "Fixing directory structure..."
+  # Create a placeholder 'jre' link
+  ln -s . jre
 
-    msg2 "Fixing directory structure..."
-    # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
-    for i in $(find lib/desktop/ -type f); do
-        rename -- "." "-$_jname." $i
-    done
+  # Fix bundled .desktops
+  sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
+      -e "s|Name=JavaWS|Name=JavaWS $_major|" \
+      -e "s|Comment=Java|Comment=Java $_major|" \
+      -e "s|Exec=|Exec=$_jvmdir/bin/|" \
+      -e "s|.png|-$_jname.png|" \
+      -i lib/desktop/applications/*
 
-    # Link missing icons
-    for i in $(find lib/desktop/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
-        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
-        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
-    done
+  # Move .desktops + icons to /usr/share
+  mv lib/desktop/* "$pkgdir"/usr/share/
+  install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
 
-    # Fix .desktop's
-    sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
-        -e "s|Name=JavaWS|Name=JavaWS $_major|" \
-        -e "s|Comment=Java|Comment=Java $_major|" \
-        -e "s|Exec=|Exec=$_jvmdir/bin/|" \
-        -e "s|.png|-$_jname.png|" \
-    -i lib/desktop/applications/*
+  # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
+  for i in $(find "$pkgdir"/usr/share/ -type f); do
+    rename -- "." "-$_jname." $i
+  done
 
-    # Move .desktops + icons to /usr/share
-    mv lib/desktop/* "$pkgdir"/usr/share/
-    install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
+  # Write versions to .desktops + .install
+  sed -i "s/<version>/$_major/" "$pkgdir"/usr/share/applications/* "$startdir"/$pkgname.install
 
-    # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/conf -> /etc
-    for old_usr_path in $(find conf/ -type f); do
-        # New location
-        new_etc_path="/etc/java-$_jname/${old_usr_path/conf\/}"
+  # Link missing icons
+  for i in $(find "$pkgdir"/usr/share/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
+    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
+    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
+  done
 
-        # Move /link
-        install -Dm644 "$old_usr_path" "$pkgdir/$new_etc_path"
-        ln -sf "$new_etc_path" "$old_usr_path"
-    done
+  # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/conf -> /etc
+  for sub_path in $(find conf/ -type f); do
+    # New location
+    new_etc_path="/etc/java-$_jname/${sub_path/conf\/}"
 
-    # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/lib -> /etc
-    for new_etc_path in ${backup[@]}; do
-        # Old location
-        old_usr_path="lib/${new_etc_path#*$_jname/}"
+    # Move & link
+    install -Dm644 "$sub_path" "$pkgdir/$new_etc_path"
+    ln -sf "$new_etc_path" "$sub_path"
+  done
 
-        # Move/link
-        if [[ -f $old_usr_path ]]; then
-            install -Dm644 "$old_usr_path" "$pkgdir/$new_etc_path"
-            ln -sf "/$new_etc_path" "$old_usr_path"
-        fi
-    done
+  # Link NPAPI plugin
+  ln -sf $_jvmdir/lib/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
-    # Link NPAPI plugin
-    ln -sf $_jvmdir/lib/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
+  # Replace JKS keystore with 'ca-certificates-java'
+  ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
-    # Replace JKS keystore with 'ca-certificates-java'
-    ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
+  # Move & link licenses
+  mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+  install -m644 "$srcdir"/LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+  ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
-    # Move/link licenses
-    mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    install -m644 "$srcdir"/LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
-
-    msg2 "Enabling copy+paste in unsigned applets..."
-    # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
-    # - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
-    # - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
-    _line=$(awk '/permission/{a=NR}; END{print a}' "$pkgdir"/etc/java-$_jname/security/java.policy)
-    sed "$_line a\\\\n \
-        // (AUR) Allow unsigned applets to read system clipboard, see:\n \
-        // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java\n \
-        // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html\n \
-        permission java.awt.AWTPermission \"accessClipboard\";" \
+  msg2 "Enabling copy+paste in unsigned applets..."
+  # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
+  # - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
+  # - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
+  _line=$(awk '/permission/{a=NR}; END{print a}' "$pkgdir"/etc/java-$_jname/security/java.policy)
+  sed "$_line a\\\\n \
+    // (AUR) Allow unsigned applets to read system clipboard, see:\n \
+    // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java\n \
+    // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html\n \
+    permission java.awt.AWTPermission \"accessClipboard\";" \
     -i "$pkgdir"/etc/java-$_jname/security/java.policy
 }
