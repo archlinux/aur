@@ -1,14 +1,15 @@
 pkgname=passff-host
-pkgver=1.1
+pkgver=1.0.1
 pkgrel=1
+epoch=1 # split off from passff addon versioning
 pkgdesc="PassFF native messaging host application for Firefox, Chromium, Chrome, Vivaldi"
-pkgurl=https://github.com/passff/passff
+url=https://github.com/passff/passff-host
 license=(GPL2)
 depends=(python)
 arch=(i686 x86_64)
 source=(
-	passff-$pkgver.py::https://github.com/passff/passff/releases/download/$pkgver/passff.py
-	passff-$pkgver.json::https://github.com/passff/passff/releases/download/$pkgver/passff.json
+	passff-$pkgver.py::https://github.com/passff/passff-host/releases/download/$pkgver/passff.py
+	passff-$pkgver.json::https://github.com/passff/passff-host/releases/download/$pkgver/passff.json
 )
 
 _native_messaging=(
@@ -35,5 +36,5 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-md5sums=('9393b1628ba8dfa67f1a214eadfc4a05'
+md5sums=('76ff18623c02d8c97a23a7994d047605'
          '2512ca1ab6da1c8fcfdfc4e7dd5a2fe8')
