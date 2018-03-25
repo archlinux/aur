@@ -1,8 +1,0 @@
-[Desktop Entry]
-Exec=/usr/lib/jvm/java-11-jre/jre/bin/policytool
-Icon=sun-java-jre11
-Name=Java 11 Policy Settings
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Settings;Java;
