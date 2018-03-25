@@ -49,8 +49,8 @@ build() {
       <config.in >"distccd-${_subarchs[$i]}.conf"
 
     # make readme.install
-    sed -e "s/@VERS@/${_subarchs[$i]}/" \
-      -e "s/@PORT@/${_port[$i]}/" \
+    sed -e "s/@VERS@/${_subarchs[$i]}/g" \
+      -e "s/@PORT@/${_port[$i]}/g" \
       <readme.in >../"${_subarchs[$i]}".install
   done
 }
