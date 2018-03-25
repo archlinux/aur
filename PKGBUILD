@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-lame
 pkgver=3.100
-pkgrel=3
+pkgrel=4
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -12,15 +12,18 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'nasm')
 license=('LGPL')
 source=("http://downloads.sourceforge.net/lame/lame-$pkgver.tar.gz"
-        "mingw.patch")
+        "mingw.patch"
+        "0007-revert-posix-code.patch")
 md5sums=('83e260acbe4389b54fe08e0bdbf7cddb'
-         'df7981d86c7539eb26f91a2aa4b699f9')
+         'df7981d86c7539eb26f91a2aa4b699f9'
+         '43349a9207e41fc8ff4debde6c4b9dad')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
    cd ${srcdir}/lame-${pkgver}
 
    patch -Np1 -i "${srcdir}/mingw.patch"
+   patch -Np1 -i "${srcdir}/0007-revert-posix-code.patch"
 }
 
 build() {
