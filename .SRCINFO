@@ -1,6 +1,6 @@
 pkgbase = python-osprofiler
 	pkgdesc = Library for cross-project profiling library
-	pkgver = 1.15.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://docs.openstack.org/developer/osprofiler/
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = python-osprofiler
 	makedepends = python2-oslo-serialization
 	makedepends = python-prettytable
 	makedepends = python2-prettytable
-	source = git+https://git.openstack.org/openstack/osprofiler#tag=1.15.1
+	source = git+https://git.openstack.org/openstack/osprofiler#tag=2.0.0
 	sha256sums = SKIP
 
 pkgname = python-osprofiler

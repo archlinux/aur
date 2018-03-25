@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='osprofiler'
 pkgname=('python-osprofiler' 'python2-osprofiler')
-pkgver='1.15.1'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
