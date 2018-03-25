@@ -1,7 +1,7 @@
 pkgbase = luxrays-hg
 	pkgdesc = Accelerate the ray intersection process by using GPUs
-	pkgver = 3752+.36522ab16096+
-	pkgrel = 1
+	pkgver = 3755+.ceb10f796325+
+	pkgrel = 2
 	url = http://www.luxrender.net/
 	arch = x86_64
 	license = GPL
@@ -29,8 +29,10 @@ pkgbase = luxrays-hg
 	options = staticlibs
 	source = luxrays::hg+https://bitbucket.org/luxrender/luxrays#branch=default
 	source = force_python3.diff
+	source = embree2-bvh.patch
 	md5sums = SKIP
 	md5sums = ba9a42dbe073009189c6d21845bff767
+	md5sums = e6be00520ee90bdd24d1d7d0b31f3429
 
 pkgname = luxrays-hg
 

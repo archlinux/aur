@@ -1,0 +1,47 @@
+diff -r 46e269afdd30 include/luxrays/accelerators/embreeaccel.h
+--- a/include/luxrays/accelerators/embreeaccel.h	Tue Aug 08 19:03:07 2017 +0200
++++ b/include/luxrays/accelerators/embreeaccel.h	Tue Oct 03 10:29:50 2017 +0200
+@@ -21,8 +21,8 @@
+ 
+ #include <boost/thread.hpp>
+ 
+-#include <embree2/rtcore.h>
+-#include <embree2/rtcore_ray.h>
++#include <embree2-bvh/rtcore.h>
++#include <embree2-bvh/rtcore_ray.h>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/core/accelerator.h"
+diff -r 46e269afdd30 src/luxrays/core/bvh/bvhembreebuild.cpp
+--- a/src/luxrays/core/bvh/bvhembreebuild.cpp	Tue Aug 08 19:03:07 2017 +0200
++++ b/src/luxrays/core/bvh/bvhembreebuild.cpp	Tue Oct 03 10:29:50 2017 +0200
+@@ -22,8 +22,8 @@
+ #include <boost/foreach.hpp>
+ #include <boost/thread/mutex.hpp>
+ 
+-#include <embree2/rtcore.h>
+-#include <embree2/rtcore_bvh_builder.h>
++#include <embree2-bvh/rtcore.h>
++#include <embree2-bvh/rtcore_bvh_builder.h>
+ 
+ #include "luxrays/core/bvh/bvhbuild.h"
+ 
+diff -r 46e269afdd30 cmake/Packages/FindEmbree.cmake
+--- a/cmake/Packages/FindEmbree.cmake	Tue Aug 08 19:03:07 2017 +0200
++++ b/cmake/Packages/FindEmbree.cmake	Tue Oct 03 10:36:59 2017 +0200
+@@ -14,13 +14,13 @@
+ ## limitations under the License.                                           ##
+ ## ======================================================================== ##
+ 
+-FIND_PATH(EMBREE_INCLUDE_PATH embree2/rtcore.h
++FIND_PATH(EMBREE_INCLUDE_PATH embree2-bvh/rtcore.h
+ 	/usr/include
+ 	/usr/local/include
+ 	/opt/local/include
+ 	${EMBREE_ROOT}/include)
+ 
+-FIND_LIBRARY(EMBREE_LIBRARY NAMES embree libembree.so.2 PATHS 
++FIND_LIBRARY(EMBREE_LIBRARY NAMES libembree.so.2.8.0 PATHS 
+ 	/usr/lib 
+ 	/usr/local/lib 
+ 	/opt/local/lib
