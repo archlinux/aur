@@ -20,20 +20,18 @@ pkgbase = jre
 	provides = java-runtime-headless-jre=10
 	provides = java-web-start-jre=10
 	provides = java-openjfx=10
-	conflicts = java-runtime-jre=10
+	provides = jre10
+	conflicts = jre10
 	backup = etc/java-jre10/management/jmxremote.access
 	backup = etc/java-jre10/management/management.properties
 	backup = etc/java-jre10/security/java.policy
 	backup = etc/java-jre10/security/java.security
 	backup = etc/java-jre10/security/javaws.policy
-	backup = etc/java-jre10/fontconfig.properties.src
 	backup = etc/java-jre10/logging.properties
 	backup = etc/java-jre10/net.properties
-	backup = etc/java-jre10/psfont.properties.ja
-	backup = etc/java-jre10/psfontj2d.properties
 	backup = etc/java-jre10/sound.properties
 	source = http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jre-10_linux-x64_bin.tar.gz
-	source = policytool-jre10.desktop
+	source = policytool.desktop
 	sha256sums = 9c147ae25aceccf5bc2c9a878d0e7e5885b21ffbd861db6f8241d10915e38ab2
 	sha256sums = 175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f
 
