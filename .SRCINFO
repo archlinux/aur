@@ -10,6 +10,10 @@ pkgbase = vapoursynth-plugin-znedi3-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-znedi3
 	conflicts = vapoursynth-plugin-znedi3
+	source = git+https://github.com/sekrit-twc/znedi3.git
+	source = git+https://github.com/sekrit-twc/vsxx.git
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = vapoursynth-plugin-znedi3-git
 

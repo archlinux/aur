@@ -14,8 +14,10 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=()
-sha1sums=()
+source=("git+https://github.com/sekrit-twc/znedi3.git"
+        "git+https://github.com/sekrit-twc/vsxx.git")
+sha1sums=('SKIP'
+          'SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -23,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-	git clone --recursive https://github.com/sekrit-twc/znedi3
+  mv ${srcdir}/vsxx ${srcdir}/${_plug}/
 }
 
 build() {
