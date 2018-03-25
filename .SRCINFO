@@ -1,16 +1,14 @@
 pkgbase = libeatmydata
-	pkgdesc = library and utilities designed to disable fsync and friends
-	pkgver = 105
-	pkgrel = 3
-	url = https://launchpad.net/libeatmydata
+	pkgdesc = Library and utilities designed to disable fsync and friends.
+	pkgver = 105.r15.g1e5ae05
+	pkgrel = 1
+	url = https://github.com/stewartsmith/libeatmydata
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	conflicts = eatmydata
-	source = https://launchpad.net/libeatmydata/trunk/release-105/+download/libeatmydata-105.tar.gz
-	source = eatmydata.patch
-	md5sums = 6681166466e589eb0d71177709361256
-	md5sums = c6715ae1204201921af34a374886eea0
+	source = git+https://github.com/stewartsmith/libeatmydata/#commit=1e5ae05a3a03c1a94fa16ed9563a45d3e97062d1
+	md5sums = SKIP
 
 pkgname = libeatmydata
 
