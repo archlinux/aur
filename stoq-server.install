@@ -82,21 +82,21 @@ dbusername = stoqserver
 key = 
 EOF
   fi
-  
-  # Create stoqserver user if it doesn't exist
-  echo 'files = /etc/supervisor/conf.d/*.conf' » /etc/supervisord.conf
-  
+    
   # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
     groupadd stoqserver
+    useradd -m -s /bin/bash stoqserver
+    gpasswd -a stoqserver stoqserver
+    gpasswd -a postgres stoqserver
   fi
+  
   if ! getent passwd stoqserver >/dev/null; then
     useradd -c 'stoqserver user' -g stoqserver -d '/usr/share/stoqserver' -s /bin/bash stoqserver
     passwd -l stoqserver >/dev/null
   fi
   
   # Fix directory permissions
-  chown -R postgres:stoqserver /usr/share/stoqserver
   chown -R stoqserver:stoqserver /usr/share/stoqserver
 }
 
