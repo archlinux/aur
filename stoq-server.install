@@ -4,7 +4,7 @@ post_install() {
     mkdir -p '/usr/share/stoqserver'    
   fi
   
-  #Crete script stoqsconf.sh
+  #Crete script stoqsconf
   if [ ! -d '/usr/share/stoqserver/stoqsconf' ]; then
     cat << 'EOF' > /usr/bin/stoqsconf
 #!/bin/bash
@@ -48,7 +48,7 @@ else
     PG_PASSWORD="`cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c32`"
     psql -p $PORT -c "ALTER USER stoqserver WITH PASSWORD '${PG_PASSWORD}';"
     echo "*:*:*:stoqserver:${PG_PASSWORD}" > ${DIR}/.pgpass
-    #chmod 0600 ${DIR}/.pgpass
+    chmod 0600 ${DIR}/.pgpass
   fi
 
   #Create a ssh key for remote support
@@ -84,6 +84,9 @@ EOF
   fi
   
   # Create stoqserver user if it doesn't exist
+  echo 'files = /etc/supervisor/conf.d/*.conf' » /etc/supervisord.conf
+  
+  # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
     groupadd stoqserver
   fi
@@ -93,6 +96,7 @@ EOF
   fi
   
   # Fix directory permissions
+  chown -R postgres:stoqserver /usr/share/stoqserver
   chown -R stoqserver:stoqserver /usr/share/stoqserver
 }
 
