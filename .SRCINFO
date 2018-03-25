@@ -1,7 +1,7 @@
 pkgbase = insync
 	pkgdesc = An unofficial Google Drive client that runs on Linux, with support for various desktops
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.insynchq.com/downloads
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = insync
 	depends = python2
 	optdepends = sni-qt: system tray icon
 	options = !strip
-	options = !upx
 	source = insync@.service
 	source = insync.service
 	sha256sums = cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598
