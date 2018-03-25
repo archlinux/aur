@@ -1,20 +1,20 @@
-# Maintainer: zach <zach {at} zach-adams {dot} com>
-# Maintainer: arunj
-# Maintainer: shaggytwodope
+# Maintainer: Pablo Arias <pabloariasal@gmail.com>
+# Contributor: zach <zach {at} zach-adams {dot} com>
+# Contributor: arunj
+# Contributor: shaggytwodope
 
 pkgname=imgp
 _pkgauthor=jarun
-pkgver=2.4.1
+pkgver=2.5
 pkgrel=1
-pkgdesc="Resize or rotate JPEG and PNG images. Official releases only."
+pkgdesc="Multi-core batch image resizer and rotator"
 arch=('any')
 url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('GPL3')
 depends=('python' 'python-pillow')
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/v$pkgver.tar.gz")
 conflicts=('imgp-git')
-provides=('imgp')
-sha256sums=('5679ba127b4ea74a2ef4caf0749b67392ea02f0fe73bdc828b1cb24b2d191e07')
+sha256sums=('6f810104f80f23c1c0967e156921b971947e902d6809c5dae2885777c996eae0')
 
 package() {
 	make -C "${pkgname}-$pkgver" DESTDIR="${pkgdir}" PREFIX="/usr" install
