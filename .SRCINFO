@@ -1,0 +1,15 @@
+pkgbase = brother-mfc-l2713dw
+	pkgdesc = Brother MFC-L2713DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = perl
+	source = http://download.brother.com/welcome/dlf103523/mfcl2713dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = 55dafceb443cd4b0b7558652e4c30cdc420f1706756c4e0ae09de88644224aa3
+
+pkgname = brother-mfc-l2713dw
+
