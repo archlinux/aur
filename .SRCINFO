@@ -14,9 +14,7 @@ pkgbase = python2-influxdb
 	optdepends = python2-pandas
 	options = !emptydirs
 	source = https://github.com/influxdb/influxdb-python/archive/v5.0.0.tar.gz
-	source = LICENSE
 	sha256sums = 7ff7427fb90dcdedc44b68def0d9a04b800d0ddf842fadd51d03034708b8dce0
-	sha256sums = 70146f78d168b33ac5903490a918469e22a801a8d3a81103f3d8706dc0024c9a
 
 pkgname = python2-influxdb
 
