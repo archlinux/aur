@@ -16,7 +16,6 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$_pkgname/src"
-  sed -i.bak -e 's/uname -i/uname -m/' Makefile
   make
 }
 
