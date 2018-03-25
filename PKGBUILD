@@ -2,8 +2,8 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers-git
 _pkgname=xde-helpers
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 arch=('any')
 license=('GPL')
 url="http://github.com/bbidulock/xde-helpers"
