@@ -2,7 +2,7 @@
 
 pkgname=python2-jaydebeapi
 _pkgname="${pkgname/*-/}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A bridge from JDBC database drivers to Python DB-API"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python2')
 depends=('python2' 'python2-jpype1' 'python2-setuptools')
 source=("JayDeBeApi-${pkgver}.tar.gz"::"https://github.com/baztian/jaydebeapi/archive/v${pkgver}.tar.gz")
-sha256sums=('1afeda27b8f0deced1a15978bf750f8267e10a6475cc02e367f7ab5612dbbdb0')
+sha256sums=('31e6eaea0beb772d66250289741486602364c5bcf8d511cefefcb55e3346066f')
 
 build() { 
   cd "${_pkgname}-${pkgver}"
