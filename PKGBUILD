@@ -4,16 +4,16 @@
 pkgname=fontconfig-infinality-ultimate
 _basename=fontconfig
 pkgdesc="A library for configuring and customizing font access, optimized for freetype2-infinality-ultimate."
-date=20171017
+date=20180325
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.12.6+5+g665584a
+pkgver=2.13.0
 pkgrel=1
 _commit=665584a19b0ec227c93643ffb0540d11ac8ecf7f
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
-depends=('expat' 'freetype2-infinality-ultimate')
-makedepends=('gperf' 'python-lxml')
+depends=('expat' 'freetype2')
+makedepends=('gperf' 'python-lxml' 'python-six')
 options=('libtool')
 provides=('fontconfig=$pkgver' 'fontconfig-infinality' 'fontconfig-infinality-ultimate')
 conflicts=('fontconfig' 'fontconfig-infinality' 'fontconfig-infinality-git' 'fontconfig-infinality-ultimate-git')
@@ -28,7 +28,7 @@ backup=('etc/fonts/fonts.conf'
         'etc/fonts/conf.avail.infinality/38-repl-webfonts-custom.conf'
         'etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf')
 install=fontconfig-ultimate.install
-source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=${_commit}"
+source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
         https://raw.githubusercontent.com/archfan/infinality_bundle/820e74be8345a0da2cdcff0a05bf5fa10fd85740/02_fontconfig-iu/fontconfig-ultimate-git.tar.bz2
         fc-cache-ib.hook
         0001-configure-${date}.patch
@@ -41,18 +41,14 @@ source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=${_commit}"
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 
-pkgver() {
-    cd ${_basename}
-      git describe --tags | sed 's/-/+/g'
-
-}
 prepare() {
 
   patches=(0001-configure-${date}.patch
            0002-configure-${date}.ac.patch
            0003-Makefile-${date}.in.patch
            0004-Makefile-${date}.conf.d.patch
-           0005-Makefile-${date}.am.in.patch)
+           0005-Makefile-${date}.am.in.patch
+		   )
 
   # copy fontconfig-ib patches & stuff
   cd "${_basename}-ultimate-git" 
@@ -121,8 +117,8 @@ package() {
 sha256sums=('SKIP'
             'b4977cfb0dc64167be3b58ae63022ffb2648e08519b0c061ee2ca43620d8b980'
             '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3'
-            '7cb8401c2acbc4ac7a9e4a948a4b04d3b5446cb1153fab351c8d92d1306719ac'
+            '7a0597c3a926176b5c844aa15f3fc98007398eb24db336b059c30f1cec8510cf'
             'ba8815b38d5d6e307d2107966c8b2ce0d2d48212ab99b55a56c6d66621b705ce'
-            '253392c84479aa2b539a0cac4311a28a30663fd806bfe40bd9e8284a9e194431'
-            '8ee8dd7ee5b85ab410dc59127db8fc09ba2a1070949fa2e03b9ddeb43c8466a8'
-            '82dfce9f9e3c340ff075b6a4957004fdcaa765b94c1a0aca74f0159fa5e18db1')
+            '039f53ede54db124ab55bf084c22359bf31e667e18e0abf660ce4b450610ae49'
+            '6d1296fa0d86b95b41017e0c424c1cffea85606edaf80ed5e1d52b1d21486e5d'
+            '61d6c1ecd4516a4b836c0dea3e0f70a4703ca326ffc830e9c135f907c464cfae')

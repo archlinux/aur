@@ -1,23 +1,24 @@
-From 8021f934890cb3c9c3f6dd626c73f8f33f010586 Mon Sep 17 00:00:00 2001
+From f7e2933b792c7f7d55fac0c99a4426437f07854f Mon Sep 17 00:00:00 2001
 From: Solomon Choina <shlomochoina@gmail.com>
-Date: Tue, 17 Oct 2017 13:25:52 -0400
-Subject: [PATCH] Makefile-20171017.conf.d
+Date: Sun, 25 Mar 2018 16:26:59 -0400
+Subject: [PATCH] Makefile-20180325.conf.d
 
 ---
- conf.d/Makefile.am | 42 +-----------------------------------------
- conf.d/Makefile.in | 30 +++---------------------------
- 2 files changed, 4 insertions(+), 68 deletions(-)
+ conf.d/Makefile.am | 42 ++----------------------------------------
+ conf.d/Makefile.in | 28 +++-------------------------
+ 2 files changed, 5 insertions(+), 65 deletions(-)
 
 diff --git a/conf.d/Makefile.am b/conf.d/Makefile.am
-index ff03fb2..d37ecb9 100644
+index ff03fb2..a892b04 100644
 --- a/conf.d/Makefile.am
 +++ b/conf.d/Makefile.am
-@@ -21,29 +21,9 @@
+@@ -21,28 +21,10 @@
  #  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  #  PERFORMANCE OF THIS SOFTWARE.
  
 -BUILT_SOURCES = README
 -DOC_SOURCES = README.in
++
  DOC_FILES = $(DOC_SOURCES:.in=)
  
 -CONF_LINKS = \
@@ -38,12 +39,11 @@ index ff03fb2..d37ecb9 100644
 -	69-unifont.conf \
 -	80-delicious.conf \
 -	90-synthetic.conf
--
-+CONF_LINKS =
++CONF_LINKS = 
+ 
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
- 
-@@ -87,24 +67,4 @@ template_DATA =				\
+@@ -87,24 +69,4 @@ template_DATA =				\
  	80-delicious.conf		\
  	90-synthetic.conf
  
@@ -69,10 +69,10 @@ index ff03fb2..d37ecb9 100644
 -
  -include $(top_srcdir)/git.mk
 diff --git a/conf.d/Makefile.in b/conf.d/Makefile.in
-index 017b626..aee1797 100644
+index 2c33f6f..7f6ddeb 100644
 --- a/conf.d/Makefile.in
 +++ b/conf.d/Makefile.in
-@@ -175,7 +175,7 @@ am__uninstall_files_from_dir = { \
+@@ -180,7 +180,7 @@ am__uninstall_files_from_dir = { \
      || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
           $(am__cd) "$$dir" && rm -f $$files; }; \
    }
@@ -81,7 +81,7 @@ index 017b626..aee1797 100644
  DATA = $(config_DATA) $(template_DATA)
  am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
  am__DIST_COMMON = $(srcdir)/Makefile.in README
-@@ -349,28 +349,8 @@ target_alias = @target_alias@
+@@ -367,27 +367,8 @@ target_alias = @target_alias@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -106,12 +106,11 @@ index 017b626..aee1797 100644
 -	69-unifont.conf \
 -	80-delicious.conf \
 -	90-synthetic.conf
--
 +CONF_LINKS = 
+ 
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
- configdir = $(CONFIGDIR)
-@@ -535,7 +515,7 @@ check: $(BUILT_SOURCES)
+@@ -553,7 +534,7 @@ check: $(BUILT_SOURCES)
  	$(MAKE) $(AM_MAKEFLAGS) check-am
  all-am: Makefile $(DATA)
  installdirs:
@@ -120,11 +119,10 @@ index 017b626..aee1797 100644
  	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
  	done
  install: $(BUILT_SOURCES)
-@@ -657,10 +637,6 @@ uninstall-am: uninstall-configDATA uninstall-local \
- 
+@@ -676,9 +657,6 @@ uninstall-am: uninstall-configDATA uninstall-local \
  .PRECIOUS: Makefile
  
--
+ 
 -README: $(srcdir)/README.in
 -	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
 -
@@ -132,5 +130,5 @@ index 017b626..aee1797 100644
  	mkdir -p $(DESTDIR)$(configdir)
  	@(echo cd $(DESTDIR)$(configdir);			\
 -- 
-2.14.2
+2.16.3
 
