@@ -1,7 +1,7 @@
 pkgbase = python-oslo-log
 	pkgdesc = Oslo Log library
-	pkgver = 3.36.0
-	pkgrel = 2
+	pkgver = 3.37.0
+	pkgrel = 1
 	url = https://docs.openstack.org/developer/oslo.log/
 	arch = any
 	license = Apache
@@ -31,10 +31,10 @@ pkgbase = python-oslo-log
 	makedepends = python2-pyinotify
 	makedepends = python-dateutil
 	makedepends = python2-dateutil
-	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.36.0
+	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.37.0
 	source = temporarily-remove-failing-py3.6-tests.patch
-	sha256sums = SKIP
-	sha256sums = 8527324f20d757ecccfcefae04497a01fff22ec92f4c2cd0f9baf1091a211799
+	sha512sums = SKIP
+	sha512sums = 374aba2c8d8533e32ffc963263349b782eaf4855c6683589d8a0f8f3277fc17c4801761412a4624a4840c034dc60e9b6da53ccf493fa21ea19abe1bbe7333e70
 
 pkgname = python-oslo-log
 	depends = python-six

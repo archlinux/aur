@@ -1,8 +1,9 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
+
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
-pkgver='3.36.0'
-pkgrel='2'
+pkgver='3.37.0'
+pkgrel='1'
 pkgdesc='Oslo Log library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
@@ -22,8 +23,8 @@ checkdepends=('python-mock' 'python2-mock'
               'python2-unittest2')
 source=("git+https://git.openstack.org/openstack/${_module}#tag=${pkgver}"
         'temporarily-remove-failing-py3.6-tests.patch')
-sha256sums=('SKIP'
-            '8527324f20d757ecccfcefae04497a01fff22ec92f4c2cd0f9baf1091a211799')
+sha512sums=('SKIP'
+            '374aba2c8d8533e32ffc963263349b782eaf4855c6683589d8a0f8f3277fc17c4801761412a4624a4840c034dc60e9b6da53ccf493fa21ea19abe1bbe7333e70')
 
 prepare() {
   cp -a "${srcdir}/${_module}"{,-py2}
