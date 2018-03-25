@@ -7,7 +7,7 @@ pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20180125
 pkgver=7.2.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
@@ -20,19 +20,22 @@ source=(
 "x-tools6h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
 "x-tools7h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools7h.tar.xz"
  "x-tools8-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools8.tar.xz"
-'config.in' 'service.in')
+'config.in' 'service.in' 'readme.in'
+)
 md5sums=('4ebc6a96fefd5f11c502620b5b26653a'
          'bee63a7fc40b0379a7935d26db03b941'
          '4a934847291fc7469c3ef26e4ada0ba0'
          '6af0035de121c0b962a78bb0cb45ff71'
-         '48b71f968488a4322a715d633eb6879e'
-         '7e664f8ce386f467f1a7381c9ac3c06f')
+         '6250a214faeda10c822899f39635e71e'
+         '7e664f8ce386f467f1a7381c9ac3c06f'
+         '70b19b3c626d058edc9769465bd934e0')
 
 build() {
   # setup config and services
   _path=('' '6h' '7h' '8')
   _name=('arm-unknown-linux-gnueabi' 'arm-unknown-linux-gnueabihf'
   'arm-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnueabi')
+  _port=('3633' '3643' '3635' '3636')
 
   for i in 0 1 2 3; do
     # make service units
@@ -42,7 +45,13 @@ build() {
     sed -e "s/@VERS@/${_path[$i]}/" \
       -e "s/@PATH@/${_name[$i]}/" \
       -e "s/@LOG@/${_subarchs[$i]}/" \
+      -e "s/@PORT@/${_port[$i]}/" \
       <config.in >"distccd-${_subarchs[$i]}.conf"
+
+    # make readme.install
+    sed -e "s/@VERS@/${_subarchs[$i]}/" \
+      -e "s/@PORT@/${_port[$i]}/" \
+      <readme.in >../"${_subarchs[$i]}".install
   done
 }
 
@@ -50,6 +59,8 @@ _package_subarch() {
   # backup configs
   backup=("etc/conf.d/distccd-$1")
   pkgdesc="A toolchain for Arch ARM $1 builds via distcc"
+  install="$1.install"
+
   # install symlink to distccd
   install -d "${pkgdir}/usr/bin"
   ln -sf /usr/bin/distccd "${pkgdir}/usr/bin/distccd-$1"
