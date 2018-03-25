@@ -2,8 +2,9 @@
 pkgname=xde-panel
 cpanname=XDE-Panel
 pkgver=0.01.7
-pkgrel=2
+pkgrel=3
 pkgdesc="PerlPanel wrapper for the X Desktop Environment"
+groups=('xde')
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
