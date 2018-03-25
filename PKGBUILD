@@ -7,7 +7,7 @@ pkgdesc="Stoq Retail Management System."
 arch=('any')
 url="https://github.com/stoq/${pkgname}"
 license=('LGPL')
-depends=('python2' 'python2-service_identity' 'kiwi' 'stoqdrivers' 'ntp' 'python2-zope-interface' 'postgresql-libs' 
+depends=('python2' 'python2-service_identity' 'kiwi' 'stoqdrivers' 'ntp' 'python2-zope-interface' 'postgresql' 'postgresql-libs' 
 'python2-poppler' 'python2-weasyprint' 'python2-dateutil' 'python2-pillow' 'python2-gudev' 'python2-mako' 
 'python2-psycopg2' 'python2-storm' 'pywebkitgtk' 'python2-xlwt' 'iso-codes' 'pygtk' 'python2-pyinotify' 
 'python2-reportlab' 'python2-cairo' 'python2-twisted' 'python2-pyopenssl' 'python2-lxml' 'python2-cryptography' 
