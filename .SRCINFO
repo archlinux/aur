@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna
 	pkgdesc = A small DLNA server which brings DLNA/UPnP support to PulseAudio
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/masmu/pulseaudio-dlna
 	arch = i686
 	arch = x86_64
