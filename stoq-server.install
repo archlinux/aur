@@ -85,21 +85,14 @@ EOF
     
   # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
-    groupadd stoqserver
-    useradd -m -s /bin/bash stoqserver
-    gpasswd -a stoqserver stoqserver
-    
+    useradd -d '/usr/share/stoqserver' -s / bin/bash stoqserver
+    passwd -l stoqserver >/dev/null
   fi
   
   if getent group stoqserver | grep &>/dev/null "postgres"; then
     gpasswd -a postgres stoqserver
   fi
-  
-  if ! getent passwd stoqserver >/dev/null; then
-    useradd -c 'stoqserver user' -g stoqserver -d '/usr/share/stoqserver' -s /bin/bash stoqserver
-    passwd -l stoqserver >/dev/null
-  fi
-  
+    
   # Fix directory permissions
   chown -R stoqserver:stoqserver /usr/share/stoqserver
   chmod g+rwx -R /usr/share/stoqserver
