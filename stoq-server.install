@@ -85,7 +85,7 @@ EOF
     
   # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
-    useradd -d '/usr/share/stoqserver' -s / bin/bash stoqserver
+    useradd -d '/usr/share/stoqserver' -s /bin/bash stoqserver
     passwd -l stoqserver >/dev/null
   fi
   
