@@ -1,19 +1,26 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kstogram
-pkgver=2.6.7.1517
+pkgver=2.6.8.1527
 pkgrel=1
 pkgdesc="Download and backup Instagram photos shared by any user."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-stogram"
 license=('custom:eula')
 depends=('qt5-script' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'libexif' 'libjpeg9')
+makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('63cb239299f970e8c3a1b0d0d9c6ceca7deaa647bcd854cb8df48692d747e767'
+sha256sums=('f59373a0438674278ad178d1e72ba7e2caf18aba2465c7e6a244f22ba6d44eb3'
             '7970c1f1aacd5a546ca8252c2d48a874478a26e23eb57769f54c5feac7316f51'
             'b1add61c84f745911dee0672b25e021a3da0d90127843f3a814864858306ab8b')
+
+prepare() {
+  cd "${pkgname}"
+  # Remove insecure RPATH
+  chrpath --delete "${pkgname}-bin"
+}
 
 package() {
   # Install desktop file
