@@ -2,10 +2,11 @@
 
 pkgname=xde-menu
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-menu"
+groups=('xde')
 license=('GPL')
 depends=('libwnck' 'libsm' 'gnome-menus')
 optdepends=('libwnck+-git: for enhanced functionality'
