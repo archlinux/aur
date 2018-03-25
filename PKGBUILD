@@ -5,8 +5,8 @@
 _pkgname="Snap4Arduino_desktop-gnu"
 _tname="Snap4Arduino"
 pkgname="snap4arduino"
-pkgver="1.2.4"
-pkgrel="3"
+pkgver="1.2.5"
+pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.rocks/"
@@ -18,8 +18,8 @@ options=('!strip')
 source_i686=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
 source_x86_64=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('e25d5c06be8fec042d5853e73386738bfb39e6ab772cf4b95c86122468dca6ad')
-sha256sums_x86_64=('cde1c6fc16fd24e2d004c0bcc3a5156e515926a0a61305c895151b797674a705')
+sha256sums_i686=('0b2d5d17297528314d3ae7ac98930b57693b40d195c27ec33675b718215eb8a5')
+sha256sums_x86_64=('97bccc6cce186063691c72ab39eb65e0aa1c64f5445b1e4dce341bb2eeb1c8b4')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
@@ -51,7 +51,7 @@ package() {
     # Desktop file
     install -Dm 644 ${_tname}.desktop "${pkgdir}/usr/share/applications/${_tname}.desktop"
     rm ${_tname}.desktop
-    
+
     # License
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm LICENSE
