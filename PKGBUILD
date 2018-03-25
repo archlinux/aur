@@ -1,17 +1,22 @@
 pkgname=cava-gui-git
 _pkgname=cava
-pkgver=0.6.0
-pkgrel=4
+pkgver=VERSION
+pkgrel=1
 pkgdesc='Console/GUI Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
 url='https://github.com/nikp123/cava-gui'
 license=('MIT')
-depends=('fftw' 'alsa-lib' 'iniparser' 'ncurses' 'libx11' 'sdl2')
+depends=('fftw' 'alsa-lib' 'iniparser' 'ncurses' 'libx11' 'sdl2' 'portaudio')
 makedepends=('libtool' 'automake' 'git')
 source=('git+https://github.com/nikp123/cava')
 conflicts=($_pkgname)
 provides=($_pkgname)
 sha1sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd $_pkgname
