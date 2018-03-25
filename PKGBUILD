@@ -28,7 +28,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver=7.0.7.27
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -226,6 +226,7 @@ package_imagemagick-full() {
 package_imagemagick-full-doc() {
     pkgdesc+=' (manual and API docs)'
     arch=('any')
+    depends=()
     provides=('imagemagick-doc')
     conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
     
