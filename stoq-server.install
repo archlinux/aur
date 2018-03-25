@@ -89,7 +89,7 @@ EOF
     passwd -l stoqserver >/dev/null
   fi
   
-  if getent group stoqserver | grep &>/dev/null "postgres"; then
+  if ! getent group stoqserver | grep &>/dev/null "postgres"; then
     gpasswd -a postgres stoqserver
   fi
     
