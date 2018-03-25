@@ -28,7 +28,7 @@ md5sums=('4ebc6a96fefd5f11c502620b5b26653a'
          '6af0035de121c0b962a78bb0cb45ff71'
          '6250a214faeda10c822899f39635e71e'
          '7e664f8ce386f467f1a7381c9ac3c06f'
-         '70b19b3c626d058edc9769465bd934e0')
+         'da6ee5bb971d28b85e49d456a3889349')
 
 build() {
   # setup config and services
