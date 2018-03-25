@@ -1,4 +1,4 @@
-# Maintainer: Muflone http://www.muflone.com/#contacts
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Timm Preetz <timm@preetz.us>
