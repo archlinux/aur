@@ -1,0 +1,302 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1da2089d..b05c8e48f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,7 +22,7 @@ SET(EMBREE_VERSION ${EMBREE_VERSION_MAJOR}.${EMBREE_VERSION_MINOR}.${EMBREE_VERS
+ MATH(EXPR EMBREE_VERSION_NUMBER "10000*${EMBREE_VERSION_MAJOR} + 100*${EMBREE_VERSION_MINOR} + ${EMBREE_VERSION_PATCH}")
+ SET(CPACK_RPM_PACKAGE_RELEASE 1)
+ 
+-PROJECT(embree${EMBREE_VERSION_MAJOR})
++PROJECT(embree${EMBREE_VERSION_MAJOR}-bvh)
+ 
+ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+ 
+diff --git a/README.md b/README.md
+index 3066ea9ac..cbd5729f2 100644
+--- a/README.md
++++ b/README.md
+@@ -570,13 +570,13 @@ only differences are that the ISPC version needs some ISPC specific
+ uniform type modifiers, and limits the ray packets to the native SIMD
+ size the ISPC code is compiled for.
+ 
+-The user is supposed to include the `embree2/rtcore.h`, and the
+-`embree2/rtcore_ray.h` file, but none of the other header files. If
++The user is supposed to include the `embree2-bvh/rtcore.h`, and the
++`embree2-bvh/rtcore_ray.h` file, but none of the other header files. If
+ using the ISPC version of the API, the user should include
+-`embree2/rtcore.isph` and `embree2/rtcore_ray.isph`.
++`embree2-bvh/rtcore.isph` and `embree2/rtcore_ray.isph`.
+ 
+-    #include <embree2/rtcore.h>
+-    #include <embree2/rtcore_ray.h>
++    #include <embree2-bvh/rtcore.h>
++    #include <embree2-bvh/rtcore_ray.h>
+ 
+ All API calls carry the prefix `rtc` which stands for **r**ay
+ **t**racing **c**ore. Embree supports a device concept, which allows
+@@ -1331,7 +1331,7 @@ segment and the scene exists (`rtcOccluded` functions).
+     void rtcOccluded16 (const void* valid, RTCScene scene, RTCRay16& ray);
+ 
+ The ray layout to be passed to the ray tracing core is defined in the
+-`embree2/rtcore_ray.h` header file. It is up to the user if he wants
++`embree2-bvh/rtcore_ray.h` header file. It is up to the user if he wants
+ to use the ray structures defined in that file, or resemble the exact
+ same binary data layout with their own vector classes. The ray layout
+ might change with new Embree releases as new features get added,
+diff --git a/common/cmake/package.cmake b/common/cmake/package.cmake
+index 563346d3f..0577b02b7 100644
+--- a/common/cmake/package.cmake
++++ b/common/cmake/package.cmake
+@@ -17,8 +17,8 @@
+ INCLUDE(GNUInstallDirs)
+ 
+ IF (NOT RTCORE_ZIP_MODE AND NOT WIN32 AND NOT APPLE)
+-  SET(CMAKE_INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR}/embree${EMBREE_VERSION_MAJOR})
+-  SET(CMAKE_INSTALL_FULL_BINDIR ${CMAKE_INSTALL_FULL_BINDIR}/embree${EMBREE_VERSION_MAJOR})
++  SET(CMAKE_INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR}/embree${EMBREE_VERSION_MAJOR}-bvh)
++  SET(CMAKE_INSTALL_FULL_BINDIR ${CMAKE_INSTALL_FULL_BINDIR}/embree${EMBREE_VERSION_MAJOR}-bvh)
+ ENDIF()
+ 
+ SET(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR})
+@@ -27,16 +27,16 @@ SET(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR})
+ # Install Headers
+ ##############################################################
+ 
+-INSTALL(DIRECTORY include/embree2 DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT devel)
+-CONFIGURE_FILE(include/embree2/rtcore.h rtcore.h @ONLY)
+-CONFIGURE_FILE(include/embree2/rtcore.isph rtcore.isph @ONLY)
+-INSTALL(FILES ${PROJECT_BINARY_DIR}/rtcore.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/embree2 COMPONENT devel)
+-INSTALL(FILES ${PROJECT_BINARY_DIR}/rtcore.isph DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/embree2 COMPONENT devel)
++INSTALL(DIRECTORY include/embree2-bvh DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT devel)
++CONFIGURE_FILE(include/embree2-bvh/rtcore.h rtcore.h @ONLY)
++CONFIGURE_FILE(include/embree2-bvh/rtcore.isph rtcore.isph @ONLY)
++INSTALL(FILES ${PROJECT_BINARY_DIR}/rtcore.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/embree2-bvh COMPONENT devel)
++INSTALL(FILES ${PROJECT_BINARY_DIR}/rtcore.isph DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/embree2-bvh COMPONENT devel)
+ 
+ ##############################################################
+ # Install Models
+ ##############################################################
+-INSTALL(DIRECTORY tutorials/models DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++#INSTALL(DIRECTORY tutorials/models DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
+ 
+ ##############################################################
+ # Install Documentation
+diff --git a/kernels/common/acceln.cpp b/kernels/common/acceln.cpp
+index 64cdff443..dc0394c95 100644
+--- a/kernels/common/acceln.cpp
++++ b/kernels/common/acceln.cpp
+@@ -15,7 +15,7 @@
+ // ======================================================================== //
+ 
+ #include "acceln.h"
+-#include "../../include/embree2/rtcore_ray.h"
++#include "../../include/embree2-bvh/rtcore_ray.h"
+ #include "../algorithms/parallel_for.h"
+ 
+ namespace embree
+diff --git a/kernels/common/raystream_log.h b/kernels/common/raystream_log.h
+index 2590be52f..191045539 100644
+--- a/kernels/common/raystream_log.h
++++ b/kernels/common/raystream_log.h
+@@ -17,7 +17,7 @@
+ #pragma once
+ 
+ #include "default.h"
+-#include "../../include/embree2/rtcore_ray.h"
++#include "../../include/embree2-bvh/rtcore_ray.h"
+ 
+ namespace embree
+ {
+diff --git a/kernels/common/rtcore.h b/kernels/common/rtcore.h
+index 79f13a98e..5c88336a8 100644
+--- a/kernels/common/rtcore.h
++++ b/kernels/common/rtcore.h
+@@ -14,7 +14,7 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include "../../include/embree2/rtcore.h"
++#include "../../include/embree2-bvh/rtcore.h"
+ 
+ namespace embree
+ {
+diff --git a/kernels/common/rtcore_bvh_builder.cpp b/kernels/common/rtcore_bvh_builder.cpp
+index 0ef4f67ee..b95d02b16 100644
+--- a/kernels/common/rtcore_bvh_builder.cpp
++++ b/kernels/common/rtcore_bvh_builder.cpp
+@@ -20,8 +20,8 @@
+ #  define RTCORE_API extern "C" __attribute__ ((visibility ("default")))
+ #endif
+ 
+-#include "../../include/embree2/rtcore.h"
+-#include "../../include/embree2/rtcore_bvh_builder.h"
++#include "../../include/embree2-bvh/rtcore.h"
++#include "../../include/embree2-bvh/rtcore_bvh_builder.h"
+ 
+ #include "alloc.h"
+ #include "../xeon/builders/bvh_builder_sah.h"
+diff --git a/kernels/common/rtcore_ispc.ispc b/kernels/common/rtcore_ispc.ispc
+index 434153dc4..7ae65512e 100644
+--- a/kernels/common/rtcore_ispc.ispc
++++ b/kernels/common/rtcore_ispc.ispc
+@@ -14,7 +14,7 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include "../../include/embree2/rtcore.isph" 
++#include "../../include/embree2-bvh/rtcore.isph" 
+ 
+ #define size_tt int // FIXME: workaround of ISPC bug
+ #define ssize_tt int // FIXME: workaround of ISPC bug
+diff --git a/tests/benchmark.cpp b/tests/benchmark.cpp
+index 13241e6e1..e0e5b98f2 100644
+--- a/tests/benchmark.cpp
++++ b/tests/benchmark.cpp
+@@ -14,8 +14,8 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include "../include/embree2/rtcore.h"
+-#include "../include/embree2/rtcore_ray.h"
++#include "../include/embree2-bvh/rtcore.h"
++#include "../include/embree2-bvh/rtcore_ray.h"
+ #include "../kernels/common/default.h"
+ #include "../kernels/algorithms/parallel_for.h"
+ #include <vector>
+diff --git a/tests/retrace.cpp b/tests/retrace.cpp
+index ab8aa0f82..7f96c7807 100644
+--- a/tests/retrace.cpp
++++ b/tests/retrace.cpp
+@@ -14,8 +14,8 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include "../include/embree2/rtcore.h"
+-#include "../include/embree2/rtcore_ray.h"
++#include "../include/embree2-bvh/rtcore.h"
++#include "../include/embree2-bvh/rtcore_ray.h"
+ #include "../kernels/common/default.h"
+ #include "../kernels/common/raystream_log.h"
+ #include <vector>
+diff --git a/tests/verify.cpp b/tests/verify.cpp
+index bb523ace4..cfb208866 100755
+--- a/tests/verify.cpp
++++ b/tests/verify.cpp
+@@ -14,8 +14,8 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include "../include/embree2/rtcore.h"
+-#include "../include/embree2/rtcore_ray.h"
++#include "../include/embree2-bvh/rtcore.h"
++#include "../include/embree2-bvh/rtcore_ray.h"
+ #include "../kernels/common/default.h"
+ #include <vector>
+ #include <cstddef>
+diff --git a/tutorials/bvh_access/bvh_access.cpp b/tutorials/bvh_access/bvh_access.cpp
+index ac5d17cb7..0dbb0253b 100644
+--- a/tutorials/bvh_access/bvh_access.cpp
++++ b/tutorials/bvh_access/bvh_access.cpp
+@@ -15,7 +15,7 @@
+ // ======================================================================== //
+ 
+ #include "../common/tutorial/tutorial.h"
+-#include "../../include/embree2/rtcore.h"
++#include "../../include/embree2-bvh/rtcore.h"
+ #include "../../kernels/xeon/bvh/bvh.h"
+ #include "../../kernels/xeon/geometry/trianglev.h"
+ 
+diff --git a/tutorials/bvh_builder_rtc/bvh_builder_rtc_device.cpp b/tutorials/bvh_builder_rtc/bvh_builder_rtc_device.cpp
+index fe1c62a20..dec64c71b 100644
+--- a/tutorials/bvh_builder_rtc/bvh_builder_rtc_device.cpp
++++ b/tutorials/bvh_builder_rtc/bvh_builder_rtc_device.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "../common/tutorial/tutorial_device.h"
+ #include "../../kernels/common/alloc.h"
+-#include "../../include/embree2/rtcore_bvh_builder.h"
++#include "../../include/embree2-bvh/rtcore_bvh_builder.h"
+ 
+ RTCDevice g_device = nullptr;
+ RTCScene g_scene  = nullptr;
+diff --git a/tutorials/common/tutorial/tutorial_device.h b/tutorials/common/tutorial/tutorial_device.h
+index 969d47853..c4236352a 100644
+--- a/tutorials/common/tutorial/tutorial_device.h
++++ b/tutorials/common/tutorial/tutorial_device.h
+@@ -29,7 +29,7 @@ struct Vertex   { float x,y,z,r; };
+ struct Triangle { int v0, v1, v2; };
+ struct Quad     { int v0, v1, v2, v3; };
+ 
+-#include "../../../include/embree2/rtcore.h"
++#include "../../../include/embree2-bvh/rtcore.h"
+ #include "ray.h"
+ 
+ #include "scene.h"
+diff --git a/tutorials/common/tutorial/tutorial_device.isph b/tutorials/common/tutorial/tutorial_device.isph
+index ccbf43478..6c8c47d7a 100644
+--- a/tutorials/common/tutorial/tutorial_device.isph
++++ b/tutorials/common/tutorial/tutorial_device.isph
+@@ -32,7 +32,7 @@ struct Triangle { int v0, v1, v2; };
+ #include "scene_device.isph"
+ 
+ /* include embree API */
+-#include "../../../include/embree2/rtcore.isph"
++#include "../../../include/embree2-bvh/rtcore.isph"
+ 
+ /* returns time stamp counter */
+ extern "C" uniform int64 get_tsc();
+diff --git a/tutorials/find_embree/find_embree.cpp b/tutorials/find_embree/find_embree.cpp
+index 473231281..d923ee579 100644
+--- a/tutorials/find_embree/find_embree.cpp
++++ b/tutorials/find_embree/find_embree.cpp
+@@ -14,7 +14,7 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include <embree2/rtcore.h>
++#include <embree2-bvh/rtcore.h>
+ 
+ #include <xmmintrin.h>
+ //#include <pmmintrin.h> // use this to get _MM_SET_DENORMALS_ZERO_MODE when compiling for SSE3 or higher
+diff --git a/tutorials/find_embree/find_embree_ispc.cpp b/tutorials/find_embree/find_embree_ispc.cpp
+index ce3ca9cd3..eab3dd102 100644
+--- a/tutorials/find_embree/find_embree_ispc.cpp
++++ b/tutorials/find_embree/find_embree_ispc.cpp
+@@ -14,7 +14,7 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include <embree2/rtcore.h>
++#include <embree2-bvh/rtcore.h>
+ 
+ #include <xmmintrin.h>
+ //#include <pmmintrin.h> // use this to get _MM_SET_DENORMALS_ZERO_MODE when compiling for SSE3 or higher
+diff --git a/tutorials/find_embree/find_embree_ispc.ispc b/tutorials/find_embree/find_embree_ispc.ispc
+index 6928cc4dc..e72c2ecbf 100644
+--- a/tutorials/find_embree/find_embree_ispc.ispc
++++ b/tutorials/find_embree/find_embree_ispc.ispc
+@@ -14,7 +14,7 @@
+ // limitations under the License.                                           //
+ // ======================================================================== //
+ 
+-#include <embree2/rtcore.isph>
++#include <embree2-bvh/rtcore.isph>
+ 
+ export void ispcEntry()
+ {
+diff --git a/kernels/xeon/CMakeLists.txt b/kernels/xeon/CMakeLists.txt
+index 5170d240f..c4d63570b 100644
+--- a/kernels/xeon/CMakeLists.txt
++++ b/kernels/xeon/CMakeLists.txt
+@@ -248,9 +248,9 @@ ENDIF()
+ TARGET_LINK_LIBRARIES(embree ${EMBREE_LIBRARIES} sys simd lexers)
+ 
+ IF (RTCORE_ZIP_MODE)
+-  SET_TARGET_PROPERTIES(embree PROPERTIES VERSION ${EMBREE_VERSION_MAJOR} SOVERSION ${EMBREE_VERSION_MAJOR})
++  SET_TARGET_PROPERTIES(embree PROPERTIES VERSION ${EMBREE_VERSION_MAJOR}.${EMBREE_VERSION_MINOR} SOVERSION ${EMBREE_VERSION_MAJOR}.${EMBREE_VERSION_MINOR})
+ ELSE()
+-  SET_TARGET_PROPERTIES(embree PROPERTIES VERSION ${EMBREE_VERSION} SOVERSION ${EMBREE_VERSION_MAJOR})
++  SET_TARGET_PROPERTIES(embree PROPERTIES VERSION ${EMBREE_VERSION} SOVERSION ${EMBREE_VERSION_MAJOR}.${EMBREE_VERSION_MINOR})
+ ENDIF()
+ 
+ IF (WIN32)
