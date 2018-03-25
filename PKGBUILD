@@ -6,7 +6,7 @@ _pkgname="Snap4Arduino_desktop-gnu"
 _tname="Snap4Arduino"
 pkgname="snap4arduino"
 pkgver="1.2.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.rocks/"
@@ -30,8 +30,8 @@ fi
 build() {
     cd "${_pkgname}-${_dir}_${pkgver}"
     sed -i "s|Icon=|Icon=/opt/${_tname}/icons/128x128x32.png|g" ${_tname}.desktop
-    sed -i "s|cd \$(dirname %k)|cd /opt/${_tname}/|g" ${_tname}.desktop
-    sed -i "s|launcher.sh|run|g" ${_tname}.desktop
+    sed -i "s|'cd \$(dirname %k)|\"cd /opt/${_tname}/|g" ${_tname}.desktop
+    sed -i "s|launcher.sh'|run\"|g" ${_tname}.desktop
 }
 
 package() {

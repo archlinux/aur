@@ -1,7 +1,7 @@
 pkgbase = snap4arduino
 	pkgdesc = A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://snap4arduino.rocks/
 	arch = i686
 	arch = x86_64
