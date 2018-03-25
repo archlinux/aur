@@ -1,0 +1,14 @@
+pkgbase = normez
+	pkgdesc = Coding-style checker for Epitech students.
+	pkgver = r121.617849d
+	pkgrel = 1
+	url = https://github.com/ronanboiteau/NormEZ
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = git
+	source = https://github.com/ronanboiteau/NormEZ/archive/master.zip
+	md5sums = SKIP
+
+pkgname = normez
+
