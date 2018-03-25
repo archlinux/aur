@@ -1,0 +1,55 @@
+# Maintainer: Incomplete <incomplete@aixon.co>
+
+pkgname=doc-browser-git
+pkgdesc="An API documentation browser with support for DevDocs and Hoogle"
+# pkgver will be updated with pkgver()
+pkgver=NA
+pkgrel=1
+license=('MPL-2.0')
+url="https://github.com/qwfy/doc-browser"
+arch=('x86_64')
+
+# An array of packages this package depends on to run
+depends=('qt5-base'
+         'qt5-quickcontrols2'
+         'qt5-webengine'
+         'pcre'
+         'xz'
+         'zlib'
+         'openssl'
+         'xclip'
+         'xdg-utils')
+
+# An array of packages this package depends on to build but are not needed at runtime
+makedepends=('alex'
+             'happy'
+             'c2hs')
+
+source=("${pkgname}::git+${url}.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname}"
+  git rev-parse master
+}
+
+build() {
+	cd "${pkgname}"
+  stack build -j 4
+}
+
+package() {
+	cd "${pkgname}"
+
+  install -D -m755 "$(stack path --local-install-root)/bin/doc-browser" "${pkgdir}/usr/bin/doc-browser"
+
+  # copy directory:
+  # .stack-work/install/x86_64-linux-tinfo6-nopie/lts-10.4/8.2.2/share/x86_64-linux-ghc-8.2.2/doc-browser-0.2.0/ui
+  mkdir -p "${pkgdir}/usr/share/doc-browser"
+  _ui_dir=$(find "$(stack path --local-install-root)/share/" -type d -name 'ui' | sort -r | head -n 1)
+  cp -r "${_ui_dir}" "${pkgdir}/usr/share/doc-browser/ui/"
+
+  _pkgname_no_vcs="doc-browser"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname_no_vcs}/LICENSE"
+  install -D -m644 ${_pkgname_no_vcs}.desktop "${pkgdir}/usr/share/applications/${_pkgname_no_vcs}.desktop"
+}
