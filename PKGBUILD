@@ -16,7 +16,7 @@ _nautilus="no"    # GNOME Files support
 
 _pkgname=evince
 pkgname=${_pkgname}-light
-pkgver=3.26.0
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies by default but configurable."
 url="https://wiki.gnome.org/Apps/Evince"
@@ -40,7 +40,7 @@ optdepends=('gvfs: bookmark support and session saving')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('79567bdb743cf0c3ed7b638da32afc9b850298f9b4edd532455df4a7e2a4c9d8')
+sha256sums=('fa23264b65e140afb8ec27b070a277bda748d9d4a86788240d9f3514346573a8')
 
 build() {
     cd ${_pkgname}-${pkgver}
