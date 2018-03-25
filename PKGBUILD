@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180319
+pkgver=4.0.0v20180325
 _pkgver=4.0.0
-_snapshot_=20180319
-_snapver_=0242
+_snapshot_=20180325
+_snapver_=0241
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
-         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+         'libmpeg2' 'xcb-util-keysyms' 'mesa=17.3.7' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols')
@@ -26,7 +26,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
-             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'opencv' 'libnfs' 'mpg123'
+             'vcdimager' 'libssh2' 'mesa=17.3.7' 'protobuf' 'opencv' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng'
              'libjpeg-turbo' 'libx265.so' 'libx264.so' 'zvbi' 'libass'
@@ -258,7 +258,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('bfc5b26a128ef7160711be7cf5dde79f64ecb2f375150c5459656b54c8972349'
+sha256sums=('a6fb033919de07ec8b04495228df5aec44f5cd4ad0006addfbd41e39c671cb62'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
             '4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c'
