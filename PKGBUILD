@@ -5,15 +5,14 @@ pkgver=1.12.5
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
-url="http://linuxtv.org/"
+url="https://linuxtv.org/"
 provides=("lib32-libv4l=$pkgver")
 replaces=('lib32-libv4l')
 conflicts=('lib32-libv4l')
 license=('LGPL')
-makedepends=('gcc-multilib')
 depends=('lib32-gcc-libs' $_pkgbasename lib32-libjpeg-turbo)
-source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
-        http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
+source=(https://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
+        https://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
 validpgpkeys=('05D0169C26E41593418129DF199A64FADFB500FF') # Gregor Jasny <gjasny@googlemail.com>
 sha256sums=('0618162ddb0b57fe7c45407d4d66ed79e3a134cdbc9e72598d34e61d3359e20d'
             'SKIP')
