@@ -4,12 +4,13 @@
 _gemname=taglib-ruby
 pkgname=ruby-$_gemname
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby interface for the taglib C++ library'
 arch=(i686 x86_64)
 url='http://robinst.github.io/taglib-ruby/'
 license=(MIT)
 depends=(ruby taglib)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
