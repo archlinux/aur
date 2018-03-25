@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "${_distdir}"
-  make pure_install doc_install DESTDIR="$pkgdir" 
+  make pure_install doc_install DESTDIR="${pkgdir}"
   find "${pkgdir}" -name '.packlist' -delete
   find "${pkgdir}" -name '*.pod' -delete
 }
