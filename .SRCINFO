@@ -1,9 +1,8 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Gnome Display Manager with Plymouth support.
 	pkgver = 3.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = check
@@ -11,7 +10,7 @@ pkgbase = gdm-plymouth
 	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	depends = plymouth
-	depends = gnome-shell>=3.24.1
+	depends = gnome-shell>=3.28.0
 	depends = gnome-session
 	depends = upower
 	depends = xorg-xrdb
@@ -29,7 +28,7 @@ pkgname = gdm-plymouth
 	install = gdm-plymouth.install
 	groups = gnome
 	depends = plymouth
-	depends = gnome-shell>=3.24.1
+	depends = gnome-shell>=3.28.0
 	depends = gnome-session
 	depends = upower
 	depends = xorg-xrdb
