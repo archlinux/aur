@@ -1,4 +1,5 @@
-# Maintainer: Sebastian Gumprich <aur at gumpri dot ch>
+# Maintainer: aimileus <me at aimileus dot nl>
+# Contributor: Sebastian Gumprich <aur at gumpri dot ch>
 # Contributor: twa022
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Gustavo Castro <gustawho at gmail dot com>
