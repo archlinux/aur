@@ -1,9 +1,9 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32-svn
-pkgver=r6576
+pkgver=r6789
 pkgrel=1
 pkgdesc="Advanced Duke Nukem 3D source port - svn version"
 arch=('i686' 'x86_64')

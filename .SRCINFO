@@ -1,6 +1,6 @@
 pkgbase = eduke32-svn
 	pkgdesc = Advanced Duke Nukem 3D source port - svn version
-	pkgver = r6576
+	pkgver = r6789
 	pkgrel = 1
 	url = http://eduke32.com
 	install = eduke32-svn.install
