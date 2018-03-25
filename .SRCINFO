@@ -35,6 +35,7 @@ pkgname = sat-xmpp-hg
 	depends = python2-service-identity
 	depends = sat-tmp
 	depends = python2-dateutil
+	depends = python2-regex
 
 pkgname = sat-jp-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (CLI frontend)
