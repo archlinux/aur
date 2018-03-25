@@ -94,7 +94,6 @@ EOF
   
   # Fix directory permissions
   chown -R stoqserver:stoqserver /usr/share/stoqserver
-  chown -R postgres:postgres /usr/share/stoqserver
 }
 
 post_upgrade() {
