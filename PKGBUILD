@@ -1,11 +1,12 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Pablo Arias <pacloariasal@gmail.com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 
 _pkgname=googler
 pkgname=googler-git
-pkgver=r357.360caac
+pkgver=3.5.r4.g2356105
 pkgrel=1
-pkgdesc="Google Search from command line"
+pkgdesc="Google from the command-line"
 arch=('any')
 url="https://github.com/jarun/googler"
 license=('GPL3')
@@ -15,9 +16,14 @@ conflicts=('googler')
 source=('git://github.com/jarun/googler.git')
 md5sums=('SKIP')
 
+prepare() {
+  cd $srcdir/$_pkgname
+  make disable-self-upgrade > /dev/null
+}
+
 pkgver() {
   cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/v\([^-]*-\)/\1r/;s/-/./g'
 }
 
 package() {
