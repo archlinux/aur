@@ -1,0 +1,26 @@
+diff -r f56582df55f4 cmake/FindEmbree.cmake
+--- a/cmake/FindEmbree.cmake	Sun Jul 23 13:46:05 2017 +0200
++++ b/cmake/FindEmbree.cmake	Tue Oct 03 10:49:15 2017 +0200
+@@ -14,13 +14,13 @@
+ ## limitations under the License.                                           ##
+ ## ======================================================================== ##
+ 
+-FIND_PATH(EMBREE_INCLUDE_PATH embree2/rtcore.h
++FIND_PATH(EMBREE_INCLUDE_PATH embree2-bvh/rtcore.h
+ 	/usr/include
+ 	/usr/local/include
+ 	/opt/local/include
+ 	${EMBREE_ROOT}/include)
+ 
+-FIND_LIBRARY(EMBREE_LIBRARY NAMES embree libembree.so.2 PATHS 
++FIND_LIBRARY(EMBREE_LIBRARY NAMES libembree.so.2.8.0 PATHS 
+ 	/usr/lib 
+ 	/usr/local/lib 
+ 	/opt/local/lib
+@@ -35,4 +35,4 @@
+ MARK_AS_ADVANCED(
+ 	EMBREE_INCLUDE_PATH
+ 	EMBREE_LIBRARY
+-)
+\ No newline at end of file
++)

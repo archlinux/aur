@@ -3,7 +3,7 @@
 _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname=luxrender-hg
 pkgver=4918+.f56582df55f4+
-pkgrel=2
+pkgrel=3
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
