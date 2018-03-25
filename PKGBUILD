@@ -5,7 +5,7 @@
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r1.1.gb4a2013
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/sekrit-twc/znedi3'
