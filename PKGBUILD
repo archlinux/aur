@@ -4,7 +4,7 @@
 # Contributor: Lisa Denia <eiffel56@gmail.com>
 
 pkgname=anyremote
-pkgver=6.6.1
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Remote control (console-oriented) through bluetooth or IR connection"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('bluez-libs' 'bluez' 'dbus-glib' 'libxtst')
 optdepends=("irda-utils: IRDA support")
 install=anyremote.install
 source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
-md5sums=('40f766e4ac90c9f8453c83a6158b79ed')
+md5sums=('699e41b637104688f191086bb58ea742')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
