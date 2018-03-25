@@ -85,7 +85,7 @@ EOF
     
   # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
-    useradd -d '/usr/share/stoqserver' -s /bin/bash stoqserver
+    useradd -d '/usr/share/stoqserver' -g stoqserver -s /bin/bash stoqserver
     passwd -l stoqserver >/dev/null
   fi
   
@@ -97,10 +97,7 @@ EOF
   chown -R stoqserver:stoqserver /usr/share/stoqserver
   chmod g+rwx -R /usr/share/stoqserver
   
-  stoq_sup=$(grep 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf)
-  if [ "$stoq_sup" != "files = /etc/supervisor/conf.d/*.conf" ]; then
-    echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
-  fi
+  grep -q 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf || echo 'files = /etc/supervisor/conf.d/*.conf' » /etc/supervisord.conf
 }
 
 post_upgrade() {
