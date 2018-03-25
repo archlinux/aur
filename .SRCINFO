@@ -24,28 +24,25 @@ pkgbase = jdk
 	provides = java-web-start-jre=10
 	provides = java-environment-jdk=10
 	provides = java-openjfx=10
-	conflicts = java-runtime-jre=10
-	conflicts = java-environment-jdk=10
+	provides = jdk10
+	conflicts = jdk10
 	options = !strip
 	backup = etc/java-jdk10/management/jmxremote.access
 	backup = etc/java-jdk10/management/management.properties
 	backup = etc/java-jdk10/security/java.policy
 	backup = etc/java-jdk10/security/java.security
 	backup = etc/java-jdk10/security/javaws.policy
-	backup = etc/java-jdk10/fontconfig.properties.src
 	backup = etc/java-jdk10/logging.properties
 	backup = etc/java-jdk10/net.properties
-	backup = etc/java-jdk10/psfont.properties.ja
-	backup = etc/java-jdk10/psfontj2d.properties
 	backup = etc/java-jdk10/sound.properties
 	source = http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jdk-10_linux-x64_bin.tar.gz
-	source = jconsole-jdk10.desktop
-	source = jmc-jdk10.desktop
-	source = policytool-jdk10.desktop
+	source = jconsole.desktop
+	source = jmc.desktop
+	source = policytool.desktop
 	sha256sums = ac487a2738d3d59f7a4b95095207970b811143068752b6b4ec404d5a3aa8680c
-	sha256sums = 5ddf1c0da441d095fce41cef7acfbff7c82d89da1b62aa57adcaeab544fb31de
-	sha256sums = ea8dda965af272a95e9559c54332752bd686276216244c44267717df1483e0b1
-	sha256sums = 32b7791d31bafbba38f9637e7541c43f419bf6650504ee41a3c04ec632245f11
+	sha256sums = 3ea717825268a66837380c9ca2b076f02a3298d2df48c3450152fdaf1d0dbc6e
+	sha256sums = 365b33b197e6be65ad746e5ed864428e45ae1e24dba53aa7d9c71de0644cf4e2
+	sha256sums = 5dfde6ee531056571d9601d47fbb4a3e56062e4d611667a56ba7931ec7948b36
 
 pkgname = jdk
 
