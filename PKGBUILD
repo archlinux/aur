@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=3.3pre+560+gadae6c19b
+pkgver=3.3pre+725+gc0893027d
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -38,7 +38,6 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
-            'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 provides=("${_name}")
@@ -49,7 +48,7 @@ source=("${_name}::git://github.com/coelckers/${_name}.git"
         '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '066f1e3433ec3762ab9f91b72f6ec89bdb140a990d338d63fda68b33e4d19e22')
+            '26cd2fa2285bcf4c9147a7f1763c217c3e7056bd4a729824f9af0104f6f410c9')
 
 pkgver() {
     cd $_name
