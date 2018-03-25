@@ -1,13 +1,13 @@
 pkgbase = madkitas-plasma5-themes
 	pkgdesc = 3 nice looking plasma5 themes by Madkita
-	pkgver = r24.cd544bd
+	pkgver = r41.dd58091
 	pkgrel = 1
-	url = https://github.com/Madkita/Plasma-Themes.git
+	url = https://github.com/Madkita/Plasma-Themes
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = plasma-desktop
-	source = madkitas-plasma5-themes-r24.cd544bd::git+https://github.com/Madkita/Plasma-Themes.git
+	source = git+https://github.com/Madkita/Plasma-Themes
 	sha256sums = SKIP
 
 pkgname = plasma5-theme-aex-nomad-git
@@ -17,5 +17,8 @@ pkgname = plasma5-theme-breeze-noshadow-antu-git
 	pkgdesc = Default kde breeze theme without panel shadows and with icons from antu icon theme
 
 pkgname = plasma5-theme-breeze-transparent-nomad-icons-git
+	pkgdesc = Breeze transparent theme with icons from nomad project
+
+pkgname = plasma5-theme-aex-nomad-dark-git
 	pkgdesc = Breeze transparent theme with icons from nomad project
 
