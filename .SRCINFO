@@ -1,6 +1,6 @@
 pkgbase = emby-server-dev-unlocked
 	pkgdesc = Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features
-	pkgver = 3.3.1.7
+	pkgver = 3.3.1.8
 	pkgrel = 1
 	url = https://github.com/nicolahinssen/emby-dev-unlocked
 	install = emby-server.install
