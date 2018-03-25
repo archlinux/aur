@@ -1,7 +1,7 @@
 pkgbase = python-pyxstitch
 	pkgdesc = takes source code files and produces syntax-highlighted patterns for cross stitching.
-	pkgver = 1.7.5
-	pkgrel = 3
+	pkgver = 1.7.6
+	pkgrel = 1
 	url = https://github.com/enckse/pyxstitch
 	arch = any
 	license = MIT
@@ -10,14 +10,14 @@ pkgbase = python-pyxstitch
 	depends = python-setuptools
 	depends = python-pygments
 	optdepends = bash-completion: for bash completions
-	source = https://pypi.python.org/packages/76/6d/3a3aef1df4d4493e7ca0caac1baa7b8f88d3c2d16e47a8dbc27c098c6f0b/pyxstitch-1.7.5.tar.gz#md5=ddbd4b9af33c8928d485a40991503e10
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.5/LICENSE
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.5/completions/bash
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.5/doc/pyxstitch.1
-	md5sums = ddbd4b9af33c8928d485a40991503e10
+	source = https://pypi.python.org/packages/15/0a/4a98c83afe1bc4045546a67a958cd58f94ec0fc75f6f5b9df7108d1fad2a/pyxstitch-1.7.6.tar.gz#md5=305bcc8d5e69294b9b52227fbac013fb
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.6/LICENSE
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.6/completions/bash
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.6/doc/pyxstitch.1
+	md5sums = 305bcc8d5e69294b9b52227fbac013fb
 	md5sums = 09b2ac6fbde8b1a1c4f223aa3ffedbba
 	md5sums = d4f45e5816e653b3ba21c779bbe9e5da
-	md5sums = 3c50ed3d3821118146eb70ac526f5593
+	md5sums = 4b252e0daec56eed0a4beb806ff8ce0a
 
 pkgname = python-pyxstitch
 
