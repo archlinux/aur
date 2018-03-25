@@ -1,0 +1,33 @@
+pkgbase = pup-bin
+	pkgdesc = Parsing HTML at the command line
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ericchiang/pup
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	provides = pup
+	conflicts = pup
+	source = https://raw.githubusercontent.com/ericchiang/pup/v0.4.0/LICENSE
+	source = https://raw.githubusercontent.com/ericchiang/pup/v0.4.0/README.md
+	md5sums = a98550ce25e61b1d40f1670e9857c6ff
+	md5sums = a4b9322a6a38e3cdcd11f091241295d4
+	source_i686 = pup_i686.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_386.zip
+	md5sums_i686 = ea17c052261cf6d075e56d427baf8a91
+	source_x86_64 = pup_x86_64.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip
+	md5sums_x86_64 = f008b357bc126fc018a9af5c2faa9c18
+	source_arm = pup_arm.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_arm.zip
+	md5sums_arm = ebb328b175d53a02529cc67d1a121ed3
+	source_armv6h = pup_armv6h.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_arm.zip
+	md5sums_armv6h = ebb328b175d53a02529cc67d1a121ed3
+	source_armv7h = pup_armv7h.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_arm.zip
+	md5sums_armv7h = ebb328b175d53a02529cc67d1a121ed3
+	source_aarch64 = pup_aarch64.zip::https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_arm64.zip
+	md5sums_aarch64 = 71cb57f6bfb111a8a28fa52633d10b90
+
+pkgname = pup-bin
+
