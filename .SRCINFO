@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = 18.0.r48667.03d453ae65
+	pkgver = 18.0a1.r199.g03d453ae65
 	pkgrel = 1
 	url = http://kodi.tv
 	arch = i686
@@ -86,8 +86,8 @@ pkgname = kodi-git
 	optdepends = unrar: Archives support
 	optdepends = unzip: Archives support
 	optdepends = upower: Display battery level
-	provides = kodi=18.0.r48667.03d453ae65
-	provides = xbmc=18.0.r48667.03d453ae65
+	provides = kodi=18.0a1.r199.g03d453ae65
+	provides = xbmc=18.0a1.r199.g03d453ae65
 	conflicts = kodi
 	conflicts = xbmc
 	replaces = xbmc-git
@@ -96,7 +96,7 @@ pkgname = kodi-git
 pkgname = kodi-eventclients-git
 	pkgdesc = Kodi Event Clients (master branch)
 	depends = cwiid
-	provides = kodi-eventclients=18.0.r48667.03d453ae65
+	provides = kodi-eventclients=18.0a1.r199.g03d453ae65
 	conflicts = kodi-eventclients
 
 pkgname = kodi-tools-texturepacker-git
@@ -105,12 +105,12 @@ pkgname = kodi-tools-texturepacker-git
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.0.r48667.03d453ae65
+	provides = kodi-tools-texturepacker=18.0a1.r199.g03d453ae65
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-dev-git
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi
-	provides = kodi-dev=18.0.r48667.03d453ae65
+	provides = kodi-dev=18.0a1.r199.g03d453ae65
 	conflicts = kodi-dev
 

@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0.r48667.03d453ae65
+pkgver=18.0a1.r199.g03d453ae65
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -31,12 +31,10 @@ makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'g
              'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
 source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master")
 sha256sums=('SKIP')
+
 pkgver() {
   cd "$srcdir/$_gitname"
-  _major=$(grep 'VERSION_MAJOR' version.txt | sed 's/VERSION_MAJOR //')
-  _minor=$(grep 'VERSION_MINOR' version.txt | sed 's/VERSION_MINOR //')
-  _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-  echo "$_major.$_minor.$_revision"
+  git describe --long --tags | sed 's/\([^-]*-\)/r/2;s/-/./g'
 }
 
 prepare() {
