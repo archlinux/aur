@@ -1,0 +1,23 @@
+pkgbase = lib32-gnome-themes-extra
+	pkgdesc = Extra Themes for GNOME Applications (32-bit)
+	pkgver = 3.28
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-themes-extra
+	arch = x86_64
+	groups = gnome
+	license = LGPL2.1
+	makedepends = intltool
+	makedepends = lib32-gtk2
+	makedepends = lib32-gtk3
+	makedepends = git
+	depends = cantarell-fonts
+	depends = gnome-themes-extra
+	optdepends = lib32-gtk-engines: HighContrast GTK2 theme
+	provides = lib32-gnome-themes-standard=3.28
+	conflicts = lib32-gnome-themes-standard
+	replaces = lib32-gnome-themes-standard<3.27.92
+	source = git+https://gitlab.gnome.org/GNOME/gnome-themes-extra.git#commit=9f581269243dd7e76b3eb8cec9cf4128ab17da9e
+	sha256sums = SKIP
+
+pkgname = lib32-gnome-themes-extra
+
