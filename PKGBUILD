@@ -6,7 +6,7 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 pkgname=libstdc++296
 pkgver=2.96.126
-pkgrel=3
+pkgrel=4
 pkgdesc="Standard C++ libraries for Red Hat 7.3 backwards compatibility compiler. With additions from OpenSUSE 13.1. Provides libstdc++-libc6.2-2.so.3"
 arch=("i686" "x86_64")
 url="http://rpmfind.net"
