@@ -1,7 +1,7 @@
 pkgbase = stoq-server
 	pkgdesc = Stoq server.
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stoq/stoq-server
 	install = stoq-server.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = stoq-server
 	depends = duplicity
 	depends = openvpn
 	depends = postgresql
-	depends = postgresql-libs
+	depends = openssh
 	depends = avahi
 	depends = python2-htsql
 	depends = python2-htsql-pgsql

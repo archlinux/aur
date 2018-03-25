@@ -1,49 +1,88 @@
 post_install() {
   # Make sure stoqserver's home exists
   if [ ! -d '/usr/share/stoqserver' ]; then
-    mkdir -p '/usr/share/stoqserver'
+    mkdir -p '/usr/share/stoqserver'    
   fi
   
-  # Try to find the stoq database
-  if [ -d "/var/run/postgresql" ]; then
-    for socket in `find /var/run/postgresql -regex '.*\.s\.PGSQL\.[0-9]+'`; do
-      PORT="`echo $PORT | sed -e 's/\(.*\.\)\([0-9]\+\)/\2/' | xargs`"
-      [ -z "$PORT" ] && continue
-      set +e
-      # TODO: Improve code when we find more than one database candidates
-      DBNAME=`sudo -u postgres psql -p $PORT -AtqwlF \| | cut -d \| -f 1 | grep stoq | head -n1`
-      set -e
-      [ ! -z "$DBNAME" ] && break
-    done
+  #Crete script stoqsconf.sh
+  if [ ! -d '/usr/share/stoqserver/stoqsconf' ]; then
+    cat << 'EOF' > /usr/bin/stoqsconf
+#!/bin/bash
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -p|--port)
+    PORT="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -D|--directory)
+    DIR="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -h|--help)
+    HELP="$2"
+    shift # past argument
+    shift # past value
+    echo "help text"
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+if [[ -n $1 ]]; then
+    echo "Invalid argument."
+else
+
+  #Create pgpass file
+  if [ ! -f ${DIR}/.pgpass ]; then
+    createuser -p ${PORT} -dsR stoqserver
+    PG_PASSWORD="`cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c32`"
+    psql -p $PORT -c "ALTER USER stoqserver WITH PASSWORD '${PG_PASSWORD}';"
+    echo "*:*:*:stoqserver:${PG_PASSWORD}" > ${DIR}/.pgpass
+    #chmod 0600 ${DIR}/.pgpass
   fi
 
-  # If the process above failed for some reason, use the default 5432
-  if [ -z "$PORT" ]; then
-    PORT="5432"
+  #Create a ssh key for remote support
+  if [ ! -f ${DIR}/.ssh/id_rsa ]; then
+    if [ ! -f ${DIR}/.ssh/ ]; then
+      mkdir -p ${DIR}/.ssh
+    fi
+    ssh-keygen -t rsa -N "" -f ${DIR}/.ssh/id_rsa
   fi
-  if [ -z "$DBNAME" ]; then
-    DBNAME="stoq"
+fi
+EOF
+  chmod 777 /usr/bin/stoqsconf
+  
   fi
-
+  
   # Create .stoq dir and configuration if they don't exist
   if [ ! -f /usr/share/stoqserver/.stoq/stoq.conf ]; then
     mkdir -p /usr/share/stoqserver/.stoq
-  cat <<EOF > /usr/share/stoqserver/.stoq/stoq.conf
+    cat <<EOF > /usr/share/stoqserver/.stoq/stoq.conf
 [General]
 logfile = /usr/share/stoqserver/.stoq/stoqserver.log
 
 [Database]
 rdbms = postgres
 address = 
-port = $PORT
-dbname = $DBNAME
+port = 5432
+dbname = stoq
 dbusername = stoqserver
 
 [Backup]
 key = 
 EOF
   fi
-
+  
   # Create stoqserver user if it doesn't exist
   if ! getent group stoqserver >/dev/null; then
     groupadd stoqserver
@@ -53,26 +92,9 @@ EOF
     passwd -l stoqserver >/dev/null
   fi
   
-  # Add stoqserver on dialout group so it can interact with usb/serial devices
-  gpasswd -a stoqserver storage
-  gpasswd -a stoqserver uucp
-  
-  # Create a ssh key for stoqserver
-  if [ ! -f /usr/share/stoqserver/.ssh/id_rsa ]; then
-    mkdir -p /usr/share/stoqserver/.ssh
-    ssh-keygen -t rsa -N "" -f /usr/share/stoqserver/.ssh/id_rsa
-  fi
-  
-  # Create a .pgpass file stoqserverl
-  if [ ! -f /usr/share/stoqserver/.pgpass ]; then
-    PG_PASSWORD="`cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c32`"
-    sudo -u postgres psql -p $PORT -c "ALTER USER stoqserver WITH PASSWORD '$PG_PASSWORD';"
-    echo "*:*:*:stoqserver:$PG_PASSWORD" > /usr/share/stoqserver/.pgpass
-    chmod 0600 /usr/share/stoqserver/.pgpass
-  fi
-  
   # Fix directory permissions
   chown -R stoqserver:stoqserver /usr/share/stoqserver
+  chown -R postgres:postgres /usr/share/stoqserver
 }
 
 post_upgrade() {
