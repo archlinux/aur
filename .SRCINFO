@@ -1,6 +1,6 @@
 pkgbase = python-pytradfri
 	pkgdesc = Python class to communicate with the IKEA Trådfri Gateway
-	pkgver = 5.4.1
+	pkgver = 5.4.2
 	pkgrel = 1
 	url = https://github.com/ggravlingen/pytradfri
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pytradfri
 	depends = python
 	depends = libcoap-dtls-git
 	depends = python-dtlssocket
-	source = https://github.com/ggravlingen/pytradfri/archive/5.4.1.tar.gz
-	sha512sums = 0b257c2927900adeee10c35ad306d3604162630355c2f179cf9e74bfa4386ed29f0a3e7575b83f4989498a606ad132fff7a184d4eb03581dbb65a21705d0b117
+	source = https://github.com/ggravlingen/pytradfri/archive/5.4.2.tar.gz
+	sha512sums = b6326c338365051d9407c0555955626c4c7506e70e77152de76aa806b4abb792d16834f6be850b3f12687a5bff8874051a46f901ae19d298521f8f7b935568f5
 
 pkgname = python-pytradfri
 
