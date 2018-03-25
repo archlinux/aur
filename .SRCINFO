@@ -6,7 +6,6 @@ pkgbase = bilibili-live-helper-git
 	install = bilibili-live-helper-git.install
 	arch = x86_64
 	license = MIT
-	makedepends = yarn
 	makedepends = git
 	makedepends = npm
 	depends = libxtst
