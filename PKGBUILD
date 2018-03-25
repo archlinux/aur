@@ -18,8 +18,8 @@ build() {
 }
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    # Apache isn't needed to be installed, but because of the dual license,
-    # it makes more sense to show the license like this.
+    # Apache doesn't need to be installed, but because of the dual license
+    # it makes more sense to not exclude it.
     install -Dm 644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     install -Dm 644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
