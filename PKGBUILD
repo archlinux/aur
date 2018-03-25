@@ -1,6 +1,6 @@
 pkgname=cava-gui-git
 _pkgname=cava
-pkgver=VERSION
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Console/GUI Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=($_pkgname)
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd ${srcdir}/${_pkgname}
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
