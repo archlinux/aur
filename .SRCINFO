@@ -1,6 +1,6 @@
 pkgbase = mutter-781835-workaround
 	pkgdesc = A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users.
-	pkgver = 3.26.2+43+g77dd1bf63
+	pkgver = 3.28.0
 	pkgrel = 1
 	url = https://git.gnome.org/browse/mutter
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = mutter-781835-workaround
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = git
-	makedepends = gnome-common
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
@@ -23,13 +22,17 @@ pkgbase = mutter-781835-workaround
 	depends = gnome-settings-daemon
 	depends = libgudev
 	depends = libinput
+	depends = pipewire
+	depends = gnome-shell>=3.28
+	depends = gnome-shell<3.29
 	provides = mutter
 	conflicts = mutter
-	options = !emptydirs
-	source = git+https://git.gnome.org/browse/mutter#commit=77dd1bf63532946ba88bc959e9cc8a7991665035
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=47856d97011d7a9bd13c1e1c638a6e43ebd9d9ac
 	source = startup-notification.patch
+	source = revert.patch
 	sha256sums = SKIP
 	sha256sums = 5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366
+	sha256sums = 2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09
 
 pkgname = mutter-781835-workaround
 
