@@ -7,7 +7,7 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
 pkgver=3.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=('x86_64')
 license=(GPL)
@@ -36,18 +36,15 @@ build() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
-    --libexecdir=/usr/lib/gdm \
+    --libexecdir=/usr/lib \
     --localstatedir=/var \
     --disable-static \
     --disable-schemas-compile \
     --enable-gdm-xsession \
     --enable-ipv6 \
     --with-plymouth \
-    --with-at-spi-registryd-directory=/usr/lib/at-spi2-core \
-    --with-check-accelerated-directory=/usr/lib/gnome-session \
     --with-default-pam-config=arch \
     --with-default-path=/usr/local/bin:/usr/local/sbin:/usr/bin \
-    --with-gnome-settings-daemon-directory=/usr/lib/gnome-settings-daemon \
     --without-tcp-wrappers
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
