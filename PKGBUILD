@@ -4,7 +4,7 @@
 pkgname=octopi-kde-git
 _pkgver=0.8.1
 pkgver=0.8.1.1349
-pkgrel=2
+pkgrel=3
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
 url="https://octopiproject.wordpress.com/"
 arch=('x86_64')
@@ -95,6 +95,10 @@ package() {
     cd cachecleaner
     make INSTALL_ROOT=${pkgdir} install
     cd ..
+
+    #speedup files
+    install -D -m755 "speedup/speedup-octopi.sh" "${pkgdir}/usr/bin/speedup-octopi.sh"
+    install -D -m644 "speedup/octopi.service" "${pkgdir}/usr/lib/systemd/system/octopi.service"
 
     # Add some icons to customize notifier
     mkdir -p "${pkgdir}/usr/share/octopi/icons/"
