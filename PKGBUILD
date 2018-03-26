@@ -1,7 +1,7 @@
 # Maintainer: David Cao <dcao@protonmail.com>
 pkgname=timew-git
 pkgver=r2249.fa30f46
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
 url="https://taskwarrior.org/docs/timewarrior/index.html"
@@ -17,7 +17,7 @@ source=('git+https://github.com/GothenburgBitFactory/timewarrior'
         'git+https://github.com/GothenburgBitFactory/libshared.git'
         'timew-refresh-python2.patch'
         'on-modify-python2.patch')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
