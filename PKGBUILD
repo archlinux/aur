@@ -1,5 +1,5 @@
 # Maintainer: semo <semox78@gmail.com>
-pkgname=europlate.ttf
+pkgname=europlate
 pkgver=1.0
 pkgrel=1
 pkgdesc="EuroPlate - TrueType Font for european number plates."
