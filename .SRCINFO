@@ -1,0 +1,17 @@
+pkgbase = google-maps-desktop
+	pkgdesc = Google Maps web-app based on qtws
+	pkgver = 0.9
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = google-maps.qtws
+	source = google-maps.svg
+	source = google-maps.desktop
+	md5sums = 68a4ff0bdf5150834b39c1932c0e5360
+	md5sums = 71d9d1a14e8aeddb70ed197ae3b15218
+	md5sums = 79c8accd753c6b985dcd2d6b2238e049
+
+pkgname = google-maps-desktop
+

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Internet;
+Comment[en_GB]=Google Maps Standalone
+Comment=Google Maps Standalone
+Exec=/usr/bin/qtws /usr/share/qtws-apps/google-maps/google-maps.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+GenericName[en_GB]=Google Maps
+GenericName=Google Maps
+Icon=google-maps-desktop.svg
+MimeType=
+Name[en_GB]=Google Maps
+Name=Google Maps
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
