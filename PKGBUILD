@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/raspberrypi_tempmon
 pkgname=rpi_tempmon
-pkgver=1.4
-pkgrel=5
+pkgver=1.5
+pkgrel=6
 pkgdesc="Raspberry pi ARM, CPU GPU temperature monitor with various functions, python 3"
 depends=()
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 optdepends=('ssmtp' 'python-matplotlib')
 source=("https://github.com/gavinlyonsrepo/raspberrypi_tempmon/archive/$pkgver.tar.gz")
 
-md5sums=('9189f1fa7e7d235cb83c0af0d957c202')
+md5sums=('05a5b33da933806f40e790a111dca377')
 
 package() {
     cd "$srcdir/raspberrypi_tempmon-${pkgver}"
@@ -19,6 +19,5 @@ package() {
     
     #readme
     install -D -m644 README.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
-
 }
 
