@@ -1,15 +1,15 @@
 pkgbase = copyq
 	pkgdesc = Clipboard manager with searchable and editable history
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hluk/copyq
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = qt5-tools
-	makedepends = qt5-svg
 	depends = libxtst
 	depends = qt5-script
+	depends = qt5-svg
 	depends = hicolor-icon-theme
 	optdepends = copyq-plugin-itemweb
 	source = copyq-3.3.0.tar.gz::https://github.com/hluk/copyq/archive/v3.3.0.tar.gz
