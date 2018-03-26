@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('qtws-base')
 source=("$webappname.qtws" "$webappname.svg" "$webappname.desktop")
-md5sums=('8f0429c6d0d5a9df3c978cbe6021ca4e'
+md5sums=('acd05375f04e385eb0c5e7ea4f991778'
          'bb2e2f9ffb15061126229ef19464e58e'
          '61730709cbde4e0cb8250d94e1dccc58')
 
