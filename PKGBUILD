@@ -1,8 +1,8 @@
 # Maintainer Daichi Shinozaki <dsdseg@gmail.com>
 _npmname=traceur
-_npmver=0.0.89
+_npmver=0.0.111
 pkgname=nodejs-traceur # All lowercase
-pkgver=0.0.89
+pkgver=0.0.111
 pkgrel=1
 pkgdesc="ES6 to ES5 compiler"
 arch=(any)
@@ -11,7 +11,7 @@ license=( "Apache" )
 depends=('nodejs')
 options=('!emptydirs')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('eaddbdaf619d4911b705591a8172533a44134afa')
+sha256sums=('d75b4c0ae7690da4dd7d4db0250bd80a31d163910df35df24a7823ff6cf5b62f')
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
