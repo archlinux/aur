@@ -1,0 +1,154 @@
+pkgbase = php71
+	pkgver = 7.1.15
+	pkgrel = 1
+	url = http://www.php.net
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	makedepends = apache
+	makedepends = aspell
+	makedepends = c-client
+	makedepends = db
+	makedepends = enchant
+	makedepends = gd
+	makedepends = gmp
+	makedepends = icu
+	makedepends = libmcrypt
+	makedepends = libxslt
+	makedepends = libzip
+	makedepends = net-snmp
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = systemd
+	makedepends = tidy
+	makedepends = unixodbc
+	makedepends = curl
+	makedepends = libtool
+	makedepends = postfix
+	makedepends = freetds
+	makedepends = pcre
+	provides = =7.1.15
+	source = https://php.net/distributions/php-7.1.15.tar.xz
+	source = https://php.net/distributions/php-7.1.15.tar.xz.asc
+	source = apache.patch
+	source = apache.conf
+	source = php-fpm.patch
+	source = php-fpm.tmpfiles
+	source = php.ini.patch
+	source = enchant-2.patch
+	validpgpkeys = A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0
+	validpgpkeys = 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E
+	validpgpkeys = 1729F83938DA44E27BA0F4D3DBDB397470D12172
+	sha512sums = 2b23795ffcb9d741adafe8a1e01e6988bb86ce7c6380bdbe822f8f6485e217ed2e95a27daf5ba11f0bf10317f1e1f4e37068e40d0bf322de5625d38b430d37c2
+	sha512sums = SKIP
+	sha512sums = 65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6
+	sha512sums = fc3d711033c8b7ead910826d7c0d4479b481fa9d84c3147b1d33ef9b1e3d3d073a8d17a7c7f66db30d710be1c9b17d2b5536a74a4f05c4ff88b9339e95dd244a
+	sha512sums = ef2724cedec46a6955355fc75406efa2895545f2ebcdfcee06ce6f3c9a20f8348a291ac78ab1e384b703095d317f59504b787f21074f841c45e53a98955af0c1
+	sha512sums = 209a8b2f9e2e25887c86e126c2761aae329e2bf9456a5de735f3ae264bd2be21e7646cc1954c1417e4c74f8d2d6b0f6081aa74a5af48f6b97484bab0d4e72fcf
+	sha512sums = 978ad84ffe8a0d10a62725173f3a56fd05f8d8347066760017f3555d009de8b9772f31c37f97ec87cfad22f60522d3c4a27a2deda4b95195c1cd459b704f6f58
+	sha512sums = 89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038
+
+pkgname = php71
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	depends = libxml2
+	depends = curl
+	depends = libzip
+	depends = pcre
+	depends = argon2
+	backup = opt/php71etc/php/php.ini
+
+pkgname = php71-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php71
+
+pkgname = php71-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php71
+	depends = apache
+	backup = opt/php71etc/httpd/conf/extra/php7_module.conf
+
+pkgname = php71-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	depends = php71
+	depends = systemd
+	options = !emptydirs
+	backup = opt/php71etc/php/php-fpm.conf
+	backup = opt/php71etc/php/php-fpm.d/www.conf
+
+pkgname = php71-embed
+	pkgdesc = Embedded PHP SAPI library
+	depends = php71
+	depends = libsystemd
+	options = !emptydirs
+
+pkgname = php71-phpdbg
+	pkgdesc = Interactive PHP debugger
+	depends = php71
+	options = !emptydirs
+
+pkgname = php71-dblib
+	pkgdesc = dblib module for PHP
+	depends = php71
+	depends = freetds
+
+pkgname = php71-enchant
+	pkgdesc = enchant module for PHP
+	depends = php71
+	depends = enchant
+
+pkgname = php71-gd
+	pkgdesc = gd module for PHP
+	depends = php71
+	depends = gd
+
+pkgname = php71-imap
+	pkgdesc = imap module for PHP
+	depends = php71
+	depends = c-client
+
+pkgname = php71-intl
+	pkgdesc = intl module for PHP
+	depends = php71
+	depends = icu
+
+pkgname = php71-mcrypt
+	pkgdesc = mcrypt module for PHP
+	depends = php71
+	depends = libmcrypt
+	depends = libtool
+
+pkgname = php71-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php71
+	depends = unixodbc
+
+pkgname = php71-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php71
+	depends = postgresql-libs
+
+pkgname = php71-pspell
+	pkgdesc = pspell module for PHP
+	depends = php71
+	depends = aspell
+
+pkgname = php71-snmp
+	pkgdesc = snmp module for PHP
+	depends = php71
+	depends = net-snmp
+
+pkgname = php71-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php71
+	depends = sqlite
+
+pkgname = php71-tidy
+	pkgdesc = tidy module for PHP
+	depends = php71
+	depends = tidy
+
+pkgname = php71-xsl
+	pkgdesc = xsl module for PHP
+	depends = php71
+	depends = libxslt
+
