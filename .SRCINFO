@@ -1,6 +1,6 @@
 pkgbase = python-scikit-rf-git
 	pkgdesc = Scikit-rf (aka skrf) is a python package for RF/Microwave engineering
-	pkgver = 0.14.8.r16.g16f6c5c
+	pkgver = 0.14.8.r18.gac522e4
 	pkgrel = 1
 	url = http://scikit-rf-web.readthedocs.org
 	arch = any
