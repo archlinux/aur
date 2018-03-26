@@ -1,5 +1,5 @@
 pkgname=addic7ed-cli
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Addic7ed command-line interface"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('f57503e65a66f1cae793dc2b44feb90f')
+md5sums=('70c04420791ab12937f731bd5bd536f4')
