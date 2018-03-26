@@ -1,7 +1,7 @@
 pkgbase = ni-visa
 	pkgdesc = National Instruments NI-VISA(TM) Library for Linux.
 	pkgver = 17.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ni.com/visa/
 	install = ni-visa.install
 	arch = x86_64

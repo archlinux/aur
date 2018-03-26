@@ -5,7 +5,7 @@ _pkgbase=('ni-visa')
 provides=('ni-visa' 'lib32-ni-visa')
 pkgver=17.0.0
 _short_ver=${pkgver%.0}
-pkgrel=2
+pkgrel=3
 pkgdesc="National Instruments NI-VISA(TM) Library for Linux."
 url="https://www.ni.com/visa/"
 arch=('x86_64')
@@ -41,6 +41,7 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}"/usr/{include,lib,lib32,bin}
+  mkdir -p "${pkgdir}"/usr/lib/environment.d
   mkdir -p "${pkgdir}"/opt/${_pkgbase}/usr/local/
   mkdir -p "${pkgdir}"/etc/{profile.d,natinst}
   mkdir -p "${pkgdir}"/etc/udev/rules.d
@@ -63,6 +64,9 @@ package() {
   ln -s /${_vxipnppath}/linux/NIvisa/USB/AddUsbRawPermissions.sh "${pkgdir}"/usr/bin/AddUsbRawPermissions.sh
 
   install -Dm644 99-usbtmc.rules "${pkgdir}/usr/lib/udev/rules.d/99-usbtmc.rules"
+  # environment variable: for gdm on Wayland
+  echo "VXIPNPPATH=/${_vxipnppath}" > "${pkgdir}"/usr/lib/environment.d/40-vxipnppath.conf
+  # environment variable: for xorg or console
   echo "export VXIPNPPATH=/${_vxipnppath}" > "${pkgdir}/etc/profile.d/vxipnppath.sh"
   install -D -m644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
