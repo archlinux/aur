@@ -1,0 +1,6 @@
+post_install() {
+  groupadd -r kapacitor &>/dev/null
+  useradd -r -g kapacitor -d /var/lib/kapacitor -s /bin/false kapacitor &>/dev/null
+
+  install -dm700 -o kapacitor -g kapacitor /var/lib/kapacitor
+}

@@ -1,0 +1,7 @@
+#/bin/sh
+
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/kapacitor.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/kapacitor.conf
+  install -d -m 755 -o kapacitor -g kapacitor /var/log/kapacitor
+}
