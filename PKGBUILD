@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=stremio-beta
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=('x86_64')
 url="https://stremio.com"
@@ -23,6 +23,7 @@ package() {
   install -d $pkgdir/{opt/$pkgname,usr/bin}
 
   cp -r "lib" "${pkgdir}/opt/${pkgname}/"
+  mv "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6" "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6.bak"
   cp -r "libexec" "${pkgdir}/opt/${pkgname}/"
   cp -r "plugins" "${pkgdir}/opt/${pkgname}/"
   cp -r "qml" "${pkgdir}/opt/${pkgname}/"
