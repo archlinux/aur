@@ -1,29 +1,41 @@
 # Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 _lang=deu-fra
 pkgname=dict-freedict-${_lang}
-pkgver=2016_11_20
+pkgver=2017_11_24
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
-makedepends=('dictd')
-install=$pkgname.install
-source=("https://sourceforge.net/projects/freedict/files/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.tar.bz2")
-sha512sums=('53e046b368c9d1ce24410993a53f4a18e15844291f7ad497c79b72d5dac928c784bdd56a8f0d7151663c68208555248af54043e8877ebc9a22ade81e1da4dc02')
+makedepends=('dictd' 'freedict-tools')
+install=${pkgname}.install
+source=("https://sourceforge.net/projects/freedict/files/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
+sha512sums=('7cef2d5c243e82e18b2aa40aacfd7e02eb25fc926667d6f16123735f01ded5dfbd7d7a215b58fee8158350a23420b91653ef7af2d4fabfa90790271ca013b317')
 
 prepare()
 {
-	cd ${_lang}
-	dictzip -d ${_lang}.dict.dz
-	sed -i 's/\(10\)\(100\>.*1 mit 100 Nullen\)/\1\^\2/' ${_lang}.dict
-	dictzip ${_lang}.dict
+	cd $_lang
+	sed -i 's/\(10\)\(100\>.*1 mit 100 Nullen\)/\1\^\2/' ${_lang}.tei
+}
+
+build()
+{
+	cd $_lang
+	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
 }
 
 package()
 {
-	mkdir -p "$pkgdir/usr/share/dictd"
-	cp ${_lang}/${_lang}.{dict.dz,index} "$pkgdir/usr/share/dictd/"
+	mkdir -p "${pkgdir}/usr/share/dictd"
+	cp ${_lang}/build/dictd/${_lang}.{dict.dz,index} \
+		"${pkgdir}/usr/share/dictd/"
+
+	mkdir -p "${pkgdir}/usr/share/doc/freedict/${_lang}"
+	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
+	do
+		test -f ${file} && \
+			cp ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
+	done
 }
