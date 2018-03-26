@@ -1,0 +1,23 @@
+pkgbase = uwsgi-plugin-php71
+	pkgdesc = Plugin for PHP 7.1 support
+	pkgver = 2.0.17
+	pkgrel = 1
+	url = http://projects.unbit.it/
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	depends = uwsgi
+	depends = php71-embed
+	depends = libyaml
+	depends = jansson
+	source = https://projects.unbit.it/downloads/uwsgi-2.0.17.tar.gz
+	source = uwsgiplugin.py::https://raw.githubusercontent.com/unbit/uwsgi/9787f6882c2475aa9873e400988160b17dd04545/plugins/systemd_logger/uwsgiplugin.py
+	source = archlinux.ini
+	source = uwsgi_trick_chroot.patch
+	sha1sums = cfa2e072f290f63bad235fc6fc92a8f5c27f1ab5
+	sha1sums = 4f89e407fd95ee740764ec3623a4b07977f96d9b
+	sha1sums = 5d20faadab172ed2f03adc35e2e8062c4a1488f5
+	sha1sums = 5a9b549a42e2ad2b45edd3eab9fd359919df6ce9
+
+pkgname = uwsgi-plugin-php71
+
