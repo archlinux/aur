@@ -1,6 +1,6 @@
 # Maintainer:  Donato Junior <donato.jun gmail com>
 # Contributor: Rafael Vega <contacto rafaelvega co>
-# Contributor: Karsten Elfenbein <karsten.elfenbein@gmail.com>
+# Contributor: Karsten Elfenbein <karsten.elfenbein gmail com>
 
 
 pkgname=iscan-plugin-perfection-v550
