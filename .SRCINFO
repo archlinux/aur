@@ -1,4 +1,4 @@
-pkgbase = qtum-qt
+pkgbase = qtum
 	pkgdesc = Qtum Desktop
 	pkgver = 0.14.15
 	pkgrel = 1

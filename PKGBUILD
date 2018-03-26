@@ -1,7 +1,7 @@
 # Maintainer: "mikeqtum" Miguel Palencia mike@qtum.org
 
 
-pkgname=qtum-qt
+pkgname=qtum
 pkgver=0.14.15
 pkgrel=1
 pkgdesc="Qtum Desktop"
