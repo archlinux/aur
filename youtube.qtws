@@ -1,0 +1,31 @@
+{
+        "name": "Youtube",
+        "scope": ["youtube.com"],
+        "plugins": [],
+        "home": "http://youtube.com",
+        "icon": "/usr/share/pixmaps/youtube-desktop.svg",
+        "saveSession": false,
+        "multimedia": true,
+        "menu": [
+            {
+                "title": "Trending",
+                "action": "http://youtube.com/feed/trending"
+            },
+            {
+                "title": "Subscriptions",
+                "action": "http://youtube.com/feed/subscriptions"
+            },
+            {
+                "title": "History",
+                "action": "http://youtube.com/feed/history"
+            },
+            {
+                "title": "Playlist",
+                "action": "http://youtube.com/playlist"
+            },
+            {
+                "title": "Settings",
+                "action": "http://youtube.com/account"
+            }
+        ]
+}

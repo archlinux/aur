@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=YouTube
+GenericName=YouTube
+Comment=YouTube Standalone Player
+Categories=Network;AudioVideo;Player;
+Exec=/usr/bin/qtws /usr/share/qtws-apps/youtube/youtube.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+Icon=youtube-desktop.svg
+StartupNotify=true
+Terminal=false
+Type=Application

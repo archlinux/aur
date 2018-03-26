@@ -1,0 +1,17 @@
+pkgbase = youtube-desktop
+	pkgdesc = YouTube web-app based on qtws
+	pkgver = 0.91
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = youtube.qtws
+	source = youtube.svg
+	source = youtube.desktop
+	md5sums = 40f58dab4c9016eb8e188d9d139a9682
+	md5sums = 241537903d64d8a0d6ad6b82c8998a70
+	md5sums = c17fe0b630bb961922e67b1be740a3c7
+
+pkgname = youtube-desktop
+
