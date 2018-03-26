@@ -1,17 +1,16 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
-# Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+# Maintainer: LLL2yu <lll2yu@protonmail.com>
 
 _pkgbase=python-aalib
 pkgname=python2-aalib
-pkgver=0.3
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Python 2.x bindings for AAlib"
 arch=('any')
 url="http://jwilk.nfshost.com/software/python-aalib.html"
 license=("GPL2")
 depends=('python2' 'aalib' 'python2-imaging')
-source=(http://pypi.python.org/packages/source/p/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz)
-md5sums=('00afa7ef3479649cec99046449c07ef9')
+source=(https://github.com/jwilk/${_pkgbase}/archive/${pkgver}.tar.gz)
+sha256sums=('60e94d381d453232ae688bc8ea7246feeab6d7211905bcf5277476607af3eb55')
 
 package() {
   cd "$srcdir"/${_pkgbase}-$pkgver
