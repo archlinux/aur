@@ -2,12 +2,12 @@
 
 pkgname=(gtk4-git)
 pkgver=3.93.0.r988.gf494d6ae1f
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 license=('LGPL')
-depends=('at-spi2-atk'  'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.53.7' 'libepoxy>=1.4'
+depends=('at-spi2-atk'  'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.55.0' 'libepoxy>=1.4'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
          'pango-git>=1.41.0' 'wayland-git>=1.9.91' 'graphene>=1.5.1' 'json-glib'
          'colord' 'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
