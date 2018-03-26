@@ -3,7 +3,7 @@
 
 pkgname=teamviewer13
 pkgver=13.1.3026
-pkgrel=1
+pkgrel=2
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('x86_64' 'i686')
 url='http://www.teamviewer.com'
@@ -18,19 +18,24 @@ depends_x86_64=(
 	'lib32-libxinerama'
 	'lib32-libxrender'
 	'lib32-libjpeg6-turbo'
-  'lib32-libxtst'
-  'lib32-freetype2'
-  'lib32-dbus'
-  'libxtst')
+	'lib32-libxtst'
+	'lib32-freetype2'
+	'lib32-dbus'
+)
 depends_i686=(
 	'fontconfig'
+	'freetype2'
+	'libjpeg6-turbo'
 	'libpng12'
 	'libsm'
 	'libxinerama'
 	'libxrender'
-	'libjpeg6-turbo'
-  'freetype2'
-  'libxtst')
+)
+depends=(
+	'libxtst'
+	'qt5-base'
+	'qt5-declarative'
+)
 install=teamviewer.install
 source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb"
                "https://archive.archlinux.org/packages/l/lib32-freetype2/lib32-freetype2-2.8-2-x86_64.pkg.tar.xz")
