@@ -1,12 +1,16 @@
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Stefano Capitani <stefanoatmanjarodotorg>
 # Contributor: Florian Pritz <f-p@gmx.at>
+
 pkgname=inxi
-pkgver=2.3.56
+pkgver=2.9.07
 pkgrel=1
 pkgdesc="script to get system information"
 arch=('any')
-url="http://inxi.org"
+url="https://github.com/smxi/inxi"
 license=('GPL')
-depends=(coreutils gawk grep pciutils procps-ng sed)
+depends=('coreutils' 'gawk' 'grep' 'pciutils' 'perl' 'procps-ng' 'sed')
+_commit=0f0433dc9ae2bf5250d6939e207bb3e94d9b7ae9
 optdepends=(
   "dmidecode: inxi -M if no sys machine data"
   "file: inxi -o unmounted file system"
@@ -23,13 +27,32 @@ optdepends=(
   "xorg-xprop: inxi -S desktop data"
   "xorg-xrandr: inxi -G single screen resolution"
 )
-source=(https://sources.archlinux.org/other/community/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('8cde8559d31b82d478bc1a5788cc7bcd')
+options=('zipman')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('04b2011a0ea9b0e0ac1a4d099ca115c65c1bbc3bbe3dcedc30a99e00df0d9ee2')
 
-package() {
-  cd "$srcdir"
-  install -D -m755 inxi "$pkgdir/usr/bin/inxi"
-  install -D -m755 inxi.1.gz "$pkgdir/usr/share/man/man1/inxi.1.gz"
+pkgver() {
+    cd $pkgname-$_commit
+
+    # change version
+    awk '/self_version=/ {print $2}' inxi | cut -c 16-21
 }
 
-# vim:set ts=2 sw=2 et:
+prepare() {
+    cd $pkgname-$_commit
+    
+    # temp move inxi to pinxi
+    mv inxi pinxi
+
+    # patches here
+
+    # temp move pinxi back to inxi
+    mv pinxi inxi
+}
+
+package() {
+  cd "$srcdir/$pkgname-$_commit"
+  install -D -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -D -m755 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+}
+
