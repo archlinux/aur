@@ -1,6 +1,6 @@
 pkgbase = polo
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
-	pkgver = 18.2
+	pkgver = 18.3
 	pkgrel = 1
 	url = http://www.teejeetech.in/
 	arch = i686
@@ -14,21 +14,21 @@ pkgbase = polo
 	depends = vte3
 	depends = rsync
 	depends = gvfs
-	depends = rclone
 	depends = p7zip
 	optdepends = mediainfo: read media properties from audio and video files
 	optdepends = fish: terminal shell
 	optdepends = perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files
 	optdepends = pv: get progress info for compression and extraction
 	optdepends = ffmpeg: generate thumbnails for video
+	optdepends = rclone: cloud storage accounts support
 	optdepends = gnome-disk-utility
 	optdepends = lzop
 	optdepends = polo-donation-plugins
 	provides = polo
 	conflicts = polo
 	conflicts = polo-bin
-	source = https://github.com/teejee2008/polo/archive/v18.2-beta.tar.gz
-	md5sums = 641153f119579942722ef1486de573a3
+	source = https://github.com/teejee2008/polo/archive/v18.3-beta.tar.gz
+	md5sums = 68a0d95d1ff3b3b7b267d3fe04f15618
 
 pkgname = polo
 
