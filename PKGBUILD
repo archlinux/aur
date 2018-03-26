@@ -127,6 +127,8 @@ build() {
 	EXTENSION_DIR=${_optdir}/usr/lib/php/modules
 	export EXTENSION_DIR
 
+  [[ -d ${srcdir}/build ]] && rm -r ${srcdir}/build
+
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
 	ln -s ../${_pkgbase}-${pkgver}/configure
