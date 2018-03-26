@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=7
+pkgrel=8
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -32,17 +32,23 @@ prepare() {
 	sed -i 's/<< std::cout <</<</g' "$srcdir/$_name/Code/Cxx/src/alg/MultiscaleManager.cxx"
 
     cmake \
-		-D CMAKE_INSTALL_PREFIX:PATH="/usr" \
-		-D CMAKE_BUILD_TYPE=Release \
-        -D PYTHON_EXECUTABLE=/usr/bin/python2 \
-        -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -D BUILD_SHARED_LIBS=ON \
-        -D USE_ITK=OFF \
-        -D USE_CUDA=OFF \
-        -D PYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -D PYTHON_INSTALL_DIR=/usr/lib/python2.7/site-packages \
-        -D CUDA_NVCC_FLAGS_RELEASE=--pre-include\ $srcdir/$_name/preinc.h \
+		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+		-DCMAKE_BUILD_TYPE=Release \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DBUILD_SHARED_LIBS=ON \
+        -DUSE_ITK=ON \
+        -DUSE_CUDA=OFF \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_INSTALL_DIR=/usr/lib/python2.7/site-packages \
+        -DCUDA_NVCC_FLAGS_RELEASE=--pre-include\ $srcdir/$_name/preinc.h \
 		..
+
+	# Do not include Python 3 stuff
+	for f in `grep -nr . | grep 'python3\.6' | cut -f1 -d':'`
+	do
+		sed -i 's/[^ ]\+python3\.6[^ ]\+//g' $f
+	done
 }
 
 build() {
