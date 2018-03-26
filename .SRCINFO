@@ -1,5 +1,5 @@
 pkgbase = europlate
-	pkgdesc = EuroPlate - TrueType Font for european number plates.
+	pkgdesc = TrueType Font for european number plates.
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.autokennzeichen.info/kennzeichen-schriftart.htm
