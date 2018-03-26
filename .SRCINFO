@@ -1,9 +1,8 @@
 pkgbase = freetype2-infinality
 	pkgdesc = Font rasterization library with Infinality patches and custom settings.
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freetype.org/
-	install = freetype2.install
 	arch = armv7h
 	arch = i686
 	arch = x86_64
@@ -14,22 +13,50 @@ pkgbase = freetype2-infinality
 	depends = libpng
 	depends = sh
 	depends = zlib
-	provides = freetype2=2.9
-	provides = freetype2-infinality-ultimate
-	provides = libfreetype.so
-	conflicts = freetype2
-	backup = etc/profile.d/freetype2.sh
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz.sig
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-doc-2.9.tar.gz
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-doc-2.9.tar.gz.sig
-	source = freetype2.sh::https://raw.githubusercontent.com/archfan/infinality_bundle/master/01_freetype2-iu/freetype2.sh
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz.sig
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.9.tar.gz
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.9.tar.gz.sig
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.9.tar.gz
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.9.tar.gz.sig
+	source = 0001-Enable-table-validation-modules.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2
+	source = 0002-Enable-infinality-subpixel-hinting.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2
+	source = 0003-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2
+	source = 0001-psaux-Correctly-handle-Flex-features-52846.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-psaux-Correctly-handle-Flex-features-52846.patch?h=packages/freetype2
+	source = 0005-freetype-2.5.2-more-demos.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-freetype-2.5.2-more-demos.patch?h=packages/freetype2
+	source = freetype2.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/freetype2.sh?h=packages/freetype2
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
 	sha256sums = bf380e4d7c4f3b5b1c1a7b2bf3abb967bda5e9ab480d0df656e0e08c5019c5e6
 	sha256sums = 06460168615c4c69293e4126c7e69731b7cc7d4db5470bca3cb95c05807993e2
 	sha256sums = 9312f7d2e5c798684d39e1fecddfed8e29d2102f035c4bd765157e2d077175f8
 	sha256sums = 37c0ee3d983769a50a33292f547bec8d0dc064da62090dd7690bedf2d1dba7d0
+	sha256sums = 29641b22a8e785997a953b5f5e59ba972e6969cb8c43fbce5e5c3537a1fabc7e
+	sha256sums = 54466e05fb50b4a5def0589202ae41b15ea160b279092e01f5322dcd54fba044
+	sha256sums = 12bead126c05bc980af4d4a730f230db925e8bfb27b9e3683cba05e42a4be6e6
+	sha256sums = 7c1438c6bb137e24b39aa8a4eabb5c82f1ed3c3911ad9b698f3944c4a4c79be9
+	sha256sums = e5541954d302ddae6e6c906b1ab2e18a7a7bec450af90c3f260f26040b7e1731
+	sha256sums = 94bacad40d0be11659518bd6fb663c84f03f8a95b65dff95bb1f1f825f997236
+	sha256sums = 36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b
 	sha256sums = f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467
 
 pkgname = freetype2-infinality
+	install = freetype2.install
+	provides = freetype2
+	provides = libfreetype.so
+	conflicts = freetype2
+	options = libtool
+	backup = etc/profile.d/freetype2.sh
+
+pkgname = freetype2-demos-infinality
+	pkgdesc = Freetype tools and demos with Infinality patches and custom settings
+	depends = freetype2
+	depends = libx11
+	provides = freetype2-demos
+	conflicts = freetype2-demos
+
+pkgname = freetype2-docs-infinality
+	pkgdesc = Freetype documentation with Infinality patches and custom settings
+	depends = freetype2
+	provides = freetype2-docs
+	conflicts = freetype2-docs
 
