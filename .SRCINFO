@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.15.12
+	pkgver = 4.15.13
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.12.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.12.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.13.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.13.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -25,7 +25,7 @@ pkgbase = linux-gc
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
 	sha256sums = SKIP
-	sha256sums = 74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79
+	sha256sums = f1bc5cfc7316daa463cd0ed366e376eb24a29072491c29a68732e1edf8a6ef8b
 	sha256sums = SKIP
 	sha256sums = de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -44,12 +44,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.15.12
+	provides = linux-gc=4.15.13
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.15.12
-	provides = linux-headers=4.15.12
+	provides = linux-gc-headers=4.15.13
+	provides = linux-headers=4.15.13
 
