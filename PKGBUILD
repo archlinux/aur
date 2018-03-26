@@ -5,7 +5,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-dev
-pkgver=2.7.6
+pkgver=2.7.8
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -53,4 +53,4 @@ package() {
 	# to the location that it was built at.
 	rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
 }
-md5sums=('f866f4eeb8c98e6c01b6e26ef4793c3d')
+md5sums=('13393d2c5c84905e065e1d2a098e913a')
