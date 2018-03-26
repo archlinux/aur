@@ -1,4 +1,4 @@
-# Maintainer: Lenovsky <lenovsky@protonmail.ch>
+# Maintainer: Lenovsky <lenovsky@pm.me>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>

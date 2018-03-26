@@ -1,7 +1,0 @@
-checksumupdate=0
-update_pkgver=""
-pwd=$PWD
-cd $SRCDEST/$_gitname
-git fetch --all -p
-update_pkgver=$(git log -1 --date=short --format="%cd.%h" | tr -d '-')
-cd $pwd
