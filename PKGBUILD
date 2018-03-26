@@ -1,15 +1,21 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=black
-pkgver=18.3a3
+pkgver=18.3a4
 pkgrel=1
 pkgdesc='Uncompromising code formatter'
 arch=('any')
 url=https://github.com/ambv/black
 license=('MIT')
 depends=('python-attrs' 'python-click')
-source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz")
-sha512sums=('1f490b4d6f6d760c930c7615f50a9d1269f750a91d645f42e222e5bf40919c22a6a5d4c00fad4b5bf0750728096d4ac7d71ab40f248a2b09aa3f32ff281ddeee')
+source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz"
+        'https://raw.githubusercontent.com/ambv/black/18.3a4/tests/debug_visitor.out')
+sha512sums=('7e134a28bee2efbc3408f0042023be1a4fa0033321755ef15ec90116e114282ae4ce53d032210859e391d96d54ccadb0580444e5de56666714318e0b596db0fc'
+            '66f78c65192f7c43639c3169aabbf13b098e53ebfe237395af01ceec4814ce2ca412f2a3735e24dcca0449792ef33d1f1c9061e7b69047be7117cecaea71f8a1')
+
+prepare() {
+  mv debug_visitor.out black-$pkgver/tests
+}
 
 build() {
   cd black-$pkgver
