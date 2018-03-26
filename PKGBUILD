@@ -4,12 +4,12 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=basilisk
-pkgver=55.0.0
-pkgrel=4
-pkgdesc="Basilisk Browser from the makers of Pale Moon"
+pkgver=2018.03.26
+pkgrel=1
+pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="http://www.basilisk-browser.org/"
+url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
@@ -18,8 +18,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags)
-com=2f2a5041bea1a9ebd17f0cc465ba10ae64267bd5
-source=("basil::git+https://github.com/MoonchildProductions/moebius.git#commit=$com"
+com=6afc1c735f8f19cd317cd0ae81da9b4348a78ada
+source=("basil1::git+https://github.com/MoonchildProductions/moebius.git#commit=$com"
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/fix-wifi-scanner.diff
@@ -35,9 +35,9 @@ sha256sums=('SKIP'
             'ebaa84b1e108390cd1042cce7eaad6a7c0053c7b2b4d0b961d4a98732b3c93ac'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
-            'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
-            '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
-            '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
+            'd2f63212766c764eec358c317db1e740c226abef57ef2b557dcf08c2588074a3'
+            'a7d4a4c240772d27c35aa27d711c0eec909700073c8b9488707f60d6e4b81a5e'
+            '3868723b1afc75c109426bf54a86e97a3022ac9ce0650d620842c6ff8333b1cc'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd')
 
 
@@ -47,11 +47,11 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd basil
+  cd basil1
 
 msg2 'Edgy patches'
 
-patch -Np1 -i ../firefox-52-disable-data-sharing-infobar.patch
+#patch -Np1 -i ../firefox-52-disable-data-sharing-infobar.patch
 patch -Np1 -i ../firefox-52-disable-location.services.mozilla.com.patch
 patch -Np1 -i ../firefox-52-disable-telemetry.patch
 
@@ -65,9 +65,6 @@ msg2 'Workin'
   patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -d toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
-
   # Build with the rust targets we actually ship
 
 
@@ -82,7 +79,8 @@ ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-optimize="-O2"
 
-# Branding
+export MOZ_TELEMETRY_REPORTING=0
+
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
@@ -91,8 +89,12 @@ export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=0
 
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --enable-alsa
+ac_add_options --disable-updater
 
-# System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-icu
@@ -112,12 +114,7 @@ ac_add_options --disable-updater
 
 # Imported from Waterfox
 ac_add_options --disable-stylo
-ac_add_options --disable-tests
 
-ac_add_options --disable-debug
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-parental-controls
-ac_add_options --disable-accessibility
 
 # If you want to have text-to-speech support, comment this line:
 ac_add_options --disable-webspeech
@@ -136,12 +133,18 @@ ac_add_options --disable-gamepad
 
 mk_add_options MOZ_MAKE_FLAGS="-j10"
 
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-parental-controls
+ac_add_options --disable-accessibility
+ac_add_options --disable-tests
+ 
 
 END
 }
 
 build() {
-  cd basil
+  cd basil1
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -159,7 +162,14 @@ build() {
 }
 
 package() {
-  cd basil
+  cd basil1
+
+msg2 'Fixing  bugs as always lol'
+mkdir browser
+mkdir browser/branding
+cp -r application/basilisk/branding/official/ browser/branding/official
+
+
   DESTDIR="$pkgdir" ./mach install
 
   for i in 16 22 24 32 48 256; do

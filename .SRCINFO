@@ -1,8 +1,8 @@
 pkgbase = basilisk
-	pkgdesc = Basilisk Browser from the makers of Pale Moon
-	pkgver = 55.0.0
-	pkgrel = 4
-	url = http://www.basilisk-browser.org/
+	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
+	pkgver = 2018.03.26
+	pkgrel = 1
+	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
 	license = GPL
@@ -41,7 +41,7 @@ pkgbase = basilisk
 	optdepends = speech-dispatcher: Text-to-Speech
 	options = !emptydirs
 	options = !makeflags
-	source = basil::git+https://github.com/MoonchildProductions/moebius.git#commit=2f2a5041bea1a9ebd17f0cc465ba10ae64267bd5
+	source = basil1::git+https://github.com/MoonchildProductions/moebius.git#commit=6afc1c735f8f19cd317cd0ae81da9b4348a78ada
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
@@ -57,9 +57,9 @@ pkgbase = basilisk
 	sha256sums = ebaa84b1e108390cd1042cce7eaad6a7c0053c7b2b4d0b961d4a98732b3c93ac
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 	sha256sums = cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8
-	sha256sums = bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab
-	sha256sums = 8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103
-	sha256sums = 24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040
+	sha256sums = d2f63212766c764eec358c317db1e740c226abef57ef2b557dcf08c2588074a3
+	sha256sums = a7d4a4c240772d27c35aa27d711c0eec909700073c8b9488707f60d6e4b81a5e
+	sha256sums = 3868723b1afc75c109426bf54a86e97a3022ac9ce0650d620842c6ff8333b1cc
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
 
 pkgname = basilisk
