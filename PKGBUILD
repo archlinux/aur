@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-citra-git
-pkgver=r5381.4b0ec7ec
+pkgver=r5903.7f983fe7
 pkgrel=1
 pkgdesc='Nintendo 3DS core'
 arch=('x86_64')
 url='https://github.com/libretro/citra'
 license=('GPL2')
 groups=('libretro-unstable')
-depends=('curl' 'gcc-libs' 'glibc' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info' 'sdl2'
+         'libcurl.so')
 makedepends=('cmake' 'git')
 provides=('libretro-citra')
 conflicts=('libretro-citra')
@@ -68,10 +69,9 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DDISABLE_LIBPNG='ON' \
     -DENABLE_LIBRETRO='ON' \
     -DENABLE_QT='OFF' \
-    -DENABLE_SDL2='OFF' \
+    -DENABLE_SDL2='ON' \
     -DUSE_SYSTEM_CURL='ON'
   make
 }
