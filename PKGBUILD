@@ -5,20 +5,20 @@
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
 pkgname=chrome-remote-desktop
-pkgver=65.0.3325.39
-pkgrel=2
+pkgver=66.0.3359.12
+pkgrel=1
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=("x86_64")
 license=("BSD")
 install="${pkgname}.install"
 depends=("gconf" "gtk3" "nss" "python2" "python2-psutil" "xorg-server-xvfb" "xorg-setxkbmap" "xorg-xauth" "xorg-xdpyinfo")
-source=("${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
+source=("${pkgname}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
         "${pkgname}.service" 
         "crd")
-sha256sums=("098b877306269200c3e8044c34222db5c1724274f39b171585ad8b2248eaede5"
+sha256sums=("SKIP"
             "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
-            "d9c082c89371539877f0d9d167d73be32c5d9de99ba655be036232e606dcf1c8")
+            "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06")
 
 pkgver() {
   bsdtar -xf control.tar.gz -O control | grep "^Version: " | cut -f2 -d' '
@@ -65,5 +65,5 @@ package() {
   done
   
   msg2 "Setting uid root to user-session command"
-  chmod u+s "${pkgdir}/opt/google/chrome-remote-desktop/user-session"
+  chmod u+s "${pkgdir}/opt/google/${pkgname}/user-session"
 }
