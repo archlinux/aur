@@ -1,49 +1,79 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
-pkgver=4.8
-pkgrel=3
+pkgver=4.9.0
+pkgrel=1
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
 license=('apache')
 provides=()
-depends=('insight-toolkit' 'ann')
+depends=('insight-toolkit>=4.13' 'ann')
 makedepends=('cmake')
 optdepends=()
 conflicts=('elastix-git' 'elastix-bin')
-source=('http://elastix.isi.uu.nl/download/elastix_sources_v4.8.tar.bz2')
-sha512sums=('9438285dfe153edb32ea9806bf3192123d1080ddc71437b3b2cc7006b18bcd8e875451e92293ab51275291a042513b8c4dad91292da4bd0897ed5ae05b6d6558')
+source=("https://github.com/SuperElastix/elastix/archive/${pkgver}.tar.gz")
+sha512sums=('5380529a27d9aef4d93147c6de3cb0930fd31851106cfb41f35556b6e6a5406058de60bdb6ec699f17631861fd518f370b0f0a170db5d254eeafb529283d618c')
 
 prepare() {
-	cd "${srcdir}/src"
+	_build_dir="${srcdir}/${pkgname}-${pkgver}/build"
 
-	mkdir build || :
-	cd build
+	mkdir "$_build_dir" || :
+	cd "$_build_dir"
 
-	cmake .. \
+	# What follows is the default CMake configuration.
+	# I have listed all the components that are disabled by default, so
+	# you can easily enable any extra you need!
+	cmake \
 		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-		-DCMAKE_BUILD_TYPE:STRING=Release
-
-	# Make newer versions of ITK and gcc happy
-	sed -i '108i  virtual const char * GetNameOfClass( void ) const\n;' \
-		"${srcdir}/src/Core/Install/elxBaseComponent.h"
-	sed -i '35iconst char * BaseComponent::GetNameOfClass( void ) const { return "BaseComponent"; }' \
-		"${srcdir}/src/Core/Install/elxBaseComponent.cxx"
-	sed -i '102s/inputImage/static_cast<const InputImageType *>(inputImage)/' \
-		"${srcdir}/src/Common/itkImageFileCastWriter.h"
-	sed -i '193,194s/vnl_math_min(/vnl_math_min( (int)/' \
-		"${srcdir}/src/Components/Optimizers/AdaptiveStochasticGradientDescent/elxAdaptiveStochasticGradientDescent.hxx"
-	sed -i '1009s/Generate/Update/' \
-		"${srcdir}/src/Core/Kernel/elxElastixMain.cxx"
+		-DCMAKE_BUILD_TYPE:STRING=Release \
+		-DMAKE_CXX_FLAGS:STRING="--std=c++11" \
+		-DELASTIX_USE_OPENCL:BOOL=OFF \
+		-DELASTIX_USE_ALL_COMPONENTS:BOOL=OFF \
+		-DELASTIX_USE_EIGEN:BOOL=OFF \
+		-DELASTIX_USE_OPENCL:BOOL=OFF \
+		-DELASTIX_USE_AdvancedKappaStatisticMetric:BOOL=OFF \
+		-DELASTIX_USE_AffineDTITransformElastix:BOOL=OFF \
+		-DELASTIX_USE_AffineLogTransformElastix:BOOL=OFF \
+		-DELASTIX_USE_BSplineInterpolatorFloat:BOOL=OFF \
+		-DELASTIX_USE_BSplineResampleInterpolatorFloat:BOOL=OFF \
+		-DELASTIX_USE_BSplineTransformWidthDiffusion:BOOL=OFF \
+		-DELASTIX_USE_CMAEvolutionStrategy:BOOL=OFF \
+		-DELASTIX_USE_ConjugateGradientFRPR:BOOL=OFF \
+		-DELASTIX_USE_DisplacementMagnitudePenaliy:BOOL=OFF \
+		-DELASTIX_USE_FixedShrinkingPyramid:BOOL=OFF \
+		-DELASTIX_USE_GradientDifferenceMetric:BOOL=OFF \
+		-DELASTIX_USE_LinearResampleInterpolator:BOOL=OFF \
+		-DELASTIX_USE_MissingStructurePenalty:BOOL=OFF \
+		-DELASTIX_USE_MovingShrinkingPyramid:BOOL=OFF \
+		-DELASTIX_USE_MultiBSplineTransformWithNormal:BOOL=OFF \
+		-DELASTIX_USE_MutualInformationHistogramMetric:BOOL=OFF \
+		-DELASTIX_USE_NearestNeighborInterpolator:BOOL=OFF \
+		-DELASTIX_USE_NearestNeighborResampleInterpolator:BOOL=OFF \
+		-DELASTIX_USE_NormalizedGradientCorrelationMetric:BOOL=OFF \
+		-DELASTIX_USE_OpenCLFixedGenericPyramid:BOOL=OFF \
+		-DELASTIX_USE_OpenCLMovingGenericPyramid:BOOL=OFF \
+		-DELASTIX_USE_OpenCLResampler:BOOL=OFF \
+		-DELASTIX_USE_PatternIntensityMetric:BOOL=OFF \
+		-DELASTIX_USE_PolydataDummyPenalty:BOOL=OFF \
+		-DELASTIX_USE_RSGDEEachParameterApart:BOOL=OFF \
+		-DELASTIX_USE_RayCastInterpolator:BOOL=OFF \
+		-DELASTIX_USE_RayCastResampleInterpolator:BOOL=OFF \
+		-DELASTIX_USE_SimilarityTransformElastix:BOOL=OFF \
+		-DELASTIX_USE_Simplex:BOOL=OFF \
+		-DELASTIX_USE_SimultaneousPerturbation:BOOL=OFF \
+		-DELASTIX_USE_StatisticalShapePenalty:BOOL=OFF \
+		-DELASTIX_USE_ViolaWellsMutualInformationMetric:BOOL=OFF \
+		-DELASTIX_USE_WeightedCombinationTransformElastix:BOOL=OFF \
+		..
 }
 
 build() {
-	cd "${srcdir}/src/build"
+	cd "$_build_dir"
 	make
 }
 
 package() {
-	cd "${srcdir}/src/build"
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 
 	make install DESTDIR="${pkgdir}"
 
