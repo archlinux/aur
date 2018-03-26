@@ -1,0 +1,16 @@
+--- ddclient.orig	2016-07-11 17:55:18.734249006 +0200
++++ ddclient	2016-07-11 17:58:38.767797016 +0200
+@@ -4171,7 +4171,12 @@
+ 			}
+ 
+ 			# Set domain
+-			$url   = "https://$config{$key}{'server'}/api_json.html?a=rec_edit&type=A&ttl=1";
++			$url   = "https://$config{$key}{'server'}/api_json.html?a=rec_edit&ttl=1";
++			if($ip =~ /:/){
++				$url .= "&type=AAAA";
++			} else {
++				$url .= "&type=A";
++			}
+ 			$url     .= "&name=$hostname";
+ 			$url     .= "&z=".$config{$key}{'zone'};
+ 			$url     .= "&id=".$id;

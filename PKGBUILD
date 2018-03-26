@@ -7,7 +7,7 @@
 pkgname=ddclient-ipv6
 _pkgname=ddclient
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services, with IPv6 patch"
 arch=('any')
 url="http://ddclient.sourceforge.net"
@@ -18,15 +18,21 @@ conflicts=('ddclient')
 backup=('etc/ddclient/ddclient.conf')
 source=(http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.bz2
         "ddclient.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?msg=25;filename=ddclient.patch;att=1;bug=704467"
+        "ddclient-invalid_adresses_fix.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=704467;filename=ddclient.patch;msg=55"
+        "0001-cloudflare_ipv6_support.patch"
         $_pkgname.service)
 md5sums=('3b426ae52d509e463b42eeb08fb89e0b'
          '55c0d00d6127c8834bb839fda19445b0'
+         'da70c9cd9ea29557a930783293e9bba8'
+         'f476c2bf79307584c114883281cba2d6'
          '1bcd3e75309e658931532adef2a0608a')
 
 prepare(){
   cd "$srcdir"/$_pkgname-$pkgver
 
 	patch -p0 -i "$srcdir"/ddclient.patch
+	patch -p3 -i "$srcdir"/ddclient-invalid_adresses_fix.patch
+	patch -p0 -i "$srcdir"/0001-cloudflare_ipv6_support.patch
 }
 
 package() {
