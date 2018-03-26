@@ -2,7 +2,7 @@
 # Contributor: HUANG Wei <grubbyfans at gmail dot com>
 
 pkgname=influxdb-bin
-pkgver=1.4.3
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,13 +14,13 @@ backup=('etc/influxdb/influxdb.conf')
 install=influxdb.install
 
 source_i686=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_i386.tar.gz")
-sha256sums_i686=('718072573052cdccbaa9bce8096b6f371554b4d697b539b517236f208763ded6')
+sha256sums_i686=('62b980d1c3449709f3ae9e80ec54410a90193ac26762b19dbb438dba7da39d52')
 source_x86_64=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('abece3774e01e5507db2b696c0b922bea7d74eb857539598a970dd03c48c092c')
+sha256sums_x86_64=('79d924a0846146f08c608cdb05715d44d374cc7e6ade701992cb6f83d8b37088')
 source_armv6h=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_armhf.tar.gz")
-sha256sums_armv6h=('58113a69700dafed9e1ce2fa03709ba9d7c0a27b761afb5db1431f39bd898999')
+sha256sums_armv6h=('8ecb41296333411a6fb7e47f4b4ac817564af9e4b72f0206b21f619b81af9850')
 source_armv7h=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_armhf.tar.gz")
-sha256sums_armv7h=('58113a69700dafed9e1ce2fa03709ba9d7c0a27b761afb5db1431f39bd898999')
+sha256sums_armv7h=('8ecb41296333411a6fb7e47f4b4ac817564af9e4b72f0206b21f619b81af9850')
 source=('influxdb.sysusers' 'influxdb.tmpfiles' 'LICENSE')
 sha256sums=('a5ffcdb6db92ed33eccd14a93f1243c18d0d64724de641730af451c99642d6d6' 'e2aa59413a6204737383b86cedefd866d7073f56ace5b89aad38c530cc86e60c' 'bece49bfc61abbb9d0b69bebb47955a44617ada83186c95db5651cd40c0a867a')
 
