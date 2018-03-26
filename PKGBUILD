@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-pendulum' 'python2-pendulum')
-pkgver=1.3.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Python datetimes made easy"
 arch=('any')
