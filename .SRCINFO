@@ -1,0 +1,25 @@
+pkgbase = gimagereader-beta
+	pkgdesc = A graphical frontend to tesseract-ocr, beta version
+	pkgver = 3.2.99
+	pkgrel = 1
+	url = https://github.com/manisandro/gImageReader/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = desktop-file-utils
+	makedepends = intltool
+	makedepends = cmake
+	depends = gtksourceviewmm
+	depends = libxml++2.6
+	depends = sane
+	depends = podofo
+	depends = tesseract
+	depends = gtkspellmm
+	depends = poppler-glib
+	provides = gimagereader
+	conflicts = gimagereader
+	source = https://github.com/manisandro/gImageReader/releases/download/v3.2.99/gimagereader-3.2.99.tar.xz
+	sha256sums = e6a45d1a7a3b83ed7fa8181b886dd28e1bb8c5935cc0ac62f1c4f12cb51b4fc2
+
+pkgname = gimagereader-beta
+
