@@ -1,20 +1,20 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
+_commit=f36cf6936bf8667d6b86f84e1b81673e80e1f704
 pkgname=vim-puppet
-pkgver=4.9.2
+pkgver=20180325
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Puppet language syntax highlighting for vim."
 arch=('any')
-url="https://github.com/puppetlabs/puppet/tree/master/ext/vim/"
+url="https://github.com/puppetlabs/puppet-syntax-vim"
 license=('Apache')
 depends=('vim')
-conflicts=('puppet')
-source=("https://github.com/puppetlabs/puppet/archive/${pkgver}.tar.gz")
-sha256sums=('ba23154d7f04242f7c7487b36b583822ce3210cd21b5e933f3c9788c3a499427')
+source=("https://github.com/puppetlabs/puppet-syntax-vim/archive/$_commit.zip")
+sha256sums=('16d2a326a70f91c2b6008fb0f0f87708eb5be6eca87167f51a4232610f457513')
 
 package() {
-    cd "${srcdir}/puppet-${pkgver}/ext/vim"
+    cd "puppet-syntax-vim-$_commit"
     _vimdir="${pkgdir}/usr/share/vim/vimfiles"
 
     install -dm755 "$_vimdir"/{ftdetect,ftplugin,indent,syntax}
