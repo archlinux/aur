@@ -16,6 +16,7 @@ pkgbase = doc-browser-git
 	depends = xz
 	depends = zlib
 	depends = openssl
+	depends = mathjax
 	depends = xclip
 	depends = xdg-utils
 	source = doc-browser-git::git+https://github.com/qwfy/doc-browser.git

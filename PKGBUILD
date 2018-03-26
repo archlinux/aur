@@ -17,6 +17,7 @@ depends=('qt5-base'
          'xz'
          'zlib'
          'openssl'
+         'mathjax'
          'xclip'
          'xdg-utils')
 
