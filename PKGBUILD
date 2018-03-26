@@ -28,33 +28,22 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver=7.0.7.28
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
 license=('custom')
 depends=(
     # official repositories:
-        'libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng'
-        'gsfonts' 'ttf-dejavu' 'ghostpcl' 'ghostxps'
-        'ghostscript' 'libraw' 'librsvg' 'libwebp' 'libwmf' 'libxml2'
+        'libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'libxml2'
+        'ghostscript' 'gsfonts' 'ttf-dejavu' 'libraw' 'librsvg' 'libwebp' 'libwmf'
         'ocl-icd' 'openexr' 'openjpeg2' 'pango'
-        'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
-        'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
+        'jemalloc' 'bzip2' 'libx11' 'libsm' 'libice' 'libxt' 'zlib' 'fftw' 'djvulibre'
+        'freetype2' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'xz' 'libtiff'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
+        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx' 'libde265'
 )
-makedepends=(
-    # official repositories:
-        'libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng'
-        'gsfonts' 'ttf-dejavu' 'opencl-headers' 'chrpath' 'ghostpcl' 'ghostxps'
-        'ghostscript' 'libraw' 'librsvg' 'libwebp' 'libwmf' 'libxml2'
-        'ocl-icd' 'openexr' 'openjpeg2' 'pango'
-        'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
-        'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
-    # AUR:
-        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
-)
+makedepends=('git' 'perl' 'opencl-headers' 'chrpath' 'glu' 'ghostpcl' 'ghostxps')
 source=("${pkgbase}-git"::"git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff')
 sha256sums=('SKIP'
@@ -193,31 +182,22 @@ package_libmagick-full() {
 }
 
 package_imagemagick-full() {
-    depends=("libmagick-full=${pkgver}-${pkgrel}")
+    depends=("libmagick-full=${pkgver}-${pkgrel}" 'perl')
     optdepends=(
         # AUR:
             'imagemagick-full-doc: manual and API docs'
             'ttf-mac-fonts: for Apple fonts support'
     )
+    options=('!emptydirs')
     provides=('imagemagick' 'imagemagick-fftw')
     conflicts=('imagemagick' 'imagemagick-fftw' 'imagemagick-no-hdri'
                'imagemagick-git' 'imagemagick-full-git')
-    options=('!emptydirs')
     
     cd "${pkgbase}-git"
     
     mv -f binpkg/* "$pkgdir"
     
-    find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
-    
-    # template start; name=perl-binary-module-dependency; version=1;
-    if [ "$(find "${pkgdir}/usr/lib/perl5/" -name '*.so')" ] 
-    then
-        local _perlver_min="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')"
-        local _perlver_max="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')"
-        depends+=("perl>=${_perlver_min}" "perl<${_perlver_max}")
-    fi
-    # template end;
+    find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
