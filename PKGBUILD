@@ -4,7 +4,7 @@
 pkgname=sensu
 pkgver=1.2.1
 _debver='1.2.1-2'
-pkgrel=8
+pkgrel=9
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
@@ -23,7 +23,8 @@ package() {
 	tar xzf data.tar.gz -C "${pkgdir}"
 
 	# Fix directories structure differencies
-	mkdir -p ${pkgdir}/usr/lib
-    mv ${pkgdir}/lib/* ${pkgdir}/usr/lib
-    rm -rf ${pkgdir}/lib
+	mkdir -p ${pkgdir}/usr/lib ${pkgdir}/run
+    mv ${pkgdir}/lib/* ${pkgdir}/usr/lib/
+    mv ${pkgdir}/var/run/* ${pkgdir}/run/
+    rm -rf ${pkgdir}/var/run ${pkgdir}/lib
 }

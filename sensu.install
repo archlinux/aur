@@ -24,7 +24,7 @@ post_install() {
 	    chown -Rh 0:0 /opt/sensu
 	    chown -R sensu:sensu /etc/sensu
 	    chown -R sensu:sensu /var/log/sensu
-	    chown -R sensu:sensu /var/run/sensu
+	    chown -R sensu:sensu /run/sensu
 	    chown -R sensu:sensu /var/cache/sensu
 	}
 
