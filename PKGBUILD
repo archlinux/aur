@@ -3,11 +3,12 @@
 
 pkgname=php71-apcu
 pkgver=5.1.10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP'
 url='https://pecl.php.net/package/APCu'
 depends=('php71')
+provides=('php-apcu')
 license=('PHP')
 source=("https://pecl.php.net/get/apcu-${pkgver}.tgz"
         'apcu.ini')
