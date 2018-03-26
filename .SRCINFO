@@ -11,8 +11,8 @@ pkgbase = ttf-carlito
 	provides = ttf-font
 	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-carlito-20130920.tar.gz
 	source = 30-0-carlito.conf
-	md5sums = c74b7223abe75949b4af367942d96c7a
-	md5sums = 175d57bd2f40045df180a7dc18e2d513
+	sha256sums = 4bd12b6cbc321c1cf16da76e2c585c925ce956a08067ae6f6c64eff6ccfdaf5a
+	sha256sums = 9a7cd84293ec3d58bcd8da776d2eba6cd7a376e259f2fe617ce5f38bba808640
 
 pkgname = ttf-carlito
 
