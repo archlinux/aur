@@ -1,5 +1,5 @@
 --- a/Makefile	2018-03-15 19:02:37.000000000 +0100
-+++ b/Makefile	2018-03-16 19:54:00.191232896 +0100
++++ b/Makefile	2018-03-26 21:19:44.498004326 +0200
 @@ -348,6 +348,16 @@
  release/%-amd64: GOARCH=amd64
  release/linux-%: GOOS=linux
@@ -17,3 +17,12 @@
  release/linux-ppc64le: GOARCH=ppc64le
  release/linux-ppc64le: DOCKER_ARCH=ppc64le
  release/linux-ppc64le: GO_TAGS+= nopkcs11
+@@ -431,6 +441,8 @@
+ 	-@rm -rf release/windows-amd64/hyperledger-fabric-windows-amd64.$(PROJECT_VERSION).tar.gz ||:
+ 	-@rm -rf release/darwin-amd64/hyperledger-fabric-darwin-amd64.$(PROJECT_VERSION).tar.gz ||:
+ 	-@rm -rf release/linux-amd64/hyperledger-fabric-linux-amd64.$(PROJECT_VERSION).tar.gz ||:
++        -@rm -rf release/linux-arm/hyperledger-fabric-linux-arm64.$(PROJECT_VERSION).tar.gz ||:
++        -@rm -rf release/linux-arm64/hyperledger-fabric-linux-arm64.$(PROJECT_VERSION).tar.gz ||:
+ 	-@rm -rf release/linux-ppc64le/hyperledger-fabric-linux-ppc64le.$(PROJECT_VERSION).tar.gz ||:
+ 	-@rm -rf release/linux-s390x/hyperledger-fabric-linux-s390x.$(PROJECT_VERSION).tar.gz ||:
+ 

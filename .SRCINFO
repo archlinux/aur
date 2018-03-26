@@ -1,8 +1,9 @@
 pkgbase = hyperledger-fabric
 	pkgdesc = A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyperledger/fabric
+	install = hyperledger-fabric.install
 	arch = armv6h
 	arch = armv7h
 	arch = arm
@@ -15,9 +16,13 @@ pkgbase = hyperledger-fabric
 	makedepends = docker
 	depends = go
 	source = https://github.com/hyperledger/fabric/archive/v1.1.0.tar.gz
+	source = fabric-peer.conf
+	source = fabric-peer.service
 	source = arm-support.patch
 	md5sums = 3c9fcd96296a4f699f8f79fd96718b0f
-	md5sums = a3b4e6d9f3c0675e9d53894e4e17cd15
+	md5sums = a0bafaaeb3be191ed2893662fe9a6fc7
+	md5sums = 19a55d9a62f467235b51b2e4d7b3c523
+	md5sums = ac9701b648b4a9e0aea5d18268c06a30
 
 pkgname = hyperledger-fabric
 

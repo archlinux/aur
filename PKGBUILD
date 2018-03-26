@@ -3,7 +3,7 @@
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
 url="https://github.com/hyperledger/fabric"
@@ -11,7 +11,10 @@ license=('APACHE')
 groups=('hyperledger')
 depends=('go')
 makedepends=('git' 'docker')
+install=$pkgname.install
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz"
+	${_pkgname}-peer.conf
+	${_pkgname}-peer.service
 arm-support.patch)
 
 export GOOS=linux
@@ -46,8 +49,16 @@ package() {
 
 	cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
 	install -dm 755 $pkgdir/etc/hyperledger/fabric/tls
-        install -dm 755 $pkgdir/etc/hyperledger/fabric/msp
+	cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
+
+	msg2 "Install systemd service"
+	install -Dm644 $srcdir/${_pkgname}-peer.service $pkgdir/usr/lib/systemd/system/${_pkgname}-peer.service
+
+	msg2 "Install conf file"
+	install -Dm644 $srcdir/${_pkgname}-peer.conf $pkgdir/usr/lib/environment.d/${_pkgname}-peer.conf
 }
 
 md5sums=('3c9fcd96296a4f699f8f79fd96718b0f'
-         'a3b4e6d9f3c0675e9d53894e4e17cd15')
+         'a0bafaaeb3be191ed2893662fe9a6fc7'
+         '19a55d9a62f467235b51b2e4d7b3c523'
+         'ac9701b648b4a9e0aea5d18268c06a30')

@@ -1,0 +1,14 @@
+post_install() {
+    chmod 644 /etc/hyperledger/fabric/tls/*
+    rm -rf /crypto-config
+}
+
+post_remove() {
+    cat << EOF
+===> WARNING!!!"
+ Be sure to save your backup data"
+ /etc/hyperledger/fabric/tls should be deleted manually"
+
+===> Remember to review /usr/lib/environment.d/fabric-peer.conf
+EOF
+}
