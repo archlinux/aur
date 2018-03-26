@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.15
-pkgver=4.15.7
+pkgver=4.15.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,14 +29,14 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '0dad200b26837acd0340dfe18d9610467c111df5719440248cd8be6fb8d6dd02'
+            '74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79'
             'SKIP'
             '6ea31b5de2ac181fa9e6724a6e3dff58b1177670f273f4bd3226ddfae5c5cd90'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
-            'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7')
+            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
+            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
