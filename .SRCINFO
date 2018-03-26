@@ -1,0 +1,17 @@
+pkgbase = netflix-qdesktop
+	pkgdesc = Netflix web-app based on qtws
+	pkgver = 0.9
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = netflix.qtws
+	source = netflix.svg
+	source = netflix.desktop
+	md5sums = 8f0429c6d0d5a9df3c978cbe6021ca4e
+	md5sums = bb2e2f9ffb15061126229ef19464e58e
+	md5sums = 61730709cbde4e0cb8250d94e1dccc58
+
+pkgname = netflix-qdesktop
+
