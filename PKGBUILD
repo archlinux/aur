@@ -1,18 +1,17 @@
 # Contributor: Vasil Yonkov <vasily@mm.st>
 
 pkgname=xmr-stak_cpu
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
 makedepends=('cmake')
-depends=('hwloc')
-# depends=('hwloc' 'openssl' 'libmicrohttpd')
-source=("https://github.com/fireice-uk/xmr-stak/archive/v${pkgver}.tar.gz"
+depends=('hwloc' 'openssl' 'libmicrohttpd')
+source=("https://github.com/fireice-uk/xmr-stak/archive/${pkgver}.tar.gz"
         'disable_donation.diff')
-sha256sums=('a44c1315be4e3cf4ba8a01550a244408b27318b40ebbc0c9f0164d3ffdfe259d'
+sha256sums=('27059ebceccf8c79d88201b156debeda7a91d15dba589e624cb135f58deb217a'
             '53062ef6b0a104164ac95f006201ca00d8c5c80b5cd2629ae0315a1ccefae856')
 
 prepare() {
@@ -32,9 +31,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_LINK_STATIC=OFF \
         -DCMAKE_BUILD_TYPE=Release \
-        -DMICROHTTPD_ENABLE=OFF \
-        -DOpenSSL_ENABLE=OFF \
-        -DXMR-STAK_CURRENCY=monero \
+        -DMICROHTTPD_ENABLE=ON \
+        -DOpenSSL_ENABLE=ON \
         -DXMR-STAK_COMPILE=native \
         -DCPU_ENABLE=ON \
         -DHWLOC_ENABLE=ON \
