@@ -30,20 +30,16 @@ url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-provides=("${_pkgname}=${pkgver}")
-source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+provides=("${_pkgbase}=${pkgver}")
+source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch')
 sha512sums=('2b23795ffcb9d741adafe8a1e01e6988bb86ce7c6380bdbe822f8f6485e217ed2e95a27daf5ba11f0bf10317f1e1f4e37068e40d0bf322de5625d38b430d37c2'
-            'SKIP'
             '65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6'
             'fc3d711033c8b7ead910826d7c0d4479b481fa9d84c3147b1d33ef9b1e3d3d073a8d17a7c7f66db30d710be1c9b17d2b5536a74a4f05c4ff88b9339e95dd244a'
             'ef2724cedec46a6955355fc75406efa2895545f2ebcdfcee06ce6f3c9a20f8348a291ac78ab1e384b703095d317f59504b787f21074f841c45e53a98955af0c1'
             '209a8b2f9e2e25887c86e126c2761aae329e2bf9456a5de735f3ae264bd2be21e7646cc1954c1417e4c74f8d2d6b0f6081aa74a5af48f6b97484bab0d4e72fcf'
             '978ad84ffe8a0d10a62725173f3a56fd05f8d8347066760017f3555d009de8b9772f31c37f97ec87cfad22f60522d3c4a27a2deda4b95195c1cd459b704f6f58'
             '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
-validpgpkeys=('A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0'
-              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E'
-              '1729F83938DA44E27BA0F4D3DBDB397470D12172')
 
 _optdir=/opt/$pkgbase
 
