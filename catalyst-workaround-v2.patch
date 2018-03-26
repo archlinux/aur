@@ -1,0 +1,59 @@
+diff --git a/src/backends/x11/meta-output-xrandr.c b/src/backends/x11/meta-output-xrandr.c
+index 1f44cb168..1ea404453 100644
+--- a/src/backends/x11/meta-output-xrandr.c
++++ b/src/backends/x11/meta-output-xrandr.c
+@@ -119,6 +119,41 @@ output_set_underscanning_xrandr (MetaOutput *output,
+     }
+ }
+ 
++static int
++output_get_fglrx_kernel_module_loaded()
++{
++  /* Checks if fglrx module has been loaded by parsing /proc/modules.
++   * Returns 1 if the module was found (and thus has been loaded), 0 if the
++   * module was not found and -1 if /proc/modules couldn't be opened.
++   */
++
++  int retval = 0; // defaults to not found
++
++  FILE* fp;
++  char line[256];
++
++  fp = fopen("/proc/modules", "r");
++  if (!fp)
++    {
++      retval = -1;
++    }
++  else
++    {
++      while (fgets(line, sizeof(line), fp) != NULL)
++        {
++          char *entry = strtok(line, " \n");
++
++          if (strcmp(entry, "fglrx") == 0)
++            {
++              retval = 1;
++              break;
++            }
++        }
++      fclose(fp);
++    }
++  return retval;
++}
++
+ void
+ meta_output_xrandr_apply_mode (MetaOutput *output)
+ {
+@@ -130,7 +165,11 @@ meta_output_xrandr_apply_mode (MetaOutput *output)
+                            (XID) output->winsys_id);
+     }
+ 
+-  output_set_presentation_xrandr (output, output->is_presentation);
++  int fglrx_kernel_module_loaded = output_get_fglrx_kernel_module_loaded();
++
++  /* Don't call output_set_presentation_xrandr if fglrx/catalyst is used, because that causes a crash. */
++  if (fglrx_kernel_module_loaded != 1)
++    output_set_presentation_xrandr (output, output->is_presentation);
+ 
+   if (output->supports_underscanning)
+     output_set_underscanning_xrandr (output, output->is_underscanning);

@@ -5,11 +5,11 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.26.2+43+g77dd1bf63
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=('GPL')
 depends=('dconf'
   'gobject-introspection-runtime'
@@ -18,7 +18,7 @@ depends=('dconf'
   'startup-notification'
   'zenity'
   'libsm'
-  'gnome-desktop'
+  "gnome-desktop>=1:${pkgver:0:6}" # don’t build with outdated libraries
   'upower'
   'libxkbcommon-x11'
   'gnome-settings-daemon'
@@ -29,20 +29,19 @@ depends=('dconf'
 makedepends=('intltool'
   'gobject-introspection'
   'git'
-  'gnome-common'
 )
 conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=77dd1bf63532946ba88bc959e9cc8a7991665035  # gnome-3-26
-source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
+_commit=47856d97011d7a9bd13c1e1c638a6e43ebd9d9ac  # tags/3.28.0^0
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "startup-notification.patch"
-  "catalyst-workaround.patch"
+  "catalyst-workaround-v2.patch"
   "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
             '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
-            '754f21d4256128d3f49981fdf316f3345868969a87443e0795218043f1d1291b'
+            '2564846288ea55262d681d38f7e43609c63e94990df1cb0a6b99e16e2c073d14'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
 pkgver() {
@@ -58,13 +57,13 @@ prepare() {
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Skipping call to output_set_presentation_xrandr to fix issue with catalyst"
-  patch -Np1 -i "${srcdir}/catalyst-workaround.patch"
+  patch -Np1 -i "${srcdir}/catalyst-workaround-v2.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=756306
   echo "workaround compatibility shaders used in fw compat ctx in cogl"
   patch -Np1 -i "${srcdir}/catalyst mutter cogl.patch"
   echo "Patches applied"
 
-  NOCONFIGURE=1 ./autogen.sh
+  #NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -72,15 +71,15 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib/$_realname \
+    --libexecdir=/usr/lib \
     --disable-static \
     --disable-schemas-compile \
     --enable-compile-warnings=minimum \
     --enable-gtk-doc \
     --enable-egl-device \
-    --disable-remote-desktop
+    --enable-remote-desktop
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
       -i {.,cogl,clutter}/libtool
 
