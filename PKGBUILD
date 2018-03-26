@@ -3,23 +3,20 @@
 
 _gemname=minitest
 pkgname=ruby-$_gemname
-pkgver=5.10.1
+pkgver=5.11.3
 pkgrel=1
 pkgdesc='minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking'
 arch=(any)
 url='https://rubygems.org/gems/minitest'
 license=(MIT)
-depends=(ruby)
+depends=(ruby ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b051ec10148076aa85f813b5e10e9e629de187d7')
+sha1sums=('f0b6775138582d3cc229450de23aac2d8d0af374')
 
 package() {
-  # Version 5.10.1 of minitest is shipped with ruby, so we don't actually need to install it.
-  # This will change again once minitest is updated.
-  #local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  #gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  #rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  true
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
