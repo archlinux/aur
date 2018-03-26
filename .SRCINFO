@@ -1,0 +1,19 @@
+pkgbase = vdetelweb-git
+	pkgdesc = Telnet and WEB interface for VDE2
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/virtualsquare/vdetelweb
+	arch = any
+	groups = view-os
+	license = GPL2
+	makedepends = liblwipv6-dev
+	depends = mhash
+	provides = vdetelweb
+	conflicts = vdetelweb
+	replaces = vdetelweb
+	backup = etc/vde/vdetelwebrc
+	source = git+https://github.com/virtualsquare/vdetelweb.git
+	md5sums = SKIP
+
+pkgname = vdetelweb-git
+
