@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert-lite
-pkgver=0.14.16
+pkgver=0.14.18
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
