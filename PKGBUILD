@@ -2,12 +2,13 @@
 # Contributor: Jason Plum <jplum@archlinuxarm.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
+#PKGEXT='.pkg.tar'
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20180125
 pkgver=7.2.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
@@ -35,7 +36,7 @@ build() {
   _path=('' '6h' '7h' '8')
   _name=('arm-unknown-linux-gnueabi' 'arm-unknown-linux-gnueabihf'
   'arm-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnueabi')
-  _port=('3633' '3643' '3635' '3636')
+  _port=('3633' '3634' '3635' '3636')
 
   for i in 0 1 2 3; do
     # make service units
@@ -64,6 +65,11 @@ _package_subarch() {
   # install symlink to distccd
   install -d "${pkgdir}/usr/bin"
   ln -sf /usr/bin/distccd "${pkgdir}/usr/bin/distccd-$1"
+  # install whitelist for toolchain new for v3.3
+  install -d "${pkgdir}/usr/lib/distcc"
+  for bin in c++ cc cpp g++ gcc; do
+    ln -sf /usr/bin/distcc "${pkgdir}/usr/lib/distcc/$3-$bin"
+  done
   # copy in toolchain
   install -d "${pkgdir}/opt"
   cp -a "${srcdir}/$2" "${pkgdir}/opt"
@@ -76,9 +82,12 @@ _package_subarch() {
 }
 
 for i in "${!_subarchs[@]}"; do
+  _bins=('arm-unknown-linux-gnueabi' 'armv6l-unknown-linux-gnueabihf'
+  'armv7l-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnu')
   _xtoolsdir="${source[i]##*/}"
   _xtoolsdir="${_xtoolsdir%%.*}"
   eval 'package_distccd-alarm-'${_subarchs[i]}'() {
-  _package_subarch '${_subarchs[i]}' '${_xtoolsdir}'
+# _package_subarch '${_subarchs[i]}' '${_xtoolsdir}' '${_whitelist[i]}'
+ _package_subarch '${_subarchs[i]}' '${_xtoolsdir}' '${_bins[i]}'
 }'
 done
