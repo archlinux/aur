@@ -8,13 +8,13 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=7.5.0.646
+pkgver=7.5.0.933
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono-stable' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-stable')
+depends=('mono' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-stable')
 makedepends=('rsync' 'cmake' 'git' 'nuget' 'openssl-1.0' 'xterm')
 replaces=('monodevelop-debugger-gdb')
 provides=('monodevelop' 'monodevelop-debugger-gdb')
@@ -38,6 +38,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   export CFLAGS+=" -I/usr/include/openssl-1.0"
   export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
+  export MONO_IOMAP=all
 
   ./configure --prefix=/usr --profile=stable
   XDG_CONFIG_HOME="$srcdir"/config make
