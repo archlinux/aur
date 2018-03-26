@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=0.3.0.r96.66b5d4a
+pkgver=0.3.0.r169.a71e8c1
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=('x86_64')
@@ -13,10 +13,9 @@ depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop'
          'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxtst'
          'mesa' 'mutter' 'pango' 'plank' 'wayland'
          'libgranite.so')
-makedepends=('git' 'gnome-common' 'granite-git' 'intltool' 'vala')
+makedepends=('git' 'gnome-common' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('gala' 'libgala.so')
 conflicts=('gala')
-replaces=('gala-bzr')
 source=('git+https://github.com/elementary/gala.git')
 sha256sums=('SKIP')
 
@@ -26,19 +25,24 @@ pkgver() {
   git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
-build() {
-  cd gala
+prepare() {
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+}
 
-  ./autogen.sh \
-    --prefix='/usr' \
-    --disable-schemas-compile
-  make
+build() {
+  cd build
+
+  arch-meson ../gala
+  ninja
 }
 
 package() {
-  cd gala
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
