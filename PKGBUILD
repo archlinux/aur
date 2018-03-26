@@ -1,7 +1,7 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=headset-bin
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="An Electron-based music player for the busy ones"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('headset')
 conflicts=('headset')
 source=("https://github.com/headsetapp/headset-electron/releases/download/v${pkgver}/headset_${pkgver}_amd64.deb"
         "MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE")
-md5sums=('1c8b4b0ad5641c1c8da185ed33f9bec2'
+md5sums=('ef3fa0a453f0a03dbd33dad6eea1cbf6'
          'SKIP')
 
 package() {

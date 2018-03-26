@@ -1,6 +1,6 @@
 pkgbase = headset-bin
 	pkgdesc = An Electron-based music player for the busy ones
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://headsetapp.co/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = headset-bin
 	depends = gcc-libs
 	provides = headset
 	conflicts = headset
-	source = https://github.com/headsetapp/headset-electron/releases/download/v1.6.1/headset_1.6.1_amd64.deb
+	source = https://github.com/headsetapp/headset-electron/releases/download/v1.7.0/headset_1.7.0_amd64.deb
 	source = MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE
-	md5sums = 1c8b4b0ad5641c1c8da185ed33f9bec2
+	md5sums = ef3fa0a453f0a03dbd33dad6eea1cbf6
 	md5sums = SKIP
 
 pkgname = headset-bin
