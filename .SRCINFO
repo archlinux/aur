@@ -1,6 +1,6 @@
 pkgbase = mapnik-git
 	pkgdesc = Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)
-	pkgver = 3.0.18.723.g8bc236ba7
+	pkgver = 3.0.19.778.gae6c9c7e3
 	pkgrel = 1
 	url = http://mapnik.org/
 	install = mapnik.install
@@ -36,11 +36,10 @@ pkgbase = mapnik-git
 	optdepends = mod_fastcgi: Web Map Service - or:
 	optdepends = mod_fcgid: Web Map Service - or:
 	optdepends = mod_wsgi2: Web Map Service
-	provides = mapnik=3.0.18
+	provides = mapnik=3.0.19
 	conflicts = mapnik
 	options = staticlibs
 	source = git://github.com/mapnik/mapnik.git
 	md5sums = SKIP
 
 pkgname = mapnik-git
-

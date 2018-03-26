@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 _pkgname=mapnik
-pkgver=3.0.18.723.g8bc236ba7
+pkgver=3.0.19.778.gae6c9c7e3
 pkgrel=1
 pkgdesc="Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=('libxslt:         Web Map Service'
 			'mod_wsgi2:       Web Map Service')
 makedepends=('scons' 'boost' 'git')
 conflicts=('mapnik')
-provides=('mapnik=3.0.18')
+provides=('mapnik=3.0.19')
 options=(staticlibs)
 install="mapnik.install"
 source=("git://github.com/mapnik/mapnik.git")
@@ -35,7 +35,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	echo "3.0.18$(git describe --long | cut -c8- | sed 's/-/./g')"
+	echo "3.0.19$(git describe --long | cut -c8- | sed 's/-/./g')"
 }
 
 prepare() {
