@@ -4,12 +4,11 @@
 pkgname=sensu
 pkgver=1.2.1
 _debver='1.2.1-2'
-pkgrel=7
+pkgrel=8
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
 url="https://sensuapp.org"
 license=('MIT')
-groups=('')
 backup=('etc/default/sensu' 'etc/logrotate.d/sensu')
 options=('!strip')
 depends=('redis')
@@ -24,9 +23,7 @@ package() {
 	tar xzf data.tar.gz -C "${pkgdir}"
 
 	# Fix directories structure differencies
-	cd "${pkgdir}"
-
-	mkdir -p usr/lib
-    mv lib/* usr/lib
-    rm -rf lib
+	mkdir -p ${pkgdir}/usr/lib
+    mv ${pkgdir}/lib/* ${pkgdir}/usr/lib
+    rm -rf ${pkgdir}/lib
 }
