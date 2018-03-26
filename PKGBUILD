@@ -1,9 +1,9 @@
 #Maintainer: Marc Jose <Hering2007@web.de>
 #Contributor: Lars Jose <larsjose77@gmail.com>
 pkgname=franz-bin
-pkgver=5.0.0_beta.13
+pkgver=5.0.0_beta.17
 pkgrel=3
-pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
+pkgdesc='Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more. Binrary from debian package without compiling.'
 arch=('x86_64')
 depends=('gconf' 'nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile')
 makedepends=('tar' 'yarn' 'npm' 'xorriso' 'git' 'python2')
