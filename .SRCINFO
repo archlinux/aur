@@ -9,10 +9,10 @@ pkgbase = ttf-caladea
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
 	provides = ttf-font
-	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-20130214.tar.gz
+	source = ttf-caladea-20130214.tar.gz::http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-20130214.tar.gz
 	source = 30-0-caladea.conf
-	md5sums = 368f114c078f94214a308a74c7e991bc
-	md5sums = ae22e3930249cb665bf626041596756b
+	sha256sums = c48d1c2fd613c9c06c959c34da7b8388059e2408d2bb19845dc3ed35f76e4d09
+	sha256sums = 5d6400972219d571b1d089607f89d1dbd3bc075a1ab0edf7c8554df169c12d4b
 
 pkgname = ttf-caladea
 

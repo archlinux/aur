@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Justin Settle <jus10 at partlycloudy dot org>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Justin Settle <jus10 at partlycloudy dot org>
 
 pkgname=ttf-caladea
 pkgver=20130214
@@ -10,17 +10,16 @@ license=('Apache')
 url='https://code.google.com/p/chromium/issues/detail?id=168879'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 provides=('ttf-font')
-source=("http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-$pkgver.tar.gz"
-        30-0-caladea.conf)
-md5sums=('368f114c078f94214a308a74c7e991bc'
-         'ae22e3930249cb665bf626041596756b')
+source=("${pkgname}-${pkgver}.tar.gz::http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-${pkgver}.tar.gz"
+        "30-0-${pkgname#ttf-}.conf")
+sha256sums=('c48d1c2fd613c9c06c959c34da7b8388059e2408d2bb19845dc3ed35f76e4d09'
+            '5d6400972219d571b1d089607f89d1dbd3bc075a1ab0edf7c8554df169c12d4b')
 
 package() {
-  cd "$srcdir/crosextrafonts-$pkgver"
+  cd "crosextrafonts-${pkgver}"
 
-  install -d "$pkgdir/usr/share/fonts/TTF/"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -d "${pkgdir}/usr/share/fonts/TTF/"
+  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF/"
 
-  # install fontconfig files
-  install -Dm0644 ../30-0-caladea.conf "$pkgdir/etc/fonts/conf.avail/30-caladea.conf"
+  install -Dm0644 ../"30-0-${pkgname#ttf-}.conf" "${pkgdir}/etc/fonts/conf.avail/30-${pkgname#ttf-}.conf"
 }
