@@ -1,31 +1,23 @@
-#Maintainer: Marc Jose <Hering2007@web.de>
-#Contributor: Lars Jose <larsjose77@gmail.com>
+# Maintainer: Utsob Roy uroybd@gmail.com
+# Contributor: Utsob Roy uroybd@gmail.com
 pkgname=franz-bin
 pkgver=5.0.0_beta.17
-pkgrel=3
-pkgdesc='Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more. Binrary from debian package without compiling.'
+pkgrel=1
+pkgdesc="Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more. Binrary from debian package without compiling."
 arch=('x86_64')
-depends=('gconf' 'nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile')
-makedepends=('tar' 'yarn' 'npm' 'xorriso' 'git' 'python2')
-conflicts=('franz')
-url='https://github.com/meetfranz/franz'
+url="https://meetfranz.com"
 license=('Apache')
-source=("${pkgname}.desktop" "https://github.com/meetfranz/franz/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('f72d9fcad1e1de482a35414f5a346c7e3d6c6140849861f7a5fbfbf32dcded36'
-            '4627d75c7d146f0cb96b9cd72bc26cdbd99e426f08735ee230fe92795765393d')
-            
-build () {
-  cd "franz-${pkgver//_/-}"
-  yarn add gulp-cli@1.2.2 gulpjs/gulp#4.0 
-  yarn rebuild --production --non-interactive
-  USE_SYSTEM_XORRISO=true yarn build
-}
+groups=('')
+depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libxss')
+options=('!strip' '!emptydirs')
+install=${pkgname}.install
+source_x86_64=("https://github.com/meetfranz/franz/releases/download/v${pkgver//_/-}/franz_${pkgver//_/-}_amd64.deb")
+sha512sums_x86_64=('428be33a137ba03ebbed0c7df6458c66503cc5106b43c717fc26963eb0476d0b9af1933b7833f0e6e1d32b68e5ed8b91419f04f5b4101c782bc4b83b76effef2')
 
-package () {
-  cd "franz-${pkgver//_/-}"
-  install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share"
-  cp -r --preserve=mode out/linux-unpacked "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "build-helpers/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
-  ln -s "/usr/share/${pkgname}/franz" "${pkgdir}/usr/bin/${pkgname}"
+package(){
+
+	# Extract package data
+	tar xf data.tar.xz -C "${pkgdir}"
+
+	install -D -m644 "${pkgdir}/opt/Franz/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
