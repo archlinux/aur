@@ -2,8 +2,8 @@
 _pkgname=freedict-tools
 pkgname=${_pkgname}-svn
 epoch=1
-pkgver=r141
-pkgrel=1
+pkgver=r143
+pkgrel=2
 pkgdesc="Tools to compile the Freedict dictionaries"
 arch=('any')
 url="http://www.freedict.org/"
@@ -31,5 +31,6 @@ package()
 	cp README.md "${pkgdir}/usr/share/doc/freedict/"
 
 	mkdir -p "${pkgdir}/usr/share/doc/freedict/tools"
-	cp trunk/README.md "${pkgdir}/usr/share/doc/freedict/tools/"
+	ln -s /usr/lib/${_pkgname}/README.md \
+		"${pkgdir}/usr/share/doc/freedict/tools/"
 }

@@ -1,7 +1,7 @@
 pkgbase = freedict-tools-svn
 	pkgdesc = Tools to compile the Freedict dictionaries
-	pkgver = r141
-	pkgrel = 1
+	pkgver = r143
+	pkgrel = 2
 	epoch = 1
 	url = http://www.freedict.org/
 	arch = any
