@@ -1,7 +1,7 @@
 pkgbase = r-cran-scales
 	pkgdesc = Tools for Splitting, Applying and Combining Data
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/scales/index.html
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = r-cran-scales
 	depends = r-cran-munsell
 	depends = r-cran-labeling
 	depends = r-cran-rcpp
+	depends = r-cran-r6
+	depends = r-cran-viridislite
 	source = http://cran.r-project.org/src/contrib/scales_0.5.0.tar.gz
 	md5sums = 435f6bd826c5cf8df703ffb8a6750fd1
 
