@@ -8,15 +8,15 @@
 
 pkgname=mathematica
 pkgver=11.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 optdepends=(
-    # The following list of dependencies was inferred from namcap's output.  If
-    # you believe there is an error, please let me know.  Also feel free to
-    # contribute description to dependencies if you know what they do.
+    ## The following list of dependencies was inferred from namcap's output.  If
+    ## you believe there is an error, please let me know.  Also feel free to
+    ## contribute description to dependencies if you know what they do.
     'alsa-lib'
     'atk'
     'cairo'
@@ -32,7 +32,6 @@ optdepends=(
     'glib2'
     'glu'
     'gmime'
-    'gmp'
     'gmp'
     'gtk2'
     'harfbuzz'
@@ -73,8 +72,9 @@ optdepends=(
     'tesseract'
     'zlib'
 )
-source=("local://Mathematica_${pkgver}_LINUX.sh")
-sha256sums=('5b07d83cc79c08ce50ecdd7fab8f4a4a8bc7f16a7cc589a972399268426d73e7')
+source=("local://Mathematica_${pkgver}_LINUX.sh" "duplicate-libs.txt")
+sha256sums=('5b07d83cc79c08ce50ecdd7fab8f4a4a8bc7f16a7cc589a972399268426d73e7'
+            '832634dae9639b4d2c42e85ce8fc1c3cce73fdccfe4c4481c9546f5f929cff1e')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -336,6 +336,22 @@ package() {
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/XMPTools/LibraryResources/Linux-x86-64" \
            "${pkgdir}/opt/Mathematica/SystemFiles/Links/ZeroMQLink/LibraryResources/Linux-x86-64"
     fi
+
+    msg2 "Removing clashing bundled libraries"
+    ## The following script will determine whether a library is provided by
+    ## another package:
+    ##
+    ## find /opt/Mathematica -type f -name "*.so*" \
+    ##     | parallel 'bash -c "pkg=\"\$(pacman -Fsq {/})\" ; if [[ -n \"\$pkg\" ]] ; then echo \".{} found in \$pkg\" ; fi"'
+    ##
+    ## Note that replacing *all* libraries with the system versions is a bad
+    ## idea.  At this stage, only duplicated libraries in
+    ## `./opt/Mathematica/SystemFiles/Libraries/Linux-x86-64/` are removed
+    ## (except for Qt libraries which Mathematica expects).
+    cd "${pkgdir}"
+    while read lib ; do
+        rm $lib
+    done < "${srcdir}/duplicate-libs.txt"
 
     ## The documentation takes up the majority of the disk space (4.7G+).  If you
     ## do not wish to have the documentation installed, uncomment the following
