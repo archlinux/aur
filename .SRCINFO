@@ -4,6 +4,7 @@ pkgbase = linvst
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
+	makedepends = git
 	depends = wine
 	source = git+https://github.com/osxmidi/LinVst.git
 	source = https://download.steinberg.net/sdk_downloads/vstsdk369_01_03_2018_build_132.zip
