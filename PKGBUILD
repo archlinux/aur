@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=52.7.2
+pkgver=52.7.3
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -18,10 +18,10 @@ provides=('firefox=52')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
-sha512sums=('1e9a24300880f4ecbce3055209511e93aa1f666e8cc02a6888e296829723963a840e0c72aeb98ef63ee00b5259ef1bac768688546f1252051a6873ddfbcdd027'
+sha512sums=('56b80d42d142e347392af9043fa3430f00f38acd3e655cfcaf702f6469499d8393af368ec5aa7690813acdfb5d89ed3dfc81aeec2d171f68ae44a6e1b1b46185'
             '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
             '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='471ffbb1edd21c41241b48229ffdeb27cc6457d22ad6a43ec71fd8bce0f3bfd24f7628d20732cdbb93845c565a459547f23b6d67b4c69fadbff142f284992e5e'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='2f61b8a1da149fe317b44b436755f3a4fdfc34e14064222b08005018627c65feefc73301ccc8d8a574514d6f4237098af22b3ec0391e8e3d7e34bf3842f64d54'
 
 # if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     # pkgver=38.8.0
