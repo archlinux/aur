@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://www.reaper.fm"
 license=('custom')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
 	"git+https://github.com/justinfrankel/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
