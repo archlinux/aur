@@ -1,0 +1,12 @@
+pkgbase = europlate.ttf
+	pkgdesc = EuroPlate - TrueType Font for european number plates.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.autokennzeichen.info/kennzeichen-schriftart.htm
+	arch = any
+	license = MIT
+	source = http://www.autokennzeichen.info/files/EuroPlate.ttf
+	md5sums = 97a834894e9186114b53cb801f73c18b
+
+pkgname = europlate.ttf
+
