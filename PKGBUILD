@@ -2,8 +2,8 @@
 pkgname=marvinc-git
 _gitname=MarvInc
 _lpkg="${_gitname,,}"
-pkgver=1.0.r1.g562bc1b
-pkgrel=2
+pkgver=1.1.1.r1.g2a732d6
+pkgrel=1
 pkgdesc="MarvInc is a zachlike puzzle game with a story told through emails."
 arch=('x86_64')
 url="https://github.com/MarvellousSoft/MarvInc/"
@@ -15,7 +15,7 @@ source=('git+https://github.com/MarvellousSoft/MarvInc#branch=master')
 md5sums=('SKIP')
 
 prepare() {
-	cd "$_gitname"
+  cd "$_gitname"
   git checkout master
   git pull
 }
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "$_gitname"
+  cd "$_gitname"
 
   mkdir -p "$pkgdir$HOME/.marvinc"
   cp -r * "$pkgdir$HOME/.marvinc/"
