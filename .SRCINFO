@@ -1,6 +1,6 @@
 pkgbase = xstarter
 	pkgdesc = Application launcher for Linux
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/lchsk/xstarter
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = xstarter
 	depends = glib2
 	provides = xstarter
 	conflicts = xstarter
-	source = https://github.com/lchsk/xstarter/releases/download/v0.6.0/xstarter-0.6.0-Linux.tar.gz
-	md5sums = 7deacec3199c2cfaebc3dfd3d54fd96e
+	source = https://github.com/lchsk/xstarter/releases/download/v0.7.0/xstarter-0.7.0-Linux.tar.gz
+	md5sums = 2ddeb05f8591ba7f204c46f7d5df0225
 
 pkgname = xstarter
 
