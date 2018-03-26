@@ -1,6 +1,6 @@
 # Maintainer: wagnerflo <florian@wagner-flo.net>
 _cranname=scales
-_cranver=0.4.1
+_cranver=0.5.0
 pkgname=r-cran-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('r' 'r-cran-rcolorbrewer' 'r-cran-dichromat' 'r-cran-plyr'
              'r-cran-munsell' 'r-cran-labeling' 'r-cran-rcpp')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3fb2218866a7fe4c1f6e66790876f85a')
+md5sums=('435f6bd826c5cf8df703ffb8a6750fd1')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
