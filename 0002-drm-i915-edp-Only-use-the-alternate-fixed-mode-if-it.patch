@@ -1,7 +1,7 @@
-From caccd577f10e4618e87c8b21bb14ab867208df04 Mon Sep 17 00:00:00 2001
-Message-Id: <caccd577f10e4618e87c8b21bb14ab867208df04.1519311274.git.jan.steffens@gmail.com>
-In-Reply-To: <16305718ac69980301a803f32373cd0d80473a1c.1519311274.git.jan.steffens@gmail.com>
-References: <16305718ac69980301a803f32373cd0d80473a1c.1519311274.git.jan.steffens@gmail.com>
+From 704e31424615c87ad82424a9b09a452d762daed0 Mon Sep 17 00:00:00 2001
+Message-Id: <704e31424615c87ad82424a9b09a452d762daed0.1520639721.git.jan.steffens@gmail.com>
+In-Reply-To: <188720e92122385994143a06cb16a930053eb503.1520639721.git.jan.steffens@gmail.com>
+References: <188720e92122385994143a06cb16a930053eb503.1520639721.git.jan.steffens@gmail.com>
 From: Jim Bride <jim.bride@linux.intel.com>
 Date: Mon, 6 Nov 2017 13:38:57 -0800
 Subject: [PATCH 2/2] drm/i915/edp: Only use the alternate fixed mode if it's
