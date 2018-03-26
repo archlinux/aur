@@ -1,0 +1,17 @@
+pkgbase = google-photos-desktop
+	pkgdesc = Google Photos web-app based on qtws
+	pkgver = 0.9
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = google-photos.qtws
+	source = google-photos.svg
+	source = google-photos.desktop
+	md5sums = d1fb07538cc1d3485263bbaa3d122206
+	md5sums = da3df6c6eaaba6ee9b2f3f0b3973efcb
+	md5sums = 1b24fc333aaebd55476f5012aed246be
+
+pkgname = google-photos-desktop
+

@@ -1,0 +1,29 @@
+{
+        "name": "Google Photos",
+        "scope": ["google.com"],
+        "plugins": [],
+        "home": "https://photos.google.com/",
+        "icon": "/usr/share/pixmaps/google-photos-desktop.svg",
+        "saveSession": false,
+        "menu": [
+            {
+                "title": "Albums",
+                "action": "https://photos.google.com/albums"
+            },
+            
+            {
+                "title": "Assistant",
+                "action": "https://photos.google.com/assistant"
+            },
+            
+            {
+                "title": "Sharing",
+                "action": "https://photos.google.com/sharing"
+            },
+            
+            {
+                "title": "Settings",
+                "action": "https://photos.google.com/settings"
+            }
+        ]
+}

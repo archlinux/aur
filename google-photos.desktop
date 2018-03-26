@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Multimedia;
+Comment=Google Photos Standalone
+Exec=/usr/bin/qtws /usr/share/qtws-apps/google-photos/google-photos.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+GenericName=Google Photos
+Icon=google-photos-desktop.svg
+MimeType=
+Name=Google Photos
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
