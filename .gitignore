@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/netdata/
+/netdata-git-*.pkg.*
