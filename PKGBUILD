@@ -2,7 +2,7 @@
 pkgname=europlate
 pkgver=1.0
 pkgrel=1
-pkgdesc="EuroPlate - TrueType Font for european number plates."
+pkgdesc="TrueType Font for european number plates."
 arch=('any')
 url="http://www.autokennzeichen.info/kennzeichen-schriftart.htm"
 license=('MIT')
