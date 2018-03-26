@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow-ui
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="ECMWF GUI client for ecFlow"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('fbc482fd3d2dd65268808624ff8148f0d13dc87d0fde98283918cd8074eea059')
+sha256sums=('b4c8d98e34b7a7f8819baa16ec6da0cd221b2116d720747196d45423a7bec9b2')
 
 build() {
   cd ecFlow-${pkgver}-Source
@@ -34,7 +34,7 @@ package()
   echo "$pkgdir"
   make DESTDIR="$pkgdir" -j$(grep processor /proc/cpuinfo | wc -l) install ecflow_ui.x || return 1
   cd ${pkgdir}/usr/bin/
-  rm ecflow_logsvr.pl  ecflow_logsvr.sh  ecflow_migrate.py  ecflow_start.sh  ecflow_stop.sh  ecflow_test_ui.sh noconnect.sh
+  rm ecflow_logsvr.pl  ecflow_logsvr.sh ecflow_start.sh  ecflow_stop.sh  ecflow_test_ui.sh noconnect.sh
   rm -rf ${pkgdir}/usr/share/ecflow/cmake
 }
 
