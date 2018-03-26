@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s dot scalabrino 9 at gmail dot com>
 webappname=netflix
 pkgname=${webappname}-qdesktop
-pkgver=0.9
+pkgver=0.91
 pkgrel=1
 pkgdesc='Netflix web-app based on qtws'
 arch=('i686' 'x86_64')

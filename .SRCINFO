@@ -1,6 +1,6 @@
 pkgbase = netflix-qdesktop
 	pkgdesc = Netflix web-app based on qtws
-	pkgver = 0.9
+	pkgver = 0.91
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

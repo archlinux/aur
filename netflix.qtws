@@ -4,5 +4,6 @@
         "plugins": [],
         "home": "http://netflix.com",
         "icon": "/usr/share/pixmaps/netflix-desktop.svg",
-        "saveSession": true
+        "saveSession": true,
+        "multimedia": true
 }
