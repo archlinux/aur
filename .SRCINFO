@@ -1,6 +1,6 @@
 pkgbase = php71
 	pkgver = 7.1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.php.net
 	arch = x86_64
 	license = PHP
@@ -27,7 +27,6 @@ pkgbase = php71
 	makedepends = postfix
 	makedepends = freetds
 	makedepends = pcre
-	provides = php=7.1.15
 	source = https://php.net/distributions/php-7.1.15.tar.xz
 	source = apache.patch
 	source = apache.conf
@@ -50,22 +49,26 @@ pkgname = php71
 	depends = libzip
 	depends = pcre
 	depends = argon2
+	provides = php=7.1.15
 	backup = opt/php71etc/php/php.ini
 
 pkgname = php71-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php71
+	provides = php-cgi
 
 pkgname = php71-apache
 	pkgdesc = Apache SAPI for PHP
 	depends = php71
 	depends = apache
+	provides = php-apache
 	backup = opt/php71etc/httpd/conf/extra/php7_module.conf
 
 pkgname = php71-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	depends = php71
 	depends = systemd
+	provides = php-fpm
 	options = !emptydirs
 	backup = opt/php71etc/php/php-fpm.conf
 	backup = opt/php71etc/php/php-fpm.d/www.conf
@@ -74,76 +77,91 @@ pkgname = php71-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php71
 	depends = libsystemd
+	provides = php-embed
 	options = !emptydirs
 
 pkgname = php71-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php71
+	provides = php-phpdbg
 	options = !emptydirs
 
 pkgname = php71-dblib
 	pkgdesc = dblib module for PHP
 	depends = php71
 	depends = freetds
+	provides = php-dblib
 
 pkgname = php71-enchant
 	pkgdesc = enchant module for PHP
 	depends = php71
 	depends = enchant
+	provides = php-enchant
 
 pkgname = php71-gd
 	pkgdesc = gd module for PHP
 	depends = php71
 	depends = gd
+	provides = php-gd
 
 pkgname = php71-imap
 	pkgdesc = imap module for PHP
 	depends = php71
 	depends = c-client
+	provides = php-imap
 
 pkgname = php71-intl
 	pkgdesc = intl module for PHP
 	depends = php71
 	depends = icu
+	provides = php-intl
 
 pkgname = php71-mcrypt
 	pkgdesc = mcrypt module for PHP
 	depends = php71
 	depends = libmcrypt
 	depends = libtool
+	provides = php-mcrypt
 
 pkgname = php71-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php71
 	depends = unixodbc
+	provides = php-odbc
 
 pkgname = php71-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php71
 	depends = postgresql-libs
+	provides = php-pgsql
 
 pkgname = php71-pspell
 	pkgdesc = pspell module for PHP
 	depends = php71
 	depends = aspell
+	provides = php-pspell
 
 pkgname = php71-snmp
 	pkgdesc = snmp module for PHP
 	depends = php71
 	depends = net-snmp
+	provides = php-snmp
 
 pkgname = php71-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php71
 	depends = sqlite
+	provides = php-sqlite
 
 pkgname = php71-tidy
 	pkgdesc = tidy module for PHP
 	depends = php71
 	depends = tidy
+	provides = php-tidy
 
 pkgname = php71-xsl
 	pkgdesc = xsl module for PHP
 	depends = php71
 	depends = libxslt
+	provides = php-xsl
 

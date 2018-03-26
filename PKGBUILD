@@ -23,14 +23,13 @@ pkgname=("$pkgbase"
          "$pkgbase-tidy"
          "$pkgbase-xsl")
 pkgver=7.1.15
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-provides=("${_pkgbase}=${pkgver}")
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch')
 sha512sums=('2b23795ffcb9d741adafe8a1e01e6988bb86ce7c6380bdbe822f8f6485e217ed2e95a27daf5ba11f0bf10317f1e1f4e37068e40d0bf322de5625d38b430d37c2'
@@ -177,6 +176,7 @@ check() {
 
 package_php71() {
   pkgdesc='A general-purpose scripting language that is especially suited to web development'
+  provides=("${_pkgbase}=${pkgver}")
   depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
   backup=("${_optdir#/}etc/php/php.ini")
 
@@ -195,6 +195,7 @@ package_php71() {
 
 package_php71-cgi() {
   pkgdesc='CGI and FCGI SAPI for PHP'
+  provides=('php-cgi')
   depends=("$pkgbase")
 
   cd ${srcdir}/build
@@ -203,6 +204,7 @@ package_php71-cgi() {
 
 package_php71-apache() {
   pkgdesc='Apache SAPI for PHP'
+  provides=('php-apache')
   depends=("$pkgbase" 'apache')
   backup=("${_optdir#/}etc/httpd/conf/extra/php7_module.conf")
 
@@ -212,6 +214,7 @@ package_php71-apache() {
 
 package_php71-fpm() {
   pkgdesc='FastCGI Process Manager for PHP'
+  provides=('php-fpm')
   depends=("$pkgbase" 'systemd')
   backup=("${_optdir#/}etc/php/php-fpm.conf" "${_optdir#/}etc/php/php-fpm.d/www.conf")
   options=('!emptydirs')
@@ -224,6 +227,7 @@ package_php71-fpm() {
 
 package_php71-embed() {
   pkgdesc='Embedded PHP SAPI library'
+  provides=('php-embed')
   depends=("$pkgbase" 'libsystemd')
   options=('!emptydirs')
 
@@ -233,6 +237,7 @@ package_php71-embed() {
 
 package_php71-phpdbg() {
   pkgdesc='Interactive PHP debugger'
+  provides=('php-phpdbg')
   depends=("$pkgbase")
   options=('!emptydirs')
 
@@ -242,6 +247,7 @@ package_php71-phpdbg() {
 
 package_php71-dblib() {
   pkgdesc='dblib module for PHP'
+  provides=('php-dblib')
   depends=("$pkgbase" 'freetds')
 
   install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}${_optdir}/usr/lib/php/modules/pdo_dblib.so
@@ -249,6 +255,7 @@ package_php71-dblib() {
 
 package_php71-enchant() {
   pkgdesc='enchant module for PHP'
+  provides=('php-enchant')
   depends=("$pkgbase" 'enchant')
 
   install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}${_optdir}/usr/lib/php/modules/enchant.so
@@ -256,6 +263,7 @@ package_php71-enchant() {
 
 package_php71-gd() {
   pkgdesc='gd module for PHP'
+  provides=('php-gd')
   depends=("$pkgbase" 'gd')
 
   install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}${_optdir}/usr/lib/php/modules/gd.so
@@ -263,6 +271,7 @@ package_php71-gd() {
 
 package_php71-imap() {
   pkgdesc='imap module for PHP'
+  provides=('php-imap')
   depends=("$pkgbase" 'c-client')
 
   install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}${_optdir}/usr/lib/php/modules/imap.so
@@ -270,6 +279,7 @@ package_php71-imap() {
 
 package_php71-intl() {
   pkgdesc='intl module for PHP'
+  provides=('php-intl')
   depends=("$pkgbase" 'icu')
 
   install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}${_optdir}/usr/lib/php/modules/intl.so
@@ -277,6 +287,7 @@ package_php71-intl() {
 
 package_php71-mcrypt() {
   pkgdesc='mcrypt module for PHP'
+  provides=('php-mcrypt')
   depends=("$pkgbase" 'libmcrypt' 'libtool')
 
   install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}${_optdir}/usr/lib/php/modules/mcrypt.so
@@ -284,6 +295,7 @@ package_php71-mcrypt() {
 
 package_php71-odbc() {
   pkgdesc='ODBC modules for PHP'
+  provides=('php-odbc')
   depends=("$pkgbase" 'unixodbc')
 
   install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}${_optdir}/usr/lib/php/modules/odbc.so
@@ -292,6 +304,7 @@ package_php71-odbc() {
 
 package_php71-pgsql() {
   pkgdesc='PostgreSQL modules for PHP'
+  provides=('php-pgsql')
   depends=("$pkgbase" 'postgresql-libs')
 
   install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}${_optdir}/usr/lib/php/modules/pgsql.so
@@ -300,6 +313,7 @@ package_php71-pgsql() {
 
 package_php71-pspell() {
   pkgdesc='pspell module for PHP'
+  provides=('php-pspell')
   depends=("$pkgbase" 'aspell')
 
   install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}${_optdir}/usr/lib/php/modules/pspell.so
@@ -307,6 +321,7 @@ package_php71-pspell() {
 
 package_php71-snmp() {
   pkgdesc='snmp module for PHP'
+  provides=('php-snmp')
   depends=("$pkgbase" 'net-snmp')
 
   install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}${_optdir}/usr/lib/php/modules/snmp.so
@@ -314,6 +329,7 @@ package_php71-snmp() {
 
 package_php71-sqlite() {
   pkgdesc='sqlite module for PHP'
+  provides=('php-sqlite')
   depends=("$pkgbase" 'sqlite')
 
   install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}${_optdir}/usr/lib/php/modules/sqlite3.so
@@ -322,6 +338,7 @@ package_php71-sqlite() {
 
 package_php71-tidy() {
   pkgdesc='tidy module for PHP'
+  provides=('php-tidy')
   depends=("$pkgbase" 'tidy')
 
   install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}${_optdir}/usr/lib/php/modules/tidy.so
@@ -329,6 +346,7 @@ package_php71-tidy() {
 
 package_php71-xsl() {
   pkgdesc='xsl module for PHP'
+  provides=('php-xsl')
   depends=("$pkgbase" 'libxslt')
 
   install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}${_optdir}/usr/lib/php/modules/xsl.so
