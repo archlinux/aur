@@ -5,7 +5,8 @@
 
 pkgname=basilisk
 pkgver=2018.03.26
-pkgrel=1
+ve=55.0.0
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -193,6 +194,6 @@ cp -r application/basilisk/branding/official/ browser/branding/official
   # Use system-provided dictionaries
 
   ln -srf "$pkgdir/usr/bin/basilisk" \
-    "$pkgdir/usr/lib/basilisk-$pkgver/basilisk-bin"
+    "$pkgdir/usr/lib/basilisk-$ve/basilisk-bin"
 
 }
