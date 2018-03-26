@@ -1,7 +1,7 @@
 pkgbase = xeroxprtdrv
 	pkgdesc = Xerox Unix Print Drivers
-	pkgver = 5.20.606.3946
-	pkgrel = 3
+	pkgver = 5.20.620.4112
+	pkgrel = 1
 	url = http://www.xerox.com
 	install = xeroxprtdrv.install
 	arch = i686
@@ -29,10 +29,10 @@ pkgbase = xeroxprtdrv
 	md5sums = d380002eef6bbbbeb43cd0691123a7d4
 	md5sums = 1976d9d3e95065820adbe417ec4e5b2d
 	md5sums = 117637c64980344ca9bb87e8a8f10938
-	source_i686 = http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-5.20.606.3946.rpm
-	md5sums_i686 = 22698c5829eb56bcecd4633352a6274f
-	source_x86_64 = http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-5.20.606.3946.rpm
-	md5sums_x86_64 = 95a26aec1130153a6094057546668f72
+	source_i686 = http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-5.20.620.4112.rpm
+	md5sums_i686 = ecbba8bad483d83840e286c49bf979d5
+	source_x86_64 = http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-5.20.620.4112.rpm
+	md5sums_x86_64 = 98c308785477574a83171604582883e1
 
 pkgname = xeroxprtdrv
 
