@@ -1,0 +1,13 @@
+pkgbase = php71-apcu-bc
+	pkgdesc = APCu Backwards Compatibility Module
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://pecl.php.net/package/apcu_bc
+	arch = x86_64
+	license = PHP
+	depends = php71-apcu
+	source = https://pecl.php.net/get/apcu_bc-1.0.4.tgz
+	md5sums = 054724a6518ced14dd2fb32010819050
+
+pkgname = php71-apcu-bc
+
