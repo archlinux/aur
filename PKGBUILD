@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgver=0.75
-pkgrel=15
+pkgver=0.76
+pkgrel=16
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -37,8 +37,8 @@ build(){
 package(){
 
   sed -i "s+${srcdir}/${pkgname}-${pkgver}+/opt/telepresence+g" "${srcdir}/${pkgname}-${pkgver}/telepresence-venv/bin/"*
-  mkdir -p "${pkgdir}/opt/telepresence/telepresence-venv"
-  rsync -ra "${srcdir}/${pkgname}-${pkgver}/telepresence-venv/" "${pkgdir}/opt/telepresence/telepresence-venv/"
+  mkdir -p "${pkgdir}/opt/telepresence/"
+  cp -R "${srcdir}/${pkgname}-${pkgver}/telepresence-venv/" "${pkgdir}/opt/telepresence/"
 
   install -Dm 755 "dumb-init"                        "${pkgdir}/opt/telepresence/dumb-init"
   install -Dm 755 "../wrapper-telepresence.sh"       "${pkgdir}/usr/bin/telepresence"

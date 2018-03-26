@@ -6,4 +6,4 @@ update:
 	./update.sh $(VERSION)
 
 clean:
-	rm -rf src pkg *.tar.xz *.gz
+	rm -rf src pkg *.tar.xz *.gz *.pkg.tar
