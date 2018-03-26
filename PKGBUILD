@@ -2,7 +2,7 @@
 # Maintainer: petRUShka
 
 pkgname=telegram_backup
-pkgver=1.0.6
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Java app to download all your telegram data."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('java-runtime')
 source=("https://github.com/fabianonline/${pkgname}/releases/download/${pkgver}/${pkgname}.jar"
         "${pkgname}.sh")
 
-sha256sums=('1e93e42b52d04e07b9cdf46b10bc8d9c6726f17dd2f04a2e69fd582ce679d780'
-            'a5cdcd1bbe28c941a22f26fdce3cd49e737af16141db580aaf3a7e33229f58a0')
+sha256sums=('4519e50835878b9f201fbb31eb928dad5dc1954948cf5ce3a0cf2dcd8a1244ba'
+            '4ffd955103e1a08ec2d5ba2fd5fd046bd773a91f4b52b519dbcbb6ad4df37203')
 
 package() {
   cd "${srcdir}"
