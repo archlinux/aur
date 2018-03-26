@@ -2,7 +2,7 @@
 
 pkgname=('tika' 'tika-server')
 _name='tika'
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc='Apache Tika - a content analysis toolkit'
 arch=('any')
@@ -18,11 +18,9 @@ source=(
     "tika-server.service"
     "tika-server.sysusers"
 )
-sha256sums=(
-    'SKIP'
-    '6c11bffbb1a1fa7bda47a763981656bd3ab12ad203b379aa5eada817b81660a3'
-    'fda25de00a6407318506142d9d24f896c970b8800c2731b09f9ca66e9ccce230'
-)
+sha256sums=('SKIP'
+            '6c11bffbb1a1fa7bda47a763981656bd3ab12ad203b379aa5eada817b81660a3'
+            'fda25de00a6407318506142d9d24f896c970b8800c2731b09f9ca66e9ccce230')
 
 build() {
     cd "$srcdir/$_name"
@@ -32,7 +30,7 @@ build() {
 check() {
     cd "$srcdir/$_name"
     # Disable testing for now since it will fail, see: https://issues.apache.org/jira/browse/TIKA-2487
-    #mvn test -Dmaven.repo.local=m2
+    mvn test -Dmaven.repo.local=m2
 }
 
 package_tika() {
