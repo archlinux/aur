@@ -6,30 +6,27 @@
 _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgver=3.26.2
-pkgrel=3
+pkgver=3.28.0.1
+pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(libexif gnome-desktop exempi gvfs dconf tracker nautilus-sendto gnome-autoar)
-makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc 'meson>=0.44.1' ninja)
+depends=(libgexiv2 gnome-desktop gvfs dconf tracker gnome-autoar)
+makedepends=(gobject-introspection packagekit git gtk-doc appstream-glib 'meson>=0.44.1' ninja)
+optdepends=('nautilus-sendto: right click to send files')
 options=(!emptydirs)
-_commit=51637bc0960002b811e1c0c7be8671cf9a1cc5be  # tags/3.26.2
+_commit=9f28215927d023b54d88a25e026163e9e193bcf3  # tags/3.28.0.1
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
-            '17213656a016da2aaed14ca5c3cc9df30ad76ea59847b50dce4feb77619af274')
+            'd5eb01843d2758e74e25686f521f5fd72879e32595b494e9cabb8f8f1a2a87a5')
 
 prepare() {
-  mkdir -p build libne/usr/{lib,share}
-  ls
   cd $_pkgbase
 
   git submodule init
   git submodule update
-
-  git cherry-pick -n d74e1a3d 9238456b bf86a803
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
 }
@@ -40,30 +37,23 @@ pkgver() {
 }
 
 build() {
-  cd build
-  arch-meson ../nautilus \
-    -Denable-exif=true \
-    -Denable-xmp=true \
-    -Denable-gtk-doc=true \
-    -Denable-selinux=false
-  ninja
+  arch-meson $_pkgbase build -D docs=true
+  ninja -C build
 }
 
 package_nautilus-typeahead() {
   depends+=(libnautilus-extension-typeahead)
-  install=nautilus.install
   conflicts=(nautilus)
   provides=(nautilus)
   groups=(gnome)
 
-  cd build
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja -C build install
 
 ### Split libnautilus-extension
-  cd ../libne
-  mv "$pkgdir"/usr/include usr
-  mv "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig} usr/lib
-  mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} usr/share
+  mkdir -p libne/{lib,share}
+  mv "$pkgdir"/usr/include libne
+  mv "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig} libne/lib
+  mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} libne/share
 }
 
 package_libnautilus-extension-typeahead() {
@@ -72,5 +62,5 @@ package_libnautilus-extension-typeahead() {
   provides=(libnautilus-extension)
   depends=(gtk3)
 
-  mv libne/usr "$pkgdir"
+  mv libne "$pkgdir/usr"
 }
