@@ -1,7 +1,7 @@
 # Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 _lang=fra-deu
 pkgname=dict-freedict-${_lang}
-pkgver=2016_11_20
+pkgver=2017_11_24
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="French -> German dictionary for dictd et al. from Freedict.org"
@@ -9,12 +9,27 @@ arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
-install=$pkgname.install
-source=("https://sourceforge.net/projects/freedict/files/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.tar.bz2")
-sha512sums=('0b3081d820572c9b4164afed72b28164182078f07ab3c71ce0da4c5ff2fb4cb7c8c67b1118c6009e5480e3666971860aa4c50267d38d7322a340fb7bc4e5b2aa')
+makedepends=('dictd' 'freedict-tools')
+install=${pkgname}.install
+source=("https://sourceforge.net/projects/freedict/files/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
+sha512sums=('7845c604491c4908a6e87b0d6234bafa9786740fec0374d414d752f41bebe66db5f3d8a3d33ba0d0368f2b89b1e3795073fd5b46f007325232ea04410f6ae930')
+
+build()
+{
+	cd $_lang
+	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+}
 
 package()
 {
-	mkdir -p "$pkgdir/usr/share/dictd"
-	cp ${_lang}/${_lang}.{dict.dz,index} "$pkgdir/usr/share/dictd/"
+	mkdir -p "${pkgdir}/usr/share/dictd"
+	cp ${_lang}/build/dictd/${_lang}.{dict.dz,index} \
+		"${pkgdir}/usr/share/dictd/"
+
+	mkdir -p "${pkgdir}/usr/share/doc/freedict/${_lang}"
+	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
+	do
+		test -f ${file} && \
+			cp ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
+	done
 }
