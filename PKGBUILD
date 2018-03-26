@@ -4,8 +4,8 @@ pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-dev'
-pkgver='2.5.13'
-_pkgver_patch=0
+pkgver='2.5.14'
+_pkgver_patch=1
 arch=('any')
 pkgrel=1
 license=('Apache 2.0')
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_dev-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_dev/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1fefd49d868f46e7669074411d58ceeb296dd542b1e308a6631f61b698ac2a24')
+sha256sums=('dc608460ff632e2514a33e853ce58b65c4d1b14451901f4bbf482a673aaa4d51')
 
 build() {
   # Use ROS environment variables
