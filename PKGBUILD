@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.17.r9482.79fed093a
+pkgver=2.5.26.r9632.9fc877531
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -32,10 +32,8 @@ options=('staticlibs')
 # We're using the (default) master-dev branch of Faust here, which has all the
 # latest changes. End users might want to use the master branch instead, which
 # is supposedly more stable and tested, but nevertheless (mostly) up-to-date.
-source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
-	"python2-fix.patch")
-md5sums=('SKIP'
-         '5bd95373f2d6f4e86a2befab669339f8')
+source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev")
+md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -53,8 +51,6 @@ pkgver() {
 prepare() {
   cd $srcdir/$pkgname
   git submodule update --init
-  # fix up scripts like faust2md which need python2 to run
-  patch -Np1 < $srcdir/python2-fix.patch
 }
 
 # NOTE: libHTTPDFaust requires 'libmicrohttpd' and 'openssl'.
