@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-iconv-git
 	pkgdesc = GNAT Components Collection - Bindings to Libiconv
-	pkgver = r2776.4ff02cdf
+	pkgver = r2777.2c426fe7
 	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = gnatcoll-iconv-git
 	conflicts = gnatcoll-iconv
 	conflicts = gnatcoll
 	source = git+https://github.com/AdaCore/gnatcoll-bindings.git
-	source = no-rpath.patch
 	sha1sums = SKIP
-	sha1sums = aaf6f2b07f9c594413479ba1f884366f4c122a06
 
 pkgname = gnatcoll-iconv-git
 
