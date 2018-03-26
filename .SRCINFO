@@ -1,6 +1,6 @@
 pkgbase = franz-bin
-	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
-	pkgver = 5.0.0_beta.13
+	pkgdesc = Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more. Binrary from debian package without compiling.
+	pkgver = 5.0.0_beta.17
 	pkgrel = 3
 	url = https://github.com/meetfranz/franz
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = franz-bin
 	depends = libxkbfile
 	conflicts = franz
 	source = franz-bin.desktop
-	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.13.tar.gz
+	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.17.tar.gz
 	sha256sums = f72d9fcad1e1de482a35414f5a346c7e3d6c6140849861f7a5fbfbf32dcded36
 	sha256sums = 4627d75c7d146f0cb96b9cd72bc26cdbd99e426f08735ee230fe92795765393d
 
