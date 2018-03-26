@@ -10,7 +10,7 @@ prog=$(winepath -u "C:\\Program Files\\TTKN\\CAJViewer 7.2\\CAJVieweru.exe")
 installer="/usr/share/cajviewer/installer.exe"
 
 function install() {
-    winetricks -q mdac28
+    winetricks -q mdac28 mfc42
     tmpdir="$(mktemp -d)"
     wine "$installer" /Q /T:$(winepath -w "$tmpdir") /C
     msiexec /i "${tmpdir}/CAJViewer 7.2.msi" /qb-
