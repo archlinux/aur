@@ -16,7 +16,7 @@ options=(!emptydirs)
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz"
         #"git-$pkgver-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v$_pkgver...master.patch"
        )
-sha256sums=('1de6462a370efb9a6547437275fd98cb4617e7a395466bbcb64bc2494793e93c')
+sha256sums=('73c968445ea78b0050b27a44bd634a39a20571d2d80c6bbaa05d6f46fcb1ba0b')
 
 prepare() {
   cd "$srcdir/pamac-$pkgver"
