@@ -3,11 +3,12 @@
 
 pkgname=php71-apcu-bc
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='APCu Backwards Compatibility Module'
 url='https://pecl.php.net/package/apcu_bc'
 depends=('php71-apcu')
+provides=('php-apcu-bc')
 license=('PHP')
 source=("https://pecl.php.net/get/apcu_bc-${pkgver}.tgz")
 md5sums=('054724a6518ced14dd2fb32010819050')
