@@ -205,7 +205,7 @@ get_nat_interfaces() {
   # Returns a newline-separated list of interfaces to add masquerading to their postrouting queue. Examines $_out_iface_all: If $_out_iface_all is true, returns all available interfaces whose name does not start with 'lo'. Otherwise, returns ${_out_iface}.
   _nat_ifaces=""
   if "${_out_iface_all}"; then
-    _nat_ifaces="$(ifconfig -a | grep -E '^[^[[:space:]]]*' | awk '{print $1}' | sed 's|\:$||g')"
+    _nat_ifaces="$(ifconfig -a | grep -E '^[^[[:space:]]]*' | awk '{print $1}' | sed 's|\:$||g' | grep -vE '^lo')"
   else
     _nat_ifaces="${_out_iface}"
   fi
