@@ -12,16 +12,9 @@ license=('Apache')
 conflicts=('chromium')
 depends=('libpng' 'gconf')
 optdepends=('google-chrome')
+md5sums=('f4fbbf50eaec2b9c9e21536e39b9999e')
 
-if [ "$CARCH" = "i686" ]; then
-    _arch='linux32'
-    
-elif [ "$CARCH" = "x86_64" ]; then
-    _arch='linux64'
-    md5sums=('f4fbbf50eaec2b9c9e21536e39b9999e')
-fi
-
-source=("${pkgname}_${pkgver}_${_arch}.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
+source=("${pkgname}_${pkgver}_linux64.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
