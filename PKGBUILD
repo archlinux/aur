@@ -1,8 +1,8 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
 pkgname=nbtexplorer
-pkgver=2.7.6
-pkgrel=4
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Minecraft NBT Editor for editing player and world files."
 arch=('i686' 'x86_64')
 url="https://github.com/jaquadro/NBTExplorer"
@@ -11,12 +11,12 @@ depends=('mono')
 makedepends=('unzip')
 provides=('nbtexplorer')
 
-source=(https://github.com/jaquadro/NBTExplorer/releases/download/v{$pkgver}.-win/NBTExplorer-${pkgver}.zip nbtexplorer nbtexplorer.png nbtexplorer.desktop)
+source=(https://github.com/jaquadro/NBTExplorer/releases/download/v${pkgver}-win/NBTExplorer-${pkgver}.zip nbtexplorer nbtexplorer.png nbtexplorer.desktop)
 
-md5sums=( '202c63befd60d0d347120a60428abdd0'
-          '49ae5eca65fe9ee7f546e7f518e98621'
-          'ae0ef756dcb6f660e245a8b6bdc381d3'
-          '62170849669e8c833c5929070eadd0f7' )
+md5sums=('50a9db91f83c6c09f064385e50760a25'
+         '49ae5eca65fe9ee7f546e7f518e98621'
+         'ae0ef756dcb6f660e245a8b6bdc381d3'
+         '62170849669e8c833c5929070eadd0f7')
 
 package() {
     cd "$srcdir"
