@@ -1,17 +1,16 @@
 pkgbase = php71-apcu
-	pkgdesc = A userland caching module for php71
-	pkgver = 5.1.9
+	pkgdesc = A userland caching module for PHP
+	pkgver = 5.1.10
 	pkgrel = 1
 	url = https://pecl.php.net/package/APCu
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = PHP
-	depends = php71>=7.1.13
-	provides = php-apcu=5.1.9-1
+	depends = php71
 	backup = etc/php/conf.d/apcu.ini
-	source = https://pecl.php.net/get/apcu-5.1.9.tgz
-	md5sums = 0d252601362c457b6651f340bd77ded0
+	source = https://pecl.php.net/get/apcu-5.1.10.tgz
+	source = apcu.ini
+	md5sums = a16259bb080b632d11d8ada09dd5ab56
+	md5sums = a353f7efe61928aa2162720789fa171f
 
 pkgname = php71-apcu
 
