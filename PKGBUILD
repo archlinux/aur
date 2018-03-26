@@ -81,7 +81,7 @@ pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
 pkgver="${_mozcver}.${_utdicver}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -101,8 +101,7 @@ sha1sums=('SKIP'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '23e6c06ae55c7e7f4b3f4f80132725b37d55270a'
           '260b382b3d8fa2743184ed851e78616feafb6dc3'
-          'd4f21a1684244387904b152f969a5e631f825af4'
-          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
+          'd4f21a1684244387904b152f969a5e631f825af4')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
