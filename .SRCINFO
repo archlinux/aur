@@ -1,0 +1,19 @@
+pkgbase = lib32-tkimg
+	pkgdesc = This package enhances Tk, adding support for many other Image formats: BMP, XBM, XPM, GIF, PNG, JPEG, TIFF and postscript. (32-bit)
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = http://tkimg.sourceforge.net
+	arch = x86_64
+	license = BSD
+	depends = lib32-zlib
+	depends = lib32-libjpeg
+	depends = lib32-libpng
+	depends = lib32-libtiff
+	depends = lib32-tcl
+	depends = lib32-tk
+	depends = tcllib
+	source = http://downloads.sourceforge.net/tkimg/1.4/Img-Source-1.4.7.tar.gz
+	sha1sums = c8131096488f42fbb143aee41e3b4878eaa17397
+
+pkgname = lib32-tkimg
+
