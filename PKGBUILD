@@ -1,13 +1,14 @@
 # Maintainer: Omar Ahmad <omar.squircleart@gmail.com>
 pkgname=animation-nodes-git
-pkgver=2.1.0.r4887.716e91c8
-pkgrel=1.2
+pkgver=2.1.1.r5157.beae3e03
+pkgrel=1
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
 arch=('any')
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
 depends=('blender' 'python-numpy')
 makedepends=('sed' 'cython')
+conflicts=('blender-plugin-animation-nodes')
 source=('git+https://github.com/JacquesLucke/animation_nodes.git#branch=v2.1')
 md5sums=('SKIP')
 
