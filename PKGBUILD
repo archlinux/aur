@@ -2,7 +2,7 @@
 # Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
 
 pkgname=pace
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/softwareperonista/pace'
 depends=('gtksourceview3')
 makedepends=('meson' 'vala')
 source=("https://softwareperonista.com.ar/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4d8d9de49965a44fe67205a5474cdc9326cf4c7eb3bda646e7a61d2d5c0a9602')
+sha256sums=('779bfbf7e08d500ae13f2607fa73947feaaf54b3c5c18596f2a6fe07d19f6775')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -31,6 +31,4 @@ package() {
   cd ${pkgname}-${pkgver}
 
   DESTDIR="$pkgdir" ninja -C build install
-
-  rm -r $pkgdir/usr/share/icons/hicolor/apps
 }
