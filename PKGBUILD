@@ -21,7 +21,8 @@ depends=('qt5-base'
          'xdg-utils')
 
 # An array of packages this package depends on to build but are not needed at runtime
-makedepends=('alex'
+makedepends=('stack'
+             'alex'
              'happy'
              'c2hs')
 
@@ -35,7 +36,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-  stack build -j 4
+  stack build
 }
 
 package() {

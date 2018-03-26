@@ -5,6 +5,7 @@ pkgbase = doc-browser-git
 	url = https://github.com/qwfy/doc-browser
 	arch = x86_64
 	license = MPL-2.0
+	makedepends = stack
 	makedepends = alex
 	makedepends = happy
 	makedepends = c2hs
