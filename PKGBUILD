@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r288.g352e4985
+pkgver=4.1.1.r315.g2107ddff
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
@@ -17,19 +17,12 @@ optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone-desktop')
 conflicts=('linphone-desktop')
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git"
-    "find_minizip.patch")
-sha256sums=('SKIP'
-            'fe74b28500f73e81886f052f41e8946bac170249760f5fe694e96c4d75e0ed73')
+source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g' 
-}
-
-prepare() {
-    cd $srcdir
-    patch -p0 < ../find_minizip.patch
 }
 
 build() {
