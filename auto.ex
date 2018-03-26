@@ -1,8 +1,8 @@
 defmodule Auto do
   use Tesla
 
-  @pkg "../PKGBUILD"
-  @srcinfo "../.SRCINFO"
+  @pkg "PKGBUILD"
+  @srcinfo ".SRCINFO"
 
   @map %{
   "Linux Binaries (32-bit)" => ["i686"],
@@ -78,9 +78,11 @@ package() {
   end
 
   def process(content) do
+    IO.puts "Working directory #{System.cwd!()}"
     File.write!(@pkg, content)
 
-    System.cmd("makepkg", ["--printsrcinfo", ">", "#{@srcinfo}"])
+    {output, _code} = System.cmd("makepkg", ["--printsrcinfo"])
+    File.write(@srcinfo, output)
   end
 
   def run() do
