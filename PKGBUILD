@@ -7,7 +7,7 @@
 _pkgname=mygpoclient
 pkgname=python-$_pkgname
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Client library for the my.gpodder.org web service"
 arch=('any')
 url="https://github.com/gpodder/mygpoclient"
@@ -19,4 +19,9 @@ md5sums=('e9648674b842ce5f6bb77a379eeb5908')
 package() {
   cd $srcdir/$_pkgname-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
+
+  mv "$pkgdir"/usr/bin/mygpo-bpsync{,-python3}
+  mv "$pkgdir"/usr/bin/mygpo-list-devices{,-python3}
+  mv "$pkgdir"/usr/bin/mygpo-simple-client{,-python3}
+  mv "$pkgdir"/usr/share/man/man1/mygpo-bpsync{,-python3}.1
 }

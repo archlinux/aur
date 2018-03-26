@@ -1,7 +1,7 @@
 pkgbase = python-mygpoclient
 	pkgdesc = Client library for the my.gpodder.org web service
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gpodder/mygpoclient
 	arch = any
 	license = GPL3
