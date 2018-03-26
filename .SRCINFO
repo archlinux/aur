@@ -6,6 +6,7 @@ pkgbase = mqttfx-bin
 	arch = x86_64
 	license = Apache
 	depends = java-runtime
+	depends = java-openjfx
 	options = !strip
 	options = !upx
 	source = http://www.jensd.de/apps/mqttfx/1.6.0/mqttfx-1.6.0-linux.deb

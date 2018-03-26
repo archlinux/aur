@@ -8,7 +8,7 @@ pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=("x86_64")
 url="http://mqttfx.org"
 license=("Apache")
-depends=("java-runtime")
+depends=("java-runtime" "java-openjfx")
 options=("!strip" "!upx")
 source=(
   "http://www.jensd.de/apps/${_pkgbasename}/${pkgver}/${_pkgbasename}-${pkgver}-linux.deb"
