@@ -4,7 +4,7 @@
 pkgbase=linux-lts49-kallsyms
 #pkgbase=linux-lts-custom
 _srcname=linux-4.9
-pkgver=4.9.86
+pkgver=4.9.90
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,9 +23,9 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'e29192925d83693e381cb7c5a0437158f0ab8cffd6cce5e574996e955c1eae21'
+            '56599775e46f6537cb8ec9d2b61a981ab2c4de75f8f333d91b35c98c36aa8b7c'
             'SKIP'
-            'b2499d8d4697ae48e73845f6f3f56ef52da3a109fa512c863b46a6ec8375064c'
+            '7af299b22d47266ef2ad4ee7d00bb9467a034d78233e2a29d509008f5e4683a7'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
