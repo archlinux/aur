@@ -87,7 +87,6 @@ for i in "${!_subarchs[@]}"; do
   _xtoolsdir="${source[i]##*/}"
   _xtoolsdir="${_xtoolsdir%%.*}"
   eval 'package_distccd-alarm-'${_subarchs[i]}'() {
-# _package_subarch '${_subarchs[i]}' '${_xtoolsdir}' '${_whitelist[i]}'
  _package_subarch '${_subarchs[i]}' '${_xtoolsdir}' '${_bins[i]}'
 }'
 done
