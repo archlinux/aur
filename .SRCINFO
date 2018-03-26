@@ -7,6 +7,7 @@ pkgbase = wxpython-gtk2
 	license = custom:wxWindows
 	makedepends = mesa
 	makedepends = glu
+	makedepends = svn
 	depends = wxgtk2
 	depends = python2
 	provides = wxpython
