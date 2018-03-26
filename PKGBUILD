@@ -4,7 +4,7 @@ _pkgname=confclerk
 pkgname="${_pkgname}-git"
 _pkgver=0.6.2
 pkgver=0.6.2_1+g860fc82
-pkgrel=1
+pkgrel=2
 pkgdesc='QT4 application to make conference schedules offline. Able to import schedules in XML format created by the ​PentaBarf (or ​frab) used by ​FOSDEM, ​DebConf, ​Grazer Linuxtage, ​CCC congresses, ​FrOSCon, and ​many others.'
 arch=('i686' 'x86_64')
 url="http://www.toastfreeware.priv.at/confclerk"
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 source=(
-  "${_pkgname}::git+git://git.toastfreeware.priv.at/toast/confclerk.git"
+  "${_pkgname}::git+http://git.toastfreeware.priv.at/toast/confclerk.git"
   "${_pkgname}.1.gz::http://manpages.ubuntu.com/manpages.gz/zesty/man1/confclerk.1.gz"
 )
 
