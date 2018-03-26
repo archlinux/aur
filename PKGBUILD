@@ -3,7 +3,7 @@
 pkgname=hdf5-salome
 _pkgname=hdf5
 pkgver=1.8.20
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data. This version is specifically compiled to be linked angains salome-platform."
 url="http://www.hdfgroup.org/HDF5/"
@@ -12,10 +12,11 @@ depends=('zlib' 'sh')
 provides=('hdf5_18')
 conflicts=('hdf5_18')
 makedepends=('time')
-source=("https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.20.tar.bz2")
+source=(https://support.hdfgroup.org/ftp/HDF5/current18/src/$_pkgname-$pkgver.tar.bz2)
+sha512sums=(288e4772a946d406de9096843c92dd6874a0753ed6fbe859aaadf565aa0509fc612ebdb00c301b7955bc0dc63e45f3a224c6b2638f480fe6738ee0c96a993c6e)
 
 build() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --disable-static \
     --enable-hl \
@@ -26,14 +27,14 @@ build() {
     --disable-sharedlib-rpath \
     --libdir=/usr/lib/hdf5_18 \
     --includedir=/usr/include/hdf5_18
-  make
-
+    
+  make -j`nproc`
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
 
-  make -j1 DESTDIR="${pkgdir}" install
+  make -j`nproc` DESTDIR="${pkgdir}" install
 
   # don't install examples
   rm -rf "${pkgdir}"/usr/share/hdf5_examples
@@ -43,14 +44,11 @@ package() {
     mv "${file}" "${file}"_18
   done
 
-  #
-  install -d m755 "${pkgdir}"/etc/ld.so.conf.d
-  echo /usr/lib/hdf5_18 >> "${pkgdir}"/etc/ld.so.conf.d/hdf5_18.conf
+  # add hdf5 library path to dynamic linker configuration include directory
+  install -dm 755 $pkgdir/etc/ld.so.conf.d
+  echo /usr/lib/hdf5_18 >> $pkgdir/etc/ld.so.conf.d/hdf5_18.conf
 
   # install license
-  install -d -m755 "$pkgdir/usr/share/licenses/${pkgname}"
-  install -m644 "$srcdir/${_pkgname}-${pkgver/_/-}/COPYING" \
-          "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" 
- 
+  install -Dm 644 $srcdir/$_pkgname-$pkgver/COPYING \
+                  $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('23078d57975903e9536d1e7b299cc39c')
