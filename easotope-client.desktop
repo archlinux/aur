@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=easotope-client
+Exec=/usr/bin/easotope-client
+Icon=easotope-client
+Terminal=false
+Type=Application
+Categories=Science;
+StartupNotify=False
+Comment=Making isotopes easy
+Name[en_US]=easotope-client

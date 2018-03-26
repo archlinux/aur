@@ -1,0 +1,23 @@
+pkgbase = easotope-client
+	pkgdesc = Client for making isotopes easy
+	pkgver = 20180218
+	pkgrel = 1
+	url = http://easotope.org
+	arch = x86_64
+	license = GPL3
+	license = EPL
+	license = custom:easotope
+	depends = gtk3
+	source = http://easotope.org/release/20180218/easotope_client_linux_x86_64.tar.gz
+	source = LICENSE
+	source = icon.png
+	source = easotope-client.sh
+	source = easotope-client.desktop
+	md5sums = db052a657ebef6e0661ec00b22934823
+	md5sums = 86ddc7fdc30acbb5146c9820c1b771f1
+	md5sums = 35db741960c2d1edd88d3c4f2a47d028
+	md5sums = 03f873d4be21190aa4b4d26becafd5e7
+	md5sums = 2f695968419ab83fc2ba6fc7de412d6a
+
+pkgname = easotope-client
+
