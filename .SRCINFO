@@ -1,0 +1,21 @@
+pkgbase = r-cran-juniperkernel
+	pkgdesc = R kernel for Jupyter
+	pkgver = 1.2.3.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/JuniperKernel/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = jupyter
+	depends = r>=3.0.0
+	depends = r-jsonlite
+	depends = r-cran-repr
+	depends = r-cran-rcpp>=0.11.0
+	depends = r-cran-gdtools>=0.1.6
+	depends = r-pbdzmq>=0.3.2
+	depends = r-cran-data.table
+	source = http://cran.r-project.org/src/contrib/JuniperKernel_1.2.3.0.tar.gz
+	sha256sums = cd53d2e75984eb01d7f8296e58ba6faaa13b2e9d54c9745dba767b25a5d6249f
+
+pkgname = r-cran-juniperkernel
+
