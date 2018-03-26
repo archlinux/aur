@@ -3,7 +3,7 @@
 pkgname=mqttfx-bin
 _pkgbasename=mqttfx
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=("x86_64")
 url="http://mqttfx.org"
