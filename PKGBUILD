@@ -1,26 +1,23 @@
-# Maintainer: Magnus Therning <magnus@therning.org>
+# Maintainer: Rafael Ascensão <rafa dot almas at gmail dot com>
+# Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=git-imerge-git
 _pkgname=git-imerge
-pkgver=0
+pkgver=1.1.0.r2.g269969e
 pkgrel=1
 pkgdesc='Incremental merge for git'
 arch=('any')
-license=('GPL2')
 url='https://github.com/mhagger/git-imerge'
+license=('GPL2')
 depends=('python2' 'git')
 makedepends=('git')
 changelog=${pkgname}.changelog
-source=('git://github.com/mhagger/git-imerge.git')
+source=('git+https://github.com/mhagger/git-imerge.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long | sed -r 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
-}
-
-build() {
-    echo "nothing to build"
 }
 
 package () {
