@@ -1,17 +1,18 @@
-# Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
+# Maintainer: Tomoaki Hashizaki <thashisaki@yahoo.com>
+# Contributor: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
 url='http://www.rs.tus.ac.jp/yyusa/ricty.html'
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-makedepends=('fontforge' 'ttf-inconsolata>=20090215-4' 'ttf-migu')
+depends=()
+makedepends=('fontforge' 'ttf-inconsolata' 'ttf-migu')
 install=ttf.install
-source=('http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator-4.1.0.sh')
-sha1sums=('c38475f680d1c0d648949a1e70722b5c31895690')
+source=('http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator-4.1.1.sh')
+sha256sums=('86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d')
 
 build() {
   cd "$srcdir"
