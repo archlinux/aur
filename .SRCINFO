@@ -1,8 +1,8 @@
 pkgbase = lxappearance-git
-	pkgdesc = standard screen manager of LXDE
-	pkgver = 0.5.5.22.g6dc8b82
+	pkgdesc = Feature-rich GTK+ theme switcher of the LXDE Desktop from git
+	pkgver = 0.6.3.1r72
 	pkgrel = 1
-	url = http://pcmanfm.sourceforge.net/
+	url = https://wiki.lxde.org/en/LXAppearance
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,14 +12,19 @@ pkgbase = lxappearance-git
 	makedepends = autoconf
 	makedepends = perl
 	makedepends = gtk-doc
-	depends = gtk2
 	depends = gtk3
 	depends = glib2
 	depends = menu-cache
 	provides = lxappearance
 	conflicts = lxappearance
-	source = git://pcmanfm.git.sourceforge.net/gitroot/lxde/lxappearance
+	source = git://git.lxde.org/lxde/lxappearance.git
 	md5sums = SKIP
 
 pkgname = lxappearance-git
+	depends = gtk2
+
+pkgname = lxappearance-gtk3-git
+	pkgdesc = Feature-rich GTK+ theme switcher of the LXDE Desktop from git (GTK+ 3 version)
+	depends = gtk3
+	conflicts = lxappearance
 

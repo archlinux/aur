@@ -1,34 +1,54 @@
 # myswiat - mariusz
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
-pkgname=lxappearance-git
-pkgver=0.5.5.22.g6dc8b82
+pkgbase=lxappearance-git
+pkgname=('lxappearance-git' 'lxappearance-gtk3-git')
+pkgver=0.6.3.1r72
 pkgrel=1
-url="http://pcmanfm.sourceforge.net/"
-pkgdesc="standard screen manager of LXDE"
+url="https://wiki.lxde.org/en/LXAppearance"
+pkgdesc="Feature-rich GTK+ theme switcher of the LXDE Desktop from git"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtk2' 'gtk3' 'glib2' 'menu-cache')
+depends=('gtk3' 'glib2' 'menu-cache')
 makedepends=('git' 'intltool' 'pkgconfig' 'autoconf' 'perl' 'gtk-doc')
 provides=('lxappearance')
 conflicts=('lxappearance')
-source=("git://pcmanfm.git.sourceforge.net/gitroot/lxde/lxappearance")
+source=("git://git.lxde.org/lxde/lxappearance.git")
 md5sums=('SKIP')
-_gitname="lxappearance"
 
 pkgver() {
-  cd "$srcdir/lxappearance"
-  git describe --always | sed 's|-|.|g'
+  cd ${pkgbase%-git}
+  printf %sr%s $(git describe --tags | sed 's|-|.|g'| cut -c8-) $(git rev-list --count HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  ./autogen.sh
-  ./configure --prefix="/usr" --sysconfdir="/etc" --enable-man --disable-gtk2
+  [ -d gtk2 ] || cp -r ${pkgbase%-git} gtk2
+  cd gtk2
+  ./configure --sysconfdir=/etc --prefix=/usr --enable-dbus
+  cd "$srcdir"
+  # GTK+ 3 version
+  [ -d gtk3 ] || cp -r ${pkgbase%-git} gtk3
+  cd gtk3
+  ./configure --prefix="/usr" --sysconfdir="/etc" --enable-man --enable-gtk3 --enable-dbus
   make
 }
 
-package() {
-  cd "${srcdir}/${_gitname}"
-  make DESTDIR=${pkgdir} install
+package_lxappearance-git() {
+  depends=('gtk2')
+  cd gtk2
+  
+  make DESTDIR="$pkgdir" install
+}
+
+package_lxappearance-gtk3-git() {
+  pkgdesc+=' (GTK+ 3 version)'
+  depends=('gtk3')
+  conflicts=('lxappearance')
+
+  cd gtk3
+  make DESTDIR="$pkgdir" install
 }
