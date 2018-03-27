@@ -1,6 +1,6 @@
 pkgbase = wine-staging-pba-git
 	pkgdesc = Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)
-	pkgver = 3.4.r3603.4954f5c6+wine.3.4.r142.g5946973021+pba.r29.87307b1
+	pkgver = 3.4.r3604.e50f0488+wine.3.4.r178.ge1c7a1f7ce+pba.r29.87307b1
 	pkgrel = 1
 	url = https://github.com/acomminos/wine-pba
 	install = wine.install
