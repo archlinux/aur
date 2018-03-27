@@ -1,11 +1,12 @@
 pkgbase = python-rampy
 	pkgdesc = A Python module containing functions to treat spectroscopic (XANES, Raman, IR...) data
 	pkgver = 0.3.4
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/charlesll/rampy
 	arch = any
 	license = custom:GNU-GPLv2
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python
 	depends = python-scipy
 	depends = python-scikit-learn
