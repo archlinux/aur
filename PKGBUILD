@@ -21,33 +21,33 @@ sha256sums=('9a4a288120fc9284510b0b2da3af2661f8f378c682106c4449bd8d97dd18a1f3'
             '18fe08ff3cdc7ed0d3f7887858e42dcffb485e8b1f49956fe5b926e9b21849fa')
 
 prepare () {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   # replace xterm by your favourite terminal emulator here
-  sed -i s+xterm+st+ $srcdir/v$pkgname-$_vver/window.cpp
+  sed -i s+xterm+st+ "$srcdir"/v$pkgname-$_vver/window.cpp
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr 
   make 
   
-  cd $srcdir/v$pkgname-$_vver
+  cd ../v$pkgname-$_vver
   qmake-qt5 vprerex.pro
   make
 }
 
 package () {
   install -Dm644 $pkgname.sty \
-	  $pkgdir/usr/share/texmf/tex/latex/$pkgname.sty
+	  "$pkgdir"/usr/share/texmf/tex/latex/$pkgname.sty
   install -Dm644 $pkgname.sty.7 \
-	  $pkgdir/usr/share/man/man7/$pkgname.sty.7 
+	  "$pkgdir"/usr/share/man/man7/$pkgname.sty.7 
   install -Dm644 intro.pdf \
-	  $pkgdir/usr/share/doc/$pkgname/intro.pdf 
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  cd $srcdir/v$pkgname-$_vver
-  install -Dm755 vprerex $pkgdir/usr/bin/vprerex
-  install -Dm644 vprerex.1 $pkgdir/usr/share/man/man1/vprerex.1
+	  "$pkgdir"/usr/share/doc/$pkgname/intro.pdf 
+  cd "$srcdir"/$pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  cd "$srcdir"/v$pkgname-$_vver
+  install -Dm755 vprerex "$pkgdir"/usr/bin/vprerex
+  install -Dm644 vprerex.1 "$pkgdir"/usr/share/man/man1/vprerex.1
   install -Dm644 vprerex.desktop \
-	  $pkgdir/usr/share/applications/vprerex.desktop
+	  "$pkgdir"/usr/share/applications/vprerex.desktop
 }
