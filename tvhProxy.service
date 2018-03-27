@@ -1,0 +1,11 @@
+[Unit]
+Description=A simple proxy for Plex and Tvheadend
+
+[Service]
+Environment=/etc/conf.d/tvhProxy
+WorkingDirectory=/usr/lib/tvhproxy
+ExecStart=/usr/bin/python /usr/lib/tvhproxy/tvhProxy.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

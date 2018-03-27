@@ -1,0 +1,7 @@
+TVH_BINDADDR=''
+TVH_URL='http://test:test@localhost:9981'
+TVH_PROXY_URL='http://localhost'
+TVH_TUNER_COUNT=6
+TVH_WEIGHT=300
+TVH_CHUNK_SIZE=1048576
+TVH_PROFILE='pass'
