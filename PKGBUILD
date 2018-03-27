@@ -1,4 +1,4 @@
-# Maintainer: Cobra <najahannah [at] archlinux [dot] info>
+# Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
 pkgver=0.29.0
 pkgrel=1
