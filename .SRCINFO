@@ -1,6 +1,6 @@
 pkgbase = studip-sync-git
 	pkgdesc = Sync your files from Stud.IP
-	pkgver = r43.02eead4
+	pkgver = r49.6ca915b
 	pkgrel = 1
 	url = https://github.com/woefe/studip-sync
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = studip-sync-git
 	makedepends = git
 	depends = rsync
 	depends = python-requests
-	depends = geckodriver
-	depends = python-selenium
+	depends = python-beautifulsoup4
+	depends = python-lxml
 	source = studip-sync-git::git+https://github.com/woefe/studip-sync.git
 	md5sums = SKIP
 
