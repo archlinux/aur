@@ -3,13 +3,16 @@ read -r -d '' msg << TIPS
 \e[1;33m====================================\e[0m\n
 -----------更新开发者工具-----------
 \n
-    当提示有更新时可进入/opt/wechat_web_devtools/执行\e[1m./bin/update_package_nw.sh手动更新，或者等待该软件包维护者更新版本，也可以点击安装，注意：\e[0m
 \n
-    1. 安装过程中确认安装到$HOME/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具路径下；
+    当提示有更新时可进入/opt/wechat_web_devtools/执行\e[1m./bin/update_package_nw.sh\e[0m更新，或者等待该软件包维护者更新版本。也可以点击安装，安装需要注意：
 \n
-    2. 完成去掉打开开发者工具项前面的勾。
+    1. 确认安装到$HOME/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具路径下；
+\n
+    2. 安装完成时去掉打开开发者工具项前面的勾。
+\n
 \n
 -----------wcc和wcsc编译问题-----------
+\n
 \n
     进入/opt/wechat_web_devtools/，执行以下命令，让工具重新生成wcc和wcsc（会删除开发者工具配置文件,所有工程和登录信息会消失）
 \n
@@ -17,8 +20,9 @@ read -r -d '' msg << TIPS
 \n
     \e[1m./bin/wxdt install \e[0m
 \n
+\n
 -----------更多内容-----------
-\n访问 \e[1m https://github.com/cytle/wechat_web_devtools \e[0m 提交反馈/寻找问题解决/贡献代码 等等
+\n访问\e[1m https://github.com/cytle/wechat_web_devtools \e[0m
 \n
 \e[1;33m====================================\e[0m
 TIPS
