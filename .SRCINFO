@@ -1,6 +1,6 @@
 pkgbase = firegrid
 	pkgdesc = Click anywhere with only a few key strokes
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/foliea/firegrid
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = firegrid
 	makedepends = shards
 	depends = qt5-base
 	depends = xdotool
-	source = https://github.com/foliea/firegrid/archive/0.4.0.tar.gz
-	md5sums = SKIP
+	source = https://github.com/foliea/firegrid/archive/0.4.1.tar.gz
+	md5sums = 522381bf1196210fb411e037e4387ef9
 
 pkgname = firegrid
 

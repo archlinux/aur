@@ -1,6 +1,6 @@
 # Maintainer: Adrien Folie <folie.adrien@gmail.com>
 pkgname=firegrid
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Click anywhere with only a few key strokes"
 arch=("x86_64")
@@ -9,13 +9,7 @@ license=("MIT")
 depends=("qt5-base" "xdotool")
 makedepends=("wget" "crystal" "shards")
 source=("https://github.com/foliea/firegrid/archive/$pkgver.tar.gz")
-md5sums=('522381bf1196210fb411e037e4387ef9')
-
-prepare() {
-	wget https://github.com/crystal-lang/crystal/releases/download/v0.24.1/crystal-0.24.1-2-linux-x86_64.tar.gz
-	tar -xzvf crystal-0.24.1-2-linux-x86_64.tar.gz
-	export PATH="$PWD/crystal-0.24.1-2/bin:$PATH"
-}
+md5sums=('4b85a05a1c10201b61ccd7ed4482346b')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
