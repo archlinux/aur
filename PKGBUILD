@@ -4,7 +4,7 @@ _pkgcode=0.1.11
 _pkgstate=beta
 pkgver=${_pkgcode}_${_pkgstate}
 _pkgver=${_pkgcode}-${_pkgstate}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Install Ubuntu Touch on Your Device"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 depends=()
 install=ubports-installer.install
 source=("https://github.com/ubports/ubports-installer/releases/download/${_pkgver}/ubports-installer_${_pkgver}_amd64.deb")
-md5sums=('968f17430a0c448e535d4c4a86e9d03e')
+md5sums=('e05ba3e93c12bfe12590f779dcb26fc0')
 
 prepare() {
 	cd "$srcdir"
