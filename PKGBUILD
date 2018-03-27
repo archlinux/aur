@@ -10,7 +10,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=multipath-tools
-pkgver=0.7.4
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64' 'armv7h')
