@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=qBackup
+GenericName=Save Files
+Comment=qBackup is a cross platform file backup software that runs fast, efficiently and securely. You can backup your files to Cloud Storage, Local File System and SFTP Server.
+Exec=/opt/qbackup/qBackup
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Categories=Utility;Security;
+Icon=qbackup
