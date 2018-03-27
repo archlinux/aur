@@ -17,11 +17,11 @@ epoch=1
 # include config.h and any patches you want to have applied here
 source=('git+https://git.suckless.org/st'
 'https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff'
-'https://st.suckless.org/patches/solarized/st-solarized-dark-20170623-b331da5.diff'
+'st-solarized-dark-0.8.1.diff'
 )
-sha1sums=('SKIP'
-'SKIP'
-'SKIP')
+sha256sums=('SKIP'
+'71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
+'3f5f1a54a225795542ee1f75fa14e21adaa4debb3130e674430c87c55c07ebac')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
