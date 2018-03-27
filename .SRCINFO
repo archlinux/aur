@@ -1,16 +1,16 @@
 pkgbase = asciiquarium-lock
 	pkgdesc = Simple screen locker using ASCIIQuarium as a screensaver
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/YanDoroshenko/asciiquarium-lock
 	arch = any
 	license = GPL
 	depends = awk
-	depends = xtrlock
+	depends = pyxtrlock
         depends = asciiquarium
         depends = xfce4-terminal
         depends = xorg-xserver
 	source = https://raw.githubusercontent.com/YanDoroshenko/asciiquarium-lock/master/asciiquarium-lock.sh
-	sha256sums = 075ee18f4de858f2b90c7de15894899e153d48d6b4acc1dadb7fe85ccf1d813e
+	sha256sums = 2e0dcb1688d9791764066a7c6eb6a6304d5bf6eb10997e24b9549d95d336035f
 
 pkgname = asciiquarium-lock
