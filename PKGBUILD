@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=8
+pkgrel=9
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -47,7 +47,7 @@ prepare() {
 	# Do not include Python 3 stuff
 	for f in `grep -nr . | grep 'python3\.6' | cut -f1 -d':'`
 	do
-		sed -i 's/[^ ]\+python3\.6[^ ]\+//g' $f
+		sed -i 's/[^ ;]\+python3\.[^ ;]\+//g' $f
 	done
 }
 

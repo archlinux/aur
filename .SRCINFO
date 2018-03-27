@@ -1,7 +1,7 @@
 pkgbase = python2-pyca-git
 	pkgdesc = Python for Computational Anatomy
 	pkgver = 0.01.r434.gf31ab43
-	pkgrel = 8
+	pkgrel = 9
 	url = http://bitbucket.org/scicompanat/pyca
 	arch = x86_64
 	license = BSD
