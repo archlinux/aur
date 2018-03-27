@@ -2,13 +2,12 @@
 # Contributor: Jason Plum <jplum@archlinuxarm.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
-#PKGEXT='.pkg.tar'
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20180125
 pkgver=7.2.1
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
@@ -17,10 +16,10 @@ depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
 _URL="https://archlinuxarm.org/builder/xtools"
 source=(
-  "x-tools-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools.tar.xz"
-"x-tools6h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
-"x-tools7h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools7h.tar.xz"
- "x-tools8-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools8.tar.xz"
+"x-tools-$_date.tar.xz::$_URL/x-tools.tar.xz"
+"x-tools6h-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
+"x-tools7h-$_date.tar.xz::$_URL/x-tools7h.tar.xz"
+"x-tools8-$_date.tar.xz::$_URL/x-tools8.tar.xz"
 'config.in' 'service.in' 'readme.in'
 )
 md5sums=('4ebc6a96fefd5f11c502620b5b26653a'
