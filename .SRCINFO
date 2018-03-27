@@ -1,0 +1,12 @@
+pkgbase = reaktoro-git
+	pkgdesc = An unified framework for modelling chemically reactive systems
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://reaktoro.org/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+
+pkgname = reaktoro-git
+
