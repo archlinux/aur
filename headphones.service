@@ -1,0 +1,12 @@
+[Unit]
+Description=Headphones Daemon
+After=network.target
+
+[Service]
+User=headphones
+Group=headphones
+Type=simple
+ExecStart=/usr/bin/python2 /usr/lib/headphones/Headphones.py --nolaunch --config /var/lib/headphones/config.ini --datadir /var/lib/headphones
+
+[Install]
+WantedBy=multi-user.target

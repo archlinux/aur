@@ -1,0 +1,3 @@
+d /var/lib/headphones 0755 headphones headphones
+Z /var/lib/headphones - headphones headphones
+Z /usr/lib/headphones - headphones headphones

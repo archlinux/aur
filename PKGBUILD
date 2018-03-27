@@ -2,42 +2,42 @@
 # Many thanks to Justin Dray, maintainer of sickrage, for his PKGBUILD used as
 # a base for this one.
 
-_name=headphones
-pkgname=${_name}
-pkgver=0.5.18
+pkgname=headphones
+pkgver=0.5.19
 pkgrel=1
-pkgdesc="Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
+pkgdesc="Music downloader for usenet and torrents."
 arch=('any')
-url="https://github.com/rembo10/${_name}"
+url="https://github.com/rembo10/headphones"
 license=('GPL3')
 depends=('python2')
-optdepends=('sabnzbd: NZB downloader'
-            'python2-notify: desktop notifications'
-						'unrar: automatic decompression'
-						'git: pull new versions from git')
-conflicts=("${_name}-git")
-replaces=("${_name}-git")
+optdepends=('sabnzbd: usenet downloader'
+            'nzbget: usenet downloader'
+            'transmission-cli: torrent downloader (CLI and daemon)'
+            'transmission-gtk: torrent downloader (GTK+)'
+            'transmission-qt: torrent downloader (Qt)'
+            'deluge: torrent downloader'
+            'rtorrent: torrent downloader'
+            'jackett: torrent indexer proxy')
+conflicts=('headphones-git')
 options=('!strip')
-install="${_name}.install"
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "${_name}-system.service"
-        "${_name}-user.service"
-				"${_name}.tmpfile")
-sha256sums=('5558669ee64448c82a90a4f2d8755ef9e7337b95b44354772fb2898769a04aeb'
-            '14f00904135940e00a6af5742116d950be07248a578c2562373413155f768d01'
-            '22d2a8da5cc8da149ddac086e52c0e30b51671644e039d435f853cf383f15317'
-            'b8f7030f570e7707eb9c0f41c382e37d54244e7885c795a9f31788efdd45914e')
+install='headphones.install'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rembo10/headphones/archive/v${pkgver}.tar.gz"
+        'headphones.service'
+        'headphones.sysusers'
+        'headphones.tmpfiles')
+
+sha256sums=('604365d356c2079bd55955aa8448a70c39cc5f32a71049a49876847423ce5d12'
+            '60ef2bc4c0bc1d23d4fe43202759cb24d9f456bd00cb8841ee11b2c4cbce917e'
+            '348abc0627d63762a97655b5893c306e5b923857be5d0b876e9df5fea7ef9ed9'
+            'f1e537c6853c3d641ec2266283b726a8fa5ed8f78c4325d295e66bb4d4868585')
 
 package() {
-	mkdir -p "${pkgdir}/opt/${_name}"
-	chmod 775 "${pkgdir}/opt/${_name}"
-	cp -r ${_name}-${pkgver}/* "$pkgdir/opt/${_name}"
+  install -d -m 755 "${pkgdir}/usr/lib/headphones"
+  cp -a "${srcdir}/headphones-${pkgver}"/* "${pkgdir}/usr/lib/headphones"
 
-	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"
-	install -D -m644 ${_name}-user.service "$pkgdir/usr/lib/systemd/user/${_name}.service"
-	install -D -m644 ${_name}.tmpfile "$pkgdir/usr/lib/tmpfiles.d/${_name}.conf"
-
-	find "$pkgdir" -type d -name '.git' -exec rm -r '{}' +
+  install -D -m 644 headphones.service "${pkgdir}/usr/lib/systemd/system/headphones.service"
+  install -D -m 644 headphones.sysusers "${pkgdir}/usr/lib/sysusers.d/headphones.conf"
+  install -D -m 644 headphones.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/headphones.conf"
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:

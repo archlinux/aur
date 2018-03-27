@@ -1,29 +1,39 @@
-_NAME=headphones
-
-post_install() {
-	getent passwd ${_NAME} > /dev/null || useradd -d /opt/${_NAME} -s /bin/false -r ${_NAME} > /dev/null
-	chown -R ${_NAME}. /opt/${_NAME}
-
-	# Create a directory in /run if it does not exist
-	if [ ! -d /run/${_NAME} ]; then
-		mkdir /run/${_NAME}
-		chown ${_NAME}. /run/${_NAME}
-		chmod 775 /run/${_NAME}
-	fi
-
-    echo ""
-    echo "To fill the configuration file (/opt/headphones/config.ini), do:"
-    echo "  systemctl start headphones; systemctl stop headphones"
-    echo ""
-    echo "It should dump the initial configuration that you can now modify."
-    echo ""
-}
-
 post_upgrade() {
-	post_install
-}
 
-post_remove() {
-	echo "Some files have not been removed because they are created by ${_NAME} itself, e.g. the music database."
-	userdel -f ${_NAME}
+  if (( $(vercmp "0.5.18" "$2") > 0 )); then
+    # needed because started before hooks
+    systemd-tmpfiles --create
+
+    if [[ -f /opt/headphones/config.ini && ! -f /var/lib/headphones/config.ini ]]; then
+      cp -a {/opt,/var/lib}/headphones/config.ini
+      echo "Copied config.ini from /opt/headphones/ -> /var/lib/headphones/"
+    fi
+
+    if [[ -f /opt/headphones/headphones.db && ! -f /var/lib/headphones/headphones.db ]]; then
+      cp -a {/opt,/var/lib}/headphones/headphones.db
+      echo "Copied headphones.db from /opt/headphones/ -> /var/lib/headphones/"
+    fi
+
+    if [[ -d /opt/headphones/logs && ! -d /var/lib/headphones/logs ]]; then
+      cp -a {/opt,/var/lib}/headphones/logs
+      echo "Copied logs from /opt/headphones/ -> /var/lib/headphones/"
+    fi
+
+    if [[ -d /opt/headphones/cache && ! -d /var/lib/headphones/cache ]]; then
+      cp -a {/opt,/var/lib}/headphones/cache
+      echo "Copied cache from /opt/headphones/ -> /var/lib/headphones/"
+    fi
+  fi
+
+  if [[ "$( getent passwd headphones | cut -d: -f6 )" != "/var/lib/headphones" ]]; then
+    usermod -d /var/lib/headphones headphones
+    if [[ $? -ne 0 ]]; then
+      echo "Could not change headphones users home directory."
+      echo "Run: sudo systemctl stop headphones ; sudo usermod -d /var/lib/headphones headphones ; sudo systemctl start headphones"
+    fi
+  fi
+
+  if [[ -d /opt/lazylibrarian ]]; then
+    echo "Remove /opt/lazylibrarian if everything is working correctly from /var/lib/lazylibrarian now."
+  fi
 }
