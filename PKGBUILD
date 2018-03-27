@@ -3,12 +3,12 @@
 _pkgname=mumble
 pkgname=${_pkgname}-snapshot-minimal
 pkgver=1.3.0_2586_g894ade2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
-makedepends=('boost' 'qt5-tools' 'python')
+makedepends=('boost' 'qt5-tools' 'python' 'gcc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 url="https://mumble.info"
