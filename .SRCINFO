@@ -1,7 +1,7 @@
 pkgbase = audiere
 	pkgdesc = High-level audio API. It can play Ogg Vorbis, MP3, FLAC, uncompressed WAV, AIFF, MOD, S3M, XM, and IT files
 	pkgver = 1.9.4
-	pkgrel = 10
+	pkgrel = 11
 	url = http://audiere.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = audiere
 	source = DeviceFrame.cpp
 	source = MIDIDeviceDialog.h
 	source = speexfile.cpp.patch
-	md5sums = b95dfe6f1e69cfd12371747f22772766
-	md5sums = bd082fa9a258ef6598eefe88a71a4279
-	md5sums = 55c31ad9a68304f49f30ac8ca9fa3288
-	md5sums = 0fe69aeb84a6860ef7a36f75887f4f07
-	md5sums = a80de799a3b833f0331cf83f7f6a27ab
-	md5sums = 8dd3fd42cb0ff4961ec050fc859bcf63
+	sha256sums = 74538fbc2f1ef467b3e1376c6ff4e0f40b664fca1dbfb1fcaa2fb823d5f5a219
+	sha256sums = 85484468c0c433eefbc9a7a9b3f30755c3bb591253bb1b93d3a82f26371e329a
+	sha256sums = f396e196c6f72c14ecc65614d3151dd402a2988befbd829357eba1b8094846ce
+	sha256sums = c6608b8d2cff4b7cddea357153d64e9e5b9ef97081d77cd34526639c28ff0010
+	sha256sums = eba407f69d83d94071fc7987744346b041b66a07874ed4c5998e2ace758f593f
+	sha256sums = 505ce52b599f154a2eb090ae46234053b7bf47a69bfdcd1539e68094b34c806c
 
 pkgname = audiere
 
