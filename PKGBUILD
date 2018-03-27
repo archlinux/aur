@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=10
+pkgrel=11
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -37,7 +37,7 @@ prepare() {
 	sed -i 's/<< std::cout <</<</g' "$srcdir/$_name/Code/Cxx/src/alg/MultiscaleManager.cxx"
 
 	# Cuda requires a specific version of gcc
-	if [ "" != "`pacman -Qi cuda 2&>/dev/null | grep 'Version'`" ]; then
+	if [ "" != "`pacman -Qi cuda 2>/dev/null | grep 'Version'`" ]; then
 		_cc="/opt/cuda/bin/gcc"
 		_use_cuda="ON"
 	else
@@ -67,6 +67,16 @@ prepare() {
 build() {
 	cd "$srcdir/$_name/build"
 	make
+
+	if [ "$_use_cuda" == "ON" ]; then
+		make CUDA_TPL_DEPS
+
+		# Do not include Python 3 stuff
+		for f in `grep -nr . | grep 'python3\.6' | cut -f1 -d':'`
+		do
+			sed -i 's/[^ ;]\+python3\.[^ ;]\+//g' $f
+		done
+	fi
 }
 
 package() {
