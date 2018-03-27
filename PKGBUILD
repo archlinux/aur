@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 165989 2016-03-10 18:49:59Z spupykin $
 # Maintainer: Michael Serpieri <mickybart@pygoscelis.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
@@ -7,40 +6,42 @@ pkgbase=schroot-hybris
 _pkgbase=schroot
 pkgname=('schroot-hybris' 'schroot-droid')
 pkgver=1.6.10
-pkgrel=15
+pkgrel=18
 url="http://packages.qa.debian.org/s/schroot.html"
 license=('GPL3')
 makedepends=('boost' 'cppunit')
-arch=('i686' 'x86_64' 'armv7h')
-source=("http://ftp.debian.org/debian/pool/main/s/$_pkgbase/${_pkgbase}_${pkgver}.orig.tar.xz"
-	"http://http.debian.net/debian/pool/main/s/schroot/schroot_$pkgver-2~bpo8+1.debian.tar.xz"
+arch=('x86_64' 'armv7h')
+source=("http://http.debian.net/debian/pool/main/s/$_pkgbase/${_pkgbase}_${pkgver}.orig.tar.xz"
+	"http://http.debian.net/debian/pool/main/s/schroot/schroot_$pkgver-3+deb9u1.debian.tar.xz"
 	'arch32-example'
 	'arch32-config'
 	'arch32-copyfiles'
 	'arch32-mount'
 	'arch32-nssdatabases'
 	'pam.d.schroot.patch'
-	'fix-bash-completion.patch'
+	'schroot-cppunit.patch'
 	'android-environment-schroot.patch'
 	'gls-common::git+https://github.com/mickybart/gnulinux_support-common')
 md5sums=('f8ec667831487f4b12e094bc0dc9bbe3'
-         '7ec5bf0d455a803b2885041754c3a3aa'
+         '467f67cfc9596ddf301bd26968935d29'
          '54239847f89b9a4772910415bde6276a'
          '5a3f7b839c7e0b8933748da7c5b6385b'
          'ddb2f09c02b24dab777110f9808472e1'
          'f0d5d5b5e34a860f6f90b5628c680f46'
          'af1da6edd8c8c0dafeeb2c2c4e0c840b'
          'a8d77cac806a0a9adef3f93cdbeb280a'
-         '5ba775d4f401e2c167414caa548b71e5'
+	 '4c744c38b1541359de5696c65a508e5e'
 	 '532a4f1abdb479ba569cc7e23e53d69c'
 	 'SKIP')
 
 prepare() {
 	cd ${_pkgbase}-${pkgver}
-	patch -p1 -i "${srcdir}"/fix-bash-completion.patch
 	cat "$srcdir"/debian/patches/series | while read p; do
 		patch -p1 -i "$srcdir"/debian/patches/$p
 	done
+	# fix configure with cppunit 1.4
+	patch -p1 -i ../schroot-cppunit.patch
+	# support for android
 	patch -p1 -i "${srcdir}"/android-environment-schroot.patch
 	./bootstrap
 }
