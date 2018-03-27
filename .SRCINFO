@@ -1,7 +1,7 @@
 pkgbase = python-asteval
 	pkgdesc = Safe, minimalistic evaluator of python expression using ast module
 	pkgver = 0.9.12
-	pkgrel = 0
+	pkgrel = 1
 	url = http://github.com/newville/asteval
 	arch = any
 	license = BSD
