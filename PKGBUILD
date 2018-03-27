@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-git
-pkgver=r1059.62b3a7a
+pkgver=r1176.da62a1d
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('x86_64')
@@ -44,7 +44,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DCMAKE_INSTALL_LIBDIR='lib' \
     -DGSETTINGS_COMPILE='FALSE' \
     -DUSE_UNITY='FALSE'
   make
