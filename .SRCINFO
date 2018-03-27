@@ -1,6 +1,6 @@
 pkgbase = i3status-git
 	pkgdesc = Generates status bar to use with dzen2 or wmii
-	pkgver = 2.11.r42.g2cb0ffa
+	pkgver = 2.11.r49.g5abed82
 	pkgrel = 1
 	url = http://i3wm.org/i3status/
 	install = i3status.install
