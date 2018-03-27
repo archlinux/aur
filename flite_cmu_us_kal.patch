@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 43c9dfa2d..1527534d0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1177,7 +1177,7 @@ dnl *** flite ***
+ translit(dnm, m, l) AM_CONDITIONAL(USE_FLITE, true)
+ AG_GST_CHECK_FEATURE(FLITE, [Flite plugin], flite, [
+   AG_GST_CHECK_LIBHEADER(FLITE, flite, flite_init, $LIBM, flite/flite.h,
+-    FLITE_LIBS="-lflite -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex $LIBM")
++    FLITE_LIBS="-lflite -lflite_cmu_us_kal16 -lflite_usenglish -lflite_cmulex $LIBM")
+ 
+   AC_SUBST(FLITE_CFLAGS)
+   AC_SUBST(FLITE_LIBS)

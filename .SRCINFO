@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-bad
 	pkgver = 0.10.23
-	pkgrel = 36
+	pkgrel = 37
 	url = https://github.com/triceratops1/gstreamer0
 	arch = i686
 	arch = x86_64
@@ -41,6 +41,7 @@ pkgbase = gstreamer0.10-bad
 	makedepends = git
 	makedepends = spandsp
 	makedepends = celt
+	makedepends = openssl-1.0
 	options = !emptydirs
 	source = git+https://gitlab.com/gstreamer-sdk/gst-plugins-bad.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125
 	source = fix-libmodplug-include.patch
@@ -49,6 +50,7 @@ pkgbase = gstreamer0.10-bad
 	source = disable-camerabin-test.patch
 	source = faad2-version-check.patch
 	source = wildmidi-0.4.patch
+	source = flite_cmu_us_kal.patch
 	sha256sums = SKIP
 	sha256sums = d89d8f4307c7d5a143b9240467d260a1cb6bb1ab2e7ca57841ce0901f41c9cb7
 	sha256sums = eb97037b7b581d1ab994eadd144044c083975e5670a73ec827de126bf888f4b9
@@ -56,6 +58,7 @@ pkgbase = gstreamer0.10-bad
 	sha256sums = 01e780ddf1f8161a6115dded9dc5bf4bdd4d09a9eee00fa423b1330e90e76c68
 	sha256sums = 741492ae7a9518603fc51d87ae331d882f075547ea7fdec19c60f399085f18cc
 	sha256sums = 7a8698df3b53c34c627c00d3b025045818898cedc5ee7ffa13272d8758fcefd2
+	sha256sums = e3b6a6a8bd0480ab812116cb472b92ad5770fdb8afdbdc2a5b557fdd0294ad36
 
 pkgname = gstreamer0.10-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad)
@@ -96,4 +99,5 @@ pkgname = gstreamer0.10-bad-plugins
 	depends = opus
 	depends = celt
 	depends = spandsp
+	depends = openssl-1.0
 
