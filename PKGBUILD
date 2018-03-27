@@ -2,10 +2,10 @@
 
 pkgname=png2uri
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Shellscript for converting a single PNG file or datastream into an HTML data URI'
 url='http://pmt.sourceforge.net/png2uri'
-arch=('x86_64')
+arch=('any')
 license=('custom')
 depends=('sh')
 source=(https://sourceforge.net/projects/pmt/files/$pkgname/$pkgver/$pkgname
