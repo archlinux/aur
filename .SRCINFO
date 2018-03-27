@@ -1,12 +1,11 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = swig
@@ -22,7 +21,7 @@ pkgbase = simpleitk
 	makedepends = tcl
 	makedepends = tk
 	depends = gcc-libs
-	depends = insight-toolkit>=4.11.0
+	depends = insight-toolkit>=4.13
 	optdepends = java-runtime: Java bindings
 	optdepends = lua51: Lua bindings
 	optdepends = mono: C# bindings
@@ -32,10 +31,8 @@ pkgbase = simpleitk
 	optdepends = ruby: Ruby bindings
 	optdepends = tcl: Tcl/TK bindings
 	optdepends = tk: Tcl/TK bindings
-	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.0.1
-	source = lua51.patch
+	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.1.0
 	md5sums = SKIP
-	md5sums = 284e72ada1848a2b99b3c9b8a6916979
 
 pkgname = simpleitk
 

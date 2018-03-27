@@ -1,16 +1,16 @@
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+# Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.0.1
-_pypkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
-depends=('gcc-libs' 'insight-toolkit>=4.11.0')
+depends=('gcc-libs' 'insight-toolkit>=4.13')
 makedepends=(
-    'clang' 'cmake' 'git' 'swig'
+    'cmake' 'git' 'swig'
     'java-environment'
     'lua51'
     'mono'
@@ -29,34 +29,44 @@ optdepends=(
     'tcl: Tcl/TK bindings'
     'tk: Tcl/TK bindings'
 )
-source=(
-    "git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver"
-    'lua51.patch'
-)
-md5sums=('SKIP'
-         '284e72ada1848a2b99b3c9b8a6916979')
+source=("git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver")
+md5sums=('SKIP')
 
 prepare() {
     cd "$_pkgname"
-
     mkdir -p build
-
-    patch -Np1 -i ../lua51.patch
 }
 
 build() {
     cd "$_pkgname/build"
 
+	_java_home=$(find '/usr/lib/jvm/' -name `archlinux-java get`)
+	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | egrep -o '[0-9]\.[0-9]\.[0-9]')
+
     CC=clang CXX=clang++ \
-    cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_SKIP_RPATH:BOOL=ON \
-        -DBUILD_SHARED_LIBS:BOOL=ON \
-        -DBUILD_TESTING:BOOL=OFF \
-        -DBUILD_EXAMPLES:BOOL=OFF \
-        -DSimpleITK_PYTHON_WHEEL:BOOL=ON \
-        -DWRAP_JAVA:BOOL=ON \
-        ..
+		CXXFLAGS= \
+		JAVA_HOME=$_java_home \
+		cmake \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_CXX_FLAGS:STRING="-std=c++14" \
+			-DLUA_VERSION_STRING:STRING="$_lua51_version" \
+			-DLUA_EXECUTABLE:FILEPATH="/usr/bin/lua5.1" \
+			-DLUA_INCLUDE_DIR:FILEPATH="/usr/include/lua5.1" \
+			-DCMAKE_SKIP_RPATH:BOOL=ON \
+			-DBUILD_SHARED_LIBS:BOOL=ON \
+			-DBUILD_TESTING:BOOL=OFF \
+			-DBUILD_EXAMPLES:BOOL=OFF \
+			-DBUILD_DOXYGEN:BOOL=OFF \
+			-DSimpleITK_PYTHON_WHEEL:BOOL=ON \
+			-DWRAP_DEFAULT:BOOL=ON \
+			-DWRAP_CSHARP:BOOL=ON \
+			-DWRAP_JAVA:BOOL=ON \
+			-DWRAP_LUA:BOOL=ON \
+			-DWRAP_PYTHON:BOOL=ON \
+			-DWRAP_R:BOOL=ON \
+			-DWRAP_RUBY:BOOL=ON \
+			-DWRAP_TCL:BOOL=ON \
+			..
 
     make all PythonVirtualEnv dist
 }
@@ -69,7 +79,7 @@ package() {
     make DESTDIR="$pkgdir/" install
 
     pip install --root="$pkgdir/" --ignore-installed \
-        "$_builddir/Wrapping/Python/dist/$_pkgname-$_pypkgver"*"-linux_$CARCH.whl"
+        "$_builddir/Wrapping/Python/dist/$_pkgname-$pypkgver"*"-linux_$CARCH.whl"
 
     install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
     install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
