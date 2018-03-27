@@ -2,12 +2,12 @@
 _pkgname=antspy
 pkgname=python-$_pkgname
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Normalization Tools (ANTs) in Python"
 arch=('any')
 url="https://github.com/ANTsX/ANTsPy"
 license=('apache')
-depends=('python' 'python-numpy' 'python-webcolors')
+depends=('python' 'python-numpy' 'python-webcolors' 'insight-toolkit')
 optdepends=(
 	'vtk: VTK support (re-build required)'
 	'python-plotly: surface rendering')
