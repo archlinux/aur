@@ -4,13 +4,13 @@
 pkgname=deepspeech-git
 _pkgname=DeepSpeech
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
 url="https://github.com/mozilla/DeepSpeech"
 license=('MPL2')
-makedepends=('bazel' 'python-numpy' 'python-pip' 'python-wheel' 'python-setuptools')
-depends=('python-tensorflow' 'python-scipy')
+depends=('sox')
+makedepends=('bazel' 'python' 'sox')
 source=("git+https://github.com/mozilla/DeepSpeech.git"
 	"git+https://github.com/mozilla/tensorflow.git")
 sha512sums=('SKIP'
