@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=ModelSim-Altera Starter Edition for Quartus 13.0sp1
+Comment=ModelSim simulation software for Altera FPGA's
+Exec=_alteradir/modelsim_ase/bin/vsim -gui -l /dev/null
+Terminal=false
+Type=Application
+Categories=Development

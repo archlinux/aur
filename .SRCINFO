@@ -1,24 +1,37 @@
 pkgbase = quartus-free-130
 	pkgdesc = Quartus II 13.0 Web Edition, the last version to support Cyclone II and earlier FPGAs.
 	pkgver = 13.0.1.232
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.altera.com/products/software/quartus-ii/web-edition
-	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = bash
-	provides = quartus-free
-	conflicts = quartus-free
+	makedepends = lib32-fakeroot
+	depends = lib32-glibc
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-libxau
+	depends = lib32-libxdmcp
+	depends = lib32-freetype2
+	depends = lib32-fontconfig
+	depends = lib32-expat
+	depends = lib32-libpng12
+	depends = lib32-ncurses5-compat-libs
+	depends = lib32-tkimg
+	optdepends = lib32-gtk: For eclipse-nios2 support
+	optdepends = lib32-libxtst: For eclipse-nios2 support
+	provides = quartus-free=13.0.1.232
 	options = !strip
 	options = !upx
-	source = Quartus-web-13.0.1.232-linux.tar::http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar
+	source = http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar
 	source = quartus.sh
 	source = quartus.desktop
+	source = modelsim-ase.desktop
 	source = 51-usbblaster.rules
-	md5sums = 7588ED734761F62EC8F86B07A5ADFFFD
-	md5sums = 067c444cae7fe31d3608245712b43ce8
-	md5sums = 32b17cb8b992fc2dccd33d87f0dcd8ce
-	md5sums = f5744dc4820725b93917e3a24df13da9
+	sha256sums = dac4d03ffb69c4657962343fdeaf5c20ca715ecbf06ee1bc7e00fe30fcbceb4c
+	sha256sums = 2a3d61e6f01aa16c9d3ddd40e9741b9fd080496db5437530b4e38faf6771c1ed
+	sha256sums = d55d0df6fa87cab543979f2066ffe55d35167655cc134e07194f9694dbf738d7
+	sha256sums = 6ec0dcc53946590a3f9e12c239d968c3ae65fea5771a776a969c755d4880cdca
+	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
 
 pkgname = quartus-free-130
 

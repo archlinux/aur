@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Quartus II
+Name=Quartus II 13.0sp1
 Comment=Quartus II design software for Altera FPGA's
 Exec=_alteradir/quartus/bin/quartus
 Icon=_alteradir/quartus/adm/quartusii.png
