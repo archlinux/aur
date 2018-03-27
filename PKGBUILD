@@ -2,8 +2,8 @@
 
 _pkgname=mumble
 pkgname=${_pkgname}-snapshot-minimal
-pkgver=1.3.0_2586_g894ade2
-pkgrel=3
+pkgver=1.3.0_2717_gb25db3e
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
 license=('BSD')
@@ -13,12 +13,10 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 url="https://mumble.info"
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha512sums=('fec5b0d1ee8391ad17f629c6c6d0ad74eec99095dc44013905ce66161cdc8ff3aaffb49c65bd0681eda1e749f78913c223a41cd30cc9b527de1f0390450576c6')
+sha512sums=('6f6d1f89dab533094c837ef517c7581d045dfc98cb271fd895329a1ff87053c3acd1d47d48156e8fd5279cf5c0ce86e24ffb1299f58cfb808f85a55dd37fea8a')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
-
-    patch -p1 < ../../01-add-pr-3287.patch
 
     qmake-qt5 main.pro \
       CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd no-overlay no-bonjour" \
