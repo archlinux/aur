@@ -1,13 +1,13 @@
 pkgbase = obs-ndi-bin
 	pkgdesc = Network A/V in OBS Studio with NewTek's NDI technology
-	pkgver = 4.2.2
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/Palakis/obs-ndi
 	arch = x86_64
 	license = LGPL2.1
 	depends = libndi3
-	source = https://github.com/Palakis/obs-ndi/releases/download/4.2.2/obs-ndi_4.2.2-1_amd64.deb
-	sha256sums = a948faea607e61b63cfc2b88677632055f0741748eadf6ce56aa8c9d72e80f45
+	source = https://github.com/Palakis/obs-ndi/releases/download/4.3.0/obs-ndi_4.3.0-1_amd64.deb
+	sha256sums = a94ca001b6a0477d95e58ba8bafdc39ec005f9a8312d8c88d27a378ae28aa621
 
 pkgname = obs-ndi-bin
 
