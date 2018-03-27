@@ -2,7 +2,7 @@
 _name=pyca
 pkgname=python2-pyca-git
 pkgver=0.01.r434.gf31ab43
-pkgrel=9
+pkgrel=10
 pkgdesc="Python for Computational Anatomy"
 arch=('x86_64')
 url="http://bitbucket.org/scicompanat/pyca"
@@ -17,31 +17,44 @@ source=('git+https://bitbucket.org/scicompanat/pyca.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_name"
-    git describe --long --tags | \
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$_name"
+	git describe --long --tags | \
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$_name"
 
-    mkdir build || :
-    cd build
+	cd "$srcdir/$_name"
+
+	# I think that CUDA architecture is not supported anymore
+	# by the AUR cuda package
+	sed -i 's/"20"/"30"/g' CMakeLists.txt
+
+	mkdir build || :
+	cd build
 
 	# temporary bugfix, a PR has already been submitted upstream
 	sed -i 's/<< std::cout <</<</g' "$srcdir/$_name/Code/Cxx/src/alg/MultiscaleManager.cxx"
 
-    cmake \
+	# Cuda requires a specific version of gcc
+	if [ "" != "`pacman -Qi cuda 2&>/dev/null | grep 'Version'`" ]; then
+		_cc="/opt/cuda/bin/gcc"
+		_use_cuda="ON"
+	else
+		_cc=""
+		_use_cuda="OFF"
+	fi
+
+	CC="$_cc" cmake \
 		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DCMAKE_BUILD_TYPE=Release \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DBUILD_SHARED_LIBS=ON \
-        -DUSE_ITK=ON \
-        -DUSE_CUDA=OFF \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_INSTALL_DIR=/usr/lib/python2.7/site-packages \
-        -DCUDA_NVCC_FLAGS_RELEASE=--pre-include\ $srcdir/$_name/preinc.h \
+		-DPYTHON_EXECUTABLE=/usr/bin/python2 \
+		-DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+		-DBUILD_SHARED_LIBS=ON \
+		-DUSE_ITK=ON \
+		-DUSE_CUDA=$_use_cuda \
+		-DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+		-DPYTHON_INSTALL_DIR=/usr/lib/python2.7/site-packages \
 		..
 
 	# Do not include Python 3 stuff
@@ -52,15 +65,15 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$_name/build"
-    make
+	cd "$srcdir/$_name/build"
+	make
 }
 
 package() {
-    cd "$srcdir/$_name/build"
-    make install DESTDIR="$pkgdir"
+	cd "$srcdir/$_name/build"
+	make install DESTDIR="$pkgdir"
 
 	install -D -m644 $srcdir/$_name/Copyright.txt \
-                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
