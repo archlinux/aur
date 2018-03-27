@@ -1,6 +1,6 @@
 # Maintainer: Serge Roussak <beaux_monde@tut.by>
 pkgname=smplayer-qt4
-pkgver=18.2.2
+pkgver=18.3.0
 pkgrel=1
 pkgdesc='Complete front-end for MPlayer/MPV (Qt4)'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('smplayer')
 conflicts=('smplayer')
 install=smplayer.install
 source=(https://downloads.sourceforge.net/smplayer/smplayer-$pkgver.tar.bz2)
-sha256sums=('3ac276da3438140151baea3938bb17a6a5e44d1bd805375f81d1fc410c4e1560')
+sha256sums=('86b43c5f0a4e43f2404e4e53632d3034d850e576f75a3e0c6aa281f62ce3f378')
 
 build() {
   cd "smplayer-$pkgver"
