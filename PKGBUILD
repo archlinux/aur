@@ -6,14 +6,14 @@
 set -u
 pkgbase=linux-lts316
 _srcname=linux-3.16
-pkgver=3.16.55
+pkgver=3.16.56
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'gcc5')
 options=('!strip')
-_verwatch=('https://www.kernel.org/pub/linux/kernel/v3.x/' '.*patch-\(3\.16\.[0-9]\+\)\.xz.*' 'f')
+_verwatch=('https://mirrors.edge.kernel.org/pub/linux/kernel/v3.x/' '.*patch-\(3\.16\.[0-9]\+\)\.xz.*' 'f')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
@@ -26,9 +26,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'update.sh'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            '2526783eb9c39495f4eb090afe781d8b3204812a83f7b79f5c4ffef31298ea0a'
+            '10b44990b1f1d2e8defb7fb6f3761a2fb7411e760cf9313e7702fb1e2c1eb600'
             '3bce3e9adce8ae3f826eebab75e9784ca92a914e526ae352de61c1da93aab8d3'
-            '5171cc759f66c1c8366f78ec6a574a9b698b3b4429f512a110ba2ac94c5a2742'
+            '9d82115ea8921d3f4f7f28ba162a3a3f256f88f14f8fad49a833eddb77c0efea'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -51,17 +51,14 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
-
+  declare -A _config=([i686]='config' [x86_64]='config.x86_64')
+  cat "${srcdir}/${_config[${CARCH}]}" > './.config'
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
-  cp ./.config "${srcdir}/config.cmp"
+  cp './.config' "${srcdir}/config.cmp"
+  rm -f "${startdir}/${_config[${CARCH}]}.new"
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -71,12 +68,16 @@ prepare() {
 
   set +u; msg2 'get kernel version'; set +u
   make -s -j1 prepare
-  if ! diff "${srcdir}/config.cmp" ./.config; then
+
+  if ! diff -pNau5 "${srcdir}/config.cmp" './.config'; then
+    ln -s "${PWD}/.config" "${startdir}/${_config[${CARCH}]}.new"
+    rm "${srcdir}/config.cmp"
     set +u
-    echo "Some changes were made. Please merge for automation."
+    echo 'Some changes were made. Please merge for automation.'
     false
+  else
+    rm "${srcdir}/config.cmp"
   fi
-  rm "${srcdir}/config.cmp"
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
