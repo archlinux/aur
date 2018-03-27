@@ -1,7 +1,7 @@
 pkgbase = systemd-git
 	pkgdesc = systemd from git
-	pkgver = 238.r283.ge64c2d0b5
-	pkgrel = 1
+	pkgver = 237.r492.gcb77e1228
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
@@ -102,9 +102,9 @@ pkgname = systemd-git
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
 	provides = systemd-sysvcompat
-	provides = systemd-tools=238.r283.ge64c2d0b5
-	provides = udev=238.r283.ge64c2d0b5
-	provides = systemd=238.r283.ge64c2d0b5
+	provides = systemd-tools=237.r492.gcb77e1228
+	provides = udev=237.r492.gcb77e1228
+	provides = systemd=237.r492.gcb77e1228
 	provides = openresolv
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -139,4 +139,11 @@ pkgname = libsystemd-git
 	provides = libudev.so
 	provides = libsystemd
 	conflicts = libsystemd
+
+pkgname = systemd-sysvcompat-git
+	pkgdesc = sysvinit compat for systemd from git
+	groups = base
+	license = GPL2
+	depends = systemd-git
+	conflicts = sysvinit
 
