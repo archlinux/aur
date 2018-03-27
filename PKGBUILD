@@ -1,16 +1,15 @@
 # Maintainer: NextHendrix <chris.jones.492@gmail.com>
 
 pkgname=python-rampy
-epoch=
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module containing functions to treat spectroscopic (XANES, Raman, IR...) data'
 arch=(any)
 url=https://github.com/charlesll/rampy
 license=(custom:GNU-GPLv2)
 depends=(python python-scipy python-scikit-learn python-pandas python-numpy)
 ## EXTRA_DEPENDS ##
-makedepends=(python-pip)
+makedepends=(python-pip python-wheel)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
