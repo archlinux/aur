@@ -3,10 +3,10 @@
 pkgname=luky-borg-backup
 
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated backup scripts using Borg Backup, systemd and optionally Nextcloud/ownCloud/Stack"
 arch=(any)
-license=("GPL3")
+license=("MIT")
 url="https://github.com/AlexMekkering/luky-borg-backup"
 depends=("borg")
 optdepends=("owncloud-client: For backing up to Nextcloud/ownCloud/Stack"
