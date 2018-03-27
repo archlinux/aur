@@ -3,8 +3,8 @@
 
 pkgname=lll
 _reponame=solidity
-pkgver=0.4.19
-_commit=c4cbbb054b5ed3b8ceaa21ee5b47b0704762ff40
+pkgver=0.4.21
+_commit=dfe3193c7382c80f1814247a162663a97c3f5e67
 pkgrel=1
 pkgdesc='The Lovely Little Language compiler for Ethereum smart contracts'
 arch=('x86_64')
