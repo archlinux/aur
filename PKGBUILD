@@ -4,7 +4,7 @@
 pkgname=deepspeech-git
 _pkgname=DeepSpeech
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
 url="https://github.com/mozilla/DeepSpeech"
@@ -52,11 +52,11 @@ build() {
   bazel build -c opt --copt=-O3 //native_client:libctc_decoder_with_kenlm.so
   bazel build --config=monolithic -c opt --copt=-O3 --copt=-fvisibility=hidden //native_client:libdeepspeech.so //native_client:deepspeech_utils //native_client:generate_trie
 
-  cd "${srcdir}/DeepSpeech-${pkgver}/native_client"
-  make deepspeech
+  cd "${srcdir}/DeepSpeech/native_client"
+  TFDIR="${srcdir}/tensorflow" make deepspeech
 }
 
 package() {
-  cd "${srcdir}/DeepSpeech-${pkgver}/native_client"
-  PREFIX=${pkgdir}/usr/local make install
+  cd "${srcdir}/DeepSpeech/native_client"
+  TFDIR="${srcdir}/tensorflow" PREFIX="${pkgdir}/usr" make install
 }
