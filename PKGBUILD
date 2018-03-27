@@ -3,7 +3,7 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=1.90.0.r351.be6a31f
+pkgver=1.90.0.r373.d5e1f82
 pkgrel=2
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
@@ -19,9 +19,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _parent_ver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 3 | tr -d ")")
   printf "%s.r%s.%s" \
-         "${_parent_ver}" \
+         "$(git describe --tags --abbrev=0)" \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
 }
@@ -32,7 +31,6 @@ build() {
       -DCMAKE_BUILD_TYPE:STRING=Release \
       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
       -DCMAKE_INSTALL_LIBDIR:PATH=lib \
-      -DENABLE_TESTING:BOOL=OFF \
       -DBUILD_SHARED_LIBS:BOOL=ON \
       .
   make
@@ -41,5 +39,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
