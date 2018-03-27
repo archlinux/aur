@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-terminal-git
-pkgver=r1373.d718aa1
+pkgver=r1638.25f359a
 pkgrel=1
 pkgdesc='The Pantheon Terminal Emulator'
 arch=('x86_64')
@@ -10,10 +10,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'glib2' 'glibc' 'gtk3' 'libnotify' 'pango' 'vte3'
          'libgranite.so')
-makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
+makedepends=('appstream' 'git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
-replaces=('pantheon-terminal-bzr')
 source=('pantheon-terminal::git+https://github.com/elementary/terminal.git')
 sha256sums=('SKIP')
 
@@ -24,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-terminal
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd pantheon-terminal/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='FALSE'
-  make
+  arch-meson ../pantheon-terminal
+  ninja
 }
 
 package() {
-  cd pantheon-terminal/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
