@@ -4,7 +4,7 @@ pkgdesc="ROS - Transmission Interface."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-transmission-interface'
-pkgver='0.13.0'
+pkgver='0.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-transmission_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/transmission_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a8bdedb23a7c44650f37388effb2668fe2750060d935112199aa61c1a9f9a55')
+sha256sums=('931b1526d26e7e36d2cd6a0b3bb87f7206b3d8480723efb324c6b3ef2cfa332c')
 
 build() {
   # Use ROS environment variables
