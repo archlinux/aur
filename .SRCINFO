@@ -1,6 +1,6 @@
 pkgbase = ruby-ssh_scan
 	pkgdesc = A prototype SSH configuration and policy scanner
-	pkgver = 0.0.32
+	pkgver = 0.0.34
 	pkgrel = 1
 	url = https://github.com/mozilla/ssh_scan
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-ssh_scan
 	depends = ruby-net-ssh
 	depends = ruby-sqlite3
 	depends = ruby-sshkey
-	noextract = ssh_scan-0.0.32.gem
+	noextract = ssh_scan-0.0.34.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ssh_scan-0.0.32.gem
-	sha256sums = 4b476bb49f94bfa9fc5427dba88dd8bf525b6c1ffa64319d1cd5c29257985381
+	source = https://rubygems.org/downloads/ssh_scan-0.0.34.gem
+	sha256sums = b5599d96a01e75a675b92ae1202b424e48b7e34c5e96be851153ee5dd0700579
 
 pkgname = ruby-ssh_scan
 
