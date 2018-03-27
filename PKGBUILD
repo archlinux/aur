@@ -4,7 +4,7 @@
 
 pkgname=st-git-hm
 _pkgname=st
-pkgver=0.7.37.gb1338e9
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://st.suckless.org/'
