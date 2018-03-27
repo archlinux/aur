@@ -10,7 +10,7 @@ pkgbase = python2-fedmsg
 
 pkgname = python-fedmsg
 	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)
-	depends = python
+	depends = python3-kitchen
 
 pkgname = python2-fedmsg
 	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 2 version)

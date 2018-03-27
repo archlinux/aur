@@ -15,7 +15,7 @@ sha256sums=('3471f5a2750d2b8742f65c5957bd22ad4a7a09cb97281eb434b938837827eebc')
 
 package_python-fedmsg() {
   pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)'
-  depends=('python')
+  depends=('python3-kitchen')
   cd "fedmsg-${pkgver}"
 
   python setup.py install --root="$pkgdir" --optimize=1
