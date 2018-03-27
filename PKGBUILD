@@ -3,7 +3,7 @@
 _pkgname=mumble
 pkgname=${_pkgname}-snapshot-minimal
 pkgver=1.3.0_2717_gb25db3e
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
 license=('BSD')
@@ -20,9 +20,7 @@ build() {
 
     qmake-qt5 main.pro \
       CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd no-overlay no-bonjour" \
-      DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
-      INCLUDEPATH+="/usr/include/openssl-1.0" \
-      QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
+      DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
     make release
 }
