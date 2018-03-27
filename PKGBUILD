@@ -4,10 +4,10 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-ros'
-pkgver='2.5.13'
-_pkgver_patch=0
+pkgver='2.5.14'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(ros-kinetic-gazebo-dev
@@ -47,8 +47,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0e2e1c14334075ca01fa551e74b4526ff7946600284357a4f15496c4e72349b5')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz"
+  gazebo_9_fixes.patch)
+sha256sums=('3fcdfdc2bd190ada621e13747036582a64c1439ddc877181d95f4e5cc1d720b8'
+            '2c45807037b7d4c5d3eff0352e37f0408d6d65f65fa85efb8e147b36ff957289')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 < gazebo_9_fixes.patch
+}
 
 build() {
   # Use ROS environment variables
