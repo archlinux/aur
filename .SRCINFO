@@ -1,7 +1,7 @@
 pkgbase = mumble-snapshot-minimal
 	pkgdesc = Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins.
 	pkgver = 1.3.0_2717_gb25db3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mumble.info
 	arch = i686
 	arch = x86_64
