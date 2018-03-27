@@ -1,9 +1,9 @@
-diff -Naur src.orig/lazyman/MainGUI.java src/lazyman/MainGUI.java
---- src.orig/lazyman/MainGUI.java	2018-02-27 21:10:13.063807000 -0500
-+++ src/lazyman/MainGUI.java	2018-02-27 21:15:49.161380432 -0500
-@@ -155,9 +155,11 @@
-         //jMenuItem1 = new javax.swing.JMenuItem();
-         //jMenuItem2 = new javax.swing.JMenuItem();
+diff -Naur src/lazyman/MainGUI.java src.b/lazyman/MainGUI.java
+--- src/lazyman/MainGUI.java	2018-03-27 15:01:06.810076336 -0400
++++ src.b/lazyman/MainGUI.java	2018-03-27 15:03:48.667710087 -0400
+@@ -156,9 +156,11 @@
+         jMenu2 = new javax.swing.JMenu();
+         preferencesMI = new javax.swing.JMenuItem();
          jMenu3 = new javax.swing.JMenu();
 +        jMenu4 = new javax.swing.JMenu();
          guidesMI = new javax.swing.JMenuItem();
@@ -13,7 +13,7 @@ diff -Naur src.orig/lazyman/MainGUI.java src/lazyman/MainGUI.java
  
          consolePM.setLabel("popupMenu1");
  
-@@ -656,6 +658,24 @@
+@@ -560,6 +562,24 @@
  
                  jMenuBar1.add(jMenu3);
  
@@ -37,16 +37,16 @@ diff -Naur src.orig/lazyman/MainGUI.java src/lazyman/MainGUI.java
 +
                  setJMenuBar(jMenuBar1);
  
-                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-@@ -1018,6 +1038,7 @@
+                 pack();
+@@ -856,6 +876,7 @@
      private javax.swing.JMenu jMenu1;
      private javax.swing.JMenu jMenu2;
      private javax.swing.JMenu jMenu3;
 +    private javax.swing.JMenu jMenu4;
      private javax.swing.JMenuBar jMenuBar1;
-     //private javax.swing.JMenuItem jMenuItem1;
-     //private javax.swing.JMenuItem jMenuItem2;
-@@ -1041,6 +1062,7 @@
+     private javax.swing.JTabbedPane leaguesTabbedPane;
+     private javax.swing.JPanel mainPanel;
+@@ -877,6 +898,7 @@
      private javax.swing.JCheckBox restartCB;
      private javax.swing.JCheckBox saveStreamCB;
      private javax.swing.JMenuItem updateMI;

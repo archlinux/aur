@@ -24,8 +24,8 @@ source=('git+https://github.com/StevensNJD4/LazyMan.git'
         'lazyman.desktop'
         'lazyman.png')
 md5sums=('SKIP'
-         '69efa50d0ca27032a1b6b911f7760d7a'
-         '2f442b69d7ed174bd4a01250f4798e04'
+         'e48d71e6d053df2516cdb98fa59571b0'
+         'dfdda6e67f8400fb478e2def13486950'
          '184afd99d5106bbb81c72be5e88ec4d2'
          'b76d76bc5941418f8f3048b941fa8228'
          '1b259947cc8e14cd1b0bcad4d05094d9'
@@ -38,7 +38,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/LazyMan"
-    patch -Np1 -i "../remove_privileged_actions.patch"
+    patch -Np0 -i "../remove_privileged_actions.patch"
     patch -Np0 -i "../add_mlbnetwork.patch"
 }
 

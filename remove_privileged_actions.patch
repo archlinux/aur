@@ -1,6 +1,6 @@
-diff -Naur LazyMan.orig/src/lazyman/MainGUI.java LazyMan/src/lazyman/MainGUI.java
---- LazyMan.orig/src/lazyman/MainGUI.java	2018-02-26 23:52:09.766736453 -0500
-+++ LazyMan/src/lazyman/MainGUI.java	2018-02-26 23:56:38.356799279 -0500
+diff -Naur src/lazyman/MainGUI.java src.b/lazyman/MainGUI.java
+--- src/lazyman/MainGUI.java	2018-03-27 14:56:29.846459000 -0400
++++ src.b/lazyman/MainGUI.java	2018-03-27 14:59:20.640513714 -0400
 @@ -66,9 +66,6 @@
              leagues[i].getDateTF().setDate(Time.getPSTDate1("MMM dd, yyyy"));
              leagues[i].setFavoriteTeam(Props.getFavTeam(leagues[i].getName()));
@@ -11,124 +11,113 @@ diff -Naur LazyMan.orig/src/lazyman/MainGUI.java LazyMan/src/lazyman/MainGUI.jav
          /*else if (System.getProperty("os.name").toLowerCase().contains("mac")) {
              com.apple.eawt.Application application = com.apple.eawt.Application.getApplication();
              application.addPreferencesMenuItem();
-@@ -151,12 +148,12 @@
-         restartCB = new javax.swing.JCheckBox();
+@@ -155,12 +152,9 @@
+         maximizeConsoleButton = new javax.swing.JButton();
          jMenuBar1 = new javax.swing.JMenuBar();
          jMenu1 = new javax.swing.JMenu();
 -        changePasswordMI = new javax.swing.JMenuItem();
-+        //changePasswordMI = new javax.swing.JMenuItem();
          exitMI = new javax.swing.JMenuItem();
          jMenu2 = new javax.swing.JMenu();
          preferencesMI = new javax.swing.JMenuItem();
 -        jMenuItem1 = new javax.swing.JMenuItem();
 -        jMenuItem2 = new javax.swing.JMenuItem();
-+        //jMenuItem1 = new javax.swing.JMenuItem();
-+        //jMenuItem2 = new javax.swing.JMenuItem();
          jMenu3 = new javax.swing.JMenu();
          guidesMI = new javax.swing.JMenuItem();
          AboutMI = new javax.swing.JMenuItem();
-@@ -572,6 +569,7 @@
+@@ -509,15 +503,6 @@
                  jMenu1.setMnemonic(KeyEvent.VK_F);
                  jMenu1.setText("File");
  
-+                /*
-                 changePasswordMI.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-                 changePasswordMI.setText("Change Password");
-                 changePasswordMI.addActionListener(new java.awt.event.ActionListener() {
-@@ -580,6 +578,7 @@
-                     }
-                 });
-                 jMenu1.add(changePasswordMI);
-+                */
- 
+-                changePasswordMI.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+-                changePasswordMI.setText("Change Password");
+-                changePasswordMI.addActionListener(new java.awt.event.ActionListener() {
+-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+-                        changePasswordMIActionPerformed(evt);
+-                    }
+-                });
+-                jMenu1.add(changePasswordMI);
+-
                  exitMI.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
                  exitMI.setText("Exit");
-@@ -604,6 +603,7 @@
+                 exitMI.addActionListener(new java.awt.event.ActionListener() {
+@@ -541,23 +526,6 @@
                  });
                  jMenu2.add(preferencesMI);
  
-+                /*
-                 jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-                 jMenuItem1.setText("Change IP");
-                 jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-@@ -620,6 +620,7 @@
-                     }
-                 });
-                 jMenu2.add(jMenuItem2);
-+                */
- 
+-                jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+-                jMenuItem1.setText("Change IP");
+-                jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+-                        jMenuItem1ActionPerformed(evt);
+-                    }
+-                });
+-                jMenu2.add(jMenuItem1);
+-
+-                jMenuItem2.setText("Clear Hosts File");
+-                jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+-                        jMenuItem2ActionPerformed(evt);
+-                    }
+-                });
+-                jMenu2.add(jMenuItem2);
+-
                  jMenuBar1.add(jMenu2);
  
-@@ -743,19 +744,6 @@
-         if (!playBtn.isEnabled()) {
-             return;
+                 jMenu3.setMnemonic(KeyEvent.VK_H);
+@@ -703,12 +671,6 @@
          }
--        
--        if (leagues[jTabbedPane1.getSelectedIndex()].getName().equals("MLB")) {
--            if (Integer.parseInt(leagues[jTabbedPane1.getSelectedIndex()].getDate().substring(0, 4)) > 2017)
--                checkHosts(leagues[jTabbedPane1.getSelectedIndex()].getKeyURL(), leagues[jTabbedPane1.getSelectedIndex()]);
--            else
--                checkHosts("mlb-ws-mf.media.mlb.com", leagues[jTabbedPane1.getSelectedIndex()]);
--        } else
--            checkHosts(leagues[jTabbedPane1.getSelectedIndex()].getKeyURL(), leagues[jTabbedPane1.getSelectedIndex()]);
--
--        if (!leagues[jTabbedPane1.getSelectedIndex()].isHostsFileEdited()) {
--            MessageBox.show("You are not completely set up! Your hosts file needs to be edited for " + leagues[jTabbedPane1.getSelectedIndex()].getName() + ".", "Hosts file not edited", 2);
--            return;
--        }
+     }//GEN-LAST:event_preferencesMIActionPerformed
  
-         if (streamlink.getLocation() == null || streamlink.getLocation().equals("")) {
-             getSLLoc();
-@@ -1019,7 +1007,7 @@
+-    private void changePasswordMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordMIActionPerformed
+-        GetPasswordGUI gp = new GetPasswordGUI(this, true);
+-        gp.setLocationRelativeTo(this);
+-        gp.setVisible(true);
+-    }//GEN-LAST:event_changePasswordMIActionPerformed
+-
+     private void AboutMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutMIActionPerformed
+         AboutGUI a = new AboutGUI(this, true);
+         a.setLocationRelativeTo(this);
+@@ -754,22 +716,6 @@
+         leagues[leaguesTabbedPane.getSelectedIndex()].setSelectedGame(0);
+     }//GEN-LAST:event_NHLNextDayBtnActionPerformed
+ 
+-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+-        CustomIP c = new CustomIP(this, true);
+-        c.setLocationRelativeTo(this);
+-        c.setVisible(true);
+-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+-
+-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+-        EditHosts eh = new EditHosts();
+-
+-        if (eh.clearHosts(leagues)) {
+-            MessageBox.show("Hosts file cleared from LazyMan edits.", "Hosts File Cleared", 0);
+-        } else {
+-            MessageBox.show("Hosts file not cleared from LazyMan edits. Please check the console area.", "Hosts Not File Cleared", 2);
+-        }
+-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+-
+     private void MLBPrevDayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MLBPrevDayBtnActionPerformed
+         leagues[leaguesTabbedPane.getSelectedIndex()].setFavGameSelected(false);
+         leagues[leaguesTabbedPane.getSelectedIndex()].setDate(Time.getPrevDay(leagues[leaguesTabbedPane.getSelectedIndex()].getDate()));
+@@ -897,7 +843,6 @@
      private javax.swing.JTable NHLGameTable;
      private javax.swing.JButton NHLNextDayBtn;
      private javax.swing.JButton NHLPrevDayBtn;
 -    private javax.swing.JMenuItem changePasswordMI;
-+    //private javax.swing.JMenuItem changePasswordMI;
      private javax.swing.JPopupMenu consolePM;
-     private javax.swing.JTextPane consoleTA;
-     private javax.swing.JMenuItem exitMI;
-@@ -1031,8 +1019,8 @@
+     private javax.swing.JPanel consolePanel;
+     private javax.swing.JScrollPane consoleScrollPane;
+@@ -912,8 +857,6 @@
      private javax.swing.JMenu jMenu2;
      private javax.swing.JMenu jMenu3;
      private javax.swing.JMenuBar jMenuBar1;
 -    private javax.swing.JMenuItem jMenuItem1;
 -    private javax.swing.JMenuItem jMenuItem2;
-+    //private javax.swing.JMenuItem jMenuItem1;
-+    //private javax.swing.JMenuItem jMenuItem2;
-     private javax.swing.JPanel jPanel1;
-     private javax.swing.JPanel jPanel2;
-     private javax.swing.JPanel jPanel3;
-@@ -1547,85 +1535,19 @@
- 
-             if (!ver[3].contains("BETA")) {
-                 if (curMajor > major || (curMajor == major && curMinor > minor) || (curMajor == major && curMinor >= minor && curPatch > patch) || (curMajor == major && curMinor >= minor && curPatch >= patch && curBuild > build)) {
--                    if (MessageBox.ask("New update available!\nWould you like to update?", "New Update!") == MessageBox.yesOption()) {
--                        SwingWorker<Void, Void> u = updating();
--                        u.execute();
--                        if (AutoUpdate.download(version)) {
--                            if (AutoUpdate.unZipIt()) {
--                                String loc;
--
--                                if (!System.getProperty("os.name").toLowerCase().contains("linux")) {
--                                    loc = Paths.get(".").toAbsolutePath().normalize().toString() + System.getProperty("file.separator");
--                                    if (System.getProperty("os.name").toLowerCase().contains("win")) {
--                                        loc += "LazyMan.exe";
--                                    } else {
--                                        loc += "LazyMan.jar";
--                                    }
--                                } else {
--                                    loc = new java.io.File(Props.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent() + System.getProperty("file.separator") + "LazyMan.jar";
--                                }
--                                Runtime.getRuntime().exec("java -jar " + loc);
--                                System.exit(0);
--                            }
--                        }
--                        MessageBox.show("Could not authentically update. Please manually update", version, build);
--                    }
-+                    MessageBox.show("New update available. Please manually update", version, build);
-                 } else {
-                     updateMI.setVisible(false);
+     private javax.swing.JTabbedPane leaguesTabbedPane;
+     private javax.swing.JPanel mainPanel;
+     private javax.swing.JButton maximizeConsoleButton;
+@@ -1456,57 +1399,13 @@
                  }
              } else {
                  if (curMajor > major || (curMajor == major && curMinor > minor) || (curMajor == major && curMinor >= minor && curPatch > patch) || (curMajor == major && curMinor >= minor && curPatch >= patch && curBuild > build)) {
