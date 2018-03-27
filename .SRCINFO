@@ -1,0 +1,18 @@
+pkgbase = cadmelia
+	pkgver = 0.4.0
+	pkgrel = 1
+	arch = x86_64
+	license = European Union Public License
+	depends = java-runtime=8
+	noextract = cadmelia-cli-0.4.0.jar
+	noextract = cadmelia.sh
+	noextract = logo.scad
+	source = cadmelia.sh
+	source = logo.scad
+	source = https://github.com/naramski/cadmelia/releases/download/0.4.0/cadmelia-cli-0.4.0.jar
+	md5sums = 7c67466c99809710169e789fbec85a75
+	md5sums = 344c3c61cd1771517c134b0e5697bd09
+	md5sums = ee09929bd7a49546d21a51ac4c8a5bdb
+
+pkgname = cadmelia
+
