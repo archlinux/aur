@@ -1,13 +1,13 @@
 pkgbase = gotop
 	pkgdesc = A TUI graphical activity monitor inspired by gtop and vtop
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/cjbassi/gotop
 	arch = x86_64
 	arch = i686
 	license = AGPLv3
 	provides = gotop
-	source = https://github.com/cjbassi/gotop/releases/download/1.2.1/gotop-1.2.1-linux_amd64.tgz
+	source = https://github.com/cjbassi/gotop/releases/download/1.2.2/gotop-1.2.2-linux_amd64.tgz
 	md5sums = SKIP
 
 pkgname = gotop
