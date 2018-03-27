@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about-git
-pkgver=r532.86ef551
+pkgver=r664.badcac9
 pkgrel=1
 pkgdesc='Switchboard About Plug'
 arch=('x86_64')
@@ -10,10 +10,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-about')
 conflicts=('switchboard-plug-about')
-replaces=('switchboard-plug-about-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-about.git')
 sha256sums=('SKIP')
 
@@ -24,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-about
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-about/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-about
+  ninja
 }
 
 package() {
-  cd switchboard-plug-about/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
