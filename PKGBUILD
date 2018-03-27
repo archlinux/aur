@@ -17,15 +17,15 @@
 pkgbase="zfs-linux-vfio"
 pkgname=("zfs-linux-vfio" "zfs-linux-vfio-headers")
 
-pkgver=0.7.7.4.15.10.1
+pkgver=0.7.7.4.15.12.1
 pkgrel=1
-makedepends=("linux-vfio-headers=4.15.10-1" "spl-linux-vfio-headers")
+makedepends=("linux-vfio-headers=4.15.12-1" "spl-linux-vfio-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/zfs-0.7.7.tar.gz")
 sha256sums=("db8ca69dc1d257175421a86bc81c861b2b24cc48db0832c954d9553fe50d0bb9")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio" "zfs-utils-common=0.7.7" "linux-vfio=4.15.10-1")
+depends=("kmod" "spl-linux-vfio" "zfs-utils-common=0.7.7" "linux-vfio=4.15.12-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.7"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.7 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.15.10-1-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.15.10-1-vfio/build
+                --with-linux=/usr/lib/modules/4.15.12-1-vfio/build \
+                --with-linux-obj=/usr/lib/modules/4.15.12-1-vfio/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-vfio-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.15.10-1-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.15.12-1-vfio/Module.symvers
 }
