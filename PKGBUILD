@@ -38,7 +38,7 @@ prepare() {
 }
 
 build() {
-  unset CFLAGS
+  unset CFLAGS CXXLAGS
   cd $_pkgname-$pkgver
 if true; then
   ./configure \
@@ -54,6 +54,30 @@ if true; then
 #    --enable-pcretest-libreadline
 fi
   make
+}
+
+check() {
+  local s readelfarch
+  readelfarch='AArch64'
+  cd $_pkgname-$pkgver
+
+  s=$(find . -type f "(" -name "*.so*" -o -name "*.a" ")" -print0 | \
+    2>/dev/null LC_ALL=C xargs -0 readelf -h | \
+    sed -n -e '/File:/h;/Machine:/{/'"$readelfarch"'/!{H;x;p}}' | head -10)
+
+  if [ -n "$s" ]; then
+    >&2 echo "some binaries have wrong architecture:"
+    >&2 echo "$s"
+    return 1
+  fi
+}
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
 }
 
 package() {
