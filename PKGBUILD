@@ -2,12 +2,12 @@
 pkgname=prerex  
 pkgver=6.5.4
 _vver=6.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a LaTeX document style for prerequisite charts"
 url="http://www.prerex.com"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libedit' 'poppler-qt')
+depends=('libedit' 'poppler-qt5')
 install=prerex.install
 source=("http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/doc/$pkgname-$pkgver.tar.gz"
 	"http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/doc/v$pkgname-${_vver}.tar.gz"

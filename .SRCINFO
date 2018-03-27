@@ -1,14 +1,14 @@
 pkgbase = prerex
 	pkgdesc = a LaTeX document style for prerequisite charts
 	pkgver = 6.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.prerex.com
 	install = prerex.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libedit
-	depends = poppler-qt
+	depends = poppler-qt5
 	source = http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/prerex-6.5.4.tar.gz
 	source = http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/vprerex-6.5.1.tar.gz
 	source = http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/prerex.sty
