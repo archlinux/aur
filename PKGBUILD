@@ -2,14 +2,14 @@
 
 pkgbase=python-lmfit
 pkgname=('python-lmfit' 'python2-lmfit')
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Least-Squares Minimization with Constraints for Python"
 arch=('any')
 url="http://lmfit.github.io/lmfit-py/"
 license=('BSD')
 source=(https://github.com/lmfit/lmfit-py/archive/${pkgver}.tar.gz)
-md5sums=('56744e7bb1033a8ff0a69b6365c8b323')
+md5sums=('6df6cd154fd2eab9f78e8515a823ffe3')
 
 #check() {
 #  cd "$srcdir/lmfit-py-$pkgver"
