@@ -2,7 +2,7 @@
 
 pkgname=dibuja
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk based basic paint program like classic MS Paint or Paintbrush for Mac but for Linux"
 url="https://launchpad.net/dibuja"
 source=("https://launchpad.net/dibuja/trunk/$pkgver/+download/dibuja-$pkgver.tar.gz")
@@ -13,7 +13,7 @@ depends=(gtk2 gegl)
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-    ./configure --prefix=/usr --with-gegl-03
+    ./configure --prefix=/usr --with-gegl-0.3
     make
 }
 
