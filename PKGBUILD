@@ -2,7 +2,7 @@
 # Contributor: yesuu zhang <yesuu79@qq.com>
 # Contributor: Tomasz Żok <tomasz.zok [at] gmail.com>
 pkgname=vim-go
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="Go development plugin for Vim"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
 	'gocode-daemon: autocompletion support'
 )
 source=("https://github.com/fatih/vim-go/archive/v${pkgver}.tar.gz")
-sha256sums=('1cc594e90ebfd069fafec52e34611bfa16cd4c58cb30e0629a69b67cccdeed4d')
+sha256sums=('dd70a6542c6679048930671f39c57e4e090eb4058045e5f1f05f55164200a8df')
 
 package() {
 	cd "${srcdir}/vim-go-${pkgver}/"
