@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=openauto-git
 _pkgname=openauto
-pkgver=r36.2b75c4e
+pkgver=r87.4623f6b
 pkgrel=1
 pkgdesc="AndroidAuto headunit emulator"
 arch=('x86_64')
@@ -10,7 +10,8 @@ license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
 optdepends=('android-udev: make phone visible to autoapp via USB')
-depends=('aasdk-git' 'qt5-connectivity' 'qt5-multimedia' 'pulseaudio' 'gst-libav')
+depends=('aasdk-git' 'qt5-connectivity' 'qt5-multimedia' 'pulseaudio' 
+'gst-libav' 'rtaudio')
 makedepends=('boost' 'cmake' 'chrpath' 'git')
 source=("$pkgname::git+https://github.com/f1xpl/openauto.git")
 md5sums=('SKIP')
