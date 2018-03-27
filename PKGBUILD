@@ -3,7 +3,7 @@
 
 _pkgname=openssl
 pkgname=${_pkgname}-chacha20
-_ver=1.1.0g
+_ver=1.1.0h
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -22,7 +22,7 @@ source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
 	"https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
 	'ca-dir.patch'
 	'openssl__1.1.0_chacha20_poly1305.patch')
-sha256sums=('de4d501267da39310905cb6dc8c6121f7a2cad45a7707f76df828fe1b85073af'
+sha256sums=('5835626cde9e99656585fc7aaa2302a73a7e1340bf8c14fd635a62c66802a517'
 	'SKIP'
 	'90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790'
 	'3c1b39f8d17dc384486ebe61aa783cc4a649ed9d7b633c02f36693b8af265160')
