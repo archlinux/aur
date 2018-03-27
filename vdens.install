@@ -1,0 +1,4 @@
+post_install() {
+	printf "You have to do 'sysctl kernel.unprivileged_userns_clone=1'"
+	printf "or make it permanent see https://jlk.fjfi.cvut.cz/arch/manpages/man/sysctl.d.5"
+}
