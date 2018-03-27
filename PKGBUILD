@@ -1,7 +1,7 @@
 # Maintainer: Kevin McCormack <harlemsquirrel@gmail.com>
 pkgname=cura2-lulzbot
 pkgver=2.6.69
-pkgrel=1
+pkgrel=2
 pkgdesc='This is the development version of Cura 2 for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://code.alephobjects.com'
@@ -15,11 +15,7 @@ prepare() {
   # where all the essentials reside within the debian package
   tar zxf "${srcdir}/data.tar".gz -C "${srcdir}"
 
-  if [ ! -e /usr/lib/libgfortran.so.3 ]; then
-    # Set up link for libgfortran that cura-lulzbot will look for
-    printf "We need sudo access to set up symlink for libgfortran \n"
-    sudo ln -sf /usr/lib/gcc/x86_64-pc-linux-gnu/6.4.1/libgfortran.so /usr/lib/libgfortran.so.3
-  fi
+  sed -i 's;LD_LIBRARY_PATH=;LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.1:;' "${srcdir}/usr/bin/cura-lulzbot"
 }
 
 package() {
