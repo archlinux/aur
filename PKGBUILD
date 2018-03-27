@@ -3,16 +3,18 @@
 
 pkgname=cloog
 pkgver=0.18.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bastoul.net/cloog/"
 license=('GPL')
 
+depends=('osl')
+
 # cloog is not compatible with isl 0.19, so we use the bundled
 # version of isl, see https://github.com/periscop/cloog/issues/37
-depends=('osl')
-#depends=('isl>=0.18' 'osl')
+provides=('isl=0.18')
+conflicts=('isl')
 
 source=(https://github.com/periscop/cloog/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('48602a72aaec8e1dabc33ec0622739d3ad585b7f0ec480eebdc1d724822b7cfd')
