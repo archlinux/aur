@@ -1,0 +1,8 @@
+# makepkg files
+pkg/
+src/
+*.log
+*.xz
+
+# source files
+libmsym
