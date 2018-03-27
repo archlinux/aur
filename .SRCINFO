@@ -1,12 +1,12 @@
 pkgbase = bitwarden-git
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = v1.1.0.r1.g2590812
-	pkgrel = 4
+	pkgver = v1.1.0.r3.g44f00af
+	pkgrel = 1
 	url = https://bitwarden.com
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = nodejs
-	makedepends = npm
+	makedepends = yarn
 	depends = alsa-lib
 	depends = atk
 	depends = cairo
