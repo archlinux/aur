@@ -1,6 +1,6 @@
 # Maintainer: Nicolai <Finic8@protonmail.com>
 pkgname=zbectl-git
-pkgver=v1.0.r15.gc961fbb
+pkgver=v1.0.r18.gc23afd9
 pkgrel=1
 pkgdesc="Utility for managing ZFS Boot Environments in Arch Linux"
 arch=(any)
