@@ -4,10 +4,10 @@
 
 pkgbase=systemd-git
 _pkgbase=systemd
-pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
+pkgname=('systemd-git' 'libsystemd-git')
 pkgdesc="systemd from git"
-pkgver=237.r492.gcb77e1228
-pkgrel=2
+pkgver=238.283
+pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -54,9 +54,13 @@ sha512sums=('SKIP'
             'e4a9d7607fe93daf1d45270971c8d8455c4bfc2c0bea8bcad05aeb89847edee23cd1a41073a72042622acf417018fe254f5bfc137604fe2c71292680bf67a1c2'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 pkgver() {
-  cd "${srcdir}/$_pkgbase"
-  # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local version count
+
+  cd "$_pkgbase"
+
+  version="$(git describe --abbrev=0 --tags)"
+  count="$(git rev-list --count ${version}..)"
+  printf '%s.%s' "${version#v}" "${count}"
 }
 
 build() {
@@ -98,9 +102,9 @@ package_systemd-git() {
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz' 'pcre2')
-  provides=('nss-myhostname' 'systemd-sysvcompat' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver" 'openresolv')
+  provides=('nss-myhostname' 'systemd-sysvcompat' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver" 'systemd-sysvcompat-git' 'openresolv')
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd' 'openresolv')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd' 'systemd-sysvcompat-git' 'openresolv')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
@@ -184,21 +188,3 @@ package_libsystemd-git() {
   install -dm755 "$pkgdir"/usr
   mv libsystemd "$pkgdir"/usr/lib
 }
-
-package_systemd-sysvcompat-git() {
-  pkgdesc="sysvinit compat for systemd from git"
-  license=('GPL2')
-  groups=('base')
-  conflicts=('sysvinit')
-  depends=('systemd-git')
-
-  install -Dm644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
-
-  install -dm755 "$pkgdir"/usr/bin
-  ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
-  for tool in runlevel reboot shutdown poweroff halt telinit; do
-    ln -s systemctl "$pkgdir"/usr/bin/$tool
-  done
-}
-
