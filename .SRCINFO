@@ -1,0 +1,18 @@
+pkgbase = texlive-latexindent-meta
+	pkgdesc = Meta package to use latexindent
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = texlive-core
+	depends = perl-log-log4perl
+	depends = perl-log-dispatch
+	depends = perl-yaml-tiny
+	depends = perl-namespace-autoclean
+	depends = perl-specio
+	depends = perl-eval-closure
+	depends = perl-params-validationcompiler
+	depends = perl-file-homedir
+	depends = perl-unicode-linebreak
+
+pkgname = texlive-latexindent-meta
+
