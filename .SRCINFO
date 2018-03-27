@@ -1,0 +1,19 @@
+pkgbase = python-antspy
+	pkgdesc = Advanced Normalization Tools (ANTs) in Python
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ANTsX/ANTsPy
+	arch = any
+	license = apache
+	makedepends = python-setuptools
+	makedepends = vtk
+	depends = python
+	depends = python-numpy
+	depends = python-webcolors
+	optdepends = vtk: VTK support (re-build required)
+	optdepends = python-plotly: surface rendering
+	source = https://github.com/ANTsX/ANTsPy/archive/v0.1.4.tar.gz
+	sha512sums = a3ca115f6aff931e05d3ff2311f305f2b751d7e21cada11da892204be781235f24e9ac7b89417b490d4a1403a0963f26686baee4c94afe8d251e24d2792fa025
+
+pkgname = python-antspy
+
