@@ -2,7 +2,7 @@
 # Contributor: oleerik
 
 pkgname="hex-tcg"
-pkgver="1.0.8.045"
+pkgver="1.1.0.011"
 _pkgname="hex"
 pkgrel="1"
 pkgdesc="Unofficial build for Hex: Shards of Fate, a digital card game"
@@ -15,7 +15,7 @@ source=("http://fallback.hextcg.com/static/live/linux/hex.tar.gz"
 	"https://www.hextcg.com/wp-content/themes/hex/images/logo-hex.png"
         "hex-tcg_startup"
         "hex-tcg.desktop")
-sha256sums=("447a4437febe26cab06ea7de981fc1a58220f85d97f73601e664f73b4c21ab88"
+sha256sums=("c3dfacb2a5fd0f6ef55c02bcd32a869e366c04b2a1669365cb2e2b7ab0b3bcaf"
             "SKIP"
 	    "bc5c554bc1142e02f45eb1877388e595106362bad79c0f9232d124d51f981ecc"
             "27d2511d1044a340e313d715c85f79752269032ae1ecc2eeefbfadf0bfc2dd50")
