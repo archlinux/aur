@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-power-git
-pkgver=r526.7331e01
+pkgver=r680.377e976
 pkgrel=1
 pkgdesc='Switchboard Power Plug'
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee' 'polkit'
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-power')
 conflicts=('switchboard-plug-power')
-replaces=('switchboard-plug-power-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-power.git')
 sha256sums=('SKIP')
 
@@ -24,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-power
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-power/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-power
+  ninja
 }
 
 package() {
-  cd switchboard-plug-power/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
