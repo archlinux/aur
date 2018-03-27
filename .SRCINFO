@@ -1,0 +1,27 @@
+pkgbase = python-itk
+	pkgdesc = ITK is an open-source toolkit for multidimensional image analysis
+	pkgver = 4.13.0
+	pkgrel = 1
+	url = https://itk.org/
+	arch = x86_64
+	license = apache
+	makedepends = python-pip
+	depends = python-numpy
+	options = !strip
+	source = https://files.pythonhosted.org/packages/cp36/i/itk/itk-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-segmentation/itk_segmentation-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-io/itk_io-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-registration/itk_registration-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-core/itk_core-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-numerics/itk_numerics-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/i/itk-filtering/itk_filtering-4.13.0-cp36-cp36m-manylinux1_x86_64.whl
+	md5sums = 180434248774211ac5043128fee8cee1
+	md5sums = 3db37ab06ceb902f53947bbbfbedc4f1
+	md5sums = ae569328ce51f522d2d6722e8762601f
+	md5sums = 717c5d6f218716c3f20cf7a029077a7e
+	md5sums = bfdfd8d37b066bdbdc8b3d0f61aa0e22
+	md5sums = da955cbd76229f891f1a678e149d47a2
+	md5sums = 927919dd02c23dd86266576c238aaed0
+
+pkgname = python-itk
+
