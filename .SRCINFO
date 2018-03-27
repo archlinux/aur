@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.15.13
+	pkgver = 4.15.10
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.15.13-xanmod12.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.15.10-xanmod11.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
