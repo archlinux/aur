@@ -69,7 +69,7 @@ prepare() {
   esac
   warning "This package is now totally non-interactive!!!!!"
   msg "Building this kernel with configuration provided by: $answer"
-  sleep 5
+  sleep 2
   warning "To change this modify _configuration variable in PKGBUILD"
 
   if [ "${_kernelname}" != "" ]; then
