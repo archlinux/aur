@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -18,12 +18,15 @@ depends=('intel-mkl'
         'bzip2'
         'desktop-file-utils'
         'gcc-libs'
+        'gcc-fortran'
+        'icu'
         'libjpeg'
         'libpng'
         'libtiff'
         'libxmu'
         'libxt'
         'ncurses'
+        'openmp'
         'pango'
         'pcre'
         'perl'
@@ -33,7 +36,6 @@ depends=('intel-mkl'
         'zip'
         'zlib')
 makedepends=('jdk8-openjdk'
-            'gcc-fortran'
             'tk')
 optdepends=('texlive-bin: LaTeX sty files'
             'tk: tcl-tk interface')
