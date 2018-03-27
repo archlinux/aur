@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=dxvk-git
-pkgver=20180317.1af52ab
+pkgver=20180327.873deed
 pkgrel=1
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
@@ -32,14 +32,14 @@ pkgver() {
 
 
 build() {
-	"$pkgname"/package-release.sh git $PWD
+	"$pkgname"/package-release.sh $pkgver $PWD --no-package
 }
 
 
 
 package() {
 	mkdir -p "$pkgdir/usr/share/dxvk"
-	tar -xf "$pkgname".tar.gz -C "$pkgdir/usr/share/dxvk" --strip-components=1
+	cp -rv dxvk-$pkgver/* "$pkgdir/usr/share/dxvk"
 	if [ ! -f "$pkgdir"/usr/share/dxvk/x64/d3d11.dll ] ||\
 	 [ ! -f "$pkgdir"/usr/share/dxvk/x64/dxgi.dll ] ||\
 	 [ ! -f "$pkgdir"/usr/share/dxvk/x32/d3d11.dll ] ||\
