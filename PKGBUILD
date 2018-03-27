@@ -2,7 +2,7 @@
 
 pkgname=python-asteval
 pkgver=0.9.12
-pkgrel=0
+pkgrel=1
 pkgdesc='Safe, minimalistic evaluator of python expression using ast module'
 arch=(any)
 url=http://github.com/newville/asteval
