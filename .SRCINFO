@@ -1,0 +1,19 @@
+pkgbase = eeshow-git
+	pkgdesc = An application for viewing git-managed eeschemas
+	pkgver = 71c9248
+	pkgrel = 1
+	url = https://neo900.org/stuff/eeshow/
+	arch = x86_64
+	license = GPL2
+	depends = imagemagick
+	depends = cairo
+	depends = gtk3
+	depends = libgit2
+	depends = fig2dev
+	provides = eeshow
+	conflicts = eeshow
+	source = git+http://neo900.org/git/eeshow
+	sha1sums = SKIP
+
+pkgname = eeshow-git
+
