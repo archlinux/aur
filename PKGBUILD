@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-datetime-git
-pkgver=r236.df62aaa
+pkgver=r350.1b77520
 pkgrel=1
 pkgdesc='Switchboard Date & Time Plug'
 arch=('x86_64')
@@ -10,10 +10,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-datetime')
 conflicts=('switchboard-plug-datetime')
-replaces=('switchboard-plug-datetime-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-datetime.git')
 sha256sums=('SKIP')
 
@@ -24,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-datetime
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-datetime/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-datetime
+  ninja
 }
 
 package() {
-  cd switchboard-plug-datetime/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
