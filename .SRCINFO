@@ -1,7 +1,7 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
 	pkgver = v6.2.6.r1.g2370068
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manjaro/pamac
 	arch = i686
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = pamac-aur-git
 
 pkgname = pamac-aur-git
 	install = pamac.install
+	conflicts = pamac-aur
 	replaces = pamac-aur
 	backup = etc/pamac.conf
 
@@ -40,4 +41,6 @@ pkgname = pamac-aur-tray-appindicator-git
 	pkgdesc = Tray icon using appindicator which feets better in KDE - git version
 	depends = pamac-aur-git
 	depends = libappindicator-gtk3
+	conflicts = pamac-aur-tray-indicator
+	replaces = pamac-aur-tray-indicator
 
