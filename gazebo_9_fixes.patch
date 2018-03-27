@@ -1,0 +1,37 @@
+--- sro/gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-2.5.14-1/src/default_robot_hw_sim.cpp	2018-03-26 22:10:18.896417813 -0700
++++ src/gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-2.5.14-1/src/default_robot_hw_sim.cpp	2018-03-26 22:13:02.172214036 -0700
+@@ -253,12 +253,12 @@
+     // Gazebo has an interesting API...
+     if (joint_types_[j] == urdf::Joint::PRISMATIC)
+     {
+-      joint_position_[j] = sim_joints_[j]->GetAngle(0).Radian();
++      joint_position_[j] = sim_joints_[j]->Position(0);
+     }
+     else
+     {
+       joint_position_[j] += angles::shortest_angular_distance(joint_position_[j],
+-                            sim_joints_[j]->GetAngle(0).Radian());
++                            sim_joints_[j]->Position(0));
+     }
+     joint_velocity_[j] = sim_joints_[j]->GetVelocity(0);
+     joint_effort_[j] = sim_joints_[j]->GetForce((unsigned int)(0));
+--- sro/gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-2.5.14-1/src/gazebo_ros_control_plugin.cpp	2018-03-26 22:10:18.897417800 -0700
++++ src/gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-2.5.14-1/src/gazebo_ros_control_plugin.cpp	2018-03-26 22:11:30.010458519 -0700
+@@ -111,7 +111,7 @@
+   }
+ 
+   // Get the Gazebo simulation period
+-  ros::Duration gazebo_period(parent_model_->GetWorld()->GetPhysicsEngine()->GetMaxStepSize());
++  ros::Duration gazebo_period(parent_model_->GetWorld()->Physics()->GetMaxStepSize());
+ 
+   // Decide the plugin control period
+   if(sdf_->HasElement("controlPeriod"))
+@@ -202,7 +202,7 @@
+ void GazeboRosControlPlugin::Update()
+ {
+   // Get the simulation time and period
+-  gazebo::common::Time gz_time_now = parent_model_->GetWorld()->GetSimTime();
++  gazebo::common::Time gz_time_now = parent_model_->GetWorld()->SimTime();
+   ros::Time sim_time_ros(gz_time_now.sec, gz_time_now.nsec);
+   ros::Duration sim_period = sim_time_ros - last_update_sim_time_ros_;
+ 
