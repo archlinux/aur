@@ -5,28 +5,28 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.26.2
-pkgrel=2
+pkgver=3.28.0
+pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL)
-depends=(vte3 gsettings-desktop-schemas dconf)
+depends=('vte3>=0.52.0' gsettings-desktop-schemas dconf)
 makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
              gnome-shell gconf vala yelp-tools)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(!emptydirs)
 groups=(gnome)
-changelog=$pkgname.changelog
+changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
-        gnome-terminal-transparency.patch)
-sha256sums=('3a9ba414a814569476515275ad303d8056f296b2669234447712559aa97005b0'
-            'd33d721dfd8c4424ef2f673336ce5db3c54dd42f1a87d2e18d1b795992ff41da')
+        transparency.patch)
+sha256sums=('a551d5eee10f66560fc7c6bdff6f7358ce9c60b526d8ba68a82f2ab024a3bcc4'
+            'e0b988573ff2a405f443102afbca40260e12285ce589250c791bd460e69f1bcf')
 
 prepare() {
   cd $_pkgname-$pkgver
-  patch -Np1 -i ../gnome-terminal-transparency.patch
+  patch -Np1 -i ../transparency.patch
   # possiblity, use autoreconf:
   # http://www.gnu.org/software/autoconf/autoconf.html
   # https://wiki.debian.org/Autoreconf
