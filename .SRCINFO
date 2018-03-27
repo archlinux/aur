@@ -8,6 +8,7 @@ pkgbase = lector-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = qt5-base
+	depends = qt5-multimedia
 	depends = python
 	depends = python-pyqt5
 	depends = python-beautifulsoup4
