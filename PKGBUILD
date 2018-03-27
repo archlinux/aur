@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-applications-git
-pkgver=r262.6e3f813
+pkgver=r317.d241d8f
 pkgrel=1
 pkgdesc='Switchboard Applications Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-applications')
 conflicts=('switchboard-plug-applications')
 replaces=('switchboard-plug-applications-bzr')
@@ -24,8 +24,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-applications
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +31,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-applications/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-applications
+  ninja
 }
 
 package() {
-  cd switchboard-plug-applications/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
