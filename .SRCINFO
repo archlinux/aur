@@ -1,7 +1,7 @@
 pkgbase = tvhproxy-git
 	pkgdesc = A small flask app to proxy requests between Plex Media Server and Tvheadend.
 	pkgver = r28.08096e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.debian.org/Teams/Lintian
 	arch = any
 	license = unknown
@@ -10,10 +10,10 @@ pkgbase = tvhproxy-git
 	depends = python-gevent
 	provides = tvhproxy
 	source = tvhproxy-git::git+https://github.com/jkaberg/tvhProxy
-	source = tvhProxy.service
+	source = tvhproxy.service
 	source = tvhProxy.conf.d
 	sha256sums = SKIP
-	sha256sums = 432f3c93c505bf5bd2d80d81a6179824bbe0f3e6039ed39217b08943dde59640
+	sha256sums = 2917aaec1c1d3e05373f8713bc6249d863e2eaf1bdd1596f0a0f7bd424de8c80
 	sha256sums = c31c5c0abb243db6b0ae0c395dd1f56eab49a5c1ee7e29a12ccf05941afe3214
 
 pkgname = tvhproxy-git
