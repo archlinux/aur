@@ -4,7 +4,7 @@ pkgdesc="ROS - MoveIt interface to OMPL."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-planners-ompl'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,16 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_planners_ompl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_planners_ompl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('681bc8d961c1a6c9b0a24025784c3179cb355e83e3cd567e98c79a9cc565fca7')
+sha256sums=('9938b628a624193c2fbd3a477e248d6ecdd14849ed65f029ae1004c17ca791bf')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+      -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+      -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+      -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
+      -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+}
 
 build() {
   # Use ROS environment variables
