@@ -1,0 +1,30 @@
+--- sro/opencv_apps-release-release-kinetic-opencv_apps-1.12.0-0/src/nodelet/face_recognition_nodelet.cpp	2018-03-27 15:57:14.491547530 -0700
++++ src/opencv_apps-release-release-kinetic-opencv_apps-1.12.0-0/src/nodelet/face_recognition_nodelet.cpp	2018-03-27 15:58:06.492490437 -0700
+@@ -463,13 +463,13 @@
+       if (need_recreate_model) {
+         try {
+           if (config.model_method == "eigen") {
+-            model_ = face::createEigenFaceRecognizer(config.model_num_components,
++            model_ = face::EigenFaceRecognizer::create(config.model_num_components,
+                                                    config.model_threshold);
+           } else if (config.model_method == "fisher") {
+-            model_ = face::createFisherFaceRecognizer(config.model_num_components,
++            model_ = face::FisherFaceRecognizer::create(config.model_num_components,
+                                                     config.model_threshold);
+           } else if (config.model_method == "LBPH") {
+-            model_ = face::createLBPHFaceRecognizer(config.lbph_radius,
++            model_ = face::LBPHFaceRecognizer::create(config.lbph_radius,
+                                                   config.lbph_neighbors,
+                                                   config.lbph_grid_x,
+                                                   config.lbph_grid_y);
+--- sro/opencv_apps-release-release-kinetic-opencv_apps-1.12.0-0/src/nodelet/lk_flow_nodelet.cpp	2018-03-27 15:57:14.492547532 -0700
++++ src/opencv_apps-release-release-kinetic-opencv_apps-1.12.0-0/src/nodelet/lk_flow_nodelet.cpp	2018-03-27 16:07:21.465943557 -0700
+@@ -159,7 +159,7 @@
+       if( needToInit )
+       {
+         // automatic initialization
+-        cv::goodFeaturesToTrack(gray, points[1], MAX_COUNT, 0.01, 10, cv::Mat(), 3, 0, 0.04);
++        cv::goodFeaturesToTrack(gray, points[1], MAX_COUNT, 0.01, 10, cv::Mat(), 3, false, 0.04);
+         cv::cornerSubPix(gray, points[1], subPixWinSize, cv::Size(-1,-1), termcrit);
+         addRemovePt = false;
+       }

@@ -7,7 +7,7 @@ pkgname='ros-kinetic-opencv-apps'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-std-srvs
@@ -40,8 +40,15 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="opencv_apps-release-release-kinetic-opencv_apps-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-perception/opencv_apps-release/archive/release/kinetic/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0d4b6b827ef9d2382b7d9e1e8a3f08f877e4c969924ec32965bcf28b40f8c6d1')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-perception/opencv_apps-release/archive/release/kinetic/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz"
+  opencv_fixes.patch)
+sha256sums=('0d4b6b827ef9d2382b7d9e1e8a3f08f877e4c969924ec32965bcf28b40f8c6d1'
+            'f68391128a350c1fa964437e0ff0285709cef87700063edc50f79ebd764a22ba')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 <opencv_fixes.patch
+}
 
 build() {
   # Use ROS environment variables
