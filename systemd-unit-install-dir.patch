@@ -1,0 +1,25 @@
+From 3eadb164535e2226a96b4c21e9b55b58f14f1550 Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@archlinux.org>
+Date: Tue, 27 Mar 2018 21:54:38 +0200
+Subject: [PATCH] Fix the systemd unit install dir
+
+---
+ data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index b476760..727d93e 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -9,7 +9,7 @@ configure_file(
+     input: 'pantheon-parental-controls.service.in',
+     output: '@BASENAME@',
+     configuration: configuration_data,
+-    install_dir: join_paths('/', 'lib','systemd', 'system')
++    install_dir: join_paths(get_option('libdir'),'systemd', 'system')
+ )
+ 
+ configure_file(
+-- 
+2.16.3
+
