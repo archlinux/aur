@@ -1,4 +1,7 @@
-# Maintainer: Erik Bjäreholt <erik.bjareholt@gmail.com>
+# Maintainer: Erik Bjäreholt <erik@bjareho.lt>
+# Maintainer: Johan Bjäreholt <johan@bjareho.lt>
+
+# PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
 pkgver='0.7.1'
