@@ -4,33 +4,23 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.11.1.0
-pkgrel=3
+pkgver=0.12.0.0
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
-depends=('boost-libs' 'unbound' 'miniupnpc' 'libunwind' 'openssl')
-makedepends=('git' 'cmake' 'boost' 'gtest')
+depends=('boost-libs' 'unbound' 'miniupnpc' 'libunwind' 'openssl' 'readline' 'zeromq')
+makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz"
-        "monerod.service"
-        "cmake-wallet.patch")
+source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz")
 
-sha256sums+=('b5b48d3e5317c599e1499278580e9a6ba3afc3536f4064fcf7b20840066a509b'
-             '59fc670cf92960832d03038968270f81beacea7d6819c71ec5bcf15c6030e3c9'
-             '50cee20da90c920762c464beebaf550a70548ad942c35f5632fa37706ccf9b23')
+sha256sums+=('5e8303900a39e296c4ebaa41d957ab9ee04e915704e1049f82a9cbd4eedc8ffb')
 
 _monero="${pkgbase}-${pkgver}"
 _build=build
-
-prepare()
-{
-  cd "${srcdir}/${_monero}"
-  patch -Np1 -i "${srcdir}/cmake-wallet.patch"
-}
 
 build() {
   cd "${srcdir}/${_monero}"
@@ -52,7 +42,7 @@ check() {
   #  * coretests takes too long (~25000s)
   #  * libwallet_api_tests fail (Issue #895)
   #  * unit_tests were run separately above
-  CTEST_ARGS+="-E 'coretests|libwallet_api_tests|unit_tests'"
+  CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests'"
   echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
   make ARGS="$CTEST_ARGS" test
@@ -65,19 +55,22 @@ package_monero() {
   # Uncomment for a debug build
   # options=(!strip debug)
 
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-rpc" "${pkgdir}/usr/bin/monero-wallet-rpc"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
-
   install -Dm644 "${srcdir}/${_monero}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/${_monero}/utils/conf/monerod.conf" "${pkgdir}/etc/monerod.conf"
-  # TODO(anonimal): new, working, systemd service file was not merged into monero branch v0.11.1.0 - so we've git-add'd it ourselves
-  #install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
-  install -Dm644 "${srcdir}/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
+  install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
 
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-blackball" "${pkgdir}/usr/bin/monero-blockchain-blackball"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-usage" "${pkgdir}/usr/bin/monero-blockchain-usage"
+
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-gen-trusted-multisig" "${pkgdir}/usr/bin/monero-gen-trusted-multisig"
+
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-rpc" "${pkgdir}/usr/bin/monero-wallet-rpc"
+
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
 }
 
 package_libmonero-wallet() {

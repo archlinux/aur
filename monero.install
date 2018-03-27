@@ -1,10 +1,20 @@
 create_user() {
+  _lib="/var/lib/monero"
+  _log="/var/log/monero"
+
   getent passwd monero &>/dev/null || {
     echo -n ">>> Creating monero user... "
-    useradd --system --user-group -m --home /var/lib/monero monero
+    useradd --system --user-group -m --home "$_lib" monero
     echo "done"
   } # NOTE: we do not autoremove user due to security concerns (Arch policy)
-  mkdir -p /var/log/monero && chown monero:monero /var/log/monero
+
+  # If data dir was removed after adding user
+  if [[ ! -d "$_lib" ]]; then
+    mkdir "$_lib" && chown monero:monero "$_lib" && chmod go-rwx "$_lib"
+  fi
+
+  # Ensure log dir
+  mkdir -p "$_log" && chown -R monero:monero "$_log" && chmod -R go-rwx "$_log"
 }
 
 post_install() {
