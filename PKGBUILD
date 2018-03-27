@@ -3,14 +3,14 @@
 _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.13')
 makedepends=(
-    'cmake' 'git' 'swig'
+    'clang' 'cmake' 'git' 'swig'
     'java-environment'
     'lua51'
     'mono'
@@ -44,7 +44,6 @@ build() {
 	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | egrep -o '[0-9]\.[0-9]\.[0-9]')
 
     CC=clang CXX=clang++ \
-		CXXFLAGS= \
 		JAVA_HOME=$_java_home \
 		cmake \
 			-DCMAKE_INSTALL_PREFIX=/usr \
