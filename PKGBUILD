@@ -1,7 +1,7 @@
 # Maintainer: Benoît Giraudou <bgiraudou @ gmail.com>
 relpkgname=obs-ndi
 pkgname=${relpkgname}-bin
-pkgver=4.2.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Palakis/obs-ndi"
 depends=('libndi3')
 
 source=("${url}/releases/download/${pkgver}/${relpkgname}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('a948faea607e61b63cfc2b88677632055f0741748eadf6ce56aa8c9d72e80f45')
+sha256sums=('a94ca001b6a0477d95e58ba8bafdc39ec005f9a8312d8c88d27a378ae28aa621')
 
 package() {
 	cd "${srcdir}"
