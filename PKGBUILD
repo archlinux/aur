@@ -43,7 +43,7 @@ prepare() {
     done
 
     sed \
-        -e '/char font/s/= .*/= "Inconsolata for Powerline:size=11";/' \
+        -e '/static char \*font/s/= .*/= "InconsolataGo Nerd Font Mono:size=11";/' \
         -e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|│";/' \
         -e 's/TERMMOD,              XK_Y,/ShiftMask,            XK_Insert,/' \
         -i config.def.h
