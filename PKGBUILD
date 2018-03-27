@@ -3,7 +3,7 @@
 pkgname=tvhproxy-git
 pkgdesc='A small flask app to proxy requests between Plex Media Server and Tvheadend.'
 pkgver=r28.08096e6
-pkgrel=2
+pkgrel=3
 arch=('any')
 url=https://wiki.debian.org/Teams/Lintian
 license=('unknown')
