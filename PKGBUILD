@@ -4,10 +4,10 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-ros-pkgs'
-pkgver='2.5.8'
-_pkgver_patch=0
+pkgver='2.5.14'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD,LGPL,Apache 2.0')
 
 ros_makedepends=(ros-kinetic-catkin)
@@ -15,6 +15,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-gazebo-plugins
+  ros-kinetic-gazebo-dev
   ros-kinetic-gazebo-ros
   ros-kinetic-gazebo-msgs)
 depends=(${ros_depends[@]})
@@ -28,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_pkgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5df88a4c8f8e359aa6dbe7147aec42b0d76373d898c6a0b5166545561759bd68')
+sha256sums=('db927575a95874ba62a535e7bdde5fbb2163a67dc2e370fdafdcdcbe66ad99f9')
 
 build() {
   # Use ROS environment variables
