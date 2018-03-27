@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-notifications-git
-pkgver=r267.433459c
+pkgver=r348.5717038
 pkgrel=1
 pkgdesc='Switchboard Notifications Plug'
 arch=('x86_64')
@@ -10,10 +10,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-notifications')
 conflicts=('switchboard-plug-notifications')
-replaces=('switchboard-plug-notifications-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-notifications.git')
 sha256sums=('SKIP')
 
@@ -24,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-notifications
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-notifications/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-notifications
+  ninja
 }
 
 package() {
-  cd switchboard-plug-notifications/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
