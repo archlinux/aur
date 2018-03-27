@@ -52,4 +52,7 @@ package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 "-t$pkgdir/usr/${_target}/share/licenses/$_pkgname" COPYING
+
+  # delete all executables
+  rm -rf "$pkgdir/usr/${_target}/bin"
 }
