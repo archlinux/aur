@@ -1,11 +1,13 @@
 pkgbase = evolvere-icons-git
 	pkgdesc = Evolvere icons 2, flat with touches of realism
-	pkgver = r247.g56a331e
+	pkgver = 2.4.r250.g3568bc9
 	pkgrel = 1
 	url = https://github.com/franksouza183/Evolvere-Icons
 	arch = any
-	license = CC-BY-4.0
+	license = custom:CC-BY-4.0
 	makedepends = git
+	optdepends = breeze-icons: to inherit breeze icons for KDE/Qt applications
+	optdepends = gnome-icon-theme: to inherit gnome icons for gtk applications
 	provides = evolvere-icons
 	conflicts = evolvere-icons
 	options = !strip

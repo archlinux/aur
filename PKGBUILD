@@ -1,12 +1,14 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=evolvere-icons-git
-pkgver=r247.g56a331e
+pkgver=2.4.r250.g3568bc9
 pkgrel=1
 pkgdesc='Evolvere icons 2, flat with touches of realism'
 arch=('any')
 url="https://github.com/franksouza183/Evolvere-Icons"
-license=('CC-BY-4.0')
+license=('custom:CC-BY-4.0')
+optdepends=('breeze-icons: to inherit breeze icons for KDE/Qt applications'
+            'gnome-icon-theme: to inherit gnome icons for gtk applications')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -16,7 +18,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ver="$(grep 'Version=' index.theme | awk -F '=' '{print $2}')"
+  printf '%s.r%s.g%s' "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
