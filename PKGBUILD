@@ -4,7 +4,7 @@ pkgbase="python-gilt"
 pkgname=("python-gilt" "python2-gilt")
 _pkgname='gilt'
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A GIT layering tool'
 url='https://github.com/metacloud/gilt'
 arch=('any')
@@ -56,5 +56,6 @@ package_python2-gilt() {
     cd "${srcdir}/${_pkgname}-${pkgver}-py2"
     export PBR_VERSION="${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    mv "${pkgdir}/usr/bin/gilt" "${pkgdir}/usr/bin/gilt2"
 }
 # vim:set ft=sh ts=2 sw=2 et:
