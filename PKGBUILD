@@ -2,7 +2,7 @@
 # Maintainer: jaap
 # Contributor: jaap
 pkgname=synergy2
-pkgver=2.0.8.stable_b1535%2Ba99bf78e
+pkgver=2.0.8.stable_b1535+a99bf78e
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
