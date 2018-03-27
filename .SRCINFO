@@ -1,7 +1,7 @@
 pkgbase = synology-drive
 	pkgdesc = Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers.
-	pkgver = 1.0.1
-	pkgrel = 10253
+	pkgver = 1.0.2
+	pkgrel = 10275
 	url = http://www.synology.com
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = synology-drive
 	conflicts = cloudstation-beta,
 	conflicts = cloudstation-3.0,
 	conflicts = cloudstation-drive
-	source_i686 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.1-10253/Ubuntu/Installer/i686/synology-drive-10253.i686.deb
-	md5sums_i686 = 9a4a8bfa04da9bc972c8128cfea440d9
-	source_x86_64 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.1-10253/Ubuntu/Installer/x86_64/synology-drive-10253.x86_64.deb
-	md5sums_x86_64 = a1cf7c7b7a809c6e0da1f99906f31c8d
+	source_i686 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.2-10275/Ubuntu/Installer/i686/synology-drive-10275.i686.deb
+	md5sums_i686 = 12d913a95dd557b4d87adfd144a30ca9
+	source_x86_64 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.2-10275/Ubuntu/Installer/x86_64/synology-drive-10275.x86_64.deb
+	md5sums_x86_64 = aaa9f6c51a3101e476685ccad3b9991a
 
 pkgname = synology-drive
 
