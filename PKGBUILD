@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=67.0.3379.0
+pkgver=67.0.3381.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -116,7 +116,8 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('39428e4f3f0f9376e8d5cf242a172299eedd36dc0f577dccac1f3f050048845f'
+
+sha256sums=('cbe8b28a30699687e54ad6ef7edae1da76c1e4738c7d9b1a1d8815a1e2460582'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -200,7 +201,7 @@ sha256sums=('39428e4f3f0f9376e8d5cf242a172299eedd36dc0f577dccac1f3f050048845f'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            '7262bd74a164b2ac083bd7c2def7b430e60db9ed7a5b1baf9be378d211359d6b'
+            'd8cf421e7e8b831330716557ebec6cfb812c48f583697fdf80d77e5b5316cf7f'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -213,6 +214,7 @@ sha256sums=('39428e4f3f0f9376e8d5cf242a172299eedd36dc0f577dccac1f3f050048845f'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -354,7 +356,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
+patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
