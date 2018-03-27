@@ -4,7 +4,7 @@
 # Based on package by: Denis Saintilma <1068des@gmail.com>
 
 pkgname=tautulli
-pkgver=2.0.24
+pkgver=2.0.25
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -21,13 +21,18 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v
         'tautulli.service'
         'tautulli.sysusers')
 
-sha256sums=('10211e3d229c975c0f319805658643460b28f5699267a59cf8cb09e128f89e73'
+sha256sums=('5c26e75d2a3e0f6a7a92b9efade7ece0bbde2abfcafbf0ca5706d9851f650363'
             '467b7fc5aca6b430c84c07c7eb2076f7b87c5f43bcab89db4f37651b2e957597'
             '3385a234ece298cd1589d06fb60ea07aade778127117f32692d3cdb134023d42'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
 package() {
   cd "${srcdir}/Tautulli-${pkgver}"
+
+  # To get rid of the unknown version
+  echo "v$pkgver" > version.txt
+  install -D -m 644 version.txt "${pkgdir}/usr/lib/tautulli/version.txt"
+
   install -D -m 755 PlexPy.py "${pkgdir}/usr/lib/tautulli/PlexPy.py"
   install -D -m 755 Tautulli.py "${pkgdir}/usr/lib/tautulli/Tautulli.py"
   install -D -m 644 pylintrc  "${pkgdir}/usr/lib/tautulli/"
