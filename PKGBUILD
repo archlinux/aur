@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-a11y-git
-pkgver=r158.f7621ec
+pkgver=r217.bc242d1
 pkgrel=1
 pkgdesc='Switchboard Universal Access Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-a11y')
 conflicts=('switchboard-plug-a11y')
 source=('git+https://github.com/elementary/switchboard-plug-a11y.git')
@@ -23,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-a11y
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -32,19 +30,16 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-a11y/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-a11y
+  ninja
 }
 
 package() {
-  cd switchboard-plug-a11y/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
