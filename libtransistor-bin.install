@@ -1,0 +1,3 @@
+post_install() {
+	echo "set LIBTRANSITOR_HOME=/opt/libtransistor/"
+}
