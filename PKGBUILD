@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.4.0.r37.g858c9ce9
+pkgver=2.4.0.r126.gfc655f52
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
@@ -14,10 +14,8 @@ conflicts=('sfml')
 replaces=('sfml')
 options=('debug')
 
-source=("git+https://github.com/SFML/SFML.git"
-        "0001-fix_cmake_module_install_path.patch")
-sha256sums=('SKIP'
-            'c0be2636b1d342f636f2587e043dbfa8becdd8d9c65044cf7749ab4b2c81eb47')
+source=("git+https://github.com/SFML/SFML.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/SFML"
@@ -26,7 +24,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/SFML"
-  patch -p0 -i "$srcdir/0001-fix_cmake_module_install_path.patch"
 }
 
 build() {
@@ -34,8 +31,9 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr . \
         -DCMAKE_BUILD_TYPE=RelWithDebugInfo \
-        -DBUILD_DOC=true \
-        -DBUILD_EXAMPLES=false
+        -DSFML_BUILD_DOC=false \            # switch to true if you need offline documentation
+        -DSFML_BUILD_EXAMPLES=false \
+        -DSFML_INSTALL_PKGCONFIG_FILES=true # prints a warning if pkg-config not supported
   make
   make doc
 }
