@@ -1,0 +1,25 @@
+pkgbase = mininet-git
+	pkgdesc = Emulator for rapid prototyping of Software Defined Networks
+	pkgver = 20180326
+	pkgrel = 1
+	url = https://github.com/mininet/mininet/
+	install = mininet.install
+	arch = x86_64
+	license = custom
+	makedepends = help2man
+	makedepends = python2-setuptools
+	depends = bash
+	depends = python2
+	depends = python2-networkx
+	depends = net-tools
+	depends = iputils
+	depends = iperf
+	depends = openvswitch
+	optdepends = xorg-xhost
+	provides = mininet
+	conflicts = mininet
+	source = git+https://github.com/mininet/mininet.git
+	sha256sums = SKIP
+
+pkgname = mininet-git
+
