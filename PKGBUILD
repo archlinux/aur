@@ -18,14 +18,14 @@ md5sums=('6df6cd154fd2eab9f78e8515a823ffe3')
 
 package_python-lmfit(){
   checkdepends=('python-nose')
-  depends=('python' 'python-numpy' 'python-scipy')
+  depends=('python' 'python-numpy' 'python-scipy' 'python-asteval')
   cd "$srcdir/lmfit-py-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-lmfit(){
   checkdepends=('python2-nose')
-  depends=('python2' 'python2-numpy' 'python2-scipy')
+  depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-asteval')
   cd "$srcdir/lmfit-py-$pkgver"
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
