@@ -1,7 +1,7 @@
 # Maintainer: Thanh Ha <zxiiro@linux.com>
 
 pkgname=opendaylight
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="OpenDaylight is leading the transformation to Open SDN."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=()
 options=()
 install=${pkgname}.install
 source=(https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/${pkgver//_/-}/karaf-${pkgver//_/-}.tar.gz)
-sha256sums=('301da64f8abaeaa887f778400eebc8e1e21855187a83658668484c84d15b2412')
+sha256sums=('ae4d61e6ac2a4ebd24eae3adb1509190476970eb9defb83eea3a3c5401d2bc15')
 
 package() {
   mkdir -p "$pkgdir"/opt

@@ -1,14 +1,14 @@
 pkgbase = opendaylight
 	pkgdesc = OpenDaylight is leading the transformation to Open SDN.
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://www.opendaylight.org/
 	install = opendaylight.install
 	arch = x86_64
 	license = EPL
 	depends = jre8-openjdk
-	source = https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/0.7.1/karaf-0.7.1.tar.gz
-	sha256sums = 301da64f8abaeaa887f778400eebc8e1e21855187a83658668484c84d15b2412
+	source = https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/0.8.0/karaf-0.8.0.tar.gz
+	sha256sums = ae4d61e6ac2a4ebd24eae3adb1509190476970eb9defb83eea3a3c5401d2bc15
 
 pkgname = opendaylight
 
