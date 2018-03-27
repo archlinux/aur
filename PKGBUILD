@@ -4,8 +4,8 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-plugins'
-pkgver='2.5.13'
-_pkgver_patch=0
+pkgver='2.5.14'
+_pkgver_patch=1
 arch=('any')
 pkgrel=2
 license=('BSD, Apache 2.0')
@@ -72,8 +72,15 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_plugins-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('44a0373d9bac70e54ea2421674de27481647c190f7e0c39136cd01077dc3f8d8')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz"
+  gazebo_9_fixes.patch)
+sha256sums=('4a36e2f8ddfde9671c23fdaf9d899224483f24dd05d66e5210d879bbee6ba22a'
+            'e5d1984874912db38418d3e37be9bc3d117c47a846fd4f42a108f2b60ccb00cf')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 < gazebo_9_fixes.patch
+}
 
 build() {
   # Use ROS environment variables
