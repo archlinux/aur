@@ -1,7 +1,7 @@
 pkgbase = lib32-freetype2-old-hinting
 	pkgdesc = TrueType font rendering library (including the old hinting engine; 32-bit)
-	pkgver = 2.8.1
-	pkgrel = 1
+	pkgver = 2.9
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = GPL
@@ -12,18 +12,20 @@ pkgbase = lib32-freetype2-old-hinting
 	depends = lib32-harfbuzz
 	depends = freetype2
 	provides = libfreetype.so
-	provides = lib32-freetype2=2.8.1-1
+	provides = lib32-freetype2=2.9-2
 	conflicts = lib32-freetype2
-	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2
-	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2.sig
+	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2
+	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2.sig
 	source = 0001-Enable-table-validation-modules.patch
-	source = 0003-Enable-infinality-subpixel-hinting.patch
-	source = 0004-Enable-long-PCF-family-names.patch
-	sha1sums = 417bb3747c4ac95b6f2652024a53fad45581fa1c
+	source = 0002-Enable-infinality-subpixel-hinting.patch
+	source = 0003-Enable-long-PCF-family-names.patch
+	source = 0001-psaux-Correctly-handle-Flex-features-52846.patch
+	sha1sums = 94c4399b1a55c5892812e732843fcb4a7c2fe657
 	sha1sums = SKIP
-	sha1sums = c3e91e668936206d3c158bffde0f69788a086a5b
-	sha1sums = 81586014ea44375ddc85dd9dbcabae6e91c34d62
-	sha1sums = 334f229875039794adeb574e27d365bb445fb314
+	sha1sums = b69531770c343d403be294b7e4d25ac45738c833
+	sha1sums = 3d26a569f0cb94c28a550577f5dcaadb4e193d91
+	sha1sums = 770f1981734a837bcf065564c91644b4cc5e256a
+	sha1sums = 21ad7dd31e16adb5b39adfa5671018a736626562
 
 pkgname = lib32-freetype2-old-hinting
 
