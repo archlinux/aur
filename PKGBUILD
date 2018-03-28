@@ -2,14 +2,18 @@
 
 pkgname='factom-walletd'
 pkgver='0.4.2.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Server for the factom wallet web service api'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
-source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+options=('emptydirs')
+install="$pkgname.install"
+source=("git+$url#tag=v$pkgver" "$pkgname.service" "sysusers-$pkgname.conf")
+md5sums=('SKIP'
+         '74887afdb49a01c60291d3ad9f046f7b'
+         '7bc465a1d5594ba5bd25c237d2920255')
 build()
 {
   cd "$srcdir"
@@ -32,10 +36,14 @@ build()
 
 package()
 {
-  cd "$GOBIN"
-  install -d "$pkgdir/usr/bin/"
-  install -Dsm755 $pkgname "$pkgdir/usr/bin/"
+  cd "$srcdir"
+  install -Dm644 $pkgname.service       "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 sysusers-$pkgname.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
+  cd "$srcdir/bin"
+  install -Dsm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgbuild/LICENSE"
+  install -dm755           "$pkgdir/var/lib/$pkgname/"
+  install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

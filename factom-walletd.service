@@ -1,0 +1,15 @@
+[Unit]
+Description=Run the Factom Wallet service
+Documentation=https://github.com/FactomProject/factom-walletd
+After=network-online.target
+
+[Service]
+User=factom-walletd
+Group=factom-walletd
+EnvironmentFile=-/etc/default/factom-walletd
+ExecStart=/usr/bin/factom-walletd $FACTOM_WALLETD_OPTS
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
