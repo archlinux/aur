@@ -1,5 +1,5 @@
 pkgbase = linux-lts49-kallsyms
-	pkgver = 4.9.90
+	pkgver = 4.9.91
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = linux-lts49-kallsyms
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.90.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.90.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.91.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.91.sign
 	source = config
 	source = 90-linux.hook
 	source = linux-lts.preset

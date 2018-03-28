@@ -4,7 +4,7 @@
 pkgbase=linux-lts49-kallsyms
 #pkgbase=linux-lts-custom
 _srcname=linux-4.9
-pkgver=4.9.90
+pkgver=4.9.91
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
