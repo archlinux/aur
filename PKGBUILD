@@ -2,14 +2,14 @@
 _pkgname=passff
 pkgname=firefox-passff-git
 pkgver=1.2.r5.5536113
-pkgrel=1
+pkgrel=2
 pkgdesc="zx2c4 pass manager addon for firefox"
 arch=(any)
 url="https://github.com/passff/passff"
 license=('GPL2')
 groups=(firefox-addons)
 depends=('firefox>=50' 'python' 'passff-host')
-makedepends=(git make zip jq)
+makedepends=(git zip jq)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${_pkgname}::git+https://github.com/passff/${_pkgname}.git")
