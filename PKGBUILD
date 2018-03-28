@@ -1,7 +1,7 @@
-# Maintainer: Fabio Loli loli_fabio@protonmail.com -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=gravit-designer-bin
-pkgver=3.2.6
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         "gravit-designer.png"
         "LICENSE")
 #changelog=https://discuss.gravit.io/t/changelog-for-gravit-designer/71
-md5sums=('b9f59627273275c5a3283a64e9e69714'
+md5sums=('a17873bd75775ceb408b146a47af40af'
          '689ceb636418b52236edd98207fb9387'
          'a9c256cb9eb6bc9a280c5dccee2ad9af'
          '021ccafc0993d3c34265ae59048d4bf2')
