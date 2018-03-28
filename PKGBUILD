@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
 
 pkgname=kubernetes-bin
-pkgver=1.9.6
+pkgver=1.10.0
 _contribver=0.7.0
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
@@ -22,9 +22,9 @@ backup=('etc/kubernetes/apiserver'
 provides=('kubernetes')
 conflicts=('kubernetes')
 install=kubernetes.install
-sha256sums=('d0c0edba4410426bf9b7b8f9f0efd0d59816cdeaef25fc99311a90ece843c1d3'
+sha256sums=('d547dd66ce90fdf04fccc655ff02cc0c63ab1ce13f7e5ac136f77122ff2b22db'
             'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
-            '2a65bbbd67084bf89021f9139f60412d32153bed52e41eb625a616bc504fc6a9'
+            'f2e0505bee7d9217332b96be11d1b88c06f51049f7a44666b0ede80bfb92fdf6'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 package() {
