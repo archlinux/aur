@@ -11,14 +11,14 @@
 
 pkgname=networkmanager-consolekit
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 depends=("libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
-         'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
+         'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
          'bluez-libs' 'curl')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
@@ -51,6 +51,7 @@ sha256sums=('SKIP'
 prepare() {
   cd NetworkManager
 
+  git cherry-pick -n 4d1f090aedf05c0e2955d431638e311d1e18a52f
   NOCONFIGURE=1 ./autogen.sh
 }
 
