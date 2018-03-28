@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=3.0.6.2
+pkgver=3.1.2.1
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -21,22 +21,21 @@ depends=(python-dnspython
          zbar)
 source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(4745ca28b8e0faa7f6a227696b09d2a9305f8ad42959242f52ba5b35dd265ead
+sha256sums=(06c55cd308fc9605f4a698bcfd21a98a4f48e6a853b79f0349fe8e8726a1b869
             SKIP)
 
 build() {
-  cd Electrum-LTC-$pkgver/
+  cd Electrum-LTC-$pkgver
   ./setup.py build
 }
 
 package() {
-  cd Electrum-LTC-$pkgver/
+  cd Electrum-LTC-$pkgver
 
-  ./setup.py install -O1 --root="$pkgdir"/
+  ./setup.py install -O1 --root="$pkgdir"
 
-  mkdir -p "$pkgdir"/usr/share/doc/electrum-ltc/
-  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample "$pkgdir"/usr/share/doc/electrum-ltc/
+  install -Dm644 AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample \
+          -t "$pkgdir"/usr/share/doc/electrum-ltc
 
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
-  cp LICENCE "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
