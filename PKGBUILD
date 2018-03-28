@@ -5,7 +5,7 @@
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.10.10
+pkgver=0.10.12
 ghpkgrel=''
 pkgrel=2
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
@@ -16,15 +16,15 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229')
 makedepends=('patch')
-md5sums_i686=('deb361d78c89787393e6f23d99bcddb5'
+md5sums_i686=('74db63820d8129164d6611e190047aa8'
               'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_x86_64=('5e7076673fdfbe56114992ccfe1ec27a'
+md5sums_x86_64=('8ada96610680f2287cf16af09b113018'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv7h=('c0e5ad3d3d489e8538ac2ae3ca8a6eac'
+md5sums_armv7h=('445c60c8f24c48456430aab8042dbe6e'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_aarch64=('c0e5ad3d3d489e8538ac2ae3ca8a6eac'
+md5sums_aarch64=('445c60c8f24c48456430aab8042dbe6e'
                  'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv6h=('b698a4b9cd23eaa43775aa606ab3ee1b'
+md5sums_armv6h=('a717d85ecc51bcfa2190cfb3e883c9a4'
                 'ce5f9e54ab24ce0598da6c909995be9a')
 install='caddy-full-bin.install'
 
@@ -46,8 +46,7 @@ package() {
   install -Dm644 "${srcdir}/LICENSES.txt" "${pkgdir}/usr/share/licenses/${_realname}/LICENSE"
   install -Dm644 "${srcdir}/README.txt" "${pkgdir}/usr/share/doc/${_realname}/README.md"
   cat <<HEREDOC
-NOTE: The 'proxy_header' directive is deprectated and now called 'header_upstream'!
-Use 'caddy -validate -conf=/path/to/config' to check your config BEFORE restarting the service!
-For further details refer to the official release notes: https://github.com/mholt/caddy/releases/tag/v0.9.5
+Please note that all 'dns' plugins are omitted because one/some of them break the caddy build.
+See https://github.com/mholt/caddy/issues/2040#event-1485201695 for details.
 HEREDOC
 }
