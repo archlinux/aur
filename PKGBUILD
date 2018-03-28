@@ -14,7 +14,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cloudflare/${pkgname}/a
 sha256sums=('69ddddb25beebe65e6fe316b9ab3472eae1cd21b2f377447ddc104624233e419')
 
 _prefix=github.com/cloudflare/${pkgname}
-_binaries=(cfssl cfssljson cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan mkbundle multirootca)
+
+# all binaries except `mkbundle`(renamed to avoid conflict with `mono`)
+_binaries=(cfssl cfssljson cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan multirootca)
 
 prepare () {
   export GOPATH="${srcdir}"
@@ -29,12 +31,17 @@ build() {
     echo "building $bin"
     go install ${_prefix}/cmd/${bin}
   done
+
+  # special case to avoid clash with `mono`
+  go install -o cfssl-mkbundle ${_prefix}/cmd/mkbundle
 }
 
 package() {
   for bin in ${_binaries[@]} ; do
     install -m755 -D -t "${pkgdir}/usr/bin/" ${srcdir}/bin/${bin}
   done
+  install -m755 -D -t "${pkgdir}/usr/bin/" ${srcdir}/bin/cfssl-mkbundle
+
 
   install -m644 -D ${srcdir}/src/${_prefix}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
