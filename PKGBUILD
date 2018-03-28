@@ -1,7 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
-pkgver=17.4.17200.477
-pkgrel=2
+pkgver=18.0.18059.259
+pkgrel=1
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
 url="https://www.gov.uk/basic-paye-tools"
@@ -19,7 +19,7 @@ install=payetools-rti.install
 changelog=
 source=( "https://www.gov.uk/government/uploads/uploaded/hmrc/$pkgname-$pkgver-linux.zip" )
 noextract=( "$pkgname-$pkgver-linux.zip" )
-sha256sums=('4f914b3e4d79e33c27e6efb29d8cf45d5f8bd18b6e07b41bceaf9db7dd65ce28')
+sha256sums=('ca89a976339690d4a521b93de46ba0be1f784ec4f349a7acd4cccdc24a048e27')
 
 prepare() {
   unzip "$pkgname-$pkgver-linux.zip"
