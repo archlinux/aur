@@ -5,7 +5,7 @@
 
 pkgname=sparkleshare-git
 _gitname=SparkleShare
-pkgver=2.0.beta.1.r5.g8c033d26
+pkgver=2.0.1.r115.g69b0736f
 pkgrel=1
 pkgdesc="An open-source clone of Dropbox, written in C-sharp"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('mono' 'gtk-sharp-3' 'intltool'
 'webkit2-sharp' 'notify-sharp-3' 'desktop-file-utils' 'webkitgtk-sharp-git'
 'soup-sharp' 'dbus-sharp')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja')
 options=('!libtool')
 provides=('sparkleshare')
 conflicts=('sparkleshare')
@@ -27,17 +27,25 @@ pkgver() {
     git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+  rm -rf build
+  # Delete reference to post-install script (updating icons cache and desktop database)
+  sed -i 's/^meson\.add_install_script.*scripts\/post-install\.sh.*$//' meson.build
+
+  meson --prefix='/usr' build
+}
+
 build() {
   cd "$srcdir/$_gitname"
 
-  msg2 "Starting make..."
-  ./autogen.sh --prefix=/usr
-  make || return 1
+  msg2 "Starting ninja..."
+  ninja -C build
 }
 
 package() {
     cd ${srcdir}/${_gitname}
-    make DESTDIR=${pkgdir} install || return 1
+    DESTDIR="${pkgdir}" MESON_INSTALL_PREFIX="${pkgdir}" ninja -C build install
 
     install -m755 -d ${pkgdir}/usr/share/sparkleshare/html
     install -m755 -d ${pkgdir}/usr/share/sparkleshare/pixmaps
