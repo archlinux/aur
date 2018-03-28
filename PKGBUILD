@@ -73,6 +73,9 @@
 ## updated to upstream 6.0.1
 ## updated to upstream 6.0.2
 
+## Check for new LibreOffice releases:
+# $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
+
 pkgname=libreoffice-fresh-rpm
 pkgver=6.0.2
 pkgrel=1
