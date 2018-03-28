@@ -1,5 +1,5 @@
 pkgbase = factom-walletd
-	pkgdesc = Factom Wallet Daemon
+	pkgdesc = Server for the factom wallet web service api
 	pkgver = 0.4.2.21
 	pkgrel = 1
 	url = https://github.com/FactomProject/factomd

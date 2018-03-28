@@ -3,7 +3,7 @@
 pkgname='factom-walletd'
 pkgver='0.4.2.21'
 pkgrel='1'
-pkgdesc='Factom Wallet Daemon'
+pkgdesc='Server for the factom wallet web service api'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/FactomProject/factomd'
 license=('custom:MIT')
