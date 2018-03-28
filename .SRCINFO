@@ -1,0 +1,14 @@
+pkgbase = moonfltk
+	pkgdesc = Lua bindings for FLTK
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/stetre/moonfltk
+	arch = x86_64
+	license = GPL2
+	depends = lua
+	depends = fltk
+	source = https://github.com/stetre/moonfltk/archive/v0.5.tar.gz
+	md5sums = 66a76cefde0156591864afccae97be79
+
+pkgname = moonfltk
+
