@@ -1,9 +1,8 @@
 pkgbase = compiz-bzr
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
-	pkgver = 3977
-	pkgrel = 2
+	pkgver = 4143
+	pkgrel = 1
 	url = https://launchpad.net/compiz
-	install = compiz-bzr.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -28,22 +27,40 @@ pkgbase = compiz-bzr
 	depends = desktop-file-utils
 	depends = pyrex
 	depends = protobuf
-	depends = metacity>=3.16.0
+	depends = metacity
 	depends = glu
 	depends = libsm
 	depends = dconf
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz=0.9.12
-	conflicts = compiz-core
+	provides = compiz=0.9.13
+	provides = compiz-core=0.9.13
+	provides = compiz-bcop=0.9.13
+	provides = ccsm=0.9.13
+	provides = compiz-plugins-main=0.9.13
+	provides = compiz-plugins-extra=0.9.13
+	provides = compizconfig-python=0.9.13
+	provides = libcompizconfig=0.9.13
 	conflicts = compiz
-	source = compiz::bzr+http://bazaar.launchpad.net/~compiz-team/compiz/0.9.12/
+	conflicts = compiz-core
+	conflicts = compiz-gtk
+	conflicts = compiz-bcop
+	conflicts = ccsm
+	conflicts = compiz-fusion-plugins-main
+	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-fusion-plugins-experimental
+	conflicts = compizconfig-python
+	conflicts = libcompizconfig
+	conflicts = simple-ccsm
+	source = compiz::bzr+http://bazaar.launchpad.net/~compiz-team/compiz/0.9.13/
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
-	source = xfce4-notifyd-nofade.patch
+	source = reverse-unity-config.patch
+	source = screenshot-launch-fix.patch
 	sha256sums = SKIP
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
-	sha256sums = 273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198
+	sha256sums = 5da38bf4f7fd127a01ce9c68ab66d21fe69086228051073896d3d59c6bc400e8
+	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
 
 pkgname = compiz-bzr
 

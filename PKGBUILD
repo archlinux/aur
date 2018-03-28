@@ -3,30 +3,31 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=3977
-pkgrel=2
+pkgver=4143
+pkgrel=1
 _bzrname=compiz
-_bzrbranch=0.9.12
+_bzrbranch=0.9.13
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf')
 makedepends=('cmake' 'bzr' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
-conflicts=("compiz-core" "${_bzrname}")
-provides=("${_bzrname}=${_bzrbranch}")
+conflicts=("${_bzrname}" 'compiz-core' 'compiz-gtk' 'compiz-bcop' 'ccsm' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-experimental' 'compizconfig-python' 'libcompizconfig' 'simple-ccsm')
+provides=("${_bzrname}=${_bzrbranch}" "compiz-core=${_bzrbranch}" "compiz-bcop=${_bzrbranch}" "ccsm=${_bzrbranch}" "compiz-plugins-main=${_bzrbranch}" "compiz-plugins-extra=${_bzrbranch}" "compizconfig-python=${_bzrbranch}" "libcompizconfig=${_bzrbranch}")
 source=("${_bzrname}::bzr+http://bazaar.launchpad.net/~compiz-team/${_bzrname}/${_bzrbranch}/"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
-        "xfce4-notifyd-nofade.patch")
+        "reverse-unity-config.patch"
+        "screenshot-launch-fix.patch")
 sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198')
-install=${pkgname}.install
+            '5da38bf4f7fd127a01ce9c68ab66d21fe69086228051073896d3d59c6bc400e8'
+            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
 
 pkgver() {
   cd "${_bzrname}"
@@ -36,24 +37,24 @@ pkgver() {
 prepare() {
   cd "${_bzrname}"
 
+  # Reverse Unity specific configuration patches
+  patch -p1 -i "${srcdir}/reverse-unity-config.patch"
+
   # Fix decorator start command
   sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
-  patch -Np1 -i "${srcdir}/focus-prevention-disable.patch"
+  patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
 
   # Use Python 2
   find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
   find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
 
-  # Fix Python build directory with CMake 3.2
-  sed -i 's/${PY_BUILD_DIR}/lib/g' compizconfig/ccsm/CMakeLists.txt
-
   # Fix incorrect extents for GTK+ tooltips, csd etc
-  patch -Np1 -i "${srcdir}/gtk-extents.patch"
+  patch -p1 -i "${srcdir}/gtk-extents.patch"
 
-  # Ensure xfce4 notifications are not 'double faded'
-  patch -Np1 -i "${srcdir}/xfce4-notifyd-nofade.patch"
+  # Fix application launching for the screenshot plugin
+  patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
 }
 
 build() {
@@ -72,12 +73,9 @@ build() {
     -DBUILD_GTK=On \
     -DBUILD_METACITY=On \
     -DBUILD_KDE4=Off \
-    -DUSE_GCONF=Off \
-    -DUSE_GSETTINGS=On \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,ccp" \
-    -DCOMPIZ_DISABLE_PLUGIN_DBUS=On
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp" \
 
   make
 }
@@ -101,8 +99,5 @@ package() {
     install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/" 
     install -m644 generated/glib-2.0/schemas/*.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/" 
   fi 
-
-  # Remove GConf schemas
-  rm -rv "${pkgdir}/usr/share/gconf/" 
 }
 
