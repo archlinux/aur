@@ -18,8 +18,12 @@ package_python-fedmsg() {
   depends=('python3-kitchen')
   cd "fedmsg-${pkgver}"
 
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Ddm755 ${pkgname}/etc/fedmsg.d
+  for file in {base.py,endpoints.py,gateway.py,ircbot.py,logging.py,relay.py,ssl.py}; do
+    install -D -m644 fedmsg.d/${file} ${pkgdir}/etc/fedmsg.d/${file}
+  done
 }
 
 package_python2-fedmsg() {
