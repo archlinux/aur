@@ -10,7 +10,6 @@ pkgbase = doomseeker
 	makedepends = cmake
 	makedepends = make
 	makedepends = mercurial
-	depends = qt4
 	depends = zlib
 	depends = bzip2
 	depends = qt5-tools
@@ -19,6 +18,7 @@ pkgbase = doomseeker
 	optdepends = zandronum: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
+	optdepends = srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
 	source = hg+https://bitbucket.org/Doomseeker/doomseeker#revision=c2c7f37
 	source = doomseeker.desktop
 	source = doomseeker-launch-script.sh
