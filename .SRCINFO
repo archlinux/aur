@@ -1,0 +1,18 @@
+pkgbase = python-pytest-csv
+	pkgdesc = CSV output for pytest.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/nicoulaj/pytest-csv
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pytest-csv/pytest-csv-1.1.0.tar.gz
+	sha512sums = f7eeb66d39d4ad510a80c75f1c48462c8d6e45fd6d8d03dde2b28e3d7fe3f67d1c13bc2aa9b97dec2bef29d2b009f2b131ce92718ec844186805b57f58ba949c
+
+pkgname = python-pytest-csv
+
+pkgname = python2-pytest-csv
+
