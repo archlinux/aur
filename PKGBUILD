@@ -1,44 +1,38 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=maxima-jupyter-git
-pkgver=r196.a2395c4
+pkgver=r221.69a53c1
 pkgrel=1
 pkgdesc="A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/robert-dodier/maxima-jupyter"
 license=('BSD')
 depends=("maxima")
-conflicts=('maxima-ecl')
-options=('!strip')
 source=(
-  "$pkgname::git+https://github.com/robert-dodier/maxima-jupyter"
-  'https://beta.quicklisp.org/quicklisp.lisp'
-  'kernel.json')
-sha256sums=('SKIP'
-            '4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17'
-            'a637eae8a7c50e0253c1ec29c26e3eda23b15b68cdf893bde67cf67cd658f2f1')
+  "$pkgname::git+https://github.com/robert-dodier/maxima-jupyter")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  rm -rf quicklisp bin
-  mkdir -p quicklisp bin
-  maxima <<END
-parse_string("1");
-:lisp (load "quicklisp.lisp")
-:lisp (quicklisp-quickstart:install :path "quicklisp")
-:lisp (ql:quickload "cffi")
-:lisp (ql:quickload "trivial-dump-core")
-:lisp (load "maxima-jupyter-git/load-maxima-jupyter.lisp")
-:lisp (trivial-dump-core:save-executable "bin/maxima-jupyter" #'cl-jupyter:kernel-start)
-quit();
-END
-}
-
 package() {
-  install -Dm755 bin/maxima-jupyter "$pkgdir/usr/bin/maxima-jupyter"
-  install -Dm644 kernel.json "$pkgdir/usr/share/jupyter/kernels/maxima/kernel.json"
-  install -Dm644 maxima-jupyter-git/LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter-git/LICENSE"
+  cd $pkgname
+  install -Dm644 load-maxima-jupyter.lisp "$pkgdir/usr/share/maxima-jupyter/load-maxima-jupyter.lisp"
+  install -Dm644 src/config.lisp "$pkgdir/usr/share/maxima-jupyter/src/config.lisp"
+  install -Dm644 src/display.lisp "$pkgdir/usr/share/maxima-jupyter/src/display.lisp"
+  install -Dm644 src/evaluator.lisp "$pkgdir/usr/share/maxima-jupyter/src/evaluator.lisp"
+  install -Dm644 src/iopub.lisp "$pkgdir/usr/share/maxima-jupyter/src/iopub.lisp"
+  install -Dm644 src/kernel.lisp "$pkgdir/usr/share/maxima-jupyter/src/kernel.lisp"
+  install -Dm644 src/maxima-jupyter.asd "$pkgdir/usr/share/maxima-jupyter/src/maxima-jupyter.asd"
+  install -Dm644 src/message.lisp "$pkgdir/usr/share/maxima-jupyter/src/message.lisp"
+  install -Dm644 src/myjson.lisp "$pkgdir/usr/share/maxima-jupyter/src/myjson.lisp"
+  install -Dm644 src/packages.lisp "$pkgdir/usr/share/maxima-jupyter/src/packages.lisp"
+  install -Dm644 src/shell.lisp "$pkgdir/usr/share/maxima-jupyter/src/shell.lisp"
+  install -Dm644 src/stdin.lisp "$pkgdir/usr/share/maxima-jupyter/src/stdin.lisp"
+  install -Dm644 src/user.lisp "$pkgdir/usr/share/maxima-jupyter/src/user.lisp"
+  install -Dm644 src/utils.lisp "$pkgdir/usr/share/maxima-jupyter/src/utils.lisp"
+  python install-maxima-jupyter.py --root /usr/share/maxima-jupyter \
+    --maxima /usr/bin/maxima --prefix "$pkgdir/usr"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter/LICENSE"
 }
