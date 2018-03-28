@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-dav-ext
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.9
+_nginxver=1.13.10
 
 pkgdesc='Nginx mainline module with support for missing PROPFIND and OPTIONS WebDAV methods'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/arut/nginx-dav-ext-module/archive/v$pkgver/nginx-dav-ext-module-$pkgver.tar.gz
 )
 
-sha256sums=('5faea18857516fe68d30be39c3032bd22ed9cf85e1a6fdf32e3721d96ff7fa42'
+sha256sums=('336182104d90be3c40c874f7f06f87dbb357da1dc74ea573ad081a0f29a94885'
             '6b004eed8ea16ad8de4d304027bf0413cc323a95914e58625a7dc066481aae3a')
 
 build() {
