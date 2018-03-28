@@ -13,13 +13,13 @@ depends=('java-runtime-common' 'jre7-openjdk')
 license=('custom')
 source=('https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-'$pkgver'.tar.gz'
 	ProtocaseDesigner.desktop)
-md5sums=('790133b8c4bf8baea3691024b0c9105b'
+md5sums=('876d0202c38fd3fe2573970015927b05'
 	 'f66d02094444eac61f468371589fcc9c')
          
 [ "$CARCH" = "x86_64" ] && source=('https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-'$pkgver'.tar.gz'
 				   ProtocaseDesigner.desktop)
-[ "$CARCH" = "x86_64" ] && md5sums=('876d0202c38fd3fe2573970015927b05'
-				    'df197d715c974e7ab6b4e125495c1cad')
+[ "$CARCH" = "x86_64" ] && md5sums=('df197d715c974e7ab6b4e125495c1cad'
+				    'f66d02094444eac61f468371589fcc9c')
 
 package() {
 	
