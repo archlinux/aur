@@ -4,7 +4,7 @@ _pkgname=pytest-csv
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('GPL')
 pkgdesc="CSV output for pytest."
@@ -17,20 +17,12 @@ prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}
 }
 
-build() {
-  cd "$srcdir"/${_pkgname}-$pkgver
-  python setup.py build_ext --static-extras
-
-  cd "$srcdir"/${_pkgname}-$pkgver-py2
-  python2 setup.py build_ext --static-extras
-}
-
 package_python-pytest-csv() {
-  cd gr-$pkgver
+  cd ${_pkgname}-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-pytest-csv() {
-  cd gr-$pkgver-py2
+  cd ${_pkgname}-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
