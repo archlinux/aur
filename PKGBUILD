@@ -1,55 +1,40 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: argymeg <argymeg at gmail dot com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=firefox-wayland
-pkgver=47.0
-pkgrel=3
-pkgdesc="Standalone web browser from mozilla.org with Wayland patches"
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
-url="https://bugzilla.mozilla.org/show_bug.cgi?id=635134"
-depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
-         'sqlite' 'ttf-font' 'icu')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13')
+pkgver=59.0.2
+pkgrel=1
+pkgdesc="Standalone web browser from mozilla.org with Wayland support enabled"
+arch=(x86_64)
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/firefox/"
+provides=('firefox')
+conflicts=('firefox')
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
+         nss hunspell sqlite ttf-font libpulse libvpx icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
+             autoconf2.13 rust mercurial clang llvm jack gtk2)
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'upower: Battery API')
-conflicts=("firefox")
-provides=("firefox")
-options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        mozconfig
-        firefox.desktop
-        firefox-install-dir.patch
-        vendor.js
-        firefox-symbolic.svg
-        firefox-gtk3-20.patch
-	mozilla-1245076.patch
-	mozilla-1245076-1.patch
-        no-libnotify.patch
-	firefox-wayland.patch)
-sha256sums=('51936fcf86c5f84e7fdd377d07658a02a1c99d2ebdc3c8aae01d70f947331d12'
-            'ee8f508442147ad5afcd9c9e60d50d22659ad8c246d35ce8c97aa4463be3a9bc'
-            'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'f1aaf36c2f059e027fc7384c0943ccd07c6e3d58721ec7a96d5d913a106717cc'
-            '05574c7d0f259da161bcd0e2e8bc9a19401e620ff29439da935d349eebb60efa'
-            '6e7cba25c52b246da183b8309e7b56208bd991d1a7adb40063c5702a6f3722ea'
-            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7'
-	    '011b6769ff9dc793013b3740bb72b96f2830764d5d67e20dcdab29a25d45f288')
-validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech')
+options=(!emptydirs !makeflags !strip)
+_repo=https://hg.mozilla.org/mozilla-unified
+source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+        firefox.desktop firefox-symbolic.svg
+        no-crmf.diff)
+sha256sums=('SKIP'
+            '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
+            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
+            '02000d185e647aa20ca336e595b4004bb29cdae9d8f317f90078bdcc7a36e873')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-_google_default_client_id=413772536636.apps.googleusercontent.com
-_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # Mozilla API keys (see https://location.services.mozilla.com/api)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -57,74 +42,119 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-
 prepare() {
-  cd firefox-$pkgver
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
 
-  cp ../mozconfig .mozconfig
-  patch -Np1 -i ../firefox-install-dir.patch
+  cd mozilla-unified
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
-  patch -Np1 -i ../firefox-gtk3-20.patch
-
-  # GCC 6
-  patch -Np1 -i ../mozilla-1245076.patch
-  patch -Np1 -i ../mozilla-1245076-1.patch
-
-  # Notifications with libnotify are broken
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
-  patch -Np1 -i ../no-libnotify.patch
-
-  patch -Np1 -i ../firefox-wayland.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
 
   echo -n "$_google_api_key" >google-api-key
-  echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
-
-  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
-  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
-
   echo -n "$_mozilla_api_key" >mozilla-api-key
-  echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  mkdir "$srcdir/path"
-  ln -s /usr/bin/python2 "$srcdir/path/python"
+  cat >.mozconfig <<END
+ac_add_options --enable-application=browser
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust-simd
+
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=1
+
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+
+# Wayland support
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+END
 }
 
 build() {
-  cd firefox-$pkgver
+  cd mozilla-unified
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
-  # Hardening
-  LDFLAGS+=" -Wl,-z,now"
-
-  # GCC 6
-  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-
   export PATH="$srcdir/path:$PATH"
+  export MOZ_SOURCE_REPO="$_repo"
 
   # Do PGO
-  #xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-  #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build
+  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
+  #  MOZ_PGO=1 ./mach build
+  ./mach build
+  ./mach buildsymbols
 }
 
 package() {
-  cd firefox-$pkgver
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  cd mozilla-unified
+  DESTDIR="$pkgdir" ./mach install
+  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
-  install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.requested", "");
 
-  for i in 16 22 24 32 48 256; do
-      install -Dm644 browser/branding/official/default$i.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+
+// Opt all of us into e10s, instead of just 50%
+pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
+END
+
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dm644 browser/branding/official/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
   done
-  install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox.png"
-  install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
@@ -132,15 +162,22 @@ package() {
   install -Dm644 ../firefox-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
-  install -Dm644 ../firefox.desktop \
+  install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/firefox.desktop"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
+  rm -r "$pkgdir/usr/lib/firefox/dictionaries"
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
-  # Replace duplicate binary with symlink
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/firefox" <<END
+#!/bin/sh
+exec /usr/lib/firefox/firefox "\$@"
+END
+
+  # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
+  ln -srf "$pkgdir/usr/bin/firefox" \
+    "$pkgdir/usr/lib/firefox/firefox-bin"
 }
