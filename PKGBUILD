@@ -12,7 +12,7 @@ conflicts=('transmission-remote-gui-bin')
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
         ${_pkgname}.desktop)
 sha1sums=('963aa4d054e5a36d5f978521a9eec1dffcc98b7f'
-          'd1678311a60ab60235d9029c0d19c777e2fa6ebf')
+          'df16780ed1f875b316e3e2e6d01dc4e886281d60')
 
 build() {
   mkdir -p "${srcdir}/config"

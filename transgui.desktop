@@ -7,6 +7,5 @@ Exec=/usr/bin/transgui %U
 Icon=/usr/share/pixmaps/transgui.png
 Terminal=false
 Type=Application
-Categories=Network;FileTransfer;P2P;GTK;
+Categories=Network;FileTransfer;P2P;Qt;
 MimeType=application/x-bittorrent;x-scheme-handler/magnet
-
