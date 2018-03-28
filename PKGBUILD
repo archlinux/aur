@@ -3,7 +3,7 @@
 
 pkgname=lilypond-devel
 pkgver=2.19.81
-pkgrel=2
+pkgrel=3
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
@@ -16,17 +16,14 @@ depends=('fontconfig'
          'python2')
 makedepends=('fontforge'
              'gsfonts'
-             't1utils'
+             't1utils-git'
 	     'ghostscript'
              'texlive-core'
 	     'tex-gyre-fonts'
+	     'texlive-langcyrillic'
 	     'dblatex')
-optdepends=('netpbm: building HTML documentation'
-            'imagemagick: building HTML documentation'
-            'ttf-kochi-substitute: building HTML documentation'
-            'texi2html>=1.82: building HTML documentation'
-            'rsync: installing HTML documentation'
-	    'extractpdfmark: for reducing the size of pdf output significantly')
+optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
+	   'tk: for the gui')
 provides=("lilypond=$pkgver")
 conflicts=('lilypond' 'lilypond-git')
 source=("http://lilypond.org/downloads/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
@@ -49,23 +46,24 @@ prepare() {
 build() {
   cd "$srcdir/lilypond-$pkgver"
 
-  export GUILE=/usr/bin/guile
-  export GUILE_CONFIG=/usr/bin/guile-config
   export PYTHON="python2"
   export PYTHON_CONFIG="python2-config"
   export GUILE=/usr/bin/guile1.8
   export GUILE_CONFIG=/usr/bin/guile-config1.8
 
-  ./autogen.sh --prefix=/usr \
-              --disable-documentation 
+  ./autogen.sh --noconfigure
+  [[ -d build ]] || mkdir build
+  cd build
+  ../configure --prefix=/usr \
+               --disable-documentation 
 	        
   # FIXME: the extra LDFLAG should not be needed;
   # this is a regression somewhere
-  make LDFLAGS+=" -pthread" all
+  make
 }
 
 package() {
-  cd "$srcdir/lilypond-$pkgver"
+  cd "$srcdir/lilypond-$pkgver/build"
   make DESTDIR="$pkgdir/" \
        vimdir="/usr/share/vim/vimfiles" install
 

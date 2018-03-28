@@ -1,17 +1,18 @@
 pkgbase = lilypond-devel
 	pkgdesc = An automated music engraving system (development version)
 	pkgver = 2.19.81
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lilypond.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = fontforge
 	makedepends = gsfonts
-	makedepends = t1utils
+	makedepends = t1utils-git
 	makedepends = ghostscript
 	makedepends = texlive-core
 	makedepends = tex-gyre-fonts
+	makedepends = texlive-langcyrillic
 	makedepends = dblatex
 	depends = fontconfig
 	depends = freetype2
@@ -19,12 +20,8 @@ pkgbase = lilypond-devel
 	depends = pango
 	depends = glib2
 	depends = python2
-	optdepends = netpbm: building HTML documentation
-	optdepends = imagemagick: building HTML documentation
-	optdepends = ttf-kochi-substitute: building HTML documentation
-	optdepends = texi2html>=1.82: building HTML documentation
-	optdepends = rsync: installing HTML documentation
 	optdepends = extractpdfmark: for reducing the size of pdf output significantly
+	optdepends = tk: for the gui
 	provides = lilypond=2.19.81
 	conflicts = lilypond
 	conflicts = lilypond-git
