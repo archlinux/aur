@@ -1,8 +1,8 @@
 # Maintainer: vimacs <https://vimacs.lcpu.club>
 
 pkgname=mrustc-git
-pkgver=0.0.3012
-pkgrel=2
+pkgver=0.0.3016
+pkgrel=1
 pkgdesc='Alternative rust compiler written in C++'
 arch=('x86_64')
 url='https://github.com/thepowersgang/mrustc'
@@ -33,5 +33,11 @@ package() {
 	install -D bin/mrustc "$pkgdir/usr/bin/mrustc"
 	install -D tools/bin/minicargo "$pkgdir/usr/bin/minicargo"
 	install -d "$pkgdir/usr/share/mrustc"
-	cp -r script-overrides "$pkgdir/usr/share/mrustc/script-overrides"
+	cp -r script-overrides lib "$pkgdir/usr/share/mrustc/"
+
+	sed -e 's/bin\/mrustc/\/usr\/bin\/mrustc/g' \
+		-e 's/tools\/bin/\/usr\/bin/g' \
+		-e 's/\(script-overrides\|lib\)\//\/usr\/share\/mrustc\/\1\//g' \
+		-e '/Makefile all/d' -e '/tools\/minicargo/d' \
+		minicargo.mk > "$pkgdir/usr/share/mrustc/minicargo.mk"
 }
