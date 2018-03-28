@@ -1,0 +1,16 @@
+pkgbase = annie-git
+	pkgdesc = A fast, simple and clean video downloader written in Go
+	pkgver = 0.6.2.r5.g7f029d2
+	pkgrel = 1
+	url = https://github.com/iawia002/annie
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = ffmpeg
+	provides = annie
+	conflicts = annie
+	source = git+https://github.com/iawia002/annie
+	sha256sums = SKIP
+
+pkgname = annie-git
+
