@@ -52,8 +52,12 @@ build() {
   check_option debug n && debug=yes
 
   cd glib
+if [ n != "$RUN_PREPARE" ]; then
+  if [ 1 = "$ccache" ]; then
+    export CC=${CC:-ccache ${_target}-gcc}
+    export CXX=${CXX:-ccache ${_target}-g++}
+  fi
   unset CFLAGS CXXFLAGS
-if true; then
   glib_cv_stack_grows=no \
   glib_cv_uscore=no \
   glib_cv_compliant_posix_memalign=1 \
