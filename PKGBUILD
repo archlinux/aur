@@ -5,14 +5,14 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.8.11.dev.r13.g6078306a
+pkgver=1.8.11.dev.r43.gb09a95c6
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
 depends=(libnm-glib-git libgudev gtk3 mobile-broadband-provider-info iso-codes)
-makedepends=(mesa libsecret libnotify libmm-glib intltool gobject-introspection git)
+makedepends=(meson libsecret libnotify libmm-glib intltool gobject-introspection git)
 options=('emptydirs')
 source=(git://git.gnome.org/network-manager-applet)
 sha256sums=('SKIP')
