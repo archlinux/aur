@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
 	cd "${pkgname%-git}"
-	go build 
+	go build
 }
 
 package(){
