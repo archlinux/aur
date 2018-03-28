@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-memc
 pkgver=0.18
-pkgrel=7
+pkgrel=8
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.9
+_nginxver=1.13.10
 
 pkgdesc='Extended version of the standard memcached module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('5faea18857516fe68d30be39c3032bd22ed9cf85e1a6fdf32e3721d96ff7fa42'
+sha256sums=('336182104d90be3c40c874f7f06f87dbb357da1dc74ea573ad081a0f29a94885'
             '4e280d1dcb8b312bc7875604c1e35b17879279126d3d5fbf482aa9cc7c11276d')
 
 build() {
