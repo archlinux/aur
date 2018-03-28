@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.11.1.r19596.ge27963d17
+pkgver=1.11.2.r19808.ga18758522
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -25,7 +25,8 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
-optdepends=('dhclient: DHCPv6 support'
+optdepends=( 'iwd: alternative way to connect to wifi'
+'dhclient: DHCPv6 support'
     'dnsmasq: connection sharing'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
@@ -124,7 +125,7 @@ build() {
     --without-netconfig \
     --without-ofono \
     --without-selinux \
-    --with-iwd
+    --with-iwd=yes
 
      sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 
