@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url='https://github.com/amberframework/amber'
 license=(MIT)
 depends=('crystal' 'shards' 'sqlite')
-source=("https://github.com/amberframework/amber/archive/v$pkgver.zip")
+source=("https://github.com/amberframework/amber/archive/v$pkgver.tar.gz")
 sha256sums=('ce6f08f68f237750f67220f38fc5fb4abf5058becd784eea6f8e34adef6d78bb')
 
 build() {
