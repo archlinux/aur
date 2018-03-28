@@ -38,9 +38,13 @@ prepare() {
 }
 
 build() {
-  unset CFLAGS CXXLAGS
   cd $_pkgname-$pkgver
-if true; then
+if [ n != "$RUN_PREPARE" ]; then
+  if [ 1 = "$ccache" ]; then
+    export CC=${CC:-ccache ${_target}-gcc}
+    export CXX=${CXX:-ccache ${_target}-g++}
+  fi
+  unset CFLAGS CXXFLAGS
   ./configure \
     --host=${_target} \
     --prefix=/usr/${_target} \
