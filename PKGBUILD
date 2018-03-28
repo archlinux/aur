@@ -2,7 +2,7 @@
 
 pkgname=cfssl
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CloudFlare PKI and TLS toolkit"
 arch=('i686' 'x86_64')
 url="https://cfssl.org/"
@@ -15,8 +15,7 @@ sha256sums=('69ddddb25beebe65e6fe316b9ab3472eae1cd21b2f377447ddc104624233e419')
 
 _prefix=github.com/cloudflare/${pkgname}
 
-# all binaries except `mkbundle`(renamed to avoid conflict with `mono`)
-_binaries=(cfssl cfssljson cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan multirootca)
+_binaries=(cfssl cfssljson cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan mkbundle multirootca)
 
 prepare () {
   export GOPATH="${srcdir}"
@@ -31,16 +30,14 @@ build() {
     echo "building $bin"
     go install ${_prefix}/cmd/${bin}
   done
-
-  # special case to avoid clash with `mono`
-  go install -o cfssl-mkbundle ${_prefix}/cmd/mkbundle
 }
 
 package() {
   for bin in ${_binaries[@]} ; do
     install -m755 -D -t "${pkgdir}/usr/bin/" ${srcdir}/bin/${bin}
   done
-  install -m755 -D -t "${pkgdir}/usr/bin/" ${srcdir}/bin/cfssl-mkbundle
+  # special case to avoid clash with `mono`
+  mv ${pkgdir}/usr/bin/mkbundle ${pkgdir}/usr/bin/cfssl-mkbundle
 
   install -m644 -D ${srcdir}/src/${_prefix}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
