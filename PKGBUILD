@@ -35,8 +35,12 @@ sha256sums=('6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734'
 build() {
   cd "$_pkgbase-$pkgver"
 
+if [ n != "$RUN_PREPARE" ]; then
+  if [ 1 = "$ccache" ]; then
+    export CC=${CC:-ccache ${_target}-gcc}
+    export CXX=${CXX:-ccache ${_target}-g++}
+  fi
   unset CFLAGS CXXFLAGS
-if true; then 
   ./configure --prefix=/usr/${_target} \
               --libdir=/usr/${_target}/lib \
               --bindir=/usr/${_target}/bin \
