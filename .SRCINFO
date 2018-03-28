@@ -1,12 +1,11 @@
 pkgbase = siftgpu
 	pkgdesc = Sift Features over GPU using GLSL or CUDA
 	pkgver = 0.5.400
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ccwu.me/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = gcc5
 	makedepends = git
 	depends = glew>=1.8
 	depends = freeglut>=2.7

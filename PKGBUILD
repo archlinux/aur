@@ -2,14 +2,14 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=siftgpu
 pkgver=0.5.400
-pkgrel=5
+pkgrel=6
 pkgdesc="Sift Features over GPU using GLSL or CUDA"
 arch=('i686' 'x86_64')
 url="http://ccwu.me/"
 license=('custom')
 depends=('glew>=1.8' 'freeglut>=2.7' 'devil>=1.7')
 optdepends=('cuda>=5.0')
-makedepends=(gcc5 git)
+makedepends=(git)
 source=("${pkgname}::git+https://github.com/pitzer/SiftGPU"
         'makefile-cuda.patch')
 sha256sums=('SKIP'
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 prepare() {
   cd ${srcdir}/${pkgname}
   patch -Np1 -i ../makefile-cuda.patch
-  sed -i 's:g++:g++-5:' makefile
+  #sed -i 's:g++:g++-5:' makefile
 }
 
 build() {
