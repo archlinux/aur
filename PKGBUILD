@@ -2,43 +2,55 @@
 # Maintainer: Sébastien Faucheux <faucheux.seb@gmail.com>
 
 pkgname=gnome-settings-daemon-shutdown
-pkgver=3.26.2
+_pkgname=gnome-settings-daemon
+pkgver=3.28.0+4+gef32315a
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with shutdown button action"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL)
 depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse libnotify libsystemd
          libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue2 nss
          libgudev gtk3-print-backends libnm)
-makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python git gnome-common)
-options=('!emptydirs')
-install=gnome-settings-daemon.install
-url="http://www.gnome.org"
+makedepends=(xf86-input-wacom libxslt docbook-xsl python git meson)
+
+url="https://git.gnome.org/browse/gnome-settings-daemon"
 groups=(gnome)
 provides=('gnome-settings-daemon')
 conflicts=('gnome-settings-daemon')
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname:0:21}/${pkgver:0:4}/${pkgname:0:21}-$pkgver.tar.xz
+
+_commit=ef32315a4142a60fc1defb940ba9306a6fb3a085  # master
+source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=$_commit"
+        "git+https://git.gnome.org/browse/libgnome-volume-control"
         shutdown.patch)
-sha256sums=('5a3d156b35e03fa3c28fddd0321f6726082a711973dee2af686370faae2e75e4'
-            'cd2136653c24f85865b9011fdc3620448b771d9c50a7e7e16191c352ff02feda')
+
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  cd ${pkgname:0:21}-$pkgver
+  cd $_pkgname
+  git submodule init
+  git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
+  git submodule update
   patch -Np1 -i ../shutdown.patch
 }
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/^GNOME_SETTINGS_DAEMON_//;s/_/./g;s/-/+/g'
+}
+
 build() {
-  cd ${pkgname:0:21}-$pkgver
+  arch-meson $_pkgname build
+  ninja -C build
+}
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib/${pkgname:0:21} --disable-static
-
-  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+check() {
+  cd build
+  # Needs python-dbusmock
+  #meson test
 }
 
 package() {
-  cd ${pkgname:0:21}-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
