@@ -1,0 +1,21 @@
+pkgbase = python-astroquery-git
+	pkgdesc = Set of tools for querying astronomical web forms and databases
+	pkgver = 0.3.7.r188
+	pkgrel = 1
+	url = http://astroquery.readthedocs.org/en/latest/
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	depends = python>=3.4
+	depends = python-numpy>=1.9
+	depends = python-astropy>=1.0
+	depends = python-requests
+	depends = python-keyring
+	depends = python-beautifulsoup4
+	depends = python-html5lib
+	depends = python-astropy-helpers
+	source = git://github.com/astropy/astroquery
+	md5sums = SKIP
+
+pkgname = python-astroquery-git
+
