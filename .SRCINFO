@@ -15,6 +15,7 @@ pkgbase = doomseeker
 	depends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
+	optdepends = qt4: A cross-platform application and UI framework
 	optdepends = zandronum: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom

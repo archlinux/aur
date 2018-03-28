@@ -11,7 +11,8 @@ license=("GPL2")
 
 depends=('zlib' 'bzip2' 'qt5-tools' 'qt5-base' 'qt5-multimedia')
 makedepends=('gcc' 'cmake' 'make' 'mercurial')
-optdepends=('zandronum: GZDoom fork supporting client/server multiplayer'
+optdepends=('qt4: A cross-platform application and UI framework'
+            'zandronum: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
