@@ -5,10 +5,10 @@ pkgver='0.4.2.21'
 pkgrel='1'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://github.com/FactomProject/factomd'
+url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
-source=("git+https://github.com/FactomProject/$pkgname#tag=v$pkgver")
+source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 build()
 {
