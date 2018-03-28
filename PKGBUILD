@@ -17,11 +17,17 @@ sha256sums=('d9dc32efba7e74f788fcc4f212a43216fc37cf5f23f4c2339664d473353aedf6')
 
 build() {
   cd $_pkgname-$pkgver
+if [ n != "$RUN_PREPARE" ]; then
+  if [ 1 = "$ccache" ]; then
+    export CC=${CC:-ccache ${_target}-gcc}
+    export CXX=${CXX:-ccache ${_target}-g++}
+  fi
   unset CFLAGS CXXFLAGS
   ./configure --prefix=/usr/${_target} \
     --host=${_target} \
     --disable-static
   make
+fi
 }
 
 strip() {
