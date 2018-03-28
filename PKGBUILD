@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.0.4.1
+pkgver=56.1.0
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _commit=d27e63b27954615324864f3f9f7088a84ad60ebd
-source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
@@ -42,7 +42,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         wifi-disentangle.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
-        no-plt.diff)
+        no-plt.diff
+        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch")
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -60,7 +61,8 @@ sha256sums=('SKIP'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
             '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
-            'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa')
+            'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
+            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d')
 
 prepare() {
   mkdir path
@@ -149,7 +151,6 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
 ac_add_options --disable-signmar
-ac_add_options --disable-stylo
 ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
@@ -168,6 +169,7 @@ ac_add_options --disable-gamepad
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
+ac_add_options --enable-stylo
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
@@ -182,6 +184,9 @@ END
   patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
+  
+  # Global Menu support
+  patch -Np1 -i "..unity-menubar-$pkgver.patch"
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
