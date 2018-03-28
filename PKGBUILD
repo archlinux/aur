@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=blueshift-git
-pkgver=1.90.3.r1.g3f2d049
+pkgver=1.90.5.r15.gbb1758e
 pkgrel=1
 epoch=
 pkgdesc="An extensible and highly configurable alternative to redshift."
@@ -9,7 +9,7 @@ url="https://github.com/maandree/blueshift"
 license=('GPLv3')
 groups=()
 depends=('python' 'pylibgamma' 'solar-python' 'argparser' 'libxcb' 'adjbacklight' 'wget' 'auto-auto-complete')
-makedepends=('git')
+makedepends=('git' 'zip')
 optdepends=()
 checkdepends=()
 provides=()
