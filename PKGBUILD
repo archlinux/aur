@@ -18,7 +18,7 @@ sha256sums=("acfeedc8b34258cd460ac8cf1f88f4e326aa6e58c97613ad840255a2e551cf98")
 
 build(){
 	cd "${pkgname}-${pkgver}"
-	go build 
+	go build
 }
 
 package(){
