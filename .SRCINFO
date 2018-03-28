@@ -1,15 +1,18 @@
 pkgbase = zig
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.1.1
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = http://ziglang.org/
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = llvm
 	depends = clang
-	source = https://s3.amazonaws.com/ziglang.org/download/0.1.1/zig-0.1.1.tar.xz
-	md5sums = e1d62c8f196acef9173c88b4787bf4eb
+	depends = libxml2
+	depends = zlib
+	source = https://ziglang.org/download/0.2.0/zig-0.2.0.tar.xz
+	md5sums = 3c2ccbbeb0e7c90bc4336a95369fb181
 
 pkgname = zig
 
