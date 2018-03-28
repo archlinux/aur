@@ -1,0 +1,14 @@
+pkgbase = luced
+	pkgdesc = The Lucid Editor - a fast & lightweight text editor for X11.
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://luced.de
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	depends = libxpm
+	depends = xorg-fonts-75dpi
+	source = https://luced.de/releases/luced-0.01.tar.gz
+
+pkgname = luced
+
