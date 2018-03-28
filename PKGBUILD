@@ -3,8 +3,8 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=babl-git
-pkgver=0.1.42.2.g64c10d4
-pkgrel=2
+pkgver=0.1.44.1.gb99bc29
+pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
 url="http://www.gegl.org/babl"
