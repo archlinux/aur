@@ -1,6 +1,6 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://www.knot-resolver.cz/
 	install = install
@@ -15,10 +15,10 @@ pkgbase = knot-resolver
 	depends = hiredis
 	depends = libmemcached
 	depends = libsystemd
-	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-2.1.0.tar.xz
+	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-2.2.0.tar.xz
 	source = kresd.conf
 	source = root.keys
-	sha256sums = 0e90ac37965839705bc2154cb07587cb31dd5816e37a14f3552d65676638fc6a
+	sha256sums = 7bb7f0cd8bbb1d99706d56ed119bdffce094628479438896f3740644efe614fa
 	sha256sums = 929658c7432252d5123ff11ee07759c595c8f5a3f4320a62d451a5f69cd2254a
 	sha256sums = 06c74ef5ef53344c78c9af2b29dc458a2abe93f1bff429705955c033e7a0686f
 
