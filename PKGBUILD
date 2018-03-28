@@ -1,9 +1,9 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Baedert
 
 pkgname=corebird-git
 epoch=1
-pkgver=1.7.2.r0.g6d2f3f26
+pkgver=1.7.4.r0.g18a39ba6
 pkgrel=1
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
@@ -13,14 +13,12 @@ depends=('gtk3'
          'rest'
          'libgee'
          'sqlite3'
-         'intltool'
          'gst-plugins-good'
          'gst-plugins-bad'
          'gst-libav'
          'gspell')
-optdepends=('noto-fonts-emoji: Emoji support'
-            'emojione-fonts: Emoji support')
-makedepends=('vala' 'git' 'meson')
+optdepends=('noto-fonts-emoji: Emoji support')
+makedepends=('vala' 'git' 'meson' 'intltool')
 provides=('corebird')
 conflicts=('corebird')
 source=("${pkgname}::git+https://github.com/baedert/corebird")
