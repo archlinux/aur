@@ -1,0 +1,14 @@
+pkgbase = freedict-tools
+	pkgdesc = Tools to compile the Freedict dictionaries
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.freedict.org/
+	arch = any
+	license = GPL
+	license = GPL3
+	license = CC-BY-SA
+	source = freedict-tools_0.1.0.tar.gz::https://github.com/freedict/tools/archive/v0.1.0.tar.gz
+	sha512sums = 60b1d5027cb9609e14bf13c260c1d5e5158b1f23dc631fa625ba1452fbdea37be915bfe2dbe5c0f425ebe930104799d1fb73b398a48066984990e4a0cd7ebb4a
+
+pkgname = freedict-tools
+
