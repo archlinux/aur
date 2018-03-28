@@ -6,7 +6,7 @@ pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
 pkgver=v6.2.6.r1.g2370068
 _pkgver=6.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/pamac"
@@ -51,9 +51,6 @@ package_pamac-aur-git() {
   cd "$_pkgname"
   cd builddir
   DESTDIR="$pkgdir" ninja install
-  # enable systemd timer
-  mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants"
-  ln -sf "/usr/lib/systemd/system/pamac-cleancache.timer" "$pkgdir/etc/systemd/system/multi-user.target.wants"
   # removed pamac-mirrorlist-timer, useless for Archlinux
   # remove pamac-tray-appindicator
   rm "$pkgdir/usr/bin/pamac-tray-appindicator"

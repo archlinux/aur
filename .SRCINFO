@@ -1,7 +1,7 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
 	pkgver = v6.2.6.r1.g2370068
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/manjaro/pamac
 	arch = i686
 	arch = x86_64
