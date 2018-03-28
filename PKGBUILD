@@ -1,6 +1,6 @@
 # Maintainer: Sander Vrijders <sander.vrijders@ugent.be>
 pkgname=ouroboros-git
-pkgver=0.10.0.r0.ge095d0a
+pkgver=0.11.0.r0.g2e9665b
 pkgrel=1
 pkgdesc="Inter-Process Communications (IPC) subsystem for POSIX operating systems"
 arch=('x86_64' 'i686' 'arm')
