@@ -1,22 +1,27 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.1.1r2346.2e010c60
+pkgver=0.2.0r2479.5b00dee0
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
 url='http://ziglang.org'
 license=('MIT')
-depends=('llvm' 'clang')
+depends=('llvm' 'clang' 'libxml2' 'zlib')
 makedepends=('cmake')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git#commit=2e010c60ae006944ae20ab8b3445598471c9f1e8")
+source=("git://github.com/zig-lang/zig.git")
 md5sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$provides"
+    patch -Np1 -i "$srcdir/../force_dynamic_llvm.patch"
+}
 
 pkgver() {
     cd "$srcdir/$provides"
-    printf "0.1.1r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.2.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -33,23 +38,10 @@ build() {
 }
 
 check() {
-    # We rebuild and install into a new local directory so we can test the
-    # stdlib before installing. The `--zig-install-prefix` option does not work
-    # as expected with the `build` command right now so, hence the workaround.
-    cd "$srcdir/$provides"
-    mkdir -p build_test
-    cd build_test
-    cmake .. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_EXE_LINKER_FLAGS="-lcurses -ltinfo" \
-        -DCMAKE_INSTALL_PREFIX=$(pwd) \
-        -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
-        -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
-        -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))
-    make install
+    cd "$srcdir/$provides/build"
 
-    cd "$srcdir/$provides/build_test"
-    ./zig build --build-file ../build.zig test
+    # omit full compiler test since it takes ages
+    ./zig version
 }
 
 package() {
