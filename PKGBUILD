@@ -2,7 +2,7 @@
 # Contributor: Ryan Thomas <ryant0000@gmail.com.
 
 pkgname='xmrig-donateless'
-pkgver='2.5.0'
+pkgver='2.5.2'
 pkgrel='1'
 pkgdesc='High Perf CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('0559837edbe069158909c8379041c01d9e98fb2ec4a62d3fa26b95741b463275'
             '774e7cb1e451d10fc5ef41820841da5510ca4018339f03223588480fd080f049'
-            'f05e07daa870fa341b44821c35860c450bab1131a11ecc87c240128a8b178690')
+            '809592cd70335e7984a16738b435e9a08071bda938b251c48258a8f946f0bdb3')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build

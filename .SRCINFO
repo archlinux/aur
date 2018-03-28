@@ -1,6 +1,6 @@
 pkgbase = xmrig-donateless
 	pkgdesc = High Perf CPU Miner-No Donate Version
-	pkgver = 2.5.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = xmrig-donateless
 	backup = etc/xmrig/xmrig.conf
 	source = xmrig.service
 	source = xmrig.sysusers
-	source = https://github.com/xmrig/xmrig/archive/v2.5.0.tar.gz
+	source = https://github.com/xmrig/xmrig/archive/v2.5.2.tar.gz
 	sha256sums = 0559837edbe069158909c8379041c01d9e98fb2ec4a62d3fa26b95741b463275
 	sha256sums = 774e7cb1e451d10fc5ef41820841da5510ca4018339f03223588480fd080f049
-	sha256sums = f05e07daa870fa341b44821c35860c450bab1131a11ecc87c240128a8b178690
+	sha256sums = 809592cd70335e7984a16738b435e9a08071bda938b251c48258a8f946f0bdb3
 
 pkgname = xmrig-donateless
 
