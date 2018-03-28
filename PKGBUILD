@@ -42,7 +42,6 @@ package() {
   done
   install -m755 -D -t "${pkgdir}/usr/bin/" ${srcdir}/bin/cfssl-mkbundle
 
-
   install -m644 -D ${srcdir}/src/${_prefix}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
