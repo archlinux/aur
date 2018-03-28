@@ -1,0 +1,7 @@
+post_install() {
+	cp /usr/share/applications/tmetricdesktop.desktop /etc/xdg/autostart/tmetricdesktop.desktop
+}
+
+post_upgrade() {
+	post_install
+}
