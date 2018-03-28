@@ -4,20 +4,17 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.81.28053
+pkgver=2.19.81.28068
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('guile1.8' 'pango' 'python2')
-makedepends=('fontforge' 'git' 'gsfonts' 't1utils' 'ghostscript' 'dblatex'
+depends=('guile1.8' 'pango' 'python2' 'ttf-dejavu' 'fontconfig' 'freetype2' 'ghostscript')
+makedepends=('fontforge' 'git' 'gsfonts' 't1utils-git' 'dblatex'
 	     'tex-gyre-fonts' 'texlive-langcyrillic' 'texi2html' 'netpbm')
-optdepends=('imagemagick: building HTML documentation'
-            'ttf-kochi-substitute: building HTML documentation'
-            'texi2html>=1.82: building HTML documentation'
-            'rsync: installing HTML documentation'
-	    'extractpdfmark: for reducing the size of pdf output significantly')
+optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
+	    'tk: for the gui')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
 source=(git://git.savannah.gnu.org/lilypond.git)
@@ -45,16 +42,18 @@ build() {
   cd lilypond/
   export PYTHON="python2"
   export PYTHON_CONFIG="python2-config"
-  [ -f config.hh ] && rm config.hh
-  ./autogen.sh \
-      --prefix=/usr \
+  [[ -f config.hh ]] && rm config.hh
+  ./autogen.sh --noconfigure
+  [[ -d build ]] || mkdir build
+  cd build
+  ../configure --prefix=/usr \
       --disable-documentation \
       --enable-guile2=no
-  make all
+  make -j1 
 }
 
 package() {
-  cd lilypond/
+  cd lilypond/build
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
   rm -rf "$pkgdir/usr/share/man"
 }
