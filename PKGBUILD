@@ -4,7 +4,7 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.8.442.g6ebc43fdcb
+pkgver=2.10.0.RC1.7.g60e01f5593
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' \
 	'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
 	'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
 	'poppler-glib' 'poppler-data' \
-	'babl>0.1.38' 'gegl-git>0.3.28' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0')
+	'babl>=0.1.44' 'gegl-git>=0.3.30' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' \
                    'alsa-lib>=1.0.0' 'libxslt' 'glib-networking')
@@ -44,10 +44,6 @@ build() {
 	  sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
   fi
 
-  # glib-2.0.pc says the glib2 version is 2.54.0, so replace it
-  sed -i 's/glib_required_version\], \[2\.54\.[0-9]*/glib_required_version], [2.54.0/' configure.ac
-  sed -i 's/GLIB_REQUIRED_MICRO 2/GLIB_REQUIRED_MICRO 0/' app/sanity.c
-
   PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr --sysconfdir=/etc \
     --enable-mp --enable-gimp-console --enable-gimp-remote \
     --enable-python --with-gif-compression=lzw --with-libcurl \
@@ -60,8 +56,5 @@ package() {
   make DESTDIR="$pkgdir/" install
 #  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "${pkgdir}"/usr/lib/gimp/2.0/plug-ins/*.py
   install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
-
-  ln -s gimp-2.9 ${pkgdir}/usr/bin/gimp
-  ln -s gimp-console-2.9 ${pkgdir}/usr/bin/gimp-console
 }
 
