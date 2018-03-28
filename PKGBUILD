@@ -2,8 +2,8 @@
 
 pkgname=nginx-mainline-mod-modsecurity
 pkgver=1.0.0
-pkgrel=2
-_nginxver=1.13.9
+pkgrel=3
+_nginxver=1.13.10
 
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
 )
-sha256sums=('5faea18857516fe68d30be39c3032bd22ed9cf85e1a6fdf32e3721d96ff7fa42'
+sha256sums=('336182104d90be3c40c874f7f06f87dbb357da1dc74ea573ad081a0f29a94885'
             'SKIP'
             '06f78eb6d33833cc247257c4095c0ee528e80a61f1f52e1da5fdca5e464975a0'
             'SKIP')
