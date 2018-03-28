@@ -12,7 +12,7 @@ groups=(gst-plugins)
 depends=(gst-plugins-base-libs libusrsctp)
 provides=(gst-plugins-openwebrtc)
 conflicts=(gst-plugins-openwebrtc-git)
-source=("https://github.com/EricssonResearch/$_remote/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/EricssonResearch/$_remote/archive/v$pkgver.tar.gz")
 sha256sums=('72829906ad3d588cf0a260712a74b25ffd773ea623f67b9d4423da32e07e4180')
 
 build() {
