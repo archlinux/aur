@@ -2,11 +2,10 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.4.r3604.e50f0488+wine.3.4.r178.ge1c7a1f7ce+pba.r29.87307b1
+pkgver=3.4.r3607.5876a3f7+wine.3.4.r192.gd7430abd40
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
-_pbasrcdir='wine-pba'
 pkgdesc='Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)'
 url='https://github.com/acomminos/wine-pba'
 arch=('x86_64')
@@ -93,16 +92,7 @@ optdepends=(
 )
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
-		"$_pbasrcdir"::'git+https://github.com/acomminos/wine-pba.git'
-		'0001-wined3d-Initial-implementation-of-a-persistent-mappe.patch'
-		'0002-wined3d-Add-support-for-backing-dynamic-wined3d_buff.patch'
-		'0003-wined3d-Use-ARB_multi_bind-to-speed-up-UBO-updates.patch'
-		'0004-wined3d-Use-GL_CLIENT_STORAGE_BIT-for-persistent-map.patch'
-		'0005-wined3d-Disable-persistently-mapped-shader-resource-.patch'
-		'0006-wined3d-Perform-initial-allocation-of-persistent-buf.patch'
-		'0007-wined3d-Avoid-freeing-persistent-buffer-heap-element.patch'
-		'0008-wined3d-Add-DISABLE_PBA-envvar-some-PBA-cleanup.patch'
-		'0009-wined3d-Add-quirk-to-use-GL_CLIENT_STORAGE_BIT-for-m.patch'
+		'wine-staging-pba.patch'
 		'steam.patch'
 		'poe-fix.patch'
 		'harmony-fix.diff'
@@ -110,16 +100,7 @@ source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
 			'SKIP'
-			'SKIP'
-			'f5f8c507f79c829b118125a3749f80ed31eb8ba8ad024d99554a1a6458c438eb'
-			'98372adbb16949edca4c90604cceac5db3d4bf37eccc13d59d3e5735f53f2501'
-			'112f8fc68d5421805fb1de32c0216c41412afae21153d803127c9d1c1103e35b'
-			'016ee498c9ff7af0d14c7b0e42f4bc5255f5dae6d391fd36c2060668fcade662'
-			'ec11046f6335c2831e3b89c2b0c241b74974415a64523f35f0a606d27d1dbfbb'
-			'd2a8febc2500d6a7bed418232efedf82f114e7d14ca1199789abe576dddae90b'
-			'ff5ef40b945fdad16db99a1f736c20c53711cfe002d367ea4aa55d84bf6a1207'
-			'dee52666fc680b74f5d5ba1a2a74de715c7b49376895ff057ccada9daaef5911'
-			'5c3776e5c94b51b368384c79aec9b26716fc6517935d782c121c856f21dfd223'
+			'cc229607e417841d3e900cc93c3ab2f79c0851705a07e7206729193ffa3dc9db'
 			'972d6b114f7621c5f3bd34b1105dd390b318db18fbc76328001c984db488a9b0'
 			'1c8be30224a67c0f279ae1324165708371aad8f290ebc6da69c686d0904e606c'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
@@ -141,13 +122,9 @@ pkgver() {
 	cd "${srcdir}/${_winesrcdir}"
 	local _wineVer="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
 
-	# retrieve current wine-pba version
-	cd "${srcdir}/${_pbasrcdir}"
-	local _pbaVer=$( printf 'pba.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
 	# version string might be a bit over the top, 
 	# but I want the build versions of all the 3 source repositories in it.
-	printf '%s+%s+%s' "$_stagingVer" "$_wineVer" "$_pbaVer"
+	printf '%s+%s' "$_stagingVer" "$_wineVer"
 }
 
 prepare() {
@@ -196,18 +173,7 @@ prepare() {
 	"${srcdir}"/"${_stgsrcdir}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrcdir}" --all
 	
 	# apply wine-pba patches
-	#for _f in $(ls "${srcdir}"/"${_pbasrcdir}"/'patches'); do
-	#	patch -d "${srcdir}"/"${_winesrcdir}" -Np1 < "${srcdir}"/"${_pbasrcdir}"/'patches'/"${_f}"
-	#done
-	patch -Np1 < ../'0001-wined3d-Initial-implementation-of-a-persistent-mappe.patch'
-	patch -Np1 < ../'0002-wined3d-Add-support-for-backing-dynamic-wined3d_buff.patch'
-	patch -Np1 < ../'0003-wined3d-Use-ARB_multi_bind-to-speed-up-UBO-updates.patch'
-	patch -Np1 < ../'0004-wined3d-Use-GL_CLIENT_STORAGE_BIT-for-persistent-map.patch'
-	patch -Np1 < ../'0005-wined3d-Disable-persistently-mapped-shader-resource-.patch'
-	patch -Np1 < ../'0006-wined3d-Perform-initial-allocation-of-persistent-buf.patch'
-	patch -Np1 < ../'0007-wined3d-Avoid-freeing-persistent-buffer-heap-element.patch'
-	patch -Np1 < ../'0008-wined3d-Add-DISABLE_PBA-envvar-some-PBA-cleanup.patch'
-	patch -Np1 < ../'0009-wined3d-Add-quirk-to-use-GL_CLIENT_STORAGE_BIT-for-m.patch'
+	patch -Np1 < ../'wine-staging-pba.patch'
 
 	# fix path of opencl headers
 	sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
