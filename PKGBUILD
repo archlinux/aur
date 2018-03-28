@@ -7,10 +7,8 @@ pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/FactomProject/factomd'
 license=('custom:MIT')
-depends=('')
 makedepends=('go' 'git' 'glide')
-backup=('')
-source=("git+https://github.com/FactomProject/factomd#tag=v$pkgver")
+source=("git+https://github.com/FactomProject/$pkgname#tag=v$pkgver")
 md5sums=('SKIP')
 build()
 {
@@ -36,7 +34,7 @@ package()
 {
   cd "$GOBIN"
   install -d "$pkgdir/usr/bin/"
-  install -Dsm755 factomd        "$pkgdir/usr/bin/"
+  install -Dsm755 $pkgname        "$pkgdir/usr/bin/"
 
   cd "$srcdir/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/factomd/LICENSE"
