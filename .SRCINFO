@@ -1,0 +1,12 @@
+pkgbase = dockerize
+	pkgdesc = Utility to simplify running applications in Docker containers.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jwilder/dockerize
+	arch = x86_64
+	license = MIT
+	source = https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz
+	md5sums = 5c1b3d9a7d9341e23e0b8bdf2a288387
+
+pkgname = dockerize
+
