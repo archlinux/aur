@@ -1,7 +1,7 @@
-From c57c6b90bf62510d774215abd9f4f816c4d8b789 Mon Sep 17 00:00:00 2001
+From ecc173230584327d74ea2d8899fec30d6ce6340c Mon Sep 17 00:00:00 2001
 From: Alad Wenter <AladW@users.noreply.github.com>
 Date: Mon, 22 Jan 2018 16:16:16 +0100
-Subject: [PATCH 4/4] aurfetch: specify git work-tree/git-dir (#274)
+Subject: [PATCH 4/7] aurfetch: specify git work-tree/git-dir (#274)
 
 Avoid "Stopping at filesystem boundary" issues with different file
 systems.
@@ -50,5 +50,4 @@ index 95c49c3..0a79287 100755
              git clone "$aurweb/$REPLY".git
          fi
 -- 
-2.16.1
-
+2.11.0

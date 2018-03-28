@@ -1,7 +1,7 @@
-From bed6e3128a7e95b837cb98a4fdafa289038378b0 Mon Sep 17 00:00:00 2001
+From 74d0496ad357ca8c65562a028cb5b95888ea71cf Mon Sep 17 00:00:00 2001
 From: Alad Wenter <alad@mailbox.org>
 Date: Sat, 27 Jan 2018 03:21:37 +0100
-Subject: [PATCH 2/4] aursync: make -L optional (#281)
+Subject: [PATCH 2/7] aursync: make -L optional (#281)
 
 ---
  bin/aursync    | 7 ++++---
@@ -66,5 +66,4 @@ index 5569c36..834afd7 100644
  .RS
  Do not wait for user input. (\fImakepkg --noconfirm\fR)
 -- 
-2.16.1
-
+2.11.0

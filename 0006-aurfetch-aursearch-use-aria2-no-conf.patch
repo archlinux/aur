@@ -1,0 +1,39 @@
+From da84181ae5b284557ec4d6afca7c8bcc7e87185a Mon Sep 17 00:00:00 2001
+From: Alad Wenter <alad@mailbox.org>
+Date: Tue, 27 Mar 2018 00:49:26 +0200
+Subject: [PATCH 6/7] aurfetch, aursearch: use aria2 --no-conf
+
+Avoid conflicts when a configuration file is used.
+---
+ bin/aurfetch  | 2 +-
+ bin/aursearch | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bin/aurfetch b/bin/aurfetch
+index 4e026fa..2cd5385 100755
+--- a/bin/aurfetch
++++ b/bin/aurfetch
+@@ -39,7 +39,7 @@ snapshot() {
+     cd_safe "$gzdir"
+ 
+     if type -P aria2c >/dev/null 2>&1; then
+-        aria2c --stderr=true -i -
++        aria2c --stderr=true -i --no-conf=true -
+     elif type -P parallel >/dev/null 2>&1; then
+         parallel --will-cite -X -j +5 --nice 10 --halt soon,fail=1 \
+ 		curl -fLsS --remote-name-all --cert-status {}
+diff --git a/bin/aursearch b/bin/aursearch
+index 5ff0a5c..dbb339e 100755
+--- a/bin/aursearch
++++ b/bin/aursearch
+@@ -20,7 +20,7 @@ split_info() {
+ 
+ dl_stdin() {
+     if type -P aria2c >/dev/null 2>&1; then
+-        aria2c --download-result=hide --console-log-level=error --stderr=true -d "$tmp"/aria2 -i - && cat "$tmp"/aria2/*
++        aria2c --download-result=hide --console-log-level=error --stderr=true -d "$tmp"/aria2 --no-conf=true -i - && cat "$tmp"/aria2/*
+     elif type -P parallel >/dev/null 2>&1; then
+         parallel --will-cite -X -j +8 --nice 10 --halt soon,fail=1 -r curl -fgLsS --compressed --cert-status {}
+     else
+-- 
+2.11.0

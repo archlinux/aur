@@ -1,0 +1,31 @@
+From 5f779d382da346038996b877d320fa26c7d501c7 Mon Sep 17 00:00:00 2001
+From: Alad Wenter <alad@mailbox.org>
+Date: Tue, 27 Mar 2018 01:26:44 +0200
+Subject: [PATCH 7/7] aurchain: do not sort results when appending
+
+https://bbs.archlinux.org/viewtopic.php?pid=1761231#p1761231
+---
+ bin/aurchain | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/bin/aurchain b/bin/aurchain
+index 27a0808..e4b82ca 100755
+--- a/bin/aurchain
++++ b/bin/aurchain
+@@ -42,13 +42,11 @@ chain() {
+     for ((a = 1; a <= 30; ++a)); do
+         declare -i sub=$((a-1))
+ 
+-        pair json/$sub > tsv/$sub
++        pair json/$sub | tee -a tsv/n > tsv/$sub
+ 
+         fld 1 tsv/$sub >> pkgname
+         fld 1 tsv/$sub >> seen
+ 
+-        sort -u tsv/$sub >> tsv/n
+-
+         # Avoid querying duplicates (#4)
+         readarray -t target < <(fld 2 tsv/$sub | grep -Fxvf seen)
+ 
+-- 
+2.11.0

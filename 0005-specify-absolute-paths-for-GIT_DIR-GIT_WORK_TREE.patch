@@ -1,0 +1,33 @@
+From 1de27b86ea0cb2076a03167e838374dd6442809b Mon Sep 17 00:00:00 2001
+From: rafasc <rafa.almas@gmail.com>
+Date: Mon, 26 Mar 2018 19:37:43 +0100
+Subject: [PATCH 5/6] specify absolute paths for GIT_DIR & GIT_WORK_TREE
+
+Specifying a relative directory will trigger a regression under some
+circumstances.
+
+  $ GIT_DIR=spotify/.git GIT_WORK_TREE=spotify git reset HEAD
+  fatal: couldn't read spotify/.git/packed-refs: Not a directory
+
+  $ GIT_DIR=$PWD/spotify/.git GIT_WORK_TREE=$PWD/spotify git reset HEAD
+
+workaround for AladW/aurutils#332
+---
+ bin/aurfetch | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/aurfetch b/bin/aurfetch
+index 0a79287..4e026fa 100755
+--- a/bin/aurfetch
++++ b/bin/aurfetch
+@@ -12,7 +12,7 @@ clone() {
+ 
+     while IFS= read -r; do
+         # Avoid issues with exotic file system layouts (#274)
+-        git_wrap() { git --work-tree="$REPLY" --git-dir="$REPLY"/.git "$@"; }
++        git_wrap() { git --work-tree="$PWD/$REPLY" --git-dir="$PWD/$REPLY"/.git "$@"; }
+         
+         if [[ -d $REPLY/.git ]]; then
+             # returns 0 even if nothing was fetched
+-- 
+2.11.0
