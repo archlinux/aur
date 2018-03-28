@@ -2,7 +2,7 @@
 
 _name=sen
 pkgname="python-${_name}"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='sen is a terminal user interface for docker engine'
 url='https://github.com/TomasTomecek/sen'
@@ -12,7 +12,7 @@ depends=('python' 'python-urwid' 'python-humanize' 'python-docker-py' 'python-ur
 provides=("${_name}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
 # source=("https://pypi.python.org/packages/source/s/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c219df8c7e1dd8150996366dfce153df82a653bcbf434d3c620f0e0f3ccdf12d')
+sha256sums=('8a94ecd3edcbd33182a7d583d095bd9c94f50d120edd20a237f4d6c175cc9250')
 
 # Enable for tests
 check() {
