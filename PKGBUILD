@@ -6,7 +6,7 @@ pkgdesc="A simple PDF viewer with two layouts"
 arch=('i686' 'x86_64')
 url="http://git.informatik.uni-erlangen.de/?p=katarakt"
 license=('BSD')
-depends=( qt4 poppler-qt )
+depends=( qt5-base poppler-qt5 )
 optdepends=( )
 makedepends=( asciidoc )
 provides=( )
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_gitname}"
-  qmake-qt4
+  qmake-qt5
   make
   a2x -f manpage -a "date=`date +%Y-%m-%d`" doc/katarakt.txt
 }
