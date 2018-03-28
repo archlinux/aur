@@ -1,0 +1,28 @@
+pkgbase = galaxy-desktop-git
+	pkgdesc = Hacked DE which mixes components from other desktop environments
+	pkgver = r3.40eea43
+	pkgrel = 1
+	url = https://github.com/aperezdc/galaxy-desktop
+	arch = any
+	license = custom:MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = mate-screensaver>=1.20
+	depends = gnome-settings-daemon>=3.28
+	depends = gala
+	depends = plank>=0.11
+	depends = pantheon-polkit-agent
+	depends = pantheon-screenshot
+	optdepends = gnome-control-center:: Allows modifying system settings
+	optdepends = synapse:: Keyboard-driver launcher
+	optdepends = termite:: Recommended terminal application
+	optdepends = arc-gtk-theme:: Recommended GTK+ theme
+	optdepends = la-capitaine-icon-theme:: Recommended icon theme
+	optdepends = xcursor-hackneyed:: Recommended cursor theme
+	provides = galaxy-desktop
+	conflicts = galaxy-desktop
+	source = galaxy-desktop-git::git+https://github.com/aperezdc/galaxy-desktop
+	sha512sums = SKIP
+
+pkgname = galaxy-desktop-git
+

@@ -1,0 +1,5 @@
+/galaxy-desktop-git/
+/*.tar
+/*.tar.*
+/pkg/
+/src/
