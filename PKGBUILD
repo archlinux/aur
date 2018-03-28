@@ -4,7 +4,7 @@
 pkgname=glpresenter
 pkgbase=glpresenter
 pkgver=0.3.4 
-pkgrel=3
+pkgrel=4
 pkgdesc="A dual-screen OpenGL PDF presentation software"
 arch=('i686' 'x86_64')
 url="http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/"
@@ -12,7 +12,7 @@ license=('GPL')
 groups=()
 provides=()
 makedepends=('git')
-depends=('qt4' 'poppler-qt4' 'glu')
+depends=('qt4' 'poppler' 'glu')
 _gitroot="https://github.com/KLAU542/gl-presenter.git"
 _gitname="gl-presenter"
 

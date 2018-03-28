@@ -1,14 +1,14 @@
 pkgbase = glpresenter
 	pkgdesc = A dual-screen OpenGL PDF presentation software
 	pkgver = 0.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = qt4
-	depends = poppler-qt4
+	depends = poppler
 	depends = glu
 
 pkgname = glpresenter
