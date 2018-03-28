@@ -1,0 +1,8 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  systemd-sysusers
+  chown factomd:factomd -R /var/lib/factomd
+}

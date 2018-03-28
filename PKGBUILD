@@ -2,14 +2,17 @@
 
 pkgname='factomd'
 pkgver='0.4.2.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
-source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+install="$pkgname.install"
+source=("git+$url#tag=v$pkgver" "factomd.service" "sysusers-factomd.conf")
+md5sums=('SKIP'
+         '8b4bbe21ec4972d61bf431b7e98074f3'
+         '98af8ab7eabb9fa344f574b9182f34e2')
 build()
 {
   cd "$srcdir"
@@ -32,10 +35,14 @@ build()
 
 package()
 {
-  cd "$GOBIN"
-  install -d "$pkgdir/usr/bin/"
-  install -Dsm755 $pkgname        "$pkgdir/usr/bin/"
+  cd "$srcdir"
+  install -Dm644 $pkgname.service       "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 sysusers-$pkgname.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
+  cd "$srcdir/bin"
+  install -Dsm755 $pkgname     "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $pkgname.conf "$pkgdir/var/lib/$pkgname/.factom/m2/$pkgname.conf"
+  install -Dm644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

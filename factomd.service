@@ -1,0 +1,15 @@
+[Unit]
+Description=Run a node in the Factom Blockchain
+Documentation=https://github.com/FactomProject/factomd
+After=network-online.target
+
+[Service]
+User=factomd
+Group=factomd
+EnvironmentFile=-/etc/default/factomd
+ExecStart=/usr/bin/factomd $FACTOMD_OPTS
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
