@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=390.42
+pkgver=390.48
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -13,7 +13,7 @@ _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('2b2e4c8b4174b542774d82c66ba69e91'
+md5sums=('8ed67fc67710b6cfd9c9273054e2117a'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
 
