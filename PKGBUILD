@@ -2,7 +2,7 @@
 
 _gitname=astroquery
 pkgname=python-astroquery-git
-pkgver=0.3.7.r188
+pkgver=v0.3.7.r188.g90bed90f
 pkgver() { cd $_gitname && git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'; }
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
@@ -17,7 +17,7 @@ md5sums=(SKIP)
 
 build() {
   cd $_gitname
-  python setup.py build --use-system-libraries --offline
+  python setup.py build --use-system-libraries --use-system-astropy-helpers --offline
 }
 
 package() {
@@ -25,5 +25,5 @@ package() {
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
-  python setup.py install --offline --root=${pkgdir} --prefix=/usr --optimize=1
+  python setup.py install --offline --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-astropy-helpers
 }
