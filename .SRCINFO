@@ -1,0 +1,16 @@
+pkgbase = nerd-fonts-ricty
+	pkgdesc = Patched font Ricty from nerd-fonts library
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.rs.tus.ac.jp/yyusa/ricty.html
+	install = nerd-fonts-ricty.install
+	arch = any
+	license = custom
+	makedepends = ttf-ricty
+	makedepends = fontforge
+	makedepends = perl-rename
+	source = nerd-fonts-2.0.0.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/2.0.0.tar.gz
+	sha256sums = 7095b5b2ffe62a49dca18c681ac8cbd64c4c3585995bc175dee4be01aee0edd9
+
+pkgname = nerd-fonts-ricty
+
