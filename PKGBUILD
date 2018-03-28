@@ -17,10 +17,16 @@ sha1sums=('280c265b789e041c02e5c97815793dfc283fb1e6')
 
 build() {
   cd $_pkgname-$pkgver
+if [ n != "$RUN_PREPARE" ]; then
+  if [ 1 = "$ccache" ]; then
+    export CC=${CC:-ccache ${_target}-gcc}
+    export CXX=${CXX:-ccache ${_target}-g++}
+  fi
   unset CFLAGS CXXFLAGS
   ./configure --prefix=/usr/${_target} --disable-static \
     --host=${_target} \
     --enable-pax_emutramp
+fi
   make
 }
 
