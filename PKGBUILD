@@ -8,7 +8,7 @@ pkgdesc="Xdebug is an extension for PHP to assist with debugging and development
 arch=("x86_64")
 url="https://xdebug.org/"
 license=('Xdebug')
-depends=('php')
+depends=('php>=7')
 makedepends=()
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
