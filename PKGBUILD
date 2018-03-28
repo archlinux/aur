@@ -10,7 +10,7 @@ pkgname=qtcreator-prerelease
 _pkgvermajmin=4.6
 pkgver=${_pkgvermajmin}.0
 _verpostfix="rc1"
-pkgrel=2
+pkgrel=3
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
@@ -52,6 +52,7 @@ fi
 
 prepare() {
   cd ${srcdir}/${_filename}
+  sed -i 's/LLVM_INCLUDEPATH/d' src/tools/clangbackend/clangbackend.pro
   patch -p1 < ${startdir}/0001-Enable-high-dpi-on-Linux.patch
 }
 
@@ -62,7 +63,7 @@ build() {
   [[ -d build ]] && rm -r build
 
   cd ${_src_dir}
-  qmake
+  qmake -spec linux-clang
   make
 
   #qbs ${_qbs_settings} -d build -f ${src_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
