@@ -1,9 +1,9 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.7
+pkgver=0.22.8
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
