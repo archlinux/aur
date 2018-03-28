@@ -1,0 +1,4 @@
+*.pkg*
+/ArchC
+/pkg
+/src

@@ -1,0 +1,17 @@
+pkgbase = archc-git
+	pkgdesc = A powerful and modern open-source architecture description language
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/ArchC/ArchC
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = systemc
+	provides = archc
+	conflicts = archc
+	source = git+https://github.com/ArchC/ArchC.git
+	md5sums = SKIP
+
+pkgname = archc-git
+
