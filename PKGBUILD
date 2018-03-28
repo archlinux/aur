@@ -2,8 +2,8 @@
 
 pkgname=php-xdebug
 _extname=xdebug
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development."
 arch=("x86_64")
 url="https://xdebug.org/"
@@ -30,4 +30,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('72108bf2bc514ee7198e10466a0fedcac3df9bbc5bd26ce2ec2dafab990bf1a4')
+sha256sums=('b5264cc03bf68fcbb04b97229f96dca505d7b87ec2fb3bd4249896783d29cbdc')

@@ -1,14 +1,14 @@
 pkgbase = php-xdebug
 	pkgdesc = Xdebug is an extension for PHP to assist with debugging and development.
-	pkgver = 2.5.5
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
 	license = Xdebug
 	depends = php
 	backup = etc/php/conf.d/xdebug.ini
-	source = http://pecl.php.net/get/xdebug-2.5.5.tgz
-	sha256sums = 72108bf2bc514ee7198e10466a0fedcac3df9bbc5bd26ce2ec2dafab990bf1a4
+	source = http://pecl.php.net/get/xdebug-2.6.0.tgz
+	sha256sums = b5264cc03bf68fcbb04b97229f96dca505d7b87ec2fb3bd4249896783d29cbdc
 
 pkgname = php-xdebug
 
