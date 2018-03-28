@@ -11,10 +11,10 @@ license=("GPL2")
 
 depends=('qt4' 'zlib' 'bzip2' 'qt5-tools' 'qt5-base' 'qt5-multimedia')
 makedepends=('gcc' 'cmake' 'make' 'mercurial')
-
-optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
+optdepends=('zandronum: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
+
 source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=c2c7f37"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
