@@ -1,8 +1,3 @@
-post_install() {
-    chmod 644 /etc/hyperledger/fabric/tls/*
-    rm -rf /crypto-config
-}
-
 post_remove() {
     cat << EOF
 ===> WARNING!!!"
