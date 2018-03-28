@@ -52,7 +52,7 @@ fi
 
 prepare() {
   cd ${srcdir}/${_filename}
-  sed -i 's/LLVM_INCLUDEPATH/d' src/tools/clangbackend/clangbackend.pro
+  sed -i '/LLVM_INCLUDEPATH/d' src/tools/clangbackend/clangbackend.pro
   patch -p1 < ${startdir}/0001-Enable-high-dpi-on-Linux.patch
 }
 
