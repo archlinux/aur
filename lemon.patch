@@ -1,0 +1,13 @@
+diff --git a/src/software/colorHarmonize/CMakeLists.txt b/src/software/colorHarmonize/CMakeLists.txt
+index ceddd98c..10997693 100644
+--- a/src/software/colorHarmonize/CMakeLists.txt
++++ b/src/software/colorHarmonize/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ add_executable(openMVG_main_ColHarmonize main_ColHarmonize.cpp
+   colorHarmonizeEngineGlobal.cpp)
+ target_link_libraries(openMVG_main_ColHarmonize
+-  lemon
++  emon
+   openMVG_features
+   openMVG_image
+   openMVG_kvld
