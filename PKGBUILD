@@ -10,8 +10,8 @@ depends=('python')
 source_i686=("https://omnidb.org/dist/${pkgver}/omnidb-app_${pkgver}-debian-i386.deb")
 source_x86_64=("https://omnidb.org/dist/${pkgver}/omnidb-app_${pkgver}-debian-amd64.deb")
 options=("!strip")
-sha256sums_i686=('eacbed280594934d24965b1eac173fa9c46efc7b0ab6719ccea63c740ae082b8')
-sha256sums_x86_64=('27b23ec46f26d468ce809a20ce5365f2d353c3e96a20af903e022d7ae95e2cae')
+sha256sums_i686=('4cfc73b09345e83ca624552f9e4f0998d06bfa946dce35f01bc922323e6b8346')
+sha256sums_x86_64=('4fbcddcd48708a0b4ccce18048ea80692fdf037872f555464867e88b0f028732')
 
 package() {
     cd "$pkgdir"
