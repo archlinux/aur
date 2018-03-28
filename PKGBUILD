@@ -37,5 +37,5 @@ package()
   install -Dsm755 $pkgname        "$pkgdir/usr/bin/"
 
   cd "$srcdir/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/factomd/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
