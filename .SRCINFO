@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.8.2
+	pkgver = 27.8.3
 	pkgrel = 1
 	url = https://www.palemoon.org/
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = palemoon
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=27.8.2_Release
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=27.8.3_Release
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = 3b1d2eff90892a99ff6a0e078b35a839
