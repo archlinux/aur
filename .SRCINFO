@@ -7,8 +7,8 @@ pkgbase = nyx
 	license = GPL3
 	depends = python-setuptools
 	depends = stem>=1.6.0
-	source = https://files.pythonhosted.org/packages/source/n/nyx/nyx-2.0.4.tar.gz
-	source = https://files.pythonhosted.org/packages/source/n/nyx/nyx-2.0.4.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/N/Nyx/nyx-2.0.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/N/Nyx/nyx-2.0.4.tar.gz.asc
 	validpgpkeys = 68278CC5DD2D1E85C4E45AD90445B7AB9ABBEEC6
 	md5sums = 14dbd97e35ffcedbe7fd7124a21b3e5e
 	md5sums = SKIP
