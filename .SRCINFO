@@ -1,7 +1,7 @@
 pkgbase = factomd
 	pkgdesc = Factom Daemon
 	pkgver = 0.4.2.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FactomProject/factomd
 	install = factomd.install
 	arch = i686
