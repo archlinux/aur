@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=65.0.3325.162
+pkgver=65.0.3325.181
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -30,6 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png
         # Patches from Arch Linux
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-skia-harmony.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         # Patches from Gentoo
@@ -62,9 +63,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0020-launcher-branding.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0021-disable-rlz.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9000-disable-metrics.patch)
-sha256sums=('627e7bfd84795de1553fac305239130d25186acf2d3c77d39d824327cd116cce'
+sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'bed2a7ef4b1ebd53b28e2f38963a2dd761267ccc8818693c34ce8596db53dd4c'
+            '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -73,6 +74,7 @@ sha256sums=('627e7bfd84795de1553fac305239130d25186acf2d3c77d39d824327cd116cce'
             '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
             '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
             '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
+            'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
@@ -150,6 +152,9 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
+  # https://crbug.com/822820
+  patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
+
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
 
@@ -157,14 +162,6 @@ prepare() {
   patch -Np1 -i ../chromium-clang-r2.patch
   patch -Np1 -i ../chromium-math.h-r0.patch
   patch -Np1 -i ../chromium-stdint.patch
-
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-enum-compare-switch"/d' \
-    -e '/"-Wno-null-pointer-arithmetic"/d' \
-    -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
-    -e '/"-Wno-tautological-constant-compare"/d' \
-    build/config/compiler/BUILD.gn
 
   msg2 'Applying VA-API patches'
   patch -Np1 -i ../chromium-vaapi-init-r16.patch
@@ -253,6 +250,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
+    'is_cfi=true'
     'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
