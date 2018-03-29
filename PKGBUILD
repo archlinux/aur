@@ -2,15 +2,15 @@
 
 pkgname=gnome-shell-extension-mmod-panel-git
 _gitname=mmod-panel
-pkgver=45.297c654
+pkgver=40.40a58cd
 pkgrel=1
 pkgdesc="Create a customizable panel for Gnome 3"
 arch=('any')
-url="https://github.com/cyberlis/mmod-panel"
+url="https://github.com/RyanGipson/mmod-panel"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
-source=('git+https://github.com/cyberlis/mmod-panel.git')
+source=('git+https://github.com/RyanGipson/mmod-panel.git')
 sha256sums=('SKIP')
 
 pkgver() {
