@@ -1,6 +1,6 @@
 pkgbase = kitty
 	pkgdesc = A modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/kitty
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = kitty
 	provides = kitty
 	conflicts = kitty
 	conflicts = kitty-git
-	source = https://github.com/kovidgoyal/kitty/archive/v0.8.2.tar.gz
-	md5sums = fc457e3b1c9b794ffe3e814939a18f8c
+	source = https://github.com/kovidgoyal/kitty/archive/v0.8.3.tar.gz
+	md5sums = f4a6f92ac48e67eff0dc56364a99ae22
 
 pkgname = kitty
 
