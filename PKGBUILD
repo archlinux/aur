@@ -1,4 +1,5 @@
-# Maintainer : Anish Bhatt <anish at gatech dot edu>
+# Maintainer: Matt Welch <matt dot welch at gmail dot com>
+# Co-Maintainer : Anish Bhatt <anish at gatech dot edu>
 # Co-Maintainer: Det <nimetonmaili gmail a-dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Jason Melton <jason dot melton at gmail dot com>
@@ -6,13 +7,13 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=387.34
+pkgver=390.48
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('dkms' 'linux>=3.7' 'linux<4.15' "nvidia-utils-beta>=${pkgver}" 'libgl')
+depends=('dkms' 'linux>=3.7' 'linux<=4.15' "nvidia-utils-beta>=${pkgver}" 'libgl')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
@@ -22,12 +23,9 @@ install=${pkgname}.install
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 source_armv7h=("http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
-# http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
-# http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
-# http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
-md5sums_i686=('4e356a75541633ac3f9ac0f53bb65823')
-md5sums_x86_64=('a009bbc502c30e4b483d71be9fa51790')
-md5sums_armv7h=('7ab30192d4949bc2678caf7940ddda1f')
+md5sums_i686=('754bbdc3eb6f3873cca49ae807964c0e')
+md5sums_x86_64=('8ed67fc67710b6cfd9c9273054e2117a')
+md5sums_armv7h=('0306547cbb08d6f3d00fa6dc2424c397')
 
 [[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
 [[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32
@@ -38,7 +36,7 @@ prepare() {
   if [[ -d ${_pkg} ]]; then
     rm -rf ${_pkg}
   fi
-  
+
   # Extract
   sh ${_pkg}.run --extract-only
   cd ${_pkg}/kernel
