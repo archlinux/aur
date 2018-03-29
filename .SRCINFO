@@ -1,0 +1,14 @@
+pkgbase = ttf-neuton
+	pkgdesc = Neuton is a clean, dark, somewhat Dutch-inspired serif font which reminds you a little of Times.
+	pkgver = 01git
+	pkgrel = 1
+	url = https://fonts.google.com/download?family=Neuton
+	arch = any
+	license = custom:SIL Open Font License
+	makedepends = unzip
+	provides = ttf-neuton
+	source = https://fonts.google.com/download?family=Neuton
+	sha256sums = SKIP
+
+pkgname = ttf-neuton
+
