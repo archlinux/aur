@@ -1,6 +1,6 @@
 pkgbase = peek
 	pkgdesc = Simple screen recorder with an easy to use interface
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/phw/peek
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = peek
 	optdepends = gst-plugins-good: Recording under Gnome Shell
 	optdepends = gst-plugins-ugly: MP4 output under Gnome Shell
 	optdepends = gifski: High quality GIF animations with thousands of colors
-	source = peek-1.3.0.tar.gz::https://github.com/phw/peek/archive/1.3.0.tar.gz
-	sha256sums = 0d20741663e9a173151d8371df3cb90f8f542033640ce99a4863803cd0f32cb4
+	source = peek-1.3.1.tar.gz::https://github.com/phw/peek/archive/1.3.1.tar.gz
+	sha256sums = 8104b65b041858b7f7f482e1425f8f22d429524340ad341f95f08b08fe4e8602
 
 pkgname = peek
 
