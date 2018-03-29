@@ -1,0 +1,12 @@
+pkgbase = moonfltk-git
+	pkgver = 0.5.r19.00bb92b
+	pkgrel = 1
+	license = MIT
+	makedepends = git
+	provides = moonfltk
+	conflicts = moonfltk
+	source = git+https://github.com/stetre/moonfltk.git
+	md5sums = SKIP
+
+pkgname = moonfltk-git
+
