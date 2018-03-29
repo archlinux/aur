@@ -1,0 +1,6 @@
+src/
+pkg/
+RELEASE_*.tar.gz
+tunefish4-*.tar.xz
+tunefish4-*.src.tar.gz
+.AURINFO

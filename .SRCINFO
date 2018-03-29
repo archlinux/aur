@@ -1,0 +1,16 @@
+pkgbase = tunefish4
+	pkgdesc = An additive wavetable-based synthesizer VST plugin
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://www.tunefish-synth.com/
+	arch = x86_64
+	groups = vst-plugins
+	license = GPL3
+	depends = alsa-lib
+	depends = freetype2
+	depends = libglvnd
+	source = https://github.com/paynebc/tunefish/archive/RELEASE_4_1_0.tar.gz
+	sha256sums = 89e549acbdc4dc1f5bf094b6ee3968d8adb651b5078da4057f814617ca307b42
+
+pkgname = tunefish4
+
