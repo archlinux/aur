@@ -2,7 +2,7 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=emby-server-dev-unlocked
-pkgver=3.3.1.10
+pkgver=3.3.1.11
 pkgrel=1
 pkgdesc='Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
