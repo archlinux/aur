@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-parental-controls-git
-pkgver=r407.669ee27
+pkgver=r409.9e72211
 pkgrel=1
 pkgdesc='Switchboard Parental Controls Plug'
 arch=('x86_64')
@@ -14,10 +14,8 @@ depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
 makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-parental-controls')
 conflicts=('switchboard-plug-parental-controls')
-source=('git+https://github.com/elementary/switchboard-plug-parental-controls.git'
-        'systemd-unit-install-dir.patch')
-sha256sums=('SKIP'
-            '18da068a732085d41255fb2fac2e390451d7499f6750dd36e8a14530d6b8072b')
+source=('git+https://github.com/elementary/switchboard-plug-parental-controls.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd switchboard-plug-parental-controls
@@ -30,10 +28,6 @@ prepare() {
     rm -rf build
   fi
   mkdir build
-
-  cd switchboard-plug-parental-controls
-
-  patch -Np1 -i ../systemd-unit-install-dir.patch
 }
 
 build() {
