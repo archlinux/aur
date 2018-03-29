@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.mono-project.com/"
 depends=('mono')
+makedepends=('git')
 source=("git+https://github.com/mono/mono-basic.git#commit=0ebb1bf")
 sha256sums=('SKIP')
 
