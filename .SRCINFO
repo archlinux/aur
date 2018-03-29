@@ -1,8 +1,12 @@
 pkgbase = moonfltk-git
+	pkgdesc = Lua bindings for FLTK
 	pkgver = 0.5.r19.00bb92b
 	pkgrel = 1
+	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = lua
+	depends = fltk
 	provides = moonfltk
 	conflicts = moonfltk
 	source = git+https://github.com/stetre/moonfltk.git
