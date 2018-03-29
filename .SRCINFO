@@ -1,0 +1,12 @@
+pkgbase = epifortune
+	pkgdesc = A fortune-like program which provide quotes from Epiquote.
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/Marcerisson/epifortune
+	arch = any
+	license = MIT
+	source = git://github.com/Marcerisson/epifortune/
+	md5sums = SKIP
+
+pkgname = epifortune
+
