@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-bligify
     pkgdesc = Export and import animated GIFs from the Blender VSE
-    pkgver = 1.3.6
+    pkgver = 1.3.7
     pkgrel = 1
     url = https://github.com/doakey3/Bligify
     arch = any
@@ -10,8 +10,8 @@ pkgbase = blender-plugin-bligify
     depends = blender
     depends = gifsicle
     depends = imagemagick
-    source = https://github.com/doakey3/Bligify/releases/download/1.3.6/Bligify.zip
-    md5sums = da8e6373960ac262c1836313ad3fde28
+    source = https://github.com/doakey3/Bligify/releases/download/1.3.7/Bligify.zip
+    md5sums = 02206091517a19a8983b7214be3328e3
 
 pkgname = blender-plugin-bligify
 
