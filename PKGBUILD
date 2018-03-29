@@ -24,7 +24,7 @@ _basepkgname="grub"
 pkgname="${_basepkgname}-linux-default"
 pkgdesc="GNU GRand Unified Bootloader (2) with linux as the default kernel"
 pkgver=2.02
-pkgrel=4
+pkgrel=5
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64')
@@ -61,12 +61,12 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
 source=("https://ftp.gnu.org/gnu/${_basepkgname}/${_basepkgname}-${pkgver}.tar.xz"{,.sig}
         "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        '0002-intel-ucode.patch'
+        '0000-default-kernel.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
         '0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch'
         '0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch'
-        '0000-default-kernel.patch'
+        '0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch'
         'grub.default'
         'grub.cfg')
 
@@ -75,20 +75,20 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
             '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
             'SKIP'
-            '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
+            '55e383e6693f47c0951806e76397d4da5f5a77c3b77f8b84479bf67b0bfb0017'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
             '535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46'
             'c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5'
-            '55e383e6693f47c0951806e76397d4da5f5a77c3b77f8b84479bf67b0bfb0017'
+            'e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
 
-	msg "Patch to load Intel microcode"
-	patch -Np1 -i "${srcdir}/0002-intel-ucode.patch"
+	msg "Patch to make GRUB use linux as the default kernel"
+	patch -Np1 -i "${srcdir}/0000-default-kernel.patch"
 	echo
 
 	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
@@ -108,9 +108,8 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
 	echo
 
-	msg "Patch to make GRUB use linux as the default kernel"
-	patch -Np1 -i "${srcdir}/0000-default-kernel.patch"
-	echo
+	msg "Support multiple early initrd images"
+	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
