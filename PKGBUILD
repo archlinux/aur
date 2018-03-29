@@ -1,9 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 # Contributor: foalsrock <foalsrock at gmail dot-com>
 
+# Set to a non-zero value to install the old theme variants
+# which # do not work well with modern (GTK+ > 3.2x) versions.
+_install_old_variants=0
+
 pkgname=moslight-themes-git
 pkgver=r226.fe550c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Slick GTK 2/3 and GNOME Shell themes resembling the elementary look"
 arch=('any')
 url='https://github.com/dasnoopy/moslight-themes'
@@ -21,7 +25,11 @@ pkgver() {
 package() {
 	cd "${pkgname}"
 	mkdir -p "${pkgdir}/usr/share/themes"
-	for i in Light Emite Sky Cloud Arc Arc-Dark ; do
+	local -a variants=( Arc Arc-Dark )
+	if [[ -n ${_install_old_variants} && ${_install_old_variants} -ne 0 ]] ; then
+		variants+=( Light Emite Sky Cloud )
+	fi
+	for i in "${variants[@]}" ; do
 		cp -r "Mos${i}" "${pkgdir}/usr/share/themes/Mos${i}"
 	done
 }
