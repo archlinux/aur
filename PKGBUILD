@@ -2,7 +2,7 @@
 	
 
 
-pkgname=qtum-qt
+pkgname=qtum
 pkgver=0.14.15
 pkgrel=3
 pkgdesc="Qtum Desktop"
