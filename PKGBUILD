@@ -38,6 +38,9 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make PREFIX="$pkgdir/usr" install
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+
 	cd "$pkgdir/usr/lib/"
 	ln -sfv lua/5.3/moonfltk.so libmoonfltk.so
 }
