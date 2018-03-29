@@ -1,7 +1,8 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.8
+pkgver=0.22.11
+chan=dev
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
@@ -13,12 +14,12 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
 conflicts=('brave' 'brave-bin')
-source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v0.22.7beta/Brave-Beta.tar.bz2
+source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver""$chan"/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
 sha512sums=('f0ae6872ff681c03b8cfef8818f514267494faa6a47bb61ad220c6f89ccc6cc152fe4d170f79e8850a27fe9c7e8814f9dcd1fda752630fa421e867dff1e05a49'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
-_bdir=brave-beta-linux-x64
+_bdir=brave-linux-x64
 
 build() {
 	if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
@@ -43,7 +44,7 @@ if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unp
 	FLAG=""
 fi
 
-exec /usr/lib/$pkgname/brave-beta "\$FLAG" -- "\$@"
+exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
