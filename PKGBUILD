@@ -26,7 +26,6 @@ validpgpkeys=()
 
 prepare() {
 	cd "lanes-$pkgver"
-	#sed -i -e '1s/^/struct s_Universe;\n/' src/tools.h
 }
 
 build() {
