@@ -1,13 +1,13 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-git
-pkgver=3.3325.1748.g4fb6e1b
+pkgver=3.3359.1755.gb44919e
 pkgrel=1
 pkgdesc="Chromium Embedded Framework"
 arch=("x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
 depends=("nss" "alsa-lib" "libxss" "libxtst" "libglvnd")
-makedepends=("cmake" "make" "python2" "ninja" "unzip")
+makedepends=("cmake" "make" "python2" "ninja")
 provides=("cef" "cef-minimal")
 conflicts=("cef-standard" "cef-minimal")
 source=("git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -28,14 +28,15 @@ prepare() {
 
     mkdir -p "${srcdir}/chromium_git"
     cd "${srcdir}/chromium_git"
-    PATH="${srcdir}/python2:$PATH" python2 "${srcdir}"/automate-git.py --branch=master --download-dir="${srcdir}/chromium_git" --depot-tools-dir="${srcdir}/depot_tools" --no-distrib --no-build
+    msg2 "Please answer the following question with Y!"
+    PATH="${srcdir}/python2:$PATH" python2 "${srcdir}"/automate-git.py --download-dir="${srcdir}/chromium_git" --depot-tools-dir="${srcdir}/depot_tools" --no-distrib --no-build
 
     cd "${srcdir}/chromium_git/chromium/src/cef"
     PATH="${srcdir}/python2:$PATH" ./cef_create_projects.sh
 }
 
 pkgver() {
-    cat "${srcdir}/chromium_git/cef/include/cef_version.h" | grep -Eo "^#define CEF_VERSION \".*\"$" | grep -Eo "[0-9]\.[0-9]{4}\.[0-9]{4}\.g[0-9a-f]+"
+    cat "${srcdir}/chromium_git/chromium/src/cef/include/cef_version.h" | grep -Eo "^#define CEF_VERSION \".*\"$" | grep -Eo "[0-9]\.[0-9]{4}\.[0-9]{4}\.g[0-9a-f]+"
 }
 
 build() {

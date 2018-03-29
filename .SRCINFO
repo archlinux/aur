@@ -1,6 +1,6 @@
 pkgbase = cef-git
 	pkgdesc = Chromium Embedded Framework
-	pkgver = 3.3325.1748.g4fb6e1b
+	pkgver = 3.3359.1755.gb44919e
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = cef-git
 	makedepends = make
 	makedepends = python2
 	makedepends = ninja
-	makedepends = unzip
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
