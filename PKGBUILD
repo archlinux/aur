@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=valhalla
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
@@ -10,7 +10,8 @@ license=('custom:MIT')
 depends=('prime_server' 'boost' 'protobuf' 'python' 'lua' 'libspatialite' 'rapidjson')
 makedepends=('git' 'vim' 'jq')
 source=("https://github.com/valhalla/valhalla/archive/$pkgver.tar.gz")
-sha256sums=('f7a88191835626e77eeb6de30a6e1b72023abaaa9856e841a2e9423ee48221db')
+sha256sums=('631a3c790e073c0cf2a5a710520b971e9ab7ef130857fe5fa47dd5e75e338b59')
+
 
 prepare() {
   cd "$pkgname-$pkgver"
