@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -15,6 +15,7 @@ conflicts=('r')
 depends=('intel-mkl'
         'intel-compiler-base'
         'intel-fortran-compiler'
+        'intel-tbb_psxe'
         'bzip2'
         'desktop-file-utils'
         'gcc-libs'
@@ -89,19 +90,18 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -march=native -fp-model precise -fp-model source -diag-disable=188,308"
-    # If `-ipo` is used, LDFLAGS need to match CFLAGS
-    # because IPO is done at link time
-    # export MAIN_LDFLAGS=${_intel_cc_opt}
-    export MAIN_LDFLAGS=" -qopenmp"
+    source ${MKLROOT}/../tbb/bin/tbbvars.sh ${_intel_arch}
+    _intel_cc_opt=" -O3 -ipo -qno-openmp -xHost -fPIC -m64 -march=native -fp-model precise -fp-model source"
+    export LDFLAGS=" -qno-openmp"
     export FLIBS=" -lgfortran -lifcore -lifport"
 
-    # Dynamic Linking
+    # Dynamic Linking with TBB
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -l${_intel_lib} \
-      -lmkl_intel_thread \
+      -lmkl_tbb_thread \
       -lmkl_core \
-      -liomp5 \
+      -ltbb \
+      -lstdc++ \
       -lpthread \
       -lm \
       -ldl"
@@ -117,16 +117,17 @@ build() {
     export FFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
     export FCFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
   else
-    _gcc_opt=" -O3 -m64 -fopenmp -march=native"
-    export MAIN_LDFLAGS=" -fopenmp"
+    _gcc_opt=" -O3 -fopenmp -m64 -march=native"
+    export LDFLAGS=" -fopenmp"
 
-    # Dynamic Linking
+    # Dynamic Linking with TBB
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -Wl,--no-as-needed \
       -l${_gfortran_lib} \
-      -lmkl_intel_thread \
+      -lmkl_tbb_thread \
       -lmkl_core \
-      -liomp5 \
+      -ltbb \
+      -lstdc++ \
       -lpthread \
       -lm \
       -ldl"
@@ -180,7 +181,7 @@ package() {
   cd src/nmath/standalone
   make DESTDIR="${pkgdir}" install
 
-  # Fixup R wrapper scripts.
+  # Fix R wrapper scripts.
   sed -i "s|${pkgdir} ||" "${pkgdir}/usr/bin/R"
   rm "${pkgdir}/usr/lib/R/bin/R"
   cd "${pkgdir}/usr/lib/R/bin"

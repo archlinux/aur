@@ -4,6 +4,7 @@ post_install() {
      echo ">>> updating the filename database for texlive..."
      mktexlsr --quiet usr/share/texmf
   fi
+  ldconfig
 }
 
 post_upgrade() {
