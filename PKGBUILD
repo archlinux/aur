@@ -111,7 +111,7 @@ check() {
   # here as they are designed to pass on a clean tree, before anything else is
   # done, not after building the tree.
   # ./run-checks --static
-  make -C cmd -k check
+  TMPDIR=/tmp make -C cmd -k check
 
   mv $srcdir/xxx-info data/info
 }
