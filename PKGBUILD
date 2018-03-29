@@ -3,7 +3,7 @@
 pkgname=pamac-aur
 _pkgver=6.2.6
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/pamac"
@@ -50,10 +50,6 @@ package() {
   cd "$srcdir/pamac-$pkgver/builddir"
   
   DESTDIR="$pkgdir" ninja install
-  # enable systemd timer
-  mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants"
-  ln -sf "/usr/lib/systemd/system/pamac-cleancache.timer" "$pkgdir/etc/systemd/system/multi-user.target.wants"
-#  ln -sf "/usr/lib/systemd/system/pamac-mirrorlist.timer" "$pkgdir/etc/systemd/system/multi-user.target.wants"
   # remove pamac-tray-appindicator
 #  rm "$pkgdir/usr/bin/pamac-tray-appindicator"
 #  rm "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
