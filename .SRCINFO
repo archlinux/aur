@@ -1,25 +1,20 @@
 pkgbase = moodbar
 	pkgdesc = moodbar binaries and script for Amarok
-	pkgver = 0.1.2
-	pkgrel = 10
-	url = http://pkgs.fedoraproject.org/repo/pkgs/moodbar/moodbar-0.1.2.tar.gz/28c8eb65e83b30f71b84be4fab949360/
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/exaile/moodbar/releases
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	license = GPL
-	makedepends = pkgconfig
-	makedepends = make
-	depends = gstreamer0.10
+	makedepends = meson
 	depends = fftw
-	depends = gstreamer0.10-bad-plugins
-	depends = gstreamer0.10-good-plugins
-	depends = gstreamer0.10-ugly-plugins
-	depends = gstreamer0.10-ffmpeg
-	depends = gstreamer0.10-base-plugins
-	source = http://pkgs.fedoraproject.org/repo/pkgs/moodbar/moodbar-0.1.2.tar.gz/28c8eb65e83b30f71b84be4fab949360/moodbar-0.1.2.tar.gz
-	source = analyzer.patch
-	sha256sums = 3d53627c3d979636e98bbe1e745ed79e98f1238148ba4f8379819f9083b3d9c4
-	sha256sums = 2a3479f046f3aa0e36b90b832a9fb83763946ee09e001d3143577a3d2f518881
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	source = https://github.com/exaile/moodbar/releases/download/v1.0/moodbar-1.0.tar.xz
+	sha256sums = 17585aa621c2b34ac6f93d2b749f561138411d0c27a7719012f37adcaaffda95
 
 pkgname = moodbar
 
