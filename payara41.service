@@ -1,0 +1,12 @@
+[Unit]
+Description = Payara Server 4.1
+After = syslog.target network.target
+
+[Service]
+ExecStart = /usr/bin/java -jar /opt/payara41/glassfish/lib/client/appserver-cli.jar start-domain
+ExecStop = /usr/bin/java -jar /opt/payara41/glassfish/lib/client/appserver-cli.jar stop-domain
+ExecReload = /usr/bin/java -jar /opt/payara41/glassfish/lib/client/appserver-cli.jar restart-domain
+Type = forking
+
+[Install]
+WantedBy = multi-user.target
