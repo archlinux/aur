@@ -8,10 +8,11 @@ url="https://github.com/bazukas/obs-linuxbrowser"
 license=("GPL")
 conflicts=("obs-linuxbrowser-bin")
 depends=(
-	"obs-studio>=20.0.1" "cef-minimal"
+	"obs-studio>=20.0.1"
 )
-makedepends=("make" "cmake")
-optdepends=("pepper-flash: Flash support")
+makedepends=("make" "cmake" "git" "cef-minimal")
+optdepends=("pepper-flash: Flash support"
+	"cef-minimal: Up-to-date browser backend")
 source=(
     	"${pkgname}::git+https://github.com/bazukas/${pkgname}.git"
 )
@@ -26,7 +27,7 @@ build() {
     	cd ./build
     	cmake -D CEF_DIR="/opt/cef" ..
     	make clean
-    	make -j4
+    	make -j
 }
 package() {
 	mkdir -p "${pkgdir}"/usr/lib/obs-plugins/
