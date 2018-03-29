@@ -1,6 +1,6 @@
 # Contributor: thorsten w. <p@thorsten-wissmann.de>
 pkgname=katarakt-git
-pkgver=r190.914be0e
+pkgver=r231.1c6a826
 pkgrel=1
 pkgdesc="A simple PDF viewer with two layouts"
 arch=('i686' 'x86_64')
