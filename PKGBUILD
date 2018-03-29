@@ -1,4 +1,5 @@
 # Maintainer: "mikehash" Miguel Palencia mike@qtum.org
+	
 
 
 pkgname=qtum-qt
