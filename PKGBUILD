@@ -1,7 +1,7 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname="yubikey-oath-dmenu"
-pkgver="0.3.0"
+pkgver="0.4.0"
 pkgrel="1"
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
