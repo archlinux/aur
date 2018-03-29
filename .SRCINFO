@@ -1,6 +1,6 @@
 pkgbase = sublime-text-dev-imfix2
 	pkgdesc = Sophisticated text editor for code, markup and prose - Dev build with input method support for CJK users
-	pkgver = 3.3157
+	pkgver = 3.3158
 	pkgrel = 1
 	url = https://www.sublimetext.com/3dev
 	arch = i686
@@ -24,12 +24,12 @@ pkgbase = sublime-text-dev-imfix2
 	sha256sums = 03fefff12e8883eb1d13561e9bf1c79814efb4ba38ef82d3f69c7d9e38a0666f
 	sha256sums = f0d3cc429aa79585fdd2f83046de5eecf48a474c07bbdb57a1655f98ee2d580c
 	sha256sums = 5903b47f7dfbf079987c566361c5735a002dcbf25d0f86de86b7dce424f36700
-	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3157_x32.tar.bz2.asc
-	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3157_x32.tar.bz2
+	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3158_x32.tar.bz2.asc
+	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3158_x32.tar.bz2
 	sha256sums_i686 = SKIP
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3157_x64.tar.bz2.asc
-	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3157_x64.tar.bz2
+	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3158_x64.tar.bz2.asc
+	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3158_x64.tar.bz2
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
