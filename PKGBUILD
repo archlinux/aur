@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3377.1
+pkgver=67.0.3381.1
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('4253494a97d4322647c3550b528db6269dde66a273c8ce15d015a17007baa727'
+sha256sums=('4c8c362000a08f72e0d1d656366fc2ba77a9d34f702d753d45826948b00ca547'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -200,7 +200,7 @@ sha256sums=('4253494a97d4322647c3550b528db6269dde66a273c8ce15d015a17007baa727'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            '7262bd74a164b2ac083bd7c2def7b430e60db9ed7a5b1baf9be378d211359d6b'
+            'd8cf421e7e8b831330716557ebec6cfb812c48f583697fdf80d77e5b5316cf7f'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -359,7 +359,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
+patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
