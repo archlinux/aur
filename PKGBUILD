@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
