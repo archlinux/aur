@@ -1,6 +1,6 @@
 pkgbase = dnscrypt-proxy-go-git
 	pkgdesc = A modern client implementation written in Go of the DNSCrypt v2 protocol.
-	pkgver = 2.0.1.r3.g2e8699d
+	pkgver = 2.0.8.r1.gbe84399
 	pkgrel = 1
 	url = https://github.com/jedisct1/dnscrypt-proxy
 	arch = i686
@@ -17,11 +17,7 @@ pkgbase = dnscrypt-proxy-go-git
 	conflicts = dnscrypt-proxy-go
 	backup = etc/dnscrypt-proxy/dnscrypt-proxy.toml
 	source = git+https://github.com/jedisct1/dnscrypt-proxy.git
-	source = dnscrypt-proxy.service
-	source = dnscrypt-proxy.socket
 	sha512sums = SKIP
-	sha512sums = 75165c3cd6c4277f5d9663fffaec5e715858f96751c7fcc470261444d6226d785c59550e431998ee27e4ab595221eafeccbd1a9b49610a5fbd5643bbb48e55a6
-	sha512sums = a7caddbc44991c3c5e671b86d369873b0bd7442b7fd3126c77ce0c131d0399dc6649c51b055e16a0f80b796472aae6d916d8d0b1917f456d63ce84f07835848e
 
 pkgname = dnscrypt-proxy-go-git
 

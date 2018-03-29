@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=2.0.1.r3.g2e8699d
+pkgver=2.0.8.r1.gbe84399
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,12 +10,8 @@ makedepends=('git' 'go')
 provides=('dnscrypt-proxy-go')
 conflicts=('dnscrypt-proxy' 'dnscrypt-proxy-go')
 backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml')
-source=('git+https://github.com/jedisct1/dnscrypt-proxy.git'
-        'dnscrypt-proxy.service'
-        'dnscrypt-proxy.socket')
-sha512sums=('SKIP'
-            '75165c3cd6c4277f5d9663fffaec5e715858f96751c7fcc470261444d6226d785c59550e431998ee27e4ab595221eafeccbd1a9b49610a5fbd5643bbb48e55a6'
-            'a7caddbc44991c3c5e671b86d369873b0bd7442b7fd3126c77ce0c131d0399dc6649c51b055e16a0f80b796472aae6d916d8d0b1917f456d63ce84f07835848e')
+source=('git+https://github.com/jedisct1/dnscrypt-proxy.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/dnscrypt-proxy"
@@ -49,7 +45,7 @@ build() {
   
   msg2 'Compiling...'
   cd "${GOPATH}/src/github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
-  go build
+  go build -ldflags="-s -w"
 }
 
 package() {
@@ -60,8 +56,8 @@ package() {
   install -Dm644 "example-blacklist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-blacklist.txt"
   install -Dm644 "example-cloaking-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-cloaking-rules.txt"
   
-  install -Dm644 "$srcdir/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
-  install -Dm644 "$srcdir/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
+  install -Dm644 "../systemd/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
+  install -Dm644 "../systemd/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
     
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
