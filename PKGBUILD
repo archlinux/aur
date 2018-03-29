@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.0.0.rc8
+pkgver=1.0.0.rc8.gadeacc115
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -18,7 +18,8 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	cat VERSION | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	VERSION=$(<VERSION)
+	echo "${VERSION}.g$(git rev-parse --short HEAD)" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
