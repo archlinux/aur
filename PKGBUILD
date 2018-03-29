@@ -3,7 +3,7 @@
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
 url="https://github.com/hyperledger/fabric"
@@ -50,6 +50,7 @@ package() {
 	cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
 	install -dm 755 $pkgdir/etc/hyperledger/fabric/msp
         install -dm 755 $pkgdir/etc/hyperledger/fabric/tls
+	cp -r sampleconfig/*.yaml $pkgdir/etc/hyperledger/fabric
 
 	msg2 "Install systemd service"
 	install -Dm644 $srcdir/${_pkgname}-peer.service $pkgdir/usr/lib/systemd/system/${_pkgname}-peer.service

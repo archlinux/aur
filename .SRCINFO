@@ -1,7 +1,7 @@
 pkgbase = hyperledger-fabric
 	pkgdesc = A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyperledger/fabric
 	install = hyperledger-fabric.install
 	arch = armv6h
