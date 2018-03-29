@@ -1,0 +1,21 @@
+pkgbase = torrentv-bin
+	pkgdesc = Stream Torrents to your AppleTV/Roku/Chromecast
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://torrentv.github.io/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = gconf
+	depends = nss
+	depends = libxtst
+	depends = alsa-lib
+	source = torrentv-bin.desktop
+	sha1sums = 167dd21bff7a803192cc7a7f98a0c0bd2f5e00d0
+	source_x86_64 = torrentv-x86_64.tar.gz::http://goo.gl/zZUOXk
+	sha1sums_x86_64 = b66190c64258fc8f13fae036842f9c46d4c770d1
+	source_i686 = torrentv-x86_64.tar.gz::http://goo.gl/vlVWHw
+	sha1sums_i686 = 630366626cacf74a48c91690ba869860bd6ad8ed
+
+pkgname = torrentv-bin
+

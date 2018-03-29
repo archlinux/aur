@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=TorrenTV
+Comment=Stream Torrents to your AppleTV/Roku/Chromecast
+Path=/opt/torrentv
+Exec=TorrenTV
+Icon=TorrenTV
+Terminal=false
+Categories=Video;AudioVideo;
