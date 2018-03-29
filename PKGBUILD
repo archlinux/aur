@@ -3,14 +3,14 @@
 pkgname=('python-sleekxmpp' 'python2-sleekxmpp')
 pkgbase='python-sleekxmpp'
 _realname='sleekxmpp'
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A XMPP library written for Python 3.x"
 arch=("any")
 url="http://github.com/fritzy/SleekXMPP"
 license=('MIT')
 source=("https://github.com/fritzy/SleekXMPP/archive/sleek-${pkgver}.tar.gz")
-md5sums=('2f92d5d140de7de098af7e4aefa7ab5d')
+md5sums=('8707ba293cce2b003d1b93b9d1b0565f')
 makedepends=("python2" "python")
 
 package_python-sleekxmpp() {
