@@ -1,0 +1,4 @@
+VTK*.tar.gz
+remove-vtkxdmf3.patch
+find-libxml2.patch
+*.pkg.*

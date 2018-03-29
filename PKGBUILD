@@ -1,4 +1,5 @@
-# Mainteriner: Florian Pritz <bluewind@xinu.at>
+# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -30,10 +31,9 @@ optdepends=('python2: python bindings'
 source=("https://www.vtk.org/files/release/${_majorver}/VTK-${pkgver}.tar.gz"
         "https://www.vtk.org/files/release/${_majorver}/VTKData-${pkgver}.tar.gz"
         "https://www.vtk.org/files/release/${_majorver}/VTKLargeData-${pkgver}.tar.gz"
-        # https://github.com/Kitware/VTK/pull/21
-        remove-vtkxdmf3.patch::https://github.com/nschloe/VTK/commit/a98527dfe9ce23beebf386fab07caef99b911ede.patch
-        find-libxml2.patch::https://github.com/nschloe/VTK/commit/6216f98a7124e12a2c1cefd113347f94b51f3c51.patch
-		ffmpeg3_compat.patch
+        remove-vtkxdmf3.patch::https://github.com/Kitware/VTK/pull/21/commits/a98527dfe9ce23beebf386fab07caef99b911ede.patch
+        find-libxml2.patch::https://github.com/Kitware/VTK/pull/21/commits/6216f98a7124e12a2c1cefd113347f94b51f3c51.patch
+        ffmpeg3_compat.patch
         gdal2.patch
         gcc6.patch)
 options=(staticlibs)
@@ -100,6 +100,8 @@ build() {
     -DVTK_WRAP_JAVA:BOOL=ON \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DVTK_WRAP_TCL:BOOL=ON \
+    -DVTK_JAVA_SOURCE_VERSION="1.7" \
+    -DVTK_JAVA_TARGET_VERSION="1.7" \
     -DCMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
     -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
     -DVTK_INSTALL_INCLUDE_DIR:PATH=include/vtk \
