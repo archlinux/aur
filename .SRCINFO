@@ -1,6 +1,6 @@
 pkgbase = libcs50-git
 	pkgdesc = CS50 Library for C
-	pkgver = 8.0.5.r33.g80275e4
+	pkgver = 8.1.0.r0.gafba85d
 	pkgrel = 1
 	url = https://cs50.harvard.edu/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libcs50-git
 	makedepends = git
 	provides = libcs50
 	conflicts = libcs50
-	source = git+https://github.com/cs50/libcs50.git
+	source = git+https://github.com/cs50/libcs50.git#branch=master
 	sha256sums = SKIP
 
 pkgname = libcs50-git

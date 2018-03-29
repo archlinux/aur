@@ -2,7 +2,7 @@
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=8.0.5.r33.g80275e4
+pkgver=8.1.0.r0.gafba85d
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ groups=('cs50')
 makedepends=('asciidoctor' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=('git+https://github.com/cs50/libcs50.git')
+source=('git+https://github.com/cs50/libcs50.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
