@@ -1,6 +1,6 @@
 pkgbase = kolide-git
 	pkgdesc = osquery command and control
-	pkgver = r891.c08ba5ed
+	pkgver = r925.cdcb42e7
 	pkgrel = 1
 	url = https://www.kolide.co/
 	install = kolide.install
