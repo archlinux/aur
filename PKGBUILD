@@ -4,12 +4,12 @@
 pkgbase=pipsi
 pkgname=('pipsi' 'pipsi2')
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Wraps pip and virtualenv to install scripts'
 arch=('any')
 url='https://github.com/mitsuhiko/pipsi/'
 license=('BSD')
-makedepends=('python2' 'python')
+makedepends=('python2' 'python' 'python2-setuptools' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/p/pipsi/pipsi-${pkgver}.tar.gz")
 
 # this multipackage trick was copied from community/python-perf

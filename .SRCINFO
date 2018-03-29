@@ -1,12 +1,14 @@
 pkgbase = pipsi
 	pkgdesc = Wraps pip and virtualenv to install scripts
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mitsuhiko/pipsi/
 	arch = any
 	license = BSD
 	makedepends = python2
 	makedepends = python
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	source = https://pypi.python.org/packages/source/p/pipsi/pipsi-0.9.tar.gz
 	sha256sums = 688b688cc8a7a76612c0d4d1839aaef98ece8382d4382b9d8b6f0caa65f0ed34
 
