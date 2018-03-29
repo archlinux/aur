@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Lua bindings for FLTK"
 arch=('x86_64')
 url="https://github.com/stetre/moonfltk"
-license=('GPL2')
+license=('MIT')
 groups=()
 depends=('lua'
          'fltk')
