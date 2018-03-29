@@ -1,7 +1,7 @@
 pkgbase = t-prot
 	pkgdesc = Filter to improve readability of email/usenet by hiding annoyances
 	pkgver = 3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.escape.de/~tolot/mutt/
 	arch = any
 	license = BSD

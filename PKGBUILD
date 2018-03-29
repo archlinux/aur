@@ -4,7 +4,7 @@
 
 pkgname=t-prot
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Filter to improve readability of email/usenet by hiding annoyances'
 url='http://www.escape.de/~tolot/mutt/'
 license=(BSD)
@@ -23,12 +23,12 @@ md5sums=(
 )
 
 package() {
-	install -D LICENSE "$pkgdir/usr/share/licenses/t-prot/LICENSE"
+	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/t-prot/LICENSE"
 
 	cd "t-prot-$pkgver"
 
 	install -D t-prot "$pkgdir/usr/bin/t-prot"
-	install -D t-prot.1 "$pkgdir/usr/share/man/man1/t-prot.1"
-	install -D README "$pkgdir/usr/share/doc/t-prot/README"
+	install -D -m 644 t-prot.1 "$pkgdir/usr/share/man/man1/t-prot.1"
+	install -D -m 644 README "$pkgdir/usr/share/doc/t-prot/README"
 	cp -a contrib "$pkgdir/usr/share/doc/t-prot/"
 }
