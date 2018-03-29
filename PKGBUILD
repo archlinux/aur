@@ -2,13 +2,14 @@
 
 pkgname=cilium-git
 pkgver=v0.13.18.r23.gadeacc115
-pkgrel=1
+pkgrel=2
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
 url="https://cilium.io/"
 license=('Apache')
 depends=('docker' 'iproute2' 'clang')
 makedepends=('go' 'lib32-glibc' 'bazel')
+optdepends=('consul' 'etcd')
 conflicts=()
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
 sha256sums=('SKIP'
@@ -29,7 +30,6 @@ prepare() {
 
 build() {
 	cd "${srcdir}/go/src/github.com/cilium/cilium"
-	#cd "${srcdir}/${pkgname}"
 
 	export GOPATH="${srcdir}/go"
 	export PATH="$GOPATH/bin:$PATH"
@@ -45,10 +45,21 @@ build() {
 
 package() {
 	cd "${srcdir}/go/src/github.com/cilium/cilium"
-	#cd "${srcdir}/${pkgname}"
 
 	make DESTDIR="${pkgdir}" install
 
 	install -Dm644 "$srcdir/cilium.sysusers" \
 		"$pkgdir/usr/lib/sysusers.d/cilium.conf"
+
+	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium.service" \
+		"${pkgdir}/usr/lib/systemd/system/cilium.service"
+
+	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-consul.service" \
+		"${pkgdir}/usr/lib/systemd/system/cilium-consul.service"
+
+	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-docker.service" \
+		"${pkgdir}/usr/lib/systemd/system/cilium-docker.service"
+
+	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-etcd.service" \
+		"${pkgdir}/usr/lib/systemd/system/cilium-etcd.service"
 }
