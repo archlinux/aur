@@ -3,8 +3,8 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.3.r55.g01cb080b
-pkgrel=5
+pkgver=1.3.r76.gd9563130
+pkgrel=6
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
 url='http://imagine.enpc.fr/~moulonp/openMVG/'
@@ -15,17 +15,15 @@ source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
         'git+https://github.com/elmindreda/glfw.git'
         'git+https://github.com/openMVG-thirdparty/osi_clp.git'
         'git+https://github.com/openMVG-thirdparty/cereal.git'
-        'fast.patch'
         'lemon.patch'
-        'flann.patch'
+        'findflann-v0.1.patch'
        )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'c2fff3b04a2444a635eab1709be6b4f2'
          '11aa728e50e52b10d79dd83dfaa6c1c6'
-         '91e8cb2e3b2449de83dd49c83359b8ab')
+         '91ba746a3740379d71dad4be34a9c44d')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -40,16 +38,14 @@ prepare() {
   git config 'submodule.src/dependencies/cereal.url' "${srcdir}/cereal"
   git submodule update
   git apply ${srcdir}/lemon.patch
-  git apply ${srcdir}/fast.patch
-  git apply ${srcdir}/flann.patch
-  cp src/third_party/flann/cmake/FindFlann.cmake src/cmakeFindModules/
+  git apply ${srcdir}/findflann-v0.1.patch
 }
 
 build() {
   cd "${srcdir}"
   mkdir -p openmvg_build
   cd openmvg_build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DOpenMVG_BUILD_SHARED=ON -DOpenMVG_BUILD_EXAMPLES=ON  -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON -DOpenMVG_USE_OPENMP=ON -DFLANN_INCLUDE_DIR_HINTS=/usr/include -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon -DCERES_DIR_HINTS=/usr/include/ceres -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 ../openMVG/src/
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DOpenMVG_BUILD_SHARED=ON -DOpenMVG_BUILD_EXAMPLES=ON  -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON -DOpenMVG_USE_OPENMP=ON -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon -DCERES_DIR_HINTS=/usr/include/ceres -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 ../openMVG/src/
   make
 }
 
