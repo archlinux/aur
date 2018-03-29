@@ -1,6 +1,6 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=protonmail-bridge
-_pkgver=1.0.2
+_pkgver=1.0.3
 _pkgrel=1
 pkgver="${_pkgver}.${_pkgrel}"
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
 )
 options=('!strip')
 source=("https://protonmail.com/download/protonmail-bridge_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('fd29a9bc408157e59519b3055c66f936a83406debe177986beeccbd95e9022b2')
+sha256sums=('047126b35710d555cc6bdcfee7889fc4a17cfe8dd01ce7dbed786a503ad34438')
 
 package() {
 	tar xvJf data.tar.xz -C "$pkgdir"
