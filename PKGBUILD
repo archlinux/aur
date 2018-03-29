@@ -1,19 +1,20 @@
-# Maintainer: Javier Tia <javier.tia@gmail.com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+
 pkgname=c
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
-pkgdesc='Compile and execute C "scripts" in one go!'
+pkgdesc='Compile and execute C "scripts" in one go'
 arch=('any')
 url="https://github.com/ryanmjacobs/c"
 license=('MIT')
 provides=('c')
 conflicts=('c')
-source=('https://github.com/ryanmjacobs/c/archive/v0.10.tar.gz')
-sha256sums=('958a2c2b2392b905cf39d75a3007adb47a818815a8485ca2170b4214233f6b14')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('19b932e0087acf6c639cc5a4fa9a0c87314e62b0561f5517fd7a78e32fb61801')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm 775 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm 775 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
