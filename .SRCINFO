@@ -1,6 +1,6 @@
 pkgbase = cura-fdm-materials-git
 	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = jedi.master.2018.02.09
+	pkgver = r332.3fd3965
 	pkgrel = 1
 	url = https://github.com/Ultimaker/fdm_materials
 	arch = any
