@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-rust-bin
 _pkgname=rust
-pkgver=1.24.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
@@ -16,18 +16,19 @@ conflicts=('mingw-w64-rust')
 replaces=('mingw-w64-rust')
 makedepends=()
 
-source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
+source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('4567e7f6e5e0be96e9a5a7f5149b5452828ab6a386099caca7931544f45d5327'
+sha256sums=('c206124130a329d4199b1711a857b8661f8159744a6ac3ba944e50d0e1cbba03'
             'SKIP'
-            '3e7a89df5aaf1e8d704badaaf415a2430340df67e0e3a314efd6b5bdb589caa6'
+            'f427a9999622ff30f859580b6ac88cc236f370abbd7dda11466dfca296b96df3'
             'SKIP'
-            '16dbd953ad16787cb28cccf37b89e320b16613c0f0967d42173b67d063f39ced'
+            'ed2a8cafd7dfd67274f18b63ac99d7a9bcff6562030edbf3d5e0dbdc4a4d1fcd'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
+PKGEXT=".pkg.tar.gz"
 
 prepare() {
   cd ${srcdir}
@@ -72,6 +73,7 @@ package() {
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
+  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
   x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll
 
