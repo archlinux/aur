@@ -1,6 +1,6 @@
 pkgbase = kubernetes-kubectl
 	pkgdesc = Controls the Kubernetes cluster manager
-	pkgver = 1.4.6
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://kubernetes.io/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = kubernetes-kubectl
 	license = Apache
 	makedepends = go
 	makedepends = rsync
-	makedepends = go-bindata-git
+	makedepends = go-bindata
 	conflicts = kubernetes
 	conflicts = kubectl-bin
-	source = https://github.com/kubernetes/kubernetes/archive/v1.4.6.tar.gz
-	sha256sums = dcbbf24ca664f55e40d539a167143f2e0ea0f3ff40e7df6e25887ca10bb2e185
+	source = https://github.com/kubernetes/kubernetes/archive/v1.10.0.tar.gz
+	sha256sums = d547dd66ce90fdf04fccc655ff02cc0c63ab1ce13f7e5ac136f77122ff2b22db
 
 pkgname = kubernetes-kubectl
 

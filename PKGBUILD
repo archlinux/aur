@@ -1,16 +1,17 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=kubernetes-kubectl
 pkgdesc="Controls the Kubernetes cluster manager"
 url="http://kubernetes.io/"
-pkgver=1.4.6
+pkgver=1.10.0
 pkgrel=1
 arch=(x86_64 i686)
-makedepends=(go rsync go-bindata-git)
+makedepends=(go rsync go-bindata)
 conflicts=(kubernetes kubectl-bin)
 license=(Apache)
 source=("https://github.com/kubernetes/kubernetes/archive/v$pkgver.tar.gz")
-sha256sums=(dcbbf24ca664f55e40d539a167143f2e0ea0f3ff40e7df6e25887ca10bb2e185)
+sha256sums=(d547dd66ce90fdf04fccc655ff02cc0c63ab1ce13f7e5ac136f77122ff2b22db)
 
 build() {
   cd "$srcdir/kubernetes-$pkgver"
