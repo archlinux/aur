@@ -5,4 +5,3 @@
 !chromium-dev.install
 !chromium-dev.svg
 !chromium-widevine-r1.patch
-!chromium-exclude_unwind_tables_r3.patch
