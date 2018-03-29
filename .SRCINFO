@@ -1,6 +1,6 @@
 pkgbase = sch_cake-dkms
 	pkgdesc = The CAKE scheduler, bufferbloat.net
-	pkgver = r428.0afc1be
+	pkgver = r429.71ee81a
 	pkgrel = 1
 	url = bufferbloat.net
 	arch = i686
@@ -12,8 +12,10 @@ pkgbase = sch_cake-dkms
 	provides = sch_cake
 	source = git+https://github.com/dtaht/sch_cake.git#branch=cobalt
 	source = dkms.conf.in
+	source = 0001-fix-for-gcc731.patch
 	md5sums = SKIP
 	md5sums = 7a1c56002e8541836faf7d26be8920a5
+	md5sums = 1fc8c3e6cff29059fad43d0186f26858
 
 pkgname = sch_cake-dkms
 
