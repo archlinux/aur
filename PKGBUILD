@@ -4,9 +4,8 @@
 # Contributor: Florian "Bluewind" Pritz <flo at xssn dot at>
 # Contributor: Tim Karreman <tim at karreman dot net>
 
-# Version 20171011 md5=4e23fe909fe4e53a7cef03abf6c44a98
 pkgname=mbuffer
-pkgver=20171011
+pkgver=20180318
 pkgrel=2
 pkgdesc="a tool for buffering data streams"
 arch=('i686' 'x86_64')
@@ -14,7 +13,7 @@ url="http://www.maier-komor.de/mbuffer.html"
 license=('GPL3')
 depends=('openssl')
 source=(http://www.maier-komor.de/software/${pkgname}/${pkgname}-${pkgver}.tgz)
-md5sums=('4e23fe909fe4e53a7cef03abf6c44a98')
+md5sums=('cc2830940d1beead6e2b2c090e275dc7')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
