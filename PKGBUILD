@@ -3,7 +3,7 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=390.42
+pkgver=390.48
 pkgrel=1
 epoch=1
 _extramodules=extramodules-4.15-ck
@@ -18,18 +18,14 @@ conflicts=('nvidia-340xx-ck')
 #replaces=()
 license=('custom')
 options=('!strip')
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-        4.15-FS57305.patch)
-sha256sums=('5f242cf0f7f4dcc45759eee3b4973191114842fe7c146c5ae7a12a2ebea394aa'
-            '145d436f117455a1a8315b31dc2c9fce3c90c135d8c530b8b8da0e70548f48d9')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+sha256sums=('2d4bf72801f101a85df6fd1464021380ad51f5a30df05dadaf1fb546a175a441')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-
-    patch -Np2 -i "${srcdir}"/4.15-FS57305.patch
 }
 
 build() {
