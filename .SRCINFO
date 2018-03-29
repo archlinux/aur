@@ -1,0 +1,13 @@
+pkgbase = superfamily
+	pkgver = 13.1
+	pkgrel = 1
+	url = http://supfam.org
+	arch = any
+	license = custom
+	makedepends = bash
+	depends = hmmer
+	source = http://supfam.org/SUPERFAMILY/downloads/downloads.tar.gz
+	sha512sums = SKIP
+
+pkgname = superfamily
+

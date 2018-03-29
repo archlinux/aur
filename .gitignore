@@ -1,0 +1,8 @@
+LICENSE
+README
+SUPERFAMILY2go
+*.pl
+pkg/
+*.gz
+src/
+*.xz
