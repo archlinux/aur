@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=0.0.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'f1d9045dcade917fbd3f24704328a9e85e685b2507d83f290933ee3a2ab598c9'
+  '55566bb60ab247f72303ab8afaf79de98d061964f9af5ffc01858307045e4408'
 )
 
 check() {
