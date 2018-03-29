@@ -1,0 +1,14 @@
+pkgbase = distrodown-git
+	pkgdesc = Download Easy Linux distros
+	pkgver = 5
+	pkgrel = 1
+	url = https://github.com/automatizando/distrodown
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = wget
+	source = distrodown::git+https://github.com/automatizando/distrodown.git
+	md5sums = SKIP
+
+pkgname = distrodown-git
+
