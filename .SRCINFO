@@ -1,7 +1,7 @@
 pkgbase = konsole-dracula-git
 	pkgdesc = Dracula theme for konsole
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://draculatheme.com/konsole/
 	arch = any
 	license = MIT

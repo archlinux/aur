@@ -1,7 +1,7 @@
 # Maintainer: zenekron <zenekron@gmail.com>
 pkgname=konsole-dracula-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dracula theme for konsole"
 arch=("any")
 url="https://draculatheme.com/konsole/"
@@ -15,7 +15,7 @@ md5sums=("SKIP")
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D "Dracula.colorscheme" "$pkgdir/usr/share/konsole/Dracula.colorscheme"
-	install -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 "Dracula.colorscheme" "$pkgdir/usr/share/konsole/Dracula.colorscheme"
+	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
