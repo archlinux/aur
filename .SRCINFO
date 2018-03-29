@@ -1,0 +1,17 @@
+pkgbase = netopeer2
+	pkgdesc = A set of tools implementing network configuration tools based on the NETCONF Protocol.
+	pkgver = 0.4r2
+	pkgrel = 1
+	url = https://github.com/CESNET/Netopeer2
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = libnetconf2
+	depends = openssl
+	source = Netopeer2-0.4-r2.tar.gz::https://github.com/CESNET/Netopeer2/archive/v0.4-r2.tar.gz
+	source = openssl-1.1.0.patch::https://github.com/CESNET/Netopeer2/commit/7c5d3b9de684610e99b00a1eb3457bf930ecbfd2.patch
+	md5sums = e710c95bca7f7455335f18351ef9b391
+	md5sums = 352cc1a82d98fbf9ad6fc37412cd746d
+
+pkgname = netopeer2-cli
+
