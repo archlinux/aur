@@ -2,7 +2,7 @@
 ## Based on rtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rtorrent-git
-pkgver=0.9.4.r91.g62cb5a4
+pkgver=0.9.4.r184.g226e670
 pkgrel=1
 pkgdesc="A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix."
 url="https://github.com/rakshasa/rtorrent/"
