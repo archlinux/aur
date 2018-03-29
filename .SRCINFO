@@ -1,6 +1,6 @@
 pkgbase = caddy
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
-	pkgver = 0.10.11
+	pkgver = 0.10.12
 	pkgrel = 1
 	url = https://caddyserver.com
 	install = caddy.install
@@ -12,14 +12,14 @@ pkgbase = caddy
 	makedepends = go>=1.8.1
 	makedepends = git
 	backup = etc/caddy/caddy.conf
-	source = https://github.com/mholt/caddy/archive/v0.10.11/caddy-0.10.11.tar.gz
+	source = https://github.com/mholt/caddy/archive/v0.10.12/caddy-0.10.12.tar.gz
 	source = https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg
 	source = index.html
 	source = caddy.service
 	source = caddy.tmpfiles
 	source = caddy.conf
 	source = plugins.go
-	sha256sums = c473121840532dfbe8e98b2663442c4a6602b684a5dc234081fdc41d98e0ae95
+	sha256sums = 89efdbd719c0a079d1ee3126d1a94292361199b88171b66b765ca31c12bd0ac1
 	sha256sums = e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85
 	sha256sums = 6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7
 	sha256sums = 0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740
