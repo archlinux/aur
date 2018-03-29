@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=remind-me
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A simple reminder application for desktop and mobile, with synchronized reminders"
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ prepare() {
   mkdir -p build
 
   cd "$_pkgfqn"
-  #echo "INSTALL_HEADERS = /usr/include" >> .qmake.conf
   echo "INSTALL_HEADERS = /usr/include" > install.pri
 }
 
@@ -50,8 +49,8 @@ package() {
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
   # fix icon names
-  icodir="$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  rm "$icodir/remind-me.svg"
-  install -D -m644 "icon/remindme.svg" "$icodir/remind-me.svg"
-  install -D -m644 "icon/remindme-error.svg" "$icodir/remind-me-error.svg"
+  #icodir="$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  #rm "$icodir/remind-me.svg"
+  #install -D -m644 "icon/remindme.svg" "$icodir/remind-me.svg"
+  #install -D -m644 "icon/remindme-error.svg" "$icodir/remind-me-error.svg"
 }
