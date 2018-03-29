@@ -1,0 +1,13 @@
+pkgbase = pipes.c
+	pkgdesc = Small application to mimic the "pipes" screensaver in a terminal window
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pipeseroni/pipes.c
+	arch = x86_64
+	license = GPL3
+	depends = ncurses
+	source = https://github.com/pipeseroni/pipes.c/releases/download/v1.0.0/pipes-c-1.0.0.tar.gz
+	md5sums = d1e4ed4adedf17cccd328893195bbdba
+
+pkgname = pipes.c
+
