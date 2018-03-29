@@ -2,7 +2,7 @@
 
 pkgname='factom-walletd'
 pkgver='0.4.2.21'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Server for the factom wallet web service api'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
@@ -45,5 +45,6 @@ package()
 
   cd "$srcdir/$pkgname"
   install -dm755           "$pkgdir/var/lib/$pkgname/"
+  ln -s /var/lib/$pkgname  "$pkgdir/var/lib/$pkgname/.factom"
   install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
