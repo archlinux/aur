@@ -9,8 +9,7 @@ pkgbase = nvidia-beta-dkms
 	arch = armv7h
 	license = custom:NVIDIA
 	depends = dkms
-	depends = linux>=3.7
-	depends = linux<=4.15
+	depends = linux
 	depends = nvidia-utils-beta>=390.48
 	depends = libgl
 	optdepends = linux-headers: Build the module for Arch kernel

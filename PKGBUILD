@@ -13,7 +13,7 @@ pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('dkms' 'linux>=3.7' 'linux<=4.15' "nvidia-utils-beta>=${pkgver}" 'libgl')
+depends=('dkms' 'linux' "nvidia-utils-beta>=${pkgver}" 'libgl')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
