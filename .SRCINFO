@@ -1,11 +1,10 @@
 pkgbase = yubikey-oath-dmenu
 	pkgdesc = dmenu interface for getting OATH codes from a YubiKey
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emlun/yubikey-oath-dmenu
 	arch = any
 	license = GPL3
-	depends = bash>4.0
 	depends = dmenu
 	depends = python
 	depends = xclip
