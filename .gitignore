@@ -1,0 +1,6 @@
+*.gz
+*.tgz
+*.xz
+pkg/
+relnotes.txt
+userman.txt
