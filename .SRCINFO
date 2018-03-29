@@ -1,0 +1,14 @@
+pkgbase = luajack
+	pkgdesc = Lua bindings for the JACK Audio Connection Kit
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/stetre/luajack
+	arch = x86_64
+	license = MIT
+	depends = lua
+	depends = jack
+	source = https://github.com/stetre/luajack/archive/v0.5.tar.gz
+	md5sums = 4266aafb424e1a337ee7ad2cb13ec25a
+
+pkgname = luajack
+
