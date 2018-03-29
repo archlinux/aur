@@ -2,7 +2,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r1063.077bca7
+pkgver=r1151.9cd1657
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -14,7 +14,6 @@ depends=(
   'sed' 'wireless_tools' 'xterm'
 )
 optdepends=(
-  'beef: Browser Exploitation Framework (BeEF). It is a penetration testing tool that focuses on the web browser'
   'bettercap: Complete, modular, portable and easily extensible MITM framework'
   'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
   'ccze: Robust and modular log colorizer with many plugins'
