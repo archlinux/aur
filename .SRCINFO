@@ -1,6 +1,6 @@
 pkgbase = aws-sdk-cpp-git
 	pkgdesc = AWS SDK for C++
-	pkgver = 1.4.20.r0.g7d30a03de1
+	pkgver = 1.4.24.r0.g22036183b2
 	pkgrel = 1
 	url = https://github.com/aws/aws-sdk-cpp
 	arch = any
