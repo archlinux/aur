@@ -4,7 +4,7 @@
 pkgname=burstcoin-wallet
 _realname=burstcoin
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm."
 arch=('i686' 'x86_64')
 url="https://github.com/PoC-Consortium/burstcoin"
@@ -29,6 +29,4 @@ package() {
     cp -dr --no-preserve=ownership {burst_db,conf,html,burst.jar,Burst_Wallet.url,genscoop.cl} $pkgdir/opt/$pkgname
 
     install -Dm755 burst.sh $pkgdir/opt/$pkgname
-
-    sed -i -e 's/DB.Url.*/DB.Url=jdbc:h2:\/opt\/burstcoin-wallet\/burst_db\/burst;DB_CLOSE_ON_EXIT=FALSE/g' $pkgdir/opt/$pkgname/conf/brs-default.properties
 }
