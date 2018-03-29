@@ -1,0 +1,28 @@
+pkgbase = kgraphviewer-git
+	pkgdesc = A Graphviz dot graph file viewer for KDE
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://www.kde.org/applications/graphics/kgraphviewer/
+	arch = x86_64
+	license = GPL
+	license = FDL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = boost
+	makedepends = docbook-xsl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = kcoreaddons
+	depends = kdoctools
+	depends = kparts
+	depends = kio
+	depends = kwidgetsaddons
+	depends = kiconthemes
+	depends = graphviz
+	provides = kgraphviewer
+	conflicts = kgraphviewer
+	source = git://anongit.kde.org/kgraphviewer
+	md5sums = SKIP
+
+pkgname = kgraphviewer-git
+
