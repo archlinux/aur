@@ -1,3 +1,6 @@
+2018-03-29
+	use autoreconf and tidy up
+
 2018-03-27
 	upstream upgrade: 3.26.2 -> 3.28.0
 	use hand crafted patches

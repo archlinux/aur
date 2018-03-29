@@ -1,4 +1,4 @@
-# Maintainer: Peter Weber <peter.weber@ttyhoney.com>
+# Maintainer: Peter Weber <peter.weber@mailbox.org>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -6,7 +6,7 @@
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
 pkgver=3.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
@@ -27,10 +27,8 @@ sha256sums=('a551d5eee10f66560fc7c6bdff6f7358ce9c60b526d8ba68a82f2ab024a3bcc4'
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../transparency.patch
-  # possiblity, use autoreconf:
-  # http://www.gnu.org/software/autoconf/autoconf.html
-  # https://wiki.debian.org/Autoreconf
-  # autoreconf -fvi
+  # autogen.sh not in tarball
+  autoreconf -fiv
 }
 
 build() {
