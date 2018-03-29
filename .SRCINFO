@@ -1,6 +1,6 @@
 pkgbase = gnulium-git
 	pkgdesc = A Graphical Ui for managing scripts and ideas! (Github version)
-	pkgver = 1.0.1.r0.g43b05ec
+	pkgver = 2.0.0.r0.gf74f89d
 	pkgrel = 1
 	url = https://github.com/LinArcX/Gnulium
 	arch = any
