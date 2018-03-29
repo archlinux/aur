@@ -1,6 +1,6 @@
 pkgbase = nginx-unit
 	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
-	pkgver = 0.4
+	pkgver = 0.7
 	pkgrel = 2
 	url = http://unit.nginx.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = nginx-unit
 	makedepends = php-embed
 	makedepends = python
 	makedepends = go
-	source = nginx-unit-0.4.tar.gz::https://hg.nginx.org/unit/archive/0.4.tar.gz
-	md5sums = 11555971d26ea16723516485670543ee
+	source = nginx-unit-0.7.tar.gz::https://hg.nginx.org/unit/archive/0.7.tar.gz
+	md5sums = 52ab9f68bb2c4bccc393e2365d02c630
 
 pkgname = nginx-unitd
 
