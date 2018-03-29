@@ -4,7 +4,7 @@
 pkgname=automake-1.11
 _realname=automake
 pkgver=1.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
@@ -39,4 +39,5 @@ package() {
 
   rm -rf "$pkgdir/usr/"{bin/{aclocal,automake},share/{doc,aclocal}}
   rm "$pkgdir/usr/share/man/man1/"{aclocal,automake}.1
+  find $pkgdir/usr/share/info -type f -exec rename automake automake-1.11 '{}' ';'
 }
