@@ -2,8 +2,8 @@
 # Contributor: foalsrock <foalsrock at gmail dot-com>
 
 pkgname=moslight-themes-git
-pkgver=r183.58a4334
-pkgrel=2
+pkgver=r226.fe550c4
+pkgrel=1
 pkgdesc="Slick GTK 2/3 and GNOME Shell themes resembling the elementary look"
 arch=('any')
 url='https://github.com/dasnoopy/moslight-themes'
@@ -21,7 +21,7 @@ pkgver() {
 package() {
 	cd "${pkgname}"
 	mkdir -p "${pkgdir}/usr/share/themes"
-	for i in Light Emite Sky Cloud ; do
+	for i in Light Emite Sky Cloud Arc Arc-Dark ; do
 		cp -r "Mos${i}" "${pkgdir}/usr/share/themes/Mos${i}"
 	done
 }
