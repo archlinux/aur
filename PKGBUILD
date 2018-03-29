@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bgrep-git
-pkgver=0.2.r4.g5ca1302
+pkgver=0.2.r86.g4401646
 pkgrel=1
 epoch=
 pkgdesc="Binary Grep"
@@ -20,7 +20,7 @@ backup=()
 options=()
 changelog=
 install=
-source=("$pkgname::git+https://github.com/tmbinc/bgrep.git")
+source=("$pkgname::git+https://github.com/rsharo/bgrep.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -31,17 +31,19 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  #gcc -O2 -x c -o bgrep.c
+  ./remove_cruft.sh
+  ./bootstrap
+  ./configure
   make
 }
 
 check() {
   cd "$srcdir/$pkgname/test"
-  ./bgrep-test.sh
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 bgrep $pkgdir/usr/bin/bgrep
+  make DESTDIR="$pkgdir/" prefix="/usr" install
 }
 
