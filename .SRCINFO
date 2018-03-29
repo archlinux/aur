@@ -7,7 +7,7 @@ pkgbase = pipes.c
 	license = GPL3
 	depends = ncurses
 	source = https://github.com/pipeseroni/pipes.c/releases/download/v1.0.0/pipes-c-1.0.0.tar.gz
-	md5sums = d1e4ed4adedf17cccd328893195bbdba
+	sha256sums = 56f0ef7c03472d2a768727fd8cd79acb0acab34ef2e1ec657ec561b5a70b761e
 
 pkgname = pipes.c
 

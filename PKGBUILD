@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/pipeseroni/$pkgname/releases/download/v$pkgver/${pkgname//./-}-$pkgver.tar.gz")
 noextract=()
-md5sums=('d1e4ed4adedf17cccd328893195bbdba')
+sha256sums=('56f0ef7c03472d2a768727fd8cd79acb0acab34ef2e1ec657ec561b5a70b761e')
 
 build() {
   cd "${pkgname//./-}-$pkgver"
