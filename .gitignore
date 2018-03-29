@@ -1,0 +1,5 @@
+src
+pkg
+tcl-nothreading
+*.gz
+*pkg.tar.xz
