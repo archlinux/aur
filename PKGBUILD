@@ -5,9 +5,10 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Elijah Stone <elronnd@elronnd.net>
+# Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=7.3.0
+pkgver=7.3.1+20180312
 pkgrel=1
 _islver=0.18
 arch=('i686' 'x86_64')
@@ -16,24 +17,25 @@ url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-	https://ftp.gnu.org/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz
+	https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
 )
 sha256sums=(
-	'832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
+	'c52618f656f2102b3544419e7d0a8a4f4e6ff052783865202be73edf1a40e28b'
 	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
 	'SKIP'
 	'SKIP'
 	'fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b'
 )
 
-_libdir="usr/lib/gcc/$CHOST/$pkgver"
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
 prepare() {
-	cd $srcdir/gcc-$pkgver
+    [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
+    cd gcc
 
 	# link isl for in-tree build
 	ln -s ../isl-$_islver isl
@@ -41,8 +43,8 @@ prepare() {
 	# Do not run fixincludes
 	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-	# Arch Linux installs x86_64 libraries /lib
-	[[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+    # Arch Linux installs x86_64 libraries /lib
+    sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -51,7 +53,7 @@ prepare() {
 	cd $srcdir/gdc
 	git checkout gdc-7
 	git apply $srcdir/paths.diff
-	./setup-gcc.sh ../gcc-$pkgver
+	./setup-gcc.sh ../gcc
 
 	mkdir $srcdir/gcc-build
 }
@@ -64,7 +66,7 @@ build() {
 	export CFLAGS="${CFLAGS/-pipe/} -O2"
 	export CXXFLAGS="${CXXFLAGS/-pipe/} -O2"
 
-	$srcdir/gcc-$pkgver/configure --prefix=/usr \
+	$srcdir/gcc/configure --prefix=/usr \
 		--libdir=/usr/lib \
 		--libexecdir=/usr/lib \
 		--mandir=/usr/share/man \
@@ -96,7 +98,7 @@ build() {
 		#--enable-lto \
 		#--enable-gold \
 
-	make $MAKEFLAGS
+	make $MAKEFLAGS -j8
 }
 
 package_gdc() {
@@ -106,7 +108,7 @@ package_gdc() {
 
 	# compiler
 	install -D -m755 $srcdir/gcc-build/gcc/gdc $pkgdir/usr/bin/gdc
-	install -D -m755 $srcdir/gcc-build/gcc/cc1d $pkgdir/usr/lib/gcc/$CHOST/$pkgver/cc1d
+	install -D -m755 $srcdir/gcc-build/gcc/cc1d $pkgdir/$_libdir/cc1d
 
 	# tools
 	install -D -m755 $srcdir/GDMD/dmd-script $pkgdir/usr/bin/gdmd
