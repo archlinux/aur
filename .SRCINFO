@@ -1,6 +1,6 @@
 pkgbase = libevhtp-git
 	pkgdesc = A replacement API for Libevent's current HTTP API.
-	pkgver = 1.2.16.r7.g9cbd30d
+	pkgver = 1.2.16.r28.g09c07d2
 	pkgrel = 1
 	url = https://github.com/criticalstack/libevhtp
 	arch = i686
