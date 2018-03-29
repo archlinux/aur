@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r0.g17c2a61
+pkgver=1.3.1.r0.g15966bc
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
