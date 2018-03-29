@@ -1,6 +1,6 @@
 # Maintainer: zenekron <zenekron@gmail.com>
 pkgname=konsole-dracula-git
-pkgver=r0
+pkgver=1
 pkgrel=1
 pkgdesc="Dracula theme for konsole"
 arch=("any")
@@ -12,11 +12,6 @@ provides=("konsole-dracula")
 conflicts=("konsole-dracula")
 source=("$pkgname::git+https://github.com/dracula/konsole")
 md5sums=("SKIP")
-
-pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	cd "$srcdir/$pkgname"
