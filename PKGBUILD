@@ -24,8 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/${_gitname}"
   qmake-qt5
-  make
-  a2x -f manpage -a "date=`date +%Y-%m-%d`" doc/katarakt.txt
+  make all doc
 }
 
 package() {
