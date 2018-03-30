@@ -1,0 +1,38 @@
+diff --git a/linker-scripts/linker.sh b/linker-scripts/linker.sh
+index e966d95..5ee4a14 100755
+--- a/linker-scripts/linker.sh
++++ b/linker-scripts/linker.sh
+@@ -1,6 +1,14 @@
+ #!/bin/bash
+ 
+-extracted_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../extracted && pwd )"
++extracted_dir=/usr/share/msvc-wine-rust
++
++if [[ -z "${TARGET_ARCH:-}" ]]; then
++	if [[ "$*" = *i686-pc-windows-msvc* ]]; then
++		TARGET_ARCH=x86
++	elif [[ "$*" = *x86_64-pc-windows-msvc* ]]; then
++		TARGET_ARCH=x64
++	fi
++fi
+ 
+ # Legal values for host/target are: x64, x86
+ host=x64
+@@ -11,13 +19,11 @@ wine_exec=${WINE_EXEC:=wine}
+ tools_version=14.11.25503
+ sdk_version=10.0.16299.0
+ 
+-link_exec=$extracted_dir/tools/VC/Tools/MSVC/$tools_version/bin/Host$host/$target/link.exe
+-
+-sdk_libs=$extracted_dir/sdk/10/Lib/$sdk_version/um/$target/
+-ucrt_libs=$extracted_dir/sdk/10/Lib/$sdk_version/ucrt/$target/
+-crt_libs=$extracted_dir/sdk/VC/Tools/MSVC/$tools_version/lib/$target/
++link_exec=$extracted_dir/VC/Tools/MSVC/$tools_version/bin/Host$host/$target/link.exe
+ 
+-echo "Running the linker wrapper."
++sdk_libs=$extracted_dir/10/Lib/$sdk_version/um/$target/
++ucrt_libs=$extracted_dir/10/Lib/$sdk_version/ucrt/$target/
++crt_libs=$extracted_dir/VC/Tools/MSVC/$tools_version/lib/$target/
+ 
+ function make_wine_path() {
+ 	v=`realpath "$1"`

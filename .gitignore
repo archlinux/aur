@@ -1,3 +1,8 @@
 /src/
 /pkg/
+/*.pkg*
 /msvc-wine-rust/
+/*.exe
+/*.cab
+/*.vsix
+/*.msi
