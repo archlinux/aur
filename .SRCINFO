@@ -5,6 +5,7 @@ pkgbase = ruby-connection_pool
 	url = https://github.com/mperham/connection_pool
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = connection_pool-2.2.1.gem
 	options = !emptydirs

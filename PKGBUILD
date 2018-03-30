@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/mperham/connection_pool'
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/connection_pool-$pkgver.gem")
 noextract=("connection_pool-$pkgver.gem")
