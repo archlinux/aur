@@ -2,7 +2,7 @@
 
 pkgname='gnunet-fuse-git'
 _appname='gnunet-fuse'
-pkgver='r106.3503aef'
+pkgver='0.10.0.r106.3503aef'
 pkgrel=1
 pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
@@ -19,7 +19,10 @@ md5sums=('SKIP')
 pkgver() {
 
 	cd "${_appname}"
-	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "'%s.r%s.%s'" \
+		"$(grep 'AC_INIT' configure.ac | grep -o '[0-9]\(\.[0-9]\+\)\+')" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 
 }
 

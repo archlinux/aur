@@ -1,6 +1,6 @@
 pkgbase = gnunet-fuse-git
 	pkgdesc = Read-only mounting of GNUnet directories as file systems using FUSE
-	pkgver = r106.3503aef
+	pkgver = 0.10.0.r106.3503aef
 	pkgrel = 1
 	url = https://gnunet.org/
 	arch = i686
