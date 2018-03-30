@@ -14,69 +14,49 @@ if [[ ${CARCH} == 'x86_64' ]]; then
 elif [[ ${CARCH} == 'i686' ]]; then
   depends=('popt' 'lib32-libpng12' 'libusb-compat' 'lib32-libtiff' 'lib32-libxml2' 'gtk2')
 fi
-makedepends=('deb2targz' 'sed')
+makedepends=('sed')
 source=('http://gdlp01.c-wss.com/gds/2/0100005502/01/cnijfilter-mg2500series-4.00-1-deb.tar.gz'
         'http://gdlp01.c-wss.com/gds/9/0100005519/01/scangearmp-mg2500series-2.20-1-deb.tar.gz')
 md5sums=('133593894b4dd9553b0891f92966e9de'
          'e553eadc540b18a6782a3f7d0b7eab80')
 
-_printDrvSrc='cnijfilter-mg2500series-4.00-1-deb'
-_scanDrvSrc='scangearmp-mg2500series-2.20-1-deb'
-
-
-if [[ ${CARCH} == 'x86_64' ]]; then
-	_printDrvDebCommon='cnijfilter-common_4.00-1_amd64'
-	_printDrvDebMain='cnijfilter-mg2500series_4.00-1_amd64'
-	_scanDrvDebCommon='scangearmp-common_2.20-1_amd64'
-	_scanDrvDebMain='scangearmp-mg2500series_2.20-1_amd64'
-elif [[ ${CARCH} == 'i686' ]]; then
-	_printDrvDebCommon='cnijfilter-common_4.00-1_i386'
-	_printDrvDebMain='cnijfilter-mg2500series_4.00-1_i386'
-	_scanDrvDebCommon='scangearmp-common_2.20-1_i386'
-	_scanDrvDebMain='scangearmp-mg2500series_2.20-1_i386'
-fi
-
-_ppdFile="canonmg2500.ppd"
-
 build() {
-   cd ${srcdir}
+  if [[ ${CARCH} == 'x86_64' ]]; then
+    deb_arch='amd64'
+  elif [[ ${CARCH} == 'i686' ]]; then
+    deb_arch='i386'
+  fi
 
-   # Unpack driver source files
-   tar xvzf ${_printDrvSrc}.tar.gz
-   tar xvzf ${_scanDrvSrc}.tar.gz
-   rm -v *.tar.gz
+  for deb_pkg in "${srcdir}"/*/packages/*_${deb_arch}.deb
+  do
+    deb_name="$(basename -s .deb "${deb_pkg}")"
+    mkdir -p "${srcdir}/extracted/${deb_name}"
+    pushd "${srcdir}/extracted/${deb_name}"
+      ar x "${deb_pkg}" data.tar.gz
+    popd
+  done
 }
 
-
 package() {
-   cd ${pkgdir}
+  cd "${pkgdir}"
 
-  # Unpack debian installer files
-   cp "${srcdir}/${_printDrvSrc}/packages/${_printDrvDebCommon}.deb" .
-   cp "${srcdir}/${_printDrvSrc}/packages/${_printDrvDebMain}.deb" .
-   cp "${srcdir}/${_scanDrvSrc}/packages/${_scanDrvDebCommon}.deb" .
-   cp "${srcdir}/${_scanDrvSrc}/packages/${_scanDrvDebMain}.deb" .
+  for data_tar_gz in "${srcdir}"/extracted/*/data.tar.gz
+  do
+    tar xvf "${data_tar_gz}"
+  done
 
-   deb2targz "${_printDrvDebCommon}.deb"
-   deb2targz "${_printDrvDebMain}.deb"
-   deb2targz "${_scanDrvDebCommon}.deb"
-   deb2targz "${_scanDrvDebMain}.deb"
-   rm -v *.deb
+  # Move ppd file to where cups expects
+  mkdir -p "${pkgdir}/usr/share/cups/model"
+  for ppd in usr/share/ppd/*
+  do
+    mv "${ppd}" "${pkgdir}/usr/share/cups/model/$(basename "${ppd}")"
+  done
 
-   tar xzvf "${_printDrvDebCommon}.tar.gz"
-   tar xzvf "${_printDrvDebMain}.tar.gz"
-   tar xzvf "${_scanDrvDebCommon}.tar.gz"
-   tar xzvf "${_scanDrvDebMain}.tar.gz"
-   rm -v *.tar.gz
+  rmdir "${pkgdir}/usr/share/ppd"
 
-   # Move ppd file to where cups expects
-   install -vDm 644 "${pkgdir}/usr/share/ppd/${_ppdFile}" "${pkgdir}/usr/share/cups/model/${_ppdFile}"
+  # Fix udev rules
+  sed -i -e "s/SYSFS/ATTR/g" "${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules"
 
-   rm -vrf ${pkgdir}/usr/share/ppd
-
-   # Fix udev rules
-   sed -i -e "s/SYSFS/ATTR/g" "${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules"
-
-   # Install custom license file
-install -vDm 644 "$pkgdir/usr/share/doc/cnijfilter-mg2500series/LICENSE-cnijfilter-4.00EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install custom license file
+  install -vDm 644 "$pkgdir/usr/share/doc/cnijfilter-mg2500series/LICENSE-cnijfilter-4.00EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
