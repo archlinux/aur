@@ -1,6 +1,6 @@
 pkgbase = pingo
 	pkgdesc = An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)
-	pkgver = 0.96.w
+	pkgver = 0.96.y
 	pkgrel = 1
 	url = http://css-ig.net/pingo/
 	arch = i686
