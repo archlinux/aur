@@ -1,17 +1,19 @@
 pkgbase = srt-git
-	pkgdesc = Secure Reliable Transport (Git version)
-	pkgver = 1.2.0.r103.7607d70
+	pkgdesc = Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)
+	pkgver = 1.2.3.r0.g1367914
 	pkgrel = 1
-	url = https://github.com/Haivision/srt
+	url = https://www.srtalliance.org/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = MPL
+	makedepends = git
 	makedepends = cmake
-	makedepends = pkgconfig
 	depends = openssl
-	provides = srt=1.2.0.r103.7607d70
-	source = git+https://github.com/Haivision/srt.git
-	md5sums = SKIP
+	provides = srt
+	provides = libsrt.so
+	conflicts = srt
+	source = srt-git::git+https://github.com/Haivision/srt.git
+	sha256sums = SKIP
 
 pkgname = srt-git
 
