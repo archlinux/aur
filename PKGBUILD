@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.6.0
-_numix_ver=1.7.0
+_oomox_ver=1.6.1
+_numix_ver=1.8.0
 _materia_ver=20180311
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
@@ -9,7 +9,7 @@ _oomoxify_ver=1.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -19,10 +19,12 @@ depends=(
     'coreutils'
     'bash'
     'bc'
+    'findutils'
     'gdk-pixbuf2'
     'glib2'
     'gtk-engine-murrine'
     'gtk-engines'
+    'gtk3'
     'imagemagick'
     'inkscape'
     'librsvg'
@@ -32,6 +34,7 @@ depends=(
     'python-gobject'
     'python-pillow'
     'sassc'
+    'sed'
     'zip'
 )
 optdepends=(
@@ -52,8 +55,8 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.tar.gz"
 )
-md5sums=('8212ed0e001806133ffe346ce0d237b6'
-         '19816351f949963a240dd13bc0530952'
+md5sums=('9a9534620828a0d94793f3419886380c'
+         '0190629de56d822efccf32b43324c479'
          'd34fd7d7f765c38d8be95b778a90ea2b'
          '48ca9edc0cf2b06bdc353bd5f2c833ba'
          'f3a30f186dc92a972b88975fcbd321ed'
