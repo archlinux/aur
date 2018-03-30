@@ -1,14 +1,15 @@
 pkgbase = gce-compute-image-packages
 	pkgdesc = Linux Guest Environment for Google Compute Engine
-	pkgver = 0.0.0
+	pkgver = 20180227
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/compute-image-packages
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	depends = python-boto
 	depends = python-setuptools
-	depends = git
-	source = gce-compute-image-packages::git://github.com/GoogleCloudPlatform/compute-image-packages.git
+	depends = python-distro
+	source = gce-compute-image-packages-20180227::git://github.com/GoogleCloudPlatform/compute-image-packages.git
 	sha512sums = SKIP
 
 pkgname = gce-compute-image-packages
