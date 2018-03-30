@@ -1,4 +1,5 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=libdart
 pkgver=6.4.0
 pkgrel=1
