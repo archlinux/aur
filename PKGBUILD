@@ -6,7 +6,7 @@ pkgver=r1.2.g9e44188
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TTempSmooth'
+url='https://forum.doom9.org/showthread.php?t=175351'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
