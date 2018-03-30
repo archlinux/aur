@@ -1,19 +1,21 @@
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kio_gopher
 _pkgname=kio-gopher
-pkgver=0.1.4
+pkgver=0.1.99
 pkgrel=1
-pkgdesc="Gets you gopher protocol support in KIO."
+pkgdesc="Gets you gopher protocol support in KIO"
 arch=('i686' 'x86_64')
 url="http://userbase.kde.org/Kio_gopher"
 license=('GPL')
-depends=('kdelibs')
-makedepends=('cmake' 'automoc4')
+depends=('plasma-framework')
+makedepends=('cmake' 'extra-cmake-modules')
 options=('docs')
-source=("http://download.kde.org/stable/extragear/${_pkgname}-${pkgver}.tar.bz2")
+source=("http://download.kde.org/unstable/kio-gopher/${_pkgname}-${pkgver}.tar.xz")
+md5sums=('fb0afc1e3430158962c4d843bae385f5')
 
-build() {
+package() {
   cd $srcdir
   if [ -d build ] ; then
       rm build -rf
@@ -26,4 +28,4 @@ build() {
   make
   make DESTDIR=$pkgdir install
 }
-md5sums=('401e7a22f35f9528512f36f6e2060d21')
+
