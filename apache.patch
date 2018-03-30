@@ -10,7 +10,7 @@
      fi
 --- configure.orig
 +++ configure
-@@ -6920,7 +6920,6 @@
+@@ -6932,7 +6932,6 @@
  
      fi
    else
