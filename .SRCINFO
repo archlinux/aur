@@ -1,7 +1,7 @@
 pkgbase = firefox-eme-free
 	pkgdesc = Deblobbed and EME free Firefox
 	pkgver = 59.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
