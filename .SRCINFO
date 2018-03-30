@@ -1,0 +1,15 @@
+pkgbase = luajit-lanes
+	pkgdesc = A solution for running Lua multithreaded
+	pkgver = 3.11
+	pkgrel = 1
+	url = https://github.com/LuaLanes/lanes
+	arch = x86_64
+	license = MIT
+	depends = luajit
+	provides = lua51-lanes
+	conflicts = lua51-lanes
+	source = luajit-lanes-3.11.tar.gz::https://github.com/LuaLanes/lanes/archive/v3.11.tar.gz
+	md5sums = 07ed104a450b76d5919cc8f46a5b4a2f
+
+pkgname = luajit-lanes
+
