@@ -1,5 +1,5 @@
 pkgbase = linux-clear
-	pkgver = 4.15.11
+	pkgver = 4.15.14
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.11.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.11.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.15.9-538
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.14.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.14.sign
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.15.14-538
 	source = https://downloadmirror.intel.com/27591/eng/microcode-20180312.tgz
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -26,7 +26,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
 	sha256sums = SKIP
-	sha256sums = ad74ca849d66056ac453d004caa36f20c56fe5eedb4370e279b55b4e7b02ccc2
+	sha256sums = 6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779

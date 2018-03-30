@@ -3,9 +3,9 @@
 
 pkgbase=linux-clear
 __basekernel=4.15
-_minor=11
+_minor=14
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.9-538
+_clearver=${__basekernel}.14-538
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'ad74ca849d66056ac453d004caa36f20c56fe5eedb4370e279b55b4e7b02ccc2'
+            '6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -53,9 +53,7 @@ prepare() {
   rm -f firmware/intel-ucode/0f*
 
   # Apply clearlinux patches
-  for i in $(grep "^Patch" ${srcdir}/clearlinux/linux.spec |\
-    grep -v '0001-drm-i915-Update-watermark-state-correctly-in-sanitiz.patch' |\
-    grep -v 'zero-regs.patch' | sed -n 's/.*: //p'); do
+  for i in $(grep "^Patch" ${srcdir}/clearlinux/linux.spec | grep -v 'zero-regs.patch' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
