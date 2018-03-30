@@ -282,7 +282,7 @@ package_llvm-libs-svn() {
 
     # Must have a symlink that corresponds to the output of `llvm-config --version`.
     # Without it, some builds, e.g. Mesa, might fail for "lack of shared libraries".
-    _sover="$(echo ${pkgver} | cut -d . -f -2)svn"
+    _sover="$(echo ${pkgver} | cut -d . -f -1)svn"
     # libLLVM.so.3.8.0svn-r123456
     ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM.so.$(echo ${pkgver} | tr _ -)"
     # libLLVM-3.8.0svn-r123456.so
