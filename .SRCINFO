@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-deu-fra-bin
+	pkgdesc = German -> French dictionary for dictd et al. from Freedict.org
+	pkgver = 2017_11_24
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-deu-fra-bin.install
+	arch = any
+	license = GPL
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-deu-fra
+	conflicts = dict-freedict-deu-fra
+	source = https://sourceforge.net/projects/freedict/files/deu-fra/2017-11-24/freedict-deu-fra-2017-11-24.dictd.tar.xz
+	sha512sums = c90a1f76b26f677acb701209335bb777764154ad9ae1823da06887466422624b834190c1bcf0ff3512e03f0457be11e404cf78656560de2e31fcaec12de14986
+
+pkgname = dict-freedict-deu-fra-bin
+
