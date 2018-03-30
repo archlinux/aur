@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-rust
 _pkgname=rust
-pkgver=1.24.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
 arch=('any')
@@ -20,15 +20,16 @@ conflicts=()
 replaces=()
 makedepends=('rust' 'gdb' 'libffi' 'perl' 'python2' 'nodejs' 'cmake')
 
-source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz"{,.asc}
+source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.xz"{,.asc}
         mingw-config.toml)
 
-sha256sums=('3ea53d45e8d2e9a41afb3340cf54b9745f845b552d802d607707cf04450761ef'
+sha256sums=('14fcb82d5959df758aaf422539359300917217fa8420e34bd596e3fb6ed2de87'
             'SKIP'
-            '73b17e4a45bf86c26083d417a1e2ed5a401314fcb5bb739e27a13b99ec8e3d23')
+            '497b75a9dfd0f5890a37b1ab8706c52586c08684e47f281bb740686601a81dd3')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
+PKGEXT=".pkg.tar.gz"
 
 prepare() {
   cd "rustc-$pkgver-src"
@@ -43,10 +44,7 @@ build() {
   unset LDFLAGS
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  python2 ./x.py build \
-    src/rustc \
-    src/libstd \
-    src/tools/cargo
+  python2 ./x.py build
 }
 
 package() {
@@ -57,10 +55,9 @@ package() {
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   # TODO: find a way to disable packaging
-  DESTDIR="$pkgdir" python2 ./x.py install \
-    src/librustc \
-    src/libstd \
-    cargo
+  # use level 0 to speed up xz packaging
+  sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
+  DESTDIR="$pkgdir" python2 ./x.py install
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
@@ -87,6 +84,7 @@ package() {
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
+  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
   x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll
 

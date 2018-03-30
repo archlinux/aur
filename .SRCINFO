@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-rust
 	pkgdesc = rust language prebuilt toolchain with mingw target (mingw-w64)
-	pkgver = 1.24.1
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://www.rust-lang.org/
 	arch = any
@@ -23,13 +23,13 @@ pkgbase = mingw-w64-rust
 	options = staticlibs
 	options = !strip
 	backup = opt/rust/cargo/config
-	source = https://static.rust-lang.org/dist/rustc-1.24.1-src.tar.gz
-	source = https://static.rust-lang.org/dist/rustc-1.24.1-src.tar.gz.asc
+	source = https://static.rust-lang.org/dist/rustc-1.25.0-src.tar.xz
+	source = https://static.rust-lang.org/dist/rustc-1.25.0-src.tar.xz.asc
 	source = mingw-config.toml
 	validpgpkeys = 108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE
-	sha256sums = 3ea53d45e8d2e9a41afb3340cf54b9745f845b552d802d607707cf04450761ef
+	sha256sums = 14fcb82d5959df758aaf422539359300917217fa8420e34bd596e3fb6ed2de87
 	sha256sums = SKIP
-	sha256sums = 73b17e4a45bf86c26083d417a1e2ed5a401314fcb5bb739e27a13b99ec8e3d23
+	sha256sums = 497b75a9dfd0f5890a37b1ab8706c52586c08684e47f281bb740686601a81dd3
 
 pkgname = mingw-w64-rust
 

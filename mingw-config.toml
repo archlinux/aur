@@ -149,7 +149,11 @@ full-bootstrap = false
 # but also tools such as Cargo. This will also produce "combined installers"
 # which are used to install Rust and Cargo together. This is disabled by
 # default.
-extended = false
+extended = true
+
+# Installs choosen set of extended tools if enables. By default builds all.
+# If choosen tool failed to build the installation fails.
+tools = ["cargo"]
 
 # Verbosity level: 0 == not verbose, 1 == verbose, 2 == very verbose
 verbose = 0
@@ -235,6 +239,11 @@ optimize = true
 # compiler.
 codegen-units = 0
 
+# Whether to enable ThinLTO (and increase the codegen units to either a default
+# or the configured value). On by default. If we want the fastest possible
+# compiler, we should disable this.
+thinlto = true
+
 # Whether or not debug assertions are enabled for the compiler and standard
 # library. Also enables compilation of debug! and trace! logging macros.
 debug-assertions = false
@@ -304,6 +313,18 @@ test-miri = false
 # After building or testing extended tools (e.g. clippy and rustfmt), append the
 # result (broken, compiling, testing) into this JSON file.
 #save-toolstates = "/path/to/toolstates.json"
+
+# This is an array of the codegen backends that will be compiled for the rustc
+# that's being compiled. The default is to only build the LLVM codegen backend,
+# but you can also optionally enable the "emscripten" backend for asm.js or
+# make this an empty array (but that probably won't get too far in the
+# bootstrap)
+codegen-backends = ["llvm"]
+
+# Flag indicating whether `libstd` calls an imported function to handle basic IO
+# when targeting WebAssembly. Enable this to debug tests for the `wasm32-unknown-unknown`
+# target, as without this option the test output will not be captured.
+wasm-syscall = false
 
 # =============================================================================
 # Options for specific targets
@@ -467,7 +488,7 @@ crt-static = true
 # These options are related to distribution, mostly for the Rust project itself.
 # You probably won't need to concern yourself with any of these options
 # =============================================================================
-#[dist]
+[dist]
 
 # This is the folder of artifacts that the build system will sign. All files in
 # this directory will be signed with the default gpg key using the system `gpg`
