@@ -2,7 +2,7 @@
 # CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-youtube
-pkgver=1.3
+pkgver=2.0
 pkgrel=1
 pkgdesc="youtube integration for Nuvola Player."
 arch=("any")
@@ -11,7 +11,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('4b6819e2f888b1b2e45e3dee2401c5dad69015a77b3c9d9b68be1b044f200422')
+sha256sums=('af41f4217605aab30e1d43f6c681eb590061529d3d5cc4415efd6c9bf7fcd0c3')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
