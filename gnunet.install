@@ -1,0 +1,45 @@
+# Please, synch these two variables with the ones with the same name in PKGBUILD
+_gnunet_guid=714
+_gnunetdns_gid=715
+
+post_install() {
+
+	if ! getent passwd gnunet > /dev/null; then
+
+		if ! getent group gnunet > /dev/null; then
+
+			echo "Creating group 'gnunet'..."
+			groupadd gnunet -g ${_gnunet_guid}
+
+		fi
+
+		echo "Creating user 'gnunet'..."
+		useradd -r -l -u ${_gnunet_guid} -g ${_gnunet_guid} -d /var/lib/gnunet gnunet
+
+	fi
+
+	chown gnunet:gnunet '/var/lib/gnunet'
+
+	if ! getent group gnunetdns > /dev/null; then
+
+		echo "Creating group 'gnunetdns'..."
+		groupadd gnunetdns -g ${_gnunetdns_gid}
+
+	fi
+
+}
+
+post_remove() {
+
+	getent passwd gnunet > /dev/null && userdel gnunet
+	getent group gnunet > /dev/null && groupdel gnunet
+	getent group gnunetdns > /dev/null && groupdel gnunetdns
+
+}
+
+post_upgrade() {
+
+	post_install
+
+}
+

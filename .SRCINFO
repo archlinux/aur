@@ -1,13 +1,15 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = r25770.de5018639
+	pkgver = 0.11.0.r25783.a01ee0d0c
 	pkgrel = 1
 	url = http://gnunet.org
+	install = gnunet.install
 	arch = x86_64
 	license = GPL
 	makedepends = gettext
 	makedepends = pkgconfig
 	makedepends = autoconf
+	makedepends = fakeuser-git
 	makedepends = bluez-libs
 	makedepends = python
 	makedepends = glpk
@@ -32,10 +34,8 @@ pkgbase = gnunet-git
 	backup = etc/gnunetd.conf
 	source = git+https://gnunet.org/git/gnunet.git
 	source = gnunet.service
-	source = defaults.conf
 	md5sums = SKIP
-	md5sums = 54cce3d2415d95b2e5bd1bd88db3a0ea
-	md5sums = 0fe23b2ca5b3fc47a0b5645e04406da0
+	md5sums = a64f19ce71c02c200fa78ca2d1585bc8
 
 pkgname = gnunet-git
 
