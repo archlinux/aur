@@ -1,7 +1,7 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
-	pkgver = 6.3.0
-	pkgrel = 2
+	pkgver = 6.4.0
+	pkgrel = 1
 	url = http://dartsim.github.io
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = libdart
 	optdepends = bullet: Bullet support
 	optdepends = coin-or-ipopt: Ipopt support
 	optdepends = nlopt: NLopt support
-	source = https://github.com/dartsim/dart/archive/v6.3.0.tar.gz
+	source = https://github.com/dartsim/dart/archive/v6.4.0.tar.gz
 	sha256sums = aa92634c1c97d99966cf16c4a0845792941358c063409fa00c28b4039c961c25
 
 pkgname = libdart
