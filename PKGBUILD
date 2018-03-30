@@ -3,7 +3,7 @@
 _pkgname=jdk
 pkgname=jdk-devel
 _major=11
-_build=5
+_build=6
 _jname=${_pkgname}${_major}
 pkgver=${_major}b${_build}
 pkgrel=1
@@ -35,7 +35,7 @@ source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/
         "jmc.desktop"
         "policytool.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('e4b138d6f741a5c8b76adde8adaf2ef6c11e4d73e3dad5207698ba56b1ac7832'
+sha256sums=('d417200411f7bd2ec4eb05683ca2891d10a05177890cb1e129f80cbec72ad36c'
             '7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034'
             'bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5'
             '79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1'
