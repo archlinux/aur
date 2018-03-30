@@ -1,0 +1,15 @@
+pkgbase = vim-anywhere-git
+	pkgdesc = Script that allows you to never edit text outside Vim again
+	pkgver = r3.b6524e8
+	pkgrel = 1
+	url = https://github.com/cjbassi/vim-anywhere
+	arch = any
+	license = MIT
+	depends = xclip
+	depends = xdotool
+	provides = vim-anywhere
+	source = git+https://github.com/cjbassi/vim-anywhere
+	md5sums = SKIP
+
+pkgname = vim-anywhere-git
+
