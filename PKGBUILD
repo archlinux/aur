@@ -41,7 +41,7 @@ source=(
 	'0006-Makefile-do-not-blacklist-usblp-seems-unnecessary-co.patch'
 )
 
-sha256sums=('b63c65e8e0e7c9fd8d19b9e63f7cd85048eba01a877aac1ca13a6bfc979ea182'
+sha256sums=('SKIP'
             '620e4bd9da088c96843f2a124301e5529bc6a3c92b87b535ee907042cdb46756'
             '4110354cdbdf73349585a7d823f7c0b4aac0ff930ce718cb59a7e28c9ead57bb'
             '50b8c3403403bfe36730db2a04b47c7f8c1afd36115edb8474aaa09c8b75d0f9'
