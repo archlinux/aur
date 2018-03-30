@@ -1,6 +1,6 @@
 _cache() {
   echo "Updating font cache..."
-  fc-cache -fs
+  fc-cache -vfs
   mkfontscale /usr/share/fonts/misc
   mkfontdir /usr/share/fonts/misc
 }
