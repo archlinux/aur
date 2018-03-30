@@ -1,0 +1,12 @@
+pkgbase = sl-alt
+	pkgdesc = Mirror the output of ls
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gir.st/blog/sl-alt.htm
+	arch = any
+	license = GPL3
+	depends = bash
+	conflicts = sl
+
+pkgname = sl-alt
+
