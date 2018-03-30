@@ -1,6 +1,6 @@
 pkgbase = amber
 	pkgdesc = An open source efficient, cohesive and fun web framework for the Crystal language
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/amberframework/amber
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = amber
 	depends = crystal
 	depends = shards
 	depends = sqlite
-	source = https://github.com/amberframework/amber/archive/v0.7.1.tar.gz
-	sha256sums = 7775e23eba9f18d38099871ff9c8ad78d32f600213d0a72141d1e0ca3c708107
+	source = https://github.com/amberframework/amber/archive/v0.7.2.tar.gz
+	sha256sums = 8f4d11255b82e5d3ab332602783129dd2754aaadca7280d479f337f05590384f
 
 pkgname = amber
 
