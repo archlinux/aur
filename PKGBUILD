@@ -6,7 +6,7 @@ pkgver=60.1
 ver=60.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -57,7 +57,7 @@ prepare() {
   mkdir -p path
   ln -sf /usr/bin/python2 path/python
 
-  cd thunderbird-$pkgver
+  cd thunderbird-$ver
 
   msg2 "thunderbird-install-dir.patch"
   patch -Np1 -i ../thunderbird-install-dir.patch
@@ -137,7 +137,7 @@ patch -Np1 -i ../../fix2.patch
 }
 
 build() {
-  cd thunderbird-$pkgver
+  cd thunderbird-$ver
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -158,7 +158,7 @@ build() {
 }
 
 package() {
-  cd thunderbird-$pkgver
+  cd thunderbird-$ver
 
 msg2 'fixing upstream error'
 
