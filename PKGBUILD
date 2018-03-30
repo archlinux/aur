@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-mixcloud
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="mixcloud integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('b33c4f3b2db872b529c1b93638dd573ba31d40884a426dd4407b15c32074bddf')
+sha256sums=('a2bcf0fc83f7847160d277065130aa20be836bb36d43ed7102b263e8f1afd70d')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"

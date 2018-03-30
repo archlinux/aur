@@ -1,6 +1,6 @@
 pkgbase = nuvola-app-mixcloud
 	pkgdesc = mixcloud integration for Nuvola Player.
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-mixcloud
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nuvola-app-mixcloud
 	makedepends = scour
 	depends = nuvolaruntime
 	depends = imagemagick
-	source = https://github.com/tiliado/nuvola-app-mixcloud/archive/4.0.tar.gz
-	sha256sums = b33c4f3b2db872b529c1b93638dd573ba31d40884a426dd4407b15c32074bddf
+	source = https://github.com/tiliado/nuvola-app-mixcloud/archive/4.1.tar.gz
+	sha256sums = a2bcf0fc83f7847160d277065130aa20be836bb36d43ed7102b263e8f1afd70d
 
 pkgname = nuvola-app-mixcloud
 
