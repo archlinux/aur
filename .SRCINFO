@@ -1,8 +1,8 @@
 pkgbase = python-aiohttp-cors-gns3
 	pkgdesc = CORS support for aiohttp (GNS3)
 	pkgver = 0.5.3
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/aiohttp-cors
+	pkgrel = 2
+	url = https://github.com/aio-libs/aiohttp-cors
 	arch = any
 	groups = gns3
 	license = Apache
@@ -11,8 +11,8 @@ pkgbase = python-aiohttp-cors-gns3
 	depends = python-aiohttp-gns3
 	provides = python-aiohttp-cors
 	conflicts = python-aiohttp-cors
-	source = https://files.pythonhosted.org/packages/source/a/aiohttp-cors/aiohttp-cors-0.5.3.tar.gz
-	md5sums = 0594dd4f5148405a13b5b703325244a9
+	source = aiohttp-cors-0.5.3.tar.gz::https://github.com/aio-libs/aiohttp-cors/archive/v0.5.3.tar.gz
+	sha256sums = bec79cc5c62cffd044899863a73a450d058a6cb2c965d4c8cec8e6b0d06e9768
 
 pkgname = python-aiohttp-cors-gns3
 
