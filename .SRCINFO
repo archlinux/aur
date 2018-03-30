@@ -1,6 +1,6 @@
 pkgbase = multimc-git
 	pkgdesc = Free, open source launcher and instance manager for Minecraft.
-	pkgver = 0.6.1.r28.gea151ca9
+	pkgver = 0.6.1.r41.gc9832d0d
 	pkgrel = 1
 	url = http://multimc.org/
 	arch = i686
