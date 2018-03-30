@@ -7,7 +7,7 @@
 
 pkgname=laptop-mode-tools-git
 _pkgname=laptop-mode-tools
-pkgver=1.72.2.15.g16f5d24
+pkgver=1.72.2.16.g53b7b0b
 pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
