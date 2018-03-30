@@ -2,7 +2,7 @@
 # CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=diorite
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="Diorite Library is a utility and widget library for Nuvola Player project based on GLib, GIO and GTK."
 arch=("any")
@@ -12,7 +12,7 @@ depends=('python' 'vala' 'glib2' 'ruby-gio2' 'gtk3' 'sqlite' 'gobject-introspect
 optdepends=('valadoc:        A documentation tool for vala')
 makedepends=('scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('91b4772e9d188a7afe4f427bcdc33080017d2d79d3fad5fc3349a84204b0f113')
+sha256sums=('d6400af7b2f67b51d0dbeb9a682d0e72e12d5a9d125ec1ae437e0e1ea26a683b')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"

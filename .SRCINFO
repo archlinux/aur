@@ -1,6 +1,6 @@
 pkgbase = diorite
 	pkgdesc = Diorite Library is a utility and widget library for Nuvola Player project based on GLib, GIO and GTK.
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/tiliado/diorite
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = diorite
 	depends = sqlite
 	depends = gobject-introspection
 	optdepends = valadoc: A documentation tool for vala
-	source = https://github.com/tiliado/diorite/archive/4.9.0.tar.gz
-	sha256sums = 91b4772e9d188a7afe4f427bcdc33080017d2d79d3fad5fc3349a84204b0f113
+	source = https://github.com/tiliado/diorite/archive/4.10.0.tar.gz
+	sha256sums = d6400af7b2f67b51d0dbeb9a682d0e72e12d5a9d125ec1ae437e0e1ea26a683b
 
 pkgname = diorite
 
