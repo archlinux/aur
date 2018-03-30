@@ -1,14 +1,14 @@
 pkgbase = gstreamer0.10-bad
 	pkgver = 0.10.23
-	pkgrel = 37
-	url = https://github.com/triceratops1/gstreamer0
+	pkgrel = 38
+	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = LGPL
 	license = GPL
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10-base>=0.10.36-3
+	makedepends = gstreamer0.10-base>=0.10.36-11
 	makedepends = xvidcore
 	makedepends = libdca
 	makedepends = bzip2
@@ -43,7 +43,7 @@ pkgbase = gstreamer0.10-bad
 	makedepends = celt
 	makedepends = openssl-1.0
 	options = !emptydirs
-	source = git+https://gitlab.com/gstreamer-sdk/gst-plugins-bad.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125
+	source = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.23.tar.xz
 	source = fix-libmodplug-include.patch
 	source = drop-vpx-compat-defs.patch
 	source = disable-assrender-test.patch
@@ -51,7 +51,7 @@ pkgbase = gstreamer0.10-bad
 	source = faad2-version-check.patch
 	source = wildmidi-0.4.patch
 	source = flite_cmu_us_kal.patch
-	sha256sums = SKIP
+	sha256sums = 03cf0786391c64625569072e904082a08861f05a63d64b2f8e8dad3f26d81bf9
 	sha256sums = d89d8f4307c7d5a143b9240467d260a1cb6bb1ab2e7ca57841ce0901f41c9cb7
 	sha256sums = eb97037b7b581d1ab994eadd144044c083975e5670a73ec827de126bf888f4b9
 	sha256sums = e66642affa6c0e69837d37615010e67e59ef3d672663303d46c1e2591e2ddfc6
@@ -62,7 +62,7 @@ pkgbase = gstreamer0.10-bad
 
 pkgname = gstreamer0.10-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad)
-	depends = gstreamer0.10-base>=0.10.34
+	depends = gstreamer0.10-base>=0.10.36-11
 
 pkgname = gstreamer0.10-bad-plugins
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)
@@ -100,4 +100,5 @@ pkgname = gstreamer0.10-bad-plugins
 	depends = celt
 	depends = spandsp
 	depends = openssl-1.0
+	depends = dconf
 
