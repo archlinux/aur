@@ -1,0 +1,20 @@
+pkgbase = ttf-nerd-fonts-hack-complete-git
+	pkgdesc = A typeface designed for source code. Patched with Nerd Fonts iconics.
+	pkgver = 20180330
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	depends = fontconfig
+	replaces = ttf-nerd-fonts-knack-complete-git
+	source = Hack-Regular-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+	source = Hack-Regular-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+	source = Hack-Italic-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf
+	source = Hack-Italic-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ttf-nerd-fonts-hack-complete-git
+
