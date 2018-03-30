@@ -276,19 +276,6 @@ index 84a06153..fd7ca47f 100644
        '<(emoji_suggestions_loc)',
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
-diff --git a/Telegram/gyp/linux_glibc_wraps.gyp b/Telegram/gyp/linux_glibc_wraps.gyp
-index 07a8276f..99ac4cac 100644
---- a/Telegram/gyp/linux_glibc_wraps.gyp
-+++ b/Telegram/gyp/linux_glibc_wraps.gyp
-@@ -14,7 +14,7 @@
-     'sources': [
-       '../SourceFiles/platform/linux/linux_glibc_wraps.c',
-     ],
--    'conditions': [[ '"<!(uname -p)" == "x86_64" or "<!(uname -p)" == "aarch64"', {
-+    'conditions': [[ '"<!(uname -m)" == "x86_64" or "<!(uname -m)" == "aarch64"', {
-       'sources': [
-         '../SourceFiles/platform/linux/linux_glibc_wraps_64.c',
-       ],
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
 index dea127a3..62c95e68 100644
 --- a/Telegram/gyp/qt.gypi
@@ -457,15 +444,6 @@ index b93bace4..0fcdfd56 100644
            '-W',
            '-fPIC',
            '-Wno-unused-variable',
-@@ -25,7 +25,7 @@
-         ],
-       },
-       'conditions': [
--        [ '"<!(uname -p)" == "x86_64" or "<!(uname -p)" == "aarch64"', {
-+        [ '"<!(uname -m)" == "x86_64" or "<!(uname -m)" == "aarch64"', {
-           'defines': [
-             'Q_OS_LINUX64',
-           ],
 @@ -60,7 +59,6 @@
        ],
        'defines': [
@@ -487,7 +465,7 @@ index f6918c22..50f0d8c7 100644
        'linux_path_range%': '/usr/local',
      },
      'include_dirs': [
-+      '/usr/include/openssl-1.0',
++      '/usr/include/openssl',
        '/usr/local/include',
        '<(linux_path_ffmpeg)/include',
        '<(linux_path_openal)/include',
@@ -495,7 +473,7 @@ index f6918c22..50f0d8c7 100644
        '<(linux_path_range)/include',
      ],
      'library_dirs': [
-+      '/usr/lib/openssl-1.0',
++      '/usr/lib/openssl',
        '/usr/local/lib',
        '<(linux_path_ffmpeg)/lib',
        '<(linux_path_openal)/lib',

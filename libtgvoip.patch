@@ -12,7 +12,7 @@ index 52fbea1..9a4dfb7 100644
          'include_dirs': [
            '<(tgvoip_src_loc)/webrtc_dsp',
            '<(linux_path_opus_include)',
-+          '/usr/include/openssl-1.0'
++          '/usr/include/openssl'
          ],
          'direct_dependent_settings': {
            'include_dirs': [

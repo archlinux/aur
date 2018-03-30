@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-systemqt-notoemoji
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 1.2.12
+	pkgver = 1.2.15
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = telegram-desktop-systemqt-notoemoji
 	depends = openal
 	depends = qt5-base
 	depends = qt5-imageformats
-	depends = openssl-1.0
+	depends = openssl
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.12
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.15
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
@@ -32,6 +32,7 @@ pkgbase = telegram-desktop-systemqt-notoemoji
 	source = tdesktop.patch
 	source = no-gtk2.patch
 	source = libtgvoip.patch
+	source = libtgvoip-2.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,9 +41,10 @@ pkgbase = telegram-desktop-systemqt-notoemoji
 	sha256sums = 0b520c1227010f2357c52208c3937a394534bd3aa30c78810cd4d309afa94bd7
 	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
 	sha256sums = 7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82
-	sha256sums = 36b817ec9843b261af7a246f9ec51feb828203bd90e76aef7383457f23a0d4cb
+	sha256sums = aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
-	sha256sums = 0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075
+	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
+	sha256sums = 07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26
 
 pkgname = telegram-desktop-systemqt-notoemoji
 
