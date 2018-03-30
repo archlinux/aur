@@ -1,10 +1,10 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
-_version=4.0.3
+_version=4.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -20,7 +20,7 @@ source=(
 "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
 "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('9adf64cabc7c02ea2d08f150b449b05e46bd42d6e542bf742b3674f5c37f0dbf'
+sha256sums=('bd11d422d466dc8fc149e52c4a4a94aa56dc5f03520f482fba5cd7e58f15bbc4'
             'SKIP')
 
 package() {
@@ -47,7 +47,7 @@ package() {
 
     # Patch the ld interpreter to avoid version warnings
     qldv "`qldv -find`" "${target}/lib/ld.so"
-    find "${target}/bin" -type f -exec patchelf --set-interpreter '/usr/lib/swift/lib/ld.so' {} \;
+    find "${target}/bin" -type f -not -name liblldb-intel-mpxtable.so -exec patchelf --set-interpreter '/usr/lib/swift/lib/ld.so' {} \;
 
     # Hack to override Clang and ensure Swift runs patchelf on output files to fix the libcurl version warnings
     echo '#!/bin/bash' > "${target}/bin/clang++"
