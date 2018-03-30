@@ -1,7 +1,7 @@
 # Maintainer: Ivan Fonseca <ivanfon[at]riseup[dot]net>
 
 pkgname=fkill
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Quickly kill processes from the command line."
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=()
 npmname=fkill-cli
 source=(https://registry.npmjs.org/$npmname/-/$npmname-$pkgver.tgz)
 noextract=($npmname-$pkgver.tgz)
-sha256sums=('ddbabdf02bba864dd84666d52fd4ce60156acfe74c2372c94902b29bf8072ff1')
+sha256sums=('aa7a08cc6a883871ea9b40ce13b8d6a261f0c774ffcbdd37c47e2e5018876bad')
 
 package() {
   cd "$srcdir"
