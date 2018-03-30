@@ -1,7 +1,7 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=giseditor
-pkgver=0.25
-pkgrel=3
+pkgver=0.26
+pkgrel=1
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
@@ -19,11 +19,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/dayanuyim/GisEditor/archive/v0.25.tar.gz")
+source=(
+    "https://github.com/dayanuyim/GisEditor/archive/v0.26.tar.gz"
+    "GisEditor.desktop"
+    "giseditor.sh"
+)
 noextract=()
-md5sums=("c5f0600a6d60486eb10d799f2ecd0671")
+md5sums=(
+    "4c04ae03af817f3942cf2a6340e3f0a0"
+    "5952c532803039b2e7f40d062f171853"
+    "f1896415d3e9488a9b3ff3545ae3911f"
+)
 validpgpkeys=()
 package() {
+    install -d "$pkgdir"/opt
 	mkdir -p $pkgdir/opt/giseditor
 	cp -R $srcdir/GisEditor-$pkgver/conf $pkgdir/opt/giseditor
 	chmod -R a+x $pkgdir/opt/giseditor/conf
@@ -36,10 +45,12 @@ package() {
 	cp -R $srcdir/GisEditor-$pkgver/src $pkgdir/opt/giseditor
 	cp -R $srcdir/GisEditor-$pkgver/main.py $pkgdir/opt/giseditor
 	chmod +x $pkgdir/opt/giseditor/main.py 
-	mkdir -p $pkgdir/usr/bin
-	echo '#!/usr/bin/sh' > $pkgdir/usr/bin/giseditor
-	echo 'python /opt/giseditor/main.py' >> $pkgdir/usr/bin/giseditor
-	chmod +x $pkgdir/usr/bin/giseditor
 
-	# TODO: install .desktop here and update mime type for os"
+    install -d "$pkgdir"/usr/bin
+    install -D -m755 "./giseditor.sh" "${pkgdir}/usr/bin/giseditor"
+
+    install -D -m644 "./GisEditor.desktop" "${pkgdir}/usr/share/applications/GisEditor.desktop"
+
+	# TODO: update mime type gpx, gdb"
+
 }

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GisEditor
+Comment=a gis editor/viewer for hiking in Taiwan
+Exec=giseditor
+Terminal=false
+Type=Application
+MimeType=text/plain;
