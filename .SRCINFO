@@ -5,7 +5,6 @@ pkgbase = todoist-full-offline-backup
 	url = https://github.com/joanbm/todoist-full-offline-backup
 	arch = any
 	license = GPLv3
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-setuptools
