@@ -1,6 +1,2 @@
-# set needed variables
+# set needed variable
 export DEVKITPRO=/opt/devkitpro
-export DEVKITA64=${DEVKITPRO}/devkitA64
-
-# add to path
-export PATH=${PATH}:${DEVKITA64}/bin
