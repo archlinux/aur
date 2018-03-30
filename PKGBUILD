@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=67.0.3384.0
-pkgrel=1
+pkgrel=3
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
@@ -163,9 +163,9 @@ sha256sums=('bee666fe41adf9059cb1bfde2e495cc30bedff1edbd811effc3be7b1948da9af'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
-            '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
+            '65cc6bb3d7655eb42848f0d878b46236b4392142334c5869edd53a3d0e08a635'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
-            '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
+            'c552a31e4f678dbd45638b42d12ca1b1efe8256a5a77535dfaa3bb7cdb9905b8'
             'b4417fd2c24bc8e71d671c902989298f0924527e1e5267eb4e0d9a885f27740f'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
@@ -210,10 +210,12 @@ sha256sums=('bee666fe41adf9059cb1bfde2e495cc30bedff1edbd811effc3be7b1948da9af'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
-            '7ab0a9ad9a7c19864b72118773d289d6fe550ea1ae0c58562ee59cbb9be9dc07'
+            'ce7fa7b32153310e1a136e728e55aaac95365fe139eb4da93c8a7aea07806f92'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
+
 
 
 
@@ -344,7 +346,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 #patch -Np1 -i ../9k.patch
-#patch -Np1 -i ../048.patch
+patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
@@ -359,7 +361,7 @@ patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
-  patch -Np1 -i ../gnb.patch
+  patch -Np1 -Ri ../gnb.patch
 patch -Np1 -i ../desu.patch
  #patch -Np1 -i ../hell.patch
 
