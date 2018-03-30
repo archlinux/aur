@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r27
+pkgver=r29
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -34,7 +34,7 @@ depends=('vapoursynth'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha256sums=('8379b2f324f55e9a5317bd647d6df6a141db7af06740019c8c50cf46de4a0778')
+sha256sums=('8a2b86954cb62c23f2ad48ae9b36e5bc4687b76fad58efacaa9deb4e8e459d51')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
