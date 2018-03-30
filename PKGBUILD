@@ -26,14 +26,14 @@ _NUMAdisable=y
 # This PKGBUILD will call it directly to probe all the modules you have logged!
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
 pkgver=4.15.14
-pkgrel=1
+pkgrel=2
 _pdsversion=098k
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -87,9 +87,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-
-  # fix naming schema in EXTRAVERSION of psd patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_pdsversion}"
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
