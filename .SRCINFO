@@ -1,7 +1,7 @@
 pkgbase = octopi-kde-git
 	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)
-	pkgver = 0.8.1.1349
-	pkgrel = 3
+	pkgver = 0.8.1.1351
+	pkgrel = 1
 	url = https://octopiproject.wordpress.com/
 	arch = x86_64
 	license = GPL2
