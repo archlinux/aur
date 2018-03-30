@@ -1,7 +1,7 @@
 # Maintainer: Ignacio <nachohc89 at gmail dot com>
 pkgname=lxc-templates
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Old style template scripts for LXC"
 arch=(any)
 url="https://github.com/lxc/lxc-templates"
@@ -12,12 +12,12 @@ md5sums=('74970133f59325df1414df1e189f9246')
 
 prepare() {
 	cd "$pkgname-$pkgname-$pkgver"
-	./autogen.sh --prefix=/usr
+	./autogen.sh
 }
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --localstatedir=/var
 	make
 }
 
