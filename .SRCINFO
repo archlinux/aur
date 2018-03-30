@@ -1,0 +1,28 @@
+pkgbase = envizon-git
+	pkgdesc = network visualization tool with focus on red / blue team requirements
+	pkgver = 37.24d86d4
+	pkgrel = 1
+	url = https://evait-security.github.io/envizon/
+	install = envizon.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	depends = git
+	depends = postgresql
+	depends = openssl
+	depends = libxml2
+	depends = libxslt
+	depends = xz
+	depends = x11-ssh-askpass
+	options = !strip
+	source = git+https://github.com/evait-security/envizon.git
+	source = envizon.sysusers.conf
+	source = db_setup.sh
+	sha1sums = SKIP
+	sha1sums = 59f638f39ebf1f4e05928071e5dd0fbbb9bffc92
+	sha1sums = 53199f7d1210e1a85a7045426a8b7949c324a475
+
+pkgname = envizon-git
+
