@@ -1,7 +1,7 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = OpenTTD with JGR's patch pack.
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	arch = i686
 	arch = x86_64

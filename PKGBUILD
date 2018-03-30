@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
@@ -16,6 +16,9 @@ _dirname=OpenTTD-patches-jgrpp
 
 build() {
   cd ${_dirname}-${pkgver} 
+  
+  # http://site.icu-project.org/download/61#TOC-Migration-Issues
+  CXXFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 
  ./configure \
     --prefix-dir=/usr \
