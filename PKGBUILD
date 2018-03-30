@@ -2,8 +2,8 @@
 
 pkgname=prosody-mod-http-upload-external-hg
 pkgver=tip
-pkgrel=1
-pkgdesc="send by email the messages received while offline (if email/alias==jid)"
+pkgrel=2
+pkgdesc="let an external server (php/lua/whatever) handle XMPP http-upload"
 arch=('any')
 url="https://modules.prosody.im/mod_http_upload_external.html"
 license=('MIT')
