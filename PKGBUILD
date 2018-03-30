@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver at luced de>
 pkgname=lua-lanes
 pkgver=3.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A solution for running Lua multithreaded"
 arch=('x86_64')
@@ -44,6 +44,9 @@ package() {
 
 	install -d                  "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`"
 	install -m644 src/lanes.lua "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`"
+
+	install -d                  "$pkgdir`pkg-config --variable=INSTALL_INC lua`"
+	install -m644 src/lanes.h   "$pkgdir`pkg-config --variable=INSTALL_INC lua`"
 
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname"
