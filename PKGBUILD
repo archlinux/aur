@@ -3,8 +3,8 @@
 # Maintainer: Felix Morgner <felix.morgner@gmail.com>
 
 pkgname=dnssec-trigger
-pkgver=0.14
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders"
 arch=('i686' 'x86_64')
 url="http://www.nlnetlabs.nl/projects/dnssec-trigger/"
@@ -15,18 +15,15 @@ backup=('etc/dnssec.conf'
 source=(http://www.nlnetlabs.nl/downloads/dnssec-trigger/$pkgname-$pkgver.tar.gz
         dnssec-triggerd.service
         dnssec-triggerd-keygen.service
-        gtk-update-icon-cache-invocation.patch
-        openssl-1.1.patch)
-sha256sums=('f8d2cf7f451f713be0505c9e4b26bc10ac299a84cd489afe80d3ddd9aa55cf5b'
+        gtk-update-icon-cache-invocation.patch)
+sha256sums=('32d88f44791c540079e5fbfbe96e686e82563d0fd34d9cbc0756773658554e47'
             'c8ed3ef4ec9cba0bd00f47bfbf0e59c318130615aca4370bc597d98365445be9'
             '831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e'
-            '5710dd86e0b8534096274ace3fe6cd224c440a6e86f4ed6bbdb0753146717121'
-            'b5fca9809783f9ca1cbd981585ee13f8ddf3243c1766a86d66e65e6a9bc3e92b')
+            '5710dd86e0b8534096274ace3fe6cd224c440a6e86f4ed6bbdb0753146717121')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 -i "$srcdir/gtk-update-icon-cache-invocation.patch"
-  patch -p1 -i "$srcdir/openssl-1.1.patch"
   sed -i "s!/usr/libexec/!/usr/lib/$pkgname/!g" 01-dnssec-trigger.in
 }
 
