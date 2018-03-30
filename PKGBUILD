@@ -4,6 +4,9 @@
 GITHUB_URL='github.com/denbeigh2000/goi3bar'
 
 pkgver() {
+
+  GOPATH="${srcdir:-$(mktemp -d)}"
+  go get -u -v $GITHUB_URL
   pushd "$GOPATH/src/$GITHUB_URL" >/dev/null
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   popd >/dev/null
