@@ -1,7 +1,7 @@
-# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
+# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com> 
 pkgname=giseditor
 pkgver=0.26
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
@@ -21,18 +21,16 @@ install=
 changelog=
 source=(
     "https://github.com/dayanuyim/GisEditor/archive/v0.26.tar.gz"
-    "GisEditor.desktop"
     "giseditor.sh"
 )
 noextract=()
 md5sums=(
     "4c04ae03af817f3942cf2a6340e3f0a0"
-    "5952c532803039b2e7f40d062f171853"
     "f1896415d3e9488a9b3ff3545ae3911f"
 )
 validpgpkeys=()
 package() {
-    install -d "$pkgdir"/opt
+    install -d ${pkgdir}/opt
 	mkdir -p $pkgdir/opt/giseditor
 	cp -R $srcdir/GisEditor-$pkgver/conf $pkgdir/opt/giseditor
 	chmod -R a+x $pkgdir/opt/giseditor/conf
@@ -49,7 +47,7 @@ package() {
     install -d "$pkgdir"/usr/bin
     install -D -m755 "./giseditor.sh" "${pkgdir}/usr/bin/giseditor"
 
-    install -D -m644 "./GisEditor.desktop" "${pkgdir}/usr/share/applications/GisEditor.desktop"
+    install -D -m644 $srcdir/GisEditor-$pkgver/install/linux/giseditor.desktop "${pkgdir}/usr/share/applications/GisEditor.desktop"
 
 	# TODO: update mime type gpx, gdb"
 
