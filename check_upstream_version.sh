@@ -53,7 +53,7 @@ printf "\nlatest version: %s" "$(git describe | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 
 # print latest commit
 cd "$mirror"
-printf "\nlatest commit: %s" "$(git log --max-count=1 --format="%H" -- cpplint)"
+printf "\nlatest commit: %s\n" "$(git log --max-count=1 --format="%H" -- cpplint)"
 
 # clean up
 cd "$start" || exit
