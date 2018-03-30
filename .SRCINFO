@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-svn
-	pkgver = 7.0.0svn_r327252
+	pkgver = 7.0.0svn_r328859
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lib32-llvm-svn
 
 pkgname = lib32-llvm-svn
 	pkgdesc = The LLVM Compiler Infrastructure (32-bit)
-	depends = lib32-llvm-libs-svn=7.0.0svn_r327252-1
+	depends = lib32-llvm-libs-svn=7.0.0svn_r328859-1
 	depends = llvm-svn
 	provides = lib32-llvm
 	conflicts = lib32-llvm
@@ -39,7 +39,7 @@ pkgname = lib32-clang-svn
 	pkgdesc = C language family frontend for LLVM (32-bit)
 	url = https://clang.llvm.org/
 	depends = clang
-	depends = lib32-llvm-svn=7.0.0svn_r327252-1
+	depends = lib32-llvm-svn=7.0.0svn_r328859-1
 	provides = lib32-clang
 	conflicts = lib32-clang
 
