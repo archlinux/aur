@@ -1,13 +1,15 @@
 pkgbase = qtodotxt2-git
 	pkgdesc = A cross-platform UI client for todo.txt files
 	pkgver = 20180127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QTodoTxt/QTodoTxt2
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	depends = python-dateutil
 	depends = python-pyqt5
 	depends = qt5-declarative
+	depends = qt5-quickcontrols
 	source = qtodotxt2::git+https://github.com/QTodoTxt/QTodoTxt2.git#commit=32bb7f3
 	source = qtodotxt.png
 	source = qtodotxt2.desktop
