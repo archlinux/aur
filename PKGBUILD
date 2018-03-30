@@ -4,7 +4,7 @@
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
@@ -12,14 +12,17 @@ license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
 checkdepends=('netperf' 'iperf')
 source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
-	'cherry-fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch')
+	'cherry-fix_build_issue_for_llvm_5.0.1.patch::https://github.com/iovisor/bcc/commit/bd7fa55bb39b8978dafd0b299e35616061e0a368.patch'
+	'cherry-fix_a_compilation_error_with_latest_llvm_clang_trunk.patch::https://github.com/iovisor/bcc/commit/c0d1694e28336cbe4a57f420dd33c5e3bfaa2df9.patch')
 sha512sums=('12de5ef04185dccd0847fc97ae855b386e0c81b545ae497af797667925ebedf97164c17fb99468abae3f87fb3ddfdba5200070f80b3bbcad63c2355497012f0e'
-            'f518f32584b1f828af5df00972c33e6efc7f4327fd65505156e6dec96e4e2f6e7fafb50fb0855693d586223dce4f6cbf7db34ae252358636decc5dbe7f6121a7')
+            'f518f32584b1f828af5df00972c33e6efc7f4327fd65505156e6dec96e4e2f6e7fafb50fb0855693d586223dce4f6cbf7db34ae252358636decc5dbe7f6121a7'
+            '04e1826388a47631c59ba027b04285665494ac417017f02fbed080be06fcc8ed352dbfedc28282dac0a7df637ed2c8614e6e4ce7f601a81afa741b24ba7fc85e')
 
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	patch -Np1 -i "${srcdir}/cherry-fix_build_issue_for_llvm_5.0.1.patch"
+	patch -Np1 -i "${srcdir}/cherry-fix_a_compilation_error_with_latest_llvm_clang_trunk.patch"
 }
 
 build() {
