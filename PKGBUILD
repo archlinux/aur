@@ -2,7 +2,7 @@
 # Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=lumina-desktop-git
-pkgver=v1.4.0.r229.gb9776293
+pkgver=v1.4.0.r288.g14b456b4
 pkgrel=1
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD -- git version"
 arch=('x86_64' 'i686')
