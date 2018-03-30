@@ -4,6 +4,7 @@ pkgbase = kmscon-patched-git
 	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/kmscon/
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = libxslt
 	makedepends = docbook-xsl
