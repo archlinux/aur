@@ -6,8 +6,14 @@ post_install() {
   echo "To use the toolchain right away, use"
   echo "  $ source /etc/profile.d/devkitppc.sh     # (for POSIX compatible)"
   echo "  $ source /etc/fish/conf.d/devkitppc.fish # (for fish shell)"
+  echo "You may add \$DEVKITPPC/bin to your \$PATH for selected shells."
 }
 
 post_upgrade() {
   post_install
+
+  if [[ $(vercmp "$2" "r29.1-2") -ne 1 && $(vercmp "r29.1-3" "$1") -ne 1 ]]; then
+    echo "Note: The provided tools are not added to the \$PATH automatically anymore."
+    echo "  This caused problems with other toolchains using the same executable names."
+  fi
 }

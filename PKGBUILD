@@ -4,7 +4,7 @@
 
 pkgname=devkitppc-bin
 pkgver=r29.1
-pkgrel=2
+pkgrel=3
 pkgdesc='PowerPC toolchain for Nintendo Gamecube/Wii/Wii U homebrew development (precompiled)'
 arch=('i686' 'x86_64')
 url="http://devkitpro.org"
@@ -22,8 +22,8 @@ source=("devkitppc.sh"
         "devkitppc.fish")
 source_i686=("https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_${pkgver/./-}/devkitPPC_${pkgver/./-}-i686-linux.tar.bz2")
 source_x86_64=("https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_${pkgver/./-}/devkitPPC_${pkgver/./-}-x86_64-linux.tar.bz2")
-sha256sums=('3e7ab84e123f76c65a92c27932b4f80df598b9da6b0f44745d8d465120449d1d'
-            'ab0c74e766fab7ada98541c530593b9f717a72d386f9bb9dad2779a080c66b9d')
+sha256sums=('69755d0b77c0c3233dee9255a5d897710410be18b9dcdfb8d9d6b18c6945ae34'
+            '135a9cbe1fc28c96c2ce38b19cd305857ce49ed56e35bfb5bd96638a51c3ec6f')
 sha256sums_i686=('3683abfbe0b359a209bfcaa7902075232b999aa6f623b0eb17d0d1ceafe09ba9')
 sha256sums_x86_64=('fc4e4ce51584b3a50e7a658f4234f04fdc9bb2a77db544aaa01678c3a9fa900c')
 
