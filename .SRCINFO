@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine
 	pkgver = 2.4.11
-	pkgrel = 11
+	pkgrel = 12
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = i686
@@ -25,6 +25,7 @@ pkgbase = webkitgtk
 	depends = libsecret
 	depends = libwebp
 	depends = harfbuzz-icu
+	depends = icu>=61
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
 	optdepends = gst-libav: nonfree media decoding
@@ -53,6 +54,7 @@ pkgname = webkitgtk
 	depends = libsecret
 	depends = libwebp
 	depends = harfbuzz-icu
+	depends = icu>=61
 	depends = gtk3
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
@@ -78,6 +80,7 @@ pkgname = webkitgtk2
 	depends = libsecret
 	depends = libwebp
 	depends = harfbuzz-icu
+	depends = icu>=61
 	depends = gtk2
 	provides = libwebkit=2.4.11
 	conflicts = libwebkit

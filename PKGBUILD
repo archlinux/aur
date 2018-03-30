@@ -4,13 +4,13 @@
 pkgbase=webkitgtk
 pkgname=(webkitgtk webkitgtk2)
 pkgver=2.4.11
-pkgrel=11
+pkgrel=12
 pkgdesc="Legacy Web content engine"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt sqlite libsoup 'enchant>=2.2' libgl geoclue2 gst-plugins-base-libs
-         libsecret libwebp harfbuzz-icu)
+         libsecret libwebp harfbuzz-icu 'icu>=61')
 makedepends=(gtk3 gtk2 gperf gobject-introspection python2 mesa ruby)
 optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
