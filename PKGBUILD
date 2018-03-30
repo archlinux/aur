@@ -31,7 +31,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-sangnom-hg'
          'vapoursynth-plugin-svpflow1'
          'vapoursynth-plugin-svpflow2-bin'
-         'vapoursynth-plugin-vapoursynth-znedi3-git'
+         'vapoursynth-plugin-znedi3-git'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
