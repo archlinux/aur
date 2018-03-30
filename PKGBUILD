@@ -5,11 +5,12 @@ pkgname=qtwebflix-git
 _gitname=qtwebflix
 pkgver=r37.3618d55
 pkgrel=2
-pkgdesc='Standalone Netflix Browser using qt5-webengine'
+pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)'
 arch=('i686' 'x86_64')
 url='https://github.com/gort818/qtwebflix'
 license=('GPL3')
 depends=('xdg-utils' 'qt5-webengine-widevine')
+optdepends=('pepper-flash: Needed for some streaming services')
 makedepends=('git')
 source=("git+${url}.git"
         "netflix.desktop")
