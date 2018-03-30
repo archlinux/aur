@@ -6,7 +6,7 @@
 
 pkgname=devkitarm-bin
 pkgver=r47
-pkgrel=2
+pkgrel=3
 pkgdesc="ARM toolchain for GP32, Nintendo (3)DS and GBA homebrew development (precompiled)"
 arch=('x86_64')
 url="http://devkitpro.org"
@@ -21,9 +21,9 @@ optdepends=('ncurses5-compat-libs: for arm-none-eabi-gdb'
 install=devkitarm.install
 source=("devkitarm.sh"
         "devkitarm.fish"
-        "https://github.com/devkitPro/buildscripts/releases/download/devkitARM_$pkgver/devkitARM_$pkgver-x86_64-linux.tar.bz2")
-sha256sums=('9448465b2de6b6aefc5e0a8404f780f737cb86b4b1280d653712271b892908f9'
-            'c4cc42b085be7c48f06f75c934e846a61749d9ba5e31ee463a03ba27a01c8afd'
+        "https://github.com/devkitPro/buildscripts/releases/download/devkitARM_$pkgver/devkitARM_$pkgver-$CARCH-linux.tar.bz2")
+sha256sums=('2162a4cf8ae8567b5ddff631474f28b6a0a5d0bce43915396b7dea602e2131e0'
+            '13357e81de7ec8d7ad7f9fb37a78c23c4f99c6f7ca67d3a0070eedc388deb938'
             '8173ec9e9ec53022e5a1c9a6376a010fdae6bc1446f2c5bd44cef1124f2a77db')
 
 package() {
