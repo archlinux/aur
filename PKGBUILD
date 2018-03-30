@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90305.g040b28aecc
+pkgver=3.5.r90534.g33bd2b99a1
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -14,15 +14,15 @@ depends=(
         'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
         'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
-        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
+        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
         'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
-        'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk'
-        'libmysofa' 'rockchip-mpp'
+        'chromaprint-fftw' 'aom-git' 'libbs2b' 'codec2' 'flite1-patched' 'libilbc'
+        'kvazaar' 'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs'
+        'ndi-sdk' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -101,6 +101,7 @@ build() {
         --prefix='/usr' \
         --extra-cflags="$_cflags" \
         --extra-ldflags="$_ldflags" \
+        --extra-libs='-lpthread' \
         \
         --disable-rpath \
         --enable-gpl \
@@ -121,6 +122,7 @@ build() {
         --enable-gnutls \
         --enable-iconv \
         --enable-ladspa \
+        --enable-libaom \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
@@ -158,6 +160,7 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libtesseract \
         --enable-libtheora \
