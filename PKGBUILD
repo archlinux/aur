@@ -2,7 +2,7 @@
 
 pkgname=distrodown-git
 pkgrel=1
-pkgver=5
+pkgver=8
 pkgdesc="Download Easy Linux distros"
 arch=('any')
 url="https://github.com/automatizando/${pkgname%-git}"

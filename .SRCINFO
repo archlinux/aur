@@ -1,6 +1,6 @@
 pkgbase = distrodown-git
 	pkgdesc = Download Easy Linux distros
-	pkgver = 5
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/automatizando/distrodown
 	arch = any
