@@ -2,7 +2,7 @@
 
 pkgname=pcsx2-plugin-usbqemu-wheel
 _pkgsrcname=USBqemu-wheel
-pkgver=0.6.1_2
+pkgver=0.6.1_4
 pkgrel=1
 pkgdesc='A USB plugin modified to support steering wheels in pcsx2.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('pcsx2')
 makedepends=('cmake')
 makedepends_x86_64=('gcc-multilib')
 source=("https://github.com/jackun/USBqemu-wheel/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('d1bd91336c281d8d09a625e662a0ef2feb130d0250f69f0f87f837d20d2dfe97')
+sha256sums=('be084e87886d8535732c377ab8375a567b4f069904f1119ea0a751213610198a')
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver//_/-}"
