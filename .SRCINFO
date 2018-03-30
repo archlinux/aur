@@ -1,6 +1,7 @@
 pkgbase = python-indexed-gzip
+	pkgdesc = Drop-in replacement for the built-in python gzip.GzipFile class (IndexedGzipFile); written to allow fast random access of compressed NIfTI files
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = ZLIB
 	depends = python
