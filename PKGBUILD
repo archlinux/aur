@@ -3,7 +3,7 @@
 
 pkgname=scientifica-font
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Tall and condensed bitmap font for geeks.'
 license=('SIL')
 arch=('any')
@@ -11,9 +11,10 @@ url='https://github.com/NerdyPepper/scientifica'
 depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
 optdepends=('xorg-fonts-alias')
 install=scientifica-font.install
-source=('https://raw.githubusercontent.com/NerdyPepper/scientifica/master/regular/scientifica-11.bdf'
-        'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/bold/scientificaBold-11.bdf'
-        'https://raw.githubusercontent.com/NerdyPepper/scientifica/master/LICENSE')
+_rawlink='https://raw.githubusercontent.com/NerdyPepper/scientifica/'
+source=("${_rawlink}master/regular/scientifica-11.bdf"
+        "${_rawlink}master/bold/scientificaBold-11.bdf"
+        "${_rawlink}master/LICENSE")
 md5sums=('d5c103c0e65fa0b3cf594e762a759d8d'
          '0965772b2f69aeec0d2f60194a167fc0'
          '77b104b57cdfb5a0e62b76a0057009df')
