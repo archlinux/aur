@@ -3,7 +3,7 @@
 _pkgname=jre
 pkgname=jre-devel
 _major=11
-_build=5
+_build=6
 _jname=${_pkgname}${_major}
 pkgver=${_major}b${_build}
 pkgrel=1
@@ -31,7 +31,7 @@ install=$pkgname.install
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "policytool.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('bdebda3cbaa0f5a78670ea6f242a6b2897e1f9356626f89fb29652a4e83d3eb4'
+sha256sums=('7e5b5dfc00e6dcb3c2d70bcab5ef8e545ba5e96f1e369be46f3501987accb552'
             'b36201e2de826393ed8a14d298a5197f205775c2609a5b8857384324e9fc0227'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
