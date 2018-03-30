@@ -163,7 +163,7 @@ package() {
 msg2 'fixing upstream error'
 
 
-cd $srcdir/thunderbird-$pkgver
+cd $srcdir/thunderbird-$ver
 
 cp -r mail/branding/nightly other-licenses/branding/thunderbird 
 
