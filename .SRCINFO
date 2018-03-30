@@ -1,0 +1,13 @@
+pkgbase = tty-clock-tomato
+	pkgdesc = Tomato timer for terminal based on tty-clock
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Teiolass/tty-clock-tomato/tree/v0.1
+	arch = any
+	license = BSD
+	depends = ncurses
+	source = tty-clock-tomato-0.1.tar.gz::https://github.com/Teiolass/tty-clock-tomato/archive/v0.1.tar.gz
+	md5sums = 398cdf8f93faea2af5cdc8dae35a3d66
+
+pkgname = tty-clock-tomato
+
