@@ -1,0 +1,12 @@
+[Unit]
+Description=The Web API for MongoDB
+After=network.target
+
+[Service]
+User=restheart
+EnvironmentFile=/etc/conf.d/restheart
+ExecStart=/bin/sh -c 'eval $RESTHEART_COMMAND_LINE'
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,25 @@
+pkgbase = restheart
+	pkgdesc = The Web API for MongoDB
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://restheart.org/
+	install = restheart.install
+	arch = any
+	license = AGPL-3
+	depends = java-runtime>=8
+	backup = etc/restheart/restheart.yml
+	backup = etc/restheart/security.yml
+	backup = etc/conf.d/restheart
+	source = https://github.com/SoftInstigate/restheart/releases/download/3.2.2/restheart-3.2.2.tar.gz
+	source = restheart.service
+	source = restheart.sysusers
+	source = restheart.conf
+	source = restheart.install
+	sha256sums = 2393e41f46a9f0e3dc458e9d05b75886bec683bfde4a280aabee2a2ceac0b223
+	sha256sums = c7191dc298a9b6569ba3805630a65d9d4bfd864c48ae3957c9be746f218525bb
+	sha256sums = 4b234e3b37bae38bd90023d244d9138ab134bd9a415fa07ae658492c14e03add
+	sha256sums = c756d279dfb5b29b1af76640af490edd38ce8603c4c9c3287c92fea484c6c1af
+	sha256sums = 1c46b40bfb3049812736cececa01275081402e5b2ee4b8884b530f34c53e36c3
+
+pkgname = restheart
+
