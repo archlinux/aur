@@ -1,0 +1,18 @@
+pkgbase = wclatex
+	pkgdesc = Simple yet fancy per-file LaTeX detexed word counting script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DomWilliams0/wclatex
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = findutils
+	depends = texlive-bin
+	depends = coreutils
+	depends = gawk
+	depends = util-linux
+	source = wclatex-1.0.tar.gz::https://github.com/DomWilliams0/wclatex/archive/v1.0.tar.gz
+	sha256sums = 18ee6385d3379ec41bccaeb7e0a7d2e84885e4cf03fc791db95b719198c93aeb
+
+pkgname = wclatex
+
