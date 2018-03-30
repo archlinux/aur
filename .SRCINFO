@@ -1,0 +1,15 @@
+pkgbase = trinity-matrix-git
+	pkgdesc = Qt5 QML Matrix client
+	pkgver = r56.1cc861e
+	pkgrel = 1
+	url = https://github.com/invghost/Trinity.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webengine
+	depends = cmark
+	source = trinity-matrix-git::git+https://github.com/invghost/Trinity.git
+	md5sums = SKIP
+
+pkgname = trinity-matrix-git
+
