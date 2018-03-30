@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.15.2+724734+g4ff839d45ea4
+pkgver=4.15.14+725915+g5070a8fb9fea
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -194,8 +194,9 @@ package_linux-zen-git-headers() {
 	_srcdir="/usr/src/linux-$_kernver"
 
 	msg2 "Installing files necessary for 3rd party modules such as NVIDIA drivers or OSSv4..."
-	mkdir -p "${pkgdir}/usr/src/linux-$_kernver/"{arch/x86,include}
-	
+	mkdir -p "${pkgdir}/usr/src/linux-$_kernver/"{arch/x86,include,tools/objtool}
+
+	install -D -m755 "${srcdir}/build/tools/objtool/objtool" "${pkgdir}/usr/src/linux-$_kernver/tools/objtool/objtool"	
 	install -D -m644 "${srcdir}/zen-kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/Makefile"
 	install -D -m644 "${srcdir}/zen-kernel/kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/kernel/Makefile"
 	install -D -m644 "${srcdir}/build/.config" "${pkgdir}/usr/src/linux-$_kernver/.config"
