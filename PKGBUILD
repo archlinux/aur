@@ -1,9 +1,9 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 pkgname=vim-airline-gruvbox-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="gruvbox color scheme for vim-airline"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/morhetz/gruvbox"
 license=('MIT')
 depends=('vim' 'vim-airline')
