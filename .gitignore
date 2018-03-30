@@ -1,8 +1,9 @@
-*.src.tar.*
-*.pkg.tar.*
+*.src.tar*
+*.pkg.tar*
 *.orig
 *.rej
 *.swp
 *.part
 src
 pkg
+/msitools/
