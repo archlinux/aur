@@ -5,7 +5,7 @@ pkgname=thunderbird-beta
 pkgver=60.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -19,7 +19,7 @@ optdepends=('hunspell: Spell checking'
             'libcanberra: Sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
-source=(https://ftp.mozilla.org/pub/thunderbird/releases/59.0b2/source/thunderbird-59.0b2.source.tar.xz
+source=(https://ftp.mozilla.org/pub/thunderbird/releases/59.0b2/source/thunderbird-60.0b1.source.tar.xz
         https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/$pkgname.desktop
         https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/thunderbird-install-dir.patch
        https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/no-crmf.diff
