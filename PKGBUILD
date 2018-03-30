@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-bbc-iplayer
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="bbc iplayer integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('ef5af9e240e3210d10fc4a411c906dea498b90e6d0f6cbe58db69b4d20ea209a')
+sha256sums=('9614e0d566150037af269c5abae3b9a09d40d84b3bd372c3464054cb4181d977')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
