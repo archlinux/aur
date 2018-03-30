@@ -1,7 +1,7 @@
 pkgbase = lua-lanes-git
 	pkgdesc = A solution for running Lua multithreaded
 	pkgver = 3.11.r10.95ca27b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LuaLanes/lanes
 	arch = x86_64
 	license = MIT
