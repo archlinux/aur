@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-deu-eng-bin
+	pkgdesc = German -> English dictionary for dictd et al. from Freedict.org
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-deu-eng-bin.install
+	arch = any
+	license = GPL
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-deu-eng
+	conflicts = dict-freedict-deu-eng
+	source = https://sourceforge.net/projects/freedict/files/deu-eng/0.3.5/freedict-deu-eng-0.3.5.dictd.tar.xz
+	sha512sums = e6a57068afd6c3d6b0e5130e9c232bbaf9212250cdd0ee17f934852ab656f56c7e0c20168801e1df1632a1b8814a93ca74e8e483a51349cd36e0031939768985
+
+pkgname = dict-freedict-deu-eng-bin
+
