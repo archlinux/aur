@@ -1,13 +1,14 @@
 pkgbase = curecoin-qt-git
 	pkgdesc = GUI client (wallet) for CureCoin cryptocurrency
 	pkgver = r130.17d71dd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://curecoin.net/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = boost
 	makedepends = db
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-tools
 	depends = miniupnpc
