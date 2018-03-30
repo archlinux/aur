@@ -1,19 +1,19 @@
 # Maintainer: serkho <sergey.khorev@gmail.com>
 
 pkgname=gvim-hg
-pkgver=20151021
+pkgver=20180330
 pkgrel=1
 pkgdesc="Vi Improved, a highly configurable, improved version of the vi text editor with GTK2 GUI, no interpreters embedded"
 arch=('i686' 'x86_64')
 url="http://www.vim.org/"
 license=('custom:vim')
 groups=('editors')
-provides=('vim==7.4' 'gvim==7.4')
+provides=('vim' 'gvim')
 makedepends=('mercurial')
 depends=('gtk2')
 source=('gvim.desktop')
 md5sums=('6e11c556ba3f2ce7dc05d9908188d604')
-conflicts=('vim' 'gvim' 'vim-runtime')
+conflicts=('vim' 'gvim' 'vim-runtime','vim-minimal',)
 
 _hgroot="https://bitbucket.org/vim-mirror/vim"
 _hgrepo="vim"

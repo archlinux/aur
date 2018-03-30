@@ -1,6 +1,6 @@
 pkgbase = gvim-hg
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor with GTK2 GUI, no interpreters embedded
-	pkgver = 20151021
+	pkgver = 20180330
 	pkgrel = 1
 	url = http://www.vim.org/
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = gvim-hg
 	license = custom:vim
 	makedepends = mercurial
 	depends = gtk2
-	provides = vim==7.4
-	provides = gvim==7.4
+	provides = vim
+	provides = gvim
 	conflicts = vim
 	conflicts = gvim
-	conflicts = vim-runtime
+	conflicts = vim-runtime,vim-minimal,
 	source = gvim.desktop
 	md5sums = 6e11c556ba3f2ce7dc05d9908188d604
 
