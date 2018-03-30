@@ -1,0 +1,13 @@
+pkgbase = sddm-lain-wired-theme
+	pkgdesc = A sddm theme inspired by Serial experiments lain
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lll2yu/sddm-lain-wired-theme
+	arch = any
+	license = CCPL:cc-by-sa 4.0
+	depends = sddm
+	source = sddm-lain-wired-theme-0.1.tar.gz::https://github.com/lll2yu/sddm-lain-wired-theme/archive/0.1.tar.gz
+	sha512sums = ed9228e7bb42ac4d405dfbbc9755e9b999a0f9af362e2068c2c69451fd8986af6359b759c6e1bcbf0cf67da84dc75d3a6fbc28dddb2e674b9d24b4e684497259
+
+pkgname = sddm-lain-wired-theme
+
