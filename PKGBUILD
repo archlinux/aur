@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=65.0.3325.181
-pkgrel=1
+pkgrel=3
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('x86_64')
@@ -33,6 +33,7 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
+        fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
         chromium-skia-harmony.patch
         chromium-clang-r2.patch
         chromium-math.h-r0.patch
@@ -44,6 +45,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
+            'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
@@ -105,6 +107,9 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
+  # https://crbug.com/822820
+  patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
+
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
 
@@ -112,14 +117,6 @@ prepare() {
   patch -Np1 -i ../chromium-clang-r2.patch
   patch -Np1 -i ../chromium-math.h-r0.patch
   patch -Np1 -i ../chromium-stdint.patch
-
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-enum-compare-switch"/d' \
-    -e '/"-Wno-null-pointer-arithmetic"/d' \
-    -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
-    -e '/"-Wno-tautological-constant-compare"/d' \
-    build/config/compiler/BUILD.gn
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -179,6 +176,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_clang=true'
     'clang_use_chrome_plugins=false'
+    'is_cfi=true'
     'is_debug=false'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
