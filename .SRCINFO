@@ -1,0 +1,16 @@
+pkgbase = rosa-image-writer
+	pkgdesc = A graphical utility for writing raw disk images & hybrid isos to USB keys
+	pkgver = 2.6.2_lin
+	pkgrel = 1
+	url = http://wiki.rosalab.ru/en/index.php/Main_Page
+	arch = x86_64
+	license = GPL
+	depends = fontconfig
+	depends = libxcb
+	optdepends = xdg-su: NEEDED by non-KDE users!
+	optdepends = kdebase-runtime: provides kdesu
+	source = http://wiki.rosalab.ru/en/images/7/7f/RosaImageWriter-2.6.2-lin-x86_64.tar.xz
+	md5sums = b7cd2de346410ad10d7996b9c86a7d9d
+
+pkgname = rosa-image-writer
+
