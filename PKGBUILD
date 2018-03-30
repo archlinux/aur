@@ -5,9 +5,9 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=60.7
+pkgver=60.8
 pkgrel=1
-meme=FIREFOX_60_0b7_RELEASE
+meme=FIREFOX_60_0b8_RELEASE
 meme2=DEVEDITION_61_0b1_RELEASE
 pkgdesc="Standalone web browser from mozilla.org, with telemetry and signing disabled"
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
-sha256sums=('ece35c318015cf9b7751f21d83159c9b1a50200e37b71cf3f1613b3f53658998'
+sha256sums=('e88126b48011247de02bd424074674b942e33c1a404063b16d65e6cecd605310'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
