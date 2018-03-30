@@ -32,7 +32,7 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.13
+pkgver=4.15.14
 pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
@@ -60,7 +60,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'f1bc5cfc7316daa463cd0ed366e376eb24a29072491c29a68732e1edf8a6ef8b'
+            '6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133'
             'SKIP'
             'de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -88,7 +88,10 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  # add PDS scheduler
+  # fix naming schema in EXTRAVERSION of psd patch set
+  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_pdsversion}"
+
+  # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
 
   # Patch source to unlock additional gcc CPU optimizatons
