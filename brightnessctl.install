@@ -1,0 +1,5 @@
+post_install() {
+  udevadm control --reload-rules && udevadm trigger
+}
+
+# vim:set ts=2 sw=2 et:
