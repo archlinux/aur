@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix and Materia (ex-Flat-Plat) themes (GTK2, GTK3),
@@ -30,26 +30,25 @@ md5sums=(
 	"SKIP"
 )
 depends=(
-	'coreutils'
-	'bash'
-	'grep'
-	'sed'
-	'bc'
-	'zip'
 	'gtk3'
-	'glib2'
-	'gdk-pixbuf2'
-	'sassc'
 	'python-gobject'
-	'gtk-engine-murrine'
-	'gtk-engines'
-	'polkit'
-	'parallel'
-	'optipng'
-	'librsvg'
-	'imagemagick'
-	'inkscape'
-	'python-pillow'
+	'glib2'  # oomox, materia
+	'gdk-pixbuf2'  # oomox, materia
+	'gtk-engine-murrine'  # oomox, materia
+	'gtk-engines'  # oomox, materia
+	'sassc'  # oomox, materia
+	'librsvg'  # oomox, gnome-colors
+	'sed'  # oomox, materia, gnome-colors, archdroid
+	'findutils'  # oomox, materia, gnome-colors, arch-droid
+	'grep'  # oomoxify, oomox, materia, gnome-colors
+	'bc'  # oomoxify, oomox, materia, gnome-colors
+	'zip'  # oomoxify
+	'polkit'  # oomoxify
+	'imagemagick'  # gnome-colors
+	'parallel'  # materia
+	'optipng'  # materia
+	'inkscape'  # materia
+	'python-pillow'  # import_pil
 )
 makedepends=(
 	'git'
