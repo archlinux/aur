@@ -63,6 +63,7 @@ makedepends=(
              'atk'
              'at-spi2-atk'
              'ncurses5-compat-libs'
+             'lld'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
