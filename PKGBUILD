@@ -15,7 +15,7 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'doxygen')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('aa92634c1c97d99966cf16c4a0845792941358c063409fa00c28b4039c961c25')
+sha256sums=('7a9e6e081d1cb910a7c9c996d76dd48ddca15b798c6d9a3cc7664534e5d28a84')
 
 # Build type
 _buildtype="Release"
