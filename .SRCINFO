@@ -1,6 +1,6 @@
 pkgbase = rosa-image-writer
 	pkgdesc = A graphical utility for writing raw disk images & hybrid isos to USB keys
-	pkgver = 2.6.2_lin
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = http://wiki.rosalab.ru/en/index.php/Main_Page
 	arch = x86_64
