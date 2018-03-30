@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='cadabra2-git'
-pkgver=r1543.048f6e184a
+pkgver=r1703.c5394b0e6a
 pkgrel=1
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch")
 md5sums=('SKIP'
          'f18d2d5c9c70064e422cdbd7954ecd59')
-install=package.install
+# install=package.install
 
 
 pkgver() {
@@ -35,10 +35,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -Np1 -i ../package.patch
-}
+# prepare() {
+#   cd "${srcdir}/${pkgname}"
+#   patch -Np1 -i ../package.patch
+# }
 
 build() {
   cd $pkgname
