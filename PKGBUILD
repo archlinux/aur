@@ -1,4 +1,4 @@
-# Maintainer: To Be Assigned <youremail@domain.com>
+# Maintainer: Stefans Mezulis <stefans.mezulis@gmail.com>
 pkgname=pipes.sh
 pkgver=1.3.0
 pkgrel=1
