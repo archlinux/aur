@@ -2,12 +2,12 @@
 # Contributor: cryptocrack <archlinux AT cryptocrack DOT de>
 pkgname=xwax-jack
 _ownedpkgname=xwax
-pkgver=1.5
+pkgver=1.7
 pkgrel=1
 pkgdesc="Open-source digital vinyl emulation software."
 arch=('i686' 'x86_64')
 url="http://www.xwax.co.uk/"
-license="GPL"
+license=("GPL")
 depends=('ttf-dejavu' 'alsa-lib' 'jack')
 makedepends=('sdl' 'sdl_ttf')
 optdepends=(
@@ -22,7 +22,7 @@ provides=('xwax')
 conflicts=('xwax')
 
 source=(http://www.xwax.co.uk/releases/$_ownedpkgname-$pkgver.tar.gz)
-md5sums=('7c2f30c3a9a71c4dba107e3eb9b40430')
+md5sums=('0be222a89d58fc6c7167a6fcbdab7e09')
 
 build() {
 	cd $startdir/src/$_ownedpkgname-$pkgver
