@@ -1,5 +1,5 @@
 pkgname=pandoc-crossref-bin
-pkgver=0.3.0.2
+pkgver=0.3.1.0
 _pandoc_pkgver=21
 _ghc_pkgver=82
 pkgrel=1
@@ -16,7 +16,7 @@ source=(
     "https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/linux-ghc${_ghc_pkgver}-pandoc${_pandoc_pkgver}.tar.gz"
 )
 sha256sums=(
-    "c007071bcc1da610abd3b7d0b72b6a1b9e0e14d4ae2cdbb13e5816092b142152"
+    "a75707fe5b6e1150502abc56006495d831ce08c65f5a9dc088086fec890d4c43"
 )
 
 package() {
