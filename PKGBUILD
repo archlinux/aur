@@ -1,7 +1,7 @@
 # Maintainer: xsmile <>
 
 pkgname=chromexup
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='External extension updater for Chromium based browsers'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-requests')
 install="$pkgname.install"
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('2fca001ac48169b045abb079cb145ae8')
+md5sums=('a2ca66bf1774bac988c6cdd62d61f975')
 
 package() {
   cd $pkgname-$pkgver

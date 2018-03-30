@@ -1,6 +1,6 @@
 pkgbase = chromexup
 	pkgdesc = External extension updater for Chromium based browsers
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/xsmile/chromexup
 	install = chromexup.install
@@ -8,8 +8,8 @@ pkgbase = chromexup
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://github.com/xsmile/chromexup/archive/0.4.0.tar.gz
-	md5sums = 2fca001ac48169b045abb079cb145ae8
+	source = https://github.com/xsmile/chromexup/archive/0.4.1.tar.gz
+	md5sums = a2ca66bf1774bac988c6cdd62d61f975
 
 pkgname = chromexup
 
