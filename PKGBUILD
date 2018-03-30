@@ -5,38 +5,38 @@ url='http://ros.org/wiki/rosbag'
 
 pkgname='ros-melodic-rosbag'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-rosconsole
-  ros-melodic-cpp-common
-  ros-melodic-roscpp-serialization
-  ros-melodic-roscpp
+ros_makedepends=(ros-melodic-std-srvs
   ros-melodic-rosbag-storage
-  ros-melodic-xmlrpcpp
-  ros-melodic-std-srvs
+  ros-melodic-cpp-common
+  ros-melodic-catkin
+  ros-melodic-roscpp
   ros-melodic-topic-tools
-  ros-melodic-catkin)
+  ros-melodic-rosconsole
+  ros-melodic-roscpp-serialization
+  ros-melodic-xmlrpcpp)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-pillow
   boost)
 
-ros_depends=(ros-melodic-rosconsole
-  ros-melodic-genmsg
-  ros-melodic-roscpp
+ros_depends=(ros-melodic-std-srvs
   ros-melodic-rosbag-storage
+  ros-melodic-rospy
+  ros-melodic-genmsg
   ros-melodic-roslib
-  ros-melodic-xmlrpcpp
-  ros-melodic-std-srvs
+  ros-melodic-roscpp
   ros-melodic-topic-tools
+  ros-melodic-rosconsole
   ros-melodic-genpy
-  ros-melodic-rospy)
+  ros-melodic-xmlrpcpp)
 depends=(${ros_depends[@]}
-  python2-rospkg
-  boost)
+  boost
+  python2-rospkg)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/rosbag/${pkgver}-${_pkgver_patch}
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosbag-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fb245546cf242ef54dbec0e3c06246dc9d5a4a1b27b728f44b0c249292c2f6db')
+sha256sums=('407410c005fbd1fcacef65481f2ec48373f05a10f892d86ab5d84c56f3fbc307')
 
 build() {
   # Use ROS environment variables
