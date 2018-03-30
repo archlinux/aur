@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
-replaces=('ttf-nerd-fonts-knack-complete-git')
+conflicts=('ttf-nerd-fonts-knack-complete-git')
 raw_url="$url/raw/master/patched-fonts/Hack"
 
 # bold and bolditalic versions are temporarily disabled, because of empty ttf files on upstream
