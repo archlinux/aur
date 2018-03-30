@@ -1,7 +1,7 @@
 pkgbase = openfortivpn
 	pkgdesc = An open implementation of Fortinet's proprietary PPP+SSL VPN solution
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adrienverge/openfortivpn
 	arch = i686
 	arch = x86_64
