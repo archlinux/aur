@@ -1,6 +1,6 @@
 pkgbase = re-natal
 	pkgdesc = Bootstrap ClojureScript React Native apps
-	pkgver = 0.3.7
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/drapanjanas/re-natal
 	arch = any

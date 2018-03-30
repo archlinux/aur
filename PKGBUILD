@@ -1,6 +1,6 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz>
 pkgname=re-natal
-pkgver=0.3.7
+pkgver=0.8.2
 pkgrel=1
 pkgdesc=" Bootstrap ClojureScript React Native apps"
 arch=(any)
