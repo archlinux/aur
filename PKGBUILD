@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.79pre2
+pkgver=5.79pre4
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('git')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
 	"git+https://github.com/justinfrankel/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
-sha256sums=('4ec17b2328da174dc40e9c4bc198faa77d5c452e83b2c2e74ce8432bf77de554'
+sha256sums=('d5ba98f87e47c26597de23b79c1218ff2661711c483a036c731e59441460fda7'
             'SKIP'
             'c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7')
 
