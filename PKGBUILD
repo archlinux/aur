@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=libdart
 pkgver=6.3.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
@@ -37,6 +37,13 @@ build() {
   # Compile the library
   msg "Building the project"
   make
+}
+
+# Run unit tests
+check() {
+  msg "Running unit tests"
+  cd "${srcdir}/${_name}-${pkgver}-build"
+  make test
 }
 
 # Create the package
