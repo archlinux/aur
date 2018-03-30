@@ -4,7 +4,7 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20171202
+pkgver=20180325
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
