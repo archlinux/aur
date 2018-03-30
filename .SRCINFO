@@ -1,0 +1,15 @@
+pkgbase = msvc-wine-rust-git
+	pkgdesc = Cross compile Rust programs to the MSVC Windows target using Wine
+	pkgver = r9.fcd20a1
+	pkgrel = 1
+	url = https://github.com/est31/msvc-wine-rust
+	arch = any
+	license = MIT
+	depends = p7zip
+	depends = wine>=2.21
+	depends = msitools>0.97
+	source = git+https://github.com/est31/msvc-wine-rust.git
+	md5sums = SKIP
+
+pkgname = msvc-wine-rust-git
+
