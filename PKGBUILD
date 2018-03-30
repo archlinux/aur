@@ -2,9 +2,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgname=openssl
-_branch=master
+_tag=OpenSSL_1_1_1-pre3
 pkgname=${_pkgname}-tls1.3-git
-pkgver=1.1.1.pre2.r113.gd3bc941df4 # updated by pkgver() below
+pkgver=1.1.1.pre3.r0.gbe2df12a34 # updated by pkgver() below
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
 conflicts=('openssl')
 provides=("openssl=${pkgver}")
-source=("${pkgname}::git+https://github.com/openssl/openssl.git#branch=${_branch}"
+source=("${pkgname}::git+https://github.com/openssl/openssl.git#tag=${_tag}"
 	'ca-dir.patch')
 sha256sums=('SKIP'
 	'90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790')
