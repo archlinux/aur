@@ -1,6 +1,6 @@
 pkgbase = kismet-git
 	pkgdesc = Current development version based on git repo, many crucial changes since official stable Release 2016_07_R1-1
-	pkgver = 20180318
+	pkgver = 019a7ef
 	pkgrel = 1
 	url = https://www.kismetwireless.net/
 	install = kismet.install
@@ -20,9 +20,9 @@ pkgbase = kismet-git
 	backup = etc/kismet/kismet_logging.conf
 	backup = etc/kismet/kismet_memory.conf
 	backup = etc/kismet/kismet_storage.conf
-	source = https://github.com/kismetwireless/kismet/archive/master.zip
+	source = kismet-git-019a7ef.zip::https://github.com/kismetwireless/kismet/archive/019a7ef.zip
 	source = kismet-git-sysusers.conf
-	sha256sums = SKIP
+	sha256sums = c41b88ffc374e71353197ee7c07a673f2a86f8a89edb1fc59b9f43c68013cbaf
 	sha256sums = 8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806
 
 pkgname = kismet-git
