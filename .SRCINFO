@@ -1,0 +1,32 @@
+pkgbase = opera-stable
+	pkgdesc = Opera is a fast, secure, and easy-to-use web browser. It comes with a built-in ad blocker, battery saver and free VPN.
+	pkgver = 52.0.2871.40
+	pkgrel = 1
+	url = https://www.opera.com/
+	install = opera-stable.install
+	arch = x86_64
+	license = custom:opera
+	depends = gtk3
+	depends = alsa-lib
+	depends = libnotify
+	depends = gconf
+	depends = curl
+	depends = nss
+	depends = libcups
+	depends = libxss
+	depends = ttf-font
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	optdepends = opera-ffmpeg-codecs: support for h.264 and other non-free media formats
+	optdepends = pepper-flash: flash support
+	optdepends = upower: opera battery save
+	conflicts = opera
+	replaces = opera
+	options = !strip
+	options = !emptydirs
+	source = http://get.geo.opera.com/pub/opera/desktop/52.0.2871.40/linux/opera-stable_52.0.2871.40_amd64.deb
+	md5sums = SKIP
+
+pkgname = opera-stable
+
