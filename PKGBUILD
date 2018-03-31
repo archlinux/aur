@@ -46,9 +46,9 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
-  install -m644 docs/manual.txt "${pkgdir}/usr/share/doc/${pkgname}/manual.txt"
-  install -m644 docs/theming.txt "${pkgdir}/usr/share/doc/${pkgname}/theming.txt"
-  install -m644 docs/extending.txt "${pkgdir}/usr/share/doc/${pkgname}/extending.txt"
+  install -m644 docs/manual.rst "${pkgdir}/usr/share/doc/${pkgname}/manual.rst"
+  install -m644 docs/theming.rst "${pkgdir}/usr/share/doc/${pkgname}/theming.rst"
+  install -m644 docs/extending.rst "${pkgdir}/usr/share/doc/${pkgname}/extending.rst"
 
   export pkgdir
   python3 ../make_tab_completion.py
