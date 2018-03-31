@@ -6,13 +6,13 @@
 
 pkgname=chrome-remote-desktop
 pkgver=66.0.3359.12
-pkgrel=1
-pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
-url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
+pkgrel=2
+pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
+url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 license=("BSD")
+depends=("gtk3" "libxss" "nss" "python2" "python2-psutil" "xorg-server-xvfb" "xorg-setxkbmap" "xorg-xauth" "xorg-xdpyinfo")
 install="${pkgname}.install"
-depends=("gconf" "gtk3" "nss" "python2" "python2-psutil" "xorg-server-xvfb" "xorg-setxkbmap" "xorg-xauth" "xorg-xdpyinfo")
 source=("${pkgname}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
         "${pkgname}.service" 
         "crd")
@@ -31,9 +31,9 @@ build() {
   bsdtar -xf data.tar.xz -C .
   
   msg2 "Removing unnecessary .deb related files"
-  rm -R etc/cron.daily
-  rm -R etc/init.d
-  rm -R etc/pam.d
+  rm -R "${srcdir}/etc/cron.daily"
+  rm -R "${srcdir}/etc/init.d"
+  rm -R "${srcdir}/etc/pam.d"
 }
 
 package() {
@@ -42,17 +42,17 @@ package() {
   install -d "${pkgdir}/etc"
   install -d "${pkgdir}/opt"
   
-  cp -r "etc/"* "${pkgdir}/etc"
-  cp -r "opt/"* "${pkgdir}/opt"
+  cp -r "${srcdir}/etc/"* "${pkgdir}/etc"
+  cp -r "${srcdir}/opt/"* "${pkgdir}/opt"
 
   msg2 "Packaging copyright file"
-  install -Dm644 "usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  install -Dm644 "${srcdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 
   msg2 "Adding systemd user service file"
-  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
   msg2 "Adding runnable crd command"
-  install -Dm755 "crd" "${pkgdir}/usr/bin/crd"
+  install -Dm755 "${srcdir}/crd" "${pkgdir}/usr/bin/crd"
   
   msg2 "Creating symlinks for Chromium compatibility"
   install -dm755 "${pkgdir}/etc/chromium/native-messaging-hosts"
