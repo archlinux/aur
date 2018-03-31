@@ -3,14 +3,13 @@
 # Contributor: Florian Pritz <f-p@gmx.at>
 
 pkgname=inxi
-pkgver=2.9.07
+pkgver=2.9.10
 pkgrel=1
 pkgdesc="script to get system information"
 arch=('any')
 url="https://github.com/smxi/inxi"
 license=('GPL')
 depends=('coreutils' 'gawk' 'grep' 'pciutils' 'perl' 'procps-ng' 'sed')
-_commit=0f0433dc9ae2bf5250d6939e207bb3e94d9b7ae9
 optdepends=(
   "dmidecode: inxi -M if no sys machine data"
   "file: inxi -o unmounted file system"
@@ -28,18 +27,19 @@ optdepends=(
   "xorg-xrandr: inxi -G single screen resolution"
 )
 options=('zipman')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
+_commit=c4bc0ff282e32ab87d9d2e2b450a1dbb364a941c
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('04b2011a0ea9b0e0ac1a4d099ca115c65c1bbc3bbe3dcedc30a99e00df0d9ee2')
 
 pkgver() {
-    cd $pkgname-$_commit
+    cd "${pkgname}-${_commit}"
 
     # change version
     awk '/self_version=/ {print $2}' inxi | cut -c 16-21
 }
 
 prepare() {
-    cd $pkgname-$_commit
+    cd "${pkgname}-${_commit}"
     
     # temp move inxi to pinxi
     mv inxi pinxi
@@ -51,8 +51,8 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_commit"
-  install -D -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  install -D -m755 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+    cd "${pkgname}-${_commit}"
+  install -D -m755 $pkgname "${pkgdir}/usr/bin/$pkgname"
+  install -D -m755 $pkgname.1 "${pkgdir}/usr/share/man/man1/$pkgname.1"
 }
 
