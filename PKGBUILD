@@ -12,6 +12,6 @@ source=('nnedi3_weights.bin::https://github.com/jpsdr/NNEDI3/raw/master/nnedi3/b
 sha256sums=('27f382430435bb7613deb1c52f3c79c300c9869812cfe29079432a9c82251d42')
 
 package() {
-  install -Dm644 nnedi3_weights.bin "${pkgdir}/usr/share/nnedi3/nnedi3_weights.bin"
+  install -Dm644 nnedi3_weights.bin "${pkgdir}/usr/lib/vapoursynth/nnedi3_weights.bin"
 }
 
