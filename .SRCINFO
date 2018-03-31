@@ -1,0 +1,15 @@
+pkgbase = vbar-git
+	pkgdesc = A bar
+	pkgver = r14.27777f3
+	pkgrel = 1
+	url = https://github.com/AndrewVos/vbar
+	arch = any
+	makedepends = git
+	makedepends = vala
+	provides = vbar
+	conflicts = vbar
+	source = git+https://github.com/AndrewVos/vbar.git
+	md5sums = SKIP
+
+pkgname = vbar-git
+
