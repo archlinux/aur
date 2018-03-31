@@ -1,4 +1,4 @@
-pkgbase = wclatex
+pkgbase = wclatex-git
 	pkgdesc = Simple yet fancy per-file LaTeX detexed word counting script
 	pkgver = 1.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = wclatex
 	source = wclatex-1.1.tar.gz::https://github.com/DomWilliams0/wclatex/archive/v1.1.tar.gz
 	sha256sums = 285225047cb583b4eb36639d6125860e8139c1428748183b69b834b6a7b28a72
 
-pkgname = wclatex
+pkgname = wclatex-git
 
