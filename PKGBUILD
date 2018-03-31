@@ -6,7 +6,7 @@ _pkgname=perl-travel-status-de-iris
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.16+g274be67
-pkgrel=4
+pkgrel=5
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
 license=('PerlArtistic')
@@ -25,6 +25,7 @@ depends=(
   'perl-xml-libxml'
 )
 makedepends=(
+  'perl-file-slurp'
   'perl-module-build'
   'perl-test-compile'
   'perl-test-fatal'
