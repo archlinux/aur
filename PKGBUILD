@@ -100,12 +100,13 @@ package() {
     fi
   done
 
-  ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
-  ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
-      /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
-      while read x;do
-          ln -sf "$x" ./
-      done
+  # this throwed an error in v1.1.444
+  # ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
+  # ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
+  #     /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
+  #     while read x;do
+  #         ln -sf "$x" ./
+  #     done
 
 
   cd "$pkgdir/usr/bin"
