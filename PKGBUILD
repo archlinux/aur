@@ -2,7 +2,7 @@
 
 pkgname=yadshot
 pkgver=0.1.91
-pkgrel=1
+pkgrel=2
 pkgdesc="yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
 arch=('x86_64')
 url='http://www.simonizor.net'
