@@ -1,0 +1,15 @@
+pkgbase = distrobuilder
+	pkgdesc = System container image builder for LXC and LXD
+	pkgver = 215.5c6ad30
+	pkgrel = 1
+	url = https://github.com/lxc/distrobuilder
+	arch = x86_64
+	license = APACHE
+	makedepends = gcc-go
+	makedepends = git
+	depends = lxc
+	source = git://github.com/lxc/distrobuilder.git
+	md5sums = SKIP
+
+pkgname = distrobuilder
+
