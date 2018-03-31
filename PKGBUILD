@@ -1,7 +1,7 @@
 # Maintainer: Alexander Courtis <alex@courtis.org>
 pkgname=xlayoutdisplay
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=0
 pkgdesc="Detects and arranges linux display outputs, using XRandR for detection and xrandr for arrangement."
 arch=('x86_64')
 url="https://github.com/alex-courtis/xlayoutdisplay"
