@@ -2,13 +2,14 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
 pkgdesc='Fancy indexes module for the Nginx web server'
 arch=('i686' 'x86_64' 'armv7h')
+makedepends=('nginx-mainline')
 depends=('nginx-mainline')
 url="https://github.com/aperezdc/ngx-fancyindex"
 license=('BSD')
