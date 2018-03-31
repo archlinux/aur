@@ -1,8 +1,8 @@
 pkgbase = flasher
 	pkgdesc = Flasher utility for the Nokia N8X0 & N900
 	pkgver = 3.5_2.5.2.2
-	pkgrel = 4
-	url = http://tablets-dev.nokia.com/maemo-dev-env-downloads.php
+	pkgrel = 5
+	url = https://www.fladnag.net/downloads/telephone/n900/
 	arch = i686
 	arch = x86_64
 	license = Custom

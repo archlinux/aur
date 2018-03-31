@@ -7,10 +7,10 @@
 
 pkgname=flasher
 pkgver=3.5_2.5.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Flasher utility for the Nokia N8X0 & N900"
 arch=('i686' 'x86_64')
-url="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php"
+url="https://www.fladnag.net/downloads/telephone/n900/"
 license=('Custom')
 if [ $CARCH == "i686" ]; then   depends=('libusb-compat'); fi
 if [ $CARCH == "x86_64" ]; then depends=('lib32-libusb-compat'); fi
