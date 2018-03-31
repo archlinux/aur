@@ -12,6 +12,6 @@ source=("https://timetoplatypus.com/static/faction/$_pkgname-$pkgver.tar.gz")
 md5sums=("6f0219abf9ed2fbe03a200a09ee85a97")
 
 package() {
-  mkdir -p "$pkgdir/usr/include/$pkgname"
-  cp "$srcdir/$_pkgname/include/faction.h" "$pkgdir/usr/include/$pkgname/$_pkgname.h"
+  mkdir -p "$pkgdir/usr/include/"
+  cp "$srcdir/$_pkgname/include/faction.h" "$pkgdir/usr/include/$_pkgname.h"
 }
