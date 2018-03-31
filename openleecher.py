@@ -3,7 +3,6 @@ import os, sys
 import random
 import sys
 import time
-import gui
 from threading import Thread
 
 from termcolor import cprint
@@ -137,6 +136,7 @@ def start():
             logging.info("Quitting OpenLeecher...")
             sys.exit(0)
         elif str(a) == '--gui':
+            import gui
             gui.launch()
 
         elif str(a) == '-t':
