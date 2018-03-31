@@ -1,8 +1,8 @@
 
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=docker-makepkg
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
 url="https://github.com/Thermi/docker-makepkg"
