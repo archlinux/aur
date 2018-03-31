@@ -1,20 +1,30 @@
 pkgbase = flutter
-	pkgdesc = Flutter is a new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
+	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flutter.io
-	arch = any
-	license = https://github.com/flutter/flutter/blob/master/LICENSE
-	depends = android-sdk
+	install = flutter.install
+	arch = x86_64
+	license = custom:https://github.com/flutter/flutter/blob/master/LICENSE
+	makedepends = git
+	makedepends = python
+	depends = glu
+	depends = java-environment
+	depends = lib32-libglvnd
+	optdepends = android-sdk
 	optdepends = android-studio
+	optdepends = bash
+	optdepends = dart
+	optdepends = git
 	optdepends = intellij-idea-community-edition
 	optdepends = intellij-idea-ultimate-edition
+	optdepends = perl
+	optdepends = python
+	optdepends = sh
 	source = flutter::git+https://github.com/flutter/flutter#branch=beta
-	source = flutter.install
 	source = flutter.sh
 	source = flutter.csh
 	sha256sums = SKIP
-	sha256sums = b8eb8c1a38e961984fe7d26fc83a86f6aa1b362c4187a1fef55ce5cbc68a8d84
 	sha256sums = 1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a
 	sha256sums = 7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f
 
