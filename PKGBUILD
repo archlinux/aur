@@ -13,6 +13,7 @@ source=("https://github.com/Thermi/docker-makepkg/archive/${pkgver}.tar.gz"
 sha256sums=('cf7a11768d217fbf16272c2777365240130f73f2cb1705429296a4dd40a14409'
             'SKIP')
 validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
+install=docker_makepkg.install
 
 package() {
 	cd "$pkgdir"

@@ -1,0 +1,9 @@
+post_install() {
+        systemctl start docker-makepkg
+}
+
+post_remove() {
+        systemctl disable docker-makepkg.timer
+        systemctl stop docker-makepkg
+        docker image rm makepkg
+}
