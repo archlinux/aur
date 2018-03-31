@@ -1,14 +1,13 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
+# Maintainer: ValHue <vhuelamo at gmail dot com>s
 #
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 _python="python2"
 _name="qr-tools"
-_ubuntur="0~23~ubuntu16.10.1"
+_ubuntur="0~29~ubuntu17.10.1"
 pkgname="qtqr"
 pkgver="1.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A Graphical interface QR Code generator and decoder."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
@@ -47,7 +46,7 @@ package() {
     install -m 644 icon.png ${pkgdir}/usr/share/pixmaps/qtqr.png
     install -m 644 *.qm ${pkgdir}/usr/share/qt4/translations
 
-    install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"    
+    install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=4 sw=2 ft=sh et:
