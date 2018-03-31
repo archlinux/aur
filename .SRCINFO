@@ -1,0 +1,18 @@
+pkgbase = bunq-desktop-git
+	pkgdesc = A desktop implementation for the bunq API
+	pkgver = 0.8.1.r53.g33c483b
+	pkgrel = 1
+	url = https://github.com/BunqCommunity/BunqDesktop
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	provides = bunq-desktop
+	conflicts = bunq-desktop-src
+	conflicts = bunq-desktop-bin
+	source = bunq-desktop-git::git://github.com/BunqCommunity/BunqDesktop.git
+	source = bunq-desktop-git.desktop
+	sha256sums = SKIP
+	sha256sums = 34fd4c2b947cdd081e961b38d83582e27328b430a51580f78dd4c8769712cfd1
+
+pkgname = bunq-desktop-git
+

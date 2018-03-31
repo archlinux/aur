@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Bunq Desktop
+Comment=A desktop implementation for the bunq API.
+Exec=bunq-desktop-git -- %u
+StartupWMClass=BunqDesktop
+Icon=bunq
+Terminal=false
+Type=Application
+Categories=Network;X-Banking;X-Money;Office;
+X-Desktop-File-Install-Version=0.1
