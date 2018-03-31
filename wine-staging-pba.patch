@@ -1,6 +1,6 @@
-diff -r -u --new-file a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
---- a/dlls/wined3d/buffer.c	2018-03-29 01:05:30.442551303 +0200
-+++ b/dlls/wined3d/buffer.c	2018-03-28 23:27:46.013998252 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
+--- a/dlls/wined3d/buffer.c	2018-03-31 12:50:14.767239563 +0200
++++ b/dlls/wined3d/buffer.c	2018-03-31 12:48:20.431496034 +0200
 @@ -28,12 +28,14 @@
  #include "wined3d_private.h"
  
@@ -361,9 +361,9 @@ diff -r -u --new-file a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
      {
          TRACE("Not creating a BO because GL_ARB_vertex_buffer is not supported.\n");
      }
-diff -r -u --new-file a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
 --- a/dlls/wined3d/buffer_heap.c	1970-01-01 01:00:00.000000000 +0100
-+++ b/dlls/wined3d/buffer_heap.c	2018-03-28 23:35:39.595966143 +0200
++++ b/dlls/wined3d/buffer_heap.c	2018-03-31 12:48:20.432496032 +0200
 @@ -0,0 +1,530 @@
 +/*
 + * Copyright 2018 Andrew Comminos
@@ -896,9 +896,9 @@ diff -r -u --new-file a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
 +    return WINED3D_OK;
 +}
 \ No newline at end of file
-diff -r -u --new-file a/dlls/wined3d/context.c b/dlls/wined3d/context.c
---- a/dlls/wined3d/context.c	2018-03-29 01:05:41.459524804 +0200
-+++ b/dlls/wined3d/context.c	2018-03-28 23:22:42.726661696 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/context.c b/dlls/wined3d/context.c
+--- a/dlls/wined3d/context.c	2018-03-31 12:50:24.670217361 +0200
++++ b/dlls/wined3d/context.c	2018-03-31 12:48:20.434496027 +0200
 @@ -4956,7 +4956,11 @@
      if (parameters->indexed)
      {
@@ -912,9 +912,9 @@ diff -r -u --new-file a/dlls/wined3d/context.c b/dlls/wined3d/context.c
          {
              idx_data = index_buffer->resource.heap_memory;
          }
-diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
---- a/dlls/wined3d/cs.c	2018-03-29 01:05:41.251525304 +0200
-+++ b/dlls/wined3d/cs.c	2018-03-28 23:23:49.308515873 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
+--- a/dlls/wined3d/cs.c	2018-03-31 12:50:24.495217754 +0200
++++ b/dlls/wined3d/cs.c	2018-03-31 12:48:20.435496025 +0200
 @@ -73,6 +73,7 @@
      WINED3D_CS_OP_CLEAR_UNORDERED_ACCESS_VIEW,
      WINED3D_CS_OP_COPY_UAV_COUNTER,
@@ -953,7 +953,7 @@ diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
  }
  
  void wined3d_cs_emit_present(struct wined3d_cs *cs, struct wined3d_swapchain *swapchain,
-@@ -1984,7 +2001,7 @@
+@@ -1995,7 +2012,7 @@
      const struct wined3d_cs_map *op = data;
      struct wined3d_resource *resource = op->resource;
  
@@ -962,7 +962,7 @@ diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
              op->sub_resource_idx, op->map_desc, op->box, op->flags);
  }
  
-@@ -2018,7 +2035,7 @@
+@@ -2029,7 +2046,7 @@
      const struct wined3d_cs_unmap *op = data;
      struct wined3d_resource *resource = op->resource;
  
@@ -971,7 +971,7 @@ diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
  }
  
  HRESULT wined3d_cs_unmap(struct wined3d_cs *cs, struct wined3d_resource *resource, unsigned int sub_resource_idx)
-@@ -2417,6 +2434,53 @@
+@@ -2428,6 +2445,53 @@
      cs->ops->submit(cs, WINED3D_CS_QUEUE_DEFAULT);
  }
  
@@ -1025,7 +1025,7 @@ diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
  static void wined3d_cs_emit_stop(struct wined3d_cs *cs)
  {
      struct wined3d_cs_stop *op;
-@@ -2477,6 +2541,7 @@
+@@ -2488,6 +2552,7 @@
      /* WINED3D_CS_OP_CLEAR_UNORDERED_ACCESS_VIEW */ wined3d_cs_exec_clear_unordered_access_view,
      /* WINED3D_CS_OP_COPY_UAV_COUNTER            */ wined3d_cs_exec_copy_uav_counter,
      /* WINED3D_CS_OP_GENERATE_MIPMAPS            */ wined3d_cs_exec_generate_mipmaps,
@@ -1033,9 +1033,9 @@ diff -r -u --new-file a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
  };
  
  static BOOL wined3d_cs_st_check_space(struct wined3d_cs *cs, size_t size, enum wined3d_cs_queue_id queue_id)
-diff -r -u --new-file a/dlls/wined3d/device.c b/dlls/wined3d/device.c
---- a/dlls/wined3d/device.c	2018-03-29 01:05:41.514524672 +0200
-+++ b/dlls/wined3d/device.c	2018-03-28 23:33:09.909291883 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/device.c b/dlls/wined3d/device.c
+--- a/dlls/wined3d/device.c	2018-03-31 12:50:24.718217254 +0200
++++ b/dlls/wined3d/device.c	2018-03-31 12:48:20.438496018 +0200
 @@ -840,6 +840,66 @@
      device->null_sampler = NULL;
  }
@@ -1119,9 +1119,9 @@ diff -r -u --new-file a/dlls/wined3d/device.c b/dlls/wined3d/device.c
      context_release(context);
  }
  
-diff -r -u --new-file a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
---- a/dlls/wined3d/directx.c	2018-03-29 01:05:41.546524595 +0200
-+++ b/dlls/wined3d/directx.c	2018-03-28 23:37:33.887751410 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
+--- a/dlls/wined3d/directx.c	2018-03-31 12:50:24.747217188 +0200
++++ b/dlls/wined3d/directx.c	2018-03-31 12:48:20.440496014 +0200
 @@ -111,6 +111,7 @@
      /* ARB */
      {"GL_ARB_base_instance",                ARB_BASE_INSTANCE             },
@@ -1204,9 +1204,9 @@ diff -r -u --new-file a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
  
          {ARB_CLIP_CONTROL,                 MAKEDWORD_VERSION(4, 5)},
          {ARB_CULL_DISTANCE,                MAKEDWORD_VERSION(4, 5)},
-diff -r -u --new-file a/dlls/wined3d/Makefile.in b/dlls/wined3d/Makefile.in
---- a/dlls/wined3d/Makefile.in	2018-03-29 01:05:31.456548864 +0200
-+++ b/dlls/wined3d/Makefile.in	2018-03-28 21:23:02.867794542 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/Makefile.in b/dlls/wined3d/Makefile.in
+--- a/dlls/wined3d/Makefile.in	2018-03-31 12:50:15.709237451 +0200
++++ b/dlls/wined3d/Makefile.in	2018-03-31 12:48:20.440496014 +0200
 @@ -6,6 +6,7 @@
  	arb_program_shader.c \
  	ati_fragment_shader.c \
@@ -1215,9 +1215,9 @@ diff -r -u --new-file a/dlls/wined3d/Makefile.in b/dlls/wined3d/Makefile.in
  	context.c \
  	cs.c \
  	device.c \
-diff -r -u --new-file a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
---- a/dlls/wined3d/resource.c	2018-03-29 01:05:41.159525526 +0200
-+++ b/dlls/wined3d/resource.c	2018-03-29 01:05:14.568589503 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
+--- a/dlls/wined3d/resource.c	2018-03-31 12:50:24.426217908 +0200
++++ b/dlls/wined3d/resource.c	2018-03-31 12:48:20.440496014 +0200
 @@ -340,6 +340,7 @@
  HRESULT CDECL wined3d_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
          struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
@@ -1261,9 +1261,9 @@ diff -r -u --new-file a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
  }
  
  UINT CDECL wined3d_resource_update_info(struct wined3d_resource *resource, unsigned int sub_resource_idx,
-diff -r -u --new-file a/dlls/wined3d/state.c b/dlls/wined3d/state.c
---- a/dlls/wined3d/state.c	2018-03-29 01:05:41.283525227 +0200
-+++ b/dlls/wined3d/state.c	2018-03-28 23:06:47.167455200 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/state.c b/dlls/wined3d/state.c
+--- a/dlls/wined3d/state.c	2018-03-31 12:50:24.522217693 +0200
++++ b/dlls/wined3d/state.c	2018-03-31 12:48:20.442496009 +0200
 @@ -4797,7 +4797,11 @@
      else
      {
@@ -1338,9 +1338,9 @@ diff -r -u --new-file a/dlls/wined3d/state.c b/dlls/wined3d/state.c
      }
      checkGLcall("bind constant buffers");
  }
-diff -r -u --new-file a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
---- a/dlls/wined3d/texture.c	2018-03-29 01:05:41.183525468 +0200
-+++ b/dlls/wined3d/texture.c	2018-03-28 22:58:49.906449411 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
+--- a/dlls/wined3d/texture.c	2018-03-31 12:50:24.445217866 +0200
++++ b/dlls/wined3d/texture.c	2018-03-31 12:48:20.443496007 +0200
 @@ -2096,6 +2096,12 @@
  static HRESULT texture_resource_sub_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
          struct wined3d_map_desc *map_desc, const struct wined3d_box *box, DWORD flags)
@@ -1375,10 +1375,10 @@ diff -r -u --new-file a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
  };
  
  /* Context activation is done by the caller. */
-diff -r -u --new-file a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
---- a/dlls/wined3d/utils.c	2018-03-29 01:05:41.461524800 +0200
-+++ b/dlls/wined3d/utils.c	2018-03-28 22:59:19.628387862 +0200
-@@ -6368,6 +6368,7 @@
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
+--- a/dlls/wined3d/utils.c	2018-03-31 12:50:24.671217359 +0200
++++ b/dlls/wined3d/utils.c	2018-03-31 12:48:20.445496003 +0200
+@@ -6321,6 +6321,7 @@
      LOCATION_TO_STR(WINED3D_LOCATION_DRAWABLE);
      LOCATION_TO_STR(WINED3D_LOCATION_RB_MULTISAMPLE);
      LOCATION_TO_STR(WINED3D_LOCATION_RB_RESOLVED);
@@ -1386,9 +1386,9 @@ diff -r -u --new-file a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
  #undef LOCATION_TO_STR
      if (location)
          FIXME("Unrecognized location flag(s) %#x.\n", location);
-diff -r -u --new-file a/dlls/wined3d/wined3d_gl.h b/dlls/wined3d/wined3d_gl.h
---- a/dlls/wined3d/wined3d_gl.h	2018-03-29 01:05:41.000525908 +0200
-+++ b/dlls/wined3d/wined3d_gl.h	2018-03-28 23:07:20.628395936 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/wined3d_gl.h b/dlls/wined3d/wined3d_gl.h
+--- a/dlls/wined3d/wined3d_gl.h	2018-03-31 12:50:24.279218237 +0200
++++ b/dlls/wined3d/wined3d_gl.h	2018-03-31 12:48:20.449495993 +0200
 @@ -44,6 +44,7 @@
      /* ARB */
      ARB_BASE_INSTANCE,
@@ -1405,9 +1405,9 @@ diff -r -u --new-file a/dlls/wined3d/wined3d_gl.h b/dlls/wined3d/wined3d_gl.h
      ARB_MULTISAMPLE,
      ARB_MULTITEXTURE,
      ARB_OCCLUSION_QUERY,
-diff -r -u --new-file a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
---- a/dlls/wined3d/wined3d_private.h	2018-03-29 01:05:41.532524629 +0200
-+++ b/dlls/wined3d/wined3d_private.h	2018-03-28 23:37:57.861715709 +0200
+diff -r -u   '--exclude=*.orig' '--exclude=*.rej' a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
+--- a/dlls/wined3d/wined3d_private.h	2018-03-31 12:50:24.734217218 +0200
++++ b/dlls/wined3d/wined3d_private.h	2018-03-31 12:48:20.450495991 +0200
 @@ -75,6 +75,7 @@
  #define WINED3D_QUIRK_INFO_LOG_SPAM             0x00000080
  #define WINED3D_QUIRK_LIMITED_TEX_FILTERING     0x00000100
