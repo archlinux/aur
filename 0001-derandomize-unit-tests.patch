@@ -1,0 +1,167 @@
+From 394c3b4c3dfb8fd40530fd6815f300a273a309d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabian=20Kl=C3=B6tzl?= <fabian@kloetzl.info>
+Date: Mon, 5 Mar 2018 14:25:12 +0100
+Subject: [PATCH] derandomize unit tests
+
+Make the unit tests reproducible by giving an external seed. Required
+for Debian packaging.
+---
+ test/low_homo.sh   | 15 ++++++++++++---
+ test/nan.sh        | 12 ++++++++++--
+ test/test_extra.sh | 15 ++++++++++++---
+ test/test_join.sh  | 40 ++++++++++++++++++++++++++++++++--------
+ 4 files changed, 66 insertions(+), 16 deletions(-)
+
+diff --git a/test/low_homo.sh b/test/low_homo.sh
+index 72d1693..11e889e 100755
+--- a/test/low_homo.sh
++++ b/test/low_homo.sh
+@@ -1,8 +1,17 @@
+ #!/bin/bash -f
+ 
+-./test/test_fasta -l 100000 > a.fa
+-./test/test_fasta -l 100000 > b.fa
+-./test/test_fasta -l 100 > both.fa
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++SEED3=0
++if test $SEED -ne 0; then
++	SEED=$((SEED + 1))
++	SEED2=$((SEED + 2))
++	SEED3=$((SEED + 3))
++fi
++
++./test/test_fasta -s $SEED -l 100000 > a.fa
++./test/test_fasta -s $SEED2 -l 100000 > b.fa
++./test/test_fasta -s $SEED3 -l 100 > both.fa
+ 
+ cat both.fa a.fa | awk -vRS='>' '{if($1 == "S0")print ">"$0 > "S0.fa"}'
+ cat both.fa b.fa | awk -vRS='>' '{if($1 == "S1")print ">"$0 > "S1.fa"}'
+diff --git a/test/nan.sh b/test/nan.sh
+index e0502d0..60db0e2 100755
+--- a/test/nan.sh
++++ b/test/nan.sh
+@@ -1,7 +1,15 @@
+ #!/bin/bash -f
+ 
+-./test/test_fasta -l 10000 > a.fa
+-./test/test_fasta -l 10000 > b.fa
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++if test $SEED -ne 0; then
++	SEED=$((SEED + 1))
++	SEED2=$((SEED + 2))
++fi
++
++
++./test/test_fasta -s $SEED -l 10000 > a.fa
++./test/test_fasta -s $SEED2 -l 10000 > b.fa
+ 
+ # this is expected to trigger the nan warning
+ ./src/andi -j a.fa b.fa 2>&1 | grep 'nan'
+diff --git a/test/test_extra.sh b/test/test_extra.sh
+index dbb23ea..c1c0641 100755
+--- a/test/test_extra.sh
++++ b/test/test_extra.sh
+@@ -3,17 +3,26 @@
+ # Test if andi exists, and can be executed
+ ./src/andi --version > /dev/null || exit 1
+ 
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++SEED3=0
++if test $SEED -ne 0; then
++        SEED=$((SEED + 1))
++        SEED2=$((SEED + 2))
++        SEED3=$((SEED + 3))
++fi
++
+ # Test andi for more than just two sequences at a time
+-./test/test_fasta -l 100000 -d 0.01 -d 0.01 -d 0.01 -d 0.01 | ./src/andi > /dev/null || exit 1
++./test/test_fasta -s $SEED -l 100000 -d 0.01 -d 0.01 -d 0.01 -d 0.01 | ./src/andi > /dev/null || exit 1
+ 
+ # Test low-memory mode
+-./test/test_fasta -l 10000 > test_extra.fasta
++./test/test_fasta -s $SEED2 -l 10000 > test_extra.fasta
+ ./src/andi test_extra.fasta > extra.out
+ ./src/andi test_extra.fasta --low-memory > extra_low_memory.out
+ diff extra.out extra_low_memory.out || exit 1
+ 
+ # Test file of filenames
+-./test/test_fasta -l 10000 > test_extra.fasta
++./test/test_fasta -s $SEED3 -l 10000 > test_extra.fasta
+ echo "$PWD/test_extra.fasta" > fof.txt
+ ./src/andi test_extra.fasta > extra.out
+ ./src/andi --file-of-filenames fof.txt > fof.out
+diff --git a/test/test_join.sh b/test/test_join.sh
+index 60e099a..33cc2c6 100755
+--- a/test/test_join.sh
++++ b/test/test_join.sh
+@@ -2,10 +2,19 @@
+ 
+ ./src/andi --help > /dev/null || exit 1
+ 
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++SEED3=0
++if test $SEED -ne 0; then
++        SEED=$((SEED + 1))
++        SEED2=$((SEED + 2))
++        SEED3=$((SEED + 3))
++fi
++
+ # Simple join test
+-./test/test_fasta -l 1000 -L 1000 -d 0.1 > p1.fasta
+-./test/test_fasta -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1.fasta
++./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2.fasta
++./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3.fasta
+ 
+ head -qn 2 p1.fasta p2.fasta p3.fasta > S0.fasta
+ tail -qn 2 p1.fasta p2.fasta p3.fasta > S1.fasta
+@@ -25,9 +34,16 @@ if test $RES -ne 1; then
+ 	exit 1;
+ fi
+ 
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++if test $SEED -ne 0; then
++        SEED=$((SEED + 5))
++        SEED2=$((SEED + 6))
++fi
++
+ #unbalanced number of contigs
+-./test/test_fasta -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p2.fasta
++./test/test_fasta -s $SEED2 -l 10000 -L 10000 -d 0.1 > p3.fasta
+ 
+ head -qn 2 p3.fasta > S0.fasta
+ tail -qn 2 p2.fasta p3.fasta > S1.fasta
+@@ -47,11 +63,19 @@ if test $RES -ne 1; then
+         exit 1;
+ fi
+ 
++SEED=${RANDOM_SEED:-0}
++SEED2=0
++SEED3=0
++if test $SEED -ne 0; then
++        SEED=$((SEED + 11))
++        SEED2=$((SEED + 12))
++        SEED3=$((SEED + 13))
++fi
+ 
+ #unbalanced number of contigs 2
+-./test/test_fasta -l 1000 -L 1000 -d 0.1 > p1.fasta
+-./test/test_fasta -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1.fasta
++./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2.fasta
++./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3.fasta
+ 
+ head -qn 2 p1.fasta p3.fasta > S0.fasta
+ tail -qn 2 p1.fasta p2.fasta p3.fasta > S1.fasta
+-- 
+2.16.3
+

@@ -1,0 +1,185 @@
+From e35d1a51f71541f246919a277386817f69c94a3e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabian=20Kl=C3=B6tzl?= <fabian@kloetzl.info>
+Date: Wed, 7 Mar 2018 11:26:26 +0100
+Subject: [PATCH] prefix files in unit tests
+
+Unit tests can be run in parallel (see debian builds). Thus they should
+work on different files, otherwise bad and confusing things happen.
+---
+ test/low_homo.sh  | 16 ++++++++--------
+ test/nan.sh       | 10 +++++-----
+ test/test_join.sh | 48 ++++++++++++++++++++++++------------------------
+ 3 files changed, 37 insertions(+), 37 deletions(-)
+
+diff --git a/test/low_homo.sh b/test/low_homo.sh
+index 11e889e..1f16a79 100755
+--- a/test/low_homo.sh
++++ b/test/low_homo.sh
+@@ -9,21 +9,21 @@ if test $SEED -ne 0; then
+ 	SEED3=$((SEED + 3))
+ fi
+ 
+-./test/test_fasta -s $SEED -l 100000 > a.fa
+-./test/test_fasta -s $SEED2 -l 100000 > b.fa
+-./test/test_fasta -s $SEED3 -l 100 > both.fa
++./test/test_fasta -s $SEED -l 100000 > a_low.fa
++./test/test_fasta -s $SEED2 -l 100000 > b_low.fa
++./test/test_fasta -s $SEED3 -l 100 > both_low.fa
+ 
+-cat both.fa a.fa | awk -vRS='>' '{if($1 == "S0")print ">"$0 > "S0.fa"}'
+-cat both.fa b.fa | awk -vRS='>' '{if($1 == "S1")print ">"$0 > "S1.fa"}'
++cat both_low.fa a_low.fa | awk -vRS='>' '{if($1 == "S0")print ">"$0 > "S0_low.fa"}'
++cat both_low.fa b_low.fa | awk -vRS='>' '{if($1 == "S1")print ">"$0 > "S1_low.fa"}'
+ 
+ # this is expected to trigger the low homology warning
+-./src/andi -j S0.fa S1.fa 2>&1 | grep 'homology'
++./src/andi -j S0_low.fa S1_low.fa 2>&1 | grep 'homology'
+ EXIT_VAL=$?
+ 
+ if [[ EXIT_VAL -ge 1 ]]; then
+ 	echo "Triggering low homology failed" >&2
+-	grep '^>' a.fa b.fa both.fa
++	grep '^>' a_low.fa b_low.fa both_low.fa
+ fi
+ 
+-rm -f a.fa b.fa both.fa S0.fa S1.fa
++rm -f a_low.fa b_low.fa both_low.fa S0_low.fa S1_low.fa
+ exit $EXIT_VAL
+diff --git a/test/nan.sh b/test/nan.sh
+index 60db0e2..97fa167 100755
+--- a/test/nan.sh
++++ b/test/nan.sh
+@@ -8,18 +8,18 @@ if test $SEED -ne 0; then
+ fi
+ 
+ 
+-./test/test_fasta -s $SEED -l 10000 > a.fa
+-./test/test_fasta -s $SEED2 -l 10000 > b.fa
++./test/test_fasta -s $SEED -l 10000 > a_nan.fa
++./test/test_fasta -s $SEED2 -l 10000 > b_nan.fa
+ 
+ # this is expected to trigger the nan warning
+-./src/andi -j a.fa b.fa 2>&1 | grep 'nan'
++./src/andi -j a_nan.fa b_nan.fa 2>&1 | grep 'nan'
+ EXIT_VAL=$?
+ 
+ 
+ if [[ EXIT_VAL -ge 1 ]]; then
+ 	echo "Triggering nan failed" >&2
+-	grep '^>' a.fa b.fa both.fa
++	grep '^>' a_nan.fa b_nan.fa
+ fi
+ 
+-rm -f a.fa b.fa
++rm -f a_nan.fa b_nan.fa
+ exit $EXIT_VAL
+diff --git a/test/test_join.sh b/test/test_join.sh
+index 33cc2c6..a0616bf 100755
+--- a/test/test_join.sh
++++ b/test/test_join.sh
+@@ -12,17 +12,17 @@ if test $SEED -ne 0; then
+ fi
+ 
+ # Simple join test
+-./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1.fasta
+-./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1_join.fasta
++./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2_join.fasta
++./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3_join.fasta
+ 
+-head -qn 2 p1.fasta p2.fasta p3.fasta > S0.fasta
+-tail -qn 2 p1.fasta p2.fasta p3.fasta > S1.fasta
++head -qn 2 p1_join.fasta p2_join.fasta p3_join.fasta > S0_join.fasta
++tail -qn 2 p1_join.fasta p2_join.fasta p3_join.fasta > S1_join.fasta
+ 
+-rm p1.fasta p2.fasta p3.fasta;
++rm p1_join.fasta p2_join.fasta p3_join.fasta;
+ 
+ 
+-RES=$(./src/andi -m RAW -t 1 -j S0.fasta S1.fasta |
++RES=$(./src/andi -m RAW -t 1 -j S0_join.fasta S1_join.fasta |
+ 	tail -n 1 |
+ 	awk '{print ($2 - 0.1)}' |
+ 	awk 'function abs(x){return ((x < 0.0) ? -x : x)} {print abs($1-$2) < 0.03}'
+@@ -30,7 +30,7 @@ RES=$(./src/andi -m RAW -t 1 -j S0.fasta S1.fasta |
+ 
+ if test $RES -ne 1; then
+ 	echo "The last test computed a distance deviating more than three percent from its intended value."
+-	echo "See S0.fasta and S1.fasta for the used sequences."
++	echo "See S0_join.fasta and S1_join.fasta for the used sequences."
+ 	exit 1;
+ fi
+ 
+@@ -42,16 +42,16 @@ if test $SEED -ne 0; then
+ fi
+ 
+ #unbalanced number of contigs
+-./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -s $SEED2 -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p2_join.fasta
++./test/test_fasta -s $SEED2 -l 10000 -L 10000 -d 0.1 > p3_join.fasta
+ 
+-head -qn 2 p3.fasta > S0.fasta
+-tail -qn 2 p2.fasta p3.fasta > S1.fasta
++head -qn 2 p3_join.fasta > S0_join.fasta
++tail -qn 2 p2_join.fasta p3_join.fasta > S1_join.fasta
+ 
+-rm p2.fasta p3.fasta;
++rm p2_join.fasta p3_join.fasta;
+ 
+ 
+-RES=$(./src/andi -m RAW -t1 -j S0.fasta S1.fasta |
++RES=$(./src/andi -m RAW -t1 -j S0_join.fasta S1_join.fasta |
+         tail -n 1 |
+         awk '{print ($2 - 0.1)}' |
+         awk 'function abs(x){return ((x < 0.0) ? -x : x)} {print abs($1-$2) < 0.03}'
+@@ -59,7 +59,7 @@ RES=$(./src/andi -m RAW -t1 -j S0.fasta S1.fasta |
+ 
+ if test $RES -ne 1; then
+         echo "The last test computed a distance deviating more than three percent from its intended value."
+-        echo "See S0.fasta and S1.fasta for the used sequences."
++        echo "See S0_join.fasta and S1_join.fasta for the used sequences."
+         exit 1;
+ fi
+ 
+@@ -73,17 +73,17 @@ if test $SEED -ne 0; then
+ fi
+ 
+ #unbalanced number of contigs 2
+-./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1.fasta
+-./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2.fasta
+-./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3.fasta
++./test/test_fasta -s $SEED -l 1000 -L 1000 -d 0.1 > p1_join.fasta
++./test/test_fasta -s $SEED2 -l 1000 -L 1000 -d 0.1 > p2_join.fasta
++./test/test_fasta -s $SEED3 -l 10000 -L 10000 -d 0.1 > p3_join.fasta
+ 
+-head -qn 2 p1.fasta p3.fasta > S0.fasta
+-tail -qn 2 p1.fasta p2.fasta p3.fasta > S1.fasta
++head -qn 2 p1_join.fasta p3_join.fasta > S0_join.fasta
++tail -qn 2 p1_join.fasta p2_join.fasta p3_join.fasta > S1_join.fasta
+ 
+-rm p1.fasta p2.fasta p3.fasta;
++rm p1_join.fasta p2_join.fasta p3_join.fasta;
+ 
+ 
+-RES=$(./src/andi -mRAW -t 1 -j S0.fasta S1.fasta |
++RES=$(./src/andi -mRAW -t 1 -j S0_join.fasta S1_join.fasta |
+         tail -n 1 |
+         awk '{print ($2 - 0.1)}' |
+         awk 'function abs(x){return ((x < 0.0) ? -x : x)} {print abs($1-$2) < 0.03}'
+@@ -91,9 +91,9 @@ RES=$(./src/andi -mRAW -t 1 -j S0.fasta S1.fasta |
+ 
+ if test $RES -ne 1; then
+         echo "The last test computed a distance deviating more than three percent from its intended value."
+-        echo "See S0.fasta and S1.fasta for the used sequences."
++        echo "See S0_join.fasta and S1_join.fasta for the used sequences."
+         exit 1;
+ fi
+ 
+ 
+-rm S0.fasta S1.fasta
++rm S0_join.fasta S1_join.fasta
+-- 
+2.16.3
+
