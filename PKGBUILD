@@ -9,7 +9,7 @@ _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=390.48
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
