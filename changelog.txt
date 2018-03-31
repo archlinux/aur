@@ -1,3 +1,9 @@
+2018-03-31 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.8.r54.gebd3f2e5 :
+	Removed 'clxclient' from optdepends.
+	Removed DEFAULT_QT5 make flag (Qt5 is now the default).
+
 2017-11-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1:1.9.7b.r283.g7068200a-1 :

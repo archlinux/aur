@@ -2,7 +2,7 @@
 # Contributor: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.7b.r283.g7068200a
+pkgver=1.9.8.r54.gebd3f2e5
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -31,7 +31,6 @@ makedepends=(
     'qt4'
 )
 optdepends=(
-    'clxclient: internal plugins UI support'
     'gtk2: LV2 GTK2 UI support'
     'gtk3: LV2 GTK3 UI support'
     'python-pyliblo: OSC control support'
