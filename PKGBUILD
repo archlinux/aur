@@ -3,15 +3,17 @@
 
 pkgname=octopi-kde-git
 _pkgver=0.8.1
-pkgver=0.8.1.1351
+pkgver=0.8.1.1357
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
-url="https://octopiproject.wordpress.com/"
+url="https://github.com/aarnt/octopi"
 arch=('x86_64')
 license=('GPL2')
 depends=('pkgfile' 'knotifications' 'alpm_octopi_utils' 'kdesu')
 optdepends=('gist: for SysInfo report'
             'yaourt: for AUR support'
+            'pacaur: for AUR support'
+            'trizen: for AUR support'
             'pacmanlogviewer: to view pacman log files')
 provides=('octopi' 'octopi-git' 'octopi-notifier-frameworks' 'octopi-notifier-qt5'
           'octopi-notifier-noknotify' 'octopi-repoeditor' 'octopi-cachecleaner'
