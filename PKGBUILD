@@ -1,9 +1,8 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Petar Koretic <petar.koretic@sartura.hr>
+# Maintainer: Petar Koretic <petar.koretic@qaap.io>
 
 pkgname=libnetconf-git
 _pkgname=libnetconf
-pkgver=r2227.62a983a
+pkgver=r2231.6351e224
 pkgrel=1
 pkgdesc='a NETCONF library in C intended for building NETCONF clients and servers.'
 url="https://github.com/CESNET/$_pkgname"

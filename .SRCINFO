@@ -1,6 +1,6 @@
 pkgbase = libnetconf-git
 	pkgdesc = a NETCONF library in C intended for building NETCONF clients and servers.
-	pkgver = r2227.62a983a
+	pkgver = r2231.6351e224
 	pkgrel = 1
 	url = https://github.com/CESNET/libnetconf
 	arch = i686
