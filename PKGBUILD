@@ -16,15 +16,15 @@ source=()
 md5sums=()
 
 package() {
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps pyinstaller
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps psutil
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps PyQt5
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps termcolor
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/pyinstaller" --no-deps pyinstaller
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/psutil" --no-deps psutil
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/PyQt5" --no-deps PyQt5
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/termcolor" --no-deps termcolor
 
-    python -O -m compileall "${pkgdir}/openleecher/pyinstaller"
-    python -O -m compileall "${pkgdir}/openleecher/psutil"
-    python -O -m compileall "${pkgdir}/openleecher/PyQt5"
-    python -O -m compileall "${pkgdir}/openleecher/termcolor"
+    python -O -m compileall "${pkgdir}/pyinstaller"
+    python -O -m compileall "${pkgdir}/psutil"
+    python -O -m compileall "${pkgdir}/PyQt5"
+    python -O -m compileall "${pkgdir}/termcolor"
 
     pyinstaller -F ../openleecher.py
 
