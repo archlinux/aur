@@ -17,13 +17,13 @@ source=('https://github.com/cronie-crond/cronie/releases/download/cronie-1.5.1/c
 		'service'
 		'pam.d'
 		'deny'
-		'https://github.com/razorpay/shubhcron/releases/download/shubhcron-1.0.0/shubhcron-1.0.0.tar.gz')
+		'https://github.com/razorpay/shubhcron/archive/1.0.0.tar.gz')
 
 sha256sums=('6c73666102a6b5d35e2eaf1bd06925f2d4b0cef8d3323c37286dda3089a85338'
 			'62237132ccaf657f23b9c090b8cb10d7d003707a50d83b62f6cbc4c808766e44'
 			'00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
 			'ae6e533ecdfc1bd2dd80a9e25acb0260cbe9f00c4e4abee93d552b3660f263fc'
-			'c6b77f733cf5b243cf6a49aede7cc36d7edb93c0fc2b9703a6a9280db7ccb44c')
+			'2a48205a531e89f0bebf0a4551b306f4cd8281791809db444dcb2e9e43918664')
 
 backup=('etc/cron.deny'
 		'etc/pam.d/crond'
