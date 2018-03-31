@@ -1,4 +1,5 @@
-# Maintainer: Benedict Etzel <gitter@liftm.de.de>
+# Maintainer: Julius Michaelis <gitter@liftm.de.de>
+# Contributor: Doug Newgard <scimmia@archlinux.org>
 
 pkgname=mrtdreader
 pkgver=0.1.6
