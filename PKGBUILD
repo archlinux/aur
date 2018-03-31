@@ -13,14 +13,11 @@ sha256sums=('150d410d30281e753b4342fa8f26f34cbfdfa070241388403004ddb988c1cc42')
 
 build() {
 	cd "$pkgname-$pkgver"
-        mkdir build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	make xlayoutdisplay
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-        cd build
-	make install
+	make DESTDIR="$pkgdir" install
 }
