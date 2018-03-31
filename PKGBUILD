@@ -1,24 +1,24 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution' 'syncevolution-http')
-pkgver=1.5.2
-pkgrel=6
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="Synchronize PIM data via various protocols"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://syncevolution.org/"
 license=('LGPL')
 depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'openobex' 'python2' 'libunique')
 makedepends=('intltool' 'boost' 'python')
 #changelog=
 source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
-        "$pkgname-$pkgver-libical3.patch"
+        "$pkgname-$pkgver-sslcert.patch"
         "$pkgname-$pkgver-python2.patch")
-sha256sums=('8b692bd549a63d2259ed7519afb74fc9cab5be10c7a6f51868b66fc98fb48128'
-            '36165fd651a2edc088dbf868214bace3d7f52f61dce051af4657ab1eafbe2ac9'
-            '88e5deab491e40e932e9d6d3240fd97ca68550800cc1ae22eba8679092e770df')
+sha256sums=('e1195fda09bc7782eb8a55674e9e69d69da4780a9aa4a54d37d84da67ee863c0'
+            '6904cd9eb9ed4e3eb888bad187315960de9d8a23d69c3c5587e011441cca1494'
+            '704cbbf11289c5fd82b8c7228661f8cddaa40714598c56b2154783a35630128e')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    for patch in libical3 python2; do
+    for patch in sslcert python2; do
       patch -p1 -i "$srcdir/$pkgname-$pkgver-$patch.patch"
     done
     autoreconf -fiv

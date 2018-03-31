@@ -1,0 +1,16 @@
+diff -ura syncevolution-1.5.3.orig/src/syncevo/SoupTransportAgent.cpp syncevolution-1.5.3.new/src/syncevo/SoupTransportAgent.cpp
+--- syncevolution-1.5.3.orig/src/syncevo/SoupTransportAgent.cpp	2018-01-09 16:53:27.000000000 +0100
++++ syncevolution-1.5.3.new/src/syncevo/SoupTransportAgent.cpp	2018-03-31 14:58:19.151329884 +0200
+@@ -134,6 +134,11 @@
+             g_object_set(m_session.get(), SOUP_SESSION_SSL_CA_FILE, m_cacerts.c_str(), NULL);
+         }
+     }
++    else {
++        // https://lists.syncevolution.org/pipermail/syncevolution/2018-January/005602.html
++        // Checking enabled by default, disable it.
++        g_object_set(m_session.get(), SOUP_SESSION_SSL_STRICT, false, NULL);
++    }
+ 
+     soup_message_set_request(message.get(), m_contentType.c_str(),
+                              SOUP_MEMORY_TEMPORARY, data, len);
+Only in syncevolution-1.5.3.new/src/syncevo: SoupTransportAgent.cpp~

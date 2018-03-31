@@ -1,0 +1,87 @@
+diff -ura syncevolution-1.5.3.orig/build/source2html.py syncevolution-1.5.3.new/build/source2html.py
+--- syncevolution-1.5.3.orig/build/source2html.py	2014-04-25 09:55:47.000000000 +0200
++++ syncevolution-1.5.3.new/build/source2html.py	2018-03-31 15:07:19.024561185 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ """
+ Converts source code (first parameter, can be - for stdin) to HTML
+diff -ura syncevolution-1.5.3.orig/Makefile.in syncevolution-1.5.3.new/Makefile.in
+--- syncevolution-1.5.3.orig/Makefile.in	2018-01-09 16:54:29.000000000 +0100
++++ syncevolution-1.5.3.new/Makefile.in	2018-03-31 15:07:15.649581388 +0200
+@@ -12881,7 +12881,7 @@
+ 	  fi; \
+ 	done
+ src/ClientTest.cpp.html: build/source2html.py test/ClientTest.cpp
+-	$(AM_V_GEN)python $+ >$@
++	$(AM_V_GEN)python2 $+ >$@
+ 
+ # copy base test files
+ $(filter-out %.tem, $(filter src/testcases/%, $(subst $(top_srcdir)/test/,src/,$(CLIENT_LIB_TEST_FILES)))) : src/% : $(top_srcdir)/test/%
+diff -ura syncevolution-1.5.3.orig/src/dbus/server/pim/examples/search.py syncevolution-1.5.3.new/src/dbus/server/pim/examples/search.py
+--- syncevolution-1.5.3.orig/src/dbus/server/pim/examples/search.py	2014-10-30 17:54:09.000000000 +0100
++++ syncevolution-1.5.3.new/src/dbus/server/pim/examples/search.py	2018-03-31 15:07:18.447564681 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -u
++#! /usr/bin/python2 -u
+ # -*- coding: utf-8 -*-
+ # vim: set fileencoding=utf-8 :#
+ #
+diff -ura syncevolution-1.5.3.orig/src/dbus/server/pim/examples/sync.py syncevolution-1.5.3.new/src/dbus/server/pim/examples/sync.py
+--- syncevolution-1.5.3.orig/src/dbus/server/pim/examples/sync.py	2014-10-30 17:54:09.000000000 +0100
++++ syncevolution-1.5.3.new/src/dbus/server/pim/examples/sync.py	2018-03-31 15:07:18.022567255 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -u
++#! /usr/bin/python2 -u
+ # -*- coding: utf-8 -*-
+ # vim: set fileencoding=utf-8 :#
+ #
+diff -ura syncevolution-1.5.3.orig/src/dbus/server/pim/testpim.py syncevolution-1.5.3.new/src/dbus/server/pim/testpim.py
+--- syncevolution-1.5.3.orig/src/dbus/server/pim/testpim.py	2014-10-30 17:54:09.000000000 +0100
++++ syncevolution-1.5.3.new/src/dbus/server/pim/testpim.py	2018-03-31 15:07:17.623569650 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -u
++#! /usr/bin/python2 -u
+ # -*- coding: utf-8 -*-
+ # vim: set fileencoding=utf-8 :#
+ #
+diff -ura syncevolution-1.5.3.orig/src/src.am syncevolution-1.5.3.new/src/src.am
+--- syncevolution-1.5.3.orig/src/src.am	2018-01-05 16:10:27.000000000 +0100
++++ syncevolution-1.5.3.new/src/src.am	2018-03-31 15:07:17.214572102 +0200
+@@ -367,7 +367,7 @@
+ nodist_noinst_DATA += src/ClientTest.cpp.html
+ CLEANFILES += src/ClientTest.cpp.html
+ src/ClientTest.cpp.html: build/source2html.py test/ClientTest.cpp
+-	$(AM_V_GEN)python $+ >$@
++	$(AM_V_GEN)python2 $+ >$@
+ 
+ # copy base test files
+ $(filter-out %.tem, $(filter src/testcases/%, $(subst $(top_srcdir)/test/,src/,$(CLIENT_LIB_TEST_FILES)))) : src/% : $(top_srcdir)/test/%
+diff -ura syncevolution-1.5.3.orig/test/log2html.py syncevolution-1.5.3.new/test/log2html.py
+--- syncevolution-1.5.3.orig/test/log2html.py	2014-04-25 09:55:47.000000000 +0200
++++ syncevolution-1.5.3.new/test/log2html.py	2018-03-31 15:07:16.178578268 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ """
+ Converts the .log output for a client-test test into HTML, with
+diff -ura syncevolution-1.5.3.orig/test/syncevo-http-server.py syncevolution-1.5.3.new/test/syncevo-http-server.py
+--- syncevolution-1.5.3.orig/test/syncevo-http-server.py	2016-09-26 13:20:05.000000000 +0200
++++ syncevolution-1.5.3.new/test/syncevo-http-server.py	2018-03-31 15:07:16.902573965 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ '''Usage: syncevo-http-server.py <URL>
+ Runs a SyncML HTTP server under the given base URL.'''
+diff -ura syncevolution-1.5.3.orig/test/syncevo-phone-config.py syncevolution-1.5.3.new/test/syncevo-phone-config.py
+--- syncevolution-1.5.3.orig/test/syncevo-phone-config.py	2014-04-25 09:55:48.000000000 +0200
++++ syncevolution-1.5.3.new/test/syncevo-phone-config.py	2018-03-31 15:07:16.575575908 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Copyright (C) 2010 Intel Corporation
+ #
