@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=65.0.3325.181
-pkgrel=4
+pkgrel=5
 _launcher_ver=6
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('x86_64')
@@ -34,6 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
         fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
+        allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
         chromium-skia-harmony.patch
         chromium-clang-r2.patch
         chromium-math.h-r0.patch
@@ -46,6 +47,7 @@ sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
             'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
+            '4327289866d0b3006de62799ec06b07198a738e50e0a5c2e41ff62dbe00b4a2c'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
@@ -114,6 +116,9 @@ prepare() {
   # https://crbug.com/822820
   patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
 
+  # https://crbug.com/817400
+  patch -Np1 -i ../allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
+
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
 
@@ -171,7 +176,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
-    'is_official_build=true'
+    'is_official_build=true' # implies is_cfi=true on x86_64
     'is_debug=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
