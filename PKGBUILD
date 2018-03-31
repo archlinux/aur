@@ -21,14 +21,15 @@ build()
 
 package()
 {
-	mkdir -p "${pkgdir}/usr/share/dictd"
-	cp ${_lang}/build/dictd/${_lang}.{dict.dz,index} \
-		"${pkgdir}/usr/share/dictd/"
+	install -m 755 -d "${pkgdir}/usr/share/dictd"
+	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
+		${_lang}/build/dictd/${_lang}.{dict.dz,index}
 
-	mkdir -p "${pkgdir}/usr/share/doc/freedict/${_lang}"
 	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
 	do
-		test -f ${file} && \
-			cp ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
+		if test -f ${file}
+		then
+			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
+		fi
 	done
 }
