@@ -3,7 +3,7 @@
 _pkgbase=uvesafb
 pkgname=uvesafb-dkms
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 _v86d=v86d
 _v86dver=0.1.10
 pkgdesc="uvesafb dkms driver and v86d userspace helper for uvesafb that runs x86 code in an emulated environment"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('glibc' 'dkms>=2.2.0.3+git151023-5')
 makedepends=('git')
 options=('!makeflags')
-provides=("v86d=0.1.10")
+provides=("v86d")
 replaces=("v86d")
 #conflicts=("v86d")
 
