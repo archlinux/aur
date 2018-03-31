@@ -8,6 +8,7 @@ pkgname=(python-${_pkgname} python2-${_pkgname})
 pkgver=1.6.0
 pkgrel=1
 pkgdesc='A controller library for Tor'
+conflicts=('python-stem-git')
 arch=('any')
 url='https://stem.torproject.org/'
 license=('LGPL3')
