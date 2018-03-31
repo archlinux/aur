@@ -1,6 +1,6 @@
 pkgbase = persepolis-git
 	pkgdesc = A graphical front-end for aria2 download manager with lots of features (Github version).
-	pkgver = 3.0.1.r254.g85df74a
+	pkgver = 3.1.0.r0.g91aa23f
 	pkgrel = 1
 	url = https://persepolisdm.github.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = persepolis-git
 	depends = qt5-svg
 	depends = sound-theme-freedesktop
 	depends = youtube-dl
-	optdepends = adwaita-qt5: for using adwaita style in GNOME.
+	optdepends = adwaita-qt5: for using adwaita style in GTK based Desktops.
 	provides = persepolis
 	conflicts = persepolis
 	source = persepolis-git::git+https://github.com/persepolisdm/persepolis.git
