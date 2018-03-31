@@ -9,7 +9,7 @@
 
 pkgname="bunq-desktop-src"
 pkgver="0.8.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
 
@@ -65,10 +65,14 @@ package() {
 	cp\
 		BunqDesktop-$pkgver/build/icons/512x512.png\
 		$pkgdir/usr/share/pixmaps/bunq.png
+	
+	pushd $pkgdir/usr/bin
 
 	ln -s\
-		$pkgdir/opt/$pkgname/bunqdesktop\
-		$pkgdir/usr/bin/bunq-desktop-src
+		../../opt/$pkgname/bunqdesktop\
+		bunq-desktop-src
+
+	popd
 
 	desktop-file-install\
 		$pkgname.desktop\
