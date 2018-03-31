@@ -9,8 +9,8 @@ pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("avogadrolibs")
-makedepends=("git" "cmake" "eigen3")
+depends=("avogadrolibs-git")
+makedepends=("git" "cmake" "eigen")
 install=avogadro2.install
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -32,6 +32,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
       -DCMAKE_INSTALL_LIBDIR:PATH=lib \
       -DBUILD_SHARED_LIBS:BOOL=ON \
+      -DUSE_VTK:BOOL=ON \
       .
   make
 }
