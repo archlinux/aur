@@ -16,10 +16,10 @@ source=()
 md5sums=()
 
 package() {
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/pyinstaller" --no-deps pyinstaller
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/psutil" --no-deps psutil
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/PyQt5" --no-deps PyQt5
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir/termcolor" --no-deps termcolor
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/pyinstaller" --no-deps pyinstaller
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/psutil" --no-deps psutil
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/PyQt5" --no-deps PyQt5
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/termcolor" --no-deps termcolor
 
     python -O -m compileall "${pkgdir}/pyinstaller"
     python -O -m compileall "${pkgdir}/psutil"
