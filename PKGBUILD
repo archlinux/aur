@@ -42,6 +42,7 @@ package() {
   ln -s ${pkgname} "${pkgdir}/usr/bin/${pkgname}3"
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
   install -m644 docs/manual.txt "${pkgdir}/usr/share/doc/${pkgname}/manual.txt"
