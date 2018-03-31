@@ -3,12 +3,13 @@
 _pkgbase=uvesafb
 pkgname=uvesafb-dkms
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="uvesafb dkms driver"
 arch=('i686' 'x86_64')
 url="https://github.com/jghodd/uvesafb-dkms"
 license=('GPL2')
-depends=('glibc' 'dkms>=2.2.0.3+git151023-5' 'v86d')
+depends=('glibc' 'dkms>=2.2.0.3+git151023-5')
+optdepends=('v86d')
 makedepends=('git')
 options=('!makeflags')
 
