@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.r502.f2134cf
+pkgver=1.1.1.r509.c5c48f3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
   ./configure \
     --install=/usr/lib/vapoursynth \
     --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
+    --extra-ldflags="${LDFLAGS//--as-needed,/}"
   make
 }
 
