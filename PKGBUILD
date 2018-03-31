@@ -2,7 +2,7 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=r56.c2e1cad
+pkgver=r58.02ffb47
 pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
@@ -36,4 +36,6 @@ package() {
 
   install -Dm644 "$srcdir"/$_pkgname/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 "$srcdir/$_pkgname/nougat.1" "$pkgdir/usr/share/man/man1/nougat.1"
 }

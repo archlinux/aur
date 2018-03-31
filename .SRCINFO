@@ -1,6 +1,6 @@
 pkgbase = nougat-git
 	pkgdesc = Screenshot wrapper
-	pkgver = r56.c2e1cad
+	pkgver = r58.02ffb47
 	pkgrel = 1
 	url = https://github.com/Sweets/nougat
 	arch = any
