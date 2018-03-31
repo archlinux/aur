@@ -16,9 +16,9 @@ source=()
 md5sums=()
 
 package() {
-    sudo pip install pyinstaller
-    sudo pip install psutil
-    sudo pip install PyQt5
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps pyinstaller
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps psutil
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps PyQt5
     pyinstaller -F ../openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
