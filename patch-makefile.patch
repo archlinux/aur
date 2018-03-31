@@ -1,0 +1,63 @@
+diff --git a/configure.ac b/configure.ac
+index fc76d4b..338e8ef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -99,13 +99,8 @@ fi
+ AR_GCC_TARGET()
+ AC_SUBST(VENDOR,$ar_gcc_distro)
+ AC_SUBST(ARCH,$ar_gcc_arch)
+-if test $ar_gcc_arch = x86_64 ; then
+-  LIB_PATH=$PREFIX/lib64
+-  AC_SUBST(RD_LIB_PATH,lib64)
+-else
+-  LIB_PATH=$PREFIX/lib
+-  AC_SUBST(RD_LIB_PATH,lib)
+-fi
++LIB_PATH=$PREFIX/lib
++AC_SUBST(RD_LIB_PATH,lib)
+ 
+ #
+ # Determine Distro
+diff --git a/pam_rd/Makefile.am b/pam_rd/Makefile.am
+index 05de5a9..79bcf0e 100644
+--- a/pam_rd/Makefile.am
++++ b/pam_rd/Makefile.am
+@@ -29,8 +29,9 @@ MOC = @QT_MOC@
+ moc_%.cpp:	%.h
+ 	$(MOC) $< -o $@
+ 
++inst_prefix_dir=$(DESTDIR)
+ inst_lib_LTLIBRARIES = pam_rd.la
+-inst_libdir=/@RD_LIB_PATH@/security
++inst_libdir=$(prefix)/@RD_LIB_PATH@/security
+ dist_pam_rd_la_SOURCES = pam_rd.cpp
+ pam_rd_la_LDFLAGS = -module -shared -Xlinker -x -avoid-version -export-dynamic
+ pam_rd_la_LIBADD = @LIB_RDLIBS@ -lpam @LIBVORBIS@
+diff --git a/rdcartslots/Makefile.am b/rdcartslots/Makefile.am
+index 7f7725b..2d26452 100644
+--- a/rdcartslots/Makefile.am
++++ b/rdcartslots/Makefile.am
+@@ -37,8 +37,8 @@ uninstall-local:
+ 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdcartslots_*.qm
+ 
+ all:	
+-	lupdate rdcartslots.pro
+-	lrelease rdcartslots.pro
++	@QT_BIN@/lupdate rdcartslots.pro
++	@QT_BIN@/lrelease rdcartslots.pro
+ 
+ bin_PROGRAMS = rdcartslots
+ 
+diff --git a/rdselect/Makefile.am b/rdselect/Makefile.am
+index 4f17037..44ebc66 100644
+--- a/rdselect/Makefile.am
++++ b/rdselect/Makefile.am
+@@ -29,7 +29,7 @@ moc_%.cpp:	%.h
+ 	$(MOC) $< -o $@
+ 
+ # I18N Stuff
+-install-exec-local:	
++install-exec-hook:
+ 	mkdir -p $(DESTDIR)$(prefix)/share/rivendell
+ 	cp rdselect_*.qm $(DESTDIR)$(prefix)/share/rivendell
+ 	chmod 4755 $(DESTDIR)$(prefix)/bin/rdselect

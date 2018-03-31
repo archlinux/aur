@@ -1,0 +1,36 @@
+pkgbase = rivendell
+	pkgdesc = Open Source Radio Automation
+	pkgver = 2.19.1
+	pkgrel = 1
+	url = http://www.rivendellaudio.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = patch
+	depends = curl
+	depends = libxi
+	depends = cdrtools
+	depends = id3lib
+	depends = cdparanoia
+	depends = libsndfile
+	depends = mariadb
+	depends = qt3
+	depends = libsamplerate
+	depends = soundtouch
+	depends = jack2
+	depends = alsa-lib
+	depends = flac
+	depends = faad2
+	depends = libmp4v2
+	depends = lame
+	depends = libmad
+	depends = twolame
+	depends = taglib
+	depends = libvorbis
+	backup = etc/rd.conf
+	source = http://www.rivendellaudio.org/ftpdocs/rivendell/rivendell-2.19.1.tar.gz
+	source = patch-makefile.patch
+	sha256sums = 97c957c70e3caafad4d4d6520de3d35f4ac0e90036ad1123f89c2916ecc7e23c
+	sha256sums = 5c2bfdd00353ac2b9bbbcfe3e3e7d665f77d5c9caefa255ff9356c93f455f6d0
+
+pkgname = rivendell
+
