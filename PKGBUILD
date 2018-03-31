@@ -19,6 +19,7 @@ package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps pyinstaller
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps psutil
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps PyQt5
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps termcolor
 
     pyinstaller -F ../openleecher.py
 

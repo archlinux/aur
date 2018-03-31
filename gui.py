@@ -7,6 +7,7 @@ import sys
 import subprocess
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 if os.name == 'nt':
     from PyQt5.QtWebEngineWidgets import QWebEngineView
 else:
@@ -153,6 +154,7 @@ class Ui_MainWindow(object):
             self.Webview_Result = QWebEngineView(self.tab_R)
         else:
             self.Webview_Result = QWebView(self.tab_R)
+
         self.Webview_Result.setGeometry(QtCore.QRect(self.groupBox_R.width(), 0, self.tab_R.width()-self.groupBox_R.width(), self.tab_R.height() - 4))
         self.Webview_Result.setUrl(QtCore.QUrl("about:blank"))
         self.Webview_Result.setObjectName("Webview_Result")
