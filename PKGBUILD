@@ -3,13 +3,13 @@
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
 depends=('vapoursynth'
-         'opencl-icd-loader'
+         'ocl-icd'
          )
 makedepends=('git'
              'opencl-headers'
@@ -22,7 +22,7 @@ build() {
   ./configure \
     --install=/usr/lib/vapoursynth \
     --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
+    --extra-ldflags="${LDFLAGS//--as-needed,/}"
   make
 }
 
