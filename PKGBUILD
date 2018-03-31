@@ -1,4 +1,6 @@
-# Maintainer gCurse <gcurse at web dot de>
+# Maintainer 
+# Contributor gCurse <gcurse at web dot de>
+# Contributor Yurii Kolesnykov <yurikoles@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gstreamer0.10-bad
