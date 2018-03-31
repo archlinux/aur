@@ -1,0 +1,14 @@
+pkgbase = python-fastdtw
+	pkgdesc = Python implementation of FastDTW, whis is an approximate Dynamic Time Warping (DTW) algorithm that provides optimal or near-optimal alignments with an O(N) time and memory complexity.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/slaypni/fastdtw
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/fastdtw/fastdtw-0.3.2.tar.gz
+	md5sums = 63d55d14dbc4a40d2d1ceecb756d0ee4
+
+pkgname = python-fastdtw
+
