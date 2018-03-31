@@ -1,11 +1,10 @@
-# Maintainer: ArchStrike <team@archstrike.org>
-
-buildarch=1
+# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Poached from Arch Strike
+# Original: ArchStrike <team@archstrike.org>
 
 pkgname=blueranger
 pkgver=1.0
 pkgrel=4
-groups=('archstrike' 'archstrike-autonomous' 'archstrike-bluetooth')
 pkgdesc="A simple Bash script which uses Link Quality to locate Bluetooth device radios."
 url="http://www.hackfromacave.net/projects/blueranger.html"
 arch=('any')
