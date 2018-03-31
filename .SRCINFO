@@ -1,0 +1,14 @@
+pkgbase = bunq-desktop-src
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/BunqCommunity/BunqDesktop
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	source = https://github.com/BunqCommunity/BunqDesktop/archive/0.8.1.tar.gz
+	source = bunq-desktop-src.desktop
+	sha256sums = d89fad53a2b8dda0bd02bfc1a1bdd3edb3f1513215b7954970cec91fe024908d
+	sha256sums = 1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa
+
+pkgname = bunq-desktop-src
+
