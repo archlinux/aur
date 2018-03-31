@@ -21,5 +21,5 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	cp "$srcdir/$pkgname/$pkgname.sh" "$pkgdir/opt/$pkgname/$pkgname.sh"
    	cp "$srcdir/$pkgname/teknik.sh" "$pkgdir/opt/$pkgname/teknik.sh"
-    sudo ln -s /opt/$pkgname/yadshot.sh /usr/bin/yadshot
+   	sudo ln -s /opt/$pkgname/yadshot.sh /usr/bin/yadshot
 }
