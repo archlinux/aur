@@ -1,15 +1,15 @@
 # Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
 
 pkgname=python-django-csp
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Django Content Security Policy support."
 url="https://github.com/mozilla/django-csp"
 license=('BSD')
 arch=('any')
 depends=('python-django')
-source=(django_csp-$pkgver.tar.gz::https://pypi.python.org/packages/20/f7/00681fc37fbb359dd2796e16073e1d7cf50b0c42cceeb7d6b3f127ba8f34/django_csp-$pkgver.tar.gz)
-sha512sums=('92a101eeae11551f6ff59df2ffba78e155f827e05a21aef99873f2cc3d192cbe558c98eb6e34eee1ee2202756c27ce20caacfc3b410a200454e6076fd62e1d0a')
+source=(django_csp-$pkgver.tar.gz::https://pypi.python.org/packages/38/f0/6e8598cda39aafe31abf1c59b99633d07123d316058caa5aa947d207a166/django_csp-$pkgver.tar.gz)
+sha512sums=('d1c1a6cabe268649f312ccb5c7cf3e2bca3261b08d6c56ef2866e8150fde2a3514ec3026eec5ee7278a830041b4b57634612bfbac36e20e7b07de0d2fd925585')
 
 build() {
   cd "$srcdir/django_csp-${pkgver}"
