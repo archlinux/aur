@@ -6,6 +6,7 @@ pkgbase = radicale-dovecot-auth
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = radicale
 	options = !emptydirs
