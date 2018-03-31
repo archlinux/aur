@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "Example config.json file is located at:"
+    echo "  /usr/share/docs/xmrig-nvidia/config.json.example"
+    echo ""
+    echo "Don't forget to use \`--config' when using xmrig."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
