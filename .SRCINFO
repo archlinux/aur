@@ -1,7 +1,7 @@
 pkgbase = yed
 	pkgdesc = Very powerful graph editor written in java
 	pkgver = 3.17.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.yworks.com/en/products_yed_about.html
 	install = yed.install
@@ -9,12 +9,13 @@ pkgbase = yed
 	license = custom
 	depends = archlinux-java-run
 	depends = java-runtime>=8
+	depends = java-runtime<=10
 	source = https://www.yworks.com/resources/yed/demo/yEd-3.17.2.zip
 	source = yed.desktop
 	source = yed
 	sha256sums = e2e1130763ec10a22d7632ebb373bd808399cfa3bbaa89fb98f2752c47dbee72
 	sha256sums = 342dba6defac88d035253b22e6377d9570858f59367cd486dba4a4dba1621f91
-	sha256sums = cbdd6e1bdda01a91e58ea01427db15e4bb573a33ec896c68c40ec91fd46a274b
+	sha256sums = 195890876d406135e026c57536fbc16b542e9c30c991eb7058f23354d9e8ae77
 
 pkgname = yed
 
