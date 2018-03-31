@@ -152,7 +152,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
-    'is_official_build=true'
+    'is_official_build=true' # implies is_cfi=true on x86_64
     'is_debug=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
