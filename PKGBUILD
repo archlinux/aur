@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/AndrewVos/vbar"
 license=()
 depends=()
+depends=('gtk3' 'json-glib')
 makedepends=('git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
