@@ -1,7 +1,7 @@
 # Maintainer: Meade Kincke <thedarkula2049@gmail.com>
 # Maintainer: Emily Kincke <marleybrush5@gmail.com>
 pkgname=brewstillery
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="BrewStillery is a brewer's, vintner's, and distiller's calculator. It has a multitude of great functions, such as calculating ABV, determining carbonation, and total sparge water needed."
 url="https://monkeylog.in"
