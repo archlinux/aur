@@ -1,6 +1,6 @@
-From bb4a8ad27a054694eca6c9735661820cf8d043e0 Mon Sep 17 00:00:00 2001
+From 83b36ebe1038ea951308093d6bd3e2c4d42960d7 Mon Sep 17 00:00:00 2001
 From: Kevin Slagle <kjslag@gmail.com>
-Date: Sat, 31 Mar 2018 14:15:38 -0400
+Date: Sat, 31 Mar 2018 18:27:27 -0400
 Subject: [PATCH 3/3] Do not build the main poppler library
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH 3/3] Do not build the main poppler library
  1 file changed, 18 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f181fdec..dff4dc9f 100644
+index eecd41fb..c300e69f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -537,24 +537,6 @@ if(TIFF_FOUND)
+@@ -476,24 +476,6 @@ if(TIFF_FOUND)
    set(poppler_LIBS ${poppler_LIBS} ${TIFF_LIBRARIES})
  endif()
  
@@ -22,7 +22,7 @@ index f181fdec..dff4dc9f 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 72.0.0 SOVERSION 72)
+-set_target_properties(poppler PROPERTIES VERSION 74.0.0 SOVERSION 74)
 -if(MINGW)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")

@@ -1,6 +1,6 @@
 pkgbase = poppler-qt5-cairo
 	pkgdesc = Poppler Qt5 bindings, with patches to use the Cairo backend instead of Splash
-	pkgver = 0.61.1
+	pkgver = 0.63.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = poppler-qt5-cairo
 	makedepends = pkgconfig
 	depends = qt5-base
 	depends = cairo
-	depends = poppler>=0.61.1
-	provides = poppler-qt5=0.61.1
+	depends = poppler>=0.63.0
+	provides = poppler-qt5=0.63.0
 	conflicts = poppler-qt5
-	source = http://poppler.freedesktop.org/poppler-0.61.1.tar.xz
+	source = http://poppler.freedesktop.org/poppler-0.63.0.tar.xz
 	source = 0001-Cairo-backend-added-to-Qt5-wrapper.patch
 	source = 0002-Setting-default-Qt5-backend-to-Cairo.patch
 	source = 0003-Do-not-build-the-main-poppler-library.patch
-	md5sums = 2d3dcea88d6a814317fac74d2a16c3cd
-	md5sums = c8516ded842a9dfb828ba30365b5b86c
-	md5sums = 9b51024391e2dbd06a89881bab1c855b
-	md5sums = af8a453d358e22cb950be15936f3c86f
+	md5sums = 66a54da4896b1408611699feda5c1821
+	md5sums = 0879e52d77ac583c8efd9f724f4756fa
+	md5sums = f51b0d3f1115d9393dadd5474c32b39f
+	md5sums = d195c70fafbabd334b104bccf6f52a43
 
 pkgname = poppler-qt5-cairo
 

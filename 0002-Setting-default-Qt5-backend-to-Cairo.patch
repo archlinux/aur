@@ -1,6 +1,6 @@
-From e9918b20d84716799866535c1bf3d6df5db904de Mon Sep 17 00:00:00 2001
+From 72639d30f175b01ca22548c67ec4098163bf34f0 Mon Sep 17 00:00:00 2001
 From: Kevin Slagle <kjslag@gmail.com>
-Date: Sat, 31 Mar 2018 14:14:18 -0400
+Date: Sat, 31 Mar 2018 18:27:25 -0400
 Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/qt5/src/poppler-private.cc b/qt5/src/poppler-private.cc
-index 23fb8466..451c7f7b 100644
+index e3a540ab..6fcccf29 100644
 --- a/qt5/src/poppler-private.cc
 +++ b/qt5/src/poppler-private.cc
 @@ -243,7 +243,7 @@ namespace Debug {
@@ -19,7 +19,7 @@ index 23fb8466..451c7f7b 100644
 +        m_backend = Document::CairoBackend;
          paperColor = Qt::white;
          m_hints = 0;
-         m_optContentModel = 0;
+         m_optContentModel = nullptr;
 -- 
 2.16.2
 

@@ -14,7 +14,7 @@
 # https://github.com/giddie/poppler-qt4-cairo-backend
 
 pkgname=poppler-qt5-cairo
-pkgver=0.61.1
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="Poppler Qt5 bindings, with patches to use the Cairo backend instead of Splash"
 license=('GPL')
@@ -28,10 +28,10 @@ source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         0001-Cairo-backend-added-to-Qt5-wrapper.patch
         0002-Setting-default-Qt5-backend-to-Cairo.patch
         0003-Do-not-build-the-main-poppler-library.patch)
-md5sums=('2d3dcea88d6a814317fac74d2a16c3cd'
-         'c8516ded842a9dfb828ba30365b5b86c'
-         '9b51024391e2dbd06a89881bab1c855b'
-         'af8a453d358e22cb950be15936f3c86f')
+md5sums=('66a54da4896b1408611699feda5c1821'
+         '0879e52d77ac583c8efd9f724f4756fa'
+         'f51b0d3f1115d9393dadd5474c32b39f'
+         'd195c70fafbabd334b104bccf6f52a43')
 
 prepare() {
   mkdir build
@@ -52,7 +52,7 @@ build() {
     -DENABLE_UTILS=OFF \
     -DENABLE_CPP=OFF \
     -DENABLE_GLIB=OFF \
-    -DENABLE_QT4=OFF
+    -DBUILD_QT5_TESTS=OFF
   make poppler-qt5
 }
 
