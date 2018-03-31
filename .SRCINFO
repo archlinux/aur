@@ -1,16 +1,17 @@
 pkgbase = xlayoutdisplay
 	pkgdesc = Detects and arranges linux display outputs, using XRandR for detection and xrandr for arrangement.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/alex-courtis/xlayoutdisplay
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
+	makedepends = boost
 	depends = xorg-xrandr
 	depends = xorg-xrdb
 	depends = libxcursor
-	depends = boost
+	depends = boost-libs
 	source = https://github.com/alex-courtis/xlayoutdisplay/archive/v1.0.1.tar.gz
 	sha256sums = 150d410d30281e753b4342fa8f26f34cbfdfa070241388403004ddb988c1cc42
 
