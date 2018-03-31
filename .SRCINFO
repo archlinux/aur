@@ -11,7 +11,7 @@ pkgbase = qtwebflix-git
 	depends = qt5-webengine-widevine
 	optdepends = pepper-flash: Needed for some streaming services
 	source = git+https://github.com/gort818/qtwebflix.git
-	source = netflix.desktop
+	source = qtwebflix.desktop
 	sha256sums = SKIP
 	sha256sums = 571b202d64ba9a0e1144e6abdabc7288a843985624da01cc03ff43020bee521b
 

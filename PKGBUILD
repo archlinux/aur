@@ -13,7 +13,7 @@ depends=('xdg-utils' 'qt5-webengine-widevine')
 optdepends=('pepper-flash: Needed for some streaming services')
 makedepends=('git')
 source=("git+${url}.git"
-        "netflix.desktop")
+        "${_gitname}.desktop")
 sha256sums=('SKIP'
             '571b202d64ba9a0e1144e6abdabc7288a843985624da01cc03ff43020bee521b')
 
@@ -34,8 +34,8 @@ build() {
 
 package() {
    
-   install -Dm755 ${srcdir}/${_gitname}/qtwebflix ${pkgdir}/usr/bin/qtwebflix
+   install -Dm755 ${srcdir}/${_gitname}/${_gitname} ${pkgdir}/usr/bin/${_gitname}
    install -Dm644 ${srcdir}/${_gitname}/data/netflix-desktop.svg ${pkgdir}/usr/share/pixmaps/netflix-desktop.svg
-   install -Dm755 ${srcdir}/netflix.desktop ${pkgdir}/usr/share/applications/netflix.desktop
+   install -Dm755 ${srcdir}/${_gitname}.desktop ${pkgdir}/usr/share/applications/${_gitname}.desktop
 
 }
