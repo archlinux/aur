@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r20.d62dbcc
+pkgver=r23.baf3c1c
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -12,10 +12,11 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk')
-makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'libxml2' 'git')
+makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'libxml2' 'wayland' 'git')
 source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-dev'
 	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master'
 	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
 	'amdPalSettings.cfg'
 	)
@@ -23,8 +24,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '5f798911bf1cbbe5a83f5ae4886107ef0d02be5753450753ae2d3fc6f80e7012'
-            )
+            'SKIP'
+            '5f798911bf1cbbe5a83f5ae4886107ef0d02be5753450753ae2d3fc6f80e7012')
             
 pkgver() {
   XGL_VER=$(cd xgl; printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
@@ -40,7 +41,9 @@ build() {
   msg "building xgl..."
   cd xgl
   cmake -H. -Bbuilds/Release64 \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_WAYLAND_SUPPORT=On \
+    -DBUILD_WSA=On
 
   cd builds/Release64
   make
