@@ -1,7 +1,7 @@
 pkgbase = uvesafb-dkms
-	pkgdesc = uvesafb dkms driver
+	pkgdesc = uvesafb dkms driver and userspace helper for uvesafb that runs x86 code in an emulated environment
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jghodd/uvesafb-dkms
 	arch = i686
 	arch = x86_64
@@ -9,12 +9,21 @@ pkgbase = uvesafb-dkms
 	makedepends = git
 	depends = glibc
 	depends = dkms>=2.2.0.3+git151023-5
-	optdepends = v86d
+	provides = v86d=0.1.10
+	replaces = v86d
 	options = !makeflags
 	source = git://github.com/jghodd/uvesafb-dkms.git#tag=uvesafb-dkms-1.0.0
+	source = git://github.com/mjanusz/v86d.git#tag=v86d-0.1.10
+	source = v86d_install
+	source = v86d_hook
 	source = dkms.conf
+	source = modprobe.uvesafb
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 66ab32602ab29cc5635eaac7f3e42283
+	md5sums = 5f75b8bc4a7ddf595014591e5db263cb
 	md5sums = 39fa4b6d261d4fb44d21f45dc8a5390c
+	md5sums = 2d7cc8dc6a41916a13869212d0191147
 
 pkgname = uvesafb-dkms
 
