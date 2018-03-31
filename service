@@ -1,0 +1,11 @@
+[Unit]
+Description=Shubh command scheduler
+
+[Service]
+ExecStart=/usr/bin/shubhcrond -n
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
