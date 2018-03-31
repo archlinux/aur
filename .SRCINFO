@@ -1,14 +1,14 @@
 pkgbase = python2-qrtools
 	pkgdesc = A high level library for reading and generating QR codes.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/qr-tools
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = python2
 	depends = python2-pillow
-	depends = zbar
+	depends = python2-zbar
 	depends = qrencode
 	provides = python2-qrtools
 	source = https://launchpad.net/~qr-tools-developers/+archive/ubuntu/daily/+files/python-qrtools_1.4-0~23~ubuntu16.10.1.tar.gz
