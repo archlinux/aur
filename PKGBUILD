@@ -2,10 +2,10 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r17.0.gb5b9e9c
+pkgver=r18.0.ga511db5
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?p=1688477'
 license=('CCPL' 'MIT' 'LGPL')
 depends=('qt5-base'
@@ -43,10 +43,7 @@ package() {
   install -Dm644 vsedit.desktop "${pkgdir}/usr/share/applications/vsedit.desktop"
   install -Dm644 vsedit_server_watch.desktop "${pkgdir}/usr/share/applications/vsedit_server_watch.desktop"
 
-  [ "${CARCH}" = "i686" ] && _arch=32
-  [ "${CARCH}" = "x86_64" ] && _arch=64
-
-  cd "vapoursynth-editor/build/release-${_arch}bit-gcc"
+  cd "vapoursynth-editor/build/release-64bit-gcc"
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
   install -Dm755 vsedit-job-server "${pkgdir}/usr/bin/vsedit-job-server"
   install -Dm755 vsedit-job-server-watcher "${pkgdir}/usr/bin/vsedit-job-server-watcher"
