@@ -21,6 +21,8 @@ package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps PyQt5
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --no-deps termcolor
 
+    python -O -m compileall "${pkgdir}/termcolor"
+
     pyinstaller -F ../openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
