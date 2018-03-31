@@ -1,21 +1,21 @@
 # Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
 
 pkgname=python-forecastio
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A thin Python Wrapper for the Dark Sky (formerly Forecast.io) weather API"
 url="http://zeevgilovitz.com/python-forecast.io"
 license=('BSD')
 arch=('any')
 depends=(
 'python'
-'python-requests'
+'python-requests>=1.6'
 'python-responses')
 makedepends=('python-setuptools')
 provides=('python-forecastio')
 conflicts=('python-forecastio')
-source=(https://pypi.python.org/packages/c4/ee/8db21a142548e4b67950068bd78034b67b04900efa79c44c3c2241a3450c/python-forecastio-${pkgver}.tar.gz)
-sha512sums=('389e904921e5cbe62d05f9fd837cc8df0414b187858c4e13487d77b716935092c842d941a49a40b1dd6a91dc795f6d667164964f28c4f35b623be107ea08a409')
+source=(python-forecastio-${pkgver}.tar.gz::https://pypi.python.org/packages/0e/57/e837a44254b7fdf99f3e98ef16ddcc4b429c5b148e8ed4fab4b46e7756ea/python-forecastio-${pkgver}.tar.gz)
+sha512sums=('2a8599e1edd2787403042c1a001d214908c9621079ab41c74b543f708a2c52bc24d7132bbcd876aa9303bd1d5f176893034386ff9114c677f7f03de5740603de')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
