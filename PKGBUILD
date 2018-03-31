@@ -3,12 +3,12 @@
 
 pkgname=v86d
 pkgver=0.1.10
-pkgrel=7
+pkgrel=8
 pkgdesc="userspace helper for uvesafb that runs x86 code in an emulated environment"
 arch=('i686' 'x86_64')
 url="https://github.com/mjanusz/v86d"
 license=('GPL2')
-depends=('glibc')
+depends=('glibc' 'uvesafb-dkms')
 makedepends=('git')
 options=('!makeflags')
 source=("git://github.com/mjanusz/v86d.git#tag=$pkgname-$pkgver"
