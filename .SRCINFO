@@ -1,6 +1,6 @@
 pkgbase = teamviewer-beta
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings - beta version
-	pkgver = 13.0.9865
+	pkgver = 13.1.3026
 	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer.install
@@ -17,10 +17,10 @@ pkgbase = teamviewer-beta
 	provides = teamviewer
 	conflicts = teamviewer
 	options = !strip
-	source_i686 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.0.9865_i386.deb
-	sha256sums_i686 = 058bdae8b40c356cc92cd6cb96cb0e9bfb5a6c16e1c0ee521a1efeb275562b37
-	source_x86_64 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.0.9865_amd64.deb
-	sha256sums_x86_64 = d3895d2dfab8fb951ee0d2c362647bbea62cef2be0241ae489901b3c71132779
+	source_i686 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.3026_i386.deb
+	sha256sums_i686 = 46f1b697a113f304ff8e5792f9893319c0de6b802355e7e5fdf7dba6f4b415c8
+	source_x86_64 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.3026_amd64.deb
+	sha256sums_x86_64 = 33eacc8ebeaf34aea5fa932e3d80553f358629ad454740f05aafba267b50ea93
 
 pkgname = teamviewer-beta
 
