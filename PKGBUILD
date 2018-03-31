@@ -149,8 +149,8 @@ package_nvidia-libgl-full-beta-all() {
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
-  ln -s /usr/lib/nvidia/libGLESv2_CM.so.2.1.0 "$pkgdir"/usr/lib/libGLESv2_CM.so.2
-  ln -s libGLESv2_CM.so.2 "$pkgdir"/usr/lib/libGLESv2_CM.so
+  ln -s /usr/lib/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib/libGLESv2.so.2
+  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
