@@ -9,7 +9,7 @@
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
 pkgver=52.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
