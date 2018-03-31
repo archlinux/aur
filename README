@@ -4,7 +4,7 @@
            | |\  | (_) | | | (_| | \ V / |  __/| |\  |
            |_| \_|\___/|_|  \__,_|  \_/  |_|   |_| \_|
 
-This package installs NordVPN's OpenVPN configuration files.
+This package installs NordVPN's OpenVPN configuration files. [1]
 Additionally it allows the storage of your username and optionally
 your password for automatic login. All OpenVPN configuration files are
 located in /etc/openvpn/client.
@@ -16,11 +16,11 @@ root as well. Optionally, put your password as the second line of
 password will be stored in plain text!
 
 Although NordVPN does offer protection against IPv6 leakage,
-you should consider disabling it. [1,2] Ensure you are using NordVPN's
-DNS servers. [3]
+you should consider disabling it. [2,3] Ensure you are using NordVPN's
+DNS servers. [4]
 
-To run do pass the name of the configuration file to the
-"openvpn-client" systemd unit [4]:
+To connect, pass the name of the configuration file to the
+"openvpn-client" systemd unit [5]:
 
     # systemctl start openvpn-client@config-name
 
@@ -29,8 +29,8 @@ for us842.nordvpn.com.udp.conf do:
 
     # systemctl start openvpn-client@us842.nordvpn.com.udp
 
-See /etc/openvpn/client for a list of files. To get a recommended
-server visit [5]. To test your setup visit [6] and [7].
+See /etc/openvpn/client for the list of files. To get a recommended
+server visit [6]. To test your setup visit [7] and [8].
 
 NordVPN does not version their files, but the pkgver() function in the
 PKGBUILD will automatically get the last date the file was modified
@@ -39,10 +39,11 @@ package is out of date, do not flag the package. Simply run the
 PKGBUILD script again. You may need to update the checksums in the
 PKGBUILD when updating.
 
-1. https://nanorep.nordvpn.com/Connectivity/Troubleshooting/1047408942/How-to-avoid-an-IPv6-Leak-with-NordVPN.htm
-2. https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
-3. https://support.nordvpn.com/#/Other/1047409702/What-are-your-DNS-server-addresses.htm
-4. https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN
-5. https://nordvpn.com/servers/#recommended
-6. https://nordvpn.com/features/dns-leak-test/
-7. https://ipleak.net 
+1. https://nordvpn.com/tutorials/linux/openvpn/
+2. https://nanorep.nordvpn.com/Connectivity/Troubleshooting/1047408942/How-to-avoid-an-IPv6-Leak-with-NordVPN.htm
+3. https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
+4. https://support.nordvpn.com/#/Other/1047409702/What-are-your-DNS-server-addresses.htm
+5. https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN
+6. https://nordvpn.com/servers/#recommended
+7. https://nordvpn.com/features/dns-leak-test/
+8. https://ipleak.net 
