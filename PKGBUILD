@@ -7,7 +7,7 @@ _name="qr-tools"
 _ubuntur="0~29~ubuntu17.10.1"
 pkgname="qtqr"
 pkgver="1.4"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A Graphical interface QR Code generator and decoder."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=("${_python}" "${_python}-qrtools" "${_python}-pyqt4")
 provides=("${pkgname}")
 source=("https://launchpad.net/~${_name}-developers/+archive/ubuntu/daily/+files/${pkgname}_${pkgver}-${_ubuntur}.tar.gz")
-sha256sums=('b1d3ba45594ddacd96c2da906b8ed90a0f0f50cc0348b9d2435ff11c93eebae1')
+sha256sums=('8f4bb2972648922841867b0f510994800f45c0ac2facc4bf531b82204146b08a')
 
 _qtqr_desktop="[Desktop Entry]
 Name=QtQR
