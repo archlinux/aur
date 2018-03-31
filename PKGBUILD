@@ -3,14 +3,14 @@
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
 pkgver=1.90.0.r1421.7e5b184
-pkgrel=6
+pkgrel=7
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("libarchive" "eigen3" "glew" "hdf5" "vtk" "spglib" "qt5-webview" "molequeue" "python" "pybind11")
-# gdal is for proj, which is optional for VTK but required here?
-makedepends=("git" "cmake" "gtest" "gdal")
+depends=("libarchive" "glew" "hdf5" "vtk" "spglib" "qt5-webview" "qt5-x11extras" "molequeue" "python" "pybind11")
+# gdal is for proj, which is optional for VTK but required here? same for openmpi
+makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git://github.com/OpenChemistry/${_pkgname}.git")
