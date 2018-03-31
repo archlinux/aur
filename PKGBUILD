@@ -14,10 +14,10 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.442
+pkgver=1.1.444
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr')
@@ -28,17 +28,11 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-md5sums_i686=('090fcb1fec90e3d621bc89e113c8dc28'
-              '795a3ca3f2048c4dc32d25560e191c35'
-              'eca697b2b8efbed3d2241f6b0c8c15e4')
-md5sums_x86_64=('2c0805a6a8f12b06c7e6b343692288fd'
+md5sums_x86_64=('1fe5e1d18adcb2d744a7364ea0ecf360'
                 '84e61f5eda991b978fa168d6762f7990'
                 '391ba54997d6faddbfe41a185a823ee4')
 
-source_i686=("https://download1.rstudio.org/rstudio-${pkgver}-i386.deb"
-"http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_i386.deb"
-"http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_i386.deb")
-source_x86_64=("https://download1.rstudio.org/rstudio-${pkgver}-amd64.deb"
+source_x86_64=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-${pkgver}-amd64.deb"
 "http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_amd64.deb"
 "http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_amd64.deb")
 

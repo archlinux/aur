@@ -1,10 +1,9 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 1.1.442
+	pkgver = 1.1.444
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-desktop-preview-bin.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = r
@@ -15,21 +14,15 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = libxrandr
 	optdepends = pandoc: markdown support
 	optdepends = pandoc-citeproc: markdown support
-	provides = rstudio-desktop=1.1.442
+	provides = rstudio-desktop=1.1.444
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_i686 = https://download1.rstudio.org/rstudio-1.1.442-i386.deb
-	source_i686 = http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_i386.deb
-	source_i686 = http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_i386.deb
-	md5sums_i686 = 090fcb1fec90e3d621bc89e113c8dc28
-	md5sums_i686 = 795a3ca3f2048c4dc32d25560e191c35
-	md5sums_i686 = eca697b2b8efbed3d2241f6b0c8c15e4
-	source_x86_64 = https://download1.rstudio.org/rstudio-1.1.442-amd64.deb
+	source_x86_64 = https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-1.1.444-amd64.deb
 	source_x86_64 = http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_amd64.deb
 	source_x86_64 = http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_amd64.deb
-	md5sums_x86_64 = 2c0805a6a8f12b06c7e6b343692288fd
+	md5sums_x86_64 = 1fe5e1d18adcb2d744a7364ea0ecf360
 	md5sums_x86_64 = 84e61f5eda991b978fa168d6762f7990
 	md5sums_x86_64 = 391ba54997d6faddbfe41a185a823ee4
 
