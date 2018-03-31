@@ -1,0 +1,17 @@
+pkgbase = binfmt-support-git
+	pkgdesc = register interpreters for various binary formats
+	pkgver = r229.5d6febd
+	pkgrel = 1
+	url = http://packages.debian.org/en/sid/binfmt-support
+	arch = any
+	license = GPL
+	depends = glibc
+	depends = libpipeline
+	provides = $_pkgname
+	source = git://git.savannah.gnu.org/binfmt-support.git
+	source = binfmts.service
+	md5sums = SKIP
+	md5sums = 0000a524a3d97583563a0d1d6f6b1ecb
+
+pkgname = binfmt-support-git
+
