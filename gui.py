@@ -7,10 +7,7 @@ import sys
 import subprocess
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-if os.name == 'nt':
-    from PyQt5.QtWebEngineWidgets import QWebEngineView
-else:
-    from PyQt5.QtWebKitWidgets import QWebView
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 
 from core import OpenLeecher
