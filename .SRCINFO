@@ -13,7 +13,7 @@ pkgbase = xlayoutdisplay
 	depends = libxcursor
 	depends = boost-libs
 	source = https://github.com/alex-courtis/xlayoutdisplay/archive/v1.0.2.tar.gz
-	sha256sums = 150d410d30281e753b4342fa8f26f34cbfdfa070241388403004ddb988c1cc42
+	sha256sums = 5d753f1b0f626daf9e8af4c4200a81ddadb6930a98270ccf3e284988102814f6
 
 pkgname = xlayoutdisplay
 

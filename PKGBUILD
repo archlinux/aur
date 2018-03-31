@@ -9,7 +9,7 @@ license=('Apache')
 depends=('xorg-xrandr' 'xorg-xrdb' 'libxcursor' 'boost-libs')
 makedepends=('git' 'cmake' 'boost')
 source=("https://github.com/alex-courtis/xlayoutdisplay/archive/v$pkgver.tar.gz")
-sha256sums=('150d410d30281e753b4342fa8f26f34cbfdfa070241388403004ddb988c1cc42')
+sha256sums=('5d753f1b0f626daf9e8af4c4200a81ddadb6930a98270ccf3e284988102814f6')
 
 build() {
 	cd "$pkgname-$pkgver"
