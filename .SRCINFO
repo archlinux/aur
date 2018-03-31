@@ -1,9 +1,13 @@
 pkgbase = opensnap
-pkgdesc = Snap Feature For OpenBox
-pkgver = 0.1
-pkgrel = 1
-url = https://github.com/lawl/opensnap
-arch = any
-depends = wmctl
-source = https://github.com/lawl/opensnap.git
+	pkgdesc = Aero Snap Funcionality In Openbox
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lawl/opensnap
+	arch = i686
+	arch = x86_64
+	depends = wmctrl
+	source = git+https://github.com/lawl/opensnap.git
+	sha256sums = SKIP
+
 pkgname = opensnap
+
