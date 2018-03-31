@@ -17,7 +17,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ##############################################
 pkgname=chromium-dev
 pkgver=67.0.3381.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
 url='http://www.chromium.org'
@@ -32,8 +32,6 @@ depends=(
          're2'
          'snappy'
          'xdg-utils'
-         'libcups'
-         'libxml2'
 #          'harfbuzz-icu'
 #          'protobuf'
 #          'libevent'
@@ -47,21 +45,16 @@ depends=(
          'opus'
          )
 makedepends=(
-             'libexif'
              'gperf'
              'ninja'
              'python2-beautifulsoup4'
              'python2-html5lib'
              'python2-simplejson'
-             'python2-six'
-             'subversion'
+             'python'
              'yasm'
              'git'
              'hwids'
              'nodejs'
-             'wget'
-             'atk'
-             'at-spi2-atk'
              'ncurses5-compat-libs'
              'lld'
              )
@@ -94,6 +87,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
         'fix_gn.diff.base64::https://chromium-review.googlesource.com/changes/982250/revisions/2/patch?download'
+        'fix_nvidia_problems_with_sandbox.diff.base64::https://chromium-review.googlesource.com/changes/965462/revisions/5/patch?download'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -111,6 +105,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
 #             'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
             '1965356bb6e7ca5fb4be30b3034325b4eb8d91bcbc07d7c8c0c6e2591f05fbe9'
+            '0925ba584ca17ef8f6d378e58f021707605fa611db3340f2be3e533bee8d7aed'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             )
 install=chromium-dev.install
@@ -286,9 +281,8 @@ _keeplibs=(
 _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
         "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
-        'is_clang=true'
         'is_debug=false'
-        'is_cfi=true'
+        'is_official_build=true'
 #         'enable_widevine=true'
         'enable_hangout_services_extension=true'
         "ffmpeg_branding=\"ChromeOS\""
@@ -303,9 +297,7 @@ _flags=(
         "use_gnome_keyring=false"
         'link_pulseaudio=true'
         'use_sysroot=false'
-        'use_gold=false'
         'linux_use_bundled_binutils=false'
-        'fatal_linker_warnings=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
         'enable_nacl_nonsfi=true'
@@ -354,8 +346,15 @@ _keeplibs+=(
             'third_party/icu'
             )
 
+# Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+CFLAGS+='   -Wno-builtin-macro-redefined'
+CXXFLAGS+=' -Wno-builtin-macro-redefined'
+CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
 # Conditionals.
 if check_option strip y; then
+  _flags+=('symbol_level=0')
+  # Mimic exclude_unwind_tables=true
   CFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
   CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
   CPPFLAGS+=' -DNO_UNWIND_TABLES'
@@ -370,12 +369,6 @@ fi
 ################################################
 
 prepare() {
-
-  # Set Python2 path.
-  mkdir -p python-path
-  ln -sf /usr/bin/python2 "${srcdir}/python-path/python"
-  export PATH="${srcdir}/python-path:$PATH"
-
   cd "${srcdir}/chromium-${pkgver}"
 
   # Use chromium-dev as branch name.
@@ -407,7 +400,23 @@ prepare() {
     error "Unable to fetch Chrome build hash."
     return 1
   fi
-  echo "LASTCHANGE=$_chrome_build_hash-" > build/util/LASTCHANGE
+  echo "LASTCHANGE=${_chrome_build_hash}-" > build/util/LASTCHANGE
+
+  # Allow building against system libraries in official builds
+  sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
+    -i tools/generate_shim_headers/generate_shim_headers.py
+
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' \
+    -i build/download_nacl_toolchains.py \
+    -i build/linux/unbundle/remove_bundled_libraries.py \
+    -i build/linux/unbundle/replace_gn_files.py \
+    -i tools/clang/scripts/update.py \
+    -i tools/gn/bootstrap/bootstrap.py \
+    -i third_party/dom_distiller_js/protoc_plugins/*.py \
+    -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
+    -i third_party/ffmpeg/chromium/scripts/generate_gn.py
+  export PNACLPYTHON=/usr/bin/python2
 
   # Setup vulkan
   export VULKAN_SDK="/usr"
@@ -417,9 +426,11 @@ prepare() {
   #base64 -d "${srcdir}/chromium-intel-vaapi_r17.diff.base64" | patch -p1 -i -
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
+  #https://crbug.com/817400
+  base64 -d "${srcdir}/fix_nvidia_problems_with_sandbox.diff.base64" | patch -p1 -i -
 
   # https://crbug.com/skia/6663#c10
-  patch -Np4 -i "${srcdir}/chromium-skia-harmony.patch"
+  patch -p4 -i "${srcdir}/chromium-skia-harmony.patch"
 
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
@@ -431,31 +442,27 @@ prepare() {
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save space."
-  python2 build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
-
-  msg2 "Make sure use Python2"
-  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
+  build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
 
   msg2 "Changing bundle libraries to system ones."
-  python2 build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
+  build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
 
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
 
   msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"
-  python2 build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+  build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+
+  msg2 "Download external build components from google"
+  tools/clang/scripts/update.py --without-android
 }
 
 build() {
-
   msg2 "Build the Launcher"
   make -C chromium-launcher \
           CHROMIUM_SUFFIX="-dev"
 
   cd "chromium-${pkgver}"
-
-  msg2 "Download external build components from google"
-  python2 tools/clang/scripts/update.py --without-android #--force-local-build --use-system-cmake --if-needed --gcc-toolchain=/usr --skip-checkout
 
   msg2 "Setup compiler"
 
@@ -481,16 +488,16 @@ build() {
   #echo ${_flags[@]}
 
   msg2 "Configure bundled ffmpeg"
-  pushd third_party/ffmpeg > /dev/null
+  pushd third_party/ffmpeg &> /dev/null
   # use system opus
   sed -e "s|CHROMIUM_ROOT_DIR, 'third_party/opus/src/include'|'/usr/include/opus'|g" -i chromium/scripts/build_ffmpeg.py
   chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS
   chromium/scripts/copy_config.sh
   chromium/scripts/generate_gn.py
-  popd > /dev/null
+  popd &> /dev/null
 
   msg2 "Build GN"
-  python2 tools/gn/bootstrap/bootstrap.py -v -s --no-clean
+  tools/gn/bootstrap/bootstrap.py -v -s --no-clean
 
   msg2 "Starting building Chromium..."
   LC_ALL=C out/Release/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
