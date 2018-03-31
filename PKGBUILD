@@ -13,7 +13,7 @@
 pkgname=plex-media-server-plexpass
 pkgver=1.12.1.4885
 _pkgsum=1046ba85f
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
@@ -36,7 +36,7 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}
 sha256sums=('88779d4d04e44de05428754481c2b67a0e2bf47795dce875819bf7308de49025'
             '348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf'
             'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
-            'e9bb0a54944f892ab2a747ae4d387f4ab023dda6c524533fe4bf902483fb599b'
+            'e3c278315bf325d9bddbedbbdb5680791acdc72ce3d4972935ef27b491518ce5'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 sha256sums_armv7h=('6069e829fa83c0f8e3014f3612a9976bc9bd8b23fc7695a0f788f221f7bc6e0c')
 sha256sums_i686=('f6b05abc940a5d82bf92476e74c0bb6871101656e73633fffa4c94370088cf31')
