@@ -1,0 +1,13 @@
+pkgbase = openleecher
+	pkgdesc = Random internet browsing tool.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://openleecher.tk/
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyqt5-common
+	options = !emptydirs
+
+pkgname = openleecher
+

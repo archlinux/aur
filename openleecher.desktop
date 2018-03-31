@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenLeecher
+Comment=Random internet browsing tool.
+Path=/usr/bin/
+Exec=openleecher --gui
+Icon=/usr/share/icons/openleecher.png
+Terminal=false
+Categories=Network;
