@@ -5,7 +5,7 @@
 
 _reponame=passwordmanager
 pkgname=passwordmanager
-pkgver=2.1.4
+pkgver=3.1.5
 pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
@@ -14,7 +14,7 @@ depends=('qt5-base' 'qtutilities' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'd
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('9f3c23372670816622208a3c9b4bb529b20a478586cb658b4b65a70e5ee65e24')
+sha256sums=('5b9a6c9ab2e34a146a728867591189721622d89dfec32c58a6416d21f6b42510')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
