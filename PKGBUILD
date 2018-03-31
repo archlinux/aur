@@ -1,5 +1,6 @@
 # Maintainer: Alexey Stukalov <astukalov@gmail.com>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
+
 pkgname=smartgit
 pkgver=17.1.6
 pkgrel=1
