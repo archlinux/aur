@@ -13,13 +13,12 @@ md5sums=('5ba860c4bb45ec9157f85ff2534d318c')
 
 prepare() {
     cd $srcdir
-    tar xvf $pkgname-$pkgver-$CARCH.tar.gz
+    bsdtar xvf $pkgname-$pkgver-$CARCH.tar.gz
 }
 
 package() {
 	mkdir -p $pkgdir/opt/$pkgname
 	mkdir -p $pkgdir/usr/bin
-	cp -r "$srcdir/$pkgname/" "$pkgdir/opt/$pkgname/"
-   	sudo rm /usr/bin/yadshot
-	sudo ln -s /opt/$pkgname/yadshot.sh /usr/bin/yadshot
+	cp -r "$srcdir/$pkgname/" "$pkgdir/opt/"
+   	ln -s "/opt/$pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
