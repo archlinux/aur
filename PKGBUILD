@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="wp-desktop"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
@@ -14,8 +14,8 @@ provides=("${pkgname}")
 source_i686=("wp-desktop-linux-i686-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 source_x86_64=("wp-desktop-linux-x64-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 
-sha256sums_i686=('b98c1da0f3a0892882149d64c9f8b31b7426ff0dfee96d0f193a2715fd55e616')
-sha256sums_x86_64=('b98c1da0f3a0892882149d64c9f8b31b7426ff0dfee96d0f193a2715fd55e616')
+sha256sums_i686=('91c36b23c01a7e122ae8db855ca0b892aed4a2bac9edc40ed74ea30650f17350')
+sha256sums_x86_64=('91c36b23c01a7e122ae8db855ca0b892aed4a2bac9edc40ed74ea30650f17350')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
@@ -47,7 +47,7 @@ package() {
     install -m 644 WordPress.png ${pkgdir}/usr/share/pixmaps/wpcom.png
     install -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     mv WordPress.com wpcom
-    ln -s /usr/share/wpcom/wpcom ${pkgdir}/usr/bin/wpcom 
+    ln -s /usr/share/wpcom/wpcom ${pkgdir}/usr/bin/wpcom
 }
 
 # vim:set ts=4 sw=2 ft=sh et:
