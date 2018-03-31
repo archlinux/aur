@@ -4,11 +4,11 @@
 
 pkgname=python-pysdl2
 pkgver=0.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Python ctypes wrapper around SDL2"
 arch=("any")
 url="https://github.com/marcusva/${pkgname/python-py/py-}"
-license=("https://github.com/marcusva/${pkgname/python-py/py-}/blob/master/doc/copying.rst")
+license=("custom:CC0")
 depends=("python" "sdl2")
 optdepends=("sdl2_gfx" "sdl2_image" "sdl2_mixer" "sdl2_ttf")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcusva/${pkgname/python-py/py-}/archive/rel_${pkgver//./_}.tar.gz")

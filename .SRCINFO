@@ -1,10 +1,10 @@
 pkgbase = python-pysdl2
 	pkgdesc = Python ctypes wrapper around SDL2
 	pkgver = 0.9.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/marcusva/py-sdl2
 	arch = any
-	license = https://github.com/marcusva/py-sdl2/blob/master/doc/copying.rst
+	license = custom:CC0
 	depends = python
 	depends = sdl2
 	optdepends = sdl2_gfx
