@@ -2,11 +2,11 @@
 
 pkgname=zmeventserver-git
 _pkgname=${pkgname%%-git}
-pkgver=20171227.b6a8eca
+pkgver=20180331.f6e6a78
 pkgrel=1
 pkgdesc='A WSS (Secure Web Sockets) based event notification server that broadcasts new events to any authenticated listeners.'
 arch=(any)
-url='https://github.com/pliablepixels/zmeventserver'
+url='https://github.com/synthead/zmeventserver/tree/support-options-from-cli-and-config-file'
 license=(GPL3)
 depends=(
   perl-crypt-mysql
@@ -14,16 +14,18 @@ depends=(
   perl-json
   perl-lwp-protocol-https
   perl-net-websocket-server
+  perl-config-inifiles
 )
 makedepends=(git)
 source=(
-  git+https://github.com/pliablepixels/zmeventserver.git
+  'git+https://github.com/synthead/zmeventserver.git#branch=support-options-from-cli-and-config-file'
   zmeventserver.service
 )
 sha256sums=(
   SKIP
-  8122983b57e7a7ea86311d832d5c4e613ed470ebfb5ba302b5b267c30a48ddbc
+  24a523f42e0022792db99acdfb27c44f9951e25cd7ddcd92b82abbf60fe4d623
 )
+backup=('etc/zmeventnotification.ini')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -31,15 +33,17 @@ pkgver() {
 }
 
 package() {
+  install -dm 700 -o 33 "$pkgdir/var/lib/zmeventnotification"
+
   install -Dm 755 \
     "$srcdir/zmeventserver/zmeventnotification.pl" \
     "$pkgdir/usr/bin/zmeventnotification.pl"
+
+  install -Dm 644 \
+    "$srcdir/zmeventserver/zmeventnotification.ini" \
+    "$pkgdir/etc/zmeventnotification.ini"
+
   install -Dm 644 \
     "$srcdir/zmeventserver.service" \
     "$pkgdir/usr/lib/systemd/system/zmeventserver.service"
-
-  install -dm 770 -g http "$pkgdir/etc/webapps/zmeventserver"
-  sed -i \
-    's,/etc/\(apache2/ssl\|private\),/etc/webapps/zmeventserver,' \
-    "$pkgdir/usr/bin/zmeventnotification.pl"
 }

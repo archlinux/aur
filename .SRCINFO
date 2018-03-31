@@ -1,8 +1,8 @@
 pkgbase = zmeventserver-git
 	pkgdesc = A WSS (Secure Web Sockets) based event notification server that broadcasts new events to any authenticated listeners.
-	pkgver = 20171227.b6a8eca
+	pkgver = 20180331.f6e6a78
 	pkgrel = 1
-	url = https://github.com/pliablepixels/zmeventserver
+	url = https://github.com/synthead/zmeventserver/tree/support-options-from-cli-and-config-file
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -11,10 +11,12 @@ pkgbase = zmeventserver-git
 	depends = perl-json
 	depends = perl-lwp-protocol-https
 	depends = perl-net-websocket-server
-	source = git+https://github.com/pliablepixels/zmeventserver.git
+	depends = perl-config-inifiles
+	backup = etc/zmeventnotification.ini
+	source = git+https://github.com/synthead/zmeventserver.git#branch=support-options-from-cli-and-config-file
 	source = zmeventserver.service
 	sha256sums = SKIP
-	sha256sums = 8122983b57e7a7ea86311d832d5c4e613ed470ebfb5ba302b5b267c30a48ddbc
+	sha256sums = 24a523f42e0022792db99acdfb27c44f9951e25cd7ddcd92b82abbf60fe4d623
 
 pkgname = zmeventserver-git
 
