@@ -7,7 +7,10 @@ import sys
 import subprocess
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+if os.name == 'nt':
+    from PyQt5.QtWebEngineWidgets import QWebEngineView
+else:
+    from PyQt5.QtWebKitWidgets import QWebView
 
 
 from core import OpenLeecher
@@ -146,7 +149,10 @@ class Ui_MainWindow(object):
         self.Button_Open = QtWidgets.QPushButton(self.groupBox_R)
         self.Button_Open.setObjectName("Button_Open")
         self.Button_Open.setGeometry(5, self.List_Result.y()+self.List_Result.height(), self.groupBox_R.width() - 10, 30)
-        self.Webview_Result = QWebEngineView(self.tab_R)
+        if os.name == 'nt':
+            self.Webview_Result = QWebEngineView(self.tab_R)
+        else:
+            self.Webview_Result = QWebView(self.tab_R)
         self.Webview_Result.setGeometry(QtCore.QRect(self.groupBox_R.width(), 0, self.tab_R.width()-self.groupBox_R.width(), self.tab_R.height() - 4))
         self.Webview_Result.setUrl(QtCore.QUrl("about:blank"))
         self.Webview_Result.setObjectName("Webview_Result")
