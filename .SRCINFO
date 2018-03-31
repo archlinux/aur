@@ -1,0 +1,20 @@
+pkgbase = textosaurus-git
+	pkgdesc = Simple cross-platform text editor based on Qt and Scintilla
+	pkgver = 2018.03.26.r7.g4b3ad25
+	pkgrel = 1
+	url = https://github.com/martinrotter/textosaurus
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	provides = textosaurus
+	conflicts = textosaurus
+	conflicts = textosaurus-git
+	source = textosaurus-git::git+https://github.com/martinrotter/textosaurus.git
+	md5sums = SKIP
+
+pkgname = textosaurus-git
+
