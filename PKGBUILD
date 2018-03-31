@@ -10,7 +10,7 @@
 pkgname="bunq-desktop-src"
 pkgver="0.8.1"
 pkgrel=1
-pkgdesk="A desktop implementation for the bunq API"
+pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
 
 arch=(
