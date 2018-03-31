@@ -1,10 +1,11 @@
-# Maintainer: kfgz <kfgz at interia pl>
+# Maintainer: nutcase84 <nutcase84 at protronmail dot com>
+# Contributor: kfgz <kfgz at interia pl>
 # Contributor: Hubert CzobodziЕ„ski <hcz at onet dot eu>
 # Contributor: Nathan Owe <ndowens dot aur at gmail dot com>
 
 pkgname=ddccontrol-git
 _pkgname=ddccontrol
-pkgver=20140105.r9d89d8c
+pkgver=20180331.7a7cdb4
 pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol."
 arch=('i686' 'x86_64')
@@ -39,7 +40,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make 
 }
 
