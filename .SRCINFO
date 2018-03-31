@@ -7,6 +7,7 @@ pkgbase = lxc-templates
 	license = GPL
 	depends = lxc
 	depends = bash
+	options = !emptydirs
 	source = https://github.com/lxc/lxc-templates/archive/lxc-templates-3.0.0.tar.gz
 	md5sums = 74970133f59325df1414df1e189f9246
 

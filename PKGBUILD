@@ -9,6 +9,7 @@ license=('GPL')
 depends=('lxc' 'bash')
 source=("https://github.com/lxc/lxc-templates/archive/$pkgname-$pkgver.tar.gz")
 md5sums=('74970133f59325df1414df1e189f9246')
+options=(!emptydirs)
 
 prepare() {
 	cd "$pkgname-$pkgname-$pkgver"
