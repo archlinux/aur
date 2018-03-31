@@ -7,6 +7,7 @@ pkgbase = openleecher
 	license = MIT
 	depends = python
 	depends = pyqt5-common
+	depends = python-pip
 	options = !emptydirs
 
 pkgname = openleecher

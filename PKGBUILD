@@ -8,6 +8,7 @@ url='https://openleecher.tk/'
 license=('MIT')
 depends=('python')
 depends+=('pyqt5-common')
+depends+=('python-pip')
 makedepends=()
 backup=()
 options=('!emptydirs')
