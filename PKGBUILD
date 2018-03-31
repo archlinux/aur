@@ -2,13 +2,15 @@
 
 _plug=nnedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v9.0.g7871960
+pkgver=v11.0.g737a1f0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166434'
 license=('GPL2')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'vapoursynth-plugin-nnedi3_weights_bin'
+         )
 makedepends=('git'
              'yasm'
              )
@@ -39,4 +41,6 @@ package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+
+  rm -fr "${pkgdir}/usr/share/nnedi3"
 }
