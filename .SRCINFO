@@ -22,10 +22,10 @@ pkgbase = nikola-git
 	depends = python-natsort
 	depends = python-setuptools
 	depends = python-requests
-	depends = python-husl
 	depends = python-piexif
 	depends = python-markdown
 	optdepends = python-jinja: for Jinja2 themes
+	optdepends = python-husl: for color mixing features
 	optdepends = python-pyphen>=0.9.1: for hyphenation
 	optdepends = python-pygal=1.7.0: for SVG graph plotting
 	optdepends = python-typogrify>=2.0.4: for typographical enhancements
@@ -37,6 +37,8 @@ pkgbase = nikola-git
 	optdepends = python-phpserialize: for WordPress imports
 	optdepends = python-aiohttp: for nikola auto
 	optdepends = python-watchdog: for nikola auto
+	optdepends = python-pyyaml: for YAML metadata and datafiles
+	optdepends = python-toml: for TOML metadata and datafiles
 	conflicts = python-nikola
 	conflicts = python2-nikola
 	conflicts = python-nikola-git

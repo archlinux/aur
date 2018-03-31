@@ -14,8 +14,9 @@ depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
          'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
          'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
          'python-blinker' 'python-natsort' 'python-setuptools'
-         'python-requests' 'python-husl' 'python-piexif' 'python-markdown')
+         'python-requests' 'python-piexif' 'python-markdown')
 optdepends=('python-jinja: for Jinja2 themes'
+            'python-husl: for color mixing features'
             'python-pyphen>=0.9.1: for hyphenation'
             'python-pygal=1.7.0: for SVG graph plotting'
             'python-typogrify>=2.0.4: for typographical enhancements'
@@ -26,7 +27,9 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-micawber: for embedding media in posts'
             'python-phpserialize: for WordPress imports'
             'python-aiohttp: for nikola auto'
-            'python-watchdog: for nikola auto')
+            'python-watchdog: for nikola auto'
+            'python-pyyaml: for YAML metadata and datafiles'
+            'python-toml: for TOML metadata and datafiles')
 makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
 md5sums=('SKIP' '0c5b36c239ac465da024dac76e4892e7')
