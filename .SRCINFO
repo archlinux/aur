@@ -1,7 +1,7 @@
 pkgbase = libfaction
 	pkgdesc = A C library for test-driven software development
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://timetoplatypus.com/static/faction
 	arch = x86_64
 	arch = i686
