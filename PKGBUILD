@@ -3,8 +3,8 @@
 buildarch=128
 
 pkgname=teamsql
-pkgver=3.0.167
-pkgrel=2
+pkgver=3.2.190
+pkgrel=1
 pkgdesc="Multi-Platform SQL Client"
 url="https://teamsql.io/"
 arch=('x86_64')

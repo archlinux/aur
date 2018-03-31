@@ -1,6 +1,6 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
-	pkgver = 3.0.167
+	pkgver = 3.2.190
 	pkgrel = 1
 	url = https://teamsql.io/
 	arch = x86_64
@@ -12,10 +12,8 @@ pkgbase = teamsql
 	depends = libxss
 	depends = nss
 	depends = alsa-lib
-	source = TeamSQL-3.0.167.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/3.0.167/TeamSQL-3.0.167.deb
-	source = LICENSE::https://teamsql.io/end-user-licence-agreement
+	source = TeamSQL-3.2.190.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/3.2.190/TeamSQL-3.2.190.deb
 	sha512sums = bf2643d499c71d9b8d392bba2754b4f625bd28ccad8e4ebab7b66766db3c65f9e87a3a83ff56fee554a89915a24e508e61bac51f30722507bbbdf195df15d5e3
-	sha512sums = 04cfad055d5baf7ecd4c52eda6afee8d254180f8b30de72f0b48ad99b2a1dd4188739a274f53ce5579585c65d57bbfe30eab68169357bc4955a44e7df44f9269
 
 pkgname = teamsql
 
