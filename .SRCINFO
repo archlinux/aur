@@ -1,7 +1,7 @@
 pkgbase = xmrig-proxy
 	pkgdesc = Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig-proxy
 	install = xmrig-proxy.install
 	changelog = CHANGELOG.md
