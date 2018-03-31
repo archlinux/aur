@@ -9,6 +9,7 @@ license=('MIT')
 depends=('python')
 depends+=('pyqt5-common')
 depends+=('python-pip')
+depends+=('pyinstaller')
 makedepends=()
 backup=()
 options=('!emptydirs')
@@ -16,7 +17,6 @@ source=()
 md5sums=()
 
 package() {
-    pip install pyinstaller
     pyinstaller -F openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
