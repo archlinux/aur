@@ -7,7 +7,7 @@ pkgbase = libfaction
 	arch = i686
 	license = BSD
 	source = https://timetoplatypus.com/static/faction/faction-0.0.1.tar.gz
-	md5sums = 6f0219abf9ed2fbe03a200a09ee85a97
+	md5sums = c63170979f33ef0f73564f44364bf368
 
 pkgname = libfaction
 
