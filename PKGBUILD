@@ -17,6 +17,7 @@ source=()
 md5sums=()
 
 package() {
+    sudo pip install pyinstaller
     pyinstaller -F openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
