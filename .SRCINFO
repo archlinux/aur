@@ -1,7 +1,7 @@
 pkgbase = freedict-tools-svn
 	pkgdesc = Tools to compile the Freedict dictionaries
-	pkgver = r143
-	pkgrel = 2
+	pkgver = r145
+	pkgrel = 3
 	epoch = 1
 	url = http://www.freedict.org/
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = freedict-tools-svn
 	license = GPL3
 	license = CC-BY-SA
 	makedepends = subversion
+	depends = libxslt
 	provides = freedict-tools
 	conflicts = freedict-tools
 	source = svn+https://github.com/freedict/tools/trunk
-	source = https://raw.githubusercontent.com/freedict/fd-dictionaries/master/README.md
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = freedict-tools-svn
