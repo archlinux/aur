@@ -1,9 +1,9 @@
-# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 _lang=eng-deu
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-svn
-pkgver=r1629
-pkgrel=1
+pkgver=r1775
+pkgrel=2
 pkgdesc="English -> German dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -18,26 +18,28 @@ md5sums=('SKIP')
 
 pkgver()
 {
-	cd ${_lang}
+	cd $_lang
 	local _ver="$(svnversion)"
 	printf "r%s" "${_ver//[[:alpha:]]}"
 }
 
 build()
 {
-	cd ${_lang}
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools
+	cd $_lang
+	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
 }
 
 package()
 {
-	mkdir -p "${pkgdir}/usr/share/dictd"
-	cp ${_lang}/${_lang}.{dict.dz,index} "$pkgdir/usr/share/dictd/"
+	install -m 755 -d "${pkgdir}/usr/share/dictd"
+	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
+		${_lang}/build/dictd/${_lang}.{dict.dz,index}
 
-	mkdir -p "${pkgdir}/usr/share/doc/freedict/${_lang}"
 	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
 	do
-		test -f ${file} && \
-			cp ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
+		if test -f ${file}
+		then
+			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
+		fi
 	done
 }
