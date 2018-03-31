@@ -11,6 +11,8 @@ pkgbase = gogs
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.3
+	makedepends = patch
+	makedepends = gcc
 	depends = git>=1.7.1
 	depends = pam
 	optdepends = sqlite: SQLite support

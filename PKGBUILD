@@ -22,7 +22,7 @@ optdepends=('sqlite: SQLite support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go>=1.3')
+makedepends=('go>=1.3' 'patch' 'gcc')
 conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
 options=('!strip')
 backup=("etc/$_pkgname/app.ini")
