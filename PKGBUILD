@@ -6,10 +6,9 @@ pkgrel=1
 pkgdesc='Machine readable travel documents reader'
 arch=('x86_64')
 url='https://github.com/rubund/mrtdreader'
-license=('gpl')
+license=('GPL3')
 depends=('libnfc')
-makedepends=('cmake')
-source=("https://github.com/rubund/mrtdreader/archive/0.1.6.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/rubund/mrtdreader/archive/${pkgver}.tar.gz")
 sha256sums=('1aee5c4cf40e6780e555aa507690c99db2216c647ec07d4de0909f2293489908')
 
 
