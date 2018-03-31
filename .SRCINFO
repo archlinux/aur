@@ -1,0 +1,31 @@
+pkgbase = gpodder-git
+	pkgdesc = A podcast receiver/catcher
+	pkgver = 3.10.1.r36.g15617c5b
+	pkgrel = 1
+	url = http://gpodder.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = help2man
+	makedepends = intltool
+	depends = hicolor-icon-theme
+	depends = python-cairo
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-mygpoclient
+	depends = python-podcastparser
+	optdepends = ffmpeg: transcode audio files to mp3/ogg
+	optdepends = gnome-bluetooth: transfer podcast via bluethooth
+	optdepends = lame: converting ogg to mp3
+	optdepends = libgpod: ipod sync support
+	optdepends = mutagen: audio tagging
+	optdepends = python-eyed3: mp3 player sync support
+	optdepends = python-html5lib: clickable links in GTK UI show notes
+	optdepends = webkit2gtk: HTML show notes
+	provides = gpodder
+	conflicts = gpodder
+	source = gpodder::git+https://github.com/gpodder/gpodder.git
+	md5sums = SKIP
+
+pkgname = gpodder-git
+
