@@ -1,0 +1,15 @@
+ChangeLog for han-ese-ops-arch-rpi PKGBUILD
+https://github.com/MarcvdSluys/han-ese-ops-arch-rpi
+
+        * han-ese-ops-arch-rpi-0.2-1 (2018-03-31 - MvdS)
+        Version bump
+
+        * han-ese-ops-arch-rpi-0.1-3 (2017-12-25 - MvdS)
+        Add dependency python-netifaces
+
+        * han-ese-ops-arch-rpi-0.1-2 (2017-12-21 - MvdS)
+        Add dependency python-sense-hat
+
+        * han-ese-ops-arch-rpi-0.1-1 (2017-12-18 - MvdS)
+        Initial PKGBUILD for han-ese-ops-arch-rpi, to be uploaded to AUR
+
