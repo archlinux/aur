@@ -3,7 +3,7 @@
 _pyname=nikola
 _gitname=nikola
 pkgname=nikola-git
-pkgver=7.8.14.r1.gfee4d191
+pkgver=8dev.r330.g2d759c5e
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-ghp-import>=0.4.1: for uploading to GitHub Pages'
             'python-micawber: for embedding media in posts'
             'python-phpserialize: for WordPress imports'
-            'python-ws4py: for nikola auto'
+            'python-aiohttp: for nikola auto'
             'python-watchdog: for nikola auto')
 makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
@@ -35,7 +35,8 @@ replaces=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g;s/7.8.8/8dev/'
 }
 
 package() {
@@ -44,6 +45,7 @@ package() {
   ln -s ${_gitname} "${pkgdir}/usr/bin/${_gitname}3"
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
   install -m644 docs/manual.rst "${pkgdir}/usr/share/doc/${pkgname}/manual.rst"

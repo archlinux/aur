@@ -1,6 +1,6 @@
 pkgbase = nikola-git
 	pkgdesc = A modular, fast, simple, static website generator. (git version)
-	pkgver = 7.8.14.r1.gfee4d191
+	pkgver = 8dev.r330.g2d759c5e
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = nikola-git
 	optdepends = python-ghp-import>=0.4.1: for uploading to GitHub Pages
 	optdepends = python-micawber: for embedding media in posts
 	optdepends = python-phpserialize: for WordPress imports
-	optdepends = python-ws4py: for nikola auto
+	optdepends = python-aiohttp: for nikola auto
 	optdepends = python-watchdog: for nikola auto
 	conflicts = python-nikola
 	conflicts = python2-nikola
