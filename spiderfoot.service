@@ -1,0 +1,11 @@
+[Unit]
+Description=Spiderfoot: OSINT Automation Tool 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/spiderfoot
+
+[Install]
+WantedBy=multi-user.target
+
