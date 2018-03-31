@@ -1,14 +1,16 @@
 pkgbase = dict-freedict-spa-eng
 	pkgdesc = Spanish -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
-	pkgrel = 6
+	pkgver = 0.3
+	pkgrel = 1
 	url = http://www.freedict.org/
 	install = dict-freedict-spa-eng.install
 	arch = any
 	license = GPL
+	makedepends = dictd
+	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
-	source = https://sourceforge.net/projects/freedict/files/spa-eng/0.2/freedict-spa-eng-0.2.tar.bz2
-	md5sums = 9611215259c816cfb25d30c5becf8c96
+	source = https://sourceforge.net/projects/freedict/files/spa-eng/0.3/freedict-spa-eng-0.3.src.tar.xz
+	sha512sums = d9d92d238b0c849a424ff185187eae39fca6b5fe0be41ce7f77153df154da4b2ac765511b03da2bb418c087ac27d045d536aa755214b4c7161ea30046856a708
 
 pkgname = dict-freedict-spa-eng
 

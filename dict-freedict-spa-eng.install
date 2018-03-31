@@ -1,5 +1,5 @@
-pkgname=dict-freedict-spa-eng
 basename=spa-eng
+pkgname=dict-freedict-$basename
 dictd_conf=/etc/dict/dictd.conf
 datadir=/usr/share/dictd
 conf="database $basename {
