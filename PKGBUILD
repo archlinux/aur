@@ -5,8 +5,8 @@
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
 epoch=2
-pkgver=1.19.3
-pkgrel=1 # 1 in the xorg-server package
+pkgver=1.19.6
+pkgrel=2 # 1.19.6+13+gd0d1a694f-1 in the xorg-server package
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont2 libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-libinput)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
@@ -17,7 +17,7 @@ license=('custom')
 url="http://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
+             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
@@ -25,12 +25,12 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
 source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
 	nvidia-add-modulepath-support.patch
 	xserver-autobind-hotplug.patch
-        xvfb-run
-        xvfb-run.1
+	xvfb-run
+	xvfb-run.1
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
+sha256sums=('a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
 	    '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
 	    'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
@@ -42,10 +42,10 @@ sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  msg2 'Apply hardware cursors gamma adjustments patches'
-  patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
-  patch -Np1 -i ../0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
-  patch -Np1 -i ../0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch
+  #msg2 'Apply hardware cursors gamma adjustments patches'
+  #patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
+  #patch -Np1 -i ../0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
+  #patch -Np1 -i ../0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch
 
   # merged upstream in trunk
   msg2 'apply nvidia patch'
@@ -59,6 +59,13 @@ prepare() {
 }
 
 build() {
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS="${CFLAGS/-fno-plt}"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt}"
+  export LDFLAGS="${LDFLAGS/,-z,now}"
+
   cd "${_pkgname}-${pkgver}"
   ./configure --prefix=/usr \
       --enable-ipv6 \
