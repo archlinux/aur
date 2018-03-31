@@ -17,7 +17,7 @@ md5sums=()
 
 package() {
     sudo pip install pyinstaller
-    pyinstaller -F openleecher.py
+    pyinstaller -F ../openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
     mkdir -p $pkgdir/etc/openleecher/
@@ -27,16 +27,16 @@ package() {
     cp dist/openleecher $pkgdir/usr/bin/
     chmod +x $pkgdir/usr/bin/openleecher
 
-    cp config.ini $pkgdir/etc/openleecher/
+    cp ../config.ini $pkgdir/etc/openleecher/
     chmod 776 $pkgdir/etc/openleecher/config.ini
 
-    cp openleecher.png $pkgdir/usr/share/icons/
-    cp openleecher.desktop $pkgdir/usr/share/applications/
+    cp ../openleecher.png $pkgdir/usr/share/icons/
+    cp ../openleecher.desktop $pkgdir/usr/share/applications/
 
-    cp LICENSE $pkgdir/etc/openleecher/
-    cp x.png $pkgdir/etc/openleecher/
-    cp pause.png $pkgdir/etc/openleecher/
-    cp slider.gif $pkgdir/etc/openleecher/
+    cp ../LICENSE $pkgdir/etc/openleecher/
+    cp ../x.png $pkgdir/etc/openleecher/
+    cp ../pause.png $pkgdir/etc/openleecher/
+    cp ../slider.gif $pkgdir/etc/openleecher/
 
     touch $pkgdir/etc/openleecher/openleecher.log
     chmod 776 $pkgdir/etc/openleecher/openleecher.log
