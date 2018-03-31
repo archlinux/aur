@@ -3,7 +3,6 @@ pkgbase = brewstillery
 	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://monkeylog.in
-	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
@@ -13,7 +12,7 @@ pkgbase = brewstillery
 	provides = brewstillery
 	conflicts = brewstillery
 	source = https://github.com/MonkeyLog/BrewStillery/archive/6.0.1.tar.gz
-	md5sums = 4790f64a2af6cf62d4df9fc213607371
+	md5sums = adbaef7cf1b71bb2c484635173f3bd84
 
 pkgname = brewstillery
 
