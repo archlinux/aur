@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Netflix
-GenericName=Netflix
-Comment=Netflix Standalone Player
+Name=QtWebFlix
+GenericName=QtWebFlix
+Comment=Standalone player for several streaming platforms
 Categories=Network;AudioVideo;Player;
-Exec=/usr/bin/netflix  --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+Exec=/usr/bin/qtwebflix --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
 Icon=netflix-desktop.svg
 StartupNotify=false
 Terminal=false
