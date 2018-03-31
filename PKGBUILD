@@ -3,7 +3,7 @@
 
 pkgbase=linux-clear
 __basekernel=4.15
-_minor=14
+_minor=15
 pkgver=${__basekernel}.${_minor}
 _clearver=${__basekernel}.14-538
 pkgrel=1
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133'
+            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
