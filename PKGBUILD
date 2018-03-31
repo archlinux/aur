@@ -7,9 +7,9 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=65.0.3325.162
+pkgver=65.0.3325.181
 pkgrel=1
-_launcher_ver=5
+_launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
@@ -17,7 +17,8 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang')
+makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
+             'clang' 'lld')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -28,15 +29,19 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
+        fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
+        allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
         chromium-skia-harmony.patch
         chromium-clang-r2.patch
         chromium-math.h-r0.patch
         chromium-stdint.patch
         chromium-widevine.patch
         chromium-gtk2-fix-build.patch)
-sha256sums=('627e7bfd84795de1553fac305239130d25186acf2d3c77d39d824327cd116cce'
-            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'bed2a7ef4b1ebd53b28e2f38963a2dd761267ccc8818693c34ce8596db53dd4c'
+sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
+            '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
+            'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
+            '4327289866d0b3006de62799ec06b07198a738e50e0a5c2e41ff62dbe00b4a2c'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
@@ -91,11 +96,21 @@ prepare() {
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
 
+  # Allow building against system libraries in official builds
+  sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
+    tools/generate_shim_headers/generate_shim_headers.py
+
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
+
+  # https://crbug.com/822820
+  patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
+
+  # https://crbug.com/817400
+  patch -Np1 -i ../allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
@@ -105,24 +120,12 @@ prepare() {
   patch -Np1 -i ../chromium-math.h-r0.patch
   patch -Np1 -i ../chromium-stdint.patch
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-enum-compare-switch"/d' \
-    -e '/"-Wno-null-pointer-arithmetic"/d' \
-    -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
-    -e '/"-Wno-tautological-constant-compare"/d' \
-    build/config/compiler/BUILD.gn
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   # Fix GTK2 build
   # https://chromium-review.googlesource.com/c/chromium/src/+/894993
   patch -Np1 -i ../chromium-gtk2-fix-build.patch
-
-  # Use Python 2
-  find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
-
-  # There are still a lot of relative calls which need a workaround
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
@@ -156,10 +159,6 @@ build() {
     export CCACHE_SLOPPINESS=time_macros
   fi
 
-  export PATH="$srcdir/python2-path:$PATH"
-  export TMPDIR="$srcdir/temp"
-  mkdir -p "$TMPDIR"
-
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -168,10 +167,9 @@ build() {
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'is_clang=true'
     'clang_use_chrome_plugins=false'
+    'is_official_build=true' # implies is_cfi=true on x86_64
     'is_debug=false'
-    'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'remove_webcore_debug_symbols=true'
@@ -180,8 +178,6 @@ build() {
     'link_pulseaudio=true'
     'use_gtk3=false'
     'use_gnome_keyring=false'
-    'use_gold=false'
-    'use_lld=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
@@ -194,13 +190,21 @@ build() {
     "google_default_client_secret=\"${_google_default_client_secret}\""
   )
 
+  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+  CFLAGS+='   -Wno-builtin-macro-redefined'
+  CXXFLAGS+=' -Wno-builtin-macro-redefined'
+  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
   if check_option strip y; then
+    _flags+=('symbol_level=0')
+
+    # Mimic exclude_unwind_tables=true
     CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CPPFLAGS+=' -DNO_UNWIND_TABLES'
   fi
 
-  python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
+  python2 tools/gn/bootstrap/bootstrap.py -s --no-clean
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
