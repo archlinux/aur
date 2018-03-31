@@ -17,7 +17,9 @@ validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
 
 package() {
 	cd "$pkgdir"
-	mkdir -p "$pkgdir/opt/docker-makepkg" "$pkgdir/usr/lib/systemd/system"
-	cp "$srcdir/$pkgname-$pkgver"/{Dockerfile,buildme.sh,dmakepkg,run.sh,sudoers} "$pkgdir/opt/docker-makepkg"
+	mkdir -p "$pkgdir/opt/docker-makepkg/bin" "$pkgdir/usr/lib/systemd/system" "$pkgdir/etc/profile.d"
+	cp "$srcdir/$pkgname-$pkgver"/docker-makepkg-path.sh "$pkgdir/etc/profile.d/"
+	cp "$srcdir/$pkgname-$pkgver"/{Dockerfile,buildme.sh,run.sh,sudoers} "$pkgdir/opt/docker-makepkg"
+	cp "$srcdir/$pkgname-$pkgver"/bin/dmakepkg "$pkgdir/opt/docker-makepkg/bin/"
 	cp "$srcdir/$pkgname-$pkgver"/docker-makepkg.{service,timer} "$pkgdir/usr/lib/systemd/system/"
 }
