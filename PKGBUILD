@@ -1,4 +1,6 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# shellcheck disable=2034
+# shellcheck disable=2148
 
 pkgname=dfhack
 pkgver=0.44.08
@@ -8,11 +10,11 @@ pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use i
 arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
 license=('custom')
-depends=(dwarffortress=$pkgver lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
+depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
 makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git')
 
-source=($pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver
+source=("$pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver"
         dfhack.sh
         dfhack-run.sh)
 
@@ -21,13 +23,14 @@ md5sums=('SKIP'
          '3853c6f890d3541f710f2c4833a9e696')
 
 prepare() {
-  cd $srcdir/$pkgname
+  # shellcheck disable=2154
+  cd "$srcdir"/$pkgname || exit 1
 
   git submodule update --init
 }
 
 build() {
-  cd $srcdir/$pkgname/build
+  cd "$srcdir"/$pkgname/build || exit 1
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/opt/dwarffortress \
@@ -41,12 +44,13 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname/build
+  cd "$srcdir"/$pkgname/build || exit 1
 
-  make DESTDIR=$pkgdir install
+  # shellcheck disable=2154
+  make DESTDIR="$pkgdir" install
 
-  install -Dm755 $srcdir/dfhack.sh     $pkgdir/usr/bin/dfhack
-  install -Dm755 $srcdir/dfhack-run.sh $pkgdir/usr/bin/dfhack-run
+  install -Dm755 "$srcdir"/dfhack.sh     "$pkgdir"/usr/bin/dfhack
+  install -Dm755 "$srcdir"/dfhack-run.sh "$pkgdir"/usr/bin/dfhack-run
 
-  install -Dm644 ../LICENSE.rst $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../LICENSE.rst "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
