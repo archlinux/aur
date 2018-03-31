@@ -1,0 +1,18 @@
+pkgbase = xbanish-timeout-git
+	pkgdesc = Banish the mouse cursor when typing, show it again when the mouse moves. Patched fork with extra features such as timeout, ignorescroll
+	pkgver = 1.5.r4.g0aa1e44
+	pkgrel = 1
+	url = https://github.com/ckath/xbanish-timeout
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libxfixes
+	depends = libxi
+	provides = xbanish
+	conflicts = xbanish
+	source = xbanish-timeout-git::git+https://github.com/ckath/xbanish-timeout.git
+	md5sums = SKIP
+
+pkgname = xbanish-timeout-git
+
