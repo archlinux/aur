@@ -11,11 +11,11 @@ pkgbase=openrazer
 pkgname=('python-openrazer' 'openrazer-daemon' 'openrazer-driver-dkms' 'openrazer-meta')
 if $build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
-    _linux_current=4.12
-    _linux_next=4.13
+    _linux_current=4.15
+    _linux_next=4.16
     pkgname+=('openrazer-driver-arch')
 fi
-pkgver=2.2.2
+pkgver=2.3.0
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
@@ -31,7 +31,7 @@ if [ -z $_commit ]; then
 else
   source=("https://github.com/openrazer/openrazer/archive/$_commit.tar.gz")
 fi
-sha256sums=('919700abad03c188d005f56acdb155e44b37b56499cdfe900be8f4ab2a1484b3')
+sha256sums=('cb16b1fc3ec72a07b1aa8bb0b94ae7c41c2a546a996d9bedfe83cecbec91b365')
 
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."

@@ -1,6 +1,6 @@
 pkgbase = openrazer
 	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/openrazer/openrazer
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = openrazer
 	makedepends = make
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://github.com/openrazer/openrazer/releases/download/v2.2.2/openrazer-2.2.2.tar.xz
-	sha256sums = 919700abad03c188d005f56acdb155e44b37b56499cdfe900be8f4ab2a1484b3
+	source = https://github.com/openrazer/openrazer/releases/download/v2.3.0/openrazer-2.3.0.tar.xz
+	sha256sums = cb16b1fc3ec72a07b1aa8bb0b94ae7c41c2a546a996d9bedfe83cecbec91b365
 
 pkgname = python-openrazer
 	pkgdesc = Python library for accessing the Razer daemon from Python.
