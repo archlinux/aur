@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=softhsm
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ changelog=
 source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz")
 noextract=()
 
-sha256sums=('5ed604c89a3a6ef9d7d1ee92c28a2c4b3cd1f86f302c808e2d12c8f39aa2c127')
+sha256sums=('26aac12bdeaacd15722dc0a24a5a1981a3b711e61d10ac687a23ff0b7075da07')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
