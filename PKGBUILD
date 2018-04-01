@@ -492,7 +492,8 @@ fi
 
   if $_static_build || $_target_host; then
     if ! $_target_host; then
-        mv `dirname ${_installed_dir}` ${_installed_dir_sans_sysroot_offset}
+        mkdir $(dirname ${_installed_dir_sans_sysroot_offset})
+        mv ${_installed_dir} `dirname ${_installed_dir_sans_sysroot_offset}`
     fi
   else
     mv `dirname ${_installed_dir}` ${_libspkgdir}
