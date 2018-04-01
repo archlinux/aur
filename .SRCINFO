@@ -1,6 +1,6 @@
 pkgbase = pommed-light
 	pkgdesc = Handles the hotkeys of Apple MacBook (Pro) laptops - lightweight edition
-	pkgver = 1.50lw
+	pkgver = 1.51lw
 	pkgrel = 1
 	url = https://github.com/bytbox/pommed-light
 	install = pommed-light.install
@@ -14,10 +14,10 @@ pkgbase = pommed-light
 	depends = audiofile
 	optdepends = eject: disc ejection support
 	conflicts = pommed
-	source = https://github.com/bytbox/pommed-light/archive/v1.50lw.tar.gz
+	source = https://github.com/bytbox/pommed-light/archive/v1.51lw.tar.gz
 	source = pommed.service
-	md5sums = 55b947f24016b99f7de6e7f84fb5dc22
-	md5sums = fd5be6c0aa9ac4a0b1b628a23361b4cf
+	sha256sums = 18b18a2a1b557d31c871059464123435b752615880e0fad085212f01d7099187
+	sha256sums = 00b53ee256fb18e45be255f396b6a015d05b26c08785cd291fbd768cfc076c80
 
 pkgname = pommed-light
 
