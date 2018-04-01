@@ -164,7 +164,6 @@ pkgbase = wine-staging-pba-git
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = cups
 	optdepends = samba
-	optdepends = dosbox
 	provides = wine
 	provides = wine-wow64
 	provides = wine-staging

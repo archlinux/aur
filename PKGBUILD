@@ -88,7 +88,6 @@ optdepends=(
 	'vulkan-icd-loader'			'lib32-vulkan-icd-loader'
 	'cups'
 	'samba'
-	'dosbox'
 )
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
