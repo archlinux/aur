@@ -7,7 +7,6 @@ pkgdesc="Nemo desktop startup"
 arch=('x86_64')
 license=('GPL')
 depends=('nemo' 'systemd')
-makedepends=('extra-cmake-modules' 'glm' 'doxygen' 'libdrm')
 source=("file://nemo-desktop.service"
         "file://nemo-desktop.desktop")
 md5sums=('SKIP'
