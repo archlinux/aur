@@ -1,7 +1,7 @@
 pkgbase = tomcat9
 	pkgdesc = Open source implementation of the Java Servlet 4.0 and JavaServer Pages 2.3 technologies
 	pkgver = 9.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tomcat.apache.org/
 	install = tomcat9.install
 	arch = any

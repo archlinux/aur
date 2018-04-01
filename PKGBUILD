@@ -1,6 +1,6 @@
 pkgname=tomcat9
 pkgver=9.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source implementation of the Java Servlet 4.0 and JavaServer Pages 2.3 technologies'
 arch=('any')
 url='http://tomcat.apache.org/'
@@ -37,6 +37,8 @@ package() {
   install -dm755 "${pkgdir}"/usr/share/{,java/}${pkgname}
   cp -r bin "${pkgdir}"/usr/share/${pkgname}
   chmod 755 "${pkgdir}"/usr/share/${pkgname}/bin
+  chmod 644 "${pkgdir}"/usr/share/${pkgname}/bin/*
+  chmod 755 "${pkgdir}"/usr/share/${pkgname}/bin/*.sh
   # commons-daemon and tomcat-natives are packaged on their own
   rm "${pkgdir}"/usr/share/${pkgname}/bin/{*.bat,commons-daemon*,tomcat-native.tar.gz}
   ln -s /usr/share/java/commons-daemon.jar "${pkgdir}"/usr/share/${pkgname}/bin/commons-daemon.jar
