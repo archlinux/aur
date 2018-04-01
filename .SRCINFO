@@ -1,0 +1,17 @@
+pkgbase = obs-service-format_spec_file-git
+	pkgdesc = An OBS source service: reformats a spec file to SUSE standard
+	pkgver = r120.402059d
+	pkgrel = 1
+	url = https://github.com/openSUSE/obs-service-format_spec_file
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = obs-service-source_validator
+	depends = perl-timedate
+	provides = obs-service-format_spec_file
+	conflicts = obs-service-format_spec_file
+	source = obs-service-format_spec_file::git+https://github.com/openSUSE/obs-service-format_spec_file
+	sha256sums = SKIP
+
+pkgname = obs-service-format_spec_file-git
+
