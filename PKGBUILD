@@ -26,14 +26,14 @@ _NUMAdisable=y
 # This PKGBUILD will call it directly to probe all the modules you have logged!
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=y
+_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.14
-pkgrel=2
+pkgver=4.15.15
+pkgrel=1
 _pdsversion=098k
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -60,7 +60,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133'
+            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
             'SKIP'
             'de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
