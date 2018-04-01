@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.5.0.r360.gee1c0ce
+pkgver=1.5.2.r8.g4659b28
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  ver="$(grep 'Version' src/main.cpp | awk -F '"' '{print $2}')"
-  printf '%s.r%s.g%s' "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
