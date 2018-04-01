@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Nemo desktop
+OnlyShowIn=GNOME;Unity;MATE;Cinnamon;
+Exec=/usr/bin/nemo-desktop
+NoDisplay=true
+X-GNOME-Autostart-Phase=PostDisplayServer
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Notify=false

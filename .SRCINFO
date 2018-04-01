@@ -1,0 +1,22 @@
+pkgbase = nemo-desktop
+	pkgdesc = Ubuntu's display server
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	license = Apache
+	makedepends = extra-cmake-modules
+	makedepends = glm
+	makedepends = doxygen
+	makedepends = libdrm
+	depends = nemo
+	depends = systemd
+	source = file://nemo-desktop.service
+	source = file://nemo-desktop.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = nemo-desktop
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=Nemo desktop
+DefaultDependencies=false
+After=dbus.socket
+Before=basic.target shutdown.target
+Conflicts=shutdown.target
+
+[Service]
+ExecStart=/usr/bin/nemo-desktop

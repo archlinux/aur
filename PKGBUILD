@@ -1,0 +1,26 @@
+# Maintainer: kikadf <kikadf.01@gmail.com>
+
+pkgname=nemo-desktop
+pkgver=1
+pkgrel=1
+pkgdesc="Ubuntu's display server"
+arch=('x86_64')
+license=('GPL' 'LGPL' 'BSD' 'Apache')
+depends=('nemo' 'systemd')
+makedepends=('extra-cmake-modules' 'glm' 'doxygen' 'libdrm')
+source=("file://nemo-desktop.service"
+        "file://nemo-desktop.desktop")
+md5sums=('SKIP'
+         'SKIP')
+
+build() {
+    echo "skip"
+}
+
+package() {
+    echo "${pkgdir}"
+    mkdir -p ${pkgdir}/etc/xdg/autostart/
+    mkdir -p ${pkgdir}/usr/lib/systemd/user/
+    cp ${srcdir}/nemo-desktop.desktop ${pkgdir}/etc/xdg/autostart/
+    cp ${srcdir}/nemo-desktop.service ${pkgdir}/usr/lib/systemd/user/
+}
