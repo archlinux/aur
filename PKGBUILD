@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -104,6 +104,7 @@ package() {
     "$pkgdir/usr/share/doc/libbitcoin-server/wiki"
 
   msg2 'Installing conf...'
+  install -dm 700 "$pkgdir/etc/obelisk"
   install -Dm 600 data/bs.cfg.in "$pkgdir/etc/obelisk/bs/bs.cfg"
 
   msg2 'Installing systemd service files...'
