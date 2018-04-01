@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver at luced de>
 pkgname=luajack
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Lua bindings for the JACK Audio Connection Kit"
 arch=('x86_64')
@@ -37,8 +37,12 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make PREFIX="$pkgdir/usr" install
-	install -d "$pkgdir/usr/share/licenses/$pkgname"
+
+	install -d            "$pkgdir/usr/share/licenses/$pkgname"
 	install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+
+	install -d                  "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`/luajack"
+	install -m644 luajack/*.lua "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`/luajack"
 
 	cd "$pkgdir/usr/lib/"
 	ln -sfv lua/5.3/luajack.so libluajack.so
