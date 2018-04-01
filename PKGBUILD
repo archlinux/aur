@@ -1,6 +1,6 @@
 # Maintainer: E5ten
 
-pkgname=yad
+pkgname=yad-webkitgtk
 pkgver=0.40.0
 pkgrel=3
 pkgdesc="A fork of zenity - display graphical dialogs from shell scripts or command line, 
