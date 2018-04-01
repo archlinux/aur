@@ -1,0 +1,11 @@
+--- mathmap-1.3.5/drawable.h	2009-08-23 13:56:14.000000000 +0200
++++ mathmap-1.3.5.new/drawable.h	2018-04-01 21:59:30.774269173 +0200
+@@ -105,7 +105,7 @@ typedef struct _image_t
+ 	    mathmap_pools_t *pools;
+ 	    void *xy_vars;
+ 	    int num_args;
+-	    userval_t args[];
++	    userval_t args[0];
+ 	} closure;
+ 	struct {
+ 	    float ax;
