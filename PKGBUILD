@@ -1,4 +1,4 @@
-# Author and maintainer: Wes Barnett (aur AT wbarnett DOT us)
+# Maintainer: Wes Barnett (aur AT wbarnett DOT us)
 pkgname=nordvpn
 pkgver=2018.03.30.09.23.13
 pkgrel=1
