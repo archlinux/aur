@@ -2,7 +2,7 @@
 # Contributor: Brandon Andrews <bsa@bsa.isa-geek.com>
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
@@ -21,14 +21,14 @@ optdepends=('freeglut: OpenGL image viewer' 'glu: OpenGL image viewer' \
             'gsl: mantiuk08 tone mapping operator' \
             'fftw: durand02,fattal02,ferradans11 tone mapping operators')
 makedepends=('cmake' \
-             'openexr' 'imagemagick' 'libtiff' 'netpbm' \
+             'openexr' 'libmagick6' 'libtiff' 'netpbm' \
              'gsl' 'fftw' 'libexif' 'opencv'
-             'freeglut' 'glu' 'qt4')
+             'freeglut' 'glu' 'qt4' 'gtkglext')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz \
         opencv3.patch)
-md5sums=('c3148ed11e562c30a0fd65d114cf2de2'
-         '8bb92632fc2d8887a5f4aa03f6ee6636')
+sha256sums=('3dea4248e41bf433fe4760b0a11d138ad2d240f62db9e519bcb1d557c0593413'
+            '41f74339b7cc1dbfa2c7e1de62e81c7f423bc22cba9e27ee57b1d0b2ce15ce82')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
