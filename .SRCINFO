@@ -4,18 +4,13 @@ pkgbase = nordvpn
 	pkgrel = 1
 	url = https://www.nordvpn.com
 	install = nordvpn.install
-	arch = x86_64
-	license = none
+	arch = any
 	depends = openvpn
 	options = !strip
-	options = libtool
-	options = staticlibs
-	options = !zipman
-	options = !purge
 	source = https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
 	source = README
-	sha512sums = 56f5fe2cf0fb1e666756549cdf56991af793714266613f9e5d56ca4d1ddc8f352fe5482c3e1b2d4b299f91e98c6f5fec5f32ab5d3da6e366a7b1e78c65a7aa6c
-	sha512sums = 8154cef01e9183e7877b4794aa1db71dd537113d2441e6a51f67ed4c0d0ecb0564ef732f32ae48b1dabb52f7be8df5ecfcbb0b68ca5fc8e7896c653c4c2e5977
+	md5sums = SKIP
+	md5sums = 1667c77fbd5f9e6ebad742c352d4592a
 
 pkgname = nordvpn
 
