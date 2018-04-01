@@ -1,7 +1,7 @@
 # Maintainer : Jimmy Stelzer <jimmy dot stelzer at gmail dot com> [AUR: jimmy.stelzer]
 
 pkgname=xfce4-hardware-monitor-plugin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Plugin for the Xfce4 panel that lets you monitor CPU usage, network bandwith, etc."
 arch=('i686' 'x86_64')
