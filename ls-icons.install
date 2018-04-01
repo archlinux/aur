@@ -1,0 +1,4 @@
+post_install() {
+	echo -e "\n	Make an alias to the new ls to replace existing one:"
+	echo -e "	alias ls=/opt/coreutils/bin/ls\n"
+}
