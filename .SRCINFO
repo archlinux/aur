@@ -1,4 +1,4 @@
-pkgbase = nemo-desktop
+pkgbase = nemo-desktop-startup
 	pkgdesc = Nemo desktop startup
 	pkgver = 1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = nemo-desktop
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = nemo-desktop
+pkgname = nemo-desktop-startup
 

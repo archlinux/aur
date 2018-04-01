@@ -1,6 +1,6 @@
 # Maintainer: beidl <dev.beidl@gmail.com>
 
-pkgname=nemo-desktop
+pkgname=nemo-desktop-startup
 pkgver=1
 pkgrel=1
 pkgdesc="Nemo desktop startup"
