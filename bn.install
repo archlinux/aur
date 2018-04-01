@@ -1,17 +1,9 @@
-_bn_user=obelisk
-_bn_group=obelisk
-
 post_install() {
-  chown -R $_bn_user:$_bn_group /etc/obelisk /srv/obelisk /var/log/obelisk
   printf "%b\n" "$obelisk"
 }
 
 post_upgrade() {
   post_install
-}
-
-post_remove() {
-  rm -rf /etc/obelisk /srv/obelisk /var/log/obelisk
 }
 
 read -d '' obelisk <<'EOF'

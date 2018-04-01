@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20180309
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -31,13 +31,21 @@ source=(git+https://github.com/libbitcoin/libbitcoin-node
         bn.logrotate
         bn-init.service
         bn.service
-        obelisk-sysusers.conf)
+        obelisk-sysusers.conf
+        libbitcoin-node-git-01-systemd-sysusers.hook
+        libbitcoin-node-git-01-userdel.hook
+        libbitcoin-node-git-02-chown.hook
+        libbitcoin-node-git-02-rm-rf.hook)
 sha256sums=('SKIP'
             'SKIP'
             'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
             'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
             'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43'
-            '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f')
+            '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f'
+            '6b4e2f95d4ba2a41493ccad5b867aefb9f9b4f5b8ddbbf0da9a51a4a48d915f8'
+            'ac81ca8c96872204b55de0e7076ba3e6410069a3ea292a1191aabba5f2f1839f'
+            'fa279c7ea476bda16a3d1f1dea8e3c416bca757c69d5effdbb135f45f2ba3c71'
+            '4a284ff024ed702e42f33ec7b62c8c53495188810e6eaea02277435b3698f1c6')
 provides=('libbitcoin-node')
 conflicts=('libbitcoin-node')
 backup=('etc/obelisk/bn/bn.cfg'
@@ -123,6 +131,10 @@ package() {
 
   msg2 'Installing logrotate conf...'
   install -Dm 644 "$srcdir/bn.logrotate" "$pkgdir/etc/logrotate.d/bn"
+
+  # XXX: pacman hook on Remove event not firing
+  msg2 'Installing pacman hooks...'
+  install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +

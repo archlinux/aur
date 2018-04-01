@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = libbitcoin-node-git
+
+[Action]
+Description = Setting libbitcoin node/server user directory permissions...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/chown -R obelisk:obelisk /etc/obelisk /srv/obelisk /var/log/obelisk
