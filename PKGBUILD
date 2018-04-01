@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatpost-git
-pkgver=r59.d8e71f6
+pkgver=r81.aac54a6
 pkgrel=1
 epoch=
 pkgdesc="Neatroff's postscript postprocessor"
@@ -39,6 +39,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 post $pkgdir/usr/bin/neatpost
+  install -Dm755 pdf $pkgdir/usr/bin/neatpdf
   install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
