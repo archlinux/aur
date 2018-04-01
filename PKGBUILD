@@ -3,7 +3,7 @@
 
 _name="diana"
 pkgname="$_name-git"
-pkgver=20140126.59 
+pkgver=20170508.68 
 pkgrel=1
 pkgdesc="A command line interface to the aria2 daemon "
 arch=("any")
