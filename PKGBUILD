@@ -1,4 +1,3 @@
-# Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 # Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=esp-idf
 pkgver=3.0_rc1
@@ -13,24 +12,12 @@ source=(https://github.com/espressif/${pkgname}/archive/v${_pkgver}.tar.gz)
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
-  msg "Starting CMake (build type = ${_buildtype})"
-
-  # Create a build directory
-  mkdir -p "${srcdir}/${pkgname}-${_pkgver}-build"
-  cd "${srcdir}/${pkgname}-${pkgver}-build"
-
-  # Run CMake in release
-  cmake "${srcdir}/${pkgname}-${_pkgver}"
-
-  make
+    cd $srcdir/${_pkgname}
+	git submodule update --init
 }
 
-# Create the package
 package() {
-  # Install in /opt/roboptim
-  cd "${srcdir}/${pkgname}-${_pkgver}-build"
-
-  make install
+  mkdir -p ${pkgdir}/opt/esp-idf-sdk
+  cd "${srcdir}/${_pkgname}"
+  cp -R . ${pkgdir}/opt/esp-idf-sdk
 }
