@@ -1,5 +1,5 @@
-*.tar.gz
-*.tar.gz.asc
-*.pkg.tar.xz
-pkg
-src
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
+!matomo.install

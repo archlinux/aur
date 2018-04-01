@@ -1,0 +1,14 @@
+post_install() {
+  ln -s /etc/webapps/matomo/config.ini.php /usr/share/webapps/matomo/config/
+
+  chown -R http:http /usr/share/webapps/matomo
+  chown -R http:http /etc/webapps/matomo
+  chmod 600 /etc/webapps/matomo/*
+}
+
+
+post_upgrade() {
+  chown -R http:http /usr/share/webapps/matomo
+  chown -R http:http /etc/webapps/matomo
+  chmod 600 /etc/webapps/matomo/*
+}
