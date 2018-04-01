@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-caps-viewer
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
@@ -12,7 +12,7 @@ source=('vulkan-caps-viewer.desktop'
 sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a'
           '96c802c82c45626f3b6bdbb846d0f1f7e67ab28e')
 source_x86_64=("http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver//./_}_linux64.tar.gz")
-sha1sums_x86_64=('2aafff0b44e317f1dbc93ccfaa4d4508ed3dab88')
+sha1sums_x86_64=('22fc0259470d987430c1e0158322568a7ba42e52')
 depends=('vulkan-icd-loader' 'qt5-base' 'qt5-x11extras')
 
 package() {
