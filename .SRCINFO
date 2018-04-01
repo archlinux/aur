@@ -1,0 +1,34 @@
+pkgbase = inxicopy
+	pkgdesc = script to get system information
+	pkgver = 2.9.10
+	pkgrel = 1
+	url = https://github.com/smxi/inxi
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = gawk
+	depends = grep
+	depends = pciutils
+	depends = perl
+	depends = procps-ng
+	depends = sed
+	optdepends = dmidecode: inxi -M if no sys machine data
+	optdepends = file: inxi -o unmounted file system
+	optdepends = hddtemp: inxi -Dx show hdd temp
+	optdepends = net-tools: inxi -i ip lan-deprecated
+	optdepends = iproute2: inxi -i ip lan
+	optdepends = lm_sensors: inxi -s sensors output
+	optdepends = usbutils: inxi -A usb audio;-N usb networking
+	optdepends = kmod: inxi -Ax,-Nx module version
+	optdepends = systemd-sysvcompat: inxi -I runlevel
+	optdepends = sudo: inxi -Dx hddtemp-user;-o file-user
+	optdepends = mesa-demos: inxi -G glx info
+	optdepends = xorg-xdpyinfo: inxi -G multi screen resolution
+	optdepends = xorg-xprop: inxi -S desktop data
+	optdepends = xorg-xrandr: inxi -G single screen resolution
+	options = zipman
+	source = inxicopy-2.9.10.tar.gz::https://github.com/smxi/inxi/archive/c4bc0ff282e32ab87d9d2e2b450a1dbb364a941c.tar.gz
+	sha256sums = be29b35fc898c12ede0f1a79f2b9878772946b0036b35608887320aa9a9b096d
+
+pkgname = inxicopy
+
