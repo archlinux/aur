@@ -25,5 +25,5 @@ unless ($installer =~ /(cewe-fotoservice|Mein_CEWE_FOTOBUCH)/){
 	system('_UPDATING=1 makepkg --install --clean --skipchecksums');
 }
 
-print "\nDrücken Sie <ENTER> um diese Fenster zu schließen.\n";
+print "\nDrücken Sie <ENTER> um dieses Fenster zu schließen.\n";
 my $input = <STDIN>;
