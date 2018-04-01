@@ -82,7 +82,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-ffmpeg-r1.patch'
+
          # Misc Patches
+        'chromium-ffmpeg-clang.patch'
         'chromium-intel-vaapi_r17.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/17/patch?download'
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
@@ -100,6 +102,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
             # Misc Patches
+            '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             '0db6db88f49e01a42b0defc9b152b90d628ff6a0c09268fe7b0c02c569acf60e'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
@@ -353,7 +356,9 @@ CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
 # Conditionals.
 if check_option strip y; then
-  _flags+=('symbol_level=0')
+  _flags+=(
+           'symbol_level=0'
+           )
   # Mimic exclude_unwind_tables=true
   CFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
   CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
@@ -366,9 +371,35 @@ if check_buildoption ccache y; then
   export CCACHE_SLOPPINESS=time_macros
 fi
 
+if [ "${_use_bundled_clang}" = "0" ]; then
+  _flags+=(
+           'clang_use_chrome_plugins=false'
+           )
+  makedepends+=(
+                'clang'
+                )
+elif [ "${_use_bundled_clang}" = "1" ]; then
+  _flags+=(
+           'clang_use_chrome_plugins=true'
+           )
+fi
+
 ################################################
 
 prepare() {
+  msg2 "Setup compiler environment"
+  if [ "${_use_bundled_clang}" = "1" ]; then
+    _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
+    # Bundled clang not like this
+    CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+    CFLAGS="${CFLAGS//-fno-plt/}"
+  fi
+
+  export CC="${_clang_path}clang"
+  export CXX="${_clang_path}clang++"
+  export AR=ar
+  export NM=nm
+
   cd "${srcdir}/chromium-${pkgver}"
 
   # Use chromium-dev as branch name.
@@ -389,6 +420,12 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
   patch -p1 -i "${srcdir}/chromium-clang-r2.patch"
   patch -p1 -i "${srcdir}/chromium-ffmpeg-r1.patch"
+
+  # Misc patches
+  # set the correct compiler if use bundled clang
+  if [ "${_use_bundled_clang}" = "1" ]; then
+    cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
+  fi
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules
   base64 -d "${srcdir}/fix_gn.diff.base64" | patch -p1 -i -
@@ -463,27 +500,6 @@ build() {
           CHROMIUM_SUFFIX="-dev"
 
   cd "chromium-${pkgver}"
-
-  msg2 "Setup compiler"
-
-  if [ "${_use_bundled_clang}" = "0" ]; then
-    _flags+=(
-             'clang_use_chrome_plugins=false'
-             )
-  elif [ "${_use_bundled_clang}" = "1" ]; then
-    _flags+=(
-             'clang_use_chrome_plugins=true'
-            )
-    _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
-    # Bundled clang not like this
-    export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
-    export CFLAGS="${CFLAGS//-fno-plt/}"
-  fi
-
-  export CC="${_clang_path}clang"
-  export CXX="${_clang_path}clang++"
-  export AR=ar
-  export NM=nm
 
   #echo ${_flags[@]}
 
