@@ -1,0 +1,15 @@
+pkgbase = aqarahub
+	pkgdesc = AqaraHub: Open-source bridge between Xiaomi Zigbee devices and MQTT
+	pkgver = r128.59d206e
+	pkgrel = 1
+	url = https://github.com/Frans-Willem/AqaraHub
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	source = aqarahub::git+https://github.com/Frans-Willem/AqaraHub.git
+	md5sums = SKIP
+
+pkgname = aqarahub
+
