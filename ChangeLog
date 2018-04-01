@@ -1,0 +1,5 @@
+2018-04-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.14.6-1 :
+	Copied from package 'giada', which is moved into Community repository,
+	to continue to support VST plugins.

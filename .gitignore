@@ -1,0 +1,6 @@
+src/
+pkg/
+giada-vst*.tar.xz
+giada-vst*-src.tar.gz
+giada-*-src.tar.gz
+.AURINFO

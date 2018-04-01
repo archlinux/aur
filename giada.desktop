@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Giada
+Comment=A looper, drum machine, sequencer, live sampler and plugin host
+TryExec=giada
+Exec=giada %F
+Icon=giada
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;Midi;Music
