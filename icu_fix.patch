@@ -1,0 +1,9 @@
+--- CMakeLists.txt	(revision 22461)
++++ CMakeLists.txt	(working copy)
+@@ -926,5 +926,6 @@
+ # CTL support
+ pkg_check_modules(HARFBUZZ REQUIRED harfbuzz>=0.9.42 harfbuzz-icu)
+ pkg_check_modules(ICU REQUIRED icu-uc)
++add_definitions(-DU_USING_ICU_NAMESPACE=1)
+ 
+ 

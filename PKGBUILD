@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=22262
+pkgver=22461
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -17,33 +17,36 @@ makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
-source=('scribus::svn://scribus.net/trunk' python2.patch)
+source=('scribus::svn://scribus.net/trunk' python2.patch icu_fix.patch)
 md5sums=('SKIP'
-         '98b93cecd7b87a3b1425d2e483cd0a05')
-options=('!makeflags')
+         '98b93cecd7b87a3b1425d2e483cd0a05'
+         '90b5e597dc5723a659048b288a6680b0')
 _svnmod='scribus'
 
 pkgver() {
-  cd "$srcdir"/${_svnmod}
+  cd ${_svnmod}
   local ver="$(svnversion)"
   printf "%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
-  cd "$srcdir"/$_svnmod/
-  patch -Np1 < $srcdir/python2.patch || true
+  cd $_svnmod
+  patch -Np1 < "$srcdir"/python2.patch || true
+  cd Scribus
+  patch -Np0 < "$srcdir"/icu_fix.patch || true
 }
 
 build() {
-  cd "$srcdir"/$_svnmod/Scribus
+  cd $_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_SKIP_RPATH:BOOL=YES \
-	-DWANT_GRAPHICSMAGICK=1 \
-	-DCMAKE_LIBRARY_PATH=/usr/lib \
-	-DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
-	-DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
-	-DCMAKE_APPDATA_DIR=/usr/share/appdata \
-	-DQT_PREFIX="/usr" -DWANT_SVNVERSION=1
+	-DWANT_GRAPHICSMAGICK:BOOL=YES \
+	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
+	-DCMAKE_INCLUDE_PATH:PATH=/usr/include/python2.7 \
+	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
+	-DCMAKE_APPDATA_DIR:PATH=/usr/share/appdata \
+	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES \
+	
   make
 }
 
