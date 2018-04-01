@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20170307
-pkgrel=5
+pkgver=20180315
+pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -111,6 +111,7 @@ package() {
     "$pkgdir/usr/share/doc/libbitcoin-server/wiki"
 
   msg2 'Installing conf...'
+  install -dm 700 "$pkgdir/etc/obelisk"
   install -Dm 600 data/bs.cfg.in "$pkgdir/etc/obelisk/bs/bs.cfg"
 
   msg2 'Installing systemd service files...'
