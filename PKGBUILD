@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.beta5.r0.ge6cae6d88d
+pkgver=8.2.rc1.r0.gfb9f38a4ae
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -24,7 +24,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter3: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-data: for computing Galois groups'
+  'coxeter: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
@@ -33,12 +33,13 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
-  mcqd coxeter3 bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes git)
+  mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
         sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch
-        sagemath-singular-4.1.0.p4.patch)
+        sagemath-singular-4.1.1.patch
+        pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
             '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
             'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
@@ -54,7 +55,8 @@ sha256sums=('SKIP'
             '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
-            'cc679321c2968d5e74b0ec060979c74019df2995857906bdd1397695b1f24c5c')
+            'cc679321c2968d5e74b0ec060979c74019df2995857906bdd1397695b1f24c5c'
+            'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
 
 pkgver() {
   cd sage
@@ -94,8 +96,10 @@ prepare(){
   patch -p1 -i ../pari-stackwarn.patch
 # remove deprecated scipy parameters
   patch -p1 -i ../sagemath-scipy-1.0.patch
-# fix build with Singular 4.1.0.p4
-  patch -p1 -i ../sagemath-singular-4.1.0.p4.patch
+# fix build with Singular 4.1.1
+  patch -p1 -i ../sagemath-singular-4.1.1.patch
+# revert usage of development PARI features
+  patch -Rp1 -i ../pari-ratpoints.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
