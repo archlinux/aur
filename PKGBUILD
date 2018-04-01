@@ -5,12 +5,12 @@
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r1.1.gb4a2013
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/sekrit-twc/znedi3'
 license=('GPL2')
-depends=('vapoursynth')
+depends=('vapoursynth' 'vapoursynth-plugin-nnedi3_weights_bin')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -36,6 +36,6 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 vsznedi3.so "${pkgdir}/usr/lib/vapoursynth/vsznedi3.so"
-  install -Dm755 nnedi3_weights.bin "${pkgdir}/usr/lib/vapoursynth/nnedi3_weights.bin"
+  #install -Dm755 nnedi3_weights.bin "${pkgdir}/usr/lib/vapoursynth/nnedi3_weights.bin"
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }

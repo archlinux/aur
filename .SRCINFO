@@ -1,13 +1,14 @@
 pkgbase = vapoursynth-plugin-znedi3-git
 	pkgdesc = Plugin for Vapoursynth: znedi3 (GIT version)
 	pkgver = r1.1.gb4a2013
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sekrit-twc/znedi3
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = vapoursynth
+	depends = vapoursynth-plugin-nnedi3_weights_bin
 	provides = vapoursynth-plugin-znedi3
 	conflicts = vapoursynth-plugin-znedi3
 	source = git+https://github.com/sekrit-twc/znedi3.git
