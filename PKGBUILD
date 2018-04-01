@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=openexr_viewers
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="exrdisplay and playexr OpenEXR image viewers"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('nvidia-cg-toolkit: for playexr')
 # this makepepend is optional but without it playexr is not built
 makedepends=('nvidia-cg-toolkit')
 source=(http://download.savannah.nongnu.org/releases/openexr/$pkgname-$pkgver.tar.gz)
-md5sums=('62604daecfefddbb57f701d61ca37d7d')
+md5sums=('f68d5cb2c09420f26c967a6411c463a9')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = openexr_viewers
 	pkgdesc = exrdisplay and playexr OpenEXR image viewers
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://www.openexr.com/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = openexr_viewers
 	depends = libgl
 	depends = openexr
 	optdepends = nvidia-cg-toolkit: for playexr
-	source = http://download.savannah.nongnu.org/releases/openexr/openexr_viewers-2.2.0.tar.gz
-	md5sums = 62604daecfefddbb57f701d61ca37d7d
+	source = http://download.savannah.nongnu.org/releases/openexr/openexr_viewers-2.2.1.tar.gz
+	md5sums = f68d5cb2c09420f26c967a6411c463a9
 
 pkgname = openexr_viewers
 
