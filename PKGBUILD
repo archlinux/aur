@@ -1,19 +1,19 @@
 # Maintainer: Daniel Leining <daniel@the-beach.co>
 
 pkgname=chunky
-pkgver=1.4.4
+pkgver=1.4.5
 basever=1.4
 pkgrel=1
 pkgdesc="Minecraft mapping and rendering tool"
 url="http://chunky.llbit.se/"
 arch=('any')
 license=('GPL3')
-depends=('java-environment' 'java-openjfx')
+depends=('java-runtime-openjdk=8' 'java-openjfx')
 makedepends=('gendesk')
 source=(https://launchpad.net/"$pkgname"/"$basever"/"$pkgver"/+download/Chunky-"$pkgver".zip
        chunky.sh)
-sha512sums=('ba2ea8ab5b5b56f08dff890353d39b1cfdaa456888e03e44708473d7403891960aa233a4abf2beb98425b09d1a41bb00ed5ecb6758c2b44c67c4a99ebb604941'
-            '69827c1468e91da782e7260be9b7dab8b415c0d95f4b1286b809b63039bd07cdf06a9b8dd99a509f85145547015e0676fa6868e4ead6ff14bd0e49de82cec9fc')
+sha512sums=('2b583066a0dffecf117e0feb1aa4b422079e14aca3120cf4ce357fd8b2c2b6739806123d5bb53e065727e4abab4d41b82b7f47c626c7ce54a3282d4c97a4246a'
+            '180f6110c93ec58d5b0d42e7c9c5de3e00b8003dc90b0d81c10a25bff98dd4233f2b1861d0814c4695247998cb8a98ec622f4a91ef9b7fd709ea950db8784fff')
 
 build() {
   gendesk -f -n
