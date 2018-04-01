@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=64.0.3282.186
+pkgver=65.0.3325.181
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -14,45 +14,42 @@ makedepends=(
 )
 options=('!strip')
 source=(
+  "https://repo.herecura.eu/herecura/x86_64/ncurses5-compat-libs-6.1-1-x86_64.pkg.tar.xz"
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
   'chromium-FORTIFY_SOURCE-r2.patch'
-  'chromium-memcpy-r0.patch'
-  'chromium-angle-r0.patch'
 )
-sha512sums=('a8a435ee8506cfefaaf2df7447010df5db69fa6907844872d00643f55723a9bd7771649658f5151c857ac037adcbc8bdf2a5375dd105f78d068277ef021af7d8'
+sha512sums=('c2bc35f4a7a571c51b5ea0b3307094209ba663d1ef519ca61dadd8bc570128793c18a1d317a54c98ac58737f6c87a61aca262b7c01797f4df9a838cc40191b4f'
+            '52472127b46da48699f401ab9c64f80975398bc3e97d032c517736babc327bfa0a0ce6415831ff3f585cd309e2e05e48d5252b15d0873fee118adf70f54d1a05'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c'
-            '1aeeb70929acee529dea66860b42f106afe18c0f6219eb03c9c710faf8d20a997135550e289839599ec325d8f032243fd70c07d397bd89302a192c41e8c4660a'
-            'c5fa18dbaa82a0fc089c6c88857089f19c83f6d3ff7c7034e6ca3cde20f1615cd84ac13fde14b55dcfa7d3c85eb0f023fbe337bb96d7d8199b5729b269a5ccc7')
+            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
-  find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
-  # There are still a lot of relative calls which need a workaround
-  [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
 
-  # chromium 46 gives an error about a missing file
-  # workaround create empty
-  touch chrome/test/data/webui/i18n_process_css_test.html
+  # force some 'older' binaries in the path
+  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
+  mkdir "$srcdir/path"
+  ln -s /usr/bin/python2 "$srcdir/path/python"
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
   patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "$srcdir/chromium-memcpy-r0.patch"
-  patch -p1 -i "$srcdir/chromium-angle-r0.patch"
 }
 
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  export PATH="$srcdir/python2-path:$PATH"
+  python2 tools/clang/scripts/update.py --without-android
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_pulseaudio=false link_pulseaudio=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false"
+  cp -a "$srcdir/usr/lib/libncursesw.so.5.9" 'third_party/llvm-build/Release+Asserts/lib/'
+  ( cd 'third_party/llvm-build/Release+Asserts/lib/'; ln -s libncursesw.so.5.9 libtinfo.so.5 )
+
+  export PATH="$srcdir/path:$PATH"
+
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=true clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
 
   python2 tools/gn/bootstrap/bootstrap.py -v -s
   out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
