@@ -10,10 +10,10 @@ pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
 md5sums=('638a766051d95e3f1d94d77d2e4db5a2'
-         '422a405d520e18ef9afade2e7c24440b')
+         '11e395d7c48d7f340435eeb938bcb502')
 
 pkgver=6.3.3
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
@@ -41,8 +41,8 @@ package() {
 	# don't clear screen, fail to update system mime database, install broken desktop file, or burble
 	sed -i 's/^\s*\(system("clear"\|system("update-mime-database \|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
-	# don't show EULA/ask for confirmation if package is already installed
-	which $pkgname &>/dev/null && update='--update'
+	# don't show EULA/ask for confirmation (EULA is addressed in install script)
+	update='--update'
 	# keep packages unless updating from within application
 	[[ -z "$_UPDATING" ]] && keepPackages='-k' || update='--upgrade'
 
@@ -58,7 +58,7 @@ package() {
 		cd ${_installDir#$pkgdir}
 		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
 		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
-		exec ./"$_productUrname" "\$@"
+		exec ./"${_productUrname/_/.}" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
