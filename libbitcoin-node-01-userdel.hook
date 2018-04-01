@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = libbitcoin-node
+
+[Action]
+Description = Removing libbitcoin node/server user...
+Depends = shadow
+When = PostTransaction
+Exec = /usr/bin/userdel -rf obelisk

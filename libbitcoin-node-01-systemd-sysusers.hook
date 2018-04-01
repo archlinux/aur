@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = libbitcoin-node
+
+[Action]
+Description = Adding libbitcoin node/server user...
+Depends = systemd
+When = PostTransaction
+Exec = /usr/bin/systemd-sysusers /usr/lib/sysusers.d/obelisk.conf

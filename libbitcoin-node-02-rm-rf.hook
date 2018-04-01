@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = libbitcoin-node
+
+[Action]
+Description = Cleaning up libbitcoin node/server user directories...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/rm -rf /srv/obelisk /var/log/obelisk

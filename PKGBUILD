@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-node
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -21,7 +21,8 @@ makedepends=('autoconf'
              'libtool'
              'm4'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'systemd')
 optdepends=('statsd: log to statistics collection server')
 groups=('libbitcoin' 'obelisk')
 url="https://github.com/libbitcoin/libbitcoin-node"
@@ -31,13 +32,21 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         bn.logrotate
         bn-init.service
         bn.service
-        obelisk-sysusers.conf)
+        obelisk-sysusers.conf
+        libbitcoin-node-01-systemd-sysusers.hook
+        libbitcoin-node-01-userdel.hook
+        libbitcoin-node-02-chown.hook
+        libbitcoin-node-02-rm-rf.hook)
 sha256sums=('e3a0a96155ca93aa6cba75789c18419f40686a69cbd40c77aa77ca84ccc43cab'
             'SKIP'
             'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
             'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
             'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43'
-            '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f')
+            '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f'
+            '651b0cd7c7382acf6862b60f6fdb4cff581c045c02b1915c48e4dde5aa57bf3e'
+            'a2670db1e216d686cb975806915ab07e6f600f5dd2e075d421fa118574cae6a8'
+            '87fd998294264ad3c8b2d30a643c9374f0d8ec3e7d5b6bce006633e1586b98e1'
+            'b5bd4f1f526ded3f6cbef97ae0615768f655f4e9a8f079a764d8835f56f8aaa5')
 backup=('etc/obelisk/bn/bn.cfg'
         'etc/logrotate.d/bn')
 install=bn.install
@@ -116,6 +125,10 @@ package() {
 
   msg2 'Installing logrotate conf...'
   install -Dm 644 "$srcdir/bn.logrotate" "$pkgdir/etc/logrotate.d/bn"
+
+  # XXX: pacman hook on Remove event not firing
+  msg2 'Installing pacman hooks...'
+  install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
