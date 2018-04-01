@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r465.218b0a1
+pkgver=r475.9e504b5
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and shape)."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
 license=('ISC' 'Lucent Public License')
 groups=()
-depends=('gsfonts')
+depends=('gsfonts<=20150811')
 makedepends=('git')
 optdepends=('troff-git: Port of Plan 9 troff (the preprocessors and the macro packages can be used with neatroff)'
             'bib2ref: Converts bibtex files to refer databases'
@@ -108,6 +108,7 @@ package() {
 
   cd $srcdir/neatpost
   install -Dm755 post $pkgdir/usr/bin/neatpost
+  install -Dm755 pdf $pkgdir/usr/bin/neatpdf
   install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README.neatpost
   install -Dm644 ../neatroff_make/man/neatpost.1 $pkgdir/usr/share/man/man1/neatpost.1
 
