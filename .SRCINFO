@@ -1,0 +1,14 @@
+pkgbase = java-design-patterns
+	pkgdesc = Design patterns implemented in Java
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://java-design-patterns.com/
+	arch = any
+	license = MIT
+	optdepends = java-environment
+	optdepends = maven
+	source = java-design-patterns-1.7.0.tar.gz::https://github.com/iluwatar/java-design-patterns/archive/1.7.0.tar.gz
+	sha256sums = ccd8787e235f62a7c19033189c32cc8f5ab295ee3091782a1424e6474588bd60
+
+pkgname = java-design-patterns
+
