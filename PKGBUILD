@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r397.gebf7c04057
+pkgver=0.28.2.r420.ge3e2c794ef
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
