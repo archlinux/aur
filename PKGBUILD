@@ -1,7 +1,7 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=globalplatformpro-git
-pkgver=0.3.9.r31.g4759878
+pkgver=0.3.10rc8.r2.g2c67f83
 pkgrel=1
 pkgdesc="A powerful tool for managing applets and keys on JavaCards based on the GlobalPlatform specifications"
 arch=('any')
@@ -30,6 +30,7 @@ prepare() {
 
 build() {
   cd $pkgname
+  mvn package
   ant
 }
 
