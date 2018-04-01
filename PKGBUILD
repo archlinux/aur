@@ -2,7 +2,7 @@
 # Contributor: James W. Barnett <james at wbarnett dot us>
 
 pkgname=grub-btrfs
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Include btrfs snapshots in GRUB boot options"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('btrfs-progs' 'grub')
 optdepends=('snapper: Snapper support')
 conflicts=('grub-btrfs-git')
 source=("https://github.com/Antynea/grub-btrfs/archive/${pkgver}.tar.gz")
-sha256sums=('00c8c1b3665f1e74c3a2b1fe92dd938fb9ac10a60f43c20ed19f1582ee79349a')
+sha256sums=('d97a8065a9379da0791669bb6197fb7ad6636fccfb1371ff56208ad629e644a6')
 install='grub-btrfs.install'
 
 package() {
