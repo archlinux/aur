@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=glsl-debugger-git
-pkgver=r390.06cb427
+pkgver=r395.f3139f9
 pkgrel=1
 epoch=1
 pkgdesc="GLSL source level debugger. This is the Open Source public release of the project originally known as glslDevil."
@@ -9,22 +9,14 @@ url="http://glsl-debugger.github.io/"
 license=('custom')
 depends=('qt4' 'glew' 'freeglut')
 makedepends=('git' 'cmake')
-source=("$pkgname::git://github.com/GLSL-Debugger/GLSL-Debugger.git"
-        "perl5.26.patch::https://github.com/GLSL-Debugger/GLSL-Debugger/commit/1a7d86d5161871beb8c6dff58a288baa09ad9633.patch")
-md5sums=('SKIP'
-         '57858a4276634f19f6fdad6d3fda66a5')
+source=("$pkgname::git://github.com/GLSL-Debugger/GLSL-Debugger.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  git apply  "$srcdir/perl5.26.patch"
-}
- 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
