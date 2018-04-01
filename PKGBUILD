@@ -2,7 +2,7 @@
 
 pkgname=libretro-mesen-git
 pkgver=1866.d9629e67
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Mesen is a cross-platform (Windows & Linux) NES/Famicom emulator built in C++ and C#"
 url="https://github.com/libretro/Mesen"
@@ -30,5 +30,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/Libretro/obj.x64/${_libname}.x64.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
