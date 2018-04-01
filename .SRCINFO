@@ -1,13 +1,13 @@
 pkgbase = gstreamer0.10-ugly
 	pkgver = 0.10.19
-	pkgrel = 27
-	url = https://github.com/triceratops1/gstreamer0
+	pkgrel = 28
+	url = https://gstreamer.freedesktop.org
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = LGPL
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10-base>=0.10.36-8
+	makedepends = gstreamer0.10-base>=0.10.36-11
 	makedepends = libdvdread
 	makedepends = lame
 	makedepends = libmpeg2
@@ -18,17 +18,16 @@ pkgbase = gstreamer0.10-ugly
 	makedepends = libx264
 	makedepends = x264
 	makedepends = opencore-amr
-	makedepends = git
-	source = git+https://gitlab.com/gstreamer-sdk/gst-plugins-ugly.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089
+	source = https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-0.10.19.tar.xz
 	source = opencore-amr.patch
 	source = cdio-cd-text-api.patch
-	md5sums = SKIP
-	md5sums = d8feb6c99bfaff8be6b2c48ea4e98e47
-	md5sums = 6c1c665f864387f3a77d32231fedeaab
+	sha256sums = 4934f65ff892637e7efaf1cfe635779189dde429d0706f40c86a3aac476ea873
+	sha256sums = 6da7b11d0b6953b05262e0ebdcbfc1ac8ba82aae008ac8d06e68271d8f3f01af
+	sha256sums = 2a8aa4cd019fab333f1f8377bf7afa426d3038a033361d90fab70c335e9a53e7
 
 pkgname = gstreamer0.10-ugly
 	pkgdesc = GStreamer Multimedia Framework Ugly plugin libraries
-	depends = gstreamer0.10-base>=0.10.34
+	depends = gstreamer0.10-base>=0.10.36-11
 
 pkgname = gstreamer0.10-ugly-plugins
 	pkgdesc = GStreamer Multimedia Framework Ugly Plugins (gst-plugins-ugly)
@@ -36,6 +35,7 @@ pkgname = gstreamer0.10-ugly-plugins
 	depends = gstreamer0.10-ugly=0.10.19
 	depends = libdvdread
 	depends = lame
+	depends = twolame
 	depends = libmpeg2
 	depends = a52dec
 	depends = libmad
