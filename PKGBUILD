@@ -1,9 +1,9 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=r232.9af2121
+pkgver=r244.c51b9a9
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 17+"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
 makedepends=('kodi-dev' 'cmake' 'git')
