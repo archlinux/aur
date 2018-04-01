@@ -1,4 +1,3 @@
-#! /bin/bash
 # Maintainer:  Israel Herraiz <isra@herraiz.org>
 # Contributor: jorge_barroso <jorge.barroso.11@gmail.com>
 # Contributor: Ray Griffin <rorgoroth@googlemail.com>
@@ -6,7 +5,7 @@
 
 pkgname=freeciv-sdl
 _pkgname=freeciv
-pkgver=2.5.10
+pkgver=2.5.11
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL Client"
 arch=('i686' 'x86_64')
@@ -17,6 +16,7 @@ conflicts=('freeciv')
 options=('!libtool')
 install=$_pkgname.install
 source=(http://files.freeciv.org/stable/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('4c9c526952fe977cb4b302b8ccf75798fd066c6dde670f72f677fe4964259aad')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
@@ -35,4 +35,5 @@ package() {
 
   install -m644 client/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 }
-md5sums=('b0b0e95f9d04816ade2ecbccd408a4f3')
+
+
