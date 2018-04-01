@@ -29,7 +29,7 @@ optdepends=(
 options=('zipman')
 _commit=c4bc0ff282e32ab87d9d2e2b450a1dbb364a941c
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('04b2011a0ea9b0e0ac1a4d099ca115c65c1bbc3bbe3dcedc30a99e00df0d9ee2')
+sha256sums=('be29b35fc898c12ede0f1a79f2b9878772946b0036b35608887320aa9a9b096d')
 
 pkgver() {
     cd "${pkgname}-${_commit}"
