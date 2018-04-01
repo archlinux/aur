@@ -5,10 +5,11 @@ pkgbase = icons-in-terminal
 	url = https://github.com/sebastiencs/icons-in-terminal
 	arch = any
 	license = custom:MIT
+	makedepends = git
 	depends = fontconfig
 	provides = icons-in-terminal
 	conflicts = icons-in-terminal
-	source = git+https://github.com/sebastiencs/icons-in-terminal.git
+	source = git://github.com/sebastiencs/icons-in-terminal.git
 	sha512sums = SKIP
 
 pkgname = icons-in-terminal

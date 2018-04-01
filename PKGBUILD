@@ -10,7 +10,8 @@ license=('custom:MIT')
 provides=('icons-in-terminal')
 conflicts=('icons-in-terminal')
 depends=('fontconfig')
-source=('git+https://github.com/sebastiencs/icons-in-terminal.git')
+makedepends=('git')
+source=('git://github.com/sebastiencs/icons-in-terminal.git')
 sha512sums=('SKIP')
 
 pkgver() {
