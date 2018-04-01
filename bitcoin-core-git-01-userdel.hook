@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = bitcoin-core-git
+
+[Action]
+Description = Removing bitcoin daemon user...
+Depends = shadow
+When = PostTransaction
+Exec = /usr/bin/userdel -rf bitcoin

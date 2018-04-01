@@ -1,18 +1,9 @@
-_bc_user=bitcoin
-_bc_group=bitcoin
-
 post_install() {
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
   printf "%b\n" "$bitcoin"
 }
 
 post_upgrade() {
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
-  printf "%b\n" "$bitcoin"
-}
-
-post_remove() {
-  rm -rf /srv/bitcoin
+  post_install
 }
 
 read -d '' bitcoin <<'EOF'

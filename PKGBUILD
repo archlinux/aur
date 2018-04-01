@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20180320
+pkgver=20180330
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -17,20 +17,29 @@ makedepends=('autoconf'
              'libtool'
              'm4'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'systemd')
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin-sysusers.conf)
+        bitcoin-sysusers.conf
+        bitcoin-core-git-01-systemd-sysusers.hook
+        bitcoin-core-git-01-userdel.hook
+        bitcoin-core-git-02-chown.hook
+        bitcoin-core-git-02-rm-rf.hook)
 sha256sums=('SKIP'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a')
+            'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a'
+            'c8636b95f7267c65da609bfde84cb70d7733126837e0b05b3219cb271beb634c'
+            'fd51f57554bbe6df225c6773736d3941ac479e70f5573b3c373157e16a7f6484'
+            '51e683fc708ba4c17da93dd70a593c7b94ba5c2f58a431c04c1b0112b52221f6'
+            '35b34d87df5a58aca3c0ceb18fc31ed36c1493838cb9a3b9653f8b5bf64b2de2')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-tx')
@@ -118,4 +127,8 @@ package() {
     install -Dm 644 "contrib/${_compl}.bash-completion" \
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
+
+  # XXX: pacman hook on Remove event not firing
+  msg2 'Installing pacman hooks...'
+  install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 }

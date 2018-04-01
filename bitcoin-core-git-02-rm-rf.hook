@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = bitcoin-core-git
+
+[Action]
+Description = Cleaning up bitcoin daemon user directories...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/rm -rf /srv/bitcoin
