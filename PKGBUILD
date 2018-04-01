@@ -5,7 +5,7 @@
 
 pkgname=ddccontrol-git
 _pkgname=ddccontrol
-pkgver=20180331.7a7cdb4
+pkgver=20180317.7a7cdb4
 pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol."
 arch=('i686' 'x86_64')
