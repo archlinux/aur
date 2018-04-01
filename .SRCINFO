@@ -1,0 +1,16 @@
+pkgbase = xcolor
+	pkgdesc = Lightweight color picker for X11
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Soft/xcolor
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = python
+	depends = libxcb
+	source = https://github.com/Soft/xcolor/archive/0.3.1.tar.gz
+	md5sums = 7192f03c4e3050b22d9ec8afd8f804d6
+
+pkgname = xcolor
+
