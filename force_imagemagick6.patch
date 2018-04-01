@@ -1,0 +1,12 @@
+diff -rup pfstools-2.1.0/CMakeLists.txt pfstools-2.1.0.new/CMakeLists.txt
+--- pfstools-2.1.0/CMakeLists.txt	2017-11-13 18:38:18.000000000 +0100
++++ pfstools-2.1.0.new/CMakeLists.txt	2018-04-01 20:11:54.324233991 +0200
+@@ -114,7 +114,7 @@ OPTION(WITH_ImageMagick "Use ImageMagick
+ 
+ if( WITH_ImageMagick )
+ 
+-find_package(ImageMagick COMPONENTS Magick++ MagickCore)
++find_package(ImageMagick 6 EXACT COMPONENTS Magick++ MagickCore)
+ if( NOT ImageMagick_FOUND )
+ MESSAGE( STATUS "ImageMagick not found. The following commands will not be
+ compiled: pfsinimgmagick pfsoutimgmagick pfsouthdrhtml. " )

@@ -25,15 +25,17 @@ makedepends=('cmake' \
              'gsl' 'fftw' 'libexif' 'opencv'
              'freeglut' 'glu' 'qt4' 'gtkglext')
 options=(!libtool)
-source=(http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz \
-        opencv3.patch)
+source=("http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz"
+        "opencv3.patch" "force_imagemagick6.patch")
 sha256sums=('3dea4248e41bf433fe4760b0a11d138ad2d240f62db9e519bcb1d557c0593413'
-            '41f74339b7cc1dbfa2c7e1de62e81c7f423bc22cba9e27ee57b1d0b2ce15ce82')
+            '41f74339b7cc1dbfa2c7e1de62e81c7f423bc22cba9e27ee57b1d0b2ce15ce82'
+            'ab98716861280299d964496b3a3c35bb873d828060e353a4906efb465aba4674')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   patch -Np1 < "$srcdir/opencv3.patch"
+  patch -Np1 < "$srcdir/force_imagemagick6.patch"
 }
 
 build() {
