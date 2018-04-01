@@ -5,7 +5,7 @@ _plugin_name=no-coin
 pkgname=firefox-extension-${_plugin_name}
 pkgdesc="Stop coin miners on the web!"
 pkgver=0.4.14
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/${_plugin_name}/"
 makedepends=('unzip' )
@@ -21,7 +21,7 @@ pkgver(){
 
 package(){
     srcxpi="${srcdir}/${pkgname}.xpi"
-    emid=$(unzip -p "$srcxpi" install.rdf | sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}')
+    emid=${_plugin_name}
     
     
     install -Dm644 "$srcxpi" "${pkgdir}/usr/lib/firefox/browser/extensions/$emid.xpi"
