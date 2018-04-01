@@ -1,6 +1,6 @@
 pkgbase = cloud-init
 	pkgdesc = The standard for customising cloud instances
-	pkgver = 18.1
+	pkgver = 18.2
 	pkgrel = 1
 	url = https://cloud-init.io
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = cloud-init
 	depends = python2-jinja
 	backup = etc/cloud/cloud.cfg
 	backup = etc/cloud/cloud.cfg.d/05_logging.cfg
-	source = https://launchpad.net/cloud-init/trunk/18.1/+download/cloud-init-18.1.tar.gz
+	source = https://launchpad.net/cloud-init/trunk/18.2/+download/cloud-init-18.2.tar.gz
 	source = fix-lib.patch
 	source = archlinux.cloud.cfg
-	sha256sums = 49d8b7b56adbc6b8bc2aac966954c6c192382ea0500497577f8867e7e25e1ae6
+	sha256sums = 0224969ebdae6eadffc5f40823bb206d8b05d99a1b730018535102f38b155249
 	sha256sums = 0ace6a9e4156145e5b50bd5fa75d6aeefe8e5c10a63f8d9e0d3c7be4c9b53942
 	sha256sums = 109dd4500593c2fb7b2f7bf05eaf1835be8062c4f7b3025a0371184a691950da
 
