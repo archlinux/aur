@@ -1,6 +1,6 @@
 pkgbase = slsk-git
 	pkgdesc = A backup utility and database for Linux Steam games
-	pkgver = v1.3.2.1
+	pkgver = v1.3.2.2
 	pkgrel = 1
 	url = https://github.com/supremesonicbrazil/SLSK
 	arch = x86_64
