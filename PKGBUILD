@@ -10,7 +10,7 @@ arch=("any")
 url="https://matomo.org/"
 license=("GPL")
 depends=("php" "php-gd")
-replaces=("matomo")
+replaces=("piwik")
 optdepends=("mariadb: Database server"
   "python2: For log importer script"
   "php-geoip: For GeoIP php module")
