@@ -1,0 +1,50 @@
+pkgbase = linux-cobalt
+	pkgver = 4.9.90
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.90.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.90.sign
+	source = config
+	source = 90-linux.hook
+	source = linux-cobalt.preset
+	source = change-default-console-loglevel.patch
+	source = https://xenomai.org/downloads/ipipe/v4.x/x86/ipipe-core-4.9.90-x86-6.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a
+	sha256sums = SKIP
+	sha256sums = 56599775e46f6537cb8ec9d2b61a981ab2c4de75f8f333d91b35c98c36aa8b7c
+	sha256sums = SKIP
+	sha256sums = d481994054800384a0079e919e06d4577a0aee74e29e113725cbac1c80724c01
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = 99f3a60fdd43425e06f8487ce5894ca33142b341538ffb767cb5f15fa0044027
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 33aa946b60a629efdbb317ba35e30957085fe8fd4843470b22065d46926ca93f
+
+pkgname = linux-cobalt
+	pkgdesc = Linux kernel with real-time Cobalt co-kernel (Xenomai 3 project)
+	install = linux-cobalt.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-cobalt.preset
+
+pkgname = linux-cobalt-headers
+	pkgdesc = Header files and scripts for building modules for linux-cobalt kernel
+
+pkgname = linux-cobalt-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-cobalt kernel
+
