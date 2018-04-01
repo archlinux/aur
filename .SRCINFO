@@ -1,12 +1,9 @@
 pkgbase = nemo-desktop
-	pkgdesc = Ubuntu's display server
+	pkgdesc = Nemo desktop startup
 	pkgver = 1
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
-	license = LGPL
-	license = BSD
-	license = Apache
 	makedepends = extra-cmake-modules
 	makedepends = glm
 	makedepends = doxygen

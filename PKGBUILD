@@ -1,11 +1,11 @@
-# Maintainer: kikadf <kikadf.01@gmail.com>
+# Maintainer: beidl <dev.beidl@gmail.com>
 
 pkgname=nemo-desktop
 pkgver=1
 pkgrel=1
-pkgdesc="Ubuntu's display server"
+pkgdesc="Nemo desktop startup"
 arch=('x86_64')
-license=('GPL' 'LGPL' 'BSD' 'Apache')
+license=('GPL')
 depends=('nemo' 'systemd')
 makedepends=('extra-cmake-modules' 'glm' 'doxygen' 'libdrm')
 source=("file://nemo-desktop.service"
