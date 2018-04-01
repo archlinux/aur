@@ -1,3 +1,6 @@
+# Maintainer: Julian Daube <joposter at gmail dot com>
+# Contributor: Julian Daube <joposter at gmail dot com>
+
 _pkgname=ogre
 pkgname=ogre3d
 pkgrel=1
@@ -8,7 +11,7 @@ url="https://www.ogre3d.org/"
 arch=('any')
 license=('MIT')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OGRECave/ogre/archive/v1.10.11.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
 md5sums=('3a7ec7cbdf36b7a204832bd3763683b2')
 sha1sums=('a77756423960a44db8260db67a82589e979e1081')
 
