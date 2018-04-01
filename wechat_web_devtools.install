@@ -30,8 +30,10 @@ TIPS
 post_install(){
     /opt/wechat_web_devtools/bin/wxdt install
     echo -e $msg
+    cp /root/.local/share/applications/wechat_dev_tools.desktop /usr/share/applications/
 }
 
 post_upgrade(){
     echo -e $msg
+    cp /root/.local/share/applications/wechat_dev_tools.desktop /usr/share/applications/
 }

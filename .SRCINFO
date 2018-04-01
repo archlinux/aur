@@ -1,7 +1,7 @@
 pkgbase = wechat_web_devtools
 	pkgdesc = wechat web devtools 微信web开发工具
 	pkgver = 1.02.1803210
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cytle/wechat_web_devtools
 	install = wechat_web_devtools.install
 	arch = any
