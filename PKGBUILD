@@ -2,12 +2,12 @@
 
 pkgname=skype-lang-hu
 pkgver=4.3.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Hungarian language files for skype"
 url="http://www.urbalazs.hu/blog/index.php?cikk=6"
 arch=('any')
 license=('CCPL')
-depends=("skype=$pkgver")
+depends=("skype-legacy=$pkgver")
 source=(http://www.urbalazs.hu/blog/uploads/skype_hu_$pkgver.tar.gz)
 md5sums=('69301d841910604af7fdd1763551e1a2')
 
