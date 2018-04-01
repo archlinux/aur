@@ -1,7 +1,7 @@
 pkgbase = scribus-devel
 	pkgdesc = Desktop publishing software
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scribus.net/
 	arch = i686
 	arch = x86_64
@@ -29,12 +29,14 @@ pkgbase = scribus-devel
 	source = https://downloads.sourceforge.net/scribus/scribus-1.5.3.tar.xz.asc
 	source = findOpenSSL.patch
 	source = fix-poppler-issue.patch
+	source = fix-icu-0.61.1-compilation.patch
 	validpgpkeys = 5086B8D68E70FDDF4C40045AEF7B95E7F60166DA
 	validpgpkeys = 757F5E9B13DD648887AD50092D47C099E782504E
 	sha256sums = 73a30b4727e19f5d301a936d23a84275cc4f5613a92416cbd843f5167721d74f
 	sha256sums = SKIP
 	sha256sums = d6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4
 	sha256sums = 9e9e954cb30fe606196cb8fc1864983fa571f3a729aec0c3ef01fc577be238a1
+	sha256sums = 9faa7fe6d5c7744511b5472ad0e376162360099b9456aaaf3ec78290b1bfef11
 
 pkgname = scribus-devel
 

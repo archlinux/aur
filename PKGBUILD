@@ -8,7 +8,7 @@
 _pkgname=scribus
 pkgname=${_pkgname}-devel
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
@@ -22,10 +22,12 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
         'findOpenSSL.patch'
-        'fix-poppler-issue.patch')
+        'fix-poppler-issue.patch'
+        'fix-icu-0.61.1-compilation.patch')
 sha256sums=('73a30b4727e19f5d301a936d23a84275cc4f5613a92416cbd843f5167721d74f' 'SKIP'
             'd6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4'
-            '9e9e954cb30fe606196cb8fc1864983fa571f3a729aec0c3ef01fc577be238a1')
+            '9e9e954cb30fe606196cb8fc1864983fa571f3a729aec0c3ef01fc577be238a1'
+            '9faa7fe6d5c7744511b5472ad0e376162360099b9456aaaf3ec78290b1bfef11')
 validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA'  # Peter Linnell <plinnell@scribus.net>
               '757F5E9B13DD648887AD50092D47C099E782504E') # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
 
@@ -34,7 +36,9 @@ prepare() {
 
     patch -p1 -i ../findOpenSSL.patch
     patch -p1 -i ../fix-poppler-issue.patch
+    patch -p1 -i ../fix-icu-0.61.1-compilation.patch
 
+    # Fix python name
     sed \
         -e 's|#!/usr/bin/python|#!/usr/bin/python2|' \
         -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \

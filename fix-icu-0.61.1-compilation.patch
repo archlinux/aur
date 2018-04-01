@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -914,7 +914,8 @@ endif()
+ # CTL support
+ pkg_check_modules(HARFBUZZ REQUIRED harfbuzz>=0.9.42 harfbuzz-icu)
+ pkg_check_modules(ICU REQUIRED icu-uc)
++add_definitions(-DU_USING_ICU_NAMESPACE=1)
+
+
+ ##############################################################################################################
+ ########## Include Setup                                                                            ##########
