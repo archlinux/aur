@@ -4,7 +4,7 @@ pkgname=doc-browser-git
 pkgdesc="An API documentation browser with support for DevDocs and Hoogle"
 # pkgver will be updated with pkgver()
 pkgver=NA
-pkgrel=1
+pkgrel=2
 license=('MPL-2.0')
 url="https://github.com/qwfy/doc-browser"
 arch=('x86_64')
@@ -51,7 +51,7 @@ package() {
   _ui_dir=$(find "$(stack path --local-install-root)/share/" -type d -name 'ui' | sort -r | head -n 1)
   cp -r "${_ui_dir}" "${pkgdir}/usr/share/doc-browser/ui/"
 
-  _pkgname_no_vcs="doc-browser"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname_no_vcs}/LICENSE"
-  install -D -m644 ${_pkgname_no_vcs}.desktop "${pkgdir}/usr/share/applications/${_pkgname_no_vcs}.desktop"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/doc-browser/LICENSE"
+  install -D -m644 doc-browser.desktop "${pkgdir}/usr/share/applications/doc-browser.desktop"
+  install -D -m644 config.yaml "${pkgdir}/usr/share/doc-browser/config.yaml"
 }

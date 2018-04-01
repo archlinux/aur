@@ -1,7 +1,7 @@
 pkgbase = doc-browser-git
 	pkgdesc = An API documentation browser with support for DevDocs and Hoogle
 	pkgver = NA
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qwfy/doc-browser
 	arch = x86_64
 	license = MPL-2.0
