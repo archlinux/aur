@@ -1,16 +1,17 @@
 pkgbase = python-lz4
 	pkgdesc = LZ4 Bindings for Python
-	pkgver = 0.21.6
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/lz4
-	arch = any
+	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest
 	makedepends = python-distribute
 	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
-	depends = python3
-	source = https://pypi.python.org/packages/b8/22/4e5cff49209da0b95407569a0a447dc7fb75226acf38e98ecf23cbba2f42/lz4-0.21.6.tar.gz
-	md5sums = 775f2040423816264bbb9531a00b1a9d
+	depends = python
+	depends = python-deprecation
+	source = https://pypi.org/packages/source/l/lz4/lz4-1.0.0.tar.gz
+	md5sums = 420e428921f02ebcb4dc8c40a9d0f484
 
 pkgname = python-lz4
 
