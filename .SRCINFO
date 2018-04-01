@@ -1,7 +1,7 @@
 pkgbase = basilisk
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
-	pkgver = 2018.03.26
-	pkgrel = 2
+	pkgver = 2018.04.01
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -41,7 +41,7 @@ pkgbase = basilisk
 	optdepends = speech-dispatcher: Text-to-Speech
 	options = !emptydirs
 	options = !makeflags
-	source = basil1::git+https://github.com/MoonchildProductions/moebius.git#commit=6afc1c735f8f19cd317cd0ae81da9b4348a78ada
+	source = basil1::git+https://github.com/MoonchildProductions/moebius.git#commit=6d511e28616b5bcb2277c3a2e3dcbc994d84c963
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
 	source = https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch

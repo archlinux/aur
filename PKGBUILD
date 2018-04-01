@@ -4,9 +4,9 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=basilisk
-pkgver=2018.03.26
+pkgver=2018.04.01
 ve=55.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -19,7 +19,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags)
-com=6afc1c735f8f19cd317cd0ae81da9b4348a78ada
+com=6d511e28616b5bcb2277c3a2e3dcbc994d84c963
 source=("basil1::git+https://github.com/MoonchildProductions/moebius.git#commit=$com"
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
