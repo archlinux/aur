@@ -1,6 +1,6 @@
 post_install() {
-    sed -i '/^OnlyShowIn=/s/GNOME;/GNOME;Awesome;/' /etc/xdg/autostart/gnome-settings-daemon.desktop
-    dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+  sed -i '/^OnlyShowIn=/s/GNOME;/GNOME;Awesome;/' /etc/xdg/autostart/org.gnome.SettingsDaemon.*.desktop
+  dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 }
 
 # vim:set sts=2 ts=2 sw=2 et:
