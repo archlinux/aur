@@ -1,12 +1,12 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=photivo-hg
-pkgver=1117+.5d7d1cc4ef4d+
+pkgver=1124+.41a1d55bb275+
 pkgrel=1
 pkgdesc="Free and open source photo processor"
 arch=('i686' 'x86_64')
 url="http://photivo.org/"
 license=('GPL3')
-depends=('exiv2' 'qt4' 'lcms2' 'fftw' 'graphicsmagick' 'lensfun' 'liblqr' 'shared-mime-info')
+depends=('exiv2' 'qt5-base' 'lcms2' 'fftw' 'graphicsmagick' 'lensfun' 'liblqr' 'shared-mime-info' 'libraw')
 optdepends=('gimp: Gimp plugins' 'python2: Gimp to Photivo plugin')
 makedepends=('mercurial' 'gimp')
 provides=('photivo')
@@ -29,8 +29,7 @@ prepare() {
 build() {
   cd "$srcdir/photivo"
 
-  export INCLUDEPATHS="/usr/include/lensfun"
-  qmake-qt4 PREFIX=/usr CONFIG-=debug CONFIG+=WithGimp
+  qmake-qt5 PREFIX=/usr CONFIG-=debug CONFIG+=WithGimp
   make
 }
 
