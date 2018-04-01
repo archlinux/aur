@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for name in /usr/share/java/web3j/*.jar ; do
+  cp=$cp:$name
+done
+exec java -cp $cp $JAVA_OPTS $WEB3J_OPTS org.web3j.console.Runner "$@"
