@@ -2,18 +2,18 @@
 # forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 
 _keyaccount=6822
-_productUrname='CEWE FOTOSERVICE'
+_productUrname='cewe-fotoservice_de'
 _productRename='CEWE Fotoservice'
 _lang='de_DE'
 
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('c55ae2bb719cbd94a6dd702675560d19'
+md5sums=('6bbf70047655e1e359d2ce3991c7724c'
          '422a405d520e18ef9afade2e7c24440b')
 
-pkgver=6.3.1
-pkgrel=3
+pkgver=6.3.3
+pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
@@ -41,8 +41,8 @@ package() {
 	# don't clear screen, fail to update system mime database, install broken desktop file, or burble
 	sed -i 's/^\s*\(system("clear"\|system("update-mime-database \|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
-	# don't show EULA/ask for confirmation if package is already installed
-	which $pkgname &>/dev/null && update='--update'
+	# don't show EULA/ask for confirmation (EULA is addressed in install script)
+	update='--update'
 	# keep packages unless updating from within application
 	[[ -z "$_UPDATING" ]] && keepPackages='-k' || update='--upgrade'
 
@@ -58,7 +58,7 @@ package() {
 		cd ${_installDir#$pkgdir}
 		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
 		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
-		exec ./"$_productUrname" "\$@"
+		exec ./"${_productUrname/_/.}" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
