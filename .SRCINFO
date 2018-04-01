@@ -17,7 +17,7 @@ pkgbase = esp-idf
 	depends = bison
 	depends = gperf
 	depends = python2-pyserial
-	source = https://github.com/espressif/esp-idf/archive/v3.0-rc1.tar.gz
+	source = https://github.com/espressif/esp-idf/releases/download/v3.0-rc1/esp-idf-v3.0-rc1.zip
 	sha256sums = SKIP
 
 pkgname = esp-idf

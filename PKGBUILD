@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
 url="https://github.com/espressif/esp-idf"
 license=('APACHE')
 depends=('gcc' 'git' 'make' 'ncurses' 'flex' 'bison' 'gperf' 'python2-pyserial')
-source=(https://github.com/espressif/${pkgname}/archive/v${_pkgver}.tar.gz)
+source=(https://github.com/espressif/${pkgname}/releases/download/v${_pkgver}/${pkgname}-v${_pkgver}.zip)
 sha256sums=('SKIP')
 
 build() {
