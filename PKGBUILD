@@ -3,7 +3,7 @@ pkgbase=('mongoaudit')
 pkgname=('mongoaudit')
 _module='mongoaudit'
 pkgver='0.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated pentesting tool that lets you know if your MongoDB instances are properly secured"
 url="https://github.com/stampery/mongoaudit"
 depends=('python')
@@ -19,7 +19,8 @@ build() {
 }
 
 package() {
-    depends+=()
+    depends+=('python-pymongo'
+              'python-urwid')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
