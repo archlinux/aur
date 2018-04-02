@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=cargo-tree
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Cargo subcommand that visualizes a crate's dependency graph in a tree-like format"
 url="https://github.com/sfackler/cargo-tree"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 arch=('i686' 'x86_64' 'armv6h')
 license=('MIT' 'APACHE')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sfackler/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('448080b3a69dedeac95d579bf9c55fff36a2dd7bee381aea6a4c999a51c272ae')
+sha256sums=('8864fd47993bf4ef14d2e06af91b3746e1028d8eda69fc3bc8d29083134b8493')
 
 build() {
   cd "$pkgname-$pkgver"
