@@ -7,7 +7,7 @@
 
 pkgname=gnucash-python
 _realname=gnucash
-pkgver=2.7.8
+pkgver=3.0
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
@@ -23,15 +23,15 @@ options=('!makeflags' '!emptydirs')
 provides=('gnucash')
 conflicts=('gnucash')
 source=(
-	https://github.com/Gnucash/${_realname}/releases/download/${pkgver}/${_realname}-${pkgver}.tar.bz2
+	http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2
 )
 backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
 ) 
-sha1sums=('16dc0a80f8f196ddeee8abe1c1ae4758b88a30ce')
-sha256sums=('380c08d73b91d381a0197c108e672c20341c894bebb4ae98e9ab74df2a659797')
-sha512sums=('1e9f4dda0da4b8ce9a0ab2e240ea049fcbd13842126555353e162f36a125b939e1b4025556a63c042bb77f0ed9490dc4aa007cf697eb9dcadbf4b914c992b8ce')
+sha1sums=('40fae0f3b3530190e74c9c58cd59af2c439a2d64')
+sha256sums=('a5b5e1f69f328f7f71d609dced488ecca81b29be04fc2002cd9c3570118c45f6')
+sha512sums=('e9c470c8a1c1abf2e4f92d27f1646637c9580d2dff8c93808bb9aded904d90e634fd2763f2c6280922e7eb56a986508dfef0a36409c1129fb3796c00e2465822')
 
 
 prepare() {
