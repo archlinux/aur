@@ -2,16 +2,16 @@
 # Contributor: Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=skippy-xd-git
-pkgver=latest
+pkgver=r52.33b4de5
 pkgrel=1
 pkgdesc="A full-screen task-switcher for X11, similar to Apple's Expose."
+arch=("i686" "x86_64")
 url="http://code.google.com/p/${pkgname%-git}"
 license=("GPL")
-depends=("giflib" "libjpeg" "libxcomposite" "libxdamage" "libxft" "libxinerama" "xorg-server")
+depends=("giflib" "libjpeg" "libxcomposite" "libxft" "libxinerama" "xorg-server")
 makedepends=("git")
-arch=("i686" "x86_64")
 source=("git://github.com/penguinpowernz/${pkgname%-git}.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
