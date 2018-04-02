@@ -74,7 +74,7 @@ _bldtype=Release
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _mozcver=2.23.2815.102
 _utdicver=20171008
-_zipcoderel=201802
+_zipcoderel=201803
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
@@ -99,8 +99,8 @@ sha1sums=('SKIP'
           '9f88c5f12b3d9b1190c8ec046c6693483af3ba3f'
           'e085ab894d415ce318cf91de64f017d505f1d14e'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '23e6c06ae55c7e7f4b3f4f80132725b37d55270a'
-          '260b382b3d8fa2743184ed851e78616feafb6dc3'
+          '00aada0fcaae65b999604eb17a5cd36f1d5e2ba1'
+          '238330c6248469568d9f5bef2dee08725b083308'
           'd4f21a1684244387904b152f969a5e631f825af4')
 
 
