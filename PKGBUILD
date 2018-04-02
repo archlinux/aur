@@ -4,21 +4,21 @@
 set -u
 _pkgname='foolsm'
 pkgname='lsm'
-pkgver='1.0.9'
+pkgver='1.0.10'
 pkgrel='1'
 pkgdesc="a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity ${_pkgname}"
 arch=('i686' 'x86_64')
-url='http://lsm.foobar.fi/'
+url='https://lsm.foobar.fi/'
 license=('GPL2')
 _verwatch=("${url}/download/" "${_pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 source=("${url}/download/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c5c97b9c1c0b51f6d8ce1f134c2429233187c25ed36fdc1923a4c07f46f45f05')
+sha256sums=('33210209ca38b3bfef1a9180f765266a134fc811dea8bc06450a3bd48d1d083e')
 
 build() {
   set -u
   cd "${srcdir}/${_pkgname}-${pkgver}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
