@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.5.r3617.e31b1ba2+wine.3.5.r0.g79f93ecf42
+pkgver=3.5.r3618.6e3fbe28+wine.3.5.r0.g79f93ecf42
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
@@ -99,7 +99,7 @@ source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
 			'SKIP'
-			'b056d322a3ac3afdf45a9cd5fd589a33e2e5013ea2e1c1d5a0fc6bf9b904ed93'
+			'6a7ba5b8c89895ccda6556173e7b12353b945b0255479e35cb62750c0776ddd6'
 			'972d6b114f7621c5f3bd34b1105dd390b318db18fbc76328001c984db488a9b0'
 			'1c8be30224a67c0f279ae1324165708371aad8f290ebc6da69c686d0904e606c'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
