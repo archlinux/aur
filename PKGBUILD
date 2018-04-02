@@ -3,13 +3,13 @@
 _gemname=fontcustom
 pkgname=$_gemname
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for building icon fonts from svg images"
 arch=('any')
 url="https://github.com/FontCustom/fontcustom"
 license=('MIT')
 depends=('ruby' 'zlib' 'fontforge' 'sfnt2woff' 'woff2' \
-	'ruby-json-1' 'ruby-thor' 'ruby-listen')
+	'ruby-json-1' 'ruby-thor' 'ruby-listen' 'ruby-ruby_dep')
 makedepends=('rubygems' 'ruby-rdoc')
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
