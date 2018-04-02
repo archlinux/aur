@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=9.1.4.218.g993f76a7b
+pkgver=9.1.9.560.gf93aa77cc
 pkgrel=1
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
@@ -15,20 +15,19 @@ license=('GPL')
 provides=("emacs-org-mode=$pkgver")
 conflicts=('emacs-org-mode')
 install=emacs-org-mode.install
-source=('emacs-org-mode::git://orgmode.org/org-mode.git')
+source=(emacs-org-mode::git+https://code.orgmode.org/bzg/org-mode.git)
 md5sums=('SKIP')
-_gitname="emacs-org-mode"
 
 pkgver() {
-  cd "$srcdir"/$_gitname
+  cd ${pkgname%-git}
   git describe --tags | sed 's+-+.+g' | cut -c9-
 }
 
 package () {
-  cd $srcdir/$_gitname
+  cd ${pkgname%-git}
  # sed -i '30s+autoloads++' mk/targets.mk
-  make prefix=$pkgdir/usr/share install
-  mv $pkgdir/usr/share/info/org $pkgdir/usr/share/info/orgmode
-  install -d $pkgdir/usr/share/emacs/site-lisp/org_contrib
-  cp -r contrib/{lisp,scripts} $pkgdir/usr/share/emacs/site-lisp/org_contrib
+  make prefix="$pkgdir"/usr/share install
+  mv "$pkgdir"/usr/share/info/org "$pkgdir"/usr/share/info/orgmode
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
+  cp -r contrib/{lisp,scripts} "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
 }
