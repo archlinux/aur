@@ -1,0 +1,27 @@
+From 1c07ab535c9267a7f2f898dfdcee13e0664eca87 Mon Sep 17 00:00:00 2001
+From: Gabriel Rauter <rauter.gabriel@gmail.com>
+Date: Mon, 2 Apr 2018 13:04:36 +0200
+Subject: [PATCH] build: update option name in meson.build
+
+As a follow up of Commit eceac8e3 a rename of 'systemd-user-unit-dir'
+to 'systemd_user_unit_dir' in meson.build is needed.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 38ee729..84450b0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -25,7 +25,7 @@ configure_file(input: 'config.h.meson',
+ 
+ configinc = include_directories('.')
+ 
+-servicedir = get_option('systemd-user-unit-dir')
++servicedir = get_option('systemd_user_unit_dir')
+ if servicedir == ''
+   servicedir = systemd_dep.get_pkgconfig_variable('systemduserunitdir')
+ endif
+-- 
+2.16.3
+

@@ -2,7 +2,7 @@
 
 _pkgname=gnome-remote-desktop
 pkgname=$_pkgname-git
-pkgver=0.1.2.0.g0065a1f
+pkgver=0.1.2.1.geceac8e
 pkgrel=1
 pkgdesc='Remote desktop daemon for GNOME using pipewire'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,9 +13,9 @@ makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(git+https://gitlab.gnome.org/jadahl/$_pkgname.git
-        0001-fix-meson-0-43-option.patch)
-sha256sums=('SKIP'
-        '3566d83083fec116a51db6457d2ee3e98eef57f9537993304b7577c0227126b4')
+        0001-build-update-option-name-in-meson.build.patch)
+sha512sums=('SKIP'
+            '573202e85c4192ab567211a2378535018fdbdc1a58df19a4f5fd74c964b6d550d77f5666585df5039f31c1da0f836410c134b8609c9e099a6078f9640025d06b')
 
 pkgver() {
   cd $_pkgname
@@ -23,17 +23,9 @@ pkgver() {
 }
 
 build() {
-  patch -d "$_pkgname" < 0001-fix-meson-0-43-option.patch
-  rm -rf build
-  meson \
-    -Dsystemd-user-unit-dir="/usr/lib/systemd/user" \
-    --libexecdir=/usr/lib/$_pkgname \
-    --prefix=/usr \
-    --buildtype=plain \
-    --strip \
-    "$_pkgname" \
-    build
-  ninja -v -C build
+  patch -d "$_pkgname" < 0001-build-update-option-name-in-meson.build.patch
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
 package() {
