@@ -2,7 +2,7 @@
 
 pkgname=exercism-cli
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
