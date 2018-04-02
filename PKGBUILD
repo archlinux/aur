@@ -1,41 +1,60 @@
-# $Id$
-# Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.1.gb4a2013
-pkgrel=3
-pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+pkgver=r64.b4a2013
+pkgrel=1
+pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='https://github.com/sekrit-twc/znedi3'
 license=('GPL2')
-depends=('vapoursynth' 'vapoursynth-plugin-nnedi3_weights_bin')
+depends=('vapoursynth'
+         'vapoursynth-plugin-nnedi3_weights_bin'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/sekrit-twc/znedi3.git"
-        "git+https://github.com/sekrit-twc/vsxx.git")
-sha1sums=('SKIP'
-          'SKIP')
+source=("${_plug}::git+https://github.com/sekrit-twc/znedi3.git"
+        'git+https://github.com/sekrit-twc/vsxx.git'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  #echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mv ${srcdir}/vsxx ${srcdir}/${_plug}/
+  cd "${_plug}"
+  git config submodule.vsplugin/vsxx.url "${srcdir}/vsxx"
+  git submodule update --init
+
+  # use system vapoursynth headers
+  rm -fr vsxx/VapourSynth.h
+  rm -fr vsxx/VSScript.h
+  rm -fr vsxx/VSHelper.h
+
+  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
+      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
+      -i vsxx/VapourSynth++.hpp
+
+  sed -e "s|-Ivsxx|& "$(pkg-config --cflags vapoursynth)"|g" \
+      -e '/VSScript.h/d' \
+      -e '/VapourSynth.h/d' \
+      -e '/VSHelper.h/d'\
+      -i Makefile
 }
 
 build() {
-  cd "${_plug}"
-  make X86=1
+  make -C "${_plug}" X86=1
 }
 
 package(){
-  cd "${_plug}"
-  install -Dm755 vsznedi3.so "${pkgdir}/usr/lib/vapoursynth/vsznedi3.so"
-  #install -Dm755 nnedi3_weights.bin "${pkgdir}/usr/lib/vapoursynth/nnedi3_weights.bin"
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+  install -Dm755 "${_plug}/vsznedi3.so" "${pkgdir}/usr/lib/vapoursynth/libvsznedi3.so"
+  install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
+
