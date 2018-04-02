@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.0.0.rc8.gadeacc115
+pkgver=1.0.0.rc9.gf9000c886
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
 url="https://cilium.io/"
 license=('Apache')
 depends=('docker' 'iproute2' 'clang')
-makedepends=('go' 'lib32-glibc' 'bazel')
+makedepends=('go' 'lib32-glibc' 'bazel' 'clang-tidy')
 optdepends=('consul' 'etcd')
 conflicts=()
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
