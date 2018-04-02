@@ -1,15 +1,15 @@
 pkgbase = mongoaudit
 	pkgdesc = An automated pentesting tool that lets you know if your MongoDB instances are properly secured
-	pkgver = 0.0.3
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/stampery/mongoaudit
 	arch = any
 	license = MIT
-	makedepends = python2-setuptools
-	depends = python2
-	source = https://files.pythonhosted.org/packages/source/m/mongoaudit/mongoaudit-0.0.3.tar.gz
-	md5sums = 040f6080e15fe2dbeff574bb98e0da67
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/mongoaudit/mongoaudit-0.1.0.tar.gz
+	md5sums = f2bfbfeeb2cecbeb42570dac5912a697
 
 pkgname = mongoaudit
-	depends = python2
+	depends = python
 
