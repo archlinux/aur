@@ -8,6 +8,7 @@ filename="${pkgname}_${pkgver}_amd64.deb"
 license=('custom:"Copyright (c) 2014 GitHub Inc."')
 url="https://typora.io/"
 depends=('gconf' 'libxss')
+optdepends=('noto-fonts-emoji: Or some other emoji font to see emojis')
 source=("https://typora.io/./linux/$filename")
 md5sums=('8f34de87e104c9a5e2adb241ada8a622')
 
