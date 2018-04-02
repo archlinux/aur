@@ -2,9 +2,9 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=4.0.3-RELEASE
+_swiftver=4.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -27,29 +27,19 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "icu59.patch"
-    "lldb_missing_include.patch"
-    "glibc-2.26.patch"
-    "glibc-2.26-compiler-rt-compat.patch"
-    "sr6176.patch"
 )
-sha256sums=('026d596dd4a24580a5e442409e8c58259197bd73ddbb77e5aade96da982ea39b'
-            'a611487a82636142bc1ea8ef5b21401a5c75e57fb0dbf041ef8f2e85a472db2e'
-            'c940bd48c88f71622fb00167d92a619dd1614093893e1a09982c08da42259404'
-            '7f695a33ee5cb75be18ba962045e1b57405abf17bd354c3e2a15c29b4b296bcb'
-            'e95d0b54a0e897e768c9437dd67d56ec887909d0294cf6536ba240accd0d294f'
-            '92001e449b54a47516086a4e7d5f575bffa2847ae1f658540b2ec6f6dee6c6e7'
-            '4c26d333a01c239de8aa96b0536b7ff7218b7a322851a7d3b3b91b59fb4ce244'
-            '868c4e23842218c895d333e7d6dbaa1c583b5a1ac2a32b26fff42f4a5c577357'
-            'c20877e7fc658ef872d6acc9d1cad0d93a683bfeaef28e2bf665166540e539e5'
-            '0a6d503f7ec4ce367a4aa63f68478ce7c998ec36a60b0b01445e048ab69600a8'
-            '1c2da685e8f424cb4460ed1daaf0c308f8deff63e7a3716c8a881cef60fbc7d8'
-            '7c720b23d542d34296ee4cf5290e05c7c7c55b7e8187dfaa5b185ea021c4ab9d'
-            '18b7895fba15702419e86ae593531669c3966d1c8aa9a83361c5c8ef9d54f893'
-            'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e'
-            '215473272ec550c58fd2852c3e1c4aa4482a7d2b4980308df14f4a18676775a9'
-            '2311adf234f52831af3b326d0d589fceae0a5336aa8576fdfd62afe71c195124'
-            '22a0320dc3474f8be133b2d50d72c7feb215d847feee181549bbbd27735e5ab6')
+sha256sums=('f957f107b8e726b80c66a4902b769b0c3795e7bfde1af2e1c833948f6398acdb'
+            'c8632074d178e04abc9ab3becb40618373c1b6f810053e18ddd7ff91dbbc8a48'
+            'e03c4508f714837c54da39a1c45ce78110c47428d970bbdde3ebc12068c15da2'
+            'b246dda82e3e151b5e76944812a83323a61320378e5d34aa87eff67bbf0a224e'
+            '21fc799d557838cc730e8e4e833cee18fea5e5733bdda6212f75c9331b9461ac'
+            '88f2451e8c78a27ea18379b0062eb8e4fc961fca3089b5d485b6ceaeb7f67360'
+            'fcb4f55349143b9e8ad5ba0a5237beaa93a2bc42844ebb3d85c6df8a01e14142'
+            'cbcf4ebc75660f0bc7d3c32f6e4a7909b3616ecbf156ad7134beeb09a890a2dd'
+            '5ec606f2776e2ea1a23a3c0e1ca6844c02ac4f17a9ec8cffa5d85c2970f1dab0'
+            '73e2385be9a61f6168b7e98ab8c2370bc976c43bbe8577a44be371db45368137'
+            '2110384f8cfa97334d4b9a2a17b1966b286189fb3a1526db8f2382c8872df189'
+            '5718fdad339a6b8c0cd671fd4f840288103adb458651a902694a9f89a6c00ac7')
 
 prepare() {
     # Use python2 where appropriate
@@ -76,19 +66,6 @@ prepare() {
     done
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
-
-    # ICU 59 changed the type of UChar to char16_t
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/icu59.patch" )
-
-    # LLDB is missing an include for std::bind with libstdc++/gcc7
-    ( cd "${srcdir}/lldb" && patch -p1 -i "${srcdir}/lldb_missing_include.patch" )
-
-    # glibc 2.26 compatibility fixes
-    ( cd "${srcdir}" && patch -p1 -i "${srcdir}/glibc-2.26.patch" )
-    ( cd "${srcdir}/compiler-rt" && patch -p1 -i "${srcdir}/glibc-2.26-compiler-rt-compat.patch" )
-
-    # Backported fix for SR-6176
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sr6176.patch" )
 }
 
 _common_build_params=(
@@ -114,8 +91,7 @@ build() {
     cd "$srcdir/swift"
 
     export PATH="$PATH:/usr/bin/core_perl"
-    # sourcekitd-test and sourcekitd-repl currently don't link
-    # correctly on Linux.  Disable for now :(
+    # sourcekit (STILL) doesn't link correctly on Linux.  Disable for now :(
     _build_script_wrapper -R "${_common_build_params[@]}" \
         --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=FALSE" \
         --skip-test-sourcekit
@@ -144,7 +120,7 @@ package_swift() {
     _build_script_wrapper -R "${_common_build_params[@]}" \
         --install-destdir="$pkgdir" \
         --install-llbuild --install-swiftpm --install-xctest \
-        --install-foundation
+        --install-foundation --install-libdispatch
 
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
@@ -162,10 +138,6 @@ package_swift() {
 
         umask 0022
         cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
-    )
-    (
-        cd libdispatch-linux-$CARCH
-        make install DESTDIR="$pkgdir"
     )
 
     # Some install targets provide an empty /usr/local/include
