@@ -1,29 +1,36 @@
 # Maintainer : int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
-
-# In HTTP::OAI version 4.03-4.06 there is a test that fails,
-# so I downgraded to the older version.
-# Maybe it is better to ignore the failing test.
-# This issue should be investigated further.
-# The trigger that error just install HTTP::OAI via CPAN.
+#
+# CAUTION: If your DNS-Provider redirects you on non-existing domain-names
+# (to his request-failed-page) then the t/listidentifiers.t-test will fail:
+# > t/listidentifiers.t ...... Dubious, test returned 1 (wstat 256, 0x100)
+# > Failed 1/3 subtests
+# This can be checked via "ping domain.invalid". If you get an answer, you were redirected.
+# German Telekom does this insanity:
+# > wget domain.invalid
+# ...
+# > Location: http://navigationshilfe1.t-online.de/dnserror?url=domain.invalid/ [following]
+# In this case disable the tests below or fix your DNS-Server.
 #
 # cpan2aur needs perl-cpanplus-dist-build to generate this PKGBUILD
 # see https://bugs.archlinux.org/task/46900.
 #
+
 pkgname='perl-http-oai'
-pkgver='3.28'
-pkgrel='2'
+pkgver='4.06'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module HTTP:.OAI: API for the OAI-PMH"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cgi' 'perl-http-message' 'perl-uri' 'perl-xml-libxml>=1.6' 'perl-xml-sax' 'perl-xml-sax-base>=1.04' 'perl-libwww')
-makedepends=()
+depends=('perl-http-message' 'perl-uri' 'perl-xml-libxml>=1.60' 'perl-xml-namespacesupport' 'perl-xml-sax' 'perl-xml-sax-base>=1.04' 'perl-libwww')
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-deep>=0.112' 'perl-test-lwp-useragent' 'perl-test-pod')
 url='https://metacpan.org/release/HTTP-OAI'
-source=('http://search.cpan.org/CPAN/authors/id/T/TI/TIMBRODY/HTTP-OAI-3.28.tar.gz')
-md5sums=('09fb4ba4b9da2cda3910fa4b31273568')
-sha512sums=('9b848ec6213189532e7bc104ec928f2b66c2a4945a3a7a0f37bd5cbb0171e2046e038634079d9c47a005d8cd7531bc636c0d74a20fd697bf312b8f3b8a5e007c')
-_distdir="HTTP-OAI-3.28"
+source=("http://search.cpan.org/CPAN/authors/id/H/HO/HOCHSTEN/HTTP-OAI-$pkgver.tar.gz")
+md5sums=('f68a8424397056e22f6c4d4d2490d884')
+sha512sums=('01f23ea7b8e650b3a280e8ab2adaf72bc83a5922626969a85363e5513bd81e180d4790128094198d481dc84c1f8c49d650f2c2f20eeb49bcc6492c66f2acc3d8')
+_distdir="HTTP-OAI-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -33,21 +40,21 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  /usr/bin/perl Build install
   find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
