@@ -5,7 +5,7 @@
 
 pkgbase=linux-jwrdegoede
 _srcname=linux-sunxi-master
-pkgver=git
+pkgver=4.16.0rc6.2fcd728
 pkgrel=2
 arch=('x86_64')
 url='https://www.kernel.org/'

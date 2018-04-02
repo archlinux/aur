@@ -1,5 +1,5 @@
 pkgbase = linux-jwrdegoede
-	pkgver = git
+	pkgver = 4.16.0rc6.2fcd728
 	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
