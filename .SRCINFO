@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-mmd-tools-git
+	pkgdesc = Blender addon for importing Models and Motions of MikuMikuDance.
+	pkgver = v0.4.4.r397.g74efbc1
+	pkgrel = 1
+	url = https://github.com/powroupi/blender_mmd_tools
+	arch = i686
+	arch = x86_64
+	groups = blender
+	license = MIT
+	makedepends = git
+	depends = blender
+	source = git+https://github.com/powroupi/blender_mmd_tools#branch=dev_test
+	md5sums = SKIP
+
+pkgname = blender-plugin-mmd-tools-git
+
