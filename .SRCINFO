@@ -1,6 +1,6 @@
 pkgbase = python-scipy-openblas
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = python-scipy-openblas
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = openblas-lapack
-	source = https://github.com/scipy/scipy/releases/download/v1.0.0/scipy-1.0.0.tar.xz
-	sha256sums = 06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739
+	source = https://github.com/scipy/scipy/releases/download/v1.0.1/scipy-1.0.1.tar.xz
+	sha256sums = 0c7625eef0363df0759cd616c02ea8689dbc40e82208057682446bba02e727c4
 
 pkgname = python-scipy-openblas
 	depends = python-numpy-openblas
