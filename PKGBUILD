@@ -2,12 +2,12 @@
 
 pkgname=games_nebula
 pkgver=20180222
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Linux client for GOG'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/yancharkin/games_nebula'
-depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr')
+depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'python2-dateutil' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr')
 makedepends=()
 optdepends=('gksu' 'xterm' 'curl' 'tar' 'p7zip' 'cabextract' 'unshield' 'ffmpeg' 'wine' 'winetricks' 'dosbox' 'scummvm' 'megatools')
 provides=('games_nebula')

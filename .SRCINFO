@@ -1,7 +1,7 @@
 pkgbase = games_nebula
 	pkgdesc = Unofficial Linux client for GOG
 	pkgver = 20180222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yancharkin/games_nebula
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = games_nebula
 	depends = python2-beautifulsoup4
 	depends = python2-lxml
 	depends = python2-pillow
+	depends = python2-dateutil
 	depends = innoextract
 	depends = htmlcxx
 	depends = lgogdownloader
