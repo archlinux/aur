@@ -1,7 +1,7 @@
 pkgbase = cin
-	pkgdesc = Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git (20180302)
+	pkgdesc = Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git (20180331)
 	pkgver = 5.1
-	pkgrel = 20180302
+	pkgrel = 20180331
 	url = http://www.cinelerra-cv.org
 	arch = x86_64
 	license = GPL
@@ -23,9 +23,9 @@ pkgbase = cin
 	depends = inkscape
 	depends = dvdauthor
 	depends = opencv
-	source = https://cinelerra-cv.org/five/pkgs/src/cin_5.1.20180302-src.tgz
+	source = https://cinelerra-cv.org/five/pkgs/src/cin_5.1.20180331-src.tgz
 	source = unblock.patch
-	md5sums = 8ee08b481b1789d89d1455662cec8d98
+	md5sums = 94e2b9df941ab21d62268fed3eedfe79
 	md5sums = 25541f98ed8565176ce466558c90b7eb
 
 pkgname = cin
