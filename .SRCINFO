@@ -1,0 +1,13 @@
+pkgbase = jack-stub
+	pkgdesc = Stub .so for smbclient painless jack removing
+	pkgver = 0.01
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = gpl
+	provides = jack
+	conflicts = jack
+	replaces = jack
+
+pkgname = jack-stub
+
