@@ -9,9 +9,9 @@ if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
   _piver=$LOCAL_PI_VER
 fi
 
-_pi_qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
-_pi_qmake_static="/opt/qt-sdk-raspberry-pi${_piver}-static/bin/qmake"
-_qmake_static="/opt/qt-sdk-static/bin/qmake"
+_pi_qmake="/opt/qt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
+_pi_qmake_static="/opt/qt/qt-sdk-raspberry-pi${_piver}-static/bin/qmake"
+_qmake_static="/opt/qt/qt-sdk-static/bin/qmake"
 _static=false
 
 if [[ -x "${_pi_qmake_static}" ]]; then
@@ -35,7 +35,7 @@ fi
 #_qmake_args="CONFIG+=debug"
 _pkgname=artriculate
 pkgname=${_pkgname}-git
-pkgver=0.4.r9.g0d98bbc
+pkgver=0.5.8.r0.gaf23316
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
@@ -50,6 +50,8 @@ prepare() {
 
   git submodule init
   git submodule update
+
+  git fetch --tags
 }
 
 pkgver () {
