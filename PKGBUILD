@@ -1,19 +1,19 @@
 # Maintainer: phmayo <cmdjackryan+aur@gmail.com>
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad
-pkgver=4.3.0
+pkgver=5.1.0
+_relver=5.1
 _srcname="${pkgname}-source-${pkgver}"
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('webkitgtk2')
 makedepends=('cmake' 'gettext')
 conflicts=('xtrkcad')
 provides=('xtrkcad')
-source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${pkgver}/${_srcname}.tar.gz")
-sha256sums=('1e88c02aeab7dc2546ea8268ea5b4d97222216c60624f224216ebdb2b11bb51c')
+source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${_relver}/${_srcname}.tar.gz")
+sha256sums=('18a34dc7c1d3fceb9b695c2d742efaec32faeaaea21b934dd782a75db4f1ea04')
  
 build() {
   cd "${_srcname}"
@@ -31,4 +31,3 @@ package() {
   install -Dm644 "app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
   install -Dm644 "app/lib/xtrkcad.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
 }
-
