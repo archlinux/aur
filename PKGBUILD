@@ -44,7 +44,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.9.3.r4416.g77c6d279
+pkgver=1.9.21.r4497.gad948701
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -70,7 +70,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('afec77966ad3cbb7aa4ac12cc31221b49a4dbb82b7714e4d9737ada4699c2be2')
+sha256sums=('d492abe435b73ed6400698e087f5ede9d44e4e619a2a514f78928c43854d2e15')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
