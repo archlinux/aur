@@ -1,7 +1,7 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = electrum-mona
 	depends = python-pyqt5
 	depends = python-certifi
 	depends = python-pycryptodomex
+	depends = python-websocket-client
 	depends = gettext
 	optdepends = python-matplotlib: for plot history
 	optdepends = python-trezor: for Trezor hardware support

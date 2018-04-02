@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 pkgname=electrum-mona
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
 url='https://github.com/wakiyamap/electrum-mona'
@@ -20,6 +20,7 @@ depends=('cython'
          'python-pyqt5'
          'python-certifi'
          'python-pycryptodomex'
+         'python-websocket-client'
          'gettext'
 )
 optdepends=('python-matplotlib: for plot history'
