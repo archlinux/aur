@@ -23,7 +23,7 @@ pkgname=("${pkgbase}-common"
 
 pkgver=17.2.5
 pkgrel=2
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
