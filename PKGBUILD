@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Pope <jpope@jpope.org>
 pkgname=mpdrand
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A script for picking random songs and adding them to the current MPD playlist."
 url='https://code.jpope.org/jpope/mpdrand'
@@ -11,7 +11,7 @@ optdepends=('mpd')
 makedepends=('git')
 provides=('mpdrand')
 source=("https://code.jpope.org/jpope/mpdrand/archive/v${pkgver}.tar.gz")
-sha256sums=('6a7b6a2418c0a031057f672914ab4c71f30ae99034e70d38ec429f0dfb4895a8')
+sha256sums=('1d4a2209550ba90668814b92ff248e842b8d29f370fcf41e54a901a3e686573e')
 
 package() {
   mkdir -p $pkgdir/usr/share/doc/mpdrand
