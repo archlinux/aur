@@ -1,0 +1,15 @@
+pkgbase = emercoin-bin
+	pkgdesc = Emercoin is a digital currency and blockchain service platform.
+	pkgver = 0.6.3.1
+	pkgrel = 1
+	url = http://emercoin.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source_i686 = https://sourceforge.net/projects/emercoin-bin/files/0.6.3.1/emercoin-bin-0.6.3.1-linux32.tar.gz
+	sha256sums_i686 = a395b315c67c5abbb2ffbf75f18dbaf73469ddd32416ed8e2f904b764a55fb8c
+	source_x86_64 = https://sourceforge.net/projects/emercoin-bin/files/0.6.3.1/emercoin-bin-0.6.3.1-linux64.tar.gz
+	sha256sums_x86_64 = 5045f4c20a7060e610847f9ffd01048601266640007e97d9bc245202f59f5ef5
+
+pkgname = emercoin-bin
+
