@@ -2,7 +2,7 @@
 
 pkgname=icons-in-terminal
 pkgver=r93.b12286d
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon fonts in terminal without a need for replacing or patching existing"
 url="https://github.com/sebastiencs/icons-in-terminal"
 arch=('any')
@@ -41,7 +41,11 @@ package() {
     install -m644 build/*               "${pkgdir}"/etc/icons-in-terminal/
     install -m755 print_icons.sh        "${pkgdir}"/usr/bin/icons-in-terminal
 
-    ln -s "${pkgdir}"/etc/fonts/conf.avail/30-"$pkgname".conf "${pkgdir}"/etc/fonts/conf.d/
+    pushd "${pkgdir}"/etc/fonts/conf.avail
+    for config in *; do
+        ln -sf ../conf.avail/${config} ../conf.d/${config}
+    done
+    popd
 
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     install='icons-in-terminal.install'
