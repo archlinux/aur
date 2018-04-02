@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
 
 pkgname=haguichi-git
-pkgver=r320.0a59e37
+pkgver=1.3.8.r83.g0a59e37
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ _pkg=haguichi
 
 pkgver() {
   cd $_pkg
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
