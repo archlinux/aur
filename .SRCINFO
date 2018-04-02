@@ -1,0 +1,27 @@
+pkgbase = python-sounddevice-git
+	pkgdesc = Play and Record Sound with Python
+	pkgver = 0.3.10.2.g5eb0041
+	pkgrel = 1
+	url = http://python-sounddevice.rtfd.io/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python2-cffi
+	depends = portaudio
+	depends = python
+	depends = python-cffi
+	optdepends = python-numpy: to play back and record NumPy arrays
+	conflicts = python-sounddevice
+	source = python-sounddevice-git::git+https://github.com/spatialaudio/python-sounddevice.git
+	sha256sums = SKIP
+
+pkgname = python-sounddevice-git
+
+pkgname = python2-sounddevice-git
+	depends = portaudio
+	depends = python2
+	depends = python2-cffi
+	optdepends = python2-numpy: to play back and record NumPy arrays
+	conflicts = python2-sounddevice
+
