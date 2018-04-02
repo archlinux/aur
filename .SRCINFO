@@ -1,18 +1,19 @@
 pkgbase = just-git
-	pkgdesc = Just a command runner, like make.
-	pkgver = latest
+	pkgdesc = A handy way to save and run project-specific commands
+	pkgver = 0.3.10.r0.ef45b02
 	pkgrel = 1
 	url = https://github.com/casey/just
-	arch = x86_64
 	arch = i686
-	license = custom:WTFPL
-	license = custom:MIT
+	arch = x86_64
 	license = APACHE
+	license = custom:MIT
+	license = custom:WTFPL
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	provides = just
 	conflicts = just
-	source = git+https://github.com/casey/just.git
+	source = just::git+https://github.com/casey/just.git
 	sha256sums = SKIP
 
 pkgname = just-git

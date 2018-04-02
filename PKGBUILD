@@ -2,17 +2,17 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=latest
+pkgver=0.3.10.r0.ef45b02
 pkgrel=1
-pkgdesc="Just a command runner, like make."
-arch=("x86_64" "i686")
+pkgdesc="A handy way to save and run project-specific commands"
+arch=("i686" "x86_64")
 url="https://github.com/casey/${pkgname%-git}"
-license=("custom:WTFPL" "custom:MIT" "APACHE")
+license=("APACHE" "custom:MIT" "custom:WTFPL")
 depends=("gcc-libs")
-makedepends=("cargo")
+makedepends=("cargo" "git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/casey/${pkgname%-git}.git")
+source=("${pkgname%-git}::git+https://github.com/casey/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
