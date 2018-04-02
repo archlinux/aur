@@ -6,13 +6,13 @@
 
 pkgname=openclonk
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
 license=('custom')
 depends=('glew' 'freealut' 'libvorbis' 'qt5-base' 'sdl2' 'miniupnpc' 'hicolor-icon-theme')
-makedepends=('cmake' 'boost' 'mesa')
+makedepends=('cmake' 'mesa')
 optdepends=('openclonk-music: proprietary music package')
 conflicts=('clonk_rage')
 source=("https://git.openclonk.org/openclonk.git/archive/$pkgname-release-$pkgver-src.tar.bz2"
@@ -32,7 +32,9 @@ build() {
   mkdir build && cd build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2
+    -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2 \
+    -DAudio_FIND_REQUIRED=On \
+    -DAudio_TK=OpenAL
 
   make
 }
@@ -40,7 +42,7 @@ build() {
 package() {
   cd ${pkgname}-release-${pkgver}-src/build
   
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 
   # licenses
   install -dm755 "$pkgdir"/usr/share/licenses/$pkgname

@@ -1,13 +1,12 @@
 pkgbase = openclonk
 	pkgdesc = Multiplayer-action-tactic-skill game
 	pkgver = 8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openclonk.org
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
-	makedepends = boost
 	makedepends = mesa
 	depends = glew
 	depends = freealut
