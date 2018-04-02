@@ -18,7 +18,7 @@ optdepends=('evince: for print preview'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
 source=(
-       https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
+	http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2
 )
 sha1sums=('a575e853668b93b34dcd94f0ef0d1fee25b0165f')
 sha256sums=('4c754476a5b80a97abacaeadac64fefc5a68fcfec15967908dbe3c9f7370dbb9')
