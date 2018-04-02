@@ -22,7 +22,7 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-storage-python-plugin")
 
 pkgver=17.2.5
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -285,6 +285,8 @@ package_bareos-director() {
     _cp "$srcdir/install/$f" "$pkgdir/$f"
   done
 
+  # Currently upstream systemd file does not automatically create run directory
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-dir.service
   _cp $srcdir/bareos/platforms/systemd/bareos-dir.service $pkgdir/usr/lib/systemd/system/bareos-dir.service
 }
 
@@ -341,6 +343,8 @@ package_bareos-filedaemon() {
     _cp $srcdir/install/$f $pkgdir/$f
   done
 
+  # Currently upstream systemd file does not automatically create run directory
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-fd.service
   _cp $srcdir/bareos/platforms/systemd/bareos-fd.service $pkgdir/usr/lib/systemd/system/bareos-fd.service
 }
 
@@ -366,6 +370,8 @@ package_bareos-storage() {
   done
 
   install -d $pkgdir/var/lib/bareos/storage
+  # Currently upstream systemd file does not automatically create run directory
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-sd.service
   _cp $srcdir/bareos/platforms/systemd/bareos-sd.service $pkgdir/usr/lib/systemd/system/bareos-sd.service
 }
 
