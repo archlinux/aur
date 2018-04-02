@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-carton'
-pkgver='1.0.22'
+pkgver='1.0.28'
 pkgrel='1'
 pkgdesc="Perl module dependency manager (aka Bundler for Perl)"
 arch=('any')
@@ -21,10 +21,10 @@ depends=(
 )
 makedepends=()
 url='https://metacpan.org/release/Carton'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Carton-v1.0.22.tar.gz')
-md5sums=('a95ac3c306657449bdd6dbfb6f14d63e')
-sha512sums=('a46a5159a38d81151078da5fe56c3ee8f50d34eca3bb3d74b1026f575ddd6c0cbeea1d1e42c3dabb27aebb1e84ff8311fb070f888d241e23353793f2993da2a4')
-_distdir="Carton-v1.0.22"
+source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Carton-v${pkgver}.tar.gz")
+md5sums=('77e0e6c668451b0e82b20f4928589e61')
+sha512sums=('6b9484139b32717ab7f478a5ac81954e7f8691aefabc989894476613e6e6d63a14e8c79c252ccf1a819fbd3adc4d0184e24c0fd87f4737f83e417b7149a196d4')
+_distdir="Carton-v${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
