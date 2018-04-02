@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=retroarch-standalone-service
 pkgver=2
-pkgrel=9
+pkgrel=10
 pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,8 +14,8 @@ source=('retroarch-standalone.service'
         'retroarch-standalone.xinitrc')
 md5sums=('8dd1a467e961630eff4f1d532fe7763a'
          'dff58d483453816a80dcdbc8d272e8b8'
-         'ac40311816ee094e98f957db77cea241'
-         '3999db10036381e2cba57c21a62186c8')
+         '8783c6977597f25614c83c78c152d412'
+         '18cf6ff2630df1eb7bb9819332c6ab38')
 
 package() {
   # Copy autorun script
