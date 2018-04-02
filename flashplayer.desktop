@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Adobe Flash Player
-Comment=Flash Movie Player
-Icon=flash
-Exec=flashplayer
-Terminal=false
-Categories=GTK;AudioVideo;Audio;Video;Player;
-MimeType=application/x-shockwave-flash;
