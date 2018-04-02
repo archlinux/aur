@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=cro
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Development tools for building services and distributed systems in Perl 6 using the Cro libraries"
 arch=('any')
@@ -22,7 +22,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('d6dd5b7e17be1ae266cb291dcb7a4439cc7b82116f862c7e396f8c5de7295c42')
+sha256sums=('e9d329a25ba6d04a7d1f4d1b1d64f54e429e3ee323f29f3f2777f9a62ff46f40')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
