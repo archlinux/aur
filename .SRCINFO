@@ -1,0 +1,14 @@
+pkgbase = msi-rgb
+	pkgdesc = Utility for controlling the RGB LEDs on MSI motherboards
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nagisa/msi-rgb
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = rust
+	source = msi-rgb::git+https://github.com/nagisa/msi-rgb
+	md5sums = SKIP
+
+pkgname = msi-rgb
+
