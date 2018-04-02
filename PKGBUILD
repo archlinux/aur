@@ -4,15 +4,15 @@
 
 pkgbase=libgdamm
 pkgname=(libgdamm libgdamm-docs)
-pkgver=4.99.10
-pkgrel=2
+pkgver=4.99.11
+pkgrel=1
 arch=('x86_64')
 makedepends=('libgda' 'libsigc++' 'glibmm' 'glibmm-docs')
 url="http://www.gtkmm.org/"
 license=('LGPL')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgbase/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('9ba757b44db17313cd2ac2bc0e87a06bfc332dd3dfd132c141c8091334ee2c24')
+sha256sums=('e9820070a1b258fbdfa9b6583d97dfdb1340c90bb353c5f5e21522375609d0bb')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
