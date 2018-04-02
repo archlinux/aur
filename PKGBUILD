@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.91"
+pkgver="4.9.92"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         change-default-console-loglevel.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '8968b5fd020df4618f275b152cdefb477d3bcb5d1383c6e2115aaef1573c21fe'
+            '37daa38bde9abcc17e8400effb431cfd75426049093b369a82166edb5efcaa30'
             '1cf2cceaf79bff8aaf056f859228a4820193aafd5d013bddc778610a2a426f3a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
