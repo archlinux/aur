@@ -1,0 +1,16 @@
+pkgbase = https-dns-proxy-git
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aarond10/https_dns_proxy
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = c-ares
+	makedepends = libev
+	source = git://github.com/aarond10/https_dns_proxy.git
+	source = https_dns_proxy.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = https-dns-proxy-git
+

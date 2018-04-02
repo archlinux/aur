@@ -1,0 +1,13 @@
+[Unit]
+Description=Light-weight DNS<-->HTTPS, non-caching proxy
+Wants=network.target
+
+[Service]
+Type=simple
+User=nobody
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/https_dns_proxy -p 53 -v
+
+[Install]
+WantedBy=multi-user.target
