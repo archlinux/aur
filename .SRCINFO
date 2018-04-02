@@ -1,15 +1,24 @@
 pkgbase = conflip
 	pkgdesc = A tool to synchronize settings/configurations across multiple machines
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/Skycoder42/Conflip
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = qt5-tools
+	makedepends = git
+	makedepends = qpmx-qpmsource
+	makedepends = dconf
 	depends = qt5-base
-	depends = qt5-datasync-legacy
-	source = https://install.skycoder42.de/pkg/conflip-1.0.1.tar.xz
-	sha256sums = 7df165d6bb488b693e5f985d31324a28df381555e01e1150a82912cf7465554a
+	depends = qt5-jsonserializer
+	depends = qt5-svg
+	optdepends = dconf: Adds support for synchronizing DConf based settings
+	optdepends = repkg: Automatically rebuild the package on dependency updates
+	source = conflip-2.0.0::git+https://github.com/Skycoder42/Conflip.git#tag=2.0.0
+	source = conflip.rule
+	sha256sums = SKIP
+	sha256sums = bf409e651f336297628328918e123241aa545c51b5589ae4b2e7faeb47e79653
 
 pkgname = conflip
 
