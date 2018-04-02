@@ -1,0 +1,16 @@
+pkgbase = pirsf
+	pkgdesc = The Protein Information Resource (PIR) is an integrated public bioinformatics resource to support genomic, proteomic and systems biology research and scientific studies.
+	pkgver = 80.00
+	pkgrel = 1
+	url = ftp://ftp.pir.georgetown.edu
+	arch = any
+	license = GPL
+	makedepends = bash
+	depends = hmmer
+	source = ftp://ftp.pir.georgetown.edu/databases/pirsf/pirsfinfo.dat
+	source = ftp://ftp.pir.georgetown.edu/databases/pirsf/pirsfinfo.readme
+	sha512sums = 6e47f39a5341e4791217d368d969847966d15b8c378242029c0bd28217198725c9906842b859e9312c6e897d6eac3346564fff1184e7572989bfbc721f56f299
+	sha512sums = d89640e59902a3c0e409c0d14039b0eff2f1e5b6713f50802381a34415d4b420429d9ca66cf8ae15caa1fad269ae4c08f9d8cb9bd7b08a615bd80683df446a98
+
+pkgname = pirsf
+
