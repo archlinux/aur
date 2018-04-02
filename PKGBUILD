@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-websocket
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Web socket support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
@@ -17,7 +17,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-websocket"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('012a0f1da4904682aeb8f450178e53655f9c3a97482f64c2aa8aa0467b6870dc')
+sha256sums=('f8d5085e1151fc867fd6925f98c6e9705996e6e1b580bbf1006f7b4c229c73c6')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"

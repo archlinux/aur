@@ -1,6 +1,6 @@
 pkgbase = perl6-cro-websocket
 	pkgdesc = Web socket support for the Cro library for building distributed systems in Perl 6
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/croservices/cro-websocket
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = perl6-cro-websocket
 	depends = perl6-crypt-random
 	depends = perl6-digest-sha1-native
 	depends = perl6-json-fast
-	source = perl6-cro-websocket-0.7.3.tar.gz::https://codeload.github.com/croservices/cro-websocket/tar.gz/release-0.7.3
-	sha256sums = 012a0f1da4904682aeb8f450178e53655f9c3a97482f64c2aa8aa0467b6870dc
+	source = perl6-cro-websocket-0.7.4.tar.gz::https://codeload.github.com/croservices/cro-websocket/tar.gz/release-0.7.4
+	sha256sums = f8d5085e1151fc867fd6925f98c6e9705996e6e1b580bbf1006f7b4c229c73c6
 
 pkgname = perl6-cro-websocket
 
