@@ -13,3 +13,18 @@ pkgbase = unit-convert
 
 pkgname = unit-convert
 
+pkgbase = unit-convert
+	pkgdesc = Qt Unit Conversion Tool
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/simonaw/unit-convert/
+	arch = x86_64
+	arch = i686
+	license = LGPL2
+	depends = qt5-base
+	depends = qt5-script
+	source = https://github.com/simonaw/unit-convert/archive/2.2.0.tar.gz
+	sha512sums = 8e7a2671139f792f60d40cd64e791adc18f14de1556dc0d77ec07033bba1fb9aca8723b1ec864c22f1027a59d8442b4144d675ac1c9625d095a0af8ec6c03564
+
+pkgname = unit-convert
+

@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=unit-convert
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Qt Unit Conversion Tool"
 url="https://github.com/simonaw/unit-convert/"
@@ -22,3 +22,4 @@ package() {
   install -m755 ${srcdir}/${pkgname}-${pkgver}/bin/convert ${pkgdir}/$t/
   install -m644 ${srcdir}/${pkgname}-${pkgver}/bin/data.rcc ${pkgdir}/$t/
 }
+sha512sums=('8e7a2671139f792f60d40cd64e791adc18f14de1556dc0d77ec07033bba1fb9aca8723b1ec864c22f1027a59d8442b4144d675ac1c9625d095a0af8ec6c03564')
