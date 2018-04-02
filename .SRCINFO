@@ -1,0 +1,18 @@
+pkgbase = mpdrand
+	pkgdesc = A script for picking random songs and adding them to the current MPD playlist.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://code.jpope.org/jpope/mpdrand
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = mpc
+	depends = ncurses
+	depends = bash
+	optdepends = mpd
+	provides = mpdrand
+	source = https://code.jpope.org/jpope/mpdrand/archive/v0.4.tar.gz
+	sha256sums = f980042fb80ac32926585431be806f0c0aa0d8804c9fcec0c79a58e28e6eecd1
+
+pkgname = mpdrand
+
