@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-runsql
 	pkgdesc = Perl/CPAN Module DBIx::RunSQL: run SQL from a file
-	pkgver = 0.15
-	pkgrel = 2
+	pkgver = 0.17
+	pkgrel = 1
 	url = https://metacpan.org/release/DBIx-RunSQL
 	arch = any
 	license = PerlArtistic
@@ -10,9 +10,9 @@ pkgbase = perl-dbix-runsql
 	depends = perl>=5.006
 	optdepends = perl-dbd-sqlite: SQLite support
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/DBIx-RunSQL-0.15.tar.gz
-	md5sums = 148c2b3242d60ef6c7eb544be36f996c
-	sha512sums = 2fa2a9e5d00cdc55a0761dd1b7a76d3e4c62a0bae90671ba9928f0728ac176b27dd6fae6c8fa4bb58a53be4ce71affff26d53116696d06ca6f4fd2e43aa75233
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/DBIx-RunSQL-0.17.tar.gz
+	md5sums = 2bc42d2fcb83bfbf4a1f002b1c5a2212
+	sha512sums = 03bd10f1c9753b604e9e85480c97080d3a9f400b0175c4fe5aae49349e0e8ad962403d5d4067ddb41f305809bf183dcd022a1fb376be1288443bad7e68d97320
 
 pkgname = perl-dbix-runsql
 
