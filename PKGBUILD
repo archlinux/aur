@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=badtouch
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Scriptable network authentication cracker"
 url="https://github.com/kpcyrd/badtouch"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kpcyrd/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c0eff9add9196bac3bf65f1304631ed60256f53f35d6f91c7abfa726385bd787611bf32caf4415e2eb8756b0c401b09f12a2793627506a96027014dd3024956b')
+sha512sums=('23425694a7e668fdb38fe0860727ec063658d2d7d82648311b3c4887951cf8ef399acf70d25c217d25309f20af82519195e9a04e0937c0e5722c1657ad5b0d14')
 
 build() {
   cd "$pkgname-$pkgver"
