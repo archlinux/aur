@@ -4,7 +4,7 @@
 
 PHOHY = clean release
 
-VERSION:=0.11.0
+VERSION:=0.12.0
 BASEURL:=https://azuredraft.blob.core.windows.net/draft
 URL_386:=${BASEURL}/draft-v${VERSION}-linux-386.tar.gz 
 URL_AMD64:=${BASEURL}/draft-v${VERSION}-linux-amd64.tar.gz 
