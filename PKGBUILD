@@ -4,7 +4,8 @@
  
 pkgname=natron-git
 name=natron
-pkgver=3.0.0
+pkgver=2.3.10
+ver=2.3
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
@@ -16,9 +17,9 @@ optdepends=('openfx-io-git' 'openfx-misc-git' 'openfx-arena-git: Extra
 OpenFX 
 plugins for Natron includes text node' 'openfx-gmic-git' 'natron-plugins' 
 'firejail-extras: Run Natron with an isolated enviorment')
-com=14791a9bc8d732643471e90cce5c5a10b5592806
+com=f61e5761875c135bbefebf19390b83063b54c0b7
 source=("$name::git+https://github.com/NatronGitHub/Natron.git#commit=$com"
-        "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
+        "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${ver}.tar.gz"
         "config.pri")
 
 
@@ -30,7 +31,7 @@ sha512sums=('SKIP'
 prepare() {
   cd "$srcdir/$name"
   
-  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" "$srcdir/$name/OpenColorIO-Configs"
+  mv "$srcdir/OpenColorIO-Configs-Natron-v${ver}" "$srcdir/$name/OpenColorIO-Configs"
 
   # Git submodules
 git submodule update --init --recursive
