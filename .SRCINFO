@@ -1,6 +1,6 @@
 pkgbase = perl6-cro-core
 	pkgdesc = The heart of the Cro library for building distributed systems in Perl 6, including pipeline composition and TCP support
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/croservices/cro-core
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl6-cro-core
 	checkdepends = perl
 	makedepends = git
 	depends = perl6
-	source = perl6-cro-core-0.7.3.tar.gz::https://codeload.github.com/croservices/cro-core/tar.gz/release-0.7.3
-	sha256sums = 7ea9a03a0638a142afa5251fb5529b4308bcda0c8184f1943f897317df5b56a7
+	source = perl6-cro-core-0.7.4.tar.gz::https://codeload.github.com/croservices/cro-core/tar.gz/release-0.7.4
+	sha256sums = 485888c462d5a82d82a9c0f1945f69fd1ffe10fb9119a74fa93aae18aacfc39b
 
 pkgname = perl6-cro-core
 
