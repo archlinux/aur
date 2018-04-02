@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.22.29+4+gb485cf91b5
+pkgver=3.22.29+60+ge42d8598ca
 pkgrel=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -15,13 +15,13 @@ replaces=('gtk3-print-backends<=3.22.26-1')
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
          adwaita-icon-theme json-glib librsvg wayland-protocols desktop-file-utils mesa
-         cantarell-fonts colord rest libcups libcanberra libcloudproviders gtk-update-icon-cache)
+         cantarell-fonts colord rest libcups libcanberra gtk-update-icon-cache)
 optdepends=('glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
 
 license=(LGPL)
 install=gtk3.install
-_commit=b485cf91b53cd21fad8b4ff35fef53e4d1a9f009  # gtk-3-22
+_commit=e42d8598ca892587a1029c458a19c86fd4867877 # gtk-3-22
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -52,7 +52,6 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --disable-schemas-compile \
-    --enable-cloudproviders \
     --enable-x11-backend \
     --enable-broadway-backend \
     --enable-wayland-backend \

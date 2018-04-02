@@ -1,6 +1,6 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
-	pkgver = 3.22.29+4+gb485cf91b5
+	pkgver = 3.22.29+60+ge42d8598ca
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71
 	install = gtk3.install
@@ -38,15 +38,14 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = rest
 	depends = libcups
 	depends = libcanberra
-	depends = libcloudproviders
 	depends = gtk-update-icon-cache
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
-	provides = gtk3=3.22.29+4+gb485cf91b5
+	provides = gtk3=3.22.29+60+ge42d8598ca
 	provides = gtk3-print-backends
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=b485cf91b53cd21fad8b4ff35fef53e4d1a9f009
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=e42d8598ca892587a1029c458a19c86fd4867877
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
 	source = gtk3-filechooser-icon-view.patch
