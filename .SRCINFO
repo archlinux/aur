@@ -1,0 +1,23 @@
+pkgbase = hamap
+	pkgdesc = High-quality Automated and Manual Annotation of Proteins.
+	pkgver = 2018.april.2
+	pkgrel = 1
+	url = ftp://ftp.expasy.org
+	arch = any
+	license = custom
+	makedepends = bash
+	source = LICENSE
+	source = ftp://ftp.expasy.org/databases/hamap/hamap.prf.gz
+	source = ftp://ftp.expasy.org/databases/hamap/hamap_alignments.tar.gz
+	source = ftp://ftp.expasy.org/databases/hamap/hamap_rules.dat
+	source = ftp://ftp.expasy.org/databases/hamap/hamap_seed_alignments.tar.gz
+	source = ftp://ftp.expasy.org/databases/hamap/rules_index.dat
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hamap
+

@@ -1,0 +1,8 @@
+src
+pkg
+*.pkg.tar.xz
+hamap.prf.gz
+hamap_alignments.tar.gz
+hamap_rules.dat
+hamap_seed_alignments.tar.gz
+rules_index.dat
