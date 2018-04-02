@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-compress-zlib-raw
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Low-level bindings to zlib"
 arch=('any')
-depends=('perl6' 'perl6-find-bundled')
+depends=('perl6')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
