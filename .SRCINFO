@@ -1,0 +1,13 @@
+pkgbase = pong
+	pkgdesc = pong is not ping. pong is CLI game.
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://github.com/kurehajime/pong-command
+	arch = any
+	license = MIT
+	makedepends = git
+	source = pong::https://github.com/kurehajime/pong-command/archive/2.01.tar.gz
+	md5sums = SKIP
+
+pkgname = pong
+
