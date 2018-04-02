@@ -12,7 +12,8 @@ license=(Apache)
 depends=(python2-dnspython python2-httplib2 python2-simplejson python2-jinja
          python2-graphy)
 makedepends=(git)
-optdepends=('tk: gui')
+optdepends=('tk: gui'
+            'python2-pmw: gui')
 source=(namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver})
 sha512sums=('SKIP')
 
