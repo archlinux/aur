@@ -2,7 +2,7 @@
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=c++-gtk-utils
-pkgver=2.2.14.1
+pkgver=2.2.15
 pkgrel=1
 pkgdesc="Classes and functions for programming in GTK+"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('gtk3')
 options=('!docs' '!emptydirs')
 source=("http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e52b3e1746d1b826f46d257a1865edeb')
+md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
