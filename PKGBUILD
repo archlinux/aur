@@ -3,7 +3,7 @@
 
 _extname=languagetool
 pkgname=openoffice-extension-${_extname}
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="An Open Source proof­reading soft­ware for English, French, German, Polish, and more than 20 other languages (Apache OpenOffice extension)"
 arch=("any")
@@ -13,7 +13,7 @@ groups=("openoffice-extensions")
 depends=('openoffice' 'java-runtime>=8')
 makedepends=('maven' 'unzip' 'java-environment>=8')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/languagetool-org/languagetool/archive/v${pkgver}.tar.gz")
-sha256sums=('64feb3c10d0a200037bfd6fceb40bee499773baf87eb26bb1b45fa67794744b2')
+sha256sums=('84327f6564fc2c27f7063a3ec5713d6a96eec01b3452a972134b3c62be8e31ec')
 
 build() {
     cd "${srcdir}/${_extname}-${pkgver}/"
