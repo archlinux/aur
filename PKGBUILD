@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-indirect'
-pkgver='0.37'
+pkgver='0.38'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module indirect: Lexically warn about using the indirect method call syntax."
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/indirect'
 source=("http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/indirect-$pkgver.tar.gz")
-md5sums=('d6ae968af42ab90e03f70a2f93ac6b51')
-sha512sums=('8d46ff62c86b23519b030474155f7d8aa4872a9a4a2bb1e3199ac506aee60343b4c572eae8fa41dc5148c115de3c80bcb7f21900ad30822dc9eb437033defe09')
+md5sums=('c4e2da06c6bd0cc4f7ba5a318bae7f15')
+sha512sums=('1ae363d2b2961be8495168a870bf941953a7845b0f3e9c7e9b267affc0b0392e1747ca4edd484ac98ddeef70b1a1cf28672bf1b9289847cb193409914e2f4673')
 _distdir="indirect-$pkgver"
 
 build() {
