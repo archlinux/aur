@@ -1,15 +1,16 @@
 # Maintainer: grimi <grimi at poczta dot fm>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
 # Maintainer: Thomas Nordenmark <t.nordenmark@gmail.com>
 # Developer: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
 pkgver=2.23
-pkgrel=2
-pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
+pkgrel=3
+pkgdesc="Graphical program used to map keyboard keys and mouse controls to a gamepad"
 arch=("i686" "x86_64")
 url="https://github.com/AntiMicro/${pkgname}"
 license=("GPL3")
-depends=("desktop-file-utils" "libxkbcommon-x11" "libxtst" "qt5-base" "sdl2" "shared-mime-info")
+depends=("libxtst" "qt5-base" "sdl2")
 makedepends=("cmake" "gettext" "itstool" "qt5-tools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=("ef309170612da805992f9194f1973bf38a3174a0856856afedab67f9d927a9ef")
@@ -35,7 +36,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-
   make DESTDIR="${pkgdir}" install
 }
 
