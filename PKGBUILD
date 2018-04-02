@@ -2,7 +2,7 @@
 
 pkgbase=python-iexfinance-git
 pkgname=(python-iexfinance-git python2-iexfinance-git)
-pkgver=r53.d6d7710
+pkgver=v0.3.1.0.gd6d7710
 pkgrel=1
 pkgdesc="Python wrapper for the Investor's Exchange (IEX) Developer API"
 url='https://addisonlynch.github.io/iexfinance/'
@@ -16,7 +16,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${pkgname[0]}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/-/./g'
 }
 
 build() {

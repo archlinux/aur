@@ -1,6 +1,6 @@
 pkgbase = python-iexfinance-git
 	pkgdesc = Python wrapper for the Investor's Exchange (IEX) Developer API
-	pkgver = r53.d6d7710
+	pkgver = v0.3.1.0.gd6d7710
 	pkgrel = 1
 	url = https://addisonlynch.github.io/iexfinance/
 	arch = any
