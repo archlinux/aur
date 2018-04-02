@@ -2,13 +2,13 @@
 
 pkgbase=python-iexfinance
 pkgname=(python-iexfinance python2-iexfinance)
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Python wrapper for the Investor's Exchange (IEX) Developer API"
 url='https://addisonlynch.github.io/iexfinance/'
 arch=(any)
 license=(apache)
-depends=(python)
+depends=(python python-pandas python-requests)
 makedepends=(python-setuptools python2-setuptools)
 source=("${pkgbase}::git+https://github.com/addisonlynch/iexfinance.git#tag=v$pkgver")
 sha256sums=(SKIP)
@@ -23,7 +23,7 @@ package_python-iexfinance() {
 }
 
 package_python2-iexfinance() {
-  depends=(python2)
+  depends=(python2 python2-pandas python2-requests)
 
   cd ${pkgbase}2
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
