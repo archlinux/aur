@@ -1,10 +1,10 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=awesome-freedesktop-git
-pkgcom=96
-pkgsha=8013a6e
+pkgcom=98
+pkgsha=4226433
 pkgver=$pkgcom.$pkgsha
-pkgrel=2
+pkgrel=1
 pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
 arch=('any')
 url="https://github.com/lcpz/awesome-freedesktop"
