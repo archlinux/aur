@@ -4,7 +4,7 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=sysbench
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="Benchmark tool for evaluating OS parameters that are important for a system running a database under intensive load."
 url="https://github.com/akopytov/sysbench"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('mariadb-clients' 'postgresql-libs')
 makedepends=('libxslt' 'vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akopytov/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('d9c6597b1b3da8541cece0fabc84890c')
+sha256sums=('81669cee6e0d5fccd5543dbcefec18826db43abba580de06cecf5b54483f6079')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

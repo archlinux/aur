@@ -1,6 +1,6 @@
 pkgbase = sysbench
 	pkgdesc = Benchmark tool for evaluating OS parameters that are important for a system running a database under intensive load.
-	pkgver = 1.0.12
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/akopytov/sysbench
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = sysbench
 	makedepends = vim
 	depends = mariadb-clients
 	depends = postgresql-libs
-	source = sysbench-1.0.12.tar.gz::https://github.com/akopytov/sysbench/archive/1.0.12.tar.gz
-	md5sums = d9c6597b1b3da8541cece0fabc84890c
+	source = sysbench-1.0.14.tar.gz::https://github.com/akopytov/sysbench/archive/1.0.14.tar.gz
+	sha256sums = 81669cee6e0d5fccd5543dbcefec18826db43abba580de06cecf5b54483f6079
 
 pkgname = sysbench
 
