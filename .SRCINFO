@@ -1,0 +1,40 @@
+pkgbase = linux-jwrdegoede
+	pkgver = git
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://github.com/jwrdegoede/linux-sunxi/archive/master.zip
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = SKIP
+	sha256sums = 65ae261b314e266de809b212e4d5fd4d9e84b206771a3d59b7638b1b52744789
+	sha256sums = cbee6b874133a4c335e6844a20eaec419da93dba70861864ff84b944a0d5524c
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-jwrdegoede
+	pkgdesc = The Linux-jwrdegoede kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-jwrdegoede.preset
+
+pkgname = linux-jwrdegoede-headers
+	pkgdesc = Header files and scripts for building modules for Linux-jwrdegoede kernel
+
+pkgname = linux-jwrdegoede-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-jwrdegoede kernel
+
