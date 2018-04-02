@@ -5,13 +5,13 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=4.1.0.47.gb704d60e8
-pkgrel=2
+pkgver=4.2.0.10.gbb0e0bcf6
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
 	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2' 'netcf' 'perl-xml-xpath')
@@ -82,8 +82,8 @@ prepare() {
   cd "$srcdir/${pkgname/-git/}"
 
   for file in $(find . -name '*.py' -print); do
-    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python_' $file
+    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python_' $file
   done
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
@@ -103,7 +103,7 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname/-git/}"
 
-  export PYTHON=`which python2`
+  export PYTHON=`which python`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
   NOCONFIGURE=1 ./autogen.sh
