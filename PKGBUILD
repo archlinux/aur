@@ -83,5 +83,5 @@ md5sums=(
 package() {
   mkdir -p  "$pkgdir/opt/$pkgname/"
   rm -f *.gz *.tgz
-  find * -maxdepth 0 -regex '.+\.gz|.+\.tgz' -prune -o -print0 | xargs -0 -i mv {} "$pkgdir/opt/$pkgname/"
+  find * -maxdepth 0 -regex '.+\.gz|.+\.tgz|LICENSE' -prune -o -print0 | xargs -0 -i cp -rfHL {} "$pkgdir/opt/$pkgname/"
 }
