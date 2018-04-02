@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-http
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="HTTP (including HTTPS and HTTP/2) support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
@@ -23,7 +23,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-http"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('71f3be79bd47023a535582010f322e20af791e82595fec76f63b72bd629274e2')
+sha256sums=('adaea9dcc6b72d214fd64665dd3645bc38598f1353a6ba649605e9ebb8b5bde2')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
