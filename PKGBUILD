@@ -3,7 +3,7 @@
 
 pkgname=openfx-gmic-git
 name=openfx-gmic
-pkgver=2.3.8
+pkgver=2.3.10
 pkgrel=1
 arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
@@ -13,7 +13,7 @@ depends=("seexpr" "openimageio" "ffmpeg")
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
 makedepends=("git" "expat" "boost")
 optdepends=("openfx-gmic-bin" "natron-plugins")
-com=d7595c483a9a7b480841bb9e8588e7a566bbb82e
+com=d584306629b06c3503363f7a80a689de5ff4584f
 source=("$name::git+https://github.com/NatronGitHub/openfx-gmic.git#commit=$com"
 )
 sha512sums=('SKIP'
