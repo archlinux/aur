@@ -1,3 +1,4 @@
+# Maintainer: phmayo <cmdjackryan+aur@gmail.com>
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad
 pkgver=4.3.0
