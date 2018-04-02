@@ -1,7 +1,7 @@
 # Maintainer: Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=('in-toto')
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A framework to secure your software supply chain"
 arch=('any')
@@ -15,16 +15,18 @@ depends=('python-cryptography'
     'python-six')
 optdepends=("gnupg: pgp signing/verification")
 makedepends=('python' 'python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/in-toto/in-toto/archive/${pkgver}.tar.gz"
-    "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/in-toto/in-toto/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-md5sums=('2e50e54f57bd39fee116db79c595c4e1'
+source=("https://github.com/in-toto/in-toto/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+md5sums=('c4326adb0abf531c7908995c24e13295'
          'SKIP')
-sha256sums=('f9c43c93c3c0ba1395d52b5aaf89625598454ef73f5b8558b1062753d8c015c1'
+sha256sums=('9ff9c9ef9471576e1eeefd14e410f054afce9ee6df3727000ae1d68142a26c83'
             'SKIP')
-sha512sums=('0d3fa8ba219b448b4e8978eb4c842c01cf039cabb7f1779e8e805c81d5ef5ad92c01ec55efe235ba92f253d502e6518d8e6da6c63cc41ea40445d218c78a7369'
+sha512sums=('7614577830c2dfb1db6c13a98f7b4f75d2900ea7047127df01077b0a14c76385c43c2e321554497be9960f7a09bcd9fd8c42de3d5846f40de60ab357925b4aaa'
             'SKIP')
-
-validpgpkeys=("8BA69B87D43BE294F23E812089A2AD3C07D962E8")
+validpgpkeys=("903BAB73640EB6D65533EFF3468F122CE8162295"
+    # Santiago Torres-Arias (upstream co-maintainer)
+    "8BA69B87D43BE294F23E812089A2AD3C07D962E8"
+    # Lukas Puehringher (upstream maintainer)
+    )
 
 build() {
     cd "$srcdir/$pkgname-${pkgver}"
