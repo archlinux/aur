@@ -1,17 +1,17 @@
 # Maintainer: Prasad Kumar
 pkgname=arrongin-gtk-theme
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
 url='https://www.opendesktop.org/p/1215199/'
 license=('CC BY-NC-SA')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3>=3.20')
 provides=('arrongin-gtk-theme')
-source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1522615458/s/76c9d4848e73f0e0a2a8bce9e65a3df0/t/1522685535/u/455718/Arrongin-$pkgver.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1522615458/s/5bcc8bcf4cf26695e8daa28acfea4017/t/1522700017/u/455718/Arrongin-$pkgver.tar.xz")
 sha512sums=('7fe601d9f4b82f293f0bf8c19c259b5a7c3ccda3cc001e2fe50f4ab87d133a077cd41b354f106ed74196fa4086702e8cb8b6ef54f668b3262fb94bb721a8ae22')
 package() {
   cd "${srcdir}"/Arrongin-$pkgver
-  install -d "$pkgdir"/usr/share/themes/${pkgname}
-  cp -rf * "$pkgdir"/usr/share/themes/${pkgname}
+  install -d "$pkgdir"/usr/share/themes/Arrongin
+  cp -rf * "$pkgdir"/usr/share/themes/Arrongin
 }
