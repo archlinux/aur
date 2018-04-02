@@ -35,5 +35,5 @@ sha512sums=(
 package() {
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p  "$pkgdir/opt/TIGRFAM/"
-  find * -maxdepth 0 -regex '.*\.gz' -prune -o -print0 | xargs -0 -i cp -f {} "$pkgdir/opt/TIGRFAM/"
+  find * -maxdepth 0 -regex '.*\.gz' -prune -o -print0 | xargs -0 -i cp -rfHL {} "$pkgdir/opt/TIGRFAM/"
 }
