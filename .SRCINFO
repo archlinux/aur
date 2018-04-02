@@ -16,5 +16,5 @@ pkgbase = dogecoin-daemon
 pkgname = dogecoin-daemon
 	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - daemon
 	depends = boost-libs
-	depends = libressl
+	depends = openssl
 

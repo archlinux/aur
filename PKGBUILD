@@ -27,7 +27,7 @@ build() {
 
 package_dogecoin-daemon() {
   pkgdesc='Dogecoin is a peer-to-peer network based digital currency - daemon'
-  depends=('boost-libs' 'libressl')
+  depends=('boost-libs' 'openssl')
   cd $srcdir/$pkg_base-$_full_pkgver
   install -Dm755 src/$pkg_base'd' $pkgdir/usr/bin/$pkg_base'd'
   install -Dm755 src/$pkg_base'-cli' $pkgdir/usr/bin/$pkg_base'-cli'
