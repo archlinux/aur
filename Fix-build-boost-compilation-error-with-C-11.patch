@@ -1,0 +1,38 @@
+diff --git a/src/chainparams.cpp b/src/chainparams.cpp
+index 5c618d78b..30fe6bc94 100644
+--- a/src/chainparams.cpp
++++ b/src/chainparams.cpp
+@@ -161,11 +161,11 @@ public:
+         vSeeds.push_back(CDNSSeedData("emergate.net", "seed.emergate.net"));
+         vSeeds.push_back(CDNSSeedData("emcdns", "seed.emc"));
+ 
+-        base58Prefixes[PUBKEY_ADDRESS] = list_of(33);   // emercoin: addresses begin with 'E'
+-        base58Prefixes[SCRIPT_ADDRESS] = list_of(92);   // emercoin: addresses begin with 'e'
+-        base58Prefixes[SECRET_KEY] =     list_of(128);
+-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
++        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,33);   // emercoin: addresses begin with 'E'
++        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,92);   // emercoin: addresses begin with 'e'
++        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
++        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
++        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+ 
+         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+ 
+@@ -225,11 +225,11 @@ public:
+         vSeeds.clear();
+         vSeeds.push_back(CDNSSeedData("emercoin", "tnseed.emercoin.com"));
+ 
+-        base58Prefixes[PUBKEY_ADDRESS] = list_of(111);
+-        base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+-        base58Prefixes[SECRET_KEY]     = list_of(239);
+-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
++        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
++        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
++        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,239);
++        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
++        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+ 
+         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+ 

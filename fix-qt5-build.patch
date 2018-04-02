@@ -1,0 +1,21 @@
+diff --git a/configure.ac b/configure.ac
+index dfd499f49..7d5b78dc8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -425,6 +425,7 @@ fi
+ if test x$use_hardening != xno; then
+   AX_CHECK_COMPILE_FLAG([-Wstack-protector],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -Wstack-protector"])
+   AX_CHECK_COMPILE_FLAG([-fstack-protector-all],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fstack-protector-all"])
++  AX_CHECK_COMPILE_FLAG([-fPIC],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fPIC" && CFLAGS="$CFLAGS -fPIC"])
+ 
+   AX_CHECK_PREPROC_FLAG([-D_FORTIFY_SOURCE=2],[
+     AX_CHECK_PREPROC_FLAG([-U_FORTIFY_SOURCE],[
+@@ -440,7 +441,7 @@ if test x$use_hardening != xno; then
+ 
+   if test x$TARGET_OS != xwindows; then
+     # All windows code is PIC, forcing it on just adds useless compile warnings
+-    AX_CHECK_COMPILE_FLAG([-fPIE],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fPIE"])
++    AX_CHECK_COMPILE_FLAG([-fPIC],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fPIC"])
+     AX_CHECK_LINK_FLAG([[-pie]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -pie"])
+   fi
+ 

@@ -1,27 +1,49 @@
-# Maintainer: Nicholas Wong <me@nicho1as.wang>
+# Maintainer: Nicholas Wang <me@nicho1as.wang>
+# Contributor: locked_sh <locked.shadow@openmailbox.org>
 
 pkgname=emercoin
 pkgver=0.6.3.1
-pkgrel=2
-pkgdesc="Emercoin is a digital currency and blockchain service platform."
-arch=('i686' 'x86_64')    
-url="http://emercoin.com/"
-license=('GPL3')
-source_i686=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux32.tar.gz")
-source_x86_64=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux64.tar.gz")
-sha256sums_i686=('a395b315c67c5abbb2ffbf75f18dbaf73469ddd32416ed8e2f904b764a55fb8c')
-sha256sums_x86_64=('5045f4c20a7060e610847f9ffd01048601266640007e97d9bc245202f59f5ef5')
+pkgrel=3
+pkgdesc="Digital currency and blockchain service platform"
+arch=('i686' 'x86_64')
+url="https://emercoin.com/"
+license=('GPL')
+depends=('openssl-1.0' 'boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode')
+makedepends=('boost')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
+        "Fix-build-boost-compilation-error-with-C-11.patch"
+        "fix-qt5-build.patch"
+        "Fix-build-with-boost-1.66.patch")
+sha256sums=('91e3fe3aaf7a162c924da00ed6ca41e6a8457196da66169ed2678ddc8bd99bca'
+            '52afbe65bd924a252b939589194be6fdac7d06d884def66ea992562af2f9ccbd'
+            'c4d099cc35d3d0770189a4a5884e3fbeb5b2e9f890d12d42d10314f477bcefb8'
+            '5d27f2e52820d0de4b1e8c90fb0bc75e525ccd483efa2740235eb3851b18b7bc')
+prepare() {
+	cd "${pkgname}-${pkgver}emc"
+	patch -Np1 -i ${srcdir}/Fix-build-boost-compilation-error-with-C-11.patch #See https://github.com/litecoin-project/litecoin/issues/240 for more details.
+	patch -Np1 -i ${srcdir}/fix-qt5-build.patch #See https://forum.feathercoin.com/post/80641 for more details.
+	patch -Np1 -i ${srcdir}/Fix-build-with-boost-1.66.patch #See https://github.com/peercoin/peercoin/pull/316/ for more details.
+}
+
+build() {
+	cd "${pkgname}-${pkgver}emc"
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+	export CFLAGS+=" -I/usr/include/openssl-1.0 -fPIC"
+	export CXXFLAGS+=" -fPIC"
+	export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
+	./autogen.sh
+	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no
+	make
+}
+
 package() {
-    cd "$pkgname-0.6.3"
-    mkdir -p $pkgdir/usr/bin
-    install -D -m755 ./bin/emercoind $pkgdir/usr/bin/emercoind
-    install -D -m755 ./bin/emercoin-qt $pkgdir/usr/bin/emercoin-qt
-    install -D -m755 ./bin/emercoin-tx $pkgdir/usr/bin/emercoin-tx
-    install -D -m755 ./bin/emercoin-cli $pkgdir/usr/bin/emercoin-cli
-#    install -D -m755 ./bin/test_emercoin $pkgdir/usr/bin/test_emercoin
-#    install -D -m755 ./bin/test_emercoin-qt $pkgdir/usr/bin/test_emercoin-qt
-    install -D -m755 ./include/bitcoinconsensus.h $pkgdir/usr/include/bitcoinconsensus.h
-    install -D -m755 ./lib/libbitcoinconsensus.so $pkgdir/usr/lib/libbitcoinconsensus.so
-    install -D -m755 ./lib/libbitcoinconsensus.so.0 $pkgdir/usr/lib/libbitcoinconsensus.so.0
-    install -D -m755 ./lib/libbitcoinconsensus.so.0.0.0 $pkgdir/usr/lib/libbitcoinconsensus.so.0.0.0
+	cd "${pkgname}-${pkgver}emc"
+	make DESTDIR="$pkgdir/" install
+#	install -Dm644 contrib/debian/emercoin-qt.desktop \
+#		"$pkgdir"/usr/share/applications/emercoin.desktop
+#	install -Dm644 contrib/debian/emercoin.conf \
+#		"$pkgdir/etc/emercoin.conf"
+#	install -Dm644 contrib/debian/emercoind.service \
+#		"$pkgdir/usr/lib/systemd/system/emercoind.service"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
