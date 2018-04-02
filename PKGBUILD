@@ -11,7 +11,7 @@ optdepends=('mpd')
 makedepends=('git')
 provides=('mpdrand')
 source=("https://code.jpope.org/jpope/mpdrand/archive/v${pkgver}.tar.gz")
-sha256sums=('f980042fb80ac32926585431be806f0c0aa0d8804c9fcec0c79a58e28e6eecd1')
+sha256sums=('6a7b6a2418c0a031057f672914ab4c71f30ae99034e70d38ec429f0dfb4895a8')
 
 package() {
   mkdir -p $pkgdir/usr/share/doc/mpdrand
