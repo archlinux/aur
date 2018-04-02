@@ -2,11 +2,11 @@
 
 pkgname=just
 pkgver=0.3.10
-pkgrel=1
-pkgdesc="Just a command runner, like make."
+pkgrel=2
+pkgdesc="A handy way to save and run project-specific commands"
 arch=("x86_64" "i686")
 url="https://github.com/casey/${pkgname}"
-license=("custom:WTFPL" "custom:MIT" "APACHE" "https://github.com/casey/${pgkname}/blob/master/LICENSE")
+license=("custom:WTFPL" "custom:MIT" "APACHE")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/casey/${pkgname}/archive/v${pkgver}.tar.gz")

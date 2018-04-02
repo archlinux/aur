@@ -1,14 +1,13 @@
 pkgbase = just
-	pkgdesc = Just a command runner, like make.
+	pkgdesc = A handy way to save and run project-specific commands
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casey/just
 	arch = x86_64
 	arch = i686
 	license = custom:WTFPL
 	license = custom:MIT
 	license = APACHE
-	license = https://github.com/casey//blob/master/LICENSE
 	makedepends = cargo
 	depends = gcc-libs
 	source = just-0.3.10.tar.gz::https://github.com/casey/just/archive/v0.3.10.tar.gz
