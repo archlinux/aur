@@ -1,8 +1,8 @@
 # Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
 
 pkgname=games_nebula
-pkgver=20171113
-pkgrel=2
+pkgver=20180222
+pkgrel=1
 pkgdesc='Unofficial Linux client for GOG'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ optdepends=('gksu' 'xterm' 'curl' 'tar' 'p7zip' 'cabextract' 'unshield' 'ffmpeg'
 provides=('games_nebula')
 conflicts=('games_nebula')
 source=(${pkgname}_${pkgver}.tar.gz::"https://github.com/yancharkin/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('73d80897cc72448636b9d3da0356d5c8856746818dafec5ff5e47096a132d895')
+sha256sums=('060d34f3bb58910fe26c7737a741832d17057a88bea40acfeb2b2935cfec9efa')
 
 build() {
 	cd "${srcdir}"
