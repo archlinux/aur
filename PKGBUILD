@@ -1,11 +1,11 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
-# Contributor: mickael9 <mickael9 at gmail dot com>
+# Maintainer: mickael9 <mickael9@gmail.com>
+# Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.15.40
+pkgver=0.16.36
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
@@ -15,42 +15,30 @@ source=(factorio.desktop
         LICENSE)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
             '67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21')
-if test "$CARCH" == i686; then
-  __factorio_arch=i386
-  _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux32
-elif test "$CARCH" == x86_64; then
-  __factorio_arch=x64
-  _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
-fi
-_gamepkg=factorio_alpha_${__factorio_arch}_$pkgver.tar.xz
-_pkgpaths_tries=("$startdir"
-                 "$SRCDEST"
-                 "$HOME/Downloads")
+_url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
+_gamepkg=factorio_alpha_x64_${pkgver}.tar.xz
 
 build() {
   msg "You need a full copy of this game in order to install it"
 
-  _find_pkgpath_from_dir
+  while true; do
+    _find_pkgpath_from_dir
+    [[ -f "${pkgpath}/${_gamepkg}" ]] && break
 
-  # could not find the path automatically, ask the user
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      _find_pkgpath_from_input
-  fi
+    # could not find the path automatically, ask the user
+    _find_pkgpath_from_input
+    [[ -f "${pkgpath}/${_gamepkg}" ]] && break
 
-  # if user entered nothing, try to download
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      _find_pkgpath_from_download
-  fi
+    # if user entered nothing, try to download
+    _find_pkgpath_from_download
+    [[ -f "${pkgpath}/${_gamepkg}" ]] && break
 
-  # if download failed, ask the user again
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      _find_pkgpath_from_input
-  fi
+    error "Unable to find game package."
+    [[ ! -t 0 ]] && return 1
 
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      error "Unable to find game package."
-      return 1
-  fi
+    read -n1 -p "Try again? (Y/n) " try_again ; echo
+    [[ "${try_again,,*}" == "n" ]] && return 1
+  done
 
   # unpack game tarball
   msg "Found game package, unpacking..."
@@ -62,54 +50,85 @@ build() {
 # - config in ~/.factorio
 
 package() {
-  cd "$srcdir/factorio"
+  cd "${srcdir}/factorio"
 
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
   install -g games -m 775 -d "${pkgdir}/usr/share/factorio"
   install -d "${pkgdir}/usr/share/licenses/factorio"
 
-  install -m755 "bin/${__factorio_arch}/factorio" "$pkgdir/usr/bin/factorio"
-  cp -r data/* "$pkgdir/usr/share/factorio"
+  install -m755 "bin/x64/factorio" "${pkgdir}/usr/bin/factorio"
+  cp -r data/* "${pkgdir}/usr/share/factorio"
   install -m644 "${srcdir}/factorio.desktop" "${pkgdir}/usr/share/applications/factorio.desktop"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio/LICENSE"
 }
 
 _find_pkgpath_from_dir() {
-  for pkgpath_try in "${_pkgpaths_tries[@]}" ; do
-    msg "Searching for ${_gamepkg} in dir: \"${pkgpath_try}\""
+  local pkgpaths_tries=()
+  [[ $SRCDEST != $startdir ]] && pkgpaths_tries+=("$SRCDEST")
+  pkgpaths_tries+=("$startdir" "$HOME" "${XDG_DOWNLOAD_DIR:-$HOME/Downloads}")
+
+  msg "Searching for ${_gamepkg} in:"
+
+  for pkgpath_try in "${pkgpaths_tries[@]}"; do
+    msg2 "$pkgpath_try"
     if [[ -f "${pkgpath_try}/${_gamepkg}" ]]; then
       pkgpath=${pkgpath_try}
       break
     fi
   done
-  if [[ -z "${pkgpath}" ]] ; then
-    error "Game package not found."
+
+  if [[ -z $pkgpath ]]; then
+    warning "Game package not found"
+  else
+    msg "Game package found"
   fi
 }
 
 _find_pkgpath_from_input() {
-    read -rp "Please provide the path to the directory containing ${_gamepkg} (e.g. /home/joe). Leave blank to download from https://factorio.com: " pkgpath
+  # don't interact if standard input isn't a terminal
+  # or if we should download the game using FACTORIO_LOGIN and FACTORIO_PASSWORD
+
+  [[ ! -t 0 || -n "$FACTORIO_LOGIN" ]] && return
+
+  while [[ ! -f "${pkgpath}/${_gamepkg}" ]]; do
+    read -rp "Please provide the path to the directory containing ${_gamepkg} or leave blank to download it using your Factorio credentials: " pkgpath
+    [[ -z $pkgpath ]] && break
+
+    # perform tilde expansion
+    pkgpath="${pkgpath/#"~/"/$HOME/}"
+    [[ $pkgpath = "~" ]] && pkgpath="$HOME"
+
+    # also accept a full path to the file if it has the right name
+    if [[ -f $pkgpath && ${pkgpath##*/} = ${_gamepkg} ]]; then
+      pkgpath=${pkgpath%/*}
+    fi
+
+    if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
+      error "${_gamepkg} not found in ${pkgpath}"
+    fi
+  done
 }
 
 _find_pkgpath_from_download() {
+  msg "Downloading game using Factorio credentials"
+
   local cookie=$(mktemp)
 
   while [[ -z "${pkgpath}" ]] ; do
-    local login
-    local password
+    local login="$FACTORIO_LOGIN"
+    local password="$FACTORIO_PASSWORD"
     local file="${SRCDEST}/${_gamepkg}"
 
-    read -rp "Username or email: " login
-    if [[ -z "${login}" ]]; then
-      break
-    fi
-    read -rsp "Password: " password ; echo
-    if [[ -z "${password}" ]]; then
-      break
+    if [[ -z $login || -z $password ]]; then
+      [[ ! -t 0 ]] && return
+      read -rp "Username or email: " login
+      [[ -z "${login}" ]] && break
+      read -rsp "Password: " password ; echo
+      [[ -z "${password}" ]] && break
     fi
 
-    msg "Logging in..."
+    msg2 "Logging in..."
     local csrf_token=$(
       curl --silent --fail \
            --cookie-jar "$cookie" \
@@ -135,18 +154,18 @@ _find_pkgpath_from_download() {
 
     if ! echo "$output" | grep -q '^Location: '; then
       error "Login failed"
-      read -p "Try again? (Y/n) " try_again
-      if [[ "${try_again}" == "n" ]] ; then
+      read -n1 -p "Retry login? (Y/n) " try_again ; echo
+      if [[ "${try_again,,*}" == "n" ]]; then
         break
       else
         continue
       fi
     fi
 
-    msg2 "Logged in"
-    msg "Downloading ${_gamepkg} from $_url ..."
+    msg2 "Downloading ${_gamepkg} from ${_url} ..."
 
-    curl --fail --location \
+    curl --retry 10 --retry-delay 3 \
+         --fail --location \
          --cookie "${cookie}" \
          --continue-at - \
          --output "${file}.part" \
