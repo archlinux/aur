@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash
-pkgver=2.7.8
+pkgver=3.0
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
@@ -20,9 +20,9 @@ options=('!makeflags' '!emptydirs')
 source=(
        https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2
 )
-sha1sums=('16dc0a80f8f196ddeee8abe1c1ae4758b88a30ce')
-sha256sums=('380c08d73b91d381a0197c108e672c20341c894bebb4ae98e9ab74df2a659797')
-sha512sums=('1e9f4dda0da4b8ce9a0ab2e240ea049fcbd13842126555353e162f36a125b939e1b4025556a63c042bb77f0ed9490dc4aa007cf697eb9dcadbf4b914c992b8ce')
+sha1sums=('a575e853668b93b34dcd94f0ef0d1fee25b0165f')
+sha256sums=('4c754476a5b80a97abacaeadac64fefc5a68fcfec15967908dbe3c9f7370dbb9')
+sha512sums=('5ec13b8abe1520a7e614ceeca4c41d5dba3ebae4ec965918584963022ceb5cb3b85862289a85a72767db74a0c735214a78342a53c37e6da939ff850538174a87')
 backup=(
 	'etc/gnucash/config'
 	'etc/gnucash/environment'
