@@ -1,0 +1,16 @@
+pkgbase = python-scrython-git
+	pkgdesc = A Python wrapper for the Scryfall.com API
+	pkgver = 1.3.0.19.g22f7e17
+	pkgrel = 1
+	url = https://addisonlynch.github.io/iexfinance/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	conflicts = python-scrython
+	source = python-scrython-git::git+https://github.com/NandaScott/Scrython.git
+	sha256sums = SKIP
+
+pkgname = python-scrython-git
+
