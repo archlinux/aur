@@ -1,5 +1,5 @@
 diff -r -u      a/dlls/wined3d/buffer.c b/dlls/wined3d/buffer.c
---- a/dlls/wined3d/buffer.c	2018-04-02 04:33:26.378794396 +0200
+--- a/dlls/wined3d/buffer.c	2018-04-02 20:31:10.812123048 +0200
 +++ b/dlls/wined3d/buffer.c	2018-03-31 12:48:20.431496034 +0200
 @@ -28,12 +28,14 @@
  #include "wined3d_private.h"
@@ -897,7 +897,7 @@ diff -r -u      a/dlls/wined3d/buffer_heap.c b/dlls/wined3d/buffer_heap.c
 +}
 \ No newline at end of file
 diff -r -u      a/dlls/wined3d/context.c b/dlls/wined3d/context.c
---- a/dlls/wined3d/context.c	2018-04-02 04:33:36.094784165 +0200
+--- a/dlls/wined3d/context.c	2018-04-02 20:31:20.892074353 +0200
 +++ b/dlls/wined3d/context.c	2018-03-31 12:48:20.434496027 +0200
 @@ -4956,7 +4956,11 @@
      if (parameters->indexed)
@@ -913,7 +913,7 @@ diff -r -u      a/dlls/wined3d/context.c b/dlls/wined3d/context.c
              idx_data = index_buffer->resource.heap_memory;
          }
 diff -r -u      a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
---- a/dlls/wined3d/cs.c	2018-04-02 04:33:35.926784342 +0200
+--- a/dlls/wined3d/cs.c	2018-04-02 20:31:20.720075184 +0200
 +++ b/dlls/wined3d/cs.c	2018-03-31 12:48:20.435496025 +0200
 @@ -73,6 +73,7 @@
      WINED3D_CS_OP_CLEAR_UNORDERED_ACCESS_VIEW,
@@ -1034,7 +1034,7 @@ diff -r -u      a/dlls/wined3d/cs.c b/dlls/wined3d/cs.c
  
  static BOOL wined3d_cs_st_check_space(struct wined3d_cs *cs, size_t size, enum wined3d_cs_queue_id queue_id)
 diff -r -u      a/dlls/wined3d/device.c b/dlls/wined3d/device.c
---- a/dlls/wined3d/device.c	2018-04-02 04:33:36.142784114 +0200
+--- a/dlls/wined3d/device.c	2018-04-02 20:31:20.940074121 +0200
 +++ b/dlls/wined3d/device.c	2018-03-31 12:48:20.438496018 +0200
 @@ -840,6 +840,66 @@
      device->null_sampler = NULL;
@@ -1120,7 +1120,7 @@ diff -r -u      a/dlls/wined3d/device.c b/dlls/wined3d/device.c
  }
  
 diff -r -u      a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
---- a/dlls/wined3d/directx.c	2018-04-02 04:33:36.171784084 +0200
+--- a/dlls/wined3d/directx.c	2018-04-02 20:31:20.972073966 +0200
 +++ b/dlls/wined3d/directx.c	2018-03-31 12:48:20.440496014 +0200
 @@ -111,6 +111,7 @@
      /* ARB */
@@ -1205,7 +1205,7 @@ diff -r -u      a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
          {ARB_CLIP_CONTROL,                 MAKEDWORD_VERSION(4, 5)},
          {ARB_CULL_DISTANCE,                MAKEDWORD_VERSION(4, 5)},
 diff -r -u      a/dlls/wined3d/Makefile.in b/dlls/wined3d/Makefile.in
---- a/dlls/wined3d/Makefile.in	2018-04-02 04:33:27.324793400 +0200
+--- a/dlls/wined3d/Makefile.in	2018-04-02 20:31:11.765118444 +0200
 +++ b/dlls/wined3d/Makefile.in	2018-03-31 12:48:20.440496014 +0200
 @@ -6,6 +6,7 @@
  	arb_program_shader.c \
@@ -1216,7 +1216,7 @@ diff -r -u      a/dlls/wined3d/Makefile.in b/dlls/wined3d/Makefile.in
  	cs.c \
  	device.c \
 diff -r -u      a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
---- a/dlls/wined3d/resource.c	2018-04-02 04:33:35.852784420 +0200
+--- a/dlls/wined3d/resource.c	2018-04-02 20:31:20.645075546 +0200
 +++ b/dlls/wined3d/resource.c	2018-03-31 12:48:20.440496014 +0200
 @@ -340,6 +340,7 @@
  HRESULT CDECL wined3d_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
@@ -1262,7 +1262,7 @@ diff -r -u      a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
  
  UINT CDECL wined3d_resource_update_info(struct wined3d_resource *resource, unsigned int sub_resource_idx,
 diff -r -u      a/dlls/wined3d/state.c b/dlls/wined3d/state.c
---- a/dlls/wined3d/state.c	2018-04-02 04:33:35.953784313 +0200
+--- a/dlls/wined3d/state.c	2018-04-02 20:31:20.749075043 +0200
 +++ b/dlls/wined3d/state.c	2018-03-31 12:48:20.442496009 +0200
 @@ -4797,7 +4797,11 @@
      else
@@ -1339,7 +1339,7 @@ diff -r -u      a/dlls/wined3d/state.c b/dlls/wined3d/state.c
      checkGLcall("bind constant buffers");
  }
 diff -r -u      a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
---- a/dlls/wined3d/texture.c	2018-04-02 04:33:35.873784397 +0200
+--- a/dlls/wined3d/texture.c	2018-04-02 20:31:20.667075440 +0200
 +++ b/dlls/wined3d/texture.c	2018-03-31 12:48:20.443496007 +0200
 @@ -2096,6 +2096,12 @@
  static HRESULT texture_resource_sub_resource_map(struct wined3d_resource *resource, unsigned int sub_resource_idx,
@@ -1376,7 +1376,7 @@ diff -r -u      a/dlls/wined3d/texture.c b/dlls/wined3d/texture.c
  
  /* Context activation is done by the caller. */
 diff -r -u      a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
---- a/dlls/wined3d/utils.c	2018-04-02 04:33:36.095784164 +0200
+--- a/dlls/wined3d/utils.c	2018-04-02 20:31:20.893074348 +0200
 +++ b/dlls/wined3d/utils.c	2018-03-31 12:48:20.445496003 +0200
 @@ -6321,6 +6321,7 @@
      LOCATION_TO_STR(WINED3D_LOCATION_DRAWABLE);
@@ -1387,7 +1387,7 @@ diff -r -u      a/dlls/wined3d/utils.c b/dlls/wined3d/utils.c
      if (location)
          FIXME("Unrecognized location flag(s) %#x.\n", location);
 diff -r -u      a/dlls/wined3d/wined3d_gl.h b/dlls/wined3d/wined3d_gl.h
---- a/dlls/wined3d/wined3d_gl.h	2018-04-02 04:33:35.709784570 +0200
+--- a/dlls/wined3d/wined3d_gl.h	2018-04-02 20:31:20.500076247 +0200
 +++ b/dlls/wined3d/wined3d_gl.h	2018-03-31 12:48:20.449495993 +0200
 @@ -44,6 +44,7 @@
      /* ARB */
@@ -1406,7 +1406,7 @@ diff -r -u      a/dlls/wined3d/wined3d_gl.h b/dlls/wined3d/wined3d_gl.h
      ARB_MULTITEXTURE,
      ARB_OCCLUSION_QUERY,
 diff -r -u      a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.h
---- a/dlls/wined3d/wined3d_private.h	2018-04-02 04:33:36.158784097 +0200
+--- a/dlls/wined3d/wined3d_private.h	2018-04-02 20:31:20.957074039 +0200
 +++ b/dlls/wined3d/wined3d_private.h	2018-03-31 12:48:20.450495991 +0200
 @@ -75,6 +75,7 @@
  #define WINED3D_QUIRK_INFO_LOG_SPAM             0x00000080
@@ -1576,13 +1576,13 @@ diff -r -u      a/dlls/wined3d/wined3d_private.h b/dlls/wined3d/wined3d_private.
  
  static inline struct wined3d_buffer *buffer_from_resource(struct wined3d_resource *resource)
 diff -r -u      wine/programs/winecfg/staging.c wine-patched/programs/winecfg/staging.c
---- wine/programs/winecfg/staging.c	2018-04-02 04:33:35.679784602 +0200
+--- wine/programs/winecfg/staging.c	2018-04-02 20:31:20.467076406 +0200
 +++ wine-patched/programs/winecfg/staging.c	2018-03-31 12:45:33.272871454 +0200
 @@ -35,14 +35,15 @@
   */
  static BOOL csmt_get(void)
  {
--    WCHAR *buf = get_reg_key(config_key, "Direct3D", "csmt", NULL);
+-    char *buf = get_reg_key(config_key, "Direct3D", "csmt", NULL);
 -    BOOL ret = buf ? !!*buf : TRUE;
 -    HeapFree(GetProcessHeap(), 0, buf);
 +    BOOL ret;
@@ -1599,7 +1599,7 @@ diff -r -u      wine/programs/winecfg/staging.c wine-patched/programs/winecfg/st
  
  /*
 diff -r -u      wine/programs/winecfg/winecfg.rc wine-patched/programs/winecfg/winecfg.rc
---- wine/programs/winecfg/winecfg.rc	2018-04-02 04:33:35.679784602 +0200
+--- wine/programs/winecfg/winecfg.rc	2018-04-02 20:31:20.467076406 +0200
 +++ wine-patched/programs/winecfg/winecfg.rc	2018-03-31 12:45:33.274871449 +0200
 @@ -315,7 +315,7 @@
  BEGIN
