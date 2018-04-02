@@ -1,6 +1,6 @@
 pkgbase = pakku
 	pkgdesc = Pacman wrapper with AUR support
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/kitsunyan/pakku
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pakku
 	depends = libcurl.so
 	depends = git
 	backup = etc/pakku.conf
-	source = https://github.com/kitsunyan/pakku/releases/download/v0.4/pakku-0.4.tar.xz
-	sha256sums = 76bad7f6826e2efeb99dc8ea160fcb76c09d791068112f693f29d30dec53912c
+	source = https://github.com/kitsunyan/pakku/releases/download/v0.5/pakku-0.5.tar.xz
+	sha256sums = 10ad9b1c100494daf202c7623111b28da261b930f94f9c35969f1b6a6aeee157
 
 pkgname = pakku
 
