@@ -1,7 +1,7 @@
 pkgbase = python-control
 	pkgdesc = Implements basic operations for analysis and design of feedback control systems in Python
 	pkgver = 0.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/python-control/python-control
 	arch = any
 	license = BSD

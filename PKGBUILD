@@ -3,7 +3,7 @@
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
 pkgver=0.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
 license=('BSD')
@@ -20,8 +20,8 @@ md5sums=('9ae5f99eb8e8ec242b108bbbcea0c990'
          '5e21e2b8826c3345f50711d5634bc975')
 
 prepare() {
-  cp -a python-control-$pkgver control-py2-$pkgver
-  cd control-py2-$pkgver
+  cp -a python-control-$pkgver python2-control-$pkgver
+  cd python2-control-$pkgver
 
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
       -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
@@ -33,7 +33,7 @@ build() {
   export LDFLAGS="$LDFLAGS -shared"
 
   echo "Building Python2"
-  cd control-py2-$pkgver
+  cd python2-control-$pkgver
   python2 setup.py build
 
   echo "Building Python3"
@@ -49,7 +49,7 @@ check() {
 package_python2-control() {
   export LDFLAGS="$LDFLAGS -shared"
 
-  cd control-py2-$pkgver
+  cd python2-control-$pkgver
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-control"
