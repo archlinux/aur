@@ -13,12 +13,12 @@ pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.1.0_devel.101338.a58fdc61e9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
-depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
+depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
@@ -49,7 +49,7 @@ build () {
     --sysconfdir=/etc \
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-    --with-platforms=x11,drm,wayland \
+    --with-platforms=x11,drm \
     --with-vulkan-drivers=intel,radeon \
     --enable-texture-float \
     --enable-gallium-osmesa \
