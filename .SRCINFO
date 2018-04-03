@@ -1,6 +1,6 @@
 pkgbase = scylla-tools
 	pkgdesc = Tools to be used with ScyllaDB, such as cqlsh, nodetool and others
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://www.scylladb.com/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = scylla-tools
 	depends = python2-yaml
 	provides = scylla-tools
 	conflicts = cassandra
-	source = git+https://github.com/scylladb/scylla-tools-java.git#tag=scylla-2.1.0
+	source = git+https://github.com/scylladb/scylla-tools-java.git#tag=scylla-2.1.1
 	md5sums = SKIP
 
 pkgname = scylla-tools
