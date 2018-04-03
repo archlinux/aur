@@ -2,7 +2,7 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=siftgpu
 pkgver=0.5.400
-pkgrel=6
+pkgrel=7
 pkgdesc="Sift Features over GPU using GLSL or CUDA"
 arch=('i686' 'x86_64')
 url="http://ccwu.me/"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  patch -Np1 -i ../makefile-cuda.patch
+  git apply ${srcdir}/makefile-cuda.patch
   #sed -i 's:g++:g++-5:' makefile
 }
 

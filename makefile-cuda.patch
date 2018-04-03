@@ -1,10 +1,13 @@
 diff --git a/makefile b/makefile
-index 2059b92..b358d23 100644
+index 2059b92..6ced58f 100644
 --- a/makefile
 +++ b/makefile
-@@ -9,12 +9,12 @@ siftgpu_enable_opencl = 0
+@@ -7,14 +7,14 @@ siftgpu_enable_server = 0
+ siftgpu_enable_opencl = 0
+ #------------------------------------------------------------------------------------------------
  # enable CUDA-based SiftGPU?
- simple_find_cuda = $(shell locate libcudart.so)
+-simple_find_cuda = $(shell locate libcudart.so)
++simple_find_cuda = $(shell locate /opt/cuda/lib64/libcudart.so)
  ifneq ($(simple_find_cuda), )
 - 	siftgpu_enable_cuda = 0
 + 	siftgpu_enable_cuda = 1
