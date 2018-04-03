@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=180203
+pkgver=180218
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia')
 optdepends=('aften: support for AC-3 audio encoding'
 'bdsup2subpp-git: support for subtitle converison for image based stream formats'
 'dcaenc: support for DTS audio encoding'
-'delaycut: AC-3, DTS, MPA and WAV audio delay and cutting support' 
+'delaycut: AC-3, DTS, MPA and WAV audio delay and cutting support'
 'divx265: support for H.265 video encoding'  
 'fdkaac: support for AAC audio encoding'
 'flac: support for lossless FLAC audio encoding'

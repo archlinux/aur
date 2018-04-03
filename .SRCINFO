@@ -1,6 +1,6 @@
 pkgbase = hybrid-encoder
 	pkgdesc = A very complete gui for video encoding
-	pkgver = 180203
+	pkgver = 180218
 	pkgrel = 1
 	url = http://www.selur.de/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = hybrid-encoder
 	optdepends = tsmuxer: support for TS container
 	optdepends = x264: support for H.264 video encoding
 	optdepends = x265: support for H.265 video encoding
-	source_x86_64 = http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_180203_64bit_binary_qt521.zip
+	source_x86_64 = http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_180218_64bit_binary_qt521.zip
 	source_x86_64 = hybrid.desktop
 	source_x86_64 = Hybrid.png
 	source_x86_64 = LICENSE
