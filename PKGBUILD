@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-purple-git
-pkgver=v0.8.3.r73.07ed931
+pkgver=0.9.0.r2.07ed931
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (Pidgin)"
 arch=("${CARCH}")
@@ -13,7 +13,11 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
 }
 
 build() {
