@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Wally
+Comment=Wallpaper changer using files, folders, FTP and web sites
+Exec=/usr/bin/wally
+Icon=wally
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;
