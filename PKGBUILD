@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-purple
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WhatsApp protocol implementation for libpurple (Pidgin)"
 arch=("${CARCH}")
 url="https://github.com/davidgfnet/${pkgname}"
@@ -13,7 +13,7 @@ sha256sums=("f18d6dace57a504dbaacd56ba44792d5d5f009ef5380959bb7e1b833f0c81baf")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make
+  make ARCH="${CARCH}"
 }
 
 package() {
