@@ -46,7 +46,7 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  make -j $(cat /proc/cpuinfo | grep -ci '^processor')
+  make
 }
 
 package() {
