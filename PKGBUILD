@@ -33,7 +33,13 @@ prepare() {
 
   mkdir build
   cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr "${srcdir}/${pkgname}-${pkgver}"
+  cmake	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+	-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+	-DWITH_OFX=ON \
+	-DWITH_AQBANKING=ON \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	"${srcdir}/${pkgname}-${pkgver}"
 
 }
 
