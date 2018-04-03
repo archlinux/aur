@@ -13,7 +13,7 @@ pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.1.0_devel.101338.a58fdc61e9
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -49,7 +49,7 @@ build () {
     --sysconfdir=/etc \
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-    --with-platforms=x11,drm \
+    --with-platforms=x11,drm,surfaceless \
     --with-vulkan-drivers=intel,radeon \
     --enable-texture-float \
     --enable-gallium-osmesa \
