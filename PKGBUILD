@@ -10,12 +10,16 @@ url="http://code.google.com/p/${pkgname%-git}"
 license=("GPL")
 depends=("giflib" "libjpeg" "libxcomposite" "libxft" "libxinerama" "xorg-server")
 makedepends=("git")
-source=("git://github.com/penguinpowernz/${pkgname%-git}.git")
+source=("${pkgname%-git}::git://github.com/penguinpowernz/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
 }
 
 build() {

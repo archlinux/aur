@@ -13,7 +13,7 @@ pkgbase = skippy-xd-git
 	depends = libxft
 	depends = libxinerama
 	depends = xorg-server
-	source = git://github.com/penguinpowernz/skippy-xd.git
+	source = skippy-xd::git://github.com/penguinpowernz/skippy-xd.git
 	sha256sums = SKIP
 
 pkgname = skippy-xd-git
