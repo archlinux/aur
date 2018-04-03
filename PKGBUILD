@@ -3,7 +3,7 @@
 
 
 pkgname=smtube-qt4
-pkgver=18.1.0
+pkgver=18.3.0
 pkgrel=1
 pkgdesc="Search, download and play videos from YouTube."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('mplayer: play media with MPlayer'
 provides=('smtube')
 conflicts=('smtube')
 source=("https://sourceforge.net/projects/smtube/files/SMTube/$pkgver/smtube-$pkgver.tar.bz2")
-md5sum=('ff53e6549082a84cedf66fc8441c9a99')
+md5sum=('f20646f91eb91dd8c5e388a48c1a7b99')
 
 build() {
   cd smtube-$pkgver
