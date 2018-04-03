@@ -1,0 +1,9 @@
+{
+        "name": "Google Drive",
+        "scope": ["https?\:\/\/.*\.google\.com\/drive(?:\/.*|)", "https?\:\/\/drive\.google\.com(?:\/.*|)"],
+        "plugins": [],
+        "home": "http://drive.google.com",
+        "icon": "/usr/share/pixmaps/google-drive-desktop.svg",
+        "saveSession": false,
+        "download": true,
+}

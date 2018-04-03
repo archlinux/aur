@@ -1,0 +1,17 @@
+pkgbase = google-drive-desktop
+	pkgdesc = Google Drive web-app based on qtws
+	pkgver = 0.9
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = google-drive.qtws
+	source = google-drive.svg
+	source = google-drive.desktop
+	md5sums = 9ed6db54aad021106846508270136563
+	md5sums = 28df4c4d50f112a4de5a4867fa17125c
+	md5sums = 571a650257cd731d12e46b818a4501af
+
+pkgname = google-drive-desktop
+

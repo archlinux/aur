@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Google Drive
+GenericName=Google Drive
+Comment=Google Drive Standalone
+Categories=Office;
+Exec=/usr/bin/qtws /usr/share/qtws-apps/google-drive/google-drive.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+Icon=google-drive-desktop.svg
+StartupNotify=true
+Terminal=false
+Type=Application
