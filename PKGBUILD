@@ -8,7 +8,7 @@ url="https://github.com/MichaelAquilina/zsh-you-should-use"
 arch=("any")
 license=("GPL3")
 source=("https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("7af71b463d998fa2388a4dd52ea75ce9ee1568cf233c8b2e41b690b04e250b40")
+sha256sums=("5db7415e16c914fb38e4dc48e4d17f5d4ac5ac5c38135484cf98d4dc31fb6338")
 
 package() {
     install -d "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
