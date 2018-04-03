@@ -1,8 +1,12 @@
 # Maintainer : int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
+#
+# The latest release is version 0.93 (see url).
+# I may should have stick to this and not minor versions.
+#
 
 pkgname='perl-marc-xml'
-pkgver='1.0.3'
+pkgver='1.0.4'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module MARC::XML: Convert between MARC and XML."
 arch=('any')
@@ -11,10 +15,10 @@ options=('!emptydirs')
 depends=('perl-marc-charset>=0.98' 'perl-marc-record>=2' 'perl-xml-libxml>=1.66')
 makedepends=()
 url='https://metacpan.org/release/MARC-XML'
-source=('http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-XML-1.0.3.tar.gz')
-md5sums=('fe536ab036e7267d152d4daaf7ef8c9f')
-sha512sums=('a460388c92ac8c6c285b40d1ec2cfc4d86177c9a35854a8da17ac16349f952af37f57e00fce4091546f8225757addd1ee4c16862334c6d59b712395b284661a9')
-_distdir="MARC-XML-1.0.3"
+source=("http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-XML-$pkgver.tar.gz")
+md5sums=('4f0f11ddb007f9ac41569608f3d72a20')
+sha512sums=('2b84b50cd4973dcfe4bac27295710da0438130053b7ee00ad50690f7e87a190d64b132e62f486cb36fb91b93c5d412292facc7c31d2feb97b4bf3f32a947dd77')
+_distdir="MARC-XML-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
