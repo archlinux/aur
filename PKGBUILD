@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=r733.c84e4d9
+pkgver=findme
 pkgrel=1
 pkgdesc="KDE library to assist determining when holidays occur"
 arch=("${CARCH}")
@@ -12,12 +12,16 @@ depends=("kdelibs4support")
 makedepends=("extra-cmake-modules-git" "git" "python")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git://anongit.kde.org/${pkgname%-git}.git")
+source=("${pkgname%-git}::git://anongit.kde.org/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
 }
 
 prepare() {
