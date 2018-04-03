@@ -1,6 +1,6 @@
 pkgbase = freecad-python3-git
 	pkgdesc = A general purpose 3D CAD modeler
-	pkgver = 0.17_pre.r6689.g4af69bf3f
+	pkgver = 0.17_pre.r6798.g85b42a16d
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = freecad-python3-git
 	depends = coin-hg
 	depends = med
 	depends = opencascade7
+	depends = python-numpy
 	depends = xerces-c
 	depends = qt5-svg
 	depends = qt5-webkit
