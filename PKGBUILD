@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-binutils
-pkgver=2.29
+pkgver=2.30
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=('GPL')
 depends=('glibc>=2.23' 'zlib')
 options=('staticlibs' '!distcc' '!ccache')
 source=(http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz)
-sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85')
+sha256sums=('6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6')
 prepare() {
   cd binutils-${pkgver}
 
