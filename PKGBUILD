@@ -1,5 +1,5 @@
 pkgname=yubikey-touch-detector
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A tool that can detect when your YubiKey is waiting for a touch'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('gnupg: for GPG'
 install=yubikey-touch-detector.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz.sig")
-sha256sums=('29954e91d3b2fb97ed6528e3fa08acf62ec6b9b9caaea01d9bfe8cf6e7c34295'
+sha256sums=('ad26c88fc06d22ab0f23c1b24aa804b61d1beda4c7f7709074269deb2f954df3'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
