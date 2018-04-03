@@ -1,14 +1,14 @@
 pkgbase = rtl8812au-dkms-git
 	pkgdesc = rtl8812AU chipset driver with firmware v5.2.20
 	pkgver = 5.2.20.r9.gaca1e06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zebulon2/rtl8812au-driver-5.2.20
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = bc
 	depends = dkms
+	depends = bc
 	conflicts = rtl8812au
 	source = git+https://github.com/zebulon2/rtl8812au-driver-5.2.20.git
 	source = dkms.conf
