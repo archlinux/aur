@@ -5,12 +5,12 @@
 
 pkgname=gnucash
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('slib' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'webkit2gtk' 'libgnome-keyring' 'libgnomecanvas' 'boost-libs')
+depends=('slib' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'webkit2gtk' 'libgnomecanvas' 'boost-libs')
 makedepends=('intltool' 'boost' 'swig' 'gtest' 'gmock' 'gconf' 'cmake')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'

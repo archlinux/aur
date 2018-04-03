@@ -21,7 +21,6 @@ pkgbase = gnucash
 	depends = postgresql-libs
 	depends = aqbanking
 	depends = webkit2gtk
-	depends = libgnome-keyring
 	depends = libgnomecanvas
 	depends = boost-libs
 	optdepends = evince: for print preview
