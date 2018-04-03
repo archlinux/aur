@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0_devel.101298.afde9294b5
+pkgver=18.1.0_devel.101338.a58fdc61e9
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
@@ -27,15 +27,12 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'ac-nir-Fix-include-for-LLVMAddPromoteMemoryToRegisterPass.patch'
 )
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '294fe4727e61d8f1970c48003a4ba3dc10291bedc58090b2c53ea74088fd673ec0b00b2449a816d229a565c3acbd190fe9d567896752bbfc7e6412e920699f85')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 prepare() {
   cd mesa
-  patch -Np1 -i ../ac-nir-Fix-include-for-LLVMAddPromoteMemoryToRegisterPass.patch
   autoreconf -vfi
 }
 
