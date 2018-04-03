@@ -16,17 +16,21 @@ source=("${pkgname%-git}::git+https://github.com/casey/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | tr -d v
+  cd "${srcdir}/${pkgname%-git}"
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   cargo build --release
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   install -Dm755 "${srcdir}/${pkgname%-git}/target/release/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
   install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
