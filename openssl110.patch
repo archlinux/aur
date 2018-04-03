@@ -1,0 +1,95 @@
+## Description: add some description
+## Origin/Author: add some origin or author
+## Bug: bug URL
+diff -urip libexosip2-4.1.0/src/eXtl_dtls.c libexosip2-4.1.0.openssl110/src/eXtl_dtls.c
+--- libexosip2-4.1.0/src/eXtl_dtls.c	2014-01-06 19:30:21.000000000 +0100
++++ libexosip2-4.1.0.openssl110/src/eXtl_dtls.c	2016-11-07 20:23:01.503943171 +0100
+@@ -233,7 +233,7 @@ shutdown_free_client_dtls (struct eXosip
+ 
+       BIO_ctrl (rbio, BIO_CTRL_DGRAM_SET_PEER, 0, (char *) &addr);
+ 
+-      (reserved->socket_tab[pos].ssl_conn)->rbio = rbio;
++      SSL_set0_rbio((reserved->socket_tab[pos].ssl_conn), rbio);
+ 
+       i = SSL_shutdown (reserved->socket_tab[pos].ssl_conn);
+ 
+@@ -588,12 +588,11 @@ dtls_tl_read_message (struct eXosip_t *e
+       rbio = BIO_new_mem_buf (enc_buf, enc_buf_len);
+       BIO_set_mem_eof_return (rbio, -1);
+ 
+-      reserved->socket_tab[pos].ssl_conn->rbio = rbio;
++      SSL_set0_rbio(reserved->socket_tab[pos].ssl_conn, rbio);
+ 
+       i = SSL_read (reserved->socket_tab[pos].ssl_conn, dec_buf, SIP_MESSAGE_MAX_LENGTH);
+       /* done with the rbio */
+-      BIO_free (reserved->socket_tab[pos].ssl_conn->rbio);
+-      reserved->socket_tab[pos].ssl_conn->rbio = BIO_new (BIO_s_mem ());
++      SSL_set0_rbio(reserved->socket_tab[pos].ssl_conn, BIO_new (BIO_s_mem ()));
+ 
+       if (i > 5) {
+         dec_buf[i] = '\0';
+@@ -904,7 +903,7 @@ dtls_tl_send_message (struct eXosip_t *e
+         _dtls_stream_used = &reserved->socket_tab[pos];
+         rbio = BIO_new_dgram (reserved->dtls_socket, BIO_NOCLOSE);
+         BIO_ctrl (rbio, BIO_CTRL_DGRAM_SET_PEER, 0, (char *) &addr);
+-        reserved->socket_tab[pos].ssl_conn->rbio = rbio;
++        SSL_set0_rbio(reserved->socket_tab[pos].ssl_conn, rbio);
+         break;
+       }
+     }
+@@ -918,7 +917,7 @@ dtls_tl_send_message (struct eXosip_t *e
+           _dtls_stream_used = &reserved->socket_tab[pos];
+           rbio = BIO_new_dgram (reserved->dtls_socket, BIO_NOCLOSE);
+           BIO_ctrl (rbio, BIO_CTRL_DGRAM_SET_PEER, 0, (char *) &addr);
+-          reserved->socket_tab[pos].ssl_conn->rbio = rbio;
++          SSL_set0_rbio(reserved->socket_tab[pos].ssl_conn, rbio);
+           break;
+         }
+       }
+diff -urip libexosip2-4.1.0/src/eXtl_tls.c libexosip2-4.1.0.openssl110/src/eXtl_tls.c
+--- libexosip2-4.1.0/src/eXtl_tls.c	2014-01-06 19:30:21.000000000 +0100
++++ libexosip2-4.1.0.openssl110/src/eXtl_tls.c	2016-11-07 20:27:51.568892332 +0100
+@@ -838,7 +838,7 @@ verify_cb (int preverify_ok, X509_STORE_
+    * it for something special
+    */
+   if (!preverify_ok && (err == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT)) {
+-    X509_NAME_oneline (X509_get_issuer_name (store->current_cert), buf, 256);
++    X509_NAME_oneline (X509_get_issuer_name (X509_STORE_CTX_get_current_cert(store)), buf, 256);
+     OSIP_TRACE (osip_trace (__FILE__, __LINE__, OSIP_ERROR, NULL, "issuer= %s\n", buf));
+   }
+ 
+@@ -1155,7 +1155,7 @@ initialize_client_ctx (struct eXosip_t *
+       }
+       else {
+         /* this is used to add a trusted certificate */
+-        X509_STORE_add_cert (ctx->cert_store, cert);
++        X509_STORE_add_cert (SSL_CTX_get_cert_store(ctx), cert);
+       }
+       BIO_free (bio);
+     }
+@@ -1231,16 +1231,21 @@
+       if (excontext->tls_verify_client_certificate > 0 && sni_servernameindication!=NULL) {
+ 	X509_STORE *pkix_validation_store = SSL_CTX_get_cert_store (ctx);
+ 	const X509_VERIFY_PARAM *param = X509_VERIFY_PARAM_lookup ("ssl_server");
++#if (OPENSSL_VERSION_NUMBER > 0x10001000L)
++	X509_VERIFY_PARAM *store_param = X509_STORE_get0_param(pkix_validation_store);
++#else
++	X509_VERIFY_PARAM *store_param = pkix_validation_store->param;
++#endif
+ 	
+ 	if (param != NULL) { /* const value, we have to copy (inherit) */
+-	  if (X509_VERIFY_PARAM_inherit (pkix_validation_store->param, param)) {
++	  if (X509_VERIFY_PARAM_inherit (store_param, param)) {
+ 	    X509_STORE_set_flags (pkix_validation_store, X509_V_FLAG_TRUSTED_FIRST);
+ 	    X509_STORE_set_flags (pkix_validation_store, X509_V_FLAG_PARTIAL_CHAIN);
+ 	  } else {
+ 	    OSIP_TRACE (osip_trace (__FILE__, __LINE__, OSIP_ERROR, NULL, "PARAM_inherit: failed for ssl_server\n"));
+ 	  }
+-	  if (X509_VERIFY_PARAM_set1_host (pkix_validation_store->param, sni_servernameindication, 0)) {
+-	    X509_VERIFY_PARAM_set_hostflags (pkix_validation_store->param, X509_CHECK_FLAG_NO_WILDCARDS);
++	  if (X509_VERIFY_PARAM_set1_host (store_param, sni_servernameindication, 0)) {
++	    X509_VERIFY_PARAM_set_hostflags (store_param, X509_CHECK_FLAG_NO_WILDCARDS);
+ 	  } else {
+ 	    OSIP_TRACE (osip_trace (__FILE__, __LINE__, OSIP_ERROR, NULL, "PARAM_set1_host: %s failed\n", sni_servernameindication));
+ 	  }
+
