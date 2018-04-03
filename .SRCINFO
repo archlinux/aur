@@ -1,25 +1,27 @@
 pkgbase = elektra
-	pkgdesc = Elektra is a universal hierarchical configuration store
-	pkgver = 0.8.21
+	pkgdesc = A universal hierarchical configuration store
+	pkgver = 0.8.22
 	pkgrel = 1
 	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64
-	arch = lua
-	license = BSD
+	license = custom:BSD
 	makedepends = docbook-xsl
 	makedepends = cmake
 	makedepends = doxygen
-	depends = libxml2
 	depends = yajl
 	depends = qt5-base
 	depends = python
 	depends = curl
 	depends = boost
-	depends = dbus
 	depends = swig
-	source = https://github.com/ElektraInitiative/libelektra/archive/0.8.21.tar.gz
-	sha256sums = 4a0c226efebb51f6639ab30a49c4eacfb0a9ba7d9c8c7449a788fe8a42222c3f
+	optdepends = ruby: for ruby bindings
+	optdepends = python2: for python2-bindings
+	optdepends = xerces-c: for python2-bindings
+	optdepends = lua: for lua bindings
+	optdepends = libgit2: for git support
+	source = https://github.com/ElektraInitiative/libelektra/archive/0.8.22.tar.gz
+	sha256sums = f9322cffa2f57f15805c97fd1b11277212cefc73058c6ca579fa79ab0e76aabf
 
 pkgname = elektra
 
