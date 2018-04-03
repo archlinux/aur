@@ -1,16 +1,16 @@
 pkgbase = cwiid
 	pkgdesc = Linux Nintendo Wiimote interface
 	pkgver = svn_history
-	pkgrel = 2
-	url = http://abstrakraft.org/cwiid
+	pkgrel = 3
+	url = https://github.com/abstrakraft/cwiid
 	install = cwiid.install
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = bluez-libs
 	depends = gtk2
 	depends = python2
-	source = https://github.com/abstrakraft/cwiid/archive/svn_history.tar.gz
-	sha512sums = 25c105c37ae0778b6e47c4a02bfc74380f3b3dcc4cb71a3968a243a7de33c55d8b6d7860d826d1d5a6a197223fdb6022effd27d40394ca7007d997694438739b
+	source = cwiid-svn_history.tar.gz::https://github.com/abstrakraft/cwiid/archive/svn_history.tar.gz
+	sha256sums = 31d3e843c107f07e2b425bee17dafa215937c582b3b4d9c7bc71f4edcfe5ea68
 
 pkgname = cwiid
 
