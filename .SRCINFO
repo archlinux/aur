@@ -1,6 +1,6 @@
 pkgbase = kmarkdownwebview
 	pkgdesc = KPart for rendering Markdown content
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://www.kde.org
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = kmarkdownwebview
 	makedepends = extra-cmake-modules
 	depends = kparts
 	depends = qt5-webengine
-	source = https://download.kde.org/stable/kmarkdownwebview/0.5.1/src/kmarkdownwebview-0.5.1.tar.xz
-	source = https://download.kde.org/stable/kmarkdownwebview/0.5.1/src/kmarkdownwebview-0.5.1.tar.xz.sig
+	source = https://download.kde.org/stable/kmarkdownwebview/0.5.2/src/kmarkdownwebview-0.5.2.tar.xz
+	source = https://download.kde.org/stable/kmarkdownwebview/0.5.2/src/kmarkdownwebview-0.5.2.tar.xz.sig
 	validpgpkeys = E191FD5BE6F46870F09E82B2024E7FB43D015474
-	sha256sums = e54a78f5696b45e1310ccf517f24425aabdbad9d4aca4c2a7fb0232ef7acfd87
+	sha256sums = c62b7f61a93b9f3252d1330b3f021aba3155aa61f2fd059f150d59bd9ad61149
 	sha256sums = SKIP
 
 pkgname = kmarkdownwebview
