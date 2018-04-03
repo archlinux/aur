@@ -1,0 +1,91 @@
+Index: drivers/Makefile.am
+===================================================================
+--- drivers/Makefile.am	(revision 1730)
++++ drivers/Makefile.am	(working copy)
+@@ -35,20 +35,15 @@
+ 	$(DEPMOD) -a
+ 
+ /dev/gpib0:
+-	groupadd gpib || echo "group gpib exists"
+-	for i in `seq 0 15`; \
+-	do \
+-		mknod -m u=rw,g=rw,o= /dev/gpib$${i} c $(IBMAJOR) $${i} || exit 1; \
+-		chown root:gpib /dev/gpib$${i}; \
+-	done
++	echo "not doing sudo things"
+ 
+ .PHONY : device-file-check
+ device-file-check: /dev/gpib0
++	echo "not checking for /dev/gpib*"
+ 	@if [ ! -c /dev/gpib0 ]; then \
+ 		if [ -a /dev/gpib0 ]; then \
+ 			echo "A file or directory called /dev/gpib0 exists but it is not" \
+ 				"a character device.  Delete or move it and try again."; \
+-			exit 1; \
+ 		fi; \
+ 	fi
+ 	@ls -l /dev/gpib0 | grep -q "$(IBMAJOR)"; \
+@@ -55,12 +50,11 @@
+ 	if [ $$? != 0 ]; then \
+ 		echo "/dev/gpib0 has the wrong major number. " \
+ 			"Delete your /dev/gpibX files and try again."; \
+-		exit 1; \
+ 	fi
+ 
+ #should move this to util/templates Makefile.am when it exists
+ /etc/gpib.conf:
+-	$(INSTALL_DATA) -D $(top_srcdir)/util/templates/gpib.conf /etc/gpib.conf
++	$(INSTALL_DATA) -D $(top_srcdir)/util/templates/gpib.conf $(DESTDIR)/etc/gpib.conf
+ 
+ #make sure compiled files, etc don't make it into distribution tarballs
+ dist-hook:
+Index: usb/99-gpib-generic.rules
+===================================================================
+--- usb/99-gpib-generic.rules	(revision 1730)
++++ usb/99-gpib-generic.rules	(working copy)
+@@ -1 +1 @@
+-KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"
++ACTION=="add|change", KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"
+Index: usb/Makefile.am
+===================================================================
+--- usb/Makefile.am	(revision 1730)
++++ usb/Makefile.am	(working copy)
+@@ -12,5 +12,5 @@
+ UDEV_RULES_DIR = /etc/udev/rules.d
+ 
+ install-data-local: 99-gpib-generic.rules
+-	test -d $(UDEV_RULES_DIR) && test -e $(UDEV_RULES_DIR)/99-gpib-generic.rules || $(INSTALL_DATA) -D 99-gpib-generic.rules $(UDEV_RULES_DIR)/99-gpib-generic.rules
++	test -d $(DESTDIR)/$(UDEV_RULES_DIR) && test -e $(DESTDIR)/$(UDEV_RULES_DIR)/99-gpib-generic.rules || $(INSTALL_DATA) -D 99-gpib-generic.rules $(DESTDIR)/$(UDEV_RULES_DIR)/99-gpib-generic.rules
+ 
+Index: usb/agilent_82357a/Makefile.am
+===================================================================
+--- usb/agilent_82357a/Makefile.am	(revision 1730)
++++ usb/agilent_82357a/Makefile.am	(working copy)
+@@ -19,7 +19,7 @@
+ 	$(do_subst) < 99-agilent_82357a.rules.in >99-agilent_82357a.rules
+ 
+ install-data-local: 99-agilent_82357a.rules
+-	test -e $(HOTPLUG_USB_CONF_DIR)/agilent_82357a || $(INSTALL_SCRIPT) -D agilent_82357a $(HOTPLUG_USB_CONF_DIR)/agilent_82357a
+-	test -e $(HOTPLUG_USB_CONF_DIR)/agilent_82357a.usermap || $(INSTALL_DATA) -D agilent_82357a.usermap $(HOTPLUG_USB_CONF_DIR)/agilent_82357a.usermap
+-	$(INSTALL) -d $(USB_FIRMWARE_DIR)/agilent_82357a
+-	test -d $(UDEV_RULES_DIR) && test -e $(UDEV_RULES_DIR)/99-agilent_82357a.rules || $(INSTALL_DATA) -D 99-agilent_82357a.rules $(UDEV_RULES_DIR)/99-agilent_82357a.rules
++	test -e $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/agilent_82357a || $(INSTALL_SCRIPT) -D agilent_82357a $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/agilent_82357a
++	test -e $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/agilent_82357a.usermap || $(INSTALL_DATA) -D agilent_82357a.usermap $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/agilent_82357a.usermap
++	$(INSTALL) -d $(DESTDIR)/$(USB_FIRMWARE_DIR)/agilent_82357a
++	test -d $(DESTDIR)/$(UDEV_RULES_DIR) && test -e $(DESTDIR)/$(UDEV_RULES_DIR)/99-agilent_82357a.rules || $(INSTALL_DATA) -D 99-agilent_82357a.rules $(DESTDIR)/$(UDEV_RULES_DIR)/99-agilent_82357a.rules
+Index: usb/ni_usb_gpib/Makefile.am
+===================================================================
+--- usb/ni_usb_gpib/Makefile.am	(revision 1730)
++++ usb/ni_usb_gpib/Makefile.am	(working copy)
+@@ -19,7 +19,7 @@
+ 	$(do_subst) < 99-ni_usb_gpib.rules.in >99-ni_usb_gpib.rules
+ 
+ install-data-local: 99-ni_usb_gpib.rules
+-	test -e $(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib || $(INSTALL_SCRIPT) -D ni_usb_gpib $(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib
+-	test -e $(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib.usermap || $(INSTALL_DATA) -D ni_usb_gpib.usermap $(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib.usermap
+-	$(INSTALL) -d $(USB_FIRMWARE_DIR)/ni_usb_gpib
+-	test -d $(UDEV_RULES_DIR) && test -e $(UDEV_RULES_DIR)/99-ni_usb_gpib.rules || $(INSTALL_DATA) -D 99-ni_usb_gpib.rules $(UDEV_RULES_DIR)/99-ni_usb_gpib.rules
++	test -e $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib || $(INSTALL_SCRIPT) -D ni_usb_gpib $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib
++	test -e $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib.usermap || $(INSTALL_DATA) -D ni_usb_gpib.usermap $(DESTDIR)/$(HOTPLUG_USB_CONF_DIR)/ni_usb_gpib.usermap
++	$(INSTALL) -d $(DESTDIR)/$(USB_FIRMWARE_DIR)/ni_usb_gpib
++	test -d $(DESTDIR)/$(UDEV_RULES_DIR) && test -e $(DESTDIR)/$(UDEV_RULES_DIR)/99-ni_usb_gpib.rules || $(INSTALL_DATA) -D 99-ni_usb_gpib.rules $(DESTDIR)/$(UDEV_RULES_DIR)/99-ni_usb_gpib.rules

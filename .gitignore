@@ -1,0 +1,5 @@
+src/
+pkg/
+linux-gpib/
+*.tar.gz
+*.tar.xz
