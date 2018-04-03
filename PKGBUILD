@@ -3,13 +3,13 @@
 pkgname=plsdr-git
 _gitname=PLSDR
 pkgver=r26.f3b59e2
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful Python-based software-defined radio (SDR)"
 arch=('any')
 url="https://arachnoid.com/PLSDR/index.html"
 license=('GPL3')
 groups=()
-depends=('gnuradio' 'gnuradio-osmosdr' 'python2-pyqt5')
+depends=('gnuradio' 'gnuradio-osmosdr' 'python2-pyqt5' 'python2-sip')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
