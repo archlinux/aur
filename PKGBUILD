@@ -13,12 +13,11 @@
 pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
 pkgrel=4
-#_ocaml_ver=4.02.3
-_ocaml_ver=4.05.0-1
+#_ocaml_ver=4.06.0-2
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-makedepends=('cmake' 'libffi' 'python2' "ocaml=$_ocaml_ver" 'python-sphinx'
+makedepends=('cmake' 'libffi' 'python2' "ocaml" 'python-sphinx'
              'ocaml-ctypes' 'ocaml-findlib' 'libedit' 'swig')
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
@@ -30,6 +29,7 @@ source=(http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         http://releases.llvm.org/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
         D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
         D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
+        D35246-Fix-sanitizer-build-against-latest-glibc.patch
         llvm-Config-llvm-config.h)
 sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'SKIP'
@@ -43,6 +43,7 @@ sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'SKIP'
             '406754764e83d58bc3b859ab4b7893abd48c760278c4619cf4341ef9b9b75c85'
             'd71f8677882c86accddb8a5b720f298a4d7a2ad3bce6091951a46396b8f14da1'
+            '0515d1adab68f62de5528ae0c4e4e25811c472d6b4f9bd102a9811cae7ef977e'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D'
               '11E521D646982372EB577A1F8F0871F202119294')
@@ -63,6 +64,7 @@ prepare() {
   # https://llvm.org/bugs/show_bug.cgi?id=23529
   patch -d tools/clang -Np2 <../D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
   patch -d tools/clang -Np0 <../D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
+  patch -d projects/compiler-rt -Np0 <../D35246-Fix-sanitizer-build-against-latest-glibc.patch
 
   # fix some compile errors
   sed -i 's/#include <cassert>/#include <cassert>\n#include <functional>/' tools/lldb/include/lldb/Utility/TaskPool.h
@@ -166,7 +168,7 @@ package_llvm-libs38() {
 package_llvm-ocaml38() {
   _pkgname=llvm-ocaml
   pkgdesc="OCaml bindings for LLVM"
-  depends=("llvm38=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
+  depends=("llvm38=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
   provides=("llvm-ocaml=$pkgver-$pkgrel")
   conflicts=('llvm-ocaml')
   replaces=('llvm-ocaml')
