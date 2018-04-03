@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2017.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
@@ -19,6 +19,9 @@ build() {
 
 	echo "Extracting installer..."
 
+	# remove previous build folder if present, otherwise the installer will fail
+	rm -rf ${srcdir}/salome_meca || :
+
 	# self-extract
 	./Salome-Meca-2017.0.2-LGPL-1.run &> /dev/null <<-EOF
 	${srcdir}/salome_meca
@@ -34,6 +37,10 @@ build() {
 	# use the bundled version of python
 	export PATH="${srcdir}/salome_meca/V2017.0.2/prerequisites/Python-2710/bin/":$PATH
 
+	# try using the system freetype2 library
+	# update to freetype2 2.8 breaks the bundled version
+	rm "${srcdir}/salome_meca/V2017.0.2/prerequisites/Freetype-2411"/lib/libfreetype.so*
+
 	echo "Building virtual application..."
 
 	# create virtual application
@@ -41,6 +48,12 @@ build() {
 	./create_appli.sh -D &> /dev/null <<-EOF
 	${srcdir}/salome_meca/appli_V2017.0.2
 	EOF
+
+	# ensure that the extraction did not fail
+	if [ ! -e "${srcdir}/salome_meca/appli_V2017.0.2/salome" ]; then
+		error "Extraction of the application failed, please check '${srcdir}/salome_meca/appli_V2017.0.2/appli_V2017.0.2.log' for relevant error messages."
+		exit 1
+	fi
 
 	# create .desktop file from template
 	# use the bundled libraries and Python version 
