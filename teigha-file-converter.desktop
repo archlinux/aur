@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Teigha File Converter
+Comment=Teigha® for .dwg files 4.3.2.0, Open Design Alliance Inc.
+Exec=teigha-file-converter
+Icon=teigha-file-converter
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;VectorGraphics;RasterGraphics;Viewer;
