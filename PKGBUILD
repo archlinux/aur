@@ -8,17 +8,19 @@
 pkgname=gnucash-python
 _realname=gnucash
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('slib' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'webkit2gtk' 'libgnomecanvas' 'boost-libs' 'python')
-makedepends=('intltool' 'boost' 'swig' 'gtest' 'gmock' 'gconf' 'cmake')
-optdepends=('evince: for print preview'
-	    'yelp: help browser'
-            'perl-finance-quote: for stock information lookups'
-            'perl-date-manip: for stock information lookups')
+depends=('libmariadbclient' 'postgresql-libs' 'aqbanking' 'webkit2gtk' 'boost-libs' 'libsecret' 'libdbi-drivers')
+makedepends=('boost' 'gmock' 'gwenhywfar' 'cmake')
+optdepends=(
+       'gnucash-docs: for documentation'
+       'iso-codes: for translation of currency names'
+       'perl-finance-quote: for stock information lookups'
+       'perl-date-manip: for stock information lookups'
+)
 options=('!makeflags' '!emptydirs')
 provides=('gnucash')
 conflicts=('gnucash')
@@ -42,9 +44,9 @@ prepare() {
   cmake -D CMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
 	-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+	-DCOMPILE_GSCHEMAS=NO \
 	-DWITH_OFX=ON \
 	-DWITH_AQBANKING=ON \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-D WITH_PYTHON=ON \
 	-D PYTHON_EXECUTABLE=$(which python) \
 	"${srcdir}/${_realname}-${pkgver}"
@@ -54,17 +56,12 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  make
+  make -j$(nproc)
 }
 
 package() {
   cd "${srcdir}/build"
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
-
-  install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${_realname}.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm -f "${pkgdir}"/usr/share/glib-2.0/schemas/*.compiled
+  make DESTDIR="${pkgdir}" install
 
   # Delete the gnucash-valgrind executable because the source files
   # are not included with the package and the executable is hardlinked
