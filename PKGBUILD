@@ -12,7 +12,7 @@ url='http://www.vapoursynth.com/'
 license=('LGPL2.1' 'custom:OFL')
 depends=('gcc-libs' 'glibc' 'libmagick' 'python' 'tesseract' 'wine'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libzimg.so')
-makedepends=('cython' 'python-sphinx' 'nasm' 'git')
+makedepends=('cython' 'python-sphinx' 'nasm' 'git' 'cmake')
 provides=('vapoursynth')
 conflicts=('vapoursynth')
 source=("vapoursynth-${pkgver}::git+https://github.com/swordfeng/vapoursynth.git#tag=${pkgver}-wine"
