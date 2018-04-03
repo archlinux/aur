@@ -56,7 +56,8 @@ package() {
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
   rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
-
+  rm -f "${pkgdir}"/usr/share/glib-2.0/schemas/*.compiled
+  
   # Delete the gnucash-valgrind executable because the source files
   # are not included with the package and the executable is hardlinked
   # to the location that it was built at.
