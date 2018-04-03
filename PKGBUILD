@@ -2,7 +2,7 @@
 
 pkgname=cilium-git
 pkgver=1.0.0.rc9.gf9000c886
-pkgrel=2
+pkgrel=3
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
 url="https://cilium.io/"
@@ -41,6 +41,7 @@ build() {
 
 	git submodule update --init
 	cd envoy
+	bazel clean
 	bazel build //:envoy
 }
 
