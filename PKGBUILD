@@ -4,7 +4,7 @@ _pkgname=('linux-gpib')
 pkgname=("$_pkgname-svn")
 pkgver=r1730
 pkgrel=1
-pkgdesc='A support package for GPIB (IEEE 488) hardware.'
+pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
@@ -65,7 +65,7 @@ install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
      "${pkgdir}/etc/gpib.conf"
 
     msg2 "Now you should do three things:"
-    msg2 "1) Use modprobe to load a gpib kernel module"
+    msg2 "1) Use modprobe to load a gpib kernel module, and/or put it in /etc/modules-load.d/gpib.conf"
     msg2 "2) Configure your gpib adapters and devices in /etc/gpib.conf"
     msg2 "3) Add users to the gpib group"
 }
