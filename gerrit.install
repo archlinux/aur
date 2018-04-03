@@ -79,7 +79,7 @@ post_install() {
   _set_dir_permissions
   _enable_systemd_service
   _start_systemd_service
-  echo "    To initialize gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/2.14.6/index.html"
+  echo "    To initialize gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/2.15/index.html"
   echo "    To setup gerrit do:"
   echo "      sudo su - gerrit"
   echo "      java -jar /usr/share/java/gerrit/gerrit.war init -d /var/lib/gerrit"
@@ -99,7 +99,7 @@ post_upgrade() {
   _enable_systemd_service
   _reload_systemd_service
   _start_systemd_service
-  echo "    To update gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/2.14.6/index.html"
+  echo "    To update gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/2.15/index.html"
   echo "    To update gerrit do:"
   echo "      sudo su - gerrit"
   echo "      java -jar /usr/share/java/gerrit/gerrit.war init -d /var/lib/gerrit"
