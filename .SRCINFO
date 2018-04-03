@@ -1,15 +1,15 @@
 pkgbase = stremio-beta
 	pkgdesc = Watch videos, movies, TV series and TV channels instantly. (Beta Version)
-	pkgver = 4.0.10
-	pkgrel = 2
+	pkgver = 4.0.17
+	pkgrel = 1
 	url = https://stremio.com
 	arch = x86_64
 	license = custom
 	makedepends = sed
 	provides = stremio-beta
 	options = !strip
-	source = stremio-beta.appimage::https://dl.strem.io/linux/v4.0.10/Stremio+4.0.10.appimage
-	sha512sums = 419db687b19ab52bb202ddb78e254a3117aa5acab54d362ff3c3c6efcc5c155a78ac5c8e943448d2819fc4156a3674deeedce222bdbc39abb5ffe1158387d3d7
+	source = stremio-beta.appimage::https://dl.strem.io/linux/v4.0.17/Stremio+4.0.17.appimage
+	sha512sums = 9928e719d57b4f33ecc32ffc9292340ebdcae516af072e53115e589612778697e65c5fd2d191b26e45e2f70bacdb5d4b270a05d9b7d2b625dca9c9c05bfe7652
 
 pkgname = stremio-beta
 
