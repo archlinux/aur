@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-notifications-git
-pkgver=r223.92ffe1a
+pkgver=r293.ce59ba9
 pkgrel=1
 pkgdesc='Notifications indicator for Wingpanel'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libwnck3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'vala' 'wingpanel-git')
+makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel-git')
 provides=('wingpanel-indicator-notifications')
 conflicts=('wingpanel-indicator-notifications')
 source=('git+https://github.com/elementary/wingpanel-indicator-notifications.git')
@@ -23,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd wingpanel-indicator-notifications
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -32,20 +30,16 @@ prepare() {
 }
 
 build() {
-  cd wingpanel-indicator-notifications/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  arch-meson ../wingpanel-indicator-notifications
+  ninja
 }
 
 package() {
-  cd wingpanel-indicator-notifications/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
