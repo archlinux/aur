@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=telinkrin-gtk-theme
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
 url='https://www.opendesktop.org/p/1215199/'

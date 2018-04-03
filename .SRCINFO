@@ -1,7 +1,7 @@
 pkgbase = telinkrin-gtk-theme
 	pkgdesc = An individual and unique looking theme with an interesting design of Nautilus sidebar
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA
