@@ -1,0 +1,6 @@
+post_install() {
+    cat << EOF
+To activate zsh-you-should-use add the following line at the end of ~/.zshrc:
+    source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+EOF
+}

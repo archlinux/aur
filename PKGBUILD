@@ -2,12 +2,13 @@
 
 pkgname="zsh-you-should-use"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZSH plugin that reminds you to use existing aliases for commands you just typed"
 url="https://github.com/MichaelAquilina/zsh-you-should-use"
 arch=("any")
 license=("GPL3")
 source=("https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
+install="${pkgname}.install"
 sha256sums=("5db7415e16c914fb38e4dc48e4d17f5d4ac5ac5c38135484cf98d4dc31fb6338")
 
 package() {
@@ -18,11 +19,4 @@ package() {
     # License
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-post_install() {
-    cat << EOF
-To activate zsh-you-should-use add the following line at the end of ~/.zshrc:
-    source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-EOF
 }

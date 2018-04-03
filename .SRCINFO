@@ -1,8 +1,9 @@
 pkgbase = zsh-you-should-use
 	pkgdesc = ZSH plugin that reminds you to use existing aliases for commands you just typed
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MichaelAquilina/zsh-you-should-use
+	install = zsh-you-should-use.install
 	arch = any
 	license = GPL3
 	source = https://github.com/MichaelAquilina/zsh-you-should-use/archive/0.4.2.tar.gz
