@@ -7,7 +7,7 @@ pkgname='ros-kinetic-base-local-planner'
 pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-nav-core
@@ -61,7 +61,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-base_local_planner"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/base_local_planner.tar.gz")
-sha256sums=('51b87c31e51f66adcfa5c1b4b030139a44bf145e7187f7bfb23b994d27e9cc4f')
+sha256sums=('5f38c43f5ff658e22231412c23568559bd71b5e8d062e993ec9482c6bd982fd5')
 
 build() {
   # Use ROS environment variables
