@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=r371.3d843ba.gmmlib.r34.2eea1a1
-pkgrel=2
+pkgver=r408.eb470bc.gmmlib.r34.2eea1a1
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
@@ -35,10 +35,6 @@ pkgver() {
 build() {
     mkdir -p build
     cd build
-    
-    # https://github.com/intel/media-driver/issues/127
-    export CFLAGS="${CFLAGS/-fno-plt/}"
-    export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
