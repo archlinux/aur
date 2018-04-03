@@ -1,9 +1,9 @@
 pkgbase = kholidays-git
-	pkgdesc = KDE library for regional holiday information
-	pkgver = latest
-	pkgrel = 2
+	pkgdesc = KDE library to assist determining when holidays occur
+	pkgver = r733.c84e4d9
+	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/
-	arch = any
+	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git

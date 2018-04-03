@@ -2,10 +2,10 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=latest
-pkgrel=2
-pkgdesc="KDE library for regional holiday information"
-arch=("any")
+pkgver=r733.c84e4d9
+pkgrel=1
+pkgdesc="KDE library to assist determining when holidays occur"
+arch=("${CARCH}")
 url="https://projects.kde.org/projects/kde/pim/${gitname%-git}"
 license=("LGPL")
 depends=("kdelibs4support")
@@ -16,7 +16,7 @@ source=("git://anongit.kde.org/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${srcdir}/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -31,7 +31,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-    
   make
 }
 
