@@ -1,7 +1,7 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.8_r74406.7ecc7c46af4
-	pkgrel = 1
+	pkgver = 2.8_r74789.cd6daea7d32
+	pkgrel = 2
 	url = http://blender.org/
 	install = blender.install
 	arch = i686
@@ -39,7 +39,6 @@ pkgbase = blender-2.8-git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = blender-2.8.desktop
 	source = SelectCudaComputeArch.patch
-	source = openvdb4.revert.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -47,7 +46,6 @@ pkgbase = blender-2.8-git
 	md5sums = SKIP
 	md5sums = cd108dca1c77607c6a7cc45aa284ea97
 	md5sums = 9454ff7e994f72ead5027356e227cbd2
-	md5sums = 449373d2fdf2af6b357101fc10e3d573
 
 pkgname = blender-2.8-git
 
