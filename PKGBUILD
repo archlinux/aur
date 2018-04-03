@@ -2,9 +2,9 @@
 
 pkgname=whatsapp-purple
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp protocol implementation for libpurple (Pidgin)"
-arch=("any")
+arch=("${CARCH}")
 url="https://github.com/davidgfnet/${pkgname}"
 license=("GPL")
 depends=("libpurple" "freeimage")
