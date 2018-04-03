@@ -27,6 +27,7 @@ optdepends=('aften: support for AC-3 audio encoding'
 'neroaacenc: support for NERO AAC audio encoding'
 'opus-tools: support for Opus audio encoding'
 'sox: support for processing of audio files'
+'telxcc-git: support for closed caption extraction from TS files'
 'tsmuxer: support for TS container'
 'x264: support for H.264 video encoding'
 'x265: support for H.265 video encoding')
