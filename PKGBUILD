@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=67.0.3386.0
+pkgver=67.0.3387.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('ac43dd43d50c69fa311af0eec6fed86007473e2b4cc81c1701c06ab1b1811d38'
+sha256sums=('fc0707e10a072ea17e852c36d4987d417a08b3da1139428d21700763806911fb'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -158,14 +158,14 @@ sha256sums=('ac43dd43d50c69fa311af0eec6fed86007473e2b4cc81c1701c06ab1b1811d38'
             '4570a87cb632896818f8bf96eb38157bcbcfec55e702683e36d8bc63b16764af'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
-            '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
+            '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             'f84ac4bccda77a4fe6217595d68ef4d014338f85a421ff7fc99f9ace643779ef'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
-            '65cc6bb3d7655eb42848f0d878b46236b4392142334c5869edd53a3d0e08a635'
+            '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
-            'c552a31e4f678dbd45638b42d12ca1b1efe8256a5a77535dfaa3bb7cdb9905b8'
+            '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
             'b4417fd2c24bc8e71d671c902989298f0924527e1e5267eb4e0d9a885f27740f'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
@@ -210,11 +210,10 @@ sha256sums=('ac43dd43d50c69fa311af0eec6fed86007473e2b4cc81c1701c06ab1b1811d38'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
-            'c73d44c4394865b515d65a427b0d8ff4a761b208fda713e1004cfe5289c329fd'
+            '3f7eed89c9ceb4500b08b818fed752e79657dda590b465e7f749e5a112107204'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 
@@ -300,7 +299,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -Ri ../pt.patch
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -357,11 +356,11 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-patch -Np1 -Ri ../r21.patch
+#patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
-  patch -Np1 -Ri ../gnb.patch
+  patch -Np1 -i ../gnb.patch
 patch -Np1 -i ../desu.patch
  #patch -Np1 -i ../hell.patch
 
