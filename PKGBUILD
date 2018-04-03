@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=lbdb
-pkgver=0.46
+pkgver=0.47
 pkgrel=1
 pkgdesc="The little brother's database for the mutt mail reader"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('libvformat: for reading vcard files (needed at compile time)' \
 	    'netkit-bsd-finger: finger module' )
 backup=('etc/lbdb.rc' 'etc/lbdb_ldap.rc')
 source=(http://www.spinnaker.de/lbdb/download/${pkgname}_${pkgver}.tar.gz)
-md5sums=('c0674847240e7bc2b483cc4823927cc7')
+md5sums=('988277135b5c43ae5ba67b4ce295f866')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
