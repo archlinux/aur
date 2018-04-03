@@ -1,4 +1,4 @@
-# Maintainer: Roberto Nóbrega <rwnobrega@gmail.com>
+# Maintainer: Roberto Nobrega <rwnobrega@gmail.com>
 
 pkgname=plsdr-git
 _gitname=PLSDR
@@ -9,7 +9,7 @@ arch=('any')
 url="https://arachnoid.com/PLSDR/index.html"
 license=('GPL3')
 groups=()
-depends=('gnuradio' 'gnuradio-osmosdr' 'python-pyqt5')
+depends=('gnuradio' 'gnuradio-osmosdr' 'python2-pyqt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
