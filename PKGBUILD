@@ -4,7 +4,7 @@
 
 pkgname=flashplayer-standalone
 pkgver=29.0.0.113
-pkgrel=1
+pkgrel=2
 pkgdesc="Adobe Flash Player Standalone (A.K.A Adobe Flash Player Proyector)"
 arch=("x86_64")
 url="http://www.adobe.com/support/${pkgname%-standalone}/downloads.html"
@@ -17,6 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://fpdownload.macromedia.com/pub/${pk
 sha256sums=("888cc3d18131d197daa6a70ef43fd7bdf49612875f884c7035bae03502d7bc9f")
 
 prepare() {
+  cd "${srcdir}"
   gendesk -f -n \
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
