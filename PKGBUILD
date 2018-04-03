@@ -2,10 +2,11 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.5.r3619.89733585+wine.3.5.r0.g79f93ecf42
+pkgver=3.5.r5.g2736dff7+wine.3.5.r44.gca9d03a7ac+pba.3.5.r32.32c6388
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
+_pbasrcdir='wine-pba'
 pkgdesc='Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)'
 url='https://github.com/acomminos/wine-pba'
 arch=('x86_64')
@@ -91,7 +92,7 @@ optdepends=(
 )
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
-		'wine-staging-pba.patch'
+		"$_pbasrcdir"::'git+https://github.com/goldpaw/wine-pba.git'
 		'steam.patch'
 		'poe-fix.patch'
 		'harmony-fix.diff'
@@ -99,7 +100,7 @@ source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		'wine-binfmt.conf')
 sha256sums=('SKIP'
 			'SKIP'
-			'a95392542c602b12f1e3266a723a334a840e17406d42280963413f0a61c3f3ed'
+			'SKIP'
 			'972d6b114f7621c5f3bd34b1105dd390b318db18fbc76328001c984db488a9b0'
 			'1c8be30224a67c0f279ae1324165708371aad8f290ebc6da69c686d0904e606c'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
@@ -112,18 +113,26 @@ makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
 pkgver() {
-	# retrieve current staging version
+	# retrieve current wine-staging version
 	cd "${srcdir}/${_stgsrcdir}"
+	#local _stagingVer=$( printf "%s.r%s.%s" "$_stagingTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
 	local _stagingTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-	local _stagingVer=$( printf "%s.r%s.%s" "$_stagingTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+	local _stagingVer="$(git describe --long --tags \
+								| sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+								| sed "s/^latest.release/${_stagingTag}/")"
 
-	# retrieve current wine development version
+	# retrieve current wine version
 	cd "${srcdir}/${_winesrcdir}"
 	local _wineVer="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
 
+	# retrieve current wine-pba version
+	cd "${srcdir}/${_pbasrcdir}"
+	local _pbaTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+	local _pbaVer=$( printf "%s.r%s.%s" "$_pbaTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+
 	# version string might be a bit over the top, 
 	# but I want the build versions of all the 3 source repositories in it.
-	printf '%s+%s' "$_stagingVer" "$_wineVer"
+	printf '%s+%s+pba.%s' "$_stagingVer" "$_wineVer" "$_pbaVer"
 }
 
 prepare() {
@@ -172,7 +181,9 @@ prepare() {
 	"${srcdir}"/"${_stgsrcdir}"/patches/patchinstall.sh DESTDIR="${srcdir}/${_winesrcdir}" --all
 	
 	# apply wine-pba patches
-	patch -Np1 < ../'wine-staging-pba.patch'
+	for _f in $(ls "${srcdir}"/"${_pbasrcdir}"/'patches'); do
+		patch -Np1 < "${srcdir}"/"${_pbasrcdir}"/'patches'/${_f}
+	done
 
 	# fix path of opencl headers
 	sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
