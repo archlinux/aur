@@ -3,7 +3,7 @@
 
 pkgname=jitsi
 pkgver=2.10.5550
-pkgrel=4
+pkgrel=5
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="http://jitsi.org"
