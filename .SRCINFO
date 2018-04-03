@@ -1,0 +1,16 @@
+pkgbase = i3-swallow-git
+	pkgdesc = Swallow a terminal window after a blocking application is run in i3
+	pkgver = r10.09d16e7
+	pkgrel = 1
+	url = https://github.com/jamesofarrell/i3-swallow
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = i3-wm
+	depends = i3ipc-python-git
+	conflicts = i3-swallow
+	source = i3-swallow::git+https://github.com/jamesofarrell/i3-swallow.git
+	md5sums = SKIP
+
+pkgname = i3-swallow-git
+
