@@ -1,14 +1,14 @@
 # Maintainer: Simone Scalabrino <s dot scalabrino 9 at gmail dot com>
 webappname=google-maps
 pkgname=${webappname}-desktop
-pkgver=0.9
+pkgver=0.91
 pkgrel=1
 pkgdesc='Google Maps web-app based on qtws'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('qtws-base')
 source=("$webappname.qtws" "$webappname.svg" "$webappname.desktop")
-md5sums=('68a4ff0bdf5150834b39c1932c0e5360'
+md5sums=('2df570038db71ae0c8d6d4abdecf0f3a'
          '71d9d1a14e8aeddb70ed197ae3b15218'
          '79c8accd753c6b985dcd2d6b2238e049')
 

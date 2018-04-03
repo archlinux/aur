@@ -1,6 +1,6 @@
 {
         "name": "Google Maps",
-        "scope": ["google.com"],
+        "scope": ["https?\:\/\/.*\.google\.com\/maps(?:\/.*|)", "https?\:\/\/maps\.google\.com(?:\/.*|)"],
         "plugins": [],
         "home": "http://maps.google.com/",
         "icon": "/usr/share/pixmaps/google-maps-desktop.svg",
