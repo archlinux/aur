@@ -1,7 +1,7 @@
 pkgbase = colmap-git
 	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.3.r88.gb2af900
-	pkgrel = 1
+	pkgver = 3.4.r44.g827bbb8
+	pkgrel = 2
 	url = https://colmap.github.io/
 	install = colmap-git.install
 	arch = i686
@@ -26,14 +26,12 @@ pkgbase = colmap-git
 	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=dev
 	source = nvm-export.patch
 	source = colmap-git.install
-	source = colmap.desktop
 	source = vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree-1048576.bin
 	md5sums = SKIP
 	md5sums = 3c0027625739e972f8af8bea6f557b35
 	md5sums = ebb1dc43e014a1e720a06422c6248a40
-	md5sums = 55d81534d969cf706719007462f20443
 	md5sums = 3521ff3c601596473c6ce5256772f606
 	md5sums = e423daecc45d56b749d25eeace9de1c8
 	md5sums = 7ec70d4137d9b7ca9f076df34808ccc7

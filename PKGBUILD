@@ -1,28 +1,33 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
+
+####to disable cuda kernel comment out this line
+_BUILD_CUDA="on"
+
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.3.r88.gb2af900
-pkgrel=1
+pkgver=3.4.r44.g827bbb8
+pkgrel=2
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
-makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' 'cuda')
-optdepends=('cuda: for cuda sfm/mvs acceleration')
-provides=()
-# Fix: -fno-plt flag not supported by cuda host compiler (gcc5)
-options=(!buildflags)
-CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
-CXXFLAGS="${CFLAGS}"
+makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' )
+if [ "$_BUILD_CUDA" == "on" ] ; then 
+  makedepends+=('cuda')
+  optdepends=('cuda: for cuda sfm/mvs acceleration')
+  # Fix: -fno-plt flag not supported by cuda host compiler (gcc5)
+  options=(!buildflags)
+  CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
+  CXXFLAGS="${CFLAGS}"
+fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
         "${pkgname}.install"
-        "${name}.desktop"
         "vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree-1048576.bin"
@@ -30,7 +35,6 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
 md5sums=('SKIP'
          '3c0027625739e972f8af8bea6f557b35'
          'ebb1dc43e014a1e720a06422c6248a40'
-         '55d81534d969cf706719007462f20443'
          '3521ff3c601596473c6ce5256772f606'
          'e423daecc45d56b749d25eeace9de1c8'
          '7ec70d4137d9b7ca9f076df34808ccc7')
@@ -42,7 +46,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  patch -Np1 -i ../nvm-export.patch
+  git apply ${srcdir}/nvm-export.patch
 }
 
 
@@ -51,13 +55,15 @@ build() {
 
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-    if [ "$_CUDA_PKG" != "" ]; then
-      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
+    if [ -n "$_CUDA_PKG" -a "$_BUILD_CUDA"=="on" ]; then
+      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda -DCUDA_NVCC_FLAGS=\"--compiler-options -fPIC\"" 
+    else
+      _EXTRAOPTS="-DCUDA_ENABLED=OFF"
     fi
 
   mkdir -p build
   cd build
-  cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} -DCUDA_NVCC_FLAGS="--compiler-options -fPIC" ../${pkgname}
+  cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} ../${pkgname}
   make
 }
 
@@ -65,11 +71,6 @@ build() {
 package() {
   cd ${srcdir}/build
   make DESTDIR=${pkgdir} install
-
-  # install desktop entry
-  install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 "${srcdir}/${name}.desktop" "${pkgdir}/usr/share/applications"
-  sed -i "s#Version=.*#Version=$pkgver#" "${pkgdir}/usr/share/applications/${name}.desktop"
 
   # install vocabulary trees for sequential,vocabulary matching
   install -d -m755 ${pkgdir}/usr/share/${name}
