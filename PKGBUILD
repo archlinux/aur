@@ -11,7 +11,7 @@ depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia')
 optdepends=('aften: support for AC-3 audio encoding'
 'bdsup2subpp-git: support for subtitle converison for image based stream formats'
 'dcaenc: support for DTS audio encoding'
-'delaycut: AC-3, DTS, MPA and WAV audio delay and cutting support'
+'delaycut: AC-3, DTS, MPA and WAV audio delay and cutting support' 
 'divx265: support for H.265 video encoding'  
 'fdkaac: support for AAC audio encoding'
 'flac: support for lossless FLAC audio encoding'
@@ -27,7 +27,6 @@ optdepends=('aften: support for AC-3 audio encoding'
 'neroaacenc: support for NERO AAC audio encoding'
 'opus-tools: support for Opus audio encoding'
 'sox: support for processing of audio files'
-'telxcc-git: support for closed caption extraction from TS files'
 'tsmuxer: support for TS container'
 'x264: support for H.264 video encoding'
 'x265: support for H.265 video encoding')
@@ -46,7 +45,7 @@ package() {
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums_x86_64=('0c6059ba86a3e2b88f68865caa6e57ac'
+md5sums_x86_64=('7bef44a651c37edecd9a63e839405c17'
                 'dd87c6eb6df85049de38c61dfe400347'
                 '798dd936a3bc9bcd3b131d5dd6db96e6'
                 '1fd2ac133744f86e25fd680d14aed2b4')
