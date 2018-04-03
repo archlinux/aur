@@ -9,9 +9,14 @@
 
 pkgname="bunq-desktop-src"
 pkgver="0.8.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
+provides=('bunq-desktop')
+conflicts=(
+	'bunq-desktop-git'
+	'bunq-desktop-bin'
+)
 
 arch=(
 	'x86_64'
