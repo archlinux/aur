@@ -1,17 +1,19 @@
-# Maintainer: Yen Chi Hsuan
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=pulse-secure
-pkgver=5.3r3.0
-pkgrel=4
+pkgver=5.3r4.2
+pkgrel=1
+_build=639
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring)
-source=("https://trial.pulsesecure.net/clients/ps-pulse-linux-$pkgver-b1021-centos-rhel-64-bit-installer.rpm"
+source=(#"https://trial.pulsesecure.net/clients/ps-pulse-linux-$pkgver-b1021-centos-rhel-64-bit-installer.rpm"
+        "http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-$pkgver-b$_build-centos-rhel-64-bit-installer.rpm"
         pulseUi.sh
         EULA.txt)
-md5sums=('4cbe64953952d9ffdeaa4ffe2fc92a20'
+md5sums=('3244ddae0d8fbf46a6bf67eed5af42b9'
          'd81155461e2666c2b9d669c1b76f85fe'
          '261848a28201e5386ec4bf587473a48b')
 optdepends=('webkitgtk: for pulseUi frontend'
@@ -54,7 +56,7 @@ package() {
 
   install -Dm755 usr/local/pulse/PulseClient_x86_64.sh "${pkgdir}"/usr/local/pulse/
   install -Dm644 usr/local/pulse/{README,version.txt} "${pkgdir}"/usr/local/pulse/
-  install -Dm755 pulse/{pulsediag,pulseutil} "${pkgdir}"/usr/local/pulse/
+  install -Dm755 pulse/pulseutil "${pkgdir}"/usr/local/pulse/
   install -Dm4755 pulse/pulsesvc "${pkgdir}"/usr/local/pulse/
   install -Dm755 pulse/pulseUi_centos_7_x86_64 "${pkgdir}"/usr/local/pulse/pulseUi
   install -Dm755 pulse/libpulseui.so_centos_7_x86_64 "${pkgdir}"/usr/local/pulse/libpulseui.so

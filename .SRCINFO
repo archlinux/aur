@@ -1,7 +1,7 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
-	pkgver = 5.3r3.0
-	pkgrel = 4
+	pkgver = 5.3r4.2
+	pkgrel = 1
 	url = https://www.pulsesecure.net/
 	arch = x86_64
 	license = custom
@@ -10,10 +10,10 @@ pkgbase = pulse-secure
 	optdepends = webkitgtk: for pulseUi frontend
 	optdepends = psmisc: for pulsesvc -K
 	conflicts = pulse-connect-secure
-	source = https://trial.pulsesecure.net/clients/ps-pulse-linux-5.3r3.0-b1021-centos-rhel-64-bit-installer.rpm
+	source = http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-5.3r4.2-b639-centos-rhel-64-bit-installer.rpm
 	source = pulseUi.sh
 	source = EULA.txt
-	md5sums = 4cbe64953952d9ffdeaa4ffe2fc92a20
+	md5sums = 3244ddae0d8fbf46a6bf67eed5af42b9
 	md5sums = d81155461e2666c2b9d669c1b76f85fe
 	md5sums = 261848a28201e5386ec4bf587473a48b
 
