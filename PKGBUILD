@@ -1,9 +1,9 @@
 # $Id$
 # Maintainer: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
 
-_hkgname=gitHUD
-pkgname=githud
-pkgver=1.3.7
+_hkgname=githud
+pkgname=$_hkgname
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="heads up display for the command line that will show git information"
 url="https://github.com/gbataille/gitHUD"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('ghc' 'ghc-libs' 'haskell-mtl' 'haskell-parsec' 'haskell-text' 'haskell-unix' 'haskell-process')
 makedepends=('ghc')
 source=(http://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz)
-sha256sums=('dc38431b13d2dc4625987131c1389ed4ab67154990035c0c66f30d90d1a344af')
+sha256sums=('9096896544fa98b344dad27c856ab62fa691a9afe78dbdbb3834567d5b28ac62')
 
 build() {
     cd "$srcdir/$_hkgname-$pkgver"
@@ -36,10 +36,6 @@ package() {
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     install -D -m644 LICENSE       "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     runhaskell Setup copy --destdir="${pkgdir}"
-
-    # The generated binary is called gitHUD, but it's probably convenient to be able to call it
-    # githud instead
-    ln -s gitHUD "${pkgdir}/usr/bin/githud"
 
     rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
