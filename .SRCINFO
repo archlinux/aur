@@ -39,6 +39,7 @@ pkgbase = stoq
 	depends = python2-viivakoodi
 	depends = python2-raven
 	depends = python2-pykcs11
+	optdepends = postgresql
 	conflicts = stoq-git
 	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/lancamentos/+files/stoq_2.2-1artful.tar.gz
 	md5sums = 02fb2a6938bad7c939122d8ab3441919
