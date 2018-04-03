@@ -1,6 +1,6 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = 2.42r23.gf791e93a
+	pkgver = 2.43r6073
 	pkgrel = 1
 	epoch = 1
 	url = http://asymptote.sourceforge.net/
@@ -8,8 +8,9 @@ pkgbase = asymptote-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = flex
 	makedepends = ghostscript
-	makedepends = imagemagick
+	makedepends = imagemagick6
 	makedepends = texlive-plainextra
 	depends = gc
 	depends = freeglut
@@ -22,6 +23,7 @@ pkgbase = asymptote-git
 	optdepends = tix: for the xasy GUI
 	provides = asymptote
 	conflicts = asymptote
+	options = !makeflags
 	source = git+https://github.com/vectorgraphics/asymptote.git
 	md5sums = SKIP
 
