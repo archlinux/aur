@@ -6,13 +6,13 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.2.12
+pkgver=1.2.15
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl-1.0')
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl')
 makedepends=('cmake' 'git' 'gyp' 'range-v3' 'python' 'libappindicator-gtk3')
 optdepends=('libnotify: desktop notifications')
 provides=('telegram-desktop')
@@ -23,13 +23,12 @@ source=(
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
     "Catch::git+https://github.com/philsquared/Catch"
-    "https://raw.github.com/telegramdesktop/tdesktop/dev/lib/xdg/tg.protocol"
     # These files might require modifications to be up-to-date. If that is the
     # case, they will be updated in place and untracked temporarily.
     "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
     "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
-    #"tdesktop_fixed.patch"
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
+    "libtgvoip-2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip-2.patch?h=packages/telegram-desktop"
     "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
@@ -37,10 +36,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            '36b817ec9843b261af7a246f9ec51feb828203bd90e76aef7383457f23a0d4cb'
-            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075'
+            'aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc'
+            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
+            '07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
 
 prepare() {
@@ -63,6 +62,7 @@ prepare() {
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
+    patch -Np1 -i "$srcdir/libtgvoip-2.patch"
 }
 
 build() {
@@ -91,7 +91,7 @@ package() {
     install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
 
     install -d "$pkgdir/usr/share/kservices5"
-    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
+    install -m644 "$srcdir/tdesktop/lib/xdg/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
 
     local icon_size icon_dir
     for icon_size in 16 32 48 64 128 256 512; do
