@@ -1,7 +1,7 @@
 pkgbase = zyn-fusion
 	pkgdesc = ZynAddSubFX with a new interactive UI
 	pkgver = 3.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://zynaddsubfx.sourceforge.net/zyn-fusion.html
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = zyn-fusion
 	depends = portaudio
 	provides = zynaddsubfx
 	conflicts = zynaddsubfx
-	options = !strip
 	source = git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=3.0.3
 	source = git+https://github.com/mruby-zest/mruby-zest-build.git#commit=f98cdb072bb25bdcc2f5fe8370dce204b1149000
 	sha512sums = SKIP
