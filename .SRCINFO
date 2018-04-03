@@ -1,6 +1,6 @@
 pkgbase = scylla
 	pkgdesc = Scylla is an open source NoSQL drop-in replacement for Apache Cassandra with fast throughput and low latency
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://www.scylladb.com/
 	install = .install
@@ -60,7 +60,7 @@ pkgbase = scylla
 	backup = etc/scylla.d/cpuset.conf
 	backup = etc/scylla.d/dev-mode.conf
 	backup = etc/scylla.d/io.conf
-	source = git+https://github.com/scylladb/scylla.git#tag=scylla-2.1.0
+	source = git+https://github.com/scylladb/scylla.git#tag=scylla-2.1.1
 	source = git+https://github.com/scylladb/scylla-ami.git
 	source = git+https://github.com/scylladb/scylla-swagger-ui.git
 	source = git+https://github.com/scylladb/scylla-seastar.git
