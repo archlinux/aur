@@ -1,7 +1,7 @@
 pkgbase = vim-airline-gruvbox-git
 	pkgdesc = gruvbox color scheme for vim-airline
-	pkgver = latest
-	pkgrel = 4
+	pkgver = v2.0.0.r66.gcb4e7a5
+	pkgrel = 1
 	url = https://github.com/morhetz/gruvbox
 	arch = any
 	groups = vim-plugins
