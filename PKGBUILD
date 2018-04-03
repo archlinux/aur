@@ -1,3 +1,5 @@
+# Maintainer: Xaver Hellauer <software@hellauer.bayern>
+
 pkgname=tresorit
 pkgver=3.0.504.743
 pkgrel=2
@@ -6,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
 install=tresorit.install
 license=('custom:tresorit')
+depends=(bash libglvnd)
 makedepends=('xxd')
 source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run"
         "tresorit.service")
@@ -28,15 +31,15 @@ prepare() {
 }
 
 package() {
-  mkdir -p "$pkgdir/opt/tresorit"
+  mkdir -p "${pkgdir}/opt/$pkgname"
   install -Dm755 ../archlinux_user_install "$pkgdir/opt/tresorit/archlinux_user_install"
   install -Dm755 ../systemd_runner "$pkgdir/opt/tresorit/systemd_runner"
   install -Dm644 "$srcdir"/tresorit.service "$pkgdir"/usr/lib/systemd/user/tresorit.service
 
   if [ $CARCH == "x86_64" ]; then
-      cp -r ./tresorit/tresorit_x64/* "$pkgdir/opt/tresorit"
+      cp -r ./tresorit/tresorit_x64/* "$pkgdir/opt/$pkgname"
   else
-      cp -r ./tresorit/tresorit_x86/* "$pkgdir/opt/tresorit"
+      cp -r ./tresorit/tresorit_x86/* "$pkgdir/opt/$pkgname"
   fi
 
   echo "Exec=\$HOME/.local/share/tresorit/tresorit --hidden" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
