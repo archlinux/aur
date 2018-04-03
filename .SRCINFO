@@ -1,15 +1,15 @@
 pkgbase = subunit
 	pkgdesc = A streaming protocol for test results
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/testing-cabal/subunit
 	arch = x86_64
 	arch = i686
 	license = Apache
 	makedepends = check
 	makedepends = cppunit
-	source = https://github.com/testing-cabal/subunit/archive/1.1.0.tar.gz
-	md5sums = c1d0cf2363a0fcae3714de7ae83923e7
+	source = https://github.com/testing-cabal/subunit/archive/1.2.0.tar.gz
+	md5sums = 05cc1b275441d38511d8c986602ce31b
 
 pkgname = subunit
 
