@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
-pkgver=0.8.0.r10.c749b60
+pkgver=0.8.1.r30.34abed5
 pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
@@ -41,12 +41,15 @@ pkgver() {
 package() {
   cd "$pkgname"
   install -Dm755 "target/release/rg" "$pkgdir/usr/bin/rg"
-  # The man page is built with asciidoc and placed in
-  # target/release/build/ripgrep-<hash>/out/rg.1.
-  # Fish around the build directory for that.
-  install -Dm644 $(find target/release/build -type f -name rg.1) "$pkgdir/usr/share/man/man1/rg.1"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/ripgrep/README.md"
-  install -Dm644 "COPYING" "$pkgdir/usr/share/doc/ripgrep/COPYING"
-  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/doc/ripgrep/LICENSE-MIT"
-  install -Dm644 "UNLICENSE" "$pkgdir/usr/share/doc/ripgrep/UNLICENSE"
+
+  install -Dm644 "complete/_rg" "$pkgdir/usr/share/zsh/site-functions/_rg"
+  install -Dm644 "target/release/build/ripgrep-"*/out/rg.bash "$pkgdir/usr/share/bash-completion/completions/rg"
+  install -Dm644 "target/release/build/ripgrep-"*/out/rg.fish "$pkgdir/usr/share/fish/completions/rg.fish"
+
+  install -Dm644 "target/release/build/ripgrep-"*/out/rg.1 "$pkgdir/usr/share/man/man1/rg.1"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 "UNLICENSE" "$pkgdir/usr/share/licenses/${pkgname}/UNLICENSE"
 }
