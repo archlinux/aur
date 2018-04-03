@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-marc-record'
-pkgver='2.0.6'
+pkgver='2.0.7'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module MARC::Record: Perl extension for handling MARC records"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/MARC-Record'
-source=('http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-Record-2.0.6.tar.gz')
-md5sums=('cf2ddaa83059c5f135b0ee9463520b88')
-sha512sums=('7a3436adbe6e5365ec2810ebf3c64d22ae707cedbfccf02f562d253c7727c33f9ea36a47a7acdba12bbf32693b4c70913a0c551b5605388fb39fa379d099af8d')
-_distdir="MARC-Record-2.0.6"
+source=("http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-Record-$pkgver.tar.gz")
+md5sums=('08eb3de46eb3808a31910bbb489f3b9e')
+sha512sums=('81e29de564ced204b45a18765f1d51664f8d8d9584c7000b92902ddf8adfa9c17837f4f7de1a6b64e59f08257f89295e8d6ff9edf4b78a90556ce1e65cf97601')
+_distdir="MARC-Record-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
