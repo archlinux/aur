@@ -15,7 +15,7 @@ source=("https://download.jitsi.org/jitsi/src/jitsi-src-${pkgver}.zip"
 		jitsi.desktop
 		jitsi.sh)
 sha256sums=('cdfc6f038d1b877c42d26dba1864ac7c6b554dd55c18767a29f2db3618647287'
-            '61e3bec3470790fa067f87d978016ec4452a6fd3dfba2c9afa5245b58d3cb19d'
+            '40a411ec494280490a0e1a137735ef5efca434d8d10f18b0124df9e93302f959'
             'c47bfa98fe36378f2e7b947cd248582f5a90c1b169d53d158badb00439fdc6c7')
 
 build()
