@@ -4,24 +4,19 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.59
+pkgver=0.80
 pkgrel=1
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('kdepimlibs' 'ctemplate' 'python2-reportlab' 'python2-pypdf')
-makedepends=('cmake' 'automoc4' 'boost')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+depends=('akonadi-contacts' 'ctemplate' 'python-reportlab')
+makedepends=('cmake' 'extra-cmake-modules')
+source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
         'allow-duplicate-cmake-targets.patch')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  sed -i 's/raise ValueError, "Not enough space"/raise ValueError("Not enough space")/' tools/erml2pdf.py
-
-  patch < "${srcdir}/allow-duplicate-cmake-targets.patch"
-
   rm -rf build
   mkdir -p build
   cd build
@@ -30,6 +25,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake ".." \
+    -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
@@ -40,5 +36,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('e05ff0b78a073bafffa5c0e41fe458461216b66fd57fc9432a1064a7be2b2034'
+sha256sums=('837e2c0adef85a1aeb36fd16cda48c5e210ef043eb08272b98e7e552a55e1164'
             '2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370')
