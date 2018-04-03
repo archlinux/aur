@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.6.1.beta.r5714.ga55ed0de
+pkgver=2.6.1.beta.r5815.g706b9f78
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('karchive' 'kbookmarks' 'kcodecs' 'kcompletion' 'kcoreaddons' 'kconfig'
 makedepends=('cmake' 'extra-cmake-modules' 'python' 'git')
 optdepends=(
             # archive formats
-			# look for KrServices::cmdExist calls
+            # look for KrServices::cmdExist calls
             'xz: LZMA and XZ archive support'
             'unzip: ZIP decompression support'
             'zip: ZIP archive support'
@@ -47,13 +47,9 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../krusader \
+  cd krusader
+  cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDESU_PATH="/usr/lib/kf5/kdesu"
@@ -61,5 +57,6 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  cd krusader
+  make DESTDIR="$pkgdir" install
 }

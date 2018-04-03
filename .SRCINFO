@@ -1,6 +1,6 @@
 pkgbase = krusader-git
 	pkgdesc = Advanced twin panel file manager for KDE. (GIT version)
-	pkgver = 2.6.1.beta.r5714.ga55ed0de
+	pkgver = 2.6.1.beta.r5815.g706b9f78
 	pkgrel = 1
 	url = http://www.krusader.org
 	arch = x86_64
