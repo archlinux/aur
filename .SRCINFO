@@ -1,12 +1,11 @@
 pkgbase = sasquatch
 	pkgdesc = Tools for squashfs, a highly compressed read-only filesystem for Linux.
 	pkgver = 4.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/devttys0/sasquatch
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc5
 	depends = gzip
 	depends = zlib
 	depends = lzo
@@ -14,8 +13,10 @@ pkgbase = sasquatch
 	depends = lz4
 	source = git+https://github.com/devttys0/sasquatch
 	source = read_fragment_table_n_stack_overflow-fix.patch
+	source = 1.patch
 	sha256sums = SKIP
 	sha256sums = 120c2d208085129235bf998b1c22abee19db26120a98174b9beb5edd7b9c84e9
+	sha256sums = SKIP
 
 pkgname = sasquatch
 

@@ -1,0 +1,12 @@
+--- unsquashfs.c
++++ unsquashfs.c
+@@ -32,8 +32,8 @@
+ #include "stdarg.h"
+ 
+ #include <sys/sysinfo.h>
+-#include <sys/types.h>
+ #include <sys/time.h>
++#include <sys/sysmacros.h>
+ #include <sys/resource.h>
+ #include <limits.h>
+ #include <ctype.h>
