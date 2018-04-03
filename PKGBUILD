@@ -2,7 +2,7 @@
 
 pkgname=intel-media-driver-git
 pkgver=r371.3d843ba.gmmlib.r34.2eea1a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
@@ -33,11 +33,6 @@ pkgver() {
 }
 
 build() {
-    # do not treat warnings as errors (reverts upstream commit fa0d40ee6d3d7ec34478da166b2740eaf9b7c0ce)
-    cd "$pkgname"
-    sed -i '/PROPERTIES[[:space:]]COMPILE_FLAGS[[:space:]]"-Werror")/d' media_driver/media_top_cmake.cmake
-    
-    cd "$srcdir"
     mkdir -p build
     cd build
     
@@ -48,8 +43,10 @@ build() {
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DINSTALL_DRIVER_SYSCONF='ON' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='etc' \
+        -DINSTALL_DRIVER_SYSCONF:BOOL='ON' \
+        -DMEDIA_BUILD_FATAL_WARNINGS:BOOL='OFF' \
         -DMEDIA_VERSION='2.0.0' \
         -DBUILD_ALONG_WITH_CMRTLIB='1' \
         -DBS_DIR_GMMLIB="$(pwd)/../gmmlib-git/Source/GmmLib/" \
@@ -57,7 +54,7 @@ build() {
         -DBS_DIR_INC="$(pwd)/../gmmlib-git/Source/inc/" \
         -DBS_DIR_MEDIA="$(pwd)/../${pkgname}" \
         -Wno-dev \
-        ../"${pkgname}"
+        ../"$pkgname"
     
     make
 }
