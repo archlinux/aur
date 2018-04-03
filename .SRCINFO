@@ -1,0 +1,18 @@
+pkgbase = plsdr-git
+	pkgdesc = A powerful Python-based software-defined radio (SDR)
+	pkgver = r26.f3b59e2
+	pkgrel = 1
+	url = https://arachnoid.com/PLSDR/index.html
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnuradio
+	depends = gnuradio-osmosdr
+	depends = python-pyqt5
+	provides = plsdr
+	conflicts = plsdr
+	source = git://github.com/lutusp/PLSDR.git
+	md5sums = SKIP
+
+pkgname = plsdr-git
+
