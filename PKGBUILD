@@ -30,6 +30,7 @@ source=(http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
         D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
         D35246-Fix-sanitizer-build-against-latest-glibc.patch
+        disable-llvm-symbolizer-test.patch
         llvm-Config-llvm-config.h)
 sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'SKIP'
@@ -44,6 +45,7 @@ sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             '406754764e83d58bc3b859ab4b7893abd48c760278c4619cf4341ef9b9b75c85'
             'd71f8677882c86accddb8a5b720f298a4d7a2ad3bce6091951a46396b8f14da1'
             '0515d1adab68f62de5528ae0c4e4e25811c472d6b4f9bd102a9811cae7ef977e'
+            '62e6df669f96ab30e8c235bc6adc465221a0fcb29171edca75bfa4178a81fcd6'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D'
               '11E521D646982372EB577A1F8F0871F202119294')
@@ -65,6 +67,7 @@ prepare() {
   patch -d tools/clang -Np2 <../D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
   patch -d tools/clang -Np0 <../D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
   patch -d projects/compiler-rt -Np0 <../D35246-Fix-sanitizer-build-against-latest-glibc.patch
+  patch -d . -Np0 <../disable-llvm-symbolizer-test.patch
 
   # fix some compile errors
   sed -i 's/#include <cassert>/#include <cassert>\n#include <functional>/' tools/lldb/include/lldb/Utility/TaskPool.h
