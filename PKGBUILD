@@ -169,7 +169,7 @@ package_snapd-git() {
 
   make -C cmd install DESTDIR="$pkgdir/"
   # move snapd-generator to systemd generators
-  install -dm755 "$pkgdir//usr/lib/systemd/system-generators"
+  install -dm755 "$pkgdir/usr/lib/systemd/system-generators"
   mv "$pkgdir/usr/lib/snapd/snapd-generator" "$pkgdir/usr/lib/systemd/system-generators/"
 
   # Install man file
