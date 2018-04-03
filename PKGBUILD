@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 _pkgname=jbig2enc
 pkgname=$_pkgname-git
-pkgver=0.28.13.ga4ff6b9
+pkgver=0.29
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe | sed 's/-/./g'
+  git describe --tags | sed 's/-/./g'
 }
 
 prepare() {
