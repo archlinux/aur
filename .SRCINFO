@@ -1,0 +1,27 @@
+pkgbase = python-control-git
+	pkgdesc = Implements basic operations for analysis and design of feedback control systems in Python
+	pkgver = 662.601b581
+	pkgrel = 1
+	url = https://github.com/python-control/python-control
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	checkdepends = python-slycot-git
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python-scipy
+	depends = python-matplotlib
+	optdepends = python-slycot-git: matrix equation support, model simplification tools, and state feedback
+	options = staticlibs
+	source = git+https://github.com/python-control/python-control.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5e21e2b8826c3345f50711d5634bc975
+
+pkgname = python2-control-git
+
+pkgname = python-control-git
+	provides = python3-control
+
