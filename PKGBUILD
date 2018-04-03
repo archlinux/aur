@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=acme.sh-git
-pkgver=0.1734.8aff2bd
-pkgrel=6
+pkgver=0.2158.eee296c
+pkgrel=1
 pkgdesc='An ACME Shell script, an acme client alternative to certbot'
 arch=('any')
 url='https://github.com/Neilpang/acme.sh'
@@ -17,5 +17,15 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}"/acme.sh "${pkgdir}"/usr/bin/acme.sh
+  cd "${srcdir}/${pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/acme.sh/deploy"
+  install -dm755 "${pkgdir}/usr/share/acme.sh/dnsapi"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  install -m755 acme.sh "${pkgdir}/usr/share/acme.sh"
+  install -m755 deploy/*.sh "${pkgdir}/usr/share/acme.sh/deploy"
+  install -m755 dnsapi/*.sh "${pkgdir}/usr/share/acme.sh/dnsapi"
+
+  ln -s /usr/share/acme.sh/acme.sh "${pkgdir}/usr/bin/acme.sh"
 }
