@@ -48,7 +48,7 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  make -j$(nproc)
+  make
 }
 
 package() {
