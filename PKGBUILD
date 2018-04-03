@@ -4,7 +4,7 @@ pkgname='remarkable-git'
 conflicts=('remarkable')
 provides=('remarkable')
 pkgver=1.87.r27.gda0d88c
-pkgrel=1
+pkgrel=2
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
 url="http://remarkableapp.github.io"
@@ -21,18 +21,13 @@ depends=('python'
          'gtksourceview3'
          )
 makedepends=('python' 'git')
-optdepends=('python-lxml: export to HTML format support')
 
 install="remarkable.install"
 source=("git+https://github.com/jamiemcg/Remarkable.git"
-        "remarkable.install"
-        "undo-findBar.patch"
-        "LICENSE")
+        "remarkable.install")
 
 sha1sums=('SKIP'
-          'bdbfb750df9e5fb3022f47a46a80555259628cd1'
-          '54f7a4461607dd578132f7a7612a814e3bc38263'
-          '6e5ea06076c85fdd25b79bfc41588f7f7ee9ba29')
+          'bdbfb750df9e5fb3022f47a46a80555259628cd1')
 
 pkgver() {
   cd Remarkable
@@ -41,13 +36,14 @@ pkgver() {
 }
 
 prepare() {
-    msg2 "Removing findbar patches.."
-    # Does not run with findbar patches.
-    cat *.patch | patch -p1 -d "${srcdir}/Remarkable"
-    
-    msg2 "Fix imports in RemarkableWindow.py"
-    # Also changes imports in RemarkableWindow
+    msg "Fixing imports..."
+
+    msg2 "import styles"
     sed -i "s/import styles/from remarkable import styles/" \
+        "Remarkable/remarkable/RemarkableWindow.py"
+
+    msg2 "import FindBar"
+    sed -i "s/from findBar import FindBar/from remarkable.findBar import FindBar/" \
         "Remarkable/remarkable/RemarkableWindow.py"
 }
 
@@ -55,9 +51,9 @@ package() {
     _python_site=$(python -c 'import site; print(site.getsitepackages()[0]);')
     [ -z ${_python_site} ] && echo "error: could not identify python site_packages directory" && return 1
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
     cd "Remarkable"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm 755 "bin/remarkable" "${pkgdir}/usr/bin/remarkable"
     install -D "debian/remarkable.mime" "${pkgdir}/usr/lib/mime/packages/remarkable"
