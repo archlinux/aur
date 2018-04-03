@@ -9,9 +9,9 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc-bootstrap
-pkgver=7.2.0
-_mpfrver=3.1.6
-_mpcver=1.0.3
+pkgver=7.3.0
+_mpfrver=4.0.1
+_mpcver=1.1.0
 _gmpver=6.1.2
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Bootstrap for toolchain building (${_target})"
@@ -20,16 +20,16 @@ license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils>=2.29-1" 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
-source=("http://fr.mirror.babylon.network/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-        "http://www.mpfr.org/mpfr-current/mpfr-${_mpfrver}.tar.xz"
-        "ftp://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
-        "https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz")
+source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
+        "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
+        "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
+        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz")
 
 
         
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
-            '7a62ac1a04408614fccdc506e4844b10cf0ad2c2b1677097f8f35d3a1344a950'
-            '617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3'
+sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
+            '67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e'
+            '6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
             '87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912')
 
 prepare() {
