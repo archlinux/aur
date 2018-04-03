@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.1
+Name=MobyDroid
+GenericName=Android Device Manager
+Exec=mobydroid %U
+Terminal=false
+Icon=mobydroid
+Type=Application
+MimeType=application/x-mobydroid;
+Categories=Tool;
+Comment=Your android device manager
