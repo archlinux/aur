@@ -1,5 +1,5 @@
 post_install() {
-  ln -s /usr/bin/CubicSDR /usr/bin/cubicsdr
+  ln -fs /usr/bin/CubicSDR /usr/bin/cubicsdr
 }
 
 post_upgrade() {
