@@ -17,7 +17,11 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${pkgname%-soapysdr-git}"
-  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | tr -d V
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
 }
 
 build() {
