@@ -3,12 +3,12 @@
 
 pkgname=linkchecker
 pkgver=9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An command line utility to check HTML documents for broken links."
 arch=('any')
 url="https://github.com/linkcheck/linkchecker"
 license=('GPL')
-depends=('python2>=2.7.0' 'python2-requests')
+depends=('python2>=2.7.0' 'python2-requests' 'python2-dnspython')
 source=("git+https://github.com/linkcheck/linkchecker.git")
 sha256sums=('SKIP')
 
