@@ -7,7 +7,8 @@ pkgdesc="A library that hides the complexity of using SIP for multimedia session
 arch=('x86_64')
 url="https://savannah.nongnu.org/projects/exosip/"
 license=('GPL')
-depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libosip2>=4.0.0' 'lib32-openssl')
+depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libosip2>=4.0.0' 
+'lib32-openssl' 'libexosip2')
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 source=(https://download.savannah.gnu.org/releases/exosip/libexosip2-${pkgver}.tar.gz
         openssl110.patch)

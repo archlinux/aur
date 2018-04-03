@@ -9,6 +9,7 @@ pkgbase = lib32-libexosip2
 	depends = lib32-gcc-libs
 	depends = lib32-libosip2>=4.0.0
 	depends = lib32-openssl
+	depends = libexosip2
 	source = https://download.savannah.gnu.org/releases/exosip/libexosip2-5.0.0.tar.gz
 	source = openssl110.patch
 	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
