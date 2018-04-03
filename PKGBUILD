@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.14
+pkgver=0.22.101
 chan="beta"
 _pkgver=$pkgver
 pkgrel=1
@@ -17,7 +17,7 @@ conflicts=('brave' 'brave-bin')
 source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver""$chan"/Brave-Beta.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('842d6de6523eaf1a246eb4b92a275b85b674e2fd924655082960870fce9c14ae0682b2678e5ac7b5ab265acfb52549ebac21367c46de01deb8778a2fe0fcfe77'
+sha512sums=('c19e3c723f5587d84bd96a289372795f326554db83baf69c554875dcd594f453474606114dedee063ebc122a197c218672af6d34912249efc2fbb7c05ed402ea'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 _bdir=brave-beta-linux-x64
 
@@ -44,7 +44,7 @@ if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unp
 	FLAG=""
 fi
 
-exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
+exec /usr/lib/$pkgname/brave-beta "\$FLAG" -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
