@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-digest-xxhash
-pkgver=0.0.1
-pkgrel=6
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Perl 6 bindings for xxHash"
 arch=('any')
 depends=('libxxhash' 'perl6')
