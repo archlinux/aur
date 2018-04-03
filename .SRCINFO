@@ -1,11 +1,11 @@
 pkgbase = tako-git
 	pkgdesc = A command language and shell based on Python
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/adqm/tako
 	install = tako.install
 	arch = any
-	license = custom:Soopycat2
+	license = GPL3
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python

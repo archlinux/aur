@@ -3,11 +3,11 @@
 pkgname=tako-git
 _gitname=tako
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command language and shell based on Python"
 arch=('any')
 url="https://gitlab.com/adqm/$_gitname"
-license=('custom:Soopycat2')
+license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools' 'git')
 conflicts=('tako')
@@ -23,5 +23,4 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
   python setup.py install --root=$pkgdir
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license"
 }
