@@ -1,6 +1,6 @@
 pkgbase = blackmagic-decklink-sdk
 	pkgdesc = Blackmagic DeckLink SDK
-	pkgver = 10.9.10
+	pkgver = 10.9.11
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
 	arch = any
