@@ -1,6 +1,6 @@
 # Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bit-shift.io -> https://github.com/bit-shift-io
 pkgname=audiobook-git
-pkgver=2018
+pkgver=5c6df6e
 pkgrel=1
 pkgdesc="Audio Book is a simple audio book reader. Written in Qt and C++."
 arch=('any')
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  install -d build
 }
 
 build() {
@@ -30,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${pkgname}/build"
   make install INSTALL_ROOT="${pkgdir}/"
 }
