@@ -3,13 +3,13 @@
 pkgname=curl-ssh
 _pkgname=curl
 pkgver=7.59.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrieval utility and library (with ssh support)"
 arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'libnghttp2')
-provides=('libcurl.so')
+provides=('libcurl.so' 'curl')
 conflicts=('curl')
 options=('strip' 'debug')
 source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc})
