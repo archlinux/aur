@@ -1,13 +1,12 @@
 # Contributor: feufochmar <feufochmar.gd@gmail.com>
 pkgname=ttf-medievalsharp
 pkgver=20110630
-pkgrel=2
+pkgrel=3
 pkgdesc="A font based on gothic letters."
 arch=('any')
 url="http://openfontlibrary.org/font/medievalsharp"
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=medievalsharp.install
 source=("http://openfontlibrary.org/assets/downloads/medievalsharp/3ede0b439b3950fc0d1a7e1eb40151e0/medievalsharp.zip")
 
 package() {

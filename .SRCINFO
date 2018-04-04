@@ -1,9 +1,8 @@
 pkgbase = ttf-medievalsharp
 	pkgdesc = A font based on gothic letters.
 	pkgver = 20110630
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openfontlibrary.org/font/medievalsharp
-	install = medievalsharp.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
