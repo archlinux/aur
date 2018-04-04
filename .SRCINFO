@@ -1,19 +1,18 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
-	pkgver = 2.0.147
+	pkgver = 2.2.65
 	pkgrel = 1
 	url = http://ensenso.com
-	install = ensenso-sdk.install
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = glu
 	depends = libsm
-	depends = codemeter-runtime
 	optdepends = ueyed: for capturing from live cameras
+	optdepends = qt4: for included GUI tools
 	options = !strip
-	source = ensenso-sdk-2.0.147.tar.bz2::https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-2.0.147-x64.tar.bz2
-	sha512sums = b260785514850ed59609af3f3bc88747f86cbb47c9d6446d357fadf64e30ceab89bee5c3202a11cbe3bc97580fdf11d09e589880f3a60f53c3512944fd5e3018
+	source = ensenso-sdk-2.2.65.tar.bz2::https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-2.2.65-x64.tar.bz2
+	sha512sums = 64a6afc3fd8bd9efda91abaecd7effa7d955189f237d749414fe690088f19cbab36d694712fadfdf6adb75d8e54c5dc7ab73f92276230ba6a6a83031f047cf7a
 
 pkgname = ensenso-sdk
 
