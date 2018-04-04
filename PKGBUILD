@@ -1,8 +1,8 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 
 pkgname=ivan
-pkgver=0.51
-_vertag=051
+pkgver=0.52
+_vertag=052
 pkgrel=1
 pkgdesc="Iter Vehemens ad Necem - a tile-graphics roguelike with limb dismembering"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha1sums=("SKIP")
 options=(!strip)
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
     make
 }
 
