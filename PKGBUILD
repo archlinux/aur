@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server
 pkgver=3.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -34,12 +34,14 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         git+https://github.com/libbitcoin/libbitcoin-server.wiki
         bs.logrotate
         bs-init.service
-        bs.service)
+        bs.service
+        libbitcoin-server-01-rm-rf.hook)
 sha256sums=('37ef8d572fb7400565655501ffdea5d07a1de10f3d9fa823d33e2bf68ef8c3ce'
             'SKIP'
             'a2e4a1d6aaabcec9c57207a7e92b004c2dfa4a2d15c0ecfc05eefbf307783a49'
             'cbcc39723f04b51ed15475fbfb19cf94273db04b3e460f961e5078b40e664cb7'
-            '17ff3d0ee3580ccbfdd77b227db27f678aa879c7e6fd30d8748bdb2ca84fd371')
+            '17ff3d0ee3580ccbfdd77b227db27f678aa879c7e6fd30d8748bdb2ca84fd371'
+            '9d441e2f9c9c7bdb605b69d570120b20f602fb058a565346374bc48d25240ee6')
 backup=('etc/obelisk/bs/bs.cfg'
         'etc/logrotate.d/bs')
 install=bs.install
@@ -113,6 +115,10 @@ package() {
 
   msg2 'Installing logrotate conf...'
   install -Dm 644 "$srcdir/bs.logrotate" "$pkgdir/etc/logrotate.d/bs"
+
+  # XXX: pacman hook on Remove event not firing
+  msg2 'Installing pacman hooks...'
+  install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
