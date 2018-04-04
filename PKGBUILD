@@ -2,7 +2,7 @@
 
 pkgname=cherry-font
 pkgver=1.0
-pkgrel=1.0
+pkgrel=1
 pkgdesc="cherry, yet another bitmap font"
 url="https://github.com/marinhoc/cherry-font"
 source=("$pkgname::git+https://github.com/marinhoc/cherry-font")

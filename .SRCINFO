@@ -1,7 +1,7 @@
 pkgbase = cherry-font
 	pkgdesc = cherry, yet another bitmap font
 	pkgver = 1.0
-	pkgrel = 1.0
+	pkgrel = 1
 	url = https://github.com/marinhoc/cherry-font
 	install = cherry-font.install
 	arch = any
