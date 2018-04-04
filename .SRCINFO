@@ -4,7 +4,6 @@ pkgbase = monero-gui-bin
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
-	arch = i686
 	license = BSD
 	depends = qt5-declarative
 	depends = qt5-svg
