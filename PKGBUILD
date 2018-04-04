@@ -1,4 +1,5 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Alberto Ronzani ("albron") <alberto.ronzani@gmail.com>
 # shellcheck disable=2034
 # shellcheck disable=2148
 
