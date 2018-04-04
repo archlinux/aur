@@ -1,4 +1,4 @@
-pkgbase = audiobook-git
+pkgbase = audiobook
 	pkgdesc = Audio Book is a simple audio book reader. Written in Qt and C++.
 	pkgver = 2018
 	pkgrel = 1
