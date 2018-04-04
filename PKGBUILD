@@ -30,4 +30,5 @@ package() {
   make install
   # Move configuration files to /etc
   mv $pkgdir/{usr/,}etc
+  rm $pkgdir/etc/env.sh  # Unneeded for a system wide install
 }
