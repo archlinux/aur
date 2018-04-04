@@ -4,10 +4,9 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
-pkgbase=python-django2
 pkgname=python-django2
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
 license=('BSD')
@@ -18,15 +17,14 @@ optdepends=('python-psycopg2: for PostgreSQL backend')
 provides=('python-django')
 conflicts=('python-django')
 source=("Django-$pkgver.tar.gz::https://www.djangoproject.com/download/$pkgver/tarball/")
-sha256sums=('769f212ffd5762f72c764fa648fca3b7f7dd4ec27407198b68e7c4abf4609fd0')
-sha512sums=('75272abe88ffc5f0beb15222cab499d93605838b5bf0a5f0de461209825b8a61f9aff1105366aa5a036a2b7790b53962706ff27505f400ffc8bda2bccda64446')
+sha512sums=('4fa464f160cd33f515aa53d1c47dc4724d983faade9b2c8f399216e53306796716c130ec4d2c5db3d1630248e5a98c9203f4cd45f8837567d4bb76b9b7b4233d')
 
 build() {
   cd "$srcdir/Django-$pkgver"
   python setup.py build
 }
 
-package_python-django2() {
+package() {
   cd "$srcdir/Django-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 
