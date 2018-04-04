@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-unique
 	pkgdesc = Perl bindings for the C library libunique
 	pkgver = 0.05
-	pkgrel = 21
+	pkgrel = 22
 	url = https://metacpan.org/release/Gtk2-Unique
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = perl-gtk2-unique
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/Gtk2-Unique-0.05.tar.gz
 	source = perl-gtk2-unique.patch
+	source = fix_segfault_2nd_instance.patch
 	md5sums = 0beb552933b765a017588563a71af123
 	md5sums = f8e15e1b93e2629e1745f8e4de8524ff
+	md5sums = b509a893e15c614dc668348c89e83c2d
 
 pkgname = perl-gtk2-unique
 
