@@ -2,12 +2,12 @@
 
 pkgname=teams-for-linux
 pkgver=0.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Unofficial Microsoft Teams client for Linux using Electron.'
 arch=('any')
 url='https://github.com/ivelkov/teams-for-linux'
 license=('GPLv3')
-depends=( 'nodejs' 'electron' 'xdg-utils')
+depends=( 'nodejs' 'xdg-utils' 'electron' )
 makedepends=( 'npm' )
 provides=("${teams-for-linux}-${pkgver}")
 conflicts=("${teams-for-linux}-${pkgver}")
@@ -37,7 +37,7 @@ EOF
 
 build() {
     cd "$pkgname-$pkgver"
-    npm i && (cd app && npm i)
+    npm install --production && (cd app && npm install --production)
 }
 
 package() {
@@ -49,5 +49,4 @@ package() {
     install -Dm644 "build/icons/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/teams-for-linux.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/teams"
 }
