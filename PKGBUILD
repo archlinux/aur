@@ -1,7 +1,7 @@
 # Maintainer: Pig Monkey <pm@pig-monkey.com>
 
 pkgname=hostsctl
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="block advertisements, trackers, and other malicious activity by manipulating /etc/hosts"
 arch=("any")

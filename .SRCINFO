@@ -1,13 +1,13 @@
 pkgbase = hostsctl
 	pkgdesc = block advertisements, trackers, and other malicious activity by manipulating /etc/hosts
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/pigmonkey/hostsctl
 	install = hostsctl.install
 	arch = any
 	license = GPLv3
 	conflicts = hostsctl-git
-	source = hostsctl-v0.1.1.tar.gz::https://github.com/pigmonkey/hostsctl/archive/v0.1.1.tar.gz
+	source = hostsctl-v0.1.2.tar.gz::https://github.com/pigmonkey/hostsctl/archive/v0.1.2.tar.gz
 	md5sums = 3a7ac6ae71f38fc5675ceeafd0b788a3
 
 pkgname = hostsctl
