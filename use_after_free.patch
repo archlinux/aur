@@ -1,0 +1,39 @@
+From 26d0f119eaa7e3ffaaf330bf29672e13471cb091 Mon Sep 17 00:00:00 2001
+From: Ramkumar Natarajan <software@nramkumar.org>
+Date: Wed, 23 Sep 2015 19:14:12 -0700
+Subject: [PATCH] Fix crash due to use after free bug
+
+---
+ Makefile     |   2 +-
+ src/main.c   |   4 +-
+
+diff --git a/Makefile b/Makefile
+index 89fc1e9..e9355c3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,7 +23,7 @@ DEPS	=	$(OBJ:obj/%.o=obj/%.d)
+ TARGET	=	mhddfs
+ 
+ CFLAGS	=	-Wall $(shell pkg-config fuse --cflags) \
+-			-DFUSE_USE_VERSION=26 -MMD
++			-DFUSE_USE_VERSION=26 -MMD -O3
+ ifdef WITHOUT_XATTR
+ CFLAGS	+=	-DWITHOUT_XATTR
+ endif
+diff --git a/src/main.c b/src/main.c
+index 38d2b88..761a940 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -243,11 +243,11 @@ static int mhdd_readdir(
+ 
+ 	// free memory
+ 	HASH_ITER(hh, items_ht, item, tmp) {
++        HASH_DEL(items_ht, item);
+ 		free(item->name);
+ 		free(item->st);
+ 		free(item);
+ 	}
+-	HASH_CLEAR(hh, items_ht);
+ 
+ 	for (i = 0; dirs[i]; i++)
+ 		free(dirs[i]);
