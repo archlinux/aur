@@ -1,7 +1,7 @@
 pkgbase = ombi-dev
 	pkgdesc = Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves
 	pkgver = 3.0.3129
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tidusjar/Ombi
 	install = ombi.install
 	arch = x86_64
