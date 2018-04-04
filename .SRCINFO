@@ -1,6 +1,6 @@
 pkgbase = iotacooler
 	pkgdesc = Cold transaction signer for IOTA
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/joshirio/iota-cooler
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = iotacooler
 	depends = qt5-svg
 	depends = qt5-imageformats
 	options = !strip
-	source = https://github.com/joshirio/iota-cooler/releases/download/v1.0/iotacooler-1.0-src.tar.gz
-	md5sums = 413e143bca4bad7bc1a818f9081030c2
+	source = https://github.com/joshirio/iota-cooler/releases/download/v1.1/iotacooler-1.1-src.tar.gz
+	md5sums = e15d948e8796f0448bcebea2c03aa049
 
 pkgname = iotacooler
 
