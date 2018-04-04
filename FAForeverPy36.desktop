@@ -5,5 +5,5 @@ Comment=Supreme Commander Forged Alliance game lobby
 Exec=python /usr/lib/python3.6/site-packages/fafclient/src
 Icon=/usr/lib/python3.6/site-packages/fafclient/res/window_icon.png
 Terminal=false
-Categories=Games
+Categories=Game;
 Path=/usr/lib/python3.6/site-packages/fafclient
