@@ -3,7 +3,7 @@
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
 
 pkgname=fortune-mod-zh
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Chinese poems for fortune-mod"
 url="http://packages.qa.debian.org/f/fortune-zh.html"
@@ -11,7 +11,7 @@ license=("GPL")
 depends=('fortune-mod')
 groups=('fortune-mods')
 source=(http://ftp.debian.org/debian/pool/main/f/fortune-zh/fortune-zh_${pkgver}.tar.xz)
-md5sums=('b5cb43a1819d6879e3b57cb489743f97')
+md5sums=('5d8e2b0aa6ebe5c3b400663601442cec')
 arch=('any')
 
 build() {
