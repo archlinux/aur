@@ -43,8 +43,10 @@ prepare() {
 	[ -d data ] && rm -rf data
 	mkdir data
 	cd data
-	tar -xf ../data.tar.bz2
-	tar -xf ../data.tar.xz
+	for datatar in ../data.tar.*; do
+		msg2 "Unpacking $datatar"
+		tar -xf $datatar
+	done
 }
 
 package() {
