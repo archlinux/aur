@@ -1,7 +1,7 @@
 pkgbase = python-ebaysdk
 	pkgdesc = eBay SDK for Python
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timotheus/ebaysdk-python
 	arch = any
 	license = CDDL
