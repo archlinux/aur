@@ -3,7 +3,7 @@
 _pkgname=pacmanlogger
 _pkgver=0.1.0
 pkgname=pacmanlogger-git
-pkgver=0.1.0.r5.8ed1065
+pkgver=0.1.0.r8.0a151f8
 pkgrel=1
 pkgdesc="A scala application that makes reading pacman's logs easier"
 arch=('any')
@@ -16,12 +16,6 @@ provides=('pacmanlogger')
 source=("$_pkgname::git+https://github.com/carlocastoldi/PacmanLogger" "pacmanlogger.sh")
 md5sums=('SKIP'
          'abe1b34cb77dfd99a1bf726afb689e96')
-
-prepare() {
-	cd "$_pkgname"
-	mkdir project
-	echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' > project/assembly.sbt
-}
 
 build() {
 	cd "$_pkgname"
