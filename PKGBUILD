@@ -69,7 +69,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.32
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -86,7 +86,7 @@ _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180310'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
-_bfq_mq_ver='20180227'
+_bfq_mq_ver='20180404'
 _bfq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 
 source=(# mainline kernel patches
@@ -126,7 +126,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '095a3a36f8ed160d9663aab0da27fde8022410669245ab01e882cfefece056bc'
             'SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
-            '8b8f4d9cc2f868b3627fa67d955fcbd7e78c63eb5f6c254688f9f779d01907f1'
+            '6b011992ce747477d5cb112ca69c002993980acc47d8a34a9190febd41024e0b'
             '3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
