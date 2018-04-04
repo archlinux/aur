@@ -10,7 +10,7 @@ url='http://dmwit.com/yeganesh/'
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
 depends=('dmenu')
-makedepends=('ghc')
+makedepends=('ghc' 'cabal-install')
 source=(http://dmwit.com/yeganesh/yeganesh-${pkgver}.tar.gz)
 md5sums=('1f64542082d61b9004bc42f80ce9ebac')
 
