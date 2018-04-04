@@ -4,7 +4,7 @@
 
 pkgname=factorio-headless
 pkgver=0.16.36
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"

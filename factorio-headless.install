@@ -49,4 +49,8 @@ post_upgrade() {
         post_install $1
         chmod 600 /etc/factorio/server-settings.json
     }
+
+    (( $(vercmp $2 '0.16.36-2') >= 0 )) || {
+        chown factorio:games /etc/factorio/*
+    }
 }

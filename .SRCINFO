@@ -1,7 +1,7 @@
 pkgbase = factorio-headless
 	pkgdesc = A 2D game about building and maintaining factories - Server version (stable branch)
 	pkgver = 0.16.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.factorio.com/
 	install = factorio-headless.install
 	arch = x86_64
