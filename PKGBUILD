@@ -34,7 +34,6 @@ depends=(
   python-passlib
   python-pillow
   python-psutil
-  python-psycogreen
   python-psycopg2
   python-pydot
   python-ldap
@@ -42,14 +41,12 @@ depends=(
   python-pypdf2
   python-pyserial
   python-dateutil
-  python-openid
   python-pytz
   python-pyusb
   python-yaml
   python-qrcode
   python-reportlab
   python-requests
-  python-six
   python-suds
   python-vatnumber
   python-vobject
