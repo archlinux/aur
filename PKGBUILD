@@ -105,6 +105,7 @@ sha256sums=('SKIP'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-bfq-mq-git}
 
 pkgver() {
   cd ${_srcname}
