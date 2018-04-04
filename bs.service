@@ -9,6 +9,12 @@ Group=obelisk
 ExecStart=/usr/bin/bs /etc/obelisk/bs/bs.cfg
 ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
 ExecStop=/usr/bin/kill -s SIGINT $MAINPID
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=full
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 pkgbase = libbitcoin-server
 	pkgdesc = Bitcoin Full Node and Query Server
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libbitcoin/libbitcoin-server
 	install = bs.install
 	arch = i686
@@ -41,8 +41,8 @@ pkgbase = libbitcoin-server
 	sha256sums = 37ef8d572fb7400565655501ffdea5d07a1de10f3d9fa823d33e2bf68ef8c3ce
 	sha256sums = SKIP
 	sha256sums = a2e4a1d6aaabcec9c57207a7e92b004c2dfa4a2d15c0ecfc05eefbf307783a49
-	sha256sums = f110eb59cdd18a8ad0a512604370f912e65b0525e8bb08b463af3e62a920b47d
-	sha256sums = 9a9a2286d7c38df7e1942838a19b430e2af6d80324202a117c7ebe2acf50cc80
+	sha256sums = cbcc39723f04b51ed15475fbfb19cf94273db04b3e460f961e5078b40e664cb7
+	sha256sums = 17ff3d0ee3580ccbfdd77b227db27f678aa879c7e6fd30d8748bdb2ca84fd371
 
 pkgname = libbitcoin-server
 
