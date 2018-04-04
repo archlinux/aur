@@ -13,9 +13,6 @@
 # Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
 _use_tentative_patches=
 
-# Running with a 1000 HZ tick rate
-_1k_HZ_ticks=
-
 ### Enable fancontrol for DELL
 _dell_fancontrol=
 
@@ -66,7 +63,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.15.0.g4cb5de6add7d
+pkgver=4.15.0.g1f77c173aaa8
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -101,7 +98,7 @@ source=(# bfq-mq repository
 sha256sums=('SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            'c7c341d8eaeca59d778ac88f32079ac7d53e4ef4ecf2c59acab596934059f9fa'
+            '8edcf9bd4d88f149ee496b1418202af1d79d111bccfdcd64367a622a8d8b70d7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -135,7 +132,10 @@ prepare() {
   # Clean tree and copy ARCH config over
   make mrproper
 
-  cp -Tf ../config .config
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   ### Optionally set tickrate to 1000
   if [ -n "$_1k_HZ_ticks" ]; then
@@ -222,13 +222,10 @@ prepare() {
         -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
   fi
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  # set extraversion to pkgrel and empty localversion
+    sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+        -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+        -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -268,7 +265,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -282,16 +279,16 @@ _package() {
   cd ${_srcname}
 
     # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _kernver="$(make kernelrelease)"
     _basekernel=${_kernver%%-*}
     _basekernel=${_basekernel%.*}
 
     mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
     cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
     # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    local _extramodules="extramodules-${_basekernel}${_kernelname}"
     ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
     # add real version for building modules and running depmod from hook
@@ -381,7 +378,7 @@ _package-headers() {
         rm -r "${_arch}"
     done
 
-    # remove files already in linux-bfq-mq-git-docs package
+    # remove files already in linux-uksml-docs package
     rm -r "${_builddir}/Documentation"
     
     # remove now broken symlinks
