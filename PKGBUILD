@@ -17,22 +17,22 @@
 pkgbase="spl-linux-vfio"
 pkgname=("spl-linux-vfio" "spl-linux-vfio-headers")
 
-pkgver=0.7.7.4.15.12.1
+pkgver=0.7.7.4.15.14.1
 pkgrel=1
-makedepends=("linux-vfio-headers=4.15.12-1" "git")
+makedepends=("linux-vfio-headers=4.15.14-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/spl-0.7.7.tar.gz")
 sha256sums=("9e98af3daaf1a6605b34f8b709a60cfc52dbf2bedcfc01d919d1f77c695247de")
 license=("GPL")
-depends=("spl-utils-common=0.7.7" "kmod" "linux-vfio=4.15.12-1")
+depends=("spl-utils-common=0.7.7" "kmod" "linux-vfio=4.15.14-1")
 
 build() {
     cd "${srcdir}/spl-0.7.7"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.15.12-1-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.15.12-1-vfio/build \
+                --with-linux=/usr/lib/modules/4.15.14-1-vfio/build \
+                --with-linux-obj=/usr/lib/modules/4.15.14-1-vfio/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-vfio-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.12-1-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.14-1-vfio/Module.symvers
 }
