@@ -1,6 +1,6 @@
 pkgbase = powerline-i3-git
 	pkgdesc = The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 2
 	url = https://github.com/ph111p/powerline
 	arch = i686
