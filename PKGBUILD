@@ -27,7 +27,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.0.28
+pkgver=7.0.29
 pkgrel=1
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
@@ -48,16 +48,20 @@ source=(
     'php-fpm.patch'
     'php-fpm.tmpfiles'
     'php.ini.patch'
+    'php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch'
+    'php-icu-1101-Simplify-namespace-access.patch'
 )
 sha512sums=(
-    '054c765011d2ad5bb1ef2fd2d66df05f374032015869e69112b309a13b79f437de25e9692719110efbd79f33c677add36430dab21ae12231a7730207c9e877aa'
-    '3c051196a00cc158c6cc35740ab2ea0ae1e89ad3defea1ae4550266bb0b6eb86bea261dbceb8918785ac6c4cfcae5761100d41cd5d77bee22f4ecb5d3c2b9b96'
+    'ea5a2fbcfc875dd2621e3f67038c1e00f43b53bc7079ae2127fcefbf116db0f32e34d4435f8211305402a4eccdaa5dfd6b96cf9416e68700f2c1f438d74a0af8'
+    '3702882c137cefaf62f55c9a2c508173152b6e7ad33be2f7de38e6e4e5273109efb19fa9fe6964a385d95f7837df80769d890fe0e04a78c8ede66cc266ba9b92'
     'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
     '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
     '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
     'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
     'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
     'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
+    '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
+    '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
 )
 
 # keys from http://php.net/downloads.php#gpg-7.0
@@ -86,6 +90,8 @@ prepare() {
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
 	patch -p0 -i ${srcdir}/enchant-2.patch
+    patch -p1 -i ${srcdir}/php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
+    patch -p1 -i ${srcdir}/php-icu-1101-Simplify-namespace-access.patch
 }
 
 
