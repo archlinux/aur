@@ -378,7 +378,7 @@ _package-headers() {
         rm -r "${_arch}"
     done
 
-    # remove files already in linux-uksml-docs package
+    # remove files already in linux-bfq-mq-git-docs package
     rm -r "${_builddir}/Documentation"
     
     # remove now broken symlinks
