@@ -7,6 +7,7 @@ pkgbase = yeganesh-cabal
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = ghc
+	makedepends = cabal-install
 	depends = dmenu
 	source = http://dmwit.com/yeganesh/yeganesh-2.5.tar.gz
 	md5sums = 1f64542082d61b9004bc42f80ce9ebac
