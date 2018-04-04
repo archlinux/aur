@@ -1,9 +1,8 @@
 # Maintainer: Morgana <morganamilo@gmail.com>
 
 _pkgname=pacmanlogger
-_pkgver=0.1.0
 pkgname=pacmanlogger-git
-pkgver=0.1.0.r8.0a151f8
+pkgver=0.1.2.r19.4330ca7
 pkgrel=1
 pkgdesc="A scala application that makes reading pacman's logs easier"
 arch=('any')
@@ -26,11 +25,11 @@ package() {
 	install -Dm755 "pacmanlogger.sh" "$pkgdir/usr/bin/pacmanlogger"
 
 	cd "$_pkgname"
-	install -Dm644 "target/scala-2.12/PacmanLogger-assembly-$_pkgver.jar" "$pkgdir/usr/share/scala/$_pkgname/$_pkgname.jar"
+	install -Dm644 "target/scala-2.12/PacmanLogger-assembly-${pkgver%%.r*}.jar" "$pkgdir/usr/share/scala/$_pkgname/$_pkgname.jar"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
 pkgver() {
 	cd "$_pkgname"
-	printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(grep 'version *:=' build.sbt | grep -o '[0-9\.]\+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

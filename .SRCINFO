@@ -1,6 +1,6 @@
 pkgbase = pacmanlogger-git
 	pkgdesc = A scala application that makes reading pacman's logs easier
-	pkgver = 0.1.0.r8.0a151f8
+	pkgver = 0.1.2.r19.4330ca7
 	pkgrel = 1
 	url = https://github.com/carlocastoldi/PacmanLogger
 	arch = any
