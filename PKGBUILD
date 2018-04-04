@@ -3,7 +3,7 @@
 pkgname=curl-ssh
 _pkgname=curl
 pkgver=7.59.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrieval utility and library (with ssh support)"
 arch=('x86_64')
 url="https://curl.haxx.se"
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install -C scripts
