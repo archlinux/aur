@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20180309
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -39,8 +39,8 @@ source=(git+https://github.com/libbitcoin/libbitcoin-node
 sha256sums=('SKIP'
             'SKIP'
             'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
-            'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
-            'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43'
+            'fba120270af0451db203d9e6712cdcee65d1268582ec34ae1fc63783928b4fc2'
+            '779b3aa788add61bbfc203ece13c8637bdb7a6f437e315955115ff101bbbcc48'
             '17de557ac9b8a4d354ade339904286fa074facea539984e97b5e83f45a2c305f'
             '6b4e2f95d4ba2a41493ccad5b867aefb9f9b4f5b8ddbbf0da9a51a4a48d915f8'
             'ac81ca8c96872204b55de0e7076ba3e6410069a3ea292a1191aabba5f2f1839f'
@@ -70,7 +70,7 @@ prepare() {
     -e 's@^directory.*@directory = /srv/obelisk/db@' \
     -e 's@^debug_file.*@debug_file = /var/log/obelisk/bn/debug.log@' \
     -e 's@^error_file.*@error_file = /var/log/obelisk/bn/error.log@' \
-    -e 's@^hosts_file.*@hosts_file = /etc/obelisk/hosts.cache@' \
+    -e 's@^hosts_file.*@hosts_file = /srv/obelisk/hosts.cache@' \
     -e 's@^archive_directory.*@archive_directory = /var/log/obelisk/bn@' \
     -e 's@^rotation_size.*@rotation_size = 5000000@' \
     -e 's@^maximum_archive_size.*@maximum_archive_size = 35000000@' \
