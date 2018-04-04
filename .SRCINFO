@@ -1,0 +1,18 @@
+pkgbase = signon-ui-webengine
+	pkgdesc = "webengine" branch of signon-ui for issue #1
+	pkgver = 0.17
+	pkgrel = 0
+	url = https://launchpad.net/online-accounts-signon-ui
+	arch = x86_64
+	license = GPL
+	depends = libaccounts-qt
+	depends = qt5-webkit
+	depends = signon
+	depends = libnotify
+	provides = signon-ui
+	conflicts = signon-ui
+	source = git+https://gitlab.com/accounts-sso/signon-ui.git
+	md5sums = SKIP
+
+pkgname = signon-ui-webengine
+
