@@ -3,7 +3,7 @@
 
 pkgname='strichliste-web'
 pkgdesc="frontend for the strichliste api"
-pkgver=1.6.1
+pkgver=1.7.1
 pkgrel=1
 arch=('any')
 url="https://github.com/hackerspace-bootstrap/strichliste-web"
@@ -15,7 +15,7 @@ makedepends=('npm' 'git')
 _html_dir='usr/share/nginx/html/strichliste'
 backup=("${_html_dir}/js/settings.js")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hackerspace-bootstrap/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('91f11557f48ce56fefad81b31b2b7043e10ff7eae7111936b63cfdd6b68736c5fb73faaf2f77f7510cfd81496d688b567efbae0bcf2e2f09e2a10bcdb84709e7')
+sha512sums=('be8b7c8099d84343566ea35bccaf32be6ec87cb126441c666bf9fd2b680e08a79688f24029a6d3013f8e019125a4944362e0f0189d45fec98103c4ed251731fa')
 validpgpkeys=('') # TODO
 
 package() {
