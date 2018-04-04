@@ -8,6 +8,7 @@ arch=('any')
 url=https://github.com/myint/rstcheck
 license=('MIT')
 depends=('python-docutils')
+makedepends=('python-setuptools')
 optdepends=('python-sphinx: Sphinx support')
 source=("https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-$pkgver.tar.gz")
 sha512sums=('d5288adbd3853a0392679862edef65f8219476b8976446fd3ab5f9ec759437657d37f51125746648d5390300f6362a99fc86aa4303e2f009db715b92fe5086c8')
