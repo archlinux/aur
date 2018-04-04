@@ -6,7 +6,7 @@ pkgver=0.1.9.11.g8c62934
 pkgrel=1
 pkgdesc="A simple multimedia file converter for elementary OS"
 arch=('i686' 'x86_64')
-url="https://github.com/robertsanseries/${pkgname}"
+url="https://github.com/robertsanseries/${_pkgname}"
 license=('GPL3')
 
 depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkit2gtk' 'ffmpeg' 'imagemagick')
