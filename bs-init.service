@@ -7,6 +7,12 @@ Type=oneshot
 User=obelisk
 Group=obelisk
 ExecStart=/usr/bin/bs -i /etc/obelisk/bs/bs.cfg
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=full
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target
