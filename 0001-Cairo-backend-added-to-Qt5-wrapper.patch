@@ -1,21 +1,21 @@
-From c791b85224237ab10d12cc87ee4052eca09808a8 Mon Sep 17 00:00:00 2001
+From fb0f060b9528e38122026fc5c5074b742a712cd8 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
-Date: Wed, 20 May 2009 11:42:28 +0100
-Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
+Date: Wed, 4 Apr 2018 16:36:56 +0100
+Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
 
 ---
- qt4/src/CMakeLists.txt      | 15 ++++++++++
- qt4/src/poppler-document.cc |  3 ++
- qt4/src/poppler-page.cc     | 70 +++++++++++++++++++++++++++++++++++++++++++++
- qt4/src/poppler-qt4.h       |  3 +-
- qt4/tests/CMakeLists.txt    |  5 ++++
+ qt5/src/CMakeLists.txt      | 15 ++++++++++
+ qt5/src/poppler-document.cc |  3 ++
+ qt5/src/poppler-page.cc     | 70 +++++++++++++++++++++++++++++++++++++++++++++
+ qt5/src/poppler-qt5.h       |  3 +-
+ qt5/tests/CMakeLists.txt    |  5 ++++
  5 files changed, 95 insertions(+), 1 deletion(-)
 
-diff --git a/qt4/src/CMakeLists.txt b/qt4/src/CMakeLists.txt
-index f6547726..b0baa84b 100644
---- a/qt4/src/CMakeLists.txt
-+++ b/qt4/src/CMakeLists.txt
-@@ -6,6 +6,11 @@ include_directories(
+diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
+index 5ae42f52..04e3fcdf 100644
+--- a/qt5/src/CMakeLists.txt
++++ b/qt5/src/CMakeLists.txt
+@@ -7,6 +7,11 @@ include_directories(
    ${CMAKE_CURRENT_BINARY_DIR}
  )
  
@@ -24,38 +24,38 @@ index f6547726..b0baa84b 100644
 +  add_definitions(${CAIRO_CFLAGS})
 +endif (HAVE_CAIRO)
 +
- set(poppler_qt4_SRCS
+ set(poppler_qt5_SRCS
    poppler-annotation.cc
    poppler-document.cc
-@@ -28,6 +33,13 @@ set(poppler_qt4_SRCS
+@@ -29,6 +34,13 @@ set(poppler_qt5_SRCS
    poppler-media.cc
    ArthurOutputDev.cc
  )
 +if (HAVE_CAIRO)
-+  set(poppler_qt4_SRCS ${poppler_qt4_SRCS}
++  set(poppler_qt5_SRCS ${poppler_qt5_SRCS}
 +    ${CMAKE_SOURCE_DIR}/poppler/CairoOutputDev.cc
 +    ${CMAKE_SOURCE_DIR}/poppler/CairoRescaleBox.cc
 +    ${CMAKE_SOURCE_DIR}/poppler/CairoFontEngine.cc
 +  )
 +endif(HAVE_CAIRO)
- qt4_automoc(${poppler_qt4_SRCS})
- add_library(poppler-qt4 SHARED ${poppler_qt4_SRCS})
- set_target_properties(poppler-qt4 PROPERTIES VERSION 4.11.0 SOVERSION 4)
+ add_library(poppler-qt5 ${poppler_qt5_SRCS})
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.13.0 SOVERSION 1)
+ if(MINGW)
 @@ -36,6 +48,9 @@ if(MINGW)
-     set_target_properties(poppler-qt4 PROPERTIES SUFFIX "-${POPPLER_QT4_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+     set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
  endif()
- target_link_libraries(poppler-qt4 poppler ${QT4_QTCORE_LIBRARY} ${QT4_QTGUI_LIBRARY} ${QT4_QTXML_LIBRARY})
+ target_link_libraries(poppler-qt5 poppler ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Xml_LIBRARIES})
 +if (HAVE_CAIRO)
-+  target_link_libraries(poppler-qt4 ${CAIRO_LIBRARIES})
++  target_link_libraries(poppler-qt5 ${CAIRO_LIBRARIES})
 +endif (HAVE_CAIRO)
  if(MSVC)
- target_link_libraries(poppler-qt4 poppler ${poppler_LIBS})
+ target_link_libraries(poppler-qt5 poppler ${poppler_LIBS})
  endif()
-diff --git a/qt4/src/poppler-document.cc b/qt4/src/poppler-document.cc
-index d6e2fbf7..c1f293ad 100644
---- a/qt4/src/poppler-document.cc
-+++ b/qt4/src/poppler-document.cc
-@@ -694,6 +694,9 @@ namespace Poppler {
+diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
+index 0eeb923f..e1b7a71c 100644
+--- a/qt5/src/poppler-document.cc
++++ b/qt5/src/poppler-document.cc
+@@ -672,6 +672,9 @@ namespace Poppler {
          ret << Document::SplashBackend;
  #endif
          ret << Document::ArthurBackend;
@@ -65,11 +65,11 @@ index d6e2fbf7..c1f293ad 100644
          return ret;
      }
  
-diff --git a/qt4/src/poppler-page.cc b/qt4/src/poppler-page.cc
-index ffe6e99c..084c4a6b 100644
---- a/qt4/src/poppler-page.cc
-+++ b/qt4/src/poppler-page.cc
-@@ -42,6 +42,7 @@
+diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
+index 381a608b..21e96fe2 100644
+--- a/qt5/src/poppler-page.cc
++++ b/qt5/src/poppler-page.cc
+@@ -45,6 +45,7 @@
  #include <QtGui/QPainter>
  
  #include <config.h>
@@ -77,7 +77,7 @@ index ffe6e99c..084c4a6b 100644
  #include <PDFDoc.h>
  #include <Catalog.h>
  #include <Form.h>
-@@ -55,6 +56,9 @@
+@@ -58,6 +59,9 @@
  #include <SplashOutputDev.h>
  #include <splash/SplashBitmap.h>
  #endif
@@ -87,7 +87,7 @@ index ffe6e99c..084c4a6b 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -416,6 +420,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
+@@ -596,6 +600,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
        img = tmpimg;
        break;
      }
@@ -157,36 +157,36 @@ index ffe6e99c..084c4a6b 100644
 +    }
    }
  
-   return img;
-@@ -458,6 +526,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
-          painter->restore();
-       return true;
+   if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload))
+@@ -618,6 +686,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
+         QImageDumpingArthurOutputDev arthur_output(painter, nullptr);
+         return renderToArthur(&arthur_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
 +    case Poppler::Document::CairoBackend:
 +      return false;
    }
    return false;
  }
-diff --git a/qt4/src/poppler-qt4.h b/qt4/src/poppler-qt4.h
-index 1b5afb2e..8e3cb26b 100644
---- a/qt4/src/poppler-qt4.h
-+++ b/qt4/src/poppler-qt4.h
-@@ -887,7 +887,8 @@ delete it;
+diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
+index 3adbf02f..5422482a 100644
+--- a/qt5/src/poppler-qt5.h
++++ b/qt5/src/poppler-qt5.h
+@@ -1054,7 +1054,8 @@ delete it;
  	*/
  	enum RenderBackend {
  	    SplashBackend,   ///< Splash backend
--	    ArthurBackend   ///< Arthur (Qt4) backend
-+	    ArthurBackend,   ///< Arthur (Qt4) backend
+-	    ArthurBackend   ///< Arthur (Qt) backend
++	    ArthurBackend,   ///< Arthur (Qt) backend
 +	    CairoBackend     ///< Cairo backend
  	};
  
  	/**
-diff --git a/qt4/tests/CMakeLists.txt b/qt4/tests/CMakeLists.txt
-index a01a638a..69ce63bc 100644
---- a/qt4/tests/CMakeLists.txt
-+++ b/qt4/tests/CMakeLists.txt
-@@ -8,6 +8,11 @@ include_directories(
-   ${QT4_INCLUDE_DIR}
+diff --git a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
+index 1e67e6ec..9131568d 100644
+--- a/qt5/tests/CMakeLists.txt
++++ b/qt5/tests/CMakeLists.txt
+@@ -11,6 +11,11 @@ include_directories(
+   ${Qt5Widgets_INCLUDE_DIRS}
  )
  
 +if (HAVE_CAIRO)
@@ -194,9 +194,9 @@ index a01a638a..69ce63bc 100644
 +  add_definitions(${CAIRO_CFLAGS})
 +endif (HAVE_CAIRO)
 +
- macro(QT4_ADD_SIMPLETEST exe source)
-   string(REPLACE "-" "" test_name ${exe})
-   set(${test_name}_SOURCES
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.15.1
+2.16.3
 

@@ -1,0 +1,25 @@
+From cced8f3763d151f3876689e8efee568c9404e1b0 Mon Sep 17 00:00:00 2001
+From: Paul Gideon Dann <pdgiddie@gmail.com>
+Date: Wed, 4 Apr 2018 16:37:38 +0100
+Subject: [PATCH 2/4] Setting default Qt5 backend to Cairo
+
+---
+ qt5/src/poppler-private.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qt5/src/poppler-private.cc b/qt5/src/poppler-private.cc
+index e3a540ab..6fcccf29 100644
+--- a/qt5/src/poppler-private.cc
++++ b/qt5/src/poppler-private.cc
+@@ -243,7 +243,7 @@ namespace Debug {
+     
+     void DocumentData::init()
+     {
+-        m_backend = Document::SplashBackend;
++        m_backend = Document::CairoBackend;
+         paperColor = Qt::white;
+         m_hints = 0;
+         m_optContentModel = nullptr;
+-- 
+2.16.3
+
