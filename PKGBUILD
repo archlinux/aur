@@ -11,16 +11,17 @@ license=('custom:proprietary')
 depends=('java-runtime' 'android-tools')
 source=("https://github.com/ibilux/MobyDroid/releases/download/v$pkgver/MobyDroid_v$pkgver.zip"
         "$pkgname.png"
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        "$pkgname-arch.sh")
 
 md5sums=('328e3d08b3604fc75f3707455781167d'
          '7118cfd58a0ac4d16b7818423226ce89'
-         'db9b65688a89b2dd7448a4772f42655a')
+         'db9b65688a89b2dd7448a4772f42655a'
+         '9f0bc607aee8683ded5c8eeb8411d364')
 
 package()
 {
   cd "${srcdir}"
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/share/${pkgname}/${pkgname}.sh"
   install -Dm755 "${srcdir}/${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
   install -Dm644 "${srcdir}/bin/busybox-arm" "${pkgdir}/usr/share/${pkgname}/bin/busybox-arm"
   install -Dm644 "${srcdir}/bin/busybox-x86" "${pkgdir}/usr/share/${pkgname}/bin/busybox-x86"
@@ -33,5 +34,5 @@ package()
 
 # install
   install -d "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/usr/share/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}-arch.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
