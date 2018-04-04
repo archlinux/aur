@@ -13,7 +13,7 @@ sha512sums=('564def86f9d0539f2631f8a72914845e6cf3fbdd2bc8dbe949e181568cbcbdf79d4
 
 build() {
   cd ProcDump-for-Linux-$pkgver
-  make
+  make -j1
 }
 
 package() {
