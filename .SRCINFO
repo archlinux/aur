@@ -1,0 +1,15 @@
+pkgbase = cherry-font
+	pkgdesc = cherry, yet another bitmap font
+	pkgver = 1.0
+	pkgrel = 1.0
+	url = https://github.com/marinhoc/cherry-font
+	install = cherry-font.install
+	arch = any
+	makedepends = git
+	makedepends = xorg-font-utils
+	source = cherry-font::git+https://github.com/marinhoc/cherry-font
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cherry-font
+
