@@ -4,7 +4,8 @@
 pkgname=manager-accounting
 pkgver=`wget -o /dev/null http://www.manager.io/desktop/download/ -O - \
     | grep -o -P 'https://.*\.zip' \
-    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+'`
+    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+' \
+    | head -1`
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
