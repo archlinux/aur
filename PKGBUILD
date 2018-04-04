@@ -3,7 +3,7 @@
 _pkgbase=monero
 pkgname=monero-gui-bin
 pkgver=0.12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -12,6 +12,7 @@ license=("BSD")
 depends=("qt5-declarative"
 	"qt5-svg"
 	"desktop-file-utils"
+	"pcsclite"
 )
 provides=("monerod=${pkgver}"
           "monero-blockchain-export=${pkgver}"
