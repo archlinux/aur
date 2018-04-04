@@ -1,0 +1,15 @@
+pkgbase = pftools
+	pkgdesc = Contains all the software necessary to build protein and DNA generalized profiles and use them to scan and align sequences, and search databases.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://web.expasy.org/pftools
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-libs
+	depends = glibc
+	depends = bash
+	source = pftools.tar.xz
+	sha512sums = SKIP
+
+pkgname = pftools
+
