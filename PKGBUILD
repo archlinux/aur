@@ -4,8 +4,9 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.7.2
-pkgrel=2
+pkgver=1.2.8
+_realver=.1
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -13,10 +14,13 @@ license=('custom')
 depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'harfbuzz')
 makedepends=('cmake')
 conflicts=("aseprite-git" "aseprite-gpl")
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/Aseprite-v${pkgver}-Source.zip"
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/Aseprite-v${pkgver}${_realver}-Source.zip"
 "${pkgname}.desktop")
-sha256sums=('96e00209f9e2380ac4ff26aa0bcb1ff16ab112cccb4c4f1ca49568eeecd02443'
-'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f')
+sha256sums=(
+'20559ea5e0b08361f4d554d885e9e1154eb190b19b6687e0b1243b1589249e56'
+'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f'
+)
+
 build() {
   cd "$srcdir"
 
@@ -70,7 +74,7 @@ package() {
   # Remove conflicting files with libarchive
   # TODO: With the current compilation options, looks like aseprite build process builds these binaries. Disable the compilation of the following files later on:
   # Note: Github issue: https://github.com/aseprite/aseprite/issues/1602
-  rm -f "$pkgdir/usr/bin/"{bsdcat,bsdcpio,bsdtar}
+  rm -f "$pkgdir/usr/bin/"{bsdcat,bsdcpio,bsdtar,img2webp}
   rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/man" "$pkgdir/usr/bin/cmark"
 }
 
