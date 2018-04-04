@@ -1,0 +1,29 @@
+pkgbase = aircrack-ng-git
+	pkgdesc = WiFi security auditing tools suite
+	pkgver = 1.2.rc5.r8.g9b3fbbfe
+	pkgrel = 1
+	url = https://aircrack-ng.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkg-config
+	makedepends = make
+	makedepends = gcc-libs
+	depends = openssl
+	depends = iw
+	depends = net-tools
+	depends = shtool
+	depends = ethtool
+	depends = libnl
+	depends = libtool
+	provides = aircrack-ng
+	conflicts = aircrack-ng
+	source = git://github.com/aircrack-ng/aircrack-ng.git
+	sha256sums = SKIP
+
+pkgname = aircrack-ng-git
+
