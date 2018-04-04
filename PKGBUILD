@@ -186,7 +186,7 @@ END
   patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
   
   # Global Menu support
-  patch -Np1 -i "..unity-menubar-$pkgver.patch"
+  patch -Np1 -i "../unity-menubar-$pkgver.patch"
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
