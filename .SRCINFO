@@ -1,0 +1,18 @@
+pkgbase = liburcu-git
+	pkgdesc = Userspace RCU implementation
+	pkgver = 0.10.1.r16.gfdfad81
+	pkgrel = 1
+	url = http://liburcu.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = liburcu
+	conflicts = liburcu
+	options = staticlibs
+	source = git+https://github.com/urcu/userspace-rcu.git
+	sha256sums = SKIP
+
+pkgname = liburcu-git
+
