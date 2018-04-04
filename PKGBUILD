@@ -7,12 +7,12 @@
 
 pkgname=phantomjs
 pkgver=2.1.1
-pkgrel=9
+pkgrel=11
 pkgdesc="Headless WebKit with JavaScript API"
 url="http://www.phantomjs.org/"
 license=('BSD' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
-depends=('icu' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0')
+depends=('icu>=61' 'libjpeg-turbo' 'libpng' 'fontconfig' 'gperf' 'ruby' 'python2' 'openssl-1.0')
 makedepends=('git')
 source=("git+https://github.com/ariya/${pkgname}.git#tag=$pkgver"
         icu59.patch)
@@ -32,6 +32,9 @@ build() {
   export PATH="$srcdir/python2-path:$PATH" PYTHON=/usr/bin/python2
   export CXXFLAGS+=" -I/usr/include/openssl-1.0"
   export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
+
+  CFLAGS+=" -Wno-expansion-to-defined"
+  CXXFLAGS+=" -Wno-expansion-to-defined"
 
   python2 build.py --confirm --release --qt-config='-no-rpath'
 }

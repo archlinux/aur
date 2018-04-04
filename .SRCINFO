@@ -1,7 +1,7 @@
 pkgbase = phantomjs
 	pkgdesc = Headless WebKit with JavaScript API
 	pkgver = 2.1.1
-	pkgrel = 9
+	pkgrel = 11
 	url = http://www.phantomjs.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = phantomjs
 	license = LGPL
 	license = MIT
 	makedepends = git
-	depends = icu
+	depends = icu>=61
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = fontconfig
