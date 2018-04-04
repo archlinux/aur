@@ -17,3 +17,4 @@ package() {
   install -D -m755 ttcp "${pkgdir}/usr/bin/ttcp"
 }
 md5sums=('2f6ffb3e9132f4815c3ade3bd1dba99b')
+sha256sums=('52f438ef4f57ddbdd1e0dcd77efeffbdf10e59ff09279cff2fcc717803536612')

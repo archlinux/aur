@@ -9,6 +9,7 @@ pkgbase = ttcp
 	depends = glibc
 	source = http://www.netcore.fi/pekkas/linux/ipv6/ttcp.c
 	md5sums = 2f6ffb3e9132f4815c3ade3bd1dba99b
+	sha256sums = 52f438ef4f57ddbdd1e0dcd77efeffbdf10e59ff09279cff2fcc717803536612
 
 pkgname = ttcp
 
