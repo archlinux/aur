@@ -1,0 +1,9 @@
+[Unit]
+Description=Symtec Entropy Key daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/ekeyd
+
+[Install]
+WantedBy=multi-user.target

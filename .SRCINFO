@@ -1,0 +1,17 @@
+pkgbase = ekeyd
+	pkgdesc = Daemon and CLI to manager Symtec Entropy Key
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://www.entropykey.co.uk/
+	install = ekeyd.install
+	arch = x86_64
+	license = custom
+	depends = systemd
+	depends = lua51
+	depends = lua51-socket>=20171223
+	source = http://www.entropykey.co.uk/res/download/ekeyd-1.1.4.tar.gz
+	source = ekeyd-1.1.4.patch
+	b2sums = 7b0c6ed31f73ed559ed0a34325680618d700d069b873e7ebc92dc8d8082c9d03e5ea2d7ddfc2b31e927914a0d2cd130faed97ce07eea4af3005f1499b1fd2d1c
+	b2sums = b303e2d73982d43cceb87dcaa1cee7a278bb954911862b3bb5c0bd09aa189d32c7c062b438dc1d3458444660a00bbefef18aeebb491d96470a95c9acb0d625f5
+
+pkgname = ekeyd

@@ -1,0 +1,253 @@
+--- a/ekeyd-1.1.4/udev/debian/60-UDEKEY01-UDS.rules
++++ b/ekeyd-1.1.4/udev/debian/60-UDEKEY01-UDS.rules
+@@ -6,7 +6,7 @@
+ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="/bin/echo ENTROPY_KEY_SERIAL=$attr{serial}"
+ 
+ # And tell the ekeyd about the new device.
+-ACTION=="add|change", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/lib/udev/entropykey.sh"
++ACTION=="add|change", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/usr/lib/udev/entropykey.sh"
+ 
+ # And remove the entropy key from the daemon on device removal
+-ACTION=="remove", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/lib/udev/entropykey.sh"
++ACTION=="remove", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/usr/lib/udev/entropykey.sh"
+--- a/ekeyd-1.1.4/udev/debian/60-UDEKEY01.rules
++++ b/ekeyd-1.1.4/udev/debian/60-UDEKEY01.rules
+@@ -8,7 +8,7 @@
+ ACTION=="add|change", ENV{ENTROPY_KEY_SERIAL}!="", SYMLINK+="entropykey/$env{ENTROPY_KEY_SERIAL}"
+ 
+ # And tell the ekeyd about the new device.
+-ACTION=="add|change", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/lib/udev/entropykey.sh"
++ACTION=="add|change", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/usr/lib/udev/entropykey.sh"
+ 
+ # And remove the entropy key from the daemon on device removal
+-ACTION=="remove", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/lib/udev/entropykey.sh"
++ACTION=="remove", ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/usr/lib/udev/entropykey.sh"
+--- a/ekeyd-1.1.4/Makefile
++++ b/ekeyd-1.1.4/Makefile
+@@ -6,12 +6,12 @@
+ #
+ # For licence terms refer to the COPYING file.
+ 
+-# Override any of these on the cmdline to set options. 
++# Override any of these on the cmdline to set options.
+ # Ensure they are overridden during both build and install.
+ DESTDIR ?=
+ PREFIX ?= /usr
+-DOCPREFIX=${PREFIX}/share/doc/ekeyd
+-MUNINPLUGINS=${PREFIX}/share/munin/plugins
++DOCPREFIX=$(PREFIX)/share/doc/ekeyd
++MUNINPLUGINS=$(PREFIX)/share/munin/plugins
+ MUNINPLUGINSCONF=/etc/munin/plugin-conf.d
+ 
+ #optional daemons
+@@ -29,15 +29,15 @@
+ all: host
+ 
+ host:
+-	${MAKE} -C host BUILD_ULUSB=${BUILD_ULUSBD} BUILD_EGDLINUX=${BUILD_EGDLINUX} DESTDIR=$(DESTDIR} 
++	$(MAKE) -C host BUILD_ULUSB=$(BUILD_ULUSBD) BUILD_EGDLINUX=$(BUILD_EGDLINUX) DESTDIR=$(DESTDIR)
+ 
+ clean:
+-	${MAKE} -C host BUILD_ULUSB=${BUILD_ULUSBD} BUILD_EGDLINUX=${BUILD_EGDLINUX} DESTDIR=$(DESTDIR}  clean
++	$(MAKE) -C host BUILD_ULUSB=$(BUILD_ULUSBD) BUILD_EGDLINUX=$(BUILD_EGDLINUX) DESTDIR=$(DESTDIR) clean
+ 
+ install:
+-	${MAKE} -C host BUILD_ULUSB=$(BUILD_ULUSBD) BUILD_EGDLINUX=$(BUILD_EGDLINUX) DESTDIR=$(DESTDIR) install
++	$(MAKE) -C host BUILD_ULUSB=$(BUILD_ULUSBD) BUILD_EGDLINUX=$(BUILD_EGDLINUX) DESTDIR=$(DESTDIR) install
+ 	for DOC in $(DOCFILES) ; do \
+ 	  install -D -m 644 doc/$$DOC $(DESTDIR)/$(DOCPREFIX)/$$DOC ; \
+ 	done
+ 	install -D -m 755 munin/ekeyd_stat_ $(DESTDIR)/$(MUNINPLUGINS)/ekeyd_stat_
+-	install -D -m 644 munin/plugin-conf.d_ekeyd $(DESTDIR)/${MUNINPLUGINSCONF}/ekeyd
+\ No newline at end of file
++	install -D -m 644 munin/plugin-conf.d_ekeyd $(DESTDIR)/$(MUNINPLUGINSCONF)/ekeyd
+--- a/ekeyd-1.1.4/udev/entropykey.sh
++++ b/ekeyd-1.1.4/udev/entropykey.sh
+@@ -6,7 +6,7 @@
+ #
+ # For licence terms refer to the COPYING file.
+ 
+-BINPATH=/usr/sbin
++BINPATH=/usr/bin
+ 
+ # This function waits for the USB dev nodes to be made before
+ # attempting to allow the ULUSBD to attach, this might resolve
+@@ -50,4 +50,3 @@
+ fi
+ 
+ exit 0
+-
+--- a/ekeyd-1.1.4/host/Makefile
++++ b/ekeyd-1.1.4/host/Makefile
+@@ -167,23 +167,23 @@
+ 	if test -x $<; then chmod +x $@; fi
+ 
+ install-ekey-ulusbd:
+-	mkdir -p $(DESTDIR)$(PREFIX)/sbin
+-	install -m 755 ekey-ulusbd $(DESTDIR)$(PREFIX)/sbin/
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	install -m 755 ekey-ulusbd $(DESTDIR)$(PREFIX)/bin/
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)8
+ 	$(MANZCMD) < ekey-ulusbd.8 > $(DESTDIR)$(MANPREFIX)8/ekey-ulusbd.8$(MANZEXT)
+ 
+ install-egd-linux:
+-	mkdir -p $(DESTDIR)$(PREFIX)/sbin
+-	install -m 755 egd-linux $(DESTDIR)$(PREFIX)/sbin/
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	install -m 755 egd-linux $(DESTDIR)$(PREFIX)/bin/
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)8
+ 	$(MANZCMD) < egd-linux.8 > $(DESTDIR)$(MANPREFIX)8/egd-linux.8$(MANZEXT)
+ 
+ install-ekeyd:
+-	mkdir -p $(DESTDIR)$(PREFIX)/sbin
+-	install -m 755 ekeyd $(DESTDIR)$(PREFIX)/sbin/
+-	install -m 755 ekey-setkey $(DESTDIR)$(PREFIX)/sbin/
+-	install -m 755 ekey-rekey $(DESTDIR)$(PREFIX)/sbin/
+-	install -m 755 ekeydctl $(DESTDIR)$(PREFIX)/sbin/
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	install -m 755 ekeyd $(DESTDIR)$(PREFIX)/bin/
++	install -m 755 ekey-setkey $(DESTDIR)$(PREFIX)/bin/
++	install -m 755 ekey-rekey $(DESTDIR)$(PREFIX)/bin/
++	install -m 755 ekeydctl $(DESTDIR)$(PREFIX)/bin/
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)8
+ 	$(MANZCMD) < ekeyd.8 > $(DESTDIR)$(MANPREFIX)8/ekeyd.8$(MANZEXT)
+ 	$(MANZCMD) < ekey-setkey.8 > $(DESTDIR)$(MANPREFIX)8/ekey-setkey.8$(MANZEXT)
+--- a/ekeyd-1.1.4/host/control.lua
++++ b/ekeyd-1.1.4/host/control.lua
+@@ -38,16 +38,19 @@
+ local dos_callcount = 0
+ 
+ -- Libraries we need
+-require "socket"
++local socket = require "socket"
+ 
+ local have_unix_domain_sockets = false
+-function tryload_unix()
+-   require "socket.unix"
+-   have_unix_domain_sockets = true
++local ok, unix = pcall(require, "socket.unix")
++if ok then
++   if type(unix) == "function" then
++      socket.unix = unix
++   else
++      socket.unix = unix.stream or unix.tcp
++   end
++   have_unix_domain_sockets = socket.unix ~= nil
+ end
+ 
+-pcall(tryload_unix)
+-
+ local protectedenv = {}
+ 
+ -- Control socket interface
+@@ -100,12 +103,12 @@
+ function ctlwrite(sockorname, str)
+    local sock = type(sockorname) == "string" and controlsockets[sockorname] or sockorname
+    local curw = ctlwritebuffers[sock]
+-   
++
+    if str == nil or str == "" then
+       -- Pointless write attempt.
+       return
+    end
+-   
++
+    ctlwritebuffers[sock] = (curw and curw or "") .. str
+    if not curw then
+       writefd(sock:getfd())
+@@ -243,7 +246,7 @@
+ 	 debugprint("Checking ekey from ", tostring(ekey.devpath), "serial", tostring(ekey.serial),"nr",tostring(ekey.nr), "suffix",string.sub(tostring(ekey.devpath),-#tag, -1))
+ 	 if (tostring(ekey.devpath) == tag) or
+ 	    (tostring(ekey.serial) == tag) or
+-	    (tostring(ekey.nr) == tag) or 
++	    (tostring(ekey.nr) == tag) or
+ 	    (string.sub(tostring(ekey.devpath),-(#tag + 1),-1) == "/"..tag) then
+ 	    return ekey, _
+ 	 end
+@@ -435,9 +438,9 @@
+    if (totpending > MAX_ENTROPY) then
+       debugprint("Somehow, we are blocking for more entropy than we can ever have, skipping the test.")
+    else
+-      if (totpending > total_entropy) then 
++      if (totpending > total_entropy) then
+ 	 debugprint("Not enough entropy to satisfy spread-write. Want "..tostring(totpending).." but only have "..tostring(total_entropy))
+-	 return 
++	 return
+       end
+    end
+ 
+@@ -618,7 +621,7 @@
+ end _ "Print"
+ 
+ function KVPrint(key, value)
+-  gatheredlines[#gatheredlines+1] = key .. "=" .. value 
++  gatheredlines[#gatheredlines+1] = key .. "=" .. value
+ end _ "KVPrint"
+ 
+ 
+@@ -676,7 +679,7 @@
+    update_ekey_stat(ekey)
+ 
+    for i, v in pairs(ekey.stats) do
+-      KVPrint(i, v)      
++      KVPrint(i, v)
+    end
+ 
+ end _ "StatEntropyKey"
+@@ -835,4 +838,3 @@
+ end
+ 
+ debug.sethook(hookfunc, "", 100)
+-
+--- a/ekeyd-1.1.4/host/ekeydctl.in
++++ b/ekeyd-1.1.4/host/ekeydctl.in
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env lua@LUA_V@
+ -- -*- Lua -*-
+ 
+-require "socket"
++local socket = require "socket"
+ 
+ -- Try to load the UNIX domain sockets support
+ pcall(function()
+-	 require "socket.unix"
++      socket.unix = require "socket.unix"
+       end)
+ 
+ 
+@@ -19,7 +19,7 @@
+     addall      Add a directory full of keys (dir name provided as argument).
+     remove	Remove an entropy key (One of dev node, serial, ID as argument).
+     list	List all the entropy keys attached to the daemon.
+-    stats	Show the statistics for an entropy key (One of dev node, 
++    stats	Show the statistics for an entropy key (One of dev node,
+                   serial, ID as argument).
+     keyring	Load a keyring (keyring filename provided as argument)
+     shutdown	Shut the entropy key daemon down.
+@@ -49,7 +49,7 @@
+    b = b or " "
+    local p = strfind(s, b, 1, 1)
+    local l = strlen(b)
+-   
++
+    if (not p) then
+       if( s ~= "" or c ) then
+          return { s }
+@@ -57,7 +57,7 @@
+          return {}
+       end
+    end
+-   
++
+    while strlen(s) ~= 0 do
+       p = strfind(s, b, 1, 1)
+       if (p) then
+@@ -68,7 +68,7 @@
+          s = ""
+       end
+    end
+-   
++
+    return t
+ end
+ end

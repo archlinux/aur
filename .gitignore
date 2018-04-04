@@ -1,0 +1,6 @@
+.pc/
+
+/ekeyd-*
+!/*.patch
+/pkg/
+/src/
