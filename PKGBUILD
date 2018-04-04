@@ -10,6 +10,8 @@ url="http://code.google.com/p/${pkgname%-git}"
 license=("GPL")
 depends=("giflib" "libjpeg" "libxcomposite" "libxft" "libxinerama" "xorg-server")
 makedepends=("git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git://github.com/penguinpowernz/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
