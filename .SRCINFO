@@ -1,7 +1,7 @@
 pkgbase = python-linode-api
 	pkgdesc = Bindings for the Linode API v4
 	pkgver = 4.1.8b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linode/python-linode-api
 	arch = any
 	license = BSD

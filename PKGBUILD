@@ -1,7 +1,7 @@
 # Maintainer: Slithery <aur at slithery dot uk>
 pkgname=python-linode-api
 pkgver=4.1.8b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
 url="https://github.com/linode/$pkgname"
