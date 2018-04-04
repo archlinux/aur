@@ -1,15 +1,16 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=curl-ssh
 _pkgname=curl
 pkgver=7.59.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An URL retrieval utility and library (with ssh support)"
 arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'libnghttp2')
-provides=('libcurl.so' 'curl')
+provides=('libcurl.so' 'curl=7.59.0')
 conflicts=('curl')
 options=('strip' 'debug')
 source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc})
@@ -47,3 +48,5 @@ package() {
   # license
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+# vim: ts=2 sw=2 et:
