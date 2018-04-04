@@ -3,9 +3,9 @@
 
 pkgname=osl
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenScop Library"
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html"
 license=('BSD')
 depends=("gmp")

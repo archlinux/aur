@@ -1,8 +1,9 @@
 pkgbase = osl
 	pkgdesc = OpenScop Library
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html
+	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = gmp
