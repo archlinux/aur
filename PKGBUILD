@@ -1,4 +1,5 @@
-# Maintainer: Johann Klähn <kljohann@gmail.com>
+# Contributor: Johann Klähn <kljohann@gmail.com>
+# Maintainer: 3onyc <3onyc@x3tech.com>
 
 pkgname=yeganesh-cabal
 pkgdesc='dmenu with a sense of history (cabal sandbox build)'
