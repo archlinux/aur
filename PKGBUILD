@@ -3,7 +3,7 @@
 
 pkgname=ccid
 pkgver=1.4.29
-pkgrel=1
+pkgrel=2
 _magic_dl_id=4238
 pkgdesc='A generic USB Chip/Smart Card Interface Devices driver'
 arch=('x86_64')
