@@ -1,6 +1,6 @@
 # Contributor: sasvari <sasvari@fastmail.com>
 pkgname=python-matplotlib2tikz-git
-pkgver=0.6.15.r18.ga44db05
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 url="https://github.com/nschloe/matplotlib2tikz"
