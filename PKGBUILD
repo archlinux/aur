@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-webservice-ils'
-pkgver='0.16'
+pkgver='0.17'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module WebService::ILS: Standardised library discovery/circulation services"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-class-tiny' 'perl-http-message' 'perl-hash-merge' 'perl-json' 'perl-modern-perl' 'perl-uri' 'perl-libwww' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 url='https://metacpan.org/release/WebService-ILS'
 source=("http://search.cpan.org/CPAN/authors/id/S/SR/SRDJAN/WebService-ILS-$pkgver.tar.gz")
-md5sums=('4892e70cfa21a80d2edc210dd677bee6')
-sha512sums=('459f3078e0b502377605f1f4f9886f7cc2ca26fc4edaa02dcb54c8d458d0a57ad28678c0ad4be84b13c768efb68be40a8d8bead88106affc4929b20cba8df928')
+md5sums=('9a9ef46e4cf411ec64185156ff3bd8ee')
+sha512sums=('218f2b183f0b688225495f341090e465341c4e364e8b15013ff739a8e73e578c84a797af38a8aec5ec8f99adfacb94de1489846438a29c269ecbf960a04e1bb0')
 _distdir="WebService-ILS-$pkgver"
 
 build() {
