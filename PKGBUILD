@@ -13,7 +13,7 @@ makedepends=(git)
 source=("${pkgname}::git+https://github.com/pitzer/SiftGPU"
         'makefile-cuda.patch')
 sha256sums=('SKIP'
-            '9f3ce3d74180d34bc2c787811a6552cb996b950d808466bc74e3194253721288')
+            'fc9325f3692589318133538b6301e645003737894723abacc431b1105c221773')
 
 
 prepare() {

@@ -14,7 +14,7 @@ pkgbase = siftgpu
 	source = siftgpu::git+https://github.com/pitzer/SiftGPU
 	source = makefile-cuda.patch
 	sha256sums = SKIP
-	sha256sums = 9f3ce3d74180d34bc2c787811a6552cb996b950d808466bc74e3194253721288
+	sha256sums = fc9325f3692589318133538b6301e645003737894723abacc431b1105c221773
 
 pkgname = siftgpu
 
