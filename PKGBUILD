@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3381.1
+pkgver=67.0.3386.1
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('4c8c362000a08f72e0d1d656366fc2ba77a9d34f702d753d45826948b00ca547'
+sha256sums=('784b64e3ce89510d56f1141ac4d5cc8dc5aea582eb699947996dc70444cee6d6'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -161,10 +161,10 @@ sha256sums=('4c8c362000a08f72e0d1d656366fc2ba77a9d34f702d753d45826948b00ca547'
             'e5f43c7014d140fd6b4c6cf478ae4edb107d963b8868dda0e19f74523f7385da'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
-            'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
-            '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
+            'fa9cc5b9d2d9397c031da1d1a938472b78db1636273cf2a7a73553ef0dad3512'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
+            'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
+            '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
             'b4417fd2c24bc8e71d671c902989298f0924527e1e5267eb4e0d9a885f27740f'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
@@ -200,7 +200,7 @@ sha256sums=('4c8c362000a08f72e0d1d656366fc2ba77a9d34f702d753d45826948b00ca547'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            'd8cf421e7e8b831330716557ebec6cfb812c48f583697fdf80d77e5b5316cf7f'
+            '7262bd74a164b2ac083bd7c2def7b430e60db9ed7a5b1baf9be378d211359d6b'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -209,7 +209,7 @@ sha256sums=('4c8c362000a08f72e0d1d656366fc2ba77a9d34f702d753d45826948b00ca547'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
-            '7ab0a9ad9a7c19864b72118773d289d6fe550ea1ae0c58562ee59cbb9be9dc07'
+            '3f7eed89c9ceb4500b08b818fed752e79657dda590b465e7f749e5a112107204'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
@@ -304,7 +304,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-#patch -Np1 -i ../pt.patch
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -347,8 +347,8 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-#patch -Np1 -i ../9k.patch
-#patch -Np1 -i ../048.patch
+patch -Np1 -i ../9k.patch
+patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
@@ -359,7 +359,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-patch -Np1 -Ri ../r21.patch
+#patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
