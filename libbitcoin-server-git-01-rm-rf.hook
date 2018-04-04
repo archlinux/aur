@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = libbitcoin-server-git
+
+[Action]
+Description = Cleaning up libbitcoin server directories...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/rm -rf /etc/obelisk/bs /var/log/obelisk/bs
