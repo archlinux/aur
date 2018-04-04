@@ -13,7 +13,7 @@ pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.1.0_devel.101351.922cd38172
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -118,15 +118,10 @@ package_lib32-mesa-git () {
   # remove files provided by mesa-git
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
-  rm "$pkgdir"/usr/share/glvnd/egl_vendor.d/50_mesa.json
+  rm -rf "$pkgdir"/usr/share/glvnd/
 
   # remove files present in lib32-libglvnd
-  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so
-  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
-  rm "$pkgdir"/usr/lib32/libGLESv2.so
-  rm "$pkgdir"/usr/lib32/libGLESv2.so.2
-  rm "$pkgdir"/usr/lib32/libGLESv2.so.2.0.0
-
-  install -m755 -d "$pkgdir"/usr/share/licenses/$pkgbase
-  install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/
+  rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
+  
+  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
 }
