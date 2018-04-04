@@ -1,8 +1,5 @@
-# Contributor: Alessio Bianchi <venator85@gmail.com>
-# Contributor: Jacek Roszkowski <j.roszk@gmail.com>
-# Contributor: Javier Cordero <jneight@gmail.com>
-# Contributor: Vieux Grognon <vieux@grognon.net>
-# Maintainer: Vieux Grognon <vieux@grognon.net>
+# Contributor: bilux <i.bilux@gmail.com>
+# Maintainer: bilux <i.bilux@gmail.com>
 
 pkgname=brother-dcpj152w
 pkgver=3.0.0
