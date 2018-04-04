@@ -1,6 +1,6 @@
 pkgbase = nanocurrency
 	pkgdesc = Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees.
-	pkgver = 11.1
+	pkgver = 11.2
 	pkgrel = 1
 	url = https://nano.org/
 	install = install
@@ -20,7 +20,7 @@ pkgbase = nanocurrency
 	source = nanowallet.desktop
 	source = nanowallet128.png
 	source = nano-node.service
-	source = git+https://github.com/nanocurrency/raiblocks.git#tag=V11.1
+	source = git+https://github.com/nanocurrency/raiblocks.git#tag=V11.2
 	source = git+https://github.com/weidai11/cryptopp.git
 	source = git+https://github.com/clemahieu/lmdb.git
 	source = git+https://github.com/miniupnp/miniupnp.git
