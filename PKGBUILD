@@ -2,27 +2,19 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=cloog
-pkgver=0.18.5
-pkgrel=5
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bastoul.net/cloog/"
 license=('GPL')
-
-depends=('osl')
-
-# cloog is not compatible with isl 0.19, so we use the bundled
-# version of isl, see https://github.com/periscop/cloog/issues/37
-provides=('isl=0.18')
-conflicts=('isl')
-
+depends=('osl' 'isl')
 source=(https://github.com/periscop/cloog/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('48602a72aaec8e1dabc33ec0622739d3ad585b7f0ec480eebdc1d724822b7cfd')
+sha512sums=('a0646f31e7a2c1809c51b812f58dc3f733f3a7c4cdf84fa5fee4ed7a372b7bf649561c7eceb7bfc754f1aca519ec0fc3718e08775e7eb072a238ce341edda10a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --with-osl=system --with-isl=bundle
-  #./configure --prefix=/usr --with-isl=system --with-osl=system
+  ./configure --prefix=/usr --with-isl=system --with-osl=system
   make
 }
 
