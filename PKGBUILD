@@ -13,7 +13,7 @@ pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.1.0_devel.101343.41ac0b1443
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -22,7 +22,7 @@ depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'wayland<1.14.93')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'

@@ -1,7 +1,7 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
 	pkgver = 18.1.0_devel.101343.41ac0b1443
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
 	license = custom
@@ -45,6 +45,7 @@ pkgbase = mesa-git
 	conflicts = vulkan-radeon
 	conflicts = libva-mesa-driver
 	conflicts = mesa-vdpau
+	conflicts = wayland<1.14.93
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa
 	source = LICENSE
 	sha512sums = SKIP
