@@ -1,4 +1,7 @@
 *.pkg*
+*.log
+*.tar.*
 /ArchC
 /pkg
 /src
+/systemc
