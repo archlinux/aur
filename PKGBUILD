@@ -19,10 +19,6 @@ makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' )
 if [ "$_BUILD_CUDA" == "on" ] ; then 
   makedepends+=('cuda')
   optdepends=('cuda: for cuda sfm/mvs acceleration')
-  # Fix: -fno-plt flag not supported by cuda host compiler (gcc5)
-  options=(!buildflags)
-  CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
-  CXXFLAGS="${CFLAGS}"
 fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
@@ -56,7 +52,7 @@ build() {
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
     if [ -n "$_CUDA_PKG" -a "$_BUILD_CUDA"=="on" ]; then
-      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda -DCUDA_NVCC_FLAGS=\"--compiler-options -fPIC\"" 
+      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
     else
       _EXTRAOPTS="-DCUDA_ENABLED=OFF"
     fi
