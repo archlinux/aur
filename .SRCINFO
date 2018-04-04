@@ -1,7 +1,7 @@
 pkgbase = otf-pecita
 	pkgdesc = A handwritten font with attached letters.
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pecita.eu
 	arch = any
 	license = custom:OFL
