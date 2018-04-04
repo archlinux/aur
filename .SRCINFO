@@ -1,9 +1,8 @@
 pkgbase = ttf-eadui
 	pkgdesc = A script font based on the hand of a famous eleventh-century scribe.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openfontlibrary.org/font/eadui
-	install = eadui.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
