@@ -1,0 +1,4 @@
+coils.tar.gz
+*.pkg.tar.xz
+pkg/
+src/
