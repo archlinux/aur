@@ -7,6 +7,8 @@ pkgbase = whatsapp-purple-git
 	license = GPL
 	depends = libpurple
 	depends = freeimage
+	provides = whatsapp-purple
+	conflicts = whatsapp-purple
 	source = whatsapp-purple::git+https://github.com/davidgfnet/whatsapp-purple.git
 	sha256sums = SKIP
 

@@ -8,6 +8,8 @@ arch=("${CARCH}")
 url="https://github.com/davidgfnet/${pkgname%-git}"
 license=("GPL")
 depends=("libpurple" "freeimage")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/davidgfnet/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
