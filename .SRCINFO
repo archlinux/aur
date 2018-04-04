@@ -1,11 +1,11 @@
 pkgbase = blockstack-browser
-	pkgver = 0.26.1
+	pkgver = 0.26.2
 	pkgrel = 1
 	arch = any
 	makedepends = npm
 	depends = nodejs
 	options = !emptydirs
-	source = https://github.com/blockstack/blockstack-browser/archive/v0.26.1.tar.gz
+	source = https://github.com/blockstack/blockstack-browser/archive/v0.26.2.tar.gz
 	md5sums = SKIP
 
 pkgname = blockstack-browser
