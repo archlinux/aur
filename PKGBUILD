@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=dfhack
-pkgver=0.44.08
+pkgver=0.44.09
 _pkgver=$pkgver-alpha1
 pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
