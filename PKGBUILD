@@ -2,7 +2,7 @@
 
 _pkgname=pacmanlogger
 pkgname=pacmanlogger-git
-pkgver=0.1.2.r19.4330ca7
+pkgver=0.1.2.r0.g1cfa221
 pkgrel=1
 pkgdesc="A scala application that makes reading pacman's logs easier"
 arch=('any')
@@ -31,5 +31,5 @@ package() {
 
 pkgver() {
 	cd "$_pkgname"
-	printf "%s.r%s.%s" "$(grep 'version *:=' build.sbt | grep -o '[0-9\.]\+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
