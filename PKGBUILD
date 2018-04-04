@@ -1,8 +1,8 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 
 pkgname=collectl
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="A tool for viewing and gethering system performance metrics."
 arch=('any')
 url="http://collectl.sourceforge.net/"
@@ -10,7 +10,7 @@ license=('GPL2' 'custom:artistic')
 depends=('perl')
 backup=('etc/collectl.conf')
 source=("https://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
-md5sums=('172e2b6f8c862f0be01e7f5b7f4d397b')
+md5sums=('7944fdec2259599bbb6f2810dd72b5b4')
 
 package() {
 	cd "${pkgname}-${pkgver}"
