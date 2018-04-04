@@ -5,7 +5,7 @@ pkgbase = python-linode-api
 	url = https://github.com/linode/python-linode-api
 	arch = any
 	license = BSD
-	depends = python
+	depends = python-setuptools
 	source = https://github.com/linode/python-linode-api/archive/v4.1.8b1.zip
 	sha256sums = f2e84dac7e89484756a8bb81054efb2cf3bb13362323e367036412adacf09432
 

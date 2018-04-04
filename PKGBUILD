@@ -6,7 +6,7 @@ pkgdesc="Bindings for the Linode API v4"
 arch=('any')
 url="https://github.com/linode/$pkgname"
 license=('BSD')
-depends=('python')
+depends=('python-setuptools')
 source=("$url/archive/v$pkgver.zip")
 sha256sums=('f2e84dac7e89484756a8bb81054efb2cf3bb13362323e367036412adacf09432')
 
