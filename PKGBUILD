@@ -25,14 +25,14 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.4.6.r3765.6b3ae079
+pkgver=2.5.0.r3922.cbaa90dd
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite1' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
+  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
   'gsl' 'gsm' 'hicolor-icon-theme' 'libmagick6' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
@@ -45,11 +45,9 @@ conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
 source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
-	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"gem-magick6-fixes.patch")
 md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa'
-         '63c6794adbc47e4c239eeb50ed30bfa8')
+         '6f9b87db6e73a35ec63327e97ad95d66')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.22.1
@@ -72,11 +70,10 @@ fi
 # pd-l2ork package.
 prefix=${prefix:-/opt/purr-data}
 
-# Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
-# Gem which takes a *long* time to build). Note that this will only produce a
-# proper package if src still contains the results of a previous full build,
-# otherwise Gem will be missing in the resulting package!
-buildopt=${buildopt:--B}
+# Run 'makepkg buildopt=incremental' for an incremental build (this skips
+# recompiling Gem which takes a *long* time to build) or 'makepkg
+# buildopt=light' for a light one (only essential externals).
+buildopt=${buildopt:-}
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -93,24 +90,20 @@ prepare() {
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
-  # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
   # make sure to link Gem with ImageMagick 6, it doesn't compile with 7
   cd $srcdir/$pkgname && patch -Np1 < $srcdir/gem-magick6-fixes.patch
 }
 
 build() {
-  unset CFLAGS
-  unset LDFLAGS
-  unset INCLUDES
-
-  cd $srcdir/$pkgname/l2ork_addons
-  inst_dir=$prefix ./tar_em_up.sh $buildopt -n
+  unset CFLAGS CPPFLAGS CXXFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS LDFLAGS INCLUDES
+  cd $srcdir/$pkgname
+  make prefix="$prefix" $buildopt
 }
 
 package() {
+  cd $srcdir/$pkgname
+  make install prefix="$prefix" DESTDIR="$pkgdir"
   cd "$srcdir/$pkgname/packages/linux_make/build"
-  cp -a * "$pkgdir"
   # Create a link to the executable.
   mkdir -p "$pkgdir/usr/bin"
   ln -sf $prefix/bin/pd-l2ork "$pkgdir/usr/bin/purr-data"
@@ -119,12 +112,12 @@ package() {
   ln -sf $prefix/include/pd-l2ork "$pkgdir/usr/include/purr-data"
   mkdir -p "$pkgdir/usr/lib"
   ln -sf $prefix/lib/pd-l2ork "$pkgdir/usr/lib/purr-data"
-  # Just remove all the /etc stuff and the Emacs mode for now, we don't really
-  # need most of these.
-  rm -rf "$pkgdir/etc" "$pkgdir/usr/share/emacs"
-  # Add the bash completion file again, and edit it accordingly.
-  mkdir -p "$pkgdir/etc/bash_completion.d"
-  sed -e 's/pd-l2ork/purr-data/g' < "$srcdir/$pkgname/scripts/bash_completion/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
+  # Edit bash completion file.
+  sed -e 's/pd-l2ork/purr-data/g' < "$pkgdir/etc/bash_completion.d/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
+  rm -f "$pkgdir/etc/bash_completion.d/pd-l2ork"
+  # For now we just remove the Emacs mode as it will conflict with the
+  # pd-l2ork package.
+  rm -rf "$pkgdir/usr/share/emacs/site-lisp"
   # Edit the library paths in the default user.settings file so that it
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
