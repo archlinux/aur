@@ -2,7 +2,7 @@
 
 _pkgname=macOS-Sierra
 pkgname=gtk-theme-macos-sierra-archers-git
-pkgver=v0.9.r149.gfab7346
+pkgver=3.2.r1.g5bf75e3
 pkgrel=1
 pkgdesc='macOS and OS X 10.11 GTK theme for Gnome Shell and GTK-based desktops.'
 arch=('any')
