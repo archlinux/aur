@@ -8,7 +8,7 @@
 
 pkgbase=linux-ryzen-git
 _srcname=linux
-pkgver=4.16rc3.r0.g4a3928c6f8a5
+pkgver=4.16.r5456.g17dec0a94915
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -21,14 +21,12 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         #Kernel GCC optimization patch
-#        "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
-	enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.16%2B.patch
+        "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             '6c4ab77d0be624799b9b8e12b228fe181577b298d73355b14618ebf1f5675fa7'
-#            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-	    '7d5dc267d0800620883bc6236efcf13a51fe105e6e62160af962c38845188999'
+            'SKIP'
             )
 
 _kernelname=${pkgbase#linux}
@@ -42,7 +40,7 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
   
-  patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.16%2B.patch"
+  patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
 
   cat "${srcdir}/config.x86_64" > ./.config
 
