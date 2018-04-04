@@ -1,0 +1,17 @@
+pkgbase = fsqlf-git
+	pkgdesc = Free SQL Formatter which adds linebreaks and indentation to SQL source code
+	pkgver = v1.0.0.prealpha.02.r21
+	pkgrel = 1
+	url = http://fsqlf.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = flex
+	makedepends = gcc
+	makedepends = make
+	depends = wxgtk2
+	source = git+https://github.com/dnsmkl/fsqlf.git
+	sha256sums = SKIP
+
+pkgname = fsqlf-git
+
