@@ -1,7 +1,7 @@
 pkgbase = antimicro-git
 	pkgdesc = Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad.
-	pkgver = 2.17.r22.ge19415e
-	pkgrel = 1
+	pkgver = 2.23.r14.gecec251
+	pkgrel = 2
 	url = https://github.com/antimicro/antimicro
 	install = antimicro-git.install
 	arch = i686
