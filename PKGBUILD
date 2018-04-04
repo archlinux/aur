@@ -9,7 +9,7 @@ url="https://github.com/pigmonkey/hostsctl"
 license=("GPLv3")
 conflicts=("hostsctl-git")
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/pigmonkey/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=("3a7ac6ae71f38fc5675ceeafd0b788a3")
+md5sums=("cd2edc4824f06866b7d2f8e91968eab4")
 install=hostsctl.install
 
 package() {

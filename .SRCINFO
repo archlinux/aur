@@ -8,7 +8,7 @@ pkgbase = hostsctl
 	license = GPLv3
 	conflicts = hostsctl-git
 	source = hostsctl-v0.1.2.tar.gz::https://github.com/pigmonkey/hostsctl/archive/v0.1.2.tar.gz
-	md5sums = 3a7ac6ae71f38fc5675ceeafd0b788a3
+	md5sums = cd2edc4824f06866b7d2f8e91968eab4
 
 pkgname = hostsctl
 
