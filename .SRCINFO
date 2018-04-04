@@ -3,7 +3,6 @@ pkgbase = otf-pecita
 	pkgver = 5.4
 	pkgrel = 1
 	url = http://pecita.eu
-	install = pecita.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
