@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=22461
+pkgver=22463
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -17,10 +17,9 @@ makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
-source=('scribus::svn://scribus.net/trunk' python2.patch icu_fix.patch)
+source=('scribus::svn://scribus.net/trunk' python2.patch)
 md5sums=('SKIP'
-         '98b93cecd7b87a3b1425d2e483cd0a05'
-         '90b5e597dc5723a659048b288a6680b0')
+         '98b93cecd7b87a3b1425d2e483cd0a05')
 _svnmod='scribus'
 
 pkgver() {
@@ -32,8 +31,6 @@ pkgver() {
 prepare() {
   cd $_svnmod
   patch -Np1 < "$srcdir"/python2.patch || true
-  cd Scribus
-  patch -Np0 < "$srcdir"/icu_fix.patch || true
 }
 
 build() {
