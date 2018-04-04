@@ -3,7 +3,6 @@
 # Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=remarkable
-replaces=('remarkable-webkit2gtk')
 pkgver=1.87
 pkgrel=4
 pkgdesc="A free fully featured markdown editor for Linux."
