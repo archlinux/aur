@@ -32,7 +32,8 @@ prepare() {
     # ensure a toolchain is selected if rustup was used to install rust
     (which rustup 2>/dev/null && (rustup which cargo || rustup default stable)) || true
     rustup target add wasm32-unknown-emscripten
-    cargo install cargo-web 2>/dev/null || true
+    # cargo web 0.6.9 required to build dashboard frontend
+    cargo install --debug --version 0.6.9 cargo-web 2>/dev/null || true
     cargo web --version
     mkdir -p "${srcdir}/src/github.com/kryptco/"
     rm -rf "${srcdir}/src/github.com/kryptco/kr"
