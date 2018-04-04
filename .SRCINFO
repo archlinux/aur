@@ -1,0 +1,14 @@
+pkgbase = fingerprintscan
+	pkgdesc = Search against FingerPRINTScan with a protein query sequence to identify the closest matching PRINTS sequence motif fingerprints in a protein sequence.
+	pkgver = 3.5.96
+	pkgrel = 1
+	url = http://130.88.97.239/PRINTS/index.php
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-libs
+	depends = gcc-libs
+	source = fingerprintscan.tgz
+	md5sums = SKIP
+
+pkgname = fingerprintscan
+
