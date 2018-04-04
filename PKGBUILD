@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0_devel.101338.a58fdc61e9
-pkgrel=3
+pkgver=18.1.0_devel.101343.41ac0b1443
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -48,7 +48,7 @@ build () {
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+    --with-dri-drivers=i915,i965,r200,radeon,nouveau \
     --with-platforms=x11,drm,surfaceless \
     --with-vulkan-drivers=intel,radeon \
     --enable-texture-float \
@@ -112,15 +112,10 @@ package_mesa-git() {
   make DESTDIR="$pkgdir" install
 
   # remove files provided by libglvnd
-  rm "$pkgdir"/usr/lib/libGLESv1_CM.so
-  rm "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  rm "$pkgdir"/usr/lib/libGLESv2.so
-  rm "$pkgdir"/usr/lib/libGLESv2.so.2
-  rm "$pkgdir"/usr/lib/libGLESv2.so.2.0.0
+  rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
 
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 
-  install -m755 -d "$pkgdir"/usr/share/licenses/$pkgbase
-  install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/
+  install -Dt "$pkgdir"/usr/share/licenses/$pkgbase "$srcdir"/LICENSE
 }
