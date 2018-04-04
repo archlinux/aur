@@ -1,7 +1,7 @@
 # Maintainer: Raphael Michel <mail@raphaelmichel.de>
 _pkgname=pretixdesk
 pkgname=$_pkgname
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Desktop application for attendee check-in with the pretix ticketing system"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 source=("https://download.pretix.eu/public/pretixdesk/jar/pretixdesk-${pkgver}.jar" 'launcher' 'pretixdesk.desktop')
 conflicts=('pretixdesk-git')
 provides=('pretixdesk')
-sha256sums=('30368a74081d630cbfa403b1db835792e23636541f1e9021b03d4ae08845c308' 'SKIP' 'SKIP')
+sha256sums=('c19fd05676b757ab08ae6da68c70dcb126d971369d40bdedb27fd48eeb5ddbea' 'SKIP' 'SKIP')
 
 package() {
 	install -d "${pkgdir}/usr/bin"

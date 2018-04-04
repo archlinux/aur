@@ -1,6 +1,6 @@
 pkgbase = pretixdesk
 	pkgdesc = Desktop application for attendee check-in with the pretix ticketing system
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://pretix.eu
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = pretixdesk
 	depends = sqlite
 	provides = pretixdesk
 	conflicts = pretixdesk-git
-	source = https://download.pretix.eu/public/pretixdesk/jar/pretixdesk-0.3.0.jar
+	source = https://download.pretix.eu/public/pretixdesk/jar/pretixdesk-0.3.2.jar
 	source = launcher
 	source = pretixdesk.desktop
-	sha256sums = 30368a74081d630cbfa403b1db835792e23636541f1e9021b03d4ae08845c308
+	sha256sums = c19fd05676b757ab08ae6da68c70dcb126d971369d40bdedb27fd48eeb5ddbea
 	sha256sums = SKIP
 	sha256sums = SKIP
 
