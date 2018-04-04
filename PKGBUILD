@@ -3,7 +3,7 @@
 pkgname=stoq
 pkgver=2.2
 pkgrel=2
-pkgdesc="Stoq Retail Management System."
+pkgdesc="Suite of open-source enterprise management"
 arch=('any')
 url="https://github.com/stoq/${pkgname}"
 license=('LGPL')

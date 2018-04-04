@@ -1,5 +1,5 @@
 pkgbase = stoq
-	pkgdesc = Stoq Retail Management System.
+	pkgdesc = Suite of open-source enterprise management
 	pkgver = 2.2
 	pkgrel = 2
 	url = https://github.com/stoq/stoq
