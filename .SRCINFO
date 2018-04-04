@@ -1,0 +1,16 @@
+pkgbase = audiobook-git
+	pkgdesc = Audio Book is a simple audio book reader. Written in Qt and C++.
+	pkgver = 2018
+	pkgrel = 1
+	url = https://github.com/bit-shift-io/audiobook
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = audiobook
+	source = audiobook-git::git+https://github.com/bit-shift-io/audiobook.git
+	md5sums = SKIP
+
+pkgname = audiobook-git
+
