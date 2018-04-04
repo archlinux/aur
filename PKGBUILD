@@ -3,7 +3,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup"
 _pkgname="burp"
-pkgver=2.0.54
+pkgver=2.1.32
 pkgrel=1
 pkgdesc="A backup and restore program that uses librsync to reduce backup size."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('acl' 'librsync' 'openssl')
 makedepends=('uthash')
 conflicts=('burp-backup-dev' 'burp-backup-git')
 install="${_pkgname}.install"
-url='http://burp.grke.org/'
+url='https://burp.grke.org/'
 
 source=(
   "http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
@@ -25,12 +25,12 @@ source=(
 )
 
 sha256sums=(
-  ae10470586f1fee4556eaae5b3c52b78cfc0eac4109f4b8253c549e7ff000d86 # burp-2.0.54.tar.bz2
+  56f8a13ae96e50f2274857a08c9f3d9f06ed6dee306d49fd189e3ff9f93c74fd # burp-2.1.32.tar.bz2
   813b5c349f9d0ea1db2fb166531472b098a773aa3d2766d151f175ad17c40351 # burp.install
   94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
   7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
   0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4 # burp-client.timer
-  d37a66f9dcb39a77379a38e9a763e071103036343e35911a28841bf41976eda6 # 01-runpath_fix.patch
+  6a612f083f512e5293c34db10bbfa0af5c4a4ca74b2ba83fd9bfdb9435f3a69c # 01-runpath_fix.patch
   e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
 )
 
