@@ -1,0 +1,13 @@
+pkgbase = physlock
+	pkgdesc = Lightweight Linux console locking tool
+	pkgver = 11
+	pkgrel = 2
+	url = https://github.com/muennich/physlock
+	arch = x86_64
+	license = GPL2
+	depends = pam
+	source = physlock-11.tar.gz::https://github.com/muennich/physlock/archive/v11.tar.gz
+	sha256sums = f03031a6f4c6a08d62098457834d04b8835082a76609059451397356a83d4442
+
+pkgname = physlock
+
