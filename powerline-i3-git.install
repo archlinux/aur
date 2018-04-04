@@ -1,8 +1,0 @@
-post_install() {
-  echo ">>> To use powerline instead of i3bar, replace"
-  echo ">>>   bar {"
-  echo ">>>      status_command i3status"
-  echo ">>>   }"
-  echo ">>> in your i3/config with this line:"
-  echo '>>> exec_always "killall powerline-lemonbar; powerline-lemonbar --i3 --clicks --height 16 -- -a 40 -b -f \'DejaVu Sans Mono for Powerline-11\' -f \'FontAwesome-11\'"'
-}
