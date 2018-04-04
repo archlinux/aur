@@ -3,19 +3,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sereal-encoder'
-pkgver='3.015'
+pkgver='4.005'
 pkgrel='1'
-pkgdesc="Fast, compact, powerful binary serialization"
+pkgdesc="Perl/CPAN Module Sereal::Decoder: Fast, compact, powerful binary serialization"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-sereal-decoder>=3.00' 'perl>=5.008')
+depends=('perl>=5.008' 'perl-sereal-decoder>=4.002' 'zstd>=1.3.3')
 makedepends=()
-checkdepends=('perl-test-longstring' 'perl-test-warn')
+checkdepends=('perl-test-deep' 'perl-test-differences' 'perl-test-longstring' 'perl-test-warn')
 url='https://metacpan.org/release/Sereal-Encoder'
 source=("http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-Encoder-$pkgver.tar.gz")
-md5sums=('78428860e055561e371e3292093c1fc5')
-sha512sums=('82dc43be1f1ec87fb4a582a4cac8bfe5b4e6e8f25645930e2f84c4b253904cf3390e36efdf744781d9211d0e73034da82f5cff131213be6ea20fdfa11a0b397c')
+md5sums=('5af0152a2c7f13e7ae1d23952a55dd03')
+sha512sums=('fa4b3b449ab745bebeee45b3c74fcb68fd18b1b195eba557540ee13dfc5c645b14b57677afa0fa139b4a0918a9bcb46d03e688ef0e3b052881a256e37c7b1f4c')
 _distdir="Sereal-Encoder-$pkgver"
 
 build() {
