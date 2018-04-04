@@ -22,8 +22,8 @@ pkgname=("$pkgbase"
          "$pkgbase-sqlite"
          "$pkgbase-tidy"
          "$pkgbase-xsl")
-pkgver=7.1.15
-pkgrel=3
+pkgver=7.1.16
+pkgrel=1
 arch=('x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -32,12 +32,12 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmc
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch')
-sha512sums=('2b23795ffcb9d741adafe8a1e01e6988bb86ce7c6380bdbe822f8f6485e217ed2e95a27daf5ba11f0bf10317f1e1f4e37068e40d0bf322de5625d38b430d37c2'
+sha512sums=('98e96f06a4912cfa6926be2f292ce7120ca893c9b779b2efef4120c1df3580fa427cd58f5e4977edb01a0ae3b85660d6ca79b2bd79b6cd830cd77f6c6588b5ea'
             '65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6'
             'fc3d711033c8b7ead910826d7c0d4479b481fa9d84c3147b1d33ef9b1e3d3d073a8d17a7c7f66db30d710be1c9b17d2b5536a74a4f05c4ff88b9339e95dd244a'
             'ef2724cedec46a6955355fc75406efa2895545f2ebcdfcee06ce6f3c9a20f8348a291ac78ab1e384b703095d317f59504b787f21074f841c45e53a98955af0c1'
             '209a8b2f9e2e25887c86e126c2761aae329e2bf9456a5de735f3ae264bd2be21e7646cc1954c1417e4c74f8d2d6b0f6081aa74a5af48f6b97484bab0d4e72fcf'
-            '978ad84ffe8a0d10a62725173f3a56fd05f8d8347066760017f3555d009de8b9772f31c37f97ec87cfad22f60522d3c4a27a2deda4b95195c1cd459b704f6f58'
+            '6cad4077ae1401b2b5395518ffb609055c5591710f141b90cc38c77bc16837d2f1bf7a161c4e64a33eb64b4e48bb3c54f88fcf830c30789d33d8e5cfcd3119db'
             '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
 
 _optdir=/opt/$pkgbase
@@ -102,7 +102,6 @@ build() {
     --with-mysql-sock=/run/mysqld/mysqld.sock \
     --with-mysqli=shared,mysqlnd \
     --with-openssl \
-    --with-password-argon2 \
     --with-pcre-regex=/usr \
     --with-pdo-dblib=shared,/usr \
     --with-pdo-mysql=shared,mysqlnd \
@@ -131,6 +130,10 @@ build() {
   mkdir ${srcdir}/build
   cd ${srcdir}/build
   ln -s ../${_pkgbase}-${pkgver}/configure
+
+  # http://site.icu-project.org/download/61#TOC-Migration-Issues
+  CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
+
   ./configure ${_phpconfig} \
     --enable-cgi \
     --enable-fpm \
@@ -144,6 +147,7 @@ build() {
 
   # apache
   # reuse the previous run; this will save us a lot of time
+  [[ -d ${srcdir}/build-apache ]] && rm -r ${srcdir}/build-apache
   cp -a ${srcdir}/build ${srcdir}/build-apache
   cd ${srcdir}/build-apache
   ./configure ${_phpconfig} \
@@ -152,6 +156,7 @@ build() {
   make
 
   # phpdbg
+  [[ -d ${srcdir}/build-phpdbg ]] && rm -r ${srcdir}/build-phpdbg
   cp -a ${srcdir}/build ${srcdir}/build-phpdbg
   cd ${srcdir}/build-phpdbg
   ./configure ${_phpconfig} \
@@ -177,7 +182,7 @@ check() {
 package_php71() {
   pkgdesc='A general-purpose scripting language that is especially suited to web development'
   provides=("${_pkgbase}=${pkgver}")
-  depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
+  depends=('libxml2' 'curl' 'libzip' 'pcre')
   backup=("${_optdir#/}etc/php/php.ini")
 
   cd ${srcdir}/build
