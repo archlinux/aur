@@ -1,0 +1,39 @@
+diff -ruN "a/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp" "b/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"
+--- "a/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"	2016-05-29 20:37:24.000000000 +0200
++++ "b/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"	2018-04-04 20:10:22.937314418 +0200
+@@ -62,7 +62,7 @@
+         if (q1.exists()){
+             QImage matteImage(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/ffmpegthumbs-mattepaint/quadrant1");
+             QPainter painter(&image);
+-            if ((image.height() <= 128) and (image.width() <= 128)) {	
++            if ((image.height() <= 128) && (image.width() <= 128)) {	
+                 painter.drawImage( 0,  0, matteImage.scaled(128, 128, Qt::KeepAspectRatio, Qt::FastTransformation));
+             } else {
+                     painter.drawImage( 0,  0, matteImage);
+@@ -73,7 +73,7 @@
+             QImage matteImage(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/ffmpegthumbs-mattepaint/quadrant2");
+             mirror = image.mirrored(true, false);
+             QPainter painter(&mirror);
+-            if ((image.height() <= 128) and (image.width() <= 128)) {
++            if ((image.height() <= 128) && (image.width() <= 128)) {
+                 painter.drawImage( 0,  0, matteImage.scaled(128, 128, Qt::KeepAspectRatio, Qt::FastTransformation)); 
+             } else {
+                 painter.drawImage( 0,  0, matteImage);
+@@ -85,7 +85,7 @@
+             QImage matteImage(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/ffmpegthumbs-mattepaint/quadrant3");
+             mirror = image.mirrored(false, true);
+             QPainter painter(&mirror);
+-            if ((image.height() <= 128) and (image.width() <= 128)) {
++            if ((image.height() <= 128) && (image.width() <= 128)) {
+                 painter.drawImage( 0,  0, matteImage.scaled(128, 128, Qt::KeepAspectRatio, Qt::FastTransformation)); 
+             } else {
+                 painter.drawImage( 0,  0, matteImage);
+@@ -97,7 +97,7 @@
+             QImage matteImage(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/ffmpegthumbs-mattepaint/quadrant4");
+             mirror = image.mirrored(true, true);
+             QPainter painter(&mirror);
+-            if ((image.height() <= 128) and (image.width() <= 128)) {
++            if ((image.height() <= 128) && (image.width() <= 128)) {
+                 painter.drawImage( 0,  0, matteImage.scaled(128, 128, Qt::KeepAspectRatio, Qt::FastTransformation)); 
+             } else {
+                 painter.drawImage( 0,  0, matteImage);
