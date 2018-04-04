@@ -6,7 +6,7 @@
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
 pkgver=0.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
@@ -19,7 +19,7 @@ options=('!emptydirs')
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
 _frepobranch='f28'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
-_fcommit='c13a50eca4c5384f82321423e415ffb415eaf802'
+_fcommit='61cb797d2b1fc53e2c40658e5b2db7b8adc1425a'
 
 # VTE source ref
 #_vtecommit='837cce9ced6bfe317cb97aeca171001da92cb3a1'
@@ -32,7 +32,7 @@ source=(
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=('SKIP'
-            '3fe7aa55623636a354372a29b584702d5a05324ff82f76a8c65cfe860892da50'
+            'b22e1276202a10007004f19002ceb5eb186f1529e39a6a451e0b82f3d6bce9ee'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a')
 
 #pkgver() {
