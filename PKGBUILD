@@ -15,19 +15,21 @@ depends_x86_64=(
 	'qt5-webkit'
 	'qt5-x11extras'
 	'lib32-libxtst'
-	'lib32-libpng12'
-	'lib32-libjpeg6-turbo'
 	'lib32-libxinerama'
-	'lib32-qt4')
+	'lib32-libxrandr'
+	'lib32-libxdamage'
+	'lib32-fontconfig'
+	'lib32-libsm')
 depends_i686=(
 	'hicolor-icon-theme'
 	'qt5-webkit'
 	'qt5-x11extras'
 	'libxtst'
-	'libpng12'
-	'libjpeg6-turbo'
 	'libxinerama'
-	'qt4')
+	'libxrandr'
+	'libxdamage'
+	'fontconfig'
+	'libsm')
 depends_armv7h=(${depends_i686[*]})
 install=teamviewer.install
 source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
