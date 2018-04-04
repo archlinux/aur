@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard
-pkgver=1.3.5
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -11,13 +11,13 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
         ssl10.patch
         qchar.patch
-        qtmultimediadefs.patch
+        ec88fc43aa96bedae1ad32d07e0237fe6fb940b1.patch
         openboard.desktop)
-md5sums=('d3ff4e88b5c8f1913c12a7686ef86329'
+md5sums=('bc04b7178828a6a76dcc7b273276ad30'
          'fa1ff089f0bcc15d2a510bb90cdd3002'
          '9dbccb56e4079b75c606dc40c3e77f00'
          'bf2c524f3897cfcfb4315bcd92d4206e'
-         '0d18be8088442762c2a3d5e6e1f1a911'
+         'c8c6821f192993626986e60032d2ea41'
          '21d1749400802f8fc0669feaf77de683')
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
   cd $srcdir/OpenBoard-$pkgver
   patch -p1 < $srcdir/ssl10.patch
   patch -p1 < $srcdir/qchar.patch
-  patch -p1 < $srcdir/qtmultimediadefs.patch
+  patch -p1 < $srcdir/ec88fc43aa96bedae1ad32d07e0237fe6fb940b1.patch
 }
 
 build() {
