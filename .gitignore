@@ -1,0 +1,15 @@
+*.tar.gz
+bitscore_specific_3.16.txt
+*.acd
+*.pkg.tar.xz
+cdd.info
+cdd.versions
+*.dat.gz
+*.tbl.gz
+*.fa.gz
+cdtrack.txt
+family_superfamily_links
+fasta.tar.gz
+pkg/
+src/
+
