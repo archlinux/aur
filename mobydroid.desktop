@@ -2,7 +2,7 @@
 Version=0.1
 Name=MobyDroid
 GenericName=Android Device Manager
-Exec=mobydroid %U
+Exec=mobydroid
 Terminal=false
 Icon=mobydroid
 Type=Application

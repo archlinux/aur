@@ -16,7 +16,7 @@ source=("https://github.com/ibilux/MobyDroid/releases/download/v$pkgver/MobyDroi
 
 md5sums=('328e3d08b3604fc75f3707455781167d'
          '7118cfd58a0ac4d16b7818423226ce89'
-         'db9b65688a89b2dd7448a4772f42655a'
+         '51bec0dc091c9b6ca6f98c435ec2bf62'
          '9f0bc607aee8683ded5c8eeb8411d364')
 
 package()
