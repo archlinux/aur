@@ -1,0 +1,29 @@
+--- CMakeLists.txt	2018-04-04 10:40:06.314107119 +0200
++++ CMakeLists.txt.new	2018-04-04 10:39:31.520512620 +0200
+@@ -38,11 +38,11 @@
+ # ---[ Install
+ # scripts
+ file(GLOB python_files *.py requirements.txt)
+-install(FILES ${python_files} DESTINATION python)
++#install(FILES ${python_files} DESTINATION lib/python3.6/site-packages/caffe)
+ 
+ # module
+ install(DIRECTORY caffe
+-    DESTINATION python
++    DESTINATION ${CMAKE_PYTHON_INSTALL_PATH}
+     FILES_MATCHING
+     PATTERN "*.py"
+     PATTERN "ilsvrc_2012_mean.npy"
+@@ -50,10 +50,10 @@
+     )
+ 
+ # _caffe.so
+-install(TARGETS pycaffe  DESTINATION python/caffe)
++install(TARGETS pycaffe  DESTINATION ${CMAKE_PYTHON_INSTALL_PATH}/caffe)
+ 
+ if(MSVC AND INSTALL_PREREQUISITES)
+-  caffe_install_prerequisites(pycaffe DESTINATION python/caffe)
++  caffe_install_prerequisites(pycaffe DESTINATION ${CMAKE_PYTHON_INSTALL_PATH}/caffe)
+ endif()
+ 
+ 

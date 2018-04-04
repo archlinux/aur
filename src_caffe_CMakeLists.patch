@@ -1,0 +1,9 @@
+--- CMakeLists.txt	2018-04-04 10:40:06.314107119 +0200
++++ CMakeLists.txt.new	2018-04-04 10:34:42.313188619 +0200
+@@ -112,5 +112,5 @@
+ 
+ file(WRITE ${PROJECT_BINARY_DIR}/__init__.py)
+ list(APPEND proto_python ${PROJECT_BINARY_DIR}/__init__.py)
+-install(PROGRAMS ${proto_python} DESTINATION python/caffe/proto)
++install(PROGRAMS ${proto_python} DESTINATION ${CMAKE_PYTHON_INSTALL_PATH}/caffe/proto)
+ 
