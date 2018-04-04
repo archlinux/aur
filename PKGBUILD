@@ -3,7 +3,7 @@
 pkgname=castxml-git
 _gitname=CastXML
 pkgdesc="C-family abstract syntax tree XML output tool."
-pkgver=r331.90d4abc
+pkgver=r337.c2a44d0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/CastXML/CastXML"
@@ -34,7 +34,7 @@ prepare() {
 
   # Fix build issue as reported by Kniyl here
   # https://github.com/CastXML/CastXML/issues/102
-  sed -i "s|\${llvm_libs}||g" src/CMakeLists.txt
+  sed -i "s|\${llvm_libs}|LLVM|g" src/CMakeLists.txt
 
   cmake -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build \
         -DSPHINX_HTML=1 \
