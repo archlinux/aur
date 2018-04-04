@@ -2,7 +2,7 @@
 # Contributor: Skad <skadprog@gmail.com>
 pkgname="grive-tools"
 pkgver=1.15
-pkgrel=5
+pkgrel=6
 pkgdesc="Grive Tools will assist in the installation and setup of Google Drive under GTK"
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
@@ -27,6 +27,8 @@ package() {
 	mv opt/thefanclub/$pkgname opt
 	rmdir opt/thefanclub
 	sed -i 's|thefanclub\/||' opt/grive-tools/grive-indicator
+        sed -i 's|thefanclub\/||' opt/grive-tools/grive-indicator-autostart.desktop
+        sed -i 's|thefanclub\/||' opt/grive-tools/grive-setup
 	cp -r opt usr $pkgdir/
 
 }
