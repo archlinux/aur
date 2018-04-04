@@ -1,9 +1,8 @@
 pkgbase = otf-nemoy
 	pkgdesc = A font for space traveler.
 	pkgver = 20110513
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openfontlibrary.org/font/nemoy
-	install = nemoy.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
