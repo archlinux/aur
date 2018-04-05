@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/AndrewVos/vbar"
 license=()
 depends=()
-depends=('gtk3' 'json-glib' 'libgee')
+depends=('gtk3')
 makedepends=('git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,6 +29,6 @@ package() {
   install -Dm755 vbar "$pkgdir/usr/bin/vbar"
 
   mkdir -p "$pkgdir/usr/share/doc/vbar/examples"
-  install -Dm644 examples/vbar.json "$pkgdir/usr/share/doc/vbar/examples/vbar.json"
+  install -Dm644 examples/vbarrc "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
 }
 
