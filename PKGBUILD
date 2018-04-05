@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"

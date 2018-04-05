@@ -1,7 +1,6 @@
 post_install() {
     xdg-icon-resource forceupdate
     xdg-desktop-menu forceupdate
-    chmod 777 /opt/appimages/Hyper.AppImage
 }
 
 post_upgrade() {
@@ -9,9 +8,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    # remove the integration file
-    rm -f ~/.local/share/applications/appimagekit-hyper.desktop
-
     xdg-icon-resource forceupdate
     xdg-desktop-menu forceupdate
 }
