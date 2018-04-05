@@ -1,7 +1,7 @@
 # Maintainer: Ryan Dowling <ryan@ryandowling.me>
 
 pkgname=hyper-appimage
-pkgver=2.0.0-canary.15
+pkgver=2.0.0.canary.15
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
@@ -14,8 +14,10 @@ noextract=('Hyper.AppImage')
 install=hyper-appimage.install
 options=()
 
+_pkgver_correct=${pkgver/\.canary/-canary}
+
 source_x86_64=(
-    "https://github.com/zeit/hyper/releases/download/${pkgver}/hyper-${pkgver}-x86_64.AppImage"
+    "https://github.com/zeit/hyper/releases/download/${_pkgver_correct}/hyper-${_pkgver_correct}-x86_64.AppImage"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
 )
 
@@ -27,7 +29,7 @@ md5sums_x86_64=(
 prepare() {
     cd "${srcdir}"
 
-    mv "${srcdir}/hyper-${pkgver}-x86_64.AppImage" "${srcdir}/Hyper.AppImage"
+    mv "${srcdir}/hyper-${_pkgver_correct}-x86_64.AppImage" "${srcdir}/Hyper.AppImage"
 
     mkdir -p usr/share/pixmaps
     mkdir -p usr/share/applications
