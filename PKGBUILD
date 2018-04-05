@@ -3,14 +3,14 @@
 
 pkgname=pylote
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Software making it possible to draw on the screen of the computer, like handling various instruments of geometry."
 url="http://pascal.peter.free.fr/wiki/Logiciels/Pylote"
 license=('GPL')
 arch=('any')
 depends=('pyqt')
 source=(http://pascal.peter.free.fr/wikiuploads/pylote.tar.gz $pkgname.desktop)
-sha256sums=('730930c2448066b08f124c7719a6bae35652eb5d6586c6d656fdde747e72b0e6'
+sha256sums=('b5cfefa54057f42981773357d572e648bd08409f7a730b7aab6aac5dcbbb933b'
             '8557e071b14f22e5386715d4769aada56175fa8a266508ce42043363b30b0bd7')
 
 package() {
