@@ -1,6 +1,6 @@
 pkgbase = linux-covolunablu-gaming
 	pkgver = 4.15.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -22,6 +22,7 @@ pkgbase = linux-covolunablu-gaming
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 	source = bfq-default.patch
+	source = bfq-lock-division-zero.patch
 	source = https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/c4948d923637a956853df0e85a6d530e483bdffa/drivers/input/joystick/xpad.c
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -36,6 +37,7 @@ pkgbase = linux-covolunablu-gaming
 	sha256sums = 19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9
 	sha256sums = f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7
 	sha256sums = a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4
+	sha256sums = 2a40a1906c5bef180035c8af21c38c1f364a81f38507b684058803b3fa9fcfd6
 	sha256sums = 851b79826c1695acf93faffb17bcb420c11d12cfa96ac6b5082e4306c2d8fb55
 
 pkgname = linux-covolunablu-gaming

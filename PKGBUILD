@@ -6,7 +6,7 @@
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.15
 pkgver=4.15.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -29,6 +29,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   bfq-default.patch
+  bfq-lock-division-zero.patch
   https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/c4948d923637a956853df0e85a6d530e483bdffa/drivers/input/joystick/xpad.c
 )
 validpgpkeys=(
@@ -47,6 +48,7 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
             'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7'
             'a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4'
+            '2a40a1906c5bef180035c8af21c38c1f364a81f38507b684058803b3fa9fcfd6'
             '851b79826c1695acf93faffb17bcb420c11d12cfa96ac6b5082e4306c2d8fb55'
 )
 
@@ -70,6 +72,10 @@ prepare() {
 
   # use bfq as default scheduler
   patch -p1 -i ../bfq-default.patch
+
+  # fix for bfq blocking requests for slow devices
+  # https://www.spinics.net/lists/kernel/msg2739205.html
+  patch -p1 -i ../bfq-lock-division-zero.patch
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
