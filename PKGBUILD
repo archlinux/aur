@@ -26,13 +26,14 @@ package() {
   install -Dm644 src/kernel.lisp "$pkgdir/usr/share/maxima-jupyter/src/kernel.lisp"
   install -Dm644 src/maxima-jupyter.asd "$pkgdir/usr/share/maxima-jupyter/src/maxima-jupyter.asd"
   install -Dm644 src/message.lisp "$pkgdir/usr/share/maxima-jupyter/src/message.lisp"
-  install -Dm644 src/myjson.lisp "$pkgdir/usr/share/maxima-jupyter/src/myjson.lisp"
   install -Dm644 src/packages.lisp "$pkgdir/usr/share/maxima-jupyter/src/packages.lisp"
   install -Dm644 src/shell.lisp "$pkgdir/usr/share/maxima-jupyter/src/shell.lisp"
   install -Dm644 src/stdin.lisp "$pkgdir/usr/share/maxima-jupyter/src/stdin.lisp"
   install -Dm644 src/user.lisp "$pkgdir/usr/share/maxima-jupyter/src/user.lisp"
   install -Dm644 src/utils.lisp "$pkgdir/usr/share/maxima-jupyter/src/utils.lisp"
+  install -Dm644 -d "$pkdir/usr/share/jupyter/kernels/maxima"
   python install-maxima-jupyter.py --root /usr/share/maxima-jupyter \
     --maxima /usr/bin/maxima --prefix "$pkgdir/usr"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/maxima-jupyter/LICENSE"
+  chmod 644 "$pkdir/usr/share/jupyter/kernels/maxima/kernel.json"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
