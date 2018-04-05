@@ -1,8 +1,8 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 pkgname=hdtv-git
 _pkgname=hdtv
-pkgver=r973.ba14694
-pkgrel=2
+pkgver=r1016.f35e634
+pkgrel=1
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
 url="https://gitlab.ikp.uni-koeln.de/staging/hdtv"
@@ -12,7 +12,7 @@ provides=('hdtv')
 depends=('glibc'
          'python'
          'root'
-         'libmfile'
+         'mfile'
          'python-setuptools'
          'python-scipy'
          'python-matplotlib'
@@ -36,6 +36,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
 }
