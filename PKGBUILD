@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2018.02.r0.gb4a0a5d
+pkgver=2018.02.r76.g2d3d8d4
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -25,10 +25,6 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_ANYAUDIOIMPORTER=ON \
-        -DWITH_ANYIMAGECONVERTER=ON \
-        -DWITH_ANYIMAGEIMPORTER=ON \
-        -DWITH_ANYSCENEIMPORTER=ON \
         -DWITH_ASSIMPIMPORTER=ON \
         -DWITH_DDSIMPORTER=ON \
         -DWITH_DEVILIMAGEIMPORTER=ON \
@@ -44,7 +40,8 @@ build() {
         -DWITH_STBIMAGECONVERTER=ON \
         -DWITH_STBIMAGEIMPORTER=ON \
         -DWITH_STBTRUETYPEFONT=ON \
-        -DWITH_STBVORBISAUDIOIMPORTER=ON
+        -DWITH_STBVORBISAUDIOIMPORTER=ON \
+        -DWITH_TINYGLTFIMPORTER=ON
     make
 }
 
