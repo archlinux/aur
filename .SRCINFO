@@ -5,6 +5,7 @@ pkgbase = whatsapp-purple-git
 	url = https://github.com/davidgfnet/whatsapp-purple
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = libpurple
 	depends = freeimage
 	provides = whatsapp-purple
