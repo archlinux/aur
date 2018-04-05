@@ -77,7 +77,7 @@
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('i686' 'x86_64')
@@ -85,15 +85,15 @@ url='http://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
 makedepends=('curl' 'awk')
-optdepends=('jre7-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 if [ "$(uname -m)" == "i686" ]; then  ## convert bit architecture to libreoffice format
   arch_mod='x86';
-  sha256sums+=('ef8e05aca65f2e02badec8488a79d4448f4cd081f8022f92ec3955b24594611f');
+  sha256sums+=('bee78eea0095f6ec0ca4f332792ac88d7171611ba017d1386cabc6b4a86ab7d6');
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
  else
   arch_mod='x86_64';
-  sha256sums+=('5e084daa8c139980dd5ce471eceb6035ef7e5d69416d1d38ae8c0c982ccf0b06')
+  sha256sums+=('3a7572bd18ec13aede3bd7217fd42840182ffbdb7c12835032a4e9e664a5937d')
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 fi;
 
