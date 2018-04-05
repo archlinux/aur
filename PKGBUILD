@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=ir.lv2
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A no-latency/low-latency, realtime, high performance signal convolver especially for creating reverb effects"
 arch=('x86_64')
 url="https://tomszilagyi.github.io/plugins/ir.lv2/"
