@@ -1,0 +1,22 @@
+pkgbase = hammond
+	pkgdesc = GNOME Podcast client
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/alatiera/hammond
+	arch = x86_64
+	license = GPL3
+	makedepends = gtk3
+	makedepends = rust
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = openssl
+	depends = sqlite
+	depends = gtk3
+	noextract = archive.tar.gz
+	source = https://gitlab.gnome.org/alatiera/hammond/repository/0.3.1/archive.tar.gz
+	sha256sums = 08e30a6ad3d578a77ded06cee4fd0f7ce5972f8adccf6eb3422b3c99590a3996
+
+pkgname = hammond
+
