@@ -9,3 +9,7 @@ post_install() {
 post_upgrade() {
   post_install
 }
+
+post_remove() {
+  printf "$(tput setaf 4)If you had changed permissions to folder /opt/java-design-patterns is possible you need to delete it manually.$(tput sgr0)\n"
+}
