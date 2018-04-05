@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=electron-ssr-source
-pkgver=0.2.2stable
-pkgrel=2
+pkgver=0.2.3stable
+pkgrel=1
 epoch=
 pkgdesc="Install electron-ssr from tarball"
 arch=('x86_64')
@@ -20,11 +20,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/erguotou520/electron-ssr/releases/download/v0.2.2/electron-ssr-0.2.2.tar.gz"
+source=("https://github.com/erguotou520/electron-ssr/releases/download/v0.2.3/electron-ssr-0.2.3.tar.gz"
 	"desktop.tar.gz"
 	"icons.tar.gz")
 noextract=()
-md5sums=('e80a4daa974b36ef45c32f145f0d7a2b'
+md5sums=('80f57c6759aaa3cd0311721f1333ea78'
          '4abbf552004cddffc22230070b622f7b'
          '679cf82afcc498d1db4dba5aed8bd0a0')
 validpgpkeys=()
