@@ -1,0 +1,22 @@
+pkgbase = python2-pyscf-git
+	pkgdesc = Python-based Simulations of Chemistry Framework
+	pkgver = 1.4.5.r10.g57c8912d
+	pkgrel = 1
+	url = http://sunqm.github.io/pyscf
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-h5py
+	depends = xcfun
+	depends = libcint
+	depends = libxc
+	provides = python2-pyscf=1.4.5.r10.g57c8912d
+	source = python2-pyscf-git::git+https://github.com/sunqm/pyscf.git
+	md5sums = SKIP
+
+pkgname = python2-pyscf-git
+
