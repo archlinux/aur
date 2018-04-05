@@ -5,7 +5,7 @@ pkgdesc="A CLI to encrypt and decrypt content for ansible"
 url="https://github.com/Selfnet/multivault/"
 license=('MIT')
 arch=('any')
-depends=('gpgme-python-git' 'python-yaml' 'python-ldap3' 'python-paramiko' 'python-requests' 'python-pgpy')
+depends=('python-gpgme' 'python-yaml' 'python-ldap3' 'python-paramiko' 'python-requests' 'python-pgpy')
 source=("git+https://github.com/Selfnet/multivault.git")
 sha512sums=('SKIP')
 
