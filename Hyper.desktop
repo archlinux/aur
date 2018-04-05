@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Hyper
 Comment=A terminal build on web technologies
-Exec=env DESKTOPINTEGRATION=0 /opt/hyper-appimage/Hyper.AppImage
+Exec=/opt/hyper-appimage/hyper
 Icon=hyper
 Terminal=false
 Type=Application
