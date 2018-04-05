@@ -13,7 +13,6 @@ install=codelite-git.install
 makedepends=('pkgconfig' 'cmake' 'clang')
 depends=(
   'wxgtk'
-  'webkitgtk2'
   'libedit'
   'libssh'
   'libmariadbclient'
