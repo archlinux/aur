@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=13
+pkgrel=14
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -33,6 +33,9 @@ md5sums=(
 )
 
 prepare() {
+    # mark as executable so we can extract
+    chmod +x "${srcdir}/Hyper.AppImage"
+
     # extract the AppImage
     "./${srcdir}/Hyper.AppImage" --appimage-extract
 }
@@ -40,7 +43,7 @@ prepare() {
 package() {
     # install the main files.
     install -d "${pkgdir}/opt/${pkgname}"
-    install "${srcdir}/squashfs-root/app/*" "${pkgdir}/opt/${pkgname}"
+    cp -a "${srcdir}/squashfs-root/app/." "${pkgdir}/opt/${pkgname}"
 
     # make sure the main binary has the right permissions
     chmod 0755 "${pkgdir}/opt/${pkgname}/hyper"
@@ -49,8 +52,10 @@ package() {
     install -D "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications/Hyper.desktop"
 
     # link the binary
-    ln -s "${pkgdir}/opt/${pkgname}/hyper" "/usr/bin/hyper"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "${pkgdir}/opt/${pkgname}/hyper" "${pkgdir}/usr/bin/hyper"
 
     # install the icons
-    install "${srcdir}/squashfs-root/usr/share/icons/hicolor/*" "${pkgdir}/usr/share/icons/hicolor"
+    install -d "${pkgdir}/usr/share/icons/hicolor"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/." "${pkgdir}/usr/share/icons/hicolor"
 }
