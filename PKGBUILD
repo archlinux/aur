@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=7
+pkgrel=8
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -28,28 +28,17 @@ md5sums_x86_64=(
     '1cfb0ca92bb3bebfd95da621c4fa0a84'
 )
 
-prepare() {
-    mv "${srcdir}/hyper-${_pkgver_correct}-x86_64.AppImage" "${srcdir}/Hyper.AppImage"
-    mv "${srcdir}/Hyper-Mark-120@3x.png" "${srcdir}/Hyper.png"
-}
-
 package() {
     # Install the main files.
-    install -d "${pkgdir}/opt/${pkgname}"
-    install "${srcdir}/Hyper.AppImage" "${pkgdir}/opt/${pkgname}"
-
-    # Exec bit
-    chmod 755 "${pkgdir}/opt/${pkgname}/Hyper.AppImage"
+    install -D -m755 "${srcdir}/hyper-${_pkgver_correct}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/Hyper.AppImage"
 
     # Desktop Entry
-    install -d "${pkgdir}/usr/share/applications"
-    install "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications"
+    install -D "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications"
 
     # Main binary
-    install -d "${pkgdir}/usr/local/bin"
-    ln -s "/opt/${pkgname}/Hyper.AppImage" "${pkgdir}/usr/local/bin/hyper"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/Hyper.AppImage" "${pkgdir}/usr/bin/hyper"
 
     # Install the icon
-    install -d "${pkgdir}/usr/share/pixmaps"
-    install "${srcdir}/Hyper.png" "${pkgdir}/usr/share/pixmaps"
+    install -D "${srcdir}/Hyper-Mark-120@3x.png" "${pkgdir}/usr/share/pixmaps/Hyper.png"
 }
