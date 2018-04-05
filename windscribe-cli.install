@@ -8,6 +8,7 @@ post_upgrade() {
 }
 
 pre_remove() {
+  /usr/bin/windscribe firewall off
   /usr/bin/windscribe logout
   systemctl stop windscribe
 }

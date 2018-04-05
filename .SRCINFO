@@ -1,15 +1,25 @@
 pkgbase = windscribe-cli
-	pkgdesc = Port of Windscribe's VPN command line interface
-	pkgver = 1.0
-	pkgrel = 4
+	pkgdesc = Port of Windscribe's command line interface
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://windscribe.com/
 	install = windscribe-cli.install
 	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
 	license = GPL-2+
 	depends = openvpn
+	optdepends = stunnel
 	replaces = windscribe-cli
-	source = .deb::https://windscribe.com/install/desktop/linux_deb
-	sha256sums = 9b173b1548c04524861839ff6c2e49a2a0e6143e7438cf5f5a784301010d15d1
+	source_x86_64 = windscribe-cli_1.1_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.1_x64.deb
+	sha256sums_x86_64 = 3639313f36bc16a200ce31e2c2d5c3e4f555189d9ab2d8d6acd376ed33dea180
+	source_i686 = windscribe-cli_1.1_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.1_x86.deb
+	sha256sums_i686 = 049d8cf2231a50e43ed9c68f866219eb9d7604936ac1b9f4fdaeed3dedef4108
+	source_armv6h = windscribe-cli_1.1_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.1-1_armhf.deb
+	sha256sums_armv6h = 2fcf951dab5c70877660c49beb2ce35c7f1b1df47c33caa471ea0cd96f58284c
+	source_armv7h = windscribe-cli_1.1_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.1-1_armhf.deb
+	sha256sums_armv7h = 2fcf951dab5c70877660c49beb2ce35c7f1b1df47c33caa471ea0cd96f58284c
 
 pkgname = windscribe-cli
 
