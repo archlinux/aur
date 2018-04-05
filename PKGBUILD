@@ -10,6 +10,8 @@ license=('custom')
 options=('!strip')
 provides=('teamviewer')
 conflicts=('teamviewer-beta')
+# /opt/teamviewer/tv_bin/script/teamviewer_setup checklibs can check deps for each TV component:
+# TV_DMN, TV_DESK, TV_GUI
 depends_x86_64=(
 	'hicolor-icon-theme'
 	'qt5-webkit'
@@ -51,6 +53,11 @@ prepare() {
 		msg2 "Unpacking $datatar"
 		tar -xf $datatar
 	done
+	sed -i '/function CheckQtQuickControls()/{N;a ls /usr/lib/qt/qml/QtQuick/Controls/qmldir &>/dev/null && return # ArchLinux
+}' ./opt/teamviewer/tv_bin/script/teamviewer_setup || msg2 "Patching CheckQtQuickControls failed! Contact maintainer"
+	msg2 "Running teamviewer_setup checklibs"
+	./opt/teamviewer/tv_bin/script/teamviewer_setup checklibs \
+    || msg2 "teamviewer_setup checklibs failed, contact maintainer with /tmp/teamviewerTARLibCheck/DependencyCheck.log" # Currently it always exits 0
 }
 
 package() {
