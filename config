@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# User Mode Linux/x86 4.15.13-1 Kernel Configuration
+# User Mode Linux/x86 4.15.15-1 Kernel Configuration
 #
 CONFIG_UML=y
 CONFIG_MMU=y
