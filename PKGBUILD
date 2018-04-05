@@ -1,6 +1,7 @@
-# Maintainer: Paul Oppenheimer <redg3ar@airmail.cc>
+# Maintainer: David Naramski <david.naramski AT gmail.com>
+# Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=ao
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
@@ -10,7 +11,7 @@ depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
 provides=('ao')
 conflicts=('ao-git')
 source=("https://github.com/klauscfhq/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('2407096c392aed98086aadbdbac6bb2f')
+md5sums=('cd920a05a856292ced4ed27381b9768a')
 
 package() {
   tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
