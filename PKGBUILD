@@ -220,13 +220,16 @@ _arch_specific_configure_options="\
     -no-rpath \
 "
 
+retired_exhaustive_uber_minimal_specific_configure_options="\
+    -no-gbm \
+    -no-kms \
+    -no-linuxfb \
+"
+
 if $_uber_minimal; then
     _exhaustive_uber_minimal_specific_configure_options="\
         -no-direct2d \
         -no-directfb \
-        -no-gbm \
-        -no-kms \
-        -no-linuxfb \
         -no-mirclient \
         -no-cups \
         -no-iconv \
