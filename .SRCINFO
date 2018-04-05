@@ -9,4 +9,6 @@ pkgbase = hyper-appimage
 	conflicts = hyper
 	provides = hyper
 	source_x86_64 = https://github.com/zeit/hyper/releases/download/2.0.0-canary.15/hyper-2.0.0-canary.15-x86_64.AppImage
+	md5sums_x86_64 = 53e1b818d3e8f9ff647ab13e1549b55b
+	md5sums_x86_64 = f3481e14cba331160339b3b5ab78872b
 pkgname = hyper-appimage
