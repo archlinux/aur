@@ -1,7 +1,7 @@
 # Maintainer: Tamvana Makuluni <emakman@gmail.com>
 pkgname=neovim-latex-previewer-git
-pkgver=r8.a3dcdd0
-pkgrel=3
+pkgver=r15.286e5c3
+pkgrel=1
 pkgdesc="Neovim plugin to provide a live-updating PDF preview of LaTeX documents."
 arch=('any')
 url="http://github.com/emakman/neovim-latex-previewer"
