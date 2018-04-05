@@ -1,6 +1,7 @@
 # Maintainer: Cedric Meury <cedric@meury.com>
+# Maintainer: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 pkgname=kafka-manager
-pkgver=1.3.1.6
+pkgver=1.3.3.17
 pkgrel=1
 pkgdesc="A tool for managing Apache Kafka."
 arch=('any')
@@ -23,13 +24,13 @@ changelog=
 source=(https://github.com/yahoo/$pkgname/archive/$pkgver.tar.gz
         ${pkgname}.conf
         ${pkgname}.service)
-md5sums=('2364666a73a86a6b97d5162e9dedf03a'
+md5sums=('cf9a82bc684bbdebe5820d50d67053f8'
          '8ee7f7d85857bfad3ad087678a47d270'
-         '139d1c614f2b1b1c8de0cf0db43698e4')
+         '22db3c3ad6b7772fad5513b5438b707b')
 
 build() {
   cd "$pkgname-$pkgver"
-  PATH=/usr/lib/jvm/java-8-openjdk/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-8-openjdk ./sbt -java-home /usr/lib/jvm/java-8-openjdk clean dist
+  ./sbt clean dist
 }
 
 package() {

@@ -5,11 +5,9 @@ After=network.target
 [Service]
 Type=simple
 PIDFile=/var/lib/kafka-manager/kafka-manager.pid
-Environment="PATH=/usr/lib/jvm/java-8-openjdk/bin:/bin:$PATH"
-Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk"
 ExecStartPre=-/usr/bin/mkdir -p /var/lib/kafka-manager
 ExecStartPre=/usr/bin/chown -R kafka-manager:kafka-manager /var/lib/kafka-manager/
-ExecStart=/opt/kafka-manager/bin/kafka-manager -java-home /usr/lib/jvm/java-8-openjdk -Dconfig.file=/etc/kafka-manager.conf -Dpidfile.path=/var/lib/kafka-manager/kafka-manager.pid -Dapplication.home=/var/lib/kafka-manager
+ExecStart=/opt/kafka-manager/bin/kafka-manager -Dconfig.file=/etc/kafka-manager.conf -Dpidfile.path=/var/lib/kafka-manager/kafka-manager.pid -Dapplication.home=/var/lib/kafka-manager
 PermissionsStartOnly=true
 ExecStop=/bin/kill $MAINPID
 User=kafka-manager

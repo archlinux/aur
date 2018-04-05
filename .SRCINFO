@@ -1,6 +1,6 @@
 pkgbase = kafka-manager
 	pkgdesc = A tool for managing Apache Kafka.
-	pkgver = 1.3.1.6
+	pkgver = 1.3.3.17
 	pkgrel = 1
 	url = https://github.com/yahoo/kafka-manager
 	install = kafka-manager.install
@@ -11,12 +11,12 @@ pkgbase = kafka-manager
 	depends = java-environment=8
 	depends = bash
 	backup = etc/kafka-manager.conf
-	source = https://github.com/yahoo/kafka-manager/archive/1.3.1.6.tar.gz
+	source = https://github.com/yahoo/kafka-manager/archive/1.3.3.17.tar.gz
 	source = kafka-manager.conf
 	source = kafka-manager.service
-	md5sums = 2364666a73a86a6b97d5162e9dedf03a
+	md5sums = cf9a82bc684bbdebe5820d50d67053f8
 	md5sums = 8ee7f7d85857bfad3ad087678a47d270
-	md5sums = 139d1c614f2b1b1c8de0cf0db43698e4
+	md5sums = 22db3c3ad6b7772fad5513b5438b707b
 
 pkgname = kafka-manager
 
