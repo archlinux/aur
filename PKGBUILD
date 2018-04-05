@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=2
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, and bitcoin-cli"
 arch=('i686' 'x86_64')
@@ -15,15 +15,13 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin.install
-        patch.diff)
-sha256sums=('d63616b5399f7bcff88bf874a1880ba8d55b44b8ff9b07d0d56f5b5dfa64d0d9'
+        bitcoin.install)
+sha256sums=('3c346df244cd6cc0236a3f8564e9a8c52ee7927540f201863748cd2288550613'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'c8a667f7138a504f0a3018b48eb687814cfc741f4d38d8699b0b3b5234b25fea'
-            '6b146dc6158d753440c7bf4ea05fa8c38ae7411d4e0cb74a444fcc797b904b5c')
+            'c8a667f7138a504f0a3018b48eb687814cfc741f4d38d8699b0b3b5234b25fea')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
@@ -32,9 +30,6 @@ install=bitcoin.install
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
-
-  msg2 'Patching...'
-  patch -p1 < ../patch.diff
 
   msg2 'Building...'
   ./autogen.sh
