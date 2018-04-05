@@ -1,6 +1,6 @@
 pkgbase = crux-toolkit-git
 	pkgdesc = The Crux mass spectrometry analysis toolkit
-	pkgver = r3143.b196a791
+	pkgver = r3149.4438655b
 	pkgrel = 1
 	url = http://crux.ms/
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = crux-toolkit-git
 	makedepends = git
 	makedepends = subversion
 	makedepends = cmake
+	makedepends = sed
 	depends = gcc-libs
 	provides = crux-toolkit
 	conflicts = crux-toolkit-bin
 	source = git+https://github.com/crux-toolkit/crux-toolkit
-	source = cmake_install.patch
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = crux-toolkit-git
