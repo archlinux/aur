@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=1
+pkgrel=3
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -29,27 +29,27 @@ md5sums_x86_64=(
 )
 
 prepare() {
-    cd "${srcdir}"
-
     mv "${srcdir}/hyper-${_pkgver_correct}-x86_64.AppImage" "${srcdir}/Hyper.AppImage"
-
-    mkdir -p usr/share/pixmaps
-    mkdir -p usr/share/applications
-    mkdir -p opt/appimages
-    mkdir -p usr/bin
-
-    # move the files to the correct places
-    mv "${srcdir}/Hyper-Mark-120@3x.png" usr/share/pixmaps
-    mv Hyper.desktop usr/share/applications
-    mv Hyper.AppImage opt/appimages/
+    mv "${srcdir}/Hyper-Mark-120@3x.png" "${srcdir}/Hyper.png"
 }
 
 package() {
-    cd "${srcdir}"
+    # Install the main files.
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -a "${srcdir}/Hyper.AppImage" "${pkgdir}/opt/${pkgname}"
 
-    cp -rp usr "${pkgdir}/usr"
-    cp -rp opt "${pkgdir}/opt"
+    # Exec bit
+    chmod 755 "${pkgdir}/opt/${pkgname}/Hyper.AppImage"
 
-    cd $pkgdir/usr/bin
-    ln -s "${pkgdir}/opt/appimages/Hyper.AppImage" hyper
+    # Desktop Entry
+    install -d "${pkgdir}/usr/share/applications"
+    install "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications"
+
+    # Main binary
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/Hyper.AppImage" "${pkgdir}/usr/bin/hyper"
+
+    # Install the icon
+    install -d "${pkgdir}/usr/share/pixmaps"
+    install "${srcdir}/Hyper.png" "${pkgdir}/usr/share/pixmaps"
 }
