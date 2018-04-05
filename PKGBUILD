@@ -22,7 +22,7 @@ source_x86_64=(
 )
 
 md5sums_x86_64=(
-    '53e1b818d3e8f9ff647ab13e1549b55b',
+    '53e1b818d3e8f9ff647ab13e1549b55b'
     'f3481e14cba331160339b3b5ab78872b'
 )
 
