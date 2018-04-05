@@ -24,9 +24,6 @@ sha512sums=('08a7cf1181be7c042e14e443b11db04a84b4adafdf0a402f82ba3196112d4bca3e6
 package() {
     cp -a {opt,usr} "$pkgdir"
 
-    # suid sandbox
-    chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
-
     # make /usr/bin/vivaldi-snapshot available
     binf="$pkgdir/usr/bin/$pkgname"
     if [[ ! -e "$binf" ]] && [[ ! -f "$binf" ]] && [[ ! -L "$binf" ]]; then
