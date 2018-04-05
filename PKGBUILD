@@ -2,7 +2,7 @@
 
 pkgname=teamviewer12
 pkgver=12.0.90041
-pkgrel=0
+pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
