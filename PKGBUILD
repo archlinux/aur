@@ -10,6 +10,7 @@ license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun' 'libcint' 'libxc')
 makedepends=('cmake')
 provides=($_pkgname=$pkgver)
+conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/sunqm/pyscf.git")
 md5sums=('SKIP')
 

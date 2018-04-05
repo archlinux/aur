@@ -15,6 +15,7 @@ pkgbase = python-pyscf-git
 	depends = libcint
 	depends = libxc
 	provides = python-pyscf=1.4.5.r10.g57c8912d
+	conflicts = python-pyscf
 	source = python-pyscf-git::git+https://github.com/sunqm/pyscf.git
 	md5sums = SKIP
 
