@@ -1,15 +1,16 @@
 pkgbase = annie
 	pkgdesc = A fast, simple and clean video downloader written in Go
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/iawia002/annie
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = go
 	depends = ffmpeg
 	conflicts = annie
-	source = annie-0.6.2.tar.gz::https://github.com/iawia002/annie/archive/0.6.2.tar.gz
-	sha256sums = acfeedc8b34258cd460ac8cf1f88f4e326aa6e58c97613ad840255a2e551cf98
+	source = annie-0.6.4.tar.gz::https://github.com/iawia002/annie/archive/0.6.4.tar.gz
+	sha256sums = e7f9caf29bf4b48e9329f0c7efba7988bcd2f8d0361b710022a40cd033164d4f
 
 pkgname = annie
 
