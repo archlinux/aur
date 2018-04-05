@@ -1,18 +1,19 @@
 # $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
-pkgver=0.18.5+14+g9980655
-pkgrel=4
+pkgver=0.18.6
+pkgrel=1
 pkgdesc="Library for storing and retrieving passwords and other secrets"
 arch=(x86_64)
 license=(LGPL)
 url="https://wiki.gnome.org/Projects/Libsecret"
-depends=(lib32-glib2 lib32-libgcrypt $_pkgbasename=$pkgver)
-makedepends=(gcc-multilib intltool gobject-introspection vala git gtk-doc)
+depends=(lib32-gcc-libs lib32-glib2 lib32-libgcrypt $_pkgbasename=$pkgver)
+makedepends=(gcc intltool gobject-introspection vala git gtk-doc)
 optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
-_commit=998065599c66055dcffa1ef1ddebb947ccd68248  # master
+_commit=b01e54991a7f067e24a4f309690ea2c9233d1a35  # tags/0.18.6^0
 source=("git+https://git.gnome.org/browse/libsecret#commit=$_commit")
 sha256sums=('SKIP')
 
