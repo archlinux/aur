@@ -9,6 +9,7 @@ license=('BSD')
 depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'xcfun' 'libcint' 'libxc')
 makedepends=('cmake')
 provides=($pkgname=$pkgver)
+conflicts=(${pkgname}-git)
 source=("https://github.com/sunqm/pyscf/archive/v$pkgver.tar.gz")
 md5sums=('aa9795b64fd4c22f5da305582d206271')
 
