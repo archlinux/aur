@@ -5,7 +5,7 @@
 _pkgname=utox
 _branch=develop
 pkgname=$_pkgname-git
-pkgver=0.15.0.r17.g94bd175a
+pkgver=0.16.1.r220.g5155b879
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
