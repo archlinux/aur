@@ -1,4 +1,4 @@
-# Maintainer: Marcus Andersson <m.andersson0602 at gmail.com>
+# Maintainer: Marcus Andersson <m.andersson0602 at gmail DOT com>
 
 pkgname=ls-icons
 pkgver=v8.27+46+gd3450c176
@@ -24,6 +24,11 @@ prepare() {
     
     sed -i 's DATA="${DATA}/icons-in-terminal/" DATA="/etc/icons-in-terminal/" ' bootstrap
     ./bootstrap
+
+    # Execute this line _only_ if your terminal doesn't support true colours
+    # https://gist.github.com/XVilka/8346728#now-supporting-truecolour
+    #export CFLAGS=-DNO_TRUE_COLOURS=1
+    
     export CC=clang CXX=clang++
 }
 
