@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=16
+pkgrel=17
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -47,7 +47,6 @@ package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
     cp -Rr "${srcdir}/squashfs-root/app/" "${pkgdir}/opt/${pkgname}"
-    chmod 0644
 
     # make sure the main binary has the right permissions
     chmod +x "${pkgdir}/opt/${pkgname}/hyper"
