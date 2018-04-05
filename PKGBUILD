@@ -4,8 +4,8 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-dev
-pkgver=3.0.3129
-pkgrel=2
+pkgver=3.0.3135
+pkgrel=1
 pkgdesc="Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves"
 arch=('x86_64')
 url='https://github.com/tidusjar/Ombi'
