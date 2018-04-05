@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.15.15
-xanmod=13
+pkgver=4.16.0
+xanmod=1
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=8bf91ab3f60005767a118c90bf00659e9bf0db69
+arch_config_trunk=d7625be23f83416491d202d5cea96e5a871fb216
 
 # Arch additional patches
 arch_patches=(
@@ -48,14 +48,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('5ddc276c10c0005ec90fbd789f1d694749c7edb80981e4fa37ddcc5e7c36e82a'
+sha256sums=('c64bacc3860afd2da7dca7777a9f1b701fd490e42befcb21d62414377d1b8fa1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
-sha256sums_x86_64=('f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7')
+            'f47b643156811581b31963cf56672f35c5ab275fcb01a3f534577676a4df0bc1'
+            '971fcb1a89c62333871a7371a488dc78484ed5972230ff3ced31a11ad44714de')
+sha256sums_x86_64=('d60cb7258ab632ab3ca25071266632970ae0ded00c1f4004fa8c6fc3547225c5')
 
 _kernelname=${pkgbase#linux}
 
@@ -204,9 +204,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
