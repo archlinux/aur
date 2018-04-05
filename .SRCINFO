@@ -1,7 +1,7 @@
 pkgbase = telinkrin-gtk-theme
 	pkgdesc = An individual and unique looking theme with an interesting design of Nautilus sidebar
 	pkgver = 2.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA
@@ -9,7 +9,7 @@ pkgbase = telinkrin-gtk-theme
 	depends = gtk-engines
 	depends = gtk3>=3.20
 	provides = telinkrin-gtk-theme
-	source = telinkrin-gtk-theme-2.3.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1522615437/s/4eff9ce03e0ff94ce5ab59ba59df43a2/t/1522956416/u/455718/Telinkrin-2.3.tar.xz
+	source = telinkrin-gtk-theme-2.3.tar.xz::https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/Arrongin_Telinkrin/Telinkrin-2.3.tar.xz
 	sha512sums = 6a37884364a52467892eb2cb6bf81a7584b4a2a1b689c21e29f045882c0f779cc19f64fb29306ea2a291bbb006a5c2165e1d97046aa326ed6cfab7de69569863
 
 pkgname = telinkrin-gtk-theme
