@@ -24,9 +24,6 @@ sha512sums_x86_64=('168d9eea8be22e2fff352ad8bf20e806d7adc3030b8f13c77be8b3e77196
 package() {
     cp -a {opt,usr} "$pkgdir"
 
-    # suid sandbox
-    chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
-
     # make /usr/bin/vivaldi-stable available
     binf="$pkgdir/usr/bin/vivaldi-stable"
     if [[ ! -e "$binf" ]] && [[ ! -f "$binf" ]] && [[ ! -L "$binf" ]]; then
