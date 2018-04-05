@@ -1,3 +1,10 @@
+2018-04-05 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.14.6-2 :
+	Generate .desktop file and icon.
+    Regenerate autoconf files before building.
+	Install changelog and readme as documentation.
+
 2018-04-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.14.6-1 :

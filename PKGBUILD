@@ -3,27 +3,39 @@
 _pkgname=giada
 pkgname="${_pkgname}-vst"
 pkgver=0.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host (VST enabled)"
 arch=('i686' 'x86_64')
 url="http://www.giadamusic.com/"
 license=('GPL3')
-depends=('fltk' 'jansson' 'libpulse' 'libxpm' 'rtmidi')
-makedepends=('steinberg-vst36')
+groups=('pro-audio')
+depends=('fltk' 'jansson' 'libpulse' 'libsamplerate' 'libxpm' 'rtmidi')
+makedepends=('gendesk' 'icoutils' 'steinberg-vst36')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source"
-        "${_pkgname}.desktop"
-        "${_pkgname}.png")
-md5sums=('f5610aa6bf82b3749290b88746e1dec3'
-         '06238158680470ab01fbbeb33353e58e'
-         'f9b6e4233890720af50c536c4b2c92c0')
+source=("${_pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source")
+md5sums=('f5610aa6bf82b3749290b88746e1dec3')
 changelog='ChangeLog'
+
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}-src"
+
+  autoreconf -vfi
+  # XDG desktop file
+  gendesk -f -n \
+          --pkgname ${_pkgname} \
+          --pkgdesc "${pkgdesc}" \
+          --name Giada \
+          --categories "Audio;MIDI;Music;Sequencer" \
+          --startupnotify true
+  # App icon
+  icotool -x -i 1 -o ${_pkgname}.png src/ext/${_pkgname}.ico
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}-src"
 
-  export CXXFLAGS="$CXXFLAGS -Wno-error"
   ./configure --prefix=/usr --target=linux --enable-vst
   make
 }
@@ -31,10 +43,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-src"
 
-  export CXXFLAGS="$CXXFLAGS -Wno-error"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}/${_pkgname}.png" \
-    "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # Desktop integration
+  install -Dm644 ${_pkgname}.png -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm644 ${_pkgname}.desktop -t "${pkgdir}/usr/share/applications"
+  # docs
+  install -vDm 644 {ChangeLog,README.md} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
