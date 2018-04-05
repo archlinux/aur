@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="single-file public domain (or MIT licensed) libraries for C/C++"
 arch=('any')
 url="https://github.com/nothings/stb"
-license=('public domain', 'MIT')
+license=('public domain' 'MIT')
 source=("https://github.com/nothings/$pkgname/archive/$commitsha.tar.gz")
 md5sums=('e52f1d8c18612d4d7a2eb1c5e2d7ed0f')
 
