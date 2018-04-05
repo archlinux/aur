@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=9
+pkgrel=10
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -12,7 +12,7 @@ provides=('hyper')
 depends=()
 noextract=('Hyper.AppImage')
 install=hyper-appimage.install
-options=()
+options=('!strip')
 
 _pkgver_correct=${pkgver/\.canary/-canary}
 
