@@ -4,6 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Pokemod97 cadenkline9@gmail.com
+# Maintainer: Qyriad qyriad@gmail.com
 pkgname=libtransistor-bin
 pkgver=v1.2.2
 pkgrel=1
