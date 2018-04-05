@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=14
+pkgrel=15
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -37,7 +37,7 @@ prepare() {
     chmod +x "${srcdir}/Hyper.AppImage"
 
     # extract the AppImage
-    "./${srcdir}/Hyper.AppImage" --appimage-extract
+    "${srcdir}/Hyper.AppImage" --appimage-extract
 }
 
 package() {
