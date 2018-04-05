@@ -1,13 +1,13 @@
 pkgbase = telinkrin-icon-theme
 	pkgdesc = A matching icon theme for Telinkrin-GTK theme based on Adwaita and MySuru
 	pkgver = 2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA
 	depends = hicolor-icon-theme
 	provides = telinkrin-icon-theme
-	source = telinkrin-icon-theme-2.1.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1522367288/s/a2ccbcecf042a675f7e5419cc9ddec2f/t/1522956831/u/455718/Telinkrin-SURU-2.1.tar.xz
+	source = telinkrin-icon-theme-2.1.tar.xz::https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/Arrongin_Telinkrin/Telinkrin-SURU-2.1.tar.xz
 	sha512sums = bf62126e1405efebd00565afc46114501a8356d0c481a3ab6a6bb00da90d3a1fa0be5ca89355ccf5d4c9cd42c6e3e2b59cf0d899af79bc71ab36eee7e3b8fcff
 
 pkgname = telinkrin-icon-theme
