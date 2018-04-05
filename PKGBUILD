@@ -26,10 +26,6 @@ pkgver() {
 #  sed -i 's| /usr/share| "'$pkgdir'"/usr/share|g' dist-install.sh
 #}
 
-build() {
-  cd $pkgname
-}
-
 package() {
   cd $pkgname
 
