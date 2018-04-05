@@ -1,6 +1,6 @@
 pkgbase = scapy-git
-	pkgdesc = A powerful interactive packet manipulation program written in Python
-	pkgver = 2.3.3.dev519
+	pkgdesc = Powerful interactive packet manipulation program written in Python
+	pkgver = 2.4.0.dev43
 	pkgrel = 1
 	url = http://www.secdev.org/projects/scapy/
 	arch = any
@@ -8,9 +8,39 @@ pkgbase = scapy-git
 	checkdepends = python2-cryptography
 	checkdepends = python2-pyx
 	checkdepends = python2-matplotlib
+	checkdepends = python-cryptography
+	checkdepends = python-pyx
+	checkdepends = python-matplotlib
 	checkdepends = graphviz
 	checkdepends = sox
 	makedepends = git
+	makedepends = tcpdump
+	makedepends = python2
+	makedepends = python
+	source = scapy-git::git+https://github.com/secdev/scapy
+	sha256sums = SKIP
+
+pkgname = scapy-git
+	pkgdesc = Powerful interactive packet manipulation program written in Python (tools)
+	depends = python
+	depends = python-scapy
+	provides = scapy
+	conflicts = scapy
+
+pkgname = python-scapy-git
+	pkgdesc = Powerful interactive packet manipulation program written in Python (library)
+	depends = tcpdump
+	depends = python
+	optdepends = python-cryptography: WEP, IPsec and SSL/TLS support
+	optdepends = python-pyx: psdump() and pdfdump() functions
+	optdepends = python-matplotlib: plotting support
+	optdepends = graphviz: conversations() method support
+	optdepends = sox: for VOIP support
+	provides = python-scapy
+	conflicts = python-scapy
+
+pkgname = python2-scapy-git
+	pkgdesc = Powerful interactive packet manipulation program written in Python (library)
 	depends = tcpdump
 	depends = python2
 	optdepends = python2-cryptography: WEP, IPsec and SSL/TLS support
@@ -18,10 +48,6 @@ pkgbase = scapy-git
 	optdepends = python2-matplotlib: plotting support
 	optdepends = graphviz: conversations() method support
 	optdepends = sox: for VOIP support
-	provides = scapy
-	conflicts = scapy
-	source = scapy-git::git+https://github.com/secdev/scapy
-	sha256sums = SKIP
-
-pkgname = scapy-git
+	provides = python2-scapy
+	conflicts = python2-scapy
 
