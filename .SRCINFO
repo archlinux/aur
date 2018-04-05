@@ -1,13 +1,13 @@
 pkgbase = psc-package
 	pkgdesc = A package manager for PureScript based on package sets
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/purescript/psc-package
 	arch = x86_64
 	license = BSD3
 	provides = psc-package
-	source = https://github.com/purescript/psc-package/releases/download/v0.3.1/linux64.tar.gz
-	sha1sums = e1f7fcde2b855cdf8aa9cf2da2420e2c006df4e9
+	source = https://github.com/purescript/psc-package/releases/download/v0.3.2/linux64.tar.gz
+	sha1sums = eee260b2ab17d79f577d339a4a0682a090612d00
 
 pkgname = psc-package
 
