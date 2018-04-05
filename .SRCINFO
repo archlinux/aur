@@ -1,6 +1,6 @@
 pkgbase = daedalus
 	pkgdesc = Cryptocurrency wallet
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/input-output-hk/daedalus
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = daedalus
 	makedepends = git
 	makedepends = npm
 	makedepends = python2
+	depends = cardano-sl
 	depends = electron
-	source = git+https://github.com/input-output-hk/daedalus.git#commit=ba037d30491803500cca05829e6dce7533b1b021
+	source = git+https://github.com/input-output-hk/daedalus.git#commit=cd19ef984bce3ff27fd08e792d09c1ecd262716e
 	source = daedalus.desktop
 	source = daedalus.js
 	source = no-check-dev-engines.patch

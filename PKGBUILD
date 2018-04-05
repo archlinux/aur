@@ -1,14 +1,14 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=daedalus
-pkgver=0.9.0
-_commit=ba037d30491803500cca05829e6dce7533b1b021
+pkgver=0.9.1
+_commit=cd19ef984bce3ff27fd08e792d09c1ecd262716e
 pkgrel=1
 pkgdesc='Cryptocurrency wallet'
 arch=('any')
 url='https://github.com/input-output-hk/daedalus'
 license=('MIT')
-depends=('electron')
+depends=('cardano-sl' 'electron')
 makedepends=('asar' 'git' 'npm' 'python2')
 source=("git+https://github.com/input-output-hk/daedalus.git#commit=${_commit}"
         "${pkgname}.desktop"
