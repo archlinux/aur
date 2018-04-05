@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=6
+pkgrel=7
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -36,7 +36,7 @@ prepare() {
 package() {
     # Install the main files.
     install -d "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/Hyper.AppImage" "${pkgdir}/opt/${pkgname}"
+    install "${srcdir}/Hyper.AppImage" "${pkgdir}/opt/${pkgname}"
 
     # Exec bit
     chmod 755 "${pkgdir}/opt/${pkgname}/Hyper.AppImage"
