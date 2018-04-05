@@ -1,16 +1,16 @@
 pkgbase = auditwheel
 	pkgdesc = Cross-distribution Linux wheels
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/pypa/auditwheel
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	depends = python-elftools
-	noextract = auditwheel-1.7.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/14/76/290bbad9533b5749d37863008b811bb625ff3c2e76fcd8e7b9f492bf39dc/auditwheel-1.7.0-py3-none-any.whl
-	sha256sums = 92b4e9bd2624c5ba06149cb186702d1dffed08bfc19d467a19291007722d0ebb
+	depends = python-pyelftools
+	noextract = auditwheel-1.8.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/a/auditwheel/auditwheel-1.8.0-py3-none-any.whl
+	sha256sums = 63468bf62d82b27b1635ffe1c3f1c4e54ef67d0a6d38bedccc38ce6965d56db7
 
 pkgname = auditwheel
 
