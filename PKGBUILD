@@ -7,7 +7,7 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.16.44.45396.c5f79a4818
+pkgver=4.16.49.45885.81c78a51c2
 pkgrel=1
 epoch=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
@@ -19,10 +19,8 @@ optdepends=('ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
 options=('!strip' '!emptydirs')
-source=(${pkgname}::git+https://github.com/rapid7/metasploit-framework.git
-        metasploit-dont-restrict-aggregator.patch)
-sha512sums=('SKIP'
-            'ed41090e5920354b3c340efb1c38ad7d15493905a0061d1dcda3ea01b6f4612c11ff8199beaaa6ea62821d59da7fcf3b7d4e35ab201ba8dec82408cc6b905a30')
+source=(${pkgname}::git+https://github.com/rapid7/metasploit-framework.git)
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -36,9 +34,6 @@ prepare() {
   cd ${pkgname}
   bundle config build.nokogiri --use-system-libraries
   sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
-  patch -R -p1 < "${srcdir}/metasploit-dont-restrict-aggregator.patch"
-  sed "s|'grpc', \"1.8.3\"|'grpc', '1.10.0'|g" -i Gemfile
-  sed -r 's|(grpc \(.*)1.8.3\)|\11.10.0)|g' -i Gemfile.lock
 }
 
 build() {
