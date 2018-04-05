@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 pkgname="jack_autoconnect-git"
 pkgver=20180405.155ed79
-pkgrel=1
-pkgdesc="Tiny application that reacts on port registrations by clients and connects them"
+pkgrel=2
+pkgdesc="Tiny application that reacts on port registrations by jack clients and connects them"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/kripton/jack_autoconnect"
 license=("GPL")

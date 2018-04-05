@@ -1,7 +1,7 @@
 pkgbase = jack_autoconnect-git
-	pkgdesc = Tiny application that reacts on port registrations by clients and connects them
+	pkgdesc = Tiny application that reacts on port registrations by jack clients and connects them
 	pkgver = 20180405.155ed79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kripton/jack_autoconnect
 	arch = x86_64
 	arch = armv7h
