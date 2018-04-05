@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ validpgpkeys=()
 pkgver() {
   #cd ${srcdir}/src/github.com/kryptco/kr
   #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  echo "2.4.0"
+  echo "2.4.1"
 }
 
 prepare() {
