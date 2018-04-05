@@ -2,4 +2,4 @@
 
 [[ -v SNAP_PAC_SKIP ]] && { printf "==> skipping due to SNAP_PAC_SKIP being set"; exit 0; }
 
-/usr/bin/grub-mkconfig -o /boot/grub/grub.cfg 2>&1 | grep -vi 'Found snapshot'
+GRUB_BTRFS_SHOW_SNAPSHOTS_FOUND=false /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
