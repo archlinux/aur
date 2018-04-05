@@ -2,7 +2,7 @@
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
 pkgver=2.4.1.r3.gfe8bd26
-pkgrel=3
+pkgrel=4
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
@@ -12,15 +12,21 @@ makedepends=('git' 'valabind' 'swig')
 
 source=("${pkgname}::git://github.com/radare/radare2-bindings.git"
         "radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git"
+        Makefile.patch
         )
 md5sums=('SKIP'
          'SKIP'
-         )
+         'c79cfc6a5650e347e253f132762ef961')
 
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${srcdir}/${basename}
+  git apply ${srcdir}/Makefile.patch
 }
 
 build() {
@@ -31,7 +37,7 @@ build() {
       --enable="python"
 
   export PYTHON_CONFIG=python3.2-config
-  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/vala-0.38/"
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/vala-$(vala --version|sed 's:Vala \(.*\..*\)\..*:\1:g')/"
   make
 
   #(cd r2pipe/python && python setup.py build)

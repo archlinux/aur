@@ -1,7 +1,7 @@
 pkgbase = radare2-bindings-git
 	pkgdesc = Language bindings for radare2 (git version)
 	pkgver = 2.4.1.r3.gfe8bd26
-	pkgrel = 3
+	pkgrel = 4
 	url = https://radare.org
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = radare2-bindings-git
 	depends = python2
 	source = radare2-bindings-git::git://github.com/radare/radare2-bindings.git
 	source = radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git
+	source = Makefile.patch
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = c79cfc6a5650e347e253f132762ef961
 
 pkgname = radare2-bindings-git
 	provides = radare2-bindings
