@@ -1,6 +1,6 @@
 pkgbase = mate-tweak
 	pkgdesc = Tweak tool for MATE (fork of MintDesktop)
-	pkgver = 18.04.14
+	pkgver = 18.04.16
 	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
@@ -23,10 +23,10 @@ pkgbase = mate-tweak
 	optdepends = tilda: to enable pull-down terminal
 	optdepends = topmenu-gtk: for Mutiny panel layout
 	optdepends = vala-panel-appmenu-mate: for Mutiny,Cupertino
-	source = mate-tweak-18.04.14.tar.gz::https://github.com/ubuntu-mate/mate-tweak/archive/18.04.14.tar.gz
-	source = ubuntu-mate-settings-18.04.10.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/18.04.10.tar.gz
-	sha256sums = c820818f2f67c1b6b5dfc0bb8c452c93f428b3f1b6ba6a1f752d4d772624a04e
-	sha256sums = ee22f2b28d7da73adfefe765de2f20c16b80ad40bcaab7f8fe57b87e57ed0724
+	source = mate-tweak-18.04.16.tar.gz::https://github.com/ubuntu-mate/mate-tweak/archive/18.04.16.tar.gz
+	source = ubuntu-mate-settings-18.04.14.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/18.04.14.tar.gz
+	sha256sums = 67593f9f6cc0040a2bef2828146d69e6f8ce4ec25bd4ff87c907fa954681ede9
+	sha256sums = e1e017366c89292ce035299fe9e3a602e9948dbf84e6c62a96ffe7391a1be08f
 
 pkgname = mate-tweak
 
