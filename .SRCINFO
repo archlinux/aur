@@ -1,7 +1,7 @@
 pkgbase = hyper-appimage
 	pkgdesc = A terminal built on web technologies
 	pkgver = 2.0.0.canary.15
-	pkgrel = 12
+	pkgrel = 13
 	url = https://hyper.is
 	install = hyper-appimage.install
 	arch = x86_64
