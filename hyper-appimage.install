@@ -1,6 +1,5 @@
 post_install() {
     xdg-icon-resource forceupdate
-    mkdir -p /opt/appimages
     chmod 777 /opt/appimages/Hyper.AppImage
 }
 

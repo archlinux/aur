@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hyper
+Comment=A terminal build on web technologies
+Exec=/opt/appimages/Hyper.AppImage
+Icon=hyper
+Terminal=false
+Type=Application
+Categories=Development;TerminalEmulator;
