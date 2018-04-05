@@ -1,12 +1,12 @@
 pkgname=osvr-core-git
-pkgver=0.2.r3011.g8c8a28c0
+pkgver=0.2.r3011.g9e56bfa3
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Core"
 #license=('GPL')
 makedepends=('git' 'cmake')
-depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc-git') #TODO: add more deps
+depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc') #TODO: add more deps
 source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
 	"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
@@ -34,7 +34,6 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-core-build/"
 
-git pull origin pull/492/head --no-edit # positional tracking videobasedtracker
 git pull origin pull/493/head --no-edit # positional tracking unifiedvideoinertialtracker
 
 #git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
