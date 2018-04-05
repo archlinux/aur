@@ -1,20 +1,18 @@
 # Maintainer: Guilhem Saurel <guilhem@saurel.me>
 pkgname=tabula
-pkgver=1.1.1
-pkgrel=1
+pkgver=1.2.0
+pkgrel=0
 pkgdesc="tool for liberating data tables trapped inside PDF files"
 arch=('any')
 url="http://tabula.technology/"
 license=('custom')
 depends=('java-runtime')
 source=(
-    "https://github.com/tabulapdf/$pkgname/releases/download/v$pkgver/$pkgname-jar-$pkgver.zip"{,.asc}
+    "https://github.com/tabulapdf/$pkgname/releases/download/v$pkgver/$pkgname-jar-$pkgver.zip"
     "run.sh"
 )
-md5sums=('78aff9eaf919085818251fb3c078cd4d'
-         'SKIP'
+md5sums=('2a425d3036d8ee0f056228d09239ccff'
          '57939db56d85e62f4212e6bad1030fb6')
-validpgpkeys=("4034E60AA7827C5DF21A89AAA993E7156E0E9923")
 
 package() {
     mkdir -p "$pkgdir/usr/share/java/$pkgname" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
