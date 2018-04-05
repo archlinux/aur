@@ -1,0 +1,56 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -2248,6 +2248,9 @@ AC_DEFUN([PHP_SETUP_ICU],[
+     ICU_LIBS=`$ICU_CONFIG --ldflags --ldflags-icuio`
+     PHP_EVAL_INCLINE($ICU_INCS)
+     PHP_EVAL_LIBLINE($ICU_LIBS, $1)
++
++    ICU_EXTRA_FLAGS=`$ICU_CONFIG --cxxflags`
++    ICU_EXTRA_FLAGS="$ICU_EXTRA_FLAGS -DU_USING_ICU_NAMESPACE=1"
+   fi
+ ])
+ 
+--- a/ext/intl/config.m4
++++ b/ext/intl/config.m4
+@@ -86,7 +86,7 @@ if test "$PHP_INTL" != "no"; then
+     breakiterator/codepointiterator_methods.cpp \
+     uchar/uchar.c \
+     idn/idn.c \
+-    $icu_spoof_src, $ext_shared,,$ICU_INCS -Wno-write-strings -D__STDC_LIMIT_MACROS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1,cxx)
++    $icu_spoof_src, $ext_shared,,$ICU_INCS -Wno-write-strings -D__STDC_LIMIT_MACROS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 $ICU_EXTRA_FLAGS,cxx)
+   PHP_ADD_BUILD_DIR($ext_builddir/collator)
+   PHP_ADD_BUILD_DIR($ext_builddir/converter)
+   PHP_ADD_BUILD_DIR($ext_builddir/common)
+--- a/ext/intl/config.w32
++++ b/ext/intl/config.w32
+@@ -130,7 +130,7 @@ if (PHP_INTL != "no") {
+ 			ADD_FLAG("LIBS_INTL", "iculx.lib");
+ 		}
+ 
+-		ADD_FLAG("CFLAGS_INTL", "/EHsc");
++		ADD_FLAG("CFLAGS_INTL", "/EHsc /D U_USING_ICU_NAMESPACE=1");
+ 		AC_DEFINE("HAVE_INTL", 1, "Internationalization support enabled");
+ 	} else {
+ 		WARNING("intl not enabled; libraries and/or headers not found");
+-- 
+--- a/configure.orig
++++ b/configure
+@@ -45216,6 +45204,9 @@
+     esac
+   done
+ 
++
++    ICU_EXTRA_FLAGS=`$ICU_CONFIG --cxxflags`
++    ICU_EXTRA_FLAGS="$ICU_EXTRA_FLAGS -DU_USING_ICU_NAMESPACE=1"
+   fi
+ 
+ 
+@@ -45639,7 +45630,7 @@
+   ext_srcdir=$abs_srcdir/ext/intl
+   ext_dir=ext/intl
+ 
+-  ac_extra=`echo "$ICU_INCS -Wno-write-strings -D__STDC_LIMIT_MACROS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1"|$SED s#@ext_srcdir@#$ext_srcdir#g|$SED s#@ext_builddir@#$ext_builddir#g`
++  ac_extra=`echo "$ICU_INCS -Wno-write-strings -D__STDC_LIMIT_MACROS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 $ICU_EXTRA_FLAGS"|$SED s#@ext_srcdir@#$ext_srcdir#g|$SED s#@ext_builddir@#$ext_builddir#g`
+ 
+   if test "$ext_shared" != "shared" && test "$ext_shared" != "yes" && test "" != "cli"; then
+     PHP_INTL_SHARED=no
