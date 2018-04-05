@@ -1,7 +1,7 @@
 pkgbase = libtransistor-git
 	pkgdesc = Nintendo Switch homebrew toolchain
-	pkgver = 1.2.2
-	pkgrel = 1
+	pkgver = 1.1.0.r256.g383d582
+	pkgrel = 2
 	url = https://github.com/ReSwitched/libtransistor
 	arch = x86_64
 	groups = base-devel

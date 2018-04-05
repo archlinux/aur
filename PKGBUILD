@@ -2,7 +2,7 @@
 # Special thanks to Pokemod97 for libtransistor-git <3
 pkgname=libtransistor-git
 pkgver=1.1.0.r256.g383d582
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch homebrew toolchain"
 arch=('x86_64')
 url="https://github.com/ReSwitched/libtransistor"
@@ -41,7 +41,7 @@ build()
 
 package()
 {
-	cd "$srcdir/libtransistor"
+	cd "$srcdir/libtransistor/dist"
 	mkdir -p "$pkgdir/opt/libtransistor"
 	cp -r * "$pkgdir/opt/libtransistor"
 }
