@@ -2,7 +2,7 @@
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye
-pkgver=0.38.1
+pkgver=0.90
 pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
