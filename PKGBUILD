@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=2018.02.r0.g8c921a70
+pkgver=2018.02.r248.g920db7aa
 pkgrel=1
 pkgdesc="C++11/C++14 graphics middleware for games and data visualization (Git version)"
 arch=('i686' 'x86_64')
@@ -32,6 +32,10 @@ build() {
         -DWITH_WINDOWLESSGLXAPPLICATION=ON \
         -DWITH_GLXCONTEXT=ON \
         -DWITH_OPENGLTESTER=ON \
+        -DWITH_ANYAUDIOIMPORTER=ON \
+        -DWITH_ANYIMAGECONVERTER=ON \
+        -DWITH_ANYIMAGEIMPORTER=ON \
+        -DWITH_ANYSCENEIMPORTER=ON \
         -DWITH_MAGNUMFONT=ON \
         -DWITH_MAGNUMFONTCONVERTER=ON \
         -DWITH_OBJIMPORTER=ON \
