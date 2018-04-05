@@ -1,6 +1,6 @@
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new/opt/thefanclub/grive-tools/grive-indicator
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator	2015-03-11 13:48:26.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-05 11:55:35.000000000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-05 22:20:13.125072000 +0200
 @@ -1,8 +1,8 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python2
@@ -472,6 +472,15 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def openAbout(widget, optionName):
      widget.set_sensitive(False)
      aboutWindow=Gtk.AboutDialog()
+@@ -640,7 +523,7 @@
+ 'along with this program.  If not, see http://www.gnu.org/licenses')
+     aboutWindow.set_website('http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools')
+     aboutWindow.set_website_label('www.thefanclub.co.za')
+-    aboutWindow.set_authors(['Christiaan Diedericks', '\nSpecial thanks to:', 'Lorenzo Breda - Grive creator', 'Nestal Wan - GitHub Grive contributor', 'Sebastien Martini - Pyinotify creator', 'Google - Google Drive API', ' '])
++    aboutWindow.set_authors(['Christiaan Diedericks (patched by John Smith)', '\nSpecial thanks to:', 'Lorenzo Breda - Grive creator', 'Nestal Wan - GitHub Grive contributor', 'Sebastien Martini - Pyinotify creator', 'Google - Google Drive API', ' '])
+     aboutWindow.set_translator_credits(u'Christiaan Diedericks - Afrikaans \nJos\u00e9 A. Alonso - Spanish \nMaximilian Gro\u00dfe - German \nVitalD - Russian \nJean-S\u00e9bastien Beaulieu - French\nLuca Chiodini - Italian\nThomas Hansen - Portuguese\nJorge Pinto - Brazilian Portuguese\nMohammad Jolani - Arabic\nHirohisa Kawase - Japanese\nDieuwke Hupkes - Dutch\nDu\u0161an Spasi\u0107 - Serbian\nPetr Kub\u00e1nek - Czech\nPiotr  Strebski - Polish \nLuc\u00e1\u0161 Kr\u00e1l - Slovak \nAbhimanyu Shekhar - Hindi \nNurzhan - Kazakh \nZdravko Lambov- Bulgarian \nHenrik Holst - Swedish \nOrestis Chatziioanidis - Greek \nP\u00e9ter P\u00e9nzes - Hungarian\nSung Min Lee - Korean \nPeter Chu - Chinese\nAbdul Muhaimin - Malay\nManish Sainju - Nepali')
+     aboutWindow.set_logo(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
+     aboutWindow.set_icon(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
 @@ -649,67 +532,10 @@
      aboutWindow.destroy()
      widget.set_sensitive(True)
@@ -810,7 +819,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt/thefanclub/grive-tools/grive-setup
 --- grive-tools/opt/thefanclub/grive-tools/grive-setup	2015-03-11 13:48:49.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-setup	2018-04-05 16:34:57.871951000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-setup	2018-04-05 16:34:57.000000000 +0200
 @@ -1,227 +1,9 @@
 -#!/bin/bash
 -#
