@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://www.teamviewer.com'
 license=('custom')
 options=('!strip')
-provides=('teamviewer12')
+provides=('teamviewer')
 conflicts=('teamviewer' 'teamviewer-beta')
 depends_x86_64=(
 	'lib32-fontconfig'
