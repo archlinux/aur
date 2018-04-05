@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=17
+pkgrel=18
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -46,26 +46,23 @@ prepare() {
 package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/squashfs-root/app/" "${pkgdir}/opt/${pkgname}"
-
-    # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/hyper"
+    cp -Rr "${srcdir}/squashfs-root/app/"* "${pkgdir}/opt/${pkgname}"
 
     # desktop entry
     install -D -m644 "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications/Hyper.desktop"
-
-    # link the binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/${pkgname}/hyper" "${pkgdir}/usr/bin/hyper"
 
     # install the icons
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
     cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/hicolor"
 
     # fix file permissions - all files as 644 - directories as 755
-    chmod 755 "${pkgdir}/opt/${pkgname}"
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
+    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 
-    chmod 755 "${pkgdir}/usr/share/icons/hicolor"
-    find "${pkgdir}/usr/share/icons/hicolor" -type f -exec chmod 644 {} \;
+    # make sure the main binary has the right permissions
+    chmod +x "${pkgdir}/opt/${pkgname}/hyper"
+
+    # link the binary
+    install -d -m755 "${pkgdir}/usr/bin"
+    ln -sr "${pkgdir}/opt/${pkgname}/hyper" "${pkgdir}/usr/bin/hyper"
 }
