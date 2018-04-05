@@ -4,7 +4,7 @@ _qqver=8.9
 _qqbuild=19983
 _deepinver=20
 pkgver=${_qqver}.${_qqbuild}deepin${_deepinver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQ Client on Deepin Wine"
 arch=("x86_64")
 url="http://www.deepin.com/"
@@ -22,8 +22,6 @@ package() {
 	cd ${srcdir}
 	tar -xvf data.tar.xz -C ${pkgdir}
 	cd ${pkgdir}
-	mv usr/local/share usr/share
-	rmdir usr/local
 	chmod -x usr/share/applications/deepin.com.qq.im.desktop
 	rm opt/deepinwine/apps/Deepin-QQ/run.sh
 	cp ${srcdir}/{run.sh,QQ$_qqver.exe} -i opt/deepinwine/apps/Deepin-QQ/
