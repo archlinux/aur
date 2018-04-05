@@ -109,6 +109,11 @@ __pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
 __eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
 __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
+_opengl_variant="desktop"
+if [ -n "${_piver}" ]; then
+  _opengl_variant="gles2"
+fi
+
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
@@ -127,6 +132,8 @@ case ${_piver} in
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
   _mkspec="linux-rpi${_piver}-g++"
+  # just for projectmofo!
+  _opengl_variant="desktop"
 ;;
 4)
   # yuck; here lies tinkerboard until I find a better way of generalizing this
@@ -244,6 +251,7 @@ if $_uber_minimal; then
 
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_uber_minimal_specific_configure_options"
     _additional_configure_flags="$_additional_configure_flags \
+        -opengl ${_opengl_variant} \
         -no-ico \
         -no-glib \
         -no-fontconfig \
@@ -403,7 +411,6 @@ fi
 # -platform linux-clang \
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
-                 -opengl desktop \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
@@ -417,7 +424,6 @@ else
                  -device-option CROSS_COMPILE=${_toolchain} \
                  -no-xcb \
                  -qpa eglfs \
-                 -opengl es2 \
                  -egl \
                  ${_additional_configure_flags}"
 fi
