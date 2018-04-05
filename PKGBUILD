@@ -3,7 +3,7 @@
 # Maintainer: Angel_Caido <geussepe at gmail dot com>>
 
 pkgname=multibootusb
-pkgver=9.1.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=("any")
@@ -11,7 +11,7 @@ url="http://multibootusb.org"
 license=("GPL")
 depends=("python-pyqt5" "pyqt5-common" "python-dbus" "mtools" "util-linux" "parted" "p7zip" "python-six" "python-pyudev")
 
-sha512sums=("7c9c85b23e475f05db112f0e13c10eff52bbdc5272226b56ed0e4be104ca512fa76133123209dcd64de9b310d4bd63c255c8b20ea8d1bca99bcf476feb4920a9")
+sha512sums=("461ce6edd835b2a017d96c3987338cd9004894949ac0b121fc289d100b7945dd89970f966e48310b97f312221a2f5a047190c55802d3a07a9eec0bf6ec22356d")
 source=("https://github.com/mbusb/$pkgname/archive/v${pkgver}.tar.gz")
 
 package () {
