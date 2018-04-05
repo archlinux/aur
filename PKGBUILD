@@ -4,9 +4,9 @@
 
 _pkgname=execline
 pkgname=${_pkgname}-no-conflicts
-pkgver=2.3.0.4
+pkgver=2.5.0.0
 pkgrel=1
-pkgdesc="A (non-interactive) scripting language, like sh; without import or define"
+pkgdesc="A (non-interactive) scripting language, like sh; renamed 'define' 'xl-define'"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}/"
 license=('ISC')
@@ -14,7 +14,7 @@ depends=('skalibs')
 conflicts=('execline')
 provides=("execline=$pkgver")
 source=("http://skarnet.org/software/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e4bb8fc8f20cca96f4bac9f0f74ebce5081b4b687bb11c79c843faf12507a64b')
+sha256sums=('f6993094766652041c21fde9c07ef53a3cd4b93a64123d9578fb4997a2cefca1')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -28,9 +28,7 @@ package() {
 
   DESTDIR=${pkgdir} make install
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for bin in import define; do
-    rm ${pkgdir}/usr/bin/${bin}
-  done
+  mv ${pkgdir}/usr/bin/define ${pkgdir}/usr/bin/xl-define
 }
 
 # vim:ft=sh ts=2 sw=2 et:
