@@ -1,7 +1,7 @@
 pkgbase = motioneye
 	pkgdesc = web-based user interface for motion
-	pkgver = 0.90
-	pkgrel = 1
+	pkgver = 0.39
+	pkgrel = 2
 	url = https://github.com/ccrisan/motioneye/
 	install = motioneye.install
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = motioneye
 	depends = mime-types
 	options = emptydirs
 	backup = etc/motioneye/motioneye.conf
-	source = https://github.com/ccrisan/motioneye/archive/0.90.tar.gz
-	md5sums = 620bf1dcaa1a221da328acf5aa65402c
+	source = https://github.com/ccrisan/motioneye/archive/0.39.tar.gz
+	md5sums = 65a42e4b150aedfbab4b07408c83018f
 
 pkgname = motioneye
 
