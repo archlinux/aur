@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=4
+pkgrel=5
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -25,7 +25,7 @@ source_x86_64=(
 md5sums_x86_64=(
     '53e1b818d3e8f9ff647ab13e1549b55b'
     'f3481e14cba331160339b3b5ab78872b'
-    '821e706405d882369108a5fa940b3078'
+    '1cfb0ca92bb3bebfd95da621c4fa0a84'
 )
 
 prepare() {
