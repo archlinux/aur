@@ -2,8 +2,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php71-apcu
-pkgver=5.1.10
-pkgrel=2
+pkgver=5.1.11
+pkgrel=1
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP'
 url='https://pecl.php.net/package/APCu'
@@ -13,7 +13,7 @@ license=('PHP')
 source=("https://pecl.php.net/get/apcu-${pkgver}.tgz"
         'apcu.ini')
 backup=("${_optdir}etc/php/conf.d/apcu.ini")
-md5sums=('a16259bb080b632d11d8ada09dd5ab56'
+md5sums=('576c51d928f582b67ccb222bc34f6abd'
          'a353f7efe61928aa2162720789fa171f')
 
 _optdir=/opt/php71
