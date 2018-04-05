@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=5
+pkgrel=6
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -46,8 +46,8 @@ package() {
     install "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications"
 
     # Main binary
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Hyper.AppImage" "${pkgdir}/usr/bin/hyper"
+    install -d "${pkgdir}/usr/local/bin"
+    ln -s "/opt/${pkgname}/Hyper.AppImage" "${pkgdir}/usr/local/bin/hyper"
 
     # Install the icon
     install -d "${pkgdir}/usr/share/pixmaps"
