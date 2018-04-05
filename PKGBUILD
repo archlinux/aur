@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io-soapysdr-git
-pkgver=1.0.r13.9268e6d
+pkgver=1.0.r14.4e13f5e
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy (including SoapySDR)"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://www.${pkgname%-soapysdr-git}"
 license=("GPL2")
 depends=("faad2" "fftw" "qt5-charts" "qt5-declarative" "qt5-multimedia" "rtl-sdr" "soapysdr-git")
 optdepends=("airspy" "qt5-quickcontrols2" "soapyairspy-git" "soapybladerf-git" "soapyhackrf-git" "soapylms7-git" "soapyosmo-git" "soapyplutosdr-git" "soapyrtlsdr-git" "soapysdrplay-git")
-makedepends=("gcc" "cmake")
+makedepends=("cmake" "gcc" "git")
 provides=("${pkgname%-soapysdr-git}")
 conflicts=("${pkgname%-soapysdr-git}")
 source=("${pkgname%-soapysdr-git}::git+https://github.com/AlbrechtL/${pkgname%-soapysdr-git}")
