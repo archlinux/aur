@@ -2,7 +2,7 @@
 
 pkgname=hyper-appimage
 pkgver=2.0.0.canary.15
-pkgrel=8
+pkgrel=9
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -33,7 +33,7 @@ package() {
     install -D -m755 "${srcdir}/hyper-${_pkgver_correct}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/Hyper.AppImage"
 
     # Desktop Entry
-    install -D "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications"
+    install -D "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications/Hyper.desktop"
 
     # Main binary
     install -d "${pkgdir}/usr/bin"
