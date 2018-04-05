@@ -2,7 +2,7 @@
 # Based on brother-hl3170cdw by Libernux <dutchman55@gmx.com>
 pkgname="brother-hl3150cdw"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL3150CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -10,14 +10,14 @@ license=('custom:brother commercial license')
 depends=('cups')
 install='brother-hl3150cdw.install'
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/hl3150cdwlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/hl3150cdwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/hl3150cdwlpr-$pkgver-1.i386.rpm"
+	"http://download.brother.com/welcome/dlf100429/hl3150cdwcupswrapper-1.1.4-0.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
 md5sums=(
 	'bd7526bf96f305fc736c7ba691d3f6bb'
-	'b91cff08233ddf280554d8c4a806235b'
+	'10851603c0a617f1b37c001e3b09b6f7'
 	'97ad0cffd216059e9d1d3121899d8646'
 	'5e87a3dc0f3e3438c088eda0f3565f0d'
 )
