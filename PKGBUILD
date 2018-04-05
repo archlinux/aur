@@ -18,7 +18,7 @@ depends=('fontconfig'
          'libxext'
          'libxrender'
          'openal'
-         'toxcore'
+         'toxcore>=1:0.2.1'
          'v4l-utils')
 makedepends=('check' 'git')
 optdepends=('gtk3: GTK file picker')
@@ -34,6 +34,8 @@ pkgver() {
 
 build() {
   cd "$pkgname"
+  git submodule init
+  git submodule update
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
