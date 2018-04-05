@@ -2,12 +2,11 @@
 _pkgname="grive-tools"
 pkgname="${_pkgname}-patched"
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Grive Tools with Patch. It disables pinging to Google every 10sec, add Sync at startup if AutoSync is enabled and replace grive-setup with a simple script."
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
 license=('GPL3')
-provides=("${_pkgname}")
 conflicts=("${_pkgname}" "grive-indicator-git")
 depends=('grive' 'libappindicator-gtk3' 'python2-pyinotify' 'python2-gobject')
 makedepends=('patch')

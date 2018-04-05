@@ -1,7 +1,7 @@
 pkgbase = grive-tools-patched
 	pkgdesc = Grive Tools with Patch. It disables pinging to Google every 10sec, add Sync at startup if AutoSync is enabled and replace grive-setup with a simple script.
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools
 	arch = any
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = grive-tools-patched
 	depends = libappindicator-gtk3
 	depends = python2-pyinotify
 	depends = python2-gobject
-	provides = grive-tools
 	conflicts = grive-tools
 	conflicts = grive-indicator-git
 	source = https://launchpad.net/~thefanclub/+archive/grive-tools/+files/grive-tools_1.15.tar.gz
