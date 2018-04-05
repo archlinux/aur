@@ -2,7 +2,7 @@
 pkgbase=non-daw
 pkgname=('non-mixer' 'non-session-manager' 'non-timeline')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url="https://non.tuxfamily.org/"
@@ -47,7 +47,7 @@ package_non-session-manager() {
 
 package_non-timeline() {
   pkgdesc="A powerful, reliable and fast modular Digital Audio Timeline arranger"
-  depends=('hicolor-icon-theme' 'jack' 'liblo' 'libsndfile' 'ntk')
+  depends=('hicolor-icon-theme' 'jack' 'liblo' 'ntk')
   optdepends=('python2: For import-ardour-session')
   cd "$pkgname-$pkgver"
   ./waf --destdir="${pkgdir}" install
