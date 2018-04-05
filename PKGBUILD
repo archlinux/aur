@@ -1,17 +1,17 @@
 # Maintainer: Alia Skywol <skywol@qq.com>
 pkgname=deepin.com.wechat
 pkgver=2.6.0.40deepin1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Deepin Wine Wechat 2.6.0"
 arch=('i686' 'x86_64')
 url="http://weixin.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine' 'noto-fonts-cjk')
+depends=('deepin-wine')
 makedepends=('tar')
 checkdepends=()
-optdepends=()
+optdepends=('noto-fonts-cjk')
 provides=()
 conflicts=('deepin-wechat')
 replaces=()
