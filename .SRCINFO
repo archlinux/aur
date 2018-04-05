@@ -1,0 +1,24 @@
+pkgbase = libtransistor-git
+	pkgdesc = Nintendo Switch homebrew toolchain
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ReSwitched/libtransistor
+	arch = x86_64
+	groups = base-devel
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	depends = clang
+	depends = lld
+	depends = squashfs-tools
+	depends = python-elftools
+	depends = python-lz4
+	provides = libtransistor
+	conflicts = libtransistor-bin
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/ReSwitched/libtransistor.git
+	md5sums = SKIP
+
+pkgname = libtransistor-git
+
