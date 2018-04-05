@@ -1,0 +1,16 @@
+pkgbase = amzsear
+	pkgdesc = The unofficial Amazon search CLI & Python API
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/asherAgs/amzSear
+	arch = any
+	license = MIT
+	depends = python-lxml
+	depends = python-cssselect
+	source = https://pypi.io/packages/source/a/amzsear/amzsear-2.0.1.tar.gz
+	source = https://raw.githubusercontent.com/asherAgs/amzSear/master/LICENSE.txt
+	sha1sums = cedc9f1b9074c64af8f260e34ba5e962a75a2c8d
+	sha1sums = 190228073b1334f12fde5c93e96678d08140b126
+
+pkgname = amzsear
+
