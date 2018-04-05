@@ -8,7 +8,9 @@ pkgbase = python-multivault-git
 	depends = python-gnupg
 	depends = python-yaml
 	depends = python-ldap3
-	depends = python-paramiko,python-requests,python-pgpy
+	depends = python-paramiko
+	depends = python-requests
+	depends = python-pgpy
 	source = git+https://github.com/Selfnet/multivault.git
 	sha512sums = SKIP
 
