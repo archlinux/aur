@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=non-sequencer
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, lightweight, real-time, pattern-based MIDI sequencer"
 arch=('x86_64')
 url="https://non.tuxfamily.org/"
