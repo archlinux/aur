@@ -2,7 +2,7 @@
 # Contributor: blainester <theblainestory@gmail.com>
 # Contributor: mar77i <mar77i at protonmail dot ch>
 pkgname=micro
-pkgver=1.4.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')

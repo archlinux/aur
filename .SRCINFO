@@ -1,6 +1,6 @@
 pkgbase = micro
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 1.4.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/zyedidia/micro
 	arch = x86_64
