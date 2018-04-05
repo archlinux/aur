@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=env-modules-tcl
-pkgver=4.1.0
-pkgrel=1
+pkgver=4.1.2
+pkgrel=0
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -21,9 +21,8 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" zshcomp.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('8626844e7de49a321e658f9d485e546b'
+md5sums=('e6e9ce6774c557f3f825baa35c7780fd'
          '5b4c34fac86b88c96a092c5972afa1fe')
-
 
 # Install locations:
 install_prefix=/usr
@@ -37,7 +36,7 @@ backup=("${config_path:1}/${moduledir}/init/modulerc")
 prepare() {
     cd "modules-$pkgver"
 
-    # uncomment if you don't won't the zsh-completion patch or if it doesn't work for you
+    # comment if you don't won't the zsh-completion patch or if it doesn't work for you
     patch -p1 < ../zshcomp.patch
 }
 
