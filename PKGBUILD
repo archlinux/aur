@@ -49,5 +49,7 @@ package() {
 
     cp -rp usr "${pkgdir}/usr"
     cp -rp opt "${pkgdir}/opt"
-    ln -s "${pkgdir}/opt/appimages/Hyper.AppImage" "${pkgdir}/usr/bin/hyper"
+
+    cd $pkgdir/usr/bin
+    ln -s "${pkgdir}/opt/appimages/Hyper.AppImage" hyper
 }
