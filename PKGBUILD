@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2017.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
@@ -9,7 +9,6 @@ license=('LGPL')
 depends=('openblas')
 makedepends=()
 optdepends=()
-options=('!strip')
 provides=('salome-meca')
 source=("https://www.code-aster.org/FICHIERS/Salome-Meca-${pkgver}-LGPL-1.tgz")
 md5sums=('e65b4da01a8200492b94a278db621029')
@@ -38,7 +37,7 @@ build() {
 	export PATH="${srcdir}/salome_meca/V2017.0.2/prerequisites/Python-2710/bin/":$PATH
 
 	# try using the system freetype2 library
-	# update to freetype2 2.8 breaks the bundled version
+	# update to freetype2 2.9 breaks the bundled version
 	rm "${srcdir}/salome_meca/V2017.0.2/prerequisites/Freetype-2411"/lib/libfreetype.so*
 
 	echo "Building virtual application..."
@@ -56,10 +55,7 @@ build() {
 	fi
 
 	# create .desktop file from template
-	# use the bundled libraries and Python version 
-	_path='PATH=/opt/salome_meca/V2017.0.2/prerequisites/Python-2710/bin/:$PATH'
-	_ld_path='LD_LIBRARY_PATH=$(find /opt/salome_meca/V2017.0.2/ -type d -name lib  | tr '"'"'\\n'"'"' '"'"':'"'"' | sed '"'"'s/:$//'"'"'):$LD_LIBRARY_PATH'
-	sed -e "s,APPLIDIR,$_path $_ld_path /opt/salome_meca/appli_V2017.0.2," \
+	sed -e "s,APPLIDIR/salome,/usr/bin/salome_meca," \
 		-e "s,SALOMEDIR,/opt/salome_meca/V2017.0.2," \
 		${srcdir}/salome_meca/V2017.0.2/.salome_meca_V2017.0.2.desktop \
 		> ${srcdir}/salome_meca.desktop
@@ -82,6 +78,17 @@ build() {
 
 package() {
 	cd ${srcdir}
+
+	# create launcher script
+	# use the bundled libraries and Python version 
+	_path='PATH=/opt/salome_meca/V2017.0.2/prerequisites/Python-2710/bin/:$PATH'
+	_ld_path="LD_LIBRARY_PATH=\$(find /opt/salome_meca/V2017.0.2/ -type d -name lib  | tr '\\n' ':' | sed 's/:$//'):\$LD_LIBRARY_PATH"
+	mkdir -p ${pkgdir}/usr/bin
+	cat > ${pkgdir}/usr/bin/salome_meca <<-EOF
+	#!/usr/bin/env bash
+	$_path $_ld_path /opt/salome_meca/appli_V2017.0.2/salome "\$@"
+	EOF
+	chmod +x ${pkgdir}/usr/bin/salome_meca
 
 	# install bash completions
 	mkdir -p $pkgdir/usr/share/bash-completion/completions
