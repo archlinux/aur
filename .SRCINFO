@@ -1,0 +1,27 @@
+pkgbase = netgui
+	pkgdesc = GUI for netctl, stable but beta. Replaces WiFiz.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/codywd/NetGUI
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = netctl
+	depends = gtksourceview3
+	depends = libnotify
+	optdepends = notification-daemon: Desktop Notifications
+	optdepends = notify-osd: Desktop Notifications (others dont work for me personally)
+	provides = netgui
+	conflicts = netcfg
+	conflicts = wicd
+	replaces = wifiz
+	replaces = wifiz-git
+	options = !emptydirs
+	source = git+https://github.com/codywd/NetGUI.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = netgui
+
