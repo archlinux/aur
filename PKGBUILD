@@ -1,7 +1,7 @@
 # Maintainer: Guilherme Machado <machadofguilherme@gmail.com>
 
 pkgname=distrodown-git
-pkgrel=1
+pkgrel=2
 pkgver=14
 pkgdesc="Download Easy Linux distros"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = distrodown-git
 	pkgdesc = Download Easy Linux distros
 	pkgver = 14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/automatizando/distrodown
 	arch = any
 	license = GPL3
