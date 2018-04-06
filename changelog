@@ -1,3 +1,13 @@
+2018-04-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.1.9-1:
+    [!] Re-enabled link-time optimizations, which results in smaller overall ASF size (especially in OS-specific variants).
+    IPC GUI improvements, new features, optimizations and bugfixes.
+    BGR improvements (more verbosity, used and unused output files).
+    Added CommandPrefix global config property.
+    Fixed V3.1 regression that made SteamTarget no longer possible to be declared (ref: #765).
+    Changed default value of SteamProtocols from 1 to 3 due to #186 issue being resolved.
+    Removed obsolete GET /Api/Command IPC endpoint.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-03-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.1.0-1:
     [!] Fixed recent Steam breaking change regarding ASF 2FA confirmations (yes, for the second time).
