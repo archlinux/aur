@@ -1,6 +1,6 @@
 pkgbase = python-ibis
 	pkgdesc = A pandas-like deferred expression system, with first class SQL support
-	pkgver = 0.11.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/ibis-project/ibis
 	arch = any
@@ -8,11 +8,13 @@ pkgbase = python-ibis
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
+	depends = python-multipledispatch
 	depends = python-numpy
 	depends = python-pandas
+	depends = python-regex
 	depends = python-toolz
-	source = https://github.com/ibis-project/ibis/archive/v0.11.2.tar.gz
-	sha256sums = 2b89d636403db05da6a2e0f0ca398db26112bda2fba5ef59a3e7d46e2c70747e
+	source = https://github.com/ibis-project/ibis/archive/v0.13.0.tar.gz
+	sha256sums = 3da1b51c72e074183abb08a2724a5b77f90e7328ab014de5ff7e699daf5c75f9
 
 pkgname = python-ibis
 

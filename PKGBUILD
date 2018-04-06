@@ -2,18 +2,18 @@
 
 pkgname=python-ibis
 _pkgname=ibis
-pkgver=0.11.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A pandas-like deferred expression system, with first class SQL support"
 arch=('any')
 url="https://github.com/ibis-project/ibis"
 license=('Apache')
-depends=('python' 'python-numpy' 'python-pandas' 'python-toolz')
+depends=('python' 'python-multipledispatch' 'python-numpy' 'python-pandas' 'python-regex' 'python-toolz')
 checkdepends=('python-pytest')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/ibis-project/ibis/archive/v$pkgver.tar.gz")
-sha256sums=('2b89d636403db05da6a2e0f0ca398db26112bda2fba5ef59a3e7d46e2c70747e')
+sha256sums=('3da1b51c72e074183abb08a2724a5b77f90e7328ab014de5ff7e699daf5c75f9')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
