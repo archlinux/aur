@@ -1,4 +1,9 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
+# Contributor: Gaetan Bisson <bisson@archlinux.org
+# Contributor: Brad Fanella <bradfanella@archlinux.us>
+# Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
+# Contributor: Corrado Primier <bardo@aur.archlinux.org>
+# Contributor: ice-man <icemanf@gmail.com>
 
 pkgname=aircrack-ng-git
 _pkgname=aircrack-ng
@@ -8,13 +13,15 @@ pkgdesc='WiFi security auditing tools suite'
 url='https://aircrack-ng.org/'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
-makedepends=('git' 'autoconf' 'automake' 'pkg-config' 'make' 'gcc-libs')
-depends=('openssl' 'iw' 'net-tools' 'shtool' 'ethtool' 'libnl' 'libtool')
+makedepends=('git' 'python')
+depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'iw' 'ethtool' 'net-tools')
+optdepends=('python: dump-join, airgraph-ng, versuck-ng, airdrop-ng')
 source=("git://github.com/aircrack-ng/aircrack-ng.git")
 sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+replaces=('aircrack-ng-svn')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
