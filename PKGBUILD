@@ -5,13 +5,12 @@
 pkgname=python-vatnumber
 _pkgname=vatnumber
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to validate VAT numbers"
 arch=('any')
 url="https://pypi.python.org/pypi/vatnumber"
-conflicts=('python-vatnumber')
 license=('GPL3')
-depends=('python')
+depends=('python' 'python-stdnum')
 makedepends=('python-setuptools')
 optdepends=("python-suds: SOAP client for European Union's Vat information exchange service")
 
