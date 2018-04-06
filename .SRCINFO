@@ -1,7 +1,7 @@
 pkgbase = forked-daapd
 	pkgdesc = iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd).
 	pkgver = 26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ejurgensen/forked-daapd
 	install = forked-daapd.install
 	arch = armv6h
@@ -23,6 +23,7 @@ pkgbase = forked-daapd
 	depends = libsodium
 	depends = protobuf-c
 	depends = json-c
+	depends = libwebsockets
 	backup = etc/forked-daapd.conf
 	source = https://github.com/ejurgensen/forked-daapd/archive/26.0.tar.gz
 	source = forked-daapd.install
