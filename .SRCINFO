@@ -1,12 +1,12 @@
 pkgbase = netgui
 	pkgdesc = GUI for netctl, stable but beta. Replaces WiFiz.
 	pkgver = 0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/codywd/NetGUI
 	arch = any
 	license = custom
 	makedepends = git
-	depends = python
+	depends = pythonU
 	depends = python-gobject
 	depends = netctl
 	depends = gtksourceview3

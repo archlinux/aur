@@ -3,12 +3,12 @@
 pkgname=netgui
 _gitname=NetGUI
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for netctl, stable but beta. Replaces WiFiz."
 arch=('any')
 url="https://github.com/codywd/$_gitname"
 license=('custom')
-depends=('python' 'python-gobject' 'netctl' 'gtksourceview3' 'libnotify')
+depends=('python'U 'python-gobject' 'netctl' 'gtksourceview3' 'libnotify')
 optdepends=(
 'notification-daemon: Desktop Notifications'
 'notify-osd: Desktop Notifications (others dont work for me personally)'
