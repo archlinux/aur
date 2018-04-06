@@ -1,3 +1,6 @@
 post_install() {
-	echo "set LIBTRANSITOR_HOME=/opt/libtransistor/"
+	echo "export LIBTRANSISTOR_HOME=/opt/libtransistor" > /etc/profile.d/libtransistor.sh
+}
+post_remove(){
+	rm /etc/profile.d/libtransistor.sh
 }
