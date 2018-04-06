@@ -1,12 +1,12 @@
 pkgbase = spl-linux-vfio-git
-	pkgver = 2018.03.09.r1069.43983eb.4.15.14.1
+	pkgver = 2018.04.04.r1070.581bc01.4.15.14.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
 	makedepends = linux-vfio-headers=4.15.14-1
 	makedepends = git
-	depends = spl-utils-common-git>=2018.03.09.r1069.43983eb
+	depends = spl-utils-common-git>=2018.04.04.r1070.581bc01
 	depends = kmod
 	depends = linux-vfio=4.15.14-1
 	source = git+https://github.com/zfsonlinux/spl.git
