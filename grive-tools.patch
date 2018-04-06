@@ -1,6 +1,6 @@
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new/opt/thefanclub/grive-tools/grive-indicator
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator	2015-03-11 13:48:26.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-06 03:12:33.097117000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-06 03:54:39.267513000 +0200
 @@ -1,8 +1,8 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python2
@@ -34,7 +34,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  import gettext
  import locale
  
-@@ -49,34 +48,21 @@
+@@ -49,25 +48,19 @@
      def process_IN_CREATE(self, event):
          if event.name not in excludedFiles:
            debugPrint("Create: %s" %  os.path.join(event.path, event.name))
@@ -59,17 +59,16 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        #writeToFile(streamLog, "Moved: %s" %  os.path.join(event.path, event.name), 'a')
          eventLoop("Move: %s" %  os.path.join(event.path, event.name))
  
--def stopTimer(timerName):
--    if timerName > 0 :
--      GLib.source_remove(timerName)
--    # CD added return false to stop animation
--    return False
--
+ def stopTimer(timerName):
+@@ -76,7 +69,6 @@
+     # CD added return false to stop animation
+     return False
+ 
 -
  def joinTreads():
      global loop_thread
      # Join Threads every second for 0.5 sec and relax
-@@ -84,37 +70,14 @@
+@@ -84,37 +76,14 @@
      return True
  
  def quitApplication(widget, optionName):
@@ -109,7 +108,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def startfile(filename):
      try:
          os.startfile(filename)
-@@ -123,7 +86,7 @@
+@@ -123,7 +92,7 @@
  
  def sendmessage(title, message):
      if notificationSetting:
@@ -118,7 +117,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      return
  
  def folderSize():
-@@ -134,91 +97,34 @@
+@@ -134,91 +103,34 @@
      debugPrint("Folder Size:  %s" % output)
      return output
  
@@ -140,9 +139,8 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      debugPrint("No more disc activity detected -------------------- SYNC ?")
 -
      # Sync Now ****
--    syncNow(menu_sync_now, 'Sync Now')
+     syncNow(menu_sync_now, 'Sync Now')
 -
-+    syncNow(menu_sync, 'Sync Now')
      # Return FALSE so that we stop the timerFolderSize
      return False
  
@@ -219,7 +217,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def copyFile(source, destination):
      try:
          shutil.copy (source, destination)
-@@ -233,8 +139,6 @@
+@@ -233,8 +145,6 @@
          textMessage = "From "+source
          debugPrint("File Delete Error %s" % textMessage )
  
@@ -228,7 +226,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def autoSync(optionName):
      global userHome
      global googleDriveFolder
-@@ -243,16 +147,12 @@
+@@ -243,16 +153,12 @@
      global wm
      global watcherGoogleDrive
      global excludeFilter
@@ -245,7 +243,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      if optionName=='stop':
        # Count watched folders
        debugPrint("Number of Watchers active on stop: %s" % watcherItems)
-@@ -261,75 +161,37 @@
+@@ -261,15 +167,11 @@
          for indexName, indexValue in watcherGoogleDrive.iteritems():
            watchFolder = indexName
            wm.rm_watch(watcherGoogleDrive[indexName], rec=True)
@@ -255,43 +253,41 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
            debugPrint("Stopped Watcher ID: %d" % watcherGoogleDrive[indexName])
          debugPrint("------------- All watchers Removed")
 -        
--
--def checkGriveStatus():
--	# Check grive PID to determine if it is active
--    checkGrivePidProc = subprocess.Popen('pgrep -x grive', shell=True, stdout=subprocess.PIPE).stdout
--    checkGrivePid = checkGrivePidProc.read()
--    if checkGrivePid != '' :
--      debugPrint("[Warning] Grive is running PID: %s" % checkGrivePid)
--      return True	
--    else:
--      return False
  
- def syncNow(widget, optionName):
+ def checkGriveStatus():
+-	# Check grive PID to determine if it is active
++    # Check grive PID to determine if it is active
+     checkGrivePidProc = subprocess.Popen('pgrep -x grive', shell=True, stdout=subprocess.PIPE).stdout
+     checkGrivePid = checkGrivePidProc.read()
+     if checkGrivePid != '' :
+@@ -282,54 +184,45 @@
      global googleDriveFolder
--    global syncNowButtonLabel
--    global syncNowButtonOn
+     global syncNowButtonLabel
+     global syncNowButtonOn
 -    
 -    # Disable Button now and global for onConnection timer
--    syncNowButtonOn = False
--    widget.set_sensitive(syncNowButtonOn)
++    # Disable Button now and global for runWorker timer
+     syncNowButtonOn = False
+     widget.set_sensitive(syncNowButtonOn)
 -    # Set Label now and global for onConnection timer
--    syncNowButtonLabel = 'Sync in progress...'
--    widget.set_label(syncNowButtonLabel)     
++    # Set Label now and global for runWorker timer
+     syncNowButtonLabel = 'Sync in progress...'
+     widget.set_label(syncNowButtonLabel)     
 -    
--    # Make sure Grive instance is not running
--    if checkGriveStatus():
--      # Ignore sync and return without doing sync if Grive is running
--      #sendmessage('Google Drive', "Sync in progress...")
--      debugPrint("[Notice] Sync request skipped Sync in progress...")
--      return
+     # Make sure Grive instance is not running
+     if checkGriveStatus():
+       # Ignore sync and return without doing sync if Grive is running
+       #sendmessage('Google Drive', "Sync in progress...")
+       debugPrint("[Notice] Sync request skipped Sync in progress...")
+       return
 -
--    # Grive not running so good to go
--    syncError = "none"
+     # Grive not running so good to go
+     syncError = "none"
 -
--    # Stop Animation 
--    stopTimer(timerConnectAnimation)
--    # Switch Icon sync animation ON 
--    onConnectAnimate()
+     # Stop Animation 
+     stopTimer(timerConnectAnimation)
+     # Switch Icon sync animation ON 
+     onConnectAnimate()
      # Change Working directory to Google Drive folder
      try:
 -        os.chdir(googleDriveFolder)
@@ -303,6 +299,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        return False
 +      syncError = _('Google Drive Folder Missing. Run Grive Setup.')
 +      sendmessage('Google Drive', _('Sync Error - ')+syncError)
++      ### TODO Serious error if google drive not present so do something here to help user fix problem
 +      return False
      # Run Grive if no errors
      try:
@@ -311,17 +308,8 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        # To find out if Grive is done we use the onConnection function
 -
 +      sendmessage('Google Drive', _('Synchronizing...'))
-+      widget.set_label(_('Sync in progress...'))
-+      p = subprocess.Popen(['grive'], stdout=subprocess.PIPE)
-+      while p.poll() is None:
-+        time.sleep(0.5)
-+      print 'RETURN CODE', p.returncode
-+      if p.returncode == 0:
-+        sendmessage('Google Drive', _('Sync Complete'))
-+        widget.set_label(_('Sync Now'))
-+      else:
-+        sendmessage('Google Drive', _('Sync Failed - '))
-+        widget.set_label(_('Last Sync failed'))
++      proc = subprocess.Popen(['grive'], stdout=subprocess.PIPE)
++      # To find out if Grive is done we use the runWorker function
      except:
 -        syncError = _('See last log file for details')
 -        sendmessage('Google Drive', _('Sync Failed - ')+syncError)
@@ -331,15 +319,18 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 -    # rest of checking is done in onConnection and  
 -       
-+      sendmessage('Google Drive', _('Sync Failed - '))
++      syncError = _('See last log file for details')
++      sendmessage('Google Drive', _('Sync Failed - ')+syncError)
++      # Set Label
 +      widget.set_label(_('Last Sync failed'))
++      return False
      return True
  
 -
  def toggleAutoSync(widget, optionName):
      isActive=widget.get_active()
      if isActive:
-@@ -339,142 +201,29 @@
+@@ -339,46 +232,16 @@
        autoSync('stop')
        sendmessage('Google Drive', _('Auto Sync OFF'))
  
@@ -385,19 +376,16 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        return False
 -
 -def onConnection():
--    # This gets triggered by timer every 10sec
--    global menu
--    global ind
--    global googleDriveFolder
--    global watcherGoogleDrive
--    global connectionStatus
--    global syncNowButtonOn
--    global syncNowButtonLabel
++def runWorker():
+     # This gets triggered by timer every 10sec
+     global menu
+     global ind
+@@ -387,74 +250,42 @@
+     global connectionStatus
+     global syncNowButtonOn
+     global syncNowButtonLabel
 -    
-+def startupWorker():
-+    global menu_sync
 +    global startupSync
-+    menu_sync.set_label(_('Sync Now'))
      key = 'autosync'
 -
 -
@@ -424,7 +412,19 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -	    # Button active stop animations	  
 -      if syncNowButtonOn == True:
 -        # Stop animation
--        stopTimer(timerConnectAnimation)
++    # Activate Sync Now options
++    # Check if Grive is busy on every loop
++    # This is the only way to monitor grive
++    if syncNowButtonOn == False:
++      # Check if Grive is still running
++      if checkGriveStatus():
++        syncNowButtonOn = False
++        syncNowButtonLabel = _('Sync in progress...')
++      else:
++        syncNowButtonOn = True
++        syncNowButtonLabel = _('Sync Now')
++        sendmessage('Google Drive', _('Sync Complete'))
+         stopTimer(timerConnectAnimation)
 -        # Set icon
 -        ind.set_icon(icon_path)
 -		
@@ -442,7 +442,10 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    # OFFLINE
 -    else:
 -      # If animation running stop animation
--      stopTimer(timerConnectAnimation)
++    # Button active stop animations	  
++    if syncNowButtonOn == True:
++      # Stop animation
+       stopTimer(timerConnectAnimation)
 -      # Set sleep icon
 -      ind.set_icon(icon_path_sleep)
 -      # deactivate buttons
@@ -456,46 +459,43 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 -      #autoSync('stop')
 -
--    return True
++      # Set icon
++      ind.set_icon(icon_path)
++      if startupSync == True and settings.get_boolean(key) == True:
++        # Sync at Startup
++        startupSync = False
++        syncNow(menu_sync_now, 'Sync Now')
++    menu_sync_now.set_sensitive(syncNowButtonOn)
++    menu_sync_now.set_label(syncNowButtonLabel)
++    # Set status
++    connectionStatus = True
+     return True
+ 
 -
 -
--
--def connectAnimation(widget):
--    global seqNum
--    seqFile = 'grive-app-ind-con-'+str(seqNum)+'.svg'
--    #debugPrint("seqFile: %s" % seqFile)
+ def connectAnimation(widget):
+     global seqNum
+     seqFile = 'grive-app-ind-con-'+str(seqNum)+'.svg'
+     #debugPrint("seqFile: %s" % seqFile)
 -    ind.set_icon(os.path.join(installDir,'icons', themeStyle, seqFile))
--    if seqNum < 3 :
--      seqNum = seqNum + 1
--    else:
--      seqNum = 1
--    return True
--
--def stopConnectAnimation(widget):
--    # CD deavtivated Not used or needed stopTimer does job 
--    global ind
--    # stop animation sequence timer
--    GLib.source_remove(timerConnectAnimation)
--    # stop calling timer as well by returning False
-+    # Check startupSync
-+    if startupSync == True and settings.get_boolean(key) == True:
-+      # Sync at Startup
-+      startupSync = False
-+      syncNow(menu_sync, 'Sync Now')
-+    # disable Worker
-+    menu_sync.set_sensitive(True)
++    ind.set_icon(os.path.join(installDir,'icons', seqFile))
+     if seqNum < 3 :
+       seqNum = seqNum + 1
+     else:
+@@ -469,11 +300,9 @@
+     # stop calling timer as well by returning False
      return False
  
 -
--def onConnectAnimate():
--    global timerConnectAnimation
+ def onConnectAnimate():
+     global timerConnectAnimation
 -    timerConnectAnimation = GLib.timeout_add(666, connectAnimation, '')
 -
--
++    timerConnectAnimation = GLib.timeout_add(999, connectAnimation, '')
+ 
  def openGdrive(widget, optionName):
      global googleDriveFolder
-     startfile(googleDriveFolder)
-@@ -482,45 +231,39 @@
+@@ -482,45 +311,39 @@
  def openInBrowser(widget, url):
      webbrowser.open_new(url)
  
@@ -552,7 +552,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # setup a check button and associate it with a GSettings key
      global settings
      global autostart_check_button
-@@ -531,7 +274,6 @@
+@@ -531,7 +354,6 @@
      preferencesWindow.set_border_width(24)
      preferencesWindow.connect('delete-event', closeWindow, preferencesWindow)
  
@@ -560,7 +560,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      ## Button definitions
      # Autostart
      optionName = _('Start Google Drive when you start your computer')
-@@ -545,7 +287,6 @@
+@@ -545,7 +367,6 @@
      # Link button actions on toggle
      autostart_check_button.connect("toggled", on_check_button_toggled, autostart_check_button, settings, key)
  
@@ -568,7 +568,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # Auto Sync
      optionName = _('Automatically synchronize Google Drive')
      key = 'autosync'
-@@ -558,7 +299,6 @@
+@@ -558,7 +379,6 @@
      # Link button actions on toggle
      autosync_check_button.connect("toggled", on_check_button_toggled, autosync_check_button, settings, key)
  
@@ -576,7 +576,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # Notifications
      optionName = _('Show On Screen Notifications')
      key = 'notifications'
-@@ -571,55 +311,27 @@
+@@ -571,55 +391,27 @@
      # Link button actions on toggle
      notifications_check_button.connect("toggled", on_check_button_toggled, notifications_check_button, settings, key)
  
@@ -632,7 +632,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def openAbout(widget, optionName):
      widget.set_sensitive(False)
      aboutWindow=Gtk.AboutDialog()
-@@ -640,7 +352,7 @@
+@@ -640,7 +432,7 @@
  'along with this program.  If not, see http://www.gnu.org/licenses')
      aboutWindow.set_website('http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools')
      aboutWindow.set_website_label('www.thefanclub.co.za')
@@ -641,7 +641,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      aboutWindow.set_translator_credits(u'Christiaan Diedericks - Afrikaans \nJos\u00e9 A. Alonso - Spanish \nMaximilian Gro\u00dfe - German \nVitalD - Russian \nJean-S\u00e9bastien Beaulieu - French\nLuca Chiodini - Italian\nThomas Hansen - Portuguese\nJorge Pinto - Brazilian Portuguese\nMohammad Jolani - Arabic\nHirohisa Kawase - Japanese\nDieuwke Hupkes - Dutch\nDu\u0161an Spasi\u0107 - Serbian\nPetr Kub\u00e1nek - Czech\nPiotr  Strebski - Polish \nLuc\u00e1\u0161 Kr\u00e1l - Slovak \nAbhimanyu Shekhar - Hindi \nNurzhan - Kazakh \nZdravko Lambov- Bulgarian \nHenrik Holst - Swedish \nOrestis Chatziioanidis - Greek \nP\u00e9ter P\u00e9nzes - Hungarian\nSung Min Lee - Korean \nPeter Chu - Chinese\nAbdul Muhaimin - Malay\nManish Sainju - Nepali')
      aboutWindow.set_logo(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
      aboutWindow.set_icon(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
-@@ -649,67 +361,10 @@
+@@ -649,67 +441,10 @@
      aboutWindow.destroy()
      widget.set_sensitive(True)
  
@@ -709,31 +709,29 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def notificationSettingUpdate():
      global notificationSetting
      # Read defaults from dconf Settings
-@@ -720,8 +375,7 @@
+@@ -720,7 +455,6 @@
  
  def renderMenu():
      global menu
 -    global menu_last_sync
--    global menu_sync_now
-+    global menu_sync
+     global menu_sync_now
      global menu_auto_sync
      global menu_open_gdrive_web
-     global menu_help
-@@ -729,24 +383,12 @@
+@@ -729,25 +463,13 @@
  
      # Menu Items
      optionName=_('Sync Now')
 -    #menu_sync_now = Gtk.ImageMenuItem(optionName)
--    menu_sync_now = Gtk.MenuItem(optionName)
--    menu_sync_now.connect("activate", syncNow, optionName)
--    menu_sync_now.set_use_underline(True)
--    menu_sync_now.set_sensitive(False)
+     menu_sync_now = Gtk.MenuItem(optionName)
+     menu_sync_now.connect("activate", syncNow, optionName)
+     menu_sync_now.set_use_underline(True)
+     menu_sync_now.set_sensitive(False)
 -    # Menu item icon
 -    #menu_sync_now.set_image(Gtk.Image.new_from_file(icon_path_sync_white))
 -    #menu_sync_now.set_always_show_image(True)
--    menu_sync_now.set_label(_('Connecting...'))
--    menu.append(menu_sync_now)
--
+     menu_sync_now.set_label(_('Connecting...'))
+     menu.append(menu_sync_now)
+ 
 -
 -    optionName=_('Last Sync')
 -    menu_last_sync = Gtk.MenuItem(optionName)
@@ -741,16 +739,11 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    menu_last_sync.set_label(readLastSync("activate", optionName))
 -    menu_last_sync.set_sensitive(False)
 -    menu.append(menu_last_sync)
-+    menu_sync = Gtk.MenuItem(optionName)
-+    menu_sync.connect("activate", syncNow, optionName)
-+    menu_sync.set_use_underline(True)
-+    menu_sync.set_sensitive(False)
-+    menu_sync.set_label(_('Connecting...'))
-+    menu.append(menu_sync)
- 
+-
      menu.append(Gtk.SeparatorMenuItem.new())
  
-@@ -755,11 +397,8 @@
+     optionName=_('Auto Sync')
+@@ -755,11 +477,8 @@
      menu_auto_sync = Gtk.CheckMenuItem(optionName)
      menu_auto_sync.connect("activate", toggleAutoSync, optionName)
      settings.connect("changed::autostart", on_my_setting_changed, key, menu_auto_sync)
@@ -762,7 +755,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      menu.append(menu_auto_sync)
  
      menu.append(Gtk.SeparatorMenuItem.new())
-@@ -804,95 +443,68 @@
+@@ -804,95 +523,68 @@
      menu.append(menu_quit)
  
      menu.show_all()
@@ -887,7 +880,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
    # Load translation if possible
    try:
      appTranslate = gettext.translation(appName, localeDir, fallback = True)
-@@ -901,103 +513,62 @@
+@@ -901,34 +593,29 @@
    except Exception as e:
      print(e)
      _ = str
@@ -901,15 +894,15 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -  if griveCheck == False :
 -	  installDialog()
 -	  os._exit(0)
+-     
 +  if griveCheck == False:
 +    installDialog()
 +    os._exit(0)
-      
++ 
    # Placeholder vars
 -  menu_last_sync = ''
--  menu_sync_now = ''
 +  startupSync = True
-+  menu_sync = ''
+   menu_sync_now = ''
    menu_auto_sync = ''
    autostart_check_button = ''
    menu_open_gdrive_web = ''
@@ -924,18 +917,19 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  
 -  
 -  
--  # Make sure Grive instance is not running
--  if checkGriveStatus():
--    syncNowButtonOn = False
--    syncNowButtonLabel = _('Sync in progress...')
--  else:
--    syncNowButtonOn = True
--    syncNowButtonLabel = _('Sync Now')
+   # Make sure Grive instance is not running
+   if checkGriveStatus():
+     syncNowButtonOn = False
+@@ -936,68 +623,40 @@
+   else:
+     syncNowButtonOn = True
+     syncNowButtonLabel = _('Sync Now')
 -  
 -  # Check online status at startup then via timer every 10sec see timerInternetAccess
 -  #connectionStatus = checkInternetConnection('http://drive.google.com')
 -  connectionStatus = False
 -  
++
    # Icon Paths
 -  google_drive_icon_path = os.path.join(installDir,'icons/google-drive-128.png')
 -  thefanclub_icon_path = os.path.join(installDir,'icons/TheFanClub-128.png')
@@ -994,7 +988,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
    timerAsync = GLib.timeout_add(1000, joinTreads)
 -  timerInternetAccess = GLib.timeout_add(10000, onConnection)
 -
-+  timerWorker = GLib.timeout_add(10000, startupWorker)
++  timerWorker = GLib.timeout_add(10000, runWorker)
  
    # Create Menu
    menu = Gtk.Menu()
