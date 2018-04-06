@@ -1,7 +1,7 @@
 pkgbase = flashplayer-standalone
-	pkgdesc = Adobe Flash Player Standalone (A.K.A Adobe Flash Player Proyector)
+	pkgdesc = Adobe Flash Player Standalone (A.K.A. Adobe Flash Player Projector)
 	pkgver = 29.0.0.113
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.adobe.com/support/flashplayer/downloads.html
 	arch = x86_64
 	license = custom:ADOBE

@@ -4,8 +4,8 @@
 
 pkgname=flashplayer-standalone
 pkgver=29.0.0.113
-pkgrel=2
-pkgdesc="Adobe Flash Player Standalone (A.K.A Adobe Flash Player Proyector)"
+pkgrel=3
+pkgdesc="Adobe Flash Player Standalone (A.K.A. Adobe Flash Player Projector)"
 arch=("x86_64")
 url="http://www.adobe.com/support/${pkgname%-standalone}/downloads.html"
 license=("custom:ADOBE" "LGPL")
@@ -26,7 +26,7 @@ prepare() {
     --comment "Player for using content created on the Adobe Flash platform" \
     --exec "/usr/bin/${pkgname%-standalone}" \
     --categories "Audio;AudioVideo;Graphics;GTK;Player;Video;Viewer" \
-    --mimetypes "application/x-shockwave-flash;image/gif;image/jpg;image/png;"
+    --mimetypes "application/x-shockwave-flash;image/gif;image/jpg;image/png"
 }
             
 package() {
@@ -34,8 +34,7 @@ package() {
   install -Dm644 "${srcdir}/license.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/license.pdf"
 
   msg2 "Installing desktop file into /usr/share/applications/"
-  install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   
   msg2 "Installing flasplayer into /usr/bin/"
   install -Dm755 "${srcdir}/${pkgname%-standalone}" "${pkgdir}/usr/bin/${pkgname%-standalone}"
