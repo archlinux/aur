@@ -3,9 +3,9 @@
 _pkgname=scrython
 pkgname=python-scrython
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python wrapper for the Scryfall.com API'
-url='https://addisonlynch.github.io/iexfinance/'
+url='https://github.com/NandaScott/Scrython'
 arch=(any)
 license=(MIT)
 depends=(python python-aiohttp)
