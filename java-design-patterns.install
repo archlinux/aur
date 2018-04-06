@@ -11,5 +11,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  printf "$(tput setaf 4)If you had changed permissions to folder /opt/java-design-patterns is possible you need to delete it manually.$(tput sgr0)\n"
+  printf "$(tput setaf 4)If you had added/modified files or permissions in folder /opt/java-design-patterns is possible you need to delete it manually.$(tput sgr0)\n"
 }
