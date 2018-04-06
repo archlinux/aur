@@ -59,6 +59,7 @@ do
 	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
 
 	if $INTERACTIVE; then
+		read -d '' -t 0.001
 		echo -e "\a"
 		echo "Work over"
 		read
@@ -71,6 +72,7 @@ do
 	done
 	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
 	if $INTERACTIVE; then
+		read -d '' -t 0.001
 		echo -e "\a"
 		echo "Pause over"
 		read
