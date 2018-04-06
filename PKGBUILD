@@ -23,7 +23,7 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-cd $srcdir/netgui
+cd $srcdir/NetGUI
 # Use the tag of the last commit
 git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
