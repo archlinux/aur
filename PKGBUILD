@@ -1,7 +1,7 @@
 # Maintainer: Jonas Strassel <info@jonas-strassel.de>
 
-pkgname=scantailor-git
-pkgver=RELEASE_0_9_12_1.r5.g67a8466
+pkgname=scantailor-advanced-git
+pkgver=v1.0.13.r0.g91211e0
 pkgrel=1
 pkgdesc="Interactive post-processing tool for scanned pages"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="http://scantailor.org/"
 license=("GPL")
 depends=('qt5-base' 'libtiff' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('cmake' 'qt5-tools' 'eigen' 'boost')
-source=('scantailor::git+https://github.com/scantailor/scantailor')
+source=('scantailor-advanced::git+https://github.com/4lex4/scantailor-advanced')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,12 +23,10 @@ build() {
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	.
-  make -j
+  make -j2
 }
 
 package() {
   cd "$srcdir"/${pkgname%-git}
   make DESTDIR="$pkgdir" install
-  install -Dm0644 "resources/appicon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/scantailor.svg"
-  install -Dm0644 "$srcdir"/../"scantailor-git.desktop" "$pkgdir/usr/share/applications/scantailor-git.desktop"
 }
