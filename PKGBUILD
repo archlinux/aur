@@ -21,14 +21,12 @@ pkgver() {
 build() {
   cd ArchC
   ./autogen.sh
-  ./configure --prefix=$pkgdir/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
   cd ArchC
-  make install
-  # Move configuration files to /etc
-  mv $pkgdir/{usr/,}etc
+  make prefix=$pkgdir/usr sysconfdir=$pkgdir/etc install
   rm $pkgdir/etc/env.sh  # Unneeded for a system wide install
 }
