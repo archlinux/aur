@@ -1,0 +1,12 @@
+diff -ruN OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt patched/CMakeLists.txt
+--- OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt	2018-04-06 23:45:56.522571618 +0200
++++ patched/CMakeLists.txt	2018-04-06 23:45:29.602098309 +0200
+@@ -208,7 +213,7 @@
+   FRAMEWORK DESTINATION Library/Frameworks
+ )
+ 
+-if(UNIX)
++if(UNIX OR MINGW)
+     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/OIS.pc.in ${CMAKE_BINARY_DIR}/OIS.pc @ONLY)
+     install(FILES ${CMAKE_BINARY_DIR}/OIS.pc DESTINATION ${OIS_LIB_DIRECTORY}/pkgconfig)
+ endif()
