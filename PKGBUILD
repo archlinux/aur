@@ -3,12 +3,12 @@
 pkgname=tinyterm-git
 _pkgname=tinyterm
 pkgver=0.3.r1.g633d60e
-pkgrel=1
+pkgrel=2
 pkgdesc="Very lightweight terminal emulator based on VTE (fork of tinyterm-svn package)"
 arch=('i686' 'x86_64')
 url="https://github.com/lahwaacz/tinyterm"
 license=('MIT')
-depends=('vte')
+depends=('vte-legacy')
 makedepends=('git')
 source=('git://github.com/lahwaacz/tinyterm.git')
 md5sums=('SKIP')
