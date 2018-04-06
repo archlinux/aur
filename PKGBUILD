@@ -2,8 +2,8 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -17,14 +17,14 @@ optdepends=('python2: python2 support for pyspark'
             'rsync: support rsync hadoop binaries from master'
             'hadoop: support for running on YARN')
 install=apache-spark.install
-source=("https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=spark/spark-2.2.1/spark-2.2.1-bin-without-hadoop.tgz"
+source=("https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=spark/spark-${pkgver}/spark-${pkgver}-bin-without-hadoop.tgz"
         'apache-spark-master.service'
         'apache-spark-slave@.service'
         'spark-env.sh'
         'spark-daemon-run.sh'
         'run-master.sh'
         'run-slave.sh')
-sha1sums=('91fef4294adba9aada7784685d88b36552a793fb'
+sha1sums=('03f140e17e3fbd288923e6439f11bb0462a5827d'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
           '3fa39d55075d4728bd447692d648053c9f6b07ec'
