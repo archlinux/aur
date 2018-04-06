@@ -1,15 +1,15 @@
 pkgbase = jdk-devel-docs
 	pkgdesc = Documentation for Oracle Java 11 Development Kit Snapshot
-	pkgver = 11b7
+	pkgver = 11b8
 	pkgrel = 1
 	url = http://jdk.java.net/11/
 	arch = any
 	license = custom:Oracle
 	optdepends = java-environment>=11: Compile and run examples
 	options = !strip
-	source = https://download.java.net/java/early_access/jdk11/7/BCL/jdk-11-ea+7_doc-all.zip
+	source = https://download.java.net/java/early_access/jdk11/8/BCL/jdk-11-ea+8_doc-all.zip
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
-	sha256sums = 430ed412b259d1848338f10a0e590a69715bdd542f0823c75d9918de0f597bb9
+	sha256sums = 49bdb9a1b20c7fb3fdc418741bfc6dc58171599828583828c6c25a3b9137f5ff
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jdk-devel-docs
