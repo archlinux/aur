@@ -29,7 +29,7 @@ mkdir "${TWS_HOME}" || exit 1
 LOG="${TWS_HOME}/launcher.log"
 
 TWS_CP=`find ${HOME}/Jts/${MAJORVER}/jars -type f -name \*.jar -printf '%p:'`
-java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
+/usr/lib/jvm/java-8-openjdk/bin/java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
 disown
 TWS_PID="$!"
 
