@@ -26,7 +26,6 @@ sha1sums=('a575e853668b93b34dcd94f0ef0d1fee25b0165f')
 sha256sums=('4c754476a5b80a97abacaeadac64fefc5a68fcfec15967908dbe3c9f7370dbb9')
 sha512sums=('5ec13b8abe1520a7e614ceeca4c41d5dba3ebae4ec965918584963022ceb5cb3b85862289a85a72767db74a0c735214a78342a53c37e6da939ff850538174a87')
 backup=(
-	'etc/gnucash/config'
 	'etc/gnucash/environment'
 )
 
