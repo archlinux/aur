@@ -1,0 +1,15 @@
+pkgbase = xmysql
+	pkgdesc = One command to generate REST APIs for any MySql Database
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/OpenBazaar/openbazaar-desktop
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = npm
+	source = https://github.com/o1lab/xmysql/archive/v0.4.4.tar.gz
+	md5sums = 0c72d59428aa88fd834700b5fc21fd07
+
+pkgname = xmysql
+
