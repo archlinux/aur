@@ -1,17 +1,16 @@
 # Maintainer: Joseph Simone <averagejoey2000 tfwno . gf>
 pkgname=mccgdi
-pkgver="2.0.9"
-pkgrel=8
+pkgver="2.0.10"
+pkgrel=1
 pkgdesc="PPD files for Panasonic Printers"
 arch=('x86_64' 'i686')
 url="panasonic.com"
 license=('custom: panasonic')
 depends=(gtk2)
-source_x86_64=(http://cs.psn-web.net/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/$pkgname-$pkgver-x86_64.tar.gz)
-source_i686=(http://cs.psn-web.net/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/$pkgname-$pkgver-i686.tar.gz)
+source=(https://www.psn-web.net/cs/support/fax/common/file/Linux_PrnDriver/Driver_Install_files/$pkgname-$pkgver-$arch.tar.gz)
 noextract=()
-md5sums_x86_64=('7450b0c6224d56c6dcb2bd28e59dfbc6')
-md5sums_i686=('ca182a0fb45c287951cfae0934c08ecb')
+md5sums_x86_64=('67fd55f535b2b4f84dcadcc4b024c39b')
+md5sums_i686=('1ac3aeea150d531868ca8162aa9dcb0e')
 package(){
 cd $srcdir/$pkgname-$pkgver-$arch/
 _INSTALL_PATH="$pkgdir/usr/share/panasonic/printer"
