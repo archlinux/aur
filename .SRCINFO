@@ -1,0 +1,15 @@
+pkgbase = tidal-cli-client
+	pkgver = 1.4.2
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = mpv
+	depends = w3m
+	noextract = tidal-cli-client-1.4.2.tgz
+	source = http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-1.4.2.tgz
+	sha1sums = d37aca22094a39cffdb517e1b03708126a533776
+
+pkgname = tidal-cli-client
+
