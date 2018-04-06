@@ -3,7 +3,7 @@
 # Contributor: SirClueless
 
 pkgname=libtcod
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('i686' 'x86_64')

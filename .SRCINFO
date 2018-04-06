@@ -1,6 +1,6 @@
 pkgbase = libtcod
 	pkgdesc = Roguelike graphics/utility library
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://bitbucket.org/libtcod/libtcod
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libtcod
 	license = BSD
 	makedepends = mercurial
 	depends = sdl2
-	source = hg+https://bitbucket.org/libtcod/libtcod#tag=1.6.5
+	source = hg+https://bitbucket.org/libtcod/libtcod#tag=1.6.6
 	md5sums = SKIP
 
 pkgname = libtcod
