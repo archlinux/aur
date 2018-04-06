@@ -2,7 +2,7 @@
 
 pkgname=hyper-bin
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -19,7 +19,7 @@ source_x86_64=(
 )
 
 md5sums_x86_64=(
-    '51f3b3643c464b9bdef03ffede626126'
+    '19d48f66a414cfcd233b4d78dee6f1e6'
 )
 
 package() {

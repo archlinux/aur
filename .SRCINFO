@@ -1,7 +1,7 @@
 pkgbase = hyper-bin
 	pkgdesc = A terminal built on web technologies
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyper.is
 	arch = x86_64
 	license = MIT
