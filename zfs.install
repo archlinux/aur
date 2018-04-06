@@ -12,7 +12,7 @@ post_upgrade() {
 
 check_initramfs() {
     echo ">>> Updating ZFS module dependencies"
-    depmod -a 4.15.12-1-hardened
+    depmod -a 4.15.15-1-hardened
     MK_CONF=$(grep -v '#' /etc/mkinitcpio.conf | grep zfs >/dev/null; echo $?);
     if [[ ${MK_CONF} == '0' && $1 == 'remove' ]]; then
         echo '>>> The ZFS packages have been removed, but "zfs" remains in the "hooks"'
