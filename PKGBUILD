@@ -1,7 +1,7 @@
 # Maintainer: Ryan Dowling <ryan@ryandowling.me>
 
 pkgname=hyper-bin
-pkgver=2.0.0.canary.15
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')

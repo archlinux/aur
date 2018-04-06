@@ -1,6 +1,6 @@
 pkgbase = hyper-bin
 	pkgdesc = A terminal built on web technologies
-	pkgver = 2.0.0.canary.15
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://hyper.is
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = hyper-bin
     depends = libappindicator
     options = !strip
     options = !utx
-	source_x86_64 = https://github.com/zeit/hyper/releases/download/2.0.0-canary.15/hyper_2.0.0-canary.15_amd64.deb
-	md5sums_x86_64 = 51f3b3643c464b9bdef03ffede626126
+	source_x86_64 = https://github.com/zeit/hyper/releases/download/1.4.8/hyper_1.4.8_amd64.deb
+	md5sums_x86_64 = 19d48f66a414cfcd233b4d78dee6f1e6
 pkgname = hyper-bin
