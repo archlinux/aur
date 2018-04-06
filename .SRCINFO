@@ -3,7 +3,7 @@ pkgbase = libtransistor-git
 	pkgver = 1.1.0.r256.g383d582
 	pkgrel = 2
 	url = https://github.com/ReSwitched/libtransistor
-	arch = x86_64
+	arch = any
 	groups = base-devel
 	license = ISC
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = libtransistor-git
 	conflicts = libtransistor-bin
 	options = !strip
 	options = !buildflags
-	source = git+https://github.com/ReSwitched/libtransistor.git
+	source = git+https://github.com/ReSwitched/libtransistor.git#branch=development
 	md5sums = SKIP
 
 pkgname = libtransistor-git

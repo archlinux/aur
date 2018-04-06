@@ -4,7 +4,7 @@ pkgname=libtransistor-git
 pkgver=1.1.0.r256.g383d582
 pkgrel=2
 pkgdesc="Nintendo Switch homebrew toolchain"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/ReSwitched/libtransistor"
 license=('ISC')
 groups=('base-devel')
@@ -18,7 +18,7 @@ makedepends=('git'
 provides=("libtransistor")
 conflicts=("libtransistor-bin")
 options=(!'strip' !'buildflags')
-source=("git+https://github.com/ReSwitched/libtransistor.git")
+source=("git+https://github.com/ReSwitched/libtransistor.git#branch=development")
 md5sums=("SKIP")
 
 prepare()
