@@ -1,7 +1,7 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp.install
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = xrdp
 	depends = fuse
 	backup = etc/xrdp/sesman.ini
 	backup = etc/xrdp/xrdp.ini
-	source = https://github.com/neutrinolabs/xrdp/releases/download/v0.9.5/xrdp-0.9.5.tar.gz
+	source = https://github.com/neutrinolabs/xrdp/releases/download/v0.9.6/xrdp-0.9.6.tar.gz
 	source = arch-config.diff
-	md5sums = 50145d6797f47975aea607aa795fd1e3
+	md5sums = d4d0f37af9367e2015199a0a2aefb287
 	md5sums = 62e398bea7f09f464d2eb25492bfe0dc
 
 pkgname = xrdp
