@@ -1,13 +1,13 @@
 pkgbase = teamviewer12
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
 	pkgver = 12.0.90041
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer12.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	provides = teamviewer12
+	provides = teamviewer
 	conflicts = teamviewer
 	conflicts = teamviewer-beta
 	options = !strip
