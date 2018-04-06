@@ -1,6 +1,6 @@
 # Maintainer: doakey3 <doakey3@gmail.com>
 pkgname=blender-plugin-bligify
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Export and import animated GIFs from the Blender VSE"
 url="https://github.com/doakey3/Bligify"
