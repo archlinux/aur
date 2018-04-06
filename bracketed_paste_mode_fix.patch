@@ -1,0 +1,83 @@
+commit 7206376160aac2743a93f70a4726bad4f34fa688
+Author: Fuujuhi <fuujuhi-ml1@noekeon.org>
+Date:   Wed Jul 30 15:52:52 2014 +0200
+
+    backporting vte bracked paste mode bug patch on v0.28.2-5ubuntu1
+    
+    See https://bugzilla.gnome.org/show_bug.cgi?id=729533
+    Patch at https://bugzilla.gnome.org/attachment.cgi?id=279320
+
+diff --git a/src/vte-private.h b/src/vte-private.h
+index 65d5022..ac1f2d8 100644
+--- a/src/vte-private.h
++++ b/src/vte-private.h
+@@ -219,7 +219,6 @@ struct _VteTerminalPrivate {
+ 		gboolean sendrecv_mode;	/* sendrecv mode */
+ 		gboolean insert_mode;	/* insert mode */
+ 		gboolean linefeed_mode;	/* linefeed mode */
+-		gboolean bracketed_paste_mode;
+ 		struct vte_scrolling_region {
+ 			int start, end;
+ 		} scrolling_region;	/* the region we scroll in */
+@@ -274,6 +273,7 @@ struct _VteTerminalPrivate {
+ 	gboolean text_modified_flag;
+ 	gboolean text_inserted_flag;
+ 	gboolean text_deleted_flag;
++	gboolean bracketed_paste_mode;
+ 
+ 	/* Scrolling options. */
+ 	gboolean scroll_background;
+diff --git a/src/vte.c b/src/vte.c
+index c20ee78..dbab6de 100644
+--- a/src/vte.c
++++ b/src/vte.c
+@@ -5823,10 +5823,10 @@ static void mark_output_source_invalid(VteTerminal *terminal)
+ 				p++;
+ 			}
+ 		}
+-		if (terminal->pvt->screen->bracketed_paste_mode)
++		if (terminal->pvt->bracketed_paste_mode)
+ 			vte_terminal_feed_child(terminal, "\e[200~", -1);
+ 		vte_terminal_feed_child(terminal, paste, length);
+-		if (terminal->pvt->screen->bracketed_paste_mode)
++		if (terminal->pvt->bracketed_paste_mode)
+ 			vte_terminal_feed_child(terminal, "\e[201~", -1);
+ 		g_free(paste);
+ 	}
+@@ -14106,14 +14106,12 @@ static void mark_output_source_invalid(VteTerminal *terminal)
+ 	pvt->normal_screen.linefeed_mode = FALSE;
+ 	pvt->normal_screen.origin_mode = FALSE;
+ 	pvt->normal_screen.reverse_mode = FALSE;
+-	pvt->normal_screen.bracketed_paste_mode = FALSE;
+ 	pvt->alternate_screen.scrolling_restricted = FALSE;
+ 	pvt->alternate_screen.sendrecv_mode = TRUE;
+ 	pvt->alternate_screen.insert_mode = FALSE;
+ 	pvt->alternate_screen.linefeed_mode = FALSE;
+ 	pvt->alternate_screen.origin_mode = FALSE;
+ 	pvt->alternate_screen.reverse_mode = FALSE;
+-	pvt->alternate_screen.bracketed_paste_mode = FALSE;
+ 	pvt->cursor_visible = TRUE;
+ 	/* Reset the encoding. */
+ 	vte_terminal_set_encoding(terminal, NULL);
+@@ -14143,6 +14141,8 @@ static void mark_output_source_invalid(VteTerminal *terminal)
+ 	pvt->mouse_last_y = 0;
+ 	/* Clear modifiers. */
+ 	pvt->modifiers = 0;
++	/* Reset miscellaneous stuff. */
++	pvt->bracketed_paste_mode = FALSE;
+ 	/* Cause everything to be redrawn (or cleared). */
+ 	vte_terminal_maybe_scroll_to_bottom(terminal);
+ 	_vte_invalidate_all(terminal);
+diff --git a/src/vteseq.c b/src/vteseq.c
+index 209522f..8c8d43c 100644
+--- a/src/vteseq.c
++++ b/src/vteseq.c
+@@ -737,7 +737,7 @@
+ 		 GINT_TO_POINTER(TRUE),
+ 		 NULL, NULL},
+ 		/* 2004: Bracketed paste mode. */
+-		{2004, &terminal->pvt->screen->bracketed_paste_mode, NULL, NULL,
++		{2004, &terminal->pvt->bracketed_paste_mode, NULL, NULL,
+ 		 GINT_TO_POINTER(FALSE),
+ 		 GINT_TO_POINTER(TRUE),
+ 		 NULL, NULL,},
