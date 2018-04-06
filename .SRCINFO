@@ -1,7 +1,7 @@
 pkgbase = pangolin-git
 	pkgdesc = Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input.
 	pkgver = 2017.10.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stevenlovegrove/Pangolin
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = pangolin-git
 	depends = glew
 	depends = python
 	optdepends = cuda
-	optdepends = eignen
+	optdepends = eigen
 	optdepends = ffmpeg
 	optdepends = libdc1394
 	optdepends = libjpeg-turbo
