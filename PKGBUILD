@@ -1,7 +1,7 @@
 # Maintainer: Barazok <barazok.blackrocks@gmail.com>
 pkgname=mlv
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="La bibliothèque MLV est une bibliothèque multimedia simplifiée. Cette bibliothèque convient parfaitement aux étudiants qui débutent dans la programmation en C et qui souhaitent ajouter des effets graphiques et sonores dans leurs programmes."
 arch=('any')
 url="http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html"
