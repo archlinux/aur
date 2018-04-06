@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.16
 pkgver=4.16
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,6 +20,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,8 +32,9 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'f47b643156811581b31963cf56672f35c5ab275fcb01a3f534577676a4df0bc1'
-            '971fcb1a89c62333871a7371a488dc78484ed5972230ff3ced31a11ad44714de')
+            '69be34b14df3275118e8c345d61b36b71370710c7b4f61bb3bedaff7501775f0'
+            'a4566321f73fa1448195691349d5ed0ddf30127d17213a31aa2c931e822df061'
+            'd365ce80dab359d5277bd2f8568cad50a30ab269f222ed1bb12b8d74571e24a6')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -51,6 +53,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
