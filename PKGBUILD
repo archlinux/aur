@@ -2,24 +2,21 @@
 
 _pyname=versioneer
 pkgname=python-$_pyname
-pkgver=0.16
+pkgver=0.18
 pkgrel=1
 pkgdesc='Easy VCS-based management of project version strings'
-url="https://pypi.python.org/pypi/$_pyname/"
-depends=('python-setuptools')
-license=('custom')
-arch=('any')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('47ed8f172468a31639bedf74ff2cf323')
-
-build() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build
-  sed -n '/## License/,$p' README.md > LICENSE
-}
+url="https://github.com/warner/$pkgname"
+depends=(python-setuptools)
+optdepends=('python-cx_freeze: Executable generation support')
+makedepends=(python-pip)
+license=('custom:Public Domain')
+arch=(any)
+_wheel="$_pyname-$pkgver-py2.py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py2.py3/${_pyname::1}/$_pyname/$_wheel")
+sha256sums=('08e395c0acc544f78645b9c0ebfccaf47950ae61e0c85bd1aaea98ff59609aeb')
+noextract=("$_wheel")
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir"
+	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
 }
