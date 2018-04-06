@@ -19,7 +19,9 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  cd $pkgname-$pkgver
+  cd buildqt
+  make INSTALL_ROOT="$pkgdir" install
+  ln -s "$pkgdir"/usr/bin/qtikz "$pkgdir"/usr/bin/ktikz
 }
 
