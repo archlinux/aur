@@ -1,7 +1,7 @@
 pkgbase = panther
 	pkgdesc = The PANTHER (Protein ANalysis THrough Evolutionary Relationships) Classification System was designed to classify proteins (and their genes) in order to facilitate high-throughput analysis.
 	pkgver = 13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = ftp://ftp.pantherdb.org
 	arch = any
 	license = GPL

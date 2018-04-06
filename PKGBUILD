@@ -2,7 +2,7 @@
 
 pkgname=panther
 pkgver=13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The PANTHER (Protein ANalysis THrough Evolutionary Relationships) Classification System was designed to classify proteins (and their genes) in order to facilitate high-throughput analysis.'
 arch=('any')
 license=('GPL')
@@ -21,5 +21,5 @@ sha512sums=(
 package() {
   mkdir -p  "$pkgdir/opt/$pkgname/"
   #find * -maxdepth 0 -regex '.*\.gz' -prune -o -print0 | xargs -0 -i cp -f {} "$pkgdir/opt/$pkgname/"
-  cp -rf hmmscoring/* "$pkgdir/opt/$pkgname/"
+  cp -rfHL hmmscoring/PANTHER13.1/* "$pkgdir/opt/$pkgname/"
 }
