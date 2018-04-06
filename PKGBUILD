@@ -2,7 +2,7 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ depends=("qt5-base" "lmdb" "qt5-multimedia")
 makedepends=("cmake" "gcc" "fontconfig" "qt5-tools")
 
 source=(https://github.com/mujx/nheko/archive/v$pkgver.tar.gz)
-sha512sums=('7d08c5c561c0388756b663da98b209c3074b61f5743cefa8f1ad21e3184b0de3973a8a6b129a0f1f602e6dbb3c99d7f0cf47e394a4c9527086a250aff7ca5b85')
+sha512sums=('303c5fae4ec6552da42e5a2386fc18ebd8fed62fbc5d559d321c8d8feef4e62d3f3ea16172b9751e7712597155f2ca878d1fcee469a5c944b75f122fb269be3d')
 
 build() {
     cd "$pkgname-$pkgver"
