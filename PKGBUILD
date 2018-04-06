@@ -3,13 +3,14 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.324_7_gc9276ce2b
+pkgver=20180324_172_ge120b0eda
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
 url='https://osu.ppy.sh'
 license=('MIT')
-makedepends=('nuget4'
+makedepends=('dotnet-sdk'
+             'msbuild-stable'
              'git')
 depends=('ffmpeg'
          'libgl'
@@ -49,34 +50,26 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/osu"
+	cd "$srcdir/osu"
 
 	# Prepare submodules
 	git submodule init
-	git config submodule.osu-framework.url "${srcdir}/osu-framework"
-	git config submodule.osu-resources.url "${srcdir}/osu-resources"
+	git config submodule.osu-framework.url "$srcdir/osu-framework"
+	git config submodule.osu-resources.url "$srcdir/osu-resources"
 	git submodule update --recursive
 
 	# Download dependencies
 	export TERM='xterm'
-	nuget restore
+	dotnet restore
 }
 
 build() {
 	cd "$srcdir/osu"
 
-	# Symlink netstandard for xbuild
-	mkdir -p "osu.Game/bin/Release"
-	ln -s "/lib/mono/4.5/Facades/netstandard.dll" "osu.Game/bin/Release"
-
 	# Build
 	export MONO_IOMAP='case'
 	export TERM='xterm'
-	xbuild /property:Configuration=Release
-
-	# Cleanup
-	rm "osu.Game/bin/Release/netstandard.dll"
-	rm "osu.Desktop/bin/Release/netstandard.dll"
+	msbuild /property:Configuration=Release
 }
 
 package() {
@@ -98,7 +91,7 @@ package() {
 	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
 	# Compiled binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release"
+	cd "$srcdir/osu/osu.Desktop/bin/Release/net461"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for binary in *.exe *.dll; do
 		install -m755 "$binary" "$pkgdir/usr/lib/${pkgname%-git}/$binary"
