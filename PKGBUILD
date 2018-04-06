@@ -8,52 +8,53 @@ pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
 arch=('any')
-license=(GPL3)
+license=('GPL3')
 conflicts=('openerp')
 replaces=('openerp')
+makedepends=('python-setuptools')
 depends=(
-  nodejs-less-plugin-clean-css
-  postgresql-libs
-  wkhtmltopdf
-  python
-  python-babel
-  python-decorator
-  python-docutils
-  python-ebaysdk
-  python-feedparser
-  python-gevent
-  python-greenlet
-  python-html2text
-  python-jinja
-  python-lxml
-  python-mako
-  python-markupsafe
-  python-mock
-  python-num2words
-  python-ofxparse
-  python-passlib
-  python-pillow
-  python-psutil
-  python-psycopg2
-  python-pydot
-  python-ldap
-  python-pyparsing
-  python-pypdf2
-  python-pyserial
-  python-dateutil
-  python-pytz
-  python-pyusb
-  python-yaml
-  python-qrcode
-  python-reportlab
-  python-requests
-  python-suds
-  python-vatnumber
-  python-vobject
-  python-werkzeug
-  python-xlsxwriter
-  python-xlwt
-  python-xlrd
+  'nodejs-less'
+  'postgresql-libs'
+  'wkhtmltopdf'
+  'python'
+  'python-babel'
+  'python-decorator'
+  'python-docutils'
+  'python-ebaysdk'
+  'python-feedparser'
+  'python-gevent'
+  'python-greenlet'
+  'python-html2text'
+  'python-jinja'
+  'python-lxml'
+  'python-mako'
+  'python-markupsafe'
+  'python-mock'
+  'python-num2words'
+  'python-ofxparse'
+  'python-passlib'
+  'python-pillow'
+  'python-psutil'
+  'python-psycopg2'
+  'python-pydot'
+  'python-ldap'
+  'python-pyparsing'
+  'python-pypdf2'
+  'python-pyserial'
+  'python-dateutil'
+  'python-pytz'
+  'python-pyusb'
+  'python-yaml'
+  'python-qrcode'
+  'python-reportlab'
+  'python-requests'
+  'python-suds'
+  'python-vatnumber'
+  'python-vobject'
+  'python-werkzeug'
+  'python-xlsxwriter'
+  'python-xlwt'
+  'python-xlrd'
 )
 
 source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
