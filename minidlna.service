@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 Type=forking
-User=nobody
 ExecStart=/usr/bin/minidlnad -P /var/run/minidlna/minidlna.pid
 PIDFile=/var/run/minidlna/minidlna.pid
 

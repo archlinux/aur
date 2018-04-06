@@ -1,6 +1,6 @@
 pkgbase = readymedia-transcode-git
 	pkgdesc = A DLNA/UPnP-AV Media server with transcode support
-	pkgver = 581.290ef09
+	pkgver = 735.1bcfcc3
 	pkgrel = 1
 	url = https://bitbucket.org/stativ/readymedia-transcode
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = readymedia-transcode-git
 	depends = libexif
 	depends = libid3tag
 	depends = ffmpeg
-	depends = imagemagick
+	depends = libmagick
 	depends = sqlite3
+	optdepends = imagemagick: default image transcoding script
 	provides = minidlna
 	provides = minidlna-transcode-hg
 	conflicts = minidlna
@@ -23,10 +24,10 @@ pkgbase = readymedia-transcode-git
 	source = minidlna.rc
 	source = tmpfiles.conf
 	source = minidlna.service
-	md5sums = SKIP
-	md5sums = 484bb94e886616afcb3aba00926aeee9
-	md5sums = af1b8c0fef9902f797b0324c255da5a1
-	md5sums = e4d6766af90599929155ff15427bfdf5
+	sha256sums = SKIP
+	sha256sums = 27a04ca6ffcecb998d832d484aa98444b649280658f1ad2db4d87ca6e5aaf0e4
+	sha256sums = 80545d285f2327bd9a0295a90551103579bb8c932a79901d6596f8dea037d95a
+	sha256sums = 4eb142014ea06eaa8717b1886ec1e4f003e45a938e1d13aa76bdcaf3fc5bb31d
 
 pkgname = readymedia-transcode-git
 

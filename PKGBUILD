@@ -5,14 +5,15 @@
 # Contributor: Matthias Sobczyk <matthias.sobczyk@googlemail.com>
 # Contributor: Kamil Kaminski <kyle@kkaminsk.com>
 pkgname=readymedia-transcode-git
-pkgver=581.290ef09
+pkgver=735.1bcfcc3
 pkgrel=1
 pkgdesc="A DLNA/UPnP-AV Media server with transcode support"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/stativ/readymedia-transcode"
 license=('GPL2')
-depends=('libexif' 'libid3tag' 'ffmpeg' 'imagemagick' 'sqlite3')
+depends=('libexif' 'libid3tag' 'ffmpeg' 'libmagick' 'sqlite3')
 makedepends=('git')
+optdepends=('imagemagick: default image transcoding script')
 conflicts=('minidlna' 'minidlna-transcode-hg')
 provides=('minidlna' 'minidlna-transcode-hg')
 replaces=('minidlna-transcode-hg')
@@ -20,10 +21,10 @@ backup=('etc/minidlna.conf'
         'etc/conf.d/minidlna')
 source=('readymedia-transcode::git+https://bitbucket.org/stativ/readymedia-transcode.git#branch=transcode' \
         minidlna.rc tmpfiles.conf minidlna.service)
-md5sums=('SKIP'
-         '484bb94e886616afcb3aba00926aeee9'
-         'af1b8c0fef9902f797b0324c255da5a1'
-         'e4d6766af90599929155ff15427bfdf5')
+sha256sums=('SKIP'
+            '27a04ca6ffcecb998d832d484aa98444b649280658f1ad2db4d87ca6e5aaf0e4'
+            '80545d285f2327bd9a0295a90551103579bb8c932a79901d6596f8dea037d95a'
+            '4eb142014ea06eaa8717b1886ec1e4f003e45a938e1d13aa76bdcaf3fc5bb31d')
 
 pkgver() {
   cd "$srcdir/readymedia-transcode"
