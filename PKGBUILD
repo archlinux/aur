@@ -1,10 +1,10 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=1.1.r1.590c038
+pkgver=1.2.1.r7.3edbc45
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://tavianator.com/cgit/bfs.git/"
+url="https://github.com/tavianator/bfs"
 license=('BSD')
 groups=()
 depends=()
@@ -31,11 +31,11 @@ build() {
 
 check() {
 	cd "${srcdir}/${pkgname%-git}"
-	make check
+	make -k check
 }
 
 package() {
 	cd "${srcdir}/${pkgname%-git}"
 	make install DESTDIR="${pkgdir}"
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
