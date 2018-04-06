@@ -1,0 +1,15 @@
+pkgbase = piskel
+	pkgdesc = A free online editor for animated sprites & pixel art.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/piskelapp/piskel
+	arch = x86_64
+	license = Apache
+	makedepends = npm
+	makedepends = nodejs-grunt
+	options = !strip
+	source = piskel-0.14.0.tar.gz::https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz
+	md5sums = 18fcdaad58efc6f45e85bb474d17607d
+
+pkgname = piskel
+
