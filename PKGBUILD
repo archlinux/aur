@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
@@ -22,9 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  #cd ${srcdir}/src/github.com/kryptco/kr
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  echo "2.4.1"
+  echo "2.4.2"
 }
 
 prepare() {
@@ -32,9 +30,8 @@ prepare() {
     # ensure a toolchain is selected if rustup was used to install rust
     (which rustup 2>/dev/null && (rustup which cargo || rustup default stable)) || true
     rustup target add wasm32-unknown-emscripten
-    # cargo web 0.6.9 required to build dashboard frontend
-    cargo install --debug --version 0.6.9 cargo-web 2>/dev/null || true
-    cargo web --version
+    # cargo web 0.6.10 required to build dashboard frontend
+    cargo web --version || cargo install --debug --version 0.6.10 cargo-web
     mkdir -p "${srcdir}/src/github.com/kryptco/"
     rm -rf "${srcdir}/src/github.com/kryptco/kr"
     mv "${srcdir}/kr" "${srcdir}/src/github.com/kryptco/kr"
