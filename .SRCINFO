@@ -1,0 +1,22 @@
+pkgbase = archiso32-git
+	pkgdesc = Arch Linux 32 livecd/liveusb generation scripts
+	pkgver = i686.33.2.g1e308c7
+	pkgrel = 1
+	url = http://archlinux32.org
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libisoburn
+	depends = squashfs-tools
+	depends = btrfs-progs
+	depends = dosfstools
+	depends = lynx
+	depends = arch-install-scripts
+	optdepends = qemu: quickly test isos
+	provides = archiso
+	conflicts = archiso
+	source = git://github.com/archlinux32/archiso32.git
+	md5sums = SKIP
+
+pkgname = archiso32-git
+
