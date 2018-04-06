@@ -2,9 +2,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgname=openssl
-_tag=OpenSSL_1_1_1-pre3
+_tag=OpenSSL_1_1_1-pre4
 pkgname=${_pkgname}-tls1.3-git
-pkgver=1.1.1.pre3.r0.gbe2df12a34 # updated by pkgver() below
+pkgver=1.1.1beta2
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 	patch -p0 -i $srcdir/ca-dir.patch
 }
 
-pkgver() {
+pkgver_DISABLED_() {
 	cd $srcdir/$pkgname
 	git describe --long | sed -e 's/^OpenSSL[0-9_]\+./1.1.1./' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }

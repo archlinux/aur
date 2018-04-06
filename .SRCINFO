@@ -1,6 +1,6 @@
 pkgbase = openssl-tls1.3-git
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support
-	pkgver = 1.1.1.pre3.r0.gbe2df12a34
+	pkgver = 1.1.1beta2
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = openssl-tls1.3-git
 	license = custom:BSD
 	depends = perl
 	optdepends = ca-certificates
-	provides = openssl=1.1.1.pre3.r0.gbe2df12a34
+	provides = openssl=1.1.1beta2
 	conflicts = openssl
 	options = !makeflags
 	backup = etc/ssl/openssl.cnf
-	source = openssl-tls1.3-git::git+https://github.com/openssl/openssl.git#tag=OpenSSL_1_1_1-pre3
+	source = openssl-tls1.3-git::git+https://github.com/openssl/openssl.git#tag=OpenSSL_1_1_1-pre4
 	source = ca-dir.patch
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	sha256sums = SKIP
