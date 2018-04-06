@@ -2,18 +2,18 @@
 _pkgname="grive-tools"
 pkgname="${_pkgname}-patched"
 pkgver=1.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Grive Tools with Patch. It disables pinging to Google every 10sec, add Sync at startup if AutoSync is enabled and replace grive-setup with a simple script."
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
 license=('GPL3')
 conflicts=("${_pkgname}" "grive-indicator-git")
-depends=('grive' 'libappindicator-gtk3' 'python2-pyinotify' 'python2-gobject')
+depends=('grive' 'libappindicator-gtk3' 'python2-pyinotify' 'python2-gobject' 'dconf' 'xdg-utils' 'libnotify')
 makedepends=('patch')
 source=("https://launchpad.net/~thefanclub/+archive/${_pkgname}/+files/${_pkgname}_${pkgver}.tar.gz"
         "${_pkgname}.patch")
 sha256sums=('617f87deb6d6f590bcd652e62e7ae2cde78e0485dbbdd05b46d3cf43b8c640bb'
-            '82181ae6aa92d94c432133686dc03bc2348b5896c97b3caaa922fad800faad20')
+            '8a7f581d930e2e263f7ef6b75f3da2a50416f75495f42006e179b9638e154a07')
 
 prepare() {
  cd ${_pkgname}
@@ -25,7 +25,7 @@ package() {
  install -dm755 "${pkgdir}"/usr/share/${_pkgname}/icons
  cp -r usr/share/* "${pkgdir}"/usr/share; rm "${pkgdir}"/usr/share/applications/*
  install -m644 usr/share/applications/grive-indicator.desktop "${pkgdir}"/usr/share/applications
- install -m644 opt/thefanclub/${_pkgname}/icons/dark/*.svg "${pkgdir}"/usr/share/${_pkgname}/icons
+ install -m644 opt/thefanclub/${_pkgname}/icons/dark/grive-app-ind.svg "${pkgdir}"/usr/share/${_pkgname}/icons
  install -m644 opt/thefanclub/${_pkgname}/icons/*.png "${pkgdir}"/usr/share/${_pkgname}/icons
  install -m644 opt/thefanclub/${_pkgname}/GoogleDrive.png "${pkgdir}"/usr/share/${_pkgname}
  install -m755 opt/thefanclub/${_pkgname}/grive-setup "${pkgdir}"/usr/share/${_pkgname}
