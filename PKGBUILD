@@ -2,7 +2,7 @@
 
 pkgname=advanced-rest-client
 pkgver=12.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer tool to test a HTTP request. The Advanced REST Client desktop application.'
 arch=('x86_64')
 url='https://advancedrestclient.com/'

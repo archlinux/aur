@@ -1,7 +1,7 @@
 pkgbase = advanced-rest-client
 	pkgdesc = A developer tool to test a HTTP request. The Advanced REST Client desktop application.
 	pkgver = 12.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://advancedrestclient.com/
 	install = advanced-rest-client.install
 	arch = x86_64

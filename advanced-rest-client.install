@@ -1,6 +1,6 @@
 post_install() {
   # Link to the binary
-  ln -sf '/opt/Advanced REST Client/advanced-rest-client' '/usr/local/bin/advanced-rest-client'
+  ln -sf '/opt/AdvancedRestClient/advanced-rest-client' '/usr/local/bin/advanced-rest-client'
 }
 
 post_upgrade() {
