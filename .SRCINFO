@@ -1,6 +1,6 @@
 pkgbase = jre-devel
 	pkgdesc = Oracle Java 11 Runtime Environment Snapshot
-	pkgver = 11b7
+	pkgver = 11b8
 	pkgrel = 1
 	url = http://jdk.java.net/11/
 	install = jre-devel.install
@@ -30,10 +30,10 @@ pkgbase = jre-devel
 	backup = etc/java-jre11/logging.properties
 	backup = etc/java-jre11/net.properties
 	backup = etc/java-jre11/sound.properties
-	source = https://download.java.net/java/early_access/jdk11/7/BCL/jre-11-ea+7_linux-x64_bin.tar.gz
+	source = https://download.java.net/java/early_access/jdk11/8/BCL/jre-11-ea+8_linux-x64_bin.tar.gz
 	source = policytool.desktop
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
-	sha256sums = 9ac2b81412dce632c0509bfcd49ecda258b80dd67b7353687b61664bb86c1c29
+	sha256sums = 9353ad46b0bcfaffcb138e9b60969c287c95ede175e1b07917a06e60d2cb01f6
 	sha256sums = b36201e2de826393ed8a14d298a5197f205775c2609a5b8857384324e9fc0227
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
