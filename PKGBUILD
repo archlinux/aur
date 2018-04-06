@@ -2,15 +2,13 @@
 pkgname=panamfs-scan
 arch=('x86_64' 'i686')
 license=(custom:Panasonic)
-pkgver='1.3.0'
+pkgver='1.3.1'
 depends=('gcc-libs-multilib' 'gtk2' 'libusb-compat')
 optdepends=('lightdm' 'gdm')
 pkgdesc='sane drivers for Panasonic multifunction printers'
-pkgrel=6
-source_x86_64=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-x86_64.tar.gz)
-source_i686=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-i686.tar.gz)
-md5sums_x86_64=('2e4c844e89c2e7e0b6258be5ef52ace9')
-md5sums_i686=('38e12643725f9e6d706bc0efa88e346d')
+pkgrel=1
+source=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-$arch.tar.gz)
+md5sums=('a404ad23de6344e81cba74103263898d')
 package(){
 _ver=$pkgver
 _INSTALL_PATH="$pkgdir/usr/share/panasonic/scanner"
@@ -112,8 +110,8 @@ cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.zh_TW.po $_INSTAL
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
 
 
-ln -sf $_SANELIB_PATH/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.1
-ln -sf $_SANELIB_PATH/libsane-panamfs.so.1 $_SANELIB_PATH/libsane-panamfs.so
+cp -f $_SANELIB_PATH/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.1
+cp -f $_SANELIB_PATH/libsane-panamfs.so.1 $_SANELIB_PATH/libsane-panamfs.so
 
 chown root:root $pkgdir/etc/sane.d/panamfs.conf
 chown root:root $_SANELIB_PATH/libsane-panamfs.so.$_ver
@@ -175,24 +173,27 @@ cp $srcdir/$pkgname-$pkgver-$arch/Version.html $_INSTALL_PATH/Version.html
 
 ln -sf $_INSTALL_PATH/bin/PanasonicMFSscan $_INSTALL_BIN_PATH/PanasonicMFSscan
 
-mkdir -p $pkgdir/etc/xdg/autostart
-cp $srcdir/$pkgname-$pkgver-$arch/server/PanasonicMFSpushd.desktop $pkgdir/etc/xdg/autostart/PanasonicMFSpushd.desktop
+if test -f $pkgdir/etc/gdm/PostSession/Default
+ then
+sed -i "s|^$_INSTALL_PATH/bin/killpanasonicmfspushd$||" $pkgdir/etc/gdm/PostSession/Default
+echo "$_INSTALL_PATH/bin/killpanasonicmfspushd" >> $pkgdir/etc/gdm/PostSession/Default
 
+sed -i 's/^killall PanasonicMFSpushd$//' $pkgdir/etc/gdm/PostSession/Default
+echo "killall PanasonicMFSpushd" >> $pkgdir/etc/gdm/PostSession/Default
 
-	sed -i "s|^$_INSTALL_PATH/bin/killpanasonicmfspushd$||" /etc/gdm/PostSession/Default
-	echo "$_INSTALL_PATH/bin/killpanasonicmfspushd" >> /etc/gdm/PostSession/Default
+sed -i 's|^rm /var/tmp/com.panasonic.mfs.killserver.lock$||' $pkgdir/etc/gdm/PostSession/Default
+echo "rm /var/tmp/com.panasonic.mfs.killserver.lock" >> $pkgdir/etc/gdm/PostSession/Default
 
-	sed -i 's/^killall PanasonicMFSpushd$//' /etc/gdm/PostSession/Default
-	echo "killall PanasonicMFSpushd" >> /etc/gdm/PostSession/Default
-
-	sed -i 's|^rm /var/tmp/com.panasonic.mfs.killserver.lock$||' /etc/gdm/PostSession/Default
-	echo "rm /var/tmp/com.panasonic.mfs.killserver.lock" >> /etc/gdm/PostSession/Default
-
-	sed -i 's/^exit 0$//' /etc/gdm/PostSession/Default
-	echo "exit 0" >> /etc/gdm/PostSession/Default
-
-
-	_CLEANSCRIPT=`grep session-cleanup-script= /etc/lightdm/lightdm.conf`
-
-		sed -i "/\[SeatDefaults\]/a\session-cleanup-script=$_INSTALL_PATH/bin/killpanasonicmfspushd.sh" /etc/lightdm/lightdm.conf
+sed -i 's/^exit 0$//' $pkgdir/etc/gdm/PostSession/Default
+echo "exit 0" >> $pkgdir/etc/gdm/PostSession/Default
+fi
+ if test -f $pkgdir/etc/lightdm/lightdm.conf
+then
+_CLEANSCRIPT=`grep session-cleanup-script= /etc/lightdm/lightdm.conf`
+if test "x$_CLEANSCRIPT" = "x"
+then
+sed -i "/\[SeatDefaults\]/a\session-cleanup-script=$_INSTALL_PATH/bin/killpanasonicmfspushd.sh" $pkgdir/etc/lightdm/lightdm.conf
+fi
+fi
 }
+install=$pkgname.install
