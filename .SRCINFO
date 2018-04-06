@@ -1,7 +1,7 @@
 pkgbase = kdevelop-go
 	pkgdesc = Go language plugin for kdevelop
-	pkgver = v4.9
-	pkgrel = 1
+	pkgver = v5.2.1
+	pkgrel = 2
 	url = https://cgit.kde.org/kdev-go.git
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = kdevelop-go
 	makedepends = cmake
 	makedepends = automoc4
 	makedepends = git
-	depends = kdevplatform
 	depends = kdevelop
 	depends = go
 	depends = kdevelop-pg-qt
