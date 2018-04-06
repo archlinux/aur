@@ -1,0 +1,13 @@
+pkgbase = python-cmake-format
+	pkgdesc = Source code formatter for cmake listfiles.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/cheshirekow/cmake_format
+	arch = any
+	license = GPL3
+	depends = python>=3.0.0
+	source = https://github.com/cheshirekow/cmake_format/archive/v0.3.5.tar.gz
+	sha512sums = 1854e97dd23117a4370f8497ed409cd42c48c7714f6288f060fc5336c82c72187489ddf1e3eacd6c053ebc605dc43af3b660c2242cbd15f6db6ca41329c533ac
+
+pkgname = python-cmake-format
+
