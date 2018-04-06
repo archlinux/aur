@@ -7,7 +7,7 @@
 
 pkgname=aircrack-ng-git
 _pkgname=aircrack-ng
-pkgver=1.2.rc5.r8.g9b3fbbfe
+pkgver=1.2.rc5.r13.gce4e9c3c
 pkgrel=1
 pkgdesc='WiFi security auditing tools suite'
 url='https://aircrack-ng.org/'
