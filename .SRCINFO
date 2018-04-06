@@ -1,7 +1,7 @@
 pkgbase = mlv
 	pkgdesc = La bibliothèque MLV est une bibliothèque multimedia simplifiée. Cette bibliothèque convient parfaitement aux étudiants qui débutent dans la programmation en C et qui souhaitent ajouter des effets graphiques et sonores dans leurs programmes.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
 	arch = any
 	license = GPL
