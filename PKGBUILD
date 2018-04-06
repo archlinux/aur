@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.15
-pkgver=4.15.14
+pkgver=4.15.15
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -30,7 +30,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '6be2c185839d730769a8e6bcf46ca0962845732e25ed4801fe1ea995218b1133'
+            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
             'SKIP'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
