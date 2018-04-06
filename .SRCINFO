@@ -1,7 +1,7 @@
 pkgbase = factomd
 	pkgdesc = Factom Daemon
-	pkgver = 0.4.2.21
-	pkgrel = 3
+	pkgver = 0.4.2.22
+	pkgrel = 1
 	url = https://github.com/FactomProject/factomd
 	install = factomd.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = factomd
 	makedepends = go
 	makedepends = git
 	makedepends = glide
-	source = git+https://github.com/FactomProject/factomd#tag=v0.4.2.21
+	source = git+https://github.com/FactomProject/factomd#tag=v0.4.2.22
 	source = factomd.service
 	source = sysusers-factomd.conf
 	md5sums = SKIP

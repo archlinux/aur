@@ -1,8 +1,8 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='0.4.2.21'
-pkgrel='3'
+pkgver='0.4.2.22'
+pkgrel='1'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
