@@ -1,0 +1,23 @@
+pkgbase = mlv
+	pkgdesc = La bibliothèque MLV est une bibliothèque multimedia simplifiée. Cette bibliothèque convient parfaitement aux étudiants qui débutent dans la programmation en C et qui souhaitent ajouter des effets graphiques et sonores dans leurs programmes.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
+	arch = any
+	license = GPL
+	depends = gcc
+	depends = libtool
+	depends = make
+	depends = autoconf
+	depends = doxygen
+	depends = sdl
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = glib2
+	depends = libxml2
+	source = http://download.savannah.gnu.org/releases/mlv/mlv-2.0.2/mlv-2.0.2.tar.gz
+	md5sums = 1b29b677ea0123f92e4a0486139b57b1
+
+pkgname = mlv
+
