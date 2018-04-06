@@ -1,5 +1,6 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+# NOTE:
 # To enable the Instrumentation and Tracing Technology API (ittnotify),
 # firstly install the package intel-seapi and then build intel-media-sdk-git.
 # It will be autodetected by the build system, serving as a makedepend.
@@ -7,23 +8,19 @@
 
 pkgname=intel-media-sdk-git
 pkgver=1.2a.r55.g22dae39
-pkgrel=1
+pkgrel=2
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'libva'
+        'gcc-libs' 'libva' 'libdrm' 'wayland'
     # AUR:
         'intel-media-driver-git'
 )
-makedepends=(
-    # official repositories:
-        'git' 'perl' 'cmake'
-    # AUR:
-        'git-lfs'
-)
+makedepends=('git' 'git-lfs' 'cmake' 'libx11' 'libxcb')
+options=('!emptydirs')
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'libmfx')
 
@@ -41,13 +38,6 @@ prepare() {
         cd "$pkgname"
     fi
     
-    # change plugins directory
-    if ! grep -q '^set(MFX_PLUGINS_DIR[[:space:]]/usr/lib64)$' CMakeLists.txt
-    then
-        sed -i '20i\\' CMakeLists.txt
-        sed -i '21iset(MFX_PLUGINS_DIR /usr/lib64)' CMakeLists.txt
-    fi
-    
     # fix ittnotify (intel-seapi) detection in the build system
     sed -i '/ITT_LIB/s/\$ENV{ITT_PATH}/$ENV{ITT_PATH}\/lib/' builder/FindVTune.cmake
 }
@@ -63,28 +53,42 @@ build() {
     cd "$pkgname"
     
     export MFX_HOME="$(pwd)"
-    
     export ITT_PATH='/usr'
     
-    perl tools/builder/build_mfx.pl \
-                            --no-warn-as-error \
-                            --cmake='intel64.make.release' \
-                            --prefix='/usr'
-                            
-    make -C __cmake/intel64.make.release
+    mkdir -p build
+    cd build
+    
+    cmake \
+        -G 'Unix Makefiles' \
+        -D__GENERATOR:STRING='make' \
+        -DCMAKE_CONFIGURATION_TYPES:STRING='release;debug' \
+        -DCMAKE_BUILD_TYPE:STRING='release' \
+        -D__IPP:STRING='e9' \
+        -D__TARGET_PLATFORM:STRING='BDW' \
+        -DCMAKE_CXX_FLAGS_RELEASE:STRING="${CXXFLAGS} ${CPPFLAGS}" \
+        -DCMAKE_C_FLAGS_RELEASE:STRING="${CFLAGS} ${CPPFLAGS}" \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DENABLE_DRM:BOOL='ON' \
+        -DENABLE_OPENCL:BOOL='ON' \
+        -DENABLE_WAYLAND:BOOL='ON' \
+        -DENABLE_X11:BOOL='ON' \
+        -DENABLE_X11_DRI3:BOOL='ON' \
+        -DMFX_PLUGINS_DIR='/usr/lib' \
+        --no-warn-unused-cli \
+        -Wno-dev \
+        ..
+        
+    make
 }
 
 package() {
-    cd "$pkgname"
+    cd "${pkgname}/build"
     
-    make \
-        -C __cmake/intel64.make.release \
-        DESTDIR="$pkgdir" \
-        install
-        
-    mv -f "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
+    make DESTDIR="$pkgdir" install
     
-    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/"$pkgname"}
+    mkdir -p "${pkgdir}/usr/"{bin,include/mfx}
     
     # includes (add 'mfx' folder for ffmpeg compatibility)
     cd "${pkgdir}/usr/include"
@@ -95,8 +99,9 @@ package() {
         cd ..
     done
     
-    # move samples to a better place
-    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
+    # move samples to better places
+    mv -f "$pkgdir"/usr/samples/lib* "${pkgdir}/usr/lib"
+    mv -f "$pkgdir"/usr/samples/*    "${pkgdir}/usr/bin"
     
     # license
     cd "${srcdir}/${pkgname}"
