@@ -1,6 +1,6 @@
 pkgbase = marker-git
 	pkgdesc = Markdown editor for linux made with Gtk+-3.0
-	pkgver = 2018.03.09.r1.g3dbce5f3
+	pkgver = 2018.03.09.r78.g54ba2b64
 	pkgrel = 1
 	url = https://github.com/fabiocolacio/Marker
 	arch = x86_64
