@@ -15,7 +15,7 @@ md5sums=('bd91485c06eda4f2ffcb61542d3ce302')
 
 build() {
   cd "$srcdir/T-COFFEE_distribution_Version_$pkgver/t_coffee_source"
-  make FCC=gfortran all
+  make CC="g++ -fpermissive" FCC=gfortran all
 }
 
 package() {
