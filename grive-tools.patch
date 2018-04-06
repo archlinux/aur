@@ -1,6 +1,6 @@
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new/opt/thefanclub/grive-tools/grive-indicator
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator	2015-03-11 13:48:26.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-06 15:33:47.772598000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-06 17:59:56.867127000 +0200
 @@ -1,8 +1,8 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python2
@@ -34,7 +34,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  import gettext
  import locale
  
-@@ -49,34 +48,21 @@
+@@ -49,81 +48,39 @@
      def process_IN_CREATE(self, event):
          if event.name not in excludedFiles:
            debugPrint("Create: %s" %  os.path.join(event.path, event.name))
@@ -67,9 +67,10 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 -
  def joinTreads():
-     global loop_thread
+-    global loop_thread
      # Join Threads every second for 0.5 sec and relax
-@@ -84,37 +70,14 @@
++    global loop_thread
+     loop_thread.join(timeout=0.5)
      return True
  
  def quitApplication(widget, optionName):
@@ -106,11 +107,12 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      os._exit(0)
  
 -        
- def startfile(filename):
-     try:
-         os.startfile(filename)
-@@ -123,7 +86,7 @@
- 
+-def startfile(filename):
+-    try:
+-        os.startfile(filename)
+-    except:
+-        subprocess.Popen(['xdg-open', filename])
+-
  def sendmessage(title, message):
      if notificationSetting:
 -      subprocess.Popen(['notify-send', '-i',  google_drive_icon_path , title, message])
@@ -118,7 +120,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      return
  
  def folderSize():
-@@ -134,91 +97,34 @@
+@@ -134,91 +91,33 @@
      debugPrint("Folder Size:  %s" % output)
      return output
  
@@ -130,7 +132,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def folderSizeChangeDone():
      sizeNow = 0
      sizeLater = 1
-     global onMaybeDoneTimer
+-    global onMaybeDoneTimer
 -
      # Wait till HD is done every 2 if triggered
      while sizeNow != sizeLater:
@@ -218,19 +220,20 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def copyFile(source, destination):
      try:
          shutil.copy (source, destination)
-@@ -233,8 +139,6 @@
+@@ -233,294 +132,113 @@
          textMessage = "From "+source
          debugPrint("File Delete Error %s" % textMessage )
  
 -
 -
  def autoSync(optionName):
-     global userHome
-     global googleDriveFolder
-@@ -243,16 +147,13 @@
+-    global userHome
+-    global googleDriveFolder
+-    global mask
+-    global notifier
      global wm
      global watcherGoogleDrive
-     global excludeFilter
+-    global excludeFilter
 -    
      watcherItems = len(watcherGoogleDrive)
 -
@@ -245,9 +248,10 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      if optionName=='stop':
        # Count watched folders
        debugPrint("Number of Watchers active on stop: %s" % watcherItems)
-@@ -261,219 +162,61 @@
+       if watcherItems > 0:
+         # Remove watchers for each folder in dictionary
          for indexName, indexValue in watcherGoogleDrive.iteritems():
-           watchFolder = indexName
+-          watchFolder = indexName
            wm.rm_watch(watcherGoogleDrive[indexName], rec=True)
 -          #wm.rm_watch(watcherGoogleDrive[googleDriveFolder], rec=True)
 -          # Then delete (overkill maybe) to really stop watcher
@@ -269,7 +273,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -      return False
  
  def syncNow(widget, optionName):
-     global googleDriveFolder
+-    global googleDriveFolder
 -    global syncNowButtonLabel
 -    global syncNowButtonOn
 -    
@@ -372,7 +376,8 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        if line:
 -            debugPrint("Trace stdOut: %s  " % (line))
 -
--
++      sendmessage('Google Drive', 'Autostart OFF')
+ 
 -def writeTimeStamp():
 -	  # Get Timestamp in UTF
 -    nowT = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -381,14 +386,16 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 -
 -def checkInternetConnection(targetUrl):
--    try:
++def openGdrive(widget, optionName):
+     try:
 -        response=urllib2.urlopen(targetUrl, timeout=2)
 -        debugPrint("+++ Internet Connected")
 -        return True
 -    except urllib2.URLError:
 -        debugPrint("--- Not Connected")
 -        return False
--    except:
++      os.startfile(googleDriveFolder)
+     except:
 -        debugPrint("--- Timeout Error - Not Connected")
 -        return False
 -
@@ -488,11 +495,12 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    global timerConnectAnimation
 -    timerConnectAnimation = GLib.timeout_add(666, connectAnimation, '')
 -
-+      sendmessage('Google Drive', 'Autostart OFF')
+-
+-def openGdrive(widget, optionName):
+-    global googleDriveFolder
+-    startfile(googleDriveFolder)
++      subprocess.Popen(['xdg-open', googleDriveFolder])
  
- def openGdrive(widget, optionName):
-     global googleDriveFolder
-@@ -482,45 +225,32 @@
  def openInBrowser(widget, url):
      webbrowser.open_new(url)
  
@@ -542,7 +550,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # setup a check button and associate it with a GSettings key
      global settings
      global autostart_check_button
-@@ -531,7 +261,6 @@
+@@ -531,7 +249,6 @@
      preferencesWindow.set_border_width(24)
      preferencesWindow.connect('delete-event', closeWindow, preferencesWindow)
  
@@ -550,7 +558,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      ## Button definitions
      # Autostart
      optionName = _('Start Google Drive when you start your computer')
-@@ -545,7 +274,6 @@
+@@ -545,7 +262,6 @@
      # Link button actions on toggle
      autostart_check_button.connect("toggled", on_check_button_toggled, autostart_check_button, settings, key)
  
@@ -558,7 +566,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # Auto Sync
      optionName = _('Automatically synchronize Google Drive')
      key = 'autosync'
-@@ -558,7 +286,6 @@
+@@ -558,7 +274,6 @@
      # Link button actions on toggle
      autosync_check_button.connect("toggled", on_check_button_toggled, autosync_check_button, settings, key)
  
@@ -566,7 +574,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # Notifications
      optionName = _('Show On Screen Notifications')
      key = 'notifications'
-@@ -571,55 +298,27 @@
+@@ -571,55 +286,27 @@
      # Link button actions on toggle
      notifications_check_button.connect("toggled", on_check_button_toggled, notifications_check_button, settings, key)
  
@@ -622,7 +630,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def openAbout(widget, optionName):
      widget.set_sensitive(False)
      aboutWindow=Gtk.AboutDialog()
-@@ -640,7 +339,7 @@
+@@ -640,7 +327,7 @@
  'along with this program.  If not, see http://www.gnu.org/licenses')
      aboutWindow.set_website('http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools')
      aboutWindow.set_website_label('www.thefanclub.co.za')
@@ -631,7 +639,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      aboutWindow.set_translator_credits(u'Christiaan Diedericks - Afrikaans \nJos\u00e9 A. Alonso - Spanish \nMaximilian Gro\u00dfe - German \nVitalD - Russian \nJean-S\u00e9bastien Beaulieu - French\nLuca Chiodini - Italian\nThomas Hansen - Portuguese\nJorge Pinto - Brazilian Portuguese\nMohammad Jolani - Arabic\nHirohisa Kawase - Japanese\nDieuwke Hupkes - Dutch\nDu\u0161an Spasi\u0107 - Serbian\nPetr Kub\u00e1nek - Czech\nPiotr  Strebski - Polish \nLuc\u00e1\u0161 Kr\u00e1l - Slovak \nAbhimanyu Shekhar - Hindi \nNurzhan - Kazakh \nZdravko Lambov- Bulgarian \nHenrik Holst - Swedish \nOrestis Chatziioanidis - Greek \nP\u00e9ter P\u00e9nzes - Hungarian\nSung Min Lee - Korean \nPeter Chu - Chinese\nAbdul Muhaimin - Malay\nManish Sainju - Nepali')
      aboutWindow.set_logo(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
      aboutWindow.set_icon(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
-@@ -649,67 +348,10 @@
+@@ -649,70 +336,13 @@
      aboutWindow.destroy()
      widget.set_sensitive(True)
  
@@ -697,9 +705,13 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    themeStyle = theme
 -
  def notificationSettingUpdate():
-     global notificationSetting
+-    global notificationSetting
      # Read defaults from dconf Settings
-@@ -720,7 +362,6 @@
++    global notificationSetting
+     try:
+         notificationSetting = settings.get_boolean("notifications")
+     except:
+@@ -720,7 +350,6 @@
  
  def renderMenu():
      global menu
@@ -707,7 +719,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      global menu_sync_now
      global menu_auto_sync
      global menu_open_gdrive_web
-@@ -729,25 +370,11 @@
+@@ -729,25 +358,11 @@
  
      # Menu Items
      optionName=_('Sync Now')
@@ -734,7 +746,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      menu.append(Gtk.SeparatorMenuItem.new())
  
      optionName=_('Auto Sync')
-@@ -755,11 +382,8 @@
+@@ -755,11 +370,8 @@
      menu_auto_sync = Gtk.CheckMenuItem(optionName)
      menu_auto_sync.connect("activate", toggleAutoSync, optionName)
      settings.connect("changed::autostart", on_my_setting_changed, key, menu_auto_sync)
@@ -746,7 +758,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      menu.append(menu_auto_sync)
  
      menu.append(Gtk.SeparatorMenuItem.new())
-@@ -804,95 +428,68 @@
+@@ -804,95 +416,68 @@
      menu.append(menu_quit)
  
      menu.show_all()
@@ -871,7 +883,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
    # Load translation if possible
    try:
      appTranslate = gettext.translation(appName, localeDir, fallback = True)
-@@ -901,103 +498,61 @@
+@@ -901,103 +486,61 @@
    except Exception as e:
      print(e)
      _ = str
@@ -946,8 +958,8 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -              '^grive_state']
 -
 -  excludedFiles = ['.grive', '.grive~', '.grive_state', '.grive_state~' ]
++  icon_path_failed = os.path.join(installDir, 'icons', 'grive-app-ind-error.png')
 +  icon_path_standby = os.path.join(installDir, 'icons', 'grive-app-ind.svg')
-+  icon_path_failed = os.path.join(installDir, 'icons', 'grive-app-error.png')
 +  if settings.get_boolean(key) == True:
 +    icon_path = icon_path_active
 +  else:
@@ -990,6 +1002,28 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
    Gtk.main()
 -
 -
+diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop grive-tools.new/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop
+--- grive-tools/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop	2013-09-19 02:00:13.000000000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop	2018-04-06 17:49:23.990100000 +0200
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+ Type=Application
+-Exec=/opt/thefanclub/grive-tools/grive-indicator 
+-Icon=/opt/thefanclub/grive-tools/GoogleDrive.png
+-Hidden=false
+-NoDisplay=false
++Name=Google Drive Indicator
++Comment=Google Drive Client with Grive and Grive Tools
++Path=/usr/share/grive-tools/
++Exec=/usr/share/grive-tools/grive-indicator 
++Icon=/usr/share/grive-tools/GoogleDrive.png
+ X-GNOME-Autostart-enabled=true
+-Name=Google Drive
+-GenericName=google-drive
+-X-GNOME-FullName=Google Drive
+-Comment=Google Drive Indicator shortcut
++X-GNOME-Autostart-Delay=30
++Terminal=false
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt/thefanclub/grive-tools/grive-setup
 --- grive-tools/opt/thefanclub/grive-tools/grive-setup	2015-03-11 13:48:49.000000000 +0100
 +++ grive-tools.new/opt/thefanclub/grive-tools/grive-setup	2018-04-05 16:34:57.000000000 +0200
@@ -1230,6 +1264,33 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt
 +else EXEC_TERMINAL="echo Run this in your terminal, for setup: "; fi
 +$EXEC_TERMINAL "mkdir -p ~/Google\ Drive && cd ~/Google\ Drive && grive -a; sleep 30"
 +exit $?
+diff -ura grive-tools/usr/share/applications/grive-indicator.desktop grive-tools.new/usr/share/applications/grive-indicator.desktop
+--- grive-tools/usr/share/applications/grive-indicator.desktop	2015-03-11 13:49:25.000000000 +0100
++++ grive-tools.new/usr/share/applications/grive-indicator.desktop	2018-04-06 17:49:01.238565000 +0200
+@@ -1,18 +1,9 @@
+ [Desktop Entry]
+-Name=Google Drive Indicator
+-Name[pl]=Wskaźnik Dysku Google
+-Version=1.15
+-Name=Google Drive Indicator
+-GenericName[pl]=Wskaźnik-Dysku-Google
+-X-GNOME-FullName=Google Drive Indicator
+-X-GNOME-FullName[pl]=Wskaźnik Dysku Google
+-Comment=Ubuntu Google Drive Client with Grive and Grive Tools
+-Comment[pl]=Klient Dysku Google dla Ubuntu, używający Grive i Narzędzi Grive
+ Type=Application
++Name=Google Drive Indicator
++Comment=Google Drive Client with Grive and Grive Tools
++Path=/usr/share/grive-tools/
++Exec=/usr/share/grive-tools/grive-indicator 
++Icon=/usr/share/grive-tools/GoogleDrive.png
+ Categories=Utility;GTK
+-Path=/opt/thefanclub/grive-tools/
+-Exec=/opt/thefanclub/grive-tools/grive-indicator 
+ Terminal=false
+-StartupNotify=true
+-Icon=/opt/thefanclub/grive-tools/GoogleDrive.png
+-TargetEnvironment=Unity
 diff -ura grive-tools/usr/share/glib-2.0/schemas/apps.grive-indicator.gschema.xml grive-tools.new/usr/share/glib-2.0/schemas/apps.grive-indicator.gschema.xml
 --- grive-tools/usr/share/glib-2.0/schemas/apps.grive-indicator.gschema.xml	2014-02-24 19:30:26.000000000 +0100
 +++ grive-tools.new/usr/share/glib-2.0/schemas/apps.grive-indicator.gschema.xml	2018-04-06 00:13:53.000000000 +0200
