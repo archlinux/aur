@@ -16,6 +16,7 @@ pkgbase = mlv
 	depends = sdl_ttf
 	depends = glib2
 	depends = libxml2
+	depends = sdl_image
 	source = http://download.savannah.gnu.org/releases/mlv/mlv-2.0.2/mlv-2.0.2.tar.gz
 	md5sums = 1b29b677ea0123f92e4a0486139b57b1
 
