@@ -1,13 +1,14 @@
 pkgbase = cabal-static
 	pkgdesc = The command-line interface for Cabal and Hackage. Statically linked.
 	pkgver = 2.0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hackage.haskell.org/package/cabal-install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = custom:BSD3
 	makedepends = ghc
+	makedepends = ghc-static
 	depends = gmp
 	depends = zlib
 	depends = libffi
