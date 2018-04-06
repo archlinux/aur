@@ -1,7 +1,7 @@
 pkgbase = netgui
 	pkgdesc = GUI for netctl, stable but beta. Replaces WiFiz.
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codywd/NetGUI
 	arch = any
 	license = custom
