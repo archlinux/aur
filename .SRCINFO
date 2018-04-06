@@ -1,6 +1,6 @@
 pkgbase = hyper
 	pkgdesc = A terminal built on web technologies
-	pkgver = 2.0.0.canary.15
+	pkgver = 2.0.0.canary.16
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = hyper
 	depends = gconf
 	conflicts = hyperterm
 	replaces = hyperterm
-	source = https://github.com/zeit/hyper/archive/2.0.0-canary.15.tar.gz
+	source = https://github.com/zeit/hyper/archive/2.0.0-canary.16.tar.gz
 	source = https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png
 	source = Hyper.desktop
-	md5sums = eeaa8b0c9abc53d40f4b647f3e9e6ac1
+	md5sums = 214009ffd9b4906c9571cd0bb506f84e
 	md5sums = f3481e14cba331160339b3b5ab78872b
 	md5sums = 74cb7ba38e37332aa8300e4b6ba9c61c
 
