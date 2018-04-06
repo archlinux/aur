@@ -15,7 +15,7 @@ options=('staticlibs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/v$pkgver.tar.gz)
 sha256sums=('c45029c0a0f1a88d416af143e34de96b3091642722aa2d8c090916c6d1498c2e')
 provides=('flatbuffers')
-confligs=('flatbuffers')
+conflicts=('flatbuffers')
 
 prepare() {
   mkdir -p build
