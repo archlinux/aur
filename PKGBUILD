@@ -1,71 +1,65 @@
-# Maintainer: Fixed Torres <aur_linuxero@outlook.com>
-# Contributor: Fixed Torres <aur_linuxero@outlook.com>
-
+# Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-git
-_pkgname=dnscrypt-proxy
-pkgver=2018.01.07.2504.f71ca69
-pkgrel=2
-pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
-arch=('i686' 'x86_64')
-url="https://github.com/dyne/dnscrypt-proxy"
+pkgver=2.0.8.r1.gbe84399
+pkgrel=1
+pkgdesc="A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2."
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/jedisct1/dnscrypt-proxy"
 license=('custom:ISC')
-depends=('libsodium' 'systemd' 'libtool' 'ldns' 'git')
-options=(libtool)
-conflicts=('dnscrypt-proxy')
-backup=('etc/dnscrypt-proxy.conf' 'dnscrypt-proxy.service')
-install=dnscrypt-proxy-git.install
-source=("${_pkgname}::git+https://github.com/dyne/dnscrypt-proxy.git")
+makedepends=('git' 'go')
+provides=('dnscrypt-proxy-go')
+conflicts=('dnscrypt-proxy' 'dnscrypt-proxy-go')
+backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml')
+source=('git+https://github.com/jedisct1/dnscrypt-proxy.git')
+sha512sums=('SKIP')
 
 pkgver() {
- cd ${_pkgname}
-  echo "2018.01.07$(git describe --tags --abbrev=0).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/dnscrypt-proxy"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
- cd ${srcdir}/${_pkgname}
-  sed -e 's|^ExecStart=.*|ExecStart=/usr/bin/dnscrypt-proxy /etc/dnscrypt-proxy.conf|' \
-         -i dnscrypt-proxy.service.in
-  sed -e 's|python|python2|' -i contrib/generate-domains-blacklist.py
-  sed -e 's|^PKG_DATA_DIR=.*|PKG_DATA_DIR=".."|' \
-         -i contrib/dnscrypt-update-resolvers.sh.in
+  cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
+  sed -i 's|\['\''127\.0\.0\.1:53'\'', '\''\[::1\]:53'\''\]|\[\]|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''dnscrypt-proxy\.log'\''|'\''/var/log/dnscrypt-proxy/dnscrypt-proxy\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''forwarding-rules\.txt'\''|'\''/etc/dnscrypt-proxy/forwarding-rules\.txt'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''cloaking-rules\.txt'\''|'\''/etc/dnscrypt-proxy/cloaking-rules\.txt'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''query\.log'\''|'\''/var/log/dnscrypt-proxy/query\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''nx\.log'\''|'\''/var/log/dnscrypt-proxy/nx\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''blacklist\.txt'\''|'\''/etc/dnscrypt-proxy/blacklist\.txt'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''blocked\.log'\''|'\''/var/log/dnscrypt-proxy/blocked\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''ip-blacklist\.txt'\''|'\''/etc/dnscrypt-proxy/ip-blacklist\.txt'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''ip-blocked\.log'\''|'\''/var/log/dnscrypt-proxy/ip-blocked\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''public-resolvers\.md'\''|'\''/var/cache/dnscrypt-proxy/public-resolvers\.md'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''parental-control\.md'\''|'\''/var/cache/dnscrypt-proxy/parental-control\.md'\''|g' example-dnscrypt-proxy.toml
 }
 
 build() {
- cd ${srcdir}/${_pkgname}
-  ./autogen.sh --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
-  make -j2
+  msg2 'Setting gopath...'
+  mkdir -p "$srcdir/gopath"
+  export GOPATH="$srcdir/gopath"
+  
+  msg2 'Setting build environment...'
+  mkdir -p "${GOPATH}/src/github.com/jedisct1"
+  ln -sfn "$srcdir/dnscrypt-proxy" "${GOPATH}/src/github.com/jedisct1/dnscrypt-proxy"
+  
+  msg2 'Compiling...'
+  cd "${GOPATH}/src/github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
+  go build -ldflags="-s -w"
 }
 
 package() {
- cd ${srcdir}/${_pkgname}
-  make DESTDIR="$pkgdir" install
-
-  install -dm755 "$pkgdir"/{usr/share/{licenses,doc}/$_pkgname,usr/lib/systemd/system,usr/lib/${_pkgname}}
-  install -dm755 "$pkgdir/usr/share/${_pkgname}/script"
-  install -m 644 COPYING "$pkgdir"/usr/share/licenses/${_pkgname}
-  install -m 644 AUTHORS NEWS README README.markdown "$pkgdir"/usr/share/doc/${_pkgname}
-  install -m 644 dnscrypt-proxy.service.in "$pkgdir"/usr/lib/systemd/system/dnscrypt-proxy.service
-  install -m 644 dnscrypt-proxy.socket "$pkgdir"/usr/lib/systemd/system
-
-## Installing scripts to generate domains blacklist and update resolvers
- cd ${srcdir}/${_pkgname}/contrib/
-  install -m 644 generate-domains-blacklist.py "$pkgdir/usr/share/${_pkgname}/script"
-  install -m 644 domains-blacklist.conf "$pkgdir/usr/share/${_pkgname}/script"
-  install -m 644 *.sh.in "$pkgdir/usr/share/${_pkgname}/script/dnscrypt-update-resolvers.sh"
-  install -m 644 *.txt "$pkgdir/usr/share/${_pkgname}/script"
-
-cat > "$pkgdir/usr/bin/dnscrypt-update-resolvers" << EOF
-#!/bin/bash
-cd /usr/share/dnscrypt-proxy/script && sh dnscrypt-update-resolvers.sh "\$@"
-EOF
-
-cat > "$pkgdir/usr/bin/dnscrypt-domains-blacklist" << EOF
-#!/bin/bash
-cd /usr/share/dnscrypt-proxy/script && python2 generate-domains-blacklist.py "\$@"
-EOF
+  cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
+  install -Dm755 "dnscrypt-proxy" "$pkgdir/usr/bin/dnscrypt-proxy"
+  install -Dm644 "example-dnscrypt-proxy.toml" "$pkgdir/etc/dnscrypt-proxy/dnscrypt-proxy.toml"
+  install -Dm644 "example-forwarding-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-forwarding-rules.txt"
+  install -Dm644 "example-blacklist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-blacklist.txt"
+  install -Dm644 "example-cloaking-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-cloaking-rules.txt"
   
-  chmod 755 "${pkgdir}/usr/bin/dnscrypt-update-resolvers"
-  chmod 755 "${pkgdir}/usr/bin/dnscrypt-domains-blacklist"
+  install -Dm644 "../systemd/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
+  install -Dm644 "../systemd/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
+    
+  install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha512sums=('SKIP')
+
+# vim:set ts=2 sw=2 et:
