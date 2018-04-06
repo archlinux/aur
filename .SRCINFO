@@ -1,21 +1,21 @@
 pkgbase = virtio-win
 	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests and floppy images for Windows XP
-	pkgver = 0.1.149.1
+	pkgver = 0.1.149.2
 	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Windows_Virtio_Drivers
 	changelog = virtio-win.changelog
 	arch = any
 	license = GPL2
 	optdepends = qemu
-	noextract = virtio-win-0.1.149-1.iso
-	noextract = virtio-win-0.1.149-1_amd64.vfd
-	noextract = virtio-win-0.1.149-1_x86.vfd
-	source = virtio-win-0.1.149-1.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-1/virtio-win.iso
-	source = virtio-win-0.1.149-1_amd64.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-1/virtio-win_amd64.vfd
-	source = virtio-win-0.1.149-1_x86.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-1/virtio-win_x86.vfd
-	sha256sums = e87b13dcc6dfc6258dd32576e6a7b2f7ec251f0dbc1077405141cb9e3146094b
-	sha256sums = a443bd71760ad511ffccb55bcf558e319f17d7036903f3ce2c92d6af27055c85
-	sha256sums = 568905def6be1fb263429d58f53bceb283927d74b629a31008fb21c7a3890227
+	noextract = virtio-win-0.1.149-2.iso
+	noextract = virtio-win-0.1.149-2_amd64.vfd
+	noextract = virtio-win-0.1.149-2_x86.vfd
+	source = virtio-win-0.1.149-2.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-2/virtio-win.iso
+	source = virtio-win-0.1.149-2_amd64.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-2/virtio-win_amd64.vfd
+	source = virtio-win-0.1.149-2_x86.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-2/virtio-win_x86.vfd
+	sha256sums = 53f077b6282a7885da8e8c6abbbd95580ca9a01b7ef7a781557f691af462cddb
+	sha256sums = 6f676f6729a23b7d136b384f8c6da39a43dc292f0ccce5123fd91a77fa4f9b03
+	sha256sums = 66e75ba07b5e9dff7b8bb05484e7ac5fa9a00471292bb92246757aaf7f410fb6
 
 pkgname = virtio-win
 
