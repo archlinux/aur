@@ -2,8 +2,8 @@
 
 pkgname=ldfpcfix
 pkgver=1.0
-pkgrel=2
-pkgdesc='Workaround for the ld "contains output sections" warning when compiling with fpc'
+pkgrel=3
+pkgdesc='Binary patch /usr/bin/ld to quiet the "contains output sections" warning that appears when compiling with fpc'
 arch=('any')
 url='https://github.com/xyproto/ldfpcfix'
 license=('MIT')
