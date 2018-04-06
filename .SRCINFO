@@ -1,0 +1,20 @@
+pkgbase = netease-dl-git
+	pkgdesc = 基于命令行的网易云音乐下载器
+	pkgver = r37.84b226f
+	pkgrel = 1
+	url = https://github.com/ziwenxie/netease-dl
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests>=2.10.0
+	depends = python-pycryptodomex
+	depends = python-click>=5.1
+	depends = python-prettytable>=0.7.2
+	options = !emptydirs
+	source = git+https://github.com/ziwenxie/netease-dl
+	md5sums = SKIP
+
+pkgname = netease-dl-git
+
