@@ -7,6 +7,7 @@ pkgbase = python-lesscpy
 	license = MIT
 	makedepends = python3
 	depends = python
+	depends = python-ply
 	source = https://pypi.python.org/packages/c2/c2/515d710df11dd4edb07b685e33e8622469593d44cd798534af24f8e0147b/lesscpy-0.13.0.tar.gz
 	md5sums = d91047bdc5b8e2ff14ca43686101978a
 
