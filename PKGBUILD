@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.43r6073
+pkgver=2.44r1.6088
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %sr%s $(git describe --tags|sed s+-+.+g|sed s+git++) $(git rev-list --count HEAD)
+  printf %s%s $(git describe --tags|sed s+git.+r+|sed s+-+.+g|cut -dg -f1) $(git rev-list --count HEAD)
 }
 
 build() {
