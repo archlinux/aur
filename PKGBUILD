@@ -1,11 +1,11 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64' 'i686')
-url='http://algernon.roboticoverlords.org/'
+url='https://algernon.roboticoverlords.org/'
 license=('MIT')
 makedepends=('git' 'go' 'setconf')
 optdepends=('redis: For using the Redis database backend'
@@ -13,14 +13,16 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=('git+https://github.com/xyproto/algernon#tag=1.8')
+source=("git+https://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
 prepare() {
   cd "$pkgname"
+
   git submodule init
   git submodule update
+
   cd "$srcdir"
 
   export GOROOT=/usr/lib/go
@@ -42,9 +44,9 @@ prepare() {
   cd "$GOPATH/src/$_gourl"
 
   # Startup parameters
-  setconf system/algernon_dev.service \
-    ExecStart \
+  setconf system/algernon_dev.service ExecStart \
     "/usr/bin/algernon -e -a --domain --server --log /var/log/algernon.log --addr=:80 /srv/http"
+
   setconf system/algernon_dev.service Group=http
 }
 
