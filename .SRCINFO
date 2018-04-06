@@ -1,19 +1,20 @@
 pkgbase = plantuml
 	pkgdesc = Component that allows to quickly write uml diagrams
-	pkgver = 1.2018.2
-	pkgrel = 2
+	pkgver = 1.2018.3
+	pkgrel = 1
 	url = http://plantuml.com/
 	arch = any
 	license = GPL
 	makedepends = apache-ant
 	makedepends = java-environment=8
-	depends = java-runtime
 	depends = graphviz
 	optdepends = plantuml-ascii-math
-	source = http://downloads.sourceforge.net/project/plantuml/1.2018.2/plantuml-1.2018.2.tar.gz
+	source = http://downloads.sourceforge.net/project/plantuml/1.2018.3/plantuml-1.2018.3.tar.gz
 	source = plantuml.run
-	sha256sums = c326fd164ff1a741aaf1cc2003c258d7d727aaec370e5a7b3e9ef70d99442196
+	sha256sums = 124f04549b5c75bf5ba91263e2d33a83ac346f285b6bc3d2d77d5e59c7cdb5bc
 	sha256sums = dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5
 
 pkgname = plantuml
+	depends = graphviz
+	depends = java-runtime
 
