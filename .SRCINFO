@@ -1,6 +1,6 @@
 pkgbase = brave-snapshot-bin
 	pkgdesc = A web browser that stops ads and trackers by default. Binary snapshot.
-	pkgver = 0.22.101
+	pkgver = 0.22.15
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = brave-snapshot-bin
 	conflicts = brave
 	conflicts = brave-bin
 	options = !strip
-	source = brave-snapshot-bin-0.22.101.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v0.22.101beta/Brave-Beta.tar.bz2
+	source = brave-snapshot-bin-0.22.15.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v0.22.15dev/Brave.tar.bz2
 	source = MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt
-	sha512sums = c19e3c723f5587d84bd96a289372795f326554db83baf69c554875dcd594f453474606114dedee063ebc122a197c218672af6d34912249efc2fbb7c05ed402ea
+	sha512sums = 3c7c504559edb4a171fe96b29c81bdbdf125b5cad016c93a8efa03089b3b592378f75ac3b23999ace3681ad1e4be9bdf1f098b1191e33f6d6a9419ef795fdaa6
 	sha512sums = b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f
 
 pkgname = brave-snapshot-bin
