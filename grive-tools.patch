@@ -1,6 +1,6 @@
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new/opt/thefanclub/grive-tools/grive-indicator
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator	2015-03-11 13:48:26.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-07 00:56:17.940625969 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-07 01:40:30.689151240 +0200
 @@ -1,8 +1,8 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python2
@@ -220,7 +220,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
  def copyFile(source, destination):
      try:
          shutil.copy (source, destination)
-@@ -233,305 +132,123 @@
+@@ -233,294 +132,113 @@
          textMessage = "From "+source
          debugPrint("File Delete Error %s" % textMessage )
  
@@ -550,11 +550,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      # setup a check button and associate it with a GSettings key
      global settings
      global autostart_check_button
-     # Create Prefences window
-     preferencesWindow = Gtk.Window(type=Gtk.WindowType.TOPLEVEL)
--    preferencesWindow.set_title(_('Google Drive Preferences - Grive Tools'))
-+    preferencesWindow.set_title(_('Google Drive Preferences - Grive Indicator'))
-     preferencesWindow.set_icon(GdkPixbuf.Pixbuf.new_from_file(google_drive_icon_path))
+@@ -531,7 +249,6 @@
      preferencesWindow.set_border_width(24)
      preferencesWindow.connect('delete-event', closeWindow, preferencesWindow)
  
@@ -1019,7 +1015,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop grive-tools.new/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop	2013-09-19 02:00:13.000000000 +0200
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop	2018-04-07 00:45:32.094823560 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator-autostart.desktop	2018-04-07 00:45:32.000000000 +0200
 @@ -1,11 +1,10 @@
  [Desktop Entry]
  Type=Application
@@ -1281,7 +1277,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt
 +exit $?
 diff -ura grive-tools/usr/share/applications/grive-indicator.desktop grive-tools.new/usr/share/applications/grive-indicator.desktop
 --- grive-tools/usr/share/applications/grive-indicator.desktop	2015-03-11 13:49:25.000000000 +0100
-+++ grive-tools.new/usr/share/applications/grive-indicator.desktop	2018-04-07 00:46:19.214799807 +0200
++++ grive-tools.new/usr/share/applications/grive-indicator.desktop	2018-04-07 00:46:19.000000000 +0200
 @@ -1,18 +1,9 @@
  [Desktop Entry]
 -Name=Google Drive Indicator

@@ -12,9 +12,9 @@ makedepends=('patch')
 source=("grive-tools.patch"
         "https://launchpad.net/~thefanclub/+archive/grive-tools/+files/grive-tools_${pkgver}.tar.gz"
         "grive-app-ind-error.png::https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Gnome-dialog-error.svg/48px-Gnome-dialog-error.svg.png")
-sha256sums=('75a52e5c84b1d014f650f7f6b71ea61aeb6398c0797bbcc3889b1067f7284d91'
+sha256sums=('1d27149e1e2f328d321c61b277c423a132f3f2cb23f81cb0c673413e14faa8dd'
             '617f87deb6d6f590bcd652e62e7ae2cde78e0485dbbdd05b46d3cf43b8c640bb'
-            'SKIP')
+            '26c2d9ef5c4cc8c14a19ac75f48b14fc09a6c4cf4a0e549d8c1f33490615e0b8')
 
 prepare() {
  cd grive-tools
