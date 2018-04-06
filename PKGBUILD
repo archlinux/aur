@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.1.0.r139.g37877fc6
+pkgver=8.1.0.r147.gc8c00863
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -21,7 +21,7 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'alsa-lib: Audio playback'
             'jack: Audio playback'
             'qt5-multimedia: Audio playback'
-            'libuvc-git: Camera capture'
+            'libuvc: Camera capture'
             'kde-cli-tools: Root privileges for virtual camera module (Recommended)'
             'gksu: Root privileges for virtual camera module'
             'gtksu-git: Root privileges for virtual camera module'
@@ -35,7 +35,7 @@ makedepends=('git'
              'libpulse'
              'alsa-lib'
              'jack'
-             'libuvc-git')
+             'libuvc')
 provides=('webcamoid')
 install="${pkgrealname}.install"
 source=("git://github.com/${pkgrealname}/${pkgrealname}.git")
@@ -52,8 +52,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgrealname}"
-    qmake-qt5 Webcamoid.pro
-    make
+    qmake-qt5 Webcamoid.pro CONFIG+=silent
+    make $MAKEFLAGS
 }
 
 package() {
