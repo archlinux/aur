@@ -1,0 +1,14 @@
+pkgbase = wmsun
+	pkgdesc = Rise/set time of Sun dockapp for Window Maker
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://www.dockapps.net/wmsun
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libdockapp
+	source = http://www.dockapps.net/download/wmsun-1.05.tar.gz
+	md5sums = a943c631c98f56c65c03bee38c0e8227
+
+pkgname = wmsun
+
