@@ -8,7 +8,7 @@ test: systemc
 
 quick-test:
 	makepkg -sf
-	namcap archc-git-*.pkg*
+	find -maxdepth 1 -type f -name 'archc-git-*.pkg*' ! -name '*.log' | xargs namcap
 
 systemc:
 	# Make systemc dependency from AUR
