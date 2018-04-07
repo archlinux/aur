@@ -1,10 +1,9 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 # Contributor: Andrej Marolt <andrej.marolt@gmail.com>
 
-_hash='ab0f056'
-_build='1219'
+_hash='191fece'
 pkgname='openshift-origin-server-bin'
-pkgver='3.7.1'
+pkgver='3.9.0'
 pkgrel=1
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=('x86_64')
@@ -16,14 +15,14 @@ source=(
     "bash-completions-openshift::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/bash/openshift"
     "zsh-completions-oc::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/zsh/oc"
     "zsh-completions-openshift::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/zsh/openshift"
-    "https://storage.googleapis.com/origin-ci-test/branch-logs/origin/v${pkgver}/builds/test_branch_origin_cross/${_build}/artifacts/zips/openshift-origin-server-v${pkgver}-${_hash}-linux-64bit.tar.gz"
+    "https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-server-v$pkgver-$_hash-linux-64bit.tar.gz"
 )
 sha512sums=(
-    '1937ecfbc6240dc430408839f2a3bc28078c1b0b1c431934dc3fe9b27a51acbb9cf78e05ec98f1374103bf0df181eb60cdea44587aaf324b6ab870fa7a29e9c1'
-    'b8d39f0d40ec87fca4a29b315ce78eb78f02ee03821a76b168b6267ca89ecfb6d56b16d8735e29e7a2436bfbec7e81196e1272f5b5af25d9c06f4a19d33983f6'
-    'ea8112d066ac37eb989fdef903a9fe08ef09f09769843d072124416b7f85aef5f5b60185ef2dc86712f5656f059c91b0d8db6ebce42f8d81b7c2d165b4047058'
-    '91c47fa9f215923ca852d128c5bd2eeea503fe3fc6e261123342a3c8b4d00d850e4961bbdbf072024c799adce92498a4a5bfb3e5c9045c4c75a460e33135b3d6'
-    '15f650f8339ebec9df7c640788ebd46746ccad49c5e35032d1f6eee384791967200299f27cc582e2001758b2231ea49b04d55c635b8efd16288f40c574a06ccb'
+    'dc005d316e4cb0be1cedf583c7d4b0b535d989a655a92a91acefd0eff45a74e5529c14827a1706b220b4c52e40579204364a1e6d2360eef89d5f59bc4777ec29'
+    '584c1730d553106f4b57a0eb1d601f050e5323a91e5dac22c39a3001d009ca331e93184aa5058f1defc64d4d9ae596d231a84f639a079bed668fe71c333c1080'
+    'e871b6165c7e1c728c8544c86391fa46fe1969ed1bc490c6e0e139c9caa06ea8854b41eedd33afc2bcb83288eb2c6fba675d6e4b48f3ff03163f017f6c6a0337'
+    '93bda923209f2676b165df4a4e74e612e4826af0eaf21719ef5567d970b091170b380b562b39b5daf3b95bb5d88ce8f7f96af6cc76401ad1ac7e656979fa74a9'
+    '26d9489c3e2d2a061337bcd162610b637b256c18af70d9f6d5f2fe538471eb02f2c56fb0fee7cf41f21118621c0afafd52aa91aa8ae5ed78770ae7bdc21a4e2d'
 )
 
 # keep symbols
@@ -46,9 +45,11 @@ package() {
     install -D -m644 $srcdir/zsh-completions-openshift  $pkgdir/usr/share/zsh/site-functions/_openshift
 
     # package
+    install -D -m755 $srcdir/*/hyperkube               $pkgdir/usr/bin/hyperkube
+    install -D -m755 $srcdir/*/kubectl                 $pkgdir/usr/bin/kubectl
+    install -D -m755 $srcdir/*/oadm                    $pkgdir/usr/bin/oadm
     install -D -m755 $srcdir/*/oc                      $pkgdir/usr/bin/oc
     install -D -m755 $srcdir/*/openshift               $pkgdir/usr/bin/openshift
-    install -D -m755 $srcdir/*/kubefed                 $pkgdir/usr/bin/kubefed
     install -D -m755 $srcdir/*/template-service-broker $pkgdir/usr/bin/template-service-broker
 
     # symbolic links
@@ -57,6 +58,4 @@ package() {
     ln -s /usr/bin/openshift ${pkgdir}/usr/bin/kube-proxy
     ln -s /usr/bin/openshift ${pkgdir}/usr/bin/kube-scheduler
     ln -s /usr/bin/openshift ${pkgdir}/usr/bin/kubelet
-    ln -s /usr/bin/openshift ${pkgdir}/usr/bin/oadm
-    ln -s /usr/bin/oc        ${pkgdir}/usr/bin/kubectl
 }
