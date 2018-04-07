@@ -1,0 +1,20 @@
+pkgbase = slimdhcp-git
+	pkgdesc = A very slim DHCP server
+	pkgver = 0.0.1.r10.e1c6661
+	pkgrel = 1
+	url = https://github.com/Torxed/slimDHCP
+	arch = x86_64
+	license = custom:BSD
+	license = cc-by-nc-sa-3.0
+	makedepends = python
+	depends = python
+	depends = python-systemd
+	provides = slimdhcp-git
+	provides = slimdhcp
+	conflicts = slimdhcp-git
+	conflicts = slimdhcp
+	source = git+https://github.com/Torxed/slimdhcp.git
+	sha256sums = SKIP
+
+pkgname = slimdhcp-git
+
