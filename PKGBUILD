@@ -5,7 +5,7 @@
 pkgname=armory-goatpig-git
 _name=${pkgname%-*-*}
 _py2ver=$(pacman -Qi python2 | sed -n 's/\(.*Version *: \)\(.*\..*\)\(\..*\)/\2/p')
-pkgver=v0.96.3.r0.g2b65ac06
+pkgver=v0.96.4.r0.gfee1f91a
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
