@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -155,7 +155,7 @@ prepare() {
   patch -d $pkgname -Np1 < $_d3d9dir/wine-d3d9.patch
 
   # Uncomment if you want wine-pba optimizations
-  _pbaprepare
+  #_pbaprepare
 
   autoreconf -f "$pkgname"
 
