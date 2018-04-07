@@ -1,7 +1,7 @@
 pkgbase = python-wxpython-phoenix
 	pkgdesc = wxPython 4.x. This is a split package providing both Python 2 and Python 3 versions of wxPython 4.x (aka wxPython Phoenix)
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxWidgets/Phoenix
 	arch = any
 	license = custom:wxWindows
@@ -38,6 +38,8 @@ pkgbase = python-wxpython-phoenix
 	makedepends = webkit2gtk
 	depends = python
 	provides = wxpython-phoenix
+	provides = python-wxpython
+	conflicts = python-wxpython
 	conflicts = wxpython-phoenix-bin
 	conflicts = wxpython-phoenix-git
 	conflicts = sk1
