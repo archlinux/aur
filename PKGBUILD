@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.12.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -28,7 +28,7 @@ backup=('etc/webapps/mantisbt/config_inc.php'
         'etc/webapps/mantisbt/custom_constants_inc.php'
 )
 source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a796463464cb0179272b373094d24b7c624ed1c20e472cb209344971f5bf5a049f69a837fe279fd93c0dae759f90110bd91c7dbc270dd1b4d794db53e355384b')
+sha512sums=('618a89dd90ba9c173d4bd610b3e8009ae2974f65edac16d4d3158c45cd980afae4e65019ca27b55f7415ac3623ecf4f17407f8df88472d14b343d1c5c0f3cc60')
 install="${pkgname}.install"
 
 prepare() {
