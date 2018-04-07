@@ -1,6 +1,6 @@
 pkgbase = qtws-base
 	pkgdesc = Standalone web-app container based on qt5-webengine
-	pkgver = r60.fba7d69
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/intersimone999/qtws
 	arch = i686
