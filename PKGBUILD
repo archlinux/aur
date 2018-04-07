@@ -1,4 +1,5 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: jyantis <yantis@yantis.net>
 # Contributor: Maximilien Noal <noal dot maximilien at gmail dot com> [AUR: xcomcmdr]
 # Contributor: Kirill "reflexing" Churin <reflexing@reflexing.ru>
 # Contributor: Wido <widowild [at] myopera [dot] com>
@@ -18,94 +19,74 @@
 
 pkgname=desura
 pkgver=120.25
-pkgrel=4
-pkgdesc='A community-driven digital distribution service for gamers (2750+ games)'
-url='http://desura.com/'
-license=('GPL3')
-arch=('i686' 'x86_64')
-install=desura.install
-depends=('lsb-release'
-         'orbit2'
-         'gtk2'
-         'libjpeg-turbo'
-         'libpng12'
-         'libxpm'
-         'libcurl-compat'
-         'desktop-file-utils'
-         'xdg-utils')
-optdepends=('java-runtime: adds java support'
-            'mono: Free implementation of the .NET platform'
-            'glew1.5: if you have install M.A.R.S - a ridiculous shooter')
+pkgrel=5
+pkgdesc="A gaming client application that allows users single-click access to download and install games from http://www.${pkgname}.com/"
+url="http://${pkgname}.com/"
+license=("GPL3")
+arch=("i686" "x86_64")
+install="${pkgname}.install"
+depends=("alsa-lib"
+         "gtk2"
+         "libcurl-compat"
+         "libjpeg6-turbo"
+         "libnotify"
+         "libpng12"
+         "libxpm"
+         "libxslt"
+         "nss"
+         "orbit2"
+         "xdg-utils")
+depends_i686=("glibc")
+depends_x86_64=("lib32-glibc")
+optdepends=("java-runtime: adds java support"
+            "mono: Free implementation of the .NET platform"
+            "glew1.5: if you have install M.A.R.S - a ridiculous shooter")
+optdepends_i686=("adobe-air: for Adobe Air-based games"
+                 "catalyst-utils: If you have ATI graphics"
+                 "curl: if you have install TRAUMA"
+                 "nvidia-utils: If you have nvidia graphics")
+optdepends_x86_64=("bin32-adobe-air: for Adobe Air-based games"
+                   "lib32-catalyst-utils: If you have ATI graphics"
+                   "lib32-curl: if you have install TRAUMA"
+                   "lib32-nvidia-utils: If you have nvidia graphics")
+#Use this source instead if it becomes available again: "http://www.${pkgname}.com/${pkgname}-${CARCH}.tar.gz"
+source_i686=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/_/.}.tar.gz"
+             "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${CARCH}"
+             "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${CARCH}")
+source_x86_64=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/_/.}.tar.gz"
+               "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${CARCH}"
+               "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${CARCH}")
+source=("${pkgname}.sh"
+        "${pkgname}.desktop"
+        "${pkgname}.png")
+sha256sums_i686=("f195aa8c9c833460d925085da3b16f3929c85983433a3c0b84de34b6338adecb"
+                 "63d39e037e2ab7c6c91aecbcf14b33b28832a6ceb5e07168191588e4beae4d5c"
+                 "e2da74c6862cec82acd700ce02014ab80558ee136c3cf62afe66bc2da5e8554f")
+sha256sums_x86_64=("f195aa8c9c833460d925085da3b16f3929c85983433a3c0b84de34b6338adecb"
+                   "038ae4c5206c5c5ea44e17df3f427c2a8d268beac67708494dccfa9296f71ded"
+                   "992ac1efecb84150431d81f12cb41cf67a1995e3f79731f8bfc585c94c394aac")
+sha256sums=("17afbe089046570ef99f99dd8fe23e463486c7c0d389de3e8efcfeb53c3d5765"
+            "074bf91129a7f038309f0504b980ecfefc84de27ca866b5658ace6731650abab"
+            "9b125fe981342e3e16a5c9d1c1fa921da0b77f4ea9d0b79a52bebb780c60f851")
 
-source=('desura.sh'
-        'desura.desktop'
-        'desura.png')
+package() {
+  msg2 "Changing permissions to /opt/${pkgname}"
+  install -d -m755 -g users "${pkgdir}/opt/${pkgname}"
 
-md5sums=('d3b192b3b27a09e4f3b62ac997e414e9'
-         '83d0d30e9eefad49308d50d763f94dfd'
-         'd74bf6e5275c0529470593872749a09d')
+  msg2 "Installing application into /opt/${pkgname}"
+  cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/opt/${pkgname}/"
+  
+  msg2 "Installing launcher into /usr/bin"
+  install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
+  msg2 "Installing older boost libraries without overwriting newer ones"
+  install -D -m644 "${srcdir}/libboost_filesystem.so.1.54.0-${CARCH}" "${pkgdir}/usr/lib/libboost_filesystem.so.1.54.0"
+  install -D -m644 "${srcdir}/libboost_system.so.1.54.0-${CARCH}" "${pkgdir}/usr/lib/libboost_system.so.1.54.0"
 
-if [[ $CARCH == i686 ]]; then
-  optdepends+=('nvidia-utils: If you have nvidia graphics'
-               'catalyst-utils: If you have ATI graphics'
-               'adobe-air: for Adobe Air-based games')
+  msg2 "Installing bootstrapper icon into /usr/share/icons/hicolor/256x256/apps"
+  
+  install -m 644 -D "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
-  source+=('http://www.desura.com/desura-i686.tar.gz'
-           'http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-i686'
-           'http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-i686')
-
-  md5sums+=('38a3aa1b69189418e823059072da7739'
-            '5863dd55c4a96f9a96f8536b636e8c45'
-            '77f77e3eaeece4ef3355c1d0b5055e90')
-
-else
-  optdepends+=('lib32-nvidia-utils: If you have nvidia graphics'
-               'lib32-catalyst-utils: If you have ATI graphics'
-               'lib32-curl: if you have install TRAUMA '
-               'lib32-nss: if you have install TRAUMA'
-               'bin32-adobe-air: for Adobe Air-based games')
-
-  source+=('http://yantis-scripts.s3.amazonaws.com/desura_120_25.tar.gz'
-           'http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-x86_64'
-           'http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-x86_64')
-
-
-  md5sums+=('24cac15e63d6054266452dce00a3dc39'
-            '321a267c8cbf7266a507728945509f4e'
-            'cee97c1c861f1731a40436cb1f9f50c5')
-fi
-
-package(){
-
-  # Find out what group user belongs to and install under that group
-  # (Does work like the user that requested it wanted since if someone sudos it does root)
-  # USERGROUP=$(id -gn)
-  # msg $USERGROUP
-  # install -dm 775 -g $USERGROUP ${pkgdir}/opt/${pkgname}
-
-  # Change permissions
-  install -d -m775 -g users ${pkgdir}/opt/${pkgname}
-
-  # Install Desura
-  if [[ $CARCH == i686 ]]; then
-    # install -D -m755 desura ${pkgdir}/opt/${pkgname}/
-    install -D -m755 desura/* ${pkgdir}/opt/${pkgname}/
-  else
-    cp -r desura/* $pkgdir/opt/desura
-  fi
-  # Install launcher
-  install -D -m755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
-
-  # Install older boost libraries without overwriting newer ones
-  install -D -m644 libboost_filesystem.so.1.54.0-${CARCH} ${pkgdir}/usr/lib/libboost_filesystem.so.1.54.0
-  install -D -m644 libboost_system.so.1.54.0-${CARCH} ${pkgdir}/usr/lib/libboost_system.so.1.54.0
-
-  # Install bootstrapper icon
-  install -m 644 -D \
-    ${pkgname}.png \
-    ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-
-  # Install bootstrapper desktop file
-  desktop-file-install -m 644 --dir ${pkgdir}/usr/share/applications/ ${pkgname}.desktop
+  msg2 "Installing bootstrapper desktop file into /usr/share/applications"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${pkgname}.desktop"
 }

@@ -1,0 +1,5 @@
+desura-*.pkg.tar.xz
+desura-*.tar.gz
+libboost_*
+pkg/
+src/

@@ -1,19 +1,12 @@
 shopt -s extglob dotglob
 
-_warning() {
-    /bin/cat << EOF
-    ===> 
-    ===> In order to run Desura, you have to be in the 'users' group.
-    ===> (which you most likely are unless you are running as root)
-    ===> 
-    ===> The patcher has a bug where it continously updates. If this
-    ===> happens to you then just hit cancel while it is DOWNLOADING
-    ===> and the login screen should be minimized. Find it then login.
-EOF
-}
-
 post_install() {
-  _warning
+  printf "$(tput setaf 4)In order to run Desura, you have to be in the 'users' group.$(tput sgr0)\n"
+  printf "$(tput setaf 4)(which you most likely are unless you are running as root)$(tput sgr0)\n"
+  printf "$(tput setaf 4)$(tput sgr0)\n"
+  printf "$(tput setaf 4)The patcher has a bug where it continously updates. If this$(tput sgr0)\n"
+  printf "$(tput setaf 4)happens to you then just hit cancel while it is DOWNLOADING$(tput sgr0)\n"
+  printf "$(tput setaf 4)and the login screen should be minimized. Find it then login.$(tput sgr0)\n"
   post_upgrade
 }
 
@@ -22,27 +15,16 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  echo "Updating icon and desktop caches..."
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-  update-desktop-database -qv
-  echo "done."
+  post_install
 }
 
 pre_remove() {
-  # Delete .desktop files
-  xdg-desktop-menu uninstall --mode user opt/desura/desura.desktop opt/desura/desura-force.desktop
-
-  # Delete old files
+  printf "$(tput setaf 4)Deleting old files in /opt/desura ...$(tput sgr0)\n"
   rm -rf opt/desura/.settings/!(cache|games|iteminfo_c.sqlite)
   rm -rf opt/desura/!(common|.settings)
 }
 
 post_remove() {
-  post_upgrade
-    /bin/cat << EOF
-    ===> 
-    ===> Desura's downloads cache and installed games are kept in /opt/desura folder.
-    ===> In order to delete Desura completely, remove /opt/desura folder by hand.
-    ===> 
-EOF
+  printf "$(tput setaf 4)Desura's downloads cache and installed games are kept in /opt/desura folder.$(tput sgr0)\n"
+  printf "$(tput setaf 4)In order to delete Desura completely, remove /opt/desura folder by hand.$(tput sgr0)\n"
 }

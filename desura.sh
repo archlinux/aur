@@ -2,8 +2,8 @@
 export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH
 
 if [[ ! -f "/opt/desura/desura" ]]; then
-    LD_PRELOAD=libcurl.so.3 /opt/desura/bin/desura
-    else
-    LD_PRELOAD=libcurl.so.3 /opt/desura/desura
-    fi
-echo "If you don't see it. Maybe it minimized"
+  LD_PRELOAD=libcurl.so.3 /opt/desura/bin/desura
+else
+  LD_PRELOAD=libcurl.so.3 /opt/desura/desura
+fi
+printf "$(tput setaf 4)If you don't see it, maybe it minimized.$(tput sgr0)\n"
