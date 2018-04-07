@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.pyinstaller.org"
 license=('GPL2')
 depends=('python')
+makedepends=('git')
 provides=('pyinstaller')
 conflicts=('pyinstaller')
 source=("git+https://github.com/pyinstaller/pyinstaller.git")

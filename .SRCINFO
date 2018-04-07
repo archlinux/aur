@@ -6,6 +6,7 @@ pkgbase = pyinstaller-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = python
 	provides = pyinstaller
 	conflicts = pyinstaller
