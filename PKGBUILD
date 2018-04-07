@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Mikael Blomstrand <mbloms@kth.se>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
@@ -21,11 +21,11 @@ md5sums=('98c889aaf8d23910d2b92d65be2e737a'
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
 
 prepare() {
-  patch -p1 -d $provides-$pkgver < nohex.patch 
+  patch -p1 -d $conflicts-$pkgver < nohex.patch 
 }
 
 build() {
-  cd $provides-$pkgver
+  cd $conflicts-$pkgver
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --with-pkg-config-libdir=/usr/lib/pkgconfig \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd $provides-$pkgver
+  cd $conflicts-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
