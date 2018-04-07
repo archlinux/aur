@@ -6,11 +6,11 @@
 # Maintainer: Luka Karinja <luka.karinja@gmail.com>
 pkgname=oscam-emu
 pkgver=11410
-pkgrel=1
+pkgrel=2
 dir=oscam-emu
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('libusb' 'openssl')
 makedepends=('git' 'pcsclite')
