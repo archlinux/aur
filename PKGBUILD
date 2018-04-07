@@ -2,7 +2,7 @@
 
 _pkgname=steam
 pkgname=(python-steam python2-steam)
-pkgver=0.8.20
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Module for interacting with various Steam features'
 arch=('any')
@@ -12,7 +12,7 @@ depends=()
 makedepends=(python-setuptools)
 checkdepends=(python python-nose python-coverage python-mock python-vcrpy python2 python2-nose python2-coverage python2-mock python2-vcrpy)
 source=("https://github.com/ValvePython/steam/archive/v$pkgver.tar.gz")
-sha256sums=('32a3c75949817bd76d614cfc69e92c9b4cf68461275e306aeee5e043558cd4d8')
+sha256sums=('80537106c83502dac09592b069bde35ef309c365ecac18b5d9008f31395486b9')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"

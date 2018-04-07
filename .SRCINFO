@@ -1,6 +1,6 @@
 pkgbase = python-steam
 	pkgdesc = Module for interacting with various Steam features
-	pkgver = 0.8.20
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/ValvePython/steam
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-steam
 	checkdepends = python2-mock
 	checkdepends = python2-vcrpy
 	makedepends = python-setuptools
-	source = https://github.com/ValvePython/steam/archive/v0.8.20.tar.gz
-	sha256sums = 32a3c75949817bd76d614cfc69e92c9b4cf68461275e306aeee5e043558cd4d8
+	source = https://github.com/ValvePython/steam/archive/v0.9.0.tar.gz
+	sha256sums = 80537106c83502dac09592b069bde35ef309c365ecac18b5d9008f31395486b9
 
 pkgname = python-steam
 	depends = python
