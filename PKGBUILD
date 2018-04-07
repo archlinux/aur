@@ -2,7 +2,7 @@
 
 _name=Py3AMF
 pkgname=python-py3amf
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="AMF support for Python"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 provides=(python-pyamf=$pkgver)
 conflicts=(python-pyamf)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('be02bf5c44016ea6889aa9b0247dcaa9')
+md5sums=('b37a8b78d7e2162cdb50c1bdb262db46')
 
 package() {
   cd "$_name-$pkgver"

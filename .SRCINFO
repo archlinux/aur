@@ -1,16 +1,16 @@
 pkgbase = python-py3amf
 	pkgdesc = AMF support for Python
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/StdCarrot/Py3AMF
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-defusedxml
-	provides = python-pyamf=0.8.7
+	provides = python-pyamf=0.8.8
 	conflicts = python-pyamf
-	source = https://files.pythonhosted.org/packages/source/P/Py3AMF/Py3AMF-0.8.7.tar.gz
-	md5sums = be02bf5c44016ea6889aa9b0247dcaa9
+	source = https://files.pythonhosted.org/packages/source/P/Py3AMF/Py3AMF-0.8.8.tar.gz
+	md5sums = b37a8b78d7e2162cdb50c1bdb262db46
 
 pkgname = python-py3amf
 
