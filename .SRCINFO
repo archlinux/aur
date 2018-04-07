@@ -1,15 +1,15 @@
 pkgbase = nodejs-mocha
 	pkgdesc = Simple, flexible, fun test framework.
-	pkgver = 5.0.1
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://mochajs.org
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = mocha-5.0.1.tgz
-	source = https://registry.npmjs.org/mocha/-/mocha-5.0.1.tgz
-	sha256sums = 113dc11c894f8cff01ae6c46b45504af890600e8c905e3bbe8e7dca32d09e7ec
+	noextract = mocha-5.0.5.tgz
+	source = https://registry.npmjs.org/mocha/-/mocha-5.0.5.tgz
+	sha256sums = e18826cdd81b0453404905ce4a229c3b5f8c866ed300a7ecc52ca2771a8ff2f2
 
 pkgname = nodejs-mocha
 
