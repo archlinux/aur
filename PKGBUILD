@@ -3,7 +3,7 @@
 
 _pkgname=agate
 pkgname=python-$_pkgname
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A data analysis library that is optimized for humans instead of machines"
 arch=('any')
@@ -35,6 +35,6 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('e5ab2a32aa866757a98b42cf46580014064dbb38a0395ccf82c8e85593904fef')
+sha256sums=('0397d3dcc6ae78b8289294b3bca15b2a7328b9015aed8841bc650700fe2a6cad')
 
 # vim:set ts=2 sw=2 et:
