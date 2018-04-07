@@ -1,6 +1,6 @@
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new/opt/thefanclub/grive-tools/grive-indicator
 --- grive-tools/opt/thefanclub/grive-tools/grive-indicator	2015-03-11 13:48:26.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-07 01:40:30.689151240 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-indicator	2018-04-07 20:20:40.557228181 +0200
 @@ -1,8 +1,8 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python2
@@ -163,16 +163,8 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -        debugPrint("Timer Removed :  %s" % onMaybeDoneTimer)
 -      onMaybeDoneTimer = GLib.timeout_add(5000, folderSizeChangeDone)
 -      debugPrint("New Timer ID: %s" % onMaybeDoneTimer)
-+    # Start and remove timers as new events come in
-+    # to keep resetting timeout to 5 sec till last call
-+    # AER Methode 
-+    if onMaybeDoneTimer != 0:
-+      GLib.source_remove(onMaybeDoneTimer)
-+      debugPrint("Timer Removed :  %s" % onMaybeDoneTimer)
-+    onMaybeDoneTimer = GLib.timeout_add(5000, folderSizeChangeDone)
-+    debugPrint("New Timer ID: %s" % onMaybeDoneTimer)
-     return
- 
+-    return
+-
 -def readLastSync(widget, optionName):
 -    # Read last sync time from file
 -    global menu_last_sync
@@ -214,8 +206,16 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    except:
 -      writeError="File Not Saved"
 -      raise
--    return
--
++    # Start and remove timers as new events come in
++    # to keep resetting timeout to 5 sec till last call
++    # AER Methode 
++    if onMaybeDoneTimer != 0:
++      GLib.source_remove(onMaybeDoneTimer)
++      debugPrint("Timer Removed :  %s" % onMaybeDoneTimer)
++    onMaybeDoneTimer = GLib.timeout_add(5000, folderSizeChangeDone)
++    debugPrint("New Timer ID: %s" % onMaybeDoneTimer)
+     return
+ 
 -
  def copyFile(source, destination):
      try:
@@ -769,7 +769,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
      menu.append(menu_auto_sync)
  
      menu.append(Gtk.SeparatorMenuItem.new())
-@@ -804,95 +416,68 @@
+@@ -804,95 +416,75 @@
      menu.append(menu_quit)
  
      menu.show_all()
@@ -799,6 +799,9 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -    debugPrint("Cancel selected - Quiting")
 -
 -  dialog.destroy() 
+-    
+-############################# Main Loop
+-#
 +    # Install Dialog if Setup has not been run before
 +    dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, _('Google Drive Indicator - Setup Required'))
 +    dialog.set_default_size(400, 250)
@@ -808,13 +811,17 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 +      # Launch Grive Setup
 +      proc = subprocess.Popen(['/bin/bash', os.path.join(installDir,'grive-setup')], stdout=subprocess.PIPE)
 +      proc.wait()
++      if proc.returncode != 0:
++        dialogWarning = Gtk.MessageDialog(None, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.CLOSE, 'For setup grive run this in your terminal:\n\nmkdir -p ~/Google\ Drive; cd ~/Google\ Drive; grive -a')
++        dialogWarning.set_title('Grive Setup - Script failed!')
++        dialogWarning.set_default_size(400, 100)
++        dialogWarning.show_all()
++        dialogWarning.run()
++        dialogWarning.destroy()
 +    elif response == Gtk.ResponseType.CANCEL:
 +      debugPrint("Cancel selected - Quiting")
 +    dialog.destroy() 
-     
--############################# Main Loop
--#
--
+ 
 +##### Main Loop
  if __name__ == "__main__":
 -  
@@ -894,7 +901,7 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
    # Load translation if possible
    try:
      appTranslate = gettext.translation(appName, localeDir, fallback = True)
-@@ -901,103 +486,61 @@
+@@ -901,103 +493,61 @@
    except Exception as e:
      print(e)
      _ = str
@@ -908,10 +915,11 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator grive-tools.new
 -  if griveCheck == False :
 -	  installDialog()
 -	  os._exit(0)
+-     
 +  if griveCheck == False:
 +    installDialog()
 +    os._exit(0)
-      
++
    # Placeholder vars
 -  menu_last_sync = ''
    menu_sync_now = ''
@@ -1037,9 +1045,9 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-indicator-autostart.deskt
 +Terminal=false
 diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt/thefanclub/grive-tools/grive-setup
 --- grive-tools/opt/thefanclub/grive-tools/grive-setup	2015-03-11 13:48:49.000000000 +0100
-+++ grive-tools.new/opt/thefanclub/grive-tools/grive-setup	2018-04-05 16:34:57.000000000 +0200
++++ grive-tools.new/opt/thefanclub/grive-tools/grive-setup	2018-04-07 20:26:16.581937327 +0200
 @@ -1,227 +1,9 @@
--#!/bin/bash
+ #!/bin/bash
 -#
 -# Linux Grive Setup
 -#  
@@ -1266,15 +1274,14 @@ diff -ura grive-tools/opt/thefanclub/grive-tools/grive-setup grive-tools.new/opt
 -      
 -
 -exit
-+#!/bin/sh
-+if [ -x "$(which gnome-terminal)" ]; then EXEC_TERMINAL="gnome-terminal -- sh -c"
-+elif [ -x "$(which mate-terminal)" ]; then EXEC_TERMINAL="mate-terminal -- sh -c"
-+elif [ -x "$(which xfce4-terminal)" ]; then EXEC_TERMINAL="xfce4-terminal -x sh -c"
-+elif [ -x "$(which lxterminal)" ]; then EXEC_TERMINAL="lxterminal -e sh -c"
-+elif [ -x "$(which konsole)" ]; then EXEC_TERMINAL="konsole -e sh -c"
-+else EXEC_TERMINAL="echo Run this in your terminal, for setup: "; fi
-+$EXEC_TERMINAL "mkdir -p ~/Google\ Drive && cd ~/Google\ Drive && grive -a; sleep 30"
-+exit $?
++if [ -x "$(which gnome-terminal)" ]; then EXEC_TERMINAL="gnome-terminal -- bash -c"
++elif [ -x "$(which mate-terminal)" ]; then EXEC_TERMINAL="mate-terminal -- bash -c"
++elif [ -x "$(which xfce4-terminal)" ]; then EXEC_TERMINAL="xfce4-terminal -x bash -c"
++elif [ -x "$(which lxterminal)" ]; then EXEC_TERMINAL="lxterminal -e bash -c"
++elif [ -x "$(which konsole)" ]; then EXEC_TERMINAL="konsole -e bash -c"
++else echo "Please Setup manually grive in the folder $HOME/\"Google Drive\""; exit 1; fi
++$EXEC_TERMINAL "mkdir -p ~/Google\ Drive; cd ~/Google\ Drive; grive -a; sleep 10"
++exit 0
 diff -ura grive-tools/usr/share/applications/grive-indicator.desktop grive-tools.new/usr/share/applications/grive-indicator.desktop
 --- grive-tools/usr/share/applications/grive-indicator.desktop	2015-03-11 13:49:25.000000000 +0100
 +++ grive-tools.new/usr/share/applications/grive-indicator.desktop	2018-04-07 00:46:19.000000000 +0200
