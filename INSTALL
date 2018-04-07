@@ -3,7 +3,7 @@ post_install() {
 #!/bin/bash
 
 # Link to the binary
-ln -sf '/opt/Imaginary Teleprompter/imaginary-teleprompter' '/usr/local/bin/imaginary-teleprompter'
+ln -sf '/opt/Imaginary/imaginary-teleprompter/imaginary-teleprompter' '/usr/local/bin/imaginary-teleprompter'
 
 }
 post_remove() {

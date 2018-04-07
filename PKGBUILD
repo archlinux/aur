@@ -1,7 +1,8 @@
 # Maintainer: Javier O. Cordero Pérez <javier@imaginary.tech>
 pkgname=imaginary-teleprompter-bin
+_pkgname=${pkgname%-bin}
 pkgver=2.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
@@ -11,14 +12,29 @@ provides=('imaginary-teleprompter')
 conflicts=('imaginary-teleprompter' 'imaginary-teleprompter-git')
 install=INSTALL
 changelog=
-source=("imaginary-teleprompter-${pkgver}.tar.gz::https://github.com/ImaginarySense/Teleprompter-Electron/releases/download/${pkgver}/imaginary-teleprompter-${pkgver}-64bit.tar.gz")
-sha256sums=('4084d5d323c98dc9db6d9a7922c1ed7bab4f7aebfe2af5955e863c3ca8a09520')
+source=("${_pkgname}-${pkgver}.tar::https://github.com/ImaginarySense/Teleprompter-Electron/releases/download/${pkgver}/${_pkgname}-${pkgver}-64bit.pacman")
+sha256sums=('32eaa1482376269df3cdc7a275ce750bfc95483fc4ee34323e8004fd3e60e667')
 
 package() {
-    echo 'This installer is in the making...'
-    echo "Listing files in current folder"
-    ls
-    echo 'Listing subdirectory contents'
-    ls imaginary-teleprompter-${pkgver}
-    echo 'Installer end. Package was not installed.'
+    cd "$srcdir"
+
+    # Place files
+    install -d "${pkgdir}/opt/Imaginary Teleprompter/" 
+    cp -a "${srcdir}/opt/Imaginary Teleprompter/"* "${pkgdir}/opt/Imaginary/${_pkgname}/"
+
+    # Symlink main binary
+    install -d "${pkgdir}/usr/bin"
+    ln -s "${pkgdir}/opt/Imaginary/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Place desktop entry and icons
+    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
+    cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
+
+    # Place license files
+    for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+        install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+        rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
+    done
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
