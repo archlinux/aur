@@ -1,7 +1,7 @@
 pkgbase = wxpython-phoenix-git
 	pkgdesc = Python 3 implementation of the WxPython UI library
 	pkgver = r3413.f04d103b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wxWidgets/Phoenix
 	arch = x86_64
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = wxpython-phoenix-git
 	depends = python
 	provides = wxpython-phoenix
 	conflicts = wxpython-phoenix-bin
+	conflicts = python-wxpython
 	source = wxpython-phoenix-git::git+https://github.com/wxWidgets/Phoenix
 	source = git+https://github.com/wxWidgets/wxWidgets.git
 	md5sums = SKIP
