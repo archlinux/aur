@@ -1,8 +1,8 @@
 pkgbase = stagit
 	pkgdesc = static git page generator
-	pkgver = 0.7.2
+	pkgver = 0.8
 	pkgrel = 1
-	url = http://git.2f30.org/stagit
+	url = http://git.codemadness.org/stagit
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -12,8 +12,8 @@ pkgbase = stagit
 	license = custom:MIT/X Consortium
 	makedepends = git
 	depends = libgit2
-	source = http://dl.2f30.org/releases/stagit-0.7.2.tar.gz
-	sha256sums = 25facb7ce384f1d2f06c536753e2754b38037b482c6a546196ebebf4c34b7ad4
+	source = https://codemadness.org/releases/stagit/stagit-0.8.tar.gz
+	sha256sums = 641bc8f6cd7e1a10ec8643f9073f76b4e3aef108f83e85f67ee49618c1048d7e
 
 pkgname = stagit
 

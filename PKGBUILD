@@ -2,16 +2,16 @@
 # Contributor: John W. Trengrove <john@retrofilter.com>
 
 pkgname=stagit
-pkgver=0.7.2
+pkgver=0.8
 pkgrel=1
 pkgdesc="static git page generator"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://git.2f30.org/stagit"
+url="http://git.codemadness.org/stagit"
 license=('custom:MIT/X Consortium')
-source=("http://dl.2f30.org/releases/stagit-${pkgver}.tar.gz")
+source=("https://codemadness.org/releases/stagit/stagit-${pkgver}.tar.gz")
 depends=('libgit2')
 makedepends=('git')
-sha256sums=('25facb7ce384f1d2f06c536753e2754b38037b482c6a546196ebebf4c34b7ad4')
+sha256sums=('641bc8f6cd7e1a10ec8643f9073f76b4e3aef108f83e85f67ee49618c1048d7e')
 
 build() {
   cd "stagit-${pkgver}"
