@@ -5,15 +5,15 @@
 
 pkgbase=linux-jwrdegoede
 _srcname=linux-sunxi-master
-pkgver=4.16.0rc6.2fcd728
-pkgrel=2
+pkgver=git
+pkgrel=3
 arch=('x86_64')
 url='https://www.kernel.org/'
 license=('GPL2')
 makedepends=('git' 'xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  'https://github.com/jwrdegoede/linux-sunxi/archive/master.zip'
+  'git+https://github.com/jwrdegoede/linux-sunxi.git'
   '60-linux.hook'
   '90-linux.hook'
   'linux.preset'
