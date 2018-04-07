@@ -1,61 +1,39 @@
 pkgname=mingw-w64-paraview
-_majordotminor=5.4
-pkgver=${_majordotminor}.1
+_majordotminor=5.5
+pkgver=${_majordotminor}.0
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='http://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-expat'  'mingw-w64-freetype2'  'mingw-w64-libjpeg'  'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf-cxx-legacy')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${pkgver}.tar.gz")
-sha1sums=('3b7df6f6bbf978bb9a8583c97208a58af9afcdde')
+source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz")
+sha256sums=('1b619e326ff574de808732ca9a7447e4cd14e94ae6568f55b6581896cd569dff')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/ParaView-v${pkgver}"
+  cd "${srcdir}/ParaView-v${_pkgver}"
 
-  # https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
-  sed -i "s|if (CMAKE_CROSSCOMPILING AND NOT COMPILE_TOOLS_IMPORTED)|if (CMAKE_CROSSCOMPILING AND NOT COMPILE_TOOLS_IMPORTED AND NOT DEFINED CMAKE_CROSSCOMPILING_EMULATOR AND CMAKE_VERSION VERSION_LESS 3.8)|g" CMakeLists.txt
-  sed -i "s|if (NOT CMAKE_CROSSCOMPILING)|if (NOT COMPILE_TOOLS_IMPORTED)|g" Utilities/WrapClientServer/CMakeLists.txt Utilities/ProcessXML/CMakeLists.txt 
-  sed -i "s|IF(NOT CMAKE_CROSSCOMPILING)|if (NOT COMPILE_TOOLS_IMPORTED)|g" ThirdParty/protobuf/vtkprotobuf/src/CMakeLists.txt
-  
-  # https://gitlab.kitware.com/vtk/vtk/merge_requests/2931
-  sed -i "s|NOT CMAKE_CROSSCOMPILING OR DEFINED CMAKE_CROSSCOMPILING_EMULATOR|NOT VTK_COMPILE_TOOLS_IMPORTED|g" VTK/Utilities/EncodeString/CMakeLists.txt  
+  # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
+  sed -i "s|IF(NOT CMAKE_CROSSCOMPILING)|IF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)|g" ThirdParty/protobuf/vtkprotobuf/src/CMakeLists.txt
 
-  # https://gitlab.kitware.com/paraview/protobuf/merge_requests/4
-  sed -i "s|string Subprocess::Win32ErrorMessage|string Win32ErrorMessage|g" ThirdParty/protobuf/vtkprotobuf/src/google/protobuf/compiler/subprocess.h
-
-  # vtkParse.tab.c reads an extra (empty) new line
-  sed -i "12210i    if((n == 0) && (lineno > 0)) continue;" VTK/Wrapping/Tools/vtkParse.tab.c
-
-  # fix libharu export
-  sed -i "s|WIN32 AND NOT CYGWIN|MSVC|g" VTK/ThirdParty/libharu/vtklibharu/src/CMakeLists.txt 
+  # https://gitlab.kitware.com/vtk/vtk/merge_requests/4017
+  sed -i "s|GetLibraryPathForSymbolWin32(\&function)|GetLibraryPathForSymbolWin32(reinterpret_cast<const void*>(\&function))|g" VTK/Common/Misc/vtkResourceFileLocator.h
 }
 
 build() {
-  cd "${srcdir}/ParaView-v${pkgver}"
-  mkdir -p build-native
-  if ! test -d "build-native"
-  then
-    # native build
-    mkdir -p build-native && pushd build-native
-    cmake ..
-    make vtkEncodeString vtkHashSource vtkWrapClientServer protoc_compiler kwProcessXML
-    popd
-  fi
-
+  cd "${srcdir}/ParaView-v${_pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
     -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
-    -DOSPRAY_INSTALL_DIR:PATH=/usr \
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=OFF \
     -DPARAVIEW_ENABLE_PYTHON:BOOL=OFF \
     -DPARAVIEW_PYTHON_VERSION=2 \
-    -DBUILD_DOCUMENTATION=OFF \
     -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
     -DPARAVIEW_QT_VERSION=5 \
     -DPARAVIEW_USE_VISITBRIDGE:BOOL=OFF \
@@ -70,41 +48,19 @@ build() {
     -DVTK_QT_VERSION=5 \
     -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=OpenMP \
-    -DHDF5_ROOT=/usr/${_arch}/ \
-    -DPARAVIEW_BUILD_PLUGIN_AcceleratedAlgorithms:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_AdiosReader:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_AnalyzeNIfTIIO:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_ArrowGlyph:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_CDIReader:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_CatalystScriptGeneratorPlugin:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_LagrangianParticleTracker:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_EyeDomeLighting:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_GMVReader:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_GeodesicMeasurement:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_PacMan:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_StreamingParticles:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_Moments:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_NonOrthogonalSource:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_EyeDomeLighting:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_SLACTools:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_SurfaceLIC:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_SierraPlotTools:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_StreamingParticles:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_StreamLinesRepresentation:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_CatalystScriptGeneratorPlugin:BOOL=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_ThickenLayeredCells:BOOL=OFF \
-    ..
+    -DHDF5_ROOT=/usr/${_arch}/ ..
     make
     popd
   done
 }
 
+
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/ParaView-v${pkgver}/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    cd "$srcdir"/ParaView-v${_pkgver}/build-${_arch}
+    make install/fast DESTDIR="$pkgdir"
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/paraview-${_majordotminor}/*.a
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
