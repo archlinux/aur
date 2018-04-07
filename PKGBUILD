@@ -3,8 +3,8 @@
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman
-pkgver=2.3.0.20180226
-pkgrel=2
+pkgver=2.3.1.20180401
+pkgrel=1
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 arch=('any')
 url="https://github.com/StevensNJD4/LazyMan"
@@ -41,7 +41,7 @@ package() {
     install -Dm644 LazyMan.jar               "$pkgdir"/usr/share/java/lazyman/LazyMan.jar
 }
 
-md5sums=('8e8b9b2f7b322917c9bd2cf32b5df18c'
+md5sums=('bb252d3cd7b1d15ba2060365c372704c'
          'd41d8cd98f00b204e9800998ecf8427e'
          'b387dc6c2bdf54718d6d2e48f9f37e3d'
          'cc5998a228727420cbf7d07fc5318920'
