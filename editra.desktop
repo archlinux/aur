@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Editra
+GenericName=Integrated Development Environment
+Comment=Multi-platform IDE using wxPython
+Exec=Editra %F
+Icon=editra
+Terminal=false
+Categories=Application;Development;IDE;
+MimeType=text/x-chdr;text/x-csrc;text/x-c++hdr;text/x-c++src;text/x-java;text/x-dsrc;text/x-pascal;text/x-perl;text/x-python;application/x-php;application/x-httpd-php*;application/xml;text/html;text/css;text/x-sql;text/x-diff;
+StartupNotify=true
