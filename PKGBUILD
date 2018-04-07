@@ -6,12 +6,12 @@
 pkgname=gnome-settings-daemon-compat
 _pkgname=gnome-settings-daemon
 pkgver=3.6.4
-pkgrel=10
+pkgrel=11
 pkgdesc='Compatibility package that provides the background, media keys and mount helpers from GNOME Settings Daemon 3.6'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gnome-settings-daemon')
-makedepends=('docbook-xsl' 'intltool' 'xf86-input-wacom' 'ibus')
+makedepends=('docbook-xsl' 'intltool' 'xf86-input-wacom' 'ibus' 'dconf>=0.28.0-1')
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.xz
         standalone-background-helper.patch
@@ -37,26 +37,33 @@ sha256sums=('3db993f2dbabc0c9d06a309bb12c9a7104b9cdda414ac4b1c301f5114a441c15'
 prepare() {
   cd $_pkgname-$pkgver
 
+  msg2 "Patch BGMKH"
   # Build background and media keys helpers as a stand alone binary
   patch -Np1 < ../standalone-background-helper.patch
   patch -Np1 < ../standalone-media-keys-helper.patch
 
+  msg2 "Patch ADB"
   # Always draw background
   patch -Np1 < ../draw-background-unconditionally.patch
 
+  msg2 "Patch SIA"
   # Port to gnome-session's SessionIsActive property
   patch -Np1 < ../sessionisactive-port.patch
 
+  msg2 "Patch MKCOMPAT"
   # Add compatibility patches for media keys plugin
   patch -Np1 < ../revert-input-sources.patch
   patch -Np1 < ../xinput.patch
 
+  msg2 "Patch lgsd"
   # Remove libgsd dependency
   patch -Np1 < ../remove-libgsd-dependency.patch
 
+  msg2 "Patch desktpf"
   # Move desktop files out of autostart, so they can be easily reusable in custom sessions
   patch -Np1 < ../move-desktop-file.patch
 
+  msg2 "Patch lsysd"
   # libsystemd-login is now just libsystemd.
   patch -Np2 < ../libsystemd.patch
 }
