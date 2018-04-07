@@ -3,7 +3,7 @@
 
 _pkgname=agate-excel
 pkgname=python-$_pkgname
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Adds read support for Excel files (xls and xlsx) to agate"
 arch=('any')
@@ -26,6 +26,6 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('2a850afe5576b5e2ffc8ea8115bcc45a6735e0b8df63c4ceeac33bbb9ed27de3')
+sha256sums=('37acbc114c4c60aa37f908d93a9e9b597c3ba0ee42672f36f7a317f8af8fc581')
 
 # vim:set ts=2 sw=2 et:
