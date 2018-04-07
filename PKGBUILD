@@ -4,15 +4,13 @@
 pkgname=pyrit
 _pkgname=Pyrit
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The famous WPA precomputed cracker'
 url='https://github.com/JPaulMora/Pyrit'
 arch=('x86_64')
 license=('GPL3')
 depends=('openssl' 'python2' 'zlib' 'libpcap')
 optdepends=(
-  'cpyrit-cuda: nvidia gpu support'
-  'cpyrit-opencl: opencl support'
   'scapy: packet capture analyzation support'
   'python2-sqlalchemy: storage support'
 )
