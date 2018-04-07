@@ -6,18 +6,19 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
-depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2')
+depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu')
 makedepends=('gtk2' 'autoconf' 'intltool')
 source=("https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
         "org.ddccontrol.pkexec.gddccontrol.policy")
 options=('!libtool')
 sha256sums=('10e19c7201bb9e80d8d4293f8090d5ce97b0f49a13bd7e8e7af53b7e8ae4e5fb'
             '811bf1ecc85045e80757ea553591c00e32bb93d529a761b18bb501d0f2bf82c5')
+
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
 	test -f configure || ./autogen.sh
