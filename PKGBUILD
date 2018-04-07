@@ -4,8 +4,8 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=avahi-nosystemd
-pkgver=0.7
-pkgrel=3
+pkgver=0.7+4+gd8d8c67
+pkgrel=1
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
 url='https://github.com/lathiat/avahi'
 license=('LGPL')
@@ -28,8 +28,10 @@ makedepends=('qt4' 'pygtk' 'mono' 'intltool' 'python-dbus' 'python-gobject'
              'doxygen' 'graphviz')
 backup=('etc/avahi/hosts'
         'etc/avahi/avahi-daemon.conf'
+        'etc/avahi/avahi-autoipd.action'
+        'etc/avahi/avahi-dnsconfd.action'
         'usr/lib/avahi/service-types.db')
-_commit=6242e5f0fe001b7de2ccaa9431db279b2ee76b83  # tags/v0.7
+_commit=d8d8c67d8279f35eef157f5f442a1dde4ac5c45e  # master
 source=("git+https://github.com/lathiat/avahi#commit=$_commit"
         avahi-daemon.rc
         avahi-dnsconfd.rc
