@@ -13,10 +13,8 @@ provides=('hyper')
 depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
 options=('!strip' '!upx')
 
-_pkgver_correct=${pkgver/\.canary/-canary}
-
 source_x86_64=(
-    "https://github.com/zeit/hyper/releases/download/${_pkgver_correct}/hyper_${_pkgver_correct}_amd64.deb"
+    "https://github.com/zeit/hyper/releases/download/${pkgver}/hyper_${pkgver}_amd64.deb"
 )
 
 md5sums_x86_64=(
