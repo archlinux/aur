@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=libvirt-autoballoon-git
-pkgver=v0.1.r1.g902fd49
+pkgver=v0.2.r0.g392d551
 pkgrel=1
 pkgdesc="Libvirt-qemu autoballooning"
 arch=('any')

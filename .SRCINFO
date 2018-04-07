@@ -1,6 +1,6 @@
 pkgbase = libvirt-autoballoon-git
 	pkgdesc = Libvirt-qemu autoballooning
-	pkgver = v0.1.r0.g624982d
+	pkgver = v0.2.r0.g392d551
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/libvirt-autoballoon.git
 	arch = any
