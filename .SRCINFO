@@ -1,6 +1,6 @@
 pkgbase = oscam-emu
 	pkgdesc = OSCam-emu is an Oscam addon module to include emulator support and other functionality
-	pkgver = 741-11390
+	pkgver = 769-11410
 	pkgrel = 2
 	url = https://github.com/oscam-emu/oscam-emu
 	install = oscam.install
