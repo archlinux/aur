@@ -1,22 +1,32 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _gemname=oj
 pkgname=ruby-$_gemname
-pkgver=2.12.2
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="The fastest JSON parser and object serializer."
 arch=('i686' 'x86_64')
 url="http://www.ohler.com/oj/"
-license=('MIT' 'GPL')
+license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
+makedepends=('rubygems' 'ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('bd333250bdfbef4ad3a89ac5a4fc0878c283409a1402c81a652375282f8fc26f')
+options=(!emptydirs)
+sha256sums=('d8eee3580ba5b3ef4342d9116a1f6356f0e77c03e89c4497000e0318c1c4f353')
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
