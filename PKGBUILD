@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _oname='javalib'
 pkgname="ocaml-$_oname"
-pkgver='2.3.3'
+pkgver='2.3.4'
 pkgrel=3
 pkgdesc="Parses Java .class files into OCaml data structures"
 arch=('i686' 'x86_64')
@@ -16,9 +16,8 @@ depends=('ocaml>=4.0.0' 'ocaml-extlib>=1.5.1' 'ocaml-zip>=1.04' 'zlib')
 makedepends=('ocaml-findlib')
 options=(!strip)
 changelog=
-source=("https://gforge.inria.fr/frs/download.php/file/36307/$_oname-$pkgver.tar.bz2")
-md5sums=('a4d4b06e8f4860db34c128e760fa8397')
-validpgpkeys=()
+source=("https://gforge.inria.fr/frs/download.php/file/37154/$_oname-$pkgver.tar.bz2")
+md5sums=('4707eda130e41d1d7f0506cc0c77eff1')
 
 prepare() {
 	cd "$_oname-$pkgver"

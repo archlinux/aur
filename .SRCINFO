@@ -1,6 +1,6 @@
 pkgbase = ocaml-javalib
 	pkgdesc = Parses Java .class files into OCaml data structures
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 3
 	url = http://sawja.inria.fr/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = ocaml-javalib
 	depends = ocaml-zip>=1.04
 	depends = zlib
 	options = !strip
-	source = https://gforge.inria.fr/frs/download.php/file/36307/javalib-2.3.3.tar.bz2
-	md5sums = a4d4b06e8f4860db34c128e760fa8397
+	source = https://gforge.inria.fr/frs/download.php/file/37154/javalib-2.3.4.tar.bz2
+	md5sums = 4707eda130e41d1d7f0506cc0c77eff1
 
 pkgname = ocaml-javalib
 
