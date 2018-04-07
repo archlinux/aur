@@ -4,17 +4,15 @@
 _pkgname=neon
 pkgname=lib32-${_pkgname}
 pkgver=0.30.2
-pkgrel=3
+pkgrel=4
 pkgdesc="HTTP and WebDAV client library with a C interface (32 bit)"
 arch=('x86_64')
 license=('GPL' 'LGPL')
 depends=('lib32-krb5' 'lib32-expat' "${_pkgname}" 'ca-certificates' 'zlib')
-url="http://www.webdav.org/neon/"
+url="https://web.archive.org/web/20170928175008/http://www.webdav.org/neon/"
 source=("https://fossies.org/linux/www/${_pkgname}-${pkgver}.tar.gz")
-#source=("http://www.webdav.org/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 options=('libtool') # FS#16067
 md5sums=('e28d77bf14032d7f5046b3930704ef41')
-
 
 build() {
 export CC='gcc -m32'
@@ -29,6 +27,8 @@ cd "${srcdir}"/${_pkgname}-${pkgver}
   --with-ssl=openssl \
   --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
   --libdir=/usr/lib32 --without-libproxy # without proxy, just like 'neon' package
+
+sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 make
 
 # fix invalid .so links in man pages (FS#24902)
