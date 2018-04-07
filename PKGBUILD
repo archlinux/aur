@@ -1,15 +1,15 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=noto-fonts-alpha
-pkgver=20180124
-_commit=ce5c7b74cc074c68b19f7ea88a42e352aa96a5ca
+pkgver=20180407
+_commit=89026a63b36a38ab1584b98319cd2273369249b6
 pkgrel=1
 pkgdesc="Alpha versions of Noto fonts."
 arch=(any)
 url="https://github.com/googlei18n/noto-fonts-alpha"
 license=('custom:OFL')
 source=("$pkgname-$_commit.tar.gz::https://github.com/googlei18n/noto-fonts-alpha/archive/$_commit.tar.gz")
-sha256sums=('88330d12c30589b69b4d1278e30234733a81656e8f6ebd85e857ebf2646cfcf0')
+sha256sums=('4b873ff7207fa04ede9b1b47205f9d7b41edc59a51398aaaa5c5f5346d32214f')
 
 package() {
   cd "$srcdir/$pkgname-$_commit/"
@@ -23,9 +23,9 @@ package() {
   install -Dm644 from-glyphsapp/unhinted/variable-ttf/sans/*.ttf "$pkgdir/usr/share/fonts/noto"
   install -Dm644 from-glyphsapp/unhinted/variable-ttf/serif/*.ttf "$pkgdir/usr/share/fonts/noto"
   install -Dm644 from-glyphsapp/unhinted/*.ttf "$pkgdir/usr/share/fonts/noto"
+  install -Dm644 from-glyphsapp/unhinted/*.otf "$pkgdir/usr/share/fonts/noto"
 
-  install -Dm644 from-pipeline/unhinted/otf/sans/*/*.otf "$pkgdir/usr/share/fonts/noto"
-  install -Dm644 from-pipeline/unhinted/otf/serif/*/*.otf "$pkgdir/usr/share/fonts/noto"
+  install -Dm644 from-pipeline/unhinted/otf/*/*.otf "$pkgdir/usr/share/fonts/noto"
   install -Dm644 from-pipeline/unhinted/ttf/sans/*/*.ttf "$pkgdir/usr/share/fonts/noto"
   install -Dm644 from-pipeline/unhinted/ttf/serif/*/*.ttf "$pkgdir/usr/share/fonts/noto"
   install -Dm644 from-pipeline/unhinted/variable-ttf/sans/*.ttf "$pkgdir/usr/share/fonts/noto"
@@ -38,6 +38,8 @@ package() {
   # sed -i 's/ exists in filesystem/"/g' PKGBUILD
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-Black.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-BlackItalic.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSans-Bold.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSans-BoldItalic.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-Condensed.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-CondensedBlack.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-CondensedBlackItalic.ttf"
@@ -78,10 +80,12 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-ExtraCondensedThinItalic.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-ExtraLight.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-ExtraLightItalic.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSans-Italic.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-Light.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-LightItalic.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-Medium.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-MediumItalic.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSans-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-SemiBold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-SemiBoldItalic.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSans-SemiCondensed.ttf"
@@ -216,7 +220,6 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansArmenian-SemiCondensedThin.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansArmenian-Thin.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansAvestan-Regular.ttf"
-  rm "$pkgdir/usr/share/fonts/noto/NotoSansBalinese-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBamum-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBatak-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBengali-Black.ttf"
@@ -520,7 +523,6 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansImperialAramaic-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansInscriptionalPahlavi-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansInscriptionalParthian-Regular.ttf"
-  rm "$pkgdir/usr/share/fonts/noto/NotoSansJavanese-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansKaithi-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansKayahLi-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansKharoshthi-Regular.ttf"
@@ -674,9 +676,12 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansLisu-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansLycian-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansLydian-Regular.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansMalayalam-Bold.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansMalayalam-Regular.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansMalayalamUI-Bold.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansMalayalamUI-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansMandaic-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansMeeteiMayek-Regular.ttf"
-  rm "$pkgdir/usr/share/fonts/noto/NotoSansMongolian-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansMono-Black.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansMono-Bold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansMono-Condensed.ttf"
@@ -795,6 +800,7 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansOldTurkic-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansOsage-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansOsmanya-Regular.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansPhagsPa-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansPhoenician-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansRejang-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansRunic-Regular.ttf"
@@ -888,7 +894,6 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTagalog-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTagbanwa-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTaiLe-Regular.ttf"
-  rm "$pkgdir/usr/share/fonts/noto/NotoSansTaiTham-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTaiViet-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTamil-Black.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansTamil-Bold.ttf"
@@ -1290,6 +1295,8 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifGeorgian-SemiCondensedSemiBold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifGeorgian-SemiCondensedThin.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifGeorgian-Thin.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSerifGujarati-Bold.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSerifGujarati-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-Black.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-Bold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-Condensed.ttf"
@@ -1326,6 +1333,8 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-SemiCondensedSemiBold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-SemiCondensedThin.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifHebrew-Thin.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSerifKannada-Bold.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSerifKannada-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifKhmer-Black.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifKhmer-Bold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSerifKhmer-Condensed.ttf"

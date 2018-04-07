@@ -1,12 +1,12 @@
 pkgbase = noto-fonts-alpha
 	pkgdesc = Alpha versions of Noto fonts.
-	pkgver = 20180124
+	pkgver = 20180407
 	pkgrel = 1
 	url = https://github.com/googlei18n/noto-fonts-alpha
 	arch = any
 	license = custom:OFL
-	source = noto-fonts-alpha-ce5c7b74cc074c68b19f7ea88a42e352aa96a5ca.tar.gz::https://github.com/googlei18n/noto-fonts-alpha/archive/ce5c7b74cc074c68b19f7ea88a42e352aa96a5ca.tar.gz
-	sha256sums = 88330d12c30589b69b4d1278e30234733a81656e8f6ebd85e857ebf2646cfcf0
+	source = noto-fonts-alpha-89026a63b36a38ab1584b98319cd2273369249b6.tar.gz::https://github.com/googlei18n/noto-fonts-alpha/archive/89026a63b36a38ab1584b98319cd2273369249b6.tar.gz
+	sha256sums = 4b873ff7207fa04ede9b1b47205f9d7b41edc59a51398aaaa5c5f5346d32214f
 
 pkgname = noto-fonts-alpha
 
