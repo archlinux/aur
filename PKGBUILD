@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-asdf
 pkgname=('python-asdf' 'python2-asdf' 'python-asdf-doc')
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ makedepends=('python>=3.3'
              'python2-astropy-helpers'
              'python-semantic-version'
              'python-sphinx')
-#checkdepends=('python-pytest' 'python2-pytest')
+#checkdepends=('python-pytest' 'python2-pytest' 'python2-jsonschema>=2.3.0' 'python2-yaml>=3.10' 'python2-six>=1.9.0' 'python2-semantic-version')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
-md5sums=('3a128d0ae23659b5e06c8409c3f48ba1')
+md5sums=('669966205938a85dd28ced78633d400b')
 
 prepare() {
     cd ${srcdir}/asdf-${pkgver}
@@ -46,17 +46,18 @@ build () {
 }
 
 #check(){
-#    cd $srcdir/asdf-${pkgver}
+#    cd ${srcdir}/asdf-${pkgver}
 #    python setup.py test
 #
-#    cd $srcdir/asdf-${pkgver}-py2
+#    cd ${srcdir}/asdf-${pkgver}-py2
 #    python2 setup.py test
 #}
 
 package_python2-asdf() {
     depends=('python2>=2.7' 'python2-numpy>=1.6' 'python2-jsonschema>=2.3.0' 'python2-yaml>=3.10' 'python2-six>=1.9.0')
     optdepends=('python2-astropy>=1.1: Support for units, time, transform, wcs, or running the tests'
-                'python-asdf-doc: Documentation for Python-ASDF')
+                'python-asdf-doc: Documentation for Python-ASDF'
+                'python2-pytest : For testing')
     cd ${srcdir}/asdf-${pkgver}-py2
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -68,7 +69,8 @@ package_python2-asdf() {
 package_python-asdf() {
     depends=('python>=3.3' 'python-numpy>=1.6' 'python-jsonschema>=2.3.0' 'python-yaml>=3.10' 'python-six>=1.9.0')
     optdepends=('python-astropy>=1.1: Support for units, time, transform, wcs, or running the tests'
-                'python-asdf-doc: Documentation for Python-ASDF')
+                'python-asdf-doc: Documentation for Python-ASDF'
+                'python-pytest: For testing')
     cd ${srcdir}/asdf-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
