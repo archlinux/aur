@@ -12,7 +12,7 @@ depends=('java-runtime' 'traceroute')
 source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip"
         "ovtr"
         "ovtr.desktop")
-sha256sums=('4bca294af87528b0c99d35fe4ea20ff2b1961f092818c4966ccfac37756002b8'
+sha256sums=('94ce4d85e9266b361e3eb8692a54973cd742871287d680c3df4bcc954b5c6f71'
             '8eb4f3ad755ce5c0ec8a85331cd291da71d70d5325cf2ad5133aca9e736c8e1d'
             'af0cef38105d65182c261067577f8ff68bf50e71d4d2f4fc7fe8e0ba4472d22f')
 
