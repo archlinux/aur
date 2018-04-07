@@ -19,7 +19,7 @@
 
 pkgname=desura
 pkgver=120.25
-pkgrel=5
+pkgrel=6
 pkgdesc="A gaming client application that allows users single-click access to download and install games from http://www.${pkgname}.com/"
 url="http://${pkgname}.com/"
 license=("GPL3")
@@ -38,24 +38,23 @@ depends=("alsa-lib"
          "xdg-utils")
 depends_i686=("glibc")
 depends_x86_64=("lib32-glibc")
-optdepends=("java-runtime: adds java support"
-            "mono: Free implementation of the .NET platform"
-            "glew1.5: if you have install M.A.R.S - a ridiculous shooter")
-optdepends_i686=("adobe-air: for Adobe Air-based games"
-                 "catalyst-utils: If you have ATI graphics"
+optdepends=("adobe-air: for Adobe Air-based games"
+            "glew1.5: if you have install M.A.R.S - a ridiculous shooter"
+            "java-runtime: adds java support"
+            "mono: Free implementation of the .NET platform")
+optdepends_i686=("catalyst-utils: If you have ATI graphics"
                  "curl: if you have install TRAUMA"
                  "nvidia-utils: If you have nvidia graphics")
-optdepends_x86_64=("bin32-adobe-air: for Adobe Air-based games"
-                   "lib32-catalyst-utils: If you have ATI graphics"
+optdepends_x86_64=("lib32-catalyst-utils: If you have ATI graphics"
                    "lib32-curl: if you have install TRAUMA"
                    "lib32-nvidia-utils: If you have nvidia graphics")
 #Use this source instead if it becomes available again: "http://www.${pkgname}.com/${pkgname}-${CARCH}.tar.gz"
-source_i686=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/_/.}.tar.gz"
-             "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${CARCH}"
-             "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${CARCH}")
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/_/.}.tar.gz"
-               "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${CARCH}"
-               "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${CARCH}")
+source_i686=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/./_}.tar.gz"
+             "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${arch[0]}"
+             "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${arch[0]}")
+source_x86_64=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/./_}.tar.gz"
+               "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${arch[1]}"
+               "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${arch[1]}")
 source=("${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.png")
