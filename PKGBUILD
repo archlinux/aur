@@ -1,7 +1,7 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=noise-repellent-git
-pkgver=r469.0cb4287
+pkgver=r553.6c01b9c
 pkgrel=1
 pkgdesc="An lv2 plugin for broadband noise reduction."
 arch=('i686' 'x86_64')
