@@ -1,6 +1,6 @@
 pkgbase = aaxtomp3
-	pkgdesc = The purpose of this software is to convert AAX files to a more common MP3 format through a basic bash script frontend to FFMPEG.
-	pkgver = 1.0
+	pkgdesc = Convert Audible's .aax filetype to MP3, FLAC, M4A, or OPUS
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/KrumpetPirate/AAXtoMP3
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = aaxtomp3
 	makedepends = git
 	depends = ffmpeg
 	depends = lame
-	source = aaxtomp3::git+https://github.com/KrumpetPirate/AAXtoMP3.git#tag=v1.0
+	source = aaxtomp3::git+https://github.com/KrumpetPirate/AAXtoMP3.git#tag=1.1
 	sha256sums = SKIP
 
 pkgname = aaxtomp3
