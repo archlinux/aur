@@ -2,7 +2,7 @@
 pkgbase=python-spectral-cube
 pkgname=('python-spectral-cube' 'python2-spectral-cube')
 #'python-spectral-cube-doc')
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cython' 'cython2' 'python-astropy-helpers' 'python2-astropy-helper
 #'python-radio_beam' 'python-sphinx' 'python-matplotlib')
 checkdepends=('python-pytest-astropy' 'python2-pytest' 'python-radio_beam' 'python2-radio_beam')
 source=("https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-${pkgver}.tar.gz")
-md5sums=('994261198e2a66dcc1a2593d28f595c4')
+md5sums=('717815d68f42a9d76ba61d27931712e1')
 
 prepare() {
     cd ${srcdir}/spectral-cube-${pkgver}
