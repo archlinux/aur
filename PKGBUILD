@@ -16,7 +16,7 @@ license=(GPL3)
 makedepends=('boost')
 depends=('desktop-file-utils' 'java-environment' 'libgit2' 'python2' 'qt5-serialport' 'qt5-svg' 'shared-mime-info')
 source=(https://github.com/fritzing/fritzing-app/archive/${pkgver}.tar.gz
-        https://github.com/fritzing/fritzing-parts/archive/${partsrev}.tar.gz
+        parts-${partsrev}.tar.gz::https://codeload.github.com/fritzing/fritzing-parts/tar.gz/${partsrev}
         0001-Squashed-commit-of-the-following.patch
         fritzing.desktop.patch
         fritzing.xml)
