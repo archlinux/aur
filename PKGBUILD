@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.15
-pkgver=4.15.12
+pkgver=4.15.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '74d2ac2ea103c907213223fd4ff710ad53e1d8a2d612db18e10d3dda9f1a6b79'
+            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
             'SKIP'
             '6ea31b5de2ac181fa9e6724a6e3dff58b1177670f273f4bd3226ddfae5c5cd90'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
