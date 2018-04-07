@@ -8,10 +8,11 @@ pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
 url="http://aajanki.github.io/yle-dl/"
 license=("GPL3")
-depends=('ffmpeg' 'php' 'python-mini-amf' 'python-pycryptodomex'
+depends=('ffmpeg' 'python-mini-amf' 'python-pycryptodomex'
          'python-future' 'python-lxml' 'python-pysocks' 'python-requests' 'wget')
-optdepends=('youtube-dl: an alternative downloader backend to AdobeHDS.php'
-            'rtmpdump: for downloading Areena audio streams')
+optdepends=('php: for downloading live TV and certain news broadcasts'
+            'rtmpdump: for downloading Areena audio streams'
+            'youtube-dl: an alternative downloader backend to AdobeHDS.php')
 makedepends=('git' 'python-setuptools')
 provides=(${pkgname%-git}=$pkgver)
 conflicts=(${pkgname%-git})
@@ -21,14 +22,6 @@ md5sums=("SKIP")
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$pkgname"
-  # Enable required PHP extensions by directly
-  #  appending them to the hds_binary arguments list.
-  # OR enable them globaly in php.ini
-  sed -i "s|\['php'|\['php', '-dextension=bcmath.so', '-dextension=curl.so'|" yledl/downloaders.py
 }
 
 package() {
