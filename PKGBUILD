@@ -1,4 +1,6 @@
 # Maintainer: Mikael Blomstrand <mbloms@kth.se>
+
+# PKGBUILD based on community/ncurses:
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
