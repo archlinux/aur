@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=("pzl_common" "pzl_akari" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "pzl_jigsaw" "pzl_kakuro" "pzl_minesweeper" "pzl_scrabbler" "pzl_sumpuzzle" "pzl_sudoku" "pzl_sokoban" "pzl_bridges" "pzl_shikaku" "pzl_suguru" "pzl_hidato" "pzl_fillomino")
+pkgname=("pzl_common" "pzl_akari" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "pzl_jigsaw" "pzl_kakuro" "pzl_minesweeper" "pzl_scrabbler" "pzl_sumpuzzle" "pzl_sudoku" "pzl_sokoban" "pzl_bridges" "pzl_shikaku" "pzl_suguru" "pzl_hidato" "pzl_fillomino" "pzl_wordwheel" "pzl_wordladder" "pzl_nurikabe")
 pkgbase="pzl_games"
-pkgver=10.0
-_pkgver=10_0
+pkgver=13.0
+_pkgver=13_0
 pkgrel=1
 pkgdesc="Small collection of puzzle games."
 arch=('any')
@@ -25,9 +25,12 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
 	"pzl_shikaku.desktop"
 	"pzl_suguru.desktop"
 	"pzl_hidato.desktop"
-	"pzl_fillomino.desktop" )
+	"pzl_fillomino.desktop"
+	"pzl_wordwheel.desktop"
+	"pzl_wordladder.desktop"
+	"pzl_nurikabe.desktop")
 
-md5sums=('af32329375f1b123808e1c32b32e32e3'
+md5sums=('8184cbbc5a231119c37c919a9552e0d3'
          'b7d0a414fc22aa750b7e4d758a6e04cd'
          '898534ec921c3c165fc11a7b5ef9b8d2'
          '02df03e4c57e8b77062df51971f7c582'
@@ -43,7 +46,10 @@ md5sums=('af32329375f1b123808e1c32b32e32e3'
          '38dc1f1869c03d4cc8e2724e6060fc65'
          '0c1b99051ab88c9aacf108a4d7d577e2'
          'a07ce126d031c9fbed8c1cbe2c6af1a1'
-         '493fa819c6a145a873ec81bab55bf96a')
+         '493fa819c6a145a873ec81bab55bf96a'
+         'b7b52cd6e554eb01aa0537bb5526e297'
+         'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca'
+         '08f441dcf7ec24f4148d9a952738d7f4')
 
 package_pzl_common() {
 	pkgdesc="Common files for pzl games."
@@ -213,6 +219,38 @@ package_pzl_fillomino() {
 	install -m644 pzl_fillomino.desktop "$pkgdir/usr/share/applications"
 }
 
+package_pzl_wordwheel() {
+	pkgdesc="Puzzle of words scrambled in a circle."
+	url="http://pzl.org.uk/wordwheel.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/wordwheel.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordwheel_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordwheel_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_wordwheel.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_wordladder() {
+	pkgdesc="Series of words, one above the other, each word differs by one letter."
+	url="http://pzl.org.uk/wordladder.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/wordladder.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordladder_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordladder_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_wordladder.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_nurikabe() {
+	pkgdesc="Each clue cell of value N must be part of a cluster of white cells and all other cells must be black."
+	url="http://pzl.org.uk/nurikabe.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/nurikabe.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/nurikabe_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/nurikabe_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_nurikabe.desktop "$pkgdir/usr/share/applications"
+}
 
 # package_pzl_launcher() {
 # 	pkgdesc="Launcher for pzl games."

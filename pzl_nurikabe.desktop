@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Nurikabe
+Comment=Nurikabe (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/nurikabe.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/nurikabe_icon.png
+Type=Application

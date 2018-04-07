@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Wordwheel
+Comment=Wordwheel (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/wordwheel.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/wordwheel_icon.png
+Type=Application
