@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=svgcleaner-bin
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=2
 pkgdesc="SVG Cleaner CLI and the main GUI."
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=('GPL')
 provides=("svgcleaner" "svgcleaner-gui")
 conflicts=("svgcleaner" "svgcleaner-git" "svgcleaner-gui" "svgcleaner-gui-git")
 depends=("qt5-base" "qt5-svg")
-source=("$pkgname.tar.gz::https://github.com/RazrFalcon/svgcleaner-gui/releases/download/v"$pkgver"/svgcleaner_linux_x86_64_"$pkgver".tar.gz" "svgcleaner-gui.desktop" "icons.tar.xz")
-md5sums=("c12f2759714ebeff72b9f1a59683a96b" "8c3fa705bb99742640668a5f8ce523ca" "ced0736123ada1f0b9cd3fc25305dd5f")
+source=("$pkgname-$pkgver::https://github.com/RazrFalcon/svgcleaner-gui/releases/download/v"$pkgver"/svgcleaner_linux_x86_64_"$pkgver".tar.gz" "svgcleaner-gui.desktop" "icons.tar.xz")
+md5sums=("6b5ad19f9ebd5ffb4ddee275bd6e63b2" "8c3fa705bb99742640668a5f8ce523ca" "ced0736123ada1f0b9cd3fc25305dd5f")
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
