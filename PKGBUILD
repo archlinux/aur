@@ -2,7 +2,7 @@
 
 appname=Pext
 pkgname=pext
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Python-based extendable tool"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('pass: password manager support'
 provides=('pext')
 conflicts=('pext')
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('0c407a1ff7bb8edc45b64560705d9b16622dc1a03f95325e5169e01c9818c98a')
+sha256sums=('e2ef311cb4f927a244ec165a0d5a956ee443348b8f4fc89608f89966465ee957')
 
 prepare() {
   sed "s/'pyqt5'//g" -i $srcdir/$appname-$pkgver/setup.py
