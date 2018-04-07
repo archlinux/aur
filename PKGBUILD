@@ -5,7 +5,7 @@ pkgver=0.4.4
 pkgrel=1
 pkgdesc="One command to generate REST APIs for any MySql Database"
 arch=(i686 x86_64)
-url="https://github.com/OpenBazaar/openbazaar-desktop"
+url="https://github.com/o1lab/xmysql/"
 license=('MIT')
 depends=(npm)
 makedepends=(npm)
@@ -16,7 +16,7 @@ package(){
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p $_npmdir
 	cd $_npmdir
-	npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production xmysql@$pkgver
+	npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production https://github.com/o1lab/xmysql/archive/master.zip
 }
 
 md5sums=('0c72d59428aa88fd834700b5fc21fd07')
