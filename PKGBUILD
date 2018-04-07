@@ -14,7 +14,7 @@ url='http://www.scintilla.org/SciTE.html'
 license=('custom:scite')
 depends=('gtk3')
 backup=('usr/share/scite/SciTEGlobal.properties')
-source=("http://downloads.sourceforge.net/sourceforge/scintilla/${pkgname}${pkgver//./}.tgz")
+source=("https://www.scintilla.org/${pkgname}${pkgver//./}.tgz")
 sha256sums=('72b54920ca8be1c6ec5e0f429dcfdb09282d921979d647973327dfd7ae54abde')
 
 build() {

@@ -7,7 +7,7 @@ pkgbase = scite
 	license = custom:scite
 	depends = gtk3
 	backup = usr/share/scite/SciTEGlobal.properties
-	source = http://downloads.sourceforge.net/sourceforge/scintilla/scite403.tgz
+	source = https://www.scintilla.org/scite403.tgz
 	sha256sums = 72b54920ca8be1c6ec5e0f429dcfdb09282d921979d647973327dfd7ae54abde
 
 pkgname = scite
