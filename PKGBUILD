@@ -1,7 +1,7 @@
 pkgname=cava-gui-git
 _pkgname=cava
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Console/GUI Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
 url='https://github.com/nikp123/cava-gui'
@@ -29,7 +29,7 @@ package() {
   cd $_pkgname
   install -Dm755 cava "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-  install -Dm744 example_files/desktop/icon.png "$pkgdir/usr/share/$_pkgname/icon.png"
+  install -Dm744 example_files/desktop/"$_pkgname".png "$pkgdir"/usr/share/icons/hicolor/64x64/apps/cava.png
   install -Dm744 example_files/desktop/"$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 }
 
