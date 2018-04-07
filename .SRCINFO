@@ -1,0 +1,22 @@
+pkgbase = opendesktop-app-appimage
+	pkgdesc = This is the App for Opendesktop with content management features.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1175480/
+	arch = x86_64
+	license = GPL-3.0
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = gconf
+	depends = libindicator
+	depends = libappindicator
+	provides = opendesktop
+	noextract = OpenDesktop.AppImage
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = OpendesktopApp.AppImage::https://dl.opendesktop.org/api/files/downloadfile/id/1522023543/s/f059fc34de2cdeaea00226f310aafb00/t/1523122661/u/71764/opendesktop-app-3.1.0-1-x86_64.AppImage
+	md5sums_x86_64 = 4b9e8ac74cf6f321b23040cf70272c56
+
+pkgname = opendesktop-app-appimage
+
