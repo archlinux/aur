@@ -3,3 +3,6 @@ pkg/
 linux-gpib/
 *.tar.gz
 *.tar.xz
+trunk/
+linux-gpib-user/
+linux-gpib-kernel/

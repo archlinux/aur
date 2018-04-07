@@ -12,34 +12,36 @@ makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 conflicts=('linux-gpib')
 provides=('linux-gpib')
-source=("svn://svn.code.sf.net/p/linux-gpib/code/trunk/linux-gpib" "noDev.patch")
+#source=("svn://svn.code.sf.net/p/linux-gpib/code/trunk/linux-gpib-kernel" "svn://svn.code.sf.net/p/linux-gpib/code/trunk/linux-gpib-user" "noDev.patch")
+source=("svn://svn.code.sf.net/p/linux-gpib/code/trunk#revision=1730" "noDev.patch")
 backup=('etc/gpib.conf')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "trunk/$_pkgname"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 _kernmajor="$(pacman -Q linux | sed -r 's/linux ([0-9]*.[0-9]*).*/\1/')"
 _extramodules="/usr/lib/modules/extramodules-${_kernmajor}-ARCH"
+_buildForPythonVersion=3
 
 md5sums=('SKIP'
          '8c6cb9198ddd029bf6557bf6a7f80c1a')
 
 prepare() {
-    cd "${_pkgname}"
+    cd "trunk/${_pkgname}"
 
-    patch -p0 < "../noDev.patch"
+    patch -p0 < "../../noDev.patch"
 }
 
 
 build() {
-    cd "${_pkgname}"
+    cd "trunk/${_pkgname}"
 
     ./bootstrap
 
-    ./configure \
+    PYTHON=python${_buildForPythonVersion} ./configure \
         --prefix=/usr \
         --bindir=/usr/bin \
         --sbindir=/usr/bin \
@@ -52,7 +54,7 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "trunk/${_pkgname}"
 
     MAKEFLAGS="-j1" make INSTALL_MOD_PATH="${pkgdir}" DESTDIR="${pkgdir}" install
 
@@ -61,7 +63,7 @@ package() {
 install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     mv ${pkgdir}/lib/modules/$(uname -r)/gpib ${pkgdir}/${_extramodules}/
     find ${pkgdir} -depth -type d -empty -exec rmdir {} \;
-    install -D -m644 "${srcdir}/${_pkgname}/util/templates/gpib.conf" \
+    install -D -m644 "${srcdir}/trunk/${_pkgname}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
 
     msg2 "Now you should do three things:"
