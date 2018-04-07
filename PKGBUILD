@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tendo
-pkgver=0.2.8
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Adds basic functionality that is not (yet) provided by Python"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools' 'python-tox')
 url="https://github.com/pycontribs/tendo"
 license=('Python')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/t/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('df58b9fd3e6ee85d1a9502ddb209c6e5')
-sha256sums=('823f75cbc1c3fe96a25e32a4ac315e0a70f440c844e5ba168cef0f11ca817a62')
+source=(https://github.com/pycontribs/${pkgname#python-}/archive/$pkgver.tar.gz)
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
