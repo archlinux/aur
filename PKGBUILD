@@ -2,12 +2,12 @@
 
 pkgname=netgui
 _gitname=NetGUI
-pkgver=0.8
-pkgrel=4
+pkgver=0.81
+pkgrel=1
 pkgdesc="GUI for netctl, stable but beta. Replaces WiFiz."
 arch=('any')
 url="https://github.com/codywd/$_gitname"
-license=('custom')
+license=('MIT')
 depends=('python' 'python-gobject' 'netctl' 'gtksourceview3' 'libnotify')
 optdepends=(
 'notification-daemon: Desktop Notifications'
@@ -22,13 +22,7 @@ source=("git+https://github.com/codywd/$_gitname.git")
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
-pkgver() {
-cd $srcdir/NetGUI
-# Use the tag of the last commit
-git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 package() {
-cd $srcdir/$_gitname
-python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd $srcdir/$_gitname
+    python2 setup.py install --root="$pkgdir/" --optimize=1
 }
