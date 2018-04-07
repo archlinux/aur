@@ -7,45 +7,48 @@
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 # -Linked lists perfomances improvements
+# -Wine-PBA (disabled by default)
 
 pkgname=wine-gaming-nine
-pkgver=3.3
-pkgrel=2
+pkgver=3.5
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
+
 _stagingversion="$pkgver"
 _d3d9version="$pkgver"
-#_pbarevision="c565623357098b1c946b4ef6c7768f123630e27f"
+_pbarevision="c34cd8d41d640d08ff2e46192f095de163c665ea"
+
 _stagingdir="wine-staging-$_stagingversion"
 _d3d9dir="wine-d3d9-patches-wine-d3d9-$_d3d9version"
-#_pbadir="wine-pba-$_pbarevision/patches"
+_pbadir="wine-pba-$_pbarevision/patches"
 
 source=(
-		https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz
-		https://github.com/wine-staging/wine-staging/archive/v$_stagingversion.tar.gz
-		https://github.com/kytulendu/wine-d3d9-patches/archive/wine-d3d9-$_d3d9version.tar.gz
-#		https://github.com/acomminos/wine-pba/archive/$_pbarevision.tar.gz
-        harmony-fix.patch
-        30-win32-aliases.conf
-        wine-binfmt.conf
-		keybindings.patch
-		steam.patch
-		wbemprox_query_v2.patch
-		wine-list.h-linked-list-cache-line-prefetching.patch
-        )
+	https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz
+	https://github.com/wine-staging/wine-staging/archive/v$_stagingversion.tar.gz
+	https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9version.tar.gz
+	https://github.com/acomminos/wine-pba/archive/$_pbarevision.tar.gz
+	harmony-fix.patch
+	30-win32-aliases.conf
+	wine-binfmt.conf
+	keybindings.patch
+	steam.patch
+	wbemprox_query_v2.patch
+	wine-list.h-linked-list-cache-line-prefetching.patch
+)
 sha512sums=(
-			'c9e4c75e94d745837208bf877b19c4e4e46df1e78082d21e716f52c9f9d93eaabbec8bf34783cda68e4275f53e37929b81ac128e5b8a13c1e5035223b2621d6a'
-			'02d48a9c403b93d01ca37b74af5dc81f86e49c72d67f194c71ccebd4556fa72c473728a1b1f9d5325c6f85f4e41bb7072a1183a2d81cafa8888e00dc53d12166'
-			'69807ceeaea812f07166294a8615d2ee0d7067d2e323d551e4dc521a4b000f6761d762fbda2e1d51019ebbda06a03d4b4a6cf940841bb8d78e0ad742ef0cea2f'
-#			'c6fb9e57cd092869b1370cc90e8fe9d4afd71042649b3ff3345677fef2c39b4ba26ce37999bc80af82dfb99b86b7847de61ca7a49ae9b558032617f23642a9ee'
-            'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-            '88a017239dd9a58735795e41a12a3480afe260d9747ab2997db26196bdb551cb7e7591596278a8c67c35343bd9f8bf0560f88d3dd10bfd65681f9d2c6c287c84'
-            'ca24cc86a74cc8af8e23a34da9231778f56a7e2cff215bb956898d73f6945410f0eaabae542a5fd68f83456fb8f56b60e0abe2a710f6b190a01f84817ab3676c'
-            '904a6d5578c75633f9c8293a939d4ff67627b85b0ffcc9b6c2af5280314c7670d52c1c0c441bb6231508337a12e72abb620ca5ac5da5d45ffaa8f25fdddbb43d'
-            'abeef97c54f3dbdb49b737a5966c8a435c9235a4c2c6da151503ea1c14fa1889a8f35a5f80daa6188d367298716f8a64db4714d19be5e1203dc43239431f7ed2'
-			)
+	'c1e36f3db862fdedd00c3ac20c84c6eb799b53fe32e959b481a6168baf7d9725ed9bd0a97e7f9b651e3ccfba4f8fb623445369be03fde5010ed0fcb0a53e7d3f'
+	'39ce4fccac408d69c55fe53376744d218d546d09fc3fcaa5c8e87ba070de5ed52128ebdf0ed76cb5e3a5178a79c8fb25a8786b129e8b3eb59156732d7a4bf15c'
+	'4bde2b510f8726b002dd33af75884eb165b1050338ab553fee071653af343a08d27d338ee42b68600038171d6c645386cde8513fa80c805f8118eb0d9f6c5f4b'
+	'e934dd5b4b30c0cecdd000ebcc1054d34a363f131e5d3fd20d2d630b6e88caa806cdd2cb03f372c1163e7bb07b4b32e29d1b6837bd965529f63fa29cd0d3b2e0'
+	'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
+	'6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+	'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
+	'88a017239dd9a58735795e41a12a3480afe260d9747ab2997db26196bdb551cb7e7591596278a8c67c35343bd9f8bf0560f88d3dd10bfd65681f9d2c6c287c84'
+	'ca24cc86a74cc8af8e23a34da9231778f56a7e2cff215bb956898d73f6945410f0eaabae542a5fd68f83456fb8f56b60e0abe2a710f6b190a01f84817ab3676c'
+	'904a6d5578c75633f9c8293a939d4ff67627b85b0ffcc9b6c2af5280314c7670d52c1c0c441bb6231508337a12e72abb620ca5ac5da5d45ffaa8f25fdddbb43d'
+	'abeef97c54f3dbdb49b737a5966c8a435c9235a4c2c6da151503ea1c14fa1889a8f35a5f80daa6188d367298716f8a64db4714d19be5e1203dc43239431f7ed2'
+)
 
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
 url="http://www.winehq.com"
@@ -90,8 +93,8 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
-  gtk3					lib32-gtk3
-  vulkan-icd-loader		lib32-vulkan-icd-loader
+  gtk3                  lib32-gtk3
+  vulkan-icd-loader     lib32-vulkan-icd-loader
   samba
   opencl-headers
   xorgproto
@@ -117,7 +120,7 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   cups
-  samba           dosbox
+  samba                 dosbox
 )
 provides=("wine=$pkgver" "wine-wow64=$pkgver" "wine-staging=$pkgver")
 conflicts=('wine' 'wine-wow64' 'wine-staging')
@@ -126,7 +129,7 @@ install=wine.install
 
 _pbaprepare() {
   for _f in $(ls $_pbadir); do
-    patch -d $pkgname < $_pbadir/$_f
+    patch -d $pkgname -Np1 < $_pbadir/$_f
   done
 }
 
@@ -151,8 +154,8 @@ prepare() {
   patch -d $pkgname -Np1 < $_d3d9dir/staging-helper.patch
   patch -d $pkgname -Np1 < $_d3d9dir/wine-d3d9.patch
 
-  # Does not work as of now
-  #_pbaprepare
+  # Uncomment if you want wine-pba optimizations
+  _pbaprepare
 
   autoreconf -f "$pkgname"
 
@@ -176,7 +179,8 @@ build() {
     --with-x \
     --with-gstreamer \
     --enable-win64 \
-    --disable-tests
+    --disable-tests \
+    --with-d3d9-nine
 
   make
 
@@ -194,6 +198,7 @@ build() {
     --with-x \
     --with-gstreamer \
     --disable-tests \
+    --with-d3d9-nine \
     "${_wine32opts[@]}"
 
   make
