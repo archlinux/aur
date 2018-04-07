@@ -2,14 +2,15 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.0.3.r17.gc0fa444f3
+pkgver=11.1.3.r5.gbf772769a
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('alsa-lib' 'sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack')
-makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python' 'gtest')
+makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python')
+checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
 provides=('teeworlds-ddnet-git' 'ddnet')
@@ -50,6 +51,11 @@ build() {
     cd build
     cmake ../$_name -DCMAKE_BUILD_TYPE=Release
     make all tools
+}
+
+check() {
+    cd build
+    make -k run_tests
 }
 
 package() {
