@@ -1,9 +1,9 @@
 # Maintainer: Karol Babioch <karol@babioch.de
 
 pkgname=aaxtomp3-git
-pkgver=v1.0.r0.gd96d01e
+pkgver=1.1.r2.g2192558
 pkgrel=1
-pkgdesc='The purpose of this software is to convert AAX files to a more common MP3 format through a basic bash script frontend to FFMPEG.'
+pkgdesc="Convert Audible's .aax filetype to MP3, FLAC, M4A, or OPUS"
 arch=('any')
 url='https://github.com/KrumpetPirate/AAXtoMP3'
 license=('custom')
