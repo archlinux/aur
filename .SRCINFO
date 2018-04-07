@@ -1,15 +1,15 @@
 pkgbase = python-miniupnpc
 	pkgdesc = A small UPnP client library/tool to access Internet Gateway Devices
-	pkgver = 2.0.20180222
-	pkgrel = 2
+	pkgver = 2.0.20180406
+	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = http://miniupnp.free.fr/files/miniupnpc-2.0.20180222.tar.gz
-	sha256sums = 587944686469d09f739744b3aed70c7ce753a79c40d6f1227f68a3e962665b75
+	source = http://miniupnp.free.fr/files/miniupnpc-2.0.20180406.tar.gz
+	sha256sums = 8c7226bd47a6e4a46ffa14b8cdef940a8a5c4f721ab33bc72a217371a4a72996
 
 pkgname = python-miniupnpc
 	depends = python
