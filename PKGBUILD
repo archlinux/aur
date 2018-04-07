@@ -2,14 +2,15 @@
 
 pkgname=hyper-bin
 pkgver=1.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
 license=('MIT')
 conflicts=('hyper' 'hyper-appimage')
 provides=('hyper')
-depends=('libnotify' 'libxss' 'libxtst' 'gconf' 'libindicator' 'libappindicator')
+# from the DEB: Depends: gconf2, gconf-service, libnotify4, libappindicator1, libxtst6, libnss3, libxss1
+depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
 options=('!strip' '!upx')
 
 _pkgver_correct=${pkgver/\.canary/-canary}
