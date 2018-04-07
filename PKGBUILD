@@ -8,9 +8,9 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.31
-pkgver=${_pkgmajor}.1
-pkgrel=1
+_pkgmajor=2.32
+pkgver=${_pkgmajor}
+pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('x86_64')
@@ -25,13 +25,17 @@ license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
+        '0001-fstrim-cleanup-uncludes.patch'
+        '0002-libmount_include_sys_mount_h_only_if_necessary.patch'
         pam-{login,common,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('1a51b16fa9cd51d26ef9ab52d2f1de12403b810fc8252bf7d478df91b3cddf11'
+sha256sums=('6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734'
             'SKIP'
+            'b1c0db069f60c086351f7a6fb7ff1add1c41e9ed7c1b65bd67e6604943fc4c75'
+            'c65d8354fc2773035be8ac071541f4709763366d22a8a8f1bc2cb3401dcfdf69'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
             '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
@@ -39,6 +43,13 @@ sha256sums=('1a51b16fa9cd51d26ef9ab52d2f1de12403b810fc8252bf7d478df91b3cddf11'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
+
+prepare() {
+  cd "${pkgbase/-selinux}-$pkgver"
+
+  patch -Np1 -i ../0001-fstrim-cleanup-uncludes.patch
+  patch -Np1 -i ../0002-libmount_include_sys_mount_h_only_if_necessary.patch
+}
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"

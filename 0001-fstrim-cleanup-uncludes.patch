@@ -1,0 +1,41 @@
+From 43abda66869e749044c6c4fd1d106d7df9484aca Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Thu, 22 Mar 2018 13:17:10 +0100
+Subject: fstrim: cleanup includes
+
+* HAVE_SYS_FS_H is incorrect (should be HAVE_LINUX_FS_H)
+
+* linux/fs.h cannot be included together with sys/mount.h as the both
+  files define MS_* constants. The libmount.h includes sys/mount.h now.
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ sys-utils/fstrim.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/sys-utils/fstrim.c b/sys-utils/fstrim.c
+index ca8cf256d..53ac594c0 100644
+--- a/sys-utils/fstrim.c
++++ b/sys-utils/fstrim.c
+@@ -36,10 +36,6 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ 
+-#ifdef HAVE_SYS_FS_H
+-# include <linux/fs.h>
+-#endif
+-
+ #include "nls.h"
+ #include "strutils.h"
+ #include "c.h"
+@@ -49,6 +45,10 @@
+ 
+ #include <libmount.h>
+ 
++
++/* We cannot include linux/fs.h due to MS_* constants collision with
++ * sys/mount.h (and libmount.h)
++ */
+ #ifndef FITRIM
+ struct fstrim_range {
+ 	uint64_t start;

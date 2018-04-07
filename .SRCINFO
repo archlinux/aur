@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.31.1
-	pkgrel = 1
+	pkgver = 2.32
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = x86_64
 	groups = selinux
@@ -12,8 +12,10 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.1.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.1.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.tar.sign
+	source = 0001-fstrim-cleanup-uncludes.patch
+	source = 0002-libmount_include_sys_mount_h_only_if_necessary.patch
 	source = pam-login
 	source = pam-common
 	source = pam-su
@@ -22,8 +24,10 @@ pkgbase = util-linux-selinux
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	sha256sums = 1a51b16fa9cd51d26ef9ab52d2f1de12403b810fc8252bf7d478df91b3cddf11
+	sha256sums = 6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734
 	sha256sums = SKIP
+	sha256sums = b1c0db069f60c086351f7a6fb7ff1add1c41e9ed7c1b65bd67e6604943fc4c75
+	sha256sums = c65d8354fc2773035be8ac071541f4709763366d22a8a8f1bc2cb3401dcfdf69
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 	sha256sums = fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20
 	sha256sums = 51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0
@@ -43,8 +47,8 @@ pkgname = util-linux-selinux
 	provides = eject
 	provides = zramctl
 	provides = rfkill
-	provides = util-linux=2.31.1-1
-	provides = selinux-util-linux=2.31.1-1
+	provides = util-linux=2.32-2
+	provides = selinux-util-linux=2.32-2
 	conflicts = eject
 	conflicts = zramctl
 	conflicts = rfkill
@@ -64,6 +68,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.31.1-1
+	provides = libutil-linux=2.32-2
 	conflicts = libutil-linux
 
