@@ -3,7 +3,7 @@
 # Contributor: Florian Pritz <f-p@gmx.at>
 
 pkgname=inxi
-pkgver=2.9.10
+pkgver=2.9.12
 pkgrel=1
 pkgdesc="script to get system information"
 arch=('any')
@@ -27,9 +27,9 @@ optdepends=(
   "xorg-xrandr: inxi -G single screen resolution"
 )
 options=('zipman')
-_commit=c4bc0ff282e32ab87d9d2e2b450a1dbb364a941c
+_commit=e43933452fb8f99fee31a26d7adf03b670c5ffab
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('be29b35fc898c12ede0f1a79f2b9878772946b0036b35608887320aa9a9b096d')
+sha256sums=('b6c041bff3189bfc662eb72eb7ba3ca9bb19c408e4ababaeea723a91e5198224')
 
 pkgver() {
     cd "${pkgname}-${_commit}"
