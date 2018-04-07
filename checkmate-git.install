@@ -1,9 +1,0 @@
-post_install() {
-	echo "Creating link to application"
-	ln -s /opt/checkmate/Checkmate /usr/bin/checkmate
-}
-
-post_remove() {
-	echo "Removing application link"
-	rm /usr/bin/checkmate
-}

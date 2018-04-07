@@ -1,27 +1,29 @@
 # Maintainer: Kaleb Klein <klein.jae@gmail.com>
 
-pkgname=checkmate-git
-pkgver=2.4.0
-pkgrel=9
+_base=checkmate
+pkgname=${_base}-git
+pkgver=2.4
+pkgrel=10
 pkgdesc="GUI application for verifying and generating checksums"
 arch=(any)
 license=('LGPL')
-url="http://github.com/pazuzu156/checkmate"
-depends=('qt5-base' 'qt5-webkit')
-source=('git://github.com/pazuzu156/checkmate.git' 'checkmate-git.install' 'gear.png')
+url="http://github.com/pazuzu156/${_base}"
+depends=('qt5-base')
+makedepends=('git')
+source=("${_base}::git+$url.git#tag=v$pkgver")
 validpgpkeys=(120206848BD3375043BF1B253209FA22E33FF70C)
-md5sums=('SKIP'
-         '0bb8448ad311e4cc7eb29ed896bb7f00'
-         '735424ee880f55cc8e635343edf3f9fa')
-install='checkmate-git.install'
+sha256sums=('SKIP')
+
+build() {
+	cd $srcdir/${_base}
+	qmake-qt5 src/Checkmate.pro -o src/Makefile
+	make -C src
+}
 
 package() {
 	cd "$srcdir/checkmate"
-	make
 
-	install -D -m755 "${srcdir}/checkmate/src/Checkmate" "${pkgdir}/opt/checkmate/Checkmate"
-	# install -D -m755 "${srcdir}/checkmate/updater_src/CheckmateUpdater" "${pkgdir}/opt/checkmate/CheckmateUpdater"
-
-	install -D -m644 "${srcdir}/checkmate/checkmate.desktop" "${pkgdir}/usr/share/applications/checkmate.desktop"
-	install -D -m644 "${srcdir}/gear.png" "${pkgdir}/usr/share/icons/checkmate_icon.png"
+	install -D -m755 "$srcdir/${_base}/src/Checkmate" "$pkgdir/usr/bin/${_base}"
+	install -D -m644 "$srcdir/${_base}/${_base}.desktop" "$pkgdir/usr/share/applications/${_base}.desktop"
+	install -D -m644 "$srcdir/${_base}/src/res/images/gear.png" "$pkgdir/usr/share/icons/${_base}_icon.png"
 }
