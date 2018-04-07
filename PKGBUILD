@@ -19,7 +19,7 @@ sha512sums=('5ef0172927106589620678897f12f054533503a5cf13df71bf4deda43f223d0cd6a
 build() {
   cd "$srcdir/camlzip-$pkgver"
 
-  make all allopt || return 1
+  make all allopt
   mkdir -p html
   ocamldoc -html -d html gzip.mli zip.mli
 }
