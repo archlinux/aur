@@ -1,11 +1,11 @@
 pkgbase = imaginary-teleprompter-bin
 	pkgdesc = A complete and professional free software teleprompter.
 	pkgver = 2.3.4
-	pkgrel = 11
+	pkgrel = 12
 	url = https://imaginary.tech/teleprompter
 	install = INSTALL
 	arch = x86_64
-	license = GPL-3.0+
+	license = GPL3
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
