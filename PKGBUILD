@@ -1,24 +1,23 @@
-# Maintainer: Antonio Bonifati <antonio[dot]bonifati(SLUG)gmail[stitch]com>
-# Contributor: Franklyn Tackitt <franklyn+aur@tackitt.net>
-# Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
-# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail.com>
+# Maintainer: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
-_pkgname=phantomjs
-_pkgver=2.1.3
-pkgname=${_pkgname}-bin
-pkgver=${_pkgver}
+_pkgname='phantomjs'
+pkgname="$_pkgname-bin"
+pkgver=2.1.1
 pkgrel=1
-pkgdesc="Headless WebKit with JavaScript API (official static binary)"
-url="http://www.phantomjs.org/"
-license=("BSD")
+pkgdesc='Headless WebKit with JavaScript API (official static binary)'
+url='http://www.phantomjs.org/'
+license=('BSD')
 arch=('x86_64')
-depends=('fontconfig' 'icu55')
+depends=('fontconfig' 'freetype2' 'libpng')
 conflicts=('phantomjs')
 provides=('phantomjs')
-options=('!strip')
-source=("https://github.com/ariya/phantomjs/releases/download/${_pkgver}/${_pkgname}")
-md5sums=('4c5fd62ccc91c482f2151f435cf57e6b')
+_path="phantomjs-$pkgver-linux-x86_64"
+source=("https://bitbucket.org/ariya/phantomjs/downloads/$_path.tar.bz2")
+sha256sums=('86dd9a4bf4aee45f1a84c9f61cf1947c1d6dce9b9e8d2a907105da7852460d2f')
 
 package() {
-  install -Dm755 "$srcdir/${_pkgname}" "$pkgdir/usr/bin/phantomjs"
+  install -Dm755 "$srcdir/$_path/bin/phantomjs" "$pkgdir/usr/bin/phantomjs"
+  install -Dm755 "$srcdir/$_path/LICENSE.BSD" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -dm755 "$pkgdir"/usr/share/$_pkgname/examples
+  cp -r "$srcdir/$_path/examples" "$pkgdir/usr/share/$_pkgname/"
 }
