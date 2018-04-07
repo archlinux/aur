@@ -1,0 +1,26 @@
+pkgbase = ncurses-nohex
+	pkgdesc = System V Release 4.0 curses emulation library
+	pkgver = 6.1
+	pkgrel = 1
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = ncurses
+	provides = libncurses++w.so
+	provides = libformw.so
+	provides = libmenuw.so
+	provides = libpanelw.so
+	provides = libncursesw.so
+	conflicts = ncurses
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz.sig
+	source = nohex.patch::https://github.com/mbloms/ncurses/commit/2e8af507b9ea61ca9f70e023e89faa16aa01c8b1.patch
+	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
+	md5sums = 98c889aaf8d23910d2b92d65be2e737a
+	md5sums = SKIP
+	md5sums = ba2cd274835935bf83bf3859a131fd1e
+
+pkgname = ncurses-nohex
+
