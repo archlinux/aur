@@ -1,0 +1,28 @@
+pkgbase = lightdm-webkit2-theme-arch
+	pkgdesc = Minimal theme for lightdm-webkit2-greeter using humorous wallpapers about Arch Linux.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kenogo/lightdm-webkit2-theme-arch
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = lightdm-tty::git+https://github.com/kenogo/.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit2-theme-arch
+
+pkgbase = lightdm-webkit2-theme-arch
+	pkgdesc = Minimal theme for lightdm-webkit2-greeter using humorous wallpapers about Arch Linux.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kenogo/lightdm-webkit2-theme-arch
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = lightdm-webkit2-theme-arch::git+https://github.com/kenogo/lightdm-webkit2-theme-arch.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit2-theme-arch
+
