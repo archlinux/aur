@@ -3,12 +3,12 @@
 
 pkgname=stagit-git
 pkgver=0.8.r0.g66e3410
-pkgrel=1
+pkgrel=2
 pkgdesc="static git page generator (Git Version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://git.2f30.org/stagit"
+url="http://git.codemadness.org/stagit"
 license=('custom:MIT/X Consortium')
-source=("stagit-git::git://git.2f30.org/stagit.git")
+source=("stagit-git::git://git.codemadness.org/stagit")
 depends=('libgit2')
 makedepends=('git')
 conflicts=('stagit')
