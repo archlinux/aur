@@ -2,7 +2,7 @@
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 
 pkgname=distrobuilder
-pkgver=215.5c6ad30
+pkgver=228.70f3864
 pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir .gopath
+  [[ -d .gopath ]] || mkdir .gopath 
   export GOPATH="${srcdir}/.gopath"
   export PATH="${GOPATH}/bin:${PATH}"
 }
@@ -37,7 +37,7 @@ package() {
   install -d "$pkgdir/usr/share/$pkgname"
   install -d "$pkgdir/var/cache/$pkgname"
 
-  for i in alpine.md archlinux.md centos.md debian.md fedora.md ubuntu.md; do
+  for i in alpine archlinux centos debian fedora ubuntu; do
     install -m644 "$_examples/$i" "$pkgdir/usr/share/$pkgname/$i"
   done
 }
