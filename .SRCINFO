@@ -1,5 +1,5 @@
 pkgbase = ocaml-atd
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/mjambon/atd
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = ocaml-atd
 	depends = ocaml-biniou
 	depends = ocaml-yojson
 	options = !strip
-	source = https://github.com/mjambon/atd/archive/v1.12.0.tar.gz
-	md5sums = f85f590714edcdd4b847aa242b6c5747
+	source = https://github.com/mjambon/atd/archive/1.13.0.tar.gz
+	md5sums = da11b6157d5674e2d27cfd401eb8003a
 
 pkgname = ocaml-atd
 	pkgdesc = Adaptable type definitions for OCaml

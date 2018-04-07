@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=('ocaml-atd' 'ocaml-atdgen')
 _oname=atd
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -14,9 +14,8 @@ depends=('ocaml>=3.11'
 	 'ocaml-yojson')
 makedepends=('ocaml-findlib' 'jbuilder' 'opam')
 options=(!strip)
-source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-md5sums=('f85f590714edcdd4b847aa242b6c5747')
-validpgpkeys=()
+source=("https://github.com/mjambon/${_oname}/archive/${pkgver}.tar.gz")
+md5sums=('da11b6157d5674e2d27cfd401eb8003a')
 _jbuilder="jbuilder $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
 build() {
