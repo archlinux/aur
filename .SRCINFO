@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.15.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.15.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.15.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.15.14-538
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.15.15-539
 	source = https://downloadmirror.intel.com/27591/eng/microcode-20180312.tgz
 	source = 60-linux.hook
 	source = 90-linux.hook

@@ -5,8 +5,8 @@ pkgbase=linux-clear
 __basekernel=4.15
 _minor=15
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.14-538
-pkgrel=1
+_clearver=${__basekernel}.15-539
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -43,10 +43,10 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd linux-${__basekernel}
-  
+
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  
+
   cp -Tf $srcdir/clearlinux/config .config
   cp -a /usr/lib/firmware/i915 firmware/
   cp -a ${srcdir}/intel-ucode firmware/
@@ -57,7 +57,10 @@ prepare() {
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
-  
+
+  # disable CONFIG_MODULE_SIG_FORCE
+  sed -i 's|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|' ./.config
+
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
