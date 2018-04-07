@@ -1,0 +1,17 @@
+pkgbase = mkinitcpio-dir
+	pkgdesc = Initcpio hook to mount a subdirectory as the root file system
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://bbs.archlinux.org/viewtopic.php?pid=932362#p932362
+	arch = any
+	license = custom:Public domain
+	depends = mkinitcpio
+	source = README.md
+	source = hook
+	source = install
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mkinitcpio-dir
+
