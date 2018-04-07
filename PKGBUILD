@@ -3,12 +3,13 @@
 _pkgname=ubrb
 pkgname=${_pkgname}-git
 pkgver=v1
-pkgrel=1
+pkgrel=2
 pkgdesc='Store data (e.g. LUKS keyfile) in RAM of external devices'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/sehraf/ubrb.git'
 license=('MIT')
 depends=('')
+optdepends=('vim: xxd / hex de-/encoding')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
