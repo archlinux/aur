@@ -2,7 +2,7 @@
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.3.4
-pkgrel=8
+pkgrel=9
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
@@ -26,15 +26,18 @@ package() {
     install -d "${pkgdir}/usr/bin"
     ln -s "${pkgdir}/opt/Imaginary/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
+    # Edit desktop entry executable path
+    sed -i "s/opt\/Imaginary Teleprompter/opt\/Imaginary\/${_pkgname}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    
     # Place desktop entry and icons
     desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
     cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
     # Place license files
-    for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-        install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-        rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
-    done
+    #for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+    #    install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+    #    rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
+    #done
     #install -Dm644 "${pkgdir}/usr/share/licenses/common/GPL3/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
