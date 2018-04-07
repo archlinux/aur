@@ -1,7 +1,7 @@
 pkgbase = libeatmydata
 	pkgdesc = Library and utilities designed to disable fsync and friends.
 	pkgver = 105.r15.g1e5ae05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stewartsmith/libeatmydata
 	arch = i686
 	arch = x86_64

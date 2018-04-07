@@ -2,7 +2,7 @@
 # Contributor: Jonathan Squirawski <sky@sky-co.de>
 pkgname=libeatmydata
 pkgver=105.r15.g1e5ae05
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and utilities designed to disable fsync and friends.'
 arch=('i686' 'x86_64')
 url='https://github.com/stewartsmith/libeatmydata'
@@ -22,6 +22,10 @@ build() {
   autoreconf -i
   ./configure --prefix=/usr --libexecdir=/usr/lib/libeatmydata
   make
+}
+
+check() {
+  cd libeatmydata
   make check
 }
 
