@@ -15,7 +15,6 @@ pkgbase = grive-indicator
 	depends = libnotify
 	optdepends = gnome-shell-extension-appindicator-git: gnome indicator support
 	optdepends = gnome-shell-extension-topicons-plus: gnome indicator support
-	optdepends = gnome-shell-extension-topicons-plus-git: gnome indicator support
 	conflicts = grive-tools
 	conflicts = grive-indicator-git
 	source = grive-tools.patch

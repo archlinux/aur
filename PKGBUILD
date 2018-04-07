@@ -9,8 +9,7 @@ license=('GPL3')
 conflicts=("grive-tools" "grive-indicator-git")
 depends=('grive' 'libappindicator-gtk3' 'python2-pyinotify' 'python2-gobject' 'dconf' 'xdg-utils' 'libnotify')
 optdepends=('gnome-shell-extension-appindicator-git: gnome indicator support'
-            'gnome-shell-extension-topicons-plus: gnome indicator support'
-            'gnome-shell-extension-topicons-plus-git: gnome indicator support')
+            'gnome-shell-extension-topicons-plus: gnome indicator support')
 makedepends=('patch')
 source=("grive-tools.patch"
         "https://launchpad.net/~thefanclub/+archive/grive-tools/+files/grive-tools_${pkgver}.tar.gz"
