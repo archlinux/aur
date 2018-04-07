@@ -1,0 +1,15 @@
+pkgbase = selectdefaultapplication-git
+	pkgdesc = A very simple application that lets you define default applications on Linux in a sane way
+	pkgver = r9.23da033
+	pkgrel = 1
+	url = https://github.com/sandsmark/selectdefaultapplication
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	source = git://github.com/sandsmark/selectdefaultapplication.git
+	md5sums = SKIP
+
+pkgname = selectdefaultapplication-git
+
