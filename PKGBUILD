@@ -23,7 +23,7 @@ pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.16.0
 xanmod=1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -31,12 +31,13 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=d7625be23f83416491d202d5cea96e5a871fb216
+arch_config_trunk=9a40229d82e018c3cee9da97dc89d703828c866a
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
