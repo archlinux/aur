@@ -9,7 +9,7 @@ arch=("x86_64" "i686")
 url="https://timetoplatypus.com/static/faction++"
 license=("BSD")
 source=("https://timetoplatypus.com/static/faction++/$_pkgname-$pkgver.tar.gz")
-md5sums=("6d1bbae2d92c7e1b056112833ffe846a")
+md5sums=("219265e318fc38540fe95efc09efa25c")
 
 package() {
   mkdir -p "$pkgdir/usr/include/"
