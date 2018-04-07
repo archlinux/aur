@@ -7,8 +7,8 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=7.6p1
-pkgrel=2
+pkgver=7.7p1
+pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -30,9 +30,9 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha256sums=('a323caeeddfe145baaa0db16e98d784b1fbc7dd436a6bf1f479dfd5cd1d21723'
+sha256sums=('d73be7e684e99efcd024be15a30bffcbe41b012b2f7b3c9084aed621775e6b8f'
             'SKIP'
-            '1fcae9fc461026d96d08b38457e7ffe281b4319caaada1508f9eb74c2566ba5d'
+            'fa91849cc3161916f563bda5413676342e0bcc2705857e9d01b73c70e4904adf'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             '3a0845737207f4eda221c9c9fb64e766ade9684562d8ba4f705f7ae6826886e5'
             'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
@@ -45,7 +45,7 @@ backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 prepare() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 	# OpenSSL 1.1.0 patch from http://vega.pgw.jp/~kabe/vsd/patch/openssh-7.4p1-openssl-1.1.0c.patch.html
-	patch -Np1 -i ../openssl-1.1.0.patch
+	patch -p1 -i ../openssl-1.1.0.patch
 }
 
 build() {
