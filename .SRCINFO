@@ -1,8 +1,8 @@
 pkgbase = python-cubes
 	pkgdesc = Lightweight framework for Online Analytical Processing (OLAP) and multidimensional analysis
 	pkgver = 1.1
-	pkgrel = 1
-	url = https://leather.readthedocs.io/
+	pkgrel = 2
+	url = http://cubes.databrewery.org/
 	arch = any
 	license = custom
 	makedepends = python-setuptools

@@ -3,10 +3,10 @@
 _pkgname=cubes
 pkgname=python-$_pkgname
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight framework for Online Analytical Processing (OLAP) and multidimensional analysis"
 arch=("any")
-url="https://leather.readthedocs.io/"
+url="http://cubes.databrewery.org/"
 license=("custom")
 depends=("python"
          "python-dateutil"
