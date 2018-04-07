@@ -2,7 +2,7 @@
 # Contributor: John W. Trengrove <john@retrofilter.com>
 
 pkgname=stagit-git
-pkgver=0.7.2.r5.g20c37e4
+pkgver=0.8.r0.g66e3410
 pkgrel=1
 pkgdesc="static git page generator (Git Version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
