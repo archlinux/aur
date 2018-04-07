@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.16rc7.r0.g3eb2ce825ea1ad89d2
+pkgver=4.16.r10220.g3c0d551e02b2590fa7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            'e4abe32ec40a17751b75da062bafae334fddbc15593ff7007a887a29fc7e03ac'
+            'd3c0c2d79ead0b023fc2fe1764b735ba451f66a5407d3388f9f1c0d7b8db554c'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '80ea7d3afaa333572d79fbf39c0370641faea3a013f76747a7465c3a96a58be6')
@@ -282,29 +282,29 @@ _package-headers() {
   done
 
   # Fix file conflict with -doc package
-  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
 
   # Add objtool for CONFIG_STACK_VALIDATION
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-
-  # strip scripts directory
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-    esac
-  done
-
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
+  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+
+  # # strip scripts directory
+  # find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
+  #   case "$(file -bi "${binary}")" in
+  #     *application/x-sharedlib*) # Libraries (.so)
+  #       /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+  #     *application/x-archive*) # Libraries (.a)
+  #       /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+  #     *application/x-executable*) # Binaries
+  #       /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+  #   esac
+  # done
 }
 
 _package-docs() {
