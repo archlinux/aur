@@ -15,6 +15,7 @@ pkgbase = elektra
 	depends = curl
 	depends = boost
 	depends = swig
+	depends = libuv
 	optdepends = ruby: for ruby bindings
 	optdepends = python2: for python2-bindings
 	optdepends = xerces-c: for python2-bindings
