@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=90+35+gcea2124
+pkgver=93+2+g9e5b7f8
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -32,6 +32,7 @@ optdepends=(
   'ghc: haskell utilities support'
   'giflib: gifbuild utilities support'
   'gnupg: GNU privacy guard support'
+  'gnumeric: GNOME Spreadsheet support'
   'mono: mono support'
   'openssh: OpenSSH key comparing support'
   'poppler: PDF utilities support'
@@ -55,7 +56,7 @@ checkdepends=(
   'python-pytest' 'python-jsbeautifier' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
   'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools'
   'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib'
-  'python-progressbar' 'binwalk' 'python-argcomplete')
+  'gnumeric' 'python-progressbar' 'binwalk' 'python-argcomplete')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git")
