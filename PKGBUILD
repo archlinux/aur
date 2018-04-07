@@ -13,7 +13,7 @@ depends=('python2-wxpython3' 'python2-distribute' 'desktop-file-utils')
 source=("${url}uploads/src/${pkgname//e/E}-$pkgver.tar.gz"
         "$pkgname.desktop")
 md5sums=('a52c6b3d703f98e0390aa7b44f991616'
-         '6082f8d4bf1650af8ce87c6b3d38053b')
+         '43efe17af89dc701a0a3add517fa5cb8')
          
 build() {
   cd ${pkgname//e/E}-$pkgver
