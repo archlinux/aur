@@ -36,5 +36,5 @@ package() {
         install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
         rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
     done
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    #install -Dm644 "${pkgdir}/usr/share/licenses/common/GPL3/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
