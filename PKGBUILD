@@ -2,7 +2,7 @@
 
 pkgname=gef-git
 _gitname=gef
-pkgver=0.0.0.302.ecedb11
+pkgver=0.0.0.1378.9afe61f
 pkgrel=1
 pkgdesc='Multi-Architecture GDB Enhanced Features for Exploiters & Reverse-Engineers'
 url='https://github.com/hugsy/gef'
@@ -34,8 +34,9 @@ package() {
   cd ${pkgname}
   install -Dm 644 *.py -t "${pkgdir}/usr/share/${_gitname}"
   install -Dm 644 __pycache__/* -t "${pkgdir}/usr/share/${_gitname}/__pycache__"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -r docs/* "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
