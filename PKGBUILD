@@ -2,7 +2,7 @@
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.3.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
@@ -34,7 +34,7 @@ package() {
     # Place license files
     for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
         install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-        rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
+        rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
     done
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
