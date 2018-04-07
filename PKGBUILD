@@ -6,7 +6,7 @@
 # Maintainer: Luka Karinja <luka.karinja@gmail.com>
 pkgname=oscam-emu
 pkgver=11410
-pkgrel=2
+pkgrel=3
 dir=oscam-emu
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
