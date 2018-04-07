@@ -10,7 +10,6 @@ arch=('x86_64')
 url="https://github.com/rvpanoz/luna"
 license=('GPL-3.0')
 groups=('')
-depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
 options=('!strip' '!emptydirs')
 
 source_x86_64=("http://104.236.58.95/luna/releases/${_pkgver}/luna_${pkgver}_amd64.deb")
