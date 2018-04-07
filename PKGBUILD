@@ -3,7 +3,7 @@
 
 pkgname=distrho-vst-git
 pkgver=r411.a82fff0
-pkgrel=2
+pkgrel=1
 pkgdesc="DISTRHO VST audio plugins ports."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
