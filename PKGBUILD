@@ -2,7 +2,7 @@
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.3.4
-pkgrel=9
+pkgrel=10
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
@@ -35,9 +35,9 @@ package() {
     cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
     # Place license files
-    #for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    #    install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-    #    rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
-    #done
-    #install -Dm644 "${pkgdir}/usr/share/licenses/common/GPL3/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+        install -Dm644 "${pkgdir}/opt/Imaginary/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+        rm "${pkgdir}/opt/Imaginary/${_pkgname}/${license}"
+    done
+    install -Dm644 "${pkgdir}/usr/share/licenses/common/GPL3/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
