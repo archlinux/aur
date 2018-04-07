@@ -1,10 +1,10 @@
 # Maintainer: Markus Schanz <coksnuss@googlemail.com>
 pkgname=pacman-boot-backup-hook
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hook that uses rsync to backup the /boot directory prior and post to upgrades of the linux or systemd package."
 arch=('any')
-license=('custom:MIT')
+license=('MIT')
 changelog=CHANGELOG
 depends=('rsync')
 
