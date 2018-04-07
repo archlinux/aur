@@ -1,13 +1,14 @@
 
 pkgname=pyinstaller-git
 _pyname=pyinstaller
-pkgver=r4623.cd5d9ac
-pkgrel=1
+pkgver=r6541.95606610
+pkgrel=2
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
 url="http://www.pyinstaller.org"
 license=('GPL2')
-depends=('python')
+depends=('python' 'python-setuptools')
+optdepends=('python-altgraph: performance testing')
 makedepends=('git')
 provides=('pyinstaller')
 conflicts=('pyinstaller')
