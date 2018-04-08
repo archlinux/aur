@@ -1,6 +1,6 @@
 # Maintainer: Tucker Boniface <tucker@boniface.tech>
-# Maintainer: balazs.saros <balazs.saros@gmail.com>
-# Contributor: Mice Papai <gothart.hu@gmail.com>
+# Maintainer: Balazs Saros <balazs.saros@gmail.com>
+# Contributor: Mice Papai <qwhexz@gmail.com>
 pkgname="cli-typer-git"
 _pkgname="cli-typer"
 pkgver=r59.0291743
