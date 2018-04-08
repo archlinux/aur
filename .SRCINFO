@@ -1,6 +1,6 @@
 pkgbase = linux-jwrdegoede-git
 	pkgver = git
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
