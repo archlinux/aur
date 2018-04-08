@@ -7,13 +7,14 @@ _pkgver=v200
 pkgrel=1
 pkgdesc="npm management through a modern UI. Created with ReactJS and Redux, Material-UI. Bundled with Webpack. Build on Electron."
 arch=('x86_64')
+depends=('npm' 'node' 'yarn')
 url="https://github.com/rvpanoz/luna"
 license=('GPL-3.0')
 groups=('')
 options=('!strip' '!emptydirs')
 
 source_x86_64=("http://104.236.58.95/luna/releases/${_pkgver}/luna_${pkgver}_amd64.deb")
-sha512sums_x86_64=('81810b89ea0ff55a88888e8c04cfddb4977a30e9d73a1ef90f57bb5c85c4603ffc0412d544eb7ed627ecf0ca28fea45e477c712c2145d16b8d7d21b12b93716b')
+sha512sums_x86_64=('8d73936c95017de1e30a01520881c6b85b252f2cfa62871b51d96f0d627e39c7674b387a741ae4291e915f439128da2bd29c2d2a60f6f589cc21c4d00675477f')
 
 package() {
 	# Extract package data
