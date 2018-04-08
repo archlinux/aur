@@ -1,8 +1,8 @@
 # Maintainer: Andy B. <brofi.archlinux at gmail dot com>
 
 pkgname=xmobar-alsa
-pkgver=0.25
-pkgrel=2
+pkgver=0.26
+pkgrel=1
 pkgdesc="A Minimalistic Text Based Status Bar compiled with ALSA"
 url="https://hackage.haskell.org/package/xmobar"
 license=('BSD')
@@ -13,27 +13,27 @@ depends=('haskell-alsa-core>=0.5.0' 'haskell-alsa-mixer>0.2.0.2' 'libxft'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
          'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-mtl'
          'haskell-regex-base' 'haskell-regex-compat' 'haskell-http'
-         'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib' 'wireless_tools'
+         'haskell-dbus0.10' 'haskell-libmpd' 'haskell-iwlib' 'wireless_tools'
          'haskell-text')
 makedepends=('ghc')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jaor/xmobar/archive/${pkgver}.tar.gz)
-sha512sums=('ca11d93d7bff9e6fd623607b25dbbd3d38c9f7b356183616d2c2050597b56b5f4636351a606d32acab232b32315f3639b78ae9f7e4385f68c810af30895c5717')
+sha512sums=('c67c1552f7183a6f33b472f19686cda41cca27c0de89a8d0dcb1f8ea008aea85a143d75608d4392a1a1c9933737a6cbe881cff9ddd13f632d581cd0e10ca8d4d')
 
 build() {
     cd xmobar-$pkgver
 
-    runhaskell Setup configure -O \
+    runhaskell setup configure -O \
         --enable-shared \
         --prefix=/usr \
         --enable-executable-dynamic \
         --disable-library-vanilla \
         --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_mpd with_dbus with_mpris with_alsa"
-    runhaskell Setup build
+    runhaskell setup build
 }
 
 package() {
     cd xmobar-$pkgver
-    runhaskell Setup copy --destdir="$pkgdir"
+    runhaskell setup copy --destdir="$pkgdir"
     install -Dm 644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
