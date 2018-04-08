@@ -15,7 +15,7 @@ sha384sums=('d8df0dbb22e0c5e616bc3e2cf1fc43b3961a286a949b8b91c38d9241e8e88b198c2
             'af15e538605520142698741a2f5cc1e7f6fcf026dffdcc649630d360b6e7e65031c339d64f0a8a4288242537919e3e35')
 
 build() {
-    cd "$srcdir/task-maker"
+    cd "$srcdir/task-maker-${pkgver}"
     export PYTHON_BIN_PATH=/usr/bin/python
     export USE_DEFAULT_PYTHON_LIB_PATH=1
     mkdir -p tmp
@@ -26,7 +26,7 @@ package() {
     mkdir -p "$pkgdir/opt/task-maker/"
     mkdir -p "$pkgdir/usr/bin/"
     cp "$srcdir/launcher" "$pkgdir/usr/bin/task-maker"
-    cd "$srcdir/task-maker"
+    cd "$srcdir/task-maker-${pkgver}"
     cd bazel-bin/python
     for f in $(find -type l); do
         cp --remove-destination "$(readlink "$f")" "$f"
