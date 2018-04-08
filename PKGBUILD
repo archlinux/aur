@@ -14,8 +14,17 @@ _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz exclude-tests.patch)
 md5sums=(9c0cf647aeb4e919f3d24db4c859f0a4 7d67f70e40ebd9945cce79be288c5f5c)
 
-package() {
+prepare() {
   cd "$srcdir/$_name-$pkgver"
   patch -Np1 -i "${srcdir}/exclude-tests.patch"
-  python setup.py install --root="$pkgdir/" --optimize=1
+}       
+
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py build
+}
+
+package() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --skip-build
 }
