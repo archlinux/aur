@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=pyt
-pkgver=0.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Find security vulnerabilities in Python web applications using static analysis'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-gitpython' 'python-graphviz' 'python-requests')
 makedepends=('python-setuptools')
 source=("pyt-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('473ae64ea3447faa09156795f1011eecd50a905f9555273f65db0fe4626a6c122812d4a37f35dcbc36a247cf60b4fff57e73b1bc628ed3529f04b3d30a16b7e3')
+sha512sums=('85812050d8b7a5ffaf3fdb2ab28e014522cb04fd8808a489f45c67646e7bc4d020454d4e53b0623430bac481420e5fe5519979fb91137d8660f8e5e8c38d5cce')
 
 prepare() {
   cd pyt-$pkgver
