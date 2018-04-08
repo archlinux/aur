@@ -8,7 +8,7 @@ arch=(any)
 url="http://packages.debian.org/en/sid/binfmt-support"
 license=('GPL')
 depends=('glibc' 'libpipeline')
-provides=('$_pkgname')
+provides=("$_pkgname")
 makedepends=()
 source=(
 git://git.savannah.gnu.org/$_pkgname.git
