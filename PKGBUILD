@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.193
+pkgver=0.196
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -23,14 +23,15 @@ depends=('sdl2_ttf'
 makedepends=('nasm'
              'mesa'
              'glu'
+             'glm'
              'wget'
-             'python'
+             'python-sphinx'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         )
-sha256sums=('6b5e90b602befbcad2b6989b1e930d0ff6e537dc901f7b1615a3e6deec2207a2'
-            '201e9cc3d0d7397e15a4aaf7477f8b32a379a9ba2134b94180cdaf2067d1f859'
+sha256sums=('fc4436a23d7f2ef0b3c3f600c00745bc468541d0d29bcd3a1e0c599c5c02df7f'
+            'd0289344e2260411965a56290cb4744963f48961326ce7f41b90f75f4221bb42'
             )
 install=sdlmame-wout-toolkits.install
 
@@ -55,42 +56,53 @@ build() {
        USE_SYSTEM_LIB_PORTMIDI=1 \
        USE_SYSTEM_LIB_PORTAUDIO=1 \
        USE_SYSTEM_LIB_UTF8PROC=1 \
-       USE_SYSTEM_LIB_SQLITE3=1
+       USE_SYSTEM_LIB_SQLITE3=1 \
+       USE_SYSTEM_LIB_GLM=1
+
 }
 
 package() {
   cd "mame-mame${pkgver/./}"
 
   # Install the sdlmame script
-  install -Dm755 ../sdlmame.sh "${pkgdir}/usr/bin/sdlmame"
+  install -Dm755 "${srcdir}/sdlmame.sh" "${pkgdir}/usr/bin/sdlmame"
 
   # Install the applications and the UI font in /usr/share
-  install -Dm755 "mame64" "${pkgdir}/usr/share/sdlmame/sdlmame"
-
-  # Install the applications
-  install -Dm755 castool    "${pkgdir}/usr/bin/castool"
-  install -Dm755 chdman     "${pkgdir}/usr/bin/chdman"
-  install -Dm755 floptool   "${pkgdir}/usr/bin/floptool"
-  install -Dm755 imgtool    "${pkgdir}/usr/bin/imgtool"
-  install -Dm755 jedutil    "${pkgdir}/usr/bin/jedutil"
-  install -Dm755 ldresample "${pkgdir}/usr/bin/ldresample"
-  install -Dm755 ldverify   "${pkgdir}/usr/bin/ldverify"
-  install -Dm755 nltool     "${pkgdir}/usr/bin/nltool"
-  install -Dm755 nlwav      "${pkgdir}/usr/bin/nlwav"
-  install -Dm755 pngcmp     "${pkgdir}/usr/bin/pngrep"
-  install -Dm755 regrep     "${pkgdir}/usr/bin/regrep"
-  install -Dm755 romcmp     "${pkgdir}/usr/bin/romcmp"
-  install -Dm755 split      "${pkgdir}/usr/bin/splitmamerom"
-  install -Dm755 src2html   "${pkgdir}/usr/bin/src2html"
-  install -Dm755 srcclean   "${pkgdir}/usr/bin/srcclean"
-  install -Dm755 unidasm    "${pkgdir}/usr/bin/unidasm"
+  install -Dm755 mame64 "${pkgdir}/usr/share/sdlmame/sdlmame"
+  _apps=('castool'
+         'chdman'
+         'floptool'
+         'imgtool'
+         'jedutil'
+         'ldresample'
+         'ldverify'
+         'nltool'
+         'nlwav'
+         'pngcmp'
+         'regrep'
+         'romcmp'
+         'split'
+         'src2html'
+         'srcclean'
+         'unidasm'
+         )
+  for i in "${_apps[@]}"; do install -Dm755 "${i}" "${pkgdir}/usr/share/sdlmame/${i}"; done
 
   # Install the extra bits
-  for i in artwork bgfx hash hlsl ini keymaps language plugins; do
-    for e in $(find ${i} -type f); do install -Dm644 "${e}" ${pkgdir}/usr/share/sdlmame/${e}; done
-  done
+  _extra=('artwork'
+          'bgfx'
+          'hash'
+          'hlsl'
+          'ini'
+          'keymaps'
+          'language'
+          'plugins'
+          'roms'
+          )
+  for i in $(find ${_extra[@]} -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/sdlmame/${i}"; done
   install -d "${pkgdir}/usr/share/sdlmame/shader"
   install -m644 src/osd/modules/opengl/shader/glsl*.*h "${pkgdir}/usr/share/sdlmame/shader/"
+  install -Dm644 uismall.bdf "${pkgdir}/usr/share/sdlmame/fonts/uismall.bdf"
 
   # Install man
   (cd docs/man/; for i in $(find . -type f -name '*.1'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man1/${i}"; done)
@@ -100,5 +112,5 @@ package() {
   install -Dm644 docs/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # documentation
-  (cd docs; for i in $(find . -maxdepth 1 -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
+  (cd docs; make BUILDDIR="${pkgdir}/usr/share/doc/${pkgname}" html)
 }
