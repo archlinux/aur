@@ -18,7 +18,7 @@ optdepends=(
 	'perl-finance-quote: for stock information lookups'
 	'perl-date-manip: for stock information lookups'
 )
-options=('!makeflags' '!emptydirs')
+options=('!emptydirs')
 source=(
 	http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2
 )
