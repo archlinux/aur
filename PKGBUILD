@@ -3,12 +3,14 @@
 
 pkgname=vte-legacy
 pkgver=0.28.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Virtual Terminal Emulator widget for use with GTK2"
 arch=('i686' 'x86_64')
 license=('LGPL')
 options=('!emptydirs')
 depends=('gtk2' 'vte-common')
+provides=('vte')
+conflicts=('vte')
 makedepends=('pygtk' 'intltool' 'gobject-introspection' 'pygobject2-devel')
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/GNOME/sources/vte/0.28/vte-$pkgver.tar.xz
