@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wiredtiger-git
-pkgver=2.9.3.18919
+pkgver=3.0.0.2.g574b928d7.19226
 pkgrel=1
 pkgdesc="High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management"
 arch=('x86_64')
@@ -11,16 +11,16 @@ makedepends=('git')
 provides=('wiredtiger')
 conflicts=('wiredtiger')
 source=("git://github.com/wiredtiger/wiredtiger.git")
+options=('!makeflags')
 md5sums=('SKIP')
-_gitname="wiredtiger"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   printf %s.%s $(git describe --tags | sed 's|-|.|g') $(git rev-list --count HEAD)
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   
   ./autogen.sh
   ./configure --prefix=/usr
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
 }
