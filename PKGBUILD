@@ -4,7 +4,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-jwrdegoede
-_srcname=linux-sunxi-master
+_srcname=linux-sunxi
 pkgver=git
 pkgrel=3
 arch=('x86_64')
