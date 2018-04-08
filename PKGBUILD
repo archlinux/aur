@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=1.0.1056.60c6600a3
+pkgver=2.0.1064.975a49b34
 pkgrel=1
 pkgdesc="KDialog can be used to show nice dialog boxes from shell scripts. (GIT version)"
 arch=('i686' 'x86_64')
