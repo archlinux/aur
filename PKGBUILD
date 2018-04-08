@@ -2,9 +2,9 @@
 
 pkgname=('sat-media-hg')
 _realname=sat_media
-pkgver=0.7.r41.f8ece5fe01ec
+pkgver=0.7.r46.3cd7354ab2dc
 VERSION=0.7
-pkgrel=2
+pkgrel=1
 url="https://salut-a-toi.org/"
 arch=('any')
 depends=('python2')
