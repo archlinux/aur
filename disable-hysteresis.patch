@@ -1,8 +1,6 @@
-diff --git src/evdev-mt-touchpad.c src/evdev-mt-touchpad.c
-index 4a8b618..6cef479 100644
---- a/src/evdev-mt-touchpad.c
-+++ b/src/evdev-mt-touchpad.c
-@@ -2351,12 +2351,8 @@ tp_init_default_resolution(struct tp_dispatch *tp,
+--- a/src/evdev-mt-touchpad.c	2018-04-08 19:11:22.549800840 +0100
++++ b/src/evdev-mt-touchpad.c	2018-04-08 19:11:45.022773612 +0100
+@@ -3022,12 +3022,8 @@
  static inline void
  tp_init_hysteresis(struct tp_dispatch *tp)
  {
@@ -10,10 +8,9 @@ index 4a8b618..6cef479 100644
 -
 -	res_x = tp->device->abs.absinfo_x->resolution;
 -	res_y = tp->device->abs.absinfo_y->resolution;
--	tp->hysteresis_margin.x = res_x/2;
--	tp->hysteresis_margin.y = res_y/2;
-+	tp->hysteresis_margin.x = 0;
-+	tp->hysteresis_margin.y = 0;
+-	tp->hysteresis.margin.x = res_x/2;
+-	tp->hysteresis.margin.y = res_y/2;
++	tp->hysteresis.margin.x = 0;
++	tp->hysteresis.margin.y = 0;
+ 	tp->hysteresis.enabled = false;
  }
- 
- static void

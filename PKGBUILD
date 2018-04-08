@@ -4,13 +4,14 @@
 
 pkgname=libinput-no-hysteresis
 _pkgname=libinput
-pkgver=1.9.4
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Input device management and event handling library sans hysteresis"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
 license=(custom:X11)
 provides=("libinput=${pkgver}")
+conflicts=("libinput=${pkgver}")
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 makedepends=('doxygen' 'graphviz' 'gtk3' 'meson')
 optdepends=('gtk3: libinput debug-gui'
@@ -18,9 +19,9 @@ optdepends=('gtk3: libinput debug-gui'
             'python-evdev: libinput measure')
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
         disable-hysteresis.patch)
-sha512sums=('302f9497ea9ffb2163c643e9ca2f0a773ea141f6fe0a3aa3d8e86eb11a5d11e75d858b1e679ebfd3f913c645beac059cfd356b37c4ea17a8853068f79a740a4b'
+sha512sums=('4c73673e138a7aff9d6f2d189b8afdfb51c868eca0487c8c487ffd3bb48849994a9095fbd4c5c725ee17fafc2a85298106e0cc7b59b4a8cd13ec28f65d15c01d'
             'SKIP'
-            '22c97898b8bd2ed6757ce2a0f2c19d8ff908b3134a9bd435285bc5c59d9d4a17cc5bb4ef0bfb01001ef9aeb2c917bdcc79324cc68bc442c2038d9c448773ac5e')
+            '67fa2e8efd982f2fa32ceec2dbf29e95288e7a68e7a229831d8d59829b09a0ab8eba500696d1b37d755a8138e054c429c7fadfa92ecdbac7925f331643443c41')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
