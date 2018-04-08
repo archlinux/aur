@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=725
+pkgver=1061
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 prepare() {
-cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   git config --file=.gitmodules submodule.vendor/pyotherside.url ../pyotherside/
   git config --file=.gitmodules submodule.vendor/yubikey-manager.url ../yubikey-manager/
@@ -35,7 +35,7 @@ cd "${srcdir}/${_pkgname}"
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
+  qmake-qt5 -makefile -nocache
   make
 }
 
