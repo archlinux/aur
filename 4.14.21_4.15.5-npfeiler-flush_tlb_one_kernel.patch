@@ -1,0 +1,14 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-18 19:47:41.000000000 +0100
++++ archive_filesb/common/lib/modules/fglrx/build_mod/firegl_public.c	2018-02-25 17:33:11.469309861 +0100
+@@ -2949,7 +2949,11 @@
+ static void kcl_flush_tlb_one(void *va)
+ {
+     unsigned long *addr = (unsigned long *)va;
++#   if (LINUX_VERSION_CODE < KERNEL_VERSION(4,14,21))
+     __flush_tlb_one(*addr);
++#   else
++    __flush_tlb_one_kernel(*addr);
++#   endif
+ }
+ 
+ /** /brief Flush one page on all cpus

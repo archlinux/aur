@@ -13,19 +13,19 @@
 # Contributor: gentoo (part of 4.3 kernel patches)
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (4.11, 4.12, 4.13 and 4.14 kernel patch)
+# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14 and 4.15.5 kernel patch)
 
 
 pkgname=catalyst-generator
 pkgver=15.9
-pkgrel=18
+pkgrel=19
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.15' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.16' 'linux-headers')
 optdepends=('linux-headers: to build the fglrx module for the linux kernel'
 	  'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-hook' 'catalyst' 'catalyst-daemon' 'catalyst-dkms')
@@ -62,7 +62,8 @@ source=(
     4.12-arch-remove_clts.patch
     4.12-npfeiler-movsl_mask.patch
     4.13-npfeiler-wait_queue_t.patch
-    4.14-npfeiler-task_struct-mm_segment_t.patch)
+    4.14-npfeiler-task_struct-mm_segment_t.patch
+    4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
          '543e818f543f2897beca49101226e460'
@@ -90,7 +91,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '782769206ed12ded10c347be3e476729'
 	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
 	 '0a725f40bc980d578cbed3e57a05b765'
-	 '5ba3bf9f58aa63c1849b056cf23022c9')
+	 '5ba3bf9f58aa63c1849b056cf23022c9'
+	 '10af58c21e4e972115dda6dbd8279594')
 
 
 build() {
@@ -123,6 +125,7 @@ package() {
       patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
       patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
       patch -Np1 -i ../4.14-npfeiler-task_struct-mm_segment_t.patch
+      patch -Np1 -i ../4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch
 
     # Prepare modules source files
       _archdir=x86_64
