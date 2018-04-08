@@ -5,9 +5,9 @@
 
 pkgname=pcsxr
 pkgver=1.9.94
-pkgrel=3
+pkgrel=4
 pkgdesc="A Sony PlayStation (PSX) emulator based on the PCSX-df project"
-arch=("x86_64")
+arch=("i686" "x86_64")
 url="http://${pkgname}.codeplex.com"
 license=("GPL")
 depends=("gtk3" "libarchive" "libcdio" "libpulse" "libxv" "sdl2")
@@ -21,7 +21,7 @@ build() {
 
   #zlib >= 1.2.11 has a new function that is called uncompress2 that conflicts with the one in cdriso.c line 916 and line 995
   sed -i "s/uncompress2/uncompress2_internal/g" "${srcdir}/${pkgname}/libpcsxcore/cdriso.c"
-  
+
   autoreconf -f -i
   intltoolize --force
 
