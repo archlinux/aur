@@ -20,5 +20,5 @@ package() {
     mkdir $pkgdir/opt
     mkdir -p $pkgdir/usr/bin
     mv $srcdir/$pkgname-$pkgver $pkgdir/opt/deb2appimage
-    ln -s $pkgdir/opt/deb2appimage/deb2appimage.sh $pkgdir/usr/bin/deb2appimage
+    ln -s /opt/deb2appimage/deb2appimage.sh $pkgdir/usr/bin/deb2appimage
 }
