@@ -2,7 +2,7 @@
 _pkgname=binfmt-support
 pkgname=$_pkgname-git
 pkgver=r229.5d6febd
-pkgrel=1
+pkgrel=2
 pkgdesc="register interpreters for various binary formats"
 arch=(any)
 url="http://packages.debian.org/en/sid/binfmt-support"
