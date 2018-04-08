@@ -2,10 +2,10 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=findme
+pkgver=17.11.90.r39.4f773c6
 pkgrel=1
 pkgdesc="KDE library to assist determining when holidays occur"
-arch=("${CARCH}")
+arch=("armv6h" "armv7h" "i686" "x86_64")
 url="https://projects.kde.org/projects/kde/pim/${gitname%-git}"
 license=("LGPL")
 depends=("kdelibs4support")

@@ -1,8 +1,11 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library to assist determining when holidays occur
-	pkgver = r733.c84e4d9
+	pkgver = 17.11.90.r39.4f773c6
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/
+	arch = armv6h
+	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules-git
@@ -11,7 +14,7 @@ pkgbase = kholidays-git
 	depends = kdelibs4support
 	provides = kholidays
 	conflicts = kholidays
-	source = git://anongit.kde.org/kholidays.git
+	source = kholidays::git://anongit.kde.org/kholidays.git
 	sha256sums = SKIP
 
 pkgname = kholidays-git
