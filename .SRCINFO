@@ -1,7 +1,7 @@
 pkgbase = binfmt-support-git
 	pkgdesc = register interpreters for various binary formats
 	pkgver = r229.5d6febd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/en/sid/binfmt-support
 	arch = any
 	license = GPL
