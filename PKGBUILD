@@ -22,6 +22,8 @@ source=("https://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
 sha256sums=('b8a31fe03e7f048a5bd3967ecd04b6a48966215e78792df06e333b0eede4fb1b'
             'SKIP')
 
+# bigint test doesn't pass when built with GCC and -O2
+# see https://github.com/randombit/botan/issues/1529
 export CXXFLAGS=`echo $CXXFLAGS | sed "s/-O2/-O3/"`
 
 build() {
