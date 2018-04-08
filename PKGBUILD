@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='terrarium-git'
-pkgver=r142.9994f3d
+pkgver=r143.5121446
 pkgrel=1
 pkgdesc="UI Prototyping Tool for Coders (Github version)"
 arch=('any')
