@@ -9,7 +9,7 @@ url="https://github.com/penk/terrarium-app"
 license=('MIT')
 depends=('qt5-quickcontrols2' 'qt5-quickcontrols')
 makedepends=('git' 'qt5-base')
-source=("${pkgname}::git+https://github.com/LinArcX/terrarium-app")
+source=("${pkgname}::git+https://github.com/penk/terrarium-app")
 sha256sums=('SKIP')
 
 pkgver() {
