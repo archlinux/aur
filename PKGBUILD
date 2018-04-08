@@ -3,7 +3,7 @@
 
 set -u
 pkgname='smtp-cli'
-pkgver='3.8'
+pkgver='3.9'
 pkgrel='1'
 pkgdesc='Perl based command line SMTP client'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('perl' 'perl-io-socket-ssl' 'perl-io-socket-inet6' 'perl-mime-lite' 'pe
 _giturl="https://github.com/mludvig/${pkgname}"
 _verwatch=("${_giturl}/releases.atom" '\s\+<title>v\([0-9\.]\+\)</title>.*' 'f')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mludvig/smtp-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('1f9d4838530ed868a4c18d37391b3e7b8e68ad9039f1b5db481eeaa65a891f51')
+sha256sums=('69f769c4fd4196cb952a2f99ee72bba07541c8c9f7bb70846042c08f0e6fcbd2')
 
 package() {
   set -u
