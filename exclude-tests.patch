@@ -1,0 +1,12 @@
+diff -ura skidl-0.0.20/setup.py skidl-0.0.20.new/setup.py
+--- skidl-0.0.20/setup.py	2018-03-08 13:33:11.000000000 -0600
++++ skidl-0.0.20.new/setup.py	2018-04-08 06:35:24.617449162 -0500
+@@ -46,7 +46,7 @@
+     author_email=__email__,
+     url='https://github.com/xesscorp/skidl',
+ #    packages=['skidl',],
+-    packages=setuptools.find_packages(),
++    packages=setuptools.find_packages(exclude=['tests']),
+     entry_points={'console_scripts':['netlist_to_skidl = skidl.netlist_to_skidl_main:main']},
+     package_dir={'skidl': 'skidl'},
+     include_package_data=True,
