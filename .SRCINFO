@@ -1,14 +1,14 @@
 pkgbase = python-pylint-common
-	pkgdesc = Pylint plugin for augmenting and improving error detection and analysis in the standard Python library
-	pkgver = 0.2.2
+	pkgdesc = pylint-common is a Pylint plugin to improve Pylint error analysis of the standard Python library
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/landscapeio/pylint-common
 	arch = any
-	license = GPL2
+	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/landscapeio/pylint-common/archive/0.2.2.tar.gz
-	md5sums = aaa0146cb8ca185849d6a111003c23e8
+	source = https://files.pythonhosted.org/packages/source/p/pylint-common/pylint-common-0.2.5.tar.gz
+	md5sums = 821725a39702815c68558df3059cb176
 
 pkgname = python-pylint-common
 
