@@ -1,15 +1,15 @@
 pkgbase = vim-ranger
 	pkgdesc = Ranger integration for vim
-	pkgver = 2.0
-	pkgrel = 4
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://github.com/francoiscabrol/ranger.vim
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	depends = vim
 	depends = ranger
-	source = vim-ranger-2.0.tar.gz::https://github.com/francoiscabrol/ranger.vim/archive/2.0.tar.gz
-	md5sums = 59f24462eb5c7561756a646585cd9e4c
+	source = vim-ranger-3.0.tar.gz::https://github.com/francoiscabrol/ranger.vim/archive/3.0.tar.gz
+	md5sums = f314b7e0abb8632179d2429ad16ffb68
 
 pkgname = vim-ranger
 
