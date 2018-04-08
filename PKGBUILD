@@ -3,7 +3,7 @@
 pkgname=libfaction++
 _pkgname=faction++
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ library for test-driven software development"
 arch=("x86_64" "i686")
 url="https://timetoplatypus.com/static/faction++"
@@ -13,5 +13,5 @@ md5sums=("219265e318fc38540fe95efc09efa25c")
 
 package() {
   mkdir -p "$pkgdir/usr/include/"
-  cp "$srcdir/$_pkgname/include/faction.hpp" "$pkgdir/usr/include/$_pkgname.hpp"
+  cp "$srcdir/$_pkgname/include/faction.hpp" "$pkgdir/usr/include/faction.hpp"
 }
