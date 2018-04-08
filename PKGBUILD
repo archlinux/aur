@@ -3,12 +3,13 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-jwrdegoede
+pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 pkgver=git
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://www.kernel.org/'
+replaces=('linux-jwrdegoede')
 license=('GPL2')
 makedepends=('git' 'xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
