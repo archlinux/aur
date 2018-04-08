@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=15
+_minor=16
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=6
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -83,6 +83,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         "90-linux.hook"
         "60-linux.hook"
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch' 
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -106,6 +107,11 @@ prepare() {
   #patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 
   # end
+
+
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+  
   # end linux-ARCH patches
 
   # fix ci  invalid PC card inserted issue hopefully
@@ -677,14 +683,12 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 
 # makepkg -g >>PKGBUILD
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'dc2d9346c657d291b4688f1af4433e6bf4d46101c4f2b849fc9cea5affda26e4'
+            'dfa5b3fa715f269eb215585f496536ba2ea8d33992ae13a4190c4df7b1dce7f7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
-            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
+            'd365ce80dab359d5277bd2f8568cad50a30ab269f222ed1bb12b8d74571e24a6')
 
