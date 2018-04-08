@@ -1,5 +1,5 @@
 pkgname=cnijfilter2
-pkgver=5.40
+pkgver=5.60
 pkgrel=1
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ license=('GPL' 'custom:canon')
 depends=('cups' 'libxml2')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
-source=("http://gdlp01.c-wss.com/gds/3/0100008393/01/$pkgname-source-$pkgver-$pkgrel.tar.gz")
-md5sums=('2beb1b47c61bed5f89e5ffccf5100652')
+source=("http://gdlp01.c-wss.com/gds/0/0100009490/01/$pkgname-source-$pkgver-$pkgrel.tar.gz")
+md5sums=('8dc22e5c8be78b6f069bb9d51dbbfefb')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
