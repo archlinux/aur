@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}
-pkgver=4.1.4
+pkgver=4.3.3
 pkgrel=1
 _tag="${_pkgname}-${pkgver}"
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
@@ -11,26 +11,13 @@ license=('GPL')
 depends=('pcsclite' 'ccid' 'python-pyotherside' 'yubikey-manager' 'qt5-quickcontrols')
 makedepends=('swig' 'git')
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
-source=("git+https://github.com/Yubico/yubioath-desktop.git#tag=${_tag}"
-'git+https://github.com/thp/pyotherside.git'
-'git+https://github.com/Yubico/yubikey-manager.git'
-'git+https://github.com/qtproject/qt-solutions')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("https://github.com/Yubico/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.sig})
+md5sums=('942480b432f3985b5ba9b57c928936dc'
+         'SKIP')
 conflicts=('yubico-yubioath-desktop-git')
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git config --file=.gitmodules submodule.vendor/pyotherside.url ../pyotherside/
-  git config --file=.gitmodules submodule.vendor/yubikey-manager.url ../yubikey-manager/
-  git config --file=.gitmodules submodule.ykman-gui/vendor/qt-solutions.url ../qt-solutions/
-
-  git submodule init
-  git submodule update
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
