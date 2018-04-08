@@ -2,7 +2,7 @@
 
 pkgname=tidal-cli-client # All lowercase
 _pkgname=${pkgname#nodejs-}
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='You can now use Tidal on linux. With your loved CLI. <3'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' 'mpv' 'w3m')
 optdepends=()
 source=(http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=(f348f48acf3dbfc3121673b1495d503f1c18f993)
+sha1sums=(3ed8e67f83f47e968cead602b2fe66aa0be20adb)
 
 package() {
   cd $srcdir
