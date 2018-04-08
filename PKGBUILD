@@ -7,7 +7,7 @@ pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 _repourl=https://github.com/jwrdegoede/${_srcname}.git
 pkgver=0
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url='https://www.kernel.org/'
 conflicts=('linux-jwrdegoede' 'gpd-pocket-linux-jwrdegoede')
@@ -39,7 +39,7 @@ pkgver() {
   # produce version string
   local ver=($(head -n4 Makefile | awk '/=/ {print $3}'))
   local commit=$(git rev-parse --short HEAD)
-  printf "%s" "${ver[1]}.${ver[2]}.${ver[3]}.${commit}"
+  printf "%s" "${ver[0]}.${ver[1]}.${ver[2]}.${commit}"
 }
 
 prepare() {
