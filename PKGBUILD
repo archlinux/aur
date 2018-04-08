@@ -1,7 +1,7 @@
 # Maintainer: Carlos Mogas da Silva <r3pek@r3pek.org>
 
 pkgname=mxisd
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Federated Matrix Identity Server Daemon"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('gradle' 'java-environment>=8')
 source=("https://github.com/kamax-io/${pkgname}/archive/v${pkgver}.tar.gz"
         "mxisd"
         "mxisd.tmpfiles")
-sha256sums=('3c73cef42cd3ea67c60a1284fb8e580bc90783530f29f9c3004b9938213ea77e'
+sha256sums=('9a7ac74d58128dfd3de90992394eac4088f0304d468cb1a446c99723fdfbb9d4'
             'd8293f3f6ab2b53840a875cd8af035b7d15b3e2fcc643c3faa9000e6dd1fa449'
             'daee6519e67f65e8ec836f80b5853f669ba46e3378b6e29e34550bd136baf718')
 install='mxisd.install'
