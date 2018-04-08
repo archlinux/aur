@@ -1,14 +1,14 @@
 pkgbase = python-skidl
 	pkgdesc = A Python package for textually describing electronic circuit schematics.
 	pkgver = 0.0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xesscorp.github.io/skidl/docs/_site/index.html
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-future
 	depends = python-kinparse
-	depends = graphviz
+	depends = python-graphviz
 	optdepends = kicad-library: part libraries
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/s/skidl/skidl-0.0.20.tar.gz
