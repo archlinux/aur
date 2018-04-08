@@ -5,10 +5,10 @@ pkgbase = jfederc-git
 	url = https://github.com/codefionn/feder
 	arch = any
 	license = ZLIB
-	makedepends = java-environment=8
+	makedepends = java-environment>=8
 	makedepends = git
 	depends = gcc
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	optdepends = clang: Another C compiler
 
 pkgname = jfederc-git
