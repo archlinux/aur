@@ -1,12 +1,12 @@
 # Maintainer: Danilo Kuehn <dk at nogo-software dot de>
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
-# Uncomment, if you want tha last release
-_version=2.3.3
+# Uncomment, if you want the last release
+#_version=2.3.3
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.3.3
+pkgver=v2.3.3.r15.gb095916
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
@@ -20,22 +20,22 @@ optdepends=(
 makedepends=('cmake' 'qt5-tools')
 provides=('mirall' 'mirall-git' 'owncloud-client' 'nextcloud-client')
 conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'nextcloud-client' 'owncloud-client-git')
-install=${_name}.install
 options=(!strip)
 backup=('etc/Nextcloud/sync-exclude.lst')
 source=(
   "${_name}::git+https://github.com/nextcloud/client_theming.git"
-  "${_name}.service"
 )
 sha256sums=(
   'SKIP'
-  '590d44296e12dd4389dc2bbd100b1f680f5ef6dee381469748525fd34af32009'
 )
 
 pkgver() {
   if [[ -z "${_version}" ]]; then
     cd ${srcdir}/${_name}
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
   else
     echo ${_version}
   fi
@@ -67,8 +67,6 @@ build() {
 package() {
   cd ${srcdir}/${_name}/build-linux
   make DESTDIR=${pkgdir} install
-
-  install -Dm644 ${srcdir}/${_name}.service ${pkgdir}/usr/lib/systemd/user/${_name}.service
 
   # Fix some naming issues
   if [ -f ${pkgdir}/usr/share/applications/nextcloud.desktop ]; then
