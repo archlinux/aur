@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=beaker-browser
+Name=Beaker Browser
 Comment=Peer-to-peer browser with tools to create and host website
 GenericName=Beaker Browser
 Exec=/usr/bin/beaker-browser
