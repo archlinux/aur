@@ -1,3 +1,7 @@
+# NOTE: you have to download archive directly from https://developer.amd.com/amd-accelerated-parallel-processing-app-sdk/
+# ie. for x86_64 - AMD-APP-SDKInstaller-v3.0.130.136-GA-linux64.tar.bz2
+# and paste it next to this PKGBUILD
+
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Previous Maintainer: Michael Krause <mk-arch@spline.de>
 # Contributor: kralyk
@@ -13,7 +17,7 @@ pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-do
 pkgver=3.0
 pkgrel=22
 arch=('i686' 'x86_64')
-url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/"
+url="https://developer.amd.com/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
@@ -39,7 +43,7 @@ _scriptname='AMD-APP-SDK-v3.0.130.136-GA-linux'
 #Sources
 source=(
 # 	"http://developer.amd.com/wordpress/media/files/AMD-APP-SDK-linux-v2.9-1.599.381-GA-${_tarbits}.tar.bz2"
-# 	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
+	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
 	'amd.icd'
 	'amd_i686.icd'
 	'amdapp-sdk.sh'
@@ -47,71 +51,19 @@ source=(
 
 #sha256sums
 sha256sums=(
+${_hash}
 '0b7465f250f667a240ea4a46ae07e9f193f7ede4975c611fd77b06cb98478169'
 '77cb18c5a588e02c73c2406e1057461b6c030b97534154aa3163cbfb9b7e97b7'
 'dffe3d16ae07fafe6571c37f97f73e694891a7ea7888fc7f0a5d0e42b997e50f'
 'c871a5044dd19e710b9ff058faa4e40f9b825b27d3928d535bc452116dba3b95')
 
-_agr_url='http://developer.amd.com/amd-license-agreement-appsdk/'
-_tarball="${_dirname}${_bits}.tar.bz2"
 _subdir="${_dirname}${_bits}"
 
 #Install path
 _ipath='opt/AMDAPP/SDK'
 
-_wget()
-{
-	wget -c -t 3 --waitretry=3 -O - $@
-}
-
-prepare() {
-
-    warning "Installing this package means that you have red, understood and ACCEPTED"
-    warning "the license agreement posted at http://developer.amd.com/amd-license-agreement-appsdk/"
-    warning ""
-    warning "will sleep 5 sec to make sure you red it :P"
-    sleep 5
-    warning "Download will take not much time and echo some random letters"
-
-    if [ ! -e ${_tarball} ]; then
-        fbase=$(echo -n $_tarball | base64)
-
-        echo -n '[nonce1] '
-        _wget -nv "$url" > 'nonce1'
-        nonce1=$(sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1')
-        post_id=$(sed -n -e "/post_id/s/.*value=\"\([[:alnum:]]*\)\".*/\1/p;" 'nonce1' | head -n 1)
-
-        echo -n '[nonce2] '
-        postdata1="amd_developer_central_downloads_page_nonce=${nonce1}&_wp_http_referer=%2Ftools-and-sdks%2Fopencl-zone%2Famd-accelerated-parallel-processing-app-sdk%2F&f=${fbase/=/%3D}&post_id=${post_id}"
-        nonce2=$(_wget -nv --post-data "${postdata1}" "${_agr_url}" | sed -n -e "/${fbase}/s/.*_nonce\" value=\"\([[:alnum:]]*\)\".*/\1/p;")
-
-        echo -n '[tarball] '
-        postdata2="amd_developer_central_nonce=${nonce2}&_wp_http_referer=%2Famd-license-agreement-appsdk%2F&f=${fbase/=/%3D}"
-        _wget --post-data "${postdata2}" "${_agr_url}" -O "${_tarball}"
-    fi
-    
-    msg "Validating ${_tarball} files with sha256sum ..."
-    echo "${_hash} ${_tarball}" | sha256sum -c || exit 1
-
-    msg "Extracting ${_tarball} ..."
-    bsdtar -jxf "${_tarball}"
-        
-  cd ${srcdir}
-#   tar xf ${_subdir}.tgz
-#   cd ${_subdir}
-#   patch -p0 < ../../01-implicit-linking.patch
-#   patch -p0 < ${srcdir}/02-readlink-include.patch
-#   . /etc/profile.d/aparapi.sh
-}
-
 
 build() {
-#----------- >8 --------------
-#   cd ${srcdir}/${_subdir}
-#   # FIXME - dependency has to move into Makefile
-#  make -j1
-#----------- >8 --------------
-#   bash AMD-APP-SDK-v2.9-1.599.381-GA-linux${_bits}.sh --noexec --target ${srcdir}/${_subdir}
   bash ${_scriptname}${_bits}.sh --noexec --target ${srcdir}/${_subdir}
 }
 
