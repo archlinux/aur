@@ -2,7 +2,7 @@
 
 pkgname=slsk-git
 _pkgname='SLSK'
-pkgver=v1.3.2.2
+pkgver=v1.3.2.3
 pkgrel=1
 pkgdesc="A backup utility and database for Linux Steam games"
 arch=('x86_64')
