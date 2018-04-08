@@ -1,7 +1,7 @@
 # Maintainer: Ankit R Gadiya <arch@argp.in>
 
 pkgname=vim-ranger-git
-pkgver=2.0.r10.g5e510f0
+pkgver=3.0.r1.g733b5c2
 pkgrel=1
 pkgdesc="Ranger integration for vim (Git Version)"
 license=('MIT')
