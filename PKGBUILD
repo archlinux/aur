@@ -21,7 +21,7 @@ source=("apps.grive-indicator.gschema.xml"
         "grive-app-ind-sleep.svg::https://upload.wikimedia.org/wikipedia/commons/9/9c/Googledrive_logo_weiss.svg"
         "grive-indicator.png::https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png")
 sha256sums=('3c2806ae7f03d1cb058550d9ed3ba444c2b055de2f81442e0f4fdbb295a14a03'
-            '0700f48d1632075cd2a822df5349952b60df503d43d8f8b94e900e971eee073d'
+            '82d5ec2c37d3e1f5656b71c964fbae87851a3bdf4185aee55648fa0f9b4d7320'
             'bc9d6355e81d9dec91e5679d320fddd62690db351815a5b76b30d585d386c2f3'
             'cab2794a6fecb8889e0a5cad07c44a93f6e71f8ac416c047d2e1b9fca5f3deac'
             'fcf0ee45bf9e740490d863120bb7b08ff55c9750bdd714421383cf5451df0aea'
