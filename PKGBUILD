@@ -6,7 +6,7 @@
 pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 pkgver=git
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://www.kernel.org/'
 replaces=('linux-jwrdegoede')
@@ -47,7 +47,7 @@ prepare() {
   cd ${_srcname}
   
   # patch hans config
-  sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-jwrdegoede"/' .config
+  sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-jwrdegoede-git"/' .config
   sed -i 's/CONFIG_LOGO=.*/CONFIG_LOGO=n/' .config
   sed -i 's/CONFIG_LOGO_LINUX_CLUT224=.*/# CONFIG_LOGO_LINUX_CLUT224 is not set/' .config
 
@@ -67,7 +67,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make ${MAKEFLAGS} bzImage modules
 }
 
 _package() {
@@ -81,12 +81,12 @@ _package() {
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
