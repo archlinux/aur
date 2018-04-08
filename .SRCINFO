@@ -1,0 +1,12 @@
+pkgbase = tradedash
+	pkgdesc = A software for trading on Binance and Bittrex
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://s3.eu-west-2.amazonaws.com/tradedash
+	arch = x86_64
+	license = unknown
+	noextract = tradedash-linux.AppImage
+	options = !strip
+
+pkgname = tradedash
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tradedash
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=tradedash
+Exec=/usr/bin/tradedash 
+
+
