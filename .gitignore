@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+arsdk_manifests/
+src/
+pkg/
+
