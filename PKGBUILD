@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=0.9.2.r3313.77610b1
+pkgver=18.07.70.r3567.bfdc6db6
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd kwave
-  _ver="$(cat 'VERSION')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e '_VERSION_MAJOR' -e '_VERSION_MINOR' -e '_VERSION_MICRO' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -46,13 +46,13 @@ prepare() {
 
 build() {
   cd build
-
   cmake ../kwave \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DWITH_MP3=ON
+
   make
 }
 
