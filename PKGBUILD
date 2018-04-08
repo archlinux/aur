@@ -28,6 +28,6 @@ build() {
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --skip-build
+  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
 
