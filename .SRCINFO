@@ -1,4 +1,4 @@
-pkgbase = libhandy-git
+pkgbase = libhandy
 	pkgdesc = A library full of GTK+ widgets for mobile phones
 	pkgver = r108.297eae2
 	pkgrel = 1

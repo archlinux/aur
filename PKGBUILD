@@ -1,6 +1,7 @@
 # Maintainer: brainblasted <brainblasted at disroot dot org>
 
 pkgname="libhandy-git"
+pkgbase="libhandy"
 _gitname="libhandy"
 depends=('gtk3' 'vala' 'gnome-desktop' 'gobject-introspection' 'gtk-doc')
 pkgdesc="A library full of GTK+ widgets for mobile phones"
