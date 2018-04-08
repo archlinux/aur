@@ -1,28 +1,28 @@
 pkgbase = opencascade
 	pkgdesc = Open CASCADE Technology, 3D modeling & numerical simulation
-	pkgver = 6.9.1
-	pkgrel = 8
+	pkgver = 7.2.0p1
+	pkgrel = 1
 	url = http://www.opencascade.org
-	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = cmake
+	makedepends = qt5-base
 	depends = tk
-	depends = mesa
-	depends = libxmu
-	depends = ftgl
-	depends = vtk6
-	source = https://sources.archlinux.org/other/community/opencascade/opencascade-6.9.1.tgz
-	source = env.sh
+	depends = vtk
+	depends = gl2ps
+	depends = ffmpeg
+	depends = freeimage
+	depends = intel-tbb
+	source = opencascade-7.2.0p1.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_2_0p1;sf=tgz
 	source = opencascade.sh
-	source = opencascade.conf
-	source = salome-occt-6.9.1.patch
+	source = fix-install-dir-references.patch
 	source = configuration-problem-glibc-2.26.patch
-	md5sums = 7f2e645b5010d190c9bb35dc457f9a7c
-	md5sums = a96f28ee7f4273ae1771ee033a2a3af3
-	md5sums = d9368b8d348ced3ec4462012977552d2
-	md5sums = 2924ecf57c95d25888f51071fdc72ad0
-	md5sums = 88db8e6b9afa132d1893bbb814250350
-	md5sums = 7087ef8f82913a73abf5e3bc81a186d4
+	source = vtk7.patch
+	sha256sums = 530f9981e6026e6cc04c462ab039b4977a568f943d6086dc502262d100a07a79
+	sha256sums = 2064536a85d46fee368a8f1a712b2c6c77ca79c5bffcc68cba79d70d36efa2f4
+	sha256sums = afb584aa453993ae8d9e2b983594558531ede735a5892754b812be30650c9fb5
+	sha256sums = 2850a1551085c43f88f134466e3acad950e05e8d46ad04057ea671db0c8a8138
+	sha256sums = bd230962173a80a971c8da9d3dc07238f249544bb67ee834be7d6466391d0315
 
 pkgname = opencascade
 
