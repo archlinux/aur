@@ -1,6 +1,5 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
-_name=python-taint
 pkgname=pyt
 pkgver=0.1
 pkgrel=1
@@ -10,8 +9,8 @@ url=https://github.com/python-security/pyt
 license=('GPL')
 depends=('python-gitpython' 'python-graphviz' 'python-requests')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('a6e92ca5fcc1f66d49b987df9516654c1e3932e2e57805342efb25e2d3bc2ad65a56ecbfb7ab40b32b67fc2ccfc9f4496347cbbda5732c7853ce7ee09e0a0099')
+source=("pyt-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('473ae64ea3447faa09156795f1011eecd50a905f9555273f65db0fe4626a6c122812d4a37f35dcbc36a247cf60b4fff57e73b1bc628ed3529f04b3d30a16b7e3')
 
 prepare() {
   cd pyt-$pkgver
