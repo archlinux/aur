@@ -2,7 +2,7 @@
 
 _pkgname='agensgraph'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r101.g355d7fc3
+pkgver=1.3.1.r497.f57a6559
 pkgrel=1
 pkgdesc="A multi-model graph database based on PostgreSQL."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
 options=(!strip) # to facilitate debugging of testing builds
 license=('Apache')
 conflicts=('postgresql' 'postgresql-libs' 'postgresql-testing' 'postgresql-client' 'postgresql-git')
-makedepends=('tcl' 'jdk' )
-provides=("postgresql-libs=9.6.2" "postgresql=9.6.2" 'postgresql-client')
+makedepends=('tcl' 'java-environment-jdk>=7' )
+provides=("postgresql-libs=10.3" "postgresql=10.3" 'postgresql-client')
 optdepends=('python2: for PL/Python support'
              'perl: for PL/Perl support'
              'tcl: for PL/Tcl support')
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -e 's/^v//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+   printf "%s.r%s.%s\n" "$(git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 | sed -e 's/^v//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   set +u
 }
 

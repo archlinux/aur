@@ -1,6 +1,6 @@
 pkgbase = agensgraph-git
 	pkgdesc = A multi-model graph database based on PostgreSQL.
-	pkgver = 1.2.0.r101.g355d7fc3
+	pkgver = 1.3.1.r497.f57a6559
 	pkgrel = 1
 	url = http://bitnine.net/agensgraph/
 	install = postgresql.install
@@ -8,7 +8,7 @@ pkgbase = agensgraph-git
 	arch = x86_64
 	license = Apache
 	makedepends = tcl
-	makedepends = jdk
+	makedepends = java-environment-jdk>=7
 	depends = libxml2
 	depends = readline
 	depends = zlib
@@ -19,8 +19,8 @@ pkgbase = agensgraph-git
 	optdepends = python2: for PL/Python support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
-	provides = postgresql-libs=9.6.2
-	provides = postgresql=9.6.2
+	provides = postgresql-libs=10.3
+	provides = postgresql=10.3
 	provides = postgresql-client
 	conflicts = postgresql
 	conflicts = postgresql-libs
