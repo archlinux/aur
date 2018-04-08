@@ -1,0 +1,14 @@
+pkgbase = wafw00f
+	pkgdesc = Web Application Firewall Detection Tool
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/EnableSecurity/wafw00f
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python3
+	source = wafw00f::git+https://github.com/EnableSecurity/wafw00f.git
+	md5sums = SKIP
+
+pkgname = wafw00f
+
