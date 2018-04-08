@@ -1,7 +1,7 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=python-kinparse
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for KiCad schematic netlists."
 arch=(any)
 url="https://xesscorp.github.io/kinparse/docs/_build/singlehtml/index.html"
@@ -17,5 +17,5 @@ md5sums=(9c0cf647aeb4e919f3d24db4c859f0a4)
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
