@@ -1,14 +1,14 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 pkgname=radicale-dovecot-auth-git
-pkgver=r1.c7ab5ab
-pkgrel=1
+pkgver=r7.06b95ff
+pkgrel=2
 pkgdesc="Dovecot auth for radicale"
 arch=("any")
 url="https://github.com/Arvedui/radicale-dovecot-auth"
 license=('GPL')
 groups=()
 depends=('python' 'radicale')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
 source=("git+https://github.com/Arvedui/radicale-dovecot-auth.git")
 md5sums=("SKIP")
