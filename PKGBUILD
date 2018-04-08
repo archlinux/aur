@@ -2,12 +2,13 @@
 
 _gitname=gsl
 pkgname=microsoft-gsl-git
-pkgver=r401.3819df6
-pkgrel=2
+pkgver=r487.d846fe5
+pkgrel=1
 pkgdesc="Microsoft's Guidelines Support Library (GSL)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Microsoft/GSL'
 license=('MIT')
+provides=('microsoft-gsl')
 
 source=("$_gitname::git+https://github.com/Microsoft/GSL.git")
 md5sums=('SKIP')
