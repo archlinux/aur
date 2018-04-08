@@ -1,0 +1,26 @@
+# Bloody A9
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="1003", MODE="0666"
+
+# Bloody AL9
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="f633", MODE="0666"
+
+# Bloody R3
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="1a5a", MODE="0666"
+
+# Bloody R7
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="1485", MODE="0666"
+
+# Bloody R8_1
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="14ee", MODE="0666"
+
+# Bloody V5
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="172a", MODE="0666"
+
+# Bloody V7
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="f613", MODE="0666"
+
+# Bloody R70
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="f643", MODE="0666"
+
+# Bloody V8
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTRS{idProduct}=="11f5", MODE="0666"

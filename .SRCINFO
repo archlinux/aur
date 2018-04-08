@@ -1,0 +1,18 @@
+pkgbase = a4tech-bloody-driver-git
+	pkgdesc = Linux driver for a4tech bloody mouse series.
+	pkgver = r16.ae33367
+	pkgrel = 1
+	url = https://github.com/maxmati/a4tech-bloody-linux-driver
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	provides = a4tech-bloody-driver
+	conflicts = a4tech-bloody-driver
+	source = a4tech-bloody-driver-git::git+https://github.com/maxmati/a4tech-bloody-linux-driver
+	source = 60-bloody.rules
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = a4tech-bloody-driver-git
+
