@@ -25,7 +25,7 @@ optdeps=('python-pyroma: check setup.py'
 url="https://github.com/landscapeio/prospector"
 license=('GPL2')
 source=(https://github.com/landscapeio/prospector/archive/${pkgver}.tar.gz)
-md5sums=('45d00e6b6b70b69d3f02c64c74f9f40c')
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
