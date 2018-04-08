@@ -1,6 +1,6 @@
 pkgbase = pacui-git
-	pkgdesc = Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pacaur functionality in a simple UI
-	pkgver = r743.c9edccf
+	pkgdesc = Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pikaur/Pacaur functionality in a simple UI
+	pkgver = r835.70f6032
 	pkgrel = 1
 	url = https://github.com/excalibur1234/pacui
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = pacui-git
 	optdepends = yaourt: Needed for AUR support.
 	optdepends = yay: Needed for AUR support.
 	optdepends = trizen: Needed for AUR support.
+	optdepends = pikaur: Needed for AUR support.
 	optdepends = pacman-mirrors: Needed for Manjaro mirror support
 	optdepends = reflector: Needed for Arch Linux mirror support
 	optdepends = downgrade: Needed for hidden "downgrade" option.

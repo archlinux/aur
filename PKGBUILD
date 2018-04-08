@@ -2,9 +2,9 @@
 
 _pkgname=pacui
 pkgname=$_pkgname-git
-pkgver=r743.c9edccf
+pkgver=r835.70f6032
 pkgrel=1
-pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pacaur functionality in a simple UI"
+pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pikaur/Pacaur functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$_pkgname"
 license=('GPL3')
@@ -16,6 +16,7 @@ optdepends=('pacaur: Needed for AUR support.'
         'yaourt: Needed for AUR support.'
         'yay: Needed for AUR support.'
         'trizen: Needed for AUR support.'
+        'pikaur: Needed for AUR support.'
         'pacman-mirrors: Needed for Manjaro mirror support'
         'reflector: Needed for Arch Linux mirror support'
         'downgrade: Needed for hidden "downgrade" option.')
