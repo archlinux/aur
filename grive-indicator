@@ -242,7 +242,7 @@ def openPreferences(widget):
     # Auto Sync
     key = 'autosync'
     # Create new button
-    autosync_check_button = Gtk.CheckButton('Automatically synchronize Google Drive (detected only local changes)')
+    autosync_check_button = Gtk.CheckButton('Automatically synchronize Google Drive (recognizes only local changes)')
     # Set button active based on settings stored in gsettings
     autosync_check_button.set_active(settings.get_boolean(key))
     # Link gsettings action on toggle

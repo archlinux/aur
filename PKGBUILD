@@ -21,7 +21,7 @@ source=("apps.grive-indicator.gschema.xml"
         "grive-app-ind-error.png::http://icons.iconarchive.com/icons/papirus-team/papirus-status/48/dialog-error-icon.png"
         "grive-indicator.png::http://icons.iconarchive.com/icons/marcus-roberto/google-play/128/Google-Drive-icon.png")
 sha256sums=('3c2806ae7f03d1cb058550d9ed3ba444c2b055de2f81442e0f4fdbb295a14a03'
-            '1dd615575531614eb8fb678f301b403767184924f0ec0065daae631de1e2e204'
+            '6164bf63d0299f6491e74be2ba7be503514d2ce82edeaaafafe5becd8a58973b'
             'bc9d6355e81d9dec91e5679d320fddd62690db351815a5b76b30d585d386c2f3'
             'cab2794a6fecb8889e0a5cad07c44a93f6e71f8ac416c047d2e1b9fca5f3deac'
             'fcf0ee45bf9e740490d863120bb7b08ff55c9750bdd714421383cf5451df0aea'
