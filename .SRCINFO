@@ -1,0 +1,16 @@
+pkgbase = cli-typer-git
+	pkgdesc = Practice touch typing in the commandline and measure your skills (development version)
+	pkgver = r59.0291743
+	pkgrel = 1
+	url = https://github.com/balzss/cli-typer
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = npm
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/balzss/cli-typer
+	md5sums = SKIP
+
+pkgname = cli-typer-git
+
