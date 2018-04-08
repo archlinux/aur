@@ -1,6 +1,6 @@
 # Maintainer: Seth Hendrick <seth@shendrick.net>
 pkgname=chaskis
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 epoch=
 pkgdesc="A generic framework written in C# for making IRC Bots."
@@ -21,7 +21,7 @@ install=
 changelog=()
 source=("https://github.com/xforever1313/Chaskis/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('38f20d538d9debbfc8c1f01d0f242813db177c5b11630ed7e5dd22c48090e314')
+sha256sums=('c72f0ab6770594adfe79f2c0d5f40965a4c06a4fc99e39c7c6231626ef2b7889')
 validpgpkeys=()
 
 prepare() {
