@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -x "$(which gnome-terminal)" ]; then EXEC_TERMINAL="gnome-terminal -- bash -c"
+elif [ -x "$(which mate-terminal)" ]; then EXEC_TERMINAL="mate-terminal -- bash -c"
+elif [ -x "$(which xfce4-terminal)" ]; then EXEC_TERMINAL="xfce4-terminal -x bash -c"
+elif [ -x "$(which lxterminal)" ]; then EXEC_TERMINAL="lxterminal -e bash -c"
+elif [ -x "$(which konsole)" ]; then EXEC_TERMINAL="konsole -e bash -c"
+else echo "Please Setup manually grive in the folder $HOME/\"Google Drive\""; exit 1; fi
+$EXEC_TERMINAL "mkdir -p ~/Google\ Drive; cd ~/Google\ Drive; grive -a; sleep 10"
+exit 0
