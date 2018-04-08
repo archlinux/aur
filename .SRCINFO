@@ -1,5 +1,5 @@
 pkgbase = sat-xmpp-hg
-	pkgver = 0.7.0.r2534.7da86e1633a5
+	pkgver = 0.7.0.r2577.1209a5d83082
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
@@ -36,19 +36,10 @@ pkgname = sat-xmpp-hg
 	depends = sat-tmp
 	depends = python2-dateutil
 	depends = python2-regex
-
-pkgname = sat-jp-hg
-	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (CLI frontend)
-	depends = sat-xmpp-hg
 	depends = python2-gobject
 	depends = python2-progressbar
 	depends = python2-pyinotify
 	depends = python2-babel
-
-pkgname = sat-primitivus-hg
-	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (console frontend)
-	depends = sat-xmpp-hg
-	depends = python2-gobject
 	depends = python2-urwid>=1.2.0
 	depends = python2-urwid-satext>=0.6.1
 	depends = python2-xlib
