@@ -1,34 +1,33 @@
 # Maintainer: Andrew Vos <andrew at andrewvos dot com>
 pkgname=vbar-git
-pkgver=r14.27777f3
+pkgver=08042018
 pkgrel=1
 pkgdesc="A bar"
 arch=('any')
 url="https://github.com/AndrewVos/vbar"
 license=()
-depends=()
 depends=('gtk3')
 makedepends=('git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+https://github.com/AndrewVos/vbar.git)
-md5sums=('SKIP')
+_go_url=github.com/AndrewVos/vbar
+# md5sums=('SKIP' 'SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+check() {
+  echo "done"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  make
+  cd "$srcdir"
+  GOPATH="$srcdir"
+  go get ${_go_url}
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm755 vbar "$pkgdir/usr/bin/vbar"
+  cd "$srcdir"
+
+  install -Dm755 bin/vbar "$pkgdir/usr/bin/vbar"
 
   mkdir -p "$pkgdir/usr/share/doc/vbar/examples"
-  install -Dm644 examples/vbarrc "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
+  install -Dm644 "$srcdir/src/github.com/AndrewVos/vbar/examples/vbarrc" "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
 }
-
