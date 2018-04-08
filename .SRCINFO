@@ -1,15 +1,19 @@
 pkgbase = python-kinparse
 	pkgdesc = Parser for KiCad schematic netlists.
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xesscorp.github.io/kinparse/docs/_build/singlehtml/index.html
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-future
+	depends = python-pyparsing
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/k/kinparse/kinparse-0.0.3.tar.gz
+	source = exclude-tests.patch
 	md5sums = 9c0cf647aeb4e919f3d24db4c859f0a4
+	md5sums = 7d67f70e40ebd9945cce79be288c5f5c
 
 pkgname = python-kinparse
 

@@ -1,0 +1,12 @@
+diff -ura kinparse-0.0.3.orig/setup.py kinparse-0.0.3.new/setup.py
+--- kinparse-0.0.3.orig/setup.py	2018-02-14 09:47:50.000000000 -0600
++++ kinparse-0.0.3.new/setup.py	2018-04-08 06:15:00.131492961 -0500
+@@ -46,7 +46,7 @@
+     author_email= email,
+     url='https://github.com/xesscorp/kinparse',
+ #    packages=['kinparse',],
+-    packages=setuptools.find_packages(),
++    packages=setuptools.find_packages(exclude=['tests']),
+     entry_points={'console_scripts':['kinparse = kinparse.__main__:main']},
+     package_dir={'kinparse':
+                  'kinparse'},
