@@ -6,8 +6,8 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=v2.3.3.r15.gb095916
-pkgrel=1
+pkgver=2.3.3.r15.gb095916
+pkgrel=2
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
 url="https://nextcloud.com/"
@@ -32,10 +32,7 @@ sha256sums=(
 pkgver() {
   if [[ -z "${_version}" ]]; then
     cd ${srcdir}/${_name}
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
     echo ${_version}
   fi
