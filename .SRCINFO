@@ -1,13 +1,12 @@
 pkgbase = python-onkyo-eiscp-git
 	pkgdesc = Control Onkyo receivers over ethernet.
 	pkgver = 1.2.4.r4.g1ebfb08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/miracle2k/onkyo-eiscp
 	arch = any
 	license = custom:MIT
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = git://github.com/miracle2k/onkyo-eiscp.git
 	md5sums = SKIP
 
@@ -15,9 +14,4 @@ pkgname = python-onkyo-eiscp-git
 	depends = python
 	depends = python-docopt
 	depends = python-netifaces
-
-pkgname = python2-onkyo-eiscp-git
-	depends = python2
-	depends = python2-docopt
-	depends = python2-netifaces
 
