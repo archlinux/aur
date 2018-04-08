@@ -9,8 +9,8 @@
 # Contributor: evr <evanroman at gmail>
 
 pkgname=agedu
-pkgver=20171202
-_pkghash=8a8299e
+pkgver=20180329
+_pkghash=af641e6
 pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
