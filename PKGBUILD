@@ -9,7 +9,7 @@ url="https://code.puri.sm/Librem5/libhandy"
 license=('LGPL2.1')
 makedepends=('git' 'pkg-config' 'meson')
 pkgver=r108.297eae2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 source=("git+https://code.puri.sm/Librem5/libhandy.git")
 sha256sums=('SKIP')
@@ -21,8 +21,9 @@ pkgver() {
 
 build() {
     cd ${_gitname}
-    meson . _build --prefix=/usr
+    meson . _build --prefix=/usr -Dexamples=false -Dgtk_doc=true
     ninja -C _build
+    ninja -C _build libhandy-doc
 }
 
 package() {
