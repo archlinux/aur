@@ -2,7 +2,7 @@
 pkgname="grive-indicator"
 pkgver=1.16
 pkgrel=4
-pkgdesc="Ported and improved Grive Setup to Python3 by John Smith."
+pkgdesc="Ported and improved Grive Tools (Indicator) to Python3 by John Smith."
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
 license=('GPL3')

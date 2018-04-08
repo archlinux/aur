@@ -1,5 +1,5 @@
 pkgbase = grive-indicator
-	pkgdesc = Ported and improved Grive Setup to Python3 by John Smith.
+	pkgdesc = Ported and improved Grive Tools (Indicator) to Python3 by John Smith.
 	pkgver = 1.16
 	pkgrel = 4
 	url = http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools
