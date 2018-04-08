@@ -120,10 +120,6 @@ def deleteFile(source):
       textMessage = "From "+source
       debugPrint("File Delete Error %s" % textMessage )
 
-def setLastSync():
-    global menu_last_sync
-    menu_last_sync.set_label('Last Sync: '+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
 def autoSync(optionName):
     global wm
     global watcherGoogleDrive
@@ -143,6 +139,7 @@ def syncNow(widget):
       os.chdir(googleDriveFolder)
     except:
       sendmessage('Google Drive', 'Sync Error - Google Drive Folder Missing. Run Grive Setup.')
+      ind.set_icon(icon_path_failed)
       return False
     # Run Grive if no errors
     try:
@@ -153,7 +150,7 @@ def syncNow(widget):
       if proc.returncode == 0:
         sendmessage('Google Drive', 'Sync Complete')
         ind.set_icon(icon_path)
-        setLastSync()
+        menu_last_sync.set_label('Last Sync: ' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
       else:
         sendmessage('Google Drive', 'Last Sync failed')
         ind.set_icon(icon_path_failed)
@@ -225,7 +222,7 @@ def openPreferences(widget):
     global autostart_check_button
     # Create Prefences window
     preferencesWindow = Gtk.Window(type=Gtk.WindowType.TOPLEVEL)
-    preferencesWindow.set_title('Google Drive Preferences - Grive Tools')
+    preferencesWindow.set_title('Google Drive Preferences - Grive Indicator')
     preferencesWindow.set_icon(GdkPixbuf.Pixbuf.new_from_file(icon_path_grive))
     preferencesWindow.set_border_width(24)
     preferencesWindow.connect('delete-event', closeWindow, preferencesWindow)
@@ -245,7 +242,7 @@ def openPreferences(widget):
     # Auto Sync
     key = 'autosync'
     # Create new button
-    autosync_check_button = Gtk.CheckButton('Automatically synchronize Google Drive')
+    autosync_check_button = Gtk.CheckButton('Automatically synchronize Google Drive (detected only local changes)')
     # Set button active based on settings stored in gsettings
     autosync_check_button.set_active(settings.get_boolean(key))
     # Link gsettings action on toggle
@@ -310,7 +307,6 @@ def renderMenu():
     menu.append(menu_sync_now)
 
     menu_last_sync = Gtk.MenuItem('Last Sync: ------')
-    #menu_last_sync.connect("activate", readLastSync)
     menu_last_sync.set_sensitive(False)
     menu.append(menu_last_sync)
 
