@@ -2,7 +2,7 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=gpxsee
-pkgver=5.5
+pkgver=5.6
 pkgrel=1
 pkgdesc='GPX viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ makedepends=('qt5-tools')
 optdepends=('qt5-imageformats: Support for TIFF')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
-source=("https://github.com/tumic0/GPXSee/archive/${pkgver}.tar.gz")
-sha256sums=('f0a7491d57185516e9a36563050f28e9cf2b1991758533b684867527ffacf46e')
+source=("https://github.com/tumic0/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('f49207d94ff1764407ba1571fee0b542402f0965099a110481db0e3c406ed5e7')
 
 build() {
   cd GPXSee-${pkgver}
