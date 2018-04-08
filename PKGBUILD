@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'daab6220ef01c729574384a3095f0659bf25617d6c195248a0cd28ede9b6c054'
             '7e086d70e0dcaa6ce45693b4e826ce92d770192b3aff5642319b1ef279d88dc4'
-            '40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780')
+            '5e551630ee443a6985551da2ab72789f669deba8bf4443465d5c76a064dc675d')
 pkgver() {
   set -u
   cd "${srcdir}/${_pkgname}"
