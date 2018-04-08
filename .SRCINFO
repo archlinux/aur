@@ -1,0 +1,14 @@
+pkgbase = decodify
+	pkgdesc = It can detect and decode encoded strings, recursively.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/UltimateHackers/Decodify
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	source = decodify::git+https://github.com/UltimateHackers/Decodify.git
+	md5sums = SKIP
+
+pkgname = decodify
+
