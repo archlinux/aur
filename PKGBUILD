@@ -6,12 +6,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=zeit-now-bin
 pkgver=11.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Realtime Global Deployments by Zeit, pre-built binary"
 arch=("x86_64")
 url="https://zeit.co/now"
-license=("custom")
+# license is according to https://www.npmjs.com/package/now
+license=("Apache")
 groups=()
 depends=("glibc")
 makedepends=("gzip")
@@ -21,7 +22,7 @@ provides=("zeit-now")
 conflicts=("nodejs-now")
 replaces=()
 backup=()
-options=()
+options=("!strip")
 install=
 changelog=
 source=("https://github.com/zeit/now-cli/releases/download/${pkgver}/now-linux.gz")
