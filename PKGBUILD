@@ -83,9 +83,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         "90-linux.hook"
         "60-linux.hook"
-        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
