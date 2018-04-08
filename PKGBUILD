@@ -2,7 +2,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-themes-git
 pkgver=r62.5a35074
-pkgrel=1
+pkgrel=2
 pkgdesc="BunsenLabs GTK/Openbox/Lightdm Themes"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-themes"
