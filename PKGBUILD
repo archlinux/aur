@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 pkgrel=1
-pkgver=4.3.0+24737.5be92b26ef8f
+pkgver=5.0.0r25156.c578827b2eaf
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ pkgver() {
   fi > /dev/null 2>&1
   cd "$srcdir"/$_hgrepo
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
-  printf "%s%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|tr -d " ")" "$(hg log|head -1|cut -d: -f3)"
+  printf "%sr%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|tr -d " ")" "$(hg log|head -1|cut -d: -f3)"
 }
 
 build() {
