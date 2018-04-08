@@ -11,20 +11,20 @@
 # Contributor: gentoo (part of 4.3 kernel patches)
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (4.11, 4.12, 4.13 and 4.14 kernel patch)
+# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14 and 4.15.5 kernel patch)
 
 
 _kernver=`uname -r`
 
 pkgname=catalyst
 pkgver=15.9
-pkgrel=18
+pkgrel=19
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
-depends=('linux>=3.0' 'linux<4.15' 'catalyst-utils')
+depends=('linux>=3.0' 'linux<4.16' 'catalyst-utils')
 makedepends=('gcc-libs' 'gcc>4.0.0' 'make' 'linux-headers')
 conflicts=('catalyst-test')
 install=catalyst.install
@@ -54,7 +54,8 @@ source=(
     4.12-arch-remove_clts.patch
     4.12-npfeiler-movsl_mask.patch
     4.13-npfeiler-wait_queue_t.patch
-    4.14-npfeiler-task_struct-mm_segment_t.patch)
+    4.14-npfeiler-task_struct-mm_segment_t.patch
+    4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'fd98b7e486d7fd4cad8de7b95b5b031e'
@@ -77,7 +78,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '782769206ed12ded10c347be3e476729'
 	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
 	 '0a725f40bc980d578cbed3e57a05b765'
-	 '5ba3bf9f58aa63c1849b056cf23022c9')
+	 '5ba3bf9f58aa63c1849b056cf23022c9'
+	 '10af58c21e4e972115dda6dbd8279594')
 
 
 build() {
@@ -120,6 +122,7 @@ build() {
       patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
       patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
       patch -Np1 -i ../4.14-npfeiler-task_struct-mm_segment_t.patch
+      patch -Np1 -i ../4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch
 
       cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
       cp ${srcdir}/archive_files/arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a .
