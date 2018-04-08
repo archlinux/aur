@@ -7,20 +7,10 @@ pkgdesc="elf-strings will programmatically read an ELF binary's string sections 
 arch=("x86_64")
 url="https://github.com/LloydLabs/elf-strings"
 license=("GPL")
-groups=()
-depends=()
 makedepends=("go")
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$pkgname"::"git+${url}.git")
 noextract=()
-md5sums=("SKIP") #autofill using updpkgsums
+md5sums=("SKIP")
 
 build() {
   cd "$pkgname"
