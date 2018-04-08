@@ -1,9 +1,8 @@
 pkgbase = desura
 	pkgdesc = A gaming client application that allows users single-click access to download and install games from http://www.desura.com/
 	pkgver = 120.25
-	pkgrel = 6
+	pkgrel = 7
 	url = http://desura.com/
-	install = desura.install
 	arch = i686
 	arch = x86_64
 	license = GPL3

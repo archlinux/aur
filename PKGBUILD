@@ -19,12 +19,11 @@
 
 pkgname=desura
 pkgver=120.25
-pkgrel=6
+pkgrel=7
 pkgdesc="A gaming client application that allows users single-click access to download and install games from http://www.${pkgname}.com/"
+arch=("i686" "x86_64")
 url="http://${pkgname}.com/"
 license=("GPL3")
-arch=("i686" "x86_64")
-install="${pkgname}.install"
 depends=("alsa-lib"
          "gtk2"
          "libcurl-compat"
@@ -48,10 +47,11 @@ optdepends_i686=("catalyst-utils: If you have ATI graphics"
 optdepends_x86_64=("lib32-catalyst-utils: If you have ATI graphics"
                    "lib32-curl: if you have install TRAUMA"
                    "lib32-nvidia-utils: If you have nvidia graphics")
-#Use this source instead if it becomes available again: "http://www.${pkgname}.com/${pkgname}-${CARCH}.tar.gz"
+#Use this source instead if it becomes available again: "http://www.${pkgname}.com/${pkgname}-${arch[0].tar.gz"
 source_i686=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/./_}.tar.gz"
              "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${arch[0]}"
              "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${arch[0]}")
+#Use this source instead if it becomes available again: "http://www.${pkgname}.com/${pkgname}-${arch[1].tar.gz"
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::http://yantis-scripts.s3.amazonaws.com/${pkgname}_${pkgver/./_}.tar.gz"
                "http://yantis-scripts.s3.amazonaws.com/libboost_filesystem.so.1.54.0-${arch[1]}"
                "http://yantis-scripts.s3.amazonaws.com/libboost_system.so.1.54.0-${arch[1]}")
@@ -83,7 +83,6 @@ package() {
   install -D -m644 "${srcdir}/libboost_system.so.1.54.0-${CARCH}" "${pkgdir}/usr/lib/libboost_system.so.1.54.0"
 
   msg2 "Installing bootstrapper icon into /usr/share/icons/hicolor/256x256/apps"
-  
   install -m 644 -D "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
   msg2 "Installing bootstrapper desktop file into /usr/share/applications"
