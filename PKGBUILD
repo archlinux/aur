@@ -6,7 +6,8 @@ pkgdesc="Official OVH.com API wrapper"
 arch=("x86_64")
 url="https://api.ovh.com"
 license=('custom')
-makedepends=("python" "python-setuptools" "python-sphinx")
+depends=("python")
+makedepends=("python-setuptools" "python-sphinx")
 source=("https://github.com/ovh/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('fe62e7a75d563d9e8e784a8b648bc3fc0ea33bd6b31fddf16687daa277b8dc1391504e3fa7c1a35026a23c3243654e18579269c3904ccb360f56a1921585fc1b')
 
