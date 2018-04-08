@@ -1,7 +1,7 @@
 # Maintainer: john smith <hidden at mail dot com>
 pkgname="grive-indicator"
 pkgver=1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Ported and improved Grive Setup to Python3 by John Smith."
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
@@ -21,7 +21,7 @@ source=("apps.grive-indicator.gschema.xml"
         "grive-app-ind-error.png::http://icons.iconarchive.com/icons/papirus-team/papirus-status/48/dialog-error-icon.png"
         "grive-indicator.png::http://icons.iconarchive.com/icons/marcus-roberto/google-play/128/Google-Drive-icon.png")
 sha256sums=('3c2806ae7f03d1cb058550d9ed3ba444c2b055de2f81442e0f4fdbb295a14a03'
-            '854ee883251cbb0582144a0287ab0228e2ea64ca9db4c40e2024107d67e9f31f'
+            '1b9536477de8cf01ce0bd49274cbb34903f1202a3fe90c91e46108252833fc2a'
             'bc9d6355e81d9dec91e5679d320fddd62690db351815a5b76b30d585d386c2f3'
             'cab2794a6fecb8889e0a5cad07c44a93f6e71f8ac416c047d2e1b9fca5f3deac'
             'fcf0ee45bf9e740490d863120bb7b08ff55c9750bdd714421383cf5451df0aea'

@@ -36,6 +36,7 @@ import sys
 import subprocess
 import shutil
 import time
+import datetime
 import webbrowser
 import pyinotify
 import fcntl
@@ -119,6 +120,10 @@ def deleteFile(source):
       textMessage = "From "+source
       debugPrint("File Delete Error %s" % textMessage )
 
+def setLastSync():
+    global menu_last_sync
+    menu_last_sync.set_label('Last Sync: '+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 def autoSync(optionName):
     global wm
     global watcherGoogleDrive
@@ -148,6 +153,7 @@ def syncNow(widget):
       if proc.returncode == 0:
         sendmessage('Google Drive', 'Sync Complete')
         ind.set_icon(icon_path)
+        setLastSync()
       else:
         sendmessage('Google Drive', 'Last Sync failed')
         ind.set_icon(icon_path_failed)
@@ -293,6 +299,7 @@ def notificationSettingUpdate():
 def renderMenu():
     global menu
     global menu_sync_now
+    global menu_last_sync
     global menu_auto_sync
     global settings
 
@@ -301,6 +308,11 @@ def renderMenu():
     menu_sync_now.set_use_underline(True)
     menu_sync_now.connect("activate", syncNow)
     menu.append(menu_sync_now)
+
+    menu_last_sync = Gtk.MenuItem('Last Sync: ------')
+    #menu_last_sync.connect("activate", readLastSync)
+    menu_last_sync.set_sensitive(False)
+    menu.append(menu_last_sync)
 
     menu.append(Gtk.SeparatorMenuItem.new())
 
