@@ -4,9 +4,9 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
-pkgname=tuxguitar
+pkgname=tuxguitar-gtk3
 pkgver=1.5
-pkgrel=2
+pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
