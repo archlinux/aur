@@ -6,7 +6,7 @@
 pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 pkgver=git
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url='https://www.kernel.org/'
 replaces=('linux-jwrdegoede')
@@ -46,9 +46,11 @@ pkgver() {
 prepare() {
   cd ${_srcname}
   
-  # patch hans config
+  # change localversion
   sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-jwrdegoede-git"/' .config
-  sed -i 's/CONFIG_LOGO=.*/CONFIG_LOGO=n/' .config
+  
+  # disable tux logo
+  sed -i 's/CONFIG_LOGO=.*/# CONFIG_LOGO is not set/' .config
   sed -i 's/CONFIG_LOGO_LINUX_CLUT224=.*/# CONFIG_LOGO_LINUX_CLUT224 is not set/' .config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
