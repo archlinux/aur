@@ -6,7 +6,7 @@
 pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 pkgver=git
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url='https://www.kernel.org/'
 replaces=('linux-jwrdegoede')
@@ -14,7 +14,6 @@ license=('GPL2')
 makedepends=('git' 'xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  'git+https://github.com/jwrdegoede/linux-sunxi.git'
   '60-linux.hook'
   '90-linux.hook'
   'linux.preset'
@@ -26,7 +25,6 @@ validpgpkeys=(
 )
 
 sha256sums=(
-  'SKIP'
   '65ae261b314e266de809b212e4d5fd4d9e84b206771a3d59b7638b1b52744789'
   'cbee6b874133a4c335e6844a20eaec419da93dba70861864ff84b944a0d5524c'
   'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -44,6 +42,10 @@ pkgver() {
 }
 
 prepare() {
+  # remove previous checkout
+  rm -rf ${_srcname}
+  git clone --depth=1 https://github.com/jwrdegoede/linux-sunxi.git
+
   cd ${_srcname}
   
   # change localversion
