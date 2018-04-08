@@ -1,0 +1,35 @@
+pkgbase = python-nucleus
+	pkgdesc = Python and C++ code for reading and writing genomics data.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/google/nucleus
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = nucleus-0.1.0::git+https://github.com/google/nucleus.git#commit=073c3c7af4ed0e3f401f8780417e9858f53b401f
+	sha256sums = SKIP
+
+pkgname = python-nucleus
+	depends = bazel
+	depends = python
+	depends = python-contextlib2
+	depends = python-intervaltree
+	depends = python-mock
+	depends = python-numpy
+	depends = python-scipy
+	depends = tensorflow
+
+pkgname = python2-nucleus
+	depends = bazel
+	depends = python2
+	depends = python2-contextlib2
+	depends = python2-intervaltree
+	depends = python2-mock
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = tensorflow
+
