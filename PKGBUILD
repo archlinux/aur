@@ -1,7 +1,7 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=python-skidl
 pkgver=0.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
 url="https://xesscorp.github.io/skidl/docs/_site/index.html"
