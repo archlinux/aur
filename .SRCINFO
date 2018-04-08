@@ -1,0 +1,14 @@
+pkgbase = patternutils
+	pkgdesc = Combine regular expressions with template engines in a powerful matter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://projects.metalgamer.eu/patternutils
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-click
+	source = https://download.metalgamer.eu/patternutils/patternutils-0.0.1.tar.gz
+	sha512sums = e1760de8fbac61face2f005f6e7f5cf923d218fe7e3824307402531ab7d9cf84f963ec61f398c975dd7fb241dc1e67a192bb7a2529a986f09eb681948397a394
+
+pkgname = patternutils
+
