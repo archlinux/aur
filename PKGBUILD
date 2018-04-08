@@ -7,8 +7,15 @@ pkgdesc="A SUdo frontend for KDE. KF5 Frameworks branch. (BZR version)"
 arch=('i686' 'x86_64')
 url='https://launchpad.net/kdesudo'
 license=('GPL')
-depends=('kdelibs4support' 'sudo')
-makedepends=('extra-cmake-modules' 'kdoctools' 'mercurial' 'python')
+depends=('kdelibs4support'
+         'sudo'
+         )
+makedepends=('extra-cmake-modules'
+             'kdesignerplugin'
+             'kdoctools'
+             'bzr'
+             'python'
+             )
 conflicts=('kdesudo')
 source=('kdesudo::bzr+lp:~kubuntu-kdesudo/kdesudo/frameworks')
 sha1sums=('SKIP')
@@ -27,7 +34,7 @@ build() {
   cmake ../kdesudo \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
