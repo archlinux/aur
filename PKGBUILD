@@ -6,11 +6,11 @@
 pkgbase=linux-jwrdegoede-git
 _srcname=linux-sunxi
 _repourl=https://github.com/jwrdegoede/${_srcname}.git
-pkgver=git
-pkgrel=8
+pkgver=0
+pkgrel=10
 arch=('x86_64')
 url='https://www.kernel.org/'
-replaces=('linux-jwrdegoede' 'gpd-pocket-linux-jwrdegoede')
+conflicts=('linux-jwrdegoede' 'gpd-pocket-linux-jwrdegoede')
 license=('GPL2')
 makedepends=('git' 'xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -37,9 +37,9 @@ pkgver() {
   cd ${_srcname}
   
   # produce version string
-  local ver=($(head -n5 Makefile | awk -F'=' '{print $2}' | sed 's/\n//g'))
+  local ver=($(head -n4 Makefile | awk '/=/ {print $3}'))
   local commit=$(git rev-parse --short HEAD)
-  printf "%s" "${ver[0]}.${ver[1]}.${ver[2]}${ver[3]/-/}.${commit}"
+  printf "%s" "${ver[1]}.${ver[2]}.${ver[3]}.${commit}"
 }
 
 prepare() {
@@ -51,7 +51,7 @@ prepare() {
   cd ${_srcname}
   
   # change localversion
-  sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-jwrdegoede-git"/' .config
+  sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-jwrdegoede"/' .config
   
   # disable tux logo
   sed -i 's/CONFIG_LOGO=.*/# CONFIG_LOGO is not set/' .config
