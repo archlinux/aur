@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname=qotd
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
 arch=('any')
