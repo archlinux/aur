@@ -1,7 +1,7 @@
 # Maintainer: ebiadsu <ebiadsu@posteo.de>
 pkgname=python-ovh
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Official OVH.com API wrapper"
 arch=("x86_64")
 url="https://api.ovh.com"

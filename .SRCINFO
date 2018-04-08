@@ -1,7 +1,7 @@
 pkgbase = python-ovh
 	pkgdesc = Official OVH.com API wrapper
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://api.ovh.com
 	arch = x86_64
 	license = custom
