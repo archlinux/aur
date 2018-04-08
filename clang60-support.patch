@@ -1,0 +1,15 @@
+--- LinuxToolChain.cs	2018-04-08 08:35:31.859546383 -0500
++++ LinuxToolChain_new.cs	2018-04-08 08:49:48.646351026 -0500
+@@ -95,10 +95,10 @@
+ 				throw new BuildException("clang 3.4.x is known to miscompile the engine - refusing to register the Linux toolchain.");
+ 			}
+ 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
+-			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 50 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 35)
++			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 60 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 35)
+ 			{
+ 				throw new BuildException(
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 5.0, 4.0, 3.9, 3.8, 3.7, 3.6 and 3.5. clang {0} may not build it - please use a different version.",
++					string.Format("This version of the Unreal Engine can only be compiled with clang 6.0, 5.0, 4.0, 3.9, 3.8, 3.7, 3.6 and 3.5. clang {0} may not build it - please use a different version.",
+ 						CompilerVersionString)
+ 					);
+ 			}

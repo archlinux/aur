@@ -5,16 +5,20 @@
 
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
+# Allows enlargement of /tmp to fit Unreal.
+# set enlargetmp to any value.
+enlargetmp=
+
 pkgname='unreal-engine'
 pkgver=4.19.0
 # shellcheck disable=SC2034
 {
-  pkgrel=1
+  pkgrel=2
   pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
   arch=('x86_64')
   url='https://www.unrealengine.com/'
   makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
-  depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
+  depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python' 'lld')
   license=('custom:UnrealEngine')
 
   source=(
@@ -24,6 +28,7 @@ pkgver=4.19.0
     'disable-pie.patch'
     'only-generate-makefile.patch'
     'html5-build.patch'
+    'clang60-support.patch'
   )
 
 sha256sums=('SKIP'
@@ -31,7 +36,8 @@ sha256sums=('SKIP'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
             'a8bb46ad630c077dd302cd8397f2c8d79d6bb13dbff1cbfbbdad447033ad3c6e'
             'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-            '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac')
+            '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac'
+            '5583481dc7e08ebce1d0865b36bd50124b8be0d2347fec20aad3c37a346b3eb4')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(!strip)
@@ -40,9 +46,14 @@ sha256sums=('SKIP'
 prepare() {
   export TERM=xterm
   # shellcheck disable=SC2154
+  # remount /tmp so unreal fits fully in ram if there is enough memory
+  [[ -z "$enlargetmp" ]] || { (( $(free -g | grep Mem | awk '{print $2}') > 64 )) && sudo mount -o remount, size=72G,noatime /tmp ; }
+
   ue4src="$srcdir/UnrealEngine/Engine/Source"
-  patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
-  patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" disable-pie.patch
+  linuxToolChain="$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs"
+  patch "$linuxToolChain" clang60-support.patch
+  patch "$linuxToolChain" ignore-return-value-error.patch
+  patch "$linuxToolChain" disable-pie.patch
 
   patch -p0 -i only-generate-makefile.patch
   # Source Code Accessors
