@@ -2,7 +2,7 @@
 
 pkgname=('sat-tmp-hg')
 _realname=sat_tmp
-pkgver=0.7.r46.725ca928fa2c
+pkgver=0.7.r52.2068cf3009da
 VERSION=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
