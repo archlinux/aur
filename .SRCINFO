@@ -18,7 +18,7 @@ pkgbase = python-gmusicapi-git
 	depends = python-requests>=1.1.0
 	depends = python-proboscis>=1.2.5.1
 	depends = python-dateutil>=1.3
-	depends = mutagen>=1.34
+	depends = python-mutagen>=1.34
 	depends = python-six>=1.9.0
 	depends = python-protobuf>=3.0.0
 	depends = python-decorator>=3.3.1
@@ -38,7 +38,7 @@ pkgname = python-gmusicapi-git
 	depends = python-requests>=1.1.0
 	depends = python-proboscis>=1.2.5.1
 	depends = python-dateutil>=1.3
-	depends = mutagen>=1.34
+	depends = python-mutagen>=1.34
 	depends = python-six>=1.9.0
 	depends = python-protobuf>=3.0.0
 	depends = python-decorator>=3.3.1
