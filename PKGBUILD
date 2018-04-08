@@ -2,13 +2,13 @@
 # Contributor: mncarbone <mncarbone@gmail.com>
 pkgname=pseint
 pkgver=20180202
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
 url="http://pseint.sourceforge.net"
 license=('GPL')
 groups=()
-depends=('libpng12')
+depends=('libpng12' 'glu')
 makedepends=()
 optdepends=()
 if [ "${CARCH}" = 'x86_64' ]; then
