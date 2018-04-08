@@ -1,0 +1,13 @@
+pkgbase = elf-strings
+	pkgdesc = elf-strings will programmatically read an ELF binary's string sections within a given binary. This is meant to be much like the strings UNIX utility, however is purpose built for ELF binaries.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/LloydLabs/elf-strings
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = elf-strings::git+https://github.com/LloydLabs/elf-strings.git
+	md5sums = SKIP
+
+pkgname = elf-strings
+
