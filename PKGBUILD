@@ -15,6 +15,7 @@ sha512sums=('ba9fdbf992049936ea288a90d8f8360821fc96f8d42df0298888b25543d2ac43e29
 
 build() {
   cd "${_perlmod}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
