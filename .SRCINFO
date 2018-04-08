@@ -1,0 +1,15 @@
+pkgbase = jfederc-git
+	pkgdesc = A compiler for the Feder programming language
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/codefionn/feder
+	arch = any
+	license = ZLIB
+	makedepends = java-environment
+	makedepends = git
+	depends = gcc
+	depends = java-environment
+	optdepends = clang: Another C compiler
+
+pkgname = jfederc-git
+
