@@ -1,7 +1,7 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 pkgname=pixiecore
-pkgver=2018.038
+pkgver=2018.084
 pkgrel=1
 epoch=
 pkgdesc="An all-in-one tool for easy netbooting"
