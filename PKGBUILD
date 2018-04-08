@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r336.1034d04
+pkgver=r348.2af71f3
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -26,7 +26,7 @@ build() {
     export PYTHON_BIN_PATH=/usr/bin/python
     export USE_DEFAULT_PYTHON_LIB_PATH=1
     mkdir -p tmp
-    bazel --output_base=./tmp build -c opt //python:task_maker
+    bazel --output_base=./tmp build --python_path=python3 -c opt //python:task_maker
 }
 
 package() {
