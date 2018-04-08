@@ -1,8 +1,8 @@
 # Maintainer: Marc Mettke <mettke@itmettke.de>
 pkgname=jetbrains-mps
 _pkgname=mps
-_pkgver=2017.3
-pkgver=${_pkgver}.5
+_pkgver=2018.1
+pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-environment' 'bash')
 optdepends=('python: support for scripts like restart.py')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=('efb8a6bd93111adc548209bba27d6498f75789f2ec9f5979101c4329696e9afc')
+sha256sums=('d8d0e8af99a97a441187dc2730cb460681f4ca690ec1c7afe11c18e09e7ff2a4')
 
 build() {
   cd "${srcdir}"

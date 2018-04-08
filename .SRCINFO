@@ -1,6 +1,6 @@
 pkgbase = jetbrains-mps
 	pkgdesc = JetBrains Meta Programming System
-	pkgver = 2017.3.5
+	pkgver = 2018.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/mps/index.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = jetbrains-mps
 	depends = java-environment
 	depends = bash
 	optdepends = python: support for scripts like restart.py
-	source = https://download.jetbrains.com/mps/2017.3/MPS-2017.3.5.tar.gz
-	sha256sums = efb8a6bd93111adc548209bba27d6498f75789f2ec9f5979101c4329696e9afc
+	source = https://download.jetbrains.com/mps/2018.1/MPS-2018.1.tar.gz
+	sha256sums = d8d0e8af99a97a441187dc2730cb460681f4ca690ec1c7afe11c18e09e7ff2a4
 
 pkgname = jetbrains-mps
 
