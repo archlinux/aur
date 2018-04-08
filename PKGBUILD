@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r348.2af71f3
+pkgver=r352.105f027
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
