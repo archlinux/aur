@@ -9,7 +9,7 @@
 pkgname=botan-with-compression
 _pkgname=botan
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Crypto library written in C++, built with compression support'
 arch=('x86_64')
 url='https://botan.randombit.net/'
@@ -22,11 +22,19 @@ source=("https://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
 sha256sums=('b8a31fe03e7f048a5bd3967ecd04b6a48966215e78792df06e333b0eede4fb1b'
             'SKIP')
 
+export CXXFLAGS=`echo $CXXFLAGS | sed "s/-O2/-O3/"`
+
 build() {
   cd "${_pkgname^}-$pkgver"
 
   ./configure.py --prefix=/usr --with-bzip --with-zlib
   make
+}
+
+check() {
+  cd "${_pkgname^}-$pkgver"
+
+  ./botan-test
 }
 
 package() {
