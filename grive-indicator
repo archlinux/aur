@@ -419,8 +419,8 @@ if __name__ == "__main__":
   key = 'autosync'
   icon_path_grive = os.path.join(installDir,'icons', 'grive-indicator.png')
   icon_path_active = os.path.join(installDir, 'icons', 'grive-app-ind-active.png')
-  icon_path_failed = os.path.join(installDir, 'icons', 'grive-app-ind-error.svg')
-  icon_path_standby = os.path.join(installDir, 'icons', 'grive-app-ind-sleep.svg')
+  icon_path_failed = os.path.join(installDir, 'icons', 'grive-app-ind-error.png')
+  icon_path_standby = os.path.join(installDir, 'icons', 'grive-app-ind-sleep.png')
   if settings.get_boolean(key) == True:
     icon_path = icon_path_active
   else:
