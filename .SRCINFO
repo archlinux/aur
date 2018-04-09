@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts-old-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 9.3.21
+	pkgver = 9.3.22
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = postgresql-lts-old-upgrade
 	depends = pam
 	provides = postgresql-old-upgrade=9.3
 	conflicts = postgresql-old-upgrade
-	source = http://ftp.postgresql.org/pub/source/v9.3.21/postgresql-9.3.21.tar.bz2
-	sha256sums = b9babc5148188a410e023d7178a5678e989ec2e276498de6cd0028bc331a40e0
+	source = http://ftp.postgresql.org/pub/source/v9.3.22/postgresql-9.3.22.tar.bz2
+	sha256sums = 1b18ed4aa59bab6283a0d8f3a00b9d896f4588bb2ba88ceef2816cb5c4cce91a
 
 pkgname = postgresql-lts-old-upgrade
 
