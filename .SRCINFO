@@ -1,5 +1,5 @@
 pkgbase = keepassxc-wordlist-german
-	pkgdesc = German diceware wordlist for keepassxc
+	pkgdesc = German diceware wordlist for keepassxc password generation
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://world.std.com/~reinhold/diceware.html

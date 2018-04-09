@@ -3,7 +3,7 @@
 pkgname=keepassxc-wordlist-german
 pkgver=1.0
 pkgrel=1
-pkgdesc="German diceware wordlist for keepassxc"
+pkgdesc="German diceware wordlist for keepassxc password generation"
 arch=('any')
 url="http://world.std.com/~reinhold/diceware.html"
 license=('GPL')
