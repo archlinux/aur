@@ -22,6 +22,5 @@ md5sums_armv7h=("222be8926c35353f81baba014d926c71")
 md5sums_aarch64=("ecc56e8df5af018eab40097d261e862d")
 
 package() {
-	#install -Dm 755 "$pkgdir"/usr/bin
 	install -Dm 755 $pkgname-$pkgver "$pkgdir"/usr/bin/drive
 }
