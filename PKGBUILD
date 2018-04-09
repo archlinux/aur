@@ -29,3 +29,6 @@ package() {
   install -D -m755 "$srcdir/xmr-stak/bin/xmr-stak" -t "$pkgdir/usr/bin/"
   install -D -m644 "$srcdir/xmr-stak/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
 }
+
+## Update .SRCINFO
+# makepkg --printsrcinfo | tee .SRCINFO
