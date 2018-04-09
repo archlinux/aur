@@ -3,7 +3,7 @@
 
 pkgname=hivex
 pkgver=1.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="System for extracting the contents of Windows Registry."
 arch=("i686" "x86_64")
 url="http://libguestfs.org"
@@ -20,6 +20,7 @@ md5sums=('7ba11dd842cf8dae9adeace6d3e58efc')
 build() {
     cd $pkgname-$pkgver
     unset PREFIX
+    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
     ./configure \
 	--bindir=/usr/bin \
 	--libdir=/usr/lib \
