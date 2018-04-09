@@ -1,14 +1,28 @@
+settings() {
+  echo '  -> Checking for morty installation...'
+  if [ -f "/usr/bin/morty" ]; then
+    sed -i "s/your_morty_proxy_key/$(cat /usr/lib/systemd/system/morty.service |
+        grep key | awk '{print $5}')/" /etc/searx/settings.yml &&
+      echo '  -> Morty found; added key to searx settings.'
+  else
+    echo '  -> Morty not found.'
+  fi
+
+  echo '  -> Settings are at /etc/searx/settings.yml'
+}
+
 post_install() {
+  echo '  -> Creating searx user...'
   getent passwd searx > /dev/null ||
     useradd -rb /usr/lib/python2.7/site-packages -s /sbin/nologin searx
 
-  echo "Settings are at /etc/searx/settings.yml"
+  settings
 }
 
 post_upgrade() {
-  post_install
+  settings
 }
 
 post_remove() {
-  echo "You may want to remove the searx user."
+  echo '  -> You may want to remove the searx user with `# userdel -rf searx`.'
 }
