@@ -3,7 +3,7 @@
 pkgname=drive-bin
 pkgver=0.3.9
 pkgrel=1
-pkgdesc=""
+pkgdesc="Google Drive client for the commandline (binary version)"
 arch=("x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/odeke-em/drive"
 license=('APACHE')

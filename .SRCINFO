@@ -1,4 +1,5 @@
 pkgbase = drive-bin
+	pkgdesc = Google Drive client for the commandline (binary version)
 	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/odeke-em/drive
