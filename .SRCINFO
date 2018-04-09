@@ -1,15 +1,14 @@
 pkgbase = kmflcomp
-	pkgdesc = KMFL (Keyboard Mapping for Linux) compiler library
-	pkgver = 0.9.8
-	pkgrel = 1.1
+	pkgdesc = Keyboard Mapping for Linux (KMFL) compiler
+	pkgver = 0.9.10
+	pkgrel = 1
 	url = http://kmfl.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://http.debian.net/debian/pool/main/k/kmflcomp/kmflcomp_0.9.8.orig.tar.gz
-	source = http://http.debian.net/debian/pool/main/k/kmflcomp/kmflcomp_0.9.8-1.1.diff.gz
-	md5sums = fba9ee9d332f15aa4c862bbd4ed79f08
-	md5sums = 506d930dbe162c662d65ab944fcccd7a
+	depends = libx11
+	source = https://sourceforge.net/projects/kmfl/files/kmfl/kmflcomp/kmflcomp-0.9.10.tar.gz
+	md5sums = 1190b897937b3bf25adb8a0f41969993
 
 pkgname = kmflcomp
 

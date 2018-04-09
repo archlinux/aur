@@ -1,21 +1,18 @@
-# Maintainer: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2016-2018: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
+
 pkgname=kmflcomp
-pkgver=0.9.8
-pkgrel=1.1
-pkgdesc="KMFL (Keyboard Mapping for Linux) compiler library"
+pkgver=0.9.10
+pkgrel=1
+pkgdesc="Keyboard Mapping for Linux (KMFL) compiler"
 arch=('i686' 'x86_64')
 url="http://kmfl.sourceforge.net/"
 license=('GPL')
-source=("http://http.debian.net/debian/pool/main/k/kmflcomp/kmflcomp_0.9.8.orig.tar.gz"
-        "http://http.debian.net/debian/pool/main/k/kmflcomp/kmflcomp_0.9.8-1.1.diff.gz")
+depends=('libx11')
+source=("https://sourceforge.net/projects/kmfl/files/kmfl/kmflcomp/kmflcomp-$pkgver.tar.gz")
 noextract=()
 options=()
-md5sums=('fba9ee9d332f15aa4c862bbd4ed79f08' '506d930dbe162c662d65ab944fcccd7a')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/${pkgname}_$pkgver-$pkgrel.diff"
-}
+md5sums=('1190b897937b3bf25adb8a0f41969993')
 
 build() {
 	LDFLAGS="-Wl,-O1,--sort-common,-z,relro"
@@ -28,3 +25,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
+
