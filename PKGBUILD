@@ -1,16 +1,16 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-clone-choose"
-pkgver="0.008"
+pkgver="0.009"
 pkgrel="1"
 pkgdesc="choose appropriate clone utility  "
 arch=("any")
 license=("PerlArtistic" "GPL")
 options=("!emptydirs")
-depends=("perl-module-runtime")
+makedepends=('perl-test-without-module')
 url="http://search.cpan.org/dist/Clone-Choose"
-source=("http://search.cpan.org/CPAN/authors/id/H/HE/HERMES/Clone-Choose-${pkgver}.tar.gz")
-sha512sums=('c3165f7698f9790fb1ee60c4fba543807d94e2184bf4d43e7db8b9a5fc6c0dae977231baae4faf9ecef3dd52133b129d10b0c6e9ff0672e5803270d2443ce319')
+source=("https://cpan.metacpan.org/authors/id/H/HE/HERMES/Clone-Choose-${pkgver}.tar.gz")
+sha512sums=('c599e37f950e93e9ed39092105ba2f61b93826f36c341997ff998428b753010190013dc1466d0f7481c57046527b1909ec1ba5b90e486e62ca03e64233941d0d')
 
 _prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
