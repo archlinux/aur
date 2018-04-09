@@ -2,8 +2,8 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=60.1
-ver=60.0b1
+pkgver=60.2
+ver=60.0b2
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=5
@@ -20,7 +20,7 @@ optdepends=('hunspell: Spell checking'
             'libcanberra: Sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
-source=(https://ftp.mozilla.org/pub/thunderbird/releases/$ver/source/thunderbird-60.0b1.$ver.tar.xz
+source=(https://ftp.mozilla.org/pub/thunderbird/releases/$ver/source/thunderbird-$ver.tar.xz
         https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/$pkgname.desktop
         https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/thunderbird-install-dir.patch
        https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/no-crmf.diff
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
 )
 
-sha512sums=('620408f69087d3d36f60865389f0d9796f6e5b558ba4de84e97f6c84675eb32f1bea1e2be93c86dd77bfb5333baf6d6aaf5b1ca9027132cc40df8c983a42d9d8'
+sha512sums=('191a771f57e0450df633bfd25bc0030d4e7e74bf175ace33373d1bf5dd4d8b512105ea3b0b89c326aa54b6c3b4166cd771951ac388de63e6ffaf73efab02cd91'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '33f5c73b18b078c49b97ebd526a8d07eb091deb223018068434cec0ff95e4ac64dbde70f1c2ccf46f833a17f898bb9a916357eebac05f39399f23a08f79149f7'
             '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
