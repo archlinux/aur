@@ -17,7 +17,7 @@ pkgbase = grive-indicator
 	conflicts = grive-tools
 	conflicts = grive-indicator-git
 	source = grive-indicator-1.16.tar.gz::https://github.com/john4smith/grive-indicator/archive/v1.16.tar.gz
-	sha256sums = 3645696865c2a2ae53d2062bb9f482cfebafd8e24a7b063f1df77b5a810f2926
+	sha256sums = SKIP
 
 pkgname = grive-indicator
 

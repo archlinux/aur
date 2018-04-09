@@ -11,7 +11,7 @@ depends=('grive' 'libappindicator-gtk3' 'python-pyinotify' 'python-gobject' 'dco
 optdepends=('gnome-shell-extension-appindicator-git: gnome indicator support'
             'gnome-shell-extension-topicons-plus: gnome indicator support')
 source=("grive-indicator-${pkgver}.tar.gz::https://github.com/john4smith/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3645696865c2a2ae53d2062bb9f482cfebafd8e24a7b063f1df77b5a810f2926')
+sha256sums=('SKIP')
 
 package() {
  cd "${srcdir}"/grive-indicator-${pkgver}/
