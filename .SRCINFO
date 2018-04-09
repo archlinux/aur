@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-fancyindex
 	pkgdesc = Fancy indexes module for the Nginx web server
 	pkgver = 0.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/aperezdc/ngx-fancyindex
 	arch = i686
 	arch = x86_64
