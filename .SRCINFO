@@ -1,6 +1,6 @@
 pkgbase = picolisp
 pkgdesc = Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines).
-pkgver = 18.4.1
+pkgver = 18.4.6
 pkgrel = 1
 url = http://www.picolisp.com
 install = picolisp.install
@@ -10,7 +10,7 @@ makedepends = git
 depends = bash
 depends = openssl
 optdepends = jre: for picolisp ersatz.jar
-source = git+https://github.com/taij33n/picolisp.git#tag=v18.4.1
+source = git+https://github.com/taij33n/picolisp.git#tag=v18.4.6
 source = mkAsm
 md5sums = SKIP
 md5sums = SKIP
