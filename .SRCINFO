@@ -1,0 +1,19 @@
+pkgbase = xmr-stak-opencl-amd
+	pkgdesc = Unified All-in-one Monero miner
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/fireice-uk/xmr-stak
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = hwloc
+	depends = libmicrohttpd
+	depends = opencl-amd
+	depends = openssl
+	source = git+https://github.com/fireice-uk/xmr-stak.git#tag=2.4.2
+	source = no-donate.patch
+	sha256sums = SKIP
+	sha256sums = 30ef1099d196a4ead4338c89ff8608258fe4e1a6f5eed99f3c96c41d9e77fdcd
+
+pkgname = xmr-stak-opencl-amd
+
