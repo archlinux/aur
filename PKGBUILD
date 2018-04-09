@@ -1,22 +1,18 @@
-# Maintainer: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2016-2018: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
+
 pkgname=libkmfl
-pkgver=0.9.8
+pkgver=0.9.12
 pkgrel=1
-pkgdesc="A Library for providing Keyman(C) services to Linux - runtime"
+pkgdesc="Keyboard Mapping for Linux (KMFL) runtime library"
 arch=('i686' 'x86_64')
 url="http://kmfl.sourceforge.net/"
 license=('GPL')
-source=("http://http.debian.net/debian/pool/main/libk/libkmfl/libkmfl_0.9.8.orig.tar.gz"
-        "http://http.debian.net/debian/pool/main/libk/libkmfl/libkmfl_0.9.8-1.diff.gz")
+source=("https://sourceforge.net/projects/kmfl/files/kmfl/libkmfl/libkmfl-$pkgver.tar.gz")
 depends=('kmflcomp')
 noextract=()
 options=()
-md5sums=('913fcd6567ade43ea8ec112cda3675dd' '963f4e4f5f97dc3e12586a08f892ca22')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/${pkgname}_$pkgver-$pkgrel.diff"
-}
+md5sums=('e70f845e1a29beab30e1328209d4eb34')
 
 build() {
 	cd "$pkgname-$pkgver"
