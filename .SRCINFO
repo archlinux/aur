@@ -1,7 +1,7 @@
 pkgbase = sielo-browser
 	pkgdesc = A simple, customizable and fast web browser
 	pkgver = 1.11.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://feldrise.com/Sielo
 	arch = x86_64
 	license = custom:MIT
@@ -13,7 +13,7 @@ pkgbase = sielo-browser
 	depends = qt5-declarative
 	replaces = sielo-navigateur
 	source = https://www.feldrise.com/Sielo/Linux/sielo-browser-1.11.00.tar.gz
-	md5sums = 67c67dce37c7f10c8334f11f1dbacc8a
+	md5sums = e8dc465d31ba867dc18ab61757df1287
 
 pkgname = sielo-browser
 
