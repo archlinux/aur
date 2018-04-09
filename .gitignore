@@ -1,4 +1,3 @@
-flutter-*.pkg.tar.xz
-flutter/
+flutter-*.tar.xz
 pkg/
 src/
