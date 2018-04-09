@@ -360,15 +360,7 @@ patch -Np1 -i ../k1.patch
 
 patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
-  # Fix build with glibc 2.26
 
-  #patch -Np1 -i ../gna.patch
-  patch -Np1 -i ../gnb.patch
-  patch -Np1 -i ../k3.patch
-
-  patch -Np1 -i ../k2.patch
-
-  patch -Np1 -i ../desu.patch
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
