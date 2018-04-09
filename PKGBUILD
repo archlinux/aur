@@ -47,7 +47,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -81,6 +81,7 @@ makedepends=(
 	lib32-glibc
 	libaio
 	libcap-ng
+	libepoxy
 	libiscsi
 	libnl
 	libpng
@@ -100,8 +101,10 @@ source=(
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
 	# XSA patches
-	'https://xenbits.xen.org/xsa/xsa253.patch'
-	xsa254-diff-release410-comet1.1.patch::'https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff_plain;hp=refs/tags/RELEASE-4.10.0;h=refs/heads/4.10.0-shim-comet'
+	xsa253-xsa254-diff-release410-comet1.1.patch::'https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff_plain;hp=refs/tags/RELEASE-4.10.0;h=refs/heads/4.10.0-shim-comet'
+	'https://xenbits.xen.org/xsa/xsa255-1.patch'
+	'https://xenbits.xen.org/xsa/xsa255-2.patch'
+	'https://xenbits.xen.org/xsa/xsa256.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -133,9 +136,11 @@ sha256sums=(
 	'SKIP'
 	'36deacb946c59ad1d6600f6e5b89d6a7a8961e65eb000900e184075920120f49'
 
-	# XSA patches (Last checked: XSA-253)
-	'bba1abb5e4368421de29385e37f8477bf3534d3ba3ff7e2aae9c9d3da53f1393'
-	'5276d63e3b2ffc5217981e7b683c28d75b81793af8d2ffc75566db39aaabbaef'
+	# XSA patches (Last checked: XSA-256)
+	'fa8cd07b85a8ff29cba8d891f12f9be4b173dd91a58404aabbf49c3f83152af9'
+	'05a5570ecf4354f7aad35bb77a4c2f5f556bcabf3555829a98c94dcfb6dd4696'
+	'df43a147f1e1a2b7d59588bc91cdaac05d4e45bcfc4e2c8cb5e8de840d44b43d'
+	'3e45cc3f2ea516e7470083592041e238c0dfe32324790b2fba0e47c9efe38865'
 
 	# PKGBUILD files
 	'7dd6f1d6c10d4e8793412175b964df2477633cd988810df71e2040bf79e4d56c'
@@ -189,7 +194,13 @@ prepare() {
 
 	# XSA Patches
 	msg2 'Applying XSA Patches...'
-	patch -Np1 -i "${srcdir}/xsa253.patch"
+	patch -Np1 -i "${srcdir}/xsa253-xsa254-diff-release410-comet1.1.patch"
+	patch -Np1 -i "${srcdir}/xsa255-1.patch"
+	patch -Np1 -i "${srcdir}/xsa255-2.patch"
+	patch -Np1 -i "${srcdir}/xsa256.patch"
+
+	# XSA 253 and XSA 254 fix to keep version number.
+	sed 's,1-pre,0,g' -i xen/Makefile
 
 	# qemu-xen-traditional
 	pushd 'tools/qemu-xen-traditional' >/dev/null
@@ -263,6 +274,14 @@ build() {
 			--disable-gtk \
 			--disable-vte \
 			--disable-werror \
+			--disable-virglrenderer \
+			--disable-libnfs \
+			--disable-glusterfs \
+			--disable-numa \
+			--disable-smartcard \
+			--disable-fdt \
+			--disable-vde \
+			--disable-brlapi \
 			--enable-spice \
 			--enable-usb-redir \
 			--with-sdlabi=2.0"
