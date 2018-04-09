@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='galaxy-desktop-git'
 pkgdesc='Hacked DE which mixes components from other desktop environments'
-pkgver=r3.40eea43
+pkgver=r6.b49a885
 pkgrel=1
 arch=('any')
 url='https://github.com/aperezdc/galaxy-desktop'
@@ -9,7 +9,7 @@ license=('custom:MIT')
 makedepends=('meson' 'ninja')
 provides=('galaxy-desktop')
 conflicts=('galaxy-desktop')
-depends=('mate-screensaver>=1.20' 'gnome-settings-daemon>=3.28' 'gala'
+depends=('gnome-screensaver>=3.6' 'gnome-settings-daemon>=3.28' 'gala'
          'plank>=0.11' 'pantheon-polkit-agent' 'pantheon-screenshot')
 optdepends=('gnome-control-center:: Allows modifying system settings'
             'synapse:: Keyboard-driver launcher'

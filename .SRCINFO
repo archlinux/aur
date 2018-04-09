@@ -1,13 +1,13 @@
 pkgbase = galaxy-desktop-git
 	pkgdesc = Hacked DE which mixes components from other desktop environments
-	pkgver = r3.40eea43
+	pkgver = r6.b49a885
 	pkgrel = 1
 	url = https://github.com/aperezdc/galaxy-desktop
 	arch = any
 	license = custom:MIT
 	makedepends = meson
 	makedepends = ninja
-	depends = mate-screensaver>=1.20
+	depends = gnome-screensaver>=3.6
 	depends = gnome-settings-daemon>=3.28
 	depends = gala
 	depends = plank>=0.11
