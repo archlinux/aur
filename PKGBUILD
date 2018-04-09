@@ -367,8 +367,6 @@ patch -Np1 -i ../edgy.patch
   patch -Np1 -i ../desu.patch
 
 
-
-
   # Fixes from Gentoo
 
 msg2 'clean'
