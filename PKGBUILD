@@ -19,10 +19,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
 }
 
 build() {
+  cd "${pkgname}"
   mkdir -p build
   cd "${srcdir}/${pkgname}/build"
   qmake ../audiobook.pro -r CONFIG+=release PREFIX=/usr 
