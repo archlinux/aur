@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Scan Tailor Advanced
+Exec=scantailor %u
+TryExec=scantailor
+Icon=/usr/share/icons/hicolor/scalable/apps/scantailor-advanced.svg
+Comment=An interactive post-processing tool for scanned pages.
+Categories=Graphics;
+Terminal=false
+StartupNotify=true
+MimeType=image/png;image/tif;image/jpeg
