@@ -3,17 +3,17 @@
 
 _name="asyncpg"
 pkgname="python-$_name"
-pkgver="0.14.0"
+pkgver="0.15.0"
 pkgrel="1"
 pkgdesc="An asyncio PosgtreSQL driver"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/MagicStack/$_name"
 license=("Apache")
 makedepends=("python-setuptools" "cython")
 checkdepends=("python-pytest")
 source=("$url/archive/v$pkgver/$_name-$pkgver.tar.gz"
         remove-package-data.patch)
-sha256sums=('ab2ea8391e40b9dd3a0993d40db6c9ef3ba02c6cb99465feb5c56e44c77b28f1'
+sha256sums=('b8a23279080e9f56e30b9fc1b89d8ce0782a515e82862508c8d86b86fb9b1241'
             'fbd60ee542f87222d26b69095d3c5bd70863f8a066eb56035902d1ded836659d')
 
 prepare() {
