@@ -2,7 +2,7 @@
 
 pkgbase=python-cached-property
 pkgname=('python-cached-property' 'python2-cached-property')
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A decorator for caching properties in classes"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/pydanny/cached-property"
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest' 'python-freezegun' 'python2-freezegun')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/pydanny/cached-property/archive/$pkgver.tar.gz")
-sha512sums=('63b677b0dcd8ce358cb8536a30a9197990ccf9f69cc91b693ce28e7ad10c95b3e60354521e4a0187d91893bf80636c09d490d95733d3392a4982be8246f17dfb')
+sha512sums=('dbe24114ab986ed8c3c5dad766d7c1c0ce87bbcc0ebfbba2505fc2878358239df09b92d3fbcbaa5cfde264d4f4b9c305b5f5216a6e9158d3872e5837bd581c6f')
 
 prepare() {
   cp -a cached-property-$pkgver{,-py2}
