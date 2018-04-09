@@ -1,6 +1,6 @@
 pkgbase = adasockets
 	pkgdesc = BSD sockets in Ada
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://www.rfc1149.net/devel/adasockets
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = adasockets
 	makedepends = gcc-ada
 	depends = sh
 	options = !libtool
-	source = http://www.rfc1149.net/download/adasockets/adasockets-1.11.0.tar.gz
-	sha256sums = 2c23ae9a4c6cf010130d968dc4d8b514e49876d661f5291d333203861d6c8517
+	source = http://www.rfc1149.net/download/adasockets/adasockets-1.11.1.tar.gz
+	sha256sums = 77b3ec77eb307d9700668d10402c3bfb4eb031c5b6f5c17d6a1bbe25e9083e56
 
 pkgname = adasockets
 
