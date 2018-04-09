@@ -1,6 +1,6 @@
 # Maintainer: Firas Zaidan <firas@zaidan.de>
 
-pkgname=('python-wand')
+pkgname=('pywand')
 pkgver=0.4.4.380068e
 pkgrel=4
 rev=380068e9cc1268a8c20e2fa13621058a68d55cb3
