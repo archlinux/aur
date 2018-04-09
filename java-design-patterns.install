@@ -1,9 +1,11 @@
 post_install() {
   printf "$(tput setaf 4)Java Design Patterns has been installed into /opt/java-design-patterns$(tput sgr0)\n"
   printf "$(tput setaf 4)This folder has root permissions, so keep in mind you will not be able to modify anything in this directory.$(tput sgr0)\n"
+  printf "$(tput setaf 4)$(tput sgr0)\n"
   printf "$(tput setaf 4)If you intend to modify it as regular user, change folder's owner as follow:$(tput sgr0)\n"
   printf "$(tput setaf 2)chown -R <user>:<user> /opt/java-design-patterns$(tput sgr0)\n"
-  printf "$(tput setaf 4)Note: You can copy the folder to a user writable destination in order to preserve the original sources and permissions.$(tput sgr0)\n"
+  printf "$(tput setaf 4)Note: You can copy the folder to a user writable destination in order to preserve$(tput sgr0)\n"
+  printf "$(tput setaf 4)the original sources and permissions and avoid the deletion of files on upgrades.$(tput sgr0)\n"
 }
 
 post_upgrade() {
@@ -11,5 +13,8 @@ post_upgrade() {
 }
 
 post_remove() {
-  printf "$(tput setaf 4)If you had added/modified files or permissions in folder /opt/java-design-patterns is possible you need to delete it manually.$(tput sgr0)\n"
+  printf "$(tput setaf 4)If you had added/modified files or permissions in folder $(tput setaf 2)/opt/java-design-patterns$(tput sgr0)\n"
+  printf "$(tput setaf 4)is possible you need to delete the folder manually.$(tput sgr0)\n"
 }
+
+post_remove
