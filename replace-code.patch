@@ -6,7 +6,7 @@
 -        WindowSystem
 --- a/libs/widgets/CMakeLists.txt
 +++ a/libs/widgets/CMakeLists.txt
-@@ -103,1 +103,1 @@
+@@ -100,1 +100,1 @@
 -target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::GuiAddons KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
 +target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
 --- a/libs/widgetutils/CMakeLists.txt
