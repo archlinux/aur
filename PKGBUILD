@@ -2,27 +2,27 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-gtk-theme
-pkgver=20180305
-pkgrel=2
+pkgver=20180407
+pkgrel=4
 pkgdesc="A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
 url='https://www.gnome-look.org/p/1187179'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 _hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1521038213/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-sea.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1521038205/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-azul.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1521038204/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-aliz.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1521038212/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-sea.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1521038209/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-azul.tar.xz"
-        "https://dl.opendesktop.org/api/files/downloadfile/id/1521038208/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-aliz.tar.xz")
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1523109799/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-sea.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1523109793/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-azul.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1523109726/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-aliz.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1523109797/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-sea.tar.xz"
+        "https://dl.opendesktop.org/api/files/downloadfile/id/1523109795/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-azul.tar.xz"
+ 	      "https://dl.opendesktop.org/api/files/downloadfile/id/1523109794/s/${_hash_time[0]}/t/${_hash_time[1]}/Matcha-dark-aliz.tar.xz")
 
-sha256sums=('5a480b1f31215b270fb54b073ec48fe4a8276103d5de26d03f57a8a16db708d7'
-            'c3a243270bef6acaaea34cad5682c05622386f499aff2e9868d714f63d7d1b88'
-            'be238e668d2a8191a336eef4d7ae2c29f55b27b80746c2cd3ea4fe8ab1d3b85a'
-            'd18cf75b4b4d0ea7eb59ded8071d90c3e2f3546aaad9af10504e88bbd3b852e2'
-            'c797fb6f813da44387c70f7439a2084533d0a41c836ba587fc5de3be6741992d'
-            '3b1c9c5608508be2deb1af1d5aace9521ed9d996e655b8136e8d982c2c87a07b')
+sha256sums=('6bf301e847f35a766376da239099a0950cdeae283dc5e9d7aef90acabc873541'
+            'e3eb26909ff111cbbcc1e918f39187f9249698ff7cb594782e21ecfcbf973945'
+            'cb208fed259953f7733c26956247d8eb20b46fd550c7fe8fa5701b4aec7f2dd3'
+            'be12ec299071619ede9865d94f32d72f74ccb0f32c43bbbd94e92090855e9fcc'
+            '288dbdf009357ad61fee9e1d328294bd860522fffa86055bf5fc1190da343c81'
+            '9063ca891903f8145af29e0e13597a30103821c0a98c986a4d8cc2cc0977df3a')
 
 prepare() {
    sed -i 's/\(menu.items.text.color:\).*$/\1 #d3c2c5/; s/\(menu.border.color:\).*$/\1 #2d3036/;
