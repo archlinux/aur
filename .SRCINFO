@@ -9,8 +9,8 @@ pkgbase = audiobook
 	makedepends = qt5-tools
 	depends = qt5-base
 	provides = audiobook
-	source = audiobook::git+https://github.com/bit-shift-io/audiobook.git
+	source = audiobook-git::git+https://github.com/bit-shift-io/audiobook.git
 	md5sums = SKIP
 
-pkgname = audiobook
+pkgname = audiobook-git
 
