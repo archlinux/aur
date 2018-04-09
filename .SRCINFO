@@ -1,0 +1,16 @@
+pkgbase = periscopio-mate
+	pkgdesc = An Python module for searching subtitles on the web. Includes a caja extension.
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://github.com/darkshram/periscopio-mate
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = caja
+	depends = python2-beautifulsoup3
+	provides = periscopio-mate
+	source = https://github.com/darkshram/periscopio-mate/archive/1.18.1.tar.gz
+	sha256sums = e9e092b4d9318e9379be082632f7129c74dd8dd2b48be2b84f4320c582e20adc
+
+pkgname = periscopio-mate
+
