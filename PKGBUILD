@@ -1,6 +1,6 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 pkgname=reflector-timer
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc='A service and timer for the reflector mirrorlist upgrade.'
 arch=('any')
@@ -12,7 +12,7 @@ source=('reflector.service'
         'reflector.timer'
         'reflector.conf')
 md5sums=('a7c75b59e15235725183f348c62577f0'
-         '3d73c16ef89e6defb15f23787fd35808'
+         '5c66e6429a94bd46d164fbdd0f30dbd9'
          '59bbdabd80e9c4dc3c17e0c7a1304bcd')
 
 package() {
