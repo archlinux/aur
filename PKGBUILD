@@ -2,7 +2,7 @@
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 
 pkgname=youtube-dl
-pkgver=2018.04.03
+pkgver=2018.04.09
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-crypto: for hlsnative downloader')
 source=(http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.sig})
-sha256sums=('a8461fece0b1e66655ad4e47d9dc51935d27d42a0637873acd81e8d86ef1ac5e'
+sha256sums=('263b40801c7baedc0ee7008543977c14d4d7315c159c8f21f0fc24a3656826d8'
             'SKIP')
 validpgpkeys=('7D33D762FD6C35130481347FDB4B54CBA4826A18'  # Philipp Hagemeister
               'ED7F5BF46B3BBED81C87368E2C393E0F18A9236D') # Sergey M.
