@@ -1,0 +1,12 @@
+diff --git a/meson.build b/meson.build
+index bf266e5f..c91eaa1e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -12,6 +12,7 @@ project(
+ add_project_arguments('-Wno-unused-parameter', language: 'c')
+ add_project_arguments('-Wno-unused-function', language: 'c')
+ add_project_arguments('-Wno-unused-result', language: 'c')
++add_project_arguments('-Wno-maybe-uninitialized', language: 'c')
+ 
+ cc = meson.get_compiler('c')
+ 

@@ -1,0 +1,35 @@
+pkgbase = sway-wlroots-git
+	pkgdesc = i3 compatible window manager for Wayland
+	pkgver = 1.0.alpha.1.r29.g07b6be62
+	pkgrel = 1
+	url = http://swaywm.org
+	install = sway-wlroots-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = asciidoc
+	depends = json-c
+	depends = pcre
+	depends = wlroots-git
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = pixman
+	depends = libcap
+	depends = libinput
+	depends = pam
+	provides = sway
+	conflicts = sway
+	conflicts = sway-git
+	source = git+https://github.com/swaywm/sway.git#branch=wlroots
+	source = wno-maybe-uninitialized.patch
+	sha1sums = SKIP
+	sha1sums = b053bf7392b4975e66b725529f2de7e036fc4996
+
+pkgname = sway-wlroots-git
+
