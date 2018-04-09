@@ -157,9 +157,9 @@ menuentry "Xen ${XEN_VERSION} / Arch Linux ${_KERNEL_PKG_} kernel" ${CLASS} {
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo '$(printf "Loading Xen %s ..." ${XEN_VERSION})'
-    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
+    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    module2 ${REAL_DIR}/${_KERNEL_FILE_} ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    module2 ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel initramfs ...'
     module2 ${REAL_DIR}/${_INITRAMFS_}
 }
@@ -188,9 +188,9 @@ menuentry "Xen ${XEN_VERSION} / Arch Linux ${_KERNEL_PKG_} kernel (fallback init
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo '$(printf "Loading Xen %s ..." ${XEN_VERSION})'
-    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
+    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    module2 ${REAL_DIR}/${_KERNEL_FILE_} ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    module2 ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel fallback initramfs ...'
     module2 ${REAL_DIR}/${_INITRAMFS_FALLBACK_}
 }
@@ -214,9 +214,9 @@ menuentry "Xen ${XEN_VERSION} / Arch Linux ${_KERNEL_PKG_} kernel (no initramfs)
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo '$(printf "Loading Xen %s ..." ${XEN_VERSION})'
-    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
+    multiboot2 ${REAL_DIR}/${XEN_BASENAME} ${XEN_HYPERVISOR_CMDLINE}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    module2 ${REAL_DIR}/${_KERNEL_FILE_} ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    module2 ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
 }
 
 EOF

@@ -47,7 +47,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -143,7 +143,7 @@ sha256sums=(
 	'3e45cc3f2ea516e7470083592041e238c0dfe32324790b2fba0e47c9efe38865'
 
 	# PKGBUILD files
-	'7dd6f1d6c10d4e8793412175b964df2477633cd988810df71e2040bf79e4d56c'
+	'23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
 	'3f0af16958c3e057b9baa5afc47050d9adf7dd553274dd97ae4f35938fefb568'
 	'50a9b7fd19e8beb1dea09755f07318f36be0b7ec53d3c9e74f3266a63e682c0c'
