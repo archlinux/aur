@@ -2,7 +2,7 @@
 
 pkgname=h2s
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool that wraps HTTP/HTTPS proxies into a SOCKS5 proxy."
 arch=('x86_64')
 url="https://github.com/Equim-chan/h2s"
@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}/cmd/h2s/"
     go build -o h2s
 }
 
