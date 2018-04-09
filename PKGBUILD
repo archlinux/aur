@@ -25,7 +25,7 @@ build() {
   mkdir build
   cd sources
   # TODO: CONSTEXPR required to compile without '-fpermissive'.
-  make CPPFLAGS="-w -O3 -c -fpermissive" -j4
+  make CPPFLAGS="-w -O3 -c -fpermissive"
 }
 
 
