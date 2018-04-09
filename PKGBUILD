@@ -1,7 +1,7 @@
 # Maintainer: Martin Hasoň <martin.hason@gmail.com>
 
 pkgname=scantailor-advanced
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="An interactive post-processing tool for scanned pages."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("qt5-base" "hicolor-icon-theme" "boost-libs>=1.0.0" "libpng>=1.0.0" "zlib>=1.0.0" "libtiff>=4.0.0")
 makedepends=("cmake>=3.9.0" "qt5-tools" "boost>=1.0.0")
 source=("$pkgname-$pkgver::https://github.com/4lex4/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("a64f3e0c34f70963a9ffd19425f8d2b47069a9cda4dfd4037b47c8705ef4e90f")
+sha256sums=("9c17e932d43f86d78cd90d999861f821617ab3abface267e08d2354f427186f6")
 
 build() {
     cd "$pkgname-$pkgver"
