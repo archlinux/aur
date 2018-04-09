@@ -20,8 +20,8 @@ optdepends=("android-sdk"
             "python"
             "sh")
 makedepends=("git" "python")
-backup=("opt/flutter/packages/flutter_test/pubspec.yaml" "opt/flutter/packages/flutter/pubspec.yaml")
-options=(!epmtydirs)
+backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
+options=("!emptydirs")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname}_linux_v${pkgver}-beta.tar.xz"
         "${pkgname}.sh"
@@ -31,8 +31,8 @@ sha256sums=("4fe85a822093e81cb5a66c7fc263f68de39b5797b294191b6d75e7afcc86aff8"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    "bin/${pkgname}" doctor
+  cd "${srcdir}/${pkgname}"
+  "bin/${pkgname}" doctor
 }
 
 package() {

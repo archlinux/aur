@@ -21,6 +21,7 @@ pkgbase = flutter
 	optdepends = perl
 	optdepends = python
 	optdepends = sh
+	options = !emptydirs
 	backup = opt/flutter/packages/flutter_test/pubspec.yaml
 	backup = opt/flutter/packages/flutter/pubspec.yaml
 	source = flutter-0.2.3.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.2.3-beta.tar.xz
