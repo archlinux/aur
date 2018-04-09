@@ -1,0 +1,25 @@
+pkgbase = drive-bin
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/odeke-em/drive
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = APACHE
+	provides = drive
+	conflicts = drive
+	source_x86_64 = drive-bin-0.3.9::https://github.com/odeke-em/drive/releases/download/v0.3.9/drive_linux
+	md5sums_x86_64 = a192d38419377aa27a45d90055c56a14
+	source_arm = drive-bin-0.3.9::https://github.com/odeke-em/drive/releases/download/v0.3.9/drive_armv5
+	md5sums_arm = 990d899bdff2e54cd401ece624a4f8be
+	source_armv6h = drive-bin-0.3.9::https://github.com/odeke-em/drive/releases/download/v0.3.9/drive_armv6
+	md5sums_armv6h = 812689b6bb2113948c8394854bbde47f
+	source_armv7h = drive-bin-0.3.9::https://github.com/odeke-em/drive/releases/download/v0.3.9/drive_armv7
+	md5sums_armv7h = 222be8926c35353f81baba014d926c71
+	source_aarch64 = drive-bin-0.3.9::https://github.com/odeke-em/drive/releases/download/v0.3.9/drive_armv8
+	md5sums_aarch64 = ecc56e8df5af018eab40097d261e862d
+
+pkgname = drive-bin
+
