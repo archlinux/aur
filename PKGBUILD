@@ -2,7 +2,7 @@
 
 pkgname=cfssl
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CloudFlare PKI and TLS toolkit"
 arch=('i686' 'x86_64')
 url="https://cfssl.org/"
@@ -20,12 +20,15 @@ _binaries=(cfssl cfssljson cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan m
 prepare () {
   export GOPATH="${srcdir}"
   export PATH="$GOPATH/bin:$PATH"
+
   mkdir -p src/github.com/cloudflare/
   rm -rf src/${_prefix}
   mv "${pkgname}-${pkgver}" src/${_prefix}
 }
 
 build() {
+  export GOPATH="${srcdir}"
+
   for bin in ${_binaries[@]} ; do
     echo "building $bin"
     go install ${_prefix}/cmd/${bin}
