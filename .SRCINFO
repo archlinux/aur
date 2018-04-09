@@ -1,14 +1,14 @@
 pkgbase = python-sphinx-autodoc-typehints
 	pkgdesc = Type hints support for the Sphinx autodoc extension
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/agronholm/sphinx-autodoc-typehints
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx-autodoc-typehints-1.2.5.tar.gz
-	md5sums = 077df942f0b552722d79a146098c0a05
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx-autodoc-typehints-1.3.0.tar.gz
+	md5sums = 8797006d36c7191077d9bd84b33b557a
 
 pkgname = python-sphinx-autodoc-typehints
 
