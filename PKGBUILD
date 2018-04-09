@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=0.14.0+26+ge5def5b0
-pkgrel=1
+pkgrel=2
 pkgdesc='A privacy-respecting, hackable metasearch engine (Git)'
 arch=(any)
 url='https://asciimoo.github.io/searx/'
@@ -29,7 +29,7 @@ source=(git+https://github.com/asciimoo/searx.git
         searx.install
         searx.service)
 sha512sums=(SKIP
-            bd0a21e9520123fe792378d3c8b9bd2a7a845eb814fb60954890f11883ab7e909933c5731fcd2a9cf59a7cde081c42633e2caab2ed1245f459d26ca412ee6f85
+            beaa976b2fc9979b0069da3ce219ed99e0a8ae0aa703785b082db4de20c83baac53b64d80341dc3e3f0eb3b7d4989a65ca008065981a1e405c65938edebefabe
             6bcc5854ebbe8a50f9929714d6d00f2b273b9c7dda16289868727edf2cf7f6c42b5de5d696efdc725b255f31f5d94867c05e94f7563adf587bc0a750212562ad)
 
 pkgver() {
@@ -41,6 +41,17 @@ prepare() {
   cd $srcdir/searx
   sed -i 's|==|>=|g' requirements.txt
   sed -i "s/ultrasecretkey\" # change this!/`openssl rand -hex 128`\"/g" searx/settings.yml
+
+  # If morty is installed, add it's key to searx settings
+  msg2 'Checking for morty installation...'
+  if [ -f "/usr/bin/morty" ]; then
+    sed -i "s/your_morty_proxy_key/$(cat /usr/lib/systemd/system/morty.service |
+        grep key | awk '{print $5}')/" searx/settings.yml &&
+      msg2 'Morty found; added key to searx settings.'
+  else
+    msg2 'Morty not found.'
+  fi
+  sleep 4
 }
 
 package() {
