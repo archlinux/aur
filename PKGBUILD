@@ -2,16 +2,16 @@
 
 pkgbase=julia-mkl
 pkgname=('julia-mkl' 'julia-mkl-docs')
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 arch=('x86_64')
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 url='http://julialang.org/'
 license=('MIT')
-makedepends=('python2' 'libuv' 'libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'patchelf' 'cmake' 'pcre2' 'openssl' 'intel-mkl' 'intel-compiler-base' 'intel-fortran-compiler' 'libgit2' 'llvm' 'git')
+makedepends=('python2' 'libuv' 'libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'patchelf' 'cmake' 'pcre2' 'openssl' 'intel-mkl' 'intel-compiler-base' 'intel-fortran-compiler' 'libgit2' 'git')
 options=('!emptydirs' 'staticlibs')
 source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/julia-$pkgver.tar.gz" julia-libunwind-version.patch)
-sha256sums=('1c62bfce8075acf2b5b02355520a61210690324eceb021030681459d18a3a665'
+sha256sums=('19d15b07a7609e163420a13f4f9ca885cf61adcd1d970a8d9273919e2c9b74eb'
             '16009ce454f58463464027cbaf6186ccfab84c37660a52fb1ec3a0f514df64f9')
 
 conflicts=('julia-git' 'julia')
@@ -32,8 +32,8 @@ build() {
   source /opt/intel/mkl/bin/mklvars.sh intel64
   
   make -C julia-$pkgver prefix=/usr sysconfdir=/etc \
-    USEICC=1 \
-    USEIFC=1 \
+    USEICC=0 \
+    USEIFC=0 \
     USE_INTEL_MKL=1 \
     USE_INTEL_MKL_FFT=1 \
     USE_INTEL_LIBM=1 \
@@ -43,7 +43,7 @@ build() {
     USE_SYSTEM_LIBGIT2=1 \
     USE_SYSTEM_PATCHELF=1 \
     USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LLVM=1
+    USE_SYSTEM_LLVM=0
 }
 
 package_julia-mkl() {
@@ -59,8 +59,8 @@ package_julia-mkl() {
   
   make -C julia-$pkgver DESTDIR="$pkgdir" \
     prefix=/usr sysconfdir=/etc \
-    USEICC=1 \
-    USEIFC=1 \
+    USEICC=0 \
+    USEIFC=0 \
     USE_INTEL_MKL=1 \
     USE_INTEL_MKL_FFT=1 \
     USE_INTEL_LIBM=1 \
@@ -70,7 +70,7 @@ package_julia-mkl() {
     USE_SYSTEM_LIBGIT2=1 \
     USE_SYSTEM_PATCHELF=1 \
     USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LLVM=1 \
+    USE_SYSTEM_LLVM=0 \
     install
 
   # Remove duplicate man-page from julia/doc

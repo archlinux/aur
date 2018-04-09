@@ -1,7 +1,7 @@
 pkgbase = julia-mkl
 	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = http://julialang.org/
 	arch = x86_64
 	license = MIT
@@ -19,15 +19,14 @@ pkgbase = julia-mkl
 	makedepends = intel-compiler-base
 	makedepends = intel-fortran-compiler
 	makedepends = libgit2
-	makedepends = llvm
 	makedepends = git
 	conflicts = julia-git
 	conflicts = julia
 	options = !emptydirs
 	options = staticlibs
-	source = https://github.com/JuliaLang/julia/releases/download/v0.6.0/julia-0.6.0.tar.gz
+	source = https://github.com/JuliaLang/julia/releases/download/v0.6.2/julia-0.6.2.tar.gz
 	source = julia-libunwind-version.patch
-	sha256sums = 1c62bfce8075acf2b5b02355520a61210690324eceb021030681459d18a3a665
+	sha256sums = 19d15b07a7609e163420a13f4f9ca885cf61adcd1d970a8d9273919e2c9b74eb
 	sha256sums = 16009ce454f58463464027cbaf6186ccfab84c37660a52fb1ec3a0f514df64f9
 
 pkgname = julia-mkl
