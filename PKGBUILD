@@ -2,7 +2,7 @@
 # This uses the install and service file from octoprint[AUR], thanks to all Maintainers/Contributors!
 
 pkgname=octoprint-venv
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="The snappy snappy web interface for your 3D printer! (virtualenv installation type)"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('octoprint')
 install="octoprint.install"
 source=("https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
         'octoprint.service')
-sha256sums=('389b97faf997adec29e619a15f6cae489131e11c6fb214a9041a82ae60bd824d'
+sha256sums=('e71a1bada96fa10100f6c91147bf1c5ffb56a2af21b67aaa652e2df5d8e33c00'
             '7f7aa02075901d7501a03bda082f050ba5862e58034f0216b5a76d2a25135d3a')
 
 
