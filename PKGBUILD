@@ -1,24 +1,26 @@
-# $Id: PKGBUILD 195613 2016-11-14 07:40:36Z bpiotrowski $
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: Sean Enck <enckse@gmail.com>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sébastien Luttringer
 # Contributor: kevku <kevku@msn.com>
 # Contributor: Andrew Rembrandt <andrew@rembrandt.me.uk>
 
 _pkgname=OpenSC
 pkgname=opensc-git
-pkgver=0.16.0+131+g9e6dddb
+pkgver=0.17.0+227+g54097c0f
 pkgrel=1
 pkgdesc='Tools and libraries for smart cards'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://github.com/OpenSC/OpenSC/wiki'
 license=('LGPL')
 backup=('etc/opensc.conf')
-makedepends=('docbook-xsl')
+makedepends=('docbook-xsl' 'git')
 depends=('pcsclite' 'libltdl')
 options=('!emptydirs')
 conflicts=(opensc)
-source=("git+https://github.com/OpenSC/OpenSC.git#branch=master")
-md5sums=('SKIP')
+source=("git+https://github.com/OpenSC/OpenSC.git#branch=master"
+        'bash-completion-path.patch')
+sha256sums=('SKIP'
+            'bd0991dc8d68b21704104aba4d3470f4f4f50bf36547569ed032b48fd3aed811')
 
 pkgver() {
   cd $_pkgname
@@ -28,12 +30,11 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  patch -Np0 -i $startdir/bash-completion-path.patch
+  patch -Np0 -i $srcdir/bash-completion-path.patch
 }
 
 build() {
   cd $_pkgname
-  export LIBS=-lltdl
   _sheetdir=(/usr/share/xml/docbook/xsl-stylesheets-*)
   ./bootstrap
   ./configure \
@@ -47,6 +48,7 @@ build() {
     --enable-zlib \
     --enable-sm \
     --with-xsl-stylesheetsdir="$_sheetdir"
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
