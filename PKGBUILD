@@ -2,14 +2,14 @@
 
 pkgname=mailboot
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc='Send an email when your computer boot'
 arch=('any')
 url='https://github.com/seblu/mailboot'
 license=('GPL')
 depends=('bash' 'systemd' 'sed')
 backup=('etc/mailboot.conf')
-source=("http://ftp.seblu.net/softs/mailboot/$pkgname-$pkgver.tar.xz")
+source=("https://github.com/seblu/mailboot/releases/download/v3/mailboot-$pkgver.tar.xz")
 md5sums=('4e17ee95cfc560b16dd0dfff1fa89b61')
 
 build() {
