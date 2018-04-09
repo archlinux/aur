@@ -2,7 +2,7 @@
 
 pkgbase=postgresql-lts
 pkgname=('postgresql-lts-libs' 'postgresql-lts-docs' 'postgresql-lts')
-pkgver=9.4.16
+pkgver=9.4.17
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A sophisticated object-relational DBMS"
@@ -15,7 +15,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql-run-socket.patch postgresql.pam postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf
         postgresql-check-db-dir)
-sha256sums=('dcbc62b621e4d8a445c2f33750f7d96257c38103cccebeb934e6913a3c135e81'
+sha256sums=('7a320cd335052b840d209dc9688f09965763351c590e3cc7bf577591179fd7c6'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
@@ -159,4 +159,5 @@ package_postgresql-lts() {
   install -D -m644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
+
 
