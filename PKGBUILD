@@ -1,7 +1,7 @@
 # Maintainer: john smith <hidden at mail dot com>
 pkgname="grive-indicator"
 pkgver=1.16
-pkgrel=5
+pkgrel=6
 pkgdesc="Ported and improved Grive Tools (Indicator) to Python3 by John Smith."
 arch=('any')
 url="https://github.com/john4smith/grive-indicator"
@@ -11,7 +11,7 @@ depends=('grive' 'libappindicator-gtk3' 'python-pyinotify' 'python-gobject' 'dco
 optdepends=('gnome-shell-extension-appindicator-git: gnome indicator support'
             'gnome-shell-extension-topicons-plus: gnome indicator support')
 source=("grive-indicator-${pkgver}.tar.gz::https://github.com/john4smith/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b02abad53e81724dd897f8a63afb01e9d4dce4ca5978ca384466e9608023529f')
 
 package() {
  cd "${srcdir}"/grive-indicator-${pkgver}/
