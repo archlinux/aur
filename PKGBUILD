@@ -1,12 +1,12 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=0.2.9.r39.d121cbc80
+pkgver=0.2.10.r7.da4e06bbc
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-git}.io"
-license=("custom:https://github.com/${pkgname%-git}/${pkgname%-git}/blob/master/LICENSE")
+license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
 optdepends=("android-sdk"
             "android-studio"
