@@ -1,6 +1,6 @@
 pkgbase = pcgen-git
 	pkgdesc = An RPG Character Generator.
-	pkgver = 6.07.07_SNAPSHOT.gd8c300cdcb
+	pkgver = 6.07.08.g4f0948c954
 	pkgrel = 1
 	url = http://pcgen.org
 	arch = any
