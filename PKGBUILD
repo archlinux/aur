@@ -15,7 +15,7 @@ depends=('java-runtime-common' 'java-runtime>=8')
 source=(https://github.com/PoC-Consortium/burstcoin/releases/download/${pkgver}/burstcoin-${pkgver}.zip
 burstcoin-wallet.service
 )
-sha256sums=('d8433c9f21139218e805e8ea5f61ceacf7c800f3b8a4142879b28408a658e1f0'
+sha256sums=('8594263cb5c814955bbd4de6230259ae85c231fafccc5a803a612efb16bf4184'
             '677aa600c97fcba5ec20f3e442f02acd920602e6bf08a8e536088fd6e2d15585')
 
 package() {
