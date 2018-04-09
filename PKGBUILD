@@ -9,7 +9,7 @@ license=('GPLv3+')
 arch=('any')
 depends=('python-annexremote' 'python-pydrive')
 makedepends=('python-setuptools')
-source=("https://github.com/Lykos153/git-annex-remote-googledrive/archive/v${pkgver}.tar.gz")
+source=("https://github.com/Lykos153/git-annex-remote-googledrive/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('09ab1ff47c9dba42cb6cfc5528aca7be90ac345bfc865ca5cb72d951dcd29fd6')
 
 
