@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=r14146.26d70690c
+pkgver=r14194.3046821a9
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -28,7 +28,6 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --with-ebpf \
-    --with-luajit \
     --with-protobuf \
     --enable-dns-over-tls \
     --enable-dnscrypt \
