@@ -1,7 +1,7 @@
 pkgbase = sqlectron-gui-git
 	pkgdesc = A simple and lightweight SQL client with cross database and platform support
 	pkgver = 1.29.0+3+gd1eb407
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sqlectron.github.io/
 	arch = x86_64
 	license = MIT

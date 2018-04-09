@@ -2,7 +2,7 @@
 
 pkgname=sqlectron-gui-git
 pkgver=1.29.0+3+gd1eb407
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -41,7 +41,8 @@ prepare() {
 build() {
 	cd "${pkgname}"
 
-	npm install --build-from-source
+	CXXFLAGS+=" -I/usr/include/node" \
+		npm install --build-from-source --nodedir=/usr/include/node
 	npm run compile:browser
 	npm run compile:renderer
 
@@ -55,7 +56,7 @@ build() {
 		--build-from-source \
 		--nodedir=/usr/lib/electron/node \
 		--runtime=electron \
-		--target=$(electron -v) \
+		--target=$(electron -v)
 
 	popd
 	asar p app app.asar
