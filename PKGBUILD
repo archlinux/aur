@@ -2,8 +2,8 @@
 
 pkgname=ruby-lumberjack
 _pkgname="${pkgname#ruby-}"
-pkgver=1.0.12
-pkgrel=3
+pkgver=1.0.13
+pkgrel=1
 pkgdesc='A simple, powerful, and fast logging implementation in Ruby.'
 arch=(any)
 url='https://github.com/bdurand/lumberjack'
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
-sha256sums=('77c5dbc7d07522d18014cb5637b350c779c17be06d57ba71e8b28158d334e27b')
+sha256sums=('b6b80d5ea2608fa2fbd1b3783318b0e0f7e4a950ad70f1a13fa70bf2d83b351a')
 
 package() {
   # install gem
