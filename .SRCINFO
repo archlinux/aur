@@ -1,0 +1,20 @@
+pkgbase = nupic-git
+	pkgdesc = Numenta Platform for Intelligent Computing is an implementation of Hierarchical Temporal Memory (HTM), a theory of intelligence based strictly on the neuroscience of the neocortex.
+	pkgver = 2018_04_04
+	pkgrel = 1
+	url = https://github.com/numenta/nupic
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	makedepends = git
+	depends = python2-wheel
+	depends = python2-pip
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-numpy
+	conflicts = nupic
+	source = git+https://github.com/numenta/nupic.git
+	md5sums = SKIP
+
+pkgname = nupic-git
+
