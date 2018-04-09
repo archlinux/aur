@@ -3,7 +3,7 @@
 pkgname=('steamforwarder-git')
 _pkgname=SteamForwarder
 pkgdesc="Tool that allows interaction between windows games under wine and the linux steam. (Cutting edge experimental features)"
-pkgver=r157.789cb0a
+pkgver=r182.8740de2
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/xomachine/SteamForwarder"
@@ -26,17 +26,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make -j1 tools
+  make tools
   # Touch required to avoid signatures.txt rebuilding when make install
   touch signatures.txt
+  make precompile
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
   make install PREFIX="/usr" DESTDIR="${pkgdir}"
-}
-
-check() {
-  cd "$srcdir/${_pkgname}"
-  make tests
 }
