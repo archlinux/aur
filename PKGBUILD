@@ -278,6 +278,8 @@ patch -Np1 -i ../010.patch
 patch -Np1 -i ../011.patch
 patch -Np1 -i ../012.patch
 patch -Np1 -i ../013.patch
+
+
 patch -Np1 -i ../014.patch
 patch -Np1 -i ../015.patch
 patch -Np1 -i ../016.patch
@@ -285,6 +287,8 @@ patch -Np1 -i ../2kb.patch
 patch -Np1 -i ../018.patch
 patch -Np1 -i ../019.patch
 patch -Np1 -i ../020.patch
+
+
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
@@ -359,12 +363,13 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -Ri ../r21.patch
+#patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 patch -Np1 -i ../desu.patch
+
 
 # Fix incorrect inclusion of <string_view> in modes other than >= C++17
   
