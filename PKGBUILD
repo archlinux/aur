@@ -2,7 +2,7 @@
 
 pkgname=morty
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service'
 arch=(any)
 url='https://github.com/asciimoo/morty'
@@ -30,5 +30,5 @@ package() {
   cd $srcdir/morty
   install -D bin/morty $pkgdir/usr/bin/morty
   install -Dm 644 ../morty.service $pkgdir/usr/lib/systemd/system/morty.service
-  install -D ../morty-$pkgver/LICENSE $pkgdir/usr/share/licenses/morty/LICENSE
+  install -Dm 644 ../morty-$pkgver/LICENSE $pkgdir/usr/share/licenses/morty/LICENSE
 }
