@@ -1,53 +1,71 @@
-# Maintainer: Edison Ibañez <edison@opmbx.org>
+# Maintainer: surefire@cryptomile.net
+# Contributor: Edison Ibañez <edison@opmbx.org>
+
 pkgname=sqlectron-gui
-pkgver=1.25.0
+pkgver=1.29.0
 pkgrel=1
-pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
+pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
-license=("MIT")
+license=('MIT')
+depends=('electron')
+makedepends=('npm' 'asar')
+source=("https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
+        'sqlectron-gui.sh'
+		'sqlectron-gui.desktop')
 
-source=("Sqlectron.sh"
-        "Sqlectron.desktop"
-        "Sqlectron-16x16.png"
-        "Sqlectron-24x24.png"
-        "Sqlectron-32x32.png"
-        "Sqlectron-48x48.png"
-        "Sqlectron-64x64.png"
-        "Sqlectron-96x96.png"
-        "Sqlectron-128x128.png"
-        "Sqlectron-256x256.png"
-        "Sqlectron-512x512.png")
-source_x86_64=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.tar.gz")
-md5sums=('58802570c7d263582272aab558f9ce47'
-         'ff57c64abc7b2f8a5e2c384750312d59'
-         '85d6ce586470159c1fc3722c0df19fa7'
-         '3f2b8a5e1a3efa6fb2d40ff03f11475c'
-         '2ead1b0701b8b251693f436b2a44ba87'
-         '8f7c8a7de028f08063357a94f657282f'
-         '45c7f72fa9db966e52bb55d4f2568ac5'
-         '791f35bb9d3602620a0f2c3f7b9630ab'
-         'b3e2568f1044efaa5113f1b14c51f377'
-         'e1d936527e73ada838cd97b144c87174'
-         'd68539a49b186bfdb4c461b0ee52442b')
-md5sums_x86_64=('4f954f9654d656cf1877e6f047357c03')
+sha1sums=('86d1a0be812eb636ba09eafadcf95c494423bd82'
+          'e0e7c83e47f368543a3c4505cf035d570e0d645b'
+          'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
 
-depends=('libnotify')
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# remove extra dependencies
+	sed -i package.json \
+		-e '/"postinstall":/            d' \
+		-e '/"electron":/               d' \
+		-e '/"electron-builder":/       d' \
+		-e '/"spawn-auto-restart":/     d' \
+		-e '/"webpack-dev-middleware":/ d' \
+		-e '/"webpack-dev-server":/     d' \
+		-e '/"webpack-bundle-analyzer":/ s/,$//'
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+
+	CXXFLAGS+=" -I/usr/include/node" \
+		npm install --build-from-source --nodedir=/usr/include/node
+	npm run compile:browser
+	npm run compile:renderer
+
+	mkdir app
+	mv -t ./app out
+	cp -t ./app package.json
+
+	pushd app
+	npm install \
+		--production \
+		--build-from-source \
+		--nodedir=/usr/lib/electron/node \
+		--runtime=electron \
+		--target=$(electron -v)
+
+	popd
+	asar p app app.asar
+}
 
 package() {
-  install -dm 755 "$pkgdir/opt"
-  cp -rf "$srcdir/Sqlectron-$pkgver" "$pkgdir/opt/Sqlectron"
-  install -dm 775 "$pkgdir/opt/Sqlectron"
-  install -dm 755 "$pkgdir/usr/bin/"
-  install -Dm 775 "Sqlectron.sh" "$pkgdir/usr/bin/sqlectron"
-  install -Dm 644 "$srcdir/Sqlectron.desktop" "$pkgdir/usr/share/applications/Sqlectron.desktop"
-  install -Dm 644 "$srcdir/Sqlectron-16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-24x24.png" "$pkgdir/usr/share/icons/hicolor/24x24/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-48x48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-64x64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-96x96.png" "$pkgdir/usr/share/icons/hicolor/96x96/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Sqlectron.png"
-  install -Dm 644 "$srcdir/Sqlectron-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/Sqlectron.png"
+	cd "$pkgname-$pkgver"
+
+	install -Dm0755 ../sqlectron-gui.sh "${pkgdir}/usr/bin/sqlectron-gui"
+
+	install -Dm0644 build/app.png "${pkgdir}/usr/share/pixmaps/sqlectron-gui.png"
+
+	install -Dm0644 -t "${pkgdir}/usr/lib/sqlectron-gui" app.asar
+
+	install -Dm0644 -t "${pkgdir}/usr/share/applications"  ../sqlectron-gui.desktop
+
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
