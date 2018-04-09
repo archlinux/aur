@@ -10,7 +10,7 @@ pkgbase = passff-host
 	depends = python
 	source = passff-1.0.1.py::https://github.com/passff/passff-host/releases/download/1.0.1/passff.py
 	source = passff-1.0.1.json::https://github.com/passff/passff-host/releases/download/1.0.1/passff.json
-	md5sums = 76ff18623c02d8c97a23a7994d047605
+	md5sums = b2f4050e2b8d3a197ca8416cf5d5f484
 	md5sums = 2512ca1ab6da1c8fcfdfc4e7dd5a2fe8
 
 pkgname = passff-host
