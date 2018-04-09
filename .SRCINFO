@@ -1,7 +1,7 @@
 pkgbase = cath-tools-git
-	pkgdesc = Protein structure comparison tools such as SSAP and SNAP
-	pkgver = 1
-	pkgrel = 1
+	pkgdesc = Protein structure comparison tools such as SSAP and SNAP.
+	pkgver = v0.16.2.r20.g82fb9ac7
+	pkgrel = 2
 	url = http://orengogroup.info/software/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cath-tools-git
 	depends = gsl
 	provides = cath-tools
 	conflicts = cath-tools
-	source = cath-tools::git+https://github.com/anadon/cath-tools
+	source = cath-tools-git::git+https://github.com/anadon/cath-tools
 	md5sums = SKIP
 
 pkgname = cath-tools-git

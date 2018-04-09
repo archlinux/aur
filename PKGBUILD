@@ -1,9 +1,9 @@
 # Maintainer: Josh Marshall <jrmarsha@mtu.edu>
 
 pkgname=cath-tools-git
-pkgver=1
-pkgrel=1
-pkgdesc="Protein structure comparison tools such as SSAP and SNAP"
+pkgver=v0.16.2.r20.g82fb9ac7
+pkgrel=2
+pkgdesc="Protein structure comparison tools such as SSAP and SNAP."
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://orengogroup.info/software/"
@@ -11,22 +11,27 @@ depends=('gsl')
 makedepends=('gsl' 'cmake' 'ninja' 'make' 'git')
 provides=('cath-tools')
 conflicts=('cath-tools')
-source=("cath-tools::git+https://github.com/anadon/cath-tools")
+source=("cath-tools-git::git+https://github.com/anadon/cath-tools")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd "$provides"
+  cd "$pkgname"
   cmake -G Ninja  -DCMAKE_BUILD_TYPE=RELEASE -D USE_STATIC_GSL:BOOL=FALSE .
   ninja 
 }
 
 check() {
-  cd "$provides"
+  cd "$pkgname"
   CATH_TOOLS_BIN_DIR=. prove -l -v perl/t
 }
 
 package() {
-  cd "$provides"
+  cd "$pkgname"
   #make install
   #Install the executables
   mkdir -p "$pkgdir/usr/bin"

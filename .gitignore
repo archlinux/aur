@@ -1,4 +1,4 @@
-cath-tool-git-1-1-x86_64.pkg.tar.xz
-cath-tools/
+*.pkg.tar.xz
+cath-tools-git/
 pkg/
 src/
