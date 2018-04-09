@@ -1,4 +1,4 @@
-pkgname=nupic-git
+pkgname=python2-nupic-git
 _pkgname=nupic
 pkgver=2018_04_04
 pkgrel=1
