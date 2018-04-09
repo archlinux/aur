@@ -1,6 +1,6 @@
 # Maintainer: Gergely Imreh <imrehg@gmail.com>
 pkgname=bluemix-cli
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Interact with your applications, virtual servers, containers, and other components in IBM Bluemix."
 arch=('x86_64' 'i686')
@@ -9,8 +9,8 @@ license=('CUSTOM')
 depends=()
 source_x86_64=("Bluemix_CLI_${pkgver}_amd64.tar.gz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux64")
 source_i686=("Bluemix_CLI_${pkgver}_386.tar.gz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux32")
-sha256sums_x86_64=('ab66a8b00aa4838d1582d11c3f7586f7bc6b7b459bbafba1826bd4f991f17538')
-sha256sums_i686=('12c98b7f25a5a9b5aac3ec7a80aa7cf9d181a89f4b125371539b7887bbcdcf8c')
+sha256sums_x86_64=('05f9c1c06a612eb774a7a3dc2a2e56d4f70583b26431f938a0197f4d185792eb')
+sha256sums_i686=('2e895962179d6bb777f4e603df1745b884329d60155d4c10935b815a3f720c7d')
 
 package() {
   cd "${srcdir}/Bluemix_CLI/"
