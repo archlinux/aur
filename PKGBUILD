@@ -1,25 +1,21 @@
-# Maintainer: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2016-2018: Yadav Gowda <yadav . gowda __at__ gmail . com>
+# Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
+
 pkgname=ibus-kmfl
-pkgver=1.0.7
-pkgrel=0
-pkgdesc="kmfl engine for IBus"
+pkgver=1.0.8
+pkgrel=1
+pkgdesc="Keyboard Mapping for Linux (KMFL) input method for IBus"
 arch=('i686' 'x86_64')
 url="http://kmfl.sourceforge.net/"
 license=('GPL')
-source=("http://packages.sil.org/ubuntu/pool/main/i/ibus-kmfl/ibus-kmfl_1.0.7.orig.tar.gz"
-        "http://packages.sil.org/ubuntu/pool/main/i/ibus-kmfl/ibus-kmfl_1.0.7-0ubuntu1.13.diff.gz")
-depends=('kmflcomp' 'libkmfl')
+source=("https://sourceforge.net/projects/kmfl/files/kmfl/ibus-kmfl/ibus-kmfl-$pkgver.tar.gz")
+depends=('kmflcomp' 'libkmfl' 'libibus')
 noextract=()
 options=()
-md5sums=('1cc33d159b0b8103dc979dd1bb63b72e' '8d75e3ec845e4ecc1763cd21a9bd7392')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/${pkgname}_$pkgver-0ubuntu1.13.diff"
-}
+md5sums=('af2357d253b6db9f5d8e9a15d6af6f93')
 
 build() {
-    LDFLAGS="${LDFLAGS} -lX11"
+	LDFLAGS="${LDFLAGS} -lX11"
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
@@ -29,3 +25,23 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
+
+post_install() {
+	echo '-----------------------------------------------------------------------------'
+	echo 'INFORMATION: newly installed ibus-kmfl engine does not contain keyboard'
+	echo 'layouts which can be obtained from the web-sites:'
+	echo ''
+	echo '* http://tavultesoft.com/keyman/downloads/keyboards/'
+	echo '* https://github.com/keymanapp/keyboards'
+	echo ''
+	echo 'Uncompiled Keyman-style keyboard files (*.kmn) should be copied into the'
+	echo "user's directory ~/.kmfl/ or system-wide /usr/share/kmfl/."
+	echo ''
+	echo 'After restarting ibus-deamon new layouts will be available in the'
+	echo 'subcategory "Other". More information about the file format and layout'
+	echo 'description language see on the web-site:'
+	echo ''
+	echo '* https://help.keyman.com/developer/'
+	echo '-----------------------------------------------------------------------------'
+}
+

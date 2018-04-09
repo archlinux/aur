@@ -1,17 +1,16 @@
 pkgbase = ibus-kmfl
-	pkgdesc = kmfl engine for IBus
-	pkgver = 1.0.7
-	pkgrel = 0
+	pkgdesc = Keyboard Mapping for Linux (KMFL) input method for IBus
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = http://kmfl.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = kmflcomp
 	depends = libkmfl
-	source = http://packages.sil.org/ubuntu/pool/main/i/ibus-kmfl/ibus-kmfl_1.0.7.orig.tar.gz
-	source = http://packages.sil.org/ubuntu/pool/main/i/ibus-kmfl/ibus-kmfl_1.0.7-0ubuntu1.13.diff.gz
-	md5sums = 1cc33d159b0b8103dc979dd1bb63b72e
-	md5sums = 8d75e3ec845e4ecc1763cd21a9bd7392
+	depends = libibus
+	source = https://sourceforge.net/projects/kmfl/files/kmfl/ibus-kmfl/ibus-kmfl-1.0.8.tar.gz
+	md5sums = af2357d253b6db9f5d8e9a15d6af6f93
 
 pkgname = ibus-kmfl
 
