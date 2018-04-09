@@ -1,0 +1,25 @@
+pkgbase = keepassxc-wordlists-hunspell
+	pkgdesc = Wordlists generated from system Hunspell dicts for keepassxc
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/wooorm/dictionaries
+	arch = any
+	license = GPL
+	depends = keepassxc>=2.2.0
+	optdepends = hunspell-de
+	optdepends = hunspell-en_US
+	optdepends = hunspell-en_GB
+	optdepends = hunspell-en_CA
+	optdepends = hunspell-en_AU
+	optdepends = hunspell-el
+	optdepends = hunspell-es
+	optdepends = hunspell-fr
+	optdepends = hunspell-he
+	optdepends = hunspell-hu
+	optdepends = hunspell-it
+	optdepends = hunspell-nl
+	optdepends = hunspell-pl
+	optdepends = hunspell-ro
+
+pkgname = keepassxc-wordlists-hunspell
+
