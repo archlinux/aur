@@ -4,8 +4,8 @@
 
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
-pkgver=1.2.8
-pkgrel=2
+pkgver=1.2.10
+pkgrel=1
 pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
@@ -19,7 +19,7 @@ optdepends=(
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/nm-l2tp/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
 validpgpkeys=('E48BD89A1C51BFA28413D18349A7787EF8D3C039') # Douglas Kosovic
-md5sums=('fc0dd71c27c7dc4143448029a02e5dca'
+md5sums=('48c8fe59fd606871561159331523cf3a'
          'SKIP')
 
 prepare() {

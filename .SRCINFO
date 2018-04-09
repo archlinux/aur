@@ -1,7 +1,7 @@
 pkgbase = networkmanager-l2tp
 	pkgdesc = L2TP support for NetworkManager
-	pkgver = 1.2.8
-	pkgrel = 2
+	pkgver = 1.2.10
+	pkgrel = 1
 	url = https://github.com/nm-l2tp/NetworkManager-l2tp
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = networkmanager-l2tp
 	depends = libsecret
 	optdepends = libreswan: IPSec support (recommended)
 	optdepends = strongswan: IPSec support
-	source = network-manager-l2tp-1.2.8.tar.gz::https://github.com/nm-l2tp/network-manager-l2tp/archive/1.2.8.tar.gz
-	source = https://github.com/nm-l2tp/network-manager-l2tp/releases/download/1.2.8/network-manager-l2tp-1.2.8.tar.gz.asc
+	source = network-manager-l2tp-1.2.10.tar.gz::https://github.com/nm-l2tp/network-manager-l2tp/archive/1.2.10.tar.gz
+	source = https://github.com/nm-l2tp/network-manager-l2tp/releases/download/1.2.10/network-manager-l2tp-1.2.10.tar.gz.asc
 	validpgpkeys = E48BD89A1C51BFA28413D18349A7787EF8D3C039
-	md5sums = fc0dd71c27c7dc4143448029a02e5dca
+	md5sums = 48c8fe59fd606871561159331523cf3a
 	md5sums = SKIP
 
 pkgname = networkmanager-l2tp
