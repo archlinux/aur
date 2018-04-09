@@ -1,8 +1,8 @@
 
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=docker-makepkg
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
 url="https://github.com/Thermi/docker-makepkg"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(docker)
 source=("https://github.com/Thermi/docker-makepkg/archive/${pkgver}.tar.gz"
 		"https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/${pkgver}.tar.gz.asc")
-sha256sums=('cf7a11768d217fbf16272c2777365240130f73f2cb1705429296a4dd40a14409'
+sha256sums=('1fa6ee1b367dc05ae30a130dc844acdc5fdd97e570d554743ea7cdd793bbbfbf'
             'SKIP')
 validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
 install=docker_makepkg.install
