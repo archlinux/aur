@@ -38,7 +38,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
         sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch
-        sagemath-singular-4.1.1.patch
+        sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
             '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
@@ -56,6 +56,7 @@ sha256sums=('SKIP'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
             'cc679321c2968d5e74b0ec060979c74019df2995857906bdd1397695b1f24c5c'
+            '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
 
 pkgver() {
@@ -100,6 +101,8 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.1.patch
 # revert usage of development PARI features
   patch -Rp1 -i ../pari-ratpoints.patch
+# don't force c++98 for lcalc (fixes build with NTL 11)
+  patch -p1 -i ../sagemath-lcalc-c++11.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

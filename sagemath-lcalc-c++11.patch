@@ -1,0 +1,10 @@
+--- a/src/sage/libs/lcalc/lcalc_Lfunction.pxd
++++ b/src/sage/libs/lcalc/lcalc_Lfunction.pxd
+@@ -1,6 +1,5 @@
+ # Lcalc requires GNU extensions, it does not strictly conform to any
+ # C++ standard: https://trac.sagemath.org/ticket/23341
+-# distutils: extra_compile_args = -std=gnu++98
+ 
+ cdef extern from "lcalc_sage.h":
+     ctypedef struct doublevec "std::vector<double>":
+
