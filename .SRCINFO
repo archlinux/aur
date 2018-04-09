@@ -1,5 +1,5 @@
 pkgbase = superfamily
-	pkgver = 13.1
+	pkgver = 1.75
 	pkgrel = 1
 	url = http://supfam.org
 	arch = any
@@ -7,7 +7,7 @@ pkgbase = superfamily
 	makedepends = bash
 	depends = hmmer
 	source = http://supfam.org/SUPERFAMILY/downloads/downloads.tar.gz
-	sha512sums = SKIP
+	sha512sums = 2c2bad94a3855d0f529c5747fa269d9b7454f64e923085e05fadbb979a54ef72da617c4157f58971c16f1997a4c94d7b5729faec1840d8e51f81a7ba783bd1ae
 
 pkgname = superfamily
 
