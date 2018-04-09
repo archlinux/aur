@@ -2,12 +2,13 @@
 
 pkgname=h2s
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool that wraps HTTP/HTTPS proxies into a SOCKS5 proxy."
 arch=('x86_64')
 url="https://github.com/Equim-chan/h2s"
 license=('MIT')
 makedepends=('go' 'git')
+backup=(etc/h2s/config.json)
 source=("https://codeload.github.com/Equim-chan/h2s/tar.gz/${pkgver}"
         'h2s.service'
         'config.json')

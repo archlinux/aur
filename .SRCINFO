@@ -1,12 +1,13 @@
 pkgbase = h2s
 	pkgdesc = A simple tool that wraps HTTP/HTTPS proxies into a SOCKS5 proxy.
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Equim-chan/h2s
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
+	backup = etc/h2s/config.json
 	source = https://codeload.github.com/Equim-chan/h2s/tar.gz/0.2.3
 	source = h2s.service
 	source = config.json
