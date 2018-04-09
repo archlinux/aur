@@ -2,13 +2,13 @@
 pkgname=tvlinker
 pkgver=4.0.5
 _pkgver=master
-pkgrel=8
+pkgrel=9
 pkgdesc="TV show link scraper + downloader for Scene-RLS.com w/ debrid link unrestricting and support for a number of download managers across all platforms"
 arch=('any')
 license=('GPL3')
 url="https://tvlinker.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${_pkgver}.tar.gz)
-depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'python-requests', 'nodejs')
+depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'python-requests' 'nodejs')
 makedepends=('python-setuptools')
 optdepends=('python-pysocks' 'aria2' 'pyload' 'persepolis')
 md5sums=('SKIP')
