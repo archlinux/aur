@@ -2,11 +2,11 @@
 # Contributor:
 
 pkgbase=linux-clear
-__basekernel=4.15
-_minor=15
+__basekernel=4.16
+_minor=1
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.15-539
-pkgrel=2
+_clearver=${__basekernel}.1-545
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -28,9 +28,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            '66931bd802eb8d9f09b1f36bb57f24abab13230469ee855e5aaa2f93be2022e0'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -53,7 +53,8 @@ prepare() {
   rm -f firmware/intel-ucode/0f*
 
   # Apply clearlinux patches
-  for i in $(grep "^Patch" ${srcdir}/clearlinux/linux.spec | grep -v 'zero-regs.patch' | sed -n 's/.*: //p'); do
+  for i in $(grep "^Patch" ${srcdir}/clearlinux/linux.spec | grep -v 'zero-regs.patch' |\
+    grep -v '0115-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
@@ -162,9 +163,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
