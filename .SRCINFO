@@ -1,7 +1,7 @@
 pkgbase = amar-installer
 	pkgdesc = Install AMAR repository
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tuxnvape.fr/
 	install = amar.install
 	arch = x86_64

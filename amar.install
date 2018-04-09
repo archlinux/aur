@@ -1,6 +1,6 @@
 post_install() {
-  echo "YOU HAVE TO REENABLE AMAR AFTER THIS UPGRADE"
-  sed -i -e '/^#Do not disable AMAR/,+3d' /etc/pacman.conf 
+  rm /var/lib/pacman/db.lck
+  pacman -Syy 
 }
 
 post_upgrade() {

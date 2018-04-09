@@ -2,7 +2,7 @@
 
 pkgname=amar-installer
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Install AMAR repository"
 arch=('x86_64')
 license=('GPL3')
