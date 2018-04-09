@@ -1,13 +1,13 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp-git
-pkgver=0.0.8
+pkgver=0.0.8.1
 pkgrel=1
 pkgdesc='GTK3 Music Player'
 url='http://openmusicplayer.com/'
 arch=(x86_64)
 license=(GPL3)
-depends=(gstreamer gtkmm3 libclastfm libconfig taglib)
+depends=(gstreamer gtkmm3 libclastfm libconfig sqlite3 taglib)
 makedepends=(git)
 provides=('omp-git')
 conflicts=('omp' 'omp-git')

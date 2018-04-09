@@ -1,6 +1,6 @@
 pkgbase = omp-git
 	pkgdesc = GTK3 Music Player
-	pkgver = 0.0.8
+	pkgver = 0.0.8.1
 	pkgrel = 1
 	url = http://openmusicplayer.com/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = omp-git
 	depends = gtkmm3
 	depends = libclastfm
 	depends = libconfig
+	depends = sqlite3
 	depends = taglib
 	provides = omp-git
 	conflicts = omp
