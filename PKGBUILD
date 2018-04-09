@@ -1,7 +1,7 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.3
-pkgver=9.3.21
+pkgver=9.3.22
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -20,7 +20,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-sha256sums=('b9babc5148188a410e023d7178a5678e989ec2e276498de6cd0028bc331a40e0'
+sha256sums=('1b18ed4aa59bab6283a0d8f3a00b9d896f4588bb2ba88ceef2816cb5c4cce91a'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
@@ -75,5 +75,6 @@ package() {
   install -D -m644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
+
 
 
