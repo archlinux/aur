@@ -1,0 +1,17 @@
+pkgbase = ruby-simctl
+	pkgdesc = Ruby interface to xcrun simctl
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/plu/simctl
+	arch = any
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-cfpropertylist
+	depends = ruby-naturally
+	noextract = simctl-1.6.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/simctl-1.6.3.gem
+	sha1sums = 402364c02d33a9eaf134a82e8c0f4f46de8f6baa
+
+pkgname = ruby-simctl
+
