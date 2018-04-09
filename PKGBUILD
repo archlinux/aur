@@ -1,4 +1,4 @@
-# Maintainer: jacopo <jacopo[at]autistici[dot]org>
+
 pkgname=backlight-openrc
 pkgrel=1
 pkgver=2
@@ -17,11 +17,6 @@ prepare() {
         patch -Np1 -i ../fix_script.patch
 }
 
-#pkgver() {
-#    cd "$srcdir/$pkgname"
-#    printf "r%s" "$(date +%Y%m%d)" "$(git log --pretty=format:'%h' -n 1)"
-#    git tag | tail -n1
-#}
 
 package() {
     cd "$srcdir/$pkgname"
