@@ -3,10 +3,9 @@
 pkgbase=pywand
 pkgname=('python2-wand' 'python-wand')
 pkgver=0.4.4.380068e
-pkgrel=2
+pkgrel=3
 rev=380068e9cc1268a8c20e2fa13621058a68d55cb3
 arch=('i686' 'x86_64')
-makedepends=('python2' 'python' 'imagemagick6')
 url="https://github.com/dahlia/wand"
 license=('MIT')
 #source=(https://github.com/dahlia/${pkgbase}/archive/${pkgver}.tar.gz)
@@ -29,7 +28,8 @@ build() {
 
 package_python2-wand() {
   pkgdesc="Python interface for ImageMagick library (Python 2 build)"
-  depends=('python2' 'imagemagick')
+  depends=('python2' 'imagemagick6')
+  makedepends=('python2' 'imagemagick6')
   replaces=('pywand')
   conflicts=('pywand')
   provides=("pywand=${pkgver}")
@@ -43,7 +43,8 @@ package_python2-wand() {
 
 package_python-wand() {
   pkgdesc="Python interface for ImageMagick library (Python 3 build)"
-  depends=('python' 'imagemagick')
+  depends=('python' 'imagemagick6')
+  makedepends=('python' 'imagemagick6')
 
   cd ${pkgbase}-${pkgver}-py3
   python setup.py install --root="${pkgdir}" --optimize=1
