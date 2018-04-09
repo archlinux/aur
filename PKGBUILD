@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=20180324_172_ge120b0eda
+pkgver=2018.406.0
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
