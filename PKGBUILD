@@ -4,7 +4,7 @@
 # (Contributor) Nick B <Shirakawasuna at gmail _dot_com>
 # (Maintainer) moostik <mooostik_at_gmail.com>
 pkgname=qelectrotech
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="An electric diagram editor"
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ url="https://qelectrotech.org/"
 install='qelectrotech.install'
 license=('GPL2')
 depends=('qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info' 'xdg-utils')
-md5sums=('6fdf6d0a9fa7437e3555d5a940e1a1e3' '757db940a4e189b9b0aae59131cb26d0')
+md5sums=('4012d9814780be8c7758cf9e1bf9eb55'
+         '757db940a4e189b9b0aae59131cb26d0')
 source=("http://download.tuxfamily.org/qet/tags/20151127/${pkgname}-${pkgver}-src.tar.gz" 'install-dir.patch')
 
 prepare() {
