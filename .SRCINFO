@@ -1,6 +1,6 @@
 pkgbase = wlroots-git
 	pkgdesc = Modular Wayland compositor library
-	pkgver = r1924.2e7d886
+	pkgver = r2339.7efd9885
 	pkgrel = 2
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = wlroots-git
 	depends = wayland
 	depends = opengl-driver
 	depends = libxcb
+	depends = xcb-util-errors
 	depends = xcb-util-image
 	depends = xcb-util-wm
 	depends = pixman

@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=r1924.2e7d886
+pkgver=r2339.7efd9885
 pkgrel=2
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
@@ -9,8 +9,8 @@ arch=('x86_64')
 provides=('wlroots')
 conflicts=('wlroots')
 depends=('libcap' 'systemd' 'wayland' 'opengl-driver' 'libxcb'
-         'xcb-util-image' 'xcb-util-wm' 'pixman' 'libinput'
-		 'libxkbcommon')
+         'xcb-util-errors' 'xcb-util-image' 'xcb-util-wm' 'pixman'
+         'libinput' 'libxkbcommon')
 makedepends=('meson' 'ninja')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
@@ -30,10 +30,12 @@ build () {
 	rm -rf build
 	meson build \
 		--prefix /usr \
-		-Denable_xwayland=true \
-		-Denable_libcap=true \
-		-Denable_systemd=true \
-		-Denable_elogind=false
+		-Denable-libcap=true \
+		-Denable-systemd=true \
+		-Denable-elogind=false \
+		-Denable-xcb_errors=true \
+		-Denable-xwayland=true \
+		-Denable-x11_backend=true
 	ninja -C build
 }
 
