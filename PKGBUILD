@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.1.419
+pkgver=1.1.442
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
@@ -26,7 +26,7 @@ source=(
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'597c373092ea3416da2e44fada07734e106b40f961784bf5d951641c18c29f3a'
+	'f4123a532d96a52ee351e9e79972d9aa51ef4bb55529a55b37adc9650eefa984'
 	'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
 	'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
