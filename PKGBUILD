@@ -89,8 +89,11 @@ package() {
   msg2 "If you are planning to boot from a stratis volume remember to make the following changes to '/etc/mkinitcpio.conf':"
   msg2 "Add 'stratis systemd' to HOOKS"
   msg2 "Remove 'udev', 'usr' and 'resume' from HOOKS"
+  msg2 ""
   msg2 "Also run the following:"
   msg2 "systemctl enable stratisd.service"
+  msg2 ""
+  msg2 "Set your root volume to root=/dev/dm-5 in your bootloader config."
 }
 
 # vim: ts=2 sw=2 et:
