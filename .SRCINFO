@@ -1,6 +1,6 @@
 pkgbase = screenshotgun-git
 	pkgdesc = Open cross-platform screenshoter with cloud support and server part
-	pkgver = 0.17_20180409_1
+	pkgver = 0.17_20180409_2
 	pkgrel = 1
 	url = http://screenshotgun.com
 	arch = any
