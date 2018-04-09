@@ -1,0 +1,32 @@
+pkgbase = otr-verwaltung2p-git
+	pkgdesc = Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://www.otrforum.com/showthread.php?67612-OTR-Verwaltung-durch-Patches-erweiterte-OTR-Verwaltung-Betatest
+	arch = any
+	license = GPL3
+	makedepends = python2-distutils-extra
+	depends = pygtk
+	depends = python2-xdg
+	depends = python2-dbus
+	depends = python2-simplejson
+	depends = libtorrent-rasterbar
+	depends = gstreamer0.10
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-ugly-plugins
+	depends = gstreamer0.10-gnonlin
+	depends = gstreamer0.10-ffmpeg
+	depends = gstreamer0.10-python
+	depends = mplayer
+	depends = aria2
+	depends = wget
+	optdepends = avidemux-cli: If you do NOT want to use Smartmkvmerge for divx (not recommended)
+	optdepends = avidemux-qt: If you do NOT want to use the internal Cutinterface (not recommended)
+	optdepends = wine: If you want to use virtualdub (only needed for old recordings (2011 and earlier))
+	optdepends = mediainfo-gui: For mediainfo-gui
+	source = git+https://github.com/monarc99/otr-verwaltung.git#branch=master
+	sha256sums = SKIP
+
+pkgname = otr-verwaltung2p-git
+
