@@ -1,16 +1,16 @@
 pkgbase = ruby-sexp_processor
 	pkgdesc = A branch of ParseTree that brings several sexp processing tools.
-	pkgver = 4.10.1
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/seattlerb/sexp_processor
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = sexp_processor-4.10.1.gem
+	noextract = sexp_processor-4.11.0.gem
 	options = !emptydirs
-	source = http://gems.rubyforge.org/gems/sexp_processor-4.10.1.gem
-	sha256sums = 63d2297712eb1d6219ab1cb9207d9a239ac9ad20463c0b58ca865f0b46deb5ec
+	source = http://gems.rubyforge.org/gems/sexp_processor-4.11.0.gem
+	sha256sums = 4c90ff17c492789fdd248369fa16ce65ef05576b3d9f593a49c6a0961dbcd5ee
 
 pkgname = ruby-sexp_processor
 
