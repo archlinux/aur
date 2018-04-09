@@ -10,7 +10,7 @@ url="https://lvc.github.io/abi-compliance-checker/"
 license=('GPL')
 depends=(gcc binutils perl)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/lvc/abi-compliance-checker/archive/${pkgver}.tar.gz)
-md5sums=('6dec8bdfd18902ecfb7b040ff328e453')
+sha256sums=('9fb7b17e33d49e301d02a6374fbd2596feb53ecc77194879a4e1c2d1e24b4ddb')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
