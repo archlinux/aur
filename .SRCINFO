@@ -1,6 +1,6 @@
 pkgbase = share-moe-paste-git
 	pkgdesc = This is a command-line tool that makes a paste from a file, clipboard or standard input and uploads it to shr.moe
-	pkgver = 0.8.0.r0.3b156b5b
+	pkgver = 0.8.2.r0.843b6aa7
 	pkgrel = 1
 	url = https://gitgud.io/rarity/share-moe-paste
 	arch = any
