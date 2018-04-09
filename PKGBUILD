@@ -6,7 +6,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=66.0.3359.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
