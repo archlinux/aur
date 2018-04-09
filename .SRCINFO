@@ -1,4 +1,4 @@
-pkgbase = pywand
+pkgbase = python-wand
 	pkgdesc = Python interface for ImageMagick library (Python 3 build)
 	pkgver = 0.4.4.380068e
 	pkgrel = 4
