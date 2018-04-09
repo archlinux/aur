@@ -1,0 +1,13 @@
+pkgbase = keepassxc-wordlist-german
+	pkgdesc = German diceware wordlist for keepassxc
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://world.std.com/~reinhold/diceware.html
+	arch = any
+	license = GPL
+	depends = keepassxc>=2.2.0
+	source = http://world.std.com/~reinhold/diceware_german.txt
+	sha256sums = 1cd57a662308a0acc03be6f069b5ef86ca4cb3411a958dcc14874b2b48cb6974
+
+pkgname = keepassxc-wordlist-german
+
