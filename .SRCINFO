@@ -1,0 +1,18 @@
+pkgbase = python-openid-cla
+	pkgdesc = CLA extension for python-openid
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/puiterwijk/python-openid-cla/
+	arch = any
+	license = BSD
+	source = https://github.com/puiterwijk/python-openid-cla/archive/v1.2.tar.gz
+	sha256sums = 1ca811f26cc4609b3d2a283c526732e6a75cc9f4f0e43039518e244d7f8939a2
+
+pkgname = python-openid-cla
+	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)
+	depends = python-openid
+
+pkgname = python2-openid-cla
+	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 2 version)
+	depends = python2-openid
+
