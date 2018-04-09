@@ -2,28 +2,23 @@
 
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
 license=('LGPL')
 depends=('unixodbc>=2.3' 'openssl')
-makedepends=('mariadb-connector-c>=3')
+makedepends=("mariadb-connector-c=$pkgver")
 options=('staticlibs')
-source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz"
-        "fix_param_ignore.patch")
+source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz")
 
-sha1sums=('b3df774d5ffc9ebed0bed0a0502595e7435ac7d6'
-          'a0cec385d6686ee741e23bfd458bbde5ef5c0964')
+sha1sums=('841b89bc8f98ebb84c27ad5cd38843f742b1a28d')
 
 install=mariadb-connector-odbc.install
 
 prepare() {
-    _src="$srcdir/$pkgname-$pkgver-ga-src"
-    cd "$_src"
-    patch -s -p1 < ../fix_param_ignore.patch
-    cd ..
+    cd "$srcdir"
     rm -Rf build
     mkdir build
     cd build
