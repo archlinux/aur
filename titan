@@ -4,11 +4,7 @@
 owner=$(stat -c '%U' /opt/Titan/Titan.exe)
 
 if [ "$owner" != "$USER" ]; then
-    sudo chown "$USER" /opt/Titan
-    
-    for f in $(ls -d $(find /opt/Titan)); do
-        sudo chown "$USER" "$f"
-    done
+    sudo chown -R "$USER" "/opt/Titan"
 fi
 
-mono /opt/Titan/Titan.exe
+TERM=xterm mono /opt/Titan/Titan.exe

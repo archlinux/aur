@@ -1,7 +1,7 @@
 # Maintainer: Marc Steiner (Marc3842h) <info@marcsteiner.me>
 _pkgname=titan-bot
 pkgname=titan-bot-git
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=3
 pkgdesc="A free, advanced CS:GO report and commendation bot built with performance and ease-of-use in mind"
 arch=("x86_64")
@@ -13,8 +13,8 @@ provides=("titan-bot")
 install="Titan.install"
 source=("git://github.com/Marc3842h/Titan.git" "titan" "Titan.desktop")
 sha256sums=("SKIP" 
-            "577ae737b51d0d8fb0b66bd7f8199345c4ee1b1c98ee2cdc0cf254a3146ce98c" 
-            "0340ee6a5ec048c5b994bbdbba9337989a1dd415c5765560401f20acad96cf1b")
+            "0c2250f46f7420e0ae09cf2d9984ace33b9f2bb8bb2dfd1b0f5fc7a51916c9ef" 
+            "9355cdee632ce299182866bf8f5be425b6266c93d74110fce2d0130b15d891a2")
 
 build() {
     cd Titan
