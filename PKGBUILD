@@ -1,6 +1,6 @@
   # Maintainer:  solaraquarion <shlomochoina@gmial.com>
 pkgname=extraterm
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators."
 arch=("i686" "x86_64")
@@ -9,8 +9,8 @@ license=("MIT")
 depends=("nodejs")
 source_i686=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-ia32.zip")
 source_x86_64=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-x64.zip")
-sha256sums_i686=('39e89115ed40aa6da06be6b986f07b02e054360e52106f6405c96d62fb02636b')
-sha256sums_x86_64=('5191177b737b1a3b9d51fe0938f5b1df9aed0560387a4175f089843f6a995c81')
+sha256sums_i686=('c47f2a42d14e1ac82b24dc836e3d9549e98fc165b866bc5698247502472d4883')
+sha256sums_x86_64=('d04161dd14b8195d01ecaaad4b3fc9e9d6bbba0f12c71679bb639b99cf89e717')
 
 prepare(){
 rm -rf "$srcdir/$pkgname-$pkgver"
