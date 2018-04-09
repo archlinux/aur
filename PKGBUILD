@@ -1,7 +1,7 @@
 # Maintainer: Timothée Ravier <tim@siosm.fr>
 
 pkgname=(python2-dulwich python-dulwich)
-pkgver=0.18.5
+pkgver=0.19.2
 pkgrel=2
 pkgdesc='Pure-Python implementation of the Git file formats and protocols'
 arch=('any')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('python2' 'python')
 options=(!emptydirs)
 source=("https://github.com/jelmer/dulwich/archive/dulwich-${pkgver}.tar.gz")
-md5sums=('d20dbdb2ec7a1ae6570bb446cce70f7b')
+md5sums=('279c9b467aeafdf397d3a51b1d2364c7')
 
 build() {
   cd "dulwich-dulwich-${pkgver}"
