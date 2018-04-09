@@ -1,1 +1,2 @@
 d /run/c-icap 0755 proxy proxy -
+d /var/log/c-icap 0750 proxy proxy -
