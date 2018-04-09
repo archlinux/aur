@@ -4,12 +4,12 @@
 pkgname=perl-gnome2-vte
 _cpanname=Gnome2-Vte
 pkgver=0.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Perl interface to the Virtual Terminal Emulation library "
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://search.cpan.org/~TSCH/${_cpanname}"
 license=('GPL' 'PerlArtistic')
-depends=('perl-extutils-pkgconfig>=1.03' 'gtk2-perl>=1.00' 'glib-perl>=1.01' 'perl-extutils-depends>=0.20' 'vte')
+depends=('perl-extutils-pkgconfig>=1.03' 'gtk2-perl>=1.00' 'glib-perl>=1.01' 'perl-extutils-depends>=0.20' 'vte-legacy')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/X/XA/XAOC/${_cpanname}-${pkgver}.tar.gz")
 md5sums=('1cb5cdfcd41873e55e923e72e64d922c')
