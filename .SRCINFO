@@ -1,6 +1,6 @@
 pkgbase = gajim-plugin-omemo
 	pkgdesc = Gajim plugin for OMEMO Multi-End Message and Object Encryption.
-	pkgver = 2.5.8
+	pkgver = 2.5.9
 	pkgrel = 1
 	url = https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = gajim-plugin-omemo
 	depends = python-axolotl
 	provides = gajim-plugin-omemo
 	conflicts = gajim-plugin-omemo-git
-	source = https://dev.gajim.org/gajim/gajim-plugins/uploads/e6f6f9425a460b9360a289025db8ff92/omemo_2.5.8.zip
-	sha512sums = 35f49d9dd6232a3e0703d312ddedb008accc9010629b32faf52fa1ecfa68537b892aa02ca4951f061cf4d1d6fe163e5d9156241fc188002c118fb5a6c6449427
+	source = https://dev.gajim.org/gajim/gajim-plugins/uploads/b71543b02243731e85cf9c83a8c57cbb/omemo_2.5.9.zip
+	sha512sums = bdb6db22ff1d0ac178c0c420a24b915e0cadbb1b34da59fc43d3def5e0414e0d2cf84cb7b3f56d5a5e34b325985fa53b507cc7aad14ab11606413c8d16f026fe
 
 pkgname = gajim-plugin-omemo
 
