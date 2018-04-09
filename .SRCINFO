@@ -1,8 +1,8 @@
 pkgbase = natron
 	pkgdesc = Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry.
-	pkgver = 2.3.4
+	pkgver = 2.3.10
 	pkgrel = 1
-	url = https://github.com/MrKepzie/Natron
+	url = https://github.com/NatronGitHub/Natron
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -21,14 +21,13 @@ pkgbase = natron
 	depends = openfx-misc
 	optdepends = openfx-arena: Extra OpenFX plugins for Natron includes text node
 	optdepends = natron-plugins
-	optdepends = firejail-extras: Run Natron with an isolated enviorment
-	source = natron::git+https://github.com/MrKepzie/Natron.git#tag=2.3.4
+	source = natron::git+https://github.com/NatronGitHub/Natron.git#tag=2.3.10
 	source = git+https://github.com/devernay/openfx.git
-	source = git+https://github.com/MrKepzie/google-test.git
-	source = git+https://github.com/MrKepzie/google-mock.git
-	source = git+https://github.com/MrKepzie/SequenceParsing.git
-	source = git+https://github.com/MrKepzie/tinydir
-	source = https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v2.3.tar.gz
+	source = git+https://github.com/NatronGitHub/google-test.git
+	source = git+https://github.com/NatronGitHub/google-mock.git
+	source = git+https://github.com/NatronGitHub/SequenceParsing.git
+	source = git+https://github.com/NatronGitHub/tinydir
+	source = https://github.com/NatronGitHub/OpenColorIO-Configs/archive/Natron-v2.3.tar.gz
 	source = config.pri
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -36,7 +35,7 @@ pkgbase = natron
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 3150970fe1de1c30fe6e58b999249c6c1157c7f60b6e21c316e6690112aabc0d2908f1735f9b51cc70611297a25cefc59d57dbbe4b7155f8775700d12372ae5d
+	sha512sums = 72f90b173009c30ae3e152e8496bada94e0c9371c58901cbfb0b4dc1ffab24f5d93c7a218d6f1fe90761a736cbc50622bbc9d98a41a3b7c91b390ef945e54f12
 	sha512sums = 48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a
 
 pkgname = natron

@@ -4,22 +4,22 @@
 # Contributor: liberodark
 
 pkgname=natron
-pkgver=2.3.4
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
-url="https://github.com/MrKepzie/Natron"
+url="https://github.com/NatronGitHub/Natron"
 license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
 makedepends=('git' 'expat' 'boost')
-optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node' 'natron-plugins' 'firejail-extras: Run Natron with an isolated enviorment')
-source=("$pkgname::git+https://github.com/MrKepzie/Natron.git#tag=$pkgver"
+optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node' 'natron-plugins')
+source=("$pkgname::git+https://github.com/NatronGitHub/Natron.git#tag=$pkgver"
         "git+https://github.com/devernay/openfx.git"
-        "git+https://github.com/MrKepzie/google-test.git"
-        "git+https://github.com/MrKepzie/google-mock.git"
-        "git+https://github.com/MrKepzie/SequenceParsing.git"
-        "git+https://github.com/MrKepzie/tinydir"
-        "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
+        "git+https://github.com/NatronGitHub/google-test.git"
+        "git+https://github.com/NatronGitHub/google-mock.git"
+        "git+https://github.com/NatronGitHub/SequenceParsing.git"
+        "git+https://github.com/NatronGitHub/tinydir"
+        "https://github.com/NatronGitHub/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
 sha512sums=('SKIP'
             'SKIP'
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3150970fe1de1c30fe6e58b999249c6c1157c7f60b6e21c316e6690112aabc0d2908f1735f9b51cc70611297a25cefc59d57dbbe4b7155f8775700d12372ae5d'
+            '72f90b173009c30ae3e152e8496bada94e0c9371c58901cbfb0b4dc1ffab24f5d93c7a218d6f1fe90761a736cbc50622bbc9d98a41a3b7c91b390ef945e54f12'
             '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
 
 prepare() {
@@ -48,7 +48,7 @@ prepare() {
   cd ../..
 
   mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
-  # Fix for gcc{6,7} build issues
+  # Fix for gcc(>=6) build issues
   sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
   sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Engine/Engine.pro
   sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Tests/Tests.pro
