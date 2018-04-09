@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname=${_target}-newlib
-pkgver=3.0.0
+pkgver=3.0.0.20180226
 pkgrel=1
 pkgdesc="C library for bare metal systems for the ${_target} target."
 arch=(any)
@@ -11,17 +11,11 @@ license=('BSD')
 groups=(devel)
 depends=("${_target}-gcc-stage1" "${_target}-binutils")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
-source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz"
-        fix_call_exit_procs.patch)
-sha256sums=('c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332'
-            'd1b2a7d12de24841b3210de09bf52c7c8babdabbdfbc2caa818b2ae805959a7c')
+source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
+sha256sums=('d0b40c874c3047eccbf06fe916d3fc746bd94e8a4cd14c54381b2f72f68c5665')
 
 prepare() {
   cd "${srcdir}/newlib-${pkgver}"
-
-  # apply commit b7e0f286a2ecab3b687ec9b3f95f5a88b9f85310 so we can actually
-  # build newlib with --enable-lite-exit
-  patch -p1 < ../fix_call_exit_procs.patch
 
   [[ -d newlib-build ]] && rm -rf newlib-build
   mkdir newlib-build
