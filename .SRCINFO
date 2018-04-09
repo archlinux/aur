@@ -1,7 +1,7 @@
 pkgbase = inox-edgy
 	pkgdesc = Chromium nightly snapshots, without google blobs
 	pkgver = 67.0.3389.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-edgy.install
 	arch = i686
