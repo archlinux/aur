@@ -1,0 +1,60 @@
+{
+  // bind is the address h2s will listen to.
+  // Note that since HTTP/HTTPS proxy support only TCP, the h2s wrapped SOCKS5
+  // proxy consequently support only TCP as well.
+  "bind": "127.0.0.1:1080",
+
+  // upstreams are HTTP proxy upstreams.
+  // h2s will do a simple round-robin load balance.
+  "upstreams": [{
+    // If no port is specified, 80 is assumed by default.
+    "address": "proxy1.example.com",
+  }, {
+    "address": "proxy2.example.com:3128",
+
+    // username and password are optional for HTTP authentication.
+    "username": "Alice",
+    "password": "secret here"
+  }, {
+    // An HTTPS proxy (HTTP over TLS) upstream.
+    // You have to specify port explicitly (usually 443), and set the tls field.
+    "address": "secure.proxy.example.com:443",
+    "username": "Secure",
+    "password": "Yeah!",
+
+    // h2s only provides some basic TLS settings. If you are an advanced user and
+    // looking for other settings, you may use stunnel(1) to handle TLS instead,
+    // and simply leave a naive TCP interface to h2s.
+    "tls": {
+      // If empty, serverName is set to the hostname from address.
+      // Most users could just leave it empty.
+      "serverName": "secure.proxy.example.com",
+
+      // Do not set to true unless you know what you are doing.
+      "insecureSkipVerify": false,
+
+      // rootCA is useful for self-signed certs. Be careful with it.
+      // If the server has a trusted cert, you don't have to set it.
+      "rootCA": "/path/to/the/ca/cert",
+
+      // certFile and keyFile are advanced options for client authentication.
+      // Most users could just leave it empty.
+      "certFile": "/path/to/the/client/cert",
+      "keyFile": "/path/to/the/client/key"
+    }
+  }],
+
+  // accounts is an optional array of accounts for SOCKS5 authentication
+  // with no accounts, authentication is disabled
+  "accounts": [{
+    "username": "test server",
+    "password": "test"
+  }],
+
+  // timeout optionally sets timeout value when dialing to a upstream
+  // default "20s"
+  "timeout": "20s",
+  // retries optionally specifies the max retries count of dialing to upstreams
+  // default 3.
+  "retries": 3
+}

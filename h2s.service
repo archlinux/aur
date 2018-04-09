@@ -1,0 +1,13 @@
+[Unit]
+Description=H2S Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/h2s-%i.pid
+ExecStart=/usr/bin/env h2s.location.asset=/etc/h2s /usr/bin/h2s -config /etc/h2s/%i.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
