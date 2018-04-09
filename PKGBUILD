@@ -1,11 +1,11 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_branch=4.15
+_branch=4.16
 _build_from=tarball
 #_build_from=git
 #_build_from=git-mirror
-pkgver=4.15.15
+pkgver=4.16.1
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -19,9 +19,9 @@ case $_build_from in
             "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
             "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
             "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign")
-    sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+    sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
                 'SKIP'
-                'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+                '66931bd802eb8d9f09b1f36bb57f24abab13230469ee855e5aaa2f93be2022e0'
                 'SKIP')
     ;;
   git)
@@ -53,7 +53,7 @@ source+=(
         '0001-xhci-demote-annoying-warning.patch'
         )
 sha256sums+=(
-            '24c4bddca64e232a9af6c0a6193cbd4e9a36e2c060f46ffa73bcbc45c41345cb'
+            'd199afb86eb0ce3d883b74e5174b65f6a3d23e28640e9ee2232dbf25a134e8ce'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
