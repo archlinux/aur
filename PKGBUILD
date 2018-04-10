@@ -18,8 +18,9 @@ sha512sums_x86_64=("140ab81dae2e1a0cdf25f390c392c44cc787298f9d500b6f3f0883acd664
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	cat "synergy.service"
-	mv "synergy.service" "${pkgdir}/lib/systemd/system/synergy.service"
+	ls
+	cat "../synergy.service"
+	mv "../synergy.service" "${pkgdir}/lib/systemd/system/synergy.service"
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
