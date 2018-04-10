@@ -7,7 +7,7 @@ pkgbase = gotop-bin
 	arch = i686
 	license = AGPLv3
 	provides = gotop
-	source = https://github.com/cjbassi/gotop/releases/download/1.2.5/gotop-1.2.5-linux_amd64.tgz
+	source = https://github.com/cjbassi/gotop/releases/download/1.2.5/gotop_1.2.5_linux_amd64.tgz
 	md5sums = SKIP
 
 pkgname = gotop-bin
