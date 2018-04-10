@@ -3,44 +3,42 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-dconf
-pkgver=0.26.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='A low-level configuration system'
 arch=('x86_64')
 url='https://live.gnome.org/dconf'
 license=('LGPL2.1')
 depends=('dconf' 'lib32-glib2')
-makedepends=('docbook-xsl' 'gcc-multilib' 'intltool' 'python' 'vala')
+makedepends=('docbook-xsl' 'gcc-multilib' 'intltool' 'meson' 'python' 'vala')
 source=("https://download.gnome.org/sources/dconf/${pkgver%.*}/dconf-${pkgver}.tar.xz")
-sha256sums=('d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535')
+sha256sums=('61d3b3865ef58b729c3b39aa0979f886c014aa8362f93dcfc74bf5648ed9c742')
 
 prepare() {
-  cd dconf-${pkgver}
-
-  sed 's/ editor//g' -i Makefile.in
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
 }
 
 build() {
-  cd dconf-${pkgver}
+  cd build
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure \
-    --prefix='/usr' \
+  arch-meson ../dconf-${pkgver} \
     --libdir='/usr/lib32' \
     --libexecdir='/usr/lib32/dconf' \
-    --disable-editor \
-    --disable-gtk-doc-html \
-    --disable-man
-  make
+    -Denable-man=false
+  ninja
 }
 
 package() {
-  cd dconf-${pkgver}
+  cd build
 
-  make completiondir='/usr/share/bash-completion/completions' DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
