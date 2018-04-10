@@ -1,12 +1,13 @@
 pkgbase = mate-indicator-applet
 	pkgdesc = Applet to display information from various applications consistently in the MATE panel.
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mate-desktop/mate-indicator-applet
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = intltool
+	makedepends = mate-common
 	depends = mate-panel
 	depends = libappindicator-gtk3
 	depends = ido
