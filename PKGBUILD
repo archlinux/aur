@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of an ICAP server'
 arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
@@ -50,6 +50,9 @@ package() {
       -e 's/^ServerAdmin\s.*/ServerAdmin root@localhost/g' \
       -e 's/^ServerName\s.*/ServerName localhost/g' \
       -e 's/^DebugLevel\s.*/DebugLevel 0/g' \
+      -e 's/^RemoteProxyUsers\s.*/RemoteProxyUsers on/g' \
+      -e 's/^RemoteProxyUserHeader\s.*/RemoteProxyUserHeader X-Client-Username/g' \
+      -e 's/^RemoteProxyUserHeaderEncoded\s.*/RemoteProxyUserHeaderEncoded off/g' \
       -e 's:/usr/local/c-icap/etc:/etc/c-icap:g' \
       -e 's:/usr/var/log:/var/log/c-icap:g' \
       -e '$ a\\' \
