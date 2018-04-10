@@ -1,12 +1,12 @@
 _origpkgname=obspy
 pkgname=python-$_origpkgname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python framework for processing seismological data'
 arch=('i686' 'x86_64')
 url="http://obspy.org/"
 license=('LGPL3')
-depends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-lxml' 'python-sqlalchemy' 'python-future' 'python-requests')
+depends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-lxml' 'python-sqlalchemy' 'python-future' 'python-requests' 'python-decorator')
 optdepends=('python-basemap: for plotting maps'
             'python-suds-jurko: for obspy.neries')
 makedepends=('python-distribute')
