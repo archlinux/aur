@@ -4,8 +4,8 @@ pkgname=ripple-ledger-bin
 pkgdesc='Ripple wallet GUI for the Ledger Hardware Wallet'
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-wallet-ripple'
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 conflicts=('ripple-ledger')
 options=('!strip')
 arch=('x86_64')
@@ -13,7 +13,7 @@ deb_package="ledger_wallet_ripple_linux_x64_${pkgver}.deb"
 source_x86_64=(
   "${url}/releases/download/${pkgver}/${deb_package}"
 )
-sha256sums_x86_64=(bc90e18e7747d3a55fc3e4fc9b3301afe071c152169e11f03de4c2c352cae5d8)
+sha256sums_x86_64=(6e3ce86ef9a4c4998a3d86394baa09e9b4e485cf202b1959fb685344ae76158f)
 
 install=ripple-ledger-bin.install
 
