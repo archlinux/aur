@@ -1,0 +1,14 @@
+pkgbase = python-fido2
+	pkgdesc = Library for FIDO 2.0, including communication with a device over USB
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Yubico/python-fido2
+	arch = any
+	license = custom:BSD-2-clause
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/Yubico/python-fido2/archive/0.2.1.tar.gz
+	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
+	sha256sums = 32497f371b13ef13b68f4b7cd1a188d966c0e6918ff0c586dbbceb4629a35ac9
+
+pkgname = python-fido2
