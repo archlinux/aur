@@ -12,6 +12,7 @@ pkgbase = excalibar-git
 	depends = libxcb
 	depends = cairo
 	depends = pango
+	depends = libmpdclient
 	source = git+https://github.com/cylgom/excalibar.git
 	source = git+https://github.com/benhoyt/inih.git
 	md5sums = SKIP
