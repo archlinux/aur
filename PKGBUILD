@@ -9,7 +9,7 @@ url="https://github.com/arcticicestudio/nord-vim"
 license=("Apache", "CC-BY-SA-4.0")
 depends=("vim")
 makedepends=("git")
-source=("$pkgname::git+https://github.com/arcticicestudio/nord-vim.git#tag=$pkgver")
+source=("$pkgname::git+https://github.com/arcticicestudio/nord-vim.git#tag=v$pkgver")
 md5sums=("SKIP")
 
 package() {
