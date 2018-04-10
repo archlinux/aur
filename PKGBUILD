@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lr-git
-pkgver=1.0.r5.g4b154cd
+pkgver=1.3.r217.fd3d9c2
 pkgrel=1
 epoch=
 pkgdesc="List files, recursively"
@@ -13,7 +13,7 @@ makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=()
-conflicts=()
+conflicts=("${pkgname%-*}")
 replaces=()
 backup=()
 options=()
@@ -25,7 +25,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -36,6 +37,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
+  install -Dm644 contrib/lr.el $pkgdir/usr/share/${pkgname%-*}/lr.el
   install -Dm644 contrib/lr.vim $pkgdir/usr/share/${pkgname%-*}/lr.vim
   install -Dm755 contrib/lrls $pkgdir/usr/share/${pkgname%-*}/lrls
   install -Dm755 contrib/lrocate $pkgdir/usr/share/${pkgname%-*}/lrocate
