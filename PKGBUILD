@@ -2,7 +2,7 @@
 
 _pkgname=doctl
 pkgname=doctl-bin
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A command line tool for DigitalOcean services"
 url="https://github.com/digitalocean/doctl"
@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 options=('strip')
 source=(https://github.com/digitalocean/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz)
-sha512sums=('e697717ef4cbda76fa3c99198243323d92816d9040ab9779db23d165dccf9b08f140070dbb752006f17a23d0e81a837040f7d802a58ea1d70ea373def351856d')
+sha512sums=('0b5c8492446fc2c3808e3a053b220d63db85288e106b63ca4744ed8c376ec03e14ac93fbed8310c848bb6167644db305b1289eebe3846b14761caba4ef71287f')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
