@@ -1,7 +1,7 @@
 pkgbase = flashplayer-standalone
 	pkgdesc = Adobe Flash Player Standalone (A.K.A. Adobe Flash Player Projector)
-	pkgver = 29.0.0.113
-	pkgrel = 3
+	pkgver = 29.0.0.140
+	pkgrel = 1
 	url = http://www.adobe.com/support/flashplayer/downloads.html
 	arch = x86_64
 	license = custom:ADOBE
@@ -12,8 +12,8 @@ pkgbase = flashplayer-standalone
 	depends = nss
 	optdepends = alsa-lib: for sound through alsa
 	options = !strip
-	source = flashplayer-standalone-29.0.0.113.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/29/flash_player_sa_linux.x86_64.tar.gz
-	sha256sums = 888cc3d18131d197daa6a70ef43fd7bdf49612875f884c7035bae03502d7bc9f
+	source = flashplayer-standalone-29.0.0.140.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/29/flash_player_sa_linux.x86_64.tar.gz
+	sha256sums = d41512dc6822fd970a694edb581a3d83ce524091c8afc8613f891f42010b4221
 
 pkgname = flashplayer-standalone
 
