@@ -1,6 +1,6 @@
 # Maintainer: sommd <d.j.s.1050@gmail.com>
 pkgname=garlium-git
-pkgver=3.0.3.1.r166.g1341214c
+pkgver=3.0.3.1.r178.g4583027f
 pkgrel=1
 pkgdesc="A lightweight desktop wallet for Garlicoin, based on Electrum."
 arch=('any')
