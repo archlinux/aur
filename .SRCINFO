@@ -1,0 +1,18 @@
+pkgbase = systemd-cloud-watch
+	pkgdesc = This utility reads from the systemd journal, and sends the data in batches to CloudWatch.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://advantageous.github.io/systemd-cloud-watch/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	depends = libsystemd
+	source = https://github.com/advantageous/systemd-cloud-watch/archive/v0.2.1.tar.gz
+	source = systemd-cloud-watch.service
+	md5sums = 53c7929af569434caada158896515baf
+	md5sums = 2c610fe0e0677624ab3cd06ef14de22f
+
+pkgname = systemd-cloud-watch
+

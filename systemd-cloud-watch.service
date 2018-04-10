@@ -1,0 +1,12 @@
+[Unit]
+Description=Forward journald logs to CloudWatch
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/systemd-cloud-watch /etc/systemd-cloud-watch.conf
+KillMode=process
+Restart=on-failure
+RestartSec=42s
