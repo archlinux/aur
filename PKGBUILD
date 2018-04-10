@@ -3,7 +3,7 @@
 _name=readme_renderer
 pkgbase="python-${_name//_/-}"
 pkgname=("python-${_name//_/-}" "python2-${_name//_/-}")
-pkgver=17.3
+pkgver=18.1
 pkgrel=1
 pkgdesc='Python library to safely render arbitrary README files into HTML'
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('54d723fed4e3916b69afbf61099d8c22c8c7d7a123ab6d79cd81991404486f00')
+sha256sums=('e18cab7f1b07412990df1b59e1be04e1538f514a5bba53ec8777bfc5aac27563')
 
 
 prepare() {
@@ -28,7 +28,8 @@ build() {
 }
 
 package_python-readme-renderer() {
-  depends+=('python-bleach>=2.0.0' 'python-docutils' 'python-pygments')
+  depends+=('python-bleach>=2.1.0' 'python-cmarkgfm' 'python-docutils' 'python-future'
+            'python-pygments')
   conflicts=('python-readme')
   provides=('python-readme')
 
@@ -37,7 +38,8 @@ package_python-readme-renderer() {
 }
 
 package_python2-readme-renderer() {
-  depends+=('python2-bleach>=2.0.0' 'python2-docutils' 'python2-pygments')
+  depends+=('python2-bleach>=2.1.0' 'python2-cmarkgfm' 'python2-docutils' 'python2-future'
+            'python2-pygments')
   conflicts=('python2-readme')
   provides=('python2-readme')
 
