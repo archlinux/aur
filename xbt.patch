@@ -1,33 +1,5 @@
---- src/engine/iso-4217-currencies.c.orig	2015-01-02 18:34:12.445021803 +0100
-+++ src/engine/iso-4217-currencies.c	2015-01-02 18:38:34.565784519 +0100
-@@ -4142,6 +4142,24 @@
-   }
- 
-   {
-+    const char *fullname = "Bitcoin";
-+    gnc_commodity *c = gnc_commodity_new(book,
-+                     CUR_I18N(fullname),
-+                                         "ISO4217",
-+                                         "XBT",
-+                                         "nil",
-+                                         1000000);
-+
-+    if(!c) {
-+      PWARN("failed to create commodity for currency %s", fullname);
-+    } else {
-+      if(!gnc_commodity_table_insert(table, c)) {
-+        PWARN("failed to insert %s into commodity table", fullname);
-+      }
-+    }
-+  }
-+
-+  {
-     const char *fullname = "Silver";
-     gnc_commodity *c = gnc_commodity_new(book,
- CUR_I18N(fullname),
-
---- src/engine/iso-4217-currencies.xml.orig	2015-04-04 08:48:15.854870167 +0200
-+++ src/engine/iso-4217-currencies.xml	2015-04-04 08:48:32.791594789 +0200
+--- libgnucash/engine/iso-4217-currencies.xml.orig	2015-04-04 08:48:15.854870167 +0200
++++ libgnucash/engine/iso-4217-currencies.xml	2015-04-04 08:48:32.791594789 +0200
 @@ -2953,6 +2953,20 @@
    smallest-fraction="1000000"
    local-symbol=""

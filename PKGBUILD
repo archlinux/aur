@@ -2,48 +2,54 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.19
+pkgver=3.0
 pkgrel=1
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('guile2.0' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf')
-makedepends=('intltool' 'gcc' 'pkgconfig')
-optdepends=('evince: for print preview'
-			'yelp: help browser'
-            'perl-finance-quote: for stock information lookups'
-            'perl-date-manip: for stock information lookups')
+depends=('libmariadbclient' 'postgresql-libs' 'aqbanking' 'webkit2gtk' 'boost-libs' 'libsecret' 'libdbi-drivers')
+makedepends=('boost' 'gmock' 'gwenhywfar' 'cmake')
+optdepends=(
+	'gnucash-docs: for documentation'
+	'iso-codes: for translation of currency names'
+	'perl-finance-quote: for stock information lookups'
+	'perl-date-manip: for stock information lookups'
+)
 options=('!makeflags' '!emptydirs')
 conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
 		"xbt.patch")
-sha1sums=('d2ae5c7855fac30d88fe889d47a441e8a887b19c'
-		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
+sha1sums=('a575e853668b93b34dcd94f0ef0d1fee25b0165f'
+		  '52cf6820bf1dd87b5807997e49ec9c861ff516af')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -Np0 -i "${srcdir}/xbt.patch"
+
+  cd "${srcdir}"
+  mkdir build
+  cd build
+  cmake	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+	-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+	-DCOMPILE_GSCHEMAS=NO \
+	-DWITH_OFX=ON \
+	-DWITH_AQBANKING=ON \
+	"${srcdir}/${_pkgname}-${pkgver}"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
-    --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking
-  make GUILD=/usr/bin/guild2.0
+  cd "${srcdir}/build"
+
+  make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
-  cd src/doc/design
-  make DESTDIR="${pkgdir}" install-info
-
-  install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${_pkgname}.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 
   # Delete the gnucash-valgrind executable because the source files
   # are not included with the package and the executable is hardlinked
