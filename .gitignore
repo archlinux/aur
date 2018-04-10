@@ -1,0 +1,7 @@
+Waterfox
+distribution.ini
+*.patch
+*.diff
+kde.js
+waterfox.1
+waterfox.desktop
