@@ -1,6 +1,6 @@
 pkgbase = cmake-git
 	pkgdesc = A cross-platform open-source make system
-	pkgver = 3.10.0.rc2.91.g6dec363028
+	pkgver = 3.11.0.453.ge769e61f99
 	pkgrel = 1
 	url = http://www.cmake.org/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = cmake-git
 	depends = shared-mime-info
 	depends = jsoncpp
 	depends = rhash
+	depends = libuv
 	optdepends = qt5-base: cmake-gui
 	optdepends = libxkbcommon-x11: cmake-gui
 	provides = cmake
