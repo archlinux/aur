@@ -1,6 +1,6 @@
 pkgbase = crystal-git
 	pkgdesc = The Crystal Programming Language
-	pkgver = 0.24.2.r173.g731e9c097
+	pkgver = 0.24.2.r233.gf91af5f71
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = i686

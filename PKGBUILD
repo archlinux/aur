@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.24.2.r173.g731e9c097
+pkgver=0.24.2.r233.gf91af5f71
 _last_release="0.24.2-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make FLAGS="--release --no-debug" \
+  make release=1 FLAGS="--no-debug" \
        PATH="$srcdir/${pkgname/-git/}-$_last_release/bin:$PATH" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        EXPORTS='CRYSTAL_CONFIG_PATH="lib:/usr/lib/crystal"' \
