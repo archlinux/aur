@@ -1,15 +1,15 @@
-From 6b62dde99729484d897c822f6451f97696f92e62 Mon Sep 17 00:00:00 2001
+From b79d8f68eda5a8fe3905fb364d2dd6936a4e1578 Mon Sep 17 00:00:00 2001
 From: Peter Weber <peter.weber@mailbox.org>
-Date: Tue, 27 Mar 2018 17:39:45 +0200
-Subject: [PATCH 1/4] transparency for 3.28 [01/14]
+Date: Tue, 10 Apr 2018 08:41:52 +0200
+Subject: [PATCH 1/4] transparency for 3.28.1 [01/14]
 
 ---
- src/org.gnome.Terminal.gschema.xml | 10 ++++++++
- src/preferences.ui                 | 47 ++++++++++++++++++++++++++++++++++++++
- src/profile-editor.c               | 16 +++++++++++++
- src/terminal-schemas.h             |  3 +++
- src/terminal-screen.c              | 21 ++++++++++++++++-
- src/terminal-window.c              |  7 ++++++
+ src/org.gnome.Terminal.gschema.xml | 10 +++++++
+ src/preferences.ui                 | 47 ++++++++++++++++++++++++++++++
+ src/profile-editor.c               | 16 ++++++++++
+ src/terminal-schemas.h             |  3 ++
+ src/terminal-screen.c              | 21 ++++++++++++-
+ src/terminal-window.c              |  7 +++++
  6 files changed, 103 insertions(+), 1 deletion(-)
 
 diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
@@ -193,10 +193,10 @@ index f67f8a2f..fc811f8c 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 461ceb54..e3408bcb 100644
+index a348a803..e4a47c37 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2158,6 +2158,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2101,6 +2101,8 @@ terminal_window_init (TerminalWindow *window)
    TerminalWindowPrivate *priv;
    TerminalApp *app;
    GSettings *gtk_debug_settings;
@@ -205,7 +205,7 @@ index 461ceb54..e3408bcb 100644
    GtkWindowGroup *window_group;
    //  GtkAccelGroup *accel_group;
    uuid_t u;
-@@ -2171,6 +2173,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2114,6 +2116,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -218,22 +218,22 @@ index 461ceb54..e3408bcb 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.16.3
+2.17.0
 
-From eaa91887e2a2b5e9ac29ac552aabf1f9b09f1684 Mon Sep 17 00:00:00 2001
+From 80573fdd04fb858d35487e19fa14d002dce980cc Mon Sep 17 00:00:00 2001
 From: Peter Weber <peter.weber@mailbox.org>
-Date: Tue, 27 Mar 2018 17:43:28 +0200
-Subject: [PATCH 2/4] window make drawing more robust [02/14]
+Date: Tue, 10 Apr 2018 08:43:05 +0200
+Subject: [PATCH 2/4] window, make drawing more robust [02/14]
 
 ---
  src/terminal-window.c | 21 +++++++++++++++++++++
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index e3408bcb..ca152345 100644
+index e4a47c37..a3841591 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2013,6 +2013,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -1956,6 +1956,26 @@ terminal_window_realize (GtkWidget *widget)
    terminal_window_update_size (window);
  }
  
@@ -260,7 +260,7 @@ index e3408bcb..ca152345 100644
  static gboolean
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
-@@ -2324,6 +2344,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2267,6 +2287,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -269,11 +269,11 @@ index e3408bcb..ca152345 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.16.3
+2.17.0
 
-From 731c1aba508543e4abb0ecb89af806a23d8396ef Mon Sep 17 00:00:00 2001
+From a6eaaa347d8a1bb1ef4915572c1b4bfa2e61a5ae Mon Sep 17 00:00:00 2001
 From: Peter Weber <peter.weber@mailbox.org>
-Date: Tue, 27 Mar 2018 17:44:28 +0200
+Date: Tue, 10 Apr 2018 08:44:51 +0200
 Subject: [PATCH 3/4] extra padding on wayland [03/14]
 
 ---
@@ -361,10 +361,10 @@ index fc811f8c..0ac45171 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index ca152345..3f4fcfbb 100644
+index a3841591..debfd8ff 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2019,15 +2019,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -1962,15 +1962,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -393,12 +393,12 @@ index ca152345..3f4fcfbb 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.16.3
+2.17.0
 
-From 3c86b678867c6edda482c3301f6f5978c4f6f2bc Mon Sep 17 00:00:00 2001
+From 3a201b5b9a3d31b034d9954452b4ec727037e774 Mon Sep 17 00:00:00 2001
 From: Peter Weber <peter.weber@mailbox.org>
-Date: Tue, 27 Mar 2018 17:46:25 +0200
-Subject: [PATCH 4/4] translation [11/14]
+Date: Tue, 10 Apr 2018 08:55:05 +0200
+Subject: [PATCH 4/4] translations [11/14]
 
 ---
  po/am.po          | 12 ++++++------
@@ -470,7 +470,7 @@ Subject: [PATCH 4/4] translation [11/14]
  po/pt.po          | 20 ++++++++++----------
  po/pt_BR.po       | 18 ++++++++++++------
  po/ro.po          |  4 ++--
- po/ru.po          | 19 +++++++++++++++++++
+ po/ru.po          | 20 ++++++++++++++++++++
  po/rw.po          |  3 +--
  po/si.po          | 12 ++++++------
  po/sk.po          | 15 +++++++++++++++
@@ -492,7 +492,7 @@ Subject: [PATCH 4/4] translation [11/14]
  po/zh_CN.po       | 19 +++++++++++--------
  po/zh_HK.po       | 19 +++++++++++--------
  po/zh_TW.po       | 18 ++++++++++++------
- 91 files changed, 834 insertions(+), 427 deletions(-)
+ 91 files changed, 835 insertions(+), 427 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96d..f28fc8bf 100644
@@ -580,10 +580,10 @@ index fcec2668..53c7d220 100644
  #~ msgid "Keyboard Shortcuts"
  #~ msgstr "Alcorces de teclau"
 diff --git a/po/ar.po b/po/ar.po
-index 4de91d51..cb66f338 100644
+index 076043f9..3c15d6af 100644
 --- a/po/ar.po
 +++ b/po/ar.po
-@@ -2354,11 +2354,11 @@ msgstr "أغ_لق النافذة"
+@@ -2558,11 +2558,11 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Default size:"
  #~ msgstr "الحجم المبدئي:"
  
@@ -599,7 +599,7 @@ index 4de91d51..cb66f338 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "العنوان والأمر"
-@@ -2366,8 +2366,8 @@ msgstr "أغ_لق النافذة"
+@@ -2570,8 +2570,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "_Unlimited"
  #~ msgstr "_غير محدود"
  
@@ -610,7 +610,7 @@ index 4de91d51..cb66f338 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "المحليّة الحالية"
-@@ -3149,8 +3149,8 @@ msgstr "أغ_لق النافذة"
+@@ -3314,8 +3314,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Background image _scrolls"
  #~ msgstr "صورة الخلفية ت_لتف"
  
@@ -2409,10 +2409,10 @@ index 4fe16cc8..2a033b8c 100644
  #~ msgid "_Next Tab"
  #~ msgstr "पछिल्लो ट्याब"
 diff --git a/po/nl.po b/po/nl.po
-index 5f070152..aed7c7c3 100644
+index d411dad7..5f1891d0 100644
 --- a/po/nl.po
 +++ b/po/nl.po
-@@ -2596,3 +2596,18 @@ msgstr "Venster sl_uiten"
+@@ -2594,3 +2594,18 @@ msgstr "Venster sl_uiten"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Toevoegen of verwijderen…"
@@ -2714,13 +2714,14 @@ index acd25ab3..5bd7303e 100644
  #~ msgid "_Unlimited"
  #~ msgstr "_Neliminat"
 diff --git a/po/ru.po b/po/ru.po
-index 5cb6bfde..438e9b8d 100644
+index fedc4d3e..7259e1d1 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2304,3 +2304,22 @@ msgstr ""
- #: ../src/terminal-window.c:3953
- msgid "C_lose Window"
- msgstr "_Закрыть окно"
+@@ -2539,3 +2539,23 @@ msgstr "_Закрыть окно"
+ 
+ #~ msgid "_Add or Remove…"
+ #~ msgstr "_Добавить или удалить…"
++
 +
 +msgid "Transparent background"
 +msgstr "Прозрачный фон"
@@ -2740,6 +2741,7 @@ index 5cb6bfde..438e9b8d 100644
 +
 +msgid "_Set Title…"
 +msgstr "_Установить заголовок…"
+\ No newline at end of file
 diff --git a/po/rw.po b/po/rw.po
 index 012f64e3..5ff633f8 100644
 --- a/po/rw.po
@@ -2799,10 +2801,10 @@ index adca7d5a..adeea9e9 100644
  #: ../src/terminal-window.c:1025
  msgid "Set _Character Encoding"
 diff --git a/po/sk.po b/po/sk.po
-index 8f959d66..78fa2102 100644
+index d0282159..8198c8cb 100644
 --- a/po/sk.po
 +++ b/po/sk.po
-@@ -2990,3 +2990,18 @@ msgstr "_Zavrieť okno"
+@@ -2916,3 +2916,18 @@ msgstr "_Zavrieť okno"
  #~ "\n"
  #~ "Viac informácii o jednotlivých príkazoch získate pomocou „%s PRÍKAZ --"
  #~ "help“.\n"
@@ -3518,7 +3520,7 @@ index 61153529..3b269ea1 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index 073fff21..579ecd3d 100644
+index 169c0bd0..2f483696 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
 @@ -2570,17 +2570,20 @@ msgstr "關閉視窗(_L)"
@@ -3556,5 +3558,5 @@ index 073fff21..579ecd3d 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.16.3
+2.17.0
 
