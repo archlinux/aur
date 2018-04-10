@@ -1,13 +1,13 @@
 pkgbase = gotop-bin
 	pkgdesc = A terminal based graphical activity monitor inspired by gtop and vtop
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/cjbassi/gotop
 	arch = x86_64
 	arch = i686
 	license = AGPLv3
 	provides = gotop
-	source = https://github.com/cjbassi/gotop/releases/download/1.2.3/gotop-1.2.3-linux_amd64.tgz
+	source = https://github.com/cjbassi/gotop/releases/download/1.2.4/gotop-1.2.4-linux_amd64.tgz
 	md5sums = SKIP
 
 pkgname = gotop-bin
