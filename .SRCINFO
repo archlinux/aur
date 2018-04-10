@@ -1,0 +1,18 @@
+pkgbase = gamemode
+	pkgdesc = GameMode is a daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/FeralInteractive/gamemode.git
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = systemd
+	depends = polkit
+	provides = gamemode
+	source = https://github.com/FeralInteractive/gamemode/archive/1.0.tar.gz
+	sha256sums = bc458e294221e06b63edb286dd3dc1b541014941027198600959b27b11dd6a9d
+
+pkgname = gamemode
+
