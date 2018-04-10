@@ -1,7 +1,7 @@
 
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=docker-makepkg
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
