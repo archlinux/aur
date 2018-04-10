@@ -17,18 +17,18 @@
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 
-pkgver=0.7.7.4.15.15.1
+pkgver=0.7.8.4.15.15.1
 pkgrel=1
 makedepends=("linux-headers=4.15.15-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/spl-0.7.7.tar.gz")
-sha256sums=("9e98af3daaf1a6605b34f8b709a60cfc52dbf2bedcfc01d919d1f77c695247de")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.8/spl-0.7.8.tar.gz")
+sha256sums=("f6c9fe37d149da7fec34ee3bf32302a16b4cfcd84b8c6aa3d764ceb816587636")
 license=("GPL")
-depends=("spl-utils-common=0.7.7" "kmod" "linux=4.15.15-1")
+depends=("spl-utils-common=0.7.8" "kmod" "linux=4.15.15-1")
 
 build() {
-    cd "${srcdir}/spl-0.7.7"
+    cd "${srcdir}/spl-0.7.8"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
                 --with-linux=/usr/lib/modules/4.15.15-1-ARCH/build \
@@ -44,7 +44,7 @@ package_spl-linux() {
     groups=("archzfs-linux")
     conflicts=('spl-linux-git')
     replaces=("spl-git")
-    cd "${srcdir}/spl-0.7.7"
+    cd "${srcdir}/spl-0.7.8"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove src dir
@@ -54,7 +54,7 @@ package_spl-linux() {
 package_spl-linux-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers'  'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
-    cd "${srcdir}/spl-0.7.7"
+    cd "${srcdir}/spl-0.7.8"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
