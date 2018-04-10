@@ -1,7 +1,7 @@
 # Maintainer: Philip Wellnitz
 
 pkgname=powerline-i3-git
-pkgver=1.7.9
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
