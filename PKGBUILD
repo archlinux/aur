@@ -5,9 +5,9 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=3.9.2
+pkgver=3.9.3
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.7.2
+_eclipse_pkgver=e4.7.3
 _eclipse_pkgver_short=e4.7
 pkgrel=1
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
@@ -28,10 +28,10 @@ source_i686=(
     "${pkgname}.xpm"
     "${pkgname}.desktop"
 )
-sha256sums_i686=('8a0ee78fc3e66a60b11b598403adec9697e3adc7942c0134aaa1fb91eea15dda'
+sha256sums_i686=('5ea72de8ebba9c87be74cf450e31f0fce98d7fd03f09ff33d86c7c06d9722206'
                  'befd7eabe15dc90b947c8d878a06649767c4e5a0c5777a1ba4ed297db9bafc1f'
                  'a8f45ab4a86b7ad01b9050be2ebaa44d4be437371ffab2d136c960149aa0b7fd')
-sha256sums_x86_64=('7008de99f719c62b13c79c01c7c8bd06576311c170d442eaf489c5411929617c'
+sha256sums_x86_64=('38258dbf25b39b5d46a65d2df4e18476a52cf8d04e86d69fa88bdba6732a523a'
                    'befd7eabe15dc90b947c8d878a06649767c4e5a0c5777a1ba4ed297db9bafc1f'
                    'a8f45ab4a86b7ad01b9050be2ebaa44d4be437371ffab2d136c960149aa0b7fd')
 
