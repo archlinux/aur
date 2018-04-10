@@ -2,7 +2,7 @@
 
 pkgname="qt5-python27-git"
 _qtver=5.8.0
-pkgver=3.1+115.gb06f864
+pkgver=3.1+116.g1d22033
 pkgrel=1
 arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
@@ -36,7 +36,7 @@ prepare() {
 build() {
   mkdir -p "$srcdir/build-$CHOST-$pkgname"
   cd "$srcdir/build-$CHOST-$pkgname"
-  cmake -G Ninja -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DPythonQt_Qt5=TRUE -DPythonQt_Python3=FALSE ../PythonQt
+  cmake -G Ninja -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX="/usr" -DPythonQt_Qt5=TRUE -DPythonQt_Python3=FALSE ../PythonQt
   ninja
 }
 
@@ -51,5 +51,5 @@ check() {
 
 package() {
   cd "$srcdir/build-$CHOST-$pkgname"
-  ninja install
+  env DESTDIR="$pkgdir" ninja install
 }
