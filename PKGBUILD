@@ -1,12 +1,13 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
+# Contributor: Lucjan Lucjanov <lucjan.lucjanov@gmail.com>
 
 pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.15
-pkgver=4.15.15
-pkgrel=1
+_srcname=linux-4.16
+pkgver=4.16
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -15,15 +16,13 @@ depends=('coreutils')
 makedepends=('bc' 'inetutils')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  #http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config
   0001-ucontext-fix-incomplete-type-ucontext.patch)
 
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
-            'SKIP'
-            '396da1f6cf3fb56462e419ab85fa0708171d54815b01b8e9681095fa6d6ceed3'
+            '7a0a2c3f46da6f864cf1b1b5f074fe08ead8bb6bb7e0a5615269c3b9e0c2f552'
             '9a7e0a9a2c3d4252cee29b4f5f61da00e98bd247cb5ceb22e31a7f782a45bddf')
 
 validpgpkeys=(
@@ -35,7 +34,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # workground for glibc 2.26+
   # https://patchwork.kernel.org/patch/10059117/
@@ -71,11 +70,15 @@ package_linux-usermode-modules() {
   install=modules.install
 
   cd "${srcdir}/${_srcname}"
+
+  # get kernel version
+  _kernver="$(make ARCH=um kernelrelease)"
+
   #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
-  rm -f $pkgdir/usr/lib/modules/${pkgver}${_kernelname}/{source,build}
+  rm -f $pkgdir/usr/lib/modules/${_kernver}/{source,build}
   sed \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=$pkgver${_kernelname}/g" \
+    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
     -i "${startdir}/modules.install"
 }
 
