@@ -3,7 +3,7 @@
 pkgname=curvedns-git
 pkgver=0.87.r11.gb5a7619
 pkgrel=1
-pkgdesc="A DNSCurve Forwarding name server"
+pkgdesc="A DNSCurve forwarding name server"
 arch=('i686' 'x86_64')
 url="https://github.com/curvedns/curvedns"
 license=('BSD')

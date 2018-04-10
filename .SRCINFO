@@ -1,5 +1,5 @@
 pkgbase = curvedns-git
-	pkgdesc = A DNSCurve Forwarding name server
+	pkgdesc = A DNSCurve forwarding name server
 	pkgver = 0.87.r11.gb5a7619
 	pkgrel = 1
 	url = https://github.com/curvedns/curvedns
