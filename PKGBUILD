@@ -7,18 +7,18 @@
 #
 pkgname="zfs-utils-common"
 
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
 makedepends=("git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/zfs-0.7.7.tar.gz"
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.8/zfs-0.7.8.tar.gz"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
-sha256sums=("db8ca69dc1d257175421a86bc81c861b2b24cc48db0832c954d9553fe50d0bb9"
+sha256sums=("70ba0edd72914d4bfc9a9426cf26725e955a9509acbddb6902efb9eebb35f150"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
             "e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4"
             "3eb874cf2cbb6c6a0e1c11a98af54f682d6225667af944b43435aeabafa0112f")
@@ -31,17 +31,17 @@ replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
 backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
 build() {
-    cd "${srcdir}/zfs-0.7.7"
+    cd "${srcdir}/zfs-0.7.8"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.7 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.8 \
                 --with-config=user --enable-systemd
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.7.7"
+    cd "${srcdir}/zfs-0.7.8"
     make DESTDIR="${pkgdir}" install
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
