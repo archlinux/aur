@@ -4,19 +4,19 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11401
+pkgver=11416
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('libusb' 'openssl')
-makedepends=('git' 'pcsclite')
+depends=('libusb' 'openssl' 'pcsclite')
+makedepends=('subversion')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 conflicts=('oscam-svn')
 install='oscam.install'
-source=("git+http://www.oscam.cc/git/oscam-mirror"
+source=("$pkgname::svn+http://www.streamboard.tv/svn/oscam/trunk"
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
@@ -24,12 +24,12 @@ md5sums=('SKIP'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
 pkgver() {
-  cd "$srcdir/oscam-mirror"
-  git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
+  cd "$SRCDEST/$pkgname"
+  svnversion
 }
 
 build() {
-  cd "$srcdir/oscam-mirror"
+  cd "$SRCDEST/$pkgname"
 
   make CONF_DIR=/var/lib/oscam \
        USE_LIBUSB=1 \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/oscam-mirror"
+  cd "$SRCDEST/$pkgname"
 
   #Install binaries
   install -Dm755 oscam "$pkgdir/usr/bin/oscam"
