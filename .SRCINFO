@@ -1,7 +1,7 @@
 pkgbase = ros-kinetic-base-local-planner
 	pkgdesc = ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane.
-	pkgver = 1.14.2
-	pkgrel = 2
+	pkgver = 1.14.3
+	pkgrel = 1
 	url = http://wiki.ros.org/base_local_planner
 	arch = any
 	license = BSD
@@ -44,7 +44,7 @@ pkgbase = ros-kinetic-base-local-planner
 	depends = ros-kinetic-nav-msgs
 	depends = ros-kinetic-pluginlib
 	depends = eigen3
-	source = ros-kinetic-base-local-planner-1.14.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/base_local_planner.tar.gz
+	source = ros-kinetic-base-local-planner-1.14.3-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/base_local_planner.tar.gz
 	sha256sums = 5f38c43f5ff658e22231412c23568559bd71b5e8d062e993ec9482c6bd982fd5
 
 pkgname = ros-kinetic-base-local-planner

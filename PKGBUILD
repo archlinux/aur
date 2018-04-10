@@ -4,10 +4,10 @@ pkgdesc="ROS - This package provides implementations of the Trajectory Rollout a
 url='http://wiki.ros.org/base_local_planner'
 
 pkgname='ros-kinetic-base-local-planner'
-pkgver='1.14.2'
+pkgver='1.14.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-nav-core
