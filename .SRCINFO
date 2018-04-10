@@ -1,0 +1,15 @@
+pkgbase = tidal-music-linux-bin
+	pkgdesc = An electron based wrapper around the Tidal web player for Linux
+	pkgver = 1.0
+	pkgrel = 6
+	url = https://github.com/Bunkerbewohner/tidal-music-linux
+	arch = x86_64
+	license = MIT
+	makedepends = rsync
+	depends = pepper-flash
+	provides = tidal-music-linux
+	source = https://github.com/Bunkerbewohner/tidal-music-linux/releases/download/v1.0/tidal-music-linux-v1.0-x64.zip
+	sha256sums = SKIP
+
+pkgname = tidal-music-linux-bin
+
