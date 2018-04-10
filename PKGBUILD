@@ -4,9 +4,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=181.4445.28
-_pkgver=2018.1
-_verextra=.1
+_buildver=181.4445.76
+_pkgver=2018.1.1
+_eap=true
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -33,14 +33,21 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-tox: Python environments for testing tool with Python 3'
             'jupyter: For support Jupyter Notebook')
 provides=("pycharm" "pycharm-professional")
-source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
+
+if [[ $_eap = true ]]; then
+	source=("https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=("40681c45385c09375dcdc09a0192b2942bb5f99d01189c7b52b74745edeacfde"
+else
+	source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
+	"${pkgname}.desktop")
+fi
+	
+sha256sums=("0531f2be80ff31ac82e79a762c767865644618264b15cdfcf9725b087b12e54c"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
-	if [ -d $srcdir/pycharm-${_pkgver}${_verextra} ]; then
-		mv $srcdir/pycharm-${_pkgver}${_verextra} $srcdir/pycharm-${_buildver}
+	if [[ -d $srcdir/pycharm-${_pkgver} ]]; then
+		mv $srcdir/pycharm-${_pkgver} $srcdir/pycharm-${_buildver}
 	fi
 }
 
