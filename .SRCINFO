@@ -1,18 +1,18 @@
 pkgbase = mqttfx-bin
 	pkgdesc = A MQTT Client written in Java based on Eclipse Paho
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = http://mqttfx.org
 	arch = x86_64
 	license = Apache
-	depends = java-runtime
-	depends = java-openjfx
 	options = !strip
 	options = !upx
-	source = http://www.jensd.de/apps/mqttfx/1.6.0/mqttfx-1.6.0-linux.deb
+	source = http://www.jensd.de/apps/mqttfx/1.7.0/mqttfx-1.7.0-64bit.deb
 	source = mqttfx.desktop
-	sha256sums = 2a4f11f1a599471be34486a6e7443052dd0548ba5750ef380c81bdfb4efdcef9
-	sha256sums = 27abc38d59d94d1d8e8e171d1d15d392fd65774d89235be734145ae4c50c6c0b
+	source = mqttfx.png
+	sha256sums = 06153aa3176e74ee8e8d5995ff6f9b74bc57327987f934a7b1688a30fcdc5a3f
+	sha256sums = 741674f5b782aa4de0b071b7f49484b74ee2150e38b5d83eb4bd00b172978e2a
+	sha256sums = 6c1b23755d3b1832ddb643b585d623128cde38e2ef42e7839141cf2106b0a59e
 
 pkgname = mqttfx-bin
 
