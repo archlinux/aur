@@ -1,13 +1,14 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kscd-git
-pkgver=v17.08.3.16.gd36df5c
+pkgver=v17.08.3.24.gaf73a1c
 pkgrel=1
 pkgdesc="KDE CD player. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/multimedia/kscd/'
 license=('GPL2')
-depends=('libmusicbrainz5'
+depends=('libdiscid'
+         'libmusicbrainz5'
          'kdelibs4support'
          'hicolor-icon-theme'
          )
@@ -30,10 +31,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  
-  cd kscd/pics
-  for i in *.png; do mv ${i} ${i//app/apps}; done
-  sed -i 's|app|apps|g' -i CMakeLists.txt
 }
 
 build() {
