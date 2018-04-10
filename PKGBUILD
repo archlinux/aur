@@ -1,21 +1,18 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap-modules
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Modules for C-ICAP server'
-depends=('c-icap')
+depends=('c-icap' 'clamav')
 arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
 license=('GPL' 'LGPL')
-source=("http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.4.x/c_icap_modules-${pkgver}.tar.gz"
-        'clamd_mod.conf'
-        'virus_scan.conf')
-sha256sums=('5312e6f208e2191797008b4a76ba303ab8048a108a1721cde4a217aed74d6674'
-            '12b1d40a5012a51798b79a87e8108910f9f1fc35f17830ca2952596249fc5cfa'
-            'd0fd9ab05ea9fa590e87af477b28156cf88de921411093a01147c984742c5a5f')
+source=("http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-${pkgver}.tar.gz")
+sha256sums=('a34988e5367649cec29ce6e1f846d97f1728f74addaa6b520e3db213b54400a1')
 backup=('etc/c-icap/clamav_mod.conf'
         'etc/c-icap/clamd_mod.conf'
         'etc/c-icap/virus_scan.conf'
+        'etc/c-icap/vscan-local.conf'
         'etc/c-icap/srv_url_check.conf')
 
 build() {
@@ -38,5 +35,21 @@ package() {
   find "${pkgdir}"/etc/c-icap/ -type f -print0 | xargs -0 chmod 644
   find "${pkgdir}"/usr/share/c_icap/templates/ -type f -print0 | xargs -0 chmod 644
 
-  install -Dm644 ../clamd_mod.conf ../virus_scan.conf "${pkgdir}"/etc/c-icap/
+  # use clamd by default
+  sed -i -e '/^#\s*virus_scan.PassOnError\s/ a virus_scan.PassOnError on' \
+      -e 's/^virus_scan.MaxObjectSize\s.*/virus_scan.MaxObjectSize 10M/g' \
+      -e '/^#\s*virus_scan.DefaultEngine\s/ a virus_scan.DefaultEngine clamd' \
+      -e 's/^#Include\s*clamd_mod.conf/Include clamd_mod.conf/g' \
+      -e '$ a Include vscan-local.conf' \
+      "${pkgdir}"/etc/c-icap/virus_scan.conf{,.default}
+
+  sed -i -e '/^#\s*clamd_mod.ClamdSocket\s/ a clamd_mod.ClamdSocket /run/clamav/clamd.ctl' \
+      "${pkgdir}"/etc/c-icap/clamd_mod.conf{,.default}
+
+  # enable logging
+  cat > "${pkgdir}"/etc/c-icap/vscan-local.conf << 'EOF'
+LogFormat myVScanFmt "%tl, %>a %is %Ib %Ob %huo [Action: %{virus_scan:action}Sa] [Virus: %{virus_scan:virus}Sa]"
+acl VSCAN service virus_scan
+AccessLog /var/log/c-icap/vscan.log myVScanFmt VSCAN
+EOF
 }
