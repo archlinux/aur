@@ -1,7 +1,7 @@
 pkgbase = fsleyes
 	pkgdesc = FSLeyes is the FSL image viewer
 	pkgver = 0.22.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
 	license = Apache
@@ -17,7 +17,7 @@ pkgbase = fsleyes
 	depends = python-pyparsing
 	depends = python-scipy
 	depends = python-opengl-accelerate
-	depends = python-wxpython-phoenix
+	depends = python-wxpython>=4.0.1-2
 	depends = fsl
 	depends = fsleyes-widgets>=0.5.4
 	depends = fsleyes-props>=1.5.1
