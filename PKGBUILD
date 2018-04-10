@@ -8,8 +8,8 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=390.48
-pkgrel=2
+pkgver=396.18
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -27,10 +27,10 @@ fi
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('8ed67fc67710b6cfd9c9273054e2117a'
+md5sums=('d7d841c8e017e84a4f39619527855bbb'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='3f7eafdb17a991b52cdfceb33e82ab75'
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='e9188de3573a435f78c5577f87c93a0e'
 
 # Patch
 #source+=('linux-4.11.patch')
@@ -158,14 +158,14 @@ package_nvidia-libgl-full-beta-all() {
 }
 
 package_nvidia-egl-wayland-full-beta-all() {
-  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.2) for 'nvidia-utils-full-beta-all'"
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.3) for 'nvidia-utils-full-beta-all'"
   depends=('nvidia-utils-full-beta-all')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg
 
-  install -Dm755 libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.2
-  ln -s libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+  install -Dm755 libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.3
+  ln -s libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
 }
 
 package_nvidia-utils-full-beta-all() {
@@ -175,7 +175,7 @@ package_nvidia-utils-full-beta-all() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta-all: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
-              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.2)')
+              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.3)')
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
@@ -195,6 +195,7 @@ package_nvidia-utils-full-beta-all() {
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
+  install -Dm755 libnvidia-glvkspirv.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glvkspirv.so.$pkgver
 
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
@@ -433,6 +434,7 @@ package_lib32-nvidia-utils-full-beta-all() {
   install -Dm755 32/libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
   install -Dm755 32/libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 32/libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
+  install -Dm755 32/libnvidia-glvkspirv.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glvkspirv.so.$pkgver
 
   # GLX
   install -Dm755 32/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
