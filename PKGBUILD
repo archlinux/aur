@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.5.r7.gbd8446fa+wine.3.5.r91.g3263d51a1f+pba.3.5.r32.32c6388
+pkgver=3.5.r9.ga596208a+wine.3.5.r130.gdd2624a24f+pba.3.5.r33.8c72f84
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
@@ -127,7 +127,9 @@ pkgver() {
 
 	# retrieve current wine-pba version
 	cd "${srcdir}/${_pbasrcdir}"
-	local _pbaTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+	#local _pbaTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+	local _pbaTag='3.5'
+	local _pbaVer=$( printf "%s.r%s.%s" "$_pbaTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
 	local _pbaVer=$( printf "%s.r%s.%s" "$_pbaTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
 
 	# version string might be a bit over the top, 
