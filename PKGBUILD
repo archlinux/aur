@@ -13,13 +13,13 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://binaries.symless.com/v2.0.8/synergy_2.0.8.stable_b1535%2Ba99bf78e_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
-sha512sums_x86_64=('f257d72a5872301ade2b32d4cd8d27866d599978df164fa4fa6abd3c1f462a358e60517b12f7c9593cfc026f949f043401f2d9e4109ef28605ca6604a1b9a102' "9c818d4f4929d156a6926336048cab4e398047037f45a177cdb71ede9c54d7b16992b7e5437999b2c72d3604c22092790e112abb234647abb0b34adf8e56b76b")
+source_x86_64=("https://binaries.symless.com/v2.0.8/synergy_2.0.8.stable_b1535%2Ba99bf78e_amd64.deb")
+sha512sums_x86_64=("f257d72a5872301ade2b32d4cd8d27866d599978df164fa4fa6abd3c1f462a358e60517b12f7c9593cfc026f949f043401f2d9e4109ef28605ca6604a1b9a102")
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	cat "raw"
-	mv "raw" "${pkgdir}/lib/systemd/system/synergy.service"
+	cat "synergy.service"
+	mv "synergy.service" "${pkgdir}/lib/systemd/system/synergy.service"
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
