@@ -1,0 +1,96 @@
+diff -ruN sonic-pi-3.1.0-a/app/server/ruby/core.rb sonic-pi-3.1.0-c/app/server/ruby/core.rb
+--- sonic-pi-3.1.0-a/app/server/ruby/core.rb	2018-01-22 23:00:13.000000000 +0100
++++ sonic-pi-3.1.0-c/app/server/ruby/core.rb	2018-04-10 23:10:47.329683107 +0200
+@@ -147,7 +147,7 @@
+   module Core
+     module SPRand
+       # Read in same random numbers as server for random stream sync
+-      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("../../../../etc/buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
++      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("../../buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
+ 
+       def self.tl_seed_map(seed, idx=0)
+         {:sonic_pi_spider_random_gen_seed => seed,
+diff -ruN sonic-pi-3.1.0-a/app/server/ruby/lib/sonicpi/util.rb sonic-pi-3.1.0-c/app/server/ruby/lib/sonicpi/util.rb
+--- sonic-pi-3.1.0-a/app/server/ruby/lib/sonicpi/util.rb	2018-01-22 23:00:13.000000000 +0100
++++ sonic-pi-3.1.0-c/app/server/ruby/lib/sonicpi/util.rb	2018-04-10 23:28:08.120969596 +0200
+@@ -216,11 +216,11 @@
+     end
+ 
+     def root_path
+-      File.absolute_path("#{File.dirname(__FILE__)}/../../../../../")
++      File.absolute_path("/usr/share/sonic-pi")
+     end
+ 
+     def etc_path
+-      File.absolute_path("#{root_path}/etc")
++      File.absolute_path("#{root_path}")
+     end
+ 
+     def snippets_path
+@@ -228,7 +228,7 @@
+     end
+ 
+     def doc_path
+-      File.absolute_path("#{etc_path}/doc")
++      File.absolute_path("/usr/share/doc/sonic-pi")
+     end
+ 
+     def cheatsheets_path
+@@ -240,7 +240,7 @@
+     end
+ 
+     def tmp_path
+-      File.absolute_path("#{root_path}/tmp")
++      File.absolute_path("/tmp")
+     end
+ 
+     def synthdef_path
+@@ -256,7 +256,7 @@
+     end
+ 
+     def app_path
+-      File.absolute_path("#{root_path}/app")
++      File.absolute_path("#{root_path}")
+     end
+ 
+     def html_public_path
+@@ -268,7 +268,7 @@
+     end
+ 
+     def examples_path
+-      File.absolute_path("#{etc_path}/examples")
++      File.absolute_path("#{doc_path}/examples")
+     end
+ 
+     def server_path
+@@ -276,7 +276,7 @@
+     end
+ 
+     def server_bin_path
+-      File.absolute_path("#{server_path}/ruby/bin")
++      File.absolute_path("#{server_path}/bin")
+     end
+ 
+     def native_path
+diff -ruN sonic-pi-3.1.0-a/app/server/ruby/util.rb sonic-pi-3.1.0-c/app/server/ruby/util.rb
+--- sonic-pi-3.1.0-a/app/server/ruby/util.rb	2018-01-22 23:00:13.000000000 +0100
++++ sonic-pi-3.1.0-c/app/server/ruby/util.rb	2018-04-10 22:16:26.994368179 +0200
+@@ -12,15 +12,15 @@
+ #++
+ 
+ def sp_sonic_pi_path()
+-  File.absolute_path("#{File.dirname(__FILE__)}/../../")
++  File.absolute_path("#{File.dirname(__FILE__)}/..")
+ end
+ 
+ def sp_scripts_path()
+-  File.absolute_path("#{sp_sonic_pi_path}/app/scripts")
++  File.absolute_path("#{sp_sonic_pi_path}/scripts")
+ end
+ 
+ def sp_synthdefs_path()
+-  File.absolute_path("#{sp_sonic_pi_path}/app/etc/synthdefs/compiled")
++  File.absolute_path("#{sp_sonic_pi_path}/synthdefs/compiled")
+ end
+ 
+ def spider_log(message)
