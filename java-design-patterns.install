@@ -16,5 +16,3 @@ post_remove() {
   printf "$(tput setaf 4)If you had added/modified files or permissions in folder $(tput setaf 2)/opt/java-design-patterns$(tput sgr0)\n"
   printf "$(tput setaf 4)is possible you need to delete the folder manually.$(tput sgr0)\n"
 }
-
-post_remove
