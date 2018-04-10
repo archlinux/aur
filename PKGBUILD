@@ -3,7 +3,7 @@
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=390.48
+pkgver=396.18
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -12,7 +12,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums=('754bbdc3eb6f3873cca49ae807964c0e')
+md5sums=('d8f540e3c342b32c8cfe52dc8f2a8f97')
 
 _create_links() {
   # create missing soname links
@@ -102,6 +102,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
+  install -Dm755 libnvidia-glvkspirv.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glvkspirv.so.$pkgver
 
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
@@ -113,7 +114,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libEGL.so.1.1.0 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1.1.0
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.2
+  install -Dm755 libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.3
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1.2.0 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1.2.0
