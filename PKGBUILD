@@ -7,13 +7,13 @@
 #
 pkgname="spl-utils-common"
 
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/spl-0.7.7.tar.gz")
-sha256sums=("9e98af3daaf1a6605b34f8b709a60cfc52dbf2bedcfc01d919d1f77c695247de")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.8/spl-0.7.8.tar.gz")
+sha256sums=("f6c9fe37d149da7fec34ee3bf32302a16b4cfcd84b8c6aa3d764ceb816587636")
 groups=("archzfs-linux")
 license=("GPL")
 provides=("spl-utils")
@@ -22,13 +22,13 @@ conflicts=('spl-utils-common-git' 'spl-utils-linux-git' 'spl-utils-linux' 'spl-u
 replaces=("spl-utils-linux", "spl-utils-linux-lts")
 
 build() {
-    cd "${srcdir}/spl-0.7.7"
+    cd "${srcdir}/spl-0.7.8"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin --with-config=user
     make
 }
 
 package() {
-    cd "${srcdir}/spl-0.7.7"
+    cd "${srcdir}/spl-0.7.8"
     make DESTDIR="${pkgdir}" install
 }
