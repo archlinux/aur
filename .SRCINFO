@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
-	pkgver = 4.16.0
-	pkgrel = 2
+	pkgver = 4.16.1
+	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.16.0-xanmod1.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.16.1-xanmod2.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
@@ -18,7 +18,7 @@ pkgbase = linux-xanmod
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=9a40229d82e018c3cee9da97dc89d703828c866a
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=9a40229d82e018c3cee9da97dc89d703828c866a
 	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Partially-revert-swiotlb-remove-various-exports.patch?h=packages/linux&id=9a40229d82e018c3cee9da97dc89d703828c866a
-	sha256sums = c64bacc3860afd2da7dca7777a9f1b701fd490e42befcb21d62414377d1b8fa1
+	sha256sums = dd40f92c76549dfa1d972d5d97a3bbb5b8aa3ae299804ecacfd271b3abf747b4
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
