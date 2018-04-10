@@ -1,0 +1,6 @@
+post_remove() {
+  echo "Don't forget to remove /opt/indigo directory"
+  echo "because temporary files are written here"
+}
+
+# vim:set ts=2 sw=2 et:
