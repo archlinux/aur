@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-csd1
 	pkgdesc = The GNOME Terminal Emulator with CSD support
-	pkgver = 3.28.0
+	pkgver = 3.28.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = gnome-terminal-csd1
 	depends = dconf
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/gnome-terminal#commit=ab439ff679a0ff2607a3ebb746f54281c439700b
+	source = git+https://git.gnome.org/browse/gnome-terminal#commit=07f2f4fcbe70e8afbd88e7cbe0a08ab9422a1d87
 	source = https://raw.githubusercontent.com/leipero/gnome-terminal-csd-patch/master/gnome-terminal-csd.patch
 	sha256sums = SKIP
 	sha256sums = bd15026f1c1e811481ddf6b478a9d291897383ab581e69cbac1ab47019719268
