@@ -3,12 +3,12 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.21.1
+pkgver=1.22.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git' 'yarn')
+makedepends=('npm' 'nodejs>=8.0' 'gulp' 'python2' 'git' 'yarn')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('vscode-oss' 'visual-studio-code-oss')
@@ -56,11 +56,21 @@ build() {
 
     yarn install --arch=${_vscode_arch}
 
+    if ! ulimit -n 10000; then
+        echo
+        echo "*** ERROR: Could not raise the soft file limit. ***"
+        echo "You may need to adjust your 'nofile' limit in /etc/security/limits.conf"
+        echo "and possibly also raise your kernel-enforced limit if necessary."
+        echo "Without this change, the gulp build will likely fail with EMFILE"
+        echo
+        exit 1
+    fi
+
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
     mem_limit="--max_old_space_size=2048"
-    /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
+    /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
 
     # Patch the startup script to know where the app is installed, rather
     # than guessing...
