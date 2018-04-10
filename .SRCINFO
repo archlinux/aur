@@ -1,17 +1,17 @@
 pkgbase = zfs-linux-vfio
-	pkgver = 0.7.7.4.15.14.1
+	pkgver = 0.7.8.4.15.15.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-vfio-headers=4.15.14-1
+	makedepends = linux-vfio-headers=4.15.15-1
 	makedepends = spl-linux-vfio-headers
 	depends = kmod
 	depends = spl-linux-vfio
-	depends = zfs-utils-common=0.7.7
-	depends = linux-vfio=4.15.14-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/zfs-0.7.7.tar.gz
-	sha256sums = db8ca69dc1d257175421a86bc81c861b2b24cc48db0832c954d9553fe50d0bb9
+	depends = zfs-utils-common=0.7.8
+	depends = linux-vfio=4.15.15-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.8/zfs-0.7.8.tar.gz
+	sha256sums = 70ba0edd72914d4bfc9a9426cf26725e955a9509acbddb6902efb9eebb35f150
 
 pkgname = zfs-linux-vfio
 	pkgdesc = Kernel modules for the Zettabyte File System.
