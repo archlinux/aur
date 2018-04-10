@@ -3,8 +3,8 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=390.48
-pkgrel=2
+pkgver=396.18
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -13,7 +13,7 @@ _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('8ed67fc67710b6cfd9c9273054e2117a'
+md5sums=('d7d841c8e017e84a4f39619527855bbb'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
 
@@ -95,14 +95,14 @@ package_nvidia-libgl-beta() {
 }
 
 package_nvidia-egl-wayland-beta() {
-  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.2) for 'nvidia-utils-beta'"
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.3) for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg
 
-  install -Dm755 libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.2
-  ln -s libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+  install -Dm755 libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.3
+  ln -s libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
 }
 
 package_nvidia-utils-beta() {
@@ -112,7 +112,7 @@ package_nvidia-utils-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
-              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.2)')
+              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.3)')
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
@@ -132,6 +132,7 @@ package_nvidia-utils-beta() {
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
+  install -Dm755 libnvidia-glvkspirv.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glvkspirv.so.$pkgver
 
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
