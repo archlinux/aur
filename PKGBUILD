@@ -5,7 +5,7 @@
 # Contributor: Roozbeh Shafiee <Roozbeh@Roozbeh.us>
 
 pkgname=choqok-git
-pkgver=v1.6.0.r86.g85a3475a
+pkgver=v1.6.0.r88.gb5a947c7
 pkgrel=1
 pkgdesc='Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com - git version'
 arch=(i686 x86_64)
@@ -23,7 +23,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd choqok
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
