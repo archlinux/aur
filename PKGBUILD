@@ -6,7 +6,7 @@
 _pkgname="solunar"
 pkgname=solunar-git
 _pkgver="latest"
-pkgver=0.1.3a.d20160121.r1c6bd44
+pkgver=0.1.3b.d20180131.r02956b2
 pkgrel=1
 pkgdesc="A simple command-line utility for calculating Sun and Moon rise and set, and related times."
 arch=('i686' 'x86_64')
@@ -48,6 +48,10 @@ pkgver() {
   fi
   
   echo "${_ver}.d${_date}.r${_rev}"
+}
+
+prepare() {
+  chmod 755 "${srcdir}/solunar/parse_zoneinfo.pl"
 }
 
 build() {
