@@ -17,15 +17,15 @@
 pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
 
-pkgver=2018.04.04.r1070.581bc01.4.15.15.1
+pkgver=2018.04.09.r1071.9125f8f.4.15.15.1
 pkgrel=1
 makedepends=("linux-headers=4.15.15-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=581bc01a0765eed9ea7dc17132b3943a5efc966d")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=9125f8f5bdb36bfbd2d816d30b6b29b9f89ae3d8")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.04.04.r1070.581bc01" "kmod" "linux=4.15.15-1")
+depends=("spl-utils-common-git=2018.04.09.r1071.9125f8f" "kmod" "linux=4.15.15-1")
 
 build() {
     cd "${srcdir}/spl"
