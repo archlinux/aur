@@ -1,11 +1,11 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode-git')
 pkgver=4f14c80
-pkgrel=1
+pkgrel=2
 pkgdesc="GameMode is a daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
-license=('MIT')
+license=('BSD 3-Clause License (Revised)')
 depends=('systemd' 'polkit')
 makedepends=('meson' 'ninja' 'pkg-config')
 provides=('gamemode')
