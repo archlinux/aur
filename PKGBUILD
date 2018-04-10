@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=pyt-git
-pkgver=r1126.640b2c0
+pkgver=0.30.r0.g00afcd3
 pkgrel=1
 pkgdesc='Find security vulnerabilities in Python web applications using static analysis (Git version)'
 arch=('any')
@@ -16,12 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd pyt
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd pyt
-  sed -i 's/==/>=/g' setup.py
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
