@@ -4,7 +4,7 @@
 pkgname=burstcoin-wallet
 _realname=burstcoin
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm."
 arch=('i686' 'x86_64')
 url="https://github.com/PoC-Consortium/burstcoin"
@@ -15,7 +15,7 @@ depends=('java-runtime-common' 'java-runtime>=8')
 source=(https://github.com/PoC-Consortium/burstcoin/releases/download/${pkgver}/burstcoin-${pkgver}.zip
 burstcoin-wallet.service
 )
-sha256sums=('8594263cb5c814955bbd4de6230259ae85c231fafccc5a803a612efb16bf4184'
+sha256sums=('bf9b701f7a6d3ba111ebc060596c18aac61bfab501b9f59b08153115bfcf0d82'
             '677aa600c97fcba5ec20f3e442f02acd920602e6bf08a8e536088fd6e2d15585')
 
 package() {
