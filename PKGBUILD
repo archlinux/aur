@@ -3,20 +3,19 @@
 _plug=vcfreq
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=20160817
-pkgrel=1
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=172594'
 license=('GPL')
 depends=('vapoursynth'
          'fftw'
          )
-#source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/${_plug}/${_plug}_src.7z")
-source=("${_plug}-${pkgver}.7z::https://dl.dropboxusercontent.com/u/73468194/vcfreq_src_x64.7z")
-sha1sums=('93f46a5c6d6d40cd26d58c1c3d881a2926c8f55a')
+source=("${_plug}-${pkgver}_rev2.7z::https://www.dropbox.com/s/eyhceb84txhw90z/${_plug}_src_x64.7z?dl=1")
+sha256sums=('cea86df06ab660fb1795c76e89290d48a7ad6df5df0c976d070505caab466869')
 
 prepare(){
-  rm -fr VSHelper.h VapourSynth.h
+  rm -fr VSHelper.h VapourSynth.h *fftw3*
 
   sed -e 's|vapoursynth.h|VapourSynth.h|g' \
       -e 's|vshelper.h|VSHelper.h|g' \
