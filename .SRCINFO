@@ -1,7 +1,7 @@
 pkgbase = yakyak-git
 	pkgdesc = Desktop client for Google Hangouts
-	pkgver = 1
-	pkgrel = 4
+	pkgver = v1.2.0.r910.g9c3c471
+	pkgrel = 1
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = yakyak-git
 	depends = icu
 	provides = yakyak
 	conflicts = yakyak
-	noextract = electron-v1.4.10-linux-ia32.zip
+	noextract = electron-v1.4.10-linux-x64.zip
 	source = yakyak::git+https://github.com/yakyak/yakyak#branch=master
 	source = yakyak.desktop
 	sha256sums = SKIP
