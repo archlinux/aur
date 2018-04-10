@@ -3,8 +3,8 @@
 
 pkgname=odoo
 pkgver=11.0
-_pkgsubver=20180404
-pkgrel=1
+_pkgsubver=20180410
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
 arch=('any')
@@ -61,7 +61,7 @@ source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_
         odoo.confd
         odoo.service
         odoo.conf)
-md5sums=('e4c74c4b3a4f0fa8695d70a96de65344'
+md5sums=('7757793a5c085bdfcd45af9b5d2171c5'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
          '863418f31f0fb982cde0008fa63f35f0')
