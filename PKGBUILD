@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap-modules
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modules for C-ICAP server'
 depends=('c-icap' 'clamav')
 arch=(i686 x86_64)
@@ -48,8 +48,9 @@ package() {
 
   # enable logging
   cat > "${pkgdir}"/etc/c-icap/vscan-local.conf << 'EOF'
-LogFormat myVScanFmt "%tl, %>a %is %Ib %Ob %huo [Action: %{virus_scan:action}Sa] [Virus: %{virus_scan:virus}Sa]"
+LogFormat myVScanFmt "%tl, %>a %is %Ib %Ob %huo [Action: %{virus_scan:action}Sa] [Virus: %{virus_scan:virus}Sa] [User: %{X-Client-Username}>ih]"
 acl VSCAN service virus_scan
-AccessLog /var/log/c-icap/vscan.log myVScanFmt VSCAN
+acl VFOUND icap_resp_header{X-Infection-Found} /Type=0/
+AccessLog /var/log/c-icap/vscan.log myVScanFmt VSCAN VFOUND
 EOF
 }
