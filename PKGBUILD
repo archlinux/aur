@@ -13,13 +13,11 @@ makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/oragono/oragono-vendor"
         "oragono.service"
-        "path.patch"
-        "oragono-rotate")
+        "path.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '131097e2803dee6f0b00de41b80fb790a44dd6c90bf1b1004078535150ff64cc'
-            '25a1c0f764283059e95088f3b9cb66fe6a0c95df0d9dc8375856f41097c04fb0'
-            '896f394a7c62ce7961778c4664a02ffe0370ccec9a7f2569fb7d0b9119632d4b')
+            '88cf6274839ac8d9f32f9a81068d11e762ddfc28f8fada305b693a8524e593ce'
+            '8972e3fc24d0aca75614048f14487b6eb1e43a9edf212626f5a74b59f1051d8c')
 backup=('etc/oragono.conf')
 build() {
     export GOPATH=$(pwd)/..
@@ -28,7 +26,7 @@ build() {
     git submodule init 
     git config submodule.vendor.url $srcdir/oragono-vendor
     git submodule update
-    patch -p0 < ../path.patch
+    patch -p1 < ../path.patch
     cd vendor/github.com/$pkgname
     rm -rf $pkgname
     mkdir -p $pkgname
@@ -42,7 +40,6 @@ build() {
 package() {
     local _conf=/var/lib/oragono/
     install -Dm 644 oragono.service $pkgdir/usr/lib/systemd/system/oragono.service
-    install -Dm 644 oragono-rotate $pkgdir/etc/logrotate.d/oragono
     cd ${srcdir}/$pkgname
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     cd build/linux

@@ -1,6 +1,8 @@
---- oragono.yaml	2017-06-26 09:52:22.638430466 -0400
-+++ ../../oragono.conf	2017-06-26 09:52:54.349010749 -0400
-@@ -24,8 +24,8 @@
+diff --git a/oragono.yaml b/oragono.yaml
+index 0d72a0b..23b80ac 100644
+--- a/oragono.yaml
++++ b/oragono.yaml
+@@ -21,8 +21,8 @@ server:
      tls-listeners:
          # listener on ":6697"
          ":6697":
@@ -11,26 +13,29 @@
  
      # strict transport security, to get clients to automagically use TLS
      sts:
-@@ -62,8 +62,7 @@
-     #password: ""
+@@ -52,7 +52,7 @@ server:
  
      # motd filename
--    # if you change the motd, you should move it to ircd.motd
+     # if you change the motd, you should move it to ircd.motd
 -    motd: oragono.motd
 +    motd: /var/lib/oragono/ircd.motd
  
-     # maximum length of clients' sendQ in bytes
-     # this should be big enough to hold /LIST and HELP replies
-@@ -214,7 +213,7 @@
-         method: file stderr
+     # motd formatting codes
+     # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
+@@ -236,10 +236,10 @@ logging:
+         #   file    log to given target filename
+         #   stdout  log to stdout
+         #   stderr  log to stderr
+-        method: file stderr
++        method: stdout stderr
  
          # filename to log to, if file method is selected
 -        filename: ircd.log
-+        filename: /var/log/oragono.log
++        #filename: ircd.log
  
          # type(s) of logs to keep here. you can use - to exclude those types
          #
-@@ -256,7 +255,7 @@
+@@ -289,7 +289,7 @@ debug:
  # datastore configuration
  datastore:
      # path to the datastore
