@@ -1,18 +1,18 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=bolt-git
-pkgver=r307.eb63510
+pkgver=r537.0823d6f
 pkgrel=1
 pkgdesc="Thunderbolt 3 security system daemon"
 arch=('i686' 'x86_64')
-url="https://github.com/gicmo/bolt"
+url="https://gitlab.freedesktop.org/bolt/bolt"
 license=('LGPL')
 depends=('polkit' 'systemd')
 makedepends=('asciidoc' 'meson' 'git')
 checkdepends=('umockdev')
 conflicts=('bolt')
 provides=('bolt')
-source=(git+https://github.com/gicmo/bolt.git)
+source=(git+https://gitlab.freedesktop.org/bolt/bolt.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,21 +21,21 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"
+  cd "${srcdir}"/bolt
 
   install -d build
-  arch-meson bolt build
+  arch-meson build
   ninja -v -C build
 }
 
 check() {
-  cd "${srcdir}"
+  cd "${srcdir}"/bolt
 
   ninja -C build test
 }
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}"/bolt
 
   DESTDIR="${pkgdir}" ninja -C build install
 # Fixup mode to match polkit
