@@ -43,7 +43,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
         no-plt.diff
-        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch")
+        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
+        new_rust.patch)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -62,7 +63,8 @@ sha256sums=('SKIP'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
             '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d')
+            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
+            '09797b4da7e90a84c61e6f3e5f18d425d060a964607e198a91c3f0b0d9a7a8ca')
 
 prepare() {
   mkdir path
@@ -169,11 +171,12 @@ ac_add_options --disable-gamepad
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
-ac_add_options --enable-stylo
+ac_add_options --enable-stylo=build
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
 ac_add_options --enable-release
+ac_add_options --enable-rust-simd # on x86 requires SSE2
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
 
@@ -194,6 +197,10 @@ END
   # https://bugs.archlinux.org/task/52183
   msg "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
+  
+  msg "Patching for new Rust"
+  patch -Np1 -i ../new_rust.patch
+  
 }
 
 build() {
