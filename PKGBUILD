@@ -2,7 +2,7 @@
 
 pkgname=gotop-bin
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=("x86_64" "i686")
 url="https://github.com/cjbassi/gotop"
