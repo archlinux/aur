@@ -5,7 +5,7 @@
 
 pkgname=natron
 pkgver=2.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '72f90b173009c30ae3e152e8496bada94e0c9371c58901cbfb0b4dc1ffab24f5d93c7a218d6f1fe90761a736cbc50622bbc9d98a41a3b7c91b390ef945e54f12'
+            'SKIP'
             '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
 
 prepare() {
