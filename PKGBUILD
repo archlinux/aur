@@ -6,7 +6,7 @@ _watch=("http://miniupnp.free.fr/files/" "miniupnpc-(\d[\d.]*\d+)\.")
 
 pkgbase=python-miniupnpc
 pkgname=('python-miniupnpc' 'python2-miniupnpc')
-pkgver=2.0.20180406
+pkgver=2.0.20180410
 pkgrel=1
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://miniupnp.free.fr"
 license=('BSD')
 source=("http://miniupnp.free.fr/files/${pkgbase#python-}-$pkgver.tar.gz")
 makedepends=('python-setuptools' 'python2-setuptools')
-sha256sums=('8c7226bd47a6e4a46ffa14b8cdef940a8a5c4f721ab33bc72a217371a4a72996')
+sha256sums=('0e4c6d6ebc8b75eb636df7d3f3370c98713545acc3694b5ae40daa2502487a23')
 
 package_python2-miniupnpc() {
 	depends=('python2')
