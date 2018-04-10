@@ -1,6 +1,6 @@
 pkgbase = icedove-enigmail
 	pkgdesc = Icedove extension that enables sending and receiving signed and encrypted e-mail messages
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://www.enigmail.net/
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = icedove-enigmail
 	makedepends = perl>=5.8
 	depends = icedove>=38
 	depends = gnupg>=2.0.7
-	source = https://www.enigmail.net/download/source/enigmail-2.0.tar.gz
-	source = https://www.enigmail.net/download/source/enigmail-2.0.tar.gz.asc
+	source = https://www.enigmail.net/download/source/enigmail-2.0.1.tar.gz
+	source = https://www.enigmail.net/download/source/enigmail-2.0.1.tar.gz.asc
 	validpgpkeys = 10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3
 	validpgpkeys = 4F9F89F5505AC1D1A260631CDB1187B9DD5F693B
-	sha512sums = bbf7c743d51d6010e8dcca575e1530561944b552dd940119cda874c4b70109eedaaee437c108b1ead17a8414935f48083e2bde8020f3504f927bf9e01fb7b4ae
+	sha512sums = 1795e7e15d8388990fbe1c8aed1747e190c319e8d30dc8d08110714f3fa64dd86aadddcfc1d0644e1f1f915396fe85237e976796a7089b24b7644cc049f8ac80
 	sha512sums = SKIP
 
 pkgname = icedove-enigmail
