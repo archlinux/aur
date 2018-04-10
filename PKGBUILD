@@ -4,7 +4,7 @@
 pkgbase=enigmail-bin
 pkgname=(icedove-${pkgbase} thunderbird-${pkgbase})
 _pkg_main_ver=2.0
-pkgver=${_pkg_main_ver}
+pkgver=${_pkg_main_ver}.1
 pkgrel=1
 _pkgdesc_pre="The"
 _pkgdesc_post="GnuPG encryption plugin. Binary version."
@@ -17,7 +17,7 @@ source=("https://www.enigmail.net/download/release/${_pkg_main_ver}/enigmail-${p
 noextract=("enigmail-${pkgver}-sm+tb.xpi")
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha512sums=('5bec96f33a555a43c06f7dfa30335cd6add4814ee5fbac65315f1ebc6572da055d5376fb52e1f0cc5500ead676e2d864f6f4e97df5b1427824cc73024860e83b'
+sha512sums=('05d3e6b1dfecefceca072de26385b1798cbe4a63abf9b10efedefeaa15817411661c5472487131ea24ac2b37c8f0fef15cc8700e71babe350a4502c5b9c2370f'
             'SKIP')
 
 prepare()
