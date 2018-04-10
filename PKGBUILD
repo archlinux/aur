@@ -1,13 +1,13 @@
 pkgname=nvidia-container-runtime-hook
-pkgver=1.2.1+1
+pkgver=1.3.0+1
 pkgrel=1
 pkgdesc='NVIDIA container runtime hook'
 arch=('x86_64')
 url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('custom')
 depends=(nvidia-container-runtime)
-source_x86_64=("https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/${pkgname}-1.2.1-1.x86_64.rpm")
-sha256sums_x86_64=('ccc892ec7dbbcc4b08136ccdfcef951bfe616a941a9a166261c975578f69ffc7')
+source_x86_64=("https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/${pkgname}-1.3.0-1.x86_64.rpm")
+sha256sums_x86_64=('9c18b62a9cf1310650d015b5610e09c359dc9e21bc3fcf8ffaea9098f03ddaa1')
 
 package() {
   cd "$srcdir"
