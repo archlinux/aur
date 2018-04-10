@@ -1,13 +1,13 @@
 pkgname=libnvidia-container
-pkgver=1.0.0_0.1.alpha.3
+pkgver=1.0.0_0.1.beta.1
 pkgrel=1
 pkgdesc='NVIDIA container runtime library'
 arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
 license=('custom')
 depends=(libcap libseccomp)
-source_x86_64=("https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.0.0-0.1.alpha.3.x86_64.rpm")
-sha256sums_x86_64=('00af40308cb281e1043d573404d05c6c204cda2bff98931accaafe993d8bc5c4')
+source_x86_64=("https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.0.0-0.1.beta.1.x86_64.rpm")
+sha256sums_x86_64=('38bb1e0e3e8cd3a7224805d19a3825b90e1c2270027d20552f248abdba1e2364')
 
 package() {
   cd "$srcdir"
