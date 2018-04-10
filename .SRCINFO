@@ -1,6 +1,6 @@
 pkgbase = diaspora-mysql-git
 	pkgdesc = A distributed privacy aware social network (development head) (MySQL)
-	pkgver = 0.7.4.0.r79.g0d07d9f3d
+	pkgver = 0.7.4.1.r95.g89f7f9729
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
