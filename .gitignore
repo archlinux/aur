@@ -1,0 +1,8 @@
+pkg
+src
+cmarkgfm*.tar.gz
+python-cmarkgfm-*.pkg.tar.xz
+python2-cmarkgfm-*.pkg.tar.xz
+python-cmarkgfm-*.src.tar.gz
+.AURINFO
+

@@ -1,0 +1,21 @@
+pkgbase = python-cmarkgfm
+	pkgdesc = Minimalist Python bindings to GitHub's fork of cmark, a Markdown rendering library.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jonparrott/cmarkgfm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/cmarkgfm/cmarkgfm-0.4.0.tar.gz
+	sha256sums = 977d7061779c7ebc5cbe7af71adb795ced96058552fe5f6b646d95b5055959be
+
+pkgname = python-cmarkgfm
+	depends = 
+	depends = python-cffi>=1.0.0
+
+pkgname = python2-cmarkgfm
+	depends = 
+	depends = python2-cffi>=1.0.0
+
