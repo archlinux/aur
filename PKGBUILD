@@ -3,7 +3,6 @@
 pkgver=7.6.0
 pkgrel=1
 
-# FIXME a completely new package, because the product was relabeled
 _basename=bonita-studio-community
 _basenamever="${_basename}-$pkgver"
 _prefix=bonitasoft
@@ -22,8 +21,7 @@ sha256sums_i686=(  "9d1e60fd3df378e77c639bfc65b47503c5a05c046b4b533f75d86fb99720
 install="${_basename}.install"
 replaces=('bonita-bpm-community-bin')  # yeah, they renamed it
 
-# FIXME 2018-01-04 22:47:31 UTC+1 revise deps
-depends=('ffmpeg-compat' 'java-environment' 'libxslt' 'python' 'gtk2')
+depends=('ffmpeg2.8' 'libglvnd' 'java-environment' 'libxslt' 'python' 'gtk2')
 makedepends=()
 # FIXME might be needed: 'postgresql' 'tomcat'
 optdepends=(
@@ -55,12 +53,12 @@ build() {
   chmod +x *.run
   # FIXME a hack to kill the process, because it waits for user input indefinitely
   #  https://github.com/bonitasoft/bonita-studio/issues/397
-  [ -e '/tmp/bitrock_installer.log' ] && pid=xxx
+  [ -e '/tmp/bitrock_installer.log' ] && first_run=yes
   ./*.run --mode unattended --prefix "$_prefix/$_basenamever" &
-  [ -n "$pid" ] && pid=$!
+  pid=$!
   while sleep 1; do
     grep 'Installation completed' \
-        "/tmp/bitrock_installer${pid:+_$pid}.log" >/dev/null && {
+        "/tmp/bitrock_installer${first_run:+_$pid}.log" >/dev/null && {
       kill "$pid"
       break
     }
