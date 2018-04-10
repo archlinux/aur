@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/cylgom/excalibar"
 license=('custom:WTFPL')
 makedepends=('git')
-depends=('libexcalibar-git' 'libxcb' 'cairo' 'pango')
+depends=('libexcalibar-git' 'ttf-material-design-icons' 'libxcb' 'cairo' 'pango')
 source=('git+https://github.com/cylgom/excalibar.git'
 	'git+https://github.com/benhoyt/inih.git')
 md5sums=('SKIP' 'SKIP')

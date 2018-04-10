@@ -8,6 +8,7 @@ pkgbase = excalibar-git
 	license = custom:WTFPL
 	makedepends = git
 	depends = libexcalibar-git
+	depends = ttf-material-design-icons
 	depends = libxcb
 	depends = cairo
 	depends = pango
