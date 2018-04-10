@@ -2,7 +2,7 @@
 # Maintainer: jaap
 # Contributor: jaap
 pkgname=synergy2
-pkgver=2.0.8.stable_b1535+a99bf78e
+pkgver=2.0.9.stable_b1573+4a1bbebe
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://binaries.symless.com/v2.0.8/synergy_2.0.8.stable_b1535%2Ba99bf78e_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
-sha512sums_x86_64=('f257d72a5872301ade2b32d4cd8d27866d599978df164fa4fa6abd3c1f462a358e60517b12f7c9593cfc026f949f043401f2d9e4109ef28605ca6604a1b9a102' "9c818d4f4929d156a6926336048cab4e398047037f45a177cdb71ede9c54d7b16992b7e5437999b2c72d3604c22092790e112abb234647abb0b34adf8e56b76b")
+source_x86_64=("https://binaries.symless.com/v2.0.9/synergy_2.0.9.stable_b1573%2B4a1bbebe_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw")
+sha512sums_x86_64=("140ab81dae2e1a0cdf25f390c392c44cc787298f9d500b6f3f0883acd6648db2f04693643469e159ff4b60e6a672f77c8d4073046bea2dce50a69bba2dfc7d7d" "9c818d4f4929d156a6926336048cab4e398047037f45a177cdb71ede9c54d7b16992b7e5437999b2c72d3604c22092790e112abb234647abb0b34adf8e56b76b")
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
