@@ -1,3 +1,4 @@
+# Maintainer:  Jeromy Reimer <jeromyreimer at gmail dot com>
 pkgname=zerotier-one-armv7h
 pkgver=1.2.4
 pkgrel=1
