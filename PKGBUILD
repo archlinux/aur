@@ -1,4 +1,5 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
+# Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-vim-lightline
 pkgver=0.6.0
 pkgrel=1
