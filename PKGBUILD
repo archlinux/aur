@@ -44,7 +44,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
         no-plt.diff
         "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
-        new_rust.patch)
+        new_rust.patch
+        .gitignore)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -64,7 +65,8 @@ sha256sums=('SKIP'
             '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
-            '09797b4da7e90a84c61e6f3e5f18d425d060a964607e198a91c3f0b0d9a7a8ca')
+            '09797b4da7e90a84c61e6f3e5f18d425d060a964607e198a91c3f0b0d9a7a8ca'
+            'e7ae75f0d1305066a5ba7b60a513d812c769beadaf890a13d1433c9f93242166')
 
 prepare() {
   mkdir path
