@@ -18,22 +18,22 @@
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 
-pkgver=0.7.7.4.14.32.1
+pkgver=0.7.8.4.14.32.1
 pkgrel=1
 makedepends=("linux-lts-headers=4.14.32" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.7/zfs-0.7.7.tar.gz")
-sha256sums=("db8ca69dc1d257175421a86bc81c861b2b24cc48db0832c954d9553fe50d0bb9")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.8/zfs-0.7.8.tar.gz")
+sha256sums=("70ba0edd72914d4bfc9a9426cf26725e955a9509acbddb6902efb9eebb35f150")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.7" "linux-lts=4.14.32")
+depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.8" "linux-lts=4.14.32")
 
 build() {
-    cd "${srcdir}/zfs-0.7.7"
+    cd "${srcdir}/zfs-0.7.8"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.7 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.8 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.14.32-1-lts/build \
                 --with-linux-obj=/usr/lib/modules/4.14.32-1-lts/build
     make
@@ -45,7 +45,7 @@ package_zfs-linux-lts() {
     provides=("zfs")
     groups=("archzfs-linux-lts")
     conflicts=('zfs-linux-lts-git')
-    cd "${srcdir}/zfs-0.7.7"
+    cd "${srcdir}/zfs-0.7.8"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
@@ -56,7 +56,7 @@ package_zfs-linux-lts() {
 package_zfs-linux-lts-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers'  'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
-    cd "${srcdir}/zfs-0.7.7"
+    cd "${srcdir}/zfs-0.7.8"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
