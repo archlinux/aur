@@ -1,0 +1,18 @@
+pkgbase = curvedns-git
+	pkgdesc = A DNSCurve Forwarding name server
+	pkgver = 0.87.r11.gb5a7619
+	pkgrel = 1
+	url = https://github.com/curvedns/curvedns
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = libev
+	provides = curvedns
+	conflicts = curvedns
+	source = git+https://github.com/curvedns/curvedns.git
+	sha256sums = SKIP
+
+pkgname = curvedns-git
+
