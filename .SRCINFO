@@ -1,12 +1,12 @@
 pkgbase = python2-zxcvbn
 	pkgdesc = Password strength estimator
-	pkgver = 4.4.19
+	pkgver = 4.4.23
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/zxcvbn-python
 	arch = any
 	license = Apache
-	source = https://github.com/dwolfhub/zxcvbn-python/archive/v4.4.19.tar.gz
-	md5sums = fe057ff3c170d1b3d0ecc29ba13a5127
+	source = https://pypi.io/packages/source/z/zxcvbn-python/zxcvbn-python-4.4.23.tar.gz
+	md5sums = a7fc42b641ee213b59a0873bbc199393
 
 pkgname = python2-zxcvbn
 	depends = python2
