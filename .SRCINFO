@@ -1,0 +1,17 @@
+pkgbase = libexcalibar-git
+	pkgdesc = excalibar core (plugins interface)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/cylgom/excalibar
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = libxcb
+	depends = cairo
+	depends = pango
+	source = git+https://github.com/cylgom/excalibar.git
+	md5sums = SKIP
+
+pkgname = libexcalibar-git
+
