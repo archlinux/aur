@@ -1,7 +1,7 @@
 
 # Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 pkgname=stellar-core-git
-pkgver=0
+pkgver=v9.2.0.97.ga3c0cf61
 pkgrel=1
 pkgdesc="core daemon for backbone nodes in the payment Stellar network"
 arch=(x86_64 i686)
@@ -16,9 +16,11 @@ source=('git+https://github.com/stellar/stellar-core.git'
 	'libmedida::git+https://github.com/stellar/medida.git'
 	'git+https://github.com/stellar/libsodium.git'
 	'git+https://github.com/xdrpp/xdrpp.git'
+	'git+https://github.com/USCiLab/cereal'
+	'git+https://github.com/chriskohlhoff/asio.git'
 	)
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
