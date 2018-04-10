@@ -10,7 +10,7 @@ license=('MIT')
 depends=(docker)
 source=("https://github.com/Thermi/docker-makepkg/archive/${pkgver}.tar.gz"
 		"https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/${pkgver}.tar.gz.asc")
-sha256sums=('1fa6ee1b367dc05ae30a130dc844acdc5fdd97e570d554743ea7cdd793bbbfbf'
+sha256sums=('509d814a4aaaf0ac1d744974db60279275fca84b9bd05a41270eeee4501fac64'
             'SKIP')
 validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
 install=docker_makepkg.install
