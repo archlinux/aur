@@ -1,14 +1,14 @@
 pkgbase = python-readme-renderer
 	pkgdesc = Python library to safely render arbitrary README files into HTML
-	pkgver = 18.1
+	pkgver = 19.0
 	pkgrel = 1
 	url = https://github.com/pypa/readme_renderer
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-18.1.tar.gz
-	sha256sums = e18cab7f1b07412990df1b59e1be04e1538f514a5bba53ec8777bfc5aac27563
+	source = https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-19.0.tar.gz
+	sha256sums = fd63b4c56fb9e1448a3e4eef0e5a6d0d85de2a1be9514794401f47e4f728d0d0
 
 pkgname = python-readme-renderer
 	depends = 
