@@ -19,8 +19,8 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 	ls
-	cat "${srcdir}/raw"
-	mv "${scrdir}/raw" "${pkgdir}/lib/systemd/system/synergy.service"
+	cat "raw"
+	mv "raw" "${pkgdir}/lib/systemd/system/synergy.service"
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
