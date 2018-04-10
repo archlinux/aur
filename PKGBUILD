@@ -1,9 +1,10 @@
+# Maintainer: Radek Podgorny <radek@podgorny.cz>
 pkgname=novnc-git
-pkgver=20150218.65
+pkgver=20150614.1
 pkgrel=1
 pkgdesc="javascript vnc client"
-arch=(i686 x86_64)
-url="http://kanaka.github.com/noVNC/"
+arch=(any)
+url="https://github.com/kanaka/noVNC"
 license=('GPL')
 depends=()
 provides=('novnc')
@@ -33,8 +34,7 @@ build() {
 package() {
   cd $srcdir/novnc
   mkdir -p $pkgdir/usr/share/novnc $pkgdir/usr/share/doc/novnc $pkgdir/usr/bin
-  cp -a include utils images images/favicon.ico vnc.html vnc_auto.html \
-	$pkgdir/usr/share/novnc/
+  cp -a app core vendor utils vnc.html vnc_lite.html $pkgdir/usr/share/novnc/
   cp -a LICENSE.txt README.md $pkgdir/usr/share/doc/novnc
   cat >$pkgdir/usr/bin/novnc <<EOF
 #!/bin/sh
