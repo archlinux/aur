@@ -4,7 +4,7 @@
 
 pkgname=ydpdict
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for Polish-English Collins Dictionary"
 url="http://toxygen.net/ydpdict"
 arch=('i686' 'x86_64')
@@ -16,15 +16,11 @@ source=(http://toxygen.net/ydpdict/$pkgname-$pkgver.tar.gz)
 sha256sums=('cbdcf1bba29a1eaf8c9fc782a1c15b80596e9debe7a56f169e1724960a415822')
 
 build() {
-	cd "$srcdir"/$pkgname-$pkgver
-	./configure --prefix=/usr
+  cd "$srcdir"/$pkgname-$pkgver
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
-
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
 	make DESTDIR="$pkgdir" install
-	install -dm755 "$pkgdir"/etc
-	mv "$pkgdir"/usr/etc/ydpdict.conf "$pkgdir"/etc/
-	rm -R "$pkgdir"/usr/{share/ydpdict,etc}
 }
