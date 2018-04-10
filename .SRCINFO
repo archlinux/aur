@@ -1,0 +1,20 @@
+pkgbase = excalibar-git
+	pkgdesc = sharp and shiny taskbar
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/cylgom/excalibar
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = libexcalibar-git
+	depends = libxcb
+	depends = cairo
+	depends = pango
+	source = git+https://github.com/cylgom/excalibar.git
+	source = git+https://github.com/benhoyt/inih.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = excalibar-git
+
