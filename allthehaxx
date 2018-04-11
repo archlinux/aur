@@ -1,0 +1,4 @@
+post_remove() {
+	echo "NOTE: This programm will have created a local storage in your home directory after"
+	echo "      running. To clean it up completely, remove '~/.allthehaxx'; everything is in there."
+}
