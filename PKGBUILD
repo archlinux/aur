@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-neutronclient' 'python2-neutronclient')
-pkgver='6.7.0'
+pkgver='6.8.0'
 pkgrel='1'
 pkgdesc='Python client library for Neutron'
 arch=('any')
