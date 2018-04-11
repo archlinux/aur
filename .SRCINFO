@@ -1,13 +1,13 @@
 pkgbase = square1-wad
 	pkgdesc = The Adventures of Square, Episode 1 game data
-	pkgver = 1.4
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://adventuresofsquare.com/
 	arch = any
 	license = CCPL:by-nc
 	license = MIT
-	source = http://adventuresofsquare.com/downloads/square-ep1-win32-1.4.zip
-	sha256sums = 7752a552c974f38bd345de250d3606ed164d503281be125785e3bda0f0f71a37
+	source = http://adventuresofsquare.com/downloads/square-ep2-win64-2.0.zip
+	sha256sums = 9ce8d75386833e7dc1a6f25c31aed18dff44a18f365d3f8bf6bef6f2f5e92117
 
 pkgname = square1-wad
 
