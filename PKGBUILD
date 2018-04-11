@@ -8,7 +8,7 @@
 
 pkgbase=linux-ryzen-git
 _srcname=linux
-pkgver=4.16.r5456.g17dec0a94915
+pkgver=4.16.r11631.g8837c70d531a
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -59,8 +59,8 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
-  #make olddefconfig # old config from previous kernel, defaults for new options
+  #make oldconfig # using old config from previous kernel version
+  make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
 }
 
