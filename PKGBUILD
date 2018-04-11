@@ -17,10 +17,10 @@ source=(
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Bold.ttf"
 "67-smc-manjari.conf"
 )
-md5sums=('10fefbb99a04607258760c78eff29e23'
-         'f202b6f364df92afc9158a5ffc3af21b'
-         '53f66c18d1fca2afd57cffb0b4f7b6ee'
-         '98923c2e7c4df841f7e8ee0f3e05f9f5')
+sha256sums=('7be64c927fd7b3dc9517c67513617bd450641d0785cdc5d3aade9a21f9c419a1'
+            '9b60df692d9c0f56fb18e35dae8676c5389683d7116cf3986cc469ff76459805'
+            'b3293a036002ff7781b3a7fedd620aa7bb7fdf39ef326b37a7db3e90ae38e6f4'
+            '518712f630448e9a7c35e11deccc6dcb7c11a08e96f523ce5bfe379b3a6e151b')
 install=ttf-malayalam-fonts.install
 
 
