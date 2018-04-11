@@ -6,7 +6,7 @@
 
 pkgname=pure-pcre
 _pkgname=pure
-pkgver=0.67
+pkgver=0.68
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
@@ -22,7 +22,7 @@ optdepends=("clang35: needed for inlining C/C++ code"
 provides=('pure')
 conflicts=('pure')
 source=("https://github.com/agraef/pure-lang/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz")
-md5sums=('2d8c705f1016b4860ba743e9bbf8b5e5')
+md5sums=('082d522d05e58e55dc8094ba4c3d3eda')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
