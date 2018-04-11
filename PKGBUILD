@@ -7,7 +7,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=390.48
+pkgver=396.18
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,16 +20,9 @@ provides=("nvidia=${pkgver}" 'nvidia-dkms')
 conflicts=('nvidia')
 options=('!strip')
 install=${pkgname}.install
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-source_armv7h=("http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
-md5sums_i686=('754bbdc3eb6f3873cca49ae807964c0e')
-md5sums_x86_64=('8ed67fc67710b6cfd9c9273054e2117a')
-md5sums_armv7h=('0306547cbb08d6f3d00fa6dc2424c397')
-
-[[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
-[[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32
-[[ $CARCH == armv7h ]] && _pkg=NVIDIA-Linux-armv7l-gnueabihf-${pkgver}
+_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums=('d7d841c8e017e84a4f39619527855bbb')
 
 prepare() {
   # Remove previous builds
