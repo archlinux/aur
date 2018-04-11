@@ -2,7 +2,7 @@
 
 pkgname=edx-dl
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to download videos and lecture materials from Open edX-based sites'
 arch=(any)
 url='https://github.com/coursera-dl/edx-dl'
@@ -18,4 +18,5 @@ sha512sums=(1dc826f5b5d8eb72dd31a9aebc03f94d544f7ed19a3ede4d427770b5a25e4aace96e
 package() {
   cd $srcdir/edx-dl-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
+  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/edx-dl/LICENSE
 }
