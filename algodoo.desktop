@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Algodoo
+GenericName=Physics Simulator
+Comment=A unique 2D-simulation software from Algoryx Simulation AB.
+Encoding=UTF-8
+Version=2.1.0
+Type=Application
+Terminal=false
+Icon=algodoo
+Exec=algodoo -immediate %F
+Categories=Games;Education;
+

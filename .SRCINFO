@@ -1,0 +1,25 @@
+pkgbase = algodoo-wine
+	pkgdesc = A unique 2D-simulation software from Algoryx Simulation AB (Using Wine).
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://algodoo.com
+	arch = any
+	license = custom:Algodoo
+	makedepends = innoextract
+	depends = wine
+	depends = desktop-file-utils
+	depends = winetricks
+	optdepends = lib32-nvidia-utils: 32 bits NVIDIA driver for Algodoo
+	source = http://www.algodoo.com/download/Algodoo_2_1_0-Win32.exe
+	source = LICENSE
+	source = algodoo.sh
+	source = algodoo.desktop
+	source = algodoo.png
+	sha256sums = 3e65d18c63b20c17aaedd5c96f9751d914dc5e024ef001fc5cf569b94255caa4
+	sha256sums = 3a46622a459bd0148d52988a7d5bcd7432facfe6af30b33a2f6db5f4f04f5bb2
+	sha256sums = 12fe213da742a3bea365c2a345a610262bf23524e498e3485900a55016f5f984
+	sha256sums = 19f2775207fe72643ff4a787afb478c8d511b7eb25f632f54dc229a064b1c41c
+	sha256sums = 0f7e995cd90df87236404db4c28789e23eef7341cc47f321f1ea6ce30fa913f1
+
+pkgname = algodoo-wine
+
