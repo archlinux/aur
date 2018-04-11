@@ -3,7 +3,7 @@
 pkgname=prometheus-nginxlog-exporter-bin
 _name=prometheus-nginxlog-exporter
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Export metrics from Nginx access log files to Prometheus"
 
 arch=('x86_64')
@@ -31,6 +31,6 @@ package() {
     install -D -m0644 "${srcdir}/config.yml" \
         "${pkgdir}/etc/prometheus/nginxlog.yml"
 }
-md5sums=('c6a8077b0dee0f3a748ee73b7c146044'
+md5sums=('eb93cf58698a0015dd3124c1c1653fbf'
          '7f951e89fda154346240c0f0eb9223ce'
          'aca2467d2cbd7caed90e2dd8274a5817')

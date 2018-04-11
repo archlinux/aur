@@ -3,8 +3,11 @@ Description=Prometheus NginxLog Exporter
 After=network.target
 
 [Service]
-User=prometheus
-ExecStart=/usr/bin/prometheus_nginxlog_exporter --config.file="/etc/prometheus/nginxlog.yml"
+ExecStart=/usr/bin/prometheus-nginxlog-exporter -config-file "/etc/prometheus/nginxlog.yml"
+Restart=always
+ProtectSystem=full
+CapabilityBoundingSet=
+
 
 [Install]
 WantedBy=multi-user.target
