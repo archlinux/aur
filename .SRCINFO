@@ -7,6 +7,7 @@ pkgbase = mate-hud
 	arch = i686
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = python-distutils-extra
 	depends = rofi
 	depends = gobject-introspection
 	depends = mate-desktop
