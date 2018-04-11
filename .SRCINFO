@@ -1,0 +1,17 @@
+pkgbase = ruby-ruby-mpd
+	pkgdesc = A powerful, modern and feature complete library for the Music Player Daemon
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/archSeer/ruby-mpd
+	arch = any
+	license = GPL2
+	makedepends = ruby
+	makedepends = rubygems
+	depends = ruby
+	noextract = ruby-mpd-0.3.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/ruby-mpd-0.3.3.gem
+	sha256sums = ec42cd27f99bb0734ba7ce19526db2b2e4f9ecfa8afc8799bb090055ed7a0051
+
+pkgname = ruby-ruby-mpd
+
