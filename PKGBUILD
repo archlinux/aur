@@ -4,8 +4,8 @@
 
 _gemname=dotenv
 pkgname=ruby-${_gemname}
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="Loads environment variables from '.env'."
 arch=('any')
 depends=(ruby)
@@ -16,7 +16,7 @@ license=('MIT')
 source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('5bca7b46b76ff1b0e8dbe252bb47fb804d48a1f8f3a5ea1ec5966b0df4a6ffdd')
+sha256sums=('c99323145a6a349307278fa8d94fd481eac7d4eedc927128d6ec25c53b013ab9')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
