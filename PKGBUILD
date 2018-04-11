@@ -11,7 +11,7 @@ options=('staticlibs' 'libtool' '!strip')
 depends=('java-environment' 'ncurses5-compat-libs')
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
-source=("https://github.com/JetBrains/kotlin-native/releases/download/${pkgver}/kotlin-native-linux-${pkgver}.tar.gz")
+source=("https://github.com/JetBrains/kotlin-native/releases/download/v${pkgver}/kotlin-native-linux-${pkgver}.tar.gz")
 sha512sums=('4600216116e9480550ada878b4365b4e391c4d355964e19e2e3011a92ba5afe2bb1844691c3ecb730b1d1d8d299c668a22cec0cacdf4d6b8712fe1d6c079a929')
 
 package() {
