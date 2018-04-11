@@ -1,0 +1,16 @@
+pkgbase = aps-php-runtime
+	pkgdesc = Parallels APS PHP Runtime
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://doc.apsstandard.org/7.3/resources/tools/php-lib/#php-runtime
+	arch = any
+	license = custom
+	depends = php>=7.2
+	provides = aps-php-runtime
+	conflicts = aps-php-runtime
+	replaces = aps-php-runtime
+	source = http://download.apsstandard.org/php.runtime/aps-php-runtime-7.2-106.zip
+	md5sums = 068e7ee0cc6d1f31b870f087e0c04227
+
+pkgname = aps-php-runtime
+
