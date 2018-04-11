@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: dhamp <dhamp@ya.ru>
 
-pkgname=('eiskaltdcpp-web-git')
-pkgver=1.0.r12.e06fa80
+pkgname=eiskaltdcpp-web-git
+pkgver=1.0.r19.eb612f4
 pkgrel=1
 pkgdesc="Web interface for EiskaltDC++ Daemon. (GIT Version)"
 license=('GPL3')
