@@ -1,11 +1,11 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=sonic-pi
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
-license=('MIT')
+license=('CCPL' 'LGPL2.1' 'GPL2' 'GPL3' 'MIT')
 groups=('pro-audio')
 depends=('aubio' 'boost-libs' 'erlang-nox' 'libffi' 'http-parser' 'osmid' 'qscintilla-qt5' 'qwt' 'ruby' 'sc3-plugins' 'supercollider')
 makedepends=('boost' 'cmake' 'lua' 'qt5-tools' 'wkhtmltopdf')
