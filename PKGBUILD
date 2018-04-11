@@ -13,8 +13,8 @@ license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka.ttf"
         "https://gitlab.com/smc/chilanka/raw/master/67-smc-chilanka.conf")
-md5sums=('dc3057a0ad1ad70353c9cb2ac5269682'
-         'f626730347f96e8f323e2bbd3df1a768')
+sha256sums=('8bf98472a04cf8f684795d8d06106979aea63103fbbc0d9c96b21dbc06238629'
+            'cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a')
 install=ttf-malayalam-fonts.install
 
 
