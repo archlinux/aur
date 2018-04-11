@@ -1,7 +1,7 @@
 pkgbase = allthehaxx
 	pkgdesc = AllTernative Teeworlds Client
 	pkgver = 0.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://allthehaxx.github.io
 	install = allthehaxx.install
 	arch = x86_64
