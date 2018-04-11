@@ -4,16 +4,19 @@ pkgname=kscd-git
 pkgver=v17.08.3.24.gaf73a1c
 pkgrel=1
 pkgdesc="KDE CD player. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.kde.org/applications/multimedia/kscd/'
 license=('GPL2')
-depends=('libdiscid'
+depends=('phonon-qt5'
+         'solid'
+         'kxmlgui'
+         'libdiscid'
          'libmusicbrainz5'
-         'kdelibs4support'
          'hicolor-icon-theme'
          )
 conflicts=('kdemultimedia-kscd'
-           'kscd')
+           'kscd'
+           )
 provides=('kscd')
 makedepends=('extra-cmake-modules'
              'git'
