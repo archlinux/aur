@@ -1,5 +1,5 @@
 pkgname=slack-libpurple-git
-pkgver=r83.d933332
+pkgver=r150.b0f1550
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -15,7 +15,7 @@ depends=('libpurple' 'json-parser-git')
 source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git'
 	'api-token-in-passwd.patch')
 sha256sums=('SKIP'
-            'ee48127cd4d08643f72c6f6e0be9c86a9d7390d24c9a5aaa9d1ce05cf95cb3e9')
+            'de4d34ba2985fbd582695c281d98ea171971325d95f7d39fb80881ed2f3a84d7')
 
 prepare() {
   cd "$srcdir/slack-libpurple/"
