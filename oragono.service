@@ -4,6 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
+User=oragono
+Group=oragono
+WorkingDirectory=/var/lib/oragono
 ExecStart=/usr/bin/oragono run --conf /etc/oragono.conf
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure

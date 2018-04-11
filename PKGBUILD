@@ -2,7 +2,7 @@
 
 pkgname=oragono
 pkgver=0.10.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -13,11 +13,15 @@ makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/oragono/oragono-vendor"
         "oragono.service"
-        "path.patch")
+        "oragono.sysusers"
+        "path.patch"
+        "oragono.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
-            '88cf6274839ac8d9f32f9a81068d11e762ddfc28f8fada305b693a8524e593ce'
-            '8972e3fc24d0aca75614048f14487b6eb1e43a9edf212626f5a74b59f1051d8c')
+            'd35dd5205e3b607ee105a1252677d0607d0c35636ee3e6057275b5f13e555858'
+            '7e214caa8bee053adac26a00a17ed732970e86665cbe31553b1d3d609f0a49b4'
+            '8972e3fc24d0aca75614048f14487b6eb1e43a9edf212626f5a74b59f1051d8c'
+            'd56a8935891bc421683e48245786c9f8d9d4c449197de5f455ce7d7804907c7a')
 backup=('etc/oragono.conf')
 build() {
     export GOPATH=$(pwd)/..
@@ -34,15 +38,15 @@ build() {
     ln -s $_path/mkcerts $pkgname/mkcerts
     cd $_path
     GOOS=linux GOARCH=amd64 go build oragono.go
-    echo "Arch Linux AUR: $pkgver-$pkgrel" >> oragono.motd
 }
 
 package() {
     local _conf=/var/lib/oragono/
     install -Dm 644 oragono.service $pkgdir/usr/lib/systemd/system/oragono.service
+    install -Dm644 "$srcdir/oragono.sysusers" "$pkgdir/usr/lib/sysusers.d/oragono.conf"
+    install -Dm644 "$srcdir/oragono.tmpfiles" "${pkgdir}"/usr/lib/tmpfiles.d/oragono.conf
     cd ${srcdir}/$pkgname
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm 755 oragono $pkgdir/usr/bin/oragono
-    install -Dm 644 oragono.motd $pkgdir/$_conf/ircd.motd
     install -Dm 644 oragono.yaml $pkgdir/etc/oragono.conf
 }

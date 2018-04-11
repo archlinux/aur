@@ -1,4 +1,12 @@
 post_install() {
-    /usr/bin/oragono initdb --conf /etc/oragono.conf
-    cd /var/lib/oragono/ && /usr/bin/oragono mkcerts --conf /etc/oragono.conf
+    if [[ ! -e /var/lib/oragono/ircd.db ]]; then
+    cat <<-EOF
+		==> oragono needs to initialize the database and have
+            certificates made available prior to use.
+
+            cd /var/lib/oragono
+            sudo -u oragono /usr/bin/oragono initdb --conf /etc/oragono.conf
+            sudo -u oragono /usr/bin/oragono mkcerts --conf /etc/oragono.conf
+		EOF
+    fi
 }
