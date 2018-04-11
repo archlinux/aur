@@ -2,11 +2,11 @@
 pkgname=peertube
 pkgver=1.0.0_beta.3
 _pkgver=1.0.0-beta.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
 depends=("nodejs" "ffmpeg" "postgresql" "openssl" "redis" "nginx-mainline")
-makedepends=("yarn" "npm")
+makedepends=("yarn" "npm" "python2")
 url="https://joinpeertube.org/"
 license=("AGPL")
 backup=('etc/peertube/production.yaml')
