@@ -1,0 +1,48 @@
+diff --git a/swaybar/i3bar.c b/swaybar/i3bar.c
+index 923ad755..a0bac04f 100644
+--- a/swaybar/i3bar.c
++++ b/swaybar/i3bar.c
+@@ -142,6 +142,13 @@ bool i3bar_handle_readable(struct status_line *status) {
+ 		} else {
+ 			switch (*cur) {
+ 			case '[':
++				if (state->depth == 0) { // ignore infinite array
++					memmove(state->buffer, cur + 1,
++							state->buffer_size - (cur + 1 - state->buffer));
++					cur = state->buffer;
++					++state->depth;
++					continue;
++				}
+ 				++state->depth;
+ 				if (state->depth >
+ 						sizeof(state->nodes) / sizeof(state->nodes[0])) {
+@@ -149,7 +156,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+ 					return false;
+ 				}
+ 				state->nodes[state->depth] = JSON_NODE_ARRAY;
+-				if (state->depth == 1) {
++				if (state->depth == 2) {
+ 					state->current_node = cur;
+ 				}
+ 				break;
+@@ -159,7 +166,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+ 					return false;
+ 				}
+ 				--state->depth;
+-				if (state->depth == 0) {
++				if (state->depth == 1) {
+ 					// cur[1] is valid since cur[0] != '\0'
+ 					char p = cur[1];
+ 					cur[1] = '\0';
+diff --git a/swaybar/status_line.c b/swaybar/status_line.c
+index 7f3ec98f..6d734384 100644
+--- a/swaybar/status_line.c
++++ b/swaybar/status_line.c
+@@ -120,6 +120,7 @@ struct status_line *status_line_init(char *cmd) {
+ 	fcntl(status->write_fd, F_SETFL, O_NONBLOCK);
+ 
+ 	status->read = fdopen(status->read_fd, "r");
++	setvbuf(status->read, NULL, _IONBF, 0);
+ 	status->write = fdopen(status->write_fd, "w");
+ 	return status;
+ }

@@ -1,7 +1,7 @@
 # Maintainer: Nils Brause <nilschrbrause@gmail.com>
 pkgname=sway-wlroots-git
-pkgver=1.0.alpha.1.r29.g07b6be62
-pkgrel=1
+pkgver=1.0.alpha.1.r46.g57851704
+pkgrel=2
 pkgdesc='i3 compatible window manager for Wayland'
 arch=('x86_64')
 url='http://swaywm.org'
@@ -14,9 +14,11 @@ provides=('sway')
 conflicts=('sway' 'sway-git')
 install=sway-wlroots-git.install
 source=('git+https://github.com/swaywm/sway.git#branch=wlroots'
-        'wno-maybe-uninitialized.patch')
+        'wno-maybe-uninitialized.patch'
+        'swaybar-fix.patch')
 sha1sums=('SKIP'
-          'b053bf7392b4975e66b725529f2de7e036fc4996')
+          'b053bf7392b4975e66b725529f2de7e036fc4996'
+          '64ca62152b83a9a7ebae0ea86631012d5af39bea')
 
 pkgver() {
   cd "$srcdir/sway"
@@ -26,6 +28,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/sway"
   patch -Np1 -i "$srcdir/wno-maybe-uninitialized.patch"
+  patch -Np1 -i "$srcdir/swaybar-fix.patch"
 }
 
 build() {
