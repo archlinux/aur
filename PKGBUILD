@@ -7,9 +7,9 @@ pkgname=('wxbase-light'
          'wxcommon-light'
          )
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://wxwidgets.org'
 license=('custom:wxWindows')
 makedepends=('git'
@@ -19,6 +19,7 @@ makedepends=('git'
              'gtk3'
              'libsm'
              'libgl'
+             'libnotify'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'make-abicheck-non-fatal.patch'
@@ -38,17 +39,18 @@ prepare() {
 }
 
 build() {
+  msg2 "Build WxBASE"
   cd "${srcdir}/build-base"
   ../wxwidgets/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-regex=builtin \
-    --enable-unicode \
     --disable-{precomp-headers,gui}
 
   make
   make -C ../wxwidgets/locale allmo
 
+  msg2 "Build WxGTK2"
   cd "${srcdir}/build-gtk2"
   ../wxwidgets/configure \
     --prefix=/usr \
@@ -57,14 +59,15 @@ build() {
     --with-lib{jpeg,png,tiff,xpm}=sys \
     --with-regex=builtin \
     --with-{opengl,sdl} \
-    --enable-{unicode,graphics_ctx} \
-    --without-{libnotify,gnome{vfs,print}} \
-    --disable-{precomp-headers,mediactrl,webview}
+    --enable-graphics_ctx \
+    --without-gnomevfs \
+    --disable-{gtktest,sdltest,precomp-headers,mediactrl,webview}
 
   make
   make -C ../wxwidgets/locale allmo
 
-    cd "${srcdir}/build-gtk3"
+  msg2 "Build WxGTK3"
+  cd "${srcdir}/build-gtk3"
   ../wxwidgets/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -72,9 +75,9 @@ build() {
     --with-lib{jpeg,png,tiff,xpm}=sys \
     --with-regex=builtin \
     --with-{opengl,sdl} \
-    --enable-{unicode,graphics_ctx} \
-    --without-{libnotify,gnome{vfs,print}} \
-    --disable-{precomp-headers,mediactrl,webview}
+    --enable-graphics_ctx \
+    --without-gnomevfs \
+    --disable-{gtktest,sdltest,precomp-headers,mediactrl,webview}
 
   make
   make -C ../wxwidgets/locale allmo
@@ -106,6 +109,7 @@ package_wxgtk2-light() {
            'gtk2'
            'libsm'
            'sdl2'
+           'libnotify'
            )
   provides=('wxgtk'
             'wxgtk2'
@@ -132,6 +136,7 @@ package_wxgtk3-light() {
            'gtk3'
            'libsm'
            'sdl2'
+           'libnotify'
            )
   provides=('wxgtk3')
   conflicts=('wxgtk3')
