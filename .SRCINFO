@@ -1,0 +1,19 @@
+pkgbase = prometheus-nginxlog-exporter-bin
+	pkgdesc = Export metrics from Nginx access log files to Prometheus
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/martin-helmich/prometheus-nginxlog-exporter/
+	arch = x86_64
+	license = Apache
+	provides = prometheus-nginxlog-exporter
+	conflicts = prometheus-nginxlog-exporter
+	backup = etc/prometheus/nginxlog.yml
+	source = prometheus-nginxlog-exporter.service
+	source = config.yml
+	source = https://github.com/martin-helmich/prometheus-nginxlog-exporter//releases/download/v1.2.0/prometheus-nginxlog-exporter
+	md5sums = c6a8077b0dee0f3a748ee73b7c146044
+	md5sums = 7f951e89fda154346240c0f0eb9223ce
+	md5sums = aca2467d2cbd7caed90e2dd8274a5817
+
+pkgname = prometheus-nginxlog-exporter-bin
+

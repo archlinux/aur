@@ -1,0 +1,30 @@
+listen:
+  port: 4040
+  #address: "10.1.2.3"
+
+consul:
+  enable: true
+  address: "localhost:8500"
+  datacenter: dc1
+  scheme: http
+  token: ""
+  service:
+    id: "nginx-exporter"
+    name: "nginx-exporter"
+    tags: ["foo", "bar"]
+
+namespaces:
+  - name: app1
+    format: "$remote_addr - $remote_user [$time_local] \"$request\" $status $body_bytes_sent \"$http_referer\" \"$http_user_agent\" \"$http_x_forwarded_for\""
+    source_files:
+      - /var/log/nginx/app1/access.log
+    labels:
+      app: "application-one"
+      environment: "production"
+      foo: "bar"
+  - name: app2
+    format: "$remote_addr - $remote_user [$time_local] \"$request\" $status $body_bytes_sent \"$http_referer\" \"$http_user_agent\" \"$http_x_forwarded_for\" $upstream_response_time"
+    source_files:
+      - /var/log/nginx/app2/access.log
+
+
