@@ -1,13 +1,12 @@
 pkgname=bearychat
-_pkgname=BearyChat-linux-x64
-pkgver=20170330
+pkgver=20180328
 pkgrel=1
 pkgdesc="面向未来的团队工作方式，团队沟通与智能化工作流"
 arch=('x86_64')
 url="https://bearychat.com"
 license=( 'custom')
 depends=()
-source=("https://dn-bearychat.qbox.me/v2/${_pkgname}.tar.gz"
+source=("https://static.bearychat.com/v2/BearyChat-linux-x64.tar.gz"
         'license'
         'bearychat.sh'
         'bearychat.desktop'
@@ -28,7 +27,7 @@ package() {
         install -Dm644 bearychat.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/bearychat.png"
 }
 
-md5sums=('f8e2913b19416e6290a0685f37045af5'
+md5sums=('c7256019b3252e39e10c387ee2d2fad1'
          '3c4c6a04a297d45fab57cf2be1ea9e3c'
          '227cfd2422267cd99b7ead270d68fab9'
          'd1f4f8bfac5248333dc2eb5d7843a5ea'
