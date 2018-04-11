@@ -3,10 +3,10 @@
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=kwooty-frameworks-git
-pkgver=1.1.0.r1227.46c9020
+pkgver=1.1.0.r1228.4def039
 pkgrel=1
 pkgdesc="A friendly nzb usenet binary downloader for KDE. KF5 frameworks branch. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://kwooty.sourceforge.net'
 license=('GPL')
 depends=('kdelibs4support'
@@ -21,7 +21,8 @@ makedepends=('git'
              )
 optdepends=('unrar: automatic RAR-archive extraction'
             'p7zip: automatic zip and 7z archive extraction'
-            'par2cmdline: automatic file repairing')
+            'par2cmdline: automatic file repairing'
+            )
 conflicts=('kwooty')
 provides=('kwooty')
 source=('git://anongit.kde.org/kwooty#branch=frameworks')
@@ -40,12 +41,11 @@ prepare() {
 build() {
   cd build
   cmake ../kwooty \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
-    
+
   make
 }
 
