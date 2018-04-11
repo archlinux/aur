@@ -5,7 +5,7 @@
 
 _jqueryver=1.9.1
 pkgname=etherpad-lite
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -23,15 +23,15 @@ optdepends=('sqlite: to use sqlite as databse'
 conflicts=('etherpad-lite-git')
 backup=("etc/${pkgname}/settings.json")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
-        "jquery.js::https://code.jquery.com/jquery-${_jqueryver}.js"
+        "jquery-${_jqueryver}.js::https://code.jquery.com/jquery-${_jqueryver}.js"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('09aa42dc20860864fc554ef8b91cdc75666c8bd41acb73d754fbb7fe123af4b6ae9c90f6c42b3f3165d76d986668294bc07c81e414c25ab948b9e00dd8bb664e'
+sha512sums=('380e58564c507b43743a72b49d3f2f18f1dfa110f0d45534fc2bea1eebac34f9670316c2a759d38900b6424aa12c09781200b15c56e354fab452d6222367c30c'
             'd62700e7a1ff41f9d6326ca024ba2be1d391bc8fbb2aeae0f427d74837899b230940bf7c2df3d193f5300a68bb3686706d4c31328234b5cda026a1bf52ef9e70'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             '31a411f8a93ec2bbd854545cce80eaf435b75432f876ac81df0a6d4ba2bc8437a7b9196456cb04b0a5c9b29d013be7f35501f0af48de5c2fe261d12adb3a1895'
-            'b54ea26a6918c817b58d950fb9afa07e069b8d2e8c343017a9e52cd17221710fcf9c875e1f8089b773df0ed5de419e6db2c379259863fb6f15afe6ca14bec06b')
+            'c20f85193f39cb08d99623ce9f445f995a5f4f737997e75308b93c7fa8d8638c47197ce1eeef487431ad1d535228b33da4bead827597ddc0c23d507e680e4d80')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -71,18 +71,18 @@ package() {
   cd "${pkgname}-${pkgver}"
   # install initialization file
   install -t "${pkgdir}/usr/share/${pkgname}/src/" \
-    -vDm644 "src/.ep_initialized"
+    -vDm 644 "src/.ep_initialized"
 
   # node modules
   mv -v node_modules "${pkgdir}/usr/share/${pkgname}/"
 
   # protect configuration directory with restrictive permission
-  install -dm750 "${pkgdir}/etc/${pkgname}"
-  install -dm750 "${pkgdir}/etc/${pkgname}/custom"
+  install -vdm 750 "${pkgdir}/etc/${pkgname}"
+  install -vdm 750 "${pkgdir}/etc/${pkgname}/custom"
 
   # custom js and css templates
   install -t "${pkgdir}/etc/${pkgname}/custom" \
-    -vDm0644 "src/static/custom/"*.{css,js}
+    -vDm 644 "src/static/custom/"*.{css,js}
   rm -rv src/static/custom
 
   # move sources
@@ -99,27 +99,27 @@ package() {
     "${pkgdir}/usr/share/${pkgname}/APIKEY.txt"
 
   #jquery
-  install -vDm0644 "${srcdir}/jquery.js" \
+  install -vDm 644 "${srcdir}/jquery-${_jqueryver}.js" \
     "${pkgdir}/usr/share/${pkgname}/src/static/js/jquery.js"
 
   # configuration
-  install -vDm0644 settings.json.template \
+  install -vDm 644 settings.json.template \
     "${pkgdir}/etc/${pkgname}/settings.json"
 
   # systemd service
-  install -vDm0644 "${srcdir}/${pkgname}.service" \
+  install -vDm 644 "${srcdir}/${pkgname}.service" \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   # systemd-sysusers
-  install -vDm0644 "${srcdir}/${pkgname}-sysusers.conf" \
+  install -vDm 644 "${srcdir}/${pkgname}-sysusers.conf" \
     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
   # systemd-tmpfiles
-  install -vDm0644 "${srcdir}/${pkgname}-tmpfiles.conf" \
+  install -vDm 644 "${srcdir}/${pkgname}-tmpfiles.conf" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # documentation
   install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
-    -vDm0644 {CHANGELOG,CONTRIBUTING,README}.md \
-    -vDm0644 documentation.html
+    -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md \
+    -vDm 644 documentation.html
 }

@@ -1,8 +1,10 @@
 [Unit]
 Description=Etherpad-lite
+Documentation=https://github.com/ether/etherpad-lite/wiki
 After=syslog.target network.target
 
 [Service]
+Environment=NODE_ENV=production
 User=etherpad-lite
 Group=etherpad-lite
 StateDirectory=etherpad-lite
@@ -13,6 +15,9 @@ ExecStart=/usr/bin/node /usr/share/etherpad-lite/src/node/server.js --settings /
 PrivateTmp=true
 NoNewPrivileges=true
 PrivateDevices=true
+ProtectHome=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
 Restart=always
 
 [Install]
