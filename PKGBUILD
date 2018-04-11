@@ -3,7 +3,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
-pkgver=3.13.0
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/releases/download/${pkgver}/${pkgname/-selinux}-${pkgver}.tar.xz"{,.asc}
         'logrotate.conf')
-md5sums=('78ef24d6fddcc4df8e412dd75c551b4c'
+md5sums=('1c0f6e6e490c4bcac0a1e77ad1310683'
          'SKIP'
          '94dae4d3eded2fab9ae879533d3680db')
 validpgpkeys=('992A96E075056E79CD8214F9873DB37572A37B36')
