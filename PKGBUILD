@@ -13,8 +13,8 @@ license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/meera/Meera.ttf"
         "https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf")
-md5sums=('cbb502b60c4b6d9a3b78f186f3beefe8'
-         '4c02bd80a4d2b9fcfd47ef7685357359')
+sha256sums=('a0e840716376ab6de9dfc9ba8d1b3f78c654870b0b2ba2d41f4249497766494d'
+            'a1823a555cb3c042ad8e4d4c15ccbca9b35627bdff34a287539fe9384ec4ec61')
 install=ttf-malayalam-fonts.install
 
 
