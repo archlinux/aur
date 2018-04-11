@@ -1,0 +1,16 @@
+pkgbase = naspro-bridge-it
+	pkgdesc = NASPRO Bridge it is a little helper library to develop insert-your-API-here to LV2 bridges.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://naspro.sourceforge.net/libraries.html#naspro-bridge-it
+	arch = x86
+	arch = x86_64
+	license = LGPL
+	depends = naspro-core
+	depends = lv2
+	depends = sratom
+	source = http://sourceforge.net/projects/naspro/files/naspro/0.5.1/naspro-bridge-it-0.5.1.tar.bz2
+	sha1sums = SKIP
+
+pkgname = naspro-bridge-it
+
