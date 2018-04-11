@@ -30,14 +30,14 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}"
 
-# Git, tags available
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  # Git, tags available
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$srcdir/ff-3pt"
+  cd "$srcdir/ff-3pt"
   mkdir _src
   curl -L "https://sourceforge.net/projects/lame/files/latest/download?source=files" --output "_src/lame-3.100.tar.gz"
   curl -L "https://sourceforge.net/projects/soxr/files/latest/download?source=files" --output "_src/soxr-0.1.3-Source.tar.xz"
@@ -47,11 +47,11 @@ prepare() {
   curl -L "https://github.com/stsaz/fmedia/files/1886262/fix-flac.txt" --output "flac/fix-flac.txt"
   cat flac/fix-flac.txt | patch -p1
 
-	cd "$srcdir/ffos"
+  cd "$srcdir/ffos"
   curl -L "https://github.com/stsaz/fmedia/files/1887725/fix-linux-writev.txt" --output "fix-linux-writev.txt"
   cat fix-linux-writev.txt | patch -p1 
 
-	cd "$srcdir/ff-3pt"
+  cd "$srcdir/ff-3pt"
   echo && echo && make alac
   echo && echo && make dynanorm
   echo && echo && make fdk-aac
@@ -70,16 +70,16 @@ prepare() {
 build() {
   cd "$srcdir/${_pkgname}"
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../ff-3pt/_bin/linux-amd64
-	make FF3PTLIB=../ff-3pt/_bin/linux-amd64 install
+  make FF3PTLIB=../ff-3pt/_bin/linux-amd64 install
 }
 
 check() {
-	cd "$srcdir/${_pkgname}"
-	# make -k check
+  cd "$srcdir/${_pkgname}"
+  # make -k check
 }
 
 package() {
-	# cd "$srcdir/${_pkgname}"
+  # cd "$srcdir/${_pkgname}"
   cd "$pkgdir"
   install -Dm755 "$srcdir/fmedia/fmedia-0/fmedia" "$pkgdir/opt/fmedia/fmedia"
   cp -r $srcdir/fmedia/fmedia-0/* $pkgdir/opt/fmedia/
