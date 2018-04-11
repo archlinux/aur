@@ -1,4 +1,10 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
+# Based on upwork-appimage package on the AUR
+# 
+# There's no central repository for AppImages, and no convention on
+# system-wide AppImage installations, so we're picking /opt/appimages.
+# We grab koreader.png and koreader.desktop from the AppImage, patch the koreader.desktop,
+# and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
 pkgver=2018.04.10.beta
 pkgrel=1
