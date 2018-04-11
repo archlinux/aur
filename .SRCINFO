@@ -1,7 +1,7 @@
 pkgbase = bumblebee-status
 	pkgdesc = Modular, theme-able status line generator for the i3 window manager
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = bumblebee-status
 	depends = python-netifaces
 	depends = python-psutil
 	depends = python-requests
-	depends = python-yaml
 	optdepends = xorg-xbacklight: to display a displays brightness
 	optdepends = xorg-xset: enable/disable automatic screen locking
 	optdepends = libnotify: enable/disable automatic screen locking
