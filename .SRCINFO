@@ -1,13 +1,13 @@
 pkgbase = naspro-core
 	pkgdesc = NASPRO core is the portable runtime library at the bottom of the NASPRO Architecture for Sound PROcessing.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://naspro.sourceforge.net/libraries.html#naspro-core
 	arch = x86
 	arch = x86_64
 	license = LGPL
 	source = http://sourceforge.net/projects/naspro/files/naspro/0.5.1/naspro-core-0.5.1.tar.bz2
-	sha1sums = SKIP
+	sha1sums = 90a8381951dd4443c4c23dd5ba0ebbe25a350691
 
 pkgname = naspro-core
 
