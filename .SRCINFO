@@ -1,0 +1,20 @@
+pkgbase = lib32-gamemode-git
+	pkgdesc = A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS.
+	pkgver = 53eece3
+	pkgrel = 1
+	url = https://github.com/FeralInteractive/gamemode.git
+	arch = x86_64
+	license = BSD 3-Clause License (Revised)
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = git
+	depends = polkit
+	depends = gamemode-git
+	depends = lib32-glibc
+	provides = lib32-gamemode
+	source = git+https://github.com/FeralInteractive/gamemode.git
+	sha256sums = SKIP
+
+pkgname = lib32-gamemode-git
+
