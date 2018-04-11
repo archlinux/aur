@@ -1,25 +1,20 @@
 # Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bit-shift.io -> https://github.com/bit-shift-io
-pkgname=audiobook-git
-pkgver=2018.04.09
+pkgname=audiobook
+pkgver=r20.a829f6f
 pkgrel=1
-pkgdesc="Audio Book is a simple audio book reader. Written in Qt and C++."
-arch=('any')
+pkgdesc="A simple audio book reader. Written in Qt and C++."
+arch=('x86_64')
 url="https://github.com/bit-shift-io/audiobook"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'taglib')
 provides=('audiobook')
-conflicts=()
 source=("${pkgname}::git+https://github.com/bit-shift-io/audiobook.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${pkgname}"
 }
 
 build() {
