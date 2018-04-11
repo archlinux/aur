@@ -1,0 +1,20 @@
+pkgbase = kotlin-native-bin
+	pkgdesc = A LLVM backend for the Kotlin compiler
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/JetBrains/kotlin-native
+	arch = x86_64
+	license = Apache
+	depends = java-environment
+	depends = ncurses5-compat-libs
+	provides = kotlin-native
+	conflicts = kotlin-native
+	conflicts = kotlin-native-git
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = https://github.com/JetBrains/kotlin-native/releases/download/0.6.2/kotlin-native-linux-0.6.2.tar.gz
+	sha512sums = 4600216116e9480550ada878b4365b4e391c4d355964e19e2e3011a92ba5afe2bb1844691c3ecb730b1d1d8d299c668a22cec0cacdf4d6b8712fe1d6c079a929
+
+pkgname = kotlin-native-bin
+
