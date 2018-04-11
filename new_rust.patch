@@ -2324,13 +2324,3 @@ index f67669513d38..fd5668729199 100644
  debug-assertions = false
  panic = "abort"
 
-From 3485a92a94ab4b5e4a4a21c7faf0c840039c08f2 Mon Sep 17 00:00:00 2001
-From: Jan Beich <jbeich@FreeBSD.org>
-Date: Wed, 4 Apr 2018 13:49:31 +0000
-Subject: [PATCH 16/16] Enable Rust optimizations
-
----
- .mozconfig | 2 ++
- 1 file changed, 2 insertions(+)
-
-
