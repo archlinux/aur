@@ -11,7 +11,8 @@ depends=('java-runtime-headless=8')
 conflicts=('openhab-runtime' 'openhab-addons')
 
 backup=('etc/openhab2/services/addons.cfg'
-		'etc/openhab2/services/runtime.cfg')
+		'etc/openhab2/services/runtime.cfg'
+		'etc/default/openhab2')
 install="${pkgname}.install"
 
 source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F${pkgver}%2Fopenhab-${pkgver}.tar.gz"
