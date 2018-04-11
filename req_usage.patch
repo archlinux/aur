@@ -1,0 +1,12 @@
+diff -Naur old/g10/getkey.c new/g10/getkey.c
+--- old/g10/getkey.c	2018-02-21 23:42:42.000000000 -1000
++++ new/g10/getkey.c	2018-04-05 10:15:14.642119429 -1000
+@@ -1810,6 +1810,8 @@
+       ctx.items[0].mode = fprint_len == 16 ? KEYDB_SEARCH_MODE_FPR16
+ 	: KEYDB_SEARCH_MODE_FPR20;
+       memcpy (ctx.items[0].u.fpr, fprint, fprint_len);
++      if (pk)
++        ctx.req_usage = pk->req_usage;
+       rc = lookup (ctrl, &ctx, 0, &kb, &found_key);
+       if (!rc && pk)
+ 	pk_from_block (pk, kb, found_key);

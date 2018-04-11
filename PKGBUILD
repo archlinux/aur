@@ -6,8 +6,8 @@
 
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
-pkgver=2.2.4
-pkgrel=1
+pkgver=2.2.5
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
 license=('GPL')
@@ -23,10 +23,12 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=("https://www.gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} 
         "${pkgname}.patch"
+        "req_usage.patch"
        )
-sha256sums=('401a3e64780fdfa6d7670de0880aa5c9d589b3db7a7098979d7606cec546f2ec'
+sha256sums=('3fa189a32d4fb62147874eb1389047c267d9ba088f57ab521cb0df46f08aef57'
             'SKIP'
-            '2fb51506b247d047986596cce6c93d0a031830ea225b71b65d8f2b09234e348c')
+            '2fb51506b247d047986596cce6c93d0a031830ea225b71b65d8f2b09234e348c'
+            'f8bef4891c1b9f81f305753dac7780ad4cfd56ec853502ba1d9d6400c69a518e')
 
 install=install
 
@@ -37,7 +39,11 @@ replaces=('dirmngr' 'gnupg2' 'gnupg')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     patch -p1 -i ${srcdir}/${pkgname}.patch 
+
     sed '/noinst_SCRIPTS = gpg-zip/c bin_SCRIPTS += gpg-zip' -i tools/Makefile.in
+
+    # See: https://dev.gnupg.org/rGa17d2d1f690ebe5d005b4589a5fe378b6487c657
+	patch -p1 -i ../req_usage.patch
 }
 
 build() {
@@ -62,9 +68,6 @@ check() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
-
-    cd doc/examples/systemd-user
-    for i in *.*; do
-        install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
-    done
+	ln -s gpg "${pkgdir}"/usr/bin/gpg2
+	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 }
