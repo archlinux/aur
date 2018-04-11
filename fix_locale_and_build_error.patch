@@ -1,15 +1,6 @@
 diff -Naur Cataclysm-DDA-master.orig/Makefile Cataclysm-DDA-master/Makefile
 --- Cataclysm-DDA-master.orig/Makefile	2017-07-13 13:39:52.000000000 +0800
 +++ Cataclysm-DDA-master/Makefile	2017-07-14 15:23:47.780860342 +0800
-@@ -224,7 +224,7 @@
-   endif
-   DEFINES += -DRELEASE
-   # Check for astyle or JSON regressions on release builds.
--  CHECKS = astyle-check lint-check
-+  CHECKS = lint-check
- endif
- 
- ifdef CLANG
 @@ -389,7 +389,7 @@
      CXXFLAGS += -DMAPSIZE=$(MAPSIZE)
  endif

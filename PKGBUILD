@@ -5,9 +5,9 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-tiles
-pkgver=0.C.2017.07.14
+pkgver=0.C.2018.04.12
 _pkgver=0.C
-pkgrel=3
+pkgrel=1
 pkgdesc="A post-apocalyptic roguelike,tiles only"
 url="http://en.cataclysmdda.com/"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
 source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip'
 	'fix_locale_and_build_error.patch')
 md5sums=('SKIP'
-         '20797e08fd4a35e6688f70e1bfbe86e7')
+         '17c1adda49636148ae952f0e03ebcc22')
 
 pkgver() {
   cd "Cataclysm-DDA-master"
