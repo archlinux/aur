@@ -8,7 +8,7 @@ url="http://developer.parrot.com/docs/SDK3/"
 license=('custom')
 source=('git+https://github.com/Parrot-Developers/arsdk_manifests')
 md5sums=('SKIP')
-depends=('python' 'python2')
+makedepends=('repo ''python' 'python2')
 
 prepare() {
 	cd "$srcdir"
