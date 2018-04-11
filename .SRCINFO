@@ -1,7 +1,7 @@
 pkgbase = lib32-sdl_sound
 	pkgdesc = A library to decode several popular sound file formats, such as .WAV and .MP3 (32 bit)
 	pkgver = 1.0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://icculus.org/SDL_sound/
 	arch = x86_64
 	license = LGPL
