@@ -2,22 +2,27 @@
 # Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=gatk
-pkgver=4.0.0.0
+pkgver=4.0.2.1
 pkgrel=1
-epoch=2
+epoch=2  # New licensing and versioning scheme as produced by the Broad
 pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
-license=('custom:broadinstitute')
-depends=('java-runtime>=8' 'gradle')
+license=('BSD')
+depends=('java-runtime>=8' 'gradle' 'python')
 source=(
   gatk.sh
   "${pkgname}"-"${pkgver}".tar.gz::https://github.com/broadinstitute/"${pkgname}"/archive/"${pkgver}".tar.gz
 )
 sha256sums=(
   '279d9fa4f9711b31a312a372216fbc0a61901db5a8e1b6c714bd96bafd0714f2'
-  '473fabecc406c9cdaf1fe5648b26b51d9c71870af5e2e6557c73131e941b80d7'
+  '9e4798ba8b1ebfedf5d3cb006dafc7758f441c5fed387b1d8d1a2a9f240256ea'
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}"-"${pkgver}"
+  ./gradlew clean
+}
 
 build() {
   cd "${srcdir}/${pkgname}"-"${pkgver}"
