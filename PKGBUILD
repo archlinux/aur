@@ -3,12 +3,13 @@
 
 pkgname=rancid
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Really Awesome New Cisco confIg Differ"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.shrubbery.net/rancid/"
 license=('BSD')
 depends=('expect')
+backup=('etc/rancid.conf')
 source=( ftp://ftp.shrubbery.net/pub/rancid/${pkgname}-${pkgver}.tar.gz )
 sha256sums=('9c6befff78d49d8d0757a2b57b6cfdfef55cadcbc1fa6fbe1ab9424335d51f7b')
 
