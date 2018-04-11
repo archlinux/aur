@@ -1,7 +1,7 @@
 pkgbase = usermin
 	pkgdesc = A web-based user account administration interface
 	pkgver = 1.741
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,7 @@ pkgbase = usermin
 	source = usermin-config.tar.bz2
 	source = usermin.pam
 	source = usermin.logrotate
+	source = usermin.tmpfiles
 	source = usermin.service
 	sha256sums = 3d2c74501966fa3a3795b0e9bcc47962815738fd1553782ee42221ee88026b2f
 	sha256sums = 366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c
@@ -67,6 +68,7 @@ pkgbase = usermin
 	sha256sums = c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d
 	sha256sums = a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d
 	sha256sums = 73b47189419d107e3be2cce131123c73e4d1c954c14f53c223f332da0348681c
+	sha256sums = be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7
 	sha256sums = 6f40dfcd8f1530639b7a8db2cd5401be74d1416ce1116b8f36b0542a85c8d3cf
 
 pkgname = usermin

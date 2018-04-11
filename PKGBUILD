@@ -2,7 +2,7 @@
 
 pkgname=usermin
 pkgver=1.741
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based user account administration interface"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -52,6 +52,7 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         usermin-config.tar.bz2
         usermin.pam
         usermin.logrotate
+        usermin.tmpfiles
         usermin.service)
 options=(!strip !zipman)
 
@@ -83,11 +84,12 @@ package() {
     install -D -m 644 "$srcdir"/usermin.service "$pkgdir"/usr/lib/systemd/system/usermin.service
     install -D -m 644 "$srcdir"/usermin.pam "$pkgdir"/etc/pam.d/usermin
     install -D -m 644 "$srcdir"/usermin.logrotate "$pkgdir"/etc/logrotate.d/usermin
+    install -D -m 644 "$srcdir"/usermin.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/usermin.conf
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/usermin/LICENCE
     mv "$pkgdir"/opt/usermin/user.acl "$pkgdir"/etc/usermin/
 
-    # delete temp dir
-    rm -r "$pkgdir"/tmp
+    # delete directories not to be packaged
+    rm -r "$pkgdir"/{tmp,var}
 }
 
 
@@ -97,4 +99,5 @@ sha256sums=('3d2c74501966fa3a3795b0e9bcc47962815738fd1553782ee42221ee88026b2f'
             'c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             '73b47189419d107e3be2cce131123c73e4d1c954c14f53c223f332da0348681c'
+            'be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7'
             '6f40dfcd8f1530639b7a8db2cd5401be74d1416ce1116b8f36b0542a85c8d3cf')
