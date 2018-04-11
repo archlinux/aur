@@ -8,6 +8,7 @@ pkgbase = gamemode
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkg-config
+	makedepends = git
 	depends = polkit
 	optdepends = systemd
 	provides = gamemode
