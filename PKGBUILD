@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=l-smash-git
-pkgver=v2.9.1.22.g3408947
+pkgver=v2.14.5.14.g04fbd81
 pkgrel=1
 pkgdesc="MP4 muxer and other tools. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://l-smash.github.io/l-smash'
 license=('custom:l-smash')
 depends=('glibc')
@@ -21,9 +21,11 @@ pkgver() {
 
 build() {
   cd l-smash
-  ./configure --prefix=/usr \
-              --enable-shared \
-              --disable-static
+  ./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-static
+
   make
 }
 
