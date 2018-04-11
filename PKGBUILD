@@ -2,8 +2,8 @@
 # Contributor: Bjoern Lindig bjoern _dot_ lindig _at_ googlemail _dot_ com
 
 pkgname=pure-octave
-pkgver=0.9
-pkgrel=3
+pkgver=0.10
+pkgrel=1
 pkgdesc="embed an Octave interpreter into Pure."
 arch=("i686" "x86_64")
 license=('GPL3')
@@ -13,7 +13,7 @@ depends=('pure' 'octave40')
 makedepends=()
 groups=(pure-complete pure-math)
 source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('2d4b3cad23aadcd33925cea04661e2eab6109423')
+sha1sums=('0e963d87ba23d29b9341595793fbe3fdd85b5a7a')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
