@@ -7,5 +7,4 @@
 !amule.tmpfiles
 !amuled.service
 !amuled@.service
-!amulewebd.service
-
+!amuleweb.service
