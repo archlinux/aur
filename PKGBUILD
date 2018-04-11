@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=java-design-patterns
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Design patterns implemented in Java"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 optdepends=("java-environment" "maven")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/iluwatar/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("0dd8253342faab32a477fbc919f1f9a4ae895b51f2bd18a6d5011c86d5b99e91")
+sha256sums=("9e5a7f85c19845491527045797c08172d3a8a15b46a623232321d59b1f76298a")
 
 package() {
   msg2 "Installing custom license /usr/share/licenses/${pkgname}/"
