@@ -1,8 +1,8 @@
 ## Maintainer: Thermi <noel[ at ] familie-kuntze.de>
 # Submitter: nullie
 pkgname=lsyncd
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
@@ -12,7 +12,7 @@ makedepends=('asciidoc' 'lua52' 'cmake')
 source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
 	    "lsyncd.service")
 
-sha256sums=('0bdb12f40f1a52ed2d8e6cb47242d296663a42b30f38d2b8efcb66b43129e009'
+sha256sums=('7bcd0f4ae126040bb078c482ff856c87e61c22472c23fa3071798dcb1dc388dd'
             '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57')
 
 build() {
