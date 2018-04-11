@@ -14,7 +14,7 @@ optdepends=('graphviz: for svg output with petri'
 options=()
 backup=(etc/petri.conf)
 install=pnapi.install
-source=(http://download.gna.org/service-tech/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://web.archive.org/web/20170226061323/http://download.gna.org/service-tech/pnapi/pnapi-4.03.tar.gz)
 sha256sums=('2235be39b1c0615ded0197e57661a5127337681f034a8d29bed833f376c8a836')
 
 build() {
