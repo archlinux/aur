@@ -2,7 +2,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-lilv
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="LV2 plugin host interface for Pure (lilv bindings)"
 arch=("i686" "x86_64")
@@ -11,8 +11,8 @@ url="http://purelang.bitbucket.org/"
 depends=('pure' 'lilv')
 makedepends=()
 groups=(pure-complete pure-multimedia)
-source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
-md5sums=('6213cdf3add09fc5b2fd349adf5d541f')
+source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('2cbb756c8dfaf7da8ab31102daa3b7b7')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
