@@ -13,8 +13,8 @@ license=("GPL2")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/raghumalayalamsans/RaghuMalayalamSans.ttf"
         "https://gitlab.com/smc/raghumalayalamsans/raw/master/67-smc-raghumalayalamsans.conf")
-md5sums=('9417236366dbe7514d70ec681911874d'
-         '3ea0148691b9cbfe12bf17a1f0456bad')
+sha256sums=('2f9f1cd8278186b7e96b6d5755734285448fcdbf48d114b1fc8d00beab0f2929'
+            'f10f226a68fb5226dcca8c03050071de35379afabbf8b9aba9624d9e5e0d53d9')
 install=ttf-malayalam-fonts.install
 
 
