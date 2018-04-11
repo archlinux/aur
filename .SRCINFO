@@ -1,20 +1,20 @@
 pkgbase = tracer
 	pkgdesc = Finds outdated running applications in your system
-	pkgver = 0.6.12
+	pkgver = 0.6.13.1
 	pkgrel = 1
 	url = http://tracer-package.com/
 	arch = any
 	license = GPL2
 	depends = python-beautifulsoup4
-	depends = python-lxml
 	depends = python-psutil
+	depends = python-lxml
+	depends = python-dbus
 	depends = pyalpm
-	source = tracer-0.6.12.tar.gz::https://github.com/FrostyX/tracer/archive/tracer-0.6.12-1.tar.gz
-	source = tracer-hook-wrapper
+	optdepends = python-argcomplete: bash completion
+	source = tracer-0.6.13.1.tar.gz::https://github.com/FrostyX/tracer/archive/tracer-0.6.13.1-1.tar.gz
 	source = tracer.hook
-	sha256sums = cfb97fc1eeeb729f1aebee3f8c2f43d1c682682a551c79d920d52f4ee9582021
-	sha256sums = 2b97deaa510314bacad92e49e52c7324385b26e70af24371fc0f10ac69496d95
-	sha256sums = 8959a54a1458af5587fec968c193e0d46cfb267c34db807bb6265df1aeb0027b
+	sha256sums = c28a8a9f3c371e7e0797981191223ed2b04504bbd4477ab521f6aae20c0b9593
+	sha256sums = cade46472c45fef3f8ec1eb762cd4469d37f2966f65f63ee89887941e7896452
 
 pkgname = tracer
 

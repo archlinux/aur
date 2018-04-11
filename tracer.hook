@@ -4,7 +4,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = Checking if anything needs restarted...
+Description = Checking if anything needs to be restarted...
 Depends = tracer
 When = PostTransaction
-Exec = /usr/lib/tracer/tracer-hook-wrapper
+Exec = /bin/sh -c 'tracer -ae || true'
