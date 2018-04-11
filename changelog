@@ -1,3 +1,7 @@
+2018-04-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.2.0-1:
+    Fixed latest Steam privacy breaking change that affected STM-related settings, including ASF STM public listing.
+    Misc amount of other code improvements, optimizations and bugfixes.
 2018-04-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.1.9-1:
     [!] Re-enabled link-time optimizations, which results in smaller overall ASF size (especially in OS-specific variants).
