@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.15.1147.19
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
