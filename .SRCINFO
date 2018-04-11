@@ -10,8 +10,8 @@ pkgbase = ttf-malayalam-font-anjalioldlipi
 	depends = xorg-font-utils
 	source = http://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi.ttf
 	source = https://gitlab.com/smc/anjalioldlipi/raw/master/67-smc-anjalioldlipi.conf
-	md5sums = a338e73c5dd2baf2241ae07f05a9bc67
-	md5sums = 9b343beb71398383af33988a9829bc05
+	sha256sums = 6200a7315947f196c8b35a39d712de93f51b37de243f03a8f34237b4fcda4658
+	sha256sums = 8f43ab55f2223ebf73f24355c17e163ec5664bc6bd5f03d9fe82381c66ca35ea
 
 pkgname = ttf-malayalam-font-anjalioldlipi
 
