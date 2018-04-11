@@ -3,7 +3,7 @@
 
 pkgname=srt-git
 pkgver=1.3.0.r0.g5276995
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('i686' 'x86_64')
 url='https://www.srtalliance.org/'
@@ -14,6 +14,13 @@ provides=('srt' 'libsrt.so')
 conflicts=('srt')
 source=("$pkgname"::'git+https://github.com/Haivision/srt.git')
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname"
+    
+    # remove insecure rpath
+    sed -i '/set(FORCE_RPATH/d' CMakeLists.txt
+}
 
 pkgver() {
     cd "$pkgname"
