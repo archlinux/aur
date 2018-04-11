@@ -1,0 +1,15 @@
+pkgbase = tiny-irc-client-git
+	pkgdesc = A console IRC client
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/osa1/tiny
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust-nightly
+	depends = openssl
+	depends = dbus
+	provides = tiny
+
+pkgname = tiny-irc-client-git
+
