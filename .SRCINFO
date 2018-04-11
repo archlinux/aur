@@ -10,10 +10,10 @@ pkgbase = ispin
 	depends = gcc
 	optdepends = graphviz: recommended, provides dot tool for automata view
 	optdepends = curl: for version check information
-	source = http://spinroot.com/spin/Src/ispin.tcl
+	source = ispin.tcl
 	source = LICENSE.txt
-	md5sums = 8d61b59a650f79cf5e19f1edc27ebdcf
-	md5sums = 1b7db1b5f5da972bab3db17472e3a342
+	sha512sums = 46fb13f01d91d072d671dc88cb6bf976e26e8a0b1023b4c8e84f16ae4ad7f67b9f58522329672e4b013ffb4f8e2ced47af6d0e7bdbf52a5ca4a42916c63f6e21
+	sha512sums = a5b63fc7136a2631c9a27619953abe2e9d6cab179042dd56bb76afbffe1966ad7edb41a131af5d6663f3cdbf77128833232e9174c0ef817b8522bfd978add595
 
 pkgname = ispin
 
