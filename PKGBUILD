@@ -5,7 +5,7 @@ pkgname=k3b-git
 pkgver=18.07.70.r6307.059d0da2e
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 url='http://k3b.sourceforge.net'
 depends=('qt5-webkit'
@@ -42,7 +42,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_MICRO | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e MICRO | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -53,12 +53,12 @@ prepare() {
 build() {
   cd build
   cmake ../k3b \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
     -DBUILD_TESTING=OFF \
     -DK3B_ENABLE_PERMISSION_HELPER=ON
+
   make
 }
 
