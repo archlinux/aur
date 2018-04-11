@@ -1,6 +1,8 @@
+# Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
+
 pkgname=bearychat
 pkgver=20180328
-pkgrel=1
+pkgrel=2
 pkgdesc="面向未来的团队工作方式，团队沟通与智能化工作流"
 arch=('x86_64')
 url="https://bearychat.com"
@@ -15,9 +17,8 @@ source=("https://static.bearychat.com/v2/BearyChat-linux-x64.tar.gz"
 
 package() {
         cd "$srcdir"
-        bsdtar -xf $_pkgname.tar.gz
         mkdir -p "$pkgdir/opt"
-        mv "$_pkgname" "$pkgdir/opt/$pkgname"
+        mv BearyChat-linux-x64 "$pkgdir/opt/$pkgname"
         # license
         mkdir -p $pkgdir/usr/share/licenses/$pkgname
         install -Dm644 license $pkgdir/usr/share/licenses/$pkgname/

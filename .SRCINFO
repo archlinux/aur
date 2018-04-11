@@ -1,7 +1,7 @@
 pkgbase = bearychat
 	pkgdesc = 面向未来的团队工作方式，团队沟通与智能化工作流
 	pkgver = 20180328
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bearychat.com
 	arch = x86_64
 	license = custom
