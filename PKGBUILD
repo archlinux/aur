@@ -3,7 +3,7 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.64.13
+pkgver=0.64.15
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://raine.1emulation.com/"
@@ -20,11 +20,9 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'arcade-history-dat: database with various information about the loaded rom'
             'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
 source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$pkgver.tar.gz"
-        "$url/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb"
-        "raine-gcc7-abs.patch")
-sha256sums=('0af13e67744ac81f987687a3f83703bc844897a6a1b828a19d82f96dfe8ab719'
-            '71414fc61c1d26eeccfab4f7319ba9efce19b8276151d3a119fd86c3db0a172b'
-            '396eecb13c8546b55f98094a69dbe8ccab79855e2a3eca58397aedc72308bd59')
+        "$url/archive/debian/dists/unstable/main/binary-i386/raine_0.64.13_i386.deb")
+sha256sums=('7aabe3138bd41e95b586a48a29c4d8bf68ff44aeb44d54dae0899c2f4aba6542'
+            '71414fc61c1d26eeccfab4f7319ba9efce19b8276151d3a119fd86c3db0a172b')
 options=('emptydirs')
 
 prepare() {
@@ -33,7 +31,7 @@ prepare() {
   bsdtar xf data.tar.xz -C raine-bin
 
   cd raine-$pkgver
-  # copy bitmaps and fonts from raine's deb package
+  # copy bitmaps and fonts from raine's old deb package
   cp -rup "$srcdir"/raine-bin/usr/share/games/raine/bitmaps .
   cp -rup "$srcdir"/raine-bin/usr/share/games/raine/fonts .
 
@@ -50,9 +48,6 @@ prepare() {
   # 'detect-cpu' script does not recognize most recent cpus, use generic optimizing
   echo "_MARCH=-march=${CARCH/x86_64/x86-64} -mtune=generic" > cpuinfo
   echo "CPU=generic" >> cpuinfo
-
-  # gcc7 compatibility
-  patch -p1 < "$srcdir"/raine-gcc7-abs.patch
 }
 
 build() {
@@ -66,7 +61,5 @@ package() {
   install -d "$pkgdir"/usr/share/{doc,licenses}/raine
   install -m644 docs/* changes/* "$pkgdir"/usr/share/doc/raine
   head -n5 source/raine.c > "$pkgdir"/usr/share/licenses/raine/LICENSE
-  # deprecate neoraine, both projects have been merged
-  ln -s raine "$pkgdir"/usr/bin/neoraine
   rm "$pkgdir"/usr/share/{applications,pixmaps}/neoraine.*
 }
