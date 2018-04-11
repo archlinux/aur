@@ -1,7 +1,7 @@
 pkgbase = megasync
 	pkgdesc = Sync your files to your Mega account. Official app
 	pkgver = 3.6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/meganz/megasync
 	arch = i686
 	arch = x86_64
