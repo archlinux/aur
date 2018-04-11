@@ -1,6 +1,6 @@
 pkgbase = gkrellmd-git
 	pkgdesc = Headless version of system monitor package
-	pkgver = 20160206.5e76842
+	pkgver = 20180411.c306bb7
 	pkgrel = 1
 	url = http://gkrellm.srcbox.net/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gkrellmd-git
 	conflicts = gkrellm
 	options = emptydirs
 	backup = etc/gkrellmd.conf
-	source = gkrellm.service
+	source = gkrellmd.service
 	source = git://git.srcbox.net/gkrellm
 	md5sums = 63c78daed61c82b933f558177f6d3721
 	md5sums = SKIP

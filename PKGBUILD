@@ -22,7 +22,7 @@ provides=('gkrellm')
 conflicts=('gkrellm')
 backup=('etc/gkrellmd.conf')
 options=('emptydirs')
-source=('gkrellm.service'
+source=('gkrellmd.service'
         'git://git.srcbox.net/gkrellm')
 md5sums=('63c78daed61c82b933f558177f6d3721'
          'SKIP')
@@ -43,7 +43,7 @@ package() {
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 "gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
-  install -Dm644 "../../gkrellm.service" "$pkgdir/usr/lib/systemd/system/gkrellm.service"
+  install -Dm644 "../../gkrellmd.service" "$pkgdir/usr/lib/systemd/system/gkrellmd.service"
 }
 
 # vim:set ts=2 sw=2 et:
