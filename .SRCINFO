@@ -5,6 +5,7 @@ pkgbase = ttf-malayalam-font-meera
 	url = http://smc.org.in/fonts/
 	install = ttf-malayalam-fonts.install
 	arch = any
+	license = OFL1.1
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://smc.org.in/downloads/fonts/meera/Meera.ttf

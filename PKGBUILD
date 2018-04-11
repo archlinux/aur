@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="This is Meera, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
 url="http://smc.org.in/fonts/"
-license=("GPL3")
+license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/meera/Meera.ttf"
         "https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf")
