@@ -1,7 +1,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-git
-pkgver=20180129.2623ec2
+pkgver=20180411.26f1a0e
 _gitver=7.9
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
@@ -33,7 +33,6 @@ depends=('perl>=5.26'
 	 'perl-lwp-protocol-https'
 	 'perl-module-build'
 	 'perl-net-ipv4addr'
-	 'perl-net-upnp'
 	 'perl-path-class'
 	 'perl-soap-lite'
 	 'perl-readonly'
@@ -55,7 +54,7 @@ install=install
 source=("slimserver.tar.gz::${url}/archive/public/${_gitver}.tar.gz"
         "slimserver-vendor.tar.gz::${url}-vendor/archive/public/${_gitver}.tar.gz"
         'service')
-sha256sums=('23f1b0a0a678c34c039b15fd1d1dca54ef28dbaaa44e4f825d72c204ab3f793b'
+sha256sums=('f9a1a5bdff2bd07c0e2d808ae739cd63bd40161de72b2f0a4e267d2e10e0b93e'
             '0a0bf36270a45739507b3041ab0fa27d72987f7cd3170b1906bbb1a129c344df'
             'f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb')
 
@@ -70,6 +69,7 @@ prepare() {
 	cd "${srcdir}/slimserver-public-${_gitver}/CPAN"
 	mkdir _PRESERVE
 	cp -p --parents URI/Find.pm _PRESERVE
+	cp -pr --parents Net/UPnP* _PRESERVE
 	rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,EV.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
 	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,EV,HTML,HTTP,I18N,Mac,Log,LWP,Net,Path,SOAP,Sub,Template,Test,URI,version,XML,YAML}
 	cp -rf _PRESERVE/* .
