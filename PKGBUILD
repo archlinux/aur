@@ -2,13 +2,14 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=2.2.1.r1167.bedfee3
+pkgver=3.3.1.r1318.8c8e8f8
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://kde.org/applications/system/kdepartitionmanager'
 license=('GPL2')
 depends=('kpmcore'
+         'kde-cli-tools'
          'hicolor-icon-theme'
          )
 conflicts=('partitionmanager')
@@ -23,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd partitionmanager
-  _ver="$(cat CMakeLists.txt | grep -m3 -e VERSION_MAJOR -e VERSION_MINOR -e VERSION_RELEASE | cut -d '"' -f2 | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e RELEASE | cut -d '"' -f2 | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -34,10 +35,10 @@ prepare() {
 build() {
   cd build
   cmake ../partitionmanager \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
+
   make
 }
 
