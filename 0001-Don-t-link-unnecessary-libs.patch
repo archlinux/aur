@@ -1,0 +1,42 @@
+From de68de168f36aa677e5cf6559209681328e4fafc Mon Sep 17 00:00:00 2001
+From: Henningstone <Henningstone@users.noreply.github.com>
+Date: Wed, 11 Apr 2018 20:22:59 +0200
+Subject: [PATCH] Don't link unnecessary libs
+
+---
+ bam.lua | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/bam.lua b/bam.lua
+index 594e44836..3363d698e 100644
+--- a/bam.lua
++++ b/bam.lua
+@@ -388,8 +388,6 @@ function build(settings)
+ 			client_settings.link.libs:Add("X11")
+ 			client_settings.link.libs:Add("GL")
+ 			client_settings.link.libs:Add("GLU")
+-			client_settings.link.libs:Add("ssl")
+-			client_settings.link.libs:Add("crypto")
+ 		end
+ 
+ 	elseif family == "windows" then
+@@ -422,7 +420,6 @@ function build(settings)
+ 	config.opusfile:Apply(client_settings)
+ 
+ 	if family == "unix" and (platform == "macosx" or platform == "linux") then
+-		engine_settings.link.libs:Add("dl")
+ 		server_settings.link.libs:Add("dl")
+ 		client_settings.link.libs:Add("dl")
+ 		launcher_settings.link.libs:Add("dl")
+@@ -459,8 +456,6 @@ function build(settings)
+ 	end
+ 
+ 	-- build tools (TODO: fix this so we don't get double _d_d stuff)
+-	tools_settings.link.libs:Add("ssl")
+-	tools_settings.link.libs:Add("crypto")
+ 	tools_src = Collect("src/tools/*.cpp", "src/tools/*.c")
+ 
+ 	tools = {}
+-- 
+2.16.2
+

@@ -2,12 +2,12 @@
 
 pkgname=allthehaxx
 pkgver=0.36
-pkgrel=1
+pkgrel=2
 pkgdesc="AllTernative Teeworlds Client"
 arch=('x86_64')
 url="https://allthehaxx.github.io"
 license=('custom')
-depends=('alsa-lib' 'sdl2' 'freetype2' 'opusfile' 'curl' 'wavpack')
+depends=('sdl2' 'glu' 'freetype2' 'opusfile' 'curl')
 makedepends=('bam' 'imagemagick' 'gendesk' 'python')
 optdepends=('ddnet-skins: more skins for your tee (provided by DDNet)'
             'ddnet-maps-git: have all DDNet maps available offline')
@@ -17,25 +17,29 @@ backup=('etc/allthehaxx/storage.cfg'
         'etc/allthehaxx/mapdbs.cfg'
         'etc/allthehaxx/skindbs.cfg')
 #options=('!strip' 'debug') # uncomment this if you want to gdb AllTheHaxx
-install=allthehaxx
-source=("https://media.githubusercontent.com/media/AllTheHaxx/stuffility/master/releases/AllTheHaxx-$pkgver.tar.gz")
-sha256sums=('707d7d5b5861c918a52c5fc472e20c65dc21bac2f4294fda3945aba43c2494b5')
+install=allthehaxx.install
+source=("https://media.githubusercontent.com/media/AllTheHaxx/stuffility/master/releases/AllTheHaxx-$pkgver.tar.gz"
+        '0001-Don-t-link-unnecessary-libs.patch')
+sha256sums=('707d7d5b5861c918a52c5fc472e20c65dc21bac2f4294fda3945aba43c2494b5'
+            '4f106ea29e22bc586b3a5a3bd4c1963723c43f5fceb3075db48ead74a7617354')
 
 
 prepare() {
       # Client
-    convert "AllTheHaxx-$pkgver/other/icons/AllTheHaxx.ico" AllTheHaxx.png
+    cd "$srcdir/AllTheHaxx-$pkgver/"
+    convert "other/icons/AllTheHaxx.ico" AllTheHaxx.png
+    patch -p1 -i "$srcdir/0001-Don-t-link-unnecessary-libs.patch"
 }
 
 build() {
-    cd "AllTheHaxx-$pkgver/"
+    cd "$srcdir/AllTheHaxx-$pkgver/"
     bam config installation_root="/"
     bam client_release
     bam tools_release
 }
 
 package() {
-    cd "AllTheHaxx-$pkgver/"
+    cd "$srcdir/AllTheHaxx-$pkgver/"
       # Install AllTheHaxx client binaries
     install -d -m755                   "$pkgdir/usr/bin/"
     install -m755 AllTheHaxx           "$pkgdir/usr/bin/"
@@ -74,8 +78,6 @@ package() {
       # Install desktop and license files
     install -Dm644 other/AllTheHaxx.desktop "$pkgdir/usr/share/applications/allthehaxx.desktop"
     install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-
-    cd ..
 
       # Install icon files
     install -Dm644 AllTheHaxx-4.png     "$pkgdir/usr/share/pixmaps/AllTheHaxx.png"
