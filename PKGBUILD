@@ -9,11 +9,11 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.2.10.186.g1c0173ec
+pkgver=2.2.10.188.g1e72256a
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
-arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
+arch=('x86_64')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp'
 conflicts=('eiskaltdcpp')
 options=('!emptydirs')
@@ -59,7 +59,6 @@ build() {
 
   cd "${srcdir}/build"
   cmake ../eiskaltdcpp \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT5=ON \
     -DUSE_QT_QML=ON \
