@@ -7,9 +7,9 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='738ab7502afb7663d9aacdd73e79025aa7cd0a9b'
-pkgver=238.0
-pkgrel=3
+_commit='c58ab03f64890e7db88745a843bd4520e307099b'
+pkgver=238.51
+pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -72,11 +72,6 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # core: do not free heap-allocated strings (#8391) (FS#57741)
-  '5cbaad2f6795088db56063d20695c6444595822f'
-  # basic/macros: rename noreturn into _noreturn_
-  # Fix a build failure (https://github.com/systemd/systemd/pull/8456)
-  '848e863acc51ecfb0f3955c498874588201d9130'
 )
 
 _reverts=(
