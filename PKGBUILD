@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krename-git
-pkgver=4.1.0.r362.ca1c2af
+pkgver=5.0.60.r414.ef9f0e6
 pkgrel=1
 pkgdesc="A very powerful batch file renamer for KDE. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.krename.net'
 license=('GPL')
 depends=('kio'
@@ -37,11 +37,11 @@ prepare() {
 build() {
   cd build
   cmake ../krename \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
+
   make
 }
 
