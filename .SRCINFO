@@ -1,0 +1,17 @@
+pkgbase = naspro-bridges
+	pkgdesc = NASPRO bridges is a collection of bridges to LV2 that, once installed, allow you to use plugins developed for other plugin standards in LV2 hosts.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://naspro.sourceforge.net/plugins.html
+	arch = x86
+	arch = x86_64
+	license = LGPL
+	depends = naspro-bridge-it
+	depends = naspro-core
+	depends = dssi
+	depends = ladspa
+	source = http://sourceforge.net/projects/naspro/files/naspro/0.5.1/naspro-bridges-0.5.1.tar.bz2
+	sha1sums = SKIP
+
+pkgname = naspro-bridges
+
