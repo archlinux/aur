@@ -1,0 +1,2 @@
+d /var/log/webmin 0750 root bin -
+d /var/log/webmin/modules 0750 root root -

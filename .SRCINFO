@@ -1,7 +1,7 @@
 pkgbase = webmin
 	pkgdesc = A web-based administration interface for Unix systems
 	pkgver = 1.881
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/
 	arch = i686
 	arch = x86_64
@@ -131,6 +131,7 @@ pkgbase = webmin
 	source = webmin-config.tar.bz2
 	source = webmin.pam
 	source = webmin.logrotate
+	source = webmin.tmpfiles
 	source = webmin.service
 	sha256sums = 6a93a74ff9adb0ca48cb8e03d74faf77731008eaca2613db225e1d59e07d5190
 	sha256sums = 3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910
@@ -138,6 +139,7 @@ pkgbase = webmin
 	sha256sums = d326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383
 	sha256sums = a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d
 	sha256sums = f4909f4fe1be13faa2f4c2b8f53745124231c68649a9e3d8adffb8e1aba0b140
+	sha256sums = 075c8156471d0fb4825a51b6411636102d2cf61d4eb5c7c097330e53cd9323b0
 	sha256sums = 4757a44a07a4bcb6f919274f35b8ab27a34936b5f8d6aee9cdbcbde49e73fb7d
 
 pkgname = webmin

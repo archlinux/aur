@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.881
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -126,6 +126,7 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         webmin-config.tar.bz2
         webmin.pam
         webmin.logrotate
+        webmin.tmpfiles
         webmin.service)
 options=(!strip !zipman)
 
@@ -163,10 +164,11 @@ package() {
     install -D -m 644 "$srcdir"/webmin.service "$pkgdir"/usr/lib/systemd/system/webmin.service
     install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
     install -D -m 644 "$srcdir"/webmin.logrotate "$pkgdir"/etc/logrotate.d/webmin
+    install -D -m 644 "$srcdir"/webmin.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/webmin.conf
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
-    # delete temp dir
-    rm -r "$pkgdir"/tmp
+    # delete directories not to be packaged
+    rm -r "$pkgdir"/{tmp,var/log}
 }
 
 
@@ -176,4 +178,5 @@ sha256sums=('6a93a74ff9adb0ca48cb8e03d74faf77731008eaca2613db225e1d59e07d5190'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'f4909f4fe1be13faa2f4c2b8f53745124231c68649a9e3d8adffb8e1aba0b140'
+            '075c8156471d0fb4825a51b6411636102d2cf61d4eb5c7c097330e53cd9323b0'
             '4757a44a07a4bcb6f919274f35b8ab27a34936b5f8d6aee9cdbcbde49e73fb7d')
