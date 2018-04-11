@@ -1,11 +1,11 @@
 # Maintainer: Lettier <movie_monad_aur a@@at@t lettier dd.ot..t ccommm>
 
 _name="movie-monad"
-_ver=0.0.5.0
-_xrev=0
+_ver="0.0.6.0"
+_xrev="0"
 
-pkgname=${_name}
-pkgver=${_ver}_${_xrev}
+pkgname="${_name}"
+pkgver="${_ver}_${_xrev}"
 pkgrel=1
 pkgdesc="A free and simple to use video player made with Haskell."
 url="https://github.com/lettier/${_name}"
@@ -15,7 +15,7 @@ makedepends=()
 depends=("gtk3" "gstreamer" "gst-libav" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad")
 options=()
 source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
-md5sums=('fc6775656d866772b557438aff465f4b')
+md5sums=('e519a2c4dc2c70e123733a9c9d1bdb3d')
 
 package() {
   cd "${srcdir}/${_name}-linux-${_ver}"
