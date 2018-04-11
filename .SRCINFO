@@ -1,0 +1,32 @@
+pkgbase = fmedia-git
+	pkgdesc = fast media player/recorder/converter
+	pkgver = v0.35.r1.7d3b827
+	pkgrel = 1
+	url = http://fmedia.firmdev.com/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = svn
+	makedepends = flac
+	makedepends = mpg123
+	makedepends = libjpeg9
+	makedepends = unzip
+	makedepends = jdk8-openjdk
+	depends = sqlite
+	provides = fmedia-git
+	provides = fmedia
+	conflicts = fmedia-git
+	conflicts = fmedia
+	source = git+https://github.com/stsaz/fmedia
+	source = git+https://github.com/stsaz/ffos
+	source = git+https://github.com/stsaz/ff
+	source = git+https://github.com/stsaz/ff-3pt
+	source = git+https://github.com/gypified/libmp3lame#commit=d5ecd40
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = fmedia-git
+
