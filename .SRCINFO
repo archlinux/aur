@@ -1,7 +1,7 @@
 pkgbase = aps-php-runtime
 	pkgdesc = Parallels APS PHP Runtime
 	pkgver = 7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doc.apsstandard.org/7.3/resources/tools/php-lib/#php-runtime
 	arch = any
 	license = custom
