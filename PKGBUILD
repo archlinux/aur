@@ -2,7 +2,7 @@
 
 pkgname=editorconfig-qtcreator
 _pkgver=0.3.0
-_qtcreatorver=4.5.0
+_qtcreatorver=4.6.0
 pkgver=${_pkgver}+${_qtcreatorver}
 pkgrel=1
 pkgdesc="EditorConfig Plugin for QtCreator"
@@ -13,7 +13,7 @@ depends=("qtcreator=${_qtcreatorver}" "editorconfig-core-c")
 source=("https://github.com/editorconfig/${pkgname}/archive/${_pkgver}.tar.gz"
         "http://download.qt.io/official_releases/qtcreator/${_qtcreatorver%.*}/${_qtcreatorver}/qt-creator-opensource-src-${_qtcreatorver}.tar.xz")
 md5sums=('cb40d30d0e2b703296c2a4fb29796033'
-         '27f7f93ac387216ff69510d0188cd599')
+         '8aae7bc90f1973b86f6dd75d63dbaded')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
