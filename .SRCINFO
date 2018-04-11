@@ -1,0 +1,36 @@
+pkgbase = dolphin-meld
+	pkgdesc = KDE File Manager, using Meld rather than Kompare
+	pkgver = 17.12.3
+	pkgrel = 1
+	url = https://kde.org/applications/system/dolphin/
+	arch = x86_64
+	groups = kde-applications
+	groups = kdebase
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = python
+	depends = baloo-widgets
+	depends = knewstuff
+	depends = kio-extras
+	depends = kuiserver
+	depends = kcmutils
+	depends = kparts
+	depends = kinit
+	optdepends = kde-cli-tools: for editing file type options
+	optdepends = ffmpegthumbs: video thumbnails
+	optdepends = meld: file comparisons
+	optdepends = ruby: installing new service menus from KDE Store
+	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
+	optdepends = konsole: terminal panel
+	provides = dolphin=17.12.3
+	conflicts = dolphin=17.12.3
+	source = https://download.kde.org/stable/applications/17.12.3/src/dolphin-17.12.3.tar.xz
+	source = https://download.kde.org/stable/applications/17.12.3/src/dolphin-17.12.3.tar.xz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	sha256sums = 40dc96fa05cf6a09c49329cd69c9f1079b4ddb57592c9ff0e957eec6e761a439
+	sha256sums = SKIP
+
+pkgname = dolphin-meld
+
