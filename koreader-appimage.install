@@ -1,0 +1,3 @@
+post_install() {
+    chmod 555 /opt/appimages/koreader.AppImage
+}
