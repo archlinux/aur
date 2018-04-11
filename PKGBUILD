@@ -1,11 +1,11 @@
-# Maintainer: Ashwin Vishnu <ashuwish+arch at protonmail dot com>
+# Maintainer: Ashwin Vishnu <ashwinvis+arch at protonmail dot com>
 
 pkgname='python-numpy-docs-devhelp'
-pkgver='1.11.2'
+pkgver='1.14.2'
 pkgrel=1
 pkgdesc="HTML documentation for Python NumPy with GNOME Devhelp support"
 arch=('any')
-license=('GPL')
+license=('custom')
 url="http://docs.scipy.org/"
 depends=('devhelp')
 makedepends=('python' 'python-sphinx' 'python-numpydoc' 'python-matplotlib')
@@ -14,7 +14,7 @@ options=('docs')
 source=("numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz"
         "git+https://github.com/scipy/scipy-sphinx-theme.git"
         "devhelp-build.patch")
-md5sums=('90347ff0b20bd00f2547ef4950ab3523'
+md5sums=('5086c77bb8ee6a53d1d058e0b53d8e23'
          'SKIP'
          '79df7faef04116ce20dc0b0b876a837d')
 
