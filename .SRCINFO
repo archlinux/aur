@@ -1,0 +1,18 @@
+pkgbase = psync
+	pkgdesc = A naive tool for syncing partitions using rsync
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/paulequilibrio/psync
+	install = psync.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python-docopt
+	depends = python-yaml
+	depends = rsync
+	depends = beep
+	source = git+https://github.com/paulequilibrio/psync
+	sha256sums = SKIP
+
+pkgname = psync
+
