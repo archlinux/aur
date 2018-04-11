@@ -1,0 +1,552 @@
+From 113d4b8b5be49c6186cdd358fee1099c329fc334 Mon Sep 17 00:00:00 2001
+Message-Id: <113d4b8b5be49c6186cdd358fee1099c329fc334.1523475032.git.jan.steffens@gmail.com>
+In-Reply-To: <2c2e2c3c7057a347aad9dbfc61fa87e787de33e7.1523475032.git.jan.steffens@gmail.com>
+References: <2c2e2c3c7057a347aad9dbfc61fa87e787de33e7.1523475032.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Wed, 11 Apr 2018 21:27:44 +0200
+Subject: [PATCH 4/4] Fix vboxguest on guests with more than 4G RAM
+
+Squashed commit of the following:
+
+commit 042b191f6b98165d6bcca3ae09a0f9b289d6155e
+Author: Hans de Goede <hdegoede@redhat.com>
+Date:   Thu Mar 29 17:28:57 2018 +0200
+
+    virt: vbox: Log an error when we fail to get the host version
+
+    This was the only error path during probe without a message being logged
+    about what went wrong, this fixes this.
+
+    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+commit e4111a6c617687f7cb414ddfa8176206910db76e
+Author: Hans de Goede <hdegoede@redhat.com>
+Date:   Thu Mar 29 17:28:56 2018 +0200
+
+    virt: vbox: Use __get_free_pages instead of kmalloc for DMA32 memory
+
+    It is not possible to get DMA32 zone memory through kmalloc, causing
+    the vboxguest driver to malfunction due to getting memory above
+    4G which the PCI device cannot handle.
+
+    This commit changes the kmalloc calls where the 4G limit matters to
+    using __get_free_pages() fixing vboxguest not working on x86_64 guests
+    with more then 4G RAM.
+
+    Cc: stable@vger.kernel.org
+    Reported-by: Eloy Coto Pereiro <eloy.coto@gmail.com>
+    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+commit 2cb20368ce32e7275a351eadadd4c8f3da742a28
+Author: Hans de Goede <hdegoede@redhat.com>
+Date:   Thu Mar 29 17:28:55 2018 +0200
+
+    virt: vbox: Add vbg_req_free() helper function
+
+    This is a preparation patch for fixing issues on x86_64 virtual-machines
+    with more then 4G of RAM, atm we pass __GFP_DMA32 to kmalloc, but kmalloc
+    does not honor that, so we need to switch to get_pages, which means we
+    will not be able to use kfree to free memory allocated with vbg_alloc_req.
+
+    While at it also remove a comment on a vbg_alloc_req call which talks
+    about Windows (inherited from the vbox upstream cross-platform code).
+
+    Cc: stable@vger.kernel.org
+    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+commit fa5c012bc9c3e1ada5cde0bfa3c6706be97b7cb0
+Author: Hans de Goede <hdegoede@redhat.com>
+Date:   Thu Mar 29 17:28:54 2018 +0200
+
+    virt: vbox: Move declarations of vboxguest private functions to private header
+
+    Move the declarations of functions from vboxguest_utils.c which are only
+    meant for vboxguest internal use from include/linux/vbox_utils.h to
+    drivers/virt/vboxguest/vboxguest_core.h.
+
+    Cc: stable@vger.kernel.org
+    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/virt/vboxguest/vboxguest_core.c  | 70 +++++++++++++-----------
+ drivers/virt/vboxguest/vboxguest_core.h  |  9 +++
+ drivers/virt/vboxguest/vboxguest_linux.c | 19 ++++++-
+ drivers/virt/vboxguest/vboxguest_utils.c | 17 ++++--
+ include/linux/vbox_utils.h               | 23 --------
+ 5 files changed, 76 insertions(+), 62 deletions(-)
+
+diff --git a/drivers/virt/vboxguest/vboxguest_core.c b/drivers/virt/vboxguest/vboxguest_core.c
+index 190dbf8cfcb5..2f3856a95856 100644
+--- a/drivers/virt/vboxguest/vboxguest_core.c
++++ b/drivers/virt/vboxguest/vboxguest_core.c
+@@ -114,7 +114,7 @@ static void vbg_guest_mappings_init(struct vbg_dev *gdev)
+ 	}
+ 
+ out:
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	kfree(pages);
+ }
+ 
+@@ -144,7 +144,7 @@ static void vbg_guest_mappings_exit(struct vbg_dev *gdev)
+ 
+ 	rc = vbg_req_perform(gdev, req);
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 
+ 	if (rc < 0) {
+ 		vbg_err("%s error: %d\n", __func__, rc);
+@@ -214,8 +214,8 @@ static int vbg_report_guest_info(struct vbg_dev *gdev)
+ 	ret = vbg_status_code_to_errno(rc);
+ 
+ out_free:
+-	kfree(req2);
+-	kfree(req1);
++	vbg_req_free(req2, sizeof(*req2));
++	vbg_req_free(req1, sizeof(*req1));
+ 	return ret;
+ }
+ 
+@@ -245,7 +245,7 @@ static int vbg_report_driver_status(struct vbg_dev *gdev, bool active)
+ 	if (rc == VERR_NOT_IMPLEMENTED)	/* Compatibility with older hosts. */
+ 		rc = VINF_SUCCESS;
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 
+ 	return vbg_status_code_to_errno(rc);
+ }
+@@ -431,58 +431,52 @@ static int vbg_heartbeat_host_config(struct vbg_dev *gdev, bool enabled)
+ 	rc = vbg_req_perform(gdev, req);
+ 	do_div(req->interval_ns, 1000000); /* ns -> ms */
+ 	gdev->heartbeat_interval_ms = req->interval_ns;
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 
+ 	return vbg_status_code_to_errno(rc);
+ }
+ 
+ /**
+  * Initializes the heartbeat timer. This feature may be disabled by the host.
+  * Return: 0 or negative errno value.
+  * @gdev:		The Guest extension device.
+  */
+ static int vbg_heartbeat_init(struct vbg_dev *gdev)
+ {
+ 	int ret;
+ 
+ 	/* Make sure that heartbeat checking is disabled if we fail. */
+ 	ret = vbg_heartbeat_host_config(gdev, false);
+ 	if (ret < 0)
+ 		return ret;
+ 
+ 	ret = vbg_heartbeat_host_config(gdev, true);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	/*
+-	 * Preallocate the request to use it from the timer callback because:
+-	 *    1) on Windows vbg_req_alloc must be called at IRQL <= APC_LEVEL
+-	 *       and the timer callback runs at DISPATCH_LEVEL;
+-	 *    2) avoid repeated allocations.
+-	 */
+ 	gdev->guest_heartbeat_req = vbg_req_alloc(
+ 					sizeof(*gdev->guest_heartbeat_req),
+ 					VMMDEVREQ_GUEST_HEARTBEAT);
+ 	if (!gdev->guest_heartbeat_req)
+ 		return -ENOMEM;
+ 
+ 	vbg_info("%s: Setting up heartbeat to trigger every %d milliseconds\n",
+ 		 __func__, gdev->heartbeat_interval_ms);
+ 	mod_timer(&gdev->heartbeat_timer, 0);
+ 
+ 	return 0;
+ }
+ 
+ /**
+  * Cleanup hearbeat code, stop HB timer and disable host heartbeat checking.
+  * @gdev:		The Guest extension device.
+  */
+ static void vbg_heartbeat_exit(struct vbg_dev *gdev)
+ {
+ 	del_timer_sync(&gdev->heartbeat_timer);
+ 	vbg_heartbeat_host_config(gdev, false);
+-	kfree(gdev->guest_heartbeat_req);
+-
++	vbg_req_free(gdev->guest_heartbeat_req,
++		     sizeof(*gdev->guest_heartbeat_req));
+ }
+ 
+ /**
+@@ -543,7 +537,7 @@ static int vbg_reset_host_event_filter(struct vbg_dev *gdev,
+ 	if (rc < 0)
+ 		vbg_err("%s error, rc: %d\n", __func__, rc);
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	return vbg_status_code_to_errno(rc);
+ }
+ 
+@@ -617,32 +611,32 @@ static int vbg_set_session_event_filter(struct vbg_dev *gdev,
+ 
+ out:
+ 	mutex_unlock(&gdev->session_mutex);
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 
+ 	return ret;
+ }
+ 
+ /**
+  * Init and termination worker for set guest capabilities to zero on the host.
+  * Return: 0 or negative errno value.
+  * @gdev:		The Guest extension device.
+  */
+ static int vbg_reset_host_capabilities(struct vbg_dev *gdev)
+ {
+ 	struct vmmdev_mask *req;
+ 	int rc;
+ 
+ 	req = vbg_req_alloc(sizeof(*req), VMMDEVREQ_SET_GUEST_CAPABILITIES);
+ 	if (!req)
+ 		return -ENOMEM;
+ 
+ 	req->not_mask = U32_MAX;
+ 	req->or_mask = 0;
+ 	rc = vbg_req_perform(gdev, req);
+ 	if (rc < 0)
+ 		vbg_err("%s error, rc: %d\n", __func__, rc);
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	return vbg_status_code_to_errno(rc);
+ }
+ 
+@@ -712,44 +706,46 @@ static int vbg_set_session_capabilities(struct vbg_dev *gdev,
+ 
+ out:
+ 	mutex_unlock(&gdev->session_mutex);
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 
+ 	return ret;
+ }
+ 
+ /**
+  * vbg_query_host_version get the host feature mask and version information.
+  * Return: 0 or negative errno value.
+  * @gdev:		The Guest extension device.
+  */
+ static int vbg_query_host_version(struct vbg_dev *gdev)
+ {
+ 	struct vmmdev_host_version *req;
+ 	int rc, ret;
+ 
+ 	req = vbg_req_alloc(sizeof(*req), VMMDEVREQ_GET_HOST_VERSION);
+ 	if (!req)
+ 		return -ENOMEM;
+ 
+ 	rc = vbg_req_perform(gdev, req);
+ 	ret = vbg_status_code_to_errno(rc);
+-	if (ret)
++	if (ret) {
++		vbg_err("%s error: %d\n", __func__, rc);
+ 		goto out;
++	}
+ 
+ 	snprintf(gdev->host_version, sizeof(gdev->host_version), "%u.%u.%ur%u",
+ 		 req->major, req->minor, req->build, req->revision);
+ 	gdev->host_features = req->features;
+ 
+ 	vbg_info("vboxguest: host-version: %s %#x\n", gdev->host_version,
+ 		 gdev->host_features);
+ 
+ 	if (!(req->features & VMMDEV_HVF_HGCM_PHYS_PAGE_LIST)) {
+ 		vbg_err("vboxguest: Error host too old (does not support page-lists)\n");
+ 		ret = -ENODEV;
+ 	}
+ 
+ out:
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	return ret;
+ }
+ 
+@@ -847,36 +843,46 @@ int vbg_core_init(struct vbg_dev *gdev, u32 fixed_events)
+ 	return 0;
+ 
+ err_free_reqs:
+-	kfree(gdev->mouse_status_req);
+-	kfree(gdev->ack_events_req);
+-	kfree(gdev->cancel_req);
+-	kfree(gdev->mem_balloon.change_req);
+-	kfree(gdev->mem_balloon.get_req);
++	vbg_req_free(gdev->mouse_status_req,
++		     sizeof(*gdev->mouse_status_req));
++	vbg_req_free(gdev->ack_events_req,
++		     sizeof(*gdev->ack_events_req));
++	vbg_req_free(gdev->cancel_req,
++		     sizeof(*gdev->cancel_req));
++	vbg_req_free(gdev->mem_balloon.change_req,
++		     sizeof(*gdev->mem_balloon.change_req));
++	vbg_req_free(gdev->mem_balloon.get_req,
++		     sizeof(*gdev->mem_balloon.get_req));
+ 	return ret;
+ }
+ 
+ /**
+  * Call this on exit to clean-up vboxguest-core managed resources.
+  *
+  * The native code should call this before the driver is loaded,
+  * but don't call this on shutdown.
+  * @gdev:		The Guest extension device.
+  */
+ void vbg_core_exit(struct vbg_dev *gdev)
+ {
+ 	vbg_heartbeat_exit(gdev);
+ 	vbg_guest_mappings_exit(gdev);
+ 
+ 	/* Clear the host flags (mouse status etc). */
+ 	vbg_reset_host_event_filter(gdev, 0);
+ 	vbg_reset_host_capabilities(gdev);
+ 	vbg_core_set_mouse_status(gdev, 0);
+ 
+-	kfree(gdev->mouse_status_req);
+-	kfree(gdev->ack_events_req);
+-	kfree(gdev->cancel_req);
+-	kfree(gdev->mem_balloon.change_req);
+-	kfree(gdev->mem_balloon.get_req);
++	vbg_req_free(gdev->mouse_status_req,
++		     sizeof(*gdev->mouse_status_req));
++	vbg_req_free(gdev->ack_events_req,
++		     sizeof(*gdev->ack_events_req));
++	vbg_req_free(gdev->cancel_req,
++		     sizeof(*gdev->cancel_req));
++	vbg_req_free(gdev->mem_balloon.change_req,
++		     sizeof(*gdev->mem_balloon.change_req));
++	vbg_req_free(gdev->mem_balloon.get_req,
++		     sizeof(*gdev->mem_balloon.get_req));
+ }
+ 
+ /**
+@@ -1415,7 +1421,7 @@ static int vbg_ioctl_write_core_dump(struct vbg_dev *gdev,
+ 	req->flags = dump->u.in.flags;
+ 	dump->hdr.rc = vbg_req_perform(gdev, req);
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	return 0;
+ }
+ 
+@@ -1513,7 +1519,7 @@ int vbg_core_set_mouse_status(struct vbg_dev *gdev, u32 features)
+ 	if (rc < 0)
+ 		vbg_err("%s error, rc: %d\n", __func__, rc);
+ 
+-	kfree(req);
++	vbg_req_free(req, sizeof(*req));
+ 	return vbg_status_code_to_errno(rc);
+ }
+ 
+diff --git a/drivers/virt/vboxguest/vboxguest_core.h b/drivers/virt/vboxguest/vboxguest_core.h
+index 6c784bf4fa6d..7ad9ec45bfa9 100644
+--- a/drivers/virt/vboxguest/vboxguest_core.h
++++ b/drivers/virt/vboxguest/vboxguest_core.h
+@@ -171,4 +171,13 @@ irqreturn_t vbg_core_isr(int irq, void *dev_id);
+ 
+ void vbg_linux_mouse_event(struct vbg_dev *gdev);
+ 
++/* Private (non exported) functions form vboxguest_utils.c */
++void *vbg_req_alloc(size_t len, enum vmmdev_request_type req_type);
++void vbg_req_free(void *req, size_t len);
++int vbg_req_perform(struct vbg_dev *gdev, void *req);
++int vbg_hgcm_call32(
++	struct vbg_dev *gdev, u32 client_id, u32 function, u32 timeout_ms,
++	struct vmmdev_hgcm_function_parameter32 *parm32, u32 parm_count,
++	int *vbox_status);
++
+ #endif
+diff --git a/drivers/virt/vboxguest/vboxguest_linux.c b/drivers/virt/vboxguest/vboxguest_linux.c
+index 82e280d38cc2..398d22693234 100644
+--- a/drivers/virt/vboxguest/vboxguest_linux.c
++++ b/drivers/virt/vboxguest/vboxguest_linux.c
+@@ -87,52 +87,65 @@ static long vbg_misc_device_ioctl(struct file *filp, unsigned int req,
+ 	struct vbg_session *session = filp->private_data;
+ 	size_t returned_size, size;
+ 	struct vbg_ioctl_hdr hdr;
++	bool is_vmmdev_req;
+ 	int ret = 0;
+ 	void *buf;
+ 
+ 	if (copy_from_user(&hdr, (void *)arg, sizeof(hdr)))
+ 		return -EFAULT;
+ 
+ 	if (hdr.version != VBG_IOCTL_HDR_VERSION)
+ 		return -EINVAL;
+ 
+ 	if (hdr.size_in < sizeof(hdr) ||
+ 	    (hdr.size_out && hdr.size_out < sizeof(hdr)))
+ 		return -EINVAL;
+ 
+ 	size = max(hdr.size_in, hdr.size_out);
+ 	if (_IOC_SIZE(req) && _IOC_SIZE(req) != size)
+ 		return -EINVAL;
+ 	if (size > SZ_16M)
+ 		return -E2BIG;
+ 
+-	/* __GFP_DMA32 because IOCTL_VMMDEV_REQUEST passes this to the host */
+-	buf = kmalloc(size, GFP_KERNEL | __GFP_DMA32);
++	/*
++	 * IOCTL_VMMDEV_REQUEST needs the buffer to be below 4G to avoid
++	 * the need for a bounce-buffer and another copy later on.
++	 */
++	is_vmmdev_req = (req & ~IOCSIZE_MASK) == VBG_IOCTL_VMMDEV_REQUEST(0) ||
++			 req == VBG_IOCTL_VMMDEV_REQUEST_BIG;
++
++	if (is_vmmdev_req)
++		buf = vbg_req_alloc(size, VBG_IOCTL_HDR_TYPE_DEFAULT);
++	else
++		buf = kmalloc(size, GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+ 	if (copy_from_user(buf, (void *)arg, hdr.size_in)) {
+ 		ret = -EFAULT;
+ 		goto out;
+ 	}
+ 	if (hdr.size_in < size)
+ 		memset(buf + hdr.size_in, 0, size -  hdr.size_in);
+ 
+ 	ret = vbg_core_ioctl(session, req, buf);
+ 	if (ret)
+ 		goto out;
+ 
+ 	returned_size = ((struct vbg_ioctl_hdr *)buf)->size_out;
+ 	if (returned_size > size) {
+ 		vbg_debug("%s: too much output data %zu > %zu\n",
+ 			  __func__, returned_size, size);
+ 		returned_size = size;
+ 	}
+ 	if (copy_to_user((void *)arg, buf, returned_size) != 0)
+ 		ret = -EFAULT;
+ 
+ out:
+-	kfree(buf);
++	if (is_vmmdev_req)
++		vbg_req_free(buf, size);
++	else
++		kfree(buf);
+ 
+ 	return ret;
+ }
+diff --git a/drivers/virt/vboxguest/vboxguest_utils.c b/drivers/virt/vboxguest/vboxguest_utils.c
+index 0f0dab8023cf..bf4474214b4d 100644
+--- a/drivers/virt/vboxguest/vboxguest_utils.c
++++ b/drivers/virt/vboxguest/vboxguest_utils.c
+@@ -65,23 +65,32 @@ VBG_LOG(vbg_debug, pr_debug);
+ void *vbg_req_alloc(size_t len, enum vmmdev_request_type req_type)
+ {
+ 	struct vmmdev_request_header *req;
++	int order = get_order(PAGE_ALIGN(len));
+ 
+-	req = kmalloc(len, GFP_KERNEL | __GFP_DMA32);
++	req = (void *)__get_free_pages(GFP_KERNEL | GFP_DMA32, order);
+ 	if (!req)
+ 		return NULL;
+ 
+ 	memset(req, 0xaa, len);
+ 
+ 	req->size = len;
+ 	req->version = VMMDEV_REQUEST_HEADER_VERSION;
+ 	req->request_type = req_type;
+ 	req->rc = VERR_GENERAL_FAILURE;
+ 	req->reserved1 = 0;
+ 	req->reserved2 = 0;
+ 
+ 	return req;
+ }
+ 
++void vbg_req_free(void *req, size_t len)
++{
++	if (!req)
++		return;
++
++	free_pages((unsigned long)req, get_order(PAGE_ALIGN(len)));
++}
++
+ /* Note this function returns a VBox status code, not a negative errno!! */
+ int vbg_req_perform(struct vbg_dev *gdev, void *req)
+ {
+@@ -137,7 +146,7 @@ int vbg_hgcm_connect(struct vbg_dev *gdev,
+ 		rc = hgcm_connect->header.result;
+ 	}
+ 
+-	kfree(hgcm_connect);
++	vbg_req_free(hgcm_connect, sizeof(*hgcm_connect));
+ 
+ 	*vbox_status = rc;
+ 	return 0;
+@@ -166,7 +175,7 @@ int vbg_hgcm_disconnect(struct vbg_dev *gdev, u32 client_id, int *vbox_status)
+ 	if (rc >= 0)
+ 		rc = hgcm_disconnect->header.result;
+ 
+-	kfree(hgcm_disconnect);
++	vbg_req_free(hgcm_disconnect, sizeof(*hgcm_disconnect));
+ 
+ 	*vbox_status = rc;
+ 	return 0;
+@@ -623,7 +632,7 @@ int vbg_hgcm_call(struct vbg_dev *gdev, u32 client_id, u32 function,
+ 	}
+ 
+ 	if (!leak_it)
+-		kfree(call);
++		vbg_req_free(call, size);
+ 
+ free_bounce_bufs:
+ 	if (bounce_bufs) {
+diff --git a/include/linux/vbox_utils.h b/include/linux/vbox_utils.h
+index c71def6b310f..a240ed2a0372 100644
+--- a/include/linux/vbox_utils.h
++++ b/include/linux/vbox_utils.h
+@@ -24,39 +24,16 @@ __printf(1, 2) void vbg_debug(const char *fmt, ...);
+ #define vbg_debug pr_debug
+ #endif
+ 
+-/**
+- * Allocate memory for generic request and initialize the request header.
+- *
+- * Return: the allocated memory
+- * @len:		Size of memory block required for the request.
+- * @req_type:		The generic request type.
+- */
+-void *vbg_req_alloc(size_t len, enum vmmdev_request_type req_type);
+-
+-/**
+- * Perform a generic request.
+- *
+- * Return: VBox status code
+- * @gdev:		The Guest extension device.
+- * @req:		Pointer to the request structure.
+- */
+-int vbg_req_perform(struct vbg_dev *gdev, void *req);
+-
+ int vbg_hgcm_connect(struct vbg_dev *gdev,
+ 		     struct vmmdev_hgcm_service_location *loc,
+ 		     u32 *client_id, int *vbox_status);
+ 
+ int vbg_hgcm_disconnect(struct vbg_dev *gdev, u32 client_id, int *vbox_status);
+ 
+ int vbg_hgcm_call(struct vbg_dev *gdev, u32 client_id, u32 function,
+ 		  u32 timeout_ms, struct vmmdev_hgcm_function_parameter *parms,
+ 		  u32 parm_count, int *vbox_status);
+ 
+-int vbg_hgcm_call32(
+-	struct vbg_dev *gdev, u32 client_id, u32 function, u32 timeout_ms,
+-	struct vmmdev_hgcm_function_parameter32 *parm32, u32 parm_count,
+-	int *vbox_status);
+-
+ /**
+  * Convert a VirtualBox status code to a standard Linux kernel return value.
+  * Return: 0 or negative errno value.
+-- 
+2.17.0
+
