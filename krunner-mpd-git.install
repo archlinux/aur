@@ -6,13 +6,16 @@ post_install() {
 post_upgrade() {
     # Kill the old instance so that krunner launches the new version
 
+    local _pid_file='krunner-mpd.pid'
     local _pid_dir=$XDG_RUNTIME_DIR
     if [ -z "$_pid_dir" ]; then
-        _pid_dir="/var/run/users/$(id -u)"
+        _pid_dir="/var/run/user/$(id -u)"
+        if [ ! -f "$_pid_dir/$_pid_file" -a -n "$SUDO_UID" ]; then
+            _pid_dir="/var/run/user/$SUDO_UID"
+        fi
     fi
 
-    local _pid_file="$_pid_dir/krunner-mpd.pid"
-    if [ -f "$_pid_file" ]; then
-        kill "$(cat "$_pid_file")"
+    if [ -f "$_pid_dir/$_pid_file" ]; then
+        kill "$(cat "$_pid_dir/$_pid_file")"
     fi
 }
