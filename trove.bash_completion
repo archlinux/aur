@@ -1,0 +1,27 @@
+_trove_opts="" # lazy init
+_trove_flags="" # lazy init
+_trove_opts_exp="" # lazy init
+_trove()
+{
+    local cur prev nbc cflags
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    if [ "x$_trove_opts" == "x" ] ; then
+        nbc="`trove bash-completion`"
+        _trove_opts="`echo "$nbc" | sed -e "s/--[a-z0-9_-]*//g" -e "s/[ ][ ]*/ /g"`"
+        _trove_flags="`echo " $nbc" | sed -e "s/ [^-][^-][a-z0-9_-]*//g" -e "s/[ ][ ]*/ /g"`"
+        _trove_opts_exp="`echo "$_trove_opts" | sed -e "s/[ ]/|/g"`"
+    fi
+
+    if [[ " ${COMP_WORDS[@]} " =~ " "($_trove_opts_exp)" " && "$prev" != "help" ]] ; then
+        COMPLETION_CACHE=~/.troveclient/*/*-cache
+        cflags="$_trove_flags "$(cat $COMPLETION_CACHE 2> /dev/null | tr '\n' ' ')
+        COMPREPLY=($(compgen -W "${cflags}" -- ${cur}))
+    else
+        COMPREPLY=($(compgen -W "${_trove_opts}" -- ${cur}))
+    fi
+    return 0
+}
+complete -F _trove trove
