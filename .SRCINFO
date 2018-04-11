@@ -1,0 +1,25 @@
+pkgbase = krunner-mpd-git
+	pkgdesc = KRunner plugin to control an MPD server
+	pkgver = r32.96f8e44
+	pkgrel = 1
+	url = https://github.com/XanClic/krunner-mpd
+	install = krunner-mpd-git.install
+	arch = any
+	license = GPL3
+	makedepends = coreutils
+	makedepends = kdelibs4support
+	makedepends = make
+	depends = dbus
+	depends = plasma-workspace
+	depends = ruby
+	depends = ruby-dbus
+	depends = ruby-i18n
+	depends = ruby-locale
+	depends = ruby-ruby-mpd
+	provides = krunner-mpd
+	conflicts = krunner-mpd
+	source = krunner-mpd-git::git://github.com/XanClic/krunner-mpd.git
+	md5sums = SKIP
+
+pkgname = krunner-mpd-git
+

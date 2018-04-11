@@ -1,0 +1,18 @@
+post_install() {
+    echo "Run 'kquitapp5 krunner && kstart5 krunner' to restart krunner so it finds"
+    echo "krunner-mpd (you may need to enable it in the krunner settings as well)."
+}
+
+post_upgrade() {
+    # Kill the old instance so that krunner launches the new version
+
+    local _pid_dir=$XDG_RUNTIME_DIR
+    if [ -z "$_pid_dir" ]; then
+        _pid_dir="/var/run/users/$(id -u)"
+    fi
+
+    local _pid_file="$_pid_dir/krunner-mpd.pid"
+    if [ -f "$_pid_file" ]; then
+        kill "$(cat "$_pid_file")"
+    fi
+}
