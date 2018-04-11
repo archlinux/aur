@@ -13,8 +13,8 @@ license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam.ttf"
         "https://gitlab.com/smc/keraleeyam/raw/master/67-smc-keraleeyam.conf")
-md5sums=('8d2093968e3fca2ec879a87e1c145d8a'
-         '37d7da81268fa7cf4a9702d241c7ea1c')
+sha256sums=('7c1bb9354d4a45560421dc1aeef56527a9b2abad10eae03739086987772e31d7'
+            'de32d00b046423dcb093e376025b22405b468b18280c3d885ef4aff0f4079adc')
 install=ttf-malayalam-fonts.install
 
 
