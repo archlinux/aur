@@ -2,7 +2,7 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-pkgver=1.2.3.r0.g1367914
+pkgver=1.3.0.r0.g5276995
 pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('i686' 'x86_64')
@@ -30,13 +30,19 @@ build() {
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_BINDIR:PATH='bin' \
+        -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_CXX11:BOOL='ON' \
+        -DENABLE_C_DEPS:BOOL='ON' \
+        -DENABLE_GETNAMEINFO:BOOL='OFF' \
+        -DENABLE_HEAVY_LOGGING:BOOL='OFF' \
         -DENABLE_LOGGING:BOOL='ON' \
         -DENABLE_PROFILE:BOOL='OFF' \
-        -DENABLE_SEPARATE_HAICRYPT:BOOL='OFF' \
         -DENABLE_SHARED:BOOL='ON' \
-        -DENABLE_SUFLIP:BOOL='ON' \
+        -DENABLE_STATIC:BOOL='OFF' \
+        -DENABLE_SUFLIP:BOOL='OFF' \
         -DUSE_GNUTLS:BOOL='OFF' \
         -Wno-dev \
         ..
