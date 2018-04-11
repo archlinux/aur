@@ -2,7 +2,7 @@
 
 pkgname="python-pypillowfight"
 _pkgname="pypillowfight"
-pkgver="0.2.3"
+pkgver="0.2.4"
 pkgrel="1"
 pkgdesc="Library containing various image processing algorithms"
 url="https://github.com/jflesch/libpillowfight"
