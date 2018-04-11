@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.21.18
+pkgver=0.22.13
 _pkgver="$pkgver"dev
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
@@ -13,7 +13,7 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
 source=("browser-laptop-"$_pkgver".tar.gz::https://github.com/brave/browser-laptop/archive/v"$_pkgver".tar.gz")
-md5sums=('47f963edb85a6dedc8443dea9084c449')
+md5sums=('529d8098dd3b66eaec2c8c14d6dc2d4c')
 
 build() {
 	cd "$srcdir"/browser-laptop-"$_pkgver"
