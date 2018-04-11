@@ -18,23 +18,9 @@ prepare() {
   echo "3.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "${srcdir}/${_basename}"
-  
-  if [[ -d build ]]; then
-      rm -rf build
-  fi
-  mkdir build && cd build
-  
-  cmake .. \
-	-DCMAKE_BUILD_TYPE=Release \
-  	-DCMAKE_INSTALL_PREFIX="/usr"
-  make
-}
-
 package() {
-  cd "${srcdir}/${_basename}/build"
-  make install DESTDIR="${pkgdir}/"
+  install  -D -m644 "${srcdir}/${_basename}/include/rang.hpp" \
+	   "${pkgdir}/usr/include/rang.hpp"
 
   install  -D -m644 "${srcdir}/${_basename}/README.md" \
            "${pkgdir}/usr/share/doc/${_basename}/README"
