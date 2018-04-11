@@ -1,14 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=2.0.1.r408.a65d69e
+pkgver=2.1.50.r437.7b7d541
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://projects.kde.org/projects/extragear/network/libktorrent'
 license=('GPL')
 depends=('qca-qt5'
-         'kio')
+         'kio'
+         )
 makedepends=('extra-cmake-modules'
              'kdoctools'
              'git'
@@ -33,10 +34,10 @@ prepare() {
 build() {
   cd build
   cmake ../libktorrent \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
+
   make
 }
 
