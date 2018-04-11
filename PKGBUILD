@@ -13,6 +13,9 @@ pkgdesc="A computational software program used in scientific, engineering, and m
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
+depends=(
+    'openmp'
+)
 optdepends=(
     ## The following list of dependencies was inferred from namcap's output.  If
     ## you believe there is an error, please let me know.  Also feel free to
@@ -63,7 +66,6 @@ optdepends=(
     'ncurses'
     'nvidia-utils'
     'opencv'
-    'openmp'
     'openssl-1.0'
     'pango'
     'pixman'
