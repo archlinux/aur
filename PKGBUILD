@@ -1,34 +1,41 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=2.2.1.r436.1e1bee5
+pkgver=3.3.0.r691.df449ac
 pkgrel=1
 pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://kde.org/applications/system/kdepartitionmanager'
 license=('GPL2')
 depends=('parted'
-         'kio'
+         'libatasmart'
+         'kwidgetsaddons'
+         'kcoreaddons'
+         'ki18n'
          )
-optdepends=('e2fsprogs: ext2/3/4 support'
-            'xfsprogs: XFS support'
-            'jfsutils: JFS support'
-            'reiserfsprogs: Reiser support'
-            'ntfsprogs: NTFS support'
-            'dosfstools: FAT32 support'
-            )
 conflicts=('kpmcore')
 provides=('kpmcore')
 makedepends=('extra-cmake-modules'
              'git'
              'python'
              )
+optdepends=('e2fsprogs: ext2/3/4 support'
+            'xfsprogs: XFS support'
+            'jfsutils: JFS support'
+            'reiserfsprogs: Reiser support'
+            'ntfs-3g: NTFS support'
+            'dosfstools: FAT32 support'
+            'f2fs-tools: F2FS support'
+            'exfat-utils: exFAT support'
+            'nilfs-utils: nilfs support'
+            'udftools: UDF support'
+            )
 source=('git://anongit.kde.org/kpmcore.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd kpmcore
-  _ver="$(cat CMakeLists.txt | grep -m3 -e VERSION_MAJOR -e VERSION_MINOR -e VERSION_RELEASE | cut -d '"' -f2 | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e RELEASE | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -39,10 +46,10 @@ prepare() {
 build() {
   cd build
   cmake ../kpmcore \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
+
   make
 }
 
