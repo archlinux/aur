@@ -2,7 +2,7 @@
 
 # Maintainer: Paulo Alexandre Aquino da Costa <contact at pauloalexandre dot com>
 pkgname='psync'
-pkgver='0.1.3'
+pkgver='0.1.4'
 pkgrel=1
 pkgdesc='A naive tool for syncing partitions using rsync'
 arch=('any')
