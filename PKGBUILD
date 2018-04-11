@@ -9,6 +9,7 @@ pkgrel=1
 pkgdesc="This is Meera, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
 url="http://smc.org.in/fonts/"
+license=("GPL3")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/meera/Meera.ttf"
         "https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf")
@@ -19,7 +20,7 @@ install=ttf-malayalam-fonts.install
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fonts/TTF" || return 1
-  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF" 
+  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
   mkdir -p "${pkgdir}/etc/fonts/conf.d" || return 1
   install *.conf "${pkgdir}/etc/fonts/conf.d" || return 1
 }
