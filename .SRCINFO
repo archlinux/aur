@@ -10,8 +10,8 @@ pkgbase = ttf-malayalam-font-rachana
 	depends = xorg-font-utils
 	source = http://smc.org.in/downloads/fonts/rachana/Rachana.ttf
 	source = https://gitlab.com/smc/rachana/raw/master/65-0-smc-rachana.conf
-	md5sums = 7ebad37f08a76d95c0d069fe5e4da2c7
-	md5sums = 92733c3f554307060ad17a1f7a4e6ba8
+	sha256sums = 358b8c50f784fb8db77ce590037a8ed425c852546fb4f135e995829f075bb18f
+	sha256sums = fa5f4fc01ed63ae0d50e12083657b218134196346102af92bf3513642f47078c
 
 pkgname = ttf-malayalam-font-rachana
 
