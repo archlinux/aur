@@ -11,7 +11,7 @@ provides=()
 conflicts=()
 options=()
 install=lola1.install
-source=(http://download.gna.org/service-tech/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=(https://web.archive.org/web/20170226224235/http://download.gna.org/service-tech/lola/lola-1.18.tar.gz)
 sha256sums=('33c8ebfb1ddcee0e661370622ea8c1d9c7188f8c8bd09e6ee7c0dea5329c227f')
 
 build() {
