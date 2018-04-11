@@ -8,8 +8,8 @@
 # Contributor: Emile Bons
 
 pkgname="bunq-desktop-src"
-pkgver="0.8.1"
-pkgrel=3
+pkgver="0.8.2"
+pkgrel=1
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
 provides=('bunq-desktop')
@@ -41,7 +41,7 @@ source=(
 )
 
 sha256sums=(
-	"d89fad53a2b8dda0bd02bfc1a1bdd3edb3f1513215b7954970cec91fe024908d"
+	"a454aee04f3397b551000362ef2883ad4584a9eb37f2b9d5f311487aebf74ecc"
 	"1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa"
 )
 
