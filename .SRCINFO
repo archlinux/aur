@@ -1,7 +1,7 @@
 pkgbase = ttf-malayalam-font-manjari
 	pkgdesc = Malayalam unicode font with rounded terminals suitable for body text.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smc.org.in/fonts/
 	install = ttf-malayalam-fonts.install
 	arch = any

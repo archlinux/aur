@@ -5,7 +5,7 @@
 
 pkgname=ttf-malayalam-font-manjari
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Malayalam unicode font with rounded terminals suitable for body text."
 arch=(any)
 url="http://smc.org.in/fonts/"
