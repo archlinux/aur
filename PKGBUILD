@@ -7,7 +7,7 @@
 ###########################################################
 
 pkgname=i2p-bin
-pkgver=0.9.33
+pkgver=0.9.34
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
@@ -34,7 +34,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('40ef1da2ae760f0b28fcec0d6b0ae45b5fd261a492c6bf192625d5888f90ba4a'
+sha256sums=('61a255911dbe6a3196ddae9c445ffa543c321320f98f48dc880d6f0e0cc0a259'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
