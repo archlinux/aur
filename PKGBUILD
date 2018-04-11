@@ -14,15 +14,15 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.33.10
+pkgver=0.9.34.0
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('apache-ant' 'git' 'java-environment>=8')
+depends=('java-runtime>=9' 'gmp' 'java-service-wrapper')
+makedepends=('apache-ant' 'git' 'java-environment>=9')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
@@ -51,9 +51,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_gitname"
     sed -i build.properties \
-        -e 's:javac.version=.*:javac.version=1.8:'
+        -e 's:javac.version=.*:javac.version=1.9:'
     sed -i {router,core}/java/build.xml \
-        -e 's:1.7:1.8:'
+        -e 's:1.7:1.9:'
 }
 
 build_jbigi() {
