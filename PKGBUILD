@@ -2,7 +2,7 @@
 
 pkgname=oragono
 pkgver=0.10.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -33,8 +33,8 @@ build() {
     ln -s $_path/irc $pkgname/irc
     ln -s $_path/mkcerts $pkgname/mkcerts
     cd $_path
-    make linux
-    echo "Arch Linux AUR: $pkgver-$pkgrel" >> build/linux/oragono.motd
+    GOOS=linux GOARCH=amd64 go build oragono.go
+    echo "Arch Linux AUR: $pkgver-$pkgrel" >> oragono.motd
 }
 
 package() {
@@ -42,7 +42,6 @@ package() {
     install -Dm 644 oragono.service $pkgdir/usr/lib/systemd/system/oragono.service
     cd ${srcdir}/$pkgname
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    cd build/linux
     install -Dm 755 oragono $pkgdir/usr/bin/oragono
     install -Dm 644 oragono.motd $pkgdir/$_conf/ircd.motd
     install -Dm 644 oragono.yaml $pkgdir/etc/oragono.conf
