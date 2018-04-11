@@ -1,8 +1,8 @@
 # Maintainer: Alex Taber & liberodark
 
 pkgname=teamviewer11
-pkgver=11.0.67687
-pkgrel=8
+pkgver=11.0.93329
+pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('x86_64')
 url='http://www.teamviewer.com'
@@ -18,14 +18,14 @@ depends_x86_64=(
 	'lib32-libxinerama'
 	'lib32-libxrender'
 	'lib32-libjpeg6-turbo'
-  'lib32-libxtst'
-  'lib32-freetype2'
-  'lib32-dbus'
-  'libxtst')
+	'lib32-libxtst'
+	'lib32-freetype2'
+	'lib32-dbus'
+	'libxtst')
 install=teamviewer11.install
-source_x86_64=("https://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb"
+source_x86_64=("http://download.teamviewer.com/download/version_11x/teamviewer_amd64.deb"
                 "https://archive.archlinux.org/packages/l/lib32-freetype2/lib32-freetype2-2.8-2-x86_64.pkg.tar.xz")
-sha256sums_x86_64=('164c568b01b0181d129ae9c55455e46921d3979fcf3f6b406abab3d3a2470b3d'
+sha256sums_x86_64=('994ae473086d59b99404cea6442b98aad13751b721cedb852384a7599adba57f'
                    '4f39c9bd52579ac5d13980d760a5434fdb0f0638df07d2abca9ea44a779185e3')
 
 prepare() {
