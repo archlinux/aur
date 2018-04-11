@@ -1,10 +1,10 @@
 # Maintainer: Guatavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=audiotools-git
-pkgver=v3.1.1.127.g88d31ac
+pkgver=v3.1.1.127.g88d31ac3
 pkgrel=1
 pkgdesc="Collection of audio handling programs which work from the command line (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://audiotools.sourceforge.net'
 license=('GPL')
 depends=('python'
@@ -48,7 +48,8 @@ prepare() {
   cd audiotools
 
   sed -e 's|-m 644|-Dm 644|g' \
-      -i Makefile -i docs/Makefile
+      -i Makefile \
+      -i docs/Makefile
 }
 
 build() {
