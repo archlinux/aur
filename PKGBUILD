@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.881
-pkgrel=2
+pkgrel=3
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -168,7 +168,7 @@ package() {
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
     # delete directories not to be packaged
-    rm -r "$pkgdir"/{tmp,var/log}
+    rm -r "$pkgdir"/{tmp,var}
 }
 
 
