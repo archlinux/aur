@@ -2,13 +2,13 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=4.1.1.r0.g5a1edf2b
+pkgver=4.1.1.r14.gcbe61fd1
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
 url='http://clusterlabs.org/'
 license=('GPL2')
-makedepends=('git' 'libxslt' 'python')
+makedepends=('git' 'libxslt' 'python' 'docbook-xsl')
 depends=('bash' 'perl')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -48,7 +48,6 @@ package() {
   install -Dm644 /dev/null "${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
   ( echo "# /usr/lib/tmpfiles.d/resource-agents.conf"
     echo "d /run/resource-agents 0755 root root -"
-    echo "d /var/log/cluster 0755 root root 30d"
   )>>"${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
 }
 
