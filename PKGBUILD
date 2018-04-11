@@ -4,7 +4,7 @@
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
 pkgver=5.2.20.r9.gaca1e06
-pkgrel=3
+pkgrel=4
 pkgdesc="rtl8812AU chipset driver with firmware v5.2.20"
 arch=('i686' 'x86_64')
 url="https://github.com/zebulon2/rtl8812au-driver-5.2.20"
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}")
 source=("git+https://github.com/zebulon2/rtl8812au-driver-5.2.20.git"
         'dkms.conf')
 sha256sums=('SKIP'
-	    '544963143f017a13f742fc161a6150ea167a88fd7beacd4cc8e4cbdb6408c492')
+	    'f0842466dad49a2d0a16fd29e3c5253128b3642d6a42a0a8e08b7310ab265204')
 
 pkgver() {
     cd ${srcdir}/rtl8812au-driver-5.2.20
