@@ -4,7 +4,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-dyuthi
-pkgver=2.0.0+20171014
+pkgver=2.0.0+20180306
 pkgrel=1
 pkgdesc="This is Dyuthi, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
@@ -13,8 +13,8 @@ license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/dyuthi/Dyuthi.ttf"
         "https://gitlab.com/smc/dyuthi/raw/master/67-smc-dyuthi.conf")
-md5sums=('751d7f342dae370736cb9650cc994ab2'
-         'f4a275e1e8a1bd33c90ed44f1ee84017')
+sha256sums=('1bb3c96bba9ac50f9c35bca140641cd78d850157f36d7cc733399996c1f47515'
+            '3ca219d970748beaa7b64f3cacf398fff5f6164786f9db6a93292fa81c919652')
 install=ttf-malayalam-fonts.install
 
 
