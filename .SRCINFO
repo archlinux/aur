@@ -1,6 +1,6 @@
 pkgbase = pymol2
 	pkgdesc = Molecular visualization system on an Open Source foundation with modern PyQt interface. Includes Python 2 & 3 Bindings.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://pymol.org/2/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = pymol2
 	depends = python-pyqt5
 	conflicts = pymol
 	options = !strip
-	source = https://anaconda.org/schrodinger/pymol/2.1.0/download/linux-64/pymol-2.1.0-py27_12.tar.bz2
-	source = https://anaconda.org/schrodinger/pymol/2.1.0/download/linux-64/pymol-2.1.0-py36_13.tar.bz2
-	sha1sums = d2235968caa4452aeb4276d80a15e21c76135c16
-	sha1sums = 82d87968d0936c165daa4724eefc54b93d682a36
-	sha256sums = 414c22e5341e16f24e5ea9f5304c7a9df7af0a69b931a7bf9fdb4f793db3722a
-	sha256sums = 71aed2ec05a93cfd27840fa97e71ac06deba9a869740755fb364aaf88774e0ec
+	source = https://anaconda.org/schrodinger/pymol/2.1.1/download/linux-64/pymol-2.1.1-py27_2.tar.bz2
+	source = https://anaconda.org/schrodinger/pymol/2.1.1/download/linux-64/pymol-2.1.1-py36_2.tar.bz2
+	sha1sums = 3657fa8d27bc7f94bd781918af570e2faa228402
+	sha1sums = baa0725d3b78cf13175b53fac7b2737f95a4fe9b
+	sha256sums = b69760a1db822eb3738976c40aea675009432bf7c073513b4dbfc1d218d1ce0d
+	sha256sums = afefbc33f53b4c917b0bbc8c253f7c9629249f05a52f17ec54b97a04b95bdcb3
 
 pkgname = pymol2
 
