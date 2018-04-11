@@ -6,10 +6,10 @@
 pkgname=ttf-malayalam-font-manjari
 pkgver=1.4
 pkgrel=1
-pkgdesc="This is Manjari, a font belonging to a set of TrueType and OpenType fonts released under the 
-SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 for Malayalam Language."
+pkgdesc="Malayalam unicode font with rounded terminals suitable for body text."
 arch=(any)
 url="http://smc.org.in/fonts/"
+license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
 source=(
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Regular.ttf"
@@ -22,9 +22,11 @@ md5sums=('10fefbb99a04607258760c78eff29e23'
          '53f66c18d1fca2afd57cffb0b4f7b6ee'
          '98923c2e7c4df841f7e8ee0f3e05f9f5')
 install=ttf-malayalam-fonts.install
+
+
 package() {
   mkdir -p "${pkgdir}/usr/share/fonts/TTF" || return 1
-  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF" 
+  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
   mkdir -p "${pkgdir}/etc/fonts/conf.d" || return 1
   install *.conf "${pkgdir}/etc/fonts/conf.d" || return 1
 }

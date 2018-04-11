@@ -1,10 +1,11 @@
 pkgbase = ttf-malayalam-font-manjari
-	pkgdesc = This is Manjari, a font belonging to a set of TrueType and OpenType fonts released under the SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 for Malayalam Language.
+	pkgdesc = Malayalam unicode font with rounded terminals suitable for body text.
 	pkgver = 1.4
 	pkgrel = 1
 	url = http://smc.org.in/fonts/
 	install = ttf-malayalam-fonts.install
 	arch = any
+	license = OFL1.1
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://smc.org.in/downloads/fonts/manjari/Manjari-Regular.ttf
