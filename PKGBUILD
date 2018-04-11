@@ -16,8 +16,12 @@ makedepends=('extra-cmake-modules'
              'kdoctools'
              'python'
              )
-source=("https://www.dennogumi.org/releases/danbooru-client-${pkgver}.tar.xz")
-sha256sums=('bbdde0bba5a6ad13b7f7db31a94f0a846dbb7c6497f1d75c162d2ece071d14be')
+source=("https://www.dennogumi.org/releases/danbooru-client-${pkgver}.tar.xz"
+        'https://github.com/lbeltrame/danbooru-client/raw/master/danbooru/img/logo.png'
+        )
+sha256sums=('bbdde0bba5a6ad13b7f7db31a94f0a846dbb7c6497f1d75c162d2ece071d14be'
+            '395a907c61a3450e22a695f6d5e04bf3fbaf3342b02474ba401acbd595609b8b'
+            )
 
 prepare() {
   mkdir -p build
@@ -36,4 +40,6 @@ build() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/danbooru.png"
+  sed 's|Icon=danbooru_client|Icon=danbooru|g' -i "${pkgdir}/usr/share/applications/"*.desktop
 }
