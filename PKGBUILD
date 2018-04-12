@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.0.2.7.g6021ff97
+pkgver=1.0.2.9.g8c15fdad
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL2.1')
 url='http://www.videolan.org/developers/libbluray.html'
 depends=('libxml2'
