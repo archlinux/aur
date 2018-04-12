@@ -43,5 +43,14 @@ package() {
 	mkdir -p out/arsdk-native
 	ln -s ../.. out/arsdk-native/staging
 
+	# install license
 	install -Dm 644 "$srcdir"/packages/ARSDKBuildUtils/LICENSE.md "$pkgdir"/usr/share/licenses/LICENSE
+
+	# fix up hard-coded paths
+	cd $_target
+	_srcpath=`realpath "${srcdir}/out/arsdk-native/staging/usr"`
+	sed -i "s|$_srcpath|/opt/$pkgname|g" bin/curl-config
+	for f in lib/pkgconfig/*; do
+		sed -i "s|$_srcpath|/opt/$pkgname|g" "$f"
+	done
 }
