@@ -1,8 +1,8 @@
 # Maintainer: Raphael Simon <simon.raphael@gmail.com>
 
 pkgbase=linux-samus4
-pkgver=4.15
-pkgrel=11
+pkgver=4.16
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
@@ -159,8 +159,8 @@ _package-headers() {
   # add dvb headers for external modules
   # in reference to:
   # http://bugs.archlinux.org/task/9912
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
+  #mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
+  #cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
   # and...
   # http://bugs.archlinux.org/task/11194
   #mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
@@ -245,6 +245,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('b179c9f729c1dfc651c117fcaa7d51e0'
-         '71186262f9aa61f8c7e8ae978232784e'
+md5sums=('2b9579d63e10f884555ae72afea80b86'
+         'fcd3a9b1244b5fbb0f0ff30151e034e3'
          '5aae464a8085b2f3adcdcaff29853d04')
