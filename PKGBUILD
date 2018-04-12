@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=mingw-w64-opusfile
-pkgver=0.7
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="The opusfile library provides seeking, decode, and playback of Opus streams in the Ogg container."
 arch=(any)
 url="http://www.opus-codec.org"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt mingw-w64-opus mingw-w64-libogg mingw-w64-openssl)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.xiph.org/releases/opus/opusfile-0.7.tar.gz")
-sha256sums=("9e2bed13bc729058591a0f1cab2505e8cfd8e7ac460bf10a78bcc3b125e7c301")
+sha384sums=('b9ec8d7827a4549091d553a66a78017e767f8d731a281651560799b6409d5da27d0777152b4c624a3ca94f5a416aa56c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
