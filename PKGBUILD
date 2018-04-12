@@ -1,22 +1,23 @@
-# $Id$
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
+# Maintainer:  Jonathon Fernyhough <jonathon at_manjaro_dot org>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
 pkgname=trickle
 pkgver=1.07
-pkgrel=9
+pkgrel=10
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64')
-url="http://monkey.org/~marius/trickle"
+url="https://github.com/mariusae/trickle"
 license=('BSD')
 depends=('libevent')
-source=("http://monkey.org/~marius/trickle/${pkgname}-${pkgver}.tar.gz"
+_commit=a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416 # "import of trickle 1.07"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mariusae/trickle/archive/${_commit}.tar.gz"
         "fix-crasher.patch")
-md5sums=('860ebc4abbbd82957c20a28bd9390d7d'
-         'a072091bce131e9f7229bff85ed5858c')
+sha256sums=('b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37'
+            '495aeb95039dcdeb3bfde46c40b3391fe2416ec51678a1ded9bbeced6f6d1349')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
   
   # FS#27549
   sed -i 's|^_select(int|select(int|' trickle-overload.c
@@ -26,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
   
   ./configure --prefix=/usr \
               --mandir=/usr/share/man
@@ -35,7 +36,7 @@ build() {
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
 
   make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
