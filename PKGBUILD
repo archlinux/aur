@@ -1,34 +1,39 @@
 # Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
 # Contributor: Blair Bonnett <blair.bonnett at gmail dot com>
 
+_pkgname=htop
 pkgname=htop-temperature
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Interactive process viewer with added support for CPU temperature"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://hisham.hm/htop/"
 license=('GPL')
 depends=('ncurses' 'libnl' 'lm_sensors')
 makedepends=('python')
 optdepends=('lsof: show files opened by a process'
             'strace: attach to a running process')
-provides=('htop')
-conflicts=('htop')
+provides=($_pkgname)
+conflicts=($_pkgname)
 options=('!emptydirs')
-source=("http://hisham.hm/htop/releases/$pkgver/htop-$pkgver.tar.gz"
-        "htop-temperature.patch")
-sha256sums=('3260be990d26e25b6b49fc9d96dbc935ad46e61083c0b7f6df413e513bf80748'
-            '68a96dc51a9cb847e40ad95ecf91a80979ca377f6b947e5cc9b2ef2c7dcb333e')
+source=("http://hisham.hm/$_pkgname/releases/$pkgver/$_pkgname-$pkgver.tar.gz"
+        "htop-temperature.patch"
+        "0001-fix-option-string.patch")
+sha256sums=('d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57'
+            'a4c9dfbc3c2f7e08904656b53b9c08d19014cf6238fb75f1ed5ecbef2905964c'
+            '550c2806ccae779203ec610b73d2c5b977df3f963ad79675a611da48accf6e0d')
 
 prepare() {
-  cd "htop-$pkgver"
+  cd "$_pkgname-$pkgver"
+
+  patch -Np1 < "$srcdir"/0001-fix-option-string.patch
 
   # Add CPU temperature patch.
-  patch -p1 -N < ../htop-temperature.patch
+  patch -Np1 < "$srcdir"/htop-temperature.patch
 }
 
 build() {
-  cd "htop-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   ./autogen.sh
   ./configure \
@@ -40,10 +45,9 @@ build() {
       --enable-unicode \
       --enable-vserver
 
-
   make $MAKEFLAGS
 }
 
 package() {
-  make -C "htop-$pkgver" DESTDIR="$pkgdir" install
+  make -C "$_pkgname-$pkgver" DESTDIR="$pkgdir" install
 }

@@ -86,25 +86,6 @@ index fb82413..bda5318 100644
     SWAP,
     PROCESS,
     PROCESS_SHADOW,
-diff --git a/Makefile.am b/Makefile.am
-index 19c9eb4..3398b9b 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -37,12 +37,12 @@ AffinityPanel.h HostnameMeter.h OpenFilesScreen.h Affinity.h IncSet.h Action.h \
- EnvScreen.h InfoScreen.h XAlloc.h
- 
- if HTOP_LINUX
- htop_CFLAGS += -rdynamic 
- myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
--linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c
-+linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c
- 
- myhtopplatheaders = linux/Platform.h linux/IOPriorityPanel.h linux/IOPriority.h \
--linux/LinuxProcess.h linux/LinuxProcessList.h linux/LinuxCRT.h linux/Battery.h
-+linux/LinuxProcess.h linux/LinuxProcessList.h linux/LinuxCRT.h linux/Battery.h TemperatureMeter.h
- endif
- 
- if HTOP_FREEBSD
 diff --git a/TemperatureMeter.c b/TemperatureMeter.c
 new file mode 100644
 index 0000000..9ee9185
@@ -245,7 +226,7 @@ index de7bb84..a8e8a6f 100644
  #include "HostnameMeter.h"
  #include "LinuxProcess.h"
 +#include "TemperatureMeter.h"
- 
+
  #include <math.h>
  #include <assert.h>
 @@ -116,6 +117,7 @@ MeterClass* Platform_meterTypes[] = {
@@ -256,3 +237,25 @@ index de7bb84..a8e8a6f 100644
     &UptimeMeter_class,
     &BatteryMeter_class,
     &HostnameMeter_class,
+diff --git a/Makefile.am b/Makefile.am
+index cd5209c..c700e34 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -48,14 +48,15 @@ linux_platform_headers = \
+ 	linux/LinuxProcess.h \
+ 	linux/LinuxProcessList.h \
+ 	linux/LinuxCRT.h \
+-	linux/Battery.h
++	linux/Battery.h \
++	TemperatureMeter.h
+ 
+ all_platform_headers += $(linux_platform_headers)
+ 
+ if HTOP_LINUX
+ AM_CFLAGS += -rdynamic
+ myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
+-linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c
++linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c
+ 
+ myhtopplatheaders = $(linux_platform_headers)
+ endif
