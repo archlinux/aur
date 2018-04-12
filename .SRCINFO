@@ -1,0 +1,20 @@
+pkgbase = nss-tls-git
+	pkgdesc = A DNS over HTTPS resolver for glibc
+	pkgver = r16.c256eb1
+	pkgrel = 1
+	url = https://github.com/dimkr/nss-tls
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = libsoup
+	depends = json-glib
+	provides = nss-tls
+	conflicts = nss-tls
+	source = nss-tls::git+https://github.com/dimkr/nss-tls.git
+	sha256sums = SKIP
+
+pkgname = nss-tls-git
+
