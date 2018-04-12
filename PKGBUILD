@@ -56,21 +56,22 @@ build() {
 
     yarn install --arch=${_vscode_arch}
 
-    if ! ulimit -n 10000; then
-        echo
-        echo "*** ERROR: Could not raise the soft file limit. ***"
-        echo "You may need to adjust your 'nofile' limit in /etc/security/limits.conf"
-        echo "and possibly also raise your kernel-enforced limit if necessary."
-        echo "Without this change, the gulp build will likely fail with EMFILE"
-        echo
-        exit 1
-    fi
-
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
     mem_limit="--max_old_space_size=2048"
-    /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
+
+    if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
+    then
+        echo
+        echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
+        echo "*** you will need to raise your max open file limit."
+        echo "*** This can be done by setting a higher limit in /etc/security/limits.conf,"
+        echo "*** rebooting (or logging out and back in), and then running"
+        echo "*** 'ulimit -n 10000' (or higher) before re-attempting to build this package."
+        echo
+        exit 1
+    fi
 
     # Patch the startup script to know where the app is installed, rather
     # than guessing...
