@@ -5,7 +5,7 @@ pkgname=mkclean
 pkgver=0.8.10
 pkgrel=1
 pkgdesc="Clean up and optimize MKV files"
-arch=('armv6h' 'i686' 'x86_64')
+arch=('x86_64')
 url='http://www.matroska.org/downloads/mkclean.html'
 license=('BSD')
 source=("http://sourceforge.net/projects/matroska/files/mkclean/mkclean-${pkgver}.tar.bz2")
@@ -17,27 +17,16 @@ prepare() {
 
   gcc ${CFAGS} -o coremake corec/tools/coremake/coremake.c
 
-    if [ "${CARCH}" = "i686" ]; then
-    _target="gcc_linux"
-  elif [ "${CARCH}" = "x86_64" ]; then
-    _target="gcc_linux_x64"
-  elif [ "${CARCH}" = "armv6h" ]; then
-    sed 's|arm-linux-gnueabi-||g' -i corec/tools/coremake/gcc_linux_arm
-    _target="gcc_linux_arm"
-  fi
-
   sed "s|/usr/local|${pkgdir}/usr|g" -i corec/tools/coremake/gcc_mak.inc
 
-  ./coremake ${_target}
+  ./coremake gcc_linux_x64
 }
 
 build(){
-  cd "mkclean-${pkgver}/mkclean"
-  make
+  make -C "mkclean-${pkgver}/mkclean"
 }
 
 package(){
-  cd "mkclean-${pkgver}/mkclean"
   mkdir -p "${pkgdir}/usr/bin"
-  make install
+  make -C "mkclean-${pkgver}/mkclean" install
 }
