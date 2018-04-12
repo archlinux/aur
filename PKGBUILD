@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.8.1.78.gd4c4c7f
+pkgver=0.9.0.7.g5486058
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 url='http://www.videolan.org/developers/libaacs.html'
 depends=('libgcrypt')
@@ -12,7 +12,9 @@ makedepends=('git'
              'flex'
              'bison'
              )
-provides=('libaacs' 'libaacs.so')
+provides=('libaacs'
+          'libaacs.so'
+          )
 conflicts=('libaacs')
 source=('git+https://git.videolan.org/git/libaacs.git')
 sha1sums=('SKIP')
@@ -31,6 +33,7 @@ build() {
   cd libaacs
   ./configure \
     --prefix=/usr
+
   make
 }
 
