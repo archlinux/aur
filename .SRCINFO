@@ -1,0 +1,19 @@
+pkgbase = thorspec
+	pkgdesc = Driver for Thorlabs spectrometers
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=3482&pn=CCS175/M
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = python2
+	noextract = setupblob_2.8.0
+	source = setupblob_2.8.0.exe::https://www.thorlabs.com/software/THO/OSA/V2_80/ThorlabsOSASW_Full_setup.exe
+	source = cyusb-fw-extract-py2.py
+	source = 80-spectrometer.rules
+	md5sums = 1301c516d4bd64aa348a9936ea8ee4ab
+	md5sums = 793c35c7b9b08baa950a63564dfb782f
+	md5sums = 7083e7b40cbd3095640d227190cdd08d
+
+pkgname = thorspec
+

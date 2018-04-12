@@ -1,0 +1,20 @@
+# Thor SPx and CCS spectrometers 
+ACTION!="add", GOTO="thor_rules_end"
+ATTR{idVendor}!="1313", GOTO="thor_rules_end"
+
+# Thor CCS spectrometers need a firmware upload before they renumerate as the real device
+ATTR{idProduct}=="8080", RUN+="/usr/bin/fxload -t fx2lp -I /lib/firmware/CCS100_2.ihx -D %N"
+ATTR{idProduct}=="8082", RUN+="/usr/bin/fxload -t fx2lp -I /lib/firmware/CCS125_2.ihx -D %N"
+ATTR{idProduct}=="8084", RUN+="/usr/bin/fxload -t fx2lp -I /lib/firmware/CCS150_2.ihx -D %N"
+ATTR{idProduct}=="8086", RUN+="/usr/bin/fxload -t fx2lp -I /lib/firmware/CCS175_2.ihx -D %N"
+ATTR{idProduct}=="8088", RUN+="/usr/bin/fxload -t fx2lp -I /lib/firmware/CCS200_2.ihx -D %N"
+
+# Need libusb to have access for all users
+ATTR{idProduct}=="0111", MODE="0666"
+ATTR{idProduct}=="8081", MODE="0666"
+ATTR{idProduct}=="8083", MODE="0666"
+ATTR{idProduct}=="8085", MODE="0666"
+ATTR{idProduct}=="8087", MODE="0666"
+ATTR{idProduct}=="8089", MODE="0666"
+
+LABEL="thor_rules_end"
