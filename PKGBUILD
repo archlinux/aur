@@ -4,7 +4,7 @@
 
 _pkgbase=julia-vim
 pkgname=vim-julia-git
-pkgver=r185.84815ce
+pkgver=r333.4593c8b
 pkgrel=1
 pkgdesc="Vim support for the Julia language."
 arch=('any')
@@ -36,4 +36,6 @@ package() {
       install -m 755 $i/$j "${pkgdir}"/usr/share/vim/vimfiles/$i/$j
     done
   done
+
+  rm -f "${pkgdir}"/usr/share/vim/vimfiles/doc/tags
 }
