@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/cjbassi/vim-anywhere"
 license=("MIT")
 depends=("xclip" "xdotool")
+makedepends=("git")
 provides=("vim-anywhere")
 source=("git+https://github.com/cjbassi/vim-anywhere")
 md5sums=("SKIP")
