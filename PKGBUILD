@@ -1,18 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbdplus-git
-pkgver=0.1.2.7.gb567dbb
+pkgver=0.1.2.31.gc7f1e8b
 pkgrel=1
 pkgdesc="Open implementation of BD+ protocol. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 url='http://www.videolan.org/developers/libbdplus.html'
 depends=('libaacs')
 makedepends=('git')
-provides=('libbdplus' 'libbdplus.so')
+provides=('libbdplus'
+          'libbdplus.so'
+          )
 conflicts=('libbdplus')
 source=('git://git.videolan.org/libbdplus.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libbdplus
@@ -26,7 +28,10 @@ prepare() {
 
 build() {
   cd libbdplus
-  ./configure --prefix=/usr --disable-static
+  ./configure \
+    --prefix=/usr \
+    --disable-static
+
   make
 }
 
