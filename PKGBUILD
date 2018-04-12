@@ -1,8 +1,8 @@
 # Maintainer: joel almeida <aullidolunar at gm_ai1 dot c0m>
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-themes-git
-pkgver=r62.5a35074
-pkgrel=3
+pkgver=r81.01b7cdb
+pkgrel=1
 pkgdesc="BunsenLabs GTK/Openbox/Lightdm Themes"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-themes"
@@ -16,16 +16,13 @@ source=('git+https://github.com/BunsenLabs/bunsen-themes.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/bunsen-themes"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	
-	install -d "$pkgdir"/usr/share/themes
-	install -d "$pkgdir"/usr/share/doc/bunsen-themes-git
-	
-	cp -r Bunsen-Blackish Bunsen-Blue-Dark Bunsen-Blue Bunsen-Dark Bunsen-lightdm Bunsen CrunchBang "$pkgdir"/usr/share/themes
-	cp LICENSE.{GPL,CC} "$pkgdir"/usr/share/doc/bunsen-themes-git
+	cd "$srcdir/bunsen-themes/themes"
+	find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+	cd "$srcdir/bunsen-themes"
+	find . -maxdepth 1 -type f -name "LICENSE.*" -exec install -Dm644 '{}' "$pkgdir/usr/share/doc/bunsen-themes-git/{}" \;
 }
