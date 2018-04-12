@@ -1,0 +1,33 @@
+pkgbase = uzbl
+	pkgver = 0.9.1+95+g3a4c70ad
+	pkgrel = 1
+	epoch = 1
+	url = http://www.uzbl.org
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = webkit2gtk
+	source = git+https://github.com/uzbl/uzbl.git#commit=3a4c70ad114b763f50a02c72ee4332dd20af033d
+	sha256sums = SKIP
+
+pkgname = uzbl-core
+	pkgdesc = Webpage interface component meant for integration with other tools and scripts
+	depends = webkit2gtk
+
+pkgname = uzbl-browser
+	pkgdesc = A complete browser experience based on uzbl-core
+	depends = uzbl-core
+	depends = socat
+	depends = zenity
+	depends = xclip
+	depends = dmenu
+	depends = python2
+	depends = python-setuptools
+	depends = python-six
+
+pkgname = uzbl-tabbed
+	pkgdesc = Tabbing manager providing multiple uzbl-browser instances in 1 window
+	depends = uzbl-browser
+	depends = pygtk
+
