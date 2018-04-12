@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=python-or-tools
-pkgver=6.6
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ depends=('python' 'swig')
 makedepends=('cmake')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha384sums=('59a12c3f04e29841cf1c6c56f784e6c721439f33fa10670ee13a47b8e33d1c046d07c760eae6438c327d7a7e4391c761')
+sha384sums=('cffe54d57e78044b1ba82ec09e55f725ff5ba5d56c50dedbeb7b53f4d2d9fed1b1b7dfbe1408d2e19a57043b7482710f')
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
