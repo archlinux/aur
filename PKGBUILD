@@ -2,6 +2,7 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
 # adopted from mingw-w64-pdcurses package:
 # Contributor: Filip Brcic <brcha@gna.org>
+
 pkgname=mingw-w64-pdcurses-win32a
 pkgver=4.0.2
 pkgrel=2
@@ -9,13 +10,13 @@ _commit=10ee49e4fb96a808aed0882374dcc22b668db722
 pkgdesc="Curses library on the Win32 API for MinGW-w64"
 arch=(any)
 depends=(mingw-w64-crt)
-makedepends=(mingw-w64-gcc)
+makedepends=("mingw-w64-gcc" "git")
 options=(staticlibs !buildflags !strip)
 provides=('mingw-w64-pdcurses')
 replaces=('mingw-w64-pdcurses')
 conflicts=('mingw-w64-pdcurses')
 license=("public domain")
-url="http://www.projectpluto.com/win32a.htm"
+url="https://www.projectpluto.com/win32a.htm"
 source=(#"http://www.projectpluto.com/win32a.zip"
         "git+https://github.com/Bill-Gray/PDCurses.git#commit=$_commit"
         "pdcurses.diff")
