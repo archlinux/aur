@@ -4,7 +4,7 @@
 
 pkgname=printrun-git
 _gitname='Printrun'
-pkgver=1.6.0.20.g20c18cc
+pkgver=2.0.0rc5.15.geefc58f
 pkgrel=1
 epoch=1
 pkgdesc='Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI'
@@ -13,14 +13,14 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun')
 conflicts=('printrun')
-depends=('python2-pyserial' 'wxpython' 'python2-pyglet' 'desktop-file-utils')
+depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'desktop-file-utils')
 optdepends=(
-  'python2-cairo: to use Projector feature'
-  'python2-cairosvg: to use Projector feature'
-  'python2-numpy: for 3D view'
-  'python2-dbus: to inhibit sleep when printing'
-  'python2-psutil: to increase process priority when printing')
-makedepends=('git' 'cython2')
+  'python-cairo: to use Projector feature'
+  'python-cairosvg: to use Projector feature'
+  'python-numpy: for 3D view'
+  'python-dbus: to inhibit sleep when printing'
+  'python-psutil: to increase process priority when printing')
+makedepends=('git' 'cython')
 install="${pkgname}.install"
 source=('git://github.com/kliment/Printrun.git')
 sha256sums=('SKIP')
@@ -32,10 +32,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
