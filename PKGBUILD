@@ -4,15 +4,21 @@
 
 pkgname=mprime
 pkgver=294b7
-pkgrel=3
+pkgrel=4
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
 arch=('x86_64')
 url="http://www.mersenne.org"
 license=('custom')
 depends=('curl' 'hwloc')
 conflicts=('mprime-bin')
-source=("http://www.mersenne.org/ftp_root/gimps/p95v${pkgver}.source.zip")
-sha256sums=('15682e9587af2b86647de9786f97dc8c5d7a4a679a0440f7d1d1936a48c5aa45')
+source=("http://www.mersenne.org/ftp_root/gimps/p95v${pkgver}.source.zip"
+unfuck_makefile.patch)
+sha256sums=('15682e9587af2b86647de9786f97dc8c5d7a4a679a0440f7d1d1936a48c5aa45'
+            'c94417f35f988e32693f9002792cbf21da85c2345670cb377066c9b799341528')
+
+prepare () {
+	patch -Np1 -i unfuck_makefile.patch
+}
 
 build() {
 	cd "$srcdir/gwnum"
@@ -23,10 +29,6 @@ build() {
 }
 
 package() {
-  CFLAGS="-I.. -I../gwnum -DX86_64 -march=x86-64 -O2 -Wno-unused-result"
-  CXXFLAGS="$CFLAGS"
-  LIBS="../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread $(pkg-config --libs libcurl) -lstdc++ $(pkg-config --static --libs hwloc) -lgmp"
-
 	install -Dm755 linux64/mprime "$pkgdir/usr/bin/mprime"
 
 	# license and documentation
