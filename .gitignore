@@ -1,4 +1,5 @@
 src/
 pkg/
-geneconv-*
+*.tar.gz
+*.tar.xz
 gconvdoc.pdf
