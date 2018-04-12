@@ -1,0 +1,18 @@
+pkgbase = geneconv
+	pkgdesc = Statistical Tests for Detecting Gene Conversion
+	pkgver = 1.81a
+	pkgrel = 1
+	url = https://www.math.wustl.edu/~sawyer/geneconv
+	arch = i686
+	arch = x86_64
+	source = geneconv-1.81a.tar.gz::https://www.math.wustl.edu/~sawyer/geneconv/unix.source.tar.gz
+	source = geneconv-examples-1.81a.tar.gz::https://www.math.wustl.edu/~sawyer/geneconv/unix.examples.tar.gz
+	source = https://www.math.wustl.edu/~sawyer/geneconv/gconvdoc.pdf
+	source = disable-logging.patch
+	sha256sums = 9423bad39fc729ac8150d0630c82ca3452d30ba0f5da862a76a7358c06d0831c
+	sha256sums = 58e26a065c4ddf055cad403a30c2482db500e19de6ff6a2116b2d91aaee6b7a1
+	sha256sums = 14f91fe7437e115241cad83b1c0587791998498d085e58b8699186edb6735cd2
+	sha256sums = d61c5ef686cd47a8f2bb6e894535ce78cb47b2b7c2a53c4a3d6ec1c6a153a068
+
+pkgname = geneconv
+

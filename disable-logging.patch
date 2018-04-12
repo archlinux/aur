@@ -1,0 +1,12 @@
+--- vsetopts.c.old	2018-04-12 14:26:15.347943111 +0100
++++ vsetopts.c	2018-04-12 14:26:29.149006677 +0100
+@@ -133,7 +133,8 @@
+
+ /* Verbose variables */
+
+-int gscale, circular, allowindelstrat, havelog=TRUE;
++int gscale, circular, allowindelstrat;
++int havelog=FALSE;
+ int showunal, havlabels=TRUE, use_iubnucls, phylip;
+ int nomacfork, no_nexus_dcomm;
+ int dumpfrags, dumptab, dumpdif, dumpjseqs, dumpplot;
