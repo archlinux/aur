@@ -1,17 +1,16 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=openbsd-manpages
-pkgver=6.2
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 pkgdesc="The OpenBSD manual pages."
 arch=('x86_64')
 url="https://man.openbsd.org/"
 license=('BSD')
 source=("https://ftp.openbsd.org/pub/OpenBSD/${pkgver}/amd64/man${pkgver//./}.tgz"
         "https://ftp.openbsd.org/pub/OpenBSD/${pkgver}/amd64/xshare${pkgver//./}.tgz")
-sha256sums=('7e47ac7364ffad253ba7b3e759e7e4e8f16da58d7f320eb0b47f09c3e647f408'
-            '521760064b6920afea25fe1ffa36793d8acfb1cb0c0d921cb768688d7cbc3f32')
+sha256sums=('331cab3ea89f81157f8cc111fb8b4eaba3bb6c6decd74e59521d2447208619b1'
+            '5a91ebd61ad8d64c0d98d07bbd80f9c8346b12fa5c61bdad36a8b107179ed3bd')
 
 prepare() {
   msg2 'Renaming man pages for consistency with linux man pages.'	
