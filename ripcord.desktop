@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ripcord
+GenericName=Chat Client
+Comment=An alternative Discord client
+Exec=/usr/bin/ripcord
+Icon=ripcord
+Terminal=false
+Type=Application
