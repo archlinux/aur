@@ -1,0 +1,30 @@
+pkgbase = uterm-git
+	pkgdesc = A WIP terminal emulator, written in C++11 using Skia, libtsm, and GLFW
+	pkgver = r88.ddc2ad9
+	pkgrel = 1
+	url = https://github.com/kirbyfan64/uterm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = fbuild
+	makedepends = clang
+	depends = mesa
+	depends = freetype2
+	depends = fontconfig
+	source = git+https://github.com/kirbyfan64/uterm.git
+	source = git+https://github.com/skaslev/gl3w.git
+	source = abseil::git+https://github.com/abseil/abseil-cpp.git
+	source = git+https://github.com/google/skia.git#branch=chrome/m65
+	source = git+https://github.com/fmtlib/fmt.git#branch=4.x
+	source = git+https://github.com/nemtrif/utfcpp.git
+	source = git+https://github.com/Aetf/libtsm#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = uterm-git
+
