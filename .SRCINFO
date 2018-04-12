@@ -21,7 +21,7 @@ pkgbase = avocode
 	source_i686 = https://media.avocode.com/download/avocode-app/2.23.0/avocode-2.23.0-ia32-linux.zip
 	md5sums_i686 = 2d4c8eff942068952531b59a7ef353ed
 	source_x86_64 = https://media.avocode.com/download/avocode-app/2.23.0/avocode-2.23.0-linux.zip
-	md5sums_x86_64 = 272935938780064b3c9a1863534937e1
+	md5sums_x86_64 = eb73b931f9c644decbb01220f58235ae
 
 pkgname = avocode
 

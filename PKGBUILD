@@ -19,7 +19,7 @@ source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode
 md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
 md5sums_i686=('2d4c8eff942068952531b59a7ef353ed')
-md5sums_x86_64=('272935938780064b3c9a1863534937e1')
+md5sums_x86_64=('eb73b931f9c644decbb01220f58235ae')
 package() {
 	install -d "$pkgdir"/opt
 	
