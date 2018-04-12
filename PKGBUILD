@@ -3,26 +3,18 @@
 pkgname=lsi-openpegasus
 pkgver=2.14.1
 pkgrel=2
-pkgdesc="LSI Openpegasus libs"
-arch=('i686' 'x86_64')
+pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
+arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
-          # OpenPegasus site don't like wget/curl. :/
 depends=('sqlite')
-makedepends=(
-             #'lynx'
-             'icu'
+makedepends=('icu'
              'openssl'
              'net-snmp'
              'openslp'
              'setconf'
              )
-# DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
-#           'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
-#           )
-source=(
-        #'lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move this file to other place
-        'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
+source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
         'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
         'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
@@ -60,21 +52,19 @@ prepare() {
   patch -p1 -i "${srcdir}/pegasus-2.14.1-ssl-include.patch"
   patch -p1 -i "${srcdir}/pegasus-2.14.1-openssl-1.1-fix.patch"
 
-  # fix detection some libs on 32 bits
   sed 's|lib64/|\$libbase/|g' -i configure
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    setconf configure libbase lib
-  fi
+  setconf configure libbase lib
 
   export PEGASUS_EXTRA_C_FLAGS="${CFLAGS}"
   export PEGASUS_EXTRA_CXX_FLAGS="${CXXFLAGS}"
   export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="${LDFLAGS}"
+
+  ./configure
 }
 
 build() {
   cd pegasus
-  ./configure
   make -j$(nproc) -f GNUmakefile
 }
 
