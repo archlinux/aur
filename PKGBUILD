@@ -1,8 +1,8 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 # Contributor: Liganic <liganic-aur@gmx.net>
 pkgname=cpplint
-pkgver='456.r37'
-_commit=099f059086b4250aa0d2546ea3115aae95597ffd
+pkgver='456.r38'
+_commit=b280a7312455e0310173a60673076ecc4b077290
 pkgrel=1
 pkgdesc="Automated checker to make sure a C++ file follows Google's C++ style guide."
 arch=('any')
