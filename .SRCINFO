@@ -1,30 +1,27 @@
 pkgbase = ncmpcpp-git
-	pkgdesc = An almost exact clone of ncmpc with some new features.
-	pkgver = 2146.99107c5
+	pkgdesc = An almost exact clone of ncmpc with some new features (git version)
+	pkgver = 0.8.2.r0.g7bfefb2f
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = http://rybczak.net/ncmpcpp/
-	install = ncmpcpp-git.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL
 	makedepends = git
 	makedepends = boost
-	makedepends = pkg-config
+	depends = curl
+	depends = libmpdclient
+	depends = taglib
 	depends = ncurses
-	depends = libmpdclient>=2.8
+	depends = fftw
 	depends = boost-libs
-	depends = readline
-	optdepends = curl: fetch lyrics
-	optdepends = taglib: tag editor
-	optdepends = fftw: frequency spectrum mode visualization
 	provides = ncmpcpp
 	conflicts = ncmpcpp
 	conflicts = ncmpcpp-xdg-config
 	conflicts = ncmpcpp-xdg-config-git
 	conflicts = ncmpcpp-color
-	source = git+https://github.com/arybczak/ncmpcpp
-	md5sums = SKIP
+	source = ncmpcpp-git::git+https://github.com/arybczak/ncmpcpp.git
+	sha256sums = SKIP
 
 pkgname = ncmpcpp-git
 

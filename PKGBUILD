@@ -1,42 +1,58 @@
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 # Contributor: rich_o <aurua@riseup.net>
-# Maintainer: rich_o <aurua@riseup.net>
 
-pkgname="ncmpcpp-git"
-pkgver=2146.99107c5
+pkgname=ncmpcpp-git
+pkgver=0.8.2.r0.g7bfefb2f
 pkgrel=1
-epoch=1
-pkgdesc="An almost exact clone of ncmpc with some new features."
+epoch=2
+pkgdesc='An almost exact clone of ncmpc with some new features (git version)'
 arch=('i686' 'x86_64')
-url="http://rybczak.net/ncmpcpp/"
-license=('GPL2')
-depends=('ncurses' 'libmpdclient>=2.8' 'boost-libs' 'readline')
-makedepends=('git' 'boost' 'pkg-config')
-optdepends=('curl: fetch lyrics'
-            'taglib: tag editor'
-            'fftw: frequency spectrum mode visualization')
-conflicts=('ncmpcpp' 'ncmpcpp-xdg-config' 'ncmpcpp-xdg-config-git' 'ncmpcpp-color')
+url='http://rybczak.net/ncmpcpp/'
+license=('GPL')
+depends=('curl' 'libmpdclient' 'taglib' 'ncurses' 'fftw' 'boost-libs')
+makedepends=('git' 'boost')
 provides=('ncmpcpp')
-install=${pkgname}.install
-source=("git+https://github.com/arybczak/ncmpcpp")
-md5sums=('SKIP')
+conflicts=('ncmpcpp' 'ncmpcpp-xdg-config' 'ncmpcpp-xdg-config-git' 'ncmpcpp-color')
+source=("$pkgname"::'git+https://github.com/arybczak/ncmpcpp.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ncmpcpp || exit
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd ncmpcpp || exit
-  ./autogen.sh BOOST_LIB_SUFFIX=''
-  ./configure \
-    --prefix=/usr \
-    --enable-clock \
-    --enable-outputs \
-    --enable-visualizer
-  make
+    cd "$pkgname"
+    
+    export BOOST_LIB_SUFFIX=''
+    
+    # http://site.icu-project.org/download/61#TOC-Migration-Issues
+    export CPPFLAGS="${CPPFLAGS} -DU_USING_ICU_NAMESPACE=1"
+    
+    ./autogen.sh
+    
+    ./configure \
+        --prefix=/usr \
+        --enable-shared='yes' \
+        --enable-static='no' \
+        --enable-fast-install='yes' \
+        --enable-outputs \
+        --enable-visualizer \
+        --enable-clock \
+        --enable-outputs \
+        --with-fftw \
+        --with-taglib
+        
+    make
+    make -C extras
 }
 
 package() {
-  cd ncmpcpp || exit
-  make DESTDIR="${pkgdir}/" install
+    cd "$pkgname"
+    
+    make DESTDIR="$pkgdir" install
+    
+    install -D -m755 extras/artist_to_albumartist -t "${pkgdir}/usr/bin"
 }
