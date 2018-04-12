@@ -1,8 +1,8 @@
 # Maintainer : Christian Hofmann <chof@pfho.net>
 
 pkgname=wifite2-git
-pkgver=r104.aa75970
-pkgrel=3
+pkgver=r190.90c99b1
+pkgrel=1
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=(any)
 url="https://github.com/derv82/wifite2"
@@ -18,19 +18,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  rm -rf $pkgname/py/tests
-}
-
 package() {
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/wifite2
   install -D -m755 ${pkgname}/Wifite.py ${pkgdir}/usr/share/wifite2/Wifite.py
-  cp -r $pkgname/py ${pkgdir}/usr/share/wifite2/py
+  cp -r $pkgname/wifite ${pkgdir}/usr/share/wifite2/wifite
 
   cat > "$pkgdir/usr/bin/wifite2" << EOF
 #!/bin/sh
-# cd /usr/share/wifite2
 exec python2 /usr/share/wifite2/Wifite.py "\${@}"
 EOF
 

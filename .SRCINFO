@@ -1,7 +1,7 @@
 pkgbase = wifite2-git
 	pkgdesc = A tool to attack multiple WEP and WPA encrypted networks at the same time
-	pkgver = r104.aa75970
-	pkgrel = 3
+	pkgver = r190.90c99b1
+	pkgrel = 1
 	url = https://github.com/derv82/wifite2
 	arch = any
 	license = GPL
