@@ -10,7 +10,7 @@ pkgbase = biglybt
 	depends = java-runtime>=9
 	options = !strip
 	source = GitHub_BiglyBT_Installer_1.5.0.0.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v1.5.0.0/GitHub_BiglyBT_Installer.sh
-	md5sums = 91c9893dd2480207e278ba8fc030f203
+	md5sums = ca39e3616f0a120c3d15622395699cbf
 
 pkgname = biglybt
 

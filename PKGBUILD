@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'java-runtime>=9')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-md5sums=('91c9893dd2480207e278ba8fc030f203')
+md5sums=('ca39e3616f0a120c3d15622395699cbf')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
