@@ -4,15 +4,18 @@
 pkgname=libvitamtp-git
 pkgver=v2.5.9.2.g09b50f7
 pkgrel=1
-pkgdesc="Library to interact with Vita's USB MTP protocol. (GIT version"
-arch=('i686' 'x86_64')
+pkgdesc="Library to interact with Vita's USB MTP protocol. (GIT version)"
+arch=('x86_64')
 url='https://github.com/codestation/vitamtp'
 license=('GPL')
 depends=('libusb'
          'libxml2'
          )
 provides=('libvitamtp')
-conflicts=('libvitamtp' 'vitamtp' 'vitamtpmod')
+conflicts=('libvitamtp'
+           'vitamtp'
+           'vitamtpmod'
+           )
 source=('libvitamtp::git+https://github.com/codestation/vitamtp.git#branch=testing'
         'libvitamtp-git.sysuser'
         )
@@ -33,7 +36,9 @@ prepare() {
 
 build() {
   cd libvitamtp
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr
+
   make
 }
 
