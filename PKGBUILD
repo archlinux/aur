@@ -1,5 +1,5 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
-pkgname=etcher
+pkgname=etcher-bin
 _realver=1.3.1
 pkgver=${_realver//-/_}
 pkgrel=1
@@ -7,6 +7,8 @@ pkgdesc="Burn images to SD cards & USB drives, safe & easy"
 arch=('x86_64')
 url="http://www.etcher.io/"
 license=('apache')
+provides=('etcher')
+conflicts=('etcher')
 depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
 optdepends=('libnotify: for notifications'
 	    'speech-dispatcher: for text-to-speech')
@@ -18,4 +20,7 @@ sha256sums_x86_64=('366a083b6009ae75830fd920a947812ab9c7ec3a2039dc1b8524d28640b8
 package() {
     cd "$pkgdir"
     tar xf "$srcdir/data.tar.xz"
+
+    mkdir -p usr/bin
+    ln -s /opt/Etcher/etcher-electron usr/bin
 }
