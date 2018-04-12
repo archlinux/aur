@@ -1,7 +1,7 @@
 pkgbase = python-osprofiler
 	pkgdesc = Library for cross-project profiling library
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/osprofiler/
 	arch = any
 	license = Apache
@@ -13,8 +13,6 @@ pkgbase = python-osprofiler
 	checkdepends = python2-testrepository
 	checkdepends = python-testtools
 	checkdepends = python2-testtools
-	checkdepends = python-ceilometerclient
-	checkdepends = python2-ceilometerclient
 	checkdepends = python-elasticsearch
 	checkdepends = python2-elasticsearch
 	checkdepends = python-pymongo

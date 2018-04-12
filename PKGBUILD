@@ -2,7 +2,7 @@
 _module='osprofiler'
 pkgname=('python-osprofiler' 'python2-osprofiler')
 pkgver='2.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
@@ -20,7 +20,6 @@ checkdepends=('python-mock' 'python2-mock'
               'python-ddt' 'python2-ddt'
               'python-testrepository' 'python2-testrepository'
               'python-testtools' 'python2-testtools'
-              'python-ceilometerclient' 'python2-ceilometerclient'
               'python-elasticsearch' 'python2-elasticsearch'
               'python-pymongo' 'python2-pymongo'
               'python-redis' 'python2-redis'
