@@ -31,16 +31,16 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc             # Build kernel with a different name
-_srcname=linux-4.15
-pkgver=4.15.15
+_srcname=linux-4.16
+pkgver=4.16.2
 pkgrel=1
-_pdsversion=098k
+_pdsversion=098m
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_psd_patch="v4.15_pds${_pdsversion}.patch"
+_psd_patch="v4.16_pds${_pdsversion}.patch"
 _gcc_more_v='20180310'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
@@ -50,26 +50,30 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch"
+  "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/${_psd_patch}"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            'fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575'
             'SKIP'
-            'de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb'
+            '1df0f1d1f6723e7a4dab6e025db1834ff21e5b059754715f3c98f47d11baaf1c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
-            'feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c'
-            '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
-            'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7')
+            '2aa1ba336aa97203f325551352aa59afca5ab9b6722b2922fe502f579e0eeb79'
+            'b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04'
+            '558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6'
+            'bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46'
+            'c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2')
 
 _kernelname=${pkgbase#linux}
 
@@ -87,6 +91,12 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58153
+  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
@@ -238,9 +248,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h

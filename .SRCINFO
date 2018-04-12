@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.15.15
+	pkgver = 4.16.2
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -9,32 +9,36 @@ pkgbase = linux-gc
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.15.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.15.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.2.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180310.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180310.tar.gz
-	source = v4.15_pds098k.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.15_pds098k.patch
+	source = v4.16_pds098m.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.16_pds098m.patch
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch
+	source = 0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
+	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = d8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00
+	sha256sums = fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575
 	sha256sums = SKIP
-	sha256sums = de916051cb9ed866d494184da6355be199b1794a9b2b480a5e36d156942f50fb
+	sha256sums = 1df0f1d1f6723e7a4dab6e025db1834ff21e5b059754715f3c98f47d11baaf1c
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815
-	sha256sums = feb342d7f560730908ce1d5a795a5cd817dbe28a5286d727d93666dfa0d8749c
-	sha256sums = 19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9
-	sha256sums = f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7
+	sha256sums = 2aa1ba336aa97203f325551352aa59afca5ab9b6722b2922fe502f579e0eeb79
+	sha256sums = b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04
+	sha256sums = 558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6
+	sha256sums = bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46
+	sha256sums = c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler
@@ -44,12 +48,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.15.15
+	provides = linux-gc=4.16.2
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.15.15
-	provides = linux-headers=4.15.15
+	provides = linux-gc-headers=4.16.2
+	provides = linux-headers=4.16.2
 
