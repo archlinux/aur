@@ -11,7 +11,7 @@
 
 pkgname=spm12
 pkgver=7219
-pkgrel=1
+pkgrel=2
 pkgdesc="A MATLAB toolbox for the analysis of brain imaging data sequences"
 arch=('i686' 'x86_64')
 url="http://www.fil.ion.ucl.ac.uk/spm/"
@@ -73,7 +73,7 @@ build() {
   fi
 
   # Build Octave
-  if [ "${_BUILD_MATLAB}" = true ]; then
+  if [ "${_BUILD_OCTAVE}" = true ]; then
     cd "${srcdir}/${pkgname}-r${pkgver}/src"
     make clean
     PLATFORM=octave make all
