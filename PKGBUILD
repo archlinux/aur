@@ -2,7 +2,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-qt-canary-git
-pkgver=r5878.66312b56
+pkgver=r6000.b40c597e
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary#branch=master"
         'git+https://github.com/fmtlib/fmt'
         'git+https://github.com/lsalzman/enet'
         'git+https://github.com/benhoyt/inih'
-	'git+https://github.com/j-selby/libressl-portable')
+	'git+https://github.com/citra-emu/ext-libressl-portable')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -57,7 +57,7 @@ prepare() {
 	git config submodule.fmt.url "$srcdir/fmt"
 	git config submodule.enet.url "$srcdir/enet"
 	git config submodule.inih.url "$srcdir/inih"
-	git config submodule.libressl.url "$srcdir/libressl-portable"
+	git config submodule.libressl.url "$srcdir/ext-libressl-portable"
 	git submodule update
 }
 
