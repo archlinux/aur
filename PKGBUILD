@@ -3,17 +3,17 @@
 
 pkgname=draft-bin
 pkgdesc="Draft client"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://draft.sh"
 license=('mit')
 conflicts=()
 _draft_file=draft-$pkgver
-source_i686=($_draft_file::https://azuredraft.blob.core.windows.net/draft/draft-v0.12.0-linux-386.tar.gz )
-source_x86_64=($_draft_file::https://azuredraft.blob.core.windows.net/draft/draft-v0.12.0-linux-amd64.tar.gz )
-md5sums_i686=('881357a46bdf86111993b1c364f786cd')
-md5sums_x86_64=('4e2ff8680952e82efce23b6bea8802b4')
+source_i686=($_draft_file::https://azuredraft.blob.core.windows.net/draft/draft-v0.13.0-linux-386.tar.gz )
+source_x86_64=($_draft_file::https://azuredraft.blob.core.windows.net/draft/draft-v0.13.0-linux-amd64.tar.gz )
+md5sums_i686=('3b1db30e50b2406eb8ec64f264cab30d')
+md5sums_x86_64=('e55715d83d9749517bfa8b404f01b5ca')
 
 package() {
   FOLDER="linux-386"

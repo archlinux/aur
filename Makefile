@@ -4,7 +4,7 @@
 
 PHOHY = clean release
 
-VERSION:=0.12.0
+VERSION:=0.13.0
 BASEURL:=https://azuredraft.blob.core.windows.net/draft
 URL_386:=${BASEURL}/draft-v${VERSION}-linux-386.tar.gz 
 URL_AMD64:=${BASEURL}/draft-v${VERSION}-linux-amd64.tar.gz 
@@ -42,7 +42,7 @@ pkgbuild: tmp/draft_amd64-${VERSION} tmp/draft_386-${VERSION} PKGBUILD.template
 
 release: pkgbuild
 	makepkg; \
-	sudo pacman -U draft-bin*; \
+	sudo pacman -U draft-bin-${VERSION}-*; \
 
 clean:
 	rm -rf PKGBUILD draft-* pkg src *.bak tmp
