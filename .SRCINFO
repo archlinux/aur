@@ -9,7 +9,6 @@ pkgbase = dexbot
 	depends = python>=3
 	depends = python-setuptools
 	depends = python-pip
-	depends = python-pyqt5
 	source = git+git://github.com/svdev/dexbot.git
 	md5sums = SKIP
 
