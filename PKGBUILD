@@ -19,7 +19,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/dexbot"
-    python3 setup.py build
+
+    PIP_CONFIG_FILE=/dev/null \
+        python3 -m pip install --isolated --root="$srcdir/$pkgname/dist" --ignore-installed --no-deps \
+            bitshares uptick>=0.1.4 click sqlalchemy appdirs
+
 }
 
 package() {
@@ -28,8 +32,9 @@ package() {
     mkdir -p "$pkgdir/usr/lib/python3.6/site-packages"
 
     PYTHONPATH="$pkgdir/usr/lib/python3.6/site-packages" \
-        python3 setup.py install --root="$pkgdir/" \
-        --optimize=1 --skip-build
+        python3 setup.py install --root="$pkgdir/"
+
+    cp -R $srcdir/$pkgname/dist/usr/lib/python3.6/site-packages/* "$pkgdir/usr/lib/python3.6/site-packages/"
 
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
