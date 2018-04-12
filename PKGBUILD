@@ -1,13 +1,13 @@
 # Maintainer: Michal Lisowski <lisu at riseup dot net>
 
 pkgname=lilyterm-git
-pkgver=0.9.9.4.141.g757083b
+pkgver=0.9.9.4.146.g1aa784b
 pkgrel=1
 pkgdesc="A light and easy to use libvte based X terminal emulator"
 arch=('i686' 'x86_64')
 url="http://lilyterm.luna.com.tw/index_en.html"
 license=('GPL3')
-depends=('vte')
+depends=('vte' 'gtk2')
 makedepends=('gettext' 'intltool' 'pkgconfig' 'git')
 provides=('lilyterm')
 conflicts=('lilyterm')
