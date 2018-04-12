@@ -5,12 +5,11 @@ pkgbase = libretro-tyrquake-git
 	url = http://disenchant.net/tyrquake/
 	arch = i686
 	arch = x86_64
+	groups = libretro
 	license = GPL2
 	makedepends = git
 	depends = sdl2
 	source = git+https://github.com/libretro/tyrquake.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/tyrquake_libretro.info
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libretro-tyrquake-git
