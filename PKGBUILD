@@ -2,7 +2,7 @@
 
 pkgname=mathcomp
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The entire mathematical components library for Coq."
 url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ build() {
 
 package(){
   cd $srcdir/math-comp-math-comp-*/$pkgname
-  make DSTROOT="${pkgdir}" 'COQLIB:=$(DSTROOT)/$(shell coqtop -where)/' install
+  echo 'COQMF_WINDRIVE=' > Makefile.coq.local
+  make DSTROOT="${pkgdir}" install
 }
 

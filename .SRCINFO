@@ -1,7 +1,7 @@
 pkgbase = mathcomp
 	pkgdesc = The entire mathematical components library for Coq.
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://math-comp.github.io/math-comp/
 	arch = i686
 	arch = x86_64
