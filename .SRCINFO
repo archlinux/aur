@@ -1,0 +1,16 @@
+pkgbase = trickle
+	pkgdesc = Lightweight userspace bandwidth shaper
+	pkgver = 1.07
+	pkgrel = 9
+	url = http://monkey.org/~marius/trickle
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libevent
+	source = http://monkey.org/~marius/trickle/trickle-1.07.tar.gz
+	source = fix-crasher.patch
+	md5sums = 860ebc4abbbd82957c20a28bd9390d7d
+	md5sums = a072091bce131e9f7229bff85ed5858c
+
+pkgname = trickle
+
