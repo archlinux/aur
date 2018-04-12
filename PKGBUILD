@@ -1,13 +1,14 @@
 # Maintainer: Pierre Lalet <pl@ivre.rocks>
 
 pkgname=ivre
-pkgver=0.9.8
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Network recon framework"
 url="https://ivre.rocks/"
 arch=('any')
 license=('GPL3')
-depends=('python' 'python-crypto' 'python-pymongo' 'python-future')
+depends=('python' 'python-crypto' 'python-pymongo' 'python-future'
+         'python-bottle')
 optdepends=('python-py2neo: flow analysis support'
             'python-sqlalchemy: PostgreSQL backend support'
             'python-psycopg2: PostgreSQL backend support'
@@ -30,10 +31,10 @@ optdepends=('python-py2neo: flow analysis support'
             'tesseract: Screenshots analysis')
 makedepends=('python-setuptools')
 backup=('etc/httpd/conf/extra/ivre.conf')
-source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz
-        'apache.example.conf')
-sha256sums=('d3eb6c48ea53111991883fdff5cb5170797a8cf1287fe1bcd29ef760b0c882af'
-            '3e372f51f2ad441baf8268ce29d35b3a1cb9ef4cb29e7864fab389759694f72e')
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
+sha256sums=('1e820dc1fddbf319e9a86c941eea4db8158afc08619198f05e062d1c59631319'
+            '9c7267b7b2bde354e03a0cf683b56c0ca2410296bdd7424a964fb2b4f14c7ee3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -41,8 +42,8 @@ build() {
 }
 
 package() {
+  install -Dm0644 "$srcdir/ivre.conf" "$pkgdir/etc/httpd/conf/extra/ivre.conf"
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/ivre/" doc/LICENSE*
-  install -Dm0644 "$srcdir"/apache.example.conf "$pkgdir/etc/httpd/conf/extra/ivre.conf"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
   python setup.py install --root="$pkgdir" --optimize=1
 }
