@@ -4,7 +4,7 @@ pkgname=libdvd-audio-git
 pkgver=v1.0.0.3.gc74bdfc
 pkgrel=1
 pkgdesc="A C library for extracting audio from DVD-Audio discs. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://libdvd-audio.sourceforge.net'
 license=('GPL')
 depends=('glibc')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('libdvd-audio')
 conflicts=('libdvd-audio')
 source=('git+https://github.com/tuffy/libdvd-audio.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libdvd-audio
