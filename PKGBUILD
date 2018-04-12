@@ -3,7 +3,7 @@
 
 pkgname=projectlibre
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
 replaces=('project-libre')
@@ -19,12 +19,12 @@ source=("http://sourceforge.mirrorservice.org/p/pr/projectlibre/ProjectLibre/${p
 md5sums=('25ffc7f110bbd83e50c19dca1f0f0e08'
          'cbeee50a6324b473c17899616f3effbd'
          'e93fab66e95915aaf9ef204d914b6e9f'
-         '0f6c0fb279ae47302ca220c93cd17d35'
+         '189fa02637ff696ab89a247fd77cd50f'
          '78bb62198c864aa6ac7a103c044f5b56')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"
-	patch -p1 < $srcdir/projectlibre.patch
+	patch < $srcdir/projectlibre.patch
 }
 
 package() {
