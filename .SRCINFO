@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.14.34
+	pkgver = 4.16.2
 	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
@@ -10,20 +10,13 @@ pkgbase = linux-bfq-mq
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.34.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.34.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.2.sign
 	source = kernel_gcc_patch-20180310.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180310.tar.gz
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20180404.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
-	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/4.16-bfq-sq-mq-git-20180410.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -31,29 +24,26 @@ pkgbase = linux-bfq-mq
 	source = linux.preset
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch
+	source = 0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
+	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = d5981abb1f9f73cc64843eefe1501166b6135ca41f73bb4c5dbe960f739edf6c
+	sha256sums = fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575
 	sha256sums = SKIP
 	sha256sums = b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815
-	sha256sums = 6b011992ce747477d5cb112ca69c002993980acc47d8a34a9190febd41024e0b
-	sha256sums = 3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79
+	sha256sums = de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94
-	sha256sums = 40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a
-	sha256sums = f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97
-	sha256sums = 2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b
-	sha256sums = cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6
-	sha256sums = 19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0
-	sha256sums = 6af9e4f8cb27a7c0f351b010dbf7b0edc24ff987789d5c4a0afa3b8e21b97e5e
+	sha256sums = f2a92c0b2d170e5684f8a8955fe3c75027a37fcb32efcafbf56195c5c582fd20
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 4532c63833f85cf459b3666beb369020c7158ff1970f4d3ef028c7758a0918b4
-	sha256sums = a3152233b6b2fc91eaf68b59ec5d0f8997871c74aa7440e8b840c186e5991381
+	sha256sums = b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04
+	sha256sums = 558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6
+	sha256sums = bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46
+	sha256sums = c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2
 
 pkgname = linux-bfq-mq
 	pkgdesc = The Linux-bfq-mq kernel and modules with the BFQ-MQ scheduler
@@ -64,19 +54,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.14.34
-	provides = linux=4.14.34
+	provides = linux-bfq-mq=4.16.2
+	provides = linux=4.16.2
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.34
-	provides = linux-bfq-mq-headers=4.14.34
-	provides = linux-headers=4.14.34
+	depends = linux-bfq-mq=4.16.2
+	provides = linux-bfq-mq-headers=4.16.2
+	provides = linux-headers=4.16.2
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.34
-	provides = linux-bfq-mq-docs=4.14.34
-	provides = linux-docs=4.14.34
+	depends = linux-bfq-mq=4.16.2
+	provides = linux-bfq-mq-docs=4.16.2
+	provides = linux-docs=4.16.2
 

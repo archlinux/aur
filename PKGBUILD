@@ -6,15 +6,8 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
+### Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
 _use_tentative_patches=
-
-### Use mailing-list patches; many thanks to Piotr "sir_lucjan" Gorski
-# ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-_use_ml1_patches=
-
-# Running with a 1000 HZ tick rate
-_1k_HZ_ticks=
 
 ### Enable fancontrol for DELL
 _dell_fancontrol=
@@ -66,7 +59,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.34
+pkgver=4.16.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -76,18 +69,14 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_mergepath="${_bfqpath}/merges/${pkgver}"
-#_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
-_mlpath_2="${_bfqpath}/mailing-list/block-bfq-disable-wbt"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
-_bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.16"
 _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180310'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
-_bfq_mq_ver='20180404'
-_bfq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
+_bfq_mq_ver='20180410'
+_bfq_mq_patch="4.16-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -97,17 +86,8 @@ source=(# mainline kernel patches
         # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
-        #"${_bfqpath}/${_bfq_mq_patch}"
         "${_lucjanpath}/${_bfq_mq_patch}"
-        "${_lucjanpath}/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch"
-        # tentative patches
-        "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
-        "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
-        "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
-        "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
-        "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
+        "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -119,35 +99,33 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
+        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch')
 
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd5981abb1f9f73cc64843eefe1501166b6135ca41f73bb4c5dbe960f739edf6c'
+            'fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575'
             'SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
-            '6b011992ce747477d5cb112ca69c002993980acc47d8a34a9190febd41024e0b'
-            '3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79'
+            'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
-            '40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a'
-            'f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97'
-            '2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b'
-            'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
-            '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
-            '6af9e4f8cb27a7c0f351b010dbf7b0edc24ff987789d5c4a0afa3b8e21b97e5e'
+            'f2a92c0b2d170e5684f8a8955fe3c75027a37fcb32efcafbf56195c5c582fd20'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4532c63833f85cf459b3666beb369020c7158ff1970f4d3ef028c7758a0918b4'
-            'a3152233b6b2fc91eaf68b59ec5d0f8997871c74aa7440e8b840c186e5991381')
+            'b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04'
+            '558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6'
+            'bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46'
+            'c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-bfq-mq} 
 
 prepare() {
   cd ${_srcname}
@@ -159,38 +137,34 @@ prepare() {
   ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  
-  ### Fix https://bugs.archlinux.org/task/56711
+    
+    ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+    
+    ### NVIDIA driver compat
+        msg "NVIDIA driver compat"
+        patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+    
+    ### Fix https://bugs.archlinux.org/task/58153
+        msg "Fix #58153"
+        patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
   
-  ### Patch source with BFQ-SQ-MQ
-        msg "Fix patching with 20180109"
-        patch -Np1 -i ../0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
+   ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = 14|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
-            -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_mq_patch}
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_mq_patch}
 
-  ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
-  if [ -n "$_use_tentative_patches" ]; then
-    msg "Apply tentative patches"
-    for p in ../T000*.patch; do patch -Np1 -i "$p"; done
-  fi
-
-  ### Patches from mailing-list
-  # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-  if [ -n "$_use_ml1_patches" ]; then
-    msg "Apply mailing-list patches 1"
-    #for p in ../ML1*.patch; do
-    for p in ../*-blk-mq*.patch*; do
-    msg " $p"
-    patch -Np1 -i "$p"; done
-  fi
+   ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
+        if [ -n "$_use_tentative_patches" ]; then
+        msg "Apply tentative patches"
+        for p in "${srcdir}"/0100*.patch*; do 
+        msg " $p"
+        patch -Np1 -i "$p"; done
+        fi
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -202,34 +176,29 @@ prepare() {
   # Clean tree and copy ARCH config over
   make mrproper
   
-  cp -Tf ../config .config
-
-  ### Optionally set tickrate to 1000
-  if [ -n "$_1k_HZ_ticks" ]; then
-    msg "Setting tick rate to 1k..."
-    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-  fi
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   ### Enable fancontrol
   if [ -n "$_dell_fancontrol" ]; then
     msg "Enabling I8K for Dell..."
-    sed -i -e s'/CONFIG_I8K=m/CONFIG_I8K=y/' ./.config
-    sed -i -e s'/CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config
+    sed -i -e s'/^CONFIG_I8K=m/CONFIG_I8K=y/' \
+        -i -e s'/^CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config    
   fi
 
   ### Set performance governor
   if [ -n "$_per_gov" ]; then
     msg "Setting performance governor.."
-    sed -i -e s'/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
-    sed -i -e s'/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+    sed -i -e s'/^CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' \
+        -i -e s'/^# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
     msg "Disabling uneeded governors..."
-    sed -i -e s'/CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' ./.config
-    sed -i -e s'/CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' ./.config
-    sed -i -e s'/CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' ./.config
-    sed -i -e s'/CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
-  fi
+    sed -i -e s'/^CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' \
+        -i -e s'/^CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' \
+        -i -e s'/^CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' \
+        -i -e s'/^CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
+   fi
 
   ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
@@ -264,22 +233,22 @@ prepare() {
 
   ### Disable Deadline I/O scheduler
   if [ -n "$_deadline_disable" ]; then
-    msg "Disabling Deadline I/O scheduler..."
-    sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
-    sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
+     msg "Disabling Deadline I/O scheduler..."
+     sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
+     sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
   fi
 
   ### Disable CFQ I/O scheduler
   if [ -n "$_CFQ_disable" ]; then
     msg "Disabling CFQ I/O scheduler..."
-    sed -i -e s'/CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' ./.config
-    sed -i -e s'/CONFIG_CFQ_GROUP_IOSCHED=y/# CONFIG_CFQ_GROUP_IOSCHED is not set/' ./.config
+    sed -i -e s'/^CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' \
+        -i -e s'/^CONFIG_CFQ_GROUP_IOSCHED=y/# CONFIG_CFQ_GROUP_IOSCHED is not set/' ./.config	
   fi
 
   ### Disable Kyber I/O scheduler
   if [ -n "$_kyber_disable" ]; then
-    msg "Disabling Kyber I/O scheduler..."
-    sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
+     msg "Disabling Kyber I/O scheduler..."
+     sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
   fi
   
   ### Enable MQ scheduling
@@ -289,13 +258,10 @@ prepare() {
         -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
   fi
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  # sett extraversion to pkgrel and empty localversion
+    sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+        -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+        -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -335,7 +301,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -349,16 +315,16 @@ _package() {
   cd ${_srcname}
 
     # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _kernver="$(make kernelrelease)"
     _basekernel=${_kernver%%-*}
     _basekernel=${_basekernel%.*}
 
     mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
     cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
     # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    local _extramodules="extramodules-${_basekernel}${_kernelname}"
     ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
     # add real version for building modules and running depmod from hook
@@ -421,9 +387,6 @@ _package-headers() {
     install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
     install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/9912
-    install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
-
     # http://bugs.archlinux.org/task/13146
     install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
@@ -448,7 +411,7 @@ _package-headers() {
         rm -r "${_arch}"
     done
 
-    # remove files already in linux-bfq-mq-docs package
+    # remove files already in linux-bfq-sq-mq-haswell-docs package
     rm -r "${_builddir}/Documentation"
     
     # remove now broken symlinks
