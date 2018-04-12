@@ -50,6 +50,7 @@ package() {
 	cd $_target
 	_srcpath=`realpath "${srcdir}/out/arsdk-native/staging/usr"`
 	sed -i "s|$_srcpath|/opt/$pkgname|g" bin/curl-config
+	sed -i "s|`realpath "${srcdir}/out/arsdk-native/staging/"`|/opt/$pkgname|g" bin/curl-config
 	for f in lib/pkgconfig/*; do
 		sed -i "s|$_srcpath|/opt/$pkgname|g" "$f"
 	done
