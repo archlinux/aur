@@ -1,0 +1,24 @@
+pkgbase = libretro-parallel-n64-ex-git
+	pkgdesc = Nintendo 64 emulator core using Vulkan (originally based on Mupen64Plus)
+	pkgver = r4930.38e073fa
+	pkgrel = 1
+	url = https://github.com/libretro/parallel-n64
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = custom
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = libglvnd
+	depends = vulkan-icd-loader
+	depends = clang
+	depends = libretro-core-info
+	provides = libretro-parallel-n64
+	conflicts = libretro-parallel-n64
+	source = parallel-n64::git://github.com/libretro/parallel-n64.git
+	md5sums = SKIP
+
+pkgname = libretro-parallel-n64-ex-git
+
