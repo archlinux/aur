@@ -6,6 +6,7 @@ pkgbase = mingw-w64-p11-kit
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-configure
+	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-libtasn1
 	depends = mingw-w64-libffi

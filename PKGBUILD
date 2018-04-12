@@ -7,7 +7,7 @@ arch=(any)
 url="https://p11-glue.freedesktop.org"
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-libtasn1' 'mingw-w64-libffi')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-configure' 'git')
 options=('staticlibs' '!buildflags' '!strip')
 _commit=ba6ebb05fc0c8010d8510984ce3c5f908edf13b6  # after MinGW fix
 source=("git+https://github.com/p11-glue/p11-kit#commit=$_commit"
