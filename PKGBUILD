@@ -2,8 +2,8 @@
 
 pkgname=farbfeld
 pkgver=4
-pkgrel=1
-pkgdesc="conversion tools for the suckless image format"
+pkgrel=2
+pkgdesc="lossless image format which is easy to parse, pipe and compress"
 url="http://tools.suckless.org/farbfeld/"
 arch=('i686' 'x86_64')
 license=('ISC')
@@ -11,9 +11,9 @@ depends=('libjpeg-turbo' 'libpng')
 makedepends=()
 provides=()
 conflicts=(${pkgname}-git)
-source=(http://dl.suckless.org/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-# Sums provided upstream: http://dl.suckless.org/farbfeld/sha1sums.txt
-sha1sums=('7ba0ea0a92e9c378a777cb2152efc8ef6def86c2')
+source=("https://dl.suckless.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+# Sums provided upstream: https://dl.suckless.org/farbfeld/sha256sums.txt
+sha256sums=('c7df5921edd121ca5d5b1cf6fb01e430aff9b31242262e4f690d3af72ccbe72a')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
