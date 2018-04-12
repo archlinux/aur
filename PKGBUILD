@@ -7,7 +7,7 @@ pkgver=4.0.66
 _package_src_dir=IndigoRenderer_x64_v${pkgver}
 _pkgver_blendigo=4.0.10
 _blender=$(blender -v | head -n1 | cut -f2 -d ' ')
-pkgrel=2
+pkgrel=3
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
 url="http://www.indigorenderer.com/"
@@ -55,7 +55,7 @@ package() {
 
   # install blendigo
   install -d -m755 "$pkgdir/usr/share/blender/${_blender}/scripts/addons/"
-  cp -a indigo "$pkgdir/usr/share/blender/${_blender}/scripts/addons/"
+  cp -a indigo_exporter "$pkgdir/usr/share/blender/${_blender}/scripts/addons/"
   
   # create system wide writable directory for materials cache
   install -d -m777 "${pkgdir}/opt/${pkgname}/materials"
