@@ -1,13 +1,15 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
-# Special thanks to jonathon https://aur.archlinux.org/account/jonathon
 
 # You'll need to download the package archive from
 # https://www.blackmagicdesign.com/products/davinciresolve
 
+# Hardware support is limited. Nvidia cards should work fine.
+# If you're running a hybrid setup, try with primusrun/optirun.
+
 pkgname=davinci-resolve-beta
 _pkgname=resolve
-pkgver=14.0b9
+pkgver=15.0b1
 pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -17,69 +19,19 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
          'qt5-webengine' 'qt5-websockets')
 options=('!strip')
-conflicts=('davinci-resolve')
-
-# Not a good idea, but let's leave it here
-#while [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]
-#do
-#  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-#    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
-#  else
-#    _dialog="$(command -v zenity kdialog Xdialog | awk -F/ '{print $NF}' | xargs)"
-#    case $_dialog in
-#    zenity)
-#        pkgzip=$(zenity --info --text="Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
-#                 zenity  --file-selection --title="Please select the package archive DaVinci_Resolve_${pkgver}_Linux.zip" --filename=$HOME/)
-#        if [ "$?" -eq 1 ]; then
-#          zenity --info --text="Installation canceled"
-#          exit 0
-#        else
-#          ln -s ${pkgzip} ${pkgdir}
-#          break
-#        fi
-#        ;;
-#    kdialog)
-#        pkgzip=$(kdialog --msgbox "Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
-#                 kdialog --getopenfilename $HOME/ '*.zip'
-#        if [ "$?" -eq 1 ]; then
-#          kdialog --msgbox "Installation canceled"
-#          exit 0
-#        else
-#          ln -s ${pkgzip} ${pkgdir}
-#          break
-#        fi
-#        ;;
-#    xdialog)
-#        pkgzip=$(Xdialog --msgbox "Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
-#                 Xdialog --title "Please select the package archive DaVinci_Resolve_${pkgver}_Linux.zip" --fselect $HOME 28 48 2>&1)
-#        if [ "$?" -eq 1 ]; then
-#          Xdialog --msgbox "Installation canceled"
-#          exit 0
-#        else
-#          ln -s ${pkgzip} ${pkgdir}
-#          break
-#        fi
-#        ;;
-#    *)
-#        msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
-#        sleep 3
-#        break
-#        ;;
-#    esac
-#  fi
-#done
+conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 
 if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
   if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+    ln -sfn $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
-    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir}"
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir} or in your Downloads directory."
     sleep 3
   fi
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('f356adc7df5869cd6c559665c2b5d379596e48d7c2118dc2db2e738a678e88ae')
+sha256sums=('e323fd79a8f9450a5c1c0422a802c19fba100a5d0f7f1f4f253c9b4a2006060f')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
