@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=astc-encoder-git
-pkgver=r8.a1b3a96
-pkgrel=2
+pkgver=r43.a47b80f
+pkgrel=1
 pkgdesc="An ASTC (Adaptive Scalable Texture Compression) encoder and decoder"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ARM-software/astc-encoder"
