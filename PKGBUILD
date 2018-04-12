@@ -6,12 +6,13 @@
 _pkgname=igmpproxy
 pkgname=${_pkgname}-git
 pkgver=r112.d755b5b
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple multicast router for Linux only using the IGMP protocol"
 arch=(x86_64)
 url="https://github.com/pali/igmpproxy"
 license=('GPL')
 depends=(glibc)
+makedepends=(git)
 provides=(igmpproxy)
 conflicts=(igmpproxy)
 backup=("etc/igmpproxy.conf")
