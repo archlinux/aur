@@ -6,8 +6,8 @@ pkgname=('lib32-wxbase-light'
          'lib32-wxgtk3-light'
          'lib32-wxcommon-light'
          )
-pkgver=3.0.3
-pkgrel=3
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -21,6 +21,7 @@ makedepends=('lib32-gcc-libs'
              'lib32-sdl'
              'lib32-expat'
              'lib32-zlib'
+             'lib32-libnotify'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'lib32-make-abicheck-non-fatal.patch'
@@ -44,13 +45,11 @@ prepare() {
 }
 
 build() {
-
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export CFLAGS="-I/usr/include/libtiff32 $CFLAGS"
-  export CXXFLAGS="-I/usr/include/libtiff32 $CXXFLAGS"
 
+  msg2 "Build WxBASE"
   cd "${srcdir}/build-base"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -62,6 +61,7 @@ build() {
   make
   make -C ../wxwidgets/locale allmo
 
+  msg2 "Build WxGTK2"
   cd "${srcdir}/build-gtk2"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -70,13 +70,14 @@ build() {
       --with-lib{jpeg,png,tiff,xpm}=sys \
       --with-regex=builtin \
       --with-{opengl,sdl} \
-      --enable-{unicode,graphics_ctx} \
-      --without-{libnotify,gnome{vfs,print}} \
+      --enable-graphics_ctx \
+      --without-gnomevfs \
       --disable-{precomp-headers,mediactrl,webview}
 
   make
   make -C ../wxwidgets/locale allmo
 
+  msg2 "Build WxGTK3"
   cd "${srcdir}/build-gtk3"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -85,8 +86,8 @@ build() {
       --with-lib{jpeg,png,tiff,xpm}=sys \
       --with-regex=builtin \
       --with-{opengl,sdl} \
-      --enable-{unicode,graphics_ctx} \
-      --without-{libnotify,gnome{vfs,print}} \
+      --enable-graphics_ctx \
+      --without-gnomevfs \
       --disable-{precomp-headers,mediactrl,webview}
 
   make
@@ -123,6 +124,7 @@ package_lib32-wxgtk2-light() {
            'lib32-gtk2'
            'lib32-libsm'
            'lib32-sdl2'
+           'lib32-libnotify'
            )
   provides=('lib32-wxgtk'
             'lib32-wxgtk2'
@@ -151,6 +153,7 @@ package_lib32-wxgtk3-light() {
            'lib32-gtk3'
            'lib32-libsm'
            'lib32-sdl2'
+           'lib32-libnotify'
            )
   provides=('lib32-wxgtk3')
   conflicts=('lib32-wxgtk3')
