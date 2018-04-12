@@ -29,7 +29,6 @@ package() {
     cd "$srcdir/dexbot"
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
     cp -R $srcdir/$pkgname/dist/dexbot*.egg "$pkgdir/usr/lib/python3.6/site-packages/"
-    rm -rf $pkgdir/usr/lib/python3.6/site-packages/$pkgname
 
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
