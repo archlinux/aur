@@ -1,0 +1,21 @@
+https://github.com/mariusae/trickle/issues/16
+
+--- trickle.orig/Makefile.am	2017-10-25 01:20:13.943420040 +0200
++++ trickle/Makefile.am	2017-10-25 01:20:30.810419348 +0200
+@@ -31,10 +31,14 @@
+ AM_CFLAGS = -Wall -Icompat @EVENTINC@
+ 
+ overloaddir = $(libdir)
+-overload_DATA = libtrickle.so
+ 
+-libtrickle.so: trickle-overload.c atomicio.c
+-$(overload_DATA):
++libtrickle.so: trickle-overload.lo atomicio.lo
++	$(LIBTOOL) --mode=link $(CC) $(CFLAGS) -o libtmp$@.la
++		-rpath $(libdir)/trickle trickle-overload.lo atomicio.lo $(LIBS)
++		$(LDFLAGS) -module -avoid-version -nostdlib -ldl
++	@rm -f libtmp$@.la tmp$@.so* $@
++	@cp .libs/libtmp$@.so $@
++	@rm -f .libs/libtmp$@.*
+ 
+ CLEANFILES = *.so

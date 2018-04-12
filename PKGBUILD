@@ -2,42 +2,50 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
-pkgname=trickle
-pkgver=1.07
-pkgrel=10
+pkgname=trickle-git
+pkgver=latest
+pkgrel=1
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
 depends=('libevent')
-_commit=a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416 # "import of trickle 1.07"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mariusae/trickle/archive/${_commit}.tar.gz"
-        "fix-crasher.patch")
-sha256sums=('b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37'
-            '495aeb95039dcdeb3bfde46c40b3391fe2416ec51678a1ded9bbeced6f6d1349')
+provides=("${pkgname/-git/}")
+conflicts=("${pkgname/-git/}")
+source=("git+https://github.com/mariusae/trickle.git"
+        'remove-libtrickle.patch')
+sha256sums=('SKIP'
+            '7e148c9526dbd6667c94ce3ee4f1a1fd550e61ab185735939c4d5312cf13b7a1')
+
+pkgver() {
+	cd "${srcdir}/${pkgname/-git/}"
+	# https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${_commit}"
-  
-  # FS#27549
-  sed -i 's|^_select(int|select(int|' trickle-overload.c
+	cd "${srcdir}/${pkgname/-git/}"
 
-  # FS#35872
-  patch -Np1 -i "${srcdir}/fix-crasher.patch"
+	# https://github.com/mariusae/trickle/issues/16
+	patch -Np1 -i "${srcdir}/remove-libtrickle.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${_commit}"
-  
-  ./configure --prefix=/usr \
-              --mandir=/usr/share/man
-  sed -i "s|.*in_addr_t.*||g" config.h
-  make -j1
+	cd "${srcdir}/${pkgname/-git/}"
+
+	autoreconf -if
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man
+	sed -i "s|.*in_addr_t.*||g" config.h
+	make
 }
 
-package(){
-  cd "${srcdir}/${pkgname}-${_commit}"
+package() {
+	cd "${srcdir}/${pkgname/-git/}"
 
-  make DESTDIR="${pkgdir}" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	make DESTDIR="${pkgdir}" install
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
