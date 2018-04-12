@@ -1,7 +1,7 @@
 pkgbase = open-cobol
 	pkgdesc = COBOL compiler
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opencobol.org/
 	arch = i686
 	arch = x86_64

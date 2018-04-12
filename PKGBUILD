@@ -3,7 +3,7 @@
 pkgbase=open-cobol
 pkgname=('open-cobol' 'libcob')
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="COBOL compiler"
 url="http://www.opencobol.org/"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ sha256sums=('6ae7c02eb8622c4ad55097990e9b1688a151254407943f246631d02655aec320')
 
 build() {
   cd "$pkgbase-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --infodir=/usr/share/info
   make
 }
 
@@ -24,7 +24,6 @@ package_open-cobol() {
   cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
   rm -r "$pkgdir/usr/include" "$pkgdir/usr/lib"
-  mv "$pkgdir/usr/info" "$pkgdir/usr/share/info"
   install -Dm644 COPYING.LIB "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
@@ -35,7 +34,7 @@ package_libcob() {
 
   cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share" "$pkgdir/usr/info"
+  rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
