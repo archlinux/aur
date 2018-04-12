@@ -1,6 +1,6 @@
 pkgbase = bunq-desktop-src
 	pkgdesc = A desktop implementation for the bunq API
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/BunqCommunity/BunqDesktop
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bunq-desktop-src
 	provides = bunq-desktop
 	conflicts = bunq-desktop-git
 	conflicts = bunq-desktop-bin
-	source = https://github.com/BunqCommunity/BunqDesktop/archive/0.8.2.tar.gz
+	source = https://github.com/BunqCommunity/BunqDesktop/archive/0.8.4.tar.gz
 	source = bunq-desktop-src.desktop
-	sha256sums = a454aee04f3397b551000362ef2883ad4584a9eb37f2b9d5f311487aebf74ecc
+	sha256sums = e6299d5fdad1821f81838f2a515c393dfb088f3470ee26cb5437791fedd7bfb1
 	sha256sums = 1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa
 
 pkgname = bunq-desktop-src
