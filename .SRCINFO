@@ -1,34 +1,32 @@
 pkgbase = k2pdfopt
 	pkgdesc = A tool that optimizes PDF files for viewing on mobile readers
-	pkgver = 2.41
-	pkgrel = 2
+	pkgver = 2.42
+	pkgrel = 1
 	url = http://www.willus.com/k2pdfopt/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = mupdf>=1.8
+	depends = mupdf>=1.10
 	depends = djvulibre>=3.5.25.3
 	depends = netpbm>=10.61.02
-	depends = leptonica>=1.72
-	source = http://www.willus.com/k2pdfopt/src/k2pdfopt_v2.41_src.zip
+	depends = leptonica>=1.74.1
+	source = http://www.willus.com/k2pdfopt/src/k2pdfopt_v2.42_src.zip
 	source = http://www.mupdf.com/downloads/archive/mupdf-1.10a-source.tar.gz
 	source = https://github.com/tesseract-ocr/tesseract/archive/3.05.00.tar.gz
 	source = http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.50.tar.gz
 	source = http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz
+	source = leptonica-1.74.1.tar.gz::https://github.com/DanBloomberg/leptonica/archive/1.74.1.tar.gz
 	source = k2pdfopt.patch
 	source = tesseract.patch
-	source = mupdf.patch
-	source = libraries_mod.zip
-	md5sums = 549644b44b560b26ae1e634fcb2bbe59
+	md5sums = e3a62a25d9ab310f8b7ab218df8dd8df
 	md5sums = f80fbba2524d1d52f6ed09237d382411
 	md5sums = 478ba26e8e7ea8f6f466d4dfc2332d34
 	md5sums = 553ea40c2b3a1a0b03a30675d0e0aba1
 	md5sums = f6419fcc233df84f9a81eb36633c6db6
-	md5sums = b9fa8483bbb76f2a58e1145c252eef9a
+	md5sums = b3de9ae35976fd4fc3f6dae5a4368bca
+	md5sums = 1c34ef8378dc52f29d9d97714c899e90
 	md5sums = 3db9d9cd3b7745af036c968dfe0ba376
-	md5sums = eb18b03abd7376a3de75824c31bd7f1a
-	md5sums = db04c31970a3f35492253f0f0e339a2f
 
 pkgname = k2pdfopt
 
