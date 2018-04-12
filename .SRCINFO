@@ -1,7 +1,7 @@
 pkgbase = bunsen-themes-git
 	pkgdesc = BunsenLabs GTK/Openbox/Lightdm Themes
 	pkgver = r62.5a35074
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BunsenLabs/bunsen-themes
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = bunsen-themes-git
 	optdepends = gtk3: required for the GTK3 themes
 	provides = bunsen-themes
 	conflicts = bunsen-themes
-	source = bunsen-themes::git+https://github.com/BunsenLabs/bunsen-themes.git#branch=master
+	source = git+https://github.com/BunsenLabs/bunsen-themes.git
 	md5sums = SKIP
 
 pkgname = bunsen-themes-git

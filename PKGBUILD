@@ -2,7 +2,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-themes-git
 pkgver=r62.5a35074
-pkgrel=2
+pkgrel=3
 pkgdesc="BunsenLabs GTK/Openbox/Lightdm Themes"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-themes"
@@ -12,7 +12,7 @@ makedepends=('git')
 optdepends=('lib32-gtk-engine-murrine: required for multilib (GTK2)' 'gtk3: required for the GTK3 themes')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('bunsen-themes::git+https://github.com/BunsenLabs/bunsen-themes.git#branch=master')
+source=('git+https://github.com/BunsenLabs/bunsen-themes.git')
 md5sums=('SKIP')
 
 pkgver() {
