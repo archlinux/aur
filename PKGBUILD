@@ -2,8 +2,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.5.1
-pkgrel=2
+pkgver=5.5.5
+pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -21,18 +21,15 @@ makedepends=('qt5-tools'
              )
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
-sha256sums=('640f5af3177621316f374a18cd90fc56037fa45231903cd9c05441d9c93856fd')
+source=("git+https://github.com/darealshinji/mkv-extractor-qt5#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
+  cd mkv-extractor-qt5
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -i build.sh
-  sed -e '/^Encoding/d' \
-      -e 's|video/webm|video/webm;|g' \
-      -e 's|audio/x-matroska;audio/x-matroska|audio/x-matroska|g' \
-      -e 's|/usr/share/icons/hicolor/scalable/apps/||g' \
-      -e 's|mkv-extractor-qt5|mkv-extractor-qt|g' \
+  sed 's|mkv-extractor-qt5|mkv-extractor-qt|g' \
       -i mkv-extractor-qt5.desktop
 
   export IFS=$'\n'
@@ -43,10 +40,11 @@ prepare() {
 }
 
 build() {
-  make
+  make -C mkv-extractor-qt5
 }
 
 package() {
+  cd mkv-extractor-qt5
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt"
 
@@ -62,10 +60,10 @@ package() {
 
   install -Dm644 mkv-extractor-qt5.desktop "${pkgdir}/usr/share/applications/mkv-extractor-qt.desktop"
 
-  install -Dm644 icons/scalable/apps/mkv-extractor-qt5.svg "${pkgdir}/usr/share/pixmaps/mkv-extractor-qt.svg"
+  install -Dm644 mkv-extractor-qt5.svg "${pkgdir}/usr/share/pixmaps/mkv-extractor-qt.svg"
 
   install -Dm644 man/mkv-extractor-qt5.1 "${pkgdir}/usr/share/man/man1/mkv-extractor-qt.1"
   install -Dm644 man/mkv-extractor-qt5.fr.1 "${pkgdir}/usr/share/man/fr/man1/mkv-extractor-qt.1"
-  
+
   for i in img/*; do install -Dm644 ${i} "${pkgdir}/usr/share/${pkgname}/${i}"; done
 }
