@@ -5,8 +5,8 @@ pkgrel=1
 pkgdesc="Statistical Tests for Detecting Gene Conversion"
 arch=("i686" "x86_64")
 url="https://www.math.wustl.edu/~sawyer/geneconv"
-source=("$pkgname-$pkgver.tar.gz::$url/unix.source.tar.gz"
-        "$pkgname-examples-$pkgver.tar.gz::$url/unix.examples.tar.gz"
+source=("$url/unix.source.tar.gz"
+        "$url/unix.examples.tar.gz"
 		"$url/gconvdoc.pdf"
 		"disable-logging.patch")
 sha256sums=("9423bad39fc729ac8150d0630c82ca3452d30ba0f5da862a76a7358c06d0831c"
