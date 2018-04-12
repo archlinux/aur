@@ -1,7 +1,7 @@
 # Maintainer: svdev <sergio at svcdev dot com>
 
 pkgname=dexbot
-pkgver=0.1.12.r1.gc3f8899
+pkgver=0.1.12.r2.g871137e
 pkgrel=1
 pkgdesc="Trading bot for the DEX (BitShares)"
 arch=(any)
@@ -19,11 +19,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/dexbot"
-
-    PIP_CONFIG_FILE=/dev/null \
-        python3 -m pip install --isolated --root="$srcdir/$pkgname/dist" --ignore-installed --no-deps \
-            click-datetime
-
     python3 setup.py build
 }
 
