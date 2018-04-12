@@ -3,9 +3,9 @@
 
 pkgname=dfhack-twbt-bin
 _pkgname=dfhack
-pkgver=0.44.07
-_pkgver=$pkgver-alpha1
-_twbtver=6.39
+pkgver=0.44.09
+_pkgver=$pkgver-r1
+_twbtver=6.41
 pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it including Text Will Be Text plugin"
 arch=('x86_64')
@@ -19,14 +19,18 @@ provides=(dfhack)
 source=(
     dfhack.sh
     dfhack-run.sh
+    dfhack.init
+    init.txt
     https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-4.8.tar.bz2
     https://github.com/mifki/df-twbt/releases/download/v$_twbtver/twbt-$_twbtver-linux.zip
 )
 
-md5sums=('af6d938767d1f09608df67dc4c0fd1a1'
+md5sums=('e630ae2fc93c6c7b55552336da2b6c07'
          '3853c6f890d3541f710f2c4833a9e696'
-         '687e97c2884ff9f0a8a29729cda8d098'
-         '0e58fb17a978595422803f723caefddb')
+         '6730da5fec400ece9102552e77996fcb'
+         '0eec88d45b6f25ee99deefdaea983d3b'
+         '8665f5fef2d22bfdf1530ebd3ed29aef'
+         '83ea0f9c4add22ee6bc61edd0da60ce7')
 
 prepare() {
     sed -e 's|setarch i386 -R ||' \
@@ -36,8 +40,9 @@ prepare() {
 package() {
     install -d $pkgdir/opt/dwarffortress
 
-    cp -r $srcdir/{hack,dfhack,dfhack-run,dfhack-config,dfhack.init-example,stonesense} $pkgdir/opt/dwarffortress
+    cp -r $srcdir/{hack,dfhack,dfhack-run,dfhack-config,dfhack.init-example,stonesense,dfhack.init} $pkgdir/opt/dwarffortress
 
+    install -Dm755 $srcdir/init.txt      $pkgdir/opt/dwarffortress/data/init/init-twbt.txt
     install -Dm755 $srcdir/dfhack.sh     $pkgdir/usr/bin/dfhack
     install -Dm755 $srcdir/dfhack-run.sh $pkgdir/usr/bin/dfhack-run
     

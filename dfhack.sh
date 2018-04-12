@@ -20,12 +20,13 @@ if [[ ! -d ~/.dwarffortress/hack ]] ; then
   ln -s /opt/dwarffortress/dfhack              ~/.dwarffortress/dfhack
   ln -s /opt/dwarffortress/dfhack-run          ~/.dwarffortress/dfhack-run
   ln -s /opt/dwarffortress/dfhack.init-example ~/.dwarffortress/dfhack.init-example
+  cp -r /opt/dwarffortress/dfhack.init         ~/.dwarffortress/dfhack.init
   cp -r /opt/dwarffortress/dfhack-config       ~/.dwarffortress/dfhack-config
 
   cp /opt/dwarffortress/data/art/shadows.png    ~/.dwarffortress/data/art
   cp /opt/dwarffortress/data/init/overrides.txt ~/.dwarffortress/data/init
 
-  cp ~/.dwarffortress/dfhack.init{-example,}
+  mv ~/.dwarffortress/data/init/init-twbt.txt ~/.dwarffortress/data/init/init.txt
   
 fi
 
