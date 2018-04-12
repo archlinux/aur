@@ -1,16 +1,16 @@
 _npmname=hotel
-_npmver=0.7.6
+_npmver=0.8.5
 pkgname=nodejs-hotel
-pkgver=0.7.6
+pkgver=0.8.5
 pkgrel=1
-pkgdesc="local .dev domains for everyone and more."
+pkgdesc="A simple process manager for developers. Start apps from your browser and access them using local domains."
 arch=(any)
 url="https://github.com/typicode/hotel"
 license=("MIT")
 depends=("nodejs")
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('82eaed706504ef5592d9f1b3294ea55bcbe4b12d')
+sha1sums=('74698d4a08f66c85b37c743599b251b8ac161c45')
 
 package() {
   cd $srcdir
