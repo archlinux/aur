@@ -10,8 +10,8 @@ arch=(any)
 url="http://github.com/defunkt/pystache"
 license=('MIT')
 depends=('python2' 'python2-setuptools')
-provides=('python2-pystache')
-conflicts=('python2-pystache')
+provides=('python-pystache')
+conflicts=('python-pystache')
 source=( "https://pypi.python.org/packages/source/${_distname:0:1}/$_distname/$_distname-$pkgver.tar.gz")
 md5sums=('485885e67a0f6411d5252e69b20a35ca')
 
