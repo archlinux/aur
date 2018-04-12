@@ -1,6 +1,6 @@
 pkgbase = blis-git
 	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
-	pkgver = 0.3.0.38.g3c91c7ae
+	pkgver = 0.3.1.13.g9f56df95
 	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = blis-git
 	depends = glibc
 	options = !buildflags
 	options = !emptydirs
-	source = git+https://github.com/flame/blis.git#commit=3c91c7aebafb446a2582267beb3b22c8bb475b3b
+	source = git+https://github.com/flame/blis.git
 	source = fpic.patch
 	md5sums = SKIP
 	md5sums = e6e4efeb173915d038d62cb76f58c4bb

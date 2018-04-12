@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.3.0.38.g3c91c7ae
+pkgver=0.3.1.13.g9f56df95
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('python2')
 url='https://github.com/flame/blis'
 options=('!buildflags' '!emptydirs')
-source=("git+https://github.com/flame/blis.git#commit=3c91c7aebafb446a2582267beb3b22c8bb475b3b" fpic.patch)
+source=("git+https://github.com/flame/blis.git" fpic.patch)
 md5sums=('SKIP'
          'e6e4efeb173915d038d62cb76f58c4bb')
 
