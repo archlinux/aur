@@ -1,12 +1,15 @@
 pkgbase = c-icap
 	pkgdesc = Implementation of an ICAP server
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://c-icap.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	depends = brotli
+	depends = libldap
+	depends = pcre
 	backup = etc/c-icap/c-icap.conf
 	backup = etc/c-icap/c-icap-local.conf
 	backup = etc/c-icap/c-icap.magic

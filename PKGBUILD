@@ -1,8 +1,9 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of an ICAP server'
+depends=('brotli' 'libldap' 'pcre')
 arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
 license=('GPL' 'LGPL')
