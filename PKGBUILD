@@ -7,12 +7,11 @@ pkgdesc="DOSBox in both 32 and 64bit (with No-splash, 3DFX Glide, Fluidsynth, Op
 arch=(x86_64)
 url=http://dosbox.sourceforge.net/
 license=('CUSTOM' 'GPL2')
-depends=(alsa-lib libgl libpng mesa sdl_net sdl_sound munt lib32-munt lib32-fluidsynth fluidsynth)
+depends=(alsa-lib libgl libpng mesa sdl_net sdl_sound munt lib32-fluidsynth fluidsynth)
+optdepends=(lib32-munt)
 makedepends=(subversion)
 provides=(dosbox)
 conflicts=(dosbox dosbox-git dosbox-svn)
-#source=(dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk 'gl.h' 'glide.patch' 'shaders.patch' 'munt.patch' 'synth.patch' 'quiet.patch' 'imgmake.patch' 'joystick.patch' 'opl.patch' 'voodoo.patch')
-#sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 source=(dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk 'patches.tgz')
 md5sums=('SKIP' '6d48245333c50320ce845ec8ffb952e2')
 
