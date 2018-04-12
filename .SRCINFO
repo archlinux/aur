@@ -1,7 +1,7 @@
 pkgbase = clearlooks-phenix-darkpurpy-gtk-theme
 	pkgdesc = Default GTK3 theme for Devuan Linux
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.devuan.org/devuan-packages/clearlooks-phenix-darkpurpy-theme/tree/7.0.1
 	arch = any
 	license = GPL3

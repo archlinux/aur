@@ -7,7 +7,7 @@ _pkgdir="clearlooks-phenix-darkpurpy-theme-7.0.1-1daca69e3ca1c50898dda81ba70ab09
 
 pkgname=clearlooks-phenix-darkpurpy-gtk-theme
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Default GTK3 theme for Devuan Linux"
 arch=('any')
 url="https://git.devuan.org/devuan-packages/clearlooks-phenix-darkpurpy-theme/tree/7.0.1"
@@ -26,7 +26,7 @@ build() {
   cd "${_pkgdir}"
 
   # Prefer building icons from SVG source
-  make -C _src clean all
+  # make -C _src clean all
 }
 
 package() {
