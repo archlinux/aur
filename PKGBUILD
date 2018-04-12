@@ -4,7 +4,7 @@
 
 pkgname=devolo-dlan-cockpit
 pkgver=4.3.3
-pkgrel=2
+pkgrel=3
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ build() {
   find . -name "adobeair*${_arch}.deb" -print | xargs ar x
   tar xvf data.tar.gz
   sed -i 's/\.appdata\//~\/\.appdata\//g' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
+  echo "StartupWMClass=dlancockpit" >> "${srcdir}/usr/share/applications/devolo-dlan-cockpit.desktop"
 }
 
 package() {
