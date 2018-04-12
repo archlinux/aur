@@ -20,6 +20,7 @@ pkgver() {
 build() {
     cd "$srcdir/dexbot"
     python3 -m pip install -r requirements.txt
+    python3 -m pip install bitshares uptick>=0.1.4 click sqlalchemy appdirs ruamel.yaml>=0.15.37
     python3 setup.py build
     cp -R $srcdir/$pkgname/$pkgname/views/ui/*.ui $srcdir/$pkgname/build/lib/$pkgname/views/ui/
     python setup.py bdist_egg
