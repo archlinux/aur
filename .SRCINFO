@@ -6,6 +6,7 @@ pkgbase = indigo-renderer
 	install = indigo.install
 	arch = x86_64
 	license = custom
+	makedepends = expac
 	depends = libpng12
 	options = docs
 	backup = opt/indigo/inifile.xml
