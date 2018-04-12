@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=arsdk3
 pkgver=3.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The SDK for Parrot Bebop drones"
 arch=('x86_64')
 url="http://developer.parrot.com/docs/SDK3/"
@@ -45,6 +45,10 @@ package() {
 
 	# install license
 	install -Dm 644 "$srcdir"/packages/ARSDKBuildUtils/LICENSE.md "$pkgdir"/usr/share/licenses/LICENSE
+
+	# copy samples
+	mkdir -p samples
+	cp -r "$srcdir"/packages/Samples/Unix/* samples
 
 	# fix up hard-coded paths
 	cd $_target
