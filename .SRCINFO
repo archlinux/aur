@@ -1,0 +1,16 @@
+pkgbase = ajo
+	pkgdesc = Asynchronous Job Operator: a transparent gateway between your web, application or service and an HPC system.
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://rdlab.cs.upc.edu/index.php/en/services/ajo.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ruby
+	source = https://rdlab.cs.upc.edu/releases/ajo/ajo.v-1.0.9.tar.gz
+	source = ajo.sh
+	md5sums = 07d8790852297d5f493bb8e224e1f143
+	md5sums = 313e3c6e2aff88b05c141f18132834fd
+
+pkgname = ajo
+
