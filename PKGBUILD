@@ -1,11 +1,11 @@
 # Maintainer: Igor <f2404@yandex.ru>
 _pkgname=xfce4-terminal
 pkgname=xfce4-terminal-git
-pkgver=0.8.6.r1.g865cab8
+pkgver=0.8.7.3.r30.gbf257001
 pkgrel=1
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
-url="http://docs.xfce.org/apps/terminal/start"
+url="https://docs.xfce.org/apps/terminal/start"
 license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'vte3>=0.38' 'hicolor-icon-theme')
@@ -27,6 +27,7 @@ build() {
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib/xfce4 \
 		--localstatedir=/var \
+		--enable-gen-doc \
 		--disable-static \
 		--disable-debug
 	make
