@@ -1,16 +1,14 @@
 pkgbase = ripcord
 	pkgdesc = An alternative Discord client
 	pkgver = 0.2.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cancel.fm/ripcord/
 	arch = x86_64
 	license = custom
 	source = https://cancel.fm/dl/Ripcord-0.2.90-x86_64.AppImage
 	source = ripcord.desktop
-	source = ripcord.sh
 	sha256sums = edb4f60d52a8c9cee1e5951bf0317fad155dfa1bff01052ad75fc9e3882061b4
 	sha256sums = 1774644c7f61859cbca2d2e25e71e0afcf03321f95d82dd7249f65e37c3926a6
-	sha256sums = f5e80873eae189dbf9f1369f50579a023c49a999548155a38e7cb22768ec8fa8
 
 pkgname = ripcord
 
