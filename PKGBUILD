@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=check-manifest
-pkgver=0.35
+pkgver=0.37
 pkgrel=1
 pkgdesc="Check MANIFEST.in in a Python package for completeness"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mgedmin/check-manifest"
 license=('MIT')
 depends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f9b7a3a6071f1991009bfa760f903b6d31f7b852a35d76a1cbbbcd1b22c9f44a')
+sha256sums=('44e3cf4b0833a55460046bf7a3600eaadbcae5e9d13baf0c9d9789dd5c2c6452')
 
 
 package() {
