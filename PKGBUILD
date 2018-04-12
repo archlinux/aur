@@ -5,7 +5,7 @@
 
 pkgname=natron
 pkgver=2.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
@@ -14,7 +14,7 @@ depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pi
 makedepends=('git' 'expat' 'boost')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node' 'natron-plugins')
 source=("$pkgname::git+https://github.com/NatronGitHub/Natron.git#tag=$pkgver"
-        "git+https://github.com/devernay/openfx.git"
+        "git+https://github.com/NatronGitHub/openfx.git"
         "git+https://github.com/NatronGitHub/google-test.git"
         "git+https://github.com/NatronGitHub/google-mock.git"
         "git+https://github.com/NatronGitHub/SequenceParsing.git"
