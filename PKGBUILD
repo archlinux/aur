@@ -2,7 +2,7 @@
 
 _libname=frodo_libretro
 _gitname=frodo-libretro
-pkgname=libretro-frodo-git
+pkgname=libretro-frodo-ex-git
 pkgver=r156.4c15016
 pkgrel=1
 pkgdesc="Frodo libretro core (Commodore 64/C64)."

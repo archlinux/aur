@@ -1,4 +1,4 @@
-pkgbase = libretro-frodo-git
+pkgbase = libretro-frodo-ex-git
 	pkgdesc = Frodo libretro core (Commodore 64/C64).
 	pkgver = r156.4c15016
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = libretro-frodo-git
 	source = git+https://github.com/r-type/frodo-libretro.git
 	sha256sums = SKIP
 
-pkgname = libretro-frodo-git
+pkgname = libretro-frodo-ex-git
 
