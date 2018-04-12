@@ -1,37 +1,42 @@
 # Contributor: Raffaele Zamorano
-# Maintainer: Jose Riha <jose1711 gmail com>
-pkgname=gpxsee-git
+# Contributor: Jose Riha <jose1711 gmail com>
+# Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
+_orgname=tumic0
 _pkgname=gpxsee
+_branch=master
+pkgname=${_pkgname}-git
+pkgver=5.6.r905.f64e882
 pkgrel=1
-pkgver=r794.18fc6cc
 pkgdesc='GPX viewer and analyzer'
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.gpxsee.org/"
-license=('gpl3')
-depends=('qt5-tools')
-makedepends=('git')
-conflicts=('gpxsee')
-provides=('gpxsee')
-md5sums=('SKIP'
-         '4226c05418da218c2a271e1c5d1453fd')
-
-source=("${pkgname}"::git+http://github.com/tumic0/GPXSee
-        "gpxsee.desktop")
+license=('GPL3')
+depends=('qt5-base')
+makedepends=('git' 'qt5-tools')
+optdepends=('qt5-imageformats: Support for TIFF')
+provides=("${pkgname//-git}=${pkgver}")
+conflicts=(${pkgname//-git})
+source=("${_pkgname}-${_branch}::git+http://github.com/${_orgname}/${_pkgname}.git#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_pkgname}-${_branch}
+
+  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1))"
+  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "${RELEASE}" "${REVISION}"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd ${_pkgname}-${_branch}
+
   lrelease-qt5 gpxsee.pro
   qmake gpxsee.pro
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd ${_pkgname}-${_branch}
 
   install -d 755 ${pkgdir}/usr/bin
   install -d 755 ${pkgdir}/usr/share/applications
