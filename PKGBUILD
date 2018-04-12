@@ -21,10 +21,16 @@ build() {
     cd "$srcdir/dexbot"
     python3 -m pip install -r requirements.txt
     python3 setup.py build
+    cp -R $srcdir/$pkgname/$pkgname/views/ui/*.ui $srcdir/$pkgname/build/lib/$pkgname/views/ui/
+    python setup.py bdist_egg
 }
 
 package() {
     cd "$srcdir/dexbot"
-    python3 setup.py install --user
-}
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+    cp -R $srcdir/$pkgname/dist/dexbot*.egg "$pkgdir/usr/lib/python3.6/site-packages/"
+    rm -rf $pkgdir/usr/lib/python3.6/site-packages/$pkgname
 
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
