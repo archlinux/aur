@@ -1,4 +1,4 @@
-# Maintainer:  Yangtse Su <yangtsesu@gmail.com>
+# Maintainer:  Yangtse Su <yangtsesu@gmail.com>, Carson McManus <carson.mcmanus1@gmail.com>
 
 _gitname=steamguard-cli
 pkgname="$_gitname"-git
