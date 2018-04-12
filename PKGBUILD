@@ -1,7 +1,7 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=blockstack-browser
-pkgver=0.26.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc=""
 arch=('any')
