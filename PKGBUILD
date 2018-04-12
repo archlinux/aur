@@ -4,7 +4,7 @@ pkgname=lsi-lsa
 pkgver=004.057.000.000
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
 license=('custom:LSI')
 depends=('openslp'
@@ -17,17 +17,15 @@ source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf::https://docs.
         'lsi_lsa.service'
         'lsa_launcher.sh'
         'https://trac.nginx.org/nginx/export/HEAD/nginx/docs/html/50x.html'
+        "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads//docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip"
         )
-source_i686=("${pkgver}_LSA_Linux-x86.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x86.zip")
-source_x86_64=("${pkgver}_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads//docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip")
 sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
             'aea22917f5f3680fb19b9b219ac4775434f500946f579a58242a07bc1e66f209'
             '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
             '05bdeae736b4b06546ea669a5b2764f2410ec8f20873505fee9a8205eccf4190'
             '3c264d74770fd706d59c68d90ca1eb893ac379a666ff136f9acc66ca01daec02'
+            '3d88c0adc1e7d6fbdf2f3e8365885eb87af811c7eee3c44dd974b8b0e8a15f8c'
             )
-sha256sums_i686=('17844fc1dcf52bfbeb749bcf827242649d2507cd7cf9b6a76d3172b4807c00c9')
-sha256sums_x86_64=('3d88c0adc1e7d6fbdf2f3e8365885eb87af811c7eee3c44dd974b8b0e8a15f8c')
 install=lsi-lsa.install
 backup=('opt/lsi/LSIStorageAuthority/installtype'
         'opt/lsi/LSIStorageAuthority/conf/LSA.conf'
