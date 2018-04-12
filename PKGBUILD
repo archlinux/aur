@@ -2,21 +2,21 @@
 
 _pkgname=farbfeld
 pkgname=${_pkgname}-git
-pkgver=2.r6.g265ded6
+pkgver=4.r0.gab5e3df
 pkgver() {
 	cd "${_pkgname}"
 	 git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
-pkgdesc="conversion tools for the suckless image format"
-url="http://tools.suckless.org/farbfeld/"
+pkgdesc="lossless image format which is easy to parse, pipe and compress"
+url="https://tools.suckless.org/farbfeld/"
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libjpeg-turbo' 'libpng')
 makedepends=('git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("$_pkgname::git+http://git.suckless.org/${_pkgname}")
+source=("$_pkgname::git+https://git.suckless.org/${_pkgname}")
 sha512sums=('SKIP')
 
 build() {
