@@ -4,12 +4,12 @@
 
 pkgname=taskjuggler
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A project management tool for Linux and UNIX system-based operating systems."
 arch=(any)
 url='http://www.taskjuggler.org'
 license=('GPL')
-depends=(ruby ruby-mail ruby-term-ansicolor)
+depends=(ruby ruby-mail ruby-term-ansicolor ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
