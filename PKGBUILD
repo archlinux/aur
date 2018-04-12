@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: William Rea <sillywilly@gmail.com>
+# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2017.3.1
+pkgver=2018.1.1
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -13,17 +13,18 @@ depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
 license=("GPL")
 url="http://www.flightgear.org/"
-options=('!makeflags' 'staticlibs')
-source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0ee08550b737b249dcc91590ec0cb9c5dc9080998f6ba66a7d7209cdfce6e1f4')
+options=('makeflags' 'staticlibs')
+source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('d403cbd8688782780c50461ea233f26ea3bb8242ff681674e69ac1da05226656')
 
 build() {
   cd "$srcdir"/simgear-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+  mkdir ../sgbuild && cd ../sgbuild
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release ../simgear-${pkgver}
   make
 }
 
 package() {
-  cd "$srcdir"/simgear-$pkgver
+  cd "$srcdir"/sgbuild
   make DESTDIR="$pkgdir" install
 }
