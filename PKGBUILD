@@ -3,7 +3,7 @@
 # All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
 
 pkgname=annie
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
@@ -13,7 +13,7 @@ makedepends=("go")
 depends=("ffmpeg")
 conflicts=("annie")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/iawia002/annie/archive/${pkgver}.tar.gz")
-sha256sums=('e7f9caf29bf4b48e9329f0c7efba7988bcd2f8d0361b710022a40cd033164d4f')
+sha256sums=('9f6029d9c372a174d372913ab3e856eb73075602baa956520e78639b0e151e5a')
 
 prepare(){
 	mkdir -p "$srcdir/src/github.com/iawia002/annie"
