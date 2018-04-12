@@ -2,10 +2,10 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=libass-git
-pkgver=0.13.7.25.g9b87484
+pkgver=0.14.0.4.g98727c3
 pkgrel=1
 pkgdesc="A portable library for SSA/ASS subtitles rendering. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/libass/libass'
 license=('custom::ISC')
 depends=('fontconfig'
