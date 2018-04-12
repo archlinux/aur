@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.15
-_stable=4.15.15
-_patchver=4.15.16
+_stable=4.15.16
+_patchver=4.15.17
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
