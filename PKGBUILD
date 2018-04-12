@@ -2,7 +2,7 @@
 
 pkgname=python-kubernetes
 _pkgname=kubernetes
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 license=('Apache')
 pkgdesc='Python client for the kubernetes API'
@@ -11,7 +11,7 @@ depends=('python' 'python-certifi' 'python-six' 'python-dateutil' 'python-urllib
 arch=('any')
 url='https://github.com/kubernetes-client/python'
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f81f145882471a1dd9d23360e99bd77027f07744729ef2728af4af7130cd19fd')
+sha256sums=('b370ab4abd925309db69a14a4723487948e9a83de60ca92782ec14992b741c89')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
