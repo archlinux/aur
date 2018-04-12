@@ -3,7 +3,7 @@
 
 pkgname=libpurple-carbons-git
 _pkgname=carbons
-pkgver=r16.35dd48d
+pkgver=r27.8ab2fe5
 pkgrel=1
 pkgdesc='Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)'
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  env PURPLE_PLUGIN_DIR="$pkgdir/usr/lib/purple-2" make -e install
+  make prefix="$pkgdir/usr/" install
 }
 
 # vim:set ts=2 sw=2 et:
