@@ -5,8 +5,8 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.0.rc1.r1.gedd67444e
-pkgrel=2
+pkgver=2.0.0.rc2.r5.gf73f955e8
+pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${_pkgname}/"
