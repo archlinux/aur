@@ -3,15 +3,15 @@
 buildarch=128
 
 pkgname=teamsql
-pkgver=3.2.190
-pkgrel=2
+pkgver=3.2.195
+pkgrel=1
 pkgdesc="Multi-Platform SQL Client"
 url="https://teamsql.io/"
 arch=('x86_64')
 license=('custom:https://teamsql.io/end-user-licence-agreement')
 depends=("libappindicator" "libnotify" "gconf" "libxtst" "libxss" "nss" "alsa-lib")
 source=("TeamSQL-${pkgver}.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/${pkgver}/TeamSQL-${pkgver}.deb")
-sha512sums=('57f40a3029d4298808e73ddab6ded6c424e94c3e5490127b84939b2ad64b521fbdf9be57fed7e54759d869a061d7d640b6f71e2d65e79ebaf57e503de3166849')
+sha512sums=('b64ecc580d3d19d5a1135403c0c30cc06861ff7173033cafd99d053a4adde8e6f6a3f65d2221cba9579c235ca3b6c58313ac6e5ba32a12f6f8e7a8218b257617')
 
 package() {
 	install -dm755 "${pkgdir}/usr/bin"
