@@ -1,0 +1,16 @@
+pkgbase = mos-bin
+	pkgdesc = This package contains the Mongoose OS CLI tool.
+	pkgver = 2.0+4ed5853
+	pkgrel = 2
+	url = https://mongoose-os.com
+	arch = x86_64
+	license = GLPv2
+	depends = libftdi-compat
+	depends = libusb>=1.0.16
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+build/14524627/+files/mos_2.0+4ed5853~xenial0_amd64.deb
+	sha512sums_x86_64 = 1d22e47054e49cd4ff9e90573afc17d98b9c56771dddc979968e57e0c14a8ec62bed483bf9ad67893aeae01d09853c3a3ab1253e06f666b15adf3e4f87158d4a
+
+pkgname = mos-bin
+
