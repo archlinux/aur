@@ -1,4 +1,4 @@
-pkgbase = ya4r-beta
+pkgbase = ya4r
 	pkgdesc = Yet Another 4Chan Reader - Built using the Electron framework - Beta channel.
 	pkgver = 0.2.1
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = ya4r-beta
 	source = ya4r-0.2.1.tar.gz::https://github.com/0v3rl0w/ya4r/archive/0.2.1.tar.gz
 	sha256sums = a598590979e00a403f67fdcbfc53065b5f82b9fc99e09f178310ae6694ba64f4
 
-pkgname = ya4r-beta
+pkgname = ya4r
 
