@@ -35,17 +35,17 @@ sha256sums=('63fae6b3a4339e4a40945fae1afb9b99a5e7f8e8dbde668938ab8c4ff569fd7d'
 ENABLE_KAUTH=0
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Adjust RedHat config and service files to our needs
-  patch -p1 < ${srcdir}/0001-Adjust-RedHat-config-and-service-files.patch
+  patch -p1 < "${srcdir}/0001-Adjust-RedHat-config-and-service-files.patch"
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   case "$CARCH" in
     "i686")    sysname=i386_linux26 ;;
@@ -75,31 +75,31 @@ build() {
 
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install_nolibafs
+  make DESTDIR="${pkgdir}" install_nolibafs
 
   # install systemd service files
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-client.service ${pkgdir}/usr/lib/systemd/system/openafs-client.service
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-server.service ${pkgdir}/usr/lib/systemd/system/openafs-server.service
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-client.service" "${pkgdir}/usr/lib/systemd/system/openafs-client.service"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-server.service" "${pkgdir}/usr/lib/systemd/system/openafs-server.service"
 
   # install default configs
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/afsd/CellServDB ${pkgdir}/etc/${pkgname}/CellServDB
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs.sysconfig ${pkgdir}/etc/conf.d/openafs
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-ThisCell ${pkgdir}/etc/${pkgname}/ThisCell
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-cacheinfo ${pkgdir}/etc/${pkgname}/cacheinfo
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/afsd/CellServDB" "${pkgdir}/etc/${pkgname}/CellServDB"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs.sysconfig" "${pkgdir}/etc/conf.d/openafs"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-ThisCell" "${pkgdir}/etc/${pkgname}/ThisCell"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-cacheinfo" "${pkgdir}/etc/${pkgname}/cacheinfo"
 
   # install license
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # install tmpfiles.d entry for /afs
-  install -Dm644 ${srcdir}/tmpfiles.d-openafs.conf ${pkgdir}/usr/lib/tmpfiles.d/openafs.conf
+  install -Dm644 "${srcdir}/tmpfiles.d-openafs.conf" "${pkgdir}/usr/lib/tmpfiles.d/openafs.conf"
 
   # if kauth was installed rename kpasswd which is already provided by krb5 and move PAM libs
   if [ $ENABLE_KAUTH -eq 1 ]; then
-    install -dm755 ${pkgdir}/usr/lib/security
-    mv ${pkgdir}/usr/lib/pam_afs.krb.so ${pkgdir}/usr/lib/pam_afs.so ${pkgdir}/usr/lib/security/
-    mv ${pkgdir}/usr/bin/kpasswd ${pkgdir}/usr/bin/kpasswd-openafs
-    mv ${pkgdir}/usr/share/man/man1/kpasswd.1 ${pkgdir}/usr/share/man/man1/kpasswd-openafs.1
+    install -dm755 "${pkgdir}/usr/lib/security"
+    mv "${pkgdir}/usr/lib/pam_afs.krb.so" "${pkgdir}/usr/lib/pam_afs.so" "${pkgdir}/usr/lib/security/"
+    mv "${pkgdir}/usr/bin/kpasswd" "${pkgdir}/usr/bin/kpasswd-openafs"
+    mv "${pkgdir}/usr/share/man/man1/kpasswd.1" "${pkgdir}/usr/share/man/man1/kpasswd-openafs.1"
   fi
 }
