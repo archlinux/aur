@@ -2,7 +2,7 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.5.r9.ga596208a+wine.3.5.r130.gdd2624a24f+pba.3.5.r33.8c72f84
+pkgver=3.5.r13.g3fe54232+wine.3.5.r193.ga7b33a6a42+pba.3.5.r33.8c72f84
 pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
@@ -106,8 +106,12 @@ sha256sums=('SKIP'
 			'50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
-
-provides=('wine' 'wine-wow64' 'wine-staging')
+provides=(
+	"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
+)
 conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
