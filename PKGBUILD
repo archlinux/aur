@@ -1,4 +1,5 @@
-# Maintainer: Rene Schoebel <schoebel.r at gmail dot com>
+# Maintainer: LinRuoshui <lin.ruohshoei@gmail.com>
+# Contributor: Rene Schoebel <schoebel.r at gmail dot com>
 # Contributor: Ezekiel Sulastin <zekesulastin@gmail.com>
 
 # This package relies on the filesystem layout provided by
@@ -16,20 +17,20 @@ arch=('any')
 url="http://www.hard-light.net/forums/index.php?board=120.0"
 license=('custom:fs2_open')
 changelog=$pkgname.changelog
-depends=('fs2_open>1:3.7.1')
-source=(http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Root.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Music.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Assets.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Effects.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Advanced.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_A-Glows.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_RadarIcons.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_CB_ANI_1.7z
-  http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_CB_ANI_2.7z
-  LICENSE
-  fs2_open-mediavps
-  fs2_open-mediavps.changelog
-  fs2_open-mediavps.desktop)
+#depends=('fs2_open>1:3.7.1')
+source=(https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_Root.7z 
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_Music.7z
+ 	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_Assets.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_Effects.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_Advanced.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_A-Glows.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_RadarIcons.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_CB_ANI_1.7z
+	https://porphyrion.feralhosting.com/datacorder/mvp_files/2014/MV_CB_ANI_2.7z
+	LICENSE
+	fs2_open-mediavps
+	fs2_open-mediavps.changelog
+	fs2_open-mediavps.desktop)
 sha256sums=('060502b07d60c0b559f021e66f51e8da73043a9d9828d535bff88a3c4f2ca36c'
             'db08f784e4331cf5a919a510a0858b996a13185ec6a11f7e63fa290433142565'
             '96a313701a0bbbc3acbd05f2bc526bbafce5ddf67f28864324c96a3717ac7361'
