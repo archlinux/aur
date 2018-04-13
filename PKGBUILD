@@ -1,15 +1,15 @@
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname=cemu
-pkgver=1.11.5
+pkgver=1.11.6
 pkgrel=1
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
 license=('custom')
 depends=('wine' 'winetricks')
-_graphicpackver=786
-_cemuhookver=1114_0563
+_graphicpackver=868
+_cemuhookver=1116_0564
 source=(
   cemu.sh
   cemu.xpm
@@ -29,9 +29,9 @@ install=${pkgname}.install
 md5sums=('bf4a05c4f1d6063ed6bb90b66b2eca7d'
          '54d70005a8975812ab54fcfef53f7bde'
          'fe074814f6dbb97d569c1af7eb4b9324'
-         '5c287201ce65a741e4764dba2d4df5ec'
-         'ec369cdf61ce3b6becce584c5c976939'
-         '714606c6ed99cba6bff53095fdc00916')
+         '9c0e506379088d2939e4c80c54fcd53b'
+         '7f6a40cf882536e65be9afea741d55b4'
+         '08181d4f17c0f21db8c119f13bef1a90')
 
 options=(!strip)
 
