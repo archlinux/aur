@@ -25,14 +25,14 @@ _extramodules=$(ls -dt /usr/lib/modules/extramodules-* | head -n1)
 _kernelver=$(cat ${_extramodules}/version)
 
 prepare() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   # Only needed when changes to configure were made
   #./regen.sh -q
 }
 
 build() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -48,21 +48,21 @@ build() {
 
 
 package() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install_only_libafs
+  make DESTDIR="${pkgdir}" install_only_libafs
 
   # install kernel module
-  install -dm755 ${pkgdir}${_extramodules}
-  mv ${pkgdir}/lib/modules/${_kernelver}/extra/openafs/openafs.ko ${pkgdir}${_extramodules}/openafs.ko
-  gzip -9 ${pkgdir}${_extramodules}/openafs.ko
+  install -dm755 "${pkgdir}${_extramodules}"
+  mv "${pkgdir}/lib/modules/${_kernelver}/extra/openafs/openafs.ko" "${pkgdir}${_extramodules}/openafs.ko"
+  gzip -9 "${pkgdir}${_extramodules}/openafs.ko"
 
   # install license
-  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/${_srcname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove files already included in openafs package
-  find ${pkgdir}/usr -maxdepth 3 -type f -delete
-  find ${pkgdir}/usr -maxdepth 3 -type l -delete
+  find "${pkgdir}/usr" -maxdepth 3 -type f -delete
+  find "${pkgdir}/usr" -maxdepth 3 -type l -delete
 
   # update major kernel version in install file
   sed -i "s/depmod .*/depmod ${_kernelver}/g" "${startdir}/openafs-modules.install"
