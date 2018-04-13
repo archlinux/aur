@@ -5,7 +5,7 @@
 pkgname=printrun-git
 _gitname='Printrun'
 pkgver=2.0.0rc5.15.geefc58f
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -33,6 +33,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
   python setup.py build
+  python setup.py build_ext --inplace
 }
 
 package() {
