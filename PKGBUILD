@@ -11,7 +11,7 @@
 
 pkgname=fs2_open-mediavps
 pkgver=2014
-pkgrel=2
+pkgrel=3
 pkgdesc="Dramatic audiovisual enhancements for fs2_open"
 arch=('any')
 url="http://www.hard-light.net/forums/index.php?board=120.0"
