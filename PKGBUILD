@@ -2,15 +2,14 @@
 
 pkgname=algernon
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64' 'i686')
 url='https://algernon.roboticoverlords.org/'
 license=('MIT')
 depends=('redis')
-makedepends=('git' 'go' 'setconf')
-optdepends=('redis: For using the Redis database backend'
-            'mariadb: For using the MariaDB/MySQL database backend'
+makedepends=('git' 'go')
+optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
@@ -41,14 +40,6 @@ prepare() {
   rm -rf "$DESTPATH"; mkdir -p "$DESTPATH"
 
   mv "$srcdir/$pkgname" "$(dirname $DESTPATH)"
-
-  cd "$GOPATH/src/$_gourl"
-
-  # Startup parameters
-  setconf system/algernon_dev.service ExecStart \
-    "/usr/bin/algernon -e -a --domain --server --log /var/log/algernon.log --addr=:80 /srv/http"
-
-  setconf system/algernon_dev.service Group=http
 }
 
 build() {
