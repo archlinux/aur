@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.6.22.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,9 +15,9 @@ depends=('openafs')
 makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
 install=openafs-modules.install
-sha256sums=('cecf7c002ae9ff977a43435a8e63d57ffcac3ff3f99025cbfe4edb175f3c4196')
+sha256sums=('63fae6b3a4339e4a40945fae1afb9b99a5e7f8e8dbde668938ab8c4ff569fd7d')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -39,6 +39,7 @@ build() {
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib \
               --disable-fuse-client \
+              --without-swig \
               --with-linux-kernel-packaging \
               --with-linux-kernel-build="/usr/lib/modules/${_kernelver}/build"
 
@@ -57,11 +58,11 @@ package() {
   gzip -9 ${pkgdir}${_extramodules}/openafs.ko
 
   # install license
-  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/src/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
-  # remove file already included in openafs package)
-  rm -rf ${pkgdir}/usr/bin ${pkgdir}/usr/include
-  find ${pkgdir} -name *.a -delete
+  # remove files already included in openafs package
+  find ${pkgdir}/usr -maxdepth 3 -type f -delete
+  find ${pkgdir}/usr -maxdepth 3 -type l -delete
 
   # update major kernel version in install file
   sed -i "s/depmod .*/depmod ${_kernelver}/g" "${startdir}/openafs-modules.install"
