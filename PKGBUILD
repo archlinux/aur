@@ -1,10 +1,11 @@
-# Contributer: giacomogiorgianni@gmail.com 
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributer: giacomogiorgianni@gmail.com
 
 pkgname=httraqt-git
-pkgver=1.4.9.r339.9c51175
+pkgver=1.4.10.4.gd3e085c
 pkgrel=1
 pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt libriaries. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://qt-apps.org/content/show.php/HTTraQt?content=155711'
 license=('GPL')
 depends=('qt5-multimedia'
@@ -18,21 +19,22 @@ sha256sums=('SKIP')
 
 pkgver(){
   cd httraqt
-  _ver="$(cat README | grep -E "^[0-9]+\\.[0-9]+\\.[0-9]+" | head -n 1 | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | sed 's|httraqt-||'| tr - .)"
 }
 
 prepare() {
   mkdir -p build
-  sed 's|USE_QT_VERSION 4|USE_QT_VERSION 5|g' -i httraqt/CMakeLists.txt
+
+  cd build
+  cmake ../httraqt \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_QT5=ON
+
 }
 
 build() {
-  cd build
-  cmake ../httraqt \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  make -C build
 }
 
 package() {
