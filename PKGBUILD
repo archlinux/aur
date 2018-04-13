@@ -1,11 +1,11 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=task-git
-pkgver=s2.5.2.r2.g342cde939
+pkgver=stable.r304.g66b2e3468
 pkgrel=1
 pkgdesc="A command-line todo list manager"
 arch=('i686' 'x86_64')
-url="http://taskwarrior.org/projects/show/taskwarrior/"
+url="http://taskwarrior.org/"
 license=('MIT')
 depends=('gcc-libs' 'util-linux' 'gnutls')
 makedepends=('git' 'cmake')
@@ -20,7 +20,7 @@ optdepends=('bash-completion'
 provides=('task=2.5.1')
 conflicts=('task')
 install="task.install"
-source=("$pkgname"::'git+https://git.tasktools.org/TM/task.git#branch=2.5.2')
+source=("$pkgname"::'git+https://github.com/GothenburgBitFactory/taskwarrior.git#branch=2.6.0')
 md5sums=('SKIP')
 
 build() {
