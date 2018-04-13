@@ -9,7 +9,7 @@ url="http://opendesktop.org/content/show.php/arrowmatcher?content=144151"
 license=('GPL')
 depends=('qt4')
 makedepends=('cmake' 'gettext' 'automoc4')
-options=('')
+options=()
 source=("http://kent.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}2-${pkgver}/${pkgname}2-${pkgver}.tar.gz")
 sha1sums=('e8ed9ee08ff5671440c9e3c8267c6551d8c9a653')
 #install=$pkgname.install
