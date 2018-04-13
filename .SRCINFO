@@ -1,0 +1,20 @@
+pkgbase = megatools-git
+	pkgdesc = Command line client application for Mega.nz
+	pkgver = 1.9.98.r45.g5a48663
+	pkgrel = 1
+	url = http://megatools.megous.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = asciidoc
+	depends = curl
+	depends = glib2
+	provides = megatools
+	conflicts = megatools
+	options = !libtool
+	source = git+https://github.com/megous/megatools.git
+	sha256sums = SKIP
+
+pkgname = megatools-git
+
