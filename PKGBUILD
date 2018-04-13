@@ -1,4 +1,5 @@
 # Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
 pkgver=v1.9.4.1.r19.gf570a26
