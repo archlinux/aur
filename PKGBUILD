@@ -3,13 +3,13 @@
 
 pkgname=code-git
 pkgdesc='Microsoft Code for Linux, Open Source version from git (vscode)'
-pkgver=1.16.0.r8976.g7bd29a4f90
+pkgver=1.16.0.r9165.g15cec5d94a
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
 makedepends=('npm' 'nodejs>=8.0' 'gulp' 'python2' 'git' 'yarn')
-depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
+depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
