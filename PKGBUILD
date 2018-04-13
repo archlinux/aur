@@ -1,10 +1,11 @@
 # Maintainer: ZeroWeb <zeroweb91 at protonmail dot com>
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
+_launcher_ver=6
 pkgname=ungoogled-chromium-bin
-pkgver=64.0.3282.186
-pkgrel=5
-pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparencyi (binary version)"
+pkgver=65.0.3325.181
+pkgrel=1
+pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
@@ -15,25 +16,45 @@ conflicts=("chromium" "iridium" "ungoogled-chromium")
 optdepends=("ffmpeg: H264/AAC/MP3 decoding")
 source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium_${pkgver}-1.stretch_amd64.deb"
 		"ungoogled-chromium-common.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium-common_${pkgver}-1.stretch_amd64.deb"
-		"uchromium.sh")
-noextract=("ungoogled-chromium-common.deb")
-sha256sums=("714ff700d02b60233ccf92a54ebbd2b8eeb1499bb9097322e3874dc3a111e0ec"
-			"653e0ddd5636ef39f56a86baac8d3a9796af8fbcfdbfc8e91d8121d9e34cba0a"
-			"1d5f907cadc73071f1770cfed92211d88a3c9b19e6bf24be8208bb4da5d73c4a")
-install=ungoogled-chromium-bin.install
+		"ungoogled-chromium-driver.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium-driver_${pkgver}-1.stretch_amd64.deb"
+		"ungoogled-chromium-widevine.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium-widevine_${pkgver}-1.stretch_amd64.deb"
+		"chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz")
+noextract=("ungoogled-chromium-common.deb"
+		   "ungoogled-chromium-driver.deb"
+		   "ungoogled-chromium-widevine.deb")
+sha256sums=("bbfe1c3e142d51bfda93955d2dd31edce835617777c7c0ab81f08e3889d4754f"
+			"d82738a78e535905a9507ab6cd2f1d4b74d1e1e88fa9d4fd3a8a430ded46e15f"
+			"015406b4362c54b6df712e42dcac1c63db7ae577509d65464c9196b7c5edca43"
+			"46a1b7bae44134eafe0531aa4d3e786c99101fefd973e2afa1f991d8097fa8e0"
+			"04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1")
+
+declare -ga _debfiles=("common" "driver" "widevine")
 
 prepare() {
-	# Decompress common files
-	mkdir ${srcdir}/common
-	cd ${srcdir}/common
-	bsdtar -f ${srcdir}/ungoogled-chromium-common.deb -x
-	tar -xf data.tar.xz
+	# Decompress deb files
+	for deb in "${_debfiles[@]}"
+	do
+		mkdir "${srcdir}/${deb}"
+		cd $_
+		bsdtar -x -f ../ungoogled-chromium-"$deb".deb
+		tar -xf data.tar.xz
+		cd ${srcdir}
+	done
+
 	# Decompress browser files
-	cd ${srcdir}
 	tar -xf data.tar.xz
 }
 
+build() {
+	make -C chromium-launcher-$_launcher_ver
+}
+
 package() {
+	cd chromium-launcher-$_launcher_ver
+  	make PREFIX=/usr DESTDIR="${pkgdir}" install
+  	install -Dm644 LICENSE \
+    	"${pkgdir}/usr/share/licenses/chromium/LICENSE.launcher"
+
 	cd ${srcdir}
 
 	install -d "${pkgdir}/usr/lib/chromium"
@@ -47,8 +68,18 @@ package() {
 
 	install -d "${pkgdir}/usr/share/applications"
 	cp -r usr/share/applications/* "${pkgdir}/usr/share/applications"
+	
+	# Install files from additional debs
+	for deb in "${_debfiles[@]}"
+	do
+		cp -r "${srcdir}/${deb}/usr/lib/chromium"/* "${pkgdir}/usr/lib/chromium"
+	done
 
-  	cp -r "${srcdir}/common/usr/lib/chromium"/* "${pkgdir}/usr/lib/chromium"
+	# Needed symlinks
+	ln -s /usr/lib/libre2.so.0.0.0 ${pkgdir}/usr/lib/libre2.so.3
+	ln -s /usr/lib/libwebp.so.7.0.1 ${pkgdir}/usr/lib/libwebp.so.6
+	ln -s /usr/lib/libwebpmux.so.3.0.1 ${pkgdir}/usr/lib/libwebpmux.so.2
 
-  	install -Dm755 "${srcdir}"/uchromium.sh "${pkgdir}"/usr/bin/chromium
+	# Chromium won't start without correct permissions
+	chmod 4755 ${pkgdir}/usr/lib/chromium/chrome-sandbox
 }

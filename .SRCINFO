@@ -1,9 +1,8 @@
 pkgbase = ungoogled-chromium-bin
-	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparencyi (binary version)
-	pkgver = 64.0.3282.186
-	pkgrel = 5
+	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)
+	pkgver = 65.0.3325.181
+	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
-	install = ungoogled-chromium-bin.install
 	arch = x86_64
 	license = BSD
 	depends = libjpeg6-turbo
@@ -21,12 +20,18 @@ pkgbase = ungoogled-chromium-bin
 	conflicts = iridium
 	conflicts = ungoogled-chromium
 	noextract = ungoogled-chromium-common.deb
-	source = ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/64.0.3282.186-1/ungoogled-chromium_64.0.3282.186-1.stretch_amd64.deb
-	source = ungoogled-chromium-common.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/64.0.3282.186-1/ungoogled-chromium-common_64.0.3282.186-1.stretch_amd64.deb
-	source = uchromium.sh
-	sha256sums = 714ff700d02b60233ccf92a54ebbd2b8eeb1499bb9097322e3874dc3a111e0ec
-	sha256sums = 653e0ddd5636ef39f56a86baac8d3a9796af8fbcfdbfc8e91d8121d9e34cba0a
-	sha256sums = 1d5f907cadc73071f1770cfed92211d88a3c9b19e6bf24be8208bb4da5d73c4a
+	noextract = ungoogled-chromium-driver.deb
+	noextract = ungoogled-chromium-widevine.deb
+	source = ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/65.0.3325.181-1/ungoogled-chromium_65.0.3325.181-1.stretch_amd64.deb
+	source = ungoogled-chromium-common.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/65.0.3325.181-1/ungoogled-chromium-common_65.0.3325.181-1.stretch_amd64.deb
+	source = ungoogled-chromium-driver.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/65.0.3325.181-1/ungoogled-chromium-driver_65.0.3325.181-1.stretch_amd64.deb
+	source = ungoogled-chromium-widevine.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/65.0.3325.181-1/ungoogled-chromium-widevine_65.0.3325.181-1.stretch_amd64.deb
+	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
+	sha256sums = bbfe1c3e142d51bfda93955d2dd31edce835617777c7c0ab81f08e3889d4754f
+	sha256sums = d82738a78e535905a9507ab6cd2f1d4b74d1e1e88fa9d4fd3a8a430ded46e15f
+	sha256sums = 015406b4362c54b6df712e42dcac1c63db7ae577509d65464c9196b7c5edca43
+	sha256sums = 46a1b7bae44134eafe0531aa4d3e786c99101fefd973e2afa1f991d8097fa8e0
+	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 
 pkgname = ungoogled-chromium-bin
 
