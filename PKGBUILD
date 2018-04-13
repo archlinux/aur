@@ -15,7 +15,7 @@ source=(
 	"${_archive}.tar.gz::$url/archive/${pkgver}.tar.gz"
 )
 
-sha256sums=('a598590979e00a403f67fdcbfc53065b5f82b9fc99e09f178310ae6694ba64f4')
+sha256sums=('47c1f57e96377564230eac21dea1d0bfce7ebbd20c64f200a16c643327f49a58')
 
 prepare() {
 	if [ -f /usr/share/applications/ya4r.desktop ]; then
