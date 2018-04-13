@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgname=(veles-git python-veles-git)
-pkgver=2017.06.0.1.r146.g41a1bde
-pkgrel=2
+pkgver=2017.06.0.1.r173.gff6fa83
+pkgrel=1
 pkgdesc='Binary data analysis and visualization tool'
 url='https://codisec.com/veles'
 license=('APLv2')
