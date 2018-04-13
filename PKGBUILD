@@ -2,13 +2,13 @@
 
 pkgname=vive-udev
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Udev rule for the Vive for the group \"plugdev\""
 arch=('any')
 url="https://github.com/lubosz/OSVR-Vive-Libre/"
 license=('custom')
 source=('83-vive.rules')
-sha256sums=('d7e20ae0001153eeddbff8e9815de774a5167251d26387b9011888876f3cf263')
+sha256sums=('c6245311e9764e3364739d13d2833d7a04328d554013e8e623fb4188496154bb')
 install='vive-udev.install'
 
 package() {
