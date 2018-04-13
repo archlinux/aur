@@ -2,13 +2,13 @@
 # Based on axoloti-git and axoloti-runtime-git PKGBUILDs by: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=axoloti
-pkgver=1.0.12_1
-pkgrel=3
+pkgver=1.0.12_2
+pkgrel=1
 pkgdesc='Firmware and GUI for the Axoloti Core'
 arch=('x86_64')
 url='http://www.axoloti.com'
 license=('GPL')
-depends=('java-runtime' 'bash' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
+depends=('jre8-openjdk' 'bash' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
 makedepends=('apache-ant' 'git')
 conflicts=('axoloti-git' 'axoloti-runtime-git')
 options=('!strip')

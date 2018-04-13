@@ -13,10 +13,6 @@ post_install() {
     echo -e "\n##### Launch the GUI by running /usr/bin/axoloti #####"
 }
 
-post_upgrade() {
-    compile_firmware
-}
-
 pre_remove() {
     remove_firmware
 }
