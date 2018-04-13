@@ -22,14 +22,14 @@ sha256sums=('63fae6b3a4339e4a40945fae1afb9b99a5e7f8e8dbde668938ab8c4ff569fd7d'
             'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
 
 prepare() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   # Only needed when changes to configure were made
   #./regen.sh -q
 }
 
 build() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   case "$CARCH" in
     "i686")    sysname=i386_linux26 ;;
@@ -53,11 +53,11 @@ build() {
 package() {
 
   # install license
-  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/${_srcname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # install sources
-  install -dm755 ${pkgdir}/usr/src/${_srcname}-${pkgver}
-  mv ${srcdir}/${_srcname}-${pkgver}/libafs_tree/* ${pkgdir}/usr/src/${_srcname}-${pkgver}
-  sed "s/__VERSION__/$pkgver/" ${srcdir}/dkms.conf > ${pkgdir}/usr/src/${_srcname}-${pkgver}/dkms.conf
+  install -dm755 "${pkgdir}/usr/src/${_srcname}-${pkgver}"
+  mv "${srcdir}/${_srcname}-${pkgver}/libafs_tree/"* "${pkgdir}/usr/src/${_srcname}-${pkgver}"
+  sed "s/__VERSION__/$pkgver/" "${srcdir}/dkms.conf" > "${pkgdir}/usr/src/${_srcname}-${pkgver}/dkms.conf"
 
 }
