@@ -1,0 +1,20 @@
+pkgbase = xml-language-server-git
+	pkgdesc = Language server for XML files
+	pkgver = r10.7a2bcbc
+	pkgrel = 1
+	url = https://github.com/microclimate-devops/xml-language-server
+	arch = any
+	license = EPL
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-environment
+	depends = archlinux-java-run
+	provides = xml-language-server
+	conflicts = xml-language-server
+	source = git+https://github.com/microclimate-devops/xml-language-server.git
+	source = launcher.sh
+	md5sums = SKIP
+	md5sums = 9d1121d6db14da3d7cfb74feb552e5e8
+
+pkgname = xml-language-server-git
+
