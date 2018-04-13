@@ -1,4 +1,4 @@
-# Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
+# Maintainer: Vojtech Aschenbrenner <v@asch.cz>
 
 _gemname=xapian-ruby
 pkgname=ruby-$_gemname
@@ -9,6 +9,7 @@ arch=(i686 x86_64)
 url='https://github.com/garaio/xapian-ruby'
 license=()
 depends=('ruby' 'xapian-core')
+makedepends=('ruby-rake' 'ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
