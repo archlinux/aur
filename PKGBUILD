@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 pkgver='2.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
