@@ -1,6 +1,6 @@
 # Maintainer: EinBaum <mail@einbaum.org>
 
-pkgrel=1
+pkgrel=2
 pkgver=20180413
 _commit='71e4eaf70e77cfde959e38e005954199e75cf007'
 sha256sums=('1484985a5a9d334201a217e0004c43b2064fd343204b3f2041726c83de76dbe3')
