@@ -6,7 +6,7 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -23,12 +23,14 @@ prepare() {
     cd "$srcdir/src"
     sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
     sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+    
+    sed -i '/#include "TRoomDB.h"/ a #include <QRegularExpression>' TRoomDB.cpp
 }
 
 build() {
     cd "$srcdir/src"
     export WITH_FONTS=NO 
-    #export WITH_UPDATER=NO ## Built-in updater should be disabled, but disabling it causes the build to fail
+    export WITH_UPDATER=NO
     qmake-qt5 PREFIX=/usr
     make
 }

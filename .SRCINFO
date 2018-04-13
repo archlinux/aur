@@ -1,7 +1,7 @@
 pkgbase = mudlet
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
 	pkgver = 3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mudlet.org
 	arch = i686
 	arch = x86_64
