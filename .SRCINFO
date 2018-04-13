@@ -1,0 +1,17 @@
+pkgbase = ttf-megrim
+	pkgdesc = Google Fonts Megrim by Daniel Johnson
+	pkgver = 20160926
+	pkgrel = 1
+	url = http://www.google.com/fonts/specimen/Megrim
+	arch = any
+	license = SIL Open Font License
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://github.com/google/fonts/raw/90abd17b4f97671435798b6147b698aa9087612f/ofl/megrim/Megrim.ttf
+	source = https://github.com/google/fonts/raw/90abd17b4f97671435798b6147b698aa9087612f/ofl/megrim/OFL.txt
+	md5sums = e43a0f17594beb98a1f373738814ab9e
+	md5sums = 7bf691260ffba0e9eee60d90e23916cc
+
+pkgname = ttf-megrim
+
