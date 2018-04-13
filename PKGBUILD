@@ -1,5 +1,5 @@
 _pkgname=ya4r
-pkgname="ya4r-beta"
+pkgname="ya4r"
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="Yet Another 4Chan Reader - Built using the Electron framework - Beta channel."
