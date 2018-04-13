@@ -1,23 +1,29 @@
-# Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
+# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
+
 pkgname=etcher-cli
-_realver=1.3.1
-pkgver=${_realver//-/_}
+pkgver=1.4.1
 pkgrel=1
-pkgdesc="Burn images to SD cards & USB drives, safe & easy"
-arch=('x86_64')
-url="http://www.etcher.io/"
-license=('apache')
-depends=('gcc-libs')
-optdepends=()
-source=("https://github.com/resin-io/etcher/releases/download/v${_realver}/Etcher-cli-${_realver}-linux-x64.tar.gz")
-options=("!strip")
-sha256sums=('1356d8cb659b6199ff0f4d0c1fedd36e29e4f961dc88ac26968ccd58614f3f81')
+pkgdesc='Burn images to SD cards & USB drives, safe & easy'
+arch=(x86_64)
+url='http://www.etcher.io/'
+license=(apache)
+makedepends=(npm)
+source=("https://github.com/resin-io/etcher/archive/v$pkgver.tar.gz")
+sha256sums=('41bb2e325b45e5adc00e32bd2c0b1e9bbd0f8dfe328e8237fc7d4175fde2bd60')
+
+build() {
+  cd etcher-$pkgver
+  make electron-develop
+  make dist/Etcher-cli-$pkgver-linux-x64 RELEASE_TYPE=production
+}
 
 package() {
-    cd "$pkgdir"
-    mkdir opt
-    mv "$srcdir/Etcher-cli-${_realver}-linux-x64" opt/etcher-cli
+  cd etcher-$pkgver/dist
 
-    mkdir -p usr/bin
-    ln -s /opt/etcher-cli/etcher usr/bin/etcher
+  mkdir -p "$pkgdir"/{opt,usr/bin}
+  cp -a Etcher-cli-$pkgver-linux-x64 "$pkgdir"/opt/$pkgname
+  ln -s /opt/$pkgname/etcher "$pkgdir"/usr/bin/etcher
 }
+
+# vim:set ts=2 sw=2 et:
