@@ -3,12 +3,12 @@ _version=1.0.2
 
 pkgname=coursier
 pkgver="$_version"
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure Scala Artifact Fetching"
 arch=('any')
 url="http://get-coursier.io"
 license=('Apache')
-depends=('java-environment' 'bash')
+depends=('java-runtime-headless>=8' 'bash')
 
 source=("https://github.com/coursier/coursier/raw/v1.0.1/coursier")
 sha256sums=('23aa05a84a9df5d84b76be40659300bfcb367d8a1b4307908f89ba3fc6dac1e6')
