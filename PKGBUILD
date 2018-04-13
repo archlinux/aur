@@ -2,7 +2,7 @@
 
 pkgname=python-sparse
 _pkgname=sparse
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Sparse multidimensional arrays on top of numpy and scipy"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/pydata/sparse/archive/$pkgver.tar.gz")
-sha256sums=('e1f099d4096f9b66308b8e890c9b96a96c90b7760598a9b484f1e728b8fe4e58')
+sha256sums=('6c16f0c7d375ec1f41596e1cafd0fdd051affb0359b0e4f60a8b35361dcd347d')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
