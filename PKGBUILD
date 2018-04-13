@@ -1,13 +1,13 @@
 # Maintainer: Marius Orcsik <marius@habarnam.ro>
 pkgname=hitch-git
-pkgver=hitch.1.4.6.r70.241d970
+pkgver=1.4.7.r5.8d80aa9
 pkgrel=1
 pkgdesc="Hitch is a libev-based high performance SSL/TLS proxy."
 arch=('x86_64' 'i686')
 url="https://hitch-tls.org/"
 license=('GPL')
 depends=('libev' 'openssl')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'lsof')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
