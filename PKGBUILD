@@ -2,9 +2,9 @@
 _pkgname=affine
 pkgname=python-${_pkgname}
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="Python package for generating multi-unit schematic symbols for KiCad from a CSV file"
-url="https://github.com/xesscorp/KiPart"
+pkgrel=2
+pkgdesc="Python package for matrices describing affine transformation of the plane"
+url="https://github.com/sgillies/affine"
 depends=('python'
          'python-pip'
 )
@@ -23,4 +23,3 @@ package() {
     cd "$srcdir/${_pkgname}-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
 }
-
