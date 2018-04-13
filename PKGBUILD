@@ -107,11 +107,13 @@ sha256sums=('SKIP'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
 provides=(
-	"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-	"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-	"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
+	"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
+	"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
 	"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
+	"wine-pba=$(    printf '%s' "$pkgver" | sed 's/.*\+pba\.//')"
 )
+
 conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install

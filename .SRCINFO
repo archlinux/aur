@@ -164,10 +164,11 @@ pkgbase = wine-staging-pba-git
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = cups
 	optdepends = samba
-	provides = wine=3.5.r193.ga7b33a6a42+pba.3.5.r33.8c72f84
-	provides = wine-wow64=3.5.r193.ga7b33a6a42+pba.3.5.r33.8c72f84
-	provides = wine-git=3.5.r193.ga7b33a6a42+pba.3.5.r33.8c72f84
+	provides = wine=3.5.r193.ga7b33a6a42
+	provides = wine-wow64=3.5.r193.ga7b33a6a42
+	provides = wine-git=3.5.r193.ga7b33a6a42
 	provides = wine-staging=3.5.r13.g3fe54232
+	provides = wine-pba=3.5.r33.8c72f84
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging
