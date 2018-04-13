@@ -1,0 +1,12 @@
+diff -ura "EuroLatin Source Files/european.kmn" "EuroLatin Source Files.NEW/european.kmn"
+--- "EuroLatin Source Files/european.kmn"	2018-04-13 19:37:19.512188054 +0300
++++ "EuroLatin Source Files.NEW/european.kmn"	2018-04-13 19:27:54.624391639 +0300
+@@ -98,7 +98,7 @@
+ '=' dk(1) + "'" >  U+A78C c Lowercase Saltillo
+ '=' dk(1) + '"' >  U+A78B c Uppercase Saltillo
+    
+-c \
++c backslash
+ store(specialO) '©ÐðƐɛªǤǥĸ—º–ŉØø¶℗®§ſ‡†µ×¡¦¨¬­¯°±´·¸¿÷‰•¹²³⁴⁵⁶⁷⁸⁹⁰'
+ store(specialK) "cDdEefGgkMmNnOoPprSsTtux!|:~-_*+'.,?/%>1234567890"
+ 
