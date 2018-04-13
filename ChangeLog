@@ -1,3 +1,14 @@
+2018-04-13 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.4.10-1:
+  Switched upstream from OpenNebula download site to github project releases
+  New upstream release 5.4.10
+  Added dependencies to build sunstone files needed if building from gitub
+
+2018-02-03 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+  * 5.4.6-1:
+  New upstream release (5.4.6)
+
 2017-09-20 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.4.1-1:
