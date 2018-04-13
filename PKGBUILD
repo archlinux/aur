@@ -41,6 +41,12 @@ pkgver() {
 #  printf "%s.r%s.%s" "${release}" "${count}" "${head}"
 #}
 
+prepare() {
+  cd ${_pkgname}-${_branch}
+
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
+}
+
 build() {
   cd ${_pkgname}-${_branch}
 
