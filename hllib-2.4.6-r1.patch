@@ -1,0 +1,1151 @@
+diff --git a/HLExtract/Main.c b/HLExtract/Main.c
+index 9299289..b82bc0a 100644
+--- a/HLExtract/Main.c
++++ b/HLExtract/Main.c
+@@ -31,7 +31,7 @@
+ #		endif
+ #	endif
+ #else
+-#	include <hl.h>
++#	include "../lib/HLLib.h"
+ #endif
+ 
+ #if _MSC_VER
+@@ -50,14 +50,17 @@
+ 
+ #ifdef _WIN32
+ #	define WIN32_LEAN_AND_MEAN
++#	define UNUSED
+ #	include <windows.h>
+ #else
++#	include <unistd.h>
+ #	include <linux/limits.h>
+ #	define MAX_PATH PATH_MAX
++#	define UNUSED __attribute__((__unused__))
+ 
+-#	define FOREGROUND_BLUE      0x0001
++#	define FOREGROUND_RED       0x0001
+ #	define FOREGROUND_GREEN     0x0002
+-#	define FOREGROUND_RED       0x0004
++#	define FOREGROUND_BLUE      0x0004
+ #	define FOREGROUND_INTENSITY 0x0008
+ 
+ #	define stricmp strcasecmp
+@@ -87,6 +90,7 @@ static hlChar lpDestination[MAX_PATH] = "";
+ static hlBool bSilent = hlFalse;
+ #ifndef _WIN32
+ 	static hlUInt uiProgressLast = 0;
++	static hlUInt16 uiCurrentColor = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
+ #endif
+ 
+ int main(hlInt argc, hlChar* argv[])
+@@ -554,9 +558,11 @@ hlUInt16 GetColor()
+ 			return Info.wAttributes;
+ 		}
+     }
+-#endif
+ 
+ 	return FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
++#else
++	return uiCurrentColor;
++#endif
+ }
+ 
+ hlVoid SetColor(hlUInt16 uiColor)
+@@ -569,6 +575,44 @@ hlVoid SetColor(hlUInt16 uiColor)
+     }
+ 
+ 	SetConsoleTextAttribute(Handle, uiColor);
++#else
++	hlUInt16 uiColorPart;
++
++	if (!isatty(fileno(stdout)))
++	{
++		// cowardly refuse to write colors into things that aren't terminals
++		return;
++	}
++
++	uiColorPart = (uiColor & (FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE));
++
++	if (uiColorPart == 0)
++	{
++		// cowardly refuse to switch to black
++		return;
++	}
++
++	// start with "reset" attribute
++	printf("\033[0");
++
++	// handle white as the default case
++	if (uiColorPart != (FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE))
++	{
++		printf(";3%d", uiColorPart);
++	}
++
++	// activate intensity if wanted
++	if ((uiColor & FOREGROUND_INTENSITY) != 0)
++	{
++		printf(";1");
++	}
++
++	// finish
++	printf("m");
++	fflush(stdout);
++
++	// store for next time
++	uiCurrentColor = uiColor;
+ #endif
+ }
+ 
+@@ -623,10 +667,10 @@ hlVoid PrintUsage()
+ 	printf("HLExtract.exe -p \"C:\\half-life.gcf\" -lf \"C:\\half-life.txt\" -m -s\n");
+ 	printf("HLExtract.exe -p \"C:\\half-life.gcf\" -m -f\n");
+ #else
+-	printf("HLExtract.exe -p \"~/half-life.gcf\" -d \"~/backup\" -e \"root/valve/models\" -e \"root/valve/config.cfg\"\n");
+-	printf("HLExtract.exe -p \"~/half-life.gcf\" -c -m -v\n");
+-	printf("HLExtract.exe -p \"~/half-life.gcf\" -lf \"~/half-life.txt\" -m -s\n");
+-	printf("HLExtract.exe -p \"~/half-life.gcf\" -m -f\n");
++	printf("hlextract -p ~/half-life.gcf -d ~/backup -e \"root/valve/models\" -e \"root/valve/config.cfg\"\n");
++	printf("hlextract -p ~/half-life.gcf -c -m -v\n");
++	printf("hlextract -p ~/half-life.gcf -lf ~/half-life.txt -m -s\n");
++	printf("hlextract -p ~/half-life.gcf -m -f\n");
+ #endif
+ }
+ 
+@@ -657,6 +701,8 @@ hlVoid List(FILE *pFile, HLDirectoryItem *pItem, hlBool bListFolders, hlBool bLi
+ 			fprintf(pFile, "%s\n", lpPath);
+ 		}
+ 		break;
++	default:
++		break;
+ 	}
+ }
+ 
+@@ -708,6 +754,7 @@ hlVoid ProgressUpdate(hlULongLong uiBytesDone, hlULongLong uiBytesTotal)
+ 				printf(".");
+ 			}
+ 		}
++		fflush(stdout);
+ #endif
+ 	}
+ }
+@@ -728,7 +775,7 @@ hlVoid ExtractItemStartCallback(HLDirectoryItem *pItem)
+ 	}
+ }
+ 
+-hlVoid FileProgressCallback(HLDirectoryItem *pFile, hlUInt uiBytesExtracted, hlUInt uiBytesTotal, hlBool *pCancel)
++hlVoid FileProgressCallback(HLDirectoryItem *pFile UNUSED, hlUInt uiBytesExtracted, hlUInt uiBytesTotal, hlBool *pCancel UNUSED)
+ {
+ 	ProgressUpdate((hlULongLong)uiBytesExtracted, (hlULongLong)uiBytesTotal);
+ }
+@@ -787,7 +834,7 @@ hlVoid ExtractItemEndCallback(HLDirectoryItem *pItem, hlBool bSuccess)
+ 	}
+ }
+ 
+-hlVoid DefragmentProgressCallback(HLDirectoryItem *pFile, hlUInt uiFilesDefragmented, hlUInt uiFilesTotal, hlULongLong uiBytesDefragmented, hlULongLong uiBytesTotal, hlBool *pCancel)
++hlVoid DefragmentProgressCallback(HLDirectoryItem *pFile UNUSED, hlUInt uiFilesDefragmented UNUSED, hlUInt uiFilesTotal UNUSED, hlULongLong uiBytesDefragmented, hlULongLong uiBytesTotal, hlBool *pCancel UNUSED)
+ {
+ 	ProgressUpdate(uiBytesDefragmented, uiBytesTotal);
+ }
+@@ -843,6 +890,8 @@ HLValidation Validate(HLDirectoryItem *pItem)
+ 				PrintValidation(eValidation);
+ 				printf("\n");
+ 				break;
++			default:
++				break;
+ 			}
+ 		}
+ 		else
+@@ -851,6 +900,8 @@ HLValidation Validate(HLDirectoryItem *pItem)
+ 			printf("  \n");
+ 		}
+ 		break;
++	default:
++		break;
+ 	}
+ 
+ 	return eValidation;
+@@ -882,13 +933,13 @@ hlVoid PrintAttribute(hlChar *lpPrefix, HLAttribute *pAttribute, hlChar *lpPostf
+ 	case HL_ATTRIBUTE_STRING:
+ 		printf("%s%s: %s%s\n", lpPrefix, pAttribute->lpName, pAttribute->Value.String.lpValue, lpPostfix);
+ 		break;
++	default:
++		break;
+ 	}
+ }
+ 
+ hlVoid PrintValidation(HLValidation eValidation)
+ {
+-	hlUInt16 uiColor = GetColor();
+-
+ 	switch(eValidation)
+ 	{
+ 	case HL_VALIDATES_ASSUMED_OK:
+@@ -1151,6 +1202,8 @@ hlVoid EnterConsole(hlUInt uiPackage, hlUInt uiConsoleCommands, hlChar *lpConsol
+ 						printf("  Size: %u B\n", hlFileGetSize(pSubItem));
+ 						printf("  Size On Disk: %u B\n", hlFileGetSizeOnDisk(pSubItem));
+ 						break;
++					default:
++						break;
+ 					}
+ 
+ 					uiItemCount = hlPackageGetItemAttributeCount();
+diff --git a/HLExtract/Makefile b/HLExtract/Makefile
+new file mode 100644
+index 0000000..b510a1a
+--- /dev/null
++++ b/HLExtract/Makefile
+@@ -0,0 +1,26 @@
++CC		=	gcc
++CXX		=	g++
++CFAMFLAGS	=	-Wall -O2 -g -fPIC -funroll-loops -fvisibility=hidden
++CFLAGS		=
++CXXFLAGS	=
++PREFIX		=	/usr/local
++
++all: hlextract
++
++%.o: %.cpp
++	$(CXX) -c $(CFAMFLAGS) $(CXXFLAGS) -o $@ $^
++
++%.o: %.c
++	$(CC) -c $(CFAMFLAGS) $(CFLAGS) -o $@ $^
++
++clean:
++	rm -f hlextract Main.o
++
++install: hlextract
++	install -g root -m 0755 -o root -d $(PREFIX)/bin
++	install -g root -m 0755 -o root hlextract $(PREFIX)/bin
++
++hlextract: Main.o ../HLLib/libhl.a
++	$(CXX) $(LDFLAGS) -o $@ $^
++
++.PHONY: all clean install
+diff --git a/HLLib/BSPFile.cpp b/HLLib/BSPFile.cpp
+index baa4332..6bc77d6 100644
+--- a/HLLib/BSPFile.cpp
++++ b/HLLib/BSPFile.cpp
+@@ -108,7 +108,7 @@ CDirectoryFolder *CBSPFile::CreateRoot()
+ 	// Loop through each texture in the BSP file.
+ 	for(hlUInt i = 0; i < this->pTextureHeader->uiTextureCount; i++)
+ 	{
+-		if(this->pTextureHeader->lpOffsets[i] == -1)
++		if(this->pTextureHeader->lpOffsets[i] == (hlUInt)-1)
+ 		{
+ 			continue;
+ 		}
+@@ -203,10 +203,14 @@ hlBool CBSPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 						hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], uiPaletteSize, hlFalse);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/DirectoryFolder.cpp b/HLLib/DirectoryFolder.cpp
+index 1cfc4bb..d5b3edc 100644
+--- a/HLLib/DirectoryFolder.cpp
++++ b/HLLib/DirectoryFolder.cpp
+@@ -517,6 +517,8 @@ hlUInt CDirectoryFolder::GetSize(hlBool bRecurse) const
+ 		case HL_ITEM_FILE:
+ 			uiSize += static_cast<const CDirectoryFile *>(pItem)->GetSize();
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+@@ -541,6 +543,8 @@ hlULongLong CDirectoryFolder::GetSizeEx(hlBool bRecurse) const
+ 		case HL_ITEM_FILE:
+ 			uiSize += static_cast<hlULongLong>(static_cast<const CDirectoryFile *>(pItem)->GetSize());
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+@@ -565,6 +569,8 @@ hlUInt CDirectoryFolder::GetSizeOnDisk(hlBool bRecurse) const
+ 		case HL_ITEM_FILE:
+ 			uiSize += static_cast<const CDirectoryFile *>(pItem)->GetSizeOnDisk();
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+@@ -589,6 +595,8 @@ hlULongLong CDirectoryFolder::GetSizeOnDiskEx(hlBool bRecurse) const
+ 		case HL_ITEM_FILE:
+ 			uiSize += static_cast<hlULongLong>(static_cast<const CDirectoryFile *>(pItem)->GetSizeOnDisk());
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+@@ -611,6 +619,8 @@ hlUInt CDirectoryFolder::GetFolderCount(hlBool bRecurse) const
+ 				uiCount += static_cast<const CDirectoryFolder *>(pItem)->GetFolderCount(bRecurse);
+ 			}
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+@@ -635,6 +645,8 @@ hlUInt CDirectoryFolder::GetFileCount(hlBool bRecurse) const
+ 		case HL_ITEM_FILE:
+ 			uiCount++;
+ 			break;
++		default:
++			break;
+ 		}
+ 	}
+ 
+diff --git a/HLLib/Error.cpp b/HLLib/Error.cpp
+index 856f5de..5ea2054 100644
+--- a/HLLib/Error.cpp
++++ b/HLLib/Error.cpp
+@@ -139,7 +139,7 @@ hlVoid CError::SetSystemErrorMessageFormated(const hlChar *lpFormat, ...)
+ 
+ 		hlUInt uiLength = (hlUInt)strlen(this->lpSystemError);
+ 
+-		while(uiLength >= 0 && isspace(this->lpSystemError[uiLength - 1]))
++		while(isspace(this->lpSystemError[uiLength - 1]))
+ 		{
+ 			uiLength--;
+ 		}
+diff --git a/HLLib/FileMapping.cpp b/HLLib/FileMapping.cpp
+index eef612d..315dc25 100644
+--- a/HLLib/FileMapping.cpp
++++ b/HLLib/FileMapping.cpp
+@@ -132,7 +132,7 @@ hlBool CFileMapping::OpenInternal(hlUInt uiMode)
+ 		}
+ 	}
+ #else
+-	hlInt iMode;
++	hlInt iMode = 0;
+ 	
+ 	if((uiMode & HL_MODE_READ) && (uiMode & HL_MODE_WRITE))
+ 	{
+diff --git a/HLLib/FileStream.cpp b/HLLib/FileStream.cpp
+index 88c7e5d..2a6a2b8 100644
+--- a/HLLib/FileStream.cpp
++++ b/HLLib/FileStream.cpp
+@@ -82,7 +82,7 @@ hlBool CFileStream::Open(hlUInt uiMode)
+ 		return hlFalse;
+ 	}
+ #else
+-	hlInt iMode;
++	hlInt iMode = 0;
+ 	
+ 	if((uiMode & HL_MODE_READ) && (uiMode & HL_MODE_WRITE))
+ 	{
+@@ -172,7 +172,7 @@ hlULongLong CFileStream::GetStreamPointer() const
+ 	LARGE_INTEGER liPointer;
+ 	return SetFilePointerEx(this->hFile, liOffset, &liPointer, FILE_CURRENT) ? static_cast<hlULongLong>(liPointer.QuadPart) : 0;
+ #else
+-	 return (hlUInt)lseek(this->iFile, 0, SEEK_CUR);
++	return (hlULongLong)lseek(this->iFile, 0, SEEK_CUR);
+ #endif
+ }
+ 
+@@ -207,9 +207,8 @@ hlULongLong CFileStream::Seek(hlLongLong iOffset, HLSeekMode eSeekMode)
+ 	hlInt iMode = SEEK_SET;
+ 	switch(eSeekMode)
+ 	{
+-	/*case HL_SEEK_BEGINNING:
+-		iMode = SEEK_SET;
+-		break;*/
++	case HL_SEEK_BEGINNING:
++		break;
+ 	case HL_SEEK_CURRENT:
+ 		iMode = SEEK_CUR;
+ 		break;
+@@ -218,7 +217,7 @@ hlULongLong CFileStream::Seek(hlLongLong iOffset, HLSeekMode eSeekMode)
+ 		break;
+ 	}
+ 
+-	return (hlUInt)lseek(this->iFile, iOffset, iMode);
++	return (hlULongLong)lseek(this->iFile, iOffset, iMode);
+ #endif
+ }
+ 
+diff --git a/HLLib/GCFFile.cpp b/HLLib/GCFFile.cpp
+index 6ce4f80..85a9916 100644
+--- a/HLLib/GCFFile.cpp
++++ b/HLLib/GCFFile.cpp
+@@ -789,6 +789,8 @@ hlBool CGCFFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					}
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
+@@ -819,9 +821,13 @@ hlBool CGCFFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					}
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/HLLib.cpp b/HLLib/HLLib.cpp
+index cd44f47..9104e13 100644
+--- a/HLLib/HLLib.cpp
++++ b/HLLib/HLLib.cpp
+@@ -153,6 +153,8 @@ HLLIB_API hlBool hlGetBooleanValidate(HLOption eOption, hlBool *pValue)
+ 	case HL_PACKAGE_BOUND:
+ 		*pValue = pPackage != 0;
+ 		return hlTrue;
++	default:
++		break;
+ 	}
+ 
+ 	return hlFalse;
+@@ -171,6 +173,8 @@ HLLIB_API hlVoid hlSetBoolean(HLOption eOption, hlBool bValue)
+ 	case HL_FORCE_DEFRAGMENT:
+ 		bForceDefragment = bValue;
+ 		break;
++	default:
++		break;
+ 	}
+ }
+ 
+@@ -189,7 +193,7 @@ HLLIB_API hlBool hlGetIntegerValidate(HLOption eOption, hlInt *pValue)
+ 	return bResult;
+ }
+ 
+-HLLIB_API hlVoid hlSetInteger(HLOption eOption, hlInt iValue)
++HLLIB_API hlVoid hlSetInteger(HLOption , hlInt )
+ {
+ 
+ }
+@@ -225,7 +229,6 @@ HLLIB_API hlBool hlGetUnsignedIntegerValidate(HLOption eOption, hlUInt *pValue)
+ 			}
+ 		}
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_SIZE:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -234,7 +237,6 @@ HLLIB_API hlBool hlGetUnsignedIntegerValidate(HLOption eOption, hlUInt *pValue)
+ 
+ 		*pValue = static_cast<hlUInt>(pPackage->GetMapping()->GetMappingSize());
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_ALLOCATIONS:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -243,7 +245,6 @@ HLLIB_API hlBool hlGetUnsignedIntegerValidate(HLOption eOption, hlUInt *pValue)
+ 
+ 		*pValue = pPackage->GetMapping()->GetTotalAllocations();
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_MEMORY_ALLOCATED:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -252,7 +253,6 @@ HLLIB_API hlBool hlGetUnsignedIntegerValidate(HLOption eOption, hlUInt *pValue)
+ 
+ 		*pValue = static_cast<hlUInt>(pPackage->GetMapping()->GetTotalMemoryAllocated());
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_MEMORY_USED:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -261,13 +261,12 @@ HLLIB_API hlBool hlGetUnsignedIntegerValidate(HLOption eOption, hlUInt *pValue)
+ 
+ 		*pValue = static_cast<hlUInt>(pPackage->GetMapping()->GetTotalMemoryUsed());
+ 		return hlTrue;
+-		break;
+ 	default:
+ 		return hlFalse;
+ 	}
+ }
+ 
+-HLLIB_API hlVoid hlSetUnsignedInteger(HLOption eOption, hlUInt iValue)
++HLLIB_API hlVoid hlSetUnsignedInteger(HLOption , hlUInt )
+ {
+ 
+ }
+@@ -287,7 +286,7 @@ HLLIB_API hlBool hlGetLongLongValidate(HLOption eOption, hlLongLong *pValue)
+ 	return bResult;
+ }
+ 
+-HLLIB_API hlVoid hlSetLongLong(HLOption eOption, hlLongLong iValue)
++HLLIB_API hlVoid hlSetLongLong(HLOption , hlLongLong )
+ {
+ 
+ }
+@@ -317,7 +316,6 @@ HLLIB_API hlBool hlGetUnsignedLongLongValidate(HLOption eOption, hlULongLong *pV
+ 			}
+ 		}
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_SIZE:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -326,7 +324,6 @@ HLLIB_API hlBool hlGetUnsignedLongLongValidate(HLOption eOption, hlULongLong *pV
+ 
+ 		*pValue = pPackage->GetMapping()->GetMappingSize();
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_ALLOCATIONS:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -335,7 +332,6 @@ HLLIB_API hlBool hlGetUnsignedLongLongValidate(HLOption eOption, hlULongLong *pV
+ 
+ 		*pValue = static_cast<hlULongLong>(pPackage->GetMapping()->GetTotalAllocations());
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_MEMORY_ALLOCATED:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -344,7 +340,6 @@ HLLIB_API hlBool hlGetUnsignedLongLongValidate(HLOption eOption, hlULongLong *pV
+ 
+ 		*pValue = pPackage->GetMapping()->GetTotalMemoryAllocated();
+ 		return hlTrue;
+-		break;
+ 	case HL_PACKAGE_TOTAL_MEMORY_USED:
+ 		if(pPackage == 0 || !pPackage->GetOpened() || !pPackage->GetMapping())
+ 		{
+@@ -353,13 +348,12 @@ HLLIB_API hlBool hlGetUnsignedLongLongValidate(HLOption eOption, hlULongLong *pV
+ 
+ 		*pValue = pPackage->GetMapping()->GetTotalMemoryUsed();
+ 		return hlTrue;
+-		break;
+ 	default:
+ 		return hlFalse;
+ 	}
+ }
+ 
+-HLLIB_API hlVoid hlSetUnsignedLongLong(HLOption eOption, hlULongLong iValue)
++HLLIB_API hlVoid hlSetUnsignedLongLong(HLOption , hlULongLong )
+ {
+ 
+ }
+@@ -371,12 +365,12 @@ HLLIB_API hlFloat hlGetFloat(HLOption eOption)
+ 	return fValue;
+ }
+ 
+-HLLIB_API hlBool hlGetFloatValidate(HLOption eOption, hlFloat *pValue)
++HLLIB_API hlBool hlGetFloatValidate(HLOption , hlFloat *)
+ {
+ 	return hlFalse;
+ }
+ 
+-HLLIB_API hlVoid hlSetFloat(HLOption eOption, hlFloat fValue)
++HLLIB_API hlVoid hlSetFloat(HLOption , hlFloat )
+ {
+ 	
+ }
+@@ -412,7 +406,7 @@ HLLIB_API hlBool hlGetStringValidate(HLOption eOption, const hlChar **pValue)
+ 	}
+ }
+ 
+-HLLIB_API hlVoid hlSetString(HLOption eOption, const hlChar *lpValue)
++HLLIB_API hlVoid hlSetString(HLOption , const hlChar *)
+ {
+ 
+ }
+@@ -533,6 +527,8 @@ HLLIB_API hlVoid hlSetVoid(HLOption eOption, const hlVoid *pValue)
+ 	case HL_PROC_DEFRAGMENT_PROGRESS_EX:
+ 		pDefragmentProgressExProc = (PDefragmentProgressExProc)pValue;
+ 		break;
++	default:
++		break;
+ 	}
+ }
+ 
+diff --git a/HLLib/Makefile b/HLLib/Makefile
+index c347926..36e5a75 100644
+--- a/HLLib/Makefile
++++ b/HLLib/Makefile
+@@ -1,7 +1,9 @@
+ CXX		=	g++
+-HLLIB_VERS	=	2.3.0
++AR		=	ar
++RANLIB		=	ranlib
++HLLIB_VERS	=	2.4.6
+ LDFLAGS		=	-shared -Wl,-soname,libhl.so.2
+-CXXFLAGS	=	-O2 -g -fpic -funroll-loops -fvisibility=hidden
++CXXFLAGS	=	-O2 -g -fpic -funroll-loops -fvisibility=hidden -std=c++11 -Wall
+ PREFIX		=	/usr/local
+ sources		=	BSPFile.cpp Checksum.cpp DebugMemory.cpp DirectoryFile.cpp \
+ 			DirectoryFolder.cpp DirectoryItem.cpp Error.cpp FileMapping.cpp \
+@@ -12,20 +14,26 @@ sources		=	BSPFile.cpp Checksum.cpp DebugMemory.cpp DirectoryFile.cpp \
+ 			VPKFile.cpp WADFile.cpp Wrapper.cpp XZPFile.cpp ZIPFile.cpp
+ objs		=	$(sources:.cpp=.o)
+ 
+-.cpp.o:
+-	$(CXX) -c $(CXXFLAGS) -o $@ $<
++all: libhl.so.$(HLLIB_VERS) libhl.a
+ 
+-all: libhl.so.$(HLLIB_VERS)
++%.o: %.cpp
++	$(CXX) -c $(CXXFLAGS) -o $@ $^
+ 
+ clean:
+-	rm -f \#* *~ *.o *.so.*
++	rm -f libhl.so.$(HLLIB_VERS) libhl.a $(objs)
+ 
+ install: libhl.so.$(HLLIB_VERS)
+ 	install -g root -m 0755 -o root -d $(PREFIX)/lib $(PREFIX)/include
+ 	install -g root -m 0644 -o root libhl.so.$(HLLIB_VERS) $(PREFIX)/lib
+ 	install -g root -m 0644 -o root ../lib/HLLib.h $(PREFIX)/include/hl.h
+-	ln -fs $(PREFIX)/lib/libhl.so.$(HLLIB_VERS) $(PREFIX)/lib/libhl.so.2
+-	ln -fs $(PREFIX)/lib/libhl.so.$(HLLIB_VERS) $(PREFIX)/lib/libhl.so
++	ln -fs libhl.so.$(HLLIB_VERS) $(PREFIX)/lib/libhl.so.2
++	ln -fs libhl.so.$(HLLIB_VERS) $(PREFIX)/lib/libhl.so
+ 
+ libhl.so.$(HLLIB_VERS): $(objs)
+ 	$(CXX) $(LDFLAGS) -o $@ $(objs)
++
++libhl.a: $(objs)
++	$(AR) -rcu $@ $^
++	$(RANLIB) $@
++
++.PHONY: all clean install
+diff --git a/HLLib/Mapping.cpp b/HLLib/Mapping.cpp
+index 5082015..0011ddd 100644
+--- a/HLLib/Mapping.cpp
++++ b/HLLib/Mapping.cpp
+@@ -15,7 +15,7 @@
+ using namespace HLLib;
+ using namespace HLLib::Mapping;
+ 
+-CView::CView(CMapping *pMapping, hlVoid *lpView, hlULongLong uiAllocationOffset, hlULongLong uiAllocationLength, hlULongLong uiOffset, hlULongLong uiLength) : pMapping(pMapping), lpView(lpView), uiAllocationOffset(uiAllocationOffset), uiAllocationLength(uiAllocationLength), uiOffset(uiOffset), uiLength(uiLength == 0 ? uiAllocationLength - uiOffset : uiLength)
++CView::CView(CMapping *pMapping, hlVoid *lpView, hlULongLong uiAllocationOffset, hlULongLong uiAllocationLength, hlULongLong uiOffset, hlULongLong uiLength) : pMapping(pMapping), lpView(lpView), uiOffset(uiOffset), uiLength(uiLength == 0 ? uiAllocationLength - uiOffset : uiLength), uiAllocationOffset(uiAllocationOffset), uiAllocationLength(uiAllocationLength)
+ {
+ 	assert(this->uiOffset + this->uiLength <= this->uiAllocationLength);
+ }
+@@ -207,7 +207,7 @@ hlBool CMapping::Unmap(CView *&pView)
+ 	return hlFalse;
+ }
+ 
+-hlVoid CMapping::UnmapInternal(CView &View)
++hlVoid CMapping::UnmapInternal(CView &)
+ {
+ 
+ }
+@@ -244,7 +244,7 @@ hlBool CMapping::Commit(CView &View, hlULongLong uiOffset, hlULongLong uiLength)
+ 	return this->CommitInternal(View, uiOffset, uiLength);
+ }
+ 
+-hlBool CMapping::CommitInternal(CView &View, hlULongLong uiOffset, hlULongLong uiLength)
++hlBool CMapping::CommitInternal(CView &, hlULongLong , hlULongLong )
+ {
+ 	return hlTrue;
+ }
+diff --git a/HLLib/MappingStream.cpp b/HLLib/MappingStream.cpp
+index 7a4a54c..8e78042 100644
+--- a/HLLib/MappingStream.cpp
++++ b/HLLib/MappingStream.cpp
+@@ -15,7 +15,7 @@
+ using namespace HLLib;
+ using namespace HLLib::Streams;
+ 
+-CMappingStream::CMappingStream(Mapping::CMapping &Mapping, hlULongLong uiMappingOffset, hlULongLong uiMappingSize, hlULongLong uiViewSize) : bOpened(hlFalse), uiMode(HL_MODE_INVALID), Mapping(Mapping), uiMappingOffset(uiMappingOffset), uiMappingSize(uiMappingSize), uiViewSize(uiViewSize), pView(0), uiPointer(0), uiLength(0)
++CMappingStream::CMappingStream(Mapping::CMapping &Mapping, hlULongLong uiMappingOffset, hlULongLong uiMappingSize, hlULongLong uiViewSize) : bOpened(hlFalse), uiMode(HL_MODE_INVALID), Mapping(Mapping), pView(NULL), uiMappingOffset(uiMappingOffset), uiMappingSize(uiMappingSize), uiViewSize(uiViewSize), uiPointer(0), uiLength(0)
+ {
+ 	if(this->uiViewSize == 0)
+ 	{
+diff --git a/HLLib/NCFFile.cpp b/HLLib/NCFFile.cpp
+index 482108d..d7741c9 100644
+--- a/HLLib/NCFFile.cpp
++++ b/HLLib/NCFFile.cpp
+@@ -347,6 +347,8 @@ hlBool CNCFFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], this->lpDirectoryEntries[pFile->GetID()].uiDirectoryFlags, hlTrue);
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
+@@ -360,9 +362,13 @@ hlBool CNCFFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], this->lpDirectoryEntries[pFolder->GetID()].uiDirectoryFlags, hlTrue);
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/NullStream.cpp b/HLLib/NullStream.cpp
+index cc1ac41..819913e 100644
+--- a/HLLib/NullStream.cpp
++++ b/HLLib/NullStream.cpp
+@@ -69,27 +69,27 @@ hlULongLong CNullStream::GetStreamPointer() const
+ 	return 0;
+ }
+ 
+-hlULongLong CNullStream::Seek(hlLongLong iOffset, HLSeekMode eSeekMode)
++hlULongLong CNullStream::Seek(hlLongLong , HLSeekMode )
+ {
+ 	return 0;
+ }
+ 
+-hlBool CNullStream::Read(hlChar &cChar)
++hlBool CNullStream::Read(hlChar &)
+ {
+ 	return hlFalse;
+ }
+ 
+-hlUInt CNullStream::Read(hlVoid *lpData, hlUInt uiBytes)
++hlUInt CNullStream::Read(hlVoid *, hlUInt )
+ {
+ 	return 0;
+ }
+ 
+-hlBool CNullStream::Write(hlChar cChar)
++hlBool CNullStream::Write(hlChar )
+ {
+ 	return hlFalse;
+ }
+ 
+-hlUInt CNullStream::Write(const hlVoid *lpData, hlUInt uiBytes)
++hlUInt CNullStream::Write(const hlVoid *, hlUInt )
+ {
+ 	return 0;
+ }
+diff --git a/HLLib/Package.cpp b/HLLib/Package.cpp
+index 31f17e2..a3b4c68 100644
+--- a/HLLib/Package.cpp
++++ b/HLLib/Package.cpp
+@@ -267,12 +267,12 @@ hlUInt CPackage::GetAttributeCountInternal() const
+ 	return 0;
+ }
+ 
+-const hlChar *CPackage::GetAttributeNameInternal(HLPackageAttribute eAttribute) const
++const hlChar *CPackage::GetAttributeNameInternal(HLPackageAttribute ) const
+ {
+ 	return 0;
+ }
+ 
+-hlBool CPackage::GetAttributeInternal(HLPackageAttribute eAttribute, HLAttribute &Attribute) const
++hlBool CPackage::GetAttributeInternal(HLPackageAttribute , HLAttribute &) const
+ {
+ 	return hlFalse;
+ }
+@@ -315,12 +315,12 @@ hlUInt CPackage::GetItemAttributeCountInternal() const
+ 	return 0;
+ }
+ 
+-const hlChar *CPackage::GetItemAttributeNameInternal(HLPackageAttribute eAttribute) const
++const hlChar *CPackage::GetItemAttributeNameInternal(HLPackageAttribute ) const
+ {
+ 	return 0;
+ }
+ 
+-hlBool CPackage::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackageAttribute eAttribute, HLAttribute &Attribute) const
++hlBool CPackage::GetItemAttributeInternal(const CDirectoryItem *, HLPackageAttribute , HLAttribute &) const
+ {
+ 	return hlFalse;
+ }
+@@ -338,7 +338,7 @@ hlBool CPackage::GetFileExtractable(const CDirectoryFile *pFile, hlBool &bExtrac
+ 	return this->GetFileExtractableInternal(pFile, bExtractable);
+ }
+ 
+-hlBool CPackage::GetFileExtractableInternal(const CDirectoryFile *pFile, hlBool &bExtractable) const
++hlBool CPackage::GetFileExtractableInternal(const CDirectoryFile *, hlBool &bExtractable) const
+ {
+ 	bExtractable = hlTrue;
+ 	return hlTrue;
+@@ -357,7 +357,7 @@ hlBool CPackage::GetFileValidation(const CDirectoryFile *pFile, HLValidation &eV
+ 	return this->GetFileValidationInternal(pFile, eValidation);
+ }
+ 
+-hlBool CPackage::GetFileValidationInternal(const CDirectoryFile *pFile, HLValidation &eValidation) const
++hlBool CPackage::GetFileValidationInternal(const CDirectoryFile *, HLValidation &eValidation) const
+ {
+ 	eValidation = HL_VALIDATES_ASSUMED_OK;
+ 	return hlTrue;
+@@ -429,7 +429,7 @@ hlVoid CPackage::ReleaseStream(Streams::IStream *pStream) const
+ 	}
+ }
+ 
+-hlVoid CPackage::ReleaseStreamInternal(Streams::IStream &Stream) const
++hlVoid CPackage::ReleaseStreamInternal(Streams::IStream &) const
+ {
+ 
+ }
+diff --git a/HLLib/SGAFile.cpp b/HLLib/SGAFile.cpp
+index 4d35013..130da60 100644
+--- a/HLLib/SGAFile.cpp
++++ b/HLLib/SGAFile.cpp
+@@ -352,7 +352,7 @@ hlVoid CSGAFile::CSGADirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSG
+ template<typename TSGAHeader, typename TSGADirectoryHeader, typename TSGASection, typename TSGAFolder, typename TSGAFile>
+ CDirectoryFolder *CSGAFile::CSGADirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::CreateRoot()
+ {
+-	CDirectoryFolder *pRoot = new CDirectoryFolder(&File);
++	CDirectoryFolder *pRoot = new CDirectoryFolder(&this->File);
+ 
+ 	for(hlUInt i = 0; i < this->pDirectoryHeader->uiSectionCount; i++)
+ 	{
+@@ -446,9 +446,13 @@ hlBool CSGAFile::CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGAS
+ 						hlAttributeSetString(&Attribute, CSGAFile::lpItemAttributeNames[eAttribute], CSGAFile::lpVerificationNames[CSGAFile::VERIFICATION_CRC]);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 				break;
+ 			}
++			default:
++				break;
+ 		}
+ 	}
+ 	return hlFalse;
+@@ -477,9 +481,13 @@ hlBool CSGAFile::CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGAS
+ 						hlAttributeSetString(&Attribute, CSGAFile::lpItemAttributeNames[eAttribute], CSGAFile::lpVerificationNames[CSGAFile::VERIFICATION_CRC]);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 				break;
+ 			}
++			default:
++				break;
+ 		}
+ 	}
+ 	return hlFalse;
+@@ -508,9 +516,13 @@ hlBool CSGAFile::CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGAS
+ 						hlAttributeSetString(&Attribute, CSGAFile::lpItemAttributeNames[eAttribute], CSGAFile::lpVerificationNames[File.uiDummy0 < CSGAFile::VERIFICATION_COUNT ? File.uiDummy0 : CSGAFile::VERIFICATION_NONE]);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 				break;
+ 			}
++			default:
++				break;
+ 		}
+ 	}
+ 	return hlFalse;
+@@ -552,6 +564,8 @@ hlBool CSGAFile::CSGADirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSG
+ 						}
+ 						return hlFalse;
+ 					}
++					default:
++						break;
+ 				}
+ 				break;
+ 			}
+@@ -601,9 +615,13 @@ hlBool CSGAFile::CSGADirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSG
+ 						hlAttributeSetUnsignedInteger(&Attribute, CSGAFile::lpItemAttributeNames[eAttribute], File.uiType, hlFalse);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 				break;
+ 			}
++			default:
++				break;
+ 		}
+ 	}
+ 	return CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::GetItemAttributeInternal(pItem, eAttribute, Attribute);
+@@ -905,4 +923,4 @@ hlVoid CSGAFile::CSGADirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSG
+ 	{
+ 		delete []static_cast<const hlByte *>(static_cast<Streams::CMemoryStream &>(Stream).GetBuffer());
+ 	}
+-}
+\ No newline at end of file
++}
+diff --git a/HLLib/SGAFile.h b/HLLib/SGAFile.h
+index 87fd8fa..65b05c5 100644
+--- a/HLLib/SGAFile.h
++++ b/HLLib/SGAFile.h
+@@ -163,11 +163,11 @@ namespace HLLib
+ 		class CSGASpecializedDirectory : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
+-			typedef typename TSGAFile SGAFile;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
++			typedef TSGAFile SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+ 
+@@ -192,10 +192,10 @@ namespace HLLib
+ 		class CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, SGAFile4> : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
+ 			typedef CSGAFile::SGAFile4 SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+@@ -221,10 +221,10 @@ namespace HLLib
+ 		class CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, SGAFile6> : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
+ 			typedef CSGAFile::SGAFile6 SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+@@ -249,6 +249,12 @@ namespace HLLib
+ 		class CSGADirectory : public CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>
+ 		{
+ 		public:
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAHeader SGAHeader;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGADirectoryHeader SGADirectoryHeader;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGASection SGASection;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAFolder SGAFolder;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAFile SGAFile;
++
+ 			CSGADirectory(CSGAFile& File);
+ 			virtual ~CSGADirectory();
+ 
+diff --git a/HLLib/Utility.cpp b/HLLib/Utility.cpp
+index ad1d85e..0492375 100644
+--- a/HLLib/Utility.cpp
++++ b/HLLib/Utility.cpp
+@@ -206,6 +206,10 @@ hlUInt HLLib::WStringToString(const hlWChar *lpSource, hlChar* lpDest, hlUInt ui
+ 			uiDestSize--;
+ 			uiCharsWritten++;
+ 		}
++		else
++		{
++			return 0;
++		}
+ 	}
+ 	if(uiDestSize > 0)
+ 	{
+diff --git a/HLLib/VBSPFile.cpp b/HLLib/VBSPFile.cpp
+index 52a9575..2702cae 100644
+--- a/HLLib/VBSPFile.cpp
++++ b/HLLib/VBSPFile.cpp
+@@ -422,6 +422,8 @@ hlBool CVBSPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackag
+ 						delete []lpComment;
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 			}
+ 			else
+@@ -441,9 +443,13 @@ hlBool CVBSPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackag
+ 					}
+ 					case HL_VBSP_ITEM_FOUR_CC:
+ 					{
+-						hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], *(hlUInt *)this->pHeader->lpLumps[uiID].lpFourCC, hlTrue);
++						union { const hlChar *c; const hlUInt *u; } fourCC;
++						fourCC.c = this->pHeader->lpLumps[uiID].lpFourCC;
++						hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], *fourCC.u, hlTrue);
+ 						return hlTrue;
+ 					}
++					default:
++						break;
+ 				}
+ 
+ 				if(this->pEndOfCentralDirectoryRecord != 0 && pItem->GetID() == HL_VBSP_LUMP_PAKFILE)
+@@ -466,11 +472,15 @@ hlBool CVBSPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackag
+ 							delete []lpComment;
+ 							return hlTrue;
+ 						}
++						default:
++							break;
+ 					}
+ 				}
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/VPKFile.cpp b/HLLib/VPKFile.cpp
+index b57dae9..90afb0f 100644
+--- a/HLLib/VPKFile.cpp
++++ b/HLLib/VPKFile.cpp
+@@ -205,7 +205,7 @@ hlBool CVPKFile::MapDataStructures()
+ 			memset(this->lpArchives, 0, this->uiArchiveCount * sizeof(VPKArchive));
+ 			for(hlUInt i = 0; i < this->uiArchiveCount; i++)
+ 			{
+-				hlInt iPrinted = sprintf(lpArchiveNumber, "%0.3u", i);
++				hlInt iPrinted = sprintf(lpArchiveNumber, "%.3u", i);
+ 				if(iPrinted > 0)
+ 				{
+ 					strcat(lpArchiveNumber + iPrinted, lpExtension);
+@@ -415,9 +415,13 @@ hlBool CVPKFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], pDirectoryItem->pDirectoryEntry->uiCRC, hlTrue);
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/WADFile.cpp b/HLLib/WADFile.cpp
+index 2fd41e1..43ca298 100644
+--- a/HLLib/WADFile.cpp
++++ b/HLLib/WADFile.cpp
+@@ -200,9 +200,13 @@ hlBool CWADFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], (hlUInt)pLump->iType, hlTrue);
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/XZPFile.cpp b/HLLib/XZPFile.cpp
+index 13296af..2a57cff 100644
+--- a/HLLib/XZPFile.cpp
++++ b/HLLib/XZPFile.cpp
+@@ -301,9 +301,13 @@ hlBool CXZPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					hlAttributeSetUnsignedInteger(&Attribute, this->lpItemAttributeNames[eAttribute], uiSize, hlFalse);
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+diff --git a/HLLib/ZIPFile.cpp b/HLLib/ZIPFile.cpp
+index e840617..f3de3e2 100644
+--- a/HLLib/ZIPFile.cpp
++++ b/HLLib/ZIPFile.cpp
+@@ -393,9 +393,13 @@ hlBool CZIPFile::GetItemAttributeInternal(const CDirectoryItem *pItem, HLPackage
+ 					delete []lpComment;
+ 					return hlTrue;
+ 				}
++				default:
++					break;
+ 			}
+ 			break;
+ 		}
++		default:
++			break;
+ 	}
+ 
+ 	return hlFalse;
+@@ -601,4 +605,4 @@ hlVoid CZIPFile::ReleaseStreamInternal(Streams::IStream &Stream) const
+ 	{
+ 		delete []static_cast<const hlByte *>(static_cast<Streams::CMemoryStream &>(Stream).GetBuffer());
+ 	}
+-}
+\ No newline at end of file
++}
+diff --git a/lib/HLLib.h b/lib/HLLib.h
+index a20b639..f4b0d50 100644
+--- a/lib/HLLib.h
++++ b/lib/HLLib.h
+@@ -2031,11 +2031,11 @@ namespace HLLib
+ 		class CSGASpecializedDirectory : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
+-			typedef typename TSGAFile SGAFile;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
++			typedef TSGAFile SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+ 
+@@ -2060,10 +2060,10 @@ namespace HLLib
+ 		class CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, SGAFile4> : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
+ 			typedef CSGAFile::SGAFile4 SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+@@ -2089,10 +2089,10 @@ namespace HLLib
+ 		class CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, SGAFile6> : public ISGADirectory
+ 		{
+ 		public:
+-			typedef typename TSGAHeader SGAHeader;
+-			typedef typename TSGADirectoryHeader SGADirectoryHeader;
+-			typedef typename TSGASection SGASection;
+-			typedef typename TSGAFolder SGAFolder;
++			typedef TSGAHeader SGAHeader;
++			typedef TSGADirectoryHeader SGADirectoryHeader;
++			typedef TSGASection SGASection;
++			typedef TSGAFolder SGAFolder;
+ 			typedef CSGAFile::SGAFile6 SGAFile;
+ 
+ 			CSGASpecializedDirectory(CSGAFile& File);
+@@ -2117,6 +2117,12 @@ namespace HLLib
+ 		class CSGADirectory : public CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>
+ 		{
+ 		public:
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAHeader SGAHeader;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGADirectoryHeader SGADirectoryHeader;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGASection SGASection;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAFolder SGAFolder;
++			typedef typename CSGASpecializedDirectory<TSGAHeader, TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile>::SGAFile SGAFile;
++
+ 			CSGADirectory(CSGAFile& File);
+ 			virtual ~CSGADirectory();
+ 
