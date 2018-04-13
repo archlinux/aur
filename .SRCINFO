@@ -1,7 +1,7 @@
 pkgbase = sway-wlroots-git
 	pkgdesc = i3 compatible window manager for Wayland
 	pkgver = 1.0.alpha.1.r46.g57851704
-	pkgrel = 2
+	pkgrel = 3
 	url = http://swaywm.org
 	install = sway-wlroots-git.install
 	arch = x86_64

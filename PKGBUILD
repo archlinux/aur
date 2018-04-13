@@ -1,7 +1,7 @@
 # Maintainer: Nils Brause <nilschrbrause@gmail.com>
 pkgname=sway-wlroots-git
 pkgver=1.0.alpha.1.r46.g57851704
-pkgrel=2
+pkgrel=3
 pkgdesc='i3 compatible window manager for Wayland'
 arch=('x86_64')
 url='http://swaywm.org'
