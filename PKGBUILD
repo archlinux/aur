@@ -2,13 +2,13 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=1.19.3
+pkgver=1.19.4.r15.gf56f970b
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
 license=('GPL3')
-depends=('libutil-linux' 'gnutls' 'libidn' 'libpsl>=0.7.1-3' 'gpgme')
+depends=('libutil-linux' 'gnutls' 'libidn' 'libpsl' 'gpgme')
 optdepends=("ca-certificates: HTTPS Downloads")
 checkdepends=('perl' 'perl-http-daemon' 'perl-io-socket-ssl' 'python')
 makedepends=('git' 'perl' 'rsync')
