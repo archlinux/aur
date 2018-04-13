@@ -2,7 +2,7 @@
 _pkgname=xfce4-terminal
 pkgname=xfce4-terminal-git
 pkgver=0.8.7.3.r30.gbf257001
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
 url="https://docs.xfce.org/apps/terminal/start"
@@ -27,7 +27,6 @@ build() {
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib/xfce4 \
 		--localstatedir=/var \
-		--enable-gen-doc \
 		--disable-static \
 		--disable-debug
 	make
