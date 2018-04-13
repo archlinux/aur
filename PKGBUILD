@@ -1,0 +1,46 @@
+# Maintainer: Benjamin Hodgetts <ben@xnode.org>
+# Contributor: Franco Tortoriello
+
+pkgname=munt-ex-git
+_pkgname=munt
+pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
+pkgver=1977.aa2a2f2
+pkgrel=1
+arch=(i686 x86_64)
+url="http://munt.sourceforge.net"
+license=(LGPL2.1)
+depends=('qt5-base' 'qt5-multimedia' 'portaudio' 'libpulse' 'alsa-lib')
+makedepends=('git' 'cmake' 'gendesk')
+options=(staticlibs)
+source=(git://github.com/munt/munt.git)
+provides=('munt')
+conflicts=('munt')
+md5sums=(SKIP)
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+build() {
+	cd "${srcdir}"
+	gendesk -n -f \
+          --pkgname="${pkgname}" \
+          --pkgdesc="${pkgdesc}" \
+          --name="Munt" \
+          --categories="Audio;AudioVideo;Midi;X-Alsa;X-Jack;Qt" \
+          --exec="/usr/bin/mt32emu-qt" \
+          --startupnotify=true
+
+	convert "${srcdir}/${_pkgname}/mt32emu_qt/src/images/Icon.gif" "${srcdir}/munt.png"
+
+	cd "${srcdir}/${_pkgname}"
+	cmake -DWITH_INTERNAL_PORTAUDIO='FALSE' -DCMAKE_INSTALL_PREFIX='/usr'
+	make
+}
+
+package() {
+	cd "${srcdir}/${_pkgname}"
+	make DESTDIR="$pkgdir" install
+}
