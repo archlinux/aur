@@ -2,11 +2,12 @@
 
 pkgname=algernon
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64' 'i686')
 url='https://algernon.roboticoverlords.org/'
 license=('MIT')
+depends=('redis')
 makedepends=('git' 'go' 'setconf')
 optdepends=('redis: For using the Redis database backend'
             'mariadb: For using the MariaDB/MySQL database backend'
