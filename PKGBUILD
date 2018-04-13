@@ -2,9 +2,9 @@
 pkgname=terminus-terminal
 _pkgname=terminus
 _pkgver=1.0.0
-pkgver=1.0.0.42
+pkgver=1.0.0.44
 pkgrel=1
-alpha=42
+alpha=44
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://github.com/Eugeny/terminus"
@@ -15,7 +15,7 @@ provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
 source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-alpha.${alpha}_amd64.deb")
-sha256sums=('abda90b8bdaee2e997a90725b0fb0bc580953f4eced29ec9838aff706c39b6e4')
+sha256sums=('bc217d7279a0c75df870638c23e9a08ad308f1d4f9a3295278921dd2511057b1')
 
 pkgver(){
   echo ${_pkgver}.${alpha}
