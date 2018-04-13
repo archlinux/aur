@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.rc1.r0.gfb9f38a4ae
+pkgver=8.2.rc2.r0.g303efaa461
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -145,7 +145,7 @@ package_sagemath-git() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
-  for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env env-config eval grep grepdoc inline-fortran \
+  for _i in arch-env cachegrind callgrind cleaner coverage coverageall cython env env-config eval grep grepdoc inline-fortran \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
