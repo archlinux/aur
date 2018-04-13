@@ -1,4 +1,5 @@
-# Maintainer: Ondrej Jirman <megous@megous.com>
+# Maintainer: DetMittens
+# Based on PKGBUILD Maintained by: Ondrej Jirman <megous@megous.com>
 
 pkgname=megatools-git
 pkgver=1.9.98.r45.g5a48663
