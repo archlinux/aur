@@ -6,7 +6,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.6.22.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,9 +16,9 @@ depends=('dkms' 'libelf' 'openafs')
 provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf)
-sha256sums=('cecf7c002ae9ff977a43435a8e63d57ffcac3ff3f99025cbfe4edb175f3c4196'
+sha256sums=('63fae6b3a4339e4a40945fae1afb9b99a5e7f8e8dbde668938ab8c4ff569fd7d'
             'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
 
 prepare() {
@@ -44,6 +44,7 @@ build() {
               --libexecdir=/usr/lib \
               --disable-fuse-client \
               --disable-kernel-module \
+              --without-swig \
               --with-afs-sysname=$sysname
 
   make only_libafs_tree
@@ -52,7 +53,7 @@ build() {
 package() {
 
   # install license
-  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/src/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/${_srcname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   # install sources
   install -dm755 ${pkgdir}/usr/src/${_srcname}-${pkgver}
