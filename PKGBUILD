@@ -1,6 +1,6 @@
 # Maintainer: Hamza BENDALI BRAHAM <hbendali@ya.ru>
 # Contributor: Hamza BENDALI BRAHAM <hbendali@ya.ru>
-pkgname=mos-bin
+pkgname=mongoose-os
 pkgver=2.0+4ed5853
 pkgrel=2
 pkgdesc="This package contains the Mongoose OS CLI tool."
