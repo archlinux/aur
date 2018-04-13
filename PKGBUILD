@@ -8,7 +8,7 @@ url='http://swaywm.org'
 license=('MIT')
 depends=('json-c' 'pcre' 'wlroots-git' 'wayland' 'wayland-protocols'
          'libxkbcommon' 'cairo' 'pango' 'gdk-pixbuf2' 'pixman' 'libcap'
-         'libinput' 'pam')
+         'libinput' 'pam' 'xorg-server-xwayland')
 makedepends=('git' 'meson' 'ninja' 'asciidoc')
 provides=('sway')
 conflicts=('sway' 'sway-git')

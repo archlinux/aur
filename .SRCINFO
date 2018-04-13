@@ -23,6 +23,7 @@ pkgbase = sway-wlroots-git
 	depends = libcap
 	depends = libinput
 	depends = pam
+	depends = xorg-server-xwayland
 	provides = sway
 	conflicts = sway
 	conflicts = sway-git
