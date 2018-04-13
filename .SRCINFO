@@ -1,7 +1,7 @@
 pkgbase = microsoft-r-open
 	pkgdesc = Language and environment for statistical computing and graphics, enhanced by Microsoft
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mran.revolutionanalytics.com/open/
 	install = microsoft-r-open.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = microsoft-r-open
 	depends = curl
 	depends = desktop-file-utils
 	depends = gcc-libs
+	depends = icu60
 	depends = libjpeg
 	depends = libpng
 	depends = libpng12
