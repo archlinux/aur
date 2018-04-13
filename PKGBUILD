@@ -5,17 +5,19 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
 license=('GPL')
-depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1' 'qt5-gamepad' 'lua51-utf8' 'lua51-lcf')
+depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' \
+         'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1'  \
+         'qt5-gamepad' 'lua51-utf8' 'lua51-lcf' 'ttf-font')
 makedepends=('boost' 'qt5-tools')
 conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
-sha256sums=('4dcc625ffe43f3a2ab46273742482b498758fc435247c79dca588f5680bf3961')
+sha256sums=('4fe5f4f57a4c4a2eba2cddf3fbc8fab9f9d4eb3314b49a6378e3231200d9f706')
 
 prepare() {
     cd "$srcdir/src"
@@ -25,7 +27,8 @@ prepare() {
 
 build() {
     cd "$srcdir/src"
-    WITH_UPDATER=”no”
+    export WITH_FONTS=NO 
+    #export WITH_UPDATER=NO ## Built-in updater should be disabled, but disabling it causes the build to fail
     qmake-qt5 PREFIX=/usr
     make
 }
