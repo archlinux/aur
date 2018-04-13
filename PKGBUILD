@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
 
 pkgname=curecoin-qt-git
-pkgver=r132.f570a26
+pkgver=v1.9.4.1.r19.gf570a26
 pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd ${srcdir}/CurecoinSource
   set -o pipefail
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
