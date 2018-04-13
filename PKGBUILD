@@ -1,9 +1,9 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
-_orgname=openorienteering
+_orgname=OpenOrienteering
 _pkgname=mapper
 _branch=master
-pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.8.1.2pre.r4525.b7f3b713
+pkgname=${_orgname,,}-${_pkgname}-git
+pkgver=0.8.1.2pre.r4582.07a64a2f
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLICENSING_PROVIDER=arch   \
-    -DMapper_PACKAGE_NAME=${pkgname} \
+    -DMapper_PACKAGE_NAME=${pkgname//-git} \
     -DMapper_VERSION_DISPLAY=${pkgver} \
     -Wno-dev
   make
