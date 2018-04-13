@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.16.r10220.g3c0d551e02b2590fa7
+pkgver=4.16.r12001.g1bad9ce155a7c010a9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 _sp3config="y"
 # _makenconfig="y"
 _interactive="y"
-_kvmkillable_patch="y"
+_kvmkillable_patch="n"
 _touchscreen_patch="n"
 
 _kernelname="${pkgbase#linux}"
@@ -282,29 +282,29 @@ _package-headers() {
   done
 
   # Fix file conflict with -doc package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
 
   # Add objtool for CONFIG_STACK_VALIDATION
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
+  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
+
+  # strip scripts directory
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
+    case "$(file -bi "${binary}")" in
+      *application/x-sharedlib*) # Libraries (.so)
+        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+      *application/x-archive*) # Libraries (.a)
+        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+      *application/x-executable*) # Binaries
+        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+    esac
+  done
+
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-
-  # # strip scripts directory
-  # find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-  #   case "$(file -bi "${binary}")" in
-  #     *application/x-sharedlib*) # Libraries (.so)
-  #       /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-  #     *application/x-archive*) # Libraries (.a)
-  #       /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-  #     *application/x-executable*) # Binaries
-  #       /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-  #   esac
-  # done
 }
 
 _package-docs() {
