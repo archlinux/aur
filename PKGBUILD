@@ -30,7 +30,7 @@ arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
 install="${pkgname}.install"
-source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
+source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
 md5sums=('3f9f5f61d956b2d1d12f009ddd810fd0'
          'bfe6791027de966cad240d8584c6b657')
