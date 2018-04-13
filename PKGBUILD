@@ -1,7 +1,7 @@
 
 pkgname=sway
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.15.2
+pkgrel=1
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("x86_64")
 url="http://swaywm.org"
@@ -23,7 +23,7 @@ source=(
 )
 install="$pkgname.install"
 sha256sums=(
-	"b4305581587b1072f5cb61387230aaf731ea9ea0d01fdf198856a757e2195149"
+	"05526e3038d2a5490a64bd816f1f04d2a6c214ddc6182835312b273b40b737ae"
 	"SKIP"
 )
 validpgpkeys=(
