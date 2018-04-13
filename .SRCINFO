@@ -1,0 +1,25 @@
+pkgbase = kakoune
+	pkgdesc = Multiple-selection, UNIX-flavored modal editor
+	pkgver = 2018.04.13
+	pkgrel = 1
+	url = http://kakoune.org/
+	arch = any
+	license = custom:unlicense
+	makedepends = asciidoc
+	makedepends = make
+	makedepends = pkg-config
+	depends = ncurses
+	optdepends = file: MIME-type based file format detection
+	optdepends = aspell: spell checking support
+	optdepends = clang: C/C++ completion and diagnostics support
+	optdepends = ranger: filesystem explorer
+	optdepends = tmux: splitting and creating windows
+	optdepends = universal-ctags-git: provides `readtags` used to jump to a symbol's definition
+	optdepends = xdotool: X11 utility to focus arbitrary kakoune clients
+	optdepends = xorg-xmessage: display debug messages in a new window
+	conflicts = kakoune-git
+	source = https://github.com/mawww/kakoune/archive/v2018.04.13.tar.gz
+	sha256sums = dfbaf87479ae30fd87426ae1b5f6cbe4382d6fe17b64a0c58d9475bf038e50dc
+
+pkgname = kakoune
+
