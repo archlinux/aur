@@ -1,0 +1,25 @@
+pkgbase = fence-agents-git
+	pkgdesc = OCF fence agents for rgmanager and pacemaker
+	pkgver = 4.1.1.r49.g7473fab7
+	pkgrel = 1
+	url = http://clusterlabs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libxslt
+	makedepends = python
+	makedepends = docbook-xsl
+	depends = python-pexpect
+	depends = openwsman
+	depends = python-pycurl
+	depends = python-requests
+	depends = python-boto3
+	depends = python-suds
+	provides = fence-agents
+	conflicts = fence-agents
+	source = fence-agents-git::git+https://github.com/ClusterLabs/fence-agents
+	md5sums = SKIP
+
+pkgname = fence-agents-git
+
