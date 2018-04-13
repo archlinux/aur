@@ -6,7 +6,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-macbook       # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15.15
+pkgver=4.15.17
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -32,7 +32,7 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            'e57d3958d4265676dbe453266c73dc6354488df7b88d2763496ab0e6febd7fac'
             'SKIP'
             'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
