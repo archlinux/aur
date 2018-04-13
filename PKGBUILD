@@ -6,7 +6,7 @@
 pkgname=pacemaker-git
 _pkgname=pacemaker
 pkgver=2.0.0.rc1.r1.gedd67444e
-pkgrel=1
+pkgrel=2
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${_pkgname}/"
@@ -71,6 +71,7 @@ package() {
   cd "$srcdir"
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   cat>"$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"<<-EOF
+		d /var/log/pacemaker          0755 hacluster haclient
 		d /var/lib/pacemaker          0770 hacluster haclient
 		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
 		d /var/lib/pacemaker/cib      0770 hacluster haclient
