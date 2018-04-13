@@ -1,0 +1,24 @@
+pkgbase = malamute-git
+	pkgdesc = The ZeroMQ Enterprise Messaging Broker
+	pkgver = 20180412
+	pkgrel = 1
+	url = https://github.com/zeromq/malamute
+	arch = x86_64
+	license = MPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = libsodium
+	depends = zeromq
+	depends = czmq
+	provides = malamute
+	conflicts = malamute
+	source = git+https://github.com/zeromq/malamute
+	sha256sums = SKIP
+
+pkgname = malamute-git
+
