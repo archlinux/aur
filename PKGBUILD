@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-dark-variant"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-dark-variant/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-dark-variant/archive/$pkgver.tar.gz")
 md5sums=("60bb3cf0eb9f84c4f263f8092f87a3c8")
 
 package() {
