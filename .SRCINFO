@@ -1,13 +1,17 @@
 pkgbase = matplotlib2tikz
 	pkgdesc = Convert matplotlib figures into TikZ/PGFPlots
-	pkgver = 0.6.11
+	pkgver = 0.6.15
 	pkgrel = 1
 	url = https://github.com/nschloe/matplotlib2tikz
 	arch = any
 	license = MIT
 	makedepends = python
-	source = https://github.com/nschloe/matplotlib2tikz/archive/v0.6.11.tar.gz
-	md5sums = 614c3b84f25ef04fa1dc99dfc8530454
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-pillow
+	source = https://github.com/nschloe/matplotlib2tikz/archive/v0.6.15.tar.gz
+	sha256sums = 337dc015dabfc140a94ccd25a7d1afa4d0546ee715dacb323733b33aa1c4a59f
 
 pkgname = matplotlib2tikz
 
