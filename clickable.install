@@ -6,8 +6,6 @@ post_install() {
   echo " "
   echo "After installation you need to configure docker for clickable:"
   echo " clickable setup-docker"
-  echo "and install cookiecutter package"
-  echo " pip2 install --user cookiecutter"
   echo " "
 
 }
