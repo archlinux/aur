@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-duplicate-line"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-duplicate-line/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-duplicate-line/archive/$pkgver.tar.gz")
 md5sums=("3836817277df65475c92415ee15adbf0")
 
 package() {
