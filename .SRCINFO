@@ -16,7 +16,7 @@ pkgbase = signal
 	conflicts = signal-desktop
 	conflicts = signal-desktop-beta
 	conflicts = signal-desktop-bin
-	source = signal-1.7.1::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.7.1
+	source = signal-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.7.1
 	source = signal.sh
 	source = signal.desktop
 	source = signal-tray.desktop

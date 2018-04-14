@@ -15,7 +15,7 @@ provides=('signal')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
 arch=("i686" "x86_64")
 url='https://github.com/signalapp/Signal-Desktop'
-source=("${pkgname}-${pkgver}::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
+source=("${pkgname}-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}-tray.desktop")
@@ -25,13 +25,13 @@ sha512sums=('SKIP'
             'ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-git-repo"
   # Fix issues/1988
   #sed -i 's/"electron": "1.7.12"/"electron": "1.8.2"/' package.json
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-git-repo"
   
   _npm_prefix=$(npm config get prefix)
   npm config delete prefix
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-git-repo"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
