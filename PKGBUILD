@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3386.1
+pkgver=67.0.3390.1
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('784b64e3ce89510d56f1141ac4d5cc8dc5aea582eb699947996dc70444cee6d6'
+sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -157,7 +157,7 @@ sha256sums=('784b64e3ce89510d56f1141ac4d5cc8dc5aea582eb699947996dc70444cee6d6'
             '4570a87cb632896818f8bf96eb38157bcbcfec55e702683e36d8bc63b16764af'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
-            '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
+            '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             'e5f43c7014d140fd6b4c6cf478ae4edb107d963b8868dda0e19f74523f7385da'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
@@ -177,7 +177,7 @@ sha256sums=('784b64e3ce89510d56f1141ac4d5cc8dc5aea582eb699947996dc70444cee6d6'
             '07e7b3b432b8f5398909f1250c595adb9ecc69a47e4d3a9bf3cf88c3893b22fc'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
-            'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
+            '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
             'db4886745eb447b1b1bd74351f1d65da6e7c5b98242dcd9a11b424cf2aef88e8'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
@@ -308,7 +308,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -i ../pt.patch
+#patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
