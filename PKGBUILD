@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.28.0
+pkgver=3.28.1+14+g228ce0d69
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
@@ -21,7 +21,7 @@ makedepends=(intltool gobject-introspection git)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=47856d97011d7a9bd13c1e1c638a6e43ebd9d9ac  # tags/3.28.0^0
+_commit=34644b2133241efe25794b57ddd18e6d9517cc0b # tags/3.28.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         startup-notification.patch
         revert.patch)
@@ -36,6 +36,12 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+
+  ## Unmerged performance bits, enable with own risk and merge conflicts yourself
+  # git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  # git fetch vanvugt
+  # git merge vanvugt/fix-clock-smoothness-v3 -m "merge1"
+  # git merge vanvugt/crtc-holds-reference -m "merge2" || bash
 
   # Revert offending commit
   patch -Np1 -i ../revert.patch
