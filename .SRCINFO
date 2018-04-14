@@ -1,7 +1,7 @@
 pkgbase = gog-owlboy
 	pkgdesc = Owlboy is a 'hi-bit' adventure game, where you can fly and explore a brand new world in the clouds!
 	pkgver = 1.3.6564.30139
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.owlboygame.com/
 	arch = i686

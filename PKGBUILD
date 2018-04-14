@@ -5,10 +5,16 @@
 #       - A gog:// DLAGENT can be configured in /etc/makepkg.conf to
 #         automatically pull game files from GOG.
 #       - https://github.com/Sude-/lgogdownloader
+#
+#   + v1.3.6564.30139:
+#       - User must be part of the 'games' system group, as for some unknown
+#         reason, users must have access to the "global" game ini files in
+#         addition to those in "${XDG_CONFIG_HOME}"...
+
 
 pkgname='gog-owlboy'
 pkgver=1.3.6564.30139
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Owlboy is a 'hi-bit' adventure game, where you can fly and explore a brand new world in the clouds!"
 url="http://www.owlboygame.com/"
@@ -59,11 +65,11 @@ package() {
 
   # Plebians...
   while read -r ini; do
+    # Don't even get me started on why the fuck I have to do this...
+    chgrp games "${ini}"
     chmod g+w "${ini}"
     file "${ini}" | grep -Ei 'CRLF' && dos2unix "${ini}"
   done < <(find "${pkgdir}" -name *.ini)
-  # Don't even get me started on why the fuck I have to do this...
-  chgrp -R games "${pkgdir}"
 }
 
 # vim: ts=2 sw=2 et:
