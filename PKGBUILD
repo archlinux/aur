@@ -10,7 +10,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.32
 pkgver=${_pkgmajor}
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('x86_64')
@@ -57,7 +57,7 @@ build() {
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
               --bindir=/usr/bin \
-              --localstatedir=/run \
+              --localstatedir=/var \
               --enable-fs-paths-extra=/usr/bin \
               --enable-raw \
               --enable-vipw \
