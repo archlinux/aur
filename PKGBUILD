@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-scroll-past"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-scroll-past/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-scroll-past/archive/$pkgver.tar.gz")
 md5sums=("c3e5abaa7686ddb4f0555afcf1565b45")
 
 package() {
