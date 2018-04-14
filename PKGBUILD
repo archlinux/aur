@@ -7,8 +7,8 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='c58ab03f64890e7db88745a843bd4520e307099b'
-pkgver=238.51
+_commit='f398c546c6fc43121131f41acec56b5a851bd35e'
+pkgver=238.76
 pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -72,6 +72,8 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
+  # nspawn: wait for network namespace creation before interface setup (#8633)
+  '7511655807e90aa33ea7b71991401a79ec36bb41'
 )
 
 _reverts=(
