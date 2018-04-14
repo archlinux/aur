@@ -1,7 +1,7 @@
 pkgbase = intel-media-driver
 	pkgdesc = Intel Media Driver for VAAPI
 	pkgver = 600.0130
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/media-driver/
 	install = intel-media-driver.install
 	arch = x86_64

@@ -4,7 +4,7 @@ _gmmlib_commit='b32d2124aa5187b20b64df24d2e83bcbe7a57d7d'
 
 pkgname=intel-media-driver
 pkgver=600.0130
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
@@ -28,6 +28,7 @@ prepare() {
     # https://github.com/intel/media-driver/issues/127
     patch -Np1 -i "${srcdir}/fix-ult-link-error-on-arch-linux.patch"
 }
+
 build() {
     mkdir -p build
     cd build
