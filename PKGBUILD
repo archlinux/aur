@@ -1,6 +1,6 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=realyog
-pkgver=1.0.2
+pkgver=1.1
 pkgrel=1
 pkgdesc="Wrapper around yay to make things simple."
 arch=(x86_64)
