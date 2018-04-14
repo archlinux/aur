@@ -9,7 +9,7 @@ url="https://www.kde.org/applications/utilities/kjots/"
 arch=(x86_64)
 license=(GPL)
 depends=(kcmutils kontactinterface akonadi akonadi-notes kpimtextedit)
-makedepends=(extra-cmake-modules kdoctools boost python kdelibs4support)
+makedepends=(extra-cmake-modules kdoctools boost kdelibs4support)
 source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('5359aefb7b44027d7abbdafb0d501a7b30695119d5d5c8a75cfcee98e428fae3')
 
