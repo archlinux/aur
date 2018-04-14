@@ -3,7 +3,7 @@
 pkgname='python-dbus-client-gen'
 _srcname='dbus-python-client-gen'
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A Python Library for Generating dbus-python Client Code'
 arch=('any')
 license=('MPL-2.0')
@@ -28,9 +28,9 @@ check() {
 package() {
   cd "${_srcname}-${pkgver}"
 
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-
+  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
