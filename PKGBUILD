@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=terminus-terminal-git
-_pkgname=terminus
-pkgver=v1.0.0.alpha.22.r6.de29e34
+_pkgname=Terminus
+pkgver=v1.0.0.alpha.44.r4.128fe24
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'npm' 'yarn') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
-source=("git+$url")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,14 +22,17 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
-  npm install shelljs npmlog
+  yarn add shelljs npmlog
   node ./scripts/install-deps.js
 }
 
 build() {
 	cd "$srcdir/${_pkgname}"
+  yarn add angular
   yarn install
   node ./scripts/build-native
+  node ./scripts/vars
+  node ./scripts/prepackage-plugins
   node ./scripts/build-linux
 }
 
@@ -38,9 +41,12 @@ package() {
   appdir=/opt/${_pkgname}
   install -d "${pkgdir}"${appdir}
   cp -r dist/linux-unpacked/* "${pkgdir}"${appdir}
-  unp dist/*.deb
-  unp data.tar.xz
+  ar x dist/*.deb
+  tar -xf data.tar.xz
   cp -r usr/ $pkgdir
-  install -d $pkgdir/usr/bin
-  ln -s /opt/$_pkgname/$_pkgname $pkgdir/usr/bin/$_pkgname
+  install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
+  #!/usr/bin/bash
+  /opt/Terminus/terminus
+
+END
 }
