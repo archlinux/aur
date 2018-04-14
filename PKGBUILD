@@ -3,7 +3,7 @@
 pkgname=python-mnist-git
 pkgver=0.5.39.8364cb4
 pkgrel=1
-pkgdesc="Sweet and creamy print debugging."
+pkgdesc="Simple MNIST data parser written in Python."
 arch=("any")
 license=("BSD")
 url="https://github.com/sorki/python-mnist"
