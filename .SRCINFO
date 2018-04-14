@@ -1,7 +1,7 @@
 pkgbase = grive-indicator
 	pkgdesc = Ported and improved Grive Tools (Indicator) to Python3 by John Smith.
-	pkgver = 1.16
-	pkgrel = 6
+	pkgver = 1.17
+	pkgrel = 1
 	url = https://github.com/john4smith/grive-indicator
 	arch = any
 	license = GPL3
@@ -16,8 +16,8 @@ pkgbase = grive-indicator
 	optdepends = gnome-shell-extension-topicons-plus: gnome indicator support
 	conflicts = grive-tools
 	conflicts = grive-indicator-git
-	source = grive-indicator-1.16.tar.gz::https://github.com/john4smith/grive-indicator/archive/v1.16.tar.gz
-	sha256sums = cef9373ac318f2a2c3b43958d214240ca657d355ae63bc09716f6fcbc4c62b35
+	source = grive-indicator-1.17.tar.gz::https://github.com/john4smith/grive-indicator/archive/v1.17.tar.gz
+	sha256sums = ddbdcd419819645de7732ddfc06bb8d3d40e6dcd27797ece380b458b9cc18147
 
 pkgname = grive-indicator
 
