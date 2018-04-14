@@ -7,8 +7,8 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r55.g22dae39
-pkgrel=3
+pkgver=1.2a.r113.gf007f0a
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -17,7 +17,7 @@ depends=(
     # official repositories:
         'gcc-libs' 'libva' 'libdrm' 'wayland'
     # AUR:
-        'intel-media-driver-git'
+        'intel-media-driver'
 )
 makedepends=('git' 'git-lfs' 'cmake' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
