@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="This package contains the Mongoose OS CLI tool."
 arch=('x86_64')
 url="https://mongoose-os.com"
-license=('GLPv2')
+license=('Apache 2.0 license!')
 groups=('')
 depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
