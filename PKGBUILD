@@ -66,9 +66,13 @@ build() {
         echo
         echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
         echo "*** you will need to raise your max open file limit."
-        echo "*** This can be done by setting a higher limit in /etc/security/limits.conf,"
-        echo "*** rebooting (or logging out and back in), and then running"
-        echo "*** 'ulimit -n 10000' (or higher) before re-attempting to build this package."
+        echo "*** This can be done by:"
+        echo "*** 1) Set a higher 'nofile' limit (at least 10000) in either"
+        echo "***    /etc/systemd/system.conf.d/limits.conf (for systemd systems)"
+        echo "***    /etc/security/limits.conf (for non-systemd systems)"
+        echo "*** 2) Reboot (or log out and back in)"
+        echo "*** 3) Run 'ulimit -n' and ensure the value set above is shown before"
+        echo "***    re-attempting to build this package."
         echo
         exit 1
     fi
