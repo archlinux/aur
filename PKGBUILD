@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=php-tcpdf
-pkgver=6.2.13
+pkgver=6.2.17
 pkgrel=1
 pkgdesc="PHP library for generating PDF documents on-the-fly."
 arch=("any")
@@ -8,8 +8,8 @@ url="https://tcpdf.org"
 license=("GPL")
 depends=("php")
 provides=("php-tcpdf")
-source=("$pkgname.tar.gz::https://github.com/tecnickcom/TCPDF/archive/"$pkgver".tar.gz")
-md5sums=("36b65a265b1a88a2d19bbbe489b5f374")
+source=("$pkgname-$pkgver::https://github.com/tecnickcom/TCPDF/archive/"$pkgver".tar.gz")
+md5sums=("487fd5ef3e99e014f9be95bc099036f0")
 
 package() {
   mkdir -p "$pkgdir/opt"
