@@ -1,9 +1,8 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
-# https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=toptracker
-pkgver=1.5.1
-_srcrel=169
+pkgver=1.5.2
+_srcrel=198
 pkgrel=1
 pkgdesc="Time tracking software for remote teams and individuals"
 arch=('x86_64')
@@ -20,7 +19,7 @@ source=("https://d101nvfmxunqnl.cloudfront.net/desktop/builds/redhat/${pkgname}_
         'toptracker.desktop'
         'LICENSE')
 noextract=("${pkgname}_${pkgver}-${_srcrel}_x86_64.rpm")
-md5sums=('c4a2702630dd574292bc2df6bf2ab527'
+md5sums=('11a31218a4a4694f747a6c2ad50d920d'
          'a58411ebce05fdd699fb70aa53767564'
          '0a9b08905e1cc75c6b23e6055efb2881')
 
