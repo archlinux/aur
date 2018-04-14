@@ -7,6 +7,7 @@ arch=('x86_64')
 url="http://developer.parrot.com/docs/SDK3/"
 license=('custom')
 source=('git+https://github.com/Parrot-Developers/arsdk_manifests')
+options=(!emptydirs)
 md5sums=('SKIP')
 makedepends=('repo' 'python' 'python2')
 
