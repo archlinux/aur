@@ -4,16 +4,19 @@
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
 pkgver=65.0.3325.181
-pkgrel=1
+pkgrel=2
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
 depends=("libjpeg6-turbo" "icu57" "libevent-compat" "nss" "libxss" "snappy" "gtk3" "minizip"
-		"libxslt")
+		 "libxslt" "ffmpeg")
 provides=("chromium")
 conflicts=("chromium" "iridium" "ungoogled-chromium")
-optdepends=("ffmpeg: H264/AAC/MP3 decoding")
+optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
+			"kdialog: needed for file dialogs in KDE"
+			"kwallet: for storing passwords in KWallet"
+			"pepper-flash: support for Flash content")
 source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium_${pkgver}-1.stretch_amd64.deb"
 		"ungoogled-chromium-common.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium-common_${pkgver}-1.stretch_amd64.deb"
 		"ungoogled-chromium-driver.deb::https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium-driver_${pkgver}-1.stretch_amd64.deb"
