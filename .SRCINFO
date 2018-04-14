@@ -1,15 +1,15 @@
 pkgbase = acestream-proxy
 	pkgdesc = AceProxy allows you to watch Ace Stream live streams or BitTorrent files over HTTP
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ValdikSS/aceproxy
 	arch = any
 	license = MIT
 	depends = acestream-engine
 	depends = python2-gevent
 	depends = python2-psutil
-	provides = acestream-proxy
-	source = https://github.com/ValdikSS/aceproxy/archive/v0.9.1.tar.gz
+	provides = aceproxy
+	source = acestream-proxy-0.9.1::https://github.com/ValdikSS/aceproxy/archive/v0.9.1.tar.gz
 	md5sums = SKIP
 
 pkgname = acestream-proxy

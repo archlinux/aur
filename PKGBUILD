@@ -1,14 +1,14 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-proxy
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AceProxy allows you to watch Ace Stream live streams or BitTorrent files over HTTP"
 arch=("any")
 url="https://github.com/ValdikSS/aceproxy"
 license=("MIT")
 depends=("acestream-engine" "python2-gevent" "python2-psutil")
-provides=("acestream-proxy")
-source=("https://github.com/ValdikSS/aceproxy/archive/v$pkgver.tar.gz")
+provides=("aceproxy")
+source=("$pkgname-$pkgver::https://github.com/ValdikSS/aceproxy/archive/v$pkgver.tar.gz")
 md5sums=("SKIP")
 
 package() {
