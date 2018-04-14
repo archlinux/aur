@@ -1,7 +1,7 @@
 # Maintainer: alienzj <lovelornpig@gmail.com>
 
 pkgname=bioawk-git
-pkgver=1.0.0.r44.5e8b41d
+pkgver=1.0.0.r51.fd40150
 pkgrel=1
 pkgdesc="BWK awk modified for biological data"
 arch=('i686' 'x86_64')
