@@ -9,7 +9,7 @@ license=("GPL")
 depends=("gnome-shell")
 provides=("gnome-shell-extension-hotel-manager")
 conflicts=("gnome-shell-extension-hotel-manager-git")
-source=("$pkgname::https://github.com/hardpixel/hotel-manager/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/hotel-manager/archive/v$pkgver.tar.gz")
 md5sums=("dbc0483d7ac054335bf26eca0bb91605")
 
 package() {
