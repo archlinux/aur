@@ -1,0 +1,10 @@
+--- src/gst-plugins/opencvfilter/opencvfilter.c	2018-04-13 16:22:46.256710296 +0300
++++ src/gst-plugins/opencvfilter/opencvfilter.c	2018-04-14 14:39:23.549210435 +0300
+@@ -33,6 +33,6 @@
+
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsopencvfilter,
++    opencvfilter,
+     "Kurento generic opencv filter",
+     init, VERSION, GST_LICENSE_UNKNOWN, "Kurento", "http://kurento.com/")
