@@ -1,9 +1,9 @@
-# Maintainer: Felix M. Cobos <felix.cobos@gmail.com>
+# Maintainer: Marcus Behrendt <marcus dot behrendt dot 86 et bigbrothergoogle>
 
 pkgname=intellij-jdk
 _major=8
 _minor=152
-_build=1211.5
+_build=1226.3
 pkgver=${_major}u${_minor}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
@@ -15,7 +15,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 _zipname="jbsdk${pkgver}_linux_x64.tar.gz"
 source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha256sums=('baef8e685acb97b11507bfc6aa5bfc213740b4d0ea3771d4f0818ad294b02613')
+sha256sums=('f6575760a2f24075ba321c93df4ac3304de5c72b7d2edf674d8842487dec0da1')
 
 package() {
 	rm "$srcdir/$_zipname"
