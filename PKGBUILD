@@ -1,7 +1,6 @@
 # Maintainer: sdw113322 <sdw113322@gmail.com>
-# Modified AUR [brother-mfc-255cw] package by sdw113322 <sdw113322@gmail.com>
 # Original AUR [brother-mfc-j220] package by Franz Rogar <franzrogar@gmail.com>
-# Original AUR [brother-hll2300d] package maintained by auruser <>
+# Original AUR [brother-mfc-j220] package maintained by auruser <>
 # Original AUR [brother-hll2300d] package maintained by Mykola Bespaliuk (kolkabes [at] gmail [dot] com)
 pkgname="brother-mfc-255cw"
 _model="255cw"
