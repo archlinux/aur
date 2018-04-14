@@ -9,8 +9,10 @@ pkgdesc="Dynamic web application server, designed to run applications in multipl
 arch=('i686' 'x86_64')
 url="http://unit.nginx.org/"
 license=('Apache-2.0')
-source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz")
-sha256sums=('13b250032d3aeef554f5e7f67b26dc2c01b9e51f5f392cbeca44db65488ca6f1')
+source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz"
+        'unit.service')
+sha256sums=('13b250032d3aeef554f5e7f67b26dc2c01b9e51f5f392cbeca44db65488ca6f1'
+            'SKIP')
 makedepends=('php-embed' 'python' 'go')
 
 build() {
@@ -25,7 +27,7 @@ build() {
 package_nginx-unitd() {
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" unitd-install
-  install -m 644 -D "$startdir"/unit.service "$pkgdir"/usr/lib/systemd/system/unit.service
+  install -m 644 -D "$srcdir"/unit.service "$pkgdir"/usr/lib/systemd/system/unit.service
 }
 
 package_nginx-unit-python() {
