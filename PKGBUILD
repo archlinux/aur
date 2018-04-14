@@ -7,11 +7,10 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-panel-toggler"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-panel-toggler/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-panel-toggler/archive/$pkgver.tar.gz")
 md5sums=("5722f7213f2b69b0ea3488c8a4794a44")
 
 package() {
   mkdir -p "$pkgdir/usr/lib/gedit/plugins/panel-toggler"
   cp -a "$srcdir/$pkgname-$pkgver/." "$pkgdir/usr/lib/gedit/plugins/panel-toggler"
 }
-
