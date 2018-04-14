@@ -1,17 +1,18 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit
 pkgver=5.45.0
 pkgrel=1
 pkgdesc='Process launcher to speed up launching KDE applications'
-arch=('x86_64')
+arch=(x86_64)
 url='https://community.kde.org/Frameworks'
-license=('LGPL')
-depends=('kio')
-makedepends=('extra-cmake-modules' 'kdoctools' 'python')
-groups=('kf5')
-source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+license=(LGPL)
+depends=(kio)
+makedepends=(extra-cmake-modules kdoctools)
+groups=(kf5)
+source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('5050b36c80e9163df7dbce2c55948e135cf3db1c140238adf51b9901cce5185e'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
@@ -22,7 +23,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
@@ -32,5 +33,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
