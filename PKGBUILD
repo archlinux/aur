@@ -1,7 +1,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.9.1
+pkgver=0.3.9.2
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -12,7 +12,7 @@ install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {install,update,remove}.hook hook-script.sh
         {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper,Papirus,Emerald}.svgz)
 sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
-            'd78f347395a71c76938acc94a1c28f0a356635e2c30379590c6118895ff5f83d'
+            'eb942ad2f00cf95229d59a71462b49fe98ad08eb59b0a826087608f222b8da3b'
             'fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db'
             '6d2ee985ad7ae820d3b9d4d6016c56749ccbbe2aa2649f08794d5efeca32f05a'
             'd0c45afb226e1dd956972990c312ccffcda4f284c720d2463c0c09b06d23a509'

@@ -153,7 +153,7 @@ case "$1" in
    -d) MODE=remove ;;
 esac
 
-if [[ $MODE != "usage" && $USER != "root" ]]; then
+if [[ $MODE != "usage" && $(whoami) != "root" ]]; then
    echo "root privileges needed!"
    exit 1
 fi
