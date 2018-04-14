@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-strip-whitespace"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-strip-whitespace/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-strip-whitespace/archive/$pkgver.tar.gz")
 md5sums=("632a404c89bbebca1b66cba2604f0204")
 
 package() {
