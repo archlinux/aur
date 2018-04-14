@@ -1,7 +1,7 @@
 pkgbase = python-dbus-client-gen
 	pkgdesc = A Python Library for Generating dbus-python Client Code
 	pkgver = 0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = stratis-storage.github.io
 	arch = any
 	license = MPL-2.0
