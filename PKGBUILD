@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cri-o
-pkgver=1.9.10
+pkgver=1.9.11
 pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(i686 x86_64)
@@ -13,24 +13,23 @@ source=("git+https://github.com/kubernetes-incubator/cri-o")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+	cd "$srcdir/$pkgname"
 
-	git checkout "v${pkgver}"
+	git checkout "v$pkgver"
 
-	install -m755 -d "${srcdir}/go/src/github.com/kubernetes-incubator"
+	install -m755 -d "$srcdir/go/src/github.com/kubernetes-incubator"
 
-	cp -a "${srcdir}/${pkgname}" \
-		"${srcdir}/go/src/github.com/kubernetes-incubator/cri-o"
+	cp -a "$srcdir/$pkgname" "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/kubernetes-incubator/cri-o"
+	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 
-	GOPATH="${srcdir}/go" make -j1
+	GOPATH="$srcdir/go" make -j1
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/kubernetes-incubator/cri-o"
+	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 
 	install -Dm755 bin/crio $pkgdir/usr/bin/crio
 	install -Dm755 bin/conmon $pkgdir/usr/libexec/crio/conmon
@@ -46,4 +45,8 @@ package() {
 	install -d $pkgdir/usr/share/man/man8/
 	install -pm644 docs/crio.conf.5 $pkgdir/usr/share/man/man5
 	install -pm644 docs/crio.8 $pkgdir/usr/share/man/man8
+
+	# systemd service files
+	install -dm755 $pkgdir/usr/lib/systemd/system/
+	install -Dm644 contrib/systemd/*.service $pkgdir/usr/lib/systemd/system/
 }
