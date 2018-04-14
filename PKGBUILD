@@ -9,7 +9,7 @@ license=("GPL")
 depends=("inkscape" "python2-lxml")
 provides=("inkscape-download-palette")
 conflicts=("inkscape-download-palette-git")
-source=("$pkgname::https://github.com/olibia/inkscape-download-palette/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/olibia/inkscape-download-palette/archive/v$pkgver.tar.gz")
 md5sums=("cd15f23883b2407cdd33d13f0e221036")
 
 package() {
