@@ -10,7 +10,7 @@ depends=("python-psutil" "python-urllib3" "python-notify2")
 optdepends=("acestream-proxy" "vlc")
 provides=("acestream-proxy-player")
 source=("$pkgname-$pkgver::https://github.com/jonian/acestream-proxy-player/archive/v$pkgver.tar.gz")
-md5sums=('ea8180e81bee8e5d057a331cd2e4d72e')
+md5sums=("ea8180e81bee8e5d057a331cd2e4d72e")
 
 package() {
   mkdir -p "$pkgdir/opt"
