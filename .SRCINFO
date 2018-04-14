@@ -1,28 +1,37 @@
 pkgbase = nginx-unit
 	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
-	pkgver = 0.7
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = http://unit.nginx.org/
 	arch = i686
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	makedepends = php-embed
 	makedepends = python
+	makedepends = python2
 	makedepends = go
-	source = nginx-unit-0.7.tar.gz::https://hg.nginx.org/unit/archive/0.7.tar.gz
-	md5sums = 52ab9f68bb2c4bccc393e2365d02c630
+	source = https://unit.nginx.org/download/unit-1.0.tar.gz
+	source = unit.service
+	sha256sums = 13b250032d3aeef554f5e7f67b26dc2c01b9e51f5f392cbeca44db65488ca6f1
+	sha256sums = SKIP
 
 pkgname = nginx-unitd
+	depends = glibc
 
 pkgname = nginx-unit-python
 	depends = nginx-unitd
 	depends = python
 
+pkgname = nginx-unit-python2
+	depends = nginx-unitd
+	depends = python2
+
 pkgname = nginx-unit-php
 	depends = nginx-unitd
-	depends = php
+	depends = php-embed
 
 pkgname = nginx-unit-go
+	arch = any
 	depends = nginx-unitd
 	depends = go
 

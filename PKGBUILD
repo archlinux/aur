@@ -1,4 +1,5 @@
 # Maintainer: Roman Voropaev <voropaev.roma@gmail.com>
+# Contributor: Julian Brost <julian@0x4a42.net>
 
 pkgbase='nginx-unit'
 pkgname=('nginx-unitd'
@@ -8,7 +9,7 @@ pkgname=('nginx-unitd'
          'nginx-unit-go')
 _shortname='unit'
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Dynamic web application server, designed to run applications in multiple languages."
 arch=('i686' 'x86_64')
 url="http://unit.nginx.org/"
