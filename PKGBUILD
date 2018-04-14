@@ -3,17 +3,17 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Kaleb Elwert (belak) <belak@coded.io>
-# Maintainer: 3onyc <3onyc@x3tech.com>
+# Maintainer: Mattias Giese <mattiasgiese@posteo.net>
 
 pkgname=bitlbee-libpurple-git
-pkgver=3.4.1.r121.gea39049
+pkgver=3.5.1.r54.g246b98bb
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 depends=('gnutls' 'glib2')
-makedepends=('git' 'libotr' 'python')
+makedepends=('git' 'libotr' 'python' 'libpurple')
 optdepends=('skype4py: to use skyped'
             'libotr: for OTR encryption support')
 source=(
