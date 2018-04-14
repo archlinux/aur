@@ -4,7 +4,7 @@
 _gemname=rubocop
 pkgname=ruby-${_gemname}
 pkgver=0.54.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Ruby code style checking tool."
 arch=('any')
 depends=(
@@ -36,6 +36,6 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENCE.txt" \
+  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

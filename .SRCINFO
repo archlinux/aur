@@ -1,7 +1,7 @@
 pkgbase = ruby-rubocop
 	pkgdesc = Automatic Ruby code style checking tool.
 	pkgver = 0.54.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubocop.readthedocs.io
 	arch = any
 	license = MIT
