@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=67.0.3390.1
+pkgver=67.0.3396.3
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-dev.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/in-dev/master/dnox.desktop
+        https://raw.githubusercontent.com/bn0785ac/in-dev/master/enox.desktop
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/chromium-gn-bootstrap-r17.patch
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
+sha256sums=('8ae35d0a8762a5bd4250109490a16e9fd4dfd396ad494bc5bfb26ddd17aad21a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -150,7 +150,7 @@ sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
             'db1d9f62899a1acf917394d807f10765f3cbeef63c42f1e8359239b806f42517'
-            '3d66b22f1ba6d7309eafd93e3b0a3d9ec841828f88cd8e267a7760585776dd5b'
+            '98849504f5dea0d9217683d9f044d2494d80c3e1a26117ec1f16031ba11b5bb8'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             'cabe339110369d08b2cef0b4308ee8eb8385054583815c3927421588ae94d9e7'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
@@ -158,14 +158,14 @@ sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
-            'e5f43c7014d140fd6b4c6cf478ae4edb107d963b8868dda0e19f74523f7385da'
+            'd1fd7eb17aaf81a0d09143166a4a637ea62f6b00a11e1b81279c30e7527ff34a'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
-            'fa9cc5b9d2d9397c031da1d1a938472b78db1636273cf2a7a73553ef0dad3512'
+            'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
-            'b4417fd2c24bc8e71d671c902989298f0924527e1e5267eb4e0d9a885f27740f'
+            'df56bd652794f7fdea406b36ca01edf991b7f8cb3ce3b7e5307114328a1ea3e0'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '52a3e05fed6d7486a15c336ba57180218e040b38702ab4ef79d97e2a2c293162'
@@ -179,13 +179,13 @@ sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
             'db4886745eb447b1b1bd74351f1d65da6e7c5b98242dcd9a11b424cf2aef88e8'
-            '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
-            '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
+            '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
+            '0848fe30322bfb6dd7c06110f5d8468f1ce68caf6cd6a184b531cc9653f21420'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
             '3c95bf62701f762b166e78c88e06752caf057a00fdaaae87de561fafc321b20b'
             '127747c5c692b0b0ef62f0e6ae79c894cd4798846bba53bf23b0b8bbe6974ba0'
             '065a69ca6547e89f84ded7b95e29a7fb3ac762eaac3aa940ab1ec5a3ecbe3a2f'
-            '0526518bd42da73113a88a440739a50fb85fb0c1e8528b1a8340747d901e3f5b'
+            'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
             'a466902d700c22178ba4f01f3a3ed94bb296ddde36396b70690513b6934a3dcc'
@@ -200,7 +200,7 @@ sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            '7262bd74a164b2ac083bd7c2def7b430e60db9ed7a5b1baf9be378d211359d6b'
+            '9795c178e28ca09ed520d4743a3e871a128a184850c1a725c76aae2e8c44635a'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -213,6 +213,7 @@ sha256sums=('2bb3dfcb02304fa2b39396e5b8ffb710444d63c1ba421ce76991dd45dffd7ed0'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -278,8 +279,6 @@ patch -Np1 -i ../010.patch
 patch -Np1 -i ../011.patch
 patch -Np1 -i ../012.patch
 patch -Np1 -i ../013.patch
-
-
 patch -Np1 -i ../014.patch
 patch -Np1 -i ../015.patch
 patch -Np1 -i ../016.patch
@@ -287,8 +286,6 @@ patch -Np1 -i ../2kb.patch
 patch -Np1 -i ../018.patch
 patch -Np1 -i ../019.patch
 patch -Np1 -i ../020.patch
-
-
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
@@ -351,7 +348,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-patch -Np1 -i ../9k.patch
+#patch -Np1 -i ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
@@ -363,7 +360,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
+#patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
