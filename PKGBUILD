@@ -2,12 +2,12 @@
 
 pkgname=intel-media-driver-git
 pkgver=r408.eb470bc.gmmlib.r34.2eea1a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/intel/media-driver/'
 license=('MIT' 'BSD')
-depends=('libva')
+depends=('gcc-libs' 'libva')
 makedepends=('git' 'cmake')
 provides=('intel-media-driver')
 conflicts=('intel-media-driver')
