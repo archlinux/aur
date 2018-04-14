@@ -61,12 +61,12 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.14
-_pkgver=4.14.29
-_rtver=25
+_pkgver=4.14.34
+_rtver=27
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -433,9 +433,9 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'f2e87f9205924097b5aaa39ca6967449fa78a9a13d27fd4edac829cbb411f28881b2dc4fc5f8c270ec8673118bf260f7411646f0900c00f8511283fe0eb3c7e7'
+            '1aff1ad1294e0d22ae1de0bbcb1d05269a9cc7bfeb6bc885bd9ee445198b30951d7d7918bf33152579415db2a4afe018d4b21c1fea5dd4d5e5014662fd870acf'
             'SKIP'
-            'bd2fb72ad0da50a2590c47eff7f6087014b0f068488975bdecae7e5b0f99523beffe1dd16b8d0a7f877cd03b1bc86516ea00153679e2e913daa10f742d02608d'
+            '4ed0ca1ddb90401afff3c5b09c2c657046f6c1ce0c102bfbed4f467e8adc7817f36508aaaeba170c964be00e1ca82aff612042b931597c24b0fbb8bb7c3ae47e'
             'SKIP'
             '46e316f67165d8df1779a6d7d105c249d0ff768fbbdd59baa9f475bd4007c6851a64b41e0a3319186848670b41bd55c845583c9307b5f02df14e73aed1db3f5d'
             'e1819903787241db1fc7cf4fb7682936185c73ef7ba842f59b94f2d56ef2ceab3df42344df3cb226060c09257d98e9a861bc8f7a7debc0a9f0936022022fc3ba'
