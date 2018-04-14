@@ -20,7 +20,7 @@ pkgbase = ya4r
 	depends = sudo
 	optdepends = gvfs: file deletion support
 	source = ya4r-0.2.2.tar.gz::https://github.com/0v3rl0w/ya4r/archive/0.2.2.tar.gz
-	sha256sums = 9246da35f2a8caa84403cd0657602ca873e8d9aa1607bd0df6e652dd3e57be87
+	sha256sums = 63b89c4d546200b3a9331cff359cc834a4a901d3aac7efb15502a09f204fe4d5
 
 pkgname = ya4r
 

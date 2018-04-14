@@ -15,22 +15,25 @@ source=(
 	"${_archive}.tar.gz::$url/archive/${pkgver}.tar.gz"
 )
 
-sha256sums=('9246da35f2a8caa84403cd0657602ca873e8d9aa1607bd0df6e652dd3e57be87')
+sha256sums=('63b89c4d546200b3a9331cff359cc834a4a901d3aac7efb15502a09f204fe4d5')
 
 prepare() {
-	if [ -f /usr/share/applications/ya4r.desktop ]; then
+	if [ -f /opt/Ya4r ]; then
 		sudo rm -rf "/usr/share/applications/ya4r.desktop"
 		sudo rm -rf "/usr/share/licenses/${pkgname}/LICENSE"
-		sudo rm -rf "/opt/Ya4r-${pkgver}"
+		sudo rm -rf "/opt/Ya4r"
+	else 
+		echo "OK"
 	fi
 }
 
 package() {
-   
-   sudo install -D -m644 "${srcdir}/Ya4r-${pkgver}/ya4r.desktop" "/usr/share/applications/ya4r.desktop"
+	sudo install -D -m644 "${srcdir}/Ya4r-${pkgver}/ya4r.desktop" "/usr/share/applications/ya4r.desktop"
 
-   sudo install -D -m644 "${srcdir}/Ya4r-${pkgver}/LICENSE" "/usr/share/licenses/${pkgname}/LICENSE"
+	sudo install -D -m644 "${srcdir}/Ya4r-${pkgver}/LICENSE" "/usr/share/licenses/${pkgname}/LICENSE"
 
-   sudo mv "${srcdir}/Ya4r-${pkgver}" "/opt"
+	sudo mv "${srcdir}/Ya4r-${pkgver}" "/opt/Ya4r"
+
+	rm -rf "${srcdir}"
 }
 
