@@ -1,6 +1,6 @@
 # Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=kms-cmake-utils
-pkgver=1.4.0
+pkgver=6.7.0
 pkgrel=1
 pkgdesc='Kurento cmake utilities'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("https://github.com/Kurento/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('13616dc4b760d9aea1031e3c2f638c44b029a18e5f7117e51cb29d0f6071a857')
+sha256sums=('adece455b4c2ae0d69305c6952323f64ee6efed7aa9f9703ed4df5fbf42ef6bf')
 
 build() {
     mkdir -p "build"
