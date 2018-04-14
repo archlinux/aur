@@ -3,15 +3,15 @@
 pkgbase=python-pycryptodome
 pkgname=('python-pycryptodome' 'python2-pycryptodome')
 _name=pycryptodome
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 license=('BSD')
 arch=('x86_64')
 url='http://www.pycryptodome.org/'
 makedepends=('gmp' 'python-setuptools' 'python2-setuptools')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Legrandin/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('5efd0f0ac68d3420550de40b272bfaae275889655fb59a92d79a6f3cf6cec8c9')
-sha512sums=('84657e14542f33e26ade9e7e3758b0f5b211be6bb76b5edb6f5b9ccab4f68d69ccaf4b5672ac417bc2df00044eaa2f92ade997590e6907d37216460b87e14281')
+sha256sums=('0d22a802e1d505e456986cba5a9b8ab27147119905bed207c55ef58fb0bfc95a')
+sha512sums=('c2cc5daf9b6c13a5b271d8220659b65f98b7042b30a2564e9be6b9afbcbf24c951b8975b76f39e1ff18c36b2463b45465b86a614d76ce56c240cb49c16c1129f')
 
 prepare() {
   cp -a "pycryptodome-$pkgver"{,-python2}
