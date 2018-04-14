@@ -16,7 +16,7 @@ depends=(ncurses5-compat-libs)
 options=(!strip)
 
 package() {
-    _pkgbasename=ComputeCpp-CE-${pkgver}-Ubuntu-16.04-64bit
+    _pkgbasename=ComputeCpp-CE-${pkgver}-Ubuntu-16.04-${arch}
     cd "$srcdir"
     mkdir -p "$pkgdir/opt"
     mkdir -p "$pkgdir/usr/bin"
