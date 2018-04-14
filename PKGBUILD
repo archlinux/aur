@@ -2,13 +2,13 @@
 
 pkgname='stratis-cli'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
 license=('apache2')
 url='stratis-storage.github.io'
 depends=('python-argparse')
-makedepends=('git' 'python-pylint python-tox')
+makedepends=('git' 'python-pylint' 'python-tox')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=(

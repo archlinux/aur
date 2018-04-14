@@ -1,12 +1,13 @@
 pkgbase = stratis-cli
 	pkgdesc = stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = stratis-storage.github.io
 	arch = any
 	license = apache2
 	makedepends = git
-	makedepends = python-pylint python-tox
+	makedepends = python-pylint
+	makedepends = python-tox
 	depends = python-argparse
 	provides = stratis-cli
 	conflicts = stratis-cli
