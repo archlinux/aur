@@ -16,14 +16,14 @@
 # Contributor: Friedrich Weber <fred@reichbier.de>
 
 pkgname=czmq
-pkgver=4.0.2
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
 license=('MPL2')
 depends=('zeromq>=4.0')
-sha1sums=('48a8ee3ab293c501b30cf936e349c5d745a1b5ea')
+sha1sums=('d1293227cdf564a2a97070742f68cc43ac97493c')
 makedepends=()
 source=("https://github.com/zeromq/czmq/archive/v${pkgver}.tar.gz")
 
@@ -35,8 +35,10 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./autogen.sh
-  ./configure --prefix=/usr
-  make CFLAGS=-Wno-error CPPFLAGS=-Wno-error $MAKEFLAGS
+  ./configure \
+    --prefix=/usr \
+    --enable-Werror=no
+  make $MAKEFLAGS
 }
 
 check() {
