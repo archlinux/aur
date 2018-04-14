@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=forking
-PIDFile=/run/unit.pid
-ExecStart=/usr/sbin/unitd --control unix:/run/control.unit.sock --log /var/log/unit.log --pid /run/unit.pid
+PIDFile=/run/nginx-unit.pid
+ExecStart=/usr/sbin/unitd --control unix:/run/nginx-unit.control.sock --pid /run/nginx-unit.pid
 ExecReload=
 
 [Install]

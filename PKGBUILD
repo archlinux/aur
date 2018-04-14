@@ -17,10 +17,16 @@ makedepends=('php-embed' 'python' 'go')
 
 build() {
   cd "$srcdir"/$_shortname-$pkgver
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  ./configure --prefix=/usr \
+              --sbindir=/usr/bin \
+              --modules="/usr/lib/$pkgbase" \
+              --state="/var/lib/$pkgbase" \
+              --pid="/run/$pkgbase.pid" \
+              --log="/var/log/$pkgbase.log" \
+              --control="/run/$pkgbase.control.sock"
   ./configure python
   ./configure php
-  ./configure go
+  ./configure go --go-path=/usr/lib/go
   make all
 }
 
