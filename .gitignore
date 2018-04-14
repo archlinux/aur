@@ -1,4 +1,5 @@
-systemd-git
+systemd-git/
+systemd/
 src
 pkg
 *.pkg.*
