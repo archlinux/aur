@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.20
+pkgver=0.22.21
 chan="dev"
 _pkgver=$pkgver
 pkgrel=1
@@ -18,7 +18,7 @@ conflicts=('brave' 'brave-bin')
 source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver""$chan"/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('e0e4b096f05e064a31f9c866ee3b01e1d285b03fd4b6573cbb343ee03b945eaa1508e9faa0a5a210bab85da11cbb919e1dcf0b96d60c8713cbb9bf01a86629f1'
+sha512sums=('1f7aec104aa6ffca534d088146907c1e5a007c4cd9812a2fc1112242000b12f96862258587c533ef86fd6d668283769dd057e2341d5e29a6f5e11e1e422f193c'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 _bdir=brave-linux-x64
 
