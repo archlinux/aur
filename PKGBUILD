@@ -2,7 +2,7 @@
 
 pkgname='stratisd'
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -21,6 +21,9 @@ build() {
   # Release
   make build
   make docs
+
+  # patch systemd config
+  sed -i 's,/usr/libexec,/usr/bin,g' stratisd.service
 }
 
 check() {
