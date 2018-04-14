@@ -2,13 +2,16 @@
 
 pkgname='stratis-cli'
 pkgver=0.5.0
-pkgrel=2
-pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
+pkgrel=3
+pkgdesc='A CLI for the Stratis Project.'
 arch=('any')
-license=('apache2')
+license=('Apache')
 url='stratis-storage.github.io'
-depends=('python-argparse')
-makedepends=('git' 'python-pylint' 'python-tox')
+depends=('python')
+makedepends=(
+  'dbus-glib' 'git' 'mpfr' 'python-argparse' 'python-dbus' 'python-pip'
+  'python-tox'
+)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=(
@@ -29,7 +32,7 @@ package() {
 
   install -d "${pkgdir}/usr/share/licenses/"
 
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/"
+  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
