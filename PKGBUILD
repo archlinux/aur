@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gomplate-git
-pkgver=r416.0d857a14
+pkgver=r417.f867f356
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
