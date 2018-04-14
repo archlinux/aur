@@ -9,7 +9,7 @@ license=("GPL")
 depends=("inkscape" "python2-lxml" "librsvg")
 provides=("inkscape-multipage-export")
 conflicts=("inkscape-multipage-export-git")
-source=("$pkgname::https://github.com/olibia/inkscape-multipage-export/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/olibia/inkscape-multipage-export/archive/v$pkgver.tar.gz")
 md5sums=("90be17defa5cdf7981788c5893c54694")
 
 package() {
