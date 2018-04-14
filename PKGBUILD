@@ -1,8 +1,9 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Thomas Lange <thomas-lange2@gmx.de>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=qt5gtk2
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+2.0 integration plugins for Qt5"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/trialuser02/${pkgname}"
