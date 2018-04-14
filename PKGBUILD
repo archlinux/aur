@@ -7,15 +7,15 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-owlboy'
-pkgver=2.2.0.3
+pkgver=1.3.6564.30139
 pkgrel=1
+epoch=1
 pkgdesc="Owlboy is a 'hi-bit' adventure game, where you can fly and explore a brand new world in the clouds!"
 url="http://www.owlboygame.com/"
 license=('custom')
 arch=('i686' 'x86_64')
-optdepends=(
-  'firejail: Automatically sandbox this application from your OS'
-)
+makedepends=('dos2unix')
+optdepends=('firejail: Sandbox this application from your OS')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
@@ -24,7 +24,7 @@ source=(
 sha256sums=(
   '160b4d0fb275d3c1d4d6d574ca4085579e944e67dd32bd0a0c6e79f2e3d105a6'
   '8574e2463800004ddf97e49d2760d834413bf51fda4b1a57ead8cc10b07ac4f2'
-  '41cc985f9399bb59a4da78a0ffbeae9d8ec7fda8dee3f409b93c9d978a8f8562'
+  '65ab113d3e465ab0aa4bec514ba36f91219b38743361f508af8c96b7f5ba4b3d'
 )
 
 package() {
@@ -56,6 +56,14 @@ package() {
   install -m 644                   \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # Plebians...
+  while read -r ini; do
+    chmod g+w "${ini}"
+    file "${ini}" | grep -Ei 'CRLF' && dos2unix "${ini}"
+  done < <(find "${pkgdir}" -name *.ini)
+  # Don't even get me started on why the fuck I have to do this...
+  chgrp -R games "${pkgdir}"
 }
 
 # vim: ts=2 sw=2 et:
