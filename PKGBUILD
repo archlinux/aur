@@ -48,7 +48,6 @@ package() {
   mv * "$pkgdir/opt/$pkgmaname-$pkgmaver/"
 
   cd "$pkgdir/opt/$pkgmaname-$pkgmaver"
-  mv "lib" "lib.bak"
 
   mkdir -p $pkgdir/usr/share/icon/
   mkdir -p $pkgdir/usr/share/applications/
@@ -62,6 +61,7 @@ package() {
   ln -f -s /opt/$pkgmaname-$pkgmaver/$pkgmaname $pkgdir/usr/bin/edrawmax
 
   # orignal package include qt 5.8, but archlinux's 5.9+ is also fine, and fix fcitx problem.
+  mv "lib" "lib.bak"
   mkdir -p lib
   cp -a ./lib.bak/libqtitanribbon.so* ./lib/
   cp -a ./lib.bak/libBaseCore.so* ./lib/
