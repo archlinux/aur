@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/fcitx/kcm-fcitx"
 license=('GPL')
 depends=('fcitx-qt5' 'knewstuff' 'kcmutils')
-makedepends=('extra-cmake-modules' 'python')
+makedepends=('extra-cmake-modules')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz"{,.sig})
 sha512sums=('e6a7bcad10003a956389ee266cf6d2f3730dafafcdd0bb43de328397749775e5cd305f16fdca2365e246c903677dba042da81a6dfd873aa1be74174e2b0b372e'
             'SKIP')
