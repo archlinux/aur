@@ -1,13 +1,13 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli-git'
-pkgver=0.0.4.r19.gdc091e4
+pkgver=0.5.0.r17.g41d1232
 pkgrel=1
 pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
 license=('apache2')
 url='stratis-storage.github.io'
-depends=('python-argparse' 'python-dbus' 'python-justbytes')
+depends=('python-argparse' 'python-dbus' 'python-justbytes' 'yapf')
 makedepends=('git')
 provides=("${pkgname/-git}")
 conflicts=("${pkgname/-git}")
