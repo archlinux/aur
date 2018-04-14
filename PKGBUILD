@@ -8,7 +8,7 @@
 
 pkgname=intel-media-sdk-git
 pkgver=1.2a.r55.g22dae39
-pkgrel=2
+pkgrel=3
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -20,9 +20,9 @@ depends=(
         'intel-media-driver-git'
 )
 makedepends=('git' 'git-lfs' 'cmake' 'libx11' 'libxcb')
-options=('!emptydirs')
 provides=('intel-media-sdk' 'libmfx')
-conflicts=('intel-media-sdk' 'libmfx')
+conflicts=('intel-media-sdk' 'intel-media-server-studio')
+options=('!emptydirs')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -68,14 +68,11 @@ build() {
         -DCMAKE_CXX_FLAGS_RELEASE:STRING="${CXXFLAGS} ${CPPFLAGS}" \
         -DCMAKE_C_FLAGS_RELEASE:STRING="${CFLAGS} ${CPPFLAGS}" \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_DRM:BOOL='ON' \
         -DENABLE_OPENCL:BOOL='ON' \
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
-        -DMFX_PLUGINS_DIR='/usr/lib' \
         --no-warn-unused-cli \
         -Wno-dev \
         ..
@@ -88,20 +85,15 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    mkdir -p "${pkgdir}/usr/"{bin,include/mfx}
-    
     # includes (add 'mfx' folder for ffmpeg compatibility)
-    cd "${pkgdir}/usr/include"
+    mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
+    cd "${pkgdir}/opt/intel/mediasdk/include"
     for _header in *.h
     do
         cd mfx
         ln -sf ../"$_header" "$_header"
         cd ..
     done
-    
-    # move samples to better places
-    mv -f "$pkgdir"/usr/samples/lib* "${pkgdir}/usr/lib"
-    mv -f "$pkgdir"/usr/samples/*    "${pkgdir}/usr/bin"
     
     # license
     cd "${srcdir}/${pkgname}"
