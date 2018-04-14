@@ -1,7 +1,11 @@
 # Maintainer: Roman Voropaev <voropaev.roma@gmail.com>
 
 pkgbase='nginx-unit'
-pkgname=('nginx-unitd' 'nginx-unit-python' 'nginx-unit-php' 'nginx-unit-go')
+pkgname=('nginx-unitd'
+         'nginx-unit-python'
+         'nginx-unit-python2'
+         'nginx-unit-php'
+         'nginx-unit-go')
 _shortname='unit'
 pkgver=1.0
 pkgrel=0
@@ -13,7 +17,7 @@ source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz"
         'unit.service')
 sha256sums=('13b250032d3aeef554f5e7f67b26dc2c01b9e51f5f392cbeca44db65488ca6f1'
             'SKIP')
-makedepends=('php-embed' 'python' 'go')
+makedepends=('php-embed' 'python' 'python2' 'go')
 
 build() {
   cd "$srcdir"/$_shortname-$pkgver
@@ -24,7 +28,8 @@ build() {
               --pid="/run/$pkgbase.pid" \
               --log="/var/log/$pkgbase.log" \
               --control="/run/$pkgbase.control.sock"
-  ./configure python
+  ./configure python --config=python3-config
+  ./configure python --config=python2-config
   ./configure php
   ./configure go --go-path=/usr/lib/go
   make all
@@ -42,7 +47,14 @@ package_nginx-unit-python() {
   depends=('nginx-unitd' 'python')
 
   cd "$srcdir"/$_shortname-$pkgver
-  make DESTDIR="$pkgdir" python-install
+  make DESTDIR="$pkgdir" python3-install
+}
+
+package_nginx-unit-python2() {
+  depends=('nginx-unitd' 'python2')
+
+  cd "$srcdir"/$_shortname-$pkgver
+  make DESTDIR="$pkgdir" python2-install
 }
 
 package_nginx-unit-php() {
