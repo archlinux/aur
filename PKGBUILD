@@ -3,7 +3,7 @@
 _srcname=IntelSEAPI
 pkgname=intel-seapi
 pkgver=17.01.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Single Event API (Intel SEAPI)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -25,7 +25,9 @@ prepare() {
     # set install prefix
     if ! grep -q "(\"\-DCMAKE_INSTALL_PREFIX:PATH='/usr'\"),$" buildall.py
     then
-        sed -i "246i\            \(\"-DCMAKE_INSTALL_PREFIX:PATH='/usr'\")," buildall.py
+        local _unix_line="$(sed -n "/generator[[:space:]]=[[:space:]]'Unix[[:space:]]Makefiles'/=" buildall.py)"
+        
+        sed -i "$((_unix_line + 4))i\\            \\(\"-DCMAKE_INSTALL_PREFIX:PATH='/usr'\")," buildall.py
     fi
 }
 
