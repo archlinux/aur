@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-git
-pkgver=2.0.8.r1.gbe84399
+pkgver=2.0.9.r3.g0cca203
 pkgrel=1
 pkgdesc="A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,6 +30,8 @@ prepare() {
   sed -i 's|'\''blocked\.log'\''|'\''/var/log/dnscrypt-proxy/blocked\.log'\''|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''ip-blacklist\.txt'\''|'\''/etc/dnscrypt-proxy/ip-blacklist\.txt'\''|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''ip-blocked\.log'\''|'\''/var/log/dnscrypt-proxy/ip-blocked\.log'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''whitelist\.txt'\''|'\''/etc/dnscrypt-proxy/whitelist\.txt'\''|g' example-dnscrypt-proxy.toml
+  sed -i 's|'\''whitelisted\.log'\''|'\''/var/log/dnscrypt-proxy/whitelisted\.log'\''|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''public-resolvers\.md'\''|'\''/var/cache/dnscrypt-proxy/public-resolvers\.md'\''|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''parental-control\.md'\''|'\''/var/cache/dnscrypt-proxy/parental-control\.md'\''|g' example-dnscrypt-proxy.toml
 }
@@ -55,6 +57,7 @@ package() {
   install -Dm644 "example-forwarding-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-forwarding-rules.txt"
   install -Dm644 "example-blacklist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-blacklist.txt"
   install -Dm644 "example-cloaking-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-cloaking-rules.txt"
+  install -Dm644 "example-whitelist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-whitelist.txt"
   
   install -Dm644 "../systemd/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
   install -Dm644 "../systemd/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
