@@ -2,18 +2,18 @@
 
 pkgname=libdeflate-git
 pkgver=1.0.r0.g9a327aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression"
 arch=('i686' 'x86_64')
 url="https://github.com/ebiggers/libdeflate"
 license=('MIT')
 depends=('glibc')
+makedepends=('git')
 options=('staticlibs')
 source=('git+https://github.com/ebiggers/libdeflate.git')
 sha256sums=('SKIP')
 conflicts=('libdeflate')
 provides=('libdeflate')
-replaces=('libdeflate')
 
 pkgver() {
   cd libdeflate
