@@ -1,4 +1,4 @@
-# Contributor: Roman Voropaev <voropaev.roma@gmail.com>
+# Maintainer: Roman Voropaev <voropaev.roma@gmail.com>
 
 pkgbase='nginx-unit'
 pkgname=('nginx-unitd' 'nginx-unit-python' 'nginx-unit-php' 'nginx-unit-go')
@@ -31,6 +31,8 @@ build() {
 }
 
 package_nginx-unitd() {
+  depends=('glibc')
+
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" unitd-install
   install -m 644 -D "$srcdir"/unit.service "$pkgdir"/usr/lib/systemd/system/unit.service
@@ -38,18 +40,22 @@ package_nginx-unitd() {
 
 package_nginx-unit-python() {
   depends=('nginx-unitd' 'python')
+
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" python-install
 }
 
 package_nginx-unit-php() {
-  depends=('nginx-unitd' 'php')
+  depends=('nginx-unitd' 'php-embed')
+
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" php-install
 }
 
 package_nginx-unit-go() {
+  arch=('any')
   depends=('nginx-unitd' 'go')
+
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" go-install
 }
