@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-smart-home"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-smart-home/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-smart-home/archive/$pkgver.tar.gz")
 md5sums=("c64d749a8778e58933362164c6386367")
 
 package() {
