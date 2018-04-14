@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/hardpixel/gedit-cut-line"
 license=("GPL")
 depends=("gedit")
-source=("$pkgname::https://github.com/hardpixel/gedit-cut-line/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/hardpixel/gedit-cut-line/archive/$pkgver.tar.gz")
 md5sums=("255476ae267324d76e36aa718b5ea349")
 
 package() {
