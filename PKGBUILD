@@ -59,7 +59,9 @@ package() {
   cp -f edrawmax.desktop $pkgdir/usr/share/applications/
   cp -f edrawmax.xml $pkgdir/usr/share/mime/packages/
   cp -f eddx.svg $pkgdir/usr/share/icons/gnome/scalable/mimetypes/
+  ln -f -s /opt/$pkgmaname-$pkgmaver/$pkgmaname $pkgdir/usr/bin/edrawmax
 
+  # orignal package include qt 5.8, but archlinux's 5.9+ is also fine, and fix fcitx problem.
   mkdir -p lib
   cp -a ./lib.bak/libqtitanribbon.so* ./lib/
   cp -a ./lib.bak/libBaseCore.so* ./lib/
