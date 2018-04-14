@@ -1,0 +1,19 @@
+pkgbase = python-dbus-client-gen
+	pkgdesc = A Python Library for Generating dbus-python Client Code
+	pkgver = 0.6
+	pkgrel = 1
+	url = stratis-storage.github.io
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python-pylint
+	makedepends = python-tox
+	makedepends = yapf
+	depends = python-dbus
+	provides = python-dbus-client-gen
+	conflicts = python-dbus-client-gen
+	source = python-dbus-client-gen-0.6.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v0.6.tar.gz
+	sha256sums = 37afb7a79201d985f0e48114cdb7b3539dc8cdcffec826ab14799d8d83c1c031
+
+pkgname = python-dbus-client-gen
+
