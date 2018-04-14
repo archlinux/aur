@@ -1,0 +1,9 @@
+post_install() {
+    printf '%s\n' 'In order to use the the Intel Media Driver for VAAPI you need to set the'
+    printf '%s\n' "environment variable 'LIBVA_DRIVER_NAME' to 'iHD'. You can do this, for"
+    printf '%s\n' "example, by uncommenting the proper line in '/etc/profile.d/intel-media.sh'."
+}
+
+post_upgrade() {
+    post_install
+}
