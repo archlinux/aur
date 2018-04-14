@@ -3,3 +3,5 @@
 *.pkg
 *.sign
 *.pkg.tar.xz.sig
+pkg/
+src/
