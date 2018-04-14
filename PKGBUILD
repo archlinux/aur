@@ -3,14 +3,14 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=2
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
 depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
-makedepends=('git' 'python-setuptools' 'python-tox')
+makedepends=('git' 'python-setuptools' 'python-tox' 'python-flexmock')
 provides=('borgmatic')
 install="${pkgname}.install"
 source=(
@@ -18,7 +18,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  '9436b10bd245f73a529ca91d98b98bdc047e268efbdfb619dd5c65b477af043a'
+  'd926baee7ec7a374785cdee124c56f6270e8273fc0d1f91299b7fbe2cb04aab2'
   '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
 )
 
