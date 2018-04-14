@@ -1,6 +1,6 @@
 pkgbase = python-rosdep
-	pkgdesc = rosdep package manager abstrction tool for ROS
-	pkgver = 0.12.1
+	pkgdesc = rosdep package manager abstraction tool for ROS
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = http://wiki.ros.org/rosdep
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-rosdep
 	depends = python-rospkg
 	depends = python-yaml
 	conflicts = python2-rosdep
-	source = https://files.pythonhosted.org/packages/source/r/rosdep/rosdep-0.12.1.tar.gz
-	md5sums = 2162099682370a806fba590abb91e6da
+	source = https://files.pythonhosted.org/packages/source/r/rosdep/rosdep-0.12.2.tar.gz
+	md5sums = b6d540b0b208a40a6dd86d05f4cb5b0e
 
 pkgname = python-rosdep
 
