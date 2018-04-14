@@ -3,9 +3,9 @@
 # Contributor: Danny Su       <contact@dannysu.com>
 
 pkgname=duplicati-latest
-pkgver=2.0.3.4
+pkgver=2.0.3.5
 pkgrel=1
-_date=2018-04-02
+_date=2018-04-13
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
@@ -16,9 +16,9 @@ source=(https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pk
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('f77f9d704997f50ae97b413a1ac8db58c076054bd5ec8cba6c4d7b318aa9b453'
-            'f87c93177662e38ab43a0d709dbb00e1354116525fbe369ae223e549599636f3'
-            '087db7ce97c4180006c2708d49024c0393f48f83ea2ce8b0b6354fffa554ece9'
+sha256sums=('c83339839805204b36b9516cb7229363ad6809d3d7a4bdb385014b23eda063eb'
+            '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
+            '78e4671fbc000b2a234a4de05172c5869a838bdc531efeb3ecf88b2dee6308ac'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5')
 arch=('i686' 'x86_64')
