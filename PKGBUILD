@@ -5,8 +5,8 @@
 
 pkgbase=python-pyface
 pkgname=('python2-pyface' 'python-pyface')
-pkgver=5.1.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python-traits' 'python2-setuptools' 'python2-t
 options=(!emptydirs)
 
 source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz")
-md5sums=('2d7703b71df4478ae02b7481dc673754')
+md5sums=('d0268ef46e4229011c3b0ae738e731e1')
 
 prepare() {
   cd "$srcdir"
