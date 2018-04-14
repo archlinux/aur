@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/kernel*.img
+
+[Action]
+Description = Updating %PKGNAME% initcpios
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -p %PKGNAME%
