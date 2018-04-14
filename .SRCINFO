@@ -1,7 +1,7 @@
 pkgbase = profanity-omemo-plugin-git
 	pkgdesc = A Python plugin to use (axolotl / Signal Protocol) encryption for the profanity XMPP messenger
-	pkgver = v0.1.1.46
-	pkgrel = 2
+	pkgver = v0.1.1.46.ga1c77a8
+	pkgrel = 3
 	url = https://github.com/ReneVolution/profanity-omemo-plugin
 	install = profanity-omemo-plugin.install
 	arch = any
