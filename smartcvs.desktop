@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SmartCVS
+Comment=Graphical CVS client
+Exec=smartcvs
+Icon=smartcvs
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Development;
+StartupWMClass=SmartCVS
+MimeType=application/smartcvs;application/x-smartcvs;
+
