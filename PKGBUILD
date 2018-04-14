@@ -1,11 +1,11 @@
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=bsearch
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for binary searching a sorted file for lines that start with the search key"
 arch=('x86_64')
 url="https://github.com/jamesridgway/bsearch"
-license=('GPL')
+license=('MIT')
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jamesridgway/bsearch/archive/${pkgver}.tar.gz")
 sha256sums=('4520918349e6f82d8f0c1586d2fdf3dfe9b1300a6f7d68faa5180454739d53f7')
