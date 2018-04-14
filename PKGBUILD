@@ -48,9 +48,7 @@ package() {
   mv * "$pkgdir/opt/$pkgmaname-$pkgmaver/"
 
   cd "$pkgdir/opt/$pkgmaname-$pkgmaver"
-  rm -f "qt.conf"
   mv "lib" "lib.bak"
-  rm -fr "plugins"
 
   mkdir -p $pkgdir/usr/share/icon/
   mkdir -p $pkgdir/usr/share/applications/
@@ -72,6 +70,8 @@ package() {
   cp -a ./lib.bak/libExporter.so* ./lib/
 
   rm -fr ./lib.bak
+  rm -f qt.conf
+  rm -fr plugins
   # rm -fr library sample  # big directory, uncomment for test
 }
 
