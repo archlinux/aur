@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=sopcast-launcher
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Sopcast Launcher allows you to open Sopcast links with a Media Player of your choice"
 arch=("any")
