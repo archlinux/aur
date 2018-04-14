@@ -1,18 +1,18 @@
 pkgbase = partio-git
 	pkgdesc = Particle IO and manipulation library (git version)
-	pkgver = 1.1.0.r91.g2774ef3
-	pkgrel = 4
+	pkgver = 1.1.0.r93.g8b6ea0d
+	pkgrel = 5
 	url = http://www.disneyanimation.com/technology/partio.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake>=2.4.6
+	makedepends = swig
 	makedepends = git
 	depends = glut
 	depends = glu
 	depends = seexpr
 	optdepends = python2: Python interface support
-	optdepends = swig: Python interface support
 	optdepends = zlib: file compression support
 	provides = partio
 	conflicts = partio
