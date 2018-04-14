@@ -9,8 +9,8 @@ license=("GPL")
 depends=("python-psutil" "python-notify2" "sopcast")
 optdepends=("vlc")
 provides=("sopcast-launcher")
-source=("https://github.com/jonian/sopcast-launcher/archive/v$pkgver.tar.gz")
-md5sums=("SKIP")
+source=("$pkgname-$pkgver::https://github.com/jonian/sopcast-launcher/archive/v$pkgver.tar.gz")
+md5sums=("6e459d6b6b9b8fbb75c5606d92ed25fe")
 
 package() {
   mkdir -p "$pkgdir/opt"
@@ -24,4 +24,3 @@ package() {
   ln -s "/opt/$pkgname/sopcast_launcher.py" "$pkgdir/usr/bin/sopcast-launcher"
   mv "$pkgdir/opt/$pkgname/sopcast-launcher.desktop" "$pkgdir/usr/share/applications/sopcast-launcher.desktop"
 }
-
