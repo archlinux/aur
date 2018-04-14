@@ -1,0 +1,18 @@
+pkgbase = realyog
+	pkgdesc = Wrapper around yay to make things simple.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Myl0g/realyog
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	makedepends = golang-dep
+	depends = yay
+	provides = realyog
+	conflicts = realyog
+	source = git+https://github.com/Myl0g/realyog.git#tag=v1.0.2
+	md5sums = SKIP
+
+pkgname = realyog
+
