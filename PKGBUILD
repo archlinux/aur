@@ -2,7 +2,7 @@
 
 pkgname=intel-media-driver-git
 pkgver=r408.eb470bc.gmmlib.r34.2eea1a1
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
@@ -11,6 +11,7 @@ depends=('gcc-libs' 'libva')
 makedepends=('git' 'cmake')
 provides=('intel-media-driver')
 conflicts=('intel-media-driver')
+backup=('etc/profile.d/intel-media.sh')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("$pkgname"::'git+https://github.com/intel/media-driver.git'
@@ -57,7 +58,13 @@ build() {
 
 package() {
     cd build
+    
     make DESTDIR="$pkgdir" install
+    
+    # do not force the use of 'iHD' libva driver by default (let user choose)
+    local _info='uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
+    sed -i "2i\\ \\${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
+    sed -i '/LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
     
     # license
     cd "${srcdir}/${pkgname}"
