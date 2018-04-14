@@ -1,0 +1,13 @@
+pkgbase = gcc6-gcccompat
+	pkgdesc = Provide links for gcc6 without '-6' suffix
+	pkgver = 1.0
+	pkgrel = 1
+	url = none
+	arch = x86_64
+	license = MIT
+	depends = gcc6
+	provides = gcc
+	conflicts = gcc
+
+pkgname = gcc6-gcccompat
+
