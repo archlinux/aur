@@ -1,0 +1,23 @@
+pkgbase = materia-kde-git
+	pkgdesc = Port of the popular GTK theme Materia for Plasma 5 desktop with a few additions and extras
+	pkgver = r11.ga9ac104
+	pkgrel = 1
+	url = https://github.com/PapirusDevelopmentTeam/materia-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	optdepends = konsole: For the Konsole color scheme
+	optdepends = kvantum-qt5: For the Qt application style
+	optdepends = kwin: For the Aurorae theme
+	optdepends = papirus-icon-theme: For the Papirus icon theme
+	optdepends = plasma-desktop: For the Plasma theme
+	optdepends = yakuake: For the Yakuake skin
+	provides = materia-kde
+	conflicts = materia-kde
+	options = !strip
+	source = materia-kde::git+https://github.com/PapirusDevelopmentTeam/materia-kde.git
+	sha256sums = SKIP
+
+pkgname = materia-kde-git
+
