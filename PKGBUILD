@@ -22,6 +22,7 @@ source=(
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
   0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,10 +36,11 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04'
-            '558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6'
-            'bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46'
-            'c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2')
+            '5537c95208da5951a456084ecae9c8efbed63566d5d49503598ff5660fb3320e'
+            '7222455040b21ad80ed237b667100b78345baed19cc14177002a47046913f00d'
+            'b0d6f4f308a8d9fcd4af5cca22e65af7d5072a91c3554ddb2480a50f3544dcf2'
+            '84a3c167897b4a67b65a6b3d44cfee9a26535169d530de80637eed31ff946577'
+            'bc899ff8017cf60170d459d77f064edaad1bb4047eef53f27583521786f68f54')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -63,6 +65,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/58153
   patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+
+  # https://bugs.archlinux.org/task/58158
+  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
