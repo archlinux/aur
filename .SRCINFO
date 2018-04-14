@@ -1,7 +1,7 @@
 pkgbase = tracer
 	pkgdesc = Finds outdated running applications in your system
 	pkgver = 0.6.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tracer-package.com/
 	arch = any
 	license = GPL2
@@ -12,8 +12,10 @@ pkgbase = tracer
 	depends = pyalpm
 	optdepends = python-argcomplete: bash completion
 	source = tracer-0.6.13.1.tar.gz::https://github.com/FrostyX/tracer/archive/tracer-0.6.13.1-1.tar.gz
+	source = tracer.bash_completion
 	source = tracer.hook
 	sha256sums = c28a8a9f3c371e7e0797981191223ed2b04504bbd4477ab521f6aae20c0b9593
+	sha256sums = d710122aac825c70634fa925cfba0de88a8ab22882fd3575aad1ab6f7924ed1b
 	sha256sums = cade46472c45fef3f8ec1eb762cd4469d37f2966f65f63ee89887941e7896452
 
 pkgname = tracer
