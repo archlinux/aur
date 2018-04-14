@@ -1,6 +1,6 @@
 # Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=kurento-module-creator
-pkgver=4.0.8
+pkgver=6.7.0
 pkgrel=1
 pkgdesc='Kurento module creator'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'java-environment' 'maven')
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("https://github.com/Kurento/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7b0902f408062dc5b67ed7ac919cd118818c82276012c038823742a4cae1dff1')
+sha256sums=('e14236601cd098dcb4039cabf757ea1b47a7f8c9a6c937be7fe5600bd3e9cdb2')
 
 build() {
     cd $srcdir/${pkgname}-${pkgver}
