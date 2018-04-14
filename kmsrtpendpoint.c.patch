@@ -1,0 +1,11 @@
+--- src/gst-plugins/rtpendpoint/kmsrtpendpoint.c	2018-04-13 16:19:22.822964018 +0300
++++ src/gst-plugins/rtpendpoint/kmsrtpendpoint.c	2018-04-14 13:46:45.411190394 +0300
+@@ -1160,7 +1160,7 @@
+
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsrtpendpoint,
++    rtpendpoint,
+     "Kurento rtp endpoint",
+     kms_rtp_endpoint_plugin_init, VERSION, GST_LICENSE_UNKNOWN,
+     "Kurento Elements", "http://kurento.com/")

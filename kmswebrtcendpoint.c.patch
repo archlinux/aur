@@ -1,0 +1,11 @@
+--- src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c	2018-04-13 16:19:22.882965121 +0300
++++ src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c	2018-04-14 13:47:11.081661559 +0300
+@@ -861,7 +861,7 @@
+
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmswebrtcendpoint,
++    webrtcendpoint,
+     "Kurento webrtc endpoint",
+     kms_webrtc_endpoint_plugin_init, VERSION, GST_LICENSE_UNKNOWN,
+     "Kurento Elements", "http://kurento.com/")

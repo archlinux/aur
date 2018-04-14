@@ -1,0 +1,11 @@
+--- src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c	2018-04-13 16:19:22.782963282 +0300
++++ src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c	2018-04-14 13:45:24.649708246 +0300
+@@ -2049,7 +2049,7 @@
+
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsrecorderendpoint,
++    recorderendpoint,
+     "Kurento recorder endpoint",
+     kms_recorder_endpoint_plugin_init, VERSION, GST_LICENSE_UNKNOWN,
+     "Kurento Elements", "http://kurento.com/")

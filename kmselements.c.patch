@@ -1,0 +1,11 @@
+--- src/gst-plugins/kmselements.c	2018-04-13 16:19:22.852964568 +0300
++++ src/gst-plugins/kmselements.c	2018-04-14 13:42:12.896190528 +0300
+@@ -65,7 +65,7 @@
+
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmselements,
++    kmselementsplugins,
+     "Kurento elements",
+     kurento_init, VERSION, GST_LICENSE_UNKNOWN, "Kurento Elements",
+     "http://kurento.com/")
