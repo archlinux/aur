@@ -5,7 +5,7 @@
 pkgbase=linux-disable-tsq               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-pkgver=4.14.23
+pkgver=4.14.34
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,8 +21,8 @@ source=(
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
+  '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
   disable-tsq.patch
   ath.patch
 )
@@ -48,15 +48,10 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
+  # Disable TSQ
   patch -Np1 -i ../disable-tsq.patch
 
   cp -Tf ../config .config
@@ -243,3 +238,15 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
+         'SKIP'
+         'd3c42f511a24629fa5ff124cf1e6c0ad'
+         'SKIP'
+         'a92936a1fb38357bb458da6fbab549a9'
+         'ce6c81ad1ad1f8b333fd6077d47abdaf'
+         'a85bfae59eb537b973c388ffadb281ff'
+         'a329f9581060d555dc7358483de9760a'
+         '53523555d234de3b2fde749096ba9948'
+         '0ae8549287d6a3a4b3ab37758ca1d0cf'
+         '00a28544a6b9420fc7812baa06a1d110'
+         'df5993483073e55934948f8ea0fde07c')
