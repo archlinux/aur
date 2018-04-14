@@ -1,0 +1,17 @@
+pkgbase = python-dbus-signature-pyparsing
+	pkgdesc = A Parser for a D-Bus Signature
+	pkgver = 0.03
+	pkgrel = 2
+	url = stratis-storage.github.io
+	arch = any
+	license = apache2
+	makedepends = git
+	makedepends = python-pylint
+	makedepends = python-tox
+	provides = python-dbus-signature-pyparsing
+	conflicts = python-dbus-signature-pyparsing
+	source = dbus-signature-pyparsing-0.03.tar.gz::https://github.com/stratis-storage/dbus-signature-pyparsing/archive/v0.03.tar.gz
+	sha256sums = 263a41161304f239213c0e1234f4afdbe28b7103e60129f0448ae14fb0e9c52b
+
+pkgname = python-dbus-signature-pyparsing
+
