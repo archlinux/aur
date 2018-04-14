@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname='battlescribe'
-pkgver='2.01.09'
+pkgver='2.01.10'
 pkgrel=1
 pkgdesc="An army list builder for table-top games."
 arch=(any)
