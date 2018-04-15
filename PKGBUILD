@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info at orangecms dot org>
 pkgname=neopg
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 # dependency versions
 _googletest_ver=1.8.0
 _pegtl_ver=2.3.0
@@ -10,7 +10,7 @@ pkgdesc="The multiversal cryptoengine!"
 arch=('i686' 'x86_64')
 url="https://neopg.io"
 license=('BSD')
-depends=('boost' 'botan-with-compression' 'curl' 'gettext' 'gnutls' 'libusb' 'sqlite')
+depends=('boost' 'botan' 'curl' 'gettext' 'gnutls' 'libusb' 'sqlite')
 makedepends=('cmake')
 conflicts=('neopg-git')
 source=(
