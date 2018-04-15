@@ -1,13 +1,14 @@
 pkgbase = intel-media-server-studio
 	pkgdesc = Intel Media Server Studio (only SDK files, no kernel patches, no system modifications)
 	pkgver = 2018.R1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.intel.com/en-us/intel-media-server-studio/
 	arch = x86_64
 	license = custom
 	makedepends = poppler
 	provides = intel-opencl
 	provides = intel-opencl-runtime
+	provides = intel-media-sdk
 	conflicts = intel-opencl
 	conflicts = intel-opencl-runtime
 	conflicts = intel-media-sdk
