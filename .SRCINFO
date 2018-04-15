@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)
 	pkgver = 65.0.3325.181
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -15,6 +15,7 @@ pkgbase = ungoogled-chromium-bin
 	depends = minizip
 	depends = libxslt
 	depends = ffmpeg
+	depends = re2
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = kwallet: for storing passwords in KWallet
