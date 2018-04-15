@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -13,33 +13,29 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
-        'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
-        'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
-        'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
+        'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
+        'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
+        'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
         'zimg' 'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
-        'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'sndio' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
+        'chromaprint-fftw' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
+        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
         'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
-optdepends_x86_64=(
-    # AUR:
-        'intel-media-sdk: for Intel QSV support (experimental)'
-)
 makedepends=(
     # official repositories:
         'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx'
+        'blackmagic-decklink-sdk'
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf'
+        'vmaf' 'intel-media-sdk'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
@@ -79,10 +75,13 @@ build() {
     then
         local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
+        local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
         local _cflags='-I/opt/cuda/include'
         local _ldflags='-L/opt/cuda/lib64'
+        
+        export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
         
         # set path of -lcuda (libcuda.so.x, required by cuda_sdk)
         # on systems with legacy nvidia drivers
@@ -90,8 +89,6 @@ build() {
         then
             _ldflags="${_ldflags} -L/usr/lib/nvidia"
         fi
-        
-        _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
@@ -197,7 +194,7 @@ build() {
         $_cudasdk \
         --enable-cuvid \
         --enable-libdrm \
-        --enable-libmfx \
+        $_libmfx \
         $_libnpp \
         --enable-nvenc \
         --enable-omx \
