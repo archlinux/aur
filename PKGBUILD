@@ -1,9 +1,9 @@
 #Maintainer: Aaron Miller <aaronm@cldtk.com>
 pkgname=dynamodb
-pkgver=20170216
-pkgrel=2
+pkgver=20180411
+pkgrel=1
 pkgdesc="Amazon DynamoDB Local instance. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale."
-_upstreamver=2017-02-16
+_upstreamver=2018-04-11
 pkgver=${_upstreamver//-/_}
 arch=('any')
 url="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html"
@@ -14,7 +14,7 @@ source=('config.cfg' 'dynamodb' 'dynamodb.service' "http://dynamodb-local.s3-web
 sha256sums=('6a2d271d62de9e4e48bd4bd866a72283dec6bacc097c2f6262ab19fc0feb34d9'
             '2c4d4840735b2dd8b73c3a3132d23dc1e586a758cb699ea0ccf74943657bda69'
             '4024db91c14087290fbce707cadead1ea013dc845216e9758a485b7d2f67c3ca'
-            'd79732d7cd6e4b66fbf4bb7a7fc06cb75abbbe1bbbfb3d677a24815a1465a0b2')
+            '4afae454157256e3525df91b5ae2c6b6683ce05f92284e79335b2ac8e2e53762')
 
 package() {
   cd "$pkgdir"
