@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.r509.c5c48f3
+pkgver=1.1.1.r533.36bb2b1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=('ocl-icd'
          )
 makedepends=('git'
              'opencl-headers'
+             'meson'
              )
 conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
@@ -25,15 +26,19 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  mkdir -p build
+
+   cd build
+   meson "../${_plug}" \
+    --prefix /usr
+
+}
+
 build() {
-  cd "${_plug}"
-  ./configure \
-    --install=/usr/lib/vapoursynth \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS//--as-needed,/}"
-  make
+  ninja -C build
 }
 
 package(){
-  make -C "${_plug}" DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
