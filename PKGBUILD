@@ -8,12 +8,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=spearmint-git
 _pkgname=spearmint
-pkgver=r4627.232769ac
+pkgver=r4735.b52f3cfe
 _upver=r4627.232769ac
 pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
-_upver='0.5'
+_upver='0.6'
 pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)"
 url="http://${_pkgname}.pw"
 license=("GPL3" "custom")
@@ -42,7 +42,7 @@ source=("https://github.com/zturtleman/${_pkgname}/releases/download/release-${_
 	"${_pkgname}.service.sig"
 	"${_pkgname}.launcher.sig"
 	"${_pkgname}-server.launcher.sig")
-sha512sums=('f2c9746fcfd69efed2e9a3c7ba3f1f4a5d7f90352d5355dada6bf27b8c4a64975d65de19e66da548df1bcb6f38d2ae9524ffb869fa2fcd0da33c2fa533969fab'
+sha512sums=('008225a6bf6f4fa2acec7df05e43efc90ce17150d1cd4e00f1f5e96a3d4c5e9857ff855904fe8959da78f9ed8713bc108547e2b4a4ea6eb56923f727ead88998'
             'SKIP'
             'SKIP'
             'SKIP'
