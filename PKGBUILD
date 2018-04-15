@@ -10,8 +10,7 @@ arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
 depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
-makedepends=('git' 'python-setuptools' 'python-tox' 'python-flexmock')
-provides=('borgmatic')
+makedepends=('python-setuptools' 'python-flexmock' 'python-pytest')
 install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/${pkgver}.tar.gz"
@@ -48,7 +47,7 @@ check() {
   # python version, we will gladly accept them.
   sed -i 's/envlist=py34/envlist=py36/' tox.ini
 
-  tox
+  pytest
 }
 
 package() {
