@@ -7,8 +7,8 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.018
-pkgrel=3
+pkgver=2.018_01
+pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
@@ -27,9 +27,14 @@ makedepends=(
 	'perl-extutils-f77'
 	'proj'
         'perl-extutils-parsexs>=3.01'
+        'perl-convert-uu'
+        'perl-inline-c>=0.62'
+        'perl-module-compile>=0.23'
 )
 checkdepends=(
 	'perl-test-warn'
+        'perl-perlio-layers'
+        'perl-file-map'
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
@@ -41,11 +46,10 @@ optdepends=(
 	'plplot: for PDL::Graphics::PLplot support'
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
-
 source=(https://cpan.metacpan.org/authors/id/C/CH/CHM/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('4974da8767f635806c9c18d9849e61b8'
+md5sums=('154eef6077ea743c3ebfda8f994f63fb'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 

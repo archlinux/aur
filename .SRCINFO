@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.018
-	pkgrel = 2
+	pkgver = 2.018_01
+	pkgrel = 1
 	url = http://search.cpan.org/dist/PDL
 	changelog = ChangeLog
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = perl-pdl
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-warn
+	checkdepends = perl-perlio-layers
+	checkdepends = perl-file-map
 	makedepends = perl>=5.11.3
 	makedepends = fftw2
 	makedepends = hdf4
@@ -17,6 +19,9 @@ pkgbase = perl-pdl
 	makedepends = perl-extutils-f77
 	makedepends = proj
 	makedepends = perl-extutils-parsexs>=3.01
+	makedepends = perl-convert-uu
+	makedepends = perl-inline-c>=0.62
+	makedepends = perl-module-compile>=0.23
 	depends = perl>=5.10
 	depends = perl-inline>=0.43
 	depends = gsl
@@ -27,48 +32,10 @@ pkgbase = perl-pdl
 	optdepends = plplot: for PDL::Graphics::PLplot support
 	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHM/PDL-2.018.tar.gz
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHM/PDL-2.018_01.tar.gz
 	source = perldl.conf
 	source = Makefile.patch
-	md5sums = 4974da8767f635806c9c18d9849e61b8
-	md5sums = ac56f2a88b89d359a0dc80063d31cf59
-	md5sums = e2b2dff48643a5051a8f7d1ee9dc4ea9
-
-pkgname = perl-pdl
-
-pkgbase = perl-pdl
-	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.018
-	pkgrel = 3
-	url = http://search.cpan.org/dist/PDL
-	changelog = ChangeLog
-	arch = i686
-	arch = x86_64
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-test-warn
-	makedepends = perl>=5.11.3
-	makedepends = fftw2
-	makedepends = hdf4
-	makedepends = perl-opengl
-	makedepends = plplot
-	makedepends = perl-extutils-f77
-	makedepends = proj
-	makedepends = perl-extutils-parsexs>=3.01
-	depends = perl>=5.10
-	depends = perl-inline>=0.43
-	depends = gsl
-	optdepends = fftw2: for PDL::FFTW support
-	optdepends = hdf4: for HDF files support
-	optdepends = perl-astro-fits-header: improved FITS files support
-	optdepends = perl-opengl: for PDL::Graphics::TriD support
-	optdepends = plplot: for PDL::Graphics::PLplot support
-	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
-	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHM/PDL-2.018.tar.gz
-	source = perldl.conf
-	source = Makefile.patch
-	md5sums = 4974da8767f635806c9c18d9849e61b8
+	md5sums = 154eef6077ea743c3ebfda8f994f63fb
 	md5sums = ac56f2a88b89d359a0dc80063d31cf59
 	md5sums = e2b2dff48643a5051a8f7d1ee9dc4ea9
 
