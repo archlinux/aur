@@ -1,0 +1,14 @@
+pkgbase = settlers3-demo-data
+	pkgdesc = Demo-data from "The Settlers III" needed for JSettlers
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/jsettlers/settlers-remake
+	install = settlers3-demo-data.install
+	arch = any
+	license = unknown
+	provides = settlers3-data
+	source = http://www.siedler-maps.de/downloads/siedler3/s3amazonen_demo.exe
+	sha512sums = c224a5d4aad5560244e2230231f553eed3f049f04e8f16f43bc8a9048242a8881058ed6f30d4330886b70417a6db26ae67ca9cbd878a2c1d314a48cb3e438ec2
+
+pkgname = settlers3-demo-data
+
