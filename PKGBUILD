@@ -49,7 +49,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.16
 pkgver=4.16.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -81,7 +81,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
         '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch')
+        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch'
+        '0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch'
+        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -108,6 +110,14 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/58153
         msg "Fix #58153"
         patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+    
+    ### Fix https://bugs.archlinux.org/task/58158
+        msg "Fix #58158"
+        patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+    ### Fix https://bugs.archlinux.org/task/58174
+        msg "Fix #58174"
+        patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -367,15 +377,17 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             'SKIP'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             '337b220e5c5f240bf195fcf174974c03b127598723fc4ea5813e5c32154048ac4193737418b21e720e9034ad53589b59b898d0e648925db7e2db2ad57acd7fe7'
-            '01f1574b0d077c9d436e93beb2a8b4a71e7cc6caed0f3482f675a6b7347c5dcc624ab595fab8236f4d62ec7a1091d576268f7caf5c15869ba960d78d673105ec'
+            '25fbbf67d86afa619910e644a1e5c2ede321ac6cdf16e66128638dbdfe2e5dc454a6420eca1a743d6eff4a2bb9b8ea3143c1914b27c2ab07965e56d2c197853b'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '0253ef24869be7201e15a4a59924a97a3448206759f2a5868cdd1750ec6588b5ec1319e5f5866e8dcc98a25aaab93bb06843838249e44168cf47e70cb8eba446'
-            '057829b8befb355c59a2f4614221c1dfb35b9ef11957333cf10f39dc48bdb39d4623e85fc7db75eca2ced56315e1ef49d2087c05b9bd9f134caf403d73d79495'
-            '37e8d7a821b2f352f285286fc6ed5085b13b950b20295c8eea0f0951615e9d02d72367e431c20bb395ace50eda0cf91417633184a95f64a16cc301ae1bafb2f8'
-            '598ddc2e1819419755b1e3b8655b9368e694f68daea01d4732bd7221e481968a7d6102e042e6b61d05dfd65345f40b683808636f5ff3385397596e7a79640c1f')
+            '66404910e458f18ab67143a1ba41a89028fba9669995e85ec8d8c690ce718d861cbeaa45295738ab4ae03abe6e4941270586f07c2ae2a04d0def19856d15e48a'
+            '23f03a8c1a679bd6b81d7a5c4036a4201084f214abad24c24e28f5f888b7e60743340033fba01960c82cae0806fe2707596fe5e444d83a58629dafaaf73e572a'
+            'c324687fc9c60ca24ebce331d9a285d3ccb83cd72d36b0b5c6ef503d17cce2955673de2f065c8937c54e9a985a5e1443343e920c44932fb144ab12eb09b00b42'
+            '9ff7e643569a6aa0a1ca092de534860e7bfc4fcec7ee8cb36c5f26a719465af7f7b780d2cec12184332bc6fa2c0b56b182d67646747d48bc5e4e2eb58ee5bb55'
+            'ca5a56235fa06c26154532c96f2d535ee5000050ee85253b94d39eee28b6cf7d5cdbffc20db2c8e869dc592321fd7f262f1d250e9f90053e0ad52d76a6b42238'
+            'b82360552a235a64bc68245361f0758bd4c1c6815050814f9ea28f2d7d28f57aa2b8697b5f5ee8af31e9bf13053b371cff395a2c71e334e8c0b10a7364a8831e')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

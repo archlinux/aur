@@ -1,0 +1,72 @@
+From 33feec41e6d35bbc679befe5ec0fb12acef18c95 Mon Sep 17 00:00:00 2001
+Message-Id: <33feec41e6d35bbc679befe5ec0fb12acef18c95.1523790169.git.jan.steffens@gmail.com>
+In-Reply-To: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523790169.git.jan.steffens@gmail.com>
+References: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523790169.git.jan.steffens@gmail.com>
+From: Igor Russkikh <igor.russkikh@aquantia.com>
+Date: Wed, 11 Apr 2018 15:23:24 +0300
+Subject: [PATCH 6/6] net: aquantia: Regression on reset with 1.x firmware
+
+On ASUS XG-C100C with 1.5.44 firmware a special mode called "dirty wake"
+is active. With this mode when motherboard gets powered (but no poweron
+happens yet), NIC automatically enables powersave link and watches
+for WOL packet.
+This normally allows to powerup the PC after AC power failures.
+
+Not all motherboards or bios settings gives power to PCI slots,
+so this mode is not enabled on all the hardware.
+
+4.16 linux driver introduced full hardware reset sequence
+This is required since before that we had no NIC hardware
+reset implemented and there were side effects of "not clean start".
+
+But this full reset is incompatible with "dirty wake" WOL feature
+it keeps the PHY link in a special mode forever. As a consequence,
+driver sees no link and no traffic.
+
+To fix this we forcibly change FW state to idle state before doing
+the full reset. This makes FW to restore link state.
+
+Fixes: c8c82eb net: aquantia: Introduce global AQC hardware reset sequence
+Signed-off-by: Igor Russkikh <igor.russkikh@aquantia.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+---
+ .../aquantia/atlantic/hw_atl/hw_atl_utils.c      | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/drivers/net/ethernet/aquantia/atlantic/hw_atl/hw_atl_utils.c b/drivers/net/ethernet/aquantia/atlantic/hw_atl/hw_atl_utils.c
+index d3b847ec7465..c58b2c227260 100644
+--- a/drivers/net/ethernet/aquantia/atlantic/hw_atl/hw_atl_utils.c
++++ b/drivers/net/ethernet/aquantia/atlantic/hw_atl/hw_atl_utils.c
+@@ -48,6 +48,8 @@
+ #define FORCE_FLASHLESS 0
+ 
+ static int hw_atl_utils_ver_match(u32 ver_expected, u32 ver_actual);
++static int hw_atl_utils_mpi_set_state(struct aq_hw_s *self,
++				      enum hal_atl_utils_fw_state_e state);
+ 
+ int hw_atl_utils_initfw(struct aq_hw_s *self, const struct aq_fw_ops **fw_ops)
+ {
+@@ -247,6 +249,20 @@ int hw_atl_utils_soft_reset(struct aq_hw_s *self)
+ 
+ 	self->rbl_enabled = (boot_exit_code != 0);
+ 
++	/* FW 1.x may bootup in an invalid POWER state (WOL feature).
++	 * We should work around this by forcing its state back to DEINIT
++	 */
++	if (!hw_atl_utils_ver_match(HW_ATL_FW_VER_1X,
++				    aq_hw_read_reg(self,
++						   HW_ATL_MPI_FW_VERSION))) {
++		int err = 0;
++
++		hw_atl_utils_mpi_set_state(self, MPI_DEINIT);
++		AQ_HW_WAIT_FOR((aq_hw_read_reg(self, HW_ATL_MPI_STATE_ADR) &
++			       HW_ATL_MPI_STATE_MSK) == MPI_DEINIT,
++			       10, 1000U);
++	}
++
+ 	if (self->rbl_enabled)
+ 		return hw_atl_utils_soft_reset_rbl(self);
+ 	else
+-- 
+2.17.0
+
