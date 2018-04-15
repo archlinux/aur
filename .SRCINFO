@@ -1,0 +1,22 @@
+pkgbase = mss-saliency-git
+	pkgdesc = Implementation of the Maximum Symmetric Surround Saliency algorithm to highlight salient regions of interest within images
+	pkgver = r16.3530de9
+	pkgrel = 1
+	url = https://github.com/technopagan/mss-saliency
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = git
+	depends = imagemagick
+	depends = libmagick6
+	provides = mss-saliency
+	conflicts = mss-saliency
+	source = mss-saliency::git+https://github.com/technopagan/mss-saliency.git
+	source = LICENSE.md
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mss-saliency-git
+
