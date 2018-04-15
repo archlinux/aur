@@ -62,7 +62,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -101,7 +101,9 @@ source=(# mainline kernel patches
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
         '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch')
+        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch'
+        '0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch'
+        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
@@ -110,15 +112,17 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            'f2a92c0b2d170e5684f8a8955fe3c75027a37fcb32efcafbf56195c5c582fd20'
+            'ba4fe043e4e40e31e064871daa4800d166fb35d6fd5f3a18acb379e696969b50'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04'
-            '558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6'
-            'bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46'
-            'c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2')
+            '4233d9dfa3704c2107c05cb9824fc7978bbdd05255c076ccafd7b81e0fbdbfc7'
+            '37841e7fdf9f83add5d4bdb3baa972de7318b2ebce29c42b81f13e12e09dbe6f'
+            'db7c672e5356d65190169e53e244a91cdd45bd795efffe38668b41be01bf4ec7'
+            '34873d539c8c53520e907e6e1e1a24d17fb2819f07707cef061c10bd6b9c4b85'
+            '9c85109556ee122ed7710b18b2def6dd0daf402f540a59497049f61b9a693db2'
+            '76fe7d56b7e9e9dea548fe5a761cd346c20d78958a41907cd8ac6c6a9777e04d')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -150,6 +154,14 @@ prepare() {
         msg "Fix #58153"
         patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
   
+   ### Fix https://bugs.archlinux.org/task/58158
+       msg "Fix #58158"
+       patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+   ### Fix https://bugs.archlinux.org/task/58174
+       msg "Fix #58174"
+       patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+   
    ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
         sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
