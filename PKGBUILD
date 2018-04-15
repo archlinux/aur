@@ -9,7 +9,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
 pkgname=sks-local
 pkgver=1.1.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A modified version of AUR/sks that can be used in tandem to perform localized keydumps"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/skskeyserver/sks-keyserver/"
@@ -39,7 +39,7 @@ source=("https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${_pkgname}-
 	"cryptokit-1.7-sks-uint32.patch.sig"
 	"debian_eventloopfix.patch.sig")
 sha512sums=('f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c9117519433ebb1161da38d23c465b163dd31a766700023afa13174e4dc82542fa98099'
-	    '0fd57ccd86f289cf51638995555988a572ee00d6f28f3797092ffda19a0f668ee950be1ef381e94c64301db2dd1ad308834a45b7eaec148e9d8c01ed0a1829bc'
+	    'f8230b99ced630b75d035be81923e6d4ace607e247f770cdbcc2f4a0313dd4fe88e7e36e3c10472817ce56ad0476702c6782d0a27e8a41d0cfd624ba096026df'
 	    '41560dd89cb19c482af4352ee5e1c661428e61521e2cdfd307be23af6f3729a4c1a8db266391fba643a7ec0fb6f2ae936b56b889f02c7faf294e40b1ee54d73c'
 	    '175de67d82060a55f2ce6444c072c40bd0dce5e8d59d7b47adca588a5b1d7a0e79ba84044fa2953a77dec9dd56b63457bba104c6d99c6dc0cd1ce3fd6f179c88'
 	    '6ee333ce8aec0b103a36be376da43a569ed455f554fe853d007afc1d2e3a30d29735f515d22646832a8b4efa1ffdbfadb4a85ec22f2e5159180fc8373252c171'

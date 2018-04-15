@@ -6,7 +6,7 @@ diff -ru sks-1.1.4/common.ml sks-1.1.4.new/common.ml
  let set_logfile extension =
    if !Settings.filelog then
 -    let fname = (Filename.concat !Settings.basedir extension) ^ ".log" in
-+    let fname = (Filename.concat !Settings.basedir "/var/log/sks/") ^ extension ^ ".log" in
++    let fname = (Filename.concat !Settings.basedir "/var/log/sks-local/") ^ extension ^ ".log" in
      stored_logfile_name := Some fname;
      logfile := open_out_gen [ Open_wronly; Open_creat; Open_append; ]
        0o600 fname;
@@ -16,8 +16,8 @@ diff -ru sks-1.1.4/common.ml sks-1.1.4.new/common.ml
  let http_address = !Settings.hkp_address
 -let db_command_name = Filename.concat !Settings.basedir "db_com_sock"
 -let recon_command_name = Filename.concat !Settings.basedir "recon_com_sock"
-+let db_command_name = Filename.concat !Settings.basedir "/var/run/sks/db_com_sock"
-+let recon_command_name = Filename.concat !Settings.basedir "/var/run/sks/recon_com_sock"
++let db_command_name = Filename.concat !Settings.basedir "/var/run/sks-local/db_com_sock"
++let recon_command_name = Filename.concat !Settings.basedir "/var/run/sks-local/recon_com_sock"
  
  let db_command_addr = Unix.ADDR_UNIX db_command_name
  let recon_command_addr = Unix.ADDR_UNIX recon_command_name
@@ -29,7 +29,7 @@ diff -ru sks-1.1.4/dbserver.ml sks-1.1.4.new/dbserver.ml
    let convert_web_fname fname =
      if verify_web_fname fname then
 -      Filename.concat !Settings.basedir (Filename.concat "web" fname)
-+      Filename.concat !Settings.basedir (Filename.concat "/var/lib/sks/www" fname)
++      Filename.concat !Settings.basedir (Filename.concat "/var/lib/sks-local/www" fname)
      else raise (Wserver.Misc_error "Malformed requst")
  
    let supported_extensions =
@@ -41,7 +41,7 @@ diff -ru sks-1.1.4/getfileopts.ml sks-1.1.4.new/getfileopts.ml
  (**************************************************************)
  
 -let config_fname = "sksconf"
-+let config_fname = "/etc/sks/sksconf"
++let config_fname = "/etc/sks-local/sksconf"
  
  let parse args =
    Arg.current := 0;
@@ -53,7 +53,7 @@ diff -ru sks-1.1.4/reconserver.ml sks-1.1.4.new/reconserver.ml
          let hashes = hashconvert elements in
          print_hashes (sockaddr_to_string http_addr) hashes;
 -        log_diffs (sprintf "diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
-+        log_diffs (sprintf "/var/spool/sks/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
++        log_diffs (sprintf "/var/spool/sks-local/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
          if List.length elements > 0
          then
            begin
@@ -62,7 +62,7 @@ diff -ru sks-1.1.4/reconserver.ml sks-1.1.4.new/reconserver.ml
          let hashes = hashconvert results in
          print_hashes (sockaddr_to_string http_addr) hashes;
 -        log_diffs (sprintf "diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
-+        log_diffs (sprintf "/var/spool/sks/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
++        log_diffs (sprintf "/var/spool/sks-local/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
          match results with
              [] -> []
            | _ ->
@@ -92,13 +92,13 @@ diff -ru sks-1.1.4/settings.ml sks-1.1.4.new/settings.ml
 -let base_dumpdir = "dump"
 -let base_msgdir = "messages"
 -let base_failed_msgdir = "failed_messages"
-+let base_dbdir = "/var/lib/sks/DB"
-+let base_ptree_dbdir = "/var/lib/sks/PTree"
-+let base_membership_file = "/etc/sks/membership"
-+let base_mailsync_file = "/etc/sks/mailsync"
-+let base_dumpdir = "/var/lib/sks/dump"
-+let base_msgdir = "/var/spool/sks/messages"
-+let base_failed_msgdir = "/var/spool/sks/failed_messages"
++let base_dbdir = "/var/lib/sks-local/DB"
++let base_ptree_dbdir = "/var/lib/sks-local/PTree"
++let base_membership_file = "/etc/sks-local/membership"
++let base_mailsync_file = "/etc/sks-local/mailsync"
++let base_dumpdir = "/var/lib/sks-local/dump"
++let base_msgdir = "/var/spool/sks-local/messages"
++let base_failed_msgdir = "/var/spool/sks-local/failed_messages"
  
  let dbdir = lazy (Filename.concat !basedir base_dbdir)
  let ptree_dbdir = lazy (Filename.concat !basedir base_ptree_dbdir)
