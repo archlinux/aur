@@ -1,0 +1,22 @@
+pkgbase = dhcpcd-ui-patched
+	pkgdesc = dhcpcd Monitor in GTK+, patched with AppIndicator support
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = http://roy.marples.name/projects/dhcpcd-ui
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = dhcpcd-dbus>=0.6.0
+	depends = hicolor-icon-theme
+	provides = dhcpcd-ui
+	conflicts = dhcpcd-ui
+	source = http://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.5.tar.bz2
+	source = add-appindicator-support.patch
+	md5sums = ff937ffe2ffc2801488078a61bdbfd0d
+	md5sums = bc618c307d0d27ce7f9a12a2a2e077a4
+
+pkgname = dhcpcd-ui-patched
+

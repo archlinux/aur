@@ -1,0 +1,413 @@
+diff -ruN a/configure b/configure
+--- a/configure	2015-01-07 12:18:28.000000000 +0300
++++ b/configure	2018-04-15 03:35:44.941110508 +0400
+@@ -388,6 +388,19 @@
+ 	
+ if [ -n "$WITH_GTK" -a "$WITH_GTK" != no ]; then
+ 	PKG="$WITH_GTK"
++	if [ "$WITH_GTK" = "gtk+-2.0" ]; then
++		if ! pkg-config --cflags appindicator-0.1 >/dev/null 2>&3; then
++			echo "appindicator-0.1 not found" >&2
++			exit 1
++		fi
++		PKG="$PKG${PKG:+ }appindicator-0.1"
++	elif [ "$WITH_GTK" = "gtk+-3.0" ]; then
++		if ! pkg-config --cflags appindicator3-0.1 >/dev/null 2>&3; then
++			echo "appindicator3-0.1 not found" >&2
++			exit 1
++		fi
++		PKG="$PKG${PKG:+ }appindicator3-0.1"
++	fi
+ 	if [ "$NOTIFY" = yes -o -z "$NOTIFY" ]; then
+ 		if ! pkg-config --cflags libnotify >/dev/null 2>&3; then
+ 			echo "libnotify not found" >&2
+diff -ruN a/src/dhcpcd-gtk/dhcpcd-gtk.h b/src/dhcpcd-gtk/dhcpcd-gtk.h
+--- a/src/dhcpcd-gtk/dhcpcd-gtk.h	2015-01-07 12:18:28.000000000 +0300
++++ b/src/dhcpcd-gtk/dhcpcd-gtk.h	2018-04-15 03:45:06.944703343 +0400
+@@ -32,6 +32,7 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
++#include <libappindicator/app-indicator.h>
+ #include <libintl.h>
+ 
+ #include "dhcpcd.h"
+@@ -73,7 +74,7 @@
+ WI_SCAN * wi_scan_find(DHCPCD_WI_SCAN *);
+ const char *get_strength_icon_name(int strength);
+ 
+-void menu_init(GtkStatusIcon *, DHCPCD_CONNECTION *);
++void menu_init(AppIndicator *, DHCPCD_CONNECTION *);
+ void menu_update_scans(WI_SCAN *, DHCPCD_WI_SCAN *);
+ void menu_remove_if(WI_SCAN *);
+ 
+diff -ruN a/src/dhcpcd-gtk/main.c b/src/dhcpcd-gtk/main.c
+--- a/src/dhcpcd-gtk/main.c	2015-01-07 12:18:28.000000000 +0300
++++ b/src/dhcpcd-gtk/main.c	2018-04-15 07:36:28.383819878 +0400
+@@ -41,7 +41,7 @@
+ #include "dhcpcd.h"
+ #include "dhcpcd-gtk.h"
+ 
+-static GtkStatusIcon *status_icon;
++static AppIndicator *status_icon;
+ static guint ani_timer;
+ static int ani_counter;
+ static bool online;
+@@ -80,15 +80,15 @@
+ {
+ 
+ 	if (strength > 80)
+-		return "network-wireless-connected-100";
++		return "nm-signal-100";
+ 	else if (strength > 55)
+-		return "network-wireless-connected-75";
++		return "nm-signal-75";
+ 	else if (strength > 30)
+-		return "network-wireless-connected-50";
++		return "nm-signal-50";
+ 	else if (strength > 5)
+-		return "network-wireless-connected-25";
++		return "nm-signal-25";
+ 	else
+-		return "network-wireless-connected-00";
++		return "nm-signal-00";
+ }
+ 
+ static DHCPCD_WI_SCAN *
+@@ -122,19 +122,19 @@
+ 	if (scan) {
+ 		switch(ani_counter++) {
+ 		case 0:
+-			icon = "network-wireless-connected-00";
++			icon = "nm-signal-00";
+ 			break;
+ 		case 1:
+-			icon = "network-wireless-connected-25";
++			icon = "nm-signal-25";
+ 			break;
+ 		case 2:
+-			icon = "network-wireless-connected-50";
++			icon = "nm-signal-50";
+ 			break;
+ 		case 3:
+-			icon = "network-wireless-connected-75";
++			icon = "nm-signal-75";
+ 			break;
+ 		default:
+-			icon = "network-wireless-connected-100";
++			icon = "nm-signal-100";
+ 			ani_counter = 0;
+ 		}
+ 
+@@ -152,7 +152,7 @@
+ 			break;
+ 		}
+ 	}
+-	gtk_status_icon_set_from_icon_name(status_icon, icon);
++	app_indicator_set_icon(status_icon, icon);
+ 	return true;
+ }
+ 
+@@ -173,12 +173,12 @@
+ 
+ 	scan = get_strongest_scan();
+ 	if (ani_counter % 2 == 0)
+-		icon = scan ? "network-wireless-connected-00" :
++		icon = scan ? "nm-signal-00" :
+ 		    "network-idle";
+ 	else
+ 		icon = scan ? get_strength_icon_name(scan->strength.value) :
+ 		    "network-transmit-receive";
+-	gtk_status_icon_set_from_icon_name(status_icon, icon);
++	app_indicator_set_icon(status_icon, icon);
+ 	return true;
+ }
+ 
+@@ -230,11 +230,11 @@
+ 			animate_carrier(NULL);
+ 			ani_timer = g_timeout_add(500, animate_carrier, NULL);
+ 		} else {
+-			gtk_status_icon_set_from_icon_name(status_icon,
++			app_indicator_set_icon(status_icon,
+ 			    "network-offline");
+ 		}
+ 	}
+-	gtk_status_icon_set_tooltip_text(status_icon, msgs);
++	app_indicator_set_title(status_icon, msgs);
+ 	g_free(msgs);
+ }
+ 
+@@ -278,11 +278,7 @@
+ 	notify_notification_set_hint(nn, "transient",
+ 	    g_variant_new_boolean(TRUE));
+ #else
+-	if (gtk_status_icon_get_visible(status_icon))
+-		nn = notify_notification_new_with_status_icon(title,
+-		    msg, icon, status_icon);
+-	else
+-		nn = notify_notification_new(title, msg, icon, NULL);
++	nn = notify_notification_new(title, msg, icon, NULL);
+ #endif
+ 
+ 	notify_notification_set_timeout(nn, 5000);
+@@ -397,9 +393,9 @@
+ 			ani_counter = 0;
+ 		}
+ 		online = carrier = false;
+-		gtk_status_icon_set_from_icon_name(status_icon,
++		app_indicator_set_icon(status_icon,
+ 		    "network-offline");
+-		gtk_status_icon_set_tooltip_text(status_icon, msg);
++		app_indicator_set_title(status_icon, msg);
+ 		prefs_abort();
+ 		menu_abort();
+ 		wpa_abort();
+@@ -419,6 +415,7 @@
+ 			refresh = g_strcmp0(last, "opened") ? false : true;
+ 		update_online(con, refresh);
+ 	}
++	menu_init(status_icon, con);
+ 
+ 	g_free(last);
+ 	last = g_strdup(status);
+@@ -506,6 +503,7 @@
+ 	/* Update the tooltip with connection information */
+ 	con = dhcpcd_if_connection(i);
+ 	update_online(con, false);
++	menu_init(status_icon, con);
+ 
+ 	if (i->wireless) {
+ 		DHCPCD_WI_SCAN *scans;
+@@ -575,6 +573,7 @@
+ static void
+ dhcpcd_wpa_scan_cb(DHCPCD_WPA *wpa, _unused void *data)
+ {
++	DHCPCD_CONNECTION *con;
+ 	DHCPCD_IF *i;
+ 	WI_SCAN *w;
+ 	DHCPCD_WI_SCAN *scans, *s1, *s2;
+@@ -614,6 +613,8 @@
+ 		w->ifmenu = NULL;
+ 		TAILQ_INIT(&w->menus);
+ 		TAILQ_INSERT_TAIL(&wi_scans, w, next);
++		con = dhcpcd_if_connection(i);
++		menu_init(status_icon, con);
+ 	} else {
+ 		txt = NULL;
+ 		msg = N_("New Access Point");
+@@ -637,6 +638,8 @@
+ 			notify(msg, txt, "network-wireless");
+ 			g_free(txt);
+ 		}
++		con = dhcpcd_if_connection(i);
++		menu_init(status_icon, con);
+ 		menu_update_scans(w, scans);
+ 	}
+ 
+@@ -648,13 +651,14 @@
+ 			msg = "network-transmit-receive";
+ 		else
+ 			msg = "network-offline";
+-		gtk_status_icon_set_from_icon_name(status_icon, msg);
++		app_indicator_set_icon(status_icon, msg);
+ 	}
+ }
+ 
+ static void
+ dhcpcd_wpa_status_cb(DHCPCD_WPA *wpa, const char *status, _unused void *data)
+ {
++	DHCPCD_CONNECTION *con;
+ 	DHCPCD_IF *i;
+ 	WI_SCAN *w, *wn;
+ 
+@@ -671,6 +675,8 @@
+ 			}
+ 		}
+ 	}
++	con = dhcpcd_if_connection(i);
++	menu_init(status_icon, con);
+ }
+ 
+ #ifdef BG_SCAN
+@@ -708,11 +714,13 @@
+ 	g_set_application_name("Network Configurator");
+ 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
+ 	    ICONDIR);
+-	status_icon = gtk_status_icon_new_from_icon_name("network-offline");
++	status_icon = app_indicator_new("dhcpcd-gtk",
++									"network-offline",
++									APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+ 
+-	gtk_status_icon_set_tooltip_text(status_icon,
++	app_indicator_set_title(status_icon,
+ 	    _("Connecting to dhcpcd ..."));
+-	gtk_status_icon_set_visible(status_icon, true);
++	app_indicator_set_status(status_icon, APP_INDICATOR_STATUS_ACTIVE);
+ 	online = false;
+ #ifdef NOTIFY
+ 	notify_init(PACKAGE);
+diff -ruN a/src/dhcpcd-gtk/menu.c b/src/dhcpcd-gtk/menu.c
+--- a/src/dhcpcd-gtk/menu.c	2015-01-07 12:18:28.000000000 +0300
++++ b/src/dhcpcd-gtk/menu.c	2018-04-15 08:22:16.350507303 +0400
+@@ -27,9 +27,9 @@
+ #include "config.h"
+ #include "dhcpcd-gtk.h"
+ 
+-static const char *copyright = "Copyright (c) 2009-2014 Roy Marples";
++static const char *copyright = "Copyright (c) 2009-2014 Roy Marples\nCopyright (c) 2017 Ilya Fedin (AppIndicator patch)";
+ 
+-static GtkStatusIcon *sicon;
++static AppIndicator *sicon;
+ static GtkWidget *menu;
+ static GtkAboutDialog *about;
+ #ifdef BG_SCAN
+@@ -37,10 +37,10 @@
+ #endif
+ 
+ static void
+-on_pref(_unused GObject *o, gpointer data)
++on_pref(_unused GObject *o, DHCPCD_CONNECTION *con)
+ {
+ 
+-	prefs_show((DHCPCD_CONNECTION *)data);
++	prefs_show(con);
+ }
+ 
+ static void
+@@ -369,62 +369,47 @@
+ }
+ #endif
+ 
+-static void
+-on_activate(GtkStatusIcon *icon)
++void
++menu_init(AppIndicator *icon, DHCPCD_CONNECTION *con)
+ {
+ 	WI_SCAN *w, *l;
+ 	GtkWidget *item, *image;
+ 
+ 	sicon = icon;
+ 	notify_close();
+-	prefs_abort();
+ 	menu_abort();
+ 
+-	if ((w = TAILQ_FIRST(&wi_scans)) == NULL)
+-		return;
+-
+-	if ((l = TAILQ_LAST(&wi_scans, wi_scan_head)) && l != w) {
+-		menu = gtk_menu_new();
+-		TAILQ_FOREACH(w, &wi_scans, next) {
+-			item = gtk_image_menu_item_new_with_label(
+-				w->interface->ifname);
+-			image = gtk_image_new_from_icon_name(
+-				"network-wireless", GTK_ICON_SIZE_MENU);
+-			gtk_image_menu_item_set_image(
+-				GTK_IMAGE_MENU_ITEM(item), image);
+-			gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+-			w->ifmenu = add_scans(w);
+-			gtk_menu_item_set_submenu(GTK_MENU_ITEM(item),
+-			    w->ifmenu);
++	if ((w = TAILQ_FIRST(&wi_scans)) != NULL) {
++		if ((l = TAILQ_LAST(&wi_scans, wi_scan_head)) && l != w) {
++			menu = gtk_menu_new();
++			TAILQ_FOREACH(w, &wi_scans, next) {
++				item = gtk_image_menu_item_new_with_label(
++					w->interface->ifname);
++				image = gtk_image_new_from_icon_name(
++					"network-wireless", GTK_ICON_SIZE_MENU);
++				gtk_image_menu_item_set_image(
++					GTK_IMAGE_MENU_ITEM(item), image);
++				gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
++				w->ifmenu = add_scans(w);
++				gtk_menu_item_set_submenu(GTK_MENU_ITEM(item),
++					w->ifmenu);
++			}
++		} else {
++			w->ifmenu = menu = add_scans(w);
+ 		}
+-	} else {
+-		w->ifmenu = menu = add_scans(w);
+ 	}
+ 
+ 	if (menu) {
+-		gtk_widget_show_all(GTK_WIDGET(menu));
+-		gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
+-		    gtk_status_icon_position_menu, icon,
+-		    1, gtk_get_current_event_time());
++		item = gtk_separator_menu_item_new();
++		gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+ 
+ #ifdef BG_SCAN
+ 		bgscan_timer = g_timeout_add(DHCPCD_WPA_SCAN_SHORT,
+ 		    menu_bgscan, dhcpcd_if_connection(w->interface));
+ #endif
++	} else {
++		menu = gtk_menu_new();
+ 	}
+-}
+-
+-static void
+-on_popup(GtkStatusIcon *icon, guint button, guint32 atime, gpointer data)
+-{
+-	DHCPCD_CONNECTION *con;
+-	GtkMenu *mnu;
+-	GtkWidget *item, *image;
+-
+-	notify_close();
+-
+-	con = (DHCPCD_CONNECTION *)data;
+-	mnu = (GtkMenu *)gtk_menu_new();
+ 
+ 	item = gtk_image_menu_item_new_with_mnemonic(_("_Preferences"));
+ 	image = gtk_image_new_from_icon_name("preferences-system-network",
+@@ -434,11 +419,11 @@
+ 		gtk_widget_set_sensitive(item, false);
+ 	else
+ 		g_signal_connect(G_OBJECT(item), "activate",
+-		    G_CALLBACK(on_pref), data);
+-	gtk_menu_shell_append(GTK_MENU_SHELL(mnu), item);
++		    G_CALLBACK(on_pref), con);
++	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+ 
+ 	item = gtk_separator_menu_item_new();
+-	gtk_menu_shell_append(GTK_MENU_SHELL(mnu), item);
++	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+ 
+ 	item = gtk_image_menu_item_new_with_mnemonic(_("_About"));
+ 	image = gtk_image_new_from_icon_name("help-about",
+@@ -446,7 +431,7 @@
+ 	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+ 	g_signal_connect(G_OBJECT(item), "activate",
+ 	    G_CALLBACK(on_about), icon);
+-	gtk_menu_shell_append(GTK_MENU_SHELL(mnu), item);
++	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+ 
+ 	item = gtk_image_menu_item_new_with_mnemonic(_("_Quit"));
+ 	image = gtk_image_new_from_icon_name("application-exit",
+@@ -454,23 +439,10 @@
+ 	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+ 	g_signal_connect(G_OBJECT(item), "activate",
+ 	    G_CALLBACK(on_quit), icon);
+-	gtk_menu_shell_append(GTK_MENU_SHELL(mnu), item);
+-
+-	gtk_widget_show_all(GTK_WIDGET(mnu));
+-	gtk_menu_popup(GTK_MENU(mnu), NULL, NULL,
+-	    gtk_status_icon_position_menu, icon, button, atime);
+-	if (button == 0)
+-		gtk_menu_shell_select_first(GTK_MENU_SHELL(mnu), FALSE);
+-}
+-
+-void
+-menu_init(GtkStatusIcon *icon, DHCPCD_CONNECTION *con)
+-{
++	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+ 
+-	g_signal_connect(G_OBJECT(icon), "activate",
+-	    G_CALLBACK(on_activate), con);
+-	g_signal_connect(G_OBJECT(icon), "popup_menu",
+-	    G_CALLBACK(on_popup), con);
++	gtk_widget_show_all(GTK_WIDGET(menu));
++	app_indicator_set_menu(icon, GTK_MENU(menu));
+ }
+ 
+ 
