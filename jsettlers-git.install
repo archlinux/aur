@@ -1,0 +1,14 @@
+function info() {
+    echo "The game will ask you for the original game data:"
+    echo "If you own \"The Settlers 3\", you can select the installation folder from it."
+    echo "(Install with wine)"
+    echo "If you don't own \"The Settlers 3\" use the demo"
+}
+
+post_install() {
+    info
+}
+
+post_upgrade() {
+    info
+}
