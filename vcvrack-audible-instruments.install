@@ -1,0 +1,15 @@
+post_common() {
+    cat <<-EOF
+	Since VCV Rack 0.6.0 system plugins are no longer supported.
+	Copy (or link) /opt/vcvrack/<plugin>.zip to your ~/.Rack/plugins directory
+	(it's done automatically for Fundamental upon first launch).
+	EOF
+}
+
+post_install() {
+    post_common
+}
+
+post_upgrade() {
+    post_common
+}

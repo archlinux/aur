@@ -1,19 +1,20 @@
 pkgbase = vcvrack-audible-instruments
 	pkgdesc = Mutable Instruments' VCV modules
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/VCVRack/AudibleInstruments
+	install = vcvrack-audible-instruments.install
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = vcvrack
-	source = vcvrack-AudibleInstruments::git+https://github.com/VCVRack/AudibleInstruments.git#tag=v0.5.0
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.5.1
+	makedepends = zip
+	depends = vcvrack>=0.6
+	source = vcvrack-AudibleInstruments::git+https://github.com/VCVRack/AudibleInstruments.git#tag=v0.6.0
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
 	source = AndrewBelt-eurorack::git+https://github.com/AndrewBelt/eurorack.git
 	source = git+https://github.com/AndrewBelt/osdialog.git
 	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/mackron/dr_libs.git
 	source = git+https://github.com/memononen/nanosvg.git
 	source = git+https://github.com/memononen/nanovg.git
 	source = git+https://github.com/pichenettes/avr-audio-bootloader.git
@@ -21,7 +22,6 @@ pkgbase = vcvrack-audible-instruments
 	source = git+https://github.com/pichenettes/avrilx.git
 	source = git+https://github.com/pichenettes/stm-audio-bootloader.git
 	source = git+https://github.com/pichenettes/stmlib.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
