@@ -9,7 +9,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
 pkgname=sks-local
 pkgver=1.1.6
-pkgrel=9
+pkgrel=10
 pkgdesc="A modified version of AUR/sks that can be used in tandem to perform localized keydumps"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/skskeyserver/sks-keyserver/"
@@ -76,7 +76,8 @@ build() {
   unset MAKEFLAGS
   make dep
   make "cryptokit-1.7/README.txt"
-  patch -Np0 -i "${srcdir}/cryptokit-1.7-sks-uint32.patch.local"
+  #patch -Np0 -i "${srcdir}/cryptokit-1.7-sks-uint32.patch.local"
+  patch -Np0 -i "${srcdir}/cryptokit-1.7-sks-uint32.patch"
   # XXX Parallel compiling not supporting for Bdb module, force -j1 always.
   make CFLAGS="${CFLAGS} -I`ocamlc -where` -I ." -j1 all
 }
