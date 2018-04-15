@@ -13,7 +13,7 @@ optdepends=(
   'imagemagick: ImageMagick backend support'
   'slop: ImageMagick backend support'
   'xclip: Clipboard support'
-  'xrandr: Screenshot focused monitor'
+  'xorg-xrandr: Screenshot focused monitor'
   'xdotool: Screenshot focused monitor'
 )
 provides=('nougat')
