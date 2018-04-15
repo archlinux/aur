@@ -42,11 +42,11 @@ build() {
         $(find src/bd/amazed/pdfscissors/ -name '*.java' )
 
     pushd src
-    jar --create --file ../pdfscissors.jar \
+    jar -cf ../pdfscissors.jar \
         $(find bd/amazed/pdfscissors/ -name '*.class' )
     popd
     pushd res
-    jar --update --file ../pdfscissors.jar \
+    jar -uf ../pdfscissors.jar \
         *.png
     popd
 }
