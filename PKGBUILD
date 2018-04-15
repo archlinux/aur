@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90720.gedecd723f3
+pkgver=3.5.r90731.g62bdbb5ce0
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -24,7 +24,12 @@ depends=(
         'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
         'rockchip-mpp'
 )
-depends_x86_64=('cuda' 'nvidia-utils')
+depends_x86_64=(
+    # official repositories:
+        'cuda' 'nvidia-utils'
+    # AUR:
+        'intel-media-sdk'
+)
 makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers'
@@ -33,7 +38,7 @@ makedepends=(
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf-git' 'intel-media-sdk'
+        'vmaf-git'
 )
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
