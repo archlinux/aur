@@ -1,13 +1,13 @@
 # Maintainer: Daniel Maslowski <info at orangecms dot org>
 _gitname=neopg
 pkgname=neopg-git
-pkgver=451.155d5c1
+pkgver=487.fa9054b
 pkgrel=1
 pkgdesc="The multiversal cryptoengine!"
 arch=('i686' 'x86_64')
 url="https://github.com/das-labor/neopg"
 license=('BSD')
-depends=('boost' 'botan-with-compression' 'curl' 'gettext' 'gnutls' 'libusb' 'sqlite')
+depends=('boost' 'botan' 'curl' 'gettext' 'gnutls' 'libusb' 'sqlite')
 makedepends=('git' 'cmake')
 provides=('neopg')
 source=('git://github.com/das-labor/neopg.git')
