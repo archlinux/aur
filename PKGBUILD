@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90534.g33bd2b99a1
+pkgver=3.5.r90720.gedecd723f3
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -11,33 +11,29 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
-        'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
-        'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
-        'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
+        'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
+        'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
+        'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
-        'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sndio'
+        'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'aom-git' 'libbs2b' 'codec2' 'flite1-patched' 'libilbc'
-        'kvazaar' 'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs'
-        'ndi-sdk' 'libmysofa' 'rockchip-mpp'
+        'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
+        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
+        'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
-optdepends_x86_64=(
-    # AUR:
-        'intel-media-sdk: for Intel QSV support (experimental)'
-)
 makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'ffnvcodec-headers' 'libmfx'
+        'blackmagic-decklink-sdk' 'ffnvcodec-headers'
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf-git'
+        'vmaf-git' 'intel-media-sdk'
 )
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
@@ -80,10 +76,13 @@ build() {
     then
         local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
+        local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
         local _cflags='-I/opt/cuda/include'
         local _ldflags='-L/opt/cuda/lib64'
+        
+        export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
         
         # set path of -lcuda (libcuda.so.x, required by cuda_sdk)
         # on systems with legacy nvidia drivers
@@ -91,8 +90,6 @@ build() {
         then
             _ldflags="${_ldflags} -L/usr/lib/nvidia"
         fi
-        
-        _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
@@ -204,7 +201,7 @@ build() {
         --enable-cuvid \
         --enable-ffnvcodec \
         --enable-libdrm \
-        --enable-libmfx \
+        $_libmfx \
         $_libnpp \
         --enable-nvdec \
         --enable-nvenc \
