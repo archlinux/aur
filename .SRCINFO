@@ -1,28 +1,36 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = glew
-	depends = glfw-x11
-	depends = jansson
-	depends = libsamplerate
-	depends = openssl
+	makedepends = cmake
+	makedepends = mesa
 	depends = curl
-	depends = libzip
-	depends = rtmidi
-	depends = rtaudio
+	depends = glew
 	depends = gtk2
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.5.1
+	depends = jansson
+	depends = libzip
+	depends = openssl
+	depends = rtmidi
+	depends = speexdsp
+	depends = libxi
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libgl
+	depends = jack
+	depends = libpulse
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
 	source = git+https://github.com/AndrewBelt/osdialog.git
 	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/glfw/glfw.git
 	source = git+https://github.com/memononen/nanosvg.git
 	source = git+https://github.com/memononen/nanovg.git
+	source = git+https://github.com/thestk/rtaudio.git
 	source = vcvrack.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -30,7 +38,8 @@ pkgbase = vcvrack
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 69736bbb5f49f9ce451c1311ec4399f4f59a86056233f151b9457116089a502d
+	sha256sums = SKIP
+	sha256sums = ed2da5d924a381cd50125db199578c15bc95c18be716abbd3ff310bbcf6773c0
 
 pkgname = vcvrack
 

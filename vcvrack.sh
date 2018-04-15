@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-cd /opt/vcvrack && ./Rack
+cd /opt/vcvrack && LD_LIBRARY_PATH=./lib ./Rack
