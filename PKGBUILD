@@ -2,12 +2,12 @@
 
 pkgname='stratisd'
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
 license=('MPL2')
-makedepends=('asciidoc' 'cargo' 'git' 'rust')
+makedepends=('asciidoc' 'cargo' 'git' 'mpfr' 'rust')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
