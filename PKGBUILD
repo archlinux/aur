@@ -1,14 +1,14 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-stdint-git
-pkgver=20171013
-pkgrel=2
+pkgver=20180226
+pkgrel=1
 pkgdesc="Various signed and unsigned integers for OCaml"
 arch=('i686' 'x86_64')
 url='https://github.com/andrenth/ocaml-stdint'
 license=('MIT')
 provides=('ocaml-stdint')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+makedepends=('dune')
 source=("${pkgname}::git://github.com/andrenth/ocaml-stdint.git")
 md5sums=('SKIP')
 
@@ -20,18 +20,13 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-
-  ocaml setup.ml -configure --destdir "${pkgdir}"
-  make all
+  jbuilder build -p stdint
 }
 
 package() {
   cd "$pkgname"
 
-  mkdir -p "${OCAMLFIND_DESTDIR}"
+  mkdir -p "${pkgdir}"/usr/lib/ocaml/
 
-  export OCAMLFIND_LDCONF=FOOBAR
-  ocaml setup.ml -install --destdir "$pkgdir"
-  rm -r "$pkgdir/usr/local"
+  jbuilder install -p stdint --libdir="${pkgdir}"/usr/lib/ocaml/
 }

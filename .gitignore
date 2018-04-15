@@ -1,6 +1,6 @@
 /pkg
 /src
-*-git/
+*.sig
 *.bz2
 *.gz
 *.tar
