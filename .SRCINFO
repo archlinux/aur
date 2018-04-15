@@ -1,6 +1,6 @@
 pkgbase = drpcli
 	pkgdesc = Command-line client for Digital Rebar Provision, an API-driven DHCP/PXE/TFTP provisioning system.
-	pkgver = 3.7.3
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/digitalrebar/provision
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = drpcli
 	optdepends = jq: for parsing and syntax colouring JSON responses
 	optdepends = bash-completion: tab completion
 	provides = drpcli
-	source = dr-provision-3.7.3.zip::https://github.com/digitalrebar/provision/releases/download/v3.7.3/dr-provision.zip
-	sha256sums = 56e8fdb6d3cf81a7c8e67de15862dc4081cf79b99a7fb8199d5e870228c83248
+	source = dr-provision-3.8.0.zip::https://github.com/digitalrebar/provision/releases/download/v3.8.0/dr-provision.zip
+	sha256sums = e1df4bbabac713e9d82425e5704d6f38cd742934c22c6b52d8d12f0f986f964e
 
 pkgname = drpcli
 
