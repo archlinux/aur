@@ -8,7 +8,7 @@
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=1.3a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cmake' 'libx11' 'libxcb')
 provides=('libmfx')
-conflicts=('intel-media-sdk' 'intel-media-server-studio')
+conflicts=('intel-media-sdk-git' 'intel-media-server-studio')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/${pkgver}.tar.gz"
         'intel-media-sdk-libva-2.1-fix.patch'
@@ -96,7 +96,7 @@ package() {
     done
     
     # create symlinks for ffmpeg compatibility
-    # (currently it seems to needed only on the intel-media-sdk "stable" version package)
+    # (currently it seems to be needed only on the intel-media-sdk "stable" version package)
     mkdir -p "${pkgdir}/usr/lib"
     cd "${pkgdir}/usr/lib"
     ln -s ../../opt/intel/mediasdk/lib64/*.so    "${pkgdir}/usr/lib"
