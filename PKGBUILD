@@ -9,7 +9,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # https://bitbucket.org/skskeyserver/sks-keyserver/issues/55/unbound-module-nat-in-cryptokit-on-ocaml
 pkgname=sks-local
 pkgver=1.1.6
-pkgrel=8
+pkgrel=9
 pkgdesc="A modified version of AUR/sks that can be used in tandem to perform localized keydumps"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/skskeyserver/sks-keyserver/"
@@ -53,12 +53,17 @@ sha512sums=('f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c911751943
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  for f in $(find ${srcdir} -maxdepth 1 -type l -name '*.patch');
-  do
-    sed -re 's@/var/lib/sks@/var/lib/sks-local@g' ${f} > ${f}.local
-  done
-  patch -Np1 -i "${srcdir}/500_debian_fhs.patch.local"
-  patch -Np1 -i "${srcdir}/debian_eventloopfix.patch.local"
+  # No longer necessary; fixed in the patches themselves.
+  #for f in $(find ${srcdir} -maxdepth 1 -type l -name '*.patch');
+  #do
+  #  #sed -re 's@/var/lib/sks@/var/lib/sks-local@g' ${f} > ${f}.local
+  #  sed -re 's@/sks/@/sks-local/@g' ${f} > ${f}.local
+  #done
+  #patch -Np1 -i "${srcdir}/500_debian_fhs.patch.local"
+  #patch -Np1 -i "${srcdir}/debian_eventloopfix.patch.local"
+  patch -Np1 -i "${srcdir}/500_debian_fhs.patch"
+  patch -Np1 -i "${srcdir}/debian_eventloopfix.patch"
+  sed -i -e 's@/var/lib/sks/@/var/lib/sks-local/@g' ${srcdir}/${_pkgname}-${pkgver}/sks_build.sh
   cp Makefile.local.unused Makefile.local
   echo "OCAMLOPT=ocamlopt -runtime-variant _pic" >> Makefile.local
   sed -i -e 's#LIBDB=-ldb-4.6#LIBDB=-ldb-5.3#g' Makefile.local
