@@ -1,8 +1,8 @@
 diff --git a/oragono.yaml b/oragono.yaml
-index 0d72a0b..23b80ac 100644
+index 6c5aa75..eed4991 100644
 --- a/oragono.yaml
 +++ b/oragono.yaml
-@@ -21,8 +21,8 @@ server:
+@@ -23,8 +23,8 @@ server:
      tls-listeners:
          # listener on ":6697"
          ":6697":
@@ -13,7 +13,7 @@ index 0d72a0b..23b80ac 100644
  
      # strict transport security, to get clients to automagically use TLS
      sts:
-@@ -52,7 +52,7 @@ server:
+@@ -54,7 +54,7 @@ server:
  
      # motd filename
      # if you change the motd, you should move it to ircd.motd
@@ -22,7 +22,7 @@ index 0d72a0b..23b80ac 100644
  
      # motd formatting codes
      # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
-@@ -236,10 +236,10 @@ logging:
+@@ -281,10 +281,10 @@ logging:
          #   file    log to given target filename
          #   stdout  log to stdout
          #   stderr  log to stderr
@@ -35,12 +35,21 @@ index 0d72a0b..23b80ac 100644
  
          # type(s) of logs to keep here. you can use - to exclude those types
          #
-@@ -289,7 +289,7 @@ debug:
+@@ -340,7 +340,7 @@ debug:
  # datastore configuration
  datastore:
      # path to the datastore
 -    path: ircd.db
 +    path: /var/lib/oragono/ircd.db
+ 
+ # languages config
+ languages:
+@@ -352,7 +352,7 @@ languages:
+     default: en
+ 
+     # which directory contains our language files
+-    path: languages
++    path: /usr/share/oragono/i18n/
  
  # limits - these need to be the same across the network
  limits:
