@@ -1,6 +1,6 @@
 pkgbase = vte3-tilix
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches
-	pkgver = 0.50.2+1.7.1
+	pkgver = 0.52.1
 	pkgrel = 1
 	url = https://github.com/gnunn1/tilix/tree/master/experimental/vte
 	arch = x86_64
@@ -16,24 +16,22 @@ pkgbase = vte3-tilix
 	depends = pcre2
 	depends = gnutls
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.50.2
-	source = vte291-command-notify-scroll-speed.patch-7dce41935b8df88c353b88854780661a0232e699::https://src.fedoraproject.org/rpms/vte291/raw/7dce41935b8df88c353b88854780661a0232e699/f/vte291-command-notify-scroll-speed.patch
+	source = git+https://git.gnome.org/browse/vte#tag=0.52.1
+	source = vte291-command-notify-scroll-speed.patch-9cbc53f85711ce4f34e7ce0aae7e8baf0553012b::https://src.fedoraproject.org/rpms/vte291/raw/9cbc53f85711ce4f34e7ce0aae7e8baf0553012b/f/vte291-command-notify-scroll-speed.patch
 	source = add-zsh-notfication-support.patch
-	source = alternate-screen.patch-1.7.1::https://github.com/gnunn1/tilix/raw/1.7.1/experimental/vte/alternate-screen.patch
-	source = disable-bg-draw.patch-1.7.1::https://github.com/gnunn1/tilix/raw/1.7.1/experimental/vte/disable-bg-draw.patch
+	source = alternate-screen.patch-263160c6cb3adb03d25e13b8a96e56d8e8a4ebed::https://github.com/gnunn1/tilix/raw/263160c6cb3adb03d25e13b8a96e56d8e8a4ebed/experimental/vte/0.52/alternate-screen.patch
 	sha256sums = SKIP
-	sha256sums = 50bce46a90739eb6f150528b5c29a2beb08da529038762de050901055a225371
+	sha256sums = b22e1276202a10007004f19002ceb5eb186f1529e39a6a451e0b82f3d6bce9ee
 	sha256sums = 150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a
-	sha256sums = 980b6bc75a30ec56fe70387784083b5c7ded79715b7a0611e1d4358ee27c4720
-	sha256sums = aa56313332850becb0b02aba1e05888ed978f7d8c006147679e2544cc0ca40cf
+	sha256sums = 09c225fc0aea4f88946b1ce637788997b76f0b16c8b1287671046c2b7e1a590d
 
 pkgname = vte3-tilix
 	depends = gtk3
 	depends = pcre2
 	depends = gnutls
 	depends = vte-tilix-common
-	provides = vte3=0.50.2
-	provides = vte3-notification=0.50.2-2
+	provides = vte3=0.52.1
+	provides = vte3-notification=0.52.1-2
 	provides = vte3-terminix-git
 	conflicts = vte3
 	conflicts = vte3-notification
@@ -43,8 +41,8 @@ pkgname = vte-tilix-common
 	pkgdesc = Common files used by vte and vte3
 	arch = any
 	depends = sh
-	provides = vte-common=0.50.2
-	provides = vte-notification-common=0.50.2-2
+	provides = vte-common=0.52.1
+	provides = vte-notification-common=0.52.1-2
 	provides = vte-terminix-common-git
 	conflicts = vte-common
 	conflicts = vte-notification-common
