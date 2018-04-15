@@ -3,7 +3,7 @@
 pkgname=monocypher
 _pkgname=monocypher
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl"
 arch=('i686' 'x86_64')
 url="http://loup-vaillant.fr/projects/monocypher/"
@@ -17,8 +17,8 @@ package() {
   install -d -m 755 "$pkgdir/usr/include/$pkgname"
   install -m 644 src/monocypher.c "$pkgdir/usr/include/$pkgname/monocypher.c"
   install -m 644 src/monocypher.h "$pkgdir/usr/include/$pkgname/monocypher.h"
-  install -m 644 src/sha512.h "$pkgdir/usr/include/$pkgname/optional/sha512.h"
-  install -m 644 src/sha512.c "$pkgdir/usr/include/$pkgname/optional/sha512.c"
+  install -m 644 src/optional/sha512.h "$pkgdir/usr/include/$pkgname/sha512.h"
+  install -m 644 src/optional/sha512.c "$pkgdir/usr/include/$pkgname/sha512.c"
   install -d -m 755 "$pkgdir/usr/share/licenses/$pkgname"
   install -m 644 LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -d -m 755 "$pkgdir/usr/share/man/man3"
