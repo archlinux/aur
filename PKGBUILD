@@ -23,6 +23,7 @@ source=(
   0003-Partially-revert-swiotlb-remove-various-exports.patch
   0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
   0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,11 +37,12 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '5537c95208da5951a456084ecae9c8efbed63566d5d49503598ff5660fb3320e'
-            '7222455040b21ad80ed237b667100b78345baed19cc14177002a47046913f00d'
-            'b0d6f4f308a8d9fcd4af5cca22e65af7d5072a91c3554ddb2480a50f3544dcf2'
-            '84a3c167897b4a67b65a6b3d44cfee9a26535169d530de80637eed31ff946577'
-            'bc899ff8017cf60170d459d77f064edaad1bb4047eef53f27583521786f68f54')
+            '4233d9dfa3704c2107c05cb9824fc7978bbdd05255c076ccafd7b81e0fbdbfc7'
+            '37841e7fdf9f83add5d4bdb3baa972de7318b2ebce29c42b81f13e12e09dbe6f'
+            'db7c672e5356d65190169e53e244a91cdd45bd795efffe38668b41be01bf4ec7'
+            '34873d539c8c53520e907e6e1e1a24d17fb2819f07707cef061c10bd6b9c4b85'
+            '9c85109556ee122ed7710b18b2def6dd0daf402f540a59497049f61b9a693db2'
+            '76fe7d56b7e9e9dea548fe5a761cd346c20d78958a41907cd8ac6c6a9777e04d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -68,6 +70,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/58158
   patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+  # https://bugs.archlinux.org/task/58174
+  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
