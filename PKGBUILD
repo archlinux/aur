@@ -41,6 +41,5 @@ package() {
 
     runhaskell Setup copy --destdir="${pkgdir}"
 
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
