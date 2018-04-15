@@ -10,8 +10,8 @@ pkgbase = qldv-git
 	depends = coreutils
 	depends = glibc
 	depends = patchelf
-	provides = qldv-git
-	conflicts = qldv-git
+	provides = qldv
+	conflicts = qldv
 	source = qldv::git+https://github.com/kirbyfan64/qldv
 	md5sums = SKIP
 
