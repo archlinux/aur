@@ -2,7 +2,7 @@
 
 pkgname=macos-icon-theme
 pkgver=4.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='macOS iCons Collection'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
@@ -18,6 +18,7 @@ md5sums=('056982040d0efdcf4fa93b0e5bc9bc3d')
 
 prepare() {
     find -name '* *' -delete
+    cp macOS/status/symbolic/*.svg macOS/devices/symbolic
 }
 
 package() {
