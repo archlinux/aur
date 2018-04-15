@@ -3,7 +3,7 @@
 # Based on hplip from [extra]
 
 pkgname=hplip-minimal
-pkgver=3.17.11
+pkgver=3.18.3
 pkgrel=1
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
@@ -15,7 +15,7 @@ optdepends=('cups: for printing support' 'libusb: for advanced usb support')
 conflicts=('hplip')
 options=('!docs')
 source=("http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz")
-md5sums=('09f3d50a2ba95e0fb66c78da7bab13ba')
+md5sums=('be5189ab65914d9c7290944dceef6d3e')
 
 prepare() {
   cd "$srcdir/hplip-$pkgver"
@@ -41,7 +41,7 @@ build() {
               --disable-scan-build --disable-fax-build --disable-foomatic-rip-hplip-install \
               --enable-foomatic-ppd-install --enable-new-hpcups --disable-cups-drv-install \
               --enable-cups-ppd-install --enable-pp-build
-  make
+  make MAKEOPTS="-j1"
 }
 
 package() {
