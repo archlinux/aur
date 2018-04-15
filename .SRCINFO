@@ -1,7 +1,7 @@
 pkgbase = jsettlers-git
 	pkgdesc = A Remake of "The Settlers III" for Windows, Linux, Mac and Android
 	pkgver = 0.4.0.alpha.r188.g69db7d0f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsettlers/settlers-remake
 	install = jsettlers-git.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jsettlers-git
 	makedepends = unzip
 	depends = java-environment
 	depends = sh
-	optdepends = settlers3-data
+	optdepends = settlers3-demo-data
 	provides = jsettlers
 	source = jsettlers::git+https://github.com/jsettlers/settlers-remake.git
 	sha512sums = SKIP

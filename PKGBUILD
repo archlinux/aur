@@ -1,5 +1,5 @@
 # Maintainer: aligator <aligator at-symbol server-suncraft dot de>
-pkgrel=1
+pkgrel=2
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
