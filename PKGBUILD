@@ -7,7 +7,7 @@
 
 pkgbase=lxappearance-git
 pkgname=('lxappearance-gtk2-git' 'lxappearance-gtk3-git')
-pkgver=0.6.3r11rg2d6fc0br658
+pkgver=0.6.3r11.2d6fc0b
 pkgrel=1
 url="https://wiki.lxde.org/en/LXAppearance"
 pkgdesc="Feature-rich GTK+ theme switcher of the LXDE Desktop from git"
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgbase%-git}
-  printf %sr%s $(git describe --tags | sed 's|-|r|g') $(git rev-list --count HEAD)
+  printf %s $(git describe --tags | sed 's|-|r|g'| sed 's+rg+.+') 
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = lxappearance-git
 	pkgdesc = Feature-rich GTK+ theme switcher of the LXDE Desktop from git
-	pkgver = 0.6.3r11rg2d6fc0br658
+	pkgver = 0.6.3r11.2d6fc0b
 	pkgrel = 1
 	url = https://wiki.lxde.org/en/LXAppearance
 	arch = i686
