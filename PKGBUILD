@@ -1,14 +1,14 @@
 # Author: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=ptouch
 pkgver=v1.3.4.r10.g5014bf4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to print text or graphic labels on Brother P-touch printers like PT-2430PC"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h')
 url="https://mockmoon-cybernetics.ch/computer/p-touch2430pc/"
 license=('GPL2')
 makedepends=('git' 'autoconf')
 depends=('libusb>=1.0' 'gd>=2.0.16')
-source=(git+https://mockmoon-cybernetics.ch/git/ptouch-print.git)
+source=(git+https://mockmoon-cybernetics.ch/cgi/cgit/ptouch-print.git)
 sha256sums=('SKIP')
 
 pkgver() {
