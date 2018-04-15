@@ -2,8 +2,8 @@
 
 pkgname=macos-icon-theme
 pkgver=4.1.8
-pkgrel=1
-pkgdesc='macOS Icons Theme'
+pkgrel=2
+pkgdesc='macOS iCons Collection'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
 license=('GPL')
@@ -18,10 +18,9 @@ md5sums=('056982040d0efdcf4fa93b0e5bc9bc3d')
 
 prepare() {
     find -name '* *' -delete
-    cp macOS/status/symbolic/*.svg macOS/devices/symbolic
-    mv macOS/apps/128/accessories_calculator.png macOS/apps/128/accessories-calculator.png
 }
 
 package() {
-    find */ -type f -exec install -Dm644 '{}' $pkgdir/usr/share/icons/'{}' \;
+    install -dm755 $pkgdir/usr/share/icons
+    cp -r macOS $pkgdir/usr/share/icons
 }
