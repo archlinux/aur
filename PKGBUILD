@@ -7,9 +7,9 @@ pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
 url="https://github.com/rocky/python-spark/"
 license=('MIT')
-makedepends=('python')
+makedepends=('python-setuptools' 'git')
 depends=('python-click')
-source=(python-spark-parser::'git://github.com/rocky/python-spark.git#commit=9b7079f7bfdfe2c16f25f7807f04dd8d8a0f8348')
+source=(python-spark-parser::'git+https://github.com/rocky/python-spark.git#commit=9b7079f7bfdfe2c16f25f7807f04dd8d8a0f8348')
 sha256sums=('SKIP')
 
 build() {
