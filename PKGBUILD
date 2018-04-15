@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffnvcodec-headers
-pkgver=8.0.14.1
-pkgrel=2
+pkgver=8.1.24.1
+pkgrel=1
 pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs'
 arch=('any')
 url='https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git'
