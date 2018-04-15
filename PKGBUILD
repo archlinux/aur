@@ -1,6 +1,6 @@
 # Maintainer: Prasad Kumar
 pkgname=arrongin-gtk-theme
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
@@ -9,7 +9,7 @@ license=('CC BY-NC-SA')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3>=3.20')
 provides=('arrongin-gtk-theme')
 source=("${pkgname}-${pkgver}.tar.xz::https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/Arrongin_Telinkrin/Arrongin-$pkgver.tar.xz")
-sha512sums=('ebfecb6d08431398b4a95028ce2c6bb0a9cf0938de99d9638901c97da159d1a687128a7b37f23e2a537a8cc79ee3354279ff5bc721e099e88da5344d668a7886')
+sha512sums=('2ea560d11035ffa68e0d7c948ee755a955e410b161220f8d67b19624b16b6a62026f6b09b6bbd78956ac973a49bbd1baef857aa9d66499d50af50959693acd8c')
 package() {
   cd "${srcdir}"/Arrongin-$pkgver
   install -d "$pkgdir"/usr/share/themes/Arrongin
