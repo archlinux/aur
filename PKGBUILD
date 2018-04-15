@@ -2,13 +2,12 @@
 
 pkgname='libconfini-git'
 _pkgname='libconfini'
-pkgver='r75.0230fa4'
+pkgver='r85.080bda6'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url='https://madmurphy.github.io/libconfini/'
 license=('GPL')
-makedepends=('intltool')
 provides=('libconfini')
 conflicts=('libconfini')
 source=("git+https://github.com/madmurphy/${_pkgname}.git")
@@ -47,7 +46,6 @@ package() {
 
 	cd "${srcdir}/${_pkgname}"
 	make DESTDIR="${pkgdir}" install
-	chmod +x "${pkgdir}/usr/share/doc/${_pkgname}/examples/run_example.sh"
 
 }
 
