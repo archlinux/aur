@@ -6,15 +6,15 @@
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
 pkgbase=lxappearance-git
-pkgname=('lxappearance-git' 'lxappearance-gtk3-git')
-pkgver=0.6.3.1r72
+pkgname=('lxappearance-gtk2-git' 'lxappearance-gtk3-git')
+pkgver=0.6.3r11rg2d6fc0br658
 pkgrel=1
 url="https://wiki.lxde.org/en/LXAppearance"
 pkgdesc="Feature-rich GTK+ theme switcher of the LXDE Desktop from git"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3' 'glib2' 'menu-cache')
-makedepends=('git' 'intltool' 'pkgconfig' 'autoconf' 'perl' 'gtk-doc')
+makedepends=('git' 'intltool' 'pkgconfig' 'autoconf' 'perl' 'libxslt' 'gtk-doc')
 provides=('lxappearance')
 conflicts=('lxappearance')
 source=("git://git.lxde.org/lxde/lxappearance.git")
@@ -22,23 +22,28 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgbase%-git}
-  printf %sr%s $(git describe --tags | sed 's|-|.|g'| cut -c8-) $(git rev-list --count HEAD)
+  printf %sr%s $(git describe --tags | sed 's|-|r|g') $(git rev-list --count HEAD)
 }
 
 build() {
   [ -d gtk2 ] || cp -r ${pkgbase%-git} gtk2
   cd gtk2
-  ./configure --sysconfdir=/etc --prefix=/usr --enable-dbus
+  ./autogen.sh
+  ./configure --sysconfdir=/etc --prefix=/usr --enable-man --enable-dbus
+  make
   cd "$srcdir"
   # GTK+ 3 version
   [ -d gtk3 ] || cp -r ${pkgbase%-git} gtk3
   cd gtk3
-  ./configure --prefix="/usr" --sysconfdir="/etc" --enable-man --enable-gtk3 --enable-dbus
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-gtk3 --enable-man --enable-dbus
   make
 }
 
-package_lxappearance-git() {
+package_lxappearance-gtk2-git() {
   depends=('gtk2')
+  conflicts=('lxappearance')
+  provides=('lxappearance')
   cd gtk2
   
   make DESTDIR="$pkgdir" install
@@ -48,6 +53,7 @@ package_lxappearance-gtk3-git() {
   pkgdesc+=' (GTK+ 3 version)'
   depends=('gtk3')
   conflicts=('lxappearance')
+  provides=('lxappearance')
 
   cd gtk3
   make DESTDIR="$pkgdir" install
