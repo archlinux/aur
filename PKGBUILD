@@ -7,12 +7,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Also thanks to the creator, Zack Middleton, who provided a lot of good input on packaging. I owe you a case!
 
 pkgname=spearmint
-pkgver=0.5
-pkgrel=4
+pkgver=0.6
+pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)"
-url="http://${pkgname}.pw"
+url="https://clover.moe/spearmint"
 license=("GPL3" "custom")
 arch=('i686' 'x86_64')
 depends=('sdl2')
@@ -36,7 +36,7 @@ source=("git+https://github.com/zturtleman/${pkgname}.git"
 	"${pkgname}.launcher.sig"
 	"${pkgname}-server.launcher.sig")
 sha512sums=('SKIP'
-            'f2c9746fcfd69efed2e9a3c7ba3f1f4a5d7f90352d5355dada6bf27b8c4a64975d65de19e66da548df1bcb6f38d2ae9524ffb869fa2fcd0da33c2fa533969fab'
+            '008225a6bf6f4fa2acec7df05e43efc90ce17150d1cd4e00f1f5e96a3d4c5e9857ff855904fe8959da78f9ed8713bc108547e2b4a4ea6eb56923f727ead88998'
             '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
             '9e70a201f26265e29fb9ce2d198d943de8e12094b9d04b5e2fad630508787f036c0ee318604a2899ad4a74b4cef8ba3bffd1e7817de8bcbd512a6f80783aea1a'
             '84c60900e2db08e2e8dc39236d268fea392fcbc7cb51af051b5981301bfd5d6c10cafd29284096728048ed4b54baa580ee3f9824a2a1435ba42e91d644547cc0'
