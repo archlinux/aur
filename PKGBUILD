@@ -2,7 +2,7 @@
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=r68.2dae959
+pkgver=r71.e64529c
 pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
@@ -13,6 +13,8 @@ optdepends=(
   'imagemagick: ImageMagick backend support'
   'slop: ImageMagick backend support'
   'xclip: Clipboard support'
+  'xrandr: Screenshot focused monitor'
+  'xdotool: Screenshot focused monitor'
 )
 provides=('nougat')
 conflicts=('nougat')
