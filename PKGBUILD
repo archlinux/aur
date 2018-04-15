@@ -1,6 +1,6 @@
 # Maintainer: Jan Okoński <jandominikokonski@gmail.com>
 
-pkgname=tidal-cli-client-git # All lowercase
+pkgname=tidal-cli-client
 _pkgname=${pkgname#nodejs-}
 pkgver=1.4.9
 pkgrel=1
