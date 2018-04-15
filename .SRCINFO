@@ -1,6 +1,6 @@
 pkgbase = realyog
 	pkgdesc = Wrapper around yay to make things simple.
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Myl0g/realyog
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = realyog
 	depends = yay
 	provides = realyog
 	conflicts = realyog
-	source = git+https://github.com/Myl0g/realyog.git#tag=v1.1
+	source = git+https://github.com/Myl0g/realyog.git#tag=v1.1.1
 	md5sums = SKIP
 
 pkgname = realyog
