@@ -1,33 +1,40 @@
 # CPAN Name  : TeX::Encode
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-tex-encode
-pkgver=1.3
+pkgver=2.004
 pkgrel=1
-pkgdesc="Perl module to encode/decode UTF-8 strings into TeX"
-arch=("any")
-url="http://search.cpan.org/dist/TeX-Encode"
-license=("GPL" "PerlArtistic")
-source=(http://search.cpan.org/CPAN/authors/id/T/TI/TIMBRODY/TeX-Encode-1.3.tar.gz)
-depends=("perl" "perl-html-parser")
-checkdepends=("perl-test-pod-coverage")
+pkgdesc='Perl module to encode/decode UTF-8 strings into TeX'
+arch=('any')
+url='https://metacpan.org/release/TeX-Encode'
+license=('GPL' 'PerlArtistic')
+source=(http://search.cpan.org/CPAN/authors/id/A/AT/ATHREEF/TeX-Encode-2.004.tar.gz)
+depends=('perl' 'perl-html-parser' 'perl-pod-latex')
 options=(!emptydirs)
-md5sums=("ffc51bdcbfa533e886c47bcfda8cf591")
+md5sums=('4bd65c94b84fa3c372647dd0487cbedd')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
+}
 
 build() {
-  cd "$srcdir/TeX-Encode-1.3"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd TeX-Encode-2.004
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/TeX-Encode-1.3"
-  make test
+	cd TeX-Encode-2.004
+	sanitize
+	make test
 }
 
 package() {
-  cd "$srcdir/TeX-Encode-1.3"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd TeX-Encode-2.004
+	sanitize
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
