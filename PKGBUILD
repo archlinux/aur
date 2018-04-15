@@ -38,6 +38,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/ff-3pt"
+
   mkdir _src
   curl -L "https://sourceforge.net/projects/lame/files/latest/download?source=files" --output "_src/lame-3.100.tar.gz"
   curl -L "https://sourceforge.net/projects/soxr/files/latest/download?source=files" --output "_src/soxr-0.1.3-Source.tar.xz"
@@ -85,4 +86,5 @@ package() {
   cp -r $srcdir/fmedia/fmedia-0/* $pkgdir/opt/fmedia/
   mkdir -p "$pkgdir/usr/bin/"
   ln -s "$pkgfir/opt/fmedia/fmedia" "$pkgdir/usr/bin/fmedia"
+  rm -rf /tmp/ff3pt-build
 }
