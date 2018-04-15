@@ -8,8 +8,8 @@ url="http://playmorepromode.org/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('quake3-cpma.launcher' 'https://playmorepromode.org/files/latest/cpma-1.50-nomaps.zip'
-'http://playmorepromode.org/files/cpma-mappack-full.zip')
+source=('quake3-cpma.launcher' 'https://cdn.playmorepromode.com/files/latest/cpma-1.50-nomaps.zip'
+'https://cdn.playmorepromode.com/files/cpma-mappack-full.zip')
 sha256sums=('436f0545efc0edaaf5aad884dfe103e13363f25be276471b6c57c8932575e245'
             'bf3211ed1e37c0cf284e5579b5a2203a06310b4d8beb34c2104fbf613c3ace7f'
             '5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226')
