@@ -4,21 +4,19 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify-stable
-pkgver=1.0.72.117
-_commit=g6bd7cc73
-_ver_x86_64=35
-_ver_i686=35
+pkgver=1.0.77.338
+_commit=g758ebd78
+_ver_x86_64=41
+_ver_i686=41
 pkgrel=3
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64' 'i686')
 license=('custom')
 url='https://www.spotify.com'
 depends=('alsa-lib>=1.0.14' 'gconf' 'gtk2' 'glib2' 'nss' 'libsystemd' 'libxtst'
-         'libx11' 'libxss' 'libcurl-compat' 'desktop-file-utils' 'rtmpdump'
-         'openssl-1.0')
-# TODO (reminder) switch to libcurl-gnutls starting of version 1.0.77
-#depends_x86_64=('libcurl-gnutls')
-#depends_i686=('libcurl-compat')
+         'libx11' 'libxss' 'desktop-file-utils' 'rtmpdump' 'openssl-1.0')
+depends_x86_64=('libcurl-gnutls')
+depends_i686=('libcurl-compat')
 optdepends=('ffmpeg-compat-54: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
@@ -37,17 +35,15 @@ source=('spotify.sh'
         "${pkgname}-${pkgver}-Release.sig::http://repository.spotify.com/dists/stable/Release.gpg")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${_ver_x86_64}_amd64.deb"
                "${pkgname}-${pkgver}-x86_64-Packages::http://repository.spotify.com/dists/stable/non-free/binary-amd64/Packages")
-source_i686=("${pkgname}-${pkgver}-i686.deb::https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${_ver_i686}_i386.deb"
-             "${pkgname}-${pkgver}-i686-Packages::http://repository.spotify.com/dists/stable/non-free/binary-i386/Packages")
+# source_i686=("${pkgname}-${pkgver}-i686.deb::https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${_ver_i686}_i386.deb"
+#              "${pkgname}-${pkgver}-i686-Packages::http://repository.spotify.com/dists/stable/non-free/binary-i386/Packages")
 sha512sums=('73124cb25e831534c94232ad607d6cf7716c6fb5e0cbb7ad4cd0976a45f6fa9efdc50c58109cd9594021476c9879d6b1a90cdb4ecbb03d5ad89ae52c82fc473a'
             '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            'c6b5b8a8335c0349f38b230e053f28d09805f495458f61140c5f90767a706827a5c63f85b40463f82c6ba88918ded96c3e7cc113bd2592f6b9b7e834d847ae1b'
-            '938dc215486bb3b6ee0d3f4f507ed0d5e735a55d7a9de71d3a8fdbdf681736267916bed8f59899d8310bb5b83bb4b97dae2e820c09aa0348d1af5a18f6ed641c')
-sha512sums_x86_64=('fd33a5cd86edd4bf759849669516ffce35d89a77c6fcfb3ed0eb0ecb69024de5011499f36e48b8d37a873eb47da89eb21d9b9c7d280c498830a9fb1f8785db60'
-                   '7f9d53edf98d8de9f27d23d43b31dc0dd1ad0c95c5f49c80906263ecc01e913afa534d204d863804bfe9259f3f38a24d6a76b865f2ac0df9f77e408da94a1484')
-sha512sums_i686=('51d60f7592e5f31ea4b7e67736a85271cb48d4108459630da61c4ab67d2a470038240c1d6ff577280cb4498cf44f14d7bc7e0312f63d34265bcd1e70cd13142f'
-                 '3caefe9060e737de2d91f52e7622bd7a8c4f4e9149d14eb7834e988425999a4dff2d13c4b8d2c9854105dc304f5baa49045aeaf01908826536edb09036aae8d3')
+            '3cb97fbe3d2543943dab18225fc12a4cf935f975b3ec16f21bb6f003d00755c0a2976da32667e39a44ad825a9394991d9f589a60b5821fbbbb6de2350efceab7'
+            '4a2ab5a8260de386742ef9f4a10c8e6a98b22ede61eb49f282db3e03feb0254998b2165648d06047b1f18160e1a22a89f7c89ef0d3b9efeed5004d33f95bddd3')
+sha512sums_x86_64=('c0c08d4f6af8ffef3d9784e176c6112975ce56c7eec961df11821f4ac52785dc090e794c25874fce004da5f3e42979402e921ef12fbe1cfc80f02034448724db'
+                   '0207e31bf36446a49244ec1473635ab80c234f5e8a73fe75c6e84013921dd898a88748568565dd2a2ffaf4edfc637aa71ed70c058d1b43aa5c0fe1b8f6d18372')
 validpgpkeys=('0DF731E45CE24F27EEEB1450EFDC8610341D9410') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
