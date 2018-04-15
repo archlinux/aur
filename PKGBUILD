@@ -30,8 +30,7 @@ prepare() {
   mkdir -p build
 
    cd build
-   meson "../${_plug}" \
-    --prefix /usr
+   arch-meson "../${_plug}"
 
 }
 
