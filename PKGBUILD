@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=anirem-git
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to passivly check for updates on seasons, for proxer.me"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/AniRem"
@@ -9,8 +9,8 @@ license=('BSD')
 depends=('qt5-base' 'qt5-datasync' 'qt5-mvvmwidgets' 'qt5-restclient' 'qt5-mvvmdatasyncwidgets' 'qt5-svg')
 makedepends=('qt5-tools' 'git' 'qpmx-qpmsource')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
-provides=('seasonproxer')
-conflicts=('seasonproxer')
+provides=('seasonproxer' 'anirem')
+conflicts=('seasonproxer' 'anirem')
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/AniRem.git#tag=$pkgver"
 		"$pkgname.rule"
