@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=66.0.3359.81
+pkgver=67.0.3396.3
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -113,11 +113,10 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/edgy.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/k2.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/desu.patch
-https://raw.githubusercontent.com/bn0785ac/ih-beta/master/k3.patch
 )
 
 
-sha256sums=('4a8788a6e89253af3efa85c776c528d6952f8468aff6f793faf46c825ac628c2'
+sha256sums=('8ae35d0a8762a5bd4250109490a16e9fd4dfd396ad494bc5bfb26ddd17aad21a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -151,22 +150,22 @@ sha256sums=('4a8788a6e89253af3efa85c776c528d6952f8468aff6f793faf46c825ac628c2'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
             'db1d9f62899a1acf917394d807f10765f3cbeef63c42f1e8359239b806f42517'
-            '3d66b22f1ba6d7309eafd93e3b0a3d9ec841828f88cd8e267a7760585776dd5b'
+            '98849504f5dea0d9217683d9f044d2494d80c3e1a26117ec1f16031ba11b5bb8'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             'cabe339110369d08b2cef0b4308ee8eb8385054583815c3927421588ae94d9e7'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
             '4570a87cb632896818f8bf96eb38157bcbcfec55e702683e36d8bc63b16764af'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
-            '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
-            '5d879e485053a20b355da27be68ddd7e1eea6565f6053e8e4f604cc8da053246'
+            '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
+            '3c9aa1b7151d7b8b617c52a0bc0b2f68e2fac7ca0a3f41be48a3ad6d3b5737b9'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            'bc31df03dbddf8f1389ca482c5ba97dfc1a77834bdfbc952dc60cf4da73713a1'
+            'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
-            '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            '41fa66c8a12d3341010a58e1c78d005a10d3ac7527a88b7a8c005b35de58c0bb'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
-            '665a957ba4faefee92ec880d46d2851eb6da3a6d9182e309ca7244f651ded818'
+            'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
+            '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
+            'df56bd652794f7fdea406b36ca01edf991b7f8cb3ce3b7e5307114328a1ea3e0'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '8d9ebc86511704bfd27d18e5e917ae6c0fc44c2e16520dfb98e14f18fe40a6ee'
@@ -178,15 +177,15 @@ sha256sums=('4a8788a6e89253af3efa85c776c528d6952f8468aff6f793faf46c825ac628c2'
             '65fdcaade1b6948594fac7c2f6af3a1bc43557937a8260003842845ea307c41a'
             '2c0c865c325db53da6066afe4c9f81c156b8add0428068c0725d8a84d738e1b5'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
-            'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
+            '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
             'db4886745eb447b1b1bd74351f1d65da6e7c5b98242dcd9a11b424cf2aef88e8'
-            '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
-            '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
+            '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
+            '0848fe30322bfb6dd7c06110f5d8468f1ce68caf6cd6a184b531cc9653f21420'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
             '3c95bf62701f762b166e78c88e06752caf057a00fdaaae87de561fafc321b20b'
             '127747c5c692b0b0ef62f0e6ae79c894cd4798846bba53bf23b0b8bbe6974ba0'
             '065a69ca6547e89f84ded7b95e29a7fb3ac762eaac3aa940ab1ec5a3ecbe3a2f'
-            '0526518bd42da73113a88a440739a50fb85fb0c1e8528b1a8340747d901e3f5b'
+            'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
             'a466902d700c22178ba4f01f3a3ed94bb296ddde36396b70690513b6934a3dcc'
@@ -201,7 +200,7 @@ sha256sums=('4a8788a6e89253af3efa85c776c528d6952f8468aff6f793faf46c825ac628c2'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
-            'f2fa24d65ef4afc21e658ed476884a543ebcb78135693c77a5f14007c0a5e064'
+            '9795c178e28ca09ed520d4743a3e871a128a184850c1a725c76aae2e8c44635a'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
@@ -210,12 +209,10 @@ sha256sums=('4a8788a6e89253af3efa85c776c528d6952f8468aff6f793faf46c825ac628c2'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
-            'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
+            '3f7eed89c9ceb4500b08b818fed752e79657dda590b465e7f749e5a112107204'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
-            '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
-
+            'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
 
 
 
@@ -303,7 +300,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-#patch -Np1 -i ../pt.patch
+#patch -Np1 -Ri ../pt.patch
 
 
 msg2 'Cut media router'
@@ -333,7 +330,6 @@ patch -Np1 -i ../a.patch
 patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
-#patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
@@ -343,13 +339,12 @@ patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
-#patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
 
 
 
 #patch -Np1 -i ../9k.patch
-#patch -Np1 -i ../048.patch
+patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
@@ -357,19 +352,15 @@ patch -Np1 -i ../16.patch
 
 
 patch -Np1 -i ../k1.patch
+patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -i ../r21.patch
-
+#patch -Np1 -Ri ../r21.patch
   # Fix build with glibc 2.26
 
-  #patch -Np1 -i ../gna.patch
+patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
-  patch -Np1 -i ../k3.patch
-
-  patch -Np1 -i ../k2.patch
-
-  patch -Np1 -i ../desu.patch
+patch -Np1 -i ../desu.patch
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
   
