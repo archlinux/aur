@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel@ekpyron.org>
 
 pkgname=mingw-w64-boost
-pkgver=1.66.0
+pkgver=1.67.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-sha256sums=('5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9'
+sha256sums=('2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
             '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
@@ -56,8 +56,7 @@ package() {
       runtime-link=shared \
       --prefix=${pkgdir}/usr/${_arch:3} \
       --user-config=user-config.jam \
-      --without-python \
-      --without-mpi --without-graph_parallel \
+      --without-python --without-mpi --without-graph_parallel \
       cxxflags="-std=c++11 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
       address-model=${_arch:0:2} \
       architecture=x86 \
