@@ -1,13 +1,15 @@
 pkgbase = rw-git
 	pkgdesc = Blockwise input/output
-	pkgver = r2422.6d15ed57
+	pkgver = 1.0.r0.g755e3df
 	pkgrel = 1
 	url = https://sortix.org/rw
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	depends = glibc
-	source = git+https://gitlab.com/sortix/sortix.git
+	provides = rw
+	conflicts = rw
+	source = git+https://gitlab.com/sortix/rw-portable.git
 	md5sums = SKIP
 
 pkgname = rw-git
