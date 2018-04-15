@@ -1,6 +1,6 @@
 pkgbase = delft-icon-theme-git
 	pkgdesc = Continuation of Faenza icon theme with up to date app icons
-	pkgver = 1.1.r0.g8329b5ca
+	pkgver = 1.2.r0.gceaddae9
 	pkgrel = 1
 	url = https://github.com/madmaxms/iconpack-delft
 	arch = any

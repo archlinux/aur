@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=delft-icon-theme-git
-pkgver=1.1.r0.g8329b5ca
+pkgver=1.2.r0.gceaddae9
 pkgrel=1
 pkgdesc="Continuation of Faenza icon theme with up to date app icons"
 url="https://github.com/madmaxms/iconpack-delft"
@@ -18,7 +18,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "${pkgname%-*}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
