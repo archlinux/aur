@@ -2,7 +2,7 @@
 set -x
 
 makepkg
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 
 git add .
 git commit -m "Rebuild to get latest version"
