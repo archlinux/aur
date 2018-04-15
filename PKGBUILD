@@ -3,7 +3,7 @@
 
 pkgname=electrumx
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -11,7 +11,7 @@ depends=('leveldb'
          'python-aiohttp'
          'python-plyvel'
          'python-pylru'
-         'python-aiorpcX>=0.5.5')
+         'python-aiorpcx>=0.5.5')
 makedepends=('openssl' 'python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
