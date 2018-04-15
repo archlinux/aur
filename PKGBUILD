@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -26,7 +26,12 @@ depends=(
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
         'rockchip-mpp'
 )
-depends_x86_64=('cuda' 'nvidia-utils')
+depends_x86_64=(
+    # official repositories:
+        'cuda' 'nvidia-utils'
+    # AUR:
+        'intel-media-sdk'
+)
 makedepends=(
     # official repositories:
         'nasm' 'opencl-headers'
@@ -35,7 +40,7 @@ makedepends=(
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf' 'intel-media-sdk'
+        'vmaf'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
