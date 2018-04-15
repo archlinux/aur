@@ -7,7 +7,7 @@
 
 pkgname=filebot
 pkgver=4.8.0
-pkgrel=3
+pkgrel=4
 _jnaver=4.5.1
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -47,12 +47,14 @@ prepare() {
   sed -i -E 's/jvm.version: 10/jvm.version: 9/' app.properties
 cat <<EOT >> app.properties
 url.data: https://app.filebot.net/data
-apikey.fanart.tv: BA864DEE427E384A
-apikey.thetvdb: BA864DEE427E384A
+
+apikey.fanart.tv: 780b986b22c35e6f7a134a2f392c2deb
+apikey.thetvdb: 694FAD89942D3827
 apikey.themoviedb: 66308fb6e3fd850dde4c7d21df2e8306
 apikey.omdb: 49d311ec
 apikey.acoustid: 0B3qZnQc
 apikey.anidb: filebot
+apikey.opensubtitles: FileBot
 EOT
   cd "$srcdir/jna-$_jnaver/lib/native/"
   unzip linux-$_intarch.jar 2>&1 >/dev/null

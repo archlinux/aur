@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums.
 	pkgver = 4.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/filebot/filebot
 	install = filebot.install
 	arch = i686
