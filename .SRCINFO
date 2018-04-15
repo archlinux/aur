@@ -1,7 +1,7 @@
 pkgbase = intel-media-sdk
 	pkgdesc = API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics
 	pkgver = 1.2a
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = intel-media-sdk
 	makedepends = cmake
 	makedepends = gcc5
 	depends = libva
-	depends = intel-media-driver-git
+	depends = intel-media-driver
 	provides = libmfx
 	conflicts = intel-media-sdk-git
 	conflicts = libmfx

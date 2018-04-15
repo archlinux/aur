@@ -10,7 +10,7 @@ _commit='934c36b9d0f01af04de23c35d63b5916ee7b3102'
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=1.2a
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
     # official repositories:
         'libva'
     # AUR:
-        'intel-media-driver-git'
+        'intel-media-driver'
 )
 makedepends=(
     # official repositories:
