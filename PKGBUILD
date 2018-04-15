@@ -1,8 +1,8 @@
 # Maintainer: Jan Okoński <jandominikokonski@gmail.com>
 
-pkgname=tidal-cli-client # All lowercase
+pkgname=tidal-cli-client-git # All lowercase
 _pkgname=${pkgname#nodejs-}
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc='You can now use Tidal on linux. With your loved CLI. <3'
 arch=(any)
@@ -10,9 +10,10 @@ license=(MIT)
 url='https://github.com/okonek/tidal-cli-client'
 depends=('nodejs' 'npm' 'mpv' 'w3m')
 optdepends=()
+makedepend=('git')
 source=(http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=(53ab106202f445790818050b39ea9df2df96a215)
+sha1sums=(ff4be93d0f3af9af27d875a1769cce22e9b7faec)
 
 package() {
   cd $srcdir
