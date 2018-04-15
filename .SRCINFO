@@ -1,0 +1,18 @@
+pkgbase = pdfscissors-svn
+	pkgdesc = A tool to crop pdf files - built from svn and with linux optimizations
+	pkgver = r28
+	pkgrel = 1
+	url = http://www.pdfscissors.com
+	arch = any
+	license = AGPL
+	depends = java-runtime
+	conflicts = pdfscissors
+	source = svn+https://svn.code.sf.net/p/pdfscissors/code
+	source = 0001-Make-it-usable-on-unix.patch
+	source = pdfscissors.desktop
+	md5sums = SKIP
+	md5sums = cb43133f7846665401c7f228e2c0906d
+	md5sums = a0271a826bfca97cd82de1304f8c5212
+
+pkgname = pdfscissors-svn
+

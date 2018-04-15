@@ -1,0 +1,6 @@
+*~
+.*.swp
+*.tar.xz
+/code
+/pkg
+/src

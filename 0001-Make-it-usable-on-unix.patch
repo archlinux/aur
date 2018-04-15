@@ -1,0 +1,160 @@
+From 5692b898911543d343b490a67596c3067a6510bd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorsten=20Wi=C3=9Fmann?= <edu@thorsten-wissmann.de>
+Date: Sun, 15 Apr 2018 13:56:44 +0900
+Subject: [PATCH] Make it usable on unix
+
+This includes the following changes:
+
+  - drop dependency to org.omg.IOP.IOR to make it compile
+  - do not put the pdfscissors directory directly into the user's home
+    but into ~/.config/
+  - open files directly if files are passed on the command line
+---
+ src/bd/amazed/pdfscissors/main/PdfscissorsMain.java |  6 +++---
+ src/bd/amazed/pdfscissors/model/Model.java          |  6 +++++-
+ src/bd/amazed/pdfscissors/model/PdfCropper.java     |  1 -
+ src/bd/amazed/pdfscissors/view/MainFrame.java       | 13 ++++++++-----
+ src/bd/amazed/pdfscissors/view/OpenDialog.java      | 10 ++++++++--
+ 5 files changed, 24 insertions(+), 12 deletions(-)
+
+diff --git a/src/bd/amazed/pdfscissors/main/PdfscissorsMain.java b/src/bd/amazed/pdfscissors/main/PdfscissorsMain.java
+index 8f3ed94..be90f68 100644
+--- a/src/bd/amazed/pdfscissors/main/PdfscissorsMain.java
++++ b/src/bd/amazed/pdfscissors/main/PdfscissorsMain.java
+@@ -22,14 +22,14 @@ public class PdfscissorsMain {
+ 	public static void main(String args[]) {
+ 		if (args == null)
+ 			args = new String[0];
+-		new PdfscissorsMain().run();
++		new PdfscissorsMain().run((args.length > 0) ? args[0] : null);
+ 	}
+ 
+-	public void run() {
++	public void run(String file) {
+ 		setLookAndFeel();
+ 		java.awt.EventQueue.invokeLater(new Runnable() {
+ 			public void run() {
+-				new MainFrame().setVisible(true);
++				new MainFrame(file).setVisible(true);
+ 			}
+ 		});
+ 	}
+diff --git a/src/bd/amazed/pdfscissors/model/Model.java b/src/bd/amazed/pdfscissors/model/Model.java
+index 6add188..081af3a 100644
+--- a/src/bd/amazed/pdfscissors/model/Model.java
++++ b/src/bd/amazed/pdfscissors/model/Model.java
+@@ -196,7 +196,11 @@ public class Model {
+ 
+ 	private String getPropertyFileLocation() {
+ 		if (this.propertyFileLocation == null) {
+-			this.propertyFileLocation = System.getProperty("user.home") + File.separator + "pdfscissors/";
++			if (System.getProperty("os.name").equals("Windows")) {
++				this.propertyFileLocation = System.getProperty("user.home") + File.separator + "pdfscissors" + File.separator;
++			} else {
++				this.propertyFileLocation = System.getProperty("user.home") + File.separator + ".config" + File.separator + "pdfscissors" + File.separator;
++			}
+ 			File file = new File(propertyFileLocation);
+ 			if (!file.exists()) {
+ 				file.mkdir();
+diff --git a/src/bd/amazed/pdfscissors/model/PdfCropper.java b/src/bd/amazed/pdfscissors/model/PdfCropper.java
+index 79f1f9a..4194f48 100644
+--- a/src/bd/amazed/pdfscissors/model/PdfCropper.java
++++ b/src/bd/amazed/pdfscissors/model/PdfCropper.java
+@@ -22,7 +22,6 @@ import javax.swing.ProgressMonitor;
+ 
+ import org.jpedal.PdfDecoder;
+ import org.jpedal.exception.PdfException;
+-import org.omg.IOP.IOR;
+ 
+ import bd.amazed.pdfscissors.view.Rect;
+ 
+diff --git a/src/bd/amazed/pdfscissors/view/MainFrame.java b/src/bd/amazed/pdfscissors/view/MainFrame.java
+index e7ca43a..630b0dd 100644
+--- a/src/bd/amazed/pdfscissors/view/MainFrame.java
++++ b/src/bd/amazed/pdfscissors/view/MainFrame.java
+@@ -115,7 +115,7 @@ public class MainFrame extends JFrame implements ModelListener {
+ 	/**
+ 	 * This is the default constructor
+ 	 */
+-	public MainFrame() {
++	public MainFrame(String initialFile) {
+ 		super();
+ 		modelRegisteredListeners = new Vector<ModelListener>();
+ 		openFileDependendComponents = new Vector<Component>();
+@@ -146,6 +146,9 @@ public class MainFrame extends JFrame implements ModelListener {
+ 				TempFileManager.getInstance().clean();
+ 			}
+ 		});
++		if (initialFile != null) {
++			showFileOpenDialog(initialFile);
++		}
+ 	}
+ 
+ 	/**
+@@ -279,7 +282,7 @@ public class MainFrame extends JFrame implements ModelListener {
+ 			setButton(jButton, imageFile, text, false);
+ 			jButton.addActionListener(new java.awt.event.ActionListener() {
+ 				public void actionPerformed(java.awt.event.ActionEvent e) {
+-					showFileOpenDialog();
++					showFileOpenDialog(null);
+ 				}
+ 
+ 			});
+@@ -304,8 +307,8 @@ public class MainFrame extends JFrame implements ModelListener {
+ 		}
+ 	}
+ 
+-	private void showFileOpenDialog() {
+-		OpenDialog openDialog = new OpenDialog();
++	private void showFileOpenDialog(String initialFilepath) {
++		OpenDialog openDialog = new OpenDialog(initialFilepath);
+ 		openDialog.seMainFrame(this);
+ 		openDialog.setModal(true);
+ 		openDialog.setVisible(true);
+@@ -914,7 +917,7 @@ public class MainFrame extends JFrame implements ModelListener {
+ 
+ 				@Override
+ 				public void actionPerformed(ActionEvent arg0) {
+-					showFileOpenDialog();
++					showFileOpenDialog(null);
+ 				}
+ 			});
+ 		}
+diff --git a/src/bd/amazed/pdfscissors/view/OpenDialog.java b/src/bd/amazed/pdfscissors/view/OpenDialog.java
+index 32ebbc7..5f4ce8b 100644
+--- a/src/bd/amazed/pdfscissors/view/OpenDialog.java
++++ b/src/bd/amazed/pdfscissors/view/OpenDialog.java
+@@ -39,7 +39,7 @@ public class OpenDialog extends JDialog {
+ 	 */
+ 	public static void main(String[] args) {
+ 		try {
+-			OpenDialog dialog = new OpenDialog();
++			OpenDialog dialog = new OpenDialog(null);
+ 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+ 			dialog.setVisible(true);
+ 		} catch (Exception e) {
+@@ -50,7 +50,10 @@ public class OpenDialog extends JDialog {
+ 	/**
+ 	 * Create the dialog.
+ 	 */
+-	public OpenDialog() {
++	public OpenDialog(String initialFilePath) {
++		if (initialFilePath != null) {
++			file = new File(initialFilePath);
++		}
+ 		advancedOptions = new Vector<Component>();
+ 		setTitle("Open pdf");		
+ 		setBounds(100, 100, 509, 299);
+@@ -74,6 +77,9 @@ public class OpenDialog extends JDialog {
+ 		}
+ 		{
+ 			filePath = new JTextField();
++			if (file != null) {
++				filePath.setText(file.getAbsolutePath());
++			}
+ 			filePath.setEditable(false);
+ 			GridBagConstraints gbc_filePath = new GridBagConstraints();
+ 			gbc_filePath.fill = GridBagConstraints.HORIZONTAL;
+-- 
+2.16.3
+
