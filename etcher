@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Prevent the AppImage prompting the user to create a Desktop file
-# in ~/.local when we already have one in /usr/share.
-DESKTOPINTEGRATION=no
-export DESKTOPINTEGRATION
-
-exec /usr/share/etcher/Etcher-$realver-linux-$a.appimage
