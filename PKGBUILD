@@ -3,8 +3,8 @@
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 
 pkgname=google-musicmanager
-pkgver=1.0.243.1116_r0
-pkgrel=3
+pkgver=1.0.467.4929_r0
+pkgrel=1
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('i686' 'x86_64')
 url="http://music.google.com"
@@ -16,16 +16,20 @@ depends=('flac'
          'libvorbis'
          'xdg-utils'
          'libidn'
-         'qtwebkit')
+         'qt5-webkit'
+         'libid3tag'
+         'hicolor-icon-theme'
+)
 optdepends=('log4cxx')
 options=(!strip)
 source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
 source_x86_64=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_amd64.deb")
-md5sums_i686=('d8a6a144e2ee7fc475e02c04745a442d')
-md5sums_x86_64=('4537c0f2bdf57eee7d576b7b0a42d083')
+sha256sums_i686=('121a7939015e2270afa3f1c73554102e2b4f2e6a31482ff7be5e7c28dd101d3c')
+sha256sums_x86_64=('e2bd248a1035ed4454f43299dc239decc1895d0830c83611ca6a1372d7cd5779')
+
 
 build() {
-  tar -xvf data.tar.lzma
+  tar -xvf data.tar.xz
   tar -xvf control.tar.gz
 
   #Debian package source files cleaning.
@@ -54,3 +58,5 @@ package() {
 
   ln -s /opt/google/musicmanager/google-musicmanager $pkgdir/usr/bin/
 }
+
+
