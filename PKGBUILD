@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 
 pkgname=drpcli-tip
-pkgver=3.7.3.128.911784fb
+pkgver=3.8.0.3.9bd7909d
 pkgrel=1
 pkgdesc="Command-line client for Digital Rebar Provision, an API-driven DHCP/PXE/TFTP provisioning system. (Latest unstable release)"
 arch=('x86_64')
