@@ -5,12 +5,10 @@
 # It will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
-_commit='934c36b9d0f01af04de23c35d63b5916ee7b3102'
-
 _srcname=MediaSDK
 pkgname=intel-media-sdk
-pkgver=1.2a
-pkgrel=4
+pkgver=1.3a
+pkgrel=1
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -18,46 +16,32 @@ url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'libva'
+        'gcc-libs' 'libva' 'libdrm' 'wayland'
     # AUR:
         'intel-media-driver'
 )
-makedepends=(
-    # official repositories:
-        'perl' 'cmake'
-    # AUR:
-        'gcc5'
-)
+makedepends=('cmake' 'libx11' 'libxcb')
 provides=('libmfx')
-conflicts=('intel-media-sdk-git' 'libmfx' 'libmfx-git')
+conflicts=('intel-media-sdk' 'intel-media-server-studio')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/${pkgver}.tar.gz"
-        'intel-media-sdk-gcc5-fix.patch'
-        'intel-media-sdk-change-gcc-version.patch'
-        'intel-media-sdk-detect-intel-opencl.patch'
-        'intel-media-sdk-add-runtime-libraries.patch'
-        'intel-media-sdk-support-libva-v2.0-branch-next.patch'::"https://github.com/Intel-Media-SDK/MediaSDK/commit/${_commit}.patch"
-        'intel-media-sdk-compatibility-with-upstream-libva.patch')
-sha256sums=('04b11524c9e25dba95524bdcb07bd02b6833277c03ab7c3b83acfec9f83ce8d5'
-            'e8687d509fcdefe0b9d01f12c7437425aa12791795046506fb13483dcca924ab'
-            '1e87af43f125b37b1ed12f5fd9f87a0260fe05204d12ac29567eeb389284de31'
-            '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c'
-            'a4e02e01fbb289503be58006a3ddfdf4a1e4a1e127bcb64c5b539b94c53700cf'
-            '9899560bf50d999e830786d874ebb36d2b1c4a85c6dc978fa8716876873fdeb6'
-            '7e565f73d7d998d2f580ffa1e9159c4285fe5826a8c446812fdb5ebe9393780f')
+        'intel-media-sdk-libva-2.1-fix.patch'
+        'intel-media-sdk-add-generation-summary.patch'
+        'intel-media-sdk-do-not-override-user-supplied-compile-flags.patch'
+        'intel-media-sdk-avoid-forcing-cmake-verbose-makefile.patch')
+sha256sums=('6c384d019dc47718170a080f652cf1f1b5c48bbd6eeffbaeda0b39ee3d6f437b'
+            '82571e0897eb2e1b7b1a05115e8ff3584d63dd8e77e990e4091d013067a06e69'
+            'd950465b1f855c64f8e1b058dafc89e06e7bf0ca721e946a6b67210cbc7f4356'
+            'd3dab068faa79db3b940d976ff4a0c9cb2f2cd2fe1bcc67e0b995cfa73808733'
+            '5b1babf0d4637c4785d7680ec9082a0678c8776f5740202e55edf8f3e7d565d6')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     
-    # support upstream libva from 01org (currently needs libva-git)
-    patch -Np1 -i "${srcdir}/intel-media-sdk-support-libva-v2.0-branch-next.patch"
-    patch -Np1 -i "${srcdir}/intel-media-sdk-compatibility-with-upstream-libva.patch"
-    
-    # build fixes
-    patch -Np1 -i "${srcdir}/intel-media-sdk-gcc5-fix.patch"
-    patch -Np1 -i "${srcdir}/intel-media-sdk-change-gcc-version.patch"
-    patch -Np1 -i "${srcdir}/intel-media-sdk-detect-intel-opencl.patch"
-    patch -Np1 -i "${srcdir}/intel-media-sdk-add-runtime-libraries.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-libva-2.1-fix.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-add-generation-summary.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-do-not-override-user-supplied-compile-flags.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-avoid-forcing-cmake-verbose-makefile.patch"
     
     # fix ittnotify (intel-seapi) detection in the build system
     sed -i '/ITT_LIB/s/\$ENV{ITT_PATH}/$ENV{ITT_PATH}\/lib/' builder/FindVTune.cmake
@@ -67,43 +51,43 @@ build() {
     cd "${_srcname}-${pkgver}"
     
     export MFX_HOME="$(pwd)"
-    
     export ITT_PATH='/usr'
     
-    export CFLAGS="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
-    export CXXFLAGS="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
+    mkdir -p build
+    cd build
     
-    perl tools/builder/build_mfx.pl \
-                            --cmake='intel64.make.release' \
-                            --prefix='/usr'
-                            
-    make -C __cmake/intel64.make.release
+    cmake \
+        -G 'Unix Makefiles' \
+        -D__GENERATOR:STRING='make' \
+        -DCMAKE_CONFIGURATION_TYPES:STRING='release;debug' \
+        -DCMAKE_BUILD_TYPE:STRING='release' \
+        -D__ARCH:STRING='intel64' \
+        -D__CONFIG:STRING='release' \
+        -D__IPP:STRING='e9' \
+        -D__TARGET_PLATFORM:STRING='BDW' \
+        -DCMAKE_CXX_FLAGS_RELEASE:STRING="${CXXFLAGS} ${CPPFLAGS}" \
+        -DCMAKE_C_FLAGS_RELEASE:STRING="${CFLAGS} ${CPPFLAGS}" \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DENABLE_DRM:BOOL='ON' \
+        -DENABLE_OPENCL:BOOL='ON' \
+        -DENABLE_WAYLAND:BOOL='ON' \
+        -DENABLE_X11:BOOL='ON' \
+        -DENABLE_X11_DRI3:BOOL='ON' \
+        --no-warn-unused-cli \
+        -Wno-dev \
+        ..
+        
+    make
 }
 
 package() {
-    cd "${_srcname}-${pkgver}"
+    cd "${_srcname}-${pkgver}/build"
     
-    make \
-        -C __cmake/intel64.make.release \
-        DESTDIR="$pkgdir" \
-        install
-        
-    mv -f "$pkgdir"/usr/lib64/* "${pkgdir}/usr/lib"
-    rm -rf "${pkgdir}/usr/lib64"
+    make DESTDIR="$pkgdir" install
     
-    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/pkgconfig,lib/"$pkgname"}
-    
-    # move samples to a better place
-    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
-    
-    # license
-    cd "${srcdir}/${_srcname}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # bellow are fixes for ffmpeg (some paths are hardcoded, use symlinks)
-    
-    # includes
-    cd "${pkgdir}/usr/include"
+    # includes (add 'mfx' folder for ffmpeg compatibility)
+    mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
+    cd "${pkgdir}/opt/intel/mediasdk/include"
     for _header in *.h
     do
         cd mfx
@@ -111,26 +95,15 @@ package() {
         cd ..
     done
     
-    # libraries
-    cd "${pkgdir}/usr/lib/lin_x64"
-    for _lib in *.a
-    do
-        cd ..
-        ln -sf "lin_x64/$_lib" "$_lib"
-        cd "lin_x64"
-    done
+    # create symlinks for ffmpeg compatibility
+    # (currently it seems to needed only on the intel-media-sdk "stable" version package)
+    mkdir -p "${pkgdir}/usr/lib"
+    cd "${pkgdir}/usr/lib"
+    ln -s ../../opt/intel/mediasdk/lib64/*.so    "${pkgdir}/usr/lib"
+    ln -s ../../opt/intel/mediasdk/plugins/*.so  "${pkgdir}/usr/lib"
+    ln -s ../../opt/intel/mediasdk/plugins/*.cfg "${pkgdir}/usr/lib"
     
-    # pkgconfig files
-    cd "${pkgdir}/usr/lib/lin_x64/pkgconfig"
-    ln -sf mfx.pc libmfx.pc
-    cd "${pkgdir}/usr/lib/pkgconfig"
-    ln -sf ../"lin_x64/pkgconfig/mfx.pc"       mfx.pc
-    ln -sf ../"lin_x64/pkgconfig/libmfx.pc" libmfx.pc
-    
-    # plugins
-    cd "${pkgdir}/usr/plugins"
-    for _plugin in *
-    do
-        ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
-    done
+    # license
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
