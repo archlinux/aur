@@ -1,3 +1,4 @@
+# Maintainer:	Simon Legner <Simon.Legner@gmail.com>
 # Maintainer:	Filippo Berto <berto.f at protonmail dot com>
 # Contributor: Viktor Hundahl Strate <viktorstrate@gmail.com>
 
@@ -5,21 +6,19 @@ _gitname=tinyMediaManager
 
 pkgname=tiny-media-manager
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
-url="http://www.tinymediamanager.org"
-license=('Apache-2.0')
+url="https://www.tinymediamanager.org/"
+license=('Apache')
 depends=('libmediainfo' 'java-environment>=8')
-makedepends=('maven')
+makedepends=('maven' 'git') # git for org.codehaus.mojo:buildnumber-maven-plugin
+install=tinyMediaManager.install
 source=("https://github.com/tinyMediaManager/tinyMediaManager/archive/$_gitname-$pkgver.tar.gz"
+        "tinyMediaManager.install"
 			  "tinyMediaManager.desktop"
 				"tinymediamanager"
 				"tinymediamanager-cli")
-md5sums=('f38260e71f6dc90b0e4e25930513a65e'
-         '4a8fd16c1295e18ec4fe9c0a8ad61d87'
-         '8f4e0cc5eac31bf05bf273fd78d654cf'
-         '9bead0995ae09ac68850a83159b1b70d')
 
 build() {
 	cd "$_gitname-$_gitname-$pkgver"
@@ -27,14 +26,11 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/$_gitname"
 	cd "$srcdir/$_gitname-$_gitname-$pkgver/dist"
 
-	tar -xvf tmm_"$pkgver"_*_linux.tar.gz
-	rm tmm_"$pkgver"_*_linux.tar.gz
-
-	cp -r * "$pkgdir/usr/share/$_gitname"
-	chmod -R 777 "$pkgdir/usr/share/$_gitname"
+	tar -xf tmm_"$pkgver"_*_linux.tar.gz
+	mkdir -p "$pkgdir/usr/share/$_gitname"
+	cp -r {lib/,locale/,plugins/,templates/,splashscreen.png,tmm.jar,tmm.png} "$pkgdir/usr/share/$_gitname"
 
 	# Install desktop entry
 	install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
@@ -43,3 +39,9 @@ package() {
 	install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
 	install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
+
+sha256sums=('3fee8cc6796216fc90fae3104d98beaf92846069c10dd2369e46042904cff596'
+            '49bd16ee848ae21f1c02e408469e5c09c253e6ffe353d7e65434298a1092f010'
+            '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
+            'ea43080cfcd656642275b7f7fe81233b2cc872c0cd6301f28eed5f7b9d236b2a'
+            '07e803e2fbf980c8e5c4e957a52ea00de605cebc5e28bfd70730168b87723f77')

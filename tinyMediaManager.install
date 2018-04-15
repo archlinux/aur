@@ -1,0 +1,9 @@
+source /usr/share/makepkg/util/message.sh
+
+post_upgrade() {
+  if [ -d /usr/share/tinyMediaManager/data/ ]; then
+    warning 'This package no longer stores user data in /usr/share/tinyMediaManager/. Please migrate the data to $HOME/.tiny-media-manager'
+    warning '$ mkdir $HOME/.tiny-media-manager/'
+    warning '$ find /usr/share/tinyMediaManager/ -maxdepth 1 -user $USER -exec mv --interactive "{}" $HOME/.tiny-media-manager/ ";"'
+  fi
+}
