@@ -2,7 +2,7 @@
 
 pkgname=fsl
 pkgver=5.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("i686" "x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
@@ -31,11 +31,9 @@ prepare() {
 	export FSLMACHTYPE=`${FSLDIR}/etc/fslconf/fslmachtype.sh`
 
 	# Create new configuration
-	if [ ! -e "${FSLDIR}/config/${FSLMACHTYPE}" ]; then
-	    mkdir "${FSLDIR}/config/${FSLMACHTYPE}"
-	    cp "${srcdir}/systemvars.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
-	    cp "${srcdir}/externallibs.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
-	fi
+	mkdir -p "${FSLDIR}/config/${FSLMACHTYPE}"
+	cp "${srcdir}/systemvars.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
+	cp "${srcdir}/externallibs.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
 
 	# Copy makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
