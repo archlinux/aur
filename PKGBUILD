@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode-git')
 _pkgname=('gamemode')
-pkgver=53eece3
+pkgver=34e6d07
 pkgrel=4
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
     echo $(git rev-parse --short HEAD)
 }
 build() {
-  arch-meson ${_pkgname} build -Dwith-systemd-user-unit-dir=/etc/systemd/user
+  arch-meson ${_pkgname} build -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
   ninja -C build
 }
 
