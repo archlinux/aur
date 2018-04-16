@@ -2,13 +2,19 @@
 # Maintainer: Kai Korla <balticer@balticer.de>
 pkgname=php-redis
 pkgver=4.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('PHP')
+makedepends=(
+   'php-igbinary'
+)
 depends=(
     'php>=7.0.0'
+)
+optdepends=(
+   'php-igbinary: igbinary support'
 )
 conflicts=(
     'phpredis-git'
@@ -25,7 +31,7 @@ build() {
   cd "$srcdir/redis-$pkgver"
 
   phpize
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-redis-igbinary --enable-redis-lzf
   make
 }
 
