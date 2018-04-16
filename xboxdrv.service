@@ -1,0 +1,12 @@
+[Unit]
+Description=Xbox controller driver daemon
+Documentation=man:xboxdrv(1)
+
+[Service]
+Type=forking
+User=root
+PIDFile=/var/run/xboxdrv.pid
+ExecStart=/usr/bin/xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid -c /etc/default/xboxdrv --detach-kernel-driver
+
+[Install]
+WantedBy=multi-user.target
