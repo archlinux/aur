@@ -22,8 +22,8 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgname"
 	mkdir -p build && cd build
-  export CC=gcc-5
-  export CXX=g++-5
+  export CC=gcc-6
+  export CXX=g++-6
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native \
     -DENABLE_CUDA=ON -DENABLE_MPI=ON -DSINGLE_PRECISION=ON \
