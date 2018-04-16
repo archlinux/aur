@@ -1,6 +1,6 @@
 pkgbase = kms-elements
 	pkgdesc = Kurento elements module
-	pkgver = 6.6.3
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = http://www.kurento.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kms-elements
 	makedepends = gst-plugins-openwebrtc
 	makedepends = libsoup
 	makedepends = openssl-1.0
-	makedepends = kms-core
+	makedepends = kms-core>=6.7.0
 	makedepends = valgrind
 	depends = boost-libs
 	depends = libnice
@@ -20,11 +20,21 @@ pkgbase = kms-elements
 	depends = gst-plugins-openwebrtc
 	depends = libsoup
 	depends = openssl-1.0
-	depends = kms-core
+	depends = kms-core>=6.7.0
 	provides = kms-elements
 	conflicts = kms-elements
-	source = https://github.com/Kurento/kms-elements/archive/6.6.3.tar.gz
-	sha256sums = 38b69a36009a17f3f74d822a594bb1faff7e0859733893667bcd936e10dfe26d
+	source = https://github.com/Kurento/kms-elements/archive/6.7.1.tar.gz
+	source = kmselements.c.patch
+	source = kmsrecorderendpoint.c.patch
+	source = kmsrtpendpoint.c.patch
+	source = kmswebrtcendpoint.c.patch
+	source = kmswebrtc.c.patch
+	sha256sums = 880f37343aed8165aa08e8b8f05a99455cfd1f37e59bebc224bf77737ac5d147
+	sha256sums = a158f1da9ae727523da02b53b2014fdc5de0a2239b0b187771f3eec6d85defee
+	sha256sums = e705e135da4dea3197967ab067c2dde898197b054548baa3337930ca727328c0
+	sha256sums = 02e6075f1f29a46a2df13655d3186ac23535de24489047126ed7c25d77afbcf3
+	sha256sums = a923b2ebd0cb8ee332c7e5ce7d76d8fa2558c67ddfb1cdeaadb8774853f3cb66
+	sha256sums = aa12fece95385cfc6c7522b2afe6101220fa3215b9d03fcb30de7eb1cd06032a
 
 pkgname = kms-elements
 
