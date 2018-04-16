@@ -3,11 +3,10 @@
 
 pkgname=ruby-jekyll-feed
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts"
 arch=('any')
 depends=('ruby' 'jekyll')
-makedepends=('ruby-bundler' 'ruby-nokogiri' 'ruby-rspec' 'ruby-typhoeus' 'ruby-rubocop')
 url="https://rubygems.org/gems/jekyll-feed"
 noextract=("jekyll-feed-${pkgver}.gem")
 license=('MIT')

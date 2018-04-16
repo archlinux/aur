@@ -1,15 +1,10 @@
 pkgbase = ruby-jekyll-feed
 	pkgdesc = A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/jekyll-feed
 	arch = any
 	license = MIT
-	makedepends = ruby-bundler
-	makedepends = ruby-nokogiri
-	makedepends = ruby-rspec
-	makedepends = ruby-typhoeus
-	makedepends = ruby-rubocop
 	depends = ruby
 	depends = jekyll
 	noextract = jekyll-feed-0.9.3.gem
