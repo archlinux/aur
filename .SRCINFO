@@ -1,7 +1,7 @@
 pkgbase = arch-security
 	pkgdesc = Display current vulnerabilities for installed packages and scan for some possible security issues
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.marc-jose.de/ArchLinux/arch-security
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = arch-security
 	depends = pacman
 	depends = sudo
 	provides = arch-security
-	source = git+https://gitlab.marc-jose.de/marc.jose/arch-security.git
+	source = git+https://gitlab.marc-jose.de/ArchLinux/arch-security.git
 	source = arch-security.hook
 	source = arch-security.sh
 	sha512sums = SKIP
