@@ -1,7 +1,7 @@
 # Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=kms-jsonrpc
 pkgver=6.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kurento jsonrpc library'
 arch=('any')
 url='http://www.kurento.org/'
@@ -22,7 +22,7 @@ build() {
     mkdir -p "build"
     cd "build"
 
-    cmake ${srcdir}/${pkgname}-${pkgver}/. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+    cmake ${srcdir}/${pkgname}-${pkgver}/. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations"
 }
 package() {
     make -C build DESTDIR="${pkgdir}" install
