@@ -2,11 +2,10 @@
 
 pkgname=ruby-jekyll-seo-tag
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site's content"
 arch=('any')
 depends=('ruby' 'jekyll')
-makedepends=('ruby-bundler' 'ruby-bundler' 'ruby-rspec' 'ruby-rubocop' 'ruby-html-proofer')
 url="https://rubygems.org/gems/jekyll-seo-tag"
 noextract=("jekyll-seo-tag-${pkgver}.gem")
 license=('MIT')
