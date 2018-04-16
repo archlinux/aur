@@ -1,10 +1,10 @@
 # Maintainer: Marc Jose <Hering2007@web.de>
 pkgname=arch-security
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display current vulnerabilities for installed packages and scan for some possible security issues"
 arch=('any')
-url="https://gitlab.marc-jose.de/marc.jose/$pkgname"
+url="https://gitlab.marc-jose.de/ArchLinux/$pkgname"
 license=('MIT')
 makedepends=('git' 'awk' 'coreutils' 'grep' 'python-pip')
 provides=("$pkgname")
