@@ -1,13 +1,14 @@
-# Maintainer:  Joakim Hernberg <jhernberg@alchemy.lu>
+# Maintainer:  Alex Mekkering <amekkering at gmail dot com>
+# Contributor: Joakim Hernberg <jhernberg@alchemy.lu>
 # Contributor: Markus Opitz <mastero23 at gmail dot com>
 
 pkgname=oscam-svn
-pkgver=11225
+pkgver=11420
 pkgrel=1
 
 pkgdesc="The Open Source Conditional Access Module daemon"
-url="http://oscam.to/"
-arch=('i686' 'x86_64')
+url="http://www.streamboard.tv/oscam"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 
 depends=('bash' 'openssl' 'libusbx' 'pcsclite')
@@ -16,7 +17,7 @@ provides=('oscam')
 conflicts=('oscam')
 
 install=oscam.install
-source=("$pkgname::svn+http://www.streamboard.tv/svn/oscam/trunk"
+source=("$pkgname::svn+http://www.streamboard.tv/svn/oscam/trunk#revision=$pkgver"
         'oscam.service')
 md5sums=('SKIP'
          '9feece4aed599a1ba005305c5e23960e')
@@ -29,7 +30,6 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make allyesconfig
-  ./config.sh --disable WITH_SSL
   make OSCAM_BIN=oscam CONF_DIR=/etc/oscam USE_LIBUSB=1 USE_PCSC=1
 }
 
