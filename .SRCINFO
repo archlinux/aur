@@ -1,6 +1,6 @@
 pkgbase = kms-cmake-utils
 	pkgdesc = Kurento cmake utilities
-	pkgver = 1.4.0
+	pkgver = 6.7.0
 	pkgrel = 1
 	url = http://www.kurento.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = kms-cmake-utils
 	depends = cmake
 	provides = kms-cmake-utils
 	conflicts = kms-cmake-utils
-	source = https://github.com/Kurento/kms-cmake-utils/archive/1.4.0.tar.gz
-	sha256sums = 13616dc4b760d9aea1031e3c2f638c44b029a18e5f7117e51cb29d0f6071a857
+	source = https://github.com/Kurento/kms-cmake-utils/archive/6.7.0.tar.gz
+	sha256sums = adece455b4c2ae0d69305c6952323f64ee6efed7aa9f9703ed4df5fbf42ef6bf
 
 pkgname = kms-cmake-utils
 
