@@ -7,6 +7,7 @@ arch=('x86_64')
 url="http://cernbox.web.cern.ch/"
 license=('GPL')
 depends=('neon' 'qt5-webkit' 'qtkeychain')
+optdepends=('cernbox-nemo: Nemo integration')
 provides=('ocsync' 'cernboxsync')
 
 _repo='http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_Leap_42.3/x86_64/'
