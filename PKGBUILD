@@ -2,7 +2,7 @@
 
 pkgname=netgui
 _gitname=NetGUI
-pkgver=0.81
+pkgver=0.85
 pkgrel=1
 pkgdesc="GUI for netctl, stable but beta. Replaces WiFiz."
 arch=('any')
