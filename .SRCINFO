@@ -1,0 +1,18 @@
+pkgbase = sqlfuse-git
+	pkgdesc = Encrypted user-space filesystem using SQLite3+SQLCipher+FUSE
+	pkgver = r179.a2f60b6
+	pkgrel = 1
+	url = https://github.com/maksverver/sqlfuse
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = fuse
+	depends = sqlcipher
+	provides = sqlfuse
+	conflicts = sqlfuse
+	source = git+https://github.com/maksverver/sqlfuse.git
+	md5sums = SKIP
+
+pkgname = sqlfuse-git
+
