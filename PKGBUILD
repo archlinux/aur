@@ -14,6 +14,8 @@ license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
          openldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2' libevent)
 makedepends=(doxygen)
+conflicts=(svrcore)
+provides=(svrcore)
 optdepends=('python-lib389: Python managemnt scripts'
             'python2-lib389: Python2 version')
 
