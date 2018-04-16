@@ -17,6 +17,7 @@ pkgbase = openttd-svn
 	depends = xz
 	optdepends = openttd-opengfx: free graphics
 	optdepends = openttd-opensfx: free soundset
+	optdepends = timidity++: for in-game music
 	source = openttd-svn::git+https://github.com/OpenTTD/OpenTTD.git
 	sha256sums = SKIP
 

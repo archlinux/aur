@@ -8,8 +8,9 @@ arch=('i686' 'x86_64')
 url='http://openttd.org'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz')
-optdepends=('openttd-opengfx: free graphics' 
-            'openttd-opensfx: free soundset')
+optdepends=('openttd-opengfx: free graphics'
+            'openttd-opensfx: free soundset'
+            'timidity++: for in-game music')
 makedepends=('git')
 
 source=("$pkgname::git+https://github.com/OpenTTD/OpenTTD.git")
