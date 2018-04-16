@@ -1,13 +1,10 @@
 pkgbase = ruby-jekyll-last-modified-at
 	pkgdesc = A liquid tag for Jekyll to indicate the last time a file was modified.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rubygems.org/gems/jekyll-last-modified-at
 	arch = any
 	license = MIT
-	makedepends = ruby-rspec
-	makedepends = ruby-redcarpet
-	makedepends = ruby-spork
 	depends = ruby
 	depends = jekyll
 	depends = ruby-posix-spawn

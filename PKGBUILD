@@ -3,11 +3,10 @@
 
 pkgname=ruby-jekyll-last-modified-at
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A liquid tag for Jekyll to indicate the last time a file was modified."
 arch=('any')
 depends=('ruby' 'jekyll' 'ruby-posix-spawn')
-makedepends=('ruby-rspec' 'ruby-redcarpet' 'ruby-spork')
 url="https://rubygems.org/gems/jekyll-last-modified-at"
 noextract=("jekyll-last-modified-at-${pkgver}.gem")
 license=('MIT')
