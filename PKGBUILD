@@ -6,8 +6,8 @@
 
 pkgname=root-extra-dev
 _pkgname=root
-pkgver=6.11.02
-pkgrel=2
+pkgver=6.13.02
+pkgrel=1
 provides=('root' 'root-extra' 'root-extra-dev')
 conflicts=('root' 'root-dev' 'root-extra')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled - development release.'
@@ -16,6 +16,7 @@ url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
+         'fcgi'
          'fftw'
          'ftgl'
          'gl2ps'
@@ -37,50 +38,51 @@ depends=('cfitsio'
          'xmlrpc-c'
          'xrootd>=4.6.0-2')
 optdepends=('blas: Optional extensions to TMVA'
+            'go: Go language support'
             'gcc-fortran: Enable the Fortran components of ROOT'
-            'tcsh: Legacy CSH support')
+            'ocaml: OCAML support'
+            'python-numpy: numpy bindings'
+            'tcsh: Legacy CSH support'
+            'z3: Z3 Theorem prover support')
 options=('!emptydirs')
-install=root.install
+install=root-extra-dev.install
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
-        'root.install'
+        'root-extra-dev.install'
         'root.sh'
         'root.xml'
         'rootd'
         'settings.cmake')
-sha256sums=('7995b0d9b76289800c80faf26e72e9330f1d3874753609096fc8d075b49c5512'
+sha256sums=('338a65f54ab5efb6c875372a0737497690388853b8458969cd54fb9a6b3e3ea1'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
-            '0878ab24974c7548ddda5619d24d07d7cea14af92de2d8ed3ccef394feaf1d87')
+            '6e8c4c4045fdc5a93045c2174c11d156b9f98c3042bd39d89713f4f1be375cd4')
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
-    # msg2 'Applying patches...'
-    # Apply optional fixes while waiting for upstream to release
-
     msg2 'Adjusting to Python3...'
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
+
+    mkdir -p "${srcdir}/build"
+    cd "${srcdir}/build"
+
+    CFLAGS="${CFLAGS} -pthread" \
+    CXXFLAGS="${CXXFLAGS} -pthread" \
+    LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
+    cmake -C "${srcdir}/settings.cmake" "${srcdir}/${_pkgname}-${pkgver}"
 }
 
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
 
-    msg2 'Configuring...'
-    CFLAGS="${CFLAGS} -pthread" \
-    CXXFLAGS="${CXXFLAGS} -pthread" \
-    LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
-    cmake -C "${srcdir}/settings.cmake" "${srcdir}/${_pkgname}-${pkgver}"
-
-    msg2 'Compiling...'
     make ${MAKEFLAGS}
 }
 
 package() {
     cd "${srcdir}/build"
 
-    msg2 'Installing...'
     make DESTDIR="${pkgdir}" install
 
     install -D "${srcdir}/root.sh" \
