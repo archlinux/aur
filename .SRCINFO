@@ -1,6 +1,6 @@
 pkgbase = kms-core
 	pkgdesc = Kurento core module
-	pkgver = 6.6.3
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = http://www.kurento.org/
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = kms-core
 	makedepends = boost-libs
 	makedepends = libsigc++
 	makedepends = glibmm
-	makedepends = kms-cmake-utils>=1.3.2
-	makedepends = kms-jsonrpc
-	makedepends = kurento-module-creator
+	makedepends = kms-cmake-utils>=6.7.0
+	makedepends = kms-jsonrpc>=6.7.0
+	makedepends = kurento-module-creator>=6.7.0
 	depends = boost-libs
 	depends = glib2
 	depends = gst-plugins-base
@@ -28,13 +28,15 @@ pkgbase = kms-core
 	depends = gst-libav
 	depends = libsigc++
 	depends = glibmm
-	depends = kms-jsonrpc
+	depends = kms-jsonrpc>=6.7.0
 	provides = kms-core
 	conflicts = kms-core
-	source = https://github.com/Kurento/kms-core/archive/6.6.3.tar.gz
+	source = https://github.com/Kurento/kms-core/archive/6.7.1.tar.gz
 	source = SdpEndpoint.conf.json.patch
-	sha256sums = b0643e36e2e422678db31177f0682a4adefdc359eaf2eaf1546b336c3e2df439
+	source = kmscore.c.patch
+	sha256sums = 06c23218358ea1ae983dba265417f8be11748826b99cbe9e2eafd161373c637a
 	sha256sums = dfd717ed76d489e73459ddd00111282f6cecbc9d8f3f616bc750ddd5164ac0cd
+	sha256sums = e2f76510bdeb205808284942fb38d035bfbc17d7a71f544fc19d94a70f87baf4
 
 pkgname = kms-core
 
