@@ -2,7 +2,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=xboxdrv-ex-git
-pkgver=1187.fbbb7d8
+pkgver=r1187.fbbb7d8
 pkgrel=1
 pkgdesc="XBox 360 driver with strong configurability and support for third-party gamepads."
 arch=('i686' 'x86_64')
