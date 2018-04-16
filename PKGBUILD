@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-binutils
-pkgver=2.29
+pkgver=2.29.1
 pkgrel=1
 pkgdesc="Cross binutils for the MinGW-w64 cross-compiler"
 arch=('x86_64')
@@ -14,9 +13,9 @@ license=('GPL')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 depends=('zlib')
 options=('!libtool' '!emptydirs')
-validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93')
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.gz"{,.sig})
-sha256sums=('172e8c89472cf52712fd23a9f14e9bca6182727fb45b0f8f482652a83d5a11b4'
+sha256sums=('0d9d2bbf71e17903f26a676e7fba7c200e581c84b8f2f43e72d875d0e638771c'
             'SKIP')
 
 prepare() {
@@ -35,6 +34,7 @@ build() {
         --target=${_target} \
         --infodir=/usr/share/info/${_target} \
         --enable-lto --enable-plugins \
+        --enable-deterministic-archives \
         --disable-multilib --disable-nls \
         --disable-werror
      make
