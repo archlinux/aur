@@ -2,12 +2,12 @@
 # Contributor: Marcus Shaetzle
 # Contributor: Eric Vidal <eric@obarun.org>
 pkgname=kickshaw
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='https://github.com/natemaia/kickshaw'
 arch=('x86_64')
-sha256sums=('c02eedfc1c8eaefffb91207d1adba42ef624faa7aef1734336f676dee39cb7e3')
+sha256sums=('dbe98eb2ec359de962305fd3cec57b97b8bbd6ebc0b13a4b4ff62d129ab8fadd')
 license=('GPL2')
 source=("$url/archive/$pkgver.tar.gz")
 makedepends=('gtk3' 'gcc')
