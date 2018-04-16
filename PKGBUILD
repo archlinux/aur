@@ -1,7 +1,7 @@
 # Maintainer: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=5.13.0
+pkgver=5.16.4
 pkgrel=1
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 url="http://map.project-osrm.org/"
@@ -10,7 +10,7 @@ makedepends=("cmake" "boost")
 arch=('x86_64')
 license=('BSD')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v$pkgver.tar.gz")
-sha256sums=("a5b9fe1a7d96292a573a023f8ef7d2ce862855f2f0d6d2c189c542a0ffa8b49a")
+sha256sums=("c2b014cfa65deee0b8ee2c94893362951ebc42684710fa8d9f3d1ecfeb927da4")
 
 build() {
     cd "$pkgname-$pkgver"
