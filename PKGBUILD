@@ -1,17 +1,21 @@
 # Maintainer: Emile Boutet-Livoff <emilelivoff@gmail.com>
 
 pkgname=lix-ereader
-pkgver=1.0.15
-pkgrel=2
+pkgver=1.0.17
+pkgrel=1
 pkgdesc="A proprietary e-reader"
 arch=('x86_64')
 url='https://www.lix.com/'
 license=('unknown')
+
+#Speed up the crompressing by not compressing it
+PKGEXT='.pkg.tar'
+
 #Might depend on libappindicator-gtk2, gconf, libindicator-gtk2, libnotify
 #It has it's own libnode.so and libffmpeg.so
 depends=('alsa-lib' 'libxss' 'gconf' 'gtk2' 'nss' 'libxtst')
 source=("https://download.lix.com/linux/latest")
-md5sums=("2df5cc1ecc8830edd941032e6e4b53b0")
+md5sums=("2a1a8ec23c1c8c0a038401ae4526c63f")
 
 prepare() {
     cd "${srcdir}"

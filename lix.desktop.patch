@@ -10,6 +10,6 @@
  Type=Application
 -Icon=lix
 +Icon=/usr/share/icons/default/48x48/apps/lix.png
- X-AppImage-Version=1.0.15
+ X-AppImage-Version=1.0.17
  X-AppImage-BuildId=d7f115e0-d5a9-11a7-0154-3952b44ca794
  Categories=Education;
