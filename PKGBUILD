@@ -7,7 +7,7 @@ pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=('any')
 url="http://codeblue.umich.edu/hoomd-blue/index.html"
 license=('custom: University of Michigan "MIT-Like"')
-depends=(python boost cuda cmake openmpi gcc5)
+depends=(python boost cuda cmake openmpi gcc6)
 makedepends=(git)
 optdepends=('nvidia: running simulations on GPU')
 provides=(hoomd-blue)
@@ -24,7 +24,10 @@ build() {
 	mkdir -p build && cd build
   export CC=gcc-5
   export CXX=g++-5
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native -DENABLE_CUDA=ON -DSINGLE_PRECISION=ON -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native \
+    -DENABLE_CUDA=ON -DENABLE_MPI=ON -DSINGLE_PRECISION=ON \
+    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
 }
 
 package() {
