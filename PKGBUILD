@@ -3,14 +3,14 @@
 # Co-maintainer: lilydjwg <lilydjwg@gmail.com>
 
 pkgname=nvchecker-git
-pkgver=0.5.0
 epoch=1
-pkgrel=1
+pkgver=1.1dev.r27
+pkgrel=2
 pkgdesc="a tool for checking if a new version of some software has been released."
 arch=('any')
 url="https://github.com/lilydjwg/nvchecker"
 license=('MIT')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'python-structlog')
 makedepends=('git')
 optdepends=('python-aiohttp: HTTP client (only one needed)'
             'python-tornado: HTTP client (only one needed)'
