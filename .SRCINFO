@@ -1,0 +1,24 @@
+pkgbase = hammond-git
+	pkgdesc = A Podcast Client for the GNOME Desktop written in Rust (Git version)
+	pkgver = r950.0589f2f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/hammond
+	arch = x86_64
+	license = GPL3
+	makedepends = gtk3
+	makedepends = rust
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = meson
+	makedepends = git
+	depends = glib2
+	depends = openssl
+	depends = sqlite
+	depends = gtk3
+	provides = hammond
+	conflicts = hammond
+	source = git+https://gitlab.gnome.org/World/hammond.git
+	sha256sums = SKIP
+
+pkgname = hammond-git
+
