@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgname=unifi
-pkgver=5.7.20
+pkgver=5.7.23
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -10,14 +10,14 @@ url='https://community.ubnt.com/unifi'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
-depends=('mongodb' 'java-runtime-headless' 'fontconfig')
+depends=('mongodb' 'jre8-openjdk-headless' 'fontconfig')
 conflicts=('tomcat-native')
 source=("UniFi-$pkgver.zip::https://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
         'mongod'
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-sha512sums=('530f666dd066fbe07e158cd138ecd900366c7b8f2c98b310ef1f18f3877cfb0feeeb6e0475f2ef8737730219cd0032e47d6bb5ecc2faa4e62765754e7e7e1c1c'
+sha512sums=('63150282d9b7c907e0851bfcfa6779c8a5568b6aa5a8c7333dd5d1403ea8561f8175e9682f79c508da98812efc619257971943a1c3803dd1e72295b9de3340af'
             'ea729c0053bf82e5561ce5f4fb7dba90cbe1b84631f5c257371883090ae5ccc58bd212cb93c9df51e687cdb2b5cdfa8c9e5bfc22bc7d58dc23c9c4dce3a686b8'
             '4b77e480dac9acef58e2d8f088491aa056a55edc9ca613c1b707d53ca802579513082e7c16f5a59689813609b97c2391253c99d77709be4a536abb683e5106ed'
             '0fdd04112236bb3f4d96e4e1c43e0a9d97412831b44837466d70e15521336275a0496dbd47dd28873dc85ba4982ef2234e31c78146eb45c20b158dadf2cec7b8'
