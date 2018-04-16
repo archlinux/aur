@@ -1,0 +1,22 @@
+pkgbase = adept-git
+	pkgdesc = A JPEG compressor which varies compression within an image based on detection of salient regions of interest
+	pkgver = r69.c5d3cf9
+	pkgrel = 1
+	url = https://github.com/technopagan/adept-jpg-compressor
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bc
+	depends = imagemagick
+	depends = jpegrescan-git
+	depends = mozjpeg
+	depends = mss-saliency-git
+	provides = adept
+	conflicts = adept
+	source = adept::git+https://github.com/technopagan/adept-jpg-compressor.git
+	source = LICENSE.md
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = adept-git
+
