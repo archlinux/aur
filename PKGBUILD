@@ -1,6 +1,6 @@
 # Maintainer: max-k <max-kATpostDOTcom>
 pkgname=sonar-scanner
-pkgver="3.0.3.778"
+pkgver="3.1.0.1141"
 pkgrel=1
 pkgdesc="Default launcher to analyze a project with SonarQube"
 arch=('any')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("https://sonarsource.bintray.com/Distribution/$pkgname-cli/$pkgname-cli-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
-md5sums=('d23419142506d8f9acbeae8d430b0fe0'
+md5sums=('9688dace41ce1ac12d4d3989138dfe0e'
          'e9a1a617184672d46f35293ec13f8955'
          'fc3080bc9dce58014f5c9f3ed476e569')
 
@@ -23,7 +23,6 @@ package() {
 
     cd "$pkgname-$pkgver"
     mkdir -p $pkgdir/opt/$pkgname/{bin,conf,lib}
-    install -Dm755 "bin/sonar-runner" "$pkgdir/opt/$pkgname/bin/"
     install -Dm755 "bin/$pkgname" "$pkgdir/opt/$pkgname/bin/"
     install -Dm644 "lib/$pkgname-cli-$pkgver.jar" "$pkgdir/opt/$pkgname/lib/"
     install -Dm644 "conf/sonar-scanner.properties" "$pkgdir/opt/$pkgname/conf/"
