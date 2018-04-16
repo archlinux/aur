@@ -29,9 +29,8 @@ sha1sums=('5c9cd4e6354fbdcffbbe959a3f520cfe08db3d4d'
 
 package() {
   # package the kernel files
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
-  cp -R "${srcdir}"/boot "${pkgdir}"
-  cp -R "${srcdir}"/lib/modules/${_kernver}*/* "${pkgdir}/usr/lib/modules/${_kernver}"
+  cp -r "${srcdir}"/boot "${pkgdir}"
+  mkdir "${pkgdir}/usr" && cp -r "${srcdir}/lib" "${pkgdir}/usr"
 
   # create symlink for modules directory with short ${_kernver}
   ln -s "${_kernver}$(source "${pkgdir}/boot/config"; echo $CONFIG_LOCALVERSION)+" "${pkgdir}/usr/lib/modules/${_kernver}"
