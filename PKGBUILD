@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.28.2.r374.g12b90e744d
-pkgrel=2
+pkgver=0.28.2.r451.gc647516278
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -12,17 +12,21 @@ depends=(
         'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'openal' 'smbclient' 'vulkan-icd-loader' 'zlib'
+        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
+        'zlib' 'sndio' 'openal' 'vulkan-icd-loader'
         
     # AUR:
-        'ffmpeg-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
-        'vapoursynth-git'
+        'ffmpeg-git' 'mujs' 'rsound' 'shaderc-git' 'crossc' 'vapoursynth-git'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols')
+makedepends=(
+    # official repositories:
+        'git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+        'wayland-protocols'
+    # AUR:
+        'ffnvcodec-headers'
+)
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
