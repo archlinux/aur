@@ -19,7 +19,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
-pkgrel=10
+pkgrel=11
 _codename=Leia
 _rtype=Alpha
 _rver=1
@@ -131,8 +131,8 @@ package_kodi-pre-release() {
     'unzip: Archives support'
     'upower: Display battery level'
   )
-  provides=('xbmc' 'kodi' 'kodi-dev')
-  conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git' 'kodi-dev' 'kodi-devel-dev')
+  provides=('xbmc' 'kodi')
+  conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git' 'kodi-devel-dev')
   replaces=('xbmc')
 
   _components=(
@@ -165,7 +165,6 @@ package_kodi-pre-release() {
 
 package_kodi-eventclients-pre-release() {
   pkgdesc="Kodi Event Clients (pre-release versions)"
-  provides=('kodi-eventclients-dev')
   conflicts=('kodi-eventclients')
   optdepends=('python2: most eventclients are implemented in python2')
 
@@ -193,7 +192,6 @@ package_kodi-eventclients-pre-release() {
 
 package_kodi-tools-texturepacker-pre-release() {
   pkgdesc="Kodi Texturepacker tool (pre-release versions)"
-  provides=('kodi-tools-texturepacker-dev')
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
   _components=(
