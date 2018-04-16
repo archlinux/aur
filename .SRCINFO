@@ -1,6 +1,6 @@
 pkgbase = turtlecoin-git
 	pkgdesc = Turtlecoin simplewallet and miner
-	pkgver = r135.7fcc6ad
+	pkgver = r402.a902436
 	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-git.install

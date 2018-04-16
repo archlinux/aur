@@ -2,14 +2,14 @@
 # Please note:
 #   Export your keys using export_keys command in
 #   trtl-simplewallet before upgrading to version
-#   0.3.2 (r135.7fcc6ad).
+#   0.4.3 (r402.a902436).
 #   
 #   For more information visit:
-#       https://github.com/turtlecoin/turtlecoin/releases/tag/v0.3.2
+#       https://github.com/turtlecoin/turtlecoin/releases/tag/v0.4.3
 #
 
 pkgname=turtlecoin-git
-pkgver=r135.7fcc6ad
+pkgver=r402.a902436
 pkgrel=1
 pkgdesc="Turtlecoin simplewallet and miner"
 arch=('x86_64')
@@ -39,7 +39,6 @@ build() {
 }
 
 package() {
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/connectivity_tool" -T "$pkgdir/usr/bin/trtl-connectivity_tool"
     install -D -m755 "$srcdir/turtlecoin/build/release/src/miner" -T "$pkgdir/usr/bin/trtl-miner"
     install -D -m755 "$srcdir/turtlecoin/build/release/src/simplewallet" -T "$pkgdir/usr/bin/trtl-simplewallet"
     install -D -m755 "$srcdir/turtlecoin/build/release/src/TurtleCoind" -t "$pkgdir/usr/bin/"
