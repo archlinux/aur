@@ -1,5 +1,5 @@
 # Maintainer: Merrick Luo <merrick@luois.me>
-pkgname=vysor
+pkgname=vysor-git
 pkgver=r128.f18c57c
 pkgrel=1
 epoch=
@@ -12,8 +12,8 @@ depends=("nodejs" "gconf")
 makedepends=("git" "npm")
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=("vysor")
+conflicts=("vysor")
 replaces=()
 backup=()
 options=()

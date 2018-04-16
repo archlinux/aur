@@ -1,4 +1,5 @@
 pkg/
 src/
+vysor-git/
 vysor/
 *.pkg.tar.xz
