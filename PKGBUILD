@@ -19,7 +19,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a1
-pkgrel=11
+pkgrel=12
 _codename=Leia
 _rtype=Alpha
 _rver=1
@@ -132,7 +132,7 @@ package_kodi-pre-release() {
     'upower: Display battery level'
   )
   provides=('xbmc' 'kodi')
-  conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git' 'kodi-devel-dev')
+  conflicts=('xbmc' 'kodi' 'kodi-git' 'kodi-devel' 'kodi-devel-dev')
   replaces=('xbmc')
 
   _components=(
@@ -212,8 +212,9 @@ package_kodi-tools-texturepacker-pre-release() {
 
 package_kodi-dev-pre-release() {
   pkgdesc="Kodi dev files (pre-release versions)"
-  provides=('kodi-dev')
   depends=('kodi-pre-release')
+  provides=('kodi-dev')
+  conflicts=('kodi-dev')
 
   _components=(
     'kodi-addon-dev'
