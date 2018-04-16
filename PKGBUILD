@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
 pkgver=0.22.4
-pkgrel=2
+pkgrel=3
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -12,21 +12,20 @@ makedepends=()
 provides=()
 conflicts=()
 replaces=()
-source=("$pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=$pkgver"
-        "$pkgname.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png"
-        "$pkgname.desktop")
+source=("${pkgname}-${pkgver}.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=${pkgver}"
+        "${pkgname}.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png"
+        "${pkgname}.desktop")
 sha256sums=('1f9014954fe6fd613277e2f9dd9623a02165180d4699618974c13b41c0b4b64a'
             'c7211ee624483a272f280b3aa772046ec9226d838f9c3023450888abddf9d71a'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-"*
+  cd "$srcdir/${pkgname}-${pkgver}-"*
   # "Patching" for Pillow>=5.0 support
   sed -i 's/Pillow>=3\.2\.0,<5\.0/Pillow>=3\.2\.0/g' requirements.txt
 
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
   
-  cd "$startdir"
-  install -Dm644 $pkgname.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 "$srcdir"/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
+  install -Dm644 "$srcdir"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
