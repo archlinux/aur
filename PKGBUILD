@@ -4,7 +4,7 @@
 pkgname=munt-ex-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
-pkgver=1977.aa2a2f2
+pkgver=r1977.aa2a2f2
 pkgrel=1
 arch=(i686 x86_64)
 url="http://munt.sourceforge.net"
@@ -19,7 +19,7 @@ md5sums=(SKIP)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
