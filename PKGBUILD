@@ -2,7 +2,7 @@
 
 pkgname=macos11-icon-theme
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='macOS11 iCons Collection'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
@@ -19,9 +19,9 @@ md5sums=('83f555a75ef470f96c3291b0bb0bb68c')
 prepare() {
     find -name '* *' -delete
     cp macOS11/status/symbolic/*.svg macOS11/devices/symbolic
+    mv macOS11/apps/128/accessories_calculator.png macOS11/apps/128/accessories-calculator.png
 }
 
 package() {
-    install -dm755 $pkgdir/usr/share/icons
-    cp -r macOS11 $pkgdir/usr/share/icons
+    find */ -type f -exec install -Dm644 '{}' $pkgdir/usr/share/icons/'{}' \;
 }
