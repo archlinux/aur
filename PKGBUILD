@@ -12,7 +12,8 @@ license=('GPL')
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
-	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap')
+	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap'
+	'qt5-tools')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'transfig' 'epstool' 'texlive-core' 'icoutils')
 optdepends=('texinfo: for help-support in octave'

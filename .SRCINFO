@@ -33,6 +33,7 @@ pkgbase = octave-hg
 	depends = java-environment
 	depends = qscintilla-qt5
 	depends = termcap
+	depends = qt5-tools
 	optdepends = texinfo: for help-support in octave
 	optdepends = gnuplot: alternative plotting
 	provides = octave=4.2.0
