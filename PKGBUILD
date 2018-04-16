@@ -2,7 +2,7 @@
 
 pkgname=qtikz-git
 pkgver=r316.972685a
-pkgrel=1
+pkgrel=2
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
 url="https://github.com/fhackenberger/ktikz"
@@ -11,30 +11,23 @@ depends=('poppler-qt5')
 makedepends=('git' 'texlive-core')
 provides=('qtikz')
 conflicts=('qtikz')
-source=("qtikz::git+https://github.com/fhackenberger/ktikz" config.diff)
-md5sums=('SKIP'
-         'b502697a2a75a7bcdda2979e0541d2f4')
-_gitname=qtikz
+source=("qtikz::git+https://github.com/fhackenberger/ktikz")
+md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd "$_gitname"/qmake
-  patch -p2 < "$srcdir"/config.diff
-}
-
 build() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   qmake qtikz.pro
   make
 }
 
 package() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   make INSTALL_ROOT="$pkgdir" install
 }
 
