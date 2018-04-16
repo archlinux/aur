@@ -1,6 +1,6 @@
 pkgbase = snapd-git
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.32.3.r621.g3da8170ed
+	pkgver = 2.32.5.r657.gf5f7ee6f8
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
