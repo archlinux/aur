@@ -1,7 +1,7 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
 pkgname=cernbox
 pkgver=2.3.3_1119.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
 arch=('x86_64')
 url="http://cernbox.web.cern.ch/"
