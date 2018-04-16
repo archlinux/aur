@@ -14,12 +14,12 @@ depends=('kdebase-runtime'
 makedepends=('cmake'
              'automoc4'
              )
-source=("http://kpar2kde4.googlecode.com/files/kpar2-${pkgver}.tar.gz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kpar2kde4/kpar2-${pkgver}.tar.gz"
         'kpar2.desktop.diff'
         )
-sha256sums=('e4dfbb55459452a17b0263bf3742acdb0e39d613'
-          '0f3584e7fdc661f38ac36c6eeb4f249be4712c4a'
-          )
+sha256sums=('91c4d12600e9d9346e37ac2bec98cf6331e9491d510aeda1e12b0c15e3f1324e'
+            '48d28e11b739b111f7a3731be8e4973774f561e346104cb28f595eb530dfd31d'
+            )
 
 prepare() {
   mkdir -p build
