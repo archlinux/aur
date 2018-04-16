@@ -1,6 +1,6 @@
 pkgbase = kurento-media-server
 	pkgdesc = Kurento Media Server
-	pkgver = 6.6.2
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = http://www.kurento.org/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = kurento-media-server
 	makedepends = gst-libav
 	makedepends = libsigc++
 	makedepends = glibmm
-	makedepends = kms-core
-	makedepends = kms-elements
-	makedepends = kms-filters
+	makedepends = kms-core>=6.7.0
+	makedepends = kms-elements>=6.7.0
+	makedepends = kms-filters>=6.7.0
 	depends = boost-libs
 	depends = gstreamer
 	depends = gst-plugins-base
@@ -26,14 +26,14 @@ pkgbase = kurento-media-server
 	depends = gst-libav
 	depends = libsigc++
 	depends = glibmm
-	depends = kms-core
-	depends = kms-elements
-	depends = kms-filters
+	depends = kms-core>=6.7.0
+	depends = kms-elements>=6.7.0
+	depends = kms-filters>=6.7.0
 	provides = kurento-media-server
 	conflicts = kurento-media-server
-	source = https://github.com/Kurento/kurento-media-server/archive/6.6.2.tar.gz
+	source = https://github.com/Kurento/kurento-media-server/archive/6.7.1.tar.gz
 	source = kurento.conf.json.patch
-	sha256sums = cd1a6b3ce3fa869b58c4df4f307bf95e1dc7019c358097e9a7006e0e212c84b3
+	sha256sums = 3c8880d9071cc650e7c0a8404fb8a90282bd95eff3fa83fe95c8ff943b2cbef3
 	sha256sums = db711ae29c104d2b28744cc695c2f8bc4c185668a681c2972a9a07701796e7f2
 
 pkgname = kurento-media-server
