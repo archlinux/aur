@@ -1,0 +1,182 @@
+--- tmp/pysofa-0.1.1/pysofa/pysofa_ctypes.py	2011-01-30 10:53:37.000000000 +0100
++++ pysofa_ctypes_new.py	2018-04-16 17:17:58.439424197 +0200
+@@ -156,7 +156,7 @@
+     .. seealso:: |MANUAL| page 21
+     """
+ 
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     rad = c_double()
+     s = _sofa.iauAf2a(str(s), ideg, iamin, asec, byref(rad))
+@@ -1011,7 +1011,7 @@
+     .. seealso:: |MANUAL| page 64
+     """
+ 
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     d1 = c_double()
+     d2 = c_double()
+@@ -4236,7 +4236,7 @@
+ 
+     .. seealso:: |MANUAL| page 224
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tt1 = c_double()
+     tt2 = c_double()
+@@ -4269,7 +4269,7 @@
+ 
+     .. seealso:: |MANUAL| page 225
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     ut11 = c_double()
+     ut12 = c_double()
+@@ -4309,7 +4309,7 @@
+ 
+     .. seealso:: |MANUAL| page 226
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     utc1 = c_double()
+     utc2 = c_double()
+@@ -4342,7 +4342,7 @@
+ 
+     .. seealso:: |MANUAL| page 227
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tdb1 = c_double()
+     tdb2 = c_double()
+@@ -4371,7 +4371,7 @@
+ 
+     .. seealso:: |MANUAL| page 228
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tt1 = c_double()
+     tt2 = c_double()
+@@ -4400,7 +4400,7 @@
+ 
+     .. seealso:: |MANUAL| page 229
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tcb1 = c_double()
+     tcb2 = c_double()
+@@ -4433,7 +4433,7 @@
+ 
+     .. seealso:: |MANUAL| page 230
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tt1 = c_double()
+     tt2 = c_double()
+@@ -4472,7 +4472,7 @@
+     .. seealso:: |MANUAL| page 231
+     """
+ 
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     rad = c_double()
+     s = _sofa.iauTf2a(str(s), ihour, imin, sec, byref(rad))
+@@ -4510,7 +4510,7 @@
+     .. seealso:: |MANUAL| page 232
+     """
+ 
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     days = c_double()
+     s = _sofa.iauTf2d(str(s), ihour, imin, sec, byref(days))
+@@ -4600,7 +4600,7 @@
+ 
+     .. seealso:: |MANUAL| page 236
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tai1 = c_double()
+     tai2 = c_double()
+@@ -4629,7 +4629,7 @@
+ 
+     .. seealso:: |MANUAL| page 237
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tcg1 = c_double()
+     tcg2 = c_double()
+@@ -4662,7 +4662,7 @@
+ 
+     .. seealso:: |MANUAL| page 238
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tdb1 = c_double()
+     tdb2 = c_double()
+@@ -4695,7 +4695,7 @@
+ 
+     .. seealso:: |MANUAL| page 239
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     ut11 = c_double()
+     ut12 = c_double()
+@@ -4728,7 +4728,7 @@
+ 
+     .. seealso:: |MANUAL| page 240
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tai1 = c_double()
+     tai2 = c_double()
+@@ -4761,7 +4761,7 @@
+ 
+     .. seealso:: |MANUAL| page 241
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tt1 = c_double()
+     tt2 = c_double()
+@@ -4805,7 +4805,7 @@
+ 
+     .. seealso:: |MANUAL| page 242
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     utc1 = c_double()
+     utc2 = c_double()
+@@ -4849,7 +4849,7 @@
+ 
+     .. seealso:: |MANUAL| page 243
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     tai1 = c_double()
+     tai2 = c_double()
+@@ -4897,7 +4897,7 @@
+ 
+     .. seealso:: |MANUAL| page 244
+     """
+-    if __sofa_version < (2010, 12, 01):
++    if __sofa_version < (2010, 12, 1):
+         raise NotImplementedError
+     ut11 = c_double()
+     ut12 = c_double()
