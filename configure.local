@@ -10,6 +10,10 @@ MANDIR=$PREFIX/share/man
 MANM_MAN=mandoc_man
 MANM_MDOC=mandoc_mdoc
 
+# These conflict with binaries and manpages from groff.
+BINM_SOELIM=msoelim
+MANM_ROFF=mandoc_roff
+
 # catman(8) is disabled by default.
 BUILD_CATMAN=1
 
