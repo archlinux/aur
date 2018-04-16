@@ -1,14 +1,13 @@
 pkgbase = rw
 	pkgdesc = Blockwise input/output
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sortix.org/rw
 	arch = x86_64
 	license = custom:ISC
-	makedepends = git
 	depends = glibc
-	source = git+https://gitlab.com/sortix/rw-portable.git#commit=755e3df0fab3c19d9c69c52dcb04687df8f587e2
-	md5sums = SKIP
+	source = https://sortix.org/rw/release/rw-portable-1.0.tar.gz
+	sha256sums = 50009730e36991dfe579716f91f4f616f5ba05ffb7bf69c03d41bf305ed93b6d
 
 pkgname = rw
 
