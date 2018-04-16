@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-shutdown
 	pkgdesc = The GNOME Settings daemon with shutdown button action
-	pkgver = 3.28.0+4+gef32315a
+	pkgver = 3.28.1
 	pkgrel = 1
 	url = https://git.gnome.org/browse/gnome-settings-daemon
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = gnome-settings-daemon-shutdown
 	depends = libnm
 	provides = gnome-settings-daemon
 	conflicts = gnome-settings-daemon
-	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=ef32315a4142a60fc1defb940ba9306a6fb3a085
+	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=e3c71b7389d1150615f5f45818248af96518af42
 	source = git+https://git.gnome.org/browse/libgnome-volume-control
 	source = shutdown.patch
 	sha256sums = SKIP
