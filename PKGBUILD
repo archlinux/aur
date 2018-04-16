@@ -22,8 +22,9 @@ mkdir -p "${pkgdir}"/usr/{bin,share/applications}
 mkdir -p  "${pkgdir}"/usr/share/pixmaps
 mkdir -p "${pkgdir}" ~/.local/share/
 install -Dm644 ../${pkgname}.desktop ${pkgdir}/usr/share/applications
-install -Dm644 ${srcdir}/${pkgname}.AppImage ~/.local/share/${pkgdir}/${pkgname}
+install -Dm644 ${srcdir}/${pkgname}.AppImage ~/.local/share/${pkgname}
 ln -sf ~/.local/share/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+chmod +x ~/.local/share/${pkgname}
 install -Dm644 ../${pkgname}.png ${pkgdir}/usr/share/pixmaps
  
 }
