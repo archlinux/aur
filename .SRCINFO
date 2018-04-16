@@ -6,8 +6,7 @@ pkgbase = quake3-cpma-maps
 	arch = any
 	license = custom
 	depends = quake3
-	depends = quake3-cpma
-	source = http://playmorepromode.org/files/cpma-mappack-full.zip
+	source = https://cdn.playmorepromode.com/files/cpma-mappack-full.zip
 	sha256sums = 5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226
 
 pkgname = quake3-cpma-maps

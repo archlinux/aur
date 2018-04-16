@@ -9,8 +9,8 @@ pkgdesc="Challenge ProMode Arena (CPMA) Official Mappack (Can be used in any Qua
 url="http://playmorepromode.org"
 license=('custom')
 arch=('any')
-depends=('quake3' 'quake3-cpma')
-source=('http://playmorepromode.org/files/cpma-mappack-full.zip')
+depends=('quake3')
+source=('https://cdn.playmorepromode.com/files/cpma-mappack-full.zip')
 sha256sums=('5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226')
 
 package() {
