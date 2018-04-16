@@ -25,7 +25,5 @@ build() {
 
 package() {
   DESTDIR=$pkgdir ninja -C build install
-  mv ${pkgdir}/etc/systemd ${pkgdir}/usr/lib/systemd
-  rm -rf ${pkgdir}/etc
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${_pkgname}/LICENSE.txt
 }
