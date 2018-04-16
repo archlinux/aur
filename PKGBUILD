@@ -2,7 +2,7 @@
 
 pkgname=simplicity-sddm-theme-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple SDDM Theme"
 arch=('any')
 url="https://github.com/gabretana/simplicity-sddm-theme"
@@ -13,9 +13,9 @@ _repo='simplicity-sddm-theme'
 source=("git+https://github.com/gabretana/simplicity-sddm-theme.git")
 md5sums=('SKIP')
 
-#pkgver() {
-  #echo "$(git -C "${srcdir}/${_repo_name}" rev-list --count HEAD).0.0"
-#}
+pkgver() {
+  echo "$(git -C "${srcdir}/${_repo}" rev-list --count HEAD)"
+}
 
 package() {
   install -d "${pkgdir}"/usr/share/sddm/themes/"${_theme}"
