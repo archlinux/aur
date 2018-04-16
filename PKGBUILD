@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 pkgver='2.6.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
@@ -23,7 +23,7 @@ prepare() {
   cd "xmrig-${pkgver}-beta2"
   mkdir build
   cd "src/"
-  sed -i 's/constexpr const int kDonateLevel = 5;/constexpr const int kDonateLevel = 0;/g' donate.h  
+  sed -i 's/constexpr const int kDefaultDonateLevel = 5;/constexpr const int kDefaultDonateLevel = 0;/g' donate.h  
 }
 
 build() {
