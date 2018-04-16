@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 
 pkgname=nginx-mainline-mod-http-xslt-filter
-pkgver=1.13.10
+pkgver=1.13.12
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -13,7 +13,7 @@ url="https://nginx.org"
 license=('custom')
 
 source=(http://nginx.org/download/nginx-$pkgver.tar.gz)
-sha256sums=('336182104d90be3c40c874f7f06f87dbb357da1dc74ea573ad081a0f29a94885')
+sha256sums=('fb92f5602cdb8d3ab1ad47dbeca151b185d62eedb67d347bbe9d79c1438c85de')
 
 build() {
 	cd "$srcdir"/nginx-$pkgver
