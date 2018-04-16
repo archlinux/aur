@@ -8,7 +8,7 @@
 
 pkgbase=apparmor
 pkgname=("${pkgbase}" 'apparmor-parser' 'apparmor-libapparmor' 'apparmor-utils' 'apparmor-profiles' 'apparmor-pam' 'apparmor-vim')
-pkgver=2.12.0
+pkgver=2.13.0
 _majorver="$(expr "${pkgver}" : '\([0-9]*\.[0-9]*\)\.')"
 pkgrel=2
 pkgdesc='Linux application security framework - mandatory access control for programs'
@@ -16,15 +16,9 @@ arch=('i686' 'x86_64')
 url='https://launchpad.net/apparmor'
 license=('GPL')
 makedepends=('flex' 'swig' 'perl' 'python' 'perl-locale-gettext' 'perl-rpc-xml' 'audit')
-source=("https://launchpad.net/${pkgbase}/${_majorver}/${pkgver}/+download/${pkgbase}-${_majorver}.tar.gz"{,.asc}
-	"apparmor.systemd"
-	"aa-teardown"
-	"apparmor.service")
-sha512sums=('d85fd47c66333fe5658ee5e977b32142697f6e36c575550712ee2ace2ad0fbf2aa59c8fd3b82ad8821c0190adf8cc150cf623ea09a84d5b32bde050a03dd6e9a'
-            'SKIP'
-            '5fc5135ffae07c4cfa125c819b67ea812626e13201fde70d15c0d7b09bceadbd4cea9383b8af07c871173fb4d273edb4bbe926871d674565a19958cc08ac9d3a'
-            '47666085482c899d64f73109d50eacd704db33b1726f985edfed0319326e147df177d9cc4cd7d3f45bb7bed348f8fedd03374fc53dde2a42a12c899b88d5ce6b'
-            'e7bfb69d6f98842caba1da9790b14b9368b1e5c65fc726e8226e776c8d42f06c0c051329e048a994d06908a365ad3c078745b7d09376d29639e9175b2c2b4c0d')
+source=("https://launchpad.net/${pkgbase}/${_majorver}/${pkgver}/+download/${pkgbase}-${_majorver}.tar.gz"{,.asc})
+sha512sums=('f98914713153d4c823a3ea7e96291cc4528bf7c8d3a139286ae0ecd806613e9c34b0ad81f2b258df2193cf6f3157d3252ef72d32d339427948a3fd8ba5651827'
+            'SKIP')
 # 3D3664BB: AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
 validpgpkeys=('3ECDCBA5FB34D254961CC53F6689E64E3D3664BB')
 
@@ -124,9 +118,9 @@ package_apparmor-utils() {
 
 	cd "${srcdir}/${pkgbase}-${_majorver}"
 	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" install
-	install -D -m755 "${srcdir}/apparmor.systemd" "${pkgdir}/usr/lib/apparmor/apparmor.systemd"
-	install -D -m755 "${srcdir}/aa-teardown" "${pkgdir}/usr/bin/aa-teardown"
-	install -D -m644 "${srcdir}/apparmor.service" "${pkgdir}/usr/lib/systemd/system/apparmor.service"
+	install -D -m755 "parser/apparmor.systemd" "${pkgdir}/usr/lib/apparmor/apparmor.systemd"
+	install -D -m755 "parser/aa-teardown" "${pkgdir}/usr/bin/aa-teardown"
+	install -D -m644 "parser/apparmor.service" "${pkgdir}/usr/lib/systemd/system/apparmor.service"
 }
 
 package_apparmor-profiles() {
