@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode')
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -14,14 +14,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/FeralInteractive/gamemode/a
 sha256sums=('bc458e294221e06b63edb286dd3dc1b541014941027198600959b27b11dd6a9d')
 
 build() {
-  arch-meson gamemode-$pkgver build -Dwith-systemd-user-unit-dir=/etc/systemd/user
+  arch-meson gamemode-$pkgver build -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
   ninja -C build
 }
 
 package() {
   DESTDIR=$pkgdir ninja -C build install
-  mv ${pkgdir}/etc/systemd ${pkgdir}/usr/lib/systemd
-  rm -rf ${pkgdir}/etc
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname}-${pkgver}/LICENSE.txt
 }
 
