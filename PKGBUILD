@@ -3,7 +3,7 @@
 # Contributor: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
@@ -11,17 +11,16 @@ url="http://$pkgname.io"
 license=('APACHE')
 depends=('glibc')
 makedepends=('go' 'git')
-install="$pkgname.install"
 backup=("etc/$pkgname/$pkgname.yml")
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
-        "${pkgname}.service")
-sha256sums=('e1e8eee7e3d0b1844b00f9bc06a63012284b9a82a094476be82551ef45e6d818'
-            'c38a5ea7b0fbab32d391102a915b73bad98eabf7e18dab3c4c3945f46951c203')
+        "${pkgname}.service" "${pkgname}.sysusers")
+sha256sums=('4f75427449bb72d1886f6cd46f752fe6300242da48b8bb870dbbd7ffc879ed92'
+            'c38a5ea7b0fbab32d391102a915b73bad98eabf7e18dab3c4c3945f46951c203'
+            '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver" || exit 1
     export GOPATH="$srcdir/gopath"
-    export GOBIN="$GOPATH/bin"
     mkdir -p "$GOPATH/src/github.com/$pkgname"
     rm -f "$GOPATH/src/github.com/$pkgname/$pkgname"
     ln -sr "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/$pkgname/$pkgname"
@@ -35,12 +34,14 @@ build() {
 
 }
 check() {
-    echo "Tests are skipped because they fail even with more than 4GB free space in /tmp."
-    echo "See https://github.com/prometheus/prometheus/issues/3299 for more informations."
-    export GOPATH="$srcdir/gopath"
-    export GOBIN="$GOPATH/bin"
-    cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
-    # make tests
+    if grep "^$(findmnt -n -o SOURCE --target /tmp)\\s.*noexec" /proc/mounts >/dev/null 2>&1; then
+        echo "Tests are skipped because /tmp is mounted with noexec option."
+    else
+        export GOPATH="$srcdir/gopath"
+        export GOBIN="$GOPATH/bin"
+        cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
+        make test
+    fi
 }
 
 package() {
