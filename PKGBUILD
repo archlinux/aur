@@ -4,11 +4,10 @@
 _gemname=jekyll-sitemap
 pkgname=ruby-jekyll-sitemap
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically generate a sitemap.xml for your Jekyll site."
 arch=('any')
 depends=('ruby' 'jekyll')
-makedepends=('ruby-bundler' 'ruby-rspec' 'ruby-rubocop' 'ruby-jekyll-last-modified-at')
 url="https://rubygems.org/gems/jekyll-sitemap"
 noextract=("jekyll-sitemap-${pkgver}.gem")
 license=('MIT')
