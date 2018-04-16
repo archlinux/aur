@@ -5,7 +5,7 @@ pkgname=linux-aarch64-raspberrypi-bin
 pkgver=4.14.33.20180411
 pkgdesc="Automated weekly build of the default branch 64-bit bcmrpi3_defconfig Linux kernel for the Raspberry Pi 3 model B"
 _kernver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/sakaki-/bcmrpi3-kernel"
 license=('GPL2')
@@ -32,6 +32,9 @@ package() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
   cp -R "${srcdir}"/boot "${pkgdir}"
   cp -R "${srcdir}"/lib/modules/${_kernver}*/* "${pkgdir}/usr/lib/modules/${_kernver}"
+
+  # create symlink for modules directory with short ${_kernver}
+  ln -s "${_kernver}$(source "${pkgdir}/boot/config"; echo $CONFIG_LOCALVERSION)+" "${pkgdir}/usr/lib/modules/${_kernver}"
 
   # set correct depmod command for install
   sed \
