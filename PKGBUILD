@@ -2,7 +2,7 @@
 pkgname=('gamemode-git')
 _pkgname=('gamemode')
 pkgver=53eece3
-pkgrel=3
+pkgrel=4
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -25,5 +25,7 @@ build() {
 
 package() {
   DESTDIR=$pkgdir ninja -C build install
+  mv ${pkgdir}/etc/systemd ${pkgdir}/usr/lib/systemd
+  rm -rf ${pkgdir}/etc
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${_pkgname}/LICENSE.txt
 }
