@@ -5,12 +5,14 @@ pkgbase = pysofa
 	url = https://code.google.com/archive/p/pysofa/
 	arch = any
 	license = SOFA License
-	depends = sofa
+	depends = sofa-shared
 	depends = python-numpy
 	source = https://pypi.python.org/packages/f5/fd/557bc955527164df6d5699ba2369415a26767a90e848ce362600435d4553/pysofa-0.1.1.tar.gz
 	source = octonotationpatch.diff
+	source = init.patch
 	md5sums = 962be6439044b4ff666f735b2207aaa8
 	md5sums = 5e6cef758d9861cba2e72eb2faff3ee4
+	md5sums = 60a155956101026a32c79eb22f03602f
 
 pkgname = pysofa
 
