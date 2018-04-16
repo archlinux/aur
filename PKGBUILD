@@ -1,43 +1,40 @@
-# Maintainer: Dylan <dylan@flickmag.net>
+# Maintainer: Dylan <dylan@psilly.com>
 
 pkgname='flickmagnet'
-_gitname='flickmagnet'
-pkgver='0.0.6'
+pkgver='0.0.7'
 pkgrel=1
-pkgdesc='HTTP server similar to Netflix and PopcornTime which streams public domain videos from torrent files.'
+pkgdesc='HTTP server for streaming public domain videos from torrent files to your web browser.'
 arch=('any')
 url='https://github.com/acerix/flickmagnet'
 license=('MIT')
 
 depends=(
-    'python-xdg'
-    'python-daemonocle'
-    'python-libtorrent-rasterbar'
-    'python-pytoml'
-    'python-cherrypy'
-    'python-mako'
-    'python-requests'
-    'python-beautifulsoup4'
+  'python-xdg'
+  'python-daemonocle'
+  'python-pytoml'
+  'python-cherrypy'
+  'python-mako'
 )
 
 install=flickmagnet.install
 source=(
-    "$url/archive/$pkgver.tar.gz"
-    flickmagnet.install
+  "$url/archive/$pkgver.tar.gz"
+  flickmagnet.install
 )
 sha256sums=(
-    '54f096471a2194a03acfd5f15ebe7e2ba87f9fa3ebbb1c93aa13ed7361edbd0d'
-    '767f3921d18eae1a414cfcc23c74784ec5d4888feea5cf3ff7fc80e92d435b58'
+  'f6bba08ed8f6067771c2392813091c6fb4b354f953fd978589f39dede94c91cf'
+  '0a8d9d8e940c280c8038f4fdb35a036fd89e658ff26d3e1ce68d8787c1ce2970'
 )
 build() {
-    cd "$_gitname-$pkgver"
-    python setup.py build
+  cd "$pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-    cd "$_gitname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=2
-    install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-    install -dm700 "$pkgdir/srv/$pkgname"
-    install -Dm644 "$pkgname/examples/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=2
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -dm700 "$pkgdir/srv/$pkgname"
+  install -Dm644 "$pkgname/examples/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
+

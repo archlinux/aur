@@ -12,7 +12,7 @@ post_install() {
 >>> Start the daemon with 'systemctl start flickmagnet'
     It starts as the "flickmagnet" user, with files stored in /srv/flickmagnet
 
->>> Give the daemon 10 minutes to find some content, then browse to:
+>>> Then open in your browser:
 
     http://localhost:42000/
 
@@ -24,9 +24,9 @@ pre_remove() {
 }
 
 post_remove() {
-    getent passwd deluge &>/dev/null && {
+    getent passwd flickmagnet &>/dev/null && {
         echo -n ">>> Deleting user... "
-        userdel flickmagnet
+        userdel flickmagnet -fr
         echo "done"
     }
 }
