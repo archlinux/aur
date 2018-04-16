@@ -3,7 +3,7 @@
 # Main package information
 pkgname=scylla-jmx
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scylla JMX server implements the Apache Cassandra JMX interface for compatibility with tooling such as nodetool."
 arch=('any')
 url="http://www.scylladb.com/"
@@ -26,6 +26,7 @@ build() {
     mvn -B install
     mkdir build
     cp dist/common/systemd/scylla-jmx.service.in build/scylla-jmx.service
+    sed -i -e "s#@@SYSCONFDIR@@#/etc/sysconfig#g" build/scylla-jmx.service
 }
 
 # Directory prefixes

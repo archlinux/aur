@@ -1,7 +1,7 @@
 pkgbase = scylla-jmx
 	pkgdesc = Scylla JMX server implements the Apache Cassandra JMX interface for compatibility with tooling such as nodetool.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scylladb.com/
 	install = .install
 	arch = any
