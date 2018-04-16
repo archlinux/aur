@@ -10,7 +10,8 @@ noextract=('tradedash-linux.AppImage')
 options=('!strip')
 
 _source_x86_64=('https://s3.eu-west-2.amazonaws.com/tradedash/Tradedash-linux.AppImage' )
-_md5sums_x86_64=('cc6969838df052e81865ef28b3b526ac')
+_sha256sums_x86_64=('ce578a6d0ef7f2ba279d4a3ba5b191203f159d23419db267a79e4cbf7cb96a7a')
+ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886') 
 
 prepare() {
 wget https://s3.eu-west-2.amazonaws.com/tradedash/Tradedash-linux.AppImage -O ${pkgname}.AppImage
@@ -19,8 +20,10 @@ chmod +x ${pkgname}.AppImage
 package() {
 mkdir -p "${pkgdir}"/usr/{bin,share/applications}
 mkdir -p  "${pkgdir}"/usr/share/pixmaps
+mkdir -p "${pkgdir}" ~/.local/share/
 install -Dm644 ../${pkgname}.desktop ${pkgdir}/usr/share/applications
-cp ${srcdir}/${pkgname}.AppImage ${pkgdir}/usr/bin/${pkgname}
+install -Dm644 ${srcdir}/${pkgname}.AppImage ~/.local/share/${pkgdir}/${pkgname}
+ln -sf ~/.local/share/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 install -Dm644 ../${pkgname}.png ${pkgdir}/usr/share/pixmaps
  
 }
