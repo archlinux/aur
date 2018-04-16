@@ -7,26 +7,16 @@
 
 pkgname=lib32-pam
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable Authentication Modules'
 arch=('x86_64')
 url='http://linux-pam.org'
 license=('GPL2')
-depends=('lib32-cracklib' 'lib32-libtirpc' 'pam')
+depends=('lib32-cracklib' 'lib32-libnsl' 'lib32-libtirpc' 'pam')
 makedepends=('gcc-multilib' 'lib32-flex')
-source=("http://linux-pam.org/library/Linux-PAM-${pkgver}.tar.bz2"
-        'https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2'
-        'pam_unix2-glibc216.patch')
-sha256sums=('241aed1ef522f66ed672719ecf2205ec513fd0075ed80cda8e086a5b1a01d1bb'
-            '3315747699fece4e1cc5771885d243b3e017c4c4ca1326e86228d590a840e955'
-            '6644c5cff46878c65bdc77977becbeda392675702264bfcc7c610a45a9982574')
+source=("http://linux-pam.org/library/Linux-PAM-${pkgver}.tar.bz2")
+sha256sums=('241aed1ef522f66ed672719ecf2205ec513fd0075ed80cda8e086a5b1a01d1bb')
 options=('!emptydirs')
-
-prepare () {
-  cd pam_unix2-2.9.1
-
-  patch -Np1 -i ../pam_unix2-glibc216.patch
-}
 
 build() {
   cd Linux-PAM-${pkgver}
@@ -41,16 +31,6 @@ build() {
     --sbindir='/usr/bin' \
     --disable-db
   make
-
-  cd ../pam_unix2-2.9.1
-
-  export CFLAGS="$CFLAGS -I"${srcdir}"/Linux-PAM-${pkgver}/libpam/include/"
-  export LDFLAGS="$LDFLAGS -L"${srcdir}"/Linux-PAM-${pkgver}/libpam/.libs/"
-
-  ./configure --prefix='/usr' \
-              --libdir='/usr/lib32' \
-              --sbindir='/usr/bin'
-  make
 }
 
 package() {
@@ -58,17 +38,6 @@ package() {
 
   make DESTDIR="${pkgdir}" SCONFIGDIR='/etc/security' install
   rm -rf "${pkgdir}"/{etc,usr/{include,share,bin}}
-
-  cd ../pam_unix2-2.9.1
-
-  install -m 644 src/pam_unix2.so "${pkgdir}"/usr/lib32/security/
-
-  cd "${pkgdir}"/usr/lib32/security
-
-  ln -s pam_unix.so pam_unix_acct.so
-  ln -s pam_unix.so pam_unix_auth.so
-  ln -s pam_unix.so pam_unix_passwd.so
-  ln -s pam_unix.so pam_unix_session.so
 }
 
 # vim: ts=2 sw=2 et:
