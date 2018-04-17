@@ -7,7 +7,6 @@ pkgbase = vim-anywhere-git
 	license = MIT
 	makedepends = git
 	depends = xclip
-	depends = xdotool
 	provides = vim-anywhere
 	source = git+https://github.com/cjbassi/vim-anywhere
 	md5sums = SKIP
