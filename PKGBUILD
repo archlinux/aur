@@ -3,7 +3,7 @@
 
 pkgname="cups-nosystemd"
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -36,6 +36,8 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-no-export-ssllibs.patch
         cups-no-gzip-man.patch
         cups-1.6.2-statedir.patch
+        # bugfixes
+        auth-workaround-for-certain-web-browsers.patch
         )
 sha256sums=('3c4b637b737077565ccdfbd5f61785d03f49461ae736fcc2c0ffaf41d2c6ea6a'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
@@ -43,7 +45,8 @@ sha256sums=('3c4b637b737077565ccdfbd5f61785d03f49461ae736fcc2c0ffaf41d2c6ea6a'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
             'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
-            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af')
+            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af'
+            'e5ad0e967c2ae9a9780211acb41980e4aa203df1dacff49d14d75a6ab6c8b8ed')
 
 prepare() {
   cd cups-${pkgver}
@@ -57,6 +60,9 @@ prepare() {
 
   # move /var/run -> /run for pid file
   patch -Np1 -i "$srcdir"/cups-1.6.2-statedir.patch
+
+  # bugfixes
+  patch -Np1 -i "$srcdir"/auth-workaround-for-certain-web-browsers.patch
 
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
