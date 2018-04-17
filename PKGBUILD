@@ -2,8 +2,8 @@
 # Maintainer: dpayne <darby.payne@gmail.com>
 
 pkgname="cli-visualizer"
-pkgver=1.6
-pkgrel=6
+pkgver=1.7
+pkgrel=7
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer/"
@@ -12,8 +12,8 @@ depends=('ncurses' 'fftw')
 makedepends=('git' 'fftw')
 conflicts=('vis')
 install=${pkgname}.install
-source=('https://github.com/dpayne/cli-visualizer/archive/1.6.tar.gz')
-sha256sums=('111a1fc81be155529cf0232053ad6a3a207c949ff987510c9b283be10eaaf31f')
+source=('https://github.com/dpayne/cli-visualizer/archive/1.7.tar.gz')
+sha256sums=('0445fbfad9707668a70ff146f3f24308f28fa0ae67a7010bfdea0dacba75b75b')
 
 build() {
     cd $pkgname-$pkgver
