@@ -2,13 +2,14 @@
 # Contributor: Stefano Capitani <stefano@manjaro.org>
 
 pkgname=papirus-maia-icon-theme-git
-pkgver=20180416.cad7b4e
+pkgver=20180417.6d88bb2
 pkgrel=1
 pkgdesc="Manjaro variation of Papirus icon theme (git version)"
 arch=('any')
 url="https://github.com/Ste74/papirus-maia-icon-theme"
 license=("LGPL3")
-depends=('gtk-update-icon-cache' 'papirus-icon-theme-git')
+depends=('gtk-update-icon-cache' 'papirus-icon-theme')
+makepepends=('cmake' 'git')
 conflicts=("${pkgname/-git/}")
 options=('!strip')
 source=("git+${url}.git")
@@ -22,13 +23,14 @@ pkgver() {
     git rev-parse --short master
     ) | tr -d '\n'
 }
-prepare() {
-	cd ${pkgname/-git/}
-	rm LICENSE README.md recolor.sh
+
+build() {
+    mkdir -p ${srcdir}/build
+    cd ${srcdir}/build
+    cmake ../${pkgname/-git/}
+    make
 }
 
 package() {
-	cd ${pkgname/-git/}
-	mkdir -p ${pkgdir}/usr/share/icons
-	cp -R * ${pkgdir}/usr/share/icons/
+    make -C build DESTDIR="${pkgdir}" install
 }
