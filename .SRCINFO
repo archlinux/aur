@@ -1,7 +1,7 @@
 pkgbase = pykaraoke-gst-git
-	pkgdesc = A free karaoke player for Linux, FreeBSD, Windows and GP2X. GStreamer branch.
-	pkgver = 20140729
-	pkgrel = 3
+	pkgdesc = A free karaoke player for Linux, FreeBSD, Windows. GStreamer branch.
+	pkgver = 20180417
+	pkgrel = 1
 	url = http://www.kibosh.org/pykaraoke/index.php
 	install = pykaraoke-gst-git.install
 	arch = i686
@@ -10,16 +10,14 @@ pkgbase = pykaraoke-gst-git
 	makedepends = git
 	depends = python2-pygame
 	depends = python2-numpy
-	depends = wxpython
+	depends = python2-wxpython3
 	depends = desktop-file-utils
-	depends = gstreamer0.10-base-plugins
-	depends = gstreamer0.10-good
-	depends = gstreamer0.10-bad
-	depends = gstreamer0.10-ugly
-	depends = gstreamer0.10-python
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
 	optdepends = timidity++: Midi Support
 	conflicts = pykaraoke
-	source = git+https://github.com/kelvinlawson/pykaraoke.git#branch=gstreamer
+	source = git+https://github.com/AThomsen/pykaraoke.git#branch=gstreamer-1.0
 	md5sums = SKIP
 
 pkgname = pykaraoke-gst-git
