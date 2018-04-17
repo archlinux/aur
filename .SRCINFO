@@ -1,7 +1,7 @@
 pkgbase = ttf-sega
 pkgdesc = Font designed by Sega Games Co., Ltd. for their logo and products
 pkgver = 1.0
-pkgrel = 2
+pkgrel = 1
 install = ttf-sega.install
 arch = any
 license = custom

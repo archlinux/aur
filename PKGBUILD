@@ -1,7 +1,7 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=ttf-sega
 pkgver=1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Font designed by Sega Games Co., Ltd. for their logo and products"
 arch=('any')
 license=('custom')
