@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='nasc'
-pkgver='0.4.6'
+pkgver='0.4.7'
 pkgrel='1'
 pkgdesc='Do maths like a normal person.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 makedepends=('vala' 'git' 'cmake')
 conflicts=('nasc-git' 'nasc-bzr')
 source=("https://github.com/parnold-x/nasc/archive/${pkgver}.tar.gz")
-sha512sums=('b7c418a505ba81647009c1acf4db052807ed9ca53592bcca5cd730853ba588e1e20b2cd1012d3d484047a3d53e8f944dffdf26eadfa98b0495d2184f5ab9a7a9')
+sha512sums=('b8e72b9b7c1c063862c48daf7e5f2d98f61cf4d479453225e407ee0848a1a7ab98feab142a92d876c4dfd3d28b4c8738a03f94cfded3c91b13c5f7585ed6814b')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -27,4 +27,6 @@ build () {
 package () {
 	cd "${pkgname}-${pkgver}/build"
 	make install DESTDIR="${pkgdir}"
+	install -Dm755 libqalculatenasc/libqalculatenasc.so \
+		"${pkgdir}/usr/lib/libqalculatenasc.so"
 }
