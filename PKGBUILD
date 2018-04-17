@@ -1,11 +1,11 @@
 # Maintainer: Andreas Bolka <a AT bolka DOT at>
 
 pkgname=visidata-git
-pkgver=0.93.g06b597e
+pkgver=1.1.gfbc1f2f
 pkgrel=1
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
-url='http://saul.pw/visidata'
+url='http://visidata.org/'
 license=('GPLv3')
 depends=('python')
 makedepends=('git')
