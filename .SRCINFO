@@ -1,0 +1,17 @@
+pkgbase = ruby-jekyll-archives
+	pkgdesc = Archive pages for your Jekyll tags and categories
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/jekyll-archives
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = jekyll
+	noextract = jekyll-archives-2.1.1.gem
+	source = https://rubygems.org/downloads/jekyll-archives-2.1.1.gem
+	source = LICENSE
+	sha256sums = 63adf4b1be9368bad228c54a1ff5575da942d10e877bf894a186281699bd4297
+	sha256sums = 8db06aaffeac5a8a079786196d07839a0e04d2197bbb540fd7248ddebcc36621
+
+pkgname = ruby-jekyll-archives
+
