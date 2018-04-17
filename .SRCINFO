@@ -1,0 +1,13 @@
+pkgbase = gnome-osc-spacegrey-gtk-theme
+	pkgdesc = Gnome-OSC SpaceGrey GTK Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1171688/
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1523894943/s/$_s/t/$_t/gnome-osc-spacegrey-gtk-theme-1.0.tar.xz
+	md5sums = 5978d384105c704efd24bea78ff32dd7
+
+pkgname = gnome-osc-spacegrey-gtk-theme
+
