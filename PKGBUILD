@@ -5,7 +5,7 @@
 
 pkgname=grap
 pkgver=1.45
-pkgrel=3
+pkgrel=4
 pkgdesc='A language for typesetting graphs.'
 arch=('i686' 'x86_64')
 url="https://www.lunabase.org/~faber/Vault/software/${pkgname}"
