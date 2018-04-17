@@ -2,15 +2,15 @@
 
 pkgname=fractal-git
 _gitname=fractal
-pkgver=r225.e693b8d
+pkgver=r563.b26ffa9
 pkgrel=1
 pkgdesc="Matrix.org gtk+ client"
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://gitlab.gnome.org/danigm/fractal"
+url="https://gitlab.gnome.org/World/fractal"
 depends=('gtk3')
 makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
-source=("git://github.com/danigm/fractal")
+source=("https://gitlab.gnome.org/World/fractal.git")
 md5sums=('SKIP')
  
 pkgver() {
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	./configure --prefix=/usr/local
-	make
+	meson . _build --prefix=/usr/local
+	ninja -C _build
 }
 
 package() {
 	cd "${srcdir}/${_gitname}/"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="${pkgdir}" ninja -C _build install
 }
