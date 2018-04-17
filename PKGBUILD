@@ -4,7 +4,7 @@
 _gemname=jekyll-sitemap
 pkgname=ruby-jekyll-sitemap
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically generate a sitemap.xml for your Jekyll site."
 arch=('any')
 depends=('ruby' 'jekyll')
@@ -20,4 +20,7 @@ package() {
     rm "${pkgdir}/${_gemdir}/cache/jekyll-sitemap-${pkgver}.gem"
 
     install -D -m644 "${pkgdir}/${_gemdir}/gems/jekyll-sitemap-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Fix Compress Error
+    rm "${pkgdir}/${_gemdir}/gems/jekyll-sitemap-${pkgver}/spec/fixtures/_posts/"2016-*.html
 }

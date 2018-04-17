@@ -1,7 +1,7 @@
 pkgbase = ruby-jekyll-sitemap
 	pkgdesc = Automatically generate a sitemap.xml for your Jekyll site.
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rubygems.org/gems/jekyll-sitemap
 	arch = any
 	license = MIT
