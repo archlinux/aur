@@ -1,8 +1,8 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname="python-fido2"
-pkgver="0.2.1"
-pkgrel="2"
+pkgver="0.3.0"
+pkgrel="1"
 pkgdesc="Library for FIDO 2.0, including communication with a device over USB"
 url="https://github.com/Yubico/python-fido2"
 license=('custom:BSD-2-clause')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 source=(
   "https://github.com/Yubico/${pkgname}/archive/${pkgver}.tar.gz"
 )
-sha256sums=('32497f371b13ef13b68f4b7cd1a188d966c0e6918ff0c586dbbceb4629a35ac9')
+sha256sums=('8648c3f0e0aa4310ee1b037f538185bad7f9c0c471158c11a20454caaec535d3')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
