@@ -5,7 +5,6 @@ pkgbase = excavator
 	url = https://github.com/nicehash/excavator
 	arch = x86_64
 	license = https://github.com/nicehash/excavator/blob/master/excavator-EULA.txt
-	depends = aarch64-linux-gnu-glibc>=2.14
 	depends = chef-dk
 	depends = nvidia-utils
 	depends = ncurses
