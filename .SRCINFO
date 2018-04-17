@@ -1,0 +1,13 @@
+pkgbase = gnome-osc-traditional-gtk-theme
+	pkgdesc = Gnome-OSC Traditional GTK Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1171688/
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1523894983/s/$_s/t/$_t/gnome-osc-traditional-gtk-theme-1.0.tar.xz
+	md5sums = d17ebfe9a3c6460f603649d1a7215a7a
+
+pkgname = gnome-osc-traditional-gtk-theme
+
