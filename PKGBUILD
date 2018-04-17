@@ -3,8 +3,8 @@ _py_pkgname=sphinx-argparse
 _github_url=https://github.com/ribozz/sphinx-argparse
 pkgbase=python-${_py_pkgname}
 pkgname=(python-${_py_pkgname} python2-${_py_pkgname})
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Sphinx extension that automatically documents argparse commands and options."
 arch=('any')
 url="${_github_url}"
@@ -31,7 +31,8 @@ check() {
 # Automatically create package functions using Bash magic
 source /dev/stdin << EOF
 package_python-${_py_pkgname}() {
-    depends=('python-sphinx' 'python-commonmark')
+    depends=('python-sphinx')
+    optdepends=('python-commonmark: markdown support')
 
     cd "\${srcdir}/${_py_pkgname}"
 
@@ -41,7 +42,8 @@ package_python-${_py_pkgname}() {
 }
 
 package_python2-${_py_pkgname}() {
-    depends=('python2-sphinx' 'python2-commonmark')
+    depends=('python2-sphinx')
+    optdepends=('python2-commonmark: markdown support')
 
     cd "\${srcdir}/${_py_pkgname}"
 
