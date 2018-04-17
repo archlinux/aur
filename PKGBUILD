@@ -1,6 +1,6 @@
 # Maintainer: Max Reitz <xanclic at xanclic dot moe>
 pkgname=krunner-mpd-git
-pkgver=r45.d7f2be4
+pkgver=r46.0b5959e
 pkgrel=1
 pkgdesc="KRunner plugin to control an MPD server"
 arch=('any')
