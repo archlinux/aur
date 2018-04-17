@@ -1,13 +1,13 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.1.2
+pkgver=1.1.2+183+g880e1913
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
 url="https://wiki.gnome.org/Projects/BuildStream/"
 license=('LGPL')
 depends=('bubblewrap' 'ostree' 'python-blessings' 'python-click'
-         'python-fusepy' 'python-jinja' 'python-gobject' 'python-pluginbase'
+         'python-jinja' 'python-gobject' 'python-pluginbase'
          'python-psutil' 'python-ruamel-yaml')
 makedepends=('python-setuptools' 'git')
 provides=('buildstream')
