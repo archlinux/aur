@@ -43,13 +43,16 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Running with a 1000 HZ tick rate 
+_1k_HZ_ticks=
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.16
 pkgver=4.16.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -151,6 +154,15 @@ END
 		fi
 	fi    
 
+	
+	### Optionally set tickrate to 1000 
+	if [ -n "$_1k_HZ_ticks" ]; then
+		msg "Setting tick rate to 1k..."
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+                    -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+                     i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+	fi
+	
 	### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
@@ -377,7 +389,7 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             'SKIP'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             '337b220e5c5f240bf195fcf174974c03b127598723fc4ea5813e5c32154048ac4193737418b21e720e9034ad53589b59b898d0e648925db7e2db2ad57acd7fe7'
-            '25fbbf67d86afa619910e644a1e5c2ede321ac6cdf16e66128638dbdfe2e5dc454a6420eca1a743d6eff4a2bb9b8ea3143c1914b27c2ab07965e56d2c197853b'
+            '062b55ce20c346ddd2fd04ad7610b91b352c224c6a78e4b9334004dcb7a87c460f2785e02d09204bd9a32b7c429f5324aefa72c61474ec226d16efd381d26cfa'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
