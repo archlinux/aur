@@ -1,7 +1,7 @@
 pkgbase = python-parallax
 	pkgdesc = Execute commands and copy files over SSH to multiple machines at once
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/krig/parallax
 	arch = any
 	license = BSD

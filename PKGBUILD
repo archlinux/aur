@@ -3,7 +3,7 @@
 pkgbase=python-parallax
 pkgname=('python-parallax' 'python2-parallax')
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Execute commands and copy files over SSH to multiple machines at once"
 arch=('any')
 license=('BSD')
@@ -36,6 +36,7 @@ package_python2-parallax() {
   depends=('python2')
   cd "$srcdir"/$pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  mv "$pkgdir/usr/bin/parallax-askpass" "$pkgdir/usr/bin/parallax-askpass2"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
