@@ -1,6 +1,6 @@
 pkgbase = abiword-svn
 	pkgdesc = Fully-featured word processor from subversion sources
-	pkgver = 35464
+	pkgver = 35465
 	pkgrel = 1
 	url = http://www.abisource.com
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = abiword-svn
 	depends = redland
 	depends = libical
 	depends = loudmouth
-	depends = enchant
+	depends = enchant1.6
 	depends = lasem
 	depends = libwpg
 	depends = libwmf

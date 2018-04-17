@@ -4,14 +4,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35464
+pkgver=35465
 pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.abisource.com'
 depends=('fribidi' 'wv' 'goffice' 'redland' 'libical' 'loudmouth' 
-	 'enchant' 'lasem' 'libwpg' 'libwmf' 'gtkmathview' 'aiksaurus'
+	 'enchant1.6' 'lasem' 'libwpg' 'libwmf' 'gtkmathview' 'aiksaurus'
 	 'libots' 'libchamplain' 'psiconv' 'telepathy-glib' 'libwps')
 makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversion')
 conflicts=('abiword' 'abiword-plugins')
