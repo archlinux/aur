@@ -1,6 +1,4 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Gerardo Marset <gammer1994@gmail.com>
-# Contributor: Christoph Zeiler <rabyte*gmail>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=wastesedge
 pkgver=0.3.7
