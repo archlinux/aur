@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.16
 pkgver=4.16.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -24,6 +24,7 @@ source=(
   0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
   0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
   0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+  0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,16 +34,17 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
             'fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575'
             'SKIP'
-            'd8f725b047214d9d6841496bb9aafa692005823c497ad9b6e47a615c7f369ba5'
+            '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4233d9dfa3704c2107c05cb9824fc7978bbdd05255c076ccafd7b81e0fbdbfc7'
-            '37841e7fdf9f83add5d4bdb3baa972de7318b2ebce29c42b81f13e12e09dbe6f'
-            'db7c672e5356d65190169e53e244a91cdd45bd795efffe38668b41be01bf4ec7'
-            '34873d539c8c53520e907e6e1e1a24d17fb2819f07707cef061c10bd6b9c4b85'
-            '9c85109556ee122ed7710b18b2def6dd0daf402f540a59497049f61b9a693db2'
-            '76fe7d56b7e9e9dea548fe5a761cd346c20d78958a41907cd8ac6c6a9777e04d')
+            '6ad732db3f773de52ab544be83f22b04157a880742ab262202b01c32ee2d4995'
+            'bc300c44023cdef225f5d18fe6054cd2886c4062410d2720b2b2fd82465184f3'
+            'dcd819e630cfa7292aa38078ab16758338836ee917e82ce42c8a9aca08f2ecdb'
+            '9e93bc5bafeb978b1fb260d0cbfe15d8214ea0599dc6d771aae9ab652e223339'
+            '9fe8141703fd2b9eb8ea8f81a19a115c93684a87ee0895d042b48ce98d42c12a'
+            'e59bba13edb36ff5639ed3fd6c541e2c3d378db71dca6ea01f0aede6ab1b5700'
+            '34c7316a4e909300e14b0510dbeedc1d0acf9e43cc7c48693462e0fd98883fb2')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -73,6 +75,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/58174
   patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+
+  # https://bugs.archlinux.org/task/58205
+  patch -Np1 -i ../0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
