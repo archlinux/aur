@@ -3,7 +3,7 @@
 
 pkgname=chisel
 _pkgname=chisel3
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('java-environment' 'verilator')
 makedepends=('sbt')
 source=(https://github.com/freechipsproject/chisel3/archive/v$pkgver.tar.gz)
-sha512sums=('125aea105c182e85ff4be3ea828f31d144f68d3ab2fcebefdbc2a048017091879b2c5a75aa171381a6a1d54cce39e61aeb81d935ad062d067b14dfe0856d6eec')
+sha512sums=('fbf67ca7e0b72333eb981265e336b2b2da890a3a995261950a74a61cf55e56658c344a22bdd078a9872a71a8063b164e4ebace8044a9ccfb497f39c113982e9d')
 
 build(){
     cd "${srcdir}/${_pkgname}-${pkgver}"
