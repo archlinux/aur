@@ -1,10 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk
-pkgver=10
+pkgver=10.0.1
 _major=${pkgver/.*}
-_build=46
-_hash=76eac37278c24557a3c4199677f19b62
+_build=10
+_hash=fb4372174a714e6b8c52526dc134031e
 _jname=${pkgname}${_major}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit"
@@ -34,7 +34,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash
         "jconsole.desktop"
         "jmc.desktop"
         "policytool.desktop")
-sha256sums=('ac487a2738d3d59f7a4b95095207970b811143068752b6b4ec404d5a3aa8680c'
+sha256sums=('ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4'
             '3ea717825268a66837380c9ca2b076f02a3298d2df48c3450152fdaf1d0dbc6e'
             '365b33b197e6be65ad746e5ed864428e45ae1e24dba53aa7d9c71de0644cf4e2'
             '5dfde6ee531056571d9601d47fbb4a3e56062e4d611667a56ba7931ec7948b36')
