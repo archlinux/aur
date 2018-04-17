@@ -1,10 +1,11 @@
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Daan van Rossum <d.r.vanrossum at gmx dot de>
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
+# Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp
-pkgver=25
-_pkgver=c654792
+pkgver=26
+_pkgver=e66bdc7
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -12,8 +13,8 @@ url='http://repo.or.cz/w/llpp.git'
 license=('custom')
 provides=('llpp')
 conflicts=('llpp-git')
-depends=('openjpeg2' 'jbig2dec' 'freetype2' 'harfbuzz' 'libjpeg' 'openssl' 'zlib' 'desktop-file-utils' 'mesa' 'libgl')
-makedepends=('ocaml' 'libmupdf')
+depends=('harfbuzz' 'mesa' 'mupdf' 'freetype2' 'jbig2dec' 'openjpeg2' 'libgl' 'libjpeg-turbo' 'glu' 'desktop-file-utils')
+makedepends=('ocaml>=4.04' 'libmupdf' 'mupdf>=1.7' 'asciidoc' 'xmlto')
 optdepends=(
   'xsel: text selection'
   'xclip: text selection'
@@ -40,20 +41,19 @@ optdepends=(
   'texlive-core: llppac dvi conversion'
 )
 source=("http://repo.or.cz/llpp.git/snapshot/${_pkgver}.tar.gz")
-md5sums=('ffc241761238003f16a7759a129e7c24')
-sha1sums=('85fb6b63ef337f7f0a5847a89accf7a24cb5bdb2')
-sha256sums=('ca4b6e4c27ba57b5af9f8a92b1859f5013987115b3b4b5544931122ed1c74df2')
+md5sums=('e5b0bf1cdacb16ee219422f109376614')
+sha1sums=('8a40cd34a1f04d317fc96f285daedf0eba037ae7')
+sha256sums=('805b6b0c1fa48a5de7b249915f9a01dedd62e0c5fac5b6b49a69985e0accc243')
 options=('!strip')
 
 prepare() {
   cd $srcdir/${pkgname}-${_pkgver}
-  sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
+  sed -i -e 's+-I \$mudir/include -I \$mudir/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
   sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
-  sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
+  sed -i -e 's+-L\$mudir/build/native ++' build.sh
 
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
   sed -i -e 's+-lmupdf+-lmupdf -lharfbuzz+' build.sh
-
 }
 
 build() {
@@ -69,9 +69,14 @@ package() {
   install -Dm644 misc/llpp.desktop $pkgdir/usr/share/applications/llpp.desktop
   install -Dm644 README $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
+  # man pages
+  for f in llpp.man llppac.man llpphtml.man; do
+    install -Dm644 man/$f "$pkgdir/usr/share/man/man1/${f%.man}.1"
+  done
+
   # helper scripts
   cd misc/
-  for i in dicx dllpp llppac; do
+  for i in dicx dllpp llpp.inotify llppac llpphtml; do
     install -Dm755 $i $pkgdir/usr/bin/$i
   done
 
