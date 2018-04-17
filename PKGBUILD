@@ -3,7 +3,7 @@
 # Comaintainer: bartus <aur@bartus.33mail.com>
 pkgname=luxrays-hg
 pkgver=3755+.ceb10f796325+
-pkgrel=1
+pkgrel=3
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
 url="http://www.luxrender.net/"
