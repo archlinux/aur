@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.13.3.r13070.9b8b02092
+pkgver=2.13.13.r13107.b815b2e94
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -89,6 +89,8 @@ prepare() {
   cp requirements.in requirements.txt
   #flexget works fine with newer versions of requests
   sed -i 's!requests~=2.16.3!requests>=2.16.3!' requirements.txt
+  #zxcvbn-python has been renamed zxcvbn
+  sed -i 's!zxcvbn-python!zxcvbn!' requirements.txt
 }
 
 build() {
