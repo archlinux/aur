@@ -1,0 +1,16 @@
+pkgbase = xeventbind-git
+	pkgdesc = A small utillity that runs your executable/script when interesting X11 events are fired
+	pkgver = r4.a0b00ed
+	pkgrel = 1
+	url = https://github.com/ritave/xeventbind
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	provides = xeventbind
+	conflicts = xeventbind
+	source = git+https://github.com/ritave/xeventbind
+	md5sums = SKIP
+
+pkgname = xeventbind-git
+
