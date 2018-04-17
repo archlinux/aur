@@ -13,7 +13,7 @@ license=('GPL')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 depends=('zlib')
 options=('!libtool' '!emptydirs')
-validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')  # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.gz"{,.sig})
 sha256sums=('0d9d2bbf71e17903f26a676e7fba7c200e581c84b8f2f43e72d875d0e638771c'
             'SKIP')
