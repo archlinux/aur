@@ -1,10 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jre
-pkgver=10
+pkgver=10.0.1
 _major=${pkgver/.*}
-_build=46
-_hash=76eac37278c24557a3c4199677f19b62
+_build=10
+_hash=fb4372174a714e6b8c52526dc134031e
 _jname=${pkgname}${_major}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
@@ -30,7 +30,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool.desktop")
-sha256sums=('9c147ae25aceccf5bc2c9a878d0e7e5885b21ffbd861db6f8241d10915e38ab2'
+sha256sums=('385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86'
             '175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
