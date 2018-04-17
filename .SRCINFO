@@ -1,6 +1,6 @@
 pkgbase = pikaur
-	pkgdesc = AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all with minimal user interaction.
-	pkgver = 0.9.3
+	pkgdesc = AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction.
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = pikaur
 	depends = pyalpm
 	depends = python-setuptools
 	depends = git
-	depends = sudo
 	depends = fakeroot
 	conflicts = pikaur-git
-	source = pikaur-0.9.3.tar.gz::https://github.com/actionless/pikaur/archive/0.9.3.tar.gz
-	md5sums = 50a5f35e909f8b798d4fc2f945a9fd3a
+	source = pikaur-0.10.tar.gz::https://github.com/actionless/pikaur/archive/0.10.tar.gz
+	md5sums = 854d12b6a9a92fc94b34ace6dceed93f
 
 pkgname = pikaur
 
