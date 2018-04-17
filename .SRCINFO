@@ -1,15 +1,14 @@
 pkgbase = cargo-watch
 	pkgdesc = Utility for Cargo to compile projects when sources change
-	pkgver = 5.0.4
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/passcod/cargo-watch
 	arch = i686
 	arch = x86_64
 	license = CC0-1.0
 	depends = cargo
-	depends = watchexec
-	source = https://github.com/passcod/cargo-watch/archive/v5.0.4/cargo-watch-5.0.4.tar.gz
-	sha256sums = 87008358ce1bae8873916133cf8eb3fab88ddf08bf3261a0fd15530e1bfe46bd
+	source = https://github.com/passcod/cargo-watch/archive/v6.0.0/cargo-watch-6.0.0.tar.gz
+	sha256sums = d9bb8127f0e45741c1e93c7a9f066cc0c25bcb10ea1d0a92127b5647bd80c84d
 
 pkgname = cargo-watch
 
