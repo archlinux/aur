@@ -1,13 +1,13 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 pkgname=sofa
-pkgver=20170420
+pkgver=20180130
 pkgrel=1
 pkgdesc="Set of algorithms and procedures used in fundamental astronomy"
 url="http://www.iausofa.org"
 arch=('x86_64' 'i686')
 license=('custom')
-source=("http://www.iausofa.org/2017_0420_C/sofa_c-${pkgver}.tar.gz")
-md5sums=('01425bc1eac01166e3831046eb3066eb')
+source=("http://www.iausofa.org/2018_0130_C/sofa_c-${pkgver}.tar.gz")
+md5sums=('9d6903c7690e84a788b622fba6f10146')
 
 build() {
   cd "${srcdir}/${pkgname}/${pkgver}/c/src"
