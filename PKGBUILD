@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-graph-easy'
-pkgver='0.75'
+pkgver='0.76'
 pkgrel='1'
 pkgdesc="Convert or render graphs (as ASCII, HTML, SVG or via Graphviz)"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.mcpan.org/dist/Graph-Easy'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SH/SHLOMIF/Graph-Easy-0.75.tar.gz')
-md5sums=('8a4536760de1920586d3509355caa9f7')
-sha512sums=('55b2dd59c8623117e482be4886475e50ce12297a3fd5b7abae1c76e3cdedd01280a62b596009da2f4da1e6ccbe4885ad0a14f7202716d85732f7646fe44c9af8')
-_distdir="Graph-Easy-0.75"
+source=("http://search.mcpan.org/CPAN/authors/id/S/SH/SHLOMIF/Graph-Easy-${pkgver}.tar.gz")
+md5sums=('031064db5f254a02a462464832ff845c')
+sha512sums=('c5f93252a047ccb0c02347f9f138217c1d52b10ba67db100de7d57a716b3da8d564ecbddedd795420eccc6fe4733bd9b3e64d1fda7d203b144c6112d6bfbe6d0')
+_distdir="Graph-Easy-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
