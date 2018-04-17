@@ -13,4 +13,4 @@ package() {
 	install -Dm0644 SEGA.ttf $pkgdir/usr/share/fonts/TTF/Sega.ttf
 }
 
-sha256sums=('fdeb4bd3b0490888ac6c511686eccf9841a5841783e25c6bd0ee5f70ef4a3889')
+sha256sums=('cb0147491c511738dd4bbb75f4f0fed65c27a331508cf1dc15d38f8132af724b')
