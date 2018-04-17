@@ -1,6 +1,6 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.1.3
+	pkgver = 11.1.4
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = ddnet
 	provides = teeworlds-ddnet
 	conflicts = teeworlds-ddnet
 	replaces = teeworlds-ddnet
-	source = https://ddnet.tw/downloads/DDNet-11.1.3.tar.xz
-	sha256sums = 99282f2dbd70137c8e8eabdccc9d746d361acbbeeb387b481b21da0b72e1c768
+	source = https://ddnet.tw/downloads/DDNet-11.1.4.tar.xz
+	sha256sums = 3654c730814fab5c8a5a541c143429b2b6259005b3c6f75eaec0e527ccd1f605
 
 pkgname = ddnet
 
