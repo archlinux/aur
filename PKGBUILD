@@ -1,42 +1,69 @@
 # Maintainer: Håvard Pettersson <mail@haavard.me>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
+_pkgname=etcher
 pkgname=etcher-git
-pkgver=v1.4.1.0.g1c43ee1b
+pkgver=v1.4.1.9.ga044d2fe
 pkgrel=1
-pkgdesc='Burn images to SD cards & USB drives, safe & easy'
+pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
-url='http://www.etcher.io/'
+url='https://www.etcher.io/'
 license=(apache)
-depends=(gtk2 libxtst libxss gconf nss alsa-lib)
+depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
+makedepends=(npm python2 git)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
-makedepends=(npm git)
-conflicts=(etcher)
-provides=(etcher)
-source=("$pkgname::git+https://github.com/resin-io/etcher.git")
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+https://github.com/resin-io/$_pkgname.git"
+        'etcher-electron'
+        'etcher-electron.desktop')
+sha256sums=('SKIP'
+            'a64f79fe894c4828b515844703b1795448a4818a654f5d42d4f567f4d80998d1'
+            '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 pkgver() {
-  cd $pkgname
+  cd "$pkgname"
   git describe --tags --long | sed 's/-/./g'
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -i 's/python$/python2/' scripts/build/dependencies-npm.sh
+}
+
 build() {
-  cd $pkgname
-  make electron-develop
-  make electron-installer-debian RELEASE_TYPE=snapshot
+  cd "$pkgname"
+
+  export PATH="$(pwd)/node_modules/.bin:$PATH"
+  ./scripts/build/dependencies-npm.sh \
+    -s linux \
+    -r x64 \
+    -t electron \
+    -v "$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')"
+  webpack
+  npm prune --production
 }
 
 package() {
-  cd $pkgname
-  _version="$(jq -r '.version' package.json)+$(git log -1 --format="%h")"
+  cd "$pkgname"
 
-  ar x dist/etcher-electron_${_version}_amd64.deb data.tar.xz
-  tar -xf data.tar.xz -C "$pkgdir"
+  _appdir="$pkgdir"/usr/share/$_pkgname
+  install -d "$_appdir"
 
-  mkdir -p "$pkgdir"/usr/bin
-  ln -s /opt/Etcher/etcher-electron "$pkgdir"/usr/bin/etcher-electron
+  install package.json "$_appdir"
+  cp -a {lib,build,generated,node_modules} "$_appdir"
+  cp -a assets/icon.png "$_appdir"
+  install -D lib/gui/app/index.html "$_appdir"/lib/gui/app/index.html
+
+  install -Dm755 "$srcdir"/etcher-electron "$pkgdir"/usr/bin/etcher-electron
+  install -Dm644 "$srcdir"/etcher-electron.desktop \
+    "$pkgdir"/usr/share/applications/etcher-electron.desktop
+
+  for size in 16x16 32x32 48x48 128x128 256x256 512x512; do
+    install -Dm644 assets/iconset/$size.png \
+      "$pkgdir"/usr/share/icons/hicolor/$size/apps/etcher-electron.png
+  done
 }
 
 # vim:set ts=2 sw=2 et:

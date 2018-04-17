@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Etcher
+Comment=Flash OS images to SD cards and USB drives, safely and easily.
+Exec="/usr/bin/etcher-electron" %U
+Terminal=false
+Type=Application
+Icon=etcher-electron
+Categories=Utility;

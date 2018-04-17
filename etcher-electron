@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+exec electron /usr/share/etcher/lib/start.js "$@"
