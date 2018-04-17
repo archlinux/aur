@@ -1,7 +1,7 @@
 # Maintainer: Toke Høiland-Jørgensen <toke at toke dot dk>
 
 pkgname=flent
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'python-pyqt5: for the GUI'
 )
 source=(https://files.pythonhosted.org/packages/source/f/flent/flent-${pkgver}.tar.gz{,.asc})
-sha256sums=('5ffe086098fec5d4f753aed5d808d3aa020aff55cf6b38ff987f3ef8e5d108b7'
+sha256sums=('4bbab5be36ae0d73ad47638be324a881643d229bfff713d74d29ff6cc6a42b7e'
             'SKIP')
 validpgpkeys=('DE6162B5616BA9C9CAAC03074A55C497F744F705')
 
