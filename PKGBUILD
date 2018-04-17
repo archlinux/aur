@@ -4,7 +4,7 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Gustavo Castro <gustawho at gmail dot com>
 pkgname=indicator-kdeconnect
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 epoch=1
 pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)"
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('libappindicator-gtk3' 'kdeconnect' 'python-requests-oauthlib' 'python-gobject')
 makedepends=('cmake' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bajoja/indicator-kdeconnect/archive/${pkgver}.tar.gz")
-sha256sums=('6a75da2b87c8c23808376683db5a2563dc31fd9a38548ac1480682e53245bed0')
+sha256sums=('416510171e6c2a7a87f7b0b43e2ddf135b152952c5032aecd82880ba88f9c2e0')
 
 build() {
   cd "${pkgname}-${pkgver}"
