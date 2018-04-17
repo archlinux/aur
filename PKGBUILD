@@ -3,7 +3,7 @@
 pkgname=fractal-git
 _gitname=fractal
 pkgver=r563.b26ffa9
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix.org gtk+ client"
 arch=('i686' 'x86_64')
 license=('GPL3')
