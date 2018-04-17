@@ -1,7 +1,8 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
+# Co-maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r371.23bf9c8
+pkgver=r378.bcb4240
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
