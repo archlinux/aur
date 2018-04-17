@@ -3,37 +3,32 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=adonthell
-pkgver=0.3.5
-pkgrel=7
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="A 2D graphical, single player role playing game engine"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://adonthell.nongnu.org/"
-license=('GPL')
-depends=('sdl_mixer' 'sdl_ttf' 'python2')
-source=(http://savannah.nongnu.org/download/$pkgname/$pkgname-src-$pkgver.tar.gz
-        configure.diff)
-md5sums=('64a344b1ed8a7808d7adafa337120a00'
-         '73bba2c5e67c8f4badeb2d2b0bdf4d8b')
+license=('GPL2')
+depends=('sdl2_mixer' 'sdl2_ttf' 'python')
+makedepends=('swig')
+options=('emptydirs')
+source=("http://savannah.nongnu.org/download/adonthell/$pkgname-src-$pkgver.tar.gz"
+        'fix-multi-monitor.patch')
+sha256sums=('3b5724ef734a1064899af7e8d693b532e97596a4e94f61e7af5d15eb9ee748cd'
+            'f9853a475706f077e258f965d035696ba6cacdbfc3512b5c622ec6c647882331')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  patch -Np0 -i ../configure.diff
-# NEW NEW NEW ;-) Set default screen-mode to fullscreen!!
-  sed 's|screen_mode = 0|screen_mode = 1|g' -i src/prefs.cc
-
-  sed '/^ *for ac_prog in / s|python|python2|' -i configure
+  patch -p1 -i "$srcdir/fix-multi-monitor.patch"
 }
 
 build() {
   cd $pkgname-$pkgver
-
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }

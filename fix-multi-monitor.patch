@@ -1,0 +1,27 @@
+From 88e35da0080f7139f69f2d12fca8b2c4af0753d1 Mon Sep 17 00:00:00 2001
+From: Kai Sterker <kai.sterker@gmail.com>
+Date: Tue, 20 Mar 2018 22:45:55 +0100
+Subject: FIXED calculation of scale factor in multi-monitor setups
+
+---
+ src/screen.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/screen.cc b/src/screen.cc
+index 5da8403..3ad7312 100644
+--- a/src/screen.cc
++++ b/src/screen.cc
+@@ -333,8 +333,8 @@ u_int8 screen::get_scale_for_display(u_int8 screen, u_int16 nl, u_int16 nh)
+ 		}
+ 	}
+ 
+-	int scale_x = (bounds.w - bounds.x) / nl;
+-	int scale_y = (bounds.h - bounds.y) / nh;
++	int scale_x = bounds.w / nl;
++	int scale_y = bounds.h / nh;
+ 
+ 	return scale_x > scale_y ? scale_y : scale_x;
+ }
+-- 
+cgit v1.0-41-gc330
+
