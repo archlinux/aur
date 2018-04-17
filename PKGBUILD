@@ -1,6 +1,6 @@
 # Maintainer: John Axel Eriksson <john@insane.se>
 pkgname=spook-git
-pkgver=0.9.3.r9.g2336257
+pkgver=0.9.4.r1.g2da76a1
 pkgrel=1
 pkgdesc='Spook is a lightweight evented file watcher and more for unix'
 arch=('x86_64')
