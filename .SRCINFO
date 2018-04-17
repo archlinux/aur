@@ -18,6 +18,7 @@ pkgbase = otr-verwaltung2p-git
 	depends = gstreamer0.10-gnonlin
 	depends = gstreamer0.10-ffmpeg
 	depends = gstreamer0.10-python
+	depends = mediainfo
 	depends = mplayer
 	depends = aria2
 	depends = wget
