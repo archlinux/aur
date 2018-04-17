@@ -1,7 +1,7 @@
-diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14/talk/base/openssladapter.cc
---- libjingle-0.6.14/talk/base/openssladapter.cc.openssl11	2017-02-20 15:00:27.678103635 -0500
-+++ libjingle-0.6.14/talk/base/openssladapter.cc	2017-02-20 15:57:36.884341533 -0500
-@@ -84,6 +84,7 @@ static long socket_ctrl(BIO* h, int cmd,
+diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssladapter.cc kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssladapter.cc
+--- kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssladapter.cc	2017-09-30 12:08:16.000000000 +0200
++++ kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssladapter.cc	2018-01-05 22:49:27.805070408 +0100
+@@ -84,6 +84,7 @@
  static int socket_new(BIO* h);
  static int socket_free(BIO* data);
  
@@ -9,7 +9,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
  static BIO_METHOD methods_socket = {
    BIO_TYPE_BIO,
    "socket",
-@@ -98,16 +99,36 @@ static BIO_METHOD methods_socket = {
+@@ -98,16 +99,36 @@
  };
  
  BIO_METHOD* BIO_s_socket2() { return(&methods_socket); }
@@ -47,7 +47,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
  static int socket_new(BIO* b) {
    b->shutdown = 0;
    b->init = 1;
-@@ -115,6 +136,14 @@ static int socket_new(BIO* b) {
+@@ -115,6 +136,14 @@
    b->ptr = 0;
    return 1;
  }
@@ -62,7 +62,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
  
  static int socket_free(BIO* b) {
    if (b == NULL)
-@@ -125,13 +154,11 @@ static int socket_free(BIO* b) {
+@@ -125,13 +154,11 @@
  static int socket_read(BIO* b, char* out, int outl) {
    if (!out)
      return -1;
@@ -77,7 +77,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
    } else if (socket->IsBlocking()) {
      BIO_set_retry_read(b);
    }
-@@ -141,7 +168,7 @@ static int socket_read(BIO* b, char* out
+@@ -141,7 +168,7 @@
  static int socket_write(BIO* b, const char* in, int inl) {
    if (!in)
      return -1;
@@ -86,7 +86,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
    BIO_clear_retry_flags(b);
    int result = socket->Send(in, inl);
    if (result > 0) {
-@@ -164,7 +191,6 @@ static long socket_ctrl(BIO* b, int cmd,
+@@ -164,7 +191,6 @@
    case BIO_CTRL_RESET:
      return 0;
    case BIO_CTRL_EOF:
@@ -94,7 +94,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
    case BIO_CTRL_WPENDING:
    case BIO_CTRL_PENDING:
      return 0;
-@@ -696,7 +722,9 @@ bool OpenSSLAdapter::VerifyServerName(SS
+@@ -696,7 +722,9 @@
        // We assign this to a local variable, instead of passing the address
        // directly to ASN1_item_d2i.
        // See http://readlist.com/lists/openssl.org/openssl-users/0/4761.html.
@@ -105,7 +105,7 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
  
  #if OPENSSL_VERSION_NUMBER >= 0x0090800fL
        const unsigned char **ext_value_data_ptr =
-@@ -707,10 +735,10 @@ bool OpenSSLAdapter::VerifyServerName(SS
+@@ -707,10 +735,10 @@
  
        if (meth->it) {
          ext_str = ASN1_item_d2i(NULL, ext_value_data_ptr,
@@ -118,10 +118,65 @@ diff -up libjingle-0.6.14/talk/base/openssladapter.cc.openssl11 libjingle-0.6.14
        }
  
        STACK_OF(CONF_VALUE)* value = meth->i2v(meth, ext_str, NULL);
-diff -up libjingle-0.6.14/talk/base/opensslidentity.cc.openssl11 libjingle-0.6.14/talk/base/opensslidentity.cc
---- libjingle-0.6.14/talk/base/opensslidentity.cc.openssl11	2017-02-20 15:58:26.642105790 -0500
-+++ libjingle-0.6.14/talk/base/opensslidentity.cc	2017-02-20 16:04:05.130707597 -0500
-@@ -168,7 +168,12 @@ OpenSSLKeyPair::~OpenSSLKeyPair() {
+diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssldigest.cc kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssldigest.cc
+--- kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssldigest.cc	2017-09-30 12:08:16.000000000 +0200
++++ kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssldigest.cc	2018-01-05 22:49:27.869069361 +0100
+@@ -32,16 +32,16 @@
+ namespace talk_base {
+ 
+ OpenSSLDigest::OpenSSLDigest(const std::string& algorithm) {
+-  EVP_MD_CTX_init(&ctx_);
++  EVP_MD_CTX_init(ctx_);
+   if (GetDigestEVP(algorithm, &md_)) {
+-    EVP_DigestInit_ex(&ctx_, md_, NULL);
++    EVP_DigestInit_ex(ctx_, md_, NULL);
+   } else {
+     md_ = NULL;
+   }
+ }
+ 
+ OpenSSLDigest::~OpenSSLDigest() {
+-  EVP_MD_CTX_cleanup(&ctx_);
++  EVP_MD_CTX_destroy(ctx_);
+ }
+ 
+ size_t OpenSSLDigest::Size() const {
+@@ -55,7 +55,7 @@
+   if (!md_) {
+     return;
+   }
+-  EVP_DigestUpdate(&ctx_, buf, len);
++  EVP_DigestUpdate(ctx_, buf, len);
+ }
+ 
+ size_t OpenSSLDigest::Finish(void* buf, size_t len) {
+@@ -63,8 +63,8 @@
+     return 0;
+   }
+   unsigned int md_len;
+-  EVP_DigestFinal_ex(&ctx_, static_cast<unsigned char*>(buf), &md_len);
+-  EVP_DigestInit_ex(&ctx_, md_, NULL);  // prepare for future Update()s
++  EVP_DigestFinal_ex(ctx_, static_cast<unsigned char*>(buf), &md_len);
++  EVP_DigestInit_ex(ctx_, md_, NULL);  // prepare for future Update()s
+   ASSERT(md_len == Size());
+   return md_len;
+ }
+diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssldigest.h kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssldigest.h
+--- kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssldigest.h	2017-09-30 12:08:16.000000000 +0200
++++ kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/openssldigest.h	2018-01-05 22:49:27.869069361 +0100
+@@ -55,7 +55,7 @@
+                             size_t* len);
+ 
+  private:
+-  EVP_MD_CTX ctx_;
++  EVP_MD_CTX* ctx_ = EVP_MD_CTX_create();
+   const EVP_MD* md_;
+ };
+ 
+diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/opensslidentity.cc kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/opensslidentity.cc
+--- kopete-17.08.3/protocols/jabber/libjingle/talk/base/opensslidentity.cc	2017-09-30 12:08:16.000000000 +0200
++++ kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/opensslidentity.cc	2018-01-05 22:49:27.867069394 +0100
+@@ -169,7 +169,12 @@
  }
  
  void OpenSSLKeyPair::AddReference() {
@@ -134,7 +189,7 @@ diff -up libjingle-0.6.14/talk/base/opensslidentity.cc.openssl11 libjingle-0.6.1
  }
  
  #ifdef _DEBUG
-@@ -314,7 +319,11 @@ std::string OpenSSLCertificate::ToPEMStr
+@@ -275,7 +280,11 @@
  }
  
  void OpenSSLCertificate::AddReference() {
@@ -146,10 +201,10 @@ diff -up libjingle-0.6.14/talk/base/opensslidentity.cc.openssl11 libjingle-0.6.1
  }
  
  OpenSSLIdentity* OpenSSLIdentity::Generate(const std::string& common_name) {
-diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-0.6.14/talk/base/opensslstreamadapter.cc
---- libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11	2017-02-20 16:05:03.402259071 -0500
-+++ libjingle-0.6.14/talk/base/opensslstreamadapter.cc	2017-02-20 16:12:45.682795913 -0500
-@@ -86,6 +86,7 @@ static long stream_ctrl(BIO* h, int cmd,
+diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/opensslstreamadapter.cc kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/opensslstreamadapter.cc
+--- kopete-17.08.3/protocols/jabber/libjingle/talk/base/opensslstreamadapter.cc	2017-09-30 12:08:16.000000000 +0200
++++ kopete-17.08.3-openssl-1.1/protocols/jabber/libjingle/talk/base/opensslstreamadapter.cc	2018-01-05 22:49:27.868069378 +0100
+@@ -87,6 +87,7 @@
  static int stream_new(BIO* h);
  static int stream_free(BIO* data);
  
@@ -157,7 +212,7 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
  static BIO_METHOD methods_stream = {
    BIO_TYPE_BIO,
    "stream",
-@@ -100,17 +101,37 @@ static BIO_METHOD methods_stream = {
+@@ -101,17 +102,37 @@
  };
  
  static BIO_METHOD* BIO_s_stream() { return(&methods_stream); }
@@ -196,7 +251,7 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
  static int stream_new(BIO* b) {
    b->shutdown = 0;
    b->init = 1;
-@@ -118,6 +139,14 @@ static int stream_new(BIO* b) {
+@@ -119,6 +140,14 @@
    b->ptr = 0;
    return 1;
  }
@@ -211,7 +266,7 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
  
  static int stream_free(BIO* b) {
    if (b == NULL)
-@@ -128,15 +157,13 @@ static int stream_free(BIO* b) {
+@@ -129,15 +158,13 @@
  static int stream_read(BIO* b, char* out, int outl) {
    if (!out)
      return -1;
@@ -228,7 +283,7 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
    } else if (result == SR_BLOCK) {
      BIO_set_retry_read(b);
    }
-@@ -146,7 +173,7 @@ static int stream_read(BIO* b, char* out
+@@ -147,7 +174,7 @@
  static int stream_write(BIO* b, const char* in, int inl) {
    if (!in)
      return -1;
@@ -237,7 +292,7 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
    BIO_clear_retry_flags(b);
    size_t written;
    int error;
-@@ -171,7 +198,6 @@ static long stream_ctrl(BIO* b, int cmd,
+@@ -172,7 +199,6 @@
      case BIO_CTRL_RESET:
        return 0;
      case BIO_CTRL_EOF:
@@ -245,56 +300,3 @@ diff -up libjingle-0.6.14/talk/base/opensslstreamadapter.cc.openssl11 libjingle-
      case BIO_CTRL_WPENDING:
      case BIO_CTRL_PENDING:
        return 0;
---- libjingle/talk/base/openssldigest.cc.orig	2017-05-11 15:33:00.221086766 +0000
-+++ libjingle/talk/base/openssldigest.cc	2017-05-11 15:33:52.414339449 +0000
-@@ -32,16 +32,16 @@
- namespace talk_base {
- 
- OpenSSLDigest::OpenSSLDigest(const std::string& algorithm) {
--  EVP_MD_CTX_init(&ctx_);
-+  EVP_MD_CTX_init(ctx_);
-   if (GetDigestEVP(algorithm, &md_)) {
--    EVP_DigestInit_ex(&ctx_, md_, NULL);
-+    EVP_DigestInit_ex(ctx_, md_, NULL);
-   } else {
-     md_ = NULL;
-   }
- }
- 
- OpenSSLDigest::~OpenSSLDigest() {
--  EVP_MD_CTX_cleanup(&ctx_);
-+  EVP_MD_CTX_destroy(ctx_);
- }
- 
- size_t OpenSSLDigest::Size() const {
-@@ -55,16 +55,16 @@
-   if (!md_) {
-     return;
-   }
--  EVP_DigestUpdate(&ctx_, buf, len);
-+  EVP_DigestUpdate(ctx_, buf, len);
- }
- 
- size_t OpenSSLDigest::Finish(void* buf, size_t len) {
-   if (!md_ || len < Size()) {
-     return 0;
-   }
-   unsigned int md_len;
--  EVP_DigestFinal_ex(&ctx_, static_cast<unsigned char*>(buf), &md_len);
--  EVP_DigestInit_ex(&ctx_, md_, NULL);  // prepare for future Update()s
-+  EVP_DigestFinal_ex(ctx_, static_cast<unsigned char*>(buf), &md_len);
-+  EVP_DigestInit_ex(ctx_, md_, NULL);  // prepare for future Update()s
-   ASSERT(md_len == Size());
-   return md_len;
- }
---- libjingle/talk/base/openssldigest.h.orig	2017-05-11 15:31:56.341185527 +0000
-+++ libjingle/talk/base/openssldigest.h	2017-05-11 15:32:49.631103132 +0000
-@@ -55,7 +55,7 @@
-                             size_t* len);
- 
-  private:
--  EVP_MD_CTX ctx_;
-+  EVP_MD_CTX* ctx_ = EVP_MD_CTX_create();
-   const EVP_MD* md_;
- };
- 

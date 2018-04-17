@@ -1,0 +1,154 @@
+diff --git a/cmake/modules/FindSRTP.cmake b/cmake/modules/FindSRTP.cmake
+index 4e8baa827..ce9033497 100644
+--- a/cmake/modules/FindSRTP.cmake
++++ b/cmake/modules/FindSRTP.cmake
+@@ -11,8 +11,8 @@ include ( FindPackageHandleStandardArgs )
+ if ( SRTP_INCLUDE_DIR AND SRTP_LIBRARY )
+ 	set ( SRTP_FOUND true )
+ else ( SRTP_INCLUDE_DIR AND SRTP_LIBRARY )
+-	find_path ( SRTP_INCLUDE_DIR srtp.h PATH_SUFFIXES srtp )
+-	find_library ( SRTP_LIBRARY NAMES srtp )
++	find_path ( SRTP_INCLUDE_DIR srtp.h PATH_SUFFIXES srtp srtp2 )
++	find_library ( SRTP_LIBRARY NAMES srtp srtp2 )
+ 
+ 	if ( SRTP_INCLUDE_DIR AND SRTP_LIBRARY )
+ 		set ( SRTP_FOUND true )
+diff --git a/protocols/jabber/libjingle/talk/session/phone/srtpfilter.cc b/protocols/jabber/libjingle/talk/session/phone/srtpfilter.cc
+index 7a1cb7866..f5363a36a 100644
+--- a/protocols/jabber/libjingle/talk/session/phone/srtpfilter.cc
++++ b/protocols/jabber/libjingle/talk/session/phone/srtpfilter.cc
+@@ -416,7 +416,7 @@ bool SrtpSession::ProtectRtp(void* p, int in_len, int max_len, int* out_len) {
+   }
+   int seq_num;
+   GetRtpSeqNum(p, in_len, &seq_num);
+-  if (err != err_status_ok) {
++  if (err != srtp_err_status_ok) {
+     LOG(LS_WARNING) << "Failed to protect SRTP packet, seqnum="
+                     << seq_num << ", err=" << err << ", last seqnum="
+                     << last_send_seq_num_;
+@@ -442,7 +442,7 @@ bool SrtpSession::ProtectRtcp(void* p, int in_len, int max_len, int* out_len) {
+   *out_len = in_len;
+   int err = srtp_protect_rtcp(session_, p, out_len);
+   srtp_stat_->AddProtectRtcpResult(err);
+-  if (err != err_status_ok) {
++  if (err != srtp_err_status_ok) {
+     LOG(LS_WARNING) << "Failed to protect SRTCP packet, err=" << err;
+     return false;
+   }
+@@ -461,7 +461,7 @@ bool SrtpSession::UnprotectRtp(void* p, int in_len, int* out_len) {
+   if (GetRtpSsrc(p, in_len, &ssrc)) {
+     srtp_stat_->AddUnprotectRtpResult(ssrc, err);
+   }
+-  if (err != err_status_ok) {
++  if (err != srtp_err_status_ok) {
+     LOG(LS_WARNING) << "Failed to unprotect SRTP packet, err=" << err;
+     return false;
+   }
+@@ -477,7 +477,7 @@ bool SrtpSession::UnprotectRtcp(void* p, int in_len, int* out_len) {
+   *out_len = in_len;
+   int err = srtp_unprotect_rtcp(session_, p, out_len);
+   srtp_stat_->AddUnprotectRtcpResult(err);
+-  if (err != err_status_ok) {
++  if (err != srtp_err_status_ok) {
+     LOG(LS_WARNING) << "Failed to unprotect SRTCP packet, err=" << err;
+     return false;
+   }
+@@ -504,11 +504,11 @@ bool SrtpSession::SetKey(int type, const std::string& cs,
+   memset(&policy, 0, sizeof(policy));
+ 
+   if (cs == CS_AES_CM_128_HMAC_SHA1_80) {
+-    crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtp);
+-    crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);
++    srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtp);
++    srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);
+   } else if (cs == CS_AES_CM_128_HMAC_SHA1_32) {
+-    crypto_policy_set_aes_cm_128_hmac_sha1_32(&policy.rtp);   // rtp is 32,
+-    crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);  // rtcp still 80
++    srtp_crypto_policy_set_aes_cm_128_hmac_sha1_32(&policy.rtp);   // rtp is 32,
++    srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);  // rtcp still 80
+   } else {
+     LOG(LS_WARNING) << "Failed to create SRTP session: unsupported"
+                     << " cipher_suite " << cs.c_str();
+@@ -520,7 +520,7 @@ bool SrtpSession::SetKey(int type, const std::string& cs,
+     return false;
+   }
+ 
+-  policy.ssrc.type = static_cast<ssrc_type_t>(type);
++  policy.ssrc.type = static_cast<srtp_ssrc_type_t>(type);
+   policy.ssrc.value = 0;
+   policy.key = const_cast<uint8*>(key);
+   // TODO parse window size from WSH session-param
+@@ -529,7 +529,7 @@ bool SrtpSession::SetKey(int type, const std::string& cs,
+   policy.next = NULL;
+ 
+   int err = srtp_create(&session_, &policy);
+-  if (err != err_status_ok) {
++  if (err != srtp_err_status_ok) {
+     LOG(LS_ERROR) << "Failed to create SRTP session, err=" << err;
+     return false;
+   }
+@@ -543,13 +543,13 @@ bool SrtpSession::Init() {
+   if (!inited_) {
+     int err;
+     err = srtp_init();
+-    if (err != err_status_ok) {
++    if (err != srtp_err_status_ok) {
+       LOG(LS_ERROR) << "Failed to init SRTP, err=" << err;
+       return false;
+     }
+ 
+     err = srtp_install_event_handler(&SrtpSession::HandleEventThunk);
+-    if (err != err_status_ok) {
++    if (err != srtp_err_status_ok) {
+       LOG(LS_ERROR) << "Failed to install SRTP event handler, err=" << err;
+       return false;
+     }
+@@ -652,10 +652,10 @@ void SrtpStat::AddProtectRtpResult(uint32 ssrc, int result) {
+   key.ssrc = ssrc;
+   key.mode = SrtpFilter::PROTECT;
+   switch (result) {
+-    case err_status_ok:
++    case srtp_err_status_ok:
+       key.error = SrtpFilter::ERROR_NONE;
+       break;
+-    case err_status_auth_fail:
++    case srtp_err_status_auth_fail:
+       key.error = SrtpFilter::ERROR_AUTH;
+       break;
+     default:
+@@ -669,14 +669,14 @@ void SrtpStat::AddUnprotectRtpResult(uint32 ssrc, int result) {
+   key.ssrc = ssrc;
+   key.mode = SrtpFilter::UNPROTECT;
+   switch (result) {
+-    case err_status_ok:
++    case srtp_err_status_ok:
+       key.error = SrtpFilter::ERROR_NONE;
+       break;
+-    case err_status_auth_fail:
++    case srtp_err_status_auth_fail:
+       key.error = SrtpFilter::ERROR_AUTH;
+       break;
+-    case err_status_replay_fail:
+-    case err_status_replay_old:
++    case srtp_err_status_replay_fail:
++    case srtp_err_status_replay_old:
+       key.error = SrtpFilter::ERROR_REPLAY;
+       break;
+     default:
+diff --git a/protocols/jabber/libjingle/talk/session/phone/srtpfilter.h b/protocols/jabber/libjingle/talk/session/phone/srtpfilter.h
+index 991d4bf42..ff4e5070f 100644
+--- a/protocols/jabber/libjingle/talk/session/phone/srtpfilter.h
++++ b/protocols/jabber/libjingle/talk/session/phone/srtpfilter.h
+@@ -39,11 +39,7 @@
+ #include "talk/session/phone/cryptoparams.h"
+ #include "talk/p2p/base/sessiondescription.h"
+ 
+-// Forward declaration to avoid pulling in libsrtp headers here
+-struct srtp_event_data_t;
+-struct srtp_ctx_t;
+-typedef srtp_ctx_t* srtp_t;
+-struct srtp_policy_t;
++#include "srtp2/srtp.h"
+ 
+ namespace cricket {
+ 
