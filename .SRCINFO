@@ -1,7 +1,7 @@
 pkgbase = eqe
 	pkgdesc = Linux LaTeX equation editor.
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rlehy.free.fr/
 	arch = any
 	license = GPL2
