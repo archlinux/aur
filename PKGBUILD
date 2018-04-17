@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.48
+pkgver=1.48.2.g01b69c6
 pkgrel=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR (-git version)."
 arch=('any')
@@ -43,4 +43,5 @@ package() {
   install -m 755 -D "$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
   install -m 644 -D "zsh.completion" "$pkgdir/usr/share/zsh/site-functions/_trizen"
   install -m 644 -D "bash.completion" "$pkgdir/usr/share/bash-completion/completions/trizen"
+  install -m 644 -D "fish.completion" "$pkgdir/usr/share/fish/vendor_completions.d/trizen.fish"
 }
