@@ -5,15 +5,19 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.0.rc2.r5.gf73f955e8
+pkgver=2.0.0.rc2.r6.g42dc2bbce
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
-makedepends=('git' 'libxml2' 'inkscape' 'help2man' 'asciidoc')
-depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'libesmtp'
-         'corosync-git' 'libqb-git' 'resource-agents-git')
+makedepends=('git' 'inkscape' 'help2man' 'asciidoc')
+depends=('gnutls' 'glib2' 'pam' 'libtool' 'python-lxml' 'python-yaml' 'libesmtp'
+         'corosync-git' 'libqb-git' 'resource-agents-git' 'fence-agents-git'
+         'ha-glue' 'net-snmp')
+optdepends=('pssh: for use with some tools'
+            'pdsh: for use with some tools'
+            'crmsh-git: for use with crm_report')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${_pkgname}.install
