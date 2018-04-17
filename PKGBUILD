@@ -1,7 +1,7 @@
 # Maintainer: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=python2-stdnum
-pkgver=1.6
+pkgver=1.9
 pkgrel=1
 pkgdesc='Aims to provide functions to handle, parse and validate standard numbers, e.g. IBAN, EAN, ISBN'
 arch=(any)
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("http://arthurdejong.org/python-stdnum/python-stdnum-${pkgver}.tar.gz")
-md5sums=('cf378f5b8eaab5020179d2ac56d4dbd9')
+md5sums=('09c29ef869ef2743305785ce58b6bfd0')
 
 package() {
   cd "$srcdir/python-stdnum-$pkgver"
