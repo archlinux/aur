@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('f1e021318f06085fff5455667459bf26716d610f')
+sha1sums=('317a427a70666ad36ba7f69e3d01ab3edd313a9f')
 
 prepare() {
   [ -d build ] && rm -rf build
