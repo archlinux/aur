@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.16
 pkgver=4.16.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -86,7 +86,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0003-Partially-revert-swiotlb-remove-various-exports.patch'
         '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch'
         '0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch'
-        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
+        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch'
+        '0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -121,6 +122,10 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/58174
         msg "Fix #58174"
         patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+    
+    ### Fix https://bugs.archlinux.org/task/58205
+        msg "Fix #58205"
+        patch -Np1 -i ../0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -394,12 +399,13 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '66404910e458f18ab67143a1ba41a89028fba9669995e85ec8d8c690ce718d861cbeaa45295738ab4ae03abe6e4941270586f07c2ae2a04d0def19856d15e48a'
-            '23f03a8c1a679bd6b81d7a5c4036a4201084f214abad24c24e28f5f888b7e60743340033fba01960c82cae0806fe2707596fe5e444d83a58629dafaaf73e572a'
-            'c324687fc9c60ca24ebce331d9a285d3ccb83cd72d36b0b5c6ef503d17cce2955673de2f065c8937c54e9a985a5e1443343e920c44932fb144ab12eb09b00b42'
-            '9ff7e643569a6aa0a1ca092de534860e7bfc4fcec7ee8cb36c5f26a719465af7f7b780d2cec12184332bc6fa2c0b56b182d67646747d48bc5e4e2eb58ee5bb55'
-            'ca5a56235fa06c26154532c96f2d535ee5000050ee85253b94d39eee28b6cf7d5cdbffc20db2c8e869dc592321fd7f262f1d250e9f90053e0ad52d76a6b42238'
-            'b82360552a235a64bc68245361f0758bd4c1c6815050814f9ea28f2d7d28f57aa2b8697b5f5ee8af31e9bf13053b371cff395a2c71e334e8c0b10a7364a8831e')
+            '5b3f97fb18c2bafb5df2fdfce98baf4c7f032bba837a608ddd83234f0a82898c73f99ff294c6517a6fd87fd48729adfa41420c5aae4589ab46c4ec3769d44f61'
+            'b6673702b10c9045355fc0a6b015b06814bacfa2326194ad16c2a20ea514665e1f5701838b3fbcfaa28034243490d7d2c1e701cde8ef80c529a8b40eea59bfc1'
+            '2c2288db09b1925bf62de9d900cebf3ddcef8db9b99a0121103a4f6e30be444799eb607ada98a3d70379ee3e287da7583720b2c6e4db8273bbe3386cafed8133'
+            'de827e9c2e5b14ba72a69436a0a65398c49ac1e34eab77667060d81b39984f79d28c00b6e85bcc0bc7e795e6835030bac36618eda6f4101addea6a8d99aadd04'
+            'efe12cdc2de4f6056ddc5ddcb647b5df5c926ddc8a3cf686dfeb98a12574ff7ee8eba418ebcc320655550d895580df077e0c47e2ca9c87ba13e76a92a63b2df8'
+            'd98eb331263aa38938ab6c773908d5c931401eb6c8d767b13b68db0ddeac92eace8dd1baa5fa8327fa586199f2f24491a0507c4b6bf6fd0ffcee3081609d8799'
+            '79df2211abff5c4dfb5b1b8d85e63f68ac430451dcd65989213f6c377317db163ed44f6acd1fd5be5db0b21a5deafe117a709c79ea904997e04523b44327b928')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
