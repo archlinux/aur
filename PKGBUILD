@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-apng-plugin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="apng image plugin for Qt to support animated PNGs"
 arch=('i686' 'x86_64')
@@ -22,7 +22,8 @@ prepare() {
 build() {
   cd build
 
-  qmake -r "../$_pkgfqn/"
+  qmake "../$_pkgfqn/"
+  make qmake_all
   make
 }
 
