@@ -2,13 +2,13 @@
 
 pkgname=crmsh
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${pkgname}/"
 license=('GPL2')
 makedepends=('asciidoc' 'python2-setuptools')
-depends=('python2-yaml' 'python2-lxml' 'gawk' 'csync2')
+depends=('python2-parallax' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'gawk' 'csync2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('20e5f90f69b9f995d30ce3fbf2c1fb27')
 
