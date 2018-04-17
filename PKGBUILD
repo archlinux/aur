@@ -32,7 +32,7 @@ build() {
     -s linux \
     -r x64 \
     -t electron \
-    -v "$(pacman -Q electron | sed 's/electron \(.\+\)-.\+/\1/')" \
+    -v "$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')" \
     -p
 }
 
