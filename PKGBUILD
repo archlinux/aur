@@ -55,6 +55,9 @@ _kyber_disable=
 ### Enable MQ scheduling 
 _mq_enable=
 
+### Running with a 1000 HZ tick rate 
+_1k_HZ_ticks=
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq
@@ -62,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -112,7 +115,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            'ba4fe043e4e40e31e064871daa4800d166fb35d6fd5f3a18acb379e696969b50'
+            '75e7303218b0a2d579eab2eb6b22d4438ba8073e1de4cf8c83042b4bcaaf059a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -193,6 +196,14 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
+  ### Optionally set tickrate to 1000 
+  if [ -n "$_1k_HZ_ticks" ]; then
+    msg "Setting tick rate to 1k..."
+    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+  fi
+  
   ### Enable fancontrol
   if [ -n "$_dell_fancontrol" ]; then
     msg "Enabling I8K for Dell..."
