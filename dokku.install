@@ -79,5 +79,6 @@ post_remove() {
   rm -f /etc/update-motd.d/99-dokku
   rm -rf /var/dokku
   rm -rf /var/lib/dokku
+  rm -rf /var/log/dokku
   rm -rf /etc/nginx/conf.d/dokku.conf
 }

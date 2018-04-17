@@ -1,40 +1,38 @@
 # Maintainer: Morris Jobke <hey AT morrisjobke.de>
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
-pkgver=0.11.6
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
 license=(MIT)
 makedepends=(
-	'plugn'
+  'plugn'
 )
 depends=(
-	'docker'
-	'nginx'
-	'plugn>=0.3.0'
-	'sshcommand>=0.7.0'
-	'herokuish>=0.4.0'
-	'openbsd-netcat'
-	'gliderlabs-sigil'
-	'lsb-release'
-	'bind-tools'
-	'python'
+  'docker'
+  'nginx'
+  'plugn>=0.3.0'
+  'sshcommand>=0.7.0'
+  'herokuish>=0.4.0'
+  'openbsd-netcat'
+  'gliderlabs-sigil'
+  'lsb-release'
+  'bind-tools'
+  'python'
 )
 
 source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('35f24644a287d58a1aaf6205d33ffccbbf3725ed93d73d9a4b46eea8e234b6b1'
-            'bef43a69c56acf0b927cb5c1b92ef60044f7c963ce04cfd28d2f2c5ee2320afe')
+sha256sums=('7b35c2698226eb91cbea411951f62107cc41a5118f141ba375590ede5c0f28a1'
+            'abdf6a166cc248857d4e8e268925d3cbd38cfff254e30dd95a95bd836b0e2863')
 install=${pkgname}.install
 
 package() {
-  cd "${srcdir}/"
-
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
 
