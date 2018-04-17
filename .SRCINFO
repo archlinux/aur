@@ -1,7 +1,7 @@
 pkgbase = embree-bvh_build-git
 	pkgdesc = Custom version of Embree exposing BVH builder for use with luxrays
 	pkgver = 7289.1b82e5526
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dade916/embree/tree/bvh_build
 	arch = x86_64
 	license = Apache
@@ -15,9 +15,7 @@ pkgbase = embree-bvh_build-git
 	options = !buildflags
 	options = staticlibs
 	source = git+https://github.com/Dade916/embree.git#branch=bvh_build
-	source = non-colliding.patch
 	md5sums = SKIP
-	md5sums = a2f00f0557fa7f73ec48c6b153eae952
 
 pkgname = embree-bvh_build-git
 
