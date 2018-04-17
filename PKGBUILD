@@ -165,7 +165,7 @@ END
 		msg "Setting tick rate to 1k..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
                     -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-                     i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+                    -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
 	fi
 	
 	### Optionally disable NUMA for 64-bit kernels only
