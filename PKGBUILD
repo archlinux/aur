@@ -5,9 +5,10 @@
 # Contributor: Attila Toth <menta>
 # Contributor: Flu
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
+# Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=26b.r102.g42faa5a
+pkgver=26b.r299.ge66bdc7
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -17,10 +18,9 @@ provides=('llpp')
 conflicts=('llpp')
 depends=('mupdf' 'freetype2' 'jbig2dec' 'openjpeg2'
          'libgl' 'libjpeg-turbo' 'glu' 'desktop-file-utils')
-makedepends=('git' 'libmupdf' 'mupdf>=1.7' 'ocaml>=4.04')
+makedepends=('git' 'libmupdf' 'mupdf>=1.7' 'ocaml>=4.04' 'asciidoc' 'xmlto')
 source=("$pkgname::git+git://repo.or.cz/llpp.git")
 sha256sums=('SKIP')
-install=llpp.install
 # Dictionary lookup: http://repo.or.cz/llpp.git/commit/29916e0cadcdf0ee3136fc3b4655b3c8b0d01a7b
 optdepends=(
   'xsel: text selection'
@@ -56,9 +56,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
+  sed -i -e 's+-I \$mudir/include -I \$mudir/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
   sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
-  sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
+  sed -i -e 's+-L\$mudir/build/native ++' build.sh
 
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
   sed -i -e 's+-lmupdf+-lmupdf -lharfbuzz+' build.sh
@@ -76,6 +76,11 @@ package() {
   install -Dm755 build/llpp $pkgdir/usr/bin/llpp
   install -Dm644 misc/llpp.desktop $pkgdir/usr/share/applications/llpp.desktop
   install -Dm644 README $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+
+  # man pages
+  for f in llpp.man llppac.man llpphtml.man; do
+    install -Dm644 man/$f "$pkgdir/usr/share/man/man1/${f%.man}.1"
+  done
 
   # helper scripts
   cd misc/
