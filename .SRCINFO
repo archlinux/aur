@@ -1,7 +1,7 @@
 pkgbase = buildstream
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/BuildStream/
 	arch = any
 	license = LGPL
@@ -10,7 +10,6 @@ pkgbase = buildstream
 	depends = ostree
 	depends = python-blessings
 	depends = python-click
-	depends = python-fusepy
 	depends = python-jinja
 	depends = python-gobject
 	depends = python-pluginbase
