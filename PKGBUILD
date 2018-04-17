@@ -1,7 +1,7 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=realyog
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper around yay to make things simple."
 arch=(x86_64)
 url="https://github.com/Myl0g/realyog"
@@ -12,7 +12,7 @@ depends=(
 makedepends=(
     'git'
     'go'
-    'golang-dep'
+    'dep'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
