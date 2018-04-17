@@ -3,14 +3,14 @@
 
 pkgname=indicator-powersave
 pkgver=r98.9
-pkgrel=1
+pkgrel=2
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
 license=('GPL')
 depends=('libappindicator3' 'python2' 'python2-dbus' 'python2-gobject' 'pygtk' 'polkit-gnome' 'indicator-application')
 optdepends=('x86_energy_perf_policy' 'hdparm' 'nvidia-utils' 'iw' 'ethtool')
-makedepends=('python2-distutils-extra')
+makedepends=('python2-distutils-extra' 'bzr')
 provides=('indicator-cpufreq' 'indicator-cpufreq-bzr')
 conflicts=('indicator-cpufreq' 'indicator-cpufreq-bzr')
 source=("bzr+lp:indicator-cpufreq"
