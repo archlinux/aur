@@ -1,10 +1,11 @@
+# Mantainer: volalto <volalto86 AT gmail DOT com>
 # Mantainer: Guidobelix <guidobelix AT hotmail DOT it>
 # Contributor: Mattia Bertoni <mattia DOT b89 AT gmail DOT com>
 
 pkgname=amule-adnza
 pkgver=2012.1
 _amulever=2.3.1
-pkgrel=11
+pkgrel=12
 pkgdesc="aMule patched for Fastweb Network (Italy) by Adunanza forum"
 url='http://amule-adunanza.sourceforge.net/'
 license=('GPL')
@@ -34,6 +35,9 @@ build() {
 # if you don't want to change the icon,name and comments, comment the line below
 
   patch -Np0 -i "${srcdir}/fix_icon+comment+name2.patch"
+  
+  # Fix compilation with crypto++ 6.0.0
+  sed -i -e 's/pubkey.DEREncode(asink);/pubkey.AccessMaterial().Save(asink);/g' src/ClientCreditsList.cpp
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \

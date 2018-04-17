@@ -1,7 +1,7 @@
 pkgbase = amule-adnza
 	pkgdesc = aMule patched for Fastweb Network (Italy) by Adunanza forum
 	pkgver = 2012.1
-	pkgrel = 11
+	pkgrel = 12
 	url = http://amule-adunanza.sourceforge.net/
 	install = amule.install
 	arch = i686
