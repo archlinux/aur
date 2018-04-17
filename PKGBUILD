@@ -1,21 +1,22 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Pablo Arias <pabloariasal@gmail.com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=bcal-git
 _pkgname=bcal
-pkgver=35.68f5bba
+pkgver=1.8.r5.g0fde1c6
 pkgrel=1
-pkgdesc="Byte CALculator. The engineer's utility for storage conversions and calculations."
+pkgdesc="Storage conversion and expression calculator"
 arch=("i686" "x86_64")
 url="https://github.com/jarun/bcal"
 license=('GPL3')
-source=(${_pkgname}::"git+https://github.com/jarun/${_pkgname}.git")
+source=("git+https://github.com/jarun/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('bcal')
 provides=('bcal')
 
 pkgver() {
    cd "${srcdir}/${_pkgname}"
-   echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+   git describe --long | sed 's/v\([^-]*-\)/\1r/;s/-/./g'
 }
 
 package() {
