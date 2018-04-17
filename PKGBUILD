@@ -1,6 +1,6 @@
 pkgname=ganache
-pkgver=1.0.2
-_pkgver=1.0.2
+pkgver=1.1.0
+_pkgver=1.1.0
 pkgrel=1
 pkgdesc='A local Ethereum blockchain'
 url='http://truffleframework.com/ganache/'
@@ -9,7 +9,7 @@ license=('MIT')
 source=("https://github.com/trufflesuite/ganache/releases/download/v${_pkgver}/ganache-${_pkgver}-x86_64.AppImage"
 "appimagekit-Ganache.desktop"
 )
-sha256sums=('c92b1e39e882c533ed150770f77755291f31a6f1383767e53800b63115341e37'
+sha256sums=('57bbd55bccf2f74462e89f8096f550335bc748b039f068ed7b48584084ad7dfb'
 SKIP
 )
 noextract=('ganache-${_pkgver}-x86_64.AppImage')
