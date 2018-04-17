@@ -1,0 +1,13 @@
+pkgbase = gnome-osc-shell-theme
+	pkgdesc = Gnome-OSC Shell Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1171688/
+	arch = any
+	license = GPL
+	depends = gnome-shell-extensions
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1523894911/s/$_s/t/$_t/gnome-osc-shell-theme-1.0.tar.xz
+	md5sums = e27a5732f183649c5b883d0f7bf932d3
+
+pkgname = gnome-osc-shell-theme
+
