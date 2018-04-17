@@ -4,7 +4,7 @@
 
 pkgname=prometheus
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
 url="http://$pkgname.io"
@@ -34,7 +34,8 @@ build() {
 
 }
 check() {
-    if grep "^$(findmnt -n -o SOURCE --target /tmp)\\s.*noexec" /proc/mounts >/dev/null 2>&1; then
+    read -ra mount_infos <<<"$(findmnt -n -o SOURCE,TARGET --target /tmp)"
+    if grep "^${mount_infos[0]}\\s${mount_infos[1]}\\s.*noexec" /proc/mounts >/dev/null 2>&1; then
         echo "Tests are skipped because /tmp is mounted with noexec option."
     else
         export GOPATH="$srcdir/gopath"
