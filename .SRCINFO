@@ -1,0 +1,22 @@
+pkgbase = xosd-ex
+	pkgdesc = Displays text on your screen. On-Screen-Display-libs for some tools (with XFT patch)
+	pkgver = 2.2.14
+	pkgrel = 8
+	url = http://sourceforge.net/projects/libxosd/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxt
+	depends = libxinerama
+	depends = sh
+	provides = xosd
+	conflicts = xosd
+	source = http://downloads.sourceforge.net/libxosd/xosd-ex-2.2.14.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/x/xosd/xosd_2.2.14-2.debian.tar.gz
+	source = xosd-2.2.14-xft.patch
+	md5sums = 4b349fe930e4eee2f504d6c02673e24d
+	md5sums = cd3c37f4e4bbfba6f3ffd7ec43256cc2
+	md5sums = 5e525d29876a6936b11f20a6c3e2ddcc
+
+pkgname = xosd-ex
+
