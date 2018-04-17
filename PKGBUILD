@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r420.ge3e2c794ef
+pkgver=0.28.2.r469.ged7bc3a5f3
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -16,10 +16,17 @@ arch=('x86_64')
 license=('GPL')
 url='http://mpv.io'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'crossc' 'lcms2' "$_ffmpeg_depend" 'mujs' 'libdvdread' 'libgl' 'libvdpau'
-         'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
-	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
-         'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
+depends=(
+# official repositories:
+'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
+'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
+'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
+'zlib' 'sndio' 'openal' 'vulkan-icd-loader' "${_undetected_depends[@]}"
+
+# AUR:
+'ffmpeg-full-git' 'mujs' 'rsound' 'shaderc-git' 'crossc' 'vapoursynth-git'
+)
 
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
@@ -31,12 +38,12 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
+makedepends=('vulkan-headers' 'mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
               'streamlink' 'youtube-dl')
 # check kind of graphic card
 if [ "$CARCH" = "x86_64" ] ; then
-makedepends+=('cuda')
+makedepends+=('cuda' 'ffnvcodec-headers')
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 fi
     
@@ -83,92 +90,118 @@ msg2 "Running bootstrap. Please wait..."
 build() {
   cd "${srcdir}/$_gitname"
  ./waf configure \
-	            --color=yes \
-	            --prefix=/usr \
-	            --confdir=/etc/mpv \
-	            --progress \
-	            --enable-libmpv-shared \
-	            --disable-libmpv-static \
-	            --disable-static-build \
-	            --disable-debug-build \
-	            --enable-manpage-build \
-	            --disable-html-build \
-	            --disable-pdf-build \
-	            --enable-cplugins \
-	            --enable-zsh-comp \
-	            --disable-test \
-	            --disable-clang-database \
-	            --disable-win32-internal-pthreads \
-	            --enable-iconv \
-	            --enable-libsmbclient \
-	            --enable-lua \
-              --enable-crossc \
-	            --enable-libass \
-	            --enable-libass-osd \
-	            --enable-encoding \
-	            --enable-libbluray \
-	            --enable-dvdread \
-	            --enable-dvdnav \
-	            --enable-cdda \
-	            --enable-uchardet \
-	            --enable-rubberband \
-	            --enable-lcms2 \
-	            --enable-vapoursynth \
-	            --enable-vapoursynth-lazy \
-	            --enable-libarchive \
-	            --enable-libavdevice \
-	            --lua=52arch \
-	            --enable-sdl2 \
-	            --enable-oss-audio \
-	            --enable-rsound \
-	            --enable-sndio \
-	            --enable-pulse \
-	            --enable-jack \
-	            --enable-openal \
-	            --disable-opensles \
-	            --enable-alsa \
-	            --disable-coreaudio \
-	            --disable-audiounit \
-	            --disable-wasapi \
-	            --disable-cocoa \
-	            --enable-drm \
-	            --enable-gbm \
-	            --enable-wayland \
-	            --enable-x11 \
-	            --enable-xv \
-	            --disable-gl-cocoa \
-	            --enable-gl-x11 \
-	            --enable-egl-x11 \
-	            --enable-egl-drm \
-	            --enable-gl-wayland \
-	            --disable-gl-win32 \
-	            --disable-gl-dxinterop \
-	            --disable-egl-angle \
-	            --disable-egl-angle-lib \
-	            --enable-vdpau \
-	            --enable-vdpau-gl-x11 \
-	            --enable-vaapi \
-	            --enable-vaapi-x11 \
-	            --enable-vaapi-wayland \
-	            --enable-vaapi-drm \
-	            --enable-vaapi-glx \
-	            --enable-vaapi-x-egl \
-	            --enable-caca \
-	            --enable-jpeg \
-	            --disable-direct3d \
-	            --disable-ios-gl \
-	            --enable-plain-gl \
-	            --disable-mali-fbdev \
-	            --enable-gl \
-	            --disable-videotoolbox-gl \
-	            --disable-d3d-hwaccel \
-              --enable-javascript \
-              --enable-tv \
-	            --enable-tv-v4l2 \
-	            --enable-libv4l2 \
-	            --enable-audio-input \
-	            --enable-dvbin \
-	            --disable-apple-remote
+	--color='yes' \
+	--prefix='/usr' \
+	--progress \
+	--confdir='/etc/mpv' \
+	\
+	--disable-lgpl \
+	--enable-libmpv-shared \
+	--disable-libmpv-static \
+	--disable-static-build \
+	--disable-debug-build \
+	\
+	--enable-manpage-build \
+	--disable-html-build \
+	--disable-pdf-build \
+	\
+	--enable-cplugins \
+	--enable-zsh-comp \
+	--disable-test \
+	--disable-clang-database \
+	\
+	--disable-android \
+	--disable-uwp \
+	--disable-win32-internal-pthreads \
+	--enable-iconv \
+	--enable-libsmbclient \
+	--enable-lua \
+	--enable-javascript \
+	--enable-libass \
+	--enable-libass-osd \
+	--enable-zlib \
+	--enable-encoding \
+	--enable-libbluray \
+	--enable-dvdread \
+	--enable-dvdnav \
+	--enable-cdda \
+	--enable-uchardet \
+	--enable-rubberband \
+	--enable-lcms2 \
+	--enable-vapoursynth \
+	--enable-vapoursynth-lazy \
+	--enable-libarchive \
+	--enable-libavdevice \
+	--lua='52arch' \
+	\
+	--enable-sdl2 \
+	--enable-oss-audio \
+	--enable-rsound \
+	--enable-sndio \
+	--enable-pulse \
+	--enable-jack \
+	--enable-openal \
+	--disable-opensles \
+	--enable-alsa \
+	--disable-coreaudio \
+	--disable-audiounit \
+	--disable-wasapi \
+	\
+	--disable-cocoa \
+	--enable-drm \
+	--enable-drmprime \
+	--enable-gbm \
+	--enable-wayland-scanner \
+	--enable-wayland-protocols \
+	--enable-wayland \
+	--enable-x11 \
+	--enable-xv \
+	--disable-gl-cocoa \
+	--enable-gl-x11 \
+	--enable-egl-x11 \
+	--enable-egl-drm \
+	--enable-gl-wayland \
+	--disable-gl-win32 \
+	--disable-gl-dxinterop \
+	--disable-egl-angle \
+	--disable-egl-angle-lib \
+	--disable-egl-angle-win32 \
+	--enable-vdpau \
+	--enable-vdpau-gl-x11 \
+	--enable-vaapi \
+	--enable-vaapi-x11 \
+	--enable-vaapi-wayland \
+	--enable-vaapi-drm \
+	--enable-vaapi-glx \
+	--enable-vaapi-x-egl \
+	--enable-caca \
+	--enable-jpeg \
+	--disable-direct3d \
+	--enable-shaderc \
+	--enable-crossc \
+	--disable-d3d11 \
+	--disable-rpi \
+	--disable-ios-gl \
+	--enable-plain-gl \
+	--disable-mali-fbdev \
+	--enable-gl \
+	--enable-vulkan \
+	\
+	--disable-videotoolbox-gl \
+	--disable-d3d-hwaccel \
+	--disable-d3d9-hwaccel \
+	--disable-gl-dxinterop-d3d9 \
+	--enable-cuda-hwaccel \
+	\
+	--enable-tv \
+	--enable-tv-v4l2 \
+	--enable-libv4l2 \
+	--enable-audio-input \
+	--enable-dvbin \
+	\
+	--disable-apple-remote \
+	--disable-macos-touchbar \
+	--disable-macos-cocoa-cb
 
 	./waf build
 }
