@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.324.3"
+pkgver="7.0.325.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -13,7 +13,7 @@ _x86file="EditorV7.x86.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x86file)
-sha256sums=('8f3014d0e3d8c1690d6ce2b391c3730e91a6872726d65ccdc4502a2525f00a78')
+sha256sums=('3522be0280914e8a31e7a7adbc744fb5cff6c2358f8de63cf5734e2961a453b7')
 
 prepare()
 {
@@ -378,7 +378,7 @@ package()
  echo 'if [ ! -d "$HOME/.$program/wine" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
  echo '   mkdir -p "$HOME/.$program/wine"' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
- echo  'if [ ! -z "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'if [ ! -z "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
  echo '   document=$(WINEARCH=win32 WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
  echo 'else' >> "$pkgdir/usr/bin/$pkgname"
  echo '   unset document' >> "$pkgdir/usr/bin/$pkgname"
