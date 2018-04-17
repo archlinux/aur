@@ -4,9 +4,9 @@
 _orgname=tumic0
 _pkgname=gpxsee
 pkgname=${_pkgname}
-pkgver=5.6
-pkgrel=2
-pkgdesc='GPX viewer and analyzer'
+pkgver=5.7
+pkgrel=1
+pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
 url="http://www.gpxsee.org/"
 license=('GPL3')
@@ -16,7 +16,7 @@ optdepends=('qt5-imageformats: Support for TIFF')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/${_orgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f49207d94ff1764407ba1571fee0b542402f0965099a110481db0e3c406ed5e7')
+sha256sums=('1e1f33e597fd33772dbe4b3a8b90697e1dd7bb254a8161e2ad977467624c9d2f')
 
 build() {
   cd GPXSee-${pkgver}
