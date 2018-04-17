@@ -2,18 +2,18 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mailfromd'
-pkgver='8.1'
+pkgver='8.5'
 pkgrel='1'
 pkgdesc='General-Purpose Mail Filter'
-arch=('any')
+arch=('x86_64')
 url="http://puszcza.gnu.org.ua/software/${pkgname}"
-depends=('smtp-server' 'gdbm' 'mailutils' 'geoip')
+depends=('smtp-server' 'gdbm' 'mailutils' 'geoip' 'adns')
 makedepends=('mailutils')
 license=('GPL')
 source=("${pkgname}.service"
-	"ftp://download.gnu.org.ua/release/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+	"ftp://download.gnu.org.ua/pub/release/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('26a380c1bfe964c1aaaf351f85504c72ca7be5dca199e7cd79252c83382a9ce0'
-            '6d83038a17e9d9009da2545a76898ba62a386d0d0b9f558be76765eeabeaf5c2')
+            '7796223635ce8a912a649de566f9595432590c6b6d38db7c56d61ab6b86fbbc3')
 backup=('etc/mailfromd.mf')
 
 prepare() {
