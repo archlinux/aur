@@ -2,9 +2,9 @@
 
 pkgname=jdk-demos
 _major=8
-_minor=162
-_build=b12
-_hash=0da788060d494f5095bf8624735fa2f1
+_minor=172
+_build=b11
+_hash=a58eab1ec242421181065cdc37240b08
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Demos and samples of common tasks and new functionality in Oracle Java $_major Development Kit"
@@ -16,7 +16,7 @@ optdepends=("java-runtime>=$_major: Run examples"
             "gradle: Compile examples")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$_hash/jdk-$pkgver-linux-x64-demos.tar.gz")
-md5sums=('847cf2f5d6464001841d1a79cd7b61b8')
+md5sums=('cb4b055017fe5f48028974a0784d488e')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
