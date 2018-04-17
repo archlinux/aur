@@ -1,4 +1,4 @@
-# Maintainer: Emil Lundberg <emil@emlun.se>
+# Maintainer: Emil Lundberg <emil@emlun.se> <emil@yubico.com>
 
 pkgname="python-fido2"
 pkgver="0.3.0"
