@@ -1,0 +1,20 @@
+pkgbase = seer-git
+	pkgdesc = symbolic execution engine for Rust
+	pkgver = 0.0.3.327
+	pkgrel = 1
+	url = https://github.com/dwrensha/seer
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	provides = seer
+	conflicts = seer
+	source = seer::git+https://github.com/dwrensha/seer
+	sha256sums = SKIP
+
+pkgname = seer-git
+
