@@ -3,7 +3,7 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=nip2
-pkgver=8.5.1
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="A frontend to the vips image library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/jcupitt/nip2"
 # optional: graphviz
 depends=('vips' 'gsl' 'gtk2' 'desktop-file-utils')
 source=("https://github.com/jcupitt/nip2/releases/download/v${pkgver}/nip2-${pkgver}.tar.gz")
-md5sums=('5d0442e0007f04cac2b86bc6de6b294d')
+sha256sums=('1ed55f0890a626d7a45c513e4788058d99b45008b793072c3f7e80231a7c7186')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
