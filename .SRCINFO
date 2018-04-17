@@ -6,7 +6,8 @@ pkgbase = unifi
 	arch = any
 	license = custom
 	depends = mongodb
-	depends = jre8-openjdk-headless
+	depends = java-runtime-headless>=8
+	depends = java-runtime-headless<9
 	depends = fontconfig
 	conflicts = tomcat-native
 	source = UniFi-5.7.23.zip::https://dl.ubnt.com/unifi/5.7.23/UniFi.unix.zip
