@@ -5,12 +5,13 @@
 _gemname=grit
 pkgname=ruby-$_gemname
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby Git bindings.'
 arch=(any)
 url='http://github.com/mojombo/grit'
 license=(MIT)
 depends=(ruby ruby-posix-spawn ruby-mime-types-1 ruby-diff-lcs)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

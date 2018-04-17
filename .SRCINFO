@@ -1,10 +1,11 @@
 pkgbase = ruby-grit
 	pkgdesc = Ruby Git bindings.
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/mojombo/grit
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-posix-spawn
 	depends = ruby-mime-types-1
