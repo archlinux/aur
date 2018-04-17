@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.15
-_stable=4.15.16
-_patchver=4.15.17
+_stable=4.15.17
+_patchver=4.15.18
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -41,9 +41,9 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
             '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            'bc0306445eb7ba436ea04f54fa0d3e77f6b95ca01e9c784fae46c3ece3ef666b'
+            '195dd5de9f72b02b09f18d2809dc7dbd1e2f3b36a71e68ec8d9951cafc66b23d'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            'e57d3958d4265676dbe453266c73dc6354488df7b88d2763496ab0e6febd7fac'
             'SKIP')
 
 _kernelname=${pkgbase#linux}
