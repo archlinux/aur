@@ -1,0 +1,17 @@
+pkgbase = ruby-jekyll-compose
+	pkgdesc = Streamline your writing in Jekyll with these commands
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/jekyll-compose
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = jekyll
+	noextract = jekyll-compose-0.8.0.gem
+	source = https://rubygems.org/downloads/jekyll-compose-0.8.0.gem
+	source = LICENSE
+	md5sums = 4918f325553ccccd2b0bb88e644b940b
+	md5sums = 24cbe1f463ac66eaae650087275dab91
+
+pkgname = ruby-jekyll-compose
+
