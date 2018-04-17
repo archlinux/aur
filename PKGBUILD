@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=task-maker
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('python' 'libyaml')
 makedepends=('bazel')
 source=("https://github.com/algorithm-ninja/task-maker/archive/v${pkgver}.tar.gz"
         "launcher")
-sha384sums=('d8df0dbb22e0c5e616bc3e2cf1fc43b3961a286a949b8b91c38d9241e8e88b198c20cf6eb3738af047bc3f8cfb835c4e'
+sha384sums=('465f5c35ae0c5be22c074d27d1d644e1e52680cc48d8f087d2a284ca703907fd012d5da5d8cda2bb2826dad3e7daaad8'
             'af15e538605520142698741a2f5cc1e7f6fcf026dffdcc649630d360b6e7e65031c339d64f0a8a4288242537919e3e35')
 
 build() {
