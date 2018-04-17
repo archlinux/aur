@@ -2,7 +2,7 @@
 
 pkgname=corosync
 pkgver=2.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
@@ -47,7 +47,7 @@ package() {
   cat >>"${pkgdir}/usr/lib/tmpfiles.d/corosync.conf" <<EOF
 d /var/log/cluster 0755 root root -
 d /run/corosync-qdevice 0755 root root -
-d /run/corosync-qnetd 07ff root root -
+d /run/corosync-qnetd 0755 root root -
 EOF
 }
 
