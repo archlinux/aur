@@ -1,9 +1,8 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
 # Comaintainer: bartus <aur@bartus.33mail.com>
-_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname=luxrays-hg
-pkgver=3752+.36522ab16096+
+pkgver=3755+.ceb10f796325+
 pkgrel=1
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
@@ -42,6 +41,8 @@ build() {
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DEMBREE_INCLUDE_PATH=/usr/include/embree-bvh_build \
+    -DEMBREE_LIBRARY=/usr/lib/embree-bvh_build/libembree.so.2 \
     -DCMAKE_SKIP_RPATH=ON \
     -DLUXRAYS_DISABLE_OPENCL=OFF
   # this sucks, but luxrays doesn't seem to honor  CMAKE_*_LINKER_FLAGS
@@ -59,8 +60,9 @@ package() {
   cp -a include "$pkgdir"/usr
 
   # install pyluxcore to the Python search path
-  install -d -m755 "$pkgdir"/usr/lib/python${_pyver}/
-  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir"/usr/lib/python${_pyver}/
+  _pypath=`pacman -Ql python | sed -n '/\/usr\/lib\/python[^\/]*\/$/p' | cut -d" " -f 2`
+  install -d -m755 "$pkgdir/$_pypath"
+  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir/$_pypath"
 }
 
 # vim:set ts=2 sw=2 et:
