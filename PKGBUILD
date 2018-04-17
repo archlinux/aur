@@ -1,4 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Gerardo Marset <gammer1994@gmail.com>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
