@@ -10,7 +10,7 @@ install=ttf-sega.install
 source=('https://www.dafont.com/sega.font')
 
 package() {
-	install -Dm0644 SEGA.ttf $pkgdir/usr/share/fonts/TTF/Sega.ttf
+	install -Dm0644 sega.ttf $pkgdir/usr/share/fonts/TTF/Sega.ttf
 }
 
-sha256sums=('cb0147491c511738dd4bbb75f4f0fed65c27a331508cf1dc15d38f8132af724b')
+sha256sums=('00705917db8dff81592fffd9ac67f853f88198121014e647a6655be5cda8d6dc')
