@@ -5,7 +5,7 @@ checkmails-1.2.1-1
     + Change wm_class to CheckMails (the windows will no longer be grouped together with tk windows)
     + Only display the 'No Internet connection' error once
     + Log more events (Internet connection and Suspend/Restart) 
-  
+
 checkmails-1.2.0-1
   * New upstream version:
     + Fix font settings
