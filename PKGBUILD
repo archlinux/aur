@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=scite
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc='Editor with facilities for building and running programs'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('custom:scite')
 depends=('gtk3')
 backup=('usr/share/scite/SciTEGlobal.properties')
 source=("https://www.scintilla.org/${pkgname}${pkgver//./}.tgz")
-sha256sums=('72b54920ca8be1c6ec5e0f429dcfdb09282d921979d647973327dfd7ae54abde')
+sha256sums=('c27d3d6eb0a333f86d32b801c52ff6a408e23e13adc9b894c29019152bb18d66')
 
 build() {
   GTK3=1 make -C "scintilla/gtk"
