@@ -2,7 +2,7 @@
 
 pkgname=phpredis-git
 pkgrel=1
-pkgver=2.2.5.r11.gb9a16b5
+pkgver=3.1.4RC1.r139.g18d03fd
 pkgdesc="A PHP extension for Redis"
 arch=('i686' 'x86_64')
 url="https://github.com/nicolasff/phpredis"
