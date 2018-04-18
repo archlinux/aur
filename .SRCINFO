@@ -1,0 +1,13 @@
+pkgbase = babeledit
+	pkgdesc = Translation editor for web apps
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.codeandweb.com/babeledit/download
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	source = https://cdn.codeandweb.com/download/babeledit/1.1.0/BabelEdit-1.1.0.deb
+	sha256sums = c2239041874d71b84638b852fe4d02fd4ec8a3e296bdd62dd36c2d141dbd9516
+
+pkgname = babeledit
+
