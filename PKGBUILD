@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
 pkgver=2.32.5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -51,14 +51,16 @@ build() {
   cd "$GOPATH/src/${_gourl}"
   XDG_CONFIG_HOME="$srcdir" ./get-deps.sh
 
-  # Build go binaries
-  go build -o $GOPATH/bin/snap "${_gourl}/cmd/snap"
-  go build -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
-  go build -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
-  go build -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
+  gobuild="go build -buildmode=pie"
+  gobuild_static="go build -buildmode=pie -ldflags=-extldflags=-static"
+  # Build/install snap and snapd
+  $gobuild -o $GOPATH/bin/snap "${_gourl}/cmd/snap"
+  $gobuild -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
+  $gobuild -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
+  $gobuild -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
   # build snap-exec and snap-update-ns completely static for base snaps
-  go build -o $GOPATH/bin/snap-update-ns -ldflags '-extldflags "-static"' "${_gourl}/cmd/snap-update-ns"
-  CGO_ENABLED=0 go build -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
+  $gobuild_static -o $GOPATH/bin/snap-update-ns "${_gourl}/cmd/snap-update-ns"
+  $gobuild_static -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
 
   # Generate data files such as real systemd units, dbus service, environment
   # setup helpers out of the available templates
