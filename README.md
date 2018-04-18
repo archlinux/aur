@@ -9,7 +9,10 @@ This package contains both the desktop and cli client
 
 ## Installing
 
-You can use an AUR wrapper like [yay](https://aur.archlinux.org/packages/yay/)
+You can use an AUR wrapper like [yay](https://aur.archlinux.org/packages/yay/):
+```
+yay -S joplin
+```
 
 ## Building
 
