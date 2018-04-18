@@ -24,6 +24,4 @@ package()
 {
 	cp -r "${srcdir}"/opt "${pkgdir}"/opt
         cp -r "${srcdir}"/usr "${pkgdir}"/usr
-        install -D "${pkgdir}"/usr/local/bin
-        ln -s "${pkgdir}"/opt/bootstrapstudio/Bootstrap\ Studio "${pkgdir}"/usr/local/bin/bootstrap-studio
 }

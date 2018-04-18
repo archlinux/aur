@@ -16,6 +16,8 @@ GREEN="${BOLD}$(tput setaf 2)"
 
 post_install()
 {
+  install -D /usr/local/bin
+  ln -sr /opt/bootstrapstudio/Bootstrap\ Studio /usr/local/bin/bootstrap-studio
 }
 
 post_upgrade()
