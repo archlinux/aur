@@ -1,0 +1,4 @@
+kaniko-*.pkg.tar.xz
+kaniko-*.sh
+pkg/
+src/
