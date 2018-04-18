@@ -5,12 +5,18 @@
 
 pkgname=palemoon-bin
 pkgver=27.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
+depends=('alsa-lib'
+    'dbus-glib'
+    'desktop-file-utils'
+    'gtk2'
+    'libxt'
+    'mime-types'
+    'nss')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
