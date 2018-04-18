@@ -1,0 +1,16 @@
+pkgbase = serval-dna-git
+	pkgver = ffeb25aa
+	pkgrel = 1
+	arch = any
+	makedepends = automake
+	makedepends = autoconf
+	depends = glibc
+	provides = serval-dna
+	conflicts = serval-dna
+	replaces = serval-dna
+	options = !emptydirs
+	source = git+https://github.com/servalproject/serval-dna.git
+	md5sums = SKIP
+
+pkgname = serval-dna-git
+
