@@ -1,6 +1,9 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Lone_Wolf <lonewolf@xs4all.nl>
 # Contributor: Allen Choong <allencch at hotmail dot com>
 # Contributor: Indeed <fengjared at gmail dot com>
+
+# TODO: Add /usr/share/{doc,licenses}
 
 _opt_RPM=1 # Default 1
 # 0 = deb, the deb has hardcoded references to /usr/local/lib
@@ -113,14 +116,17 @@ pkgname='cndrvcups-lb-bin'
 #pkgver='3.40_02'; _commonver='3.80'; _dl='0/0100003440/14'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/14/linux-UFRII-drv-v340-02-usen.tar.gz ef5421f98ae428ad8ad11ed5d9fb0e53bdc03b2693e79d590cf778fbe68250b5
 # http://gdlp01.c-wss.com/gds/8/0100007658/04/linux-UFRII-drv-v340-uken.tar.gz
 # http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz
-pkgver='3.50'; _commonver='3.90'; _dl='0/0100009240/01'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/01/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
+#pkgver='3.50'; _commonver='3.90'; _dl='0/0100009240/01'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/01/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
+pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/05/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
 
 _pkgver="${pkgver}"
 pkgrel='1'
 pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D Laser Shot LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
 # Not UFR II: PRO PC-D
 arch=('i686' 'x86_64')
-url='http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html'
+# Direct links to the download reference go bad on the next version. We want something that will persist for a while.
+url='https://www.canon.co.uk/for_work/products/office_print_copy_solutions/office_black_white/imagerunner_1730i/'
+#url='https://www.usa.canon.com/internet/portal/us/home/support/details/printers/black-and-white-laser/mf212w/imageclass-mf212w'
 license=('GPL' 'MIT' 'custom')
 _depsdual=('glibc' 'gcc-libs') # 'libpng12'
 depends=('bzip2' 'gnutls' 'icu' 'lz4' 'pcre' 'xz' 'avahi' 'gtk2' 'libglade' 'libpng' 'ghostscript' 'cups' 'libcups')
@@ -143,7 +149,7 @@ esac
 if [ "${_inst_lb}" -ne 0 ]; then
   _depsdual+=('icu' 'libxml2' 'zlib')
   optdepends_i686=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices')
-  optdepends_x86_64=('lib32-libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices')
+  optdepends_x86_64=("${optdepends_i686[@]/#/lib32-}")
 fi
 depends_i686+=("${_depsdual[@]}")
 depends_x86_64+=("${_depsdual[@]/#/lib32-}")
@@ -252,7 +258,12 @@ package() {
         mv 'usr/lib' 'usr/lib32'
         mv 'usr/lib64' 'usr/lib'
        # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
-        ln -s '../lib32/libc3pl.so' -t 'usr/lib'
+        if [ "${_inst_common}" -ne 0 ]; then
+          ln -s '../lib32/libc3pl.so' -t 'usr/lib'
+        fi
+        if [ "${_inst_lb}" -ne 0 ]; then
+          ln -s '../lib32/libcnlbcm.so' -t 'usr/lib'
+        fi
       else
         mkdir 'usr/lib32'
         mv 'usr/lib'/*.so* 'usr/lib'/*.a 'usr/lib32'
@@ -310,7 +321,12 @@ package() {
           mv *.a '../lib32/'
         fi
         # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
-        ln -s '../lib32/libc3pl.so'
+        if [ "${_inst_common}" -ne 0 ]; then
+          ln -s '../lib32/libc3pl.so'
+        fi
+        if [ "${_inst_lb}" -ne 0 ]; then
+          ln -s '../lib32/libcnlbcm.so'
+        fi
         popd > /dev/null
       fi
     fi
@@ -364,9 +380,6 @@ EOF
       ) 'usr/bin/cnpkmoduleufr2'
     fi
 
-    # The filter works in /usr/bin but it's expected in .../cups/filter/
-    ln -s '/usr/bin/c3pldrv' -t 'usr/lib/cups/filter/'
-
     if [ "${_inst_patch}" -ne 0 ]; then
       set +u; msg2 "Patching alternate to ${_pkgverA}"; set -u
       bspatch 'usr/bin/cnpkmoduleufr2'{,.new} "${srcdir}/${_arpat}"
@@ -378,6 +391,12 @@ EOF
     # grep -he '^*ModelName:' 'usr/share/cups/model'/*.ppd > "${startdir}/models.${_pkgver}.txt"
 
     gzip 'usr/share/cups/model'/*.ppd
+  fi
+
+  if [ "${_inst_common}" -ne 0 ]; then
+    # The filter works in /usr/bin but it's expected in .../cups/filter/
+    install -d 'usr/lib/cups/filter/'
+    ln -s '/usr/bin/c3pldrv' -t 'usr/lib/cups/filter/'
   fi
 
   set +u
