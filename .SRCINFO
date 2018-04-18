@@ -1,7 +1,7 @@
 pkgbase = libindi_3rdparty
 	pkgdesc = 3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = libindi_3rdparty
 	depends = libftdi
 	depends = rtl-sdr
 	provides = libindi_3rdparty
+	conflicts = libqhy-git
 	source = https://github.com/indilib/indi/releases/download/v1.7.1/libindi_3rdparty_1.7.1.tar.gz
 	sha1sums = d901352df21d6116b96dc0e5e5395ac9c4e3398a
 
