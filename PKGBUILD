@@ -2,12 +2,12 @@
 # Contributor: Philip Müller <philm@manjaro.org>
 pkgname=ms-office-online
 pkgver=2018.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Office Suite Online"
 arch=('any')
 url="https://www.office.com/"
 license=('custom')
-depends=('jade-application-kit') #change to jade-application-kit-git if required
+depends=('jade-application-kit-git') #minimum of jade-application-kit v0.36 is required and is currently provided by git
 source=('Excel.desktop'
         'Excel.png'
         'MSOffice.desktop'

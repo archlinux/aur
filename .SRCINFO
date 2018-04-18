@@ -1,11 +1,11 @@
 pkgbase = ms-office-online
 	pkgdesc = Microsoft Office Suite Online
 	pkgver = 2018.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.office.com/
 	arch = any
 	license = custom
-	depends = jade-application-kit
+	depends = jade-application-kit-git
 	source = Excel.desktop
 	source = Excel.png
 	source = MSOffice.desktop
