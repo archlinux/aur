@@ -1,13 +1,13 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkcalendar' 'python2-tkcalendar')
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Calendar widget for Tkinter"
 arch=('any')
 url="https://pypi.python.org/pypi/tkcalendar"
 license=('GPL3')
 source=("tkcalendar-$pkgver.tar.gz::https://github.com/j4321/tkcalendar/archive/v$pkgver.tar.gz")
-sha512sums=('bf3cf951ae3d706b2372b3fdd0bd7a1a0b884095bb468ca79b308b2beea91601b650703a0c2864120994bb3ffea269fe929744d0a9ff0201812cf4188a3b9e85')
+sha512sums=('07eaf907c84aeace56dca809dcd07aa590d324ddaeee792ce2b7b768ede5233c0f7642af1d6fd39fc3fa76ab4b7c026fbe3d1025a5f92ef4903234487a09e602')
 
 package_python-tkcalendar() {
   makedepends=('python-setuptools')
