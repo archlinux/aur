@@ -3,6 +3,7 @@ pkgbase = bootstrap-studio
 	pkgver = 4.1.6
 	pkgrel = 1
 	url = https://bootstrapstudio.io/
+	install = bootstrap-studio.install
 	arch = x86_64
 	provides = bootstrapstudio
 	source = https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb

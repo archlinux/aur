@@ -10,6 +10,8 @@ arch=('x86_64')
 source+=("https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb")
 sha1sums+=('a76b8f3bebcbdb5abf75e7709f43faf0a6f8f728')
 
+install=bootstrap-studio.install
+
 build()
 {
 	cd "${srcdir}"
@@ -20,5 +22,8 @@ build()
 
 package()
 {
-	cp -r "${srcdir}"/ "${pkgdir}"/
+	cp -r "${srcdir}"/opt "${pkgdir}"/opt
+        cp -r "${srcdir}"/usr "${pkgdir}"/usr
+        install -D "${pkgdir}"/usr/local/bin
+        ln -s "${pkgdir}"/opt/bootstrapstudio/Bootstrap\ Studio "${pkgdir}"/usr/local/bin/bootstrap-studio
 }
