@@ -27,7 +27,7 @@ package() {
 	cp -r "$_cvsmod" "$_cvsmod-build" || return 1
 	cd "$_cvsmod-build"
 	cp golded3/mygolded.__h golded3/mygolded.h || return 1
-	make || return 1
+	CFLAGS=-fpermissive make || return 1
 	mkdir -p ${pkgdir}/usr/bin
 	install -Dm755 bin/{gedlnx,golded,gnlnx,rddtlnx} ${pkgdir}/usr/bin/
 }
