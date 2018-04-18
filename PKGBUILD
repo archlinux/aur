@@ -2,7 +2,7 @@
 
 _pkgname=pyroute2
 pkgname=python2-${_pkgname}
-pkgver=0.4.21
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A pure Python netlink and Linux network configuration library. (Python2 version)"
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
   'python2-nose')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7afad28ee0a0f3e7c34adaa9f953d00560ed9910203e93f107833b6e8d151171')
+sha256sums=('bb02fe5a02fb4e8baad4d7ccf7ba5e748044ee0a1ad7d2fa4927f68f396863c4')
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
