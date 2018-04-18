@@ -5,8 +5,8 @@ pkgbase=linux-clear
 __basekernel=4.16
 _minor=2
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.2-550
-pkgrel=3
+_clearver=${__basekernel}.2-551
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -53,7 +53,7 @@ prepare() {
   rm -f firmware/intel-ucode/0f*
 
   # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch005|^Patch006|^Patch0115|^Patch200|^Patch0500' | sed -n 's/.*: //p'); do
+  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch0410|^Patch0500|^Patch200' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
