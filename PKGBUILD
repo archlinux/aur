@@ -5,15 +5,15 @@
 # Contributor: Tim Karreman <tim at karreman dot net>
 
 pkgname=mbuffer
-pkgver=20180318
-pkgrel=2
+pkgver=20180410
+pkgrel=1
 pkgdesc="a tool for buffering data streams"
 arch=('i686' 'x86_64')
 url="http://www.maier-komor.de/mbuffer.html"
 license=('GPL3')
 depends=('openssl')
 source=(http://www.maier-komor.de/software/${pkgname}/${pkgname}-${pkgver}.tgz)
-md5sums=('cc2830940d1beead6e2b2c090e275dc7')
+md5sums=('8fea770a72e7278c3d727e5874d770e3')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
