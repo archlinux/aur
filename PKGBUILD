@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=arrongin-gtk-theme
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
 url='https://www.opendesktop.org/p/1215199/'
@@ -13,5 +13,5 @@ sha512sums=('2ea560d11035ffa68e0d7c948ee755a955e410b161220f8d67b19624b16b6a62026
 package() {
   cd "${srcdir}"/Arrongin-$pkgver
   install -d "$pkgdir"/usr/share/themes/Arrongin
-  cp -rf * "$pkgdir"/usr/share/themes/Arrongin
+  cp -rf gtk-* "$pkgdir"/usr/share/themes/Arrongin
 }
