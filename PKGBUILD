@@ -16,7 +16,7 @@ sha512sums=('fbf67ca7e0b72333eb981265e336b2b2da890a3a995261950a74a61cf55e56658c3
 
 build(){
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    sbt publish-local
+    sbt publishLocal
 }
 
 package() {
