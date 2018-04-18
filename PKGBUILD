@@ -5,9 +5,9 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-macbook       # Build kernel with a different name
-_srcname=linux-4.15
-pkgver=4.15.17
-pkgrel=1
+_srcname=linux-4.16
+pkgver=4.16.2
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -25,24 +25,34 @@ source=(
   RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+  0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'e57d3958d4265676dbe453266c73dc6354488df7b88d2763496ab0e6febd7fac'
+            'fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575'
             'SKIP'
-            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
+            '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
             '7c99aaeaea7837f83a3ad215cf07277934ccf39720acee7f1c371dc86bdf89fc'
             '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
+            '6ad732db3f773de52ab544be83f22b04157a880742ab262202b01c32ee2d4995'
+            'bc300c44023cdef225f5d18fe6054cd2886c4062410d2720b2b2fd82465184f3'
+            'dcd819e630cfa7292aa38078ab16758338836ee917e82ce42c8a9aca08f2ecdb'
+            '9e93bc5bafeb978b1fb260d0cbfe15d8214ea0599dc6d771aae9ab652e223339'
+            '9fe8141703fd2b9eb8ea8f81a19a115c93684a87ee0895d042b48ce98d42c12a'
+            'e59bba13edb36ff5639ed3fd6c541e2c3d378db71dca6ea01f0aede6ab1b5700'
+            '34c7316a4e909300e14b0510dbeedc1d0acf9e43cc7c48693462e0fd98883fb2')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -58,6 +68,7 @@ prepare() {
 
   # start of macbook specific patches
   # https://patchwork.kernel.org/patch/9140867/
+
   msg "patch -Np1 -i ../RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch"
   patch -Np1 -i ../RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
 
@@ -70,6 +81,21 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58153
+  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+
+  # https://bugs.archlinux.org/task/58158
+  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+  # https://bugs.archlinux.org/task/58174
+  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+
+  # https://bugs.archlinux.org/task/58205
+  patch -Np1 -i ../0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
@@ -187,9 +213,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
