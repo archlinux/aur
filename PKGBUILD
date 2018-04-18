@@ -1,8 +1,8 @@
 # Maintainer: Prasad Kumar
 # Author: Vitor Lopes <vmnlop@gmail.com>
 pkgname=jade-application-kit-git
-pkgver=2018.04.18
-pkgrel=1
+pkgver=0.36
+pkgrel=2
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://pypi.org/project/Jade-Application-Kit/"
