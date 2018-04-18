@@ -1,7 +1,7 @@
 pkgbase = powerline-i3-git
 	pkgdesc = The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager.
 	pkgver = 1.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ph111p/powerline
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = powerline-i3-git
 	depends = lemonbar-xft-git
 	depends = i3ipc-python-git
 	depends = python-xlib
+	optdepends = python-dbus: player segments using dbus
 	optdepends = python-iwlib: wireless segment
 	optdepends = python-pyalsaaudio: volume segment
 	optdepends = python-psutil: cpu load segment

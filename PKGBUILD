@@ -2,7 +2,7 @@
 
 pkgname=powerline-i3-git
 pkgver=1.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
 url="https://github.com/ph111p/powerline"
@@ -16,6 +16,7 @@ depends=(
   'python-xlib'
 )
 optdepends=(
+  'python-dbus: player segments using dbus'
   'python-iwlib: wireless segment'
   'python-pyalsaaudio: volume segment'
   'python-psutil: cpu load segment'
