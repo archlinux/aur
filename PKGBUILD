@@ -9,6 +9,7 @@ url="https://github.com/drush-ops/drush-launcher"
 license=('GPL')
 depends=('php')
 makedepends=('composer' 'php-box')
+conflicts=('drush' 'drush-git' 'drush-launcher-git')
 source=("${pkgname}"::"git+https://github.com/drush-ops/drush-launcher.git#tag=${pkgver}")
 md5sums=('SKIP')
 

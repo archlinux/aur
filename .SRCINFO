@@ -8,6 +8,9 @@ pkgbase = drush-launcher
 	makedepends = composer
 	makedepends = php-box
 	depends = php
+	conflicts = drush
+	conflicts = drush-git
+	conflicts = drush-launcher-git
 	source = drush-launcher::git+https://github.com/drush-ops/drush-launcher.git#tag=0.6.0
 	md5sums = SKIP
 
