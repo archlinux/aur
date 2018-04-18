@@ -1,6 +1,6 @@
 pkgbase = eagle
 	pkgdesc = Powerful suite for schematic capture and printed circuit board design (aka eaglecad)
-	pkgver = 8.7.1
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = http://www.autodesk.com/products/eagle
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = eagle
 	depends = shared-mime-info
 	options = !emptydirs
 	options = !strip
-	source = https://eagle-updates.circuits.io/downloads/8_7_1/Autodesk_EAGLE_8.7.1_English_Linux_64bit.tar.gz
-	source = http://download.autodesk.com/us/FY17/Suites/LSA/en-US/lsa.html
+	source = https://eagle-updates.circuits.io/downloads/9_0_0/Autodesk_EAGLE_9.0.0_English_Linux_64bit.tar.gz
+	source = lsa18.html::http://download.autodesk.com/us/FY18/Suites/LSA/en-US/lsa.html
 	source = eagle.desktop
 	source = eagle.xml
-	sha256sums = 32616dcfa915f06818a9c3c98c7c28c663773a7748cb6c2598c35fe6f6c013ee
-	sha256sums = eed1b33943b366f58480e7d57673e4278db215e9d3bdfcece937f3f74ea72cf9
+	sha256sums = 81b7606cf70d752bfc300684d456c5050a26b60f67cc5ba6af8726fc015952f6
+	sha256sums = 5598259c2a952560ebd039909a08db2dfa8056ef83461857ad0347036ba68c0a
 	sha256sums = 40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6
 	sha256sums = 293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06
 
