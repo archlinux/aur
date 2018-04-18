@@ -1,14 +1,14 @@
 pkgbase = conduit
 	pkgdesc = Next-generation ultralight service mesh for Kubernetes
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://conduit.io/
 	install = conduit.install
 	arch = x86_64
 	license = Apache
 	options = !strip
-	source = conduit-0.3.0::https://github.com/runconduit/conduit/releases/download/v0.3.0/conduit-0.3.0-linux
-	sha256sums = f9e6baf9dcbf8883701d3235eb8a23ccca3a6beaec6a6104397c66dc4422e183
+	source = conduit-0.4.0::https://github.com/runconduit/conduit/releases/download/v0.4.0/conduit-0.4.0-linux
+	sha256sums = 9fb77b385f5d104ff01fb3d95c8b40218fd02da4c3d4002d1ddc104e783b653e
 
 pkgname = conduit
 
