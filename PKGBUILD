@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=pacman-expire-cache
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Tool for deleting old cached package files for pacman"
 arch=(any)
@@ -9,7 +9,7 @@ license=(BSD)
 makedepends=()
 depends=()
 source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('9d78101778213dc27825106d9ad52146')
+md5sums=('c8fc4c6e0c95d39dfe5a0cffbbc43dfb')
 
 package () {
     cd "$srcdir/${pkgname}-$pkgver"
