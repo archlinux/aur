@@ -4,7 +4,7 @@
 
 pkgname=prometheus
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
 url="http://$pkgname.io"
@@ -37,6 +37,8 @@ check() {
     read -ra mount_infos <<<"$(findmnt -n -o SOURCE,TARGET --target /tmp)"
     if grep "^${mount_infos[0]}\\s${mount_infos[1]}\\s.*noexec" /proc/mounts >/dev/null 2>&1; then
         echo "Tests are skipped because /tmp is mounted with noexec option."
+    elif ss -lnt | awk '{print $4}' | grep 9090 >/dev/null 2>&1; then
+        echo "Tests are skipped because TCP port 9090 is already in use."
     else
         export GOPATH="$srcdir/gopath"
         export GOBIN="$GOPATH/bin"
