@@ -1,4 +1,5 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Rafael Campos Las Heras <methril at gmail dot com>
+# Contributer: Grey Christoforo <first name at last name dot net>
 # Contributer: mickael9 <mickael9 at gmail dot com>
 
 _number_of_bits=16
