@@ -1,7 +1,7 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
 
 pkgname="trougnouf-backgrounds"
-pkgver=1.0.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
@@ -19,13 +19,14 @@ img08='Parc_Seny_on_a_snowy_day,_entering_from_Rue_Charles_Lemaire_(Auderghem,_B
 img09='Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
 img10='Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
 img11='Sunset_(civil_twilight)_in_Maasmechelen,_Belgium_(DSCF3215-hdr).jpg'
+img_ard='Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'
 img12='Parc_Tenreuken_looking_South_from_the_West_side_during_the_sunset_civil_twilight,_Auderghem,_Belgium_(DSCF3745,DSCF3746-b1).jpg'
 img13='Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'
 source=("${_url}3/3c/${img02}" "${_url}1/15/${img03}"
 	"${_url}0/00/${img04}" "${_url}5/51/${img05}" "${_url}1/13/${img06}"
 	"${_url}7/78/${img07}" "${_url}8/89/${img08}" "${_url}2/2c/${img09}"
 	"${_url}1/11/${img10}" "${_url}a/a8/${img11}" "${_url}f/f4/${img12}"
-	"${_url}1/10/${img13}")
+	"${_url}a/ad/${img_ard}" "${_url}1/10/${img13}")
 sha256sums=('816c37d71c5b3594aec28be8fe81699441007d9bbd1f240137f56691d2af51ad'
 	'0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
 	'34e13f84a99c20b7ba7280db25d6993675b17f953a327c144e57ad04abefd08f'
@@ -37,6 +38,7 @@ sha256sums=('816c37d71c5b3594aec28be8fe81699441007d9bbd1f240137f56691d2af51ad'
 	'a53cf0da1c9ff59bf7fff014a880154b154140ee5bc1e46fe1d099c7d6f36423'
 	'0bdd3c9704f481f822013e1689cb4f67ba2adda0f3fa25b1e79ea5faf5cde6a9'
 	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
+	'decdcae46f94604ae65c0cc212e6eddd3eba16ec57613755afe5c75ab833cc1c'
 	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c')
 
 package() {
@@ -118,10 +120,16 @@ package() {
 <file>/usr/share/backgrounds/trougnouf/${img11}</file>
 </static>
 
-<!-- 18h06 to 22h46 = 280 minutes -->
+<!-- 18h06 to 19h55 = 109 minutes -->
 <static>
-<duration>16800</duration>
+<duration>6540</duration>
 <file>/usr/share/backgrounds/trougnouf/${img12}</file>
+</static>
+
+<!-- 19h55 to 22h46 = 171 minutes -->
+<static>
+<duration>10260</duration>
+<file>/usr/share/backgrounds/trougnouf/${img_ard}</file>
 </static>
 
 <!-- 22h46 to 10h16 = 690 minutes -->
@@ -216,6 +224,13 @@ echo "<?xml version=\"1.0\"?>
   <wallpaper deleted=\"false\">
     <name>${img12}</name>
     <filename>/usr/share/backgrounds/trougnouf/${img12}</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
+  <wallpaper deleted=\"false\">
+    <name>${img_ard}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${img_ard}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
