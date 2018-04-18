@@ -8,16 +8,14 @@ pkgdesc='Linux SDL/ImGui edition software for viewing .brd files'
 arch=('i686' 'x86_64')
 url='https://openboardview.org/'
 license=('MIT')
-depends=('sdl2' 'fontconfig' 'sqlite' 'gtk3')
-makedepends=('cmake' 'sdl2' 'zlib' 'gtk3' 'fontconfig' 'sqlite' 'libpng' 'python')
+depends=('sdl2' 'sqlite' 'zlib' 'fontconfig' 'gtk3' 'libpng')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R${pkgver}")
 sha512sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule update --init --recursive
-    mkdir -p build
-    cd build
+    mkdir -p "${srcdir}/${_pkgname}/build"
+    cd "${srcdir}/${_pkgname}/build"
     cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
