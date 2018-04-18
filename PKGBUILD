@@ -5,24 +5,25 @@
 # Contributor: misc <tastky@gmail.com>
 # Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 # Contributor: Shun Terabayashi <shunonymous at gmail.com>
+# Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.16rc6.r0.gc698ca527893
+pkgver=4.17rc1.r21.ga27fc14219f2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
+source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            '89b5b0e0f484050d67dd77627ec087d6dc031188ce6f3f7a0fea8433e409e154'
+            '118370b1456381d5a5e829d1b7066e5066b10d04edf2666f389c8b6e61b404f5'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
