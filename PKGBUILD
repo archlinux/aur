@@ -3,7 +3,7 @@
 pkgbase=python-flask-restful
 pkgname=('python-flask-restful' 'python2-flask-restful')
 _realname=Flask-RESTful
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='A Flask extension for creating REST APIs'
 _baseurl='https://pypi.python.org'
@@ -14,8 +14,8 @@ makedepends=('python-distribute' 'python2-distribute' 'python-aniso8601>=0.82' '
 conflicts=('python2-flask-restful-git')
 source=("${_baseurl}/packages/source/F/${_realname}/${_realname}-${pkgver}.tar.gz"
         'LICENSE')
-md5sums=('eab04644697354c0e9ef0fa4c17fe607'
-         '685bb55ed99a366bb431995f5eef2783')
+sha256sums=('5795519501347e108c436b693ff9a4d7b373a3ac9069627d64e4001c05dd3407'
+            '3c58e83b4264e68926b21020322c79f916530b4b054ff1095a90bf0ad41c0b23')
 
 prepare() {
   # We ship separated python{,2}-packaging packages.
