@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=gnome-shell-theme-arrongin
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell theme for Arrongin GTK Theme"
 arch=('any')
 url="https://www.opendesktop.org/p/1215199/"
@@ -13,5 +13,5 @@ sha512sums=('5ce14e3da5db721f0ba74170b52c4e3778440bcf8ac7dc14bed2f5222e38a312579
 package() {
   cd "${srcdir}"/Arrongin-shell-${pkgver}
   install -d "$pkgdir"/usr/share/themes/Arrongin
-  cp -rf * "$pkgdir"/usr/share/themes/Arrongin
+  cp -rf "gnome-shell" "$pkgdir"/usr/share/themes/Arrongin
 }

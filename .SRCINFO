@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-theme-arrongin
 	pkgdesc = GNOME Shell theme for Arrongin GTK Theme
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/1215199/
 	arch = any
 	license = CC BY-NC-SA
