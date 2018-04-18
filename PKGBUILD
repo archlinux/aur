@@ -3,16 +3,17 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=closure-compiler
-pkgver=20180101
+pkgver=20180402
 pkgrel=1
 pkgdesc="Performs checking, instrumentation and optimizations on Javascript code."
 arch=('any')
 url="https://developers.google.com/closure/compiler/"
 license=('APACHE')
-depends=('java-runtime')
+conflicts=('java-runtime=7')
+depends=('java-runtime=8')
 makedepends=('maven' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e7d5f24a9ba38b84294c8acc866a9d4ba0da03f297655d588d33d982cb6133f8')
+sha512sums=('5076b664f8eb7e9fed9e23884c6eedd7a75f463f4c094580d87375aaa87a698f83beb76688b9a465be0dcdd6388995e577529af5fbb29f4dc10feb1edd619f92')
 
 LANG='en_US.UTF-8'
 
