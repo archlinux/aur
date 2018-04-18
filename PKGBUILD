@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=jot
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Really fast single line notes for the CLI."
 arch=('any')
 url="https://github.com/stormdragon2976/$pkgname"
@@ -10,7 +10,7 @@ license=('unlicense')
 optdepends=('xclip: Clipboard support')
 provides=("$pkgname")
 conflicts=("$pkgname")
-md5sums=('f7bfe4ea61f8f6203dd512a56051a4e7')
+md5sums=('dbe4de7cf6f5e56bc4cacea6f7dd4c19')
 
 package()
  {
