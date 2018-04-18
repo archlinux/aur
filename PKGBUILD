@@ -10,7 +10,7 @@ pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('GPL3')
 depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml')
-makedepends=('python-setuptools' 'python-pillow' 'python-paramiko' 'java-environment')
+makedepends=('python-setuptools' 'python-pillow' 'python-paramiko' 'python-babel' 'java-environment')
 optdepends=(
      'android-sdk: Build apps from source'
      'android-sdk-build-tools: Work with apks in the repository'
@@ -39,8 +39,10 @@ sha256sums=('9b831d33de40cce67180b72f1c8bb6d08562b03ab65599add3d428b144e48b58')
 package() {
     cd "${srcdir}/${pkgname}-"*
 
-    python setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
-    rm -rf "$pkgdir/tmp"
+    python setup.py compile_catalog
+    python setup.py bdist_egg
+    python setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp"
+    # rm -rf "$pkgdir/tmp"
 
     mkdir -p "$pkgdir/usr/bin"
     install "fdroid" "$pkgdir/usr/bin"
