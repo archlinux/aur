@@ -4,7 +4,7 @@
 
 pkgname=ledger-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A double-entry accounting system with a command-line reporting interface (development version)"
 arch=('i686' 'x86_64')
 url="http://ledger-cli.org"
@@ -34,7 +34,8 @@ build() {
   cd "${srcdir}"/ledger
   cmake . \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-  -DCMAKE_INSTALL_LIBDIR:PATH=lib
+  -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+  -DUSE_PYTHON=ON
   make
 }
 
