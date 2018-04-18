@@ -7,10 +7,11 @@ arch=('any')
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf-sega.install
-source=('https://www.dafont.com/sega.font')
+url="https://www.dafont.com/sega.font"
+source=('sega.ttf')
 
 package() {
 	install -Dm0644 sega.ttf $pkgdir/usr/share/fonts/TTF/Sega.ttf
 }
 
-sha256sums=('00705917db8dff81592fffd9ac67f853f88198121014e647a6655be5cda8d6dc')
+sha256sums=('fdeb4bd3b0490888ac6c511686eccf9841a5841783e25c6bd0ee5f70ef4a3889')

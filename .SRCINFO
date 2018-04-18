@@ -7,7 +7,8 @@ arch = any
 license = custom
 depends = fontconfig
 depends = xorg-font-utils
-source = https://www.dafont.com/sega.font
-sha256sums = 00705917db8dff81592fffd9ac67f853f88198121014e647a6655be5cda8d6dc
+source = sega.ttf
+url = https://www.dafont.com/sega.font
+sha256sums = fdeb4bd3b0490888ac6c511686eccf9841a5841783e25c6bd0ee5f70ef4a3889
 
 pkgname = ttf-sega
