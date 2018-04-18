@@ -23,7 +23,7 @@ source=(
   flickmagnet.install
 )
 sha256sums=(
-  '9f00d140fb2164d1bfa939de09c6efeb156a3a6cde3d855e08f6948ac9df8d56'
+  '129797abd36c39a9f55338cdb29e648b19e799667e9526b1e2b5287f4cf00c0f'
   '0a8d9d8e940c280c8038f4fdb35a036fd89e658ff26d3e1ce68d8787c1ce2970'
 )
 build() {
