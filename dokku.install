@@ -31,6 +31,7 @@ post_install() {
 
   echo "Ensure proper sshcommand path"
   echo '/usr/bin/dokku' > "${DOKKU_ROOT}/.sshcommand"
+  mkdir -p ${DOKKU_ROOT}/.ssh
   if [[ -f .ssh/authorized_keys ]]; then
     sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "${DOKKU_ROOT}/.ssh/authorized_keys"
     rm "${DOKKU_ROOT}/.ssh/authorized_keys"
