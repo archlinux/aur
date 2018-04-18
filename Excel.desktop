@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/ms-office/Excel.png
+Type=Application
+Categories=Office;
+Exec=excel
+Name=Microsoft Excel Online
+GenericName=Excel
+GenericName[en]=Excel
+StartupNotify=true

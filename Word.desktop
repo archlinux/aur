@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/ms-office/Word.png
+Type=Application
+Categories=Office;
+Exec=word
+Name=Microsoft Word Online
+GenericName=Word
+GenericName[en]=Word
+StartupNotify=true

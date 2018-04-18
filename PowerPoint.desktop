@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/ms-office/PowerPoint.png
+Type=Application
+Categories=Office;
+Exec=powerpoint
+Name=Microsoft PowerPoint Online
+GenericName=PowerPoint
+GenericName[en]=PowerPoint
+StartupNotify=true

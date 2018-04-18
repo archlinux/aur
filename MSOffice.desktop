@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/ms-office/MSOffice.png
+Type=Application
+Categories=Office;
+Exec=msoffice
+Name=Microsoft Office Online
+GenericName=Office
+GenericName[en]=Office
+StartupNotify=true
