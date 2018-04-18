@@ -1,0 +1,25 @@
+pkgbase = openboardview
+	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
+	pkgver = 7.3
+	pkgrel = 1
+	url = https://openboardview.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = zlib
+	makedepends = gtk3
+	makedepends = fontconfig
+	makedepends = sqlite
+	makedepends = libpng
+	makedepends = python
+	depends = sdl2
+	depends = fontconfig
+	depends = sqlite
+	depends = gtk3
+	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R7.3
+	sha512sums = SKIP
+
+pkgname = openboardview
+
