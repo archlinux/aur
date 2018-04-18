@@ -1,6 +1,6 @@
 pkgbase = wavebox-bin
 	pkgdesc = The next generation of web-desktop communication
-	pkgver = 3.14.0
+	pkgver = 3.14.1
 	pkgrel = 1
 	url = https://wavebox.io/
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = wavebox-bin
 	options = !strip
 	source = wavebox.desktop
 	sha256sums = ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc
-	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v3.14.0/Wavebox_3_14_0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5ca3501ac2365a54063007b0a500a7d7859ff19857a08ef496a212cb575aeb9c
-	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v3.14.0/Wavebox_3_14_0_linux_ia32.tar.gz
-	sha256sums_i686 = c26d8959e25541ac4de47d4c8843a7f93342f3b3520d08d5d176df3bf4d0586d
+	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v3.14.1/Wavebox_3_14_1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = ec878011003d9cb684edeba23f77e2d1f60f3228437f0b14177bf4af5a6d75a4
+	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v3.14.1/Wavebox_3_14_1_linux_ia32.tar.gz
+	sha256sums_i686 = 24b75fecfa447f665b39b4c174a1c98910a7e2234fa74dd0087dbfcff91fec14
 
 pkgname = wavebox-bin
 
