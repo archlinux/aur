@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=65.0.3325.181
-pkgrel=7
+pkgver=66.0.3359.117
+pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -23,27 +23,20 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
+        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
+        https://pkgbuild.com/~foutrelis/sources/$pkgname/blink-tools-$pkgver.tar.gz
         fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
-        allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
         fix-frame-buttons-rendering-too-large-when-using-OSX.patch
-        send-GSB-before-switching-to-mainthread-scrolling-in.patch
         chromium-skia-harmony.patch
-        chromium-clang-r2.patch
-        chromium-math.h-r0.patch
-        chromium-stdint.patch
         chromium-widevine.patch)
-sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
+noextract=(blink-tools-$pkgver.tar.gz)
+sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
+            'bf9600489198c5a873ef7b12e8ba42e04c667a59b898592ad1b416f66df13d7e'
+            '922db9d6a69a22003caa72c507e1ccbf0c4ee2c254f00e243c97ca572bf1ec56'
             'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
-            '4327289866d0b3006de62799ec06b07198a738e50e0a5c2e41ff62dbe00b4a2c'
             'bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a'
-            'b20bb43c89dd1fb5fc787e52b7ef6f4f20714f7d74e33372c0979fe398b5b436'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
-            'fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902'
-            'c00d2506f1078b38a8ebec474a7318e76a61db1298afb40088a34210f137210f'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -58,7 +51,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
-  [libvpx]=libvpx
+  #[libvpx]=libvpx
   [libwebp]=libwebp
   #[libxml]=libxml2           # https://crbug.com/736026
   [libxslt]=libxslt
@@ -83,6 +76,9 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # https://crbug.com/832283
+  tar xfC ../blink-tools-$pkgver.tar.gz third_party/blink/tools/
 
   # https://crbug.com/710701
   local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
@@ -110,22 +106,11 @@ prepare() {
   # https://crbug.com/822820
   patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
 
-  # https://crbug.com/817400
-  patch -Np1 -i ../allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
-
   # https://crbug.com/821881
   patch -Np1 -i ../fix-frame-buttons-rendering-too-large-when-using-OSX.patch
 
-  # https://crbug.com/797708
-  patch -Np1 -i ../send-GSB-before-switching-to-mainthread-scrolling-in.patch
-
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
-
-  # Fixes from Gentoo
-  patch -Np1 -i ../chromium-clang-r2.patch
-  patch -Np1 -i ../chromium-math.h-r0.patch
-  patch -Np1 -i ../chromium-stdint.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
