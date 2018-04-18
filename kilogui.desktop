@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Kilogui
+Comment=Graphical interface to program and control the Kilobots via the overhead controller
+Icon=kilogui
+Exec=kilogui
+Terminal=false
+Categories=Development;Utility;
