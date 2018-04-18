@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}-unstable
-pkgver=4055_4.15.1_r9_g2b44dd41
+pkgver=4166_4.16_r24_g9ecda876
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -69,16 +69,13 @@ package() {
 check() {
   cd ${_gitname}
 
-  # Test #12 uses sudo, remove/comment the next line to enable it
-  rm -rf tests/fsck-tests/012-leaf-corruption
-  # Ditto for test #13
-  rm -rf tests/fsck-tests/013-extent-tree-rebuild
-  # And #24...
-  rm -rf tests/fsck-tests/024-clear-space-cache
-  # And #25...
-  rm -rf tests/fsck-tests/025-file-extents
-  # And #28...
-  rm -rf tests/fsck-tests/028-unaligned-super-dev-sizes
+  # Some fsck tests use sudo, remove/comment the next lines to enable them
+  rm -rf tests/fsck-tests/012-leaf-corruption \
+    tests/fsck-tests/013-extent-tree-rebuild \
+    tests/fsck-tests/024-clear-space-cache \
+    tests/fsck-tests/025-file-extents \
+    tests/fsck-tests/028-unaligned-super-dev-sizes \
+    tests/fsck-tests/031-metadatadump-check-data-csum
 
   make test-fsck
 
