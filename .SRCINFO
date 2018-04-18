@@ -1,0 +1,17 @@
+pkgbase = signal-back-git
+	pkgdesc = Decrypt Signal encrypted backups outside the app
+	pkgver = 0.1.0.r0.29fcf29
+	pkgrel = 1
+	url = https://github.com/xeals/signal-back
+	arch = x86_64
+	license = Apache
+	makedepends = dep
+	makedepends = git
+	makedepends = go-pie
+	provides = signal-back=0.1.0.r0.29fcf29
+	conflicts = signal-back
+	source = git+https://github.com/xeals/signal-back.git
+	md5sums = SKIP
+
+pkgname = signal-back-git
+
