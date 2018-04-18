@@ -3,7 +3,7 @@
 pkgname=ocaml-pprint
 _oname=pprint
 pkgver=20171003
-pkgrel=1
+pkgrel=2
 pkgdesc="An OCaml adaptation of Wadler's and Leijen's prettier printer."
 arch=('i686' 'x86_64')
 url='http://gallium.inria.fr/~fpottier/pprint/doc/PPrint.OCaml.html'
