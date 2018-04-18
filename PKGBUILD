@@ -2,20 +2,16 @@
 
 pkgname=raspberrypi-overlays
 pkgdesc="Overlays files for Raspberry Pi"
-pkgver=20180416
+pkgver=1.20180328
 pkgrel=1
-_commit=a154f2136850dba827cf4bc40794854376902cbd
 arch=('any')
 url="https://github.com/raspberrypi/firmware"
 license=('custom')
 options=(!strip)
-# made depends on raspberrypi-bootloader to not allow to update raspberrypi-bootloader
-# package without updating the raspberrypi-overlays
-depends=("raspberrypi-bootloader=${pkgver}")
-source=("https://github.com/raspberrypi/firmware/archive/${_commit}.tar.gz")
-sha1sums=('3d21be65fdee2ab49c6866fc654f55f57634ac43')
+source=("https://github.com/raspberrypi/firmware/archive/${pkgver}.zip")
+sha1sums=('24c97530c3ae6a3010df3f843e59cb2349753c19')
 
 package() {
-  mkdir -p "${pkgdir}"/boot
-  cp -R "${srcdir}"/firmware-${_commit}/boot/overlays "${pkgdir}"/boot
+  mkdir -p "${pkgdir}/boot"
+  cp -R "${srcdir}/firmware-${pkgver}/boot/overlays" "${pkgdir}/boot"
 }
