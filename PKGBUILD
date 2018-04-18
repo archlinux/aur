@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  echo "2.4.2"
+  echo "2.4.3"
 }
 
 prepare() {
@@ -51,5 +51,5 @@ package() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
 	export PREFIX=${pkgdir}/usr
 	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr/LICENSE"
-	GOPATH=${srcdir} make install
+	SUDO="" GOPATH=${srcdir} make install
 }
