@@ -13,7 +13,8 @@ url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
+#source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
+source=('http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/jdk-9.0.4_doc-all.zip'
         'LICENSE-Oracle-Legal-Notices.txt')
 sha256sums=('66a7e0948f109020bfb5483848e9998b2624043074d7aae974e89e85a6e14d37'
             '01ce75a25c01b3984ff8ad08b0ad8bb24b071316d2ebf5113661ceda76f51a81')
