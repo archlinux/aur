@@ -1,0 +1,138 @@
+diff -r c53985209d09 source/event_gpio.c
+--- a/source/event_gpio.c	Sun Oct 30 22:41:09 2016 +0000
++++ b/source/event_gpio.c	Thu Feb 23 18:22:28 2017 +0100
+@@ -24,6 +24,7 @@
+ #include <sys/epoll.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <dirent.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+@@ -62,17 +63,64 @@
+ int thread_running = 0;
+ int epfd_thread = -1;
+ int epfd_blocking = -1;
++int pin_base = -1;
+ 
+ /************* /sys/class/gpio functions ************/
++void gpio_find_chip_base()
++{
++    DIR *gpio_dir;
++    struct dirent *child;
++    char label_path[128];
++    char label[128];
++    int fd;
++
++    /* No need to search for it twice */
++    if (pin_base >= 0)
++        return;
++
++    if ((gpio_dir = opendir("/sys/class/gpio")) == NULL) {
++        pin_base = 0;
++        return;
++    }
++
++    while ((child = readdir(gpio_dir)) != NULL) {
++        if (!strstr(child->d_name, "gpiochip"))
++            continue;
++
++        if (snprintf(label_path, sizeof(label_path),
++                     "/sys/class/gpio/%s/label", child->d_name) < 0) {
++            pin_base = 0;
++            return;
++        }
++
++        if ((fd = open(label_path, O_RDONLY)) < 0) {
++            pin_base = 0;
++            return;
++        }
++
++        if (read(fd, label, sizeof(label)) > 0 &&
++            strstr(label, "pinctrl-bcm2835")) {
++            pin_base = atoi(child->d_name + 8);
++            break;
++        }
++        close(fd);
++    }
++
++    if (pin_base < 0)
++        pin_base = 0;
++}
++
+ int gpio_export(unsigned int gpio)
+ {
+     int fd, len;
+-    char str_gpio[3];
++    char str_gpio[64];
+ 
+     if ((fd = open("/sys/class/gpio/export", O_WRONLY)) < 0)
+        return -1;
+ 
+-    len = snprintf(str_gpio, sizeof(str_gpio), "%d", gpio);
++    gpio_find_chip_base();
++
++    len = snprintf(str_gpio, sizeof(str_gpio), "%d", pin_base + gpio);
+     write(fd, str_gpio, len);
+     close(fd);
+ 
+@@ -82,12 +130,14 @@
+ int gpio_unexport(unsigned int gpio)
+ {
+     int fd, len;
+-    char str_gpio[3];
++    char str_gpio[64];
+ 
+     if ((fd = open("/sys/class/gpio/unexport", O_WRONLY)) < 0)
+         return -1;
+ 
+-    len = snprintf(str_gpio, sizeof(str_gpio), "%d", gpio);
++    gpio_find_chip_base();
++
++    len = snprintf(str_gpio, sizeof(str_gpio), "%d", pin_base + gpio);
+     write(fd, str_gpio, len);
+     close(fd);
+ 
+@@ -99,9 +149,11 @@
+     int retry;
+     struct timespec delay;
+     int fd;
+-    char filename[33];
++    char filename[64];
+ 
+-    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/direction", gpio);
++    gpio_find_chip_base();
++
++    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/direction", pin_base + gpio);
+ 
+     // retry waiting for udev to set correct file permissions
+     delay.tv_sec = 0;
+@@ -126,9 +178,11 @@
+ int gpio_set_edge(unsigned int gpio, unsigned int edge)
+ {
+     int fd;
+-    char filename[28];
++    char filename[64];
+ 
+-    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/edge", gpio);
++    gpio_find_chip_base();
++
++    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/edge", pin_base + gpio);
+ 
+     if ((fd = open(filename, O_WRONLY)) < 0)
+         return -1;
+@@ -141,10 +195,12 @@
+ int open_value_file(unsigned int gpio)
+ {
+     int fd;
+-    char filename[29];
++    char filename[64];
++
++    gpio_find_chip_base();
+ 
+     // create file descriptor of value file
+-    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/value", gpio);
++    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/value", pin_base + gpio);
+     if ((fd = open(filename, O_RDONLY | O_NONBLOCK)) < 0)
+         return -1;
+     return fd;
