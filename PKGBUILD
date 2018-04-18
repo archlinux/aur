@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=snapcraft
-pkgver=2.40.1
+pkgver=2.41
 pkgrel=1
 pkgdesc="Build Ubuntu snappy packages."
 arch=('any')
