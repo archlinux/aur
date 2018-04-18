@@ -1,0 +1,14 @@
+pkgbase = eltoritopy
+	pkgdesc = Python utility to extract eltorito images from bootable images
+	pkgver = 20180418
+	pkgrel = 1
+	url = https://github.com/enckse/eltorito
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/enckse/eltorito#commit=a5674f1a1910cde8236a5b8fb72756cb07bfd629
+	md5sums = SKIP
+
+pkgname = eltoritopy
+
