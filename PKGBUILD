@@ -36,7 +36,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$_pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
 sha256sums=('331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705'
             '82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e')
