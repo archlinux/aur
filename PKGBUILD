@@ -1,14 +1,14 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar-git
-pkgver=20171205
+pkgver=20180418
 pkgrel=1
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
 arch=('i686' 'x86_64')
 depends=('z3-git')
-makedepends=('ocaml>=4.03' 'ocaml-findlib' 'ocaml-batteries' 'ocaml-stdint' 'zarith' 'ocaml-yojson' 'ocaml-fileutils' 'ocaml-pprint' 'ocaml-menhir' 'ulex')
+makedepends=('ocaml>=4.03' 'ocaml-findlib' 'ocaml-batteries' 'ocaml-stdint' 'zarith' 'ocaml-yojson' 'ocaml-fileutils' 'ocaml-pprint' 'ocaml-menhir' 'ulex-git')
 provides=('fstar')
 conflicts=('fstar' 'fstar-bin')
 source=("${pkgname}::git://github.com/FStarLang/FStar.git")
