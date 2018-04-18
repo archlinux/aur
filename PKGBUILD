@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=telinkrin-gtk-theme
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An individual and unique looking theme with an interesting design of Nautilus sidebar"
 arch=('any')
 url='https://www.opendesktop.org/p/1215199/'
@@ -13,5 +13,5 @@ sha512sums=('56d608fd93a50ed6ce59aabe494a98c0a73f9b92fbe60165a2d2e7f25440b1a3302
 package() {
   cd "${srcdir}"/Telinkrin-$pkgver
   install -d "$pkgdir"/usr/share/themes/Telinkrin
-  cp -rf * "$pkgdir"/usr/share/themes/Telinkrin
+  cp -rf gtk-* "$pkgdir"/usr/share/themes/Telinkrin
 }
