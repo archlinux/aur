@@ -3,12 +3,12 @@
 
 pkgname=aurel-git
 pkgver=0.9.2017_01_14
-pkgrel=1
+pkgrel=2
 pkgdesc="Search and download AUR packages from Emacs"
 arch=('any')
 url="https://github.com/alezost/aurel"
 license=('GPL')
-depends=('emacs')
+depends=('emacs-dash' 'emacs-bui')
 makedepends=('git')
 install=$pkgname.install
 source=("git+https://github.com/alezost/aurel.git")
