@@ -1,0 +1,22 @@
+pkgbase = cavalcade
+	pkgdesc = Python GUI wrapper for CAVA utility
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/worron/cavalcade
+	arch = any
+	license = GPL
+	depends = python>=3.5
+	depends = cava>=0.6
+	depends = gtk3
+	depends = cairo
+	depends = python-cairo
+	depends = python-gobject
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = python-pillow
+	depends = python-setuptools
+	source = cavalcade-0.8.tar.gz::https://github.com/worron/cavalcade/archive/0.8.tar.gz
+	md5sums = ae80a99fc1b79c54cf225d8c3101b53a
+
+pkgname = cavalcade
+
