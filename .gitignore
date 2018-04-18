@@ -3,5 +3,3 @@ src/*
 *.xz
 *.gz
 *.zip
-*.lua
-*.template
