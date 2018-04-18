@@ -2,16 +2,17 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=2.10.0rc1
+epoch=1
+pkgver=2.10.0_rc2
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('pygtk' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'dbus-glib'
-         'libexif' 'gegl>=0.3.30' 'jasper' 'desktop-file-utils' 'hicolor-icon-theme' 'babl>=0.1.44'
+         'libexif' 'gegl>=0.3.34' 'jasper' 'desktop-file-utils' 'hicolor-icon-theme' 'babl>=0.1.44'
          'openexr' 'libgudev' 'libgexiv2' 'libmypaint>=1.3.0' 'libwebp' 'aalib' 'mypaint-brushes')
-makedepends=('intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'curl' 'ghostscript' 'gtk-doc' 'glib-networking')
+makedepends=('intltool' 'poppler-glib' 'poppler-data' 'alsa-lib' 'iso-codes' 'curl' 'ghostscript' 'gtk-doc' 'glib-networking')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'poppler-glib: for pdf support'
             'alsa-lib: for MIDI event controller module'
@@ -19,14 +20,14 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'ghostscript: for postscript support')
 options=('!makeflags')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=$pkgver")
-source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver/rc/-RC}.tar.bz2 linux.gpl)
-sha256sums=('cc87b8edc74451b25563fdd8ee29169bd6554283a7bc07cb6a142beee89d269e'
+provides=("${_pkgname}=${pkgver}")
+source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver/_rc/-RC}.tar.bz2 linux.gpl)
+sha256sums=('8b7de80c312d4a774d773e2713d7089cf99d1c0ff8f64d8bd476e88d7978ec3d'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
   export PYTHON=/usr/bin/python2
-  cd "${srcdir}/${_pkgname}-${pkgver/rc/-RC}"
+  cd "${srcdir}/${_pkgname}-${pkgver/_rc/-RC}"
   _mypaintver=$( ls /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1 )
   sed -i "s:\(libmypaint\)\( >= libmypaint_required_version\):\1${_mypaintver}\2:g" configure.ac
   
@@ -39,7 +40,7 @@ prepare() {
   
 build() {
   export PYTHON=/usr/bin/python2
-  cd "${srcdir}/${_pkgname}-${pkgver/rc/-RC}"
+  cd "${srcdir}/${_pkgname}-${pkgver/_rc/-RC}"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -54,7 +55,7 @@ build() {
 
 package() {
   export PYTHON=/usr/bin/python2
-  cd "${srcdir}/${_pkgname}-${pkgver/rc/-RC}"
+  cd "${srcdir}/${_pkgname}-${pkgver/_rc/-RC}"
   make DESTDIR="${pkgdir}" install
   install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
 
