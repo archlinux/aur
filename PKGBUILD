@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=checkmails
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="System tray unread mail checker using IMAP protocol"
 arch=('any')
@@ -13,11 +13,11 @@ optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be 
             'python-pyqt5: GUI toolkit for the system tray icon (at least one must be installed)',
             'python-pyqt4: GUI toolkit for the system tray icon (at least one must be installed)',
             'python-pyside: GUI toolkit for the system tray icon (at least one must be installed)')
-source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/checkmails/files/${pkgver}/${pkgname}-${pkgver}.tar.gz/download")
-sha512sums=('b09081878963cee8b8071d2ba6fb5e9159baedb4df42c3163487892365abc2a219cfa617ae3d4054453a916e57cff354a8587186acce88409b2648e2193409ce')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/j4321/CheckMails/archive/v${pkgver}.tar.gz")
+sha512sums=('0ab34ba8db7581da848573b18769b15256cf20fc4a159a4871f6d3ae1d4af8b09bf1c555f7b748813ac2f147cf864bda1c20ebeb67739d79533ff773001c0757')
 changelog=changelog
 
 package() {
- cd "$srcdir/${pkgname}-${pkgver}"
+ cd "$srcdir/CheckMails-${pkgver}"
  python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
 }
