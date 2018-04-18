@@ -2,7 +2,7 @@
 # Comaintainer : bartus <aur@bartus.33mail.com>
 pkgname=luxrender-hg
 pkgver=4918+.f56582df55f4+
-pkgrel=4
+pkgrel=5
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
@@ -14,7 +14,7 @@ optdepends=('luxblend25: Blender exporter' \
             'python: pylux Python interface' \
             'opencl-driver: OpenCL support')
 makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
-             'mercurial')
+             'eos_portable_archive' 'mercurial')
 provides=('luxrender')
 conflicts=('luxrender')
 source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
