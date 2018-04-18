@@ -1,14 +1,15 @@
 pkgbase = ttf-sega
-pkgdesc = Font designed by Sega Games Co., Ltd. for their logo and products
-pkgver = 1.0
-pkgrel = 1
-install = ttf-sega.install
-arch = any
-license = custom
-depends = fontconfig
-depends = xorg-font-utils
-source = sega.ttf
-url = https://www.dafont.com/sega.font
-sha256sums = fdeb4bd3b0490888ac6c511686eccf9841a5841783e25c6bd0ee5f70ef4a3889
+	pkgdesc = Font designed by Sega Games Co., Ltd. for their logo and products
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/sega.font
+	install = ttf-sega.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = sega.ttf
+	sha256sums = fdeb4bd3b0490888ac6c511686eccf9841a5841783e25c6bd0ee5f70ef4a3889
 
 pkgname = ttf-sega
+
