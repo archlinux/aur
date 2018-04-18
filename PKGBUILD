@@ -1,3 +1,4 @@
+# Maintainer: Benjamin Schaefer <b-schaefer at posteo dot de>
 pkgname=kilogui
 pkgver=0.1
 pkgrel=1
