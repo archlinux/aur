@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/alezost/aurel"
 license=('GPL')
 depends=('emacs-dash' 'emacs-bui')
-makedepends=('git')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alezost/aurel/archive/v0.9.tar.gz")
 sha256sums=('58d2811c39f3455f81c39e29b8fbd59dc74aa2211e2202ebf38261d571740bb9')
