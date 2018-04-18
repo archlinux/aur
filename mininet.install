@@ -5,9 +5,7 @@ post_install() {
 	instantiate switches. To run it, just execute the following
 	commands (as root or using sudo):
 
-	# systemctl enable ovsdb-server.service
 	# systemctl enable ovs-vswitchd.service
-	# systemctl start ovsdb-server.service
 	# systemctl start ovs-vswitchd.service
 
 EOF

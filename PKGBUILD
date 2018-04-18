@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <forendef2846@gmail.com>
 
 pkgname=mininet-git
-pkgver=20180326
+pkgver=20180418
 pkgrel=1
 pkgdesc="Emulator for rapid prototyping of Software Defined Networks"
 depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch')
