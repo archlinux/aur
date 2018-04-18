@@ -3,7 +3,7 @@
 pkgname=libutp-git
 _pkgname=libutp
 pkgver=r99.fda9f4b
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='uTorrent Transport Protocol library'
 url='https://github.com/bittorrent/libutp'
@@ -28,7 +28,7 @@ if [[ -d $srcdir/build ]]; then
 build() {
  cd $srcdir/build
  cmake ../libutp \
-  -DCMAKE_INSTALL_PREFX='/usr'
+  -DCMAKE_INSTALL_PREFIX=/usr 
  
  make
 }
