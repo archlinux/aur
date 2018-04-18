@@ -7,7 +7,7 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=66.0.3359.106
+pkgver=66.0.3359.117
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/k3.patch
 )
 
 
-sha256sums=('8441ab4f374d1c9d0424e4b0dff93bfa9a99215aed83181d478cdd52d230af07'
+sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -215,6 +215,7 @@ sha256sums=('8441ab4f374d1c9d0424e4b0dff93bfa9a99215aed83181d478cdd52d230af07'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
+
 
 
 
@@ -400,9 +401,13 @@ msg2 'purge2'
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-msg2 'purge3'
+msg2 'adding missed deps'
+wget https://chromium.googlesource.com/chromium/src/+archive/"$pkgver"/third_party/blink/tools.tar.gz
+tar xfC tools.tar.gz third_party/blink/tools/
+
 
 python2 tools/clang/scripts/update.py
+
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
 patch -Np1 -i ../20.patch
