@@ -1,6 +1,6 @@
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
 pkgname=slacktee-git
-pkgver=v1.2.5.r0.12769ff
+pkgver=v1.2.15.r5.ca68683
 pkgrel=1
 pkgdesc="slacktee is a bash script that works like tee command. Instead of writing the standard input to files, slacktee posts it to Slack."
 arch=('any')
