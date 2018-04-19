@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=0.22.4
-pkgrel=3
+pkgver=0.22.6
+pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -15,7 +15,7 @@ replaces=()
 source=("${pkgname}-${pkgver}.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=${pkgver}"
         "${pkgname}.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png"
         "${pkgname}.desktop")
-sha256sums=('1f9014954fe6fd613277e2f9dd9623a02165180d4699618974c13b41c0b4b64a'
+sha256sums=('c4c6afea4f28fbb5b47c9134b3b0a11d521df73812e07f1fd66325c563e21642'
             'c7211ee624483a272f280b3aa772046ec9226d838f9c3023450888abddf9d71a'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
