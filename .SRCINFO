@@ -1,6 +1,6 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool -- git version
-	pkgver = r4012
+	pkgver = r4027
 	pkgrel = 1
 	url = http://xiphos.org
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = xiphos-git
 	depends = webkit2gtk
 	depends = libgsf
 	depends = gconf
-	depends = sword-svn
+	depends = sword>=1.8.1
 	depends = gtkhtml4
 	depends = biblesync-git
 	provides = gnomesword
