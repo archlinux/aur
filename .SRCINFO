@@ -1,0 +1,24 @@
+pkgbase = libfprint-vfs0097-git
+	pkgdesc = Library for fingerprint readers (patch for 138a:0097)
+	pkgver = 0.7.0.r97.gd031869
+	pkgrel = 1
+	url = https://github.com/nmikhailov/Validity90
+	arch = i686
+	arch = x86_64
+	groups = fprint-git
+	license = LGPL
+	makedepends = git
+	depends = libusb
+	depends = nss
+	depends = pixman
+	depends = gnutls
+	depends = openssl
+	optdepends = fprintd: D-Bus daemon that manages fingerprint readers
+	provides = libfprint
+	conflicts = libfprint
+	replaces = libfprint-vfs0097
+	source = git+https://github.com/hrenod/libfprint.git
+	md5sums = SKIP
+
+pkgname = libfprint-vfs0097-git
+

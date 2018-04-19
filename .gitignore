@@ -1,0 +1,10 @@
+# makepkg stuff
+pkg
+src
+libfprint
+*.pkg.tar.xz
+
+# Misc stuff
+.*
+!.gitignore
+!.SRCINFO
