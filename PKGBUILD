@@ -13,7 +13,7 @@ depends=("nodejs")
 provides=("joplin" "joplin-cli")
 url="https://joplin.cozic.net"
 license=("MIT")
-source=("${pkgname}.desktop" "joplin.sh" "joplin-cli.sh"
+source=("${pkgname}.desktop" "joplin-desktop.sh" "joplin.sh"
 				"https://github.com/laurent22/joplin/archive/v1.0.83.zip")
 sha256sums=("87908c016952deebde4c1a1008ae76659b5942770da7d281c211841fc8c036b7"
             "5a3ace64906080adde5a5ea10ec9221fb2d94de770e6ee35b454aa30608b4097"

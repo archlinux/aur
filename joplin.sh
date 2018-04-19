@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly joplin_dir="/usr/share/joplin/"
+readonly joplin_dir="/usr/share/joplin-cli/"
 
 if [[ ! -d $joplin_dir ]]; then
   echo "Did not found joplin data directory"
@@ -9,5 +9,4 @@ fi
 
 cd $joplin_dir
 
-./joplin "$@"
-
+node main.js ${@}
