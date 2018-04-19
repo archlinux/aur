@@ -27,7 +27,8 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"rrdtool: support for the ext_sensors/rrd plugin"
 	"numactl: NUMA support in the task/affinity plugin"
 	"ncurses: adds the smap command "
-	"gtk2: enables the sview command, a simple graphical frontend")
+	"gtk2: enables the sview command, a simple graphical frontend"
+	"pmix: support Open MPI applications using PMIx")
 makedepends=('python' 'gtk2')
 backup=('etc/default/slurm-llnl')
 install="${pkgname}.install"
@@ -68,6 +69,7 @@ build() {
 		--localstatedir=/var \
 		--enable-pam \
 		--with-proctrack \
+		--with-pmix \
 		--with-hdf5 \
 		--with-hwloc \
 		--with-rrdtool \
