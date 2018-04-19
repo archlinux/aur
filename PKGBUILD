@@ -1,11 +1,12 @@
 pkgname=flexnet
 pkgver=11.14.1.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://developer.arm.com/products/software-development-tools/license-management/downloads'
 license=('custom')
 options=('emptydirs')
 pkgdesc="FlexNet Publisher: license manager"
+depends=('ld-lsb')
 # download file and uncomment
 source=(#"BX002-PT-00007-r11p14-01rel0.tgz"
 	"lmgrd.service")
@@ -26,7 +27,4 @@ package() {
   install -Dm0644 ${srcdir}/lmgrd.service ${pkgdir}/usr/lib/systemd/system/lmgrd.service
   install -dm0755 -o nobody -g nobody ${pkgdir}/var/log/flexnet
   install -dm0755 ${pkgdir}/etc/flexnet
-
-  # ld-linux workaround
-  ln -s ld-linux-x86-64.so.2 $pkgdir/usr/lib/ld-lsb-x86-64.so.3
 }
