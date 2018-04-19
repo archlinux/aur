@@ -2,7 +2,7 @@
 
 pkgname=ostinato
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 url="http://ostinato.org/"
 pkgdesc="Cross-platform network packet/traffic generator and analyzer"
 source=("https://github.com/pstavirs/ostinato/archive/v$pkgver.tar.gz")
@@ -23,5 +23,4 @@ package(){
    make INSTALL_ROOT=$pkgdir install
 }
 
-md5sums=('c93573a3d59433d785a44b2a5740e1a3'
-         '6502b6ebefecc7018e8d50630b3f6320')
+md5sums=('c93573a3d59433d785a44b2a5740e1a3')
