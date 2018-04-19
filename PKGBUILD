@@ -111,7 +111,7 @@ __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
 _opengl_variant="desktop"
 if [ -n "${_piver}" ]; then
-  _opengl_variant="gles2"
+  _opengl_variant="es2"
 fi
 
 case ${_piver} in
