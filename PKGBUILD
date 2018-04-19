@@ -3,7 +3,7 @@
 
 pkgname=tiddlywiki
 pkgver=5.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Personal wiki where everything is in one html-file'
 arch=('i686' 'x86_64')
 url='http://www.tiddlywiki.com/'
@@ -11,8 +11,8 @@ license=('BSD')
 depends=('xdg-utils')
 source=('http://www.tiddlywiki.com/empty.html'
         'tiddlywiki.py')
-sha256sums=('8f588e103c5c605fbcd54046a3a8301599f294ab09531beaafe81f97cfe11bb2'
-            'de87f833dec4d1bf7c352b89bbab55d6974ea69026cb42269d59fec65e727625')
+sha256sums=('896d8ce5ef17441e7d9fa1f9c3536959fc05de1c5f0fb29efaa3e3bc0db25af4'
+            'f0795f66b4ceb7b222b8ac68f39fd75625bd13b2af56f852342d172707db49f9')
 
 build() {
   cat empty.html | head -45 | tail -28 > COPYING
@@ -20,7 +20,7 @@ build() {
 
 package() {
   install -d "$pkgdir/usr/share/tiddlywiki"
-  install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "tiddlywiki.py" "$pkgdir/usr/bin/tiddlywiki"
   install -Dm644 empty.html "$pkgdir/usr/share/tiddlywiki/empty.html"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

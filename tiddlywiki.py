@@ -1,9 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# Alexander Rødseth <rodseth@gmail.com>
-# BSD license
-# 24032009
-# 28022011
+#
+# tiddlywiki launcher
+#
+# Version:  0.2
+# Author:   Alexander F Rødseth <xyproto@archlinux.org>
+# Modified: 2018-04-05
+# License:  MIT
+#
 
 from sys import argv
 from os.path import join, exists
@@ -22,7 +26,8 @@ def main():
     if ('BROWSER' in environ) and environ['BROWSER']:
         system(environ['BROWSER'] + " " + goal)
     else:
-        system("/usr/bin/gnome-open " + goal)
+        system("/usr/bin/xdg-open " + goal)
+
 
 if __name__ == "__main__":
     main()
