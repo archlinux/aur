@@ -1,35 +1,40 @@
-# Maintainer:
+# Maintainer: MCMic <come@chilliet.eu>
 # Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=nikki
-pkgver=1.0
-pkgrel=6
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Nikki and the Robots platformer game"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/nikki-and-the-robots"
 license=('LGPL' 'CCPL')
-depends=('libsndfile' 'openal' 'qt4')
+makedepends=('cmake' 'pkg-config' 'stack')
+depends=('libsndfile' 'openal' 'qt4' 'libzip' 'gmp')
 optdepends=('nikki-levels-git: community levels')
-options=('!strip')
-source_i686=("https://github.com/nikki-and-the-robots/nikki/releases/download/$pkgver/nikki-$pkgver-marley-linux-i386.tar.gz")
-source_x86_64=("https://github.com/nikki-and-the-robots/nikki/releases/download/$pkgver/nikki-$pkgver-marley-linux-x86_64.tar.gz")
-sha256sums_i686=('387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb')
-sha256sums_x86_64=('6d642c03959afc4bcd6d846c61d80eae27d58dded5a957858d18ca7d7d5c9df7')
+source=("https://github.com/nikki-and-the-robots/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('54f77bf0cd2ae8c159935f12cc1da449')
+
+build() {
+  cd ${srcdir}/${pkgname}-${pkgver}/src
+
+  export STACK_ROOT=${srcdir}/.stack
+  ./build-qtwrapper.sh
+  stack setup
+  stack build
+  ./linuxDeploy.hs --no-copy-shared-objects
+}
 
 package() {
-  cd nikki
+  cd ${srcdir}/${pkgname}-${pkgver}/src/nikki
 
   # folders
   install -d "$pkgdir"/{opt/nikki,usr/bin}
 
   # binaries + launcher
-  install -m755 {core,nikki.sh,restarter} "$pkgdir"/opt/nikki
+  install -m755 {nikki.sh,restarter} "$pkgdir"/opt/nikki
   ln -s /opt/nikki/nikki.sh "$pkgdir"/usr/bin/nikki
-
-  # old libs that would be AUR deps otherwise
-  install -m644 libzip.so.1 "$pkgdir"/opt/nikki
 
   # data
   cp -r data "$pkgdir"/opt/nikki
