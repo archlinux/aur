@@ -2,7 +2,7 @@
 
 pkgname=powerline-i3-git
 pkgver=1.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
 url="https://github.com/ph111p/powerline"
@@ -30,7 +30,7 @@ makedepends=(
 provides=('powerline-i3')
 conflicts=('powerline' 'python-powerline')
 
-source=("git://github.com/ph111p/powerline.git")
+source=("git://github.com/ph111p/powerline.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 package() {
