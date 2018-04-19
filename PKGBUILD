@@ -31,14 +31,24 @@ backup=("etc/java-$_jname/management/jmxremote.access"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
-        "jconsole.desktop"
-        "jmc.desktop"
-        "policytool.desktop"
+        'java.desktop'
+        'javaws.desktop'
+        'jconsole.desktop'
+        'jcontrol.desktop'
+        'jmc.desktop'
+        'policytool.desktop'
+        'java_16.png'
+        'java_48.png'
         'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('7d0268f2493fdc9607b665c0cb9bede7ff207d173908965dc7429ef32b90a18f'
-            '7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034'
-            'bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5'
-            '79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1'
+            'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
+            '7cced89e9da4465d3b73c45e1b3066e92f3c81eee8ea36851611c5853c71aaf6'
+            'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
+            'f6a77195f8275b94f2fc09beb796983e841c51a66c0a3e77b9fd97afde7e3fca'
+            'e947918d1c9c845c1841e46d08fd0a9441e2051d8e982c2ddbdf9960feeca8f9'
+            'f7c5cc1b9dbc8229eb94f3d4e394ab8f69109577adfba84c8726fb4f7406252f'
+            'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
+            '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
@@ -51,9 +61,6 @@ package() {
   install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
   msg2 "Removing redundancies..."
-  rm -r lib/desktop/icons/HighContrast
-  rm -r lib/desktop/icons/HighContrastInverse
-  rm -r lib/desktop/icons/LowContrast
   rm  lib/fontconfig.*.bfc
   rm  lib/fontconfig.*.properties.src
 
@@ -67,31 +74,18 @@ package() {
   # Create a placeholder 'jre' link
   ln -s . jre
 
-  # Fix bundled .desktops
-  sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
-      -e "s|Name=JavaWS|Name=JavaWS $_major|" \
-      -e "s|Comment=Java|Comment=Java $_major|" \
-      -e "s|Exec=|Exec=$_jvmdir/bin/|" \
-      -e "s|.png|-$_jname.png|" \
-      -i lib/desktop/applications/*
+  # Move + suffix .desktops
+  for i in $(printf -- '%s\n' "${source[@]}" | grep desktop | cut -d "." -f1); do
+    install -m644 "$srcdir"/$i.desktop "$pkgdir"/usr/share/applications/$i-$_jname.desktop
+  done
 
-  # Move .desktops + icons to /usr/share
-  mv lib/desktop/* "$pkgdir"/usr/share/
-  install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
-
-  # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
-  for i in $(find "$pkgdir"/usr/share/ -type f); do
-    rename -- "." "-$_jname." $i
+  # Move + suffix icons
+  for i in 16 48; do
+    install -Dm644 "$srcdir"/java_$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x$i/apps/java-$_jname.png
   done
 
   # Write versions to .desktops + .install
   sed -i "s/<version>/$_major/" "$pkgdir"/usr/share/applications/* "$startdir"/$pkgname.install
-
-  # Link missing icons
-  for i in $(find "$pkgdir"/usr/share/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
-    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
-    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
-  done
 
   # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/conf -> /etc
   for sub_path in $(find conf/ -type f); do

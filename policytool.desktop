@@ -1,7 +1,7 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-<version>-jdk/bin/policytool
-Icon=sun-java-jdk<version>
 Name=Java <version> Policy Settings
+Exec=/usr/lib/jvm/java-<version>-jdk/bin/policytool
+Icon=java-jdk<version>
 StartupNotify=true
 Terminal=false
 Type=Application
