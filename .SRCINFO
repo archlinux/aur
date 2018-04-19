@@ -1,7 +1,7 @@
 pkgbase = biblesync
 	pkgdesc = multicast shared co-navigation library for Bible programs
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://sourceforge.net/projects/gnomesword/files/BibleSync/1.1.2/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = biblesync
 	makedepends = cmake
 	depends = libutil-linux
 	depends = gcc-libs
-	source = http://downloads.sourceforge.net/project/gnomesword/BibleSync/1.1.2/biblesync-1.1.2.tar.gz
-	sha512sums = 7725c8228e2dff79edaf065ff4d4816a6cf214d1d874817345cc4154142144bce479ca1ae871053886bff4f6610715a27bce81c25c2a636444d5873e93bfdc62
+	source = https://github.com/karlkleinpaste/biblesync/releases/download/1.2.0/biblesync-1.2.0.tar.gz
+	sha512sums = ad176f8a19e2a34b984df384f7c1fb109ea8babc05250d1e66a7b874428519de91b93ec4b7014068e80f30c862827c0f2878641928ed60486d1a5e48c41e6b0c
 
 pkgname = biblesync
 
