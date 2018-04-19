@@ -1,10 +1,10 @@
-From f144015c59359c918d30fd309ed368045b783d47 Mon Sep 17 00:00:00 2001
-Message-Id: <f144015c59359c918d30fd309ed368045b783d47.1523990130.git.jan.steffens@gmail.com>
-In-Reply-To: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523990130.git.jan.steffens@gmail.com>
-References: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523990130.git.jan.steffens@gmail.com>
+From 23675bf063a1b39fccd29e7f573ec6729a11b3fa Mon Sep 17 00:00:00 2001
+Message-Id: <23675bf063a1b39fccd29e7f573ec6729a11b3fa.1524129246.git.jan.steffens@gmail.com>
+In-Reply-To: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
+References: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
 From: Harry Wentland <harry.wentland@amd.com>
 Date: Thu, 12 Apr 2018 10:51:52 -0400
-Subject: [PATCH 5/7] Revert "drm/amd/display: disable CRTCs with NULL FB on
+Subject: [PATCH 5/6] Revert "drm/amd/display: disable CRTCs with NULL FB on
  their primary plane (V2)"
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
