@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mktxn
-pkgver=0.0.7
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Double-entry accounting ledger packager"
 arch=('any')
 depends=('perl6'
@@ -37,6 +37,8 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
+  install -dm 770 "$pkgdir/usr/include/txn"
+  install -dm 770 "$pkgdir/var/cache/txn"
   export RAKUDO_LOG_PRECOMP=1
   export RAKUDO_RERESOLVE_DEPENDENCIES=0
   perl6-install-dist \
