@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	meson . _build --prefix=/usr/local
+	meson . _build --prefix=/usr
 	ninja -C _build
 }
 
