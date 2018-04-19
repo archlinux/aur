@@ -34,7 +34,6 @@ cat << EOF
     And the following user services:
 
         system76-backlight.service   Backlight Daemon for NVIDIA 9 Series on GNOME
-        system76-hidpi.service       System76 HiDPI Daemon
 
     The backlight service can (optionally) be started automatically:
 

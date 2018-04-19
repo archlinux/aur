@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=17.10.25
+pkgver=17.10.32
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
 makepdepends=(
 	'python-pyflakes')
 optdepends=(
+	'hidpi-daemon: Manage HiDPI and LoDPI monitors on X'
 	'pm-utils: For power management features'
 	'gtk3: To launch System76 driver and firmware GUI'
 	'grub: To apply kernel boot time parameters'
@@ -31,13 +32,11 @@ source=(
 	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 	'galu1.patch'
 	'gtk.patch'
-	'cli.patch'
-	'hidpi.patch')
-sha1sums=('80d987648e753ae3275f7de06dfeba98bc890761'
+	'cli.patch')
+sha1sums=('d884fe547922182e312954a664b4aa99db46adda'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
-          '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
-          'acbcc10d4b4fc94bc33e9956fb0f4f335136beab')
+          '92f0de2acea6ac69c36378c7139fb84a7eaf7842')
 
 
 package() {
@@ -53,8 +52,6 @@ package() {
 	# Install daemons and executables
 	install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
 	install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/${pkgname}/system76-backlight-daemon
-	install -m755 -D system76-hidpi-daemon ${pkgdir}/usr/lib/${pkgname}/system76-hidpi-daemon
-	install -m755 -D system76-hidpi-notification ${pkgdir}/usr/lib/${pkgname}/system76-hidpi-notification
 	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/${pkgname}/system76-firmware-dialog
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
 	install -m755 -D system76-firmware-pkexec ${pkgdir}/usr/bin/system76-firmware-pkexec
@@ -65,7 +62,6 @@ package() {
 	install -m644 -D debian/system76-driver.service ${pkgdir}/usr/lib/systemd/system/system76.service
 	install -m644 -D debian/system76-firmware.service ${pkgdir}/usr/lib/systemd/system/system76-firmware.service
 	install -m644 -D debian/system76-driver-backlight.service ${pkgdir}/usr/lib/systemd/user/system76-backlight.service
-	install -m644 -D debian/system76-driver-hidpi.service ${pkgdir}/usr/lib/systemd/user/system76-hidpi.service
 
 	# Install scripts and configuration
 	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
@@ -74,7 +70,6 @@ package() {
 
 	# Install desktop shortcuts
 	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
-	install -m644 -D system76-driver-hidpi.desktop ${pkgdir}/usr/share/applications/system76-hidpi.desktop
 	install -m644 -D system76-firmware.desktop ${pkgdir}/usr/share/applications/system76-firmware.desktop
 
 	# Install certificates and keys
@@ -101,7 +96,4 @@ package() {
 
 	# enabling "Restore System" button if all changes applied
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch
-
-	# Remove Ubuntu-specific service target
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/hidpi.patch
 } 
