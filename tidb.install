@@ -1,0 +1,14 @@
+#/bin/sh
+
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/tidb.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/tidb.conf
+  #systemctl daemon-reload
+}
+
+post_upgrade() {
+  # TODO: Add systemd services
+  #systemctl daemon-reload
+}
+
+# vim:set ts=2 sw=2 et:
