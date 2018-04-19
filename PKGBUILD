@@ -3,7 +3,7 @@
 # Contributor: Chris Clonch <chris at theclonchs dot com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
-pkgver='1.4.3.1'
+pkgver='1.4.4.1'
 pkgrel='1'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
