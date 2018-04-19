@@ -16,7 +16,7 @@
 @@ -234,11 +234,6 @@ static int dvb_proxyfe_set_frontend(struct dvb_frontend *fe)
  	return 0;
  }
- 
+
 -static int dvb_proxyfe_get_property(struct dvb_frontend *fe, struct dtv_property* tvp)
 -{
 -	return 0;
@@ -27,7 +27,7 @@
  	return DVBFE_ALGO_SW;
 @@ -478,7 +473,6 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
  	.sleep = dvb_proxyfe_sleep,
- 
+
  	.get_frontend = dvb_proxyfe_get_frontend,
 -	.get_property = dvb_proxyfe_get_property,
  	.get_frontend_algo = dvb_proxyfe_get_frontend_algo,

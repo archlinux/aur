@@ -1,0 +1,53 @@
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -24,12 +24,12 @@
+ #include <linux/delay.h>
+ #include <linux/seq_file.h>
+
+-#include "demux.h"
+-#include "dmxdev.h"
+-#include "dvb_demux.h"
+-#include "dvb_frontend.h"
+-#include "dvb_net.h"
+-#include "dvbdev.h"
++#include <media/demux.h>
++#include <media/dmxdev.h>
++#include <media/dvb_demux.h>
++#include <media/dvb_frontend.h>
++#include <media/dvb_net.h>
++#include <media/dvbdev.h>
+
+ #include "vtunerc_priv.h"
+
+--- a/vtunerc_priv.h
++++ b/vtunerc_priv.h
+@@ -22,12 +22,12 @@
+ #include <linux/cdev.h>
+ #include <linux/version.h>
+
+-#include "demux.h"
+-#include "dmxdev.h"
+-#include "dvb_demux.h"
+-#include "dvb_frontend.h"
+-#include "dvb_net.h"
+-#include "dvbdev.h"
++#include <media/demux.h>
++#include <media/dmxdev.h>
++#include <media/dvb_demux.h>
++#include <media/dvb_frontend.h>
++#include <media/dvb_net.h>
++#include <media/dvbdev.h>
+
+ #include "vtuner.h"
+
+--- a/vtunerc_proxyfe.c
++++ b/vtunerc_proxyfe.c
+@@ -19,7 +19,7 @@
+ #include <linux/string.h>
+ #include <linux/slab.h>
+
+-#include "dvb_frontend.h"
++#include <media/dvb_frontend.h>
+
+ #include "vtunerc_priv.h"
+
