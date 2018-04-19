@@ -3,13 +3,14 @@
 
 pkgname=syncterm
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A BBS terminal program, Supports ANSI music and the IBM charset when possible. Will run from a console, under X11 using XLib, or using SDL."
 url="http://syncterm.bbsdev.net"
 license=('GPL')
 depends=('ncurses' 'sdl')
 options=(!buildflags)
+makedepends=(unzip)
 arch=('i686' 'x86_64')
 source=("http://ufpr.dl.sourceforge.net/project/syncterm/syncterm/syncterm-1.0/syncterm-1.0.tgz")
 md5sums=('4f92d321a7205cc6dfbde1ffe47141ff')
