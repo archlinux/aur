@@ -8,7 +8,6 @@ pkgdesc="A Bible study tool for GTK3"
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
 pkgdesc="Bible study tool for GTK+"
-arch=('x86_64' 'i686')
 url="http://xiphos.org/"
 depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync' 'gconf')
 makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2' 'dbus-glib')
