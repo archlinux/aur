@@ -1,5 +1,5 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
-# Contributor: Liqueur Librazy <im@librazy.org>
+# Maintainer: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 pkgbase=tidb-bin
 _basever=2.0.0
@@ -12,10 +12,7 @@ arch=('x86_64')
 url="https://github.com/pingcap/tidb"
 license=('APACHE')
 depends=('gcc-libs')
-optdepends=('go-tools: provides goyacc')
-provides=("tidb=$_basever")
 conflicts=('tidb-bin-nightly')
-install='tidb.install'
 options=('strip' 'debug')
 source=("https://download.pingcap.org/tidb-v$_basever-rc.$_rcver-linux-amd64.tar.gz"
         "tidb.sysusers"
@@ -26,6 +23,8 @@ sha256sums=('3ef3ebd6cfd9a4ae471fef37819b7ca1be3576b6041eddc190622ccaa6b61b8c'
             '15f285782938b3ebbb8be60cc962a2cbf5ca349527c39d3a1138be1bf976feb9')
 
 _package() {
+    provides=("tidb=$_basever")
+    install='tidb.install'
     cd "$srcdir"
     install -Dm644 tidb.sysusers "$pkgdir"/usr/lib/sysusers.d/tidb.conf
     install -Dm644 tidb.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/tidb.conf
@@ -36,6 +35,7 @@ _package() {
 }
 
 _package-utils() {
+    optdepends=('go-tools: provides goyacc')
     cd "tidb-v$_basever-rc.$_rcver-linux-amd64/bin"
     install -dm755 "$pkgdir"/usr/bin
     install -Dm755 *-ctl "$pkgdir"/usr/bin
