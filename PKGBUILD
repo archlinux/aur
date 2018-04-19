@@ -1,14 +1,14 @@
 pkgname=wasm-pack-git
 _pkgname=wasm-pack
 pkgdesc="pack up the wasm and publish it to npm!"
-pkgrel=1
+pkgrel=2
 pkgver=0.1.0.128
 arch=('i686' 'x86_64')
 conflicts=("wasm-pack")
 provides=("wasm-pack")
 url="https://github.com/ashleygwilliams/wasm-pack"
 license=('Apache' 'MIT')
-depends=('rust' 'cargo')
+depends=('rust' 'cargo' 'wasm-bindgen' 'npm')
 makedepends=('rust' 'cargo')
 source=("$_pkgname::git+https://github.com/ashleygwilliams/wasm-pack.git")
 sha256sums=('SKIP')
