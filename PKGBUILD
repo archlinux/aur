@@ -5,7 +5,7 @@
 
 pkgname=sstp-client
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="SSTP client stable revision"
 arch=("i686" "x86_64")
 url="http://sstp-client.sourceforge.net/"
@@ -19,7 +19,7 @@ install=${pkgname}.install
 
 source=( '50-sstp.PROFILE.sh.sample'
          'sstp.options.sample'
-         "http://sourceforge.net/projects/sstp-client/files/sstp-client/${pkgver}/${pkgname}-${pkgver}.tar.gz" )
+         "http://sourceforge.net/projects/sstp-client/files/sstp-client/${pkgname}-${pkgver}.tar.gz" )
 
 sha1sums=( '65ad1d0700e8f52ed1e1b21433a99b5962a5a320'  
            'c3a81ad7ce4c8cdbfb53a780110e92cf64412c68'

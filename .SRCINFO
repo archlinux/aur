@@ -1,7 +1,7 @@
 pkgbase = sstp-client
 	pkgdesc = SSTP client stable revision
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sstp-client.sourceforge.net/
 	install = sstp-client.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = sstp-client
 	conflicts = sstp-client-svn-stable
 	source = 50-sstp.PROFILE.sh.sample
 	source = sstp.options.sample
-	source = http://sourceforge.net/projects/sstp-client/files/sstp-client/1.0.12/sstp-client-1.0.12.tar.gz
+	source = http://sourceforge.net/projects/sstp-client/files/sstp-client/sstp-client-1.0.12.tar.gz
 	sha1sums = 65ad1d0700e8f52ed1e1b21433a99b5962a5a320
 	sha1sums = c3a81ad7ce4c8cdbfb53a780110e92cf64412c68
 	sha1sums = afe80911a5ec033eac583242c642cc5ad00e6ac4
