@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
 pkgver=2018.1.4
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
@@ -12,7 +12,7 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/irpf/arquivos/IRPF2018-1.4.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/irpf/arquivos/IRPF2018-1.1.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
@@ -20,7 +20,7 @@ source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/irpf/arquivos/IRPF
 		$pkgname)
  
 
-md5sums=('8b016a95e276e305af112729a6bdbeaf'
+md5sums=('325548d013d23b8bca5c452a2fd5ea79'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
