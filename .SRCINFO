@@ -1,0 +1,28 @@
+pkgbase = gjs-fix-leaks
+	pkgdesc = Javascript Bindings for GNOME
+	pkgver = 1.52.2
+	pkgrel = 1
+	epoch = 1
+	url = https://wiki.gnome.org/Projects/Gjs
+	arch = x86_64
+	license = GPL
+	checkdepends = valgrind
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = xorg-server-xvfb
+	depends = cairo
+	depends = gobject-introspection-runtime
+	depends = js52
+	depends = gtk3
+	provides = gjs
+	conflicts = gjs
+	source = git+https://gitlab.gnome.org/GNOME/gjs.git#commit=9a331f9ba850f20734547eb3eaa2f4b1c79bb527
+	source = fix-leaks-lp1672297-1-context-Add-API-to-force-GC-schedule.patch
+	source = fix-leaks-lp1672297-2-object-Queue-a-forced-GC-when-toggling-down.patch
+	sha256sums = SKIP
+	sha256sums = 2f32d58d4408a1c9161a9affd77b062d202217ee645894b00323c0adae77e8f9
+	sha256sums = 0b1757b8175cfc78ec8d64f13730f21bc9b983a84e2081687f2bd0cd48c6bc91
+
+pkgname = gjs-fix-leaks
+

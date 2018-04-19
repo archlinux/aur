@@ -1,0 +1,90 @@
+From 33cbbeb11b61a0ffc8ff50e261e5dd33806590f9 Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Fri, 30 Mar 2018 21:37:37 -0300
+Subject: [PATCH 1/2] context: Add API to force GC schedule
+
+There are situations where we cannot run the
+GC right away, but we also cannot ignore the
+need of running it.
+
+For those cases, add a new private function
+that forces GC to happen on idle.
+---
+ gjs/context-private.h |  2 ++
+ gjs/context.cpp       | 29 +++++++++++++++++++++++++----
+ 2 files changed, 27 insertions(+), 4 deletions(-)
+
+diff --git a/gjs/context-private.h b/gjs/context-private.h
+index 6dbe669..c45c8d0 100644
+--- a/gjs/context-private.h
++++ b/gjs/context-private.h
+@@ -36,6 +36,8 @@ bool         _gjs_context_destroying                  (GjsContext *js_context);
+ 
+ void         _gjs_context_schedule_gc_if_needed       (GjsContext *js_context);
+ 
++void _gjs_context_schedule_gc (GjsContext *js_context);
++
+ void _gjs_context_exit(GjsContext *js_context,
+                        uint8_t     exit_code);
+ 
+diff --git a/gjs/context.cpp b/gjs/context.cpp
+index c509943..77d7eaa 100644
+--- a/gjs/context.cpp
++++ b/gjs/context.cpp
+@@ -90,6 +90,7 @@ struct _GjsContext {
+     uint8_t exit_code;
+ 
+     guint    auto_gc_id;
++    bool     force_gc;
+ 
+     std::array<JS::PersistentRootedId*, GJS_STRING_LAST> const_strings;
+ 
+@@ -592,21 +593,41 @@ trigger_gc_if_needed (gpointer user_data)
+ {
+     GjsContext *js_context = GJS_CONTEXT(user_data);
+     js_context->auto_gc_id = 0;
+-    gjs_gc_if_needed(js_context->context);
++
++    if (js_context->force_gc)
++        JS_GC(js_context->context);
++    else
++        gjs_gc_if_needed(js_context->context);
++
+     return G_SOURCE_REMOVE;
+ }
+ 
+-void
+-_gjs_context_schedule_gc_if_needed (GjsContext *js_context)
++
++static void
++_gjs_context_schedule_gc_internal (GjsContext *js_context,
++                                   bool        force_gc)
+ {
+     if (js_context->auto_gc_id > 0)
+-        return;
++        g_source_remove(js_context->auto_gc_id);
+ 
++    js_context->force_gc = force_gc;
+     js_context->auto_gc_id = g_idle_add_full(G_PRIORITY_LOW,
+                                              trigger_gc_if_needed,
+                                              js_context, NULL);
+ }
+ 
++void
++_gjs_context_schedule_gc (GjsContext *js_context)
++{
++    _gjs_context_schedule_gc_internal(js_context, true);
++}
++
++void
++_gjs_context_schedule_gc_if_needed (GjsContext *js_context)
++{
++    _gjs_context_schedule_gc_internal(js_context, false);
++}
++
+ void
+ _gjs_context_exit(GjsContext *js_context,
+                   uint8_t     exit_code)
+-- 
+2.17.0
+

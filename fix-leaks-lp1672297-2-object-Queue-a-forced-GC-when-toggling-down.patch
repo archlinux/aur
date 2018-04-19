@@ -1,0 +1,123 @@
+From 3f94b11a943c0e4d29c96930ced238580dc18fc7 Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Wed, 28 Mar 2018 19:21:52 -0300
+Subject: [PATCH 2/2] object: Queue a forced GC when toggling down
+
+During a GC, the collector asks each object which other
+objects that it wants to hold on to so if there's an entire
+section of the heap graph that's not connected to anything
+else, and not reachable from the root set, then it can be
+trashed all at once.
+
+GObjects, however, don't work like that, there's only a
+reference count but no notion of who owns the reference so,
+a JS object that's proxying a GObject is unconditionally held
+alive as long as the GObject has >1 references.
+
+Since we cannot know how many more wrapped GObjects are going
+be marked for garbage collection after the owner is destroyed,
+always queue a garbage collection when a toggle reference goes
+down.
+
+Issue: #140
+---
+ gi/object.cpp         | 22 ++++++++++++++++++++++
+ gjs/context-private.h |  2 +-
+ gjs/context.cpp       | 14 ++++++++------
+ 3 files changed, 31 insertions(+), 7 deletions(-)
+
+diff --git a/gi/object.cpp b/gi/object.cpp
+index b20d8b9..f9cf3cc 100644
+--- a/gi/object.cpp
++++ b/gi/object.cpp
+@@ -987,8 +987,30 @@ handle_toggle_down(GObject *gobj)
+      * collected by the GC
+      */
+     if (priv->keep_alive.rooted()) {
++        GjsContext *context;
++
+         gjs_debug_lifecycle(GJS_DEBUG_GOBJECT, "Unrooting object");
+         priv->keep_alive.switch_to_unrooted();
++
++        /* During a GC, the collector asks each object which other
++         * objects that it wants to hold on to so if there's an entire
++         * section of the heap graph that's not connected to anything
++         * else, and not reachable from the root set, then it can be
++         * trashed all at once.
++         *
++         * GObjects, however, don't work like that, there's only a
++         * reference count but no notion of who owns the reference so,
++         * a JS object that's proxying a GObject is unconditionally held
++         * alive as long as the GObject has >1 references.
++         *
++         * Since we cannot know how many more wrapped GObjects are going
++         * be marked for garbage collection after the owner is destroyed,
++         * always queue a garbage collection when a toggle reference goes
++         * down.
++         */
++        context = gjs_context_get_current();
++        if (!_gjs_context_destroying(context))
++            _gjs_context_schedule_gc(context);
+     }
+ }
+ 
+diff --git a/gjs/context-private.h b/gjs/context-private.h
+index c45c8d0..49c0cf9 100644
+--- a/gjs/context-private.h
++++ b/gjs/context-private.h
+@@ -36,7 +36,7 @@ bool         _gjs_context_destroying                  (GjsContext *js_context);
+ 
+ void         _gjs_context_schedule_gc_if_needed       (GjsContext *js_context);
+ 
+-void _gjs_context_schedule_gc (GjsContext *js_context);
++void _gjs_context_schedule_gc(GjsContext *js_context);
+ 
+ void _gjs_context_exit(GjsContext *js_context,
+                        uint8_t     exit_code);
+diff --git a/gjs/context.cpp b/gjs/context.cpp
+index 77d7eaa..a2ce34a 100644
+--- a/gjs/context.cpp
++++ b/gjs/context.cpp
+@@ -599,31 +599,33 @@ trigger_gc_if_needed (gpointer user_data)
+     else
+         gjs_gc_if_needed(js_context->context);
+ 
++    js_context->force_gc = false;
++
+     return G_SOURCE_REMOVE;
+ }
+ 
+ 
+ static void
+-_gjs_context_schedule_gc_internal (GjsContext *js_context,
+-                                   bool        force_gc)
++_gjs_context_schedule_gc_internal(GjsContext *js_context,
++                                  bool        force_gc)
+ {
+     if (js_context->auto_gc_id > 0)
+-        g_source_remove(js_context->auto_gc_id);
++        return;
+ 
+-    js_context->force_gc = force_gc;
++    js_context->force_gc |= force_gc;
+     js_context->auto_gc_id = g_idle_add_full(G_PRIORITY_LOW,
+                                              trigger_gc_if_needed,
+                                              js_context, NULL);
+ }
+ 
+ void
+-_gjs_context_schedule_gc (GjsContext *js_context)
++_gjs_context_schedule_gc(GjsContext *js_context)
+ {
+     _gjs_context_schedule_gc_internal(js_context, true);
+ }
+ 
+ void
+-_gjs_context_schedule_gc_if_needed (GjsContext *js_context)
++_gjs_context_schedule_gc_if_needed(GjsContext *js_context)
+ {
+     _gjs_context_schedule_gc_internal(js_context, false);
+ }
+-- 
+2.17.0
+
