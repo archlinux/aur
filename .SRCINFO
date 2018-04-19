@@ -7,6 +7,8 @@ pkgbase = autodesk-nlm
 	license = custom:¯\_(ツ)_/¯
 	depends = gcc-libs
 	depends = ld-lsb
+	provides = flexnet=11.14.1.3
+	conflicts = flexnet
 	source = https://knowledge.autodesk.com/sites/default/files/file_downloads/nlm11.14.1.3_ipv4_ipv6_linux64.tar.gz
 	source = lmgrd.service
 	md5sums = 77964c1c86b3e13979306f1840a05425

@@ -7,6 +7,8 @@ arch=(x86_64)
 url="https://knowledge.autodesk.com/customer-service/network-license-administration"
 license=(custom:'¯\_(ツ)_/¯')
 depends=('gcc-libs' 'ld-lsb')
+provides=("flexnet=$pkgver") # well, not for ARM...
+conflicts=('flexnet')
 source=("https://knowledge.autodesk.com/sites/default/files/file_downloads/nlm11.14.1.3_ipv4_ipv6_linux64.tar.gz"
         "lmgrd.service")
 md5sums=('77964c1c86b3e13979306f1840a05425'
