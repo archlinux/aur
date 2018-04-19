@@ -18,7 +18,7 @@ source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha256sums=('ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc')
-sha256sums_x86_64=('6b320362c737b66db8a47bc7f7cf049fbd91b0e41cbbb67d8b7e286e7f97208f')
+sha256sums_x86_64=('c29c0e199d05f458936dd361ceaecc5a2884300a99140cd9c0ceedaf07c3c3a1')
 sha256sums_i686=('2e6f3d4045701d3ac7dbb920de804809d405c275bffe217100897c810ab94e70')
 
 package() {
