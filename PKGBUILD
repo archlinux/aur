@@ -5,7 +5,7 @@
 
 pkgname=joplin
 pkgver=1.0.83
-pkgrel=1
+pkgrel=2
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
 makedepends=("git" "nodejs" "rsync")
@@ -62,8 +62,8 @@ package() {
 
 
   cd ${srcdir}
+  install -m755 joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
   install -m755 joplin.sh "${pkgdir}/usr/bin/joplin"
-  install -m755 joplin-cli.sh "${pkgdir}/usr/bin/joplin-cli"
 
   install -Dm644 ../joplin.desktop ${pkgdir}/usr/share/applications/joplin.desktop
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
