@@ -1,0 +1,12 @@
+post_install() {
+  echo " > Please add 'overlayroot' to your HOOKS array in /etc/mkinitcpio.conf and run mkinitcpio -P."
+}
+
+post_remove() {
+  if grep -qs 'overlayroot' /proc/cmdline; then
+    echo " > Please remove 'overlayroot' from your kernel commandline."
+  fi
+  if grep -qs 'overlayroot' /etc/mkinitcpio.conf; then
+    echo " > Please remove 'overlayroot' from your HOOKS array in /etc/mkinitcpio.conf and run mkinitcpio -P."
+  fi
+}
