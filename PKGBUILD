@@ -10,7 +10,7 @@ pkgname=qtcreator41
 _pkgname=qtcreator
 pkgver=4.1
 _pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='http://qt-project.org'
@@ -32,7 +32,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'clang: Clang code model'
             'valgrind: analyze support')
 source=("git://code.qt.io/qt-creator/qt-creator.git#branch=${_pkgver}"
-        "git://code.qt.io/qt-labs/qbs.git"
+        "git://code.qt.io/qbs/qbs.git"
         'qtcreator.desktop')
 md5sums=('SKIP'
          'SKIP'
