@@ -6,7 +6,7 @@ pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/rtichoke"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.4.0' 'python-pygments' 'python-pygments')
+depends=('r>=3.4.0' 'python-pygments' 'python-wcwidth')
 makedepends=('python-setuptools')
 source=("https://github.com/randy3k/rtichoke/archive/v0.1.1.tar.gz")
 md5sums=('e47995fe5df5440b9b63be00f64bebf6')
