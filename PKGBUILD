@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl_image' 'sdl_mixer' 'sdl_net')
 conflicts=('prboom-plus-svn')
 source=("http://download.sourceforge.net/prboom-plus/prboom-plus-$pkgver.tar.gz")
-md5sums=('eff7878d4542259a2bd6b2fef79962ca')
+sha1sums=('73b3b46c36aa693059f2762dcd807bfd0490f130')
 
 build() {
   cd "prboom-plus-$pkgver"
