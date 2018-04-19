@@ -1,6 +1,6 @@
 pkgbase = nodeboxeditor
-	pkgdesc = 3D Cubiod Voxel Editor for Minetest
-	pkgver = 0.9.0
+	pkgdesc = 3D Cuboid Voxel Editor for Minetest
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://rubenwardy.com/NodeBoxEditor
 	install = install
@@ -13,7 +13,7 @@ pkgbase = nodeboxeditor
 	depends = libjpeg
 	depends = libpng
 	depends = mesa
-	source = git://github.com/rubenwardy/NodeBoxEditor.git#tag=v0.9.0
+	source = git://github.com/rubenwardy/NodeBoxEditor.git#tag=v0.9.1
 	sha256sums = SKIP
 
 pkgname = nodeboxeditor

@@ -2,15 +2,15 @@
 
 pkgname=nodeboxeditor
 _pkgname=NodeBoxEditor
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
-pkgdesc='3D Cubiod Voxel Editor for Minetest'
+pkgdesc='3D Cuboid Voxel Editor for Minetest'
 url='https://rubenwardy.com/NodeBoxEditor'
 license=('GPL3')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
 depends=('irrlicht' 'libjpeg' 'libpng' 'mesa')
-source=('git://github.com/rubenwardy/NodeBoxEditor.git#tag=v0.9.0')
+source=("git://github.com/rubenwardy/NodeBoxEditor.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 install=install
 
