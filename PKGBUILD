@@ -10,7 +10,7 @@ depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gdk-pixbuf2' 'libxdg-basedi
 makedepends=('git' 'perl')
 provides=('dunst' 'notification-daemon' 'dunstify')
 conflicts=('dunst' 'dunstify')
-source=('git+https://github.com/dunst-project/dunst')
+source=('git+https://github.com/seletskiy/dunst')
 md5sums=('SKIP')
 
 pkgver() {
