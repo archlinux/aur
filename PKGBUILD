@@ -14,8 +14,8 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.444
-pkgrel=3
+pkgver=1.1.446
+pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
@@ -28,7 +28,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-md5sums_x86_64=('1fe5e1d18adcb2d744a7364ea0ecf360'
+md5sums_x86_64=('8c0a1fe2a16c009396366b5fad459835'
                 '84e61f5eda991b978fa168d6762f7990'
                 '391ba54997d6faddbfe41a185a823ee4')
 
@@ -44,7 +44,7 @@ package() {
 
   msg "Converting debian package..."
 
-  ar x rstudio-xenial-1.1.444-amd64.deb
+  ar x rstudio-xenial-${pkgver}-amd64.deb
 
   cd "$srcdir"
   tar Jxf data.tar.xz -C "$pkgdir"
