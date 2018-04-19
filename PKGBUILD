@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
 makedepends=('cmake' 'rsync' 'jdk8-openjdk')
-depends=('libxaw' 'libxt' 'libxcursor' 'libjpeg-turbo' 'java-runtime' 'openssl-1.0')
+depends=('libxaw' 'libxt' 'libxi' 'libxcursor' 'libjpeg-turbo' 'java-runtime=8' 'openssl-1.0')
 sha256sums=('2389f76eafc48412b980a61280ffb8d111dacd9e51d5e3df2112f505558b48d4'
             'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
 conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
