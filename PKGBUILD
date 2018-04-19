@@ -1,6 +1,6 @@
 pkgname=python-rpi.gpio
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A module to control Raspberry Pi GPIO channels"
 url="http://sourceforge.net/projects/raspberry-gpio-python/"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/RPi.GPIO-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
