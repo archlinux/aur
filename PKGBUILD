@@ -2,7 +2,7 @@
 
 pkgname=bbmap
 pkgver=37.99
-pkgrel=1
+pkgrel=2
 pkgdesc="A short read aligner and other bioinformatic tools"
 arch=('x86_64')
 url=https://jgi.doe.gov/data-and-tools/bbtools/
@@ -40,8 +40,9 @@ package() {
   cp -r resources "${pkgdir}"/usr/share/java/"${pkgname}"/
 
   for script in *.sh; do
-    sed -i s_'CP=.*'_CP=/usr/share/java/"${pkgname}"/current/_ "${script}"
-    sed -i s_'DIR=.*'_DIR=/usr/bin/_ "${script}"
+    sed -i s_'\bCP=.*'_CP=/usr/share/java/"${pkgname}"/current/_ "${script}"
+    sed -i s_'\bDIR=.*'_DIR=/usr/bin/_ "${script}"
+    sed -i s_'\bNATIVELIBDIR=.*'_NATIVELIBDIR=/usr/share/java/"${pkgname}"/current/jni/_ "${script}"
 
     install -Dm775 "${script}" "${pkgdir}"/usr/bin/"${script}"
   done
