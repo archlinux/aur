@@ -1,6 +1,6 @@
 pkgbase = chromium-gtk2
 	pkgdesc = A web browser built for speed, simplicity, and security (GTK2 version)
-	pkgver = 65.0.3325.181
+	pkgver = 66.0.3359.117
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -34,7 +34,6 @@ pkgbase = chromium-gtk2
 	depends = hicolor-icon-theme
 	depends = flac
 	depends = fontconfig
-	depends = libvpx
 	depends = icu
 	depends = opus
 	depends = minizip
@@ -51,28 +50,23 @@ pkgbase = chromium-gtk2
 	optdepends = kwallet: for storing passwords in KWallet
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-65.0.3325.181.tar.xz
+	noextract = blink-tools-66.0.3359.117.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.117.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = chromium-65.0.3325.181.txt::https://chromium.googlesource.com/chromium/src.git/+/65.0.3325.181?format=TEXT
+	source = chromium-66.0.3359.117.txt::https://chromium.googlesource.com/chromium/src/+/66.0.3359.117?format=TEXT
+	source = https://pkgbuild.com/~foutrelis/sources/chromium/blink-tools-66.0.3359.117.tar.gz
 	source = fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
-	source = allow-stat-in-Linux-for-GPU-process-for-a-list-of-files.patch
+	source = fix-frame-buttons-rendering-too-large-when-using-OSX.patch
 	source = chromium-skia-harmony.patch
-	source = chromium-clang-r2.patch
-	source = chromium-math.h-r0.patch
-	source = chromium-stdint.patch
 	source = chromium-widevine.patch
-	source = chromium-gtk2-fix-build.patch
-	sha256sums = 93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687
+	sha256sums = 77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = 2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee
+	sha256sums = bf9600489198c5a873ef7b12e8ba42e04c667a59b898592ad1b416f66df13d7e
+	sha256sums = 922db9d6a69a22003caa72c507e1ccbf0c4ee2c254f00e243c97ca572bf1ec56
 	sha256sums = e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe
-	sha256sums = 4327289866d0b3006de62799ec06b07198a738e50e0a5c2e41ff62dbe00b4a2c
+	sha256sums = bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a
 	sha256sums = feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3
-	sha256sums = 4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3
-	sha256sums = fe0ab86aa5b0072db730eccda3e1582ebed4af25815bfd49fe0da24cf63ca902
-	sha256sums = c00d2506f1078b38a8ebec474a7318e76a61db1298afb40088a34210f137210f
 	sha256sums = d6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808
-	sha256sums = b57a3e0c10134a3731f07e993d8350b1958fb66114f2663cf411c6e001848422
 
 pkgname = chromium-gtk2
 
