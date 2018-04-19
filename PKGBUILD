@@ -76,7 +76,7 @@ package() {
 
   # Move + suffix .desktops
   for i in $(printf -- '%s\n' "${source[@]}" | grep desktop | cut -d "." -f1); do
-    install -m644 "$srcdir"/$i.desktop "$pkgdir"/usr/share/applications/$i-$_jname.desktop
+    install -Dm644 "$srcdir"/$i.desktop "$pkgdir"/usr/share/applications/$i-$_jname.desktop
   done
 
   # Move + suffix icons
