@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=qtesseract5
-pkgver=2.0
+pkgver=2.1a
 pkgrel=1
 pkgdesc="Convert the SUB/IDX subtiltes to SRT file"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('ogmrip')
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/qtesseract5_${pkgver}.orig.tar.gz"
         'qtesseract5.svgz'
         )
-sha256sums=('fa9ec51e50c8c50367b305178e04fbb27dd2cac8abb8665a2666cfe7bc3b0fea'
+sha256sums=('542832787795b369e4738b06aa1978b9ddb17de03b693630eacfc4be978b2239'
             '968b76c98b03234eaa306e2fa689ed7f1a81b02edf4c5717de196c16f449c596'
             )
 
@@ -43,14 +43,15 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/share/qtesseract5/Qtesseract5.py "${pkgdir}/usr/bin/qtesseract5"
 
-
   install -Dm755 Qtesseract5.py "${pkgdir}/usr/share/qtesseract5/Qtesseract5.py"
   install -Dm644 Qtesseract5Ressources_rc.py "${pkgdir}/usr/share/qtesseract5/Qtesseract5Ressources_rc.py"
   install -Dm644 langcodes.py "${pkgdir}/usr/share/qtesseract5/langcodes.py"
   install -Dm644 Qtesseract5_en_EN.qm "${pkgdir}/usr/share/qtesseract5/Qtesseract5_en_EN.qm"
   install -Dm644 Qtesseract5_fr_FR.qm "${pkgdir}/usr/share/qtesseract5/Qtesseract5_fr_FR.qm"
+  install -Dm644 Qtesseract5_cs_CZ.qm "${pkgdir}/usr/share/qtesseract5/Qtesseract5_cs_CZ.qm"
   install -Dm644 WhatsUp/WhatsUp.py "${pkgdir}/usr/share/qtesseract5/WhatsUp/WhatsUp.py"
   install -Dm644 man/qtesseract5.1 "${pkgdir}/usr/share/man/man1/qtesseract5.1"
+  install -Dm644 man/qtesseract5.fr.1 "${pkgdir}/usr/share/man/fr/man1/qtesseract5.1"
   install -Dm644 qtesseract5.desktop "${pkgdir}/usr/share/applications/qtesseract5.desktop"
 
   install -Dm644 "${srcdir}/qtesseract5.svgz" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtesseract5.svgz"
