@@ -1,0 +1,18 @@
+pkgbase = lib32-libmnl
+	pkgdesc = Minimalistic user-space library oriented to Netlink developers.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.netfilter.org/projects/libmnl/
+	arch = x86_64
+	license = LGPL2.1
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = libmnl
+	source = http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.4.tar.bz2
+	source = http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.4.tar.bz2.sig
+	validpgpkeys = C09DB2063F1D7034BA6152ADAB4655A126D292E4
+	sha1sums = 2db40dea612e88c62fd321906be40ab5f8f1685a
+	sha1sums = SKIP
+
+pkgname = lib32-libmnl
+
