@@ -1,0 +1,13 @@
+pkgbase = mod_ucam_webauth
+	pkgdesc = Ucam WebAuth Apache authentication agent
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/cambridgeuniversity/mod_ucam_webauth
+	arch = any
+	license = Apache
+	depends = apache
+	source = https://github.com/cambridgeuniversity/mod_ucam_webauth/archive/v2.0.5.tar.gz
+	sha256sums = 3e8ca3d6c76d69cb9d125d73251c482f0e09c9e91020ef2d76a13ea18bfc6252
+
+pkgname = mod_ucam_webauth
+
