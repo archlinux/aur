@@ -1,6 +1,6 @@
 pkgbase = gns3-server
 	pkgdesc = GNS3 network simulator. Server package.
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -24,9 +24,9 @@ pkgbase = gns3-server
 	optdepends = qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.
 	optdepends = vpcs: Simple PC emulation for basic network operations.
 	optdepends = ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.
-	source = gns3-server-2.1.4.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.1.4.tar.gz
+	source = gns3-server-2.1.5.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.1.5.tar.gz
 	source = gns3-server@.service
-	sha256sums = dd723814e57aa3e12b57889349de70fbc390473f6d3cc2c4b1552593b63b64a8
+	sha256sums = 73ce2528dfbdc5478fc8bd6f5687f4c9bf30043ce6554d822a1f79b51dfd7381
 	sha256sums = b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f
 
 pkgname = gns3-server
