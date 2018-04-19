@@ -2,8 +2,8 @@
 # Contributor: Moritz Lipp <mlq at pwmt dot org>
 
 pkgname=asix-ax88179-dkms
-pkgver=1.18.0
-pkgrel=4
+pkgver=1.19.0
+pkgrel=1
 pkgdesc="Driver for USB ASIX Ethernet model AX88179/AX88178A"
 arch=('i686' 'x86_64')
 
@@ -12,7 +12,7 @@ _modname='ax88179_178a'
 
 # Browse the pages for USB-to-Ethernet devices and see which devices are
 # compatible with this driver.
-# http://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112&PLine=71
+# http://www.asix.com.tw/download.php?sub=driverdetail&PItemID=131
 url='http://www.asix.com.tw/'
 license=('GPL')
 
@@ -27,7 +27,7 @@ source=(
     "0002-b2b128.patch"
 )
 sha512sums=(
-    '1fb871aca533eeac9476f647a9e6bebcc2151f9327240d31fcc8cdb4d566006386685b77a437924ca05785ec23d82d82d8c485fede5edac70a81742ea82fdf22'
+    '4868203e7a2574fc1760c604dc0f6d8a6890e4d65912bfc1e47bcef2fd72f422e791441cd65e58737b10edb5e04a40cf1e10585ae8b9f385adc729fb34b7fb8a'
     'c22d3ec8bea598580681c6a9e2ae6b3d2118547a739ee717d4576653426ace7ec2406012d162ec6424244c360a2b9b7a185dbf3eebba6c0065efedfb54de23ba'
     '74a730f2ccfabf54c600391ee9a54ad3977b730c141c9ca9e7b1740c0d93161595a71312b4e3067411bde2f7d7f2a1cb9fb9e982a6ccfc0a4fbfa86829f6c346'
     'a31cab0b3e0fa027acbf629aec7294d591d6dd01928de800bd915e78c75be7be0fe7603b6c69ed90f5a6fefe30ecf6a953fa154cccb03b9cb3e070e7566394f8'
@@ -45,28 +45,33 @@ prepare() {
     # devices based on the same ASIX chipset as this one or to solve bugs with
     # specific versions of the kernel.
     patch -p1 < "${srcdir}/0002-b2b128.patch"
+
+    # Use a DKMS build against the right kernel release
+    sed -i "${srcdir}/${_filename}/Makefile" \
+        -e '/#KDIR/d' \
+        -e 's/^KDIR.*/KDIR   = \/lib\/modules\/$(KERNELRELEASE)\/build/g'
 }
 
 package() {
-	installDir="${pkgdir}/usr/src/${_modname}-dkms-${pkgver}"
-	
-	install -dm755 "${installDir}"
+    installDir="${pkgdir}/usr/src/${_modname}-dkms-${pkgver}"
+
+    install -dm755 "${installDir}"
 
     # The kernel from kernel.org does provide an outdated module ax88179_178a.
     # Arch Linux packages that module in their default kernel (normal + lts).
     # We need to blacklist this module. This makes sure it is not loaded as
     # ours will be conflicting with the default module.
-	install -dm755 "${pkgdir}/etc/modprobe.d"
-	install -m644 /dev/null \
+    install -dm755 "${pkgdir}/etc/modprobe.d"
+    install -m644 /dev/null \
         "${pkgdir}/etc/modprobe.d/blacklist-${_modname}.conf"
-	printf "blacklist ${_modname}\n" \
+    printf "blacklist ${_modname}\n" \
         > "${pkgdir}/etc/modprobe.d/blacklist-${_modname}.conf"
 
     # Load ax88179_178a-dkms automatically at boot
-	install -dm755 "${pkgdir}/etc/modules-load.d"
+    install -dm755 "${pkgdir}/etc/modules-load.d"
     install -m644 /dev/null \
         "${pkgdir}/etc/modules-load.d/${_modname}-dkms.conf"
-	printf "${_modname}-dkms\n" \
+    printf "${_modname}-dkms\n" \
         > "${pkgdir}/etc/modules-load.d/${_modname}-dkms.conf"
 
     # Patch dkms file and rename it to the mandatory dkms.conf filename.
