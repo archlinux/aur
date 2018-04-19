@@ -1,8 +1,9 @@
-# Maintainer: William Gathoye <william at gathoye dot be>
+# Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
+# Contributor: William Gathoye <william at gathoye dot be>
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 
 pkgname=mattermost-desktop
-pkgver=3.7.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
@@ -10,12 +11,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/mattermost/desktop"
 license=('Apache')
 
-makedepends=('npm' 'gendesk' 'libicns' 'graphicsmagick')
-depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'nspr' 'alsa-lib')
-optdepends=()
+depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
+makedepends=('npm' 'gendesk' 'graphicsmagick' 'git')
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('92a545c823df644e6bb49712c67770fda606644d32ae3501d903223a1d3851f8bc7a55f86aa67f5df1dafcef5f87d438845ac722e44b074acb7b645accde8ae0')
+sha512sums=('24385373b2f87b2f51f80bf000f774638983ce4d61fbde1e4f4145a0bddd7cc5aa22ba4785065b60b67920a56c3539716560bee7a6f303d203967b260c9d94f6')
 
 prepare() {
     cd "${srcdir}/desktop-${pkgver}"
@@ -49,25 +49,16 @@ prepare() {
 
 build() {
     cd "${srcdir}/desktop-${pkgver}"
-    npm install
-    npm run build
-    npm run package:linux
+    npm install --cache "${srcdir}/npm-cache"
+    npm run build --cache "${srcdir}/npm-cache"
+    npm run package:linux --cache "${srcdir}/npm-cache"
 }
 
 package() {
     cd "${srcdir}/desktop-${pkgver}"
 
     install -d -m 755 "${pkgdir}"/usr/lib
-    case "$CARCH" in
-        i686)
-            _release="linux-ia32-unpacked"
-            ;;
-        x86_64)
-            _release="linux-unpacked"
-            ;;
-    esac
-
-    cp -r release/${_release} "$pkgdir/usr/lib/mattermost"
+    cp -r release/linux*unpacked "$pkgdir/usr/lib/mattermost"
 
     install -d -m 755 "$pkgdir/usr/bin"
     ln -s /usr/lib/mattermost/mattermost-desktop "$pkgdir/usr/bin/mattermost-desktop"
