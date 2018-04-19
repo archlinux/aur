@@ -1,17 +1,17 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=autodesk-nlm
-pkgver=11.13.1.2
+pkgver=11.14.1.3
 pkgrel=1
 pkgdesc="FLEXnet License Manager (lmgrd) + Autodesk® vendor daemon (adskflex)"
 arch=(x86_64)
 url="https://knowledge.autodesk.com/customer-service/network-license-administration"
 license=(custom:'¯\_(ツ)_/¯')
 depends=('gcc-libs' 'ld-lsb')
-source=("http://download.autodesk.com/us/support/files/network_license_manager/11_13_1_2_v2/Linux/nlm11.13.1.2_ipv4_ipv6_linux64.tar.gz"
+source=("https://knowledge.autodesk.com/sites/default/files/file_downloads/nlm11.14.1.3_ipv4_ipv6_linux64.tar.gz"
         "lmgrd.service")
-md5sums=('2a531d68bda033f907e6c85e81e5b160'
+md5sums=('77964c1c86b3e13979306f1840a05425'
          '6c3e1e09dc14b42eac9c5a83d91174ba')
-sha256sums=('f2770d6acbfa24495e7375b8c5b348066c4063df54c0c96c87103c0f0b9b9779'
+sha256sums=('6c659f9908ec2477a935f977cc036664ee5172b8c8849e32218da6faa4134244'
             '10fdaa80006dabba99cdd1ea754043812fb66f8f6ea9ce08998932e1ea6a5086')
 
 prepare() {
