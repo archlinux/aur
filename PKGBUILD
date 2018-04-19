@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=gracegtk
-pkgver=1.0.0rc2
+pkgver=1.0.0rc3a
 pkgrel=1
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('libjpeg' 'fftw' 't1lib' 'netcdf' 'pdflib-lite' 'gtk2')
 makedepends=('linuxdoc-tools' 'gcc-fortran')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}_2018_01_22_12h05.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -23,10 +23,10 @@ build() {
   #cp "$srcdir"/configure_0.7.1_without_ac_fn_c_try_run ./configure
   sed -i -e 's|ac_fn_c_try_run ()|dummy ()|' configure
   sed -i -e 's|ac_fn_c_try_run|ac_fn_c_try_compile|g' configure
-  sed -i -e 's|SIZEOF_INT|sizeof(int)|g' src/*.c
-  sed -i -e 's|SIZEOF_FLOAT|sizeof(float)|g' src/*.c
-  sed -i -e 's|SIZEOF_DOUBLE|sizeof(double)|g' src/*.c
-  sed -i -e 's|SIZEOF_CHAR|sizeof(char)|g' src/*.c
+  sed -i -e 's|SIZEOF_INT|sizeof(int)|g' src/*.c src/pars.yacc
+  sed -i -e 's|SIZEOF_FLOAT|sizeof(float)|g' src/*.c src/pars.yacc
+  sed -i -e 's|SIZEOF_DOUBLE|sizeof(double)|g' src/*.c src/pars.yacc
+  sed -i -e 's|SIZEOF_CHAR|sizeof(char)|g' src/*.c src/pars.yacc
   sed -i -e 's|SIZEOF_VOID_P|sizeof(void *)|g' src/*.c grace_np/*.c
 
   sed -i -e 's| -V -qversion||g' ./configure
@@ -49,7 +49,7 @@ package() {
   install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
-md5sums=('eb1065be80757140a328e5930a53e17c'
+md5sums=('1fe65651762530aa03d6e3b8cfd77785'
          '05b430f86615ab1aea79cee6ca204792'
          'ef085e503d30207035f5dfbef648ed36'
          '8427067a73698b5425901866ca3195d0'
