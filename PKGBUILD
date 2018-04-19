@@ -4,12 +4,11 @@
 
 pkgname=closure-compiler
 pkgver=20180402
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs checking, instrumentation and optimizations on Javascript code."
 arch=('any')
 url="https://developers.google.com/closure/compiler/"
 license=('APACHE')
-conflicts=('java-runtime=7')
 depends=('java-runtime=8')
 makedepends=('maven' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/v$pkgver.tar.gz")
