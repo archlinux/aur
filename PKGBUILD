@@ -2,14 +2,14 @@
 
 pkgname=fw
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="faster workspace management"
 depends=('fzf')
 arch=('x86_64')
 url="https://github.com/brocode/fw"
 license=('WTFPL')
 source=('https://github.com/brocode/fw/releases/download/1.9.2/fw')
-sha256sums=('394c126931d02591aa76425ecda84870717a79cc0e107786f8f5bc834cd1fc9b')
+sha256sums=('e79b9ed0ed278b4fef07c3a1dee1f41840301192378e5b4106a79d8922789b5f')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
