@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=spectre-meltdown-checker
-pkgver=0.36
+pkgver=0.37
 pkgrel=1
 epoch=
 pkgdesc="Spectre & Meltdown vulnerability/mitigation checker (CVE-2017-5753, CVE-2017-5715, CVE-2017-5754)"
@@ -14,4 +14,4 @@ package() {
   install -Dm755 spectre-meltdown-checker.sh "$pkgdir/usr/bin/spectre-meltdown-checker"
 }
 
-sha256sums=('a957eb62a3d177a0290cf9458bc696a8f647057c52ab7c1430d8f560d48a8347')
+sha256sums=('b1b28048005725b963ff0de715d5155e01dc6266c6a18db40f5349ab4565c5a8')
