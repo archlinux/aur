@@ -1,0 +1,4 @@
+skaffold-*.pkg.tar.xz
+skaffold-*
+pkg/
+src/
