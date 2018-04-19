@@ -4,15 +4,14 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.69.336
-_another_pkgver=g7edcc575
-_yetanotherpkgrel64=39
-_yetanotherpkgrel32=39
+_pkgver=1.0.77.338
+_another_pkgver=g758ebd78
+_yetanotherpkgrel64=41
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}
 pkgrel=1
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
 makedepends=('imagemagick')
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('MIT')
 url="http://spotio.devinhalladay.com/"
 options=('!strip' '!upx')
@@ -31,12 +30,9 @@ sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
 	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
 	   'abab92b537b10c861023927db10d71c5cd6bcc0afc7ab7a5ffae7094cc3c6f46'
 	   'SKIP')
-sha256sums_x86_64=('ed0dc69f7e50879fcf7bd1bb67e33f08af0c17ebd7bb608ce4e7a143dec1022e')
-sha256sums_i686=('09f7d26f9a56fa91fcb7984c2c183b627f31cba1a3966c11e3262868fa656821')
+sha256sums_x86_64=('0698d2dbda43f2866d2a6f6ed9816bf8022aa8cf67d0dba347f486410093e1a4')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
-
-source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel32}_i386.deb")
 
 depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
