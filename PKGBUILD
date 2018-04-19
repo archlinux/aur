@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20180306
+pkgver=20180419
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -11,7 +11,7 @@ license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
 source=("icpbr_certs-${pkgver}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('86ec35dafc14e63835925d06782c4b3afc84ccd5f7e2a95615a2e157f6ace779e263acc8c749ae5e62418880a625f83acaa79918161adf2190367f3ccb81dc24')
+sha512sums=('19802274b32419e24e00879bd043e565d039b3d00532c5c4616b772b05349392781df05225b1d71d5f416365fdb3d954861e4fc9da922a9fde68f8f89d173ec9')
 
 package() {
   local cert_tag='icp_br'
