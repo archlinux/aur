@@ -1,37 +1,48 @@
-# Maintainer: Titov Denis <kernelmd@yandex.ru>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=xapps-git
-_pkgbasename=xapps
-pkgver=r26.15e6611
+pkgver=1.2.0.r0.ga8d7c4c
 pkgrel=1
 pkgdesc="Common library for X-Apps project"
 arch=('i686' 'x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
 depends=('libgnomekbd')
-makedepends=('git')
-provides=($_pkgname)
-conflicts=(${_pkgbasename})
-url='https://github.com/linuxmint/xapps'
-
-source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
-md5sums=('SKIP')
+makedepends=('git' 'meson' 'gobject-introspection' 'python-gobject' 'python2-gobject' 'vala')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
+    mkdir -p "${srcdir}"/${pkgname%-git}/build
+    cd "${srcdir}"/${pkgname%-git}/build
 
-    ./autogen.sh --prefix="/usr" \
-        --localstatedir="/var" \
-        --libexecdir="/usr/lib/${_pkgbasename}"
-    make
+    meson --prefix=/usr --buildtype=plain ..
+    ninja
 }
 
 package(){
-    cd ${srcdir}/${pkgname}
-    make DESTDIR="$pkgdir/" install
-}
+    cd "${srcdir}"/${pkgname%-git}/build
 
+    DESTDIR="${pkgdir}" ninja install
+    # rm useless scripts
+    rm -r "${pkgdir}"/usr/bin
+
+    # byte-compile python modules since meson does not implement autotools'
+    # py-compile.
+    # This is kind of ugly but removes traces of the build root.
+    for _python in python3 python2; do
+        while read -rd '' _file; do
+            _destdir="$(dirname "${_file#${pkgdir}}")"
+            ${_python} -m compileall -d "${_destdir}" "${_file}"
+            ${_python} -O -m compileall -d "${_destdir}" "${_file}"
+        done < <(find "${pkgdir}"/usr/lib/${_python}* -name '*.py' -print0)
+    done
+}
