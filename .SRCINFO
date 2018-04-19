@@ -1,0 +1,23 @@
+pkgbase = planner-eos
+	pkgdesc = Project manager designed for elementary OS.
+	pkgver = 46.f32f6b2
+	pkgrel = 1
+	url = https://github.com/alainm23/planner
+	install = planner-eos.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = vala
+	depends = granite
+	depends = gtk3
+	depends = glib2
+	depends = sqlite
+	provides = planner-eos
+	conflicts = planner-eos
+	source = git+https://github.com/alainm23/planner.git
+	sha256sums = SKIP
+
+pkgname = planner-eos
+
