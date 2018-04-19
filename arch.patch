@@ -1,11 +1,14 @@
 diff --git a/metadata.json b/metadata.json
-index 1e40c02..51cb18a 100644
+index 1e40c02..9325dcf 100644
 --- a/metadata.json
 +++ b/metadata.json
-@@ -1,5 +1,5 @@
+@@ -1,7 +1,7 @@
  {
 -	"localedir":"/usr/local/share/locale",
 +	"localedir":"/usr/share/locale",
  	"shell-version": [
- 		"3.10", "3.12", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24", "3.26"
+-		"3.10", "3.12", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24", "3.26"
++		"3.10", "3.12", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24", "3.26", "3.28"
  	],
+ 	"uuid": "cpupower@mko-sl.de",
+ 	"name": "CPU Power Manager",
