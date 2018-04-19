@@ -1,6 +1,6 @@
 pkgbase = numix-icon-theme-pack
 	pkgdesc = Numix project Icon Themes - Updated with Numix Core
-	pkgver = r5919
+	pkgver = r6074
 	pkgrel = 1
 	url = http://numixproject.org/
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = numix-icon-theme-pack
 	provides = numix-circle-icon-theme
 	provides = numix-circle-light-icon-theme
 	provides = numix-icon-theme
+	conflicts = numix-square-icon-theme-git
+	conflicts = numix-circle-icon-theme-git
 	conflicts = numix-square-icon-theme
 	conflicts = numix-square-light-icon-theme
 	conflicts = numix-circle-icon-theme

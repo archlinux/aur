@@ -2,7 +2,7 @@
 
 pkgbase="numix-icon-theme-pack"
 pkgname="numix-icon-theme-pack-git"
-pkgver=r5919
+pkgver=r6074
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://numixproject.org/'
 license=('GPL3')
 makedepends=('git' 'python-gobject' 'inkscape')
 provides=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
-conflicts=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
+conflicts=('numix-square-icon-theme-git' 'numix-circle-icon-theme-git' 'numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
 options=('!strip')
 source=(
   'numix-core::git+https://github.com/numixproject/numix-core'
@@ -40,11 +40,11 @@ package() {
   install -Dm644 "$srcdir/numix-core/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # Numix Icon Theme
   cd "$srcdir/numix-icon-theme"
-  cp -dr --no-preserve='ownership' Numix "$pkgdir/usr/share/icons/"
+  cp -dr --no-preserve='ownership' Numix{-Light,} "$pkgdir/usr/share/icons/"
   cd "$srcdir/numix-icon-circle"
-  cp -dr --no-preserve='ownership' Numix-Circle "$pkgdir/usr/share/icons/"
+  cp -dr --no-preserve='ownership' Numix-Circle{-Light,} "$pkgdir/usr/share/icons/"
   cd "$srcdir/numix-icon-square"
-  cp -dr --no-preserve='ownership' Numix-Square "$pkgdir/usr/share/icons/"
+  cp -dr --no-preserve='ownership' Numix-Square{-Light,} "$pkgdir/usr/share/icons/"
   # Numix Core Icon Updates
   cd "$srcdir/numix-core"
   cp -dr --no-preserve='ownership' numix-icon-theme-circle/Numix-Circle "$pkgdir/usr/share/icons/"
