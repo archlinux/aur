@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=cpprestsdk
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64')
@@ -10,15 +10,12 @@ license=('Apache')
 depends=('boost' 'websocketpp' 'openssl>=1.0.0')
 makedepends=('cmake>=2.6.0')
 conflicts=('casablanca' 'casablanca-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v${pkgver}.tar.gz" "17a198081379384ed9373828f905592ce9c4bdf3.patch")
-sha512sums=('f6a93e5e87e27db724ccc028326b1dce243617cb0ae0d101b2cea700c4f264c073cb0e8a9d88a14be165e16ef2f1f43a17e49278087bc8cf372e623a1b6a9c47'
-            '6d33d9bdbe0fa4353d528fe1c9eb4b7071c8d4de848051675554cec7486bfa97015eabef1d3fcd634ae274c9093ac97e718e212e8e03b20576af34184bad3f4d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v${pkgver}.tar.gz")
+sha512sums=('267a928f770a668874f9b7e381e8977ffa3478c9292df4ed93d4235d20f0e89b1bfe4cfc82945d3f28fe2746a4fe6089009c4839dac5db130494bb3a395dd198')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
-  patch -p1 < ../17a198081379384ed9373828f905592ce9c4bdf3.patch
   mkdir -p build
-
 }
 
 build() {
@@ -35,7 +32,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}/
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ThirdPartyNotices.txt ${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices
