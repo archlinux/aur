@@ -1,9 +1,8 @@
 # Maintainer Robert Booster > booster.devel@gmail.com
-# Automatic builder > https://github.com/boosterdev/autobuild
 
 pkgname=python2-gmusicapi
-_gitver="10.1.2"
-pkgver="10.1.2"
+_gitver="11.0.1"
+pkgver="11.0.1"
 pkgrel=1
 pkgdesc="An unofficial client library for Google Music"
 arch=('any')
