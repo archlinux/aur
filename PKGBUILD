@@ -18,8 +18,11 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
 build() {
   cd ${pkgbase}-${pkgver}
-  ./configure --prefix=/usr --disable-fd-passing --disable-static \
-              --disable-gpgsm-test
+  ./configure \
+    --prefix=/usr \
+    --disable-fd-passing \
+    --disable-static \
+    --disable-gpgsm-test
   make
 }
 
