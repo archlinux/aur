@@ -3,9 +3,9 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20180121.49ff1d2ea
+pkgver=20180419.87ad4d8e7
 pkgrel=1
-pkgdesc='Infiniminer/Minecraft inspired game'
+pkgdesc='Voxel game engine and Infiniminer/Minecraft-inspired game'
 url='http://www.minetest.net/'
 license=('LGPL2.1' 'CCPL:by-sa')
 arch=('i686' 'x86_64')
