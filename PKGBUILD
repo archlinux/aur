@@ -1,13 +1,13 @@
 # Maintainer : boronology <boronology at gmail dot com>
 pkgname=otf-source-han-code-jp
-pkgver=2.000
+pkgver=2.011
 pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="Japanese OpenType font for developers. Made by mixing SourceHanSans and SourceCodePro"
 arch=('any')
 license=('custom')
 url="https://github.com/adobe-fonts/source-han-code-jp"
-source=("https://github.com/adobe-fonts/source-han-code-jp/archive/2.000R.tar.gz")
+source=("https://github.com/adobe-fonts/source-han-code-jp/archive/2.011R.tar.gz")
 
 install=$pkgname.install
 
@@ -27,4 +27,4 @@ package() {
 	  	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
-md5sums=('033945f2365be48bf5f7385479d6cfe0')
+md5sums=('830fe735c5a14949e482da78b0c080ad')
