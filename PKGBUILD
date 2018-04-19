@@ -2,7 +2,7 @@
 # Maintainer: Kai Korla <balticer@balticer.de>
 pkgname=php-redis
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,9 +12,7 @@ makedepends=(
 )
 depends=(
     'php>=7.0.0'
-)
-optdepends=(
-   'php-igbinary: igbinary support'
+    'php-igbinary'
 )
 conflicts=(
     'phpredis-git'
