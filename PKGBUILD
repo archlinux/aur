@@ -1,12 +1,12 @@
-pkgbase=python-rpi.gpio
-pkgname=('python-rpi.gpio' 'python2-rpi.gpio')
+pkgname=python-rpi.gpio
 pkgver=0.6.3
 pkgrel=2
 pkgdesc="A module to control Raspberry Pi GPIO channels"
 url="http://sourceforge.net/projects/raspberry-gpio-python/"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/e2/58/6e1b775606da6439fa3fd1550e7f714ac62aa75e162eed29dbec684ecb3e/RPi.GPIO-0.6.3.tar.gz"
         read-pin-base.patch
         cpuinfo-from-devicetree.patch)
@@ -15,36 +15,21 @@ sha256sums=('a5fc0eb5e401963b6c0a03650da6b42c4005f02d962b81241d96c98d0a578516'
             '436825c6601e9ba873092d0be3d76693570e610479523abd3e9b821ff42ea83c')
 
 prepare () {
-  cd "${srcdir}"/RPi.GPIO-$pkgver
+  cd "${srcdir}/RPi.GPIO-${pkgver}"
 
   # https://sourceforge.net/p/raspberry-gpio-python/tickets/149/
-  patch -p1 -i "${srcdir}"/cpuinfo-from-devicetree.patch
+  patch -p1 -i "${srcdir}/cpuinfo-from-devicetree.patch"
 
   # https://sourceforge.net/p/raspberry-gpio-python/tickets/150/
-  patch -p1 -i "${srcdir}"/read-pin-base.patch
+  patch -p1 -i "${srcdir}/read-pin-base.patch"
 }
 
 build() {
-  cp -r "${srcdir}"/RPi.GPIO-$pkgver "${srcdir}"/RPi.GPIO-$pkgver-py2
-
-  cd "${srcdir}"/RPi.GPIO-$pkgver
+  cd "${srcdir}/RPi.GPIO-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}"/RPi.GPIO-$pkgver-py2
-  python2 setup.py build
 }
 
-package_python-rpi.gpio() {
-  depends=('python')
-
-  cd "${srcdir}/RPi.GPIO-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1
+package() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
-
-package_python2-rpi.gpio() {
-  depends=('python2')
-
-  cd "${srcdir}/RPi.GPIO-$pkgver"
-  python2 setup.py install --root=${pkgdir} --optimize=1
-}
-
