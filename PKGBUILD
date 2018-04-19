@@ -1,12 +1,12 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=rtichoke
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/rtichoke"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.4.0' 'python')
+depends=('r>=3.4.0' 'python-pygments' 'python-pygments')
 makedepends=('python-setuptools')
 source=("https://github.com/randy3k/rtichoke/archive/v0.1.1.tar.gz")
 md5sums=('e47995fe5df5440b9b63be00f64bebf6')
