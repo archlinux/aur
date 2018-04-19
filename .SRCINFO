@@ -1,9 +1,9 @@
-pkgbase = rapsberry-overlayroot-git
+pkgbase = raspberry-overlayroot-git
 	pkgdesc = OverlayFS root file system for RaspberryRi
 	pkgver = 493f431
 	pkgrel = 1
 	url = https://github.com/nils-werner/arch-overlayroot
-	install = raspi-overlayroot.install
+	install = raspberry-overlayroot.install
 	arch = armv6l
 	arch = armv7h
 	arch = aarch64
@@ -11,10 +11,10 @@ pkgbase = rapsberry-overlayroot-git
 	depends = mkinitcpio
 	depends = arch-install-scripts
 	depends = sudo
-	source = rapsberry-overlayroot-git::git+https://github.com/nils-werner/raspi-overlayroot.git
-	source = raspi-overlayroot.install
+	source = raspberry-overlayroot-git::git+https://github.com/nils-werner/raspi-overlayroot.git
+	source = raspberry-overlayroot.install
 	sha256sums = SKIP
 	sha256sums = b2e7d77110b8e327d75e0e1d48053eae80afb96b53df9078fb85514cf5cdcd0e
 
-pkgname = rapsberry-overlayroot-git
+pkgname = raspberry-overlayroot-git
 

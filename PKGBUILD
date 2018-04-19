@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 
-pkgname=rapsberry-overlayroot-git
-_pkgname=rapsberry-overlayroot-git
+pkgname=raspberry-overlayroot-git
+_pkgname=raspberry-overlayroot-git
 pkgver=493f431
 pkgrel=1
 pkgdesc="OverlayFS root file system for RaspberryRi"
@@ -10,8 +10,8 @@ url="https://github.com/nils-werner/arch-overlayroot"
 license=("MIT")
 depends=("mkinitcpio" "arch-install-scripts" "sudo")
 source=("${_pkgname}::git+https://github.com/nils-werner/raspi-overlayroot.git"
-        "raspi-overlayroot.install")
-install=raspi-overlayroot.install
+        "raspberry-overlayroot.install")
+install="raspberry-overlayroot.install"
 sha256sums=("SKIP"
             "b2e7d77110b8e327d75e0e1d48053eae80afb96b53df9078fb85514cf5cdcd0e")
 
