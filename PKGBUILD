@@ -62,10 +62,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.16.2
+pkgver=4.16.3
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -106,12 +106,11 @@ source=(# mainline kernel patches
         '0003-Partially-revert-swiotlb-remove-various-exports.patch'
         '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch'
         '0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch'
-        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch'
-        '0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch')
+        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'fa82ef50579ea9b71b26b2ae98460380e22a48be2524f90548947a586988e575'
+            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
             'SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
@@ -121,13 +120,12 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '6ad732db3f773de52ab544be83f22b04157a880742ab262202b01c32ee2d4995'
-            'bc300c44023cdef225f5d18fe6054cd2886c4062410d2720b2b2fd82465184f3'
-            'dcd819e630cfa7292aa38078ab16758338836ee917e82ce42c8a9aca08f2ecdb'
-            '9e93bc5bafeb978b1fb260d0cbfe15d8214ea0599dc6d771aae9ab652e223339'
-            '9fe8141703fd2b9eb8ea8f81a19a115c93684a87ee0895d042b48ce98d42c12a'
-            'e59bba13edb36ff5639ed3fd6c541e2c3d378db71dca6ea01f0aede6ab1b5700'
-            '34c7316a4e909300e14b0510dbeedc1d0acf9e43cc7c48693462e0fd98883fb2')
+            'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
+            '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
+            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
+            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
+            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
+            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -166,10 +164,6 @@ prepare() {
    ### Fix https://bugs.archlinux.org/task/58174
        msg "Fix #58174"
        patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
-   
-   ###  Fix https://bugs.archlinux.org/task/58205
-        msg "Fix #58205"
-        patch -Np1 -i ../0007-media-v4l2-core-fix-size-of-devnode_nums-bitarray.patch
    
    ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
