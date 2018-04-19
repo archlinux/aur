@@ -7,6 +7,7 @@ pkgbase = lib32-mpdecimal
 	license = custom
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
+	depends = mpdecimal
 	source = http://www.bytereef.org/software/mpdecimal/releases/mpdecimal-2.4.2.tar.gz
 	sha512sums = eb18ad53b81b93c469db4d915bbb3fae21b36ad82a88e01fef3a6946ac5f50b54376e259a5ecbe23836f1efd59d226b942ecdee87eaba7f9e75cdcaaa9499ef7
 

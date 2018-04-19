@@ -8,7 +8,7 @@ pkgdesc="Package for correctly-rounded arbitrary precision decimal floating poin
 arch=('x86_64')
 url="http://www.bytereef.org/mpdecimal/index.html"
 license=('custom')
-depends=('lib32-glibc' 'lib32-gcc-libs')
+depends=('lib32-glibc' 'lib32-gcc-libs' 'mpdecimal')
 source=("http://www.bytereef.org/software/${_pkgbasename}/releases/${_pkgbasename}-${pkgver}.tar.gz")
 sha512sums=('eb18ad53b81b93c469db4d915bbb3fae21b36ad82a88e01fef3a6946ac5f50b54376e259a5ecbe23836f1efd59d226b942ecdee87eaba7f9e75cdcaaa9499ef7')
 
