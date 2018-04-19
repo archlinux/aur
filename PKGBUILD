@@ -4,7 +4,7 @@
 
 pkgname='prboom-plus'
 pkgver='2.5.1.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='An advanced, Vanilla-compatible Doom engine based on PrBoom'
 url='http://prboom-plus.sourceforge.net/'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ sha1sums=('73b3b46c36aa693059f2762dcd807bfd0490f130')
 build() {
   cd "prboom-plus-$pkgver"
 
-  ./configure --prefix=/usr --disable-dogs --without-dumb
+  ./configure --prefix=/usr --without-dumb
   make
 }
 
