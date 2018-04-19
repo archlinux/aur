@@ -6,7 +6,7 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 
 pkgname=josm-latest
-pkgver=13648
+pkgver=13649
 pkgrel=1
 pkgdesc="Nightly build of an editor for OpenStreetMap written in Java"
 arch=('any')
