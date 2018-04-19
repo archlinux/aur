@@ -1,7 +1,7 @@
 # Maintainer : boronology <boronology at gmail dot com>
 pkgname=otf-source-han-code-jp
 pkgver=2.011
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="Japanese OpenType font for developers. Made by mixing SourceHanSans and SourceCodePro"
 arch=('any')
@@ -13,7 +13,7 @@ install=$pkgname.install
 
 package() {
 	  # install fonts
-	  cd "$srcdir"/source-han-code-jp-2.000R/
+	  cd "$srcdir"/source-han-code-jp-2.011R/
 
 	  #install OpenType Fonts
 	  for OTF in `ls OTF/*.otf`
@@ -22,7 +22,7 @@ package() {
 	      done
 	  
 	  # install License
-	  cd "$srcdir"/source-han-code-jp-2.000R/
+	  cd "$srcdir"/source-han-code-jp-2.011R/
 	  install -Dm644 LICENSE.txt \
 	  	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
