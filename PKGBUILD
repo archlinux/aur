@@ -1,7 +1,7 @@
 # Maintainer: Sergio Conde <skgsergio@gmail.com>
 pkgname=bsvc_etsiinf-upm
 pkgver=2.1+
-pkgrel=2
+pkgrel=3
 pkgdesc="Motorola MC68000 simulator precompiled by the Department of Architecture and Technology Information Systems (DATSI) of the School of Computer Engineers (ETSIInf) at the Technical University of Madrid (UPM)."
 arch=('i686' 'x86_64')
 url='http://www.datsi.fi.upm.es/docencia/Arquitectura_09/Proyecto_E_S/'
@@ -11,7 +11,7 @@ source=(
     'http://www.datsi.fi.upm.es/docencia/Arquitectura_09/Proyecto_E_S/bsvc-2.1+_Estatica.tar.gz'
 )
 sha256sums=(
-    '0e6f20b2eaa6cc64ae84cae480f4dc5db7dd797a704e7ce2f99e6c75798523a2'
+    '204fcf7e5f07954d6d08b0d4ea2297ac328faf14360a072657c3711bd6675745'
 )
 
 package() {
