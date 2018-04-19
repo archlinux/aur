@@ -2,7 +2,7 @@
 
 pkgname=pyqso
 _authorname=ctjacobs
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Ham Radio QSO logging tool."
 arch=('any')
@@ -32,7 +32,7 @@ package() {
 #	mkdir -p $pkgdir/usr/share/$pkgname/docs/html/{_images,_modules/pyqso,_sources,_static}
 #	cp -a docs/build/html/* $pkgdir/usr/share/$pkgname/docs/html/.
 }
-md5sums=('c99f1c43ad90fc1cd37857b63cdeadfe'
+md5sums=('43eef19310ceaa540fea2c738a2b9e64'
          'db5223623f0a745b15798e18c1f5fc0d')
-sha256sums=('ec7859fb1a93c9466abd55cedc3aceb143a4eb63efbda5a8da8d19652b718740'
+sha256sums=('b9af0497ccbb4e5f2281b45a1ed98d02c0c6a6878cd6da9d02e748a265164e26'
             'b724c3782338cd546f78719137802384364522e398fb6c5a633442d25a2afb17')
