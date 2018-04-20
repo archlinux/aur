@@ -1,47 +1,53 @@
-# Maintainer:  Kyle Meyer <kyle@kyleam.com>
-# https://github.com/kyleam/maint-aur
+# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Contributer: Kyle Meyer <kyle@kyleam.com>
 
-pkgname=python-palettable
-# To build and install the python 2 package as well, use the next line
-# instead of the above one.
-# pkgname=('python-palettable' 'python2-palettable')
-
-_libname=${pkgname/python-/}
-pkgver=3.0.0
+_name=palettable
+pkgbase='python-palettable'
+pkgname=('python-palettable' 'python2-palettable')
+pkgver=3.1.0
 pkgrel=1
-pkgdesc='Color palettes for Python'
+pkgdesc="Color palettes for Python"
 arch=('any')
-url='https://jiffyclub.github.io/palettable/'
+url=https://pypi.org/project/palettable
 license=('MIT')
-
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
+options=(!emptydirs)
 replaces=('python-brewer2mpl')
+source=(
+  "${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz
+  https://raw.githubusercontent.com/jiffyclub/palettable/d267e4aa8f746ab800d4998e670d60eca13f32cd/license.txt
+)
+sha256sums=(
+  '4c6f6531b93d97eb0bf4d707160626261de11470c47e2d017ac6bb569b5308aa'
+  '06982353629cfa6b7b339fa4cfccd6eca5a4434d5caefb7c32e68baa41a1be7c'
+)
 
-source=("https://pypi.python.org/packages/31/6c/d95417ead6f8d9fc8ae0d6fbb76fb4107ced7ca949c96a3604bb2d23c401/palettable-3.0.0.tar.gz")
-md5sums=('6e430319fe01386c81dbbc62534e3cc4')
-
-build() {
-  cd "$srcdir/$_libname-$pkgver"
-
-  rm -rf ../buildpy3; mkdir ../buildpy3
-  python setup.py build -b ../buildpy3
-
-  ## python 2 build
-  if [ ${#pkgname[@]} -eq 2 ]; then
-    rm -rf ../buildpy2; mkdir ../buildpy2
-    python2 setup.py build -b ../buildpy2
-  fi
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
 }
 
-package_python-palettable() {
-  depends=('python' 'python-matplotlib')
-  cd "$srcdir/$_libname-$pkgver"
-  rm -rf build; ln -s ../buildpy3 build
-  python setup.py install --skip-build -O1 --root="$pkgdir"
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
 }
 
 package_python2-palettable() {
   depends=('python2' 'python2-matplotlib')
-  cd "$srcdir/$_libname-$pkgver"
-  rm -rf build; ln -s ../buildpy2 build
-  python2 setup.py install --skip-build -O1 --root="$pkgdir"
+
+  install -Dm644 license.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/license.txts
+  cd "${_name}"-"${pkgver}"-py2
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+}
+
+package_python-palettable() {
+  depends=('python' 'python-matplotlib')
+
+  install -Dm644 license.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/license.txts
+  cd "${_name}"-"${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
