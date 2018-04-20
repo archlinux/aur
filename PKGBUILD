@@ -5,8 +5,8 @@
 
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
-pkgver=3.4.2
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
-sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
+sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 build() {
