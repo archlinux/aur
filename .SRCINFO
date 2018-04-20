@@ -1,5 +1,5 @@
 pkgbase = jdk9-docs
-	pkgdesc = Documentation for Oracle Java 9 Development Kit
+	pkgdesc = Documentation for Oracle Java 9 Development Kit (public release - end of support)
 	pkgver = 9.0.4
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
