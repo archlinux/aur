@@ -1,14 +1,14 @@
 pkgbase = brightnessctl
 	pkgdesc = Lightweight brightness control tool
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/Hummer12007/brightnessctl
 	install = brightnessctl.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = brightnessctl-0.3.1.tar.gz::https://github.com/Hummer12007/brightnessctl/archive/0.3.1.tar.gz
-	sha256sums = 3e81dfa7c5faba29df88a7c4569c7ebaf511c3de4d489a8c8e305ab51b9e3059
+	source = brightnessctl-0.3.2.tar.gz::https://github.com/Hummer12007/brightnessctl/archive/0.3.2.tar.gz
+	sha256sums = 92687d8739b8395cf942287bdb8905a78b428102ab6029680829ab917363e0ab
 
 pkgname = brightnessctl
 
