@@ -1,7 +1,7 @@
 pkgbase = st-solarized
 	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized colorscheme.
-	pkgver = 0.7
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = st-solarized
 	depends = libxft
 	provides = st
 	conflicts = st
-	source = http://dl.suckless.org/st/st-0.7.tar.gz
-	source = http://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff
-	source = http://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff
-	sha256sums = f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000
-	sha256sums = 2e8cdbeaaa79ed067ffcfdcf4c5f09fb5c8c984906cde97226d4dd219dda39dc
-	sha256sums = 4782f52c4147a352579586c1b066f9fd1da934e580cbd3b78943f058394d9883
+	source = http://dl.suckless.org/st/st-0.8.1.tar.gz
+	source = http://st.suckless.org/patches/solarized/st-no_bold_colors-0.8.1.diff
+	source = http://st.suckless.org/patches/solarized/st-solarized-both-0.8.1.diff
+	sha256sums = c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926
+	sha256sums = 5a6e2b745c7746228e0ee4e84214e3ac7054e6d451bc5843364e878bb2011e3b
+	sha256sums = 698e7ee411cf80ae31e11d41daf2713b6ed8f3f533281efb9a8c200f458a03bf
 
 pkgname = st-solarized
 
