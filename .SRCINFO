@@ -1,14 +1,13 @@
 pkgbase = pxls
 	pkgdesc = A minimal image-based golfing language
-	pkgver = 0.0.1a
+	pkgver = 0.0.1b
 	pkgrel = 1
-	url = https://github.com/Bottersnike/PiXl
+	url = https://github.com/Bottersnike/PxLs
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pygame
-	source = pxls-0.0.1a.tar.gz
-	md5sums = 23bdc858c3c59a7661b7458bde416d93
+	source = pxls-0.0.1b.tar.gz
 
 pkgname = pxls
 
