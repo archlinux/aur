@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
-	pkgdesc = Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
-	pkgver = 3.5.r90731.g62bdbb5ce0
+	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
+	pkgver = 3.5.r90793.g30940be359
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = i686

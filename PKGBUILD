@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90731.g62bdbb5ce0
+pkgver=3.5.r90793.g30940be359
 pkgrel=1
-pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
@@ -55,6 +55,14 @@ source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
+prepare() {
+    cd "$pkgname"
+    
+    # strictly specifying nvcc path is needed if package is installing
+    # cuda for the first time (nvcc path will be in $PATH only after relogin)
+    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
+}
+
 pkgver() {
     cd "$pkgname"
     
@@ -63,14 +71,6 @@ pkgver() {
     local _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
-}
-
-prepare() {
-    cd "$pkgname"
-    
-    # strictly specifying nvcc path is needed if package is installing
-    # cuda for the first time (nvcc path will be in $PATH only after relogin)
-    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
 }
 
 build() {
