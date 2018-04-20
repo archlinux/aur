@@ -6,7 +6,7 @@ pkgver=0.1.11
 pkgrel=1
 pkgdesc="Whole genome read simulator for Next-Generation Sequencing data"
 arch=('x86_64')
-url=https://github.com/nh13/DWGSIM
+url=https://github.com/nh13/DWGSIM/wiki
 license=('GPL2')
 source=(
   "${pkgname}"-"${pkgver}".tar.gz::https://github.com/nh13/DWGSIM/archive/"${pkgname}"."${pkgver}".tar.gz
