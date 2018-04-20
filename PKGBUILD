@@ -3,8 +3,8 @@
 pkgname=python-bempp-git
 _pkgname=bempp
 pkgdesc='The BEM++ boundary element library'
-pkgver=v3.1.5.r27.gdb2c636b
-pkgrel=2
+pkgver=3.3.2_20de4e57
+pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
 provides=('python-bempp')
@@ -21,7 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(cat VERSION)_$(git rev-parse --short HEAD)
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g
 }
 
 build() {
