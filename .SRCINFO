@@ -1,0 +1,22 @@
+pkgbase = webnovel-manager-git
+	pkgdesc = Webnovel reader
+	pkgver = v0.1.7.r0.g5d97243
+	pkgrel = 1
+	url = https://github.com/ognarb/webnovel-manager
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = python-requests
+	depends = python-fuzzywuzzy
+	depends = python-click
+	depends = python-beautifulsoup4
+	provides = webnovel-manager
+	conflicts = webnovel-manager
+	source = git+https://github.com/ognarb/webnovel-manager.git
+	sha256sums = SKIP
+
+pkgname = webnovel-manager-git
+
