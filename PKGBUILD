@@ -27,7 +27,7 @@ package_python2-adminapi-git() {
 	depends=('python2' 'python2-ipaddress' 'python2-netaddr')
 	cd "${srcdir}/${_name}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
-	mv "${pkgdir}/usr/bin/adminapi"  "${pkgdir}/usr/bin/adminapi2"
+	mv "${pkgdir}/usr/bin/${_name}"  "${pkgdir}/usr/bin/${_name}2"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
 
