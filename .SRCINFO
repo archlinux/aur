@@ -1,0 +1,24 @@
+pkgbase = python-mbed-greentea
+	pkgdesc = ARM mbed test automation
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://developer.mbed.org
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-prettytable
+	depends = python2-colorama
+	depends = python2-pyserial
+	depends = python-mbed-ls
+	depends = python2-junit-xml
+	depends = python2-lockfile
+	depends = python2-mock
+	depends = python2-six
+	depends = python-mbed-host-tests
+	options = !emptydirs
+	source = https://github.com/ARMmbed/greentea/archive/v1.3.3.tar.gz
+	sha256sums = 376b4f196b9a020e255fc49f06b1981912adde4fa1cfc30f860c552847ec28a3
+
+pkgname = python-mbed-greentea
+
