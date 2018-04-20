@@ -3,8 +3,8 @@
 _gmmlib_commit='b32d2124aa5187b20b64df24d2e83bcbe7a57d7d'
 
 pkgname=intel-media-driver
-pkgver=600.0130
-pkgrel=2
+pkgver=600.0132
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/media-driver/archive/intel-media-${pkgver}.tar.gz"
         'gmmlib-git'::"git+https://github.com/intel/gmmlib.git#commit=${_gmmlib_commit}"
         'fix-ult-link-error-on-arch-linux.patch')
-sha256sums=('6f775563cab1208aab2b2c92e37d477e2edb30136c7c6908e0bbf01e3c2239cb'
+sha256sums=('0a4b2acccb1641419186739270a7452ca52176c0af27ca94c5cf3fdb4aa8e9cb'
             'SKIP'
             '3e1407f4ba9d5616013d1b2a0bd3b10515f1ad268403bacef138bd0a75d45de8')
 
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+    rm -rf build
     mkdir -p build
     cd build
     
@@ -58,9 +59,9 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
-    local _info='uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
-    sed -i "2i\\ \\${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
-    sed -i '/LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
+    local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
+    sed -i "2i${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
+    sed -i '/^export[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
     
     # license
     cd "${srcdir}/media-driver-intel-media-${pkgver}"
