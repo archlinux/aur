@@ -1,6 +1,4 @@
 post_install() {
-    systemctl restart smbd nmbd
-
     echo "Manual Steps:"
     echo "- Edit /etc/samba/smb.conf and make sure the following two options are set:"
     echo "    unix extensions = no"
@@ -9,8 +7,4 @@ post_install() {
     echo "- Read /usr/share/greyhole/USAGE and the documents at "
     echo "  https://github.com/gboudreau/Greyhole/wiki to configure your installation"
     echo "  Also see: https://wiki.archlinux.org/index.php/Greyhole#Configuration"
-}
-
-post_upgrade() {
-    systemctl restart smbd nmbd
 }
