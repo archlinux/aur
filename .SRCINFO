@@ -1,0 +1,16 @@
+pkgbase = mtorrentd
+	pkgdesc = Search torrent websites and download .torrent files in terminal.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/arivarton/mtorrentd
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-yaml
+	depends = python-requests
+	depends = python-beautifulsoup4
+	source = mtorrentd-0.3.3.tar.gz::https://github.com/arivarton/mtorrentd/archive/v0.3.3.tar.gz
+	sha256sums = 87bd2397ba838e1c0ddfceccb190094310273f9fcc9f8290bf2b723e0ed675ed
+
+pkgname = mtorrentd
+
