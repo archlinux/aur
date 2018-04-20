@@ -2,19 +2,17 @@
 
 pkgname=rtl8192du-git
 _pkgname=rtl8192du
-pkgver=84d1edb
-pkgrel=2
+pkgver=929f0b1
+pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8192DU USB wireless devices."
 arch=('x86_64')
 url="https://github.com/lwfinger/rtl8192du"
 license=('GPL')
 _extramodules="extramodules-4.15-ARCH"
-depends=('linux>=4.15' 'linux<4.16')
-makedepends=('linux-headers>=4.15' 'git')
-source=("git://github.com/lwfinger/$_pkgname.git"
-"00-fix_pointer_cast_warning_treated_as_error.patch::https://github.com/lwfinger/rtl8192du/pull/52/commits/006105afba2ff8580b3405bb5b333145d7f51d24.patch")
-sha256sums=('SKIP'
-            'af016808942e708299a5dedf4a7832e88a9eb5620594f23c8800f4f12b106f4c')
+depends=('linux>=4.16' 'linux<4.17')
+makedepends=('linux-headers>=4.16' 'git')
+source=("git://github.com/lwfinger/$_pkgname.git")
+sha256sums=('SKIP')
 
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
@@ -33,9 +31,6 @@ prepare() {
   # 2) remove the depmod command which we do in the postinstall
   sed -i -e "/^KSRC/ s,\$(KVER),$_kernver," \
     -i -e '/depmod/d' Makefile
-
-  # fix build error
-  patch -Np1 -i ../00-fix_pointer_cast_warning_treated_as_error.patch
 }
 
 build() {
