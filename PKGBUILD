@@ -2,23 +2,23 @@
 # Contributor: jorge_barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=akari
-pkgver=1.0.36
-_timestamp=20170917
-_extramodules=extramodules-4.15-ARCH
+pkgver=1.0.38
+_timestamp=20180401
+_extramodules=extramodules-4.16-ARCH
 _ccstoolsver=1.8.5
-pkgrel=6
+pkgrel=1
 pkgdesc='TOMOYO Linux 1.8.x Module for the Linux kernel'
 arch=('x86_64')
 url='http://akari.osdn.jp/'
 license=('GPL')
-makedepends=('linux' 'linux-headers>=4.15' 'linux-headers<4.16')
-depends=("ccs-tools>=${_ccstoolsver}")
+makedepends=('linux' 'linux-headers>=4.16' 'linux-headers<4.17')
+#depends=("ccs-tools>=${_ccstoolsver}")
 conflicts=("ccs-tools<${_ccstoolsver}")
 install=${pkgname}.install
 source=("http://osdn.jp/frs/redir.php?f=/akari/49272/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
         "http://osdn.jp/frs/redir.php?f=/akari/49272/${pkgname}-${pkgver}-${_timestamp}.tar.gz.asc"
         activation_trigger.patch)
-sha256sums=('5cabe2b31a50cb6b49f0ea089d6ecb4384fa00afc53f8bf825c54caffc1dfe2c'
+sha256sums=('1587500c630eac8a41209771831769b40ae46600127e013cfc6ae8be8dc19df3'
             'SKIP'
             '55d86a0d602631129298887fa63c1396ed6c6229965efcdbdc549ee159a39702')
 noextract=("${pkgname}-${pkgver}-${_timestamp}.tar.gz")
