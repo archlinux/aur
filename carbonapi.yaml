@@ -1,0 +1,13 @@
+# Listen address, should always include hostname or ip address and a port.
+listen: "localhost:8081"
+
+# Max concurrent requests to CarbonZipper
+concurency: 10
+
+cache:
+   # Type of caching. Valid: "mem", "memcache", "null"
+   type: "mem"
+
+upstreams:
+    backends:
+        - "http://127.0.0.1:8080"

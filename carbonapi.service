@@ -1,0 +1,12 @@
+[Unit]
+Description=Graphite API server
+Documentation=https://github.com/go-graphite/carbonapi
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/carbonapi -config /etc/carbonapi.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
