@@ -10,7 +10,7 @@ pkgbase = nomachine-enterprise-client
 	conflicts = nomachine nxmanager nxwebplayer nxserver nxnode nxclient
 	options = !strip
 	source = http://download.nomachine.com/download/6.1/Linux/nomachine-enterprise-client_6.1.6_9_x86_64.tar.gz
-	sha256sums = 953ec5ac3e52bdd1a93657792fd6e327d17b0354e1d95fd615f31c17bc7f4b1d
+	sha256sums = bffb6d012c2002fe63c8bba265a20cdbde5c387188a8a6785dea28aaaa2434ea
 
 pkgname = nomachine-enterprise-client
 
