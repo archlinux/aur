@@ -3,13 +3,14 @@
 
 pkgname=mysqloit
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="SQL Injection takeover tool"
 arch=('any')
 url="https://github.com/dtrip/mysqloit"
 license=('GPL2')
 depends=('python2' 'metasploit')
-source=("http://mysqloit.googlecode.com/files/${pkgname}v${pkgver}.tar")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mysqloit/mysqloitv0.2.tar")
+
 sha1sums=('30c8f240f1ead6ad14e31b0d5700265882b1aed9')
 options=(!emptydirs)
 
