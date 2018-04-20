@@ -6,7 +6,7 @@ pkgdesc="RetDec is a retargetable machine-code decompiler based on LLVM."
 url="https://retdec.com/"
 license=('MIT')
 depends=('graphviz' 'bc' 'upx' 'wget')
-makedepends=('git' 'perl' 'cmake')
+makedepends=('git' 'perl' 'cmake' 'flex' 'bison')
 provides=('retdec')
 conflicts=('retdec')
 
