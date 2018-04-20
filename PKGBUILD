@@ -2,9 +2,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgname=openssl
-_tag=OpenSSL_1_1_1-pre4
+_tag=OpenSSL_1_1_1-pre5
 pkgname=${_pkgname}-tls1.3-git
-pkgver=1.1.1beta2
+pkgver=1.1.1beta3
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support'
 arch=('i686' 'x86_64')
