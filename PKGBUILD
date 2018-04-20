@@ -1,32 +1,25 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
-pkgname=bmap-tools
+pkgname='bmap-tools'
 pkgver=3.2
-_relcommit=96702a869220ab20830db916ec4ac595e1d97f92
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool optimized for copying largely sparse files using information from a block map (bmap) file"
-arch=(any)
-url="http://git.infradead.org/users/dedekind/bmap-tools.git"
+arch=('any')
+url='https://github.com/intel/bmap-tools'
 license=('GPL2')
 depends=('python2')
-makedepends=('git' 'python2-setuptools')
-source=(git://git.infradead.org/users/dedekind/bmap-tools.git)
-sha256sums=('SKIP')
+makedepends=('python2-setuptools')
+source=("https://github.com/intel/bmap-tools/releases/download/v$pkgver/$pkgname-$pkgver.tgz")
+sha256sums=('cc6c7f7dc0a37e2a32deb127308e24e6c4b80bfb54f3803c308efab02bf2d434')
 
-pkgver() {
-  cd bmap-tools/
-  git checkout $_relcommit
-  awk '/^VERSION =/ { print $3 }' bmaptool | sed 's/"\(.*\)"/\1/'
-}
 
 build() {
-  cd bmap-tools/
-  git checkout $_relcommit
+  cd $pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd bmap-tools/
+  cd $pkgname-$pkgver
   python2 setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 docs/man1/bmaptool.1 "$pkgdir"/usr/share/man/man1/bmaptool.1
 } 
