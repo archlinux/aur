@@ -14,11 +14,14 @@ conflicts=("$_pkgname-git")
 options=('!strip')
 depends=(glibc)
 makedepends=('go>=1.8')
-source=($pkgname-$pkgver.tar.gz::https://github.com/lomik/go-carbon/archive/v$pkgver.tar.gz)
-sha256sums=('2661492a9b0209977548ef86340f606e29630ab9d5d971bdf745d4b30495875c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/lomik/go-carbon/archive/v$pkgver.tar.gz
+		go-carbon.conf.diff)
+sha256sums=('2661492a9b0209977548ef86340f606e29630ab9d5d971bdf745d4b30495875c'
+            '174654ee0dfc98b220fa5be85365fce3a07fb94400ae8aecf5ae79e8af620758')
 
 build() {
 	cd "${srcdir}/$pkgname-$pkgver"
+	patch -p1 -i "${srcdir}/go-carbon.conf.diff" 
 	make all package-tree BUILD="$pkgver"
 }
 
