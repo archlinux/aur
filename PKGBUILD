@@ -1,19 +1,20 @@
-# Maintainer: Tom Zander
-# Past major contributors: Christoph Vigano <mail@cvigano.de>
+# Maintainer: Ryan Gonzalez <rymg19@gmail.com>
+# Contributor: Tom Zander
+# Contributor: Christoph Vigano <mail@cvigano.de>
 pkgname=ikiwiki
-pkgver=3.20180105
+pkgver=3.20180311
 pkgrel=1
-pkgdesc="wiki/blog compiler"
+pkgdesc='wiki/blog compiler'
 arch=(any)
 license=('GPL')
-url="http://ikiwiki.info"
+url='https://ikiwiki.info'
 depends=(perl-yaml perl-text-markdown perl-cgi-session perl-cgi-formbuilder perl-timedate perl-html-parser perl-html-scrubber perl-mail-sendmail perl-time-duration perl-uri perl-html-template perl-locale-gettext perl-rpc-xml perl-yaml-libyaml)
 source=("http://http.debian.net/debian/pool/main/i/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
-backup=("etc/ikiwiki/wikilist")
-sha256sums=('f9c00a7453566f3737cd43dc1835bf6a17989d74cbce62bffa1adcc6ea3f09e9')
+backup=('etc/ikiwiki/wikilist')
+sha256sums=('808dfeeee2e82282353887c1f75cb6db11605ddd68f23cb906cd6b427dff2d51')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "IkiWiki-$pkgver"
 
   # Install module into the vendor directories
   sed -i -e 's/sbin/bin/g' Makefile.PL
@@ -23,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "IkiWiki-$pkgver"
 
   make install DESTDIR="$pkgdir"
 
