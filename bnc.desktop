@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BKG Ntrip Client
+GenericName=BNC
+Comment=an multi-stream client for real-time GNSS applications
+Exec=bnc
+Icon=/usr/share/pixmaps/bnc.png
+Terminal=false
+Type=Application
+Categories=Development;GNSS;
