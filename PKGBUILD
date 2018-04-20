@@ -2,59 +2,60 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcname=linux-4.15
-pkgver=4.15.15
+_srcname=linux-4.16
+pkgver=4.16.3
 pkgrel=1
 arch=('x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
-        'config'
-        # pacman hook for depmod
-        '60-linux.hook'
-        # pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        # patches for pci passthrough
-        'add-acs-overrides.patch'
-        'i915-vga-arbiter.patch'
-        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+source=(
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  config         # the main kernel config file
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+  # patches for pci passthrough
+  add-acs-overrides.patch
+  i915-vga-arbiter.patch
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+validpgpkeys=(
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+)
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
             'SKIP'
-            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
+            '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1a4a992199d4d70f7f35735f63a634bb605c2b594b7352ad5fd54512737d2784'
-            '7cb4a5da6bf551dbb2db2e0b4e4d0774ee98cc30d9e617e030b27e6cba3e6293'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
-validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-             )
+            'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
+            '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
+            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
+            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
+            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
+            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93'
+            'abe269c6596b54a412bd8415472153f419026d4f367fa3ee1ebc8693ac66915d'
+            'fe3d47fe6f54d4a82c869fd29484d3f097b5906ef4d456409961a8dd647daad0')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
-
-  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -65,6 +66,18 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58153
+  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+
+  # https://bugs.archlinux.org/task/58158
+  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+  # https://bugs.archlinux.org/task/58174
+  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+  
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
 
@@ -76,6 +89,7 @@ CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
+  # set extraversion to pkgrel and empty localversion
   sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
       -e "/^EXTRAVERSION =/aLOCALVERSION =" \
       -i Makefile
@@ -124,7 +138,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
@@ -183,9 +197,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
-
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
@@ -212,6 +223,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"

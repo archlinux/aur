@@ -1,7 +1,7 @@
-From 0457fc4aaca4bc954154347b209d1da78ba7f2d7 Mon Sep 17 00:00:00 2001
+From 8afeb76790377fe42c4c91c9cb7d311078e9a7ae Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Wed, 7 Feb 2018 16:04:03 -0500
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.15)
+Date: Fri, 20 Apr 2018 13:17:23 -0400
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.16)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -47,15 +47,15 @@ your customers the hassle of this boot option.
 
 Signed-off-by: Mark Weiman <mark.weiman@markzz.com>
 ---
- Documentation/admin-guide/kernel-parameters.txt |   9 +++
- drivers/pci/quirks.c                            | 101 ++++++++++++++++++++++++
+ .../admin-guide/kernel-parameters.txt         |   9 ++
+ drivers/pci/quirks.c                          | 101 ++++++++++++++++++
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 46b26bfee27b..9018767828b0 100644
+index 1d1d53f85ddd..fa7110ca99e2 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -2966,6 +2966,15 @@
+@@ -2983,6 +2983,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -72,10 +72,10 @@ index 46b26bfee27b..9018767828b0 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 10684b17d0bd..091c8a0aca1e 100644
+index 46d47bd6ca1f..90aaf6ae8544 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3680,6 +3680,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -3687,6 +3687,106 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -182,7 +182,7 @@ index 10684b17d0bd..091c8a0aca1e 100644
  /*
   * Following are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4512,6 +4612,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4523,6 +4623,7 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
  	/* APM X-Gene */
  	{ PCI_VENDOR_ID_AMCC, 0xE004, pci_quirk_xgene_acs },
@@ -191,5 +191,5 @@ index 10684b17d0bd..091c8a0aca1e 100644
  };
  
 -- 
-2.16.1
+2.17.0
 
