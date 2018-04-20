@@ -1,7 +1,7 @@
 # Maintainer: Caleb Bassi <calebjbassi@gmail.com>
 
 pkgname=gotop-bin
-pkgver=1.2.10
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=("x86_64" "i686")
