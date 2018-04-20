@@ -7,8 +7,7 @@ arch=('x86_64')
 url="http://www.rtklib.com/"
 license=('GPL')
 groups=('GNSS')
-depends=('glibc')
-#makedepends=() # 'bzr', 'git', 'mercurial' or 'subversion'
+#depends=('glibc')
 provides=("bnc")
 conflicts=()
 replaces=()
@@ -21,14 +20,6 @@ source=("https://igs.bkg.bund.de/root_ftp/NTRIP/software/bnc-${pkgver}-debian8-6
 md5sums=('76f1ef2298ebbe11432575fa29d2e6f1'
     'cec39d8a485b402bccc2955f281db92d'
     'b14d15a36f293e8f64fe73b9618f7e69')
-
-prepare() {
-    echo "good"
-}
-
-build() {
-    echo "good"
-}
 
 package() {
     install -Dm755 "$srcdir/bnc-${pkgver}-debian8-64bit-static/bnc-${pkgver}-debian8-64bit-static" "$pkgdir/usr/bin/bnc"
