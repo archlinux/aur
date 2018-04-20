@@ -7,11 +7,14 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://ww1.pragana.net/gdiprinters.html#pentaxpj"
-license=('GPL')
+license=(
+  'GPL'
+  'custom:proprietary'
+)
 
 # groups=(
 #         "pentaxpj"
@@ -57,6 +60,7 @@ source=(
   "pentaxpj.conf.letter"
   "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
   "${install}"
+  "license_users-guide_info.txt"
 )
 
 sha256sums=(
@@ -65,6 +69,7 @@ sha256sums=(
   "a2e25b291591b31b215a7001308f76b1ea7ece2eb803a7258f821bae1223c51a"
   "ab714ff7dac4cf61261b63836cc238873936c0816b5978d265acf49ffcb3cfcc"
   "348c4ba58e0dfaf49db9bee73f55f6ac049d084e9cc19df81950c0cf1f65eecc"
+  "385590851fdc8464f0cb844f0d93e2b625ee46772ce8fad9d287d640db7e9fc2"
 )
 
 build() {
@@ -89,6 +94,8 @@ package() {
   _etcdir="${pkgdir}/${_etcdirbase}"
   _docdirbase="/usr/share/doc/${_pkgname}"
   _docdir="${pkgdir}/${_docdirbase}"
+  _licensedirbase="/usr/share/licenses/${pkgname}"
+  _licensedir="${pkgdir}/${_licensedirbase}"
   
   cd "${_srcdir}"
   
@@ -114,6 +121,8 @@ package() {
     ln -sv "${_instdirbase}"/test-page.ps.gz .
   )
   
+  install -v -D -m664 pentaxpj.conf.a4 "${_etcdir}"/pentaxpj.conf
+  
   install -v -d -m755 "${_bindir}"
   (
     cd "${_bindir}"
@@ -127,6 +136,8 @@ package() {
     cd "${_filterdir}"
     ln -sv "${_instdirbase}"/pentaxpj_sh pentaxpj_sh
   )
+  
+  install -v -D -m644 license_users-guide_info.txt ${_licensedir}/license_users-guide_info.txt
   
   install -v -d -m775 -g lp "${_spooldir}"
 }
