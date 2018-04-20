@@ -1,6 +1,7 @@
-# Maintainer: Nathan Lowe <techwiz96@gmail.com>
+# Maintainer: Ivaylo Kirilov <iikirilov@gmail.com>
+# Contributor: Nathan Lowe <techwiz96@gmail.com>
 pkgname=msbuild-15-bin
-_pkgver=15.5+xamarinxplat.2017.08.16.12.03-0xamarin3+ubuntu1404b1
+_pkgver=15.6+xamarinxplat.2018.01.17.14.14-0xamarin1+ubuntu1404b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin implementation of the Microsoft build system"
@@ -11,7 +12,7 @@ conflicts=('msbuild')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 source=("msbuild-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
-sha256sums=('ecacb078e23c717fb787346253e9362484ef5bdaf88340e27c1204156bcc2803')
+sha256sums=('262519a70e62b62861339ceddb5654cce24652a1919cbcd25094bbaac41a7c72')
 
 package() {
     cd "${srcdir}"
