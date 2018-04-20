@@ -1,7 +1,7 @@
 pkgbase = jade-application-kit-git
 	pkgdesc = Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit.
-	pkgver = 0.36
-	pkgrel = 2
+	pkgver = r180.f24aa8d
+	pkgrel = 1
 	url = https://pypi.org/project/Jade-Application-Kit/
 	arch = any
 	license = GPL3

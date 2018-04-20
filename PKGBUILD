@@ -1,8 +1,8 @@
 # Maintainer: Prasad Kumar
 # Author: Vitor Lopes <vmnlop@gmail.com>
 pkgname=jade-application-kit-git
-pkgver=0.36
-pkgrel=2
+pkgver=r180.f24aa8d
+pkgrel=1
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://pypi.org/project/Jade-Application-Kit/"
@@ -15,8 +15,8 @@ source=('git+https://github.com/codesardine/Jade-Application-Kit.git')
 sha512sums=('SKIP')
 
 pkgver() {
-	cd Jade-Application-Kit
-	grep "version" setup.py | cut -d '"' -f2
+  cd Jade-Application-Kit
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
