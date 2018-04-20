@@ -1,8 +1,8 @@
 pkgbase = ikiwiki
 	pkgdesc = wiki/blog compiler
-	pkgver = 3.20180105
+	pkgver = 3.20180311
 	pkgrel = 1
-	url = http://ikiwiki.info
+	url = https://ikiwiki.info
 	arch = any
 	license = GPL
 	depends = perl-yaml
@@ -20,8 +20,8 @@ pkgbase = ikiwiki
 	depends = perl-rpc-xml
 	depends = perl-yaml-libyaml
 	backup = etc/ikiwiki/wikilist
-	source = http://http.debian.net/debian/pool/main/i/ikiwiki/ikiwiki_3.20180105.orig.tar.xz
-	sha256sums = f9c00a7453566f3737cd43dc1835bf6a17989d74cbce62bffa1adcc6ea3f09e9
+	source = http://http.debian.net/debian/pool/main/i/ikiwiki/ikiwiki_3.20180311.orig.tar.xz
+	sha256sums = 808dfeeee2e82282353887c1f75cb6db11605ddd68f23cb906cd6b427dff2d51
 
 pkgname = ikiwiki
 
