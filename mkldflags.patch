@@ -1,0 +1,12 @@
+diff --git a/crawler/Makefile b/crawler/Makefile
+index 0003a0e..21d3717 100644
+--- a/crawler/Makefile
++++ b/crawler/Makefile
+@@ -2,6 +2,7 @@ LIBS = toxcore
+ CFLAGS = -std=gnu99 -Wall -ggdb -fstack-protector-all -pthread
+ OBJ = main.o util.o
+ LDFLAGS = $(shell pkg-config --libs $(LIBS))
++LDFLAGS = -L../../toxcore/build/.libs/ -ltoxcore -lsodium
+ SRC_DIR = ./src
+ 
+ all: $(OBJ)

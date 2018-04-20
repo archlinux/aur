@@ -1,0 +1,22 @@
+pkgbase = toxcrawler-git
+	pkgdesc = An Tox DHT network crawler and static tox library
+	pkgver = r37.fecab84
+	pkgrel = 1
+	url = https://github.com/envsh/toxcrawler
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = libvpx
+	depends = libsodium
+	conflicts = toxcrawler
+	source = toxcore-git::git+https://github.com/JFreegman/toxcore.git#branch=DHT-addon
+	source = toxcrawler-git::git+https://github.com/envsh/toxcrawler#branch=master
+	source = mkldflags.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 87a2f10ca7d995098a72865794cee0eb
+
+pkgname = toxcrawler-git
+
