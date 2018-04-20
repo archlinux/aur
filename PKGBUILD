@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.663
+pkgver=0.22.665
 chan="dev"
 _pkgver=$pkgver
 pkgrel=2
@@ -15,10 +15,10 @@ optdepends=('cups: Printer support'
 provides=('brave' 'brave-browser')
 conflicts=('brave' 'brave-bin')
 
-source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver"/Brave.tar.bz2
+source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver""$chan"/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('7049ced47a7c8bc39f764fbec904d9d670f6876f04d6b74abf941d9e55ebcaf5d8bc594b2f66263a289a4083f442f62244adf732886b664e8051793c9c74574d'
+sha512sums=('739cc60c66f2de07a7a8592ceaba4ecdd2498e1fe22476a20fe40bfdb2aac821801baa0e26c84c1341f207463c400fcb0e77935607dfc07b23a380488aa2256e'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 _bdir=brave-linux-x64
 
