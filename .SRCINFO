@@ -20,7 +20,3 @@ pkgname = python-palettable
 	depends = python
 	depends = python-matplotlib
 
-pkgname = python2-palettable
-	depends = python2
-	depends = python2-matplotlib
-

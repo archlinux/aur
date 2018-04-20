@@ -3,7 +3,7 @@
 
 _name=palettable
 pkgbase='python-palettable'
-pkgname=('python-palettable' 'python2-palettable')
+pkgname=('python-palettable')
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="Color palettes for Python"
