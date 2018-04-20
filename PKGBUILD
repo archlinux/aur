@@ -1,17 +1,22 @@
-# Maintainer: Josh Hoffer <hoffer.joshua@gmail.com
+# Maintainer: Josh Hoffer <hoffer dot joshua at gmail dot com >
 # Contributor: Jack Rosenthal
 pkgname=threelayout
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Keyboard layout designed by Jack Rosenthal"
 arch=(any)
 url="https://github.com/jackrosenthal/threelayout"
-license=('GPL')
+license=('MIT')
 install=threelayout.install
 depends=()
 makedepends=('ckbcomp' 'coreutils')
-source=('https://raw.githubusercontent.com/jackrosenthal/threelayout/master/linux/xkb/symbols/3l')
-sha256sums=('e56a4cda872d7c20c4ad6e544217f19095c9dfaf519b8abbba5fdf27957b0c76')
+source=('git+https://github.com/jackrosenthal/threelayout.git')
+sha256sums=('SKIP')
+
+pkgver() {
+	  cd "$pkgname"
+	  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	}
 
 package() {
   mkdir -p $pkgdir/usr/share/X11/xkb/symbols
