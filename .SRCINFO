@@ -1,6 +1,6 @@
 pkgbase = linux-apparmor
 	pkgver = 4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -19,6 +19,7 @@ pkgbase = linux-apparmor
 	source = config.fragment
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
@@ -28,8 +29,9 @@ pkgbase = linux-apparmor
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 728ea88383ce6c542e2969246036f454395d5412779ffb5299639610b82b21f1
-	sha256sums = f47b643156811581b31963cf56672f35c5ab275fcb01a3f534577676a4df0bc1
-	sha256sums = 971fcb1a89c62333871a7371a488dc78484ed5972230ff3ced31a11ad44714de
+	sha256sums = 69be34b14df3275118e8c345d61b36b71370710c7b4f61bb3bedaff7501775f0
+	sha256sums = a4566321f73fa1448195691349d5ed0ddf30127d17213a31aa2c931e822df061
+	sha256sums = d365ce80dab359d5277bd2f8568cad50a30ab269f222ed1bb12b8d74571e24a6
 
 pkgname = linux-apparmor
 	pkgdesc = The Linux-apparmor kernel and modules
