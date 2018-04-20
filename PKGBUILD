@@ -9,7 +9,7 @@ url="https://github.com/vinibali/kingston_fw_updater"
 license=('GPLv2')
 depends=(lib32-fontconfig freetype2 gcc-libs glibc libice lib32-libjpeg6-turbo lib32-libpng12 lib32-libsm libx11 lib32-libxext lib32-libxrender zlib)
 source=(https://github.com/vinibali/kingston_fw_updater/archive/master.zip)
-md5sums=(bbb635fdcb0271017edd533bd008d87e)
+md5sums=(147122dc9b44b0059df281a4570b3fef)
 
 package() {
 	mkdir "${pkgdir}"/custom
