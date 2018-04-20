@@ -1,20 +1,20 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic
-pkgver=0.3.11.2
-pkgrel=2
+pkgver=0.3.12
+pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
 license=('GPL2')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/lah7/polychromatic/archive/v$pkgver.tar.gz")
-url='https://github.com/lah7/polychromatic'
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
+url='https://github.com/polychromatic/polychromatic'
 makedepends=('nodejs-less')
 depends=('python' 'hicolor-icon-theme' 'python-openrazer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
-sha512sums=('1959c790f2b2fb67e2b0e94a9b68731497ecafb5b07c2e1c9af764151c4927b41493f954fa613a5f0a25521d25bec9a7dc1be2affaf530f9116e7229f7530e9e')
+sha512sums=('e4099408f1543436ac8d1145f34631af59086542ba16c1f7b729f422d6555f5ce0ecfa0b49917cf73c88a0bf2467684001242b230833e994fa8c164c43fdad52')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make PREFIX=/usr DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
