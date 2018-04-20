@@ -4,26 +4,17 @@
 
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme python2-gpgme)
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
 license=('LGPL')
 makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'python2' 'swig')
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
-        '0001-tests-Fix-t-verify-test-for-GnuPG-before-2.2.7.patch')
-sha256sums=('5b03adbafadab74474ded30b74c882de28d3c5c3b9ee3016ef24023d4c35d492'
-            'SKIP'
-            '7cd9d8385493351ce1372e967933c470617b59f7493bb35a2c148cb489f7c498')
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
+sha256sums=('2d1b111774d2e3dd26dcd7c251819ce4ef774ec5e566251eb9308fa7542fbd6f'
+            'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
-
-prepare() {
-  cd ${pkgbase}-${pkgver}
-
-  # tests: Fix t-verify test for GnuPG < 2.2.7.
-  patch -Np1 < ../0001-tests-Fix-t-verify-test-for-GnuPG-before-2.2.7.patch
-}
 
 build() {
   cd ${pkgbase}-${pkgver}
