@@ -3,7 +3,6 @@ Description=Sygnalist Network Audio Daemon
 After=network.target sound.target
 
 [Service]
-User=%I
 ExecStart=/usr/bin/networkaudiod
 
 [Install]
