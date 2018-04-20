@@ -1,0 +1,18 @@
+#-s a4 -g 2481x3507 -T -d 7 -f 1 -a 300 
+array set settings {
+model           0
+driverpath  /opt/pentaxpj-filter
+showport    "/dev/usb/lp0 (USB1)"
+port        /dev/usb/lp0
+headerpage  0
+paper       0
+density     7
+quality     0
+feedmode    1
+extrafeed   300
+width       8.27
+height      11.69
+tofile      0
+tofilename  /tmp/output.lp
+spooldir    /var/spool/lpd
+}
