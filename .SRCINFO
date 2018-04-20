@@ -1,25 +1,22 @@
 pkgbase = python-rednose
 	pkgdesc = Pretty output formatter with color for python-nosetests
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/rednose
 	arch = any
 	license = custom
+	checkdepends = python-six
+	checkdepends = python2-six
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-rednose-1.2.3.tar.gz::https://pypi.python.org/packages/e2/7d/7c46f895be2641a40a5db7ca53670e676518c859f5e2cdb9bea4481cddd9/rednose-1.2.3.tar.gz
-	sha256sums = d0c88a722ef98d731e2d19dc33969b7bcb0368632fc87d3401b871b24ab7a587
+	source = python-rednose-1.3.0.tar.gz::https://pypi.io/packages/source/r/rednose/rednose-1.3.0.tar.gz
+	sha256sums = 6da77917788be277b70259edc0bb92fc6f28fe268b765b4ea88206cc3543a3e1
 
 pkgname = python-rednose
 	depends = python
 	depends = python-colorama
 	depends = python-termstyle
-
-pkgname = python2-rednose
-	depends = python2
-	depends = python2-colorama
-	depends = python2-termstyle
 

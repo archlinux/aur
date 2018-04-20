@@ -2,19 +2,20 @@
 
 _name=rednose
 pkgbase='python-rednose'
-pkgname=('python-rednose' 'python2-rednose')
-pkgver=1.2.3
-pkgrel=2
+pkgname=('python-rednose')
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Pretty output formatter with color for python-nosetests"
 arch=('any')
 url=https://pypi.python.org/pypi/"${_name}"
 license=('custom')
+checkdepends=('python-six' 'python2-six')
 makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/e2/7d/7c46f895be2641a40a5db7ca53670e676518c859f5e2cdb9bea4481cddd9/rednose-1.2.3.tar.gz)
-sha256sums=('d0c88a722ef98d731e2d19dc33969b7bcb0368632fc87d3401b871b24ab7a587')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
+sha256sums=('6da77917788be277b70259edc0bb92fc6f28fe268b765b4ea88206cc3543a3e1')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
@@ -33,6 +34,7 @@ package_python2-rednose() {
 
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENCE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 package_python-rednose() {
@@ -40,4 +42,5 @@ package_python-rednose() {
 
   cd "${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENCE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
