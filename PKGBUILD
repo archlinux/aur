@@ -4,9 +4,9 @@
 pkgbase=paho-mqtt
 pkgname=("python-${pkgbase}" "python2-${pkgbase}")
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 url="http://www.eclipse.org/paho/clients/python"
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('EPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
@@ -29,7 +29,7 @@ package_python-paho-mqtt() {
     depends=('python')
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-paho-mqtt() {
@@ -37,6 +37,6 @@ package_python2-paho-mqtt() {
     depends=('python2')
 
     cd "${srcdir}/py2-${pkgbase}-${pkgver}"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 sha256sums=('31911f6031de306c27ed79dc77b690d7c55b0dcb0f0434ca34ec6361d0371122')
