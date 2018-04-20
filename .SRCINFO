@@ -1,0 +1,19 @@
+pkgbase = scream-git
+	pkgdesc = mutter but it's just an X11 compositor
+	pkgver = 3.28.0+47+gc495f1aa8
+	pkgrel = 1
+	url = https://github.com/Streetwalrus/scream
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	depends = libinput
+	depends = zenity
+	depends = libxkbfile
+	depends = libxkbcommon-x11
+	conflicts = mutter
+	source = git+https://github.com/Streetwalrus/scream.git
+	sha256sums = SKIP
+
+pkgname = scream-git
+
