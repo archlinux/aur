@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -27,15 +27,14 @@ optdepends=('glew: for GPU commercial flagging'
             'python2-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
-install='mythtv.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
         'mythbackend.service'
 		'99-mythbackend.rules'
-		'mythtv.install')
-sha512sums=('66fda29bd645b4c9a90600414193f46b99b9b8d60d033828f0eeb44e1c3820a7781d93c7010fc1e0affa83be93896231ba91409ccb7dba38190a5809752beedd'
-            '41533da5d8ef694d8c12f60d956673d9e49fb6781ae58d6bfd0bf31e4f380fddb508f9cad3b91264a3ad55853c24c6932bdf83bb5b711c34c0836d71b46be02c'
-            'fc02c190f01dbfb803b87ea0a6cdf408ce7706dc1ed74fba939931c129fdeb5dab1105caf9f71f029843a4d74db888084f92173c3be240d8492454633311f7c8'
-			'db78be27826be44e97d8680aa860f2e85c94e017aa649d183ee5d71310c95e31669330d3b4496c52143892f238300e57ae88ab0a737ca135ab6f2ce361814e36')
+		'sysusers.d')
+sha256sums=('33710a392fb9d2ec869a3d0494f5ecc284b47b78970ceebd2eafe2579ec4ce54'
+            'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
+            'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
+			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
@@ -70,11 +69,12 @@ package() {
 
   install -D -m644 "$srcdir/mythbackend.service" "$pkgdir/usr/lib/systemd/system/mythbackend.service"
   install -D -m644 'database/mc.sql' "$pkgdir/usr/share/mythtv/mc.sql"
+  install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-  mkdir -p "$pkgdir/usr/share/mythtv"
+#  mkdir -p "$pkgdir/usr/share/mythtv"
   cp -R 'contrib' "$pkgdir/usr/share/mythtv"
   mkdir -p "$pkgdir/var/log/mythtv"
 
 # Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
-  install -Dm644 "$srcdir"/99-mythbackend.rules "$pkgdir"/usr/lib/udev/rules.d/99-mythbackend.rules
+  install -Dm644 "$srcdir/99-mythbackend.rules" "$pkgdir/usr/lib/udev/rules.d/99-mythbackend.rules"
 }
