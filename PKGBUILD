@@ -4,8 +4,8 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.2
-pkgrel=7
-pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
+pkgrel=8
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
