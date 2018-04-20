@@ -4,14 +4,14 @@ pkgname=doc-browser-git
 pkgdesc="An API documentation browser with support for DevDocs and Hoogle"
 # pkgver will be updated with pkgver()
 pkgver=NA
-pkgrel=3
+pkgrel=4
 license=('MPL-2.0')
 url="https://github.com/qwfy/doc-browser"
 arch=('x86_64')
 
 # An array of packages this package depends on to run
 depends=('qt5-base'
-         'qt5-quickcontrols2'
+         'qt5-quickcontrols'
          'qt5-webengine'
          'pcre'
          'xz'
