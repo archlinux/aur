@@ -16,8 +16,8 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=67.0.3381.0
-pkgrel=2
+pkgver=67.0.3396.10
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
 url='http://www.chromium.org'
@@ -75,7 +75,7 @@ optdepends=(
             )
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
-        "git+https://github.com/foutrelis/chromium-launcher.git"
+        'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
@@ -85,11 +85,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
 
          # Misc Patches
         'chromium-ffmpeg-clang.patch'
-        'chromium-intel-vaapi_r17.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/17/patch?download'
+        'chromium-intel-vaapi_r18.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/18/patch?download'
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
-        'fix_gn.diff.base64::https://chromium-review.googlesource.com/changes/982250/revisions/2/patch?download'
-        'fix_nvidia_problems_with_sandbox.diff.base64::https://chromium-review.googlesource.com/changes/965462/revisions/5/patch?download'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -103,12 +101,10 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
             # Misc Patches
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
-            '0db6db88f49e01a42b0defc9b152b90d628ff6a0c09268fe7b0c02c569acf60e'
+            '957d777c67756074c8e028d08c1e88e738f881b3a8569e60c5bdd1da6737e305'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
 #             'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
-            '1965356bb6e7ca5fb4be30b3034325b4eb8d91bcbc07d7c8c0c6e2591f05fbe9'
-            '0925ba584ca17ef8f6d378e58f021707605fa611db3340f2be3e533bee8d7aed'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             )
 install=chromium-dev.install
@@ -156,6 +152,7 @@ _keeplibs=(
            'third_party/angle/third_party/spirv-headers'
            'third_party/angle/third_party/spirv-tools'
            'third_party/angle/third_party/vulkan-validation-layers'
+           'third_party/apple_apsl'
            'third_party/blink'
            'third_party/boringssl'
            'third_party/boringssl/src/third_party/fiat'
@@ -175,6 +172,8 @@ _keeplibs=(
            'third_party/catapult/tracing/third_party/pako'
            'third_party/ced'
            'third_party/cld_3'
+           'third_party/crashpad'
+           'third_party/crashpad/crashpad/third_party/zlib'
            'third_party/crc32c'
            'third_party/cros_system_api'
            'third_party/devscripts'
@@ -183,7 +182,6 @@ _keeplibs=(
            'third_party/fips181'
            'third_party/flatbuffers'
            'third_party/flot'
-           'third_party/freetype'
            'third_party/glslang'
            'third_party/glslang-angle'
            'third_party/google_input_tools'
@@ -296,8 +294,8 @@ _flags=(
         'fieldtrial_testing_like_official_build=true'
         'remove_webcore_debug_symbols=true'
         'use_gtk3=true'
-        "use_gio=false"
-        "use_gnome_keyring=false"
+        'use_gio=false'
+        'use_gnome_keyring=false'
         'link_pulseaudio=true'
         'use_sysroot=false'
         'linux_use_bundled_binutils=false'
@@ -350,7 +348,7 @@ _keeplibs+=(
             )
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
-CFLAGS+='   -Wno-builtin-macro-redefined'
+CFLAGS+=' -Wno-builtin-macro-redefined'
 CXXFLAGS+=' -Wno-builtin-macro-redefined'
 CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
@@ -382,24 +380,20 @@ elif [ "${_use_bundled_clang}" = "1" ]; then
   _flags+=(
            'clang_use_chrome_plugins=true'
            )
+  _clang_path="${BUILDDIR}/${pkgname}/src/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
+  # Bundled clang not like this.
+  CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+  CFLAGS="${CFLAGS//-fno-plt/}"
 fi
+
+export CC="${_clang_path}clang"
+export CXX="${_clang_path}clang++"
+export AR=ar
+export NM=nm
 
 ################################################
 
 prepare() {
-  msg2 "Setup compiler environment"
-  if [ "${_use_bundled_clang}" = "1" ]; then
-    _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
-    # Bundled clang not like this
-    CXXFLAGS="${CXXFLAGS//-fno-plt/}"
-    CFLAGS="${CFLAGS//-fno-plt/}"
-  fi
-
-  export CC="${_clang_path}clang"
-  export CXX="${_clang_path}clang++"
-  export AR=ar
-  export NM=nm
-
   cd "${srcdir}/chromium-${pkgver}"
 
   # Use chromium-dev as branch name.
@@ -422,13 +416,9 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-ffmpeg-r1.patch"
 
   # Misc patches
-  # set the correct compiler if use bundled clang
-  if [ "${_use_bundled_clang}" = "1" ]; then
-    cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
-  fi
 
-  # Pats to chromium dev's about why always they forget add/remove missing build rules
-  base64 -d "${srcdir}/fix_gn.diff.base64" | patch -p1 -i -
+  # Pats to chromium dev's about why always they forget add/remove missing build rules.
+  # Not this time
 
   # https://crbug.com/710701
   _chrome_build_hash=$(curl -s "https://chromium.googlesource.com/chromium/src.git/+/${pkgver}?format=TEXT")
@@ -439,7 +429,7 @@ prepare() {
   fi
   echo "LASTCHANGE=${_chrome_build_hash}-" > build/util/LASTCHANGE
 
-  # Allow building against system libraries in official builds
+  # Allow building against system libraries in official builds.
   sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
     -i tools/generate_shim_headers/generate_shim_headers.py
 
@@ -460,12 +450,9 @@ prepare() {
   sed 's|/x86_64-linux-gnu||' -i gpu/vulkan/BUILD.gn
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/532294
-  #base64 -d "${srcdir}/chromium-intel-vaapi_r17.diff.base64" | patch -p1 -i -
+  #base64 -d "${srcdir}/chromium-intel-vaapi_r18.diff.base64" | patch -p1 -i -
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
-  #https://crbug.com/817400
-  base64 -d "${srcdir}/fix_nvidia_problems_with_sandbox.diff.base64" | patch -p1 -i -
-
   # https://crbug.com/skia/6663#c10
   patch -p4 -i "${srcdir}/chromium-skia-harmony.patch"
 
@@ -473,9 +460,17 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i third_party/widevine/cdm/stub/widevine_cdm_version.h
 
-  # Setup nodejs dependency
+  # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
+
+  # Setup bundled ffmpe.g
+  if [ "${_use_bundled_clang}" = "1" ]; then
+    # Setup the ffmpeg correct compiler if use bundled clang.
+    cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
+  fi
+  # use system opus in bundled ffmpeg.
+  sed -e "s|CHROMIUM_ROOT_DIR, 'third_party/opus/src/include'|'/usr/include/opus'|g" -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save space."
@@ -497,16 +492,14 @@ prepare() {
 build() {
   msg2 "Build the Launcher"
   make -C chromium-launcher \
-          CHROMIUM_SUFFIX="-dev"
+    CHROMIUM_SUFFIX="-dev"
 
   cd "chromium-${pkgver}"
 
   #echo ${_flags[@]}
 
-  msg2 "Configure bundled ffmpeg"
+  msg2 "Build bundled ffmpeg"
   pushd third_party/ffmpeg &> /dev/null
-  # use system opus
-  sed -e "s|CHROMIUM_ROOT_DIR, 'third_party/opus/src/include'|'/usr/include/opus'|g" -i chromium/scripts/build_ffmpeg.py
   chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS
   chromium/scripts/copy_config.sh
   chromium/scripts/generate_gn.py
@@ -518,7 +511,7 @@ build() {
   msg2 "Starting building Chromium..."
   LC_ALL=C out/Release/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
-  # Build all with ninja.
+  # Build all.
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver #widevinecdmadapter
 }
 
@@ -532,13 +525,6 @@ package() {
   install -Dm644 "chromium-launcher/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
-
-  # Set info
-  source "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/installer.include"
-  PACKAGE=chromium-dev
-  PROGNAME=chromium-dev
-  MENUNAME="Chromium-dev Web Browser"
-  USR_BIN_SYMLINK_NAME=chromium-dev
 
   # Install binaries.
   install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
@@ -576,7 +562,7 @@ package() {
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
 
-  # Install NaCL
+  # Install NaCL.
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
@@ -602,7 +588,13 @@ package() {
 
   find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
-  # Install .desktop and manpages
+  # Set info.
+  source "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/installer.include"
+  PACKAGE=chromium-dev
+  PROGNAME=chromium-dev
+  MENUNAME="Chromium-dev Web Browser"
+  USR_BIN_SYMLINK_NAME=chromium-dev
+  # Install .desktop and manpages.
   process_template "${srcdir}/chromium-${pkgver}/chrome/app/resources/manpage.1.in" chromium-dev.1
   install -Dm644 chromium-dev.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
   process_template "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/desktop.template" chromium-dev.desktop
@@ -623,6 +615,6 @@ package() {
 
   popd &> /dev/null
 
-  # Install License
+  # Install License.
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 }
