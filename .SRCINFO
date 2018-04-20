@@ -6,7 +6,6 @@ pkgbase = bnc-bin
 	arch = x86_64
 	groups = GNSS
 	license = GPL
-	depends = glibc
 	provides = bnc
 	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/bnc-2.12.6-debian8-64bit-static.zip
 	source = https://igs.bkg.bund.de/img/ntrip-logo.png
