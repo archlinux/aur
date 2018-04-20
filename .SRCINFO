@@ -1,6 +1,6 @@
 pkgbase = greyhole
 	pkgdesc = Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.
-	pkgver = 0.10.14
+	pkgver = 0.10.15
 	pkgrel = 1
 	url = https://www.greyhole.net/
 	install = greyhole.install
@@ -13,8 +13,8 @@ pkgbase = greyhole
 	depends = lsof
 	depends = sysstat
 	backup = etc/greyhole.conf
-	source = https://greyhole.net/releases/greyhole-0.10.14.tar.gz
-	sha256sums = 5bea3e3c9679e1df56a8654074419216f4bff863468d08c5fe0d176339af36f7
+	source = https://greyhole.net/releases/greyhole-0.10.15.tar.gz
+	sha256sums = cb1f923a8fa58cec440d5b01ab44525ed2701e41452da192d783ae3838711820
 
 pkgname = greyhole
 
