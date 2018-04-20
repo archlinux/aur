@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
 source=("https://github.com/ubuntu-core/snapcraft/archive/${pkgver}.tar.gz")
-sha256sums=('55b39fee4c348190acb134d39557f4f7ddc6bdfa00a35536f690f0f9fc34c9c8')
+sha256sums=('072ea517a76add536c660780098287709023cd91213c78f8498d10133a164a4e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
