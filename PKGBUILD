@@ -7,8 +7,8 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=1
-pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS."
+pkgrel=3
+pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://ww1.pragana.net/gdiprinters.html#pentaxpj"
 license=('GPL')
@@ -30,9 +30,10 @@ optdepends=(
   "tk: For GUI to change config file for LPD usage."
 )
 
-# provides=(
+provides=(
   # "${_pkgname}=${pkgver}"
-# )
+  "pentax-pocketjet-2-manual=2004"
+)
 
 # conflicts=(
   # "${_pkgname}"
@@ -46,18 +47,24 @@ backup=(
   "etc/pentaxpj.conf"
 )
 
+install="${_pkgname}.install"
+
 _target="pentaxpj-${_pkgver}.tar.gz"
 
 source=(
   "${_target}::http://ww1.pragana.net/pentaxpj-${_pkgver}.tar.gz"
   "pentaxpj.conf.a4"
   "pentaxpj.conf.letter"
+  "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
+  "${install}"
 )
 
 sha256sums=(
   "e1ea36e1cdfcc733c69709717fb1ed97f2fd0f3e3a12197309277007df1b819b"
   "402f62fef43ca1738d7ba8e7729864326ca138fa5a57fb0b46611f05585ed4c4"
   "a2e25b291591b31b215a7001308f76b1ea7ece2eb803a7258f821bae1223c51a"
+  "ab714ff7dac4cf61261b63836cc238873936c0816b5978d265acf49ffcb3cfcc"
+  "348c4ba58e0dfaf49db9bee73f55f6ac049d084e9cc19df81950c0cf1f65eecc"
 )
 
 build() {
@@ -98,11 +105,9 @@ package() {
     install -v -D -m644 README "${_docdir}"/README
   )
   
-  for _docfile in pentaxpj.conf.*; do
+  for _docfile in pentaxpj.conf.* Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf; do
     install -v -D -m644 "${srcdir}/${_docfile}" "${_docdir}/${_docfile}"
   done
-  
-  install -v -D -m664 -g lp pentaxpj.conf.a4 "${_etcdir}"/pentaxpj.conf
   
   (
     cd "${_docdir}"
@@ -120,7 +125,7 @@ package() {
   install -v -d -m755 "${_filterdir}"
   (
     cd "${_filterdir}"
-    ln -sv "${_instdirbase}"/pentaxpj_sh pentaxpj
+    ln -sv "${_instdirbase}"/pentaxpj_sh pentaxpj_sh
   )
   
   install -v -d -m775 -g lp "${_spooldir}"
