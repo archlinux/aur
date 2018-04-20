@@ -1,7 +1,7 @@
-# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
+# Maintainer: Denis Borisevich <elfmax@tut.by>
 
 pkgname=jeveassets
-pkgver=4.1.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -11,11 +11,10 @@ depends=('jre8-openjdk' 'unzip')
 install=$pkgname.install
 source=("http://eve.nikr.net/${pkgname}/${pkgname}-${pkgver}.zip"
         "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
-md5sums=('582b96fb144e84bc80e11c572c8ef0ec'
+md5sums=('d1269e14920d79522888aeffd93cbc6d'
          'fe76109bee617582dc94e35a572070d6'
          '706a6b2856a3aa9e26952078534faa8d'
          '349f0b0edae2c5df570142d43071a7f1')
-
 
 package() {
 
