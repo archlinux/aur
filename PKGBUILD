@@ -2,7 +2,7 @@
 
 pkgname="python-fido2"
 pkgver="0.3.0"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Library for FIDO 2.0, including communication with a device over USB"
 url="https://github.com/Yubico/python-fido2"
 license=('custom:BSD-2-clause')
@@ -15,6 +15,7 @@ source=(
 )
 validpgpkeys=(
   '57A9DEED4C6D962A923BB691816F3ED99921835E' # Emil Lundberg <emil@yubico.com>
+  '20EE325B86A81BCBD3E56798F04367096FBA95E8' # Dain Nilsson <dain@yubico.com>
 )
 sha256sums=('8648c3f0e0aa4310ee1b037f538185bad7f9c0c471158c11a20454caaec535d3'
             'SKIP')
