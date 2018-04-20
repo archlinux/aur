@@ -5,7 +5,7 @@ arch=('any')
 url="https://github.com/nana-4/materia-theme"
 license=('GPL')
 makedepends=('git')
-depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-standard')
+depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra')
 optdepends=()
 provides=('materia-theme')
 conflicts=('materia-theme')
@@ -13,7 +13,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/materia-theme.git)
 sha256sums=('SKIP')
 
-pkgver=r645.eb83b0d
+pkgver=r668.df19037
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
