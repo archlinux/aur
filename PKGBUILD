@@ -2,28 +2,28 @@
 # Contributor: Philip Müller <philm@manjaro.org>
 pkgname=ms-office-online
 pkgver=2018.04
-pkgrel=3
+pkgrel=4
 pkgdesc="Microsoft Office Suite Online"
 arch=('any')
 url="https://www.office.com/"
 license=('custom')
 depends=('jade-application-kit-git') #minimum of jade-application-kit v0.36 is required and is currently provided by git
-source=("https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Excel.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Excel.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/MSOffice.desktop"
-	"https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/ms-office-online"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/MSOffice.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/OneNote.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/OneNote.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Outlook.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Outlook.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/PowerPoint.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/PowerPoint.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/settings.json"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/WebSkype.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/WebSkype.png"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Word.desktop"
-        "https://github.com/prasadkumar013/AUR/tree/master/Sources%2BBinaries/Sources/ms-office-online/Word.png")
+source=("https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Excel.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Excel.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/MSOffice.desktop"
+	"https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/ms-office-online"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/MSOffice.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/OneNote.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/OneNote.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Outlook.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Outlook.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/PowerPoint.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/PowerPoint.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/settings.json"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/WebSkype.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/WebSkype.png"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Word.desktop"
+        "https://raw.githubusercontent.com/prasadkumar013/AUR/master/Sources%2BBinaries/Sources/ms-office-online/Word.png")
 sha512sums=('330f57c0f708f61eff71afaa4c2016853437f378c4a907638b379c6d8825ec0775ce7687309fbe1942b950dc4fde4ddb899b4f1cbe1ec5478848e657c0f2d9de'
 	    '6fecce6d345d782f89c7b125e107548590775c21b81456d9e789ffcc1bb61640bcd51287939bf26ad71d73da78a2a12cfb7d75ce3e866ac91b489fcfe20618b9'
 	    'd1806d9fe7fbe12bda780d0b2827fb0ba0c93696e10d7b9beb1078b0944f9b327acf8423c842eb61803bc955f9d3923b24eb85b053e416729a246f141504682a'
