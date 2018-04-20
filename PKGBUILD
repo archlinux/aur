@@ -2,12 +2,13 @@
 
 pkgname=hidpi-daemon
 pkgver=17.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to manage HiDPI and LoDPI monitors on X"
 arch=('any')
 url="https://github.com/pop-os/hidpi-daemon"
 license=('GPL')
 depends=(
+  'acpid'
   'python>=3.6'
   'python-pydbus'
   'python-gobject'
