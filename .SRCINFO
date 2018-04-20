@@ -1,0 +1,19 @@
+pkgbase = python-mbed-ls
+	pkgdesc = ARM mbed device detection module
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://developer.mbed.org
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-prettytable
+	depends = python2-fasteners
+	depends = python2-appdirs
+	optdepends = python2-colorlog
+	options = !emptydirs
+	source = https://github.com/ARMmbed/mbed-ls/archive/v1.4.2.tar.gz
+	sha256sums = a65cfad3e9b0ba33a69da540b4058a96f4079389c351b184e964539ef654640c
+
+pkgname = python-mbed-ls
+
