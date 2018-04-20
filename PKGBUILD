@@ -2,7 +2,7 @@
 
 pkgname=hidpi-daemon
 pkgver=17.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon to manage HiDPI and LoDPI monitors on X"
 arch=('any')
 url="https://github.com/pop-os/hidpi-daemon"
@@ -16,6 +16,7 @@ depends=(
   'libnotify')
 makepdepends=(
   'python-pyflakes')
+conflicts=('system76-driver<17.10.32')
 source=(
   "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz")
 sha1sums=(
