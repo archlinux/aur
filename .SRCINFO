@@ -1,0 +1,15 @@
+pkgbase = jps2rin
+	pkgdesc = A converter from JPS format files(.jps) to RINEX(2/3) formats.
+	pkgver = 2.0.0.146
+	pkgrel = 1
+	url = http://javad.com/jgnss/
+	arch = x86_64
+	groups = GNSS
+	depends = glibc
+	provides = jps2rin
+	conflicts = jps2rin
+	source = http://storage.javad.com/downloads/javadgnss/software/JPS2RIN/jps2rin_linux64_2.0.0.146.tar.gz
+	md5sums = f78876a80741d11261235a17b53204b9
+
+pkgname = jps2rin
+
