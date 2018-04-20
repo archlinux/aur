@@ -3,8 +3,8 @@
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=3.4.2
-pkgrel=8
+pkgver=4.0
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -16,14 +16,14 @@ depends=(
         'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
         'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
-        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
+        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zimg' 'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
-        'sndio' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sndio'
+        'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
+        'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
+        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
         'rockchip-mpp'
 )
 depends_x86_64=(
@@ -36,11 +36,11 @@ makedepends=(
     # official repositories:
         'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk'
+        'blackmagic-decklink-sdk' 'ffnvcodec-headers'
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf'
+        'vmaf-git'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
@@ -53,12 +53,8 @@ conflicts=(
     'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git'
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
-        'ffmpeg-full-rkmpp-build-fix.patch'
-        'ffmpeg-full-rkmpp-remove-stream-start.patch'
         'LICENSE')
-sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
-            '142923fd02851343bfbfd31b201ba014dced8a8c8898373c72d71d30d59f5851'
-            'cac8577126c3e49f8c915fa289f3f5aa624dc55f897b8b7a5613191bcfa9c097'
+sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -67,9 +63,6 @@ prepare() {
     # strictly specifying nvcc path is needed if package is installing
     # cuda for the first time (nvcc path will be in $PATH only after relogin)
     sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
-    
-    patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-build-fix.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-remove-stream-start.patch"
 }
 
 build() {
@@ -102,6 +95,7 @@ build() {
         --prefix='/usr' \
         --extra-cflags="$_cflags" \
         --extra-ldflags="$_ldflags" \
+        --extra-libs='-lpthread' \
         \
         --disable-rpath \
         --enable-gpl \
@@ -121,14 +115,15 @@ build() {
         --enable-gmp \
         --enable-gnutls \
         --enable-iconv \
-        --enable-jack \
         --enable-ladspa \
+        --enable-libaom \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
         --enable-libcelt \
         --enable-libcdio \
+        --enable-libcodec2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
@@ -139,6 +134,7 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libilbc \
+        --enable-libjack \
         --enable-libkvazaar \
         --enable-libmodplug \
         --enable-libmp3lame \
@@ -158,9 +154,11 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libtesseract \
         --enable-libtheora \
+        --disable-libtls \
         --enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
@@ -182,6 +180,7 @@ build() {
         --enable-libzimg \
         --enable-libzmq \
         --enable-libzvbi \
+        --enable-lv2 \
         --enable-lzma \
         --enable-decklink \
         --enable-libndi_newtek \
@@ -189,22 +188,24 @@ build() {
         --enable-openal \
         --enable-opencl \
         --enable-opengl \
-        --enable-openssl \
+        --disable-openssl \
         --enable-sndio \
         --enable-sdl2 \
         --enable-xlib \
         --enable-zlib \
         \
-        --enable-cuda \
         $_cudasdk \
         --enable-cuvid \
+        --enable-ffnvcodec \
         --enable-libdrm \
         $_libmfx \
         $_libnpp \
+        --enable-nvdec \
         --enable-nvenc \
         --enable-omx \
         --enable-omx-rpi \
         --enable-rkmpp \
+        --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
         
