@@ -4,14 +4,14 @@
 _name=adminapi
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.2.r1760.d69b8ed
+pkgver=1.2.r1771.6e3e9a0
 pkgrel=1
 pkgdesc='The adminapi provides a python module which can talk to the InnoGames serveradmin via an API'
 arch=('any')
 url="https://github.com/InnoGames/serveradmin"
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
-source=("adminapi::git+https://github.com/InnoGames/serveradmin.git")
+source=("${_name}::git+${url}.git")
 sha1sums=('SKIP')
 
 pkgver() {
