@@ -1,0 +1,16 @@
+pkgbase = openldap-ppm
+	pkgdesc = An OpenLDAP module for checking password quality
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://ltb-project.org
+	arch = x86_64
+	license = OpenLDAP Public License
+	depends = libldap
+	options = !makeflags
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
+	source = https://ltb-project.org/archives/ppm-1.7.tar.gz
+	sha256sums = 9a90dcb86b99ae790ccab93b7585a31fbcbeec8c94bf0f7ab0ca0a87ea0c4b2d
+	sha256sums = b359e0a29a34d936fbbcfd2b3e85ff4639b4d3551bf7e9786a67b82af7537ef9
+
+pkgname = openldap-ppm
+
