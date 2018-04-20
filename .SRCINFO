@@ -1,6 +1,6 @@
 pkgbase = diskmonitor
 	pkgdesc = KDE tools to monitor SMART devices and MDRaid health status
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/papylhomme/diskmonitor
 	arch = i686
@@ -11,13 +11,14 @@ pkgbase = diskmonitor
 	makedepends = git
 	depends = udisks2
 	depends = qt5-base
-	depends = kdelibs
 	depends = ki18n
 	depends = kiconthemes
+	depends = knotifications
+	depends = kxmlgui
 	depends = plasma-framework
 	provides = diskmonitor
 	conflicts = diskmonitor
-	source = diskmonitor::git+https://github.com/papylhomme/diskmonitor.git#tag=0.3.1
+	source = diskmonitor::git+https://github.com/papylhomme/diskmonitor.git#tag=0.3.2
 	md5sums = SKIP
 
 pkgname = diskmonitor
