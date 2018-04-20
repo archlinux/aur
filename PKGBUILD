@@ -4,7 +4,7 @@
 _pyname=mbed-cli
 pkgname=python-${_pyname}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
 url="https://developer.mbed.org"
@@ -13,6 +13,9 @@ depends=('python2' 'python2-colorama' 'python2-pyserial' 'python2-intelhex' 'pyt
 optdepends=(
   'git: support git-based mbed projects'
   'mercurial: support mercurial-based mbed projects'
+  'python-mbed-host-tests: Flash, reset and supervise tool'
+  'python-mbed-greentea: Test automation'
+  'python-mbed-ls: Automatic device detection'
 )
 makedepends=('python2-setuptools')
 options=(!emptydirs)
