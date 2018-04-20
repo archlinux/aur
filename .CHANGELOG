@@ -1,6 +1,43 @@
 Version history
 ===============
 
+0.9.15
+------
+
+2018-04-20
+
+Behind You, Down Among the Dead Lix: Removed backroutes. Added Twelve-Bar
+Blues, a new multiplayer map by Proxima.
+
+Fix #326: In the editor, clicking steel, then opening the terrain browser
+won't override the current terrain directory any more. You can still click on
+a regular terrain piece to open the terrain browser on its directory.
+
+Fix #325: The default steel directory is images/geoo/steel/.
+
+Fix #332: Tile groups will always be saved with relative coordinates that
+are all >= 0, even when some of their parts have transparent boundaries.
+(There is a bug left behind where tile groups with coordinates < 0 are loaded
+wrongly on torus maps, but changing the interpretation of a level file affects
+physics; thus, that second fix is postponed.)
+
+0.9.14
+------
+
+2018-04-03
+
+Waltz in C Sharp Miner, removed backroute.
+
+Moved Arty's race maps (Heart of a Gambler, one map per player count, 2-8
+players) from network/*p/arty to network/races/arty.
+
+Fix #314, #315, #318: When you win a singleplayer game or win an edited
+replay, either browser shows the game's stats under the preview and saves the
+replay automatically. (These bugs were regressions after I removed the
+end-of-singleplayer dialog.)
+
+Fix: The command-line verifier generates checkmarks again.
+
 0.9.13
 ------
 
@@ -23,13 +60,18 @@ immediately after winning the level. Game pauses after losing, allowing you to
 framestep backwards or restart with the regular commands. I hope this
 satisfies the desire for a next-level button in the old dialog.
 
-Fix #302: Remove end-of-multiplayer dialog. You go to the lobby immediately after finishing a networking game. The lobby console shows the result, but I plan to show better statistics here. This fixes the bug where observers were shown instead of players in the end-of-multiplayer dialog.
+Fix #302: Remove end-of-multiplayer dialog. You go to the lobby immediately
+after finishing a networking game. The lobby console shows the result, but I
+plan to show better statistics here. This fixes the bug where observers were
+shown instead of players in the end-of-multiplayer dialog.
 
 Fix #309: Show indexing progress of the search dialog. I still don't cache the
 search results; maybe the indexing feels still too slow on older computers
 even when its progress is shown.
 
-When you show FPS and Phyus, I don't display VRAM anymore. Reason: Once VRAM got cached on huge maps, the Lix-estimated VRAM usage didn't match the real VRAM usage anyway.
+When you show FPS and Phyus, I don't display VRAM anymore. Reason: Once VRAM
+got cached on huge maps, the Lix-estimated VRAM usage didn't match the real
+VRAM usage anyway.
 
 New build dependency, Optional type. This is a source-only dependency and is
 automatically fetched by dub.
