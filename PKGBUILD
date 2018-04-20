@@ -2,7 +2,7 @@
 
 pkgname=delta-app
 _pkgname=Delta
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cryptocurrency portfolio tracker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://getdelta.io'
 license=('custom')
 makedepends=('gendesk')
 source=("https://static-assets.getdelta.io/desktop_app/$_pkgname-$pkgver-$arch.AppImage")
-md5sums=('f64186387931dba704f2fbeef74a229d')
+md5sums=('7ec5f287c880aa23fc6b8d9747bb0271')
 options=(!strip)
 
 prepare() {
