@@ -1,7 +1,7 @@
 _pkgbasename=apulse
 pkgname=lib32-$_pkgbasename-git
 pkgver=0.1.11_r16_g0008b1d
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio emulation for ALSA, x86_64 multilib version"
 arch=('x86_64')
 url="https://github.com/i-rinat/apulse"
@@ -32,6 +32,7 @@ package() {
   make DESTDIR="$pkgdir/" install
   mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
   mv "$pkgdir/usr/bin/apulse" "$pkgdir/usr/bin/apulse32"
+  mv "$pkgdir/usr/share/man/man1/apulse.1" "$pkgdir/usr/share/man/man1/apulse32.1"
   sed -i 's:usr/lib/apulse:usr/lib32/apulse:' "$pkgdir/usr/bin/apulse32"
   install -Dm644 LICENSE.MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   warning " "
