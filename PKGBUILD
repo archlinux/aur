@@ -4,7 +4,7 @@ pkgver=0.0.1a
 pkgrel=1
 pkgdesc="A minimal image-based golfing language"
 arch=('any')
-url="https://github.com/Bottersnike/PiXl"
+url="https://github.com/Bottersnike/PxLs"
 license=('MIT')
 groups=()
 depends=('python' 'python-pygame')
@@ -26,4 +26,4 @@ package() {
   cp -p "pxls" "$pkgdir/usr/bin"
 }
 
-md5sums=('23bdc858c3c59a7661b7458bde416d93')
+md5sums=('4e43463494a4b8337242d71e7a929547')
