@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Audio Effects for Pulseaudio Applications"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('f1ceceaff206621477648e5433c6e030')
+md5sums=('15c85c0aeb9b701d3f27646a83295205')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
