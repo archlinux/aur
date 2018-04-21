@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
 makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
-depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity qt5-charts vlc)
-optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
+depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity qt5-charts vlc 'libical')
+optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/v$pkgver-DEV$pkgrel.tar.gz
 gcconfig.pri GoldenCheetah.desktop gc.png)
