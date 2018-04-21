@@ -1,5 +1,5 @@
 pkgname=mingw-w64-graphite
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 arch=(any)
 pkgdesc="reimplementation of the SIL Graphite text processing engine (mingw-w64)"
@@ -11,13 +11,11 @@ url="https://github.com/silnrsi/graphite"
 source=("https://github.com/silnrsi/graphite/releases/download/${pkgver}/graphite2-${pkgver}.tgz"
 "001-graphite2-1.3.8-win64.patch"
 "002-graphite2-1.2.1-pkgconfig.patch"
-"003-graphite2-1.3.8-staticbuild.patch"
-"004-graphite2-1.3.8-dllimport-fix.patch")
-sha1sums=('668f3bce96fc02d90ea875b401ed36b2e8957d2f'
+"003-graphite2-1.3.8-staticbuild.patch")
+sha1sums=('26b70897bac68868d964ef70002c384ec10b6572'
           '68c7b3c1c9e38f357a95e5b3b266d4afcfe78329'
           '4460d61e238892c421ae7771e3b36dc0b21d682c'
-          'da2c20e50cd50a6cac422fd69459060a02311988'
-          'd872ba0db6040865cfb1227e83f0f02cbdbe083a')
+          'da2c20e50cd50a6cac422fd69459060a02311988')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,7 +24,6 @@ prepare() {
 	patch -p1 -i "${srcdir}"/001-graphite2-1.3.8-win64.patch
   patch -p1 -i "${srcdir}"/002-graphite2-1.2.1-pkgconfig.patch
   patch -p1 -i "${srcdir}"/003-graphite2-1.3.8-staticbuild.patch
-  patch -p1 -i "${srcdir}"/004-graphite2-1.3.8-dllimport-fix.patch
   sed -i "s:\/usr\/bin\/python:\/usr\/bin\/python2:" tests/{corrupt.py,defuzz,fnttxtrender,fuzzbidi,fuzztest,hbspeeds,jsoncmp}
 }
 
