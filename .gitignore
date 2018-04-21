@@ -1,4 +1,4 @@
-*.pkg.tar.xz
+*.pkg.tar*
 *.AppImage
 *.png
 pkg/
