@@ -1,0 +1,4 @@
+u octoprint - "OctoPrint User" /var/lib/octoprint
+m octoprint uucp
+m octoprint network
+m octoprint tty

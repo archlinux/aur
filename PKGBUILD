@@ -1,85 +1,59 @@
+# Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 # Maintainer: Niklas <dev@n1klas.net>
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 # Contributor: Doug Richardson <dougie.richardson@gmail.com>
 # Contributor: feilen <feilen1000@gmail.com>
 # Contributor: Thermionix <thermionix@gmail.com>
 
+_pkgname=OctoPrint
 pkgname=octoprint
-_reponame=OctoPrint
-pkgver=1.3.6
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
-arch=(any)
+arch=(x86_64 armv7h)
 url="http://octoprint.org/"
 license=('AGPL3')
-depends=(
-    'python2-awesome-slugify'
-    'python2-blinker'
-    'python2-chainmap'
-    'python2-click'
-    'python2-dateutil'
-    'python2-emoji'
-    'python2-feedparser'
-    'python2-flask'
-    'python2-flask-assets'
-    'python2-flask-babel'
-    'python2-flask-login'
-    'python2-flask-principal'
-    'python2-future'
-    'python2-futures'
-    'python2-markdown'
-    'python2-monotonic'
-    'python2-netaddr'
-    'python2-netifaces'
-    'python2-pkginfo'
-    'python2-psutil'
-    'python2-pylru'
-    'python2-pyserial'
-    'python2-requests'
-    'python2-rsa'
-    'python2-sarge'
-    'python2-scandir'
-    'python2-semanticversion'
-    'python2-sockjs-tornado'
-    'python2-tornado'
-    'python2-watchdog'
-    'python2-websocket-client'
-    'python2-wrapt'
-    'python2-yaml'
-)
-optdepends=(
-    'ffmpeg: timelapse support'
-    'mjpg-streamer: stream images from webcam'
-    'v4l-mjpg-stream: stream images from a Video4Linux capable camera'
-)
+makedepends=('python2-virtualenv')
+optdepends=('ffmpeg: timelapse support'
+			'mjpg-streamer: stream images from webcam'
+			'v4l-mjpg-stream: stream images from a Video4Linux capable camera'
+			)
 provides=('octoprint')
+conflicts=('octoprint-venv')
 install="octoprint.install"
-source=(
-    "https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
-    octoprint.run
-    octoprint.service
-    octoprint-deps.patch
-    octoprint-jinja29.patch
-)
-sha512sums=('9ffb16242e75a2fe8df1d95bb36d42e042f8fc308ab238ca80095fe09248277265b0e9fd148051e2a514471a113ce7eecdc76ff558999a721c2a7d0d41943975'
-            '5c22c76e4089958ff42e2627f29c360fa0f9a73b849f1fe5092cdd9ae800323263b75ac7e23d7189badac9baa7daa850183bf2491680a0ac01c605531728da62'
-            '89a8703cbc8b8802eb6a360359f92904357a99bf5b1174c85d4555f88a816d4c008d077fe4f3fed4db0b23e8a662359bcfafaf7750a2ed50a81104f04d04c056'
-            '4686d6f0e13db636b4996bba0a456ce1ee09fedca1ad993a9250257cbeddc485e7ff6113afd1a65e18d3058617e5372a480a2db11d01701b30fa026be946bdaf'
-            '41e03bcc2111d1000ca0d62634009dc2030bae52b6623cd58a595f570e0f99e524613d52785b50098fe044fe5355b26221ce7a286148d9bdd95fb3f220bb5568')
-
-
-prepare() {
-    cd ${srcdir}/${_reponame}-${pkgver}
-
-    patch -p1 < "${srcdir}/octoprint-deps.patch"
-    patch -p1 < "${srcdir}/octoprint-jinja29.patch"
-}
+source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pkgver.tar.gz
+		octoprint.sysusers
+		octoprint.service
+		octoprint-serve
+		octoprint.conf
+		config.yaml
+		)
 
 package() {
-    cd ${srcdir}/${_reponame}-${pkgver}
+	etcdir=etc/conf.d
+	usrdir=usr/lib/$pkgname
+	vardir=var/lib/$pkgname
 
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+	virtualenv2 $pkgdir/$usrdir
 
-    install -D -m755 ${srcdir}/octoprint.run ${pkgdir}/usr/bin/octoprint
-    install -D -m644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service
+	pushd $_pkgname-$pkgver
+	$pkgdir/$usrdir/bin/pip install .
+	popd
+
+	find $pkgdir/$usrdir/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::" {} \;
+
+	install -Dm644 octoprint.sysusers $pkgdir/usr/lib/sysusers.d/octoprint.conf
+	install -Dm644 octoprint.service $pkgdir/usr/lib/systemd/system/octoprint.service
+	install  -m755 octoprint-serve $pkgdir/$usrdir/bin
+	install -Dm644 octoprint.conf $pkgdir/$etcdir/octoprint
+	install -dm750 $pkgdir/$vardir
+	install -Dm640 config.yaml $pkgdir/$vardir/.octoprint/config.yaml
 }
+
+sha256sums=('92fd33279c38a5a54e46b0b3c3d465d8d2c7fa02cc01aba80b225a926b30d488'
+            'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
+            '2c0643310be2159feea91eae819d5ab593e6f20b8b6ee6a98d8bf8254125acfb'
+            '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
+            '02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5'
+            'eb2994e21a97964d87f184d9db2399b75be96cc3e26969444ca865a94ff6de6a')
+

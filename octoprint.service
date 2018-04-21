@@ -6,7 +6,7 @@ After=network.target
 User=octoprint
 Group=octoprint
 Type=simple
-ExecStart=/usr/bin/octoprint serve
+ExecStart=/usr/lib/octoprint/bin/octoprint-serve
 
 [Install]
 WantedBy=multi-user.target
