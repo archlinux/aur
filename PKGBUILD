@@ -12,13 +12,19 @@ makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-
 source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.gz
 	PACKAGES
 	$pkgname.service
-	$pkgname.tmpfilesd)
+	$pkgname.tmpfilesd
+	ocaml-vorbis.patch
+)
+	
 install=$pkgname.install
 options=(!makeflags)
 conflicts=('liquidsoap-git' 'liquidsoap-full')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver-full
+  # Patches
+  patch -Np1 -i ../ocaml-vorbis.patch 
+
   cp $srcdir/PACKAGES PACKAGES
 }
 
@@ -42,4 +48,5 @@ package() {
 md5sums=('9b24051b3662fb9d6cff8fcf22baf21c'
          'f2e0f1966f3258f737300947e729edb6'
          '762d6607ff0889e34b8c874970b38bc9'
-         'f9106e5c42cabc21c4c8464d9b1ad63e')
+         'f9106e5c42cabc21c4c8464d9b1ad63e'
+         '970f0668541f5f67e4ddfd7cb62cad4e')
