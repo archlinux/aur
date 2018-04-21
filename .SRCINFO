@@ -11,6 +11,7 @@ pkgbase = pulseaudio-equalizer-ladspa-ffy00-git
 	depends = gnome-icon-theme
 	depends = pulseaudio
 	depends = bc
+	conflicts = pulseaudio-equalizer-ladspa
 	source = pulseaudio-equalizer-ladspa-ffy00::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa
 	md5sums = SKIP
 
