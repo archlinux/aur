@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=circstat
 pkgver=2012a
-pkgrel=1
+pkgrel=2
 pkgdesc="The circular statistics toolbox for Matlab/Octave"
 arch=("any")
 url="http://bethgelab.org/software/circstat"
@@ -13,6 +13,8 @@ package() {
     install -d "$pkgdir"/opt/$pkgname
     rm "$srcdir"/*.zip
     cp -r "$srcdir"/* "$pkgdir"/opt/$pkgname
+
+    find "$pkgdir"/opt/$pkgname -type f -exec chmod 644 "{}" \;
 
     install -d "$pkgdir"/usr/share/doc/$pkgname
     ln -s /opt/$pkgname/readme.txt "$pkgdir"/usr/share/doc/$pkgname
