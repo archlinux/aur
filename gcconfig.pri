@@ -137,11 +137,11 @@ exists(/usr/lib/libkmldom.so) {
 # ICAL_LIBS    = $${ICAL_INSTALL}/lib/libical.a
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define ICAL_INSTALL to use this feature.
-#packagesExist(libical) {
-#    ICAL_INSTALL = yes
-#    ICAL_INCLUDE = /usr/include/
-#    ICAL_LIBS    = -lical -licalss -licalvcal -lpthread
-#}
+packagesExist(libical) {
+    ICAL_INSTALL = yes
+    ICAL_INCLUDE = /usr/include/
+    ICAL_LIBS    = -lical -licalss -licalvcal -lpthread
+}
 
 # If you want support for using USB1 sticks in Train View on Windows
 # then install the SiLabs USBXpress Software Development Kit (SDK)
