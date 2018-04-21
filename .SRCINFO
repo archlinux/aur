@@ -1,6 +1,6 @@
 pkgbase = oof2
 	pkgdesc = Finite element analysis of microstructures.
-	pkgver = 2.1.12
+	pkgver = 2.1.14
 	pkgrel = 1
 	url = http://www.ctcms.nist.gov/oof/oof2/index.html
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = oof2
 	depends = python2
 	depends = pygtk
 	depends = libgnomecanvas
-	depends = imagemagick
+	depends = libmagick6
 	depends = lapack
-	source = http://www.ctcms.nist.gov/oof/oof2/source/oof2-2.1.12.tar.gz
+	depends = gperftools
+	source = https://www.ctcms.nist.gov/oof/oof2/source/oof2-2.1.14.tar.gz
 	source = LICENSE
-	md5sums = e1cd0c5b2795d78071b54017f8618962
+	md5sums = c2c9ece407df3dd0e24af0da9745104e
 	md5sums = c1d808bd883c2e0a30b687e3fcec4847
 
 pkgname = oof2
