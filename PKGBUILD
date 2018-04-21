@@ -1,11 +1,11 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=3.9.0
-_patch=01
+_version=3.10.0
+_patch=04
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=3
+pkgrel=1
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -26,17 +26,15 @@ source=("http://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.g
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=(
-		"9989a455bda4c62032b10b98c2a1ac40b3be78feca90edf4f714a91da08f24ac"
-		"3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff"
-		"0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08"
-		"dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b"
-		"3670748854d3f05623c9a8826605c3e2a97c7b3955104e74b5eed00ed17299c1"
-		"77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef"
-		"32bfa3f82038f89d2f7140eada1faadf416ae835d5e5cb0573c528398249a63e"
-		"70ea18f8567b7368c5799141e5f1cd0ca7658d6e4a4d29c52a9288446c7cf341"
-		"c55ed8e395f54d2374fd8e5fd3be90a044bd33701ad128e7516e905331b1adcc"
-		)
+sha256sums=('8f3137471cdb002b6cf9d1874bbddb6ad280d4d7a492e363cfc5f54fbd45b5d9'
+            '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
+            '0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08'
+            'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
+            '3670748854d3f05623c9a8826605c3e2a97c7b3955104e74b5eed00ed17299c1'
+            '77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef'
+            '32bfa3f82038f89d2f7140eada1faadf416ae835d5e5cb0573c528398249a63e'
+            '70ea18f8567b7368c5799141e5f1cd0ca7658d6e4a4d29c52a9288446c7cf341'
+            'c55ed8e395f54d2374fd8e5fd3be90a044bd33701ad128e7516e905331b1adcc')
 
 install=$pkgname.install
 
