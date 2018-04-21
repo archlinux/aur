@@ -1,6 +1,6 @@
-diff -ruN "a/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp" "b/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"
---- "a/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"	2016-05-29 20:37:24.000000000 +0200
-+++ "b/KF5/0.7 using ffmpeg-3.0/ffmpegthumbs-mattepaint/ffmpegthumbnailer/imagewriter.cpp"	2018-04-04 20:10:22.937314418 +0200
+diff -ruN a/ffmpegthumbnailer/imagewriter.cpp b/ffmpegthumbnailer/imagewriter.cpp
+--- a/ffmpegthumbnailer/imagewriter.cpp	2016-05-29 20:37:24.000000000 +0200
++++ b/ffmpegthumbnailer/imagewriter.cpp	2018-04-21 22:57:55.608039514 +0200
 @@ -62,7 +62,7 @@
          if (q1.exists()){
              QImage matteImage(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/ffmpegthumbs-mattepaint/quadrant1");

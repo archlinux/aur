@@ -10,20 +10,21 @@ url="http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902
 license=('GPL')
 depends=('kio' 'libavcodec.so' 'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswscale.so')
 makedepends=('extra-cmake-modules')
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1467623621/s/b05dc6ee78a6106471cd994e86695c6f/t/1522867138/u/40596/153902-Upload2016060900.tar.gz"
+source=("https://download.opensuse.org/repositories/home:/Gribs:/Tools/openSUSE_Leap_42.1/src/$pkgname-$pkgver-5.3.src.rpm"
         'imagewriter.patch')
-sha256sums=('2e4c9fe5e85d9c14b1c468e0dcaecfd71b378ca38f051c0beea6a5f04b5c6cd4'
-            'fe67a5f0599bfd53dfe8629d09e7ee39bd41e3877cfb2b0bb77a4c9467cc42b1')
+sha256sums=('6acf0b3b7a002499ebda1b034457443200ef4322a52e33045d1b970906455c9a'
+            '055eb84f93914b5adc39a703bf3a399bdfd68b126839fb4ffe90ef80c203158c')
 
 prepare() {
   mkdir -p build
-  cd 'Upload2016060900'
+  bsdtar -zxvf $pkgname-$pkgver.tar.gz
+  cd "$pkgname-$pkgver"
   patch -p1 -i ../imagewriter.patch
 }
 
 build() {
   cd build
-  cmake ../Upload2016060900/KF5/"0.7 using ffmpeg-3.0"/${pkgname} \
+  cmake ../"$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
