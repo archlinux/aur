@@ -13,22 +13,22 @@ md5sums=('18808580d24b7caf2c4c7045c093329f'
          '22d577c7f10ada9370e06cf095af9ae9')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   patch -p1 < $srcdir/libpng.patch
   sed -i '95s+\@+ at +' doc/hp2xxinf.tex
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make all
   cd doc
   makeinfo hp2xxinf.tex -o hp2xx.info
 }
 
 package () {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   install -d "$pkgdir"/usr/share/{man/man1,info} "$pkgdir"/usr/bin
-  make install prefix="$pkgdir/usr" \
-       man1dir="$pkgdir/usr/share/man/man1" \
-       infodir="$pkgdir/usr/share/info" 
+  make install prefix="$pkgdir"/usr \
+       man1dir="$pkgdir"/usr/share/man/man1 \
+       infodir="$pkgdir"/usr/share/info
 }
