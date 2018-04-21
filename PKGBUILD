@@ -6,12 +6,15 @@ d=2017-08-12
 pkgver=1.0.r${r}.${d//-}
 pkgrel=1
 pkgdesc="Native helper for web login using Lithuanian identity cards (for SoDra, VMI, &c)"
-url="http://www.mitsoft.lt"
+url="https://www.mitsoft.lt/kontaktai/"
 arch=(any)
 license=('custom')
 depends=('pcsclite>=1.5' 'jre8-openjdk')
 source=("https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_r${r}_${d}_Linux.zip")
 sha256sums=('d7ff7d8bee3cdf4d630ed746ee4a5be03d63acf236f1612e52a4e129e7570153')
+
+# Update check:
+# curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_Linux.zip
 
 prepare() {
   rm -rf */

@@ -2,7 +2,7 @@ pkgbase = signa-browser-ext
 	pkgdesc = Native helper for web login using Lithuanian identity cards (for SoDra, VMI, &c)
 	pkgver = 1.0.r7771.20170812
 	pkgrel = 1
-	url = http://www.mitsoft.lt
+	url = https://www.mitsoft.lt/kontaktai/
 	arch = any
 	license = custom
 	depends = pcsclite>=1.5
