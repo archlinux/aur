@@ -16,7 +16,7 @@ optdepends=('dump1090-git: for dump1090 in RasppberyPi')
 
 source=(fr24feed.service flightradar24.tmpfiles flightradar24.sysusers)
 sha256sums=(
-  'd27654efb9ce273ac117582b7b36d997d86a3843b2c77faf6f6fd131d3df1635'
+  '5bd37206a05f8c07c8ce91d9cfc7c41bdbd76a0023e523c426c791fcc70d8d24'
   '32f6f289efe8e3e303767239b2a276405b2d7c0fcbbde8ed9473ee6889b676ff'
   '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0'
 )
