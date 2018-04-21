@@ -24,6 +24,7 @@ package() {
   cd "$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/bin"
   cp -p "pxls" "$pkgdir/usr/bin"
+  cp -p "pxlst" "$pkgdir/usr/bin"
 }
 
 md5sums=('3e3d7d7da4c31aabd15e486f54f47081')
