@@ -1,0 +1,16 @@
+pkgbase = eul
+	pkgdesc = Fast native desktop client for all major messaging services
+	pkgver = 0.33
+	pkgrel = 1
+	url = https://eul.im/
+	arch = x86_64
+	license = unknown
+	depends = libcurl-compat
+	options = !strip
+	source = https://github.com/eul-im/eul/releases/download/v0.33/eul_linux.zip
+	source = eul
+	sha256sums = a70aa17a803c4fde019ecf33c4cec58e5cb008f2e376a131a952a8d86e86c88e
+	sha256sums = SKIP
+
+pkgname = eul
+
