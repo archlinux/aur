@@ -1,0 +1,11 @@
+--- meson.build.orig	2018-04-21 23:34:54.757956663 +0800
++++ meson.build	2018-04-21 23:35:10.515013225 +0800
+@@ -30,7 +30,7 @@
+ 
+ add_global_arguments(am_cflags, language: 'c')
+ 
+-dep_gtk3 = dependency('gtk+-3.0', version: '>=3.26')
++dep_gtk3 = dependency('gtk+-3.0', version: '>=3.22')
+ dep_glib = dependency('glib-2.0', version: '>= 2.46.0')
+ dep_peas = dependency('libpeas-1.0', version: '>= 1.8.0')
+ dep_budgie = dependency('budgie-1.0', version: '>= 2')

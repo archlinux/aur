@@ -1,0 +1,26 @@
+pkgbase = budgie-weather-applet
+	pkgdesc = A weather applet for Budgie Desktop
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ilgarmehmetali/budgie-weather-applet
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = libpeas
+	depends = budgie-desktop
+	depends = gnome-settings-daemon
+	depends = json-glib
+	depends = libgweather
+	source = https://github.com/ilgarmehmetali/budgie-weather-applet/archive/v0.0.1.tar.gz
+	source = https://github.com/ilgarmehmetali/budgie-weather-applet/pull/16.patch
+	source = dep_gtk3-3.22.patch
+	sha512sums = 7c7591ae2e4c9120ab5427b027def37787147c65de54e9e9ae89cbbcac512c83729145e15fbed423f275970280594c1f3ddf22962e1235474f7c6d3cf811a277
+	sha512sums = 8eb7c38af9ef2aaa6160d52c53a6735745968c0abd7c432860e0c2f954af9b4ef32001b4883ebaf96dc0fd724bd5d473d9010d796e7cfeffbc4ad81e71ee4632
+	sha512sums = 5ceeb5431e1955683d4c7578142369f8847c0fbebe54c248b0ccdac4c6ad724bd07e4ed9c35f5b62342266be8f617230050939bd988ee8cd0756105938b6c30b
+
+pkgname = budgie-weather-applet
+
