@@ -2,12 +2,12 @@
 _gemname=xdg
 pkgname=ruby-xdg
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="XDG provides a module for supporting the XDG Base Directory Standard"
 arch=(any)
 url="https://github.com/rubyworks/xdg"
 license=('BSD')
-depends=(ruby)
+depends=(ruby ruby-rdoc)
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/xdg-$pkgver.gem)
 noextract=(xdg-$pkgver.gem)
