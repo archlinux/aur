@@ -1,6 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=biblesync-git
-pkgver=20170901.87cdcd3
+epach=1
+pkgver=1.2.0.0.g588631b
 pkgrel=1
 pkgdesc="multicast shared co-navigation library for Bible programs"
 arch=('i686' 'x86_64')
@@ -15,12 +17,12 @@ md5sums=('SKIP')
 _gitname="biblesync"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd ${pkgname%-git}
+  git describe --long --tags | tr - .
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   [[ -d build ]] || mkdir build
   cd build
   cmake -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=/usr/lib ..
@@ -28,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
+  cd ${pkgname%-git}/build
   make DESTDIR="$pkgdir/" install
 }
