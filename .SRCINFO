@@ -1,7 +1,7 @@
 pkgbase = tmuxinator
 	pkgdesc = Manage complex tmux sessions easily
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/aziz/tmuxinator
 	arch = any
 	license = MIT
@@ -10,9 +10,10 @@ pkgbase = tmuxinator
 	depends = ruby-erubis
 	depends = ruby-thor
 	depends = ruby-xdg
-	noextract = tmuxinator-0.10.1.gem
-	source = http://rubygems.org/downloads/tmuxinator-0.10.1.gem
-	md5sums = a8a3f7d99227de248b73499dc4350a09
+	depends = ruby-rdoc
+	noextract = tmuxinator-0.11.1.gem
+	source = http://rubygems.org/downloads/tmuxinator-0.11.1.gem
+	md5sums = bec5e560844ba409c72f9978d91258db
 
 pkgname = tmuxinator
 
