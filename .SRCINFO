@@ -1,0 +1,14 @@
+pkgbase = texlive-oasics
+	pkgdesc = Latex formatting for OASICs Style
+	pkgver = 2018
+	pkgrel = 1
+	url = https://www.dagstuhl.de/en/publications/oasics/
+	arch = any
+	license = CC-BY
+	depends = texlive-core
+	depends = texlive-latexextra
+	source = http://drops.dagstuhl.de/styles/oasics-v2018/oasics-v2018-authors.tgz
+	sha256sums = 20b9c65afd7e6ae099dcab911173892eff01f0584ec280d1507c2a8de72fae62
+
+pkgname = texlive-oasics
+
