@@ -37,8 +37,6 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  install -dm 770 "$pkgdir/usr/include/txn"
-  install -dm 770 "$pkgdir/var/cache/txn"
   export RAKUDO_LOG_PRECOMP=1
   export RAKUDO_RERESOLVE_DEPENDENCIES=0
   perl6-install-dist \
