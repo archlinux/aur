@@ -7,7 +7,7 @@ pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver="latest"
 pkgver=3d_20180202
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates tariff-kilometres for subscription tickets for DB regio. Upstream name: Entfernungsrechner für Fahrvergünstigungen."
 arch=('i686' 'x86_64')
 url="https://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/"
@@ -115,4 +115,8 @@ package() {
     ln -v -s "${_instdirbase}/doc/Entfernungsrechner_Benutzerhandbuch.pdf" .
     ln -v -s "${_instdirbase}/doc/info.url" .
   )
+  
+  chmod 755 "${_docdir}"
+  chmod 755 "${_instdir}"
+  chmod 755 "${_instdir}/doc"
 }
