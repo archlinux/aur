@@ -8,13 +8,12 @@ pkgdesc="An idempotent command-line utility for managing your /etc/hosts file (g
 arch=("x86_64")
 url="https://github.com/cbednarski/hostess"
 license=("MIT")
-# install=$pkgname.install
 md5sums=('SKIP')
 makedepends=("git" "go")
 source=("git+https://github.com/cbednarski/hostess")
 
 pkgver(){
-  cd "${srcdir}/hostess"
+  cd "$srcdir/hostess"
 
   printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
@@ -35,5 +34,5 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/hostess/hostess" "${pkgdir}/usr/bin/hostess"
+  install -Dm755 "$srcdir/hostess/hostess" "$pkgdir/usr/bin/hostess"
 }
