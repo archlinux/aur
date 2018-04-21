@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=3.4.2
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -60,21 +60,17 @@ provides=(
 )
 source=(
       "http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz"{,.asc}
-      'fs56089.patch'
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      '2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
+      'ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
       'SKIP'
-      '7fdfacfe805b7f2c2c38de45c94772e49eca54fbb71918f74cd1226cfff8e9d2'
 )
 
 prepare() {
   cd ${_pkgbasename}-${pkgver}
 
-  # https://bugs.archlinux.org/task/56089
-  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
-  patch -Np1 -i ../fs56089.patch
+  # Patching if needed
 }
 
 build() {
@@ -123,7 +119,6 @@ build() {
     --enable-version3 \
     --enable-omx
 
-#    --enable-libx265 \
 #    --enable-libssh \
 #    --enable-libsoxr \
 #    --enable-libx265 \
