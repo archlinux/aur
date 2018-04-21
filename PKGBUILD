@@ -9,7 +9,7 @@ url="https://www.github.com/Electrux/CCP4M"
 license=('BSD')
 depends=('yaml-cpp' 'curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Electrux/$pkgname/archive/v$pkgver.tar.gz" )
-md5sums=('5c04db483ad7451d0b9680a3918cf8c8')
+md5sums=('7ef3e326e357289d15be685b2bfe665d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

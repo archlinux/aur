@@ -8,7 +8,7 @@ pkgbase = ccp4m
 	depends = yaml-cpp
 	depends = curl
 	source = ccp4m-0.5.3.tar.gz::https://github.com/Electrux/ccp4m/archive/v0.5.3.tar.gz
-	md5sums = 5c04db483ad7451d0b9680a3918cf8c8
+	md5sums = 7ef3e326e357289d15be685b2bfe665d
 
 pkgname = ccp4m
 
