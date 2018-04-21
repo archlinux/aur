@@ -1,0 +1,12 @@
+pkgbase = gitignore-git
+	pkgdesc = GitHub's useful collection of .gitignore templates
+	pkgver = r2763.4b37ac26
+	pkgrel = 1
+	url = https://github.com/github/gitignore
+	arch = any
+	license = custom:CC0-1.0
+	source = git+https://github.com/github/gitignore
+	md5sums = SKIP
+
+pkgname = gitignore-git
+
