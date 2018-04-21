@@ -1,7 +1,7 @@
 pkgbase = filmic-blender-git
 	pkgdesc = Filmic View and Look Transformations for Blender
 	pkgver = 20170301
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sobotka.github.io/filmic-blender/
 	arch = any
 	license = custom
