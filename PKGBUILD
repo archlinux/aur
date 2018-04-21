@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -24,13 +24,15 @@ build() {
   gem install --no-document --no-user-install -i $_gemdir rake
   bundle install --path vendor/bundle --without test
 
+  _version=`bundle exec gem q -q twitter-text | sed -r 's/^.*\((.*)\)$/\1/'`
+  ln -s "/opt/$pkgname/$_gemdir/gems/twitter-text-$_version/config" .
+
   rm -rf $_gemdir/{build_info,cache,doc}
 }
 
 package() {
   mkdir "$pkgdir/opt"
   cp -r "$srcdir/$pkgname" "$pkgdir/opt"
-  cp -r $srcdir/$pkgname/$_gemdir/gems/twitter-text-*/config "$pkgdir/opt/$pkgname/"
 
   mkdir -p "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/mikutter"
