@@ -1,14 +1,14 @@
 pkgbase = python-ansicolor
 	pkgdesc = A library to produce ansi color output and colored highlighting and diffing
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 3
 	url = https://github.com/numerodix/ansicolor
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = http://pypi.python.org/packages/source/a/ansicolor/ansicolor-0.2.4.tar.gz
-	md5sums = 8df97790932c189ca639b5241932bd49
+	source = https://pypi.python.org/packages/source/a/ansicolor/ansicolor-0.2.6.tar.gz
+	md5sums = 69ce8352b7089de6fd8b8e03cc557d48
 
 pkgname = python-ansicolor
 
