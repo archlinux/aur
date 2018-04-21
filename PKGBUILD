@@ -1,4 +1,4 @@
-# Maintainer: nic96 <jeromyreimer at gmail dot com>
+# Maintainer: nic96 <jeromyreimer at gmail dot com>, Saren Arterius <saren at wtako dot com>
 
 pkgname=filmic-blender-git
 pkgver=20170301
