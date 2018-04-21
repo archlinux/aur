@@ -1,14 +1,14 @@
 # Maintainer: c6parmak <can6parmak <AT> gmail <DOT> com>
 
 pkgname=gfxtablet-git
-pkgver=46.78d9dc0
+pkgver=47.54140b9
 pkgrel=1
 pkgdesc="Android app to control a virtual Network Tablet on Linux"
 arch=('i686' 'x86_64')
 url="http://github.com/rfc2822/GfxTablet"
 license=('MIT')
 makedepends=('git')
-source=("$pkgname"::'https://github.com/rfc2822/GfxTablet.git'
+source=("$pkgname"::'git://github.com/rfc2822/GfxTablet.git'
         '99-uinput.rules'
         '30-gfxtablet.conf')
 md5sums=('SKIP'
