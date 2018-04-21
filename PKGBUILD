@@ -6,9 +6,10 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.8.0
-pkgrel=4
+pkgver=4.8.1
+pkgrel=1
 _jnaver=4.5.1
+_fixedcommit=0761faded4cfacbb4005a5842d8b89ce0a36f811
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/filebot/filebot"
@@ -42,6 +43,7 @@ optdepends=('libzen: Support for additional subtitle search engines (Sublight)'
 
 prepare() {
   cd "$srcdir/$pkgname/"
+  git checkout $_fixedcommit
   sed -i -E 's/release="([^"]*)"/target="\1" source="\1"/' build.xml
   sed -i -E 's/jre.version: 10/jre.version: 9/' app.properties
   sed -i -E 's/jvm.version: 10/jvm.version: 9/' app.properties
