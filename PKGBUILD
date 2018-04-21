@@ -3,15 +3,15 @@
 
 pkgname=ca-certificates-icp_br
 pkgver=20180419
-pkgrel=1
+pkgrel=2
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
 url="http://www.iti.gov.br/repositorio/repositorio-ac-raiz"
 license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
-source=("icpbr_certs-${pkgver}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('19802274b32419e24e00879bd043e565d039b3d00532c5c4616b772b05349392781df05225b1d71d5f416365fdb3d954861e4fc9da922a9fde68f8f89d173ec9')
+source=("icpbr_certs-${pkgver}-${pkgrel}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
+sha512sums=('8b83267566f172ebfa2cd34e4a35fd21459cd7cf629ce1dae789c4677f0198430fbf141de568296e95a61403f37ff8137548d516d9578e4238b83f028a2ebb55')
 
 package() {
   local cert_tag='icp_br'
