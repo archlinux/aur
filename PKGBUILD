@@ -1,8 +1,8 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-dbus
-pkgver=1.10.22
+pkgver=1.12.6
 pkgrel=1
-_commit=2f8f4d619b16b134671521c2b4aea3a94fb47848  # tags/dbus-1.10.22^0
+_commit=a723baa2bc7e91fc9b1926cda1ce53e9301de4d8  # tags/dbus-1.12.6^0
 arch=(any)
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 depends=(mingw-w64-expat)
@@ -15,8 +15,6 @@ license=("custom" "GPL")
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
 sha256sums=('SKIP')
-validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
-              '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -27,9 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/dbus"
-	git cherry-pick -n 09cb6d7b467f6d1c6685ee9ccc171f4dddbe1f42
-  NOCONFIGURE=1 ./autogen.sh
-	sed -i 's,THREAD_LIBS="$THREAD_LIBS -lrt",THREAD_LIBS="$THREAD_LIBS",' configure
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -62,3 +58,4 @@ package() {
 		find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs ${_arch}-strip -g
 	done
 }
+
