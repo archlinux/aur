@@ -1,13 +1,13 @@
 pkgbase = ccp4m
 	pkgdesc = C++ project manager and build system
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://www.github.com/Electrux/CCP4M
 	arch = any
 	license = BSD
 	depends = yaml-cpp
 	depends = curl
-	source = ccp4m-0.5.2.tar.gz::https://github.com/Electrux/ccp4m/archive/v0.5.2.tar.gz
+	source = ccp4m-0.5.3.tar.gz::https://github.com/Electrux/ccp4m/archive/v0.5.3.tar.gz
 	md5sums = 5c04db483ad7451d0b9680a3918cf8c8
 
 pkgname = ccp4m

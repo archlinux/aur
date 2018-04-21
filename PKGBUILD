@@ -1,7 +1,7 @@
 # Maintainer: Electrux <ElectruxRedsworth AT gmail DOT com>
 
 pkgname=ccp4m
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="C++ project manager and build system"
 arch=('any')
