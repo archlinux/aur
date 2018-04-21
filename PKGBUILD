@@ -26,7 +26,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}"/"${_pkgname}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    install -Dm755 scripts/run_BUSCO.py "${pkgdir}"/usr/bin/busco
+    install -Dm755 scripts/generate_plot.py "${pkgdir}"/usr/bin/busco_generate_plot
 }
