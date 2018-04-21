@@ -7,7 +7,7 @@
 pkgname=hamlib-git-python3
 _pkgname=hamlib-git
 __pkgname=hamlib
-pkgver=358aacbe
+pkgver=781403fb
 pkgrel=1
 pkgdesc="Ham radio equipment control libraries - compiled for Python3"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -33,7 +33,9 @@ build() {
 	export PYTHON=/usr/bin/python3
 
 	cd $srcdir/$_pkgname
-	./autogen.sh \
+#	./autogen.sh \
+	autoreconf -i
+	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--with-perl-binding \
@@ -49,7 +51,9 @@ package() {
 	make DESTDIR=$pkgdir install
 
 	# fix perl module location
-	cd $pkgdir/usr/lib/perl5/site_perl/
+#	cd $pkgdir/usr/lib/perl5/site_perl/
+	eval $(perl -V:sitearch)
+	cd $pkgdir$sitearch
 	mkdir -p current/
 	mv auto current
 	mv Hamlib.pm current
