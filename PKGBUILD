@@ -2,7 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=qmmp-plugin-pack
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=("qmmp>=$pkgver" 'taglib>=1.7.0' 'mpg123>=1.13.0' 'libxmp>=4.2.0')
 makedepends=('cmake>=2.8.6' 'yasm' 'qt5-tools')
 source=(http://qmmp.ylsoftware.com/files/plugins/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('4eccd38919b8e714bf13783dd3fa54a4c09fd30f')
+sha1sums=('55dede0352ca0b283c159ea5e71b57f88946ade7')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
