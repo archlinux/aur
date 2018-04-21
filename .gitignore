@@ -1,0 +1,7 @@
+builds/
+pkg/
+src/
+gnucash-*.pkg.tar.xz
+gnucash-*.src.tar.gz
+gnucash-*.tar.bz2
+gnucash-*.tar.gz

@@ -1,0 +1,34 @@
+pkgbase = gnucash-xbt-minimal
+	pkgdesc = A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://www.gnucash.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = gmock
+	makedepends = cmake
+	depends = libmariadbclient
+	depends = postgresql-libs
+	depends = webkit2gtk
+	depends = boost-libs
+	depends = libsecret
+	depends = libdbi-drivers
+	optdepends = gnucash-docs: for documentation
+	optdepends = iso-codes: for translation of currency names
+	optdepends = perl-finance-quote: for stock information lookups
+	optdepends = perl-date-manip: for stock information lookups
+	provides = gnucash
+	conflicts = gnucash
+	conflicts = gnucash-devel
+	conflicts = gnucash-xbt
+	options = !makeflags
+	options = !emptydirs
+	source = https://github.com/Gnucash/gnucash/releases/download/3.0/gnucash-3.0.tar.bz2
+	source = xbt.patch
+	sha1sums = a575e853668b93b34dcd94f0ef0d1fee25b0165f
+	sha1sums = 52cf6820bf1dd87b5807997e49ec9c861ff516af
+
+pkgname = gnucash-xbt-minimal
+

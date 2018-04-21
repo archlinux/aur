@@ -1,0 +1,23 @@
+--- libgnucash/engine/iso-4217-currencies.xml.orig	2015-04-04 08:48:15.854870167 +0200
++++ libgnucash/engine/iso-4217-currencies.xml	2015-04-04 08:48:32.791594789 +0200
+@@ -2953,6 +2953,20 @@
+   smallest-fraction="1000000"
+   local-symbol=""
+ />
++<!-- "XBT" - "Bitcoin"
++-->
++<currency
++  isocode="XBT"
++  fullname="Bitcoin"
++  unitname="bitcoin"
++  partname="microbitcoin"
++  namespace="ISO4217"
++  exchange-code="nil"
++  parts-per-unit="1000000"
++  smallest-fraction="1000000"
++  local-symbol="XBT"
++/>
++
+ 
+ <!-- precious metals -->
+ <!-- "XAG" - "Silver"
