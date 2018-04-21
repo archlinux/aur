@@ -14,11 +14,17 @@ pkgbase = octoprint
 	provides = octoprint
 	conflicts = octoprint-venv
 	source = octoprint-1.3.8.tar.gz::https://github.com/foosel/OctoPrint/archive/1.3.8.tar.gz
-	source = octoprint.service
 	source = octoprint.sysusers
+	source = octoprint.service
+	source = octoprint-serve
+	source = octoprint.conf
+	source = config.yaml
 	sha256sums = 92fd33279c38a5a54e46b0b3c3d465d8d2c7fa02cc01aba80b225a926b30d488
-	sha256sums = 09fddabe3bf31594fa26073ea5f1c01d706c5c745ffaca00341b1085e0320e14
 	sha256sums = bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65
+	sha256sums = 2c0643310be2159feea91eae819d5ab593e6f20b8b6ee6a98d8bf8254125acfb
+	sha256sums = 08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2
+	sha256sums = 02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5
+	sha256sums = eb2994e21a97964d87f184d9db2399b75be96cc3e26969444ca865a94ff6de6a
 
 pkgname = octoprint
 
