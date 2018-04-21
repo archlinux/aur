@@ -1,8 +1,8 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mesen-git
-pkgver=1866.d9629e67
-pkgrel=2
+pkgver=1968.80f6182d
+pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Mesen is a cross-platform (Windows & Linux) NES/Famicom emulator built in C++ and C#"
 url="https://github.com/libretro/Mesen"
