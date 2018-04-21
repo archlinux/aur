@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=cub
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible library of cooperative threadblock primitives and other utilities for CUDA kernel programming."
 arch=('any')
 url='http://nvlabs.github.com/cub/'
@@ -11,7 +11,7 @@ optdepends=('cuda')
 source=("https://github.com/NVlabs/cub/archive/${pkgver}.zip"
         "cub.pc")
 sha256sums=('6bfa06ab52a650ae7ee6963143a0bbc667d6504822cbd9670369b598f18c58c3'
-            '5003a9ee6d7dfa32bbdfbd67d2a7cfcc6c1ca54630c85012ec0b18b519d80230')
+            '93707c5fd3a2f93e825fc9cde8133fc525c7e5d6f22bbb006f494de74930bf87')
 
 package() {
   cd "${srcdir}/cub-${pkgver}"
