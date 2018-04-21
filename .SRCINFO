@@ -1,0 +1,18 @@
+pkgbase = notifymuch-git
+	pkgdesc = Display desktop notifications for unread mail in notmuch database
+	pkgver = r39.9d4aaf5
+	pkgrel = 1
+	url = https://github.com/kspi/notifymuch
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pygobject-devel
+	depends = python
+	depends = notmuch
+	depends = python-setuptools
+	provides = notifymuch
+	source = notifymuch::git://github.com/kspi/notifymuch
+	md5sums = SKIP
+
+pkgname = notifymuch-git
+
