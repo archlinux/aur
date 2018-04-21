@@ -1,16 +1,16 @@
 pkgbase = wt-cli
 	pkgdesc = Webtask Command Line Interface
-	pkgver = 8.2.0
-	pkgrel = 2
+	pkgver = 9.3.0
+	pkgrel = 1
 	url = http://github.com/auth0/wt-cli
 	install = wt-cli.install
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = wt-cli-8.2.0.tgz
-	source = http://registry.npmjs.org/wt-cli/-/wt-cli-8.2.0.tgz
-	sha1sums = 3d2bc6911df95482efa417ef282ed5860a0dc8c7
+	noextract = wt-cli-9.3.0.tgz
+	source = http://registry.npmjs.org/wt-cli/-/wt-cli-9.3.0.tgz
+	sha1sums = ee1a2774a8884e64658a7a746577ed6e371e77ef
 
 pkgname = wt-cli
 

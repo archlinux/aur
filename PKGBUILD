@@ -1,8 +1,8 @@
 _npmname=wt-cli
-_npmver=8.2.0
+_npmver=9.3.0
 pkgname=$_npmname # All lowercase
 pkgver=$_npmver
-pkgrel=2
+pkgrel=1
 pkgdesc="Webtask Command Line Interface"
 arch=(any)
 url="http://github.com/auth0/wt-cli"
@@ -12,7 +12,7 @@ optdepends=()
 install=wt-cli.install
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('3d2bc6911df95482efa417ef282ed5860a0dc8c7')
+sha1sums=('ee1a2774a8884e64658a7a746577ed6e371e77ef')
 
 package() {
   cd $srcdir
