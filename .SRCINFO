@@ -1,0 +1,18 @@
+pkgbase = toxcore-static2
+	pkgdesc = Secure, configuration-free, P2P Skype replacement backend
+	pkgver = 0.2.2
+	pkgrel = 1
+	epoch = 1
+	url = https://tox.chat
+	arch = x86_64
+	license = GPL3
+	makedepends = check
+	makedepends = cmake
+	depends = libsodium
+	depends = libvpx
+	depends = opus
+	source = c-toxcore-v0.2.2.tar.gz::https://github.com/TokTok/c-toxcore/archive/v0.2.2.tar.gz
+	sha512sums = 6fda4b60edfa70660dc355d507c86fcdbe1af137d62b4601aa39b6248b4519087c0e76f69075bcddbc42c363dc38a7cbdb78720caa7a289330124c23f5e63c18
+
+pkgname = toxcore-static2
+
