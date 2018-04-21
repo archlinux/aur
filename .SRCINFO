@@ -1,0 +1,16 @@
+pkgbase = netlab
+	pkgdesc = The Netlab neural network toolbox for Matlab
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://www.aston.ac.uk/eas/research/groups/ncrg/resources/netlab
+	arch = any
+	license = custom
+	source = netlab-3.3.tar::http://www.aston.ac.uk/EasySiteWeb/GatewayLink.aspx?alId=40595
+	source = netlab-help-3.3.tar::http://www.aston.ac.uk/EasySiteWeb/GatewayLink.aspx?alId=40596
+	source = foptions.m::http://www.aston.ac.uk/EasySiteWeb/GatewayLink.aspx?alId=40587
+	sha256sums = 3765f8b7f8141901a4cc1e1516c211af895093eaacf94d6520251529d2ac3564
+	sha256sums = 039cc3d39b2db7f755065379d63a1ba28eee14be69f9bd3a2837ad133f4b9d9b
+	sha256sums = aa306a0a79ba4479987c6d78e872bcf4b5751024bac887812c267010343c9074
+
+pkgname = netlab
+
