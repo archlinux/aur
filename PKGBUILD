@@ -15,8 +15,8 @@ url="http://octoprint.org/"
 license=('AGPL3')
 makedepends=('python2-virtualenv')
 optdepends=('ffmpeg: timelapse support'
+			'motion: motion detector which grabs images from video4linux devices and/or from webcams'
 			'mjpg-streamer: stream images from webcam'
-			'v4l-mjpg-stream: stream images from a Video4Linux capable camera'
 			)
 provides=('octoprint')
 conflicts=('octoprint-venv')
