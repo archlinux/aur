@@ -1,0 +1,14 @@
+pkgbase = heif-gimp-plugin
+	pkgdesc = A GIMP plugin for loading and saving HEIF images
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/strukturag/heif-gimp-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libheif
+	source = https://github.com/strukturag/heif-gimp-plugin/archive/libheif-v1.1.0.tar.gz
+	sha256sums = 11116a32a8e13c1b8bc718c8775a3fb30c3079bff8a648aeeed60b6132e00edf
+
+pkgname = heif-gimp-plugin
+
