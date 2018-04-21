@@ -4,6 +4,7 @@ pkgbase = pacman-src-git
 	pkgrel = 1
 	url = https://github.com/tim241/pacman-src
 	arch = any
+	license = GPL3
 	depends = bash
 	depends = pacman
 	depends = git

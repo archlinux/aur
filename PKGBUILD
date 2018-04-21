@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="pacman-src: A simple tool to compile packages from source using the ABS"
 arch=('any')
 url="https://github.com/tim241/${_pkgname}"
+license=('GPL3')
 
 provides=('pacman-src')
 conflicts=('pacman-src')
