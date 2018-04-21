@@ -1,6 +1,6 @@
 # Maintainer: Bottersnike <bottersnike237@gmail.com>
 pkgname=pxls
-pkgver=0.0.1b
+pkgver=0.0.2a
 pkgrel=1
 pkgdesc="A minimal image-based golfing language"
 arch=('any')
@@ -26,4 +26,4 @@ package() {
   cp -p "pxls" "$pkgdir/usr/bin"
 }
 
-md5sums=('ee1e44f8d198eed9efaecf794ced3084')
+md5sums=('3e3d7d7da4c31aabd15e486f54f47081')
