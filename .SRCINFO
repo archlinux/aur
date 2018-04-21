@@ -1,9 +1,8 @@
 pkgbase = google-musicmanager
 	pkgdesc = A simple application for adding the music files on your computer to your Google Music library
 	pkgver = 1.0.467.4929_r0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://music.google.com
-	arch = i686
 	arch = x86_64
 	license = custom:musicmanager
 	depends = flac
@@ -18,10 +17,8 @@ pkgbase = google-musicmanager
 	depends = hicolor-icon-theme
 	optdepends = log4cxx
 	options = !strip
-	source_i686 = https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.467.4929-r0_i386.deb
-	sha256sums_i686 = 121a7939015e2270afa3f1c73554102e2b4f2e6a31482ff7be5e7c28dd101d3c
-	source_x86_64 = https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.467.4929-r0_amd64.deb
-	sha256sums_x86_64 = e2bd248a1035ed4454f43299dc239decc1895d0830c83611ca6a1372d7cd5779
+	source = https://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.467.4929-r0_amd64.deb
+	sha256sums = e2bd248a1035ed4454f43299dc239decc1895d0830c83611ca6a1372d7cd5779
 
 pkgname = google-musicmanager
 
