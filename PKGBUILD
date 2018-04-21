@@ -1,4 +1,4 @@
-# Maintainer: Hill YU <hillyunews@gmail.com>
+# Maintainer: Hill YU <hillyunews@gmail.com>, Saren Arterius <saren@gmail.com>
 # Contributor: favonia <favonia@gmail.com>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
@@ -6,8 +6,8 @@
 pkgname=syncthing-inotify-git
 _pkgname=syncthing-inotify
 pkgver=0.8.5.r24.gaf6fbf9
-pkgrel=1
-pkgdesc="Inotify file watcher for Syncthing"
+pkgrel=3
+pkgdesc="Inotify file watcher for Syncthing, deprecated in favor of integration since Syncthing v0.14.40"
 url="https://github.com/syncthing/syncthing-inotify"
 license=('MPL')
 arch=(any)

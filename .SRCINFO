@@ -1,7 +1,7 @@
 pkgbase = syncthing-inotify-git
-	pkgdesc = Inotify file watcher for Syncthing
+	pkgdesc = Inotify file watcher for Syncthing, deprecated in favor of integration since Syncthing v0.14.40
 	pkgver = 0.8.5.r24.gaf6fbf9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/syncthing/syncthing-inotify
 	arch = any
 	license = MPL
