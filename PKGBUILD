@@ -4,7 +4,7 @@ _pkgname=qtodotxt2
 pkgname=${_pkgname}-git
 _commit=32bb7f3 # 7 digits
 pkgver=20180127
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform UI client for todo.txt files"
 arch=('i686' 'x86_64')
 url="https://github.com/QTodoTxt/QTodoTxt2"
@@ -27,11 +27,11 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 
   # Desktop file
-  install -Dm644 ../../qtodotxt2.desktop \
+  install -Dm644 ../qtodotxt2.desktop \
     "${pkgdir}/usr/share/applications/qtodotxt2.desktop"
 
   # Icons
-  install -Dm644 ../../qtodotxt.png \
+  install -Dm644 ../qtodotxt.png \
     "${pkgdir}/usr/share/icons/hicolor/48x48/apps/qtodotxt.png"
 
   # Doc files
