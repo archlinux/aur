@@ -1,6 +1,6 @@
 pkgbase = inxi
 	pkgdesc = script to get system information
-	pkgver = 3.0.03
+	pkgver = 3.0.07
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = inxi
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
 	options = zipman
-	source = inxi-3.0.03::https://github.com/smxi/inxi/archive/3.0.03-1.tar.gz
-	sha256sums = 80f2fef56567311dcae9a70c7d592cbc516c4000a643a5a9b938a28c12c5a90d
+	source = inxi-3.0.07::https://github.com/smxi/inxi/archive/3.0.07-1.tar.gz
+	sha256sums = 72ed009c882d25f7324e3d51ad61407d639b6fbfe9c50be97122b7dda0eb7b9e
 
 pkgname = inxi
 
