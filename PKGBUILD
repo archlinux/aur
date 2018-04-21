@@ -1,7 +1,7 @@
 pkgname=mingw-w64-pango
-pkgver=1.40.11
+pkgver=1.42.1
 pkgrel=1
-_commit=6c4e0c59ace08547b891f102da1ac0364eeda72d  # tags/1.40.11^0
+_commit=46f8583c87c45b304ac98d06005c49df67d53b07  # tags/1.42.1^0
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=(any)
 url="http://www.pango.org"
