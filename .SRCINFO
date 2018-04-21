@@ -1,10 +1,12 @@
 pkgbase = pycharm-edu
 	pkgdesc = Free, Easy & Professional Tool to Learn Programming with Python
-	pkgver = 2017.3.0
+	pkgver = 2018.1.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm-edu/
-	arch = any
+	arch = x86_64
 	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	depends = giflib
 	depends = ttf-font
 	depends = libxtst
@@ -12,10 +14,9 @@ pkgbase = pycharm-edu
 	optdepends = ipython2: For enhanced interactive Python shell v2
 	optdepends = ipython: For enhanced interactive Python shell v3
 	provides = pycharm-edu
-	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-edu-2017.3.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-edu-2018.1.1.tar.gz
 	source = pycharm-edu.desktop
-	sha256sums = ab6ca772759f1b4f658f058023addf6807491afd967e60fe95251df1f44de06c
+	sha256sums = d8f153879683b16c5e11f56430105e7898b5e832ada527b8f3500ceb947ac54e
 	sha256sums = 2934fbe579bcc3d6e9d66f9ee80286e36773fe59aafaef9d15bbb45a0a59c58b
 
 pkgname = pycharm-edu
