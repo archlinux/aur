@@ -23,7 +23,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 
 pkgname=caffe2
 pkgver=0.8.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -31,8 +31,8 @@ license=('BSD')
 depends=(
     # official repositories:
         # required:
-            'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf' 'cuda'
-            'cudnn'
+            'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
+            'cuda' 'cudnn'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
             'hiredis' 'ffmpeg'
@@ -42,17 +42,15 @@ depends=(
             'python2-requests' 'python2-scipy' 'python2-setuptools' 'python2-six'
             'python2-tornado' 'python2-gflags' 'python2-pyzmq'
     # AUR:
-        # not required:
-            # 'nccl'
         # python2:
             'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
             'python2-lmdb'
 )
 makedepends=(
     # official repositories:
-        'git' 'cmake' 'gcc5' 'ninja'
+        'git' 'cmake' 'ninja' 'python'
     # AUR:
-        'confu-git' 'python-peachpy-git'
+        'gcc5' 'confu-git' 'python-peachpy-git'
 )
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
@@ -61,26 +59,29 @@ source=(
     # main source:
         "${pkgname}-${pkgver}.tar.gz"::"https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
     # third party:
-        'thirdparty-android-cmake-git'::"git+https://github.com/taka-no-me/android-cmake.git#commit=${_android_cmake_commit}"
-        'thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"
-        'thirdparty-cnmem-git'::"git+https://github.com/NVIDIA/cnmem.git#commit=${_cnmem_commit}"
-        'thirdparty-cub-git'::"git+https://github.com/NVlabs/cub.git#commit=${_cub_commit}"
-        "thirdparty-eigen-${_eigen_version}.tar.gz"::"https://github.com/RLovelett/eigen/archive/${_eigen_version}.tar.gz"
-        'thirdparty-gloo-git'::"git+https://github.com/facebookincubator/gloo.git#commit=${_gloo_commit}"
-        'thirdparty-googletest-git'::"git+https://github.com/google/googletest.git#commit=${_googletest_commit}"
-        'thirdparty-ios-cmake-git'::"git+https://github.com/Yangqing/ios-cmake.git#commit=${_ios_cmake_commit}"
-        'thirdparty-nccl-git'::"git+https://github.com/NVIDIA/nccl.git#commit=${_nccl_commit}"
-        'thirdparty-nervanagpu-git'::"git+https://github.com/NervanaSystems/nervanagpu.git#commit=${_nervanagpu_commit}"
-        'thirdparty-NNPACK-git'::"git+https://github.com/Maratyszcza/NNPACK.git#commit=${_nnpack_commit}"
-        "thirdparty-protobuf-${_protobuf_version}.tar.gz"::"https://github.com/google/protobuf/archive/v${_protobuf_version}.tar.gz"
-        'thirdparty-pybind11-git'::"git+https://github.com/pybind/pybind11.git#commit=${_pybind11_commit}"
-        'thirdparty-NNPACK_deps-FP16-git'::"git+https://github.com/Maratyszcza/FP16.git#commit=${_nnpackdeps_fp16_commit}"
-        'thirdparty-NNPACK_deps-FXdiv-git'::"git+https://github.com/Maratyszcza/FXdiv.git#commit=${_nnpackdeps_fxdiv_commit}"
-        'thirdparty-NNPACK_deps-psimd-git'::"git+https://github.com/Maratyszcza/psimd.git#commit=${_nnpackdeps_psimd_commit}"
-        'thirdparty-NNPACK_deps-pthreadpool-git'::"git+https://github.com/Maratyszcza/pthreadpool.git#commit=${_nnpackdeps_pthreadpool_commit}"
+        'caffe2-thirdparty-android-cmake-git'::"git+https://github.com/taka-no-me/android-cmake.git#commit=${_android_cmake_commit}"
+        'caffe2-thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"
+        'caffe2-thirdparty-cnmem-git'::"git+https://github.com/NVIDIA/cnmem.git#commit=${_cnmem_commit}"
+        'caffe2-thirdparty-cub-git'::"git+https://github.com/NVlabs/cub.git#commit=${_cub_commit}"
+        "caffe2-thirdparty-eigen-${_eigen_version}.tar.gz"::"https://github.com/RLovelett/eigen/archive/${_eigen_version}.tar.gz"
+        'caffe2-thirdparty-gloo-git'::"git+https://github.com/facebookincubator/gloo.git#commit=${_gloo_commit}"
+        'caffe2-thirdparty-googletest-git'::"git+https://github.com/google/googletest.git#commit=${_googletest_commit}"
+        'caffe2-thirdparty-ios-cmake-git'::"git+https://github.com/Yangqing/ios-cmake.git#commit=${_ios_cmake_commit}"
+        'caffe2-thirdparty-nccl-git'::"git+https://github.com/NVIDIA/nccl.git#commit=${_nccl_commit}"
+        'caffe2-thirdparty-nervanagpu-git'::"git+https://github.com/NervanaSystems/nervanagpu.git#commit=${_nervanagpu_commit}"
+        'caffe2-thirdparty-NNPACK-git'::"git+https://github.com/Maratyszcza/NNPACK.git#commit=${_nnpack_commit}"
+        "caffe2-thirdparty-protobuf-${_protobuf_version}.tar.gz"::"https://github.com/google/protobuf/archive/v${_protobuf_version}.tar.gz"
+        'caffe2-thirdparty-pybind11-git'::"git+https://github.com/pybind/pybind11.git#commit=${_pybind11_commit}"
+        'caffe2-thirdparty-NNPACK_deps-FP16-git'::"git+https://github.com/Maratyszcza/FP16.git#commit=${_nnpackdeps_fp16_commit}"
+        'caffe2-thirdparty-NNPACK_deps-FXdiv-git'::"git+https://github.com/Maratyszcza/FXdiv.git#commit=${_nnpackdeps_fxdiv_commit}"
+        'caffe2-thirdparty-NNPACK_deps-psimd-git'::"git+https://github.com/Maratyszcza/psimd.git#commit=${_nnpackdeps_psimd_commit}"
+        'caffe2-thirdparty-NNPACK_deps-pthreadpool-git'::"git+https://github.com/Maratyszcza/pthreadpool.git#commit=${_nnpackdeps_pthreadpool_commit}"
+    # patches:
+        'caffe2-allow-cuda9.patch'
+        'caffe2-cuda9.1-fix.patch'
 )
-noextract=("thirdparty-eigen-${_eigen_version}.tar.gz"
-           "thirdparty-protobuf-${_protobuf_version}.tar.gz")
+noextract=("caffe2-thirdparty-eigen-${_eigen_version}.tar.gz"
+           "caffe2-thirdparty-protobuf-${_protobuf_version}.tar.gz")
 sha256sums=('2b7938514caf626da3fdde51e88771adc863cbe496d0fc4ae1122603a945e9a8'
             'SKIP'
             'SKIP'
@@ -98,7 +99,9 @@ sha256sums=('2b7938514caf626da3fdde51e88771adc863cbe496d0fc4ae1122603a945e9a8'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '615c855e91965e132eb47f11678c8d8ceda1575e1e052da0ac516e2a791c8aab'
+            'ca71dd126ce682b387a56387005ec71dd700813282fb7a6a11f1883d8f94e463')
 
 prepare() {
     cd "${pkgname}-${pkgver}/third_party"
@@ -111,24 +114,33 @@ prepare() {
     for _component in $_thirdparty_nongit_list
     do
         cd "$_component"
-        bsdtar -xf "${srcdir}/thirdparty-${_component}"* -s'|[^/]*/||'
+        bsdtar -xf "${srcdir}/caffe2-thirdparty-${_component}"* -s'|[^/]*/||'
         cd ..
     done
     
     for _component in $_thirdparty_git_list
     do
         rm -rf "$_component"
-        ln -sf "${srcdir}/thirdparty-${_component}-git" "${_component}"
+        ln -sf "${srcdir}/caffe2-thirdparty-${_component}-git" "${_component}"
     done
     
     cd NNPACK_deps
     for _component in $_nnpackdeps_list
     do
         rm -rf "$_component"
-        ln -sf "${srcdir}/thirdparty-NNPACK_deps-${_component}-git" "${_component}"
+        ln -sf "${srcdir}/caffe2-thirdparty-NNPACK_deps-${_component}-git" "${_component}"
     done
     
-    unset _component
+    # cuda 9.1 detection fixes
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/caffe2-allow-cuda9.patch"
+    patch -Np1 -i "${srcdir}/caffe2-cuda9.1-fix.patch"
+    
+    # cuda 9.x gpu architecture fixes
+    cd cmake
+    sed -i '2s/^##//;2s/,.*//'  Cuda.cmake # enable cuda 9.x architectures
+    sed -i '2s/[[:space:]]71//' Cuda.cmake # remove unimplemented compute_71 architecture
+    sed -i '6s/20[[:space:]]21(20)[[:space:]]//' Cuda.cmake # remove unsupported compute_20/21 architecture
 }
 
 build() {
@@ -146,17 +158,17 @@ build() {
         -DBUILD_TEST:BOOL='OFF' \
         \
         -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
-        -DCMAKE_CXX_FLAGS:STRING="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')" \
+        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS/-fno-plt/}" \
         -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
-        -DCMAKE_C_FLAGS:STRING="$(printf '%s' "$CFLAGS" | sed 's/-fno-plt//')" \
+        -DCMAKE_C_FLAGS:STRING="${CFLAGS/-fno-plt/}" \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
+        -DCUDA_ARCH_NAME:STRING='Auto' \
         -DCUDA_64_BIT_DEVICE_CODE:BOOL='ON' \
         -DCUDA_ARCH_NAME:STRING='Auto' \
         -DCUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL='ON' \
@@ -173,6 +185,7 @@ build() {
         -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
         -DCUDA_VERBOSE_BUILD:BOOL='OFF' \
         -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
+        -DCUDNN_LIBRARY:FILEPATH='/opt/cuda/lib64/libcudnn.so' \
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
@@ -218,6 +231,7 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}/build"
+    
     make DESTDIR="$pkgdir" install
     
     # directories creation
@@ -225,11 +239,16 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # move/rename folders to the right location
-    mv -f "${pkgdir}/usr/caffe"    "${pkgdir}/usr/lib/python2.7/site-packages"
-    mv -f "${pkgdir}/usr/caffe2"   "${pkgdir}/usr/lib/python2.7/site-packages"
+    mv -f "${pkgdir}/usr/caffe"  "${pkgdir}/usr/lib/python2.7/site-packages"
+    mv -f "${pkgdir}/usr/caffe2" "${pkgdir}/usr/lib/python2.7/site-packages"
+    
+    # fix shebang in python scripts
+    cd "${pkgdir}/usr/lib/python2.7/site-packages/caffe2"
+    sed -i '1s/python$/python2/' python/allcompare_test.py
+    sed -i '1s/python$/python2/' contrib/gloo/gloo_test.py
     
     # license
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }

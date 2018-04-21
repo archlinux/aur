@@ -1,0 +1,46 @@
+caffe2-0.8.1
+[PATCH] Allow build with CUDA 9.0
+
+Backport of:
+https://github.com/caffe2/caffe2/commit/24d1038b2216e670b43032c93cc520c0a93423ba
+
+diff -Naurp a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+--- a/cmake/Dependencies.cmake	2017-08-08 17:57:43.000000000 +0000
++++ b/cmake/Dependencies.cmake	2018-04-22 16:01:19.916213699 +0000
+@@ -283,16 +283,27 @@ endif()
+ # ---[ CUDA
+ if(USE_CUDA)
+   include(cmake/Cuda.cmake)
+-  # CUDA 8.0 requires GCC 5
+   if(HAVE_CUDA)
+-    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND
+-        NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 6.0)
+-      message(FATAL_ERROR
+-        "CUDA 8.0 is not compatible with GCC version >= 6. "
+-        "Use the following options to use another version (for example): \n"
+-        "  -DCMAKE_CXX_COMPILER=/usr/bin/g++-5\n"
+-        "  -DCMAKE_C_COMPILER=/usr/bin/gcc-5\n"
+-        "  -DCUDA_HOST_COMPILER:FILEPATH=/usr/bin/gcc-5\n")
++    # CUDA 9.0 requires GCC version <= 6
++    if (CUDA_VERSION VERSION_EQUAL 9.0)
++      if (CMAKE_C_COMPILER_ID STREQUAL "GNU" AND
++          NOT CMAKE_C_COMPILER_VERSION VERSION_LESS 7.0 AND
++          CUDA_HOST_COMPILER STREQUAL CMAKE_C_COMPILER)
++        message(FATAL_ERROR
++          "CUDA 9.0 is not compatible with GCC version >= 7. "
++          "Use the following option to use another version (for example): \n"
++          "  -DCUDA_HOST_COMPILER=/usr/bin/gcc-6\n")
++      endif()
++    # CUDA 8.0 requires GCC version <= 5
++    elseif (CUDA_VERSION VERSION_EQUAL 8.0)
++      if (CMAKE_C_COMPILER_ID STREQUAL "GNU" AND
++          NOT CMAKE_C_COMPILER_VERSION VERSION_LESS 6.0 AND
++          CUDA_HOST_COMPILER STREQUAL CMAKE_C_COMPILER)
++        message(FATAL_ERROR
++          "CUDA 8.0 is not compatible with GCC version >= 6. "
++          "Use the following option to use another version (for example): \n"
++          "  -DCUDA_HOST_COMPILER=/usr/bin/gcc-5\n")
++      endif()
+     endif()
+   endif()
+   # ---[ CUDNN
