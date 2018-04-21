@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pacman -Qdi | grep -B 15 -A 4 'Required By     : None' | grep -e 'Name' -e 'Optional For' -e '--'
