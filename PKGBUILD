@@ -15,6 +15,10 @@ sha256sums=('d7ff7d8bee3cdf4d630ed746ee4a5be03d63acf236f1612e52a4e129e7570153')
 
 # Update check:
 # curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_Linux.zip
+# Other platforms:
+# curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_lt.msi
+# curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_en.msi
+# curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt.pkg
 
 prepare() {
   rm -rf */
