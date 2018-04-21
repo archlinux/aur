@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=390.42
+pkgver=390.48
 pkgrel=1
-_goodkver=4.15
-_badkver=4.16
+_goodkver=4.16
+_badkver=4.17
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -23,8 +23,10 @@ license=('custom')
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('453c6fb7f892eb53bf32011fc0da770d')
-md5sums_x86_64=('2b2e4c8b4174b542774d82c66ba69e91')
+source+=('kernel-4.16.patch')
+md5sums=('84f1f2ecdccf377fc86323f8ad7b7469')
+md5sums_i686=('754bbdc3eb6f3873cca49ae807964c0e')
+md5sums_x86_64=('8ed67fc67710b6cfd9c9273054e2117a')
 
 
 
@@ -38,6 +40,7 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
+  patch -Np1 -i "$srcdir"/kernel-4.16.patch
 }
 
 build() {
