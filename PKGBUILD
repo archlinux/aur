@@ -1,9 +1,9 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-openssl
-_ver=1.1.0f
+_ver=1.1.0h
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-zlib)
@@ -11,21 +11,15 @@ makedepends=(mingw-w64-gcc perl)
 options=(!strip !buildflags staticlibs !emptydirs)
 license=("custom:BSD")
 url="http://www.openssl.org"
-source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
-"fs54205.patch"
-"openssl-1.0.2a-x509.patch")
-md5sums=('7b521dea79ab159e8ec879d2333369fa'
-         'SKIP'
-         '2f1b34d666894f447241c60191e9cfda'
-         'c730f823023879de28513081aedbf06b')
+source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc})
+sha256sums=('5835626cde9e99656585fc7aaa2302a73a7e1340bf8c14fd635a62c66802a517'
+            'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd openssl-$_ver
-  patch -p1 -i ${srcdir}/openssl-1.0.2a-x509.patch
-  patch -Np1 -i "$srcdir/fs54205.patch"
   sed -i -e '/^"mingw"/ s/-fomit-frame-pointer -O3 -march=i486 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
   sed -i -e '/^"mingw64"/ s/-O3 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
 }
