@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-bookmarkplus-mode
-pkgver=2017.02.26
+pkgver=2017.03.31
 pkgrel=1
 pkgdesc="Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways"
 url="http://www.emacswiki.org/emacs/BookmarkPlus"
@@ -19,14 +19,14 @@ source=("http://www.emacswiki.org/emacs/download/bookmark+.el"
         "http://www.emacswiki.org/emacs/download/bookmark+-lit.el"
         "http://www.emacswiki.org/emacs/download/bookmark+-doc.el"
         "http://www.emacswiki.org/emacs/download/bookmark+-chg.el")
-md5sums=('4f2f6e6ce4a13c6e5e3f01e093f41413'
-         '8734bc137b5ab36669c4140bcd5857e6'
-         '7bc973ca676c98aef6fed52d0ec4ffbe'
-         'aa758c00bd19f69df6e5899e6592d365'
-         'a54a19d4db3a5d7d06dc4771fe2c445d'
-         '6c362bab1db9c26726b0e490f8fb4ec8'
-         'a2955e140b0a29dd0a837a3adc900cf8'
-         '57a9fc82e6114b9a3b3c3776a04da41b')
+md5sums=('649ecbd6a757b52591f79502c0ff2ee2'
+         '3f5454fb622fa72d7ac966332cb455d3'
+         '9ef4349577df93d171cc40d117d9d30c'
+         'de968d00e40c1cc997ed6b88475a4975'
+         '87a7714bbfa2a8af221a47a403e14010'
+         '38f2c1678ac262fc9aad36d1d98d97d2'
+         '59c1b44697821f6e2d0bfeec63582a28'
+         '761697dd9fd3d1015c46a2a4cb48d226')
 
 pkgver() {
   cd $srcdir
