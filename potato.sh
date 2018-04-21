@@ -19,6 +19,10 @@ show_help() {
 	END
 }
 
+play_notification() {
+	aplay -q /usr/lib/potato/notification.wav&
+}
+
 while getopts :sw:b:m opt; do
 	case "$opt" in
 	s)
@@ -56,8 +60,7 @@ do
 		sleep 1m
 	done
 
-	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
-
+	! $MUTE && play_notification
 	if $INTERACTIVE; then
 		read -d '' -t 0.001
 		echo -e "\a"
@@ -70,7 +73,8 @@ do
 		printf "$time_left" $i "pause"
 		sleep 1m
 	done
-	! $MUTE && aplay /usr/share/sounds/speech-dispatcher/test.wav &>/dev/null
+
+	! $MUTE && play_notification
 	if $INTERACTIVE; then
 		read -d '' -t 0.001
 		echo -e "\a"
