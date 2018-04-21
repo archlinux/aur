@@ -37,15 +37,15 @@ prepare() {
 
 package() {
 
-  install -D /usr/bin/tcllauncher ${pkgdir}/usr/bin/tcllauncher
+  install -D /usr/bin/tcllauncher "${pkgdir}"/usr/bin/tcllauncher
   cd "${srcdir}/${_gitname}"
-  make install DESTDIR=${pkgdir} SYSTEMD=/usr/lib/systemd/system
-  rm ${pkgdir}/usr/bin/tcllauncher
+  make install DESTDIR="${pkgdir}" SYSTEMD=/usr/lib/systemd/system
+  rm "${pkgdir}"/usr/bin/tcllauncher
 
-  install -dm755 ${pkgdir}/var/cache/piaware
-  install -dm750 ${pkgdir}/etc/sudoers.d/
-  install -Dm644 etc/piaware.sudoers ${pkgdir}/etc/sudoers.d/01piaware
-  install -Dm640 ${srcdir}/piaware.conf ${pkgdir}/etc/piaware.conf
+  install -dm755 "${pkgdir}"/var/cache/piaware
+  install -dm750 "${pkgdir}"/etc/sudoers.d/
+  install -Dm644 etc/piaware.sudoers "${pkgdir}"/etc/sudoers.d/01piaware
+  install -Dm640 "${srcdir}"/piaware.conf "${pkgdir}"/etc/piaware.conf
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
-  install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
