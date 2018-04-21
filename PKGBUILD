@@ -1,7 +1,6 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
-_npmname=stf
-pkgname=nodejs-stf
+pkgname=stf
 pkgver=3.3.0
 pkgrel=1
 pkgdesc='Web application for debugging Android devices'
