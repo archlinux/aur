@@ -1,15 +1,15 @@
 pkgbase = caffe2-cpu
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
 	pkgver = 0.8.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://caffe2.ai/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc6
 	makedepends = ninja
+	makedepends = python
 	makedepends = confu-git
 	makedepends = python-peachpy-git
 	depends = google-glog
@@ -26,6 +26,8 @@ pkgbase = caffe2-cpu
 	depends = snappy
 	depends = zeromq
 	depends = hiredis
+	depends = opencv
+	depends = gtkglext
 	depends = ffmpeg
 	depends = python2-flask
 	depends = python2-future
@@ -42,6 +44,7 @@ pkgbase = caffe2-cpu
 	depends = python2-tornado
 	depends = python2-gflags
 	depends = python2-pyzmq
+	depends = rocksdb
 	depends = python2-nvd3
 	depends = python2-scikit-image
 	depends = python2-glog
@@ -58,23 +61,24 @@ pkgbase = caffe2-cpu
 	noextract = thirdparty-protobuf-3.1.0.tar.gz
 	options = !emptydirs
 	source = caffe2-0.8.1.tar.gz::https://github.com/caffe2/caffe2/archive/v0.8.1.tar.gz
-	source = thirdparty-android-cmake-git::git+https://github.com/taka-no-me/android-cmake.git#commit=556cc14296c226f753a3778d99d8b60778b7df4f
-	source = thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=4bf28e611b55de8a2d4eece3c335e014f8b0f630
-	source = thirdparty-cnmem-git::git+https://github.com/NVIDIA/cnmem.git#commit=28a182d49529da49f4ac4e3941cec3edf16b3540
-	source = thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=b1370adb972a8345de92e2d69e61daf7f9bce43e
-	source = thirdparty-eigen-3.3.2.tar.gz::https://github.com/RLovelett/eigen/archive/3.3.2.tar.gz
-	source = thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=530878247b04c423fd35477208f68e70b8126e2d
-	source = thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=5e7fd50e17b6edf1cadff973d0ec68966cf3265e
-	source = thirdparty-ios-cmake-git::git+https://github.com/Yangqing/ios-cmake.git#commit=e24081928d9ceec4f4adfcf12293f1e2a20eaedc
-	source = thirdparty-nccl-git::git+https://github.com/NVIDIA/nccl.git#commit=2a974f5ca2aa12b178046b2206b43f1fd69d9fae
-	source = thirdparty-nervanagpu-git::git+https://github.com/NervanaSystems/nervanagpu.git#commit=d4eefd50fbd7d34a17dddbc829888835d67b5f4a
-	source = thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=02bfa475d64040cd72b7c01daa9e862523ae87da
-	source = thirdparty-protobuf-3.1.0.tar.gz::https://github.com/google/protobuf/archive/v3.1.0.tar.gz
-	source = thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=f38f359f96815421f1780c1a676715efd041f1ae
-	source = thirdparty-NNPACK_deps-FP16-git::git+https://github.com/Maratyszcza/FP16.git#commit=2e9eeeb0b463736d13b887d790ac7e72e78fa4bc
-	source = thirdparty-NNPACK_deps-FXdiv-git::git+https://github.com/Maratyszcza/FXdiv.git#commit=8f85044fb41e560508cd69ed26c9afb9cc120e8a
-	source = thirdparty-NNPACK_deps-psimd-git::git+https://github.com/Maratyszcza/psimd.git#commit=0b26a3fb98dd6af7e1f4e0796c56df6b32b1c016
-	source = thirdparty-NNPACK_deps-pthreadpool-git::git+https://github.com/Maratyszcza/pthreadpool.git#commit=9e17903a3fc963fe86b151aaddae7cf1b1d34815
+	source = caffe2-thirdparty-android-cmake-git::git+https://github.com/taka-no-me/android-cmake.git#commit=556cc14296c226f753a3778d99d8b60778b7df4f
+	source = caffe2-thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=4bf28e611b55de8a2d4eece3c335e014f8b0f630
+	source = caffe2-thirdparty-cnmem-git::git+https://github.com/NVIDIA/cnmem.git#commit=28a182d49529da49f4ac4e3941cec3edf16b3540
+	source = caffe2-thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=b1370adb972a8345de92e2d69e61daf7f9bce43e
+	source = caffe2-thirdparty-eigen-3.3.2.tar.gz::https://github.com/RLovelett/eigen/archive/3.3.2.tar.gz
+	source = caffe2-thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=530878247b04c423fd35477208f68e70b8126e2d
+	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=5e7fd50e17b6edf1cadff973d0ec68966cf3265e
+	source = caffe2-thirdparty-ios-cmake-git::git+https://github.com/Yangqing/ios-cmake.git#commit=e24081928d9ceec4f4adfcf12293f1e2a20eaedc
+	source = caffe2-thirdparty-nccl-git::git+https://github.com/NVIDIA/nccl.git#commit=2a974f5ca2aa12b178046b2206b43f1fd69d9fae
+	source = caffe2-thirdparty-nervanagpu-git::git+https://github.com/NervanaSystems/nervanagpu.git#commit=d4eefd50fbd7d34a17dddbc829888835d67b5f4a
+	source = caffe2-thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=02bfa475d64040cd72b7c01daa9e862523ae87da
+	source = caffe2-thirdparty-protobuf-3.1.0.tar.gz::https://github.com/google/protobuf/archive/v3.1.0.tar.gz
+	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=f38f359f96815421f1780c1a676715efd041f1ae
+	source = caffe2-thirdparty-NNPACK_deps-FP16-git::git+https://github.com/Maratyszcza/FP16.git#commit=2e9eeeb0b463736d13b887d790ac7e72e78fa4bc
+	source = caffe2-thirdparty-NNPACK_deps-FXdiv-git::git+https://github.com/Maratyszcza/FXdiv.git#commit=8f85044fb41e560508cd69ed26c9afb9cc120e8a
+	source = caffe2-thirdparty-NNPACK_deps-psimd-git::git+https://github.com/Maratyszcza/psimd.git#commit=0b26a3fb98dd6af7e1f4e0796c56df6b32b1c016
+	source = caffe2-thirdparty-NNPACK_deps-pthreadpool-git::git+https://github.com/Maratyszcza/pthreadpool.git#commit=9e17903a3fc963fe86b151aaddae7cf1b1d34815
+	source = caffe2-cpu-gcc7-fix.patch
 	sha256sums = 2b7938514caf626da3fdde51e88771adc863cbe496d0fc4ae1122603a945e9a8
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -93,6 +97,7 @@ pkgbase = caffe2-cpu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 8ad9f3edfa6b1b9caae9eb614dc96ba12c396d58d5abc9b3bbbcb00305cdb163
 
 pkgname = caffe2-cpu
 
