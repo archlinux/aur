@@ -27,6 +27,7 @@ md5sums=(
 package() {
   echo "$pkgdir"
   cd "$srcdir/pulseaudio-equalizer-ladspa-ffy00"
+  mkdir "$pkgdir/usr"
   cp -rfp equalizerrc "$pkgdir/usr/"
   cp -rfp share "$pkgdir/usr/"
   cp -rfp bin "$pkgdir/usr/"
