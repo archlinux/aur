@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Notmuch notifier
+Exec=notifymuch
+Icon=notify.svg
+Type=Application
+Categories=GTK;GNOME;Utility;
