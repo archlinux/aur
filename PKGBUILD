@@ -1,7 +1,7 @@
 pkgname=mingw-w64-fontconfig
-pkgver=2.12.4
+pkgver=2.13.0+10+g58f5285
 pkgrel=1
-_commit=01085e07857cddf382db736a9e061f92f50397d6  # tags/2.12.4
+_commit=58f52853d5689e897525a5926c1a222340d3f404 # master
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=(any)
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
