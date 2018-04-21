@@ -1,0 +1,6 @@
+rm src/src/github.com/cbednarski/hostess
+sudo pacman -R hostess-git <<< "Y"
+updpkgsums
+makepkg -cf
+makepkg --printsrcinfo > .SRCINFO
+makepkg -sri <<< "Y"
