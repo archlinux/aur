@@ -1,0 +1,12 @@
+pkgbase = circstat
+	pkgdesc = The circular statistics toolbox for Matlab/Octave
+	pkgver = 2012a
+	pkgrel = 1
+	url = http://bethgelab.org/software/circstat
+	arch = any
+	license = custom
+	source = circstat-2012a.zip::https://uk.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/10676/versions/22/download/zip
+	sha256sums = 9c47637b92876bfa7a7c4ddf4adf5e5e266229c69ae83afd8bc8ec9c9699cdbb
+
+pkgname = circstat
+
