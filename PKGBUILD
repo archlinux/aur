@@ -1,8 +1,8 @@
 # Maintainer: Antoni Kepinski <hello[at]akepinski[dot]me>
 pkgname=archfetch
-pkgver=1.0.5
-pkgrel=2
-pkgdesc="Neofetch, but simplified. For Arch Linux."
+pkgver=1.0.6
+pkgrel=3
+pkgdesc="Simple CLI system information tool for Arch Linux."
 url="https://github.com/xxczaki/archfetch/"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -10,7 +10,7 @@ makedepens=('git')
 _gitroot="git://github.com/xxczaki/archfetch.git"
 _gitname="archfetch"
 
-package() {	
+package() {
 	cd "${PKGMK_SOURCE_DIR}"
 
 	if cd "${pkgname}"; then

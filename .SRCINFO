@@ -1,7 +1,7 @@
 pkgbase = archfetch
-	pkgdesc = Neofetch, but simplified. For Arch Linux.
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgdesc = Simple CLI system information tool for Arch Linux.
+	pkgver = 1.0.6
+	pkgrel = 3
 	url = https://github.com/xxczaki/archfetch/
 	arch = i686
 	arch = x86_64
