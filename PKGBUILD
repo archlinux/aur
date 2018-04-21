@@ -1,10 +1,11 @@
-# Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer: Assaf Sapir <meijin007 at gmail.com> PGP-Key: 271386AA2EB7672F
+# Original Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=flightradar24
 pkgver=1.0.18
 _pkgverorig=1.0.18-5
-_pkgverorigarmhf=1.0.18-7
-pkgrel=2
+_pkgverorigarmhf=1.0.19-15
+pkgrel=3
 pkgdesc="Feeder software for Flightradar24.com"
 url="http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -27,10 +28,10 @@ source_x86_64=("http://feed.flightradar24.com/linux/fr24feed_${_pkgverorig}_amd6
 sha256sums_x86_64=('770e86b640bcbb8850df67aaa8072a85ac941e2e2f79ea25ef44d67e89bc5649')
 
 source_armv6h=("http://repo.feed.flightradar24.com/rpi_binaries/fr24feed_${_pkgverorigarmhf}_armhf.tgz")
-sha256sums_armv6h=('84c690234dc84e0fe7566a3f70f99633e1be1aca02102dadc5d988708b854f40')
+sha256sums_armv6h=('ea2674b5eaa071d3e469a103971a2d42973014d5fde8fd3b0fe123dbd4f1476b')
 
 source_armv7h=("http://repo.feed.flightradar24.com/rpi_binaries/fr24feed_${_pkgverorigarmhf}_armhf.tgz")
-sha256sums_armv7h=('84c690234dc84e0fe7566a3f70f99633e1be1aca02102dadc5d988708b854f40')
+sha256sums_armv7h=('ea2674b5eaa071d3e469a103971a2d42973014d5fde8fd3b0fe123dbd4f1476b')
 
 package() {
   cd "$srcdir"
