@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=20180330.c4bc0ff2
+pkgver=20180418.48b569eb
 pkgrel=1
 pkgdesc="script to get system information (git version)"
 arch=('any')
@@ -38,18 +38,6 @@ pkgver() {
     echo .
     git rev-parse --short master
     ) | tr -d '\n'
-}
-
-prepare() {
-    cd ${pkgname/-git/}
-    
-    # temp move inxi to pinxi
-    mv inxi pinxi
-
-    # patches here
-
-    # temp move pinxi back to inxi
-    mv pinxi inxi
 }
 
 package() {
