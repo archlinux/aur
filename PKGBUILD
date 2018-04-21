@@ -4,7 +4,7 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
@@ -20,7 +20,7 @@ provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v$pkgver.tar.gz")
-sha512sums=('5477b8ac438b8f2ea40e658c50988881ef0f3eeda3178b2fbed9618d2a490c28f59b32174e150d8cbeb1b04b4b868a64029bde6499983dff782d4204aa0f8d37')
+sha512sums=('a89b0bee6997ce51d23483101755dae9f5300339d65e4975679df5c6b60ff9af94e655651321cd8e831666a04ec5cc24c7af647f3aab913524b6755b47f1f57b')
 
 prepare() {
   cd mitmproxy-$pkgver
@@ -37,7 +37,7 @@ prepare() {
 check() {
   cd mitmproxy-$pkgver
   # https://github.com/mitmproxy/mitmproxy/issues/2892
-  python setup.py pytest || warning "Tests failed"
+  python setup.py pytest
 }
 
 package() {
