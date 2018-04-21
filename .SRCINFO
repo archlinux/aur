@@ -1,7 +1,7 @@
 pkgbase = netlab
 	pkgdesc = The Netlab neural network toolbox for Matlab
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aston.ac.uk/eas/research/groups/ncrg/resources/netlab
 	arch = any
 	license = custom

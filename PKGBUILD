@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk
 pkgname=netlab
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Netlab neural network toolbox for Matlab"
 arch=("any")
 url="http://www.aston.ac.uk/eas/research/groups/ncrg/resources/netlab"
@@ -15,6 +15,7 @@ sha256sums=('3765f8b7f8141901a4cc1e1516c211af895093eaacf94d6520251529d2ac3564'
 
 package() {
     install -d "$pkgdir"/opt/$pkgname
+    rm "$srcdir"/*.tar
     install -m 644 "$srcdir"/* "$pkgdir"/opt/$pkgname
     install -m 644 foptions.m "$pkgdir"/opt/$pkgname
 
