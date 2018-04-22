@@ -1,35 +1,22 @@
-# Maintainer: Wojtek Gawroński <afronski@gmail.com>
-# https://github.com/afronski/aur-packages/tree/master/aur/nomad-bin
+# Maintainer: Konrad Tegtmeier <konrad.tegtmeier+aur@gmail.com>
+# Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.6.3
+pkgver=0.8.1
 pkgrel=0
-epoch=
-pkgdesc="Easily deploy applications at any scale - A Distributed, Highly Available, Datacenter-Aware Scheduler"
-arch=('i686' 'x86_64')
+pkgdesc="A distributed, highly available, datacenter-aware scheduler"
+arch=('x86_64')
 url="https://nomadproject.io/"
-license=('MPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
+license=('MPL2')
+optdepends=('docker: enables docker driver'
+            'java-runtime: enables java driver'
+            'lxc: enables lxc driver (experimental)'
+            'qemu-headless: enables qemu driver'
+            'rkt: enables rkt driver')
 provides=('nomad')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-
-source_i686=("https://releases.hashicorp.com/nomad/0.6.3/nomad_0.6.3_linux_386.zip")
-source_x86_64=("https://releases.hashicorp.com/nomad/0.6.3/nomad_0.6.3_linux_amd64.zip")
-
-sha256sums_i686=('517e5585ddc5bdeb3eb75e12a95d0f61977f2d0943f61243966afb3d1767d028')
-sha256sums_x86_64=('908ee049bda380dc931be2c8dc905e41b58e59f68715dce896d69417381b1f4e')
-
-noextract=()
+source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64-lxc.zip")
+sha256sums=('ddbd66050b4597a0e4f1a2cb95af2b9bf3602caa23b953dd910e420a3100a080')
 
 package() {
-	install -Dm0755 nomad "$pkgdir/usr/bin/nomad"
+  install -Dm0755 nomad "${pkgdir}/usr/bin/nomad"
 }
