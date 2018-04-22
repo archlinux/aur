@@ -2,8 +2,8 @@
 
 pkgname='gr-baz'
 pkgver='fdad72a'
-pkgrel=1
-pkgdesc="gnuradio custom blocks by bastibl"
+pkgrel=2
+pkgdesc="gr-baz is a GNU Radio project that adds new functionality (blocks, GRC definitions, apps, etc)."
 arch=('any')
 url="https://github.com/bastibl/gr-baz"
 license=('unknown')

@@ -1,7 +1,7 @@
 pkgbase = gr-baz
-	pkgdesc = gnuradio custom blocks by bastibl
+	pkgdesc = gr-baz is a GNU Radio project that adds new functionality (blocks, GRC definitions, apps, etc).
 	pkgver = fdad72a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bastibl/gr-baz
 	arch = any
 	license = unknown
