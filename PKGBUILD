@@ -6,7 +6,7 @@
 _pkgname=ldc
 pkgname=("${_pkgname}-git" 'liblphobos-git')
 groups=('dlang' 'dlang-ldc')
-pkgver=v1.7.0.beta1.2.g3a6d93b8
+pkgver=v1.9.0.beta1
 epoch=1
 pkgrel=1
 pkgdesc="A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2"
@@ -79,9 +79,10 @@ build() {
     -DINCLUDE_INSTALL_DIR=/usr/include/dlang/ldc-git
 
     # This is the git version - use static linking by default
-    # -DBUILD_SHARED_LIBS=ON
-    # -DLDC_WITH_LLD=OFF
-    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_SHARED_LIBS=ON
+
+    # https://github.com/ldc-developers/ldc/issues/2661
+    -DLDC_WITH_LLD=OFF
 
     ..
   )
