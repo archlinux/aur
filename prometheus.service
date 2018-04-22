@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=prometheus
 Group=prometheus
-ExecStart=/usr/bin/prometheus --config.file=/etc/prometheus/prometheus.yml  --storage.tsdb.path=/var/lib/prometheus/data
+ExecStart=/usr/bin/prometheus --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus/data
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
