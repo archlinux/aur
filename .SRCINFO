@@ -1,13 +1,13 @@
 pkgbase = dpluzz
 	pkgdesc = Software to retrieve videos from French website pluzz
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1559861&p=1
 	arch = any
 	license = GPL
 	depends = python2
 	depends = pygtk
-	depends = vte
+	depends = vte-legacy
 	depends = mplayer
 	depends = python2-beautifulsoup4
 	depends = uni2ascii
