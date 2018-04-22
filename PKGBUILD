@@ -1,7 +1,7 @@
 # Maintainer: Yifei Wang <chrisww@live.com>
 
 pkgname=shadowsocks-qt5-git
-pkgver=3.0.0.r2.g1bd3494
+pkgver=3.0.0.r3.g8a97897
 pkgrel=1
 pkgdesc="A fast, reliable and cross-platform GUI fronted for Shadowsocks."
 arch=('x86_64' 'i686')
