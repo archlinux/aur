@@ -2,7 +2,7 @@
 # Contributor: Haskellfant <moritz.kiefer@purelyfunctional.org
 
 pkgname=zam-plugins-git
-pkgver=3.10.r3.g68b2969
+pkgver=3.10.r10.g7232969
 pkgrel=1
 pkgdesc="Collection of LV2/LADSPA/VST audio plugins for high quality processing."
 arch=('i686' 'x86_64')
