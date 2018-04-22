@@ -1,8 +1,21 @@
+diff --git a/swaybar/bar.c b/swaybar/bar.c
+index d407db4f..20a0897c 100644
+--- a/swaybar/bar.c
++++ b/swaybar/bar.c
+@@ -164,7 +164,7 @@ static void wl_pointer_axis(void *data, struct wl_pointer *wl_pointer,
+ 
+ 	struct swaybar_workspace *first = NULL;
+ 	struct swaybar_workspace *active = NULL;
+-	struct swaybar_workspace *last;
++	struct swaybar_workspace *last = NULL;
+ 
+ 	struct swaybar_workspace *iter;
+ 	wl_list_for_each(iter, &output->workspaces, link) {
 diff --git a/swaybar/i3bar.c b/swaybar/i3bar.c
-index 923ad755..a0bac04f 100644
+index dced13d2..09da58d2 100644
 --- a/swaybar/i3bar.c
 +++ b/swaybar/i3bar.c
-@@ -142,6 +142,13 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -143,6 +143,13 @@ bool i3bar_handle_readable(struct status_line *status) {
  		} else {
  			switch (*cur) {
  			case '[':
@@ -16,7 +29,7 @@ index 923ad755..a0bac04f 100644
  				++state->depth;
  				if (state->depth >
  						sizeof(state->nodes) / sizeof(state->nodes[0])) {
-@@ -149,7 +156,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -150,7 +157,7 @@ bool i3bar_handle_readable(struct status_line *status) {
  					return false;
  				}
  				state->nodes[state->depth] = JSON_NODE_ARRAY;
@@ -25,7 +38,7 @@ index 923ad755..a0bac04f 100644
  					state->current_node = cur;
  				}
  				break;
-@@ -159,7 +166,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -160,7 +167,7 @@ bool i3bar_handle_readable(struct status_line *status) {
  					return false;
  				}
  				--state->depth;
@@ -35,10 +48,25 @@ index 923ad755..a0bac04f 100644
  					char p = cur[1];
  					cur[1] = '\0';
 diff --git a/swaybar/status_line.c b/swaybar/status_line.c
-index 7f3ec98f..6d734384 100644
+index 8d781ca3..9175d2b6 100644
 --- a/swaybar/status_line.c
 +++ b/swaybar/status_line.c
-@@ -120,6 +120,7 @@ struct status_line *status_line_init(char *cmd) {
+@@ -9,12 +9,14 @@
+ #include "swaybar/config.h"
+ #include "swaybar/status_line.h"
+ #include "readline.h"
++#include "swaybar/event_loop.h"
+ 
+ void status_error(struct status_line *status, const char *text) {
+ 	close(status->read_fd);
+ 	close(status->write_fd);
+ 	status->protocol = PROTOCOL_ERROR;
+ 	status->text = text;
++	remove_event(status->read_fd);
+ }
+ 
+ bool status_handle_readable(struct status_line *status) {
+@@ -118,6 +120,7 @@ struct status_line *status_line_init(char *cmd) {
  	fcntl(status->write_fd, F_SETFL, O_NONBLOCK);
  
  	status->read = fdopen(status->read_fd, "r");
