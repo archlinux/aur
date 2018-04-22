@@ -4,7 +4,7 @@
 _version=4.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -39,8 +39,8 @@ package() {
     for file in "${target}/bin/"*; do
         ln -s ../lib/swift/bin/"`basename "$file"`" "${pkgdir}/usr/bin"
     done
-    ln -s swift/lib/libsourcekitdInProc.so "${pkgdir}/usr/lib"
-    chmod +x swift/lib/libsourcekitdInProc.so
+    ln -sf "../lib/swift/lib/libsourcekitdInProc.so" "${pkgdir}/usr/lib"
+    chmod +x "${target}/lib/libsourcekitdInProc.so"
 
     # Yuck! patching libedit and libcurl SONAMEs
     find "${target}/bin" -type f -exec sed -i 's/libedit\.so\.2/libedit\.so\.0/g' {} \;
