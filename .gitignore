@@ -1,6 +1,7 @@
-pango/
-pkg/
-src/
-*.log
-*.tar
-*.xz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
+!*.diff
