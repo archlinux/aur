@@ -15,23 +15,30 @@ options=(!strip !makeflags staticlibs)
 
 build() {
 	cd Camomile-${pkgver}
-	make all
+	jbuilder build @install
 }
 
 check() {
 	cd Camomile-${pkgver}
-	make test
+	jbuilder runtest
 }
 
 package() {
 	cd Camomile-${pkgver}
 
-	# Initialize OPAM, this should be removed once opam is “removed” from dune
-	export OPAMROOT="${srcdir}"/opam
-	opam init -n
+	mkdir -p "$pkgdir"/usr/lib/ocaml
+	jbuilder install \
+		--destdir="$pkgdir/usr" \
+		--libdir="$pkgdir/usr/lib/ocaml"
 
-	# Work around the install command
-	make OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" install
+	cd "$pkgdir"
+
+	# There's just a readme.
+	rm -Rf usr/doc
+
+	# Remove annotation files and sources.
+	rm -Rf usr/lib/ocaml/$_pkgname/*.cmt*
+	rm -Rf usr/lib/ocaml/$_pkgname/*.ml
 }
 
 md5sums=('9557fd86f13eba45474fc1336f225f32')
