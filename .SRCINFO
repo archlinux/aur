@@ -6,6 +6,7 @@ pkgbase = obs-ndi-bin
 	arch = x86_64
 	license = LGPL2.1
 	depends = libndi3
+	depends = avahi
 	source = https://github.com/Palakis/obs-ndi/releases/download/4.4.0/obs-ndi_4.4.0-1_amd64.deb
 	sha256sums = e2ee5e945fffa29c412c9699e329e90832322f102edc46c75bdbd0dc28bfd329
 
