@@ -16,13 +16,9 @@ depends=(
 	'hicolor-icon-theme'
 	'qt5-webkit'
 	'qt5-x11extras'
-	'qt5-quickcontrols'
+	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
 )
 depends_x86_64=(
-	'hicolor-icon-theme'
-	'qt5-webkit'
-	'qt5-x11extras'
-	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
 # libdepends:
 	'lib32-libxtst'
 	'lib32-libxinerama'
