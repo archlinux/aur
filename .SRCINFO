@@ -1,0 +1,16 @@
+pkgbase = gr-baz
+	pkgdesc = gnuradio custom blocks by bastibl
+	pkgver = fdad72a
+	pkgrel = 1
+	url = https://github.com/bastibl/gr-baz
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	depends = swig
+	provides = gr-baz
+	source = git+https://github.com/balint256/gr-baz
+	sha1sums = SKIP
+
+pkgname = gr-baz
+
