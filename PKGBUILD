@@ -2,7 +2,7 @@
 
 pkgname=caja-root
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Caja with admin rights with polkit"
 arch=('x86_64')
 license=('GPL3')
@@ -12,7 +12,7 @@ depends=('caja')
 source=("cajaroot.desktop"
         "org.mate.cajasu.policy")
 
-sha256sums=('5e3af4c9ba278711a18355a61a71663b393a8327374b603dd4d0e20bf38bad36'
+sha256sums=('3d04e693e73c511cc69e70b84636dbbcb6d3d4bb0db729e5038ea5e02a123a7e'
             '67ee7ce49a6df086e73d428edabe801698efd79e15192ceb08d705d49a108b1f')		
 
 package() {

@@ -3,6 +3,7 @@
 Version=1.0
 Type=Application
 Terminal=false
+Categories=System;
 Icon=system-file-manager
 Icon[fr_FR]=system-file-manager
 Name[fr_FR]=Caja (SuperUtilisateur)
