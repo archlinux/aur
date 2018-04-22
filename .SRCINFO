@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation11
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
 	pkgver = 11.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = vmware-workstation11
 	depends = dkms
 	depends = ncurses5-compat-libs
 	depends = fuse2
-	depends = gksu
 	depends = gtkmm
 	depends = libcanberra
 	depends = hicolor-icon-theme
