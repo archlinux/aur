@@ -1,5 +1,6 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
@@ -14,7 +15,7 @@ source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.ta
 "0001-header-compat.mingw.patch"
 "libjpeg-turbo-1.3.1-libmng-compatibility.patch")
 validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16')
-sha1sums=('e788f6defa58b4393a5e1685c018f3b962971457'
+sha1sums=('87ebf4cab2bb27fcb8e7ccb18ec4eb680e1f2c2d'
           '204f9a62bb7170f54b1a997059fa77b9b02a71ba'
           '35413e30c3ea18839f4a023283a0bd444136839f')
 
@@ -27,9 +28,9 @@ prepare() {
 }
 
 build() {
-	cd libjpeg-turbo-$pkgver
+  cd libjpeg-turbo-$pkgver
 	for _arch in ${_architectures}; do
-    unset LDFLAGS
+	unset LDFLAGS
     mkdir "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-configure \
 			--with-jpeg8
@@ -52,3 +53,5 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
+
+# vim: ts=2 sw=2 et:
