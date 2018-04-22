@@ -2,12 +2,12 @@
 
 pkgname=ravkavonline
 pkgver="1.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Ravkav Online client - unofficial package"
 arch=('x86_64')
 url="https://ravkavonline.co.il/"
 license=('custom' 'MIT')
-depends=(pcsclite)
+depends=('pcsclite' 'scmccid')
 
 source=("https://ravkavonline.co.il/releases/linux/${pkgname}_${pkgver}_amd64.deb" $pkgname.install)
 sha256sums=('88aa9ce366f3c3e4bff8dd90e5f6ca612b25c44c1dac50bd4e7580bfc7eeee4f'
