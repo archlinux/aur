@@ -9,7 +9,6 @@ license=('MIT')
 groups=()
 depends=('go-ipfs' 'xsel')
 makedepends=()
-checkdepends=('go-ipfs' 'xsel')
 source=("https://raw.githubusercontent.com/jbenet/$pkgname/master/$pkgname")
 md5sums=("3c9ad2b068ef5bb2b6b5d22c045530e7")
 package() {
