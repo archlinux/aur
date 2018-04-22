@@ -1,6 +1,6 @@
 pkgbase = waylandpp
 	pkgdesc = Wayland C++ bindings
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/NilsBrause/waylandpp
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = waylandpp
 	makedepends = cmake
 	depends = wayland
 	conflicts = waylandpp-git
-	source = https://github.com/NilsBrause/waylandpp/archive/0.2.2.zip
-	md5sums = bddb1f08e40a80e0db39b06b7ef38753
+	source = https://github.com/NilsBrause/waylandpp/archive/0.2.3.zip
+	md5sums = b6933ee128b5241bcbff652c5116e762
 
 pkgname = waylandpp
 
