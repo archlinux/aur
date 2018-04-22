@@ -1,0 +1,6 @@
+gr-foo/
+pkg/
+*.pkg.tar.xz
+src/
+*.tar.gz
+*.zip
