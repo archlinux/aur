@@ -7,13 +7,13 @@ _pkgname=ldc
 pkgname=("${_pkgname}-git" 'liblphobos-git')
 groups=('dlang' 'dlang-ldc')
 pkgver=v1.9.0.beta1
-epoch=1
+epoch=2
 pkgrel=1
 pkgdesc="A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2"
 arch=('i686' 'x86_64')
 url="https://github.com/ldc-developers/ldc"
 license=('BSD')
-makedepends=('git' 'cmake' 'llvm' 'dmd')
+makedepends=('git' 'cmake' 'llvm' 'dmd' 'bash-completion')
 
 source=("git+https://github.com/ldc-developers/ldc.git"
         "git+https://github.com/ldc-developers/druntime.git"
