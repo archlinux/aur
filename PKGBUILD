@@ -3,14 +3,14 @@
 
 pkgname=nomad-bin
 pkgver=0.8.1
-pkgrel=2
-pkgdesc="A distributed, highly available, datacenter-aware scheduler"
+pkgrel=3
+pkgdesc='A distributed, highly available, datacenter-aware scheduler (incl LXC)'
 arch=('x86_64')
 url="https://nomadproject.io/"
 license=('MPL2')
+depends=('lxc')
 optdepends=('docker: enables docker driver'
             'java-runtime: enables java driver'
-            'lxc: enables lxc driver (experimental)'
             'qemu-headless: enables qemu driver'
             'rkt: enables rkt driver')
 provides=('nomad')
