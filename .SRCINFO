@@ -8,15 +8,13 @@ pkgbase = mingw-w64-dbus
 	license = GPL
 	makedepends = mingw-w64-configure
 	makedepends = docbook-xsl
+	makedepends = autoconf-archive
 	makedepends = git
 	depends = mingw-w64-expat
 	provides = mingw-w64-libdbus
-	conflicts = mingw-w64-libdbus
-	replaces = mingw-w64-libdbus
 	options = !strip
-	options = !buildflags
 	options = staticlibs
-	options = !emptydirs
+	options = !buildflags
 	source = git+https://anongit.freedesktop.org/git/dbus/dbus#commit=a723baa2bc7e91fc9b1926cda1ce53e9301de4d8
 	sha256sums = SKIP
 
