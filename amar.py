@@ -21,7 +21,7 @@ else:
     import tkMessageBox as messagebox
 
 if os.getuid() != 0:
-    os.system ("gksudo python /usr/bin/amar.py")
+    os.system ("sudo -H python /usr/bin/amar.py")
     #print("Utiliser le script en tant qu'administrateur, lancer le avec 'gksudo -s python amar.py'")
     sys.exit(1)
 
