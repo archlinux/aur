@@ -7,7 +7,7 @@
 
 pkgname=aircrack-ng-git
 _pkgname=aircrack-ng
-pkgver=1.2.rc5.r13.gce4e9c3c
+pkgver=20180422.237e361c
 pkgrel=1
 pkgdesc='WiFi security auditing tools suite'
 url='https://aircrack-ng.org/'
@@ -25,7 +25,7 @@ replaces=('aircrack-ng-svn')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
