@@ -1,8 +1,8 @@
 pkgbase = hunspell-sv
 	pkgdesc = Swedish dictionaries for Hunspell
 	pkgver = 20160510
-	pkgrel = 2
-	url = http://www.dsso.se/
+	pkgrel = 3
+	url = https://sfol.se/
 	arch = any
 	license = LGPL3
 	depends = hunspell
