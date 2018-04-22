@@ -1,11 +1,10 @@
 pkgbase = bgsync
-	pkgdesc = Synchronization Tool
-	pkgver = 1.3.1
-	pkgrel = 3
-	url = https://bg-software.net/dls/bgsync_1.3.1-3_Arch.zip
+	pkgdesc = Backup and Synchronization Tool
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://bgsoftware.de/dls/bgsync/bgsync_1.4-1_Arch.zip
 	arch = any
 	license = None
 	depends = mono
 
 pkgname = bgsync
-
