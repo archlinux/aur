@@ -35,6 +35,7 @@ pkgbase = liquidsoap
 	depends = libmad
 	depends = libxpm
 	depends = ocaml-ffmpeg
+	depends = ocaml-ogg
 	depends = openssl
 	depends = portaudio
 	depends = sdl_image
