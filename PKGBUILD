@@ -2,8 +2,8 @@
 
 appname=Pext
 pkgname=pext-git
-pkgver=0.11.1.r16.81d57a2
-pkgrel=3
+pkgver=0.14
+pkgrel=1
 pkgdesc="Python-based extendable tool"
 arch=('any')
 url="https://pext.hackerchick.me/"
@@ -15,8 +15,8 @@ optdepends=('pass: password manager support'
             'python-opengl: required for correct rendering on some GPUs')
 provides=('pext')
 conflicts=('pext')
-source=("git://github.com/Pext/Pext")
-md5sums=("SKIP")
+source=('git://github.com/Pext/Pext')
+md5sums=('SKIP')
 
 pkgver() {
   cd $appname
@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
   sed "s/'pyqt5'//g" -i $srcdir/$appname/setup.py
+  sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i $srcdir/$appname/pext/constants.py
 }
 
 package() {
