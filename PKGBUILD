@@ -2,51 +2,48 @@
 
 pkgname=liquidsoap
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
-depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-camomile' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
+depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-ffmpeg' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
 makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
-source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.gz
+source=("$pkgname-$pkgver-full::git+https://github.com/savonet/liquidsoap-full"
 	PACKAGES
 	$pkgname.service
 	$pkgname.tmpfilesd
-	ocaml-vorbis.patch
 )
-	
+
 install=$pkgname.install
 options=(!makeflags)
 conflicts=('liquidsoap-git' 'liquidsoap-full')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver-full
-  # Patches
-  patch -Np1 -i ../ocaml-vorbis.patch 
-
-  cp $srcdir/PACKAGES PACKAGES
+	cd $srcdir/$pkgname-$pkgver-full
+	./bootstrap
+	git submodule update --remote --merge
+	cp $srcdir/PACKAGES PACKAGES
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver-full
+	cd $srcdir/$pkgname-$pkgver-full
 
-  ./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc --without-user --without-group
-  make all && make doc
+	./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc --without-user --without-group --disable-camomile --disable-oss
+	make all && make doc
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver-full 
-  make DESTDIR="$pkgdir/" datadir="$pkgdir/usr/share/" mandir="$pkgdir/usr/share/man/"  localstatedir="$pkgdir/var"  bindir="$pkgdir/usr/bin/"  libdir="$pkgdir/usr/lib/" sysconfdir="$pkgdir/etc/" install
+	cd $srcdir/$pkgname-$pkgver-full
+	make DESTDIR="$pkgdir/" datadir="$pkgdir/usr/share/" mandir="$pkgdir/usr/share/man/"  localstatedir="$pkgdir/var"  bindir="$pkgdir/usr/bin/"  libdir="$pkgdir/usr/lib/" sysconfdir="$pkgdir/etc/" install
 
-# Install systemd unit
-  install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/liquidsoap@.service"
-# Install the tmpfilesd file
-  install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
+	# Install systemd unit
+	install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/liquidsoap@.service"
+	# Install the tmpfilesd file
+	install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
 }
 
-md5sums=('9b24051b3662fb9d6cff8fcf22baf21c'
-         'f2e0f1966f3258f737300947e729edb6'
-         '762d6607ff0889e34b8c874970b38bc9'
-         'f9106e5c42cabc21c4c8464d9b1ad63e'
-         '970f0668541f5f67e4ddfd7cb62cad4e')
+md5sums=('SKIP'
+	'a69d72938d424cdeb88f73a32d6a78cb'
+	'762d6607ff0889e34b8c874970b38bc9'
+'f9106e5c42cabc21c4c8464d9b1ad63e')

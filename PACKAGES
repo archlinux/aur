@@ -25,7 +25,7 @@ ocaml-ao
 ocaml-portaudio
 
 # ALSA is only for LINUX, and is sometimes not working.
-ocaml-alsa
+#ocaml-alsa
 
 # PulseAudio is a cross-plateform audio sound server. It is intended to
 # be a single replacement for sound support under linux, windows or OSX.
@@ -60,7 +60,7 @@ ocaml-lame
 #ocaml-aacplus
 
 # OGG is for ogg/vorbis and ogg/theora encoding and decoding
-ocaml-ogg
+#ocaml-ogg
 
 # VORBIS is for ogg/vorbis encoding and decoding.
 # you need ocaml-ogg to enable ocaml-vorbis.
@@ -121,7 +121,7 @@ ocaml-gavl
 
 # FFMPEG is currently only used to convert from
 # and to many formats.
-ocaml-ffmpeg
+#ocaml-ffmpeg
 
 # Frei0r is a minimalistic plugin API for video sources and filters.
 #ocaml-frei0r
