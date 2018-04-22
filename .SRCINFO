@@ -1,0 +1,16 @@
+pkgbase = e
+	pkgdesc = A modern line editor with JavaScript capabilities
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/LaPingvino/e
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/LaPingvino/e/archive/v0.1.zip
+	sha256sums = 048e94efc17c2f4ae5d32fb0ba21b0d2e04f5034bc43201fc6d4f1efb478fd89
+
+pkgname = e
+
