@@ -1,7 +1,7 @@
 _npmname=glslify
-_npmver=6.1.0
+_npmver=6.1.1
 pkgname=nodejs-glslify # All lowercase
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="A node.js-style module system for GLSL!"
 arch=(any)
@@ -10,7 +10,7 @@ license=()
 depends=('nodejs' 'npm' )
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
-sha256sums=('7df65e34b10ea29a8a0b377e744c177099d7f3d5e5520a2233d6b1723b5f6f2e')
+sha256sums=('7f187d43b10fd20a5771f7654c9d65876c4cf81df9a9e2b6bf8f7cc8b72be51c')
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
