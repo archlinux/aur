@@ -8,7 +8,7 @@ source=("https://bgsoftware.de/dls/bgsync/bgsync_1.4-1_Arch.zip")
 depends=('mono')
 makedepends=('unzip')
 
-sha256sums=('245df3ae4ef2163c9a4a43a28a67d8b71ef2c26d1d37db9c47bae492996f4a51')
+sha256sums=('c2265145533bfce03762d375294c5321485b5c8dea5d594a139cf9e849512e32')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
