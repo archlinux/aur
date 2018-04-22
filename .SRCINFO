@@ -1,0 +1,15 @@
+pkgbase = ipfs-screencap
+	pkgdesc = Capture screenshots, publish them to IPFS, and copy the link to the clipboard. http://ipfs.io
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jbenet/ipfs-screencap
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = go-ipfs
+	depends = xsel
+	source = ipfs-screencap::git+https://github.com/jbenet/ipfs-screencap
+	md5sums = SKIP
+
+pkgname = ipfs-screencap
+
