@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/share/zoho-mail-desktop/zoho-mail-desktop "$@"
