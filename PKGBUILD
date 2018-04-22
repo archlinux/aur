@@ -7,8 +7,8 @@ pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
-depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-ffmpeg' 'ocaml-ogg' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
-makedepends=('dssi' 'frei0r-plugins' 'git' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
+depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'openssl' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
+makedepends=('dssi' 'frei0r-plugins' 'git' 'ladspa' 'libxml-perl' 'ocaml-camomile' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
 source=("$pkgname-$pkgver-full::git+https://github.com/savonet/liquidsoap-full"
 	PACKAGES
 	$pkgname.service
@@ -29,8 +29,8 @@ prepare() {
 build() {
 	cd $srcdir/$pkgname-$pkgver-full
 
-	./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc --without-user --without-group --disable-camomile --disable-oss
-	make all && make doc
+	./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc --without-user --without-group --disable-oss --disable-portaudio
+	SED="/usr/bin/sed" make all && make doc
 }
 
 package() {
@@ -44,6 +44,6 @@ package() {
 }
 
 md5sums=('SKIP'
-	'a69d72938d424cdeb88f73a32d6a78cb'
-	'762d6607ff0889e34b8c874970b38bc9'
-'f9106e5c42cabc21c4c8464d9b1ad63e')
+         '039d14f134c5606cec163fcc1a7c7dc6'
+         '762d6607ff0889e34b8c874970b38bc9'
+         'f9106e5c42cabc21c4c8464d9b1ad63e')
