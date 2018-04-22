@@ -1,22 +1,21 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=sdlpop
-pkgver=1.17
-pkgrel=4
+pkgver=1.18.1
+pkgrel=1
 pkgdesc="An open-source port of Prince of Persia"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/NagyD/SDLPoP"
 depends=('sdl2_image' 'sdl2_mixer')
-makedepends=('gendesk')
 source=("sdlpop-$pkgver.tar.gz::https://github.com/NagyD/SDLPoP/archive/v$pkgver.tar.gz"
         "sdlpop.sh")
-sha256sums=('aa4b254ab80b889a6db491b41c4f83467124d932cc0836e5979fa73b6c49a94d'
-            '08275c83ec0f19484b90b88a7a31cca2f4503d1cba11a02f1cf97ac4fec67475')
+sha256sums=('8032c47fad4b73021d636ead510bbc1ab5106cff77103e331ad0f32a49a13946'
+            'cb7b7923dcfb68520c7e738e6e8bd503f56f2775b28022285397284c0c428991')
 
 prepare() {
-  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc" --name=SDLPoP \
-    --exec=prince --categories="Application;Game;ArcadeGame"
+  cd SDLPoP-$pkgver/src
+  sed -e 's|$ROOT|/opt/sdlpop|' SDLPoP.desktop.template > SDLPoP.desktop
 }
 
 build() {
@@ -27,10 +26,10 @@ build() {
 
 package() {
   cd SDLPoP-$pkgver
-  install -d "$pkgdir"/usr/{lib/sdlpop,share/{sdlpop,pixmaps}}
-  install -m755 prince "$pkgdir"/usr/lib/sdlpop
-  cp -r data doc mods SDLPoP.ini "$pkgdir"/usr/share/sdlpop
+  # world-writable for save/load games, config, etc.
+  install -dm757 "$pkgdir"/opt/sdlpop
+  install -m755 prince "$pkgdir"/opt/sdlpop
+  cp -r data doc mods SDLPoP.ini "$pkgdir"/opt/sdlpop
   install -Dm755 ../sdlpop.sh "$pkgdir"/usr/bin/prince
-  install -Dm644 ../sdlpop.desktop "$pkgdir"/usr/share/applications/sdlpop.desktop
-  ln -s /usr/share/sdlpop/data/icon.png  "$pkgdir"/usr/share/pixmaps/sdlpop.png
+  install -Dm644 src/SDLPoP.desktop "$pkgdir"/usr/share/applications/sdlpop.desktop
 }
