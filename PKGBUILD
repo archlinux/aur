@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd ${srcdir}/${_pkgname}
-    wget http://lczero.org/get_network?sha=03b4813fe064064bd106e9a2c15ebc606503efc5ed717ba6255372206e48ddfe -O weights_$pkgrel.txt
+    wget http://lczero.org/get_network?sha=cd9dfd24fcd4b4bde04d135796725d4c9a98fb8bb4df059de6e6b737a3c9cf05 -O weights_$pkgrel.txt
     echo '#!/bin/bash' > lczero
     echo "/usr/bin/lczero-bin -w /usr/share/weights_$pkgrel.txt" >> lczero
 }
