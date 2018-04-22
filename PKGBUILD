@@ -1,46 +1,39 @@
 # Maintainer: Joakim Nylen (jnylen) <me@jnylen.nu>
 
 pkgname=jotta-cli
-pkgver=0.4.4914
+pkgver=0.4.4986
 pkgrel=3
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
-makedepends=()
 arch=('x86_64' 'i686')
 license=('custom: (C) Jotta AS 2018')
 url="http://docs.jottacloud.com/jottacloud-command-line-tool"
-options=('!strip' '!upx')
 
-provides=('jotta-cli')
-conflicts=()
-
-sha256sums_x86_64=('3882cea8ba0af218e4fc959effa02bf8eb58e9c88ceadd2f4a2aca549a82b6bb')
-sha256sums_i686=('4ca3271901c734c9994e7726b81aa11a03ceabcb1e92b534ac20429974ba6d92')
-
+source=("jotta-cli.sysusers"
+        "jotta-cli.tmpfiles")
 source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_amd64.deb")
-
 source_i686=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_i386.deb")
-
-depends=('systemd' 'glibc')
-optdepends=()
+sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
+            '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
+sha256sums_x86_64=('e6497d8425d8ababbc0ccc50edc617e5a44a19a05f9bee3ce2672437c7871222')
+sha256sums_i686=('9a5e1558ecb569bd88e34e622e50809ea3dd75950525af82cea4c737ebf0a247')
 
 package() {
     cd ${srcdir}
-
     tar -xvf data.tar.gz -C ${pkgdir} --exclude='./control'
 
-    mv "${pkgdir}"/etc "${pkgdir}"/usr/etc
+    install -Dm644 "${pkgdir}/usr/share/jottad/systemd/default/files/etc/systemd/system/jottad.service" \
+        "${pkgdir}/usr/lib/systemd/system/jottad.service"
+    install -Dm644 "${pkgdir}/usr/share/jottad/systemd/default/files/etc/default/jottad" \
+        "${pkgdir}/etc/default/jottad"
+    rm -rf "${pkgdir}/usr/share/jottad"
 
-    chmod -R go-w "${pkgdir}"/usr
-}
+    install -Dm644 "${srcdir}"/$pkgname.sysusers \
+        "${pkgdir}"/usr/lib/sysusers.d/$pkgname.conf
+    install -Dm644 "${srcdir}"/$pkgname.tmpfiles \
+        "${pkgdir}"/usr/lib/tmpfiles.d/$pkgname.conf
 
-post_install() {
-    echo "Enabling systemd services"
-    systemctl enable jottad.service
-    echo "Starting systemd services"
-    systemctl start jottad.service
-}
-
-post_upgrade() {
-    echo "Reloading systemd"
-    systemctl daemon-reload
+    # chmod fixes
+    chmod 755 "$pkgdir/usr/bin" 
+    chmod 755 "$pkgdir/etc/jottad"
+    chmod 644 "$pkgdir/etc/jottad/config.ini"
 }
