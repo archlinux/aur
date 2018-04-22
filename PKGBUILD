@@ -1,8 +1,9 @@
 # Maintainer: Xinkai Chen <xinkai.chen@qq.com>
 
 _pkgname="apw"
+_pkgver="0.1.0"
 pkgname="${_pkgname}-git"
-pkgver=20170506.7c36821
+pkgver=20170506.29140bf
 pkgrel=1
 epoch=
 pkgdesc="Watch repo changes"
@@ -16,14 +17,16 @@ md5sums=('SKIP')
 install="apw.install"
 
 pkgver() {
-        cd "${srcdir}/${_pkgname}"
-        git log -1 --format='%cd.%h' --date=short | tr -d -
+    cd "${srcdir}/${_pkgname}"
+    git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 package() {
-    cd $srcdir/$_pkgname
-    npm install -g --user root --prefix "$pkgdir"/usr
-    chmod -R go-w "$pkgdir"/usr 
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p $_npmdir
+    npm pack $srcdir/$_pkgname
+    npm install -g --production --prefix "$pkgdir/usr" $srcdir/"$_pkgname-$_pkgver".tgz
+    chmod -R go-w "$pkgdir/usr"
 
     mkdir -p $pkgdir/usr/lib/systemd/user
     install $srcdir/${_pkgname}/src/systemd/apw.{service,timer} $pkgdir/usr/lib/systemd/user
