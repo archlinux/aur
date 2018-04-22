@@ -2,18 +2,18 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=4.4.0.rc2.r9.gae8fd3733
-pkgrel=2
+pkgver=4.9.0.r38.g853445dc2
+pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mattermost.com"
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng12' 'npm' 'yarn' 'mozjpeg')
-# mozjpeg isn't needed on amd64, but the version brought with node_modules does
-# not run on an architecture other than amd64. The one provided with Arch Linux
-# does. Including it even for amd64 prevents us to have a bunch of architecture
-# specific makedepends arrays.
+makedepends=('git' 'go' 'libpng12' 'npm')
+# Experiencing issues with gifsicle. Using system tool instead.
+if [ "$CARCH" != 'x86_64' ]; then
+    makedepends+=('gifsicle')
+fi
 provides=('mattermost')
 conflicts=('mattermost')
 backup=("etc/webapps/${_pkgname}/config.json")
@@ -78,12 +78,6 @@ prepare() {
     sed -r -i Makefile \
         -e 's/^clean: stop-docker/clean:/'
 
-    # Enforce build hash to Arch Linux (Enterprise hash is already set to
-    # none), instead of the official git hash value.
-    sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = Arch Linux \(${CARCH}\)/" \
-        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
-
     # The configuration isn't available at this time yet, modify the default.
     sed -r -i build/release.mk \
         -e 's/\$\(DIST_PATH\)\/config\/config.json/\$\(DIST_PATH\)\/config\/default.json/'
@@ -94,15 +88,15 @@ prepare() {
     case "${CARCH}" in
         i686)
             sed -r -i build/release.mk \
-                -e "5,6s/amd64/386/"
+                -e "5,7s/amd64/386/"
             ;;
         arm*64*|*arch*64*)
             sed -r -i build/release.mk \
-                -e "5,6s/amd64/arm64/"
+                -e "5,7s/amd64/arm64/"
             ;;
         arm*)
             sed -r -i build/release.mk \
-                -e "5,6s/amd64/arm/"
+                -e "5,7s/amd64/arm/"
             ;;
     esac
 
@@ -110,6 +104,25 @@ prepare() {
     # with that statement to the end of file (we do not care of the additional
     # file copy, nor the tar compression defined below the file).
     sed '/# ----- PLATFORM SPECIFIC -----/,//d' -i ./build/release.mk
+
+    # Enforce build hash to Arch Linux (Enterprise hash is already set to
+    # none), instead of the official git hash value.
+    sed -r -i Makefile \
+        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
+        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
+    cd "${srcdir}/${_pkgname}-webapp"
+    sed -r -i webpack.config.js \
+        -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
+
+    # Link against system gifsicle
+    if [ "$CARCH" != 'x86_64' ]; then
+        gifsicleNpm="${srcdir}/${_pkgname}-webapp/node_modules/gifsicle/vendor/gifsicle"
+        gifsicleNpm="${gifsicleNpm//\//\\/}"
+        gifsicleSystem="$(which gifsicle)"
+        gifsicleSystem="${gifsicleSystem//\//\\/}"
+        sed -r -i Makefile \
+            -e "s/(\t*)npm install(.*)/\0\n\1rm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
+    fi
 }
 
 build() {
@@ -138,6 +151,7 @@ package() {
     cp -a dist/${_pkgname} "${pkgdir}"/usr/share/webapps/
 
     cd "${pkgdir}"/usr/share/webapps/${_pkgname}
+    install -dm755 client/plugins
 
     rm -rf logs
     ln -s /var/log/${_pkgname} logs
