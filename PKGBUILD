@@ -12,29 +12,26 @@ provides=('teamviewer')
 conflicts=('teamviewer-beta')
 # /opt/teamviewer/tv_bin/script/teamviewer_setup checklibs can check deps for each TV component:
 # TV_DMN, TV_DESK, TV_GUI
+depends=(
+	'hicolor-icon-theme'
+	'qt5-webkit'
+	'qt5-x11extras'
+	'qt5-quickcontrols'
+)
 depends_x86_64=(
 	'hicolor-icon-theme'
 	'qt5-webkit'
 	'qt5-x11extras'
 	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
+# libdepends:
 	'lib32-libxtst'
 	'lib32-libxinerama'
 	'lib32-libxrandr'
 	'lib32-libxdamage'
 	'lib32-fontconfig'
 	'lib32-libsm')
-depends_i686=(
-	'hicolor-icon-theme'
-	'qt5-webkit'
-	'qt5-x11extras'
-	'qt5-quickcontrols'
-	'libxtst'
-	'libxinerama'
-	'libxrandr'
-	'libxdamage'
-	'fontconfig'
-	'libsm')
-depends_armv7h=(${depends_i686[*]})
+#depends_i686=()
+#depends_armv7h=()
 install=teamviewer.install
 source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
