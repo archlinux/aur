@@ -1,31 +1,30 @@
+# Maintainer: George Tokmaji <tokmajigeorge@gmail.com>
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antony Male <antony dot male at gmail dot com>
 
-pkgname=pacbuilder-svn
-epoch=1
-pkgver=r138
+pkgname=pacbuilder-git
+pkgver=r135.6597966
 pkgrel=1
 pkgdesc="A tool to massively recompile archlinux packages from sources"
 arch=('any')
-url="http://code.google.com/p/pacbuilder/"
+url="https://github.com/arfoll/pacbuilder"
 license=('GPL3')
+provides=('pacbuilder' 'pacbuilder-svn')
+conflicts=('pacbuilder-svn')
+replaces=('pacbuilder-svn')
 depends=('rsync' 'wget')
-makedepends=('subversion')
+makedepends=('git')
 backup=('etc/pacbuilder.conf')
-
-source=("pacbuilder::svn+http://pacbuilder.googlecode.com/svn/trunk")
+source=("${pkgname}::git+https://github.com/arfoll/pacbuilder")
 md5sums=('SKIP')
 
 pkgver() {
-	cd pacbuilder
-
-	local ver="$(svnversion)"
-	printf "r%s" "${ver//[[:alpha:]]}"
+	cd "$srcdir/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd pacbuilder
-
+	cd "$srcdir/${pkgname}"
 	make DESTDIR="$pkgdir" install
 }

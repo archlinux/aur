@@ -1,17 +1,20 @@
-pkgbase = pacbuilder-svn
+pkgbase = pacbuilder-git
 	pkgdesc = A tool to massively recompile archlinux packages from sources
-	pkgver = r138
+	pkgver = r135.6597966
 	pkgrel = 1
-	epoch = 1
-	url = http://code.google.com/p/pacbuilder/
+	url = https://github.com/arfoll/pacbuilder
 	arch = any
 	license = GPL3
-	makedepends = subversion
+	makedepends = git
 	depends = rsync
 	depends = wget
+	provides = pacbuilder
+	provides = pacbuilder-svn
+	conflicts = pacbuilder-svn
+	replaces = pacbuilder-svn
 	backup = etc/pacbuilder.conf
-	source = pacbuilder::svn+http://pacbuilder.googlecode.com/svn/trunk
+	source = pacbuilder-git::git+https://github.com/arfoll/pacbuilder
 	md5sums = SKIP
 
-pkgname = pacbuilder-svn
+pkgname = pacbuilder-git
 
