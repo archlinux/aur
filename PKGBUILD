@@ -3,7 +3,7 @@
 
 pkgname=ostorybook
 _pkgname=oStorybook
-pkgver=5.03.00
+pkgver=5.04.00
 pkgrel=1
 pkgdesc="Open Source Novel Writing Software for Novelists, Authors and Creative Writers"
 arch=(any)
@@ -11,7 +11,7 @@ url="http://ostorybook.tuxfamily.org"
 license=(GPL)
 depends=(java-runtime-headless=8)
 source=("http://download.tuxfamily.org/ostorybook/${pkgver}/oStorybook-${pkgver}-linux.bin")
-sha256sums=('2040f1cbd6cc19b5a1b87210516695ed7a405269fa538b1309e266a9c3b736f2')
+sha256sums=('982635a670a04e8c8de95e1cf2b8ec5907b5cd0af6d47a8b5f3f03210a63b2a1')
 options=('!strip')
 
 package()
