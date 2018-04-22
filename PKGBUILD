@@ -3,7 +3,7 @@
 
 pkgname=progit2-git
 pkgver=2.1.51.r0.g4a3dec9
-pkgrel=1
+pkgrel=2
 pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
 
@@ -53,11 +53,6 @@ prepare() {
     # his book. Even if this is quite heavy, this is the cleaner approach we
     # have.
     bundle install --path .bundle
-
-    # Override the directory 
-    export GEM_HOME=".bundle"
-
-    bundle install
 }
 
 build() {
