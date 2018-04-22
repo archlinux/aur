@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=progit2-git
-pkgver=2.0.0.r689.g5026c45
-pkgrel=3
+pkgver=2.1.51.r0.g4a3dec9
+pkgrel=1
 pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
 
@@ -79,7 +79,6 @@ package() {
     cp "$srcdir/${pkgname%-git}/progit-kf8.epub" "$pkgdir/usr/share/doc/${pkgname%-git}/"
     cp "$srcdir/${pkgname%-git}/progit.mobi" "$pkgdir/usr/share/doc/${pkgname%-git}/"
     cp "$srcdir/${pkgname%-git}/progit.pdf" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-    cp "$srcdir/${pkgname%-git}/progit.pdfmarks" "$pkgdir/usr/share/doc/${pkgname%-git}/"
     cp "$srcdir/${pkgname%-git}/progit.html" "$pkgdir/usr/share/doc/${pkgname%-git}/"
     cp -a "$srcdir/${pkgname%-git}/images" "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
