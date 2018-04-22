@@ -1,0 +1,16 @@
+pkgbase = ttf-kids
+	pkgdesc = TrueType Font Kids
+	pkgver = 001.003
+	pkgrel = 1
+	url = https://fonts2u.com/kids.font
+	arch = any
+	license = free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://ttfonts.net/sfonts/2/21594_Kids.ttf
+	md5sums = d51d8a2663404cc525e9ace46915a88a
+
+pkgname = ttf-kids
+
