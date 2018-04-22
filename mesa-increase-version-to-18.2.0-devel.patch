@@ -1,0 +1,6 @@
+diff -ura mesa/VERSION mesa-new/VERSION
+--- mesa/VERSION	2018-04-22 15:16:14.766313431 +0200
++++ mesa-new/VERSION	2018-04-22 15:17:12.349693390 +0200
+@@ -1 +1 @@
+-18.1.0-devel
++18.2.0-devel
