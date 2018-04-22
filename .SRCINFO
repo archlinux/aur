@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.16.2
+	pkgver = 4.16.3
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,26 +10,30 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.16.2-xanmod3.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.16.3-xanmod5.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=6e36adeb5f9004d7a2c6d6251d24be71b05bb7fa
-	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=6e36adeb5f9004d7a2c6d6251d24be71b05bb7fa
-	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Partially-revert-swiotlb-remove-various-exports.patch?h=packages/linux&id=6e36adeb5f9004d7a2c6d6251d24be71b05bb7fa
-	source = 0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch?h=packages/linux&id=6e36adeb5f9004d7a2c6d6251d24be71b05bb7fa
-	sha256sums = 1ffa16c4d1a336cac577aec8c0fcf64506da0ec7a36c952c455afc3715120571
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Partially-revert-swiotlb-remove-various-exports.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	source = 0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	source = 0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	source = 0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	sha256sums = fbad18e1a7c65e1729f6afd45c25334ce99083e5236a794db6a1aca356ebf1ff
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
-	sha256sums = b172d6cabd8f1980f5ef4b5ad7a96a34e05d99fb02ec0565a80f96719f131a04
-	sha256sums = 558c2b0fa7ad1761cb1dd89d8b860436f50d515c295949c08de9288100e034f6
-	sha256sums = bc8a87cec67ecb8713d96167981c38d7ec4d93e1d2fdcb02193d704c441cff46
-	sha256sums = c0fa1a6141bf64111ab9d0af4fc63d95b03b65baa2682aee1cd794d9311062c2
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=6e36adeb5f9004d7a2c6d6251d24be71b05bb7fa
-	sha256sums_x86_64 = d8f725b047214d9d6841496bb9aafa692005823c497ad9b6e47a615c7f369ba5
+	sha256sums = a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871
+	sha256sums = 545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d
+	sha256sums = bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5
+	sha256sums = d647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836
+	sha256sums = 6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e
+	sha256sums = d49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=f21ab3a32edf6bbc00f2476540013a1939b6c7aa
+	sha256sums_x86_64 = 51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
