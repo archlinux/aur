@@ -1,0 +1,17 @@
+pkgbase = ipfs-paste
+	pkgdesc = paste stdin and clipboard to ipfs http://ipfs.io
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jbenet/ipfs-paste
+	arch = x86_64
+	arch = arm
+	license = MIT
+	checkdepends = go-ipfs
+	checkdepends = xsel
+	depends = go-ipfs
+	depends = xsel
+	source = https://raw.githubusercontent.com/jbenet/ipfs-paste/master/ipfs-paste
+	md5sums = 3c9ad2b068ef5bb2b6b5d22c045530e7
+
+pkgname = ipfs-paste
+
