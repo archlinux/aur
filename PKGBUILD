@@ -2,7 +2,7 @@
 
 pkgname=yadshot
 pkgver=0.2.00
-pkgrel=1
+pkgrel=2
 pkgdesc="yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
 arch=('x86_64')
 url='http://www.simonizor.net'
@@ -21,5 +21,5 @@ prepare() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR="$pkgdir/" install
-	echo "This package requires ffmpeg or imagemagick as a screenshot backend, please install something providing one or the other."
+	echo "$(tput setaf 2)This package requires ffmpeg or imagemagick as a screenshot backend, please install something providing one or the other.$(tput sgr0)"
 }
