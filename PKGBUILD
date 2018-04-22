@@ -11,25 +11,28 @@ arch=('i686' 'x86_64')
 url="https://cmus.github.io/"
 depends=('ncurses')
 makedepends=('git')
-optdepends=('libpulse: PulseAudio'
-		'alsa-lib: ALSA'
-		'OSS: OSS'
-		'libroar: RoarAudio'
-		'libao: libao'
+optdepends=('alsa-lib: ALSA output plugin support'
 		'aRts: aRts'
-		'libcdio: cdio plugin'
-		'libcddb: cdio plugin'
-		'libcue: .cue'
-		'FLAC: .flac'
-		'libvorbis: .ogg'
-		'libmpcded: .mpc, .mpp, .mp+'
-		'wavpack: .wv'
-		'libmad: .mp3'
+		'faad2: .aac, .mp4, .m4a, .m4b'
+		'ffmpeg: .ffmpeg, .wma, .ape, .mka, .tta, .shn'
+		'flac: .flac'
 		'libavcodec: .wma, .ape, .mka, .tta, .shn'
-		'FAAD: .aac, .mp4, .m4a, .m4b'
-		'mp4v2: .mp4, .m4a, .m4b'
+		'libao: for AO output plugin support'
+		'libcddb: .cdio'
+		'libcdio: .cdio'
+		'libcdio-paranoia: .cdio'
+		'libcue: .cue'		
+		'libmad: .mp3'
+		'libmikmod: .mod, .s3m'
 		'libmodplug: .mod, .s3m'
-		'libmikmod: .mod, .s3m')
+		'libmp4v2: .mp4, .m4a, .m4b'
+		'libmpcdec: .mpc, .mpp, .mp+'
+		'libpulse: for Pulse Audio output plugin support'
+		'libraor: RoarAudio'
+		'libvorbis: .ogg'
+		'opusfile: .opus'
+		'oss: OSS'
+		'wavpack: .wv')
 conflicts=('cmus')
 provides=('cmus')
 license=('GPL')
