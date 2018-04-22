@@ -32,7 +32,6 @@ build() {
 	ln -sf "${srcdir}/${pkgname}-${pkgver}" "${_importPath}"
 	cd "${_importPath}"
 
-	pwd
 	make
 }
 
