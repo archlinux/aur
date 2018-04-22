@@ -2,13 +2,13 @@
 
 pkgname=edk2-ovmf-macboot-git
 pkgver=r22749.471f6d19d7
-pkgrel=1
+pkgrel=2
 pkgdesc="edk2 UEFI firmware with macOS compatibility fixes (gsomlo's miscopt branch)"
 arch=('any')
 url="https://www.contrib.andrew.cmu.edu/~somlo/OSXKVM/"
 license=('BSD')
 depends=()
-makedepends=('git' 'nasm' 'iasl')
+makedepends=('git' 'nasm' 'iasl' 'python')
 optdepends=()
 source=("git+https://github.com/gsomlo/edk2#branch=gls-miscopt")
 sha256sums=('SKIP')
