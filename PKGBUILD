@@ -11,8 +11,8 @@
 pkgname=gnucash-git
 _pkgname=gnucash
 __pkgname=Gnucash
-pkgver=2.7.4
-#.r4.gfb7426b60
+pkgver=3.0
+#.r84.g451bbd53d
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application - GIT version"
 arch=('i686' 'x86_64')
@@ -48,6 +48,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 		-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+		-DHAVE_GWEN_GTK3=ON \
 		-DWITH_OFX=ON \
 		-DWITH_AQBANKING=ON \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
