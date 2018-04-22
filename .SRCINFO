@@ -1,8 +1,8 @@
 pkgbase = ldc-git
 	pkgdesc = A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2
 	pkgver = v1.9.0.beta1
-	pkgrel = 1
-	epoch = 2
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/ldc-developers/ldc
 	arch = i686
 	arch = x86_64
