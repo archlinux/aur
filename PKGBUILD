@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=archipelago
-pkgver=1.0.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="
 An open-source terminal emulator built on web technology"
@@ -10,7 +10,7 @@ url="https://github.com/npezza93/archipelago"
 license=("MIT")
 depends=('nodejs')
 source=("$url/releases/download/v$pkgver/Archipelago_${pkgver}_amd64.deb")
-sha512sums=('00ade8ff0af5859ea4ba65b293fd5e0f690b2f377801a778989356b9c37abf616d1d9b2faad58f85729bdc8959c52c9ec061e845f606de5984566d5a2a441b0f')
+sha512sums=('3fac44cbfb706ba7e419d47586d23accca47dee4bd1153ed2820d9861ed8d921c6741d588662de810d2a7702d88a12989fb7802184bbc866175d1434d45f492c')
  
 prepare() {
   cd $srcdir
