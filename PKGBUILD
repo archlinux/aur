@@ -2,14 +2,15 @@
 relpkgname=obs-ndi
 pkgname=${relpkgname}-bin
 pkgver=4.4.0
-pkgrel=1
+_pkgbuild=1
+pkgrel=2
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
 license=('LGPL2.1')
 url="https://github.com/Palakis/obs-ndi"
 depends=('libndi3' 'avahi')
 
-source=("${url}/releases/download/${pkgver}/${relpkgname}_${pkgver}-${pkgrel}_amd64.deb")
+source=("${url}/releases/download/${pkgver}/${relpkgname}_${pkgver}-${_pkgbuild}_amd64.deb")
 sha256sums=('e2ee5e945fffa29c412c9699e329e90832322f102edc46c75bdbd0dc28bfd329')
 
 package() {
