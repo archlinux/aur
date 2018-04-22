@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=progit2
-pkgver=2.0.0.1084
+pkgver=2.1.51
 pkgrel=1
 pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
@@ -11,45 +11,59 @@ url="https://git-scm.com/book/en/v2"
 license=('CCPL:by-nc-sa')
 
 makedepends=(
-  'unzip'
+  'ruby-bundler'
+  'ruby'
+  'python2'
 )
+provides=('progit2')
+conflicts=('progit2')
 
 install=${pkgname}.install
 
 source=(
-    "https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.${pkgver##*.}.epub"
-    "https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.${pkgver##*.}.mobi"
-    "https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.${pkgver##*.}.pdf"
-    "https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.${pkgver##*.}.zip"
-)
-noextract=(
-    "progit-en.${pkgver##*.}.zip"
+    "https://github.com/progit/progit2/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-    8d5a0edd69949850643036d92e1e86d4745ea537b314242cbab805fd2f7501c65d280d3c65eb2241124d93c280643b46eacd97f28cc67f2958fb106e15070cfd
-    48c1a0884806f401c49ea007684af2ddecab2a8353216f05659b0c4dee360a4474b67f9d2eeec62f42ba40bfa7a1fe2a5494ba98e8611f9e7b74e8611057509c
-    9285c44b518fe0551a6442f02c72e43ab6a2ce427f87e9f3fa0d5666c458a686857f031de60d79c627eabffe529c4212d81683ec6ac120781d071f7f2276d82e
-    93ebb908f8ad074c56a4c5276bea6da77a6bfac7ba00662bf93c43e504198436257c6cd22b58705cb64ebe228100dfd692be5b0c1d2df334d442af7cc514b452
+    068a78ea590aefdc11ddd49c6fde39883d72ce55593fddd38e2be2e14976e68b6609e69515863a8374b72fcb40b413d4c0763ee9fbd84fdffc69ef2e796194df
 )
 
 prepare() {
-    unzip -d html "progit-en.${pkgver##*.}.zip"
-    sed -i 's/src=\"book\/cover.png\"/src=\"html\/book\/cover.png\"/' html/cover.html
-    sed -i 's/href=\"LICENSE.html\"/href=\"html\/LICENSE.html\"/' html/cover.html
-    mv html/cover.html progit.html
+    cd "${pkgname}-${pkgver}"
+    # Gem dependencies can be installed per user and not systemwide in
+    # /home/<your username>/.gem/ruby/<ruby version>/, but we won't be able to
+    # clean that directory after having build the book, leaving unused
+    # dependencies. -> Dirty
+    # export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+
+
+    # Gem dependencies can be installed as an Arch Linux package which is
+    # created by tools like gem2arch or pacgem. However, what will happen if
+    # package wearing the same name as those installed by these tools appear in
+    # the Arch repos? As conflict checks are not performed by these tools, we
+    # highly risk package names clashes. -> Too dangerous.
+
+    # Gem dependencies can also be installed in the directory we specify, but
+    # the latter will be removed after we have build the book. The PKGBUILD
+    # will have to redownload again all these deps if the user wants to update
+    # his book. Even if this is quite heavy, this is the cleaner approach we
+    # have.
+    bundle install --path .bundle
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    bundle exec rake book:build
 }
 
 package() {
-    # When entering here, we are in the src directory. Not need to check with
-    # an || exit statement, since every error occuring in PKGBUILD or .install
-    # files are detected and considered as errors by pacman, which then stops
-    # automatically.
+    cd "${pkgname}-${pkgver}"
 
     # Install to /usr/share/doc/progit2
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
-    cp "$srcdir/progit-en.${pkgver##*.}.epub" "$pkgdir/usr/share/doc/$pkgname/progit.epub"
-    cp "$srcdir/progit-en.${pkgver##*.}.mobi" "$pkgdir/usr/share/doc/$pkgname/progit.mobi"
-    cp "$srcdir/progit-en.${pkgver##*.}.pdf" "$pkgdir/usr/share/doc/$pkgname/progit.pdf"
-    cp "$srcdir/progit.html" "$pkgdir/usr/share/doc/$pkgname/"
-    cp -a "$srcdir/html" "$pkgdir/usr/share/doc/$pkgname/"
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp progit.epub "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp progit-kf8.epub "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp progit.mobi "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp progit.pdf "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp progit.html "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    cp -a images "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }
