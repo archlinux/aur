@@ -1,6 +1,6 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=('linpack')
-pkgver=2018.0.006
+pkgver=2018.2.010
 _math_kernel_lib=2018
 _url=9752
 pkgrel=1
@@ -9,7 +9,7 @@ license=('custom')
 url="http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download"
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/$_url/l_mklb_p_$pkgver.tgz"
 'linpack.conf' 'linpack_runme_xeon64')
-sha256sums=('75eca690d91ef065748218f105c2c47b902f1e113b64a0c3f6a8075c80248b95'
+sha256sums=('aedbf2b27c8a49294239f31867c9e8a87494c079a8732c8def851499eb13b54b'
             'd7e31c8c7e2648c8fa3c4838d98dfc39b8fadf0f74bdaa4ca52cd38277ec8254'
             '369736f6074ab579a1df38ba09be4784547833be020f13d1b60374f64ca5d5f6')
 
