@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-ffmpeg' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
-makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
+makedepends=('dssi' 'frei0r-plugins' 'git' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
 source=("$pkgname-$pkgver-full::git+https://github.com/savonet/liquidsoap-full"
 	PACKAGES
 	$pkgname.service

@@ -9,6 +9,7 @@ pkgbase = liquidsoap
 	license = GPL
 	makedepends = dssi
 	makedepends = frei0r-plugins
+	makedepends = git
 	makedepends = ladspa
 	makedepends = libxml-perl
 	makedepends = ocaml-gd4o
