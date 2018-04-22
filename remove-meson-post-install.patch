@@ -1,0 +1,8 @@
+--- meson.build.orig	2017-04-03 04:17:49.000000000 +0800
++++ meson.build	2018-04-22 12:13:15.760176066 +0800
+@@ -40,5 +40,3 @@
+ LIB_INSTALL_DIR = '/usr/lib/budgie-desktop/plugins/budgie-pixel-saver-applet/'
+ 
+ subdir('src')
+-
+-meson.add_install_script('./meson_post_install.sh')
