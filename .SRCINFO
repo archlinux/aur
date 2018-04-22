@@ -1,13 +1,14 @@
 pkgbase = smstools3
 	pkgdesc = SMS gateway which can send and receive messages through GSM modems and mobile phones
 	pkgver = 3.1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smstools3.kekekasvi.com/
 	install = smsd.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bash
+	conflicts = gnokii
 	backup = etc/smsd.conf
 	backup = etc/logrotate.d/smsd
 	source = http://smstools3.kekekasvi.com/packages/smstools3-3.1.21.tar.gz

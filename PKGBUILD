@@ -2,7 +2,7 @@
 
 pkgname=smstools3
 pkgver=3.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="SMS gateway which can send and receive messages through GSM modems and mobile phones"
 arch=('i686' 'x86_64')
 url="http://smstools3.kekekasvi.com/"
@@ -11,6 +11,7 @@ backup=(etc/smsd.conf etc/logrotate.d/smsd)
 install=smsd.install
 depends=('bash')
 makedepends=()
+conflicts=('gnokii')
 source=(http://smstools3.kekekasvi.com/packages/$pkgname-$pkgver.tar.gz
 	smsd.install
 	smsd.conf
