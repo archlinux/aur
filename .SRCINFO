@@ -1,80 +1,47 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official desktop version of Telegram messaging app (dev branch)
-	pkgver = 1.2.6.r5.g9551cfaf
+	pkgver = 1.2.17.r1.gcf9802517
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = chrpath
 	makedepends = cmake
-	makedepends = fontconfig
 	makedepends = git
-	makedepends = google-breakpad-git
+	makedepends = gyp
 	makedepends = range-v3
-	makedepends = harfbuzz-icu
-	makedepends = jasper
-	makedepends = libappindicator-gtk2
-	makedepends = libexif
-	makedepends = libgl
-	makedepends = libinput
-	makedepends = libjpeg-turbo
-	makedepends = libmng
-	makedepends = libpng
-	makedepends = libsm
-	makedepends = libtiff
-	makedepends = libunity
-	makedepends = libva
-	makedepends = libwebp
-	makedepends = libxi
-	makedepends = libxrender
-	makedepends = mtdev
 	makedepends = python
-	makedepends = python2
-	makedepends = sqlite
-	makedepends = tslib
-	makedepends = wayland
+	makedepends = libappindicator-gtk3
 	depends = ffmpeg
-	depends = libproxy
-	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	depends = minizip
 	depends = openal
-	depends = openssl-1.0
-	depends = xcb-util-image
-	depends = xcb-util-keysyms
-	depends = xcb-util-renderutil
-	depends = xcb-util-wm
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = openssl
+	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = git+https://github.com/telegramdesktop/tdesktop.git#branch=dev
-	source = git+https://github.com/Microsoft/GSL.git
-	source = git+https://github.com/mapbox/variant.git
-	source = git+https://github.com/telegramdesktop/libtgvoip.git
-	source = git+https://github.com/philsquared/Catch.git
-	source = git+https://chromium.googlesource.com/external/gyp#commit=702ac58e4772
-	source = git+https://github.com/telegramdesktop/fcitx.git
-	source = git+https://github.com/telegramdesktop/hime.git
-	source = https://download.qt.io/official_releases/qt/5.6/5.6.2/submodules/qtbase-opensource-src-5.6.2.tar.xz
-	source = https://download.qt.io/official_releases/qt/5.6/5.6.2/submodules/qtimageformats-opensource-src-5.6.2.tar.xz
-	source = https://download.qt.io/official_releases/qt/5.6/5.6.2/submodules/qtwayland-opensource-src-5.6.2.tar.xz
-	source = telegram-desktop.desktop
-	source = tg.protocol
-	source = tdesktop.patch
-	source = libtgvoip.patch
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev
+	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
+	source = variant::git+https://github.com/mapbox/variant.git
+	source = Catch::git+https://github.com/philsquared/Catch
+	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
+	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
+	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
+	source = libtgvoip-2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip-2.patch?h=packages/telegram-desktop
+	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 2f6eae93c5d982fe0a387a01aeb3435571433e23e9d9d9246741faf51f1ee787
-	sha256sums = 4fb153be62dac393cbcebab65040b3b9d6edecd1ebbe5e543401b0e45bd147e4
-	sha256sums = 035c3199f4719627b64b7020f0f4574da2b4cb78c6981aba75f27b872d8e6c86
-	sha256sums = f47f4b10c8b498ab456ad1dd54754cbd6725b936bb94ffe4fea12d2c2f2b408d
-	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
-	sha256sums = faebb28c6d5f5bcefa9d0249187dde025ecf52da18b3ba97081c27962d4169b8
-	sha256sums = 00877dd2c6e808313f1dd38c48f0dc656e342adb01e4d8ec58b14e63408b16c6
+	sha256sums = 7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82
+	sha256sums = aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc
+	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
+	sha256sums = 07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26
+	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 
 pkgname = telegram-desktop-git
 

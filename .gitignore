@@ -2,7 +2,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!telegram-desktop.desktop
-!tg.protocol
-!tdesktop.patch
-!libtgvoip.patch
