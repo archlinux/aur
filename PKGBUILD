@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.101787.3f1cad48b8
+pkgver=18.2.0_devel.101789.a8420e2530
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -27,16 +27,14 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'mesa-increase-version-to-18.2.0-devel.patch'
 )
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'e2942ff4f7f1d326f95cf16095ddb55bbc263ce768768dbbe169e89e632237900516c8848187943edb5679d1ccc5047fb6912a150fe78b5ddf0281d8f9a2bf05')
+)
 
 prepare() {
   cd mesa
-  patch --forward --strip=1 --input='../mesa-increase-version-to-18.2.0-devel.patch'
   autoreconf -fi
 }
 
