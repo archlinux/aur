@@ -1,7 +1,7 @@
 pkgbase = nomad-bin
 	pkgdesc = A distributed, highly available, datacenter-aware scheduler
 	pkgver = 0.8.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://nomadproject.io/
 	arch = x86_64
 	license = MPL2
