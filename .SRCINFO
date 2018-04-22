@@ -1,11 +1,12 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image galleries and collections from pixiv, exhentai, danbooru and more
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikf/gallery-dl
 	arch = any
 	license = GPL2
 	depends = python
+	depends = python-requests
 	source = https://github.com/mikf/gallery-dl/releases/download/v1.3.4/gallery_dl-1.3.4.tar.gz
 	source = https://github.com/mikf/gallery-dl/releases/download/v1.3.4/gallery_dl-1.3.4.tar.gz.asc
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
