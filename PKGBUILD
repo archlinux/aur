@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.27.r209.gc553cd6f7e
+pkgver=2.27.r346.g573963e32f
 pkgrel=1
 pkgdesc='GNU C Library, from git'
 arch=('i686' 'x86_64')
@@ -68,8 +68,6 @@ build() {
         --enable-bind-now \
         --enable-lock-elision \
         --enable-multi-arch \
-        --enable-obsolete-nsl \
-        --enable-obsolete-rpc \
         --enable-stack-protector=strong \
         --enable-stackguard-randomization \
         --disable-profile \
@@ -116,16 +114,14 @@ package() {
         # I use 2> /dev/null for all of these due to many false-positives as it
         # attempts to strip scripts or other unstrippable files.
         find "$pkgdir"/usr/bin -type f -executable -exec strip $STRIP_BINARIES {} + 2> /dev/null || true
-
-        # Do not strip these for gdb and valgrind functionality, but strip the
-        # rest.
-        find "$pkgdir"/usr/lib ! -name 'ld-*.so' \
-                               ! -name 'libc-*.so' \
-                               ! -name 'libpthread-*.so' \
-                               ! -name 'libthread_db-*.so' \
-                                 -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
-
-        # Strip the remaining static libraries.
         find "$pkgdir"/usr/lib -name '*.a' -type f -exec strip $STRIP_STATIC {} + 2> /dev/null || true
+
+        # Do not strip these for gdb and valgrind functionality.
+        find "$pkgdir"/usr/lib \
+          -not -name 'ld-*.so' \
+          -not -name 'libc-*.so' \
+          -not -name 'libpthread-*.so' \
+          -not -name 'libthread_db-*.so' \
+          -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
     fi
 }
