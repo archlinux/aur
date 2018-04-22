@@ -1,0 +1,14 @@
+[Unit]
+After=network.target libvirtd.service
+Description=Web interface to manage virtual machines with libvirt
+
+[Service]
+Type=simple
+DynamicUser=yes
+SupplementaryGroups=libvirt
+Restart=always
+ExecStart=/usr/bin/cutelyst-wsgi2 --ini /etc/uwsgi/virtlyst.ini
+StateDirectory=virtlyst
+
+[Install]
+WantedBy=multi-user.target

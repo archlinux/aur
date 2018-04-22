@@ -1,0 +1,19 @@
+pkgbase = virtlyst
+	pkgdesc = Web interface to manage virtual machines with libvirt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cutelyst/Virtlyst
+	arch = x86_64
+	license = AGPL3
+	depends = cutelyst
+	depends = libvirt
+	backup = etc/uwsgi/virtlyst.ini
+	source = https://github.com/cutelyst/Virtlyst/archive/v1.0.0.tar.gz
+	source = virtlyst.ini
+	source = virtlyst.service
+	sha256sums = 5f1b121a90bfe8fcb608913306478dc8d68c4132aea11ffbd57a76d12bb32ce8
+	sha256sums = 372cf5d94a8117b0ad167d9edd7487f81f9440376d6b485e6fbe51b417324a39
+	sha256sums = b7f96b90e7e7aeae0fb0cbe4c62e63c1418439d83d587e2afb40ab28f12b704f
+
+pkgname = virtlyst
+
