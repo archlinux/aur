@@ -1,7 +1,7 @@
 # Maintainer: mickybart <mickybart at pygoscelis dot org>
 
 pkgname=('python-openbrokerapi')
-pkgver='1.0.0'
+pkgver='2.0.0'
 pkgrel=1
 pkgdesc="A python package for the V2 CF Service Broker API and Open Broker API (version 2.13+)"
 url="https://github.com/eruvanos/openbrokerapi"
