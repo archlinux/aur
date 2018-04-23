@@ -3,3 +3,4 @@ pkg/
 *.tar.gz*
 *.pkg.tar.*
 coredns.service
+coredns-sysusers.conf
