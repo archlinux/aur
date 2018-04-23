@@ -2,7 +2,7 @@
 
 pkgname=gnome-screenshot-heavy-shadow
 pkgver=3.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Take pictures of your screen, with modified shadow effect"
 arch=('i686' 'x86_64')
 url="https://github.com/Cabbagec/gnome-screenshot-heavy-shadow"
