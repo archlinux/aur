@@ -1,0 +1,14 @@
+pkgbase = protobuf-c-rpc-git
+	pkgdesc = This is protobuf-c-rpc, a library for performing RPC with protobuf-c.
+	pkgver = 292.07fed6d
+	pkgrel = 1
+	url = https://github.com/protobuf-c/protobuf-c-rpc
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = protobuf-c
+	source = git+https://github.com/protobuf-c/protobuf-c-rpc
+	md5sums = SKIP
+
+pkgname = protobuf-c-rpc-git
+
