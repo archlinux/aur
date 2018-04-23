@@ -30,7 +30,7 @@ build() {
 	cd $srcdir/$pkgname-$pkgver-full
 
 	./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc --without-user --without-group --disable-oss --disable-portaudio
-	SED="/usr/bin/sed" make all && make doc
+	make all && make doc
 }
 
 package() {
@@ -44,6 +44,6 @@ package() {
 }
 
 md5sums=('SKIP'
-         '039d14f134c5606cec163fcc1a7c7dc6'
+         '2e355a97b2e9730c6b8f300e59cbeca3'
          '762d6607ff0889e34b8c874970b38bc9'
          'f9106e5c42cabc21c4c8464d9b1ad63e')

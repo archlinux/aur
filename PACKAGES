@@ -45,7 +45,7 @@ ocaml-gstreamer
 # ============================================================================
 
 # MAD is for MP3 decoding.
-#ocaml-mad
+ocaml-mad
 
 # TAGLIB is for MP3 ID3 tag reading
 ocaml-taglib
