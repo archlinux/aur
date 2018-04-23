@@ -7,15 +7,15 @@
 # information on Python packaging.
 
 pkgname=python-pyldap
-pkgver=2.4.25
-pkgrel=2
-pkgdesc="Python modules for implementing LDAP clients"
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="Python modules for implementing LDAP clients (deprecated)"
 _pipname=pyldap
 arch=(any)
 url="https://github.com/pyldap/pyldap"
 license=('PSFL')
 groups=()
-depends=('python')
+depends=('python-ldap')
 makedepends=()
 provides=()
 conflicts=()
@@ -23,8 +23,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(https://pypi.python.org/packages/source/p/${_pipname}/${_pipname}-${pkgver}.tar.gz)
-md5sums=('dbcb7849b506b58d22cb711564df58a7')
+source=(https://files.pythonhosted.org/packages/source/p/${_pipname}/${_pipname}-${pkgver}.tar.gz)
+md5sums=('872285ed150e11c61c34c2fe62239e57')
 
 package() {
   cd "$srcdir/$_pipname-$pkgver"
