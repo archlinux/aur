@@ -2,5 +2,5 @@
 Type=Application
 Name=kSar
 Comment=Sar data visualizer
-Exec=kSar
+Exec=ksar
 Categories=Utility;DataVisualization;
