@@ -1,6 +1,6 @@
 pkgbase = fs-uae-git
 	pkgdesc = Cross-platform Amiga emulator based on UAE/WinUAE (GIT version).
-	pkgver = 1272.a48fa6c0
+	pkgver = r1272.a48fa6c0
 	pkgrel = 1
 	url = http://fs-uae.net/download-devel
 	arch = i686
