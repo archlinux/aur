@@ -1,0 +1,19 @@
+[binaries]
+c = '@TRIPLE@-gcc'
+cpp = '@TRIPLE@-g++'
+fortran = '@TRIPLE@-gfortran'
+ar = '@TRIPLE@-ar'
+pkgconfig = '@TRIPLE@-pkg-config'
+ranlib = '@TRIPLE@-ranlib'
+strip = '@TRIPLE@-strip'
+windres = '@TRIPLE@-windres'
+
+[properties]
+root = '@TRIPLE@'
+needs_exe_wrapper = true
+
+[host_machine]
+system = 'windows'
+cpu_family = '@CPU_FAMILY@'
+cpu = '@PROCESSOR@'
+endian = 'little'
