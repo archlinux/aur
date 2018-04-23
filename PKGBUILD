@@ -2,7 +2,7 @@
 
 pkgname=glmixer-svn
 _pkgname=glmixer
-pkgver=1.5.1107
+pkgver=1.7.1674
 pkgrel=1
 pkgdesc="Real-time graphics mixing for video performance"
 url="http://sourceforge.net/projects/glmixer/"
@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
 	cd $srcdir/${_pkgname}
-	cmake -Wno-dev -DCMAKE_BUILD_TYPE:STRING="Release" -DUSE_SHAREDMEMORY:BOOL="1" -DUSE_OPENCV:BOOL="1" -DUSE_FREEFRAMEGL:STRING=$(if [ "$CARCH" == "x86_64" ]; then echo "1.6"; else echo "1.5"; fi)
+	cmake -Wno-dev -DCMAKE_BUILD_TYPE:STRING="Release" -DUSE_FREEFRAMEGL:STRING=$(if [ "$CARCH" == "x86_64" ]; then echo "1.6"; else echo "1.5"; fi)
 	make
 	install -D $srcdir/${_pkgname}/src/${_pkgname} $pkgdir/usr/bin/${_pkgname}
 }
