@@ -2,8 +2,8 @@
 
 pkgname="ttf-nerd-fonts-symbols"
 pkgdesc="Developer targeted patched fonts with a high number of glyphs (icons)"
-pkgver=1.2.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 arch=('x86_64' 'i686')
