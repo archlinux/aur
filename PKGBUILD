@@ -17,11 +17,12 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-	./configure --prefix=/usr
-	make
+	meson _build --prefix=/usr
+    cd _build
+    ninja
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname/_build"
+	DESTDIR="$pkgdir/" ninja install
 }
