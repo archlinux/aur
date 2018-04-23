@@ -2,7 +2,7 @@
 
 # RegRipper 
 pkgname=regripper-git
-pkgver=r109.c65c823
+pkgver=r118.79e852a
 pkgrel=1
 pkgdesc="RegRipper is an open source forensic software used as a Windows Registry data extraction command line or GUI tool."
 arch=('any')
