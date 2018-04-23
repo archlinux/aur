@@ -1,0 +1,12 @@
+pkgbase = scientifica-font
+    pkgver = 1.0
+    pkgrel = 1
+    url = https:://github.com/NerdyPepper/scientifica
+    arch = any
+    license = SIL
+    makedepends = git
+    makedepends = xorg-font-utils
+    source = git+https://githubl.com/NerdyPepper/scientifica
+    md5sums = SKIP
+
+pkgname = scientifica-bdf
