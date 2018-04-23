@@ -3,8 +3,8 @@
 
 pkgname=nomad-bin
 pkgver=0.8.1
-pkgrel=3
-pkgdesc='A distributed, highly available, datacenter-aware scheduler (incl LXC)'
+pkgrel=4
+pkgdesc='A distributed, highly available, datacenter-aware scheduler (incl LXC driver)'
 arch=('x86_64')
 url="https://nomadproject.io/"
 license=('MPL2')
