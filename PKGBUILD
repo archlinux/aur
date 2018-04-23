@@ -1,6 +1,7 @@
-# Maintainer: emersion <contact emersion fr>
-# Contributor: Techlive Zheng <techlivezheng@gmail.com>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Torben <torben.letorbi at gmail dot com>
+# Contributor: emersion <contact at emersion dot fr>
+# Contributor: Techlive Zheng <techlivezheng at gmail dot com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
 pkgver=r3535.d619d99d
