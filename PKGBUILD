@@ -14,7 +14,7 @@ optdepends=('java-environment: java interfacing'
             'doxygen: generate documentation'
             'protobuf: generate protocol buffer messages')
 source=(https://github.com/ADLINK-IST/opensplice/archive/${_filename}.tar.gz)
-sha512sums=('348d9f221a5cf39d0a82486f0be999379d93a21aba0734f9889e4dd90cdb6de9eb734fe7c5b070258f49b3ffe450c0e3ccf2a6546141eff42828efc58c39d995')
+sha256sums=('320e678d26cd0b29b8d2240093ef8d7b48f491b7c3fb5466af18660d8cbc2cfd')
 options=(!makeflags)
 
 
