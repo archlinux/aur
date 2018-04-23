@@ -1,12 +1,13 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
 pkgname=vala-dbus-binding-tool-git
-pkgver=1.0
+pkgver=1.0.r115
 pkgrel=1
 pkgdesc="Creates gobject interfaces out of DBus XML specifications."
 arch=('i686' 'x86_64')
 url="https://github.com/freesmartphone/vala-dbus-binding-tool"
 license=('GPLv3')
 depends=('vala' 'dbus')
+makedepends=('vala>=0.36.0')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
