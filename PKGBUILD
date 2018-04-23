@@ -3,7 +3,7 @@
 
 pkgname=emacs-bookmarkplus-mode
 pkgver=2017.03.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways"
 url="http://www.emacswiki.org/emacs/BookmarkPlus"
 license=('GPL3')
@@ -22,11 +22,11 @@ source=("http://www.emacswiki.org/emacs/download/bookmark+.el"
 md5sums=('649ecbd6a757b52591f79502c0ff2ee2'
          '3f5454fb622fa72d7ac966332cb455d3'
          '9ef4349577df93d171cc40d117d9d30c'
-         'de968d00e40c1cc997ed6b88475a4975'
+         '0eaf8f23925a4434dc550a6ef78aee6c'
          '87a7714bbfa2a8af221a47a403e14010'
          '38f2c1678ac262fc9aad36d1d98d97d2'
-         '59c1b44697821f6e2d0bfeec63582a28'
-         '761697dd9fd3d1015c46a2a4cb48d226')
+         '7a855f04203da76e4bb2547f1dc53044'
+         '123ee606addc35a9bf5c69af9dc6fdb4')
 
 pkgver() {
   awk '/Version/ {print $3}' bookmark+.el
@@ -35,7 +35,6 @@ pkgver() {
 build() {
   emacs -Q -batch -L . -f batch-byte-compile *.el || true
 }
-
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/emacs/site-lisp/
