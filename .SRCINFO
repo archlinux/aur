@@ -1,0 +1,38 @@
+pkgbase = arm-none-eabi-gcc64-linaro-alternative
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
+	pkgver = 6.4_2017.06
+	pkgrel = 1
+	url = https://releases.linaro.org/
+	arch = i686
+	arch = x86_64
+	groups = arm-none-eabi-toolchain
+	license = GPL
+	license = LGPL
+	makedepends = flex
+	makedepends = bison
+	depends = arm-none-eabi-binutils>=2.26-1
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	provides = arm-none-eabi-gcc-6.4
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = zipman
+	options = docs
+	source = http://releases.linaro.org/components/toolchain/gcc-linaro/6.4-2017.08/gcc-linaro-6.4-2017.08.tar.xz
+	source = ftp://sourceware.org/pub/newlib/newlib-2.4.0.tar.gz
+	source = 0200-gcc-no-exceptions.patch
+	source = 0300-gcc-multilib2.patch
+	source = 1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch
+	source = 0400-trap.patch
+	sha256sums = 4188a8c799186a5759decead1cdf1139e82e5215cdb468d5ff7070010968bde0
+	sha256sums = 545b3d235e350d2c61491df8b9f775b1b972f191380db8f52ec0b1c829c52706
+	sha256sums = 76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a
+	sha256sums = c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1
+	sha256sums = fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07
+	sha256sums = 157de04865a94c0cd953133ee102d286783ea171a48245760d16a2362fde253b
+
+pkgname = arm-none-eabi-gcc64-linaro-alternative
+
