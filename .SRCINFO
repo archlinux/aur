@@ -15,7 +15,6 @@ pkgbase = vice-svn
 	depends = libxrandr
 	depends = libnet
 	depends = libpcap
-	depends = vte
 	depends = xdialog
 	optdepends = pulseaudio
 	optdepends = pulseaudio-alsa

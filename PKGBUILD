@@ -7,7 +7,7 @@ pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64)."
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
-depends=('giflib' 'lame' 'libjpeg' 'libpng' 'libxrandr' 'libnet' 'libpcap' 'vte' 'xdialog')
+depends=('giflib' 'lame' 'libjpeg' 'libpng' 'libxrandr' 'libnet' 'libpcap' 'xdialog')
 makedepends=('xorg-font-utils' 'pkg-config')
 optdepends=('pulseaudio' 'pulseaudio-alsa' 'alsa-lib')
 provides=('vice')
@@ -27,7 +27,7 @@ prepare() {
 build() {
 	cd "${pkgname}/vice"
 	./autogen.sh
-	./configure --prefix=/usr --enable-fullscreen --without-oss --with-pulse --without-alsa --enable-gnomeui
+	./configure --prefix=/usr --enable-fullscreen --enable-external-ffmpeg --with-uithreads --without-oss --with-pulse --without-alsa --enable-gnomeui
 	make
 }
 
