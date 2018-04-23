@@ -1,7 +1,8 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Old Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 
 pkgname=opensplice-dds
-pkgver=6.7.171127
+pkgver=6_7_180404
 _filename=OSPL_V${pkgver//./_}OSS_RELEASE
 pkgrel=1
 pkgdesc="Enables seamless, timely, scalable and dependable data sharing between distributed applications and network connected devices."

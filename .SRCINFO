@@ -1,6 +1,6 @@
 pkgbase = opensplice-dds
 	pkgdesc = Enables seamless, timely, scalable and dependable data sharing between distributed applications and network connected devices.
-	pkgver = 6.7.171127
+	pkgver = 6_7_180404
 	pkgrel = 1
 	url = http://www.prismtech.com/dds-community
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = opensplice-dds
 	optdepends = doxygen: generate documentation
 	optdepends = protobuf: generate protocol buffer messages
 	options = !makeflags
-	source = https://github.com/ADLINK-IST/opensplice/archive/OSPL_V6_7_171127OSS_RELEASE.tar.gz
+	source = https://github.com/ADLINK-IST/opensplice/archive/OSPL_V6_7_180404OSS_RELEASE.tar.gz
 	sha512sums = 348d9f221a5cf39d0a82486f0be999379d93a21aba0734f9889e4dd90cdb6de9eb734fe7c5b070258f49b3ffe450c0e3ccf2a6546141eff42828efc58c39d995
 
 pkgname = opensplice-dds
