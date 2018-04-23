@@ -1,0 +1,14 @@
+pkgbase = ttf-yosemite-san-francisco-font-git
+	pkgdesc = San Francisco font - the Apple Watch font
+	pkgver = 1.0.r2.g5a6e8ca
+	pkgrel = 1
+	url = https://github.com/smith-neil/YosemiteSanFranciscoFont
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = YosemiteSanFranciscoFont
+	source = git+https://github.com/smith-neil/YosemiteSanFranciscoFont.git
+	md5sums = SKIP
+
+pkgname = ttf-yosemite-san-francisco-font-git
+
