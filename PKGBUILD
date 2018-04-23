@@ -13,7 +13,7 @@ depends=(
 				 'meson'
 				)
 makedepends=('ninja')
-source=("git://github.com/donadigo/${pkgname}.git")
+source=("git://github.com/donadigo/appeditor.git")
 md5sums=('SKIP')
 
 pkgver() {
