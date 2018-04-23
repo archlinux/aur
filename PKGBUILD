@@ -1,8 +1,8 @@
 # Maintainer: asermax <asermax@gmail.com>
-_branch='a97e7bf1f7f6d89a4c4c7ce6595eecab50ff334d'
+_branch='6b7efc1215f5c535e91d1f111b9b0c65b9e826a2'
 
 pkgname=kaggle-api
-pkgver=1.1.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 
@@ -25,7 +25,7 @@ source=(
   "https://github.com/Kaggle/kaggle-api/archive/${_branch}.tar.gz"
 )
 
-md5sums=('cafb51206bf9677f70bb3951bbca15f5')
+md5sums=('1fb6e0924475beba1b369c13d8121163')
 
 package() {
   cd "${pkgname}-${_branch}"
@@ -34,5 +34,5 @@ package() {
   python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1
 
   # License
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
