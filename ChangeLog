@@ -2,6 +2,23 @@ Change Log for Philip's Music Writer (Linux/Unix version)
 ---------------------------------------------------------
 
 
+Version 4.29 26-June-2016
+-------------------------
+
+1. Added -norc to the scripts for running tests to ensure that the user's
+   .pmwrc file, if it exists, is ignored.
+   
+2. Running with a lot more compiler warnings turned on threw up a number of 
+   infelicities in the code. Refactoring has got rid of the compiler warnings.
+   
+3. Compiling with clang threw up a few that gcc missed; it also found a genuine 
+   bug, a misplaced ) in an expression. By pure fluke there appeared to be no 
+   way of provoking misbehaviour, because what was being checked was re-checked 
+   (correctly) later. 
+   
+4. Allow ! as a modifier to notes as well as rests. 
+
+
 Version 4.28 08-February-2014
 -----------------------------
 
