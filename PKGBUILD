@@ -4,25 +4,25 @@ pkgname=plasma5-applets-todolist
 pkgver=7
 pkgrel=1
 pkgdesc="Extension of the kdeplasma-applets notes widget, where it's organized as a list"
-url="https://github.com/Zren/plasma-applets/tree/master/todolist"
+url="https://github.com/Zren/plasma-applet-todolist"
 license=(GPL)
 depends=('plasma-workspace' 'qt5-declarative')
 makedepends=('extra-cmake-modules')
 arch=('any')
-source=(https://github.com/Zren/plasma-applets/archive/todolist-$pkgver.tar.gz
+source=(https://github.com/Zren/plasma-applet-todolist/archive/v$pkgver.tar.gz
 	https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-todolist/Add_CMakeLists.patch)
-md5sums=('f6f290e02f71b2292d04628093da42ac'
+md5sums=('d79af3b345f3e798b0f3e0210c465639'
          '3881942579d0e79c4e1e78ae570cbcd9')
 
 prepare() {
-  cd plasma-applets-todolist-$pkgver/todolist
+  cd plasma-applet-todolist-$pkgver/todolist
   patch -p2 -i "${srcdir}"/Add_CMakeLists.patch
   rm -f build
   mkdir -p build
 }
 
 build() {
-  cd plasma-applets-todolist-$pkgver/todolist/build
+  cd plasma-applet-todolist-$pkgver/todolist/build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd plasma-applets-todolist-$pkgver/todolist/build
+  cd plasma-applet-todolist-$pkgver/todolist/build
   make DESTDIR="$pkgdir" install
 }
