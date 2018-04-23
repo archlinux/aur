@@ -4,11 +4,11 @@
 pkgname=python-vint
 _pkgname=vint
 pkgver=0.3.18
-pkgrel=0
+pkgrel=2
 pkgdesc="VimL Linter"
 arch=('any')
 makedepends=('python-setuptools')
-depends=('python-yaml' 'python-ansicolor=0.2.4' 'python-chardet' 'python-typing')
+depends=('python-yaml' 'python-ansicolor>=0.2.4' 'python-chardet' 'python-typing')
 url="https://github.com/Kuniwak/vint/"
 license=('MIT')
 options=(!emptydirs)
@@ -26,6 +26,6 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 # vim:set ts=2 sw=2 et:
