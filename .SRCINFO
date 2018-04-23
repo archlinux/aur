@@ -1,0 +1,12 @@
+pkgbase = kbd-br-thinkpad
+	pkgdesc = Brazilian ABNT-2 Thinkpad keyboard layout for kernel terminals. This will enable you to type with the / and ? key instead of restoring to AltGr + Q or W
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = br-thinkpad.map.gz
+	md5sums = 4cd1f67416c20bda6071c7be75d60a37
+
+pkgname = kbd-br-thinkpad
+
