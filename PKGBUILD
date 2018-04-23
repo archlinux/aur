@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xfpt
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A program for turning a simple plain text markup into DocBook XML."
 arch=('i686' 'x86_64')
