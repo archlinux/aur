@@ -19,7 +19,7 @@ source=('git+https://github.com/rorywalsh/cabbage.git#tag=v2.0.02'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '822602714ba40c56144debaec5e1b0cb'
+         '44c102c1fbd8e5b1e784136f3bcba7dd'
          'c3c8e35dd46c86f22a3565aa4dd828a8'
          '35cfc89844c90769f4dc4f8309b340b1'
          'c39a85709e31e03a0850f2e324a4faea')
