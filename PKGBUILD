@@ -2,23 +2,23 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 
 pkgname=klayout
-pkgver=0.25.1
-pkgrel=2
+pkgver=0.25.2
+pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
 license=('GPL')
-depends=('qt5-base' 'ruby2.4' 'python')
+depends=('qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-xmlpatterns' 'qt5-svg' 'ruby2.4' 'python')
 source=(
 	http://www.klayout.org/downloads/source/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
 	klayoutViewer.desktop
 )
-noextract=("klayout-${pkgver}.tar.gz")
-prepare() {
-	mkdir klayout-${pkgver}
-	bsdtar -C klayout-${pkgver} -xf klayout-${pkgver}.tar.gz
-}
+#noextract=("klayout-${pkgver}.tar.gz")
+#prepare() {
+#	mkdir klayout-${pkgver}
+#	bsdtar -C klayout-${pkgver} -xf klayout-${pkgver}.tar.gz
+#}
 build() {
 	cd "$srcdir/klayout-${pkgver}"
 	build_opt="-qmake /usr/bin/qmake
@@ -42,6 +42,6 @@ package() {
 	done
 }
 #
-md5sums=('0ff582af1c308a5595cdbdee20b95a61'
+md5sums=('2afba972d151c8e6eb423978b3859c78'
          'e790f7fca3c1138e21068d7927fb8ff4'
          'e6b98e9146c476a5cb76162999964aa8')
