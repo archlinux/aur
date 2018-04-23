@@ -4,7 +4,7 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-indigo-actionlib'
-pkgver='1.11.5'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,8 +26,11 @@ ros_depends=(ros-indigo-roscpp
   ros-indigo-rostest
   ros-indigo-message-runtime
   ros-indigo-rospy
-  ros-indigo-actionlib-msgs)
+  ros-indigo-rostopic
+  ros-indigo-actionlib-msgs
+  ros-indigo-roslib)
 depends=(${ros_depends[@]}
+  wxpython
   boost)
 
 # Git version (e.g. for debugging)
@@ -39,7 +42,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="actionlib-release-release-indigo-actionlib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/indigo/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('19e1cbb94e05ab31e1d87aa3422df9bdc00b4fc64e3da5c2ba97806442d2d349')
+sha256sums=('60425cddc2053f68fab15d2d0043003f7c4e43b2e2526a8706e854cb44890df7')
 
 build() {
   # Use ROS environment variables
