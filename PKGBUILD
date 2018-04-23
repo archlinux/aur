@@ -5,8 +5,8 @@
 
 pkgname=anarchism
 pkgver=15.1
-pkgrel=1
-_debpkgrel=4
+pkgrel=2
+_debpkgrel=5
 pkgdesc='Source of information regarding Anarchist (libertarian socialist) theory and practice.'
 arch=(any)
 license=(FDL)
@@ -29,4 +29,4 @@ package() {
   rsvg-convert -a -h 256 usr/share/$pkgname/icons/$pkgname.svg > $pkgdir/usr/share/pixmaps/$pkgname.png
 }
 
-sha256sums=('89c6f8f06bf6b81f8ec1862bbf54c16af661bbde72c4ec0597256a3532d631dc')
+sha256sums=('526cf1bc84b6d9a97f6cf7f5d875d5e369194a079324ef6e5463ff378ee07e1b')
