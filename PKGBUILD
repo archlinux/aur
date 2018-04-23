@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 pkgname=cabbage
 pkgrel=1 
-pkgver=2.0.0r1188
+pkgver=2.0.02
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
