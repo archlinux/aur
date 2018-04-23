@@ -4,8 +4,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x205ta
-_srcname=linux-4.15
-pkgver=4.15.15
+_srcname=linux-4.16
+pkgver=4.16.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -15,42 +15,55 @@ options=('!strip')
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix_c-state_patch_v4.15.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/Revert-several-pm-4.15-rc1-merges-for-low-power-suspend.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/Revert-several-pm-4.15-rc1-merges-for-low-power-suspend-2-rc6.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/rpmb.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix-null-hwmon-info.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/i2c_touch_fix_initialize_delay.patch
-  #'9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch' # Excluding this patch. Not sure if it helps.
-  'config_x205ta'  
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+
+  https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/fix_c-state_patch_v4.16.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+
+# Not sure if we want these...
+#  https://github.com/harryharryharry/x205ta-patches/blob/master/4.16-patches/allow-s0i3-suspend-unified-4.16.patch # Patcher calls them dirty hacky.
+#  '9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch' # Excluding this patch. Not sure if it helps.
+
+# Old patches
+#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/rpmb.patch # Not needed anymore, this is fixed in commit https://github.com/torvalds/linux/commit/97548575bef38abd06690a5a6f6816200c7e77f7#diff-97193d232cb936779745c948ee14e56e
+#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix-null-hwmon-info.patch # Fixed in https://github.com/torvalds/linux/commit/e782bc169cd02d3411a6db6ff0c26d7f27f8b81a
+#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/i2c_touch_fix_initialize_delay.patch # This patch does not apply anymore and the logic setting the var value became a lot smarter. Guessing its not needed anymore.
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
             'SKIP'
+            'd88d7c7ae37de3d1a24e982a331acc47d657e2ef0bf6b55c1859b9f0f6df9137'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485'
-            'e576fcf6b61c50b7ea358e9980c4d04901adfe9b050b87bf45506a8452202505'
-            'dfc7fe519d8b95fbe263889ad8e432c55a89d915e905b7729a2ffc958c310754'
-            '1772125253dbe3cd6e191bc8ab5c0297e294d4778857c9e90e22e4999af00929'
-            'f69b0f127f8f1a2b4b34dedaf3c37ef3e561e75fea4de031993341a93c0456d9'
-            'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d'
-            'e3e3873d7d5d781913e1e2f3a7968d0cf0967ee70be0db58bff91c31b37fabe8'
-            'e9d407c4e437c6e93d8c985fcd496dee0115dcc6c616ee56129fe7a9e96bb746'
-            'c75b5d9cc7236e4a8a1021f4703212a5eb084d6b69ffc1ce2dd450df219b480b')
+            'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
+            '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
+            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
+            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
+            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
+            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93'
+            'aea75c0b07673f701856e3c2a35db33c041fdaf0bd5ef2927fb25b1bce2c2b62'
+            '5ad7e021452deffd387a5b81abcd0f608f8141eaab56fbdd162ca0b7966fc3b4'
+            '3845aeb3744372b716c668283b23972d76e482d8c69b107e13a13669e5671d06'
+            '3dc0c5c42fa0957086fc8e5e0076baff7234d5aad73b0c71bcae7119d43f40fa'
+            'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d')
 
 
 _kernelname=${pkgbase#linux}
@@ -71,39 +84,43 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  # Here start x205ta patches, refer to https://goo.gl/dcXIM0 for harryharryharry's guide which is the main starting point
-  # for info on these patches.
-  
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58153
+  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+
+  # https://bugs.archlinux.org/task/58158
+  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
+
+  # https://bugs.archlinux.org/task/58174
+  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+
+  # Here start x205ta patches
+  # Refer to https://github.com/harryharryharry/x205ta-patches for harryharryharry's gathered patches
+  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=158&p=13625163#post13625163 for harryharryharry's kernel compile guide
+
+  # Install wifi firmware with 5 Ghz support.
+  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=192&p=13756881#post13756881
+  mkdir -p ${pkgdir}/usr/lib/firmware/brcm/
+  cp ${srcdir}/brcmfmac43340-sdio.txt ${pkgdir}/usr/lib/firmware/brcm/
+
   # patch attempts to prevents baytrail kernel freezes - thanks to jbMacAZ
   # refer to https://bugzilla.kernel.org/show_bug.cgi?id=109051#c829 for statement that this seems the more effective patch.
   # refer to https://drive.google.com/file/d/1uZeTQa6sWdtwXBIa8de5hkwEKeDeUR30/view for the patch, but to
   # https://drive.google.com/drive/folders/0B4s5KNXf2Z36Nkxac245LTBGdjQ for an overview of patches for ASUS T100H, where this
   # patch is published.
-  patch -Np1 -i ../fix_c-state_patch_v4.15.patch
+  patch -Np1 -i ../fix_c-state_patch_v4.16.patch
 
-  # The next two patches come from harryharryharry and should bring a lower power suspend.
-  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=188&p=13735931#post13735931
-  # and https://bugzilla.kernel.org/show_bug.cgi?id=198631
-  patch -Rp1 -i ../Revert-several-pm-4.15-rc1-merges-for-low-power-suspend.patch
-  patch -Rp1 -i ../Revert-several-pm-4.15-rc1-merges-for-low-power-suspend-2-rc6.patch
-
-  # patch not needed anymore? Hide unnecessary mmcblkXrpmb block devices, which can cause hangups)
-  # refer to https://dev-nell.com/rpmb-emmc-errors-under-linux.html
-  # This patch is no longer needed, refer to https://github.com/torvalds/linux/commit/97548575bef38abd06690a5a6f6816200c7e77f7
-  #patch -Np1 -i ../rpmb.patch
+  # The next two patches come from Hans De Goede and should bring a lower power suspend.
+  # Refer to https://github.com/jwrdegoede/linux-sunxi/commit/2a02df1192d2718ac7eaa871e2941840375f1e8c
+  # and https://github.com/jwrdegoede/linux-sunxi/commit/bdb7d50f49e758ce78a59e894f9be98db6e15049
+  patch -Np1 -i ../i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
+  patch -Np1 -i ../intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
 
   # patch to hide dmesg errors of brcmfmac trying to enable a p2p device
   # refer to https://patchwork.kernel.org/patch/9592913/
   patch -Np1 -i ../brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
-
-  # Sources for next two patches to be looked up.
-  patch -Np1 -i ../fix-null-hwmon-info.patch
-  patch -Np1 -i ../i2c_touch_fix_initialize_delay.patch
-
-  # next patch reverts a patch in the mainline kernel which reduces wifi stability.
-  # refer to https://github.com/torvalds/linux/commit/6e84ab604bdedaa16239bd1c6e5fcb5660309f02.diff
-  # This patch does not work at this point. Not clear if it is needed either... TODO: find out if we need it...
-  # patch -Np1 -i ../9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch
 
   # x205ta patches end here
 
@@ -113,15 +130,20 @@ prepare() {
   # Upstream should be at http://x205ta.myftp.org:1337/kernel/.config
 
   # Config changes required to build more closely to arch.
-  # Set the kernel name with a local version suffix: LOCALVERSION=-x205ta
-  #
+
   # Harryharryharry seems to prefer STACK_VALIDATION and HAVE_STACK_VALIDATION = n , but arch's default kernel wants that to y.
   # That's related to the unwinder, where arch prefers ORC and not Frame point unwinder like H.
-  # Therefore, don't forget to enable ORC unwinder, which enables STACK_VALIDATION, which provides objtool
+  # Therefore, don't forget to enable ORC unwinder, which enables STACK_VALIDATION, which provides objtool, which is required later on to package headers.
   # In menuconfig, kernel hacking, choose kernel unwinder at bottom, ORC
-  cp -Tf ../config_x205ta .config
+  #cp -Tf ../config_x205ta .config
+
+  # Remove existing LOCALVERSION stuff from .config
 
   # Here ends x205ta stuff.
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   # set extraversion to pkgrel and empty localversion
   sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
@@ -230,9 +252,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
