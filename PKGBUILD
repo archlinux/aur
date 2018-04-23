@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=davmail
-pkgver=4.8.4
+pkgver=4.8.5
 pkgrel=1
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64')
@@ -9,27 +9,23 @@ url="http://$pkgname.sourceforge.net/"
 license=('GPL')
 makedepends=('unzip')
 depends=('java-runtime')
-[ "$CARCH" = "i686" ] && _ARCH=x86
-[ "$CARCH" = "x86_64" ] && _ARCH=x86_64
-_rev=2570
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-linux-${_ARCH}-$pkgver-$_rev.tgz
+_rev=2589
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-$_rev.zip
         $pkgname.desktop
         $pkgname.sh
         $pkgname@.system_service
         $pkgname@.user_service)
-[ "$CARCH" = "i686" ] && md5sums=('11e577b5b315f029c98e19f0474e8a9e')
-[ "$CARCH" = "x86_64" ] && md5sums=('e6f6eacccd592141c587e519be0cd5bd')
-md5sums+=('1df37a6120d88de8df3cb735977336ba'
-          '4a88ecc8e4db82e744e35ad497ad37d9'
-          '8d373851babe1d8bb860228c8b4db702'
-          '271e9e66dfdb496d242c9a6102937c65')
+md5sums=('cc5d5739fc986e1877d94823727fefb9'
+         '1df37a6120d88de8df3cb735977336ba'
+         '4a88ecc8e4db82e744e35ad497ad37d9'
+         '8d373851babe1d8bb860228c8b4db702'
+         '271e9e66dfdb496d242c9a6102937c65')
 install=$pkgname.install
 
 package() {
-  _src=$srcdir/$pkgname-linux-${_ARCH}-$pkgver-$_rev
   install -d $pkgdir/{usr/share/java/$pkgname/lib,usr/bin,etc/$pkgname}
-  install -Dm644 $_src/$pkgname.jar $pkgdir/usr/share/java/$pkgname/
-  install -D $_src/lib/* $pkgdir/usr/share/java/$pkgname/lib
+  install -Dm644 $pkgname.jar $pkgdir/usr/share/java/$pkgname/
+  install -D lib/* $pkgdir/usr/share/java/$pkgname/lib
   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/share/java/$pkgname
   ln -s /usr/share/java/$pkgname/$pkgname.sh $pkgdir/usr/bin/$pkgname
   install -Dm644 $srcdir/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
@@ -37,9 +33,9 @@ package() {
   install -Dm644 $srcdir/$pkgname\@.user_service ${pkgdir}/usr/lib/systemd/user/$pkgname\@.service
 
   # Create icons
-  cd $_src
-  unzip -q $pkgname.jar tray2.png tray32.png tray48.png
-  install -Dm644 tray2.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/$pkgname.png
+  unzip -q $pkgname.jar tray.png tray32.png tray48.png tray128.png
+  install -Dm644 tray.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/$pkgname.png
   install -Dm644 tray32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/$pkgname.png
   install -Dm644 tray48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/$pkgname.png
+  install -Dm644 tray128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/$pkgname.png
 }
