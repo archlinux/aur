@@ -2,7 +2,6 @@
 
 _basename=protobuf-c-rpc
 pkgname=${_basename}-git
-pkgver=r147
 pkgver=292.07fed6d
 pkgver() {
 	cd ${_basename} || exit
@@ -21,7 +20,7 @@ md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_basename}"
 	./autogen.sh && \
-	./configure && \
+	./configure --prefix=/usr && \
 	make
 }
 
