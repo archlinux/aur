@@ -4,8 +4,8 @@
 # Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp
-pkgver=26
-_pkgver=e66bdc7
+pkgver=27
+_pkgver=b946b1b
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -39,11 +39,12 @@ optdepends=(
   'pango: llppac font conversion'
   'pandoc: llppac text conversion'
   'texlive-core: llppac dvi conversion'
+  'inotify-tools: required by llpp.inotify'
 )
 source=("http://repo.or.cz/llpp.git/snapshot/${_pkgver}.tar.gz")
-md5sums=('e5b0bf1cdacb16ee219422f109376614')
-sha1sums=('8a40cd34a1f04d317fc96f285daedf0eba037ae7')
-sha256sums=('805b6b0c1fa48a5de7b249915f9a01dedd62e0c5fac5b6b49a69985e0accc243')
+md5sums=('e22528b00992ff15780d0103fe733f3c')
+sha1sums=('69810abd97b397e4874a7636338455cd5093f94e')
+sha256sums=('290948742451a5209244d91b79662e9da84f033be6f49214336b21eff1a4e494')
 options=('!strip')
 
 prepare() {
