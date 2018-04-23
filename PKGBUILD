@@ -1,13 +1,14 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
 url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapack')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz")
 sha256sums=('f1b87684d75496a1054405ae3ee0b6573acaf3dad39eaf4f1d66fdd7e03dc852'
@@ -65,3 +66,4 @@ package() {
   done
 }
 
+# vim: ts=2 sw=2 et:
