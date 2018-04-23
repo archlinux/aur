@@ -1,7 +1,7 @@
 pkgbase = python-rednose
 	pkgdesc = Pretty output formatter with color for python-nosetests
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/rednose
 	arch = any
 	license = custom
@@ -19,4 +19,9 @@ pkgname = python-rednose
 	depends = python
 	depends = python-colorama
 	depends = python-termstyle
+
+pkgname = python2-rednose
+	depends = python2
+	depends = python2-colorama
+	depends = python2-termstyle
 

@@ -2,9 +2,9 @@
 
 _name=rednose
 pkgbase='python-rednose'
-pkgname=('python-rednose')
+pkgname=('python-rednose' 'python2-rednose')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty output formatter with color for python-nosetests"
 arch=('any')
 url=https://pypi.python.org/pypi/"${_name}"
