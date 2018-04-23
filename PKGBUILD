@@ -1,23 +1,15 @@
-# Maintainer: Garrett <floft.net/contact>
+# Maintainer: Andr0med4
+# Contributor: Garrett <floft.net/contact>
 pkgname=worldwind
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="an open source 3D interactive world viewer"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://worldwind.arc.nasa.gov/java/"
 license=('custom')
 optdepends=('libtxc_dxtn: radeon and nouveau support')
-source=('http://builds.worldwind.arc.nasa.gov/worldwind-releases/2.0/builds/worldwind-2.0.0.zip')
-md5sums=('7daff37e61ed378f12f1516aab692260')
-
-if [[ $CARCH == i686 ]]; then
-    depends=('jogl')
-else
-    source+=('http://worldwind.arc.nasa.gov/java/jogl/webstart/jogl-natives-linux-amd64.jar'
-        'http://worldwind.arc.nasa.gov/java/jogl/webstart/gluegen-rt-natives-linux-amd64.jar')
-    md5sums+=('6bd6dff3409fbba29738c56e3e36650d'
-             'df40663205b7ee954434de97811ff93c')
-fi
+source=('https://github.com/NASAWorldWind/WorldWindJava/releases/download/v2.1.0/worldwind-v2.1.0.zip')
+md5sums=('22ab1fd93b851873e771650b9f5ec7e2')
 
 package() {
 	cd "$srcdir"
@@ -33,12 +25,4 @@ EOF
 
 	mkdir -p  "$pkgdir/usr/share/$pkgname"
 	cp -r ./* "$pkgdir/usr/share/$pkgname/"
-	
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 "NASA_Open_Source_Agreement_1.3.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	
-	if [[ $CARCH == i686 ]]; then
-		rm "$pkgdir/usr/share/$pkgname/lib-external/gdal/libgdalalljni64.so"
-    fi
 }
