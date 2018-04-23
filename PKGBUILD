@@ -2,8 +2,8 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20170718
-pkgrel=2
+pkgver=20180423
+pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
@@ -14,7 +14,7 @@ depends=(akonadi
          akonadi-mime
          akonadi-notes
          akonadi-search
-         attica-qt5
+         attica
          baloo
          baloo-widgets
          bash-completion
@@ -97,6 +97,7 @@ depends=(akonadi
          kservice
          ktexteditor
          ktextwidgets
+         ktnef
          kunitconversion
          kwallet
          kwayland
@@ -111,7 +112,6 @@ depends=(akonadi
          libkdegames
          libkdepim
          libkexiv2
-         libkgapi
          libkgeomap
          libkipi
          libkleo
@@ -120,6 +120,7 @@ depends=(akonadi
          libkscreen
          libksieve
          libksysguard
+         libktorrent
          libkvkontakte
          libmediawiki
          mailcommon
@@ -132,6 +133,8 @@ depends=(akonadi
          pimcommon
          plasma-framework
          prison
+         purpose
+         qqc2-desktop-style
          qt5-base
          qt5-declarative
          qt5-webengine
