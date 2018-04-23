@@ -1,15 +1,15 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fish-irssi-git
-pkgver=242.cc75638
+pkgver=266.8418ac3
 _pkgname=irssi
-_pkgver=0.8.19
+_pkgver=1.1.1
 pkgrel=1
 pkgdesc="irssi FiSH plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/falsovsky/FiSH-irssi"
 license=('GPL')
 groups=()
-depends=('irssi' 'openssl' 'glib')
+depends=('irssi' 'openssl' 'glib2')
 makedepends=('git' 'cmake')
 provides=('fish-irssi')
 conflicts=('fish-irssi')
@@ -20,11 +20,11 @@ install=fish-irssi-git.install
 source=("https://github.com/irssi/irssi/releases/download/$_pkgver/$_pkgname-$_pkgver.tar.xz"
         "$pkgname::git://github.com/falsovsky/FiSH-irssi")
 noextract=()
-md5sums=('98c0d15c8f752a595520d817e1cb5667'
+md5sums=('1eb33d621c163827ee076f5c8ca2b5ee'
          'SKIP')
-sha1sums=('aabdc5422aa5ada067cf4d0dfdd16e4c2c2a1e53'
+sha1sums=('a6f984daf5fbf9db07a431b7a4a05fec15cc3c3a'
           'SKIP')
-sha256sums=('4ca0040548e814ea93eb7d602ab7d6d379afcbbdf10e84160523ce69c73ee5d3'
+sha256sums=('784807e7a1ba25212347f03e4287cff9d0659f076edfb2c6b20928021d75a1bf'
             'SKIP')
 
 pkgver() {
@@ -34,7 +34,8 @@ pkgver() {
 
 build() {
   cd $srcdir/$pkgname
-  cmake -DIRSSI_PATH:PATH="$srcdir/$_pkgname-$_pkgver"
+  cmake -DIRSSI_INCLUDE_DIR:PATH="$srcdir/$_pkgname-$_pkgver" \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr
   make
 }
 
