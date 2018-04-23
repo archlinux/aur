@@ -1,0 +1,36 @@
+diff --git a/src/settings/konsole.kcfg b/src/settings/konsole.kcfg
+index 44533d1..fa86095 100644
+--- a/src/settings/konsole.kcfg
++++ b/src/settings/konsole.kcfg
+@@ -82,7 +82,30 @@
+     </entry>
+     <entry name="TabBarStyleSheet" type="String">
+       <label>Control the visual style of the tab bar</label>
+-      <default>QTabBar::tab { min-width: 2em ; max-width: 25em }</default>
++      <default>
++        QTabBar,QTabBar::tab{
++            font-family: "sans-serif";
++            font-size: 15px;
++            height: 25px;
++            padding: 2px;
++            min-width: 15em;
++            border: 0px;
++            border-bottom: 1px solid palette(dark);
++            background-color: palette(dark);
++            color: palette(text);
++        }
++        QTabBar::tab:hover{
++            background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 palette(dark), stop: 0.85 palette(dark), stop: 1 palette(highlight));
++        }
++        QTabBar::tab:selected{
++            color: palette(dark);
++            font-weight: bold;
++            background-color: #475057;
++            border: 0px;
++            border-bottom-right-radius: 2px;
++            border-bottom-left-radius: 2px;
++        }
++      </default>
+     </entry>
+     <entry name="TabBarUseUserStyleSheet" type="Bool">
+       <label>Use a user-defined .css file for the tab bar</label>

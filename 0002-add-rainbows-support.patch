@@ -1,0 +1,211 @@
+From aac1ca5fcb30a27f785a3a0156dfc8bbbfefb040 Mon Sep 17 00:00:00 2001
+From: leaeasy <leaeasy@gmail.com>
+Date: Mon, 23 Apr 2018 10:38:41 +0800
+Subject: [PATCH 2/3] add rainbows support
+
+---
+ src/EditProfileDialog.cpp |  9 +++++++++
+ src/EditProfileDialog.h   |  1 +
+ src/EditProfileDialog.ui  |  7 +++++++
+ src/Profile.cpp           |  2 ++
+ src/Profile.h             |  7 +++++++
+ src/TerminalDisplay.cpp   | 13 +++++++++++++
+ src/TerminalDisplay.h     | 15 +++++++++++++++
+ src/ViewManager.cpp       |  1 +
+ 8 files changed, 55 insertions(+)
+
+diff --git a/src/EditProfileDialog.cpp b/src/EditProfileDialog.cpp
+index 9548d64..081a80a 100644
+--- a/src/EditProfileDialog.cpp
++++ b/src/EditProfileDialog.cpp
+@@ -611,6 +611,9 @@ void EditProfileDialog::setupAppearancePage(const Profile::Ptr profile)
+     connect(_ui->useFontLineCharactersButton, &QCheckBox::toggled, this,
+             &Konsole::EditProfileDialog::useFontLineCharacters);
+ 
++    _ui->rainbowButton->setChecked(profile->rainbow());
++    connect(_ui->rainbowButton, &QCheckBox::toggled, this, &Konsole::EditProfileDialog::setRainbow);
++
+     _ui->enableMouseWheelZoomButton->setChecked(profile->mouseWheelZoomEnabled());
+     connect(_ui->enableMouseWheelZoomButton, &QCheckBox::toggled, this,
+             &Konsole::EditProfileDialog::toggleMouseWheelZoom);
+@@ -648,6 +651,12 @@ void EditProfileDialog::useFontLineCharacters(bool enable)
+     updateTempProfileProperty(Profile::UseFontLineCharacters, enable);
+ }
+ 
++void EditProfileDialog::setRainbow(bool enable)
++{
++    preview(Profile::Rainbow, enable);
++    updateTempProfileProperty(Profile::Rainbow, enable);
++}
++
+ void EditProfileDialog::toggleMouseWheelZoom(bool enable)
+ {
+     updateTempProfileProperty(Profile::MouseWheelZoomEnabled, enable);
+diff --git a/src/EditProfileDialog.h b/src/EditProfileDialog.h
+index cfc4cbd..ca64ae3 100644
+--- a/src/EditProfileDialog.h
++++ b/src/EditProfileDialog.h
+@@ -128,6 +128,7 @@ private Q_SLOTS:
+     void showAllFontsButtonWarning(bool enable);
+     void setAntialiasText(bool enable);
+     void setBoldIntense(bool enable);
++    void setRainbow(bool enable);
+     void useFontLineCharacters(bool enable);
+     void showFontDialog();
+     void newColorScheme();
+diff --git a/src/EditProfileDialog.ui b/src/EditProfileDialog.ui
+index 60dec9b..f73a76e 100644
+--- a/src/EditProfileDialog.ui
++++ b/src/EditProfileDialog.ui
+@@ -673,6 +673,13 @@
+             </property>
+            </widget>
+           </item>
++          <item>
++           <widget class="QCheckBox" name="rainbowButton">
++            <property name="text">
++             <string>Rainbow Powers!</string>
++            </property>
++           </widget>
++          </item>
+          </layout>
+         </widget>
+        </item>
+diff --git a/src/Profile.cpp b/src/Profile.cpp
+index d51a84c..ec2a674 100644
+--- a/src/Profile.cpp
++++ b/src/Profile.cpp
+@@ -81,6 +81,7 @@ const Profile::PropertyInfo Profile::DefaultPropertyNames[] = {
+     , { AntiAliasFonts, "AntiAliasFonts" , APPEARANCE_GROUP , QVariant::Bool }
+     , { BoldIntense, "BoldIntense", APPEARANCE_GROUP, QVariant::Bool }
+     , { UseFontLineCharacters, "UseFontLineChararacters", APPEARANCE_GROUP, QVariant::Bool }
++    , { Rainbow, "Rainbow", APPEARANCE_GROUP, QVariant::Bool }
+     , { LineSpacing , "LineSpacing" , APPEARANCE_GROUP , QVariant::Int }
+ 
+     // Keyboard
+@@ -211,6 +212,7 @@ void Profile::useFallback()
+     setProperty(AntiAliasFonts, true);
+     setProperty(BoldIntense, true);
+     setProperty(UseFontLineCharacters, false);
++    setProperty(Rainbow, false);
+ 
+     setProperty(WordCharacters, QStringLiteral(":@-./_~?&=%+#"));
+ 
+diff --git a/src/Profile.h b/src/Profile.h
+index 8b89342..f8c16a9 100644
+--- a/src/Profile.h
++++ b/src/Profile.h
+@@ -270,6 +270,8 @@ public:
+          */
+         MouseWheelZoomEnabled,
+         /** (int) Keyboard modifiers to show URL hints */
++		/** (bool) Whether characters have rainbow powers */
++		Rainbow,
+         UrlHintsModifiers
+     };
+ 
+@@ -538,6 +540,11 @@ public:
+         return property<bool>(Profile::BoldIntense);
+     }
+ 
++    /** Convenience method for property<bool>(Profile::Rainbow) */
++    bool rainbow() const {
++        return property<bool>(Profile::Rainbow);
++    }
++
+     /** Convenience method for property<bool>(Profile::UseFontLineCharacters)*/
+     bool useFontLineCharacters() const
+     {
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index ec48ffb..3620d10 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -21,6 +21,7 @@
+ */
+ 
+ // Own
++#include <cmath>
+ #include "TerminalDisplay.h"
+ 
+ // Config
+@@ -358,6 +359,7 @@ TerminalDisplay::TerminalDisplay(QWidget* parent)
+     , _fontWidth(1)
+     , _fontAscent(1)
+     , _boldIntense(true)
++    , _rainbow(false)
+     , _lines(1)
+     , _columns(1)
+     , _usedLines(1)
+@@ -1615,6 +1617,7 @@ void TerminalDisplay::drawContents(QPainter& paint, const QRect& rect)
+             const RenditionFlags currentRendition = _image[loc(x, y)].rendition;
+ 
+             while (x + len <= rlx &&
++                    (!_rainbow || (_image[loc(x + len, y)].isSpace() && !_screenWindow->isSelected(x, y)) ) &&
+                     _image[loc(x + len, y)].foregroundColor == currentForeground &&
+                     _image[loc(x + len, y)].backgroundColor == currentBackground &&
+                     (_image[loc(x + len, y)].rendition & ~RE_EXTENDED_CHAR) == (currentRendition & ~RE_EXTENDED_CHAR) &&
+@@ -1688,6 +1691,16 @@ void TerminalDisplay::drawContents(QPainter& paint, const QRect& rect)
+             //(instead of textArea.topLeft() * painter-scale)
+             textArea.moveTopLeft(textScale.inverted().map(textArea.topLeft()));
+ 
++            if ( _rainbow ) {
++                qreal hue = qreal(x) / _usedColumns;
++                qreal offset = sin(qreal(y) / _usedLines * M_PI * 2) + 1;
++                qreal factor = fmod(hue + offset, 1);
++                _image[loc(x, y)].foregroundColor =
++                    CharacterColor(COLOR_SPACE_RGB,
++                                   QColor::fromHsvF(factor, 0.7, 1).rgba());
++            }
++
++
+             //paint text fragment
+             if (_printerFriendly) {
+                 drawPrinterFriendlyTextFragment(paint,
+diff --git a/src/TerminalDisplay.h b/src/TerminalDisplay.h
+index f6da500..940177a 100644
+--- a/src/TerminalDisplay.h
++++ b/src/TerminalDisplay.h
+@@ -449,6 +449,20 @@ public:
+         return _boldIntense;
+     }
+ 
++    /**
++     * Specified whether magical unicorn powers are enabled or not.
++	 * Defaults to disabled.
++     */
++    void setRainbow(bool value) {
++        _rainbow = value;
++    }
++    /**
++     * Returns true if magical unicorn powers are enabled.
++     */
++    bool rainbow() const {
++        return _rainbow;
++    }
++
+     /**
+      * Specifies whether line characters will be displayed using font instead
+      * of builtin code.
+@@ -900,6 +914,7 @@ private:
+     int _fontWidth;      // width
+     int _fontAscent;      // ascend
+     bool _boldIntense;   // Whether intense colors should be rendered with bold font
++    bool _rainbow;       // Whether are we a magical unicorn
+ 
+     int _leftMargin;    // offset
+     int _topMargin;    // offset
+diff --git a/src/ViewManager.cpp b/src/ViewManager.cpp
+index dd97650..dc89b5c 100644
+--- a/src/ViewManager.cpp
++++ b/src/ViewManager.cpp
+@@ -890,6 +890,7 @@ void ViewManager::applyProfileToView(TerminalDisplay *view, const Profile::Ptr p
+     view->setAntialias(profile->antiAliasFonts());
+     view->setBoldIntense(profile->boldIntense());
+     view->setUseFontLineCharacters(profile->useFontLineCharacters());
++    view->setRainbow(profile->rainbow());
+     view->setVTFont(profile->font());
+ 
+     // set scroll-bar position
+-- 
+2.17.0
+

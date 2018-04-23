@@ -1,6 +1,6 @@
 pkgbase = konsole-blurry
 	pkgdesc = Konsole with blurry support
-	pkgver = 16.12.2
+	pkgver = 18.04.0
 	pkgrel = 1
 	url = http://kde.org/applications/system/konsole/
 	arch = i686
@@ -20,10 +20,14 @@ pkgbase = konsole-blurry
 	provides = konsole
 	conflicts = kdebase-konsole<4.14.3-2
 	replaces = kdebase-konsole
-	source = http://download.kde.org/stable/applications/16.12.2/src/konsole-16.12.2.tar.xz
+	source = http://download.kde.org/stable/applications/18.04.0/src/konsole-18.04.0.tar.xz
 	source = 0001-add-blur-effect-when-set-transparency.patch
-	sha1sums = d889147f592bcdd40576756a4ba3a861807cee24
-	sha1sums = b3f8b444181e8e6f60d15d160375c26804429e9b
+	source = 0002-add-rainbows-support.patch
+	source = 0003-fix-qttab-default-style.patch
+	sha1sums = b7b3ef35d3575d6a544e8b9f8a3f37d201f6f77c
+	sha1sums = c130165b09c0fe1b7ec81342ab6d33576a67e82b
+	sha1sums = 7eaa9b5a47e7d824283481c8c6262b6b78295813
+	sha1sums = 78348b2a4c2c2e9dc5d97b06d7f99c52aff1c9a8
 
 pkgname = konsole-blurry
 
