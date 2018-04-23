@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fntsample-git
 pkgver=5.2.r0.geb3ee08
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="PDF and PostScript font samples generator."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/eugmes/fntsample"
 license=('GPL3')
 categories=()
 groups=()
-depends=('cairo' 'fontconfig' 'freetype2' 'glib' 'pango')
+depends=('cairo' 'fontconfig' 'freetype2' 'glib2' 'pango')
 makedepends=('git' 'cmake')
 optdepends=()
 checkdepends=()
