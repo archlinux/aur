@@ -1,6 +1,6 @@
 pkgbase = amberfish-git
 	pkgdesc = A general purpose text retrieval software
-	pkgver = 2.2.0.8
+	pkgver = 2.2.0.r8
 	pkgrel = 1
 	url = https://github.com/nassibnassar/amberfish.git
 	arch = i686
