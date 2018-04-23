@@ -2,21 +2,30 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
 arch=('x86_64')
 license=('GPL3')
 install=install
-depends=('libuv' 'knot>=2.6.4' 'luajit' 'cmocka' 'lua51-sec' 'lua51-socket' 'hiredis' 'libmemcached' 'libsystemd')
+depends=('cmocka'
+	 'gnutls'
+         'knot>=2.6.4'
+	 'libedit'
+	 'libsystemd'
+         'libuv'
+	 'lmdb'
+	 'lua51-sec'
+	 'lua51-socket'
+	 'luajit')
 source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"
 	"kresd.conf"
 	"root.keys")
 
 _makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver V=1"
 
-sha256sums=('7bb7f0cd8bbb1d99706d56ed119bdffce094628479438896f3740644efe614fa'
+sha256sums=('2d19c5daf8440bd3d2acd1886b9ede65f04f7753c6fd4618a92a1a4ba3b27a9b'
 	    '929658c7432252d5123ff11ee07759c595c8f5a3f4320a62d451a5f69cd2254a'
 	    '06c74ef5ef53344c78c9af2b29dc458a2abe93f1bff429705955c033e7a0686f')
 
