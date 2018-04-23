@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 pkgname=cabbage
 pkgrel=1 
-pkgver=2.0.0
+pkgver=2.0.02
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -9,18 +9,20 @@ license=('GPLv3')
 makedepends=('freeglut' 'curl' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
              'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim')
 depends=('csound' 'steinberg-vst36')
+conflicts=('cabbage')
 provides=('cabbage')
-conflicts=('cabbage-git')
-source=('https://github.com/rorywalsh/cabbage/archive/v2.0.0.tar.gz'
+source=('git+https://github.com/rorywalsh/cabbage.git#tag=v2.0.02'
         'git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0'
-        'fix_paths.patch'
+        'fix_default_dirs.patch'
+        'cabbage.png'
         'Cabbage.desktop'
         'CabbageLite.desktop')
-md5sums=('e198a1380f8b06b1c0ed3969c0d99b4c'
+md5sums=('SKIP'
          'SKIP'
-         '24c18da0d263ebbddadfe6454c74bffb'
-         'c499a03801cf0e760c14759ab1927bef'
-         '39992361c05babc4d12cbdcd2c3f6e04')
+         '822602714ba40c56144debaec5e1b0cb'
+         'c3c8e35dd46c86f22a3565aa4dd828a8'
+         '35cfc89844c90769f4dc4f8309b340b1'
+         'c39a85709e31e03a0850f2e324a4faea')
 
 _projucer_dir="JUCE/extras/Projucer/Builds/LinuxMakefile/build/"
 _projucer="${_projucer_dir}/Projucer"
@@ -72,13 +74,27 @@ function patch_strings_in_file() {
 }
 
 prepare() {
-  mv "${srcdir}/cabbage-2.0.0" "${srcdir}/cabbage"
-
   cd "${srcdir}/cabbage"
-  patch -p1 < ../../fix_paths.patch
+  for f in *jucer; do
+    sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$f"
+    sed -i "s@/usr/local/lib@/usr/lib@g" "$f"
+  done
+
+  b="${srcdir}/cabbage/Builds/LinuxMakefile/buildCabbage"
+  sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$b"
+  sed -i "/CabbageBuild\/cabbage.desktop/d" "$b"
+
+  patch -p1 < ../../fix_default_dirs.patch
+}
+
+pkgver() {
+	cd "${srcdir}/cabbage"
+	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
 }
 
 build() {
+  # Projucer
+
   sed -i -e "s/JUCER_ENABLE_GPL_MODE 0/JUCER_ENABLE_GPL_MODE 1/" \
             "${srcdir}/JUCE/extras/Projucer/JuceLibraryCode/AppConfig.h"
   cd "${srcdir}/JUCE/extras/Projucer/Builds/LinuxMakefile/"
@@ -89,30 +105,24 @@ build() {
   # will be replaced with the following once Cabbage is ported to JUCE 5.3.0
   # "${srcdir}/${_projucer_dir}" --set-global-search-path linux vst3Path /usr/include/vst36/
 
-  # Cabbage
+  # Cabage
 
   cd "${srcdir}/cabbage/Builds/LinuxMakefile"
   ./buildCabbage
 }
 
 package() {
+  install -Dm644 cabbage.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cabbage.png"
   install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/Cabbage.desktop"
   install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/CabbageLite.desktop"
 
   cd "${srcdir}/cabbage/Builds/LinuxMakefile/CabbageBuild/"
-  install -d "${pkgdir}/opt/Cabbage"
-#  install -Dm644 Cabbage "${pkgdir}/opt/Cabbage/Cabbage"
-#  install -Dm644 CabbageLite "${pkgdir}/opt/Cabbage/CabbageLite"
-#  install -Dm644 CabbagePluginEffect.so "${pkgdir}/opt/Cabbage/CabbagePluginEffect.so"
-#  install -Dm644 CabbagePluginSynth.so "${pkgdir}/opt/Cabbage/CabbagePluginSynth.so"
-#  install -Dm644 cabbage.png "${pkgdir}/opt/Cabbage/cabbage.png"
-#  install -Dm644 opcodes.txt "${pkgdir}/opt/Cabbage/opcodes.txt"
-#  install -Dm644 Examples "${pkgdir}/opt/Cabbage/Examples"
-  cp -R ./* "${pkgdir}/opt/Cabbage/"
-  
 
+  for f in Cabbage CabbageLite CabbagePluginEffect.so CabbagePluginSynth.so opcodes.txt; do
+    install -Dm755 "$f" "${pkgdir}/usr/bin/$f"
+  done
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s ../../opt/Cabbage/Cabbage "${pkgdir}/usr/bin/Cabbage"
-  ln -s ../../opt/Cabbage/CabbageLite "${pkgdir}/usr/bin/CabbageLite"
+  install -d "${pkgdir}/usr/share/doc/cabbage/examples"
+  cp -r Examples/* "${pkgdir}/usr/share/doc/cabbage/examples/"
+  chmod -R 755 "${pkgdir}/usr/share/doc/cabbage"
 }
