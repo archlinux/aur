@@ -6,13 +6,12 @@
 _pkgname=entrance
 pkgname=$_pkgname-git
 pkgver=3.0.0_alpha2.r262.g0375e54
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('efl' 'xorg-xauth' 'sudo')
-optdepends=('ekbd-git: For virtual keyboard')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -31,29 +30,22 @@ prepare() {
       -e '/"reboot"/ s|:.*|: "/usr/bin/systemctl reboot";|' \
       -e '/"suspend"/ s|:.*|: "/usr/bin/systemctl suspend";|' \
       -i "$srcdir/$_pkgname/data/entrance.conf.in"
-  rm -rf build
-  mkdir "$srcdir/build"
 }
 
 build() {
-  cd "$srcdir/build"
+  cd "$_pkgname"
 
-  meson ../$_pkgname  \
-    --prefix="/usr" \
-    --sbindir="/usr/bin" \
-    --bindir="/usr/bin" \
-    --datadir="/usr/share" \
-    --sysconfdir="/etc" \
+  arch-meson build \
     -Dconsolekit=false \
     -Dlogind=true
-  ninja
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$_pkgname"
 
- DESTDIR="$pkgdir" ninja install
-cd "$srcdir/$_pkgname"
+ DESTDIR="$pkgdir" ninja -C build install
+
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog README
