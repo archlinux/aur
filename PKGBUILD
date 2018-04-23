@@ -7,7 +7,7 @@ pkgver() {
 	cd ${_basename} || exit
 	echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="This is protobuf-c-rpc, a library for performing RPC with protobuf-c."
 arch=('i686' 'x86_64')
 url="https://github.com/protobuf-c/${_basename}"
