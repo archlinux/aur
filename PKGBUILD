@@ -2,7 +2,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Maintainer : Solomon Choina <shlomochoina@gmail.com>
 pkgname=falkon-git
-pkgver=3.0.0.55.gd04e0091
+pkgver=3.0.0.209.ga5ba6df9
 pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
 arch=('i686' 'x86_64')
