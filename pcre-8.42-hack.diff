@@ -1,0 +1,40 @@
+--- a/src/pcrewrap.cc	2014-05-04 12:15:17.000000000 +0300
++++ b/src/pcrewrap.cc	2018-04-23 20:13:13.900797729 +0300
+@@ -74,7 +74,7 @@
+ namespace pcre
+ {
+   typedef map<char const *,
+-              pair<struct real_pcre const *, struct pcre_extra const *> >
++              pair<struct real_pcre8_or_16 const *, struct pcre_extra const *> >
+               regex_cache;
+ 
+   class regex_cache_manager
+@@ -86,7 +86,7 @@
+       }
+ 
+     void store(char const * pattern,
+-               pair<struct real_pcre const *, struct pcre_extra const *>
++               pair<struct real_pcre8_or_16 const *, struct pcre_extra const *>
+                data)
+       {
+         cache[pattern] = data;
+--- a/src/pcrewrap.hh	2014-05-04 12:15:17.000000000 +0300
++++ b/src/pcrewrap.hh	2018-04-23 20:13:15.174151327 +0300
+@@ -18,7 +18,7 @@
+ // definitions and so we don't actually expose it here. Unfortunately, this
+ // means we have to hope this pair of forward declarations will not change...
+ 
+-struct real_pcre;
++struct real_pcre8_or_16;
+ struct pcre_extra;
+ 
+ namespace pcre
+@@ -61,7 +61,7 @@
+     regex & operator=(regex const &);
+ 
+     // data
+-    struct real_pcre const * basedat;
++    struct real_pcre8_or_16 const * basedat;
+     struct pcre_extra const * extradat;
+ 
+     // used by constructors
