@@ -1,6 +1,6 @@
 _repo="znc-clientbuffer"
 pkgname=${_repo}-git
-pkgver=r35.d55a108
+pkgver=r37.7ae14f8
 pkgrel=1
 pkgdesc=" ZNC module for client specific buffers"
 arch=('i686' 'x86_64' 'armv7h')
