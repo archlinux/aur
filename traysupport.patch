@@ -1,0 +1,15 @@
+diff --git a/src/main/tray.js b/src/main/tray.js
+index 889d1c8..cea1081 100644
+--- a/src/main/tray.js
++++ b/src/main/tray.js
+@@ -36,9 +36,7 @@ function setWindowFocus (flag) {
+ }
+ 
+ function initLinux () {
+-  checkLinuxTraySupport(function (err) {
+-    if (!err) createTray()
+-  })
++  createTray()
+ }
+ 
+ function initWin32 () {

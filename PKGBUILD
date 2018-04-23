@@ -2,21 +2,23 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf' 'electron')
+depends=('gconf' 'electron' 'libnotify')
 makedepends=('yarn')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        "traysupport.patch")
 sha256sums=('2622485e1eee66c70446902d9645bb84a407236778d43c81c4555f98c9c2a30f'
             '4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c'
-            '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539')
+            '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539'
+            '111d9eea78a64932b0c0d20e07bca39ccbf372fbe59977255c7a9ae1b39f7d79')
 
 [ "$CARCH" = "i686" ]   && _platform=ia32
 [ "$CARCH" = "x86_64" ] && _platform=x64
@@ -25,6 +27,7 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   sed -i '/"electron.*":/d' package.json
+  patch -p1 -i "$srcdir/traysupport.patch"
 }
 
 build() {
