@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pcre2
 	pkgdesc = A library that implements Perl 5-style regular expressions. 2nd version (mingw-w64)
 	pkgver = 10.31
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pcre.org/
 	arch = any
 	license = BSD
@@ -17,9 +17,7 @@ pkgbase = mingw-w64-pcre2
 	options = !strip
 	options = !buildflags
 	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-10.31.tar.bz2
-	source = bug_2067.patch
 	sha256sums = e07d538704aa65e477b6a392b32ff9fc5edf75ab9a40ddfc876186c4ff4d68ac
-	sha256sums = 9b16b5e4ba28bddb1ed061e3562f1e900dfac4e887ca81059b9a168e10575402
 
 pkgname = mingw-w64-pcre2
 
