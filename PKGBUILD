@@ -5,13 +5,13 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha2.r261.g51d128c
+pkgver=3.0.0_alpha2.r262.g0375e54
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('efl-git' 'xorg-xauth' 'sudo')
+depends=('efl' 'xorg-xauth' 'sudo')
 optdepends=('ekbd-git: For virtual keyboard')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
