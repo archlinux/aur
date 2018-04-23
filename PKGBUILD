@@ -2,7 +2,7 @@
 _lang=spa-eng
 pkgname=dict-freedict-${_lang}
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Spanish -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -10,7 +10,7 @@ license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
-source=("https://sourceforge.net/projects/freedict/files/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
+source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
 sha512sums=('d9d92d238b0c849a424ff185187eae39fca6b5fe0be41ce7f77153df154da4b2ac765511b03da2bb418c087ac27d045d536aa755214b4c7161ea30046856a708')
 
 build()
