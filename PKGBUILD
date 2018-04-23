@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=biblesync  
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="multicast shared co-navigation library for Bible programs"
-url="http://sourceforge.net/projects/gnomesword/files/BibleSync/1.1.2/"
+url="https://github.com/karlkleinpaste/biblesync.git/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libutil-linux' 'gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/karlkleinpaste/biblesync/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ad176f8a19e2a34b984df384f7c1fb109ea8babc05250d1e66a7b874428519de91b93ec4b7014068e80f30c862827c0f2878641928ed60486d1a5e48c41e6b0c')
+sha512sums=('6ba649d42d791e9d14feb9c06f5673f51948f51c5154bb34eaee2e24dc21dcde1f3eeb5d87f0ad8021d999c6e07ea9a54e0b8ac353de6e7e1e8c4d01fbfd5dcc')
 
 build() {
   cd $pkgname-$pkgver
