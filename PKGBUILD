@@ -1,9 +1,9 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
-# Contributor: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=wrk2-git
 _pkgname=wrk2
-pkgver=r87.c4250ac
+pkgver=r110.e0109df
 pkgrel=1
 pkgdesc='a HTTP benchmarking tool based mostly on wrk'
 arch=('i686' 'x86_64')
