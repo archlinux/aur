@@ -1,6 +1,6 @@
 pkgbase = containernet-git
 	pkgdesc = Mininet with added Docker support
-	pkgver = 20171220
+	pkgver = 20180423
 	pkgrel = 1
 	url = https://github.com/containernet/containernet/
 	install = containernet-git.install
@@ -21,6 +21,8 @@ pkgbase = containernet-git
 	depends = python2-pytest
 	depends = python2-urllib3
 	depends = python-iptables
+	depends = python2-ipaddress
+	depends = python2-docker
 	optdepends = xorg-xhost
 	provides = mininet
 	conflicts = mininet

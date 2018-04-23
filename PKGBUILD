@@ -3,12 +3,12 @@
 # Contributor: Walter Dworak <preparationh67@gmail.com>
 
 pkgname=containernet-git
-pkgver=20171220
+pkgver=20180423
 pkgrel=1
 pkgdesc="Mininet with added Docker support"
 url="https://github.com/containernet/containernet/"
 license=('custom')
-depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch' 'docker' 'python2-pytest' 'python2-urllib3' 'python-iptables')
+depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch' 'docker' 'python2-pytest' 'python2-urllib3' 'python-iptables' 'python2-ipaddress' 'python2-docker')
 provides=('mininet')
 optdepends=('xorg-xhost')
 makedepends=('help2man' 'python2-setuptools' 'git')
