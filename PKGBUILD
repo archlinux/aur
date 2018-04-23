@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 pkgname=cabbage-git
 pkgrel=1 
-pkgver=2.0.0r1173
+pkgver=2.0.0r1188
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -13,14 +13,16 @@ conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=master'
         'git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0'
-        'buildCabbage.patch'
+        'fix_default_dirs.patch'
+        'cabbage.png'
         'Cabbage.desktop'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '14c1f8e2590b0a98b3448a4267e679f2'
-         'c499a03801cf0e760c14759ab1927bef'
-         '39992361c05babc4d12cbdcd2c3f6e04')
+         '822602714ba40c56144debaec5e1b0cb'
+         'c3c8e35dd46c86f22a3565aa4dd828a8'
+         '35cfc89844c90769f4dc4f8309b340b1'
+         'c39a85709e31e03a0850f2e324a4faea')
 
 _projucer_dir="JUCE/extras/Projucer/Builds/LinuxMakefile/build/"
 _projucer="${_projucer_dir}/Projucer"
@@ -72,7 +74,26 @@ function patch_strings_in_file() {
 }
 
 prepare() {
-  # Projucer - building here to use it in pkgver()
+  cd "${srcdir}/cabbage"
+  for f in *jucer; do
+    sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$f"
+    sed -i "s@/usr/local/lib@/usr/lib@g" "$f"
+  done
+
+  b="${srcdir}/cabbage/Builds/LinuxMakefile/buildCabbage"
+  sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$b"
+  sed -i "/CabbageBuild\/cabbage.desktop/d" "$b"
+
+  patch -p1 < ../../fix_default_dirs.patch
+}
+
+pkgver() {
+	cd "${srcdir}/cabbage"
+	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  # Projucer
 
   sed -i -e "s/JUCER_ENABLE_GPL_MODE 0/JUCER_ENABLE_GPL_MODE 1/" \
             "${srcdir}/JUCE/extras/Projucer/JuceLibraryCode/AppConfig.h"
@@ -84,36 +105,24 @@ prepare() {
   # will be replaced with the following once Cabbage is ported to JUCE 5.3.0
   # "${srcdir}/${_projucer_dir}" --set-global-search-path linux vst3Path /usr/include/vst36/
 
-  # Cabbage
+  # Cabage
 
-  cd "${srcdir}/cabbage"
-  for f in *jucer; do
-    sed -i "s@/usr/local/include/csound@/usr/include/csound@g" "$f"
-    sed -i "s@/usr/local/lib@/usr/lib@g" "$f"
-  done
-  patch -p1 < ../../buildCabbage.patch
-}
-
-pkgver() {
-	cd "${srcdir}/cabbage"
-	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
-}
-
-build() {
   cd "${srcdir}/cabbage/Builds/LinuxMakefile"
   ./buildCabbage
 }
 
 package() {
+  install -Dm644 cabbage.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cabbage.png"
   install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/Cabbage.desktop"
   install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/CabbageLite.desktop"
 
   cd "${srcdir}/cabbage/Builds/LinuxMakefile/CabbageBuild/"
-  install -d "${pkgdir}/opt/Cabbage"
-  cp -R ./* "${pkgdir}/opt/Cabbage/"
-  chmod -R 755 "${pkgdir}/opt/Cabbage"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s ../../opt/Cabbage/Cabbage "${pkgdir}/usr/bin/Cabbage"
-  ln -s ../../opt/Cabbage/CabbageLite "${pkgdir}/usr/bin/CabbageLite"
+  for f in Cabbage CabbageLite CabbagePluginEffect.so CabbagePluginSynth.so opcodes.txt; do
+    install -Dm755 "$f" "${pkgdir}/usr/bin/$f"
+  done
+
+  install -d "${pkgdir}/usr/share/doc/cabbage/examples"
+  cp -r Examples/* "${pkgdir}/usr/share/doc/cabbage/examples/"
+  chmod -R 755 "${pkgdir}/usr/share/doc/cabbage"
 }
