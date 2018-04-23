@@ -3,13 +3,15 @@
 _pkgname=ffmpegfs
 pkgname=ffmpegfs-git
 pkgver=v1.2.r73.bd068fa
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
 url="https://nschlia.github.io/ffmpegfs/"
 license=('GPL3' 'FDL1.3')
 depends=('fuse' 'ffmpeg' 'sqlite3')
 makedepends=('git' 'asciidoc')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("git+https://github.com/nschlia/ffmpegfs.git")
 sha384sums=('SKIP')
 
