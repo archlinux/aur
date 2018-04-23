@@ -3,14 +3,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mcplay
 pkgver=0.3j
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A ncurses audio player."
 arch=('i686' 'x86_64')
 url="http://www.yahuxo.de/mcplay/"
-license=('GPLv2')
+license=('GPL')
 groups=()
-depends=('glib' 'ncurses' 'mpg123' 'sox')
+depends=('glib2' 'ncurses' 'mpg123' 'sox')
 makedepends=()
 optdepends=()
 checkdepends=()
