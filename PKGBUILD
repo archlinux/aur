@@ -1,7 +1,7 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp-git
-pkgver=0.0.8.1
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='GTK3 Music Player'
 url='http://openmusicplayer.com/'
