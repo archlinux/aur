@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mit-scheme-git
-pkgver=9.2.0.1491.gbb8d10f80
+pkgver=9.2.0.1507.g8d66b76a3
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('openssl: support for openssl')
 makedepends=('git' 'mit-scheme')
 provides=('mit-scheme')
 conflicts=('mit-scheme')
-source=("git+http://git.savannah.gnu.org/r/mit-scheme.git#commit=bb8d10f80c667f63618c99b078448fb6e2156278")
+source=("git+http://git.savannah.gnu.org/r/mit-scheme.git")
 md5sums=('SKIP')
 options=('!makeflags')
 
@@ -21,7 +21,6 @@ pkgver() {
 }
 
 build() {
-  LANG=C
   cd ${pkgname%-git}/src
   ./Setup.sh
   ./configure --prefix=/usr --with-x --enable-native-code

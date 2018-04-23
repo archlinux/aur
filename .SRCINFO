@@ -1,6 +1,6 @@
 pkgbase = mit-scheme-git
 	pkgdesc = MIT/GNU Scheme from git
-	pkgver = 9.2.0.1491.gbb8d10f80
+	pkgver = 9.2.0.1507.g8d66b76a3
 	pkgrel = 1
 	url = http://www.gnu.org/software/mit-scheme/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = mit-scheme-git
 	provides = mit-scheme
 	conflicts = mit-scheme
 	options = !makeflags
-	source = git+http://git.savannah.gnu.org/r/mit-scheme.git#commit=bb8d10f80c667f63618c99b078448fb6e2156278
+	source = git+http://git.savannah.gnu.org/r/mit-scheme.git
 	md5sums = SKIP
 
 pkgname = mit-scheme-git
