@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
@@ -10,9 +10,11 @@ options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapack')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz")
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz"
+        "f0c0e0c6fa198ed3700be4a2bd8f3cc7d70fc127.patch")
 sha256sums=('f1b87684d75496a1054405ae3ee0b6573acaf3dad39eaf4f1d66fdd7e03dc852'
-            '298c69ee006d7675e1ff9d371ba8b0d9e7e88374bb7ba0f9d0789851d352ec6e')
+            '298c69ee006d7675e1ff9d371ba8b0d9e7e88374bb7ba0f9d0789851d352ec6e'
+            '5d110b537eea55a1dfa9934277a8a7d9d3730d6243408e31c5ebdfb87d8b0373')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,6 +34,7 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DBUILD_JASPER=OFF'
             '-DBUILD_JPEG=OFF'
             '-DBUILD_PNG=OFF'
+            '-DBUILD_WEBP=OFF'
             '-DBUILD_OPENEXR=OFF'
             '-DWITH_VTK=OFF'
             '-DWITH_IPP=OFF'
@@ -39,6 +42,7 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
 
 prepare() {
   cd "$srcdir/opencv-$pkgver"
+  patch -Np1 -i ../"f0c0e0c6fa198ed3700be4a2bd8f3cc7d70fc127.patch"
 }
 
 build() {
