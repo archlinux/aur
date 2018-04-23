@@ -1,5 +1,5 @@
 # Maintainer: Ulrik Boll Djurtoft <ullebe1@gmail.com>
-pkgname=appeditor # '-bzr', '-git', '-hg' or '-svn'
+pkgname=appeditor-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r43.bdf596f
 pkgrel=1
 pkgdesc="AppEditor allows you to edit application entries in the application menu."
