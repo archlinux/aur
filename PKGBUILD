@@ -43,7 +43,7 @@ prepare() {
     -DCMAKE_SKIP_RPATH=ON \
     -DCUDA_CUDA_LIBRARY=/opt/cuda/lib64/stub/libcuda.so \
     -DCUDA_NVCC_FLAGS='-std=c++11' \
-    -DCUDA_HOST_COMPILER=/usr/bin/cc-6 \
+    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
     -DINSTALL_MODELS=ON \
     -DOPENCV_PREFIX=/usr
 }
