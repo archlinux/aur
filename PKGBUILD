@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=arsdk3
 pkgver=3.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The SDK for Parrot Bebop drones"
 arch=('x86_64')
 url="http://developer.parrot.com/docs/SDK3/"
@@ -26,14 +26,14 @@ package() {
 	cd "$srcdir"/out/arsdk-native/staging
 
 	_target="$pkgdir"/opt/$pkgname
-	mkdir -p $_target
+	install -d $_target
 	install -Dm 755 native-wrapper.sh "$_target"
 
 	cd usr
 	cp -r bin include lib "$_target"
 
 	cd share
-	mkdir -p "$pkgdir"/usr/share
+	install -d "$pkgdir"/usr/share
 	cp -r mavlink "$pkgdir"/usr/share/mavlink
 	mkdir "$_target"/share
 	cp -r aclocal "$_target"/share/aclocal
@@ -41,14 +41,14 @@ package() {
 	# simplify directory structure, but add symlinks for compatibility
 	cd "$_target"
 	ln -s . usr
-	mkdir -p out/arsdk-native
+	install -d out/arsdk-native
 	ln -s ../.. out/arsdk-native/staging
 
 	# install license
 	install -Dm 644 "$srcdir"/packages/ARSDKBuildUtils/LICENSE.md "$pkgdir"/usr/share/licenses/LICENSE
 
 	# copy samples
-	mkdir -p samples
+	install -d samples
 	cp -r "$srcdir"/packages/Samples/Unix/* samples
 
 	# fix up hard-coded paths
@@ -59,4 +59,8 @@ package() {
 	for f in lib/pkgconfig/*; do
 		sed -i "s|$_srcpath|/opt/$pkgname|g" "$f"
 	done
+
+    # set ARSDK_ROOT environment variable
+    install -d "${pkgdir}"/etc/profile.d
+    echo export ARSDK_ROOT=/opt/arsdk3 > "${pkgdir}"/etc/profile.d/arsdk3.sh
 }
