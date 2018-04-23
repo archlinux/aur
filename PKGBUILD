@@ -1,7 +1,7 @@
 # Maintainer: Tim Wanders <timwanders241@gmail.com>
 _pkgname=pacman-src
 pkgname=pacman-src-git
-pkgver=bd4f0d4
+pkgver=1
 pkgrel=1
 pkgdesc="pacman-src: A simple tool to compile packages from source using the ABS"
 arch=('any')
