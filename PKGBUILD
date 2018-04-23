@@ -5,7 +5,7 @@
 
 pkgname=joplin
 pkgver=1.0.83
-pkgrel=3
+pkgrel=4
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
 makedepends=("git" "nodejs" "rsync" "npm")
