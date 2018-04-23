@@ -1,6 +1,6 @@
 pkgbase = marker-git
 	pkgdesc = Markdown editor for linux made with Gtk+-3.0
-	pkgver = 2018.03.09.r78.g54ba2b64
+	pkgver = 2018.03.09.r87.g4e0d3ef6
 	pkgrel = 1
 	url = https://github.com/fabiocolacio/Marker
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = marker-git
 	optdepends = pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX
 	provides = marker
 	conflicts = marker
-	source = git+https://github.com/fabiocolacio/Marker.git
+	options = !buildflags
+	source = marker::git+https://github.com/fabiocolacio/Marker.git
 	source = scidown::git+https://github.com/Mandarancio/scidown.git
 	source = charter::git+https://github.com/Mandarancio/charter.git
 	source = tinyexpr::git+https://github.com/codeplea/tinyexpr.git
