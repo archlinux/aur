@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=vibe-git
-pkgver=20180203.220.bed225a
+pkgver=20180412.231.d522045
 pkgrel=1
 pkgdesc="A collection of QML plugins used throughout Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
