@@ -4,13 +4,14 @@ pkgname=lib32-munt-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
 pkgver=1977.aa2a2f2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://munt.sourceforge.net"
 license=(LGPL2.1)
 depends=('lib32-portaudio' 'lib32-libpulse' 'lib32-alsa-lib')
 makedepends=('git' 'cmake')
 options=(staticlibs)
+provides=('lib32-munt')
 source=(git://github.com/munt/munt.git)
 md5sums=(SKIP)
 pkgver() {
