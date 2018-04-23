@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r38904.3cbcbdb00e29
+pkgver=3.r38930.fdf18345ddf3
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
