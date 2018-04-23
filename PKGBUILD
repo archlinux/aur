@@ -2,31 +2,32 @@
 
 pkgname="python-fido2"
 pkgver="0.3.0"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="Library for FIDO 2.0, including communication with a device over USB"
 url="https://github.com/Yubico/python-fido2"
 license=('custom:BSD-2-clause')
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
+
+_tarball_basename="fido2-${pkgver}"
 source=(
-  "python-fido2-${pkgver}.tar.gz::https://github.com/Yubico/${pkgname}/archive/${pkgver}.tar.gz"
-  "python-fido2-${pkgver}.tar.gz.sig"
+  "https://github.com/Yubico/${pkgname}/releases/download/${pkgver}/${_tarball_basename}.tar.gz"{,.sig}
 )
 validpgpkeys=(
-  '57A9DEED4C6D962A923BB691816F3ED99921835E' # Emil Lundberg <emil@yubico.com>
   '20EE325B86A81BCBD3E56798F04367096FBA95E8' # Dain Nilsson <dain@yubico.com>
 )
-sha256sums=('8648c3f0e0aa4310ee1b037f538185bad7f9c0c471158c11a20454caaec535d3'
+sha256sums=('32c0db375458853d68cbbeb04861c412a05c22c873236a0c4f71296dc983ab35'
             'SKIP')
 
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py test
-}
+# Tests don't currently work in release tarballs
+# check() {
+#   cd "${srcdir}/${_tarball_basename}"
+#   python setup.py test
+# }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_tarball_basename}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
 

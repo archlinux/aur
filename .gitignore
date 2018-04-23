@@ -2,5 +2,6 @@
 /src/
 
 /*.tar.gz
+/*.tar.gz.sig
 /*.tar.xz
 /*.tar.xz.sig
