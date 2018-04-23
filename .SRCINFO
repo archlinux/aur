@@ -1,0 +1,16 @@
+pkgbase = librevisa-git
+	pkgdesc = Compliant implementation of the VISA standard in a free software library from git
+	pkgver = alpha.2013.08.12.r6.g0a5cb66
+	pkgrel = 1
+	url = http://www.librevisa.org/
+	arch = any
+	license = GPL3
+	depends = avahi
+	depends = libusb
+	provides = librevisa
+	conflicts = librevisa
+	source = librevisa::git+http://www.librevisa.org/git/librevisa.git
+	md5sums = SKIP
+
+pkgname = librevisa-git
+
