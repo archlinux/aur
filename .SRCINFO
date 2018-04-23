@@ -1,7 +1,7 @@
 pkgbase = python-palettable
 	pkgdesc = Color palettes for Python
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/palettable
 	arch = any
 	license = MIT
@@ -19,4 +19,8 @@ pkgbase = python-palettable
 pkgname = python-palettable
 	depends = python
 	depends = python-matplotlib
+
+pkgname = python2-palettable
+	depends = python2
+	depends = python2-matplotlib
 

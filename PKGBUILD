@@ -3,9 +3,9 @@
 
 _name=palettable
 pkgbase='python-palettable'
-pkgname=('python-palettable')
+pkgname=('python-palettable' 'python2-palettable')
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Color palettes for Python"
 arch=('any')
 url=https://pypi.org/project/palettable
