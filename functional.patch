@@ -1,0 +1,12 @@
+diff --git a/ClientStats.h b/ClientStats.h                                                                                                                                                                                                                                      
+index 2533bf6..1fde607 100644
+--- a/ClientStats.h
++++ b/ClientStats.h
+@@ -11,6 +11,7 @@
+ #include <condition_variable>
+ #include <thread>
+ #include <vector>
++#include <functional>
+ 
+ #include "fuse_optype.h"
+ #include "logger.h"
