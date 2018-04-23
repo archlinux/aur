@@ -7,12 +7,11 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="A general purpose text retrieval software"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/amberfish/"
+url="https://github.com/nassibnassar/amberfish"
 license=('GPL2')
 depends=('xerces-c')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nassibnassar/amberfish/archive/v${pkgver}.tar.gz")
 sha256sums=('73ebf5a6b8105b41055c6ec6ed7c820621ef064414d190dad6c80b0f78fae175')
-LANG=C
 
 build() {
   cd ${pkgname}-${pkgver}
