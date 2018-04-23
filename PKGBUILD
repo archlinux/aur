@@ -1,12 +1,12 @@
 # Maintainer: Antoni Kepinski <hello[at]akepinski[dot]me>
 pkgname=archfetch
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple CLI system information tool for Arch Linux."
 url="https://github.com/xxczaki/archfetch/"
 arch=('i686' 'x86_64')
 license=('MIT')
-makedepens=('git')
+makedepends=('git')
 _gitroot="git://github.com/xxczaki/archfetch.git"
 _gitname="archfetch"
 
