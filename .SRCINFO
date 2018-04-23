@@ -1,0 +1,17 @@
+pkgbase = minica-git
+	pkgdesc = A small, simple CA intended for use in situations where the CA operator also operates each host where a certificate will be used.
+	pkgver = r8.3a621c0
+	pkgrel = 1
+	url = https://github.com/jsha/minica
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = go
+	provides = minica=r8.3a621c0
+	conflicts = minica
+	source = minica::git+https://github.com/jsha/minica.git
+	md5sums = SKIP
+
+pkgname = minica-git
+
