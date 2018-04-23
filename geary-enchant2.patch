@@ -32,6 +32,6 @@ index 5874a98c..818d55f6 100644
  javascriptcoregtk_vapi = valac.find_library('javascriptcore-4.0', dirs: vapi_dir)
 -enchant = dependency('enchant', version: '>= 1.6')
 +enchant = dependency('enchant-2', version: '>= 1.6')
- libunwind = declare_dependency(
-    dependencies: [
-      valac.find_library('libunwind', dirs: vapi_dir),
+ 
+ # System dependencies ensures appropriate versions, but the declared
+ # depencency is what we actually build against.
