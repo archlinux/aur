@@ -1,14 +1,17 @@
 pkgbase = rpi_tempmon
 	pkgdesc = Raspberry pi, CPU GPU temperature monitor with various functions, python 3
-	pkgver = 2.0
-	pkgrel = 1
+	pkgver = 2.1
+	pkgrel = 2
 	url = https://github.com/gavinlyonsrepo/raspberrypi_tempmon
 	arch = any
 	license = GPL
 	optdepends = ssmtp
 	optdepends = python-matplotlib
-	source = https://github.com/gavinlyonsrepo/raspberrypi_tempmon/archive/2.0.tar.gz
-	md5sums = 2c1dd48352a517c0f47144822106fdf8
+	optdepends = libnotify
+	optdepends = sysbench
+	optdepends = python-psutil
+	source = https://github.com/gavinlyonsrepo/raspberrypi_tempmon/archive/2.1.tar.gz
+	md5sums = 95b60f4e7f0fe19e0b3c6bd094702f92
 
 pkgname = rpi_tempmon
 
