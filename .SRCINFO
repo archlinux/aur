@@ -1,9 +1,8 @@
 pkgbase = cri-o
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 	pkgver = 1.9.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes-incubator/cri-o
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = go

@@ -2,9 +2,9 @@
 
 pkgname=cri-o
 pkgver=1.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://github.com/kubernetes-incubator/cri-o'
 license=(Apache)
 makedepends=(go go-md2man ostree)
@@ -25,28 +25,20 @@ prepare() {
 build() {
 	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 
-	GOPATH="$srcdir/go" make -j1
+	GOPATH="$srcdir/go" make -j1 binaries docs
+	./bin/crio --selinux=true --storage-driver=overlay --conmon /usr/libexec/crio/conmon --cni-plugin-dir /usr/libexec/cni --default-mounts /run/secrets --cgroup-manager=systemd config > crio.conf
 }
 
 package() {
 	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 
-	install -Dm755 bin/crio $pkgdir/usr/bin/crio
-	install -Dm755 bin/conmon $pkgdir/usr/libexec/crio/conmon
-	install -Dm755 bin/pause $pkgdir/usr/libexec/crio/pause
+	make install install.systemd PREFIX="$pkgdir/usr"
+
+	# fix-up paths pointing to /usr/local to /usr
+	sed -i --follow-symlinks -re 's|/usr/local|/usr|g' $pkgdir/usr/lib/systemd/system/*.service
 
 	# install configs
 	install -dm755 $pkgdir/etc/crio/
 	install -Dm644 crio.conf $pkgdir/etc/crio/crio.conf
 	install -Dm644 seccomp.json $pkgdir/etc/crio/seccomp.json
-
-	# install manpages
-	install -d $pkgdir/usr/share/man/man5/
-	install -d $pkgdir/usr/share/man/man8/
-	install -pm644 docs/crio.conf.5 $pkgdir/usr/share/man/man5
-	install -pm644 docs/crio.8 $pkgdir/usr/share/man/man8
-
-	# systemd service files
-	install -dm755 $pkgdir/usr/lib/systemd/system/
-	install -Dm644 contrib/systemd/*.service $pkgdir/usr/lib/systemd/system/
 }
