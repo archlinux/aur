@@ -1,7 +1,7 @@
 pkgbase = dict-freedict-fra-eng
 	pkgdesc = French -> English dictionary for dictd et al. from Freedict.org
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedict.org/
 	install = dict-freedict-fra-eng.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dict-freedict-fra-eng
 	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
-	source = https://sourceforge.net/projects/freedict/files/fra-eng/0.4/freedict-fra-eng-0.4.src.tar.xz
+	source = https://download.freedict.org/dictionaries/fra-eng/0.4/freedict-fra-eng-0.4.src.tar.xz
 	sha512sums = c7a326535a9ed23066ef46e5f741ed884f7bac53288e54a374e446536b0f25c1f4569912e1fa0f2874b179cf73ccd2d22ea956286fbabbbf87bb45a213508acc
 
 pkgname = dict-freedict-fra-eng

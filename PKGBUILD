@@ -2,7 +2,7 @@
 _lang=fra-eng
 pkgname=dict-freedict-${_lang}
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="French -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -10,7 +10,7 @@ license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
-source=("https://sourceforge.net/projects/freedict/files/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
+source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
 sha512sums=('c7a326535a9ed23066ef46e5f741ed884f7bac53288e54a374e446536b0f25c1f4569912e1fa0f2874b179cf73ccd2d22ea956286fbabbbf87bb45a213508acc')
 
 build()
