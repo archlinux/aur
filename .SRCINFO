@@ -1,0 +1,16 @@
+pkgbase = gksu
+	pkgdesc = A graphical frontend for su
+	pkgver = 2.0.2
+	pkgrel = 6
+	url = http://www.nongnu.org/gksu/index.html
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-doc
+	makedepends = intltool
+	depends = libgksu>=2.0.12
+	depends = xorg-xauth
+	source = https://people.debian.org/~kov/gksu/gksu-2.0.2.tar.gz
+	sha256sums = a1de3dca039d88c195fcdc9516379439a1d699750417f1e655aa2101a955ee5a
+
+pkgname = gksu
+
