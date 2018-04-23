@@ -1,0 +1,18 @@
+pkgbase = gemrb-git
+	pkgdesc = Open source reimplementation of Bioware's Infinity Engine.
+	pkgver = 0.8.5.44.r15656.e0de7ec23
+	pkgrel = 1
+	url = http://www.gemrb.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = python2
+	depends = openal
+	depends = sdl_mixer
+	depends = hicolor-icon-theme
+	source = git+https://github.com/gemrb/gemrb.git
+	md5sums = SKIP
+
+pkgname = gemrb-git
+
