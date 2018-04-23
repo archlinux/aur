@@ -2,8 +2,8 @@
 # Contributor: Joan Bruguera Micó <joanbrugueram@gmail.com>
 _pkgname=ffmpegfs
 pkgname=ffmpegfs-git
-pkgver=v1.2.r73.bd068fa
-pkgrel=2
+pkgver=1.2.r73.bd068fa
+pkgrel=3
 pkgdesc="FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
 url="https://nschlia.github.io/ffmpegfs/"
@@ -17,7 +17,7 @@ sha384sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 
