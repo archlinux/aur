@@ -1,7 +1,7 @@
 # Maintainer: solaraquarion <shlomochoina@gmail.com>
 
 pkgname=domterm-git
-pkgver=0.99.r0.g255c269
+pkgver=1.0.r5.ga165cc1
 pkgrel=1
 pkgdesc="Terminal emulator capable of display html and images from command output"
 arch=('any')
