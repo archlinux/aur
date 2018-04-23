@@ -1,7 +1,7 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='snakemake-git'
-pkgver=4.3.0.79.gbb1a966
+pkgver=4.3.0.325.g1e851bc
 pkgrel=1
 pkgdesc="Python-based language and execution environment for GNU Make-like workflows"
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
     'python'
     'python-appdirs'
     'python-configargparse'
+    'python-datrie'
     'python-ratelimiter'
     'python-requests'
     'python-yaml'

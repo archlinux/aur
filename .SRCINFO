@@ -1,6 +1,6 @@
 pkgbase = snakemake-git
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
-	pkgver = 4.3.0.79.gbb1a966
+	pkgver = 4.3.0.325.g1e851bc
 	pkgrel = 1
 	url = https://bitbucket.org/snakemake/snakemake
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = snakemake-git
 	depends = python
 	depends = python-appdirs
 	depends = python-configargparse
+	depends = python-datrie
 	depends = python-ratelimiter
 	depends = python-requests
 	depends = python-yaml
