@@ -1,8 +1,10 @@
-/* bg opacity */
+/* bg opacity # Have alpha problems
 unsigned int alpha = 0xe6;
+*/
+
 
 /* Terminal colors (16 first used in escape sequence) */
-const char *colorname[] = {
+static const char *colorname[] = {
 
   "#2E3436",
   "#CC0000",
@@ -37,7 +39,7 @@ const char *colorname[] = {
  */
 unsigned int defaultfg = 256;
 unsigned int defaultbg = 257;
-unsigned int defaultcs = 259;
-unsigned int defaultrcs = 2;
+static unsigned int defaultcs = 259;
+static unsigned int defaultrcs = 2;
 
 /* vim:ts=2 sw=2 et */

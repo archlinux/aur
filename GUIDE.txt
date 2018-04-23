@@ -20,8 +20,11 @@ COLORSCHEME:
 	60% — 99				10% — 1A
 	55% — 8C				5% — 0D
 				0% — 00
+***				
+N.B. alpha patch not applied
+***
 
-FONT: change in st-extra-config-20170715.diff file
+FONT: change in st-extra-config-20180420.diff file
 
 KEYBINDINGS CHANGE:
 	Primary Selection Paste -> Shift-Insert

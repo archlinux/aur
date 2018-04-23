@@ -1,6 +1,6 @@
 pkgbase = st-patched-git
 	pkgdesc = Simple virtual terminal emulator for X with patches and easy configurable colorscheme
-	pkgver = 0.7.r38.g0ac685f
+	pkgver = 0.8.1.r3.g041912a
 	pkgrel = 1
 	url = https://st.suckless.org/
 	arch = i686
@@ -17,19 +17,17 @@ pkgbase = st-patched-git
 	conflicts = st
 	options = zipman
 	source = git://git.suckless.org/st
-	source = https://st.suckless.org/patches/vertcenter/st-vertcenter-20170601-5a10aca.diff
-	source = https://st.suckless.org/patches/hidecursor/st-hidecursor-20170404-745c40f.diff
-	source = st-alpha-20170715.diff
-	source = st-extra-config-20170715.diff
-	source = st-fix-keyboard-input-20170715.diff
+	source = https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff
+	source = https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.diff
+	source = st-extra-config-20180420.diff
+	source = st-fix-keyboard-input-20180420.txt
 	source = colorscheme.h
 	md5sums = SKIP
-	md5sums = 350f621526473654bcd8ddc9907959da
-	md5sums = 487dc42b84ea464474aac527c2b47191
-	md5sums = cea5e8189b4a6690f65e0c4eff3dd7a8
-	md5sums = 7d661aeb9000bf8862a6f849c57838e2
-	md5sums = 64b3a7008a25d0b865507e9388593dc7
-	md5sums = 2f855a6a8f222d41b16f22878c6abec3
+	md5sums = 51106ec8ff04d64029401421bbc57ab5
+	md5sums = 8749ced53fc11d7a979fa8fa21d66de4
+	md5sums = d8b5e709aaaea8c9e5050c26bbcb2e26
+	md5sums = 67c9732a7c525525595dc35f9fc2554e
+	md5sums = c053fd06afe77a38b64050582646baf2
 
 pkgname = st-patched-git
 

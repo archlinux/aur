@@ -4,7 +4,7 @@
 
 pkgname=st-patched-git
 _pkgname=st
-pkgver=0.7.r38.g0ac685f
+pkgver=0.8.1.r3.g041912a
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
@@ -17,11 +17,10 @@ optdepends=('dmenu: for unicode input'
             'otf-fantasque-sans-mono: default defined font' )
 
 _patches=(
-    "https://st.suckless.org/patches/vertcenter/st-vertcenter-20170601-5a10aca.diff"
-    "https://st.suckless.org/patches/hidecursor/st-hidecursor-20170404-745c40f.diff"
-    "st-alpha-20170715.diff"
-    "st-extra-config-20170715.diff"
-    "st-fix-keyboard-input-20170715.diff"
+    "https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff"
+    "https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.diff"
+    "st-extra-config-20180420.diff"
+    "st-fix-keyboard-input-20180420.txt"
     "colorscheme.h"
 )
 
@@ -29,12 +28,11 @@ source=("git://git.suckless.org/st"
     "${_patches[@]}")
     
 md5sums=('SKIP'
-         '350f621526473654bcd8ddc9907959da'
-         '487dc42b84ea464474aac527c2b47191'
-         'cea5e8189b4a6690f65e0c4eff3dd7a8'
-         '7d661aeb9000bf8862a6f849c57838e2'
-         '64b3a7008a25d0b865507e9388593dc7'
-         '2f855a6a8f222d41b16f22878c6abec3')
+         '51106ec8ff04d64029401421bbc57ab5'
+         '8749ced53fc11d7a979fa8fa21d66de4'
+         'd8b5e709aaaea8c9e5050c26bbcb2e26'
+         '67c9732a7c525525595dc35f9fc2554e'
+         'c053fd06afe77a38b64050582646baf2')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
