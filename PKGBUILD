@@ -2,17 +2,17 @@
 
 pkgname=digilent.adept.utilities
 pkgver='2.2.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="The Adept configuration tools"
 arch=('x86_64' 'i686')
 url='https://reference.digilentinc.com/digilent_adept_2'
 license=('custom')
 depends=('digilent.adept.runtime')
 options=('!strip')
-source_x86_64=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-amd64.deb")
-source_i686=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-i386.deb")
-md5sums_x86_64=('cca4cfc00fa8134b7402b28d2c9db115')
-md5sums_i686=('a882a81ece4e1e384dc99c970c237c6d')
+source_x86_64=("https://files.digilent.com/Software/Adept2/${pkgname}_${pkgver}-amd64.deb")
+source_i686=("https://files.digilent.com/Software/Adept2/${pkgname}_${pkgver}-i386.deb")
+sha256sums_x86_64=('ef70a6715a2850af40a60a4f5f7efeaea66c401ad472a6635611f06324badc3c')
+sha256sums_i686=('ea43d63f75aee4f1affcd3e4cf62a91f8dad9c584bb3c05e15cecff52d5902aa')
 
 package(){
     tar -xzf data.tar.gz --exclude="usr/share/lintian" -C "${pkgdir}"/
