@@ -4,11 +4,11 @@
 pkgname=emacs-icicles
 epoch=1
 pkgver=2018.02.13 # Taken from icicles.el
-pkgrel=2
+pkgrel=3
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
-depends=('emacs-bookmarkplus-mode' 'emacs-hexrgb')
+depends=('emacs-bookmarkplus' 'emacs-hexrgb')
 license=('GPL')
 makedepends=('wget')
 _base_url=http://www.emacswiki.org/emacs/download/
