@@ -10,6 +10,8 @@ url="http://www.gemrb.org/"
 license=('GPL')
 depends=('python2' 'openal' 'sdl_mixer' 'hicolor-icon-theme')
 makedepends=('cmake')
+provides=('gemrb')
+conflicts=('gemrb')
 source=("git+https://github.com/gemrb/gemrb.git")
 md5sums=('SKIP')
 
