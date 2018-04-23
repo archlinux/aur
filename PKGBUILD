@@ -49,5 +49,5 @@ package() {
         make
         make DESTDIR="$pkgdir" install
 	cd $pkgdir
-	mv sbin usr
+	mv sbin usr/bin
 }
