@@ -3,7 +3,7 @@
 pkgname=pcmanfm-gtk3-root
 pkgver=1.2.5
 pkgrel=1
-pkgdesc="Caja with admin rights with polkit"
+pkgdesc="PCManFM GTK3 with admin rights with polkit"
 arch=('x86_64')
 license=('GPL3')
 url="https://www.tuxnvape.fr/"
