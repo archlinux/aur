@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.2.0.rc5.r43.g1df461d64
+pkgver=1.2.0.rc5.r53.gd65fdd4ee
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
