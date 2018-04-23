@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://www.opsat.net/user/bob/projects/nvdock"
 license=('BSD')
 depends=('gtk2')
-source=("http://bobmajdakjr.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bobmajdakjr/${pkgname}-${pkgver}.tar.bz2"
         "fix-build.patch")
 md5sums=('e18c4eeff936dc3b671fd8b5a9bb5145'
          'e16d729d78e761e1015bd3b06876cb2f')
