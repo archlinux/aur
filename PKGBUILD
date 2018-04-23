@@ -1,38 +1,45 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r1418.ge3a8ac07c
+pkgver=0.1.11.r7977.g3b63be063
 pkgrel=1
+epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
-url='https://caffe2.ai/'
-license=('APACHE')
+url='http://caffe2.ai/'
+license=('BSD')
 depends=(
     # official repositories:
         # required:
             'google-glog' 'protobuf' 'lapack' 'python' 'python-numpy' 'python-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'numactl' 'openmpi' 'snappy'
-            'zeromq' 'hiredis' 'ffmpeg'
+            'zeromq' 'hiredis' 'ocl-icd' 'opencv' 'gtkglext' 'ffmpeg'
         # python:
             'python-flask' 'python-future' 'graphviz' 'python-hypothesis'
             'python-jupyter_core' 'python-matplotlib' 'python-pydot' 'python-yaml'
             'python-requests' 'python-scipy' 'python-setuptools' 'python-six'
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
+        # not required but enabled in build:
+            'rocksdb'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'opencl-headers')
 provides=('caffe2-cpu')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
-           'caffe2' 'caffe2-git' 'caffe2-cpu')
+           'caffe2' 'caffe2-cpu' 'caffe2-git')
 options=('!emptydirs')
 source=(
     # main source:
-        "$pkgname"::'git+https://github.com/caffe2/caffe2.git'
+        'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
+        'caffe2-submodule-aten-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo'
+        'caffe2-submodule-aten-tbb_remote'::'git+https://github.com/01org/tbb#branch=tbb_2018'
+        'caffe2-submodule-aten-catch'::'git+https://github.com/catchorg/Catch2.git'
+        'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'caffe2-submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
         'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
@@ -48,7 +55,6 @@ source=(
         'caffe2-submodule-NNPACK_deps-FXdiv'::'git+https://github.com/Maratyszcza/FXdiv.git'
         'caffe2-submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
         'caffe2-submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
-        'caffe2-submodule-aten'::'git+https://github.com/zdevito/ATen.git'
         'caffe2-submodule-zstd'::'git+https://github.com/facebook/zstd.git'
         'caffe2-submodule-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo.git'
         'caffe2-submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
@@ -56,8 +62,13 @@ source=(
         'caffe2-submodule-python-six'::'git+https://github.com/benjaminp/six.git'
         'caffe2-submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
         'caffe2-submodule-onnx'::'git+https://github.com/onnx/onnx.git'
+        'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,53 +94,63 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd "$pkgname"
-    local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
+    cd pytorch-git
+    
+    local _submodule_list="nanopb pybind11 nccl cub eigen googletest nervanagpu benchmark \
                            protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
-                           NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd \
-                           aten zstd cpuinfo python-enum python-peachpy \
-                           python-six ComputeLibrary onnx"
+                           NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
+                           python-enum python-peachpy python-six ComputeLibrary onnx ideep"
+                           
     git submodule init
+    
+    git config --local 'submodule.aten/src/ATen/cpu/cpuinfo.url'        "${srcdir}/caffe2-submodule-aten-cpuinfo"
+    git config --local 'submodule.aten/src/ATen/cpu/tbb/tbb_remote.url' "${srcdir}/caffe2-submodule-aten-tbb_remote"
+    git config --local 'submodule.aten/src/ATen/utils/catch.url'        "${srcdir}/caffe2-submodule-aten-catch"
+    git config --local 'submodule.third-party/cpuinfo.url'              "${srcdir}/caffe2-submodule-cpuinfo"
+    
     for _submodule in $_submodule_list
     do
-        local _submodule_dir="caffe2-submodule-$(printf '%s' "${_submodule}" | tr '/' '-')"
+        local _submodule_dir="caffe2-submodule-${_submodule/\//-}"
         git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
-    unset _submodule
+    
     git submodule update
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd pytorch-git
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd pytorch-git
+    
+    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
     
     mkdir -p build
     cd build
-    
-    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
     
     cmake \
         -DBLAS:STRING='Eigen' \
         \
         -DBUILD_BINARY:BOOL='ON' \
-        -DBUILD_DOCS:BOOL='OFF' \
         -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
         -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
+        \
+        -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
+        \
+        -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
         \
         -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python${_pythonver}" \
         -DPYTHON_INCLUDE_DIR:PATH="/usr/include/python${_pythonver}m" \
@@ -155,12 +176,14 @@ build() {
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_NUMA:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
-        -DUSE_OPENCV:BOOL='OFF' \
+        -DUSE_OPENCL:BOOL='ON' \
+        -DUSE_OPENCV:BOOL='ON' \
         -DUSE_OPENMP:BOOL='ON' \
-        -dUSE_PROF:BOOL='OFF' \
+        -DUSE_PROF:BOOL='OFF' \
         -DUSE_REDIS:BOOL='ON' \
-        -DUSE_ROCKSDB:BOOL='OFF' \
+        -DUSE_ROCKSDB:BOOL='ON' \
         -DUSE_SNPE:BOOL='OFF' \
+        -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
         -DUSE_ZSTD:BOOL='ON' \
         \
@@ -171,17 +194,22 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/build"
+    cd pytorch-git/build
     
     make DESTDIR="$pkgdir" install
     
-    [ "$CARCH" = 'x86_64' ] && _architecture='64'
+    # remove unneeded files
+    rm -rf "${pkgdir}/usr/include/google"
+    rm -rf "${pkgdir}/usr/lib/cmake/protobuf"
+    rm -f "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
+    rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool,zbuff,zdict,zstd*}.h,{__init__,avx{,2}}.py}
+    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
+    rm -f "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
+    rm -f "$pkgdir"/usr/share/pkgconfig/libzstd.pc
+    rm -f "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
     
-    rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool}.h,{__init__,avx{,2}}.py}
-    
-    rm -f "$pkgdir"/usr/lib"$_architecture"/lib{cpuinfo,nnpack,pthreadpool}.a
-    
-    # copyright notice
-    cd "${srcdir}/${pkgname}"
-    install -D -m644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    # license
+    cd "${srcdir}/pytorch-git"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
