@@ -1,6 +1,6 @@
 pkgbase = containernet-libvirt-git
 	pkgdesc = Mininet with added Docker, and libvirt support
-	pkgver = 20171220
+	pkgver = 20180423
 	pkgrel = 1
 	url = https://github.com/containernet/containernet/
 	install = containernet-libvirt-git.install
@@ -21,6 +21,8 @@ pkgbase = containernet-libvirt-git
 	depends = python2-pytest
 	depends = python2-urllib3
 	depends = python-iptables
+	depends = python2-docker
+	depends = python2-ipaddress
 	optdepends = xorg-xhost
 	optdepends = libvirt-python2: needed for libvirt support
 	optdepends = libvirt: needed for libvirt support
