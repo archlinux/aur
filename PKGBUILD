@@ -88,10 +88,10 @@ prepare() {
   patch -p1 --binary < ../../fix_default_dirs.patch
 }
 
-pkgver() {
-	cd "${srcdir}/cabbage"
-	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
-}
+#pkgver() {
+#	cd "${srcdir}/cabbage"
+#	printf "2.0.0r%s" "$(git rev-list --count HEAD)"
+#}
 
 build() {
   # Projucer

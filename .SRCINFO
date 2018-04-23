@@ -1,6 +1,6 @@
 pkgbase = cabbage
 	pkgdesc = A framework for audio software development
-	pkgver = 2.0.0r1188
+	pkgver = 2.0.02
 	pkgrel = 1
 	url = http://cabbageaudio.com/
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = cabbage
 	makedepends = mesa
 	makedepends = gtk3
 	makedepends = vim
+	makedepends = dos2unix
 	depends = csound
 	depends = steinberg-vst36
 	provides = cabbage
