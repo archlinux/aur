@@ -12,7 +12,7 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.18.18
+pkgver=2.18.19
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='https://qgis.org/'
@@ -24,6 +24,7 @@ depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-li
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
+            'python2-gdal: DB Manager plugin; Processing plugin'
             'python2-jinja: MetaSearch plugin'
             'python2-owslib: MetaSearch plugin'
             'python2-psycopg2: DB Manager plugin; Processing plugin'
@@ -34,7 +35,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('297a0bf4e04e00f7f8d091691499f69d')
+md5sums=('49a5d6803974f1adefe98ed9af55db1e')
 
 prepare() {
   cd $_pkgname-$pkgver
