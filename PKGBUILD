@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=godaddy-dns
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Node.js script to programmatically update GoDaddy DNS records"
 arch=(any)
@@ -19,7 +19,10 @@ package() {
   rmdir "$pkgdir/usr/etc/"
 
   install -Dm644 "$_npmdir/godaddy-dns/LICENSE" --target-directory="$pkgdir/usr/share/licenses/godaddy-dns"
+
+  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('aff86883a50e02a02b310e62a3331c8a58e74d2868994195be957e4e65004348')
+sha256sums=('47423f36bf578227622b004777c4b46ca5cffa9d68f55d86794217f6e583254b')
