@@ -1,8 +1,8 @@
 # Maintainer: François Garillot <francois[@]garillot.net>
 
 pkgname=nfusr-git
-pkgver=r.
-pkgrel=1
+pkgver=r1.96c2b69
+pkgrel=2
 pkgdesc="nfusr is a userspace FUSE client for accessing NFSv3 servers based on libnfs."
 license=('BSD')
 url='https://github.com/facebookincubator/nfusr'
@@ -16,6 +16,7 @@ _gitroot="git://github.com/facebookincubator/nfusr.git"
 _gitname="nfusr"
 
 pkgver() {
+  cd $srcdir/$pkgname-build/
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -47,4 +48,7 @@ package() {
         ./configure
         make
         make DESTDIR="$pkgdir" install
+	cd $pkgdir
+	mkdir usr
+	mv sbin usr
 }
