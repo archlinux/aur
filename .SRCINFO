@@ -8,6 +8,8 @@ pkgbase = amberfish-git
 	license = GPL2
 	makedepends = git
 	depends = xerces-c
+	provides = amberfish
+	conflicts = amberfish
 	source = git+https://github.com/nassibnassar/amberfish.git
 	md5sums = SKIP
 

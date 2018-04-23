@@ -11,6 +11,8 @@ url="https://github.com/nassibnassar/amberfish.git"
 license=('GPL2')
 depends=('xerces-c')
 makedepends=('git')
+conflicts=('amberfish')
+provides=('amberfish')
 source=("git+https://github.com/nassibnassar/amberfish.git")
 md5sums=('SKIP')
 
