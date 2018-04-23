@@ -1,12 +1,12 @@
 # Maintainer: Your Name <ben@artfuldodge.io>
 pkgname=web3j
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight, reactive, type safe Java and Android library for integrating with nodes on Ethereum blockchains'
 arch=('any')
 url='https://web3j.io/'
 license=('Apache')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 source=('web3j'
         'https://github.com/web3j/web3j/releases/download/v3.3.1/web3j-3.3.1.tar'
         'https://github.com/web3j/web3j/releases/download/v3.3.1/web3j-3.3.1.tar.asc')
