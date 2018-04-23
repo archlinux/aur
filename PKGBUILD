@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.beta1.r3003.36fc60c7
+pkgver=1.0.0.beta1.r3165.4ae42ba1
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('i686' 'x86_64')
@@ -65,10 +65,10 @@ build() {
     -DWANT_CPPUNIT=OFF
   make
   # build html manual & tutorial
-  cd "$srcdir/$_pkgname/data/doc"
+  cd "${srcdir}/${_pkgname}/data/doc"
   make
   # update translations
-  cd "$srcdir/$_pkgname/data/i18n"
+  cd "${srcdir}/${_pkgname}/data/i18n"
   ./updateTranslations.sh
 }
 
@@ -77,14 +77,15 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  # docs
+  # install docs
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 ../{ChangeLog,DEVELOPERS,INSTALL.txt,README.txt}
-
-  # clean up data dir
-  # https://github.com/hydrogen-music/hydrogen/issues/559
-  rm -v "${pkgdir}/usr/share/${_pkgname}/data/i18n/"{*.ts,stats.py,updateTranslations.sh} \
-   "${pkgdir}/usr/share/${_pkgname}/data/doc/"{*.docbook,*.po,*.pot,Makefile,TODO}
+  # install html manual & tutorial
+  cd "${srcdir}/${_pkgname}/data/doc"
+  install -Dm644 *.html -t "${pkgdir}/usr/share/${_pkgname}/data/doc"
+  install -Dm644 img/*.png img/*.h2song -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img"
+  install -Dm644 img/nl/*.png -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img/nl"
+  install -Dm644 img_tutorial/*.png -t "${pkgdir}/usr/share/${_pkgname}/data/doc/img_tutorial"
 }
 
 # vim:set ts=2 sw=2 et:
