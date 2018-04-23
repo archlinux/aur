@@ -1,7 +1,7 @@
 # Maintainer: mickybart <mickybart at pygoscelis dot org>
 
 pkgname=('python-atlasbroker')
-pkgver='1.1.2'
+pkgver='2.0.0'
 pkgrel=1
 pkgdesc="Atlas Broker for Kubernetes Service Catalog"
 url="http://github.com/mickybart/python-atlasbroker"
