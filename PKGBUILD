@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.17rc1.r302.g5ec83b22a2dd131807
+pkgver=4.17rc2.r0.g6d08b06e67cd117f69
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -94,12 +94,12 @@ prepare() {
       printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
     esac
 
-    printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
+    printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]ldconfig) or [s]kip? (n/o/S)]"
     read -r; echo; case "${REPLY:0:1}" in
     [Nn])
       make nconfig ;;
     [Oo])
-      make olddefconfig ;;
+      make oldconfig ;;
     *)
       printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
     esac
