@@ -39,7 +39,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/ff-3pt"
 
-  mkdir _src
+  mkdir -p _src
   curl -L "https://sourceforge.net/projects/lame/files/latest/download?source=files" --output "_src/lame-3.100.tar.gz"
   curl -L "https://sourceforge.net/projects/soxr/files/latest/download?source=files" --output "_src/soxr-0.1.3-Source.tar.xz"
 
