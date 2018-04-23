@@ -2,9 +2,9 @@
 # Author: Chrome Developer Relations
 
 _npmname=yo
-_npmver=2.0.1
+_npmver=2.0.2
 pkgname=nodejs-yeoman # All lowercase
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="CLI tool for running Yeoman generators"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('99f9ce281eb3743379af6475f7e16b774ebd3b1b2af9906228f289af1d5df989')
+sha256sums=('b609596d481602b9aef7079e5c4dc0d259ba88293f14f3cec06d7a9ec316ea5c')
 
 package() {
   cd $srcdir
