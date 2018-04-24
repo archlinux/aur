@@ -1,0 +1,15 @@
+pkgbase = yarsync
+	pkgdesc = A clean, simple, and swashbuckling tool for synchronizing directories
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/A-lxe/yarsync
+	arch = any
+	license = MIT
+	depends = util-linux
+	depends = rsync
+	depends = inotify-tools
+	source = https://github.com/A-lxe/yarsync/releases/download/1.0.2/yarsync-1.0.2.tar.gz
+	md5sums = a92c093991a2ac56dc1602fd928603ad
+
+pkgname = yarsync
+
