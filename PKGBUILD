@@ -3,15 +3,15 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='3.1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
 license=('GPL2' 'CCPL:by-sa')
 conflicts=('pop-gtk-theme')
 provides=('pop-gtk-theme')
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1522854917~18.04~c419e03_all.deb")
-sha256sums=('985b37a8da6c985138157ed76087bcfb5d007bdf4afbc1c7c5e6a3ce65d916c8')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1524509666~18.04~f71536a_all.deb")
+sha256sums=('0ae51b053ecf1b07daa95041de34d6e0866d4e84a5f30a358070a733ec57bd9b')
 
 package() {
   cd "${srcdir}"
