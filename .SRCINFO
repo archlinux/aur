@@ -1,0 +1,21 @@
+pkgbase = python-niftynet
+	pkgdesc = An open-source CNNs platform for research in medical image analysis and image-guided therapy
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://niftynet.io/
+	arch = x86_64
+	license = apache
+	makedepends = python-setuptools
+	depends = python-tensorflow
+	depends = python-six>=1.10
+	depends = python-nibabel>=2.1.0
+	depends = python-numpy>=1.12
+	depends = python-scipy>=0.18
+	depends = python-pandas
+	depends = python-pillow
+	depends = python-blinker
+	source = git+https://github.com/NifTK/NiftyNet.git
+	md5sums = SKIP
+
+pkgname = python-niftynet
+
