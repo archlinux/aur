@@ -3,7 +3,7 @@
 
 pkgname=nitrokey-app
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
@@ -18,35 +18,33 @@ sha256sums=('a73dc2ce70f3f84a9fcf4e8cfd5b97630f5195c0897392b301a2a48adfd64300'
             '80c2f0ebc0da7186386f525d798bad0eaf14837c9548d86060b503751193b010')
 
 prepare() {
-  cd $pkgname-$pkgver
+    cd $pkgname-$pkgver
 
-  sed -i 's|libnitrokey/LICENSE|/usr/share/licenses/libnitrokey/LICENSE|' \
-      resources.qrc
+    sed -i '/qt5_add_resources(RESOURCE_ADDED/d' CMakeLists.txt
 
-  for srcfile in $(grep -rl 'libnitrokey/include/' src); do
-    sed -i 's|^#include \(["<]\)libnitrokey/include/|#include \1libnitrokey/|g' "$srcfile"
-  done
+    sed -i 's|libnitrokey/LICENSE|/usr/share/licenses/libnitrokey/LICENSE|' \
+        resources.qrc
 
-  cd 3rdparty
-  rmdir cppcodec
-  ln -s $srcdir/cppcodec-${_cppcodecver} cppcodec
+    cd 3rdparty
+    rmdir cppcodec
+    ln -s $srcdir/cppcodec-${_cppcodecver} cppcodec
 
-  cd ../data/icons
-  rm -r ubuntu-mono-dark ubuntu-mono-light
+    cd ../data/icons
+    rm -r ubuntu-mono-dark ubuntu-mono-light
 }
 
 build() {
-  cd $pkgname-$pkgver
+    cd $pkgname-$pkgver
 
-  cmake . \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    cmake . \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DBUILD_SHARED_LIBS=ON \
+          -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
+    cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
