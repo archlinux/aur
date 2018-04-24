@@ -29,7 +29,7 @@ package()
 {
 	cd ..
 	install -Dm644 "ultrastar-creator.desktop" "${pkgdir}/usr/share/applications/ultrastar-creator.desktop"
-        install -Dm644 "ultrastar-creator" "${pkgdir}/usr/bin/ultrastar-creator"
+        install -Dm755 "ultrastar-creator" "${pkgdir}/usr/bin/ultrastar-creator"
 	install -Dm644 "$srcdir/UltraStar-Creator/setup/unix/UltraStar-Creator.png" "${pkgdir}/usr/share/pixmaps/UltraStar-Creator.png"
 	
 	cd "$srcdir/UltraStar-Creator/bin/release"
