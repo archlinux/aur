@@ -1,0 +1,14 @@
+pkgbase = perl-file-extattr
+	pkgdesc = Perl extension for accessing extended attributes of files
+	pkgver = 1.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-ExtAttr
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RI/RICHDAWE/File-ExtAttr-1.09.tar.gz
+	sha512sums = eca00420bef313ac711bf1d64323e051acc8eb77ab8e267067f586e78dc42d43f685fe571c7856186c998e939dd2761d24650c61297c24486bc005dddf6b4bb3
+
+pkgname = perl-file-extattr
+
