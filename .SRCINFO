@@ -1,7 +1,7 @@
 pkgbase = pacman-git
 	pkgdesc = A library-based package manager with dependency support. git version.
 	pkgver = 5.0.1.249.g27f64e37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.archlinux.org/pacman/
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = pacman-git
 	sha256sums = SKIP
 	sha256sums = 0c087d26e80333267391a6e9e34b95a2ffb103cb9391cb53cc5d97ad954af774
 	sha256sums = c5a3ec55f9d1bc52e5e5b127f76b7b16b79738268691a3e1d842359033e460da
-	sha256sums = aa28a1e4050a5a256d9832a584b331b9c783ff3a1859289c4cdd4eb31556081c
+	sha256sums = 2d17478fd607c75e396fe10ef2add8bc9fcc12054810fb6f4409dfb70e01989e
 	sha256sums = 6066d67d818ee36760bf121c76d5019130f7875b3e5ed179b319b810a3a9685b
 
 pkgname = pacman-git
