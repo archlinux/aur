@@ -1,10 +1,10 @@
 # Contributor: Nagy Gabor <Gabor.V.Nagy@@gmail.com>
 pkgname=enigma_sdl
 pkgver=1.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Puzzle game inspired by Oxyd on the Atari ST and Rock'n'Roll on the Amiga."
 url="http://www.nongnu.org/enigma/"
-depends=('libpng' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'xerces-c' 'xdg-utils' 'curl')
+depends=('libpng' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'xerces-c-2' 'xdg-utils' 'curl')
 makedepends=('imagemagick')
 source=(http://downloads.sourceforge.net/enigma-game/enigma-$pkgver.tar.gz
         std-gnu03.patch)

@@ -1,7 +1,7 @@
 pkgbase = enigma_sdl
 	pkgdesc = Puzzle game inspired by Oxyd on the Atari ST and Rock'n'Roll on the Amiga.
 	pkgver = 1.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/enigma/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = enigma_sdl
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = sdl_ttf
-	depends = xerces-c
+	depends = xerces-c-2
 	depends = xdg-utils
 	depends = curl
 	source = http://downloads.sourceforge.net/enigma-game/enigma-1.21.tar.gz
