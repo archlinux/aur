@@ -1,15 +1,15 @@
-pkgname=enpass-bin
-_pkgname=enpass
+pkgname='enpass-bin'
+_pkgname='enpass'
 pkgver=5.6.5
 pkgrel=1
-pkgdesc="A multiplatform password manager"
+pkgdesc='A multiplatform password manager'
 arch=('x86_64')
-url="http://enpass.io/"
+url='http://enpass.io/'
 license=('custom')
 depends=('libxss' 'lsof')
 conflicts=('enpass-beta-bin' 'enpass-rc-bin')
 provides=("${_pkgname}")
-install=enpass-bin.install
+install='enpass-bin.install'
 source=("http://repo.sinew.in/pool/main/e/enpass/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('c7529b745aa462b56eac17af6fe88d4c1610fd2f446d222aaad9510f19212a7d')
 
@@ -18,19 +18,19 @@ options=('!strip')
 
 package() {
     # Extract data
-    tar xfz ${srcdir}/data.tar.gz -C ${pkgdir}
+    tar xfz "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
     # Remove unnecessary files which are included in the .deb
-    find ${pkgdir} -name ".DS_Store" -delete
-    find ${pkgdir} -name "._.DS_Store" -delete
-    find ${pkgdir} -name "._enpass.png" -delete
-    find ${pkgdir} -name "*.swp" -delete
+    find "${pkgdir}" -name '.DS_Store' -delete
+    find "${pkgdir}" -name '._.DS_Store' -delete
+    find "${pkgdir}" -name '._enpass.png' -delete
+    find "${pkgdir}" -name '*.swp' -delete
 
     # Update permissions to match the default system ones
-    chmod 755 ${pkgdir}/opt/
-    find ${pkgdir}/usr/ -type d -exec chmod 755 {} \;
+    chmod 755 "${pkgdir}/opt/"
+    find "${pkgdir}/usr/" -type d -exec chmod 755 {} \;
 
     # Symlink "runenpass.sh" to "/usr/bin" so it is accessible via cli
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/Enpass/bin/runenpass.sh ${pkgdir}/usr/bin/enpass
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s '/opt/Enpass/bin/runenpass.sh' "${pkgdir}/usr/bin/enpass"
 }
