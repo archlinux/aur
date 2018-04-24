@@ -1,6 +1,6 @@
 # Maintainer: Edwin Peters <slimed13 at hotmail dot com>
 
-pkgname=python-reedsolomon
+pkgname=python-reedsolomon-git
 pkgver=c9ec28a 
 pkgrel=1
 pkgdesc="Pure-Python Reed Solomon encoder/decoder"
