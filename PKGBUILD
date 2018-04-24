@@ -2,7 +2,7 @@
 
 _pkgname=async_generator
 pkgname=python-${_pkgname}
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='Making it easy to write async iterators'
 url='https://github.com/python-trio/async_generator'
@@ -12,8 +12,8 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/python-trio/async_generator/archive/v${pkgver}.tar.gz)
-sha256sums=('4e5558912b5a7d142d4740a54f2e731e6492a5859e5cfcc166190c612de77874')
-sha512sums=('60a606616bd2865399b9bc33129b713af95b23964fead752bc892549507c9eae0ead8082ef235bb3886a539699dd5082bbd1a67f1c313f1e01a49c171cd91645')
+sha256sums=('942d0de4ad4e3b66d7cce4cbed29f7307111aad98599d4ebf01b9f3ebfd10be0')
+sha512sums=('b68575be0edf6718298d79a4236d941b2821e0542d2f02378d4c70b7a8cbd558c75bcf1a29997d46c842cf37d9832d6f7e7234f0a894529dac3c6105e3dba2f1')
 
 build() {
   cd ${_pkgname}-${pkgver}
