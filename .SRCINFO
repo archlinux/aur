@@ -7,6 +7,7 @@ pkgbase = python-undervolt
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python
+	conflicts = undervolt
 	source = https://files.pythonhosted.org/packages/72/06/0b589ab9d20fd58596cc20ba8e14c21b42612b608ede43851263b13a927c/undervolt-0.2.4.tar.gz
 	sha256sums = d352aaaab2d00bca1d045998b7db3a833ba560537cf6ad442040dbd967c2e48b
 
