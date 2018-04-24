@@ -1,0 +1,15 @@
+diff -r 9e33ec101187 build/build-i18ncheck.xml
+--- a/build/build-i18ncheck.xml	Tue Apr 10 15:20:51 2018 -0700
++++ b/build/build-i18ncheck.xml	Tue Apr 24 14:01:47 2018 +0300
+@@ -83,7 +83,10 @@
+ 
+ 
+     <condition property="jdk6.available">
+-	<contains string="${java.version}" substring="1.6"/>
++        <or>
++            <contains string="${java.version}" substring="1.6" />
++            <contains string="${java.version}" substring="1.7" />
++        </or>
+     </condition>
+     <target name="compile.test.i18n" depends="visitor15.compile, visitor16.compile, dist">
+ 	<mkdir dir="${build.classes}"/>
