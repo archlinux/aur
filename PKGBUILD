@@ -6,7 +6,7 @@ pkgdesc="A cross-platform TI-8x emulator based on Wabbitemu"
 arch=("x86_64")
 url="https://github.com/alberthdev/wxwabbitemu"
 license=("unknown")
-depends=("wxgtk3")
+depends=("wxgtk2")
 source=("$pkgname::git+https://github.com/alberthdev/wxwabbitemu.git")
 sha256sums=("SKIP")
 
