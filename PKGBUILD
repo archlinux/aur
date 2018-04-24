@@ -4,38 +4,39 @@
 
 pkgname=nted
 pkgver=1.10.18
-pkgrel=3
+pkgrel=4
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
 makedepends=('gcc49')
 license=('GPL')
-url="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml"
+url="http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml"
 options=('!libtool' '!strip' '!makeflags')
-source=(https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/sources/nted-1.10.18.tar.gz http://http.debian.net/debian/pool/main/n/nted/nted_1.10.18-11.debian.tar.xz)
+source=("http://urchlay.naptime.net/~urchlay/src/nted-$pkgver.tar.gz"
+	"http://http.debian.net/debian/pool/main/n/nted/nted_$pkgver-12.debian.tar.xz")
 md5sums=('0ca7aa23109171ab643a9b552487bd4b'
-         'aceb0ce35f2f8df09262d7b1c8b3d91b')
+         'ca741156f6633603c84fe3e8e74d0555')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   
   for i in `head -10 $srcdir/debian/patches/series`
   do
-    patch -p1 < $srcdir/debian/patches/$i 
+    patch -p1 < "$srcdir"/debian/patches/$i || true
   done
   mv configure.in configure.ac
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   aclocal
   automake --add-missing
   autoreconf
-  CXX=g++-4.9 CXXFLAGS=" -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
+  CXX=g++-4.9 CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
