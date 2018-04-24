@@ -1,6 +1,6 @@
 pkgbase = gnomecast-git
 	pkgdesc = A native Linux GUI for Chromecasting local files.
-	pkgver = r91.86e8953
+	pkgver = r101.e0ec89c
 	pkgrel = 1
 	url = https://github.com/keredson/gnomecast
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = gnomecast-git
 	depends = python-paste
 	depends = python-bottle
 	depends = python-pychromecast-git
+	depends = python-dbus
+	depends = python-gobject
 	provides = gnomecast
 	source = gnomecast-git::git://github.com/keredson/gnomecast.git
 	sha512sums = SKIP
