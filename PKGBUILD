@@ -1,6 +1,6 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=eul
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc="Fast native desktop client for all major messaging services"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('unknown')
 depends=('libcurl-compat')
 options=('!strip')
 source=("https://github.com/eul-im/eul/releases/download/v${pkgver}/eul_linux.zip" 'eul')
-sha256sums=('a70aa17a803c4fde019ecf33c4cec58e5cb008f2e376a131a952a8d86e86c88e'
+sha256sums=('bd8f908bc39dfce67f2aa3ff3c2e5fe1e45c105ff589558dcccf0c56efee4bf7'
             'SKIP')
 
 package() {
