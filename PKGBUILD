@@ -4,17 +4,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=kate-root
+_pkgbase=${pkgbase/-root}
 pkgname=('kwrite-root'
          'kate-root')
-pkgver=17.08.2
+pkgver=18.04.0
 pkgrel=1
 arch=('armv7h' 'i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL')
-makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework' 'knewstuff' 'ktexteditor'
-             'threadweaver' 'kitemmodels' 'kactivities')
-source=("https://download.kde.org/stable/applications/${pkgver}/src/${pkgbase/-*/}-${pkgver}.tar.xz"{,.sig}
+license=(GPL LGPL FDL)
+makedepends=(extra-cmake-modules kdoctools plasma-framework knewstuff ktexteditor threadweaver kitemmodels kactivities)
+source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
         "https://gitlab.com/Megver83/kdebase-root-patches/raw/master/0001-Defuse-root-block.patch"{,.sig})
-sha512sums=('9fa3fa7cb2c7b8b542dc2c03073fec83daea4c33c1868b8353519c97db3e63b094ea8f5cff945d7531bf571cdff9108428431afe87468813c370a19355c20dad'
+sha512sums=('2962b64a123be966017408bf02d3a92d6814ff76c759e8ea6f98e58c2cfa92086c290aea23f800dfa05ecf092c421ad7225161f757c98d409d40adce61aebc93'
             'SKIP'
             'a6d1a2bf6664ac72dc9c9434c64a228eb91320d405e6cd4b4dd6b24d8ff8d0675407c0e0f76e76d3e2758238f22fe00e0cd96caa9d24bd9fa39950cafdc03fa8'
             'SKIP')
@@ -25,17 +25,16 @@ validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7' # Albert Astals Cid <aa
 
 prepare() {
   mkdir -p build
-  cd $srcdir/${pkgbase/-*/}-${pkgver}
+  cd $srcdir/${_pkgbase}-${pkgver}
   patch -p1 -i $srcdir/0001-Defuse-root-block.patch
 }
 
 build() {
   cd build
-  cmake ../${pkgbase/-*/}-${pkgver} \
+  cmake ../${_pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
     -DBUILD_TESTING=OFF
   make
 }
@@ -55,7 +54,7 @@ package_kwrite-root() {
   rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
         "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
         "$pkgdir"/usr/share/katexmltools \
-        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kterustcompletion,tabswitcherplugin}.mo \
+        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kterustcompletion,tabswitcherplugin,ktexteditorpreviewplugin}.mo \
         "$pkgdir"/usr/share/plasma/plasmoids
 }
 
