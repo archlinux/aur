@@ -2,10 +2,10 @@
 
 pkgname='gr-baz'
 pkgver='fdad72a'
-pkgrel=2
+pkgrel=3
 pkgdesc="gr-baz is a GNU Radio project that adds new functionality (blocks, GRC definitions, apps, etc)."
 arch=('any')
-url="https://github.com/bastibl/gr-baz"
+url="https://github.com/balint256/gr-baz"
 license=('unknown')
 depends=('gnuradio' 'swig')
 makedepends=('cmake')
