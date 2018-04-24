@@ -1,0 +1,14 @@
+pkgbase = mmm-git
+	pkgver = 0.1.0.r11.0ae93f1
+	pkgrel = 2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = mmm
+	conflicts = mmm
+	source = git+https://github.com/hodefoting/mmm.git
+	md5sums = SKIP
+
+pkgname = mmm-git
+
