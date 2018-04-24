@@ -1,4 +1,4 @@
-pkgbase = python-reedsolomon
+pkgbase = python-reedsolomon-git
 	pkgdesc = Pure-Python Reed Solomon encoder/decoder
 	pkgver = c9ec28a
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = python-reedsolomon
 	source = git+https://github.com/tomerfiliba/reedsolomon.git
 	sha256sums = SKIP
 
-pkgname = python-reedsolomon
+pkgname = python-reedsolomon-git
 
