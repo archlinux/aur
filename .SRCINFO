@@ -1,0 +1,15 @@
+pkgbase = ruby-mustermann
+	pkgdesc = Your personal string matching expert.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/sinatra/mustermann
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = mustermann-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mustermann-1.0.2.gem
+	sha1sums = 290c507c2d63b56cfb77dad909f203d2403268ac
+
+pkgname = ruby-mustermann
+
