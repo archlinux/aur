@@ -4,14 +4,9 @@
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
 
-#
-# ThomasV PGP key: gpg --recv-key 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
-# http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
-#
-
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.1.6.r0.g7d50f974
+pkgver=3.2.r0.gf441a033
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
@@ -44,6 +39,7 @@ optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
   'python-btchip: Ledger hardware wallet support'
+  'python-hidapi: Digital Bitbox hardware wallet support'
   'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
   'python-matplotlib: plot transaction history in graphical mode'
   'python-rpyc: send commands to Electrum Python console from an external script'

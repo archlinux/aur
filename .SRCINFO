@@ -1,6 +1,6 @@
 pkgbase = electron-cash-git
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 3.1.6.r0.g7d50f974
+	pkgver = 3.2.r0.gf441a033
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	install = electron-cash-git.install
@@ -28,6 +28,7 @@ pkgbase = electron-cash-git
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-btchip: Ledger hardware wallet support
+	optdepends = python-hidapi: Digital Bitbox hardware wallet support
 	optdepends = python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes
 	optdepends = python-matplotlib: plot transaction history in graphical mode
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
