@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A C library for parsing and generating CBOR, the general-purpose schema-less binary data format."
 arch=('i686' 'x86_64')
 url="https://github.com/PJK/libcbor"
-license=('GPL')
+license=('MIT')
 depends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.zip::https://github.com/PJK/libcbor/archive/v${pkgver}.zip")
@@ -15,7 +15,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR='/usr/lib' -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR='lib' -DCMAKE_BUILD_TYPE=Release
   make cbor cbor_shared
 }
 
