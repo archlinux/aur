@@ -1,0 +1,5 @@
+bunq-desktop-git/
+pkg/
+src/
+*.tar.gz
+

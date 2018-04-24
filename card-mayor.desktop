@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Card Mayor
+Comment=A 2.5d deck-builder city-builder
+Exec=love /opt/card-mayor.love %u
+StartupWMClass=CardMayor
+Icon=input-gaming
+Terminal=false
+Type=Application
+Categories=Game
+X-Desktop-File-Install-Version=0.1
