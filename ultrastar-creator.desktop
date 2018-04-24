@@ -1,9 +1,9 @@
 [Desktop Entry]
-Type=Application
-Name=UltraStar-Creator
+Categories=Game,Karaoke,UltraStar,Qt
+Comment=Create new songs for UltraStarDX from scratch.
 Exec=/opt/ultrastar-creator/UltraStar-Creator /dev/null 2>&1
 Icon=UltraStar-Creator
-Comment=Create new songs for UltraStarDX from scratch.
-Terminal=false
-Categories=Karaoke,UltraStar,Qt
+Name=UltraStar-Creator
 Name[en]=ultrastar-creator.desktop
+Terminal=false
+Type=Application

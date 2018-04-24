@@ -2,7 +2,7 @@
 
 pkgname=ultrastar-creator
 pkgver=git.latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt program used to generate USDX songs from scratch"
 url=https://github.com/UltraStar-Deluxe/UltraStar-Creator
 license=('GPL2')
@@ -11,10 +11,12 @@ arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-tools' 'git' 'libbass')
 
 source=('git://github.com/UltraStar-Deluxe/UltraStar-Creator.git'
-        'ultrastar-creator.desktop')
+        'ultrastar-creator.desktop'
+        'ultrastar-creator')
 
 md5sums=('SKIP'
-         '167830d850f9a5b3933c7082be4f0637')
+         'f5fbb7d6e481005d7b90b738ef04957f'
+         'f5ff1a7eb66be5ee58c3dcec1d6f3f54')
 	
 build()
 {
@@ -27,6 +29,7 @@ package()
 {
 	cd ..
 	install -Dm644 "ultrastar-creator.desktop" "${pkgdir}/usr/share/applications/ultrastar-creator.desktop"
+        install -Dm644 "ultrastar-creator" "${pkgdir}/usr/bin/ultrastar-creator"
 	install -Dm644 "$srcdir/UltraStar-Creator/setup/unix/UltraStar-Creator.png" "${pkgdir}/usr/share/pixmaps/UltraStar-Creator.png"
 	
 	cd "$srcdir/UltraStar-Creator/bin/release"
