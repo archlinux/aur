@@ -5,7 +5,7 @@ pkgbase = wxwabbitemu-git
 	url = https://github.com/alberthdev/wxwabbitemu
 	arch = x86_64
 	license = unknown
-	depends = wxgtk3
+	depends = wxgtk2
 	source = wxwabbitemu-git::git+https://github.com/alberthdev/wxwabbitemu.git
 	sha256sums = SKIP
 
