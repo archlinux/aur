@@ -1,8 +1,9 @@
-# Maintainer: Yamakaky <yamakaky at_gmail_dot com>
-# Contributor: Allan McRae <allan at_archlinux_dot org>
+# Maintainer: Jonathan Gruber <gruberjonathan at gmail dot com>
+# Contributor: Yamakaky <yamakaky at gmail dot com>
+# Contributor: Allan McRae <allan at archlinux dot org>
 
 pkgname=mbpfan-git
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Automatically adjust the fan on a MacBook Pro"
 arch=('x86_64' 'i686')
