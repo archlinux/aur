@@ -5,8 +5,8 @@
 # Contributor: Thermionix <thermionix at gmail dot com>
 
 pkgname=navit
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Modular turn-by-turn car navigation system"
 arch=('x86_64')
 url="http://www.navit-project.org/"
@@ -15,11 +15,16 @@ depends=('dbus-glib' 'gpsd' 'gtk2' 'imlib2' 'sdl_image')
 makedepends=('cmake' 'libxslt')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/navit-gps/navit/archive/v$pkgver.tar.gz)
-sha256sums=('13353481d7fc01a4f64e385dda460b51496366bba0fd2cc85a89a0747910e94d')
+sha256sums=('251f17e10509f782798eeb1bb9f8085d4356742d00dde5a354a41a508f54ec27')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's/lib64/lib/' CMakeLists.txt 
+}
 
 build() {
   cd $pkgname-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=lib -DSAMPLE_MAP=FALSE
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DSAMPLE_MAP=FALSE -DDISABLE_QT=TRUE
   make
 }
 
