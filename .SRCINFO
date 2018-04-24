@@ -1,0 +1,14 @@
+pkgbase = mrg-git
+	pkgver = 0.1.2.r24.4168a63
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = mrg
+	conflicts = mrg
+	source = git+https://github.com/hodefoting/mrg.git
+	md5sums = SKIP
+
+pkgname = mrg-git
+
