@@ -12,15 +12,12 @@ source=(
 sha256sums=(3d1eee157aaab63638204326f664ee889d9c173bfa6e3719c58e7c74e6145461)
 
 prepare() {
-  chmod 644 music_*.flac readme.txt
-  sed -i 's/\r//; $s/$/\n/' readme.txt
+  sed -i readme.txt -e 's/\r//' -e '$s/$/\n/'
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/bass-flac/
-  cp music_*.flac "$pkgdir"/usr/share/bass-flac/
-  ln -s ../bass/sky.{cpt,dnr,dsk} "$pkgdir"/usr/share/bass-flac/
+  install -Dm644 music_*.flac -t "$pkgdir"/usr/share/bass-flac
+  ln -s ../bass/sky.{cpt,dnr,dsk} "$pkgdir"/usr/share/bass-flac
 
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
-  cp readme.txt "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 readme.txt -t "$pkgdir"/usr/share/licenses/$pkgname
 }
