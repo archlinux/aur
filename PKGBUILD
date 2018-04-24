@@ -3,12 +3,13 @@
 
 pkgname=neofetch
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/dylanaraps/neofetch"
 license=('MIT')
 depends=('bash')
+backup=('etc/neofetch/config.conf')
 optdepends=(
   'feh: Wallpaper Display'
   'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
