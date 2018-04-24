@@ -3,7 +3,7 @@ _components='itk itk-segmentation itk-io itk-registration itk-core itk-numerics 
 _py=cp36
 pkgname=python-itk
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ITK is an open-source toolkit for multidimensional image analysis'
 arch=('x86_64')
 url='https://itk.org/'
@@ -35,5 +35,6 @@ package() {
 	# additional components to be wrapped in the CMake config.
     
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+	python -O -m compileall "${pkgdir}/usr/lib/python3.6/site-packages/itk"
 }
 
