@@ -1,0 +1,22 @@
+pkgbase = mal-gtk-git
+	pkgdesc = GTK+3 anime manager interface for MyAnimeList.net
+	pkgver = 0.r178.g0ee0522
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/talisein/mal-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = gnome-keyring
+	depends = glibmm
+	depends = gtkmm3
+	depends = libsecret
+	provides = mal-gtk
+	conflicts = mal-gtk
+	source = git://github.com/talisein/mal-gtk.git
+	md5sums = SKIP
+
+pkgname = mal-gtk-git
+
