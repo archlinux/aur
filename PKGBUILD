@@ -21,7 +21,12 @@ pkgver() {
     git describe --always | sed -e 's|-|.|g'
 }
 
+build() {
+    cd "$_pkgname"
+    make VERSION="$pkgver-git"
+}
+
 package() {
-  cd "$_pkgname"
-  make install prefix="/usr/" DESTDIR="$pkgdir"
+    cd "$_pkgname"
+    make install prefix="/usr/" DESTDIR="$pkgdir"
 }
