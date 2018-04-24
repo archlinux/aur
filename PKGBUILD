@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: James Kittsmiller (AJSlye) <james@kittsmiller.com>
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher-git
