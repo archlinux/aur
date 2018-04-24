@@ -1,7 +1,7 @@
 pkgbase = php70
-	pkgdesc = PHP scripting language package for stable release of 7.0 series
+	pkgdesc = A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)
 	pkgver = 7.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -57,8 +57,6 @@ pkgname = php70
 	depends = libzip
 	depends = pcre
 	provides = php=7.0.29
-	conflicts = php70-ldap
-	replaces = php70-ldap
 	backup = etc/php70/php.ini
 
 pkgname = php70-cgi
