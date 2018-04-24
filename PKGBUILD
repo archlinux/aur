@@ -4,7 +4,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=65.0.3325.181
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
@@ -27,11 +27,11 @@ conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        'https://github.com/Eloston/ungoogled-chromium/archive/65.0.3325.181-1.tar.gz')
+        'https://github.com/Eloston/ungoogled-chromium/archive/65.0.3325.181-2.tar.gz')
 sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
-            'df3da686a01eb1b2d0726506bdc0dbd658b983b14630d9e9ea0749632a3c3ae5')
+            '09baf1a4b2b2d280f76e3b0066eddaafbbc27edfcf54aed61cb0fcaf0e91c937')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
