@@ -13,6 +13,6 @@ noextract=("${pkgname}-${pkgver}.jar")
 sha1sums=('6375e521c1e11d6563d4f25a07ce124ccf8cd171')
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
-  ln -sf "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar
+  ln -sf ${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
 }
