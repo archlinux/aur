@@ -3,10 +3,10 @@
 
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=3
+_minor=4
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.2-552
-pkgrel=2
+_clearver=${__basekernel}.3-553
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
+            'bad271dbda2d024daf4a2ab6e122b95b262ea80508ac8018bc61e8aa44f40cfe'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -67,6 +67,9 @@ prepare() {
   sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
       -e "/^EXTRAVERSION =/aLOCALVERSION =" \
       -i Makefile
+
+  # set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
+  sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
