@@ -1,7 +1,7 @@
 pkgbase = jtharness-hg
 	pkgdesc = general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing
 	pkgver = r130.9e33ec101187
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/CodeTools/JT+Harness
 	arch = any
 	license = GPL2
@@ -12,6 +12,8 @@ pkgbase = jtharness-hg
 	makedepends = java-asm
 	depends = java-runtime>=7
 	optdepends = junit
+	provides = jtharness
+	conflicts = jtharness
 	source = jtharness::hg+http://hg.openjdk.java.net/code-tools/jtharness
 	md5sums = SKIP
 

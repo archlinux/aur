@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jtharness-hg
 pkgver=r130.9e33ec101187
-pkgrel=1
+pkgrel=2
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/JT+Harness"
@@ -11,6 +11,8 @@ depends=('java-runtime>=7')
 makedepends=('mercurial' 'apache-ant' 'java-environment-openjdk=7' 'junit' 'java-asm')
 optdepends=('junit')
 checkdepends=()
+provides=("${pkgname%-hg}")
+conflicts=("${pkgname%-hg}")
 install=
 source=('jtharness::hg+http://hg.openjdk.java.net/code-tools/jtharness'
 #        "${pkgname%-hg}.patch"
@@ -31,21 +33,20 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-hg}/build"
-  ln -sf /usr/share/java/junit.jar junit-4.10.jar
-  ln -sf /usr/share/java/asm/asm.jar asm6.jar
-  ln -sf /usr/share/java/asm/asm-commons.jar asm-commons6.jar
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant
+  cd "$srcdir/${pkgname%-hg}"
+  ln -sf /usr/share/java/junit.jar build/junit-4.10.jar
+  ln -sf /usr/share/java/asm/asm.jar build/asm6.jar
+  ln -sf /usr/share/java/asm/asm-commons.jar build/asm-commons6.jar
+  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml
 }
 
 check() {
-  cd "$srcdir/${pkgname%-hg}/build"
+  cd "$srcdir/${pkgname%-hg}"
 # test does not compile
-#  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant test
+#  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml test
 }
 
 package() {
-  #mkdir -p $pkgdir/usr/share/{java/asm,licenses/$pkgname}
   cd $srcdir/JTHarness-build/binaries
   install -D -m 644 lib/javatest.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/javatest.jar
   install -D -m 644 lib/jtlite.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/jtlite.jar
