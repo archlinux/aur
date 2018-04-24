@@ -1,0 +1,14 @@
+pkgbase = jcommander
+	pkgdesc = Command line parsing framework for Java
+	pkgver = 1.72
+	pkgrel = 2
+	url = http://jcommander.org/
+	arch = any
+	license = Apache
+	depends = java-runtime
+	noextract = jcommander-1.72.jar
+	source = https://repo.maven.apache.org/maven2/com/beust/jcommander/1.72/jcommander-1.72.jar
+	sha1sums = 6375e521c1e11d6563d4f25a07ce124ccf8cd171
+
+pkgname = jcommander
+
