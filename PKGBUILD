@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r132082
+pkgver=27.0.50.r132960
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.gnu.org/software/emacs/"
 license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
-	 'jansson' 'lcms2' 'libmagick6')
+	 'jansson' 'libmagick6')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
@@ -57,10 +57,4 @@ package() {
   # find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
   chmod g+w "$pkgdir"/usr/share/games
   chmod 775 "$pkgdir"/usr/lib/emacs/*/*/update-game-score
-  # The logic used to install systemd's user service is partially broken
-  # under Arch Linux model, because it adds $DESTDIR as prefix to the 
-  # final Exec targets. The fix is to hack it with an axe.
-  install -Dm644 etc/emacs.service "$pkgdir"/usr/lib/systemd/user/emacs.service
-  sed -i -e 's#\(ExecStart\=\)#\1\/usr\/bin\/#' -e 's#\(ExecStop\=\)#\1\/usr\/bin\/#' \
-    "$pkgdir"/usr/lib/systemd/user/emacs.service
 }
