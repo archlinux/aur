@@ -1,7 +1,7 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-jboss
-pkgver=4.5.2.Final
+pkgver=4.5.3.Final
 eclipsever=oxygen
 pkgrel=1
 pkgdesc='JBoss application server developer tools plugins for Eclipse IDE'
@@ -11,7 +11,7 @@ license=('LGPL' 'EPL' 'BSD')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 source=("download.zip::http://download.jboss.org/jbosstools/static/${eclipsever}/stable/updates/core/jbosstools-${pkgver}-updatesite-core.zip")
-sha256sums=('ca9e0dd9cde0a490e1334951a5b416a20a5a765fd3510dfb54fb273101fae746')
+sha256sums=('d083cca4554a6d8063e26624950ec8107a0cf5ef5a204824ef5d728f4db6637c')
           
 package() {
   # remove features and plug-ins containing sources
