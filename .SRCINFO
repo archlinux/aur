@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.16.3
+	pkgver = 4.16.4
 	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.3.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.4.sign
 	source = kernel_gcc_patch-20180310.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180310.tar.gz
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/4.16-bfq-sq-mq-git-20180410.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
@@ -26,13 +26,12 @@ pkgbase = linux-bfq-mq
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch
 	source = 0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-	source = 0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-	source = 0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+	source = 0005-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = 336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3
+	sha256sums = bad271dbda2d024daf4a2ab6e122b95b262ea80508ac8018bc61e8aa44f40cfe
 	sha256sums = SKIP
 	sha256sums = b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815
 	sha256sums = de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f
@@ -42,12 +41,11 @@ pkgbase = linux-bfq-mq
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871
-	sha256sums = 545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d
-	sha256sums = bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5
-	sha256sums = d647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836
-	sha256sums = 6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e
-	sha256sums = d49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93
+	sha256sums = 51258aefbc3d5aec92deb58d554604f8049750aa6bfa76cad86b644e14d09b9a
+	sha256sums = da09575187b1c1e6777e3c924cc3f92e3269559d20572107487a65c57f3e335d
+	sha256sums = a571ee8624c8a1f4a2ce02d77744de000cdda3ac552ec5696a35008dfa0fa1ff
+	sha256sums = e4ba84e7d33ab50013b499675cf670cf0ce1db8f158fd1dad02961cb9bf39efb
+	sha256sums = 44436c9d2c0fd4c60e1068f475f14b0a2d39618526341a08de2a8601e943a9bc
 
 pkgname = linux-bfq-mq
 	pkgdesc = The Linux-bfq-mq kernel and modules with the BFQ-MQ scheduler
@@ -58,19 +56,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.16.3
-	provides = linux=4.16.3
+	provides = linux-bfq-mq=4.16.4
+	provides = linux=4.16.4
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.16.3
-	provides = linux-bfq-mq-headers=4.16.3
-	provides = linux-headers=4.16.3
+	depends = linux-bfq-mq=4.16.4
+	provides = linux-bfq-mq-headers=4.16.4
+	provides = linux-headers=4.16.4
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.16.3
-	provides = linux-bfq-mq-docs=4.16.3
-	provides = linux-docs=4.16.3
+	depends = linux-bfq-mq=4.16.4
+	provides = linux-bfq-mq-docs=4.16.4
+	provides = linux-docs=4.16.4
 
