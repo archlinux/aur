@@ -1,0 +1,13 @@
+pkgbase = roomeqwizard-beta
+	pkgdesc = A room acoustics analysis software for measuring and analysing room and loudspeaker responses. Beta version!
+	pkgver = 5.19_beta9
+	pkgrel = 1
+	url = http://www.roomeqwizard.com
+	arch = any
+	license = custom
+	depends = java-environment
+	source = https://malfunc.org/aur/REW_linux_5_19_beta9.sh
+	sha512sums = 8e15369d2009d87561975cd29c1c074ba00899623a5d3dbb042d8acbdcf34d7dfd7fb77ca5603e09f4099377fb025018e80635d7a53ab1b822c96cb1693f57a9
+
+pkgname = roomeqwizard-beta
+
