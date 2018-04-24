@@ -1,17 +1,23 @@
 # Maintainer: zoe <chp321@gmail.com>
 # Contributor : enckse <enckse [at] gmail [dot] com>
 pkgname=kxstitch
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('plasma-workspace' 'imagemagick')
+conflicts=('libmagick6')
 makedepends=('cmake' 'automoc4' 'doxygen' 'patch' 'extra-cmake-modules' 'kdoctools')
 url="https://userbase.kde.org/KXStitch"
 license=('GPL')
 source=("https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"
-       "${pkgname}.install")
-sha1sums=('b1a98ecc8262f69c5e7aae0677546210b52fca08' '8e58ce0776eff7ef29394a2f7a089191a4af0b1d')
+       "${pkgname}.install"
+       #"imagemagick.patch::https://github.com/KDE/kxstitch/commit/295773f44bfda1227d85edf065a8de14dc889159.diff"
+       )
+sha1sums=('6f712bca3173b90149b67640fb1b63d02725c9ef'
+          '8e58ce0776eff7ef29394a2f7a089191a4af0b1d'
+          #'e2d3c7ee0d9b62b7e0b1e4bcb327ee90f6edce3a'
+          )
 install=${pkgname}.install
 
 build() {
