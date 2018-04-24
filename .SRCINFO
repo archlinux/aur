@@ -1,5 +1,5 @@
 pkgbase = mod_auth_kerb
-	pkgdesc = A Kerberos authentication module for the Apache Http Server
+	pkgdesc = Obsolete: A Kerberos authentication module for the Apache Http Server
 	pkgver = 5.4
 	pkgrel = 6
 	url = http://modauthkerb.sourceforge.net/

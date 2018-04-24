@@ -5,7 +5,7 @@
 pkgname=mod_auth_kerb
 pkgver=5.4
 pkgrel=6
-pkgdesc="A Kerberos authentication module for the Apache Http Server"
+pkgdesc="Obsolete: A Kerberos authentication module for the Apache Http Server"
 arch=('i686' 'x86_64')
 url="http://modauthkerb.sourceforge.net/"
 license=('custom')
