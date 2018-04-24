@@ -1,12 +1,13 @@
 pkgbase = react-native-cli
 	pkgdesc = The React Native CLI tools
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://facebook.github.io/react-native/
 	arch = any
 	license = BSD-3-Clause
 	makedepends = npm
 	depends = nodejs
+	options = !emptydirs
 
 pkgname = react-native-cli
 
