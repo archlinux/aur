@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 license=('custom:EULA')
 pkgdesc='PDF editor'
@@ -28,3 +28,4 @@ package() {
 }
 
 
+sha512sums=('e3d73dc3cc633cd44d42f3c827c0cf83818e9e7e186c38f471fcf9a028c514bba9f9b0c7398e1cee1f5d1b8c0af9ce3285d8973513c09d33ce2880881530777b')
