@@ -13,10 +13,10 @@ pkgbase = heroku-cli
 	conflicts = heroku-client-standalone
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
-	source_i686 = https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-v6.15.13-3dce47c-linux-x86.tar.gz
-	md5sums_i686 = caf247f6e40ac26108188e182c3e032d
-	source_x86_64 = https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-v6.15.13-3dce47c-linux-x64.tar.gz
-	md5sums_x86_64 = f0a116dd4ea9261274e8f45e6b430000
+	source_i686 = https://cli-assets.heroku.com/heroku-linux-x86.tar.gz
+	md5sums_i686 = SKIP
+	source_x86_64 = https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
+	md5sums_x86_64 = SKIP
 
 pkgname = heroku-cli
 
