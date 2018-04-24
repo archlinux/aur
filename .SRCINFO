@@ -1,0 +1,16 @@
+pkgbase = python-detox
+	pkgdesc = distributing activities of the tox tool
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/tox-dev/detox
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-tox>=2.0.0
+	depends = python-py>=1.4.27
+	depends = python-eventlet>=0.15.0
+	source = https://files.pythonhosted.org/packages/source/d/detox/detox-0.12.tar.gz
+	md5sums = da59e8e175102eacc9559da9b6ed7fad
+
+pkgname = python-detox
+
