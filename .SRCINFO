@@ -1,7 +1,7 @@
 pkgbase = mod_auth_gssapi
 	pkgdesc = Kerberos authentication module for the Apache HTTP Server
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://github.com/modauthgssapi/mod_auth_gssapi
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mod_auth_gssapi
 	depends = apache>=2.4
 	depends = krb5>=1.11
 	optdepends = gss-ntlmssp: for NTLMSSP support
-	source = git+https://github.com/modauthgssapi/mod_auth_gssapi.git#commit=df49b2a5a7ddad6ceced6f1999612378aace1a28
+	source = git+https://github.com/modauthgssapi/mod_auth_gssapi.git#commit=d49615a95fd99e1eda8a7bf54e7f7216c4a7e6b1
 	sha256sums = SKIP
 
 pkgname = mod_auth_gssapi
