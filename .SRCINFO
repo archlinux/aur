@@ -1,0 +1,16 @@
+pkgbase = python-reedsolomon
+	pkgdesc = Pure-Python Reed Solomon encoder/decoder
+	pkgver = c9ec28a
+	pkgrel = 1
+	url = https://github.com/tomerfiliba/reedsolomon
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	optdepends = cython
+	source = git+https://github.com/tomerfiliba/reedsolomon.git
+	sha256sums = SKIP
+
+pkgname = python-reedsolomon
+
