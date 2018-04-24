@@ -33,6 +33,7 @@ build() {
     # version is the same as the running kernel
     mkdir -p $srcdir/asp
     cd $srcdir/asp
+    asp update linux
     asp export linux
     NESTEDDIR="$srcdir/asp/linux"
     cd $NESTEDDIR
