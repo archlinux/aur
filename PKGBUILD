@@ -4,7 +4,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=adonthell
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="A 2D graphical, single player role playing game engine"
 arch=('x86_64')
@@ -13,15 +13,8 @@ license=('GPL2')
 depends=('sdl2_mixer' 'sdl2_ttf' 'python')
 makedepends=('swig')
 options=('emptydirs')
-source=("http://savannah.nongnu.org/download/adonthell/$pkgname-src-$pkgver.tar.gz"
-        'fix-multi-monitor.patch')
-sha256sums=('3b5724ef734a1064899af7e8d693b532e97596a4e94f61e7af5d15eb9ee748cd'
-            'f9853a475706f077e258f965d035696ba6cacdbfc3512b5c622ec6c647882331')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i "$srcdir/fix-multi-monitor.patch"
-}
+source=("http://savannah.nongnu.org/download/adonthell/$pkgname-src-$pkgver.tar.gz")
+sha256sums=('b94258666932bbae0e2fe0bcaf31c373a55a01c8977d24b9f45e1f11887ae8b5')
 
 build() {
   cd $pkgname-$pkgver
