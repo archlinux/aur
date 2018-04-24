@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=fzy-git
-pkgver=r330.919bae5
+pkgver=r340.2be07b5
 pkgrel=1
 pkgdesc="A fuzzy text selector menu for the terminal"
 arch=('i686' 'x86_64')
@@ -12,20 +12,19 @@ provides=('fzy')
 conflicts=('fzy')
 source=("git+https://github.com/jhawthorn/fzy.git")
 md5sums=('SKIP')
-_gitname="fzy"
 
 pkgver() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   make PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   make PREFIX=/usr DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
