@@ -2,9 +2,9 @@
 
 _githubname=tizonia-openmax-il
 pkgname=tizonia-all
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
-pkgdesc="Command-line cloud music player for Linux with Spotify, Google Play Music, YouTube, SoundCloud, Dirble and Chromecast support."
+pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Dirble, Plex servers and Chromecast devices."
 arch=('x86_64')
 url="https://www.tizonia.org"
 license=('LGPL')
@@ -42,9 +42,12 @@ depends=(
     'python2-soundcloud-git'
     'python2-youtube-dl-git'
     'python2-pychromecast-git'
+    'python-plexapi'
+    'python2-fuzzywuzzy'
+    'python2-eventlet-git'
 )
 source=("${_githubname}-${pkgver}.tar.gz"::"https://github.com/tizonia/${_githubname}/archive/v${pkgver}.tar.gz")
-md5sums=('30c4e0288c30c60068f678bb09881563')
+md5sums=('34b6b663d54db7ee12595acfb0b8f391')
 
 prepare() {
   mkdir -p "$srcdir/path"
