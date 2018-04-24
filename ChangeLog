@@ -1,3 +1,9 @@
+2018-04-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.4-2
+	Compile VST plug-in separately as a workaround for
+	https://github.com/asb2m10/dexed/issues/132
+
 2018-03-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4-1
