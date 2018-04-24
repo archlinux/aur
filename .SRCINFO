@@ -1,6 +1,6 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 3.1.6
+	pkgver = 3.2
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	install = electron-cash.install
@@ -28,6 +28,7 @@ pkgbase = electron-cash
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-btchip: Ledger hardware wallet support
+	optdepends = python-hidapi: Digital Bitbox hardware wallet support
 	optdepends = python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes
 	optdepends = python-matplotlib: plot transaction history in graphical mode
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
@@ -35,9 +36,9 @@ pkgbase = electron-cash
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
-	source = electron-cash-3.1.6.tar.gz::https://github.com/fyookball/electrum/archive/3.1.6.tar.gz
+	source = electron-cash-3.2.tar.gz::https://github.com/fyookball/electrum/archive/3.2.tar.gz
 	source = electron-cash.install
-	sha256sums = 52111f7295cbda267a41582205d20f6f80e0bc5f4d87faf3768d20b2ae8e7b50
+	sha256sums = 0a50bcad327ee0914c444cdba4d1334a93dfc4fea30e04fc299c4913efe53181
 	sha256sums = d682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073
 
 pkgname = electron-cash
