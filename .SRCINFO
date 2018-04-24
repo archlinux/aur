@@ -1,7 +1,7 @@
 pkgbase = multisystem
 	pkgdesc = A GUI tool to create a usb system that can boot multiple distro's
 	pkgver = 1.0423
-	pkgrel = 1
+	pkgrel = 2
 	url = http://liveusb.info/dotclear/index.php
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = multisystem
 	depends = dosfstools
 	depends = gksu
 	depends = grub
-	depends = gtkdialog-svn
+	depends = gtkdialog
 	depends = gvfs
 	depends = hdparm
 	depends = imagemagick
