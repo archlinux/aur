@@ -1,0 +1,4 @@
+sprycloud-client/
+pkg/
+src/
+*.pkg.tar.xz

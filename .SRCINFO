@@ -1,0 +1,28 @@
+pkgbase = sprycloud-client-git
+	pkgdesc = spryCloud client for Linux
+	pkgver = spry_v2.5.0
+	pkgrel = 2
+	url = https://www.spryservers.net/
+	install = sprycloud-client.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qtkeychain
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = mirall
+	provides = mirall-git
+	provides = sprycloud-client
+	conflicts = sprycloud-client
+	options = !strip
+	backup = etc/spryCloud/sync-exclude.lst
+	source = sprycloud-client::git+https://github.com/SpryServers/sprycloud-client-next.git
+	source = sprycloud-client.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = sprycloud-client-git
+
