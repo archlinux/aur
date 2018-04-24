@@ -4,7 +4,7 @@
 
 _pkgname=samba-mounter
 pkgname=samba-mounter-git
-pkgver=118.5b9a6d7
+pkgver=147.3240cc9
 pkgrel=1
 pkgdesc="User space mount tool for samba"
 url="https://cgit.kde.org/scratch/afiestas/samba-mounter.git"
@@ -14,7 +14,7 @@ depends=('kauth' 'cifs-utils' 'smbclient' 'kcmutils' 'kconfig' 'kio' 'ki18n' 'so
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 provides=('samba-mounter' 'samba-mounter-frameworks-git')
 
-source=("git://anongit.kde.org/scratch/afiestas/samba-mounter.git")
+source=("git://anongit.kde.org/samba-mounter.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,17 +22,22 @@ pkgver() {
 	echo "$(git rev-list --count HEAD).$(git describe --always)"
 }
 
-build() {
-	cd "$srcdir"
-	mkdir -p build
-	cd build
+prepare() {
+  mkdir -p build
+}
 
-	cmake "../$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-	make
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+  make
 }
 
 package() {
-	cd "$srcdir/build"
-
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
