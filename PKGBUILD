@@ -2,7 +2,7 @@
 
 pkgname=sourcetrail
 _pkgname=Sourcetrail
-pkgver=2018.2.18
+pkgver=2018.2.19
 _pkgver=${pkgver/\./\_}
 pkgrel=1
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
@@ -16,7 +16,7 @@ provides=("${pkgname}=${pkgver}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
         "${pkgname}.desktop")
-sha256sums=('255b0d6e6659262b6df28b03cc72c5263e549dbad4f548771d3c91256135ae5f'
+sha256sums=('9f5dd68d2ab25040ab637296d94b952b3e0807dce5a1667b7c8f16e032432b1e'
             '9254abd7c73b70d3b81a40a6993b8c305cd24535aafe0eedffcd280f7fae2a3d')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
