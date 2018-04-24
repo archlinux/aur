@@ -1,0 +1,21 @@
+pkgbase = jcov-hg
+	pkgdesc = The JCov open source project is used to gather quality metrics associated with the production of test suites.
+	pkgver = r37.0b9e41807b07
+	pkgrel = 1
+	url = https://wiki.openjdk.java.net/display/CodeTools/jcov
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	makedepends = apache-ant
+	makedepends = java-environment-openjdk=7
+	makedepends = java-asm
+	makedepends = jtharness
+	depends = java-runtime>=7
+	optdepends = jtharness
+	provides = jcov
+	conflicts = jcov
+	source = jcov::hg+http://hg.openjdk.java.net/code-tools/jcov
+	md5sums = SKIP
+
+pkgname = jcov-hg
+
