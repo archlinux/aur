@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=asmtools-hg
 pkgver=r26.edbdc1bf3211
-pkgrel=1
+pkgrel=2
 pkgdesc="The AsmTools open source project is used to develop tools for the production of proper and improper Java '.class' files."
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/asmtools"
@@ -30,8 +30,8 @@ build() {
 
 package() {
   cd $srcdir/${pkgname%-hg}-7.0-build/release
-  # install -D -m 644 lib/asmtools.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/asmtools.jar
-  # install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m 644 lib/asmtools.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/asmtools.jar
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
