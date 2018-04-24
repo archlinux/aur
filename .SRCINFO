@@ -1,0 +1,25 @@
+pkgbase = python-notifiers
+	pkgdesc = Python logging library for easily sending notifications
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/notifiers
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-notifiers-0.6.4.tar.gz::https://pypi.io/packages/source/n/notifiers/notifiers-0.6.4.tar.gz
+	sha256sums = 477c779aa0f58a6e20c574892a0ff8f0bd6e618f730d5ee673af8e731e1abd22
+
+pkgname = python-notifiers
+	depends = python
+	depends = python-click
+	depends = python-requests
+
+pkgname = python2-notifiers
+	depends = python2
+	depends = python2-click
+	depends = python2-requests
+
