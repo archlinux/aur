@@ -1,0 +1,19 @@
+pkgbase = libemf2svg
+	pkgdesc = EMF (Microsoft Enhanced Metafile) to SVG conversion library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kakwa/libemf2svg
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = libiconv
+	depends = fontconfig
+	depends = freetype2
+	provides = libemf2svg
+	conflicts = libemf2svg-git
+	replaces = libemf2svg-git
+	source = libemf2svg-1.1.0.tar.gz::https://github.com/kakwa/libemf2svg/archive/1.1.0.tar.gz
+	sha512sums = 1e9c1274cb7fc3552e7d91169b500ee9d3e1870e411059abc0b343b8b82382e42127b59023753336580f591437003ad0565b6653d661ce5008baa64ebb6f1bd8
+
+pkgname = libemf2svg
+
