@@ -1,7 +1,7 @@
 pkgbase = react-native-git-upgrade
 	pkgdesc = The React Native upgrade tool
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/react-native/tree/master/react-native-git-upgrade
 	arch = any
 	license = BSD-3-Clause
