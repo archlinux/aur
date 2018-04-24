@@ -3,7 +3,7 @@
 _name=notifiers
 pkgbase='python-notifiers'
 pkgname=('python-notifiers' 'python2-notifiers')
-pkgver=0.6.4
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Python logging library for easily sending notifications"
 arch=('any')
@@ -14,14 +14,22 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('477c779aa0f58a6e20c574892a0ff8f0bd6e618f730d5ee673af8e731e1abd22')
+sha256sums=('671a00844ac54317b11b3501bde47fdb1d9be52d37f78abd245aa0f00ebfdf9a')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
+
+  # README.MD is not packaged in the 'tar.gz' so strike reading it.
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  sed -i -e '6 {s/^/#/}' -e '7 {s/.*/long_description=""/}' setup.py
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  sed -i -e '6 {s/^/#/}' -e '7 {s/.*/long_description=""/}' setup.py
 }
 
 build(){
   cd "${srcdir}"/"${_name}"-"${pkgver}"
+
   python setup.py build
 
   cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
