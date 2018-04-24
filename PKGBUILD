@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.16
-pkgver=4.16.3
+pkgver=4.16.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -85,8 +85,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
         '0003-Partially-revert-swiotlb-remove-various-exports.patch'
         '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch'
-        '0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch'
-        '0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
+        '0005-net-aquantia-Regression-on-reset-with-1.x-firmware.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -113,14 +112,10 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/58153
         msg "Fix #58153"
         patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58158
-        msg "Fix #58158"
-        patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
 
     ### Fix https://bugs.archlinux.org/task/58174
         msg "Fix #58174"
-        patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+        patch -Np1 -i ../0005-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -385,7 +380,7 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '7c7c2c090d7375a923524d88f86a714576321094de94bcfd78d467b78c3b933c2cdb4863db24b0091b28f78ae10a5d4e112c3d150998d552d29e737f043e5fa8'
+            'caa9726e0c9ad4da4dbcebb6b47f08e6575d30f050e7d6087018fae932c0c706e9a03d4b703dd49bc46bc21df08b5c7dff37ac5bb6522d6a6ed3d3b10712e9eb'
             'SKIP'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             '337b220e5c5f240bf195fcf174974c03b127598723fc4ea5813e5c32154048ac4193737418b21e720e9034ad53589b59b898d0e648925db7e2db2ad57acd7fe7'
@@ -394,12 +389,11 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'ac301d5bd282e1d336bf71ad9d1085f79f1e89cdd7daf4d9862d11bb82b3fc8eabf07fdff4603dae7f1ef99c0d8f0b93ef276bef794428d69e971335bc783b57'
-            'cea45ccde152a3f125a21352db3ffa2ecb058e56a637be86c4a02ae4759f359068c929bbe9ac604087feb7ab83b45c0458cf2aef712b784c32b892e57e21a441'
-            '8e97dc385260d2fba5d102746f9c763cb2fc77ec34ebb9963f49f389959d77cc9fdac6e2463b373c45ceb5f65da22aaaf7aaf16bea6fdc0760d2e08371f36d3f'
-            '22e7066a8068065e931e3e97e13b984e71c74b81370e57d7d0ff0c74c1d6aca05b8da214b270a9e94c0b2df9c107fdd07fc50cfb77e01687533fc2d6e3d26c3e'
-            '84e8321d9953eb59dd3af1a5f5c9fd74aabe25ba4ef3f1baef280bf2758d7aa3189f3d86140f8daf915bffbdfb81d39b3697bccf6b681d99f7e888d5a5b7dbfa'
-            'a55d10c4c2dd2ef86cf55e081b8c37825db851995072965b969b591d7ef306f0e84c7521c9c71d6812c740c5d21e9f9b618d74145f9d7cefdbd7b1d149b07f01')
+            'cfcf6cb510b145039075442f397b9526c103334f8728cae1fb70395dabed3ff0105ce9da7412f98a744e62ec2cae8aa8406b39d9f9ea6d8c0a04bd6c78605885'
+            'ca10d5457633a5504b09007a299114b32fd2f84aeb2381138ea5ecaf9c3da76b84efce63f9e23ea7b9b70ae7c05c7c29756c5a95abf599155fff73b24926d5ed'
+            'b12a068e3158b5281ea6f471a4065fb9fb1e51d4b8c17d0bbf6556c2afcf257d0905948b336f72752717c136aa26ca88e3a81abd318b5e48a085bd050ea89ba3'
+            '7a1c931269f3e801496dd8dad049b65fb28212d90179640b8ac0d7f380e0f1378dc8f43624893f200e99678793300d331701fad3826b059c9336f7b16ef8a521'
+            '23ea6d086bc0a483c08b28d8a64a47636024322d38a17bb5994df4cd25cbd1d29be39a7ed0d8c2305409efdb455c5b5f3fd9d72ca10d3c13df66185a5d089a8c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
