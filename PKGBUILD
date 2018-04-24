@@ -6,8 +6,8 @@
 
 pkgname=pcmanfm-gtk3
 _pkgname=pcmanfm
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Extremely fast and lightweight file manager (GTK+ 3 version)'
 arch=('x86_64')
 url='https://lxde.org/'
@@ -18,15 +18,8 @@ makedepends=('intltool')
 optdepends=('gvfs: for trash support, mounting with udisks and remote filesystems'
             'xarchiver: archive management')
 conflicts=($_pkgname)
-source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz
-        Fix-CVE-2017-8934.patch)
-sha256sums=('0c86cac028b705ff314c7464d814c2cf7ff604c17491c20aa204b1ef1a80ad67'
-            'b6c72862e70d4c4d2ec9754427bf7835b4f3104fea642e7ba4dd871c782bd1f1')
-
-prepare() {
-  cd $_pkgname-$pkgver
-  patch -Np1 -i ../Fix-CVE-2017-8934.patch
-}
+source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
+sha256sums=('5a693e9bf3f3294f0ee7264c1c1a600a88ee27d1572e7dd5c4b0e84aa7778ffb')
 
 build() {
   cd $_pkgname-$pkgver
