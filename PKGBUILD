@@ -3,7 +3,7 @@
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher-git
-pkgver=1alpha+git20180413.08ff6b8
+pkgver=1alpha+git20180424.6eac993
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive')
 makedepends=('git' 'cmake' 'wget' 'vim')
-source=("$_pkgname::git+https://github.com/TheAssassin/$_pkgname")
+source=("git://github.com/TheAssassin/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
