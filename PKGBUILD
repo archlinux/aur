@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2536.3d28f704
+pkgver=r3265.cc77a035
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -86,6 +86,8 @@ package() {
     # Install netmap module, patched drivers modules, applications, headers
     # and the man page
     make install
+    mv "$pkgdir/usr/bin/bridge" "$pkgdir/usr/bin/netmap-bridge"
+    mv "$pkgdir/usr/bin/bridge-b" "$pkgdir/usr/bin/netmap-bridge-b"
 }
 
 # vim:set ts=2 sw=2 et:
