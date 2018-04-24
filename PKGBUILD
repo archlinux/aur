@@ -32,6 +32,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname%-*}"
-	install -m644 -D LICENSE ${pkgdir}/usr/share/licences/${pkgname%-*}/LICENSE
+	install -m644 -D LICENSE ${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE
 	install -Dm0755 ./src/gull ${pkgdir}/usr/bin/gull
 }
