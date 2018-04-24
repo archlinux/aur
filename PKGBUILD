@@ -2,13 +2,12 @@
 
 pkgname="gws"
 pkgver="0.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/StreakyCobra/gws"
 license=('MIT')
 arch=('any')
 depends=('bash>4.0' 'git')
-changelog="ChangeLog"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/StreakyCobra/${pkgname}/archive/${pkgver}.tar.gz"
   "https://github.com/StreakyCobra/${pkgname}/releases/download/${pkgver}/gws-${pkgver}.tar.gz.sig"

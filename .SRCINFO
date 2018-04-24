@@ -1,9 +1,8 @@
 pkgbase = gws
 	pkgdesc = Colorful KISS helper for git workspaces
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StreakyCobra/gws
-	changelog = ChangeLog
 	arch = any
 	license = MIT
 	depends = bash>4.0
