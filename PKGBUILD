@@ -1,6 +1,6 @@
 pkgname='enpass-bin'
 _pkgname='enpass'
-pkgver=5.6.5
+pkgver=5.6.8
 pkgrel=1
 pkgdesc='A multiplatform password manager'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('enpass-beta-bin' 'enpass-rc-bin')
 provides=("${_pkgname}")
 install='enpass-bin.install'
 source=("http://repo.sinew.in/pool/main/e/enpass/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('c7529b745aa462b56eac17af6fe88d4c1610fd2f446d222aaad9510f19212a7d')
+sha256sums=('ba6289589874e7477cbd1bfad31180c0fcf7abbb7e47ab19c685dda3747eaa12')
 
 # Disable strip as otherwise the browser extension will not work
 options=('!strip')
