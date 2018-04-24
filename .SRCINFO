@@ -1,7 +1,7 @@
 pkgbase = ultrastar-creator
 	pkgdesc = Qt program used to generate USDX songs from scratch
 	pkgver = git.latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/UltraStar-Deluxe/UltraStar-Creator
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ultrastar-creator
 	depends = qt5-base
 	depends = qt5-tools
 	depends = git
+	depends = libbass
 	source = git://github.com/UltraStar-Deluxe/UltraStar-Creator.git
 	source = ultrastar-creator.desktop
 	md5sums = SKIP
