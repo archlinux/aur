@@ -1,0 +1,17 @@
+pkgbase = termenu-git
+	pkgdesc = Interactive in-line menus for Unix-based terminals
+	pkgver = r198.edf68ef
+	pkgrel = 1
+	url = https://github.com/elifiner/termenu
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = termenu
+	conflicts = termenu
+	options = !emptydirs
+	source = git+https://github.com/elifiner/termenu.git
+	md5sums = SKIP
+
+pkgname = termenu-git
+
