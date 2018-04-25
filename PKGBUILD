@@ -3,7 +3,7 @@
 # Contributor: Peter Kosyh <p.kosyhgmail.com>
 
 pkgname=instead
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="a quest interpreter"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'lua' 'gtk2')
 makedepends=('cmake')
 optdepends=('instead-launcher: install and update INSTEAD games from net')
 source=(http://downloads.sourceforge.net/project/instead/instead/${pkgver}/instead_${pkgver}.tar.gz)
-sha256sums=('ca6cf93b02039df2c6fe36e429566cf52b6a957724f748a45b36edfe6cc3a750')
+sha256sums=('241556db250e0a156b98beaf9bb71b54fc9d186130910adbeab1c1961757dad2')
 
 build() {
   cd "${srcdir}"
@@ -31,8 +31,9 @@ package() {
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 
   cd "${srcdir}"/$pkgname-$pkgver
-  cp -a doc/*.{html,pdf} doc/instead.txt doc/examples "$pkgdir"/usr/share/doc/instead/
+  cp -a doc/*.pdf doc/instead.txt doc/examples "$pkgdir"/usr/share/doc/instead/
 
   install -Dm0644 COPYING "$pkgdir"/usr/share/licenses/instead/COPYING
 }
+
 
