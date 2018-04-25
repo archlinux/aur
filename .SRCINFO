@@ -4,7 +4,7 @@ pkgbase = osmo-fl2k-git
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-fl2k/wiki
 	arch = any
-	license = MIT
+	license = GPL
 	makedepends = git
 	makedepends = cmake
 	depends = libusb>=1.0
