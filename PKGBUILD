@@ -18,6 +18,11 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "${srcdir}/$pkgname"
+	sed -i 's:data, long size:data, long long size:' blockimg/blockimg.cpp
+}
+
 build() {
 	cd "${srcdir}/$pkgname"
 	make all
