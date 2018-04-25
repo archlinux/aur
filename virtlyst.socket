@@ -1,0 +1,10 @@
+[Unit]
+Description=Web interface to manage virtual machines with libvirt - socket
+
+[Socket]
+ListenStream=/run/virtlyst.sock
+SocketMode=0660
+SocketGroup=http
+
+[Install]
+WantedBy=sockets.target
