@@ -9,7 +9,7 @@ pkgbase = limesuite
 	makedepends = cmake
 	depends = sqlite3
 	depends = wxgtk3
-	depends = mesa
+	depends = opengl-driver
 	depends = libusb>=1.0
 	depends = soapysdr
 	provides = limesdr

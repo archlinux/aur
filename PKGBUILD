@@ -6,7 +6,7 @@ pkgdesc="Driver and GUI for LMS7002M-based SDR platforms"
 arch=(any)
 url="https://github.com/myriadrf/LimeSuite"
 license=('MIT')
-depends=('sqlite3' 'wxgtk3' 'mesa' 'libusb>=1.0' 'soapysdr')
+depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr')
 makedepends=('git' 'cmake')
 provides=('limesdr' 'soapylms7')
 conflicts=('limesdr' 'soapylms7')
