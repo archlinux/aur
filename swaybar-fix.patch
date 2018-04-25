@@ -1,21 +1,8 @@
-diff --git a/swaybar/bar.c b/swaybar/bar.c
-index d407db4f..20a0897c 100644
---- a/swaybar/bar.c
-+++ b/swaybar/bar.c
-@@ -164,7 +164,7 @@ static void wl_pointer_axis(void *data, struct wl_pointer *wl_pointer,
- 
- 	struct swaybar_workspace *first = NULL;
- 	struct swaybar_workspace *active = NULL;
--	struct swaybar_workspace *last;
-+	struct swaybar_workspace *last = NULL;
- 
- 	struct swaybar_workspace *iter;
- 	wl_list_for_each(iter, &output->workspaces, link) {
 diff --git a/swaybar/i3bar.c b/swaybar/i3bar.c
-index dced13d2..09da58d2 100644
+index 141612a6..2d85cc74 100644
 --- a/swaybar/i3bar.c
 +++ b/swaybar/i3bar.c
-@@ -143,6 +143,13 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -144,6 +144,13 @@ bool i3bar_handle_readable(struct status_line *status) {
  		} else {
  			switch (*cur) {
  			case '[':
@@ -29,7 +16,7 @@ index dced13d2..09da58d2 100644
  				++state->depth;
  				if (state->depth >
  						sizeof(state->nodes) / sizeof(state->nodes[0])) {
-@@ -150,7 +157,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -151,7 +158,7 @@ bool i3bar_handle_readable(struct status_line *status) {
  					return false;
  				}
  				state->nodes[state->depth] = JSON_NODE_ARRAY;
@@ -38,7 +25,7 @@ index dced13d2..09da58d2 100644
  					state->current_node = cur;
  				}
  				break;
-@@ -160,7 +167,7 @@ bool i3bar_handle_readable(struct status_line *status) {
+@@ -161,7 +168,7 @@ bool i3bar_handle_readable(struct status_line *status) {
  					return false;
  				}
  				--state->depth;
@@ -48,7 +35,7 @@ index dced13d2..09da58d2 100644
  					char p = cur[1];
  					cur[1] = '\0';
 diff --git a/swaybar/status_line.c b/swaybar/status_line.c
-index 8d781ca3..9175d2b6 100644
+index e0e7414a..f0d5cf8b 100644
 --- a/swaybar/status_line.c
 +++ b/swaybar/status_line.c
 @@ -9,12 +9,14 @@

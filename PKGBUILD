@@ -1,7 +1,7 @@
 # Maintainer: Nils Brause <nilschrbrause@gmail.com>
 pkgname=sway-wlroots-git
-pkgver=1.0.alpha.1.r125.g48c84cd1
-pkgrel=7
+pkgver=1.0.alpha.1.r144.g75674295
+pkgrel=1
 pkgdesc='i3 compatible window manager for Wayland'
 arch=('x86_64')
 url='http://swaywm.org'
@@ -16,7 +16,7 @@ install=sway-wlroots-git.install
 source=('git+https://github.com/swaywm/sway.git'
         'swaybar-fix.patch')
 sha1sums=('SKIP'
-          '7173bda1e70e9fb2f6a703ac9ab8dcf0291529dd')
+          '0641e1030cc36e2768dee03f27f0c5016a29768c')
 
 pkgver() {
   cd "$srcdir/sway"
@@ -30,6 +30,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/sway"
+  rm -rf "$srcdir/build"
   meson --prefix /usr "$srcdir/build"
   ninja -C "$srcdir/build"
 }
