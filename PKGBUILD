@@ -18,7 +18,6 @@ makedepends=('python>=3.3'
              'python-matplotlib'
              'python-astropy>=1.1'
              'python-astropy-helpers'
-             'python2-astropy-helpers'
              'python-semantic-version>=2.3.1')
 #            'python-sphinx')
 #checkdepends=('python-pytest')
