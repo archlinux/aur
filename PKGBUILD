@@ -1,23 +1,24 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contibutor: Steven Allen <steven@stebalien.com>
+# Contributor: Steven Allen <steven@stebalien.com>
+# Contributor: Máté Eckl <ecklm94@gmail.com>
 
 pkgname=nftables-git
-pkgver=0.5.r36.g787dff9
+pkgver=0.8.3.r129.g8810a28
 pkgrel=1
-pkgdesc='Netfilter nf_tables infrastructure library'
+pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
-url='http://netfilter.org/projects/nftables/'
-license=(GPL2)
-depends=(libmnl gmp libnftnl-git ncurses)
-makedepends=(git docbook2x perl-xml-libxml)
+url='https://netfilter.org/projects/nftables/'
+license=('GPL2')
+depends=(libmnl libnftnl-git gmp readline ncurses)
+makedepends=(docbook2x git)
+privides=(nftables)
 conflicts=(nftables)
-# systemd support is stolen from https://github.com/devkid/nftables-systemd
 source=(git://git.netfilter.org/nftables
-        nftables.service
-        nftables-ctl)
+        nftables.conf
+        nftables.service)
 sha1sums=('SKIP'
-          'efbc57f8ea6c37baaa8dac7bab026e9babf5aa97'
-          '384642dd1b9490870a92b5d6fca62c3e942be109')
+          '7869aa31ac802922073310ffd4cbbc16450171e5'
+          '59185e947ebfd599954800ad2c774171b3f4cd58')
 
 pkgver() {
   cd nftables
@@ -26,14 +27,16 @@ pkgver() {
 
 build() {
   cd nftables
-  ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+  sh autogen.sh
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/usr/share CONFIG_MAN=y DB2MAN=docbook2man
   make
 }
 
 package() {
   cd nftables
   make DESTDIR="$pkgdir" install
-  install -D -m644 "$srcdir/nftables.service" "$pkgdir/usr/lib/systemd/system/nftables.service"
-  install -D -m755 "$srcdir/nftables-ctl" "$pkgdir/usr/bin/nftables-ctl"
+  # basic safe firewall config
+  install -Dm644 "$srcdir/nftables.conf" "$pkgdir/etc/nftables.conf"
+  # systemd
+  install -Dm644 "$srcdir/nftables.service" "$pkgdir/usr/lib/systemd/system/nftables.service"
 }
