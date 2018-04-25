@@ -1,0 +1,16 @@
+pkgbase = python-pyppeteer
+	pkgdesc = Headless chrome/chromium automation library
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/miyakogi/pyppeteer
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyee
+	depends = python-websockets
+	source = pyppeteer-0.0.16.tar.gz::https://github.com/miyakogi/pyppeteer/archive/0.0.16.tar.gz
+	sha512sums = 5c195a79be0fb9062b43648fe4509b6184bc177686f5ecd1d3768dfafde2b43d6ddd855203e06272c3392765b8f066e316e5630f150a858434645901fcf4ee86
+
+pkgname = python-pyppeteer
+
