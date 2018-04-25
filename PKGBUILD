@@ -10,6 +10,7 @@ url='http://cloudef.eu'
 license=('WTFPL')
 backup=('etc/linopen.conf')
 source=('open' 'linopen.conf')
+depends=('grep' 'file')
 
 # Set this 1 to symlink /usr/bin/open to /usr/bin/xdg-open
 # and conflict with xdg-utils
