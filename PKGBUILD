@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r346.61c4f9f
+pkgver=r349.a437def
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -27,13 +27,15 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-galaplugin.patch'
         'minus-gala.patch'
         'y-is-broken-cogl.patch'
-        'autohide.patch')
+        'autohide.patch'
+        'fix-libdir.patch')
 sha256sums=('SKIP'
             '37b3853f5e8a84a4d86c392beb0b422e03c71c7c53519f49883bfa5550979ae8'
             'e56bc3b154539b6ae2ca7494f46f6f68c55f167b73203b92d645839bf8e9a5ea'
             '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            'da77ed83459b7d49056f35b9de1dd8b487b3c51234911f43b2fa401a38b6dd4a')
+            'da77ed83459b7d49056f35b9de1dd8b487b3c51234911f43b2fa401a38b6dd4a'
+            'f94a739163a8974f86271e65bbfb5272d81ff64162d7743174c7441834c3dc88')
 
 pkgver() {
   cd wingpanel
@@ -56,6 +58,10 @@ prepare() {
   patch -Np2 < ../minus-galaplugin.patch
   msg2 "Remove Gala dependency"
   patch -Np2 < ../minus-gala.patch
+
+  #Fix broken libdir in pkgconfig
+  msg2 "Remove Gala dependency"
+  patch -Np2 < ../fix-libdir.patch
 
   #Cogl can't be found when not using gala's cmake package; wtf?
   msg2 "Remove CoglFixes (broken)"
