@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kunitconversion
-pkgver=5.22.0
+pkgver=5.45.0
 pkgrel=1
 arch=(any)
 pkgdesc="Support for unit conversion (mingw-w64)"
@@ -9,8 +9,10 @@ groups=(mingw-w64-kf5)
 makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules python)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kunitconversion"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kunitconversion-${pkgver}.tar.xz")
-md5sums=('187e5b4e1d2069b9bd120ca2ea688f1f')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kunitconversion-${pkgver}.tar.xz"{,.sig})
+sha256sums=('7906c5d3e911b6689e6aa55a5d63549658069696f2c4f89f317c3cc3862e952a'
+            'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
