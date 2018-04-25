@@ -1,4 +1,5 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer: Zach Callear <zach@callear.org>
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributor: Boyan Ding <stu_dby@126.com>
@@ -13,16 +14,16 @@ pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-open
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=152
-_jdk_build=03
+_jdk_update=172
+_jdk_build=11
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url='http://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment>=7' 'cpio' 'unzip' 'zip' 'libxrender' 'libxtst'
-            'fontconfig' 'libcups' 'alsa-lib' 'fontconfig')
+makedepends=('java-environment>=7' 'ccache' 'cpio' 'unzip' 'zip'
+             'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         corba-${_repo_ver}.tar.gz::${_url_src}/corba/archive/${_repo_ver}.tar.gz
@@ -34,22 +35,21 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
         add-fontconfig.patch
         enable-infinality.patch)
-sha256sums=('e5719264ea5370815c233bb8f055eacef4e4aaaef971fb84f731926ce9bc20f6'
-            '6968085c367e832a4b166daab89eaf61bb58acbe8d930a3d944ff2327bd846a2'
-            '183f958982b2a1c4f10fc834ae8e8d4ac254bf1a65373fd001ab4e58a99b0983'
-            'ea44540bf90913ba5d122b093005d6e2ebfb0a07535187dc71f1cda639b8d185'
-            'f3d8c2342970c229985d32bb49e84d007f50df5a6b27991b8e1473ff45832bfc'
-            '843a397b1d610db27b378d006ade2d98ce53d5e1f7952bf64fa865f0119e6fd0'
-            '4d336740d2e94d2406eb310acc64b95332e5f276143e38efe663f42f67601e7b'
-            '7f94034dd260c5f14a8cf3ef66b05452ca991e3d0e7a22a5513385124a8c8fc4'
+
+sha256sums=('f1ca31605360594cb57b21aa5888f253e9775125957f96afb1a9dbb71676af22'
+            'a89b558a4bb1d0368486a58d248a16b1760f8536fdc94ff70bf09e5c1bfcea24'
+            'f7a2652021b50d43c076df8f94cec13b82e2704c0d1535289074cb5e0eec31a0'
+            '756b6855c9bdb7ae1ac4b7a4d2bafcbdad4ab6dd33ccc64efb94f9d4f21273d3'
+            '8ad3b70c468cce6104f023ca5f4354462a47a38d9dc25994a6d04b2c18598432'
+            '0193ff13167f6ff7d667cd32dd2d05e4591975a4404b433c9ff59d2d4ce54603'
+            'ef0f2042143cf6ddc508d81978fdb7cd900d38e5b166f40112d1967ceb09f036'
+            '2a3bff4dfca022cb603cd46a6766fd1b7212adb473af5809b48504576bce6029'
             '3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
 
-
-
 case "${CARCH}" in
-  'x86_64') _JARCH=amd64 ;;
-  'i686'  ) _JARCH=i386  ;;
+  'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
+  'i686'  ) _JARCH=i386  ; _DOC_ARCH=x86    ;;
 esac
 
 _jdkname=openjdk8
@@ -69,8 +69,6 @@ prepare() {
     ln -s ../${subrepo}-${_repo_ver} ${subrepo}
   done
 
-  #patch -p1 < ../build_with_gcc6.patch
-
   # Apply infinality patches
   cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
   patch -p1 < "${srcdir}/add-fontconfig.patch"
@@ -81,16 +79,10 @@ build() {
   cd "${srcdir}/jdk8u-${_repo_ver}"
 
   unset JAVA_HOME
-  # _JAVA_OPTIONS breaks installed Java version check
-  unset _JAVA_OPTIONS
-  # https://bugs.archlinux.org/task/44164
-  unset CLASSPATH
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
-  # Fixes build issues for some people
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-  export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
-
+  # https://hydra.nixos.org/build/41230444/log
+  export CFLAGS="-Wno-error=deprecated-declarations -fno-lifetime-dse -fno-delete-null-pointer-checks"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \

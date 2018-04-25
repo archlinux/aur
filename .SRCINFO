@@ -1,11 +1,12 @@
 pkgbase = java8-openjdk
-	pkgver = 8.u152
+	pkgver = 8.u172
 	pkgrel = 1
 	url = http://openjdk.java.net/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = custom
 	makedepends = java-environment>=7
+	makedepends = ccache
 	makedepends = cpio
 	makedepends = unzip
 	makedepends = zip
@@ -14,25 +15,24 @@ pkgbase = java8-openjdk
 	makedepends = fontconfig
 	makedepends = libcups
 	makedepends = alsa-lib
-	makedepends = fontconfig
-	source = jdk8u-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u152-b03.tar.gz
-	source = corba-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u152-b03.tar.gz
-	source = hotspot-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u152-b03.tar.gz
-	source = jdk-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u152-b03.tar.gz
-	source = jaxws-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u152-b03.tar.gz
-	source = jaxp-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u152-b03.tar.gz
-	source = langtools-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u152-b03.tar.gz
-	source = nashorn-jdk8u152-b03.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u152-b03.tar.gz
+	source = jdk8u-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u172-b11.tar.gz
+	source = corba-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u172-b11.tar.gz
+	source = hotspot-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u172-b11.tar.gz
+	source = jdk-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u172-b11.tar.gz
+	source = jaxws-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u172-b11.tar.gz
+	source = jaxp-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u172-b11.tar.gz
+	source = langtools-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u172-b11.tar.gz
+	source = nashorn-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u172-b11.tar.gz
 	source = add-fontconfig.patch
 	source = enable-infinality.patch
-	sha256sums = e5719264ea5370815c233bb8f055eacef4e4aaaef971fb84f731926ce9bc20f6
-	sha256sums = 6968085c367e832a4b166daab89eaf61bb58acbe8d930a3d944ff2327bd846a2
-	sha256sums = 183f958982b2a1c4f10fc834ae8e8d4ac254bf1a65373fd001ab4e58a99b0983
-	sha256sums = ea44540bf90913ba5d122b093005d6e2ebfb0a07535187dc71f1cda639b8d185
-	sha256sums = f3d8c2342970c229985d32bb49e84d007f50df5a6b27991b8e1473ff45832bfc
-	sha256sums = 843a397b1d610db27b378d006ade2d98ce53d5e1f7952bf64fa865f0119e6fd0
-	sha256sums = 4d336740d2e94d2406eb310acc64b95332e5f276143e38efe663f42f67601e7b
-	sha256sums = 7f94034dd260c5f14a8cf3ef66b05452ca991e3d0e7a22a5513385124a8c8fc4
+	sha256sums = f1ca31605360594cb57b21aa5888f253e9775125957f96afb1a9dbb71676af22
+	sha256sums = a89b558a4bb1d0368486a58d248a16b1760f8536fdc94ff70bf09e5c1bfcea24
+	sha256sums = f7a2652021b50d43c076df8f94cec13b82e2704c0d1535289074cb5e0eec31a0
+	sha256sums = 756b6855c9bdb7ae1ac4b7a4d2bafcbdad4ab6dd33ccc64efb94f9d4f21273d3
+	sha256sums = 8ad3b70c468cce6104f023ca5f4354462a47a38d9dc25994a6d04b2c18598432
+	sha256sums = 0193ff13167f6ff7d667cd32dd2d05e4591975a4404b433c9ff59d2d4ce54603
+	sha256sums = ef0f2042143cf6ddc508d81978fdb7cd900d38e5b166f40112d1967ceb09f036
+	sha256sums = 2a3bff4dfca022cb603cd46a6766fd1b7212adb473af5809b48504576bce6029
 	sha256sums = 3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55
 	sha256sums = efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac
 
@@ -52,7 +52,7 @@ pkgname = jre8-openjdk-headless-infinality
 pkgname = jre8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 full runtime environment with infinality patch applied
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-headless-infinality=8.u152-1
+	depends = jre8-openjdk-headless-infinality=8.u172-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -68,7 +68,7 @@ pkgname = jdk8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 development kit with infinality patch applied
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-infinality=8.u152-1
+	depends = jre8-openjdk-infinality=8.u172-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-openjdk
