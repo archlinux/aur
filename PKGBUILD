@@ -5,7 +5,7 @@
 set -u
 pkgname='brother-cups-wrapper-laser'
 pkgver='2.0.1_2_0ubuntu7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='cups wrapper drivers for DCP-7010 DCP-7020 DCP-7025 DCP-8060 DCP-8065DN FAX-2820 FAX-2920 HL-2030 HL-2040 HL-2070N HL-5240 HL-5250DN HL-5270DN HL-5280DW MFC-7220 MFC-7225N MFC-7420 MFC-7820N MFC-8460N MFC-8660DN MFC-8860DN MFC-8870DW'
 arch=('i686' 'x86_64')
 url='http://solutions.brother.com/linux/en_us/index.html'
@@ -26,8 +26,8 @@ package() {
   cd "${pkgdir}"
   bsdtar -xf "${srcdir}/data.tar".?z
   # This gets them to sort correctly but does not make automatic matching work.
-  sed -Ee '/^\*(NickName|ShortNickName):/ s:(DCP|FAX|HL|MFC)([0-9]):\1-\2:g' -i 'usr/share/ppd/Brother'/*.ppd
-  gzip 'usr/share/ppd/Brother'/*.ppd
+  # sed -Ee '/^\*(NickName|ShortNickName):/ s:(DCP|FAX|HL|MFC)([0-9]):\1-\2:g' -i 'usr/share/ppd/Brother'/*.ppd
+  # gzip 'usr/share/ppd/Brother'/*.ppd
   set +u
 }
 set +u
