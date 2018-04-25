@@ -4,23 +4,23 @@
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 
 pkgname=fcitx-sogoupinyin
-pkgver=2.2.0.0102
-pkgrel=2
+pkgver=2.2.0.0108
+pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
 url="https://pinyin.sogou.com/linux/"
 license=('custom')
 depends=('fcitx' 'opencc' 'libidn' 'lsb-release' 'xorg-xprop' 'qtwebkit')
 
-_i686_time=1509619879
-_x86_64_time=1509619794
+_i686_time=1524572032
+_x86_64_time=1524572264
 source=('sogou-autostart')
 source_i686=("http://cdn2.ime.sogou.com/dl/index/${_i686_time}/sogoupinyin_${pkgver}_i386.deb")
 source_x86_64=("http://cdn2.ime.sogou.com/dl/index/${_x86_64_time}/sogoupinyin_${pkgver}_amd64.deb")
 
-md5sums=('d20f07816f7be4bcd11e7a6f527de425')
-md5sums_x86_64=('2a58e8b4c2ae619e2b3f706665a559d5')
-md5sums_i686=('6845cbfe09d0e1b5a6c62c3c092a9c09')
+md5sums=('d1b6c174a455f7d7795da6e4ab829b12')
+md5sums_x86_64=('3fc65450b4a8c2f00561d9c8a4a07b5a')
+md5sums_i686=('475d07b3a99c2e23daca68c7d900388f')
 
 package(){
     cd ${srcdir}
