@@ -3,3 +3,4 @@ pkg/
 ATSAS*.tar.gz
 *~
 *.pkg.tar.xz
+*.log
