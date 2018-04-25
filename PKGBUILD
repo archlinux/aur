@@ -3,15 +3,15 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=7
-pkgrel=2
-pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
+pkgver=8
+pkgrel=1
+pkgdesc='Workarounds for Pantheon derivatives'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/gala'
+url='https://github.com/quequotion/pantheon-bzr-qq'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=(gnome-settings-daemon-{elementary,compat} 'pantheon-session-git')
-optdepends=("pantheon-default-settings-git: Pantheon configuration and themeing"
+optdepends=("pantheon-qq-default-settings-git: Pantheon configuration and themeing for Pantheon derivatives"
             "contractor-git: A desktop-wide extension service"
             "pantheon-print-git: Print settings dialog"
             "pantheon-polkit-agent-git: Polkit Authentication Agent"
@@ -43,8 +43,6 @@ prepare() {
   git clone -n "https://github.com/elementary/gala.git"
   cd "${srcdir}/gala"
   export pkgvergala="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-
-  # This space reserved for pantheon-default-settings-git
 }
 
 provides=(gala{,-bzr,-git}="${pkgvergala}")
@@ -56,11 +54,10 @@ package() {
   install -Dm644 {"${srcdir}","${pkgdir}"/etc/xdg/autostart}/gnome-fallback-media-keys-helper-pantheon.desktop
   install -Dm644 {"${srcdir}","${pkgdir}"/etc/xdg/autostart}/gnome-fallback-background-helper-pantheon.desktop
   install -Dm644 {"${srcdir}","${pkgdir}"/etc/xdg/autostart}/gnome-fallback-mount-helper-pantheon.desktop
+
+  #numlockx
   install -Dm644 {"${srcdir}","${pkgdir}"/etc/xdg/autostart}/numlockx-pantheon.desktop
 
-  # This space reserved for pantheon-default-settings-git
-
-  # gnome-session workaround
+  #Script to initiate Pantheon derivative gnome-sessions
   install -Dm755 {"${srcdir}","${pkgdir}"/usr/bin}/pantheon-session-qq
 }
-
