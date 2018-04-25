@@ -2,7 +2,7 @@
 _proname=caj2pdf
 pkgname=caj2pdf-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert CAJ (China Academic Journals) files to PDF"
 arch=('x86_64')
 url="https://github.com/JeziL/caj2pdf"
