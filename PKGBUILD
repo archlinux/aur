@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=181.4668.13
+_buildver=181.4668.75
 _pkgver=2018.1.2
 _eap=false
 pkgver="${_pkgver}.${_buildver}"
@@ -34,7 +34,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'jupyter: For support Jupyter Notebook')
 provides=("pycharm" "pycharm-professional")
 
-if [[ $_eap = true ]]; then
+if [[ $_eap = false ]]; then
 	source=("https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz"
 	"${pkgname}.desktop")
 else
@@ -42,7 +42,7 @@ else
 	"${pkgname}.desktop")
 fi
 	
-sha256sums=("a15ab1f6b92a6f95f16c6a52600a51efc2fc59ec1ce4c77d1c9122b7fb539bd3"
+sha256sums=("6557e3d9309d4c84501ddba11345b6103cfbad074c6e160c6bc7e85e73ae8e21"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
