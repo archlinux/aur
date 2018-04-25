@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jtharness-hg
 pkgver=r130.9e33ec101187
-pkgrel=2
+pkgrel=3
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/JT+Harness"
@@ -51,6 +51,8 @@ package() {
   install -D -m 644 lib/javatest.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/javatest.jar
   install -D -m 644 lib/jtlite.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/jtlite.jar
   install -Dm644 legal/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  mkdir $pkgdir/usr/share/${pkgname%-hg}
+  ln -sf /usr/share/java/${pkgname%-hg} $pkgdir/usr/share/${pkgname%-hg}/lib
 }
 
 # vim:set ts=2 sw=2 et:
