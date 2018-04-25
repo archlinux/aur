@@ -1,14 +1,17 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Máté Eckl <ecklm94@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libnftnl-git
-pkgver=1.0.5.r8.g308a021
+pkgver=1.0.9.r19.gf830fce
 pkgrel=1
-pkgdesc='Netfilter nf_tables infrastructure library'
+pkgdesc='Netfilter nf_tables infrastructure library that provides low level API for nftables to transform netlink messages to objects.'
 arch=(i686 x86_64)
-url='http://netfilter.org/projects/nftables/'
+url='https://netfilter.org/projects/libnftnl/'
 license=(GPL2)
-depends=(libmnl)
-makedepends=(git)
+depends=(libmnl-git)
+makedepends=(git make gcc autoconf)
+provides=(libnftnl)
+conflicts=(libnftnl)
 source=(git://git.netfilter.org/libnftnl)
 sha1sums=('SKIP')
 
@@ -19,7 +22,7 @@ pkgver() {
 
 build() {
   cd libnftnl
-  ./autogen.sh
+  sh autogen.sh
   ./configure --prefix=/usr
   make
 }

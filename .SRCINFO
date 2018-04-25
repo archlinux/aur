@@ -1,13 +1,18 @@
 pkgbase = libnftnl-git
-	pkgdesc = Netfilter nf_tables infrastructure library
-	pkgver = 1.0.5.r8.g308a021
+	pkgdesc = Netfilter nf_tables infrastructure library that provides low level API for nftables to transform netlink messages to objects.
+	pkgver = 1.0.9.r19.gf830fce
 	pkgrel = 1
-	url = http://netfilter.org/projects/nftables/
+	url = https://netfilter.org/projects/libnftnl/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = libmnl
+	makedepends = make
+	makedepends = gcc
+	makedepends = autoconf
+	depends = libmnl-git
+	provides = libnftnl
+	conflicts = libnftnl
 	source = git://git.netfilter.org/libnftnl
 	sha1sums = SKIP
 
