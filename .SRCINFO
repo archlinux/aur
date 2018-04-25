@@ -17,7 +17,9 @@ pkgbase = limesuite
 	conflicts = limesdr
 	conflicts = soapylms7
 	source = https://github.com/myriadrf/LimeSuite/archive/v18.04.1.tar.gz
+	source = limesuitegui.desktop
 	md5sums = 529b6740ef881846ff09318515baf7f0
+	md5sums = 81b3ccb7b942f0dc7e72ae9bb517a3e4
 
 pkgname = limesuite
 

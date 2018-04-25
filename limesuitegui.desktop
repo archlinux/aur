@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=LimeSuiteGUI
+GenericName=LimeSuiteGUI
+Comment=Configuration GUI for LimeSuite
+Exec=LimeSuiteGUI
+Icon=modem
+StartupNotify=true
+Type=Application
+Categories=Utility;Electronics;GTK; 
