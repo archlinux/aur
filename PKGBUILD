@@ -3,33 +3,30 @@
 
 _pkgname=gnome-usage
 pkgname=$_pkgname-git
-pkgver=3.28.0
+pkgver=3.28.0.8.gd3af0a0
 pkgrel=1
-pkgdesc="A nice way to view information about use of system resources"
+pkgdesc="GNOME application to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
-license=('GPL3')
-depends=('gtk3' 'libgtop')
-makedepends=('git' 'vala' 'gobject-introspection' 'meson')
-optdepends=('accountsservice: support for process user tags')
+license=(GPL3)
+depends=(gtk3 libgtop)
+makedepends=(git meson vala)
+optdepends=('accountsservice: show user tags for processes')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe | sed 's/^v//;s/-/./g;s/_/./g;'
+  cd $_pkgname
+  git describe --tags | sed 's/^v//;s/-/./g;s/_/./g;'
 }
 
 build() {
-  rm -rf build
-  arch-meson "$_pkgname" build
-  ninja -v -C build
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
 }
-
-# vim:set ts=2 sw=2 et:
