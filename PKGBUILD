@@ -12,7 +12,8 @@ depends=('cutelyst' 'libvirt')
 makedepends=()
 source=("https://github.com/cutelyst/${_projectname}/archive/v${pkgver}.tar.gz"
     "virtlyst.ini"
-    "virtlyst.service")
+    "virtlyst.service"
+    "virtlyst.rules")
 backup=("etc/uwsgi/virtlyst.ini")
 
 
@@ -31,6 +32,7 @@ package() {
   install -D -m755 "${srcdir}/build/src/libVirtlyst.so" -t "${pkgdir}/usr/lib/uwsgi/"
   install -D -m644 "${srcdir}/virtlyst.ini" -t "${pkgdir}/etc/uwsgi/"
   install -D -m644 "${srcdir}/virtlyst.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -D -m644 "${srcdir}/virtlyst.rules" -t "${pkgdir}/usr/share/polkit-1/rules.d/51-virtlyst.rules"
   install -d "${pkgdir}/usr/share/${pkgname}/"
   cp -r "${srcdir}/${_projectname}-${pkgver}/root/static/" "${pkgdir}/usr/share/${pkgname}/static"
   cp -r "${srcdir}/${_projectname}-${pkgver}/root/src/" "${pkgdir}/usr/share/${pkgname}/templates"
@@ -38,4 +40,5 @@ package() {
 
 sha256sums=('5f1b121a90bfe8fcb608913306478dc8d68c4132aea11ffbd57a76d12bb32ce8'
             '372cf5d94a8117b0ad167d9edd7487f81f9440376d6b485e6fbe51b417324a39'
-            'b7f96b90e7e7aeae0fb0cbe4c62e63c1418439d83d587e2afb40ab28f12b704f')
+            'e2c573630bc79d92d77202c54fbcb73720f97fce5606ca7d83640f455bb7f80b'
+            'fb13f116e9b8268b642082ab8aac40fe2104dbb33e98ab925ab3633986c5fdca')

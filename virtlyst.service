@@ -3,9 +3,10 @@ After=network.target libvirtd.service
 Description=Web interface to manage virtual machines with libvirt
 
 [Service]
-Type=simple
+Type=notify
+NotifyAccess=all
 DynamicUser=yes
-SupplementaryGroups=libvirt
+User=virtlyst
 Restart=always
 ExecStart=/usr/bin/cutelyst-wsgi2 --ini /etc/uwsgi/virtlyst.ini
 StateDirectory=virtlyst

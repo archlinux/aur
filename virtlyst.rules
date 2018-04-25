@@ -1,0 +1,9 @@
+// Allow 'virtlyst' user to connect to system libvirtd
+// without entering a password.
+
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.libvirt.unix.manage" &&
+        subject.user == "virtlyst") {
+        return polkit.Result.YES;
+    }
+});
