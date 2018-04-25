@@ -36,7 +36,7 @@ package() {
 	install -D -m644 changelog "$pkgdir/usr/share/doc/boinctui/changelog"
 
 	# install manpage
-	rm debian/boinctui.1.gz
-	gzip debian/boinctui.1
+	#rm debian/boinctui.1.gz
+	gzip -f debian/boinctui.1
 	install -D -m644 "debian/boinctui.1.gz" "$pkgdir/usr/share/man/man1/boinctui.1.gz"
 }
