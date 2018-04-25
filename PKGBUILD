@@ -11,7 +11,7 @@ url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive')
 makedepends=('git' 'cmake' 'wget' 'vim')
-source=("git://github.com/TheAssassin/$_pkgname")
+source=("git://github.com/TheAssassin/$_pkgname#tag=continuous")
 sha256sums=('SKIP')
 
 pkgver() {
