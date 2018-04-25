@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-aiomysql
-pkgver=0.0.12
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="MySQL driver for asyncio"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
     install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('fdc9a076f39a6bb1818452bd24452bf189cb240371bd62d6a06abb61cd6bfa14')
+sha256sums=('e89cf3308db1212167996d54bcb0f9b0ecdbf7d303c6bf8c7a2554174645faa8')
