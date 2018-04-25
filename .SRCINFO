@@ -1,0 +1,16 @@
+pkgbase = vcpkg-git
+	pkgdesc = VC++ Packaging Tool
+	pkgver = r6122.15f455e3
+	pkgrel = 1
+	url = https://github.com/Microsoft/vcpkg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=3.3.0
+	provides = vcpkg
+	conflicts = vcpkg
+	source = git+https://github.com/Microsoft/vcpkg.git
+	sha512sums = SKIP
+
+pkgname = vcpkg-git
+
