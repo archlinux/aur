@@ -1,4 +1,4 @@
-pkgbase = python-sauth
+pkgbase = sauth
 	pkgdesc = Simple, minimalistic http server with authentication written in python
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = python-sauth
 	source = https://github.com/Granitosaurus/sauth/archive/1.0.1.tar.gz
 	md5sums = a3982f16d9c006fa02c0d345ae7683b8
 
-pkgname = python-sauth
+pkgname = sauth
 

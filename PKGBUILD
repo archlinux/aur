@@ -1,5 +1,5 @@
 # Maintainer: Bernardas Ališauskas bernardas.ališauskas@protonmail.com
-pkgname=python-sauth
+pkgname=sauth
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple, minimalistic http server with authentication written in python"
