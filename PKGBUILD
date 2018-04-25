@@ -1,7 +1,7 @@
 # Maintainer:  Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=libretro-mame2003-plus-git
-pkgver=1256.8c60337
+pkgver=1348.01b9094
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Updated 2018 version of MAME (0.78) for libretro. with added game support plus many fixes and improvements"
@@ -11,7 +11,7 @@ groups=('libretro')
 depends=('zlib' 'glibc' 'libretro-core-info')
 makedepends=('git' 'python2')
 
-_libname=mame2003-plus_libretro
+_libname=mame2003_plus_libretro
 _gitname=mame2003-plus-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
 	"https://raw.githubusercontent.com/libretro/mame/master/docs/LICENSE")

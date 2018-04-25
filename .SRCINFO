@@ -1,6 +1,6 @@
 pkgbase = libretro-mame2003-plus-git
 	pkgdesc = Updated 2018 version of MAME (0.78) for libretro. with added game support plus many fixes and improvements
-	pkgver = 1256.8c60337
+	pkgver = 1348.01b9094
 	pkgrel = 1
 	url = https://github.com/libretro/mame2003-plus-libretro
 	arch = i686
