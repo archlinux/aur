@@ -1,8 +1,8 @@
 # Packager : Jules Roumieux
 basename="fxsdk"
 pkgname="$basename-git"
-pkgver=r9.e4bde46
-pkgrel=2
+pkgver=r14.3ebe66a
+pkgrel=1
 pkgdesc="Tools to program for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
 provides=("fxsdk")
