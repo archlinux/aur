@@ -1,9 +1,10 @@
 # Maintainer: rawkode <david.andrew.mckay@gmail.com>
 
 pkgname=openfaas-cli
+pkgdir="pkg-build"
 pkgdesc="OpenFaaS CLI"
 pkgver=0.6.8
-pkgrel=4
+pkgrel=6
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/openfaas/faas-cli"
 license=('mit')
@@ -13,7 +14,8 @@ source=("https://github.com/openfaas/faas-cli/archive/$pkgver.tar.gz")
 sha256sums=('c9bab5c1ed2bab75339745439f30e40362fe1b2d3cf05518b569b5683c66ac68')
 
 build() {
-  GOPATH="$(dirname "$PWD")"
+  GOPATH=$startdir
+  sudo rm -rf $GOPATH/pkg
   cd "$srcdir/faas-cli-$pkgver"
 
   dep ensure
