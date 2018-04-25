@@ -1,5 +1,6 @@
 post_install()
 {
-  echo "Add this line to ~/.mame/mame.ini:"
+  echo "Add these lines to ~/.mame/mame.ini:"
+  echo "  plugin cheat"
   echo "  cheat 1"
 }
