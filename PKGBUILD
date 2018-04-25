@@ -1,6 +1,6 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=phorward
-pkgver=0.22.0
+pkgver=0.22.2
 pkgrel=1
 epoch=
 pkgdesc="Versatile C library for parsing, lexing, regular expressions and more."
@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=('txt2tags: Documentation generator')
 #changelog=CHANGELOG
 source=("https://phorward.info/download/phorward/$pkgname-$pkgver.tar.gz")
-md5sums=('71f6b634aee491f6a574de42c223a84b')
+md5sums=('6cfa8c5888c3675620baf735ab26b0fa')
 
 build() {
 	cd "$pkgname-$pkgver"
