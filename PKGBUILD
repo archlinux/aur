@@ -11,8 +11,8 @@ license=('custom')
 makedepends=('python2-setuptools')
 depends=('python2' 'python2-twisted')
 
-source=("https://pypi.python.org/packages/1c/78/e3d086fbea8553ce9db487da38da7120e8b8896126e194b2e5af46cab5bf/Nevow-0.14.3.tar.gz")
-md5sums=('f709ca81a466bad1882c2192bb2bcc35')
+source=("https://files.pythonhosted.org/packages/1c/78/e3d086fbea8553ce9db487da38da7120e8b8896126e194b2e5af46cab5bf/Nevow-${pkgver}.tar.gz")
+sha256sums=('ab565b9bccecbafa36446ea8765bec2be7ee7c66a9a8644b3851a13b64432d5e')
 
 build(){
     cd "$srcdir/Nevow-$pkgver"
