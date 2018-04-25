@@ -1,0 +1,7 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker run --rm -it -v `pwd`:/build heichblatt/archlinux-yaourt sh -c "cd /build && makepkg -si"
