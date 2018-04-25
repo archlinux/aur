@@ -15,7 +15,6 @@ makedepends=('python>=3.3'
              'python-jsonschema>=2.3.0'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
-             'python-astropy>=1.1'
              'python-astropy-helpers'
              'python-semantic-version>=2.3.1')
 #            'python-sphinx')
@@ -44,6 +43,7 @@ build () {
 package() {
     depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema>=2.3.0' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
+                'python-lz4: Support for lz4 compression'
                 'python-pytest: For testing'
                 'python-pytest-astropy: For testing')
 #               'python-asdf-doc: Documentation for Python-ASDF'
