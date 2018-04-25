@@ -1,7 +1,7 @@
 # Maintainer: Tim Wanders <timwanders241@gmail.com>
 _pkgname=pacman-src
 pkgname=pacman-src-git
-pkgver=1
+pkgver=afcd014
 pkgrel=1
 pkgdesc="pacman-src: A simple tool to compile packages from source using the ABS"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL3')
 provides=('pacman-src')
 conflicts=('pacman-src')
 depends=('bash'	'pacman' 'git')
+makedepends=('help2man')
 
 source=("git://github.com/tim241/${_pkgname}.git")
 
@@ -23,10 +24,10 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    make VERSION="$pkgver-git"
+    make VERSION="$pkgver-git" -j1
 }
 
 package() {
     cd "$_pkgname"
-    make install prefix="/usr/" DESTDIR="$pkgdir"
+    make install prefix="/usr/" DESTDIR="$pkgdir" -j1
 }

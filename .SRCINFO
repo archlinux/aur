@@ -1,10 +1,11 @@
 pkgbase = pacman-src-git
 	pkgdesc = pacman-src: A simple tool to compile packages from source using the ABS
-	pkgver = 1
+	pkgver = afcd014
 	pkgrel = 1
 	url = https://github.com/tim241/pacman-src
 	arch = any
 	license = GPL3
+	makedepends = help2man
 	depends = bash
 	depends = pacman
 	depends = git
