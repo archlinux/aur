@@ -26,7 +26,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
-  make -j$(nproc)
+  make
 }
 
 package() {
