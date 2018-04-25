@@ -1,7 +1,7 @@
 pkgbase = jcommander
 	pkgdesc = Command line parsing framework for Java
 	pkgver = 1.72
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jcommander.org/
 	arch = any
 	license = Apache

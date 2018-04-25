@@ -2,7 +2,7 @@
 
 pkgname=jcommander
 pkgver=1.72
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line parsing framework for Java"
 arch=('any')
 url="http://jcommander.org/"
@@ -14,5 +14,5 @@ sha1sums=('6375e521c1e11d6563d4f25a07ce124ccf8cd171')
 
 package() {
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar
-  ln -sf ${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
+  ln -sf ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
 }
