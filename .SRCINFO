@@ -1,5 +1,5 @@
 pkgbase = gr-limesdr-git
-	pkgdesc = A 15-band equalizer for PulseAudio (FFY00's fork)
+	pkgdesc = gr-limesdr Plugin for GNURadio
 	pkgver = r5.2130f1e
 	pkgrel = 1
 	url = https://github.com/myriadrf/gr-limesdr

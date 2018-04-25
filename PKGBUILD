@@ -2,7 +2,7 @@
 pkgname=gr-limesdr-git
 pkgver=r5.2130f1e
 pkgrel=1
-pkgdesc="A 15-band equalizer for PulseAudio (FFY00's fork)"
+pkgdesc="gr-limesdr Plugin for GNURadio"
 arch=(any)
 url="https://github.com/myriadrf/gr-limesdr"
 license=('MIT')
