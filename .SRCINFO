@@ -1,0 +1,30 @@
+pkgbase = htop-temperature-git
+	pkgdesc = Interactive text-mode process viewer
+	pkgver = 1057.04cc193
+	pkgrel = 1
+	url = https://github.com/hishamhm/htop
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = ncurses
+	depends = libnl
+	depends = lm_sensors
+	optdepends = lsof: list open files for running process
+	optdepends = strace: attach to running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = git+https://github.com/hishamhm/htop.git
+	source = 0001-fix-option-string.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-fix-option-string.patch?h=packages/htop
+	source = htop-temperature.patch::https://aur.archlinux.org/cgit/aur.git/plain/htop-temperature.patch?h=htop-temperature
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a4c9dfbc3c2f7e08904656b53b9c08d19014cf6238fb75f1ed5ecbef2905964c
+
+pkgname = htop-temperature-git
+
