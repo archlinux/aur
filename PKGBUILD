@@ -8,6 +8,7 @@ pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
 arch=('x86_64')
 license=('GPL3')
+backup=('etc/knot-resolver/kresd.conf')
 install=install
 depends=('cmocka'
 	 'gnutls'
