@@ -2,7 +2,7 @@
 
 pkgname=textosaurus
 epoch=1
-pkgver=0.9.2
+pkgver=0.9.3.1
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=('x86_64' 'i686')
@@ -13,9 +13,14 @@ makedepends=('git' 'qt5-tools')
 provides=('textosaurus')
 conflicts=('textosaurus' 'textosaurus-git')
 replaces=('textilosaurus')
-_commit=513ce234eef077902e24196d3fb93773e1eff0d5
+_commit=1710f53c81dbcf4788fd23ebaabf6ec77a4a3fb6
 source=("git+https://github.com/martinrotter/textosaurus#commit=$_commit")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd "${srcdir}/${pkgname}"
