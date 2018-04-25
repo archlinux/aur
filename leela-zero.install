@@ -1,0 +1,12 @@
+post_install() {
+  echo ""
+  echo "leela-zero has downloaded the currently-best network to  "
+  echo "  /usr/share/leela-zero/networks/weights_$1.txt          "
+  echo ""
+  echo "You can find the new best network at any moment at:      "
+  echo "  http://zero.sjeng.org/best-network                     "
+  echo ""
+  echo "A network must be passed in when running leelaz, like:   "
+  echo "  leelaz -w /usr/share/leela-zero/networks/weights_$1.txt"
+  echo ""
+}
