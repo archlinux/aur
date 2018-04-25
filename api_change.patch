@@ -1,0 +1,57 @@
+diff -Naur src.a/pycryptopp/cipher/aesmodule.cpp src.b/pycryptopp/cipher/aesmodule.cpp
+--- src.a/pycryptopp/cipher/aesmodule.cpp	2015-07-27 14:27:37.000000000 -0400
++++ src.b/pycryptopp/cipher/aesmodule.cpp	2018-03-27 04:08:21.740514719 -0400
+@@ -20,6 +20,8 @@
+ #include <src-cryptopp/aes.h>
+ #endif
+ 
++typedef unsigned char byte;
++
+ static const char*const aes___doc__ = "_aes counter mode cipher\n\
+ You are advised to run aes.start_up_self_test() after importing this module.";
+ 
+diff -Naur src.a/pycryptopp/cipher/xsalsa20module.cpp src.b/pycryptopp/cipher/xsalsa20module.cpp
+--- src.a/pycryptopp/cipher/xsalsa20module.cpp	2015-07-27 14:27:37.000000000 -0400
++++ src.b/pycryptopp/cipher/xsalsa20module.cpp	2018-03-27 04:09:18.368553490 -0400
+@@ -16,6 +16,8 @@
+ #include <src-cryptopp/salsa.h>
+ #endif
+ 
++typedef unsigned char byte;
++
+ static const char* const xsalsa20__doc__ = "_xsalsa20 cipher";
+ 
+ static PyObject *xsalsa20_error;
+diff -Naur src.a/pycryptopp/hash/sha256module.cpp src.b/pycryptopp/hash/sha256module.cpp
+--- src.a/pycryptopp/hash/sha256module.cpp	2015-07-27 14:27:37.000000000 -0400
++++ src.b/pycryptopp/hash/sha256module.cpp	2018-03-27 04:09:12.578762162 -0400
+@@ -21,6 +21,8 @@
+ #include <src-cryptopp/filters.h>
+ #endif
+ 
++typedef unsigned char byte;
++
+ static const char*const sha256___doc__ = "_sha256 hash function";
+ 
+ static PyObject *sha256_error;
+diff -Naur src.a/pycryptopp/publickey/rsamodule.cpp src.b/pycryptopp/publickey/rsamodule.cpp
+--- src.a/pycryptopp/publickey/rsamodule.cpp	2015-07-27 14:27:37.000000000 -0400
++++ src.b/pycryptopp/publickey/rsamodule.cpp	2018-03-27 04:06:02.074993656 -0400
+@@ -87,7 +87,7 @@
+ VerifyingKey_serialize(VerifyingKey *self, PyObject *dummy) {
+     std::string outstr;
+     StringSink ss(outstr);
+-    self->k->DEREncode(ss);
++    self->k->GetMaterial().Save(ss);
+     PyStringObject* result = reinterpret_cast<PyStringObject*>(PyString_FromStringAndSize(outstr.c_str(), outstr.size()));
+     if (!result)
+         return NULL;
+@@ -216,7 +216,7 @@
+ SigningKey_serialize(SigningKey *self, PyObject *dummy) {
+     std::string outstr;
+     StringSink ss(outstr);
+-    self->k->DEREncode(ss);
++    self->k->GetMaterial().Save(ss);
+     PyStringObject* result = reinterpret_cast<PyStringObject*>(PyString_FromStringAndSize(outstr.c_str(), outstr.size()));
+     if (!result)
+         return NULL;
