@@ -9,8 +9,8 @@ url='https://pypi.python.org/pypi/zbase32'
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/z/zbase32/zbase32-${pkgver}.tar.gz")
-md5sums=('4dba0be4ac6d66968de8e5173f51d65d')
+source=("https://files.pythonhosted.org/packages/da/86/d121236fc2d7f287dac1ef99e5452df36852a609bda6b9225f9aa2078139/zbase32-${pkgver}.tar.gz")
+sha256sums=('9b25c34ba586cbbad4517af516e723599a6f38fc560f4797855a5f3051e6422f')
 
 build() {
     cd "$srcdir/zbase32-$pkgver"
