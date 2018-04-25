@@ -1,7 +1,7 @@
 pkgbase = yadshot
 	pkgdesc = yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io
-	pkgver = 0.2.00
-	pkgrel = 2
+	pkgver = 0.2.01
+	pkgrel = 1
 	url = http://www.simonizor.net
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = yadshot
 	depends = curl
 	optdepends = ffmpeg: screenshot backend
 	optdepends = imagemagick: screenshot backend
-	source = https://github.com/simoniz0r/yadshot/archive/0.2.00.tar.gz
+	source = https://github.com/simoniz0r/yadshot/archive/0.2.01.tar.gz
 	md5sums = SKIP
 
 pkgname = yadshot

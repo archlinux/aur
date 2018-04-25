@@ -1,8 +1,8 @@
 # Maintainer: E5ten
 
 pkgname=yadshot
-pkgver=0.2.00
-pkgrel=2
+pkgver=0.2.01
+pkgrel=1
 pkgdesc="yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
 arch=('x86_64')
 url='http://www.simonizor.net'
