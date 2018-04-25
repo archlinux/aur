@@ -10,7 +10,6 @@ pkgbase = appimagelauncher-git
 	makedepends = cmake
 	makedepends = wget
 	makedepends = vim
-	makedepends = binfmt-support
 	depends = qt5-base
 	depends = fuse
 	depends = cairo
