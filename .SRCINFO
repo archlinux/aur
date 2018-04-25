@@ -1,0 +1,15 @@
+pkgbase = r-cran-gridextra
+	pkgdesc = Provides a number of user-level functions to work with "grid" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/gridExtra/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = r>=3.0.0
+	depends = r-cran-gtable
+	source = http://cran.r-project.org/src/contrib/gridExtra_2.3.tar.gz
+	md5sums = 01e0ea88610756a0fd3b260e83c9bd43
+
+pkgname = r-cran-gridextra
+
