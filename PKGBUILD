@@ -3,7 +3,7 @@
 pkgname=virtlyst
 _projectname=Virtlyst
 pkgver=1.0.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Web interface to manage virtual machines with libvirt"
 arch=('x86_64')
 url="https://github.com/cutelyst/Virtlyst"
