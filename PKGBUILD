@@ -13,6 +13,7 @@ depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-
 makedepends=('git' 'cmake' 'wget' 'vim' 'binfmt-support')
 source=("git://github.com/TheAssassin/$_pkgname#tag=continuous")
 sha256sums=('SKIP')
+install=appimagelauncher.install
 
 pkgver() {
   cd "$srcdir/$_pkgname"
