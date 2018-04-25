@@ -39,7 +39,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	rm gaiasky.bat
 	mkdir -p "$pkgdir/opt/gaiasky/"
 	mv * "$pkgdir/opt/gaiasky/"
 }
