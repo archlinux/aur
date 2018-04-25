@@ -9,8 +9,8 @@ pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
-depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive')
-makedepends=('git' 'cmake' 'wget' 'vim')
+depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive' 'binfmt-support')
+makedepends=('git' 'cmake' 'wget' 'vim' 'binfmt-support')
 source=("git://github.com/TheAssassin/$_pkgname#tag=continuous")
 sha256sums=('SKIP')
 
