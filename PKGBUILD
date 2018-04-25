@@ -1,15 +1,16 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=class
-pkgname=python-$_modulename
+_python=python
+pkgname=${_python}-$_modulename
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLASS: Cosmic Linear Anisotropy Solving System"
 arch=(any)
 url="https://github.com/lesgourg/class_public"
 license=()
 groups=()
 depends=('cython')
-makedepends=('python-setuptools')
+makedepends=("${_python}-setuptools")
 provides=()
 conflicts=()
 replaces=()
@@ -23,5 +24,5 @@ package() {
   make -j libclass.a
   cd python
   sed -i 's/libraries=\["class"\]/libraries=["class", "mvec", "m"]/' setup.py
-  python setup.py install --root="$pkgdir/" --optimize=1
+  ${_python} setup.py install --root="$pkgdir/" --optimize=1
 }
