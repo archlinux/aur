@@ -2,13 +2,13 @@
 
 _name=valgrind
 pkgname=valgrind-git
-pkgver=r15893.711d3a53c
+pkgver=r16016.cd65782db
 pkgrel=1
 pkgdesc='A tool to help find memory-management problems in programs'
 arch=('i686' 'x86_64')
 url='http://valgrind.org/'
 license=('GPL')
-depends=('glibc=2.26' 'perl')
+depends=('glibc' 'perl')
 makedepends=('gdb' 'openmpi' 'git')
 optdepends=('openmpi: MPI support')
 options=(!emptydirs)
