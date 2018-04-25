@@ -2,7 +2,7 @@
 
 pkgname=mono-stable
 _pkgname=mono
-pkgver=5.10.0.160
+pkgver=5.10.1.47
 pkgrel=1
 pkgdesc="Stable version of free .NET implementation."
 arch=(i686 x86_64)
@@ -10,13 +10,12 @@ license=('GPL' 'LGPL2.1' 'MPL')
 url="http://www.mono-project.com/"
 depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'mono')
-provides=('mono=$(pkgver)' 'monodoc')
+provides=("mono=${pkgver}" 'monodoc')
 conflicts=('mono' 'monodoc')
-replaces=('mono')
 install="${_pkgname}.install"
-source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2
-        mono.binfmt.d)
-sha256sums=('167d3e1504bfb4fdbf08708f75937bf0e8421bf481de1723d9fa219dc7c8f8d8'
+source=("https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2"
+        "mono.binfmt.d")
+sha256sums=('90c237b5288f95f6fdab4ace1e36ab64a6369e2c9fddd462d604fd788e2545da'
             '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425')
 
 build() {
