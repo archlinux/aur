@@ -6,6 +6,4 @@ post_install() {
   echo ">>> EXAMPLE:"
   echo ">>> extension=zip.so"
   echo ">>> extension=sockets.so"
-  echo ">>>"
-  echo ">>> To enable the GUI make sure you install php-gtk from aur"
 }
