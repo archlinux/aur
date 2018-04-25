@@ -1,0 +1,35 @@
+pkgbase = tensorflow-computecpp
+	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/tensorflow/tensorflow
+	arch = x86_64
+	license = APACHE
+	makedepends = opencl-icd-loader
+	makedepends = computecpp
+	makedepends = bazel
+	makedepends = python-numpy
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = opencl-icd-loader
+	depends = computecpp
+	source = https://github.com/tensorflow/tensorflow/archive/v1.7.0.tar.gz
+	source = 17508.patch
+	source = no_trisycl.patch
+	sha512sums = 68fffad324be7f6e3726ea539670572729bd72c7dc935edfdb31771f821f1a8fe90c3d7c293969f660a25e5fd76249cc9b74c5f8511c7bd3e2189d3328044f29
+	sha512sums = cb2880767532275f55f91ab66b29687fceadcadb8e23608d1e59b35a2899239882367ac38465a5e635f17378286093da0ede115668e23d651776d962ddc35ea9
+	sha512sums = 9081323af38496fbaff4ae79dd7dd291bdebe83758c715fa2d302d3733169a3fb347427b2b0f0268df91bd6b681c57d938fabfe7da3abdb1aa8fc49261a3d750
+
+pkgname = tensorflow-computecpp
+	provides = tensorflow
+	conflicts = tensorflow
+
+pkgname = python-tensorflow-computecpp
+	depends = python-numpy
+	depends = python-protobuf
+	depends = absl-py
+	optdepends = python-werkzeug: for using tensorboard
+	provides = python-tensorflow
+	conflicts = python-tensorflow
+

@@ -1,0 +1,10 @@
+--- old/third_party/sycl/sycl/BUILD.tpl	2018-03-29 12:18:40.000000000 +0800
++++ new/third_party/sycl/sycl/BUILD.tpl	2018-04-25 20:37:48.874124617 +0800
+@@ -21,7 +21,7 @@
+     name = "using_sycl_trisycl",
+     define_values = {
+         "using_sycl": "true",
+-        "using_trisycl": "false",
++        "using_trisycl": "true",
+     },
+ )
