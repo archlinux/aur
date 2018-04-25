@@ -1,0 +1,31 @@
+pkgbase = pantheon-qq-default-settings-git
+	pkgdesc = Default settings for Pantheon derivatives
+	pkgver = r340.09ae797
+	pkgrel = 1
+	url = https://github.com/elementary/default-settings
+	arch = any
+	groups = pantheon-qq
+	groups = pantheon-unstable
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = elementary-icon-theme
+	depends = gtk-theme-elementary-git
+	depends = gnome-themes-standard
+	depends = ttf-droid
+	depends = ttf-opensans
+	depends = ttf-roboto-mono
+	optdepends = elementary-wallpapers-git
+	provides = pantheon-default-settings
+	provides = pantheon-default-settings-git
+	conflicts = pantheon-default-settings
+	conflicts = pantheon-default-settings-git
+	source = pantheon-default-settings::git+https://github.com/elementary/default-settings.git#branch=meson
+	source = arch-tweaks.patch
+	source = leave-bg-alone.patch
+	sha256sums = SKIP
+	sha256sums = 742812de8dbbaf641a7cc531d4ab2ad21408db5017dff5ce52dffda474b61a3f
+	sha256sums = 3732b2209d28c68bb3a11da5726f486db1fca9fcb3776bf58f83c81678b84211
+
+pkgname = pantheon-qq-default-settings-git
+

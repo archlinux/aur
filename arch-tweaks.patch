@@ -1,0 +1,78 @@
+From 16535e94322a8561c89b0d0d2e854124d3ba1745 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 13 Dec 2017 07:13:52 -0500
+Subject: [PATCH] arch tweaks
+
+---
+ debian/elementary-default-settings.gsettings-override  | 4 +---
+ meson.build                                            | 1 -
+ plank/dock1/launchers/io.elementary.appcenter.dockitem | 4 ----
+ policykit.desktop                                      | 2 +-
+ settings.ini                                           | 2 +-
+ 5 files changed, 3 insertions(+), 10 deletions(-)
+ delete mode 100644 plank/dock1/launchers/io.elementary.appcenter.dockitem
+
+diff --git a/debian/elementary-default-settings.gsettings-override b/debian/elementary-default-settings.gsettings-override
+index da55ae6..ff3d55a 100644
+--- a/debian/elementary-default-settings.gsettings-override
++++ b/debian/elementary-default-settings.gsettings-override
+@@ -1,5 +1,5 @@
+ [net.launchpad.plank.dock.settings]
+-dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','org.pantheon.switchboard.dockitem','io.elementary.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','org.pantheon.switchboard.dockitem']
+ hide-delay=250
+ hide-mode='window-dodge'
+ show-dock-item=false
+@@ -28,7 +28,6 @@ font-name='Open Sans 9'
+ gtk-theme='elementary'
+ icon-theme='elementary'
+ monospace-font-name='Roboto Mono 10'
+-show-unicode-menu=false
+ toolbar-style='icons'
+ 
+ [org.gnome.desktop.peripherals.touchpad]
+@@ -131,7 +130,6 @@ active=false
+ 
+ [org.gnome.settings-daemon.plugins.media-keys]
+ screensaver='<Super>l'
+-terminal='<Super>t'
+ 
+ [org.gnome.settings-daemon.plugins.power]
+ ambient-enabled=false
+diff --git a/meson.build b/meson.build
+index b5e25b8..20c262a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -39,7 +39,6 @@ install_data(
+ # TODO: dynamically generate dockitem list using meson options
+ dock_items = [
+     join_paths('.', 'plank', 'dock1', 'launchers', 'gala-multitaskingview.dockitem'),
+-    join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.appcenter.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.gnome.Epiphany.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.audience.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.mail.dockitem'),
+diff --git a/plank/dock1/launchers/io.elementary.appcenter.dockitem b/plank/dock1/launchers/io.elementary.appcenter.dockitem
+deleted file mode 100644
+index c9e2372..0000000
+--- a/plank/dock1/launchers/io.elementary.appcenter.dockitem
++++ /dev/null
+@@ -1,4 +0,0 @@
+-[PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.appcenter.desktop
+-
+-
+diff --git a/settings.ini b/settings.ini
+index 0d10895..716aad2 100644
+--- a/settings.ini
++++ b/settings.ini
+@@ -2,6 +2,6 @@
+ gtk-theme-name = elementary
+ gtk-icon-theme-name = elementary
+ gtk-fallback-icon-theme = gnome
+-gtk-sound-theme-name = ubuntu
++gtk-sound-theme-name = freedesktop
+ gtk-icon-sizes = panel-menu-bar=24,24
+ gtk-font-name = Open Sans 9
+-- 
+2.15.1
+
