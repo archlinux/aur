@@ -6,6 +6,7 @@ pkgbase = gr-limesdr-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = boost
 	depends = gnuradio
 	depends = swig
