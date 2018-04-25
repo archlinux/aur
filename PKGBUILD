@@ -8,8 +8,8 @@ url="https://osmocom.org/projects/osmo-fl2k/wiki"
 license=('MIT')
 depends=('libusb>=1.0')
 makedepends=('git' 'cmake')
-provides=('gr-limesdr')
-conflicts=('gr-limesdr')
+provides=('osmo-flk2')
+conflicts=('osmo-fl2k')
 source=('remote::git+https://git.osmocom.org/osmo-fl2k')
 md5sums=('SKIP')
 
