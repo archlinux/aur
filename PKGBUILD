@@ -8,7 +8,7 @@
 # Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=26b.r299.ge66bdc7
+pkgver=27.r61.gba24cbd
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -56,17 +56,17 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i -e 's+-I \$mudir/include -I \$mudir/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
-  sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
-  sed -i -e 's+-L\$mudir/build/native ++' build.sh
+  sed -i -e 's@-I \$mudir/include -I \$mudir/thirdparty/freetype/include@-I /usr/include/freetype2@' build.bash
+  sed -i -e 's@-lmupdfthird@-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2@' build.bash
+  sed -i -e 's@-L\$mudir/build/native @@' build.bash
 
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
-  sed -i -e 's+-lmupdf+-lmupdf -lharfbuzz+' build.sh
+  sed -i -e 's@-lmupdf@-lmupdf -lharfbuzz@' build.bash
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  sh build.sh build/
+  ./build.bash build
   cd misc/completions/
   make
 }
