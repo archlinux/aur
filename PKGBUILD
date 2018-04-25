@@ -2,13 +2,13 @@
 
 pkgname=pulseaudio-module-sndio
 pkgdesc="Pulseaudio module for sndio support"
-pkgver=r10.0a732e0
+pkgver=r14.3d55962
 pkgrel=1
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://github.com/t6/pulseaudio-module-sndio"
 license=(BSD)
 depends=(pulseaudio sndio)
-source=("$pkgname::git+https://github.com/t6/pulseaudio-module-sndio.git#commit=0a732e03309c0a8b1632286a46bdc39733845f68")
+source=("$pkgname::git+https://github.com/t6/pulseaudio-module-sndio.git#commit=3d559627a054ca0dccaa802354db1fe0da2e9ec6")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,6 +23,6 @@ build() {
 
 package(){
   cd "$pkgname"
-  STAGEDIR="$pkgdir" make install
+  DESTDIR="$pkgdir" make install
 }
 
