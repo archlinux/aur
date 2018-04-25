@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=mkl-dnn
-pkgver=0.12
-pkgrel=2
+pkgver=0.13
+pkgrel=0
 
 epoch=
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
