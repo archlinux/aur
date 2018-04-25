@@ -1,0 +1,23 @@
+pkgbase = limesuite
+	pkgdesc = Driver and GUI for LMS7002M-based SDR platforms
+	pkgver = 18.04.1
+	pkgrel = 1
+	url = https://github.com/myriadrf/LimeSuite
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = sqlite3
+	depends = wxgtk3
+	depends = mesa
+	depends = libusb>=1.0
+	depends = soapysdr
+	provides = limesdr
+	provides = soapylms7
+	conflicts = limesdr
+	conflicts = soapylms7
+	source = https://github.com/myriadrf/LimeSuite/archive/v18.04.1.tar.gz
+	md5sums = 529b6740ef881846ff09318515baf7f0
+
+pkgname = limesuite
+
