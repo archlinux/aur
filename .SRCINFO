@@ -1,12 +1,11 @@
 pkgbase = java8-openjdk
 	pkgver = 8.u172
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openjdk.java.net/
 	arch = x86_64
 	arch = i686
 	license = custom
-	makedepends = java-environment>=7
-	makedepends = java-environment<9
+	makedepends = jdk7-openjdk
 	makedepends = ccache
 	makedepends = cpio
 	makedepends = unzip
@@ -53,7 +52,7 @@ pkgname = jre8-openjdk-headless-infinality
 pkgname = jre8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 full runtime environment with infinality patch applied
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-headless-infinality=8.u172-1
+	depends = jre8-openjdk-headless-infinality=8.u172-2
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -69,7 +68,7 @@ pkgname = jdk8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 development kit with infinality patch applied
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-infinality=8.u172-1
+	depends = jre8-openjdk-infinality=8.u172-2
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-openjdk

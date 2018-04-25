@@ -18,11 +18,11 @@ _jdk_update=172
 _jdk_build=11
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url='http://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment>=7' 'java-environment<9' 'ccache' 'cpio' 'unzip' 'zip'
+makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
