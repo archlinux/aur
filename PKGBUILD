@@ -13,8 +13,11 @@ depends_x86_64=('lib32-libzip1' 'lib32-libpng12' 'lib32-libjpeg6-turbo' 'lib32-o
                 'lib32-fontconfig' 'lib32-libxrender' 'lib32-libxext' 'lib32-libusb-compat'
                 'lib32-libxml2' 'lib32-libsm' 'lib32-icu44')
 #fi
+# Original source URL from Kobo -- removed
 #source=(http://dl.dropbox.com/u/2183775/kobo-desktop.deb)
-source=(https://dl.dropboxusercontent.com/u/17480832/kobo-desktop.deb)
+# Uploaded deb file to my personal dropbox
+source=('kobo-desktop.deb::https://www.dropbox.com/s/8c5i2s0iff75qoh/kobo-desktop.deb?dl=0')
+sha256sums=('da39d435f250ec0ee1b928e7f8976ae979f8f63b491f78ce816b62890bf6c105')
 
 package() {
   cd "$srcdir"
@@ -30,5 +33,3 @@ fi
   rm -r "$pkgdir"/lib
   sed -i 's:Categories=.*:Categories=Office;:' "$pkgdir"/usr/share/applications/Kobo.desktop
 }
-
-sha256sums=('da39d435f250ec0ee1b928e7f8976ae979f8f63b491f78ce816b62890bf6c105')
