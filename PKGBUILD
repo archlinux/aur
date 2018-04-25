@@ -1,7 +1,5 @@
-# Maintainer: Morris Jobke <hey AT morrisjobke.de>
-# Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
@@ -27,7 +25,7 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('7b35c2698226eb91cbea411951f62107cc41a5118f141ba375590ede5c0f28a1'
+sha256sums=('d0691ce285c2e054c43ec09a6c76de0b1d22617059f8af3a8ed15817462665f6'
             '3d5a12c09fdc25dce99961ee33df0a0d22c26a53e6307eb52c4d728c46a36698')
 install=${pkgname}.install
 
