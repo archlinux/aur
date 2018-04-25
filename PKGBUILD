@@ -1,13 +1,13 @@
 # Packager : Jules Roumieux
 basename="gint"
 pkgname="$basename-git"
-pkgver=r43.ab1baf5
+pkgver=r50.131b432
 pkgrel=1
 pkgdesc="Gint and a libc for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
 depends=("fxsdk" "sh3eb-elf-binutils" "sh3eb-elf-gcc")
 options=(!strip)
-source=("git+http://git.planet-casio.com/CoiledSpring/$basename.git#branch=dev")
+source=("git+http://git.planet-casio.com/lephe/$basename.git#branch=dev")
 md5sums=("SKIP")
 
 pkgver() {
