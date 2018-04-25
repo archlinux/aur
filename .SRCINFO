@@ -1,14 +1,14 @@
 pkgbase = shyaml
 	pkgdesc = YAML for the command line
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/0k/shyaml
 	arch = x86_64
 	license = BSD
 	depends = python
 	depends = python-yaml
-	source = https://github.com/0k/shyaml/archive/0.5.2.tar.gz
-	sha256sums = ea4f9df4bfbe2d3aaf9154b6875ff34aac92b36a5ff9eeedbd6bd82719d17fbc
+	source = git+https://github.com/0k/shyaml
+	sha256sums = SKIP
 
 pkgname = shyaml
 
