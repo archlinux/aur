@@ -1,7 +1,7 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=0.9.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer (Preview) is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
@@ -12,12 +12,11 @@ provides=('storageexplorer')
 changelog=
 source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418"
         "storageexplorer.desktop")
-sha256sums=('13af0e19e44ce588b12edbb4a2e41fe44d4cb7da9c95245a218f4252d32b30e2'
+sha256sums=('2ac53e5e26263b316453a197d4a10b15e23e6d4e7afe59443bc19ca7a7a6cd85'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
     install -dm 755 "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "Azure Storage Explorer EULA.rtf" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "blink_image_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "content_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "content_shell.pak" "${pkgdir}/opt/StorageExplorer/"
@@ -27,11 +26,9 @@ package() {
     cp -r "locales" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "natives_blob.bin" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "pdf_viewer_resources.pak" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "README" "${pkgdir}/opt/StorageExplorer/"
     cp -r "resources" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "snapshot_blob.bin" "${pkgdir}/opt/StorageExplorer/"
     install -m 755 "StorageExplorer" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "ThirdPartyNotices.txt" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "ui_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "views_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
 
