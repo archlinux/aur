@@ -1,0 +1,21 @@
+pkgbase = python-requests-html
+	pkgdesc = HTML Parsing for Humans
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://html.python-requests.org/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pyquery
+	depends = python-fakeuseragent
+	depends = python-parse
+	depends = python-beautifulsoup4
+	depends = python-w3lib
+	depends = python-pyppeteer
+	source = requests-html-0.9.0.tar.gz::https://github.com/kennethreitz/requests-html/archive/v0.9.0.tar.gz
+	sha512sums = 2a964eaf9ceb622700b4f8063332dd6de8e898db0a8a9eb682e2d8ae9ac75a4ac04312d4c538b5b0e69e1d3d391a71733ecb77703cd85e5da3973359cfe07db2
+
+pkgname = python-requests-html
+
