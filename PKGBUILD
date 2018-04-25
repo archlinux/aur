@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='eresi-git'
 pkgdesc='Reverse engineering tool suite (includes elfsh)'
-pkgver=r1263.c2b0bb66
+pkgver=r1267.d0facbfd
 pkgrel=1
 license=('GPL')
 url='https://github.com/thorkill/eresi'
@@ -39,4 +39,5 @@ build () {
 package () {
 	cd "${pkgname}"
 	make install DESTDIR="${pkgdir}/usr"
+	make install64 DESTDIR="${pkgdir}/usr"
 }
