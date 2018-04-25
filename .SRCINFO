@@ -1,0 +1,29 @@
+pkgbase = jtreg-hg
+	pkgdesc = Regression Test Harness for the JDK
+	pkgver = r429+.7b1496d2790e+
+	pkgrel = 1
+	url = http://openjdk.java.net/jtreg/
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	makedepends = apache-ant
+	makedepends = java-environment-openjdk=7
+	makedepends = jcov
+	makedepends = java-testng
+	makedepends = jcommander
+	makedepends = junit
+	depends = java-runtime>=7
+	depends = jtharness
+	depends = asmtools
+	optdepends = jcov
+	provides = jtreg
+	conflicts = jtreg
+	source = jtreg::hg+http://hg.openjdk.java.net/code-tools/jtreg
+	source = jtreg.sh
+	source = jtreg.patch
+	sha256sums = SKIP
+	sha256sums = 49a4a58ff76e2e9989122d0aa0e5064f9797198789a851f21ed0b36484253c9f
+	sha256sums = 147b5d2169926b83d9b53ced862240821a242377293868de18675f692d7fbc46
+
+pkgname = jtreg-hg
+

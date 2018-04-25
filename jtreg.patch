@@ -1,0 +1,24 @@
+diff -r 7b1496d2790e src/share/classes/com/sun/javatest/regtest/agent/TestNGRunner.java
+--- a/src/share/classes/com/sun/javatest/regtest/agent/TestNGRunner.java	Mon Apr 23 16:46:17 2018 -0700
++++ b/src/share/classes/com/sun/javatest/regtest/agent/TestNGRunner.java	Wed Apr 25 13:17:17 2018 +0300
+@@ -89,7 +89,7 @@
+         testng.setDefaultSuiteName(testName);
+         testng.setTestClasses(new Class<?>[]{mainClass});
+         testng.addListener((ITestNGListener) listener); // recognizes both ITestListener and IConfigurationListener
+-        testng.addListener(new XMLReporter());
++        testng.addListener((ITestNGListener) new XMLReporter());
+         testng.setOutputDirectory(new File(".").getPath()); // current dir, i.e. scratch dir
+         testng.run();
+         if (listener.configFailureCount > 0 || listener.failureCount > 0) {
+diff -r 7b1496d2790e src/share/classes/com/sun/javatest/regtest/tool/Tool.java
+--- a/src/share/classes/com/sun/javatest/regtest/tool/Tool.java	Mon Apr 23 16:46:17 2018 -0700
++++ b/src/share/classes/com/sun/javatest/regtest/tool/Tool.java	Wed Apr 25 13:17:17 2018 +0300
+@@ -1494,7 +1494,7 @@
+ 
+         File libDir = jtreg_jar.getParentFile();
+ 
+-        junitPath = new JarFinder("junit.jar")
++        junitPath = new JarFinder("junit.jar", "hamcrest-core.jar")
+                 .classes("org.junit.runner.JUnitCore")
+                 .libDir(libDir)
+                 .getPath();
