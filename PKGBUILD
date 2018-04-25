@@ -1,4 +1,4 @@
-# Packager : Jules Roumieux
+# Packager : Louise Zanier
 basename="gint"
 pkgname="$basename-git"
 pkgver=r50.131b432
