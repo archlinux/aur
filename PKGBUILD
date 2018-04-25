@@ -3,7 +3,7 @@
 
 pkgname=charles
 pkgver=4.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
@@ -27,15 +27,17 @@ package() {
       ${pkgdir}/usr/share/java/${pkgname}/$(basename ${fn})
   done
 
-  for dim in 16 32 48 64 128 256 512; do
-    install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon${dim}.png \
-      ${pkgdir}/usr/share/icons/hicolor/${dim}x${dim}/apps/charles.png
+  for dim in 16x16  32x32  64x64  128x128  256x256  512x512; do
+    install -D -m644 ${srcdir}/${pkgname}/icon/${dim}/apps/charles-proxy.png \
+      ${pkgdir}/usr/share/icons/hicolor/${dim}/apps/charles.png
+    for mimetype in application-har+json.png application-vnd.tcpdump.pcap.png application-x-charles-savedsession.png application-x-charles-trace.png; do
+      install -D -m644 ${srcdir}/${pkgname}/icon/${dim}/mimetypes/$mimetype \
+        ${pkgdir}/usr/share/icons/hicolor/${dim}/mimetypes/$mimetype
+    done
   done
-  install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon128.png \
+  install -D -m644 ${srcdir}/${pkgname}/icon/128x128/apps/charles-proxy.png \
     ${pkgdir}/usr/share/icons/charles128.png
 
-  install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon.svg \
-    ${pkgdir}/usr/share/icons/hicolor/scalable/apps/charles.svg
   install -D -m644 ${srcdir}/${pkgname}/doc/licenses/bounce-license.txt \
     ${pkgdir}/usr/share/licenses/${pkgname}/bounce-license.txt
   install -D -m644 ${srcdir}/${pkgname}/etc/charles-proxy.desktop \
