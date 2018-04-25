@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jcov-hg
 pkgver=r37.0b9e41807b07
-pkgrel=1
+pkgrel=2
 pkgdesc="The JCov open source project is used to gather quality metrics associated with the production of test suites."
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/jcov"
@@ -47,7 +47,10 @@ package() {
   install -D -m 644 JCOV_BUILD/jcov_3.0/jcov_file_saver.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/jcov_file_saver.jar
   install -D -m 644 JCOV_BUILD/jcov_3.0/jcov_network_saver.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/jcov_network_saver.jar
   install -D -m 644 plugins/coberturaXML/plugin/dist/coberturaXML.jar ${pkgdir}/usr/share/java/${pkgname%-hg}/coberturaXML.jar
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  mkdir -p ${pkgdir}/usr/share/${pkgname%-hg}
+  ln -sf /usr/share/java/${pkgname%-hg}         ${pkgdir}/usr/share/${pkgname%-hg}/lib
+  ln -sf /usr/share/licenses/${pkgname}/LICENSE ${pkgdir}/usr/share/${pkgname%-hg}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
