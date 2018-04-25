@@ -10,7 +10,7 @@ pkgrel=6
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
-makedepends=('lua' 'lua51' 'lua52')
+makedepends=('lsb-release' 'lua' 'lua51' 'lua52')
 license=('MIT')
 source=(
   "http://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
