@@ -2,10 +2,10 @@
 
 pkgname=textosaurus-git
 epoch=1
-pkgver=0.9.2.r11.g2718553
+pkgver=0.9.3.1.r5.g7259e88
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/martinrotter/textosaurus"
 license=(GPL3)
 depends=('qt5-base' 'qt5-svg')
