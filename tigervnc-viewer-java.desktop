@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=TigerVNC Viewer (Java)
+Comment=VNC client
+Exec=/usr/bin/java -jar /usr/bin/VncViewer.jar %u
+Icon=tigervnc-viewer-java
+Terminal=false
+Categories=Network;RemoteAccess;
+Name[en_US]=TigerVNC Viewer (Java)
