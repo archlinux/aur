@@ -1,14 +1,13 @@
 pkgbase = cavalcade
 	pkgdesc = Python GUI wrapper for CAVA utility
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/worron/cavalcade
 	arch = any
 	license = GPL
 	depends = python>=3.5
 	depends = cava>=0.6
 	depends = gtk3
-	depends = cairo
 	depends = python-cairo
 	depends = python-gobject
 	depends = gstreamer
