@@ -18,7 +18,7 @@ package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 
 }
 
