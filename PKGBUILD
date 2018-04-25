@@ -5,13 +5,13 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
-depends=('awk' 'glib2' 'libcap' 'libdbi' 'glib2' 'udev')
+depends=('awk' 'glib2' 'libcap' 'libdbi' 'libnsl' 'udev')
 makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
 optdepends=('logrotate: for rotating log files'
             'json-c: for json-plugin'
