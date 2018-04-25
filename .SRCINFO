@@ -6,6 +6,7 @@ pkgbase = java8-openjdk
 	arch = i686
 	license = custom
 	makedepends = java-environment>=7
+	makedepends = java-environment<9
 	makedepends = ccache
 	makedepends = cpio
 	makedepends = unzip

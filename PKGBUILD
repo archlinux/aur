@@ -22,7 +22,7 @@ pkgrel=1
 arch=('x86_64' 'i686')
 url='http://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment>=7' 'ccache' 'cpio' 'unzip' 'zip'
+makedepends=('java-environment>=7' 'java-environment<9' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
