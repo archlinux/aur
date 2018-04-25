@@ -1,0 +1,19 @@
+pkgbase = boinctui-git
+	pkgdesc = Curses based fullscreen BOINC manager with support for terminal transparency
+	pkgver = r197.0e36e65
+	pkgrel = 1
+	url = https://github.com/DerVerruckteFuchs/boinctui
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = expat
+	depends = gcc-libs
+	depends = openssl
+	depends = cmake
+	provides = boinctui
+	conflicts = boinctui
+	source = git+https://github.com/DerVerruckteFuchs/boinctui.git
+	md5sums = SKIP
+
+pkgname = boinctui-git
+
