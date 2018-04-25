@@ -15,7 +15,6 @@ makedepends=('python>=3.3'
              'python-jsonschema>=2.3.0'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
-             'python-matplotlib'
              'python-astropy>=1.1'
              'python-astropy-helpers'
              'python-semantic-version>=2.3.1')
