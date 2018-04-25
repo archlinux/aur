@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive' 'binfmt-support')
-makedepends=('git' 'cmake' 'wget' 'vim' 'binfmt-support')
+makedepends=('git' 'cmake' 'wget' 'vim')
 source=("git://github.com/TheAssassin/$_pkgname#tag=continuous")
 sha256sums=('SKIP')
 install=appimagelauncher.install
