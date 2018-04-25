@@ -21,6 +21,5 @@ package() {
     if [ ! -d ${pkgdir}/usr/bin ];then
         mkdir -p ${pkgdir}/usr/bin
     fi
-    cd "$pkgdir/usr/bin"
-    ln -s "${pkgdir}/usr/share/$pkgname/caj2pdf"
+    ln -s "/usr/share/$pkgname/caj2pdf" "$pkgdir/usr/bin/caj2pdf"
 }
