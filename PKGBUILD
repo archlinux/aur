@@ -18,7 +18,7 @@ _pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         'rider.desktop')
-sha256sums=('b46e68ee58ddcdfa0c9560215d1ec80492e2caeda85819f1366762e8c5f08472'
+sha256sums=('2b26d0e7a94d6c5ff821031ea57db12ed352acc83967f462351ea29053741f4a'
             '91f41e1a5deae9f66bab7d7798a679a39350120aa229b4093415ef8269449714')
 
 package() {
