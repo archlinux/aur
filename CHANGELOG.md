@@ -1,5 +1,109 @@
 # Change Log
 
+## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/HEAD)
+
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.5.0...HEAD)
+
+**Implemented enhancements:**
+
+- Add hue and saturation to levels [\#263](https://github.com/langurmonkey/gaiasky/issues/263)
+- Add support for asteroind positions additionally to orbits [\#262](https://github.com/langurmonkey/gaiasky/issues/262)
+- Add Hammer-Aitoff and cylindrical projections to cubemap mode [\#260](https://github.com/langurmonkey/gaiasky/issues/260)
+- Expose dataset chooser to prefs window [\#259](https://github.com/langurmonkey/gaiasky/issues/259)
+- Add projection minimaps [\#255](https://github.com/langurmonkey/gaiasky/issues/255)
+- Add image format and quality for screenshots and frames to config [\#253](https://github.com/langurmonkey/gaiasky/issues/253)
+- Add reset time hotkey [\#252](https://github.com/langurmonkey/gaiasky/issues/252)
+- Apply graphics quality without restart [\#251](https://github.com/langurmonkey/gaiasky/issues/251)
+- Add gravitational wave model [\#249](https://github.com/langurmonkey/gaiasky/issues/249)
+- Add CMB [\#248](https://github.com/langurmonkey/gaiasky/issues/248)
+- Add SAMP support [\#246](https://github.com/langurmonkey/gaiasky/issues/246)
+- Use memory mapped files for speed-critical read operations [\#245](https://github.com/langurmonkey/gaiasky/issues/245)
+- Remove android/html/desktop infrastructure [\#244](https://github.com/langurmonkey/gaiasky/issues/244)
+- Add relativistic aberration [\#242](https://github.com/langurmonkey/gaiasky/issues/242)
+- Add flag to enable dataset chooser dialog at startup [\#240](https://github.com/langurmonkey/gaiasky/issues/240)
+- Improve occlusion test in light glow algorithm [\#239](https://github.com/langurmonkey/gaiasky/issues/239)
+- Add pure GPU line renderer for orbits [\#232](https://github.com/langurmonkey/gaiasky/issues/232)
+- Add star opacity setter to API [\#231](https://github.com/langurmonkey/gaiasky/issues/231)
+- Add visual effects controls to API [\#230](https://github.com/langurmonkey/gaiasky/issues/230)
+- Add stereo and 360 modes to API [\#229](https://github.com/langurmonkey/gaiasky/issues/229)
+- Add star size setter to API [\#228](https://github.com/langurmonkey/gaiasky/issues/228)
+- Add 'stop time' to scripting API [\#226](https://github.com/langurmonkey/gaiasky/issues/226)
+- Add setPlanetariumMode\(\) API call [\#225](https://github.com/langurmonkey/gaiasky/issues/225)
+- Add API call to control brightness and contrast [\#221](https://github.com/langurmonkey/gaiasky/issues/221)
+- Add a reload default settings button [\#220](https://github.com/langurmonkey/gaiasky/issues/220)
+- Add getSimulationTime\(\) to scripting [\#219](https://github.com/langurmonkey/gaiasky/issues/219)
+- Add frame output state indicator [\#218](https://github.com/langurmonkey/gaiasky/issues/218)
+- Set crosshair visibility API call [\#215](https://github.com/langurmonkey/gaiasky/issues/215)
+- Add setSimulationTime with comprehensive params to scripting [\#214](https://github.com/langurmonkey/gaiasky/issues/214)
+- Add 'Back to Earth' key mapping [\#209](https://github.com/langurmonkey/gaiasky/issues/209)
+- Add pointer coordinates toggle in preferences [\#208](https://github.com/langurmonkey/gaiasky/issues/208)
+- Constellations with proper motions [\#203](https://github.com/langurmonkey/gaiasky/issues/203)
+- Add controller debug mode to help create mappings [\#202](https://github.com/langurmonkey/gaiasky/issues/202)
+- Add support for emissive colors and textures [\#201](https://github.com/langurmonkey/gaiasky/issues/201)
+- Upgrade to libgdx 1.9.7 [\#200](https://github.com/langurmonkey/gaiasky/issues/200)
+- Adapt normal lighting shader to accept no directional lights [\#197](https://github.com/langurmonkey/gaiasky/issues/197)
+- Update Jython to 2.7.0 [\#194](https://github.com/langurmonkey/gaiasky/issues/194)
+- Feature request - scripting functions [\#192](https://github.com/langurmonkey/gaiasky/issues/192)
+- Add distance to Sol in focus info interface [\#191](https://github.com/langurmonkey/gaiasky/issues/191)
+- Look for ways to prevent time overflow [\#190](https://github.com/langurmonkey/gaiasky/issues/190)
+- Add star clusters [\#188](https://github.com/langurmonkey/gaiasky/issues/188)
+- Enable proper motions [\#185](https://github.com/langurmonkey/gaiasky/issues/185)
+- Allow arbitrary meshes in json data files [\#184](https://github.com/langurmonkey/gaiasky/issues/184)
+- Add 'pause background loading' action [\#181](https://github.com/langurmonkey/gaiasky/issues/181)
+- Fix action buttons \(stop script, stop camera path\) [\#180](https://github.com/langurmonkey/gaiasky/issues/180)
+- Add titles to data with i18n [\#179](https://github.com/langurmonkey/gaiasky/issues/179)
+- Crosshair when in free camera + target mode [\#178](https://github.com/langurmonkey/gaiasky/issues/178)
+- Crosshair to point to focus direction when off-screen [\#177](https://github.com/langurmonkey/gaiasky/issues/177)
+- Problem loading many asteroid orbits [\#98](https://github.com/langurmonkey/gaiasky/issues/98)
+- Shadow mapping [\#60](https://github.com/langurmonkey/gaiasky/issues/60)
+
+**Fixed bugs:**
+
+- Fix position discrepancy of stars in stereo mode \(points vs billboards\) [\#258](https://github.com/langurmonkey/gaiasky/issues/258)
+- Screenshot and frame mode switch from simple to advanced produces null pointer [\#257](https://github.com/langurmonkey/gaiasky/issues/257)
+- Refactor time [\#256](https://github.com/langurmonkey/gaiasky/issues/256)
+- Streaming catalog loader never attempts previously discarded pages [\#241](https://github.com/langurmonkey/gaiasky/issues/241)
+- Fix returning from panorama mode through stereo mode [\#238](https://github.com/langurmonkey/gaiasky/issues/238)
+- Add object scaling to scripting API [\#227](https://github.com/langurmonkey/gaiasky/issues/227)
+- Fix atmosphere flickering due to z fighting [\#224](https://github.com/langurmonkey/gaiasky/issues/224)
+- Fix Gaia FoV detection and projection [\#223](https://github.com/langurmonkey/gaiasky/issues/223)
+- Fixed errors not logging correctly during init [\#222](https://github.com/langurmonkey/gaiasky/issues/222)
+- Remove wrong \[h/sec\] units in time warp label [\#217](https://github.com/langurmonkey/gaiasky/issues/217)
+- Star label positioning does not react to fov setting [\#216](https://github.com/langurmonkey/gaiasky/issues/216)
+- Fix focus issue using shift in objects component input [\#213](https://github.com/langurmonkey/gaiasky/issues/213)
+- Fix NUMPAD4/5/6 to acces FOV camera modes [\#212](https://github.com/langurmonkey/gaiasky/issues/212)
+- Fix star min opacity initialisation [\#207](https://github.com/langurmonkey/gaiasky/issues/207)
+- Crash when selecting NBG galaxy with the time on [\#206](https://github.com/langurmonkey/gaiasky/issues/206)
+- goToObject\(name, angle\) not zooming out if current angle is larger than target [\#195](https://github.com/langurmonkey/gaiasky/issues/195)
+- NullPointerException in DesktopNetworkChecker [\#193](https://github.com/langurmonkey/gaiasky/issues/193)
+- Look for ways to prevent time overflow [\#190](https://github.com/langurmonkey/gaiasky/issues/190)
+- Fix visibility of date/time and time warp factor [\#189](https://github.com/langurmonkey/gaiasky/issues/189)
+- Fix `facingFocus` state issue [\#187](https://github.com/langurmonkey/gaiasky/issues/187)
+- Fix MAS\_TO\_DEG conversion in AstroUtils [\#186](https://github.com/langurmonkey/gaiasky/issues/186)
+- Fix 'run script' window handling of scripts with same name [\#182](https://github.com/langurmonkey/gaiasky/issues/182)
+- Motion blur causes problems with 360 mode [\#87](https://github.com/langurmonkey/gaiasky/issues/87)
+
+**Closed issues:**
+
+- Is this update also coming? [\#261](https://github.com/langurmonkey/gaiasky/issues/261)
+- Enable particle effects [\#254](https://github.com/langurmonkey/gaiasky/issues/254)
+- Add-ons [\#250](https://github.com/langurmonkey/gaiasky/issues/250)
+- Crash with TGAS GPU dataset [\#236](https://github.com/langurmonkey/gaiasky/issues/236)
+- Preferences window shows wrong version number [\#234](https://github.com/langurmonkey/gaiasky/issues/234)
+- Cannot build desktop:dist [\#233](https://github.com/langurmonkey/gaiasky/issues/233)
+- Feature request: galactic cartesian coordinates [\#211](https://github.com/langurmonkey/gaiasky/issues/211)
+- Adding meshes [\#205](https://github.com/langurmonkey/gaiasky/issues/205)
+- On Windows, install fails with "Could not determine java version from '9.0.1' [\#204](https://github.com/langurmonkey/gaiasky/issues/204)
+- Docs don't mention where record data appears [\#198](https://github.com/langurmonkey/gaiasky/issues/198)
+- So....I...uhh...broke it in the most beautiful way I could think...ever. [\#196](https://github.com/langurmonkey/gaiasky/issues/196)
+- Javadocs no longer available [\#183](https://github.com/langurmonkey/gaiasky/issues/183)
+- Not truly compatible with Oculus Rift [\#44](https://github.com/langurmonkey/gaiasky/issues/44)
+
+**Merged pull requests:**
+
+- Add REST API for remote control [\#237](https://github.com/langurmonkey/gaiasky/pull/237) ([vga101](https://github.com/vga101))
+- DE translation and minor formatting update [\#235](https://github.com/langurmonkey/gaiasky/pull/235) ([vga101](https://github.com/vga101))
+
 ## [1.5.0](https://github.com/langurmonkey/gaiasky/tree/1.5.0) (2017-08-02)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.0.4...1.5.0)
 
@@ -116,7 +220,7 @@
 
 **Merged pull requests:**
 
-- Fixed broken download links in README.md [\#99](https://github.com/langurmonkey/gaiasky/pull/99) ([AdamK117](https://github.com/AdamK117))
+- Fixed broken download links in README.md [\#99](https://github.com/langurmonkey/gaiasky/pull/99) ([adamkewley](https://github.com/adamkewley))
 
 ## [1.0.3](https://github.com/langurmonkey/gaiasky/tree/1.0.3) (2016-11-15)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.0.2...1.0.3)
