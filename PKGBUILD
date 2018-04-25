@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=radiotray-ng
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'boost' 'lsb-release')
 optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz")
-sha256sums=('63cdbcd18172ffc9c75cc6cb89ec720bb44492e2b4c87869cfc4232fc981eac5')
+sha256sums=('85de0228b7927add4c143a5bb757ab026041921d640dc0b9b0cdfef519470d88')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,7 +22,8 @@ build() {
   cd build
 
   cmake .. -DCMAKE_BUILD_TYPE=Release \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DBUILD_TESTS=no
   make
 }
 
