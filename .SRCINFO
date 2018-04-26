@@ -1,6 +1,6 @@
 pkgbase = budgie-brightness-applet-git
 	pkgdesc = Screen brightness applet for Budgie Desktop
-	pkgver = 0.1.2bfee64
+	pkgver = 0.2.r0.0cad740
 	pkgrel = 1
 	url = https://github.com/ilgarmehmetali/budgie-brightness-control-applet
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = budgie-brightness-applet-git
 	depends = libpeas
 	depends = budgie-desktop
 	depends = gnome-settings-daemon
-	source = budgie-brightness-applet-git::git+https://github.com/ilgarmehmetali/budgie-brightness-control-applet
+	source = remote::git+https://github.com/ilgarmehmetali/budgie-brightness-control-applet
 	sha256sums = SKIP
 
 pkgname = budgie-brightness-applet-git
