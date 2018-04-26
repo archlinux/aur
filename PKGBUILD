@@ -8,8 +8,8 @@
 
 _pack=zeromq
 pkgname=octave-$_pack
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="ZeroMQ bindings for GNU Octave"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -23,7 +23,7 @@ options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
-md5sums=('cad47733f2df2a80d11ccea356a41044')
+md5sums=('1ce87b48ae3c6474b36e1bfb0033be01')
 noextract=("$_archive")
 
 _octave_run() {
