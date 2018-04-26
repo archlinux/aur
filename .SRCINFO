@@ -1,11 +1,12 @@
 pkgbase = eul
 	pkgdesc = Fast native desktop client for all major messaging services
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eul.im/
 	arch = x86_64
 	license = unknown
 	depends = libcurl-compat
+	depends = webkit2gtk
 	options = !strip
 	source = https://github.com/eul-im/eul/releases/download/v0.34/eul_linux.zip
 	source = eul
