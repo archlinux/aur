@@ -3,7 +3,7 @@
 
 _pkgname=terminology
 pkgname=$_pkgname-git
-pkgver=1.0.99.r1875.98f2726
+pkgver=1.2.99.r1989.ea91a6c
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64')
@@ -42,6 +42,6 @@ package(){
 
   DESTDIR="$pkgdir" ninja -C build install
 
-  install -Dm644 -t"$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t"$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
