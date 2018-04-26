@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyebadblock-git
 pkgver=1.1
-pkgrel=2
+pkgrel=4
 pkgdesc="An adblock extension for webkit2gtk browsers."
 arch=('x86_64')
 url="https://github.com/jun7/wyebadblock"
@@ -20,6 +20,7 @@ pkgver(){
 prepare() {
 	cd "$srcdir/wyebadblock"
 	git pull --rebase origin $_branch
+	make clean
 }
 
 build() {
