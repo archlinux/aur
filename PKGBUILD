@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dragon-git
-pkgver=r9.a49d775
+pkgver=r11.595caf8
 pkgrel=1
 epoch=
 pkgdesc="Drag and drop source/target for X"
