@@ -1,24 +1,21 @@
-# $Id$
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: <ipha00@gmail.com>
 
 pkgname=noto-fonts-emoji-blob
-_pkgver=2017-05-19
-_commit=ca22132c45adb022c1a6c6bed96df76cf0c4fb18
+_pkgver=2018-04-08
+_emojiver=11
 pkgver=${_pkgver//-}
 pkgrel=1
-pkgdesc="Google Noto emoji fonts (blob version)"
+pkgdesc="Google Noto emoji fonts (blob version, C1710's fork)"
 arch=(any)
-url="https://www.google.com/get/noto/"
-license=(custom:OFL)
+url="https://github.com/C1710/blobmoji/"
+license=("Apache")
 depends=(fontconfig)
 provides=(noto-fonts-emoji)
 conflicts=(noto-fonts-emoji)
-source=($pkgname-$pkgver.zip::"https://github.com/googlei18n/noto-emoji/archive/$_commit.zip")
-sha256sums=('d1d6af8c6606a0b790254b9dd52ae9a2cba85ef7003d7e03430b1634ac7a4877')
+source=("https://github.com/C1710/blobmoji/releases/download/v-${_pkgver}-emoji-${_emojiver}/NotoColorEmoji.ttf")
+sha256sums=('a65a77aeaa042c27340910b094ae15e583f59a98684739b6d93a91335d330b34')
 
 package() {
-    cd noto-emoji-*
     mkdir -p "$pkgdir"/usr/share/fonts/noto
-    install -m644 fonts/*.ttf "$pkgdir"/usr/share/fonts/noto
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -m644 NotoColorEmoji.ttf "$pkgdir"/usr/share/fonts/noto
 }
