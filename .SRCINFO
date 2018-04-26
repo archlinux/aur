@@ -1,0 +1,15 @@
+pkgbase = otf-nerd-fonts-fira-code
+	pkgdesc = Monospaced font with programming ligatures. Patched with Nerd Fonts icons.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	depends = fontconfig
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.0.0/LICENSE
+	md5sums = e5bff5da34eb6d16fb20226047c5755c
+	md5sums = 1b95f7668f3a4440b0d404e8dc3ccd9c
+
+pkgname = otf-nerd-fonts-fira-code
+
