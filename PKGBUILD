@@ -2,7 +2,7 @@
 pkgname=ossia-score
 pkgver=1.0.0b42
 release_tag=v1.0.0-b42
-pkgrel=1
+pkgrel=2
 pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.ossia.io"
@@ -32,7 +32,7 @@ build() {
   
   git clone --recursive -j8 "$_gitroot" "score" 
   (
-    cd "i-score"
+    cd "score"
     git checkout "$release_tag"
     git submodule update --init --recursive 
   )
