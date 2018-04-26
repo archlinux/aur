@@ -1,0 +1,19 @@
+pkgbase = qt5-qmllive-git
+	pkgdesc = QmlLive live reloader environment for rapid UI development
+	pkgver = v1.0_QtAS.r79.g4d36089
+	pkgrel = 1
+	url = https://code.qt.io/qt-apps/qmllive
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = qt5-qmllive
+	source = qt5-qmllive-git::git+https://code.qt.io/qt-apps/qmllive.git
+	sha256sums = SKIP
+
+pkgname = qt5-qmllive-git
+
