@@ -1,13 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 pkgname='arcan-git'
-pkgver=0.5.1.r408.gc849baf2
-pkgrel=2
+pkgver=0.5.4.6.r10.gdb2f991e
+pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=('x86_64')
 depends=('freetype2' 'harfbuzz' 'harfbuzz-icu' 'mesa' 'luajit' 'sqlite'
          'libxkbcommon' 'libvncserver' 'libusb' 'openal' 'ffmpeg' 'apr')
-makedepends=('cmake' 'ruby')
+makedepends=('cmake' 'ruby' 'git')
 provides=('arcan')
 conflicts=('arcan')
 url='https://arcan-fe.com/'
