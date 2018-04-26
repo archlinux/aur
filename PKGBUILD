@@ -5,12 +5,13 @@
 set -u
 pkgname='zoiper'
 pkgver='5.2.14'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
 url='http://www.zoiper.com/'
 license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'v4l-utils')
+options=('!strip')
 source=('LICENSE' "${pkgname}.desktop" "${pkgname}.png" "${pkgname}-24.png" "${pkgname}-48.png" "${pkgname}-96.png")
 _srcfile="${pkgname}${pkgver%%.*}_${pkgver}_${CARCH:-}.tar.xz"
 sha1sums=('645d0003fe2e0975c53e008aa31106cceb0d8dad'
