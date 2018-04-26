@@ -4,7 +4,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=lmde3.r0.g6aa7e1d9
+pkgver=3.8.0.r4.g6aa7e1d9
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd nemo
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/master.//'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
