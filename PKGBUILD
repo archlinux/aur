@@ -3,9 +3,8 @@
 pkgname=electra-wallet-git
 _pkgname=electra-wallet
 pkgver=0.r52.ca33111
-pkgrel=1
-pkgshortname="Electra Wallet"
-pkgdesc='The Electra Wallet'
+pkgrel=2
+pkgdesc='QT-based (legacy) wallet for Electra blockchain.'
 arch=('any')
 url='https://github.com/electra01/Electra'
 license=('MIT')

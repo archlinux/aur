@@ -1,7 +1,7 @@
 pkgbase = electra-wallet-git
-	pkgdesc = The Electra Wallet
+	pkgdesc = QT-based (legacy) wallet for Electra blockchain.
 	pkgver = 0.r52.ca33111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electra01/Electra
 	arch = any
 	license = MIT
