@@ -1,10 +1,10 @@
-# Maintainer: flu
+# Maintainer: skydrome
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
 GTK=3
 
 pkgname="spacefm-git"
-pkgver=20170325
+pkgver=20180420
 pkgrel=1
 pkgdesc="A multi-panel tabbed file manager - git branch"
 arch=('i686' 'x86_64')
@@ -13,17 +13,12 @@ license=('GPL3')
 conflicts=("spacefm")
 provides=("spacefm")
 install='spacefm.install'
-
 makedepends=('intltool' 'gettext')
-depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'udevil' 'ffmpegthumbnailer')
-optdepends=('lsof: device processes'
-            'eject: eject media'
-            'wget: plugin download'
-            'gksu: perform as root functionality'
-            'pmount: mount as non-root user'
-            'udisks2: mount as non-root user'
-            'startup-notification'
-            'spacefm-plugin-clamav')
+depends=('shared-mime-info' 'cairo' 'pango' 'dbus' 'glib2' 'wget' 'startup-notification' 'hicolor-icon-theme' 'desktop-file-utils' 'udevil' 'udisks2' 'ffmpegthumbnailer')
+optdepends=('fuseiso: mount ISO filesystem images'
+            'jmtpfs: mount MTP devices'
+            'gphotofs: mount your camera as a filesystem'
+            'ifuse: mount iPhone or iPod Touch')
 
 if [[ "$GTK" = 2 ]]; then
     depends+=('gtk2'); _opts='--with-gtk2'
@@ -47,10 +42,10 @@ prepare() {
 build() {
     cd "$srcdir/spacefm"
     make
-
 }
 
 package() {
     cd "$srcdir/spacefm"
     make DESTDIR="$pkgdir" install
+    rm -f "$pkgdir"/usr/bin/spacefm-installer
 }
