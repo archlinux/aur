@@ -1,11 +1,11 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 
 pkgbase=linux-hardened-apparmor
-_srcname=linux-4.15
-_pkgver=4.15.18
+_srcname=linux-4.16
+_pkgver=4.16.5
 pkgver=${_pkgver}.a
 pkgrel=1
-url='https://github.com/copperhead/linux-hardened'
+url='https://github.com/anthraxx/linux-hardened'
 arch=('x86_64')
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -14,7 +14,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign
-        https://github.com/thestinger/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
+        https://github.com/anthraxx/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
         config.x86_64  # the main kernel config files
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
@@ -22,23 +22,30 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
+        net-aquantia-Regression-on-reset-with-1.x-firmware.patch
+        fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
+        partially-revert-swiotlb-remove-various-exports.patch
 )
 replaces=('linux-grsec')
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'beac2c2aef09ea2aa4b97512071c1364dee14c0fbf291ea85cd4ab8bfb6bc5da'
+            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
             'SKIP'
-            '72fee4dbfc40dd33f7c5e4241679e2d663043b0a2f6ecf7c9eb30dafb51555f4'
+            '65482af87d9bac91d67591bde20ab56162060ea05fad910dbfcb5e5e964c8804'
             'SKIP'
-            '95fccddfafdfce83b64cc1e2c84076c97c808af0d80c213a20f44237ae2f0a90'
+            'a9da5b07a5ed14fe0356491e0407b8c5abf69e575538bfc006ccafa63b2cf275'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148')
+            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
+            'd7233371fe617895b600ad1939d8b818395276d07b8a7918b955c9590a5d1112'
+            'b1c1cf770b2baab046d52687ec3dd83c543e3f45b4abeae2686c814673e0a1c5'
+            '87a0849079db7bf1deefb687bcf43170f1b209d27af9950f98b049cdf233b447')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
+              'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
              )
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -180,9 +187,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
