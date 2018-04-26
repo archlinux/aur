@@ -1,9 +1,10 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
-# Maintainer: Alexandre Filgueira <alexfilgueira@cinnarch.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=lmde3.r0.ga5bf0159
+pkgver=lmde3.r0.g6aa7e1d9
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -11,9 +12,7 @@ url="https://github.com/linuxmint/nemo"
 _branch='master'
 license=('GPL')
 depends=('cinnamon-desktop'
-    'cinnamon-translations'
     'dconf'
-    'desktop-file-utils'
     'exempi'
     'gvfs'
     'libexif'
@@ -22,19 +21,15 @@ depends=('cinnamon-desktop'
     'python'
     'xapps')
 makedepends=('git'
-    'gnome-common'
     'gobject-introspection'
-    'gtk-doc'
     'intltool'
-    'meson'
-    'python-gobject'
-    'python2-gobject'
-    'python-polib')
-optdepends=('ffmpegthumbnailer: support for video thumbnails')
+    'meson')
+optdepends=('cinnamon-translations: i18n'
+    'ffmpegthumbnailer: support for video thumbnails')
 conflicts=('nemo')
 provides=('nemo')
 options=('!emptydirs')
-source=("git+https://github.com/linuxmint/nemo#branch=$_branch")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,16 +38,23 @@ pkgver() {
 }
 
 prepare() {
-  # Rename 'Files' app name to avoid having the same as nautilus
-  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' nemo/data/nemo.desktop.in
+    cd nemo
+    # Rename 'Files' app name to avoid having the same as nautilus
+    sed -i '/^\[Desktop Entry/,/^\[Desktop Action/ s/^Name\(.*\)=.*/Name\1=Nemo/' \
+      data/nemo.desktop.in
 }
 
 build() {
-  cd nemo
-  meson --buildtype plain build --prefix=/usr
+    mkdir -p $srcdir/nemo/build
+    cd $srcdir/nemo/build
+    meson --prefix=/usr \
+          --libexecdir=lib/${pkgname} \
+          --buildtype=plain \
+          ..
+    ninja
 }
 
 package() {
-  cd $srcdir/nemo
-  DESTDIR="$pkgdir" ninja -C build install
+    cd $srcdir/nemo/build
+    DESTDIR="${pkgdir}" ninja install
 }
