@@ -1,13 +1,16 @@
 pkgbase = pacserve
 	pkgdesc = Easily share Pacman packages between computers. A replacement for PkgD.
 	pkgver = 2018
-	pkgrel = 7
+	pkgrel = 8
 	url = https://xyne.archlinux.ca/projects/pacserve
 	install = pacserve.install
 	arch = any
 	license = GPL
 	depends = pyalpm
 	depends = python3-threaded_servers
+	optdepends = avahi: Avahi support
+	optdepends = python-dbus: Avahi support
+	optdepends = python-gobject: Avahi support
 	backup = etc/pacserve/pacserve-ports.conf
 	backup = etc/pacserve/pacserve.service.conf
 	source = https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2018.tar.xz

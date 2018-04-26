@@ -1,12 +1,13 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
 pkgver=2018
-pkgrel=7
+pkgrel=8
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)
 url="https://xyne.archlinux.ca/projects/pacserve"
 depends=(pyalpm python3-threaded_servers)
+optdepends=('avahi: Avahi support' 'python-dbus: Avahi support' 'python-gobject: Avahi support')
 backup=(etc/pacserve/pacserve-ports.conf etc/pacserve/pacserve.service.conf)
 source=(
   https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2018.tar.xz
