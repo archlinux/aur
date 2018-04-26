@@ -2,11 +2,11 @@
 # Git: https://github.com/SpryServers/sprycloud-client-arch
 
 # Uncomment, if you want tha last release
-_version=spry_v2.5.0
+#_version=spry_v2.5.0
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=spry_v2.5.0
-pkgrel=2
+pkgver=2.5.0.spry.r3.r0.gc081c9941
+pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
@@ -27,7 +27,7 @@ md5sums=('SKIP'
 pkgver() {
   if [[ -z "${_version}" ]]; then
     cd "${srcdir}/${_name}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
     echo ${_version}
   fi
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_name}"
   if [[ -n "${_version}" ]]; then
-    git checkout "${_version}"
+    git checkout "v${_version}"
   fi
   git submodule update --init --recursive
   mkdir -p "${srcdir}/${_name}"
