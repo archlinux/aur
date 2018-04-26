@@ -3,7 +3,7 @@
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/tensorflow/tensorflow"
 license=('APACHE')
@@ -31,7 +31,7 @@ prepare() {
   export TF_NEED_JEMALLOC=0
   export TF_NEED_GCP=0
   export TF_NEED_HDFS=0
-  export TF_ENABLE_XLA=1
+  export TF_ENABLE_XLA=0
   export TF_NEED_GDR=0
   export TF_NEED_VERBS=0
   export TF_NEED_OPENCL=1
@@ -55,7 +55,7 @@ build() {
   cd ${srcdir}/tensorflow-${pkgver}
 
   ./configure
-  bazel build --config=opt //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
+  bazel build -c opt --config=sycl //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 }
 
