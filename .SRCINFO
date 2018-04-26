@@ -1,6 +1,6 @@
 pkgbase = linux-clear
-	pkgver = 4.16.4
-	pkgrel = 2
+	pkgver = 4.16.5
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,9 +14,9 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.4.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.16.3-555
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.5.sign
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.16.4-556
 	source = https://downloadmirror.intel.com/27591/eng/microcode-20180312.tgz
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -26,7 +26,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = bad271dbda2d024daf4a2ab6e122b95b262ea80508ac8018bc61e8aa44f40cfe
+	sha256sums = 8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779

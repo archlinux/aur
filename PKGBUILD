@@ -3,10 +3,10 @@
 
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=4
+_minor=5
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.3-555
-pkgrel=2
+_clearver=${__basekernel}.4-556
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'bad271dbda2d024daf4a2ab6e122b95b262ea80508ac8018bc61e8aa44f40cfe'
+            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -47,16 +47,16 @@ prepare() {
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
 
-  cp -Tf $srcdir/clearlinux/config .config
-  cp -a /usr/lib/firmware/i915 firmware/
-  cp -a ${srcdir}/intel-ucode firmware/
-  rm -f firmware/intel-ucode/0f*
-
   # Apply clearlinux patches
   for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch0410|^Patch0500|^Patch200' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
+
+  cp -Tf $srcdir/clearlinux/config .config
+  cp -a /usr/lib/firmware/i915 firmware/
+  cp -a ${srcdir}/intel-ucode firmware/
+  rm -f firmware/intel-ucode/0f*
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
