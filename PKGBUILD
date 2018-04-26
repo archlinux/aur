@@ -1,8 +1,8 @@
 # Maintainer: Shane Stone <shanewstone at gmail>
 
 pkgname=ttf-font-logos
-pkgver=0.10
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="An icon font providing popular Linux distro logos."
 arch=(any)
 replaces=('ttf-font-linux')
@@ -10,7 +10,7 @@ url="https://github.com/lukas-w/font-logos"
 license=('Unilicense')
 depends=(fontconfig xorg-font-utils)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lukas-w/font-logos/archive/v$pkgver.tar.gz")
-md5sums=('95e3f464c732ffd04c3e1affe476c9c5')
+md5sums=('706e05bf9e1d531b7c68f6c74980c8ab')
 
 package() {
   cd font-logos-$pkgver/assets
