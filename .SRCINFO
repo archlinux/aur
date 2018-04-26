@@ -6,10 +6,10 @@ pkgbase = sparta
 	arch = any
 	license = GPL2
 	depends = python2
-	depends = python2-pyqt4
+	depends = python2-pyqt4<=4.10.0
 	depends = python2-elixir
 	depends = python2-lxml
-	optdepends = cutycap: take screenshots of websites
+	optdepends = cutycapt: take screenshots of websites
 	provides = sparta
 	conflicts = sparta
 	source = https://github.com/SECFORCE/sparta/archive/v1.0.1.tar.gz

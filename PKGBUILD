@@ -8,9 +8,9 @@ pkgdesc="Is a python GUI application which simplifies network infrastructure pen
 arch=('any')
 url="http://sparta.secforce.com/"
 license=('GPL2')
-depends=('python2' 'python2-pyqt4' 'python2-elixir' 'python2-lxml')
-optdepends=('cutycap: take screenshots of websites')
-makedeps=('nmap' 'hydra' 'cutycapt-svn' 'nikto')
+depends=('python2' 'python2-pyqt4<=4.10.0' 'python2-elixir' 'python2-lxml')
+optdepends=('cutycapt: take screenshots of websites')
+makedeps=('nmap' 'hydra' 'nikto')
 provides=('sparta')
 conflicts=('sparta')
 source=(
@@ -23,8 +23,6 @@ md5sums=(
 )
 
 package() {
-  msg2 "Installing sparta..."
-
   install -dm 755 "$pkgdir/usr/bin/"
   install -dm 755 "$pkgdir/usr/share/$pkgname"
 
