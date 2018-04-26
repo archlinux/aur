@@ -1,7 +1,7 @@
 # Maintainer:  benutzer193 <registerbn+arch a_t gmail d_ot com>
 pkgname=flips-git
 _pkgname='Flips'
-pkgver=r24.8357fd9
+pkgver=r55.b653aa9
 pkgrel=1
 pkgdesc="Patcher for IPS and BPS files"
 arch=('any')
@@ -23,7 +23,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make
+
+  # profile=yes --> use profile-guided optimization (requires 100MB training corpus)
+  ./make.sh --profile=no --harden=no
 }
 
 package() {
