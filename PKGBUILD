@@ -44,7 +44,7 @@ source=("http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgn
 
 sha256sums=('1632917430972d656235c4f27b485d0ea09c5df4089088281ba523380e3efda9'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
-            'bcbdbd6d8644fda65102eb7b033b7e0b27f5a2a1f4de0d832cf7914c23c3496e')
+            'c26eab02338c89d54310979178d4b8f6ff315071f563b609f9ff750c0d2c1cae')
 
 # PKGBUILD functions
 
