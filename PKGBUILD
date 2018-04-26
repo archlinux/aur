@@ -2,10 +2,10 @@
 
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
-url="https://github.com/tensorflow/tensorflow"
+url="https://github.com/lukeiwanski/tensorflow"
 license=('APACHE')
 arch=('x86_64')
 depends=(opencl-icd-loader computecpp)
@@ -13,7 +13,7 @@ makedepends=(opencl-icd-loader computecpp bazel python-numpy python-pip python-w
 source=("${url}/archive/v${pkgver}.tar.gz"
         17508.patch
         no_trisycl.patch)
-sha512sums=('68fffad324be7f6e3726ea539670572729bd72c7dc935edfdb31771f821f1a8fe90c3d7c293969f660a25e5fd76249cc9b74c5f8511c7bd3e2189d3328044f29'
+sha512sums=('a3e5f07c8f622e952f522baf78d943cf484d8b9a2e77857e2ddb33289ca9e60cb80835dce1e9366b9eedda6beb9dc0043a8e26e02b738bc71bcbf24ae3030c7e'
             'cb2880767532275f55f91ab66b29687fceadcadb8e23608d1e59b35a2899239882367ac38465a5e635f17378286093da0ede115668e23d651776d962ddc35ea9'
             '9081323af38496fbaff4ae79dd7dd291bdebe83758c715fa2d302d3733169a3fb347427b2b0f0268df91bd6b681c57d938fabfe7da3abdb1aa8fc49261a3d750')
 prepare() {
