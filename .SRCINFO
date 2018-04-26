@@ -1,6 +1,6 @@
 pkgbase = mpv-ahjolinna-git
 	pkgdesc = MPV using ahjolinna's personal pre-made conf build
-	pkgver = 0.28.2.r469.ged7bc3a5f3
+	pkgver = 0.28.2.r487.g65f0825315
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
