@@ -21,6 +21,7 @@ options=('!emptydirs'  'strip')
 
 source=(https://repo.itmettke.de/aur-archive/packages/f/firefox-kde-opensuse/firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz{,.sig})
 noextract=(firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
+validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
 	'2e390e06a1edcf52336e77ea36c7feb32b0d82989264211877b9611f82a19a76'
 	'SKIP'
