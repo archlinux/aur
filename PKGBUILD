@@ -2,7 +2,7 @@
 
 pkgname=onyx-bin
 pkgver=0.4.2
-pkgrel=2
+pkgrel=1
 pkgdesc='Decentralized messaging application based on PSS (bin)'
 arch=(x86_64)
 url='https://mainframe.com'
