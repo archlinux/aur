@@ -12,16 +12,16 @@ provides=('budgie-brightness-applet')
 conflicts=('budgie-brightness-applet')
 depends=('libpeas' 'budgie-desktop' 'gnome-settings-daemon') 
 makedepends=('gobject-introspection' 'meson' 'ninja' 'vala')
-source=("remote::git+${url}")
+source=("git+${url}")
 
 pkgver() {
-  cd "$srcdir/remote"
+  cd "$srcdir/budgie-brightness-control-applet"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  mkdir -p "$srcdir/remote/build"
-  cd "$srcdir/remote/build"
+  mkdir -p "$srcdir/budgie-brightness-control-applet/build"
+  cd "$srcdir/budgie-brightness-control-applet/build"
 
   meson .. \
     --prefix /usr \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/remote/build"
+  cd "${srcdir}/budgie-brightness-control-applet/build"
 
   DESTDIR="${pkgdir}" ninja install
 }
