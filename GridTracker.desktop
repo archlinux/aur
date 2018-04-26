@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GridTracker
+Comment=GridTracker
+GenericName=GridTracker, a WSJT-X Companion
+Exec=/usr/bin/GridTracker
+Icon=/opt/GridTracker/gridtracker.png
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=Ham Radio;
+
+
