@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.22.30
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
 url="https://gist.github.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71"
@@ -30,7 +30,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-			'3cb0c1ee424f9d9bff8e97c18ba2d4680606ee4beee1e409fbee4b0dbad6c86e')
+            '90e94f1e287ec0821c995fd17c6a68265c965c72aad3a794d0866184930a5719')
 pkgver() {
   cd gtk
   git describe --tags | sed 's/-/+/g'
