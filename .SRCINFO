@@ -11,9 +11,10 @@ pkgbase = gr-limesdr-git
 	depends = gnuradio
 	depends = swig
 	depends = limesuite
+	optdepends = doxygen: generate documentation
 	provides = gr-limesdr
 	conflicts = gr-limesdr
-	source = gr-limesdr-remote::git+https://github.com/myriadrf/gr-limesdr
+	source = git+https://github.com/myriadrf/gr-limesdr
 	md5sums = SKIP
 
 pkgname = gr-limesdr-git
