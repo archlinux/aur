@@ -1,12 +1,12 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Arcan command line clipboard manager'
 pkgname='arcan-aclip-git'
-pkgver=0.5.1.r408.gc849baf2
+pkgver=0.5.4.6.r10.gdb2f991e
 pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=('x86_64')
 depends=('arcan')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 provides=('arcan-aclip')
 conflicts=('arcan-aclip')
 url='https://arcan-fe.com/'
