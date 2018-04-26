@@ -12,16 +12,16 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.101789.a8420e2530
+pkgver=18.2.0_devel.101888.3db93f9128
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'xorgproto'
+makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
+provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'wayland<1.14.93')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
@@ -59,10 +59,12 @@ build () {
     --disable-xvmc \
     --enable-vdpau \
     --enable-omx-bellagio \
-    --enable-opencl \
-    --enable-opencl-icd \
     --enable-glx-tls \
     --enable-libglvnd
+
+# broken, see https://bugs.freedesktop.org/show_bug.cgi?id=106209
+#    --enable-opencl \
+#    --enable-opencl-icd \
 
 
 # Used configure settings
