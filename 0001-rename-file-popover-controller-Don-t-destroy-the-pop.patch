@@ -1,0 +1,53 @@
+From bf86a803ab912a4cb8f7bd680616882ca47cad3a Mon Sep 17 00:00:00 2001
+Message-Id: <bf86a803ab912a4cb8f7bd680616882ca47cad3a.1516394111.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Fri, 19 Jan 2018 20:47:04 +0100
+Subject: [PATCH] rename-file-popover-controller: Don't destroy the popover in
+ 'unmap'
+
+Doing that when transitions are deactivated destroys the popover in the
+middle of gtk_popover_popdown, causing gtk_popover_hide_internal to
+operate on a finalized popover.
+
+Fixes #216.
+---
+ src/nautilus-rename-file-popover-controller.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/nautilus-rename-file-popover-controller.c b/src/nautilus-rename-file-popover-controller.c
+index 83a13d6d9..5806315fb 100644
+--- a/src/nautilus-rename-file-popover-controller.c
++++ b/src/nautilus-rename-file-popover-controller.c
+@@ -56,7 +56,6 @@ rename_file_popover_controller_on_closed (GtkPopover *popover,
+     g_signal_handler_disconnect (controller->rename_file_popover,
+                                  controller->closed_handler_id);
+     controller->closed_handler_id = 0;
+-    controller->rename_file_popover = NULL;
+ 
+     g_signal_emit_by_name (controller, "cancelled");
+ }
+@@ -282,11 +281,6 @@ nautilus_rename_file_popover_controller_new (NautilusFile *target_file,
+                                                       G_CALLBACK (target_file_on_changed),
+                                                       self);
+ 
+-    g_signal_connect (rename_file_popover,
+-                      "unmap",
+-                      (GCallback) gtk_widget_destroy,
+-                      NULL);
+-
+     g_signal_connect (name_entry,
+                       "key-press-event",
+                       G_CALLBACK (name_entry_on_key_pressed),
+@@ -357,7 +351,7 @@ nautilus_rename_file_popover_controller_finalize (GObject *object)
+             self->closed_handler_id = 0;
+         }
+         gtk_popover_popdown (GTK_POPOVER (self->rename_file_popover));
+-        self->rename_file_popover = NULL;
++        g_clear_pointer (&self->rename_file_popover, gtk_widget_destroy);
+     }
+ 
+     if (self->file_changed_handler_id != 0)
+-- 
+2.16.0
+
+
