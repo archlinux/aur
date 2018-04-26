@@ -1,15 +1,15 @@
 # Maintainer: Oliver Anhuth <oliver.anhuth at zoho.com>
 
 pkgname=winctl
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Window layout scripting utility for X11 (like devilspie2) which uses relative positions (percentages)"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv7h")
 url="https://github.com/oliver-anhuth/winctl"
 license=("MIT")
 depends=('lua>=5.2' 'gtk3' 'libwnck3')
 source=("https://github.com/oliver-anhuth/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("f83280f79ed90a5619a53e335a083b6a70226e0d2ec8ef2d181e4e43cdf20b97")
+sha256sums=("8acaea2c376571e9023667c1070d608a3de7f97075ae16422083e8809f64cb5e")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,5 +19,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p "${pkgdir}/usr/bin"
-    make install INSTALL_DIR="${pkgdir}/usr" INSTALL_PREFIX=
+    make install INSTALL_DIR="${pkgdir}/usr"
 }
