@@ -152,4 +152,4 @@ fi
 FULL_URL=$URL/$ENDPOINT_STRING
 
 #Trim any incidental '//' and GET
-curl -G ${FULL_URL//\/\//\/}
+curl -s -G ${FULL_URL//\/\//\/}
