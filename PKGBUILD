@@ -1,7 +1,7 @@
 # Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 
 pkgname=recultis
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Return to the cult games. On Linux, with modern, open source engines. Requires the multilib repository to be enabled."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('python' 'python-pyqt5' 'xorg-server' 'binutils' 'mesa' 'openal')
     recultis.desktop
 )
 md5sums=(
-    '44792fac76a94f0ed98c2afd477d7f95'
+    '3e9c6f5662be15489e5c1415423ee4f9'
     '2aa3806d1cdfdaa2513cf777405a8512'
 )
 
