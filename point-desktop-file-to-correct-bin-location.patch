@@ -1,0 +1,12 @@
+diff -ura package.orig/usr/share/applications/electra-desktop.desktop package.new/usr/share/applications/electra-desktop.desktop
+--- package.orig/usr/share/applications/electra-desktop.desktop	2018-04-24 04:19:30.000000000 +0200
++++ package.new/usr/share/applications/electra-desktop.desktop	2018-04-26 18:16:15.917203159 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Electra Desktop
+ Comment=Cross-platform Desktop Wallet for Electra blockchain.
+-Exec="/opt/Electra Desktop/electra-desktop" %U
++Exec="/usr/bin/electra-desktop" %U
+ Terminal=false
+ Type=Application
+ Icon=electra-desktop

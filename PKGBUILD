@@ -3,7 +3,7 @@
 pkgname=electra-desktop-bin
 _pkgname=electra-desktop
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform Desktop Wallet for Electra blockchain.'
 arch=('x86_64')
 url='https://electraproject.org/'
@@ -13,12 +13,16 @@ optdepends=('alsa-lib: sound support')
 makedepends=('binutils' 'xz')
 _srcfile="${_pkgname}_${pkgver}_amd64.deb"
 noextract=("${_srcfile}")
-source=("https://github.com/Electra-project/electra-desktop/releases/download/v${pkgver}/${_srcfile}")
-sha256sums=('a93b484da725d5d828d1b3a1824b26637396313038b134b376c4b04d61acd06b')
+source=("https://github.com/Electra-project/electra-desktop/releases/download/v${pkgver}/${_srcfile}"
+        "point-desktop-file-to-correct-bin-location.patch")
+sha256sums=('a93b484da725d5d828d1b3a1824b26637396313038b134b376c4b04d61acd06b'
+            '267c8aca4f0d3960dd12eb83ef919d339bfb093e77fbc37aa80fe6938ba1bd11')
 
 prepare() {
   cd "$srcdir"
   ar p "${_srcfile}" data.tar.xz | tar Jx
+
+  patch -Np1 -i "${srcdir}/point-desktop-file-to-correct-bin-location.patch"
 }
 
 package() {
