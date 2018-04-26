@@ -1,6 +1,6 @@
 pkgbase = libvirt-autoballoon-git
 	pkgdesc = Libvirt-qemu autoballooning
-	pkgver = v0.2.r0.g392d551
+	pkgver = v0.2.r4.g6983dac
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/libvirt-autoballoon.git
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = libvirt-autoballoon-git
 	depends = bash
 	depends = libvirt
 	depends = libvirt-python
+	backup = etc/libvirt/autoballoon.json
 	source = libvirt-autoballoon-git::git+https://github.com/Nefelim4ag/libvirt-autoballoon.git#branch=master
 	md5sums = SKIP
 

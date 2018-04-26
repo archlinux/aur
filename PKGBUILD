@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=libvirt-autoballoon-git
-pkgver=v0.2.r0.g392d551
+pkgver=v0.2.r4.g6983dac
 pkgrel=1
 pkgdesc="Libvirt-qemu autoballooning"
 arch=('any')
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('systemd' 'bash' 'libvirt' 'libvirt-python')
 makedepends=('git' 'make')
 source=("$pkgname"::'git+https://github.com/Nefelim4ag/libvirt-autoballoon.git#branch=master')
+backup=("etc/libvirt/autoballoon.json")
 md5sums=('SKIP')
 
 pkgver() {
