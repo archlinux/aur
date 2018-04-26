@@ -4,7 +4,7 @@
 pkgname=whatsapp-desktop-electron-bin
 pkgrel=1
 pkgver=0.5.0
-pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
+pkgdesc="Unofficial whatsapp web desktop client (binary version). Built with Electron."
 url="https://github.com/Enrico204/Whatsapp-Desktop"
 provides=("whatsapp-desktop=${pkgver}")
 arch=('i686' 'x86_64' 'armv7l')

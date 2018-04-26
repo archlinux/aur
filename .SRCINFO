@@ -1,5 +1,5 @@
 pkgbase = whatsapp-desktop-electron-bin
-	pkgdesc = Unofficial whatsapp web desktop client. Build with Electron.
+	pkgdesc = Unofficial whatsapp web desktop client (binary version). Built with Electron.
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Enrico204/Whatsapp-Desktop
