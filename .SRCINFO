@@ -1,11 +1,14 @@
 pkgbase = quickserve
 	pkgdesc = A simple HTTP server for quickly sharing files.
 	pkgver = 2018
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.archlinux.ca/projects/quickserve
 	arch = any
 	license = GPL
 	depends = python3-threaded_servers
+	optdepends = avahi: Avahi support
+	optdepends = python-dbus: Avahi support
+	optdepends = python-gobject: Avahi support
 	source = https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz
 	source = https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
