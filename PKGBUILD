@@ -1,4 +1,5 @@
-# Maintainer: Janne Heß <jannehess@gmail.com>
+# Maintainer: Michael Taboada <michael@2mb.solutions>
+# Contributor: Janne Heß<jannehess@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
@@ -9,16 +10,17 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=9.1.0
+pkgver=10.7.1
 pkgrel=1
 pkgdesc="Project management and code hosting application"
-arch=('i686' 'x86_64')
-url="https://gitlab.com/gitlab-org/gitlab-ee/tree/master#README"
+arch=('x86_64')
+url="https://gitlab.com/gitlab-org/gitlab-ce"
 license=('MIT')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-depends=('ruby2.3' 'git' 'ruby2.3-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
-makedepends=('cmake' 'postgresql' 'mariadb' 'yarn')
+options=(!buildflags)
+depends=('ruby2.3' 'git' 'ruby2.3-bundler' 'gitlab-workhorse' 'gitlab-gitaly' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs' 're2')
+makedepends=('cmake' 'postgresql' 'mariadb' 'yarn' 'go')
 optdepends=('postgresql: database backend'
             'mysql: database backend'
             'python2-docutils: reStructuredText markup language support'
@@ -43,17 +45,15 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         apache2.2-ssl.conf.example
         nginx.conf.example
         nginx-ssl.conf.example
-        lighttpd.conf.example
-        10589.patch
-        shell-link.patch)
+        lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('7c56752f9d5252c5ca0b180ec0591f83910045d888b81654c4664b2be742be5f13cf98ad6405739e00afcbc87c5909db0d776eeead199dc52f7def7388540e04'
-            '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
-            '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
-            '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
-            'c097a26d1c24f120967ae457f9008df06af0cd2662306410d8e3f6cc4b5772416125fcd3c895bc35872251060083e8c95b37455b8d20154518d8c467625291eb'
+sha512sums=('22e1436c782b5a44aa9d51c6f08e687af1ebc6745aa85ebf796270e05a7b0740dc821a915d53577467d4b132e3000673452a67c3ee4432dabbd61c7c3bbc56c7'
+            'e96364b3373420a0704552584264f42fee23d64d44d3f769dffa6b516ea9d4c09873da8b2a279445ae9a09f17f81628815efc83e8d0070b3246e56aa13c02ac6'
+            '1104db0397ae5f9a69452ea2a432b837cfaf37d72d063226c2156de5f753b5ae42be1f90292c34f27e251ce3d265ac9c1f79faad1d377c923e7dbc6744100471'
+            'bfc98f3890dfbe11a6f7fa3275f2b04b54b8e31455dcf70abfdc7f1021ff9acb1243f7af8381465346cd780bc76fa2b1c80fada860b8c3c87c7c56bb5229c1ee'
+            '1410a207279a62ca33ddd6844d41dbdb46121209668ab2fba65fbf8b97aa89da1578d39c72c3f1f2ede1770a0e16cd82c3e144d06ed62d2e76e5d2c79ce01386'
             'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
-            'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
+            'bf33b818e4ea671c16f58563997ba5fe0a09090e5c03577ff974d31324d4e9782b85a9bb4f1749b97257ce93400c692de935f003770d52b5994c9cab9aee57c6'
             'abacbff0d7be918337a17b56481c84e6bf3eddd9551efe78ba9fb74337179e95c9b60f41c49f275e05074a4074a616be36fa208a48fc12d5b940f0554fbd89c3'
             '20b93eab504e82cc4401685b59e6311b4d2c0285bc594d47ce4106d3f418a3e2ba92c4f49732748c0ba913aa3e3299126166e37d2a2d5b4d327d66bae4b8abda'
             '441585489fb992d5e893f14bf0770df04ada95ffdbfcc80bb98a44eda7db520d12c985f600d003d80a196562654d2231598f8481ff9bf664bb5889f564e897e7'
@@ -62,9 +62,7 @@ sha512sums=('7c56752f9d5252c5ca0b180ec0591f83910045d888b81654c4664b2be742be5f13c
             '248d47b44fa5ed65e2a940f2b60d0482c481b3a438357ca510848221370367ffbc0d83ce046d688bebbbc75d4e321b140f6a5ce1a9d7ec0b034fafcf92dee107'
             '53a9d6d6f87874b29e48a8fb2e207094ebc1a80af478562ec4b591926d59e135a3166c20966704aa948ca7063ba63c1ec4ac290a343832fa18025ec3d85081ba'
             '6d3006da591acefcc534c6e3f1da8e812d0b3b21fc416bfaa8678b8e2d922be6b17d1c92b0d7164de3b8ad864139253707107ca082f78e823d23f3b65fcb5914'
-            'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06'
-            '364408ad2cc7fd866c1f78a336fead0876c6af694cc45744a7dda680d40ad12bc2c35f18b54f4043af3f144a43a64ced5155e61210a88f814918152f041e1bb6'
-            '845338cb633fd57caccddce7c7bdea37568a66ef777f721639a53dbac56e10c4cbe77314d9875ade9eb43f3935ea894fcd3625f1580cda56b59809f76ab9d12f')
+            'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06')
 
 _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
@@ -73,31 +71,35 @@ _logdir="/var/log/${_pkgname}"
 _srcdir="${pkgname}-v${pkgver}-ee-"
 
 prepare() {
-  cd "${srcdir}/${_srcdir}"*
+  cd "${srcdir}"
 
-  # https://gitlab.com/gitlab-org/gitlab-ce/merge_requests/10589
-  # https://gitlab.com/gitlab-org/gitlab-ce/issues/29562
-  # https://gitlab.com/gitlab-org/gitlab-ce/issues/30124
-  patch -Np1 < "${srcdir}"/10589.patch
-  patch -Np0 < "${srcdir}"/shell-link.patch
+  # Get first 7 characters from sha1 which has 40 characters in total
+  local revision=$(ls -d ${_srcdir}* | rev | cut -c 34-40 | rev)
+
+  cd "${_srcdir}"*
+
+  msg2 "Patching git revision in config/initializers/2_app.rb..."
+  sed -i -e "s|REVISION = Gitlab::Popen.popen(%W(#{config.git.bin_path} log --pretty=format:%h -n 1)).first.chomp.freeze|REVISION = \"${revision}\"|" \
+            config/initializers/2_app.rb
 
   export SKIP_STORAGE_VALIDATION='true'
 
   # Patching config files:
   msg2 "Patching paths in and username gitlab.yml..."
   sed -e "s|# user: git|user: gitlab|" \
+      -e "s|/home/git/gitaly/bin|/usr/bin|" \
       -e "s|/home/git/repositories|${_homedir}/repositories|" \
       -e "s|/home/git/gitlab-satellites|${_homedir}/satellites|" \
       -e "s|# path: /mnt/gitlab|path: ${_homedir}/shared|" \
       -e "s|/home/git/gitlab-shell|/usr/share/webapps/gitlab-shell|" \
       -e "s|tmp/backups|${_homedir}/backups|" \
+      -e "s|/home/git/gitlab/tmp/sockets/private/gitaly.socket|${_homedir}/sockets/gitlab-gitaly.socket|" \
       config/gitlab.yml.example > config/gitlab.yml
 
   msg2 "Patching paths and timeout in unicorn.rb..."
   sed -e "s|/home/git/gitlab/tmp/.*/|/run/gitlab/|g" \
       -e "s|/var/run/|/run/|g" \
       -e "s|/home/git/gitlab|${_datadir}|g" \
-      -e "s|timeout 30|timeout 300|" \
       -e "s|${_datadir}/log/|${_logdir}/|g" \
       config/unicorn.rb.example > config/unicorn.rb
 
@@ -123,12 +125,11 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcdir}"*
 
-  export SKIP_STORAGE_VALIDATION='true'
   msg "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
 
   bundle-2.3 config build.nokogiri --use-system-libraries
-  bundle-2.3 install -j$(nproc) --no-cache --deployment --without development test
+  bundle-2.3 install --no-cache --deployment --without development test
 
   # We'll temporarily stick this in here so we can build the assets
   cp config/database.yml.postgresql.orig config/database.yml
@@ -137,7 +138,7 @@ build() {
 
   yarn install --production --pure-lockfile
   bundle-2.3 exec rake gitlab:assets:compile RAILS_ENV=production NODE_ENV=production
-
+  bundle-2.3 exec rake gettext:compile RAILS_ENV=production
   # After building assets, clean this up again
   rm config/database.yml config/database.yml.postgresql.orig
   mv config/resque.yml.patched config/resque.yml
@@ -145,7 +146,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_srcdir}"*
-  depends+=('gitlab-shell>=4.0.0')
+  depends+=('gitlab-shell')
 
   install -d "${pkgdir}/usr/share/webapps"
 
@@ -183,6 +184,12 @@ package() {
   # Fix for ruby-2.3 and bundle-2.3
   sed -i "s|bundle|bundle-2.3|g" "${pkgdir}${_datadir}/lib/tasks/gitlab/check.rake"
   grep -rl "bin/env ruby" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.3|g"
+  sed -i \
+    -e "s|ruby --version|ruby-2.3 --version|g" \
+    -e "s|gem --version|gem-2.3 --version|g" \
+    -e "s|bundle --version|bundle-2.3 --version|g" \
+    -e "s|rake --version|rake-2.3 --version|g" \
+    "${pkgdir}${_datadir}/lib/tasks/gitlab/info.rake"
 
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do
@@ -220,6 +227,9 @@ package() {
   for config_file in apache apache-ssl apache2.2 apache2.2-ssl nginx nginx-ssl lighttpd; do
     install -m644 "${srcdir}/${config_file}.conf.example" "${pkgdir}/usr/share/doc/${_pkgname}"
   done
+
+  # Fix FS#58292
+  chmod 644 "${pkgdir}"/usr/share/webapps/gitlab/vendor/bundle/ruby/2.3.0/gems/omniauth-jwt-0.0.2/lib/omniauth/strategies/jwt.rb
 }
 
 # vim:set ts=2 sw=2 et:

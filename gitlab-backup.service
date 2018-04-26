@@ -9,7 +9,7 @@ User=gitlab
 Group=gitlab
 SyslogIdentifier=gitlab-backup
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production PATH=/opt/ruby/bin:/usr/bin
+Environment=RAILS_ENV=production PATH=/opt/ruby2.3/bin:/usr/bin
 CapabilityBoundingSet=
 PrivateTmp=true
 PrivateDevices=true

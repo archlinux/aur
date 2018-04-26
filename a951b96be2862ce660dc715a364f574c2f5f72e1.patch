@@ -1,0 +1,28 @@
+From a951b96be2862ce660dc715a364f574c2f5f72e1 Mon Sep 17 00:00:00 2001
+From: Zeger-Jan van de Weg <git@zjvandeweg.nl>
+Date: Fri, 30 Mar 2018 12:32:26 +0200
+Subject: [PATCH] Update charlock_holmes to 0.76
+
+Didn't compile against newer icu4c versions and was fixed upstream in
+https://github.com/brianmario/charlock_holmes/pull/129, which was
+releaed in the versions its now locked to.
+---
+ Gemfile.lock | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Gemfile.lock b/Gemfile.lock
+index fcffe45..5271d65 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -120,7 +120,7 @@ GEM
+       activesupport (>= 4.0.0)
+       mime-types (>= 1.16)
+     cause (0.1)
+-    charlock_holmes (0.7.5)
++    charlock_holmes (0.7.6)
+     childprocess (0.7.0)
+       ffi (~> 1.0, >= 1.0.11)
+     chronic (0.10.2)
+--
+libgit2 0.26.0
+
