@@ -1,10 +1,10 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.22.665
+pkgver=0.22.667
 chan="dev"
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -18,7 +18,7 @@ conflicts=('brave' 'brave-bin')
 source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver""$chan"/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('739cc60c66f2de07a7a8592ceaba4ecdd2498e1fe22476a20fe40bfdb2aac821801baa0e26c84c1341f207463c400fcb0e77935607dfc07b23a380488aa2256e'
+sha512sums=('7b31493600c4dbdb5198ce16028e01327c07ac025b9b3022a63756032de5fb177addf1b6ce5fa341851aa48c3b2488f5cfafbdf5a06cc355efc58b6513a209e4'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 _bdir=brave-linux-x64
 
