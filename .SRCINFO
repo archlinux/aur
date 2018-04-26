@@ -1,7 +1,7 @@
 pkgbase = shashlik-bin
 	pkgdesc = A way to run Android applications on a standard Linux desktop as easily and simply as possible
 	pkgver = 0.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.shashlik.io
 	arch = x86_64
 	license = GPL
