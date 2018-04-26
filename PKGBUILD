@@ -6,6 +6,7 @@ pkgdesc="Driver for Thorlabs spectrometers"
 arch=('any')
 url="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=3482&pn=CCS175/M"
 license=('custom')
+depends=('gnuplot')
 makedepends=('innoextract' 'python2')
 _dlver=${pkgver//./}
 _dlver=V${_dlver::1}_${_dlver: -2}
@@ -46,5 +47,5 @@ package() {
   done
   install -D -m644 80-spectrometer.rules "$pkgdir/etc/udev/rules.d/80-spectrometer.rules"
 
-  install -D -m644 thorspec-${_cver}/build/thorspec "$pkgdir/usr/bin/thorspec"
+  install -D -m755 thorspec-${_cver}/build/thorspec "$pkgdir/usr/bin/thorspec"
 }
