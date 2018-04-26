@@ -3,7 +3,7 @@
 pkgname=electra-desktop-bin
 _pkgname=electra-desktop
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform Desktop Wallet for Electra blockchain.'
 arch=('x86_64')
 url='https://electraproject.org/'
@@ -27,6 +27,18 @@ package() {
   # Copy deb contents to package
   mkdir "$pkgdir/opt"
   cp -R "opt/Electra Desktop/" "$pkgdir/opt/${_pkgname}"
+  
+  # Copy icons
+  mkdir -p "$pkgdir/usr/share/icons"
+  cp -R "usr/share/icons/" "$pkgdir/usr/share/"
+
+  # Install desktop
+  mkdir -p "$pkgdir/usr/share/applications"
+  install "usr/share/applications/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+
+  # Copy doc
+  mkdir -p "$pkgdir/usr/share/doc/${_pkgname}"
+  install "usr/share/doc/${_pkgname}/changelog.gz" "$pkgdir/usr/share/doc/${_pkgname}/changelog.gz"
 
   # Create symlink to binary
   mkdir -p "$pkgdir/usr/bin"
