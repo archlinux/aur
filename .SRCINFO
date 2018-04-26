@@ -13,7 +13,7 @@ pkgbase = gr-limesdr-git
 	depends = limesuite
 	provides = gr-limesdr
 	conflicts = gr-limesdr
-	source = gr-limesdr-git-remote::git+https://github.com/myriadrf/gr-limesdr
+	source = gr-limesdr-remote::git+https://github.com/myriadrf/gr-limesdr
 	md5sums = SKIP
 
 pkgname = gr-limesdr-git
