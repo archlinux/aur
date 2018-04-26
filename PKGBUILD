@@ -1,6 +1,6 @@
 # Maintainer: Stefano Capitani <stefano@manjaro.org>
 
-pkgbase=nautilus
+_pkgbase=nautilus
 pkgname=(nautilus-legacy) #libnautilus-extension-legacy not used now but we can re use in the future
 pkgver=3.26.3.1
 pkgrel=1
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build libne/usr/{lib,share}
-  cd $pkgbase
+  cd $_pkgbase
 
   # https://gitlab.gnome.org/GNOME/nautilus/issues/25
   git cherry-pick -n d74e1a3d 9238456b
@@ -35,13 +35,13 @@ prepare() {
 }
 
 pkgver() {
-  cd $pkgbase
+  cd $_pkgbase
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
   cd build
-  arch-meson ../$pkgbase  \
+  arch-meson ../$_pkgbase  \
     -Denable-exif=true \
     -Denable-xmp=true \
     -Denable-gtk-doc=true \
