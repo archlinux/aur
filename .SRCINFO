@@ -1,13 +1,13 @@
 pkgbase = man-pages-ru
 	pkgdesc = Russian Linux man pages
-	pkgver = 4.15_2383_2383_20180113
+	pkgver = 4.16_2383_2383_20180422
 	pkgrel = 1
 	url = https://sourceforge.net/projects/man-pages-ru/
 	arch = any
 	license = FDL
 	depends = man
-	source = http://downloads.sourceforge.net/project/man-pages-ru/man-pages-ru_4.15-2383-2383-20180113.tar.bz2
-	sha256sums = af0c39e68ff378be3331a676c5f9bdd3f6ee553d338ca0ee8374204b1f936810
+	source = http://downloads.sourceforge.net/project/man-pages-ru/man-pages-ru_4.16-2383-2383-20180422.tar.bz2
+	sha256sums = 0bbb5fd6e87849ce2e4561671a2a5748802907fcb590522b4d9f8f2981b914c9
 
 pkgname = man-pages-ru
 
