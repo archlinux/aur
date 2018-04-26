@@ -9,9 +9,13 @@ pkgbase = sparta
 	depends = python2-pyqt4
 	depends = python2-elixir
 	depends = python2-lxml
-	conflicts = sparta-git
+	optdepends = cutycap: take screenshots of websites
+	provides = sparta
+	conflicts = sparta
 	source = https://github.com/SECFORCE/sparta/archive/v1.0.1.tar.gz
-	sha256sums = 14aba154a94f2f31929087849c0dde44cdb59c337a8ecf2b0cecbae71690738f
+	source = sparta_launcher
+	md5sums = 710f86f0037e735e44a3dcd01db96af6
+	md5sums = 58f2181719cf57f9d5df3da9c8145c57
 
 pkgname = sparta
 

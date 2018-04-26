@@ -1,5 +1,5 @@
+# Maintainer: FFY00 <filipe.lains@gmail.com>
 # Contributor: Cyberpunk <aur_linuxero@outlook.com>
-# Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=sparta
 pkgver=1.0.1
@@ -9,22 +9,26 @@ arch=('any')
 url="http://sparta.secforce.com/"
 license=('GPL2')
 depends=('python2' 'python2-pyqt4' 'python2-elixir' 'python2-lxml')
+optdepends=('cutycap: take screenshots of websites')
 makedeps=('nmap' 'hydra' 'cutycapt-svn' 'nikto')
-provide=('sparta')
-conflicts=('sparta-git')
-source=("https://github.com/SECFORCE/sparta/archive/v${pkgver}.tar.gz")
+provides=('sparta')
+conflicts=('sparta')
+source=(
+  "https://github.com/SECFORCE/sparta/archive/v${pkgver}.tar.gz"
+  'sparta_launcher'
+)
+md5sums=(
+  '710f86f0037e735e44a3dcd01db96af6'
+  '58f2181719cf57f9d5df3da9c8145c57'
+)
 
 package() {
   msg2 "Installing sparta..."
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cp -aRp --copy-contents * "${pkgdir}/usr/share/${pkgname}"
 
-cat > $pkgdir/usr/bin/sparta << "EOF"
-#!/bin/bash
-cd /usr/share/sparta/ && python2 sparta.py "$@"
-EOF
-chmod 755 "$pkgdir/usr/bin/sparta"
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  find "$srcdir/$pkgname-$pkgver" -type f -exec install -m 644 "{}" "$pkgdir/usr/share/$pkgname" \;
+
+  install -Dm 755 "$srcdir/sparta_launcher" "$pkgdir/usr/bin/sparta"
 }
-sha256sums=('14aba154a94f2f31929087849c0dde44cdb59c337a8ecf2b0cecbae71690738f')
