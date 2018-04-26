@@ -72,6 +72,7 @@ package()
     cd gnatcoll-gpl-2017-src
 
     export OS=unix
+    unset PROJECTS
 
     make prefix="$pkgdir"/usr install
 }
