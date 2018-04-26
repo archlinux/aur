@@ -36,6 +36,7 @@ prepare() {
   if ! test -e "${startdir}/${_srcfile}"; then
     local _url='https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux'
     warning "There is no longer a direct download link for the Zoiper tarball.  Get it manually from: ${_url}"
+    set +u
     false
   fi
   set +u
