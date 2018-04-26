@@ -1,12 +1,13 @@
 pkgbase = simploripsum
 	pkgdesc = A simple cli interface for loripsum.net lorem ipsum API
 	pkgver = 0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/deusstultus/simploripsum
 	arch = any
 	license = GPL
 	depends = bash
-	source = git+git://github.com/deusstultus/simploripsum.git#commit=4468ecfb
+	source = git+git://github.com/deusstultus/simploripsum.git#tag=0.3
+	validpgpkeys = 0x574EDC8EE28E6872A2D9CC66939C852925E4A9F0
 	sha256sums = SKIP
 
 pkgname = simploripsum
