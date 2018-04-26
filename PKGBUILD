@@ -2,8 +2,8 @@
 
 pkgname=simploripsum
 pkgver=0.3
-_gitrev='7863f37e'
-pkgrel=2
+_gitrev='4468ecfb'
+pkgrel=3
 pkgdesc="A simple cli interface for loripsum.net lorem ipsum API"
 arch=('any')
 url="https://github.com/deusstultus/simploripsum"
