@@ -1,0 +1,109 @@
+From dadd2c80f6819111f25e3799c072ec39c991897e Mon Sep 17 00:00:00 2001
+From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
+Date: Wed, 24 Jan 2018 17:38:20 +0100
+Subject: [PATCH] Don't call session_start() after ini_set()
+
+refs #3185
+---
+ library/Icinga/Web/Session.php                     |  2 +-
+ library/Icinga/Web/Session/Php72Session.php        | 37 ++++++++++++++++++++++
+ library/Icinga/Web/Session/PhpSession.php          | 15 +++++++++
+ .../library/Icinga/Web/Session/PhpSessionTest.php  |  2 +-
+ 4 files changed, 54 insertions(+), 2 deletions(-)
+ create mode 100644 library/Icinga/Web/Session/Php72Session.php
+
+diff --git a/library/Icinga/Web/Session.php b/library/Icinga/Web/Session.php
+index e6f7218ad2..40df89f9e4 100644
+--- a/library/Icinga/Web/Session.php
++++ b/library/Icinga/Web/Session.php
+@@ -29,7 +29,7 @@ class Session
+     public static function create(BaseSession $session = null)
+     {
+         if ($session === null) {
+-            self::$session = new PhpSession();
++            self::$session = PhpSession::create();
+         } else {
+             self::$session = $session;
+         }
+diff --git a/library/Icinga/Web/Session/Php72Session.php b/library/Icinga/Web/Session/Php72Session.php
+new file mode 100644
+index 0000000000..e6a6b19197
+--- /dev/null
++++ b/library/Icinga/Web/Session/Php72Session.php
+@@ -0,0 +1,37 @@
++<?php
++/* Icinga Web 2 | (c) 2017 Icinga Development Team | GPLv2+ */
++
++namespace Icinga\Web\Session;
++
++use Icinga\Application\Logger;
++use Icinga\Exception\ConfigurationError;
++use Icinga\Web\Cookie;
++
++/**
++ * Session implementation in PHP
++ */
++class Php72Session extends PhpSession
++{
++    /**
++     * Open a PHP session
++     */
++    protected function open()
++    {
++        session_name($this->sessionName);
++
++        $cookie = new Cookie('bogus');
++        session_set_cookie_params(
++            0,
++            $cookie->getPath(),
++            $cookie->getDomain(),
++            $cookie->isSecure(),
++            true
++        );
++
++        session_start(array(
++            'use_cookies'       => true,
++            'use_only_cookies'  => true,
++            'use_trans_sid'     => false
++        ));
++    }
++}
+diff --git a/library/Icinga/Web/Session/PhpSession.php b/library/Icinga/Web/Session/PhpSession.php
+index e00544cf9b..36dd84e9dd 100644
+--- a/library/Icinga/Web/Session/PhpSession.php
++++ b/library/Icinga/Web/Session/PhpSession.php
+@@ -33,6 +33,21 @@ class PhpSession extends Session
+      */
+     protected $sessionName = 'Icingaweb2';
+ 
++    /**
++     * Create a new PHPSession object using the provided options (if any)
++     *
++     * @param   array   $options    An optional array of ini options to set
++     *
++     * @return  static
++     *
++     * @throws  ConfigurationError
++     * @see     http://php.net/manual/en/session.configuration.php
++     */
++    public static function create(array $options = null)
++    {
++        return version_compare(PHP_VERSION, '7.2.0') < 0 ? new self($options) : new Php72Session($options);
++    }
++
+     /**
+      * Create a new PHPSession object using the provided options (if any)
+      *
+diff --git a/test/php/library/Icinga/Web/Session/PhpSessionTest.php b/test/php/library/Icinga/Web/Session/PhpSessionTest.php
+index d835fb034c..224e984621 100644
+--- a/test/php/library/Icinga/Web/Session/PhpSessionTest.php
++++ b/test/php/library/Icinga/Web/Session/PhpSessionTest.php
+@@ -13,7 +13,7 @@ private function getSession()
+         if (!is_writable('/tmp')) {
+             $this->markTestSkipped('Could not write to session directory');
+         }
+-        return new PhpSession(
++        return PhpSession::create(
+             array(
+                 'use_cookies'   => false,
+                 'save_path'     => '/tmp',
