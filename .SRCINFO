@@ -1,0 +1,22 @@
+pkgbase = brackets-bin-tsinghua
+	pkgdesc = A code editor for HTML, CSS and JavaScript.
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://brackets.io
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libgcrypt15
+	depends = nodejs
+	depends = nspr
+	depends = nss
+	depends = systemd
+	provides = brackets=1.12
+	conflicts = brackets
+	conflicts = brackets-git
+	conflicts = brackets-bin
+	source = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/x86_64/brackets-1.12-2-x86_64.pkg.tar.xz
+	sha512sums = ddcdd83595167c55018c3d478379939c345ede0442d455544a41c316c7734edd9600be0ac27e2a28de32e44e80ce81339b65fe9fad9e551bf5acaf1e5a7e5efa
+
+pkgname = brackets-bin-tsinghua
+
