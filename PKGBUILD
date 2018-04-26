@@ -1,25 +1,24 @@
-# Contributor: alphazo <alphazo@gmail.com>
+# Contributor: FFY00 <filipe.lains@gmail.com>
 
-_gitname="mitmproxy"
 pkgname=mitmproxy-git
-pkgver=v1.0.1.r10.g973406f3
+pkgver=3.0.1.r246.a4a48a96
 pkgrel=1
-pkgdesc="mitmproxy is an SSL-capable, intercepting HTTP proxy. It provides a console interface that allows traffic flows to be inspected and edited on the fly."
+pkgdesc="An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers"
 arch=('any')
-url="https://github.com/mitmproxy/mitmproxy"
-license=('GPL')
+url="https://mitmproxy.org/"
+license=('MIT')
 depends=('openssl' 'python2-urwid' 'python2-pyopenssl' 'python2-pyasn1' 'python2-imaging' 'python2-lxml' 'python2-flask' 'python2-requests' 'python2-passlib' 'python2-configargparse' 'python2-tornado' 'python2-blinker>=1.3' 'python2-pyperclip>=1.5.8')
 conflicts=('mitmproxy')
-source=("git://github.com/mitmproxy/mitmproxy.git")
+provides=('mitmproxy')
+source=("remote::git+https://github.com/mitmproxy/mitmproxy.git")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$srcdir/remote"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
-  cd "$_gitname"
+  cd "$srcdir/remote"
   python2 setup.py install --root=${pkgdir} || return 1
 }
