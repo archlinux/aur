@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop-git
-pkgver=r803.6d5d8ee
+pkgver=r870.5b0826a
 pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=('x86_64')
@@ -11,10 +11,9 @@ groups=('pantheon-unstable')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'libgexiv2' 'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'libgexiv2' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'libgexiv2' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-desktop')
 conflicts=('switchboard-plug-desktop')
-replaces=('switchboard-plug-desktop-bzr')
 source=('switchboard-plug-desktop::git+https://github.com/elementary/switchboard-plug-pantheon-shell.git'
         'switchboard-plug-desktop-paths.patch')
 sha256sums=('SKIP'
@@ -27,31 +26,27 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-desktop
-
-  patch -Np1 -i ../switchboard-plug-desktop-paths.patch
-
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  cd switchboard-plug-desktop
+
+  patch -Np1 -i ../switchboard-plug-desktop-paths.patch
 }
 
 build() {
-  cd switchboard-plug-desktop/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DCMAKE_INSTALL_LIBEXECDIR='/usr/lib'
-  make
+  arch-meson ../switchboard-plug-desktop
+  ninja
 }
 
 package() {
-  cd switchboard-plug-desktop/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
