@@ -5,12 +5,17 @@
 # Maintainer: George Amanakis <g_amanakis@yahoo.com>
 
 pkgname=iproute2-cake
-pkgver=4.15.0
-pkgrel=3
+_srcname=tc-adv
+pkgver=r4214.0407be50
+pkgrel=1
+pkgver() {
+  	cd "${srcdir}/${_srcname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgdesc='IP Routing Utilities'
 arch=('x86_64')
 license=('GPL2')
-url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
+url='https://www.github.com/dtaht/tc-adv'
 depends=('glibc' 'iptables' 'libelf')
 optdepends=('linux-atm: ATM support')
 groups=('base')
@@ -29,15 +34,13 @@ backup=('etc/iproute2/ematch_map'
 makedepends=('linux-atm')
 options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
-source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-cake}/${pkgname/-cake}-${pkgver}.tar."{xz,sign}
-        '0001-make-iproute2-fhs-compliant.patch'
-	'950c-add-cake-to-tc.patch')
+source=('git+https://www.github.com/dtaht/tc-adv'
+	'0001-make-iproute2-fhs-compliant.patch')
 
 prepare() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+  cd "${srcdir}/${_srcname}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/950c-add-cake-to-tc.patch"
   patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
 
   # do not treat warnings as errors
@@ -46,14 +49,14 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+  cd "${srcdir}/${_srcname}"
 
   ./configure
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+  cd "${srcdir}/${_srcname}"
 
   make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
 
@@ -62,7 +65,5 @@ package() {
   install -Dm0644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
 }
 
-md5sums=('0681bf4664b2649ad4e12551a3a7a1f9'
-         'SKIP'
-         '5345bd18b521fb2f305acb2ab1203269'
-         'a9f986fbe42eb0390f41c94af1672ee2')
+md5sums=('SKIP'
+         '5345bd18b521fb2f305acb2ab1203269')
