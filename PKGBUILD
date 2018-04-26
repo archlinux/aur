@@ -6,7 +6,7 @@
 pkgname=firefox-eme-free
 name=firefox
 pkgver=60.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -38,7 +38,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 )
 
-sha256sums=('247893b5818b90e7e7eb083d09eb244cb9d377f3aa5cdb2c6572d28e3bcb4475'
+sha256sums=('c235efe24f05410f8dd0617bf2b55e7ebcfd1c610d73738f0bf16e56322990a8'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
