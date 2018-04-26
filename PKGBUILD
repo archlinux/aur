@@ -3,7 +3,7 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r349.a437def
-pkgrel=1
+pkgrel=2
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -27,8 +27,7 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-galaplugin.patch'
         'minus-gala.patch'
         'y-is-broken-cogl.patch'
-        'autohide.patch'
-        'fix-libdir.patch')
+        'autohide.patch')
 sha256sums=('SKIP'
             '37b3853f5e8a84a4d86c392beb0b422e03c71c7c53519f49883bfa5550979ae8'
             'e56bc3b154539b6ae2ca7494f46f6f68c55f167b73203b92d645839bf8e9a5ea'
@@ -59,10 +58,6 @@ prepare() {
   msg2 "Remove Gala dependency"
   patch -Np2 < ../minus-gala.patch
 
-  #Fix broken libdir in pkgconfig
-  msg2 "Remove Gala dependency"
-  patch -Np2 < ../fix-libdir.patch
-
   #Cogl can't be found when not using gala's cmake package; wtf?
   msg2 "Remove CoglFixes (broken)"
   patch -Np2 < ../y-is-broken-cogl.patch
@@ -79,7 +74,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DCMAKE_INSTALL_LIBDIR='lib' \
     -DGSETTINGS_COMPILE='FALSE'
   make
 }
