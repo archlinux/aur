@@ -1,12 +1,12 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Wayland bridge/frameserver for Arcan'
 pkgname='arcan-waybridge-git'
-pkgver=0.5.1.r408.gc849baf2
+pkgver=0.5.4.6.r10.gdb2f991e
 pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=('x86_64')
 depends=('wayland' 'arcan')
-makedepends=('cmake' 'wayland-protocols')
+makedepends=('cmake' 'wayland-protocols' 'git')
 provides=('arcan-waybridge')
 conflicts=('arcan-waybridge')
 url='https://arcan-fe.com/'
