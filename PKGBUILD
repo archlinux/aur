@@ -10,15 +10,15 @@ license=('MIT')
 depends=('openssl' 'python2-urwid' 'python2-pyopenssl' 'python2-pyasn1' 'python2-imaging' 'python2-lxml' 'python2-flask' 'python2-requests' 'python2-passlib' 'python2-configargparse' 'python2-tornado' 'python2-blinker>=1.3' 'python2-pyperclip>=1.5.8')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
-source=("remote::git+https://github.com/mitmproxy/mitmproxy.git")
+source=("${pkgname%git}remote::git+https://github.com/mitmproxy/mitmproxy.git")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/remote"
+  cd "$srcdir/${pkgname%git}remote"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
-  cd "$srcdir/remote"
-  python2 setup.py install --root=${pkgdir} || return 1
+  cd "$srcdir/${pkgname%git}remote"
+  python2 setup.py install --root=$pkgdir || return 1
 }
