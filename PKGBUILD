@@ -11,10 +11,10 @@
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
 pkgver=10.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
-url="https://gitlab.com/gitlab-org/gitlab-ce"
+url="https://gitlab.com/gitlab-org/gitlab-ee"
 license=('MIT')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
