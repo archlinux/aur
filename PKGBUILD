@@ -64,9 +64,8 @@ _srcname=linux-4.14
 _pkgver=4.14.34
 _rtver=27
 _rtpatchver=rt${_rtver}
-_srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -138,11 +137,13 @@ prepare() {
         patch -p1 -i ../fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
             
     ### Patch source with BFQ-SQ-MQ
+        _ver1="$(cat Makefile | grep -m1 -e PATCHLEVEL | grep -o "[[:digit:]]*")"
+        _ver2="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
         msg "Fix patching with 20180109"
         patch -Np1 -i ../0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = 14|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = ${_ver1}|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver2}|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
             -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_sq_mq_patch}
