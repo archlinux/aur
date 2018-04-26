@@ -3,10 +3,10 @@
 pkgname=simploripsum
 pkgver=0.3
 _gitrev='7863f37e'
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple cli interface for loripsum.net lorem ipsum API"
 arch=('any')
-url="https://aur.archlinux.org/packages/simploripsum"
+url="https://github.com/deusstultus/simploripsum"
 license=('GPL')
 depends=('bash')
 
