@@ -55,6 +55,7 @@ build()
     export PATH=$srcdir/gnatcoll-gpl-2017-src/temp_bin:$PATH    
 
     export OS=unix
+    unset PROJECTS
 
     ./configure --prefix=/usr       \
                 --libexecdir=/lib   \
