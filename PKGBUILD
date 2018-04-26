@@ -29,18 +29,18 @@ build() {
   if [[ -d "score" ]]; then
     rm -rf "score"
   fi
-  
-  git clone --recursive -j8 "$_gitroot" "score" 
+
+  git clone --recursive -j8 "$_gitroot" "score"
   (
     cd "score"
     git checkout "$release_tag"
-    git submodule update --init --recursive 
+    git submodule update --init --recursive
   )
-  
+
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DISCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
-  make all_unity
+  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
+  cmake --build . --target all_unity
 }
 
 package() {
