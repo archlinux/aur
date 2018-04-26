@@ -11,9 +11,9 @@ depends=('xdg-utils')
 source_x86_64=("https://github.com/liberodark/ODrive/releases/download/v${pkgver}/odrive_${pkgver}_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
-sha512sums=('015c99c44f48b513980a9a55f407a0b0bcc619a6747dc329e410777339a0135785bfcc8480e732cfaf58a53a5f7229109559e723fac575a45381c5285f300e06'
+sha512sums=('f1fcc5af46bfa97a8c70a2c1de0eb21bf6486af3e44e8da3774f8237b22c5816c6616c793493470bb091a956fbc62870dee428b5d5fabb7096e2a7508b9fe99e'
          'e852e6ee2714900b2b484dbe3f9bb69e72895391fed5e6776142c48daaf7e75a8a12908812894e5695277447bd2704cad93cd4f2ed0940ef45008e93b8823dd1')
-sha512sums_x86_64=('e3681d0af651dfaaf5d4a76a38cf50b6c71b5930e97edd2ac7a6fbff04b1a99a4b2f3c8612ea8ab6229b49e0dd2df8f5d02015d1aa1cd8def1683afddf1e903d')
+sha512sums_x86_64=('cb5d3de5b17bdbfa92e6b688117cf0b38eed8c365f08c2a9a72e7662fac6fefef0a24d0fdb8cf10a89839294a3024f4669f0bb1bbeac6c4bcfdb7c455c58b5cc')
         
 package() {
   cd $srcdir
