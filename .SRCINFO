@@ -18,7 +18,6 @@ pkgbase = appimagelauncher-git
 	depends = shared-mime-info
 	depends = inotify-tools
 	depends = libarchive
-	depends = binfmt-support
 	source = git://github.com/TheAssassin/AppImageLauncher#tag=continuous
 	sha256sums = SKIP
 
