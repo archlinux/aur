@@ -2,7 +2,7 @@
 # Contributor: Marius O<marius@habarnam.ro>
 
 pkgname=('coedit-bin')
-pkgver=3.6.7
+pkgver=3.6.8
 pkgrel=1
 pkgdesc="Coedit is an IDE for the DMD D2 compiler."
 url="https://github.com/BBasile/Coedit"
@@ -32,7 +32,7 @@ source=(
 	"coedit.desktop"
 )
 
-sha256sums=('8870cc12809cb4f1700364d8080d7c75f9ea5ef4d947e53b9357c41a74141e33'
+sha256sums=('4701d9a0b414911b9ea5361f465942c72a369711ac4edddfb92940f65986eeb2'
             '9bcecc4297d96667bafe7a3d30b6e36095c1e91d7fa687afc6fc8fda5f1842ab')
 
 
