@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WhatsApp Desktop
+Icon=whatsapp-desktop-electron-bin
+Exec=Whatsapp
+Comment=WhatsApp for Desktop
+Categories=Network;Chat;
+Terminal=false
+StartupNotify=true
+Name[en_US]=WhatsApp Desktop
