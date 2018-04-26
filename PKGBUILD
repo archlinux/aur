@@ -10,17 +10,17 @@ depends=('boost' 'libuhd' 'soapysdr')
 makedepends=('git' 'cmake')
 provides=('soapy-uhd')
 conflicts=('soapy-uhd')
-source=('remote::git+https://github.com/pothosware/SoapyUHD')
+source=('git+https://github.com/pothosware/SoapyUHD')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/remote"
+  cd "$srcdir/SoapyUHD"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p "$srcdir/remote/build"
-  cd "$srcdir/remote/build"
+  mkdir -p "$srcdir/SoapyUHD/build"
+  cd "$srcdir/SoapyUHD/build"
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/remote/build"
+  cd "$srcdir/SoapyUHD/build"
 
   make DESTDIR="$pkgdir" install
 }
