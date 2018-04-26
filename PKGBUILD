@@ -5,7 +5,7 @@
 #_version=spry_v2.5.0
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r3.r0.gc081c9941
+pkgver=2.5.0.spry.r4.r0.gb115de7e0
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
