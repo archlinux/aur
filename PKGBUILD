@@ -1,23 +1,23 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=quickserve
-pkgver=2013.5
+pkgver=2018
 pkgrel=1
 pkgdesc='A simple HTTP server for quickly sharing files.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/quickserve"
+url="https://xyne.archlinux.ca/projects/quickserve"
 depends=(python3-threaded_servers)
 source=(
-  http://xyne.archlinux.ca/projects/quickserve/src/quickserve-2013.5.tar.xz
-  http://xyne.archlinux.ca/projects/quickserve/src/quickserve-2013.5.tar.xz.sig
+  https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz
+  https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz.sig
 )
 sha512sums=(
-  f11309fb3e5bd9b673af7c8aacb14185d182883522a73bc58b3ba3c6c9e5ac6fb82b0fa2cc43f381791ffe6604aabb330649c5a58ed36de92fc37e026a7e4a2e
-  0713439ed546c97985ccf105d087f10f57e96f85766fe57a7d3ad94c518b411512741a28eb6d23f03a3ea64bd24a08814f5a565926739c265af7c66225a8a9f9
+  8475377db2cca19509e5b34033f1c819b238c4bf984870e6abf1eeb63fadc4259f68d19fce23debb91c657a9efc3b531e9adf92858f7b4efd16bd2176b704448
+  a9c57f18731fb3c266f454948d67d8b8b38bb3b245eafc0baed1f46c188f5964ad98999a5a5d59aadf7fea5c8a0d63dd0713903a3ffa0d126b80ba86d8bea725
 )
 md5sums=(
-  2a494fa7093bec80a23069855e36db5b
-  fff3316cbf34780d5ce8eb7aea4407b3
+  83c69a4a434d1535a30592e2b72b8b9f
+  69bd802380c015b992b2120c9b2ed430
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
