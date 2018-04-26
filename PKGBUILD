@@ -1,7 +1,8 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 
 pkgname=gajim-plugin-omemo
-pkgver=2.5.10
+_pkgname=omemo
+pkgver=2.5.11
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
@@ -10,18 +11,18 @@ license=('GPL')
 depends=("gajim>=1.0.0" "python-qrcode" "python-setuptools" "python-cryptography" "python-axolotl")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
-source=("https://dev.gajim.org/gajim/gajim-plugins/uploads/2f66b581fe062529b5684a9a5c8cfe1e/omemo_2.5.10.zip")
-sha512sums=('b73965082eae49104cf842e9f06db315dc669596876af402f4602b389f2ddf7ebc8de4b728023fafde17cda51fd10b2b557ede40a395b8c05e8282c283509089')
+source=("https://ftp.gajim.org/plugins_releases/${_pkgname}_${pkgver}.zip")
+sha512sums=('19061340f02819a5885561d7e203daa1916c04e008d2798745ed66254e31753ab13f59e2ccacf26e30b580f92f75e234d31ef3eb802e8923a9fb8133088ea666')
 
 package() {
-  cd ${srcdir}/omemo
+  cd ${srcdir}/${_pkgname}
 
   # Remove unnecessary files
   rm -r CHANGELOG COPYING
 
   # Install the plugin
-  install -d ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/omemo
-  cp -r * ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/omemo/
+  install -d ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/${_pkgname}
+  cp -r * ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/${_pkgname}/
 }
 
 # vim:set ts=2 sw=2 et:
