@@ -4,5 +4,5 @@ Comment=Simple google drive client
 Exec="/opt/Open Drive/odrive" %U
 Terminal=false
 Type=Application
-Icon=odrive
+Icon=odrive-bin
 Categories=Archiving;
