@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/genuinetools/bpfps"
 license=('MIT')
 makedepends=('go')
+conflicts=('bpfps-bin')
 
 prepare() {
   export GOPATH="${srcdir}"
