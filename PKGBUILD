@@ -3,14 +3,14 @@
 pkgname=zcash
 pkgver=1.1.0
 _commit=42e30252372b39f2b8da655ebeca03565dc02de4
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
 makedepends=('boost' 'cargo' 'cmake' 'git' 'gmock' 'python' 'wget')
-checkdepends=('python' 'python2' 'python2-pyzmq')
+checkdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         'libsnark-no-gtest.patch'
         "use-system-rust.patch"
@@ -28,6 +28,9 @@ prepare() {
 
     patch -Np1 -i ../libsnark-no-gtest.patch
     patch -Np1 -i ../use-system-rust.patch
+
+    # Runs forever
+    sed -e '/prioritisetransaction.py/d' -i qa/pull-tester/rpc-tests.sh
 }
 
 build() {
@@ -51,8 +54,9 @@ build() {
 check() {
     cd ${pkgname}
 
-    # ./zcutil/fetch-params.sh
+    ./zcutil/fetch-params.sh
     # ./qa/zcash/full_test_suite.py
+    ./qa/pull-tester/rpc-tests.sh
 }
 
 package() {
