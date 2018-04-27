@@ -13,13 +13,16 @@ makedepends=('xorg-server-devel')
 conflicts=('wizardpen-driver wizardpen')
 replaces=('wizardpen-driver wizardpen')
 source=(https://launchpad.net/wizardpen/trunk/0.8/+download/${_realname}-${pkgver}.tar.bz2
-        config.patch)
+        config.patch
+        xf86RemoveEnabledDevice.patch)
 sha1sums=('82060c678dc241de83b2b7415b6ada619b94db36'
-          '86ce045389f477d4bb5b3f89fe7bd26ebe80e6db')
+          '86ce045389f477d4bb5b3f89fe7bd26ebe80e6db'
+          '9bf16b62bc993294ff2a3818730ab8090a5dbfd2')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
   patch -Np0 -i "$srcdir"/config.patch
+  patch -Np0 -i "$srcdir"/xf86RemoveEnabledDevice.patch
   ./autogen.sh --prefix=/usr --with-xorg-conf-dir=/etc/X11/xorg.conf.d
   make
 }
