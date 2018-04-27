@@ -1,6 +1,6 @@
 pkgbase = liri-materialdecoration-git
 	pkgdesc = Material Design decoration for Qt applications on Wayland
-	pkgver = 20180427.ebd487e
+	pkgver = 20180427.48.b095bd0
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
