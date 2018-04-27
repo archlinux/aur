@@ -9,6 +9,8 @@ pkgbase = ttf-d2coding
 	depends = fontconfig
 	depends = xorg-font-utils
 	provides = ttf-font
+	provides = ttf-d2coding
+	conflicts = ttf-d2coding
 	source = https://github.com/naver/d2codingfont/releases/download/VER1.3.1/D2Coding-Ver1.3.1-20180115.zip
 	md5sums = 97fae9dac56c3b6123b46f93456ede92
 
