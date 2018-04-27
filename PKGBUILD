@@ -19,7 +19,6 @@ install=
 source=()
 noextract=()
 
-
 _gitroot=https://github.com/OSSIA/score
 _gitname=score
 
@@ -39,7 +38,7 @@ build() {
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
+  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
   cmake --build . --target all_unity
 }
 
