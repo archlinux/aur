@@ -1,0 +1,8 @@
+# Blacklist everything by default to avoid accidentally committing something
+*
+
+# Whitelist the following files and directories
+!/*.changelog
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
