@@ -2,7 +2,7 @@
 
 _name=chatterino2
 pkgname="$_name-git"
-pkgver=nightly420.r17.g1d1f40b
+pkgver=nightly.win.r39.ge23ce31
 pkgrel=1
 pkgdesc='Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.'
 arch=('any')
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_name/build"
+    cd "$srcdir/$_name/build/bin"
     install -Dm755 ./"${_name%2}" "$pkgdir/usr/bin/${_name%2}"
     install -Dm644 "$srcdir/${_name%2}.desktop" "$pkgdir/usr/share/applications/${_name%2}.desktop"
     install -Dm644 "$srcdir/${_name%2}.png" "$pkgdir/usr/share/pixmaps/${_name%2}.png"
