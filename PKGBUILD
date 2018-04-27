@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=black
-pkgver=18.4a3
+pkgver=18.4a4
 pkgrel=1
 pkgdesc='Uncompromising code formatter'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-attrs' 'python-click')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz")
-sha512sums=('49bc1485e37a59cb6245761b338833cd1d4006262086ba0e95009a733d30c9ab1018586c7a1ddd0f83aa4a63cb169387e54605e08ec8c06feb260da1e24ddbfc')
+sha512sums=('089d170691f2879bd2a914f1f24b45ec4a228f51ae4d72202f928b64ce0e626cba11e49bf9799a7fcfe61980a5b1ea9269358a528e21fd16acbfdbf73f862d86')
 
 build() {
   cd black-$pkgver
