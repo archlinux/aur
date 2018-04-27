@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="cargo-release"
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Cargo subcommand "release""
 url="https://github.com/sunng87/cargo-release"
@@ -10,7 +10,7 @@ makedepends=("rust")
 optdepends=()
 depends=()
 source=("https://github.com/sunng87/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('aa01f6c07d97c84ea1188f0f528413cc0ac660f29351652ffa50cb7ff2f86114')
+sha256sums=('f1f0e462b691c16e3986fd86c0d5b9fde9c184dc1e971076701edb0b1fe85586')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
