@@ -1,7 +1,7 @@
 pkgbase = ossia-score
 	pkgdesc = Ossia Score, an interactive sequencer for the intermedia arts
 	pkgver = 1.0.0b42
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ossia.io
 	arch = x86_64
 	license = CeCILLv2

@@ -2,7 +2,7 @@
 pkgname=ossia-score
 pkgver=1.0.0b42
 release_tag=v1.0.0-b42
-pkgrel=2
+pkgrel=3
 pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.ossia.io"
