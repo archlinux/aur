@@ -3,7 +3,7 @@
 
 pkgname=draftsight
 pkgver=2018SP2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/$pkgname/"
