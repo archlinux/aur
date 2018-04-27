@@ -2,7 +2,7 @@
 # package script file for archlinux
 # makepkg -p THISFILE
 pkgname=pdftoroff
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="pdf conversion, scaling and viewing by blocks of text"
 license=(GPL3)
