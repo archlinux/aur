@@ -5,7 +5,7 @@ pkgver=git
 pkgrel=1
 pkgdesc="Get criteria for use with i3 config commands"
 arch=('any')
-url="https://gist.github.com/ApocalypseQin/565458820faae65bb0d6"
+url="https://gist.github.com/ZenQy/565458820faae65bb0d6"
 license=('custom')
 depends=('xorg-xwininfo' 'xorg-xprop')
 
