@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.5
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -160,8 +160,9 @@ prepare() {
        patch -Np1 -i ../0005-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
    
    ### Patch source with BFQ-SQ-MQ
+        _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver}|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
