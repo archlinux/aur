@@ -1,13 +1,15 @@
 pkgbase = xfce-theme-numix-hdpi
 	pkgdesc = An Xfce Numix theme with taller window title bars suitable for HDPI resolutions
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/elmodos/numix-taller
 	arch = any
 	license = GPL
 	provides = xfce-theme-numix-hdpi
 	source = https://github.com/elmodos/numix-taller/archive/master.tar.gz
+	source = https://github.com/elmodos/numix-taller/archive/master-numix-legacy.tar.gz
 	md5sums = 5da1b72f63d43dc02805ce072ceabe19
+	md5sums = 60bdf3853af50ef66b1bc9741cede209
 
 pkgname = xfce-theme-numix-hdpi
 
