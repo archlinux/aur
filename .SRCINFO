@@ -1,6 +1,6 @@
 pkgbase = bctoolbox-git
 	pkgdesc = Utilities library for Belledonne Communications software
-	pkgver = 0.6.0.r74.ge34db67
+	pkgver = 0.6.0.r84.g7df8b5c
 	pkgrel = 1
 	url = http://www.linphone.org/
 	arch = i686
