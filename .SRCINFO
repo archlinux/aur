@@ -1,0 +1,17 @@
+pkgbase = python-dbussy-git
+	pkgdesc = Python binding for D-Bus using asyncio
+	pkgver = r447.cc89ae8
+	pkgrel = 1
+	url = https://github.com/ldo/dbussy
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-dbussy
+	conflicts = python-dbussy
+	source = python-dbussy::git+https://github.com/ldo/dbussy
+	sha256sums = SKIP
+
+pkgname = python-dbussy-git
+
