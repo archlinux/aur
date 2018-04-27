@@ -8,6 +8,7 @@ post_install() {
 
 post_upgrade() {
   # TODO: Add systemd services
+  echo ;
   #systemctl daemon-reload
 }
 
