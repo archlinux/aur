@@ -22,6 +22,7 @@ pkgver() {
 
 package() {
   install -dm755 "$pkgdir/usr/include/vulkan/"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/Vulkan-Hpp/vulkan/vulkan.hpp" "$pkgdir/usr/include/vulkan/vulkan.hpp"
   install -Dm644 "$srcdir/Vulkan-Hpp/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
