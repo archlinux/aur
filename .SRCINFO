@@ -1,0 +1,15 @@
+pkgbase = vulkan-headers-git
+	pkgdesc = Vulkan header files
+	pkgver = r232.c51545d3
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-Docs
+	arch = any
+	groups = vulkan-devel
+	license = custom
+	provides = vulkan-headers
+	conflicts = vulkan-headers
+	source = git+https://github.com/KhronosGroup/Vulkan-Docs.git
+	sha256sums = SKIP
+
+pkgname = vulkan-headers-git
+
