@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-udev-git
-pkgver=20180425.35.47bf8b2
+pkgver=20180426.37.3f58d74
 pkgrel=1
 pkgdesc="Qt-style wrapper for udev"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
