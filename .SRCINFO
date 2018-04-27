@@ -1,0 +1,22 @@
+pkgbase = liri-materialdecoration-git
+	pkgdesc = Material Design decoration for Qt applications on Wayland
+	pkgver = 20180427.ebd487e
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-qbs-shared-git
+	depends = qt5-wayland
+	provides = liri-materialdecoration
+	conflicts = liri-materialdecoration
+	replaces = liri-materialdecoration
+	source = materialdecoration::git://github.com/lirios/materialdecoration.git#branch=develop
+	md5sums = SKIP
+
+pkgname = liri-materialdecoration-git
+
