@@ -1,0 +1,18 @@
+pkgbase = molecular-workbench
+	pkgdesc = Modeling tool for designing and conducting computational experiments across science.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://mw.concord.org
+	arch = i686
+	arch = x86_64
+	license = CCPL
+	depends = java
+	source = http://mw2.concord.org/public/lib/mw.jar
+	source = mw.sh
+	source = molecular-workbench.desktop
+	md5sums = 1ec169630beb8d8b298c850fd6eb3797
+	md5sums = 83070b0d60c30a00db87ae7bbf36487a
+	md5sums = 784c824346606bd1c49b5e504b97a118
+
+pkgname = molecular-workbench
+

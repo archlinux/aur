@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=molecular-workbench
+Exec=/usr/bin/molecular-workbench 
+Terminal=false
+Icon=molecular-workbench
+Type=Application
