@@ -1,8 +1,8 @@
-# Maintainer: Bilal ELmoussaoui <bil.elmoussaoui@gmail.com>
+# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 
 pkgname=whatsapp-desktop
-pkgrel=2
-pkgver=0.4.2
+pkgrel=1
+pkgver=0.5.0
 pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
 url="https://github.com/Enrico204/Whatsapp-Desktop"
 provides=("whatsapp-desktop=${pkgver}")
@@ -14,31 +14,23 @@ source=(
   "${pkgname}.png"
 )
 source_x86_64+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-linux-x64.tar.gz"
+  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-x64.tar.gz"
 )
 source_i686+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-linux-ia32.tar.gz"
+  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-ia32.tar.gz"
 )
 source_armv7l+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-linux-armv7l.tar.gz"
+  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-armv7l.tar.gz"
 )
 
-sha256sums=(
-  '8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc'
-  'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4'
-)
+sha256sums=('8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc'
+            'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4')
+sha256sums_i686=('32ecd9960903d0b972af14e0bc67f7406956e1b5d1268d6d78186bed0fe6ae46')
+sha256sums_x86_64=('2063ea3bcdd991e3b39d45b8caa2fc1bcd4cd91049b63e704824d0c0a92d0a06')
+sha256sums_armv7l=('6843b6889dce5215170506ad7b232caf94289b219e56abe8439b34e12676d30e')
 
-sha256sums_x86_64=(
-  '0e754f65a5e205857f7ec4815d3e62b31c1c09be30257fc8689e7af2f6ca2d33'
-)
 
-sha256sums_i686=(
-  '0d6a119fcf748c4b8ffd39658080cff47b1e8c4b5c2a798e8baaa11c20d73491'
-)
 
-sha256sums_armv7l=(
-  '7cc7de81edb0b186533a83bc11e1c0f657fe84118a04f76148e8dfc5418931a7'
-)
 
 
 package() {
