@@ -6,7 +6,7 @@ _gitauth='mdbooth'
 _pkgname='ldmtool'
 _gitname='libldm'
 pkgname="${_pkgname}"
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='tool for managing Microsoft Windows dynamic disks'
 arch=('i686' 'x86_64')
@@ -19,11 +19,9 @@ _verwatch=("${url}/releases.atom" "\s\+<title>${_gitname}-\([0-9\.]\+\)</title>.
 _srcdir="${_gitname}-${_gitname}-${pkgver}"
 source=(
   "${url}/archive/${_gitname}-${pkgver}.tar.gz"
-  "${pkgname}-${pkgver}.patch"
   'sysmacros.patch'
 )
-sha256sums=('bc2d930f46f070d446e587f65f66b2fca4af5017439f6f821ae45bff7cb944ad'
-            '7e4699a1544046a9ccc14e4ec7b36cb901123783f5d456795632d2ffa28ab886'
+sha256sums=('9c941b40655ade5c3ab7da9d1b957df9400d88a59af090c87d1aa9971b0df84c'
             '503052d3fb15869f5ed3b3425299dce64b20e40d1df58eeb9d863ec97d0e7ce9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
@@ -46,8 +44,6 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
-  patch -b -p0 -i "${srcdir}/${pkgname}-${pkgver}.patch"
-  patch -b -p0 -i "${srcdir}/sysmacros.patch" #  diff -u3 src/ldm.c{.orig,} > '../../sysmacros.patch'
   _configure
   set +u
 }
