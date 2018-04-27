@@ -7,7 +7,7 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=66.0.3359.117
+pkgver=66.0.3359.132
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/k3.patch
 )
 
 
-sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
+sha256sums=('be75a5b5f8c5789d359238f374a43bf52ded49425f13ed68b8021c24e2e264b2'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -146,7 +146,7 @@ sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
             '7cde4208b87ba4632e2c83aa13163d3b34935d6175c868b671c74bb17b752fb5'
             '519965231b125f40a644829e50529befe496e02ca2e03ebc38d8791706bf2162'
             '442274439bf7d569edecbc1628b2a73fc0b3fa0901298037f613c1a68010e119'
-            '66d0a7672b29293080baa141540bfdf584d3f013c6d2115fa2c9dfa28beee934'
+            'ef58ca557082fa81398a445fd98e880a4e3d213b9889cd4cde4e774017be3c75'
             'd975a6abd6cb8ff2a2178d9a4755ea978033af522a0b4121d025703133a87ca2'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
@@ -179,7 +179,7 @@ sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
             '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            'db4886745eb447b1b1bd74351f1d65da6e7c5b98242dcd9a11b424cf2aef88e8'
+            '7c2f56e7f39fba10b680e7344fa59c9c90ef8f9b9c370d3543df3cacc05cb8c0'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -215,7 +215,6 @@ sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e'
             '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
-
 
 
 
@@ -285,7 +284,7 @@ patch -Np1 -i ../020.patch
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
-#patch -Np1 -i ../024.patch
+patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
 patch -Np1 -i ../027.patch
@@ -401,9 +400,6 @@ msg2 'purge2'
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-msg2 'adding missed deps'
-wget https://chromium.googlesource.com/chromium/src/+archive/"$pkgver"/third_party/blink/tools.tar.gz
-tar xfC tools.tar.gz third_party/blink/tools/
 
 
 python2 tools/clang/scripts/update.py
