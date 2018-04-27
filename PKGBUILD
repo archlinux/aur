@@ -3,15 +3,15 @@
 
 pkgname='quartet-git'
 pkgver=r2.a99c049
-pkgrel=1
+pkgrel=2
 pkgdesc="A tetrahedral mesh generator that does isosurface stuffing with an acute tetrahedral tile."
 arch=('x86_64')
 url="https://github.com/crawforddoran/quartet"
 license=('ISC')
 changelog="${pkgname}.changelog"
 makedepends=('git' 'gcc')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+https://github.com/crawforddoran/${pkgname%-git}.git")
 md5sums=('SKIP')
 
