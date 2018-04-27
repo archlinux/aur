@@ -1,0 +1,17 @@
+pkgbase = quartet-git
+	pkgdesc = A tetrahedral mesh generator that does isosurface stuffing with an acute tetrahedral tile.
+	pkgver = r2.a99c049
+	pkgrel = 1
+	url = https://github.com/crawforddoran/quartet
+	changelog = quartet-git.changelog
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = gcc
+	provides = quartet-git
+	conflicts = quartet-git
+	source = git+https://github.com/crawforddoran/quartet.git
+	md5sums = SKIP
+
+pkgname = quartet-git
+
