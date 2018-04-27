@@ -1,7 +1,7 @@
 pkgbase = hydrogen-drumkits-flac
 	pkgdesc = Hydrogen drum kits (FLAC format)
 	pkgver = 20180312
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hydrogen-music.org/hcms/node/16
 	changelog = ChangeLog
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = hydrogen-drumkits-flac
 	makedepends = python
 	makedepends = sox
 	depends = hydrogen
+	provides = hydrogen-drumkits
+	conflicts = hydrogen-drumkits
 	source = convert-samples.py
 	source = http://downloads.sourceforge.net/project/hydrogen/Sound%20Libraries/Main%20sound%20libraries/3355606kit.h2drumkit
 	source = http://downloads.sourceforge.net/project/hydrogen/Sound%20Libraries/Main%20sound%20libraries/BJA_Pacific.h2drumkit

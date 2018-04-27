@@ -4,13 +4,15 @@
 
 pkgname="hydrogen-drumkits-flac"
 pkgver=20180312
-pkgrel=1
+pkgrel=2
 pkgdesc="Hydrogen drum kits (FLAC format)"
 arch=(any)
 url="http://www.hydrogen-music.org/hcms/node/16"
 license=('GPL2')
 depends=('hydrogen')
 makedepends=('flac' 'python' 'sox')
+provides=('hydrogen-drumkits')
+conflicts=('hydrogen-drumkits')
 changelog=ChangeLog
 _sourcebase=http://downloads.sourceforge.net/project/hydrogen/Sound%20Libraries/Main%20sound%20libraries
 source=(
