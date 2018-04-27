@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/liberodark/ODrive"
 license=('GPL')
 depends=('xdg-utils')
-source_x86_64=("https://github.com/liberodark/ODrive/releases/download/v${pkgver}/odrive_${pkgver}_amd64.deb")
+source_x86_64=("https://github.com/liberodark/ODrive/releases/download/${pkgver}/odrive_${pkgver}_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('f1fcc5af46bfa97a8c70a2c1de0eb21bf6486af3e44e8da3774f8237b22c5816c6616c793493470bb091a956fbc62870dee428b5d5fabb7096e2a7508b9fe99e'
