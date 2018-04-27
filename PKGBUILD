@@ -49,8 +49,8 @@ package() {
   cp -a "dart-sdk/"* "$pkgdir/opt/$pkgname-sdk/"
 
   # Set up symbolic links for the executables
-  for f in dart-dev dart2js-dev dartanalyzer-dev pub-dev dartfmt-dev dartdevc-dev; do
-    ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f"
+  for f in dart dart2js dartanalyzer pub dartfmt dartdevc; do
+    ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f-dev"
   done
 
   # Package samples and documentation
