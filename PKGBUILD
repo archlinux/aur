@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-c-git
-pkgver=4.8.8.r416.g5f71e002
+pkgver=4.8.9.r27.g1bad2439
 pkgrel=1
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
@@ -17,12 +17,12 @@ source=(gambit-scheme::git+https://github.com/feeley/gambit.git)
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/gambit-scheme"
-    git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
+  cd gambit-scheme
+  git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
 }
 
 build() {
-  cd "$srcdir/gambit-scheme"
+  cd gambit-scheme
   ./configure
   make current-gsc-boot
   
@@ -44,12 +44,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/gambit-scheme"
+  cd gambit-scheme
   make check
 }
 
 package() {
-  cd "$srcdir/gambit-scheme"
+  cd gambit-scheme
   make DESTDIR="$pkgdir/" install
-  ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
+  ln -sf /usr/bin/gambitc "$pkgdir"/usr/bin/gsc-script
 }
