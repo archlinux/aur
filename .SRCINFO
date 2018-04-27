@@ -1,0 +1,18 @@
+pkgbase = discordrp-mpris-git
+	pkgdesc = Discord Rich Presence based on mpris2 media players
+	pkgver = 0.1.0.r0.g775cea3
+	pkgrel = 1
+	url = https://github.com/FichteFoll/discordrp-mpris
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-dbussy
+	provides = discordrp-mpris
+	conflicts = discordrp-mpris
+	source = git+https://github.com/FichteFoll/discordrp-mpris.git
+	sha256sums = SKIP
+
+pkgname = discordrp-mpris-git
+
