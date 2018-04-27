@@ -1,0 +1,23 @@
+pkgbase = itk-snap
+	pkgdesc = ITK-SNAP is a software application used to segment structures in 3D medical images
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://www.itksnap.org
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = insight-toolkit
+	depends = vtk
+	depends = qt5-base
+	depends = fltk
+	source = itk-snap::git+git://git.code.sf.net/p/itk-snap/src
+	source = itkKernelFunction.h
+	source = itksnap.png
+	source = itksnap.desktop
+	sha512sums = SKIP
+	sha512sums = 69010fb1d771ce28793a3f546dd7bf10b200d45755e44b77145c49af88291d89778753deb431a523c637ed7c954a73b172f4bbd52baf41b65594454acb6dcad2
+	sha512sums = b5f1e7876a9d0cb7d1abb1f0c19147642b99511d8a052a91053affa51aabd9a3929288fbe7fa365c4ad7042f28edca4759a9f3fb8f48916d1e7ee2023b1e7591
+	sha512sums = bd699dad2ff6704e56b9ac8073d92683060bf9b71ae2218c7dafd272210d8a402db1e08bedc3187e96bb74adb40a2b30b0da92bc34dd3ca40fe05e24d43d247b
+
+pkgname = itk-snap
+
