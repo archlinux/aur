@@ -1,0 +1,15 @@
+pkgbase = i3-exitx-systemd-git
+	pkgdesc = GTK logout dialog for i3 with systemd commands
+	pkgver = r16.309536f
+	pkgrel = 1
+	url = https://github.com/ranisalt/i3-exitx-systemd
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = i3-exitx-systemd
+	conflicts = i3-exitx-systemd
+	source = i3-exitx-systemd::git+https://github.com/ranisalt/i3-exitx-systemd
+	sha256sums = SKIP
+
+pkgname = i3-exitx-systemd-git
+
