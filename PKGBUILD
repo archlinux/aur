@@ -7,11 +7,7 @@ pkgdesc="Tool to list and diagnose bpf programs.  (Who watches the watchers..? :
 arch=('i686' 'x86_64')
 url="https://github.com/genuinetools/bpfps"
 license=('MIT')
-#source=("git+$url")
-#md5sums=('SKIP')
 makedepends=('go')
-depends=()
-options=('!strip' '!emptydirs')
 
 prepare() {
   export GOPATH="${srcdir}"
