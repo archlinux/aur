@@ -5,3 +5,4 @@ rtorrent.patch
 *.cc
 *.h
 *.pkg.tar
+*.patch
