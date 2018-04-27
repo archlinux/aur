@@ -2,8 +2,8 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.8.1
-pkgrel=4
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler (incl LXC driver)'
 arch=('x86_64')
 url="https://nomadproject.io/"
@@ -17,8 +17,8 @@ provides=('nomad')
 source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64-lxc.zip"
         nomad.service
         example.hcl)
-sha256sums=('ddbd66050b4597a0e4f1a2cb95af2b9bf3602caa23b953dd910e420a3100a080'
-            '71a821050c328bbaeb20222ccc23791c3f0de37524b246c8cf795b162f505027'
+sha256sums=('f33109dbb427cf3574115e73bfd046589a6709e5e6204d1752c29754e8b42230'
+            '6f439a69eb112b628cc731f8ab0964ff8f394ade6b61432b31f2b947ae209c11'
             '01f9b4d29c35c0994a24ba91f4fc3df03406ec41cc7264f202eb54814a758c70')
 
 package() {
