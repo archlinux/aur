@@ -1,4 +1,6 @@
-# Maintainer: Andrew Walls <andrew.walls2 (at) gmail.com>
+# Maintainer: Luís Ferreira <contact@lsferreira.net>
+# Contributor: Andrew Walls <andrew.walls2 (at) gmail.com>
+
 pkgname=sconsify
 pkgver=0.5.0
 pkgrel=1
