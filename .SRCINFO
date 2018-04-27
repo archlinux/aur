@@ -1,0 +1,14 @@
+pkgbase = dart-dev
+	pkgdesc = The dart programming language SDK (dev channel)
+	pkgver = 2.0.0.dev.50.0
+	pkgrel = 1
+	url = http://www.dartlang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = setconf
+	options = !strip
+	source_x86_64 = dart-dev-2.0.0.dev.50.0-64.zip::https://storage.googleapis.com/dart-archive/channels/dev/release/2.0.0-dev.50.0/sdk/dartsdk-linux-x64-release.zip
+	sha256sums_x86_64 = 0ac31f14ea073756c410123372e77005874235fecff324a5a702f15059278dca
+
+pkgname = dart-dev
+
