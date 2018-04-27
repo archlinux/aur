@@ -1,0 +1,13 @@
+pkgbase = zoho-docs-bin
+	pkgdesc = Graphical application to sync files to/from Zoho Docs
+	pkgver = 1.9.2
+	pkgrel = 1
+	arch = x86_64
+	license = proprietary
+	source = https://www.zoho.com/docs/36925/ZohoDocs_x64.tar.gz
+	source = zoho-docs.desktop
+	sha512sums = 2c103bc33b96116132069c0a7ccdc17f3db87baf5d81b870829a4e8e0980ff352f4d5ca79dabc4083e18cff99364d75e9249522b0623276ae4e3af0bc49daa07
+	sha512sums = 98b2d2fefd783a838821577f997fe509f3d72e965851090bebbd31f34f10d9bf3c3aa9b4c81b9c1c2cf3f3c6a5610ec2df79e9f77a0b38ac7cc6801685f72c3a
+
+pkgname = zoho-docs-bin
+

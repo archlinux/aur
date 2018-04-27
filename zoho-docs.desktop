@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Zoho Docs
+Comment=Sync documents to Zoho Docs
+Exec=/usr/bin/zohodocs
+Terminal=false
+Type=Application
+Icon=/opt/zohodocs/images/r1.png
+Categories=Network;FileTransfer;
+MimeType=application/x-zwriter-link;application/x-zsheet-link;application/x-zshow-link;
+StartupNotify=false
