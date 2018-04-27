@@ -3,7 +3,7 @@
 pkgname=xf86-input-wizardpen
 _realname=xorg-input-wizardpen
 pkgver=0.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc="X.Org Wizardpen/Genius tablet driver for Linux"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/wizardpen"
