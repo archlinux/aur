@@ -1,6 +1,6 @@
 pkgbase = tensorflow-computecpp
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
-	pkgver = 1.6.0
+	pkgver = ComputeCpp+0.6.0+30+g4cc789977d
 	pkgrel = 1
 	url = https://github.com/lukeiwanski/tensorflow
 	arch = x86_64
