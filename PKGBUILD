@@ -3,7 +3,7 @@
 _pkgname=linux-aarch64-raspberrypi
 pkgname=linux-aarch64-raspberrypi-bin
 pkgver=4.14.34.20180423
-pkgdesc="Automated weekly build of the default branch 64-bit bcmrpi3_defconfig Linux kernel for the Raspberry Pi 3 model B"
+pkgdesc="Automated weekly build of the default branch aarch64 bcmrpi3_defconfig Linux kernel for the Raspberry Pi 3 models B/B+"
 _kernver=${pkgver%.*}
 pkgrel=1
 arch=('aarch64')
