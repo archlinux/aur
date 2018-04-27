@@ -3,7 +3,7 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.6.0+rc1+1055+g99de182664
+pkgver=1.8.0+rc1+930+gadf045607c
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -40,6 +40,7 @@ prepare() {
   export TF_NEED_KAFKA=0
   export TF_NEED_TENSORRT=0
   export TF_SET_ANDROID_WORKSPACE=0
+  export TF_DOWNLOAD_CLANG=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
@@ -66,6 +67,7 @@ build() {
   export CUDNN_INSTALL_PATH=/opt/cuda
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
   export TF_CUDA_COMPUTE_CAPABILITIES=3.0,3.5,5.2,6.1,6.2
+  export TF_NCCL_VERSION=1.3
   ./configure
   bazel build --config=opt --config=cuda --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmpcuda
