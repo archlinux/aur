@@ -16,16 +16,16 @@ fi
 
 pkgname=caddy-with-cgi
 _pkgbase=caddy
-pkgver=0.10.10
-_cgiver=1.4
-pkgrel=4
+pkgver=0.10.14
+_cgiver=1.6
+pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=1.8.1' 'git')
+makedepends=('go>=1.9' 'git')
 provides=('caddy')
 conflicts=('caddy')
 source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
@@ -37,8 +37,8 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'caddy.conf'
 	'noquic_aesni.patch'
 	'plugins.patch')
-sha256sums=('aafaeb092e7b1bcff8ec31f19a1ded1253ff95cfdd4441378e5a530508614e8d'
-	'b9fb9aa8b8046d0840f86da2c01616e37d40c8229d2b04710ad3357112513ff0'
+sha256sums=('13feb836e85af3525b3e95f42635566f14d171edc9776881f59fbf61fa45d345'
+	'7c5b82831f496a182f2631fac840fc0712b41afcbf4b6ce3d4e6a235eef88580'
 	'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
 	'6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
 	'69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
@@ -55,6 +55,9 @@ prepare() {
 	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$GOPATH/src/$_cgipkgname"
 	cd "$GOPATH/src/$_gopkgname"
 	patch -p0 -i "$srcdir/plugins.patch"
+	# fix rewrite: rewrite the URI instead of just the path
+	# https://github.com/mholt/caddy/issues/2129
+	sed -i 's/URL.Path/URL.RequestURI()/g' caddyhttp/rewrite/rewrite.go
 	if [ "$NOQUIC" == y ]
 	then
 		patch -p1 -i "$srcdir/noquic_aesni.patch"
