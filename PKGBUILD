@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=68.0.3402.0
+pkgver=68.0.3409.2
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('b156a25fb8fc8dc052773ebc1177af7127f1c2d47edd0557dcec51d6f8992c48'
+sha256sums=('4efcc2fa73170c3c90c62aebe7c721d197e92a2a5d55dd71a25115342c7057fb'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -145,7 +145,7 @@ sha256sums=('b156a25fb8fc8dc052773ebc1177af7127f1c2d47edd0557dcec51d6f8992c48'
             '7cde4208b87ba4632e2c83aa13163d3b34935d6175c868b671c74bb17b752fb5'
             '519965231b125f40a644829e50529befe496e02ca2e03ebc38d8791706bf2162'
             '442274439bf7d569edecbc1628b2a73fc0b3fa0901298037f613c1a68010e119'
-            '66d0a7672b29293080baa141540bfdf584d3f013c6d2115fa2c9dfa28beee934'
+            '4d3599e3e09dcaf66f66c7df279e59f30a542f82b10223b8f7e447d38f6b4f6f'
             'd975a6abd6cb8ff2a2178d9a4755ea978033af522a0b4121d025703133a87ca2'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
@@ -161,7 +161,7 @@ sha256sums=('b156a25fb8fc8dc052773ebc1177af7127f1c2d47edd0557dcec51d6f8992c48'
             'd1fd7eb17aaf81a0d09143166a4a637ea62f6b00a11e1b81279c30e7527ff34a'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
-            '0d8731c69d05d5e854403ad779e7b6a4e6bc2f2bf48e1fdeb974e5e958c345fb'
+            '33c3a19d6818f5e1559df2c85479205fdd0adf2e67758287cd956f6a5acb05b6'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -188,7 +188,7 @@ sha256sums=('b156a25fb8fc8dc052773ebc1177af7127f1c2d47edd0557dcec51d6f8992c48'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
-            'a466902d700c22178ba4f01f3a3ed94bb296ddde36396b70690513b6934a3dcc'
+            '1677aecf5934ba8bfb87bdbe95c390822a1fd2efc719dcf4b51ee56715a18f79'
             '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
@@ -289,7 +289,7 @@ patch -Np1 -i ../020.patch
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
-#patch -Np1 -i ../024.patch
+patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
 patch -Np1 -i ../027.patch
