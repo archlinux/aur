@@ -1,7 +1,7 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="http://www.ossia.io"
@@ -32,7 +32,7 @@ build() {
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
+  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
   cmake --build . --target all_unity
 }
 
