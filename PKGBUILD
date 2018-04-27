@@ -11,7 +11,7 @@
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
 pkgver=10.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ee"
@@ -136,12 +136,20 @@ build() {
   cp config/resque.yml.example config/resque.yml
   sed -i 's/url.*/nope.sock/g' config/resque.yml
 
+  #we need to get rid of the custom paths in case someone has gitlab already installed.
+  mv config/gitlab.yml config/gitlab.yml.bak
+  # and create default
+  cp config/gitlab.yml.example config/gitlab.yml
+ 
   yarn install --production --pure-lockfile
   bundle-2.3 exec rake gitlab:assets:compile RAILS_ENV=production NODE_ENV=production
   bundle-2.3 exec rake gettext:compile RAILS_ENV=production
   # After building assets, clean this up again
   rm config/database.yml config/database.yml.postgresql.orig
   mv config/resque.yml.patched config/resque.yml
+
+  #put back the custom .yml
+  mv config/gitlab.yml.bak config/gitlab.yml
 }
 
 package() {
