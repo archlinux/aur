@@ -11,6 +11,10 @@ url="https://github.com/FichteFoll/discordrp-mpris"
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-dbussy')
 makedepends=('git')
+optdepends=('cmus: C* Music Player (native mpris support)'
+            'mpDris2-git: mpris plugin for mpd'
+            'mpv-mpris: mpris plugin for mpv'
+            'vlc: VLC Media Player (native mpris support)')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/FichteFoll/discordrp-mpris.git")
