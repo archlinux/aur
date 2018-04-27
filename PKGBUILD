@@ -3,9 +3,10 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
+_spryrel=2.5.0.spry.r5
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r5
+pkgver=2.5.0.spry.r5.r0.g75f71b869
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
@@ -27,6 +28,8 @@ md5sums=('SKIP'
 pkgver() {
   if [[ -z "${_version}" ]]; then
     cd "${srcdir}/${_name}"
+    git fetch --tags
+    git checkout "${_spryrel}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
     echo ${_version}
@@ -36,7 +39,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_name}"
   if [[ -n "${_version}" ]]; then
-    git checkout "v${_version}"
+    git checkout "${_version}"
   fi
   git submodule update --init --recursive
   mkdir -p "${srcdir}/${_name}"
@@ -52,7 +55,6 @@ build() {
         -DWITH_DOC=FALSE \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
-        -MIRALL_VERSION_BUILD "8" \
         ../${_name}
   make
 }
