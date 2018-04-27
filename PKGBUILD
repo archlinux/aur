@@ -2,7 +2,7 @@
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2018SP1
+pkgver=2018SP2
 pkgrel=1
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
@@ -31,15 +31,17 @@ depends=('alsa-lib'
          'zlib')
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
-md5sums=('42e65bd279d3f487b944d1d0fb7599fb'
-         '19b26d423cae7ec0e1e6c6d78c94915d')
+md5sums=('6fe8bb8e70f7ce96eb8e4f3c71ff596a'
+         'f371f6eaac0f2aefef906f86d3ffac2e')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
 package() {
   mkdir -p $pkgdir/usr/bin
   echo "#!/bin/sh" > $pkgdir/usr/bin/$pkgname
-  echo "env vblank_mode=0 /$_pkgprefix/Linux/DraftSight" >> $pkgdir/usr/bin/$pkgname
+  echo "unset XDG_CURRENT_DESKTOP DESKTOP_SESSION GNOME_DESKTOP_SESSION_ID" >> $pkgdir/usr/bin/$pkgname
+  echo "env LD_PRELOAD=/usr/lib/libfreetype.so vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight" >> $pkgdir/usr/bin/$pkgname
+
   chmod 755 $pkgdir/usr/bin/$pkgname
 
   mkdir -p $pkgdir/$_pkgprefix
