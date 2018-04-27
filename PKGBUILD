@@ -12,8 +12,8 @@ _build_docs=0
 
 pkgbase='fpc-svn'
 pkgname=('fpc-svn' 'fpc-src-svn')
-[ $_build_docs -ne 0 ] && pkgname+=('fpc-docs-svn')
-pkgver=3.1.1.r37950
+[[ $_build_docs -ne 0 ]] && pkgname+=('fpc-docs-svn')
+pkgver=3.1.1.r38855
 _pkgver=${pkgver%.r*}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -22,9 +22,9 @@ license=('GPL' 'LGPL' 'custom')
 depends=('ncurses' 'zlib' 'expat')
 # Trunk can only be built with stable version of FPC
 makedepends=('fpc<9999' 'subversion')
-[ $_build_docs -ne 0 ] && makedepends+=('texlive-core' 'texlive-htmlxml'
-                                        'texlive-latexextra' 'ghostscript')
-source=(fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk)
+[[ $_build_docs -ne 0 ]] && makedepends+=('texlive-core' 'texlive-htmlxml'
+                                          'texlive-latexextra' 'ghostscript')
+source=('fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -41,8 +41,10 @@ build() {
   popd
   make NOGDB=1 OPT=' -dRelease' build
 
-  cd fpcdocs
-  [ $_build_docs -ne 0 ] && make -j1 FPCSRCDIR="${srcdir}"/fpcbuild/fpcsrc html
+  if [[ $_build_docs -ne 0 ]]; then
+    cd fpcdocs
+    make -j1 FPCSRCDIR="${srcdir}"/fpcbuild/fpcsrc html
+  fi
 }
 
 package_fpc-svn() {
