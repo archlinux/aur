@@ -5,7 +5,7 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory
-pkgver=0.96.3.991
+pkgver=0.96.4
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
@@ -20,23 +20,23 @@ install="${pkgname}.install"
 
 # Don't blindly trust a random AUR package with your coins! Signed hashes available at
 # https://github.com/goatpig/BitcoinArmory/releases with GPG ID 8C5211764922589A
-_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
-source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${pkgver}_src.tar.gz"
+_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.asc"
+source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${pkgver}_src.tar"
         'run-armory.sh')
-sha512sums=('e451e30eb9d3605f0565013cc3a485d5fffae9e3c5c44ec8ae179f20e498752e79e2ef3acf14e7cf5d70deb724987a40f5cf723a77ec017404b6832992383b79'
+sha512sums=('a7dd1c1c10c5e45696fa0abdee3e5f465260db2b7b0a06cac553597ca87a4d72c9b0c9e212c9f8c8196c32727fb55fd0a82bfafbe01e7ef57208df7df17390f5'
             'af44a8edfdf751f3343a8bdf6fa21c125389de3435c4b03c7f581b980525a9f32af177f496830f847b70c8e2619c42908536698e0fd28f862f16083cf7396715')
 
 check() {
   msg 'Validating GPG signature...'
   msg2 '(To disable: remove/rename check() function from PKGBUILD)'
   gpg --recv-key 8C5211764922589A
-  curl -sL $_signatures -o sha256sum.txt.asc
+  curl -sL $_signatures -o sha256sum.asc
   msg2 "Downloading $_signatures"
-  gpg --verify 'sha256sum.txt.asc'
+  gpg --verify 'sha256sum.asc'
   msg2 'GPG signature is valid.'
 
   msg 'Validating signed checksum of downloaded binary...'
-  grep "${pkgver}_src.tar.gz" 'sha256sum.txt.asc' | tr -d '\r' | sha256sum -c -
+  grep "${pkgver}_src.tar" 'sha256sum.asc' | tr -d '\r' | sha256sum -c -
   msg2 'Checksum valid.'
 }
 
@@ -58,7 +58,7 @@ build() {
   PYTHON_VERSION=${_py2ver} ./configure
 
   ## Build using current python2 version
-  PYTHON_VERSION=${_py2ver} make -j"${nproc}"
+  PYTHON_VERSION=${_py2ver} make
 }
 
 package() {
