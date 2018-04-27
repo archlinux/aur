@@ -1,0 +1,17 @@
+post_install() {
+	if [ "$1" = configure ]; then
+	    ldconfig
+
+	    if [ "$2" = "" ]; then
+	        getent group foundationdb >/dev/null || groupadd --system foundationdb
+	        getent passwd foundationdb >/dev/null || useradd --system --disabled-login --gid foundationdb --no-create-home --home-dir /var/lib/foundationdb --gecos "FoundationDB" --shell /usr/bin/false foundationdb
+
+	        chown foundationdb:foundationdb /etc/foundationdb
+	        chmod 775 /etc/foundationdb
+	    fi
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
