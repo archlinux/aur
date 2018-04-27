@@ -12,6 +12,7 @@ depends=('java-environment-common')
 makedepends=()
 optdepends=()
 provides=('java-environment=8')
+install="$pkgname.install"
 source=("https://github.com/oracle/graal/releases/download/vm-${pkgver_}/graalvm-ce-${pkgver_}-linux-amd64.tar.gz")
 sha256sums=('08474e5b934e44f515df6c0449289b20b26990a9fc45fe0a58901d181117e009')
 
