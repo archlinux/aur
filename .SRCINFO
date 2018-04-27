@@ -1,6 +1,6 @@
 pkgbase = nordnm
 	pkgdesc = A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Chadsr/NordVPN-NetworkManager
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = nordnm
 	depends = python-requests
 	depends = python-numpy
 	provides = nordnm
-	source = https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-0.4.0.tar.gz
-	md5sums = c3aecc47717882bc0c1427dd7df6cef0
+	source = https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-0.5.0.tar.gz
+	md5sums = 50544c44c119690733c2fe35543e402a
 
 pkgname = nordnm
 	depends = python
