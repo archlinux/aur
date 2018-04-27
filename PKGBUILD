@@ -1,41 +1,27 @@
-# Maintainer: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Luís Ferreira <contact@lsferreira.net>
+# Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=vulkan-hpp-git
-pkgver=r126.633182b
+pkgver=r220.9efc002
 pkgrel=1
-pkgdesc='Open-Source Vulkan C++ API'
-arch=('i686' 'x86_64')
+pkgdesc="C++ Bindings for Vulkan"
+groups=('vulkan-devel')
+arch=('any')
 url="https://github.com/KhronosGroup/Vulkan-Hpp"
-license=('APACHE')
+license=('Apache')
+provides=('vulkan-hpp')
+conflicts=('vulkan-hpp')
 depends=('vulkan-headers')
-makedepends=('cmake' 'gcc-libs')
-source=('git+https://github.com/KhronosGroup/Vulkan-Hpp.git'
-        'git+https://github.com/leethomason/tinyxml2.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('git+https://github.com/KhronosGroup/Vulkan-Hpp.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd Vulkan-Hpp
+  cd "$srcdir/Vulkan-Hpp"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}            
-
-prepare() {
-  cd Vulkan-Hpp
-  git submodule init
-  git config submodule.tinyxml2.url $srcdir/tinyxml2
-  git submodule update tinyxml2
-}
-
-build() {
-  mkdir -p build
-  cd build
-  cmake ../Vulkan-Hpp -DCMAKE_INSTALL_PREFIX=/usr
-  make
-  ./VulkanHppGenerator /usr/share/vulkan/vk.xml
 }
 
 package() {
-  cd $srcdir
-  install -Dm644 Vulkan-Hpp/vulkan/vulkan.hpp "${pkgdir}"/usr/include/vulkan/vulkan.hpp
-  install -Dm644 Vulkan-Hpp/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -dm755 "$pkgdir/usr/include/vulkan/"
+  install -Dm644 "$srcdir/Vulkan-Hpp/vulkan/vulkan.hpp" "$pkgdir/usr/include/vulkan/vulkan.hpp"
+  install -Dm644 "$srcdir/Vulkan-Hpp/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
