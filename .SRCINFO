@@ -24,6 +24,7 @@ pkgbase = liri-shell-git
 	depends = vibe-git
 	depends = liri-workspace-git
 	depends = liri-platformtheme-git
+	depends = liri-materialdecoration-git
 	depends = xorg-server-xwayland
 	optdepends = weston: nested mode support
 	provides = liri-shell
