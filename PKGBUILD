@@ -2,8 +2,8 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 # Contributor: Patrick Glandien <patrick@synix.io>
 pkgname=armory-git
-pkgver=v0.96.3.99.r0.g1c7f3e91
-pkgrel=2
+pkgver=v0.96.4.r0.gfee1f91a
+pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -45,7 +45,7 @@ build() {
   PYTHON_VERSION=${_py2ver} ./configure
 
   ## Build using current python2 version
-  PYTHON_VERSION=${_py2ver} make -j"${nproc}"
+  PYTHON_VERSION=${_py2ver} make
 }
 
 package() {
