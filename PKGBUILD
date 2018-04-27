@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet')
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('dep' 'git' 'go')
@@ -12,8 +12,8 @@ license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('2a7d207142d1e1f2257e4b718f56a2ddc0b84417c362309b41aa942173f87ab4'
-            'f40239b11a223b6d07c8ec8d29d7649aef88c0a1a607fcd1f8cecf891438f983')
+sha256sums=('eb4a5cca1884cb96aa8a2f06800bef5a367523ac98715019e093b530675efcb6'
+            '8ef709dc63ee0827025b021baceb9462277015f668a18a9d017ac60ccf3518ab')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -65,7 +65,6 @@ package_dcrd() {
 
   msg2 'Installing dcrd...'
   for _bin in dcraddblock \
-              dcrcheckdevpremine \
               dcrctl \
               dcrd \
               dcrfindcheckpoint \
