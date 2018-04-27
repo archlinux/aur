@@ -11,7 +11,7 @@ url='https://github.com/Blacksuan19/Plasma-Themes'
 license=('GPL3')
 depends=('plasma-desktop')
 makedepends=('git')
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 
