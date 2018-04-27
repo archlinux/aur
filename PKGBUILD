@@ -2,11 +2,11 @@
 
 pkgname=vulkan-hpp
 pkgver=1.1.72
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Bindings for Vulkan"
 url="https://github.com/KhronosGroup/Vulkan-Hpp"
 license=('Apache')
-provides=()
+depends=('vulkan-headers=1:1.1.72')
 groups=('vulkan-devel')
 arch=('any')
 source=("https://github.com/KhronosGroup/Vulkan-Hpp/raw/f54bf98790ea7803a02336736d6e50bb44009a27/vulkan/vulkan.hpp")
