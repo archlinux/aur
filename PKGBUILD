@@ -8,7 +8,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('systemd' 'wayland-protocols' 'libdrm' 'libinput' 'qt5-declarative' 'qt5-wayland'
-         'xkeyboard-config' 'libxkbcommon' 'glib2' 'fontconfig' 'freetype2' 'libliri-git')
+         'xkeyboard-config' 'libxkbcommon' 'glib2' 'fontconfig' 'freetype2'
+	 'qt5-udev-git' 'libliri-git')
 makedepends=('git' 'liri-qbs-shared-git' 'xcb-util-cursor' 'libxcursor')
 options=(debug !strip)
 conflicts=('greenisland' 'greenisland-git' 'liri-wayland')
