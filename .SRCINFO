@@ -1,7 +1,7 @@
 pkgbase = wasm-pack-git
 	pkgdesc = pack up the wasm and publish it to npm!
-	pkgver = 0.1.0.128
-	pkgrel = 2
+	pkgver = 0.2.0.155
+	pkgrel = 1
 	url = https://github.com/ashleygwilliams/wasm-pack
 	arch = i686
 	arch = x86_64

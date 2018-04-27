@@ -1,8 +1,8 @@
 pkgname=wasm-pack-git
 _pkgname=wasm-pack
 pkgdesc="pack up the wasm and publish it to npm!"
-pkgrel=2
-pkgver=0.1.0.128
+pkgrel=1
+pkgver=0.2.0.155
 arch=('i686' 'x86_64')
 conflicts=("wasm-pack")
 provides=("wasm-pack")
