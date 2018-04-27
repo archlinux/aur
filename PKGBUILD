@@ -1,9 +1,9 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgname=twonky
-pkgver=8.4.1
-_pkgver=8.4.1
-pkgrel=10
+pkgver=8.5
+_pkgver=8.5
+pkgrel=1
 pkgdesc="A DLNA-compliant UPnP AV server software from PacketVideo."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url="http://twonky.com/"
@@ -26,12 +26,12 @@ source_aarch64=("twonky-aarch64-${_pkgver}.zip::http://www.twonkyforum.com/downl
 
 md5sums=('4c89bcaef67cc11f02dca29aea10de1e'
          '0c06f9de4f2510186dc50e548bb1e760')
-md5sums_i686=('320b320911f6698e2dafa7fe447d9664')
-md5sums_x86_64=('13903989f6d854269587e449a798be76')
-md5sums_armv6h=('c45a7c6324a578208c574c3862654db3')
-md5sums_armv7h=('c45a7c6324a578208c574c3862654db3')
-md5sums_aarch64=('c45a7c6324a578208c574c3862654db3')
-md5sums_arm=('c45a7c6324a578208c574c3862654db3')
+md5sums_i686=('211fccaf53ddac6cc61cd030d35756c5')
+md5sums_x86_64=('ed792dc03c71ebfd65fb5ed15f1b04f1')
+md5sums_armv6h=('bf918282e5d625fe2beb6297d9116133')
+md5sums_armv7h=('bf918282e5d625fe2beb6297d9116133')
+md5sums_aarch64=('bf918282e5d625fe2beb6297d9116133')
+md5sums_arm=('bf918282e5d625fe2beb6297d9116133')
 
 package() {
     # twonky base install
