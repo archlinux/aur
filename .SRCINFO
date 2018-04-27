@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-equalizer-ladspa-ffy00-git
 	pkgdesc = A 15-band equalizer for PulseAudio (FFY00's fork)
-	pkgver = 1.0.r0.4856f57
-	pkgrel = 3
+	pkgver = 1.0.r1.358553c
+	pkgrel = 1
 	url = https://github.com/FFY00/pulseaudio-equalizer-ladspa
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = pulseaudio-equalizer-ladspa-ffy00-git
 	provides = pulseaudio-equalizer-ladspa
 	conflicts = pulseaudio-equalizer-ladspa
 	replaces = pulseaudio-equalizer-ladspa
-	source = remote::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa
+	source = pulseaudio-equalizer-ladspa-ffy00::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa
 	md5sums = SKIP
 
 pkgname = pulseaudio-equalizer-ladspa-ffy00-git

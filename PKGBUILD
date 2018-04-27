@@ -1,7 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=pulseaudio-equalizer-ladspa-ffy00-git
-pkgver=1.0.r0.4856f57
-pkgrel=3
+pkgver=1.0.r1.358553c
+pkgrel=1
 pkgdesc="A 15-band equalizer for PulseAudio (FFY00's fork)"
 arch=(any)
 url="https://github.com/FFY00/pulseaudio-equalizer-ladspa"
@@ -11,17 +11,17 @@ makedepends=('git')
 provides=('pulseaudio-equalizer-ladspa')
 conflicts=('pulseaudio-equalizer-ladspa')
 replaces=('pulseaudio-equalizer-ladspa')
-source=('remote::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa')
+source=("${pkgname%-git}::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/remote"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
-  install -Dm644 "$srcdir/remote/equalizerrc" "$pkgdir/usr/equalizerrc"
+  install -Dm644 "$srcdir/${pkgname%-git}/equalizerrc" "$pkgdir/usr/equalizerrc"
 
-  cp -r "$srcdir/remote/share" "$pkgdir/usr/"
-  cp -r "$srcdir/remote/bin" "$pkgdir/usr/"
+  cp -r "$srcdir/${pkgname%-git}/share" "$pkgdir/usr/"
+  cp -r "$srcdir/${pkgname%-git}/bin" "$pkgdir/usr/"
 }
