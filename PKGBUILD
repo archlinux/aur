@@ -1,4 +1,5 @@
-# Maintainer:  danyf90 <daniele.formichelli@gmail.com>
+# Maintainer: binTrl <binaryTraveller at gmail dot com>
+# Contributor:  danyf90 <daniele.formichelli@gmail.com>
 # Contributor: mac <poczciwiec at gmail dot com>
 
 pkgname=brackets-bin
@@ -56,8 +57,8 @@ package() {
   msg2 "  -> Installing license..."
   install -Dm755 usr/share/doc/$_pkgname/copyright $pkgdir/usr/share/licenses/$_pkgname/copyright
 
-  install -Dm4755 $srcdir/opt/brackets/chrome_sandbox \
-    "$pkgdir/opt/brackets/chrome_sandbox"
+  install -Dm4755 $srcdir/opt/brackets/chrome-sandbox \
+    "$pkgdir/opt/brackets/chrome-sandbox"
 
 
 }
