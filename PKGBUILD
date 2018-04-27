@@ -28,7 +28,7 @@ prepare() {
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export HOST_CXX_COMPILER=/usr/bin/g++
   export HOST_C_COMPILER=/usr/bin/gcc
-  export CC_OPT_FLAGS="-march=native -mfpmath=sse -minline-stringops-dynamically -O2 -pipe -fstack-protector-strong -fno-plt"
+  export CC_OPT_FLAGS="-march=native -mfpmath=sse -O2 -pipe -fstack-protector-strong"
   export TF_CUDA_CLANG=0
   export TF_NEED_CUDA=0
   export TF_NEED_JEMALLOC=0
@@ -61,7 +61,7 @@ build() {
   cd ${srcdir}/tensorflow
 
   ./configure
-  bazel build -c opt --config=sycl //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
+  bazel build --config=opt --config=sycl //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 }
 
