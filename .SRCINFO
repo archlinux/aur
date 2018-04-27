@@ -1,6 +1,6 @@
 pkgbase = dragon-drag-and-drop-git
 	pkgdesc = Simple drag-and-drop source/sink for X
-	pkgver = r9.a49d775
+	pkgver = 1.0.0.r2.g6d21f90
 	pkgrel = 1
 	url = https://github.com/mwh/dragon
 	arch = i686
