@@ -1,15 +1,15 @@
 pkgbase = deepin-wine32-preloader
-	pkgdesc = Deepin Wine Fonts
-	pkgver = 2.18_5
-	pkgrel = 3
+	pkgdesc = Deepin Wine Preloader
+	pkgver = 2.18_8
+	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-wine32-preloader_2.18-5_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine32-preloader_2.18-5_i386.deb
-	md5sums = 5a9b8a8b834ddb571f8dcedd6e805e3c
+	noextract = deepin-wine32-preloader_2.18-8~rc2_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine32-preloader_2.18-8~rc2_i386.deb
+	md5sums = debef4822e39e52b7db550eef387a29d
 
 pkgname = deepin-wine32-preloader
 
