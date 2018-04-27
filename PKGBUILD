@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=66.0.3359.117
+pkgver=66.0.3359.139
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -33,17 +33,14 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
-        https://pkgbuild.com/~foutrelis/sources/chromium/blink-tools-$pkgver.tar.gz
         fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
         fix-frame-buttons-rendering-too-large-when-using-OSX.patch
         chromium-skia-harmony.patch
         chromium-widevine.patch
         chromium-vaapi-r18.patch)
-noextract=(blink-tools-$pkgver.tar.gz)
-sha256sums=('77c5a334644fdc303697b3864c9a6b709cee23ee384f4134308e820af4568ed6'
+sha256sums=('be75a5b5f8c5789d359238f374a43bf52ded49425f13ed68b8021c24e2e264b2'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'bf9600489198c5a873ef7b12e8ba42e04c667a59b898592ad1b416f66df13d7e'
-            '922db9d6a69a22003caa72c507e1ccbf0c4ee2c254f00e243c97ca572bf1ec56'
+            '34eb82c625b7050021a8d3334ceaa7fa3d042dd816c228c14abb52b29796f7b9'
             'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
             'bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
@@ -87,9 +84,6 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
-
-  # https://crbug.com/832283
-  tar xfC ../blink-tools-$pkgver.tar.gz third_party/blink/tools/
 
   # https://crbug.com/710701
   local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
