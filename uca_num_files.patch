@@ -1,6 +1,6 @@
-diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-editor.c Thunar-1.6.3/plugins/thunar-uca/thunar-uca-editor.c
---- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-editor.c	2013-05-21 19:50:07.000000000 -0700
-+++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-editor.c	2013-05-21 19:50:20.000000000 -0700
+diff -ru Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-editor.c Thunar-1.6.15/plugins/thunar-uca/thunar-uca-editor.c
+--- Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-editor.c	2018-04-27 18:34:10.000000000 -0400
++++ Thunar-1.6.15/plugins/thunar-uca/thunar-uca-editor.c	2018-04-27 18:34:19.000000000 -0400
 @@ -63,6 +63,8 @@
    GtkWidget   *sn_button;
    GtkWidget   *parameter_entry;
@@ -137,9 +137,9 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-editor.c Thunar-1.6.3/p
                             thunar_uca_editor_get_types (uca_editor));
  }
  
-diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.c
---- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c	2013-05-21 19:50:07.000000000 -0700
-+++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.c	2013-05-21 19:53:41.000000000 -0700
+diff -ru Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.15/plugins/thunar-uca/thunar-uca-model.c
+--- Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-model.c	2018-04-27 18:34:10.000000000 -0400
++++ Thunar-1.6.15/plugins/thunar-uca/thunar-uca-model.c	2018-04-27 18:35:36.000000000 -0400
 @@ -79,6 +79,8 @@
    PARSER_COMMAND,
    PARSER_STARTUP_NOTIFY,
@@ -301,11 +301,11 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/pl
    GList              *lp;
    gint                n_files;
    gint                i, m, n;
-+  gint		      upper, lower;
++  gint                upper, lower;
+   gchar              *path_test;
  
    g_return_val_if_fail (THUNAR_UCA_IS_MODEL (uca_model), NULL);
-   g_return_val_if_fail (file_infos != NULL, NULL);
-@@ -1140,7 +1199,16 @@
+@@ -1143,7 +1202,16 @@
      {
        /* check if we can just ignore this item */
        item = (ThunarUcaModelItem *) lp->data;
@@ -323,7 +323,7 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/pl
          continue;
  
        /* match the specified files */
-@@ -1316,6 +1384,8 @@
+@@ -1319,6 +1387,8 @@
                           const gchar    *command,
                           gboolean        startup_notify,
                           const gchar    *patterns,
@@ -332,7 +332,7 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/pl
                           ThunarUcaTypes  types)
  {
    ThunarUcaModelItem *item;
-@@ -1336,6 +1406,10 @@
+@@ -1339,6 +1409,10 @@
      item->icon_name = g_strdup (icon);
    if (G_LIKELY (command != NULL && *command != '\0'))
      item->command = g_strdup (command);
@@ -343,7 +343,7 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/pl
    if (G_LIKELY (description != NULL && *description != '\0'))
      item->description = g_strdup (description);
    item->types = types;
-@@ -1436,12 +1510,16 @@
+@@ -1439,12 +1513,16 @@
                                           "\t<unique-id>%s</unique-id>\n"
                                           "\t<command>%s</command>\n"
                                           "\t<description>%s</description>\n"
@@ -360,9 +360,9 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/pl
                                           patterns);
        fprintf (fp, "%s", escaped);
        g_free (patterns);
-diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.h Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.h
---- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.h	2013-05-21 19:50:07.000000000 -0700
-+++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.h	2013-05-21 19:50:20.000000000 -0700
+diff -ru Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-model.h Thunar-1.6.15/plugins/thunar-uca/thunar-uca-model.h
+--- Thunar-1.6.15.orig/plugins/thunar-uca/thunar-uca-model.h	2018-04-27 18:34:10.000000000 -0400
++++ Thunar-1.6.15/plugins/thunar-uca/thunar-uca-model.h	2018-04-27 18:34:19.000000000 -0400
 @@ -44,6 +44,8 @@
    THUNAR_UCA_MODEL_COLUMN_UNIQUE_ID,
    THUNAR_UCA_MODEL_COLUMN_COMMAND,
@@ -381,10 +381,10 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.h Thunar-1.6.3/pl
                                                   ThunarUcaTypes          types);
  
  gboolean        thunar_uca_model_save           (ThunarUcaModel         *uca_model,
-diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/uca.xml.in Thunar-1.6.3/plugins/thunar-uca/uca.xml.in
---- Thunar-1.6.3.orig/plugins/thunar-uca/uca.xml.in	2013-05-21 19:50:07.000000000 -0700
-+++ Thunar-1.6.3/plugins/thunar-uca/uca.xml.in	2013-05-21 19:50:20.000000000 -0700
-@@ -40,6 +40,8 @@
+diff -ru Thunar-1.6.15.orig/plugins/thunar-uca/uca.xml.in Thunar-1.6.15/plugins/thunar-uca/uca.xml.in
+--- Thunar-1.6.15.orig/plugins/thunar-uca/uca.xml.in	2018-04-27 18:34:10.000000000 -0400
++++ Thunar-1.6.15/plugins/thunar-uca/uca.xml.in	2018-04-27 18:34:19.000000000 -0400
+@@ -38,6 +38,8 @@
    <action>
      <icon>utilities-terminal</icon>
      <patterns>*</patterns>
@@ -393,7 +393,7 @@ diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/uca.xml.in Thunar-1.6.3/plugins/th
      <_name>Open Terminal Here</_name>
      <command>exo-open --working-directory %f --launch TerminalEmulator</command>
      <_description>Example for a custom action</_description>
-@@ -47,4 +49,15 @@
+@@ -45,4 +47,15 @@
      <directories/>
    </action>
  

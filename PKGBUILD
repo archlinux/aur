@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=thunar-extended
-pkgver=1.6.12
+pkgver=1.6.15
 pkgrel=1
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
@@ -22,8 +22,7 @@ optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems
 	    'thunar-archive-plugin: create and deflate archives'
 	    'thunar-media-tags-plugin: view/edit id3/ogg tags')
 options=('!libtool')
-source=(http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-${pkgver}.tar.bz2
-	0001-Deactivate-SEND_MOVED-code-paths.patch::http://bug-attachment.xfce.org/attachment.cgi?id=6530
+source=(https://archive.xfce.org/src/xfce/thunar/1.6/Thunar-${pkgver}.tar.bz2
 	notrash.patch
 	uca_num_files.patch
 	preview.patch
@@ -37,8 +36,6 @@ build() {
   patch -Np1 -i ../uca_num_files.patch
   patch -Np1 -i ../preview.patch
   patch -Np1 -i ../split_pane.patch
-  # Upstream ones
-  patch -Np1 -i ../0001-Deactivate-SEND_MOVED-code-paths.patch
 
   mkdir m4
   sed -i -e 's/Thunar_CFLAGS/thunar_CFLAGS/' -e 's/Thunar_LDADD/thunar_LDADD/' thunar/Makefile.am
@@ -58,9 +55,8 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('1bdf3c4a57ff886c512341f24b5e0e88'
-         '9f52b207f090b280ac25ceafe3032137'
+md5sums=('8fea2af69c3acbb273fd1a177d3d8e47'
          'd87f154a5fbd3709511ded0c9b9b0317'
-         '69aa416e8694b8b608f767769b6dcd98'
+         'ed289801d509fe72b82c01fbb6f5f715'
          '60d3bb7fc185f5f881b5884bd7f28c87'
          'ce443cf896934131427b7789da130097')
