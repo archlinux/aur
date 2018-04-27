@@ -5,9 +5,9 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r324.g7c712bbec
+pkgver=3.12.0.r338.g411e8fdb9
 pkgrel=1
-pkgdesc="A Voice-over-IP phone"
+pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
