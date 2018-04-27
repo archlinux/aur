@@ -5,4 +5,5 @@
 !/.SRCINFO
 !/.gitignore
 !/PKGBUILD
+!/make-shared-lib.patch
 !/quartet-git.changelog

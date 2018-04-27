@@ -1,2 +1,5 @@
+2018-04-27 Dylon Edwards <deltaecho at archlinux dot us>
+	* quartet-git r2.a99c049 Builds quartet first as a library, then as an executable
+
 2018-04-26 Dylon Edwards <deltaecho at archlinux dot us>
 	* quartet-git r2.a99c049

@@ -1,0 +1,52 @@
+diff --git a/Makefile b/Makefile
+index 52bdd5a..832d4c6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -49,19 +49,21 @@ all: debug
+ 
+ # how to make the main target (debug mode, the default)
+ $(MAIN_PROGRAM): $(DEBUG_OBJ)
+-	$(LINK) $(DEBUG_LINKFLAGS) -o $@ $^ $(LINK_LIBS)
++	$(LINK) $(DEBUG_LINKFLAGS) -shared -o lib$(MAIN_PROGRAM).so $^ $(LINK_LIBS)
++	$(LINK) $(DEBUG_LINKFLAGS) -o $(MAIN_PROGRAM) -L. -l$(MAIN_PROGRAM) $^ $(LINK_LIBS)
+ 
+ # how to make the main target (release mode)
+ $(MAIN_PROGRAM)_release: $(RELEASE_OBJ)
+-	$(LINK) $(RELEASE_LINKFLAGS) -o $@ $^ $(LINK_LIBS)
++	$(LINK) $(RELEASE_LINKFLAGS) -shared -o lib$(MAIN_PROGRAM).so $^ $(LINK_LIBS)
++	$(LINK) $(RELEASE_LINKFLAGS) -o $(MAIN_PROGRAM) -L. -l$(MAIN_PROGRAM) $^ $(LINK_LIBS)
+ 
+ # how to make the viewer application (debug mode, the default)
+ $(VIEWER_PROGRAM): $(VIEWER_DEBUG_OBJ)
+-	$(LINK) $(DEBUG_LINKFLAGS) -o $@ $^ $(LINK_LIBS) $(VIEWER_LIBS)
++	$(LINK) $(DEBUG_LINKFLAGS) -o $(VIEWER_PROGRAM) $^ $(LINK_LIBS) $(VIEWER_LIBS)
+ 
+ # how to make the viewer application (release mode)
+ $(VIEWER_PROGRAM)_release: $(VIEWER_RELEASE_OBJ)
+-	$(LINK) $(RELEASE_LINKFLAGS) -o $@ $^ $(LINK_LIBS) $(VIEWER_LIBS)
++	$(LINK) $(RELEASE_LINKFLAGS) -o $(VIEWER_PROGRAM) $^ $(LINK_LIBS) $(VIEWER_LIBS)
+ 
+ # how to compile the predicates.cpp source file
+ # This is different because optimization must be disabled 
+@@ -88,7 +90,7 @@ obj_debug/%.o:
+ # cleaning up
+ .PHONY: clean
+ clean:
+-	-rm -f obj/*.o $(MAIN_PROGRAM) $(VIEWER_PROGRAM) obj_debug/*.o $(MAIN_PROGRAM)_release $(VIEWER_PROGRAM)_release *core
++	-rm -f obj/*.o lib$(MAIN_PROGRAM).so $(MAIN_PROGRAM) $(VIEWER_PROGRAM) obj_debug/*.o *core
+ 
+ # dependencies are automatically generated
+ .PHONY: depend
+diff --git a/Makefile.defs b/Makefile.defs
+index eb321d8..6b80777 100644
+--- a/Makefile.defs
++++ b/Makefile.defs
+@@ -5,7 +5,7 @@
+ 
+ # For example, on a Linux PC this will likely work:
+ DEPEND = g++
+-CC = g++ -Wall
++CC = g++ -Wall -fpic
+ RELEASE_FLAGS = -O3 -DNDEBUG -funroll-loops
+ DEBUG_FLAGS = -g
+ LINK = g++
