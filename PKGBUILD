@@ -4,7 +4,7 @@
 pkgname=cockroachdb-bin
 conflicts=('cockroachdb')
 provides=('cockroachdb')
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("https://binaries.cockroachdb.com/cockroach-v${pkgver}.linux-amd64.tgz"
         cockroach.service
         cockroach.default
         cockroach.sysusers)
-sha256sums=('b53b64f3c41e3c234f4da130680a62b7df073f04ec8c2ac495dd07f5b7b4bd87'
+sha256sums=('d37596b312f5dc651651bf99c919ad398351afa5d9406551df2e019216a95de2'
             '68040689c4342e0018adec3eb0fb1f2ae68aaeef918e7b4493518523381b7129'
             'b3ef077aa9a0d4b697722de993fa83959f10910ae600de90bcdcdd49fafce371'
             '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067'
@@ -33,14 +33,13 @@ sha256sums=('b53b64f3c41e3c234f4da130680a62b7df073f04ec8c2ac495dd07f5b7b4bd87'
             '2cd6aceddb7240c6ef395f7d92e26de4da63f7700504f6ce47e2aab4e39a4122'
             'b34067e89373e1a47367b454862f43061ad1680542b39b6d95ed29c354473e15'
             '6c336d30983d6295995823a134e3cc85a06ef9418339b53cf6f375df816bea51'
-            '2eb44afe272c46a2b0e8da73c177452795540988fee60ffad1fd874d882bbff1'
+            '55f380f5cb201c6afeafbf1a6fb5a6400dbffa0edc134d30960d1d04e3d19ef2'
             '57d5b6a0a32a0b8c6c005e8e8b6dc6c627edf40d843f94d0720da654678ab5a8')
 
 build() {
-    # XXX arch has libtinfo compiled into ncurses;
-    #     this updates the dl reference accordingly
-    patchelf --replace-needed libtinfo.so.5 libtinfo.so.6 \
-             "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" gen autocomplete
+    # XXX arch ships a newer, but compatible version of ncurses
+    patchelf --replace-needed libncurses.so.5 libncursesw.so.6 \
+             "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach"
 
     "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
         gen autocomplete --out "${srcdir}/cockroach.bash"
