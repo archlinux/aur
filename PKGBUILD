@@ -31,7 +31,8 @@ sha256sums=('4ed406e6786163514ff0714af7417e680c56cbe1edcb297196d6dbee2ffa798b'
 #sha256sums=('78848118509d1cc96c5d686680de55675f556ceb3f2849180dc4e9a3bb9b6c0f')
 #PKGEXT='.pkg.tar.gz'
 
-prepare() {
+# Should be in package() but pacaur supresses the message and does not halt on package() failure.
+build() {
   set -u
   if ! test -e "${startdir}/${_srcfile}"; then
     local _url='https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux'
