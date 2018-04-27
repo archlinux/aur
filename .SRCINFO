@@ -1,7 +1,7 @@
 pkgbase = xf86-input-wizardpen
-	pkgdesc = A Linux/HAL/udev/X11 driver for most non-Wacom graphics pads
+	pkgdesc = X.Org Wizardpen/Genius tablet driver for Linux
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://launchpad.net/wizardpen
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = xf86-input-wizardpen
 	replaces = wizardpen-driver wizardpen
 	source = https://launchpad.net/wizardpen/trunk/0.8/+download/xorg-input-wizardpen-0.8.1.tar.bz2
 	source = config.patch
+	source = xf86RemoveEnabledDevice.patch
 	sha1sums = 82060c678dc241de83b2b7415b6ada619b94db36
 	sha1sums = 86ce045389f477d4bb5b3f89fe7bd26ebe80e6db
+	sha1sums = 9bf16b62bc993294ff2a3818730ab8090a5dbfd2
 
 pkgname = xf86-input-wizardpen
 
