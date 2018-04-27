@@ -1,6 +1,6 @@
 pkgbase = belle-sip-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 1.6.3.r83.ge06b53fd
+	pkgver = 1.6.3.r116.gcbb4ab4c
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/belle-sip/
 	arch = i686

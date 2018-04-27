@@ -5,7 +5,7 @@
 
 pkgname=belle-sip-git
 _pkgname=belle-sip
-pkgver=1.6.3.r83.ge06b53fd
+pkgver=1.6.3.r116.gcbb4ab4c
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
