@@ -2,7 +2,7 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.3.0beta1.r913.gcbf2a329c9
+pkgver=2.3.0beta1.r1116.gcf7c31b559
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
