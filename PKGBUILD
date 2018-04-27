@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Driver and GUI for LMS7002M-based SDR platforms (LimeSDR, Novena RF7, etc.)"
 arch=(any)
 url="https://github.com/myriadrf/LimeSuite"
-license=('MIT')
+license=('Apache')
 depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr')
 makedepends=('git' 'cmake')
 provides=('limesdr' 'soapylms7')
