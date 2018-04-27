@@ -1,6 +1,6 @@
 pkgbase = mediastreamer-git
-	pkgdesc = A library written in C that allows you to create and run audio and video streams
-	pkgver = 2.16.1.r114.gc72fb8e7
+	pkgdesc = A modular sound and video processing and streaming library
+	pkgver = 2.16.1.r155.gad4cdb24
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/mediastreamer2
 	arch = x86_64

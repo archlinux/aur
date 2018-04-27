@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -7,9 +6,9 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=2.16.1.r114.gc72fb8e7
+pkgver=2.16.1.r155.gad4cdb24
 pkgrel=1
-pkgdesc="A library written in C that allows you to create and run audio and video streams"
+pkgdesc="A modular sound and video processing and streaming library"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/mediastreamer2"
 license=('GPL')
@@ -22,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g' 
+    git describe --long | sed 's/\([^-]*-g\)/r\1/; s/-/./g' 
 }
 
 build() {
