@@ -3,7 +3,7 @@
 pkgname=igb
 pkgver=5.3.5.18
 pkgrel=1
-pkgdesc="Driver for Intel Ethernet Network Connection"
+pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
 license=('GPL')
