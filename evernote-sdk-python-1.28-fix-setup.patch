@@ -1,0 +1,19 @@
+--- setup.py	2018-04-27 18:57:58.320803845 +0100
++++ setup.py	2018-04-27 18:58:07.767526856 +0100
+@@ -19,7 +19,7 @@
+     description='Evernote SDK for Python',
+     long_description=read('README.md'),
+     packages=find_packages('lib'),
+-    packages=find_packages('lib',exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
++    package_dir={'': 'lib'},
+     classifiers=[
+         'Development Status :: 5 - Production/Stable',
+         'Intended Audience :: Developers',
+@@ -28,7 +28,6 @@
+     ],
+     license='BSD',
+     install_requires=[
+-        'thrift',
+         'oauth2',
+     ],
+ )
