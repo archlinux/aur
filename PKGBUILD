@@ -1,8 +1,8 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=armory-bin
-pkgver=0.96.3.991
-_binver=0.96.3.991-gcc5.4
+pkgver=0.96.4
+_binver=0.96.4_amd64_gcc7.2
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
@@ -13,21 +13,21 @@ conflicts=('armory' 'armory-git')
 
 # Don't blindly trust a random AUR package with your coins! Signed hashes available at
 # https://github.com/goatpig/BitcoinArmory/releases with GPG ID 8C5211764922589A
-_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
-source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${_binver}_amd64.deb")
-sha512sums=('d732c0426800d36b14baca86df3959bcb0888e67ebc9a4ec0bb6227b7f6cce88e3f7a04d5f883db5119357512fa313553c7257e77447650a9b1743f6e5833be7')
+_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.asc"
+source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${_binver}.deb")
+sha512sums=('c58621495591c9067cba27a898ddee79983d023d36ba4cb9ebc13ff998508d38e65d6775d19afd2cb33f5f0858f52d4b1dd9eeb4051935722229ecde38eeb4ec')
 
 check() {
   msg 'Validating GPG signature...'
   msg2 '(To disable: remove/rename check() function from PKGBUILD)'
   gpg --recv-key 8C5211764922589A
-  curl -sL $_signatures -o sha256sum.txt.asc
+  curl -sL $_signatures -o sha256sum.asc
   msg2 "Downloading $_signatures"
-  gpg --verify 'sha256sum.txt.asc'
+  gpg --verify 'sha256sum.asc'
   msg2 'GPG signature is valid.'
 
   msg 'Validating signed checksum of downloaded binary...'
-  grep "${_binver}_amd64.deb" 'sha256sum.txt.asc' | tr -d '\r' | sha256sum -c -
+  grep "armory_${_binver}.deb" 'sha256sum.asc' | tr -d '\r' | sha256sum -c -
   msg2 'Checksum valid.'
 }
 
