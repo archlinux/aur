@@ -2,7 +2,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icingaweb2
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -16,7 +16,7 @@ source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
         '3315-dont-call-session_start-after-ini_set.patch'
         'HTMLPurifier-autoload-deprecation-warning.diff')
 install='icingaweb2.install'
-sha256sums=('4a4d388ecd96cdd007ff3044bd32275438c2cf578a06e895b3c51578326c1f33'
+sha256sums=('da9953045895ed26d002ce3d6115af9a5b8012cce9a2667a389c8b9d80cd6592'
             'c40f0608e110fefa2b85b452c416019ff9453722964278fee2128290e467f165'
             '69aa5ebf5ab234c2caad879199dfbaef85d867d701280ef05b50083cc0efffde')
 
