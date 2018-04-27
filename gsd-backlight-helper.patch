@@ -1,0 +1,29 @@
+--- BudgieBrightnessControlApplet.vala.orig	2018-04-27 18:30:21.308217466 +0800
++++ BudgieBrightnessControlApplet.vala	2018-04-27 18:35:20.608105080 +0800
+@@ -226,7 +226,7 @@
+      */
+     private int get_max_brightness() {
+         try {
+-            string[] spawn_args = {"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper",
++            string[] spawn_args = {"pkexec", "/usr/lib/gsd-backlight-helper",
+                 "--get-max-brightness"};
+             string[] spawn_env = Environ.get ();
+             string ls_stdout;
+@@ -254,7 +254,7 @@
+      */
+     private int get_brightness() {
+         try {
+-            string[] spawn_args = {"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper",
++            string[] spawn_args = {"pkexec", "/usr/lib/gsd-backlight-helper",
+                 "--get-brightness"};
+             string[] spawn_env = Environ.get ();
+             string ls_stdout;
+@@ -282,7 +282,7 @@
+      */
+     private void set_brightness(int brightness) {
+         try {
+-            string[] spawn_args = {"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper",
++            string[] spawn_args = {"pkexec", "/usr/lib/gsd-backlight-helper",
+                 "--set-brightness", brightness.to_string()};
+             string[] spawn_env = Environ.get ();
+             string ls_stdout;
