@@ -35,9 +35,9 @@ sha256sums=('4ed406e6786163514ff0714af7417e680c56cbe1edcb297196d6dbee2ffa798b'
 build() {
   set -u
   if ! test -e "${startdir}/${_srcfile}"; then
+    set +u
     local _url='https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux'
     warning "There is no longer a direct download link for the Zoiper tarball.  Get it manually from: ${_url}"
-    set +u
     false
   fi
   set +u
