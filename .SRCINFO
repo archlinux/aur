@@ -20,7 +20,7 @@ pkgbase = mitmproxy-git
 	depends = python2-pyperclip>=1.5.8
 	provides = mitmproxy
 	conflicts = mitmproxy
-	source = mitmproxy-remote::git+https://github.com/mitmproxy/mitmproxy.git
+	source = git+https://github.com/mitmproxy/mitmproxy.git
 	sha1sums = SKIP
 
 pkgname = mitmproxy-git
