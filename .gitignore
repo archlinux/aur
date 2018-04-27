@@ -1,1 +1,4 @@
-*.tar.*
+/*.tar.*
+/*.log
+/src/
+/pkg/
