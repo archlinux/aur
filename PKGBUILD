@@ -1,7 +1,7 @@
 # Maintainer: Husam Bilal <husam212 AT gmail DOT com>
 
 pkgname=stellar
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Stellar is a tool for creating and restoring database snapshots"
 url="https://github.com/fastmonkeys/stellar"
@@ -9,8 +9,8 @@ depends=('python' 'python-yaml' 'python-sqlalchemy' 'python-sqlalchemy-utils' 'p
 makedepends=('python3' )
 license=('MIT')
 arch=('any')
-source=('https://pypi.python.org/packages/source/s/stellar/stellar-0.4.3.tar.gz')
-md5sums=('17fd85dbcf97f4c3b0fdd5ad7aca433b')
+source=("https://pypi.python.org/packages/source/s/stellar/stellar-$pkgver.tar.gz")
+md5sums=('2f6841e1ee739f88addf49c98638a017')
 
 build() {
   cd "$srcdir/stellar-$pkgver"
