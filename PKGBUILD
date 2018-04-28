@@ -2,7 +2,7 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy'
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=('!strip')
 source=("https://github.com/resin-io/$pkgname/archive/v$pkgver.tar.gz"
         'etcher-electron'
         'etcher-electron.desktop')
-sha256sums=('2c788bde217ce943fb783a8c3c437490da9aff28e673976c5468ae4365cee3ef'
+sha256sums=('02082bc1caac746e1cdcd95c2892c9b41ff8d45a672b52f8467548cad4850f5d'
             'a64f79fe894c4828b515844703b1795448a4818a654f5d42d4f567f4d80998d1'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
