@@ -21,8 +21,8 @@ source=(
 noextract=("foxone-desktop-${pkgver}-x86_64.bin")
 sha256sums=(
     "96b140f71ecb488fa75535e71821c9d57db98bbdaf3019a16da80fdf0c6095d4"
-	"dec3e707f36cc4c27916f9eb92ca5c46a5690ab0887256190ed3faa07391fac1"
-	"5c3f8bb3ace24a55bd92ea57a6cad93d2ade8e5dd5a363d6a9b114de62c28e07"
+    "dec3e707f36cc4c27916f9eb92ca5c46a5690ab0887256190ed3faa07391fac1"
+    "5c3f8bb3ace24a55bd92ea57a6cad93d2ade8e5dd5a363d6a9b114de62c28e07"
     "f58ce4d407d296b6c521307e29ab9bdd86ba2099e4280eff2fe356d2ecb70466"
 )
 
