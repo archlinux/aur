@@ -1,0 +1,21 @@
+pkgbase = qt5-sparql-git
+	pkgdesc = Library for accessing RDF stores
+	pkgver = 0.2.18.r0.g2332b2d
+	pkgrel = 1
+	url = https://git.merproject.org/mer-core/libqtsparql
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	license = CUSTOM
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = tracker
+	provides = qt5-sparql
+	source = qt5-sparql-git::git+https://git.merproject.org/mer-core/libqtsparql.git
+	sha256sums = SKIP
+
+pkgname = qt5-sparql-git
+
