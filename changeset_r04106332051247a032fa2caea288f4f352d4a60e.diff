@@ -1,0 +1,16 @@
+commit 04106332051247a032fa2caea288f4f352d4a60e
+Author: Toshiaki Asai <toshi.alternative@gmail.com>
+Date:   Fri Apr 27 22:31:22 2018 +0900
+
+    rest: ポーリングを行っていなかった refs #1208
+
+diff --git a/core/plugin/rest/rest.rb b/core/plugin/rest/rest.rb
+index 037f3ab7..9fcb7428 100644
+--- a/core/plugin/rest/rest.rb
++++ b/core/plugin/rest/rest.rb
+@@ -40,4 +40,5 @@ Plugin.create :rest do
+       end
+     end
+   end
++  start
+ end
