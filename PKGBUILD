@@ -11,7 +11,7 @@
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
 pkgver=10.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ee"
@@ -202,6 +202,7 @@ package() {
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do
     mv "config/${config_file}" "${pkgdir}${_etcdir}/"
+    chown 105:105 "${pkgdir}${_etcdir}/${config_file}"
     [[ -f "${pkgdir}${_datadir}/config/${config_file}" ]] && rm "${pkgdir}${_datadir}/config/${config_file}"
     ln -fs "${_etcdir}/${config_file}" "${pkgdir}${_datadir}/config/"
   done
