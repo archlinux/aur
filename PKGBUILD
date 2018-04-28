@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('graal')
 makedepends=()
 optdepends=()
-source=("https://github.com/oracle/fastr/releases/download/vm-${pkgver_}/r-installable-linux-amd64.jar")
+source=("https://github.com/oracle/$pkgname/releases/download/vm-${pkgver_}/r-installable-linux-amd64.jar")
 sha256sums=('8293611f4640de8a5783ae23e4ad5c853117b66b589c015fc1f8a8ac6c8e8c68')
 
 package() {
