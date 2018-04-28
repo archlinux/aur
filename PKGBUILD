@@ -5,8 +5,9 @@
 
 pkgname=ombi-dev
 pkgver=3.0.3255
-pkgrel=1
+pkgrel=2
 pkgdesc="Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves"
+jobid=w5lri04hlygdlch0
 arch=('x86_64')
 url='https://github.com/tidusjar/Ombi'
 license=('GPL2')
@@ -24,21 +25,15 @@ provides=('ombi')
 conflicts=('ombi')
 options=('staticlibs')
 install='ombi.install'
-source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=develop"
+source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/$jobid/artifacts/linux.tar.gz"
         'ombi.service'
         'ombi.sysusers'
         'ombi.tmpfiles')
-
 noextract=("${pkgname}-${pkgver}.tar.gz")
-
-sha256sums=('SKIP'
+sha256sums=('e0471f303df10b12750ee605cfd504c293902ad0b0976189e3d65af04d92044b'
             '79f4860eaf9d00d3739c6d9fc5e9625ea68dc329bb1cbddae5b51ae4faaae20f'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             'afb971692d313d988096cb4447033f8ca2234016ccc2b3590afd5cbcb36a8e56')
-
-pkgver() {
-  curl -s https://ci.appveyor.com/api/projects/tidusjar/requestplex/branch/develop | grep -Pom 1 '"version":"\K[^"]*'
-}
 
 prepare() {
   mkdir -p "${srcdir}/ombi"
