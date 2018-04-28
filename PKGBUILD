@@ -4,7 +4,7 @@
 pkgbase=python-user_agent
 pkgname=('python-user_agent' 'python2-user_agent')
 pkgver=0.1.9
-pkgrel=1 
+pkgrel=2 
 pkgdesc="User-Agent generator"
 arch=('any')
 url="https://pypi.python.org/pypi/user_agent"
@@ -15,27 +15,27 @@ sha256sums=('8f1ad46cc4aef9f99515ea1c74bb8cacc43e23074c335b2ba2db7735ebe9c0d5')
 
 build() {
   cd $srcdir
-  cp -r user_agent-$pkgver user_agent2-$pkgver
+  cp -r user_agent-$pkgver user_agent2-$pkgver-python2
 }
 
 check() {
   cd $srcdir/user_agent-$pkgver 
-  python3 setup.py check
+  python setup.py check
   
-  cd $srcdir/user_agent2-$pkgver 
+  cd $srcdir/user_agent2-$pkgver-python2 
   python2 setup.py check  
 }
 
 package_python-user_agent() {
   depends=('python' 'python-six')
   cd "$srcdir/user_agent-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1
+  python setup.py install --root "$pkgdir/" --optimize=1
 }
 
 package_python2-user_agent() {
   depends=('python2' 'python2-six')
-  cd "$srcdir/user_agent2-$pkgver"
-  python2 setup.py install --root "${pkgdir}" --optimize=1
+  cd "$srcdir/user_agent2-$pkgver-python2"
+  python2 setup.py install --root "$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
