@@ -1,6 +1,6 @@
 pkgbase = discordrp-mpris-git
 	pkgdesc = Discord Rich Presence based on mpris2 media players
-	pkgver = 0.1.0.r0.g775cea3
+	pkgver = 0.1.1.r0.g2e15d4e
 	pkgrel = 1
 	url = https://github.com/FichteFoll/discordrp-mpris
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = discordrp-mpris-git
 	makedepends = git
 	depends = python
 	depends = python-setuptools
-	depends = python-dbussy
+	depends = python-dbussy-git
 	optdepends = cmus: C* Music Player (native mpris support)
 	optdepends = mpdris2-py3-git: mpris plugin for mpd
 	optdepends = mpv-mpris: mpris plugin for mpv
