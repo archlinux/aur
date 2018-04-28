@@ -2,7 +2,7 @@
 #
 
 pkgname=azpainter
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Painting software"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}-translations.patch")
-sha256sums=('f70111edbbbbd512a48954289be130ecc7f3ff39cc8ccb3cc6b9e9cfdd3c932b'
-            '781beacad0a186571a7410c91486bba5300ade5338fa2e667120f7d9bd66fea0')
+sha256sums=('3590d9d15bfcefa6e7040ddcad95d7bf38f7d7f511ef677ab43b5413201c9810'
+            '439f7d531d0ec8afcb95a0858d918a1f33c97c21fd83f87bfaf0fe26c459561b')
 
 prepare() {
 	cd ${pkgname}-${pkgver}
