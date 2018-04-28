@@ -1,7 +1,7 @@
 # Maintainer: Alif Rachmawadi <arch@subosito.com>
 
 pkgname=wavebox-bin
-pkgver=3.14.3
+pkgver=3.14.5
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ _repourl="https://github.com/wavebox/waveboxapp"
 license=('Mozilla Public License version 2.0')
 options=(!strip)
 provides=('wavebox')
-depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss' 'libappindicator-gtk2')
+depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 optdepends=('gvfs' 'libnotify' 'ttf-ms-fonts')
 
 source=('wavebox.desktop')
@@ -18,8 +18,8 @@ source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha256sums=('ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc')
-sha256sums_x86_64=('8db590b8937c3ecf7e2f285a2a0d36ae825b8f7f676c2e148dfee47975b56afc')
-sha256sums_i686=('e45ed8a397e80a7e35a6dfd9126d4684ce99b937048a731a453d3127f31b0bec')
+sha256sums_x86_64=('d1e777149ed26fd4134170e118a1de70409a9bae40387dfa5a8f58a7bfefadc6')
+sha256sums_i686=('eb1f6721a157e4184b5b64e21c065a2d858b34d0da434d666fba9403ee4be480')
 
 package() {
   if [ ${CARCH} == "x86_64" ]; then
