@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Michal Karas <largon@largon.net>
