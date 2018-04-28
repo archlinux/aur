@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sub Edit
+Comment=A simple subtitle editor
+Comment[it]=Un semplice editor di sottotitoli
+Exec=sub-edit.sh
+NoDisplay=false
+Terminal=false
+Icon=/usr/share/pixmaps/sub-edit-icon.png
+Categories=GTK;Application;AudioVideo;
+Type=Application

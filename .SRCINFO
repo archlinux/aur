@@ -1,0 +1,22 @@
+pkgbase = sub-edit-git
+	pkgdesc = A very simple tool for synchronizing the subtitles of a movie while watching it
+	pkgver = 20180428
+	pkgrel = 1
+	url = https://github.com/alessandrorizzi/sub-edit
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = sbt
+	depends = java-runtime=8
+	depends = sh
+	provides = sub-edit
+	source = git+https://github.com/alessandrorizzi/sub-edit.git
+	source = sub-edit.sh
+	source = sub-edit.desktop
+	sha512sums = SKIP
+	sha512sums = c7db0deab43c89d33a815e973081c7b9890ce42a85c2590d083c1a2167572ca16c02f5485b31da578982de8e38b4262097d8545db1555ae6f5332a7bdc36bed4
+	sha512sums = 50e0cbc6f74d9e99ee2e33f85269bda91f358f9a485618b738ab849670d2891273e5679bb0f1533fce11b37cfc937d3310e732b15c01566a469f9323bf2fd727
+
+pkgname = sub-edit-git
+
