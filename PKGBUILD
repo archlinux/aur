@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.7.6
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('1eede30fc8ef6504e24602fb72b00baa0a7b73b59f16d25cb0771dc8c7c57d6e')
+sha256sums=('87d9b585dbd8628e79aabb6e621a94bd20a072a00762e78e0899fad22fc18fb7')
 
 prepare() {
   cd samba-${pkgver}
@@ -47,26 +47,30 @@ build() {
   _samba4_pdb_modules='pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
   _samba4_auth_modules='auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4'
 
-  ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --libexecdir='/usr/lib32/samba' \
-    --localstatedir='/var' \
-    --sbindir='/usr/bin' \
-    --enable-fhs \
-    --enable-gnutls \
-    --disable-rpath-install \
-    --disable-glusterfs \
-    --with-configdir='/etc/samba' \
-    --with-lockdir='/var/cache/samba' \
-    --with-piddir='/var/run' \
-    --with-sockets-dir='/var/run/samba' \
-    --with-{ads,ldap,winbind,acl-support} \
-    --with-pam \
-    --with-pammodulesdir='/usr/lib32/security' \
-    --bundled-libraries='!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util' \
-    --with-shared-modules="${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules}" \
-    --without-lttng
+  ./configure --enable-fhs \
+              --prefix=/usr \
+              --sbindir=/usr/bin \
+              --libdir=/usr/lib32 \
+              --libexecdir=/usr/lib32/samba \
+              --localstatedir=/var \
+              --with-configdir=/etc/samba \
+              --with-lockdir=/var/cache/samba \
+              --with-sockets-dir=/var/run/samba \
+              --with-piddir=/var/run \
+              --with-ads \
+              --with-ldap \
+              --with-winbind \
+              --with-acl-support \
+              --with-systemd \
+              --systemd-install-services \
+              --enable-gnutls \
+              --with-pam \
+              --with-pammodulesdir=/usr/lib32/security \
+              --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util \
+              --with-shared-modules=${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules} \
+              --disable-rpath-install \
+              --disable-glusterfs \
+              --without-lttng
 
   make
   make DESTDIR="${srcdir}/staging" install
