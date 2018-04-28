@@ -1,6 +1,6 @@
 pkgbase = t-lasku
 	pkgdesc = A Finnish invoicing software
-	pkgver = 1.24.0
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = http://helineva.net/t-lasku/
 	install = t-lasku.install
@@ -10,8 +10,10 @@ pkgbase = t-lasku
 	depends = qt5-base
 	depends = qt5-script
 	optdepends = postgresql-libs
-	source = http://helineva.net/t-lasku/t-lasku-1.24.0-amd64.tar.gz
-	sha1sums = a6f9854111cc5ff3e806e18c3658f1065e7ebadc
+	source_i686 = http://helineva.net/t-lasku/t-lasku-1.25.0-i386.tar.gz
+	sha256sums_i686 = 93df8ff4806531192c0fe4c0fd5c9652e3c066c8f5d1ed700a269066ce09acf9
+	source_x86_64 = http://helineva.net/t-lasku/t-lasku-1.25.0-amd64.tar.gz
+	sha256sums_x86_64 = 92cd3859fb1c6b029dc4b41a7f9ef4b4eefa848e114b480ba23ca275792f3f77
 
 pkgname = t-lasku
 
