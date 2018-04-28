@@ -7,13 +7,14 @@
 
 pkgname=yp-tools
 pkgver=4.2.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux NIS Tools'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/yp-tools'
 license=('GPL2')
-depends=('libnsl')
-backup=('etc/nisdomainname')
+depends_i686=('libnsl')
+depends_x86_64=('libnss_nis')
+backup=('etc/nisdomainname' 'etc/nicknames')
 install=yp-tools.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'domainname.service'
@@ -44,4 +45,4 @@ package() {
 md5sums=('b2beee519500c48f27570958b1d6cb86'
          '5a78cd2218936241133e5f61383a2dc8'
          '74298e047121f528a2a5c221afd783ab'
-         'df2a8087cb58b659f38e374f270f3e51')
+         'cae542d8c60a5aec9699049ddea8f66b')
