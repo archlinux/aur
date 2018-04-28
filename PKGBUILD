@@ -1,10 +1,9 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
-# Thanks to: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
 pkgname=libpurple-carbons-git
 _pkgname=carbons
 pkgver=r27.8ab2fe5
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)'
 arch=('i686' 'x86_64')
 url="https://github.com/gkdr/carbons"
@@ -29,9 +28,11 @@ prepare() {
   git submodule update --init --recursive
 }
 
-package() {
+build() {
   cd "$srcdir/$_pkgname"
-  make install PURPLE_PLUGIN_DIR="$pkgdir/usr/lib/purple-2"
+  make
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+    install -Dm755 "$srcdir/$_pkgname/build/$_pkgname.so" "$pkgdir/usr/lib/purple-2/$_pkgname.so"
+}
