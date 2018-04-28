@@ -9,7 +9,6 @@ pkgbase = deepin-wine-plugin
 	makedepends = tar
 	depends = deepin-wine
 	depends = gtk2
-	conflicts = deepin-qq-im
 	noextract = deepin-wine-plugin_1.0deepin2_i386.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_i386.deb
 	md5sums = 954c963c03c20e2729b8c4e73306bbae
