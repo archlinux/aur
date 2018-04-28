@@ -1,7 +1,8 @@
-# Maintainer: Josh VanderLinden <arch@cloudlery.com>
+# Maintainer: Jordan Day jordanday 4 4 4 at gmail.com
+# Contributer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=adduser
 pkgver=1.15
-pkgrel=5
+pkgrel=6
 pkgdesc="Interactive front end to /usr/bin/useradd from Slackware Linux"
 arch=('any')
 url="http://www.slackware.com/"
