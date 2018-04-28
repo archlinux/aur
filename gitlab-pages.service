@@ -4,11 +4,15 @@ After=syslog.target network.target
 ConditionFileIsExecutable=/usr/bin/gitlab-pages
 
 [Service]
-User=gitlab
-Group=gitlab
+User=root
+Group=root
 StartLimitInterval=5
 StartLimitBurst=10
-ExecStart=/usr/bin/gitlab-pages -config /etc/gitlab-pages/config.cfg
+# systemd cannot handle User=${...}, so wrap it in ExecStart instead
+EnvironmentFile=/etc/gitlab-pages/service.env
+ExecStart=/usr/bin/setpriv --inh-caps=-all --clear-groups \
+	--reuid=${GITLAB_PAGES_UID} --regid=${GITLAB_PAGES_GID} \
+	/usr/bin/gitlab-pages -config /etc/gitlab-pages/config.cfg
 Restart=always
 RestartSec=120
 StandardOutput=syslog
@@ -17,7 +21,6 @@ SyslogIdentifier=gitlab-pages
 PrivateTmp=true
 ProtectSystem=full
 ProtectHome=true
-CapabilityBoundingSet=
 
 [Install]
 WantedBy=multi-user.target
