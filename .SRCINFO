@@ -10,6 +10,7 @@ pkgbase = libpurple-carbons-git
 	depends = libpurple
 	depends = glib2
 	depends = libxml2
+	conflicts = libpurple-carbons
 	source = carbons::git+https://github.com/gkdr/carbons.git
 	sha256sums = SKIP
 

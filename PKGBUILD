@@ -11,6 +11,7 @@ url="https://github.com/gkdr/carbons"
 license=('GPL')
 depends=('libpurple' 'glib2' 'libxml2')
 makedepends=('git')
+conflicts=('libpurple-carbons')
 source=("$_pkgname::git+https://github.com/gkdr/carbons.git")
 sha256sums=('SKIP')
 
@@ -28,14 +29,9 @@ prepare() {
   git submodule update --init --recursive
 }
 
-build() {
-  cd "$srcdir/$_pkgname"
-  make
-}
-
 package() {
   cd "$srcdir/$_pkgname"
-  make prefix="$pkgdir/usr/" install
+  make install PURPLE_PLUGIN_DIR="$pkgdir/usr/lib/purple-2"
 }
 
 # vim:set ts=2 sw=2 et:
