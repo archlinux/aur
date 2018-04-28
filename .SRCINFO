@@ -1,0 +1,18 @@
+pkgbase = libpurple-carbons
+	pkgdesc = Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/gkdr/carbons
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpurple
+	depends = libxml2
+	depends = glib2
+	conflicts = libpurple-carbons-git
+	source = carbons-0.1.4.zip::https://github.com/gkdr/carbons/archive/v0.1.4.zip
+	sha512sums = 6767103703502dd7d7c63d1726d5ebc238105bebfe6661c82206da5fc7c8671a9c8f7a9763ec801b0bcc81a7e586ce188e7ca82c94e6f5c9b49c1819a73ceb06
+
+pkgname = libpurple-carbons
+
