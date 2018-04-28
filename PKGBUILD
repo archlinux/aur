@@ -2,13 +2,13 @@
 pkgname=marvinc-git
 _gitname=MarvInc
 _lpkg="${_gitname,,}"
-pkgver=1.1.1.r1.g2a732d6
+pkgver=1.2.1.r0.g6d2f4e7
 pkgrel=1
 pkgdesc="MarvInc is a zachlike puzzle game with a story told through emails."
 arch=('x86_64')
 url="https://github.com/MarvellousSoft/MarvInc/"
 license=('GPL')
-depends=('love')
+depends=('love10')
 provides=("${_lpkg}")
 conflicts=("${_lpkg}")
 source=('git+https://github.com/MarvellousSoft/MarvInc#branch=master')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  printf '#!/bin/bash\nlove %s' "$HOME/.marvinc/marv" > run.sh
+  printf '#!/bin/bash\nlove10 %s' "$HOME/.marvinc/marv" > run.sh
   chmod +x run.sh
 }
 
