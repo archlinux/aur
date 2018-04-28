@@ -2,7 +2,7 @@
 
 pkgname=usermin
 pkgver=1.741
-pkgrel=2
+pkgrel=3
 pkgdesc="A web-based user account administration interface"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -47,6 +47,7 @@ backup=('etc/usermin/miniserv.conf' 'etc/usermin/miniserv.users' \
 'etc/logrotate.d/usermin' \
 'etc/pam.d/usermin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
+        fixperms.diff
         setup-pre.sh
         setup-post.sh
         usermin-config.tar.bz2
@@ -58,6 +59,7 @@ options=(!strip !zipman)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
+    patch -p1 < "$srcdir"/fixperms.diff
 
     # remove modules that we do not support and stuff that is not needed
     rm -r usermin-init usermin-daemon install-module.pl
@@ -94,6 +96,7 @@ package() {
 
 
 sha256sums=('3d2c74501966fa3a3795b0e9bcc47962815738fd1553782ee42221ee88026b2f'
+            '0835aa3a08ee50f725ff07cd9f91111c8cf5f2692639346bee0382e8c0cfc3c5'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '17102b3583190f64fae039ca5270ae823cae90ed60fdb2dd49aba95496bff559'
             'c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d'
