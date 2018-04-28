@@ -1,6 +1,5 @@
 # Maintainer: izznogoood <ama@getmail.com>
 
-_pkgname=startup-settings
 pkgname=startup-settings
 pkgver=516860c
 pkgrel=1
