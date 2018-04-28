@@ -1,0 +1,17 @@
+pkgbase = this
+	pkgdesc = Standardized project tool for running common tasks
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ibelieve/this
+	arch = any
+	license = MIT
+	makedepends = python-pytest
+	makedepends = python-pytest-mock
+	depends = python
+	depends = python-setuptools
+	depends = python-click
+	source = this-0.3.tar.gz::https://github.com/ibelieve/this/archive/v0.3.tar.gz
+	md5sums = 80a8b43eefcc4c5c215f6f04b4fbb635
+
+pkgname = this
+
