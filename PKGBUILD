@@ -1,7 +1,9 @@
-# Maintainer: sekret
+# Maintainer: cdude
+# Contributor: sekret
+
 _pkgname=surf
 pkgname=$_pkgname-git
-pkgver=2.0.r50.g723ff26
+pkgver=2.0.r53.g81f0452
 pkgrel=1
 pkgdesc="a WebKit based browser"
 arch=('i686' 'x86_64')
@@ -10,6 +12,7 @@ license=('custom:MIT/X')
 depends=('webkit2gtk' 'gcr' 'xorg-xprop')
 makedepends=('git')
 optdepends=('dmenu: url bar and search'
+            'tabbed: tab browsing'
             'ca-certificates: SSL verification'
             'st: default terminal for the download handler'
             'curl: default download handler'
@@ -19,7 +22,7 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+https://git.suckless.org/surf"
         'config.h')
 md5sums=('SKIP'
-         'SKIP')
+         '61acead6e11b1980fa1bcba0ae5a1cb4')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,7 +31,15 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  #cp "$srcdir/config.h" .
+  for file in "${source[@]}"; do
+      if [[ "$file" == "config.h" ]]; then
+          # add config.h if present in source array
+          cp "$srcdir/$file" .
+      elif [[ "$file" == *.diff || "$file" == *.patch ]]; then
+          # add all patches present in source array
+          patch -Np1 < "$srcdir/$(basename ${file})"
+      fi
+   done
 }
 
 build() {
