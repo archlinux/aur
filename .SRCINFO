@@ -6,6 +6,7 @@ pkgbase = startup-settings
 	arch = any
 	license = UNKNOWN
 	makedepends = gcc-multilib
+	makedepends = git
 	depends = gtk3
 	provides = startup-settings
 	source = git+https://github.com/hant0508/startup-settings.git

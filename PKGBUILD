@@ -9,7 +9,8 @@ arch=('any')
 url="https://github.com/hant0508/startup-settings"
 license=('UNKNOWN')
 depends=('gtk3')
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib'
+'git')
 provides=('startup-settings')
 source=("git+https://github.com/hant0508/startup-settings.git")
 sha256sums=('SKIP')
