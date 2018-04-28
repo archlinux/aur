@@ -1,6 +1,6 @@
 pkgbase = ufetch
 	pkgdesc = Info script for minimal *nix systems.
-	pkgver = 20170507.30da87a
+	pkgver = 20180427.84edb06
 	pkgrel = 1
 	url = https://github.com/jschx/ufetch
 	arch = any
