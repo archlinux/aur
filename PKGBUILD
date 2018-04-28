@@ -22,7 +22,7 @@ _jdk_update=172
 _jdk_build=00
 _hgtag=${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgver=${_java_ver}.u${_jdk_update}
-pkgrel=1
+pkgrel=2
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=('x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
@@ -36,7 +36,7 @@ source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
         # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/17-gcc-compatibility.patch
         17-gcc-compatibility.patch)
 
-sha256sums=('435a59c9883ce79b74e2c1e61eac4ce7da54ba58179363a572bfbd8d2363c4bf'
+sha256sums=('7d6aa064c1368dcba9c781083440368f835823e41b98ef61c4f0b6818484eb5a'
             '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
             'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703'
             '864967467efeaffdabe1e60b7cfd0a27ce93be55ef45ef9993790219ad164554')
