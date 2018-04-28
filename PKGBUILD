@@ -1,7 +1,7 @@
-# Maintainer: kitsunyan <kitsunyan@inbox.ru>
+# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=intel-undervolt
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Intel CPU undervolting tool'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/kitsunyan/$pkgname"
 license=('GPL3')
 backup=(etc/intel-undervolt.conf)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b5bd3e08d00ab19e035f03ca58745211347228029551edd5383ee9bf370a5d50')
+sha256sums=('ff6a638f12aa1299eaa857a11d7711f0b51207e4d42174d096aed74808f92535')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
