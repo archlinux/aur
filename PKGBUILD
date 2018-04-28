@@ -2,7 +2,7 @@
 
 pkgname=boomaga-qt5
 _name=boomaga
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="is a virtual printer for viewing a document before printing it out using the physical printer - QT5 version"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
     make "DESTDIR=$pkgdir" install
   install -D -m755 $srcdir/$_name-$pkgver/scripts/installPrinter.sh ${pkgdir}/usr/bin/
 }
-sha256sums=('bbb1578350a36041a4bae7146cdf0fc4cc3654daa98becd80e04838083577bb5')
+sha256sums=('fd05be1100701cf6e7bbbf41b635ca2ca4d1eaf88bfdcf4a83f9a6ba8de24e35')

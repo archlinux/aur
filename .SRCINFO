@@ -1,6 +1,6 @@
 pkgbase = boomaga-qt5
 	pkgdesc = is a virtual printer for viewing a document before printing it out using the physical printer - QT5 version
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://www.boomaga.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = boomaga-qt5
 	depends = qt5-tools
 	depends = poppler
 	conflicts = boomaga
-	source = https://github.com/Boomaga/boomaga/archive/v1.2.0.tar.gz
-	sha256sums = bbb1578350a36041a4bae7146cdf0fc4cc3654daa98becd80e04838083577bb5
+	source = https://github.com/Boomaga/boomaga/archive/v1.3.0.tar.gz
+	sha256sums = fd05be1100701cf6e7bbbf41b635ca2ca4d1eaf88bfdcf4a83f9a6ba8de24e35
 
 pkgname = boomaga-qt5
 
