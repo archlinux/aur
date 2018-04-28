@@ -1,33 +1,32 @@
-# Maintainer: karel <karelparlin at gmail dot com>
+# Maintainer: Karel <karelparlin@gmail.com>
 
 pkgname=soapybladerf-git
-pkgver=r63.9a0cb72
+pkgver=r82.4fa4566
 pkgrel=1
-epoch=2
 pkgdesc="SoapySDR plugin for BladeRF"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/pothosware/SoapyBladeRF"
-license=('GPLv3')
+license=('LGPLv2')
 depends=('soapysdr' 'bladerf')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=('soapybladerf')
 conflicts=('soapybladerf')
 source=(${pkgname}::"git+https://github.com/pothosware/SoapyBladeRF.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-        cd "${srcdir}/${pkgname}"
-        mkdir -p build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-        make -j4
+    cd "${srcdir}/${pkgname}"
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-        make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
+    make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
 }
