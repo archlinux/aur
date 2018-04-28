@@ -1,5 +1,4 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
-# Thanks to: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=libpurple-carbons
 _pkgname=carbons
@@ -9,7 +8,6 @@ pkgdesc='Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Fi
 arch=('i686' 'x86_64')
 url='https://github.com/gkdr/carbons'
 license=('GPL')
-makedepends=('git')
 depends=('libpurple' 'libxml2' 'glib2')
 conflicts=('libpurple-carbons-git')
 source=("$_pkgname-$pkgver.zip::https://github.com/gkdr/carbons/archive/v$pkgver.zip")
