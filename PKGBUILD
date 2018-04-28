@@ -1,3 +1,4 @@
+# vim: set et sw=2:
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
@@ -5,35 +6,37 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=yp-tools
-pkgver=2.14
-pkgrel=4
+pkgver=4.2.3
+pkgrel=1
 pkgdesc='Linux NIS Tools'
 arch=('i686' 'x86_64')
-url='http://www.linux-nis.org/nis/yp-tools/'
+url='https://github.com/thkukuk/yp-tools'
 license=('GPL2')
-depends=('glibc')
+depends=('libnsl')
 backup=('etc/nisdomainname')
 install=yp-tools.install
-source=("http://www.linux-nis.org/download/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'domainname.service'
 	'domainname.conf')
 
+prepare() {
+  cd $pkgname-$pkgver
+  ./autogen.sh
+}
+
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --sbindir=/usr/bin
+  make V=0
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
-	install -D -m644 ../domainname.conf "${pkgdir}/etc/nisdomainname"
-	install -D -m644 ../domainname.service "${pkgdir}/usr/lib/systemd/system/domainname.service"
-	# usrmove
-	cd "$pkgdir"
-	mv usr/sbin/* usr/bin
-	rmdir usr/sbin
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -D -m644 ../domainname.conf "${pkgdir}/etc/nisdomainname"
+  install -D -m644 ../domainname.service "${pkgdir}/usr/lib/systemd/system/domainname.service"
 }
-md5sums=('ba1f121c17e3ad65368be173b977cd13'
+
+md5sums=('b2beee519500c48f27570958b1d6cb86'
          '5a78cd2218936241133e5f61383a2dc8'
          '74298e047121f528a2a5c221afd783ab')

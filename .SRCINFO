@@ -1,18 +1,18 @@
 pkgbase = yp-tools
 	pkgdesc = Linux NIS Tools
-	pkgver = 2.14
-	pkgrel = 4
-	url = http://www.linux-nis.org/nis/yp-tools/
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = https://github.com/thkukuk/yp-tools
 	install = yp-tools.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = glibc
+	depends = libnsl
 	backup = etc/nisdomainname
-	source = http://www.linux-nis.org/download/yp-tools/yp-tools-2.14.tar.bz2
+	source = yp-tools-4.2.3.tar.gz::https://github.com/thkukuk/yp-tools/archive/v4.2.3.tar.gz
 	source = domainname.service
 	source = domainname.conf
-	md5sums = ba1f121c17e3ad65368be173b977cd13
+	md5sums = b2beee519500c48f27570958b1d6cb86
 	md5sums = 5a78cd2218936241133e5f61383a2dc8
 	md5sums = 74298e047121f528a2a5c221afd783ab
 
