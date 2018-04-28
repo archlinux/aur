@@ -16,11 +16,9 @@ source=(
 	"https://dl.google.com/widevine-cdm/${_widevine_ver}-linux-x64.zip"
 	"chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html"
 )
-sha256sums=(
-	'5d4380308b3d5c2bc6e13d77090688ba00f0828f2777d83376d44038a6d0e2dd'
-	'fe04a5b56eac6674f1eda2c8eb28a0183ec1a66d80f72db618291e33078eb17d'
-	'e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93'
-)
+sha256sums=('5d4380308b3d5c2bc6e13d77090688ba00f0828f2777d83376d44038a6d0e2dd'
+            'fe04a5b56eac6674f1eda2c8eb28a0183ec1a66d80f72db618291e33078eb17d'
+            'cbfb7bc8d48ffc2dc6a86721c00b1662337bf72e7e63bffde783497cf36a43fa')
 
 package() {
 	install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
