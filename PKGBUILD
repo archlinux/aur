@@ -1,6 +1,6 @@
 #Maintainer: KlarkKable <KlarkKable at protonmail dot com>
 pkgname=dart-sdk-dev
-pkgver=2.0.0_dev.49.0
+pkgver=2.0.0_dev.50.0
 pkgrel=1
 pkgdesc="The official Dart sdk from dart-lang project (Development branch)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('unzip')
 conflicts=('dart')
 source=("https://storage.googleapis.com/dart-archive/channels/dev/release/${pkgver//_/-}/sdk/dartsdk-linux-x64-release.zip")
-sha256sums=('d6422555791b614e24ae7c24cb1de99fbd97918d3a47aa11b9858373d7acbe75')
+sha256sums=('0ac31f14ea073756c410123372e77005874235fecff324a5a702f15059278dca')
 
 package() {
   # Uncompressed name is "dart-sdk" not "dart-sdk-dev"
@@ -18,7 +18,7 @@ package() {
   # Install Application
   install -d $pkgdir/{opt/$pkgname,usr/bin}
   cp -a . $pkgdir/opt/$pkgname
-  ln -s bin/* $pkgdir/usr/bin/
+  ln -s /opt/$pkgname/bin/* $pkgdir/usr/bin/
 
   chmod -R ugo+rX $pkgdir/opt
   
