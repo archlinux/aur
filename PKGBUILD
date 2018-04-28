@@ -5,7 +5,7 @@
 
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.67.1
+pkgver=0.68.0
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -23,7 +23,7 @@ depends=('python'
          'python-netifaces'
          'python-webcolors'
          'python-async-timeout>=2.0.0'
-         'python-aiohttp' 
+         'python-aiohttp>=3.1.2'
          'python-aiohttp-cors>=0.5.3'
          'python-jinja>=2.9.5'
          'python-yarl'
@@ -32,7 +32,7 @@ depends=('python'
          'python-certifi' 
          'python-attrs'
          'python-async-timeout'
-         'python-sqlalchemy')
+         'python-sqlalchemy>=1.2.6')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
@@ -40,7 +40,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('fd922e2f4039a0c0012744b259d2d490fd20d2bf8b06b3dedab029217c4a679070b77444b13e1aff89cf175a07003b9adc70709c3c6ae83b70b8f564488fb3af'
+sha512sums=('23427a29450964082b5885d0408ba8f81782721255127ed2b278c9cd7a7e52ce087079d3390c22d2b4b528eb21516c917d6c318e3ffcb13447f8a888942952d0'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
