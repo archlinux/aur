@@ -2,7 +2,7 @@
 
 _npmname=vscode-html-languageserver-bin
 pkgname=vscode-html-languageserver-bin
-pkgver="1.0.0"
+pkgver="1.3.0"
 pkgrel=1
 pkgdesc="Language server implementation for HTML"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('365549ecb7d2ed99bc1e9e511a2de15297b7c782')
+sha1sums=('5e3f2f4f7ce470ebca6184fe0ab16746da0ecee5')
 
 package() {
     cd "${srcdir}"
