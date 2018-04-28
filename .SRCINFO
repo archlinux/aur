@@ -1,0 +1,18 @@
+pkgbase = qt5-udev
+	pkgdesc = Qt-style wrapper for udev
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri
+	license = LGPL3
+	makedepends = liri-qbs-shared
+	depends = qt5-base
+	source = https://github.com/lirios/qtudev/releases/download/v1.0.0/qtudev-1.0.0.tar.xz
+	sha256sums = db5525bd7ddfdb36659e926f99f3703deeaf5eb2cd35ca6ea2ca4214fc161a33
+
+pkgname = qt5-udev
+
