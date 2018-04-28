@@ -1,7 +1,7 @@
 # Maintainer: Tim Wanders <timwanders241@gmail.com>
 _pkgname=pacman-src
 pkgname=pacman-src-git
-pkgver=afcd014
+pkgver=05190a8
 pkgrel=1
 pkgdesc="pacman-src: A simple tool to compile packages from source using the ABS"
 arch=('any')
@@ -24,7 +24,10 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
+    # Fix incorrectly generating man page
+    export _system_config_file="src/conf/pacman-src.conf"
     make VERSION="$pkgver-git" -j1
+    unset  _system_config_file
 }
 
 package() {
