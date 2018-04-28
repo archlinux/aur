@@ -1,7 +1,7 @@
 # Maintainer: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
 
 pkgname=scala-dotty
-pkgver=0.7.0_RC1
+pkgver=0.8.0_RC1
 _pkgverWithHyphen=${pkgver//_/-}
 pkgrel=1
 pkgdesc='A platform to try out new language concepts and compiler technologies for Scala'

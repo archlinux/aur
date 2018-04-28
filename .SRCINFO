@@ -1,12 +1,12 @@
 pkgbase = scala-dotty
 	pkgdesc = A platform to try out new language concepts and compiler technologies for Scala
-	pkgver = 0.7.0_RC1
+	pkgver = 0.8.0_RC1
 	pkgrel = 1
 	url = http://dotty.epfl.ch
 	arch = any
 	license = BSD
 	depends = java-environment=8
-	source = https://github.com/lampepfl/dotty/releases/download/0.7.0-RC1/dotty-0.7.0-RC1.tar.gz
+	source = https://github.com/lampepfl/dotty/releases/download/0.8.0-RC1/dotty-0.8.0-RC1.tar.gz
 	sha1sums = 9257d91723cd4cc7498a0d486e333cbecf423fa4
 
 pkgname = scala-dotty
