@@ -2,7 +2,7 @@
 
 _gitname=plasma-browser-integration
 pkgname=$_gitname-git
-pkgver=r124.08a78f1
+pkgver=r262.e1b70f9
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(i686 x86_64)
@@ -28,8 +28,8 @@ build() {
   cd build
   cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DKDE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DINSTALL_CHROME_MANIFEST=ON
   make
 }
 
