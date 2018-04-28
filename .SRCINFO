@@ -1,8 +1,9 @@
 pkgbase = rsyslog
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability
 	pkgver = 8.34.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.rsyslog.com/
+	install = rsyslog.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -29,7 +30,7 @@ pkgbase = rsyslog
 	source = rsyslog.service
 	sha256sums = 18330a9764c55d2501b847aad267292bd96c2b12fa5c3b92909bd8d4563c80a9
 	sha256sums = 0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a
-	sha256sums = 5fd51665ab9a81fbb24773068cb261b8dec073d74082c121633f49b9381d9a3f
+	sha256sums = bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb
 	sha256sums = 81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2
 
 pkgname = rsyslog
