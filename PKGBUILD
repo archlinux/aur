@@ -4,18 +4,16 @@
 # Maintainer: alexmo82 <25396682 AT live DOT it>
 
 pkgname=freefilesync
-pkgver=9.9
-pkgrel=5
+pkgver=10.0
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
 license=('GPLv3')
 depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost)
-xbrzver=1.6
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
-	"xBRZ_${xbrzver}.zip::https://cfhcable.dl.sourceforge.net/project/xbrz/xBRZ/xBRZ_${xbrzver}.zip"		#xbrz
 	FreeFileSync.desktop
 	ffsicon.png
 	RealTimeSync.desktop
@@ -23,8 +21,7 @@ source=(
 	)
 
 sha256sums=(
-	 '43edd3c8546bd5a44c5d353811389a68b148f0655c006c13f4357f3579b9a970'	#ffs source
-	 '8d51e52a9264d09117cf434b7fcb46a17ee4285a00432554ba47fa86ac4511ce'	#xbrz
+	 '071b8a8a778c4598936ea714f146d585673fe22854b4dab061b9c4c199de27e6'	#ffs source
 	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
 	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
 	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
@@ -50,22 +47,13 @@ prepare() {
 # install error
     cp ${srcdir}/Changelog.txt ${srcdir}/FreeFileSync/Build
 
-# make directory
-    mkdir -p ${srcdir}/xBRZ/src/
-
-# copy needed files into directory
-    cp ${srcdir}/xbrz_config.h ${srcdir}/xBRZ/src/
-    cp ${srcdir}/xbrz.cpp ${srcdir}/xBRZ/src/
-    cp ${srcdir}/xbrz.h ${srcdir}/xBRZ/src/
-    cp ${srcdir}/xbrz_tools.h ${srcdir}/xBRZ/src/
-
-# add xbrz.cpp entries in Makefile
-    sed -i "/zlib_wrap.cpp/ a CPP_LIST+=../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/Makefile
-    sed -i "/popup_dlg_generated.cpp/ a CPP_LIST+=../../../xBRZ/src/xbrz.cpp" FreeFileSync/Source/RealTimeSync/Makefile
-
 # edit lines to remove functions that require wxgtk 3.1.x  
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
+
+# add '-lz' back into LINKFLAGS
+    sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/Makefile
+    sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/RealTimeSync/Makefile
 }
 
 build() {
@@ -79,11 +67,11 @@ build() {
 
 ### FFS
     cd ${srcdir}/FreeFileSync/Source
-    make launchpad
+    make
 
 ### RTS
     cd RealTimeSync
-    make launchpad
+    make
 }
 
 package() {
