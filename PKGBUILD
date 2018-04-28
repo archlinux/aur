@@ -4,7 +4,7 @@
 
 pkgname=xfsdump
 pkgver=3.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional XFS filesystem utilities"
 arch=(i686 x86_64)
 url="http://oss.sgi.com/projects/xfs/"
