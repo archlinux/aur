@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.11.1.0
+pkgver=0.12.0.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -32,22 +32,30 @@ md5sums=('SKIP')
 
 _builddir=build
 
+
 pkgver() {
 	cd "$srcdir/$_gitname"
 
 	# Release tags might point to commits on a branch different than master,
 	# so don't use them.
 	#git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-	printf "$(echo $pkgver | grep -Eo '^[0-9]+.[0-9]+.[0-9]+.[0-9]+').r%s.%s" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "$(echo $pkgver | sed 's/\.r.*//').r%s.g%s" \
+	        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
        cd "$srcdir/$_gitname"
 
+       git submodule init
+       git submodule update
+
        # To apply PRs
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
+
+       cd external/miniupnp
+       git fetch origin refs/pull/3/head # cmake: do not install into system
+       git merge FETCH_HEAD
 }
 
 build() {
