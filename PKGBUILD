@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt'
-_monerover=0.11.1.0
+_monerover=0.12.0.0
 pkgver=${_monerover}
 pkgrel=1
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=('monero-wallet-qt')
 depends=("libmonero-wallet>=$_monerover"
 	'openssl' 'boost-libs>=1.45'  'libunwind' 'readline'
 	'qt5-base' 'qt5-declarative' 'qt5-graphicaleffects'
-	'qt5-location' 'qt5-quickcontrols' 'qt5-tools' 'qt5-webchannel'
+	'qt5-location' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-tools' 'qt5-webchannel'
 	'qt5-webengine' 'qt5-x11extras' 'qt5-xmlpatterns')
 
 makedepends=('git' 'cmake' 'boost')
@@ -22,7 +22,7 @@ pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-
 
 source=("https://github.com/monero-project/monero-gui/archive/v${pkgver}.tar.gz")
 
-md5sums=('94203a93054f78226722f6b29d5b7281')
+md5sums=('ac71691e1f114aafc8c02252a276c128')
 
 _srcdir=monero-gui-$_monerover
 
