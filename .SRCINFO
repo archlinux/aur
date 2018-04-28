@@ -6,7 +6,6 @@ pkgbase = libpurple-carbons
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = libpurple
 	depends = libxml2
 	depends = glib2
