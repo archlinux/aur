@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=biblesync  
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="multicast shared co-navigation library for Bible programs"
 url="https://github.com/karlkleinpaste/biblesync.git/"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libutil-linux' 'gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/karlkleinpaste/biblesync/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6ba649d42d791e9d14feb9c06f5673f51948f51c5154bb34eaee2e24dc21dcde1f3eeb5d87f0ad8021d999c6e07ea9a54e0b8ac353de6e7e1e8c4d01fbfd5dcc')
+sha512sums=('92c86a503dbcc22542e6f15d5fe1b5c282f209b9d4208e82bcf5207b05ed7ca33b6223a496f50108d7c28eab6e14ee14a37ccada6d0b08315ea31c0aeeae2508')
 
 build() {
   cd $pkgname-$pkgver
