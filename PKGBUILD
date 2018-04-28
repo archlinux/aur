@@ -5,7 +5,7 @@
 
 pkgname=fcitx-sogoupinyin
 pkgver=2.2.0.0108
-pkgrel=1
+pkgrel=2
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
 url="https://pinyin.sogou.com/linux/"
@@ -40,5 +40,7 @@ package(){
 
     install -m755 sogou-autostart "$pkgdir"/usr/bin
 
-    sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
+    # Do not modify $pkgdir/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop, as it is
+    # a symlink to absolute path "/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop"
+    sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop
 }
