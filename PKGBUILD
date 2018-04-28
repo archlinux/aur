@@ -2,7 +2,7 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=emby-server-dev-unlocked
-pkgver=3.3.1.24
+pkgver=3.3.1.26
 pkgrel=1
 pkgdesc='Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70')
 
 pkgver() {
-  git ls-remote --tags --refs https://github.com/MediaBrowser/Emby.git | awk '{print $2}' | grep -v '{}' | awk -F"/" '{print $3}' | sort -V | tail -n 1
+  git ls-remote --tags --refs https://github.com/MediaBrowser/Emby.Releases.git | awk '{print $2}' | grep -v '{}' | awk -F"/" '{print $3}' | sort -V | tail -n 1
 }
 
 prepare() {
