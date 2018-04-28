@@ -1,7 +1,7 @@
 pkgbase = libutf8proc-julia
 	pkgdesc = C library for processing UTF-8 encoded Unicode strings
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://julialang.org/utf8proc/
 	arch = x86_64
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = libutf8proc-julia
 	conflicts = libutf8proc
 	replaces = libutf8proc
 	source = libutf8proc-julia-2.1.1.tar.gz::https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz
-	source = libutf8proc.pc
-	md5sums = 0713679a26f18d1f217c15b245a85e92
-	md5sums = b2f769f102e4331bd2ce1313ac53d143
+	source = libutf8proc.pc.in
+	sha256sums = 27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2
+	sha256sums = b5119a9ed25b6a14cb49d496559f35bd5fc94f07a9435e6469f0d9338a8879d8
 
 pkgname = libutf8proc-julia
 
