@@ -1,8 +1,8 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=sirikali
 _name=SiriKali
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -18,8 +18,8 @@ optdepends=('libsecret: support for Gnome libsecret password storage (must recom
             'ecryptfs-simple: for eCryptfs support')
 conflicts=("sirikali-git")
 source=("${_name}-${pkgver}.tar.xz::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz"
-        "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.sha2.asc")
-sha256sums=('2ab44411f9aee06d0d7ca4592fbf8d830078b99f6bc60469648c5b0d8baefa21'
+        "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.asc")
+sha256sums=('a9a587fc63aeee8077d90bd1fa2baec14a85732ff1b4c4cadbd56cc2c97955c9'
             'SKIP')
 validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 
@@ -28,15 +28,15 @@ prepare() {
   mkdir -p build
 
   if pacman -Qs "kwallet" > /dev/null ; then
-    kdeopt="false"
+    skipkde="false"
   else
-    kdeopt="true"
+    skipkde="true"
   fi
 
   if pacman -Qs "libsecret" > /dev/null ; then
-    gnomeopt="false"
+    skipsecret="false"
   else
-    gnomeopt="true"
+    skipsecret="true"
   fi
 }
 
@@ -46,8 +46,8 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINTERNAL_LXQT_WALLET=true \
-    -DNOKDESUPPORT=$kdeopt \
-    -DNOSECRETSUPPORT=$gnomeopt \
+    -DNOKDESUPPORT=$skipkde \
+    -DNOSECRETSUPPORT=$skipsecret \
     -DQT5=true \
     . ..
   make
