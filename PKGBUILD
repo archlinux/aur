@@ -2,8 +2,8 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com_
 
 pkgname=dracut
-pkgver=046
-pkgrel=2.1
+pkgver=047
+pkgrel=1
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64" "aarch64") 
 # At the first "Not build" from aarch64 i remove it, you are warned
@@ -64,7 +64,7 @@ package() {
 }
 
 validpgpkeys=("4C96E1500F9421CCF82D5DCA034EB370014DF270") # Harald Hoyer
-md5sums=('224b67e9bc079e013541a74e85659188'
+md5sums=('62d474ccb8411ec4a76ba5c79bc1093a'
          'SKIP')	# You already have the pgp to check, this is more 
 			# for a backup check than a proper check sum so only
 			# trust that pgp above all

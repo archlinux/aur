@@ -1,7 +1,7 @@
 pkgbase = dracut
 	pkgdesc = Generic, modular, cross-distribution initramfs generation tool
-	pkgver = 046
-	pkgrel = 2.1
+	pkgver = 047
+	pkgrel = 1
 	url = https://dracut.wiki.kernel.org/
 	install = dracut.install
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = dracut
 	optdepends = kexec-tools: For switch kernels without reboot support
 	optdepends = gnupg>=2.1: For OpenPGP smartcards support
 	backup = etc/dracut.conf
-	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-046.tar.xz
-	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-046.tar.sign
+	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-047.tar.xz
+	source = http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-047.tar.sign
 	validpgpkeys = 4C96E1500F9421CCF82D5DCA034EB370014DF270
-	md5sums = 224b67e9bc079e013541a74e85659188
+	md5sums = 62d474ccb8411ec4a76ba5c79bc1093a
 	md5sums = SKIP
 
 pkgname = dracut
