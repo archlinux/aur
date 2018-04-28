@@ -7,7 +7,7 @@ pkgbase = scala-dotty
 	license = BSD
 	depends = java-environment=8
 	source = https://github.com/lampepfl/dotty/releases/download/0.8.0-RC1/dotty-0.8.0-RC1.tar.gz
-	sha1sums = 9257d91723cd4cc7498a0d486e333cbecf423fa4
+	sha1sums = d99f866118eea244e86d346ea3ed05d54b3b6c02
 
 pkgname = scala-dotty
 
