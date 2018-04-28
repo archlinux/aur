@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://osdn.net/projects/azpainter/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
+makedepends=('libxfixes')
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}-translations.patch")
 sha256sums=('3590d9d15bfcefa6e7040ddcad95d7bf38f7d7f511ef677ab43b5413201c9810'
