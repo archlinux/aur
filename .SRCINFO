@@ -1,0 +1,20 @@
+pkgbase = eparakstitajs3
+	pkgdesc = Application software to sign and validate documents in EDOC and PDF formats.
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://www.eparaksts.lv
+	arch = x86_64
+	groups = eparaksts
+	license = custom:E-PARAKSTĪTĀJS 3
+	depends = libxslt
+	depends = java-environment
+	depends = libnet
+	depends = alsa-lib
+	depends = libglvnd
+	depends = libxtst
+	depends = gtk2
+	source = https://download.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/eparakstitajs3/eparakstitajs3_1.4.6_amd64.deb
+	md5sums = 3d27dbefe9f530467efbf05a9aca8a35
+
+pkgname = eparakstitajs3
+
