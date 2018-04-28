@@ -30,7 +30,12 @@ _srcdir=monero-gui
 
 pkgver() {
     cd "$srcdir/$_srcdir"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+    # Release tags might point to commits on a branch different than master,
+    # so don't use them.
+    #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "$(echo $pkgver | sed 's/\.r.*//').r%s.g%s" \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
