@@ -1,13 +1,14 @@
 # Maintainer: Jguer <joaogg3 at gmail dot com>
 pkgname=yay-bin
 pkgver=6.727
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled."
 arch=('x86_64')
 url="https://github.com/Jguer/yay"
 license=('GPL')
 depends=(
   'sudo'
+  'git'
 )
 provides=('yay')
 conflicts=('yay' 'yay-git')
