@@ -1,0 +1,15 @@
+pkgbase = startup-settings
+	pkgdesc = Manage Gnome3 startup Apps and Scripts
+	pkgver = 516860c
+	pkgrel = 1
+	url = https://github.com/hant0508/startup-settings
+	arch = any
+	license = UNKNOWN
+	makedepends = gcc-multilib
+	depends = gtk3
+	provides = startup-settings
+	source = git+https://github.com/hant0508/startup-settings.git
+	sha256sums = SKIP
+
+pkgname = startup-settings
+
