@@ -1,0 +1,66 @@
+diff -Naur a/src/main.cc b/src/main.cc
+--- a/src/main.cc	2018-04-27 22:43:02.860061166 -0300
++++ b/src/main.cc	2018-04-27 22:47:21.010061559 -0300
+@@ -210,10 +210,11 @@
+ 
+   // diretorio home nao existe
+   if(!*fhome){
+-    mkdir(home(),0700);   
++    std::cout << _("Creating home path:") << home().c_str() << std::endl;
++    mkdir(home().c_str(),0700);   
+   }
+ 
+-  fhome = new std::ifstream(dbfile());
++  fhome = new std::ifstream(dbfile().c_str());
+   
+   // database not exists
+   if(!*fhome){
+@@ -271,7 +272,7 @@
+ int main(int argc, char **argv)
+ {
+ 
+-  sprintf(dbpath, "%s", dbfile());
++  sprintf(dbpath, "%s", dbfile().c_str());
+   bootstrap();
+   migrate_database();
+ 
+diff -Naur a/src/utils.cc b/src/utils.cc
+--- a/src/utils.cc	2018-04-27 22:43:02.860061166 -0300
++++ b/src/utils.cc	2018-04-27 22:44:00.370061253 -0300
+@@ -22,19 +22,19 @@
+ 
+ #include "utils.h"
+ 
+-const char* home()
++std::string home()
+ {
+   string file = getenv("HOME");
+   file.append("/.gnomato");
+ 
+-  return file.c_str();
++  return file;
+ }
+ 
+-const char* dbfile()
++std::string dbfile()
+ {
+   string file = getenv("HOME");
+   file.append(DBPATH);
+   file.append("\0");
+ 
+-  return file.c_str();
++  return file;
+ }
+diff -Naur a/src/utils.h b/src/utils.h
+--- a/src/utils.h	2018-04-27 22:43:02.860061166 -0300
++++ b/src/utils.h	2018-04-27 22:43:29.690061207 -0300
+@@ -30,7 +30,7 @@
+ 
+ #define DBPATH "/.gnomato/gnomato1.0.1.db"
+ 
+-const char* home();
+-const char* dbfile();
++std::string home();
++std::string dbfile();
+ 
+ #endif // _UTILS_H_
