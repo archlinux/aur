@@ -4,8 +4,8 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=0.9.0.svn.r8061
-_pkgver=0.9.0~0+svn8061
+pkgver=0.9.0.svn.r8072
+_pkgver=0.9.0~0+svn8072
 pkgrel=1
 pkgdesc="A file manager with two panels side by side"
 arch=('i686' 'x86_64')
@@ -23,17 +23,17 @@ options=('!strip')
 _bldarch=amd64
 [[ $CARCH = i686 ]] && _bldarch=i386
 
-_url=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_17.10
+_url=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_18.04
 source=(${_url}/all/${_pkgname}-common_${_pkgver}_all.deb)
 source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
         ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('bca4daae2c1c0e23c28f14507e9c5d754bd6e39fa897685ca00433acfcb1f2f5')
-sha256sums_i686=('06c086632087faae040327326c2eb2e18bf1e1f09c239ede85137feac2d8461b'
-                 'b44a3cde05f2587d2e2a3a89cd3fd7f2af10df7b51d3c6dca5d155ad4e3b6be2')
-sha256sums_x86_64=('6f5cc807a82323b271197d82b5cfcb0a15c5f294738636edbac9d09c14961eb3'
-                   '7a3e034dbc2e95b6367bf4c464fce120fb089d66c8e669d14df4f66751b815a1')
+sha256sums=('08aac90e0093f9e8df6ffd68dd44f11239e010ce949ffe248d854d1841480018')
+sha256sums_i686=('526c8359dfe4c1b9cc227b4edc1d90b04e25da56d74a75ca23bc906c70526c0a'
+                 '8c0dd39768247053545433e87f7951e6b7d1e88e52ff401cf638220a0412de27')
+sha256sums_x86_64=('8ee04b5e18728788de79a921d3d44d0431c07548e53b4fdcb2ad3b19c0918da0'
+                   '0e390577bcb30b60267322e734749093f13a7dccb345d9dc63342f54d71bb9e3')
 
 noextract=(
    ${_pkgname}-gtk_${_pkgver}_${_bldarch}.deb
