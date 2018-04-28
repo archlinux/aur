@@ -4,8 +4,8 @@
 
 _srcname=pstoedit
 pkgname=pstoedit-nomagick
-pkgver=3.70
-pkgrel=6
+pkgver=3.71
+pkgrel=1
 pkgdesc='Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)'
 arch=('i686' 'x86_64')
 url='http://www.pstoedit.net/'
@@ -15,19 +15,16 @@ provides=('pstoedit' 'libpstoedit.so')
 conflicts=('pstoedit')
 source=("https://sourceforge.net/projects/pstoedit/files/pstoedit/${pkgver}/${_srcname}-${pkgver}.tar.gz"
         '02-errors-to-stderr.patch'
-        '04-fix-obsolete-LIBPNG_LDFLAGS.patch'
-        '05-fix-plugin-loading.patch')
-sha256sums=('06b86113f7847cbcfd4e0623921a8763143bbcaef9f9098e6def650d1ff8138c'
-            '66cd2bd3f92aa4ba57c916f721acd8c42c07fffea5fbc81f075853dab845d6d8'
-            '3320bbcf6ba33d70213897f41c31c158d4bb4284e17b061ed8d1c38c1ee5a8b8'
-            'edec8010f6f05126047ce8f9facf1c36a2c0480a0bac14469b8ffb31a7722625')
+        '04-fix-obsolete-LIBPNG_LDFLAGS.patch')
+sha256sums=('0589cd22cd9c23dee12d9bc9f26760f872185d8a1fb72a05bc58f6b824cfbc95'
+            '3ab9c962cb70744f984083755eafcf6e62b3b603ad060b5a078bcc3bda389448'
+            'c5a3fd24ff4d57ac7106ee4f9f19e0fb1cd94cbaf7ad53a8ff979bcfe7173139')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     
     patch -Np1 -i "${srcdir}/02-errors-to-stderr.patch"
     patch -Np1 -i "${srcdir}/04-fix-obsolete-LIBPNG_LDFLAGS.patch"
-    patch -Np1 -i "${srcdir}/05-fix-plugin-loading.patch"
 }
 
 build() {

@@ -11,7 +11,7 @@ file. This patch fixes this by removing there also
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/config/pstoedit.pc.in b/config/pstoedit.pc.in
-index 3131ac5..ffda220 100644
+index 3131ac5..ffda220 100755
 --- a/config/pstoedit.pc.in
 +++ b/config/pstoedit.pc.in
 @@ -7,5 +7,5 @@ Name: pstoedit

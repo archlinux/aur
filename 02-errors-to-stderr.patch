@@ -12,10 +12,10 @@ Bug-Debian: http://bugs.debian.org/551125
  1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/src/pstoedit.cpp b/src/pstoedit.cpp
-index 7f66d23..33a297a 100644
+index d3b8fd5..d36f52b 100644
 --- a/src/pstoedit.cpp
 +++ b/src/pstoedit.cpp
-@@ -414,7 +414,7 @@ extern "C" DLLEXPORT
+@@ -420,7 +420,7 @@ extern "C" DLLEXPORT
  		break;
  			}
  	default:{
@@ -24,16 +24,16 @@ index 7f66d23..33a297a 100644
  		shortusage(diag);
  		return 1;
  			}
-@@ -500,7 +500,7 @@ extern "C" DLLEXPORT
+@@ -506,7 +506,7 @@ extern "C" DLLEXPORT
  		usage(diag,false,false);
- 		const char *gstocall = whichPI(diag, options.verbose, options.gsregbase.value.c_str(),options.GSToUse.value.c_str());
+ 		const char *gstocall = whichPI(diag, options.verbose(), options.gsregbase.value.c_str(),options.GSToUse.value.c_str());
  		if (gstocall != 0) {
 -			diag << "Default interpreter is " << gstocall << endl;
 +			errstream << "Default interpreter is " << gstocall << endl;
  		}
  		getglobalRp()->explainformats(diag);
  		return 1;
-@@ -577,13 +577,13 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -589,13 +589,13 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  	if (options.drivername.value.length() == 0) {
  		// try to find driver according to suffix of input file
  		if (!options.nameOfOutputFile) {
@@ -49,7 +49,7 @@ index 7f66d23..33a297a 100644
  				shortusage(diag);
  				return 1;
  			} else {
-@@ -592,7 +592,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -604,7 +604,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  					errstream << "No explicit output format specified - using " << suffixDriverDesc->symbolicname << " as derived from suffix of output file" << endl;
  					options.drivername = suffixDriverDesc->symbolicname;
  				} else {
@@ -58,7 +58,7 @@ index 7f66d23..33a297a 100644
  					// usage(errstream);
  					getglobalRp()->explainformats(diag); // ,true);
  					return 1;
-@@ -611,13 +611,13 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -623,13 +623,13 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  		}
  		const DriverDescription *currentDriverDesc = getglobalRp()->getDriverDescForName(options.drivername.value.c_str());
  		if (currentDriverDesc == 0) {
@@ -74,7 +74,7 @@ index 7f66d23..33a297a 100644
  			return 1;
  		}
  
-@@ -625,7 +625,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -637,7 +637,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  		if (driveroptions && strequal(driveroptions, "-help") ) {
  			ProgramOptions* dummy = currentDriverDesc->createDriverOptions();
  			if (dummy->numberOfOptions() ) {
@@ -83,7 +83,7 @@ index 7f66d23..33a297a 100644
  				dummy->showhelp(diag,false,false);
  			}
  			delete dummy;
-@@ -635,7 +635,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -647,7 +647,7 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  // TODO:
  			// Check for input file (exists, or stdin) stdout handling
  			if (!options.nameOfInputFile) {
@@ -92,7 +92,7 @@ index 7f66d23..33a297a 100644
  				return 1;
  			}
  			// an input file was given as argument
-@@ -646,23 +646,23 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
+@@ -658,23 +658,23 @@ To get the pre 8.00 behaviour, either use -dNOEPS or run the file with (filename
  			convertBackSlashes(options.nameOfInputFile);
  
  			if (!fileExists(options.nameOfInputFile)) {
