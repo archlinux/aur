@@ -3,7 +3,7 @@
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher-git
-pkgver=1alpha+git20180426.f3349e5
+pkgver=1alpha+git20180428.44f5a67
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
@@ -11,8 +11,10 @@ url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('qt5-base' 'fuse' 'cairo' 'binutils' 'desktop-file-utils' 'shared-mime-info' 'inotify-tools' 'libarchive')
 makedepends=('git' 'cmake' 'wget' 'vim')
-source=("git://github.com/TheAssassin/$_pkgname#tag=continuous")
-sha256sums=('SKIP')
+source=("git://github.com/TheAssassin/$_pkgname#tag=continuous"
+        'appimage-binfmt-remove.hook')
+sha256sums=('SKIP'
+            '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -41,4 +43,9 @@ package() {
 
   # install license files
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cd "$srcdir"
+
+  # Install pacman hook
+  install -Dm644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
 }
