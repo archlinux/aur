@@ -1,6 +1,6 @@
 # Maintainer: Ryan Gonzalez <rymg19@gmail.com>
 pkgname=qldv
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="create a patched ld-linux.so without version information warnings"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ replaces=()
 backup=()
 options=()
 install=
-source=('https://github.com/kirbyfan64/qldv/archive/v0.2.tar.gz')
-sha256sums=('7ba604a4493d16b800287cdbd86dd8f545589c97427022b09bcccc1f4946b43e')
+source=('https://github.com/kirbyfan64/qldv/archive/v0.3.tar.gz')
+sha256sums=('6887bbd5a647629aac0877666bc302c0dedcef0178693173471f729de4b7f8ae')
 
 package() {
 	make install -C "$srcdir/qldv-$pkgver" DESTDIR="$pkgdir" PREFIX="/usr"
