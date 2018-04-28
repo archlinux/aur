@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-exwm-git
-pkgver=r311.a145445
+pkgver=r367.87db8b4
 pkgrel=1
 pkgdesc="Windowmanager in written in elisp"
 arch=('any')
 url="https://github.com/ch11ng/exwm.git"
 license=('GPL')
-depends=('emacs')
+depends=('emacs-xelb')
 makedepends=('git')
 provides=('emacs-exwm')
 conflicts=('emacs-exwm')
@@ -20,12 +20,17 @@ pkgver() {
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
+build() {
+  cd "$_gitname"
+  emacs -Q -batch -L . -f batch-byte-compile *.el || true
+}
+
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   for _i in *.el
   do
-    install -Dm644 ${_i} $pkgdir/usr/share/emacs/exwm/${_i}
+    install -Dm644 ${_i} "$pkgdir"/usr/share/emacs/site-lisp/exwm/${_i}
   done
-  install -Dm644 README.md $pkgdir/usr/share/doc/emacs-exwm/README.md
-  install -Dm644 xinitrc $pkgdir/usr/share/doc/emacs-exwm/sample-xinitrc
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/emacs-exwm/README.md
+  install -Dm644 xinitrc "$pkgdir"/usr/share/doc/emacs-exwm/sample-xinitrc
 }
