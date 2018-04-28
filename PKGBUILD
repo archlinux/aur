@@ -2,11 +2,11 @@
 
 pkgname='xd-torrent-git'
 _gitname='XD'
-pkgver=0.1.0.pre2
+pkgver=0.2.2
 pkgrel=1
 arch=('any')
 url="https://github.com/majestrate/XD"
-depends=('go>=1.6' 'i2pd>=2.17.0.r49')
+depends=('go>=1.6' 'i2pd>=2.18')
 makedepends=('git')
 license=('MIT')
 pkgdesc="Standalone I2P BitTorrent Client written in GO"
