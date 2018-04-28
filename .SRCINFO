@@ -1,7 +1,7 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.93.0.r988.gf494d6ae1f
-	pkgrel = 2
+	pkgver = 3.93.0.r1441.gb20e68cc91
+	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = x86_64
 	license = LGPL
@@ -11,6 +11,7 @@ pkgbase = gtk4-git
 	makedepends = meson
 	makedepends = ninja
 	depends = at-spi2-atk
+	depends = cairo
 	depends = atk-git>=2.15.1
 	depends = dconf
 	depends = glib2-git>=2.55.0
@@ -22,9 +23,11 @@ pkgbase = gtk4-git
 	depends = libxrandr
 	depends = mesa
 	depends = pango-git>=1.41.0
-	depends = wayland-git>=1.9.91
+	depends = wayland-git>=1.14.91
 	depends = graphene>=1.5.1
 	depends = json-glib
+	depends = gdk-pixbuf2
+	depends = wayland-protocols
 	depends = colord
 	depends = libcups
 	depends = rest

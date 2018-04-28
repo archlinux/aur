@@ -1,15 +1,16 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r988.gf494d6ae1f
-pkgrel=2
+pkgver=3.93.0.r1441.gb20e68cc91
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 license=('LGPL')
-depends=('at-spi2-atk'  'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.55.0' 'libepoxy>=1.4'
+depends=('at-spi2-atk' 'cairo' 'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.55.0' 'libepoxy>=1.4'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
-         'pango-git>=1.41.0' 'wayland-git>=1.9.91' 'graphene>=1.5.1' 'json-glib'
+         'pango-git>=1.41.0' 'wayland-git>=1.14.91' 'graphene>=1.5.1' 'json-glib'
+         'gdk-pixbuf2' 'wayland-protocols'
          'colord' 'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
 makedepends=('gobject-introspection-git' 'gtk-doc' 'git' 'meson' 'ninja')
 optdepends=('gnome-icon-theme: Default icon theme'
@@ -42,9 +43,9 @@ build() {
   meson --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libdir=/usr/lib \
-    -Denable-broadway-backend=true \
-    -Denable-vulkan=yes \
+    --libdir=lib \
+    -Dbroadway-backend=true \
+    -Dvulkan=yes \
     _build .
 
   cd _build
