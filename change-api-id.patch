@@ -1,0 +1,15 @@
+diff --git a/Telegram/SourceFiles/config.h b/Telegram/SourceFiles/config.h
+index 0da74c41..b754a0ba 100644
+--- a/Telegram/SourceFiles/config.h
++++ b/Telegram/SourceFiles/config.h
+@@ -217,8 +217,8 @@ ihUthkqjdoGaXmm9PhK2JPdFm1lKoYGC0A/u6yp35gch0dRk/4NzAgMBAAE=\n\
+ //#ifdef CUSTOM_API_ID
+ //#include "../../../TelegramPrivate/custom_api_id.h" // Custom API id and API hash
+ //#else
+-static const int32 ApiId = 45735;
+-static const char *ApiHash = "";
++static const int32 ApiId = 209765;
++static const char *ApiHash = "08036f8a8b41a9212865ef439dbd35bf";
+ //#endif
+ 
+ #if Q_BYTE_ORDER == Q_BIG_ENDIAN
