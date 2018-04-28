@@ -1,0 +1,3 @@
+post_install() {
+    echo "Create /var/spool/rsyslog directory before starting rsyslog"
+}
