@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make install
+  sudo make install
 }
