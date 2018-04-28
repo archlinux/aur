@@ -1,13 +1,13 @@
 # Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
 pkgname=this
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Standardized project tool for running common tasks"
 url="https://github.com/ibelieve/this"
 license=('MIT')
 arch=('any')
-depends=('python' 'python-setuptools' 'python-click')
-makedepends=('python-pytest' 'python-pytest-mock')
+depends=('python' 'python-click')
+makedepends=('python-setuptools' 'python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibelieve/this/archive/v${pkgver}.tar.gz")
 md5sums=('80a8b43eefcc4c5c215f6f04b4fbb635')
 
