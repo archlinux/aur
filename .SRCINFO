@@ -1,0 +1,23 @@
+pkgbase = me-edit
+	pkgdesc = Patch editor for the Boss ME-25 guitar multi effects and Roland GR-20 guitar synthesizer.
+	pkgver = 20151007
+	pkgrel = 1
+	url = https://sourceforge.net/projects/me-edit/
+	arch = any
+	license = GPL2
+	makedepends = patchelf
+	depends = libusb
+	depends = jasper
+	depends = libx11
+	depends = fontconfig
+	depends = harfbuzz
+	provides = me-edit
+	conflicts = me-edit
+	options = !strip
+	source = ME-Edit-20151007::https://netix.dl.sourceforge.net/project/me-edit/ME-25-Edit/ME-25-Edit_linux-64.tar.gz
+	source = me-edit
+	md5sums = c10ef3ca9afae7327f39bdf9b29e2a91
+	md5sums = f040d11f80d0a4ae38fa9a6a19114fba
+
+pkgname = me-edit
+

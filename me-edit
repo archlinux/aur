@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd /usr/share/me-edit > /dev/null
+./ME-25-Edit
+popd > /dev/null
