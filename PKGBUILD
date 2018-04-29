@@ -9,7 +9,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.1.11.r7977.g3b63be063
+pkgver=0.8.2.r11002.g90026f59a
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -36,12 +36,7 @@ depends=(
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=(
-    # official repositories:
-        'git' 'cmake'
-    # AUR:
-        'gcc5'
-)
+makedepends=('git' 'cmake' 'gcc5')
 provides=('caffe2')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-cpu' 'caffe2-cpu-git')
@@ -50,12 +45,10 @@ source=(
     # main source:
         'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
-        'caffe2-submodule-aten-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo'
-        'caffe2-submodule-aten-tbb_remote'::'git+https://github.com/01org/tbb#branch=tbb_2018'
-        'caffe2-submodule-aten-catch'::'git+https://github.com/catchorg/Catch2.git'
+        'caffe2-submodule-tbb'::'git+https://github.com/01org/tbb#branch=tbb_2018'
+        'caffe2-submodule-catch'::'git+https://github.com/catchorg/Catch2.git'
         'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
-        'caffe2-submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
         'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
         'caffe2-submodule-eigen'::'git+https://github.com/RLovelett/eigen.git'
         'caffe2-submodule-googletest'::'git+https://github.com/google/googletest.git'
@@ -103,24 +96,19 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
     cd pytorch-git
     
-    local _submodule_list="nanopb pybind11 nccl cub eigen googletest nervanagpu benchmark \
-                           protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
+    local _submodule_list="tbb catch nanopb pybind11 cub eigen googletest nervanagpu \
+                           benchmark protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
                            python-enum python-peachpy python-six ComputeLibrary onnx ideep"
                            
     git submodule init
     
-    git config --local 'submodule.aten/src/ATen/cpu/cpuinfo.url'        "${srcdir}/caffe2-submodule-aten-cpuinfo"
-    git config --local 'submodule.aten/src/ATen/cpu/tbb/tbb_remote.url' "${srcdir}/caffe2-submodule-aten-tbb_remote"
-    git config --local 'submodule.aten/src/ATen/utils/catch.url'        "${srcdir}/caffe2-submodule-aten-catch"
-    git config --local 'submodule.third-party/cpuinfo.url'              "${srcdir}/caffe2-submodule-cpuinfo"
+    git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/caffe2-submodule-cpuinfo"
     
     for _submodule in $_submodule_list
     do
@@ -130,7 +118,7 @@ prepare() {
     
     git submodule update
     
-    # fix build with if eigen is installed (use eigen from git submodule)
+    # fix build if eigen is installed (use eigen from git submodule)
     local _eigen='  message(STATUS "Using Eigen third party subdirectory for compatibility.")'
     sed -i '/find_package(Eigen3)/s/^/#/' cmake/Dependencies.cmake
     sed -i "/Did[[:space:]]not[[:space:]]find[[:space:]]system[[:space:]]Eigen/s/.*/${_eigen}/" cmake/Dependencies.cmake
@@ -139,8 +127,11 @@ prepare() {
 pkgver() {
     cd pytorch-git
     
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    local _version="$(head -n1 caffe2/VERSION_NUMBER)"
+    local _revision="$( git rev-list  --count HEAD)"
+    local _shorthash="$(git rev-parse --short HEAD)"
+    
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
@@ -155,6 +146,7 @@ build() {
         -DBLAS:STRING='Eigen' \
         \
         -DBUILD_BINARY:BOOL='ON' \
+        -DBUILD_DOCS:BOOL='OFF' \
         -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
