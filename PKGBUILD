@@ -2,7 +2,7 @@ pkgname=mingw-w64-gtk2
 pkgver=2.24.32
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
-arch=(any)
+arch=('any')
 url="http://www.gtk.org"
 license=("LGPL")
 makedepends=(
@@ -18,21 +18,21 @@ depends=(
   'mingw-w64-glib2>=2.28.0'
   'mingw-w64-cairo>=1.6'
   'mingw-w64-gdk-pixbuf2>=2.21.0')
-options=(!strip !buildflags staticlibs)
+options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=("b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e")
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  for _arch in ${_architectures}; do
+  for _arch in "${_architectures[@]}"; do
     msg "Building for ${_arch}"
     rm "${srcdir}/gtk+-${pkgver}/gtk/gtk.def"
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
     msg "Starting configure and make"
-    ${_arch}-configure \
+    "${_arch}-configure" \
       --with-gdktarget=win32 \
       --disable-modules \
       --disable-cups \
@@ -45,12 +45,12 @@ build() {
 
 package() {
   cd "${srcdir}/gtk+-${pkgver}"
-  for _arch in ${_architectures}; do
+  for _arch in "${_architectures[@]}"; do
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtL1 ${_arch}-strip
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtL1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtL1 ${_arch}-strip -g
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec "${_arch}-strip" '{}' ';'
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec "${_arch}-strip" --strip-unneeded '{}' ';'
+    find "$pkgdir/usr/${_arch}" '(' -name '*.a' -o -name '*.dll' ')' -exec "${_arch}-strip" -g '{}' ';'
     rm "$pkgdir/usr/${_arch}/bin/gtk-update-icon-cache.exe"
     rm "$pkgdir/usr/${_arch}/lib/"*.def
     rm -r "$pkgdir/usr/${_arch}/etc"
