@@ -1,7 +1,7 @@
 # Contributer: SolarAquarion (Shlomo Choina  at gmail dot com)
 
 pkgname=rkward-frameworks-git
-pkgver=v0.6.5.r264.gf74df5d6
+pkgver=v0.7.0b.r291.g2b96b459
 pkgrel=1
 pkgdesc="An Easy to use, transparent frontend to the R-language (kf5 frameworks-edition)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'r' 'docbook-xml' 'kxmlgui' 'kcodecs' 'kdewebkit')
 makedepends=('cmake' 'docbook-xsl' 'git' 'extra-cmake-modules' 'kdoctools')
 provides=('rkward')
 conflicts=('rkward-git' 'rkward')
-source=(git+https://anongit.kde.org/rkward.git#branch=frameworks)
+source=(git+https://anongit.kde.org/rkward.git#branch=master)
 
 pkgver(){
  cd $srcdir/rkward
