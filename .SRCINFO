@@ -9,6 +9,7 @@ pkgbase = coquillo
 	depends = qt5-multimedia
   depends = qt5-translations
 	depends = taglib
+  depends = libmusicbrainz5
 	source = http://cs.uef.fi/~sjuvonen/coquillo/2.0.0/coquillo-2.0.0-src.tar.gz
 	md5sums = 7e6ed965b23b71c8d69087b6d9d698ed
 
