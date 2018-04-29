@@ -1,12 +1,12 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
-pkgver=1.0.0b42
-release_tag=v1.0.0-b42
-pkgrel=3
+pkgver=2.0.0a3
+release_tag=v2.0.0-a3
+pkgrel=1
 pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.ossia.io"
-license=('CeCILLv2')
+license=('GPLv3')
 groups=()
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack2')
 makedepends=('git' 'cmake' 'qt5-tools')
