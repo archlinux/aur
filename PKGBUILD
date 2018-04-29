@@ -3,8 +3,8 @@
 pkgname=electra-wallet-git
 _pkgname=electra-wallet
 pkgver=0.r52.ca33111
-pkgrel=2
-pkgdesc='QT-based (legacy) wallet for Electra blockchain.'
+pkgrel=3
+pkgdesc='QT-based (legacy) wallet for Electra blockchain. You probably want the newer "electra-desktop-bin" package.'
 arch=('any')
 url='https://github.com/electra01/Electra'
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('git' 'gendesk')
 source=("${pkgname}"::'git://github.com/electra01/Electra.git'
         "electra_enable_build_with_boost_166.patch"
         "electra_build_on_arch_qmake.patch"
-        "$_pkgname.png::https://electraproject.org/wp-content/uploads/2017/12/1000.png")
+        "electra-wallet.png")
 sha256sums=('SKIP'
             '59c2943cd8bb3b1e2ecdba5591b99e0dd1c8ee6d5115ecbd4c2d5c980bfa8387'
             'af17e03dfd17dd682b1b063a1feaf09fdace3e31761d6fe634cd7cea3b93bb59'
