@@ -9,6 +9,7 @@ pkgbase = open3d
 	license = MIT
 	makedepends = cmake
 	makedepends = gawk
+	makedepends = git
 	makedepends = make
 	makedepends = sed
 	depends = eigen

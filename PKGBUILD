@@ -27,6 +27,7 @@ optdepends=(
 makedepends=(
     cmake
     gawk
+    git
     make
     sed
 )
