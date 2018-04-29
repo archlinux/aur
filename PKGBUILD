@@ -5,7 +5,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc='Utility for editing metadata i.e. "tags" contained in audio files.'
 arch=('i686' 'x86_64')
-url='http://qt-apps.org/content/show.php/Coquillo?content=141896'
+url='https://www.opendesktop.org/p/1130981/'
 license=('GPL')
 depends=('qt5-multimedia' 'qt5-translations' 'taglib' 'libmusicbrainz5')
 makedepends=('qt5-tools')

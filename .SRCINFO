@@ -2,7 +2,7 @@ pkgbase = coquillo
 	pkgdesc = Edit metadata / tags of various audio formats like MP3, Ogg/Vorbis and FLAC.
 	pkgver = 2.0.0
 	pkgrel = 1
-	url = http://qt-apps.org/content/show.php/Coquillo?content=141896
+	url = https://www.opendesktop.org/p/1130981/
 	arch = i686
 	arch = x86_64
 	license = GPL
