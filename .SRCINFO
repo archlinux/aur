@@ -4,7 +4,7 @@ pkgbase = ossia-score-git
 	pkgrel = 2
 	url = http://www.ossia.io
 	arch = x86_64
-	license = CeCILLv2
+	license = GPLv3
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
@@ -20,6 +20,8 @@ pkgbase = ossia-score-git
 	depends = ffmpeg
 	depends = portaudio
 	depends = jack2
+	optdepends = faust
+	optdepends = lilv
 	provides = ossia-score
 	replaces = i-score
 
