@@ -20,7 +20,7 @@ _commit=784b3eaab6495515393e99bcbc22344bb9cd975f  # tags/3.28.1^0
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
-            'd5eb01843d2758e74e25686f521f5fd72879e32595b494e9cabb8f8f1a2a87a5')
+            '52c546f8be2a586adabb80424aa511cbba6349bfa2680347bd935f1824ea3916')
 
 prepare() {
   cd $_pkgbase
