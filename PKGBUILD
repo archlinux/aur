@@ -1,7 +1,7 @@
 # Contributor: Iru Dog <mytbk920423 at gmail.com>
 # Maintainer: Iru Dog <mytbk920423 at gmail.com>
 pkgname=fqterm-qt5-git
-pkgver=0.9.8.3.r4.7.g86810b9
+pkgver=0.9.8.6
 pkgrel=1
 pkgdesc='a terminal emulator used for Telnet-based BBS, with Telnet and SSH support'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
 
-  sed -i "s#0.9.8#0.9.8 (Built with $(pacman -Q qt5-base), ArchLinux ${CARCH})#g" \
+  sed -i "s#0.9.8#0.9.8 (Built with $(pacman -Q qt5-base), Arch Linux ${CARCH})#g" \
       ../fqterm/res/userconf/fqterm.cfg.orig
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
