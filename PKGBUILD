@@ -16,6 +16,8 @@ depends=('python2' 'python2-pysmb')
 makedepends=('git')
 source=('git+https://github.com/dejanlevaja/enum_shares.git')
 sha1sums=('SKIP')
+provides=('enum-shares')
+conflicts=('enum-shares')
 
 pkgver() {
   cd "$srcdir/enum_shares"
