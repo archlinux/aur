@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-wayland')
 makedepends=('liri-qbs-shared')
 groups=('liri')
-source=("https://github.com/lirios/qtudev/releases/download/v${pkgver}/qtudev-${pkgver}.tar.xz")
+source=("https://github.com/lirios/materialdecoration/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('db5525bd7ddfdb36659e926f99f3703deeaf5eb2cd35ca6ea2ca4214fc161a33')
 
 build() {

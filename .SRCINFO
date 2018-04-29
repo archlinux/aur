@@ -11,7 +11,7 @@ pkgbase = liri-materialdecoration
 	license = GPL3
 	makedepends = liri-qbs-shared
 	depends = qt5-wayland
-	source = https://github.com/lirios/qtudev/releases/download/v1.0.0/qtudev-1.0.0.tar.xz
+	source = https://github.com/lirios/materialdecoration/releases/download/v1.0.0/liri-materialdecoration-1.0.0.tar.xz
 	sha256sums = db5525bd7ddfdb36659e926f99f3703deeaf5eb2cd35ca6ea2ca4214fc161a33
 
 pkgname = liri-materialdecoration
