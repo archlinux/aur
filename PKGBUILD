@@ -14,13 +14,13 @@ source=(
   "${pkgname}.png"
 )
 source_x86_64+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-x64.tar.gz"
+  "https://www.dropbox.com/s/azeqhinhdwurn8s/WhatsApp-v0.5.0-linux-x64.tar.gz?dl=0"
 )
 source_i686+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-ia32.tar.gz"
+  "https://www.dropbox.com/s/78ga9bdom7nw8hi/WhatsApp-v0.5.0-linux-ia32.tar.gz?dl=0"
 )
 source_armv7l+=(
-  "${url}/releases/download/v${pkgver}/WhatsApp-v${pkgver}-linux-armv7l.tar.gz"
+  "https://www.dropbox.com/s/tta1u4e33f8o7ib/WhatsApp-v0.5.0-linux-armv7l.tar.gz?dl=0"
 )
 
 sha256sums=('8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc'
