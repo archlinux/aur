@@ -1,8 +1,7 @@
-# Maintainer: Nick Hibberd
 pkgname=foundationdb-server-bin
 pkgver=5.1.7
 pkgrel=1
-pkgdesc="FoundationDB clients and library. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains client utilities and libraries."
+pkgdesc="FoundationDB server. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains the server."
 arch=('x86_64')
 url="https://www.foundationdb.org"
 license=('Apache 2.0')
