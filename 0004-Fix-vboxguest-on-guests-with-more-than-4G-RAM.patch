@@ -4,7 +4,7 @@ In-Reply-To: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523790169.git.jan.steffe
 References: <3a7745f6fdd71aa34dae33c3edc586363d9ece9e.1523790169.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Wed, 11 Apr 2018 21:27:44 +0200
-Subject: [PATCH 4/5] Fix vboxguest on guests with more than 4G RAM
+Subject: [PATCH 4/4] Fix vboxguest on guests with more than 4G RAM
 
 Squashed commit of the following:
 
