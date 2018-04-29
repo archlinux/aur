@@ -1,8 +1,8 @@
 pkgname=krudio-qml
 pkgver=20180429
-_git=4c493d2e320b5a5c5c01368857ec5686726cced0
+_git=8868bb1ae904113268e6edffbf49d0adfee8ea29
 _repo=krudio-qml
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple Qt5 QML radio player"
 arch=('i686' 'x86_64')
 url="https://github.com/loast/${_repo}"
