@@ -3,9 +3,9 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d )
-pkgver=v0.1.2.r3.fb969e1
-pkgrel=2
-epoch=1
+pkgver=0.1.2
+pkgrel=1
+epoch=2
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
 url="http://www.open-3d.org"
@@ -28,6 +28,7 @@ makedepends=(
     cmake
     gawk
     make
+    sed
 )
 changelog="${pkgbase}.changelog"
 source=("${pkgbase}::git+http://code.open-3d.org")
@@ -36,8 +37,7 @@ md5sums=(SKIP)
 function pkgver() {
     cd "${pkgbase}"
     # grab the latest tag
-    git describe --tags --long \
-        | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+    git describe --tags --abbrev=0 | sed -e 's/^v\?//'
 }
 
 function prepare() {
