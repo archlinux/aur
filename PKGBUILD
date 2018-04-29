@@ -30,7 +30,7 @@ _old_control=n #for pre-GCN users who has problems with default config, pick =y 
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=23
+pkgrel=24
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -361,6 +361,10 @@ package() {
 	install -m755 ${srcdir}/switchlibglx ${pkgdir}/usr/lib/fglrx
 	# switching script: switch xorg.conf + aticonfig --px-Xgpu + switchlibGL + add/remove fglrx into MODULES
 	install -m755 ${srcdir}/pxp_switch_catalyst ${pkgdir}/usr/bin
+	
+	#fix laptops wake on 4.15+
+	install -m755 -d ${pkgdir}/usr/X11R6/lib64/modules/dri
+	ln -snf /usr/lib/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/X11R6/lib64/modules/dri/fglrx_dri.so
 
 	##catalyst-dkms section
 	cd ${srcdir}/archive_files
