@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.57r4240.17eb84212ef5
+pkgver=3.59r4303.53b304a5195d
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('x86_64')
@@ -31,23 +31,22 @@ build() {
 	      --sysconfdir=/etc \
 	      --enable-download \
 	      --disable-mumps 
-
   make
 }
 
-#check() {
-#  cd "$srcdir/ff++"
-#  make check || true
-#}
+check() {
+  cd ff++
+  make check || true
+}
 
 package() {
   cd ff++
   make -d DESTDIR="$pkgdir" install||true
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
-  find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
+  find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
-  rm -f $pkgdir/usr/share/freefem++/${_pkgver}/INSTALL*
-  rm -f $pkgdir/usr/share/freefem++/${_pkgver}/README_*
-  rm -f $pkgdir/usr/share/freefem++/${_pkgver}/mode-mi-edp.zip
-  rm -rf $pkgdir/usr/share/freefem++/${_pkgver}/download
+  rm -f "$pkgdir"/usr/share/freefem++/${_pkgver}/INSTALL*
+  rm -f "$pkgdir"/usr/share/freefem++/${_pkgver}/README_*
+  rm -f "$pkgdir"/usr/share/freefem++/${_pkgver}/mode-mi-edp.zip
+  rm -rf "$pkgdir"/usr/share/freefem++/${_pkgver}/download
 }
