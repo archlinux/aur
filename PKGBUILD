@@ -4,12 +4,12 @@
 
 pkgname=trickle
 pkgver=1.07
-pkgrel=10
+pkgrel=11
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
-depends=('libevent')
+depends=('libevent' 'libtirpc')
 _commit=a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416 # "import of trickle 1.07"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mariusae/trickle/archive/${_commit}.tar.gz"
         "fix-crasher.patch")
@@ -18,7 +18,7 @@ sha256sums=('b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_commit}"
-  
+
   # FS#27549
   sed -i 's|^_select(int|select(int|' trickle-overload.c
 
@@ -28,7 +28,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${_commit}"
-  
+
+  CPPFLAGS+=" -I/usr/include/tirpc/"
+  LDFLAGS+=" -ltirpc"
+
   ./configure --prefix=/usr \
               --mandir=/usr/share/man
   sed -i "s|.*in_addr_t.*||g" config.h

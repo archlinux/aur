@@ -7,6 +7,7 @@ pkgbase = trickle
 	arch = x86_64
 	license = BSD
 	depends = libevent
+	depends = libtirpc
 	source = trickle-1.07.tar.gz::https://github.com/mariusae/trickle/archive/a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416.tar.gz
 	source = fix-crasher.patch
 	sha256sums = b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37
