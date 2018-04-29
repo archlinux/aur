@@ -1,0 +1,29 @@
+# Maintainer: Luís Ferreira <contact@lsferreira.net>
+# Contributor: Levon 'noptrix' Kayan <noptrix@nullsecurity.net>
+
+# This file is part of BlackArch Linux ( http://blackarch.org ).
+# See COPYING for license details.
+
+pkgname='python2-pysmb'
+pkgver='1.1.22'
+pkgrel=1
+pkgdesc='An experimental SMB/CIFS library written in Python to support file sharing between Windows and Linux machines.'
+arch=('any')
+url='https://miketeo.net/wp/index.php/projects/pysmb'
+license=('GPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/be/83/0356cbb096e2934cd01f8049212f16cde114bbe19c7839f795255c741969/pysmb-${pkgver}.zip")
+sha1sums=('e64c247bf69925b2eaf08472e08fc990d3cfe00d')
+
+build(){
+  cd "$srcdir/pysmb-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/pysmb-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
