@@ -1,4 +1,4 @@
-pkgname=krudio-qml-git
+pkgname=krudio-qml
 pkgver=20180429
 _git=4c493d2e320b5a5c5c01368857ec5686726cced0
 _repo=krudio-qml
