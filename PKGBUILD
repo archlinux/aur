@@ -1,4 +1,5 @@
 # Maintainer: izznogoood <ama@getmail.no>
+# Contributor: FabioLolix
 
 pkgname=startup-settings-git
 pkgver=r45.516860c
