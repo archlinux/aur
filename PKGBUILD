@@ -46,5 +46,5 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('c5b4ed6666a3e78674a46f06af139f04'
-         '10a1a7d7b1883ef9ca5a5002671d631d')
+md5sums=('10a1a7d7b1883ef9ca5a5002671d631d'
+         'f86a796af53bc8d09403b451d2b6b995')
