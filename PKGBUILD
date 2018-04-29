@@ -18,14 +18,14 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.4.r1.g0e6d27ad7
+pkgver=v0.6.4.r91.gccede9ddd
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'rapidjson')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
 provides=("${_pkgname}")
