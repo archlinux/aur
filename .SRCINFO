@@ -1,6 +1,6 @@
 pkgbase = fqterm-git
 	pkgdesc = a terminal emulator used for Telnet-based BBS, with Telnet and SSH support
-	pkgver = 0.9.8.3.r4.2.g2cd2984
+	pkgver = 0.9.8.6
 	pkgrel = 1
 	url = https://github.com/mytbk/fqterm/
 	arch = i686
