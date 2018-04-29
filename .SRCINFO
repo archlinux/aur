@@ -1,11 +1,11 @@
 pkgbase = kvazaar
-	pkgdesc = An open-source HEVC encoder licensed under LGPLv2.1
+	pkgdesc = An open-source HEVC encoder
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ultravideo.cs.tut.fi/#encoder
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL
 	makedepends = yasm
 	depends = glibc
 	depends = gcc-libs

@@ -2,11 +2,11 @@
 
 pkgname=kvazaar
 pkgver=1.2.0
-pkgrel=4
-pkgdesc='An open-source HEVC encoder licensed under LGPLv2.1'
+pkgrel=5
+pkgdesc='An open-source HEVC encoder'
 arch=('i686' 'x86_64')
 url='http://ultravideo.cs.tut.fi/#encoder'
-license=('LGPL2.1')
+license=('LGPL')
 depends=('glibc' 'gcc-libs' 'crypto++')
 makedepends=('yasm')
 provides=('libkvazaar.so')
