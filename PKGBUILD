@@ -2,7 +2,7 @@
 
 pkgname=cri-o
 pkgver=1.9.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64)
 url='https://github.com/kubernetes-incubator/cri-o'
@@ -16,17 +16,22 @@ prepare() {
 	cd "$srcdir/$pkgname"
 
 	git checkout "v$pkgver"
-
 	install -m755 -d "$srcdir/go/src/github.com/kubernetes-incubator"
-
 	cp -a "$srcdir/$pkgname" "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 }
 
 build() {
 	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
 
-	GOPATH="$srcdir/go" make -j1 binaries docs
-	./bin/crio --selinux=true --storage-driver=overlay --conmon /usr/libexec/crio/conmon --cni-plugin-dir /usr/libexec/cni --default-mounts /run/secrets --cgroup-manager=systemd config > crio.conf
+	export GOPATH="$srcdir/go"
+	make -j1 binaries docs
+
+	./bin/crio --selinux=true \
+		--storage-driver=overlay \
+		--conmon /usr/libexec/crio/conmon \
+		--cni-plugin-dir /usr/libexec/cni \
+		--default-mounts /run/secrets \
+		--cgroup-manager=systemd config > crio.conf
 }
 
 package() {
