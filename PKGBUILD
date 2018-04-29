@@ -2,8 +2,8 @@
 
 pkgname=boomaga
 name=Boomaga
+pkgver=1.3.0
 _name=boomaga
-pkgver=0.9.1
 pkgrel=1
 pkgdesc="Is a virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=(!emptydirs)
 source=(https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz poppler0.58.patch)
 #source="${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz" 
 
-md5sums=('9055f2dbd3fa5eb058f6b33784140672')
+md5sums=('a2176489b343f6bd1813a82a4ff9a8cb')
 
 prepare() {
    cd $_name-$pkgver
