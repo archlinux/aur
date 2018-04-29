@@ -1,7 +1,7 @@
 From b6d75eb61dab7fc7921d45618244e60a82aa4769 Mon Sep 17 00:00:00 2001
-From: LAN-TW <lantw44@gmail.com>
+From: Ting-Wei Lan <lantw44@gmail.com>
 Date: Thu, 18 Jul 2013 00:52:58 +0800
-Subject: [PATCH] Fix implicit declaration
+Subject: [PATCH] Fix implicit declarations
 
 ---
  tightbind/utils/fit_props.h     | 2 ++

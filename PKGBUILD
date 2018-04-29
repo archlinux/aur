@@ -13,16 +13,16 @@ depends=('gcc-fortran' 'readline' 'libx11' 'blas' 'lapack')
 source=('http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/bind.3.1.0b2.tgz'
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/viewkel.3.1.0b.tgz'
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/dense_eval.3.1.0b.tgz'
-		'0001-Fix-build-problems.patch'
-		'0002-Fix-implicit-declaration.patch'
-		'0003-Fix-hard-coded-data-path.patch')
+		'yaehmop-fix-build.patch'
+		'yaehmop-fix-implicit-declarations.patch'
+		'yaehmop-fix-hard-coded-data-paths.patch')
 
-md5sums=('5a717a1f9c5dbe6cf36de15cb3c5b6ef'
-		'd629bface0f610f7a4a1b3d0305872ca'
-		'aec78fae520950777b7738cf42626d99'
-		'4290dcf6a1ddb040c38dbb54d8698c5b'
-		'89ecc02032067fc72a576943b9a413e7'
-		'f0804353cfdb4ea56c8c0c92bec0a40a')
+sha256sums=('ce53fdc3adc117df83fcc418e30610d5c56d4af99d34c35757b1374b859b6ccd'
+            '5bd5c4e6968bb2231d045ff8f5ef73e6ceb23a1e031b71bcbc7cbb1f9b9baaad'
+            '2c3ffbb5775391078993c3ddc330c5bba2af1d737fbbca49822d989cb07fea35'
+            '1558b5960a4af51e906a243806bbe8550d4ef7b868b55badb75581bfa744985e'
+            '074eab380f4d2d16f24b3600d1a30292683eef8510a85a43f7187d9e153681e9'
+            '7418e05a7dcc9355875323203bd8fd382cc5c64afe7e9017597398b21e1f432a')
 
 build() {
 	cd "${srcdir}/${pkgname}"
@@ -35,9 +35,9 @@ build() {
 	rm -f tightbind/utils/fit_dos
 	rm -f tightbind/utils/fit_dos.o
 	rm -f tightbind/utils/genutil.o
-	patch -p1 < "${srcdir}/0001-Fix-build-problems.patch"
-	patch -p1 < "${srcdir}/0002-Fix-implicit-declaration.patch"
-	patch -p1 < "${srcdir}/0003-Fix-hard-coded-data-path.patch"
+	patch -p1 < "${srcdir}/${source[3]}"
+	patch -p1 < "${srcdir}/${source[4]}"
+	patch -p1 < "${srcdir}/${source[5]}"
 	cd tightbind
 	make -f makefile.linux install
 	cd ../viewkel
