@@ -3,7 +3,7 @@
 pkgname=qelly
 _pkgname=Qelly
 pkgver=1.0b
-pkgrel=2
+pkgrel=3
 pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
@@ -12,8 +12,8 @@ depends=('qt4' 'libqxt')
 makedepends=()
 conflicts=('qelly')
 provides=('qelly')
-source=("https://github.com/uranusjr/Qelly/archive/v${pkgver}.tar.gz")
-md5sums=('0b0b142504b7aa43bf94e50cf9b38d3f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uranusjr/Qelly/archive/v${pkgver}.tar.gz")
+sha256sums=('186333debd9f2eba1465eac94fcf59543868dbd8aae04e2f9a56a45ed9817479')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
