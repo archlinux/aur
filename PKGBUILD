@@ -1,22 +1,23 @@
-# $Id: PKGBUILD 310007 2017-11-15 14:11:34Z foutrelis $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# vim: set et ts=2:
+# Maintainer" Brian Bidulock <bidulock@openss7.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker
 pkgver=0.95.8
-pkgrel=2
+pkgrel=4
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
 license=('GPL' 'custom')
-depends=('libxinerama' 'libxrandr' 'libxmu' 'libpng' 'libxpm' 'libxft' 'libtiff' 'giflib')
-source=(http://windowmaker.org/pub/source/release/WindowMaker-$pkgver.tar.gz
-        wmaker.desktop)
-sha256sums=('9dbf5c5571bb79c4b1584f496c960ee2cd7379af45ef0f58b4b0f487259de88a'
-            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef')
+depends=('libxinerama' 'libxrandr' 'libxmu' 'libpng' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libmagick' 'libbsd')
+source=("http://windowmaker.org/pub/source/release/WindowMaker-$pkgver.tar.gz"
+        'wmaker.desktop'
+	'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
 
 prepare() {
   cd WindowMaker-$pkgver
+  patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
   
   autoreconf -fi
   
@@ -33,8 +34,6 @@ prepare() {
 build() {
   cd WindowMaker-$pkgver
   export LINGUAS="be bg bs ca cs da de el es et fi fr fy gl hr hu hy it ja ko ms nl no pl pt ro ru sk sv tr uk zh_CN zh_TW"
-  #export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'`"
-  
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-randr
@@ -49,3 +48,6 @@ package() {
   install -D -m644 ../wmaker.desktop "$pkgdir/usr/share/xsessions/wmaker.desktop"
 }
 
+sha256sums=('9dbf5c5571bb79c4b1584f496c960ee2cd7379af45ef0f58b4b0f487259de88a'
+            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef'
+            'e89e8c7638f38296f1fc31d892672122a73ce89ce40c192bb404d852cca06692')
