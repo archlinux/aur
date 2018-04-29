@@ -1,19 +1,20 @@
 # Maintainer: Samu Juvonen <samu.juvonen@gmail.com>
 
 pkgname=coquillo
-pkgver=1.12
-pkgrel=37
-pkgdesc='Edit metadata / tags of various audio formats like MP3, Ogg/Vorbis and FLAC.'
+pkgver=2.0.0
+pkgrel=1
+pkgdesc='Utility for editing metadata i.e. "tags" contained in audio files.'
 arch=('i686' 'x86_64')
 url='http://qt-apps.org/content/show.php/Coquillo?content=141896'
 license=('GPL')
-depends=('qt4' 'taglib')
+depends=('qt5-multimedia' 'qt5-translations' 'taglib')
+makedepends=('qt5-tools')
 source=(http://cs.uef.fi/~sjuvonen/coquillo/$pkgver/coquillo-$pkgver-src.tar.gz)
-md5sums=('f53c29854b01a7b3bc2c757916bb66cb')
+md5sums=('7e6ed965b23b71c8d69087b6d9d698ed')
 
 package() {
 	cd "${srcdir}/coquillo-${pkgver}/"
-	qmake-qt4
+	qmake
 	make
 	make install INSTALL_ROOT="${pkgdir}"
 }
