@@ -1,14 +1,14 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=electron-ssr-source
 pkgver=0.2.3stable
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Install electron-ssr from tarball"
 arch=('x86_64')
 url="https://github.com/erguotou520/electron-ssr"
 license=('MIT')
 groups=()
-depends=()
+depends=('gconf')
 makedepends=()
 checkdepends=()
 optdepends=('libsodium: sodium crypto support')
