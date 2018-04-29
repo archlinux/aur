@@ -1,7 +1,3 @@
-# NOTE before builing package - download needed catalyst driver zip archives from here:
-# https://support.amd.com/en-us/download/desktop/previous?os=Linux%20x86_64
-# and paste it next to this PKGBUILD
-
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Great Contributor: Shen Miren <dickeny@gmail.com> (build_module/hook idea and code)
 # Great Contributor: Eduardo "kensai" Romero (previous catalyst and catalyst-utils maintainer)
@@ -27,19 +23,19 @@
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: aslmaswd (acpi main script)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (libcl/opencl-icd-loader cleaning, 4.11, 4.12, 4.13, 4.14 and 4.15.5 kernel patch))
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning, 4.11, 4.12, 4.13, 4.14 and 4.15.5 kernel patch)
 
 
 pkgname=catalyst-total
 pkgver=15.9
-pkgrel=24
+pkgrel=25
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
-url="http://www.amd.com"
+url="https://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.16' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=3.0' 'linux<4.17' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -65,16 +61,16 @@ fi
 
 install=${pkgname}.install
 
-url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
-DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
+url_ref="https://support.amd.com/en-us/download/desktop?os=Linux+x86"
+DLAGENTS="https::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
-#    http://www2.ati.com/drivers/beta/amd-catalyst-${pkgver}-beta-v${_betano}-linux-x86.x86_64.run.zip
-#     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-x86.x86_64.zip
-#     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
-#     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
-#     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
+#    https://www2.ati.com/drivers/beta/amd-catalyst-${pkgver}-beta-v${_betano}-linux-x86.x86_64.run.zip
+#     https://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-x86.x86_64.zip
+#     https://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
+#     https://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
+#     https://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
+    https://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
