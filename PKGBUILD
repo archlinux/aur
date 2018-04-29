@@ -1,8 +1,8 @@
 pkgname=krudio-qml
 pkgver=20180429
-_git=8868bb1ae904113268e6edffbf49d0adfee8ea29
+_git=eb74c5cec584db444e3fa3e1fbe6b18b50214653
 _repo=krudio-qml
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Qt5 QML radio player"
 arch=('i686' 'x86_64')
 url="https://github.com/loast/${_repo}"
@@ -24,5 +24,5 @@ package() {
 	install -Dm755 $srcdir/${_repo}-${_git}/src/data/* $pkgdir/usr/share/krudio-qml/data/
 	install -Dm755 $srcdir/${_repo}-${_git}/src/krudio-qml $pkgdir/usr/bin/krudio-qml
     
-    
+    chmod -R 777 $pkgdir/usr/share/krudio-qml
 }
