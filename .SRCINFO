@@ -1,0 +1,20 @@
+pkgbase = yad-git
+	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line
+	pkgver = 0.40.0
+	pkgrel = 1
+	url = http://github.com/v1cont/yad
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	depends = gtk3
+	depends = webkit2gtk
+	provides = yad
+	conflicts = yad
+	source = git+http://github.com/v1cont/yad
+	sha256sums = SKIP
+
+pkgname = yad-git
+
