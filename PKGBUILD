@@ -2,21 +2,20 @@
 
 pkgname=ve
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NTHU-CS Maple BBS 2.36 BBS-like editor"
 arch=('x86_64' 'i686')
 url="http://netlab.cse.yzu.edu.tw/~statue/freebsd/zh-tut/ve.html"
 license=('custom')
 depends=()
 source=("http://distcache.freebsd.org/ports-distfiles/${pkgname}-${pkgver}.tgz"
-        "0001-Fix-incorrent-build-parameters.patch")
-md5sums=('8614598698ce0811c880714530f5892d'
-         'f061844a40d70f245fb083b48f5b83cc')
+        "ve-fix-build.patch")
+sha256sums=('cbb6d0d2c4dd8ba68d96954c7519c94daefebcedfc285c0406e8a2029c317116'
+            'a238fe1f71db1a4833b573b38e46cb5ed067754944a9a8df47f4e3480e104040')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < ../0001-Fix-incorrent-build-parameters.patch
-  unset CPPFLAGS
+  patch -p1 < "${srcdir}/${source[1]}"
   make
 }
 

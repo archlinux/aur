@@ -1,7 +1,7 @@
 From 94b15e800eb68da6fd1ca6c667cbdfabf5e6cbfe Mon Sep 17 00:00:00 2001
-From: LAN-TW <lantw44@gmail.com>
+From: Ting-Wei Lan <lantw44@gmail.com>
 Date: Thu, 18 Jul 2013 12:05:50 +0800
-Subject: [PATCH] Fix incorrent build parameters
+Subject: [PATCH] Fix build
 
 ---
  Makefile | 15 ++++++++-------
