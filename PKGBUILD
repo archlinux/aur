@@ -14,18 +14,18 @@ source=("https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz")
 sha256sums=('20e9109fe5dd21c9294a94cba12b65cc7650f359e52e7a16f3bdc89e802e13f0')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	autoreconf -fi
 	./configure --prefix=/usr --disable-rpath
 	make
 }
 
 check() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make check
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
