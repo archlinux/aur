@@ -47,4 +47,4 @@ EOF
 }
 
 md5sums=('10a1a7d7b1883ef9ca5a5002671d631d'
-         'f86a796af53bc8d09403b451d2b6b995')
+         '3bc1c65e13b6182a9c989835eefc8810')
