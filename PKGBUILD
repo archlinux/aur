@@ -4,17 +4,17 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.10.0.RC1.7.g60e01f5593
+pkgver=2.10.0.22.g4cc8481b66
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
-depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' \
-	'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
-	'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
-	'poppler-glib' 'poppler-data' \
-	'babl>=0.1.44' 'gegl-git>=0.3.30' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0')
+depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8'
+	'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils'
+	'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc'
+	'poppler-glib' 'poppler-data' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0'
+	'babl>=0.1.46' 'gegl-git>0.4.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' \
                    'alsa-lib>=1.0.0' 'libxslt' 'glib-networking')
