@@ -1,7 +1,7 @@
 # Maintainer: Metal A-wing <1 at 233 dot email>
 
 pkgname=electron-netease-cloud-music
-pkgver=0.4.0.betae83e69c
+pkgver=0.4.0.228963a
 pkgrel=1
 pkgdesc=" UNOFFICAL clinet for music.163.com. Powered by Electron and Vue"
 arch=('x86_64')
@@ -9,13 +9,13 @@ url="https://github.com/Rocket1184/electron-netease-cloud-music"
 license=('GPL-3.0')
 depends=('electron')
 
-source_x86_64=("http://ncm.qn.rocka.cn/electron-ncm-linux-x64-e83e69c.tar.gz"
+source_x86_64=("https://github.com/Rocket1184/electron-netease-cloud-music/releases/download/${pkgver}-228963a/app.asar"
   'electron-netease-cloud-music.desktop'
   'electron-netease-cloud-music.sh'
   'netease-cloud-music.svg'
 )
 
-md5sums_x86_64=('41ac02f5eeff5cb3901de703bee97264'
+md5sums_x86_64=('8219dff67e51f50e7c0f9b2ff1074d69'
                 '9198bd214026256cab4f0ad60ed5a538'
                 '77f597cf81b39d6d6bfee05d4009d026'
                 '24cb8955dac6c6c5f0ae2bc1451c56b8')
@@ -23,16 +23,17 @@ md5sums_x86_64=('41ac02f5eeff5cb3901de703bee97264'
 package() {
     cd "$srcdir"
 
+    install -Dm755 "$srcdir/electron-netease-cloud-music.sh" "$pkgdir/usr/bin/electron-netease-cloud-music"
     install -Dm644 electron-netease-cloud-music.desktop -t "$pkgdir/usr/share/applications/"
     install -Dm644 netease-cloud-music.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/netease-cloud-music.svg"
 
-    cd "$srcdir/$pkgname-linux-x64"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    #cd "$srcdir/$pkgname-linux-x64"
+    #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/lib/$pkgname/"
-    install -Dm644 resources/app.asar $pkgdir/usr/lib/$pkgname/
+    #install -Dm644 resources/app.asar $pkgdir/usr/lib/$pkgname/
+    install -Dm644 app.asar $pkgdir/usr/lib/$pkgname/
 
-    install -Dm755 "$srcdir/electron-netease-cloud-music.sh" "$pkgdir/usr/bin/electron-netease-cloud-music"
 
     #mkdir -p "$pkgdir/usr/lib/$pkgname/"
     #cp -r --no-preserve='ownership' -- * "$pkgdir/usr/lib/$pkgname/"
