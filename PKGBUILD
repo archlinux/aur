@@ -3,7 +3,7 @@
 
 pkgname=azpainter
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Painting software"
 arch=('i686' 'x86_64')
 url="https://osdn.net/projects/azpainter/"
@@ -20,6 +20,16 @@ prepare() {
 	# fixing translations
 	
 	patch -Np1 -i ../"${pkgname}-${pkgver}-translations.patch"
+	
+	cd translation
+	make
+	./mtrconv en en.mtr
+	./mtrconv be be.mtr
+	./mtrconv ru ru.mtr
+	./mtrconv uk uk.mtr
+	./mtrconv ja ja.mtr
+	./mtrconv pt_BR pt_BR.mtr
+	./mtrconv zh_CN zh_CN.mtr
 }
 
 build() {
@@ -32,4 +42,6 @@ build() {
 package() {
 	cd ${pkgname}-${pkgver}
 	make DESTDIR=${pkgdir} install-strip
+
+	cp -f translation/*.mtr ${pkgdir}/usr/share/azpainter/tr/
 }
