@@ -8,8 +8,8 @@ pkgdesc='Debug utilities for ARM Cortex-M microprocessors'
 arch=('any')
 url='https://github.com/posborne/cmsis-svd'
 license=('GPL3')
-depends=('python')
-makedepends=('python-setuptools' 'python-lxml')
+depends=('python' 'python-lxml')
+makedepends=('python-setuptools')
 source=("${_pkgbase}::git+https://github.com/bnahill/PyCortexMDebug")
 md5sums=('SKIP')
 
