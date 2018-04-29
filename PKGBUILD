@@ -18,25 +18,25 @@
 
 pkgname=catalyst-generator
 pkgver=15.9
-pkgrel=19
+pkgrel=20
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside."
 arch=('i686' 'x86_64')
-url="http://www.amd.com"
+url="https://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.16' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.17' 'linux-headers')
 optdepends=('linux-headers: to build the fglrx module for the linux kernel'
 	  'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-hook' 'catalyst' 'catalyst-daemon' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
 install=${pkgname}.install
 
-url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
-DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
+url_ref="https://support.amd.com/en-us/download/desktop?os=Linux+x86"
+DLAGENTS="https::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
-    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
+    https://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     catalyst_build_module
     catalyst-PKGBUILD
     catalyst.install
