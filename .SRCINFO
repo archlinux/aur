@@ -1,0 +1,20 @@
+pkgbase = liri-platformtheme
+	pkgdesc = Qt platform theme plugin for apps integration with Liri OS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri
+	license = GPL3
+	makedepends = liri-qbs-shared
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-gsettings
+	source = https://github.com/lirios/platformtheme/releases/download/v1.0.0/liri-platformtheme-1.0.0.tar.xz
+	sha256sums = 9fc7cdfff81e32b61bd643d2ee2d440feaf15d156287ee8f90b40c582f57370f
+
+pkgname = liri-platformtheme
+
