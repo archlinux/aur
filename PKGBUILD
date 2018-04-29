@@ -94,7 +94,7 @@ prepare() {
 }
 
 build() {
-	local bash_completion_dir="`pkg-config --variable=completionsdir bash-completion`"
+	local bash_completion_dir="$(pkg-config --variable=completionsdir bash-completion)"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr --sbindir=/usr/bin \
 		--libexecdir="/usr/lib/${pkgname}" --localstatedir=/var \
@@ -106,8 +106,8 @@ build() {
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	# Check whether the current working directory is too long
-	cwd_str="$(pwd)"
-	cwd_len="${#cwd_str}"
+	local cwd_str="$(pwd)"
+	local cwd_len="${#cwd_str}"
 	if [ "${cwd_len}" -gt 46 ]; then
 		error "${cwd_str} is too long."
 		error "The working directory cannot be longer than 46 bytes."
