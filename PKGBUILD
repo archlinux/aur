@@ -1,8 +1,3 @@
-# NOTE before builing package - download needed catalyst drivers zip archives from here:
-# https://support.amd.com/en-us/download/desktop?os=Linux%20x86_64
-# if _old_control=y also: https://support.amd.com/en-us/download/desktop/previous?os=Linux%20x86_64
-# and paste it next to this PKGBUILD
-
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Great Contributor: Shen Miren <dickeny@gmail.com> (build_module/hook idea and code)
 # Great Contributor: Eduardo "kensai" Romero (previous catalyst and catalyst-utils maintainer)
@@ -69,8 +64,8 @@ fi
 
 install=${pkgname}.install
 
-url_ref="http://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx"
-DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
+url_ref="https://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx"
+DLAGENTS="https::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
 	#    http://www2.ati.com/drivers/beta/amd-catalyst-${pkgver}-beta-v${_betano}-linux-x86.x86_64.run.zip
@@ -78,7 +73,7 @@ source=(
 	#     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 	#     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 	#     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-	http://www2.ati.com/drivers/linux/radeon-crimson-15.12-15.302-151217a-297685e.zip
+	https://www2.ati.com/drivers/linux/radeon-crimson-15.12-15.302-151217a-297685e.zip
 	lib32-catalyst.sh
 	catalyst.sh
 	atieventsd.sh
@@ -153,7 +148,7 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	'10af58c21e4e972115dda6dbd8279594')
 
 if [ "${_old_control}" = "y" ]; then
-	source+=(http://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip)
+	source+=(https://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip)
 	md5sums+=('d2de2df6946b452c266a3c892e6e46ff')
 fi
 
