@@ -4,7 +4,7 @@ pkgname=mingw-w64-gtk3
 pkgver=3.22.30
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
-arch=(any)
+arch=('any')
 url='http://www.gtk.org'
 install="${pkgname}.install"
 license=('LGPL')
@@ -23,11 +23,11 @@ depends=(
   'mingw-w64-glib2>=2.49.4'
   'mingw-w64-libepoxy>=1.0'
   'mingw-w64-pango>=1.37.3')
-options=(!strip !buildflags staticlibs)
+options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=('a1a4a5c12703d4e1ccda28333b87ff462741dc365131fbc94c218ae81d9a6567')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
@@ -35,12 +35,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  for _arch in ${_architectures}; do
+  for _arch in "${_architectures[@]}"; do
     export PKG_CONFIG="${_arch}-pkg-config"
     export PKG_CONFIG_FOR_BUILD="pkg-config"
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
-    ${_arch}-configure \
+    "${_arch}-configure" \
       --enable-broadway-backend \
       --enable-win32-backend \
       --disable-cups
@@ -51,12 +51,12 @@ build() {
 
 package() {
   cd "${srcdir}/gtk+-${pkgver}"
-  for _arch in ${_architectures}; do
+  for _arch in "${_architectures[@]}"; do
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtL1 ${_arch}-strip
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtL1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtL1 ${_arch}-strip -g
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec "${_arch}-strip" '{}' ';'
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec "${_arch}-strip" --strip-unneeded '{}' ';'
+    find "$pkgdir/usr/${_arch}" '(' -name '*.a' -o -name '*.dll' ')' -exec "${_arch}-strip" -g '{}' ';'
     rm "$pkgdir/usr/${_arch}/lib/"*.def
     rm -r "$pkgdir/usr/${_arch}/etc"
     rm -r "$pkgdir/usr/${_arch}/share/man"
