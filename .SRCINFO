@@ -1,0 +1,17 @@
+pkgbase = python2-mini-amf
+	pkgdesc = Minimal AMF encoder and decoder for Python
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/zackw/mini-amf
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-six
+	depends = python2-defusedxml
+	provides = python2-mini-amf=0.9.1
+	conflicts = python2-mini-amf
+	source = https://files.pythonhosted.org/packages/source/M/Mini-AMF/Mini-AMF-0.9.1.tar.gz
+	md5sums = fb6dc76e798ee76a2d58408427b2b341
+
+pkgname = python2-mini-amf
+
