@@ -18,23 +18,23 @@
 
 pkgname=catalyst-dkms
 pkgver=15.9
-pkgrel=19
+pkgrel=20
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers AKA Crimson. Sources to build fglrx module on DKMS."
 arch=('i686' 'x86_64')
-url="http://www.amd.com"
+url="https://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.16' 'linux-headers')
+depends=('dkms' 'catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.17' 'linux-headers')
 optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-hook' 'catalyst-daemon' 'catalyst' 'catalyst-generator')
 provides=("catalyst=${pkgver}")
 
-url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
-DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
+url_ref="https://support.amd.com/en-us/download/desktop?os=Linux+x86"
+DLAGENTS="https::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
-    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
+    https://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     makefile_compat.patch
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
