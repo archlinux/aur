@@ -4,9 +4,9 @@
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=162
-_build=b12
-_token="0da788060d494f5095bf8624735fa2f1"
+_minor=172
+_build=b11
+_token="a58eab1ec242421181065cdc37240b08"
 
 pkgver=${_major}u${_minor}
 pkgrel=1
@@ -56,9 +56,9 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('24cca1caa653ab675971c3e25cbd789b')
-md5sums_armv7h=('24cca1caa653ab675971c3e25cbd789b')
-md5sums_aarch64=('b9415a7acae4bb019e39b7169d3de384')
+md5sums_armv6h=('a22e671317c753ea7228eb614548b34e')
+md5sums_armv7h=('a22e671317c753ea7228eb614548b34e')
+md5sums_aarch64=('c19a9888b23e2fc81430e96fe6299afe')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
