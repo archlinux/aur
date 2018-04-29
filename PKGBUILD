@@ -12,7 +12,7 @@
 
 pkgname=('llvm50' 'llvm50-libs' 'clang50')
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 _prefix="/usr/lib/llvm-5.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -74,6 +74,7 @@ build() {
     ..
 
   make
+  make ocaml_doc
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/clang\/cmake_install.cmake/d' tools/cmake_install.cmake
@@ -97,7 +98,9 @@ package_llvm50() {
   # The runtime libraries go into llvm-libs
   mv -f "${pkgdir}${_prefix}"/lib/lib{LLVM,LTO}*.so* "$srcdir"
   mv -f "${pkgdir}${_prefix}"/lib/LLVMgold.so "$srcdir"
-
+  
+  #remove ocaml files
+  rm -rf $pkgdir/usr/lib/ocaml
   install -Dm644 LICENSE.TXT "${pkgdir}${_prefix}/share/licenses/llvm/LICENSE"
 
   # add symbolic links in /usr/bin
@@ -117,6 +120,9 @@ package_llvm50-libs() {
     "$srcdir"/lib{LLVM,LTO}*.so* \
     "$srcdir"/LLVMgold.so \
     "${pkgdir}${_prefix}/lib/"
+  
+  install -d $pkgdir/usr/lib
+  ln -s "${pkgdir}${_prefix}"/lib/lib{LLVM,LTO}*.so* $pkgdir/usr/lib
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "${pkgdir}${_prefix}/share/licenses/llvm-libs/LICENSE"
