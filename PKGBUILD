@@ -2,7 +2,7 @@
 pkgname=ossia-score
 pkgver=2.0.0a3
 release_tag=v2.0.0-a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.ossia.io"
@@ -10,6 +10,7 @@ license=('GPLv3')
 groups=()
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack2')
 makedepends=('git' 'cmake' 'qt5-tools')
+optdepends=('faust' 'lilv')
 provides=('ossia-score')
 conflicts=()
 replaces=('i-score')
