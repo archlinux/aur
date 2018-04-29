@@ -1,7 +1,8 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libwebp
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
-_commit=50d1a848bc56554af8413cfe681f94286a6371b3  # tags/v0.6.0^0
+_commit=698b8844e38a0c5ca50bb20f866e71291bfc3b36  # tags/v1.0.0^0
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
@@ -48,3 +49,5 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
+
+# vim: ts=2 sw=2 et:
