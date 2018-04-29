@@ -4,14 +4,14 @@
 
 pkgname=instead
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a quest interpreter"
 arch=('x86_64')
 url="http://sourceforge.net/projects/instead/"
 license=('MIT')
-depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'lua' 'gtk2')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'lua51' 'gtk2')
 makedepends=('cmake')
-optdepends=('instead-launcher: install and update INSTEAD games from net')
+optdepends=('instead-launcher: install and update INSTEAD games from net','insteadman: Manager for INSTEAD interpreter.')
 source=(http://downloads.sourceforge.net/project/instead/instead/${pkgver}/instead_${pkgver}.tar.gz)
 sha256sums=('241556db250e0a156b98beaf9bb71b54fc9d186130910adbeab1c1961757dad2')
 
@@ -19,6 +19,7 @@ build() {
   cd "${srcdir}"
   mkdir -p build
   cd build
+  export LUA_DIR=/usr/include/lua5.1
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
