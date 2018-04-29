@@ -15,20 +15,20 @@ source=("git+https://github.com/TaylanUB/${_pkgname}#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}/${_pkgname}"
 	printf "0.0+%s+g%s" \
 		"$(git rev-list HEAD | wc -l)" \
 		"$(git rev-list --max-count=1 HEAD | cut -c 1-7)"
 }
 
 build() {
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}/${_pkgname}"
 	autoreconf -fi
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}/${_pkgname}"
 	make DESTDIR="${pkgdir}" install
 }
