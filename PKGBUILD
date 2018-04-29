@@ -61,7 +61,7 @@ md5sums_armv7h=('a22e671317c753ea7228eb614548b34e')
 md5sums_aarch64=('c19a9888b23e2fc81430e96fe6299afe')
 
 package() {
-    cd ${_pkgname}1.${_major}.0_${_minor}
+    cd ${_pkgname}1.${_major}.0_${_minor} || exit 1
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
@@ -80,19 +80,19 @@ package() {
     rm    man/ja
 
     msg2 "Moving contents..."
-    mv * "$pkgdir"/$_jvmdir
+    mv ./* "$pkgdir"/$_jvmdir
 
     # Cd to the new playground
-    cd "$pkgdir"/$_jvmdir
+    cd "$pkgdir"/$_jvmdir || exit 1
 
     msg2 "Fixing directory structure..."
     # Replace duplicate binaries in bin/ with links to jre/bin/
-    for i in $(ls jre/bin/); do
-        ln -sf "$_jvmdir/jre/bin/$i" "bin/$i"
+    find jre/bin -print0 | while IFS= read -r -d '' i; do
+      ln -sf "$_jvmdir/$i" "bin/$(basename "$i")"
     done
 
     # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/jre/lib -> /etc
-    for new_etc_path in ${backup[@]}; do
+    for new_etc_path in "${backup[@]}"; do
         # Old location
         old_usr_path="jre/lib/${new_etc_path#*$_jname/}"
 
@@ -105,7 +105,7 @@ package() {
     ln -sf /etc/ssl/certs/java/cacerts jre/lib/security/cacerts
 
     # Suffix man pages
-    for i in $(find man/ -type f); do
+    find man/ -type f -print0 | while IFS= read -r -d '' i; do
         mv "$i" "${i/.1}-$_jname.1"
     done
 
@@ -114,7 +114,7 @@ package() {
     mv man/ "$pkgdir"/usr/share
 
     # Move/link licenses
-    mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    mv COPYRIGHT LICENSE ./*.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$_pkgname
 
     msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
