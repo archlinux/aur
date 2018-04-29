@@ -21,10 +21,8 @@ md5sums=(
 )
 
 build() {
-  cd "$srcdir/ME-25-Edit"
-
-  patchelf --replace-needed libjasper.so.1 libjasper.so ME-25-Edit
-  patchelf --replace-needed libwebp.so.5 libwebp.so ME-25-Edit
+  patchelf --replace-needed libjasper.so.1 libjasper.so "$srcdir/ME-25-Edit/ME-25-Edit"
+  patchelf --replace-needed libwebp.so.5 libwebp.so "$srcdir/ME-25-Edit/ME-25-Edit"
 }
 
 package() {
