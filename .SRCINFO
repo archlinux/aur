@@ -1,0 +1,19 @@
+pkgbase = latvia-eid-middleware
+	pkgdesc = Middleware for using Latvia-eid smart cards
+	pkgver = 1.2.12
+	pkgrel = 1
+	url = https://www.eparaksts.lv
+	install = middleware.install
+	arch = x86_64
+	groups = eparaksts
+	license = LGPL
+	depends = ccid
+	depends = libpng12
+	depends = libtool
+	depends = openssl-1.0
+	depends = zlib
+	source = https://download.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/l/latvia-eid-middleware/latvia-eid-middleware_1.2.12-3_amd64.deb
+	sha512sums = 99ba6379d60b2eef786c418e2fe38a0a63561ecb86994cc2036827e5d16d8a3504f4d693cfc93824d3614d29eda776a4c704e33f6a1d537aab60e30124b7aa31
+
+pkgname = latvia-eid-middleware
+
