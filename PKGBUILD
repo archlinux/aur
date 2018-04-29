@@ -8,7 +8,7 @@ _pkgname=mysql
 pkgbase=mysql57
 pkgver=5.7.22
 pkgrel=1
-pkgdesc="Fast SQL database server, community edition"
+pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc'
              'rpcsvc-proto' 'libtirpc')
@@ -95,7 +95,7 @@ build() {
 }
 
 package_libmysqlclient57(){
-  pkgdesc="MySQL client libraries"
+  pkgdesc="MySQL client libraries, v5.7"
   depends=('libsasl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}")
@@ -116,7 +116,7 @@ package_libmysqlclient57(){
 }
 
 package_mysql-clients57(){
-  pkgdesc="MySQL client tools"
+  pkgdesc="MySQL client tools, v5.7"
   depends=('libmysqlclient57' 'zlib' 'openssl' 'jemalloc')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
@@ -143,7 +143,7 @@ package_mysql-clients57(){
 }
 
 package_mysql57(){
-  pkgdesc="Fast SQL database server, community edition"
+  pkgdesc="Fast SQL database server, community edition, v5.7"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
   depends=('mysql-clients57' 'libsasl' 'zlib' 'jemalloc' 'libaio')
