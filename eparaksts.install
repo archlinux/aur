@@ -1,0 +1,8 @@
+post_install() {
+  mkdir -p /etc/opt/chrome/native-messaging-hosts
+  ln -sf /usr/share/eparaksts-chrome-extension/lv.eparaksts.eparaksts_chrome_extension.json /etc/opt/chrome/native-messaging-hosts/lv.eparaksts.eparaksts_chrome_extension.json
+}
+
+post_remove() {
+  rm -f /etc/opt/chrome/native-messaging-hosts/lv.eparaksts.eparaksts_chrome_extension.json
+}
