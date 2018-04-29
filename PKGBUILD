@@ -1,11 +1,11 @@
-# vim: set et ts=2:
-# Maintainer" Brian Bidulock <bidulock@openss7.org>
+# vim: set et sw=2:
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker
 pkgver=0.95.8
-pkgrel=4
+pkgrel=5
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
@@ -13,7 +13,7 @@ license=('GPL' 'custom')
 depends=('libxinerama' 'libxrandr' 'libxmu' 'libpng' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libmagick' 'libbsd')
 source=("http://windowmaker.org/pub/source/release/WindowMaker-$pkgver.tar.gz"
         'wmaker.desktop'
-	'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
+        'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
 
 prepare() {
   cd WindowMaker-$pkgver
@@ -23,11 +23,11 @@ prepare() {
   
   # fix some paths FS#3080 - ckeck also Gentoo ebuild
   for file in WindowMaker/*menu* util/wmgenmenu.c; do
- 	if [[ -r $file ]] ; then
- 	sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:/usr/lib/GNUstep/Applications/WPrefs.app:g;" "$file"
- 	sed -i -e "s:/usr/local/share/WindowMaker:/usr/share/WindowMaker:g;" "$file"
- 	sed -i -e "s:/opt/share/WindowMaker:/usr/share/WindowMaker:g;" "$file"
- 	fi;
+        if [[ -r $file ]] ; then
+        sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:/usr/lib/GNUstep/Applications/WPrefs.app:g;" "$file"
+        sed -i -e "s:/usr/local/share/WindowMaker:/usr/share/WindowMaker:g;" "$file"
+        sed -i -e "s:/opt/share/WindowMaker:/usr/share/WindowMaker:g;" "$file"
+        fi;
   done;
 }
 
@@ -37,7 +37,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-randr
-  make
+  make V=0
 }
 
 package() {
