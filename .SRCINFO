@@ -1,13 +1,14 @@
 pkgbase = xdg-traymenu
 	pkgdesc = XDG compliant system tray and root menu generator
-	pkgver = 0.01.41
-	pkgrel = 1
+	pkgver = 0.01.45
+	pkgrel = 2
 	url = https://github.com/bbidulock/xdg-traymenu
 	arch = any
 	groups = xde
 	license = GPL
 	makedepends = git
 	depends = perl-xml-sax
+	depends = perl-file-which
 	optdepends = perl-gtk2-unique: for xdg-traymenu
 	optdepends = xde-theme: style menus and wm detection
 	optdepends = xdg-launch: startup notification for menu items

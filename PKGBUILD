@@ -1,14 +1,14 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-traymenu
-pkgver=0.01.41
-pkgrel=1
+pkgver=0.01.45
+pkgrel=2
 pkgdesc="XDG compliant system tray and root menu generator"
 arch=('any')
 url="https://github.com/bbidulock/xdg-traymenu"
 groups=('xde')
 license=('GPL')
-depends=('perl-xml-sax')
+depends=('perl-xml-sax' 'perl-file-which')
 optdepends=('perl-gtk2-unique: for xdg-traymenu'
             'xde-theme: style menus and wm detection'
             'xdg-launch: startup notification for menu items')
