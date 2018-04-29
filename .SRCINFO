@@ -1,0 +1,27 @@
+pkgbase = barrier
+	pkgdesc = Open-source KVM software based on Synergy
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/debauchee/barrier
+	arch = x86_64
+	license = custom:GPL2WithOpenSSLException
+	makedepends = cmake
+	depends = curl
+	depends = libx11
+	depends = libxrandr
+	depends = libxext
+	depends = libxinerama
+	depends = xorgproto
+	depends = libxtst
+	depends = libxi
+	depends = avahi
+	depends = libsm
+	depends = libice
+	depends = openssl
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = https://github.com/debauchee/barrier/archive/v2.0.0.tar.gz
+	sha256sums = 713b0850895eac184ecf30b002da0be9bf90dda3ba0b68a0f6ba6c6ecc06806f
+
+pkgname = barrier
+
