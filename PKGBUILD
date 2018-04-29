@@ -14,13 +14,13 @@ md5sums=('8614598698ce0811c880714530f5892d'
          'f061844a40d70f245fb083b48f5b83cc')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p1 < ../0001-Fix-incorrent-build-parameters.patch
   unset CPPFLAGS
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make PREFIX="${pkgdir}/usr" install
 }
