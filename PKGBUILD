@@ -3,13 +3,13 @@
 # Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
 pkgname=trickle-git
-pkgver=latest
+pkgver=r21.596bb13
 pkgrel=1
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
-depends=('libevent')
+depends=('libevent' 'libtirpc')
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
 source=("git+https://github.com/mariusae/trickle.git"
@@ -36,11 +36,14 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname/-git/}"
 
+	CPPFLAGS+=" -I/usr/include/tirpc/"
+	LDFLAGS+=" -ltirpc"
+
 	autoreconf -if
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man
 	sed -i "s|.*in_addr_t.*||g" config.h
-	make
+	make -j1
 }
 
 package() {

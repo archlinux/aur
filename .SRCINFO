@@ -1,12 +1,13 @@
 pkgbase = trickle-git
 	pkgdesc = Lightweight userspace bandwidth shaper
-	pkgver = latest
+	pkgver = r21.596bb13
 	pkgrel = 1
 	url = https://github.com/mariusae/trickle
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libevent
+	depends = libtirpc
 	provides = trickle
 	conflicts = trickle
 	source = git+https://github.com/mariusae/trickle.git
