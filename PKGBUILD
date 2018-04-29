@@ -1,4 +1,4 @@
-# Maintainer: izznogoood <ama@getmail.com>
+# Maintainer: izznogoood <ama@getmail.no>
 
 pkgname=startup-settings-git
 pkgver=r45.516860c
