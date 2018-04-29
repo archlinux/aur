@@ -1,6 +1,6 @@
 pkgbase = caffe2-cpu-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (git version, cpu only)
-	pkgver = 0.1.11.r7977.g3b63be063
+	pkgver = 0.8.2.r11002.g90026f59a
 	pkgrel = 1
 	epoch = 1
 	url = http://caffe2.ai/
@@ -61,12 +61,10 @@ pkgbase = caffe2-cpu-git
 	conflicts = caffe2-git
 	options = !emptydirs
 	source = pytorch-git::git+https://github.com/pytorch/pytorch.git
-	source = caffe2-submodule-aten-cpuinfo::git+https://github.com/Maratyszcza/cpuinfo
-	source = caffe2-submodule-aten-tbb_remote::git+https://github.com/01org/tbb#branch=tbb_2018
-	source = caffe2-submodule-aten-catch::git+https://github.com/catchorg/Catch2.git
+	source = caffe2-submodule-tbb::git+https://github.com/01org/tbb#branch=tbb_2018
+	source = caffe2-submodule-catch::git+https://github.com/catchorg/Catch2.git
 	source = caffe2-submodule-nanopb::git+https://github.com/nanopb/nanopb.git
 	source = caffe2-submodule-pybind11::git+https://github.com/pybind/pybind11.git
-	source = caffe2-submodule-nccl::git+https://github.com/nvidia/nccl.git
 	source = caffe2-submodule-cub::git+https://github.com/NVlabs/cub.git
 	source = caffe2-submodule-eigen::git+https://github.com/RLovelett/eigen.git
 	source = caffe2-submodule-googletest::git+https://github.com/google/googletest.git
@@ -88,8 +86,6 @@ pkgbase = caffe2-cpu-git
 	source = caffe2-submodule-ComputeLibrary::git+https://github.com/ARM-software/ComputeLibrary.git
 	source = caffe2-submodule-onnx::git+https://github.com/onnx/onnx.git
 	source = caffe2-submodule-ideep::git+https://github.com/intel/ideep.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
