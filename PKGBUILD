@@ -3,7 +3,7 @@
 pkgname=qelly-git
 _pkgname=Qelly
 pkgver=1.0b.20.g354e0b7
-pkgrel=2
+pkgrel=3
 pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('qelly')
 provides=('qelly')
 source=("$pkgname::git+https://github.com/uranusjr/Qelly.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
