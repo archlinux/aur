@@ -3,7 +3,7 @@
 
 _pkgname=libdvdcss
 pkgname=lib32-${_pkgname}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Portable abstraction library for DVD decryption (32 bit)"
 url="http://www.videolan.org/developers/libdvdcss.html"
@@ -12,8 +12,8 @@ license=('GPL')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-multilib')
 options=('!docs' '!emptydirs')
-source=(http://download.videolan.org/pub/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-md5sums=('47e7cb46fe3a5e53bec1356423b0b534')
+source=("http://download.videolan.org/pub/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('7b74f2e142b13c9de6dc8d807ab912d4')
 
 build() {
 export CC='gcc -m32'
