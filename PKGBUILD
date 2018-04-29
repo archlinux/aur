@@ -20,9 +20,17 @@ md5sums=('2036001984b4d904cac87ac452ebfa66'
          'bb315f14e6d7ef57976c8934ddad4fd9'
          '3c73b5245f2da7dd2e31729e2b57ad37')
 
+prepare() {
+    cd "${srcdir}/${_upstream}-${pkgver}"
+    sed -i'' -e '/postinstall/d' package.json
+    sed -i'' -e '/"cross-script"/d' package.json
+}
+
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
     npm install
+    npm install electron-rebuild
+    ./node_modules/.bin/electron-rebuild
 }
 
 package() {
