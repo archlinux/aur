@@ -1,0 +1,17 @@
+pkgbase = i3ipc-python
+	pkgdesc = An improved Python library to control i3wm
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/acrisci/i3ipc-python
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = i3ipc-python
+	conflicts = i3ipc-python-git
+	source = i3ipc-python-1.5.1.tar.gz::https://github.com/acrisci/i3ipc-python/archive/v1.5.1.tar.gz
+	sha512sums = 5b638bedcc4c690e270390a815d1b680585935c82ce8295cac774d72bbcf444b3ba68f7259cfe02539f493694aefcb7894c8f84ff5aa88a464f477ee6d3b8692
+
+pkgname = i3ipc-python
+
