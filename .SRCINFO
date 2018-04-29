@@ -1,11 +1,11 @@
 pkgbase = kvazaar-git
-	pkgdesc = An open-source HEVC encoder licensed under LGPLv2.1 (git version)
-	pkgver = 1.2.0.r59.g01642916
+	pkgdesc = An open-source HEVC encoder (git version)
+	pkgver = 1.2.0.r71.g6be81959
 	pkgrel = 1
 	url = http://ultravideo.cs.tut.fi/#encoder
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL
 	makedepends = git
 	makedepends = yasm
 	depends = glibc
