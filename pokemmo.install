@@ -7,12 +7,13 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 
 post_install(){
-   msg_blue "To play, you will need to place a PokeMon Fire Red ROM, and optionally"
-   msg_blue "a Heart Gold or Soul Silver ROM, in ~/.pokemmo/roms"
+   xdg-desktop-menu install --novendor --mode system /usr/share/applications/pokemmo.desktop
+   msg_blue "To play, you will need to place a Pokemon Black or White ROM, and optionally"
+   msg_blue "a FireRed, Emerald, and HeartGold or SoulSilver ROM, in ~/.pokemmo/roms"
    echo ""
    msg_blue "This software is not open-source. You must agree to the terms of service before"
    msg_blue "using this software. The terms of service and licensing information may be"
-   msg_blue "here: http://pokemmo.eu/tos/"
+   msg_blue "found here: https://pokemmo.eu/tos/"
 }
 
 post_upgrade() {
@@ -20,5 +21,6 @@ post_upgrade() {
 }
 
 post_remove() {
+  xdg-desktop-menu uninstall --novendor --mode system /usr/share/applications/pokemmo.desktop
   msg_blue "You may remove leftover config and data files from '~/.pokemmo'."
 }
