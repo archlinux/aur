@@ -3,8 +3,9 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d )
-pkgver=0.1.2
-pkgrel=1
+pkgver=v0.1.2.r3.fb969e1
+pkgrel=2
+epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
 url="http://www.open-3d.org"
@@ -29,16 +30,23 @@ makedepends=(
     make
 )
 changelog="${pkgbase}.changelog"
-source=("Open3D-${pkgver}.tar.gz::https://github.com/Open-3D/Open3D/archive/v0.1.2.tar.gz")
-md5sums=('466a9edd042484e115986ebceeae77b2')
+source=("${pkgbase}::git+http://code.open-3d.org")
+md5sums=(SKIP)
+
+function pkgver() {
+    cd "${pkgbase}"
+    # grab the latest tag
+    git describe --tags --long \
+        | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
 
 function prepare() {
-    cd "Open3D-${pkgver}"
+    cd "${pkgbase}"
     mkdir -p build
 }
 
 function build() {
-    cd "Open3D-${pkgver}/build"
+    cd "${pkgbase}/build"
     cmake .. \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DBUILD_SHARED_LIBS=ON \
@@ -60,7 +68,7 @@ function package_open3d() {
     optdepends=(
         openmp
     )
-    cd "Open3D-${pkgver}/build"
+    cd "${pkgbase}/build"
     local SITE_PACKAGES="$(awk 'BEGIN {FS="="} /^PYTHON_SITE_PACKAGES:PATH\>/ {print $2}' CMakeCache.txt)"
     install -m 644 -D -t "${pkgdir}/usr/lib" lib/libopen3d*.so
     install -d "${pkgdir}/usr/include"
@@ -83,7 +91,7 @@ function package_python-open3d() {
     optdepends=(
         openmp
     )
-    cd "Open3D-${pkgver}/build"
+    cd "${pkgbase}/build"
     local SITE_PACKAGES="$(awk 'BEGIN {FS="="} /^PYTHON_SITE_PACKAGES:PATH\>/ {print $2}' CMakeCache.txt)"
     install -m 644 -D -t "${pkgdir}/${SITE_PACKAGES}" lib/open3d.*.so
 }
