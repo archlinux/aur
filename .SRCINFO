@@ -1,0 +1,14 @@
+pkgbase = python-cmdebug-git
+	pkgdesc = Debug utilities for ARM Cortex-M microprocessors
+	pkgver = r52.65e8b50
+	pkgrel = 1
+	url = https://github.com/posborne/cmsis-svd
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools python-lxml
+	depends = python
+	source = cmdebug::git+https://github.com/bnahill/PyCortexMDebug
+	md5sums = SKIP
+
+pkgname = python-cmdebug-git
+
