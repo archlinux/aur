@@ -1,6 +1,6 @@
 pkgbase = gegl-git
 	pkgdesc = Graph based image processing framework
-	pkgver = 0.3.30.5
+	pkgver = 0.4.0.8
 	pkgrel = 1
 	url = http://www.gegl.org
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = gegl-git
 	optdepends = libraw: raw plugin
 	optdepends = suitesparse: matting-levin plugin
 	optdepends = lua: lua plugin
-	provides = gegl=0.3.30.5
+	provides = gegl=0.4.0.8
 	conflicts = gegl>=0.3.0
 	options = !libtool
 	source = git://git.gnome.org/gegl
