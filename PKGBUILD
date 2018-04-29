@@ -5,7 +5,7 @@
 
 pkgname=yad-git
 _pkgname=yad
-pkgver=0.40.0
+pkgver=9267829
 pkgrel=1
 pkgdesc="A fork of zenity - display graphical dialogs from shell scripts or command line"
 url="http://github.com/v1cont/yad"

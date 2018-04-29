@@ -1,6 +1,6 @@
 pkgbase = yad-git
 	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line
-	pkgver = 0.40.0
+	pkgver = 9267829
 	pkgrel = 1
 	url = http://github.com/v1cont/yad
 	arch = x86_64
