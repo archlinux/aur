@@ -1,6 +1,6 @@
 pkgbase = libwebp-git
 	pkgdesc = WebP library and conversion tools
-	pkgver = 0.6.1.r50.gb2db361ca
+	pkgver = 1.0.0.r17.gf9df0081a
 	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = x86_64

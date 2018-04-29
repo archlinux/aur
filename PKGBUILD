@@ -1,11 +1,11 @@
-# Contributor: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=libwebp-git
-pkgver=0.6.1.r50.gb2db361ca
+pkgver=1.0.0.r17.gf9df0081a
 pkgrel=1
 pkgdesc="WebP library and conversion tools"
 arch=(x86_64 i686)
