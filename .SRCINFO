@@ -6,7 +6,7 @@ pkgbase = pokemmo
 	install = pokemmo.install
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = custom
 	depends = java-runtime
 	depends = wget
 	depends = openssl
@@ -14,9 +14,9 @@ pkgbase = pokemmo
 	source = pokemmo-launcher
 	source = pokemmo.desktop
 	source = pokemmo-launcher.png
-	sha256sums = ccd8a41f33509c77d55dbe50bd1c8c18aea0141f3f94e2ce5015088a2a029114
+	sha256sums = c3db3b0d03db8bde29591947302ea773135c82096f6e0c15abc367c636bdde66
 	sha256sums = 5be349827e2798bce275c16a554ab32f5aa3cf62859200effa5328c26d1233dc
-	sha256sums = 6654600c19fe4c7190b548b41d412a99b4ffbefbee0e981e6076539bca7a9a04
+	sha256sums = 50d0c73eb7e23dcec4c36304cb9008a448e8127628eadb1166c3343f6fdd5ee3
 
 pkgname = pokemmo
 
