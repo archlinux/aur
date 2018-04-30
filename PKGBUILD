@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.16
-_pkgver=4.16.5
+_pkgver=4.16.6
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/anthraxx/linux-hardened'
@@ -22,23 +22,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
-        net-aquantia-Regression-on-reset-with-1.x-firmware.patch
         fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
         partially-revert-swiotlb-remove-various-exports.patch
 )
 replaces=('linux-grsec')
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
+            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
             'SKIP'
-            '65482af87d9bac91d67591bde20ab56162060ea05fad910dbfcb5e5e964c8804'
+            '587477338e3c34e31c8d895bae9bed6847d6b0b5ad318460733ee9213730315f'
             'SKIP'
-            'a9da5b07a5ed14fe0356491e0407b8c5abf69e575538bfc006ccafa63b2cf275'
+            '6af64e6b4e017428dc887b7ccbaa4ef01166bdd2f75d49fd6aeeb79bf5c33432'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
-            'd7233371fe617895b600ad1939d8b818395276d07b8a7918b955c9590a5d1112'
             'b1c1cf770b2baab046d52687ec3dd83c543e3f45b4abeae2686c814673e0a1c5'
             '87a0849079db7bf1deefb687bcf43170f1b209d27af9950f98b049cdf233b447')
 validpgpkeys=(
