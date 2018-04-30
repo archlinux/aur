@@ -1,0 +1,12 @@
+pkgbase = x-arc-white
+	pkgdesc = X-Arc-White Theme for GTK 3.x
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1167049/
+	arch = any
+	depends = gtk3
+    depends = gtk-engine-murrine
+	source = https://github.com/Jaxmetalmax/x-arc-themes/raw/master/X-Arc-White.zip
+	md5sums = 4de2cd7057ad52a8e2785f31b1bd52e3
+
+pkgname = x-arc-white
