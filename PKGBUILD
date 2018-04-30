@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 pkgver='2.6.0'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
@@ -17,7 +17,7 @@ source=("xmrig.service"
 	"xmrig.sysusers"
 	"${url}/archive/v${pkgver}-beta3.tar.gz")
 sha256sums=('0559837edbe069158909c8379041c01d9e98fb2ec4a62d3fa26b95741b463275'
-            '774e7cb1e451d10fc5ef41820841da5510ca4018339f03223588480fd080f049'
+            'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
             '54eac25e600bf3e3bbbef4ce7b55a4139e0d229b48c226e22755ba86a1f39a7d')
 prepare() {
   cd "xmrig-${pkgver}-beta3"
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "xmrig-${pkgver}-beta3"
   install -Dm775 "build/xmrig" "${pkgdir}/usr/bin/xmrig"
-  install -Dm644 "src/config.json" "${pkgdir}/etc/xmmrig/xmrig.conf"
+  install -Dm644 "src/config.json" "${pkgdir}/etc/xmrig/xmrig.conf"
   install -Dm644 "${srcdir}/xmrig.service" "${pkgdir}/usr/lib/systemd/system/xmrig@.service"
   install -Dm0644 "${srcdir}/xmrig.sysusers" "${pkgdir}/usr/lib/sysusers.d/xmrig.conf"
 }
