@@ -1,4 +1,4 @@
-pkgbase = x-arc-shadow
+pkgbase = x-arc-plus
 	pkgdesc = X-Arc-Plus Theme for GTK 3.x
 	pkgver = 1.4.9
 	pkgrel = 1
