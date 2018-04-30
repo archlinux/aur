@@ -1,0 +1,10 @@
+[Unit]
+Description=Cheat Engine Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ceserver
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
