@@ -2,7 +2,7 @@
 
 pkgname=opentoonz
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='2D animation software based on Toonz Studio Ghibli Version.'
 url='https://opentoonz.github.io'
 license=('BSD')
@@ -31,7 +31,7 @@ build() {
     -B"${pkgname}-build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMYPAINT_LIB_INCLUDE_DIRS=/usr/include/libmypaint \
+    -DMYPAINT_LIB_INCLUDE_DIRS=/usr/include/libmypaint-1.3 \
     -DMYPAINT_LIB_LDFLAGS=/usr/lib/libmypaint-1.3.so
   cd "${pkgname}-build"
   make

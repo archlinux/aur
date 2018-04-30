@@ -1,7 +1,7 @@
 pkgbase = opentoonz
 	pkgdesc = 2D animation software based on Toonz Studio Ghibli Version.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentoonz.github.io
 	arch = x86_64
 	license = BSD
