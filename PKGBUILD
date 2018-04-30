@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20180326
+pkgver=20180430
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('dyncall' 'libatomic_ops' 'libffi' 'libtommath' 'libuv' 'llvm')
+depends=('libatomic_ops' 'libffi' 'libtommath' 'libuv')
 makedepends=('binutils' 'clang' 'git' 'make' 'perl' 'pkg-config')
 groups=('perl6')
 url="https://github.com/MoarVM/MoarVM"
@@ -40,7 +40,6 @@ build() {
     --prefix=/usr \
     --toolchain=gnu \
     --compiler=clang \
-    --has-dyncall \
     --has-libatomic_ops \
     --has-libffi \
     --has-libtommath \
