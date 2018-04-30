@@ -2,9 +2,9 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=irmplircd
-pkgver=20141124
-_gitver=98d9b36ee6037ff41919b43e2127a041a8d02695
-pkgrel=3
+pkgver=20180103
+_gitver=d7994146cd1950ff2673edf382d2148b37f78a18
+pkgrel=1
 pkgdesc="zeroconf LIRC daemon that reads IRMP events from the USB IR Remote Receiver"
 url="https://github.com/realglotzi/irmplircd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ source=("git+https://github.com/realglotzi/irmplircd.git#commit=$_gitver"
 md5sums=('SKIP'
          'febf25c154a7d36f01159e84f26c2d9a'
          'cfa3ab62473580d8f12aa1eea751ef19'
-         '6d88605403574e3f3e74cca885b531f0')
+         'b0d56a3b2ff1fdbd387ce4dd562ddc7f')
 
 pkgver() {
   cd "${srcdir}/irmplircd"

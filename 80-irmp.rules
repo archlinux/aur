@@ -1,1 +1,2 @@
 KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5750", SYMLINK+="irmp_stm32", TAG+="systemd"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="4444", SYMLINK+="irmp_stm32", TAG+="systemd"
