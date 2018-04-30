@@ -1,6 +1,5 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: ultraviolet <ultravioletnanokitty@gmail.com>
-# https://github.com/FabioLolix  
 
 pkgname=selene-media-converter
 pkgver=17.7
@@ -33,15 +32,15 @@ makedepends=('vala' 'chrpath')
 provides=('selene-media-converter' 'selene-media-encoder')
 conflicts=('selene-media-converter' 'selene-media-encoder' 'selene-media-encoder-bzr')
 source=("https://github.com/teejee2008/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('5e028327c64cadcf244b62baca17a92a')
+md5sums=('8af31e921872c102d54c0db3b1d1c8fc')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/selene-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/selene-${pkgver}"
   make DESTDIR="$pkgdir/" install
   chrpath --delete ${pkgdir}/usr/bin/selene
   rm ${pkgdir}/usr/bin/selene-uninstall
