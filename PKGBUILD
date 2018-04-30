@@ -5,17 +5,19 @@ pkgname="${_pkgname}"
 _pkgver=1.7.4
 # epoch=0
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Create portable, self-containing Linux executables: Creates from dynamically linked executables and all it's libraries one file. Note: Does not play well with VDSO, which most modern kernels have activated."
 arch=('i386' 'i486' 'i586' 'i686' 'x86_64')
 url="http://statifier.sourceforge.net/"
 license=('GPL2')
 
 depends=(
+  'gcc-libs'
   'glibc'
 )
 
 depends_x86_64=(
+  'lib32-gcc-libs'
   'lib32-glibc'
 )
 
