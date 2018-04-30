@@ -4,7 +4,7 @@
 
 pkgname=godot
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -21,10 +21,8 @@ fi
 
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
-  godot.desktop
 )
-sha256sums=('15bc91dcbc92fe49624118678fcab119ff332dc295b25f4921700a4ee498b651'
-            'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822')
+sha256sums=('15bc91dcbc92fe49624118678fcab119ff332dc295b25f4921700a4ee498b651')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
@@ -42,11 +40,12 @@ package() {
 
   cd "${srcdir}"
 
-  install -Dm644 godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
+  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
   install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/icon.svg "${pkgdir}"/usr/share/pixmaps/godot.svg
 
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
   install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/LICENSE.txt "${pkgdir}"/usr/share/licenses/godot/LICENSE
+  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/godot.6 "${pkgdir}"/usr/share/man/man6/godot.6
 }
