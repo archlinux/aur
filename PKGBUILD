@@ -1,4 +1,4 @@
-# Maintainer: James Smith <jslonescout AT gmail DOT com>
+# Maintainer: James Smith <jslonescout AT icloud DOT com>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=laternamagica.app
 _pkgname=LaternaMagica 
