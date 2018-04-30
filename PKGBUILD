@@ -7,7 +7,8 @@ pkgdesc="A dark theme for LXQt based on Arc"
 arch=('any')
 url="https://github.com/gabretana/lxqt-arc-dark-theme"
 license=('GPL')
-optdepends=('kvantum-theme-arc: recommended kvantum style')
+optdepends=('kvantum-theme-arc: recommended kvantum style'
+'arc-gtk-theme: GTK theme')
 _theme='arc-dark'
 _repo='lxqt-arc-dark-theme'
 source=("git+https://github.com/gabretana/lxqt-arc-dark-theme.git")
