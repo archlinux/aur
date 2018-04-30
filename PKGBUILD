@@ -3,12 +3,12 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=7
-pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes and to fix font spacing'
+pkgrel=8
+pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), with various fixes'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('libxft' 'perl' 'startup-notification')
+depends=('libxft' 'perl' 'startup-notification' 'gdk-pixbuf2')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=('rxvt-unicode' 'rxvt-unicode-terminfo')
 conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo')
@@ -20,6 +20,7 @@ source=(
   'intensity.patch'
   'font-width-fix.patch'
   'line-spacing-fix.patch'
+  'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
   '256color.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
@@ -29,6 +30,7 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
          'fef588d6bfe52304bf80e8f1771577b6'
          '9f3248bc397ee76b008375f2ab0f201a'
+         'f8325b0a33999db4d5d1eeac4f320156'
          'fb78c2ecf87626962734320cc2bb7ab1')
 
 prepare() {
@@ -39,6 +41,7 @@ prepare() {
   # From https://aur.archlinux.org/packages/rxvt-unicode-patched/
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
+  patch -p0 -i ../sgr-mouse-mode.patch
 
   # From https://aur.archlinux.org/packages/rxvt-unicode-256xresources/
   patch -p0 -i ../256color.patch
@@ -74,7 +77,7 @@ build() {
     --enable-xft \
     --enable-xim \
     --enable-xterm-scroll \
-    --disable-pixbuf \
+    --enable-pixbuf \
     --enable-frills
   make
 }

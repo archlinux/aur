@@ -2,4 +2,5 @@
 /pkg/
 rxvt-unicode-*.bz2
 *.pkg.tar*
+sgr-mouse-mode.patch
 
