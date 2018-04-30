@@ -5,7 +5,7 @@
 # Contributor:  Pooler                   <https://bitcointalk.org/index.php?action=profile;u=43931>
 
 pkgname=electrum-vtc
-pkgver=2.9.3.6
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
 
@@ -13,20 +13,25 @@ arch=('any')
 url='https://electrum.vertcoin.org/'
 license=('MIT')
 
-depends=('python2-setuptools'
-         'python2-pyaes'
-         'python2-ecdsa'
-         'python2-pbkdf2'
-         'python2-requests'
-         'python2-qrcode'
-         'python2-vtc_scrypt'
-         'python2-lyra2re2_hash'
-         'python2-protobuf'
-         'python2-pyqt4'
-         'python2-dnspython'
-         'python2-jsonrpclib-pelix'
-         'python2-pysocks'
+depends=('python-setuptools'
+         'python-pyaes'
+         'python-ecdsa'
+         'python-pbkdf2'
+         'python-requests'
+         'python-qrcode'
+         'python-vtc_scrypt'
+         'python-lyra2re2_hash'
+         'python-protobuf'
+         'python-pyqt5'
+         'python-dnspython'
+         'python-jsonrpclib-pelix'
+         'python-pysocks'
          'zbar')
+
+optdepends=('cython: Compilation support for all hardware wallet dependencies'
+            'python-btchip: Ledger hardware wallet support'
+            'python-trezor: Trezor hardware support'
+            'python-keepkey: KeepKey hardware wallet support')
 
 provides=('electrum-vtc')
 conflicts=('electrum-vtc')
@@ -34,31 +39,31 @@ conflicts=('electrum-vtc')
 source=("Electrum-VTC-$pkgver.tar.gz::https://github.com/vertcoin/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "Electrum-VTC-$pkgver.tar.gz.sig::https://github.com/vertcoin/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-validpgpkeys=('E44EAD1F0BB016963229A6A304E9BCFB4E777CA3')
+validpgpkeys=('E44EAD1F0BB016963229A6A304E9BCFB4E777CA3'
+              '64D9042053AA1391D6C0B4A7425776E2F9E5BAB8')
 
-sha256sums=('8b07a684c076f40cf55355261213f50799a6513b80c163caa8667d39828ad09d'
+sha256sums=('2486c4dbf42b7cdfec8e5b56eef09991c5c71f023015b309da709b8d6d63b547'
             'SKIP')
 
 prepare() {
     cd "$srcdir/Electrum-VTC-$pkgver/"
-    find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
     for i in icons/{electrum_{dark,light}_icon,unpaid}.png
     do convert $i $i
     done
-    pyrcc4 icons.qrc >gui/qt/icons_rc.py
+    pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 }
 
 build() {
     cd "$srcdir/Electrum-VTC-$pkgver/"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "$srcdir/Electrum-VTC-$pkgver/"
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
+    python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
     mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-    cp AUTHORS README.rst RELEASE-NOTES electrum-vtc.conf.sample "$pkgdir/usr/share/doc/$pkgname/"
+    cp AUTHORS README.rst RELEASE-NOTES "$pkgdir/usr/share/doc/$pkgname/"
     cp LICENCE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
