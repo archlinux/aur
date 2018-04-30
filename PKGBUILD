@@ -3,7 +3,7 @@
 pkgname=xboxdrv-sl6566bk
 _pkgname=xboxdrv
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace gamepad driver for Linux with Speedlink SL-6566-BK patch. Based on the "xboxdrv" package.'
 url='http://pingus.seul.org/~grumbel/xboxdrv'
 arch=('i686' 'x86_64')

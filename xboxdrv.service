@@ -5,6 +5,7 @@ Documentation=man:xboxdrv(1)
 [Service]
 Type=forking
 User=root
+Restart=on-failure
 PIDFile=/var/run/xboxdrv.pid
 ExecStart=/usr/bin/xboxdrv --daemon --detach --chatpad --mimic-xpad --pid-file /var/run/xboxdrv.pid -c /etc/default/xboxdrv --detach-kernel-driver --deadzone 4000 --deadzone-trigger 10%
 
