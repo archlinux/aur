@@ -4,38 +4,42 @@
 # Contributor: pingplug
 # Contributor: perlawk
 # Contributor: xsmile
+# Contributor: p00h <p00hzone at gmail dot com>
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
 pkgver=19.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
-arch=('any')
+arch=('x86_64')
 url="http://www.dlib.net/"
-license=('Boost Software License')
-makedepends=('cmake' 'boost' 'cuda' 'gcc6' 'python' 'python2')
+license=('Boost')
+depends=('cuda' 'cudnn' 'libx11')
+makedepends=('cmake' 'cuda' 'cudnn' 'gcc6' 'libx11' 'python' 'python2')
 optdepends=('cblas: for BLAS support'
+            'giflib: for GIF support'
             'lapack: for LAPACK support'
             'libjpeg-turbo: for JPEG support'
             'libpng: for PNG support'
+            'neon: for neon support'
             'sqlite: for sqlite support')
-source=('http://dlib.net/files/dlib-19.10.tar.bz2')
+source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
 md5sums=('800e83d66fddc5a4387eba6b69374388')
 
 # Detecting whether certain cpu optimisations can be made
-avx_available=()
+_avx_available=()
 if grep -q avx /proc/cpuinfo; then
-  avx_available=( '--yes' 'USE_AVX_INSTRUCTIONS' )
+  _avx_available=( '--yes' 'USE_AVX_INSTRUCTIONS' )
 fi
 
-sse2_available=()
+_sse2_available=()
 if grep -q sse2 /proc/cpuinfo; then
-  sse2_available=( '--yes' 'USE_SSE2_INSTRUCTIONS' )
+  _sse2_available=( '--yes' 'USE_SSE2_INSTRUCTIONS' )
 fi
 
-sse4_available=()
+_sse4_available=()
 if grep -q sse4 /proc/cpuinfo; then
-  sse4_available=( '--yes' 'USE_SSE4_INSTRUCTIONS' )
+  _sse4_available=( '--yes' 'USE_SSE4_INSTRUCTIONS' )
 fi
 
 build() {
@@ -43,27 +47,26 @@ build() {
 
   # Exporting compiler environment variables
   # This is necessary to get cuda support
-  export CC=`which gcc-6` 
-  export CXX=`which g++-6`
+  export CC=$(which gcc-6)
+  export CXX=$(which g++-6)
   
   # Compiling for Python 3
-  python setup.py build -j $(nproc) "${avx_available[@]}" "${sse2_available[@]}" "${sse4_available[@]}"
+  python setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
   
   # Compiling for Python 2
-  python2 setup.py build "${avx_available[@]}" "${sse2_available[@]}" "${sse4_available[@]}"
+  python2 setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
 }
 
 package_python-dlib-cuda() {
-  depends=('python')
+  depends=('python' 'cuda' 'cudnn' 'libx11')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
 package_python2-dlib-cuda() {
-  depends=('python2')
-
+  depends=('python2' 'cuda' 'cudnn' 'libx11')
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  python2 setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
