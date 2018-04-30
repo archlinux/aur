@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo
-pkgver=0.9.3
-pkgrel=6
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('texlive-core: for postscript or pdf output'
 	    'ploticus: for pie-charts'
 	    'guile-lib: to be able to use the RSS-2-reader')
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('e7623d5a7adbaf302bb7e63b7ab5101a')
+md5sums=('6213dac3adbdad6f4eac6fe19f9e9228')
 options=('!makeflags')
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = skribilo
 	pkgdesc = The Ultimate Document Programming Framework
-	pkgver = 0.9.3
-	pkgrel = 6
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = http://www.nongnu.org/skribilo/
 	arch = any
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = skribilo
 	optdepends = ploticus: for pie-charts
 	optdepends = guile-lib: to be able to use the RSS-2-reader
 	options = !makeflags
-	source = http://download.savannah.gnu.org/releases/skribilo/skribilo-0.9.3.tar.gz
-	md5sums = e7623d5a7adbaf302bb7e63b7ab5101a
+	source = http://download.savannah.gnu.org/releases/skribilo/skribilo-0.9.4.tar.gz
+	md5sums = 6213dac3adbdad6f4eac6fe19f9e9228
 
 pkgname = skribilo
 
