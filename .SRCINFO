@@ -1,0 +1,18 @@
+pkgbase = ocaml-zarith
+	pkgdesc = Implements arithmetic and logical operations over arbitrary-precision integers and rational numbers
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/ocaml/Zarith
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = ocaml>=3.12.1
+	makedepends = ocaml-findlib
+	depends = gmp
+	provides = zarith
+	source = https://github.com/ocaml/Zarith/archive/release-1.7.tar.gz
+	md5sums = 80944e2755ebb848451a77dc2ad0651b
+	sha256sums = d641bb66d04461111b75f2fc37ad1eec764dcf326d98a51ac078695baea2ab3a
+
+pkgname = ocaml-zarith
+
