@@ -3,18 +3,10 @@
 
 String* string_init(void) {
     String* pString = (String*) malloc(sizeof(String));
-    if (pString != NULL) {
-        pString->len = 0;
-        pString->data = (char*) malloc(sizeof(char));
-        if (pString->data == NULL) {
-            fprintf(stderr, "malloc() failed\n");
-            exit(EXIT_FAILURE);
-        }
-        pString->data[0] = '\0';
-    } else {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(pString);
+    pString->len = 0;
+    pString->data = calloc(sizeof(char), 1);
+    pointer_alloc_check(pString->data);
     return pString;
 }
 
@@ -40,7 +32,7 @@ char* strip_char(char* string, char c) {
     return string;
 }
 
-void string_write_portfolio(String* pString){
+void string_write_portfolio(String* pString) {
     FILE* fp = fopen(portfolio_file, "w"); // fprintf %s won't work since there some chars are encoded to '\0', so it
     for (int i = 0; i < (int) pString->len; i++)    // will be null terminated several times in the middle
         fputc(pString->data[i], fp);
@@ -52,4 +44,11 @@ void string_destroy(String** phString) {
     free(pString->data);
     free(*phString);
     *phString = NULL;
+}
+
+void pointer_alloc_check(void* alloced) {
+    if (alloced == NULL) {
+        fprintf(stderr, "alloc failed!\n");
+        exit(EXIT_FAILURE);
+    }
 }

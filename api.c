@@ -2,24 +2,18 @@
 
 Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
-    if (pInfo != NULL) {
-        pInfo->name = malloc(64);
-        pInfo->symbol = malloc(64);
-        if (pInfo->name == NULL || pInfo->symbol == NULL) {
-            fprintf(stderr, "malloc() failed\n");
-            exit(EXIT_FAILURE);
-        }
-        pInfo->price = EMPTY;
-        pInfo->change_1d = EMPTY;
-        pInfo->change_7d = EMPTY;
-        pInfo->change_30d = EMPTY;
-        pInfo->div_yield = EMPTY;
-        pInfo->marketcap = EMPTY;
-        pInfo->volume_1d = EMPTY;
-    } else {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(pInfo);
+    pInfo->name = malloc(64);
+    pointer_alloc_check(pInfo->name);
+    pInfo->symbol = malloc(64);
+    pointer_alloc_check(pInfo->symbol);
+    pInfo->price = EMPTY;
+    pInfo->change_1d = EMPTY;
+    pInfo->change_7d = EMPTY;
+    pInfo->change_30d = EMPTY;
+    pInfo->div_yield = EMPTY;
+    pInfo->marketcap = EMPTY;
+    pInfo->volume_1d = EMPTY;
     return pInfo;
 }
 
@@ -27,10 +21,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
     String* pString = hString;
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);
-    if (pString->data == NULL) {
-        fprintf(stderr, "realloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(pString->data);
     memcpy(pString->data + pString->len, ptr, size * nmemb);
     pString->data[new_len] = '\0';
     pString->len = new_len;
@@ -39,8 +30,6 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
 
 String* api_curl_data(char* url, char* post_field) {
     String* pString = string_init();
-    if (pString == NULL)
-        return NULL;
     CURL* curl = curl_easy_init();
     CURLcode res;
     curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -94,10 +83,7 @@ double* iex_get_price(const char* ticker_name_string) {
     }
     Json* jobj = json_tokener_parse(pString->data);
     double* ret = malloc(sizeof(double) * 2);
-    if (ret == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(ret);
     const char* price_string = json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
     const char* close_price_string = json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
     ret[0] = strtod(price_string, NULL); //Intraday current price
@@ -118,7 +104,7 @@ double* morningstar_get_price(const char* ticker_name_string) {
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
-                    "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
+            "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
     if (strcmp("null", pString->data) == 0) { //Invalid symbol
@@ -127,10 +113,7 @@ double* morningstar_get_price(const char* ticker_name_string) {
     }
     Json* jobj = json_tokener_parse(pString->data);
     double* ret = malloc(sizeof(double) * 2);
-    if (ret == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(ret);
     Json* datapoints = json_object_object_get(
             json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
     size_t size = json_object_array_length(datapoints);
@@ -160,10 +143,7 @@ double* coinmarketcap_get_price(const char* ticker_name_string) {
     const char* price = json_object_get_string(usd);
     const char* change_1d = json_object_get_string(percent_change_1d);
     double* ret = malloc(sizeof(double) * 2);
-    if (ret == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(ret);
     ret[0] = strtod(price, NULL); //Current real-time price
     ret[1] = ret[0] - ((strtod(change_1d, NULL) / 100) * ret[0]); //Price 24 hours earlier
     string_destroy(&pString);
@@ -193,10 +173,7 @@ double* iex_get_hist_5y(const char* ticker_name_string) {
     Json* jobj = json_tokener_parse(pString->data);
     size_t len = json_object_array_length(jobj);
     double* ret = calloc(len + 1, sizeof(double));
-    if (ret == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(ret);
     Json* temp;
     for (int i = 0; i < (int) len; i++) {
         temp = json_object_array_get_idx(jobj, (size_t) i);
@@ -218,7 +195,7 @@ double* morningstar_get_hist_5y(const char* ticker_name_string) {
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
-                    "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
+            "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
     if (strcmp("null", pString->data) == 0) { //Invalid symbol
@@ -230,11 +207,8 @@ double* morningstar_get_hist_5y(const char* ticker_name_string) {
             json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
     size_t len = json_object_array_length(datapoints);
     double* ret = calloc(len + 1, sizeof(double)); // Must calloc() because some data points don't exist
-    if (ret == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
-    for (int i = 0; i < (int)len; i++)
+    pointer_alloc_check(ret);
+    for (int i = 0; i < (int) len; i++)
         ret[i] = json_object_get_double(
                 json_object_array_get_idx(json_object_array_get_idx(datapoints, (size_t) i), 0));
     json_object_put(jobj);
@@ -244,10 +218,7 @@ double* morningstar_get_hist_5y(const char* ticker_name_string) {
 
 void news_print_top_three(const char* ticker_name_string) {
     char* url_encoded_string = calloc(128, 1);
-    if (url_encoded_string == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(url_encoded_string);
     for (int i = 0, j = 0; i < 128; i++, j++) { //Replace underscores and spaces with url encoded '%20's
         if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
             memcpy(&url_encoded_string[i], "%20", 3);
@@ -266,8 +237,7 @@ void news_print_top_three(const char* ticker_name_string) {
     free(url_encoded_string);
     String* pString = api_curl_data(news_api_string, NULL);
     Json* jobj = json_tokener_parse(pString->data);
-    if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
-               10) > 0)
+    if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10) > 0)
         json_print_news(jobj);
     else printf("No articles. Try a different input.\n");
     string_destroy(&pString);
@@ -389,7 +359,7 @@ Info* morningstar_get_info(const char* ticker_name_string) {
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
-                    "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
+            "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
     if (strcmp("null", pString->data) == 0) { //Invalid symbol
@@ -450,10 +420,7 @@ char* google_shorten_link(const char* url_string) {
             "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU", post_string);
     Json* jobj = json_tokener_parse(pString->data);
     char* short_url = malloc(32);
-    if (short_url == NULL) {
-        fprintf(stderr, "calloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(short_url);
     strcpy(short_url, json_object_to_json_string(json_object_object_get(jobj, "id")));
     strip_char(short_url, '\\');
     strip_char(short_url, '\"');

@@ -160,10 +160,7 @@ void graph_print(const double* points, struct tm* start_time, int zoom) {
 double* graph_fill_empty(double* points, int size, int trading_days) {
     int difference = trading_days - size;
     points = realloc(points, (size_t) sizeof(double) * (trading_days + 1)); // Realloc for number of trading days
-    if (points == NULL) {
-        fprintf(stderr, "realloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(points);
     points[trading_days] = '\0';
     memmove(&points[difference], points, sizeof(double) * size); // Move points to end
     for (int i = 0; i < difference; i++) // Initialize newly allocated bytes as EMPTY

@@ -5,10 +5,7 @@ char* portfolio_file;
 void portfolio_file_init(void) {
     char* home = getenv("HOME");
     char* path = (char*) malloc(strlen(home) + 30);
-    if (path == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(path);
     sprintf(path, "%s/.tick_portfolio.json", home);
     portfolio_file = path;
 }
@@ -19,11 +16,8 @@ String* portfolio_file_get_string(void) {
         return NULL;
     String* pString = string_init();
     pString->data = realloc(pString->data, 65536);
+    pointer_alloc_check(pString->data);
     memset(pString->data, '\0', 65536);
-    if (pString->data == NULL) {
-        fprintf(stderr, "realloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
     fseek(fp, 0, SEEK_END);
     pString->len = (size_t) ftell(fp);
     fseek(fp, 0, SEEK_SET);
@@ -136,10 +130,7 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
 
     pString->len = strlen(json_object_to_json_string(jobj));
     pString->data = realloc(pString->data, pString->len + 1);
-    if (pString->data == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(pString->data);
 
     strcpy(pString->data, json_object_to_json_string(jobj));
     if (password != NULL) { // If data must be re-encrypted
@@ -201,10 +192,7 @@ void portfolio_print_all(void) {
 double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
     char symbol[32];
     double* data = malloc(sizeof(double) * 3);
-    if (data == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        exit(EXIT_FAILURE);
-    }
+    pointer_alloc_check(data);
     String* pString = NULL;
     char* password = NULL;
     Json* jobj = NULL;

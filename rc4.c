@@ -2,10 +2,7 @@
 
 char* rc4_getPassword(void) {
     unsigned char* pass = malloc(PASS_MAX + 1);
-    if (pass == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        return NULL;
-    }
+    pointer_alloc_check(pass);
     initscr();
     noecho(); // Doesn't echo chars when typed
     unsigned int c, i;
@@ -47,10 +44,7 @@ void rc4_key_exchange(int keySchedule[KEY_SCHEDULE_LENGTH], char* key) {
 char* rc4_prga(int keySchedule[KEY_SCHEDULE_LENGTH], size_t len) {
     int i = 0, j = 0, temp;
     char* output = malloc(len);
-    if (output == NULL) {
-        fprintf(stderr, "malloc() failed\n");
-        return NULL;
-    }
+    pointer_alloc_check(output);
     for (int k = 0; k < (int) len; k++) {
         i = (i + 1) % KEY_SCHEDULE_LENGTH;
         j = (j + keySchedule[i]) % KEY_SCHEDULE_LENGTH;
@@ -67,7 +61,7 @@ void rc4_execute(char* output, String* pString) {
         output[i] ^= pString->data[i];
 }
 
-char* rc4_encode_string(String* pString, char* password){
+char* rc4_encode_string(String* pString, char* password) {
     int keySchedule[256];
     rc4_key_exchange(keySchedule, password);
     char* output = rc4_prga(keySchedule, pString->len);
@@ -106,11 +100,9 @@ String* rc4_get_crypted_string(String* input_pString, char* password, int option
         output_pString->len = input_pString->len;
         if (option == DECRYPT) {
             json_object_put(jobj);
-            output_pString->data = realloc(output_pString->data, output_pString->len + 1);// Realloc to add null terminator for json parsing
-            if (output_pString->data == NULL) {                // Dealing with len is annoying so it's easier to just realloc
-                fprintf(stderr, "realloc() failed\n");
-                exit(EXIT_FAILURE);
-            }
+            // Realloc to add null terminator for json parsing
+            output_pString->data = realloc(output_pString->data, output_pString->len + 1);
+            pointer_alloc_check(output_pString->data); // Dealing with len is annoying so it's easier to just realloc
             output_pString->data[output_pString->len] = '\0'; // Null terminate string for parsing
             jobj = json_tokener_parse(output_pString->data);
             if (jobj == NULL) { // If after decrypting, the portfolio is not JSON formatted,

@@ -13,10 +13,7 @@ int main(int argc, char* argv[]) {
     char* sym = NULL;
     if (argc > 2) {
         char* s = malloc(strlen(argv[2]) + 1);
-        if (s == NULL) {
-            fprintf(stderr, "malloc() failed\n");
-            exit(EXIT_FAILURE);
-        }
+        pointer_alloc_check(s);
         strcpy(s, argv[2]);
         strtoupper(s);
         sym = s;

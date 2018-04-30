@@ -53,4 +53,10 @@ void string_write_portfolio(String* pString);
  */
 void string_destroy(String** phString);
 
+/**
+ * If pointer is NULL, print error message and exit the program
+ * @param alloced recently alloced pointer
+ */
+void pointer_alloc_check(void* alloced);
+
 #endif
