@@ -2,7 +2,7 @@
 
 _pkgname='agensgraph'
 pkgname="${_pkgname}-git"
-pkgver=1.3.1.r497.f57a6559
+pkgver=1.3.1.r524.a46722f3
 pkgrel=1
 pkgdesc="A multi-model graph database based on PostgreSQL."
 arch=('i686' 'x86_64')
