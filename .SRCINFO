@@ -1,27 +1,25 @@
 pkgbase = caffe2-cpu
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
-	pkgver = 0.8.1
-	pkgrel = 6
+	pkgver = 0.8.2.pytorch.0.4.0
+	pkgrel = 1
 	url = http://caffe2.ai/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
-	makedepends = python
-	makedepends = confu-git
-	makedepends = python-peachpy-git
 	depends = google-glog
 	depends = protobuf
-	depends = python2
-	depends = python2-numpy
-	depends = python2-protobuf
+	depends = lapack
+	depends = python
+	depends = python-numpy
+	depends = python-protobuf
 	depends = gflags
 	depends = gtest
 	depends = openmp
 	depends = leveldb
 	depends = lmdb
+	depends = numactl
 	depends = openmpi
 	depends = snappy
 	depends = zeromq
@@ -29,27 +27,27 @@ pkgbase = caffe2-cpu
 	depends = opencv
 	depends = gtkglext
 	depends = ffmpeg
-	depends = python2-flask
-	depends = python2-future
+	depends = python-flask
+	depends = python-future
 	depends = graphviz
-	depends = python2-hypothesis
-	depends = python2-jupyter_core
-	depends = python2-matplotlib
-	depends = python2-pydot
-	depends = python2-yaml
-	depends = python2-requests
-	depends = python2-scipy
-	depends = python2-setuptools
-	depends = python2-six
-	depends = python2-tornado
-	depends = python2-gflags
-	depends = python2-pyzmq
+	depends = python-hypothesis
+	depends = python-jupyter_core
+	depends = python-matplotlib
+	depends = python-pydot
+	depends = python-yaml
+	depends = python-requests
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-six
+	depends = python-tornado
+	depends = python-gflags
+	depends = python-pyzmq
 	depends = rocksdb
-	depends = python2-nvd3
-	depends = python2-scikit-image
-	depends = python2-glog
-	depends = python2-leveldb
-	depends = python2-lmdb
+	depends = python-nvd3
+	depends = python-scikit-image
+	depends = python-glog
+	depends = python-leveldb
+	depends = python-lmdb
 	conflicts = caffe
 	conflicts = caffe-cpu
 	conflicts = caffe-git
@@ -57,47 +55,65 @@ pkgbase = caffe2-cpu
 	conflicts = caffe2
 	conflicts = caffe2-git
 	conflicts = caffe2-cpu-git
-	noextract = thirdparty-eigen-3.3.2.tar.gz
-	noextract = thirdparty-protobuf-3.1.0.tar.gz
+	noextract = caffe2-thirdparty-aten-tbb-2018_U2.tar.gz
+	noextract = caffe2-thirdparty-aten-catch-2.2.1.tar.gz
+	noextract = thirdparty-protobuf-3.5.0.tar.gz
+	noextract = caffe2-thirdparty-python-six-1.11.0.tar.gz
 	options = !emptydirs
-	source = caffe2-0.8.1.tar.gz::https://github.com/caffe2/caffe2/archive/v0.8.1.tar.gz
-	source = caffe2-thirdparty-android-cmake-git::git+https://github.com/taka-no-me/android-cmake.git#commit=556cc14296c226f753a3778d99d8b60778b7df4f
-	source = caffe2-thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=4bf28e611b55de8a2d4eece3c335e014f8b0f630
-	source = caffe2-thirdparty-cnmem-git::git+https://github.com/NVIDIA/cnmem.git#commit=28a182d49529da49f4ac4e3941cec3edf16b3540
-	source = caffe2-thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=b1370adb972a8345de92e2d69e61daf7f9bce43e
-	source = caffe2-thirdparty-eigen-3.3.2.tar.gz::https://github.com/RLovelett/eigen/archive/3.3.2.tar.gz
-	source = caffe2-thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=530878247b04c423fd35477208f68e70b8126e2d
-	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=5e7fd50e17b6edf1cadff973d0ec68966cf3265e
-	source = caffe2-thirdparty-ios-cmake-git::git+https://github.com/Yangqing/ios-cmake.git#commit=e24081928d9ceec4f4adfcf12293f1e2a20eaedc
-	source = caffe2-thirdparty-nccl-git::git+https://github.com/NVIDIA/nccl.git#commit=2a974f5ca2aa12b178046b2206b43f1fd69d9fae
+	source = pytorch-0.4.0.tar.gz::https://github.com/pytorch/pytorch/archive/v0.4.0.tar.gz
+	source = caffe2-thirdparty-aten-cpuinfo-git::git+https://github.com/Maratyszcza/cpuinfo#commit=d0222b47948234cc01983243a2e0ede018f97f3a
+	source = caffe2-thirdparty-aten-tbb-2018_U2.tar.gz::https://github.com/01org/tbb/archive/2018_U2.tar.gz
+	source = caffe2-thirdparty-aten-catch-2.2.1.tar.gz::https://github.com/catchorg/Catch2/archive/v2.2.1.tar.gz
+	source = caffe2-thirdparty-nanopb-git::git+https://github.com/nanopb/nanopb.git#commit=14efb1a47a496652ab08b1ebcefb0ea24ae4a5e4
+	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=add56ccdcac23a6c522a2c1174a866e293c61dab
+	source = caffe2-thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=285aeebaa34b0e8a7670867a2e66c1a52d998d6a
+	source = caffe2-thirdparty-eigen-git::git+https://github.com/RLovelett/eigen.git#commit=5a0ab9ff4e258b860470afe36e83a3e88b3ce14c
+	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=69e48e92de43960a316a826293510b7b3deb9eca
 	source = caffe2-thirdparty-nervanagpu-git::git+https://github.com/NervanaSystems/nervanagpu.git#commit=d4eefd50fbd7d34a17dddbc829888835d67b5f4a
-	source = caffe2-thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=02bfa475d64040cd72b7c01daa9e862523ae87da
-	source = caffe2-thirdparty-protobuf-3.1.0.tar.gz::https://github.com/google/protobuf/archive/v3.1.0.tar.gz
-	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=f38f359f96815421f1780c1a676715efd041f1ae
-	source = caffe2-thirdparty-NNPACK_deps-FP16-git::git+https://github.com/Maratyszcza/FP16.git#commit=2e9eeeb0b463736d13b887d790ac7e72e78fa4bc
-	source = caffe2-thirdparty-NNPACK_deps-FXdiv-git::git+https://github.com/Maratyszcza/FXdiv.git#commit=8f85044fb41e560508cd69ed26c9afb9cc120e8a
-	source = caffe2-thirdparty-NNPACK_deps-psimd-git::git+https://github.com/Maratyszcza/psimd.git#commit=0b26a3fb98dd6af7e1f4e0796c56df6b32b1c016
-	source = caffe2-thirdparty-NNPACK_deps-pthreadpool-git::git+https://github.com/Maratyszcza/pthreadpool.git#commit=9e17903a3fc963fe86b151aaddae7cf1b1d34815
-	source = caffe2-cpu-gcc7-fix.patch
-	sha256sums = 2b7938514caf626da3fdde51e88771adc863cbe496d0fc4ae1122603a945e9a8
+	source = caffe2-thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=491360b833aaab96818dce256a8409f6296dd995
+	source = caffe2-thirdparty-protobuf-3.5.0.tar.gz::https://github.com/google/protobuf/archive/v3.5.0.tar.gz
+	source = caffe2-thirdparty-ios-cmake-git::git+https://github.com/Yangqing/ios-cmake.git#commit=8abaed637d56f1337d6e1d2c4026e25c1eade724
+	source = caffe2-thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=b63fe1ba8963f1756b8decc593766615cee99c35
+	source = caffe2-thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=aad0002fb40612e991390d8e807f247ed23f13c5
+	source = caffe2-thirdparty-NNPACK_deps-pthreadpool-git::git+https://github.com/Maratyszcza/pthreadpool.git#commit=2b06b31f6a315162348e1f3c24325eedaf6cc559
+	source = caffe2-thirdparty-NNPACK_deps-FXdiv-git::git+https://github.com/Maratyszcza/FXdiv.git#commit=811b482bcd9e8d98ad80c6c78d5302bb830184b0
+	source = caffe2-thirdparty-NNPACK_deps-FP16-git::git+https://github.com/Maratyszcza/FP16.git#commit=43d6d17df48ebf622587e7ed9472ea76573799b9
+	source = caffe2-thirdparty-NNPACK_deps-psimd-git::git+https://github.com/Maratyszcza/psimd.git#commit=4ac61b112252778b174575931c641bef661ab3cd
+	source = caffe2-thirdparty-zstd-git::git+https://github.com/facebook/zstd.git#commit=aec56a52fbab207fc639a1937d1e708a282edca8
+	source = caffe2-thirdparty-cpuinfo-git::git+https://github.com/Maratyszcza/cpuinfo.git#commit=831dc28341b5f20d13e840caf87eaba644d82643
+	source = caffe2-thirdparty-python-enum-git::git+https://github.com/PeachPy/enum34.git#commit=4cfedc426c4e2fc52e3f5c2b4297e15ed8d6b8c7
+	source = caffe2-thirdparty-python-peachpy-git::git+https://github.com/Maratyszcza/PeachPy.git#commit=07d8fde8ac45d7705129475c0f94ed8925b93473
+	source = caffe2-thirdparty-python-six-1.11.0.tar.gz::https://github.com/benjaminp/six/archive/1.11.0.tar.gz
+	source = caffe2-thirdparty-ComputeLibrary-git::git+https://github.com/ARM-software/ComputeLibrary.git#commit=292227986edb37b01061afcad6df18ba9d6ccbeb
+	source = caffe2-thirdparty-onnx-git::git+https://github.com/onnx/onnx.git#commit=7e1bed51cc508a25b22130de459830b5d5063c41
+	source = caffe2-cpu-rocksdb-fix.patch
+	sha256sums = 9ea4cbcab3852a25b8240e27f979d822c2f6f7934cd37033208dc13a8cad9e72
+	sha256sums = SKIP
+	sha256sums = 78bb9bae474736d213342f01fe1a6d00c6939d5c75b367e2e43e7bf29a6d8eca
+	sha256sums = 3938bc896f8de570bc56d25606fc128437ee53590a95cf3e005710176a1a1ce4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 78fe37183e04aa8ca2d938df57b93f9489448d38c10fb470cf51c332a461f371
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0cc6607e2daa675101e9b7398a436f09167dffb8ca0489b0307ff7260498c13c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fb2a314f4be897491bb2446697be693d489af645cb0e165a85e7e64e07eb134d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8ad9f3edfa6b1b9caae9eb614dc96ba12c396d58d5abc9b3bbbcb00305cdb163
+	sha256sums = 927dc6fcfccd4e32e1ce161a20bf8cda39d8c9d5f7a845774486907178f69bd4
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 2d79041da81bdd1e829b08909ae8ee60528fdf78f2aa68926bcf497400a87164
 
 pkgname = caffe2-cpu
 
