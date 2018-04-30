@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-libzip
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives (mingw-w64)"
 url="http://www.nih.at/libzip/index.html"
@@ -9,10 +9,9 @@ arch=(any)
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-bzip2')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.nih.at/libzip/libzip-${pkgver}.tar.xz"
-        'libzip_cmake-fixes.patch')
-sha256sums=('e508aba025f5f94b267d5120fc33761bcd98440ebe49dbfe2ed3df3afeacc7b1'
-            '117dbe507e18381e380512ffe149c7340dcdaa1c17f2a34633501d982fa4dcce')
+source=("http://www.nih.at/libzip/libzip-${pkgver}.tar.xz")
+sha256sums=('5ddb9b41d31b2f99ad4d512003c610ae2db70e222833aba6f9332d5b48a153d9')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
