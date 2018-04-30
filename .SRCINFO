@@ -1,0 +1,15 @@
+pkgbase = libinstpatch
+	pkgdesc = Instrument patch library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://swamiproject.org
+	arch = x86_64
+	arch = i386
+	license = LGPLv2
+	makedepends = cmake
+	makedepends = python3
+	source = https://download.savannah.gnu.org/releases/gsequencer/1.4.x/libinstpatch-1.0.0+svn386.tar.bz2
+	md5sums = 3e90da59e1d088ff9dbb270a1349cd99
+
+pkgname = libinstpatch
+
