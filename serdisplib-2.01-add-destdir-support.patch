@@ -1,0 +1,82 @@
+diff -rup a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2017-02-02 13:37:48.000000000 +0100
++++ b/Makefile.in	2017-12-23 13:59:41.554575235 +0100
+@@ -9,10 +9,10 @@ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-libdir = @libdir@
+-datarootdir = @datarootdir@
+-mandir = @mandir@
++bindir = $(DESTDIR)@bindir@
++libdir = $(DESTDIR)@libdir@
++datarootdir = $(DESTDIR)@datarootdir@
++mandir = $(DESTDIR)@mandir@
+ 
+ abs_top_srcdir=@abs_top_srcdir@
+ base_abs_top_srcdir=$(shell /bin/basename $(abs_top_srcdir))
+diff -rup a/server/Makefile.in b/server/Makefile.in
+--- a/server/Makefile.in	2013-05-25 12:58:14.000000000 +0200
++++ b/server/Makefile.in	2017-12-23 14:01:41.267125405 +0100
+@@ -13,13 +13,13 @@ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-sbindir = @sbindir@
+-libdir = @libdir@
+-mandir = @mandir@
+-includedir = @includedir@
+-sysconfdir = @sysconfdir@
+-datarootdir = @datarootdir@
++bindir = $(DESTDIR)@bindir@
++sbindir = $(DESTDIR)@sbindir@
++libdir = $(DESTDIR)@libdir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
++sysconfdir = $(DESTDIR)@sysconfdir@
++datarootdir = $(DESTDIR)@datarootdir@
+ 
+ CC=@CC@
+ AR=@AR@ -r
+diff -rup a/src/Makefile.in b/src/Makefile.in
+--- a/src/Makefile.in	2017-02-02 13:37:48.000000000 +0100
++++ b/src/Makefile.in	2017-12-23 14:00:26.513015081 +0100
+@@ -21,11 +21,11 @@ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-libdir = @libdir@
+-mandir = @mandir@
+-includedir = @includedir@
+-datarootdir = @datarootdir@
++bindir = $(DESTDIR)@bindir@
++libdir = $(DESTDIR)@libdir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
++datarootdir = $(DESTDIR)@datarootdir@
+ 
+ CC=@CC@
+ AR=@AR@ -r
+diff -rup a/tools/Makefile.in b/tools/Makefile.in
+--- a/tools/Makefile.in	2014-03-30 09:13:59.000000000 +0200
++++ b/tools/Makefile.in	2017-12-23 14:00:49.462225494 +0100
+@@ -10,11 +10,11 @@ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-libdir = @libdir@
+-mandir = @mandir@
+-includedir = @includedir@
+-datarootdir = @datarootdir@
++bindir = $(DESTDIR)@bindir@
++libdir = $(DESTDIR)@libdir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
++datarootdir = $(DESTDIR)@datarootdir@
+ 
+ CC=@CC@
+ AR=@AR@ -r
