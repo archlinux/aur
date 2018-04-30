@@ -18,6 +18,7 @@ install=poldi.install
 conflicts=("poldi")
 source=("${_gitname}::git://git.gnupg.org/${_gitname}/"
 	# "poldi-arch.patch"
+	"0001-Update-path-to-scdaemon.patch"
 	"poldi.logrotate")
 
 pkgver() {
@@ -33,6 +34,7 @@ prepare() {
   # Note sure how this file should be generated...
   sed -i /version.texi/d doc/poldi.texi
   # patch -p1 < ../poldi-arch.patch
+  patch -p1 < ../0001-Update-path-to-scdaemon.patch
   ./autogen.sh
 }
 
@@ -68,4 +70,5 @@ package() {
   rm "$pkgdir/usr/share/info/dir"
 }
 md5sums=('SKIP'
+         '6ccfe3af0362bca96d1d85aa097b5f1d'
          '57009cc5211088396d2521fc1997792b')

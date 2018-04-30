@@ -19,8 +19,10 @@ pkgbase = poldi-git
 	backup = etc/poldi/poldi.conf
 	backup = etc/pam.d/system-auth-poldi
 	source = poldi::git://git.gnupg.org/poldi/
+	source = 0001-Update-path-to-scdaemon.patch
 	source = poldi.logrotate
 	md5sums = SKIP
+	md5sums = 6ccfe3af0362bca96d1d85aa097b5f1d
 	md5sums = 57009cc5211088396d2521fc1997792b
 
 pkgname = poldi-git
