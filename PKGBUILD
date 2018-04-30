@@ -6,7 +6,7 @@ pkgname=(webkitgtk webkitgtk2)
 pkgver=2.4.11
 pkgrel=12
 pkgdesc="Legacy Web content engine"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt sqlite libsoup 'enchant>=2.2' libgl geoclue2 gst-plugins-base-libs
