@@ -6,7 +6,7 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='GUI designer for wxWidgets that can generate Python, C++, Perl, Lisp and XRC code'
 arch=('any')
@@ -15,9 +15,9 @@ url='http://wxglade.sourceforge.net/'
 depends=('python2' 'wxpython' 'desktop-file-utils')
 makedepends=('gendesk' 'imagemagick')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/sourceforge/wxglade/wxGlade-$pkgver.tar.gz"
+source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
         'wxglade.sh')
-sha256sums=('8936d8e3ee0c212ed9f928c2d523bae77270fbcedd5a97d85e2ab4426b54ce0e'
+sha256sums=('1c62a09f83406cea3420b906e44665557bd7afc3a6a255da2d9faa5fb1cbbfc4'
             '4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0')
 
 prepare() {
@@ -29,8 +29,9 @@ prepare() {
 package() {
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/wxGlade"
 
-  install -Dm644 "wxGlade-$pkgver/docs/man/$pkgname.1" \
-    "$pkgdir/usr/share/man/man1/$pkgname.1"
+  # TODO: Update man pages upstream
+  #install -Dm644 "wxGlade-$pkgver/docs/man/$pkgname.1" \
+  #  "$pkgdir/usr/share/man/man1/$pkgname.1"
   rm -rf "wxGlade-$pkgver/docs/man"
   mv "wxGlade-$pkgver/docs/"* "$pkgdir/usr/share/doc/wxGlade/"
   cp -R "wxGlade-$pkgver/" "$pkgdir/usr/share/wxGlade/"
