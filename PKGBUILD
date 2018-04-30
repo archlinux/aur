@@ -4,7 +4,7 @@
 # Contributor: GordonGR <gordongr@freemail.gr>
 
 pkgname=lib32-polkit
-pkgver=0.113+34+g29ba7af
+pkgver=0.114
 pkgrel=1
 pkgdesc='Application development toolkit for controlling system-wide privileges'
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://www.freedesktop.org/wiki/Software/polkit/'
 depends=('lib32-expat' 'lib32-glib2' 'lib32-pam' 'lib32-systemd' 'polkit')
 makedepends=('autoconf-archive' 'gcc-multilib' 'git' 'gobject-introspection'
              'gtk-doc' 'intltool')
-_commit='29ba7afba1b79a325183a71966f35926dfdf506e'  # master
+_commit='ed06baed179166389d536420a6fc532781d48178' # tags/0.114^0
 source=("git+https://anongit.freedesktop.org/git/polkit#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -26,6 +26,7 @@ pkgver() {
 prepare() {
   cd polkit
 
+  git cherry-pick -n 373705b35e7f6c7dc83de5e0a3ce11ecd15d0409
   NOCONFIGURE=1 ./autogen.sh
 }
 
