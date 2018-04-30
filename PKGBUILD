@@ -3,9 +3,10 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=graphlcd-base
-pkgver=20161119
-_gitver=f5528fefca614b8a134a1b6ba9e7cc476a8a537e
-pkgrel=2
+pkgver=1.0.0.r0.ge9ab0b8
+_gitver=e9ab0b821e9c0db017d1cedcd0b7043c1d4b7299
+pkgrel=1
+epoch=1
 pkgdesc="Project to support graphical LC displays connected to the PC"
 url="http://projects.vdr-developer.org/projects/show/graphlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -18,34 +19,21 @@ source=("git://projects.vdr-developer.org/graphlcd-base.git#commit=$_gitver")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git log -1 --pretty=format:%ad --date=short | sed 's/-//g'
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  sed -i '/CFLAGS/d' Make.config
-  sed -i '/CXXFLAGS/d' Make.config
-  sed -i '/LDFLAGS/d' Make.config
-  sed -i 's/#HAVE_DRIVER_AX206DPF/HAVE_DRIVER_AX206DPF/' Make.config
-  sed -i 's/#HAVE_DRIVER_picoLCD_256x64/HAVE_DRIVER_picoLCD_256x64/' Make.config
-  sed -i 's/#HAVE_GRAPHICSMAGICK/HAVE_GRAPHICSMAGICK/' Make.config
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make
+  make HAVE_DRIVER_AX206DPF=1 \
+       HAVE_DRIVER_picoLCD_256x64=1 \
+       HAVE_GRAPHICSMAGICK=1
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  mkdir -p ${pkgdir}/usr/lib/udev/rules.d
   make DESTDIR="${pkgdir}" \
-       BINDIR=${pkgdir}/usr/bin \
-       LIBDIR=${pkgdir}/usr/lib \
-       INCDIR=${pkgdir}/usr/include \
-       MANDIR=${pkgdir}/usr/share/man \
-       UDEVRULESDIR=${pkgdir}/usr/lib/udev/rules.d \
+       PREFIX=/usr \
+       UDEVRULESDIR=/usr/lib/udev/rules.d \
        install
-  install -Dm644 graphlcd.conf "$pkgdir/etc/graphlcd.conf"
 }
