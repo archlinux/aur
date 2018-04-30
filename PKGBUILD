@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
 pkgver=2018.1.4
-pkgrel=2
+pkgrel=3
 license=('custom')
  
 arch=(any)
@@ -25,7 +25,7 @@ md5sums=('325548d013d23b8bca5c452a2fd5ea79'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
          '268c8018f98be22e77d8ca711140292a'
-         '1393bb1d170a8aeaccfe0c2ee2c818cf')
+         'a56e7e3e4a53dd027224e32b46cf3c7b')
  
 depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
 install=$pkgname.install
