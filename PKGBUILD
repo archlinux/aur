@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=renpy-sdk
-pkgver=6.99.13
+pkgver=6.99.14.3
 pkgrel=1
 pkgdesc="The Ren'Py Visual Novel Engine SDK"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('renpy')
 options=('!strip')
 source=("http://www.renpy.org/dl/${pkgver}/renpy-${pkgver}-sdk.tar.bz2")
-sha256sums=('2563297b79eaee67502ab27d0d88aebd9118b34efb331f389a0aaeb8c1827522')
+sha256sums=('5cbeea134a1907e8a14458248013e37f39f0c2d023c7b68f6ee2bee574f7a381')
 
 package() {
   cd renpy-${pkgver}-sdk
