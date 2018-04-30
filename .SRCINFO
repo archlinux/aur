@@ -1,7 +1,7 @@
 pkgbase = openmesh
 	pkgdesc = A generic and efficient data structure for representing and manipulating polygonal meshes
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openmesh.org
 	install = openmesh.install
 	arch = i686
