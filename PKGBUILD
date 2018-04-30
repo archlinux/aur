@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python2' 'gtk3' 'imagemagick' 'libgexiv2' 'libnotify' 'python2-beautifulsoup4' 'python2-cairo'
          'python2-configobj' 'python2-dbus' 'python2-gobject' 'python2-httplib2' 'python2-pillow'
          'python2-lxml' 'python2-pycurl' 'python2-requests')
-makedepends=('git python2-distutils-extra')
+makedepends=('git' 'python2-distutils-extra')
 optdepends=('xdg-user-dirs: set wallpaper for KDE Plasma')
 provides=('variety')
 conflicts=('variety')
