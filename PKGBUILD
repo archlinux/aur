@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-    rm -r build
+    rm -rf build
     mkdir -p build
     cd build
     #cd "${srcdir}/OpenMesh-${pkgver}"
