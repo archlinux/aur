@@ -1,4 +1,5 @@
-# Maintainers: edoz90, Det
+# Maintainer: nougad
+# Contributor: edoz90, Det, Edoardo Rosa
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=jdk-arm
