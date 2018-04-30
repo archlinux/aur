@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vdrmanager
 pkgver=0.14
-_vdrapi=2.2.0
-pkgrel=2
+_vdrapi=2.4.0
+pkgrel=3
 pkgdesc="Allows remote programming VDR using VDR-Manager running on Android devices"
 url="http://projects.vdr-developer.org/projects/vdr-manager"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
