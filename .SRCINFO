@@ -1,0 +1,16 @@
+pkgbase = sharelatex-git-integration-unofficial-git
+	pkgdesc = Easily track your ShareLaTeX changes using git. One simple command to rule them all!
+	pkgver = 36
+	pkgrel = 1
+	url = https://github.com/Jorl17/sharelatex-git-integration-unofficial
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-distribute
+	depends = python-requests
+	depends = python-beautifulsoup4
+	source = git+https://github.com/Jorl17/sharelatex-git-integration-unofficial.git
+	md5sums = SKIP
+
+pkgname = sharelatex-git-integration-unofficial-git
+
