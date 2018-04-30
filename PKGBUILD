@@ -14,7 +14,7 @@ conflicts=(msva-perl)
 _gitroot="git://git.monkeysphere.info/msva-perl"
 _gitname="msva-perl"
 
-build() {
+prepare() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
@@ -30,10 +30,15 @@ build() {
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  }
+
+build() {
   cd "$srcdir/$_gitname-build"
 
   make || return 1
+  }
 
+  package() {
   install -m 755 -D msva-perl $pkgdir/usr/bin/msva-perl
   install -m 644 -D msva-perl.1 $pkgdir/usr/share/man/man1/msva-perl.1
   install -m 755 -d $pkgdir/usr/share/perl5/vendor_perl/
