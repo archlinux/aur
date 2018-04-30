@@ -9,7 +9,7 @@
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
 pkgver=19.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
