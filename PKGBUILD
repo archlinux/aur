@@ -12,7 +12,7 @@
 
 pkgname=('llvm50' 'llvm50-libs' 'clang50')
 pkgver=5.0.1
-pkgrel=2
+pkgrel=5
 _prefix="/usr/lib/llvm-5.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -122,7 +122,8 @@ package_llvm50-libs() {
     "${pkgdir}${_prefix}/lib/"
   
   install -d $pkgdir/usr/lib
-  ln -s "${pkgdir}${_prefix}"/lib/lib{LLVM,LTO}*.so* $pkgdir/usr/lib
+  ln -s "${_prefix}"/lib/lib{LLVM,LTO}*.so* $pkgdir/usr/lib
+  rm $pkgdir/usr/lib/lib{LLVM,LTO}.so
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "${pkgdir}${_prefix}/share/licenses/llvm-libs/LICENSE"
