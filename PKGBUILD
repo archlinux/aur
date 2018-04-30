@@ -1,9 +1,9 @@
-# Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
+# Maintainer: James Smith <jslonescout AT gmail DOT com>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=laternamagica.app
 _pkgname=LaternaMagica 
 pkgrel=1
-pkgver=0.4
+pkgver=0.5
 pkgdesc="An image viewer and slideshow application."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/laternamagica/index.html"
@@ -14,7 +14,7 @@ depends=('gnustep-base'
 makedepends=('gcc-objc'
              'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
-sha256sums=('09e8e381f17ecfb31c12a61229f3fe7cee326056a3f1929ee92437fb201b9156')
+sha256sums=('3afd9345a4c046bb24e6f4c7b562cc32dc6a06415bc57d189ffb7cf0510ce8e0')
 
 build() {
   cd "$_pkgname-$pkgver"
