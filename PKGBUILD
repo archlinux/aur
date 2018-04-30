@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A tool to report network interfaces bandwith just like vmstat/iostat do for other system counters"
 arch=('i686' 'x86_64')
 url="http://gael.roualland.free.fr/ifstat/"
-license=('BSD')
+license=('GPL')
 install=ifstat.install
 source=("http://gael.roualland.free.fr/ifstat/ifstat-$pkgver.tar.gz"
         "0001-a.patch")
