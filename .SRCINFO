@@ -1,0 +1,23 @@
+pkgbase = electric
+	pkgdesc = a sophisticated electrical CAD system for the design of integrated circuits
+	pkgver = 9.08a
+	pkgrel = 1
+	url = https://www.gnu.org/software/electric/
+	arch = any
+	license = GPL
+	makedepends = svn
+	makedepends = java-environment-openjdk
+	makedepends = apache-ant
+	depends = java-environment
+	provides = gnu-electric
+	source = svn://svn.savannah.gnu.org/electric
+	source = https://www.gnu.org/software/electric/electric.jpg
+	source = electric.desktop
+	source = electric.sh
+	sha512sums = SKIP
+	sha512sums = 7c0d30876202dfad4f1297db49489e7e3b6bd49dfbbb2b6919cd2075a6285d71d6bde64834ced322af6bc14ee2b1503a65add7f3c48114edfc836202153bb9be
+	sha512sums = e478213c464ea098ec3e90005292bd61fb8959feb75a58271416f766d9bc8319b010cf46136b07f30064ff34a8bcf31d99b074f8191c784f3edc28eb8a2320a2
+	sha512sums = 7e50b99c7e3a52d0ead1d6f529c3ff9f6c7f9cdd88f5cd1b0f6de4c3f8aa13b72c7ed415e52eb13c454933c40ffa56d3849bc400cdde6c37ea37fbd4dc60e11c
+
+pkgname = electric
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=9
+Type=Application
+Name=Electric
+Comment=a sophisticated electrical CAD system for the design of integrated circuits
+TryExec=java -jar /usr/bin/electric.jar
+Exec=java -jar /usr/bin/electric.jar
+Icon=electric.jpg
+MimeType=image/jpeg;
