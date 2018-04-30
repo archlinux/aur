@@ -22,14 +22,18 @@ pkgbase = gn-git
 	source = git+https://chromium.googlesource.com/chromium/src/build
 	source = git+https://chromium.googlesource.com/chromium/src/build/config
 	source = git+https://chromium.googlesource.com/chromium/testing/gtest
+	source = git+https://chromium.googlesource.com/chromium/llvm-project/libcxx
+	source = git+https://chromium.googlesource.com/chromium/llvm-project/libcxxabi
 	source = LICENSE
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = 5548778e53b16da694f02b4716c9b3678e63305a
 
 pkgname = gn-git
 
