@@ -2,7 +2,7 @@
 
 _npmname=bash-language-server
 pkgname=bash-language-server-bin
-pkgver="1.1.2"
+pkgver="1.3.0"
 pkgrel=1
 pkgdesc="Language server implementation for bash"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('d3a447bc5844f298f5ec04dcfd8726cb7fb1b6eb')
+sha1sums=('289862647e59620db7505e54e9960c2c1f0d39ec')
 
 package() {
     cd "${srcdir}"

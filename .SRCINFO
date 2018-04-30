@@ -1,15 +1,15 @@
 pkgbase = bash-language-server-bin
 	pkgdesc = Language server implementation for bash
-	pkgver = 1.1.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/bash-language-server
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = bash-language-server-1.1.2.tgz
-	source = https://registry.npmjs.org/bash-language-server/-/bash-language-server-1.1.2.tgz
-	sha1sums = d3a447bc5844f298f5ec04dcfd8726cb7fb1b6eb
+	noextract = bash-language-server-1.3.0.tgz
+	source = https://registry.npmjs.org/bash-language-server/-/bash-language-server-1.3.0.tgz
+	sha1sums = 289862647e59620db7505e54e9960c2c1f0d39ec
 
 pkgname = bash-language-server-bin
 
