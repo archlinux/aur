@@ -7,7 +7,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-pba
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -19,9 +19,9 @@ source=(https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz{,.sign}
         wine-binfmt.conf
         steam.patch
         "pba-patches::git+https://github.com/acomminos/wine-pba.git")
-sha512sums=('31d24cc78734bdb743afcec7df05b641ab0625568361401eaf8cd5e217719c8c51a0ef7ed737a560fe42cb9ecd88f10d35e62a98d9df69b966502a5b0dab5a22'
+sha512sums=('a699418574dd8f407c064421cf6cdfe3923562c8adf9a7749e716f3853291eab05358ea64f0217c303c26c0f8f59d2116024b7b6978f9a52a055147e689a8694'
             'SKIP'
-            '839731fa3dba91cefd9e0f036b4d688c4786fe8cb19143819457fb9e45a6c14ef3a70630b585abdd424a00036312114034a2529700012ea1863527e45fbfac2a'
+            '4a00b7c61121798b6c4e918aadeb71865e359f6471035b9ed33ae242f3fe70f1977b1c0b3628fb244b5ba4942d771d2ee797bcc087d38192fcd9325e1886ed14'
             'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
@@ -135,7 +135,7 @@ prepare() {
   popd
 
   pushd pba-patches
-  git checkout 1712a3769b0b1ae107cdc0e3bfa4f285b0e43321
+  git checkout 8f20f0718a47e3773f0f3f30c475516378191c67
   popd
 
   for f in $(ls pba-patches/patches); do
