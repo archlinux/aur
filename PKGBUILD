@@ -5,7 +5,7 @@
 __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
@@ -22,22 +22,14 @@ provides=("${pkgname}=${pkgver}" "shim-efi-x86_64=${pkgver}"
 "shim-efi-x86_64-git=${pkgver}")
 install="${__pkgname}.install"
 changelog="${__pkgname}.changelog"
-source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2"
-	${__pkgname}.patch)
-sha256sums=('11584881af2cb990a5a782747558ebd3a182b766f2747bd0c0955cbf4786285e'
-            '40f2592eb37ccd7ab79c448f725f36a8ea560f26a10cad11c778a776980e3e7d')
+source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2")
+sha256sums=('473720200e6dae7cfd3ce7fb27c66367a8d6b08233fe63f01aa1d6b3888deeb6')
 
 
 # Change to path for your own certificate
 # The source package has a tool called "make-certs" that you can use
 # to make your own certificate(s)
 __certfile="/etc/efi/certs/pub.crt"
-
-prepare() {
-	cd "${srcdir}/${__pkgname}-${pkgver}/"
-
-	patch -i ../${__pkgname}.patch
-}
 
 build() {
 
@@ -54,7 +46,7 @@ build() {
 	if [ -f "${__vendorCertFile}" ]; then
 		__makeArgs="VENDOR_CERT_FILE=${__certfile}"
 	fi
-	make ${__makeArgs}
+	EFI_PATH="/usr/lib/" make ${__makeArgs}
 }
 
 package() {
