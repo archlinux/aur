@@ -9,22 +9,24 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn
-pkgver=4.8.2
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64')
 license=("GPL2")
-depends=('wxgtk' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
+depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
 makedepends=('cmake')
 url="http://opencpn.org"
 install=opencpn.install
-source=("https://github.com/OpenCPN/OpenCPN/archive/v4.8.2.tar.gz")
-sha1sums=('b655167f0a0a11c6fb4a78cd670e1fbabd9ad8f9')
+source=("https://github.com/OpenCPN/OpenCPN/archive/v4.8.4.tar.gz")
+sha1sums=('d9d1f37403b810c41ce06d2c0acebaa0bdb060f4')
 
 build() {
   cd "OpenCPN-${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUNDLE_GSHHS=CRUDE -DBUNDLE_TCDATA=ON -DBUNDLE_DOCS=ON
+        -DBUNDLE_GSHHS=CRUDE -DBUNDLE_TCDATA=ON -DBUNDLE_DOCS=ON \
+        -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+        -DOCPN_FORCE_GTK3=ON
   make
 }
 
