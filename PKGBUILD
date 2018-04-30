@@ -1,6 +1,6 @@
 pkgname=panopta-agent
-pkgver=2018.06.3
-pkgrel=3
+pkgver=2018.19.1
+pkgrel=1
 pkgdesc="Panopt agent"
 arch=('any')
 url="https://my.panopta.com"
