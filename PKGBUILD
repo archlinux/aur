@@ -2,7 +2,7 @@
 
 pkgname=lxqt-arc-dark-theme-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A dark theme for LXQt based on Arc"
 arch=('any')
 url="https://github.com/gabretana/lxqt-arc-dark-theme"
