@@ -3,7 +3,7 @@
 pkgname=emacs-exwm-git
 pkgver=r367.87db8b4
 pkgrel=1
-pkgdesc="Windowmanager in written in elisp"
+pkgdesc="Use emacs as windowmanager"
 arch=('any')
 url="https://github.com/ch11ng/exwm.git"
 license=('GPL')
