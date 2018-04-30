@@ -1,0 +1,18 @@
+pkgbase = python-evtx
+	pkgdesc = Python library for parsing evtx files
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/evtx/0.6.1
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = evtx-0.6.1.tar.gz::https://github.com/williballenthin/python-evtx/archive/v0.6.1.tar.gz
+	md5sums = ae32c631b9cc2c528a44f216f24f8aeb
+
+pkgname = python-evtx
+
+pkgname = python2-evtx
+
