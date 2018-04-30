@@ -1,16 +1,16 @@
 pkgbase = bat
 	pkgdesc = A cat(1) clone with syntax highlighting and Git integration
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/bat
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = rust
 	makedepends = cmake
-	makedepends = curl
-	makedepends = libssh2
-	makedepends = oniguruma
+	depends = curl
+	depends = libssh2
+	depends = oniguruma
 	source = bat-0.2.0.tar.gz::https://github.com/sharkdp/bat/archive/v0.2.0.tar.gz
 	sha512sums = 546c78b486d746916b348d88cb7a2230c8ad1dfb00c0865517058265a21a1a04401f9b6b47a49971ff91f81234e7fac518e46d650b40c98f0a2cac1e5c47068e
 

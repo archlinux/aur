@@ -2,12 +2,13 @@
 
 pkgname=bat
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cat(1) clone with syntax highlighting and Git integration'
 arch=('x86_64')
 url=https://github.com/sharkdp/bat
 license=('MIT' 'APACHE')
-makedepends=('rust' 'cmake' 'curl' 'libssh2' 'oniguruma')
+makedepends=('rust' 'cmake')
+depends=('curl' 'libssh2' 'oniguruma')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('546c78b486d746916b348d88cb7a2230c8ad1dfb00c0865517058265a21a1a04401f9b6b47a49971ff91f81234e7fac518e46d650b40c98f0a2cac1e5c47068e')
 
