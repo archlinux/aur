@@ -9,8 +9,6 @@ else
   config_path=".."
 fi
 
-export CC=/usr/bin/@TRIPLE@-cc
-export CXX=/usr/bin/@TRIPLE@-c++
 mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
 LDFLAGS=""
 export CFLAGS="$mingw_c_flags $CFLAGS"
