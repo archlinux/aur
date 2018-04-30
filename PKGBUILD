@@ -1,6 +1,6 @@
 pkgname=x-arc-darker
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="X-Arc-Darker Theme for GTK 3.x"
 arch=(any)
 url=https://www.gnome-look.org/p/1167049/
