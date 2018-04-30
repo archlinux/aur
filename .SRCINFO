@@ -9,4 +9,4 @@ pkgbase = x-arc-shadow
 	source = https://github.com/Jaxmetalmax/x-arc-themes/raw/master/X-Arc-Shadow.zip
 	md5sums = d2f90ab1a2a88ce0c0380c0f7b529768
 
-pkgname = x-arc-darker
+pkgname = x-arc-shadow
