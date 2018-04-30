@@ -4,7 +4,7 @@ set -u
 _pyver="python"
 _pybase='cement'
 pkgname="${_pyver}-${_pybase}"
-pkgver='2.10.2'
+pkgver='2.10.12'
 pkgrel='1'
 pkgdesc='CLI Application Framework for Python'
 arch=('any')
@@ -13,9 +13,9 @@ url='http://builtoncement.com/'
 license=('Apache2') #custom: ISC
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
-_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
+_verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('d50c5980bf3e2456e515178ba097d16e36be0fbcab7811a60589d22f45b64f55')
+sha256sums=('58efb4eacd9ec977ce797a364a13851de6e42392bbde5287d44294f06c5a2f70')
 
 build() {
   set -u
