@@ -14,6 +14,7 @@ depends=(
     'git'
     'curl'
     'pacman'
+    'jq'
 )
 optdepends=(
 )
