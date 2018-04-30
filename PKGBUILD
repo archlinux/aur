@@ -7,8 +7,8 @@ pkgdesc="a sophisticated electrical CAD system for the design of \
 arch=(any)
 url="https://www.gnu.org/software/electric/"
 license=('GPL')
-depends=('java-environment')
-makedepends=('svn' 'java-environment-openjdk' 'apache-ant')
+depends=('java-environment<=8')
+makedepends=('svn' 'java-environment-openjdk<=8' 'apache-ant')
 provides=(gnu-electric)
 source=("svn://svn.savannah.gnu.org/electric"
         "https://www.gnu.org/software/$pkgname/$pkgname.jpg"
