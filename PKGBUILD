@@ -6,17 +6,9 @@ pkgdesc="Chromiums high-performance rendering library (static)"
 arch=('any')
 url="https://github.com/google/skia"
 license=('BSD')
-groups=()
 depends=('mesa' 'libgl')
-makedepends=('git' 'ninja' 'depot-tools-git' 'python2' 'gcc' 'gn-git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+makedepends=('git' 'ninja' 'depot-tools-git' 'python2' 'gcc' 'gn')
 source=()
-noextract=()
 md5sums=()
 
 pkgver() {

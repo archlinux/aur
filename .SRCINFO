@@ -10,7 +10,7 @@ pkgbase = skia-git
 	makedepends = depot-tools-git
 	makedepends = python2
 	makedepends = gcc
-	makedepends = gn-git
+	makedepends = gn
 	depends = mesa
 	depends = libgl
 
