@@ -6,7 +6,7 @@ true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.16
-pkgver=4.16.3
+pkgver=4.16.5
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
@@ -17,15 +17,13 @@ makedepends=('bc' 'inetutils')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
-  config
-  0001-ucontext-fix-incomplete-type-ucontext.patch)
+  config)
 
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'                                        
             'SKIP'
-            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
+            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'                                        
             'SKIP'
-            'c0b75bbc76b9202a02aa56ff06b9a773d46c57f1576b4a9e289de29388d5d136'
-            '9a7e0a9a2c3d4252cee29b4f5f61da00e98bd247cb5ceb22e31a7f782a45bddf')
+            '42c31c891d7aaa90ca74e2471a22759e78e08d3c60c007621cb707756ac06a5f')  
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,10 +35,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # workground for glibc 2.26+
-  # https://patchwork.kernel.org/patch/10059117/
-  patch -Np1 -i ../0001-ucontext-fix-incomplete-type-ucontext.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"

@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 4.16.3
+	pkgver = 4.16.5
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -10,18 +10,16 @@ pkgbase = linux-usermode
 	depends = coreutils
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.3.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.3.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.5.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.5.sign
 	source = config
-	source = 0001-ucontext-fix-incomplete-type-ucontext.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = 336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3
+	sha256sums = 8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011
 	sha256sums = SKIP
-	sha256sums = c0b75bbc76b9202a02aa56ff06b9a773d46c57f1576b4a9e289de29388d5d136
-	sha256sums = 9a7e0a9a2c3d4252cee29b4f5f61da00e98bd247cb5ceb22e31a7f782a45bddf
+	sha256sums = 42c31c891d7aaa90ca74e2471a22759e78e08d3c60c007621cb707756ac06a5f
 
 pkgname = linux-usermode
 
