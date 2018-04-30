@@ -1,11 +1,12 @@
 pkgbase = variety-git
-	pkgdesc = Variety Wallpaper Changer (git version)
+	pkgdesc = Variety wallpaper changer (git version)
 	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/varietywalls/variety
 	arch = any
 	license = GPL3
-	makedepends = git python2-distutils-extra
+	makedepends = git
+	makedepends = python2-distutils-extra
 	depends = python2
 	depends = gtk3
 	depends = imagemagick
