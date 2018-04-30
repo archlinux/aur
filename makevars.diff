@@ -1,0 +1,19 @@
+--- Makevars	2018-04-29 23:06:53.982006780 +0200
++++ Makevars.new	2018-04-30 20:20:31.546428746 +0200
+@@ -42,9 +42,14 @@
+ # This is the list of locale categories, beyond LC_MESSAGES, for which the
+ # message catalogs shall be used.  It is usually empty.
+ EXTRA_LOCALE_CATEGORIES =
+-
++PACKAGE_GNU =
+ # Local Variables:
+ # coding: utf-8
+ # End:
+ 
+ # arch-tag: 2111079c-04fd-4ea1-b078-f857135897ad
++DIST_DEPENDS_ON_UPDATE_PO = yes
++MSGINIT_OPTIONS =
++MSGMERGE_OPTIONS =
++USE_MSGCTXT = no
++PACKAGE_GNU =
+\ Kein Zeilenumbruch am Dateiende.
