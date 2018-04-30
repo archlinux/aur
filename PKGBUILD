@@ -3,7 +3,7 @@
 
 pkgname=hamlib
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hamlib.org"
@@ -18,8 +18,7 @@ sha1sums=('ee90d0a79c4408b452ea328620c333d650b41f44')
 sha256sums=('b55cb5e6a8e876cceb86590c594ea5a6eb5dff2e30fc13ce053b46baa6d7ad1d')
 
 build() {
-	cd $srcdir
-	cd $pkgname-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
 
 	./configure \
 		--prefix=/usr \
@@ -32,18 +31,18 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
 
-	make DESTDIR=$pkgdir install
+	make DESTDIR="$pkgdir" install
 
 	# fix perl module location
 	eval $(perl -V:sitearch)
-	cd $pkgdir$sitearch
+	cd "$pkgdir/$sitearch"
 	mkdir current/
 	mv auto current
 	mv Hamlib.pm current
 	rm perltest.pl
 
-	/usr/bin/find $pkgdir -name '.packlist' -delete
-	/usr/bin/find $pkgdir -name '*.pod' -delete
+	/usr/bin/find "$pkgdir" -name '.packlist' -delete
+	/usr/bin/find "$pkgdir" -name '*.pod' -delete
 }
