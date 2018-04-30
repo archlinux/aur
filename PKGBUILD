@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.16
-pkgver=4.16.3
+pkgver=4.16.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,8 +21,6 @@ source=(
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
   0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
   # patches for pci passthrough
   add-acs-overrides.patch
   i915-vga-arbiter.patch
@@ -33,7 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
+            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
             'SKIP'
             '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -43,8 +41,6 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
             'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
             'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
-            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
-            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93'
             'abe269c6596b54a412bd8415472153f419026d4f367fa3ee1ebc8693ac66915d'
             'fe3d47fe6f54d4a82c869fd29484d3f097b5906ef4d456409961a8dd647daad0')
 
@@ -71,12 +67,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/58153
   patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-
-  # https://bugs.archlinux.org/task/58158
-  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-
-  # https://bugs.archlinux.org/task/58174
-  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
   
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
