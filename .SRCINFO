@@ -1,0 +1,26 @@
+pkgbase = itch-bin
+	pkgdesc = The best way to play itch.io games.
+	pkgver = 23.6.2
+	pkgrel = 1
+	url = https://github.com/itchio/itch
+	install = itch.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libnotify
+	depends = nss
+	depends = gconf
+	depends = gtk2
+	depends = libxtst
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = libxss
+	provides = itch
+	conflicts = itch
+	options = !strip
+	source = https://github.com/itchio/itch/releases/download/v23.6.2/itch-23.6.2-amd64.tar.xz
+	sha256sums = a9faa0fda73d7935b52ec829dccc3e523066f9e6d072232e7cd813e062c015b3
+
+pkgname = itch-bin
+
