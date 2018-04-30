@@ -1,0 +1,21 @@
+--- src/rxvtimg.C
++++ src/rxvtimg.C
+@@ -770,9 +770,15 @@
+ 
+   if (repeat == RepeatNone)
+     {
+-      XRenderColor rc = { 0, 0, 0, 0 };
++      rgba bg = GET_R->pix_colors[Color_bg];
++      XRenderColor rc = {
++        (unsigned short)(bg.r * bg.a / 65535),
++        (unsigned short)(bg.g * bg.a / 65535),
++        (unsigned short)(bg.b * bg.a / 65535),
++        GET_R->depth == 32 ? bg.a : 65535
++      };
+       XRenderFillRectangle (cc.dpy, PictOpSrc, cc.dst, &rc, 0, 0, w, h);//TODO: split into four fillrectangles
+-      XRenderComposite (cc.dpy, PictOpSrc, cc.src, None, cc.dst, 0, 0, 0, 0, x, y, ref->w, ref->h);
++      XRenderComposite (cc.dpy, PictOpOver, cc.src, None, cc.dst, 0, 0, 0, 0, x, y, ref->w, ref->h);
+     }
+   else
+     XRenderComposite (cc.dpy, PictOpSrc, cc.src, None, cc.dst, -x, -y, 0, 0, 0, 0, w, h);
+

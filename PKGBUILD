@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=8
+pkgrel=9
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), with various fixes'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -18,6 +18,7 @@ source=(
   'urxvtc.desktop'
   'urxvt-tabbed.desktop'
   'intensity.patch'
+  'background-img-use-color.patch'
   'font-width-fix.patch'
   'line-spacing-fix.patch'
   'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
@@ -28,6 +29,7 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
+         'd8377a6ec47a7913636fbc368aded94b'
          'fef588d6bfe52304bf80e8f1771577b6'
          '9f3248bc397ee76b008375f2ab0f201a'
          'f8325b0a33999db4d5d1eeac4f320156'
@@ -37,6 +39,7 @@ prepare() {
   cd $_pkgname-$pkgver
 
   patch -p0 -i ../intensity.patch
+  patch -p0 -i ../background-img-use-color.patch
 
   # From https://aur.archlinux.org/packages/rxvt-unicode-patched/
   patch -p0 -i ../font-width-fix.patch
