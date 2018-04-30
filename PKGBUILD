@@ -2,7 +2,7 @@
 
 pkgname=('tika' 'tika-server')
 _name='tika'
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc='Apache Tika - a content analysis toolkit'
 arch=('any')
