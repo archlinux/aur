@@ -1,13 +1,13 @@
 pkgbase = macos-icon-theme
 	pkgdesc = macOS iCons Collection
-	pkgver = 4.1.8
-	pkgrel = 4
+	pkgver = 4.2
+	pkgrel = 1
 	url = https://www.opendesktop.org/p/1102582/
 	arch = any
 	license = GPL
 	depends = gtk-update-icon-cache
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519002046/s/$_s/t/$_t/macos-icon-theme-4.1.8.tar.xz
-	md5sums = 056982040d0efdcf4fa93b0e5bc9bc3d
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1524703499/s/$_s/t/$_t/macos-icon-theme-4.2.tar.xz
+	md5sums = 24c1eb908a1f0c0a0e3558f0405e252e
 
 pkgname = macos-icon-theme
 
