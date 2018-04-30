@@ -70,7 +70,6 @@ function package_open3d() {
         openmp
     )
     cd "${pkgbase}/build"
-    local SITE_PACKAGES="$(awk 'BEGIN {FS="="} /^PYTHON_SITE_PACKAGES:PATH\>/ {print $2}' CMakeCache.txt)"
     install -m 644 -D -t "${pkgdir}/usr/lib" lib/libopen3d*.so
     install -d "${pkgdir}/usr/include"
     cp -R ../modules/{Core,IO,Visualization,Python}/include/Open3D "${pkgdir}/usr/include"
