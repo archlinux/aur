@@ -3,7 +3,7 @@
 
 pkgname=resin-cli
 pkgdesc='Resin.io command line interface'
-pkgver=7.3.5
+pkgver=7.3.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://resin.io/'
@@ -15,10 +15,8 @@ noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 optdepends=('python: resin-preload')
 optdepends_x86_64=('lib32-glibc: emulated builds')
-sha256sums=('37ef1edef02e30ef77118fa7d584847a72297d6e0bcdff87063d13ce717fdf50')
+sha256sums=('6d517ff2edaeff4891e36be62f520d611b7932fe00362b21156273da2425d99a')
 
 package() {
   npm install --global --only=production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
-  rm -r "${pkgdir}/usr/etc"
-  find "${pkgdir}" -name "__pycache__" -type d -exec rm -rf '{}' +
 }
