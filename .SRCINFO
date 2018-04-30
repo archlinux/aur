@@ -1,0 +1,16 @@
+pkgbase = ifstat
+	pkgdesc = A tool to report network interfaces bandwith just like vmstat/iostat do for other system counters
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://gael.roualland.free.fr/ifstat/
+	install = ifstat.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://gael.roualland.free.fr/ifstat/ifstat-1.1.tar.gz
+	source = 0001-a.patch
+	md5sums = b655642c33a626cfe976792fbcd9b6e1
+	md5sums = 4d299f8c7896b0c5046867070137ad09
+
+pkgname = ifstat
+

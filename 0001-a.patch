@@ -1,0 +1,49 @@
+From 83072da5bd5aa64c243d4dbdd10c788714701939 Mon Sep 17 00:00:00 2001
+From: Nathan Jones <nathanj439@gmail.com>
+Date: Mon, 30 Apr 2018 10:47:16 -0400
+Subject: [PATCH] a
+
+---
+ Makefile.in           | 6 +++---
+ ifstat.1 => ifstat2.1 | 0
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename ifstat.1 => ifstat2.1 (100%)
+
+diff --git a/Makefile.in b/Makefile.in
+index 486fe3e..2a88c21 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,7 +20,7 @@ LIBSRCS	    = drivers.c data.c @SNMPSRC@
+ SRCS        = ifstat.c $(LIBSRCS)
+ OBJS        = ${SRCS:.c=.o}
+ LIBOBJS     = ${LIBSRCS:.c=.o}
+-TARGET      = ifstat
++TARGET      = ifstat2
+ LIBTARGET   = libifstat.a
+ TARGETS	    = $(TARGET) @LIBTARGET@
+ 
+@@ -45,7 +45,7 @@ distclean: clean
+ 	$(RM) config.h config.cache config.log config.status Makefile libifstat-config
+ 
+ maintainer-clean: distclean
+-	$(RM) configure config.h.in ifstat.1
++	$(RM) configure config.h.in ifstat2.1
+ 
+ ${srcdir}/configure: configure.in
+ 	cd ${srcdir} && autoconf
+@@ -68,7 +68,7 @@ install-$(TARGET): $(TARGET)
+ 	$(INSTALL) -d -m 755 $(bindir)
+ 	$(INSTALL) -s -m 755 $(TARGET) $(bindir)/$(TARGET)
+ 	$(INSTALL) -d -m 755 $(mandir)/man1
+-	$(INSTALL) -m 644 ifstat.1 $(mandir)/man1/ifstat.1
++	$(INSTALL) -m 644 ifstat2.1 $(mandir)/man1/ifstat2.1
+ 
+ install-$(LIBTARGET): $(LIBTARGET) libifstat-config
+ 	$(INSTALL) -d -m 755 $(bindir)
+diff --git a/ifstat.1 b/ifstat2.1
+similarity index 100%
+rename from ifstat.1
+rename to ifstat2.1
+-- 
+2.16.2
+
