@@ -4,9 +4,9 @@
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
-pkgver=0.6.1.r33.gb84b7d8
-_gitver=b84b7d858cf4f6f3473ba72d456326c048946cb0
-_vdrapi=2.2.0
+pkgver=0.6.1.r36.ge2a9b97
+_gitver=e2a9b979d3fb92967c7a6a8221e674eb7e55c813
+_vdrapi=2.4.0
 pkgrel=1
 pkgdesc="implementation of the VTP (Video Transfer Protocol)"
 url="http://projects.vdr-developer.org/projects/show/plg-streamdev"
