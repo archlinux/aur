@@ -1,16 +1,35 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor:
 
+###########################################################################################################
+#                                          Patch and Build Options
+###########################################################################################################
+_custom="no"		# "m":	custom config via menuconfig
+			# "n":	custom config via nconfig
+			# "x":	custom config via xconfig
+			# "no":	nothing
+
+_config="pkg"		# "local":	compile only probed modules(https://aur.archlinux.org/packages/modprobed-db/)
+			# "nomod":	don't use modules(make localyesconfig)
+			# "old":	make with old config (/proc/config.gz)
+			# "pkg":	use this package's config
+###########################################################################################################
+
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=5
+_minor=6
 pkgver=${__basekernel}.${_minor}
 _clearver=${__basekernel}.5-558
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+
+if [ "$_custom" = "x" ]; then
+   makedepends+=('qt5-base')
+fi
+
 options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
@@ -30,7 +49,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
+            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -53,7 +72,18 @@ prepare() {
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
 
-  cp -Tf $srcdir/clearlinux/config .config
+  # Trying oldcfg if possible and if selected
+  if [ "$_config" = "old" ]; then
+    if [ -e /proc/config.gz ]; then
+      zcat /proc/config.gz > ./.config
+    else
+      echo "WARNING: There's no /proc/config.gz... You cannot use the old config. Aborting..."
+      exit 1
+    fi         
+  else
+      cp -Tf $srcdir/clearlinux/config ./.config
+  fi
+
   cp -a /usr/lib/firmware/i915 firmware/
   cp -a ${srcdir}/intel-ucode firmware/
   rm -f firmware/intel-ucode/0f*
@@ -74,7 +104,47 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  make olddefconfig
+  msg "Running make prepare"
+  make prepare
+  
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db/
+  if [ $_config = "local" ]; then
+    msg "If you have modprobe-db installed, running it in recall mode now"
+    if [ -e /usr/bin/modprobed-db ]; then
+      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install via pacman -S sudo and configure to work with this user." && exit 1
+      sudo /usr/bin/modprobed-db recall
+  fi
+    msg "Running Steven Rostedt's make localmodconfig now"
+    make localmodconfig
+  else
+    yes "" | make config
+  fi
+
+  if [ $_config = "nomod" ]; then
+    msg "Running localYESconfig now"
+    make localyesconfig
+  else
+    yes "" | make config
+  fi
+
+  if [ $_custom = "m" ]; then
+    msg "Running make menuconfig"
+    make menuconfig
+  fi
+
+  if [ $_custom = "n" ]; then
+    msg "Running make nconfig"
+    make nconfig
+  fi
+
+  if [ $_custom = "x" ]; then
+    msg "Running make xconfig"
+    make xconfig
+  fi
+
+  # save configuration for later reuse
+  cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
 }
 
 build() {
