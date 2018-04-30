@@ -1,8 +1,9 @@
+# Maintainer: Gergely Imreh <imrehg@gmail.com>
 # Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
-pkgver=7.2.3.r0.ga650f30
+pkgver=7.3.7.r0.g0ac599d
 pkgrel=1
 arch=('any')
 url='https://resin.io/'
@@ -21,5 +22,4 @@ pkgver() {
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "$srcdir/${pkgname%-git}"
-  rm -r "${pkgdir}/usr/etc"
 }
