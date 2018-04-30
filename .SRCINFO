@@ -1,7 +1,7 @@
 pkgbase = panopta-agent
 	pkgdesc = Panopt agent
-	pkgver = 2018.06.3
-	pkgrel = 3
+	pkgver = 2018.19.1
+	pkgrel = 1
 	url = https://my.panopta.com
 	install = panopta-agent.install
 	arch = any
