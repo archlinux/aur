@@ -4,14 +4,14 @@ pkgname=epson-inkjet-printer-201112j
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Epson printer driver (EP-804A, EP-804AR, EP-804AW, EP-904A, EP-904F)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix})
+source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
   cd "$srcdir"
@@ -50,4 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('95e260107a5689ab75ae730a68d21de201f2678d0bc2e977d4e4503474a847f7')
+sha256sums=('95e260107a5689ab75ae730a68d21de201f2678d0bc2e977d4e4503474a847f7'
+            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
