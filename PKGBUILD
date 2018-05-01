@@ -21,7 +21,7 @@ source=("https://github.com/sakaki-/bcmrpi3-kernel/releases/download/${pkgver}/b
 	'cmdline.txt'
 	'linux.preset'
         '99-linux.hook')
-sha1sums=('f7bb058297f5969affcbf8699f80944ee4eef685'
+sha1sums=('37b0e6374f46c50be90dc3ba220e108b592b069d'
           '472aa9e8528789f17950fb0b06de60ce3f67e4f8'
           'f55155535974425e4c1ab5869fbe86b68cdc04cb'
           '495384696eaccf1ae6894938780cf9bdf3020ef3'
