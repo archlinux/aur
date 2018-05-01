@@ -36,6 +36,7 @@ depends=(
   dkms
   ncurses5-compat-libs
   fuse2
+  gtk3 # for gtk-query-settings binary
   gtkmm3
   libcanberra
   pcsclite
@@ -96,7 +97,7 @@ sha256sums=(
   'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  '89b3430bdcc1efc33db2eb556447569204dbb736dca8045c3841e1a55ee5bfbb'
+  '6432e3228771838a6fc7e638275bffd3476b314cbb220e0baa460c5903d3c0ad'
 
   '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
