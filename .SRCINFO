@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-k100-k200-series
 	pkgdesc = Epson printer driver (WorkForce K101, K100, K200)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-k100-k200-series
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-k100-k200-series-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 6a37879a403b4d4da576ddbc7736dc110eec589d362b4280bf61342c0df97e48
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-k100-k200-series
 
