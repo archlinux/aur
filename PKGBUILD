@@ -2,15 +2,15 @@
 
 pkgname=sachesi-git
 _pkgname=Sachesi #no uppercase letter in pkgname
-pkgver=2.0.3.r2.g7cd35fb
+pkgver=2.0.3.r10.g228775f
 pkgrel=1
-pkgdesc="Firmware, extractor, searcher and installer for Blackberry 10"
+pkgdesc='Firmware, extractor, searcher and installer for Blackberry 10'
 arch=('i686' 'x86_64')
-url="https://github.com/xsacha/Sachesi"
+url='https://github.com/xsacha/Sachesi'
 license=('GPL3')
-depends=('qt5-declarative' 'quazip-qt5' 'libusb' 'lzo')
+depends=('libusb' 'lzo' 'openssl-1.0' 'qt5-declarative' 'quazip-qt5')
 makedepends=('git' 'gendesk' 'qt5-quickcontrols' 'qt5-tools')
-source=(git+https://github.com/xsacha/Sachesi.git)
+source=('git+https://github.com/xsacha/Sachesi.git')
 sha1sums=('SKIP')
 install=sachesi.install
 
@@ -26,7 +26,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  qmake-qt5 CONFIG+="shared_lzo2 shared_quazip"
+  qmake-qt5 CONFIG+="shared_lzo2 shared_quazip" \
+    QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS -I/usr/include/openssl-1.0" \
+    QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS -I/usr/include/openssl-1.0" \
+    QMAKE_LFLAGS_RELEASE="$LDFLAGS -L/usr/lib/openssl-1.0"
   make ${MAKEFLAGS}
 }
 
