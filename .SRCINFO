@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201214w
 	pkgdesc = Epson printer driver (WF-M1030, WF-M1560)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201214w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201214w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 93ec8596dc5465feb14d382638c1403cd38c9bfed2c01a6d57911f493e288198
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201214w
 
