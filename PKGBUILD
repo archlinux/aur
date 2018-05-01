@@ -12,6 +12,7 @@ url="https://github.com/toggl/toggldesktop"
 license=('BSD')
 depends=('libxss'
          'openssl'
+         'poco'
          'qt5-base'
          'qt5-declarative'
          'qt5-location'
