@@ -8,6 +8,8 @@ pkgbase = libinstpatch
 	license = LGPLv2
 	makedepends = cmake
 	makedepends = python3
+	depends = glib2
+	depends = libsndfile
 	source = https://download.savannah.gnu.org/releases/gsequencer/1.4.x/libinstpatch-1.0.0+svn386.tar.bz2
 	md5sums = 3e90da59e1d088ff9dbb270a1349cd99
 
