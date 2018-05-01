@@ -4,14 +4,14 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=10
+pkgrel=11
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
 url="http://qt.io"
 license=('GPL')
 depends=('libpng' 'libxmu' 'libxcursor' 'libxinerama' 'glu' 'libxft'
-         'libxrandr' 'libmng' 'libunistring')
+         'libxrandr' 'libmng' 'libunistring' 'libnsl' 'libtirpc')
 makedepends=('mariadb' 'postgresql' 'unixodbc' 'sqlite' 'mesa')
 optdepends=('qtchooser: set the default Qt toolkit'
             'libmariadbclient: MariaDB driver'
@@ -19,8 +19,12 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'unixodbc: ODBC driver')
 options=('!docs')
 source=(http://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
-        qt3-png15.patch qt-copy-kde-patches.tar.bz2 qt-patches.tar.bz2
-        eastern_asian_languagues.diff qt-odbc.patch gcc-4.6.patch 
+        qt3-png15.patch 
+	qt-copy-kde-patches.tar.bz2 
+	qt-patches.tar.bz2
+        eastern_asian_languagues.diff 
+	qt-odbc.patch 
+	gcc-4.6.patch 
         qt-x11-free-3.3.5-makelibshared.patch)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
             '1f8a1aa1d9c5eee8cdbc91b1c6d5a5bae62f422480fee383a1753bc7eac7741c'
