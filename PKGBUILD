@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('dmenu')
 makedepends=('git' 'cmake')
 conflicts=('j4-dmenu-desktop-git')
-source=("https://github.com/enkore/j4-dmenu-desktop/archive/r${pkgver}.zip")
-sha256sums=('d0f37a25e85c91bf08eae956afda1449092068102c0ef29ad85aacbd19e11d9a')
+source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/enkore/j4-dmenu-desktop/archive/r${pkgver}.tar.gz")
+sha256sums=('cce03564227677ffbf0d1a15588247904c4fce997bc21bb92e1147a916b6c520')
 
 build() {
 	cd ${pkgname}-r${pkgver}
