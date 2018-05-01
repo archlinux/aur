@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("${_pkgname}.desktop")
 source_i686=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux-ia32.zip")
 source_x86_64=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip")
 sha256sums=('4eba7b17fd0cd90f77fc1a1005f74d8fcd93dac4f669d1b1abbf71734b5bafa6')
-sha256sums_i686=('d0b4279e6fc36f1ae7a0223a3edd998d626a2038450f444f3f8645b9d9221180')
-sha256sums_x86_64=('62a5ceadfd602e74e4c9bf4c79e8fd05fed7b63ae111866a7f2d1741b4dda53f')
+sha256sums_i686=('7f54dcb0b197f98aeca7508aa3d5279950a4bdf20fa718c22833200c78084251')
+sha256sums_x86_64=('4dd5de977791635741ee0bcf0de452f3d0e74d294a0a1b441c129463aa2636ac')
 
 [ "$CARCH" = "i686" ]   && _platform=ia32
 [ "$CARCH" = "x86_64" ] && _platform=x64
