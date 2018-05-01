@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss05
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Fira Mono.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka-pack'
            'ttf-iosevka-term-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss05-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('c28003b116f3a5434cb8d69e36464ed0906d3c7b31d581337da35a96a3953f9e'
+sha256sums=('435ae3f64cec36f5f353d01a95eb4901fad3f78362479a4127182255c11fd8e1'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
