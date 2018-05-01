@@ -1,11 +1,10 @@
 pkgbase = ppd-toshiba-estudio5560c
 	pkgdesc = Printer only driver for the Toshiba e-STUDIO class of printers
-	pkgver = 1.0
-	pkgrel = 5
+	pkgver = 7.89
+	pkgrel = 1
 	url = http://www.eid.toshiba.com.au/n_driver_ebx_colour.asp
 	install = ppd-toshiba-estudio5560c.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Propietary
 	depends = cups
 	provides = ppd-toshiba-estudio347cs
@@ -16,6 +15,7 @@ pkgbase = ppd-toshiba-estudio5560c
 	provides = ppd-toshiba-estudio2540c
 	provides = ppd-toshiba-estudio3040c
 	provides = ppd-toshiba-estudio3540c
+	provides = ppd-toshiba-estudio4505ac
 	provides = ppd-toshiba-estudio4540c
 	provides = ppd-toshiba-estudio2555c
 	provides = ppd-toshiba-estudio3055c
@@ -28,8 +28,8 @@ pkgbase = ppd-toshiba-estudio5560c
 	provides = ppd-toshiba-estudio5560c
 	provides = ppd-toshiba-estudio6560c
 	provides = ppd-toshiba-estudio6570c
-	source = http://business.toshiba.com/downloads/KB/f1Ulds/14079/TOSHIBA_ColorMFP_CUPS.tar
-	md5sums = f13f40e1ade3a4cadec46be49ff7f0d4
+	source = http://business.toshiba.com/downloads/KB/f1Ulds/15178/TOSHIBA_ColorMFP_CUPS.tar
+	sha256sums = 9938e9adda645ad353c5b34719961cff8af8b0b3588ded886b0ac452f0c9e463
 
 pkgname = ppd-toshiba-estudio5560c
 
