@@ -1,0 +1,34 @@
+***************
+*** 25,31 ****
+  
+      if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+        s.add_runtime_dependency(%q<fspath>.freeze, ["~> 3.0"])
+!       s.add_runtime_dependency(%q<image_size>.freeze, ["~> 1.5"])
+        s.add_runtime_dependency(%q<exifr>.freeze, [">= 1.2.2", "~> 1.2"])
+        s.add_runtime_dependency(%q<progress>.freeze, [">= 3.0.1", "~> 3.0"])
+        s.add_runtime_dependency(%q<in_threads>.freeze, ["~> 1.3"])
+--- 25,31 ----
+  
+      if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+        s.add_runtime_dependency(%q<fspath>.freeze, ["~> 3.0"])
+!       s.add_runtime_dependency(%q<image_size>.freeze, [">= 1.5"])
+        s.add_runtime_dependency(%q<exifr>.freeze, [">= 1.2.2", "~> 1.2"])
+        s.add_runtime_dependency(%q<progress>.freeze, [">= 3.0.1", "~> 3.0"])
+        s.add_runtime_dependency(%q<in_threads>.freeze, ["~> 1.3"])
+***************
+*** 34,40 ****
+        s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.52"])
+      else
+        s.add_dependency(%q<fspath>.freeze, ["~> 3.0"])
+!       s.add_dependency(%q<image_size>.freeze, ["~> 1.5"])
+        s.add_dependency(%q<exifr>.freeze, [">= 1.2.2", "~> 1.2"])
+        s.add_dependency(%q<progress>.freeze, [">= 3.0.1", "~> 3.0"])
+        s.add_dependency(%q<in_threads>.freeze, ["~> 1.3"])
+--- 34,40 ----
+        s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.52"])
+      else
+        s.add_dependency(%q<fspath>.freeze, ["~> 3.0"])
+!       s.add_dependency(%q<image_size>.freeze, [">= 1.5"])
+        s.add_dependency(%q<exifr>.freeze, [">= 1.2.2", "~> 1.2"])
+        s.add_dependency(%q<progress>.freeze, [">= 3.0.1", "~> 3.0"])
+        s.add_dependency(%q<in_threads>.freeze, ["~> 1.3"])
