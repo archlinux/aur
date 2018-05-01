@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201204w
 	pkgdesc = Epson printer driver (ME-301, XP-100, XP-200, XP-201, XP-204, XP-208)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201204w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201204w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 702b407e24908b970409dbc33cc75e78d1361fbb1f3d64fbc87bc2525ac3ccb5
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201204w
 
