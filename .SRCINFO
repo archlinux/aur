@@ -8,8 +8,8 @@ pkgbase = python-plexapi
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-websocket-client
-	source = python-plexapi::git://github.com/pkkid/python-plexapi.git#tag=3.0.6
-	md5sums = SKIP
+	source = python-plexapi-3.0.6.tar.gz::https://github.com/pkkid/python-plexapi/archive/3.0.6.tar.gz
+	sha256sums = d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d
 
 pkgname = python-plexapi
 

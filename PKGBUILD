@@ -11,11 +11,11 @@ depends=('python-requests'
          'python-tqdm'
          'python-websocket-client')
 makedepends=()
-source=("$pkgname"::"git://github.com/pkkid/python-plexapi.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pkkid/python-plexapi/archive/$pkgver.tar.gz")
+sha256sums=('d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d')
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     python ./setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
