@@ -10,11 +10,11 @@ source_x86_64=("https://www.pcloud.com/pcloud") # Placeholder
 arch=('x86_64')
 url="https://www.pcloud.com"
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
-_api_code="XZd81R7ZHSGlh6AdzfQxwIXt3oUXbLTA00HV"
+_api_code="XZGLD87Z6R1GkWocfV5yR0t7E78QQfVAfi9V"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
 
-md5sums_x86_64=('f33077f00585049addda79243de21b31')
+md5sums_x86_64=('9b13eb6ea3529abb02c42a627d8c4227')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 prepare() {
