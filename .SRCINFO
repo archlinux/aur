@@ -1,0 +1,14 @@
+pkgbase = yakuake-session-git
+	pkgdesc = A script to create new yakuake sessions from command-line or .desktop files
+	pkgver = 0d0d445
+	pkgrel = 1
+	url = https://github.com/aplatanado/yakuake-session
+	arch = any
+	license = BSD 2-Clause
+	depends = yakuake
+	depends = wmctrl
+	source = git://github.com/aplatanado/yakuake-session.git
+	md5sums = SKIP
+
+pkgname = yakuake-session-git
+
