@@ -25,7 +25,7 @@ build() {
 }
 
 package_python-securesystemslib() {
-	depends=("python")
+    depends=("python")
 
     cd "securesystemslib-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
