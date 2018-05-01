@@ -1,0 +1,18 @@
+pkgbase = botan-2.3
+	pkgdesc = Crypto library written in C++
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://botan.randombit.net/
+	arch = x86_64
+	license = BSD
+	makedepends = python
+	depends = xz
+	optdepends = python: for using botan2.py
+	source = https://botan.randombit.net/releases/Botan-2.3.0.tgz
+	source = https://botan.randombit.net/releases/Botan-2.3.0.tgz.asc
+	validpgpkeys = 621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC
+	sha256sums = 39f970fee5986a4c3e425030aef50ac284da18596c004d1a9cce7688c4e6d47c
+	sha256sums = SKIP
+
+pkgname = botan-2.3
+
