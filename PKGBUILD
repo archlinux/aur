@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: default.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka-pack'
            'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/01-iosevka-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('adc07c4b3199aa3e26de86109a95a8a9468e75252b3bb0791db82ff967029896'
+sha256sums=('6b0b76b6818f710e1099ef802eb3740735241e8cad1249d99a214cfeccd18a36'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
