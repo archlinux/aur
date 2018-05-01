@@ -6,20 +6,20 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=72
+pkgrel=73
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
 _extramodules="extramodules-4.15-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
-url='https://www.broadcom.com/support/802.11'
+url='https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure'
 license=('custom')
-depends=('linux-ck>=4.15' 'linux-ck<4.16')
-makedepends=('linux-ck-headers>=4.15' 'linux-ck-headers<4.16')
+depends=('linux-ck>=4.16' 'linux-ck<4.17')
+makedepends=('linux-ck-headers>=4.16' 'linux-ck-headers<4.17')
 #replaces=()
 #groups=('ck-generic')
 source=(
-  "http://www.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz"
+  "https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz"
   '001-null-pointer-fix.patch'
   '002-rdtscl.patch'
   '003-linux47.patch'
