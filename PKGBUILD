@@ -1,8 +1,8 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=webtorrent-desktop
-pkgver=0.19.0
-pkgrel=3
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
@@ -15,7 +15,7 @@ source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
         "${pkgname}.desktop"
         "traysupport.patch")
-sha256sums=('2622485e1eee66c70446902d9645bb84a407236778d43c81c4555f98c9c2a30f'
+sha256sums=('2eec644337f2e8a47187c54d702491e3b4c1f1236dae48cb494c4e99ba0a9796'
             '4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c'
             '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539'
             '111d9eea78a64932b0c0d20e07bca39ccbf372fbe59977255c7a9ae1b39f7d79')
