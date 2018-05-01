@@ -10,6 +10,7 @@ provides=('ppd-toshiba-estudio347cs'
           'ppd-toshiba-estudio2540c'
           'ppd-toshiba-estudio3040c'
           'ppd-toshiba-estudio3540c'
+          'ppd-toshiba-estudio4505ac'
           'ppd-toshiba-estudio4540c'
           'ppd-toshiba-estudio2555c'
           'ppd-toshiba-estudio3055c'
@@ -24,14 +25,14 @@ provides=('ppd-toshiba-estudio347cs'
           'ppd-toshiba-estudio6570c')
 pkgdesc="Printer only driver for the Toshiba e-STUDIO class of printers"
 url="http://www.eid.toshiba.com.au/n_driver_ebx_colour.asp"
-pkgver=1.0
-pkgrel=5
-arch=('i686' 'x86_64')
+pkgver=7.89
+pkgrel=1
+arch=('any')
 license=('Propietary')
 depends=('cups')
-source=('http://business.toshiba.com/downloads/KB/f1Ulds/14079/TOSHIBA_ColorMFP_CUPS.tar')
+source=('http://business.toshiba.com/downloads/KB/f1Ulds/15178/TOSHIBA_ColorMFP_CUPS.tar')
 install='ppd-toshiba-estudio5560c.install'
-md5sums=('f13f40e1ade3a4cadec46be49ff7f0d4')
+sha256sums=('9938e9adda645ad353c5b34719961cff8af8b0b3588ded886b0ac452f0c9e463')
 
 package() {
   cd ${srcdir}
