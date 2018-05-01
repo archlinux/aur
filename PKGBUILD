@@ -8,7 +8,7 @@
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
-pkgver=1.0.1.rc.29.g2d28580
+pkgver=1.0.1.rc.74.g2a971b8
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
@@ -17,9 +17,10 @@ license=('GPL2')
 conflicts=('stumpwm')
 provides=('stumpwm')
 
-source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
+source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm stumpwm.desktop
         ${_pkgname}-contrib-git::git+https://github.com/stumpwm/stumpwm-contrib)
 md5sums=('SKIP'
+         'b5721de9b1cbdb4548d11570a512c5d4'
          'SKIP')
 
 makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre' 'cl-alexandria')
@@ -36,14 +37,14 @@ optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
 options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
   git describe --long --tags|tr - .|cut -c2-
 }
 
 _contribdest=/usr/share/stumpwm/contrib
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
 
   autoconf
   ./configure --prefix=/usr --with-module-dir=${_contribdest}
@@ -51,7 +52,7 @@ build() {
 } 
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
 
   make destdir="$pkgdir/" install
 
@@ -59,21 +60,22 @@ package() {
 	  ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
 
   # contrib modules
-  install -d ${pkgdir}${_contribdest}
+  install -d "$pkgdir"/${_contribdest}
   cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib-git/* \
      ${pkgdir}${_contribdest}
 
   # stumpish
-  install -Dm755 ${pkgdir}${_contribdest}/util/stumpish/stumpish \
-	  ${pkgdir}/usr/bin/stumpish
+  install -Dm755 "$pkgdir"/${_contribdest}/util/stumpish/stumpish \
+	  "$pkgdir"/usr/bin/stumpish
 
-  rm -rf ${pkgdir}${_contribdest}/util/stumpish
+  rm -rf "$pkgdir"/${_contribdest}/util/stumpish
 
   # emacs mode
-  cd ${pkgdir}/${_contribdest}/util/swm-emacs
-  install -d ${pkgdir}/usr/share/emacs/site-lisp/
+  cd "$pkgdir"/${_contribdest}/util/swm-emacs
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
   for _i in *.el 
   do
-    install -Dm644 ${_i} ${pkgdir}/usr/share/emacs/site-lisp/${_i}
+    install -Dm644 ${_i} "$pkgdir"/usr/share/emacs/site-lisp/${_i}
   done
+  install -Dm644 "$srcdir"/stumpwm.desktop "$pkgdir"/usr/share/xsessions/stumpwm.desktop
 }
