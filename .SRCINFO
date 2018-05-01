@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201203w
 	pkgdesc = Epson printer driver (ME-303, ME-400, XP-300, XP-400)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201203w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201203w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = a1c9e123bc2c2b30284c8132e9981be4d36b3a9d544a7433456c98d4bf9d9159
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201203w
 
