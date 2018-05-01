@@ -145,6 +145,59 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
     string_destroy(&pString);
 }
 
+SDA* portfolio_get_data_array(void) {
+    String* pString = portfolio_file_get_string();
+    if (pString == NULL) {
+        puts("Empty portfolio.");
+        return NULL;
+    }
+    if (strcmp(pString->data, "") == 0) {
+        puts("Empty portfolio.");
+        string_destroy(&pString);
+        return NULL;
+    }
+
+    Json* jobj = json_tokener_parse(pString->data);
+    char* password = NULL;
+    if (jobj == NULL) { //ENCRYPTED PORTFOLIO
+        password = rc4_getPassword();
+        printf("Decrypting portfolio...\n");
+        String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
+        string_destroy(&pString);
+        pString = temp;
+        if (pString == NULL)
+            return NULL;
+        jobj = json_tokener_parse(pString->data);
+        if (password != NULL)
+            free(password);
+    }
+
+    size_t portfolio_size = json_object_array_length(jobj);
+    if (portfolio_size == 0)
+        return NULL;
+
+    SDA* portfolio_data = malloc(sizeof(SDA));
+    pointer_alloc_check(portfolio_data);
+    portfolio_data->length = portfolio_size;
+    portfolio_data->sec_data = malloc(sizeof(SD*) * portfolio_data->length);
+    pointer_alloc_check(portfolio_data->sec_data);
+
+    Json* json_index;
+    SD* tcd_index;
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        portfolio_data->sec_data[i] = malloc(sizeof(SD));
+        tcd_index = portfolio_data->sec_data[i];
+        pointer_alloc_check(tcd_index);
+        json_index = json_object_array_get_idx(jobj, i);
+        strcpy(tcd_index->symbol, json_object_get_string(json_object_object_get(json_index, "Symbol")));
+        portfolio_data->sec_data[i]->amount = json_object_get_double(json_object_object_get(json_index, "Shares"));
+        tcd_index->total_spent = json_object_get_double(json_object_object_get(json_index, "USD_Spent"));
+    }
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return portfolio_data;
+}
+
 void portfolio_print_all(void) {
     String* pString = portfolio_file_get_string();
     if (pString == NULL) {
@@ -204,7 +257,7 @@ double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
     } else { //if being called directly from main
         strcpy(symbol, ticker_name_string);
         pString = portfolio_file_get_string();
-        if (pString == NULL || pString->len == 0){
+        if (pString == NULL || pString->len == 0) {
             puts("Empty portfolio.");
             free(data);
             if (pString != NULL)
@@ -267,4 +320,13 @@ int portfolio_symbol_index(const char* ticker_name_string, Json* jarray) {
             return i;
     }
     return -1;
+}
+
+void sda_destroy(SDA** phSDA) {
+    SDA* ptr = *phSDA;
+    for (size_t i = 0; i < ptr->length; i++)
+        free(ptr->sec_data[i]);
+    free(ptr->sec_data);
+    free(ptr);
+    *phSDA = NULL;
 }

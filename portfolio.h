@@ -9,6 +9,28 @@
 #define ADD 1
 #define SET 2
 
+struct security_data {
+    char symbol[32];
+    double amount;
+    double total_spent;
+    double current_value;
+    double total_profit;
+    double total_profit_percent;
+    double one_day_profit;
+    double one_day_profit_percent;
+    double seven_day_profit;
+    double seven_day_profit_percent;
+};
+
+typedef struct security_data SD;
+
+struct security_data_array {
+    SD** sec_data;
+    size_t length; // Elements in array
+};
+
+typedef struct security_data_array SDA;
+
 extern char* portfolio_file;
 
 /**
@@ -59,6 +81,12 @@ String* portfolio_file_get_string(void);
 void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, int option);
 
 /**
+ * Returns an SDA* containing data from the portfolio.
+ * @return
+ */
+SDA* portfolio_get_data_array(void);
+
+/**
  * Precondition: portfolio_file has been initialized
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
@@ -88,5 +116,11 @@ double* portfolio_print_stock(char* ticker_name_string, Json* current_index);
  * @return -1 if not found, the index number otherwise
  */
 int portfolio_symbol_index(const char* ticker_name_string, Json* jarray);
+
+/**
+ * Frees all memory associated with a SDA struct and sets the handle to NULL
+ * @param phSDA
+ */
+void sda_destroy(SDA** phSDA);
 
 #endif
