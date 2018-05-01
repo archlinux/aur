@@ -1,0 +1,21 @@
+pkgbase = python-altair
+	pkgdesc = Declarative statistical visualization library for Python
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://altair-viz.github.io/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-entrypoints
+	depends = python-jsonschema
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-six
+	depends = python-toolz
+	depends = python-typing
+	source = altair-1.2.1.tar.gz::https://files.pythonhosted.org/packages/b8/c4/0c3f6358e88a8d716ec5ac6ed20048da5d78444586e441e4e61aaf4ca6fb/altair-1.2.1.tar.gz
+	sha256sums = c1303f77f1ba4d632f2958c83c0f457b2b969860b1ac9adfb872aefa1780baa7
+
+pkgname = python-altair
+
