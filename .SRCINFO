@@ -38,6 +38,7 @@ pkgname = open3d
 	depends = mesa
 	depends = xorg-server-devel
 	optdepends = openmp
+	conflicts = open3d-git
 
 pkgname = python-open3d
 	depends = eigen
@@ -51,6 +52,23 @@ pkgname = python-open3d
 	depends = python
 	depends = xorg-server-devel
 	optdepends = openmp
+	conflicts = python-open3d-git
+	conflicts = python-py3d
+	conflicts = python-py3d-git
 
 pkgname = python-py3d
+	depends = eigen
+	depends = glew
+	depends = glfw-x11
+	depends = jsoncpp
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = mesa
+	depends = open3d
+	depends = python
+	depends = xorg-server-devel
+	optdepends = openmp
+	conflicts = python-py3d-git
+	conflicts = python-open3d
+	conflicts = python-open3d-git
 

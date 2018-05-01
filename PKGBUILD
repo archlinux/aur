@@ -80,6 +80,9 @@ function package_open3d() {
     optdepends=(
         openmp
     )
+    conflicts=(
+        open3d-git
+    )
     cd "${pkgbase}/build"
     install -m 644 -D -t "${pkgdir}/usr/lib" lib/lib*.so
     find ../src/{Core,Experimental,IO,Python,Tools,Visualization} -name '*.h' \
@@ -106,11 +109,42 @@ function package_python-open3d() {
     optdepends=(
         openmp
     )
+    privides=(
+        python-py3d
+    )
+    conflicts=(
+        python-open3d-git
+        python-py3d{,-git}
+    )
     cd "${pkgbase}/build"
     local SITE_PACKAGES="$(pacman -Qlq python | grep '/site-packages/$')"
     install -m 644 -D -t "${pkgdir}/${SITE_PACKAGES}" lib/py3d.*.so
 }
 
 function package_python-py3d() {
-    package_python-open3d
+    depends=(
+        eigen
+        glew
+        glfw-x11
+        jsoncpp
+        libjpeg-turbo
+        libpng
+        mesa
+        open3d
+        python
+        xorg-server-devel
+    )
+    optdepends=(
+        openmp
+    )
+    privides=(
+        python-py3d
+    )
+    conflicts=(
+        python-py3d-git
+        python-open3d{,-git}
+    )
+    cd "${pkgbase}/build"
+    local SITE_PACKAGES="$(pacman -Qlq python | grep '/site-packages/$')"
+    install -m 644 -D -t "${pkgdir}/${SITE_PACKAGES}" lib/py3d.*.so
 }
