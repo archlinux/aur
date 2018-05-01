@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201204j
 	pkgdesc = Epson printer driver (PX-045A)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201204j
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201204j-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = ba0d7e1951bc54cc526d2c831ff50e77fb3f3868b980bba348bac1d2d1ceff83
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201204j
 
