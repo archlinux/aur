@@ -4,7 +4,7 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=11
+pkgrel=12
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -20,11 +20,11 @@ optdepends=('qtchooser: set the default Qt toolkit'
 options=('!docs')
 source=(http://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
         qt3-png15.patch 
-	qt-copy-kde-patches.tar.bz2 
-	qt-patches.tar.bz2
+        qt-copy-kde-patches.tar.bz2 
+        qt-patches.tar.bz2
         eastern_asian_languagues.diff 
-	qt-odbc.patch 
-	gcc-4.6.patch 
+        qt-odbc.patch 
+        gcc-4.6.patch 
         qt-x11-free-3.3.5-makelibshared.patch)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
             '1f8a1aa1d9c5eee8cdbc91b1c6d5a5bae62f422480fee383a1753bc7eac7741c'
@@ -83,6 +83,7 @@ build() {
     -datadir /usr/share/qt3 \
     -translationdir /usr/share/qt3/translations \
     -I/usr/include/mysql -I/usr/include/postgresql/server \
+    -I/usr/include/tirpc \
     -platform linux-g++$ARCH \
     -system-zlib \
     -qt-gif \
