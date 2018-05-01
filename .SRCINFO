@@ -15,6 +15,7 @@ pkgbase = gsequencer
 	depends = libsndfile
 	depends = libsamplerate
 	depends = libinstpatch
+	depends = libpulse
 	depends = gtk2
 	provides = gsequencer
 	provides = midi2xml
