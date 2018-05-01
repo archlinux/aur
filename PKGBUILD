@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.16
-_stable=4.16.5
-_patchver=4.16.6
+_stable=4.16.6
+_patchver=4.16.7
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -29,7 +29,6 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
-  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,18 +36,17 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '8291ea877fd6824e0e50be8be7aa76a434c3c42bd5bffb16deffb54f7af09ede'
+            '9c9821013f951c55a043df546a45a207487e529edd7166eccf7ac75e2a01408f'
             'SKIP'
-            '8c3bb050d11da6e91d3e169f76ee3ed6937e1ca64264e605ddba8108696ba011'
+            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
             'SKIP'
-            '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
+            '627aa44c65d7297b00a8a7045d606d33b6a0b982c02331a101b94d38d348082a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
             '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
-            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
-            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836')
+            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5')
 
 _kernelname=${pkgbase#linux}
 
@@ -73,9 +71,6 @@ prepare() {
 
   # NVIDIA driver compat
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-
-  # https://bugs.archlinux.org/task/58153
-  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
