@@ -1,0 +1,22 @@
+pkgbase = bugzoo-git
+	pkgdesc = Keep your bugs contained. A platform for studying historical software bugs.
+	pkgver = r1.77d0bd1
+	pkgrel = 1
+	url = https://squareslab.github.io/BugZoo
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = docker
+	depends = python-numpy
+	depends = python-flask
+	depends = python-tabulate
+	depends = python-gitpython
+	depends = python-dockerpty
+	provides = bugzoo-git
+	conflicts = bugzoo-git
+
+pkgname = bugzoo-git
+
