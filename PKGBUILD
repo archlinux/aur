@@ -3,7 +3,7 @@
 # Contributor: EnteEnteEnte <ducksource@duckpond.ch>
 
 pkgname=teamspeak3-server
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='A proprietary VoIP conference software'
 license=('custom')
@@ -24,8 +24,8 @@ sha256sums=('c678f5d657772920260c4ea4718677e6b00ef28ad74c317e05632a01d33b3ca5'
             '305926fdc4d202f47b81ddb332111c89bbd1c9a3e6f08c6f2cfcdcb49bcd5125'
             'edbaa5b5003653c8d75077f58b4a433731cf8b07035c067541744d09cba590fa'
             'c3ed9266e6e1322315995ad4e42704981ed2b6a50bbe9d4de2e04c315c643376')
-sha256sums_i686=('e580cff75d1bf3e72d6dab67e9c69b8f79716f884c794b2d8028a82befde71c9')
-sha256sums_x86_64=('0ae338d02bb0a69a1f0405f5d465d2bc0db6e0242eabe47f2820cf4634bee22f')
+sha256sums_i686=('256d70547fd3df916134c11fa311ea6247501e5cd825cd9b1a15b596581af6dc')
+sha256sums_x86_64=('e5112515a43899be705facd99e4559b66401fb297506bcb051a0338dff416c1e')
 
 if [ "$CARCH" == "x86_64" ]; then
   _TSARCH='amd64'
