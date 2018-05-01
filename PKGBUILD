@@ -1,8 +1,8 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=ledger2beancount
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Ledger to Beancount text-based converter'
 arch=('any')
 url="https://github.com/zacchiro/ledger2beancount"
@@ -11,7 +11,7 @@ depends=('perl' 'perl-carp-assert' 'perl-config-onion' 'perl-date-calc'
          'perl-datetime-format-strptime' 'perl-file-basedir'
          'perl-getopt-long-descriptive' 'perl-yaml-libyaml')
 source=("https://github.com/zacchiro/ledger2beancount/archive/${pkgver}.tar.gz")
-sha256sums=('14fd98c8d1c8021147a7e241df97216e9f9ab81ad4d075de9d0d006e69a043a6')
+sha256sums=('fc4e07f101529f81640636ba0933701bd1f88ceae17cede0f8484049b96eb9c3')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
