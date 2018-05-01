@@ -38,12 +38,12 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
-	make
+	AGS_LOGO_FILENAME="/usr/share/gsequencer/images/ags.png" AGS_LICENSE_FILENAME="/usr/share/licenses/common/GPL3/license.txt" make
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	xvfb-run --server-args "-screen 0 1920x1080x24" -a make -k check
+#	xvfb-run --server-args "-screen 0 1920x1080x24" -a make -k check
 }
 
 package() {
