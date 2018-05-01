@@ -9,6 +9,7 @@ pkgver=60.15
 pkgrel=1
 meme=FIREFOX_60_0b15_RELEASE
 meme2=DEVEDITION_61_0b1_RELEASE
+meme3=FIREFOX_BETA_61_BASE
 pkgdesc="Standalone web browser from mozilla.org, with telemetry and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -33,7 +34,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
-sha256sums=('8a9965b323f1944f9fd2ecdbc0a5ce09390bfc843efe8fdcb3f7dd024b8dbd05'
+sha256sums=('95469746a564abbcba97ebb594960c91210f9fd5e67df2d0e2f6128f82070fed'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
@@ -60,7 +61,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified-$meme
+  cd mozilla-unified-$meme3
   patch -Np1 -i ../id.patch
 
 
@@ -129,7 +130,7 @@ END
 }
 
 build() {
-  cd mozilla-unified-$meme
+  cd mozilla-unified-$meme3
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -145,7 +146,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified-$meme
+  cd mozilla-unified-$meme3
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
