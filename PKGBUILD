@@ -89,7 +89,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh ts=2 sw=2
-md5sums=('SKIP'
-         'dc8405a6a235b83dc8a0dcdf7b71cbaa'
-         '385ca73d9f6046f3636266ce9bf38797'
-         '08fe2d61da7a24db22ff7955591ae9d4')
+sha256sums=('SKIP'
+            '343d7c61ee1c105d760480e9ba6a0655da6bd1a58335f4264a289ade96cffa4c'
+            'e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48'
+            'f0a83065a121b4a326a9da75c6684e2dc34ac18e62fea7a078c5e257c894adab')
