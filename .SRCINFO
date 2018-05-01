@@ -1,6 +1,6 @@
 pkgbase = openfx-misc-git
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 3.0.0.4
+	pkgver = 2.3.11
 	pkgrel = 1
 	url = https://github.com/devernay/openfx-io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = openfx-misc-git
 	depends = ffmpeg
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
-	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc.git#commit=3ab053146dafcbfac5b687f311d75bd59db511d8
+	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc.git#commit=5eb5904c1d691c68e4eb09fe2f241e388ecc03c1
 	sha512sums = SKIP
 
 pkgname = openfx-misc-git
