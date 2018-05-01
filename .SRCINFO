@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-px-602f
 	pkgdesc = Epson printer driver (PX-602F)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-px-602f
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-px-602f-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = eabc8e2470680d389af9d413e1e8789c33df6cf255a437d6606c09032e27714c
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-px-602f
 
