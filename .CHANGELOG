@@ -1,6 +1,21 @@
 Version history
 ===============
 
+0.9.16
+------
+
+2018-05-01
+
+lemforum: Removed backroutes in We're in This One Together (added steel)
+and From the Other Side (larger fire pit).
+
+Fix #328: Automatic replays are saved after multiplayer games again.
+
+Fix: Watching a multiplayer replay will never save another replay.
+
+I credit our contributors in doc/thanks.txt. Let me know if anything there
+is inaccurate.
+
 0.9.15
 ------
 
