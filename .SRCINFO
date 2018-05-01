@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-n10-nx127
 	pkgdesc = Epson printer driver (ME 32, 320, 33, 330 / Stylus N10, N11, NX125, NX127, S22, SX125, T12, T13, T22, T22E, T25, TX120, TX121, TX123, TX125, TX129)
 	pkgver = 1.0.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-n10-nx127
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-n10-nx127-1.0.1-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = df434f29a8fc661c27bc6cf664fcf49259df8d75c64cfc79db79c3e32089fb7d
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-n10-nx127
 
