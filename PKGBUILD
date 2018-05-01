@@ -4,7 +4,7 @@ pkgname='python-fusepy'
 pkgver=2.0.4
 pkgrel=2
 pkgdesc='Simple ctypes bindings for FUSE'
-url='https://github.com/terencehonles/fusepy'
+url='https://github.com/fusepy/fusepy'
 arch=('any')
 license=('custom:ISCL')
 depends=('fuse2>=2.6' 'python')
