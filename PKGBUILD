@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 _pkgname="Arc-X-Icons"
-pkgname="arc-x-icon-theme"
+pkgname="arc-x-icons-theme"
 pkgver=2.1
 pkgrel=1
 pkgdesc="Modern free desktop icon theme whose design is based around the\

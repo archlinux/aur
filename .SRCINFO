@@ -1,4 +1,4 @@
-pkgbase = arc-x-icon-theme
+pkgbase = arc-x-icons-theme
 	pkgdesc = Modern free desktop icon theme whose design is based around the use of bold colours and simple geometric shapes to compose icons with pixel perfect rendering.
 	pkgver = 2.1
 	pkgrel = 1
@@ -8,11 +8,11 @@ pkgbase = arc-x-icon-theme
 	license = CC-BY-SA-4.0
 	depends = gtk-update-icon-cache
 	depends = paper-icon-theme
-	provides = arc-x-icon-theme
-	conflicts = arc-x-icon-theme-git
+	provides = arc-x-icons-theme
+	conflicts = arc-x-icons-theme-git
 	options = !strip
-	source = arc-x-icon-theme-2.1.tar.gz::https://github.com/LinxGem33/Arc-X-Icons/archive/v2.1.tar.gz
+	source = arc-x-icons-theme-2.1.tar.gz::https://github.com/LinxGem33/Arc-X-Icons/archive/v2.1.tar.gz
 	sha256sums = 0f8f1c381f42b27c13a1489e23d530f47bc8fe57a6a76741247d2d5320f2d8b0
 
-pkgname = arc-x-icon-theme
+pkgname = arc-x-icons-theme
 
