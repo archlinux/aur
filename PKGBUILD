@@ -20,6 +20,7 @@ build() {
   tar xzf $FILTER_FILE
 
   cd "${FILTER_FILE%.tar.gz}"
+  patch -p1 -i "$srcdir"/fixbuild.patch
   aclocal
   libtoolize
   chmod +x configure
