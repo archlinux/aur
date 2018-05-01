@@ -8,7 +8,7 @@ pkgbase = python-fusepy
 	makedepends = python-setuptools
 	depends = fuse2>=2.6
 	depends = python
-	source = https://github.com/terencehonles/fusepy/archive/v2.0.4.tar.gz
+	source = python-fusepy-r2.0.4.tar.gz::https://github.com/fusepy/fusepy/archive/v2.0.4.tar.gz
 	sha256sums = 802610ab25ad04fc9ef34d024a0abe41cdcaff6a2cb8b2fb92cdda0057c09d1f
 
 pkgname = python-fusepy

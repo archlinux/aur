@@ -9,7 +9,7 @@ arch=('any')
 license=('custom:ISCL')
 depends=('fuse2>=2.6' 'python')
 makedepends=('python-setuptools')
-source=("https://github.com/terencehonles/fusepy/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/fusepy/fusepy/archive/v${pkgver}.tar.gz")
 sha256sums=('802610ab25ad04fc9ef34d024a0abe41cdcaff6a2cb8b2fb92cdda0057c09d1f')
 
 package() {
