@@ -13,8 +13,8 @@ sha512sums=('2f6d22b69d6f1ea0ff002cd3d1dc7f3ec1f3ab6e44ef5aeb2801fc052ea43207152
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    #npm install --cache "${srcdir}/npm-cache"
-    #npm run release:linux
+    npm install --cache "${srcdir}/npm-cache"
+    npm run release:linux
 }
 
 package() {
