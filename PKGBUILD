@@ -1,6 +1,6 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 PN="pcloud"
 pkgname="pcloud-drive"
