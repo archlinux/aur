@@ -14,8 +14,8 @@ function package() {
 	local DESTDIR="$pkgdir/etc/openvpn/client"
 	local INSTALL="install -Dm u=rw,go=r"
 
-	chmod $DESTDIR 750
 	while read filename; do
 		$INSTALL "openvpn/$filename" "$DESTDIR/$filename"
 	done < <(find 'openvpn' -type 'f' -printf '%P\n')
+	chmod 750 $DESTDIR
 }
