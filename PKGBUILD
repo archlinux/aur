@@ -3,7 +3,7 @@
 pkgname='planck-git'
 provides=('planck')
 conflicts=('planck')
-pkgver=r1067.b818bb8
+pkgver=r1579.47b9eec
 pkgrel=1
 pkgdesc="A stand-alone ClojureScript REPL"
 arch=('x86_64')
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "$srcdir/$pkgname/planck-c/build/planck" "$pkgdir/usr/bin/planck"
+  install -Dm755 "$srcdir/$pkgname/planck-sh/plk" "$pkgdir/usr/bin/plk"
 }

@@ -1,6 +1,6 @@
 pkgbase = planck-git
 	pkgdesc = A stand-alone ClojureScript REPL
-	pkgver = r1067.b818bb8
+	pkgver = r1579.47b9eec
 	pkgrel = 1
 	url = http://planck-repl.org/
 	arch = x86_64
