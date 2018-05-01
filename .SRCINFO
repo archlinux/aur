@@ -6,8 +6,6 @@ pkgbase = gsequencer
 	arch = x86_64
 	arch = i386
 	license = GPLv3+
-	checkdepends = cunit
-	checkdepends = xorg-server-xvfb
 	depends = pcre
 	depends = ladspa
 	depends = dssi
@@ -22,7 +20,7 @@ pkgbase = gsequencer
 	source = https://download.savannah.gnu.org/releases/gsequencer/1.4.x/gsequencer-1.4.27.tar.gz
 	source = https://download.savannah.gnu.org/releases/gsequencer/1.4.x/gsequencer-1.4.27.patch
 	md5sums = b5d93a56d5885f294d87b7b5abd3172a
-	md5sums = 64bbe83b2ad88c98bfbf08827da701db
+	md5sums = 65ec508f55ffc2fbab3cbe61276a3f8d
 
 pkgname = gsequencer
 

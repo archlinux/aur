@@ -15,7 +15,7 @@ license=('GPLv3+')
 groups=()
 depends=('pcre' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk2')
 makedepends=()
-checkdepends=('cunit' 'xorg-server-xvfb')
+checkdepends=() # 'cunit' 'xorg-server-xvfb'
 optdepends=()
 provides=('gsequencer' 'midi2xml')
 conflicts=()
@@ -27,7 +27,7 @@ changelog=
 source=("https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.tar.gz"
         "https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.patch")
 noextract=()
-md5sums=('b5d93a56d5885f294d87b7b5abd3172a' '64bbe83b2ad88c98bfbf08827da701db')
+md5sums=('b5d93a56d5885f294d87b7b5abd3172a' '65ec508f55ffc2fbab3cbe61276a3f8d')
 validpgpkeys=()
 
 prepare() {
@@ -38,7 +38,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
-	AGS_LOGO_FILENAME="/usr/share/gsequencer/images/ags.png" AGS_LICENSE_FILENAME="/usr/share/licenses/common/GPL3/license.txt" make
+	make
 }
 
 check() {
