@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.8
-	pkgrel = 2
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = discord-ptb
 	source = LICENSE
 	md5sums = 6a23b54347910ff151fce2023589b27e
 	md5sums = 26b3229c74488c64d94798e48bc49fcd
-	source_x86_64 = https://dl-ptb.discordapp.net/apps/linux/0.0.8/discord-ptb-0.0.8.tar.gz
-	md5sums_x86_64 = c6ca4f3b9341997c48e84e735023eb51
+	source_x86_64 = https://dl-ptb.discordapp.net/apps/linux/0.0.9/discord-ptb-0.0.9.tar.gz
+	md5sums_x86_64 = db2bbf313309bd8d139ae92d2ae7a10e
 
 pkgname = discord-ptb
 
