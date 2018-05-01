@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-quake-mode-git
+	pkgdesc = Adds support quake-mode for any application
+	pkgver = 1+0+g51411cd
+	pkgrel = 1
+	url = https://github.com/repsac-by/gnome-shell-extension-quake-mode
+	arch = any
+	groups = gnome-shell-extensions
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-quake-mode
+	conflicts = gnome-shell-extension-quake-mode
+	source = git+https://github.com/repsac-by/gnome-shell-extension-quake-mode.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-quake-mode-git
+
