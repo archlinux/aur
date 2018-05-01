@@ -1,0 +1,28 @@
+pkgbase = perl-latexml-git
+	pkgdesc = LaTeX to XML converter
+	pkgver = 0.8.2.445.g38fc034e
+	pkgrel = 1
+	url = http://dlmf.nist.gov/LaTeXML/
+	arch = any
+	license = custom
+	depends = perl
+	depends = perl-parse-recdescent
+	depends = perl-text-unidecode
+	depends = imagemagick6
+	depends = perl-xml-libxml
+	depends = perl-xml-libxslt
+	depends = db
+	depends = texlive-core
+	depends = perl-image-size
+	depends = perl-file-which
+	depends = perl-libwww
+	depends = perl-io-string
+	depends = perl-archive-zip
+	provides = perl-latexml
+	conflicts = perl-latexml
+	options = !emptydirs
+	source = git+https://github.com/brucemiller/LaTeXML.git
+	sha512sums = SKIP
+
+pkgname = perl-latexml-git
+
