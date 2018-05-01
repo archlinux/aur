@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.7.3
+pkgver=52.7.4
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -26,8 +26,8 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         firefox-install-dir.patch fix-wifi-scanner.diff
         rust-i686.patch
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
-        nvidia-GLSL-version.patch)
-sha256sums=('5cc68c1a7486cfbbf02aec0e9da9f87b55e7bfc68c7d5139bc1e578441aaf19f'
+        use_noexcept_in_mozalloc.patch)
+sha256sums=('9f77405c164c88befd2a7811e30019a016cbfb091eaeb8fe631be292d882c336'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
@@ -35,7 +35,7 @@ sha256sums=('5cc68c1a7486cfbbf02aec0e9da9f87b55e7bfc68c7d5139bc1e578441aaf19f'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9'
-            'd8c5c30589c0e176d260a5814f3cb99e94267b3185ab40ff01bf33a58f375d6a')
+            '32eae55bf9151df5f77ee98585e6cef4cc7ee2e5f2ca44c1a42f87d132eb22d8')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -70,9 +70,8 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
   patch -Np1 -i ../make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1382358
-  # https://hg.mozilla.org/integration/mozilla-inbound/rev/4a5185552a07
-#  patch -Np1 -i ../nvidia-GLSL-version.patch
+  # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
+  patch -Np1 -i ../use_noexcept_in_mozalloc.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
