@@ -4,14 +4,14 @@ pkgname=epson-inkjet-printer-201306j
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Epson printer driver (EP-906F, EP-806AB, EP-806AW, EP-806AR, EP-306)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix})
+source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
   cd "$srcdir"
@@ -50,4 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('2e8a651de0942cfe7d5f554906652af79b3a746cae69a1179db103111bcd7b7a')
+sha256sums=('2e8a651de0942cfe7d5f554906652af79b3a746cae69a1179db103111bcd7b7a'
+            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
