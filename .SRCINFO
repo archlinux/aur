@@ -1,7 +1,7 @@
 pkgbase = passff-host
 	pkgdesc = PassFF native messaging host application for Firefox, Chromium, Chrome, Vivaldi
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/passff/passff-host
 	arch = i686
