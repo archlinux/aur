@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201311w
 	pkgdesc = Epson printer driver (L1300)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201311w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201311w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 863044f6fd71af976e9d72fd73c7d483388f1562fe14f4bae6296338e23f1352
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201311w
 
