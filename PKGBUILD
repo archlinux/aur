@@ -1,17 +1,9 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
-#
-# Concerning the _pkgver_base HACK (copied from gcc-git AUR):
-#
-#    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source
-#       * git source is downloaded just before pkgver(), so source doesn't exist to be parsed when globals (incl_pkgver_base) are currently set
-#       * can't set it to an empty string and silently re-set it at the beginning of pkgver(), because the new value of _pkgver_base is only within the scope of pkgver()
-#       * would have to re-set it at the beginning of every function that uses it, which is messy and error-prone
-#       * to-do: could test in pkgver() or prepare() if _pkgver_base is different than gcc/BASE-VER and error
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=8.0.1.r159589.5839d47d0d6
-_pkgver_base=8.0.1
+pkgver=9.0.0.r161402.d7ecaff761c
+_pkgver_base=9.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
