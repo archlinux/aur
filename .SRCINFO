@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org, with telemetry and signing disabled
-	pkgver = 60.15
+	pkgver = 61.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
