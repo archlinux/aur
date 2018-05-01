@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-quake-mode-git
 pkgver=1+0+g51411cd
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds support quake-mode for any application'
 arch=('any')
 url='https://github.com/repsac-by/gnome-shell-extension-quake-mode'
@@ -28,8 +28,8 @@ build() {
 package() {
 	cd gnome-shell-extension-quake-mode
 
-	local DETDIR="$pkgdir/usr/share/gnome-shell/extensions"
-
 	install -d "$pkgdir/usr/share/gnome-shell/extensions"
-	cp -rt "$pkgdir/usr/share/gnome-shell/extensions" quake-mode@repsac-by.github.com
+	cp     -rt "$pkgdir/usr/share/gnome-shell/extensions" quake-mode@repsac-by.github.com
+
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
