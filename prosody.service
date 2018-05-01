@@ -7,6 +7,7 @@ Type=forking
 PIDFile=/run/prosody/prosody.pid
 ExecStart=/usr/bin/prosodyctl start
 ExecStop=/usr/bin/prosodyctl stop
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
