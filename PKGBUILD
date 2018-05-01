@@ -3,11 +3,12 @@
 pkgname=gnome-shell-extension-cpufreq-git
 _pkgname=cpufreq
 pkgver=v26.0.r6.gf576336
-pkgrel=0
+pkgrel=1
 pkgdesc="Gnome Shell CPU Frequency Monitor and Governor Manager."
 arch=('any')
 url="https://github.com/konkor/cpufreq"
 license=('GPL3')
+conflicts=('gnome-shell-extension-cpufreq')
 depends=('gnome-shell')
 makedepends=('git')
 source=('git+https://github.com/konkor/cpufreq.git')
