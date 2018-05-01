@@ -4,14 +4,14 @@ pkgname=epson-inkjet-printer-201112w
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Epson printer driver (Artisan 730, 837 / Stylus Photo PX730WD, PX830FWD)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix})
+source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
   cd "$srcdir"
@@ -50,4 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('d87092038c0479bef2c5d27ab6617edabdab11d30df1c420bf2bf0251c978be2')
+sha256sums=('d87092038c0479bef2c5d27ab6617edabdab11d30df1c420bf2bf0251c978be2'
+            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
