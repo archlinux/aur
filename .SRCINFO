@@ -6,9 +6,9 @@ pkgbase = electric
 	arch = any
 	license = GPL
 	makedepends = svn
-	makedepends = java-environment-openjdk
+	makedepends = java-environment-openjdk<=8
 	makedepends = apache-ant
-	depends = java-environment
+	depends = java-environment<=8
 	provides = gnu-electric
 	source = svn://svn.savannah.gnu.org/electric
 	source = https://www.gnu.org/software/electric/electric.jpg
