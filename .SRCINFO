@@ -1,7 +1,7 @@
 pkgbase = discord
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	url = https://discordapp.com/
 	install = Discord.install
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = discord
 	source = LICENSE
 	md5sums = a9046504943624ac4861983d67a1404b
 	md5sums = 26b3229c74488c64d94798e48bc49fcd
-	source_x86_64 = https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.tar.gz
-	md5sums_x86_64 = 573637dc71ac61f1b4f47e1637aa946b
+	source_x86_64 = https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.tar.gz
+	md5sums_x86_64 = 18a8e7f86d26a1472dbfff060e1671e4
 
 pkgname = discord
 
