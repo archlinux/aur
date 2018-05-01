@@ -1,6 +1,6 @@
 pkgname=electrum-ltc
 pkgver=3.1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
@@ -25,6 +25,12 @@ source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 sha256sums=(27d272f01584aeddf1a3268f6f2c18d9557ba7376d203241473f41e37ae8ac4f
             SKIP)
+
+prepare() {
+  sed -i Electrum-LTC-$pkgver/electrum-ltc.desktop \
+      -e 's/Exec=.*electrum-ltc %u.*/Exec=electrum-ltc %u/' \
+      -e 's/Exec=.*electrum-ltc --testnet %u.*/Exec=electrum-ltc --testnet %u/'
+}
 
 build() {
   cd Electrum-LTC-$pkgver
