@@ -1,16 +1,17 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=bat
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='A cat(1) clone with syntax highlighting and Git integration'
 arch=('x86_64')
 url=https://github.com/sharkdp/bat
 license=('MIT' 'APACHE')
 makedepends=('rust' 'cmake')
 depends=('curl' 'libssh2' 'oniguruma')
+conflicts=('bacula-bat')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('546c78b486d746916b348d88cb7a2230c8ad1dfb00c0865517058265a21a1a04401f9b6b47a49971ff91f81234e7fac518e46d650b40c98f0a2cac1e5c47068e')
+sha512sums=('acf19eb6062dbb4fc52c15e87864823081c929077b00a38b0f27558f310c53f9890f3f0d502a77601bd010fe66d651f42993a8a68351ab1bf222b0e8b1943e7f')
 
 build() {
   cd $pkgname-$pkgver
