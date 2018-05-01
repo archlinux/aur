@@ -6,7 +6,7 @@
 pkgname=godot2
 _pkgname=godot
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine. Legacy version."
 url="http://www.godotengine.org"
 license=('MIT')
@@ -38,12 +38,14 @@ build() {
 
   sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
+  # The c++11-narrowing warnings have been disabled as the code won't compile otherwise.
   scons platform=x11 \
         tools=yes \
         target=release_debug \
         use_llvm=yes \
         builtin_openssl=yes \
         colored=yes \
+        CCFLAGS="-Wno-c++11-narrowing" \
         pulseaudio=no bits=${_arch} -j $((`nproc`+1))
 }
 
