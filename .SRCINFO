@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-nx110-series
 	pkgdesc = Epson printer driver (Stylus NX110, NX115, SX110, SX115, TX110, TX111, TX112, TX113, TX115, TX117, TX119)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-stylus-nx110-series
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-nx110-series-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 7b8bf011bb7190fef06f1fc3c9a34926318b5ef2305b198db52952722dde7128
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-stylus-nx110-series
 
