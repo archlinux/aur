@@ -1,7 +1,8 @@
-# Maintainer: grimi <grimi at poczta dot fm>
+# Maintainer: Ward Segers <w@rdsegers.be>
+# Contributer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-icon-theme
-pkgver=20180320
+pkgver=20180501
 pkgrel=1
 pkgdesc="A Matcha icon theme based on Arc"
 arch=('any')
