@@ -2,7 +2,7 @@
 
 _gitname=conda
 pkgname=python-${_gitname}-git
-pkgver=4.4.10.r128.gb5f1309be
+pkgver=4.5.0.r39.g31130cd80
 pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
@@ -37,11 +37,14 @@ package() {
   install -Dm 655 conda/shell/bin/activate $pkgdir/usr/bin/activate
   install -Dm 655 conda/shell/bin/conda $pkgdir/usr/bin/conda
   install -Dm 655 conda/shell/bin/deactivate $pkgdir/usr/bin/deactivate
-  echo 'set _CONDA_EXE /usr/bin/conda' | cat - conda/shell/etc/fish/conf.d/conda.fish > conda.fish
+  echo 'set _CONDA_EXE /usr/bin/conda
+set _CONDA_ROOT /' | cat - conda/shell/etc/fish/conf.d/conda.fish > conda.fish
   install -Dm 644 conda.fish $pkgdir/etc/fish/conf.d/conda.fish
-  echo 'set _CONDA_EXE=/usr/bin/conda' | cat - conda/shell/etc/profile.d/conda.csh > conda.csh
+  echo 'set _CONDA_EXE=/usr/bin/conda
+set _CONDA_ROOT /' | cat - conda/shell/etc/profile.d/conda.csh > conda.csh
   install -Dm 644 conda.csh $pkgdir/etc/profile.d/conda.csh
-  echo 'export _CONDA_EXE=/usr/bin/conda' | cat - conda/shell/etc/profile.d/conda.sh > conda.sh
+  echo 'export _CONDA_EXE=/usr/bin/conda
+export _CONDA_ROOT=/' | cat - conda/shell/etc/profile.d/conda.sh > conda.sh
   install -Dm 644 conda.sh $pkgdir/etc/profile.d/conda.sh
   install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt
 }
