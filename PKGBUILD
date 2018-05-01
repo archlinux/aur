@@ -2,7 +2,7 @@
 
 _pyname=conda
 pkgname=python-conda
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=4
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
@@ -17,7 +17,7 @@ options=(!emptydirs)
 source=(
   https://github.com/$_pyname/$_pyname/archive/$pkgver.tar.gz
 )
-sha512sums=('1f6fc3fc9d322a088c0d2b7e4a0698242f0e19cd0aa51e75c6f0f9791fe26be1d4fb1954b393cb6087a6299856ada0f371ac3a062714a9baba48d93817658c8e')
+sha512sums=('4374e054c2129d7f8a3d4d4a9e7b713f88927cbd18db3c76952007b90978ef7edc82cdd680ebc80861153c64ace32258c26bdff52d891ef391c7c0d0dfb29377')
 
 prepare() {
   cd "$srcdir/${_pyname}-$pkgver"
