@@ -2,8 +2,8 @@
 
 _gitname=conda
 pkgname=python-${_gitname}-git
-pkgver=4.5.0.r39.g31130cd80
-pkgrel=2
+pkgver=4.6.0a2.r0.gc467517ca
+pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
