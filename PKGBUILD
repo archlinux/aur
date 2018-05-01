@@ -3,8 +3,8 @@
 _pkgbase=gnome-shell-extension-desktop-icons
 pkgname=$_pkgbase-reworked
 pkgver=0.2
-pkgrel=1
-_commit=4cbb25bfbbf9022a298865c9e91f7078d35477db
+pkgrel=2
+_commit=7512f35108c2c462310bf9c7f8e4a4580c1ae748
 _ext_dir=org.gnome.desktop-icons-reworked
 pkgdesc="Add icons to the desktop"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('cmake')
 conflicts=("$_pkgbase")
 options=('!strip')
 source=("$url/archive/$_commit.tar.gz")
-sha512sums=('df7156e3839ab6f142959d00333ae25e9d1d75a067b27723cdc003bba595a6cfb2c0ff8e8664e4715931a17c9cdd24c9ff3a879ade4a89df37e5b2b8b8a098b1')
+sha512sums=('593b919f8e84c28da5b303b1b91f282b5fcdc143a4547f46ef81029abc226ad0a16349b8ff603c0d71e9b6d1f8da9a838d6aa5a44caeead080440ed805ea98e4')
 
 build() {
     mkdir -p $_ext_dir-$_commit/build
