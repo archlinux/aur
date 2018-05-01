@@ -1,7 +1,7 @@
 pkgbase = electric
 	pkgdesc = a sophisticated electrical CAD system for the design of integrated circuits
 	pkgver = 9.08a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/electric/
 	arch = any
 	license = GPL

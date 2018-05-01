@@ -1,7 +1,7 @@
 # Maintainer: Daniel Plank <tyrolyean@gmx.at>
 pkgname=electric
 pkgver=9.08a
-pkgrel=1
+pkgrel=2
 pkgdesc="a sophisticated electrical CAD system for the design of \
         integrated circuits"
 arch=(any)
@@ -28,10 +28,12 @@ build() {
 
 package() {
         
+        echo "Please make sure you are building this package with jdk <= 8 set"
+
         mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname" 
 
         mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname.jar"
-        chmod +x "$pkgdir/usr/share/java/$pkgname.jar"
+        chmod +x "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 
         cp "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
 
