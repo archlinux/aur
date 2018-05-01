@@ -1,0 +1,13 @@
+diff --git a/common/autoconf/boot-jdk.m4 b/common/autoconf/boot-jdk.m4
+index ace6f7d..c13cde7 100644
+--- a/common/autoconf/boot-jdk.m4
++++ b/common/autoconf/boot-jdk.m4
+@@ -51,7 +51,7 @@ AC_DEFUN([BOOTJDK_DO_CHECK],
+             BOOT_JDK_FOUND=no
+           else
+             # Oh, this is looking good! We probably have found a proper JDK. Is it the correct version?
+-            BOOT_JDK_VERSION=`"$BOOT_JDK/bin/java" -version 2>&1 | head -n 1`
++            BOOT_JDK_VERSION=`"$BOOT_JDK/bin/java" -version 2>&1 | grep -F version`
+ 
+             # Extra M4 quote needed to protect [] in grep expression.
+             [FOUND_VERSION_78=`echo $BOOT_JDK_VERSION | grep  '\"1\.[78]\.'`]

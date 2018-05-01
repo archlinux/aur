@@ -18,7 +18,7 @@ _jdk_update=172
 _jdk_build=11
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url='http://openjdk.java.net/'
 license=('custom')
@@ -34,7 +34,8 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
         add-fontconfig.patch
-        enable-infinality.patch)
+        enable-infinality.patch
+        fix-jdk-version-detection.patch)
 
 sha256sums=('f1ca31605360594cb57b21aa5888f253e9775125957f96afb1a9dbb71676af22'
             'a89b558a4bb1d0368486a58d248a16b1760f8536fdc94ff70bf09e5c1bfcea24'
@@ -45,7 +46,8 @@ sha256sums=('f1ca31605360594cb57b21aa5888f253e9775125957f96afb1a9dbb71676af22'
             'ef0f2042143cf6ddc508d81978fdb7cd900d38e5b166f40112d1967ceb09f036'
             '2a3bff4dfca022cb603cd46a6766fd1b7212adb473af5809b48504576bce6029'
             '3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55'
-            'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
+            'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac'
+            'b8a81344757e816c9ae0a74a523941c2a259dfa8c1eba5698f73f88a623a70d2')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -73,6 +75,11 @@ prepare() {
   cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
   patch -p1 < "${srcdir}/add-fontconfig.patch"
   patch -p1 < "${srcdir}/enable-infinality.patch"
+
+  # Fix _JAVA_OPTIONS in environment breaking JDK version detection during configure.
+  cd "${srcdir}/jdk8u-${_repo_ver}"
+  patch -p1 < "${srcdir}/fix-jdk-version-detection.patch"
+  sh common/autoconf/autogen.sh
 }
 
 build() {

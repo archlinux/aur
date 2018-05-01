@@ -1,6 +1,6 @@
 pkgbase = java8-openjdk
 	pkgver = 8.u172
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openjdk.java.net/
 	arch = x86_64
 	arch = i686
@@ -25,6 +25,7 @@ pkgbase = java8-openjdk
 	source = nashorn-jdk8u172-b11.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u172-b11.tar.gz
 	source = add-fontconfig.patch
 	source = enable-infinality.patch
+	source = fix-jdk-version-detection.patch
 	sha256sums = f1ca31605360594cb57b21aa5888f253e9775125957f96afb1a9dbb71676af22
 	sha256sums = a89b558a4bb1d0368486a58d248a16b1760f8536fdc94ff70bf09e5c1bfcea24
 	sha256sums = f7a2652021b50d43c076df8f94cec13b82e2704c0d1535289074cb5e0eec31a0
@@ -35,6 +36,7 @@ pkgbase = java8-openjdk
 	sha256sums = 2a3bff4dfca022cb603cd46a6766fd1b7212adb473af5809b48504576bce6029
 	sha256sums = 3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55
 	sha256sums = efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac
+	sha256sums = b8a81344757e816c9ae0a74a523941c2a259dfa8c1eba5698f73f88a623a70d2
 
 pkgname = jre8-openjdk-headless-infinality
 	pkgdesc = OpenJDK Java 8 headless runtime environment with infinality patch applied
@@ -52,7 +54,7 @@ pkgname = jre8-openjdk-headless-infinality
 pkgname = jre8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 full runtime environment with infinality patch applied
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-headless-infinality=8.u172-2
+	depends = jre8-openjdk-headless-infinality=8.u172-3
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -68,7 +70,7 @@ pkgname = jdk8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 development kit with infinality patch applied
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-infinality=8.u172-2
+	depends = jre8-openjdk-infinality=8.u172-3
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-openjdk
