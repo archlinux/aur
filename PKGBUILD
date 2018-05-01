@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-tika' 'python2-tika')
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Apache Tika Python library"
 arch=('any')
