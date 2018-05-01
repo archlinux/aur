@@ -15,10 +15,10 @@ yellow="${bold}$(tput setaf 3)"
 _as_service() {
     cat << EOF
 
-You might want to run ckb-daemon as a systemd service:
+You might want to run ckb-next-daemon as a systemd service:
 
-    systemctl enable ckb-daemon.service
-    systemctl start ckb-daemon.service
+    systemctl enable ckb-next-daemon.service
+    systemctl start ckb-next-daemon.service
 
 EOF
 }
@@ -27,6 +27,7 @@ _terminate_gui_daemon() {
     msg_blue "Terminating ckb-next GUI"
 
     killall -TERM ckb 2>/dev/null
+    killall -TERM ckb-next 2>/dev/null
 
 
     msg_blue "Terminating ckb-next daemon"
@@ -36,9 +37,19 @@ _terminate_gui_daemon() {
         systemctl stop ckb-daemon.service
     fi
 
+    running="$(systemctl is-active ckb-next-daemon.service)"
+    if [[ "$running" = "active" ]]; then
+        systemctl stop ckb-next-daemon.service
+    fi
+
     running="$(systemctl is-enabled ckb-daemon.service)"
     if [[ "$running" = "enabled" ]]; then
         systemctl disable ckb-daemon.service
+    fi
+
+    running="$(systemctl is-enabled ckb-next-daemon.service)"
+    if [[ "$running" = "enabled" ]]; then
+        systemctl disable ckb-next-daemon.service
     fi
 }
 
