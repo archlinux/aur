@@ -3,7 +3,7 @@
 pkgname=xboxdrv-sl6566bk
 _pkgname=xboxdrv
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Userspace gamepad driver for Linux with Speedlink SL-6566-BK patch. Based on the "xboxdrv" package.'
 url='http://pingus.seul.org/~grumbel/xboxdrv'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/xboxdrv/${_pkgname}/arc
         scons-py3.patch
         sl6566bk.patch)
 sha512sums=('3f27856da211a14e27a84fa5919da7965262adc36da16c75eed9bae891098183b5751a3e707573b4ab64e69096ea74d455e8f64827c88b38b65af94cc13b34ad'
-            'a2eca367f6767e220d58cbb5b7555376d8b73b52ccbbfde937ef204ad67859e25d2331a80d5e57c7e7e3fc6c8cccfa862b64ddafd26c2aef818a979209910e7a'
+            '592b05b78d0cbd2b7dd855603b329b599a2f0b350df3ff4557191a13348a0011d64445943832823f79388b8cdb2ec7a00e5fa37ac0505e1d7e6977ce7ff5edf6'
             'c346eb1c81547c7b1917b6f847be3155eaa9968d0dc7818b52fed23a123f8055dd77209d00933022fb91af36f495530e9d5e29071a9c5059c14d7be33eec42e5'
             '58170b3f96f02e5ba0af5f6641482fb1c612ca70650e475d68b55c05a62ec0831033190b90e591d593fd6b25c2a155e6c4975f37eef1534245947156a5e3285f'
             'b3a3bbb51fa1c4ad4dd898136c3bf7c0f13193bdd07bbcb5c8243edb747c68223fe8c5bd2fd578f6c2b18844827524abb0533ce98b6e0e60fe936597cdba811d'
