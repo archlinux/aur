@@ -4,14 +4,14 @@ pkgname=epson-inkjet-printer-stylus-photo-r3000
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Epson printer driver (Stylus Photo R3000)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix})
+source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
   cd "$srcdir"
@@ -50,4 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('2555be5af8c7f31bd666b1c632ea3604b2215d732e719dea333961955aa3a054')
+sha256sums=('2555be5af8c7f31bd666b1c632ea3604b2215d732e719dea333961955aa3a054'
+            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
