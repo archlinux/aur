@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-px-5v
 	pkgdesc = Epson printer driver (PX-5V)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-px-5v
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-px-5v-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = bb928961f7b356a8ae9fae6776eb20040293cbc01bb59c8dadc4ea4fc1b1b645
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-px-5v
 
