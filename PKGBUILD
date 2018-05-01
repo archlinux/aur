@@ -3,13 +3,13 @@
 
 pkgname=nvidia-340xx-ck
 pkgver=340.106
-_extramodules=extramodules-4.15-ck
-pkgrel=10
+_extramodules=extramodules-4.16-ck
+pkgrel=11
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.15' 'linux-ck<4.16' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.15' 'linux-ck-headers<4.16' 'nvidia-340xx-libgl')
+depends=('linux-ck>=4.16' 'linux-ck<4.17' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.16' 'linux-ck-headers<4.17' 'nvidia-340xx-libgl')
 conflicts=('nvidia-ck')
 #groups=('ck-generic')
 #replaces=()
