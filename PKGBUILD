@@ -2,7 +2,7 @@
 
 _srcpkg="google-cloud-sdk"
 pkgname="google-cloud-sdk-minimal"
-pkgver=199.0.0
+pkgver=200.0.0
 pkgrel=1
 pkgdesc="Minimal SDK for the Google Cloud Platform (gsutil, gcloud w/beta commands, man pages)"
 url="https://cloud.google.com/sdk/"
@@ -17,7 +17,7 @@ options=('!strip' 'staticlibs')
 source=("https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${_srcpkg}_${pkgver}.orig.tar.gz"
         "gcp-sdk-profile.sh")
 sha256sums=(
-        '5f7375663a861ab3eb3ba0b83b4a704f78d772537bc4c134000c4805e492b623'
+        'b4c7a05c92386fc778bef20ef2d16a3732ff9ee301716eee46c3d83d77439588'
         '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
