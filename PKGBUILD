@@ -30,7 +30,7 @@ package() {
         
         mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname" 
 
-        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/bin/$pkgname.jar"
+        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname.jar"
         chmod +x "$pkgdir/usr/share/java/$pkgname.jar"
 
         cp "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
