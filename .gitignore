@@ -1,0 +1,6 @@
+*tar.gz
+*pkg.tar.xz
+pkg
+src
+*.patch
+znc-push-git
