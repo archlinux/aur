@@ -1,41 +1,56 @@
-# Maintainer: ajs124
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: ajs124
 
-pkgname=evdi-git
-pkgver=1.5.0.r0.ge7a08d0
+set -u
+pkgname='evdi-git'
+pkgver=1.5.0_r2.r0.gdc3c9d6
+_pkgver="${pkgver%%.r*}"
 pkgrel=1
-pkgdesc="A Linux® kernel module that enables management of multiple screens. Git version."
+pkgdesc="A Linux® kernel module that enables management of multiple screens."
+pkgdesc+=' Git version.'
 arch=('i686' 'x86_64')
-url="https://github.com/DisplayLink/evdi"
+url='https://github.com/DisplayLink/evdi'
 license=('GPL')
-depends=(dkms)
-makedepends=(git libdrm)
-install=$pkgname.install
-changelog=$pkgname.Changelog
-source=(git+https://github.com/DisplayLink/evdi/)
-md5sums=(SKIP)
-conflicts=(evdi)
-provides=(evdi=$pkgver)
+depends=('dkms')
+makedepends=('git' 'libdrm')
+provides=("evdi=${_pkgver}")
+conflicts=('evdi')
+install=${pkgname}.install
+changelog="${pkgname}.Changelog"
+_srcdir="${pkgname%-git}"
+source=("git+https://github.com/DisplayLink/evdi/")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname/-git/}
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  set -u
+  cd "${_srcdir}"
+  # extra -r interfers with version management
+  local _t1="$(git describe --tags)" # v1.5.0-r2
+  local _t1a="${_t1//-/_}"
+  local _t2="$(git describe --long --tags)" # v1.5.0-r2-0-gdc3c9d6
+  local _t2a="${_t2//${_t1}/${_t1a}}"
+  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' <<< "${_t2a}"
+  set +u
 }
 
 build() {
-	# We only need to build the library in this step, dmks will build the module
-	cd ${pkgname/-git/}/library
-	make
+  set -u
+  # We only need to build the library in this step, dmks will build the module
+  #cd "${_srcdir}/library"
+  # DKMS builds are hard to debug. We build it here and throw it away.
+  cd "${_srcdir}"
+  make
+  set +u
 }
 
 package() {
-	# Predfine some target folders
-	SRCDIR="$pkgdir/usr/src/${pkgname/-git/}-$pkgver"	# This one is needed for dkms
-	LIBNAME=lib${pkgname/-git/}
+  set -u
+  cd "${_srcdir}"
+  install -Dpm755 "library/lib${pkgname%-git}.so" -t "${pkgdir}/usr/lib/"
 
-	cd ${pkgname/-git/}
-
-	install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME.so
-
-	install -d $SRCDIR
-	install -D -m 755 module/* $SRCDIR
+  local _DKMS="${pkgdir}/usr/src/${pkgname%-git}-${_pkgver}"
+  install -Dpm644 module/* -t "${_DKMS}/"
+  make -j1 -C "${_DKMS}" clean
+  set +u
 }
+set +u

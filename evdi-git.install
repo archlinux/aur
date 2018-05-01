@@ -2,19 +2,20 @@
 # new version (without -$pkgrel): ${2%%-*}
 
 post_install() {
-    echo 'DKMS install...'
-    dkms install evdi/${1%%-*}
+  cat << EOF
+Steps:
+
+0. Install this package
+
+1. Install display driver package
+
+2.  Reboot or
+
+2a. sudo modprobe evdi
+2b. dmesg -w # watch for evdi messages
+2c. Replug USB display device
+
+3. Enable screen
+EOF
 }
 
-pre_upgrade() {
-    pre_remove ${2%%-*}
-}
-
-post_upgrade() {
-    post_install ${1%%-*}
-}
-
-pre_remove() {
-    echo 'DKMS remove...'
-    dkms remove evdi/${1%%-*} --all
-}
