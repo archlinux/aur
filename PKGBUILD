@@ -3,7 +3,7 @@
 _pyname=conda
 pkgname=python-conda
 pkgver=4.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
@@ -29,8 +29,10 @@ package() {
   cd "$srcdir/${_pyname}-$pkgver"
   echo $pkgver > conda/.version
   python utils/setup-testing.py install --root="$pkgdir/" --optimize=1
+  sed "s/conda.cli/conda_env.cli.main/" conda/shell/bin/conda > conda/shell/bin/conda-env
   install -Dm 655 conda/shell/bin/activate $pkgdir/usr/bin/activate
   install -Dm 655 conda/shell/bin/conda $pkgdir/usr/bin/conda
+  install -Dm 655 conda/shell/bin/conda-env $pkgdir/usr/bin/conda-env
   install -Dm 655 conda/shell/bin/deactivate $pkgdir/usr/bin/deactivate
   echo 'set _CONDA_EXE /usr/bin/conda
 set _CONDA_ROOT /' | cat - conda/shell/etc/fish/conf.d/conda.fish > conda.fish
