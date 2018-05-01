@@ -20,7 +20,7 @@ sha512sums=('SKIP'
             '9fc25916ffa6536710016a313dfeab4a05de3d1a0818edb46a2e9c3c1eb850f82884383652e9ca1860c50ba6d4bab9cd818477606afffe522644f475ef22ba4b')
 
 build() {
-        
+        echo "Please make sure you are building this package with jdk <= 8 set"
         cd "$pkgname/trunk/$pkgname/packaging/"
 
         ant
@@ -28,12 +28,11 @@ build() {
 
 package() {
         
-        echo "Please make sure you are building this package with jdk <= 8 set"
+
 
         mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname" 
 
-        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname.jar"
-        chmod +x "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 
         cp "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
 
