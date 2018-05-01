@@ -1,16 +1,19 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
-	pkgver = 0.1.2
+	pkgver = 0.1.1
 	pkgrel = 1
-	epoch = 2
-	url = http://www.open-3d.org
+	epoch = 3
+	url = http://www.open3d.org
 	changelog = open3d.changelog
 	arch = x86_64
 	license = MIT
+	checkdepends = gtest
 	makedepends = cmake
+	makedepends = findutils
 	makedepends = gawk
 	makedepends = git
 	makedepends = make
+	makedepends = pacman
 	makedepends = sed
 	depends = eigen
 	depends = glew
@@ -22,7 +25,7 @@ pkgbase = open3d
 	depends = xorg-server-devel
 	optdepends = openmp
 	optdepends = python
-	source = open3d::git+http://code.open-3d.org
+	source = open3d::git+https://github.com/IntelVCL/Open3D.git
 	md5sums = SKIP
 
 pkgname = open3d
@@ -48,4 +51,6 @@ pkgname = python-open3d
 	depends = python
 	depends = xorg-server-devel
 	optdepends = openmp
+
+pkgname = python-py3d
 
