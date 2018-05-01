@@ -1,6 +1,6 @@
 # Maintainer: ibrahim Tunali<ibrahimtunali@gmail.com>
 pkgname=git-secret
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A bash-tool to store your private data inside a git repository"
 arch=('any')
@@ -27,7 +27,7 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
+    cd "$_gitname" && git pull origin && git checkout "v$pkgver"
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname" -b "v$pkgver"
