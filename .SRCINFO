@@ -11,6 +11,7 @@ pkgbase = me-edit
 	depends = libx11
 	depends = fontconfig
 	depends = harfbuzz
+	depends = libmng
 	provides = me-edit
 	conflicts = me-edit
 	options = !strip
