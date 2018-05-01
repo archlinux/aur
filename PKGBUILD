@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=2.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('x86_64')
 url='http://www.sfml-dev.org/'
@@ -31,7 +31,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 "$pkgdir/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$pkgdir/usr/share/cmake-3.10/Modules/FindSFML.cmake"
+  install -Dm644 "$pkgdir/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$pkgdir/usr/lib/cmake/SFML/FindSFML.cmake"
 
   install -Dm644 ../license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
