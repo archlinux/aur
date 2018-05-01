@@ -138,7 +138,7 @@ function package_python-py3d() {
         openmp
     )
     privides=(
-        python-py3d
+        python-open3d
     )
     conflicts=(
         python-py3d-git
