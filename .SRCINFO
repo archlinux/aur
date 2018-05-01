@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201215w
 	pkgdesc = Epson printer driver (M100, M105, M200, M205)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201215w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201215w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = 605ecf133e110cb3f731830046e8810f21ef5b2c82a49dbab01a7b9f133f2956
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201215w
 
