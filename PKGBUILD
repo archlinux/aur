@@ -40,12 +40,12 @@ package() {
 
   cd "${srcdir}"
 
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/icon.svg "${pkgdir}"/usr/share/pixmaps/godot.svg
+  install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/misc/dist/linux/godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
+  install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/icon.svg "${pkgdir}"/usr/share/pixmaps/godot.svg
 
-  cd "${srcdir}"/${pkgname}-${pkgver}-stable
+  cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
 
   install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
-  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/LICENSE.txt "${pkgdir}"/usr/share/licenses/godot/LICENSE
-  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/godot.6 "${pkgdir}"/usr/share/man/man6/godot.6
+  install -D -m644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/LICENSE.txt "${pkgdir}"/usr/share/licenses/godot/LICENSE
+  install -D -m644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/misc/dist/linux/godot.6 "${pkgdir}"/usr/share/man/man6/godot.6
 }
