@@ -3,7 +3,7 @@
 
 pkgname=lix-git
 pkgver=r1115.fce75cef
-pkgrel=1
+pkgrel=2
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/SimonN/lix-unstable.git"
@@ -25,7 +25,7 @@ pkgver()
 }
 
 _pkgname=${pkgname%-git}
-# template start; name=lix; version=0.5;
+# template start; name=lix; version=0.6;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -46,6 +46,8 @@ build()
 	dub add-local derelict-enet-*/derelict-enet
 	dub add-local derelict-util-*/derelict-util
 	dub add-local enumap-*/enumap
+	dub add-local optional-*/optional
+	dub add-local bolts-*/bolts
 	
 	# force FHS compatibility with '-b releaseXDG'
 	dub build -f -b releaseXDG --cache=local || _r=$?
@@ -55,6 +57,8 @@ build()
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
 	dub remove-local enumap-*/enumap
+	dub remove-local optional-*/optional
+	dub remove-local bolts-*/bolts
 	dub clean-caches
 	
 	if [[ "$_r" != 0 ]] ; then
@@ -76,6 +80,8 @@ check()
 	dub add-local derelict-enet-*/derelict-enet
 	dub add-local derelict-util-*/derelict-util
 	dub add-local enumap-*/enumap
+	dub add-local optional-*/optional
+	dub add-local bolts-*/bolts
 	
 	dub test --cache=local || _r=$?
 	
@@ -84,6 +90,8 @@ check()
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
 	dub remove-local enumap-*/enumap
+	dub remove-local optional-*/optional
+	dub remove-local bolts-*/bolts
 	dub clean-caches
 	
 	if [[ "$_r" != 0 ]] ; then
