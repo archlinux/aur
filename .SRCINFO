@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201209w
 	pkgdesc = Epson printer driver (XP-750, XP-850)
 	pkgver = 1.0.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201209w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201209w-1.0.1-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = ec0471ed0733269f9e7a831542c7a59ce03c654d20ad7f59a7d56401573bbd9d
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201209w
 
