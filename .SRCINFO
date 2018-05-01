@@ -1,6 +1,6 @@
 pkgbase = python-securesystemslib
 	pkgdesc = Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU
-	pkgver = 0.10.11
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/secure-systems-lab/securesystemslib
 	arch = any
@@ -10,14 +10,10 @@ pkgbase = python-securesystemslib
 	depends = python-pynacl
 	depends = python-colorama
 	depends = python-six
-	source = securesystemslib-0.10.11.tar.gz::https://github.com/secure-systems-lab/securesystemslib/archive/v0.10.11.tar.gz
-	source = https://github.com/secure-systems-lab/securesystemslib/releases/download/v0.10.11/securesystemslib-0.10.11.tar.gz.asc
+	source = python-securesystemslib-0.11.1.tar.gz::https://github.com/secure-systems-lab/securesystemslib/archive/v0.11.1.tar.gz
+	source = python-securesystemslib-0.11.1.tar.gz.asc::https://github.com/secure-systems-lab/securesystemslib/releases/download/v0.11.1/securesystemslib-0.11.1.tar.gz.asc
 	validpgpkeys = 3E87BB339378BC7B3DD0E5B25DEE9B97B0E2289A
-	md5sums = c0ac2b61b8bd5682e3e0a67a0af41326
-	md5sums = SKIP
-	sha256sums = bf515e819ec5411a23038ee0662150c0dbee87286bb4b0c10632d37f3fc556df
-	sha256sums = SKIP
-	sha512sums = 55a17eed3639934e36864b7b9e29fc4cd204bbd9064a0d6bb667df20eaf4d34ddc8778b9725062c593de193b97989798a161514b156e71bd03cc4fdb964951b3
+	sha512sums = d7de7c0ad3af7b02d072295b2a2b5554b55cdd605cb2adb70d416ad3726855352b67713279ce42221bd5320581fb9b37bb338456333807d84a83312564c42c2a
 	sha512sums = SKIP
 
 pkgname = python-securesystemslib

@@ -1,7 +1,7 @@
 # Maintainer: Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=('python-securesystemslib')
-pkgver=0.10.11
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU"
 arch=('any')
@@ -10,13 +10,10 @@ url="https://github.com/secure-systems-lab/securesystemslib"
 depends=('python-cryptography' 'python-pynacl' 'python-colorama' 'python-six')
 optdepends=()
 makedepends=('python-setuptools')
-source=("securesystemslib-${pkgver}.tar.gz::https://github.com/secure-systems-lab/securesystemslib/archive/v${pkgver}.tar.gz"
-    "https://github.com/secure-systems-lab/securesystemslib/releases/download/v${pkgver}/securesystemslib-${pkgver}.tar.gz.asc")
-md5sums=('c0ac2b61b8bd5682e3e0a67a0af41326'
-         'SKIP')
-sha256sums=('bf515e819ec5411a23038ee0662150c0dbee87286bb4b0c10632d37f3fc556df'
-            'SKIP')
-sha512sums=('55a17eed3639934e36864b7b9e29fc4cd204bbd9064a0d6bb667df20eaf4d34ddc8778b9725062c593de193b97989798a161514b156e71bd03cc4fdb964951b3'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/secure-systems-lab/securesystemslib/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/secure-systems-lab/securesystemslib/releases/download/v${pkgver}/securesystemslib-${pkgver}.tar.gz.asc")
+
+sha512sums=('d7de7c0ad3af7b02d072295b2a2b5554b55cdd605cb2adb70d416ad3726855352b67713279ce42221bd5320581fb9b37bb338456333807d84a83312564c42c2a'
             'SKIP')
 validpgpkeys=("3E87BB339378BC7B3DD0E5B25DEE9B97B0E2289A"
     # Vladimir Diaz (upstream maintainer)
@@ -32,4 +29,5 @@ package_python-securesystemslib() {
 
     cd "securesystemslib-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
+    install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
