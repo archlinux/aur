@@ -9,7 +9,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.5.3
+pkgver=4.6.3
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -43,12 +43,10 @@ makedepends=('openldap'
              'python2-jinja')
 options=(emptydirs)
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
-        0001-install-do-not-assume-etc-krb5.conf.d-exists.patch
-        0002-platform-add-Arch-Linux-platform.patch
+        0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
-sha256sums=('94c18793cd4f0b008879afabb69ac52f2d9abad71d8ff3c89260ab5af116b81b'
-            'ffdd4de12728fca3732e0782352a046d6317508c68eca0cc048c80cdb9cc4b3e'
+sha256sums=('9ee590baf2fd91c082de71e39fb178443c96c70f9e2c0037faa361e16d067c75'
             'f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
@@ -58,8 +56,7 @@ prepare() {
 
     rm -rf ipaplatform/arch
 
-    patch -p1 -i"$srcdir"/0001-install-do-not-assume-etc-krb5.conf.d-exists.patch
-    patch -p1 -i"$srcdir"/0002-platform-add-Arch-Linux-platform.patch
+    patch -p1 -i"$srcdir"/0001-platform-add-Arch-Linux-platform.patch
 
     # Workaround: We want to build Python things twice. To be sure we do not mess
     # up something, do two separate builds in separate directories.
@@ -137,13 +134,13 @@ build() {
     # remove files which are useful only for make uninstall
     find ../install -wholename '*/site-packages/*/install_files.txt' -exec rm {} \;
 
-    /bin/touch ../install/etc/ipa/default.conf
-    /bin/touch ../install/etc/ipa/ca.crt
-
-    mkdir -p ../install/etc/ipa/
+    mkdir -p ../install/etc/ipa
     mkdir -p ../install/etc/ipa/nssdb
     mkdir -p ../install/var/lib/ipa-client/pki
     mkdir -p ../install/var/lib/ipa-client/sysrestore
+
+    touch ../install/etc/ipa/default.conf
+    touch ../install/etc/ipa/ca.crt
 }
 
 package_python-ipalib() {
@@ -165,7 +162,7 @@ package_python-ipalib() {
              'python-dbus'
              'python-setuptools'
              'python-six'
-             'python-pyldap>=2.4.15'
+             'python-ldap'
              'python-dnspython>=1.15'
              'python-netifaces>=0.10.4'
              'python-pyusb')
@@ -235,7 +232,7 @@ package_python2-ipalib() {
              'python2-dbus'
              'python2-setuptools'
              'python2-six'
-             'python2-ldap>=2.4.15'
+             'python2-ldap'
              'python2-dnspython>=1.15'
              'python2-enum34'
              'python2-netifaces>=0.10.4'
@@ -336,6 +333,7 @@ package_freeipa-client() {
              "freeipa-common=$pkgver-$pkgrel"
              "python2-ipaclient=$pkgver-$pkgrel"
              'python2-ldap'
+             'python-augeas'
              'cyrus-sasl-gssapi'
              'ntp'
              'krb5'
