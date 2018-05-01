@@ -1,25 +1,28 @@
-# Maintainer: Mark E.A. <evalapply ``dot'' aur ``at'' airmail ``dot'' cc>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Mark E.A. <evalapply ``dot'' aur ``at'' airmail ``dot'' cc>
 
 pkgname=python-marisa-trie
 _pyname=marisa-trie
-pkgver=0.7.2
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Static memory-efficient & fast Trie-like structures for Python (based on marisa-trie C++ library)'
-arch=('i686' 'x86_64')
-url='https://github.com/kmike/marisa-trie'
+arch=('any')
+url='https://github.com/pytries/marisa-trie'
 license=('MIT')
 depends=('python')
-makedepends=()
-optdepends=()
-source=("https://github.com/kmike/${_pyname}/archive/${pkgver}.tar.gz")
-sha256sums=('5a5ca6a032fe924097f87439130f013dfb2682e597f4d5414bb87cfe49bc715e')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/m/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+sha256sums=('c73bc25d868e8c4ea7aa7f1e19892db07bba2463351269b05340ccfa06eb2baf')
 
 build() {
-	cd "$_pyname-$pkgver"
-	python setup.py build
+  cd ${_pyname}-${pkgver}
+
+  python setup.py build
 }
 
 package() {
-	cd "$_pyname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+  cd ${_pyname}-${pkgver}
+
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
