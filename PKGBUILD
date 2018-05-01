@@ -2,6 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 # Maintainer: Tilman Vatteroth <tilman.vatteroth@uni-dortmund.de>
+# Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
 # Contributor: Paul-Sebastian Manole <brokenthorn@gmail.com>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
