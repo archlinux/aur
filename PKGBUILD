@@ -5,12 +5,12 @@
 set -u
 pkgname='liquibase'
 pkgver='3.6.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
 url="http://www.liquibase.org/"
 license=('Apache')
-depends=('java-environment')
+depends=('java-environment' 'slf4j')
 _giturl="https://github.com/liquibase/${pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/releases/download/liquibase-parent-[^/]\+/liquibase-\([0-9\.]\+\)-bin.tar.gz" 'l')
 options=('!strip')
@@ -28,13 +28,13 @@ package() {
 
   # This binary link removes the need for the profile files that require a logout to make work
   install -d "${pkgdir}/usr/bin"
-  ln -sf '/opt/liquibase/liquibase' "${pkgdir}/usr/bin/liquibase"
+  ln -s '/opt/liquibase/liquibase' -t "${pkgdir}/usr/bin/"
 
   # create folders
   install -d "${pkgdir}/opt/liquibase"
 
   # move liquibase tar content to /opt/liquibase
-  find "${srcdir}/." -maxdepth 1 -not -type l -not -name '*.' -exec mv '{}' "${pkgdir}/opt/liquibase/" ';'
+  find "${srcdir}/." -maxdepth 1 -not -type 'l' -not -name '*.' -exec mv '{}' "${pkgdir}/opt/liquibase/" ';'
   #cp -r ${srcdir}/* ${pkgdir}/opt/liquibase
 
   # make liquibase executable
@@ -43,8 +43,12 @@ package() {
   # remove files for other platforms
   rm -f "${pkgdir}/opt/liquibase"/{liquibase.bat,liquibase.spec}
 
+  # Supply API
+  ln -s '/usr/share/java/slf4j/slf4j-api.jar' -t "${pkgdir}/opt/liquibase/lib/"
+
   install -d "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  ln -sf '/opt/liquibase/LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.txt"
+  ln -s '/opt/liquibase/LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgbase}/"
+
   set +u
 }
 set +u
