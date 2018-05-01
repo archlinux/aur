@@ -8,15 +8,16 @@
 
 pkgname=stumpwm
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
 license=('GPL2')
 provides=('stumpwm')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v1.0.0.tar.gz")
-md5sums=('40b3def66afc2aacff818936e06ce74c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v1.0.0.tar.gz" stumpwm.desktop)
+md5sums=('40b3def66afc2aacff818936e06ce74c'
+         'b5721de9b1cbdb4548d11570a512c5d4')
 
 makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
 optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
@@ -45,4 +46,5 @@ package() {
 
   install -Dm 644 sample-stumpwmrc.lisp \
 	  ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
+  install -Dm644 "$srcdir"/stumpwm.desktop "$pkgdir"/usr/share/xsessions/stumpwm.desktop
 }
