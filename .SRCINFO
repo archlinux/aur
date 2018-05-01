@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-workforce-635-nx625-series
 	pkgdesc = Epson printer driver (ME Office 82WD, 85ND, 900WD, 960FWD / Stylus NX620, SX525WD, SX620FW, TX560WD / Stylus Office B42WD, BX525WD, BX625FWD, TX620FWD / WorkForce T42WD, 60, 620, 630)
 	pkgver = 1.0.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-workforce-635-nx625-series
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-workforce-635-nx625-series-1.0.1-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = c2fdb47e0a1bf0f0a4ed3ad689fe96335d853572c208795e367be7e40114cba6
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-workforce-635-nx625-series
 

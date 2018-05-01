@@ -4,14 +4,14 @@ pkgname=epson-inkjet-printer-workforce-635-nx625-series
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Epson printer driver (ME Office 82WD, 85ND, 900WD, 960FWD / Stylus NX620, SX525WD, SX620FW, TX560WD / Stylus Office B42WD, BX525WD, BX625FWD, TX620FWD / WorkForce T42WD, 60, 620, 630)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix})
+source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
   cd "$srcdir"
@@ -50,4 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('c2fdb47e0a1bf0f0a4ed3ad689fe96335d853572c208795e367be7e40114cba6')
+sha256sums=('c2fdb47e0a1bf0f0a4ed3ad689fe96335d853572c208795e367be7e40114cba6'
+            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
