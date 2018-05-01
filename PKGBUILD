@@ -2,10 +2,10 @@
 
 pkgname=python-uinput
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonic API to Linux uinput kernel module"
 arch=("any")
-url="https://github.com/tuomaanen/python-uinput"
+url="https://github.com/tuomasjjrasanen/python-uinput"
 license=("GPL")
 depends=("python")
 makedepends=("python-setuptools")
