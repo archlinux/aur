@@ -1,5 +1,5 @@
 post_upgrade() {
-    echo ">>> You may need to delete discord's cache directory ~/.cache/discord"
+    echo ">>> You may need to delete discord's config directory ~/.config/discord"
     echo ">>> If you are using betterdiscord you may also need to reinstall that"
     echo ">>> Try this if discord is stuck on the updating screen or if nothing displays but a gray box"
     echo ">>> If you believe there is a problem with this AUR package please report it to the AUR page"
