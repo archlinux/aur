@@ -7,9 +7,9 @@
 
 pkgname=pam-selinux
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 url="http://linux-pam.org"
 depends=('glibc' 'cracklib' 'libtirpc' 'pambase-selinux' 'libselinux')
@@ -19,39 +19,15 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
-source=(http://linux-pam.org/library/Linux-PAM-$pkgver.tar.bz2
-        https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
-        pam_unix2-glibc216.patch
-        pam_unix2-rm_selinux_check_access.patch)
-md5sums=('da4b2289b7cfb19583d54e9eaaef1c3a'
-         'da6a46e5f8cd3eaa7cbc4fc3a7e2b555'
-         'dac109f68e04a4df37575fda6001ea17'
-         '6a0a6bb6f6f249ef14f6b21ab9880916')
+source=(http://linux-pam.org/library/Linux-PAM-$pkgver.tar.bz2)
+md5sums=('da4b2289b7cfb19583d54e9eaaef1c3a')
 
 options=('!emptydirs')
-
-prepare () {
-  cd $srcdir/Linux-PAM-$pkgver
-
-  # fix pam_unix2 building
-  cd $srcdir/pam_unix2-2.9.1
-  patch -Np1 -i "${srcdir}/pam_unix2-glibc216.patch"
-  patch -Np1 -i "${srcdir}/pam_unix2-rm_selinux_check_access.patch"
-}
 
 build() {
   cd $srcdir/Linux-PAM-$pkgver
   ./configure --libdir=/usr/lib --sbindir=/usr/bin --disable-db \
               --enable-selinux
-  make
-
-  cd $srcdir/pam_unix2-2.9.1
-  # modify flags to build against the pam compiled here, not a system lib.
-  ./configure \
-      CFLAGS="$CFLAGS -I$srcdir/Linux-PAM-$pkgver/libpam/include/" \
-      LDFLAGS="$LDFLAGS -L$srcdir/Linux-PAM-$pkgver/libpam/.libs/" \
-      --libdir=/usr/lib \
-      --sbindir=/usr/bin
   make
 }
 
@@ -59,20 +35,9 @@ package() {
   cd $srcdir/Linux-PAM-$pkgver
   make DESTDIR=$pkgdir SCONFIGDIR=/etc/security install
 
-  # build pam_unix2 module
-  # source ftp://ftp.suse.com/pub/people/kukuk/pam/pam_unix2
-  cd $srcdir/pam_unix2-2.9.1
-  make DESTDIR=$pkgdir install
-
-  # fix some missing symlinks from old pam for compatibility
-  cd $pkgdir/usr/lib/security
-  ln -s pam_unix.so pam_unix_acct.so
-  ln -s pam_unix.so pam_unix_auth.so
-  ln -s pam_unix.so pam_unix_passwd.so
-  ln -s pam_unix.so pam_unix_session.so
-
   # set unix_chkpwd uid
   chmod +s $pkgdir/usr/bin/unix_chkpwd
+
   # remove doc which is not used anymore
   # FS #40749
   rm $pkgdir/usr/share/doc/Linux-PAM/sag-pam_userdb.html
