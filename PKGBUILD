@@ -10,8 +10,8 @@ pkgdesc='Simple Linux utility to autocomplete words using rofi'
 arch=('any')
 url="https://github.com/bharadwaj-raju/TextSuggest"
 license=('GPL3')
-depends=('python' 'rofi' 'xdotool' 'xsel')
-makedepends=('git')
+depends=('python' 'dbus-c++' 'qt5-base' 'xdotool' 'xclip' 'python-dbus')
+makedepends=('git' 'gcc' 'make' 'automake')
 provides=("$_gitname")
 source=("$_gitname::git+https://github.com/bharadwaj-raju/TextSuggest.git")
 md5sums=('SKIP')
@@ -23,14 +23,6 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_gitname"
-    install -d "$pkgdir/usr/share/"
-    cp -rf textsuggest "$pkgdir/usr/share/"
-    install -D -m755 TextSuggest.py "$pkgdir/usr/bin/textsuggest"
-    install -D -m644 languages.py -t "$pkgdir/usr/lib/python3.5/site-packages/"
-    install -D -m644 fonts.py -t "$pkgdir/usr/lib/python3.5/site-packages/"
-    install -D -m644 suggestions.py -t "$pkgdir/usr/lib/python3.5/site-packages/"
-    install -D -m644 docs/textsuggest.1 -t "$pkgdir/usr/share/man/man1/"
-    install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	  chmod -R a+r "$pkgdir/usr/share/textsuggest"
+	sh build.sh
+	sh install.sh
 }
