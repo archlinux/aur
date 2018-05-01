@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-night-light-slider-git
 _pkgname=gnome-shell-night-light-slider-extension
-pkgver=v7.0.r0.g0d2036d
+pkgver=8.0.r0.gaabff45
 pkgrel=0
 pkgdesc="Manage GNOME night light temperature intensity from the panel."
 arch=('any')
