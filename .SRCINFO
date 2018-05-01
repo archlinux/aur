@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201114w
 	pkgdesc = Epson printer driver (Artisan 1430, Stylus Photo 1430, 1500)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = epson-inkjet-printer-201114w
 	depends = cups
 	depends = ghostscript
 	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201114w-1.0.0-1lsb3.2.src.rpm
+	source = fixbuild.patch
 	sha256sums = f64d99d0df6aa7304a9a9c9f2afa17d92863124924c9a68d0b4cf5d2ea29d63a
+	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201114w
 
