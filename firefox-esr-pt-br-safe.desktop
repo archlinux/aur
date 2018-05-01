@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Firefox ESR - Safe Mode
+Name[pt-BR]=Firefox ESR - Modo Seguro
+GenericName=Web Browser - Safe Mode
+GenericName[pt-BR]=Navegador de Internet - Modo Seguro
+Icon=firefox-esr
+Type=Application
+Categories=Application;Network;
+MimeType=text/html
+Encoding=UTF-8
+Exec=firefox-esr -safe-mode %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
+StartupWMClass=Firefox

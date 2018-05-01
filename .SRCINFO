@@ -1,0 +1,23 @@
+pkgbase = firefox-esr-pt-br-bin
+	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
+	pkgver = 52.7.4
+	pkgrel = 1
+	url = http://www.mozilla.org/en-US/firefox/organizations/
+	install = firefox-esr-pt-br.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk2
+	depends = gtk3
+	depends = libxt
+	depends = dbus-glib
+	depends = nss
+	provides = firefox=52
+	source = http://ftp.mozilla.org/pub/firefox/releases/52.7.4esr/linux-x86_64/pt-BR/firefox-52.7.4esr.tar.bz2
+	source = firefox-esr-pt-br.desktop
+	source = firefox-esr-pt-br-safe.desktop
+	sha512sums = ca027e5527b6c5d76ef80c3795e160a24327cba93be9f34777b409ada35eaaa48fe9aed28e3f74720ee82e5218f777a6d1ed233f971c7b75e5d3e4d0a2747c64
+
+pkgname = firefox-esr-pt-br-bin
