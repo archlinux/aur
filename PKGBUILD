@@ -6,54 +6,46 @@
 
 pkgname=libvorbis-aotuv-lancer
 _srcname=libvorbis-aotuv
-pkgver=b6.03
-pkgrel=8
-_releasedate=20110424-20150808
-_srcrel=2015
+pkgver=1.3.6
+pkgrel=0
+_aotuv_ver=b6.03
 pkgdesc='A fork of libvorbis intended to provide better quality sound at low to medium bitrates, with lancer patches to improve performance'
 arch=('i686' 'x86_64')
 url='https://www.hydrogenaud.io/forums/index.php?showtopic=109766'
 license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis' 'libvorbis-aotuv')
-provides=('libvorbis=1.3.5' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
-source=("http://www.geocities.jp/aoyoume/aotuv/source_code/${_srcname}_${pkgver}_${_srcrel}.tar.bz2"
-        "http://freac.org/patches/arch/libvorbis-aotuv_b6.03_2015-lancer.patch"
-        "http://freac.org/patches/arch/libvorbis-aotuv_b6.03_2015-lancer-x64.patch")
-sha256sums=('fba6724d2bc2b6a911a25e60f21a45749d507f181a9e150415ce41e4d03bc08f'
-            '38a3ad12937c1748a0cfe0779102d6f02824f897a729ce07cc9f658482a6826b'
-            'e54eb271f539ce7ae3bc90bc85643c79c22925fcd1963920b969d7035eeae653')
-
+provides=('libvorbis=1.3.6' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
+source=("http://downloads.xiph.org/releases/vorbis/libvorbis-${pkgver}.tar.gz"
+        "https://freac.org/patches/libvorbis-${pkgver}-aotuv-${_aotuv_ver}.patch"
+        "https://freac.org/patches/libvorbis-${pkgver}-aotuv-${_aotuv_ver}-lancer.patch")
+sha256sums=('6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb'
+            '1efd443bb7a32562f30ae778983e4fd31f07c612e08e49d536429443107bb946'
+            'cb510d6d7222599eed0df8ea8708eb4cb3371a617e1a07eac83d723185ae1ad9')
 prepare() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "libvorbis-${pkgver}"
 	chmod +x configure
 	
-	# apply lancer patches
-	patch -p1 -i "${srcdir}/libvorbis-aotuv_b6.03_2015-lancer.patch"
+	# apply aotuv patches
+	patch -p1 -i "${srcdir}/libvorbis-${pkgver}-aotuv-${_aotuv_ver}.patch"
 	
-	# linux x64 uses 8 byte for long - src expects 4
-	if [ "${CARCH}" = "x86_64" ]; then
-        patch -p1 -i "${srcdir}/libvorbis-aotuv_b6.03_2015-lancer-x64.patch"
-    fi
-
-    # configure sets their own CFLAGS to increase performance, so we clear makepkg.conf ones
-    #CFLAGS="march=native"
-    #CXXFLAGS="march=native"
+	# apply lancer patches
+	patch -p1 -i "${srcdir}/libvorbis-${pkgver}-aotuv-${_aotuv_ver}-lancer.patch"
 }
 
 build() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "libvorbis-${pkgver}"
 	./configure --prefix=/usr --enable-shared --disable-static
 	make
 }
 
 check() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "libvorbis-${pkgver}"
 	make -j1 check
 }
 
 package() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "libvorbis-${pkgver}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
