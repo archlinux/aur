@@ -1,7 +1,7 @@
 pkgbase = monodevelop-stable
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
 	pkgver = 7.5.0.1222
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.monodevelop.com
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = monodevelop-stable
 	makedepends = nuget
 	makedepends = openssl-1.0
 	makedepends = xterm
-	depends = mono
+	depends = mono>=5.10.1.47
 	depends = mono-addins>=0.6.2
 	depends = gtk-sharp-2
 	depends = fsharp
