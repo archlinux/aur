@@ -68,7 +68,7 @@ isStatic() {
 }
 isOpenGL() {
   # Currently use native OpenGL by default
-  isDefault || \
+  isDefault || [[ $pkgname = 'mingw-w64-qt5-base-nostatx' ]] || \
   [[ $pkgname = 'mingw-w64-qt5-base-opengl' ]] || [[ $pkgname = 'mingw-w64-qt5-base-opengl-static' ]]
 }
 isANGLE() {
