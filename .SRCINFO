@@ -1,0 +1,25 @@
+pkgbase = python-glue-core
+	pkgdesc = Linked Data Visualizations Across Multiple Files -- core library
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = http://glueviz.org/
+	arch = i386
+	arch = x86_64
+	license = CUSTOM
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-astropy
+	depends = python-pyqt5
+	depends = ipython
+	depends = python-ipykernel
+	depends = python-qtconsole
+	depends = python-dill
+	depends = python-h5py
+	source = https://files.pythonhosted.org/packages/c1/5b/abcfa7d826d58c1016d51306b11cb994b20dd11ecb1a35f6c80f095758c7/glue-core-0.13.2.tar.gz
+	sha256sums = 9a52bdbfac355579caed2735ba7644113d861ce2c4e084830c99a69374043495
+
+pkgname = python-glue-core
+
