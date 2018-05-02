@@ -28,7 +28,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver=7.0.7.28
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -41,7 +41,7 @@ depends=(
         'jemalloc' 'bzip2' 'libx11' 'libsm' 'libice' 'libxt' 'zlib' 'fftw' 'djvulibre'
         'freetype2' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'xz' 'libtiff'
     # AUR:
-        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx' 'libde265'
+        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx' 'libheif'
 )
 makedepends=('git' 'perl' 'opencl-headers' 'chrpath' 'glu' 'ghostpcl' 'ghostxps')
 source=("${pkgbase}-git"::"git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
