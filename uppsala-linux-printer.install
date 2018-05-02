@@ -1,0 +1,9 @@
+post_install() {
+	echo "lpadmin -p eduPrint-client -v lpd://edp-uu-mob01.user.uu.se/Public-UU -P /etc/cups/ppd/eduPrint_UU_Linux_Ricoh_MP_C5504ex_PS.ppd -u allow:all -E"
+	lpadmin -p eduPrint-client -v lpd://edp-uu-mob01.user.uu.se/Public-UU -P /etc/cups/ppd/eduPrint_UU_Linux_Ricoh_MP_C5504ex_PS.ppd -u allow:all -E
+}
+
+post_remove() {
+	echo "lpadmin -x eduPrint-client"
+	lpadmin -x eduPrint-client
+}
