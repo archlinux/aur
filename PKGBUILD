@@ -2,7 +2,7 @@
 
 pkgname=monitorix-git
 _pkgname=Monitorix
-pkgver=8a0b97c
+pkgver=3.10.0.r48.gf260e1c
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
@@ -29,7 +29,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	git describe --always | sed 's|-|.|g'
+  # work around for AUR helpers
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
