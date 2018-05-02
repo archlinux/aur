@@ -1,6 +1,6 @@
 pkgbase = milena-abc
 	pkgdesc = Gtk3 gui for audiobook creator from Milena speech synthesizer
-	pkgver = 0.3.65
+	pkgver = 0.3.66
 	pkgrel = 1
 	url = http://milena.polip.com/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = milena-abc
 	depends = mpg123
 	depends = libsamplerate
 	depends = curl
-	source = http://tts.polip.com/files/milena_abc-0.3.65.tar.gz
-	sha256sums = dc19f33e3a2190e0d6c92ee1f18ff5c79ae71c5e25213fa432e119e009f3b25a
+	source = http://tts.polip.com/files/milena_abc-0.3.66.tar.gz
+	sha256sums = 570cde01799fdcbbc9ecfb912234ff439be217f56cbad5a0867d6c070354a5aa
 
 pkgname = milena-abc
 
