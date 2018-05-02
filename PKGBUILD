@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r90793.g30940be359
+pkgver=4.1.r90921.ga150b2e3a0
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ depends=(
 )
 depends_x86_64=(
     # official repositories:
-        'cuda' 'nvidia-utils'
+        'cuda'
     # AUR:
         'intel-media-sdk'
 )
@@ -223,6 +223,7 @@ build() {
 
 package() {
     cd "$pkgname"
+    
     make DESTDIR="$pkgdir" install
     
     install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
