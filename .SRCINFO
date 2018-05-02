@@ -1,7 +1,7 @@
 pkgbase = vtunerc-dkms
 	pkgdesc = VTuner client kernel module for virtual DVB's
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://code.google.com/p/vtuner
 	arch = x86_64
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = vtunerc-dkms
 	sha256sums = 78e2bec37fa91f7abd999b9d0871bc0c82d39da5e538f0a1b92db547313f5f1e
 	sha256sums = 9d7177aae059e343d772419ed904b287e018077221ade5d16f5b1d825005008a
 	sha256sums = 4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d
-	sha256sums = 7f9dfd3402af95f51ed83de0d44b22cd978ec8036db50283a2687ae1f7f2d05d
+	sha256sums = 47dfa9682b77b136bc72ecf45548ac93bf4dc50e2eaa94441d1401c1bef759a4
 
 pkgname = vtunerc-dkms
 

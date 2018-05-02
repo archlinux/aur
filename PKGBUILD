@@ -5,7 +5,7 @@
 pkgname='vtunerc-dkms'
 pkgdesc="VTuner client kernel module for virtual DVB's"
 pkgver=1.4
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://code.google.com/p/vtuner"
 license=('GPL2')
@@ -28,7 +28,7 @@ sha256sums=('c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1'
             '78e2bec37fa91f7abd999b9d0871bc0c82d39da5e538f0a1b92db547313f5f1e'
             '9d7177aae059e343d772419ed904b287e018077221ade5d16f5b1d825005008a'
             '4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d'
-            '7f9dfd3402af95f51ed83de0d44b22cd978ec8036db50283a2687ae1f7f2d05d')
+            '47dfa9682b77b136bc72ecf45548ac93bf4dc50e2eaa94441d1401c1bef759a4')
 
 package() {
 	install -dm755 ${pkgdir}/usr/src/vtunerc-${pkgver}/patches
