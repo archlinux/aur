@@ -19,10 +19,3 @@ package() {
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
-
-package(){
-    cd "${srcdir}/glue-${pkgver}"
-    python setup.py install --root="$pkgdir" --prefix=/usr
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-}
-
