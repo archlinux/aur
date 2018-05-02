@@ -62,7 +62,7 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.16.6
+pkgver=4.16.7
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -103,12 +103,11 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
+            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
             'SKIP'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
@@ -118,10 +117,9 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '928e2ba6f66c682cc93ef5bba5020007407ed32bec87d0e5018fdcb64dba35db'
-            '9fb5aec08992578b9143ee76a72698fc0f567f4202bdf8ebe6cd64ce9fd63238'
-            'e41680227a5eb78125a45701bad3bcfc8628fcf21b198b6e302188f0c156ef19'
-            'a807cf9c06b16b08f0b2b0b2e8609914dd998258c7a275c38495f2e33e2c0807')
+            'd0940f68d0138169eba5e0c0add048d7df255bb2b13c3ad5920dc991573f3ff0'
+            'bead9915334759fa4c5f7ebebbf85b658d3423ba978ad4c6ee7d8271fa95b90a'
+            '68dd6a1ebf9fc53cdf8bf18fb6231d3730ee99a429a9153b5730e4f5c10a1359')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -148,10 +146,6 @@ prepare() {
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58153
-        msg "Fix #58153"
-        patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
    
    ### Patch source with BFQ-SQ-MQ
         _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
