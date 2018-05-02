@@ -1,8 +1,8 @@
 # Maintainer: einalex <einalex@mayanna.org>
 
 pkgname=syscoin-git
-_gitname=syscoin2
-pkgver=2.1.5
+_gitname=syscoin
+pkgver=3.0
 pkgrel=1
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('miniupnpc' 'db4.8' 'protobuf' 'libevent' 'qt5-base' 'boost-libs' 'qrencode' 'zeromq')
 optdepends=('miniupnpc: Firewall-jumping support'
  'zeromq: Allows generating ZMQ notifications')
-makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
-source=("git+https://github.com/syscoin/syscoin2.git#tag=$pkgver")
+makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'openssl-1.0')
+source=("git+https://github.com/syscoin/syscoin.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   ./autogen.sh
   ./configure --with-gui=qt5
    make -j$(nproc)
