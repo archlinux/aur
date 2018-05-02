@@ -4,10 +4,10 @@
 _pkgname='concourse'
 pkgname="${_pkgname}-bin"
 pkgver=v3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Concourse is a pipeline-based CI system written in Go.'
 arch=(x86_64)
-url='https://concourse.ci/introduction.html'
+url='https://concourse-ci.org'
 license=('Apache')
 provides=("${_pkgname}")
 replaces=("${_pkgname}")
