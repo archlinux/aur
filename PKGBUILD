@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -28,7 +28,7 @@ depends=(
 )
 depends_x86_64=(
     # official repositories:
-        'cuda' 'nvidia-utils'
+        'cuda'
     # AUR:
         'intel-media-sdk'
 )
@@ -215,6 +215,7 @@ build() {
 
 package() {
     cd "${_srcname}-${pkgver}"
+    
     make DESTDIR="$pkgdir" install
     
     install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
