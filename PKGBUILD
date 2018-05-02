@@ -5,7 +5,7 @@
 
 pkgname=guake-git
 pkgver=3.2.1.11.g284f9e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Top-down terminal for Gnome using gtk3 and vte3"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Guake/guake"
@@ -29,5 +29,5 @@ build(){
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  make install DESTDIR="$pkgdir/" PREFIX="$pkgdir/usr/" COMPILE_SCHEMA=0
+  make install DESTDIR="$pkgdir/" PREFIX="/usr" COMPILE_SCHEMA=0
 }
