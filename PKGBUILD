@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -203,7 +203,7 @@ echo "<?xml version=\"1.0\"?>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img08}</name>
+    <name>${img_tree}</name>
     <filename>/usr/share/backgrounds/trougnouf/${img_tree}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
