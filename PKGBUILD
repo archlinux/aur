@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -20,6 +20,9 @@ source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signa
 package() {
   # extract package data
   tar xf data.tar.xz -C "${pkgdir}"
+
+  # fix permissions in 1.9.0 (Some directories have now 775; changing them back to 755)
+  find "${pkgdir}" -type d -not -perm 755 -exec chmod 755 {} \;
 
   # install alias in /usr/bin
   mkdir "${pkgdir}/usr/bin"
