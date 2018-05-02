@@ -5,7 +5,7 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=2.93.r350.g444f15edf
+pkgver=2.94.r354.gc11f2870f
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
