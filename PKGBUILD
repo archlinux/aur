@@ -2,17 +2,17 @@
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
 pkgver=14
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('allegro4' 'freealut' 'openal')
+depends=('wxgtk2' 'openal')
 source=("http://pcem-emulator.co.uk/files/PCemV${pkgver}Linux.tar.gz")
 
 build() {
   cd "${srcdir}"
-  ./configure --enable-release-build --prefix=/usr
+  ./configure --enable-release-build --enable-networking --prefix=/usr
   make
 }
 
