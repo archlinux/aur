@@ -1,0 +1,41 @@
+From b1563b11dbbc5a2ed80ef4aa7a3ee9d21fba7070 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 14:27:28 +0200
+Subject: [PATCH 17/32] Build dynamic host libraries
+
+This came initially from Fedora, not sure whether
+it makes sense to keep it. Regular Arch package
+uses static lib as intended by upstream.
+
+Change-Id: I91a3613955c656fb0d262ccb9b2529350bab032b
+---
+ mkspecs/features/qt_module.prf              | 2 +-
+ src/tools/bootstrap-dbus/bootstrap-dbus.pro | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
+index e6a0d97f1a..c07c1adc8b 100644
+--- a/mkspecs/features/qt_module.prf
++++ b/mkspecs/features/qt_module.prf
+@@ -24,7 +24,7 @@ requires(!$$skip)
+ 
+ # Compile as shared/DLL or static according to the option given to configure
+ # unless overridden. Host builds are always static
+-host_build|staticlib: CONFIG += static
++staticlib: CONFIG += static
+ 
+ host_build {
+     QT -= gui   # no host module will ever use gui
+diff --git a/src/tools/bootstrap-dbus/bootstrap-dbus.pro b/src/tools/bootstrap-dbus/bootstrap-dbus.pro
+index c3ed27d979..30d2114aa1 100644
+--- a/src/tools/bootstrap-dbus/bootstrap-dbus.pro
++++ b/src/tools/bootstrap-dbus/bootstrap-dbus.pro
+@@ -27,4 +27,4 @@ SOURCES = \
+ load(qt_module)
+ 
+ lib.CONFIG = dummy_install
+-INSTALLS = lib
++INSTALLS += lib
+-- 
+2.16.1
+
