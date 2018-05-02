@@ -2,7 +2,7 @@
 pkgname=latex-pdfpages
 _pkgname=${pkgname#latex-}
 pkgver=0.5l
-pkgrel=1
+pkgrel=2
 pkgdesc="Inclusion of external multi-page PDF documents in LATEX documents"
 arch=('any')
 url="http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages"
@@ -11,7 +11,7 @@ depends=('texlive-core')
 noextract=("$_pkgname.zip")
 source=("http://mirror.ctan.org/macros/latex/contrib/$_pkgname.zip")
 install="$pkgname.install"
-md5sums=('c7dad88334285585ee0b393671a2b240')
+md5sums=('3250764c95ab785560d83f6b5cab06a8')
 
 package() {
   TEXMF="/usr/share/texmf"
