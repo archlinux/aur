@@ -16,7 +16,7 @@ prepare() {
     cd ${srcdir}/${_pkgname}
     wget http://lczero.org/get_network?sha=74337e669906cb565c12a655b5b7eff4d396c5ceae01781de70c92c1d4784212 -O weights_$pkgrel.txt
     echo '#!/bin/bash' > lczero
-    echo "/usr/bin/lczero-bin -w /usr/share/weights_$pkgrel.txt" >> lczero
+    echo "/usr/bin/lczero-bin -w /usr/share/lczero/weights_$pkgrel.txt" >> lczero
 }
 
 build() {
