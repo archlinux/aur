@@ -1,8 +1,8 @@
 pkgbase = concourse-fly
 	pkgdesc = A command line interface that runs a build in a container with ATC.
 	pkgver = v3.13.0
-	pkgrel = 2
-	url = https://concourse.ci/fly-cli.html
+	pkgrel = 3
+	url = https://concourse-ci.org/fly.html
 	arch = x86_64
 	license = Apache
 	provides = fly
