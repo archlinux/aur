@@ -1,10 +1,11 @@
 pkgbase = ruby-progress
 	pkgdesc = Show progress of long running tasks.
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toy/progress
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = progress-3.4.0.gem
 	options = !emptydirs

@@ -3,12 +3,13 @@
 pkgname=ruby-progress
 gemname=progress
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Show progress of long running tasks.'
 arch=('any')
 url='https://github.com/toy/progress'
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
