@@ -1,6 +1,6 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS) - BETA version
-	pkgver = 396.18
+	pkgver = 396.24
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta-dkms.install
@@ -8,16 +8,16 @@ pkgbase = nvidia-beta-dkms
 	license = custom:NVIDIA
 	depends = dkms
 	depends = linux
-	depends = nvidia-utils-beta>=396.18
+	depends = nvidia-utils-beta>=396.24
 	depends = libgl
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
-	provides = nvidia=396.18
+	provides = nvidia=396.24
 	provides = nvidia-dkms
 	conflicts = nvidia
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.18/NVIDIA-Linux-x86_64-396.18-no-compat32.run
-	md5sums = d7d841c8e017e84a4f39619527855bbb
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.24/NVIDIA-Linux-x86_64-396.24-no-compat32.run
+	sha256sums = 41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c
 
 pkgname = nvidia-beta-dkms
 
