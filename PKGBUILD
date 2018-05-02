@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.35
-xanmod=29
+pkgver=4.14.37
+xanmod=30
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=f23e4e85a238c9933d98c20410e353d7e7be38ad
+arch_config_trunk=53068f8dbd3a0d6a9f444dd0c0c582048bfcc3df
 
 # Arch additional patches
 arch_patches=(
@@ -48,7 +48,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('6c58a0585e4f04a9c3e7937b0ded42e17a0fb79df8b34cdfbcd7bf486903e921'
+sha256sums=('67f41164b3802e15d7f64950b28226546649ec2f69ca4e7cf07c731322bebc08'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
