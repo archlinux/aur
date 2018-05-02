@@ -1,4 +1,43 @@
- Version 2.22.0 - 23 Jan 2018
+Version 2.25.0 - 29 Apr 2018
+- Fix adapter_hpfanficarchivecom to not take author from banner by mistake.
+- New Site www.novelall.com - Thanks rikkitp!
+- Fix downloading illustrated stories from literotica. (#295) - Thanks
+  davidfor
+- Add remove_spoilers & legend_spoilers options to royalroadl.com for Issue
+  #287
+- Fix author URL/Id fetch for adapter_wwwlushstoriescom.
+- Fix www.webnovel.com adapter with volumes (#293) - Thanks rikkitp
+- Added status metadata to wuxiaworld and royalroadl (#289) - Thanks rikkitp
+- Add reformating option fix_excess_space to lightnovelgate (#291) - Thanks
+  rikkitp
+- Change ficwad.com to https.
+- Fixes for tables, add keep_empty_tags,td,th and add to keep_html_attrs
+  colspan,rowspan.
+- Allow domain sufficientvelocity.com for forums.sufficientvelocity.com.
+- Fix for wuxiaworld adapter when image is null (#288) - Thanks rikkitp
+
+Version 2.24.0 - 27 Mar 2018
+- Update translations.
+- Fix for SB/SV threadmarks.rss becoming incomplete list--move
+  extract_threadmarks from QQ back to base.
+- Update adapter for wuxiaworld.com -- thanks cryzed!
+- Remove extra CSS line from default ini files.
+- Fix fix_pseudo_html in configurable.py for plugin edit check.
+- adapter_storiesonline(FineStories.com) fix for missing author link in header
+  tag, from GComyn.
+- Add output_filename to --meta-only (#271), from theit8514
+- Add fix_pseudo_html option for webnovel.com site only, from cryzed
+
+Version 2.23.0 - 28 Feb 2018
+- Update translations.
+- Calculate number of chapters using start-end range when doing updates.
+- Make Get URLs from Page work better with TtH is_adult.
+- Fix rating, warnings, add ships to adapter_harrypotterfanfictioncom
+- Update adapter_efpfanficnet to use https and remove www. by default.
+- *Don't* include fandoms in category for fimfiction.net by default.
+- Handle new VIP chapter types in adapter_webnovelcom (#263) (Thanks cryzed)
+
+Version 2.22.0 - 23 Jan 2018
 (I accidentally skipped v2.21.)
 - Tweak 'Chapter not found...' check for ffnet for changed/new text.
 - Set siteabbrev for adapter_wattpadcom
