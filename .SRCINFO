@@ -1,14 +1,14 @@
 pkgbase = qservicemenuconfig
 	pkgdesc = MenuEditor for Dolphin
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/s/Apps/p/1215612/
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1519370411/s/ddcd25b32aaeb98c2a169972934e0fff/t/1519489318/u//QServiceMenuConfig-0.1.1.tgz
-	sha256sums = 9ee21ff5207eca7d756944efed1d8d5dec9fe083a201671a44d143eaf037d1d8
+	source = https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_42.1/src/QServiceMenuConfig-0.1.1-69.1.src.rpm
+	sha256sums = 7ecfaa4b713ddaca0991f68bddb801867be161731ebc7365025a87c884f77aa5
 
 pkgname = qservicemenuconfig
 
