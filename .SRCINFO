@@ -1,9 +1,9 @@
-pkgbase = firefox-esr-pt-br-bin
+pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
 	pkgver = 52.7.4
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
-	install = firefox-esr-pt-br.install
+	install = firefox-esr.install
 	arch = i686
 	arch = x86_64
 	license = MPL
@@ -15,16 +15,18 @@ pkgbase = firefox-esr-pt-br-bin
 	depends = dbus-glib
 	depends = nss
 	provides = firefox=52
+	provides = firefox-esr=52.7.4
 	conflicts = firefox=52
-	replaces = firefox=52
-	source = firefox-esr-pt-br.desktop
-	source = firefox-esr-pt-br-safe.desktop
+	conflicts = firefox-esr=52.7.4
+	conflicts = firefox-esr-bin
+	source = firefox-esr.desktop
+	source = firefox-esr-safe.desktop
 	sha512sums = f1edf5aaeec7edf5bf1be6155c4b417190c520eeb826b63107ac0ac99e7df1800f237ed7ced35e44e9d6809b142582e4fcb4e033f8d91d445486d35d1314705c
-	sha512sums = 2cb650cf7c16db64e5d540db798799c569837a430a8573d86d3a120cdb59ef28bcd3959990ee5b946b21694f0deb84b527cc99a7d071002d6d33d6627cb10621
+	sha512sums = sha512-lnk-safe
 	source_i686 = http://ftp.mozilla.org/pub/firefox/releases/52.7.4esr/linux-i686/pt-BR/firefox-52.7.4esr.tar.bz2
 	sha512sums_i686 = cf037d1f92432152058131ae275eec812f3fa728056dbf7873e0a705deed65281a2657ec2136ee631287318a16de6202703b7602782d7e9be0437246a5acef3b
 	source_x86_64 = http://ftp.mozilla.org/pub/firefox/releases/52.7.4esr/linux-x86_64/pt-BR/firefox-52.7.4esr.tar.bz2
 	sha512sums_x86_64 = ca027e5527b6c5d76ef80c3795e160a24327cba93be9f34777b409ada35eaaa48fe9aed28e3f74720ee82e5218f777a6d1ed233f971c7b75e5d3e4d0a2747c64
 
-pkgname = firefox-esr-pt-br-bin
+pkgname = firefox-esr
 
