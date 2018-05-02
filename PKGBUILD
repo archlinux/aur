@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://xplc.sourceforge.net"
 license=('LGPL')
 depends=('gcc-libs')
-source=("http://downloads.sourceforge.net/${pkgname}/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/${pkgname}/$pkgname-$pkgver.tar.gz")
 md5sums=('39da3270527c8712b8e8fcf03768d29f')
 options=('!buildflags')
 
