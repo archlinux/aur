@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3325.r3.e839a6adb
+pkgver=3359.r2.2e8701bf5
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -14,13 +14,11 @@ makedepends=('git' 'python2' 'gn-bin>=r533513' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
-	"glnames.2.9.py::http://git.savannah.gnu.org/cgit/freetype/freetype2.git/plain/src/tools/glnames.py?h=VER-2-9"
 	"libpdfium.pc"
 	)
 
 md5sums=('SKIP'
          'SKIP'
-         '0d32e29b011dec73943931283213322b'
          '7fbbe2baf9a1fed80ad74278e901fa0e')
 
 pkgver() {
@@ -66,10 +64,6 @@ prepare() {
   sed -i 's/\#define FPDF_EXPORT/\#define FPDF_EXPORT __attribute__ ((visibility ("default")))/g'\
 	 public/fpdfview.h
   sed -i '/"PNG_PREFIX",/a     "FPDFSDK_EXPORTS",' BUILD.gn
-
-  # workaround for https://bugs.chromium.org/p/pdfium/issues/detail?id=733
-  mkdir -p $srcdir/pdfium/third_party/freetype/src/src/psnames/
-  python2 $srcdir/glnames.2.9.py $srcdir/pdfium/third_party/freetype/src/src/psnames/pstables.h
 
   # set pdfium version in pc file
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/libpdfium.pc"
