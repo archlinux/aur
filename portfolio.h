@@ -18,8 +18,6 @@ struct security_data {
     double total_profit_percent;
     double one_day_profit;
     double one_day_profit_percent;
-    double seven_day_profit;
-    double seven_day_profit_percent;
 };
 
 typedef struct security_data SD;
@@ -96,11 +94,8 @@ SDA* portfolio_get_data_array(void);
 void portfolio_store_api_data(SD* sec_data);
 
 /**
- * Precondition: portfolio_file has been initialized
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
- *
- * If the portfolio is encrypted, ask for the password and store the decrypted portfolio, but do not write to the file.
  */
 void portfolio_print_all(void);
 

@@ -218,47 +218,24 @@ void portfolio_store_api_data(SD* sec_data) {
 }
 
 void portfolio_print_all(void) {
-    String* pString = portfolio_file_get_string();
-    if (pString == NULL) {
-        puts("Empty portfolio.");
-        return;
-    }
-    if (strcmp(pString->data, "") == 0) {
-        puts("Empty portfolio.");
-        string_destroy(&pString);
-        return;
-    }
-    double* data, total_owned = 0, total_spent = 0, total_gain_1d = 0;
-    Json* jobj = json_tokener_parse(pString->data);
-    char* password = NULL;
-    if (jobj == NULL) { //ENCRYPTED PORTFOLIO
-        password = rc4_getPassword();
-        printf("Decrypting portfolio...\n");
-        String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
-        string_destroy(&pString);
-        pString = temp;
-        if (pString == NULL)
-            return;
-        jobj = json_tokener_parse(pString->data);
-    }
-    int num_symbols = (int) json_object_array_length(jobj);
+    SDA* sda_data = portfolio_get_data_array();
     printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
-    for (int i = 0; i < num_symbols; i++) {
-        data = portfolio_print_stock(NULL, json_object_array_get_idx(jobj, (size_t) i));
-        if (data != NULL) {
-            total_owned += data[0];
-            total_spent += data[1];
-            total_gain_1d += data[2];
-        }
-        free(data);
+    double total_owned = 0, total_spent = 0, total_profit_1d = 0;
+    SD* sec_data;
+    for (size_t i = 0; i < sda_data->length; i++) {
+        sec_data = sda_data->sec_data[i];
+        portfolio_store_api_data(sec_data);
+        printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
+        sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
+        sec_data->one_day_profit, sec_data->one_day_profit_percent);
+        total_owned += sec_data->current_value;
+        total_spent += sec_data->total_spent;
+        total_profit_1d += sec_data->one_day_profit;
     }
     printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
-           total_gain_1d, 100 * total_gain_1d / total_spent);
-    if (password != NULL)
-        free(password);
-    json_object_put(jobj);
-    string_destroy(&pString);
+           total_profit_1d, 100 * total_profit_1d / total_spent);
+    sda_destroy(&sda_data);
 }
 
 double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
