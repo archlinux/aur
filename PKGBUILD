@@ -4,10 +4,10 @@
 _pkgname='concourse-fly'
 pkgname="${_pkgname}-bin"
 pkgver=v3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line interface that runs a build in a container with ATC.'
 arch=(x86_64)
-url='https://concourse.ci/fly-cli.html'
+url='https://concourse-ci.org/fly.html'
 license=('Apache')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
