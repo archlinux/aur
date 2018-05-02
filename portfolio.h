@@ -100,17 +100,11 @@ void portfolio_store_api_data(SD* sec_data);
 void portfolio_print_all(void);
 
 /**
- * Precondition: portfolio_file has been initialized
- * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
+ * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit.
- * @param ticker_name_string the security to print or NULL is passing in JSON index
- * @param current_index JSON index to print or NULL if passing in security's name or symbol
- * @return double array containing the indices:
- * [0] -- current balance
- * [1] -- amount spent
- * [2] -- 24h gain
+ * @param ticker_name_string the security to print
  */
-double* portfolio_print_stock(char* ticker_name_string, Json* current_index);
+void portfolio_print_stock(char* ticker_name_string);
 
 /**
  * Goes through the given JSON array until the JSON object at the given index's key "Symbol" contains

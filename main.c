@@ -53,17 +53,9 @@ int main(int argc, char* argv[]) {
 
         // Check
     else if (strcmp(cmd, "check") == 0) {
-        if (argc < 3) {
+        if (argc == 2 || strcmp(sym, "ALL") == 0)
             portfolio_print_all();
-        } else {
-            if (strcmp(sym, "ALL") == 0)
-                portfolio_print_all();
-            else {
-                double* data = portfolio_print_stock(sym, NULL);
-                if (data != NULL)
-                    free(data);
-            }
-        }
+        else portfolio_print_stock(sym);
     }
 
         // Portfolio

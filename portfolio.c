@@ -226,8 +226,8 @@ void portfolio_print_all(void) {
         sec_data = sda_data->sec_data[i];
         portfolio_store_api_data(sec_data);
         printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
-        sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
-        sec_data->one_day_profit, sec_data->one_day_profit_percent);
+               sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
+               sec_data->one_day_profit, sec_data->one_day_profit_percent);
         total_owned += sec_data->current_value;
         total_spent += sec_data->total_spent;
         total_profit_1d += sec_data->one_day_profit;
@@ -238,72 +238,26 @@ void portfolio_print_all(void) {
     sda_destroy(&sda_data);
 }
 
-double* portfolio_print_stock(char* ticker_name_string, Json* current_index) {
-    char symbol[32];
-    double* data = malloc(sizeof(double) * 3);
-    pointer_alloc_check(data);
-    String* pString = NULL;
-    char* password = NULL;
-    Json* jobj = NULL;
-    if (current_index != NULL) { //if being called from portfolio_print_all
-        strcpy(symbol, json_object_get_string(json_object_object_get(current_index, "Symbol")));
-        strip_char(symbol, '\"');
-        data[0] = json_object_get_double(json_object_object_get(current_index, "Shares"));
-        data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
-    } else { //if being called directly from main
-        strcpy(symbol, ticker_name_string);
-        pString = portfolio_file_get_string();
-        if (pString == NULL || pString->len == 0) {
-            puts("Empty portfolio.");
-            free(data);
-            if (pString != NULL)
-                string_destroy(&pString);
-            return NULL;
+void portfolio_print_stock(char* ticker_name_string) {
+    SDA* sda_data = portfolio_get_data_array();
+    SD* sec_data = NULL;
+    for (size_t i = 0; i < sda_data->length; i++) {
+        if (strcmp(sda_data->sec_data[i]->symbol, ticker_name_string) == 0) {
+            sec_data = sda_data->sec_data[i];
+            break;
         }
-        jobj = json_tokener_parse(pString->data);
-        if (jobj == NULL) { //ENCRYPTED PORTFOLIO
-            password = rc4_getPassword();
-            printf("Decrypting portfolio...\n");
-            String* temp = rc4_get_crypted_string(pString, password, DECRYPT);
-            string_destroy(&pString);
-            pString = temp;
-            if (pString == NULL) {
-                free(data);
-                return NULL;
-            }
-            jobj = json_tokener_parse(pString->data);
-        }
-        int index = portfolio_symbol_index(symbol, jobj);
-        if (index == -1) {
-            printf("You do not have %s in your portfolio.\n", symbol);
-            return data;
-        }
-        current_index = json_object_array_get_idx(jobj, (size_t) index);
-        printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
     }
-    data[0] = json_object_get_double(json_object_object_get(current_index, "Shares"));
-    data[1] = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
-    data[2] = 0;
-    double* ticker_data, ticker_current_price_usd = 1, ticker_1d_price_usd, ticker_1d_percent_change = 0;
-    if (strcmp(symbol, "USD$") != 0) {
-        ticker_data = api_get_current_price(symbol);
-        ticker_current_price_usd = ticker_data[0];
-        ticker_1d_price_usd = ticker_data[1];
-        free(ticker_data);
-        data[2] = ((ticker_current_price_usd - ticker_1d_price_usd) * data[0]);
-        ticker_1d_percent_change = 100 * (ticker_current_price_usd / ticker_1d_price_usd - 1);
-        data[0] *= ticker_current_price_usd;
+    if (sec_data == NULL) {
+        printf("Your portfolio does not contain any %s.\n", ticker_name_string);
+        sda_destroy(&sda_data);
+        return;
     }
-    printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
-           data[0] / ticker_current_price_usd, symbol, data[0], data[1], data[0] - data[1],
-           (100 * (data[0] - data[1])) / data[1],
-           data[2], ticker_1d_percent_change);
-    if (password != NULL)
-        free(password);
-    json_object_put(jobj);
-    if (pString != NULL)
-        string_destroy(&pString);
-    return data;
+    portfolio_store_api_data(sec_data);
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
+    printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
+           sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
+           sec_data->one_day_profit, sec_data->one_day_profit_percent);
+    sda_destroy(&sda_data);
 }
 
 int portfolio_symbol_index(const char* ticker_name_string, Json* jarray) {
