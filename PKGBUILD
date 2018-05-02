@@ -7,13 +7,13 @@
 
 _pkgname=scribus
 pkgname=${_pkgname}-devel
-pkgver=1.5.3
-pkgrel=3
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
 license=('GPL')
-depends=('hunspell' 'libcdr' 'libmspub' 'libpagemaker' 'libvisio' 'podofo'
+depends=('hunspell' 'libcdr' 'libmspub' 'libpagemaker' 'libvisio' 'libzmf' 'podofo'
          'poppler' 'python2' 'qt5-base' 'hicolor-icon-theme' 'harfbuzz-icu')
 makedepends=('cmake' 'boost' 'mesa' 'qt5-tools')
 optdepends=('tk: scripts based on tkinter'
@@ -21,22 +21,20 @@ optdepends=('tk: scripts based on tkinter'
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
-        'findOpenSSL.patch'
-        'fix-poppler-issue.patch'
-        'fix-icu-0.61.1-compilation.patch')
-sha256sums=('73a30b4727e19f5d301a936d23a84275cc4f5613a92416cbd843f5167721d74f' 'SKIP'
-            'd6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4'
-            '9e9e954cb30fe606196cb8fc1864983fa571f3a729aec0c3ef01fc577be238a1'
-            '9faa7fe6d5c7744511b5472ad0e376162360099b9456aaaf3ec78290b1bfef11')
+        'fix-15289.patch'
+        'fix-15289-2.patch')
+sha256sums=('6480925250b2bb07028e2f378c02b67fe3e33206743671e03c07c701cd05da03'
+            'SKIP'
+            '0a782958360ad70145a588a5e1c0044d162344e96b4ff9b0aeb31388cc9b2e36'
+            'edb124793e1b838e60cff4c21c536e16c77e91322f9837eab75d9ff06439ad4f')
 validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA'  # Peter Linnell <plinnell@scribus.net>
               '757F5E9B13DD648887AD50092D47C099E782504E') # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
 
 prepare() {
     cd ${_pkgname}-${pkgver}
 
-    patch -p1 -i ../findOpenSSL.patch
-    patch -p1 -i ../fix-poppler-issue.patch
-    patch -p1 -i ../fix-icu-0.61.1-compilation.patch
+    patch -p1 -i ../fix-15289.patch
+    patch -p1 -i ../fix-15289-2.patch
 
     # Fix python name
     sed \
@@ -51,7 +49,7 @@ build() {
     cd ${_pkgname}-${pkgver}/build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_SKIP_RPATH=ON
     make
 }
