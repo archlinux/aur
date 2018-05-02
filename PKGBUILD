@@ -1,6 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
-pkgname=truffleruby
+pkgname_=truffleruby
+pkgname=${pkgname_}-bin
 pkgver_=1.0.0-rc1
 pkgver=${pkgver_/-/_}
 pkgrel=1
@@ -11,7 +12,9 @@ license=('EPL' 'GPL2' 'LGPL2.1')
 depends=('graal')
 makedepends=()
 optdepends=()
-source=("https://github.com/oracle/$pkgname/releases/download/vm-${pkgver_}/ruby-installable-linux-amd64.jar")
+provides=("$pkgname_")
+conflicts=("$pkgname_")
+source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/ruby-installable-linux-amd64.jar")
 sha256sums=('27ac51f88fff16c8876cb7825ff1247ccd83f375f5a37b39cecf56917b339d52')
 
 package() {
