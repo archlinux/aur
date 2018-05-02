@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-integration-git
-pkgver=2018.02.r0.ga12afd4
+pkgver=2018.04.r0.gd555de5
 pkgrel=1
 pkgdesc="Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
