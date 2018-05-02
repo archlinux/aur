@@ -4,8 +4,8 @@
 
 _pkgname='concourse-fly'
 pkgname="${_pkgname}-git"
-pkgver=3.4.1.rc.34.r0.g5416da9
-pkgrel=4
+pkgver=3.12.1.rc.8.r0.gbb37e22
+pkgrel=1
 pkgdesc='Command line interface to the Concourse continuous integration tool'
 arch=('x86_64')
 url='https://concourse.ci/fly-cli.html'
