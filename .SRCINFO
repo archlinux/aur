@@ -1,7 +1,7 @@
 pkgbase = dfhack-twbt-bin
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it including Text Will Be Text plugin
 	pkgver = 0.44.09
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dfhack.readthedocs.org/
 	arch = x86_64
 	license = custom
@@ -28,7 +28,7 @@ pkgbase = dfhack-twbt-bin
 	md5sums = e630ae2fc93c6c7b55552336da2b6c07
 	md5sums = 3853c6f890d3541f710f2c4833a9e696
 	md5sums = 6730da5fec400ece9102552e77996fcb
-	md5sums = 0eec88d45b6f25ee99deefdaea983d3b
+	md5sums = 052a58e7f5f1af8be3ddefe9677b8fc6
 	md5sums = 8665f5fef2d22bfdf1530ebd3ed29aef
 	md5sums = 83ea0f9c4add22ee6bc61edd0da60ce7
 
