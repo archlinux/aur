@@ -3,7 +3,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.25.0_2018.02.18
+pkgver=1.27.0_2018.04.29
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
