@@ -3,12 +3,13 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-256xresources
 pkgver=9.22
-pkgrel=2
+pkgrel=3
 pkgdesc="urxvt with patches to support 256 Xresource colors and fixes for line/font spacing"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=('GPL')
-depends=('libxft' 'perl' 'startup-notification' 'rxvt-unicode-terminfo')
+makedepends=('libxft' 'perl' 'startup-notification' 'libnsl')
+depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification' 'libnsl')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         font-width-fix.patch
@@ -66,17 +67,17 @@ build() {
 package() {
   #install freedesktop menu
   for _f in urxvt urxvtc urxvt-tabbed; do
-    install -Dm644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
+    install -Dm644 ${_f}.desktop "${pkgdir}/usr/share/applications/${_f}.desktop"
   done
-  
-  cd $_pkgname-$pkgver
+
+  cd ${_pkgname}-${pkgver}
 
   #workaround terminfo installation
-  export TERMINFO="$srcdir/terminfo"
-  install -d "$TERMINFO"
-  make DESTDIR="$pkgdir" install
+  export TERMINFO="${srcdir}/terminfo"
+  install -d "${TERMINFO}"
+  make DESTDIR="${pkgdir}" install
 
   #install the tabbing wrapper ( requires gtk2-perl! )
   sed -i 's/\"rxvt\"/"urxvt"/' doc/rxvt-tabbed
-  install -Dm 755 doc/rxvt-tabbed "$pkgdir/usr/bin/urxvt-tabbed"
+  install -Dm 755 doc/rxvt-tabbed "${pkgdir}/usr/bin/urxvt-tabbed"
 }
