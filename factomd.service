@@ -7,7 +7,7 @@ After=network-online.target
 User=factomd
 Group=factomd
 EnvironmentFile=-/etc/default/factomd
-ExecStart=/usr/bin/factomd -sim_stdin=false $FACTOMD_OPTS
+ExecStart=/usr/bin/factomd $FACTOMD_OPTS
 KillMode=control-group
 Restart=on-failure
 

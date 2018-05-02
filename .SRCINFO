@@ -1,7 +1,7 @@
 pkgbase = factomd
 	pkgdesc = Factom Daemon
 	pkgver = 5.0.0
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/FactomProject/factomd
 	install = factomd.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = factomd
 	source = factomd.service
 	source = sysusers-factomd.conf
 	md5sums = 3f2862bceea12c50eec644c620c48b96
-	md5sums = 439b3abc0c8f0de23a44d16ae49837b7
+	md5sums = 8b4bbe21ec4972d61bf431b7e98074f3
 	md5sums = 98af8ab7eabb9fa344f574b9182f34e2
 
 pkgname = factomd

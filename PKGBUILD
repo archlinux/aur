@@ -2,7 +2,7 @@
 
 pkgname='factomd'
 pkgver='5.0.0'
-pkgrel='3'
+pkgrel='2'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
@@ -12,7 +12,7 @@ install="$pkgname.install"
 backup=('var/lib/factomd/m2/factomd.conf')
 source=("$pkgname.tar.gz::$url/archive/master.tar.gz" "$pkgname.service" "sysusers-$pkgname.conf")
 md5sums=('3f2862bceea12c50eec644c620c48b96'
-         '439b3abc0c8f0de23a44d16ae49837b7'
+         '8b4bbe21ec4972d61bf431b7e98074f3'
          '98af8ab7eabb9fa344f574b9182f34e2')
 build()
 {
