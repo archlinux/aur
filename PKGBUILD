@@ -1,14 +1,14 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 
 pkgname=meta-ugene-external_tools
-pkgver=20180419
+pkgver=20180502
 pkgrel=1
 pkgdesc='Metapackage for External Tools in the UGENE bioinformatics suite'
 arch=('any')
 license=('none')
 
 depends=(
-  'ugene'
+  'ugene-bin'
   #bedgraph2bigwig-4
   'bedtools'
   'blast+'
@@ -21,7 +21,7 @@ depends=(
   'mafft'
   'tcoffee'
   'mrbayes'
-  #spidey
+  'ncbi-tools' #spidey depreceated
   #Conduct GO
   #mdseqpos
   #conservation plot
@@ -35,7 +35,7 @@ depends=(
   'python2'
   'perl'
   'vcftools'
-  #tabix
+  #tabix included in samtools
   #spades
   'snpeff'
   'fastqc'
