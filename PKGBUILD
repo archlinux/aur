@@ -6,7 +6,7 @@
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -14,14 +14,15 @@ url='http://ffmpeg.org/'
 license=('custom:nonfree and unredistributable')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
-         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
-         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
-         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
-         'libx265.so' 'libxvidcore.so')
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
+         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
+         'speex' 'v4l-utils' 'xz' 'zlib'
+         'libomxil-bellagio'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
+         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
+         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=(
-    # binary repositories:
+    # official repositories:
        'nasm' 'ladspa'
     # AUR:
         'blackmagic-decklink-sdk'
@@ -78,9 +79,11 @@ build() {
         --enable-libx264 \
         --enable-libx265 \
         --enable-libxcb \
+        --enable-libxml2 \
         --enable-libxvid \
         --enable-shared \
         --enable-version3 \
+        --enable-omx \
         --enable-nonfree \
         --enable-decklink
         
