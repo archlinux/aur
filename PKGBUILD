@@ -10,7 +10,7 @@ pkgname=nvidia-beta-dkms
 pkgver=396.18
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 depends=('dkms' 'linux' "nvidia-utils-beta>=${pkgver}" 'libgl')
