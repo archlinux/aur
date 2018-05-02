@@ -3,7 +3,7 @@
 
 pkgname=python2-youtube-dl-git
 _gitname="youtube-dl"
-pkgver=2017.07.09.r0.65c416dda
+pkgver=2018.05.01.r5.3cc0d0b82
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites (git version)"
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd $srcdir/$_gitname
-  make pypi-files
+  PYTHON="$(/usr/bin/which python2)" make pypi-files
 }
 
 package() {
