@@ -8,14 +8,14 @@
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
-pkgver=1.0.1.rc.74.g2a971b8
+pkgver=1.0.1.rc.76.gcec7fd9
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
 license=('GPL2')
-conflicts=('stumpwm')
-provides=('stumpwm')
+conflicts=('stumpwm' 'stumpwm-contrib')
+provides=('stumpwm' 'stumpwm-contrib')
 
 source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm stumpwm.desktop
         ${_pkgname}-contrib-git::git+https://github.com/stumpwm/stumpwm-contrib)
