@@ -1,8 +1,8 @@
 # Maintainer : Solomon Choina <shlomochoina@gmail.com>
 pkgbase=transmission-cmake
 pkgname=(transmission-cmake-cli transmission-cmake-gtk transmission-cmake-qt libtransmission)
-pkgver=2.93
-pkgrel=4
+pkgver=2.94
+pkgrel=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
