@@ -190,12 +190,35 @@ SDA* portfolio_get_data_array(void) {
         pointer_alloc_check(tcd_index);
         json_index = json_object_array_get_idx(jobj, i);
         strcpy(tcd_index->symbol, json_object_get_string(json_object_object_get(json_index, "Symbol")));
-        portfolio_data->sec_data[i]->amount = json_object_get_double(json_object_object_get(json_index, "Shares"));
+        tcd_index->amount = json_object_get_double(json_object_object_get(json_index, "Shares"));
         tcd_index->total_spent = json_object_get_double(json_object_object_get(json_index, "USD_Spent"));
     }
     json_object_put(jobj);
     string_destroy(&pString);
     return portfolio_data;
+}
+
+void portfolio_store_api_data(SD* sec_data) {
+    if (strcmp(sec_data->symbol, "USD$") != 0) {
+        double* ticker_data = api_get_current_price(sec_data->symbol);
+        sec_data->current_value = sec_data->amount * ticker_data[0];
+        sec_data->total_profit = sec_data->current_value - sec_data->total_spent;
+        sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
+        sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
+        sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[1]);
+        sec_data->one_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[1]) - 1);
+        //sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[2]);
+        //sec_data->seven_day_profit_percent = 100 * (ticker_data[0] - ticker_data[2]);
+        free(ticker_data);
+    } else {
+        sec_data->current_value = sec_data->amount;
+        sec_data->total_profit = sec_data->current_value - sec_data->total_spent;
+        sec_data->total_profit_percent = 100 * sec_data->total_profit / sec_data->total_spent;
+        sec_data->one_day_profit = 0;
+        sec_data->one_day_profit_percent = 0;
+        //sec_data->seven_day_profit = 0;
+        //sec_data->seven_day_profit_percent = 0;
+    }
 }
 
 void portfolio_print_all(void) {

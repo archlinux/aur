@@ -86,6 +86,8 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
  */
 SDA* portfolio_get_data_array(void);
 
+void portfolio_store_api_data(SD* sec_data);
+
 /**
  * Precondition: portfolio_file has been initialized
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
