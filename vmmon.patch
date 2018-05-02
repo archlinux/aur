@@ -14,6 +14,37 @@ index de8162e..6124a71 100644
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Mon, 26 Mar 2018 13:33:32 +0200
+Subject: [PATCH] vmmon: fix indirect call with retpoline build
+diff --git a/vmmon/common/task.c b/vmmon/common/task.c
+index 98cc74a..400ebfe 100644
+--- a/vmmon/common/task.c
++++ b/vmmon/common/task.c
+@@ -1597,12 +1597,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
+    {
+       uint64 raxGetsWiped, rcxGetsWiped;
+ 
++#ifdef CALL_NOSPEC
++      __asm__ __volatile__(CALL_NOSPEC
++                           : "=a" (raxGetsWiped),
++                             "=c" (rcxGetsWiped)
++                           : "0" (codePtr),
++                             "1" (crosspage),
++                             THUNK_TARGET(codePtr)
++                           : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#else
+       __asm__ __volatile__("call *%%rax"
+                            : "=a" (raxGetsWiped),
+                              "=c" (rcxGetsWiped)
+                            : "0" (codePtr),
+                              "1" (crosspage)
+                            : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#endif
++
+    }
+ #elif defined(_MSC_VER)
+    /*
 diff --git a/vmmon/linux/driver.c b/vmmon/linux/driver.c
 index 87cf45b..5390a93 100644
 --- a/vmmon/linux/driver.c
