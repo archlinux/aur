@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=0.8.9
-pkgrel=2
+pkgver=0.8.9.1
+pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
@@ -17,7 +17,6 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/
         coot-guile.patch
         coot-libguile.patch
         coot-utils.patch
-        coot-rdkit.patch
         coot-lbg.patch
         coot-python.patch
         coot-lidia.patch
@@ -25,7 +24,7 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/
         coot.in
         )
 
-sha256sums=('3b4674e9dd83afcb1769df99fbe3d47077a42fe2761ef3defc44722b2d7a14e0'
+sha256sums=('51b6faef11177a8ab682fbe28448f935ae1252ad53b4efa31339ff658a63ff94'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
@@ -33,7 +32,6 @@ sha256sums=('3b4674e9dd83afcb1769df99fbe3d47077a42fe2761ef3defc44722b2d7a14e0'
             'c15e844536f512c2d5524391dbc046a889a0d5f8c23336b854508e453e226911'
             'aa1e18d4ef43fb61e85aba05d13797f9aa2beb1da220405f1eb6058ac36eb60b'
             '059d57dc092feb8134a95e6fa452a2d807ccb3666da374f4a023e5684e3a0dfa'
-            '8b1c499ce5d506419ca72f999b6a0332a2edcc30e3128b1eb0bd3d399d0d80a6'
             '423a50d27639376c52e6987877acea908d854decb48c7c2452f7f5ecb92b60e9'
             'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
             'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18'
@@ -49,7 +47,6 @@ build() {
   patch -Np0 -i "$srcdir/coot-guile.patch"
   patch -Np1 -i "$srcdir/coot-libguile.patch"
   patch -Np0 -i "$srcdir/coot-utils.patch"
-  patch -Np0 -i "$srcdir/coot-rdkit.patch"
   patch -Np0 -i "$srcdir/coot-lbg.patch"
   patch -Np0 -i "$srcdir/coot-python.patch"
   patch -Np0 -i "$srcdir/coot-lidia.patch"
