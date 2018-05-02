@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=bterm
-pkgver=1.0.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="cross-platform terminal emulator"
 arch=('x86_64')
 url="https://github.com/bleenco/bterm"
@@ -9,15 +9,18 @@ license=('MIT')
 conflicts=('bterm-git')
 depends=('nodejs')
 makedepends=('unp')
-source=("https://github.com/bleenco/bterm/releases/download/v1.0.0/${pkgname}_${pkgver}_amd64.deb.zip")
-sha256sums=('31f866b1d8fe0c629747428476ed671e4be9d9779eb30308b2270c4f3554a51d')
+source=("https://github.com/bleenco/bterm/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
+sha256sums=('29660846fedd7081e28ef008acbb396db7c0b3bc71feb0ba78eb5c8ccaf1c5cb')
 
 package() {
-	cd "$srcdir"
-  unp bterm_1.0.0_amd64.deb
-  unp data.tar.xz
+
+  tar -xf data.tar.xz
   cp -r usr $pkgdir
   cp -r opt $pkgdir
-  install -d $pkgdir/usr/bin
-  ln -s /opt/bterm/bterm $pkgdir/usr/bin/$pkgname
+
+   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$pkgname <<END
+     #!/usr/bin/bash
+    /opt/bterm/bterm
+END
+  
 }
