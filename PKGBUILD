@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.16
-pkgver=4.16.6
+pkgver=4.16.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -83,8 +83,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -107,10 +106,6 @@ prepare() {
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58153
-        msg "Fix #58153"
-        patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -375,7 +370,7 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '151f3fedfb025f090e0f3d747890366933236b11d1f2bf8794c7d0309f9bb577c01fbfcd6ac073b3c49657543961592c643e896c6a57fe8df6ecde89270d0b36'
+            '576c2b520d444e11a9ca45ed3ed03822007ab6ff778a1759aa0f65c96946fe3e169e71d48d11e6d3b8627a99cdc20abfb0c84d7b6c9b0d2afa4d5fee9ed3aa41'
             'SKIP'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
@@ -384,10 +379,9 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '23edb1f606212bef6e9f8c395858f46108019d9a0fb9e604b06c0c186927325e182c2b09b5336ef01e68b80c374f751de1ca3edb8ecde7ab4e0e71669cfe4b35'
-            '0ff56daee47c0557bbce45952c85e8a72ef1c58ff66b75f232d6a4823dc1a0de9e52880396e72b4769ea4fa780478249f44f08e038d05a2a9e374f0486661c49'
-            '15efd1a371b6d501b9e1ce813cef477835e20a74b5ee02fe8879bb3155ba072855cc3b22a16ea7f39dc023335c07e60476bb189ec929a3f3430fc35885701b2c'
-            '48b12084b00dd475e876c03e1242a5d06701e94579abf2c318d810bf55c45d54413ec338eca01f42f2e2688f78e5cdfcc2994c55da011d2d64b02df829a5979f')
+            '3c4b172d3a67897757706ecb4f98f8ded83223379332812ef633b3185e7b686509f40b1cae237f23bfc59a6e3cbcb8b8ebd68d1ba02549d525b97c63376cce6a'
+            '213c4223a25ea444857a9a289a454abd91d26b3da349b70d1ec9ccd2443cb2223815819e48c9efd3685c38df1445df532cf149af7d9326dc635ccd32ad135ecc'
+            'cb69ad1a79df45f1c2af8bacb58fb760651bd92154cf1fc495d4032a88e575e2eb4f2fc3a299ca000e87c51338c67cfcf2933a346d23130c215cd404524304dc')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
