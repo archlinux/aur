@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-dpms-helper-git
-pkgver=r2.601b7f0
+pkgver=r6.6e0d292
 pkgrel=1
 pkgdesc='Script and settings for X DPMS'
 arch=('any')
@@ -33,7 +33,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -dm 755 "${pkgdir}"/etc/xdg/autostart
-  install -m 644 data/elementary-dpms-helper.desktop "${pkgdir}"/etc/xdg/autostart/pantheon-dpms-helper.desktop
+  install -m 644 data/io.elementary.dpms-helper.desktop "${pkgdir}"/etc/xdg/autostart/pantheon-dpms-helper.desktop
 }
 
 # vim: ts=2 sw=2 et:
