@@ -1,6 +1,6 @@
 pkgbase = htmldoc
 	pkgdesc = HTML Conversion Software
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = http://www.msweet.org/htmldoc/index.html
 	changelog = ChangeLog
@@ -11,8 +11,8 @@ pkgbase = htmldoc
 	depends = gnutls
 	depends = fltk
 	conflicts = htmldoc-git
-	source = htmldoc-1.9.2.tar.gz::https://github.com/michaelrsweet/htmldoc/archive/v1.9.2.tar.gz
-	sha256sums = f967654f1cd607f80297f46d774b5607cda80ab8199f358d868a7efa77de35d3
+	source = htmldoc-1.9.3.tar.gz::https://github.com/michaelrsweet/htmldoc/archive/v1.9.3.tar.gz
+	sha256sums = 601ad21f6aa7adf57a6fcfeab180dc39d6b99ec2f52f0e559df5bb57f087eb2e
 
 pkgname = htmldoc
 
