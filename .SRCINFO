@@ -1,0 +1,18 @@
+pkgbase = python-mpl-scatter-density
+	pkgdesc = Fast scatter density plots for Matplotlib
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/astrofrog/mpl-scatter-density
+	arch = i386
+	arch = x86_64
+	license = CUSTOM
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-fast-histogram
+	source = https://files.pythonhosted.org/packages/56/03/30d5d902c6ae90b5413e386333532b7b1eaadb096c409fdafc84a3f6c009/mpl-scatter-density-0.3.tar.gz
+	sha256sums = 98953172aea8c652570dcc6238bccd20afb69e6ae9594d4679c08e810b658651
+
+pkgname = python-mpl-scatter-density
+
