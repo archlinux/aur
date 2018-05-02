@@ -2,14 +2,13 @@
 
 pkgname='factomd'
 pkgver='5.0.0'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
 install="$pkgname.install"
-backup=('var/lib/factomd/m2/factomd.conf')
 source=("$pkgname.tar.gz::$url/archive/master.tar.gz" "$pkgname.service" "sysusers-$pkgname.conf")
 md5sums=('3f2862bceea12c50eec644c620c48b96'
          '8b4bbe21ec4972d61bf431b7e98074f3'
@@ -44,8 +43,7 @@ package()
   install -Dsm755 $pkgname     "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir/$pkgname-master"
-  install -Dm640 $pkgname.conf "$pkgdir/var/lib/$pkgname/m2/$pkgname.conf"
-  ln -s          ./            "$pkgdir/var/lib/$pkgname/.factom"
-
+  install -Dm644 $pkgname.conf "$pkgdir/var/lib/$pkgname/m2/$pkgname.conf"
+  ln -s /var/lib/$pkgname      "$pkgdir/var/lib/$pkgname/.factom"
   install -Dm644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
