@@ -1,7 +1,7 @@
 pkgbase = inox-bin
 	pkgdesc = Chromium Spin-off to enhance privacy by disabling data transmission to Google. (binary version)
-	pkgver = 65.0.3325.181
-	pkgrel = 2
+	pkgver = 66.0.3359.139
+	pkgrel = 1
 	url = http://www.chromium.org/
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,6 @@ pkgbase = inox-bin
 	depends = libgcrypt
 	depends = libjpeg
 	depends = libpulse
-	depends = libvpx
 	depends = libwebp
 	depends = libxslt
 	depends = libxss
@@ -43,8 +42,8 @@ pkgbase = inox-bin
 	provides = inox
 	conflicts = inox
 	options = !strip
-	source = inox.pkg.tar.xz::https://github.com/gcarq/inox-patchset/releases/download/65.0.3325.181/inox-65.0.3325.181-2-x86_64.pkg.tar.xz
-	sha256sums = a4572985b07d2102fd921ce3e1009d206b7d929de6cdb8f56670ae9bc50ad7a7
+	source = inox.pkg.tar.xz::https://github.com/gcarq/inox-patchset/releases/download/66.0.3359.139/inox-66.0.3359.139-1-x86_64.pkg.tar.xz
+	sha256sums = d9523fc47ce59691dd6aa7267c4ebab008d1c57e7961d53b21eca9ea061a3432
 
 pkgname = inox-bin
 
