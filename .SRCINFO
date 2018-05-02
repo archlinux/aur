@@ -1,10 +1,11 @@
 pkgbase = ruby-fspath
 	pkgdesc = Better than Pathname.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toy/fspath
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = fspath-3.1.0.gem
 	options = !emptydirs
