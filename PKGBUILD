@@ -4,8 +4,8 @@
 # https://github.com/masterkorp/joplin-pkgbuild
 
 pkgname=joplin
-pkgver=1.0.83
-pkgrel=5
+pkgver=1.0.85
+pkgrel=1
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
 makedepends=("git" "nodejs-lts-carbon" "rsync" "npm")
@@ -14,11 +14,11 @@ provides=("joplin" "joplin-cli")
 url="https://joplin.cozic.net"
 license=("MIT")
 source=("${pkgname}.desktop" "joplin-desktop.sh" "joplin.sh"
-        "https://github.com/laurent22/joplin/archive/v1.0.83.zip")
+        "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
 sha256sums=("9ee4a831a0853ddbdc7279629d8f9238d3737b570898be16176ba0968b53d43d"
             "5a3ace64906080adde5a5ea10ec9221fb2d94de770e6ee35b454aa30608b4097"
             "5e3424162814db56718b01740af1ef7c9b30e00f563040456eeb8b7eaca81427"
-            "55e9f2870a2f57207b9fc9bcaf9043e081c43fe4783be6249066a9a97f5ad29e")
+            "38454cec2ecba0428b5c3214ce90ca945d8191ce5e13826933905adda88c79fa")
 
 build() {
 
