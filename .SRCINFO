@@ -1,0 +1,15 @@
+pkgbase = kwin-effects-appear3
+	pkgdesc = KWin effect that animates the appearing of windows
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zzag/kwin-effects-appear3
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = kdelibs
+	depends = kwin
+	source = kwin-effects-appear3-1.0.tar.gz::https://github.com/zzag/kwin-effects-appear3/archive/1.0.tar.gz
+	sha256sums = e2b420fa78879f80b7e5fdeeeaaf200658fbebd81e3e7f4bd3702cbdda6ee90a
+
+pkgname = kwin-effects-appear3
+
