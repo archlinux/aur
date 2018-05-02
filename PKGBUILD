@@ -9,7 +9,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.2.r11002.g90026f59a
+pkgver=0.8.2.r11045.g762eb3ddc
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -50,7 +50,7 @@ source=(
         'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
-        'caffe2-submodule-eigen'::'git+https://github.com/RLovelett/eigen.git'
+        'caffe2-submodule-eigen'::'git+https://github.com/eigenteam/eigen-git-mirror.git'
         'caffe2-submodule-googletest'::'git+https://github.com/google/googletest.git'
         'caffe2-submodule-nervanagpu'::'git+https://github.com/NervanaSystems/nervanagpu.git'
         'caffe2-submodule-benchmark'::'git+https://github.com/google/benchmark.git'
@@ -70,8 +70,12 @@ source=(
         'caffe2-submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
         'caffe2-submodule-onnx'::'git+https://github.com/onnx/onnx.git'
         'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep.git'
+        'caffe2-submodule-cereal'::'git+https://github.com/USCiLab/cereal'
+        'caffe2-submodule-onnx-tensorrt'::'git+https://github.com/onnx/onnx-tensorrt'
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -104,7 +108,8 @@ prepare() {
     local _submodule_list="tbb catch nanopb pybind11 cub eigen googletest nervanagpu \
                            benchmark protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
-                           python-enum python-peachpy python-six ComputeLibrary onnx ideep"
+                           python-enum python-peachpy python-six ComputeLibrary onnx ideep \
+                           cereal onnx-tensorrt"
                            
     git submodule init
     
