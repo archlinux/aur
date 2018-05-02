@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.1.0
-_build=b13
-_buildtag=20180502
-_randomstring=77a142ac9989
+_version=2018.2.0
+_build=b2
+_buildtag=20180501
+_randomstring=7b8938f7fa83
 _prefix=/opt/UnityBeta
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -22,7 +22,7 @@ depends=('unity-editor-beta'
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('db01d63684c7bf114d9b5df6d0c23f81894dd2d5')
+sha1sums=('42112f9cc81bc941f88230631547b65daed008cc')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
