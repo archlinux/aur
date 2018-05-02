@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.4.1.r95.g89f7f9729
+pkgver=0.7.5.0.r97.g22d1ad995
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'postgresql-libs')
+depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
 optdepends=('postgresql: Database server')
 makedepends=('nodejs')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
@@ -66,13 +66,12 @@ build() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
-  HOME=$_builddir $_bundle config --local build.sigar --with-cppflags=-fgnu89-inline
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
   HOME=$_builddir $_bundle config --local with postgresql
   HOME=$_builddir $_bundle config --local without development:test
-  HOME=$_builddir $_bundle install
+  HOME=$_builddir C_INCLUDE_PATH=/usr/include:/usr/include/tirpc $_bundle install
 
   msg "Patch configuration examples"
   sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
