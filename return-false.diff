@@ -1,0 +1,11 @@
+--- a/src/beerxmlreader.cpp	2018-05-02 17:07:05.326205523 +1200
++++ b/src/beerxmlreader.cpp	2018-05-02 17:06:47.596074348 +1200
+@@ -254,7 +254,7 @@
+     }
+     if (hasError()) {
+         raiseError("Problem reading recipe");
+-        return false;
++        return NULL;
+     }
+ 
+     // set grain use according to recipe type
