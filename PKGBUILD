@@ -1,25 +1,30 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-internet-radio-locator
-pkgver=0.4.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
-arch=('x86_64' 'i686')
-url="https://people.gnome.org/~ole/girl/"
-license=('GPL')
-depends=('libchamplain' 'gst-plugins-bad')
-makedepends=('intltool' 'itstool')
-options=('!emptydirs')
-source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('335ecc3a181f12f4be01e73f7681640665e5fd7032308e579e1af11f0c46dace')
+arch=('x86_64')
+url="https://wiki.gnome.org/Apps/Girl"
+license=(GPL)
+depends=('libchamplain' 'geocode-glib' 'gst-plugins-bad')
+makedepends=('intltool' 'itstool' 'python')
+source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('63b4147f99f47d8fd8e424583e958ca459b92152bb329ef69f4d888eec9dae39')
 
 build() {
-	cd $pkgname-$pkgver
-	./configure --prefix=/usr
-	make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
-package() {
-	cd $pkgname-$pkgver
-	make DESTDIR="$pkgdir" install
+check(){
+  cd $pkgname-$pkgver
+  make check
+}
+
+package(){
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
