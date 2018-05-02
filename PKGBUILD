@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=duniter-desktop-bin
 _pkgname=duniter-desktop
-pkgver=1.6.21
+pkgver=1.6.23
 pkgrel=1
-_gitlab_job_id=3296
+_gitlab_job_id=4085
 pkgdesc="Crypto-currency software to manage libre currency such as Ğ1"
 arch=("x86_64")
 url="https://duniter.org/fr/"
@@ -12,7 +12,7 @@ provides=("duniter-desktop")
 conflicts=("duniter-desktop")
 options=('!strip')
 source=("https://git.duniter.org/nodes/typescript/duniter/-/jobs/${_gitlab_job_id}/artifacts/raw/work/bin/duniter-desktop-v$pkgver-linux-x64.tar.gz")
-sha256sums=('85743b202eccc871805620fd3523409938d814d683648c18168a4091b61781f0')
+sha256sums=('fb12ee2f051334f01ee4a100249a547beff0b0155ae22961bfe538dd3312cd39')
 
 prepare() {
   cd "$srcdir"
