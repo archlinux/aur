@@ -1,9 +1,9 @@
-# Maintainer: Ian Beringer <ian@ianberinger.com>
+# Maintainer: Sergi Jimenez <sjr@redhat.com>
 
 pkgname=python2-google-auth
 _pkgname=google-auth
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 license=('Apache')
 pkgdesc='Google Auth Python Library'
 makedepends=('python2-setuptools')
