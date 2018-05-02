@@ -1,0 +1,20 @@
+pkgbase = python-skorch-git
+	pkgdesc = A scikit-learn compatible neural network library that wraps pytorch
+	pkgver = r489.be0c527
+	pkgrel = 1
+	url = https://github.com/dnouri/skorch
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	depends = python-scikit-learn
+	depends = python-yaml
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-pytorch
+	depends = python-tabulate
+	source = git+https://github.com/dnouri/skorch.git
+	sha512sums = SKIP
+
+pkgname = python-skorch-git
+
