@@ -3,12 +3,13 @@
 pkgname=ruby-in_threads
 gemname=in_threads
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Execute ruby code in parallel.'
 arch=('any')
 url='https://github.com/toy/in_threads'
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
