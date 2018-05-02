@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL')
 options=(emptydirs)
 depends=('rrdtool' 'perl-file-tail')
-source=("http://mailgraph.schweikert.ch/pub/$pkgname-$pkgver.tar.gz"
+source=("https://mailgraph.schweikert.ch/pub/$pkgname-$pkgver.tar.gz"
 mailgraph.service)
 md5sums=('0f0ae91968ea7ae0c1d14985c560530b'
          '92d411ab7f14083a77faa07b2ade653f')
