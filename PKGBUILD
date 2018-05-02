@@ -38,7 +38,7 @@ package() {
 set _CONDA_ROOT /' | cat - conda/shell/etc/fish/conf.d/conda.fish > conda.fish
   install -Dm 644 conda.fish $pkgdir/etc/fish/conf.d/conda.fish
   echo 'set _CONDA_EXE=/usr/bin/conda
-set _CONDA_ROOT /' | cat - conda/shell/etc/profile.d/conda.csh > conda.csh
+set _CONDA_ROOT=/' | cat - conda/shell/etc/profile.d/conda.csh > conda.csh
   install -Dm 644 conda.csh $pkgdir/etc/profile.d/conda.csh
   echo 'export _CONDA_EXE=/usr/bin/conda
 export _CONDA_ROOT=/' | cat - conda/shell/etc/profile.d/conda.sh > conda.sh
