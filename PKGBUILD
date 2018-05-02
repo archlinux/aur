@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2018.02.r76.g2d3d8d4
+pkgver=2018.04.r0.g78764e3
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
