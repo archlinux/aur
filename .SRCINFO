@@ -1,10 +1,11 @@
 pkgbase = image_optim
 	pkgdesc = Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.
 	pkgver = 0.26.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/toy/image_optim
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = advancecomp
 	depends = gifsicle
 	depends = jhead

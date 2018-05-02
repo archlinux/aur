@@ -2,7 +2,7 @@
 
 pkgname=image_optim
 pkgver=0.26.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.'
 arch=('any')
 url='https://github.com/toy/image_optim'
@@ -23,6 +23,7 @@ depends=('advancecomp'
          'ruby-image_size'
          'ruby-in_threads'
          'ruby-progress')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem"
         'image_optim.gemspec.patch')
