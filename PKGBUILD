@@ -1,6 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
-pkgname=graalpython
+pkgname_=graalpython
+pkgname=${pkgname_}-bin
 pkgver_=1.0.0-rc1
 pkgver=${pkgver_/-/_}
 pkgrel=1
@@ -11,7 +12,9 @@ license=('custom')
 depends=('graal')
 makedepends=()
 optdepends=()
-source=("https://github.com/graalvm/$pkgname/releases/download/vm-${pkgver_}/python-installable-linux-amd64.jar")
+provides=("$pkgname_")
+conflicts=("$pkgname_")
+source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver_}/python-installable-linux-amd64.jar")
 sha256sums=('19bafeda777a5522d430629ff2573aeaf9aa280a3475acc82bad354513c469ee')
 
 package() {
