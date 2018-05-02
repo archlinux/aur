@@ -3,15 +3,15 @@
 pypi_name=pathlib2
 pkgbase="python-$pypi_name"
 pkgname=("python-$pypi_name" "python2-$pypi_name")
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Object-oriented filesystem paths for python"
 arch=('any')
 license=('MIT')
-url="https://pypi.python.org/pypi/pathlib2/"
+url="https://pypi.org/project/pathlib2/"
 makedepends=('python' 'python2')
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('89c90409d11fd5947966b6a30a47d18c')
+md5sums=('fd76fb5d0baa798bfe12fb7965da97f8')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
@@ -35,7 +35,7 @@ package_python-pathlib2() {
 
 package_python2-pathlib2() {
   pkgdesc="Python 2 client for ${pypi_name}"
-  depends=('python2' )
+  depends=('python2' 'python2-scandir' )
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build

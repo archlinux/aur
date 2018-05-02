@@ -1,14 +1,14 @@
 pkgbase = python-pathlib2
 	pkgdesc = Object-oriented filesystem paths for python
-	pkgver = 2.3.0
+	pkgver = 2.3.2
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/pathlib2/
+	url = https://pypi.org/project/pathlib2/
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	source = https://pypi.io/packages/source/p/pathlib2/pathlib2-2.3.0.tar.gz
-	md5sums = 89c90409d11fd5947966b6a30a47d18c
+	source = https://pypi.io/packages/source/p/pathlib2/pathlib2-2.3.2.tar.gz
+	md5sums = fd76fb5d0baa798bfe12fb7965da97f8
 
 pkgname = python-pathlib2
 	pkgdesc = Python 3 client for pathlib2
@@ -17,4 +17,5 @@ pkgname = python-pathlib2
 pkgname = python2-pathlib2
 	pkgdesc = Python 2 client for pathlib2
 	depends = python2
+	depends = python2-scandir
 
