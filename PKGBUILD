@@ -1,14 +1,14 @@
 # Maintainer: Ainola
 pkgname=plasma5-applets-plasma-pass-git
 pkgver=r16.d067ec5
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma applet for pass.'
 url="https://cgit.kde.org/scratch/dvratil/plasma-pass.git"
 arch=('x86_64' 'i686')
 license=('custom')  # No license in the repo yet as of writing.
 depends=('pass' 'plasma-framework')
 makedepends=('cmake' 'git')
-conflicts=('renameutils' 'imv')
+provides=('plasma5-applets-plasma-pass')
 source=("git+https://anongit.kde.org/scratch/dvratil/plasma-pass.git")
 sha256sums=('SKIP')
 
@@ -28,5 +28,3 @@ package(){
     cd "${srcdir}/plasma-pass/build"
     make DESTDIR="$pkgdir" install
 }
-
-md5sums=('SKIP')
