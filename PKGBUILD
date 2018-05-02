@@ -1,9 +1,9 @@
 # Maintainer: alive4ever
 pkgname=edk2-ovmf
-pkgver=20170209
-_githash=296153c5
-_relnum=5
-_fedoraversion=27
+pkgver=20171011
+_githash=92d07e4
+_relnum=3
+_fedoraversion=28
 pkgrel=3
 pkgdesc="EDK2 ovmf firmware from Fedora $_fedoraversion rpm"
 arch=('any')
@@ -12,8 +12,8 @@ license=('custom:BSD')
 optdepends=("qemu: To make use of edk2 ovmf firmware")
 source=("http://download.fedoraproject.org/pub/fedora/linux/releases/$_fedoraversion/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}git${_githash}-${_relnum}.fc$_fedoraversion.noarch.rpm"
 	"http://download.fedoraproject.org/pub/fedora/linux/releases/$_fedoraversion/Everything/x86_64/os/Packages/e/edk2-ovmf-ia32-${pkgver}git${_githash}-${_relnum}.fc$_fedoraversion.noarch.rpm")
-sha256sums=('914755cb33a847796a85083557b4ccde9ab4466888c505c56ecfefeb7c05602e'
-            '1c69fc078ece55438c6d1c26ae5a28485341a804260344143178a13ab401b058')
+sha256sums=('96f1afacc5f58182f74e2f5137a296a71cd2275d023b214ee8a0096eb98a787e'
+            '1473db323ea7e6fe979b11fbe6cc603291440acc994bacfbea2f0db3a8caeddc')
 
 package() {
 	cd "${srcdir}"
