@@ -207,8 +207,6 @@ void portfolio_store_api_data(SD* sec_data) {
         sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
         sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[1]);
         sec_data->one_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[1]) - 1);
-        //sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[2]);
-        //sec_data->seven_day_profit_percent = 100 * (ticker_data[0] - ticker_data[2]);
         free(ticker_data);
     } else {
         sec_data->current_value = sec_data->amount;
@@ -216,8 +214,6 @@ void portfolio_store_api_data(SD* sec_data) {
         sec_data->total_profit_percent = 100 * sec_data->total_profit / sec_data->total_spent;
         sec_data->one_day_profit = 0;
         sec_data->one_day_profit_percent = 0;
-        //sec_data->seven_day_profit = 0;
-        //sec_data->seven_day_profit_percent = 0;
     }
 }
 

@@ -81,11 +81,18 @@ String* portfolio_file_get_string(void);
 void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, int option);
 
 /**
- * Returns an SDA* containing data from the portfolio.
- * @return
+ * Returns an SDA array containing data from the portfolio.
+ * length is the number of securities in the portfolio
+ * sec_data is an array of SD pointers to SD structs with the fields symbol, amount, and total_spent populated.
+ * The rest of the values are uninitialized
+ * @return SDA*
  */
 SDA* portfolio_get_data_array(void);
 
+/**
+ * Initializes the rest of the fields in an SD struct after symbol, amount, and total_spent have already been stored
+ * @param sec_data pointer to SD struct
+ */
 void portfolio_store_api_data(SD* sec_data);
 
 /**
