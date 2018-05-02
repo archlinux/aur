@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=lzma_alone
-pkgver=18.01
-_srcver="$(printf '%s' "$pkgver" | tr -d '.')"
+pkgver=18.05
+_srcver="${pkgver/./}"
 pkgrel=1
 pkgdesc='An algorithm used to perform lossless data compression'
 arch=('i686' 'x86_64')
@@ -11,24 +11,28 @@ license=('custom')
 depends=('gcc-libs')
 source=("http://www.7-zip.org/a/lzma${_srcver}.7z")
 noextract=("lzma${_srcver}.7z")
-sha256sums=('630f2534f73633011d60c6724cd8c1b3e549edd844dc09f54aae358d64089802')
+sha256sums=('d4ad382070d20edde117a8e544e7149ab6c84fdedd220aafe75454056a924732')
 
 prepare(){
-    mkdir -p lzma-sdk-"$pkgver"
+    mkdir -p "lzma-sdk-${pkgver}"
     
-    cd lzma-sdk-"$pkgver"
+    cd "lzma-sdk-${pkgver}"
     
-    bsdtar -x -f ../"lzma${_srcver}.7z"
+    bsdtar -x -f "${srcdir}/lzma${_srcver}.7z"
+    
+    # fix build: do not treat warnings as errors
+    cd "${srcdir}/lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon"
+    sed -i '/CXX_C[[:space:]]=/s/[[:space:]]-Werror//' makefile.gcc
 }
 
 build() {
-    cd lzma-sdk-"$pkgver"/CPP/7zip/Bundles/LzmaCon
+    cd "lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon"
     
     make -f makefile.gcc
 }
 
 package() {
-    cd lzma-sdk-"$pkgver"/CPP/7zip/Bundles/LzmaCon
+    cd lzma-sdk-"${pkgver}/CPP/7zip/Bundles/LzmaCon"
     
     install -D -m755 lzma "${pkgdir}/usr/bin/lzma_alone"
     
