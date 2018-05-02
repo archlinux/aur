@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=corrade-git
-pkgver=2018.02.r0.ga5d4c8b7
+pkgver=2018.04.r0.ga8ad660e
 pkgrel=1
 pkgdesc="C++11/C++14 multiplatform utility library (Git version)"
 arch=('i686' 'x86_64')
