@@ -64,8 +64,8 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.16
-pkgver=4.16.6
-pkgrel=2
+pkgver=4.16.7
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -93,7 +93,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
+            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
             'SKIP'
             'f6c986dc5aaf36d9e41db4f63c94dde4ac3007625e3c05ca220ac40b41c6896d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -101,8 +101,8 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
             '61cd4b129eac475ad82fcdbbf9952b80e81e7c893776c00e3b6a658b950d0b26'
-            '0f9cd4d94ad4866925b800ed843faa6485719b67f3f46d406ea1424795f37d31'
-            '7f7a425358830f2cb81f85e25b6047eca89350994e1deb160295082ccbd470ff')
+            '8e56d17c93fe6276046056c8875d04eae8d505369e89db7092b73689bf9bfe55'
+            '6d5821f972861e37606458ac2a03fe289620e079378dd081e49034e1570e7bfb')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
