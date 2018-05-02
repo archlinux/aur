@@ -3,7 +3,7 @@
 
 pkgname=pybind11
 pkgver=2.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -57,11 +57,11 @@ build () {
 package() {
     # python modules
     cd "${pkgname}-${pkgver}"
-    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python3.6" --optimize='1'
+    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python3.6/site-packages" --optimize='1'
     
     # python2 modules
     cd "${srcdir}/${pkgname}-${pkgver}-py2"
-    python2 setup.py install_lib --install-dir="${pkgdir}/usr/lib/python2.7" --optimize='1'
+    python2 setup.py install_lib --install-dir="${pkgdir}/usr/lib/python2.7/site-packages" --optimize='1'
     
     # C++ headers
     cd "${srcdir}/${pkgname}-${pkgver}"
