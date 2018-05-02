@@ -5,10 +5,10 @@
 _pkgname='concourse-fly'
 pkgname="${_pkgname}-git"
 pkgver=3.12.1.rc.8.r0.gbb37e22
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface to the Concourse continuous integration tool'
 arch=('x86_64')
-url='https://concourse.ci/fly-cli.html'
+url='https://concourse-ci.org/fly.html'
 license=('Apache')
 makedepends=('go')
 checkdepends=()
