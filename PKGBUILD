@@ -1,6 +1,7 @@
-# Maintainer: Matt Welch <matt dot welch at gmail dot com>
-# Co-Maintainer : Anish Bhatt <anish at gatech dot edu>
-# Co-Maintainer: Det <nimetonmaili gmail a-dot com>
+# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Contributor: Matt Welch <matt dot welch at gmail dot com>
+# Contributor: Anish Bhatt <anish at gatech dot edu>
+# Contributor: Det <nimetonmaili gmail a-dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Jason Melton <jason dot melton at gmail dot com>
 # Contributor: Youpi <max dot flocard at gmail dot com>
