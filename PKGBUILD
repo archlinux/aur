@@ -1,8 +1,8 @@
 # Maintainer: welblade 
 # Based on package of: Manuel Kauschinger <admin at bruzzzla dot de>
 
-pkgname=firefox-esr
-_pkgname=${pkgname/-bin/}
+pkgname=firefox-esr-pt-br-bin
+_pkgname=firefox-esr
 pkgver=52.7.4
 pkglang=pt-BR
 pkgrel=1

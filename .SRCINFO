@@ -1,4 +1,4 @@
-pkgbase = firefox-esr
+pkgbase = firefox-esr-pt-br-bin
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
 	pkgver = 52.7.4
 	pkgrel = 1
@@ -28,5 +28,5 @@ pkgbase = firefox-esr
 	source_x86_64 = http://ftp.mozilla.org/pub/firefox/releases/52.7.4esr/linux-x86_64/pt-BR/firefox-52.7.4esr.tar.bz2
 	sha512sums_x86_64 = ca027e5527b6c5d76ef80c3795e160a24327cba93be9f34777b409ada35eaaa48fe9aed28e3f74720ee82e5218f777a6d1ed233f971c7b75e5d3e4d0a2747c64
 
-pkgname = firefox-esr
+pkgname = firefox-esr-pt-br-bin
 
