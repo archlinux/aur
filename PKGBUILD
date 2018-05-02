@@ -1,17 +1,17 @@
 
 pkgname=python-django-auth-ldap
 _pkgname=django-auth-ldap
-pkgver=1.3.0
-_pkgver=1.3.0
+pkgver=1.5.0
+_pkgver=1.5.0
 pkgrel=1
 pkgdesc="This is a Django authentication backend that authenticates against an LDAP service."
 arch=(any)
 url="https://pypi.python.org/pypi/django-auth-ldap"
 license=('LGPL')
-depends=('python' 'python-django')
+depends=('python' 'python-django' 'python-ldap')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/32/67/f13dcca1aae0fa6ae06d36a73137cfe80b67ed7c52fd75b5d76480c665b1/$_pkgname-$_pkgver.tar.gz)
-md5sums=('28c82540580b08388fe56082b152f82f')
+source=(https://files.pythonhosted.org/packages/0f/d8/5295b55c12b99173a01a960fd0027548f995230714b8f636499bdf76e1fa/django-auth-ldap-1.5.0.tar.gz)
+md5sums=('519ef7b44de31a4b4c113b517fce0e02')
 
 package() {
   cd "$_pkgname-$_pkgver"
