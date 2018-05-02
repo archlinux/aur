@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <fh@infinicode.de>
 
 pkgname=python-glue
-pkgver=0.11
+pkgver=0.13
 pkgrel=1
 pkgdesc="Glue is a simple command line tool to generate CSS sprites"
 arch=('i386' 'x86_64')
@@ -11,7 +11,7 @@ depends=('python>=3.1 python-jinja python-pillow')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(https://github.com/jorgebastida/glue/archive/${pkgver}.tar.gz)
-md5sums=('1e0420af0da9004de621a054094f9de0')
+md5sums=('079306927081214e1540de2da0624e3b')
 
 package(){
     cd "${srcdir}/glue-${pkgver}"
