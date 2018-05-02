@@ -1,8 +1,8 @@
 pkgbase = disk-test
 	pkgdesc = Block device read-write test utility
 	pkgver = 0.1.0
-	pkgrel = 3
-	url = http://eomanis.mooo.com/permshare/disk-test/index.html
+	pkgrel = 4
+	url = http://eomanis.mooo.com/permshare/disk-test/index.xhtml
 	arch = any
 	license = GPL3
 	depends = bash
