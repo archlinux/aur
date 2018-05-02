@@ -1,7 +1,7 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
 	pkgver = 18.04.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
 	groups = kde-applications
@@ -26,10 +26,12 @@ pkgbase = dolphin-meld
 	conflicts = dolphin=18.04.0
 	source = https://download.kde.org/stable/applications/18.04.0/src/dolphin-18.04.0.tar.xz
 	source = https://download.kde.org/stable/applications/18.04.0/src/dolphin-18.04.0.tar.xz.sig
+	source = kdebug-393528.patch::https://cgit.kde.org/dolphin.git/patch/?id=0c05b992
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	sha256sums = b5068a26b34e2edac25f3528799ce48c7d211ee70113751275b01a5c87ba6d53
 	sha256sums = SKIP
+	sha256sums = 5b05a6658ebc633e36fd86b8e8f90751a200bb1aa15a11cc5500fa87e017bf89
 
 pkgname = dolphin-meld
 
