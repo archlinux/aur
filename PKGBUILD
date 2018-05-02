@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=2018.02.r0.gaefb60c
+pkgver=2018.04.r0.g4cde7a2
 pkgrel=1
 pkgdesc="Examples for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
