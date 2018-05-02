@@ -1,5 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=otbluh
+pkglongname=onetimebluh
 pkgver=0.1
 pkgrel=1
 pkgdesc="Simple one time pad implementation with key generating support called onetimebluh due to its features"
@@ -14,21 +15,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=("https://git.eigenlab.org/seppia/onetimebluh/repository/v${pkgver}/archive.tar.gz")
-noextract=('archive.tar.gz')
-sha256sums=('ebe244ec51b96df2b61ba7594819103dfce44f0171f87f8620b3dec92c06b265')
-
-prepare() {
-	mkdir "${srcdir}/${pkgname}"
-	tar xf archive.tar.gz -C "${srcdir}/${pkgname}" --strip-components=1
-}
+source=("https://git.seppia.net/onetimebluh.git/snapshot/${pkglongname}-${pkgver}.tar.gz")
+sha256sums=('efde76c8832d8f9bdd514cd4906424f86cf40f9d183e2b047c64a05a3ee88728')
 
 build() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkglongname}-${pkgver}"
 	make all
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkglongname}-${pkgver}"
 	make DESTDIR="$pkgdir/" install
 }

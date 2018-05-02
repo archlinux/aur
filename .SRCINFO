@@ -10,9 +10,8 @@ pkgbase = otbluh
 	depends = openssl
 	provides = otbluh
 	conflicts = otbluh,otbluh
-	noextract = archive.tar.gz
-	source = https://git.eigenlab.org/seppia/onetimebluh/repository/v0.1/archive.tar.gz
-	sha256sums = ebe244ec51b96df2b61ba7594819103dfce44f0171f87f8620b3dec92c06b265
+	source = https://git.seppia.net/onetimebluh.git/snapshot/onetimebluh-0.1.tar.gz
+	sha256sums = efde76c8832d8f9bdd514cd4906424f86cf40f9d183e2b047c64a05a3ee88728
 
 pkgname = otbluh
 
