@@ -1,4 +1,8 @@
 2018-04-10 Maik Broemme
+	* 4.10.0-6
+	Replace 'mingw-w64-binutils' with 'binutils'
+
+2018-04-10 Maik Broemme
 	* 4.10.0-5
 	Fix missing path of '--with-system-ovmf' parameter
 	Fix compilation issue with glibc-2.27

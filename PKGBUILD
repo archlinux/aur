@@ -12,8 +12,8 @@ _build_stubdom=${build_stubdom:-false}
 
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
-pkgver=4.10.0
-pkgrel=5
+pkgver="4.10.0"
+pkgrel="6"
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
@@ -22,6 +22,7 @@ validpgpkeys=("23E3222C145F4475FA8060A783FE14C957E82BD9")
 options=(!buildflags !strip)
 makedepends=(
   "bin86"
+  "binutils>=2.30"
   "bridge-utils"
   "brltty"
   "cmake"
@@ -43,7 +44,6 @@ makedepends=(
   "libpng"
   "lzo"
   "markdown"
-  "mingw-w64-binutils"
   "nasm"
   "ocaml-findlib"
   "pandoc"
@@ -179,12 +179,6 @@ prepare() {
   msg2 'Applying misc compile fixes...'
   patch -Np1 -i "${srcdir}/ocaml-unsafe-string.patch"
 
-  # Patch EFI binary build with mingw.
-  msg2 'Patching EFI build...'
-  sed -i.bak '/ EFI_LD/s/LD/LD_EFI/' xen/arch/x86/Makefile
-  sed -i.bak 's/LD/LD_EFI/' xen/arch/x86/efi/Makefile
-  sed -i.bak '/EFI_MOUNTPOINT .*/aLD_EFI ?= $(LD)' xen/Makefile
-
   # Fix Install Paths.
   msg2 'Fixing installation paths...'
   sed 's,/var/run,/run,g' -i tools/hotplug/Linux/locking.sh
@@ -210,7 +204,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  export LD_EFI='/usr/x86_64-w64-mingw32/bin/ld'
   if [ "${_build_stubdom}" = true ] ; then
     _config_stubdom='--enable-stubdom'
   else

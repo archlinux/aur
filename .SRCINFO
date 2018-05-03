@@ -1,11 +1,12 @@
 pkgbase = xen
 	pkgver = 4.10.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.xenproject.org/
 	changelog = ChangeLog
 	arch = x86_64
 	license = GPL2
 	makedepends = bin86
+	makedepends = binutils>=2.30
 	makedepends = bridge-utils
 	makedepends = brltty
 	makedepends = cmake
@@ -27,7 +28,6 @@ pkgbase = xen
 	makedepends = libpng
 	makedepends = lzo
 	makedepends = markdown
-	makedepends = mingw-w64-binutils
 	makedepends = nasm
 	makedepends = ocaml-findlib
 	makedepends = pandoc
