@@ -1,0 +1,18 @@
+pkgbase = libnetfilter_queue-git
+	pkgdesc = Library providing an API to packets that have been queued by the kernel packet filter
+	pkgver = 1.0.3.r0.g601abd1
+	pkgrel = 1
+	url = https://netfilter.org/projects/libnetfilter_queue/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libnfnetlink
+	depends = libmnl
+	provides = libnetfilter_queue
+	conflicts = libnetfilter_queue
+	source = git://git.netfilter.org/libnetfilter_queue
+	sha256sums = SKIP
+
+pkgname = libnetfilter_queue-git
+
