@@ -1,0 +1,11 @@
+pkgbase = fargate-cli
+	pkgdesc = CLI for AWS Fargate
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/jpignata/fargate
+	arch = any
+	license = MIT
+	makedepends = unzip
+
+pkgname = fargate-cli
+
