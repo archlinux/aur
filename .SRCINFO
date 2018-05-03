@@ -1,0 +1,14 @@
+pkgbase = kde-service-menu-reimage
+	pkgdesc = Manipulate images e their metadata
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.egregorion.net
+	arch = any
+	license = GPL-3.0+
+	depends = dolphin
+	depends = kdialog
+	source = https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage-2.0_all.tar.gz
+	md5sums = 3d64be62d805575d15f8c284d84daff1
+
+pkgname = kde-service-menu-reimage
+
