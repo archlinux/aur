@@ -1,0 +1,14 @@
+pkgbase = python2-urlreader
+	pkgdesc = A simple Python package to download documents using HTTP
+	pkgver = 0.0a1
+	pkgrel = 1
+	url = https://pypi.org/project/URLReader/
+	arch = any
+	license = GPL
+	depends = python2
+	provides = =0.0a1
+	source = https://files.pythonhosted.org/packages/f0/2a/164a5671cc01f315694a3e1e9cc4f36d17f3d25e3ca4d0ab8e3d8fa0e69e/URLReader-0.0a1.tar.gz
+	md5sums = 5a96519a24099aae05fc0612d9cfd650
+
+pkgname = python2-urlreader
+
