@@ -1,0 +1,11 @@
+pkgbase = susu
+	pkgdesc = Really really dirty bash script that works on .ass subtitles
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	source = susu-1.0.tar.gz
+	md5sums = fe95776392cb67dadf40aea9fe9e67e9
+
+pkgname = susu
+
