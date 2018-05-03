@@ -1,27 +1,28 @@
 # Maintainer: William J. Bowman <aur@williamjbowman.com>
 
 pkgname=mathcomp
-pkgver=1.6.4
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
+# sigh. they rename the folder based on the commit hash, and glob matching can cause errors
+_pkgcommitid=591c3e4
 pkgdesc="The entire mathematical components library for Coq."
 url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('coq>=8.5' 'coq<=8.8') # Works with 8.4pl6, 8.5pl3, 8.6.0, and 8.7 but don't quite know how to say that
+depends=('coq>=8.6' 'coq<=8.8')
 source=(mathcomp-$pkgver.tar.gz::https://github.com/math-comp/math-comp/tarball/mathcomp-$pkgver)
-sha256sums=('8595c208ed1f5589552de498ef2c043b577228bd3c048775fa51cea90c603adb')
-sha512sums=('972cbaf36653ea30c77c876095bac8aa779b36fa18f0c7f753933569fe8e9663cd57c1b4e49cbe5cbdb1cadf1415b57426d4ecbe318d1e24b2a3b5966fe194a6')
+sha256sums=('2d30a244769f3c7d628bff2f9118df935cd99dad774842b0e9d35bafdb3e02ea')
+sha512sums=('332f79e97cc3a0fe72cff7e96080c34d5de11ff2c86bf1f4ed4953457cb3cd36795502e4fed24dec698492419076acd97571c154d946ba91b02ad27389423a61')
 
 build() {
-  cd $srcdir/math-comp-math-comp-*/$pkgname
+  cd $srcdir/math-comp-math-comp-${_pkgcommitid}/$pkgname
 
   # Per recommendations from README, use -j 3
   make -j 3
 }
 
 package(){
-  cd $srcdir/math-comp-math-comp-*/$pkgname
-  echo 'COQMF_WINDRIVE=' > Makefile.coq.local
+  cd $srcdir/math-comp-math-comp-${_pkgcommitid}/$pkgname
   make DSTROOT="${pkgdir}" install
 }
 
