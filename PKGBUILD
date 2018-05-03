@@ -1,7 +1,7 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=py3dg200
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="a small manager for the Global Sat DG200 GPS datalogger allowing track download and device configuration"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://coillet.eu/Site/Dev.php?lang=en"
 depends=('python-gobject' 'python-pyserial')
 license=('gpl3')
 source=("http://coillet.eu/Site/Documents/PyDG200/Py3DG200-${pkgver}.tar.bz2" "py3dg200.desktop")
-md5sums=('dc1294c1d72c12250e7f9b67added6a6'
+md5sums=('b72d42e63a04e28932aa43a129dbcfc8'
          'c9f370080a1af0074817b20452831e39')
 
 package() {
