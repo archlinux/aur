@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20171213.308c8d8e
+	pkgver = 20180502.effc6a80
 	pkgrel = 1
 	url = http://mupdf.com/
 	arch = i686
@@ -17,12 +17,12 @@ pkgbase = mupdf-git
 	provides = mupdf
 	conflicts = mupdf
 	source = git://git.ghostscript.com/mupdf.git
+	source = lcms2::git://git.ghostscript.com/thirdparty-lcms2.git
 	source = git://git.ghostscript.com/mujs.git
-	source = cmm_ctx_gone.patch
 	source = desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = df0d070fe988c5b1f610d21a90d3028f03c73829c026510b2789d7c1f285fbf5
+	sha256sums = SKIP
 	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
 
 pkgname = mupdf-git

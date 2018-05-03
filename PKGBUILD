@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20171213.308c8d8e
+pkgver=20180502.effc6a80
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,12 +13,12 @@ license=('AGPL3')
 makedepends=('git')
 depends=('freeglut' 'glu' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
+        'lcms2::git://git.ghostscript.com/thirdparty-lcms2.git'
         'git://git.ghostscript.com/mujs.git'
-        'cmm_ctx_gone.patch'
         'desktop')
 sha256sums=('SKIP'
             'SKIP'
-            'df0d070fe988c5b1f610d21a90d3028f03c73829c026510b2789d7c1f285fbf5'
+            'SKIP'
             '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
 conflicts=("${_pkgname}")
@@ -32,24 +32,20 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
+	sed "/lcms2.git/c url = $(pwd)/../lcms2" -i .gitmodules
 	sed "/mujs.git/c url = $(pwd)/../mujs" -i .gitmodules
+	git submodule update --init thirdparty/lcms2
 	git submodule update --init thirdparty/mujs
-
-	# link against system libopenjp2 dynamically
-	sed '/#define OPJ_STATIC/d' -i source/fitz/load-jpx.c
 
 	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
-
-	# fix moronic lcms2 version
-	sed 's/lcms2art/lcms2/g' -i source/fitz/color-lcms.c
-	patch -p1 -i ../cmm_ctx_gone.patch
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	make release XCFLAGS="$CFLAGS -fPIC" XLIBS="$LDFLAGS"
+	export USE_SYSTEM_LIBS=yes
+	make release
 }
 
 package() {
