@@ -3,7 +3,7 @@
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman-git
-pkgver=2.3.0.20180226
+pkgver=2.3.1.20180418
 pkgrel=1
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 url="https://github.com/StevensNJD4/LazyMan"
@@ -38,8 +38,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/LazyMan"
-    patch -Np0 -i "../remove_privileged_actions.patch"
-    patch -Np0 -i "../add_mlbnetwork.patch"
+    #patch -Np0 -i "../remove_privileged_actions.patch"
+    #patch -Np0 -i "../add_mlbnetwork.patch"
 }
 
 build() {
