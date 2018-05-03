@@ -1,0 +1,21 @@
+pkgbase = bison2
+	pkgdesc = The GNU general-purpose parser generator, older version
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/bison/bison.html
+	arch = x86_64
+	groups = base-devel
+	license = GPL3
+	depends = glibc
+	depends = m4
+	depends = sh
+	depends = libiconv
+	conflicts = bison
+	source = http://ftp.gnu.org/gnu/bison/bison-2.7.1.tar.gz
+	source = http://ftp.gnu.org/gnu/bison/bison-2.7.1.tar.gz.sig
+	validpgpkeys = 7DF84374B1EE1F9764BBE25D0DDCAA3278D5264E
+	md5sums = f00906151ff9d2cb599cdeae36d902ee
+	md5sums = SKIP
+
+pkgname = bison2
+
