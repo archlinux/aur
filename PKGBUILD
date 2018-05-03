@@ -21,7 +21,7 @@ source=($pkgname-$pkgver.tar.gz)
 noextract=()
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "pxls-$pkgver"
   mkdir -p "$pkgdir/usr/bin"
   cp -p "pxls" "$pkgdir/usr/bin"
   cp -p "pxlst" "$pkgdir/usr/bin"
