@@ -4,39 +4,38 @@
 # Contributor: Robert Gregor <gimpΘpop·de>
 
 pkgname=libvorbis-aotuv
-pkgver=b6.03
-pkgrel=6
-_releasedate=20110424-20150808
-_srcrel=2015
-pkgdesc='A fork of libvorbis intended to provide better quality sound at low to medium bitrates.'
+pkgver=b6.03.2018
+pkgrel=1
+_srcrel=beta6.03-2018
+pkgdesc="aoTuV is software library for encoding and decoding of OggVorbis that modified encoding part of Xiph.Org's libvorbis."
 arch=('i686' 'x86_64')
 url='http://www.geocities.jp/aoyoume/aotuv'
 license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis')
-provides=('libvorbis=1.3.5' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
-source=("http://www.geocities.jp/aoyoume/aotuv/source_code/${pkgname}_${pkgver}_${_srcrel}.tar.bz2")
-md5sums=('6eaebfbe8817ceda7ff5a7ef462e7a91')
-sha256sums=('fba6724d2bc2b6a911a25e60f21a45749d507f181a9e150415ce41e4d03bc08f')
+provides=('libvorbis=1.3.6' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
+source=("https://github.com/AO-Yumi/vorbis_aotuv/archive/${_srcrel}.tar.gz")
+md5sums=('ed5130f9f3196f0dd0a6e50bc3c27586')
+sha256sums=('abbb526b241442d66ab4226a2beea39a0d61a57e2b05aca98cb7e823585d8ba2')
 
 prepare() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "vorbis_aotuv-${_srcrel}"
 	chmod +x configure
 }
 
 build() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "vorbis_aotuv-${_srcrel}"
 	./configure --prefix=/usr --disable-static
 	make
 }
 
 check() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "vorbis_aotuv-${_srcrel}"
 	make -j1 check
 }
 
 package() {
-	cd "aotuv-${pkgver}_${_releasedate}"
+	cd "vorbis_aotuv-${_srcrel}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
