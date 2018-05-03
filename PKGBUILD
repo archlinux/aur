@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/virtualsquare/$_pkgname"
 license=('GPL2')
 groups=('view-os')
+depends=('purelibc-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
