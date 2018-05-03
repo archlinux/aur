@@ -1,6 +1,6 @@
 pkgbase = moarvm
 	pkgdesc = Runtime built for the 6model object system.
-	pkgver = 2018.03
+	pkgver = 2018.04.1
 	pkgrel = 1
 	url = http://moarvm.com/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = moarvm
 	makedepends = perl>=5.8
 	depends = glibc
 	options = !makeflags
-	source = http://moarvm.com/releases/MoarVM-2018.03.tar.gz
-	sha512sums = be613e038747d771de03129e52d6e65712ddf6f73ed87eb008ae78968f2d516b4fded792a67e1ce031378c223408101ceaf25f90abf9ba35ee20c6e8401b46f1
+	source = http://moarvm.com/releases/MoarVM-2018.04.1.tar.gz
+	sha512sums = fb79b14cadae5475df48affecc72a07085cce963f4e34e7bb20511718f73d904f53b65d2bf30c0128917b7066430cc3fedee24f97bfbec24bbed46f42bcf0082
 
 pkgname = moarvm
 
