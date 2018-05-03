@@ -4,8 +4,8 @@ _pkgname="vuos"
 
 pkgname="$_pkgname-git"
 pkgver=r106.1736d89
-pkgrel=1
-pkgdesc="A glibc overlay library for process self-virtualization"
+pkgrel=2
+pkgdesc="view based o.s."
 arch=('any')
 url="https://github.com/virtualsquare/$_pkgname"
 license=('GPL2')
