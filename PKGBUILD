@@ -2,30 +2,29 @@
 # Contributor: James Duley <jagduley gmail>
 
 pkgname=python-slycot-git
-_gitname=Slycot
-pkgver=140.234447c
-pkgrel=2
+pkgver=186.a41ac6e
+pkgrel=1
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
-url="http://github.com/jgoppert/Slycot"
+url="http://github.com/python-control/Slycot"
 license=('GPL2')
 depends=('python-numpy-openblas')
 makedepends=('git' 'gcc-fortran')
 optdepends=()
 provides=('python-slycot')
 conflicts=('python-slycot')
-source=(git+https://github.com/jgoppert/Slycot.git)
+source=(git+https://github.com/python-control/Slycot.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/Slycot"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
   export LDFLAGS="$LDFLAGS -shared"
 
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/Slycot"
   python setup.py config_fc --fcompiler=gnu95 install --root="$pkgdir/" --optimize=1
 }
 
