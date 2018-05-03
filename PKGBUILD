@@ -60,11 +60,13 @@ _mq_enable=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_srcname=linux-4.14
-_pkgver=4.14.34
+_major=4.14
+_srcname=linux-${_major}
+_minor=34
 _rtver=27
+pkgver=${_major}.${_minor}.${_rtver}
+_pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgver=${_pkgver}.${_rtver}
 pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
