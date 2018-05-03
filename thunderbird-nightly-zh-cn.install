@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "Nota: the binary is called 'thunderbird-nightly-zh-cn'"
+    echo ""
+    post_upgrade
+}
+
+post_upgrade() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+    post_upgrade
+}
