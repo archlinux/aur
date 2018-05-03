@@ -1,6 +1,6 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn
-pkgver=40900.0.0
+pkgver=40901.0.0
 pkgrel=1
 pkgdesc="A terminal-based chat client for MatterMost"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/matterhorn-chat/matterhorn/releases/download/${pkgver}/matterhorn-${pkgver}-ubuntu-x86_64.tar.bz2")
-sha1sums=('e3d485f9d21213553e4f76e3f3fa6542cdcb9106')
+sha1sums=('558245deb32851cb39df761cfc40fed887e75990')
 noextract=()
 
 package() {
