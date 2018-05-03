@@ -1,0 +1,14 @@
+pkgbase = python2-getmediumurl
+	pkgdesc = A simple Python package to get URLs of downloadable media
+	pkgver = 0.0a5
+	pkgrel = 1
+	url = https://pypi.org/project/URLReader/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-urlreader
+	source = https://files.pythonhosted.org/packages/ec/34/607e05152ec7850e69ca68e70293b7926ac86a20a58569cef493bb23a7cc/GetMediumURL-0.0a5.tar.gz
+	md5sums = 0d3660e178bd58549d7a5718f8e39de2
+
+pkgname = python2-getmediumurl
+
