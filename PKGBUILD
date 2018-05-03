@@ -5,7 +5,7 @@ pkgver=ccid.1.4.28.r9.ge637b6f
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (git version)"
 arch=('x86_64')
-url="http://pcsclite.alioth.debian.org/ccid.html"
+url="https://ccid.apdu.fr/"
 license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusb' 'flex')
 backup=(etc/reader.conf.d/libccidtwin)
@@ -13,9 +13,9 @@ makedepends=('pkg-config' 'git')
 provides=("ccid")
 conflicts=("ccid")
 backup=(etc/reader.conf.d/libccidtwin)
-source=("git+https://alioth.debian.org/anonscm/git/pcsclite/CCID.git"
-        "git+https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git"
-        "git+https://anonscm.debian.org/git/pcsclite/contrib.git")
+source=("git+https://salsa.debian.org/rousseau/CCID.git"
+        "git+https://salsa.debian.org/rousseau/PCSC.git"
+        "git+https://salsa.debian.org/rousseau/PCSC-contrib.git")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=(F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E) # Ludovic Rousseau <ludovic.rousseau@free.fr>
 
@@ -28,7 +28,7 @@ prepare() {
     cd ${srcdir}/CCID
     git submodule init 
     git config submodule.PCSC.url $srcdir/PCSC
-    git config submodule.contrib_libPCSCv2part10.url $srcdir/contrib
+    git config submodule.PCSC-contrib.url $srcdir/PCSC-contrib
     git submodule update
 }
 
