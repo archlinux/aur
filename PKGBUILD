@@ -6,7 +6,7 @@
 
 pkgname=apvlv
 pkgver=0.1.5
-pkgrel=6
+pkgrel=7
 pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
 arch=('x86_64')
 url="http://naihe2010.github.com/apvlv/"
@@ -16,10 +16,10 @@ makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::https://github.com/naihe2010/apvlv/archive/v$pkgver.tar.gz
         gcc6.patch
         gcc7.patch)
+sha256sums=('dca98157e63c9fec12d6514751ea26549813dc7b87d838b0003f31a444100a8a'
+            '69f28540aec5b287208d0c5e3755ab2eab483fc5d90316620d0ab523e51ae9f9'
+            'c53b9c44ca1bcfa689cd363f350a18cf7f915212c2ca9e726d2f0226c8faccf6')
 backup=('etc/apvlvrc')
-md5sums=('e200e1f8ad7e765399d08845d6de2c9b'
-         'a0cb038ddb3c3e0c8a0e991f1deb2ad3'
-         'dd9713d10716c43dab7722d8b6107ea8')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  mkdir -p build
+  [[ -d build ]] || mkdir -p build
   cd build
 
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
