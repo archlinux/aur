@@ -1,0 +1,12 @@
+pkgbase = mallet
+	pkgdesc = MAchine Learning for LanguagE Toolkit
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = http://mallet.cs.umass.edu/index.php
+	arch = x86_64
+	license = CPL1.0
+	source = http://mallet.cs.umass.edu/dist/mallet-2.0.8.tar.gz
+	sha512sums = 6390dfc3a9d9637397b85ce63c66324e9feade430d46129e2ca3bde3a0c14fdf04bdc33c2a0d3329c070d2c93b6326bec1bcdccf2621cf95097dc24f3558fcb3
+
+pkgname = mallet
+
