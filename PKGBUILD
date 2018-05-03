@@ -1,43 +1,39 @@
-# P1mper : robertfoster
+# Maintainer : robertfoster
+
 pkgname=watchvideo-svn
-pkgver=120
+pkgver=r469
 pkgrel=1
 pkgdesc="A small application to play, download, rip or convert (to Ogg) videos from popular YouTube-like sites, without the need of the proprietary Flash plugin."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/watchvideo/index.html"
 license=('GNU Affero GPL')
-groups=()
-depends=('qt' 'python2' 'python-lxml' 'python-simplejson' 'mplayer' 'pyqt' 'mediainfo')
-optdepends=('python-notify' 'ffmpeg' 'ffmpeg2theora')
-makedepends=('subversion' 'python2-distribute')
+depends=('qt4' 'python2' 'python2-lxml' 'python2-simplejson' 'mplayer' 'python2-pyqt4' 'mediainfo' 'python2-getmediumurl')
+optdepends=('python2-notify' 'ffmpeg' 'ffmpeg2theora')
+makedepends=('subversion' 'python2-distribute' 'rst2html5')
+source=("${pkgname%%-svn}::svn://svn.sv.gnu.org/watchvideo")
 
-_svntrunk="svn://svn.sv.gnu.org/watchvideo"
-_svnmod=watchvideo
-
-build() {
-   cd ${srcdir}
-  rm -rf $srcdir/build
-
-  if [ -d ${_svnmod} ]; then
-    msg "Updating SVN tree ..."
-    cd ${_svnmod}
-    svn revert -R .
-    svn up -r $pkgver || return 1
-    msg "SVN update finished, starting build ..."
-  else
-    msg "Doing SVN checkout ..."
-    svn co ${_svntrunk} ${_svnmod} -r $pkgver || return 1
-    cd ${_svnmod}
-    msg "SVN checkout finished, starting build ..."
-  fi
-  cp -r $srcdir/${_svnmod} $srcdir/build
-  cd $srcdir/build
-  export PYTHON=python2
-  python2 setup.py build 
-  python2 setup.py install --root=$pkgdir
-  chmod +x utils/install-desktop-entry.sh
-  utils/install-desktop-entry.sh $pkgdir/usr
-  mv $pkgdir/usr/share/applications $pkgdir/usr/share/watchvideo
+pkgver() {
+	cd $srcdir/${pkgname%%-svn}
+	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
+build() {
+	cd $srcdir/${pkgname%%-svn}
+	python2 setup.py build
+        sed -i 's/pyuic4/python2-pyuic4/g' Makefile
+        sed -i 's/lrelease/lrelease-qt4/g' Makefile
+	sed -i 's/easy_install/echo/g' Makefile	
+	make all
+}
 
+package() {
+	cd $srcdir/${pkgname%%-svn}
+	python2 setup.py install --root=$pkgdir
+	make DESTDIR="$pkgdir" PYTHON=python2 prefix=/usr install-data
+	make DESTDIR="$pkgdir" PYTHON=python2 prefix=/usr installdirs
+        cp -r ${pkgname%%-svn}/ui_* $pkgdir/usr/lib/python2.7/site-packages/watchvideo/
+	chmod 775 -R $pkgdir/usr/lib/python2.7/site-packages/watchvideo/ui_*
+	rm $pkgdir/usr/lib/python2.7/site-packages/watchvideo/*.pyc
+}
+
+md5sums=('SKIP')

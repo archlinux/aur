@@ -1,6 +1,6 @@
 pkgbase = watchvideo-svn
 	pkgdesc = A small application to play, download, rip or convert (to Ogg) videos from popular YouTube-like sites, without the need of the proprietary Flash plugin.
-	pkgver = 120
+	pkgver = r469
 	pkgrel = 1
 	url = http://www.nongnu.org/watchvideo/index.html
 	arch = i686
@@ -8,16 +8,20 @@ pkgbase = watchvideo-svn
 	license = GNU Affero GPL
 	makedepends = subversion
 	makedepends = python2-distribute
-	depends = qt
+	makedepends = rst2html5
+	depends = qt4
 	depends = python2
-	depends = python-lxml
-	depends = python-simplejson
+	depends = python2-lxml
+	depends = python2-simplejson
 	depends = mplayer
-	depends = pyqt
+	depends = python2-pyqt4
 	depends = mediainfo
-	optdepends = python-notify
+	depends = python2-getmediumurl
+	optdepends = python2-notify
 	optdepends = ffmpeg
 	optdepends = ffmpeg2theora
+	source = watchvideo::svn://svn.sv.gnu.org/watchvideo
+	md5sums = SKIP
 
 pkgname = watchvideo-svn
 
