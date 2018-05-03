@@ -2,7 +2,7 @@
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
@@ -51,7 +51,8 @@ build() {
 package_qpmx() {
   optdepends=("qpmx-qpmsource: Adds support for cloning qpm packages"
               "qpmx-gitsource: Adds support for cloning git and github packages"
-              "repkg: Automatically rebuild the package on dependency updates")
+              "repkg: Automatically rebuild the package on dependency updates"
+              "qbs: The qbs build system to use qpmx with qbs")
   install="${pkgname}.install"
 
   cd build/qpmx
