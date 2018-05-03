@@ -1,0 +1,17 @@
+pkgbase = libnfnetlink-git
+	pkgdesc = Low-level library for netfilter related kernel/userspace communication
+	pkgver = 1.0.1.r7.g62ca426
+	pkgrel = 1
+	url = https://netfilter.org/projects/libnfnetlink/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = libnfnetlink
+	conflicts = libnfnetlink
+	source = git://git.netfilter.org/libnfnetlink
+	sha256sums = SKIP
+
+pkgname = libnfnetlink-git
+
