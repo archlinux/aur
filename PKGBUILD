@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -61,8 +61,6 @@ package() {
 
 <!-- This animation will start at 10h16. -->
 
-<!-- alt: 11h35: End of a tunnel in Fort de la Chartreuse, Liege, Belgium (DSCF3456-hdr).jpg -->
-
 <!-- 10h16 to 12h31 = 135 minutes -->
 <static>
 <duration>8100</duration>
@@ -80,8 +78,6 @@ package() {
 <duration>2580</duration>
 <file>/usr/share/backgrounds/trougnouf/${img04}</file>
 </static>
-
-<!-- alt: 13h56: View of an abandoned train track from the back of the SNCB B22495 type-K3 carriage in As, Belgium (DSCF3109-hdr).jpg -->
 
 <!-- 13h50 to 14h23 = 33 minutes -->
 <static>
@@ -106,7 +102,7 @@ package() {
 <!-- 15h30 - 16h35 = 65 minutes -->
 <static>
 <duration>3900</duration>
-<file>/usr/share/backgrounds/trougnouf/${img08}</file>
+<file>/usr/share/backgrounds/trougnouf/${img_tree}</file>
 </static>
 
 <!-- alt: 16h44: View through a broken window from a room in Sanatorium du Basil, Stoumont, Belgium (DSCF3542,DSCF3545).jpg -->
