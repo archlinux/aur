@@ -1,3 +1,26 @@
+2018-04-10 Maik Broemme
+	* 4.10.0-5
+	Fix missing path of '--with-system-ovmf' parameter
+	Fix compilation issue with glibc-2.27
+	Apply XSA patches: 258
+
+2018-04-10 Maik Broemme
+	* 4.10.0-4
+	PKGBUILD cleanup
+	Update ipxe to latest version
+	Align dependencies between qemu-xen and qemu-xen-traditional
+	Remove no longer needed '-Werror' fixes
+
+2018-04-10 Maik Broemme
+	* 4.10.0-3
+	Fix '(XEN) parameter "/boot/xen-4.10.0.gz" unknown!' issue
+	Make dependencies independent from build system
+	Apply XSA patches: 253 254 255 256
+
+2018-02-20 Maik Broemme
+	* 4.10.0-1
+	Xen 4.10.0
+
 2017-09-30 Janne Heß
 	* 4.9.0-2
 	Add spice-glib dependency

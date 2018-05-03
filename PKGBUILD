@@ -12,8 +12,8 @@ _build_stubdom=${build_stubdom:-false}
 
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
-pkgver="4.10.0"
-pkgrel="4"
+pkgver=4.10.0
+pkgrel=5
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
@@ -69,6 +69,7 @@ source=(
   "https://xenbits.xen.org/xsa/xsa255-1.patch"
   "https://xenbits.xen.org/xsa/xsa255-2.patch"
   "https://xenbits.xen.org/xsa/xsa256.patch"
+  "https://xenbits.xen.org/xsa/xsa258.patch"
 
   # Helper and config files.
   "grub-mkconfig-helper"
@@ -79,6 +80,7 @@ source=(
 
   # Compile fixes.
   "ocaml-unsafe-string.patch"
+  "qemu-xen-memfd.patch::https://github.com/qemu/qemu/commit/75e5b70e6b5dcc4f2219992d7cffa462aa406af0.patch"
 )
 sha256sums=(
   "0262a7023f8b12bcacfb0b25e69b2a63291f944f7683d54d8f33d4b2ca556844"
@@ -90,6 +92,7 @@ sha256sums=(
   "05a5570ecf4354f7aad35bb77a4c2f5f556bcabf3555829a98c94dcfb6dd4696"
   "df43a147f1e1a2b7d59588bc91cdaac05d4e45bcfc4e2c8cb5e8de840d44b43d"
   "3e45cc3f2ea516e7470083592041e238c0dfe32324790b2fba0e47c9efe38865"
+  "7e8014deae4fa19464fe6570d0719f8f0d7730dd153d58b2fa38b0cd5ed2e459"
 
   # Helper and config files.
   "23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e"
@@ -100,6 +103,7 @@ sha256sums=(
 
   # Compile fixes.
   "7c76b116ce09a53708306682f04e1460a788fe66f832091b7003a5d8e1fee312"
+  "29004b3b9f79bb2cdb0553c5a77c8d748a92e628405b7d9f9ae46693515757bb"
 )
 noextract=(
   "ipxe-git.tar.gz"
@@ -149,24 +153,26 @@ prepare() {
   msg2 'Copying downloaded files...'
   cp "${srcdir}/ipxe-git.tar.gz" tools/firmware/etherboot/ipxe.tar.gz
 
-  # XSA Patches
+  # XSA patches
   msg2 'Applying XSA Patches...'
   patch -Np1 -i "${srcdir}/xsa253-xsa254-diff-release410-comet1.1.patch"
   patch -Np1 -i "${srcdir}/xsa255-1.patch"
   patch -Np1 -i "${srcdir}/xsa255-2.patch"
   patch -Np1 -i "${srcdir}/xsa256.patch"
+  patch -Np1 -i "${srcdir}/xsa258.patch"
 
   # XSA 253 and XSA 254 fix to keep version number.
   sed 's,1-pre,0,g' -i xen/Makefile
 
-  # Security Patches (qemu-xen-traditional).
+  # Security patches and compile fixes (qemu-xen-traditional).
   msg2 'Applying tools patches (qemu-xen-traditional)...'
   cd tools/qemu-xen-traditional
   cd ../..
 
-  # Security Patches (qemu-xen).
+  # Security patches and compile fixes (qemu-xen).
   msg2 'Applying tools patches (qemu-xen)...'
   cd tools/qemu-xen
+  patch -Np1 -i "${srcdir}/qemu-xen-memfd.patch"
   cd ../..
 
   # Misc compile fixes (removed in future versions if not needed anymore).
@@ -221,7 +227,7 @@ build() {
     --with-rundir=/run \
     --enable-systemd \
     --enable-ovmf \
-    --with-system-ovmf \
+    --with-system-ovmf=/usr/share/ovmf/x64/OVMF_CODE.fd \
     --with-system-seabios=/usr/share/qemu/bios-256k.bin \
     "${_config_stubdom}" \
     --with-extra-qemuu-configure-args=" \
