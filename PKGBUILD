@@ -2,7 +2,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=lab
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab."
 arch=('x86_64')
@@ -18,4 +18,4 @@ package() {
   install -Dm755 lab $pkgdir/usr/bin/lab
 }
 
-sha512sums=('580e9242ada87eba6e110d53bcb026642037e26751cc57a0b7ab77c3bd3b8a73609cbba8ad0cacb6491e10309ff7d1fbb9273778ec29594d75ae054a462c3cd5')
+sha512sums=('b19e721102f574f9670e1f88a292689f77fbe180c9d7cc17f28503e3ac78940988ce5c8a07fda6fe50610302b3c0392fc6b0636a527e9d78d0fbc19bbe0f2d5e')
