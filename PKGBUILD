@@ -51,8 +51,8 @@ package() {
 	install -Dm755 "$srcdir/$_gitname/src/syscoin-cli" "$pkgdir/usr/bin/syscoin-cli"
 
 	# install syscoin-tx
-	msg2 'Installing syscoin-tx...'
-	install -Dm755 "$srcdir/$_gitname/src/syscoin-tx" "$pkgdir/usr/bin/syscoin-tx"
+	#msg2 'Installing syscoin-tx...'
+	#install -Dm755 "$srcdir/$_gitname/src/syscoin-tx" "$pkgdir/usr/bin/syscoin-tx"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
