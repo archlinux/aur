@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.3.0.r520.d703377a
+	pkgver = 0.4.0.r571.e032f293
 	pkgrel = 1
 	url = https://github.com/mujx/nheko
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = nheko-git
 	depends = qt5-base
 	depends = lmdb
 	depends = qt5-multimedia
+	depends = qt5-svg
 	provides = nheko
 	conflicts = nheko
 	source = nheko-git::git://github.com/mujx/nheko.git
