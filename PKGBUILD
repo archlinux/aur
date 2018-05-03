@@ -28,14 +28,14 @@ depends=(
   #peak2gene
   #MACS
   #CEAS
-  'cufflinks'
+  'cufflinks-bin' #source-based cufflinks does not build
   'samtools'
   'tophat'
   'python'
   'python2'
   'perl'
   'vcftools'
-  #tabix included in samtools
+  #tabix included in samtools?
   #spades
   'snpeff'
   'fastqc'
