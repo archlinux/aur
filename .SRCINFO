@@ -1,0 +1,17 @@
+pkgbase = traildb-git
+	pkgdesc = An efficient tool for storing and querying series of events
+	pkgver = 0.6.r7.g3fb679f
+	pkgrel = 1
+	url = http://traildb.io
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = judy
+	depends = libarchive
+	depends = pkg-config
+	provides = tdb
+	source = traildb::git+https://github.com/traildb/traildb.git
+	sha1sums = SKIP
+
+pkgname = traildb-git
+
