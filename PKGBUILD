@@ -5,8 +5,8 @@
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv-git
-pkgver=0.1.5.27.gb1a0755
-pkgrel=2
+pkgver=0.1.5.28.g10d7611
+pkgrel=1
 pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
 arch=('x86_64')
 url="http://naihe2010.github.com/apvlv/"
@@ -15,7 +15,7 @@ depends=('gtk3' 'poppler-glib' 'djvulibre')
 makedepends=('git' 'cmake')
 conflicts=('apvlv')
 provids=('apvlv')
-source=(git+https://github.com/naihe2010/apvlv.git)
+source=(git+https://github.com/naihe2010/apvlv.git#commit=10d7611bd8634fb72d4934086294d4056c2081d7)
 backup=('etc/apvlvrc')
 md5sums=('SKIP')
 
@@ -27,12 +27,12 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  mkdir -p build
+  [[ -d build ]] || mkdir -p build
   cd build
 
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
         -DAPVLV_WITH_DJVU=yes -DAPVLV_WITH_TXT=yes \
-        -DAPVLV_WITH_UMD=no  ..
+        -DAPVLV_WITH_UMD=no ..
 
   make
 }
