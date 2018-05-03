@@ -1,6 +1,6 @@
 pkgbase = oor
 	pkgdesc = Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation
-	pkgver = 1.2.0.r100.g8aaa830
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://openoverlayrouter.org/
 	arch = x86_64

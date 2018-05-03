@@ -1,5 +1,5 @@
 pkgname=oor
-pkgver=1.2.0.r100.g8aaa830
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
 url="https://openoverlayrouter.org/"
