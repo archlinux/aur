@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Scyther
+Comment=Scyther protocol verifier
+Icon=text-editor
+Exec=scyther
+Terminal=false
+Type=Application
+Categories=Development;ComputerScience;Security;

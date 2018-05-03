@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/env python2 /usr/share/scyther/scyther-gui.py
