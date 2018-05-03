@@ -20,9 +20,9 @@ pkgver() {
 build() {
 	cd $srcdir/${pkgname%%-svn}
 	python2 setup.py build
-        sed -i 's/pyuic4/python2-pyuic4/g' Makefile
-        sed -i 's/lrelease/lrelease-qt4/g' Makefile
-	sed -i 's/easy_install/echo/g' Makefile	
+	sed -i 's/pyuic4/python2-pyuic4/g' Makefile
+	sed -i 's/lrelease/lrelease-qt4/g' Makefile
+	sed -i 's/easy_install/echo/g' Makefile
 	make all
 }
 
@@ -31,7 +31,7 @@ package() {
 	python2 setup.py install --root=$pkgdir
 	make DESTDIR="$pkgdir" PYTHON=python2 prefix=/usr install-data
 	make DESTDIR="$pkgdir" PYTHON=python2 prefix=/usr installdirs
-        cp -r ${pkgname%%-svn}/ui_* $pkgdir/usr/lib/python2.7/site-packages/watchvideo/
+	cp -r ${pkgname%%-svn}/ui_* $pkgdir/usr/lib/python2.7/site-packages/watchvideo/
 	chmod 775 -R $pkgdir/usr/lib/python2.7/site-packages/watchvideo/ui_*
 	rm $pkgdir/usr/lib/python2.7/site-packages/watchvideo/*.pyc
 }
