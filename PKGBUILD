@@ -2,7 +2,7 @@
 
 pkgname=xubuntu-community-artwork
 pkgver=18.04.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Community wallpapers from Xubuntu 14.04, 16.04 & 18.04"
 arch=(any)
 url="http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/"
@@ -16,7 +16,7 @@ sha512sums=('b9274abb7328167b4d6fbb6682e7cdf209665e0bcf2aaaf46caca5d55a2c570d528
 package() {
   mkdir -p ${pkgdir}/usr/share/xfce4/backdrops ${pkgdir}/usr/share/gnome-background-properties ${pkgdir}/usr/share/mate-background-properties ${pkgdir}/usr/share/licenses/${pkgname}
   cd ${srcdir}/${pkgname}/usr/share/xfce4/backdrops
-  cp *.jpg ${pkgdir}/usr/share/xfce4/backdrops/
+  cp *.jpg *.png ${pkgdir}/usr/share/xfce4/backdrops/
   cp ${srcdir}/xubuntu-community-wallpapers.xml ${pkgdir}/usr/share/gnome-background-properties/ 
   cp ${srcdir}/xubuntu-community-wallpapers.xml ${pkgdir}/usr/share/mate-background-properties/
   sed -i 's/gnome-wp-list.dtd/mate-wp-list.dtd/' ${pkgdir}/usr/share/mate-background-properties/xubuntu-community-wallpapers.xml 
