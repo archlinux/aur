@@ -1,7 +1,7 @@
-From 9ff9495f79984c56961d8239a0d203924b8b9cba Mon Sep 17 00:00:00 2001
-Message-Id: <9ff9495f79984c56961d8239a0d203924b8b9cba.1520586205.git.jan.steffens@gmail.com>
-In-Reply-To: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
-References: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
+From 66a1ee9d22b77445051d64d008e7c7faced04a09 Mon Sep 17 00:00:00 2001
+Message-Id: <66a1ee9d22b77445051d64d008e7c7faced04a09.1525322178.git.jan.steffens@gmail.com>
+In-Reply-To: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
+References: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 16 Dec 2017 23:08:02 +0100
 Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
@@ -14,10 +14,10 @@ Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
  4 files changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index d27e9150d..7052eb97a 100644
+index 438d0614b..d04177197 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -775,7 +775,7 @@ FT_BEGIN_HEADER
+@@ -750,7 +750,7 @@ FT_BEGIN_HEADER
    /* switch between the two engines using the `hinting-engine' property of */
    /* the type1 driver module.                                              */
    /*                                                                       */
@@ -26,7 +26,7 @@ index d27e9150d..7052eb97a 100644
  
  
    /*************************************************************************/
-@@ -818,7 +818,7 @@ FT_BEGIN_HEADER
+@@ -793,7 +793,7 @@ FT_BEGIN_HEADER
    /* switch between the two engines using the `hinting-engine' property of */
    /* the cff driver module.                                                */
    /*                                                                       */
@@ -36,10 +36,10 @@ index d27e9150d..7052eb97a 100644
  
    /*************************************************************************/
 diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
-index a2d7aec65..bc7dc16f8 100644
+index 61b736ca2..985766a77 100644
 --- a/src/cff/cffobjs.c
 +++ b/src/cff/cffobjs.c
-@@ -1163,11 +1163,7 @@
+@@ -1162,11 +1162,7 @@
  
  
      /* set default property values, cf. `ftcffdrv.h' */
@@ -84,5 +84,5 @@ index 7333c4c95..4cc27fe9e 100644
      driver->no_stem_darkening = TRUE;
  
 -- 
-2.16.2
+2.17.0
 

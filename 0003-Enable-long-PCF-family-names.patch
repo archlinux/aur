@@ -1,7 +1,7 @@
-From 5479575ce1b0b869cf8ca8134eca57b93f897190 Mon Sep 17 00:00:00 2001
-Message-Id: <5479575ce1b0b869cf8ca8134eca57b93f897190.1520586205.git.jan.steffens@gmail.com>
-In-Reply-To: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
-References: <0670c22b537c67ebf78188fbc3af6c74b3efd9d9.1520586205.git.jan.steffens@gmail.com>
+From 2df1ed02054185df45ee3d1a63c91ef678e470f1 Mon Sep 17 00:00:00 2001
+Message-Id: <2df1ed02054185df45ee3d1a63c91ef678e470f1.1525322178.git.jan.steffens@gmail.com>
+In-Reply-To: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
+References: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sun, 14 May 2017 18:09:31 +0200
 Subject: [PATCH 3/4] Enable long PCF family names
@@ -11,10 +11,10 @@ Subject: [PATCH 3/4] Enable long PCF family names
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 992c96b51..d27e9150d 100644
+index c25285b38..438d0614b 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -845,7 +845,7 @@ FT_BEGIN_HEADER
+@@ -820,7 +820,7 @@ FT_BEGIN_HEADER
    /* If this option is activated, it can be controlled with the            */
    /* `no-long-family-names' property of the pcf driver module.             */
    /*                                                                       */
@@ -24,5 +24,5 @@ index 992c96b51..d27e9150d 100644
  
    /*************************************************************************/
 -- 
-2.16.2
+2.17.0
 
