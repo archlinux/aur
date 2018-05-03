@@ -12,15 +12,21 @@ options=('!strip' '!emptydirs')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('bb5450c734a2d0c54a1dc7d7f42be85eb2163c03e6d3dc1782d74b54a8cbfa69')
 
-build() {
-  cd "$pkgname-$pkgver"
+prepare() {
+    cd "$pkgname-$pkgver"
 
-  go build -ldflags "-s -w"
+    GOPATH="$(pwd)" go get -d -v
+}
+
+build(){
+    cd "$pkgname-$pkgver"
+
+    GOPATH="$(pwd)" go build -ldflags "-s -w"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
