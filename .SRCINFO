@@ -1,6 +1,6 @@
 pkgbase = telepathy-tank-git-wip
 	pkgdesc = Matrix connection operator for the Telepathy framework. WIP git branch
-	pkgver = r6.ae032b2
+	pkgver = r8.f8dcc3c
 	pkgrel = 1
 	url = https://telepathy.freedesktop.org/
 	arch = i686
@@ -11,9 +11,10 @@ pkgbase = telepathy-tank-git-wip
 	makedepends = cmake
 	makedepends = git
 	depends = telepathy-qt-git
+	depends = qt5-matrixclient-git
 	provides = telepathy-tank
 	conflicts = telepathy-tank
-	source = git+https://github.com/a-andreyev/telepathy-tank#branch=wip
+	source = git+https://github.com/TelepathyIM/telepathy-tank#branch=wip
 	md5sums = SKIP
 
 pkgname = telepathy-tank-git-wip
