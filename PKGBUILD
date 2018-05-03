@@ -1,7 +1,7 @@
-# Maintainer: Anaël Megna <anael.megna@gmail.com>
+# Maintainer: mistiru (Anaël Megna) <anael.megna@gmail.com>
 pkgname=menu-generator
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dirty script that generates super cool bash menu"
 arch=('any')
 url=
