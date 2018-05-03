@@ -1,5 +1,5 @@
 # Maintainer: Bottersnike <bottersnike237@gmail.com>
-pkgname=pxls
+pkgname=pxlst
 pkgver=0.0.2a
 pkgrel=1
 pkgdesc="A minimal image-based golfing language"
