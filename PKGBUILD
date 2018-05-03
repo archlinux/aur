@@ -1,8 +1,8 @@
 # Maintainer: Vimsucks <dev@vimsucks.com>
 
 pkgname=frp
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 license=('Apache')
 url="https://github.com/fatedier/frp"
@@ -15,9 +15,9 @@ md5sums=('6f9c6681357f3f984983457151d7f0c5'
          'e3bfa7c428433fa6cbb5aa64515d8899'
          '50364b050ca08f47b7afe305f528eaa2'
          '7aaf36865c656232b441e7bbaf2993dd')
-md5sums_x86_64=('c935d69f132a3de07a385e632fbaed9e')
-md5sums_i686=('0c353b15f88947129fcf80bc93b6cf75')
-md5sums_arm=('cf1eb1fd8aec42c79b748e031014495b')
+md5sums_x86_64=('4d457cafd7b8acf2f29b9a8877f121c8')
+md5sums_i686=('4fdfab1b95f8b1ac9f415cfb9c696a1b')
+md5sums_arm=('5cef3db153ef0ab05d9588b9d3ebeffc')
 install=$pkgname.install
 
 package() {
