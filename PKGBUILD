@@ -1,7 +1,7 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=ciel-git 
-pkgver=r297.c1540a4
-pkgrel=1 
+pkgver=r313.e4d3f5b
+pkgrel=2
 pkgdesc="A tool for controlling multi-layer file systems and containers." 
 arch=('i686' 'x86_64') url="https://github.com/AOSC-Dev/ciel" 
 license=('MIT') 
@@ -16,7 +16,7 @@ pkgver() {
 }
 package() {
     dir="$srcdir/$pkgname/"
-    install -Dm755 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
     cd $dir
     git submodule update --init --recursive
     make && make PREFIX=${pkgdir}/usr install && make clean
