@@ -1,6 +1,6 @@
 # Maintainer: Matthias Baur  <aur@matthiasbaur.me>
 pkgname=noson-app
-pkgver=3.3.4
+pkgver=3.3.4.r0.g6c0014a
 pkgrel=1
 pkgdesc="The essential to control music from your SONOS devices on Linux platforms"
 arch=('x86_64')
