@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/google/gvisor'
 license=('Apache-2.0')
 sha256sums=('SKIP')
-source=(git+https://github.com/vkobel/gvisor.git)
+source=("git+https://github.com/vkobel/${_pkgname}")
 provides=('runsc')
 makedepends=('bazel' 'python')
 

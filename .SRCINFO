@@ -8,7 +8,7 @@ pkgbase = gvisor-git
 	makedepends = bazel
 	makedepends = python
 	provides = runsc
-	source = git+https://github.com/vkobel/gvisor.git
+	source = git+https://github.com/vkobel/gvisor
 	sha256sums = SKIP
 
 pkgname = gvisor-git
