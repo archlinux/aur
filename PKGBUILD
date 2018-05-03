@@ -146,7 +146,7 @@ sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
             '7cde4208b87ba4632e2c83aa13163d3b34935d6175c868b671c74bb17b752fb5'
             '519965231b125f40a644829e50529befe496e02ca2e03ebc38d8791706bf2162'
             '442274439bf7d569edecbc1628b2a73fc0b3fa0901298037f613c1a68010e119'
-            '4d3599e3e09dcaf66f66c7df279e59f30a542f82b10223b8f7e447d38f6b4f6f'
+            '4986d92d922af8a8adbc66883e6dc07e91c330aa2d911d724928e903b42dca21'
             'd975a6abd6cb8ff2a2178d9a4755ea978033af522a0b4121d025703133a87ca2'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
@@ -282,7 +282,7 @@ patch -Np1 -i ../020.patch
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
-#patch -Np1 -i ../024.patch
+patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
 patch -Np1 -i ../027.patch
