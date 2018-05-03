@@ -22,9 +22,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   ./autogen.sh
-  ./configure --with-gui=qt5
+   PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+   CFLAGS+=" -I/usr/include/openssl-1.0" \
+   LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
+   ./configure --with-gui=qt5
    make -j$(nproc)
 }
 
