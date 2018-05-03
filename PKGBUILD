@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Philipp A. <flying-sheep@web.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Micha Alt <micha.tucker at gmail dot com>
@@ -27,7 +26,7 @@ package() {
 	cd "$srcdir/package"
 	
 	install -Dm755 'bin/gulp.js' "$pkgdir/usr/lib/node_modules/gulp-cli/bin/gulp.js"
-	for f in CHANGELOG.md index.js package.json README.md; do
+	for f in index.js package.json README.md; do
 		install -Dm644 "$f" "$pkgdir/usr/lib/node_modules/gulp-cli/$f"
 	done
 	for d in lib node_modules; do
