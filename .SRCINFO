@@ -3,6 +3,7 @@ pkgbase = opensc-esteid
 	pkgver = 0.17.0.311218
 	pkgrel = 1
 	url = https://github.com/metsma/OpenSC/tree/0.17-esteid
+	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = docbook-xsl
