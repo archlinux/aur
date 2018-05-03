@@ -1,13 +1,16 @@
 # Maintainer: Ainola
+# Contributor: jfranco
+# Contributor: George Rawlinson
+
 pkgname=plasma5-applets-plasma-pass-git
 pkgver=r16.d067ec5
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma applet for pass.'
 url="https://cgit.kde.org/scratch/dvratil/plasma-pass.git"
 arch=('x86_64' 'i686')
-license=('custom')  # No license in the repo yet as of writing.
+license=('GPL2')
 depends=('pass' 'plasma-framework')
-makedepends=('cmake' 'git')
+makedepends=('extra-cmake-modules' 'git')
 provides=('plasma5-applets-plasma-pass')
 source=("git+https://anongit.kde.org/scratch/dvratil/plasma-pass.git")
 sha256sums=('SKIP')
@@ -24,6 +27,7 @@ build() {
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 }
+
 package(){
     cd "${srcdir}/plasma-pass/build"
     make DESTDIR="$pkgdir" install
