@@ -16,7 +16,6 @@ pkgbase = meta-ugene-external_tools
 	depends = mafft
 	depends = tcoffee
 	depends = mrbayes
-	depends = ncbi-toolkit
 	depends = cufflinks-bin
 	depends = samtools
 	depends = tophat

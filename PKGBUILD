@@ -21,7 +21,7 @@ depends=(
   'mafft'
   'tcoffee'
   'mrbayes'
-  'ncbi-toolkit' #spidey depreceated
+  #'ncbi-toolkit' #spidey depreceated but the toolkit also old.
   #Conduct GO
   #mdseqpos
   #conservation plot
