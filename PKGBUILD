@@ -1,17 +1,17 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
-pkgver=1.12.4
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gstreamer' 'mingw-w64-orc')
-makedepends=('mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack')
+makedepends=('mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}/src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
-sha256sums=('649f49bec60892d47ee6731b92266974c723554da1c6649f21296097715eb957')
+sha256sums=('6afa35747d528d3ab4ed8f5eac13f7235d7d28100d6a24dd78f81ec7c0d04688')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
