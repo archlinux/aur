@@ -3,13 +3,13 @@
 
 pkgname=aeskulap
 pkgver=0.2.2.beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Medical image viewer and DICOM client. Compatible with parallel installation of the package 'dcmtk'."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/aeskulap"
 license=('GPL')
 depends=('libglademm' 'dconf' 'dcmtk')
-makedepends=('perl-xml-parser')
+makedepends=('intltool' 'perl-xml-parser')
 options=('!libtool')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jenslody/aeskulap/archive/release-0-2-2-beta2.tar.gz")
 md5sums=('fe440e2a266a1434cb74f3c90838a596')
