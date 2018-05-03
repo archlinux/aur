@@ -12,7 +12,7 @@ depends=(telepathy-qt-git)
 makedepends=(cmake git)
 provides=(telepathy-tank)
 conflicts=(telepathy-tank)
-source=("git+https://github.com/a-andreyev/$_gitname#branch=wip")
+source=("git+https://github.com/TelepathyIM/$_gitname#branch=wip")
 md5sums=('SKIP')
 
 pkgver() {
