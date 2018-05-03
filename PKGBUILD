@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
-md5sums=('dfb4e71811591aca16a63241787a1418')
+md5sums=('0958aa3353643b9775d9b034f8c8dd51')
 noextract=()
 validpgpkeys=()
 
