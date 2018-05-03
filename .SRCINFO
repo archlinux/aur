@@ -1,0 +1,14 @@
+pkgbase = python-bencoder-pyx
+	pkgdesc = Command line tool for creating new torrents, magnet URIs, editing and displaying metainfo
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/whtsky/bencoder.pyx
+	arch = any
+	license = MIT
+	makedepends = cython
+	options = !emptydirs
+	source = https://github.com/whtsky/bencoder.pyx/archive/v1.2.1.tar.gz
+	md5sums = SKIP
+
+pkgname = python-bencoder-pyx
+
