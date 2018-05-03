@@ -3,7 +3,7 @@
 
 _gemname=gdk_pixbuf2
 pkgname=ruby-$_gemname
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc='Ruby/GdkPixbuf2 is a Ruby binding of GdkPixbuf-2.x.'
 arch=(x86_64)
@@ -15,7 +15,7 @@ replaces=(ruby-gdkpixbuf2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7099f39b59023b76f8fe890fe2ba5cbd77b7397c')
+sha1sums=('1499790fbe1002546742788b602ad1c66214d024')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
