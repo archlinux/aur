@@ -1,0 +1,16 @@
+pkgbase = vuos-git
+	pkgdesc = A glibc overlay library for process self-virtualization
+	pkgver = r106.1736d89
+	pkgrel = 1
+	url = https://github.com/virtualsquare/vuos
+	arch = any
+	groups = view-os
+	license = GPL2
+	provides = vuos
+	conflicts = vuos
+	replaces = vuos
+	source = git+https://github.com/virtualsquare/vuos.git
+	md5sums = SKIP
+
+pkgname = vuos-git
+
