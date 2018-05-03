@@ -50,8 +50,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_srcname=linux-4.16
-pkgver=4.16.7
+_major=4.16
+_srcname=linux-${_major}
+_minor=7
+pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
