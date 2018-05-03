@@ -1,8 +1,8 @@
 pkgbase = routersploit-git
 	pkgdesc = An open-source exploitation framework dedicated to embedded devices.
-	pkgver = 2.2.1.r273.gea4f467
+	pkgver = 2.2.1.r277.g8a04b08
 	pkgrel = 1
-	url = https://github.com/reverse-shell/routersploit
+	url = https://github.com/threat9/routersploit
 	arch = any
 	license = BSD
 	makedepends = git
@@ -10,9 +10,9 @@ pkgbase = routersploit-git
 	depends = python2-paramiko
 	depends = python2-beautifulsoup4
 	depends = python2-pysnmp
-	provides = routersploit=2.2.1.r273.gea4f467
+	provides = routersploit=2.2.1.r277.g8a04b08
 	conflicts = routersploit
-	source = routersploit::git+https://github.com/reverse-shell/routersploit
+	source = routersploit::git+https://github.com/threat9/routersploit
 	sha512sums = SKIP
 
 pkgname = routersploit-git
