@@ -1,0 +1,18 @@
+pkgbase = nfacct-git
+	pkgdesc = Tool to create/retrieve/delete accounting objects
+	pkgver = 1.0.2.r0.g000041e
+	pkgrel = 1
+	url = https://netfilter.org/projects/nfacct/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libmnl
+	depends = libnetfilter_acct
+	provides = nfacct
+	conflicts = nfacct
+	source = git://git.netfilter.org/nfacct
+	sha256sums = SKIP
+
+pkgname = nfacct-git
+
