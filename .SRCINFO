@@ -1,0 +1,11 @@
+pkgbase = menu-generator
+	pkgdesc = Dirty script that generates super cool bash menu
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	source = menu-generator-1.0.tar.gz
+	md5sums = dfb4e71811591aca16a63241787a1418
+
+pkgname = menu-generator
+
