@@ -7,14 +7,14 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber'
-		 'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr')
+         'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr')
 makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'mysql-python'
              'perl-dbd-mysql' 'python2-lxml')
 optdepends=('glew: for GPU commercial flagging'
@@ -29,17 +29,22 @@ conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
         'mythbackend.service'
-		'99-mythbackend.rules'
-		'sysusers.d')
+        '99-mythbackend.rules'
+        'sysusers.d'
+        'freetype2.patch')
 sha256sums=('04a84eb0ded2d2b123624ab2b2e1b8cf824ff4bf8216e452b2516deb929082b2'
             'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
+			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+            '92b332fc407461582d668ddca85aa614904b5454e08c3aa60351df6f2a452026')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
 
   find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+
+  #apply freetype2.patch to fix configure error
+  patch -Np1 -i ../../freetype2.patch
 }
 
 build() {
@@ -50,13 +55,12 @@ build() {
               --cpu="$ARCH" \
               --disable-altivec \
               --enable-audio-jack \
-              --disable-ccache \
               --disable-distcc \
               --enable-libfftw3 \
               --enable-libmp3lame \
               --enable-libvpx \
               --enable-libx264 \
-			  --enable-libx265 \
+              --enable-libx265 \
               --enable-vaapi \
               --python=python2 \
               --perl-config-opts=INSTALLDIRS=vendor

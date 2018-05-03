@@ -1,0 +1,54 @@
+--- a/configure
++++ b/configure
+
+@@ -1629,19 +1629,18 @@
+ }
+ 
+ check_foo_config(){
+-    cfg=$1
+-    pkg=$2
+-    header=$3
+-    func=$4
+-    shift 4
+-    disable $cfg
+-    check_cmd ${pkg}-config --version
++    pkg=$1
++    header=$2
++    func=$3
++    shift 3
++    disable $pkg
++    check_cmd $pkg_config --exists --print-errors $pkg
+     err=$?
+     if test "$err" = 0; then
+         backup_cflags=$CFLAGS
+-        temp_extralibs=$(${pkg}-config --libs)
+-        add_cflags $(${pkg}-config --cflags)
+-        check_lib "$@" $header $func $temp_extralibs && enable $cfg
++        temp_extralibs=$($pkg_config --libs $pkg_config_flags $pkg)
++        add_cflags $($pkg_config --cflags $pkg_config_flags $pkg)
++        check_lib "$@" $header $func $temp_extralibs && enable $pkg
+         CFLAGS=$backup_cflags
+     fi
+     return $err
+@@ -7134,7 +7133,7 @@
+ EOF
+ done
+ 
+-check_foo_config freetype2 freetype ft2build.h FT_Init_FreeType
++check_foo_config freetype2 ft2build.h FT_Init_FreeType
+ 
+ enabled freetype2 ||
+     die "ERROR! You must have FreeType installed to compile MythTV."
+@@ -8571,8 +8570,9 @@
+ fi
+ 
+ if enabled freetype2; then
+-    echo "FREETYPE_CFLAGS=`freetype-config --cflags`" >> $TMPMAK
+-    echo "FREETYPE_LIBS=`freetype-config --libs`" >> $TMPMAK
++    pkg="freetype2"
++    echo "FREETYPE_CFLAGS=$($pkg_config --cflags $pkg_config_flags $pkg)" >> $TMPMAK
++    echo "FREETYPE_LIBS=$($pkg_config --libs $pkg_config_flags $pkg)" >> $TMPMAK
+ fi
+ 
+ if test $target_os = darwin; then
+
