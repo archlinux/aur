@@ -2,7 +2,7 @@
 
 _gitname=plasma-browser-integration
 pkgname=$_gitname-git
-pkgver=r262.e1b70f9
+pkgver=r275.bbcd7c9
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(i686 x86_64)
@@ -22,6 +22,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed -e 's|${MOZILLA_PREFIX}|${CMAKE_INSTALL_PREFIX}|g' -i $_gitname/CMakeLists.txt
 }
 
 build() { 
