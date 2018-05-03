@@ -11,8 +11,6 @@ arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
 license=('BSD')
 depends=('libxss'
-         'openssl'
-         'poco'
          'qt5-base'
          'qt5-declarative'
          'qt5-location'
@@ -72,6 +70,21 @@ package() {
 
   # Copy Toggl Desktop shared library
   install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libTogglDesktopLibrary.so.1 ${out}/lib/libTogglDesktopLibrary.so.1
+
+  # Copy Poco shared library
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoCrypto.so.50 ${out}/lib/libPocoCrypto.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoData.so.50 ${out}/lib/libPocoData.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoDataSQLite.so.50 ${out}/lib/libPocoDataSQLite.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoFoundation.so.50 ${out}/lib/libPocoFoundation.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoJSON.so.50 ${out}/lib/libPocoJSON.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoNet.so.50 ${out}/lib/libPocoNet.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoNetSSL.so.50 ${out}/lib/libPocoNetSSL.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoUtil.so.50 ${out}/lib/libPocoUtil.so.50
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libPocoXML.so.50 ${out}/lib/libPocoXML.so.50
+
+  # Copy openssl shared library
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libcrypto.so.1.1 ${out}/lib/libcrypto.so.1.1
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libssl.so.1.1 ${out}/lib/libssl.so.1.1
 
   # Copy README
   install -Dm644 src/ui/linux/README ${out}
