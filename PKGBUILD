@@ -12,7 +12,7 @@ pkgname=${_name}-${_channel}-${_lang}
 _pkgname=${_name}-${_channel}-zh-CN
 
 pkgdesc="Standalone Mail/News reader — Nightly build (${_lang})"
-url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
+url="https://www.thunderbird.net"
 provides=(thunderbird-${_channel}=$pkgver)
 conflicts=(thunderbird-${_channel} thunderbird-${_channel}-it)
 arch=('i686' 'x86_64')
