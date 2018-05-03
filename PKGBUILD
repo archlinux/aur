@@ -15,8 +15,8 @@ optdepends=(
   'libappindicator-gtk2: System Tray support')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("popsql-0.4.2.deb::https://get.popsql.io/download/linux_deb_64")
-sha512sums_x86_64=('5664c91d12708cac9bacffbdffd4e868e0145b60387afcadc273b60da705325d47d010a74f4a600a6517dbc387612240ac13151e2d57c9a2905c60118b5b2ceb')
+source_x86_64=("popsql.deb::https://get.popsql.io/download/linux_deb_64")
+sha512sums_x86_64=('39b73a1338f87a6b0c70934addeee9d5cd50e4052492fc2baee8af91d7c0eefdbbcd16ddfa24812e27b99ee86f974b20432e43a9a807b9b6e34057211f44080a')
 
 package(){
   # Extract package data
