@@ -1,5 +1,5 @@
 pkgbase = python-bencoder-pyx
-	pkgdesc = Command line tool for creating new torrents, magnet URIs, editing and displaying metainfo
+	pkgdesc = A fast bencode implementation in Cython
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/whtsky/bencoder.pyx
