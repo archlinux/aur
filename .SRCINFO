@@ -1,0 +1,17 @@
+pkgbase = libnetfilter_cttimeout-git
+	pkgdesc = Library that provides access to the connection tracking timeout infrastructure
+	pkgver = 1.0.0.r5.gd0c4e39
+	pkgrel = 1
+	url = https://netfilter.org/projects/libnetfilter_cttimeout/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libmnl
+	provides = libnetfilter_cttimeout
+	conflicts = libnetfilter_cttimeout
+	source = git://git.netfilter.org/libnetfilter_cttimeout
+	sha256sums = SKIP
+
+pkgname = libnetfilter_cttimeout-git
+
