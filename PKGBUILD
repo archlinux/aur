@@ -8,6 +8,7 @@ arch=('any')
 url='https://www.egregorion.net'
 license=('GPL-3.0+')
 depends=('dolphin' 'kdialog')
+optdepends=('jhead')
 source=("https://www.egregorion.net/works/kde/servicemenus/reimage/${pkgname}-${pkgver}_all.tar.gz")
 md5sums=('3d64be62d805575d15f8c284d84daff1')
 
