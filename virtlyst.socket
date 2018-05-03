@@ -3,6 +3,7 @@ Description=Web interface to manage virtual machines with libvirt - socket
 
 [Socket]
 ListenStream=/run/virtlyst.sock
+ListenStream=/run/virtlyst-ws.sock
 SocketMode=0660
 SocketGroup=http
 
