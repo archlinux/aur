@@ -1,0 +1,17 @@
+pkgbase = haskell-random-shuffle
+	pkgdesc = The haskell random shuffle package
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/random-shuffle
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-random
+	depends = haskell-monadrandom
+	source = https://hackage.haskell.org/packages/archive/random-shuffle/0.0.4/random-shuffle-0.0.4.tar.gz
+	sha512sums = 492245380e60cc2cf4ac3596e9e0c158c58ce974439559cf3719578e95ac13a282dc43301f123530a17f6d88866186712e05a89cdde762b43596b2a3293f3aef
+
+pkgname = haskell-random-shuffle
+
