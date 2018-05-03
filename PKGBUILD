@@ -1,14 +1,15 @@
-# Maintainer: Alexander Keller <git@nycroth.com>
+# Maintainer: Muhammad Herdiansyah <herdiansyah@netc.eu>
+# Contributor: Alexander Keller <git@nycroth.com>
 pkgname=sinit
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="A simple init"
+pkgdesc="Suckless init"
 url="http://tools.suckless.org/sinit/"
 arch=('i686' 'x86_64')
 license=('MIT')
 install=sinit.install
-source=("http://dl.suckless.org/sinit/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9a15ec492278e2a2b29f8b25eda10286')
+source=("http://git.suckless.org/sinit/snapshot/${pkgname}-${pkgver}.tar.gz")
+md5sums=('9bde111e0aff516f13381517dbad9270')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
