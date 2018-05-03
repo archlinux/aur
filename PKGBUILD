@@ -1,7 +1,7 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 
 pkgname=meta-ugene-external_tools
-pkgver=20180502
+pkgver=20180503
 pkgrel=1
 pkgdesc='Metapackage for External Tools in the UGENE bioinformatics suite'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   'mafft'
   'tcoffee'
   'mrbayes'
-  'ncbi-tools' #spidey depreceated
+  'ncbi-toolkit' #spidey depreceated
   #Conduct GO
   #mdseqpos
   #conservation plot
