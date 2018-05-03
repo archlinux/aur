@@ -1,6 +1,6 @@
 pkgbase = plasma-browser-integration-git
 	pkgdesc = Components necessary to integrate browsers into the Plasma Desktop
-	pkgver = r262.e1b70f9
+	pkgver = r275.bbcd7c9
 	pkgrel = 1
 	url = https://www.kde.org/plasma-desktop
 	arch = i686
