@@ -3,7 +3,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libringqt
 pkgname=$_pkgname-git
-pkgver=r1744.9232d14
+pkgver=r1806.6d55044
 pkgrel=1
 pkgdesc="A library for GNU Ring, a secure communication platform"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
 build() {
 	cd build
 	cmake ../"$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_BUILD_TYPE=Release
 	make
