@@ -4,11 +4,11 @@ pkgbase = python-bencoder-pyx
 	pkgrel = 1
 	url = https://github.com/whtsky/bencoder.pyx
 	arch = any
-	license = MIT
+	license = BSD
 	makedepends = cython
 	options = !emptydirs
 	source = https://github.com/whtsky/bencoder.pyx/archive/v1.2.1.tar.gz
-	md5sums = SKIP
+	md5sums = f8bbd185c081eef2d63500188a7c1f96
 
 pkgname = python-bencoder-pyx
 
