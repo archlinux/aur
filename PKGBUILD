@@ -2,7 +2,7 @@
 # Contributor: David Koenig <koenigdmj@gmail.com>
 pkgname=bible-kjv
 pkgver=4.29
-pkgrel=2
+pkgrel=3
 pkgdesc="King James Bible, Concordance, and Command-Line Viewer"
 arch=(i686 x86_64)
 url="http://www.debian.org/"
@@ -12,7 +12,7 @@ makedepends=('perl')
 source=(http://ftp.debian.org/debian/pool/main/b/${pkgname}/${pkgname}_${pkgver}.tar.gz
 	makefile.patch)
 md5sums=('e08a001de6e436cb4554ffcb19c24d37'
-         '17018de81419f5bc227669aa03639c0d')
+         'e234e246b418fbd75a3855e321775a9e')
 
 package () {
   patch -p1 < makefile.patch

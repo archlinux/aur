@@ -1,7 +1,16 @@
-diff -Naur src0/bible-kjv/Makefile src1/bible-kjv/Makefile
+diff -aur src0/bible-kjv/Makefile src1/bible-kjv/Makefile
 --- src0/bible-kjv/Makefile	2011-06-25 13:20:00.000000000 +0100
-+++ src1/bible-kjv/Makefile	2015-05-31 20:09:48.435577487 +0100
-@@ -442,23 +443,17 @@
++++ src1/bible-kjv/Makefile	2018-05-03 16:30:18.151493296 +0100
+@@ -88,7 +88,7 @@
+ 
+ # I use environment variables for these...
+ #CFLAGS	      = -g
+-CFLAGS	      = -Wall -Wformat -Werror -Wshadow -W -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wcast-align -Wcast-qual -Wbad-function-cast -Wpointer-arith -g2 -ggdb -DDESTLIB=\"$(DESTLIB)\"
++CFLAGS	      = -O2 -DDESTLIB=\"$(DESTLIB)\"
+ LDFLAGS       = 
+ LDADD         = -lreadline
+ 
+@@ -442,23 +442,17 @@
  		@if [ $(DESTBIN) != . ]; then \
  		((cd $(DESTBIN);rm -f $(PROGRAM)); \
  		cp $(PROGRAM) $(DESTBIN)); \
