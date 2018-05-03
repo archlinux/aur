@@ -2,12 +2,12 @@
 _pkgname=torchsample
 pkgname=python-$_pkgname
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High-Level Training, Data Augmentation, and Utilities for Pytorch"
 arch=('any')
 url="https://github.com/ncullen93/torchsample"
 license=('MIT')
-depends=('python-pytorch' 'python-nibabel' 'python-tqdm' 'python-numpy' 'python-six')
+depends=('python-pytorch' 'python-nibabel' 'python-tqdm' 'python-numpy' 'python-six' 'python-pandas')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/ncullen93/torchsample/archive/v${pkgver}.tar.gz")

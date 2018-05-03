@@ -1,7 +1,7 @@
 pkgbase = python-torchsample
 	pkgdesc = High-Level Training, Data Augmentation, and Utilities for Pytorch
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncullen93/torchsample
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-torchsample
 	depends = python-tqdm
 	depends = python-numpy
 	depends = python-six
+	depends = python-pandas
 	source = https://github.com/ncullen93/torchsample/archive/v0.1.3.tar.gz
 	sha512sums = 58c7fdcc6e39a7258fe1858899c4375d40e291e10b14e2f5f3529475a29ae2a884d13cef4e0c2247cf2a38973795e1e44769e3349420b82363eae95874ec7927
 
