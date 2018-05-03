@@ -3,7 +3,8 @@
 pkgname=("pivx-daemon" "pivx-cli" "pivx-qt")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
-pkgver=3.0.6
+pkgver=3.1.0.2
+_pkgdirver=3.1.0
 pkgrel=1
 arch=("i686" "x86_64")
 url="https://pivx.org/"
@@ -13,15 +14,15 @@ license=("MIT")
 source=("https://github.com/PIVX-Project/PIVX/archive/v$pkgver.tar.gz")
 source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-i686-pc-linux-gnu.tar.gz")
 source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-x86_64-linux-gnu.tar.gz")
-sha256sums=("19dfa8a65f4053fb04a927e7a8bd035e4b660d074e705acf7dd4142fb268a44a")
-sha256sums_i686=("f49d4f3140b7231539a40b2704487940f2520654b48684eaef50cc52d56fda68")
-sha256sums_x86_64=("1b987933112560641ac3d8f9b56509ae5dcfc2df2179a1a07b6c9535744d8e58")
+sha256sums=("50db22d2a8188cee03c81c57e361ba80bf80d60747dbe89c1fd186a3198f64d0")
+sha256sums_i686=("70e62cf936cfa189eb479110e5d727e162d41fc15490e93868f8b7e742883f8a")
+sha256sums_x86_64=("0ea18dcbefacd211739e1a64fe80e70cd6b9bf3f5d82b111e6c2aa2f271a35c5")
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
   depends+=("openssl" "miniupnpc" "db4.8")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${_pkgdirver}"
   install -Dm755 "bin/pivxd"				"${pkgdir}/usr/bin/pivxd"
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -36,7 +37,7 @@ package_pivx-cli() {
   pkgdesc+="(CLI)"
   depends+=("openssl")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${_pkgdirver}"
   install -Dm755 "bin/pivx-cli"	"${pkgdir}/usr/bin/pivx-cli"
   install -Dm755 "bin/pivx-tx"	"${pkgdir}/usr/bin/pivx-tx"
 
@@ -48,7 +49,7 @@ package_pivx-qt() {
   pkgdesc+="(Qt)"
   depends+=("qt5-base" "protobuf" "qrencode" "miniupnpc" "db4.8")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${_pkgdirver}"
   install -Dm755 "bin/pivx-qt"				"${pkgdir}/usr/bin/pivx-qt"
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
