@@ -1,14 +1,14 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=3.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
 url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
-depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapack')
+depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapack' 'mingw-w64-cblas')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz"
         "f0c0e0c6fa198ed3700be4a2bd8f3cc7d70fc127.patch")
@@ -38,6 +38,8 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DBUILD_OPENEXR=OFF'
             '-DWITH_VTK=OFF'
             '-DWITH_IPP=OFF'
+            '-DWITH_OPENEXR=OFF'
+            '-DWITH_JASPER=OFF'
             '-DWITH_DSHOW=OFF')
 
 prepare() {
@@ -48,7 +50,16 @@ prepare() {
 build() {
   cd "$srcdir/opencv-$pkgver"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
+    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
+    ${_arch}-cmake ${_cmakeopts[@]} \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
+      -DLAPACK_LIBRARIES="/usr/${_arch}/lib/liblapack.a;/usr/${_arch}/lib/libblas.a;/usr/${_arch}/lib/libcblas.a" \
+      ..
+    make
+    popd
+
+    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
     ${_arch}-cmake ${_cmakeopts[@]} \
       -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
       -DLAPACK_LIBRARIES="/usr/${_arch}/lib/liblapack.dll.a;/usr/${_arch}/lib/libblas.dll.a;/usr/${_arch}/lib/libcblas.dll.a" \
@@ -60,13 +71,19 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/opencv-$pkgver/build-${_arch}"
+    cd "$srcdir/opencv-$pkgver/build-${_arch}-shared"
     make DESTDIR="$pkgdir" install
+    make -C "$srcdir/opencv-$pkgver/build-${_arch}-static" DESTDIR="$pkgdir/static" install
+    mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
+    sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv.pc
+    sed -i "s/^Libs.private.*/& -lgdi32 -lcomdlg32/" ./unix-install/opencv.pc
+    echo "Requires.private: libjpeg libtiff-4 libpng libwebp" >> ./unix-install/opencv.pc
     install -m644 ./unix-install/opencv.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    rm -r "$pkgdir/static"
   done
 }
 
