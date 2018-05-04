@@ -1,7 +1,7 @@
-diff --git audio/audio.c audio/audio.c
-index beafed209b..6f42a019b0 100644
---- audio/audio.c
-+++ audio/audio.c
+diff --git a/audio/audio.c b/audio/audio.c
+index 7658d2af667..67585fc1a43 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
 @@ -2066,3 +2066,8 @@ void AUD_set_volume_in (SWVoiceIn *sw, int mute, uint8_t lvol, uint8_t rvol)
          }
      }
@@ -11,10 +11,10 @@ index beafed209b..6f42a019b0 100644
 +{
 +    return conf.period.ticks;
 +}
-diff --git audio/audio_int.h audio/audio_int.h
-index 5bcb1c60e1..2f7fc4f8ac 100644
---- audio/audio_int.h
-+++ audio/audio_int.h
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index 5b25da0a373..dee9e22e4ec 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
 @@ -214,6 +214,8 @@ extern struct audio_driver pa_audio_driver;
  extern struct audio_driver spice_audio_driver;
  extern const struct mixeng_volume nominal_volume;
@@ -24,10 +24,10 @@ index 5bcb1c60e1..2f7fc4f8ac 100644
  void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as);
  void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len);
  
-diff --git audio/paaudio.c audio/paaudio.c
-index 65beb6f010..b46beeea92 100644
---- audio/paaudio.c
-+++ audio/paaudio.c
+diff --git a/audio/paaudio.c b/audio/paaudio.c
+index aa0a7477d3b..e175018f3cc 100644
+--- a/audio/paaudio.c
++++ b/audio/paaudio.c
 @@ -1,16 +1,22 @@
  /* public domain */
  #include "qemu/osdep.h"
@@ -89,7 +89,7 @@ index 65beb6f010..b46beeea92 100644
  static void qpa_audio_fini(void *opaque);
 @@ -109,182 +105,59 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
          }                                                               \
-     } while (0);
+     } while (0)
  
 -static int qpa_simple_read (PAVoiceIn *p, void *data, size_t length, int *rerror)
 -{
@@ -189,7 +189,7 @@ index 65beb6f010..b46beeea92 100644
 -    PAVoiceOut *pa = arg;
 -    HWVoiceOut *hw = &pa->hw;
 -
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-    if (audio_pt_lock(&pa->pt, __func__)) {
 -        return NULL;
 -    }
 +    PAVoiceOut *pa = (PAVoiceOut *) hw;
@@ -218,7 +218,7 @@ index 65beb6f010..b46beeea92 100644
 -            }
 +    avail_bytes = (size_t) live << hw->info.shift;
  
--            if (audio_pt_wait (&pa->pt, AUDIO_FUNC)) {
+-            if (audio_pt_wait(&pa->pt, __func__)) {
 -                goto exit;
 -            }
 -        }
@@ -233,7 +233,7 @@ index 65beb6f010..b46beeea92 100644
 +        size_t b_wanted = (size_t) convert_samples << hw->info.shift;
 +        size_t b_effective = b_wanted;
  
--        if (audio_pt_unlock (&pa->pt, AUDIO_FUNC)) {
+-        if (audio_pt_unlock(&pa->pt, __func__)) {
 -            return NULL;
 -        }
 +        r = pa_stream_begin_write(pa->stream, &pa_dst, &b_effective);
@@ -262,7 +262,7 @@ index 65beb6f010..b46beeea92 100644
 -            to_mix -= chunk;
 -        }
 -
--        if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-        if (audio_pt_lock(&pa->pt, __func__)) {
 -            return NULL;
 -        }
 -
@@ -275,7 +275,7 @@ index 65beb6f010..b46beeea92 100644
      }
  
 - exit:
--    audio_pt_unlock (&pa->pt, AUDIO_FUNC);
+-    audio_pt_unlock(&pa->pt, __func__);
 -    return NULL;
 -}
 -
@@ -284,7 +284,7 @@ index 65beb6f010..b46beeea92 100644
 -    int decr;
 -    PAVoiceOut *pa = (PAVoiceOut *) hw;
 -
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-    if (audio_pt_lock(&pa->pt, __func__)) {
 -        return 0;
 -    }
 +    bail:
@@ -295,10 +295,10 @@ index 65beb6f010..b46beeea92 100644
 -    pa->live = live - decr;
 -    hw->rpos = pa->rpos;
 -    if (pa->live > 0) {
--        audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
+-        audio_pt_unlock_and_signal(&pa->pt, __func__);
 -    }
 -    else {
--        audio_pt_unlock (&pa->pt, AUDIO_FUNC);
+-        audio_pt_unlock(&pa->pt, __func__);
 -    }
 +    hw->rpos = rpos;
      return decr;
@@ -329,7 +329,7 @@ index 65beb6f010..b46beeea92 100644
 +    incr = 0;
 +    wpos = hw->wpos;
  
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-    if (audio_pt_lock(&pa->pt, __func__)) {
 -        return NULL;
 -    }
 +    pa_threaded_mainloop_lock(pa->g->mainloop);
@@ -354,7 +354,7 @@ index 65beb6f010..b46beeea92 100644
 -            }
 +    size_t bytes_avail = pa_stream_readable_size(pa->stream);
  
--            if (audio_pt_wait (&pa->pt, AUDIO_FUNC)) {
+-            if (audio_pt_wait(&pa->pt, __func__)) {
 -                goto exit;
 -            }
 -        }
@@ -368,7 +368,7 @@ index 65beb6f010..b46beeea92 100644
 +        r = pa_stream_peek(pa->stream, (const void **)&pa_src, &pa_avail);
 +        CHECK_SUCCESS_GOTO(pa->g, rerror, r == 0, fail);
  
--        if (audio_pt_unlock (&pa->pt, AUDIO_FUNC)) {
+-        if (audio_pt_unlock(&pa->pt, __func__)) {
 -            return NULL;
 +        if (pa_avail == 0 || pa_avail > bytes_wanted) {
 +            break;
@@ -395,7 +395,7 @@ index 65beb6f010..b46beeea92 100644
 -            to_grab -= chunk;
 -        }
 -
--        if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-        if (audio_pt_lock(&pa->pt, __func__)) {
 -            return NULL;
 +            pa_src += chunk << hw->info.shift;
 +            pa_avail -= chunk << hw->info.shift;
@@ -410,7 +410,7 @@ index 65beb6f010..b46beeea92 100644
      }
  
 - exit:
--    audio_pt_unlock (&pa->pt, AUDIO_FUNC);
+-    audio_pt_unlock(&pa->pt, __func__);
 -    return NULL;
 -}
 -
@@ -419,7 +419,7 @@ index 65beb6f010..b46beeea92 100644
 -    int live, incr, dead;
 -    PAVoiceIn *pa = (PAVoiceIn *) hw;
 -
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
+-    if (audio_pt_lock(&pa->pt, __func__)) {
 -        return 0;
 -    }
 +bail:
@@ -432,10 +432,10 @@ index 65beb6f010..b46beeea92 100644
 -    pa->dead = dead - incr;
 -    hw->wpos = pa->wpos;
 -    if (pa->dead > 0) {
--        audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
+-        audio_pt_unlock_and_signal(&pa->pt, __func__);
 -    }
 -    else {
--        audio_pt_unlock (&pa->pt, AUDIO_FUNC);
+-        audio_pt_unlock(&pa->pt, __func__);
 -    }
 +    hw->wpos = wpos;
      return incr;
@@ -584,7 +584,7 @@ index 65beb6f010..b46beeea92 100644
  
 -    audio_pcm_init_info (&hw->info, &obt_as);
 -    hw->samples = g->conf.samples;
--    pa->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
+-    pa->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
 -    pa->rpos = hw->rpos;
 -    if (!pa->pcm_buf) {
 -        dolog ("Could not allocate buffer (%d bytes)\n",
@@ -592,7 +592,7 @@ index 65beb6f010..b46beeea92 100644
 -        goto fail2;
 -    }
 -
--    if (audio_pt_init (&pa->pt, qpa_thread_out, hw, AUDIO_CAP, AUDIO_FUNC)) {
+-    if (audio_pt_init(&pa->pt, qpa_thread_out, hw, AUDIO_CAP, __func__)) {
 -        goto fail3;
 -    }
 +    audio_pcm_init_info(&hw->info, &obt_as);
@@ -698,7 +698,7 @@ index 65beb6f010..b46beeea92 100644
  
 -    audio_pcm_init_info (&hw->info, &obt_as);
 -    hw->samples = g->conf.samples;
--    pa->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
+-    pa->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
 -    pa->wpos = hw->wpos;
 -    if (!pa->pcm_buf) {
 -        dolog ("Could not allocate buffer (%d bytes)\n",
@@ -706,7 +706,7 @@ index 65beb6f010..b46beeea92 100644
 -        goto fail2;
 -    }
 -
--    if (audio_pt_init (&pa->pt, qpa_thread_in, hw, AUDIO_CAP, AUDIO_FUNC)) {
+-    if (audio_pt_init(&pa->pt, qpa_thread_in, hw, AUDIO_CAP, __func__)) {
 -        goto fail3;
 -    }
 +    audio_pcm_init_info(&hw->info, &obt_as);
@@ -732,17 +732,17 @@ index 65beb6f010..b46beeea92 100644
 -    void *ret;
      PAVoiceOut *pa = (PAVoiceOut *) hw;
  
--    audio_pt_lock (&pa->pt, AUDIO_FUNC);
+-    audio_pt_lock(&pa->pt, __func__);
 -    pa->done = 1;
--    audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
--    audio_pt_join (&pa->pt, &ret, AUDIO_FUNC);
+-    audio_pt_unlock_and_signal(&pa->pt, __func__);
+-    audio_pt_join(&pa->pt, &ret, __func__);
 -
      if (pa->stream) {
          pa_stream_unref (pa->stream);
          pa->stream = NULL;
      }
 -
--    audio_pt_fini (&pa->pt, AUDIO_FUNC);
+-    audio_pt_fini(&pa->pt, __func__);
 -    g_free (pa->pcm_buf);
 -    pa->pcm_buf = NULL;
  }
@@ -752,17 +752,17 @@ index 65beb6f010..b46beeea92 100644
 -    void *ret;
      PAVoiceIn *pa = (PAVoiceIn *) hw;
  
--    audio_pt_lock (&pa->pt, AUDIO_FUNC);
+-    audio_pt_lock(&pa->pt, __func__);
 -    pa->done = 1;
--    audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
--    audio_pt_join (&pa->pt, &ret, AUDIO_FUNC);
+-    audio_pt_unlock_and_signal(&pa->pt, __func__);
+-    audio_pt_join(&pa->pt, &ret, __func__);
 -
      if (pa->stream) {
          pa_stream_unref (pa->stream);
          pa->stream = NULL;
      }
 -
--    audio_pt_fini (&pa->pt, AUDIO_FUNC);
+-    audio_pt_fini(&pa->pt, __func__);
 -    g_free (pa->pcm_buf);
 -    pa->pcm_buf = NULL;
  }
@@ -828,10 +828,10 @@ index 65beb6f010..b46beeea92 100644
      },
      {
          .name  = "SERVER",
-diff --git hw/audio/hda-codec.c hw/audio/hda-codec.c
-index 5402cd196c..ab89158bfc 100644
---- hw/audio/hda-codec.c
-+++ hw/audio/hda-codec.c
+diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+index e8aa7842e67..e68830490f3 100644
+--- a/hw/audio/hda-codec.c
++++ b/hw/audio/hda-codec.c
 @@ -18,6 +18,7 @@
   */
  
@@ -1105,10 +1105,10 @@ index 5402cd196c..ab89158bfc 100644
          VMSTATE_END_OF_LIST()
      }
  };
-diff --git hw/audio/intel-hda.c hw/audio/intel-hda.c
-index 18a50a8f83..721eba792d 100644
---- hw/audio/intel-hda.c
-+++ hw/audio/intel-hda.c
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index 948268afd81..23a2cf6484c 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
 @@ -407,13 +407,6 @@ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
      if (st->bpl == NULL) {
          return false;

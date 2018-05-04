@@ -7,7 +7,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -21,20 +21,14 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         65-kvm.rules
         allow_elf64.patch
         cpu-pinning.patch
-        audio-improvements.patch
-        input-mouse-side-buttons.patch
-        v2_qemu_zen_smt_cache.patch
-        v4_ivshmem.patch)
-sha256sums=('8a5145d1f8bd2eadc6776f3e13c68cd28d01349e30639bdbcb26ac588d668686'
+        audio-improvements.patch)
+sha256sums=('e69301f361ff65bf5dabd8a19196aeaa5613c1b5ae1678f0823bdf50e7d5c6fc'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
-            '13a6d9e678bdc9e1f051006cfd0555f5a80582368f54c8a1bb5a78ece3832ac4'
-            '8d4a7e35ab1a0a465f737cf60fc0392afc430e22354a40a89505f8766a3a3ee8'
-            '23338655345d0ee535f34acc124f1ddd75e5ad4483e2bd87294b7ac4fe3fa859'
-            '454edfb0abb76b9149454addbfbf95c9d10ac525b4fcf2c23a8c87b04049a2b4'
-            'adf3f389849e92c5ea4c4cee0abf1ac5df61a176d296e9263ac773194ba86e57'
-            '4acbbd8834dc5782feb86795748f37e1b1aa4f61b54303234ea4f13bd4c0e068')
+            '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4'
+            '5c6baf8d171a75c342ffcc5c4259570b3d8d4f34166d7bc1f694ecf571662f2d'
+            'f54184f2eedf6e3eb1bf66f8f853df5e18cf62cad072fa4937744524d11a3f2b')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -51,10 +45,7 @@ prepare() {
 
   patch -p1 < ../allow_elf64.patch
   patch -p1 < ../cpu-pinning.patch
-  patch -p0 < ../audio-improvements.patch
-  patch -p1 < ../input-mouse-side-buttons.patch
-  patch -p1 < ../v2_qemu_zen_smt_cache.patch
-  patch -p1 < ../v4_ivshmem.patch
+  patch -p1 < ../audio-improvements.patch
 }
 
 build() {

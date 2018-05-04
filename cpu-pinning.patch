@@ -1,4 +1,4 @@
-From e392e5516e6ae66db0f05775a22c0abf39f033f0 Mon Sep 17 00:00:00 2001
+From 420f81563a6ff3e695f7643a1bcbbc332b9f7132 Mon Sep 17 00:00:00 2001
 From: Saverio Miroddi <saverio.pub2@gmail.com>
 Date: Tue, 31 Oct 2017 20:59:05 +0100
 Subject: [PATCH] Current pinning patch
@@ -16,10 +16,10 @@ Changes 2017/10/31:
  3 files changed, 84 insertions(+)
 
 diff --git a/cpus.c b/cpus.c
-index 9bed61eefcc..7437e3a00c7 100644
+index 38eba8bff33..1ff63e0d847 100644
 --- a/cpus.c
 +++ b/cpus.c
-@@ -55,6 +55,9 @@
+@@ -57,6 +57,9 @@
  #ifdef CONFIG_LINUX
  
  #include <sys/prctl.h>
@@ -29,8 +29,8 @@ index 9bed61eefcc..7437e3a00c7 100644
  
  #ifndef PR_MCE_KILL
  #define PR_MCE_KILL 33
-@@ -1722,9 +1725,11 @@ static void qemu_hax_start_vcpu(CPUState *cpu)
-     }
+@@ -1919,9 +1922,11 @@ static void qemu_hax_start_vcpu(CPUState *cpu)
+ #endif
  }
  
 +extern int vcpu_affinity[];
@@ -41,7 +41,7 @@ index 9bed61eefcc..7437e3a00c7 100644
  
      cpu->thread = g_malloc0(sizeof(QemuThread));
      cpu->halt_cond = g_malloc0(sizeof(QemuCond));
-@@ -1733,6 +1738,13 @@ static void qemu_kvm_start_vcpu(CPUState *cpu)
+@@ -1930,6 +1935,13 @@ static void qemu_kvm_start_vcpu(CPUState *cpu)
               cpu->cpu_index);
      qemu_thread_create(cpu->thread, thread_name, qemu_kvm_cpu_thread_fn,
                         cpu, QEMU_THREAD_JOINABLE);
@@ -52,14 +52,14 @@ index 9bed61eefcc..7437e3a00c7 100644
 +      pthread_setaffinity_np((cpu->thread)->thread, sizeof(cpu_set_t), &cpuset);
 +    }
 +
-     while (!cpu->created) {
-         qemu_cond_wait(&qemu_cpu_cond, &qemu_global_mutex);
-     }
+ }
+ 
+ static void qemu_hvf_start_vcpu(CPUState *cpu)
 diff --git a/qemu-options.hx b/qemu-options.hx
-index 9f6e2adfffb..1d38fc86c81 100644
+index ca4e412f2f8..9dd6dcd93cf 100644
 --- a/qemu-options.hx
 +++ b/qemu-options.hx
-@@ -160,6 +160,16 @@ given, the total number of CPUs @var{n} can be omitted. @var{maxcpus}
+@@ -169,6 +169,16 @@ given, the total number of CPUs @var{n} can be omitted. @var{maxcpus}
  specifies the maximum number of hotpluggable CPUs.
  ETEXI
  
@@ -77,7 +77,7 @@ index 9f6e2adfffb..1d38fc86c81 100644
      "-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
      "-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node]\n"
 diff --git a/vl.c b/vl.c
-index d63269332fe..754a03c9a5f 100644
+index fce1fd12d8b..4e6110c5a71 100644
 --- a/vl.c
 +++ b/vl.c
 @@ -135,6 +135,7 @@ int main(int argc, char **argv)
@@ -88,8 +88,8 @@ index d63269332fe..754a03c9a5f 100644
  static const char *data_dir[16];
  static int data_dir_idx;
  const char *bios_name = NULL;
-@@ -167,6 +168,8 @@ int smp_cpus = 1;
- int max_cpus = 1;
+@@ -164,6 +165,8 @@ int smp_cpus;
+ unsigned int max_cpus;
  int smp_cores = 1;
  int smp_threads = 1;
 +int vcpu_affinity[MAX_VCPUS];
@@ -97,7 +97,7 @@ index d63269332fe..754a03c9a5f 100644
  int acpi_enabled = 1;
  int no_hpet = 0;
  int fd_bootchk = 1;
-@@ -1212,6 +1215,57 @@ static QemuOptsList qemu_smp_opts = {
+@@ -1290,6 +1293,57 @@ static QemuOptsList qemu_smp_opts = {
      },
  };
  
@@ -155,7 +155,7 @@ index d63269332fe..754a03c9a5f 100644
  static void smp_parse(QemuOpts *opts)
  {
      if (opts) {
-@@ -3067,6 +3121,7 @@ int main(int argc, char **argv, char **envp)
+@@ -3092,6 +3146,7 @@ int main(int argc, char **argv, char **envp)
      qemu_add_opts(&qemu_accel_opts);
      qemu_add_opts(&qemu_mem_opts);
      qemu_add_opts(&qemu_smp_opts);
@@ -163,7 +163,7 @@ index d63269332fe..754a03c9a5f 100644
      qemu_add_opts(&qemu_boot_opts);
      qemu_add_opts(&qemu_sandbox_opts);
      qemu_add_opts(&qemu_add_fd_opts);
-@@ -3818,6 +3873,12 @@ int main(int argc, char **argv, char **envp)
+@@ -3771,6 +3826,12 @@ int main(int argc, char **argv, char **envp)
                      exit(1);
                  }
                  break;
@@ -176,7 +176,7 @@ index d63269332fe..754a03c9a5f 100644
              case QEMU_OPTION_vnc:
                  vnc_parse(optarg, &error_fatal);
                  break;
-@@ -4243,6 +4304,7 @@ int main(int argc, char **argv, char **envp)
+@@ -4211,6 +4272,7 @@ int main(int argc, char **argv, char **envp)
          exit(1);
      }
  
