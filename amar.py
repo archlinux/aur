@@ -20,16 +20,7 @@ if sys.version_info[0] == 3:
 else:
     import tkMessageBox as messagebox
 
-if os.getuid() != 0:
-	#correction de l'erreur de lancement
-	os.system("xrdb -all -query|sed -e 's#[A-Z_]*BACKGROUND# gray90#' \
-				-e 's#[A-Z_]*FOREGROUND# Black#' \
-				-e 's#[A-Z_]*HIGHLIGHT# White#' \
-				-e 's#[A-Z_]*LOWLIGHT# Black#'|xrdb -merge")
-    
-    #os.system ("sudo -H python /usr/bin/amar.py")
-    #print("Utiliser le script en tant qu'administrateur, lancer le avec 'gksudo -s python amar.py'")
-    #sys.exit(1)
+os.system("xrdb -load /dev/null") #chargement des données avec xrdb
 
 pacmanfichier = "/etc/pacman.conf"
 

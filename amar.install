@@ -1,6 +1,5 @@
 post_install() {
-  rm /var/lib/pacman/db.lck
-  pacman -Syy 
+exit 0
 }
 
 post_upgrade() {
