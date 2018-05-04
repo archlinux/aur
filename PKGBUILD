@@ -3,7 +3,7 @@
 
 pkgname=brewtarget
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="http://www.brewtarget.org/"
 arch=('x86_64' 'i686')
@@ -28,4 +28,5 @@ package() {
   cd "${pkgname}-build"
   make DESTDIR="${pkgdir}" install
   install -Dm644 "../${pkgname}-${pkgver}/COPYING.GPLv3" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPLv3"
+  install -Dm644 "../${pkgname}-${pkgver}/COPYING.WTFPL" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.WTFPL"
 }
