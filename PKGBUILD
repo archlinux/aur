@@ -3,7 +3,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=qtav-git
 pkgver=v1.12.0.r115.g2ac4fdd3
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform multimedia playback framework based on Qt and FFmpeg"
 arch=('x86_64')
 url="http://www.qtav.org/"
