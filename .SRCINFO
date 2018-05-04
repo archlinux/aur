@@ -1,6 +1,6 @@
 pkgbase = midna-theme
 	pkgdesc = KaOS Plasma 5 Look & Feel theme files
-	pkgver = 2.1.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://kaosx.us
 	arch = x86_64
