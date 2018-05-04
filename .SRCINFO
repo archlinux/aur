@@ -1,0 +1,12 @@
+pkgbase = aspell-ar
+	pkgdesc = Arabic dictionary for aspell
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = any
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/ar/aspell6-ar-1.2-0.tar.bz2
+	md5sums = 154cf762bafdd02db419b62191138738
+
+pkgname = aspell-ar
+
