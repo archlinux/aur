@@ -1,14 +1,14 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=3.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
 url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
-depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapack' 'mingw-w64-cblas')
+depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp' 'mingw-w64-lapack' 'mingw-w64-cblas')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz"
         "f0c0e0c6fa198ed3700be4a2bd8f3cc7d70fc127.patch")
@@ -27,6 +27,7 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DWITH_FFMPEG=OFF'
             '-DWITH_GSTREAMER=OFF'
             '-DWITH_OPENCL=OFF'
+            '-DWITH_QT=OFF'
             '-DINSTALL_C_EXAMPLES=OFF'
             '-DINSTALL_PYTHON_EXAMPLES=OFF'
             '-DBUILD_ZLIB=OFF'
@@ -51,10 +52,13 @@ build() {
   cd "$srcdir/opencv-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
+    # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
     ${_arch}-cmake ${_cmakeopts[@]} \
       -DBUILD_SHARED_LIBS=OFF \
       -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
-      -DLAPACK_LIBRARIES="/usr/${_arch}/lib/liblapack.a;/usr/${_arch}/lib/libblas.a;/usr/${_arch}/lib/libcblas.a" \
+      -DLAPACK_LIBRARIES="/usr/${_arch}/bin/liblapack.dll;/usr/${_arch}/bin/libblas.dll;/usr/${_arch}/bin/libcblas.dll" \
+      -DLAPACK_CBLAS_H="/usr/${_arch}/include/cblas.h" \
+      -DLAPACK_LAPACKE_H="/usr/${_arch}/include/lapacke.h" \
       ..
     make
     popd
@@ -62,7 +66,9 @@ build() {
     mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
     ${_arch}-cmake ${_cmakeopts[@]} \
       -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
-      -DLAPACK_LIBRARIES="/usr/${_arch}/lib/liblapack.dll.a;/usr/${_arch}/lib/libblas.dll.a;/usr/${_arch}/lib/libcblas.dll.a" \
+      -DLAPACK_LIBRARIES="/usr/${_arch}/bin/liblapack.dll;/usr/${_arch}/bin/libblas.dll;/usr/${_arch}/bin/libcblas.dll" \
+      -DLAPACK_CBLAS_H="/usr/${_arch}/include/cblas.h" \
+      -DLAPACK_LAPACKE_H="/usr/${_arch}/include/lapacke.h" \
       ..
     make
     popd
@@ -78,7 +84,7 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
     sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv.pc
     sed -i "s/^Libs.private.*/& -lgdi32 -lcomdlg32/" ./unix-install/opencv.pc
-    echo "Requires.private: libjpeg libtiff-4 libpng libwebp" >> ./unix-install/opencv.pc
+    echo "Requires.private: libjpeg libtiff-4 libpng libwebp lapack cblas" >> ./unix-install/opencv.pc
     install -m644 ./unix-install/opencv.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
