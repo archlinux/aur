@@ -1,7 +1,7 @@
 pkgbase = caddy-with-cgi
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support
 	pkgver = 0.10.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = caddy-with-cgi
 	arch = aarch64
 	license = Apache
 	makedepends = go>=1.9
-	makedepends = git
 	provides = caddy
 	conflicts = caddy
 	backup = etc/caddy/caddy.conf
@@ -30,7 +29,7 @@ pkgbase = caddy-with-cgi
 	sha256sums = 69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9
 	sha256sums = bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce
 	sha256sums = 80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64
-	sha256sums = de34979350fd24ddc21367860eaea23322b8568c53bef48a0a63defe398672c6
+	sha256sums = aea16a7850fed36899a0134e564f59657169e338c51e55054d9553a7dee209de
 	sha256sums = c8d56b2295e04720ae8fe9493a7931bb2dba5c568fbcae469887ac143bd6b934
 
 pkgname = caddy-with-cgi

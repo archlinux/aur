@@ -1,5 +1,5 @@
 diff --git a/caddyhttp/httpserver/server.go b/caddyhttp/httpserver/server.go
-index eb854d7..eee1f07 100644
+index c3fbc66..01b3116 100644
 --- a/caddyhttp/httpserver/server.go
 +++ b/caddyhttp/httpserver/server.go
 @@ -32,7 +32,6 @@ import (
@@ -39,10 +39,10 @@ index eb854d7..eee1f07 100644
  		previousHandler.ServeHTTP(w, r)
  	}
  }
-@@ -319,18 +310,11 @@ func (s *Server) Serve(ln net.Listener) error {
+@@ -322,18 +313,11 @@ func (s *Server) Serve(ln net.Listener) error {
+ 	if err == http.ErrServerClosed {
+ 		err = nil // not an error worth reporting since closing a server is intentional
  	}
- 
- 	err := s.Server.Serve(ln)
 -	if s.quicServer != nil {
 -		s.quicServer.Close()
 -	}
@@ -59,10 +59,10 @@ index eb854d7..eee1f07 100644
  }
  
 diff --git a/caddyhttp/proxy/reverseproxy.go b/caddyhttp/proxy/reverseproxy.go
-index 78fbb6b..cc257df 100644
+index c528cf4..9f1dff3 100644
 --- a/caddyhttp/proxy/reverseproxy.go
 +++ b/caddyhttp/proxy/reverseproxy.go
-@@ -37,8 +37,6 @@ import (
+@@ -39,8 +39,6 @@ import (
  
  	"golang.org/x/net/http2"
  
@@ -71,20 +71,21 @@ index 78fbb6b..cc257df 100644
  	"github.com/mholt/caddy/caddyhttp/httpserver"
  )
  
-@@ -204,12 +202,6 @@ func NewSingleHostReverseProxy(target *url.URL, without string, keepalive int) *
+@@ -246,13 +244,6 @@ func NewSingleHostReverseProxy(target *url.URL, without string, keepalive int, t
  		rp.Transport = &http.Transport{
- 			Dial: socketDial(target.String()),
+ 			Dial: socketDial(target.String(), timeout),
  		}
 -	} else if target.Scheme == "quic" {
 -		rp.Transport = &h2quic.RoundTripper{
 -			QuicConfig: &quic.Config{
 -				HandshakeTimeout: defaultCryptoHandshakeTimeout,
+-				KeepAlive:        true,
 -			},
 -		}
- 	} else if keepalive != http.DefaultMaxIdleConnsPerHost {
- 		// if keepalive is equal to the default,
- 		// just use default transport, to avoid creating
-@@ -256,11 +248,6 @@ func (rp *ReverseProxy) UseInsecureTransport() {
+ 	} else if keepalive != http.DefaultMaxIdleConnsPerHost || strings.HasPrefix(target.Scheme, "srv") {
+ 		dialFunc := rp.dialer.Dial
+ 		if strings.HasPrefix(target.Scheme, "srv") {
+@@ -301,11 +292,6 @@ func (rp *ReverseProxy) UseInsecureTransport() {
  		// No http2.ConfigureTransport() here.
  		// For now this is only added in places where
  		// an http.Transport is actually created.
@@ -96,7 +97,7 @@ index 78fbb6b..cc257df 100644
  	}
  }
  
-@@ -276,10 +263,6 @@ func (rp *ReverseProxy) ServeHTTP(rw http.ResponseWriter, outreq *http.Request,
+@@ -323,10 +309,6 @@ func (rp *ReverseProxy) ServeHTTP(rw http.ResponseWriter, outreq *http.Request,
  
  	rp.Director(outreq)
  
@@ -108,7 +109,7 @@ index 78fbb6b..cc257df 100644
  	if err != nil {
  		return err
 diff --git a/caddytls/config.go b/caddytls/config.go
-index 4654c06..3fd340e 100644
+index 80f1633..ae722d8 100644
 --- a/caddytls/config.go
 +++ b/caddytls/config.go
 @@ -23,7 +23,6 @@ import (
@@ -117,9 +118,9 @@ index 4654c06..3fd340e 100644
  
 -	"github.com/codahale/aesnicheck"
  	"github.com/mholt/caddy"
- 	"github.com/xenolf/lego/acme"
+ 	"github.com/xenolf/lego/acmev2"
  )
-@@ -500,11 +499,6 @@ var defaultCiphersNonAESNI = []uint16{
+@@ -648,10 +647,6 @@ var defaultCiphersNonAESNI = []uint16{
  //
  // See https://github.com/mholt/caddy/issues/1674
  func getPreferredDefaultCiphers() []uint16 {
@@ -127,7 +128,6 @@ index 4654c06..3fd340e 100644
 -		return defaultCiphers
 -	}
 -
--	// Return a cipher suite that prefers ChaCha20
+ 	// Return a cipher suite that prefers ChaCha20
  	return defaultCiphersNonAESNI
  }
- 
