@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.16
-_pkgver=4.16.6
+_pkgver=4.16.7
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/anthraxx/linux-hardened'
@@ -22,22 +22,20 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
-        fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
         partially-revert-swiotlb-remove-various-exports.patch
 )
 replaces=('linux-grsec')
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
+            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
             'SKIP'
-            '587477338e3c34e31c8d895bae9bed6847d6b0b5ad318460733ee9213730315f'
+            '263b331ee4f18ae9500541265ca2d37764d4b25a2541aa9824e92909456e2285'
             'SKIP'
             '6af64e6b4e017428dc887b7ccbaa4ef01166bdd2f75d49fd6aeeb79bf5c33432'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
-            'b1c1cf770b2baab046d52687ec3dd83c543e3f45b4abeae2686c814673e0a1c5'
             '87a0849079db7bf1deefb687bcf43170f1b209d27af9950f98b049cdf233b447')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
