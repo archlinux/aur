@@ -1,6 +1,6 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.10.0.r260.gc4e8f6d7cd
+	pkgver = 2.10.0.r417.g8c48e8bb43
 	pkgrel = 1
 	url = http://www.gimp.org
 	arch = i686

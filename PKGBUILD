@@ -3,7 +3,7 @@
 # Contributor: Yosef Or Boczko <yosefor3@walla.com>
 
 pkgname=gimp-gtk3-git
-pkgver=2.10.0.r260.gc4e8f6d7cd
+pkgver=2.10.0.r417.g8c48e8bb43
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -51,8 +51,9 @@ prepare() {
 
 build() {
   cd ${pkgname%-gtk3-git}
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --enable-mp --enable-gimp-console \
-	       --enable-python --with-gif-compression=lzw --with-libcurl --without-aa \
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/bin \
+	       --enable-mp --enable-gimp-console --enable-python \
+	       --with-gif-compression=lzw --with-libcurl --with-aa \
 	       --without-hal --without-gvfs --without-gnomevfs --without-webkit \
 	       --enable-gtk-doc
   make
