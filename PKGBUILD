@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-jasper
 pkgver=2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
 url="http://www.ece.uvic.ca/~mdadams/jasper"
@@ -39,6 +39,7 @@ build() {
     -DJAS_ENABLE_OPENGL=OFF
     -DJAS_ENABLE_LIBJPEG=ON
     -DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF
+    -DJAS_ENABLE_DOC=OFF
   )
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
@@ -58,7 +59,6 @@ package() {
     make DESTDIR="$pkgdir" install
     cd "${srcdir}/jasper-version-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -r "$pkgdir/usr/${_arch}/share"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
