@@ -2,7 +2,7 @@
 
 _pkgname=sent
 pkgname=${_pkgname}-git
-pkgver=r84.11f2c64
+pkgver=r125.72d33d4
 pkgrel=1
 pkgdesc="Simple plain-text presentation tool"
 arch=('i686' 'x86_64')
@@ -34,8 +34,9 @@ build() {
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}" \
-		PREFIX="/usr" \
-		DESTDIR="${pkgdir}" \
-		install
+	cd "${srcdir}/${pkgname}"
+	make PREFIX="/usr" \
+		 DESTDIR="${pkgdir}" \
+		 install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
