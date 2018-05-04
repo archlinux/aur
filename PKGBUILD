@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('clamav' 'commoncpp2' 'fuse' 'poco' 'rlog')
 makedepends=('boost>=1.33')
 backup=('etc/clamav/clamfs.xml')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "scancache.cxx.patch"
         "clamfs.service")
 md5sums=('e1528c48d3b2340b6c3ee83cfb427820'
