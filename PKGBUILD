@@ -4,7 +4,7 @@
 
 _pkgname=monotonic
 pkgname=('python-monotonic' 'python2-monotonic')
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="An implementation of time.monotonic() for Python 2."
 url="https://pypi.python.org/pypi/monotonic"
@@ -12,7 +12,7 @@ license=('Apache')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/atdt/monotonic/archive/$pkgver.tar.gz")
-sha512sums=('2ac02b027a41f4635b62508a9a435ffd124d0f0708a93558a6702dc997837e602790ebf6af256434faa15989e9c4ad7d8a27be9fdcf04bb22b451991a7e8cc46')
+sha512sums=('acee69916a82059a027e7bcc03c58deb5ce773a1aff45938699cf09c3ab49b7827c2c01b431593ed76ae49009728c3d52923267eccfc7e15390f8730351a39e2')
 
 package_python-monotonic() {
   depends=('python')
