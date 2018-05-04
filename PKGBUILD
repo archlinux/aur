@@ -3,31 +3,34 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
 makedepends=()
 license=('CCPL')
 arch=('any')
-img02='Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
-img03='Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
-img04='Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
-img05='View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
-img06='Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
-img07='Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg'
-img_tree='A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'
-img09='Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
-img10='Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
-img_cranes='Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
-img_ard='Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'
-img12='Parc_Tenreuken_looking_South_from_the_West_side_during_the_sunset_civil_twilight,_Auderghem,_Belgium_(DSCF3745,DSCF3746-b1).jpg'
-img13='Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'
-source=("${_url}${img02}" "${_url}${img03}"
-	"${_url}${img04}" "${_url}${img05}" "${_url}${img06}"
-	"${_url}${img07}" "${_url}${img_tree}" "${_url}${img09}"
-	"${_url}${img10}" "${_url}${img_cranes}" "${_url}${img12}"
-	"${_url}${img_ard}" "${_url}${img13}")
+images=('Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
+	'Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
+	'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
+	'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
+	'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
+	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg'
+	'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'
+	'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
+	'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
+	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
+	'Parc_Tenreuken_looking_South_from_the_West_side_during_the_sunset_civil_twilight,_Auderghem,_Belgium_(DSCF3745,DSCF3746-b1).jpg'
+	'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'
+	'Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'
+	)
+
+source=("${_url}${images[0]}" "${_url}${images[1]}" "${_url}${images[2]}"
+	"${_url}${images[3]}" "${_url}${images[4]}" "${_url}${images[5]}"
+	"${_url}${images[6]}" "${_url}${images[7]}" "${_url}${images[8]}"
+	"${_url}${images[9]}" "${_url}${images[10]}" "${_url}${images[11]}"
+	"${_url}${images[12]}" )
+	
 sha256sums=('816c37d71c5b3594aec28be8fe81699441007d9bbd1f240137f56691d2af51ad'
 	'0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
 	'34e13f84a99c20b7ba7280db25d6993675b17f953a327c144e57ad04abefd08f'
@@ -61,40 +64,40 @@ package() {
 
 <!-- This animation will start at 10h16. -->
 
-<!-- 10h16 to 12h31 = 135 minutes -->
+<!-- 10h16 to 12h31 = 135 minutes-->
 <static>
 <duration>8100</duration>
-<file>/usr/share/backgrounds/trougnouf/${img02}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[0]}</file>
 </static>
 
 <!-- 12h31 to 13h07 = 36 minutes -->
 <static>
 <duration>2160</duration>
-<file>/usr/share/backgrounds/trougnouf/${img03}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[1]}</file>
 </static>
 
 <!-- 13h07 to 13h50 = 43 minutes -->
 <static>
 <duration>2580</duration>
-<file>/usr/share/backgrounds/trougnouf/${img04}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[2]}</file>
 </static>
 
 <!-- 13h50 to 14h23 = 33 minutes -->
 <static>
 <duration>1980</duration>
-<file>/usr/share/backgrounds/trougnouf/${img05}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[3]}</file>
 </static>
 
 <!-- 14h23 to 14h56 = 33 minutes -->
 <static>
 <duration>1980</duration>
-<file>/usr/share/backgrounds/trougnouf/${img06}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[4]}</file>
 </static>
 
 <!-- 14h56 to 15h30 = 34 minutes -->
 <static>
 <duration>2040</duration>
-<file>/usr/share/backgrounds/trougnouf/${img07}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[5]}</file>
 </static>
 
 <!-- alt: 15h36: Parc_Seny_on_a_snowy_day,_entering_from_Rue_Charles_Lemaire_(Auderghem,_Belgium)_-_road.jpg -->
@@ -102,7 +105,7 @@ package() {
 <!-- 15h30 - 16h35 = 65 minutes -->
 <static>
 <duration>3900</duration>
-<file>/usr/share/backgrounds/trougnouf/${img_tree}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[6]}</file>
 </static>
 
 <!-- alt: 16h44: View through a broken window from a room in Sanatorium du Basil, Stoumont, Belgium (DSCF3542,DSCF3545).jpg -->
@@ -110,37 +113,37 @@ package() {
 <!-- 16h35 to 17h16 = 41 minutes -->
 <static>
 <duration>2460</duration>
-<file>/usr/share/backgrounds/trougnouf/${img09}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[7]}</file>
 </static>
 
 <!-- 17h16 to 17h48 = 32 minutes -->
 <static>
 <duration>1920</duration>
-<file>/usr/share/backgrounds/trougnouf/${img10}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[8]}</file>
 </static>
 
 <!-- 17h48 to 18h06 = 18 minutes -->
 <static>
 <duration>1080</duration>
-<file>/usr/share/backgrounds/trougnouf/${img_cranes}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[9]}</file>
 </static>
 
 <!-- 18h06 to 19h55 = 109 minutes -->
 <static>
 <duration>6540</duration>
-<file>/usr/share/backgrounds/trougnouf/${img12}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[10]}</file>
 </static>
 
 <!-- 19h55 to 22h46 = 171 minutes -->
 <static>
 <duration>10260</duration>
-<file>/usr/share/backgrounds/trougnouf/${img_ard}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[11]}</file>
 </static>
 
 <!-- 22h46 to 10h16 = 690 minutes -->
 <static>
 <duration>41400</duration>
-<file>/usr/share/backgrounds/trougnouf/${img13}</file>
+<file>/usr/share/backgrounds/trougnouf/${images[12]}</file>
 </static>
 </background>" > "${pkgdir}/usr/share/backgrounds/trougnouf/trougnouf-timed.xml"
 
@@ -157,92 +160,92 @@ echo "<?xml version=\"1.0\"?>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img02}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img02}</filename>
+    <name>${images[0]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[0]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img03}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img03}</filename>
+    <name>${images[1]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[1]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img04}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img04}</filename>
+    <name>${images[2]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[2]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img05}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img05}</filename>
+    <name>${images[3]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[3]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img06}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img06}</filename>
+    <name>${images[4]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[4]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img07}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img07}</filename>
+    <name>${images[5]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[5]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img_tree}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img_tree}</filename>
+    <name>${images[6]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[6]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img09}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img09}</filename>
+    <name>${images[7]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[7]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img10}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img10}</filename>
+    <name>${images[8]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[8]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img_cranes}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img_cranes}</filename>
+    <name>${images[9]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[9]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img12}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img12}</filename>
+    <name>${images[10]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[10]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img_ard}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img_ard}</filename>
+    <name>${images[11]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[11]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
   </wallpaper>
   <wallpaper deleted=\"false\">
-    <name>${img13}</name>
-    <filename>/usr/share/backgrounds/trougnouf/${img13}</filename>
+    <name>${images[12]}</name>
+    <filename>/usr/share/backgrounds/trougnouf/${images[12]}</filename>
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
