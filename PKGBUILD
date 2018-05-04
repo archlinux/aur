@@ -3,9 +3,9 @@
 # Contributor: Yosef Or Boczko <yosefor3@walla.com>
 
 pkgname=gimp-gtk3-git
-pkgver=2.10.0.r417.g8c48e8bb43
-pkgrel=2
-pkgdesc="GNU Image Manipulation Program"
+pkgver=2.10.0.r420.gd7db7f2057
+pkgrel=1
+pkgdesc="GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
