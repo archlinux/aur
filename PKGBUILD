@@ -20,8 +20,8 @@ prepare() {
 }
 package() {
 	install -Dm644 "$srcdir/$_pkgname/default/aclidswitch" "$pkgdir/etc/default/aclidswitch"
-	install -Dm644 "$srcdir/$_pkgname/98-aclidswitch.rules" "$pkgdir/usr/lib/udev/rules.d/98-aclidswitch.rules"
-	install -Dm644 "$srcdir/$_pkgname/99-low-battery-action.rules" "$pkgdir/usr/lib/udev/rules.d/99-low-battery-action.rules"
+	install -Dm644 "$srcdir/$_pkgname/98-aclidswitch.rules" "$pkgdir/usr/lib/udev/rules.d/97-aclidswitch.rules"
+	install -Dm644 "$srcdir/$_pkgname/99-low-battery-action.rules" "$pkgdir/usr/lib/udev/rules.d/98-low-battery-action.rules"
 	install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/_$pkgname/LICENSE"
 	install -Dm755 "$srcdir/$_pkgname/aclidswitch" "$pkgdir/usr/bin/aclidswitch"
 }
