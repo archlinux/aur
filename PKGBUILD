@@ -3,7 +3,7 @@
 pkgname=bitkeeper-development-bin
 pkgver=7.3.2.8.0x5aaba359
 pkgrel=1
-pkgdesc="a fast, enterprise-ready, distributed SCM"
+pkgdesc="a fast, enterprise-ready, distributed SCM. DEVELOPMENT VERSION!!!"
 arch=("x86_64")
 license=("Apache 2.0")
 depends=("libxft")
