@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.14
-_pkgver=4.14.34
-_rtpatchver=rt27
+_pkgver=4.14.39
+_rtpatchver=rt29
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -41,9 +41,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd5981abb1f9f73cc64843eefe1501166b6135ca41f73bb4c5dbe960f739edf6c'
+            '8686e9a0ff123163799f098767c91af4a0d58bc789a7de2cfe9d7b886f5b4fbd'
             'SKIP'
-            '41fd279473c6d43c7edcec3cc9fd5b524d8c3b74c26974ff30d4f728c2f98e82'
+            '9a107cbfb6d4db1fc0efe7661b1c86eec2ee4119cb1732119317a2f99b1c66b1'
             'SKIP'
             'be24c49a01142458458516972d427fb2e341f9e16b8e631055bcf19e87e94d7b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
