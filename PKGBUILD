@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=pcsclite-git
-pkgver=pcsc.1.8.23.r0.g09f0f85
+pkgver=1.8.23.r4.g984f84d
 pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library"
 arch=('x86_64')
@@ -18,7 +18,7 @@ validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ro
 
 pkgver() {
   cd "${srcdir}/PCSC"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^pcsc\.//g'
 }
 
 build() {
