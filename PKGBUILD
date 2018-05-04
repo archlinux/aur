@@ -2,11 +2,11 @@
 pkgname=python-download-npo
 _module='download-npo'
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Download videos from the Dutch npo.nl site."
 url="http://arp242.net/code/download-npo"
-depends=('python')
-makedepends=('python3')
+depends=('python' 'hicolor-icon-theme')
+makedepends=('python')
 optdepends=('tk: graphical frontend')
 license=('MIT')
 arch=('any')
