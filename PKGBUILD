@@ -3,7 +3,7 @@
 
 pkgname=nerd-fonts-gabmus
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 depends=('fontconfig')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs' 'nerd-fonts-complete')
 pkgdesc="Selection of nerd-fonts curated by gabmus"
@@ -46,7 +46,8 @@ sha512sums=("d507bba17336852468dd99b3b3d0c1d843df6af1dc8e5b747f03f93663532abb7dd
 package() {
 
   install -m755 -d "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 *Complete\ Mono.*tf "${pkgdir}"/usr/share/fonts/"${pkgname}"
+  rm *Windows*.*tf
+  install -m644 *Complete*.*tf "${pkgdir}"/usr/share/fonts/"${pkgname}"
 
 }
 
