@@ -217,20 +217,68 @@ void portfolio_store_api_data(SD* sec_data) {
     }
 }
 
-void portfolio_print_all(void) {
+void portfolio_sort(SDA* sda_data, int SORT) {
+    int loop_flag = 1;
+    double val1 = 0, val2 = 0;
+    SD* sec_data1, * sec_data2, * temp;
+    while (loop_flag) { // Bubble sort
+        loop_flag = 0;
+        for (size_t i = 0; i < sda_data->length - 1; i++) {
+            sec_data1 = sda_data->sec_data[i];
+            sec_data2 = sda_data->sec_data[i + 1];
+            if (SORT == SORT_ALPHA) {
+                if (strcmp(sec_data1->symbol, sec_data2->symbol) > 0) { // Least to greatest
+                    temp = sda_data->sec_data[i];
+                    sda_data->sec_data[i] = sda_data->sec_data[i + 1];
+                    sda_data->sec_data[i + 1] = temp;
+                    loop_flag = 1;
+                }
+            } else if (SORT == SORT_VALUE) {
+                val1 = sec_data1->current_value;
+                val2 = sec_data2->current_value;
+            } else if (SORT == SORT_PROFIT) {
+                val1 = sec_data1->total_profit;
+                val2 = sec_data2->total_profit;
+            } else if (SORT == SORT_PROFIT_1D) {
+                val1 = sec_data1->one_day_profit;
+                val2 = sec_data2->one_day_profit;
+            }
+            if (val1 < val2) { // Greatest to least
+                temp = sda_data->sec_data[i];
+                sda_data->sec_data[i] = sda_data->sec_data[i + 1];
+                sda_data->sec_data[i + 1] = temp;
+                loop_flag = 1;
+            }
+        }
+    }
+}
+
+void portfolio_print_all(int SORT) {
     SDA* sda_data = portfolio_get_data_array();
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
+    printf("Loading data ");
     double total_owned = 0, total_spent = 0, total_profit_1d = 0;
     SD* sec_data;
+    char loading_str[32];
     for (size_t i = 0; i < sda_data->length; i++) {
         sec_data = sda_data->sec_data[i];
-        portfolio_store_api_data(sec_data);
+        portfolio_store_api_data(sec_data); // Store API data one security at a time
+        total_owned += sec_data->current_value; // Add collected values to totals
+        total_spent += sec_data->total_spent;
+        total_profit_1d += sec_data->one_day_profit;
+        if (i > 0)
+            for (size_t j = 0; j < strlen(loading_str); j++)
+                putchar('\b'); // Overwrite loading status
+        sprintf(loading_str, "(%d/%d)", (int) i + 1, (int) sda_data->length);
+        printf("%s", loading_str); // Print loading string
+        fflush(stdout); // Flush because no newline
+    }
+    portfolio_sort(sda_data, SORT); // Sort security array
+    printf("\n  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
+    for (size_t i = 0; i < sda_data->length; i++) {
+        sec_data = sda_data->sec_data[i]; // Print security data one at a time
         printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
                sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
                sec_data->one_day_profit, sec_data->one_day_profit_percent);
-        total_owned += sec_data->current_value;
-        total_spent += sec_data->total_spent;
-        total_profit_1d += sec_data->one_day_profit;
     }
     printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,

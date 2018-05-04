@@ -12,11 +12,10 @@ int main(int argc, char* argv[]) {
 
     char* sym = NULL;
     if (argc > 2) {
-        char* s = malloc(strlen(argv[2]) + 1);
-        pointer_alloc_check(s);
-        strcpy(s, argv[2]);
-        strtoupper(s);
-        sym = s;
+        sym = malloc(strlen(argv[2]) + 1);
+        pointer_alloc_check(sym);
+        strcpy(sym, argv[2]);
+        strtoupper(sym);
     }
 
     // Init portfolio path
@@ -53,9 +52,21 @@ int main(int argc, char* argv[]) {
 
         // Check
     else if (strcmp(cmd, "check") == 0) {
-        if (argc == 2 || strcmp(sym, "ALL") == 0)
-            portfolio_print_all();
-        else portfolio_print_stock(sym);
+        int SORT = SORT_ALPHA;
+        if (argc == 2)
+            portfolio_print_all(SORT);
+        else if (argc == 3) {
+            if (strlen(sym) == 2 && sym[0] == '-') {
+                if (sym[1] == 'V')
+                    SORT = SORT_VALUE;
+                else if (sym[1] == 'P')
+                    SORT = SORT_PROFIT;
+                else if (sym[1] == '1')
+                    SORT = SORT_PROFIT_1D;
+                portfolio_print_all(SORT);
+            } else portfolio_print_stock(sym);
+        }
+        else puts("Invalid arguments. Type \"man tick\" for help.");
     }
 
         // Portfolio

@@ -9,6 +9,11 @@
 #define ADD 1
 #define SET 2
 
+#define SORT_ALPHA 0
+#define SORT_VALUE 1
+#define SORT_PROFIT 2
+#define SORT_PROFIT_1D 3
+
 struct security_data {
     char symbol[32];
     double amount;
@@ -94,10 +99,19 @@ SDA* portfolio_get_data_array(void);
 void portfolio_store_api_data(SD* sec_data);
 
 /**
+ * Sorts the SDA array based on the SORT mode.
+ * SORT_ALPHA will sort the array lexicographically from least to greatest
+ * SORT_VALUE, SORT_PROFIT, and SORT_PROFIT_1D will sort the array from greatest to least
+ * @param sda_data array to sort
+ * @param SORT mode to sort
+ */
+void portfolio_sort(SDA* sda_data, int SORT);
+
+/**
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
  */
-void portfolio_print_all(void);
+void portfolio_print_all(int SORT);
 
 /**
  * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
