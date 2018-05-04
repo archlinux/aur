@@ -1,6 +1,6 @@
 pkgbase = opl3bankeditor-git
 	pkgdesc = A small cross-platform editor of the OPL3 FM banks of different formats
-	pkgver = 1.3.beta.r148.gcbca839
+	pkgver = 1.3.beta.r176.g8b5b03f
 	pkgrel = 1
 	url = https://github.com/Wohlstand/OPL3BankEditor
 	arch = i686

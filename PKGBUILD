@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=opl3bankeditor-git
 _pkgname=OPL3BankEditor
-pkgver=1.3.beta.r148.gcbca839
+pkgver=1.3.beta.r176.g8b5b03f
 pkgrel=1
 epoch=
 pkgdesc="A small cross-platform editor of the OPL3 FM banks of different formats"
@@ -30,6 +30,12 @@ validpgpkeys=()
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  git submodule init
+  git submodule update
 }
 
 build() {
