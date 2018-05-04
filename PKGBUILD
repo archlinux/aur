@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('qt5-base' 'qt5-multimedia' 'psi-plus-git' 'qt5-webengine')
 conflicts=('psi-plus-plugins' 'psi-plus-plugins-qt5-git')
 provides=("psi-plus-plugins=$pkgver" "psi-plus-plugins-qt5-git=$pkgver")
-makedepends=('libotr' 'tidy')
+makedepends=('libotr' 'tidy' 'git')
 optdepends=('libotr: for OTR plugin'
             'tidy: for OTR plugin')
 source=('git://github.com/psi-plus/psi-plus-snapshots')
