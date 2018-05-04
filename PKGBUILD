@@ -1,5 +1,5 @@
 pkgname=virtualbox51-guest-iso
-pkgver=5.1.34
+pkgver=5.1.36
 pkgrel=1
 pkgdesc='The official VirtualBox Guest Additions ISO image'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('virtualbox-additions' 'virtualbox-iso-additions' 'virtualbox-guest-i
 noextract=(VBoxGuestAdditions_$pkgver.iso)
 source=("http://download.virtualbox.org/virtualbox/$pkgver/VBoxGuestAdditions_$pkgver.iso"
         'license')
-sha256sums=('f74cc251b5cec7aa61af35e46b630589c70402f67ff4a0ff6a84979103789dc0'
+sha256sums=('e1a4fad9bc7a11f10fec8e4ad8860e80e6a690be2aa90d171ffc5fee66f91e2c'
             'fbe9cd6288037bff44716642ee4bea9c42c2d60eb5ed86cb48fa95147d9e8623')
 
 package() {
