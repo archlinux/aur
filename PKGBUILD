@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.28.2.r451.gc647516278
+pkgver=0.28.2.r564.g11289d5238
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -79,7 +79,6 @@ build() {
         --enable-libass \
         --enable-libass-osd \
         --enable-zlib \
-        --enable-encoding \
         --enable-libbluray \
         --enable-dvdread \
         --enable-dvdnav \
