@@ -1,6 +1,7 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-jasper
-pkgver=2.0.10
-pkgrel=2
+pkgver=2.0.14
+pkgrel=1
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
 url="http://www.ece.uvic.ca/~mdadams/jasper"
@@ -9,19 +10,25 @@ makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-libjpeg-turbo')
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz"
-"jasper-1.900.1-fix-filename-buffer-overflow.patch")
-sha1sums=('4818a48d370fc04719dc236c4a9405c8e622856c'
-          '6708fdd45d57def32d15b1343044b79c370b9584')
+        "jasper-1.900.1-fix-filename-buffer-overflow.patch"
+        "001-mingw-cmake.patch"
+        "002-add-more-exports.patch"
+        "jasper-static-fix.patch")
+
+sha256sums=('85266eea728f8b14365db9eaf1edc7be4c348704e562bb05095b9a077cf1a97b'
+            'f51377e9b3e4faaa6b17b2d5fcf6f6d94fe2916a65dc9c78b5a99b891f5726dc'
+            '2b261c9b40b973d0d11f7b2b6842b36aee45657cbd5e0780fa73cb184f570b65'
+            '48c60686d7e3c737f282513d78f8e6263e5f555d71de625002e3fba1c38c8850'
+            '3102b4175d714df84a63b8ebf3c0f346fc09a0a784a560917994f6074d6b1697')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/jasper-version-$pkgver"
-  patch -p1 -i "${srcdir}/jasper-1.900.1-fix-filename-buffer-overflow.patch"
-  # fix library name liblibjapser -> libjasper
-  sed -i "165iset_target_properties(libjasper PROPERTIES OUTPUT_NAME jasper)" src/libjasper/CMakeLists.txt
-  # disable doc
-  sed -i "s|add_subdirectory(doc)||g" CMakeLists.txt
+  patch -p1 -i "${srcdir}"/jasper-1.900.1-fix-filename-buffer-overflow.patch
+  patch -p1 -i "${srcdir}"/001-mingw-cmake.patch
+  patch -p1 -i "${srcdir}"/002-add-more-exports.patch
+  patch -p1 -i "${srcdir}"/jasper-static-fix.patch
 }
 
 build() {
@@ -51,10 +58,11 @@ package() {
     make DESTDIR="$pkgdir" install
     cd "${srcdir}/jasper-version-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin/
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -r "$pkgdir/usr/${_arch}/share"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
+
+# vim: ts=2 sw=2 et:
