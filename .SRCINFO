@@ -1,0 +1,19 @@
+pkgbase = jpf-core-bin
+	pkgdesc = An extensible software model checking framework for Java bytecode programs
+	pkgver = r32
+	pkgrel = 1
+	url = https://babelfish.arc.nasa.gov/trac/jpf/wiki/projects/jpf-core
+	arch = any
+	license = APACHE
+	depends = java-environment-openjdk>=8
+	provides = jpf-core
+	conflicts = jpf-core
+	source = https://babelfish.arc.nasa.gov/trac/jpf/raw-attachment/wiki/projects/jpf-core/jpf-core-r32.zip
+	source = jpf
+	source = jpf.properties
+	md5sums = a9a3cff397180a533a93fd434241a225
+	md5sums = 85a27d09ee9ec6137d5f7c43180c87e0
+	md5sums = 31708844142d0b48a3227b113db0cb0f
+
+pkgname = jpf-core-bin
+
