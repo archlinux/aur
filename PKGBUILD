@@ -9,9 +9,6 @@
 ### Thx to Tom 'monotykamary' Nguyen
 _use_tentative_patches=
 
-### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
-_use_blk_mq_patches=
-
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -60,10 +57,10 @@ _mq_enable=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_major=4.14
+_major=4.16
 _srcname=linux-${_major}
-_minor=39
-_rtver=29
+_minor=7
+_rtver=1
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
@@ -73,7 +70,7 @@ url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_ver='20180404'
+_bfq_sq_mq_ver='20180412'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -89,13 +86,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_patch}"
-        "${_lucjanpath}/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch"
-        "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
-        "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
-        "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
-        "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
@@ -110,9 +100,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
         
-_kernelname=${pkgbase#linux} 
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-rt-bfq}
 
 prepare() {
     cd ${_srcname}
@@ -133,22 +125,21 @@ prepare() {
         msg "Fix #56711"
         patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch    
     
+    ### NVIDIA driver compat
+        msg "NVIDIA driver compat"
+        patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+    
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         patch -p1 -i ../fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
             
     ### Patch source with BFQ-SQ-MQ
-        _ver1="$(cat Makefile | grep -m1 -e PATCHLEVEL | grep -o "[[:digit:]]*")"
-        _ver2="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
-        msg "Fix patching with 20180109"
-        patch -Np1 -i ../0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
+        _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = ${_ver1}|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver2}|g" \
+        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver}|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
-            -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_sq_mq_patch}
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_sq_mq_patch}
         
@@ -159,14 +150,6 @@ prepare() {
         msg " $p"
         patch -Np1 -i "$p"; done
         fi
-        
-    ### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
-        if [ -n "$_use_blk_mq_patches" ]; then
-        msg "Apply blk-mq patches"
-        for p in "${srcdir}"/*-blk-mq*.patch*; do 
-        msg " $p" 
-        patch -Np1 -i "$p"; done
-        fi     
     
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
@@ -176,7 +159,10 @@ prepare() {
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 
-	cp -Tf ../config .config
+	cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
         
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -207,11 +193,6 @@ prepare() {
             sed -i -e s'/^# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' \
                 -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
         fi
-   
-	if [ "${_kernelname}" != "" ]; then
-		sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-	fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
@@ -279,7 +260,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -290,18 +271,18 @@ _package() {
     install=linux.install
 
     cd ${_srcname}
-
+    
     # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _kernver="$(make kernelrelease)"
     _basekernel=${_kernver%%-*}
     _basekernel=${_basekernel%.*}
 
     mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
     cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
     # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    local _extramodules="extramodules-${_basekernel}${_kernelname}"
     ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
     # add real version for building modules and running depmod from hook
@@ -338,7 +319,7 @@ _package() {
     sed "${_subst}" ../90-linux.hook |
         install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
     sed "${_subst}" ../99-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"    
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"     
 }
 
 _package-headers() {
@@ -362,9 +343,6 @@ _package-headers() {
 
     install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
     install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-    # http://bugs.archlinux.org/task/9912
-    install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
     # http://bugs.archlinux.org/task/13146
     install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
@@ -390,7 +368,7 @@ _package-headers() {
         rm -r "${_arch}"
     done
 
-    # remove files already in linux-rt-bfq-docs package
+    # remove files already in linux-uksml-docs package
     rm -r "${_builddir}/Documentation"
     
     # remove now broken symlinks
@@ -434,30 +412,24 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
+sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '28568e50fc70016426b65706f3de12cd723d7e5d5d88a23bbb02915b221db904744108328c3a63bb3f620e059f116930bb0b2d16271b53ed70dc320f6f3daf69'
+            '576c2b520d444e11a9ca45ed3ed03822007ab6ff778a1759aa0f65c96946fe3e169e71d48d11e6d3b8627a99cdc20abfb0c84d7b6c9b0d2afa4d5fee9ed3aa41'
             'SKIP'
-            'b50f62eb6310151da88c73caef4749dbfc1aaea2529cbc33946211524aaf8c08d5e102e81d60d449f5e969f97b2d2adf9596ab967452ba8efa18315a87c55326'
+            '5b3625ebb4eccce4e45a3925640a0b0cb91af07ae3d1fe879709c107aa1633bc89bfe7895f650a83cc75c109f11cfa3ee986f6ecfdb3af0b718509154a5ec027'
             'SKIP'
-            '46e316f67165d8df1779a6d7d105c249d0ff768fbbdd59baa9f475bd4007c6851a64b41e0a3319186848670b41bd55c845583c9307b5f02df14e73aed1db3f5d'
-            'e1819903787241db1fc7cf4fb7682936185c73ef7ba842f59b94f2d56ef2ceab3df42344df3cb226060c09257d98e9a861bc8f7a7debc0a9f0936022022fc3ba'
-            'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
-            '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
-            '49c8619a96d7145e8fe77fad4394db7b24a73d94c1e01866e4a3bc5b044dbbb59c8aa2db62d72ef8460ec777d88959b545ad6373073fe3fd21016e5fc08c9f3c'
-            '8d81793da14847ee521d230a3065b0c1dfd0138c28ea350754de21e2908132866e4851119f98182cf8725a92a803c31999f457a495c5079afe7d82470f5fcb63'
-            '27b68107c4920baf85a5b1e1636d523399bcc1c7bce5e238ee321c666bb79f0124890577b3cba16a99d7da406015401324e8d04b91a1f73e4093473033ae237a'
-            '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
+            '5b860dd67312af2327b9c6abc62d08e285cb81b5e64207f879178dac673cfe67249321ab9bf61e07e6fb855b0d7388061e8bbd4cead0e078886b91beb38599c9'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '549fb4a15b2cc34a45c7eba570c3b54bc06afa37c08164be337eb7f42c2f563f6dbd13d67ad233459c38bead446b057fed75510218cd91b33f05d8c23b0a7d93'
+            '29ede16f96268efbe040288799376c9de939a4a6bb56af3bec0128e0389fb6257ca60f24c0ed2ccf7aae2e76851f2d928fce6d574c95da219ffb0923ea2ca17e'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '4586b3fcdf2696b23f1a03007505229074e3a1af98cfdb21ef902f72e1d3b475b7ffbf62cc8607fb1107ead870a9de49a52eed22a516ced803c9f00c079fab76'
-            'e28a7dffc33dedff84e93d99aa1e9d6af07d4b9429062934991d5555e2d655da7566a1390c1c9381738d2afc0b33e28b1196697fd234b18113593276493407a3')
+            '3c4b172d3a67897757706ecb4f98f8ded83223379332812ef633b3185e7b686509f40b1cae237f23bfc59a6e3cbcb8b8ebd68d1ba02549d525b97c63376cce6a'
+            '213c4223a25ea444857a9a289a454abd91d26b3da349b70d1ec9ccd2443cb2223815819e48c9efd3685c38df1445df532cf149af7d9326dc635ccd32ad135ecc'
+            'cb69ad1a79df45f1c2af8bacb58fb760651bd92154cf1fc495d4032a88e575e2eb4f2fc3a299ca000e87c51338c67cfcf2933a346d23130c215cd404524304dc')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
