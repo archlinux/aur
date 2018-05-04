@@ -2,22 +2,24 @@
 
 pkgbase=realrtcw
 pkgname=('realrtcw' 'realrtcw-hdpack')
-pkgver=2.2
-pkgrel=2
+pkgver=2.21
+_hdpackver=2.2
+pkgrel=1
 pkgdesc="A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
 license=('GPL')
 depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 makedepends=('cmake' 'unzip')
-noextract=("realrtcw$pkgver.zip" "hdpack$pkgver.zip")
 install='realrtcw.install'
 source=("https://github.com/wolfetplayer/RealRTCW/archive/$pkgver.tar.gz"
-	"http://www.wolfenstein-files.de/rtcw/mods/$pkgname$pkgver.zip"
-	"http://www.wolfenstein-files.de/rtcw/mods/hdpack$pkgver.zip"
+	"https://wolffiles.de/filebase/RtCW/Mods/$pkgname$pkgver.zip"
+	"http://www.wolfenstein-files.de/rtcw/mods/hdpack${_hdpackver}.zip"
 	realrtcw-sp.launcher
 	realrtcw-sp.desktop
 )
+noextract=("${pkgname[0]}$pkgver.zip" "hdpack${_hdpackver}.zip")
+
 
 build() {
   if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
@@ -80,14 +82,15 @@ package_realrtcw-hdpack() {
 	pkgdesc="HD Textures for RealRTCW Mod"
 
 # Unzipping with flattened paths
-  unzip -jo $srcdir/hdpack$pkgver.zip -d $srcdir
+  unzip -jo $srcdir/hdpack${_hdpackver}.zip -d $srcdir
 
 # Installing RealRTCW HD pack pk3
   install -D -m 755 $srcdir/z_hdpack.pk3 \
         $pkgdir/opt/realrtcw/main/z_hdpack.pk3
 }
-md5sums=('784c0978eba01201d8cab96b949b3a61'
-         'a24763c9d08a87e64c567f6f53296dff'
+
+md5sums=('088b535c3bade4acf18a57df5b23b683'
+         'eedef619c657f3465e448ae0968fe265'
          '800b2b4f9166a46198c093f9c6365bf3'
          '7e3991e5f331662419ad1ed04e49366c'
-         '33f08bc165906164461420e1cc6dd86a')
+         '3a5f5f153404684d5a8e041e9ab135a7')
