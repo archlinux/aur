@@ -1,5 +1,5 @@
 pkgbase = cros-adapta-gtk-theme-git
-	pkgdesc = Adapta crostini theme
+	pkgdesc = Adapta crostini theme, the Chrome OS GTK+ theme
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/adapta-project/adapta-gtk-theme
