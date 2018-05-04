@@ -1,0 +1,17 @@
+pkgbase = python-mypy_extensions
+	pkgdesc = Experimental type system extensions for programs checked with the mypy typechecker.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.mypy-lang.org/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	provides = python-mypy_extensions
+	conflicts = python-mypy_extensions
+	source = mypy_extensions-0.3.0.tar.gz::https://pypi.org/packages/source/m/mypy_extensions/mypy_extensions-0.3.0.tar.gz
+	source = https://raw.githubusercontent.com/python/mypy/master/extensions/LICENSE
+	sha256sums = c4553f2475996c912658d3c2f398766cd47a65e0c2c6bb27ac8dea94a21640f4
+	sha256sums = a50450da1d53cd777b80ced77c58ff96abe0ccd879706bd142c3ec20e245f0b4
+
+pkgname = python-mypy_extensions
+
