@@ -3,7 +3,6 @@ pkgbase = bitkeeper-development-bin
 	pkgver = 7.3.2.8.0x5aaba359
 	pkgrel = 1
 	url = http://www.bitkeeper.org
-	arch = i686
 	arch = x86_64
 	license = Apache 2.0
 	depends = libxft
