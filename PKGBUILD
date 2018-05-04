@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 pkgname=imx-usb-loader-git
-pkgver=r81.f96aee2
+pkgver=r242.2913fd0
 pkgrel=1
 pkgdesc="USB loader for Freescale i.MX 51/53/6x"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/imx_usb_loader"
-  make
+  make sysconfdir=/etc
 }
 
 package() {
