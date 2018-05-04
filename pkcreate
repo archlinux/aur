@@ -1,0 +1,354 @@
+#!/usr/bin/env bash
+# create action polkit from package
+pkgname='pkcreate'
+version="0.8.0-1" #04/05/2018
+shopt -s nullglob
+
+
+org="org.manjaro.fr.pkexec"
+icon=""
+auth='auth_admin_keep'
+error_file="/tmp/$pkgname.err"
+PS3="-> "
+
+# test in asset function
+unset PARAMS ADMIN PACKAGE
+PARAMS=1
+ADMIN=1
+
+#couleurs
+CR='\033[0m\033[31m'	#	red
+CG='\033[0m\033[32m'	# green
+CY='\033[0m\033[33m'	# yelow
+CU='\033[0m\033[34m'	# blue
+CB="\033[1m" 	# bold
+CE='\033[0m'	# end
+
+#langs
+declare -A _DICO
+lg=$(locale 2>/dev/null | awk -F'=' '/^LANG/ {print $2}')
+lg=${lg:0:2}
+if [[ "$lg" == 'fr' ]]; then
+    _DICO=(
+        ['Create polkit action from one package']='Créer une police polkit depuis un paquet'
+        ['Polkit icon']='Icône polkit'
+        ['This information']='Cette information'
+        ['Password forget after call']='Oublie du mot de passe'
+        ['Password retention 5 minutes (default)']='Conservation du mot de passe 5 minutes (défaut)'
+        ['Show polkit actions']='Afficher les actions polkit créées'
+
+        ['Expected argument']='Paramètre manquant'
+        ['Expected package name (option -p)']="Nom d'un paquet obligatoire (option -p)"
+        ['You cannot perform this operation if you are root']='Opération impossible en étant root'
+
+        ['Y/n']='O/n'
+        ['Y']='O'
+
+        ['Create action for %s']='Créer une action pour %s'
+        ['File saved']='Fichier sauvegardé'
+        ['Polkit check']='Vérification par polkit'
+
+        ['Create home menu entry %s for: %s']='Créer dans home une entrée menu %s pour: %s'
+
+        ['No menu to create']='Pas de menu à créer'
+        ['your launcher']='votre lanceur'
+        ['Personalized menu with pkexec, the launcher']="Création d'un menu personnalisé avec pkexec, le lanceur"
+        ['Choice of launcher']='Choix du lanceur à créer'
+        ['to cancel']='pour annuler'
+
+        ['Actions and launchers created with this script']='Actions et lanceurs crées avec ce script'
+        ['Files']='Fichiers'
+
+        ['Package Reading']='Lecture du paquet'
+        ['your program']='votre programme'
+        ['No program found']='Pas de programme trouvé'
+        ['Choose the program to launch']='Choisir le programme à lancer'
+        ['Creation of a polkit action for']="Creation d'une action polkit pour le programme"
+    )
+fi
+
+_txt() {
+   local param="$1"
+   shift
+   [[ -n "${_DICO[$param]}" ]] && param="${_DICO[$param]}"
+   printf "$param" "$@"
+}
+
+cleanup() {
+    # Remove temporary files
+    [ -f "$error_file" ] && rm "$error_file" 2>/dev/null
+}
+
+
+#########################
+
+function usage()
+{
+cat <<EOF
+ Usage: ${pkgname} -p "package_name": $(_txt 'Create polkit action from one package')
+   option -i "icon_name" : $(_txt 'Polkit icon')
+   option -h --help      : $(_txt 'This information')
+   option --forget       : $(_txt 'Password forget after call')
+   option --sudo         : $(_txt 'Password retention 5 minutes (default)')
+   option -d --dir       : $(_txt 'Show polkit actions')
+EOF
+}
+
+# je déclenche une erreur
+#ls -d++ d* 2> $error_file
+#(($?==0)) || error "oops"
+function error() 
+{
+   local _msg="$1"
+   [[ -f "${error_file}" ]] && { 
+      _msg="${_msg} $(head -n1 ${error_file})"
+      rm "${error_file}"
+   }
+   info "${_msg}" "$CR" "$CR$CB" >&2
+}
+
+function info()
+{
+    declare color="${2:-$CG}"
+    echo -e "${color}::${CE} ${3}$1${CE}"
+}
+
+function asset()
+{
+   declare -i E_PARAM_ERR=98
+   declare -i E_ASSERT_FAILED=99
+   declare -i E_PACKAGE_FAILED=100
+
+   [[ -z "$PACKAGE" ]] && {
+       info "$(_txt 'Expected package name (option -p)')" "$CR"
+       usage
+       exit $E_PACKAGE_FAILED
+   }
+  
+   ((PARAMS)) && {
+      (( $# < 1 )) && {
+         error "$(_txt 'Expected argument')" "$CR"
+         usage
+         exit $E_PARAM_ERR
+      }
+   }
+
+   ((ADMIN)) && {
+      (($EUID == 0)) && {
+         info "$(_txt 'You cannot perform this operation if you are root')." "$CR"
+         exit $E_ASSERT_FAILED
+      }
+   }
+}
+
+##########################################################
+#   PROJECT FUNCTIONS
+##########################################################
+
+create_policy()
+{
+    declare program="$1" 
+    declare filename="${org}.${PACKAGE}"
+    if [ -z "$icon" ]; then
+        declare icon=$(pacman -Qlq "${PACKAGE}" 2>$error_file | grep "icon.*png$" -m1)
+        (($?==0)) || { error "!"; exit 10; }
+        icon="${icon##*/}"
+        icon="${icon%.*}" #"folder-manjaro"
+    fi
+    #echo "" echo "icone:$icon"
+    echo
+    info "$(_txt 'Create action for %s' ${program})"
+
+sudo tee "/usr/share/polkit-1/actions/${filename}.policy" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+    <vendor>Manjaro</vendor>
+    <vendor_url>http://www.manjaro.fr</vendor_url>
+    <icon_name>${icon}</icon_name>
+    <action id="${filename}.run-${program##*/}">
+        <description>Lancer ${program##*/} en tant que root</description>
+        <message>Authentication is required to run as root.</message>
+        <message xml:lang="fr">Authentification requise pour lancer "${program##*/}" en tant que root.</message>
+        <defaults>
+            <allow_any>no</allow_any>
+            <allow_inactive>${auth}</allow_inactive>
+            <allow_active>${auth}</allow_active>
+        </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">${program}</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+</policyconfig>
+EOF
+ 
+    echo -e "\n"
+    sudo -k
+    info "$(_txt 'File saved'): /usr/share/polkit-1/actions/${filename}.policy" "$CG"
+    info "$(_txt 'Polkit check'):" "$CG"
+    pkaction -v -a "${filename}.run-${program##*/}"
+    echo
+
+    choise_mnu "${program}"
+}
+
+create_mnu()
+{
+    declare mnu="$1"
+    declare program="$2"
+    declare exe="${program##*/}"
+    sudo -k
+    #HOME="/home/"$(who -m|cut -d' ' -f1)
+    declare output="$HOME/.local/share/applications/pkexec-${mnu##*/}"
+    echo -e "\n"
+    info "$(_txt 'Create home menu entry %s for: %s' "$mnu" "$program")"
+    info "$output"
+
+    # replace $exe by $program
+    sed -e "s|^Exec.*${exe}|Exec=pkexec ${program}|" "$mnu" > "$output"
+    sed -i -e 's|^\(Name.*=\).*$|& (Root)|g' "$output"
+    chmod 754 "$output"
+    cat "$output"
+    echo -e " ----------------- \n $output"
+}
+
+choise_mnu()
+{
+    declare program="$1"
+    declare -a desktops outs
+    declare exe index response str file
+    desktops=( $(pacman -Qlq ${PACKAGE} 2>$error_file | grep -E "applications.*\.desktop$") )
+    (($?==0)) || { error "!"; exit 10; }
+    if ((${#desktops[@]}<1)); then
+        info "$(_txt 'No menu to create')" "$CR"
+        return
+    fi
+    for index in ${!desktops[@]}; do
+        str=$(awk -F= '/Exec/ {print $2}' "${desktops[index]}")
+        outs[index]="${desktops[index]}  ->  $str"
+    done
+    info "$(_txt 'Choice of launcher') (0 $(_txt 'to cancel')):" "$CY"
+    PS3="$(_txt 'your launcher') -> "
+    select exe in "${desktops[@]}"; do
+        if ((REPLY<1)); then
+            break
+        fi   
+        file="${exe##*->}"
+        read -p "::$(_txt 'Personalized menu with pkexec, the launcher'): pkexec-${file##*/} ($(_txt 'Y/n')) ? " response
+        [[ "$response" == '' ]] && response="$(_txt 'Y')"
+        response=${response:0:1}
+        if [[ "${response^^}" == "$(_txt 'Y')" ]]; then
+            create_mnu "$file" "$program"
+            exit 0
+        else
+            break
+        fi
+    done
+}
+
+getActions()
+{
+    info "$(_txt 'Actions and launchers created with this script')\n"
+    while IFS=$'\n' read -r ; do
+        pkaction -v -a "$REPLY"
+    done < <(pkaction | grep "org.manjaro.fr")
+    echo
+    info "$(_txt 'Files')\n"
+    find "/usr/share/polkit-1/actions/" "$HOME/.local/share/applications/" \( -name "${org}*" -o -name "pkexec-*" \)
+    echo
+}
+
+
+##########################################################
+#   RUN
+##########################################################
+
+run()
+{
+    declare -a exes
+    declare exe response
+    clear
+
+    info "$(_txt 'Package Reading'): ${PACKAGE}"
+    exes=( $(pacman -Qlq ${PACKAGE} 2>$error_file | grep "/bin/" | grep -v "bin/$") )
+    (($?==0)) || { error "!"; exit 10; }
+    if ((${#exes[@]}<1)); then
+        info "$(_txt 'No program found')" "$CR"
+        exit 11
+    fi
+    info "$(_txt 'Choose the program to launch') (0 $(_txt 'to cancel')):" "$CY"
+    PS3="$(_txt 'your program') -> "
+    select exe in "${exes[@]}"; do
+        if ((REPLY<1)); then
+            break
+        fi
+        read -p "::$(_txt 'Creation of a polkit action for'): $exe ($(_txt 'Y/n')) ? " response
+        response=${response:0:1}
+        [[ "$response" == '' ]] && response="$(_txt 'Y')"
+        if [[ "${response^^}" == "$(_txt 'Y')" ]]; then
+            create_policy "$exe"
+            exit
+        else
+            break
+        fi
+    done
+}
+
+
+main()
+{
+    SHORT=vfsdhp:i:
+    LONG=forget,sudo,dir,help,package:,icon:
+    PARSED=$(getopt --options $SHORT --longoptions "$LONG" --name "$0" -- "$@" 2>$error_file)
+    (($?==0)) || { error "!"; exit 1; }
+    eval set -- "$PARSED --"
+    while [[ -n "$1" ]]; do
+        #echo "\$1->$1"
+        case "$1" in
+            -i|--icon)
+                icon="$2"
+                #echo "::parametre: icon= $icon"
+                shift 2 ;;      
+            -p|--package)
+                PACKAGE="$2"
+                #echo "::parametre: paquet= $PACKAGE"
+                shift 2 ;;
+            -s|--sudo)
+                auth='auth_admin_keep'
+                #echo "::parametre: auth= $auth"
+                shift ;;
+            -f|--forget)
+                auth='auth_admin'
+                #echo "::parametre: auth= $auth"
+                shift ;; 
+            -d|--dir)
+                getActions
+                exit 0 ;;                
+            -h|--help)
+                usage
+                exit 0 ;; 
+            -v)
+                info "$0 :${CB} $version"
+                exit 0 ;;                
+            --)
+                shift
+                break ;;
+            *)
+                echo "Programming error: $1"
+                exit 3 ;;
+                #shift; break;;
+        esac
+    done
+    echo
+    #ARGS=("$@")
+    unset LONG SHORT PARSED
+
+    # tests
+    asset "$@"
+
+    #main()
+    run "$@"
+}
+
+trap cleanup EXIT
+main "$@"
+exit 0
