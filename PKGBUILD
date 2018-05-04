@@ -4,12 +4,10 @@ pkgname=farbfeld
 pkgver=4
 pkgrel=2
 pkgdesc="lossless image format which is easy to parse, pipe and compress"
-url="http://tools.suckless.org/farbfeld/"
+url="https://tools.suckless.org/farbfeld/"
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libjpeg-turbo' 'libpng')
-makedepends=()
-provides=()
 conflicts=(${pkgname}-git)
 source=("https://dl.suckless.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 # Sums provided upstream: https://dl.suckless.org/farbfeld/sha256sums.txt
