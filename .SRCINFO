@@ -1,12 +1,13 @@
 pkgbase = rxvt-unicode-no-perl
 	pkgver = 9.22
-	pkgrel = 5
+	pkgrel = 6
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = libxft
 	makedepends = startup-notification
+	makedepends = libnsl
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
 	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
