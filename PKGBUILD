@@ -4,13 +4,13 @@
 
 pkgname=gimp-gtk3-git
 pkgver=2.10.0.r417.g8c48e8bb43
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=('babl-git' 'gegl-git' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'libexif' 'gtk3'
-	 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-brushes')
+	 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-brushes' 'aalib')
 makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes'
 	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
 	     'pygtk' 'python-cairo' 'gtk-doc' 'poppler-data')
