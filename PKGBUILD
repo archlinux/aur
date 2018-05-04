@@ -1,11 +1,11 @@
-# Maintainer: wieseltux23 <bssbk2455[at]gmail[dot]com>
+# Maintainer: gspu <bssbk2455[at]gmail[dot]com>
 
 pkgname=bitkeeper-production-bin
 pkgver=7.3.2
 pkgrel=1
 pkgdesc="a fast, enterprise-ready, distributed SCM"
 arch=("i686" "x86_64")
-license=("Apache2.0")
+license=("Apache 2.0")
 depends=("libxft")
 url="http://www.bitkeeper.org"
 
