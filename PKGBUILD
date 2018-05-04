@@ -1,15 +1,15 @@
 # Maintainer: Vlad Zagorodniy <vladzzag@gmail.com>
 pkgname=kwin-effects-appear3
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="KWin effect that animates the appearing of windows"
 arch=('x86_64')
 url="https://github.com/zzag/kwin-effects-appear3"
 license=('GPL3')
 depends=(kwin)
-makedepends=(extra-cmake-modules kdelibs)
+makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('e2b420fa78879f80b7e5fdeeeaaf200658fbebd81e3e7f4bd3702cbdda6ee90a')
+sha256sums=('847a1cb8f0cd5ef7203e983fab6832390512317f96a871b66f09ec27a5b210a4')
 
 prepare() {
     mkdir -p build
