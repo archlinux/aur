@@ -15,8 +15,8 @@ sha256sums_x86_64=('1d7148976dbcaac26e3710b89eb2de6bf6f7c1ee8894cea53b3e9762d3bd
 
 package() {
 
-  chmod +x ${srcdir}/bk-${pkgver}-$x86_64-glibc227-linux.bin
-  ${srcdir}/bk-${pkgver}-$x86_64-glibc227-linux.bin ${pkgdir}/opt/bitkeeper
+  chmod +x ${srcdir}/bk-${pkgver}-x86_64-glibc227-linux.bin
+  ${srcdir}/bk-${pkgver}-x86_64-glibc227-linux.bin ${pkgdir}/opt/bitkeeper
 
   mkdir -p $pkgdir/usr/bin
   ln -s /opt/bitkeeper/bk ${pkgdir}/usr/bin
