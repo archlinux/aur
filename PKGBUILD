@@ -1,7 +1,7 @@
 # Maintainer: Ramon Binz <binzram@gmail.com>
 
 pkgname=aareguru-cli
-pkgver=0.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A cli application for aare.guru"
 arch=("x86_64" "i686")
@@ -45,5 +45,5 @@ package() {
 
   _buildFilename=${_untardir::-1}
 
-  install -Dm755 "$_buildFilename" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$_buildFilename" "$pkgdir/usr/bin/aareguru"
 }
