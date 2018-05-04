@@ -2,58 +2,32 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=4.2.153.0
+pkgver=5.1.0.509
 _rawver=${pkgver//./_}
-_hashver="tkzkho5lhz15j08q"
-pkgrel=4
-pkgdesc="Desktop App (aka Team App) Standard version"
+_hashver="87zq7fllb6sf8y49"
+pkgrel=1
+pkgdesc="Desktop App Standard version"
 arch=('x86_64')
 url="https://www.upwork.com/downloads?source=Footer"
 license=('custom')
-conflicts=('upwork-alpha' 'upwork-appimage' 'upwork-beta')
-depends=('alsa-lib' 'gconf' 'gtkglext' 'libgcrypt15' 'libxss' 'libxtst' 'nss')
-makedepends=('git' 'gtk-doc')  # needed to build pango
+conflicts=('upwork-alpha' 'upwork-appimage' 'upwork-latest' 'upwork-beta')
+depends=('alsa-lib' 'gconf' 'gdk-pixbuf2' 'gtk2' 'libxss' 'libxtst' 'nss')
 install=upwork.install
 
-source=("LICENSE" "git+https://git.gnome.org/browse/pango#commit=6c5d1d35061a91c3c0792f7720da3f8308ebff65")
-md5sums=('bb535c74d4673cee6437b04d33b32138' 'SKIP')
-#md5sums_i686=('fa3aa945068e49081e1ac2cc7490032b')
-md5sums_x86_64=('6c33e3ff5ae168c840f46887d690fd5e')
-# how to get links Standard, Beta, Alpha: grep "https://updates-desktopapp.upwork.com/binaries" ~/.Upwork/Upwork/Logs/* | tail -n 4
-source_x86_64=(upwork_amd64_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_amd64.deb)
-#source_i686=(upwork_i386_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_i386.deb)
+source=("LICENSE")
+md5sums=('bb535c74d4673cee6437b04d33b32138')
+md5sums_x86_64=('e9701690c32a84ceaf1e93a104471040')
+# how to get links Standard, Beta, Alpha: grep -A3 "checkUpdateFromServerSucess" ~/.Upwork/Upwork/Logs/* | tail -n 4
+source_x86_64=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb)
 
 prepare() {
     cd "${srcdir}"
-    tar -zxf "${srcdir}/data.tar.gz"
-### BEGIN pango section ###
-    cd pango
-    NOCONFIGURE=1 ./autogen.sh
-### END pango section ###
+    tar -xJf "${srcdir}/data.tar.xz"
 }
-
-### BEGIN pango section ###
-build() {
-  cd "${srcdir}/pango"
-  ./configure --prefix=/usr
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
-}
-
-check() {
-  cd "${srcdir}/pango"
-  make -k check || :
-}
-### END pango section ###
 
 package() {
     cd "${srcdir}"
     cp -rp usr "${pkgdir}/usr"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-### BEGIN pango section ###
-    install -Dm755 "${srcdir}/pango/pango/.libs/libpangoft2-1.0.so.0.4000.5" \
-                   "${pkgdir}/usr/share/upwork/libpangoft2-1.0.so.0.4000.5"
-    ln -s "libpangoft2-1.0.so.0.4000.5" "${pkgdir}/usr/share/upwork/libpangoft2-1.0.so.0"
-### END pango section ###
 }
