@@ -16,7 +16,7 @@ sha512sums=('a5a98664f43b03cd8275432ba625729d88dc4c7da3668185e16c0068c0e29e90ac6
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	patch -Np0 -i $srcdir/aa3d.string.header.patch
+	patch -Np0 -i "${srcdir}"/aa3d.string.header.patch
 	make clean
 	make
 }
