@@ -1,0 +1,28 @@
+--- a/doc/syntaxdatabases.txt
++++ b/doc/syntaxdatabases.txt
+@@ -15,9 +15,9 @@ search order for default database is:
+ * syntaxdb*.tcl in current directory (if more than one it is
+   unspecified which)
+ 
+-* syntaxdb.tcl where Nagelfar is located
++* syntaxdb.tcl in /usr/lib/nagelfar
+ 
+-* syntaxdb*.tcl where Nagelfar is located
++* syntaxdb*.tcl in /usr/lib/nagelfar
+ 
+ You can select database(s) with the command line switch “-s”.
+ 
+@@ -37,11 +37,11 @@ script will run.
+ 
+ For example, if you want to create a database for Tcl8.2:
+ 
+-"$ tclsh82 syntaxbuild.tcl syntaxdb82.tcl"
++"$ tclsh82 /usr/lib/nagelfar/syntaxbuild.tcl syntaxdb82.tcl"
+ 
+ or
+ 
+-"$ tclsh82 % source syntaxbuild.tcl % buildFile syntaxdb82.tcl % exit"
++"$ tclsh82 % source /usr/lib/nagelfar/syntaxbuild.tcl % buildFile syntaxdb82.tcl % exit"
+ 
+ Then use it:
+ 

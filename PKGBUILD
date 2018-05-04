@@ -2,7 +2,7 @@
 pkgname=nagelfar
 _pkgver_main=1
 _pkgver_sub=2
-_pkgver_subsub=4
+_pkgver_subsub=5
 pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
 _pkgver="${_pkgver_main}${_pkgver_sub}${_pkgver_subsub}"
 pkgrel=1
@@ -23,52 +23,56 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz" nagelfar-paths.patch doc-syntaxdatabase.patch)
 noextract=()
-md5sums=("bbc6e0ab459bdafcc322e3e956edadf4")
+md5sums=('707e3c305437dce1f14103f0bd058fc9'
+         '80a3e5df0bf55548a29329948a3b541c'
+         '48f75a0c131cc17df6b38a2f5967c7e4')
 validpgpkeys=()
 
+
+prepare() {
+    cd ${pkgname}${_pkgver}
+    patch -Np1 -i "${srcdir}/doc-syntaxdatabase.patch"
+    patch -Np1 -i "${srcdir}/nagelfar-paths.patch"
+}
+
+
 package() {
-    # lib
+    cd ${pkgname}${_pkgver}
+
+    # install script, removing trailing .tcl
+    install -D -m755 ${pkgname}.tcl ${pkgdir}/usr/bin/${pkgname}
+
+    # install libs
     lib_path="/usr/lib/${pkgname}"
-    install -d -m755 "${pkgdir}/${lib_path}"
+    install -d -m755 "${pkgdir}${lib_path}"
 
     # textsearch package
     for file_path in "lib/textsearch/tcl/textsearch.tcl" "lib/textsearch/pkgIndex.tcl" ; do
-        install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+        install -D -m644 "${file_path}" "${pkgdir}${lib_path}/${file_path}"
     done
 
     # packagedb
-    for file in "${srcdir}/${pkgname}${_pkgver}/packagedb"/* ; do
-        install -D -t "${pkgdir}${lib_path}/packagedb" -m644 "${file}"
+    install -d -m755 "${pkgdir}${lib_path}/packagedb"
+    for p in packagedb/* ; do
+        install -m644 $p "${pkgdir}${lib_path}/packagedb"
     done
 
     # syntax stuff
-    for file in "${srcdir}/${pkgname}${_pkgver}"/{syntax*.tcl,*.syntax} ; do
+    for file in {syntax*.tcl,*.syntax} ; do
         install -D -t "${pkgdir}${lib_path}" -m644 "${file}"
     done
 
-    # main
-    file="nagelfar.tcl"
-    install -D -m755 "${srcdir}/${pkgname}${_pkgver}/${file}" "${pkgdir}${lib_path}/${file}"
-
     # doc
     doc_path="/usr/share/doc/${pkgname}"
-    install -d -m755 "${pkgdir}/${doc_path}"
-
-    for file in "${srcdir}/${pkgname}${_pkgver}/doc"/* ; do
-        install -D -t "${pkgdir}${doc_path}/doc" -m644 "${file}"
+    install -d -m755 "${pkgdir}${doc_path}"
+    for d in doc/* ; do
+        install -m644 $d "${pkgdir}${doc_path}"
     done
 
     # license
     lic_path="/usr/share/licenses/${pkgname}"
-    install -d -m755 "${pkgdir}/${lic_path}"
-
-    file_path="COPYING"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lic_path}/${file_path}"
-
-    # binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    cd "${pkgdir}/usr/bin"
-    ln -s "../lib/${pkgname}/${pkgname}.tcl" "${pkgname}"
+    install -d -m755 "${pkgdir}${lic_path}"
+    install -m644 "COPYING" "${pkgdir}${lic_path}"
 }

@@ -1,0 +1,24 @@
+--- a/nagelfar.tcl
++++ b/nagelfar.tcl
+@@ -28,7 +28,7 @@
+ #----------------------------------------------------------------------
+ 
+ set debug 0
+-package require Tcl 8.4
++package require Tcl 8.5
+ 
+ package provide app-nagelfar 1.0
+ # This variable should be overwritten by the build process
+@@ -50,9 +50,9 @@
+ unset tmplink
+ 
+ # This makes it possible to customize where files are installed
+-set dbDir      $thisDir
+-set docDir     $thisDir/doc
+-set libDir     $thisDir/lib
++set dbDir      /usr/lib/nagelfar
++set docDir     /usr/share/doc/nagelfar
++set libDir     /usr/lib/nagelfar/lib
+  
+ # Search where the script is, to be able to place e.g. ctext there.
+ if {[info exists ::starkit::topdir]} {
