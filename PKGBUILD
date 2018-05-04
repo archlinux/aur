@@ -6,11 +6,11 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc='Flexible interpreter for the Brainfuck programming language'
 arch=('x86_64' 'i686')
-url='http://kiyuko.org/software/beef'
+url='https://kiyuko.org/software/beef'
 license=('GPL')
 depends=('cattle')
 makedepends=('addinclude' 'pandoc')
-source=("$pkgname-$pkgver.tgz::http://kiyuko.org/software/$pkgname/releases/$pkgver/source")
+source=("$pkgname-$pkgver.tgz::https://kiyuko.org/software/$pkgname/releases/$pkgver/source")
 sha256sums=('5febdb9504fbc8d292e7678f8fe9e9758e915ef2cd8252d0f1a502c93e3b51e6')
 
 prepare() {
