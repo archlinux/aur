@@ -5,8 +5,8 @@ pkgbase = pkcreate
 	arch = any
 	license = GPL
 	depends = polkit
-	source = pkcreate
-	sha512sums = c64620b52b8d40f4f5cd45cd1fb480c4ca59e63b154852a44698ef983844f1def278f6e6cdd3446501d4d1b7bbda3d70112f1fd59daa57b8af1b27b79fb8f95d
+	source = https://github.com/papajoker/pkcreate/archive/0.8.0.tar.gz
+	sha512sums = 183c00b2c7f89bb76256dc4852d77abe899a4cc7c98544071e453b7ad6e1ed4aa2c1e5bc526cb5943dbb392dadf0446f1fbe3aff1894e4c04522845941651bc7
 
 pkgname = pkcreate
 
