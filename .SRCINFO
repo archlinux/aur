@@ -1,7 +1,7 @@
 pkgbase = python-snowboy
 	pkgdesc = A hotword detection engine - Python bindings
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snowboy.kitt.ai/
 	arch = x86_64
 	license = Apache
@@ -20,5 +20,5 @@ pkgname = python-snowboy
 pkgname = python2-snowboy
 	depends = python2
 	depends = cblas
-	depends = python-pyaudio
+	depends = python2-pyaudio
 

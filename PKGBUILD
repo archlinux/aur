@@ -5,7 +5,7 @@ pkgbase=python-snowboy
 _pkgname=snowboy
 pkgname=('python-snowboy' 'python2-snowboy')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hotword detection engine - Python bindings"
 arch=('x86_64')
 url="https://snowboy.kitt.ai/"
@@ -28,9 +28,6 @@ prepare() {
 }
 
 build() {
-    # TODO compile lib/ubuntu64/libsnowboy-detect.a manually?
-    # https://github.com/Kitt-AI/snowboy/issues/99#issuecomment-367620930
-
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py build
 
@@ -46,7 +43,7 @@ package_python-snowboy() {
 }
 
 package_python2-snowboy() {
-    depends=('python2' 'cblas' 'python-pyaudio')
+    depends=('python2' 'cblas' 'python2-pyaudio')
 
     cd "${srcdir}/${_pkgname}-${pkgver}-py2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
