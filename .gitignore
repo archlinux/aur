@@ -2,5 +2,6 @@ pkg
 src
 *.tar.bz2
 *.tar.xz
+*.tar.bz2.asc
 *.txt
 
