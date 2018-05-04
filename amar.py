@@ -11,7 +11,7 @@ gksudo -s python amar.py
 
 import os
 import sys
-from PIL import Image 
+from PIL import Image
 import subprocess
 from tkinter import *
 
@@ -21,9 +21,15 @@ else:
     import tkMessageBox as messagebox
 
 if os.getuid() != 0:
-    os.system ("sudo -H python /usr/bin/amar.py")
+	#correction de l'erreur de lancement
+	os.system("xrdb -all -query|sed -e 's#[A-Z_]*BACKGROUND# gray90#' \
+				-e 's#[A-Z_]*FOREGROUND# Black#' \
+				-e 's#[A-Z_]*HIGHLIGHT# White#' \
+				-e 's#[A-Z_]*LOWLIGHT# Black#'|xrdb -merge")
+    
+    #os.system ("sudo -H python /usr/bin/amar.py")
     #print("Utiliser le script en tant qu'administrateur, lancer le avec 'gksudo -s python amar.py'")
-    sys.exit(1)
+    #sys.exit(1)
 
 pacmanfichier = "/etc/pacman.conf"
 
@@ -57,7 +63,7 @@ def pressA():
         messagebox.showerror("Erreur", "Ficher pacman.conf non accessible en écrture\nVérifier vos droit et relancer"
                                        " le script\nVérifier aussi que vous ne faite une mise à jours en même temps")
 
- 
+
 def pressB():
     A.config(state=ACTIVE)
     B.config(state=DISABLED)
@@ -118,5 +124,5 @@ if etatamar == 0:
     INFO.config(text="Inactif", fg="red")  # on active le depot AMAR, donc on ecrit sur le fichier.
 else:
     INFO.config(text="Actif", fg="green")  # on active le depot AMAR, donc on ecrit sur le fichier.
-    
+
 win.mainloop()
