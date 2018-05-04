@@ -1,8 +1,13 @@
-# Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
+# Contributor: fishburn <frankthefishburn@gmail.com>
+
+# Note: As of 5.0.11 certain key scripts (imcp, imglob, immv) are no longer shipped by upstream
+# Their recommendation is to install fslpython, but this requires running an opaque installer and
+# doubles the package size with no additional obvious benefit than these 3 tiny scripts. So I 
+# have decided to just bundle the scripts from 5.0.10 with the package from now on.
 
 pkgname=fsl
-pkgver=5.0.10
-pkgrel=3
+pkgver=5.0.11
+pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("i686" "x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
@@ -10,17 +15,23 @@ license=(custom)
 depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6 sqlite)
 makedepends=(boost fftw)
 optdepends=(cuda)
-sha1sums=('1b68ab3e1bc10755de1aa249e829e5fc4937c6b3'
-          'eaea714f2430f85226a5c938ba19dcadb7adb5bf'
+sha1sums=('4e80fce7b9626c351766966ba3be5d428e1c27cc'
+          '7f9d1289887f6ff684599ce3d7a260f3d81011f2'
           '679c65c90e79b7f748ad1c2d4b5abeebebf05dfd'
           'db514c2eaa48ae924cb1c26d8b0b25d47a812876'
-          '2df550b126a6ec6022a164a18dddffe4e59962f9')
+          '2df550b126a6ec6022a164a18dddffe4e59962f9'
+          'e2d4cc873a23eedcea093715b49ace41fc6f6e1c'
+          'f6d6d0177561b0f036a7e1fae4443332becd134b'
+          'efb997fbaaffb5129eca2ea9388b45421e6e6de4')
 
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
 	"systemvars.mk"
 	"externallibs.mk"
-	"fsl_exec.patch")
+	"fsl_exec.patch"
+	"imcp"
+	"imglob"
+	"immv")
 
 prepare() {
 	
@@ -84,6 +95,9 @@ prepare() {
 
 	# Fix fsl_exec.tcl session issue (https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501)
 	patch -p0 < fsl_exec.patch
+
+	# Fix missing library path in Eddy makefile
+	sed -i 's^USRLDFLAGS=-L${LIB_NEWMAT}^USRLDFLAGS=-L${LIB_PROB} -L${LIB_NEWMAT}^g' "${FSLDIR}/src/eddy/Makefile"
 	
 }
 
@@ -92,6 +106,8 @@ build() {
 	export FSLDIR="${srcdir}/fsl"
 	cd "${FSLDIR}"
 	./build
+
+	cp -v "${srcdir}"/{imcp,imglob,immv} "${srcdir}/fsl/bin"
 }
 
 check() {

@@ -1,7 +1,7 @@
 pkgbase = fsl
 	pkgdesc = A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data
-	pkgver = 5.0.10
-	pkgrel = 3
+	pkgver = 5.0.11
+	pkgrel = 1
 	url = http://www.fmrib.ox.ac.uk/fsl/
 	arch = i686
 	arch = x86_64
@@ -24,16 +24,22 @@ pkgbase = fsl
 	depends = vtk6
 	depends = sqlite
 	optdepends = cuda
-	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.10-sources.tar.gz
-	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.10-feeds.tar.gz
+	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.11-sources.tar.gz
+	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.11-feeds.tar.gz
 	source = systemvars.mk
 	source = externallibs.mk
 	source = fsl_exec.patch
-	sha1sums = 1b68ab3e1bc10755de1aa249e829e5fc4937c6b3
-	sha1sums = eaea714f2430f85226a5c938ba19dcadb7adb5bf
+	source = imcp
+	source = imglob
+	source = immv
+	sha1sums = 4e80fce7b9626c351766966ba3be5d428e1c27cc
+	sha1sums = 7f9d1289887f6ff684599ce3d7a260f3d81011f2
 	sha1sums = 679c65c90e79b7f748ad1c2d4b5abeebebf05dfd
 	sha1sums = db514c2eaa48ae924cb1c26d8b0b25d47a812876
 	sha1sums = 2df550b126a6ec6022a164a18dddffe4e59962f9
+	sha1sums = e2d4cc873a23eedcea093715b49ace41fc6f6e1c
+	sha1sums = f6d6d0177561b0f036a7e1fae4443332becd134b
+	sha1sums = efb997fbaaffb5129eca2ea9388b45421e6e6de4
 
 pkgname = fsl
 
