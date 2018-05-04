@@ -1,0 +1,17 @@
+pkgbase = uxpin
+	pkgdesc = Electron version of the UXPin web app
+	pkgver = 20180503
+	pkgrel = 1
+	epoch = 0
+	url = https://uxpin.com/
+	arch = x86_64
+	license = GPL
+	makedepends = p7zip
+	noextract = UXPin-win.exe
+	source = https://files.uxpin.com/desktop-app/latest/UXPin-win.exe
+	source = https://github.com/electron/electron/releases/download/v2.0.0/electron-v2.0.0-linux-x64.zip
+	md5sums = 3e0555f29831198ca61d59dd16156cb6
+	md5sums = b173a5463f68c2a083d7e1164d51a67e
+
+pkgname = uxpin
+
