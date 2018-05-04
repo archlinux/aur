@@ -5,10 +5,9 @@ pkgver=1.8
 pkgrel=2
 pkgdesc="A Z80 assembler written in c"
 arch=('i686' 'x86_64')
-url="http://www.nongnu.org/z80asm/"
+url="https://www.nongnu.org/z80asm/"
 license=('GPL3')
-depends=()
-source=("http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('4beb798d6fe2f89e62de36b4b4f87fad')
 
 build() {
