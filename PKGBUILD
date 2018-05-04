@@ -10,7 +10,7 @@ pkgname=('virtualbox51'
          'virtualbox51-guest-utils'
          'virtualbox51-guest-utils-nox'
          'virtualbox51-ext-vnc')
-pkgver=5.1.34
+pkgver=5.1.36
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -71,7 +71,7 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         '008-no-vboxvideo.patch'
         'linux-4.14-host.patch'
         )
-sha256sums=('b8a16bcc4267cad9cb92c7211d4081267c890efad16e89949f7449b8ae32f28c'
+sha256sums=('ddabd85602b47f2e0ec2df98c7f3679757c38975a6867caccb3530795a6c3e1c'
             'deb03efa7ad0376aa55a087f2e882afe00935f10b0e7aa853ba9147090d341ec'
             '113f9b92141b85df01f1e74d22f01d1f1aa81650eb79b89ceefc3cae20afe2e2'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
