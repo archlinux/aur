@@ -25,8 +25,4 @@ package()
 {
 	cd "${srcdir}/POE-Component-IRC-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-
-	# Remove .packlist and perllocal.pod files.
-	find "${pkgdir}" -name '.packlist' -delete
-	find "${pkgdir}" -name 'perllocal.pod' -delete
 }
