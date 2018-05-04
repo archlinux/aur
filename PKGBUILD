@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-jasper
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
 url="http://www.ece.uvic.ca/~mdadams/jasper"
@@ -39,6 +39,7 @@ build() {
     -DJAS_ENABLE_OPENGL=OFF
     -DJAS_ENABLE_LIBJPEG=ON
     -DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF
+    -DCMAKE_SKIP_RPATH=ON
     -DJAS_ENABLE_DOC=OFF
   )
   for _arch in ${_architectures}; do
