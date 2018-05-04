@@ -1,9 +1,9 @@
 pkgname=mroonga
-pkgver=8.00
+pkgver=8.02
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
-mariadbver=10.1.31
-groongaver=8.0.0
+mariadbver=10.1.32
+groongaver=8.0.2
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
 license=('LGPL2')
