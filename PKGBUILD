@@ -2,7 +2,7 @@
 
 _pkgname=dodo
 pkgname=${_pkgname}-git
-pkgver=r122.52f622e
+pkgver=r130.4df8fe0
 pkgrel=1
 pkgdesc="Scriptable in-place file editor"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}" \
-		DESTDIR="${pkgdir}" \
-		install
+	cd "${srcdir}/${pkgname}"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dodo-git/LICENSE"
 }
