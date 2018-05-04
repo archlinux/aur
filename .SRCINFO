@@ -1,6 +1,6 @@
 pkgbase = flare-game-git
 	pkgdesc = Fantasy action RPG using the FLARE engine - Git version
-    pkgver = v1.0.r0.gb17470bf
+	pkgver = v1.05.r0.gf49d8139
 	pkgrel = 1
 	url = http://www.flarerpg.org/
 	arch = i686

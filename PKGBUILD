@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game-git
-pkgver=v1.0.r0.gb17470bf
+pkgver=v1.05.r0.gf49d8139
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
