@@ -5,7 +5,7 @@
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=python-django2
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-psycopg2: for PostgreSQL backend')
 provides=('python-django')
 conflicts=('python-django')
 source=("Django-$pkgver.tar.gz::https://www.djangoproject.com/download/$pkgver/tarball/")
-sha512sums=('4fa464f160cd33f515aa53d1c47dc4724d983faade9b2c8f399216e53306796716c130ec4d2c5db3d1630248e5a98c9203f4cd45f8837567d4bb76b9b7b4233d')
+sha256sums=('71d1a584bb4ad2b4f933d07d02c716755c1394feaac1ce61ce37843ac5401092')
 
 build() {
   cd "$srcdir/Django-$pkgver"
