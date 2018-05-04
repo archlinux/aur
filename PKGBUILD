@@ -2,8 +2,8 @@
 
 _pkgname='gvisor'
 pkgname="${_pkgname}-git"
-pkgver=26.4603f97
-pkgrel=1
+pkgver=37.af724ec
+pkgrel=2
 pkgdesc="User-space kernel, sandboxed container runtime"
 arch=('x86_64')
 url='https://github.com/google/gvisor'
