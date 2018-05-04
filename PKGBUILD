@@ -22,12 +22,11 @@ md5sums_x86_64=('96b7306cebb9e65355f69f7ab63df68b')
 
 package() {
 	cd "${pkgdir}"
-	
+
 	mkdir -p usr
-	
-	msg "Moving all directories into ./usr"
+
 	for dir in "${srcdir}/wkhtmltox/"* ; do
-		mv -v ${dir} usr
+		mv "${dir}" usr/
 	done
 
 	#msg "Fixing permissions on:"
