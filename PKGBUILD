@@ -1,8 +1,8 @@
-# Maintainer: Atte Virtanen <aten.email@gmail.com>
+# Maintainer: Bjoern Franke <bjo@nord-west.org>
 # Contributor: Cesar Alcalde <lambda512 _at_ gmail.com>
 pkgname=scmccid
 pkgver=5.0.35
-pkgrel=3
+pkgrel=4
 pkgdesc="Binary driver for the SCM smart card readers"
 arch=('i686' 'x86_64')
 url="http://support.identiv.com/products/"
@@ -12,13 +12,10 @@ makedepends=('unzip')
 backup=('usr/local/scm/ini/scmccid.ini')
 install=$pkgname.install
 
-source=("uTrust_Linux.zip::http://files.identiv.com/products/smart-card-readers/contact/scr3310v2/uTrust_Linux.tar.gz")
+source=("uTrust_Linux.zip::http://files.identiv.com/products/smart-card-readers/common-drivers/uTrust_Linux.tar.gz")
 
-md5sums=('bef37fdc480a357396652492200ac91d')
-sha1sums=('e4b9681b486cdb108a3d24433cdd063861e9be6e')
 sha256sums=('3ca2bb8ffcfe964db33378c1c861405aad0bd68f15f517921c5c9b1f1455ac20')
-sha384sums=('6a50d6182139ca85ac4cf61b6ebf5104aab442426714c530c67d950f8a9c3e8bc3a30f197f7a73fa548b0a937c4d8b52')
-sha512sums=('b96fb39af2c6b43d2d54ac62c27aee50f3418c91dcd0bc061250af2f7e4edea52d7a66e82a91ac4aa8e92b160d7e7a57d44e372daeea8c484b02672f41999b36')
+
 
 package() {
 	cd "$srcdir"
