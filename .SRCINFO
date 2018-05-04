@@ -1,18 +1,19 @@
 pkgbase = minecraft-launcher-tar
 	pkgdesc = Updated Minecraft Launcher built with tar file
-	pkgver = 2.0.1005.4
+	pkgver = 2.0.1009.0
 	pkgrel = 3
 	url = https://koyu.space/
 	arch = x86_64
 	license = All rights reserved
 	depends = java-runtime>=8
 	depends = icu57
-	depends = xorg-xrandr
+	depends = xorg-xrandr,
+	depends = gconf
 	optdepends = flite: chat narrator support
 	source = https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz
 	source = minecraft-launcher.desktop
 	source = minecraft-launcher.svg
-	sha256sums = bc90bf66f12dbdfb19ae99ad5f9fb16e8bdce204d8cefcf4e17b3bb5a4b454ff
+	sha256sums = 037a89a5776a508d43e7c5d20c503dbb92f62a490be4c2827018fa18cc90e9c3
 	sha256sums = a38fadff1f056542c5af894bfbe581d9a56b5113f10b6b1764a9fa977d11adaa
 	sha256sums = 35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71
 
