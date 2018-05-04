@@ -1,8 +1,8 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lczero-nvidia-git
 _pkgname=leela-chess
-pkgver=0.7
-pkgrel=237
+pkgver=0.8
+pkgrel=242
 pkgdesc="This is an adaptation of GCP's Leela Zero repository to chess, using Stockfish's position representation and move generation."
 arch=('i686' 'x86_64')
 url="https://github.com/glinscott/leela-chess"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd ${srcdir}/${_pkgname}
-    wget http://lczero.org/get_network?sha=f49f934c6a5ef7df60aa687bdc879a5589757c810bbabe27a622a80e6c2bbfa9 -O weights_$pkgrel.txt
+    wget http://lczero.org/get_network?sha=ee99f620f9bb992917ea2ad4f0c0c6b3259cc92d5c81fbdecea63bc1bb84837c -O weights_$pkgrel.txt
     echo '#!/bin/bash' > lczero
     echo "/usr/bin/lczero-bin -w /usr/share/lczero/weights_$pkgrel.txt" >> lczero
 }
