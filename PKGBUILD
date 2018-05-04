@@ -17,16 +17,15 @@ options=('!emptydirs')
 arch=('i686' 'x86_64')
 sha256sums=('4c39b018d878db3286946955382625d9c9056a64128d77dbc57e5aaeab2f3948')
 
-package()
-{
-  cd ${srcdir}/Bot-BasicBot-$pkgver
+build() {
+  cd "${srcdir}/Bot-BasicBot-${pkgver}"
 
-  perl Makefile.PL INSTALLDIRS=vendor || return 1
-  make || return 1
-  make DESTDIR=${pkgdir} install || return 1
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
 
-  # Remove .packlist and perllocal.pod files.
-  find ${pkgdir} -name '.packlist' -delete
-  find ${pkgdir} -name 'perllocal.pod' -delete
+package() {
+  cd "${srcdir}/Bot-BasicBot-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
 
