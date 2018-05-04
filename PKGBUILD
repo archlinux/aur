@@ -7,9 +7,9 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
-_srcname=linux-4.14
-_pkgver=4.14.39
-_rtpatchver=rt29
+_srcname=linux-4.16
+_pkgver=4.16.7
+_rtpatchver=rt1
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -22,14 +22,15 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.16/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.16/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   'config'         # the main kernel config file
   '60-linux-rt.hook'  # pacman hook for depmod
   '90-linux-rt.hook'  # pacman hook for initramfs regeneration
   'linux-rt.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
@@ -39,30 +40,29 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '8686e9a0ff123163799f098767c91af4a0d58bc789a7de2cfe9d7b886f5b4fbd'
+            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
             'SKIP'
-            '9a107cbfb6d4db1fc0efe7661b1c86eec2ee4119cb1732119317a2f99b1c66b1'
+            '41110dcb050fb40e1f7553ab96f1e27b552262f24abf69669590b160352f46b0'
             'SKIP'
-            'be24c49a01142458458516972d427fb2e341f9e16b8e631055bcf19e87e94d7b'
+            'bac64c4b5d015f5f047e2dd558f4643dc2a2afafbfe5bbd124f68811da07c484'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d'
+            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
+            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
+            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
 
   # add upstream patch
   patch -p1 -i ../patch-${_pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
-
-  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -71,7 +71,10 @@ prepare() {
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
@@ -84,15 +87,15 @@ prepare() {
 
   msg "All patches have successfully been applied"
 
-  cp -Tf ../config .config
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="-${pkgrel}${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgrel}${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-#  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  # set extraversion to pkgrel and empty localversion
+#  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+#      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+#      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -115,7 +118,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules
 }
 
 _package() {
@@ -124,21 +127,21 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install="${pkgbase}.install"
+  install="linux-rt.install"
 
   cd ${_srcname}
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
@@ -197,9 +200,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
-
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
@@ -226,6 +226,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
