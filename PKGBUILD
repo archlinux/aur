@@ -9,11 +9,11 @@ pkgver=2.1.1a2
 pkgrel=2
 pkgdesc="A simple and fast parser generator"
 arch=('i686' 'x86_64')
-url="http://simpleparse.sourceforge.net"
+url="https://simpleparse.sourceforge.net"
 license=('custom')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://downloads.sourceforge.net/simpleparse/${_pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/simpleparse/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('9899df932c6805dbb6433c7395e696fd60723f463513933e925cc77314c6bbb8')
 
 build () {
