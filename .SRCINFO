@@ -1,7 +1,7 @@
 pkgbase = shotcut
 	pkgdesc = Video editor
 	pkgver = 18.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shotcut.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = shotcut
 	depends = qt5-webkit
 	depends = qt5-websockets
 	depends = qt5-x11extras
-	depends = mlt
+	depends = mlt-git
 	depends = movit
 	depends = ffmpeg
 	depends = libx264
