@@ -4,10 +4,10 @@ _basename='vcvrack'
 _plugname='sonusmodular'
 
 pkgname='vcvrack-sonusmodular-git'
-pkgver=r290.dd8630b
+pkgver=r302.e22b1d02
 pkgrel=1
 pkgdesc="Sonus Dept. VCV modules"
-url='https://sonusmodular.sonusdept.com'
+url='http://sonusmodular.sonusdept.com'
 license=(GPL3)
 arch=(i686 x86_64)
 depends=(vcvrack-git)
