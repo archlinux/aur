@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=ccid-git
-pkgver=ccid.1.4.28.r9.ge637b6f
+pkgver=1.4.29.r13.g85d33a8
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (git version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ validpgpkeys=(F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E) # Ludovic Rousseau <ludo
 
 pkgver() {
   cd "${srcdir}/CCID"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^ccid\.//g"
 }
 
 prepare() {
