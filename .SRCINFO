@@ -1,0 +1,28 @@
+pkgbase = cros-adapta-gtk-theme-git
+	pkgdesc = Adapta crostini theme
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/adapta-project/adapta-gtk-theme
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gnome-shell
+	makedepends = inkscape
+	makedepends = libxml2
+	makedepends = parallel
+	makedepends = sassc
+	depends = gtk-engine-murrine
+	depends = gtk3
+	optdepends = gnome-shell: The GNOME Shell
+	optdepends = gnome-flashback: The GNOME flashback shell
+	optdepends = budgie-desktop: The Budgie desktop
+	optdepends = cinnamon: The Cinnamon desktop
+	optdepends = xfdesktop: The Xfce desktop
+	provides = adapta-gtk-theme
+	conflicts = adapta-gtk-theme
+	conflicts = adapta-gtk-theme-git
+	source = git+https://chromium.googlesource.com/chromiumos/third_party/cros-adapta
+	sha256sums = SKIP
+
+pkgname = cros-adapta-gtk-theme-git
+
