@@ -17,7 +17,7 @@ optdepends=('blas: for BLAS support'
             'libpng: for PNG support'
             'neon: for neon support'
             'sqlite: for sqlite support')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc6')
 source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('a0470f978125eea13076aa9557bf0e4990a030ad8de972225dba46b45b3b3bd1')
 
@@ -31,7 +31,7 @@ build() {
     -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
-    -DCUDA_HOST_COMPILER='/usr/bin/gcc-5' \
+    -DCUDA_HOST_COMPILER='/usr/bin/gcc-6' \
     -DCMAKE_BUILD_TYPE=Release \
     "../${pkgname}-${pkgver}"
   make

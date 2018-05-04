@@ -6,6 +6,7 @@ pkgbase = dlib
 	arch = x86_64
 	license = custom
 	makedepends = cmake
+	makedepends = gcc6
 	optdepends = blas: for BLAS support
 	optdepends = cuda: for CUDA support
 	optdepends = cudnn: for CUDNN support
