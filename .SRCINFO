@@ -1,0 +1,19 @@
+pkgbase = astrality-git
+	pkgdesc = templates-based configuration file manager
+	pkgver = 0.6.r130.g589b228
+	pkgrel = 1
+	url = https://astrality.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	makedepends = sed
+	depends = python
+	optdepends = libyaml: faster YAML config parsing
+	provides = astrality
+	conflicts = astrality
+	source = astrality::git+https://github.com/JakobGM/astrality.git
+	sha256sums = SKIP
+
+pkgname = astrality-git
+
