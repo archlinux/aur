@@ -9,9 +9,13 @@ pkgbase = astrality-git
 	makedepends = git
 	makedepends = sed
 	depends = python
+	depends = python-mypy_extensions
+	depends = python-astral
+	depends = python-jinja
+	depends = python-yaml
+	depends = python-requests
+	depends = python-watchdog-git
 	optdepends = libyaml: faster YAML config parsing
-	provides = astrality
-	conflicts = astrality
 	source = astrality::git+https://github.com/JakobGM/astrality.git
 	sha256sums = SKIP
 

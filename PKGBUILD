@@ -8,12 +8,17 @@ url='https://astrality.readthedocs.io'
 arch=('any')
 license=('MIT')
 
-depends=('python')
+depends=(
+    'python'
+    'python-mypy_extensions'
+    'python-astral'
+    'python-jinja'
+    'python-yaml'
+    'python-requests'
+    'python-watchdog-git'
+)
 makedepends=('python-setuptools' 'git' 'sed')
 optdepends=('libyaml: faster YAML config parsing')
-
-provides=('astrality')
-conflicts=('astrality')
 
 source=('astrality::git+https://github.com/JakobGM/astrality.git')
 sha256sums=('SKIP')
