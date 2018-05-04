@@ -39,10 +39,13 @@ tickers also being listed on the stock market, such as ETH.
 
 To get info about your current holdings, run
 ```bash
-$ tick check [symbol/crypto_id/all]
+$ tick check [symbol/crypto_id/sort_option]
 ```
-The string "all" will list your entire portfolio, as well as produce a grand
-total. Running "check" with no other arguments will also list your entire portfolio.
+Running "check" with no other arguments will list your entire portfolio
+as well as produce a grand total. Adding the argument "-v", "-p", or "-1"
+will sort the output by value, profit, or one day profit. To check a single
+security, use the symbol or crypto_id as the argument instead of sort
+options.
 
 You may encrypt your portfolio using the RC4 algorithm
 ```bash
@@ -64,7 +67,8 @@ $ tick info tsla
 The graph command will print out a graph in your terminal of the historic
 price of the given security. Cryptocurrencies aren't supported yet, due to
 API constraints. You may press the UP arrow key to zoom in, the DOWN arrow
-key to zoom out, or the letter "q" to quit.
+key to zoom out, the LEFT arrow to pan left, the RIGHT arrow to pan right,
+or the letter "q" to quit.
 ```bash
 $ tick graph tsla
 ```
@@ -90,7 +94,6 @@ not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
 #### Future Ideas/To-do
 * Historical support -- 7d/28d profits (wait for coinmarketcap historical release)
-* Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
 * DEB/RPM package
@@ -101,3 +104,5 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Maybe replace News API with IEX news endpoint
 * Bookmark certain stocks (not included in portfolio)
 * Zoom in more than one month for graph
+* Average graph points when skipping indices for greater accuracy
+* Android app?
