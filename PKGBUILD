@@ -3,7 +3,7 @@
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
 # Contributor: Alexei Colin <ac@alexeicolin.com>
 pkgname=mspds
-pkgver=3.10.001.000
+pkgver=3.12.000.004
 pkgrel=1
 pkgdesc="MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators."
 arch=('i686' 'x86_64')
@@ -14,20 +14,27 @@ group=('msp430')
 depends=('hidapi' 'boost')
 makedepends=('unzip' 'dos2unix')
 optdepends=('mspdebug')
-_release='slac460v'
+_release='slac460x'
 _releasefile="${_release}.zip"
 noextract=("${_releasefile}")
 source=("http://www.ti.com/lit/sw/${_release}/${_releasefile}"
         'hidapi.patch')
-
-sha256sums=('37b49f06ff4700f7eb43cc470bd5203a92955572fd9b43003630febfa0264e01'
+sha256sums=('c6bf24338b50f6ce8f6f0127ec2673e10add251e0a89e894fd30897eaa4e0cbc'
             'aa2bdb86118a84423f3df752f48d90d2ebcb1e1bbc5293bdfd7fb1c62f765a34')
+
 
 prepare() {
     unzip ${_releasefile}
     find ./ -type f -exec dos2unix -q '{}' \;
     # This hidapi patch allows us to build mspds from the hidapi Archlinux package rather than the v0.7 source.
     patch -p1 -d . < ../hidapi.patch
+    sed -i 's/^\/\/\(#define FPGA_UPDATE\)/\1/' $srcdir/DLL430_v3/src/TI/DLL430/UpdateManagerFet.cpp
+    ## resolve conflict between std::chrono and boost::chrono
+    grep -Rl '(chrono::' $srcdir | xargs -- sed -i 's/(chrono::/(std::chrono::/'
+    ## resolve conflict between std::ofstream and boost::chrono
+    egrep -Rl '\sofstream' $srcdir | xargs -- sed -i 's/ofstream/std::ofstream/'
+    ## boost::asio::io_service was renamed to boost::asio::io_context in 1.66
+    egrep -Rl '::io_service' $srcdir | xargs -- sed -i 's/::io_service/::io_context/'
 }
 
 build() {
