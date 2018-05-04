@@ -1,0 +1,14 @@
+pkgbase = bitkeeper-development-bin
+	pkgdesc = a fast, enterprise-ready, distributed SCM
+	pkgver = 7.3.2.8.0x5aaba359
+	pkgrel = 1
+	url = http://www.bitkeeper.org
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	depends = libxft
+	source_x86_64 = https://github.com/gspu/bitkeeper/releases/download/bk-7.3.2.8.0x5aaba359/bk-7.3.2.8.0x5aaba359-x86_64-glibc227-linux.bin
+	sha256sums_x86_64 = 1d7148976dbcaac26e3710b89eb2de6bf6f7c1ee8894cea53b3e9762d3bdd262
+
+pkgname = bitkeeper-development-bin
+
