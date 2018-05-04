@@ -8,9 +8,7 @@ pkgdesc='Experimental type system extensions for programs checked with the mypy 
 url='http://www.mypy-lang.org/'
 arch=('any')
 license=('MIT')
-provides=('python-mypy_extensions')
-conflicts=('python-mypy_extensions')
-makedepends=('python-setuptools')
+makedepends=('python' 'python-setuptools')
 source=(
     "$_pypi_name-$pkgver.tar.gz::https://pypi.org/packages/source/m/$_pypi_name/$_pypi_name-$pkgver.tar.gz"
     'https://raw.githubusercontent.com/python/mypy/master/extensions/LICENSE'
