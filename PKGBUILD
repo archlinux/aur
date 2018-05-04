@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=68.0.3417.0
+pkgver=68.0.3419.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
+sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -137,7 +137,7 @@ sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
             'bcaeeb52d5d17fa9e6d4883cdeef8150f7e6ce440e0fcd3cef17d99f4b5db672'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
             'b5532de9e402a7d0b12258e9de56722e7eec84dc54cd53b9fe25d62c7354c0af'
-            'f4af2787f31abe66ab1180affed6f4c97daaad9151de429c9f5dc3e223cc8d87'
+            'd64928f6542292b4191a001fc475ef8ea02ea966f5292841ede47a7e70f5d785'
             '0aeb560922cb5d628528fbd33fad23a3d33c3b0caa06a6fa799da2e55741f5cb'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
             '098391051a6c0d0300f438a18b96bd84074d26aa31b11f95afd67def062116c0'
@@ -148,7 +148,7 @@ sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
             '442274439bf7d569edecbc1628b2a73fc0b3fa0901298037f613c1a68010e119'
             '4986d92d922af8a8adbc66883e6dc07e91c330aa2d911d724928e903b42dca21'
             'd975a6abd6cb8ff2a2178d9a4755ea978033af522a0b4121d025703133a87ca2'
-            'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
+            '0246ac4698361ed36677c7e0831112975924a1b81125af3ffce7d72d2dfa028e'
             '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
             'db1d9f62899a1acf917394d807f10765f3cbeef63c42f1e8359239b806f42517'
             'da25ed7557ae7083d28819d88d2c5e89dc23845a1daa7000ee8035148e2d49d7'
@@ -189,7 +189,7 @@ sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
-            '1677aecf5934ba8bfb87bdbe95c390822a1fd2efc719dcf4b51ee56715a18f79'
+            'fda2fd5bf13e685ad19daff3f2348e58c18d628086e46866bd6ec2a8047fdef6'
             '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
@@ -214,6 +214,7 @@ sha256sums=('9fe4695fbd2bb72b5564f9914d338d13597f7898509426c4fbf0c24a82596a9f'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -284,7 +285,7 @@ patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
 patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
-#patch -Np1 -i ../026.patch
+patch -Np1 -i ../026.patch
 patch -Np1 -i ../027.patch
 patch -Np1 -i ../029.patch
 patch -Np1 -i ../030.patch
@@ -341,7 +342,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-patch -Np1 -Ri ../9k.patch
+#patch -Np1 -Ri ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
