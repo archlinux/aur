@@ -2,7 +2,7 @@
 
 pkgname=trizen
 pkgver=1.49
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR."
 arch=('any')
@@ -35,4 +35,5 @@ package() {
   install -m 755 -D $pkgname "$pkgdir/usr/bin/$pkgname"
   install -m 644 -D "zsh.completion" "$pkgdir/usr/share/zsh/site-functions/_trizen"
   install -m 644 -D "bash.completion" "$pkgdir/usr/share/bash-completion/completions/trizen"
+  install -m 644 -D "fish.completion" "$pkgdir/usr/share/fish/vendor_completions.d/trizen.fish"
 }
