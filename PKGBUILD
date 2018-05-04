@@ -14,12 +14,15 @@ build() {
     cd "$srcdir/nlohmann-json-build"
     
     cmake "$srcdir/json-$pkgver" \
+        -DBUILD_TESTING=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 check() {
     cd "$srcdir/nlohmann-json-build"
+    cmake -DBUILD_TESTING=ON "$srcdir/json-$pkgver"
+    make
     ctest
 }
 
