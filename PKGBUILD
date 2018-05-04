@@ -10,7 +10,7 @@ url="https://github.com/mkfifo/${_pkgname}"
 license=('MIT')
 depends=()
 makedepends=('git')
-source=("${pkgname}::git://github.com/mkfifo/${_pkgname}.git")
+source=("${pkgname}::git+https://github.com/mkfifo/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
