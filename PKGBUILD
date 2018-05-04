@@ -1,16 +1,16 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 pkgname=libupnpp
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ wrapper for libupnp - used with upmpdcli or upplay"
 url="http://www.lesbonscomptes.com/upplay/downloads.html"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libupnp' 'expat' 'curl')
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/${pkgname}-${pkgver}.tar.gz")
-md5sums=('575b7366647e49c004306a9a0aaed44c')
+md5sums=('df663e0dbd460e0377a0ee575c96b1b8')
 
 build(){
 	cd "${pkgname}-${pkgver}"
