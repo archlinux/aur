@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('glibc')
 source=("https://downloads.sourceforge.net/aa-project/$pkgname-$pkgver.tar.gz"
         "aa3d.string.header.patch")
-sha512sums=('a5a98664f43b03cd8275432ba625729d88dc4c7da3668185e16c0068c0e29e90ac6fc3c3368c4f75e19b0372191bae68adb40066bc04fb5e1a85e7e3ae6c6802'
+sha512sums=('05548b6231aefe2f50dd5e61cb6ddd41b3ce4bf50263c19249ab9ecc466c633e7ff1fb743204ed712994b8bd96315e4eacd23a3e4dd3e8a049e0ffad5f74fa18'
             '79e1afb80a6fb61c27d63e999fca4d1a6ecab24d4f3ff3b52c74ccf790823af5b9b1e456035823c0ab2f7d0c4c376c5d436a1d8849a2e81f47aaa96776d55235')
 
 build() {
