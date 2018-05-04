@@ -1,15 +1,15 @@
 # Maintainer: Vlad Zagorodniy <vladzzag@gmail.com>
 pkgname=kwin-effects-disappear3
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="KWin effect that animates the disappearing of windows"
 arch=('x86_64')
 url="https://github.com/zzag/kwin-effects-disappear3"
 license=('GPL3')
 depends=(kwin)
-makedepends=(extra-cmake-modules kdelibs)
+makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('e381d0812644ecbb682536f68c6abda188428c3584ba9ba30c17dfbfb7a63175')
+sha256sums=('302d7c1c5174d3ba25a6a5c9fdbb7b5b9d804fa895c6bd36741c4d0af44abac0')
 
 prepare() {
     mkdir -p build
