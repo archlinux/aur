@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r487.g65f0825315
+pkgver=0.28.2.r564.g11289d5238
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -40,12 +40,9 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
 
 makedepends=('vulkan-headers' 'mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
-              'streamlink' 'youtube-dl')
-# check kind of graphic card
-if [ "$CARCH" = "x86_64" ] ; then
-makedepends+=('cuda' 'ffnvcodec-headers')
+              'streamlink' 'cuda' 'ffnvcodec-headers' 'youtube-dl' 'ffnvcodec-headers')
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
-fi
+
     
 provides=('mpv' 'mpv-git')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
@@ -120,7 +117,6 @@ build() {
 	--enable-libass \
 	--enable-libass-osd \
 	--enable-zlib \
-	--enable-encoding \
 	--enable-libbluray \
 	--enable-dvdread \
 	--enable-dvdnav \
