@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=parcel-bundler
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing fast, zero configuration web application bundler"
 arch=(any)
 url="https://parceljs.org/"
@@ -19,10 +19,8 @@ package() {
   cd "$_npmdir"
   npm install -g --prefix "$pkgdir/usr" "$pkgname@$pkgver"
   install -Dm755 "$_npmdir/parcel-bundler/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd "$pkgdir"
-  rmdir usr/etc
-  find -perm -o+w -exec chmod go-w '{}' '+'
-  find -name package.json -exec sed -i '/"_where"/d' '{}' '+'
+  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
 # vim:set ts=2 sw=2 et:
