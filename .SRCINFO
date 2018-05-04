@@ -1,0 +1,24 @@
+pkgbase = crystallauncher
+	pkgdesc = Crystal Launcher is a unofficial launcher for Minecraft that has own packages repository. It can also run official launcher packages.
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://crystal-launcher.net/
+	arch = any
+	license = CCPL
+	makedepends = unzip
+	depends = java-runtime
+	depends = openal
+	depends = java-openjfx
+	provides = crystallauncher
+	noextract = jar
+	source = http://main.crystal-launcher.pl/releases/other/CrystalLauncher.jar
+	source = crystallauncher
+	source = crystallauncher.desktop
+	source = crystallauncher.png
+	md5sums = SKIP
+	md5sums = 59a97acf743c32226f52b374dc84803d
+	md5sums = 4724472411e932b005f1b0d66a47f14e
+	md5sums = 1fc2ef4be5729d96f9928af152fc1763
+
+pkgname = crystallauncher
+
