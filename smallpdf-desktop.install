@@ -1,0 +1,8 @@
+smallpdfmessage="Run 'smallpdf' to run the reader. Please note that the\nPDF-to-Office-formats conversion tools are not available (yet)."
+
+post_install() {
+	echo -e $smallpdfmessage
+}
+post_upgrade() {
+	echo -e $smallpdfmessage
+}

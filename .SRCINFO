@@ -1,0 +1,33 @@
+pkgbase = smallpdf-desktop
+	pkgdesc = Smallpdf desktop reader and converter
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://smallpdf.com/
+	install = smallpdf-desktop.install
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = dbus
+	depends = xorg-server
+	depends = c-ares
+	depends = ffmpeg
+	depends = http-parser
+	depends = libevent
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	provides = smallpdf-desktop
+	conflicts = smallpdf-desktop
+	source = https://download.smallpdf.com/desktop/linux/package-linux.tar.gz
+	source = smallpdf-desktop.desktop
+	source = smallpdf
+	sha256sums = bc50e95da1ada3495f59dc6c7d824a6ca6f446c24271a081b3b8d45cf1fda163
+	sha256sums = a56b2da40fec921ee2cbad55c3767fdba20af8055082c611a4ce2ab29fed3096
+	sha256sums = 9d3719ee5bf53a6bab73886ade14253a2055ba312804625354a8009509900050
+
+pkgname = smallpdf-desktop
+

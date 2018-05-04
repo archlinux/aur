@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Smallpdf Desktop
+Name[de]=Smallpdf Desktop
+Name[ja]=Smallpdfデスクトップ
+Comment=Smallpdf desktop reader and converter
+Keywords=pdf;reader;converter;
+Exec=smallpdf
