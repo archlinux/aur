@@ -18,3 +18,7 @@ src/
 
 
 # End of https://www.gitignore.io/api/archlinuxpackages
+
+### build directory and finished package
+openfortivpn/
+*.pkg.tar.xz
