@@ -9,7 +9,7 @@ url='https://rubenwardy.com/NodeBoxEditor'
 license=('GPL3')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
-depends=('irrlicht' 'libjpeg' 'libpng' 'mesa')
+depends=('irrlicht' 'libjpeg' 'libpng' 'mesa' 'zenity')
 source=("git://github.com/rubenwardy/NodeBoxEditor.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 install=install

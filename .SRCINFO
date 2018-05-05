@@ -13,6 +13,7 @@ pkgbase = nodeboxeditor
 	depends = libjpeg
 	depends = libpng
 	depends = mesa
+	depends = zenity
 	source = git://github.com/rubenwardy/NodeBoxEditor.git#tag=v0.9.1
 	sha256sums = SKIP
 
