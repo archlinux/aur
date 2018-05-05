@@ -4,7 +4,7 @@
 # Contributor: Pierre Choffet <peuc@wanadoo.fr>
 _pkgname=ring-kde
 pkgname=$_pkgname-git
-pkgver=2.0.0.r626.g7790658e
+pkgver=2.0.0.r651.g82a6286b
 pkgrel=1
 pkgdesc="The KDE client for the Ring communication framework (www.ring.cx)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
 build() {
 	cd build
 	cmake ../"$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
 		-DCMAKE_BUILD_TYPE=Release
 	make
 }
