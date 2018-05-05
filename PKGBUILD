@@ -20,8 +20,15 @@ config.patch
 )
 _gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
+prepare() {
+  cd "$pkgname"
+
+  patch -p1 "$srcdir/config.patch"
+}
+
 build() {
   cd "$pkgname"
+
   gem install --no-document --no-user-install -i $_gemdir rake
   bundle install --path vendor/bundle --without test
 
