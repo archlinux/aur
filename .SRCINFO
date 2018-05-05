@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-cork
+	pkgdesc = Integrate cork boolean library into blender
+	pkgver = 0.9.r9.g39f7746
+	pkgrel = 1
+	url = https://github.com/dfelinto/cork-on-blender.git
+	arch = any
+	license = GPL
+	makedepends = expac
+	makedepends = git
+	depends = blender
+	depends = cork-git
+	source = cork::git+https://github.com/dfelinto/cork-on-blender.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-cork
+
