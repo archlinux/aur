@@ -1,0 +1,12 @@
+Updating the package:
+
+* Upgrade version in PKGBUILD
+* Update checksums in PKGBUILD 
+* Update .SRCINFO 
+
+	makepkg --printsrcinfo > .SRCINFO
+
+* Git add
+* Git commit
+* Git push
+
