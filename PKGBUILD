@@ -22,7 +22,7 @@ sha256sums=(
 
 package() {
     install -d "${pkgdir}/usr/share/springseed"
-    cp -a "${srcdir}/springbuild/app/." "${pkgdir}/usr/share/springseed"
+    cp -a "${srcdir}/." "${pkgdir}/usr/share/springseed"
     find "${pkgdir}" -type d -exec chmod 755 {} +
     find "${pkgdir}" -type f -exec chmod 644 {} +
 
