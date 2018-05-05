@@ -513,6 +513,27 @@ d_multicall_filtered(const torrent::Object::list_type& args) {
 }
 
 
+/*  throttle.names=
+
+    Returns a list of all defined throttle names,
+    including the built-in ones (i.e. '' and NULL).
+
+    https://github.com/pyroscope/rtorrent-ps/issues/65
+ */
+torrent::Object cmd_throttle_names() {
+    torrent::Object result = torrent::Object::create_list();
+    torrent::Object::list_type& resultList = result.as_list();
+
+    resultList.push_back(std::string());
+    for (core::ThrottleMap::const_iterator itr = control->core()->throttles().begin();
+         itr != control->core()->throttles().end(); itr++) {
+       resultList.push_back(itr->first);
+    }
+
+    return result;
+}
+
+
 torrent::Object::value_type apply_string_contains(bool ignore_case, const torrent::Object::list_type& args) {
     if (args.size() < 2) {
         throw torrent::input_error("string.contains[_i] takes at least two arguments!");
@@ -679,13 +700,14 @@ void initialize_command_pyroscope() {
 #endif
 
 #if RT_HEX_VERSION <= 0x000906
-    // these are merged into 0.9.7+ mainline!
+    // these are merged into 0.9.7+ mainline! (well, maybe, PRs are ignored)
     CMD2_ANY_STRING("system.env", _cxxstd_::bind(&cmd_system_env, _cxxstd_::placeholders::_2));
     CMD2_ANY("ui.current_view", _cxxstd_::bind(&cmd_ui_current_view));
     CMD2_ANY_LIST("system.random", &apply_random);
     CMD2_ANY_LIST("d.multicall.filtered", _cxxstd_::bind(&d_multicall_filtered, _cxxstd_::placeholders::_2));
 #endif
 
+    CMD2_ANY("throttle.names", _cxxstd_::bind(&cmd_throttle_names));
     CMD2_ANY_LIST("string.contains", &cmd_string_contains);
     CMD2_ANY_LIST("string.contains_i", &cmd_string_contains_i);
     CMD2_ANY_LIST("string.map", &cmd_string_map);
