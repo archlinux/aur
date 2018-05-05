@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-wxnatpy
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="wxnatpy is a wxPython widget which allows users to browse the contents of a XNAT repository. It is built on top of wxPython and xnatpy."
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a547361fd63dc6c01cae0369b86bb5a8b94c99206704a64822ecc3390a20c2b8')
+sha256sums=('130b4b39299e213c4cf6829b64c03d2e0e3ba6b234a8d5f2044d7b4cb572c5f4')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
