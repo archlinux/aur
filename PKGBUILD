@@ -2,7 +2,7 @@
 
 pkgname=nodeboxeditor
 _pkgname=NodeBoxEditor
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='3D Cuboid Voxel Editor for Minetest'
 url='https://rubenwardy.com/NodeBoxEditor'
