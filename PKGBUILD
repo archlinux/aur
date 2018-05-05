@@ -1,7 +1,7 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay-git
-pkgver=v1.5.3.r3.gcd8bbf4
+pkgver=1.5.3.r3.gcd8bbf4
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
@@ -17,8 +17,9 @@ sha256sums=('SKIP'
             '2033d40daad02f06eede073d0cee39fba8c70289dd71e8444d429b810438ec3a')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
