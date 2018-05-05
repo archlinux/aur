@@ -2,14 +2,14 @@
 
 _pkgname='gvisor'
 pkgname="${_pkgname}-git"
-pkgver=37.af724ec
+pkgver=42.b5a0667
 pkgrel=2
 pkgdesc="User-space kernel, sandboxed container runtime"
 arch=('x86_64')
 url='https://github.com/google/gvisor'
 license=('Apache-2.0')
 sha256sums=('SKIP')
-source=("git+https://github.com/vkobel/${_pkgname}")
+source=("git+https://github.com/google/${_pkgname}")
 provides=('runsc')
 makedepends=('bazel' 'python')
 
