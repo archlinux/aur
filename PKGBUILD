@@ -2,12 +2,14 @@
 
 pkgname=libvlc
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The VLC library not bundled with VLC so one can use things depending on the lib without installing VLC"
 arch=('x86_64')
 url='https://www.videolan.org/LibVLC/'
 license=('LGPL')
 depends=('libvlccore')
+provides=('vlc')
+conflicts=('vlc')
 source=("https://mex.mirror.pkgbuild.com/extra/os/x86_64/vlc-3.0.1-2-x86_64.pkg.tar.xz")
 md5sums=('a906947ae388875fdd08a68ac6ee4c1c')
 
