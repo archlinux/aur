@@ -1,5 +1,5 @@
 pkgbase = python-alerta-client
-	pkgver = 4.8.3
+	pkgver = 5.0.12
 	pkgrel = 1
 	url = https://github.com/alerta/python-alerta-client
 	arch = any
@@ -8,7 +8,10 @@ pkgbase = python-alerta-client
 	depends = python-requests
 	depends = python-pytz
 	depends = python-setuptools
-	source = git+https://github.com/alerta/python-alerta-client.git#commit=8c80312359d1c5f078f56dbe3ae6810dec04617f
+	depends = python-tabulate
+	depends = python-click
+	depends = python-six
+	source = git+https://github.com/alerta/python-alerta-client.git#commit=3ba1079a272ace7721c97daa218a4b33fa306f8d
 	sha256sums = SKIP
 
 pkgname = python-alerta-client

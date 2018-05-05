@@ -1,11 +1,11 @@
 pkgname=python-alerta-client
-_pkgvergit=commit=8c80312359d1c5f078f56dbe3ae6810dec04617f
-pkgver=4.8.3
+_pkgvergit=commit=3ba1079a272ace7721c97daa218a4b33fa306f8d
+pkgver=5.0.12
 pkgrel=1
 arch=('any')
 url=https://github.com/alerta/python-alerta-client
 license=('MIT')
-depends=('python' 'python-requests' 'python-pytz' 'python-setuptools')
+depends=('python' 'python-requests' 'python-pytz' 'python-setuptools' 'python-tabulate' 'python-click' 'python-six')
 #makedepends=('python-setuptools')
 source=("git+https://github.com/alerta/python-alerta-client.git#$_pkgvergit")
 sha256sums=('SKIP')
@@ -15,17 +15,7 @@ pkgver() {
   cat VERSION
 }
 
-prepare() {
-    cd $srcdir/$pkgname/
-    echo -e "22d21\n<         'argparse'," | patch setup.py
-}
-
-# build() {
-#     mkdir -p $pkgdir/usr/lib/python3.5/site-packages
-# }
-
 package() {
-    #mkdir -p $pkgdir/usr/lib/python3.5/site-packages
     cd $srcdir/$pkgname/
     python setup.py install --root $pkgdir
 }
