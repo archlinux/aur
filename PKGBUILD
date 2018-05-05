@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mothur
-pkgver=1.40.1
+pkgver=1.40.3
 pkgrel=1
 pkgdesc="A bioinformatics program for analyzing microbial communities"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('boost-libs')
 makedepends=('boost')
 source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('7b1561fbd1ca0316228535553ec5e884eb671b3c320b8c6fce898c2d6632dc64')
+sha256sums=('7237e763b046ade1034bf39e3e76ee0256013b1d50103330f0177c3b0cb876f7')
 
 prepare() {
   cd $pkgname-$pkgver
