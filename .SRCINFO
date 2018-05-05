@@ -1,11 +1,12 @@
 pkgbase = budgie-caffeine-applet
 	pkgdesc = Simple applet to prevent screen dimming on long idle time for Budgie Desktop
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yursan9/budgie-caffeine-applet
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = gettext
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
@@ -14,7 +15,9 @@ pkgbase = budgie-caffeine-applet
 	depends = python
 	depends = python-gobject
 	source = https://github.com/yursan9/budgie-caffeine-applet/archive/v0.1.5.tar.gz
+	source = zh_CN.po
 	sha512sums = a6ddff81a745439828be7f88d081ba70cb714508c83fb8caef76df6be9bc45a914374a58382eb271322e14ba3b21543902972db285413c5dc24971adf691870d
+	sha512sums = 0a85efe1306dc3a148197d5a1316aba98be2910427ebb2c63b05ef45e79b61c9428360036aa16db332c1606c80f79a163c1b19e82751fa25b7b0dc8690f004f0
 
 pkgname = budgie-caffeine-applet
 

@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Yurizal Susanto
+# This file is distributed under the same license as the budgie-caffeine-applet package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-22 16:23+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kaizhao Zhang <zhangkaizhao@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: budgie-caffeine-applet.py.in:31
+msgid "Enable Notification"
+msgstr "开启通知"
+
+#: budgie-caffeine-applet.py.in:71
+msgid "Caffeine Mode"
+msgstr "煮咖啡模式"
+
+#: budgie-caffeine-applet.py.in:79
+msgid "Timer (minutes)"
+msgstr "定时器（分钟）"
+
+#: budgie-caffeine-applet.py.in:106
+msgid "Turn on Caffeine Boost"
+msgstr "开始煮咖啡"
+
+#: budgie-caffeine-applet.py.in:109
+#, python-brace-format
+msgid "{time} minutes"
+msgstr "{time} 分钟"
+
+#: budgie-caffeine-applet.py.in:109
+msgid "a minute"
+msgstr "一分钟"
+
+#: budgie-caffeine-applet.py.in:110
+#, python-brace-format
+msgid "Will turn off in {duration}"
+msgstr "将在{duration}之后停止"
+
+#: budgie-caffeine-applet.py.in:112
+#, python-brace-format
+msgid "{app} automatically turn on Caffeine Mode"
+msgstr "{app} 自动开启煮咖啡模式"
+
+#: budgie-caffeine-applet.py.in:115
+msgid "Turn off Caffeine Boost"
+msgstr "停止煮咖啡"
