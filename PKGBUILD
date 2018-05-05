@@ -3,7 +3,7 @@
 
 pkgname=springseed
 pkgver=2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Simply awesome note taking"
 
 arch=('arm' 'i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=(
 
 package() {
     install -d "${pkgdir}/usr/share/springseed"
-    cp -a "${srcdir}/." "${pkgdir}/usr/share/springseed"
+    cp -a "${srcdir}/notes-2.0/." "${pkgdir}/usr/share/springseed"
     find "${pkgdir}" -type d -exec chmod 755 {} +
     find "${pkgdir}" -type f -exec chmod 644 {} +
 
