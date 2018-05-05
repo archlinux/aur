@@ -11,6 +11,7 @@ post_install() {
 	groupmems -g uucp -a kannel >/dev/null 2>&1
 	passwd -l kannel >/dev/null 2>&1
 	chown root:kannel $pkgdir/var/log/kannel
+  chmod -R 0770 $pkgdir/var/log/kannel
 	systemd-tmpfiles --create /usr/lib/tmpfiles.d/kannel.conf >/dev/null 2>&1
 }
 
@@ -23,7 +24,9 @@ post_upgrade() {
 
 # arg 1:  the old package version
 pre_remove() {
-  killall -q kannel
+  systemctl -qf stop kannel-smsbox
+  systemctl -qf stop kannel-wapbox
+  systemctl -qf stop kannel-bearerbox
 	getent passwd kannel >/dev/null 2>&1 && userdel kannel
 	getent group kannel >/dev/null 2>&1 && groupdel kannel
 }

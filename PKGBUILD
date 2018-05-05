@@ -4,7 +4,7 @@
 pkgname=kannel
 PACKAGE=gateway
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
@@ -43,7 +43,7 @@ check() {
 
 package() {
   cd ${srcdir}
-  install -dm755 $pkgdir/var/log/kannel
+  install -dm770 $pkgdir/var/log/kannel
 
   install -Dm644 kannel.conf "$pkgdir/etc/kannel/kannel.conf"
   install -Dm644 modems.conf "$pkgdir/etc/kannel/modems.conf"
