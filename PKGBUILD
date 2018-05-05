@@ -6,11 +6,12 @@ _gh_user=sintaxi
 pkgver=0.20.1
 pkgrel=1
 pkgdesc='CLI for the surge.sh CDN'
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/${_gh_user}/${_pkgname}"
 license=('ISC')
 depends=('nodejs')
 makedepends=('npm')
+options=(!strip)
 
 package() {
   npm \
