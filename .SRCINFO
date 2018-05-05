@@ -1,0 +1,20 @@
+pkgbase = intellij-idea-community-edition-no-jre
+	pkgdesc = Intellij Idea Community Edition without bundled JRE
+	pkgver = 2018.1.2
+	pkgrel = 1
+	url = http://www.jetbrains.com/idea/
+	arch = any
+	license = Apache2
+	depends = giflib
+	depends = libxtst
+	depends = java-environment
+	provides = jetbrains-idea-ce
+	conflicts = jetbrains-idea-ce
+	options = !strip
+	source = https://download.jetbrains.com/idea/ideaIC-2018.1.2-no-jdk.tar.gz
+	source = jetbrains-idea-ce.desktop
+	md5sums = 752568aae86e97470d01a5aaab5d3521
+	md5sums = 9e5798fd87d09fa8f2f24721b6af4d5f
+
+pkgname = intellij-idea-community-edition-no-jre
+
