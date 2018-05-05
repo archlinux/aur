@@ -10,22 +10,9 @@ url='http://openwall.info'
 license=('GPL')
 provides=('john')
 conflicts=('john' 'john-latest')
-# For OpenCL support change swap the {make}depends arrays
-depends=('mpich' 'libpcap')
+depends=('mpich' 'libpcap' 'ocl-icd')
+makedepends=('mpich' 'unzip' 'opencl-headers')
 optdepends=('perl' 'python2' 'ruby')
-makedepends=('mpich' 'unzip')
-# Remember to include one of the following packages into the depends
-# array for OpenCL to work:
-# opencl-mesa
-# amdapp-sdk
-# opencl-nvidia
-# cuda
-# intel-opencl-sdk
-#depends=('mpich'
-#         'libcl'
-#         'YOUR_OPENCL_VENDOR_HERE')
-#makedepends=('opencl-headers'
-#             'libcl')
 backup=(etc/john/john.conf
         etc/john/dumb32.conf
         etc/john/dumb16.conf
