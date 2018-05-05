@@ -1,7 +1,7 @@
 pkgbase = acestream-engine
 	pkgdesc = ACE Stream engine
 	pkgver = 3.1.16
-	pkgrel = 6
+	pkgrel = 7
 	url = http://acestream.org/
 	install = acestream-engine.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = acestream-engine
 	depends = python2-apsw
 	depends = python2-lxml
 	depends = python2-typing
-	optdepends = libappindicator-gtk2: GTK+ gui support
+	optdepends = python2-libappindicator: GTK+ gui support
 	source = acestream-engine.service
 	source = acestream-engine-3.1.16::http://dl.acestream.org/linux/acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz
 	source = python2-m2crypto-0.24.0::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz
