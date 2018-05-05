@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=in
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Run a command in a given directory'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/in'
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/xyproto/in/releases/download/$pkgver/in-$pkgver.tar.gz")
-sha256sums=('b9bea33a0fee3c7c02a6cf0ca0acdd46a42194cbf4d72a3850d1b004f8799d9f')
+sha256sums=('98f8cd8f55c492f4bc2af67cdab2aa6e1d12bb6d5c4b815ace7e7cd8e8164fd6')
 
 build() {
   cd "$pkgname-$pkgver"
