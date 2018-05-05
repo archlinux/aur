@@ -27,7 +27,7 @@ prepare() {
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export CC_OPT_FLAGS="${CFLAGS}"
+  export CC_OPT_FLAGS="${CXXFLAGS}"
   export TF_CUDA_CLANG=0
   export TF_NEED_CUDA=0
   export TF_NEED_JEMALLOC=0
