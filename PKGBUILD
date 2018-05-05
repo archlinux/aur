@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=3.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -16,6 +16,7 @@ optdepends=('alsa-utils: sound notification support'
 source=(
 http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
 mikutter.desktop
+config.patch
 )
 _gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
@@ -47,4 +48,5 @@ EOF
 }
 
 md5sums=('10a1a7d7b1883ef9ca5a5002671d631d'
-         '3bc1c65e13b6182a9c989835eefc8810')
+         '3bc1c65e13b6182a9c989835eefc8810'
+         '54df9d2f1f19d3c27034cc1a97d1bc67')
