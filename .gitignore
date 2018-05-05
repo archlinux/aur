@@ -1,6 +1,5 @@
-pkg/
-src/
+*.pkg.tar*
+*.src.tar*
 *.gz
-*.log
-*.tar
-*.xz
+src
+pkg
