@@ -1,0 +1,17 @@
+pkgbase = easy-rsa-old
+	pkgdesc = Simple shell based CA utility (legacy version)
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/OpenVPN/easy-rsa-old
+	arch = any
+	license = custom
+	depends = openssl
+	depends = sh
+	conflicts = easy-rsa
+	backup = usr/share/easy-rsa/vars
+	backup = usr/share/easy-rsa/openssl-1.0.0.cnf
+	source = easy-rsa-old-2.3.3::https://github.com/OpenVPN/easy-rsa-old/archive/2.3.3.tar.gz
+	md5sums = 14c6f4abd6ea80a99b434d8683fc7aa2
+
+pkgname = easy-rsa-old
+
