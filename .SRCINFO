@@ -1,8 +1,9 @@
 pkgbase = kannel
-	pkgdesc = Kannel is a compact and very powerful open source WAP and SMS gateway
+	pkgdesc = Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kannel.org/
+	install = kannel.install
 	arch = any
 	groups = base-devel
 	license = custom
@@ -12,11 +13,19 @@ pkgbase = kannel
 	source = http://www.kannel.org/download/1.4.4/gateway-1.4.4.tar.gz
 	source = kannel.conf
 	source = modems.conf
-	source = default
+	source = kannel.default
+	source = kannel.tmpfiles
+	source = kannel-bearerbox.service
+	source = kannel-smsbox.service
+	source = kannel-wapbox.service
 	md5sums = 0048dab467931eb8472c31d5e1257401
 	md5sums = 7090740f6f82d8973bf07ba538a3dd80
 	md5sums = 24ae1183521fe871e39f499eed27b93a
 	md5sums = 7575cd21bcd397bcc02a01b57fb4d429
+	md5sums = ed309e56b6fa05e65d8eb70f15bbfee6
+	md5sums = 43c8248224a130e27ca2bad84eca9e42
+	md5sums = 7aedab47cc36958e2848c5c357ffb34b
+	md5sums = e4bac33d1ff8dc6947f5850c6fe3d6b0
 
 pkgname = kannel
 

@@ -1,0 +1,14 @@
+[Unit]
+Description = Kannel Bearerbox
+After = network.target
+
+[Service]
+User = kannel
+PIDFile = /run/kannel/bearerbox.pid
+ExecStart = /usr/local/sbin/start-stop-daemon --start \
+              --pidfile /run/kannel/bearerbox.pid \
+              --exec /usr/local/sbin/bearerbox /etc/kannel/kannel.conf
+
+[Install]
+WantedBy = multi-user.target
+

@@ -1,0 +1,30 @@
+# arg 1:  the new package version
+post_install() {
+	getent group kannel >/dev/null 2>&1 || groupadd -r kannel
+	if getent passwd kannel >/dev/null 2>&1; then
+		usermod -d /run/kannel -c 'Kannel Daemon' \
+			-s /sbin/nologin kannel >/dev/null 2>&1
+	else
+		useradd -r -c 'Kannel Daemon' -g kannel \
+			-d /run/kannel -s /sbin/nologin kannel >/dev/null 2>&1
+	fi
+	groupmems -g uucp -a kannel >/dev/null 2>&1
+	passwd -l kannel >/dev/null 2>&1
+	chown root:kannel $pkgdir/var/log/kannel
+	systemd-tmpfiles --create /usr/lib/tmpfiles.d/kannel.conf >/dev/null 2>&1
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	post_install $1
+	systemctl --system daemon-reload >/dev/null 2>&1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  killall -q kannel
+	getent passwd kannel >/dev/null 2>&1 && userdel kannel
+	getent group kannel >/dev/null 2>&1 && groupdel kannel
+}
+
