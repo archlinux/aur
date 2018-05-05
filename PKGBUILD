@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 313398 2017-12-20 17:55:01Z anatolik $
+# $Id: PKGBUILD 323214 2018-05-01 16:45:25Z anatolik $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
@@ -8,8 +8,8 @@
 pkgname='qemu-minimal'
 #pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
-pkgver=2.11.0
-pkgrel=4
+pkgver=2.12.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -26,12 +26,14 @@ provides=('qemu' 'qemu-headless')
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
         qemu-ga.service
         65-kvm.rules
+        remove-problematic-evdev-86-key-from-en-us-keymap.patch
         allow_elf64.patch)
-sha256sums=('c9d34a79024eae080ce3853aa9afe503824520eefb440190383003081ce7f437'
+sha256sums=('e69301f361ff65bf5dabd8a19196aeaa5613c1b5ae1678f0823bdf50e7d5c6fc'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
-            '13a6d9e678bdc9e1f051006cfd0555f5a80582368f54c8a1bb5a78ece3832ac4')
+            '3cefabbab32ab21cd3b5a8cc1165c96db0c6c93e7ee8dc9d2ca09be5fb5eccda'
+            '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -47,6 +49,7 @@ prepare() {
   cd ${pkgname:0:-8}-${pkgver}
   sed -i 's/vte-2\.90/vte-2.91/g' configure
 
+  patch -p1 < ../remove-problematic-evdev-86-key-from-en-us-keymap.patch
   patch -p1 < ../allow_elf64.patch
 }
 
