@@ -11,9 +11,9 @@ _use_ppa=true
 
 pkgbase=gtk3-ubuntu
 pkgname=(gtk3-ubuntu gtk-update-icon-cache-ubuntu)
-_ubuntu_ver=3.22.28
-_ubuntu_rel=1ubuntu3
-pkgver=3.22.28+74+gcc967849f7
+_ubuntu_ver=3.22.30
+_ubuntu_rel=1ubuntu1
+pkgver=3.22.30
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
@@ -24,7 +24,7 @@ depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts colord dconf d
 	pango rest shared-mime-info wayland wayland-protocols gtk-update-icon-cache)
 makedepends=(gobject-introspection git gtk-doc glib2-docs sassc)
 license=(LGPL)
-_commit=cc967849f7653c697c33571a1a6a55e9ffd966ff  # gtk-3-22
+_commit=2e7ac262be15fb402c4103d28533c6c6d955bf65  # tags/3.22.30^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 	settings.ini
 	gtk-query-immodules-3.0.hook
@@ -38,7 +38,7 @@ sha512sums=('SKIP'
             'f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac'
             'abfd73de4faa6f53784182800395aa3c39bb98e15a0eb300fb4142073ff7ce565a0836a2363393b2f132060b5293dbc0c30c380a023f38d5bd39c62cb58389c2'
             '5cd50d93bb6bc203438a2a0764bd717409658e124058b18a1da26a21f10ef7564a16f32fc0633a68b45b2e303fa63a5efefeadd6b0bf1d7f474556df8cdb6c58'
-            '10e00f9e8e4e8c9b28e44b0013a3d8bc283adb5e8c931730a998da45ba6b76c9349113deb489bc9dd418b338fba2a2190cea8aaf653ae72e9f4678cdd734ded1')
+            '8baf8e62ed71cf1fc8d172725749b4f63d1d3c5f9303e1b1874a97df1250139e7aae777b3053ad5dd7c5af7267832af1e9559db6b6501af294c8159d1b1c6fd4')
 
 pkgver() {
   cd gtk
