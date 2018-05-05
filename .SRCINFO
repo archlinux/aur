@@ -1,0 +1,30 @@
+pkgbase = monodevelop-stable-bin
+	pkgdesc = An IDE primarily designed for C# and other .NET languages
+	pkgver = 7.5.0.1244
+	pkgrel = 1
+	url = http://www.monodevelop.com
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = rsync
+	makedepends = git
+	makedepends = nuget
+	makedepends = openssl-1.0
+	depends = mono>=5.10.1.47
+	depends = mono-addins>=0.6.2
+	depends = gtk-sharp-2
+	depends = fsharp
+	depends = libssh2
+	depends = curl
+	depends = msbuild-stable
+	optdepends = xsp: To run ASP.NET pages directly from monodevelop
+	optdepends = xterm: Default terminal debugger
+	provides = monodevelop
+	provides = monodevelop-debugger-gdb
+	conflicts = monodevelop
+	replaces = monodevelop-debugger-gdb
+	options = !makeflags
+	source = git://github.com/mono/monodevelop.git#tag=monodevelop-7.5.0.1244
+	sha256sums = ce4840f6cba12df9cb20c5bdbf576e8a4745e5206b21ce504e3b769dddddac7f
+
+pkgname = monodevelop-stable-bin
