@@ -1,6 +1,6 @@
 pkgname=mroonga
 pkgver=8.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
 mariadbver=10.1.32
 groongaver=8.0.2
@@ -42,7 +42,7 @@ build() {
     -DWITH_ZLIB=system \
     -DWITH_LZ4=ON \
     -DWITH_SSL=system \
-    -DWITH_PCRE=system \
+    -DWITH_PCRE=bundled \
     -DWITH_LIBWRAP=OFF \
     -DWITH_JEMALLOC=ON \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
