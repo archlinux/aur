@@ -1,18 +1,18 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
+# Maintainer: gspu <bssbk2455[at]gmail[dot]com>
+# Contributor: Previous maintainer's ValHue <vhuelamo at gmail dot com>
 
 pkgname="thunar-megasync"
-pkgver="3.0.1.0"
+pkgver="3.6.5.0"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from Thunar."
 arch=('i686' 'x86_64')
-url="https://mega.co.nz/#sync"
-license=('custom:The Clarified Artistic License')
+url="https://mega.nz/sync"
+license=('MEGA LIMITED CODE REVIEW LICENCE')
 depends=('megasync' 'thunar')
 provides=("${pkgname}")
 
 source=("https://github.com/meganz/MEGAsync/archive/v${pkgver}_Linux.zip")
-sha256sums=('88d5cd14cb4157f4593b005cb7ce37022d1f1d3b5d79eb5362f210ece7031fb8')
+sha256sums=('4ead2b5e9a9a7eae96fd9e1a072a5f1bca4552c21e601ea485d5546d882613db')
 
 build() {
 	cd "MEGAsync-${pkgver}_Linux/src/MEGAShellExtThunar"
