@@ -1,18 +1,19 @@
 pkgbase = perl-test-www-mechanize-psgi
 	pkgdesc = Perl module to test PSGI programs using WWW::Mechanize
-	pkgver = 0.35
+	pkgver = 0.38
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-WWW-Mechanize-PSGI
+	url = https://metacpan.org/release/Test-WWW-Mechanize-PSGI
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-cgi
 	depends = perl
 	depends = perl-plack
 	depends = perl-test-www-mechanize
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Test-WWW-Mechanize-PSGI-0.35.tar.gz
-	md5sums = f8403d6ccdef06aacb9092715e2dde26
+	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Test-WWW-Mechanize-PSGI-0.38.tar.gz
+	md5sums = f052623af9730764ad58c9ac0939edf5
 
 pkgname = perl-test-www-mechanize-psgi
 
