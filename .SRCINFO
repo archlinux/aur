@@ -1,14 +1,14 @@
 pkgbase = kwin-effects-disappear3
 	pkgdesc = KWin effect that animates the disappearing of windows
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/zzag/kwin-effects-disappear3
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
 	depends = kwin
-	source = kwin-effects-disappear3-1.1.tar.gz::https://github.com/zzag/kwin-effects-disappear3/archive/1.1.tar.gz
-	sha256sums = 302d7c1c5174d3ba25a6a5c9fdbb7b5b9d804fa895c6bd36741c4d0af44abac0
+	source = kwin-effects-disappear3-1.2.tar.gz::https://github.com/zzag/kwin-effects-disappear3/archive/1.2.tar.gz
+	sha256sums = 3f945a85dbc30741d99f7a7b6c90f9c7051f30d084342c61c310adf179f62bec
 
 pkgname = kwin-effects-disappear3
 
