@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/electron /usr/share/springseed
+/usr/bin/electron /usr/share/springseed/springseed

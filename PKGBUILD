@@ -3,7 +3,7 @@
 
 pkgname=springseed
 pkgver=2.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Simply awesome note taking"
 
 arch=('arm' 'i686' 'x86_64')
