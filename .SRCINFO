@@ -1,14 +1,12 @@
 pkgbase = cflow
 	pkgdesc = GNU cflow - for diagramming C program flow from sources
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ftp.gnu.org/gnu/cflow/cflow-1.5.tar.xz
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = cflow
-	conflicts = cflow
-	replaces = cflow
 	options = staticlibs
 	options = libtool
 	options = !emptydirs
