@@ -23,7 +23,7 @@ _gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 prepare() {
   cd "$pkgname"
 
-  patch -p1 "$srcdir/config.patch"
+  patch -p1 < "$srcdir/config.patch"
 }
 
 build() {
