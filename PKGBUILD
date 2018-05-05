@@ -1,6 +1,6 @@
 pkgname=john-mpi
 pkgver=1.8.0
-pkgrel=5
+pkgrel=6
 _patchlevel=jumbo-1
 _commit=76109448e1a42e6a900d61ee87d0c9e3b6f76215
 _pkgname=JohnTheRipper
@@ -91,10 +91,9 @@ package() {
     install -Dm755 ${i} ${pkgdir}/usr/bin/${i}
   done
   cd ${pkgdir}/usr/bin
-  ln -s john unafs
-  ln -s john unique
-  ln -s john unshadow
-  ln -s john undrop
+  for link in $(find ${srcdir}/${_pkgname}-${_commit}/run/ -type l); do
+    ln -s john $(basename ${link})
+  done
 }
 sha256sums=('ca8a7099b8f121ee0e3061d8bc0e7c875a8785d5aff74266a354466d9afd548f'
             '432466152dda1bfaae66095ac6d1db48e91c2557e412c799b8c01921b749414a')
