@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.17rc2.r0.g6d08b06e67cd117f69
+pkgver=4.17rc3.r148.g625e2001e99e82ea3e
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            '6d285317d36b06e3b020f355098ebb0975fbfd62e8324c2c98f20e7c78cb5ef2'
+            '47667d50486ca1ae2e544bccef2414e84974651758e20adf63ae77a6e9c9f5e7'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '80ea7d3afaa333572d79fbf39c0370641faea3a013f76747a7465c3a96a58be6')
