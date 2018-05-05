@@ -16,6 +16,8 @@ pkgbase = appleseed
 	depends = openshadinglanguage
 	depends = xerces-c
 	depends = zlib
+	provides = appleseed
+	conflicts = appleseed-git
 	source = https://github.com/appleseedhq/appleseed/archive/1.9.0-beta.tar.gz
 	md5sums = 2843aaf4f4b69088ac6466808b329b27
 

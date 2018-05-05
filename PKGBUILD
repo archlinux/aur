@@ -7,6 +7,8 @@ pkgdesc="physically-based global illumination rendering engine primarily designe
 arch=(x86_64)
 url="http://appleseedhq.net"
 license=('MIT')
+provides=('appleseed')
+conflicts=('appleseed-git')
 depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
 makedepends=(cmake)
 options=()
