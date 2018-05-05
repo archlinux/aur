@@ -1,6 +1,6 @@
 pkgbase = powerline-i3-git
 	pkgdesc = The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager.
-	pkgver = 1.7.15
+	pkgver = 1.7.16
 	pkgrel = 1
 	url = https://github.com/ph111p/powerline
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = powerline-i3-git
 	provides = powerline-i3
 	conflicts = powerline
 	conflicts = python-powerline
-	source = git://github.com/ph111p/powerline.git#tag=1.7.15
+	source = git://github.com/ph111p/powerline.git#tag=1.7.16
 	sha512sums = SKIP
 
 pkgname = powerline-i3-git
