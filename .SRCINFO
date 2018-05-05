@@ -1,7 +1,7 @@
 pkgbase = gvisor-git
 	pkgdesc = User-space kernel, sandboxed container runtime
-	pkgver = 42.b5a0667
-	pkgrel = 2
+	pkgver = r42.b5a0667
+	pkgrel = 1
 	url = https://github.com/google/gvisor
 	arch = x86_64
 	license = Apache-2.0

@@ -2,8 +2,8 @@
 
 _pkgname='gvisor'
 pkgname="${_pkgname}-git"
-pkgver=42.b5a0667
-pkgrel=2
+pkgver=r42.b5a0667
+pkgrel=1
 pkgdesc="User-space kernel, sandboxed container runtime"
 arch=('x86_64')
 url='https://github.com/google/gvisor'
@@ -12,6 +12,11 @@ sha256sums=('SKIP')
 source=("git+https://github.com/google/${_pkgname}")
 provides=('runsc')
 makedepends=('bazel' 'python')
+
+pkgver() {
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
