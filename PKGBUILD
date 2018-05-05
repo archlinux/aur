@@ -8,8 +8,8 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=7.5.0.1222
-pkgrel=2
+pkgver=7.5.0.1244
+pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
