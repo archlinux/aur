@@ -2,16 +2,16 @@
 
 _pyname=filelock
 pkgname="python-$_pyname"
-pkgver=2.0.8
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A platform independent file lock for Python"
 arch=('any')
 url="https://filelock.readthedocs.org/"
-license=('custom:UNLICENSED')
+license=('UNLICENSE')
 depends=('python')
-makedepends=('git')
+makedepends=()
 source=("https://pypi.io/packages/source/f/$_pyname/$_pyname-$pkgver.tar.gz")
-sha256sums=('7e48e4906de3c9a5d64d8f235eb3ae1050dfefa63fd65eaf318cc915c935212b')
+sha256sums=('011327d4ed939693a5b28c0fdf2fd9bda1f68614c1d6d0643a89382ce9843a71')
 
 package() {
   cd "$srcdir/$_pyname-$pkgver"
