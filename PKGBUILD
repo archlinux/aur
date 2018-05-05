@@ -4,6 +4,7 @@
 pkgname='feelpp'
 pkgver=0.104.0
 pkgrel=1
+pkgdesc="Finite Element Embedded Language and Library in C++"
 arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
