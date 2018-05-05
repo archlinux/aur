@@ -2,7 +2,7 @@
 
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
-pkgver=ComputeCpp+0.6.0+30+g4cc789977d
+pkgver=ComputeCpp+0.6.0+31+g0367804e7e
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/lukeiwanski/tensorflow"
@@ -10,6 +10,7 @@ license=('APACHE')
 arch=('x86_64')
 depends=(opencl-icd-loader computecpp)
 makedepends=(git opencl-icd-loader computecpp bazel python-numpy python-pip python-wheel python-setuptools)
+options=(!ccache)
 source=("git+${url}#branch=dev/amd_gpu"
         17508.patch)
 sha512sums=('SKIP'
@@ -26,9 +27,7 @@ prepare() {
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export HOST_CXX_COMPILER=/usr/bin/g++
-  export HOST_C_COMPILER=/usr/bin/gcc
-  export CC_OPT_FLAGS="-march=native -mfpmath=sse -O2 -pipe -fstack-protector-strong"
+  export CC_OPT_FLAGS="${CFLAGS}"
   export TF_CUDA_CLANG=0
   export TF_NEED_CUDA=0
   export TF_NEED_JEMALLOC=0
@@ -45,8 +44,6 @@ prepare() {
   export TF_NEED_OPENCL=1
   export TF_NEED_OPENCL_SYCL=1
   export TF_NEED_COMPUTECPP=1
-  export TF_USE_HALF_SYCL=0
-  export TF_USE_DOUBLE_SYCL=1
   export TF_SYCL_BITCODE_TARGET=spir64
   export COMPUTECPP_TOOLKIT_PATH=/opt/ComputeCpp-CE
   export COMPUTE=:0
