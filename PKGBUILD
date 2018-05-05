@@ -3,7 +3,7 @@
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework."
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
@@ -19,8 +19,9 @@ build() {
   cd build
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DPLUGIN_VIEW_GRANTLEE=1 \
-    -DPLUGIN_CSRFPROTECTION=1 \
+    -DPLUGIN_UWSGI=on \
+    -DPLUGIN_VIEW_GRANTLEE=on \
+    -DPLUGIN_CSRFPROTECTION=on \
     -DCMAKE_INSTALL_PREFIX=/usr ".."
   make
 }
