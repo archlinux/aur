@@ -2,13 +2,15 @@
 
 pkgname=python-click-repl-git
 _pkgname=click-repl
-pkgver=latest
+pkgver=r68.586d4b6
 pkgrel=1
 pkgdesc="Subcommand REPL for click apps."
 arch=('any')
 url="https://github.com/untitaker/${_pkgname}"
 license=('MIT')
 depends=('python-click' 'python-prompt_toolkit')
+provides=('python-click-repl')
+conflicts=('python-click-repl')
 options=(!emptydirs)
 source=("git+https://github.com/untitaker/${_pkgname}.git")
 md5sums=('SKIP')
