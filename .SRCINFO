@@ -1,0 +1,20 @@
+pkgbase = escribe-suite-bin
+	pkgdesc = Evolv eScribe Suite - DNA Management Suite and Ecigstats - INTL Version
+	pkgver = 2_SP15.1
+	pkgrel = 1
+	url = https://forum.evolvapor.com/topic/69197-linux-escribe-suite-beta-thread/
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = gtk2
+	depends = mono
+	depends = gtk-sharp-2
+	source = https://downloads.evolvapor.com/SetupEScribe2_SP15_1_INT.run
+	source = escribe-suite-bin.sh
+	source = escribe-suite-bin.desktop
+	md5sums = 9b037ebf0d7268ef66509166e956a931
+	md5sums = ba5339f0ab83cd4ed4f5022f308b35ef
+	md5sums = 29d238fe04b7866718f6fc758e30c04e
+
+pkgname = escribe-suite-bin
+

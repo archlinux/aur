@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=EScribe Suite
+Comment=DNA Management Suite + ECigStats
+Exec=mono /opt/escribe-suite-bin/EScribe.exe
+Type=Application
+Categories=Tools;
