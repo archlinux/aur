@@ -4,7 +4,7 @@ pkgname=doc-browser-git
 pkgdesc="An API documentation browser with support for DevDocs and Hoogle"
 # pkgver will be updated with pkgver()
 pkgver=NA
-pkgrel=5
+pkgrel=6
 license=('MPL-2.0')
 url="https://github.com/qwfy/doc-browser"
 arch=('x86_64')
@@ -48,4 +48,5 @@ package() {
   install -D -m644 doc-browser.bash-completion "${pkgdir}/etc/bash_completion.d/doc-browser.bash"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/doc-browser/LICENSE"
   install -D -m644 doc-browser.desktop "${pkgdir}/usr/share/applications/doc-browser.desktop"
+  install -D -m644 icon.svg "${pkgdir}/usr/share/icons/doc-browser.svg"
 }
