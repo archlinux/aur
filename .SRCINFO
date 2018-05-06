@@ -1,20 +1,20 @@
 pkgbase = quaternion
 	pkgdesc = Qt5-based IM client for the Matrix protocol
-	pkgver = 0.0.5
-	pkgrel = 3
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://matrix.org/docs/projects/client/quaternion.html
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = qt5-base
 	depends = qt5-declarative
-	depends = qt5-quickcontrols
+	depends = hicolor-icon-theme
 	provides = quaternion
-	conflicts = quaternion
-	source = https://github.com/QMatrixClient/Quaternion/archive/v0.0.5.tar.gz
-	source = https://github.com/QMatrixClient/libqmatrixclient/archive/v0.2-q0.0.5.tar.gz
-	sha256sums = ece45e3c483d3c6ed480dcd4b07221465db6e010c154e343e77c2a55dfebba9c
-	sha256sums = b955bdddd7b5a33403e92ab4a3c25988e55a105fe640d6cbfd37a6059b7382f0
+	conflicts = quaternion-git
+	source = https://github.com/QMatrixClient/Quaternion/archive/v0.0.9.tar.gz
+	source = https://github.com/QMatrixClient/libqmatrixclient/archive/v0.2.1.tar.gz
+	sha256sums = 0f471051abf31acdd70a80de3b731775d4d8ad4fbe45f4d72371fc7229321b16
+	sha256sums = 615f52f29b0958a633587846bd9f8ff711cc58f7e0fbb98ea485e0746d7f01a3
 
 pkgname = quaternion
 
