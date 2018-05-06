@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.tads.org/frobtads.htm"
 license=('custom: freeware')
 depends=('ncurses' 'curl')
+makedepends=('git')
 #groups=(tads)
 source=(https://github.com/realnc/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('d4a5b8863664998fb989f3fdd2f63de6')

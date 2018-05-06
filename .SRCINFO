@@ -6,6 +6,7 @@ pkgbase = frobtads
 	arch = i686
 	arch = x86_64
 	license = custom: freeware
+	makedepends = git
 	depends = ncurses
 	depends = curl
 	source = https://github.com/realnc/frobtads/releases/download/1.2.4/frobtads-1.2.4.tar.bz2
