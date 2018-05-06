@@ -7,11 +7,12 @@ pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
 url="https://github.com/pimutils/todoman"
-license=('MIT')
+license=('ISC')
 depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm
          python-configobj python-dateutil python-tabulate python-humanize)
-optdepends=('python-click-repl-git: the repl command.')
+optdepends=('python-click-repl: the repl command.'
+            'bash-completion: bash autocompletion.')
 checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
               'python-freezegun' 'python-pytest-cov')
 conflicts=("todoman")
@@ -44,4 +45,7 @@ package() {
     "$pkgdir/usr/share/doc/todoman/examples/todoman.conf"
 
   install -Dm 755 bin/todo "$pkgdir/usr/bin/todo"
+
+  install -Dm 644 contrib/completion/bash/_todo \
+    "$pkgdir/usr/share/bash-completion/completions/todo"
 }
