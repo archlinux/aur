@@ -1,32 +1,41 @@
 # CPAN Name  : Object::Declare
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-object-declare
-pkgver=0.22
-pkgrel=2
+pkgver=0.23
+pkgrel=1
 pkgdesc='Perl package providing a declarative object constructor'
 arch=('any')
-url='http://search.cpan.org/dist/Object-Declare'
+url='https://metacpan.org/release/Object-Declare'
 license=('MIT')
-depends=('perl' 'perl-sub-override')
-source=(http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Object-Declare-0.22.tar.gz)
+depends=('perl-sub-override')
+makedepends=('perl-module-build>=0.28')
+source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Object-Declare-0.23.tar.gz)
 options=(!emptydirs)
-md5sums=('9607cd7b485bd7e01c3286f1dd8df187')
+md5sums=('b91262eb8c0c1d6450e0e584a005ad8f')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
+}
 
 build() {
-	cd Object-Declare-0.22
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	cd Object-Declare-0.23
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Object-Declare-0.22
+	cd Object-Declare-0.23
+	sanitize
 	make test
 }
 
 package() {
-	cd Object-Declare-0.22
+	cd Object-Declare-0.23
+	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
