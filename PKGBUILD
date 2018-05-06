@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/jwilm/$_pkgname"
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 source=("git+https://github.com/jwilm/$_pkgname.git")
 md5sums=('SKIP')
 

@@ -5,6 +5,7 @@ pkgbase = racerd-git
 	url = https://github.com/jwilm/racerd
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
 	source = git+https://github.com/jwilm/racerd.git
