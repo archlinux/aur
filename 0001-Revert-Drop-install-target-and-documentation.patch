@@ -1,12 +1,13 @@
-From e64d123386aabf9884dccabce197855aa7338ddd Mon Sep 17 00:00:00 2001
-From: Anatol Pomozov <anatol.pomozov@gmail.com>
-Date: Tue, 8 Mar 2016 08:45:34 -0800
-Subject: [PATCH] Revert "Drop "install" target and documentation."
+commit 877200d30e2f044a5c6df47e37cf7adb01fdefd6
+Author: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date:   Sun Jan 10 18:58:44 2016 -0800
 
-This partially reverts commit 7c1cd2e5cd3f3d1193ee375b46cfd8afaccb89f7.
----
+    Revert "Drop "install" target and documentation."
+    
+    This reverts commit 7c1cd2e5cd3f3d1193ee375b46cfd8afaccb89f7.
+
 diff --git a/Makefile b/Makefile
-index d93efea..8476bd1 100644
+index 6929769d..2ae85c23 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -23,6 +23,13 @@ PREFIX		?= arm-none-eabi
@@ -23,7 +24,7 @@ index d93efea..8476bd1 100644
  space:=
  space+=
  SRCLIBDIR:= $(subst $(space),\$(space),$(realpath lib))
-@@ -64,6 +71,22 @@ $(LIB_DIRS): $(IRQ_DEFN_FILES:=.genhdr)
+@@ -70,6 +77,21 @@ $(LIB_DIRS): $(IRQ_DEFN_FILES:=.genhdr)
  lib: $(LIB_DIRS)
  	$(Q)true
  
@@ -40,16 +41,14 @@ index d93efea..8476bd1 100644
 +	@printf "  INSTALL ldscripts\n"
 +	$(Q)$(INSTALL) -m 0644 lib/*.ld $(LIBDIR)
 +	$(Q)$(INSTALL) -m 0644 lib/efm32/*/*.ld $(LIBDIR)
-+	@printf "  INSTALL scripts\n"
 +
 +
  html doc:
  	$(Q)$(MAKE) -C doc html
  
-@@ -106,4 +129,4 @@ genlinktests: $(LDTESTS:.data=.ldtest)
+@@ -114,4 +136,4 @@ genlinktests.clean:
  	fi;
  
  
--.PHONY: build lib $(LIB_DIRS) doc clean generatedheaders cleanheaders stylecheck genlinktests
-+.PHONY: build lib $(LIB_DIRS) install doc clean generatedheaders cleanheaders stylecheck genlinktests
-
+-.PHONY: build lib $(LIB_DIRS) doc clean generatedheaders cleanheaders stylecheck genlinktests genlinktests.clean
++.PHONY: build lib $(LIB_DIRS) install doc clean generatedheaders cleanheaders stylecheck genlinktests genlinktests.clean

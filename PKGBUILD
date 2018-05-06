@@ -1,7 +1,7 @@
 # Maintainer: Martin Schmölzer <mschmoelzer@gmail.com>
 
 pkgname=libopencm3-git
-pkgver=r2054.3922cc7d
+pkgver=r2167.dc64929b
 pkgrel=1
 pkgdesc='Open Source firmware library for various ARM Cortex microcontrollers'
 arch=(any)
@@ -12,7 +12,7 @@ options=(!strip staticlibs !buildflags)
 source=(git://github.com/libopencm3/libopencm3.git
         0001-Revert-Drop-install-target-and-documentation.patch)
 sha256sums=('SKIP'
-            '2fe07ae84b02c4e9aefb8a0915a611e9da54bbeae11c7454c059e56a7283b4fa')
+            '73d9a5f007e7e61a71b28dedb41fdfe88e976c1aa2c728f34bd0b5049b6d30fe')
 
 pkgver() {
   cd libopencm3
