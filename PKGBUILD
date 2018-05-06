@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.3r20180110.2f7c1cf1e
+pkgver=5.3r20180504.10411
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ _gitname="gnuplot-main"
 pkgver() {
   cd $_gitname
   printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') \
-	 "$(git rev-parse --short HEAD)"
+	 "$(git rev-list --count HEAD)"
 }
 
 prepare() {
