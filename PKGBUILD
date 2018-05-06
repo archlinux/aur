@@ -17,22 +17,22 @@
 pkgbase="spl-linux-zen-git"
 pkgname=("spl-linux-zen-git" "spl-linux-zen-git-headers")
 
-pkgver=2018.04.16.r1072.73d08ac.4.16.4.1
+pkgver=2018.05.02.r1073.84a80d5.4.16.6.1
 pkgrel=1
-makedepends=("linux-zen-headers=4.16.4-1" "git")
+makedepends=("linux-zen-headers=4.16.6-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=73d08ace523fc3964852e4e82eae3f2db70354d4")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=84a80d5f2d14fdfd16d440eef2e3d6e756a1165c")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.04.16.r1072.73d08ac" "kmod" "linux-zen=4.16.4-1")
+depends=("spl-utils-common-git=2018.05.02.r1073.84a80d5" "kmod" "linux-zen=4.16.6-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.16.4-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.16.4-1-zen/build \
+                --with-linux=/usr/lib/modules/4.16.6-1-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.16.6-1-zen/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-zen-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.16.4-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.16.6-1-zen/Module.symvers
 }
