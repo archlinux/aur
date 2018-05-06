@@ -8,7 +8,7 @@ url='https://github.com/nroi/cpcache'
 license=('MIT')
 makedepends=('erlang-nox' 'elixir')
 install="${pkgname%-git}.install"
-backup=('etc/cpcache.toml')
+backup=('etc/cpcache/cpcache.toml')
 source=('git+https://github.com/nroi/cpcache.git'
         'sysuser.conf'
         'cpcache.install'
