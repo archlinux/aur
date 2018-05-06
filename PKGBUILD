@@ -71,7 +71,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://pfactum.github.io/pf-kernel"
 license=('GPL2')
@@ -529,7 +529,6 @@ package_linux-pf-headers() {
   chmod og-w -R "${_builddir}/scripts"
   mkdir -p "${_builddir}/.tmp_versions"
 
-  echo $arch
   install -D -m644 arch/${KARCH}/Makefile "${_builddir}/arch/${KARCH}/"
 
   if [ "${CARCH}" = "i686" ]; then
@@ -561,7 +560,7 @@ package_linux-pf-headers() {
   fi
   
   # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}/{fs/xfs,mm}"
+  mkdir -p "${_builddir}/"{fs/xfs,mm}
 
   # copy in Kconfig files
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
