@@ -2,8 +2,8 @@
 
 _npmname=soccer-go
 pkgname=nodejs-soccer-go 
-pkgver=0.3.4
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="soccer-go is a node command line application to gather soccer stats and results"
 arch=('any')
 url="https://github.com/acifani/soccer-go"
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=(c1f534aaf0bff0388a042af4a2b352b2833ec46117cc6657a95fd5bade006ae9)
+sha256sums=(8bc9ba5779bc8175b244cd885a802d7867efbe1ea21b03c3ec97e8a8012ea873)
 
 package() {
   cd $srcdir
@@ -22,6 +22,6 @@ package() {
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 
   # fix perms
-  chmod 755 ${pkgbuild}/usr/bin
+  chmod 755 ${pkgdir}/usr/bin
   find ${pkgdir}/usr/lib/node_modules/ -type d -exec chmod 755 {} +
 }
