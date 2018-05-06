@@ -1,0 +1,14 @@
+pkgbase = kwin-effects-unminimize1
+	pkgdesc = KWin effect that animates the unminimizing of windows
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/zzag/kwin-effects-unminimize1
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = kwin
+	source = kwin-effects-unminimize1-1.2.tar.gz::https://github.com/zzag/kwin-effects-unminimize1/archive/1.2.tar.gz
+	sha256sums = 6f4c76626d72c32586d35be58a46945fe3803cdf2e2e82cf96a14b310b76684a
+
+pkgname = kwin-effects-unminimize1
+
