@@ -2,7 +2,7 @@
 
 pkgname=moolticute
 pkgver=0.12.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
 url="https://github.com/mooltipass/moolticute"
@@ -22,7 +22,7 @@ sha256sums=('3876373aafbf11932ecdf600d6103c586355f14c0ec837ce31889d43cfa38ced')
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    sed -i "s/#define APP_VERSION \"git\"/#define APP_VERSION \"${pkgver}\"/" ./src/version.h
+    sed -i "s/#define APP_VERSION \"git\"/#define APP_VERSION \"v${pkgver}\"/" ./src/version.h
 }
 
 build() {
