@@ -11,7 +11,7 @@ groups=('base-devel')
 depends=('clang'
 'lld'
 'squashfs-tools'
-'python-elftools'
+'python-pyelftools'
 'python-lz4')
 makedepends=('git'
 'cmake')
