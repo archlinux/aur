@@ -14,7 +14,7 @@ sha256sums=(
   'SKIP'
   '4fab0f70309ed9d784d6465c841d2689b1ae1492b1791750f294749aaf8b4289'
 )
-depends=('python' 'inotify-tools' 'curl' 'sed' 'procps-ng' 'coreutils')
+depends=('python' 'curl' 'sed' 'procps-ng' 'coreutils')
 
 package() {
     cd "$srcdir/${pkgname%-git}"

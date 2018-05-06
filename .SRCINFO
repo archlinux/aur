@@ -6,7 +6,6 @@ pkgbase = clyde-client-git
 	arch = any
 	license = MIT
 	depends = python
-	depends = inotify-tools
 	depends = curl
 	depends = sed
 	depends = procps-ng
