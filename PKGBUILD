@@ -12,7 +12,7 @@ makedepends=('git')
 optdepends=("acpi: showbatteryload support" "tree: fs support")
 conflicts=('bashstyle')
 provides=('bashstyle')
-source=("git://github.com/Nanolx/bashstyle-ng.git")
+source=('git+https://github.com/Nanolx/bashstyle-ng.git')
 md5sums=('SKIP')
 
 pkgver() {
