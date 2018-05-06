@@ -1,6 +1,6 @@
 pkgbase = dxvk-bin
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine (binary files)
-	pkgver = 0.42
+	pkgver = 0.50
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dxvk-bin
 	depends = wine>=3.5
 	provides = dxvk
 	conflicts = dxvk-git
-	source = https://github.com/doitsujin/dxvk/releases/download/v0.42/dxvk-0.42.tar.gz
-	sha256sums = d58d54d72f64933d5d89384e133529412a80affceb5bd7463bc8c3263bbe1b92
+	source = https://github.com/doitsujin/dxvk/releases/download/v0.50/dxvk-0.50.tar.gz
+	sha256sums = 8ef8f2ef0575e926beae263664bce5a4a2d5fe08c1cecb7ecd0daf91c48e869e
 
 pkgname = dxvk-bin
 
