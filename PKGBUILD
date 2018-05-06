@@ -1,14 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('python-sqlalchemy-git' 'python2-sqlalchemy-git')
-pkgver=1.2.0rc11294.1abc8e550
-pkgrel=2
+pkgver=1.2.0rc11472.70f8f6a16
+pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
 url="http://www.sqlalchemy.org"
 license=('custom:MIT')
-depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python' ' python2' 'python-setuptools')
 source=("git+https://bitbucket.org/zzzeek/sqlalchemy.git")
 md5sums=('SKIP')
 
@@ -32,6 +31,7 @@ build() {
 package_python-sqlalchemy-git() {
   provides=("python-sqlalchemy=$pkgver")
   conflicts=('python-sqlalchemy')
+  depends=('python')
   cd sqlalchemy
   python setup.py install --root="$pkgdir"
   install -D -m644 LICENSE \
@@ -41,6 +41,7 @@ package_python-sqlalchemy-git() {
 package_python2-sqlalchemy-git() {
   provides=("python2-sqlalchemy=$pkgver")
   conflicts=('python2-sqlalchemy')
+  depends=('python2')
   cd sqlalchemy2
   python2 setup.py install --root="$pkgdir"
   install -D -m644 LICENSE \
