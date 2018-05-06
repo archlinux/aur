@@ -2,7 +2,7 @@
 
 pkgname=flashrom-chromeos
 pkgdesc='Flashrom with Chromium project modifications'
-pkgver=66.10452
+pkgver=67.10575
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('custom:chromiumos')
 depends=(libftdi-compat pciutils)
 makedepends=(dtc)
 optdepends=('dmidecode: for SMBIOS/DMI table decoder support')
-source=(https://chromium.googlesource.com/chromiumos/third_party/flashrom/+archive/refs/heads/$_tag.tar.gz)
+source=(https://chromium.googlesource.com/chromiumos/third_party/flashrom/+archive/$_tag.tar.gz)
 sha1sums=('SKIP')
 
 build() {
