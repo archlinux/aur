@@ -17,7 +17,6 @@ build(){
   python setup.py build
 }
 
-
 package(){
   cd "typed_ast-$pkgver"
   python setup.py install --prefix="usr/" --root="$pkgdir/" --optimize=1 --skip-build
