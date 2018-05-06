@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=1.4.27
+pkgver=1.4.28
 pkgrel=1
 epoch=
 pkgdesc="Advanced Gtk+ Sequencer"
@@ -27,7 +27,7 @@ changelog=
 source=("https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.tar.gz"
         "https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.patch")
 noextract=()
-md5sums=('b5d93a56d5885f294d87b7b5abd3172a' '65ec508f55ffc2fbab3cbe61276a3f8d')
+md5sums=('448931c6ef705cdc76512265898f5272' '65ec508f55ffc2fbab3cbe61276a3f8d')
 validpgpkeys=()
 
 prepare() {
