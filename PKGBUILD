@@ -16,6 +16,7 @@ optdepends=(
   'rfcat-hg: for rfcat plugin'
   'gnuradio: for USRP gnuradio backend'
   'gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)'
+  'python-pyaudio: for soundcard support (use soundcard as SDR)'
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/jopohl/urh/tarball/v$pkgver)
