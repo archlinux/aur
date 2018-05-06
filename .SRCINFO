@@ -1,6 +1,6 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch
-	pkgver = 2.10.0.r420.gd7db7f2057
+	pkgver = 2.10.0.r423.gc6783e2e02
 	pkgrel = 1
 	url = http://www.gimp.org
 	arch = i686
@@ -50,7 +50,7 @@ pkgbase = gimp-gtk3-git
 	provides = gimp
 	conflicts = gimp
 	options = !libtool
-	source = git+https://git.gnome.org/browse/gimp#branch=gtk3-port
+	source = git+https://git.gnome.org/browse/gimp#commit=c6783e2e02c97b70e7189a7c71f1802b15d44f3a
 	source = linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp
 	md5sums = SKIP
 	md5sums = bb27bc214261d36484093e857f015f38
