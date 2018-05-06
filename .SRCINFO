@@ -1,6 +1,6 @@
 pkgbase = lib32-libprotobuf
 	pkgdesc = A language-neutral, platform-neutral extensible mechanism for serializing structured data.
-	pkgver = v3.5.1.1
+	pkgver = v3.5.2
 	pkgrel = 2
 	url = https://developers.google.com/protocol-buffers/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = lib32-libprotobuf
 	makedepends = unzip
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	source = https://github.com/google/protobuf/archive/v3.5.1.1.zip
-	md5sums = SKIP
+	source = https://github.com/google/protobuf/archive/v3.5.2.zip
+	sha256sums = 7404d040865a031e80c2810cd9453eafefb2bbbf5f5f9a282b1d071d8e12c4bf
 
 pkgname = lib32-libprotobuf
 
