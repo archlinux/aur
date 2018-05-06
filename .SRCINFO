@@ -1,0 +1,33 @@
+pkgbase = discord-canary-updater
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://discordapp.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
+	depends = libc++
+	depends = xdg-utils
+	depends = xterm
+	depends = curl
+	optdepends = libpulse: For pulseaudio support
+	optdepends = noto-fonts-emoji: Google font for emoji support.
+	optdepends = ttf-symbola: Font for emoji support.
+	provides = discord
+	conflicts = discord-canary
+	source = discord-canary.sh
+	source = discord-canary.desktop
+	source = discord-canary.png
+	sha256sums = 04a20be856bb6d95db364680ac594a6247a30ccfa1ea1c57be40aae461397090
+	sha256sums = e554dbc5d8b4e6753e9a921336508d051af575c2d77b96be9e3f72a5f4ca837a
+	sha256sums = 2ecdfa8a65dad1945a9b6be43aab7684d3fd27b18c26d45e3c5fc75fd8c7b509
+
+pkgname = discord-canary-updater
+
