@@ -1,11 +1,12 @@
 pkgbase = gfzrnx-bin
 	pkgdesc = RINEX GNSS Data Conversion and Manipulation Toolbox
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://semisys.gfz-potsdam.de/semisys/scripts/download/index.php
 	arch = x86_64
 	groups = GNSS
 	provides = gfzrnx
+	options = !strip
 	source = http://semisys.gfz-potsdam.de/semisys/software/gfzrnx/1.10/gfzrnx_lx
 	md5sums = 129804b45837ec75d3a7186064a2a973
 
