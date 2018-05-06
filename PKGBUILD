@@ -1,21 +1,25 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# shellcheck disable=2034
+# shellcheck disable=2148
 
 pkgname=scalafmt
-pkgver=0.6.8
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=(any)
 url="https://olafurpg.github.io/scalafmt/"
 license=('Apache')
 depends=('java-environment' 'bash')
-
-source=("$pkgname-$pkgver.tar.gz::https://github.com/scalameta/scalafmt/releases/download/v$pkgver/scalafmt.tar.gz"
-        scalafmt.sh)
+makedepends=('coursier')
 
 package() {
-  install -Dm644 $srcdir/cli/target/scala-2.11/scalafmt.jar $pkgdir/usr/share/java/scalafmt/scalafmt.jar
-  install -Dm755 $srcdir/scalafmt.sh                        $pkgdir/usr/bin/scalafmt
-}
+  # shellcheck disable=2154
+  mkdir -p "$pkgdir"/usr/bin
 
-md5sums=('5e68ad7ac298acb23fdf489836f32e5f'
-         '85c5625e53067977576925c9dfc0c553')
+  coursier \
+    bootstrap com.geirsson:scalafmt-cli_2.12:"$pkgver" \
+    -r bintray:scalameta/maven \
+    -o "$pkgdir"/usr/bin/scalafmt \
+    --standalone \
+    --main org.scalafmt.cli.Cli
+}
