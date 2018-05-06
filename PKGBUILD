@@ -1,12 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=soundcloud-dl-git
-pkgver=v1.3.3b1.r100.g5a41cf2
+pkgver=v1.3.3b1.r128.g7f0b1c9
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
 arch=(any)
 depends=(
+	python-certify
 	python-clint
 	python-docopt
 	python-fudge
