@@ -7,7 +7,7 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.018_02
+pkgver=2.019
 pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ optdepends=(
 source=(https://cpan.metacpan.org/authors/id/C/CH/CHM/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('897e4c0729b441322faaf1e983ecc8c5'
+md5sums=('fa6f4915cff135fdeae8200aee2f34e9'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
