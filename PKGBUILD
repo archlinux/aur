@@ -1,23 +1,23 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-beta-bin
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
 license=(GPL3)
-depends=(gksu mono openvpn curl)
+depends=(mono openvpn curl)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-bin')
 install=airvpn.install
 source_i686=("airvpn_linux_x86_debian_${pkgver}_experimental.deb"::'https://airvpn.org/eddie/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=experimental')
 source_x86_64=("airvpn_linux_x64_debian_${pkgver}_experimental.deb"::'https://airvpn.org/eddie/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=experimental')
-md5sums_i686=('c4b51e9f92f72e00b9fec0905dc72581')
-md5sums_x86_64=('b62b6363109a2b7665cf4e687b66c32f')
-sha256sums_i686=('d7068dd01c0a4c51f7eedd1b37d951e07e2774df59e0388f92cc47c2e7946b82')
-sha256sums_x86_64=('24701c23bf2a159bacf281891f19386381796f01df774dc7cb61b21440cc622f')
+md5sums_i686=('4d3a98432e5d693cb50cb07c41480232')
+md5sums_x86_64=('da67e17b8f98702801e635a112cd71a6')
+sha256sums_i686=('60719a941ad74cdb200ad4f938fe0f8fe328d791ec29d6f0361f14f1805267b8')
+sha256sums_x86_64=('e727591fdc5411ccaad12c780ba05413a9285ad7e95f46aa96151cbe4fedbffe')
 
 package() {
   cd "$srcdir"
