@@ -9,7 +9,8 @@ pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttl
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'nodejs-lts-carbon' 'npm' 'alsa-lib' 'nss')
+depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss')
+makedepends=('nodejs-lts-carbon' 'npm')
 options=(!strip)
 source=(
 "https://github.com/ssbc/${_upstream}/archive/v${pkgver}.tar.gz"
