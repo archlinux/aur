@@ -1,7 +1,7 @@
 # Maintainer: Carlos Mogas da Silva <r3pek@r3pek.org>
 
 pkgname=docker-machine-driver-hetzner
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Hetzner driver for Docker Machine "
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('docker-machine')
 makedepends=('go' 'git')
 source=("https://github.com/jonasprogrammer/$pkgname/archive/${pkgver}.tar.gz")
-sha256sums=('742f79066c6a23f29a47e8e653352eb829f133c282f32a11ef444d41aa62a382')
+sha256sums=('1f9621c2dda60da74d73b9384d63d57c48a51dc405b4beb9f64584cf134401e1')
 
 prepare() {
   mkdir -p "$srcdir/src/github.com/jonasprogrammer/"
