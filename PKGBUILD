@@ -4,7 +4,7 @@
 
 pkgname=gimp-gtk3-git
 pkgver=2.10.0.r423.gc6783e2e02
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
@@ -23,7 +23,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 	    'curl: for URI support'
 	    'xorg-server-xvfb: for xvfb-run'
 	    'ghostscript: for postscript support')
-options=('!libtool')
+options=('!libtool' '!makeflags')
 provides=("gimp")
 conflicts=("gimp")
 source=(git+https://git.gnome.org/browse/gimp#commit=c6783e2e02c97b70e7189a7c71f1802b15d44f3a 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp'
