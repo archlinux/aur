@@ -3,8 +3,8 @@
 
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
-pkgver=65.0.3325.181
-pkgrel=3
+pkgver=66.0.3359.139
+pkgrel=1
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -25,10 +25,10 @@ source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-b
 noextract=("ungoogled-chromium-common.deb"
            "ungoogled-chromium-driver.deb"
            "ungoogled-chromium-widevine.deb")
-sha256sums=("bbfe1c3e142d51bfda93955d2dd31edce835617777c7c0ab81f08e3889d4754f"
-            "d82738a78e535905a9507ab6cd2f1d4b74d1e1e88fa9d4fd3a8a430ded46e15f"
-            "015406b4362c54b6df712e42dcac1c63db7ae577509d65464c9196b7c5edca43"
-            "46a1b7bae44134eafe0531aa4d3e786c99101fefd973e2afa1f991d8097fa8e0"
+sha256sums=("ccaab2c4e395167de8a92288086b4f91ed9ff55c3a53ce966a1a17acbd3eb6df"
+            "ff2a7191bd3e9dd2ff4cf6d6b70184d26731cdf3ef83c4f8dd561d1c4438c2ad"
+            "e207b7a5fa7b0f35f6e7391d5544f4b088ff7da39c472d81c64f0983cff6c64f"
+            "62df3521f265a9333b6f41629baf888863e854966bd3954f27c94ad637514e58"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1")
 
 declare -ga _debfiles=("common" "driver" "widevine")
@@ -80,8 +80,12 @@ package() {
 
     # Needed symlinks
     ln -s /usr/lib/libre2.so.0.0.0 ${pkgdir}/usr/lib/libre2.so.3
-    ln -s /usr/lib/libwebp.so.7.0.1 ${pkgdir}/usr/lib/libwebp.so.6
-    ln -s /usr/lib/libwebpmux.so.3.0.1 ${pkgdir}/usr/lib/libwebpmux.so.2
+    ln -s /usr/lib/libwebp.so.7.0.2 ${pkgdir}/usr/lib/libwebp.so.6
+    ln -s /usr/lib/libwebpmux.so.3.0.2 ${pkgdir}/usr/lib/libwebpmux.so.2
+    ln -s /usr/lib/libvpx.so.5.0.0 ${pkgdir}/usr/lib/libvpx.so.4
+
+    # Add link to chromedriver
+    ln -s /usr/lib/chromium/chromedriver ${pkgdir}/usr/bin/chromedriver
 
     # Chromium won't start without correct permissions
     chmod 4755 ${pkgdir}/usr/lib/chromium/chrome-sandbox
