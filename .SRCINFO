@@ -1,0 +1,17 @@
+pkgbase = tungsten-renderer-git
+	pkgdesc = High performance physically based renderer
+	pkgver = r963.deaf069
+	pkgrel = 1
+	url = https://github.com/tunabrain/tungsten
+	arch = x86_64
+	license = GPL
+	makedepends = gcc<8.1.0-1
+	makedepends = cmake
+	makedepends = git
+	provides = tungsten-renderer
+	conflicts = tungsten-renderer
+	source = tungsten::git+https://github.com/tunabrain/tungsten#branch=master
+	sha512sums = SKIP
+
+pkgname = tungsten-renderer-git
+
