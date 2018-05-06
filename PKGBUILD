@@ -1,7 +1,6 @@
-# Maintainer: strata <strata@dropswitch.net>
 pkgname=lrexlib-pcre5.1
-pkgver=2.7.2
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="PCRE Library for Lua 5.1"
 arch=('i686' 'x86_64')
 url="http://rrthomas.github.com/lrexlib/"
@@ -19,4 +18,3 @@ package() {
     "${pkgdir}/usr/lib/lua/5.1/rex_pcre.so"
 }
 
-# vim:set ts=2 sw=2 et:
