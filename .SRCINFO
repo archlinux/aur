@@ -1,0 +1,33 @@
+pkgbase = discord-updater
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://discordapp.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
+	depends = libc++
+	depends = xdg-utils
+	depends = xterm
+	depends = curl
+	optdepends = libpulse: For pulseaudio support
+	optdepends = noto-fonts-emoji: Google font for emoji support.
+	optdepends = ttf-symbola: Font for emoji support.
+	provides = discord
+	conflicts = discord
+	source = discord.sh
+	source = discord.desktop
+	source = discord.png
+	sha256sums = 7aa198b1e0caf352dc30bdbf474846399b3a245cbf6d235db5ac66327758040e
+	sha256sums = 6d2adfd530398b012c805d4721f33f197f839ebda55c2cbc28d06a8addb8e5a9
+	sha256sums = 21742e243c6c7a93529f4bf1d34571c8d78a29e946057c54b362b405907e1b6b
+
+pkgname = discord-updater
+
