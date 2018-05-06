@@ -5,5 +5,5 @@ post_install() {
 
 post_upgrade() {
   systemctl daemon-reload
-  systemctl try-restart aksusbd winehasp hasplmd
+  systemctl try-restart aksusbd hasplmd
 }

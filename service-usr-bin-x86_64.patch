@@ -1,0 +1,22 @@
+--- a/var/hasplm/init/aksusbd_x86_64.service
++++ b/var/hasplm/init/aksusbd_x86_64.service
+@@ -5,7 +5,7 @@
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/aksusbd_x86_64
++ExecStart=/usr/bin/aksusbd_x86_64
+ 
+ [Install]
+ WantedBy=multi-user.target
+--- a/var/hasplm/init/hasplmd_x86_64.service
++++ b/var/hasplm/init/hasplmd_x86_64.service
+@@ -5,7 +5,7 @@
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/hasplmd_x86_64 -s
++ExecStart=/usr/bin/hasplmd_x86_64 -s
+ 
+ [Install]
+ WantedBy=multi-user.target
