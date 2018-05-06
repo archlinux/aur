@@ -14,7 +14,7 @@ makedepends=(intltool gobject-introspection git docbook-xsl xmlto libdwarf)
 checkdepends=(python2 valgrind)
 replaces=('flatpak<0.9.10')
 provides=('flatpak-builder')
-conflicts=('flatpak')
+conflicts=('flatpak-builder')
 source=("flatpak-builder::git+https://github.com/flatpak/flatpak-builder"
         "git+https://git.gnome.org/browse/libglnx")
 sha256sums=('SKIP'
