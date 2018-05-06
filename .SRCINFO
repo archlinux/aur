@@ -1,0 +1,17 @@
+pkgbase = budgie-workspaces-compact-applet
+	pkgdesc = Compact Workspace Switcher for Budgie Desktop
+	pkgver = 0.0.0.56e63d6
+	pkgrel = 1
+	url = https://github.com/dgaw/budgie-workspaces-compact
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = budgie-desktop
+	depends = libwnck3
+	depends = python
+	depends = python-gobject
+	source = budgie-workspaces-compact-applet::git+https://github.com/dgaw/budgie-workspaces-compact.git#commit=56e63d65ccd5bd8da38608d3d895e56e4187e0d5
+	sha512sums = SKIP
+
+pkgname = budgie-workspaces-compact-applet
+
