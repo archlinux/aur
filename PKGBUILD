@@ -3,12 +3,12 @@
 
 pkgname=fahcontrol-beta
 pkgver=7.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc='A Graphical User Interface (GUI) for Folding@Home - Beta version'
 url="http://folding.stanford.edu"
 arch=('x86_64')
 license=('GPL3')
-depends=('gtk2' 'python2' 'pygtk' 'glib2' 'pango' 'foldingathome=7.4.16')
+depends=('gtk2' 'python2' 'pygtk' 'glib2' 'pango' 'foldingathome=7.4.17')
 options=('!docs' '!libtool')
 conflicts=('fahcontrol')
 provides=('fahcontrol=7.4.17')
