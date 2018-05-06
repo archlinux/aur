@@ -7,7 +7,7 @@ pkgdesc='A privacy oriented firewall application (Daemon, CLI & GUI).'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/peerguardian/'
 license=('GPL3')
-depends=('bash' 'systemd' 'dbus' 'coreutils' 'procps-ng' 'logrotate' 'wget' 'iptables' 'libnetfilter_queue' 'qt5-base' 'whois')
+depends=('bash' 'systemd' 'dbus' 'coreutils' 'procps-ng' 'logrotate' 'wget' 'iptables' 'libnetfilter_queue' 'cron' 'qt5-base' 'whois')
 optdepends=('unzip: for zipped blocklists'
 	    'p7zip: for 7z blocklists'
       	    'net-tools: to whitelist local IP addresses'
@@ -43,7 +43,7 @@ build() {
     cd code
 
     ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var --datarootdir=/usr/share \
-    		--with-piddir=/run --with-systemd --disable-cron --without-initddir
+    		--with-piddir=/run --with-systemd --without-initddir
     make
 }
 
