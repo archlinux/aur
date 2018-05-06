@@ -91,7 +91,7 @@ package() {
 	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
 	# Compiled binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/net461"
+	cd "$srcdir/osu/osu.Desktop/bin/Release/net471"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for binary in *.exe *.dll; do
 		install -m755 "$binary" "$pkgdir/usr/lib/${pkgname%-git}/$binary"
