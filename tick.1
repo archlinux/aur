@@ -1,4 +1,4 @@
-.TH TICK "1" "May 2018" "Tick 1.14.0" "User Commands"
+.TH TICK "1" "May 2018" "Tick 1.14.1" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -29,8 +29,8 @@ You may also specify the share price instead of the total amount you spent by ap
 [check] [symbol/crypto_id/sort_option]
 Prints information about your current portfolio holdings. To print all of your holdings alphabetically as well as a
 grand total, no additional arguments besides "check" need to be used. Optionally, you may use the options "-a" to print
-alphabetically, "-v" to print by value, "-p" toprint by profit, or "-1" to print by one day profit. To print information
-about a single security, use the ticker or crypto id as an argument after "check".
+alphabetically, "-v" to print by value, "-p" to print by profit, "-1" to print by one day profit, or "-7" to print by
+seven day profit. To print information about a single security, use the ticker or crypto id as an argument after "check".
 
 .TP
 [encrypt/decrypt]
@@ -76,6 +76,7 @@ $ tick check tsla
 Or to get info about all your holdings, run
 .RS
 $ tick check
+
 .RE
 or to sort by value
 .RS

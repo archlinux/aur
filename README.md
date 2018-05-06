@@ -42,10 +42,10 @@ To get info about your current holdings, run
 $ tick check [symbol/crypto_id/sort_option]
 ```
 Running "check" with no other arguments will list your entire portfolio
-as well as produce a grand total. Adding the argument "-v", "-p", or "-1"
-will sort the output by value, profit, or one day profit. To check a single
-security, use the symbol or crypto_id as the argument instead of sort
-options.
+as well as produce a grand total. Adding the argument "-v", "-p", "-1",
+or "-7" will sort the output by value, profit, one day profit, or seven
+day profit. To check a single security, use the symbol or crypto_id as
+the argument instead of sort options.
 
 You may encrypt your portfolio using the RC4 algorithm
 ```bash
