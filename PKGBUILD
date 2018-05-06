@@ -7,12 +7,12 @@
 #
 pkgname="spl-utils-common-git"
 
-pkgver=2018.04.16.r1072.73d08ac
+pkgver=2018.05.02.r1073.84a80d5
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=73d08ace523fc3964852e4e82eae3f2db70354d4")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=84a80d5f2d14fdfd16d440eef2e3d6e756a1165c")
 sha256sums=("SKIP")
 groups=("archzfs-linux-git")
 license=("GPL")
