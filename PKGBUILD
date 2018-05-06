@@ -19,6 +19,11 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+ 	cd "${_pkgname}"
+	sed -i '/cmake/ s/$/ -DCMAKE_INSTALL_PREFIX=\/usr/' setup_builds.sh
+}
+
 build() {
 	cd "${_pkgname}"
 	./setup_builds.sh
@@ -28,6 +33,5 @@ build() {
 
 package() {
 	cd "${_pkgname}/build/release"
-	make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}" install
 }
-
