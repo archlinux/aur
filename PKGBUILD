@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -99,4 +99,11 @@ package()
     cd "$pkgname-$pkgver/build"
 
     make DESTDIR="$pkgdir" install
+
+    if [ -n "$pkgdir" ]
+    then
+        rm "$pkgdir/usr/bin/llvm-tblgen"
+        rm -r "$pkgdir/usr/include"
+        rm -r "$pkgdir/usr/lib"
+    fi
 }
