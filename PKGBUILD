@@ -3,20 +3,16 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=9
+pkgrel=10
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), with various fixes'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
 depends=('libxft' 'perl' 'startup-notification' 'gdk-pixbuf2')
-optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=('rxvt-unicode' 'rxvt-unicode-terminfo')
 conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo')
 source=(
   "http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
-  'urxvt.desktop'
-  'urxvtc.desktop'
-  'urxvt-tabbed.desktop'
   'intensity.patch'
   'background-img-use-color.patch'
   'font-width-fix.patch'
@@ -25,9 +21,6 @@ source=(
   '256color.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
-         'fec94dc986fa37ec380079d81de3e0b2'
-         'fac55f0a8404c86dad3e702146762332'
-         '8a5599197568c63720e282b9722a7990'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
          'd8377a6ec47a7913636fbc368aded94b'
          'fef588d6bfe52304bf80e8f1771577b6'
@@ -59,45 +52,40 @@ build() {
     --prefix=/usr \
     --enable-256-color \
     --enable-combining \
-    --enable-fading \
+    --disable-fading \
     --enable-font-styles \
-    --enable-iso14755 \
-    --enable-keepscrolling \
+    --disable-iso14755 \
+    --disable-keepscrolling \
     --enable-lastlog \
     --enable-mousewheel \
-    --enable-next-scroll \
+    --disable-next-scroll \
     --enable-perl \
     --enable-pointer-blank \
-    --enable-rxvt-scroll \
+    --disable-rxvt-scroll \
     --enable-selectionscrolling \
-    --enable-slipwheeling \
+    --disable-slipwheeling \
     --disable-smart-resize \
     --enable-startup-notification \
-    --enable-transparency \
+    --disable-transparency \
     --enable-unicode3 \
     --enable-utmp \
     --enable-wtmp \
     --enable-xft \
-    --enable-xim \
-    --enable-xterm-scroll \
+    --disable-xim \
+    --disable-xterm-scroll \
     --enable-pixbuf \
-    --enable-frills
+    --enable-frills \
+    --without-codesets
   make
 }
 
 package() {
-  # install freedesktop menu
-  for _f in urxvt urxvtc urxvt-tabbed; do
-    install -Dm644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
-  done
   # install terminfo
   cd $_pkgname-$pkgver
   export TERMINFO="$pkgdir/usr/share/terminfo"
   install -dm 755 "$TERMINFO"
   make DESTDIR="$pkgdir" install
-  # install the tabbing wrapper ( requires gtk2-perl! )
-  sed -i 's/\"rxvt\"/"urxvt"/' doc/rxvt-tabbed
-  install -Dm 755 doc/rxvt-tabbed "$pkgdir/usr/bin/urxvt-tabbed"
+  rm -f "$pkgdir"/usr/bin/urxvt{c,d}
 }
 
 # vim:set ts=2 sw=2 et:
