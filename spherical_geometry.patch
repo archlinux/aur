@@ -1,0 +1,22 @@
+--- a/README.rst	2018-02-22 23:21:38.000000000 +0800
++++ b/README.rst	2018-05-06 16:14:13.548738696 +0800
+@@ -102,6 +102,8 @@
+ Disjoint Polygons
+ ^^^^^^^^^^^^^^^^^
+ 
++.. currentmodule:: spherical_geometry.polygon
++
+ If a polygon is the result of the intersection of polygons, it may be disjoint.
+ Disjoint polygons are represented as a list of spherical polygons. The library
+ handles the details of this internally. However, the user must be aware that
+--- a/setup.cfg	2018-02-22 23:21:38.000000000 +0800
++++ b/setup.cfg	2018-05-06 16:13:56.131595995 +0800
+@@ -12,7 +12,7 @@
+ norecursedirs = .git build docs/_build
+ 
+ [ah_bootstrap]
+-auto_use = True
++auto_use = False
+ 
+ [metadata]
+ package_name = spherical_geometry
