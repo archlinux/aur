@@ -3,4 +3,5 @@ Name=EScribe Suite
 Comment=DNA Management Suite + ECigStats
 Exec=mono /opt/escribe-suite-bin/EScribe.exe
 Type=Application
+Icon=/opt/escribe-suite-bin/Pictures/Theme\ Designer/Evolv\ DNA\ Color/Miscellaneous/Evolv\ Symbol\ Dark\ Large.png
 Categories=Tools;
