@@ -1,7 +1,7 @@
 pkgbase = fahviewer-beta
 	pkgdesc = A Folding@home 3D simulation viewer
 	pkgver = 7.4.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://folding.stanford.edu/
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = fahviewer-beta
 	depends = gtk2
 	depends = freetype2
 	depends = glut
-	depends = foldingathome=7.4.16
+	depends = foldingathome=7.4.17
 	provides = fahviewer=7.4.17
 	conflicts = fahviewer
 	options = !docs
