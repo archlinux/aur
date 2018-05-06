@@ -7,7 +7,7 @@ pkgdesc='Chrome OS Hardware Debug & Control Tools'
 url='http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug'
 arch=(i686 x86_64)
 depends=(python2 python2-pyusb python2-pyserial python2-pexpect libftdi python2-numpy ec-devutil-git)
-makedepends=(tidyhtml python2-setuptools)
+makedepends=(tidy python2-setuptools)
 license=(BSD)
 source=(git+https://chromium.googlesource.com/chromiumos/third_party/hdctools
         remove-duplicated-check.patch)
