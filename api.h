@@ -53,6 +53,7 @@ String* api_curl_data(char* url, char* post_field);
  * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
  * [0] = current intraday price
  * [1] = last close price
+ * [2] = close price 5 trading days previously
  * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
  * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
  * 1. IEX -- NASDAQ/NYSE/NYSEARCA
@@ -75,7 +76,6 @@ double* iex_get_price(const char* ticker_name_string);
  * Returns current and yesterday's price of a mutual fund with data from Morningstar
  * Tested for MUTF and OTCMKTS listed securities.
  * @param ticker_name_string symbol
- * @param offset number of days ago to get price of (0 = today)
  * @return price data as defined by api_get_current_price or NULL if invalid symbol
  */
 double* morningstar_get_price(const char* ticker_name_string);

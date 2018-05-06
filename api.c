@@ -74,7 +74,7 @@ double* api_get_current_price(const char* ticker_name_string) {
 }
 
 double* iex_get_price(const char* ticker_name_string) {
-    char iex_api_string[64];
+    char iex_api_string[80];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", ticker_name_string);
     String* pString = api_curl_data(iex_api_string, NULL);
     if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
@@ -82,24 +82,29 @@ double* iex_get_price(const char* ticker_name_string) {
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    double* ret = malloc(sizeof(double) * 2);
+    double* ret = malloc(sizeof(double) * 3);
     pointer_alloc_check(ret);
-    const char* price_string = json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
-    const char* close_price_string = json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
-    ret[0] = strtod(price_string, NULL); //Intraday current price
-    ret[1] = strtod(close_price_string, NULL); //Previous day's close price
+    // First API call can only give intraday and previous close
+    ret[0] = json_object_get_double(json_object_object_get(jobj, "latestPrice")); // Intraday
+    ret[1] = json_object_get_double(json_object_object_get(jobj, "previousClose")); // Previous close
+    string_destroy(&pString);
+    json_object_put(jobj);
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", ticker_name_string);
+    pString = api_curl_data(iex_api_string, NULL);
+    jobj = json_tokener_parse(pString->data);
+    ret[2] = json_object_get_double(
+            json_object_object_get(json_object_array_get_idx(jobj, json_object_array_length(jobj) - 5), "close"));
     string_destroy(&pString);
     json_object_put(jobj);
     return ret;
 }
 
 double* morningstar_get_price(const char* ticker_name_string) {
-    char today_char[16], yesterday_char[16], morningstar_api_string[512];
+    char today_char[16], yesterday_char[16], morningstar_api_string[256];
     time_t now = time(NULL);
     struct tm* ts = localtime(&now);
-    mktime(ts);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    ts->tm_mday -= 7; //get info from past 7 days
+    ts->tm_mday -= 12; //get info from past 12 days
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
@@ -112,17 +117,14 @@ double* morningstar_get_price(const char* ticker_name_string) {
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    double* ret = malloc(sizeof(double) * 2);
+    double* ret = malloc(sizeof(double) * 3);
     pointer_alloc_check(ret);
     Json* datapoints = json_object_object_get(
             json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
     size_t size = json_object_array_length(datapoints);
-    Json* today = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1), 0);
-    const char* price = json_object_to_json_string(today);
-    ret[0] = strtod(price, NULL); //Last close price
-    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0);
-    price = json_object_to_json_string(yesterday);
-    ret[1] = strtod(price, NULL); //Close price before last close price
+    ret[0] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1), 0));
+    ret[1] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0));
+    ret[2] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 5), 0));
     json_object_put(jobj);
     string_destroy(&pString);
     return ret;
@@ -137,15 +139,14 @@ double* coinmarketcap_get_price(const char* ticker_name_string) {
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    Json* data = json_object_array_get_idx(jobj, 0);
-    Json* usd = json_object_object_get(data, "price_usd");
-    Json* percent_change_1d = json_object_object_get(data, "percent_change_24h");
-    const char* price = json_object_get_string(usd);
-    const char* change_1d = json_object_get_string(percent_change_1d);
-    double* ret = malloc(sizeof(double) * 2);
+    double* ret = malloc(sizeof(double) * 3);
     pointer_alloc_check(ret);
-    ret[0] = strtod(price, NULL); //Current real-time price
-    ret[1] = ret[0] - ((strtod(change_1d, NULL) / 100) * ret[0]); //Price 24 hours earlier
+    Json* idx = json_object_array_get_idx(jobj, 0);
+    ret[0] = strtod(json_object_get_string(json_object_object_get(idx, "price_usd")), NULL); //Current real-time price
+    ret[1] = ret[0] -
+             ((strtod(json_object_get_string(json_object_object_get(idx, "percent_change_24h")), NULL) / 100) * ret[0]);
+    ret[2] = ret[0] -
+             ((strtod(json_object_get_string(json_object_object_get(idx, "percent_change_7d")), NULL) / 100) * ret[0]);
     string_destroy(&pString);
     json_object_put(jobj);
     return ret;
