@@ -1,6 +1,6 @@
 # Maintainer: Vlad Zagorodniy <vladzzag@gmail.com>
 pkgname=kwin-effects-minimize1
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="KWin effect that animates the minimizing of windows"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(kwin)
 makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('c3c71aa6ab10a2e6084e54e3f8be18feee55e493aa8dedf5bc2afb6ee20d5d9c')
+sha256sums=('4c695059fd5bac1ca5d4917b906f71d985856eeeb8655629f0238315c1624a11')
 
 prepare() {
     mkdir -p build
