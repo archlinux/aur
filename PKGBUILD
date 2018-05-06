@@ -2,15 +2,17 @@
 _pkgname=racerd
 pkgname=$_pkgname-git
 pkgver=20170914.29cd4c6
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust semantic analysis server powered by Racer"
 arch=('x86_64')
 url="https://github.com/jwilm/$_pkgname"
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
-source=("git+https://github.com/jwilm/$_pkgname.git")
-md5sums=('SKIP')
+source=("git+https://github.com/jwilm/$_pkgname.git"
+        'Cargo.lock')
+md5sums=('SKIP'
+         '1d619706841bfd62d9e8f7ad994b9ffc')
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
@@ -19,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/$_pkgname"
-  sed -i Cargo.toml -e 's/racer = "2\.0\.10"/racer = "2.0.13"/'
+  cp ../Cargo.lock .
 }
 
 build() {
