@@ -15,7 +15,7 @@ pkgbase = xiphos
 	depends = webkit2gtk
 	depends = libgsf
 	depends = gtkhtml4
-	depends = biblesync
+	depends = biblesync<=2.0.0
 	depends = gconf
 	provides = gnomesword
 	conflicts = gnomesword

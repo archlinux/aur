@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://xiphos.org"
 pkgdesc="Bible study tool for GTK+"
 url="http://xiphos.org/"
-depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync' 'gconf')
+depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync<=2.0.0' 'gconf')
 makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2' 'dbus-glib')
 license=('GPL')
 provides=('gnomesword')
