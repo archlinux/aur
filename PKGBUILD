@@ -28,6 +28,6 @@ build() {
 
 package() {
 	cd "${_pkgname}/build/release"
-	make DESTDIR="{pkgdir}/" install
+	make DESTDIR="${pkgdir}/" install
 }
 
