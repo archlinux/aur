@@ -1,28 +1,30 @@
-# Maintainer: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
-
-pkgname=racerd-git
-pkgver=99.0e18f33
+# Maintainer: Streetwalrus <streetwalrus@codewalr.us>
+_pkgname=racerd
+pkgname=$_pkgname-git
+pkgver=20170914.29cd4c6
 pkgrel=1
-pkgdesc='JSON/HTTP Server based on racer for adding Rust support to editors and IDEs'
-arch=(i686 x86_64)
-url='https://jwilm.github.io/racerd/libracerd/'
+pkgdesc="Rust semantic analysis server powered by Racer"
+arch=('x86_64')
+url="https://github.com/jwilm/$_pkgname"
 license=('Apache')
-depends=('rust-racer')
-makedepends=('git' 'rust' 'cargo')
-source=('git+git://github.com/jwilm/racerd')
-sha256sums=('SKIP')
+depends=('gcc-libs')
+makedepends=('cargo')
+source=("git+https://github.com/jwilm/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/racerd"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/$_pkgname"
+  git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-	cd "${srcdir}/racerd"
-	cargo build --release
+  cd "${srcdir}/$_pkgname"
+  cargo build --release
 }
 
 package() {
-	cd "${srcdir}/racerd"
-	cargo install --root "${pkgdir}/usr"
+  cd "${srcdir}/$_pkgname"
+  install -Dm755 target/release/$_pkgname ${pkgdir}/usr/bin/$_pkgname
 }
+
+# vim:set ts=2 sw=2 et:
