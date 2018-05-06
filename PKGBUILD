@@ -14,7 +14,7 @@ source=("https://downloads.evolvapor.com/SetupEScribe${pkgver//./_}_INT.run"
         "escribe-suite-bin.desktop")
 md5sums=('9b037ebf0d7268ef66509166e956a931'
          'ba5339f0ab83cd4ed4f5022f308b35ef'
-         '29d238fe04b7866718f6fc758e30c04e')
+         '62567c96bf5abe96690ed96ddca0f31a')
 
 prepare() {
 	chmod +x "SetupEScribe${pkgver//./_}_INT.run"
