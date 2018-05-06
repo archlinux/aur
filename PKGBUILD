@@ -1,20 +1,20 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname=termplay
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Play an image/video in your terminal!"
 arch=("x86_64")
 url="https://github.com/jD91mZM2/termplay"
-license=("MIT" "custom")
+license=("MIT")
 makedepends=("rust" "openal" "libsndfile" "gstreamer" "gst-plugins-base" "gst-plugins-bad")
 optdepends=(
     "ffmpeg: Video support"
     "maim: Screen-mirroring support"
     "youtube-dl: YouTube support"
 )
-depends=("gstreamer" "gst-plugins-base" "gst-plugins-bad" "libsixel")
+depends=("gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-ugly" "gst-plugins-bad" "libsixel")
 source=("https://github.com/jD91mZM2/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9c9ab3b89b8357e0d6366677795a4cf363650efa869e16215af8fca1485e8d00')
+sha256sums=('54673b3f09920a724fbc8c2b7fe0dff1ed9bdf5695fdc48631f42bb994028681')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
