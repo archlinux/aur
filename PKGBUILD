@@ -1,17 +1,17 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-spherical_geometry
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
-depends=('python2>=2.7' 'python2-numpy>=1.5' 'qd>=2.3.7' 'python2-astropy>=0.3')
+depends=('python2>=2.7' 'python2-numpy>=1.5.0' 'qd>=2.3.7' 'python2-astropy>=0.3')
 makedepends=('cython2' 'python2-astropy-helpers')
-#checkdepends=('python2-pytest')
+checkdepends=('python2-pytest')
 optdepends=('python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit')
 source=("https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-${pkgver}.tar.gz")
-md5sums=('83511d7d9ec2862f138e9e551432a544')
+md5sums=('8559542cfceaac677d4de2dc8d0f7d69')
 
 prepare() {
     cd ${srcdir}/spherical_geometry-${pkgver}
@@ -23,10 +23,10 @@ build () {
     python2 setup.py build --use-system-libraries --offline
 }
 
-#check(){
-#    cd $srcdir/spherical_geometry-${pkgver}
-#    python2 setup.py test
-#}
+check(){
+    cd ${srcdir}/spherical_geometry-${pkgver}
+    python2 setup.py test
+}
 
 package() {
     cd ${srcdir}/spherical_geometry-${pkgver}
