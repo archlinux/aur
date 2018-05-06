@@ -6,12 +6,12 @@
 
 pkgname=guitar-pro
 pkgver=11686
-pkgrel=3
+pkgrel=4
 pkgdesc="A popular tablature editor software for guitar, bass, and many other instruments."
 url="http://www.guitar-pro.com"
 arch=('i686' 'x86_64')
 license=('Proprietary')
-depends=('gksu' 'pulseaudio')
+depends=('pulseaudio')
 depends_x86_64=('lib32-glib2' 'lib32-libpulse' 'lib32-libgl' 'lib32-libxml2' 'lib32-portaudio' 'lib32-zlib'
 'lib32-libpng12' 'lib32-libxrender' 'lib32-freetype2' 'lib32-fontconfig')
 depends_i686=('glib2' 'libgl' 'libxml2' 'portaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
@@ -34,6 +34,7 @@ package() {
 
 	install -m755 -D libcrypto.so.0.9.8 $pkgdir/opt/GuitarPro6
 	install -m755 -D libssl.so.0.9.8 $pkgdir/opt/GuitarPro6
+	sed -i 's|Icon=guitarpro6.png|Icon=guitarpro6|g' $pkgdir/usr/share/applications/GuitarPro6.desktop
 }
 
 md5sums=('3de3b59151b33965a92cd4f51162aeee'
