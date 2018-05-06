@@ -1,6 +1,6 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=python-telethon-aio-git
-pkgver=20180428.d693535
+pkgver=20180506.41f0e0c
 pkgrel=1
 pkgdesc="Pure Python 3 Telegram client library, asyncio version"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.5' 'python-pyaes' 'python-rsa')
 makedepends=('python-setuptools')
 conflicts=('python-telethon')
 options=(!emptydirs)
-source=("git+https://github.com/LonamiWebs/Telethon.git")
+source=("git+https://github.com/LonamiWebs/Telethon.git#branch=asyncio")
 md5sums=('SKIP')
 
 pkgver() {
