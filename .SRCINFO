@@ -1,16 +1,16 @@
 pkgbase = spl-linux-lts-git
-	pkgver = 2018.04.16.r1072.73d08ac.4.14.36.1
+	pkgver = 2018.05.02.r1073.84a80d5.4.14.39.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-lts-headers=4.14.36-1
+	makedepends = linux-lts-headers=4.14.39-1
 	makedepends = libelf
 	makedepends = git
-	depends = spl-utils-common-git=2018.04.16.r1072.73d08ac
+	depends = spl-utils-common-git=2018.05.02.r1073.84a80d5
 	depends = kmod
-	depends = linux-lts=4.14.36-1
-	source = git+https://github.com/zfsonlinux/spl.git#commit=73d08ace523fc3964852e4e82eae3f2db70354d4
+	depends = linux-lts=4.14.39-1
+	source = git+https://github.com/zfsonlinux/spl.git#commit=84a80d5f2d14fdfd16d440eef2e3d6e756a1165c
 	sha256sums = SKIP
 
 pkgname = spl-linux-lts-git
