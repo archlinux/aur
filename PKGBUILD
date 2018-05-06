@@ -1,6 +1,6 @@
 # Maintainer: Vlad Zagorodniy <vladzzag@gmail.com>
 pkgname=kwin-effects-unminimize1
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="KWin effect that animates the unminimizing of windows"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(kwin)
 makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('c131238e7fa864e31bf4a14cd5beff673565a5915ae990578ccfb892c8d315e0')
+sha256sums=('117e3e2a6ba31088d847c7edab782d16c7ccfc07880daac411cf646ce86f6318')
 
 prepare() {
     mkdir -p build
