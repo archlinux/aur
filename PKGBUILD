@@ -42,10 +42,6 @@ build() {
     local config="$config without_djvu"
   fi
 
-  if [ -f /usr/lib/libmupdf.a  ]; then
-    local config="$config with_fitz"
-  fi
-
   lrelease-qt5 qpdfview.pro qpdfview.pro
   qmake-qt5 "CONFIG+=$config" qpdfview.pro
   make
