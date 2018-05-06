@@ -207,6 +207,8 @@ void portfolio_store_api_data(SD* sec_data) {
         sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
         sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[1]);
         sec_data->one_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[1]) - 1);
+        sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[2]);
+        sec_data->seven_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[2]) - 1);
         free(ticker_data);
     } else {
         sec_data->current_value = sec_data->amount;
@@ -214,6 +216,8 @@ void portfolio_store_api_data(SD* sec_data) {
         sec_data->total_profit_percent = 100 * sec_data->total_profit / sec_data->total_spent;
         sec_data->one_day_profit = 0;
         sec_data->one_day_profit_percent = 0;
+        sec_data->seven_day_profit = 0;
+        sec_data->seven_day_profit_percent = 0;
     }
 }
 
@@ -226,7 +230,7 @@ void portfolio_sort(SDA* sda_data, int SORT) {
         for (size_t i = 0; i < sda_data->length - 1; i++) {
             sec_data1 = sda_data->sec_data[i];
             sec_data2 = sda_data->sec_data[i + 1];
-            if (SORT == SORT_ALPHA) {
+            if (SORT == SORT_ALPHA || SORT > SORT_PROFIT_7D) {
                 if (strcmp(sec_data1->symbol, sec_data2->symbol) > 0) { // Least to greatest
                     temp = sda_data->sec_data[i];
                     sda_data->sec_data[i] = sda_data->sec_data[i + 1];
@@ -242,6 +246,9 @@ void portfolio_sort(SDA* sda_data, int SORT) {
             } else if (SORT == SORT_PROFIT_1D) {
                 val1 = sec_data1->one_day_profit;
                 val2 = sec_data2->one_day_profit;
+            } else if (SORT == SORT_PROFIT_7D) {
+                val1 = sec_data1->seven_day_profit;
+                val2 = sec_data2->seven_day_profit;
             }
             if (val1 < val2) { // Greatest to least
                 temp = sda_data->sec_data[i];
@@ -256,7 +263,7 @@ void portfolio_sort(SDA* sda_data, int SORT) {
 void portfolio_print_all(int SORT) {
     SDA* sda_data = portfolio_get_data_array();
     printf("Loading data ");
-    double total_owned = 0, total_spent = 0, total_profit_1d = 0;
+    double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0;
     SD* sec_data;
     char loading_str[32];
     for (size_t i = 0; i < sda_data->length; i++) {
@@ -265,6 +272,7 @@ void portfolio_print_all(int SORT) {
         total_owned += sec_data->current_value; // Add collected values to totals
         total_spent += sec_data->total_spent;
         total_profit_1d += sec_data->one_day_profit;
+        total_profit_7d += sec_data->seven_day_profit;
         if (i > 0)
             for (size_t j = 0; j < strlen(loading_str); j++)
                 putchar('\b'); // Overwrite loading status
@@ -273,16 +281,17 @@ void portfolio_print_all(int SORT) {
         fflush(stdout); // Flush because no newline
     }
     portfolio_sort(sda_data, SORT); // Sort security array
-    printf("\n  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
+    printf("\n  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n");
     for (size_t i = 0; i < sda_data->length; i++) {
         sec_data = sda_data->sec_data[i]; // Print security data one at a time
-        printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
-               sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
-               sec_data->one_day_profit, sec_data->one_day_profit_percent);
+        printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
+               sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
+               sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
+               sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
     }
-    printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+    printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
-           total_profit_1d, 100 * total_profit_1d / total_spent);
+           total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d, 100 * total_profit_7d / total_spent);
     sda_destroy(&sda_data);
 }
 
@@ -301,10 +310,11 @@ void portfolio_print_stock(char* ticker_name_string) {
         return;
     }
     portfolio_store_api_data(sec_data);
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
-    printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount, sec_data->symbol,
-           sec_data->current_value, sec_data->total_spent, sec_data->total_profit, sec_data->total_profit_percent,
-           sec_data->one_day_profit, sec_data->one_day_profit_percent);
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      24H       (%%)\n");
+    printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
+           sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
+           sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
+           sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
     sda_destroy(&sda_data);
 }
 

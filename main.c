@@ -63,6 +63,8 @@ int main(int argc, char* argv[]) {
                     SORT = SORT_PROFIT;
                 else if (sym[1] == '1')
                     SORT = SORT_PROFIT_1D;
+                else if (sym[1] == '7')
+                    SORT = SORT_PROFIT_7D;
                 portfolio_print_all(SORT);
             } else portfolio_print_stock(sym);
         }

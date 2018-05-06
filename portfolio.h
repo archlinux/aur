@@ -13,6 +13,7 @@
 #define SORT_VALUE 1
 #define SORT_PROFIT 2
 #define SORT_PROFIT_1D 3
+#define SORT_PROFIT_7D 4
 
 struct security_data {
     char symbol[32];
@@ -23,6 +24,8 @@ struct security_data {
     double total_profit_percent;
     double one_day_profit;
     double one_day_profit_percent;
+    double seven_day_profit;
+    double seven_day_profit_percent;
 };
 
 typedef struct security_data SD;
