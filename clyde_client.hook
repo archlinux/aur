@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = *
+
+[Action]
+Description = Sending list of installed packages to cpcache
+When = PostTransaction
+Exec = /usr/bin/clyde_client

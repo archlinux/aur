@@ -1,6 +1,6 @@
 pkgbase = clyde-client-git
 	pkgdesc = Send currently installed packages to cpcache
-	pkgver = r6.ccafc3f
+	pkgver = r8.3848e5f
 	pkgrel = 1
 	url = https://github.com/nroi/clyde-client
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = clyde-client-git
 	depends = sed
 	depends = procps-ng
 	depends = coreutils
-	backup = etc/clyde_client/key
 	source = git+https://github.com/nroi/clyde-client.git
+	source = clyde_client.hook
 	sha256sums = SKIP
+	sha256sums = 4fab0f70309ed9d784d6465c841d2689b1ae1492b1791750f294749aaf8b4289
 
 pkgname = clyde-client-git
 
