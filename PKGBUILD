@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 
 pkgname=mint-y-icons
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set. Stable releases"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(gtk-update-icon-cache mint-x-icons)
 conflicts=(mint-y-icons-git)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('5023a320c03b7457f97c5ef69ddde8039e50ad3981d6472956e59842e7701ea8')
+sha256sums=('d321389dad079f31c6e079ab1a7d01a336386be13c64a9903d8daf53dcdc791d')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
