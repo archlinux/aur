@@ -1,0 +1,14 @@
+pkgbase = kwin-effects-minimize1
+	pkgdesc = KWin effect that animates the minimizing of windows
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/zzag/kwin-effects-minimize1
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = kwin
+	source = kwin-effects-minimize1-1.2.tar.gz::https://github.com/zzag/kwin-effects-minimize1/archive/1.2.tar.gz
+	sha256sums = c3c71aa6ab10a2e6084e54e3f8be18feee55e493aa8dedf5bc2afb6ee20d5d9c
+
+pkgname = kwin-effects-minimize1
+
