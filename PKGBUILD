@@ -3,7 +3,7 @@
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=18.20.579836
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -28,6 +28,8 @@ pkgver() {
 package() {
 	mkdir "${srcdir}/opencl"
 	cd "${srcdir}/opencl"
+	ar x "${srcdir}/${prefix}${major}-${minor}/opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
+	tar xJf data.tar.xz
 	ar x "${srcdir}/${prefix}${major}-${minor}/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared}
@@ -44,6 +46,7 @@ package() {
 
 	mv "${srcdir}/opencl/etc" "${pkgdir}/"
 	mkdir -p ${pkgdir}/usr/lib
+	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamdocl12cl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/libdrm/${shared/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
