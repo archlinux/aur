@@ -1,10 +1,10 @@
 pkgbase = scyther
 	pkgdesc = Tool for the symbolic analysis of security protocols
 	pkgver = v1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cs.ox.ac.uk/people/cas.cremers/scyther/
 	arch = x86_64
-	license = GPL2"
+	license = GPL2
 	depends = python2
 	depends = graphviz
 	depends = wxpython

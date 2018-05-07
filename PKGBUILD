@@ -2,12 +2,12 @@
 
 pkgname=scyther
 pkgver=v1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for the symbolic analysis of security protocols"
 arch=('x86_64')
 depends=('python2' 'graphviz' 'wxpython')
 url="https://www.cs.ox.ac.uk/people/cas.cremers/scyther/"
-license=('GPL2"')
+license=('GPL2')
 source=("http://www.cs.ox.ac.uk/people/cas.cremers/downloads/scyther/scyther-linux-${pkgver}.tgz" 'scyther.desktop' 'scyther')
 sha256sums=('5829daf7252ca92ed40041bbdb0012c091d36f16855d802ed7a792f3f8dad6a6'
             'd3bc8366a76892d47252c517246310e76e8e14af7856fb85a89b7e1de1c9dc07'
