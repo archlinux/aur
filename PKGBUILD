@@ -19,7 +19,7 @@ pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
 
 pkgver=0.7.8_4.16.7.a.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-hardened-headers=4.16.7.a-1" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
