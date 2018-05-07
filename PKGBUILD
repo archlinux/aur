@@ -3,7 +3,7 @@
 
 pkgname=perl-test-script
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 _author="P/PL/PLICEASE"
 _perlmod="Test-Script"
 url="http://search.cpan.org/dist/Test-Script"
@@ -11,7 +11,12 @@ pkgdesc="Test::Script - Basic cross-platform tests for scripts"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-ipc-run3>=0.034' 'perl-probe-perl>=0.01' 'perl>=5.006')
+depends=(
+perl-ipc-run3
+perl-probe-perl
+perl-capture-tiny
+perl-test2-suite
+)
 makedepends=()
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('33a1e71b9797228c2124eea76831492ca9372e8f8075f3d8cded3ef818af44b1')
