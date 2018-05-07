@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source GTK3 Music Player'
 url='http://openmusicplayer.com/'
 arch=(x86_64)
