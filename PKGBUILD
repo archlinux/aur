@@ -2,7 +2,7 @@
 
 pkgname=arara-git
 _gitname=arara
-pkgver=3.0.r252.g93ed057
+pkgver=3.0.r277.gf4c5e36
 pkgrel=1
 pkgdesc='The cool TeX automation tool'
 arch=('any')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   install -d -m755 "${pkgdir}"/usr/{share/java/arara,share/arara/tools,docs}
-  install -Dm 755 "arara_launch" "${pkgdir}/usr/bin/arara"
+  install -Dm 755 "arara_launch" "${pkgdir}/usr/bin/arara-git"
   cp -r "${srcdir}/arara/docs" "${pkgdir}/usr/"
   cp -r "${srcdir}/arara/tools" "${pkgdir}/usr/share/arara/"
   cp -r "${srcdir}/arara/application" "${pkgdir}/usr/share/java/arara/"

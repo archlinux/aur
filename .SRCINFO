@@ -1,6 +1,6 @@
 pkgbase = arara-git
 	pkgdesc = The cool TeX automation tool
-	pkgver = 3.0.r252.g93ed057
+	pkgver = 3.0.r277.gf4c5e36
 	pkgrel = 1
 	url = https://github.com/cereda/arara
 	arch = any
