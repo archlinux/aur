@@ -57,6 +57,7 @@ pkgbase = grub
 	source = 0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch
 	source = 0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch
 	source = 0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch
+	source = 0008-Fix-packed-not-aligned-error-on-GCC-8.patch
 	source = grub.default
 	source = grub.cfg
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
@@ -71,6 +72,7 @@ pkgbase = grub
 	sha256sums = 535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46
 	sha256sums = c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5
 	sha256sums = e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a
+	sha256sums = e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8
 	sha256sums = 74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82
 	sha256sums = c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad
 

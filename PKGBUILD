@@ -65,6 +65,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         '0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch'
         '0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch'
         '0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch'
+        '0008-Fix-packed-not-aligned-error-on-GCC-8.patch'
         'grub.default'
         'grub.cfg')
 
@@ -78,6 +79,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             '535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46'
             'c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5'
             'e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a'
+            'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 
@@ -103,6 +105,9 @@ prepare() {
 
 	msg "Support multiple early initrd images"
 	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
+
+	msg "Fix packed-not-aligned error on GCC 8"
+	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -204,6 +209,7 @@ _build_grub-efi() {
 
 	msg "Run ./configure for ${_EFI_ARCH} efi build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="efi" \
 		--target="${_EFI_ARCH}" \
 		--disable-efiemu \
@@ -251,6 +257,7 @@ _build_grub-emu() {
 
 	msg "Run ./configure for emu build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="emu" \
 		--target="${_EMU_ARCH}" \
 		--enable-mm-debug \
