@@ -2,7 +2,7 @@
 
 pkgname=opendm
 _pkgname=OpenDM
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A simple GUI Display Manager written entirely in bash that uses xinit to start X sessions"
 arch=('x86_64')
