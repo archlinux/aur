@@ -9,6 +9,7 @@ pkgbase = lc0-cudnn-git
 	makedepends = git
 	makedepends = gcc6
 	makedepends = cmake
+	makedepends = gtest
 	depends = cuda
 	depends = cudnn
 	source = lc0-cudnn::git+https://github.com/glinscott/leela-chess#branch=lc0/cmake
