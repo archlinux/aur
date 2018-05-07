@@ -1,17 +1,17 @@
 # Maintainer: brainblasted <brainblasted at disroot dot org>
 pkgname=hammond
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A Podcast Client for the GNOME Desktop written in Rust"
 arch=('x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/World/hammond"
 depends=('glib2' 'openssl' 'sqlite' 'gtk3')
 makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
-source=("https://gitlab.gnome.org/World/hammond/repository/0.3.1/archive.tar.gz")
+source=("https://gitlab.gnome.org/World/hammond/repository/0.3.2/archive.tar.gz")
 noextract=('archive.tar.gz')
-_commit="89ee174dedeb49124eb13928bf0fad25d30e62ab"
-sha256sums=('08e30a6ad3d578a77ded06cee4fd0f7ce5972f8adccf6eb3422b3c99590a3996')
+_commit="f06dbd0562b0819ed989c29ff5afc69f45622d25"
+sha256sums=('60fd1ca925eee432dfe6ec632c8312b6cfef0c0a4ce148f938bb17f5400eb9cb')
 
 prepare() {
     tar -xvf archive.tar.gz
@@ -19,11 +19,11 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}-${_commit}
-    ./configure --prefix=/usr
-    make
+    meson . _build
+    ninja -C _build
 }
 
 package() {
     cd ${pkgname}-${pkgver}-${_commit}
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C _build install
 }
