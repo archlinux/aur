@@ -1,0 +1,29 @@
+--- BackLightHelper.py.orig	2018-05-07 16:11:55.395852725 +0800
++++ BackLightHelper.py	2018-05-07 16:12:29.286649711 +0800
+@@ -39,7 +39,7 @@
+         maxBrightness = 0
+         try:
+             p = subprocess.Popen(
+-                ['pkexec', '/usr/lib/gnome-settings-daemon/gsd-backlight-helper', '--get-max-brightness'],
++                ['pkexec', '/usr/lib/gsd-backlight-helper', '--get-max-brightness'],
+                 stdout=subprocess.PIPE)
+             comm = p.communicate()[0]
+             maxBrightness = int(comm)
+@@ -54,7 +54,7 @@
+ 
+     def getCurrentBrightnessFromHelper(self):
+         try:
+-            p = subprocess.Popen(['pkexec', '/usr/lib/gnome-settings-daemon/gsd-backlight-helper', '--get-brightness'], stdout=subprocess.PIPE)
++            p = subprocess.Popen(['pkexec', '/usr/lib/gsd-backlight-helper', '--get-brightness'], stdout=subprocess.PIPE)
+             comm = p.communicate()[0]
+             self.currentBrightness = int(comm)
+         except:
+@@ -71,7 +71,7 @@
+     def setBrightness(self, brightness):
+         self.currentBrightness = brightness
+         try:
+-            subprocess.call(['pkexec', '/usr/lib/gnome-settings-daemon/gsd-backlight-helper', '--set-brightness', "%s" % self.currentBrightness])
++            subprocess.call(['pkexec', '/usr/lib/gsd-backlight-helper', '--set-brightness', "%s" % self.currentBrightness])
+         except:
+             MyLog.e(self.TAG, "Error:6033")
+             self.setAvailable(False)
