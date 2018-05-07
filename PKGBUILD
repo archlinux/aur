@@ -3,19 +3,21 @@
 
 pkgname=foldingathome-beta
 pkgver=7.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Folding@Home is a distributed computing project which studies protein folding, misfolding, aggregation, and related diseases - beta version."
 arch=('x86_64')
 url="http://folding.stanford.edu/"
 license=('CUSTOM')
 depends=('glibc')
-optdepends=('opencl-icd-loader: for folding with a GPU'
+optdepends=('fahcontrol-beta: GUI for F@H'
+            'fahviewer-beta: 3D simulation viewer for F@H'
+            'opencl-icd-loader: for folding with a GPU'
             'opencl-driver: for folding with a GPU (choose Nvidia/AMD/Mesa package which matches your GPU)')
 conflicts=('foldingathome' 'fahclient')
-provides=('foldingathome=7.4.17' 'fahclient=7.4.17')
+provides=('foldingathome' 'fahclient')
 install=foldingathome.install
 source=("https://download.foldingathome.org/releases/beta/release/fahclient/debian-stable-64bit/v7.4/fahclient_${pkgver}-64bit-release.tar.bz2"
-"foldingathome.service")
+        "foldingathome.service")
 sha256sums=('91205c4892bbf5a16942b49a9ce3db8f6c4e8bc5dca14af74ed71371415c3c82'
             'ad1bb4f104bc3446db7bb91a7d199bfeda5d80e15e08fe17bc69de1c276e2010')
 
