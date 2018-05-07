@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=18.03.r23.gc71bf56
+pkgver=18.03.r36.ge0bb214
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
@@ -24,7 +24,10 @@ pkgver() {
 
 build() {
   cd mpc-qt
-  qmake-qt5 PREFIX=/usr mpc-qt.pro
+  qmake-qt5 PREFIX=/usr mpc-qt.pro \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
