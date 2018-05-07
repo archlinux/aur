@@ -1,29 +1,34 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
+# Contributor: Jon Wiersma <archaur@jonw.org>
 
 pkgname=ib-tws
 pkgver=971.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
+backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
 depends=(bash)
 optdepends=(ffmpeg2.8)
 makedepends=(gtk2 imagemagick unzip)
 
 source=('LICENSE'
 	'ib-tws'
+	'ib-tws.conf'
 	'ib-tws.desktop'
 	'ib-gw'
+	'ib-gw.conf'
 	'ib-gw.desktop'
 	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 md5sums=('e1cae2de592add7133bb08123e8db1ad'
-         'dff283b103c0ddeb76eba6ecfb852afd'
+         '428c553da90bb2ea650a7f96ae076937'
+         '1ec45ec225b8dcd362634f7395e8cd0d'
          '9205b5eade96d69f8e470cc52c30db4a'
-         '6f08b240afad921b29c2c81a440a6a8a'
+         'b1cbe7273f3d0f2f0b6a09e65606b600'
+         '238637fb4ab6ae734bade474709bafb1'
          'ffa9fcfb623850e5c9e796040bdbd052'
          'ae2df5f73a2f519a417708ad97c33517')
-
 
 build() {
   cd ${srcdir}
@@ -59,6 +64,8 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -Dm755 ib-gw ${pkgdir}/usr/bin/ib-gw
+  install -Dm644 ${pkgname}.conf ${pkgdir}/etc/$pkgname.conf
+  install -Dm644 ib-gw.conf ${pkgdir}/etc/ib-gw.conf
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 ib-gw.desktop ${pkgdir}/usr/share/applications/ib-gw.desktop
   mkdir -p ${pkgdir}/usr/share/pixmaps/

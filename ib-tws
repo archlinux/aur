@@ -1,5 +1,8 @@
 #!/bin/bash
+
+# Load system-wide settings and per-user overrides
+. /etc/ib-tws.conf
+[[ -f $HOME/.config/ib-tws.conf ]] && . $HOME/.config/ib-tws.conf
+
 cd /usr/share/ib-tws/jars
-/usr/share/ib-tws/jre/bin/java -cp \* \
-                                     -Xmx768m -Dsun.awt.nopixfmt=true -Dsun.java2d.noddraw=true -Dswing.boldMetal=false -Dsun.locale.formatasdefault=true \
-                                     jclient.LoginFrame $HOME/.ib-tws
+/usr/share/ib-tws/jre/bin/java -cp \* $JAVA_FLAGS jclient.LoginFrame $IB_CONFIG_DIR

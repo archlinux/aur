@@ -1,4 +1,8 @@
 #!/bin/bash
-cd /usr/share/ib-tws/jars
-/usr/share/ib-tws/jre/bin/java -cp \* -Xmx512M -Dsun.java2d.noddraw=true ibgateway.GWClient $HOME/.ib-tws
 
+# Load system-wide settings and per-user overrides
+. /etc/ib-gw.conf
+[[ -f $HOME/.config/ib-gw.conf ]] && . $HOME/.config/ib-gw.conf
+
+cd /usr/share/ib-tws/jars
+/usr/share/ib-tws/jre/bin/java -cp \* $JAVA_FLAGS ibgateway.GWClient $IB_CONFIG_DIR
