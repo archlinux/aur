@@ -2,12 +2,12 @@
 
 pkgname='freedns-maintain-ip'
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DNS record updater for freedns.afraid.org domains written in bash"
 arch=('any')
 url='http://eomanis.mooo.com/permshare/freedns-maintain-ip/index.xhtml'
 license=('GPL3')
-depends=('bash' 'sed' 'miniupnpc' 'wget' 'bind-tools' 'coreutils')
+depends=('bash' 'grep' 'sed' 'miniupnpc' 'wget' 'bind-tools' 'coreutils')
 source=("http://eomanis.mooo.com/permshare/freedns-maintain-ip/freedns-maintain-ip-${pkgver}.tar.gz")
 sha256sums=('57a1a84c7bf2f1f7fa2b8ec049d8315096f7ef685675837c842d6ff82a1111fe')
 
