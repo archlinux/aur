@@ -13,14 +13,21 @@ _config="pkg"		# "local":	compile only probed modules(https://aur.archlinux.org/
 			# "nomod":	don't use modules(make localyesconfig)
 			# "old":	make with old config (/proc/config.gz)
 			# "pkg":	use this package's config
+
+# If you have laptop with optimus and it hangs on boot one solution might be 
+# to set acpi_rev_override. Yet for this to happen kernel should be compiled
+# with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
+_rev_override="n"
+
 ###########################################################################################################
 
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=6
+_minor=7
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.6-563
-pkgrel=2
+#_clearver=${__basekernel}.7-565
+_clearver=761892ab579de61e2f30039e127490c599d4fa14
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -36,7 +43,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=${_clearver}"
   'https://downloadmirror.intel.com/27591/eng/microcode-20180312.tgz'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -49,7 +56,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '634d3fd97e5d9d90262db0a9d62ed0a40043eb691d68bd4a545f907079610b56'
+            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
             'SKIP'
             'SKIP'
             '0b381face2df1b0a829dc4fa8fa93f47f39e11b1c9c22ebd44f8614657c1e779'
@@ -99,7 +106,9 @@ prepare() {
       -i Makefile
 
   # set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-  sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
+  if [ "${_rev_override}" = "y" ]; then
+    sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
+  fi
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
