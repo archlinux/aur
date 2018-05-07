@@ -1,6 +1,6 @@
 # Maintainer: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 pkgname=keepass-de
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 pkgdesc="German locale for keepass"
 license=('GPL2')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-German.zip)
 arch=(any)
-sha256sums=('5d967fa5be45a1ae7e28c68a35d851f5b7b814a06b2d36c63686fc7999d5b23c')
+sha256sums=('1158fa37a4e5161deed981e943b34ae6ea63eba5cd73569ec457c4a782e80b2d')
 
 package(){
    mkdir -p "${pkgdir}/usr/share/keepass"
