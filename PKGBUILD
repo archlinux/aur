@@ -25,7 +25,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
-makedepends=('git' 'qt5-tools' 'rapidjson')
+makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
 provides=("${_pkgname}")
