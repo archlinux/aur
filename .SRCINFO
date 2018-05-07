@@ -1,6 +1,6 @@
 pkgbase = superproductivity
 	pkgdesc = To Do List / Time Tracker with Jira Integration.
-	pkgver = 1.10.20
+	pkgver = 1.10.29
 	pkgrel = 1
 	url = http://super-productivity.com/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = superproductivity
 	depends = libxtst
 	depends = alsa-lib
 	depends = xprintidle
-	source = https://github.com/johannesjo/super-productivity/releases/download/v1.10.20/superProductivity_1.10.20_amd64.deb
+	source = https://github.com/johannesjo/super-productivity/releases/download/v1.10.29/superProductivity_1.10.29_amd64.deb
 	source = LICENSE
-	md5sums = 7c8fec4a76bff9a4efcc276cf419bc8b
+	md5sums = c5a5edfefffc4f8125de5a7b39abe274
 	md5sums = 66b9e0d3d2b55636d9687b1381f5f97d
 
 pkgname = superproductivity
