@@ -1,50 +1,55 @@
-# Maintainer:	Jesse Jaara	<gmail.com:	jesse.jaara>
-# Contributor:	Det		<gmail.com:	nimetonmaili>
-# Contributor:	h31		<yandex.com:	h31mail>
-# Contributor:	julroy67	<gmail.com:	julroy67>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Jesse Jaara	<gmail.com:	jesse.jaara>
+# Contributor: Det		<gmail.com:	nimetonmaili>
+# Contributor: h31		<yandex.com:	h31mail>
+# Contributor: julroy67	<gmail.com:	julroy67>
 
 pkgname=libvpx-git
-pkgver=v1.5.0.1276.gf44db14
+pkgver=1.7.0.r317.g28801f91c4
 pkgrel=1
-pkgdesc="The VP8 and VP9 Codec SDK (git version)"
+pkgdesc='VP8 and VP9 video codecs (git version)'
 arch=('i686' 'x86_64')
-url="http://www.webmproject.org/"
+url='http://www.webmproject.org/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'yasm')
-provides=('libvpx=1.5.0')
-conflicts=('libvpx')
-source=('git+https://chromium.googlesource.com/webm/libvpx')
-md5sums=('SKIP')
-_gitname='libvpx'
+provides=('libvpx' 'libvpx.so')
+conflicts=('libvpx' 'libvpx-full-git')
+source=("$pkgname"::'git+https://chromium.googlesource.com/webm/libvpx') # official repo
+#source=("$pkgname"::'git+https://github.com/webmproject/libvpx.git') # mirror
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+    cd "$pkgname"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-
-    ./configure --prefix=/usr \
-	--enable-vp8 \
-	--enable-vp9 \
-        --enable-vp9-highbitdepth \
+    cd "${pkgname}"
+    
+    ./configure \
+        --prefix='/usr' \
         --enable-runtime-cpu-detect \
         --enable-shared \
-        --enable-postproc \
         --enable-pic \
-        --enable-experimental \
-        --enable-spatial-svc \
         --disable-install-docs \
-        --disable-install-srcs
-
-  make
+        --disable-install-srcs \
+        --enable-vp8 \
+        --enable-postproc \
+        --enable-vp9 \
+        --enable-vp9-highbitdepth \
+        --enable-experimental
+        
+    make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}/"
-
-  make DIST_DIR="${pkgdir}/usr" install
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname}"
+    
+    make DESTDIR="$pkgdir" install
+    
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
