@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=numix-cinnamon-dark
-pkgver=3.4.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A darker-themed fork of zagortenay333/numix-cinnamon"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ion201/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('79cb4016a98eeb0af152e3300e26517b')
+md5sums=('aa2d26f52975d6c8eec18eeb45197766')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/themes"
