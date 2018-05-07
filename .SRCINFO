@@ -1,6 +1,6 @@
 pkgbase = krita-minimal
 	pkgdesc = Edit and paint images (less KDE dependencies)
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -36,15 +36,15 @@ pkgbase = krita-minimal
 	optdepends = opencolorio: for the LUT docker
 	optdepends = krita-plugin-gmic: G'MIC plugin
 	optdepends = python-pyqt5: for the Python plugins
-	provides = krita=4.0.1
+	provides = krita=4.0.2
 	conflicts = calligra-krita
 	conflicts = krita-l10n
 	conflicts = krita
-	source = https://download.kde.org/stable/krita/4.0.1/krita-4.0.1.tar.gz
-	source = https://download.kde.org/stable/krita/4.0.1/krita-4.0.1.tar.gz.sig
+	source = https://download.kde.org/stable/krita/4.0.2/krita-4.0.2.tar.gz
+	source = https://download.kde.org/stable/krita/4.0.2/krita-4.0.2.tar.gz.sig
 	source = replace-code.patch
 	validpgpkeys = 05D00A8B73A686789E0A156858B9596C722EA3BD
-	sha256sums = da44e964cb2c0e409b18f3d50f92734d6e6e15e2ce494659b6dc52fed8d8218c
+	sha256sums = 8e013b09ec38dbf2d0401a74e868749b9d60e66d89094dc7fc2c51f48d8ad68c
 	sha256sums = SKIP
 	sha256sums = 8b0103ec49c7fa4930d9e0fb3063d11ee7145356a2a851d3a44f45a8e5404246
 

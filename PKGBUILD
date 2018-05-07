@@ -1,8 +1,8 @@
-# Maintainer: kitsunyan <kitsunyan@inbox.ru>
+# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
@@ -20,7 +20,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
 source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
         'replace-code.patch')
-sha256sums=('da44e964cb2c0e409b18f3d50f92734d6e6e15e2ce494659b6dc52fed8d8218c'
+sha256sums=('8e013b09ec38dbf2d0401a74e868749b9d60e66d89094dc7fc2c51f48d8ad68c'
             'SKIP'
             '8b0103ec49c7fa4930d9e0fb3063d11ee7145356a2a851d3a44f45a8e5404246')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
