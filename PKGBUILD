@@ -9,7 +9,7 @@ depends=('libxml2' 'openssl-1.0' 'sblim-sfcc')
 makedepends=('cmake' 'swig'
              'perl'
              'python'
-             'ruby' 'ruby-docs')
+             'ruby' 'ruby-rdoc')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
