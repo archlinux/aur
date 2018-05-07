@@ -1,6 +1,6 @@
 # Contributor: Swift Geek <swiftgeek «at» gmail.com>
 pkgname=perl-math-clipper
-pkgver=1.23
+pkgver=1.26
 pkgrel=1
 pkgdesc="Math::Clipper - Polygon clipping in 2D"
 arch=('any')
@@ -14,8 +14,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Math-Clipper-${pkgver}.tar.gz")
-md5sums=('664d18d9813eeaf4959f2dc81a762a74')
+source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHELDRAKE/Math-Clipper-${pkgver}.tar.gz")
+md5sums=('206e413a9cf2cd04b6e1797a3bcb958d')
 _src_dir='$srcdir/Math-Clipper-$pkgver'
 
 build() {
