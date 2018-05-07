@@ -1,0 +1,12 @@
+[Unit]
+Description=Web UI for NetworkManager-managed VPN connections
+After=NetworkManager.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/opt/networkmanager-vpn-web-ui/networkmanager-vpn-web-ui -bind-address :9092
+
+[Install]
+WantedBy=multi-user.target

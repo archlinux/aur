@@ -1,0 +1,17 @@
+pkgbase = networkmanager-vpn-web-ui
+	pkgdesc = A web UI for remotely managing NetworkManager-managed VPN connections
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/craigfurman/networkmanager-vpn-web-ui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = networkmanager
+	source = git+https://github.com/craigfurman/networkmanager-vpn-web-ui
+	source = networkmanager-vpn-web-ui.service
+	sha512sums = SKIP
+	sha512sums = 9c3a3c15a4e758aaeeb8b515e3270685efae778def816b066bb1c9abc004e7b97f995f662198129f78693f8e6d6a63326e7a2ddb84c8628d75203888c4c844b7
+
+pkgname = networkmanager-vpn-web-ui
+
