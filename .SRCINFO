@@ -1,0 +1,21 @@
+pkgbase = pop-shell-theme-git
+	pkgdesc = This is the GNOME Shell theme that goes along with the Pop GTK Theme.
+	pkgver = r98.21a1337
+	pkgrel = 1
+	url = https://github.com/pop-os/gnome-shell-theme
+	arch = any
+	license = GPL2
+	license = CCPL
+	depends = gnome-shell>=3.18.3
+	depends = pop-gtk-theme-git
+	optdepends = pop-icon-theme-git: Recommended icon theme
+	optdepends = ttf-fira-sans: Recommended font for window titles and interface
+	optdepends = ttf-fira-mono: Recommended monospace font
+	optdepends = ttf-roboto-slab: Recommended font for documents
+	provides = gnome-shell-theme
+	conflicts = gnome-shell-theme
+	source = git+https://github.com/pop-os/gnome-shell-theme.git
+	sha256sums = SKIP
+
+pkgname = pop-shell-theme-git
+
