@@ -8,6 +8,7 @@ pkgdesc="Upstream nvi with enabled multibyte support"
 arch=('x86_64')
 url="git://repo.or.cz/nvi.git"
 license=("BSD")
+conflicts=("nvi")
 
 _COMMIT="f462fedd26f78eec1998da4b9cba360095a6aa53"
 source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
@@ -19,7 +20,7 @@ md5sums=("c9b282080e8d61f933f8e2d3bfb7dc2d")
 pkgver=1.81.6_20161009
 _COMMIT_HASH="${_COMMIT:0:7}"
 
-pkgrel=1
+pkgrel=2
 
 build(){
   cd "$srcdir"/nvi-$_COMMIT_HASH/dist/
