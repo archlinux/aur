@@ -1,5 +1,5 @@
 # Maintainer: pat-s <patrick.schratz@gmail.com>
-# Contributor: chendaniely
+# Maintainer: chendaniely
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 # Get download links and md5sums for latest version of RStudio desktop
@@ -14,10 +14,10 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.442
+pkgver=1.1.446
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr')
@@ -28,21 +28,15 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-md5sums_i686=('090fcb1fec90e3d621bc89e113c8dc28'
-              '795a3ca3f2048c4dc32d25560e191c35'
-              'eca697b2b8efbed3d2241f6b0c8c15e4')
-md5sums_x86_64=('2c0805a6a8f12b06c7e6b343692288fd'
+md5sums_x86_64=('8c0a1fe2a16c009396366b5fad459835'
                 '84e61f5eda991b978fa168d6762f7990'
                 '391ba54997d6faddbfe41a185a823ee4')
 
-source_i686=("https://download1.rstudio.org/rstudio-${pkgver}-i386.deb"
-"http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_i386.deb"
-"http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_i386.deb")
-source_x86_64=("https://download1.rstudio.org/rstudio-${pkgver}-amd64.deb"
+source_x86_64=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-${pkgver}-amd64.deb"
 "http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_amd64.deb"
 "http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_amd64.deb")
 
-install="$pkgname".install
+#install="$pkgname".install
 
 package() {
 
@@ -50,8 +44,10 @@ package() {
 
   msg "Converting debian package..."
 
+  ar x rstudio-xenial-${pkgver}-amd64.deb
+
   cd "$srcdir"
-  tar zxpf data.tar.gz -C "$pkgdir"
+  tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
   ARCH=${CARCH/686/386/}
@@ -106,12 +102,13 @@ package() {
     fi
   done
 
-  ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
-  ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
-      /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
-      while read x;do
-          ln -sf "$x" ./
-      done
+  # this throwed an error in v1.1.444
+  # ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
+  # ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
+  #     /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
+  #     while read x;do
+  #         ln -sf "$x" ./
+  #     done
 
 
   cd "$pkgdir/usr/bin"
@@ -127,4 +124,3 @@ exec /usr/lib/rstudio/bin/rstudio "$@"
 
   sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
-# vim:ft=sh tabstop=2 expandtab
