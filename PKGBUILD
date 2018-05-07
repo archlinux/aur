@@ -6,7 +6,7 @@
 
 pkgname=guitar-pro
 pkgver=11686
-pkgrel=4
+pkgrel=5
 pkgdesc="A popular tablature editor software for guitar, bass, and many other instruments."
 url="http://www.guitar-pro.com"
 arch=('i686' 'x86_64')
@@ -36,6 +36,7 @@ package() {
 	install -m755 -D libssl.so.0.9.8 $pkgdir/opt/GuitarPro6
 	sed -i 's|Icon=guitarpro6.png|Icon=GP6-icon|g' $pkgdir/usr/share/applications/GuitarPro6.desktop
 	mv $pkgdir/usr/share/pixmaps/guitarpro6.png $pkgdir/usr/share/pixmaps/GP6-icon.png
+	echo "StartupWMClass=GuitarPro" >> $pkgdir/usr/share/applications/GuitarPro6.desktop
 }
 
 md5sums=('3de3b59151b33965a92cd4f51162aeee'
