@@ -1,7 +1,7 @@
 pkgbase = networkmanager-vpn-web-ui
 	pkgdesc = A web UI for remotely managing NetworkManager-managed VPN connections
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craigfurman/networkmanager-vpn-web-ui
 	arch = x86_64
 	license = MIT

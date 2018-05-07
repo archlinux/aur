@@ -1,7 +1,7 @@
 # Maintainer: Craig Furman <craig.furman89@gmail.com>
 pkgname=networkmanager-vpn-web-ui
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web UI for remotely managing NetworkManager-managed VPN connections"
 arch=('x86_64')
 url="https://github.com/craigfurman/networkmanager-vpn-web-ui"
@@ -13,15 +13,22 @@ sha512sums=('SKIP'
 depends=(networkmanager)
 makedepends=(git go)
 
+
+_gopath=$PWD/gopath
+_gopath_loc="$_gopath/src/github.com/craigfurman/$pkgname"
+
 build() {
-  cd "$pkgname"
+  mkdir -p "$(dirname "$_gopath_loc")"
+  mv "$pkgname" "$(dirname "$_gopath_loc")"
+  cd "$_gopath_loc"
   git checkout "v$pkgver"
-  make dist
+
+  GOPATH=$_gopath make dist
 }
 
 package() {
   mkdir -p "$pkgdir/opt"
-  cp -a "$pkgname/dist/$pkgname" "$pkgdir/opt/"
-  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a "$_gopath_loc/dist/$pkgname" "$pkgdir/opt/"
+  install -Dm644 "$_gopath_loc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "../$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
