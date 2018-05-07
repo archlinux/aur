@@ -1,12 +1,12 @@
 pkgbase = redmond-themes-git
 	pkgdesc = Aims to provide the complete Windows experience for easy use on Linux and GNOME-compatible OSes
-	pkgver = 20180418
+	pkgver = 20180507
 	pkgrel = 1
 	url = https://github.com/B00merang-Project/Redmond-Themes
 	arch = any
 	license = GPL
-	source = https://github.com/B00merang-Project/Redmond-Themes/archive/2f27206a0bf9d9ad644c3698b41ebc0c54462b26.zip
-	sha256sums = f47276126c341b4d9ae6fb0097b28e6b907a16859f16cd8c492b3bb91e1037d9
+	source = https://github.com/B00merang-Project/Redmond-Themes/archive/853d92beccec821600261543bf06b60338fb87ea.zip
+	sha256sums = e425383d589b1fd7a53b48af98f21cc0006c504d3a8d2101734821bcd18e42fe
 
 pkgname = redmond-themes-git
 
