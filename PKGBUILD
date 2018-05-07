@@ -15,7 +15,7 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=9.0.6
+pkgver=9.0.7
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
@@ -30,7 +30,7 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pk
         'bacula-sd.service'
         '00-qmake4.patch')
 
-sha256sums=('44db9d12dd4a510b0dfa6f8ad877ad4c0df04c13ef28f99c690a259314ee2e47'
+sha256sums=('84e87fcfedb2e6df624c4f1a6281948f7061b22e2a2747cc2aa46d34bf190948'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
