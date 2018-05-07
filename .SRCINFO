@@ -1,7 +1,7 @@
 pkgbase = fahcontrol-beta
 	pkgdesc = A Graphical User Interface (GUI) for Folding@Home - Beta version
 	pkgver = 7.4.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://folding.stanford.edu
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = fahcontrol-beta
 	depends = pygtk
 	depends = glib2
 	depends = pango
-	depends = foldingathome=7.4.17
-	provides = fahcontrol=7.4.17
+	depends = foldingathome-beta
+	provides = fahcontrol
 	conflicts = fahcontrol
 	options = !docs
 	options = !libtool
