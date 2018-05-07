@@ -1,12 +1,12 @@
 # Maintainer: Cole Erickson <colese2 at byu dot edu>
 pkgname=uxpin
-pkgver=20180503
+pkgver=20180507
 pkgrel=1
 epoch=0
-pkgdesc="Electron version of the UXPin web app"
+pkgdesc="An electron based UX prototyping tool"
 arch=('x86_64')
 url="https://uxpin.com/"
-license=('GPL')
+license=()
 groups=()
 depends=()
 makedepends=('p7zip')
