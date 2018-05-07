@@ -18,7 +18,7 @@ pkgbase="zfs-linux-vfio"
 pkgname=("zfs-linux-vfio" "zfs-linux-vfio-headers")
 
 pkgver=0.7.8.4.16.5.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-vfio-headers=4.16.5-1" "spl-linux-vfio-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
