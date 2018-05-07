@@ -1,6 +1,6 @@
 pkgbase = git-stream-git
 	pkgdesc = A git flow replacement with a single branch model
-	pkgver = 0.7.2.r1.g319e966
+	pkgver = 0.8.0.r1.0ceb68d
 	pkgrel = 1
 	url = https://github.com/mrkmg/git-stream
 	arch = any
