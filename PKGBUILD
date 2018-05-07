@@ -3,7 +3,7 @@
 
 gitname=mat
 pkgname=${gitname}-git
-pkgver=0.6.1.8.g8f6303a
+pkgver=0.6.1.12.g4b9a657
 pkgrel=1
 pkgdesc="Metadata anonymisation toolkit (git version)"
 arch=('any')
