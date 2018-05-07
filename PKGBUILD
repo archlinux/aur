@@ -10,8 +10,8 @@ depends=('fontconfig')
 conflicts=('otf-libertine-git' 'otf-libertinus-git')
 arch=('any')
 license=('custom: OFL')
-url='https://github.com/khaledhosny/libertinus'
-source=("https://github.com/khaledhosny/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.zip")
+url='https://github.com/libertinus-fonts/libertinus'
+source=("https://github.com/libertinus-fonts/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.zip")
 sha256sums=('7201f2ec9a19276179739d44e3cb4fb5c6dcfa0613ba51ce798bf4bf4f490702')
 
 package() {
