@@ -30,6 +30,7 @@ optdepends=(
 	"mate-desktop>=1.14.0"
 	"lxde-common>=0.99.1"
 	"pop-icon-theme-git: Recommended icon theme"
+	"pop-shell-theme-git: Recommended shell theme"
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
