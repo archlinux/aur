@@ -156,6 +156,7 @@ _build_grub-common_and_bios() {
 
 	msg "Run ./configure for bios build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="pc" \
 		--target="i386" \
 		"${_EFIEMU}" \
