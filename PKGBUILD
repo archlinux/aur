@@ -18,7 +18,7 @@ pkgbase="spl-linux-vfio"
 pkgname=("spl-linux-vfio" "spl-linux-vfio-headers")
 
 pkgver=0.7.8.4.16.5.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-vfio-headers=4.16.5-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
