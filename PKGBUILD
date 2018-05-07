@@ -17,15 +17,15 @@
 pkgbase="spl-linux-vfio-git"
 pkgname=("spl-linux-vfio-git" "spl-linux-vfio-git-headers")
 
-pkgver=2018.05.02.r1073.84a80d5.4.16.5.1
-pkgrel=1
+pkgver=2018.05.07.r1074.g1149b62.4.16.5.1
+pkgrel=2
 makedepends=("linux-vfio-headers=4.16.5-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git>=2018.05.02.r1073.84a80d5" "kmod" "linux-vfio=4.16.5-1")
+depends=("spl-utils-common-git>=2018.05.07.r1074.g1149b62" "kmod" "linux-vfio=4.16.5-1")
 
 build() {
     cd "${srcdir}/spl"
