@@ -2,15 +2,17 @@
 
 pkgname=artanis
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
 arch=('x86_64')
 license=('GPL')
-source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-${pkgver}.tar.bz2" Makefile.in.patch)
+source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-${pkgver}.tar.bz2"{,.sig} Makefile.in.patch)
 sha256sums=('10cb24a4cefe3e2741521a3ba9efaa4befb8097f6ae1e9b4ab3e21c0f77dabdf'
+            'SKIP'
             '854bcd15ad995973c26fe28aa39573704ac31c334881603585be23cabd59c948')
+validpgpkeys=('F53B4C5695B5E4D56093432484696772846A0058') # Nala Ginrut
 options=('!strip')
 
 prepare() {
