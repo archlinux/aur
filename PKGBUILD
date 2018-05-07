@@ -2,7 +2,7 @@
 _branch='6b7efc1215f5c535e91d1f111b9b0c65b9e826a2'
 
 pkgname=kaggle-api
-pkgver=1.3.1
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 
