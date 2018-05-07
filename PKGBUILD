@@ -9,7 +9,6 @@ url="http://www.midish.org"
 license=('BSD')
 groups=()
 depends=(readline)
-makedepends=('git')
 source=("http://www.midish.org/$pkgname.tar.gz")
 md5sums=('39a704e0d927a1de0d30867850a7a07c')
 
