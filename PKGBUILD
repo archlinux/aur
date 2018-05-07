@@ -1,33 +1,36 @@
-# Maintainer: Daniel Cohen <dan@supercore.co.uk>
+#!/bin/bash
+# shellcheck disable=SC2034,SC2164
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
-pkgver=5.11.5
+pkgver=5.12.5
 pkgrel=1
-pkgdesc="A KCM for configuring Plymouth"
-arch=('any')
+pkgdesc="KCM to manage the Plymouth (Boot) theme"
+arch=('x86_64')
 url="https://cgit.kde.org/plymouth-kcm.git/"
 license=('GPL')
-depends=('plymouth' 'knewstuff' 'kconfig' 'kconfigwidgets' 'ki18n' 'kdeclarative')
-makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
-optdepends=()
-options=()
+depends=('plymouth' 'knewstuff' 'kdeclarative')
+makedepends=('extra-cmake-modules' 'qt5-tools')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('14039826af4849a7a9d60fb34d4697c43068af7a17a10f38de3f0f06cbf34e94'
-'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
+sha256sums=('29824b1252ce691bd247cc91a49a5def2a86f47443a01edb2e6f9d26d25962bb'
+            'SKIP')
+validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E') # Jonathan Riddell
 
 prepare() {
-    mkdir -p $srcdir/${pkgname}-$pkgver/build
+	mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${pkgname}-$pkgver/build"
-	cmake .. -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
-             -DCMAKE_BUILD_TYPE=Release \
-             -DBUILD_TESTING=OFF
+	cd build
+	cmake ../"$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname}-$pkgver/build"
+	cd build
+	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
 }
