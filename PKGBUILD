@@ -1,11 +1,11 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=peertube
-pkgver=1.0.0_beta.3
-_pkgver=1.0.0-beta.3
-pkgrel=3
+pkgver=1.0.0_beta.4
+_pkgver=1.0.0-beta.4
+pkgrel=1
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
-depends=("nodejs" "ffmpeg" "postgresql" "openssl" "redis" "nginx-mainline")
+depends=("nodejs-lts-carbon" "ffmpeg" "postgresql" "openssl" "redis" "nginx-mainline")
 makedepends=("yarn" "npm" "python2")
 url="https://joinpeertube.org/"
 license=("AGPL")
@@ -13,7 +13,7 @@ backup=('etc/peertube/production.yaml')
 install=$pkgname.install
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$_pkgver/$pkgname-v$_pkgver.zip"
         "$pkgname.install")
-sha256sums=("6c6714d5229fcfaa5215fedc40e3dd476f39cf7cc62a27ab55e5bb082bd2509c"
+sha256sums=("4d2b60e978c9b170c733b645440b1ea29ac8b69d85adc23c36fa58a9c9db20d6"
             "23116acd08dcc84832b814a0bfa3ef50a449a44852cc70b343ac4b09816a5278")
 
 build() {
