@@ -1,6 +1,6 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 pkgname=firejail-apparmor
-pkgver=0.9.52
+pkgver=0.9.54~rc1
 pkgrel=1
 pkgdesc="Apparmor support for Firejail"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ backup=('etc/firejail/login.users'
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
 #source=(${pkgname}-${pkgver}.tar.gz::https://github.com/netblue30/${pkgname}/archive/$pkgver.tar.gz)
 source=(https://sourceforge.net/projects/firejail/files/firejail/firejail-${pkgver}.tar.xz{,.asc})
-sha256sums=('da14c93ebc0e8deb420ab9979d1c006ecc98b5b310b27cae43f0c623c9471471'
+sha256sums=('fa86ea0a41a70cdd2eed9306eb5840d1101818c75a21e3b9f7ddad55502cd203'
             'SKIP')
 
 build() {
