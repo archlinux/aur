@@ -35,7 +35,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
   # repair
   cp -r "$pkgdir"/{share,bin} "$pkgdir"/usr
   rm -r "$pkgdir"/{share,bin}
