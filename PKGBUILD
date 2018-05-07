@@ -1,17 +1,17 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=xplor-nih
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc="XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH"
 arch=('x86_64')
 url="https://nmr.cit.nih.gov/xplor-nih/"
 license=('custom')
-install=${pkgname}.install
-depends=(ncurses5-compat-libs)
+depends=('ncurses5-compat-libs')
 source=('LICENSE'
         "${pkgname}.md5")
 md5sums=('SKIP'
          'SKIP')
+options=('!strip')
 
 prepare() {
     if [[ ! -r "../${pkgname}-${pkgver}-db.tar.gz" || ! -r "../${pkgname}-${pkgver}-Linux_x86_64.tar.gz" ]]; then
@@ -25,13 +25,25 @@ prepare() {
 
     bsdtar xfz ../${pkgname}-${pkgver}-db.tar.gz
     bsdtar xfz ../${pkgname}-${pkgver}-Linux_x86_64.tar.gz
+
+    sed -i "s|pwd=\`pwd\`|pwd=/opt/${pkgname}-${pkgver}|" "${pkgname}-${pkgver}/configure"
+    sed -i "s|XPLOR_DIR=__XPLOR_DIR__|XPLOR_DIR=$(pwd)/${pkgname}-${pkgver}|" "${pkgname}-${pkgver}/bin/xplor.in"
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure -symlinks symlinks/
+
+    # revert change from prepare()
+    sed -i "s|^XPLOR_DIR=.*$|XPLOR_DIR=/opt/${pkgname}-${pkgver}|" "bin/xplor"
 }
 
 package() {
-    install -d "${pkgdir}/etc/profile.d/"
-    install -d "${pkgdir}/opt/"
+    install -D -t "${pkgdir}/usr/bin/" ${pkgname}-${pkgver}/symlinks/*
+    find ${pkgname}-${pkgver}/symlinks/ -delete
 
-    echo "export PATH=\$PATH:/opt/${pkgname}-${pkgver}/bin:/opt/${pkgname}-${pkgver}/bin.Linux_x86_64" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
-	cp -R "${pkgname}-${pkgver}" "${pkgdir}/opt/"
+    install -d "${pkgdir}/opt/"
+    cp -R "${pkgname}-${pkgver}" "${pkgdir}/opt/"
+
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
