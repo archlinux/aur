@@ -3,17 +3,15 @@
 
 pkgname=ccid
 pkgver=1.4.29
-pkgrel=2
-_magic_dl_id=4238
+pkgrel=3
 pkgdesc='A generic USB Chip/Smart Card Interface Devices driver'
 arch=('x86_64')
-url='http://pcsclite.alioth.debian.org/ccid.html'
+url='https://ccid.apdu.fr/'
 license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusb' 'flex')
 backup=('etc/reader.conf.d/libccidtwin')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ludovic.rousseau@free.fr>
-source=("https://alioth.debian.org/frs/download.php/file/${_magic_dl_id}/${pkgname}-${pkgver}.tar.bz2"
-        "https://alioth.debian.org/frs/download.php/file/$((_magic_dl_id+1))/${pkgname}-${pkgver}.tar.bz2.asc")
+source=("https://ccid.apdu.fr/files/${pkgname}-${pkgver}.tar.bz2"{,.asc})
 sha256sums=('a5432ae845730493c04e59304b5c0c6103cd0e2c8827df57d69469a3eaaab84d'
             'SKIP')
 
