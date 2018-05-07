@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.7.0.r177.g2640f25072
+pkgver=1.7.0.r317.g28801f91c4
 pkgrel=1
 pkgdesc='VP8 and VP9 video codecs (with all possible options, git version)'
 arch=('i686' 'x86_64')
@@ -19,21 +19,15 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
     cd "$pkgname"
     
     # select target architecture
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _target='--target=x86_64-linux-gcc'
-        
-    elif [ "$CARCH" = 'i686' ] 
-    then
-        _target='--target=x86-linux-gcc'
-    fi
+    [ "$CARCH" = 'x86_64' ] && _target='--target=x86_64-linux-gcc'
+    [ "$CARCH" = 'i686'   ] && _target='--target=x86-linux-gcc'
     
     ./configure \
         --prefix='/usr' \

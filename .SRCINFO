@@ -1,6 +1,6 @@
 pkgbase = libvpx-full-git
 	pkgdesc = VP8 and VP9 video codecs (with all possible options, git version)
-	pkgver = 1.7.0.r177.g2640f25072
+	pkgver = 1.7.0.r317.g28801f91c4
 	pkgrel = 1
 	url = http://www.webmproject.org/code/
 	arch = i686
