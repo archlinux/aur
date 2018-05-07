@@ -1,7 +1,7 @@
 pkgbase = simple-package-manager
 	pkgdesc = A simple commandline package manager for AppImages written in bash
 	pkgver = 0.2.03
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simonizor.net
 	arch = any
 	license = GPL2
