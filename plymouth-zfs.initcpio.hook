@@ -27,19 +27,19 @@ zfs_get_bootfs () {
 
 zfs_decrypt_fs() {
     dataset=$1
-    
+
     # check if 'zfs load-key' is available
     zfs 2>&1 | grep load-key > /dev/null || return 0
-    
+
     # check if dataset is encrypted
     [ "$(zfs get -H -o value encryption "${dataset}")" != "off" ] || return 0
-    
-    # get the encryption root
-    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
-    
+
     # check if key is already loaded
     [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] || return 0
     
+    # get the encryption root
+    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
+
     # finally load the key
     plymouth ask-for-password --prompt="Password for ${dataset} dataset" --dont-pause-progress --number-of-tries=5 --command="zfs load-key ${encryptionroot}"
     
@@ -75,6 +75,7 @@ zfs_mount_handler () {
     fi
 
     local node="$1"
+    local rootmnt=$(zfs get -H -o value mountpoint "${ZFS_DATASET}")
     local tab_file="${node}/etc/fstab"
     local zfs_datasets="$(zfs list -H -o name -t filesystem -r ${ZFS_DATASET})"
 
@@ -90,7 +91,6 @@ zfs_mount_handler () {
                     if findmnt -snero source -F "${tab_file}" -S "${dataset}" > /dev/null 2>&1; then
                         opt=$(findmnt -snero options -F "${tab_file}" -S "${dataset}")
                         mnt=$(findmnt -snero target -F "${tab_file}" -S "${dataset}")
-                        
                         zfs_decrypt_fs "${dataset}"
                         mount -t zfs -o "${opt}" "${dataset}" "${node}${mnt}"
                     fi
@@ -98,7 +98,7 @@ zfs_mount_handler () {
                 ;;
             *)
                 zfs_decrypt_fs "${dataset}"
-                mount -t zfs -o "zfsutil,${rwopt_exp}" "${dataset}" "${node}${mountpoint}"
+                mount -t zfs -o "zfsutil,${rwopt_exp}" "${dataset}" "${node}/${mountpoint##${rootmnt}}"
                 ;;
         esac
     done
@@ -114,7 +114,17 @@ run_hook() {
     # Wait 15 seconds for ZFS devices to show up
     [ "${zfs_wait}" = "" ] && ZFS_WAIT="15" || ZFS_WAIT="${zfs_wait}"
 
-    [ "${root}" = "zfs" ] && mount_handler="zfs_mount_handler"
+    case ${root} in
+        # root=zfs
+        "zfs")
+            mount_handler="zfs_mount_handler"
+            ;;
+        # root=ZFS=... syntax (grub)
+        "ZFS="*)
+            mount_handler="zfs_mount_handler"
+            ZFS_DATASET="${root#*[=]}"
+            ;;
+    esac
 
     case ${zfs} in
         "")

@@ -1,8 +1,8 @@
 # Maintainer: Jan Houben <jan@nexttrex.de>
 
 pkgname=plymouth-zfs
-pkgver=1
-pkgrel=5
+pkgver=2
+pkgrel=1
 pkgdesc="initcpio hook to support native zfs encryption for plymouth"
 arch=('any')
 license=('MIT')
@@ -16,7 +16,7 @@ install=plymouth-zfs.install
 source=("plymouth-zfs.initcpio.hook"
         "plymouth-zfs.initcpio.install"
         "plymouth-zfs.install")
-sha256sums=('01818d81516ccded400b313af6bd0f8a83f27cad622de36517d6cc7413bcd7ac'
+sha256sums=('4fc0eb84fbd8a62babbd1f85a5db7d467eb1c4178218a40a98853a62f1135176'
             '830d5231b079d83860db7e7d63839e1ec7e163311ae7e9dcd46a8358fabaf9ad'
             '0910896056921ebedc1eb910d38b64d8815790f042cb3e9bc07a1a49e31e3b2b')
             
