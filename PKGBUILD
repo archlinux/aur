@@ -18,7 +18,7 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.4.r91.gccede9ddd
+pkgver=v0.6.4.r114.g135263180
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -38,7 +38,7 @@ sha256sums=('SKIP')
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
-[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
+[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
 
 # Set options for qmake
 _optClang=''
