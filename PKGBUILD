@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=quiterss-git
-pkgver=0.18.10.r2.g2223958e
+pkgver=0.18.10.r12.gaf5068e5
 pkgrel=1
 pkgdesc="Fast and light RSS/Atom feed reader written in Qt/С++"
 arch=('x86_64')
@@ -21,7 +21,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  qmake-qt5 CONFIG+=release PREFIX=/usr
+  qmake-qt5 CONFIG+=release PREFIX=/usr \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
