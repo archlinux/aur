@@ -1,0 +1,17 @@
+pkgbase = exponent-exp
+	pkgdesc = The command-line tool for creating and publishing Expo apps
+	pkgver = 53.1.0
+	pkgrel = 1
+	url = https://expo.io
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = exp-53.1.0.tgz
+	source = https://registry.npmjs.org/exp/-/exp-53.1.0.tgz
+	source = LICENSE
+	md5sums = 014d80ce4cb5863562aa6f80560c3f03
+	md5sums = d9f3f23b432f31018852bdc26f020308
+
+pkgname = exponent-exp
+
