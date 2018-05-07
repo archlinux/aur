@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffnvcodec-headers
-pkgver=8.1.24.1
+pkgver=8.1.24.2
 pkgrel=1
 pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs'
 arch=('any')
