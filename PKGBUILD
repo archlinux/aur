@@ -24,6 +24,17 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname/lc0/build/src"
-    ls
     install -Dm755 lc0 $pkgdir/usr/bin/lc0
+	cd "$srcdir/$_pkgname/lc0/build/src/selfplay"
+    install -Dm644 libselfplay.so $pkgdir/usr/lib/libselfplay.so
+	cd "$srcdir/$_pkgname/lc0/build/src/mcts"
+    install -Dm644 libmcts.so $pkgdir/usr/lib/libmcts.so
+	cd "$srcdir/$_pkgname/lc0/build/src/chess"
+    install -Dm644 libchess.so $pkgdir/usr/lib/libchess.so
+	cd "$srcdir/$_pkgname/lc0/build/src/neural"
+    install -Dm644 libneural.so $pkgdir/usr/lib/libneural.so
+	cd "$srcdir/$_pkgname/lc0/build/src/utils"
+    install -Dm644 libutils.so $pkgdir/usr/lib/libutils.so
+	cd "$srcdir/$_pkgname/lc0/build/src/neural/cuda"
+    install -Dm644 libneural_cudnn.so $pkgdir/usr/lib/libneural_cudnn.so
 }
