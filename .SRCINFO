@@ -29,7 +29,6 @@ pkgbase = pamac-aur
 	depends = gnutls>=3.4
 	depends = appstream-glib
 	depends = archlinux-appstream-data
-	depends = pacman-mirrors>=4.9.1
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = pamac-tray-appindicator: tray icon for KDE
