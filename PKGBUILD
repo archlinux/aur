@@ -16,7 +16,7 @@ md5sums=('19121f864cd5655b13b946058fd89863')
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}  
   sed -i 's:^#!/usr/bin/env python$:\02:' ${_pkgname}-${pkgver}-py2/examples/*.py
-  sed -i '77,91 {s/^/#/}' $srcdir/${_pkgname}-${pkgver}-py2/setup.py
+  sed -i '77,92 {s/^/#/}' $srcdir/${_pkgname}-${pkgver}-py2/setup.py
 }
 
 build() {
