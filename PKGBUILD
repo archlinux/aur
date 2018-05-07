@@ -2,7 +2,7 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-tray-appindicator
-_pkgver=6.2.7
+_pkgver=6.3.1
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Tray icon using appindicator which feets better in KDE"
@@ -16,7 +16,7 @@ options=(!emptydirs)
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz"
         #"git-$pkgver-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v$_pkgver...master.patch"
        )
-sha256sums=('0a3f36b5d67ca38f3f535ebd7000b3247e617e89dc8a0dc45628328d8646d58b')
+sha256sums=('25d0c977b3d1c6a8657f8ab2dab67f82b55b090c2f6a84d34dd294d85754431d')
 
 prepare() {
   cd "$srcdir/pamac-$pkgver"
