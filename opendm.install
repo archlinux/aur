@@ -1,0 +1,7 @@
+post_install() {
+	echo ">To start OpenDM on boot put this in your shell's profile e.g. ~/.bash_profile or ~/.zprofile."
+	echo '>>>export OPENDM_TTY="tty1"'
+	echo '>>>if [ -f "$HOME/.config/opendm/.opendmstart" ]; then'
+	echo '>>>    . ~/.config/opendm/.opendmstart'
+	echo '>>>fi'
+}
