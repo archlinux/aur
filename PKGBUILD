@@ -34,7 +34,8 @@ package() {
 
 	install -m755 -D libcrypto.so.0.9.8 $pkgdir/opt/GuitarPro6
 	install -m755 -D libssl.so.0.9.8 $pkgdir/opt/GuitarPro6
-	sed -i 's|Icon=guitarpro6.png|Icon=guitarpro6|g' $pkgdir/usr/share/applications/GuitarPro6.desktop
+	sed -i 's|Icon=guitarpro6.png|Icon=GP6-icon|g' $pkgdir/usr/share/applications/GuitarPro6.desktop
+	mv $pkgdir/usr/share/pixmaps/guitarpro6.png $pkgdir/usr/share/pixmaps/GP6-icon.png
 }
 
 md5sums=('3de3b59151b33965a92cd4f51162aeee'
