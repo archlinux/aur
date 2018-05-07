@@ -1,6 +1,6 @@
 pkgbase = spl-linux-hardened
 	pkgver = 0.7.8_4.16.7.a.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
