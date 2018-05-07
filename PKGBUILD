@@ -2,11 +2,11 @@
 
 pkgname=graphpath
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphpath generates an ASCII network diagram from the route table of a Unix/Linux router'
 arch=('any')
-url=https://github.com/alphabetum/"${pkgname}"
-license=('BSD3')
+url=https://github.com/ocochard/"${pkgname}"
+license=('BSD')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/ocochard/"${pkgname}"/archive/v"${pkgver}".tar.gz)
 sha256sums=('9e018bbb44f748595d4eb030896ccc195a9a75db773160da480743f31b5b8272')
 

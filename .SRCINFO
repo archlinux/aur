@@ -1,10 +1,10 @@
 pkgbase = graphpath
-	pkgdesc = Graphpath generates an ASCII network diagram from the route table of a Unix/Linux
+	pkgdesc = Graphpath generates an ASCII network diagram from the route table of a Unix/Linux router
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://github.com/alphabetum/graphpath
+	pkgrel = 2
+	url = https://github.com/ocochard/graphpath
 	arch = any
-	license = BSD3
+	license = BSD
 	source = graphpath-1.0.tar.gz::https://github.com/ocochard/graphpath/archive/v1.0.tar.gz
 	sha256sums = 9e018bbb44f748595d4eb030896ccc195a9a75db773160da480743f31b5b8272
 
