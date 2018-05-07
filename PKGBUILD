@@ -1,8 +1,9 @@
+# Maintainer: Christos Nouskas <nous@artixlinux.org>
 # Maintainer: Thibault Suzanne <thi [DOT] suzanne [AT] gmail [DOT] com>
 
 pkgname=ttf-inconsolata-hellenic
-pkgver=1.17
-pkgrel=2
+pkgver=1.19
+pkgrel=1
 pkgdesc="Monospace font for pretty code listings and for the terminal (augmented with Hellenic glyphs)"
 arch=("any")
 url="http://www.cosmix.org/software/"
