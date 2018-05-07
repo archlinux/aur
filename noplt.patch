@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 4fff8702d..cd2b19aab 100644
+--- a/setup.py
++++ b/setup.py
+@@ -182,7 +182,7 @@ import distutils.sysconfig
+ cfg_vars = distutils.sysconfig.get_config_vars()
+ for key, value in cfg_vars.items():
+     if type(value) == str:
+-        cfg_vars[key] = value.replace("-Wstrict-prototypes", "")
++        cfg_vars[key] = value.replace("-Wstrict-prototypes", "").replace("-fno-plt", "")
+ 
+ ################################################################################
+ # Custom build commands

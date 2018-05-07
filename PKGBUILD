@@ -4,27 +4,31 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
-_commit=2b47480
-pkgver=0.3.1
-pkgrel=2
+_commit=200fb22
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
-             'gcc6' 'cmake' 'cuda' 'cudnn' 'git')
+             'gcc5' 'cmake' 'cuda' 'cudnn' 'git' 'python2-typing')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#commit=$_commit"
         "git://github.com/facebookincubator/gloo"
         "git://github.com/pybind/pybind11"
-        "git://github.com/nanopb/nanopb")
+        "git://github.com/nanopb/nanopb"
+        noplt.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '8e845663abbbd78bd4d3fcb8997b85c644a09470b166ed3a95429636670eb4ef')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  patch -Np1 -i "${srcdir}"/noplt.patch
 
   git submodule init
   git config submodule."torch/lib/gloo".url ${srcdir}/gloo
@@ -67,10 +71,10 @@ build() {
   cd "$srcdir/${_pkgname}-${pkgver}-py2-cuda"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
-  CC=gcc-6 \
-  CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
+  CC=gcc-5 \
+  CXX=g++-5 \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
@@ -83,10 +87,10 @@ build() {
   cd "$srcdir/${_pkgname}-${pkgver}-py3-cuda"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
-  CC=gcc-6 \
-  CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
+  CC=gcc-5 \
+  CXX=g++-5 \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
@@ -97,7 +101,7 @@ build() {
 }
 
 package_python2-pytorch() {
-  depends+=('python2' 'python2-yaml' 'python2-numpy')
+  depends+=('python2' 'python2-yaml' 'python2-numpy' 'python2-typing')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
@@ -111,7 +115,7 @@ package_python-pytorch() {
 }
 
 package_python2-pytorch-cuda() {
-  depends+=('python2' 'python2-yaml' 'python2-numpy' 'cuda' 'cudnn')
+  depends+=('python2' 'python2-yaml' 'python2-numpy' 'cuda' 'cudnn' 'python2-typing')
   provides=('python2-pytorch')
   conflicts=('python2-pytorch')
   cd "$srcdir/${_pkgname}-${pkgver}-py2-cuda"
