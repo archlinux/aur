@@ -2,7 +2,7 @@
 # Maintainer: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3
-pkgver=3.5.0
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('erlang-nox')
 optdepends=('rebar3-zsh: ZSH completion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rebar/rebar3/archive/${pkgver}.tar.gz")
-md5sums=('f641e18c0401f37c758e2fc06a75f992')
+md5sums=('f62444f5fe49821d7a84ff083493e8f7')
 
 
 build() {
