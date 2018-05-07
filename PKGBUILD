@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=${_pkgname}-git
-pkgver=1.3.1.r0.g15966bc
+pkgver=1.3.1.r45.g22b9fe0
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(gtk3 libkeybinder3 ffmpeg)
-makedepends=(git cmake vala gettext txt2man)
+makedepends=(git meson vala gettext txt2man)
 optdepends=(
   'gst-plugins-good: Recording under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
@@ -19,29 +19,25 @@ optdepends=(
 source=(git+https://github.com/phw/${_pkgname}.git)
 sha1sums=('SKIP')
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd "build"
-  cmake ${srcdir}/${_pkgname}\
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTS=ON \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DGSETTINGS_COMPILE=OFF \
-    -DENABLE_FILECHOOSERNATIVE=ON
-  make
+  cd "${srcdir}/${_pkgname}"
+  meson \
+    --prefix=/usr \
+    --buildtype=release \
+    -Denable-filechoosernative=true \
+    builddir
+  cd builddir
+  ninja
 }
 
 check() {
-  cd "build"
-  make test
+  cd "${srcdir}/${_pkgname}/builddir"
+  ninja test
 }
 
 package() {
-  cd "build"
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${_pkgname}/builddir"
+  DESTDIR=${pkgdir} ninja install
 }
 
 pkgver() {
