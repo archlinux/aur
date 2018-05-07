@@ -1,7 +1,7 @@
 pkgbase = lib32-libvdpau-va-gl
 	pkgdesc = VDPAU driver with OpenGL/VAAPI backend
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/i-rinat/libvdpau-va-gl
 	arch = x86_64
 	license = LGPL3
@@ -11,7 +11,6 @@ pkgbase = lib32-libvdpau-va-gl
 	depends = lib32-libva
 	depends = lib32-libgl
 	depends = lib32-glu
-	depends = lib32-ffmpeg
 	source = https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2.tar.gz
 	sha512sums = 074f06a0684a28dfd2690d7f878d1e1c1a6a61cb4fba00b54c4b01e9da7baa627333fb59715de0dfb757637afb269c1a62caa3955d53cea75f4a9513c4286680
 
