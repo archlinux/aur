@@ -1,0 +1,21 @@
+pkgbase = fast-rtps-git
+	pkgdesc = Implementation of RTPS standard by eProsima
+	pkgver = v1.5.0.r215.095d657e
+	pkgrel = 1
+	url = http://www.eprosima.com/index.php/products-all/eprosima-fast-rtps
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = openssl
+	makedepends = gradle
+	depends = bash
+	depends = openssl
+	depends = java-environment
+	provides = fast-rtps
+	conflicts = fast-rtps
+	source = fast-rtps::git+https://github.com/eProsima/Fast-RTPS
+	md5sums = SKIP
+
+pkgname = fast-rtps-git
+
