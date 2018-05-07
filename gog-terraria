@@ -1,4 +1,5 @@
 #!/bin/sh
+export TERM=xterm
 
 run='/opt/gog-terraria/start.sh'
 cd /opt/gog-terraria/  # The launcher fails unless in its dir.

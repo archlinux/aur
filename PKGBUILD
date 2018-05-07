@@ -1,21 +1,25 @@
 # Maintainer: Swix
 
 pkgname=gog-terraria
-pkgver=2.17.0.21
+pkgver=1.3.5.3.14602
 pkgrel=1
+epoch=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('sdl2')
-# If Firejail is installed, this application will be sandboxed automatically.
+makedepends=('libarchive')
 optdepends=('firejail: Automatically sandbox this application from your OS')
-source=("gog://${pkgname//-/_}_${pkgver}.sh"
+source=("gog://terraria_en_${pkgver//./_}.sh"
         "${pkgname}.desktop"
         "$pkgname")
-sha256sums=('630469066fafb8ab8c105f835d74be81b528095065fcfac871bd4e6eb5e62b5e'
+
+# bsdtar is really cool but I want to control what I'm extracting
+noextract=("terraria_en_${pkgver//./_}.sh")
+sha256sums=('f70d831caad51aa6c37a195a0740990c0625ce38b8e2302c290903b5559351ec'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
-            '939f39e8b8cbb30ae95648d299008df030b6c6e8e583893da1916e024b493e5b')
+            'afc115c0cbb42a12e082f5860c159eb8dcf525d360d2f9b167cc4ddb80ba03e7')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
@@ -24,14 +28,17 @@ DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to downl
 PKGEXT='.pkg.tar'
 
 prepare(){
-    # Unzip will produce an error code because it is unable to unzip the Installer.
-    # Therefore, a conditional into a no-op command will keep the PKGBUILD from failing
-    # Of course, if you have any real problems unzipping the PKGBUILD will not abort.
-    unzip -d "${srcdir}/terraria" "${pkgname//-/_}_${pkgver}.sh" || :
+    datasource="terraria_en_${pkgver//./_}.sh"
+
+    offset=`sed -n '/.*offset=.*head/{s/.*head -n \([0-9]*\).*/\1/p;q}' "$datasource"`
+    toskip=`sed -n '/filesizes=/{s/.*="\([0-9]*\)"/\1/p;q}' "$datasource"`
+
+    mkdir "${srcdir}/terraria"
+    tail -n+$(($offset+1)) "$datasource" | tail -c+$(($toskip+1)) | bsdtar -C "${srcdir}/terraria" -xvf- 2> /dev/null
 }
 
 package(){
-    cd "${srcdir}/terraria/data/noarch"
+    pushd "${srcdir}/terraria/data/noarch"
 
     # Install game
     install -d "${pkgdir}/opt/${pkgname}/"
@@ -56,4 +63,8 @@ package(){
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm755 "${srcdir}/${pkgname}" \
         "${pkgdir}/usr/bin/${pkgname}"
+
+    # Fix permissions
+    chmod +x "${pkgdir}/opt/${pkgname}/game/Terraria"{,Server}{,.bin.x86,.bin.x86_64}
+    popd
 }
