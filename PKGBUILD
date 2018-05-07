@@ -1,14 +1,16 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=ftool
-pkgver=3.01
+pkgver=4.00
 pkgrel=1
 pkgdesc="Ftool is a program designed for instruction on the analysis of plane frame structures"
 arch=('i686' 'x86_64')
-url="http://www.alis-sol.com.br/ftool/index_en.html"
+url="https://www.ftool.com.br/Ftool/"
 # license=('')
-source=('http://www.tecgraf.puc-rio.br/ftp_pub/lfm/ftool301linux32_64.tgz')
-md5sums=('0c7101921ff92a6ac317bedd98be0623')
- 
+source=('hib://ftool400linux32_64.tgz')
+md5sums=('c4e97554761d9d940755059ee439e6e7')
+options=(!strip)
+DLAGENTS+=("hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf.")
+
 package() {
 
 mkdir -p $pkgdir/usr/bin
