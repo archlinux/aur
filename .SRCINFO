@@ -1,6 +1,6 @@
 pkgbase = pop-gtk-theme-git
-	pkgdesc = An adaptive Gtk+ theme based on the Flat-Plat GTK+ theme.
-	pkgver = 2.0.1
+	pkgdesc = An adaptive Gtk+ theme based on the Materia GTK+ theme.
+	pkgver = 3.0.0.b4.r96.g2dcbce9
 	pkgrel = 1
 	url = https://github.com/system76/pop-gtk-theme
 	arch = any
@@ -11,10 +11,12 @@ pkgbase = pop-gtk-theme-git
 	makedepends = libsass>=3.3.6
 	makedepends = sassc>=3.3.2
 	makedepends = git
+	makedepends = parallel
 	depends = gtk3>=3.18.9
 	depends = gtk2>=2.24.30
 	depends = gdk-pixbuf2>=2.24.30
 	depends = gtk-engine-murrine>=0.98.1
+	depends = glib2
 	optdepends = gnome-shell>=3.18.3
 	optdepends = gnome-flashback>=3.18.2
 	optdepends = budgie-desktop>=10.2.7

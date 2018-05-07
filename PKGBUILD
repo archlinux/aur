@@ -1,9 +1,9 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-gtk-theme-git
 _pkgname=pop-gtk-theme
-pkgver=2.0.1
+pkgver=3.0.0.b4.r96.g2dcbce9
 pkgrel=1
-pkgdesc="An adaptive Gtk+ theme based on the Flat-Plat GTK+ theme."
+pkgdesc="An adaptive Gtk+ theme based on the Materia GTK+ theme."
 arch=("any")
 url="https://github.com/system76/pop-gtk-theme"
 license=('GPL2' 'CCPL')
@@ -12,6 +12,7 @@ depends=(
 	"gtk2>=2.24.30"
 	"gdk-pixbuf2>=2.24.30"
 	"gtk-engine-murrine>=0.98.1"
+	"glib2"
 )
 makedepends=(
 	"inkscape"
@@ -19,6 +20,7 @@ makedepends=(
 	"libsass>=3.3.6"
 	"sassc>=3.3.2"
 	"git"
+	"parallel"
 )
 optdepends=(
 	"gnome-shell>=3.18.3"
@@ -39,8 +41,8 @@ sha256sums=("SKIP")
 
 build() {
   	cd "${_pkgname}"
+	make clean
 	make
-	make assets
 }
 
 package() {
@@ -50,6 +52,6 @@ package() {
 
 pkgver() {
   	cd "${_pkgname}"
-	echo "$(git describe --tags | cut -d- -f1 | sed 's/^v//')"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
