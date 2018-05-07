@@ -7,7 +7,7 @@ pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
 arch=(any)
 depends=(
-	python-certify
+	python-certifi
 	python-clint
 	python-docopt
 	python-fudge
