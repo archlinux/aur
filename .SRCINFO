@@ -7,7 +7,8 @@ pkgbase = simple-package-manager
 	license = GPL2
 	depends = bash
 	depends = jq
-	source = https://github.com/simoniz0r/simple-package-manager/archive/v0.2.03.tar.gz
+	conflicts = spm
+	source = https://github.com/simoniz0r/spm/archive/v0.2.03.tar.gz
 	md5sums = 113e992b55500aadca2f149c78a51712
 
 pkgname = simple-package-manager
