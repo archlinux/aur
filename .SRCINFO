@@ -15,6 +15,7 @@ pkgbase = pop-icon-theme-git
 	optdepends = mate-desktop>=1.14.0
 	optdepends = lxde-common>=0.99.1
 	optdepends = pop-gtk-theme-git: Recommended gtk theme
+	optdepends = pop-shell-theme-git: Recommended shell theme
 	provides = pop-icon-theme
 	conflicts = pop-icon-theme
 	source = git+https://github.com/system76/pop-icon-theme.git

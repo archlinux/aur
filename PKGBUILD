@@ -17,6 +17,7 @@ optdepends=(
 	"mate-desktop>=1.14.0"
 	"lxde-common>=0.99.1"
 	"pop-gtk-theme-git: Recommended gtk theme"
+	"pop-shell-theme-git: Recommended shell theme"
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
