@@ -1,0 +1,21 @@
+pkgbase = budgie-mailnag-applet
+	pkgdesc = Mailnag applet for Budgie Desktop
+	pkgver = 0.1.0+1+90824cd
+	pkgrel = 1
+	url = https://github.com/ilgarmehmetali/budgie-mailnag-applet
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = budgie-desktop
+	depends = json-glib
+	depends = mailnag
+	depends = libpeas
+	source = budgie-mailnag-applet::git+https://github.com/ilgarmehmetali/budgie-mailnag-applet.git#commit=90824cd4025c624c2fba0e7b20fc98c6de3bcc75
+	sha512sums = SKIP
+
+pkgname = budgie-mailnag-applet
+
