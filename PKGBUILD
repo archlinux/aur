@@ -7,9 +7,9 @@
 
 pkgname=keepass-plugin-rpc
 epoch=1
-pkgver=1.7.3
-_git_tag=1.7.3.1
-pkgrel=2
+pkgver=1.8.0
+_git_tag=1.8.0
+pkgrel=1
 pkgdesc="RPC plugin for Keepass (used by the KeeFox addon for Firefox)"
 arch=(any)
 url="https://github.com/kee-org/keepassrpc"
@@ -24,4 +24,4 @@ package() {
     install -m 644 -D "KeePassRPC-${pkgver}.plgx" "${pkgdir}/usr/share/keepass/plugins/KeePassRPC.plgx"
 }
 
-sha384sums=('a08e6c433a220ff9ee221dabacd3459f0f14d3911c200e311ba048209d328ca7b81581f6d95a750aa45508bd39bc96c3')
+sha256sums=('8d9d5e390fc4a3b8d6d8f24dd26a712dc032c4ff49708c8ec32c95a2e27594b5')
