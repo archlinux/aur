@@ -2,13 +2,13 @@
 
 pkgname=xed-git
 _pkgbasename=xed
-pkgver=master.lmde3.r0.gd5ccae3
+pkgver=1.8.0.r0.g7951868
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm'
-        'libpeas')
+        'libpeas' 'xapps' 'gspell')
 makedepends=('git' 'gnome-common' 'iso-codes' 'gobject-introspection')
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
