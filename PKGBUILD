@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=budgie-workspaces-compact-applet
-pkgver=0.0.0.56e63d6
+pkgver=0.0.0+1+56e63d6
 pkgrel=1
 pkgdesc="Compact Workspace Switcher for Budgie Desktop"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/dgaw/budgie-workspaces-compact"
 depends=('budgie-desktop' 'libwnck3' 'python' 'python-gobject')
 
 _commit='56e63d65ccd5bd8da38608d3d895e56e4187e0d5'
-source=("${pkgname}::git+https://github.com/dgaw/budgie-workspaces-compact.git#commit=${_commit}")
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 package() {
