@@ -1,7 +1,7 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-icon-theme-git
 _pkgname=pop-icon-theme
-pkgver="r1002.2b96014fb"
+pkgver="r2148.b1b46e861"
 pkgrel=1
 pkgdesc="A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus."
 arch=("any")
