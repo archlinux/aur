@@ -12,6 +12,7 @@ pkgbase = lc0-cudnn-git
 	makedepends = gtest
 	depends = cuda
 	depends = cudnn
+	depends = boost
 	source = lc0-cudnn::git+https://github.com/glinscott/leela-chess#branch=lc0/cmake
 	md5sums = SKIP
 
