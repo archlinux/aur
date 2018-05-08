@@ -22,7 +22,9 @@ pkgbase = snapd
 	options = !strip
 	options = emptydirs
 	source = snapd-2.32.6.tar.gz::https://github.com/snapcore/snapd/archive/2.32.6.tar.gz
+	source = 0001-cmd-libsnap-fix-compile-error-on-more-restrictive-gc.patch
 	sha256sums = 6bc2b4c2005713cdff711c2ddb937289b95e8459091f0eb9cda9f177e81181e7
+	sha256sums = df09d7a85da832781eb32acf9dafc3a41a78d3419666b0727db2921f0d93a81b
 
 pkgname = snapd
 

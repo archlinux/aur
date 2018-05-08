@@ -1,0 +1,147 @@
+From cfc627366caf52f72c943bab9cf3d7cdbace108a Mon Sep 17 00:00:00 2001
+Message-Id: <cfc627366caf52f72c943bab9cf3d7cdbace108a.1525764131.git.maciej.zenon.borzecki@canonical.com>
+From: Zygmunt Krynicki <me@zygoon.pl>
+Date: Tue, 8 May 2018 07:17:46 +0200
+Subject: [PATCH] cmd/libsnap: fix compile error on more restrictive gcc
+ (#5138)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cmd/libsnap: fix compilation errors on gcc 8.x
+
+snap-confine/ns-support-test.c: In function ‘sc_test_use_fake_ns_dir’:
+snap-confine/ns-support-test.c:56:24: error: cast between incompatible function types from ‘int (*)(const char *)’ to ‘void (*)(void *)’ [-Werror=cast-funct
+ion-type]
+   g_test_queue_destroy((GDestroyNotify) unsetenv,
+                        ^
+
+libsnap-confine-private/utils-test.c: In function ‘_test_sc_nonfatal_mkpath’:
+libsnap-confine-private/utils-test.c:143:23: error: cast between incompatible function types from ‘int (*)(const char *)’ to ‘void (*)(void *)’ [-Werror=cas
+t-function-type]
+  g_test_queue_destroy((GDestroyNotify) rmdir, (char *)dirname);
+                       ^
+libsnap-confine-private/utils-test.c:156:23: error: cast between incompatible function types from ‘int (*)(const char *)’ to ‘void (*)(void *)’ [-Werror=cas
+t-function-type]
+  g_test_queue_destroy((GDestroyNotify) rmdir, (char *)subdirname);
+
+Signed-off-by: Zygmunt Krynicki <zygmunt.krynicki@canonical.com>
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+---
+ cmd/libsnap-confine-private/locking-test.c |  8 +++++++-
+ cmd/libsnap-confine-private/utils-test.c   | 24 ++++++++++++++++++----
+ cmd/snap-confine/ns-support-test.c         |  8 +++++++-
+ 3 files changed, 34 insertions(+), 6 deletions(-)
+
+diff --git a/cmd/libsnap-confine-private/locking-test.c b/cmd/libsnap-confine-private/locking-test.c
+index 28dd1e72e335e26c8a54a3f3373cfb2ea3b5e0d2..3f819349ce20ed11e41975c404f76e498ca6ec96 100644
+--- a/cmd/libsnap-confine-private/locking-test.c
++++ b/cmd/libsnap-confine-private/locking-test.c
+@@ -32,6 +32,12 @@ static void sc_set_lock_dir(const char *dir)
+ 	sc_lock_dir = dir;
+ }
+ 
++// A variant of unsetenv that is compatible with GDestroyNotify
++static void my_unsetenv(const char *k)
++{
++	unsetenv(k);
++}
++
+ // Use temporary directory for locking.
+ //
+ // The directory is automatically reset to the real value at the end of the
+@@ -50,7 +56,7 @@ static const char *sc_test_use_fake_lock_dir(void)
+ 		g_test_queue_free(lock_dir);
+ 		g_assert_cmpint(setenv("SNAP_CONFINE_LOCK_DIR", lock_dir, 0),
+ 				==, 0);
+-		g_test_queue_destroy((GDestroyNotify) unsetenv,
++		g_test_queue_destroy((GDestroyNotify) my_unsetenv,
+ 				     "SNAP_CONFINE_LOCK_DIR");
+ 		g_test_queue_destroy((GDestroyNotify) rm_rf_tmp, lock_dir);
+ 	}
+diff --git a/cmd/libsnap-confine-private/utils-test.c b/cmd/libsnap-confine-private/utils-test.c
+index e878260622c89fc61160b749e47d9e7fc3fbc08d..83364801e9b26505c11d42317d56fe102cf31c67 100644
+--- a/cmd/libsnap-confine-private/utils-test.c
++++ b/cmd/libsnap-confine-private/utils-test.c
+@@ -99,6 +99,22 @@ static void test_die_with_errno(void)
+ 	g_test_trap_assert_stderr("death message: Operation not permitted\n");
+ }
+ 
++// A variant of rmdir that is compatible with GDestroyNotify
++static void my_rmdir(const char *path)
++{
++	if (rmdir(path) != 0) {
++		die("cannot rmdir %s", path);
++	}
++}
++
++// A variant of chdir that is compatible with GDestroyNotify
++static void my_chdir(const char *path)
++{
++	if (chdir(path) != 0) {
++		die("cannot change dir to %s", path);
++	}
++}
++
+ /**
+  * Perform the rest of testing in a ephemeral directory.
+  *
+@@ -114,9 +130,9 @@ static void g_test_in_ephemeral_dir(void)
+ 	g_assert_cmpint(err, ==, 0);
+ 
+ 	g_test_queue_free(temp_dir);
+-	g_test_queue_destroy((GDestroyNotify) rmdir, temp_dir);
++	g_test_queue_destroy((GDestroyNotify) my_rmdir, temp_dir);
+ 	g_test_queue_free(orig_dir);
+-	g_test_queue_destroy((GDestroyNotify) chdir, orig_dir);
++	g_test_queue_destroy((GDestroyNotify) my_chdir, orig_dir);
+ }
+ 
+ /**
+@@ -130,7 +146,7 @@ static void _test_sc_nonfatal_mkpath(const gchar * dirname,
+ 				   G_FILE_TEST_IS_DIR));
+ 	// Use sc_nonfatal_mkpath to create the directory and ensure that it worked
+ 	// as expected.
+-	g_test_queue_destroy((GDestroyNotify) rmdir, (char *)dirname);
++	g_test_queue_destroy((GDestroyNotify) my_rmdir, (char *)dirname);
+ 	int err = sc_nonfatal_mkpath(dirname, 0755);
+ 	g_assert_cmpint(err, ==, 0);
+ 	g_assert_cmpint(errno, ==, 0);
+@@ -143,7 +159,7 @@ static void _test_sc_nonfatal_mkpath(const gchar * dirname,
+ 	g_assert_cmpint(errno, ==, EEXIST);
+ 	// Now create a sub-directory of the original directory and observe the
+ 	// results. We should no longer see errno of EEXIST!
+-	g_test_queue_destroy((GDestroyNotify) rmdir, (char *)subdirname);
++	g_test_queue_destroy((GDestroyNotify) my_rmdir, (char *)subdirname);
+ 	err = sc_nonfatal_mkpath(subdirname, 0755);
+ 	g_assert_cmpint(err, ==, 0);
+ 	g_assert_cmpint(errno, ==, 0);
+diff --git a/cmd/snap-confine/ns-support-test.c b/cmd/snap-confine/ns-support-test.c
+index 542136cfb4a308abbe9898ec06c2bb913bdff00d..c67c69be7c76537866f7dbffbcf499d5aa68a4ae 100644
+--- a/cmd/snap-confine/ns-support-test.c
++++ b/cmd/snap-confine/ns-support-test.c
+@@ -35,6 +35,12 @@ static void sc_set_ns_dir(const char *dir)
+ 	sc_ns_dir = dir;
+ }
+ 
++// A variant of unsetenv that is compatible with GDestroyNotify
++static void my_unsetenv(const char *k)
++{
++	unsetenv(k);
++}
++
+ // Use temporary directory for namespace groups.
+ //
+ // The directory is automatically reset to the real value at the end of the
+@@ -53,7 +59,7 @@ static const char *sc_test_use_fake_ns_dir(void)
+ 		g_test_queue_free(ns_dir);
+ 		g_assert_cmpint(setenv("SNAP_CONFINE_NS_DIR", ns_dir, 0), ==,
+ 				0);
+-		g_test_queue_destroy((GDestroyNotify) unsetenv,
++		g_test_queue_destroy((GDestroyNotify) my_unsetenv,
+ 				     "SNAP_CONFINE_NS_DIR");
+ 		g_test_queue_destroy((GDestroyNotify) rm_rf_tmp, ns_dir);
+ 	}
+-- 
+2.17.0
+
