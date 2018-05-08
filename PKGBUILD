@@ -3,7 +3,7 @@
 _pkgname=keynav
 pkgname=$_pkgname-enhanced
 pkgrel=1
-pkgver=20170114
+pkgver=20180508
 pkgdesc="Ingenious and fast way to move the mouse pointer on the screen with keystrokes, with a few patches"
 arch=('i686' 'x86_64')
 url="https://github.com/Streetwalrus/keynav"
@@ -13,7 +13,7 @@ makedepends=('git' 'perl')
 provides=('keynav')
 conflicts=('keynav')
 source=("https://github.com/Streetwalrus/keynav/archive/$pkgver.tar.gz")
-md5sums=('f6829858a97b1f9834b1ecb47e590abe')
+md5sums=('f21835f86241457bc5c0e6e056cb2867')
 
 build(){
   cd $_pkgname-$pkgver
