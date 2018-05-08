@@ -1,0 +1,16 @@
+pkgbase = ros-kinetic-webkit-dependency
+	pkgdesc = ROS - This encapsulates the WebKit dependency for a specific ROS distribution and its Qt version.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = python2-pyqt5
+	source = ros-kinetic-webkit-dependency-1.1.0-0.tar.gz::https://github.com/ros-gbp/webkit_dependency-release/archive/release/kinetic/webkit_dependency/1.1.0-0.tar.gz
+	sha256sums = 5e90166cb40c736e14bcd5e97c99c90a038c787474e2678c5ea390d7e883c451
+
+pkgname = ros-kinetic-webkit-dependency
+
