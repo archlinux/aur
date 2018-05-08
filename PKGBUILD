@@ -1,11 +1,11 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=93+2+g9e5b7f8
+pkgver=94
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 depends=('python-magic' 'python-libarchive-c' 'python-setuptools' 'python-distro' 'python-defusedxml')
 optdepends=(
@@ -81,7 +81,7 @@ build() {
 check() {
   cd ${pkgname}
   PYTHONPATH=".:${PYTHONPATH}" py.test \
-    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf and not test_icc and not test_presenters'
+    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf and not test_icc and not test_berkeley_db'
 }
 
 package() {

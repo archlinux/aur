@@ -1,9 +1,8 @@
 pkgbase = diffoscope-git
 	pkgdesc = Tool for in-depth comparison of files, archives, and directories
-	pkgver = 93+2+g9e5b7f8
+	pkgver = 94
 	pkgrel = 1
 	url = https://diffoscope.org/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest
