@@ -1,5 +1,5 @@
 pkgname=xabber-web
-pkgver=1.0.11
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Open source XMPP client for Web"
 arch=(any)
@@ -7,7 +7,7 @@ url="https://github.com/redsolution/xabber-web"
 license=('GPL')
 depends=()
 source=("$pkgname::https://github.com/redsolution/xabber-web/archive/$pkgver.tar.gz")
-sha256sums=('93f3045f1b50620e3118f9db1373f5a56d0dce5c2175cd1e9a4c04c4e8ffb5df')
+sha256sums=('b3d7ef13ed65d3d4630f4448f5b2d8db6b4dfe73cc09b03fca713bf1cd986386')
 
 package() {
 	install -dm0755 "$pkgdir"/usr/share/webapps/xabber-web
