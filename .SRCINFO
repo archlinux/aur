@@ -1,6 +1,6 @@
 pkgbase = appimagelauncher-git
 	pkgdesc = A Helper application for running and integrating AppImages.
-	pkgver = 1alpha+git20180428.44f5a67
+	pkgver = 1alpha+git20180508.0c75415
 	pkgrel = 1
 	url = https://github.com/TheAssassin/AppImageLauncher
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = appimagelauncher-git
 	depends = shared-mime-info
 	depends = inotify-tools
 	depends = libarchive
+	depends = libbsd
 	source = git://github.com/TheAssassin/AppImageLauncher#tag=continuous
 	source = appimage-binfmt-remove.hook
 	sha256sums = SKIP
