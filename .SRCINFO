@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-image-transport
+	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/image_transport
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roslib
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-message-filters
+	makedepends = ros-melodic-sensor-msgs
+	depends = ros-melodic-rosconsole
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-roslib
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-message-filters
+	depends = ros-melodic-sensor-msgs
+	source = ros-melodic-image-transport-1.11.13-0.tar.gz::https://github.com/ros-gbp/image_common-release/archive/release/melodic/image_transport/1.11.13-0.tar.gz
+	sha256sums = 070c49d03d5320c322237672d62c34b3fd3f8c4b311a76f3572894f368421d55
+
+pkgname = ros-melodic-image-transport
+
