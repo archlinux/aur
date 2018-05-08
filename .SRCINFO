@@ -1,0 +1,15 @@
+pkgbase = qjsonrpc
+	pkgdesc = QJsonRpc is a Qt implementation of the JSON-RPC protocol. It integrates nicely with Qt, leveraging Qt's meta object system in order to provide services over the JSON-RPC protocol
+	pkgver = r348.f85751b
+	pkgrel = 1
+	url = https://bitbucket.org/devonit/qjsonrpc
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	depends = qt5-base
+	source = git+https://bitbucket.org/devonit/qjsonrpc.git
+	md5sums = SKIP
+
+pkgname = qjsonrpc
+
