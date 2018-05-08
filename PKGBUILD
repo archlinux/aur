@@ -64,7 +64,7 @@ _rtver=1
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -75,9 +75,9 @@ _bfq_sq_mq_patch="${_major}-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _gcc_name="kernel_gcc_patch"
-_gcc_rel='20180310'
+_gcc_rel='20180507'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -420,9 +420,9 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             'SKIP'
             '5b860dd67312af2327b9c6abc62d08e285cb81b5e64207f879178dac673cfe67249321ab9bf61e07e6fb855b0d7388061e8bbd4cead0e078886b91beb38599c9'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
-            '079e34ec7bf3ef36438c648116e24c51e00ea8608a1d8b5776164478522d6a96dcab5fe0431e8e9a6282c11a1edd177e1b68fc971a81717b297e199efc101963'
+            '2b196d2a5a76c50dd8ef604eafebdef41e68751d4854dbd4393d6f75ee42a0def9b0e4f3558b342d18478d0f0ebf3d06d9213b27b0eb1ed7928e6b8944d42ec7'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '5bcfcdbc1d1074bc7a1a8c0b01cc79696999d128bf8cda700c8a71b5324fd89e496974a57f632604018fc88054e1961b37c63741eb29529bb7916f8cc5363d48'
+            '618d147c15b399b5bf01428bd6342d548a2b4d1dc406f53149be5fe09845fdf5baeeb5d30c494bd9e6ec42bcf946a70b9b3bfe0a50957e46f9ae7cec36887809'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
