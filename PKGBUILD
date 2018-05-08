@@ -2,12 +2,12 @@
 pkgname=weevely
 _pkgname=weevely3
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a stealth PHP web shell that provides a telnet-like console"
 arch=('any')
 url="https://github.com/epinna/weevely3"
 license=('GPL3')
-depends=(python2-prettytable python2-mako python2-dateutil python2-utils)
+depends=(python2-prettytable python2-mako python2-dateutil python2-utils python2-yaml)
 source=("https://github.com/epinna/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('edb285469b2c8504797c1a35e30d728ddd88b56de37376c4464081c4d1cdbe9e')
 
