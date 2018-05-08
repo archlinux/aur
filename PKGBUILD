@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-perception'
-pkgver='1.3.0'
+pkgver='1.3.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-kinetic-perception-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/kinetic/perception/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3de5b44fb4d98009f7652c6f2433454ebbcca131ccae31956d6bc5b6c128468a')
+sha256sums=('f2056efa3e940652e10818c6536a3e318c13a4ab00df8c45251e51f4005e57ce')
 
 build() {
   # Use ROS environment variables
