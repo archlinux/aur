@@ -1,0 +1,27 @@
+pkgbase = ros-kinetic-diff-drive-controller
+	pkgdesc = ROS - Controller for a differential drive mobile base.
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-realtime-tools
+	makedepends = ros-kinetic-urdf
+	makedepends = ros-kinetic-dynamic-reconfigure
+	makedepends = ros-kinetic-controller-interface
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-realtime-tools
+	depends = ros-kinetic-urdf
+	depends = ros-kinetic-dynamic-reconfigure
+	depends = ros-kinetic-controller-interface
+	source = ros-kinetic-diff-drive-controller-0.13.3-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/diff_drive_controller/0.13.3-0.tar.gz
+	sha256sums = 80002c79eca32f506169fb6da6a6b5ad7607fbeba25769014e0ee20ea33b9711
+
+pkgname = ros-kinetic-diff-drive-controller
+
