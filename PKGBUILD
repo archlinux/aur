@@ -4,7 +4,7 @@ pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS fil
 url='http://ros.org/wiki/roscreate'
 
 pkgname='ros-melodic-roscreate'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-melodic-roscreate-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/roscreate/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4cb5bc9fcdcdfd900c9531e3f80f205a950419f78aeb37f92948e56706829c3e')
+sha256sums=('2dedabc718b10e2d0cff9d2db00e02efa5deb7ac18514da414ac0da2cc3f7f70')
 
 build() {
   # Use ROS environment variables
