@@ -1,7 +1,7 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('i686' 'x86_64')
 url="http://www.minizinc.org/ide/"
