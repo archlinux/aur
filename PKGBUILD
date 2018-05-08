@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=pakku
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='Pacman wrapper with AUR support'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libcurl.so' 'git')
 makedepends=('nim')
 backup=('etc/pakku.conf')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('672b5c75cf5d20bf63b3c0aa242fc4782a7892e884b93f7fccad1ddfe408d23e')
+sha256sums=('538159d08b8953846e040cb47ae7da37538d77d9749ad8b5f8ebac2e26a6f4a3')
 
 build() {
   local addargs=()
