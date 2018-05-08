@@ -3,7 +3,7 @@
 
 pkgname=nomad-plasma-look-and-feel-git
 _gitname=nomad-plasma-look-and-feel
-pkgver=r112.16356a4
+pkgver=r144.b76ae5f
 pkgrel=1
 pkgdesc="Nomad Look and Feel package."
 arch=('any')
