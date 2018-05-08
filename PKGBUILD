@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=visidata
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
@@ -17,12 +17,12 @@ provides=("visidata=${pkgver}")
 conflicts=('visidata-git')
 replaces=('visidata-git')
 source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('55cafd91e9729f5dbaa76e3cf37a3fbb2975b5fb4425682004f380594a96ca60')
+sha256sums=('c31e9ff6d52a031dc337eac111e06f4411216de902ea389c695a9c57cbbdbd2c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py -q install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
+  install -Dm644 LICENSE.gpl3 "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
