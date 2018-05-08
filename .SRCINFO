@@ -1,6 +1,6 @@
 pkgbase = nomad-gtk-themes-git
 	pkgdesc = Nomad GTK Themes
-	pkgver = r11.bc250c5
+	pkgver = r19.ddbae65
 	pkgrel = 1
 	url = https://github.com/nomad-desktop/nomad-gtk-themes
 	arch = any
