@@ -1,12 +1,12 @@
 pkgbase = bfi
 	pkgdesc = Brainfuck interpreter with interactive shell
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	url = git@github.com:FilippoRanza/bfi.git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
+	makedepends = cmake
 	depends = readline
 	source = git+https://github.com/FilippoRanza/bfi.git
 	md5sums = SKIP
