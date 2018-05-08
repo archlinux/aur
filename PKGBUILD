@@ -5,9 +5,9 @@ url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-melodic-rosconsole'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-cpp-common
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2f454e47a6c9380b372d44f2d1b0e43db59f6c38a466aaa173fd3f3ce5571286')
+sha256sums=('eeed2b39d6683e174dbbe103c465babc5e023d6f67eb1db173267e18d2aeb42a')
 
 build() {
   # Use ROS environment variables
