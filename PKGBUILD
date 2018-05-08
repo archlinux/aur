@@ -2,10 +2,10 @@
 
 pkgname=lynis-git
 _pkgname=lynis
-pkgver=2.3.2.1414.ed4dd3b
+pkgver=2.6.4.2108.5300475
 pkgrel=1
 pkgdesc='Security and system auditing tool to harden Unix/Linux systems'
-url='http://cisofy.com/lynis/'
+url='https://cisofy.com/lynis/'
 license=('GPL3')
 arch=('any')
 backup=('etc/lynis/default.prf')
@@ -19,6 +19,7 @@ provides=('lynis')
 conflicts=('lynis')
 source=(${pkgname}::git+https://github.com/CISOfy/${_pkgname})
 sha512sums=('SKIP')
+validpgpkeys=('73AC9FC55848E977024D1A61429A566FD5B79251') # CISOfy (Software Signing Key) <security@cisofy.com>
 
 pkgver() {
   cd ${pkgname}
