@@ -1,6 +1,6 @@
 pkgbase = kickshaw
 	pkgdesc = A menu editor for freedesktop standard menus
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/natemaia/kickshaw
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kickshaw
 	makedepends = gtk3
 	makedepends = gcc
 	depends = gtk3
-	source = https://github.com/natemaia/kickshaw/archive/0.6.2.tar.gz
-	sha256sums = dbe98eb2ec359de962305fd3cec57b97b8bbd6ebc0b13a4b4ff62d129ab8fadd
+	source = https://github.com/natemaia/kickshaw/archive/0.6.4.tar.gz
+	sha256sums = SKIP
 
 pkgname = kickshaw
 
