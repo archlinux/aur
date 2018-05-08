@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=odb_api
 pkgver=0.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF Observational data library"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/ODBAPI/ODB+API+Home"
