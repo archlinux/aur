@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=ozone
-pkgver=2.56i
+pkgver=2.56l
 pkgrel=0
 epoch=16
 pkgdesc="Segger Ozone JLink debugger for Linux"
