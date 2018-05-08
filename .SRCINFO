@@ -1,5 +1,5 @@
 pkgbase = libupnp18
-	pkgdesc = Portable Open Source UPnP Development Kit
+	pkgdesc = Separata installation of portable Open Source UPnP Development Kit
 	pkgver = 1.8.3
 	pkgrel = 4
 	url = http://pupnp.sourceforge.net/
