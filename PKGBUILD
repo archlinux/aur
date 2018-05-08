@@ -4,7 +4,7 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-melodic-rosclean'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-melodic-rosclean-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/rosclean/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c482c749c78680553eb79fb8a9e785d593c0bf4c1b0b35381f6b4319a430ad4b')
+sha256sums=('f2ec9270820dc79f021eb1f85ae0ea197496e4e0b8b67b87cdcf6ed5f1ff891d')
 
 build() {
   # Use ROS environment variables
