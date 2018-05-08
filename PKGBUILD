@@ -9,7 +9,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.2.r11045.g762eb3ddc
+pkgver=0.8.2.r11145.gb6adecdee
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -36,7 +36,7 @@ depends=(
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=('git' 'cmake' 'gcc5')
+makedepends=('git' 'cmake')
 provides=('caffe2')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-cpu' 'caffe2-cpu-git')
@@ -244,11 +244,11 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    rm -rf "${pkgdir}/usr/include/google"
-    rm -rf "${pkgdir}/usr/lib/cmake/protobuf"
+    rm -rf "$pkgdir"/usr/include/{google,onnx}
+    rm -rf "$pkgdir"/usr/lib/cmake/protobuf
     rm -f "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
     rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool,zbuff,zdict,zstd*}.h,{__init__,avx{,2}}.py}
-    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
+    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,onnx{,_proto},protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
     rm -f "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm -f "$pkgdir"/usr/share/pkgconfig/libzstd.pc
     rm -f "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
