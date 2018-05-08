@@ -1,6 +1,6 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=python-telethon-aio-git
-pkgver=20180506.41f0e0c
+pkgver=0.18.3.r103.gdffbd2d
 pkgrel=1
 pkgdesc="Pure Python 3 Telegram client library, asyncio version"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/Telethon"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
