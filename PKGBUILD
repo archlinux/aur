@@ -20,7 +20,7 @@ source=('https://download.smallpdf.com/desktop/linux/package-linux.tar.gz'
         'smallpdf')
 sha256sums=('a8efc280b117727cd3c291ae260a8af1eea2cc45bec65789a3fc1a44f896800a'
             'a56b2da40fec921ee2cbad55c3767fdba20af8055082c611a4ce2ab29fed3096'
-            '9d3719ee5bf53a6bab73886ade14253a2055ba312804625354a8009509900050')
+            '98d67be42cc742004351f25aee8403310259491c49864c33decb8513f9b00103')
 
 package() {
 	install -dm755 ${pkgdir}/opt/smallpdf-desktop
