@@ -8,6 +8,7 @@ pkgbase = toggldesktop
 	makedepends = readline
 	makedepends = gendesk
 	depends = libxss
+	depends = gcc-libs
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-location

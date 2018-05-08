@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
 license=('BSD')
 depends=('libxss'
+         'gcc-libs'
          'qt5-base'
          'qt5-declarative'
          'qt5-location'
