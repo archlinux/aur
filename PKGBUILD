@@ -1,7 +1,7 @@
 # Maintainer: gspu <bssbk2455[at]gmail[dot]com>
 
 pkgname=bitkeeper-development-bin
-pkgver=7.3.2.0x5aaba359
+pkgver=7.3.2
 pkgrel=2
 pkgdesc="a fast, enterprise-ready, distributed SCM. DEVELOPMENT VERSION!!!"
 arch=("x86_64")
