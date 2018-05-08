@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cri-o
-pkgver=1.9.11
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64)
 url='https://github.com/kubernetes-incubator/cri-o'
