@@ -1,0 +1,15 @@
+pkgbase = ros-melodic-media-export
+	pkgdesc = ROS - Placeholder package enabling generic export of media paths.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://ros.org/wiki/media_export
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = ros-melodic-media-export-0.2.0-0.tar.gz::https://github.com/ros-gbp/media_export-release/archive/release/melodic/media_export/0.2.0-0.tar.gz
+	sha256sums = dba5a590101d4f4969a5f963f8fba90fff5a095e0c19770166787d22bdb799e3
+
+pkgname = ros-melodic-media-export
+
