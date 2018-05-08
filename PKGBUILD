@@ -7,7 +7,7 @@ pkgdesc='Unified All-in-one Monero miner (AMD)'
 arch=('x86_64')
 url='https://github.com/fireice-uk/xmr-stak'
 license=('GPL3')
-makedepends=('cmake' 'opencl-headers')
+makedepends=('cmake' 'git' 'opencl-headers')
 depends=('hwloc' 'libmicrohttpd' 'opencl-amd' 'openssl')
 source=("git+https://github.com/fireice-uk/xmr-stak.git#tag=${pkgver}"
         'no-donate.patch')
