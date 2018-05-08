@@ -4,7 +4,7 @@
 pkgname=tvheadend
 
 pkgver=4.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
@@ -38,7 +38,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+    # TODO: temporary fix to succeed compilation with GCC 8+
+    make CFLAGS_NO_WERROR=yes
 }
 
 package() {
