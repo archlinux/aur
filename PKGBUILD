@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-desktop'
-pkgver='1.3.0'
+pkgver='1.3.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,12 +15,12 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-viz
-  ros-kinetic-urdf-tutorial
   ros-kinetic-ros-tutorials
   ros-kinetic-roslint
   ros-kinetic-visualization-tutorials
   ros-kinetic-common-tutorials
   ros-kinetic-robot
+  ros-kinetic-angles
   ros-kinetic-geometry-tutorials)
 depends=(${ros_depends[@]})
 
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-kinetic-desktop-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/kinetic/desktop/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f1fa9dfe6dcff99558f86793e719bd909e565c0437bfc3dd3cf2db3480686b2e')
+sha256sums=('920aabceff3d55b8ba3c0460eb222da72e7969ff11ff76b41197f723b1b26c48')
 
 build() {
   # Use ROS environment variables
