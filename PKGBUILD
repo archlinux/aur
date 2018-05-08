@@ -1,6 +1,6 @@
 # Maintainer: Jennifer Zhou <0@jezh.me>
 pkgname=tin-summer
-pkgver=1.21.1
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="Find build artifacts that are taking up disk space"
 arch=('x86_64')
@@ -14,14 +14,16 @@ sha512sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
+  which rustup > /dev/null 2>&1 && CARGO="rustup run nightly cargo" || CARGO=cargo
 
-  cargo build --release
+  $CARGO build --release
 }
 
 check() {
   cd "$srcdir/$pkgname"
+  which rustup > /dev/null 2>&1 && CARGO="rustup run nightly cargo" || CARGO=cargo
 
-  cargo check --release
+  $CARGO check --release
 }
 
 package() {
