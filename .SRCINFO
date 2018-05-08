@@ -1,6 +1,6 @@
 pkgbase = rocksdb-lite
 	pkgdesc = Embedded key-value store for fast storage (lite version)
-	pkgver = 5.12.2
+	pkgver = 5.12.4
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -14,8 +14,10 @@ pkgbase = rocksdb-lite
 	depends = snappy
 	depends = gcc-libs
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/v5.12.2.zip
-	sha256sums = a855b6dec88d1596cc78e03ab21027cf664d385e25fa7693a5813c84cec89a41
+	source = https://github.com/facebook/rocksdb/archive/v5.12.4.zip
+	source = fix-gcc-8-warnings.patch
+	sha256sums = d54b1870ed343f80f96326b7de7fd798e8ddd11f05ef413c0e3357219f08ac67
+	sha256sums = 2c5d96fbf1638d899da84b4a80ad3c6060b774ed80148f443ae40672d31df9d3
 
 pkgname = rocksdb-lite
 
