@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS packaging system."
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-melodic-ros'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-melodic-ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5bd9c28417badb45a0ef760e745718e2904a6e1e8e11e216b7314ddafc2b6aa0')
+sha256sums=('cefa18dd07377c6b6fd8007af8b6744c82deba139bf3a2219d6c3927ba95edaa')
 
 build() {
   # Use ROS environment variables

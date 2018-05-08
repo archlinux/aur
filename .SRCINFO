@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-ros
 	pkgdesc = ROS - ROS packaging system.
-	pkgver = 1.14.3
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = http://www.ros.org/wiki/ROS
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-ros
 	depends = ros-melodic-rosclean
 	depends = ros-melodic-rosbuild
 	depends = ros-melodic-rosbash
-	source = ros-melodic-ros-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/ros/1.14.3-0.tar.gz
-	sha256sums = 5bd9c28417badb45a0ef760e745718e2904a6e1e8e11e216b7314ddafc2b6aa0
+	source = ros-melodic-ros-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/ros/1.14.4-0.tar.gz
+	sha256sums = cefa18dd07377c6b6fd8007af8b6744c82deba139bf3a2219d6c3927ba95edaa
 
 pkgname = ros-melodic-ros
 
