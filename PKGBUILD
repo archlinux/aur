@@ -4,7 +4,7 @@ pkgdesc="ROS - roslang is a common package that all ROS client libraries depend 
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-melodic-roslang'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-melodic-roslang-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/roslang/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('78bdcb4d6f9711191e6aad7c6320650877bde5197598b79a261d2adbffb194ae')
+sha256sums=('cacf725972e3793c6fdd45c07a7bcede67199983256da856a39d60ccf6e55686')
 
 build() {
   # Use ROS environment variables
