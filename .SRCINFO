@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-tf2-bullet
+	pkgdesc = ROS - tf2_bullet.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_bullet
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf2
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = bullet
+	makedepends = pkg-config
+	depends = ros-melodic-tf2
+	depends = ros-melodic-geometry-msgs
+	depends = bullet
+	source = ros-melodic-tf2-bullet-0.6.2-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_bullet/0.6.2-0.tar.gz
+	sha256sums = 2a5102bd7a35427021065fd019dea5a620119366a8abd2cc97d94071be16a3f9
+
+pkgname = ros-melodic-tf2-bullet
+
