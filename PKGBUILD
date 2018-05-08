@@ -1,14 +1,14 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/METV/Metview"
 license=('APACHE')
 groups=(science)
-depends=( 'magics++>=3.0.0' mksh openmotif netcdf-cxx-legacy eccodes qtwebkit libxpm)
-makedepends=('emos>=4.0.5')
+depends=( 'magics++>=3.0.0' mksh openmotif netcdf-cxx-legacy eccodes qtwebkit libxpm libtirpc)
+makedepends=('emos>=4.0.5' rpcsvc-proto)
 provides=()
 conflicts=()
 replaces=()
@@ -21,12 +21,15 @@ md5sums=('f34d21f7da0b0d316693c6f10a5b3da9')
 
 build() {
   cd Metview-${pkgver}-Source
+  ln -sf /usr/include/tirpc/rpc src/libMarsClient
+  ln -sf /usr/include/tirpc/netconfig.h src/libMarsClient
   mkdir -p build && cd build
   cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=/usr/bin/gcc \
     -Dmagics_DIR=/usr/share/magics/cmake \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_QT5=ON \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DCMAKE_CXX_STANDARD_LIBRARIES="-ltirpc" ..
   make || return 1
 }
 
