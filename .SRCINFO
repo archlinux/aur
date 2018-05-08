@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-orocos-kdl
+	pkgdesc = ROS - This package contains a recent version of the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://wiki.ros.org/orocos_kdl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = eigen3
+	depends = ros-melodic-catkin
+	depends = eigen3
+	depends = pkg-config
+	source = ros-melodic-orocos-kdl-1.4.0-0.tar.gz::https://github.com/orocos/orocos-kdl-release/archive/release/melodic/orocos_kdl/1.4.0-0.tar.gz
+	sha256sums = aa01563f804f8c52c6403b872b0a321abd916083757aebf25ac9530c7798830a
+
+pkgname = ros-melodic-orocos-kdl
+
