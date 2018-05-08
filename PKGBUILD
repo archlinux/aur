@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-pymysql
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Pure Python MySQL Client"
 arch=(any)
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/P/PyMySQL/PyMySQL-$pkgver.tar.gz")
-sha256sums=('32da4a66397077d42908e449688f2ec71c2b18892a6cd04f03ab2aa828a70f40')
+sha256sums=('34e19bfff13e8b2ffc38a68f9ad064609d48f3d46320e8ab8184af527e662629')
 
 build() {
     cd "$srcdir/PyMySQL-$pkgver"
