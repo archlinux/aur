@@ -1,6 +1,6 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
-	pkgver = 971.1
+	pkgver = 971.1a
 	pkgrel = 1
 	url = http://interactivebrokers.com/
 	arch = any
@@ -10,18 +10,24 @@ pkgbase = ib-tws
 	makedepends = unzip
 	depends = bash
 	optdepends = ffmpeg2.8
+	backup = etc/ib-tws.conf
+	backup = etc/ib-gw.conf
 	source = LICENSE
 	source = ib-tws
+	source = ib-tws.conf
 	source = ib-tws.desktop
 	source = ib-gw
+	source = ib-gw.conf
 	source = ib-gw.desktop
 	source = https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh
 	md5sums = e1cae2de592add7133bb08123e8db1ad
-	md5sums = dff283b103c0ddeb76eba6ecfb852afd
+	md5sums = 428c553da90bb2ea650a7f96ae076937
+	md5sums = 1ec45ec225b8dcd362634f7395e8cd0d
 	md5sums = 9205b5eade96d69f8e470cc52c30db4a
-	md5sums = 6f08b240afad921b29c2c81a440a6a8a
+	md5sums = b1cbe7273f3d0f2f0b6a09e65606b600
+	md5sums = 238637fb4ab6ae734bade474709bafb1
 	md5sums = ffa9fcfb623850e5c9e796040bdbd052
-	md5sums = ae2df5f73a2f519a417708ad97c33517
+	md5sums = 6a73e4f40333642061318b4e3780e876
 
 pkgname = ib-tws
 
