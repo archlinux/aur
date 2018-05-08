@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-melodic-rosgraph'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bed3cb06e00c84397138ff2668739bdd0996e5340dd416393a60b57ffa9f56c1')
+sha256sums=('68a458493c1f8491193c3bc242b9a4c3734e4d1c501651b34c0e23ef38e2f6bc')
 
 build() {
   # Use ROS environment variables
