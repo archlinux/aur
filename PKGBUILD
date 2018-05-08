@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.1.1.rc3.r3.gfd062ea2
+pkgver=v2.2.0.rc1.r0.g48d84f20
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)"
 arch=(any)
