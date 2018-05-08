@@ -2,19 +2,21 @@
 
 pkgname=fractal-git
 _gitname=fractal
-pkgver=r563.b26ffa9
-pkgrel=2
+pkgver=r582.d6145e8
+pkgrel=1
 pkgdesc="Matrix.org gtk+ client"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/World/fractal"
 depends=('gtk3')
+conflics=('fractal')
+provides=('fractal')
 makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
-source=("https://gitlab.gnome.org/World/fractal.git")
+source=("git+https://gitlab.gnome.org/World/fractal.git")
 md5sums=('SKIP')
  
 pkgver() {
-	cd "${_gitname}"
+	cd "${srcdir}/${_gitname}/"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
