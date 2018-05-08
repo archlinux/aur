@@ -25,9 +25,9 @@ pkgbase=linux-clear
 __basekernel=4.16
 _minor=7
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.7-565
-_clearver=761892ab579de61e2f30039e127490c599d4fa14
-pkgrel=2
+#_clearver=${__basekernel}.7-567
+_clearver=a1f7be059c68487f66deded174878264539a4cfd
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -93,6 +93,7 @@ prepare() {
 
   cp -a /usr/lib/firmware/i915 firmware/
   cp -a ${srcdir}/intel-ucode firmware/
+  cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
   rm -f firmware/intel-ucode/0f*
 
   if [ "${_kernelname}" != "" ]; then
