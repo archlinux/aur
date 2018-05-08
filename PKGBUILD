@@ -1,7 +1,7 @@
 # Maintainer: André Koch-Kramer <koch-kramer@web.de>
 
 pkgname=instaloader
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Command line tool to download pictures, videos and metadata from Instagram"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.5' 'python-requests>=2.4')
 makedepends=('python-setuptools')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/instaloader/instaloader/tar.gz/v$pkgver)
-sha512sums=('4cf689753a2edc27335bbf1f824159c37d92b344714c96412f367241bced2fc8de97856c4e0cda27cc81f5775517473c979bbdc1c69aec6f272fc3b82618bad7')
+sha512sums=('d9d42e7703a476b954c295f9b6d5f7db01b8733c0f6a0c67421107acac90181354bd5a60be9d2564cc2486eceda0ff6dc3a3610881afeeaeabaa808fa4991cc3')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
