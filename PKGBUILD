@@ -4,7 +4,7 @@ _base=dolfin
 _fragment="#branch=master"
 pkgname=${_base}-git
 pkgdesc="the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20180212
+pkgver=20180503
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -38,6 +38,7 @@ build() {
 
   cmake ..\
     -DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DPYTHON_EXECUTABLE="${py_interp}" \
     -DDOLFIN_ENABLE_DOCS=FALSE \
     -DCMAKE_SKIP_BUILD_RPATH=TRUE \
