@@ -24,7 +24,6 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
         "etc/java-$_jname/security/java.policy"
         "etc/java-$_jname/security/java.security"
-        "etc/java-$_jname/security/javaws.policy"
         "etc/java-$_jname/logging.properties"
         "etc/java-$_jname/net.properties"
         "etc/java-$_jname/sound.properties")
@@ -32,21 +31,13 @@ options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         'java.desktop'
-        'javaws.desktop'
         'jconsole.desktop'
-        'jcontrol.desktop'
-        'jmc.desktop'
-        'policytool.desktop'
         'java_16.png'
         'java_48.png'
         'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('d50ecc8f317e82caac589ccc8cf5aee6d93701db1b9cba3f2c66f8733d31cd94'
             'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
-            '7cced89e9da4465d3b73c45e1b3066e92f3c81eee8ea36851611c5853c71aaf6'
             'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
-            'f6a77195f8275b94f2fc09beb796983e841c51a66c0a3e77b9fd97afde7e3fca'
-            'e947918d1c9c845c1841e46d08fd0a9441e2051d8e982c2ddbdf9960feeca8f9'
-            'f7c5cc1b9dbc8229eb94f3d4e394ab8f69109577adfba84c8726fb4f7406252f'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
