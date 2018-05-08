@@ -1,10 +1,9 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
-	pkgver = 7.20141204
-	pkgrel = 9
+	pkgver = 7.20170217
+	pkgrel = 1
 	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bash-completion
@@ -12,7 +11,6 @@ pkgbase = gimp-plugin-registry
 	depends = fftw
 	depends = gcc-libs>=4.9
 	depends = gdk-pixbuf2>=2.22.0
-	depends = gimp>=2.6
 	depends = glew>=1.10.0
 	depends = glib2>=2.37.3
 	depends = glibc>=2.14
@@ -26,19 +24,19 @@ pkgbase = gimp-plugin-registry
 	depends = liblqr>=0.4.0
 	depends = libtiff>=4.0.3
 	depends = xdg-utils
+	optdepends = gimp>=2.6
+	optdepends = gimp-git
 	optdepends = adobe-icc: ICC profiles from Adobe
 	provides = gimp-dbp
+	provides = gimp-elsamuko-plugins
 	provides = gimp-fix-ca
 	provides = gimp-plugin-fblur
 	provides = gimp-plugin-lqr
 	provides = gimp-plugin-normalmap
-	provides = gimp-refocus
-	provides = gimp-elsamuko-plugins
 	provides = gimp-plugin-layerfx
+	provides = gimp-plugin-resynthesizer
 	provides = gimp-plugin-resynthesizer-git
-	provides = gimp-plugin-saveforweb
-	provides = gimp-plugin-wavelet-decompose
-	provides = gimp-plugin-wavelet-denoise
+	provides = gimp-refocus
 	provides = gimp-script-antique-border
 	provides = gimp-script-che-guevara
 	provides = gimp-script-color-tint
@@ -63,17 +61,15 @@ pkgbase = gimp-plugin-registry
 	provides = gimp-script-vintage-look
 	provides = gimp-script-white-balance-puzzle
 	conflicts = gimp-dbp
+	conflicts = gimp-elsamuko-plugins
 	conflicts = gimp-fix-ca
 	conflicts = gimp-plugin-fblur
 	conflicts = gimp-plugin-lqr
 	conflicts = gimp-plugin-normalmap
-	conflicts = gimp-refocus
-	conflicts = gimp-elsamuko-plugins
 	conflicts = gimp-plugin-layerfx
+	conflicts = gimp-plugin-resynthesizer
 	conflicts = gimp-plugin-resynthesizer-git
-	conflicts = gimp-plugin-saveforweb
-	conflicts = gimp-plugin-wavelet-decompose
-	conflicts = gimp-plugin-wavelet-denoise
+	conflicts = gimp-refocus
 	conflicts = gimp-script-antique-border
 	conflicts = gimp-script-che-guevara
 	conflicts = gimp-script-color-tint
@@ -97,11 +93,8 @@ pkgbase = gimp-plugin-registry
 	conflicts = gimp-script-technicolor-3-color
 	conflicts = gimp-script-vintage-look
 	conflicts = gimp-script-white-balance-puzzle
-	replaces = gimp-refocus<0.9.0
-	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_7.20141204-0trusty0~ppa_i386.deb
-	sha256sums = 0faf68f804d0aa3b2482633a1ed743602f6c6c12b89212969abdd8004461bfe0
-	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_7.20141204-0trusty0~ppa_amd64.deb
-	sha256sums = d3be3e1a9d49850aa4328c9090607b0eaf5b9472342bf1b05f4a0f957dc3b6f0
+	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_7.20170217-0a9~ppa_amd64.deb
+	sha256sums = 0a6f814e3d30f1338fcd6446cd26bb713500b360399fa68af83127a5a8777138
 
 pkgname = gimp-plugin-registry
 
