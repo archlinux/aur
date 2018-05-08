@@ -10,8 +10,22 @@ license=('GPL2' 'CCPL')
 depends=(
 	"gnome-shell>=3.18.3"
 	"pop-gtk-theme-git"
+	"gtk3>=3.18.9"
+	"gtk2>=2.24.30"
+	"gdk-pixbuf2>=2.24.30"
+	"gtk-engine-murrine>=0.98.1"
+	"glib2"
+)
+makedepends=(
+	"inkscape"
+	"optipng"
+	"libsass>=3.3.6"
+	"sassc>=3.3.2"
+	"git"
+	"parallel"
 )
 optdepends=(
+	"gnome-flashback>=3.18.2"
 	"pop-icon-theme-git: Recommended icon theme"
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"

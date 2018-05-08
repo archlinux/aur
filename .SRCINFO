@@ -6,8 +6,20 @@ pkgbase = pop-shell-theme-git
 	arch = any
 	license = GPL2
 	license = CCPL
+	makedepends = inkscape
+	makedepends = optipng
+	makedepends = libsass>=3.3.6
+	makedepends = sassc>=3.3.2
+	makedepends = git
+	makedepends = parallel
 	depends = gnome-shell>=3.18.3
 	depends = pop-gtk-theme-git
+	depends = gtk3>=3.18.9
+	depends = gtk2>=2.24.30
+	depends = gdk-pixbuf2>=2.24.30
+	depends = gtk-engine-murrine>=0.98.1
+	depends = glib2
+	optdepends = gnome-flashback>=3.18.2
 	optdepends = pop-icon-theme-git: Recommended icon theme
 	optdepends = ttf-fira-sans: Recommended font for window titles and interface
 	optdepends = ttf-fira-mono: Recommended monospace font
