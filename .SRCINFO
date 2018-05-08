@@ -1,7 +1,7 @@
 pkgbase = kms-jsonrpc
 	pkgdesc = Kurento jsonrpc library
 	pkgver = 6.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kurento.org/
 	arch = any
 	license = LGPL v2.1
@@ -16,7 +16,9 @@ pkgbase = kms-jsonrpc
 	provides = kms-jsonrpc
 	conflicts = kms-jsonrpc
 	source = https://github.com/Kurento/kms-jsonrpc/archive/6.7.0.tar.gz
+	source = JsonRpcClient.cpp.patch
 	sha256sums = 7f2116135369603d831bc6dddbb00b57fddfeeb698c5f69a498a8f5606c400a2
+	sha256sums = 79f03ddfdde5ea6fd8a52e2da1418c2ba121a97e07c88d024de5d84a10cad345
 
 pkgname = kms-jsonrpc
 
