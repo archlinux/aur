@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-melodic-rosmsg'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9cbd2b33c30f063c5d152916d7dc65e517ee8060acc30d7a8e0618b382469c88')
+sha256sums=('df576145431361d68859013485b411dac01187d701165f1cd897add78765fcc0')
 
 build() {
   # Use ROS environment variables
