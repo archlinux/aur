@@ -1,11 +1,14 @@
 pkgname=kube-pod-connect
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple connect to kubernetes pod'
 arch=(any)
 url='https://github.com/LersSett/kube-pod-connect'
 license=(MIT)
-depends=(zsh)
+depends=(
+  zsh
+  kubectl-bin
+)
 makedepends=(rust)
 source=(
   https://github.com/LersSett/$pkgname/archive/$pkgver.tar.gz
