@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=libmpsse-python3-git
-pkgver=20170415.63656d4
+pkgver=r19.688cf0d
 pkgrel=1
 pkgdesc="Open source library for SPI/I2C control via FTDI chips - Fixed for Python 3"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/libmpsse"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
