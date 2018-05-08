@@ -1,6 +1,6 @@
 pkgname='sac-core'
 pkgver='9.1.7'
-pkgrel='9'
+pkgrel='10'
 pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
 arch=('x86_64')
 depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
@@ -23,6 +23,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/lib"
     cp --no-preserve=ownership "$srcdir/lib/libeToken.so.9.1.7" "$pkgdir/usr/lib/libeToken.so.9.1.7"
+    cp --no-preserve=ownership "$srcdir/lib/libcardosTokenEngine.so.9.1.7" "$pkgdir/usr/lib/libcardosTokenEngine.so.9.1.7"
 
     mkdir -p "$pkgdir/etc"
     cp "$srcdir/eToken.conf" "$pkgdir/etc/eToken.conf"
@@ -32,6 +33,9 @@ package() {
     ln -sf libeToken.so.9.1.7 libeToken.so.9.1
     ln -sf libeToken.so.9.1.7 libeToken.so.9
     ln -sf libeToken.so.9.1.7 libeToken.so
+    ln -sf libcardosTokenEngine.so.9.1.7 libcardosTokenEngine.so.9.1
+    ln -sf libcardosTokenEngine.so.9.1.7 libcardosTokenEngine.so.9
+    ln -sf libcardosTokenEngine.so.9.1.7 libcardosTokenEngine.so
 
     cd "$pkgdir/usr/lib/pcsc/drivers/aks-ifdh.bundle/Contents/Linux/"
     ln -sf libAksIfdh.so.9.1 libAksIfdh.so
