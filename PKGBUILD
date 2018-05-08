@@ -1,8 +1,8 @@
 
 # Maintainer: Filippo Ranza <filipporanza@gmail.com>
 pkgname=bfi
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Brainfuck interpreter with interactive shell"
 arch=('i686' 'x86_64')
 url="git@github.com:FilippoRanza/bfi.git"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-	./configure --prefix=/usr
+        cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
