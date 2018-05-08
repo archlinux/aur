@@ -3,8 +3,8 @@
 pkgname=libmatthew-unix-java
 _pkgname=libmatthew-java
 pkgver=0.5
-_pkgver=0.8
-pkgrel=1
+_pkgver=0.8.1
+pkgrel=2
 pkgdesc="Library for Java: unix sockets"
 arch=('i686' 'x86_64' 'armv6h' 'armv7')
 url="http://www.matthew.ath.cx/projects/java"
@@ -12,7 +12,16 @@ license=('Expat')
 depends=('java-runtime' 'glibc')
 makedepends=('java-environment' 'gcc')
 source=( "http://www.matthew.ath.cx/projects/java/${_pkgname}-${_pkgver}.tar.gz" )
-sha256sums=('05d1d3d9b5e33bd3642102aae10bba904e296c5c01a10854200ad4df349c8dfa')
+sha256sums=('46782b940c71d8db07470633efcf65c2aeda94de9a846fe178a5918fb2ad026f')
+
+prepare() {
+	cd "${srcdir}"
+
+	cd ${_pkgname}-${_pkgver}
+
+	# source 1.5 not working in jdk 10 anymore
+	sed -i "s/JVERCFLAGS+=-source 1.5/JVERCFLAGS+=-source 1.6/g" Makefile
+}
 
 build() {
 	cd "${srcdir}"
