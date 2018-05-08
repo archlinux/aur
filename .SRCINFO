@@ -7,6 +7,7 @@ pkgbase = linux-usermode
 	license = GPL2
 	makedepends = bc
 	makedepends = inetutils
+	makedepends = gcc<8.0
 	depends = coreutils
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign

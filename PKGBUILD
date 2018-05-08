@@ -13,7 +13,7 @@ arch=('x86_64')
 license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
-makedepends=('bc' 'inetutils')
+makedepends=('bc' 'inetutils' 'gcc<8.0')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
