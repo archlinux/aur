@@ -112,6 +112,10 @@ prepare() {
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
     
+    ### Fix gcc8 bogus warnings
+        msg "Fix gcc8 bogus warnings"
+        patch -Np1 -i ../0004-fix-gcc8-bogus-warnings.patch
+    
     ### Patch source with UKSM
         msg "Patching source with UKSM"
 	patch -Np1 -i ../${_uksm_patch}
