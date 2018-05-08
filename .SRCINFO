@@ -1,0 +1,16 @@
+pkgbase = libupnp18
+	pkgdesc = Portable Open Source UPnP Development Kit
+	pkgver = 1.8.3
+	pkgrel = 4
+	url = http://pupnp.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	makedepends = pkgconfig
+	depends = glibc
+	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.8.3.tar.bz2
+	source = libupnp18.install
+	sha256sums = 9afa0b09faa9ebd9e8a6425ddbfe8d1d856544c49b1f86fde221219e569a308d
+	sha256sums = 61e35270c6bf6206a209cfd9d014cb6d076927bebfb34cb173694ab3199ad57c
+
+pkgname = libupnp18
+
