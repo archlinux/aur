@@ -21,7 +21,7 @@ pkgbase = synergy2-bin
 	depends = qt5-quickcontrols>=5.5.0
 	depends = qt5-svg>=5.5.0
 	conflicts = synergy
-	conflicts = synergy2
+	conflicts = synergy2-bin
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://binaries.symless.com/v2.0.11/debian/synergy_2.0.11.stable~b56%2B8c94f00f_amd64.deb
