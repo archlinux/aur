@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=7.3.0
+pkgver=8.1.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
@@ -13,18 +13,18 @@ arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL3' 'LGPL3')
 groups=('djgpp')
-depends=('zlib' 'libmpc' 'djgpp-binutils' 'djgpp-djcrx')
-makedepends=('unzip')
+depends=('zlib' 'libmpc' 'djgpp-binutils>=2.30' 'djgpp-djcrx')
+makedepends=('unzip' 'gcc-ada')
 optdepends=('djgpp-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         "lto.patch"
-	"gcc-7.3.0-djgpp.diff")
-sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
+	"gcc-djgpp.diff")
+sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            '3d805b0d5d5180531858f830d9a022ae9a61f5768535bd0e794d8a1b2eb430b6')
+            '5f8c8ee1baa1afb5342a98109ed325013929aa749c17f679e969688a46032bd5')
 
 prepare() {
   cd gcc-$pkgver
@@ -36,7 +36,7 @@ prepare() {
   patch -Np0 < ../lto.patch
 
   # Other DJGPP related changes
-  patch -Np1 < ../gcc-7.3.0-djgpp.diff
+  patch -Np1 < ../gcc-djgpp.diff
 }
 
 build() {
@@ -70,5 +70,5 @@ package_djgpp-gcc() {
   rm -rf "$pkgdir"/usr/share/{man/man7,info,locale}
   rm -rf "$pkgdir"/usr/share/gcc-$pkgver/python
   rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
-  rm -f "$pkgdir"/usr/lib/libcc1.*
+  rm -f "$pkgdir"/usr/lib*/libcc1.*
 }
