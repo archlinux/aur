@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.4.0
-_build=f1
-_buildtag=20180501
-_randomstring=0ec691fce5c2
+_version=2018.1.0
+_build=f2
+_buildtag=20180504
+_randomstring=170f0691b973
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -18,7 +18,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('b379e6df5d9d5f02047d37c3399a2b1bb5168dda')
+sha1sums=('36104fa796172f3b9845e7c84aaccc7902b68ce2')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
@@ -40,10 +40,10 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}${_prefix}"
-  extract-component Windows
+  extract-component Windows-Mono
 
   if [ -z "${_keepdownloads}" ]; then
-    rm "${startdir}/UnitySetup-Windows-Support-for-Editor-${_version}${_build}.pkg"
+    rm "${startdir}/UnitySetup-Windows-Mono-Support-for-Editor-${_version}${_build}.pkg"
   fi
 }
 
