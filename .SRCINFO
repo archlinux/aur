@@ -1,6 +1,6 @@
 pkgbase = qt-virt-manager
 	pkgdesc = Qt5 Virtual Machine Manager provides a graphical tool for administering virtual machines for QEMU/KVM, Xen, and LXC and other Virtual Entities. Uses libvirt as the backend management API.
-	pkgver = 0.53.83
+	pkgver = 0.60.88
 	pkgrel = 1
 	url = https://github.com/F1ash/qt-virt-manager
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = qt-virt-manager
 	depends = libvncserver
 	conflicts = virt-manager-qt5
 	replaces = virt-manager-qt5
-	source = https://github.com/F1ash/qt-virt-manager/archive/0.53.83.tar.gz
-	sha256sums = 32278985fdb592011523a62409066ebeb570a2ba5937283d540811d78fed0752
+	source = https://github.com/F1ash/qt-virt-manager/archive/0.60.88.tar.gz
+	sha256sums = 6fefdcdf7902688c5c0c41e568d1198a24b9d9f84ddf5dea5c8c3d02fd044f3c
 
 pkgname = qt-virt-manager
 
