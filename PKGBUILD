@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-melodic-rostopic'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8375bb3130289c588cd8c66f6702931ff03c65fac30201c387644380294d6854')
+sha256sums=('d2144e97b260d3855a2486a4af801d419b64b27a3397655c08462d7cfb90f561')
 
 build() {
   # Use ROS environment variables
