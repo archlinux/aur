@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-gcc
-pkgver=7.3.0
+pkgver=8.1.0
 _islver=0.18
 pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler"
@@ -25,18 +24,24 @@ backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2")
+       "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+        bz85638.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
-sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
             'SKIP'
-            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b')
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            'd2a13f550ca7f9131ef14239e8f994b37c81fc8c59f73aff5edab170f5ed6124')
 
 prepare() {
-  ln -s gcc-${pkgver/+/-} gcc
+  ln -sf gcc-${pkgver/+/-} gcc
   cd "$srcdir"/gcc
   # link isl for in-tree builds
   ln -sf ../isl-${_islver} isl
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85638
+  patch -p0 -i "$srcdir"/bz85638.patch
 }
 
 build() {
