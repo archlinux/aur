@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=prey-node-client
-pkgver=1.7.2
-pkgrel=1
+pkgver=1.7.4
+pkgrel=2
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
@@ -11,13 +11,12 @@ replaces=('prey-tracker')
 # Should be used as soon as the bash client is renamed
 #provides=('prey-tracker')
 install='prey-node-client.install'
-source=('prey-node-client.patch')
+source=('prey-node-client.patch' 'prey_project')
 source_x86_64=("https://downloads.preyproject.com/prey-client-releases/node-client/$pkgver/prey-linux-$pkgver-x64.zip")
 source_i686=("https://downloads.preyproject.com/prey-client-releases/node-client/$pkgver/prey-linux-$pkgver-x86.zip")
-sha256sums=('181785784b44de48ff8ad0601f2a88a00ff4c26fe95b2c075546f23dc54de8c5')
-sha256sums_x86_64=('8336596da7b09b0098d9fed1ec8e56acf4a0914a9859174aa4c2b1a8e0041fab')
-sha256sums_i686=('73f1e527607e4b7763f3ede8549be5baefaa978ee05edece831cc95688f6288c')
-
+sha256sums=('181785784b44de48ff8ad0601f2a88a00ff4c26fe95b2c075546f23dc54de8c5' '41f29d334e7671b07cfdc848b2752ccc51710471285e8ebe61c07faa0d36160d')
+sha256sums_x86_64=('73c06dd4e1dd39f7f9278193cb6555e8148db9d570ae1e6cc1a0fe87640b963d')
+sha256sums_i686=('840a08837e42446a2e82a3a743c6666825633a4c7c3041c8828a5b7729da42c7')
 
 package() {
   cd "$srcdir/prey-$pkgver"
@@ -38,7 +37,8 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin/"
   # Binary prey named as prey_project
-  ln -s /opt/prey-node-client/bin/prey "$pkgdir/usr/bin/prey_project"
+  # ln -s /opt/prey-node-client/bin/prey "$pkgdir/usr/bin/prey_project"
+  cp "$srcdir/prey_project" "$pkgdir/usr/bin/prey_project"
 }
 
 # vim:set ts=2 sw=2 et: 
