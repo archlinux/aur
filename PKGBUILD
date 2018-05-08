@@ -1,7 +1,7 @@
 # Maintainer: goetzc, napcok, jskier
 pkgname=ubuntu-mate-themes
-pkgver=18.04.3
-pkgrel=2
+pkgver=18.04.11
+pkgrel=1
 pkgdesc="GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE."
 arch=('any')
 url="https://launchpad.net/ubuntu-mate/"
@@ -10,7 +10,7 @@ groups=('mate-extra')
 depends=('gtk-engine-murrine')
 optdepends=("ubuntu-mate-icon-themes: The official icon themes for Ubuntu MATE.")
 source=("http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
-sha512sums=('cb1dd1620fee9ca8f2e246cb3c55e62c2c7ba5c685c76f470fd9e0d973f614d029fc3bd0016b89111777e2a62c6bf2cc194e0c95f48f95a2a15d829694978189')
+sha256sums=('123e55d99c92cc8b83b63d0adcd64ceedfb82879092d56b9e6f59a44dd3c8550')
 
 package() {
     tar xf data.tar.xz
