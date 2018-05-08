@@ -3,12 +3,13 @@
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
 url='https://krita.org'
 license=(GPL3)
-depends=(karchive kcompletion kcoreaddons ki18n kitemviews qt5-svg kitemmodels
+depends=(karchive kcompletion kcoreaddons ki18n kitemviews qt5-svg
+         qt5-multimedia qt5-x11extras kitemmodels
          gsl libraw exiv2 openexr fftw curl boost-libs giflib qt5-declarative hicolor-icon-theme)
 makedepends=(extra-cmake-modules kdoctools python boost eigen vc poppler-qt5 opencolorio python-pyqt5)
 optdepends=('poppler-qt5: PDF filter'
