@@ -6,7 +6,7 @@ pkgver=3.6.0
 arch=('x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python' 'ocl-icd' 'cuda' 'nvidia-utils')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python' 'ocl-icd' 'cuda' 'nvidia-utils' 'clang' 'openmp')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'glbinding')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
@@ -17,16 +17,16 @@ sha512sums=('7d651a29c3ba927a3d6b8d1c461fe21e55bae2a988970c46353a2934855db1c8e15
 
 prepare() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
+
+  rm -rf build && mkdir build
 }
 
 build() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  rm -rf build
-  mkdir build && cd build
-
-  export CC=gcc-5
-  export CXX=g++-5
+  cd build
+  export CC=clang
+  export CXX=clang++
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DAF_USE_SYSTEM_FORGE=ON \
@@ -38,7 +38,8 @@ build() {
       -DAF_BUILD_EXAMPLES=ON \
       -DAF_BUILD_DOCS=ON \
       -DCUDA_architecture_build_targets="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0" \
-      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCUDA_HOST_COMPILER=/usr/bin/gcc-5
 
   make
 }
