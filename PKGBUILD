@@ -4,23 +4,21 @@ pkgdesc="ROS - This package contains a number of URDF tutorials."
 url='http://ros.org/wiki/urdf_tutorial'
 
 pkgname='ros-kinetic-urdf-tutorial'
-pkgver='0.2.4'
-_pkgver_patch=0
+pkgver='0.3.0'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-urdf
+ros_makedepends=(ros-kinetic-roslaunch
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-xacro
   ros-kinetic-joint-state-publisher
-  ros-kinetic-robot-state-publisher
-  ros-kinetic-urdf
   ros-kinetic-rviz
-  ros-kinetic-pr2-description)
+  ros-kinetic-robot-state-publisher)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -32,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="urdf_tutorial-release-release-kinetic-urdf_tutorial-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf_tutorial-release/archive/release/kinetic/urdf_tutorial/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b8bb4635b796713fef7627e72e066ebe3fca10e67403d65ee8b59d0b662841b6')
+sha256sums=('89e82ba00a356de1c0279e00ff4f1c4b98600de375d50311b5e898af00c48a00')
 
 build() {
   # Use ROS environment variables
