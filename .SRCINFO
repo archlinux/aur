@@ -1,0 +1,26 @@
+pkgbase = ros-kinetic-urdf-sim-tutorial
+	pkgdesc = ROS - The urdf_sim_tutorial package.
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-gazebo-ros-control
+	depends = ros-kinetic-joint-state-controller
+	depends = ros-kinetic-controller-manager
+	depends = ros-kinetic-gazebo-ros
+	depends = ros-kinetic-rviz
+	depends = ros-kinetic-urdf-tutorial
+	depends = ros-kinetic-rqt-robot-steering
+	depends = ros-kinetic-robot-state-publisher
+	depends = ros-kinetic-position-controllers
+	depends = ros-kinetic-xacro
+	depends = ros-kinetic-diff-drive-controller
+	source = ros-kinetic-urdf-sim-tutorial-0.3.0-1.tar.gz::https://github.com/ros-gbp/urdf_tutorial-release/archive/release/kinetic/urdf_sim_tutorial/0.3.0-1.tar.gz
+	sha256sums = edae179c71dd174dfd50f7a85af4e9bfec70c106e1d9b47d73a063d24891a590
+
+pkgname = ros-kinetic-urdf-sim-tutorial
+
