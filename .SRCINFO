@@ -1,7 +1,7 @@
 pkgbase = python-torchbiomed-git
 	pkgdesc = Datasets, Transforms and Utilities specific to Biomedical Imaging
 	pkgver = r47.661b3e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattmacy/torchbiomed
 	arch = any
 	license = BSD3
@@ -9,7 +9,7 @@ pkgbase = python-torchbiomed-git
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-scipy
-	depends = python-skimage
+	depends = python-scikit-image
 	depends = python-pytorch
 	depends = python-simpleitk
 	depends = python-pandas

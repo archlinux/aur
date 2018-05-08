@@ -2,12 +2,12 @@
 _pkgname=torchbiomed
 pkgname=python-${_pkgname}-git
 pkgver=r47.661b3e4
-pkgrel=1
+pkgrel=2
 pkgdesc="Datasets, Transforms and Utilities specific to Biomedical Imaging"
 arch=('any')
 url="https://github.com/mattmacy/torchbiomed"
 license=('BSD3')
-depends=('python-matplotlib' 'python-numpy' 'python-scipy' 'python-skimage' 'python-pytorch' 'python-simpleitk' 'python-pandas')
+depends=('python-matplotlib' 'python-numpy' 'python-scipy' 'python-scikit-image' 'python-pytorch' 'python-simpleitk' 'python-pandas')
 makedepends=('python-setuptools')
 provides=('python-torchbiomed')
 source=("git+${url}.git")
