@@ -1,7 +1,7 @@
 pkgbase = soapui
 	pkgdesc = A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP.
 	pkgver = 5.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.soapui.org/
 	arch = i686
 	arch = x86_64
