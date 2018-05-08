@@ -16,6 +16,7 @@ pkgbase = astrality-git
 	depends = python-requests
 	depends = python-watchdog-git
 	depends = python-yaml
+	depends = python-psutil
 	optdepends = libyaml: faster YAML config parsing
 	source = astrality::git+https://github.com/JakobGM/astrality.git
 	sha256sums = SKIP

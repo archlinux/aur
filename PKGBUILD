@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gerhard Martinussen <jakobgm at gmail dot com>
 pkgname=astrality-git
 pkgver=0.6.r134.g7e10a3e
-pkgrel=2
+pkgrel=3
 pkgdesc='templates-based configuration file manager'
 arch=('any')
 url='https://astrality.readthedocs.io'
@@ -13,7 +13,8 @@ depends=('python'
          'python-mypy_extensions'
          'python-requests'
          'python-watchdog-git'
-         'python-yaml')
+         'python-yaml'
+         'python-psutil')
 optdepends=('libyaml: faster YAML config parsing')
 makedepends=('python-setuptools'
              'git'
