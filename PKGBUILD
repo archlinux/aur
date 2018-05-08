@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rospy'
 
 pkgname='ros-melodic-rospy'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('525793cd11a7fc4c6b92dd3ce57096e23097769083ca92a86b89ee87cc42eaf6')
+sha256sums=('c2937b05c2f79c64a7fc1f6302242056875cc4fd15009b0f0874fe33108e9bb1')
 
 build() {
   # Use ROS environment variables
