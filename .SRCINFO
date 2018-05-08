@@ -24,6 +24,7 @@ pkgbase = imapsync
 	depends = perl-package-stash
 	depends = perl-par-packer
 	depends = perl-readonly
+	depends = perl-regexp-common
 	depends = perl-sys-meminfo
 	depends = perl-term-readkey
 	depends = perl-test-deep
