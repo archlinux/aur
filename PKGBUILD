@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-melodic-rosnode'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b049f6cef01cf6a21582be5fae808d2ee7cb4a91f0fd2c21c380c3e78b4ca41d')
+sha256sums=('078e1f040b175f416c9630c537006c29afd50f2bd874579ead97265a6a13d9b1')
 
 build() {
   # Use ROS environment variables
