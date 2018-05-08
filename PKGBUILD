@@ -5,9 +5,9 @@ url='http://www.ros.org/'
 
 pkgname='ros-melodic-roslz4'
 pkgver='1.13.6'
-_pkgver_patch=0
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-roslz4-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3aeb5c58648b520db1b67eae4bdb0f47ac430c0ab0836c10fbc68ee45e215fb2')
+sha256sums=('5a1621063f6304585a9a16852bbeee289e70c3f67f316911b7d668bdf097dccb')
 
 build() {
   # Use ROS environment variables
