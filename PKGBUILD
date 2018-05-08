@@ -3,7 +3,7 @@
 pkgname=needrestart
 url=https://github.com/liske/needrestart
 pkgdesc='Restart daemons after library updates.'
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 source=("needrestart-${pkgver}.tar.gz::https://github.com/liske/needrestart/archive/v${pkgver}.tar.gz")
 arch=(any)
@@ -15,6 +15,9 @@ depends=(perl-module-find
          perl-sort-naturally
          perl-module-scandeps
          perl-libintl-perl
+)
+optdepends=(
+  'iucode-tool: for outdated microcode detection'
 )
 
 build() {
@@ -32,4 +35,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('229a7905ecde57ffbf4798565aff9e1708b8e99f286f4a31f74506e979fb38d5')
+sha256sums=('69880aa63d199c3dce9d155820787c68b7333a04bc9fee8025ff342ec96e9019')
