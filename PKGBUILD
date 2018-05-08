@@ -1,8 +1,8 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 _pkgname=racerd
 pkgname=$_pkgname-git
-pkgver=20170914.29cd4c6
-pkgrel=3
+pkgver=r135.29cd4c6
+pkgrel=1
 pkgdesc="Rust semantic analysis server powered by Racer"
 arch=('x86_64')
 url="https://github.com/jwilm/$_pkgname"
@@ -16,7 +16,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

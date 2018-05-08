@@ -1,7 +1,7 @@
 pkgbase = racerd-git
 	pkgdesc = Rust semantic analysis server powered by Racer
-	pkgver = 20170914.29cd4c6
-	pkgrel = 3
+	pkgver = r135.29cd4c6
+	pkgrel = 1
 	url = https://github.com/jwilm/racerd
 	arch = x86_64
 	license = Apache
