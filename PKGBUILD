@@ -1,13 +1,13 @@
 # Maintainer: Kevin McCormack <HarlemSquirrel@gmail.com>
 
 pkgname=xmr-stak-opencl-amd
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='Unified All-in-one Monero miner (AMD)'
 arch=('x86_64')
 url='https://github.com/fireice-uk/xmr-stak'
 license=('GPL3')
-makedepends=('cmake')
+makedepends=('cmake' 'opencl-headers')
 depends=('hwloc' 'libmicrohttpd' 'opencl-amd' 'openssl')
 source=("git+https://github.com/fireice-uk/xmr-stak.git#tag=${pkgver}"
         'no-donate.patch')
