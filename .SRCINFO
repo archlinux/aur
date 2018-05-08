@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-tf2-tools
+	pkgdesc = ROS - tf2_tools.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_tools
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf2-msgs
+	makedepends = ros-melodic-tf2
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-tf2-ros
+	depends = ros-melodic-tf2-msgs
+	depends = ros-melodic-tf2
+	depends = ros-melodic-tf2-ros
+	source = ros-melodic-tf2-tools-0.6.2-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_tools/0.6.2-0.tar.gz
+	sha256sums = 30a34b8e9ef44eeaf3bad801a78fab8ee684141c61cc633be0ec84be2d694219
+
+pkgname = ros-melodic-tf2-tools
+
