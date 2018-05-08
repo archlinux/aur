@@ -90,6 +90,7 @@ source=(# mainline kernel patches
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_mq_patch}"
+        "${_lucjanpath}/0004-fix-gcc8-bogus-warnings.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
         'config'
@@ -111,6 +112,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
             '8cf3e0720780db2bcc68e8036a73234eb9f6a0e64ff33d18a93c870633ecde2e'
             'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
+            '159f6ba3e47c9f8de0cf0feda34edbfde3b756807e30615139f8304905e60316'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'c9f776f7c743f48c43aeaa18851bde39e98db663b3320030deb3740a369903cd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -146,6 +148,10 @@ prepare() {
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+   
+   ### Fix gcc8 bogus warnings
+        msg "Fix gcc8 bogus warnings"
+        patch -Np1 -i ../0004-fix-gcc8-bogus-warnings.patch
    
    ### Patch source with BFQ-SQ-MQ
         _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
