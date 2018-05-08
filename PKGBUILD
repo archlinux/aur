@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="git@github.com:FilippoRanza/bfi.git"
 makedepends=('git')
 license=('GPL')
+makedepends=('cmake')
 depends=('readline')
 source=('git+https://github.com/FilippoRanza/bfi.git')
 md5sums=('SKIP')
