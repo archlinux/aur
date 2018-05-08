@@ -1,7 +1,7 @@
 pkgbase = create-react-native-app
 	pkgdesc = Bootstrapping tool for React Native
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/react-community/create-react-native-app
 	arch = any
 	license = BSD-3-Clause
