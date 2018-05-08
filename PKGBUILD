@@ -60,6 +60,8 @@ url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
 #makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
 _uksm_patch="uksm-${_major}.patch"
 _gcc_name="kernel_gcc_patch"
@@ -73,6 +75,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         "${_uksm_path}/${_uksm_patch}"
+        "${_lucjanpath}/0004-fix-gcc8-bogus-warnings.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -376,6 +379,7 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             'SKIP'
             '2b196d2a5a76c50dd8ef604eafebdef41e68751d4854dbd4393d6f75ee42a0def9b0e4f3558b342d18478d0f0ebf3d06d9213b27b0eb1ed7928e6b8944d42ec7'
             'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
+            '5a2b2154afa7f10ffd50ad23afd2b25b468d655aa01e04fbc6ca54a90c53ded0c37b4d08658b9787a5f414779f1968040e81ccaee3b9355e1a9b7ad5104ed8aa'
             'c7239de7ef0673b4d52f58204abf55add95710c138e6656842a25ef7ead0f6741113d1cbc4720c859c12353862af4dc7c0d0e3ac13d05f18ed2a4cb04ed66509'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
