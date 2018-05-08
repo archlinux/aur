@@ -2,13 +2,13 @@
 _pkgname=skorch
 pkgname=python-${_pkgname}-git
 pkgver=r489.be0c527
-pkgrel=1
+pkgrel=2
 pkgdesc="A scikit-learn compatible neural network library that wraps pytorch"
 arch=('any')
 url="https://github.com/dnouri/skorch"
 license=('BSD3')
 depends=('python-scikit-learn' 'python-yaml' 'python-numpy' 'python-scipy' 'python-tqdm' 'python-pytorch' 'python-tabulate')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=("git+https://github.com/dnouri/skorch.git")
 sha512sums=('SKIP')
 
