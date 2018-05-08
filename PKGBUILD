@@ -15,8 +15,8 @@
 buildarch=4
 
 pkgname=retroarch-rbp
-pkgver=1.7.0
-pkgrel=2.1
+pkgver=1.7.1
+pkgrel=1.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -38,7 +38,7 @@ optdepends=('libretro-overlays: Collection of overlays'
 backup=('etc/retroarch.cfg')
 source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz"
         'retroarch-config.patch')
-sha256sums=('b32fa4a37ff777e9fe45eeef7ccf2e4e06520dd268584034f687a494dc9f5af1'
+sha256sums=('e9189c7da6b2ca0142528eca14f26104ee322f052f8609203d90b60938d8d3f3'
             '8dca43954d05ea1f989932fb26828b6e8325394eec070c4530dd21eab3f02c44')
 
 prepare() {
