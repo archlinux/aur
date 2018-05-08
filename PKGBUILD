@@ -114,8 +114,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  msg "Running make prepare"
-  make prepare
+  #msg "Running make prepare"
+  #make prepare
   
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db/
