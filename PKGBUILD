@@ -4,7 +4,7 @@ pkgdesc="ROS - Unit-testing package for ROS."
 url='http://ros.org/wiki/rosunit'
 
 pkgname='ros-melodic-rosunit'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-melodic-rosunit-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/rosunit/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('191b001f8f6740b9c83e051ac6f23828d505e514938d94dda6843290f9fb31e7')
+sha256sums=('4032e544618fa4ffadb344a26d8eec0f1e91f6c5a60d42f13de15579b7be6f3a')
 
 build() {
   # Use ROS environment variables
