@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-urdf-parser-plugin
+	pkgdesc = ROS - This package contains a C++ base class for URDF parsers.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://ros.org/wiki/urdf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = urdfdom-headers
+	depends = urdfdom-headers
+	source = ros-melodic-urdf-parser-plugin-1.13.1-0.tar.gz::https://github.com/ros-gbp/urdf-release/archive/release/melodic/urdf_parser_plugin/1.13.1-0.tar.gz
+	sha256sums = 7031baf19ed479dcc35455fc5090a740ccc28592c8fd565154ea6556aa80f747
+
+pkgname = ros-melodic-urdf-parser-plugin
+
