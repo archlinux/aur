@@ -1,6 +1,6 @@
 pkgbase = libaom-git
 	pkgdesc = Alliance for Open Media codec library with encoders and decoders for AV1
-	pkgver = r23697.c1ba869b8
+	pkgver = r25383.612deea3a7
 	pkgrel = 1
 	url = http://aomedia.org
 	arch = x86_64

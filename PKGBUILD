@@ -1,7 +1,7 @@
-# Maintainer: DetMittens
+# Maintainer: DetMittens - advcs at protonmail dot com
 pkgname=libaom-git
 _gitname=aom
-pkgver=r23697.c1ba869b8
+pkgver=r25383.612deea3a7
 pkgrel=1
 pkgdesc="Alliance for Open Media codec library with encoders and decoders for AV1"
 arch=('x86_64')
@@ -25,9 +25,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DARCH_X86_64=1 \
     -DBUILD_SHARED_LIBS=On \
+    -DCONFIG_SHARED=1 \
     -DCONFIG_PIC=1 \
-    -DCONIFG_SHARED=1 \
-    -DCONFIG_RUNTIME_CPU_DETECT=1
+    -DCONFIG_RUNTIME_CPU_DETECT=1 \
+    -DCONFIG_GCC=1
 
   make
 }
