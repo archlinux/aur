@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.0.4
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
-md5sums=('dd72d6eee15aa5592cc37c1b0daf208b'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
+md5sums=('eeab863af4541c3a627aa1c6193a574a'
          'SKIP')
 
 build() {
