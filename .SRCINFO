@@ -1,0 +1,26 @@
+pkgbase = ros-melodic-tf2-sensor-msgs
+	pkgdesc = ROS - Small lib to transform sensor_msgs with tf.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-tf2-ros
+	makedepends = ros-melodic-tf2
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-cmake-modules
+	makedepends = eigen3
+	depends = ros-melodic-python-orocos-kdl
+	depends = ros-melodic-tf2-ros
+	depends = ros-melodic-tf2
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-rospy
+	depends = eigen3
+	source = ros-melodic-tf2-sensor-msgs-0.6.2-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_sensor_msgs/0.6.2-0.tar.gz
+	sha256sums = fd51462f8726b02de80220f0891510d28703a3e1ce7cab1d1d28ff731e0f469c
+
+pkgname = ros-melodic-tf2-sensor-msgs
+
