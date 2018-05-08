@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-simulators'
-pkgver='1.3.0'
+pkgver='1.3.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-kinetic-simulators-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/kinetic/simulators/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('86ce3d86cbe63ca21762bef622bfb50fc8cf8563485e81a0a69576b3a3f3ac68')
+sha256sums=('bf590a253108bd3d92ebc59ce7c8036062904ae7e455cc5baff471558dd35e26')
 
 build() {
   # Use ROS environment variables
