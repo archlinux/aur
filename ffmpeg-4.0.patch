@@ -1,0 +1,48 @@
+diff -ur libopenshot-0.1.9/src/FFmpegWriter.cpp libopenshot-0.1.9-modified/src/FFmpegWriter.cpp
+--- libopenshot-0.1.9/src/FFmpegWriter.cpp	2018-05-08 17:50:15.420230233 +0200
++++ libopenshot-0.1.9-modified/src/FFmpegWriter.cpp	2018-05-08 17:53:21.491354566 +0200
+@@ -544,8 +544,10 @@
+ {
+ 	if (info.has_audio && audio_codec && AV_GET_CODEC_TYPE(audio_st) == AVMEDIA_TYPE_AUDIO && AV_GET_CODEC_ATTRIBUTES(audio_st, audio_codec)->frame_size <= 1)
+ 		return;
++#ifdef AVFMT_RAWPICTURE
+ 	if (info.has_video && video_codec && AV_GET_CODEC_TYPE(video_st) == AVMEDIA_TYPE_VIDEO && (oc->oformat->flags & AVFMT_RAWPICTURE) && AV_FIND_DECODER_CODEC_ID(video_st) == AV_CODEC_ID_RAWVIDEO)
+ 		return;
++#endif
+ 
+     int error_code = 0;
+     int stop_encoding = 1;
+@@ -958,7 +960,9 @@
+         if (strcmp(fmt->name, "gif") != 0)
+ 			// If not GIF format, skip the encoding process
+ 			// Set raw picture flag (so we don't encode this video)
++#ifdef AVFMT_RAWPICTURE
+ 			oc->oformat->flags |= AVFMT_RAWPICTURE;
++#endif
+         } else {
+         	// Set the default codec
+         	c->pix_fmt = PIX_FMT_YUV420P;
+@@ -966,7 +970,9 @@
+     }
+ 
+ 	AV_COPY_PARAMS_FROM_CONTEXT(st, c);
++#ifdef AVFMT_RAWPICTURE
+ 	ZmqLogger::Instance()->AppendDebugMethod("FFmpegWriter::add_video_stream (" + (string)fmt->name + " : " + (string)av_get_pix_fmt_name(c->pix_fmt) + ")", "c->codec_id", c->codec_id, "c->bit_rate", c->bit_rate, "c->pix_fmt", c->pix_fmt, "oc->oformat->flags", oc->oformat->flags, "AVFMT_RAWPICTURE", AVFMT_RAWPICTURE, "", -1);
++#endif
+ 
+ 	return st;
+ }
+@@ -1519,9 +1525,13 @@
+ // write video frame
+ bool FFmpegWriter::write_video_packet(std::shared_ptr<Frame> frame, AVFrame* frame_final)
+ {
++#ifdef AVFMT_RAWPICTURE
+ 	ZmqLogger::Instance()->AppendDebugMethod("FFmpegWriter::write_video_packet", "frame->number", frame->number, "oc->oformat->flags & AVFMT_RAWPICTURE", oc->oformat->flags & AVFMT_RAWPICTURE, "", -1, "", -1, "", -1, "", -1);
+ 
+ 	if (oc->oformat->flags & AVFMT_RAWPICTURE) {
++#else
++	if (0) {
++#endif
+ 		// Raw video case.
+ 		AVPacket pkt;
+ 		av_init_packet(&pkt);
