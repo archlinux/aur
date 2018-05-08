@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-meson
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Meson wrapper for MinGW (mingw-w64)"
 depends=('meson' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
@@ -9,7 +9,7 @@ optdepends=('wine: runtime support')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("toolchain-mingw.meson")
-sha256sums=('c8392670b99692b6221efa7c553745f14e1824e0ae5081ad36bf003e83192b8c')
+sha256sums=('61477f5e313b16d24e6dd669a732953941ad9b648ad7a057e909da37cccd879e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {

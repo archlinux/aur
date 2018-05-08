@@ -10,6 +10,8 @@ windres = '@TRIPLE@-windres'
 
 [properties]
 root = '@TRIPLE@'
+c_args = ['-O2', '-g', '-pipe', '-Wall', '-Wp,-D_FORTIFY_SOURCE=2', '-fexceptions', '--param=ssp-buffer-size=4']
+cpp_args = ['-O2', '-g', '-pipe', '-Wall', '-Wp,-D_FORTIFY_SOURCE=2', '-fexceptions', '--param=ssp-buffer-size=4']
 needs_exe_wrapper = true
 
 [host_machine]
