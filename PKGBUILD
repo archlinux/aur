@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.2.r11045.g762eb3ddc
+pkgver=0.8.2.r11145.gb6adecdee
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
@@ -201,11 +201,11 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    rm -rf "${pkgdir}/usr/include/google"
-    rm -rf "${pkgdir}/usr/lib/cmake/protobuf"
+    rm -rf "$pkgdir"/usr/include/{google,onnx}
+    rm -rf "$pkgdir"/usr/lib/cmake/protobuf
     rm -f "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
     rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool,zbuff,zdict,zstd*}.h,{__init__,avx{,2}}.py}
-    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
+    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,onnx{,_proto},protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
     rm -f "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm -f "$pkgdir"/usr/share/pkgconfig/libzstd.pc
     rm -f "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
