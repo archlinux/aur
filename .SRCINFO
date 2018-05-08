@@ -1,11 +1,13 @@
 pkgbase = redis-graph-git
 	pkgdesc = This project is a Redis module that implements a graph database.
 	pkgver = r215.9db0b8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swilly22/redis-graph
 	install = redis-graph-git.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = AGPL-3.0
 	makedepends = git
 	depends = redis
