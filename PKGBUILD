@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=68.0.3419.0
+pkgver=68.0.3424.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
+sha256sums=('4cf94fc55e6f937688796bd90463ef4b16a3bf55dbca355fd64227d6388057c4'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -130,7 +130,7 @@ sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '885bd27063ebc43b7030e9d9d364a46a248c4744f66c466017b42a83a279e6ab'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'b9899b26e65a6fc376bffd8cb685667b0ec1b04e90c8250f40c969bf4602c5a0'
+            '109134bc8f87c72d6d0d6b25955006a0a3e78733e23e019519d7e31acdc3cbfc'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -179,7 +179,7 @@ sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
             'f59483b9d7d93fd09ffce43f987078d656a67b2c7b90877d845932f290ce4c8c'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
-            '4d52981f00ba86edd9c0875d20f7368845d9e184a3a36f258a67d990d105097e'
+            '5b313be9a39a60fe2c8491180529dc8635b8341ad57d3f26ae68acc8f9e2f828'
             '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
             '0848fe30322bfb6dd7c06110f5d8468f1ce68caf6cd6a184b531cc9653f21420'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -204,7 +204,7 @@ sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
             '157489aa80f1a845e9a683d66552d64836b388c910724b32e496133538523ee1'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
-            '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
+            '89929fdcacfed462b2893710f26334d3861b6401f182d790e62d204ec083faf5'
             '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
@@ -214,7 +214,6 @@ sha256sums=('afca477013cefce828be4b11eb6991f78fa00f9ae6f73960e060975eba3a1c79'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 
@@ -420,7 +419,6 @@ build() {
     'use_vaapi=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
-    'enable_webrtc=true'
     'enable_nacl=false'
     'enable_swiftshader=false'
     'enable_nacl_nonsfi=false'
