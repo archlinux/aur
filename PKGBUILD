@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-viz'
-pkgver='1.3.0'
+pkgver='1.3.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-kinetic-viz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/kinetic/viz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f0c11c5f4eddd0497812a6a9578fe8206d8b62e011bc64bb9d96a8df21fdcfea')
+sha256sums=('14529b13b3f4c475e085bba31c71e55f639788f2bcbb333d9b2813b95bb0b093')
 
 build() {
   # Use ROS environment variables
