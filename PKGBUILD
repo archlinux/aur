@@ -13,9 +13,19 @@ sha1sums=('ea50bc4ee9eabd42fb81757c5549a2e592a4a434')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare () {
+  cd "$srcdir/hmat-oss-${pkgver}"
+
+  # https://github.com/jeromerobert/hmat-oss/commit/75727393cc78a20f94b3b6ba445385871504172e
+  sed -i '34i#include "cluster_tree.hpp"' src/full_matrix.hpp
+
+  # gcc 8 class-memaccess failure
+  sed -i "s|\-Werror ||g" CMakeLists.txt
+}
+
+
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
-  sed -i '34i#include "cluster_tree.hpp"' src/full_matrix.hpp
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
