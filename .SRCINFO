@@ -1,7 +1,7 @@
 pkgbase = xmrig-donateless
 	pkgdesc = High Perf CryptoNote CPU Miner-No Donate Version
-	pkgver = 2.6.0
-	pkgrel = 5
+	pkgver = 2.6.2
+	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
 	arch = armv7h
@@ -18,10 +18,10 @@ pkgbase = xmrig-donateless
 	backup = etc/xmrig/xmrig.conf
 	source = xmrig.service
 	source = xmrig.sysusers
-	source = https://github.com/xmrig/xmrig/archive/v2.6.0-beta3.tar.gz
+	source = https://github.com/xmrig/xmrig/archive/v2.6.2.tar.gz
 	sha256sums = 0559837edbe069158909c8379041c01d9e98fb2ec4a62d3fa26b95741b463275
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
-	sha256sums = 54eac25e600bf3e3bbbef4ce7b55a4139e0d229b48c226e22755ba86a1f39a7d
+	sha256sums = 3452b104c3fbd90c2b08321140702d5ef30027823863fd9eabf896c255cf09ef
 
 pkgname = xmrig-donateless
 
