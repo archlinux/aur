@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=metalfan-git
-pkgver=20170319.3ab1274
+pkgver=r3.cf19af1
 pkgrel=1
 pkgdesc="Fan control script"
 arch=('any')
@@ -14,7 +14,7 @@ backup=('etc/metalfan.toml')
 
 pkgver() {
   cd "${srcdir}/metalfan"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
