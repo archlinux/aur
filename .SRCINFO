@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-std-msgs
+	pkgdesc = ROS - Standard ROS Messages including common message types representing primitive data types and other basic message constructs, such as multiarrays.
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = http://www.ros.org/wiki/std_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-std-msgs-0.5.11-0.tar.gz::https://github.com/ros-gbp/std_msgs-release/archive/release/melodic/std_msgs/0.5.11-0.tar.gz
+	sha256sums = 6d797519014ad374df53396887cf92703255f97d6faf0be22116f1162b843a13
+
+pkgname = ros-melodic-std-msgs
+
