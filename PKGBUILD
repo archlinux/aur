@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.4.35.r0.g7b11074557
+pkgver=1.4.44.r0.g1d04ff6389
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
