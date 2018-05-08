@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://wiki.ros.org/actionlib_msgs'
 
 pkgname='ros-melodic-actionlib-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-melodic-actionlib_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/actionlib_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('61a7e2bce37ef7df01f18c74ee8f9a887ff20128227c2399b983d8c4f209d57d')
+sha256sums=('6edb884e6ca0727fdc5c5e755a89c524ac5716b52488cb431075d33897699a95')
 
 build() {
   # Use ROS environment variables
