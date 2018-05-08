@@ -1,7 +1,7 @@
 pkgbase = ttfautohint
 	pkgdesc = Provides automated hinting process for web fonts.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freetype.org/ttfautohint/
 	arch = i686
 	arch = x86_64

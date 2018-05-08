@@ -3,7 +3,7 @@
 
 pkgname=ttfautohint
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides automated hinting process for web fonts."
 arch=('i686' 'x86_64')
 url="http://www.freetype.org/ttfautohint/"
@@ -24,7 +24,8 @@ build() {
   export UIC='/usr/bin/uic'
   export RCC='/usr/bin/rcc'
   export TTFONTS='/usr/share/fonts/noto'
-  ./configure --prefix=/usr --with-qt=/usr/lib/qt
+  ./configure --prefix=/usr --with-qt=/usr/lib/qt \
+    --with-freetype-config="pkg-config freetype2"
   make
 }
 
