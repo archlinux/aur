@@ -1,7 +1,7 @@
 pkgbase = bitkeeper-development-bin
 	pkgdesc = a fast, enterprise-ready, distributed SCM. DEVELOPMENT VERSION!!!
 	pkgver = 7.3.2.0x5aaba359
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bitkeeper.org
 	arch = x86_64
 	license = Apache 2.0
