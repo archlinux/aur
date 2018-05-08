@@ -1,0 +1,11 @@
+diff -rupN a/product.json b/product.json
+--- a/product.json	2018-05-08 09:26:25.618099994 -0700
++++ b/product.json	2018-05-08 09:26:47.388338276 -0700
+@@ -17,6 +17,7 @@
+ 	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
+ 	"urlProtocol": "code-oss",
+ 	"extensionAllowedProposedApi": [
++		"ms-vsliveshare.vsliveshare",
+ 		"ms-vscode.node-debug",
+ 		"ms-vscode.node-debug2"
+ 	],
