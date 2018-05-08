@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.9.r214.g14320ab
+pkgver=0.3.0.r9.g33c256d
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
@@ -22,7 +22,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-VCS}"
   # based only on annotated tags, always has long version as it's a rolling release
   # discards v, replaces dashes with dots
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # NOTE: for one release, 0.3.0, annotated tags are missing, thus --tags is used
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
