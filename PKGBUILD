@@ -1,17 +1,19 @@
-# Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+# Maintainer: Mikkel Oscar Lyderik <m at moscar dot net>
 
 _py=python
 _gitname=python
 
 pkgname=${_py}-vlc-git
-pkgver=r290.6b4f486
+pkgver=r299.f181106
 pkgrel=1
 pkgdesc="Python bindings for VLC"
 arch=('any')
 url="https://wiki.videolan.org/Python_bindings"
 license=('GPLv2')
 depends=(${_py} 'vlc')
-makedepends=("${_py}-distribute")
+makedepends=("${_py}-distribute" "git")
+provides=('python-vlc')
+conflicts=('python-vlc')
 source=("git://git.videolan.org/vlc/bindings/${_gitname}.git"
         'setup.py')
 sha1sums=('SKIP'
@@ -27,7 +29,7 @@ prepare() {
   cp setup.py "${srcdir}/${_gitname}/"
 
   # move vlc.py to root
-  cp "${srcdir}/${_gitname}/generated/2.2/vlc.py" "${srcdir}/${_gitname}/"
+  cp "${srcdir}/${_gitname}/generated/3.0/vlc.py" "${srcdir}/${_gitname}/"
 }
 
 build() {
