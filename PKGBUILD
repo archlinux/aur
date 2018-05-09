@@ -2,10 +2,10 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.3.6.1
-pkgrel=2
+pkgver=1.3.6.2
+pkgrel=1
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/shawn1m/overture"
 license=("MIT")
 provides=("overture")
