@@ -35,8 +35,10 @@ _makenconfig=
 #  21. Intel Broadwell (MBROADWELL)
 #  22. Intel Skylake (MSKYLAKE)
 #  23. Intel Skylake X (MSKYLAKEX)
-#  24. Generic-x86-64 (GENERIC_CPU)
-#  25. Native optimizations autodetected by GCC (MNATIVE)
+#  24. Intel Cannon Lake (MCANNONLAKE)
+#  25. Intel Ice Lake (MICELAKE)
+#  26. Generic-x86-64 (GENERIC_CPU)
+#  27. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
@@ -64,8 +66,8 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.16
-pkgver=4.16.7
-pkgrel=2
+pkgver=4.16.8
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -73,7 +75,7 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchname="patch-4.16-ck${_ckpatchversion}"
-_gcc_more_v='20180310'
+_gcc_more_v='20180507'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
@@ -93,13 +95,13 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
+            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
             'SKIP'
-            'f6c986dc5aaf36d9e41db4f63c94dde4ac3007625e3c05ca220ac40b41c6896d'
+            'c5c99350428916ca841ea6d20b77bae29deccc24b7455bfd9ec78ab05a614f69'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
+            '8cf3e0720780db2bcc68e8036a73234eb9f6a0e64ff33d18a93c870633ecde2e'
             '61cd4b129eac475ad82fcdbbf9952b80e81e7c893776c00e3b6a658b950d0b26'
             '8e56d17c93fe6276046056c8875d04eae8d505369e89db7092b73689bf9bfe55'
             '6d5821f972861e37606458ac2a03fe289620e079378dd081e49034e1570e7bfb')
@@ -130,7 +132,7 @@ prepare() {
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
-  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
+  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
   # Clean tree and copy ARCH config over
   make mrproper
