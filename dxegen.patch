@@ -1,0 +1,36 @@
+--- src/dxe/dxegen.c
++++ src/dxe/dxegen.c
+@@ -106,8 +106,7 @@
+       libdir = getenv("DJDIR");
+       if (!libdir)
+       {
+-        fprintf(stderr, "Error: neither DXE_LD_LIBRARY_PATH nor DJDIR are set in environment\n");
+-        exit(1);
++        libdir = "/usr/i686-pc-msdosdjgpp";
+       }
+       strcat(command, libdir);
+       strcat(command, "/lib");
+--- src/dxe/dxe3gen.c
++++ src/dxe/dxe3gen.c
+@@ -461,7 +461,7 @@
+     canonicalize_path(libdir);
+   }
+   else
+-    libdir = NULL;
++    libdir = strdup("/usr/i686-pc-msdosdjgpp/lib");
+ }
+ 
+ 
+@@ -1366,7 +1366,11 @@
+   if (opt.autoresolve)
+   {
+     /* Fire the resolver. It should take care of the dependencies (if any) */
+-    strcpy(cmdbuf, "dxe3res -o "TEMP_BASE".c ");
++    const char *djdir = getenv("DJDIR");
++    if (!djdir)
++      djdir = "/usr/i686-pc-msdosdjgpp";
++    strcpy(cmdbuf, djdir);
++    strcat(cmdbuf, "/bin/dxe3res -o "TEMP_BASE".c ");
+     strcat(cmdbuf, opt.dxefile);
+     if ((rv = system(cmdbuf)) != 0)
+     {
