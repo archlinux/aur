@@ -1,0 +1,22 @@
+--- share/chruby/chruby.fish.orig	2018-05-09 11:03:47.704267865 +0800
++++ share/chruby/chruby.fish	2018-05-09 11:04:07.601164985 +0800
+@@ -34,7 +34,7 @@
+ # `chruby.sh` is located in a custom path.
+ #
+ function bchruby
+-  set -q CHRUBY_ROOT; or set CHRUBY_ROOT /usr/local
++  set -q CHRUBY_ROOT; or set CHRUBY_ROOT /usr
+ 
+   if test ! -f "$CHRUBY_ROOT/share/chruby/chruby.sh";
+     echo "$CHRUBY_ROOT/share/chruby/chruby.sh does not exist." \
+--- share/chruby/auto.fish.orig	2018-05-09 11:03:40.917525801 +0800
++++ share/chruby/auto.fish	2018-05-09 11:04:18.027957887 +0800
+@@ -35,7 +35,7 @@
+ # `chruby.sh` and `auto.sh` are located in a custom path.
+ #
+ function chruby_auto -e fish_prompt
+-  set -q CHRUBY_ROOT; or set CHRUBY_ROOT /usr/local
++  set -q CHRUBY_ROOT; or set CHRUBY_ROOT /usr
+ 
+   #
+   # line 1: source official `chruby.sh` file.
