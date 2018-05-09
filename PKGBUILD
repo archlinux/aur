@@ -2,8 +2,8 @@
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
 
 pkgname=routeconverter
-pkgver=2.22.1
-pkgrel=2
+pkgver=2.23
+pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
 arch=(i686 x86_64)
 url="http://www.routeconverter.de/en"
@@ -13,7 +13,7 @@ optdepends=('gpsbabel: for some additional format support')
 changelog=ChangeLog
 source=(routeconverter
         routeconverter-cli
-        http://static.routeconverter.com/download/previous-releases/2.22/RouteConverterCmdLine.jar
+        http://static.routeconverter.com/download/previous-releases/2.23/RouteConverterCmdLine.jar
         http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
 noextract=(RouteConverterCmdLine.jar
@@ -48,5 +48,5 @@ package()
 }
 md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
          'fdf570309917df1c1536b7e3c7740b33'
-         '68b4f4660be67f8a2fbba33acee395c4'
-         'aab7021ad4665d0b4e5281acfd60849f')
+         '22f9fc21fe752af3a14dabee0e633da8'
+         '7a70e24554e9eeb241eaa06772a9b642')
