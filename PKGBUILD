@@ -3,7 +3,7 @@
 
 pkgname=libenglab
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Main library for Englab, a mathematical platform" 
 url="http://www.englab.org"
 arch=('i686' 'x86_64')
@@ -27,4 +27,6 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
+  cd "$pkgdir"/usr/lib
+  ln ${pkgname}.so.${pkgver} ${pkgname}.so.1
 }
