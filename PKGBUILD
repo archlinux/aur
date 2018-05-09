@@ -1,5 +1,5 @@
 pkgname=openmm
-pkgver=7.1.1
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('MIT' 'LGPL')
 depends=('fftw')
 makedepends=('cmake' 'swig' 'doxygen')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha1sums=('c847c6cb654ee9f7dbf16babc1979f4021dc1d69')
+sha1sums=('ab7f0a136152c04cb7f38d10321d35fa212fdbc0')
 
 #prepare() {
 #  cd "${srcdir}"/openmm-${pkgver}
@@ -23,6 +23,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOPENMM_GENERATE_API_DOCS=ON \
     ../openmm-${pkgver}
   make
 }
@@ -35,9 +36,14 @@ check () {
 
 package() {
   cd "${srcdir}"/build
+  msg2 "Installing openmm"
   make DESTDIR="${pkgdir}" install
-  make DESTDIR="${pkgdir}" PythonInstall
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+
+  msg2 "Installing openmm python bindings"
+  # Fix to install python wrapper
+  #sed -i 's:setup.py install:setup.py install --root=$DESTDIR:g' wrappers/python/pysetupinstall.cmake
+  make DESTDIR="${pkgdir}" PythonInstall
   mv "${pkgdir}"/usr/licenses/*.txt "${pkgdir}"/usr/share/licenses/${pkgname}
   rm -rf "${pkgdir}"/usr/{bin,docs,examples,licenses}
 }
