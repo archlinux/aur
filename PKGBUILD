@@ -3,7 +3,7 @@
 
 pkgname=libenglab-dsp
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Englab toolbox for digital signal processing"
 url="https://sourceforge.net/projects/englab/"
 arch=('i686' 'x86_64')
@@ -22,4 +22,7 @@ build() {
 package(){
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
+  
+  cd "$pkgdir"/usr/lib
+  ln ${pkgname}.so.0.3 ${pkgname}.so
 }
