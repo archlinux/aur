@@ -1,12 +1,13 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmium
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="http://osmcode.org/libosmium/"
-arch=('x86_64' 'i686')
+arch=('any')
 license=('custom')
-depends=('expat' 'zlib' 'bzip2' 'boost' 'boost-libs')
+makedepends=('cmake')
+depends=('expat' 'zlib' 'bzip2' 'boost' 'boost-libs' 'protozero')
 optdepends=('sparsehash: sparse-mem-table index map'
             'gdal: convert OSM geometries into OGR geometries'
             'geos: convert OSM geometries into GEOS geometries'
@@ -20,13 +21,18 @@ build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake \
-        -DINSTALL_GDALCPP=ON \
-        -DINSTALL_PROTOZERO=ON \
-        -DINSTALL_UTFCPP=ON \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	..
+    -DINSTALL_GDALCPP=ON \
+    -DINSTALL_PROTOZERO=ON \
+    -DINSTALL_UTFCPP=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	  ..
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  ctest
 }
 
 package() {
