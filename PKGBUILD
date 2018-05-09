@@ -5,12 +5,12 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=60.0.0.1
+pkgver=60.0
 pkgrel=2
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
-meme=FIREFOX_59_0_2_RELEASE
+meme=FIREFOX_60_0_RELEASE
 meme2=FIREFOX_RELEASE_60_BASE
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
@@ -62,7 +62,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
 patch -Np1 -i ../fix.patch
 patch -Np1 -i ../fix2.patch
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
@@ -140,7 +140,7 @@ END
 }
 
 build() {
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -156,7 +156,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified-$meme2
+  cd mozilla-unified-$meme
   cd browser/branding/official/content
 msg2 'Fixing some buildbugs'
 cp ../default16.png icon16.png

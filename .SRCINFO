@@ -1,6 +1,6 @@
 pkgbase = firefox-eme-free
 	pkgdesc = Deblobbed and EME free Firefox
-	pkgver = 60.0.0.1
+	pkgver = 60.0
 	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = firefox-eme-free
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_59_0_2_RELEASE.tar.gz
+	source = https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_60_0_RELEASE.tar.gz
 	source = wifi-disentangle.patch
 	source = wifi-fix-interface.patch
 	source = 0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
