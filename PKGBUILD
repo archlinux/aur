@@ -1,8 +1,8 @@
 # Maintainer: Ralf Mueller <stark.dreamdetective@gmail.com>
 # Contributor: Ralf Mueller <stark.dreamdetective@gmail.com>
 pkgname=cdo
-pkgver=1.9.3
-fileID=16435
+pkgver=1.9.4
+fileID=17374
 pkgrel=0
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
@@ -16,7 +16,7 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('13ae222164413dbd53532b03b072def5')
+md5sums=('377c9e5aa7d8cbcb4a6c558abb2eb053')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,8 +31,8 @@ build() {
     --with-eccodes=/usr \
     --with-magics=/usr \
     --with-libxml2=/usr \
-    CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native " \
-    CXXFLAGS="-g -O3 -std=c++11 -Wall -fopenmp -march=native " \
+    CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native -ftree-vectorize -mavx2" \
+    CXXFLAGS="-g -O3 -std=c++11 -Wall -fopenmp -march=native  -ftree-vectorize -mavx2" \
     LIBS="-ljasper -lpng -lopenjpeg" \
     CPPFLAGS="-I/usr/include/magics -I/usr/include/libxml2"
 
