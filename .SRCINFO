@@ -1,0 +1,30 @@
+pkgbase = quickdocs
+	pkgdesc = GTK app for reading Valadoc and DevDocs
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/mdh34/quickDocs
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = desktop-file-utils
+	makedepends = hicolor-icon-theme
+	makedepends = intltool
+	makedepends = yelp-tools
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = vala
+	depends = webkit2gtk
+	depends = devhelp
+	depends = libarchive
+	options = !libtool
+	source = https://github.com/mdh34/quickdocs/archive/2.0.1.tar.gz
+	sha256sums = 460f0a9e1f9566245494700e17bf5ae3996a79007e025e3966b067989dbb2013
+
+pkgname = quickdocs
+
