@@ -1,6 +1,6 @@
 pkgbase = t50
 	pkgdesc = T50 (f.k.a. F22 Raptor) is a tool designed to perform 'Stress Testing'
-	pkgver = 5.7.1
+	pkgver = 5.7.2
 	pkgrel = 1
 	url = https://github.com/fredericopissarra/t50
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = t50
 	arch = armv6h
 	license = GPLv2
 	provides = t50
-	source = t50.tar.gz::https://github.com/fredericopissarra/t50/archive/v5.7.1.tar.gz
-	md5sums = f93a16d015c003e1aed3ab13555f0b9a
+	source = t50.tar.gz::https://github.com/fredericopissarra/t50/archive/v5.7.2.tar.gz
+	md5sums = e539426e8826a171e19bb22e04e96eff
 
 pkgname = t50
 
