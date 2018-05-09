@@ -6,8 +6,8 @@
 
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
-pkgver=2.9
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
 license=("GPL")
@@ -22,19 +22,17 @@ source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinalit
         "0001-Enable-table-validation-modules.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/${pkgbase%-infinality}"
         "0002-Enable-infinality-subpixel-hinting.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/${pkgbase%-infinality}"
         "0003-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/${pkgbase%-infinality}"
-        "0001-psaux-Correctly-handle-Flex-features-52846.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-psaux-Correctly-handle-Flex-features-52846.patch?h=packages/${pkgbase%-infinality}"
         "0005-${pkgbase%2-infinality}-2.5.2-more-demos.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-${pkgbase%2-infinality}-2.5.2-more-demos.patch?h=packages/${pkgbase%-infinality}"
         "${pkgbase%-infinality}.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${pkgbase%-infinality}.sh?h=packages/${pkgbase%-infinality}")
-sha256sums=("bf380e4d7c4f3b5b1c1a7b2bf3abb967bda5e9ab480d0df656e0e08c5019c5e6"
-            "06460168615c4c69293e4126c7e69731b7cc7d4db5470bca3cb95c05807993e2"
-            "9312f7d2e5c798684d39e1fecddfed8e29d2102f035c4bd765157e2d077175f8"
-            "37c0ee3d983769a50a33292f547bec8d0dc064da62090dd7690bedf2d1dba7d0"
-            "29641b22a8e785997a953b5f5e59ba972e6969cb8c43fbce5e5c3537a1fabc7e"
-            "54466e05fb50b4a5def0589202ae41b15ea160b279092e01f5322dcd54fba044"
-            "12bead126c05bc980af4d4a730f230db925e8bfb27b9e3683cba05e42a4be6e6"
-            "7c1438c6bb137e24b39aa8a4eabb5c82f1ed3c3911ad9b698f3944c4a4c79be9"
-            "e5541954d302ddae6e6c906b1ab2e18a7a7bec450af90c3f260f26040b7e1731"
-            "94bacad40d0be11659518bd6fb663c84f03f8a95b65dff95bb1f1f825f997236"
+sha256sums=("ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce"
+            "4d4b8248d399f75e8b1a803b6af1d4a08d723f5b5eebb4c5f2681686ce614f0b"
+            "f57c1297f5ad2ad4764f491317fa0f548bd307c4513185d4a0602412e83b1dc9"
+            "84f88cb22a87bae7184de063b7d6d648bb4d34140fef21db8b0d6fda3277651f"
+            "3d440aad3481285c7455f1593577e375c9d5792c800bbaba68d46fd75130fab9"
+            "cd460f0fb00dd8ae43e1d241a83e97d22779b3d825061296c08f90b852c7e764"
+            "55f0c00edc13016288e905b41be6c03ac28b05c3aee8e0924ff3680d1cfb580e"
+            "be3fc13ef3532e1ace9804148fff3357de6298efb80fe37494974017f3076756"
+            "7d681ac3002909cee93385c75b191b9fae2a6d052b5b0083e926f1a7c0e724b7"
             "36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b"
             "f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467")
 validpgpkeys=("58E0C111E39F5408C5D3EC76C1A60EACE707FDA5")
@@ -48,10 +46,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
   patch -Np1 -i "${srcdir}/0002-Enable-infinality-subpixel-hinting.patch"
   patch -Np1 -i "${srcdir}/0003-Enable-long-PCF-family-names.patch"
-
-  # Freetype 2.9 regression: bad rendering for some Type 1 fonts
-  # https://savannah.nongnu.org/bugs/?52846
-  patch -Np1 -i "${srcdir}/0001-psaux-Correctly-handle-Flex-features-52846.patch"
 
   cd "${srcdir}/${pkgbase%-infinality}-demos"
   # Enable more demos
@@ -81,7 +75,6 @@ package_freetype2-infinality() {
   conflicts=("${pkgname%-infinality}")
   install="${pkgname%-infinality}.install"
   backup=("etc/profile.d/${pkgname%-infinality}.sh")
-  options=("libtool")
 
   cd "${srcdir}/${pkgname%-infinality}"
   make DESTDIR="${pkgdir}" install

@@ -1,0 +1,9 @@
+freetype2-*.pkg.tar.xz
+freetype-*.tar.gz
+freetype-*.tar.gz.sig
+ft2demos-*.tar.gz
+ft2demos-*.tar.gz.sig
+freetype2.sh
+*.patch
+pkg/
+src/
