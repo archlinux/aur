@@ -1,57 +1,52 @@
-#Maintainer: nutz <nutz[äT]noova(O)de>
+# Maintainer: nutz <nutz[äT]noova(O)de>
+# Maintainer: Anthony Danilov <grinderz@protonmail.com>
 
 pkgname=aerospike-tools-bin
 pkgrealname=aerospike-tools
-pkgver=3.15.0.3
+pkgver=3.15.3.6
 pkgrel=1
 pkgdesc="Tools for Aerospike"
 arch=('x86_64')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
 depends=(
-	'python2-argparse'
-	'python2-bcrypt'
-	'python2-pyopenssl'
-	'python2-pexpect'
-	'python2-ply'
+	'java-runtime'
+	'python2'
+	'openssl'
+	'readline>=7.0.0'
+	'readline<8.0.0'
 )
-makedepends=('binutils')
-sha256sums=('e582f5390e8853eb0faa9996e028ab7a46251626d629447bf6c8f11b95c290a7')
-source=("http://www.aerospike.com/download/tools/${pkgver}/artifact/ubuntu16"
-       )
+optdepends=(
+	'python2-argparse: non default option parser'
+	'python2-bcrypt: connect to an Aerospike Cluster with security enabled'
+	'python2-pexpect: collect system statistics for remote hosts'
+	'python2-toml: configuration files support'
+	'python2-jsonschema: configuration files support'
+	'python2-pyopenssl: connect to an Aerospike Cluster using SSL'
+	'python2-pyasn1: connect to an Aerospike Cluster using SSL'
+)
+
+
+sha256sums=('bdc177068dcbed5320d2e26f8afb72cdf78fa479af2ccf52e9b3e9cbfff9fb08')
+source=("http://www.aerospike.com/download/tools/${pkgver}/artifact/ubuntu16")
 
 prepare() {
 	cd ${srcdir}/${pkgrealname}-${pkgver}-ubuntu16.04/
-	ar xv ${pkgrealname}-${pkgver}.ubuntu16.04.x86_64.deb 1>/dev/null
+	ar x ${pkgrealname}-${pkgver}.ubuntu16.04.x86_64.deb
 	tar xf data.tar.xz
 }
 
-#pkgver() {}
-
-#build() {}
-
-#check() {}
-
 package() {
-	mkdir -p -m 755 "${pkgdir}/opt/aerospike/bin"
-	mkdir -p -m 755 "${pkgdir}/usr/bin"
-	cd ${srcdir}/${pkgrealname}-${pkgver}-ubuntu16.04/opt/aerospike
-	for file in $(ls bin); do
-		# TODO: aql bla.
-		install -m 0755 bin/$file "${pkgdir}/opt/aerospike/bin/${file}"
-		ln -s "/opt/aerospike/bin/${file}" "${pkgdir}/usr/bin/${file}"
-		sed -i "1s/python/python2/" ${pkgdir}/opt/aerospike/bin/${file}
+	cd "${srcdir}/${pkgrealname}-${pkgver}-ubuntu16.04"
+	
+	cp -ar etc "${pkgdir}/etc"
+	cp -ar opt "${pkgdir}/opt"
+	cp -ar usr "${pkgdir}/usr"
+
+	for file in {add_python_path,aerospike_nagios.py,asadm,asgraphite,remove_python_path,ssl_context.py,asinfo,asloglatency}; do
+		sed -i '1s/python/python2/' "${pkgdir}/opt/aerospike/bin/${file}"
 	done
 
-	mkdir -p -m 755 "${pkgdir}/opt/aerospike/lib/python"
-	install -m 0755 lib/python/citrusleaf.py "${pkgdir}/opt/aerospike/lib/python/citrusleaf.py"
-
-
-	for path in $(find doc/ | sort); do
-		if [ -d ${path} ]; then
-			mkdir -p -m 755 "${pkgdir}/opt/aerospike/${path}"
-		else
-			install -m 0644 $path "${pkgdir}/opt/aerospike/${path}"
-		fi
-	done
+	sed -i '1s/python/python2/' "${pkgdir}/opt/aerospike/lib/python/citrusleaf.py"
+	sed -i 's/libreadline.so.6/libreadline.so.7/g' "$pkgdir/opt/aerospike/bin/aql"
 }

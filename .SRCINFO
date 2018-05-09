@@ -1,18 +1,25 @@
 pkgbase = aerospike-tools-bin
 	pkgdesc = Tools for Aerospike
-	pkgver = 3.15.0.3
+	pkgver = 3.15.3.6
 	pkgrel = 1
 	url = http://www.aerospike.com/
 	arch = x86_64
 	license = AGPLv3
-	makedepends = binutils
-	depends = python2-argparse
-	depends = python2-bcrypt
-	depends = python2-pyopenssl
-	depends = python2-pexpect
-	depends = python2-ply
-	source = http://www.aerospike.com/download/tools/3.15.0.3/artifact/ubuntu16
-	sha256sums = e582f5390e8853eb0faa9996e028ab7a46251626d629447bf6c8f11b95c290a7
+	depends = java-runtime
+	depends = python2
+	depends = openssl
+	depends = readline>=7.0.0
+	depends = readline<8.0.0
+	optdepends = python2-argparse: non default option parser
+	optdepends = python2-bcrypt: connect to an Aerospike Cluster with security enabled
+	optdepends = python2-pexpect: collect system statistics for remote hosts
+	optdepends = python2-toml: configuration files support
+	optdepends = python2-jsonschema: configuration files support
+	optdepends = python2-pyopenssl: connect to an Aerospike Cluster using SSL
+	optdepends = python2-pyasn1: connect to an Aerospike Cluster using SSL
+	backup = etc/aerospike/astools.conf
+	source = http://www.aerospike.com/download/tools/3.15.3.6/artifact/ubuntu16
+	sha256sums = bdc177068dcbed5320d2e26f8afb72cdf78fa479af2ccf52e9b3e9cbfff9fb08
 
 pkgname = aerospike-tools-bin
 
