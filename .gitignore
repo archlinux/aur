@@ -1,4 +1,7 @@
 *
 !.gitignore
+!lesspassgo-server.conf
+!lesspassgo-server.service
+!lesspassgo-server.sysusers
 !PKGBUILD
 !.SRCINFO

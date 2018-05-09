@@ -1,0 +1,15 @@
+[Unit]
+Description=LessPass API compatible server written in Go
+Documentation=https://github.com/tuxlinuxien/lesspassgo/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=lesspassgo
+Group=lesspassgo
+EnvironmentFile=/etc/lesspassgo-server.conf
+ExecStart=/usr/bin/lesspassgo-server
+
+[Install]
+WantedBy=multi-user.target
