@@ -9,7 +9,7 @@ url="https://www.modbusdriver.com/$_pkgname.html"
 license=('custom')
 provides=("$_pkgname")
 source=("https://www.modbusdriver.com/downloads/$_pkgname.$pkgver.zip")
-md5sums=('af5953808212e005b458ca90d7cf868b')
+sha256sums=('9150318a70d90510f87f53a338dc814af401e27e97c9617d22d024c668c88822')
 
 package() {
         cd "$srcdir"

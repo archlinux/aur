@@ -7,7 +7,7 @@ pkgbase = modpoll-bin
 	license = custom
 	provides = modpoll
 	source = https://www.modbusdriver.com/downloads/modpoll.3.4.zip
-	md5sums = af5953808212e005b458ca90d7cf868b
+	sha256sums = 9150318a70d90510f87f53a338dc814af401e27e97c9617d22d024c668c88822
 
 pkgname = modpoll-bin
 
