@@ -1,6 +1,6 @@
 pkgbase = kulanday-git
 	pkgdesc = A software for collecting and managing datasets for learning languages (or anything else)
-	pkgver = 93
+	pkgver = 102
 	pkgrel = 1
 	url = https://tambi-soft.github.io
 	arch = any

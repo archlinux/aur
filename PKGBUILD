@@ -2,7 +2,7 @@
 
 _pkgname=('kulanday')
 pkgname=('kulanday-git')
-pkgver=93
+pkgver=102
 pkgrel=1
 pkgdesc='A software for collecting and managing datasets for learning languages (or anything else)'
 arch=('any')
@@ -27,4 +27,6 @@ build() {
 
 package() {
     install -D -m 755 ${srcdir}/${_pkgname}/debug/kulanday ${pkgdir}/usr/bin/kulanday
+    install -D -m 644 ${srcdir}/${_pkgname}/assets/logo.ico ${pkgdir}/usr/share/icons/hicolor/128x128/apps/kulanday_logo.ico
+    install -D -m 644 ${srcdir}/${_pkgname}/assets/kulanday.desktop ${pkgdir}/usr/share/applications/kulanday.desktop
 }
