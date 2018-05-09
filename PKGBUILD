@@ -3,7 +3,7 @@
 
 _pkgname=gvfs
 pkgname=${_pkgname}-light
-pkgver=1.36.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO, without network/optical/misc support."
 url="https://wiki.gnome.org/Projects/gvfs"
@@ -18,7 +18,7 @@ optdepends=('gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support'
             'gtk3: Recent files support')
 groups=('gnome')
 options=(!emptydirs)
-_commit=1ed5c7a25d91d1e3039764e2c6eac089379df79c  # tags/1.36.1^0
+_commit=eb283f2ff47432cc66976c0ad66e267b9b0c8305 # tags/1.36.2^0
 source=("git+https://git.gnome.org/browse/gvfs#commit=${_commit}"
         'gvfsd.hook')
 sha256sums=('SKIP'
