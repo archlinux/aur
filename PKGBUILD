@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Earnestly/sx"
 license=('MIT')
 depends=('xorg-server' 'xorg-xauth')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('60a5b3c16ff68a1f5275b596cfd3e48667e65c25af5ca4f3281b72a196cc2c78')
 
 package() {
