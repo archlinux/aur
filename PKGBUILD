@@ -1,15 +1,15 @@
 # Maintainer: Anapopo <favoursmoe@gmail.com>
 
 pkgname=fchinanet-sh
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Easy to use, Light Weight ChinaNet Campus Authorization Tool"
+pkgdesc="Easy to use, Lightweight ChinaNet Campus Authorization Tool"
 url="https://github.com/anapopo/fchinanet.sh"
 license=('MIT')
 depends=('sh')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('7485c32eb463d37a12eed707f1ea51c0')
+md5sums=('0d8be25ce194f576c5887686d68ba3a1')
 
 package() {
   cd ${srcdir}/FChinaNet.sh-${pkgver}
