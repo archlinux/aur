@@ -11,9 +11,9 @@ makedepends=('go' 'git' 'glide')
 options=('emptydirs')
 install="$pkgname.install"
 source=("git+$url#tag=v$pkgver" "$pkgname.service" "sysusers-$pkgname.conf")
-md5sums=('SKIP'
-         '74887afdb49a01c60291d3ad9f046f7b'
-         '7bc465a1d5594ba5bd25c237d2920255')
+sha256sums=('SKIP'
+            'd39aed0e4002b3d4420df656fab47654ae5c87b8e1fc587c58e10b7e0c7dc615'
+            '2f7c439f58d94cdd2221961cac6b8cec1dcffdc2bb5bcea8d88ca0b41cc2b278')
 build()
 {
   cd "$srcdir"
