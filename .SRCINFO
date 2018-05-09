@@ -36,7 +36,7 @@ pkgbase = mapnik-git
 	optdepends = mod_fastcgi: Web Map Service - or:
 	optdepends = mod_fcgid: Web Map Service - or:
 	optdepends = mod_wsgi2: Web Map Service
-	provides = mapnik=3.0.19
+	provides = mapnik=3.0.20
 	conflicts = mapnik
 	options = staticlibs
 	source = git://github.com/mapnik/mapnik.git
