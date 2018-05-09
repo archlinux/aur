@@ -8,6 +8,7 @@ pkgdesc="CLI to control Philips HUE lights"
 arch=(any)
 url="https://github.com/bahamas10/hueadm"
 license=(MIT)
+makedepends=('npm')
 depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)

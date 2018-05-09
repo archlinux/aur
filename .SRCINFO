@@ -5,6 +5,7 @@ pkgbase = nodejs-hueadm
 	url = https://github.com/bahamas10/hueadm
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	noextract = hueadm-.tgz
 	source = http://registry.npmjs.org/hueadm/-/hueadm-1.1.0.tgz
