@@ -13,7 +13,7 @@ pkgbase = factom-cli
 	makedepends = git
 	makedepends = glide
 	source = git+https://github.com/FactomProject/factom-cli#tag=v0.4.2.21
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = factom-cli
 

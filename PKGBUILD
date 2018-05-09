@@ -9,7 +9,7 @@ url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
 source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 build()
 {
   cd "$srcdir"
