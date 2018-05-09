@@ -1,7 +1,7 @@
 pkgbase = freecad
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -37,15 +37,17 @@ pkgbase = freecad
 	optdepends = graphviz
 	optdepends = openscad
 	source = freecad-0.17.tar.gz::https://github.com/FreeCAD/FreeCAD/archive/0.17.tar.gz
-	source = freecad-e17b340-rollup.patch::https://github.com/FreeCAD/FreeCAD/compare/0.17...e17b340.patch
+	source = freecad-3bb5ff4-rollup.patch::https://github.com/FreeCAD/FreeCAD/compare/0.17...3bb5ff4.patch
 	source = freecad.desktop
 	source = freecad.xml
 	source = remove-qtwebkit.patch
+	source = gcc8.patch
 	sha256sums = ae017393476b6dc7f1192bcaf91ceedc2f9b791f2495307ce7c45efadb5266fb
-	sha256sums = b8504058e8b46b600b28262a38cf2605989ca0c3a81ab0ed6326704b9913e62b
+	sha256sums = a975d2da786003faceb3d15228084355867785998183dd44cfeb37f18b5af838
 	sha256sums = 617968d7bbd1da71bdedaed1b66c5d6eaf24e0fb34678b93f5d925d370c66296
 	sha256sums = 248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a
 	sha256sums = de214a281d421d44b02b469ecf72e36c4d61f10c40431e511e09734aca316baf
+	sha256sums = 618bb85c4f3a4eb0e329d1fc30391b777c9b0cffe97aa1e96d45f58b18424311
 
 pkgname = freecad
 
