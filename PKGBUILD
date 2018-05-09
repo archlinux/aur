@@ -3,7 +3,7 @@
 pkgname=ygopro
 pkgver=1.033.7
 pkgrel=3
-pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
+pkgdesc="YGOPRO is a free online dueling system for playing Yu-Gi-Oh! duels."
 arch=('i686' 'x86_64')
 url='https://github.com/cromerc/ygopro'
 license=('GPL2')

@@ -18,7 +18,7 @@ pkgbase = ygopro-zh
 	options = emptydirs
 	backup = opt/ygopro/system.conf
 	source = https://github.com/cromerc/ygopro/archive/1.033.7-3.tar.gz
-	sha256sums = 31926636827ececbbbbedb3589fe18a847fedad2845fa08ae2083871200923ec
+	sha256sums = 31926636827ececbbbbedb3589fe18a123fedad2845fa08ae2083871200923ec
 
 pkgname = ygopro
 
