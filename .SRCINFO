@@ -10,7 +10,7 @@ pkgbase = vim-jq-git
 	conflicts = vim-jq
 	options = !strip
 	source = vim-jq::git+https://github.com/vito-c/jq.vim
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vim-jq-git
 
