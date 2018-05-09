@@ -15,9 +15,9 @@ install="chronograf.install"
 source=("git+https://github.com/influxdata/chronograf#tag=$pkgver"
         'chronograf.sysusers'
         'chronograf.tmpfiles')
-md5sums=('SKIP'
-         'f02a4e7ce79a45bd2fe9473d9f7ec4a0'
-         '0943ea927d009b047729578658c69943')
+sha256sums=('SKIP'
+            '594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
+            'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
 
 build() {
         export GOPATH="$srcdir"
