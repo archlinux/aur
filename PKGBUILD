@@ -5,7 +5,7 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=61.1
+pkgver=61.3
 pkgrel=1
 meme=FIREFOX_61_0b3_RELEASE
 meme2=DEVEDITION_61_0b1_RELEASE
