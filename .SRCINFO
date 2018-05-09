@@ -1,6 +1,6 @@
 pkgbase = etcher-git
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy (git version)
-	pkgver = v1.4.1.9.ga044d2fe
+	pkgver = v1.4.4.12.gcde1776a
 	pkgrel = 1
 	url = https://www.etcher.io/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = etcher-git
 	optdepends = speech-dispatcher: for text-to-speech
 	provides = etcher
 	conflicts = etcher
+	options = !strip
 	source = etcher-git::git+https://github.com/resin-io/etcher.git
 	source = etcher-electron
 	source = etcher-electron.desktop

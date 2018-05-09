@@ -3,7 +3,7 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=v1.4.1.9.ga044d2fe
+pkgver=v1.4.4.12.gcde1776a
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
@@ -15,6 +15,7 @@ optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
 source=("$pkgname::git+https://github.com/resin-io/$_pkgname.git"
         'etcher-electron'
         'etcher-electron.desktop')
