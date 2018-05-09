@@ -1,10 +1,11 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency
-	pkgver = 65.0.3325.181
-	pkgrel = 2
+	pkgver = 66.0.3359.139
+	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
+	makedepends = python
 	makedepends = python2
 	makedepends = gperf
 	makedepends = yasm
@@ -12,8 +13,8 @@ pkgbase = ungoogled-chromium
 	makedepends = ninja
 	makedepends = git
 	makedepends = clang
-	makedepends = llvm
 	makedepends = lld
+	makedepends = llvm
 	makedepends = libva
 	makedepends = quilt
 	depends = gtk3
@@ -55,14 +56,14 @@ pkgbase = ungoogled-chromium
 	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-65.0.3325.181.tar.xz
-	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
-	source = chromium-65.0.3325.181.txt::https://chromium.googlesource.com/chromium/src.git/+/65.0.3325.181?format=TEXT
-	source = https://github.com/Eloston/ungoogled-chromium/archive/65.0.3325.181-2.tar.gz
-	sha256sums = 93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687
-	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
-	sha256sums = 2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee
-	sha256sums = 09baf1a4b2b2d280f76e3b0066eddaafbbc27edfcf54aed61cb0fcaf0e91c937
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.139.tar.xz
+	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
+	source = chromium-66.0.3359.139.txt::https://chromium.googlesource.com/chromium/src/+/66.0.3359.139?format=TEXT
+	source = https://github.com/Eloston/ungoogled-chromium/archive/66.0.3359.139-1.tar.gz
+	sha256sums = be75a5b5f8c5789d359238f374a43bf52ded49425f13ed68b8021c24e2e264b2
+	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
+	sha256sums = 34eb82c625b7050021a8d3334ceaa7fa3d042dd816c228c14abb52b29796f7b9
+	sha256sums = 91625cad32be5154bed21cb37b764e9aba804479b5dfa859e42c8c0aa5bc16e8
 
 pkgname = ungoogled-chromium
 

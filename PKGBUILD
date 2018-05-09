@@ -1,11 +1,11 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 # Contributors: Eloston
-# Derived from official Chromium and Inox PKGBUILDS
+# Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=65.0.3325.181
-pkgrel=2
-_launcher_ver=5
+pkgver=66.0.3359.139
+pkgrel=1
+_launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -13,8 +13,8 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git' 'clang'
-             'llvm' 'lld' 'libva' 'quilt')
+makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git'
+             'clang' 'lld' 'llvm' 'libva' 'quilt')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -26,16 +26,16 @@ provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        'https://github.com/Eloston/ungoogled-chromium/archive/65.0.3325.181-2.tar.gz')
-sha256sums=('93666448c6b96ec83e6a35a64cff40db4eb92a154fe1db4e7dab4761d0e38687'
-            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '2771c049b66c9aba3b945fe065f2610f164d55506eb5d71751a26aaf8b40d4ee'
-            '09baf1a4b2b2d280f76e3b0066eddaafbbc27edfcf54aed61cb0fcaf0e91c937')
+        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
+        'https://github.com/Eloston/ungoogled-chromium/archive/66.0.3359.139-1.tar.gz')
+sha256sums=('be75a5b5f8c5789d359238f374a43bf52ded49425f13ed68b8021c24e2e264b2'
+            '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            '34eb82c625b7050021a8d3334ceaa7fa3d042dd816c228c14abb52b29796f7b9'
+            '91625cad32be5154bed21cb37b764e9aba804479b5dfa859e42c8c0aa5bc16e8')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-readonly -A _system_libs=(
+declare -gA _system_libs=(
   [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
@@ -56,7 +56,7 @@ readonly -A _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-readonly _unwanted_bundled_libs=(
+_unwanted_bundled_libs=(
   ${!_system_libs[@]}
   ${_system_libs[libjpeg]+libjpeg_turbo}
 )
@@ -89,20 +89,8 @@ prepare() {
   # Apply patches
   env QUILT_PATCHES="$_user_bundle/patches" quilt push -a
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-enum-compare-switch"/d' \
-    -e '/"-Wno-null-pointer-arithmetic"/d' \
-    -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
-    -e '/"-Wno-tautological-constant-compare"/d' \
-    build/config/compiler/BUILD.gn
-
-  # Use Python 2
-  find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
-
-  # There are still a lot of relative calls which need a workaround
-  mkdir -p "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -133,9 +121,6 @@ build() {
     export CCACHE_SLOPPINESS=time_macros
   fi
 
-  export PATH="$srcdir/python2-path:$PATH"
-  export TMPDIR="$srcdir/temp"
-  mkdir -p "$TMPDIR"
   mkdir -p out/Default
 
   export CC=clang
@@ -144,7 +129,7 @@ build() {
   export NM=llvm-nm
 
   local _flags=(
-    'clang_base_path=getenv("CLANG_BASE_PATH")'
+    'blink_symbol_level=0'
     'clang_use_chrome_plugins=false'
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'enable_ac3_eac3_audio_demuxing=true'
@@ -175,12 +160,12 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_clang=true'
     'is_debug=false'
+    'is_official_build=true'
     'link_pulseaudio=true'
     'linux_use_bundled_binutils=false'
     'optimize_for_size=false'
     'optimize_webui=false'
     'proprietary_codecs=true'
-    'remove_webcore_debug_symbols=true'
     'safe_browsing_mode=0'
     'symbol_level=0'
     'treat_warnings_as_errors=false'
@@ -199,6 +184,7 @@ build() {
     'use_pulseaudio=true'
     'use_sysroot=false'
     'use_system_freetype=true'
+    'use_system_harfbuzz=true'
     'use_system_lcms2=true'
     'use_system_libjpeg=true'
     'use_system_zlib=true'
@@ -206,6 +192,10 @@ build() {
     'use_vaapi=true'
   )
 
+  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+  CFLAGS+='   -Wno-builtin-macro-redefined'
+  CXXFLAGS+=' -Wno-builtin-macro-redefined'
+  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
   msg2 'Building GN'
   python2 tools/gn/bootstrap/bootstrap.py -o out/Default/gn -s --no-clean
