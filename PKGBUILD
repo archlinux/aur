@@ -6,8 +6,8 @@
 
 pkgname=xvst
 _pkgname=xVideoServiceThief
-pkgver=2.5.1
-pkgrel=3
+pkgver=2.5.2
+pkgrel=1
 pkgdesc='GUI tool for downloading videos from sites like YouTube, GoogleVideo etc.'
 url='http://xviservicethief.sourceforge.net'
 license=('GPL3')
@@ -16,20 +16,14 @@ depends=('ffmpeg' 'qt5-webkit' 'qt5-script')
 makedepends=('sed' 'qt5-tools')
 optdepends=('flvstreamer: for downloading flv files.')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xVST/xVideoServiceThief/archive/${pkgver}.tar.gz"
-        'qdatastream.patch::https://github.com/xVST/xVideoServiceThief/commit/86abff9767e7fed9b8a78681a40ad688fea393d6.patch'
         'xvst.desktop'
-        'beeg.patch'
-        'chilloutzone.patch'
         'disable_update.patch'
         'keezmovies.patch'
         'myvideo.patch'
         'sunporno.patch'
         'wat.tv.patch')
-sha256sums=('412d0489a56837cfa74e6c71ddb5972fc782d91e0d50095f61980a9edc0bab69'
-            'ba5e2646c9cd8b0c23c243175de11bc2fe72635affc4318e623799bf7cf5316c'
+sha256sums=('f54e5492bc1bfc7c2b1b24242de77e0821d85a1bb263d77c4b646789ab570b6e'
             '0a1344c9bd969c2fd608e071426c562386691e8815a13097c0f71c3b82876b18'
-            '9a6e19b8b68721eaed36e3721be859b148f2bca9c1dfc17d7beabc01aeb203ac'
-            'fbf3e0b4a0f827685a0f23c2b6d64e18f8ce0b4bb4a639ca4b57b2f05dc08461'
             'cea0379535ae99f19a1d8b3f1abfdd8a6f9ff4ee9dd2853061c6f42ba0fcde1c'
             'ae4af13b96095f8a0d491bab6865c2f75175b9f71762cba868b70aedc6890c73'
             'f5d395343cce45597c879e6836761aa481a51e07e7bc26c885ec9e0ac16f5272'
