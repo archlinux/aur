@@ -20,9 +20,9 @@ install='influxdb.install'
 source=("git+https://github.com/influxdata/influxdb#tag=v$pkgver"
         "influxdb.sysusers"
         "influxdb.tmpfiles")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            '809cca823ae3027984bc7ace70db75753d7d0d4f6658a36db9d94a33054ca5e9'
+            'e2aa59413a6204737383b86cedefd866d7073f56ace5b89aad38c530cc86e60c')
 build()
 {
   export GOPATH="$srcdir"
