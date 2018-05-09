@@ -22,7 +22,6 @@ build() {
   export GOPATH="${srcdir}"
   mkdir -p "${srcdir}/src/github.com/tuxlinuxien"
   ln -fsT "${srcdir}/${pkgname}-${_commit}" "${srcdir}/src/github.com/tuxlinuxien/${pkgname}"
-  #cd "${srcdir}/src/github.com/tuxlinuxien/${pkgname}/cmd/lesspassgo"
   cd "${srcdir}/src/github.com/tuxlinuxien/${pkgname}"
   go get -v ./...
 }
