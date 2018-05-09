@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('dnsdiag')
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='DNS Diagnostics and Performance Measurement Tools'
 arch=('any')
