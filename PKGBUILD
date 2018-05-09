@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch-bin
-pkgver=23.6.2
+pkgver=23.6.3
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -22,7 +22,7 @@ install="itch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/releases/download/v${pkgver}/itch-${pkgver}-${_ITCH_ARCH}.tar.xz")
-sha256sums=('a9faa0fda73d7935b52ec829dccc3e523066f9e6d072232e7cd813e062c015b3')
+sha256sums=('d9015929cecf5d68c05b109dc462ee42d457f7e7a5feb8885678fcc355ae8212')
 
 prepare() {
   basedir=`cd .. && pwd`;

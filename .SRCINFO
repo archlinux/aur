@@ -1,6 +1,6 @@
 pkgbase = itch-bin
 	pkgdesc = The best way to play itch.io games.
-	pkgver = 23.6.2
+	pkgver = 23.6.3
 	pkgrel = 1
 	url = https://github.com/itchio/itch
 	install = itch.install
@@ -19,8 +19,8 @@ pkgbase = itch-bin
 	provides = itch
 	conflicts = itch
 	options = !strip
-	source = https://github.com/itchio/itch/releases/download/v23.6.2/itch-23.6.2-amd64.tar.xz
-	sha256sums = a9faa0fda73d7935b52ec829dccc3e523066f9e6d072232e7cd813e062c015b3
+	source = https://github.com/itchio/itch/releases/download/v23.6.3/itch-23.6.3-amd64.tar.xz
+	sha256sums = d9015929cecf5d68c05b109dc462ee42d457f7e7a5feb8885678fcc355ae8212
 
 pkgname = itch-bin
 
