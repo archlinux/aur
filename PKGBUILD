@@ -4,7 +4,7 @@
 
 pkgname=pam_ssh
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='PAM module providing single sign-on behavior for SSH.'
 arch=('i686' 'x86_64')
 url='http://pam-ssh.sourceforge.net/'
@@ -13,7 +13,7 @@ depends=('pam' 'openssl-1.0' 'openssh')
 options=('!libtool')
 install="$pkgname.install"
 source=(
-	"http://downloads.sf.net/sourceforge/pam-ssh/$pkgname-$pkgver.tar.xz"{,.asc}
+	"https://sourceforge.net/projects/pam-ssh/files/pam_ssh/2.1/pam_ssh-2.1.tar.xz"{,.asc}
 )
 sha512sums=(
 	'8252b15efffa5687f740963f7a3c3479b73f99eca26a17155f915a10b9a71362a2778449adf10f01c174cc8545961ce3ea64459338a7c995c242b209529fd640'
