@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=vmaf
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion'
 arch=('x86_64')
 url='https://github.com/netflix/vmaf/'
@@ -12,7 +12,7 @@ provides=('libvmaf')
 conflicts=('vmaf-git' 'libvmaf' 'libvmaf-git')
 replaces=('libvmaf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Netflix/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c0c84f0f02cff6ac23b3bcc07199532ccbf04a18d8802385b35b89d26bb07287')
+sha256sums=('9530d341df8df4104c9d8bd656335a8d79ff61c19e77bb720deb359a40ac26f7')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -22,7 +22,7 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     
-    make DESTDIR="$pkgdir" PREFIX='/usr' install
+    make DESTDIR="$pkgdir" INSTALL_PREFIX='/usr' install
     
     # binary executable
     install -D -m755 wrapper/vmafossexec "${pkgdir}/usr/bin/vmafossexec"
