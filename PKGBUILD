@@ -1,14 +1,14 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com> 
 pkgname=giseditor
 pkgver=0.26
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
 url="https://github.com/dayanuyim/GisEditor"
 license=()
 groups=()
-depends=('gpsbabel' 'python-pmw' 'python-pillow' 'ttf-arphic-ukai')
+depends=('gpsbabel' 'python-pmw' 'python-pillow' 'ttf-arphic-ukai' 'python-numpy')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -44,10 +44,22 @@ package() {
 	cp -R $srcdir/GisEditor-$pkgver/main.py $pkgdir/opt/giseditor
 	chmod +x $pkgdir/opt/giseditor/main.py 
 
+
     install -d "$pkgdir"/usr/bin
     install -D -m755 "./giseditor.sh" "${pkgdir}/usr/bin/giseditor"
 
     install -D -m644 $srcdir/GisEditor-$pkgver/install/linux/giseditor.desktop "${pkgdir}/usr/share/applications/GisEditor.desktop"
+
+    python3 -c 'import image' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps image
+    python3 -c 'import cycler' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps cycler
+    python3 -c 'import matplotlib' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps matplotlib
+    python3 -c 'import olefile' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps olefile
+    python3 -c 'import pyparsing' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps pyparsing
+    python3 -c 'import dateutil' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python-dateutil
+    python3 -c 'import pytz' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps pytz
+    python3 -c 'import six' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps six
+    python3 -c 'import timezonefinder' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps timezonefinder
+    python3 -c 'import certifi' > /dev/null || python3 -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps certifi
 
 	# TODO: update mime type gpx, gdb"
 
