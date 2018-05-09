@@ -1,15 +1,15 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=mp4joiner
-pkgver=3.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A collection of cross-platform free tools to manipulate MP4 files."
 arch=('i686' 'x86_64')
 url="http://www.mp4joiner.org/"
 license=('GPL')
 makedepends=('gpac')
-depends=('wxsvg>=1.1.13')
+depends=('wxgtk2>=2.8.7' 'wxsvg>=1.1.13')
 source=('mp4joiner.desktop' "MP4Tools-$pkgver.tar.bz2::http://sourceforge.net/projects/mp4joiner/files/MP4Tools/$pkgver/MP4Tools-$pkgver.tar.bz2/download?nowrap")
-md5sums=('74f6b25d675f138700af9b8b2491f506' 'd88fc21f61e3c4149bf9b2b4d3f73563')
+md5sums=('74f6b25d675f138700af9b8b2491f506' '2078061d612790fdfc46abb870b19920')
 
 build() {
   cd MP4Tools-$pkgver
