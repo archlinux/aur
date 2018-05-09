@@ -7,18 +7,17 @@ pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.16
 pkgver=4.16.7
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
-makedepends=('bc' 'inetutils' 'gcc<8.0')
+makedepends=('bc' 'inetutils' 'gcc6')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config)
-
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
@@ -53,7 +52,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   unset LDFLAGS CFLAGS
 
-  make ARCH=um vmlinux modules 
+  make ARCH=um CC=gcc-6 vmlinux modules 
 }
 
 package_linux-usermode() {
