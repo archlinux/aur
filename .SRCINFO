@@ -1,0 +1,18 @@
+pkgbase = melody-music-player-git
+	pkgdesc = Music Player and Manager for local Music Files made for ElementaryOS
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://anufrij.org/melody/
+	arch = x86_64
+	license = LGPL 2.1+
+	makedepends = git
+	makedepends = meson
+	makedepends = gcc
+	depends = vala
+	depends = appstream
+	provides = melody-music-player-git
+	source = git+https://github.com/artemanufrij/playmymusic.git
+	md5sums = SKIP
+
+pkgname = melody-music-player-git
+
