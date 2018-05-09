@@ -3,8 +3,8 @@
 # Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-pkgver=1.1
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Firmware files for Linux-libre'
 arch=('any')
 url='https://jxself.org/firmware'
@@ -16,7 +16,7 @@ conflicts=('linux-firmware'
            'linux-firmware-git')
 source=("https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz"
         "https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz.asc")
-sha512sums=('4ef111f86e8a87bab31e02be171e09f47d71884f1737f5329e9dd07e9f799436d8ff2de5aa0b2cfb4bc921ed02bb2b59b9a1ea69176dcef5f902364d8725e75a'
+sha512sums=('dc4f2e931b4dde217f2e3430e7a0c1a5f42f0844087bf9a771c7e40dbdd8050205d7a80495bd130f87a02a823db7514241d68bfded19548132b3620d4c7e630a'
             'SKIP')
 validpgpkeys=('F611A908FFA165C699584ED49D0DB31B545A3198')
 
