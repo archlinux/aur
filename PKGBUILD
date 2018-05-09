@@ -21,10 +21,10 @@ source=("git+https://github.com/influxdata/kapacitor#tag=v$pkgver"
         "kapacitor.install"
         "kapacitor.sysusers"
         "kapacitor.tmpfiles")
-md5sums=('SKIP'
-         '0c0e1f80009e89fcdb6447bbc8d1d363'
-         '3dcc737f5e1de60692e30d355bc75a1b'
-         '2b86c7a525c21d7e6737128441a962d9')
+sha256sums=('SKIP'
+            'f2db9b53ee3f36f7011f9fa6dec80c582434db636b3645f8803f11b93873c380'
+            '0110debb39c33b7eb6b8260d70f33dacb4f22028e902dcb9099e6cacc9990294'
+            'f1d375eed50a1218b1fb0e94f831737688bc2d1aea8dc0152eb11cb2c7e24f2e')
 build()
 {
   export GOPATH="$srcdir"
