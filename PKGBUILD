@@ -1,6 +1,6 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
-pkgver=0.30.0
+pkgver=0.30.4
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directionnal control surface application'
 arch=(i686 x86_64 armv7h)
@@ -12,7 +12,7 @@ depends_x86_64=('gcc-libs-multilib')
 optdepends=('python-pyrtmidi: send and receive midi messages')
 makedepends=('npm')
 source=("https://github.com/jean-emmanuel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('494ffcd09769a14c38193b7754486678c59479c485e325f64a4cd2a77a794a4b')
+sha256sums=('0fa9d5c62fe7bb05c748619e0085fe58ae011a6e2660b8f15232265f699b0dc1')
 _platform=linux
 case "$CARCH" in
   i686)
