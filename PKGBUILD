@@ -2,14 +2,14 @@
 # Contributor: KokaKiwi <admin@kokaelkiwi.eu>
 
 pkgname=nanomsg-git
-pkgver=0.8.beta.r14.gf06749d
+pkgver=1.1.2.r5.g19e01dca
 pkgrel=1
 pkgdesc='Simple high-performance implementation of several "scalability protocols"'
 url='http://nanomsg.org/'
 license=(MIT)
 arch=(i686 x86_64)
 depends=(glibc)
-makedepends=(git)
+makedepends=(git cmake)
 provides=(nanomsg)
 source=(git://github.com/nanomsg/nanomsg)
 sha256sums=('SKIP')
@@ -21,14 +21,13 @@ pkgver() {
 
 build() {
   cd nanomsg
-  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 check() {
   cd nanomsg
-  make check -j1
+  make test
 }
 
 package() {
