@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=60.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -24,11 +24,13 @@ options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
+        complete-csd-window-offset-mozilla-1457691.patch.xz
         no-crmf.diff)
 sha256sums=('d3df941612fce7c89755d63a5afe46ed60414dbb47bc9c18bddfb1ae429d5322'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '8422030440032535d918844263fbd92d39bff207acb5fff55ed0afee38bcf582'
+            'a3fb3c3b6fb775c99afdbad507848b77c5e4bbaac2e8ceeb1bfb47699c4b6268'
             '02000d185e647aa20ca336e595b4004bb29cdae9d8f317f90078bdcc7a36e873')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -52,6 +54,9 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1435212
   patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1283299#c158
+  patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
