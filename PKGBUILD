@@ -2,13 +2,13 @@
 
 pkgname=python-vipaccess
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free software implementation of Symantec's VIP Access application and protocol."
 arch=('any')
 url="https://github.com/cyrozap/python-vipaccess"
 license=('apache')
 makedepends=('python-setuptools')
-depends=('python' 'python-crypto' 'python-image' 'python-lxml'
+depends=('python' 'python-crypto' 'python-image-git' 'python-lxml'
          'python-oath' 'python-qrcode' 'python-requests')
 source=("https://github.com/cyrozap/python-vipaccess/archive/v$pkgver.tar.gz"
         "check_token.patch")
