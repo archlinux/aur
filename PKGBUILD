@@ -1,24 +1,35 @@
-# Maintainer: Chris Cromer <chris@cromer.cl>
+# Maintaiiner: ximlel <352109085@qq.com>
 
 pkgname=ygopro
-pkgver=1.033.7
+pkgver=1.034
 pkgrel=3
-pkgdesc="YGOPRO is a free online dueling system for playing Yu-Gi-Oh! duels."
+pkgdesc="A script engine for \"yu-gi-oh!\" and sample gui"
 arch=('i686' 'x86_64')
-url='https://github.com/cromerc/ygopro'
+url='https://github.com/Fluorohydride/ygopro'
 license=('GPL2')
-depends=('openal' 'openssl' 'freetype2' 'libevent' 'lua52' 'libcurl-compat')
+depends=('gcc' 'git' 'make' 'premake' 'freetype2' 'libevent' 'sqlite' 'irrlicht' 'lua')
 backup=(opt/ygopro/system.conf)
-source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('31926636827ececbbbbedb3589fe18a847fedad2845fa08ae2083871200923ec')
-options=('!strip' 'emptydirs')
+source=("https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v${pkgver}.${pkgrel}")
+sha256sums=('9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8')
+options=('emptydirs')
 
 package() {
-	cd "${srcdir}/ygopro-${pkgver}-${pkgrel}"
-	mkdir -pv "$pkgdir/usr/share/pixmaps"
-	mkdir -pv "$pkgdir/usr/share/applications"
-	mv -v "YGOPro.png" "$pkgdir/usr/share/pixmaps/YGOPro.png"
-	mv -v "YGOPro.desktop" "$pkgdir/usr/share/applications/YGOPro.desktop"
+	cd "${srcdir}/ygopro-${pkgver}.${pkgrel}"
+	git clone --depth 1 https://github.com/Fluorohydride/ygopro-core.git
+	git clone --depth 1 https://github.com/Fluorohydride/ygopro-scripts.git
+	rm -R "ygopro-core/.git"
+	rm -R "ygopro-scripts/.git"
+	mv "ygopro-core/*" "ocgcore/"
+	mv "ygopro-scripts/*" "script/"
+	rm -rf "ygopro-core"
+	rm -rf "ygopro-scripts"
+	premake4 gmake
+	cd "build"
+	make all
+	mv "../bin/debug/*" "../"
+	make clean
+	cd ".."
+	rm -R "bin" "build" "obj"
 	mkdir -pv "$pkgdir/opt/ygopro"
 	cp -dRv * "$pkgdir/opt/ygopro"
 	cd "$pkgdir/opt/ygopro"
