@@ -1,6 +1,6 @@
 pkgbase = appimagelauncher-git
 	pkgdesc = A Helper application for running and integrating AppImages.
-	pkgver = 1alpha+git20180508.0c75415
+	pkgver = 1alpha+git20180508.f871b20
 	pkgrel = 1
 	url = https://github.com/TheAssassin/AppImageLauncher
 	arch = x86_64
