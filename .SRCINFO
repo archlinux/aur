@@ -17,9 +17,9 @@ pkgbase = telegraf
 	source = git+https://github.com/influxdata/telegraf#tag=1.6.2
 	source = telegraf.sysusers
 	source = telegraf.tmpfiles
-	md5sums = SKIP
-	md5sums = 58cc9edf8fbf07e7d3a0357db78121b1
-	md5sums = 9c7a4df3556cab94837c432f5e46cf04
+	sha256sums = SKIP
+	sha256sums = 31c038721ff674519a506418b0d70045e2c51115a78a5939743886c44ef5e1bb
+	sha256sums = 36b309e79422ddbaf6067f814c8bd69bd842cc662c3c9dbbf507ee5716282779
 
 pkgname = telegraf
 

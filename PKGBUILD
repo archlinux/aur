@@ -17,9 +17,9 @@ options=('emptydirs')
 source=("git+https://github.com/influxdata/telegraf#tag=$pkgver"
         'telegraf.sysusers'
         'telegraf.tmpfiles')
-md5sums=('SKIP'
-         '58cc9edf8fbf07e7d3a0357db78121b1'
-         '9c7a4df3556cab94837c432f5e46cf04')
+sha256sums=('SKIP'
+            '31c038721ff674519a506418b0d70045e2c51115a78a5939743886c44ef5e1bb'
+            '36b309e79422ddbaf6067f814c8bd69bd842cc662c3c9dbbf507ee5716282779')
 
 build()
 {
