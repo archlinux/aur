@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r90921.ga150b2e3a0
-pkgrel=2
+pkgver=4.1.r91025.gc6a63e1109
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -39,7 +39,7 @@ makedepends=(
 )
 makedepends_x86_64=(
     # AUR:
-        'vmaf-git'
+        'vmaf'
 )
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
