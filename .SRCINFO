@@ -1,0 +1,23 @@
+pkgbase = jubler-beta
+	pkgdesc = Subtitle editor running on Java
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://www.jubler.org
+	arch = any
+	license = GPL2
+	makedepends = libicns
+	makedepends = p7zip
+	depends = java-runtime>=9
+	optdepends = mplayer: live video preview for subtitles
+	provides = jubler-beta
+	conflicts = jubler
+	noextract = Jubler-6.0.dmg
+	source = https://github.com/teras/Jubler/releases/download/6.0.pre6/Jubler-6.0.pre6.dmg
+	source = jubler.desktop
+	source = jubler-subtitles.desktop
+	sha256sums = 4c129bae8bfa6af2fb01a2414f7e0f6cefe1c87ea1c129c7b00949a5a2c750a2
+	sha256sums = c9b4d0bb01c274106576a5030752dcac019d01986ed3b76d706af2dfd6dbd4b5
+	sha256sums = be21b9eab0992ebd13c9a79ac5e6ab6fd244240fe0e13cd223113ddefffc4ca6
+
+pkgname = jubler-beta
+
