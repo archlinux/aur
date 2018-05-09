@@ -1,0 +1,14 @@
+pkgbase = nodejs-hueadm
+	pkgdesc = CLI to control Philips HUE lights
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bahamas10/hueadm
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = hueadm-.tgz
+	source = http://registry.npmjs.org/hueadm/-/hueadm-1.1.0.tgz
+	md5sums = b8ab04acc87894237bcdaadb73bbb8a3
+
+pkgname = nodejs-hueadm
+
