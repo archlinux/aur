@@ -11,9 +11,9 @@ makedepends=('go' 'git' 'glide')
 install="$pkgname.install"
 source=("git+$url#tag=v$pkgver" "$pkgname.service" "sysusers-$pkgname.conf")
 backup=('var/lib/factomd/m2/factomd.conf')
-md5sums=('SKIP'
-         '439b3abc0c8f0de23a44d16ae49837b7'
-         '98af8ab7eabb9fa344f574b9182f34e2')
+sha256sums=('SKIP'
+            '6eae473819b478d352b3d0a107c9b27d85b399950f115a9697485db396d6a225'
+            'fc0216361e6045dc681d4564a2aacf5ef43a0f52360235c860c096a874c241c3')
 build()
 {
   cd "$srcdir"
