@@ -1,6 +1,6 @@
 pkgbase = libps3000a
 	pkgdesc = library for picotech oscilloscope 3000a series
-	pkgver = 1.4.5_6r40
+	pkgver = 1.7.0_6r09
 	pkgrel = 1
 	url = http://www.picotech.com/linux.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libps3000a
 	makedepends = dpkg
 	depends = libusb
 	options = !strip
-	source = http://labs.picotech.com/debian/pool/main/libp/libps3000a/libps3000a_1.4.5-6r40_amd64.deb
-	md5sums = 02f1dabb99b2c745de6a3b4afb90be4d
+	source = http://labs.picotech.com/debian/pool/main/libp/libps3000a/libps3000a_1.7.0-6r09_amd64.deb
+	md5sums = f91f4ae6a6087f1e0d69e14ba357f6a2
 
 pkgname = libps3000a
 
