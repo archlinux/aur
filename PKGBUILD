@@ -1,6 +1,6 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=neon-wallet
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Light Wallet for the NEO Blockchain"
 arch=('x86_64')
@@ -11,12 +11,12 @@ source=("https://github.com/CityOfZion/neon-wallet/archive/$pkgver.tar.gz"
         "neon.png"
         "LICENSE"
        )
-sha256sums=('628f6169324b661dc418ac377021cf280e31481cbec15622a8e689cd9eb3b342'
+sha256sums=('1828b2d9085369599a697723f65689203f5f369148b78e5299c63aa0dda69f77'
             'd70d3cb065a779035812f12f0da337b9d83975159b26fba6efd04fd2db87b547'
             '0bfb88ecd77178bc600a9d752ba6e3a1f5cf4a38963bb718d2d047030445ff34'
             '49d5f9ad18e2e7d8de196c9c0bcf558b018918e23f60e3e0ab83ddc4ef9a6151')
 depends=('gtk2' 'gconf' 'nss' 'alsa-lib' 'libxtst' 'libxss')
-makedepends=('nodejs' 'npm' 'yarn' 'git' 'python2')
+makedepends=('nodejs-lts-carbon' 'npm' 'yarn' 'git' 'python2')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
