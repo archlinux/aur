@@ -8,9 +8,10 @@ pkgdesc="Podcast client for the command line"
 arch=('any')
 url="https://xgi.github.io/castero"
 license=('MIT')
+depends=('python-requests' 'python-vlc')
+makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-#backup=('...')
 source=($pkgname::git+https://github.com/xgi/castero.git)
 sha256sums=('SKIP')
 
@@ -19,8 +20,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+#build() {
+#  cd $pkgname
+#  python setup.py build
+#}
+
 package() {
   cd $pkgname
-  echo TODO
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
