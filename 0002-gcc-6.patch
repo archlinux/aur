@@ -1,0 +1,28 @@
+From 0c7221a85b445e1bcbe8f1a4ab20c78c696924c6 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Sat, 8 Oct 2016 00:25:31 +0200
+Subject: [PATCH] explicitly include cmath
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes a compilation issue with gcc 6.x:
+
+error: call of overloaded ‘abs(float&)’ is ambiguous
+---
+ src/touchegg/gestures/factory/GestureFactory.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/touchegg/gestures/factory/GestureFactory.cpp b/src/touchegg/gestures/factory/GestureFactory.cpp
+index 25f4df3..49a0573 100644
+--- a/src/touchegg/gestures/factory/GestureFactory.cpp
++++ b/src/touchegg/gestures/factory/GestureFactory.cpp
+@@ -18,6 +18,8 @@
+  * @author José Expósito <jose.exposito89@gmail.com> (C) 2011 - 2012
+  * @class  GestureFactory
+  */
++
++#include "cmath"
+ #include "GestureFactory.h"
+ 
+ // ****************************************************************************************************************** //
