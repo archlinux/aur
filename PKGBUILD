@@ -4,38 +4,32 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.7.4
+pkgver=60.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         libvpx libevent nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-             autoconf2.13 rust)
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
+         nss hunspell sqlite ttf-font libpulse libvpx icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm jack gtk2)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
+            'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 provides=(firefox)
 conflicts=(firefox)
-options=(!emptydirs !makeflags)
+options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
-        0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-        firefox-install-dir.patch fix-wifi-scanner.diff
-        rust-i686.patch
-        make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
-        use_noexcept_in_mozalloc.patch)
-sha256sums=('9f77405c164c88befd2a7811e30019a016cbfb091eaeb8fe631be292d882c336'
+        0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
+        no-crmf.diff)
+sha256sums=('d3df941612fce7c89755d63a5afe46ed60414dbb47bc9c18bddfb1ae429d5322'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
-            '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9'
-            '32eae55bf9151df5f77ee98585e6cef4cc7ee2e5f2ca44c1a42f87d132eb22d8')
+            '8422030440032535d918844263fbd92d39bff207acb5fff55ed0afee38bcf582'
+            '02000d185e647aa20ca336e595b4004bb29cdae9d8f317f90078bdcc7a36e873')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -51,27 +45,16 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
 
-  cd firefox-${pkgver}esr
+  cd firefox-${pkgver}
 
-  patch -Np1 -i ../firefox-install-dir.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1435212
+  patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i ../fix-wifi-scanner.diff
-
-  # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-
-  # Build with the rust targets we actually ship
-  patch -Np1 -i ../rust-i686.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
-  patch -Np1 -i ../make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
-
-  # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
-  patch -Np1 -i ../use_noexcept_in_mozalloc.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -84,6 +67,7 @@ ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust-simd
 
 # Branding
 ac_add_options --enable-official-branding
@@ -99,32 +83,31 @@ ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
-ac_add_options --enable-system-pixman
 
 # Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
-ac_add_options --enable-alsa
 ac_add_options --disable-updater
 END
 }
 
 build() {
-  cd firefox-${pkgver}esr
+  cd firefox-${pkgver}
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
-
-#  # Hardening
-#  LDFLAGS+=" -Wl,-z,now"
 
   export PATH="$srcdir/path:$PATH"
 
@@ -132,18 +115,18 @@ build() {
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  MOZ_PGO=1 ./mach build
   ./mach build
-  #  ./mach buildsymbols
+  ./mach buildsymbols
 }
 
 package() {
-  cd firefox-${pkgver}esr
+  cd firefox-${pkgver}
   DESTDIR="$pkgdir" ./mach install
-  #  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
+  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
+pref("intl.locale.requested", "");
 
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
@@ -169,20 +152,16 @@ app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 END
 
-  for i in 16 22 24 32 48 256; do
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 browser/branding/official/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox.png"
-  install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
   install -Dm644 ../firefox-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
   install -Dm644 ../firefox.desktop \
     "$pkgdir/usr/share/applications/firefox.desktop"
