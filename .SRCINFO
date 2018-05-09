@@ -1,7 +1,7 @@
 pkgbase = wwwoffle-svn
 	pkgdesc = Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd.
-	pkgver = 2.9j+svn2229
-	pkgrel = 7
+	pkgver = 2.9j+svn2235
+	pkgrel = 1
 	epoch = 1
 	url = http://www.gedanken.org.uk/software/wwwoffle/
 	install = wwwoffle.install
@@ -13,18 +13,18 @@ pkgbase = wwwoffle-svn
 	depends = zlib
 	depends = gnutls
 	depends = libgcrypt
-	provides = wwwoffle=2.9j+svn2229
-	provides = wwwoffle-sysvinit=2.9j+svn2229
-	provides = wwwoffle-openrc=2.9j+svn2229
-	provides = wwwoffle-systemd=2.9j+svn2229
+	provides = wwwoffle=2.9j+svn2235
+	provides = wwwoffle-sysvinit=2.9j+svn2235
+	provides = wwwoffle-openrc=2.9j+svn2235
+	provides = wwwoffle-systemd=2.9j+svn2235
 	conflicts = wwwoffle
 	conflicts = wwwoffle-sysvinit
 	conflicts = wwwoffle-openrc
 	conflicts = wwwoffle-systemd
-	replaces = wwwoffle<=2.9j+svn2229
-	replaces = wwwoffle-sysvinit<=2.9j+svn2229
-	replaces = wwwoffle-openrc<=2.9j+svn2229
-	replaces = wwwoffle-systemd<=2.9j+svn2229
+	replaces = wwwoffle<=2.9j+svn2235
+	replaces = wwwoffle-sysvinit<=2.9j+svn2235
+	replaces = wwwoffle-openrc<=2.9j+svn2235
+	replaces = wwwoffle-systemd<=2.9j+svn2235
 	options = emptydirs
 	options = ccache
 	backup = etc/conf.d/wwwoffle
