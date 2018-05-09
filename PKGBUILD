@@ -9,6 +9,7 @@ arch=('any')
 url="https://xgi.github.io/castero"
 license=('MIT')
 depends=('python-requests' 'python-vlc')
+#checkdepends=('python-codecov' 'python-coverage' 'python-pytest')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -23,6 +24,11 @@ pkgver() {
 #build() {
 #  cd $pkgname
 #  python setup.py build
+#}
+
+#check() {
+#  cd $pkgname
+#  python -m pytest tests
 #}
 
 package() {
