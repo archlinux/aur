@@ -11,7 +11,7 @@ depends=('xorg-xrandr' 'arandr')
 optdepends=('bash-completion')
 options=('!strip')
 source=("git+https://github.com/geyslan/xrasengan.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 package() {
 	cd "$pkgname"
