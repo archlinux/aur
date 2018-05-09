@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.16.6
-xanmod=7
+pkgver=4.16.8
+xanmod=8
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,14 +31,13 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=528d19fd3c7cae0a1869478e4dfb37ba09856621
+arch_config_trunk=028d8ba888cf7214e57c9074747e56a28331ea4f
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
-  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -50,16 +49,15 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('3e7c50dfed2360940907ab6ed1dfeca5d51e4625866fc7cbe333440f6cd3dab1'
+sha256sums=('508f5759991cc0d1ed70af9e031d8aa3bf49bee12f7facf6721b43046ec39734'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '0f9cd4d94ad4866925b800ed843faa6485719b67f3f46d406ea1424795f37d31'
-            '7f7a425358830f2cb81f85e25b6047eca89350994e1deb160295082ccbd470ff'
-            '9fe2ee26ba324f28a42e7acc3b164344d61796a68b9a8f8ec74cb0dfeb58620e'
-            '94e8d80886c31dfe628d3537f1c30f8a3f79aea7e542aa77e9c4291dafed1679')
-sha256sums_x86_64=('627aa44c65d7297b00a8a7045d606d33b6a0b982c02331a101b94d38d348082a')
+            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
+            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
+            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea')
+sha256sums_x86_64=('8566a49997faf3f8678440c52578a7a0ee901e598d3b67d3bee3799fb92e8f86')
 
 _kernelname=${pkgbase#linux}
 
