@@ -4,7 +4,7 @@
 
 pkgname=libopenshot
 pkgver=0.1.9
-pkgrel=6
+pkgrel=7
 pkgdesc="A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby."
 arch=('x86_64')
 url="http://openshot.org/"
@@ -17,7 +17,7 @@ ffmpeg-32-writer.patch ffmpeg-4.0.patch)
 sha256sums=('2547969818092d77a1c742e27cf416b34b4d326abf6b089fc10b921f4a4141ec'
             'e0f56d40d4df0e4278d3cdb81923652b467c1a30e408bcff7a6b15327fb03548'
             '7dca1cfcdbc8c8cd039b6267623c822230e0d37968be2372520b36e22c782dd8'
-            '5fcde03d9c04e4c3526f5b449171d1b42c572d1c882d1aeb2a4eb014b2c74137')
+            'bfc6aa2752a053774b0c46d0339b41df68f8e63765f1185f0df596ecbd3633a8')
 
 prepare() {
 	cd ${pkgname}-${pkgver}

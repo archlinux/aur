@@ -12,17 +12,19 @@ diff -ur libopenshot-0.1.9/src/FFmpegWriter.cpp libopenshot-0.1.9-modified/src/F
  
      int error_code = 0;
      int stop_encoding = 1;
-@@ -958,7 +960,9 @@
+@@ -958,7 +960,11 @@
          if (strcmp(fmt->name, "gif") != 0)
  			// If not GIF format, skip the encoding process
  			// Set raw picture flag (so we don't encode this video)
 +#ifdef AVFMT_RAWPICTURE
  			oc->oformat->flags |= AVFMT_RAWPICTURE;
++#else
++			((void)0);
 +#endif
          } else {
          	// Set the default codec
          	c->pix_fmt = PIX_FMT_YUV420P;
-@@ -966,7 +970,9 @@
+@@ -966,7 +972,9 @@
      }
  
  	AV_COPY_PARAMS_FROM_CONTEXT(st, c);
@@ -32,7 +34,7 @@ diff -ur libopenshot-0.1.9/src/FFmpegWriter.cpp libopenshot-0.1.9-modified/src/F
  
  	return st;
  }
-@@ -1519,9 +1525,13 @@
+@@ -1519,9 +1527,13 @@
  // write video frame
  bool FFmpegWriter::write_video_packet(std::shared_ptr<Frame> frame, AVFrame* frame_final)
  {
