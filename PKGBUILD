@@ -50,7 +50,10 @@ build() {
 	scons configure \
 		PREFIX="/usr" \
 		INPUT_PLUGINS=all \
-		DESTDIR="$pkgdir"
+		DESTDIR="$pkgdir" \
+		FREETYPE_LIBS=/usr/lib \
+		FREETYPE_INCLUDES=/usr/include/freetype2
+
 	scons $MAKEFLAGS
 }
 
