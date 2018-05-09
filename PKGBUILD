@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=xinput-toggle
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='xinput enable/disable toggler'
 url='http://github.com/cdown/xinput-toggle'
@@ -14,7 +14,7 @@ provides=(yubikey-toggle)
 conflicts=(yubikey-toggle)
 
 source=("https://github.com/cdown/xinput-toggle/archive/${pkgver}.zip")
-md5sums=('4a4c5d59f0d0bbdbac1fc186f9c0742a')
+md5sums=('eae088a29b226d190ce67c2c6a0cce7f')
 
 package() {
     install -D -m755 \
