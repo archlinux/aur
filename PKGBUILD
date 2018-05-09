@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.6.r2177.g73add175cd
+pkgver=4.7.r1121.g40e6d2ebbd9
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -14,10 +14,12 @@ makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
         # vboot provides vb2_api.h needed by cbfstool
         git+https://review.coreboot.org/vboot
-        https://raw.githubusercontent.com/corna/me_cleaner/312ef02714dcab806c9d9bfee07f51002dc61e08/me_cleaner.py)
+        https://raw.githubusercontent.com/corna/me_cleaner/312ef02714dcab806c9d9bfee07f51002dc61e08/me_cleaner.py
+	buff_size_fix.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'f27ddd0fa26c121221dc8f76b71bf308d6d7c48fdc4d84968580d04c5dc2e42e')
+            'f27ddd0fa26c121221dc8f76b71bf308d6d7c48fdc4d84968580d04c5dc2e42e'
+            '0ab673cf5cfba4678cf7a7d567745742121cd921c4ab86081d4a9583ed679753')
 
 BUILD_AUTOPORT=y
 
@@ -37,6 +39,8 @@ prepare() {
   git config -f .gitmodules 'submodule.vboot.url' "$srcdir/vboot"
   git submodule sync -- 3rdparty/vboot
   git submodule update -- 3rdparty/vboot
+
+  patch -p1 < ../buff_size_fix.patch
 }
 
 build() {
