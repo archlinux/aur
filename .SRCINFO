@@ -1,0 +1,13 @@
+pkgbase = ttf-labiryntowy
+	pkgdesc = Artificial font consisting of vertical and horizontal bars
+	pkgver = 1.53
+	pkgrel = 1
+	url = http://alfabet-ozdobny.appspot.com/?str=labiryntowy
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = https://alfabet-ozdobny.appspot.com/images/Labiryntowy_pl.tgz
+	md5sums = 6791c1714d1908f6d1bd9a464b1f6750
+
+pkgname = ttf-labiryntowy
+
