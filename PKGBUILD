@@ -1,8 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=python2-vmaf-git
-_srcname=vmaf
-pkgver=1.3.1.r58.g755c93c
+pkgver=1.3.4.r0.gf1225dc
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation, git version)'
 arch=('any')
@@ -18,21 +17,21 @@ depends=(
 makedepends=('git' 'python2' 'python2-setuptools')
 provides=('python2-vmaf')
 conflicts=('python2-vmaf')
-source=("$_srcname"::"git+https://github.com/Netflix/${_srcname}.git"
-        'submodule-sureal'::'git+https://github.com/Netflix/sureal.git')
+source=('vmaf-git'::'git+https://github.com/Netflix/vmaf.git'
+        'vmaf-submodule-sureal'::'git+https://github.com/Netflix/sureal.git#branch=master')
 sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd "$_srcname"
+    cd vmaf-git
     
     git submodule init
-    git config --local submodule.sureal.url "${srcdir}/submodule-sureal"
+    git config --local submodule.sureal.url "${srcdir}/vmaf-submodule-sureal"
     git submodule update
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd vmaf-git
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
@@ -40,7 +39,7 @@ pkgver() {
 
 build() {
     msg2 'Building for Python2...'
-    cd "${_srcname}/python"
+    cd vmaf-git/python
     python2 setup.py build
 }
 
@@ -48,35 +47,29 @@ build() {
 # https://github.com/Netflix/vmaf/issues/128
 
 package() {
-    cd "${_srcname}/python"
+    cd vmaf-git/python
     
     python2 setup.py install --root="$pkgdir" --optimize='1'
     
-    # vmaf python2 executables and additional modules
+    # vmaf python2 executables
     cd script
-    for _script in *
+    executables=($(find . -type f -executable))
+    for _script in ${executables[@]}
     do
-        _filemode="$(stat -c %a "$_script")"
-        
-        if [ "$_filemode" = '644' ] 
-        then
-            install -D -m"$_filemode" "$_script" "${pkgdir}/usr/lib/python2.7/site-packages/${_srcname}/${_script}"
-        else
-            install -D -m"$_filemode" "$_script" "${pkgdir}/usr/bin/${_script}"
-        fi
+        install -D -m755 "$_script" "${pkgdir}/usr/bin/${_script}"
     done
     
     # sureal python2 executable
-    cd "${srcdir}/${_srcname}/sureal/python/script"
+    cd "${srcdir}/vmaf-git/sureal/python/script"
     install -D -m755 run_subj.py "${pkgdir}/usr/bin/run_subj.py"
     
     # sureal python2 modules
-    cd "${srcdir}/${_srcname}/sureal/python/src"
+    cd "${srcdir}/vmaf-git/sureal/python/src"
     cp -a sureal "${pkgdir}/usr/lib/python2.7/site-packages"
     
     # fix shebang on python2 scripts
     for _script in "$pkgdir"/usr/bin/*
     do
-        sed -i '1s/python/python2/' "$_script"
+        sed -i '1s/python$/python2/' "$_script"
     done
 }

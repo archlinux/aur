@@ -1,6 +1,6 @@
 pkgbase = python2-vmaf-git
 	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation, git version)
-	pkgver = 1.3.1.r58.g755c93c
+	pkgver = 1.3.4.r0.gf1225dc
 	pkgrel = 1
 	url = https://github.com/netflix/vmaf/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python2-vmaf-git
 	depends = libsvm
 	provides = python2-vmaf
 	conflicts = python2-vmaf
-	source = vmaf::git+https://github.com/Netflix/vmaf.git
-	source = submodule-sureal::git+https://github.com/Netflix/sureal.git
+	source = vmaf-git::git+https://github.com/Netflix/vmaf.git
+	source = vmaf-submodule-sureal::git+https://github.com/Netflix/sureal.git#branch=master
 	sha256sums = SKIP
 	sha256sums = SKIP
 
