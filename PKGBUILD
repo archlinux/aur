@@ -75,7 +75,7 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchname="patch-4.16-ck${_ckpatchversion}"
-_gcc_more_v='20180507'
+_gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
@@ -101,7 +101,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8cf3e0720780db2bcc68e8036a73234eb9f6a0e64ff33d18a93c870633ecde2e'
+            '0d22651dbe27eeadd269706fc80c8a6caf22ceac81cbecc37d70e8e8fb00fef0'
             '61cd4b129eac475ad82fcdbbf9952b80e81e7c893776c00e3b6a658b950d0b26'
             '8e56d17c93fe6276046056c8875d04eae8d505369e89db7092b73689bf9bfe55'
             '6d5821f972861e37606458ac2a03fe289620e079378dd081e49034e1570e7bfb')
