@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/nathanielc/vim-tickscript')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/$_pkgname"

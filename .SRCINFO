@@ -11,7 +11,7 @@ pkgbase = vim-tickscript-git
 	provides = vim-tickscript
 	conflicts = vim-tickscript
 	source = git+https://github.com/nathanielc/vim-tickscript
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vim-tickscript-git
 
