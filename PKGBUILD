@@ -1,8 +1,8 @@
-# Maintainer Robert Booster > boosterdev@linuxmail.org
+# Maintainer: Robert Booster <boosterdev at linuxmail dot org>
 
 pkgbase="numix-icon-theme-pack"
 pkgname="numix-icon-theme-pack-git"
-pkgver=r6074
+pkgver=r6086
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -35,7 +35,7 @@ prepare() {
   ./gen.py --theme circle --platform linux && ./gen.py --theme square --platform linux
 }
 
-package() {
+package_numix-icon-theme-pack-git() {
   mkdir -p "$pkgdir/usr/share/icons/"
   install -Dm644 "$srcdir/numix-core/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # Numix Icon Theme
