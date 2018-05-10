@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=coffee-script-git
-pkgver=2.1.0.1.gffbe51e3
+pkgver=2.3.0.5.g7beb6316
 pkgrel=1
 pkgdesc='Language that compiles into JavaScript'
 arch=('any')
@@ -24,6 +24,5 @@ pkgver() {
 package() {
   cd ${pkgname%-git}
   npm install --global --user root --prefix "$pkgdir"/usr coffeescript
-  rm -r "$pkgdir"/usr/etc
   install -Dm644 "$srcdir"/$_gitname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
