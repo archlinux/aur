@@ -1,11 +1,11 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
 pkgver=2.56.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
-url="http://www.gtk.org/"
-license=('LGPL')
+url="https://git.gnome.org/browse/glib-networking"
+license=('LGPL2.1')
 depends=(mingw-w64-glib2 mingw-w64-gnutls)
 makedepends=(mingw-w64-meson)
 source=("https://download.gnome.org/sources/glib-networking/${pkgver%.*}/glib-networking-${pkgver}.tar.xz")
@@ -25,7 +25,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     cd "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
-    meson "${srcdir}/glib-networking-${pkgver}" "${srcdir}/glib-networking-${pkgver}/build-${_arch}" --cross-file "/usr/share/mingw/toolchain-${_arch}.meson"
+    ${_arch}-meson "${srcdir}/glib-networking-${pkgver}" "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     ninja -C "${srcdir}/glib-networking-${pkgver}/build-${_arch}" 
   done
 }
@@ -33,8 +33,6 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-networking-${pkgver}/build-${_arch}" install
-    ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/gio/modules/"*.a
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/gio/modules/*.dll
   done
 }
 
