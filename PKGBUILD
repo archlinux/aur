@@ -26,6 +26,7 @@ package() {
   cd $pkgname-$pkgver
   make LIBDIR="$pkgdir"/usr/lib INCDIR="$pkgdir"/usr/include install 
   install -Dm755 libg2.so.0.$pkgver "$pkgdir"/usr/lib/libg2.so.0.$pkgver
+  install -Dm755 libg2.a "$pkgdir"/usr/lib/libg2.a
   cd "$pkgdir"/usr/lib
   ln -s libg2.so.0.$pkgver libg2.so.0
 }
