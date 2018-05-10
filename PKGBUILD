@@ -3,8 +3,8 @@
 pkgname=lumina-calculator
 _pkgver=1.4.0-p1
 pkgver=1.4.0p1
-pkgrel=1
-pkgdesc="Screenshot tool for the lumina desktop environment"
+pkgrel=2
+pkgdesc="Calculator for the lumina desktop environment"
 arch=('x86_64')
 url='https://github.com/trueos/lumina'
 license=('BSD')

@@ -1,7 +1,7 @@
 pkgbase = lumina-calculator
-	pkgdesc = Screenshot tool for the lumina desktop environment
+	pkgdesc = Calculator for the lumina desktop environment
 	pkgver = 1.4.0p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trueos/lumina
 	arch = x86_64
 	license = BSD
