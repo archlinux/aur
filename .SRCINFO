@@ -1,0 +1,19 @@
+pkgbase = lumina-screenshot
+	pkgdesc = Screenshot tool for the lumina desktop environment
+	pkgver = 1.4.0p1
+	pkgrel = 1
+	url = https://github.com/trueos/lumina
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-base
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	provides = lumina-screenshot
+	conflicts = lumina-desktop
+	conflicts = lumina-desktop-git
+	conflicts = insight-fm
+	source = https://github.com/trueos/lumina/archive/v1.4.0-p1.tar.gz
+	sha512sums = 340079832f4f6c9c9c70f11d7743b7c7db6772897f6411a966bf2bd77124bab1fbac8f5751164fb8a08a12c4443f515aaee76b117b4f959263eeaa98dbcbe41e
+
+pkgname = lumina-screenshot
+
