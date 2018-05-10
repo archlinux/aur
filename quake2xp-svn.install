@@ -1,0 +1,3 @@
+post_upgrade() {
+	echo 'Ensure you download the GLSL shaders (e.g. `mkdir ~/.quake2xp/baseq2/ && cd ~/.quake2xp/baseq2/ && svn checkout svn://svn.code.sf.net/p/quake2xp/code/glsl glsl`)'.
+}
