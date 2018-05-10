@@ -7,13 +7,13 @@
 
 # Allows enlargement of /tmp to fit Unreal.
 # set enlargetmp to any value.
-enlargetmp=
 
 pkgname='unreal-engine'
-pkgver=4.19.0
+install="$pkgname.install"
+pkgver=4.19.2
 # shellcheck disable=SC2034
 {
-  pkgrel=2
+  pkgrel=1
   pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
   arch=('x86_64')
   url='https://www.unrealengine.com/'
@@ -46,8 +46,6 @@ sha256sums=('SKIP'
 prepare() {
   export TERM=xterm
   # shellcheck disable=SC2154
-  # remount /tmp so unreal fits fully in ram if there is enough memory
-  [[ -z "$enlargetmp" ]] || { (( $(free -g | grep Mem | awk '{print $2}') > 64 )) && sudo mount -o remount, size=72G,noatime /tmp ; }
 
   ue4src="$srcdir/UnrealEngine/Engine/Source"
   linuxToolChain="$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs"
