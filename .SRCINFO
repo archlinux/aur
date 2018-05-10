@@ -1,0 +1,14 @@
+pkgbase = hedit-bin
+	pkgdesc = A VIM-like terminal-based hex editor scriptable with JS.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/95ulisse/hedit
+	arch = x86_64
+	license = MIT
+	depends = libtermkey
+	depends = unibilium
+	source_x86_64 = https://github.com/95ulisse/hedit/releases/download/v0.1/hedit-0.1-bin.tar.gz
+	sha256sums_x86_64 = fd8824324b158afa241ffa39017e8c6d6790a093c8e73de704c7b148aaa6b580
+
+pkgname = hedit-bin
+
