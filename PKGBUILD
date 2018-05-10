@@ -2,7 +2,7 @@
 
 _plug=dctfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.0.gf81f4d4
+pkgver=r2.0.g5abff85
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,14 +12,8 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://bitbucket.org/mystery_keeper/vapoursynth-dctfilter.git"
-        'https://raw.githubusercontent.com/VFR-maniac/VapourSynth-DCTFilter/master/GNUmakefile'
-        'https://raw.githubusercontent.com/VFR-maniac/VapourSynth-DCTFilter/master/configure'
-        )
-sha256sums=('SKIP'
-            'c9c776a8d00a0dcad9e1f64042d6299dfae1b6443bc874edbe8d571237112674'
-            '7ba97ed443bb9d28588a023bc54cf597f46fdf723f79f9a6483075ef0dab6882'
-            )
+source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DCTFilter.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -27,23 +21,23 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
-  cp "${srcdir}/GNUmakefile" .
-  cp "${srcdir}/configure" .
-  chmod +x configure
+  ./autogen.sh
+
+  cd ../build
+  ../"${_plug}"/configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
+
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
-    --prefix=/usr \
-    --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
-    --extra-ldflags="${LDFLAGS}"
-  make
+  make -C build
 }
 
 package() {
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
