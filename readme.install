@@ -1,0 +1,42 @@
+post_install() {
+	echo '--------------------------------------------------------------------------'
+	echo ' See the manpage for usage and setup: man modprobed-db'
+	echo '--------------------------------------------------------------------------'
+}
+
+post_remove() {
+	echo '-----------------------------------------------------------------------'
+	echo ' Remember to remove the entry in your crontab if you made one!'
+	echo '-----------------------------------------------------------------------'
+}
+
+# $1: The new package version
+# $2: The old package version
+
+post_upgrade() {
+	if [ $(vercmp $2 1.8) -lt 0 ]; then
+		echo '----------------------------------------------------------------------'
+		echo ' WARNING:'
+		echo
+		echo 'You MUST modify ANY and ALL calls to /usr/bin/modprobed-db to'
+		echo 'include the "store" switch.'
+		echo 'For example, in the root user crontab, /etc/rc.local.shutdown, etc.'
+		echo
+		echo 'In other words:         --> /usr/bin/modprobed-db store <--'
+		echo 
+		echo 'The default action in version 2.0 is to display the help file!'
+		echo 'Inaction on your part here will cause NO action to be taken by'
+		echo 'the software!'
+		echo
+		echo 'You have been warned!'
+		echo '----------------------------------------------------------------------'
+	fi
+
+	if [ $(vercmp $2 2.23) -lt 0 ]; then
+		echo '--> A minor name change has occurred which requires your attention.'
+		echo '--> Underscores have been replaced with hyphens:'
+		echo '--> modprobed_db --> modprobed-db'
+		echo '-->'
+		echo '--> Make sure you update your crontab accordingly.'
+	fi
+}
