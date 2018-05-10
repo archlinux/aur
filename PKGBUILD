@@ -3,7 +3,7 @@
 # if you want 32 bit, 1.2.10 was the last version supported
 
 pkgname=saleae-logic
-pkgver=1.2.17
+pkgver=1.2.18
 pkgrel=1
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-
                "http://downloads.saleae.com/Logic%20Guide.pdf"
                "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
                "saleae-logic.desktop")
-md5sums_x86_64=('b4eab773e9bf22ef6b8c7c459263b074'
+md5sums_x86_64=('8c586a272a89019540cc365c82ade451'
                 '836db7ec757b1e6453602ed4831d4765'
                 '96aac500508492509d8e47645a826af8'
                 '120198dc1ce881e4959da215dc1ab8f5')
