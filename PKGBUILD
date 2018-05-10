@@ -63,7 +63,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.15.0.g1f77c173aaa8
+pkgver=4.16.0.gae5d5407f10c
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -76,7 +76,7 @@ _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_name="kernel_gcc_patch"
-_gcc_rel='20180507'
+_gcc_rel='20180509'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
@@ -96,7 +96,7 @@ source=(# bfq-mq repository
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '8cf3e0720780db2bcc68e8036a73234eb9f6a0e64ff33d18a93c870633ecde2e'
+            '0d22651dbe27eeadd269706fc80c8a6caf22ceac81cbecc37d70e8e8fb00fef0'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '23041a75da90e0dccaf5a67e446ac53a3d3624cd46cfa3e1dda00350b1797e5e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'

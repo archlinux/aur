@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.15.0.g1f77c173aaa8
+	pkgver = 4.16.0.gae5d5407f10c
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-bfq-mq-git
 	makedepends = libelf
 	options = !strip
 	source = git+https://github.com/Algodev-github/bfq-mq
-	source = kernel_gcc_patch-20180507.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180507.tar.gz
+	source = kernel_gcc_patch-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
 	source = config
 	source = 60-linux.hook
@@ -21,7 +21,7 @@ pkgbase = linux-bfq-mq-git
 	source = 99-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 8cf3e0720780db2bcc68e8036a73234eb9f6a0e64ff33d18a93c870633ecde2e
+	sha256sums = 0d22651dbe27eeadd269706fc80c8a6caf22ceac81cbecc37d70e8e8fb00fef0
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
 	sha256sums = 23041a75da90e0dccaf5a67e446ac53a3d3624cd46cfa3e1dda00350b1797e5e
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -38,19 +38,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.15.0.g1f77c173aaa8
-	provides = linux=4.15.0.g1f77c173aaa8
+	provides = linux-bfq-mq-git=4.16.0.gae5d5407f10c
+	provides = linux=4.16.0.gae5d5407f10c
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.15.0.g1f77c173aaa8
-	provides = linux-bfq-mq-git-headers=4.15.0.g1f77c173aaa8
-	provides = linux-headers=4.15.0.g1f77c173aaa8
+	depends = linux-bfq-mq-git=4.16.0.gae5d5407f10c
+	provides = linux-bfq-mq-git-headers=4.16.0.gae5d5407f10c
+	provides = linux-headers=4.16.0.gae5d5407f10c
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.15.0.g1f77c173aaa8
-	provides = linux-bfq-mq-git-docs=4.15.0.g1f77c173aaa8
-	provides = linux-docs=4.15.0.g1f77c173aaa8
+	depends = linux-bfq-mq-git=4.16.0.gae5d5407f10c
+	provides = linux-bfq-mq-git-docs=4.16.0.gae5d5407f10c
+	provides = linux-docs=4.16.0.gae5d5407f10c
 
