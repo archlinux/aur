@@ -8,7 +8,7 @@ pkgbase = ttf-brill
 	license = custom
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://www.brill.com/sites/default/files/brill_font_package_2_06.zip
+	source = https://brill.com/fileasset/downloads_static/static_typefacedownload_typefacepackage.zip
 	sha256sums = b58eeb26ea43d9a020ac9891a395ff7364bac7215d0714910561b675e4947166
 
 pkgname = ttf-brill
