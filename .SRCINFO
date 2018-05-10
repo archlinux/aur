@@ -1,14 +1,14 @@
 pkgbase = rusync
 	pkgdesc = Ergonomic replacement for rsync
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://github.com/dmerejkowsky/rusync
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = rusync-0.1.2.tar.gz::http://github.com/dmerejkowsky/rusync/archive/v0.1.2.tar.gz
-	md5sums = 0bea3985deb003d0da989646921448ae
+	source = rusync-0.2.0.tar.gz::http://github.com/dmerejkowsky/rusync/archive/v0.2.0.tar.gz
+	md5sums = c9bbd912c3a9dd1a3916157d449a475a
 
 pkgname = rusync
 
