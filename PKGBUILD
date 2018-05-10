@@ -4,13 +4,15 @@
 pkgname=pyinstaller
 _pyname=PyInstaller
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
 url="http://www.pyinstaller.org"
 license=('GPL')
 conflicts=('pyinstaller-git')
-depends=('python')
+depends=('python'
+	 'python-macholib'
+	 'python2-pefile')
 makedepends=('python-setuptools')
 optdepends=(
     'python-crypto: executable encryption support'
