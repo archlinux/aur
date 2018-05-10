@@ -1,0 +1,18 @@
+pkgbase = gtk-theme-flat-color-git
+	pkgdesc = A flat GTK theme designed to be easily re-colored. This is the theme used in wpgtk.
+	pkgver = 20180507.ff68c61
+	pkgrel = 1
+	url = https://github.com/deviantfero/wpgtk-templates/tree/master/FlatColor
+	arch = any
+	license = LGPL
+	makedepends = gtk2
+	makedepends = gtk3
+	optdepends = gtk2: GTK+2 theme
+	optdepends = gtk3: GTK+3 theme
+	provides = gtk-theme-flat-color-git
+	conflicts = gtk-theme-flat-color-git
+	source = git+https://github.com/deviantfero/wpgtk-templates.git
+	sha256sums = SKIP
+
+pkgname = gtk-theme-flat-color-git
+
