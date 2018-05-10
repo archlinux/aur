@@ -10,28 +10,37 @@ license=('GPL2')
 depends=('gcc' 'git' 'make' 'premake' 'freetype2' 'libevent' 'sqlite' 'irrlicht' 'lua')
 backup=(opt/ygopro/system.conf)
 source=("https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v${pkgver}.${pkgrel}")
+source=("https://codeload.github.com/Fluorohydride/ygopro-core/zip/master")
+source=("https://codeload.github.com/Fluorohydride/ygopro-scripts/zip/master")
+source=("https://gitee.com/ximlel/ygopro_data/repository/archive/master.zip")
 sha256sums=('9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8')
 options=('emptydirs')
 
 package() {
 	cd "$pkgdir/usr/lib"
 	ln -s liblua5.3.so liblua.so
-	cd "${srcdir}/ygopro-${pkgver}.${pkgrel}"
-	git clone --depth 1 https://github.com/Fluorohydride/ygopro-core.git
-	git clone --depth 1 https://github.com/Fluorohydride/ygopro-scripts.git
+	cd "${srcdir}"
+	unzip ygopro-core-master.zip
+	unzip ygopro-scripts-master.zip
+	unzip ximlel-ygopro_data-master.zip
 	rm -R "ygopro-core/.git"
 	rm -R "ygopro-scripts/.git"
-	mv ygopro-core/* "ocgcore"
-	mv ygopro-scripts/* "script"
+	rm -R "ygopro-data/.git"
+	mv ygopro-core/* "ygopro-${pkgver}.${pkgrel}/ocgcore"
+	mv ygopro-scripts/* "ygopro-${pkgver}.${pkgrel}/script"
+	mv ygopro-data/* "ygopro-${pkgver}.${pkgrel}"
 	rm -rf "ygopro-core"
 	rm -rf "ygopro-scripts"
+	rm -rf "ygopro-data"
+	cd "ygopro-${pkgver}.${pkgrel}"
 	premake4 gmake
 	cd "build"
 	make all
 	mv ../bin/debug/* ../
 	make clean
 	cd ..
-	rm -R "bin" "build" "obj"
+	rm -R "bin" "build" "obj" "gframe" "ocgcore"
+	sed -i "s/c:\/windows\/fonts/./" ./system.conf
 	mkdir -pv "$pkgdir/opt/ygopro"
 	cp -dRv * "$pkgdir/opt/ygopro"
 	cd "$pkgdir/opt/ygopro"
