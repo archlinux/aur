@@ -12,8 +12,8 @@ source=("https://github.com/decred/decred-binaries/releases/download/${_pkgver}/
         "decred-dcr.svg"
         "${pkgname}.desktop")
 sha256sums=('a2535fc4d789486850ac66b1de3b45a013c937bfd8509e0396f1863fe41ed535'
-            'a5d4ca6879438bbf02999dbf84f4fb3b0088fbac385f6cbc9722baf1baa7c8aa'
-            'b2693919cdd9557676f1c3f6e5ed167080d8ce52cab7fca385796aa9bd4baab5')
+        'a5d4ca6879438bbf02999dbf84f4fb3b0088fbac385f6cbc9722baf1baa7c8aa'
+        '5113de3821e1445dc47dc7ea11706614432189d29722f3cd05f5535aed8b6042')
 package() {
   # Install the main files.
   install -d "${pkgdir}/opt/${pkgname}"

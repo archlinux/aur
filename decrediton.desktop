@@ -1,10 +1,11 @@
 [Desktop Entry]
-Version=1.0
-Type=Application
+Encoding=UTF-8
 Name=Decrediton
-Exec=decrediton %f
-Icon=decrediton
-Comment=Decrediton is a cross-platform GUI for decred written in node.js using Electron.
-Categories=Utility;
+Comment=Decrediton the Decred wallet
+Exec=decrediton %U
 Terminal=false
-StartupNotify=true
+Type=Application
+Icon=decred
+MimeType=x-scheme-handler/decred;
+Categories=Office;Finance;
+
