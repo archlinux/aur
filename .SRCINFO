@@ -7,8 +7,6 @@ pkgbase = python-geocoder
 	license = custom
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
 	source = https://github.com/DenisCarriere/geocoder/archive/master.zip
 	md5sums = 633a52784503a40a2b3f810da358a2e5
 
@@ -19,12 +17,4 @@ pkgname = python-geocoder
 	depends = python-requests
 	provides = python-geocoder-git
 	conflicts = python-geocoder-git
-
-pkgname = python2-geocoder
-	depends = python2-flake8
-	depends = python2-nose
-	depends = python2-tox
-	depends = python2-requests
-	provides = python2-geocoder-git
-	conflicts = python2-geocoder-git
 

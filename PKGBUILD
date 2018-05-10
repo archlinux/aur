@@ -2,7 +2,7 @@
 
 pkgbase=python-geocoder
 _gitname='geocoder-master'
-pkgname=('python-geocoder' 'python2-geocoder')
+pkgname=('python-geocoder')
 pkgver=1.38.1
 pkgrel=4
 pkgdesc='A pure Python Geocoding module made easy. Supports ArcGIS, Bing,CanadaPost,FreeGeoIP Geocoder.ca, Geonames, Google, HERE, MapQuest, MaxMind, OpenCage, OpenStreetMap, GeoOttawa, TomTom, Yahoo )'
@@ -11,13 +11,11 @@ url='https://github.com/DenisCarriere/geocoder'
 license=('custom')
 source=("https://github.com/DenisCarriere/geocoder/archive/master.zip")
 md5sums=('633a52784503a40a2b3f810da358a2e5')
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
+makedepends=('python' 'python-setuptools')
 
 build() {
   cd ${_gitname}
   python setup.py build
-  python2 setup.py build
 }
 
 package_python-geocoder() {
@@ -26,18 +24,5 @@ package_python-geocoder() {
   conflicts=('python-geocoder-git')
   cd ${_gitname}
   python setup.py install --root="${pkgdir}" --optimize=1
-  # rename file that exists in both
   mv "${pkgdir}"/usr/bin/geocode{,-py3}
-}
-
-package_python2-geocoder() {
-  depends=('python2-flake8' 'python2-nose' 'python2-tox' 'python2-requests')
-  provides=('python2-geocoder-git')
-  conflicts=('python2-geocoder-git')
-  cd ${_gitname}
-  for file in $(find . -name '*.py' -print); do
-    sed -r -i 's_^#!.*/usr/bin/python(\s|$)_#!/usr/bin/python2_' $file
-    sed -r -i 's_^#!.*/usr/bin/env(\s)*python(\s|$)_#!/usr/bin/env python2_' $file
-  done
-  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
