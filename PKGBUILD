@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.37.25.8.g1754e3250
+pkgver=1.38.0.2.gc6acc4f17
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
 depends=('nodejs' 'python2' 'python')
-makedepends=('git' 'cmake' 'clang' 'libxml2' 'ocaml-ctypes')
+makedepends=('git' 'cmake' 'clang' 'libxml2' 'ocaml-ctypes' 'gcc6')
 optdepends=('java-environment: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work'
 	    'ruby: for running some scripts')
@@ -27,7 +27,7 @@ md5sums=('SKIP'
          'c8b7db20a44edb41c8675812e17b5c42')
 
 pkgver() {
-  cd "$srcdir"/${pkgname%-git}
+  cd ${pkgname%-git}
   git describe --tags |  sed 's+[_-]+.+g'
 }
 
@@ -36,7 +36,7 @@ prepare() {
   sed -i 's+intinsics_gen+intrinsics_gen+' \
       "$srcdir"/${pkgname%-git}-fastcomp/lib/Bitcode/Writer/CMakeLists.txt
 
-  cd "$srcdir"/${pkgname%-git}
+  cd ${pkgname%-git}
   
   # adapt config file template to use our custom environment variable and path
   sed -e "s|getenv('LLVM')|getenv('EMSCRIPTEN_FASTCOMP')|" \
@@ -58,8 +58,8 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/${pkgname%-git}-fastcomp/build
-  cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+  cd ${pkgname%-git}-fastcomp/build
+  CC=gcc-6 CXX=g++-6 cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
     -DLLVM_BUILD_RUNTIME=OFF \
