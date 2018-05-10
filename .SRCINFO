@@ -22,7 +22,7 @@ pkgbase = ygopro-zh
 	source = https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v1.034.3
 	source = https://codeload.github.com/Fluorohydride/ygopro-core/zip/master
 	source = https://codeload.github.com/Fluorohydride/ygopro-scripts/zip/master
-	source = https://gitee.com/ximlel/ygopro_data/repository/archive/master.zip
+	source = https://gitee.com/ximlel/ygopro_data/repository/archive/v1.034.3.zip
 	sha256sums = 9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8
 
 pkgname = ygopro
