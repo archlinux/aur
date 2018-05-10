@@ -2,9 +2,9 @@
 # Contributor: Gordin <9ordin@gmail.com>
 
 pkgname=firefox-nightly-de
-pkgdesc='Standalone web browser from mozilla.org, nightly build, german'
-url='https://nightly.mozilla.org'
-pkgver=61.0a1
+pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
+url='https://www.mozilla.org/de-DE/firefox/nightly'
+pkgver=62.0a1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
