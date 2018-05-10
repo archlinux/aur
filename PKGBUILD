@@ -2,13 +2,13 @@
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=2.2.1.r277.g8a04b08
+pkgver=2.2.1.r306.g2e55f7c
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
 license=('BSD')
 url="https://github.com/threat9/routersploit"
-depends=('python2-requests' 'python2-paramiko' 'python2-beautifulsoup4' 'python2-pysnmp')
+depends=('python-future' 'python-requests' 'python-paramiko' 'python-pysnmp' 'python-crypto')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
