@@ -1,6 +1,6 @@
 pkgbase = ripabook
 	pkgdesc = Tool to ripp audiobooks
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 2
 	url = https://github.com/asdil12/ripabook
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ripabook
 	depends = python2
 	depends = cdparanoia
 	depends = lame
-	source = ripabook-0.1.tar.gz::https://codeload.github.com/asdil12/ripabook/tar.gz/0.1
-	md5sums = 972d617be0896b794190ee4b94bf9b65
+	source = ripabook-0.2.tar.gz::https://codeload.github.com/asdil12/ripabook/tar.gz/0.2
+	md5sums = a63b7d3abe4671b3e6ee7ec4ad5d1859
 
 pkgname = ripabook
 
