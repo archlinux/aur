@@ -1,0 +1,29 @@
+pkgbase = python-yahoofinancials-git
+	pkgdesc = Pull fundamental and technical stock data from Yahoo Finance by web scraping (git version)
+	pkgver = 0.5.3.ga9f612d
+	pkgrel = 1
+	url = https://github.com/JECSand/yahoofinancials
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-pytz
+	provides = python-yahoofinancials
+	conflicts = python-yahoofinancials
+	source = python-yahoofinancials-git::git+https://github.com/JECSand/yahoofinancials.git
+	sha256sums = SKIP
+
+pkgname = python-yahoofinancials-git
+
+pkgname = python2-yahoofinancials-git
+	depends = python2
+	depends = python2-requests
+	depends = python2-beautifulsoup4
+	depends = python2-pytz
+	provides = python2-yahoofinancials
+	conflicts = python2-yahoofinancials
+
