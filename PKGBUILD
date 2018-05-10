@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
   export GOPATH="$srcdir"
   rm -fr "$srcdir/src"
+  rm -fr "$srcdir/bin"
   git clone "$srcdir/$pkgname" "$GOPATH/src/github.com/anaseto/boohu"
 }
 

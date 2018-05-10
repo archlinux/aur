@@ -9,7 +9,6 @@ pkgbase = boohu-git
 	makedepends = git
 	makedepends = go
 	provides = boohu
-	conflicts = boohu
 	source = boohu-git::git+https://github.com/anaseto/boohu.git
 	md5sums = SKIP
 
