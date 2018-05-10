@@ -3,4 +3,4 @@ image: heichblatt/archlinux-yaourt
 build:
   stage: build
   script:
-    - makepkg -si
+    - makepkg -si --noconfirm
