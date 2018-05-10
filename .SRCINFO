@@ -1,7 +1,7 @@
 pkgbase = convertall
 	pkgdesc = Unit conversion program (Qt)
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://convertall.bellz.org/
 	arch = any
 	license = GPL
