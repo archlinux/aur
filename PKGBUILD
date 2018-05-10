@@ -13,11 +13,15 @@ source=("https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v${pkgver}.${pk
 source=("https://codeload.github.com/Fluorohydride/ygopro-core/zip/master")
 source=("https://codeload.github.com/Fluorohydride/ygopro-scripts/zip/master")
 source=("https://gitee.com/ximlel/ygopro_data/repository/archive/v${pkgver}.${pkgrel}.zip")
-sha256sums=('9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8')
+sha256sums=('9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8'
+            "SKIP"
+            "SKIP"
+            "SKIP")
 options=('emptydirs')
 
 package() {
 	cd "${srcdir}"
+	tar -xzvf "ygopro-${pkgver}.${pkgrel}.tar.gz"
 	unzip ygopro-core-master.zip
 	unzip ygopro-scripts-master.zip
 	unzip "v${pkgver}.${pkgrel}.zip"
@@ -26,9 +30,6 @@ package() {
 	mv ygopro-core/* "ygopro-${pkgver}.${pkgrel}/ocgcore"
 	mv ygopro-scripts/* "ygopro-${pkgver}.${pkgrel}/script"
 	mv ygopro-data/* "ygopro-${pkgver}.${pkgrel}"
-	rm -rf ygopro-core
-	rm -rf ygopro-scripts
-	rm -rf ygopro-data
 	cd "ygopro-${pkgver}.${pkgrel}"
 	premake4 gmake
 	cd build
