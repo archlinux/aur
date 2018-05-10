@@ -1,7 +1,7 @@
 pkgbase = badtouch
 	pkgdesc = Scriptable network authentication cracker
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kpcyrd/badtouch
 	install = badtouch.install
 	arch = i686
