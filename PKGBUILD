@@ -64,7 +64,7 @@ _rtver=1
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -75,7 +75,7 @@ _bfq_sq_mq_patch="${_major}-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _gcc_name="kernel_gcc_patch"
-_gcc_rel='20180507'
+_gcc_rel='20180509'
 _gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
@@ -426,7 +426,7 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '5b860dd67312af2327b9c6abc62d08e285cb81b5e64207f879178dac673cfe67249321ab9bf61e07e6fb855b0d7388061e8bbd4cead0e078886b91beb38599c9'
             '5a2b2154afa7f10ffd50ad23afd2b25b468d655aa01e04fbc6ca54a90c53ded0c37b4d08658b9787a5f414779f1968040e81ccaee3b9355e1a9b7ad5104ed8aa'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
-            '2b196d2a5a76c50dd8ef604eafebdef41e68751d4854dbd4393d6f75ee42a0def9b0e4f3558b342d18478d0f0ebf3d06d9213b27b0eb1ed7928e6b8944d42ec7'
+            'c53b36f346ceb469d49de796c67cc6eab69a29b8913ac0af0ce3e0a7d7466ee26dabb39e37108c15f9fd0638401ff57067bcbcd09c272aca113ff375573aa1f6'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '618d147c15b399b5bf01428bd6342d548a2b4d1dc406f53149be5fe09845fdf5baeeb5d30c494bd9e6ec42bcf946a70b9b3bfe0a50957e46f9ae7cec36887809'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
