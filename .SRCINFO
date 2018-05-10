@@ -1,7 +1,7 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
 	license = GPL3
@@ -25,7 +25,7 @@ pkgbase = pyfa
 	source = pyfa.desktop
 	source = pyfa-start.sh
 	sha256sums = 73c26002d5c5961257ff39c5fd82a539250efdd22c2c2f1016f5250971d20231
-	sha256sums = 1379bd28eff6d1b658896491de580f83bf2e3921be385bdb36be88ac4b65a394
+	sha256sums = b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786
 	sha256sums = ce006f4eb2c799dd88d38179847155737c716cddefa84c9dc3e79a9f64723aac
 
 pkgname = pyfa
