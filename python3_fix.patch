@@ -1,0 +1,15 @@
+Thanks to 
+https://www.mail-archive.com/libguestfs@redhat.com/msg13973.html
+
+--- a/actions.h	2018-02-28 00:39:13.189935224 -0500
++++ b/actions.h	2018-02-28 00:40:33.010503002 -0500
+@@ -57,9 +57,6 @@
+ {
+   assert (g);
+ #ifndef HAVE_PYCAPSULE_NEW
+-  return
+-    PyCObject_FromVoidPtrAndDesc ((void *) g, (char *) "guestfs_h", NULL);
+-#else
+   return PyCapsule_New ((void *) g, "guestfs_h", NULL);
+ #endif
+ }
