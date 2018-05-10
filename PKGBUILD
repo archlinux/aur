@@ -1,7 +1,8 @@
-# Maintainer: Kaan Kasım <kaankasim88@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro-git
-pkgver=2.5.5.r67.g05fefe4b
+pkgver=2.6.9.r153.ga76a4f52
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port (git version)'
 arch=('i686' 'x86_64')
