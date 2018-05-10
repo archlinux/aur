@@ -7,6 +7,7 @@ pkgconfig = '@TRIPLE@-pkg-config'
 ranlib = '@TRIPLE@-ranlib'
 strip = '@TRIPLE@-strip'
 windres = '@TRIPLE@-windres'
+exe_wrapper = 'wine'
 
 [properties]
 root = '@TRIPLE@'

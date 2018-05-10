@@ -1,0 +1,23 @@
+#!/bin/sh
+
+meson setup \
+  --prefix         /usr/@TRIPLE@ \
+  --libdir         /usr/@TRIPLE@/lib \
+  --libexecdir     /usr/@TRIPLE@/lib \
+  --bindir         /usr/@TRIPLE@/bin \
+  --sbindir        /usr/@TRIPLE@/bin \
+  --includedir     /usr/@TRIPLE@/include \
+  --datadir        /usr/@TRIPLE@/share \
+  --mandir         /usr/@TRIPLE@/share/man \
+  --infodir        /usr/@TRIPLE@/share/info \
+  --localedir      /usr/@TRIPLE@/share/locale \
+  --sysconfdir     /usr/@TRIPLE@/etc \
+  --localstatedir  /var \
+  --sharedstatedir /var/lib \
+  --buildtype      release \
+  --wrap-mode      nofallback \
+  --strip \
+  --cross-file /usr/share/mingw/toolchain-@TRIPLE@.meson \
+  --default-library both \
+  "$@" \
+  -D               b_lto=true
