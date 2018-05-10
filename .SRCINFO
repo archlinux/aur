@@ -1,6 +1,6 @@
 pkgbase = sniffglue-git
 	pkgdesc = Secure multithreaded packet sniffer
-	pkgver = 0.4.0.r4.ge6446ad
+	pkgver = 0.5.0.r4.gdef0e5c
 	pkgrel = 1
 	url = https://github.com/kpcyrd/sniffglue
 	arch = i686

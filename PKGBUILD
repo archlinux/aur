@@ -2,7 +2,7 @@
 
 _gitname=sniffglue
 pkgname=sniffglue-git
-pkgver=0.4.0.r4.ge6446ad
+pkgver=0.5.0.r4.gdef0e5c
 pkgrel=1
 pkgdesc="Secure multithreaded packet sniffer"
 url="https://github.com/kpcyrd/sniffglue"
@@ -30,7 +30,12 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  cargo build --release
+  cargo build --release --locked
+}
+
+check() {
+  cd "$_gitname"
+  cargo test --release --locked
 }
 
 package() {
@@ -41,3 +46,5 @@ package() {
   install -Dm644 docs/sniffglue.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname"
 }
+
+# vim:set ts=2 sw=2 et:
