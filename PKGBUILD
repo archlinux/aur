@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r564.g11289d5238
+pkgver=0.28.2.r565.ga645c6b2ec
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -187,7 +187,6 @@ build() {
 	--disable-d3d-hwaccel \
 	--disable-d3d9-hwaccel \
 	--disable-gl-dxinterop-d3d9 \
-	--enable-cuda-hwaccel \
 	\
 	--enable-tv \
 	--enable-tv-v4l2 \
