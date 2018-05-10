@@ -1,13 +1,17 @@
 pkgbase = latex-saxpsa-ok
 	pkgdesc = Provides Type 1 font compatible with displaying APL.
 	pkgver = 13.03.2007
-	pkgrel = 2
+	pkgrel = 5
 	url = http://olegykj.sourceforge.net/
 	arch = any
 	license = custom
 	depends = texlive-core
 	source = http://olegykj.sourceforge.net/fonts/saxpsa_ok.zip
+	source = http://www.snakeisland.com/aplfont.tar
+	source = saxpsa.maps
 	md5sums = 4d9fdeb829303fdcde2d9cce9a8e69d4
+	md5sums = 64399e8274fbbc4d8cb3f18f5af62d8c
+	md5sums = 611ca8dc62dc619604afc0be0fe13cb8
 
 pkgname = latex-saxpsa-ok
 
