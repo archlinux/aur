@@ -4,7 +4,7 @@ pkgname_=truffleruby
 pkgname=${pkgname_}-bin
 pkgver_=1.0.0-rc1
 pkgver=${pkgver_/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graal based, high-performance implementation of the Ruby language'
 arch=('x86_64')
 url='https://github.com/oracle/truffleruby'
@@ -20,7 +20,7 @@ sha256sums=('27ac51f88fff16c8876cb7825ff1247ccd83f375f5a37b39cecf56917b339d52')
 package() {
     local file eq permissions mode name target
 
-    mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/"
+    mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/" "$pkgdir/usr/bin/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" docs/ jre/
 
     printf '\n' >> META-INF/permissions
@@ -55,4 +55,6 @@ package() {
     done < META-INF/symlinks
 
     install -Dm644 jre/languages/ruby/GraalCE_Ruby_license_3rd_party_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    ln -s ../../usr/lib/jvm/java-8-graal/bin/truffleruby "$pkgdir/usr/bin/"
 }
