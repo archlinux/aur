@@ -1,0 +1,17 @@
+pkgbase = hstr
+	pkgdesc = Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history.
+	pkgver = 1.25
+	pkgrel = 1
+	url = https://github.com/dvorka/hstr
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = readline
+	makedepends = ncurses
+	depends = readline
+	conflicts = hstr-git
+	source = git://github.com/dvorka/hstr.git#tag=1.25
+	sha256sums = SKIP
+
+pkgname = hstr
+
