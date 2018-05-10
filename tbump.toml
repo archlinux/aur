@@ -1,0 +1,29 @@
+[version]
+current = "0.2.0"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+'''
+
+[git]
+tag_template = "v{new_version}"
+message_template = "Bump to {new_version}"
+
+[[file]]
+src = "PKGBUILD"
+search = 'pkgver="{current_version}"'
+
+[[hook]]
+name = "Update source md5sum"
+cmd = "updpkgsums"
+
+[[hook]]
+name = "Check package build"
+cmd = "extra-x86_64-build"
+
+[[hook]]
+name = "Generate .SRCINFO"
+cmd = "makepkg --printsrcinfo > .SRCINFO"
