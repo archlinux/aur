@@ -1,7 +1,7 @@
 pkgbase = python-blockdiagcontrib-cisco
 	pkgdesc = A plugin for blockdiag that provides shapes for networking
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pythonhosted.org/blockdiagcontrib-cisco/
 	arch = any
 	license = PSL
