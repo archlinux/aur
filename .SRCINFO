@@ -1,0 +1,16 @@
+pkgbase = videomorph
+	pkgdesc = Small GUI wrapper for FFMPEG based on PyQt5
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/videomorph-dev/videomorph
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	depends = ffmpeg
+	depends = python-pyqt5
+	source = https://gutl.jovenclub.cu/wp-content/uploads/2017/12/videomorph-1.2.tar.gz
+	md5sums = 5f2c19516d022b5c39ddf5c7316b82ea
+
+pkgname = videomorph
+
