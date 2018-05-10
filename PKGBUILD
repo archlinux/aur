@@ -3,7 +3,7 @@
 pkgname=python-torf
 _name=torf
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to create, parse and edit torrent files and magnet links"
 arch=('any')
 url="https://github.com/rndusr/torf"
@@ -23,6 +23,7 @@ md5sums=('f1b2e576d7f24dbd8b5cf7aabea03ac7')
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  chmod -R a+rX ${pkgdir}
 }
 
 # vim:set ts=2 sw=2 et:
