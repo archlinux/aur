@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
 
 pkgname=haguichi-git
-pkgver=1.3.8.r83.g0a59e37
+pkgver=1.4.0.r0.g3fcabc3
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,6 @@ depends=('gtk3' 'libappindicator-gtk3' 'libnotify' 'logmein-hamachi')
 makedepends=('git' 'meson' 'vala')
 conflicts=('haguichi')
 provides=('haguichi')
-replaces=('haguichi-bzr' 'haguichi-indicator-bzr')
 source=("git+$url")
 sha512sums=('SKIP')
 _pkg=haguichi
