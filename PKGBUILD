@@ -1,7 +1,5 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
-# Crashes kernel 4.11, 4.9, 4.4
-
 _opt_DKMS=1            # This can be toggled between installs
 #_opt_defaultmode='666' # default: 660
 
@@ -22,7 +20,7 @@ _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='nslink'
-pkgver='7.26'
+pkgver='7.28'
 pkgrel='1'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
@@ -45,7 +43,7 @@ source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-li
 #source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('dmupdate.py.usage.patch')
-sha256sums=('5c00939eb945c98336211cd61408b5a8623b01a7059356e663ccc638b0d159fb'
+sha256sums=('900d0681a86d0732cf3e71e56a013456d5a77a68f7faa2afb955e275f73353fb'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073')
 
@@ -102,7 +100,7 @@ prepare() {
 
   # Branding in dmesg
   sed -e '/^int nrp_init(/,/^}/ s:version %s %s:& Arch Linux:g' -i 'nslink.c'
-  grep -qF 'Arch Linux' 'nslink.c' || echo "${}"
+  grep -qFe 'Arch Linux' 'nslink.c' || echo "${}"
 
   # Fix nslinktool. We'll get rid of the tabs while we're here.
   expand -i 'nslinktool' | sed -e 's:\s\+$::g' > 'nslinktool.orig'
@@ -111,7 +109,10 @@ prepare() {
 
   # Convert the live config entries to samples. This eliminates
   # special handling for detecting a blank configuration.
-  sed -e 's:^:#&:g' -i 'nslink.conf'
+  sed -e 's:^[^#]:#&:g' -i 'nslink.conf'
+
+  # Fix makefile
+  sed -e 's:=/lib/modules:=/usr/lib/modules:g' -i 'Makefile'
 
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
@@ -120,7 +121,7 @@ prepare() {
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
   chmod 755 *.py
 
-  sed -e '# Cosmetic cleanup for simpler patch editing' \
+  sed -e '# Cosmetic cleanup for simpler patch editing, trim space at eol' \
       -e 's:\s\+$::g' \
       -e '# Switch to python2' \
       -e 's:/usr/bin/python:&2:g' \
@@ -136,8 +137,11 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j1 QUIET=0
   set +u
+  if ! make -s -j1 QUIET=0; then
+    warning 'a no such file or directory error means you need to reboot to load the updated kernel'
+    false
+  fi
 }
 
 package() {
@@ -159,7 +163,8 @@ package() {
 
   DESTDIR="${pkgdir}" \
   INIT='systemd' \
-  sh -e -u 'install.sh' "$(uname -r)" install
+  sh -e -u 'install.sh' "$(uname -r)" install | \
+  sed -e "s:${pkgdir}::g" # cleaner display
 
   # Fix paths in the service file
   sed -e 's:/sbin/:/usr/bin/:g' -i "${pkgdir}/usr/lib/systemd/system/nslink.service"
