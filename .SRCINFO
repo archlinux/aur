@@ -1,6 +1,6 @@
 pkgbase = clyde-server-git
 	pkgdesc = Download pacman packages nightly for cpcache
-	pkgver = r19.04503d2
+	pkgver = r24.77de0a8
 	pkgrel = 1
 	url = https://github.com/nroi/clyde-server
 	arch = any
