@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 17.6
+	pkgver = 18.0a1
 	pkgrel = 1
 	url = https://github.com/xbmc/xbmc
 	arch = i686
@@ -53,8 +53,10 @@ pkgbase = kodi-devel
 	makedepends = zip
 	makedepends = mesa
 	makedepends = libcrossguid
-	source = kodi-17.6-Krypton.tar.gz::https://github.com/xbmc/xbmc/archive/17.6-Krypton.tar.gz
-	sha512sums = 1f1ba91e6129ab423f9ad47b63d7bb75775dbf18638a96413a572aaa790f4f0d738ca35486513e158a7f55d501f78f08dd9d68aabe2fbb80a729c6091b264111
+	makedepends = fmt
+	makedepends = rapidjson
+	source = kodi-18.0a1-Leia.tar.gz::https://github.com/xbmc/xbmc/archive/18.0a1-Leia.tar.gz
+	sha512sums = 2e1648ca9e9ddae8a723d1ac554091d03925bab095399ff8808d24c1264fb5f6c6398a8b29c28840085795a41907e9fce9dfb11ed9144f1ba5d9d42ad9cb1f4e
 
 pkgname = kodi-devel
 	pkgdesc = A software media player and entertainment hub for digital media

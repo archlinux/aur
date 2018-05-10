@@ -24,8 +24,8 @@
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 _pkgname=kodi
-pkgver=17.6
-_codename=Krypton
+pkgver=18.0a1
+_codename=Leia
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/xbmc"
@@ -38,10 +38,10 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
   'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid'
+  'mesa' 'libcrossguid' 'fmt' 'rapidjson'
 )
 source=("$_pkgname-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('1f1ba91e6129ab423f9ad47b63d7bb75775dbf18638a96413a572aaa790f4f0d738ca35486513e158a7f55d501f78f08dd9d68aabe2fbb80a729c6091b264111')
+sha512sums=('2e1648ca9e9ddae8a723d1ac554091d03925bab095399ff8808d24c1264fb5f6c6398a8b29c28840085795a41907e9fce9dfb11ed9144f1ba5d9d42ad9cb1f4e')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -50,11 +50,12 @@ prepare() {
 
 build() {
   cd kodi-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
-    ../"xbmc-$pkgver-$_codename"/project/cmake
+    ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
 }
@@ -98,9 +99,9 @@ package_kodi-devel() {
   cd kodi-build
   # install eventclients
   for _cmp in ${_components[@]}; do
-  DESTDIR="$pkgdir" /usr/bin/cmake \
-    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-     -P cmake_install.cmake
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
   done
 
   # Licenses
