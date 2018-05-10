@@ -4,7 +4,7 @@ pkgname_=graalpython
 pkgname=${pkgname_}-bin
 pkgver_=1.0.0-rc1
 pkgver=${pkgver_/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graal based, high-performance implementation of the Python language (early development)'
 arch=('x86_64')
 url='https://github.com/graalvm/graalpython'
@@ -20,7 +20,7 @@ sha256sums=('19bafeda777a5522d430629ff2573aeaf9aa280a3475acc82bad354513c469ee')
 package() {
     local file eq permissions mode name target
 
-    mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/"
+    mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/" "$pkgdir/usr/bin/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/
 
     printf '\n' >> META-INF/permissions
@@ -55,4 +55,6 @@ package() {
     done < META-INF/symlinks
 
     install -Dm644 jre/languages/python/GraalCE_Python_license_3rd_party_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
 }
