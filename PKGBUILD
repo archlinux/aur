@@ -1,8 +1,9 @@
-# Maintainer: Alessandro Pazzaglia <jackdroido at gmail dot com>
+# Maintainer: Thomas Quillan <tjquillan@gmail.com>
+# Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 
 pkgname=pyinstaller
 _pyname=PyInstaller
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
@@ -16,11 +17,9 @@ optdepends=(
     'upx: executable compression support'
 )
 source=(
-    "https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.bz2"
+    "https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz"
 )
-sha256sums=(
-    'f08ca806bc26e62034bca181a4b85de22568a3d39bdb062f05927c6e86c2a48c'
-)
+sha256sums=('715f81f24b1ef0e5fe3b3c71e7540551838e46e9de30882aa7c0a521147fd1ce')
 options=('!strip')
 
 package() {
