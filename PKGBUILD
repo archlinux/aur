@@ -1,13 +1,13 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=benchmark
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A microbenchmark support library, by Google"
 arch=('any')
 url="https://github.com/google/benchmark"
 license=('Apache')
-depends=()
-makedepends=('cmake')
+depends=('gcc-libs')
+makedepends=('cmake' 'gtest' 'gmock')
 
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('616f252f37d61b15037e3c2ef956905baf9c9eecfeab400cb3ad25bae714e214')
