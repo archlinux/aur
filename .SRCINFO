@@ -1,0 +1,13 @@
+pkgbase = python-validate_email-git
+	pkgdesc = Python library that checks if an email is valid, properly formatted and really exists
+	pkgver = r39.eaf2668
+	pkgrel = 1
+	url = https://github.com/syrusakbary/validate_email
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	source = git+https://github.com/syrusakbary/validate_email.git
+	sha256sums = SKIP
+
+pkgname = python-validate_email-git
+
