@@ -21,7 +21,7 @@ build() {
 }
 
 package_python-geocoder() {
-  depends=('flake8' 'python-nose' 'python-tox' 'python-requests' 'python-ratelim-git')
+  depends=('flake8' 'python-nose' 'python-tox' 'python-requests')
   provides=('python-geocoder-git')
   conflicts=('python-geocoder-git')
   cd ${_gitname}
@@ -31,7 +31,7 @@ package_python-geocoder() {
 }
 
 package_python2-geocoder() {
-  depends=('python2-flake8' 'python2-nose' 'python2-tox' 'python2-requests' 'python2-ratelim-git')
+  depends=('python2-flake8' 'python2-nose' 'python2-tox' 'python2-requests')
   provides=('python2-geocoder-git')
   conflicts=('python2-geocoder-git')
   cd ${_gitname}
