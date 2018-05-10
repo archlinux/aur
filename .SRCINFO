@@ -1,0 +1,22 @@
+pkgbase = tytools
+	pkgdesc = GUI and command-line tools to manage Teensy devices
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = http://github.com/Koromix/tytools
+	arch = x86_64
+	arch = i686
+	license = custom:Unlicense
+	makedepends = git
+	makedepends = imagemagick
+	depends = teensyduino
+	depends = libudev.so
+	depends = qt5-base
+	provides = tytools
+	provides = ty
+	conflicts = ty
+	conflicts = teensytools
+	source = https://github.com/Koromix/tytools/archive/v0.8.8.tar.gz
+	sha256sums = ce9dfc7eb0db2982b3a3de5f3b20851baf107e9c3c139a08e48afd4af123c0ab
+
+pkgname = tytools
+
