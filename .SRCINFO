@@ -1,16 +1,14 @@
 pkgbase = mirage
 	pkgdesc = A simple GTK+ Image Viewer
-	pkgver = 0.9.5.2
-	pkgrel = 4
+	pkgver = 1.0_pre1
+	pkgrel = 1
 	url = https://sourceforge.net/projects/mirageiv.berlios/
 	arch = x86_64
 	license = GPL
 	depends = pygtk
 	depends = desktop-file-utils
-	source = http://downloads.sourceforge.net/project/mirageiv.berlios/mirage-0.9.5.2.tar.bz2
-	source = mirage-0.9.5.2-glib241-init-workaround.patch
-	md5sums = 92191a4496b0a50486ed7299baf6729f
-	md5sums = 1315594c262c23079e46d0b6a9896bfd
+	source = http://downloads.sourceforge.net/project/mirageiv.berlios/mirage-1.0_pre1.tar.bz2
+	md5sums = dc2f2036a4b1d65c75575b724c0bb22f
 
 pkgname = mirage
 
