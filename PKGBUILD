@@ -5,7 +5,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=fdclone
-pkgver=3.01e
+pkgver=3.01f
 pkgrel=1
 pkgdesc="Ncurses file and directory management tool"
 arch=('i686' 'x86_64')
@@ -14,10 +14,11 @@ license=('custom')
 depends=('ncurses')
 makedepends=('sed')
 optdepends=(unzip lha p7zip tar)
+conflicts=('fd')
 backup=("etc/$pkgname/fd2rc")
 options=(!emptydirs)
 source=(http://www.unixusers.net/src/fdclone/FD-$pkgver.tar.gz)
-sha256sums=('0ddabfdbab6c26fb54fc0d84ea9203ac5f29ea3f99b39f13a4f4537b2bd9c300')
+md5sums=('053f9825cf98816cacf70107351b2034')
 _pkgname=$(echo ${pkgname^^} | sed 's/CLONE//g')
 
 prepare() {
