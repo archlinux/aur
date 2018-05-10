@@ -56,5 +56,5 @@ package() {
 
     install -Dm644 jre/languages/ruby/GraalCE_Ruby_license_3rd_party_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    ln -s ../../usr/lib/jvm/java-8-graal/bin/truffleruby "$pkgdir/usr/bin/"
+    ln -s ../lib/jvm/java-8-graal/bin/truffleruby "$pkgdir/usr/bin/"
 }
