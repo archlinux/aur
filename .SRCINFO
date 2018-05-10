@@ -4,6 +4,7 @@ pkgbase = lzbench
 	pkgrel = 1
 	url = https://github.com/inikep/lzbench
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	depends = gcc-libs
 	conflicts = lzbench-git
