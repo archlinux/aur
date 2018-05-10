@@ -1,14 +1,15 @@
 [Unit]
-Description=XMRig Daemon for %i
+Description=XMRig AMD Daemon for %i
 After=network.target
 
 [Service]
-User=xmrig
-Group=xmrig
 Type=forking
 ExecStart=/usr/bin/xmrig-amd -c %i.conf -B
 WorkingDirectory=/etc/xmrig-amd
-Restart=always
+Restart=on-failure
+RestartSec=20s
+StartLimitInterval=30min
+StartLimitBurst=30
 
 [Install]
 WantedBy=multi-user.target
