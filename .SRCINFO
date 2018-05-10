@@ -1,6 +1,6 @@
 pkgbase = insteadman
 	pkgdesc = Manager for INSTEAD interpreter.
-	pkgver = 3.0.9
+	pkgver = 3.0.10
 	pkgrel = 1
 	url = https://github.com/jhekasoft/insteadman3
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = insteadman
 	license = MIT
 	makedepends = go
 	depends = instead
-	source = https://github.com/jhekasoft/insteadman3/archive/v3.0.9.tar.gz
-	sha256sums = 403ee9ee7ed780665089786f464dff9e3d76b16efd7e836aeaad3416bb0142ef
+	source = https://github.com/jhekasoft/insteadman3/archive/v3.0.10.tar.gz
+	sha256sums = 665418e0611900553776efc78190e07b087ad411cf481323e35ed47ec46483e8
 
 pkgname = insteadman
 
