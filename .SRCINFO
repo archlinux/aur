@@ -1,0 +1,24 @@
+pkgbase = python-yahoofinancials
+	pkgdesc = Pull fundamental and technical stock data from Yahoo Finance by web scraping
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/JECSand/yahoofinancials
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-pytz
+	source = https://github.com/JECSand/yahoofinancials/archive/0.5.tar.gz
+	sha256sums = 1e3e40be495be11935121b9e756bc6b8768a90849888ff428ab3e98aae77d9e8
+
+pkgname = python-yahoofinancials
+
+pkgname = python2-yahoofinancials
+	depends = python2
+	depends = python2-requests
+	depends = python2-beautifulsoup4
+	depends = python2-pytz
+
