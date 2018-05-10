@@ -9,10 +9,10 @@ pkgdesc="Break Out Of Hareka's Underground, a roguelike game."
 arch=('i686' 'x86_64')
 url='https://github.com/anaseto/boohu'
 license=('ISC')
-depends=('glibc')
+depends=()
 makedepends=('git' 'go')
 provides=('boohu')
-#conflicts=()
+#conflicts=('boohu')
 source=("$pkgname::git+https://github.com/anaseto/boohu.git")
 md5sums=('SKIP')
 
