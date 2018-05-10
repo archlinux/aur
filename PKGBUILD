@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=18.04.0
+pkgver=18.04.1
 pkgrel=1
 pkgdesc="A library for interfacing with CDs"
 url='https://www.kde.org/applications/multimedia/'
@@ -12,7 +12,7 @@ license=(GPL LGPL FDL)
 depends=(solid ki18n kcoreaddons phonon-qt5)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('ebf5a46fc1e671591c4b8ae7fc226aca8c730625bcf1d9e4006d9d2d56bd8105'
+sha256sums=('61a320f067163c528f2bfc98c6b5a2c538227b23c3ca8dc8121ed1cd7f1aeb8b'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
