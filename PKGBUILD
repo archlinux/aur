@@ -17,7 +17,7 @@ source=("$_svnname::svn://svn.code.sf.net/p/quake2xp/code/trunk"
 	'yandex://q2xpMdl.pkx'
 	'yandex://q2xpMusic.pkx'
 	'yandex://q2xpTex0.pkx'
-	'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full.exe'
+	'http://ftp.mancubus.net/pub/idstuff/quake2/q2-3.20-x86-full.exe'
 	'keys-guard.patch')
 DLAGENTS+=("yandex::/usr/bin/echo %u - You need to download the files from https://yadi.sk/d/RP5yRSM-sx5ck/baseq2.")
 sha256sums=('SKIP'
