@@ -1,7 +1,7 @@
 pkgbase = sniffglue
 	pkgdesc = Secure multithreaded packet sniffer
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kpcyrd/sniffglue
 	arch = i686
 	arch = x86_64

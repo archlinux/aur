@@ -2,7 +2,7 @@
 
 pkgname=sniffglue
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure multithreaded packet sniffer"
 url="https://github.com/kpcyrd/sniffglue"
 depends=('libpcap' 'libseccomp')
@@ -22,12 +22,12 @@ sha512sums=('e33c600ea915a3a667b1a231d888e2340eb979af3971edfb488f1a2174e12472d7a
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
