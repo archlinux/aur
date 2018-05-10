@@ -1,0 +1,16 @@
+pkgbase = python-pyswagger
+	pkgdesc = Python client for Swagger enabled REST APIs
+	pkgver = 0.8.37
+	pkgrel = 1
+	url = https://github.com/mission-liao/pyswagger
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-six
+	makedepends = python-pyaml
+	makedepends = python-validate_email-git
+	source = https://github.com/mission-liao/pyswagger/archive/v0.8.37.tar.gz
+	sha256sums = 7a84add6ce9fa04b193984099e1d778296b7bd860e378942ea4ceaaff34e8891
+
+pkgname = python-pyswagger
+
