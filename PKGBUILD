@@ -2,7 +2,7 @@
 
 _pkgname=auther
 pkgname=${_pkgname}-git
-pkgver=r28.d4ebf13
+pkgver=r31.d0725c0
 pkgrel=1
 pkgdesc="A cross-platform OTP token manager"
 arch=('x86_64')
