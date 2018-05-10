@@ -1,0 +1,13 @@
+pkgbase = sogoupinyin-skin-roulan
+	pkgdesc = An Elegant Skin For fcitx-sogoupinyin
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://pinyin.sogou.com/skins/detail/view/info/559973
+	arch = any
+	license = GPL
+	depends = fcitx-sogoupinyin
+	source = roulan-v0.9.tar.gz
+	md5sums = dfb0f91da85876b5286b548dc7708275
+
+pkgname = sogoupinyin-skin-roulan
+
