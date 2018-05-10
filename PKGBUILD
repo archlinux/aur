@@ -3,12 +3,12 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.23.0
-pkgrel=2
+pkgver=1.23.1
+pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-makedepends=('npm' 'nodejs>=8.0' 'nodejs<10.0' 'gulp' 'python2' 'git' 'yarn')
+makedepends=('npm' 'nodejs-lts-carbon' 'gulp' 'python2' 'git' 'yarn')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('vscode-oss' 'visual-studio-code-oss')
