@@ -63,9 +63,6 @@ prepare() {
   # NVIDIA driver compat
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
 
-  # https://bugs.archlinux.org/task/58153
-  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-  
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
 
