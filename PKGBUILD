@@ -23,8 +23,10 @@ mkdir -p  "${pkgdir}"/usr/share/pixmaps
 mkdir -p "${pkgdir}" ~/.local/share/
 install -Dm644 ../${pkgname}.desktop ${pkgdir}/usr/share/applications
 install -Dm644 ${srcdir}/${pkgname}.AppImage ~/.local/share/${pkgname}
-ln -sf ~/.local/share/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+install -Dm644 ../LaunchTradeDash ~/.local/share/LaunchTradeDash
+ln -sf ~/.local/share/LaunchTradeDash ${pkgdir}/usr/bin/${pkgname}
 chmod +x ~/.local/share/${pkgname}
+chmod +x ~/.local/share/LaunchTradeDash
 install -Dm644 ../${pkgname}.png ${pkgdir}/usr/share/pixmaps
  
 }
