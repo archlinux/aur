@@ -3,13 +3,13 @@
 
 pkgname=code-git
 pkgdesc='Microsoft Code for Linux, Open Source version from git (vscode)'
-pkgver=1.16.0.r9165.g15cec5d94a
+pkgver=1.16.0.r10322.geced4d1197
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-makedepends=('npm' 'nodejs>=8.0' 'gulp' 'python2' 'git' 'yarn')
-depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
+makedepends=('npm' 'nodejs>=8.0' 'nodejs<10.0' 'gulp' 'python2' 'git' 'yarn')
+depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
@@ -17,11 +17,13 @@ provides=('visual-studio-code-git')
 source=("git+https://github.com/Microsoft/vscode"
         "${pkgname}.desktop"
         "startup_script.patch"
-        "product_json.patch")
+        "product_json.patch"
+        "code-liveshare.patch")
 sha256sums=('SKIP'
             'dd212d343a02466f04bd9def162428ac997b53c4c839cea220ab61382d01f538'
             '7447807230c09b80529e5cde4a1abfbb687937b16790b77a227ae39ba4c603ce'
-            '2a26fd93719970069da0a326b5ed77592234ffc6d05587b4d5bb8242c7f4c9b1')
+            '2a26fd93719970069da0a326b5ed77592234ffc6d05587b4d5bb8242c7f4c9b1'
+            '90b8915d8195546088e845f3205fb965e941561d309c8b462bb0b22a159e041c')
 
 case "$CARCH" in
     i686)
@@ -54,6 +56,9 @@ prepare() {
     local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
     sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
         -i product.json
+
+    # See https://github.com/MicrosoftDocs/live-share/issues/262 for details
+    patch -p1 -i "${srcdir}/code-liveshare.patch"
 }
 
 build() {
