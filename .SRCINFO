@@ -1,0 +1,19 @@
+pkgbase = vnote
+	pkgdesc = A Vim-inspired note-taking application, especially for Markdown.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://tamlok.github.io/vnote/
+	arch = any
+	license = MIT
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-svg
+	source = https://github.com/tamlok/vnote/archive/v1.15.tar.gz
+	source = hoedown.zip::https://github.com/tamlok/hoedown/archive/e63d2160a7d9895defc253d933b58a83ac54f81a.zip
+	source = marked.zip::https://github.com/markedjs/marked/archive/38f1727ffee0820975677027b8968bc1954e6637.zip
+	sha256sums = 42c355ae7a41eae61a5bac6037e4a5e8c866ad3224690f79b749a5674a6ddc83
+	sha256sums = 85d8c673ee4a3e8f595db3021b238642aede1727965afa13666a29a43a0eb846
+	sha256sums = 602c2e7fa2ab48d3aefe33cafa08bfdebbc619f4a652fde1ebad40f19c34a886
+
+pkgname = vnote
+
