@@ -27,10 +27,10 @@ md5sums=("SKIP")
 
 pkgver()
 {
-  cd "${_pkgname}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-} 
-
+  cd "$_pkgname"
+  git shortlog | head -n 1 | tr -Cd "[:digit:]"
+}
+ 
 package()
  {
   cd "$_pkgname"
