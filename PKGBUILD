@@ -1,7 +1,7 @@
 # Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 
 pkgname=ubuntu-mate-icon-themes
-pkgver=18.04.7
+pkgver=18.04.11
 pkgrel=1
 pkgdesc='The official icon themes for Ubuntu MATE'
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 optdepends=('ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE'
             'mate-icon-theme: MATE default icon theme')
 groups=('mate-extra')
-source=("https://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
-sha512sums=('a9d42a840bbf0a63e1f7242aae904ed53656be3fd0053b832ffa00d2f2f01b2d7da7111b4628994c34bbbe785b617667e4e73ac9849ba66fc61572c395dde70b')
+source=("https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
+sha512sums=('aa81f511be74a5aff856268116f341a196b745933831245bd174113e4c4d90c6a52ff929901eba0ac29f1715184d6167d73057b4416f770be035992fd8ccca3b')
 
 package() {
     tar xf data.tar.xz
