@@ -17,7 +17,6 @@ pkgname = python-geocoder
 	depends = python-nose
 	depends = python-tox
 	depends = python-requests
-	depends = python-ratelim-git
 	provides = python-geocoder-git
 	conflicts = python-geocoder-git
 
@@ -26,7 +25,6 @@ pkgname = python2-geocoder
 	depends = python2-nose
 	depends = python2-tox
 	depends = python2-requests
-	depends = python2-ratelim-git
 	provides = python2-geocoder-git
 	conflicts = python2-geocoder-git
 
