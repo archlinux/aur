@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=0.4.4.r27.g6342674
+pkgver=0.4.4.r31.g01d7cbf
 pkgrel=1
 epoch=1
 
@@ -30,6 +30,7 @@ package() {
   sed -i 's/==/>=/g' setup.py
   sed -i 's/multidict<2,/multidict/' setup.py
   sed -i 's/protobuf>=3.1.0,<3.2.0/protobuf>=3.1.0/' setup.py
+  sed -i 's/async-timeout>=2,<3/async-timeout>=2,<4/' setup.py
   
   python setup.py install --prefix=/usr --root="${pkgdir}"
   find "${pkgdir}/" -name '*.pyc' -delete
