@@ -34,7 +34,7 @@
 @@ -10,5 +10,5 @@ URL: http://openil.sourceforge.net
  Requires: IL ILU
  Cflags: -I${includedir}
- Libs: -L${libdir} -lILUT
--Libs.private: -lIL -lILU
-+Libs.private: -lIL -lILU -lGL -lGLU
+-Libs: -L${libdir} -lILUT
++Libs: -L${libdir} -lILUT -lGL -lGLU
+ Libs.private: -lIL -lILU
  
