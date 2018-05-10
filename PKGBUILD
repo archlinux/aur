@@ -14,7 +14,6 @@ replaces=('openerp')
 makedepends=('python-setuptools')
 depends=(
   'nodejs-less'
-  'postgresql-libs'
   'wkhtmltopdf'
   'python'
   'python-babel'
@@ -58,24 +57,26 @@ depends=(
 )
 
 source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
+        odoo.conf
         odoo.confd
         odoo.service
-        odoo.conf)
+        odoo.sysusers)
 md5sums=('a225c04143da0da3200ba151c8921753'
+         '863418f31f0fb982cde0008fa63f35f0'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
-         '863418f31f0fb982cde0008fa63f35f0')
+         '720b7b8c3df3142dfd0383acd1c9e9b4')
 
 backup=('etc/odoo/odoo.conf')
-install=odoo.install
 
 package()
 {
   cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
   python setup.py install --root="${pkgdir}"
-  mkdir ${pkgdir}/etc/{conf.d,odoo} -p
-  mkdir ${pkgdir}/usr/lib/systemd/system/ -p
+  mkdir -p ${pkgdir}/etc/{conf.d,odoo}
+  mkdir -p ${pkgdir}/usr/lib/systemd/system
+  install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
   install -Dm 644 ${srcdir}/odoo.confd ${pkgdir}/etc/conf.d/odoo
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
-  install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
+  install -Dm 644 ${srcdir}/odoo.sysusers ${pkgdir}/usr/lib/sysusers.d/odoo.conf
 }
