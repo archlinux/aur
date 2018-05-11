@@ -6,7 +6,7 @@
 
 pkgname=mutant
 pkgrel=1
-pkgver=0.1.9
+pkgver=0.1.11
 _packager_pkgver=0.1.5
 pkgdesc="Linux Spotlight Productivity launcher, but more customizable."
 url="https://github.com/m0n0l0c0/mutant"
@@ -29,7 +29,7 @@ source=(
   "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v$_packager_pkgver.tar.gz"
 )
 sha256sums=(
-  '1eba3c25006dbf16de9a77428d4e4a113494842e2fed338f65cdc5177beb1201'
+  'd01df56c811df074ff938a65a952cc10b33c88932a697414f4615a93c26bdc48'
   '0029373d851cd86f01e97f452826d84f45646a30c569ec72c3653fa85fecd7ea'
 )
 
@@ -37,10 +37,10 @@ package() {
   # Prepare executable files
   #chmod 755 -R "$srcdir/mutant-packager-$_packager_pkgver/"
   # Launch npm installer
-  echo "==> Launch installer"
+  msg2 "Launch installer"
   "$srcdir/mutant-packager-$_packager_pkgver/install.sh" "$srcdir/Mutant-$pkgver"
   # Generate theme and list apps
-    echo "==> Search theme..."
+    msg2 "Search theme..."
     # Default theme in most distros
     theme="Adwaita"
     # Guess settings agent
@@ -49,19 +49,19 @@ package() {
     else
       theme="$(gsettings get org.gnome.desktop.interface icon-theme | sed -e 's/'\''/"/g')"
     fi
-    echo "==> Found: $theme"
+    msg2 "Found: $theme"
     # Save theme
-    echo "{\"theme\": $theme }" > "$srcdir/Mutant-$pkgver/misc/theme.json"
-    echo "==> Compile..."
+    msg2 "{\"theme\": $theme }" > "$srcdir/Mutant-$pkgver/misc/theme.json"
+    msg2 "Compile..."
     # Make compiler executable
     chmod 755 "$srcdir/mutant-packager-$_packager_pkgver/gtkcc.sh"
     "$srcdir/mutant-packager-$_packager_pkgver/gtkcc.sh" "$srcdir/mutant-packager-$_packager_pkgver/listApps"
-    echo "==> Move"
+    msg2 "Move"
     # Copy listApps to dst folder
     mv "$srcdir/mutant-packager-$_packager_pkgver/listApps" "$srcdir/Mutant-$pkgver/apps/native/listApps"
     # Make listApps executable
     chmod 755 "$srcdir/Mutant-$pkgver/apps/native/listApps"
-    echo "==> Done"
+    msg2 "Done"
   
   # Make the program itself
   "$srcdir/mutant-packager-$_packager_pkgver/mkDist.sh" "$srcdir/Mutant-$pkgver"
@@ -77,3 +77,4 @@ package() {
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
 }
+
