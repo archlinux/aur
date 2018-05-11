@@ -1,7 +1,7 @@
 # Maintainer: Craig Barnes <cr@igbarn.es>
 
 pkgname='dte'
-pkgver='1.6'
+pkgver='1.7'
 pkgrel='1'
 pkgdesc='A small and easy to use console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -16,8 +16,8 @@ source=(
 )
 
 sha256sums=(
-    '07a1f39831aa26c23ff635ab440983d84162156da199eaa06f0cb75149a9bbf4'
-    'c39d423d9ec963e9c01ecb25501e47904a5cafb8ae2d826e2f968ab9633899f6'
+    '6cd070037d9c6f4b4f3b5bedd78183dde5f8e79811ccdf04b0e7abafe5fdc33d'
+    '8d0ea0c123b250405c4e0152bd7a6558d75fb775b16f617edda50a0ac8994994'
 )
 
 build() {
