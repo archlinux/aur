@@ -15,7 +15,7 @@ _json_export=ON
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -30,7 +30,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 [[ $_json_export == ON ]] && makedepends+=('mingw-w64-reflective-rapidjson')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('64aa5d43277c3e1aacf197f67aa642649727c271be49599ac7c6af5f9111f7e8')
+sha256sums=('ba74778d4b556159bcdf61a5b739b97f61e0dfbaea44ce0f63632ecb5baa923a')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -47,7 +47,7 @@ build() {
       -DENABLE_JSON_EXPORT:BOOL="${_json_export}" \
       -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
       -DREFLECTION_GENERATOR_TRIPLE:STRING="${_arch}" \
-      -DREFLECTION_GENERATOR_INCLUDE_DIRECTORIES="/usr/lib/gcc/${_arch}/${gcc_version}/include;/usr/${_arch}/include/c++/${gcc_version}/${_arch};/usr/${_arch}/include" \
+      -DREFLECTION_GENERATOR_INCLUDE_DIRECTORIES="/usr/lib/gcc/${_arch}/${gcc_version}/include;/usr/${_arch}/include/c++/${gcc_version};/usr/${_arch}/include/c++/${gcc_version}/${_arch};/usr/${_arch}/include" \
       ../
     make
     popd
