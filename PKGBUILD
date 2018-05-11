@@ -1,6 +1,6 @@
 pkgname=cnijfilter2
 pkgver=5.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
@@ -8,18 +8,25 @@ license=('GPL' 'custom:canon')
 depends=('cups' 'libxml2')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
-source=("http://gdlp01.c-wss.com/gds/0/0100009490/01/$pkgname-source-$pkgver-$pkgrel.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/0/0100009490/01/$pkgname-source-$pkgver-1.tar.gz")
 md5sums=('8dc22e5c8be78b6f069bb9d51dbbfefb')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
 build() {
-	cd "$pkgname-source-$pkgver-$pkgrel"
+	cd "$pkgname-source-$pkgver-1"
 
 	pushd cmdtocanonij2
 	./autogen.sh --prefix=/usr \
 		     --datadir=/usr/share \
 		     LDFLAGS="-L../../com/libs_bin$_arch"
+	make
+	popd
+
+	pushd cmdtocanonij3
+	./autogen.sh --prefix=/usr \
+		--datadir=/usr/share \
+		LDFLAGS="-L../../com/libs_bin$_arch"
 	make
 	popd
 
@@ -56,9 +63,13 @@ build() {
 }
 
 check() {
-	cd "$pkgname-source-$pkgver-$pkgrel"
+	cd "$pkgname-source-$pkgver-1"
 
 	pushd cmdtocanonij2
+	make check
+	popd
+
+	pushd cmdtocanonij3 
 	make check
 	popd
 
@@ -90,7 +101,7 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/cups/backend"
 	mkdir -p "$pkgdir/usr/share/cups/model"
 
-	cd "$pkgname-source-$pkgver-$pkgrel"
+	cd "$pkgname-source-$pkgver-1"
 
 	install -m644 com/ini/cnnet.ini "$pkgdir/usr/lib/bjlib2"
 	install -sm755 com/libs_bin$_arch/*.so.* "$pkgdir/usr/lib"
@@ -102,6 +113,10 @@ package() {
 	popd
 
 	pushd cmdtocanonij2
+	make DESTDIR="$pkgdir/" install
+	popd
+
+	pushd cmdtocanonij3 
 	make DESTDIR="$pkgdir/" install
 	popd
 
