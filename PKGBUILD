@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=3.3.r0.gf17120d11b
+pkgver=3.8.r0.g7280f7fb74
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -46,8 +46,10 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'samba'
     'opencl-headers'
+    'vulkan-headers'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -67,6 +69,7 @@ optdepends=(
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'cups'
     'samba'
     'dosbox'

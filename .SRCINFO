@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 3.3.r0.gf17120d11b
+	pkgver = 3.8.r0.g7280f7fb74
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -53,8 +53,11 @@ pkgbase = wine-git
 	makedepends = lib32-libxslt
 	makedepends = gst-plugins-base-libs
 	makedepends = lib32-gst-plugins-base-libs
+	makedepends = vulkan-icd-loader
+	makedepends = lib32-vulkan-icd-loader
 	makedepends = samba
 	makedepends = opencl-headers
+	makedepends = vulkan-headers
 	makedepends = fontconfig
 	makedepends = lib32-fontconfig
 	makedepends = lcms2
@@ -116,12 +119,14 @@ pkgbase = wine-git
 	optdepends = lib32-libxslt
 	optdepends = gst-plugins-base-libs
 	optdepends = lib32-gst-plugins-base-libs
+	optdepends = vulkan-icd-loader
+	optdepends = lib32-vulkan-icd-loader
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.3.r0.gf17120d11b
-	provides = bin32-wine=3.3.r0.gf17120d11b
-	provides = wine-wow64=3.3.r0.gf17120d11b
+	provides = wine=3.8.r0.g7280f7fb74
+	provides = bin32-wine=3.8.r0.g7280f7fb74
+	provides = wine-wow64=3.8.r0.g7280f7fb74
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
