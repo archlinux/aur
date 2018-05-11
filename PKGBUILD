@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Sumner Evans <sumner.evans98@gmail.com>
 
 pkgname="zsh-you-should-use"
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="ZSH plugin that reminds you to use existing aliases for commands you just typed"
 url="https://github.com/MichaelAquilina/zsh-you-should-use"
 arch=("any")
