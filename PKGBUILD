@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vmware
 _commit=6b7dc2f9304298e669e7ac97594b948d1476ae52 # master
-pkgver=xf86+video+vmware+13.0.2+69+g6b7dc2f
+pkgver=13.0.2+69+g6b7dc2f
 pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
@@ -24,7 +24,7 @@ validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (V
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/^xf86-video-vmware-//;s/-/+/g'
 }
 
 prepare() {
