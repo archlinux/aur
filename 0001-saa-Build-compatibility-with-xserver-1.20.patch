@@ -1,0 +1,33 @@
+From 7e5237dd08f2a469d0bc699cbcde763cc93c7407 Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 7 Nov 2017 15:42:59 -0500
+Subject: [PATCH xf86-video-vmware] saa: Build compatibility with xserver 1.20
+
+fbGetRotatedPixmap went away with 24bpp support, just treat it as NULL
+and we'll do the right thing.
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+ saa/saa.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/saa/saa.c b/saa/saa.c
+index be9520e..d956853 100644
+--- a/saa/saa.c
++++ b/saa/saa.c
+@@ -370,6 +370,11 @@ saa_op_reads_destination(CARD8 op)
+     }
+ }
+ 
++/* compatibility with xserver >= 1.20 */
++#ifndef fbGetRotatedPixmap
++#define fbGetRotatedPixmap(pGC) NULL
++#endif
++
+ static void
+ saa_validate_gc(GCPtr pGC, unsigned long changes, DrawablePtr pDrawable)
+ {
+-- 
+2.16.2
+
+
