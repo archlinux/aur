@@ -1,29 +1,32 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 
-pkgname=mingw-w64-rust-bin
 _pkgname=rust
-pkgver=1.25.0
+
+pkgname=mingw-w64-rust-bin
+pkgver=1.26.0
 pkgrel=1
-pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
-arch=('any')
-url='https://www.rust-lang.org/'
+pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
+arch=('x86_64')
+url="https://www.rust-lang.org"
 license=('MIT' 'Apache' 'custom')
-depends=('gcc-libs' 'curl' 'mingw-w64-crt<5.0.3.20180112' 'libgit2' 'mingw-w64-gcc')
+depends=('gcc-libs'
+         'curl'
+         'mingw-w64-crt<5.0.3.20180112'
+         'libgit2'
+         'mingw-w64-gcc')
 optdepends=('wine: for cargo test support')
-options=(!emptydirs staticlibs !strip)
-provides=("mingw-w64-rust=$pkgver")
+provides=("mingw-w64-rust=${pkgver}")
 conflicts=('mingw-w64-rust')
-replaces=('mingw-w64-rust')
-makedepends=()
+options=('!strip' 'staticlibs' '!buildflags')
 
 source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('c206124130a329d4199b1711a857b8661f8159744a6ac3ba944e50d0e1cbba03'
+sha256sums=('ca5436ae9fd7c7a942fe8af669bbb32d14050a68e91b68d1a0d318a9f7d68672'
             'SKIP'
-            'f427a9999622ff30f859580b6ac88cc236f370abbd7dda11466dfca296b96df3'
+            '01ea231e12e5fb34b6ff746b8365a87beb6fbce082c2c5519a51503decfe6bee'
             'SKIP'
-            'ed2a8cafd7dfd67274f18b63ac99d7a9bcff6562030edbf3d5e0dbdc4a4d1fcd'
+            '4f524a98df635e90e72cee14180cfbce36955c21e3986fa8680f37e0a0f4d585'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -72,6 +75,7 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
+  strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"lld
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
