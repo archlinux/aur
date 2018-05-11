@@ -17,24 +17,24 @@
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
 
-pkgver=2018.05.06.r3465.ga82a4a15b.4.16.5.1
-pkgrel=2
-makedepends=("linux-vfio-headers=4.16.5-1" "git" "spl-linux-vfio-git-headers")
+pkgver=2018.05.11.r3478.gbc5f51c5d.4.16.8.1
+pkgrel=1
+makedepends=("linux-vfio-headers=4.16.8-1" "git" "spl-linux-vfio-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2018.05.06.r3465.ga82a4a15b" "linux-vfio=4.16.5-1")
+depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2018.05.11.r3478.gbc5f51c5d" "linux-vfio=4.16.8-1")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.8 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.16.5-1-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.16.5-1-vfio/build
+                --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
+                --with-linux=/usr/lib/modules/4.16.8-1-vfio/build \
+                --with-linux-obj=/usr/lib/modules/4.16.8-1-vfio/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-vfio-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.5-1-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.8-1-vfio/Module.symvers
 }
