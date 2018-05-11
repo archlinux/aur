@@ -1,0 +1,17 @@
+pkgbase = python-scci-git
+	pkgdesc = Syndace's Common Crypto-Interfaces
+	pkgver = r20.3254847
+	pkgrel = 1
+	url = https://github.com/Syndace/python-scci
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-pynacl
+	provides = python-scci
+	conflicts = python-scci
+	source = python-scci::git+https://github.com/Syndace/python-scci.git
+	sha256sums = SKIP
+
+pkgname = python-scci-git
+
