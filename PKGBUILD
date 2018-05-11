@@ -2,7 +2,7 @@
 
 pkgname=memry
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="mem'ry, tar pipe curl"
 url='https://github.com/kpcyrd/memry'
 arch=('i686' 'x86_64')
@@ -19,7 +19,6 @@ sha512sums=('fccc5c284ea4134a204069218795346e0888a780dae6af72ee3add51c84649c8945
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
   node-gyp rebuild -C "${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/scrypt"
-  rm -r "${pkgdir}/usr/etc"
 
   install -Dm644 package/contrib/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 memry-sysuser.conf "${pkgdir}/usr/lib/sysusers.d/memry.conf"
