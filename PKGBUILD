@@ -36,4 +36,6 @@ package() {
 	install -Dm 0644 usr/share/applications/wwphone.desktop \
 	 	"${pkgdir}"/usr/share/applications/wwphone.desktop
 	sed -e 's|/usr/local/bin|/usr/bin|' -i "${pkgdir}"/usr/share/applications/wwphone.desktop
+	sed -e 's|Exec=/usr/bin/wwphone|Exec=/usr/bin/wwphone %u|' -i "${pkgdir}"/usr/share/applications/wwphone.desktop
+	sed -e '$aMimeType=x-scheme-handler/tel;' -i "${pkgdir}"/usr/share/applications/wwphone.desktop
 }
