@@ -1,7 +1,7 @@
 pkgbase = yp-tools
 	pkgdesc = Linux NIS Tools
 	pkgver = 4.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/thkukuk/yp-tools
 	install = yp-tools.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = yp-tools
 	md5sums = b2beee519500c48f27570958b1d6cb86
 	md5sums = 5a78cd2218936241133e5f61383a2dc8
 	md5sums = 74298e047121f528a2a5c221afd783ab
-	md5sums = cae542d8c60a5aec9699049ddea8f66b
+	md5sums = d8a5a4634c152423c4969002e8ba590d
 	depends_i686 = libnsl
 	depends_x86_64 = libnss_nis
 

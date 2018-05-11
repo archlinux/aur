@@ -7,7 +7,7 @@
 
 pkgname=yp-tools
 pkgver=4.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux NIS Tools'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/yp-tools'
@@ -45,4 +45,4 @@ package() {
 md5sums=('b2beee519500c48f27570958b1d6cb86'
          '5a78cd2218936241133e5f61383a2dc8'
          '74298e047121f528a2a5c221afd783ab'
-         'cae542d8c60a5aec9699049ddea8f66b')
+         'd8a5a4634c152423c4969002e8ba590d')
