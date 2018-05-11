@@ -1,7 +1,7 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 
 pkgname=rofi-emoji
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Rofi plugin for selecting emojis"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('rofi' 'xsel')
 
 source=("https://github.com/Mange/rofi-emoji/archive/v${pkgver}.tar.gz")
-sha256sums=('2d23c70ba684895f80887ec71a018d58860a4647ea55060f3be0489aace0b188')
+sha256sums=('d12d36de61d549c5f522a7046e95ca1f2b5fa9352c4b2333c01cae9ed296bb55')
 
 build() {
   cd "$pkgname-$pkgver"
