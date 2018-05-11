@@ -13,8 +13,7 @@ license=('GPL3' 'LGPL3')
 depends=('babl>=0.1.26' 'libspiro' 'json-glib')
 makedepends=('git' 'intltool' 'python2' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
-             'libtiff' 'suitesparse' 'gobject-introspection'
-	     'base-devel')
+             'libtiff' 'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'librsvg: for using the svg plugin'
@@ -24,7 +23,7 @@ optdepends=('openexr: for using the openexr plugin'
             'suitesparse: matting-levin plugin'
             'lua: lua plugin')
 provides=("gegl=${pkgver}")
-conflicts=('gegl>=0.3.0')
+conflicts=('gegl')
 options=(!libtool)
 source=(git://git.gnome.org/gegl)
 md5sums=('SKIP')

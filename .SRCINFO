@@ -20,7 +20,6 @@ pkgbase = gegl-git
 	makedepends = libtiff
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	makedepends = base-devel
 	depends = babl>=0.1.26
 	depends = libspiro
 	depends = json-glib
@@ -33,7 +32,7 @@ pkgbase = gegl-git
 	optdepends = suitesparse: matting-levin plugin
 	optdepends = lua: lua plugin
 	provides = gegl=0.4.0.8
-	conflicts = gegl>=0.3.0
+	conflicts = gegl
 	options = !libtool
 	source = git://git.gnome.org/gegl
 	md5sums = SKIP
