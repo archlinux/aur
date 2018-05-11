@@ -7,41 +7,57 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
-pkgver=2.26
-pkgrel=4
+pkgver=2.27
+pkgrel=3
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=4.12.7-1")
-makedepends=("${_target}-gcc-stage2>=7.2.0-3" gperf)
+depends=("${_target}-linux-api-headers>=4.16.1-1")
+makedepends=("${_target}-gcc-stage2>=8.1.0-1" gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
-_commit=58270c0049404ef2f878fdd45df55f17f0b8c1f7
-source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
-        glibc-${_commit}.patch
-        0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch
-        0002-x86-Add-x86_64-to-x86-64-HWCAP-BZ-22093.patch)
-md5sums=('102f637c3812f81111f48f2427611be1'
+_commit=23158b08a0908f381459f273a984c6fd328363cb
+#source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
+source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
+        bz20338.patch)
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8) # Carlos O'Donell
+md5sums=('898cd5656519ffbc3a03fe811dd89e82'
          'SKIP'
-         '7ce099a4060f59b7b7dd5ca66605f4e8'
-         'cbc073315c00b03898b7fc614274d6b3'
-         'bd9b13f3294b6357baa809e4416b9f44')
-validpgpkeys=('BC7C7372637EC10C57D7AA6579C43DFBF1CF2187')  # Siddhesh Poyarekar
+         'dc0d3ad59aeaaf591b085a77de6e03e9')
 
 prepare() {
-  mkdir glibc-build
-  cd glibc-$pkgver
+  mkdir -p glibc-build
 
-  patch -p1 -i "$srcdir/glibc-$_commit.patch"
+  [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc
+  cd glibc
 
-  patch -p1 -i "$srcdir/0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch"
-  patch -p1 -i "$srcdir/0002-x86-Add-x86_64-to-x86-64-HWCAP-BZ-22093.patch"
+  local i; for i in ${source[@]}; do
+    case ${i%::*} in
+      *.patch)
+        msg2 "Applying ${i}"
+        patch -p1 -i "$srcdir/${i}"
+        ;;
+    esac
+  done
 }
 
 build() {
+  local _configure_flags=(
+      --prefix=/
+      --with-headers=/usr/${_target}/include
+      --enable-add-ons
+      --enable-bind-now
+      --enable-lock-elision
+      --disable-multi-arch
+      --enable-stack-protector=strong
+      --enable-stackguard-randomization
+      --disable-profile
+      --disable-werror
+  )
+
   cd glibc-build
 
   echo "slibdir=/lib" >> configparms
@@ -59,20 +75,9 @@ build() {
   export RANLIB=${_target}-ranlib
 
   "$srcdir/glibc-$pkgver/configure" \
-      --prefix=/ \
       --libdir=/lib \
       --libexecdir=/lib \
-      --with-headers=/usr/${_target}/include \
-      --enable-add-ons \
-      --enable-bind-now \
-      --enable-lock-elision \
-      --disable-multi-arch \
-      --enable-obsolete-nsl \
-      --enable-obsolete-rpc \
-      --enable-stack-protector=strong \
-      --enable-stackguard-randomization \
-      --disable-profile \
-      --disable-werror \
+      ${_configure_flags[@]} \
       --target=${_target} \
       --host=${_target} \
       --build=${CHOST}
