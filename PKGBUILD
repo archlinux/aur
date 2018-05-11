@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
@@ -17,14 +17,13 @@ md5sums=(
 depends=(
 	'pyalpm'
 	'git'
-	'fakeroot'
 )
 conflicts=('pikaur')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
-	git describe | sed 's/^v//;s/-/+/g' || echo 0.0.1
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo 0.0.1
 }
 
 build() {
@@ -36,8 +35,9 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-	for lang in fr ru pt de is; do
-		install -Dm644 "locale/${lang}.mo" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
+	for langmo in $(cd ./locale && ls ./*.mo); do
+		lang=$(sed -e 's/.mo$//' <<< "${langmo}")
+		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
 	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cp -r ./packaging/* "${pkgdir}"
