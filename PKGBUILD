@@ -9,7 +9,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.2.r11145.gb6adecdee
+pkgver=0.8.2.r11225.g141d81d09
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -69,11 +69,13 @@ source=(
         'caffe2-submodule-python-six'::'git+https://github.com/benjaminp/six.git'
         'caffe2-submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
         'caffe2-submodule-onnx'::'git+https://github.com/onnx/onnx.git'
-        'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep.git'
         'caffe2-submodule-cereal'::'git+https://github.com/USCiLab/cereal'
         'caffe2-submodule-onnx-tensorrt'::'git+https://github.com/onnx/onnx-tensorrt'
+        'caffe2-submodule-sleef'::'git+https://github.com/shibatch/sleef'
+        'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -108,8 +110,8 @@ prepare() {
     local _submodule_list="tbb catch nanopb pybind11 cub eigen googletest nervanagpu \
                            benchmark protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
-                           python-enum python-peachpy python-six ComputeLibrary onnx ideep \
-                           cereal onnx-tensorrt"
+                           python-enum python-peachpy python-six ComputeLibrary onnx cereal \
+                           onnx-tensorrt sleef ideep"
                            
     git submodule init
     
@@ -199,14 +201,21 @@ build() {
         -DUSE_ASAN:BOOL='OFF' \
         -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='ON' \
+        -DUSE_CUDNN:BOOL='ON' \
+        -DUSE_DISTRIBUTED:BOOL='ON' \
+        -DUSE_DISTRIBUTED_MW:BOOL='ON' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
         -DUSE_GLOO:BOOL='ON' \
+        -DUSE_GLOO_IBVERBS:BOOL='ON' \
+        -DUSE_IDEEP:BOOL='ON' \
         -DUSE_LEVELDB:BOOL='ON' \
         -DUSE_LITE_PROTO:BOOL='OFF' \
         -DUSE_LMDB:BOOL='ON' \
         -DUSE_METAL:BOOL='OFF' \
+        -DUSE_MKLDNN:BOOL='OFF' \
+        -DUSE_MKLML:BOOL='OFF' \
         -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
         -DUSE_NCCL:BOOL='OFF' \
@@ -222,6 +231,7 @@ build() {
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
+        -DUSE_SYSTEM_NCCL:BOOL='ON' \
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
         -DUSE_ZSTD:BOOL='ON' \
@@ -244,14 +254,20 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    rm -rf "$pkgdir"/usr/include/{google,onnx}
+    local exclude_dirs=($(find "$pkgdir" -mindepth 1 -maxdepth 1 -type d ! -name 'usr'))
+    local exclude_dirs+=($(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*'))
+    local exclude_libs=($(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*'))
+    rm -f  "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
+    rm -f  "$pkgdir"/usr/include/{*.h,*.py}
     rm -rf "$pkgdir"/usr/lib/cmake/protobuf
-    rm -f "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
-    rm -f "$pkgdir"/usr/include/{{bitcasts,cpuinfo,fp16,fxdiv,nnpack,psimd,pthreadpool,zbuff,zdict,zstd*}.h,{__init__,avx{,2}}.py}
-    rm -f "$pkgdir"/usr/lib/lib{{cpuinfo,nnpack,onnx{,_proto},protobuf-lite,protobuf,protoc,pthreadpool,zstd}.a,zstd.so*}
-    rm -f "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
-    rm -f "$pkgdir"/usr/share/pkgconfig/libzstd.pc
-    rm -f "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
+    rm -f  "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
+    rm -rf "$pkgdir"/usr/share/pkgconfig
+    rm -rf "$pkgdir"/usr/share/{ATen,cmake/ATen}
+    rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
+    for _entry in ${exclude_dirs[@]} ${exclude_libs[@]}
+    do
+        rm -rf "$_entry"
+    done
     
     # license
     cd "${srcdir}/pytorch-git"
