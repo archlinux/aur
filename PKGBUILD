@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
 pkgver=0.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A libre desktop OSC bi-directionnal control surface application'
 arch=(i686 x86_64 armv7h)
 url='http://osc.ammd.net/'
@@ -30,9 +30,9 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Use PKBUILD conforming environment variables and allow redefining the build location.
-  sed -i "s/PLATFORM/_platform/g" package.json
-  sed -i "s/ARCH/_arch/g" package.json
-  sed -i "s/--out dist\//--out=\$_dist/g" package.json
+  sed -i "s/PLATFORM/_platform/g" scripts/package.js
+  sed -i "s/ARCH/_arch/g" scripts/package.js
+  sed -i "s/out:.*/out: process.env._dist,/g" scripts/package.js
 
   # pkgdir only seems to be available inside PKGBUILD functions
   export _dist="$pkgdir/usr/share/"
