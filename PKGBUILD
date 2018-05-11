@@ -2,7 +2,7 @@
 pkgname=('python-snowboy-git' 'python2-snowboy-git')
 pkgbase=python-snowboy-git
 _pkgname=snowboy
-pkgver=v1.3.0.r3.g75ef4f5
+pkgver=v1.3.0.r31.g797a17e
 pkgrel=1
 pkgdesc="A hotword detection engine - Python bindings"
 arch=('x86_64')
@@ -15,8 +15,6 @@ makedepends=(
   'swig'
   'cblas'
 )
-conflicts=('python-snowboy')
-provides=('python-snowboy')
 source=("git+https://github.com/Kitt-AI/snowboy.git")
 md5sums=('SKIP')
 
@@ -45,6 +43,8 @@ build() {
 }
 
 package_python-snowboy-git() {
+  conflicts=('python-snowboy')
+  provides=('python-snowboy')
   depends=('cblas' 'python-pyaudio')
 
   cd "${_pkgname}"
@@ -55,6 +55,8 @@ package_python-snowboy-git() {
 }
 
 package_python2-snowboy-git() {
+  conflicts=('python2-snowboy')
+  provides=('python2-snowboy')
   depends=('cblas' 'python2-pyaudio')
 
   cd "$_pkgname-py2"
