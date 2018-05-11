@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 build() {
 	if [ ! -f package.deb ]
 	then	
-		wget $(cat latest | jq --raw-output '.assets[6] | .browser_download_url') -O package.deb
+		wget $(cat latest | jq --raw-output '.assets[7] | .browser_download_url') -O package.deb
 	fi	
 	ar x package.deb
 	tar xf data.tar.xz
