@@ -17,7 +17,7 @@ backup=()
 options=('!strip')
 source=("Copay-$pkgver.zip::https://github.com/bitpay/copay/releases/download/v"$pkgver"/Copay-linux.zip"
         "copay.desktop")
-md5sums=('75178ff86e9887db7852eb879d428a9b'
+md5sums=('6486a7df6d3afde1b94da59487185450'
          'e05610d1b08a2c688efccf9d687b8b92')
 
 package() {
