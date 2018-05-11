@@ -3,31 +3,19 @@
 pkgname=mpd-rich-presence-discord-git
 _pkgname=mpd-rich-presence-discord
 pkgver=r29
-pkgrel=2
+pkgrel=3
 pkgdesc=" Broadcast your MPD state using discord rich presence!"
 arch=('x86_64')
 url='https://github.com/SSStormy'
 license=('MIT')
-depends=('libmpdclient' 'gcc-libs')
-makedepends=('git' 'cmake')
+depends=('libmpdclient' 'gcc-libs' 'discord-rpc-api')
+makedepends=('git' 'cmake' 'discord-rpc-api')
 source=("git+https://github.com/SSStormy/$_pkgname.git")
 md5sums=('SKIP')
 
 build() {
 	cd $srcdir/$_pkgname
-	git submodule update --init --recursive
-	cd lib/discord-rpc
-	mkdir build
-	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=.
-	sed -i '1952s/.*/std::memcpy(reinterpret_cast<void *>(m), reinterpret_cast<void *>(members), count * sizeof(Member));/' ../thirdparty/rapidjson-1.1.0/include/rapidjson/document.h
-	sed -i '1939s/.*/std::memcpy(reinterpret_cast<void *>(e), reinterpret_cast<void *>(values), count * sizeof(GenericValue));/' ../thirdparty/rapidjson-1.1.0/include/rapidjson/document.h
-	cmake --build . --config Release --target install
-	cd ../../..
-	mkdir release
-	cd release
-	cmake -DCMAKE_BUILD_TYPE=Release ..
-	make
+	./build.sh
 }
 
 package() {
