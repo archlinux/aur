@@ -1,15 +1,15 @@
 pkgbase = powerline-shell-git
-	pkgdesc = A Powerline style prompt for your shell
-	pkgver = r335.800b9cd
+	pkgdesc = A pretty prompt for your shell
+	pkgver = r3.3c5ca0c
 	pkgrel = 1
-	install = powerline-shell-git.install
+	url = https://github.com/b-ryan/powerline-shell
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = powerline-fonts
-	optdepends = awesome-terminal-fonts
-	source = git+https://github.com/banga/powerline-shell
+	provides = powerline-shell
+	source = git://github.com/b-ryan/powerline-shell.git
 	md5sums = SKIP
 
 pkgname = powerline-shell-git
