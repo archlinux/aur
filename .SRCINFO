@@ -1,7 +1,7 @@
 pkgbase = okular-no-purpose
 	pkgdesc = Okular, a document viewer, without the dependency on purpose. This disables the share menu
-	pkgver = 18.04.0
-	pkgrel = 2
+	pkgver = 18.04.1
+	pkgrel = 1
 	url = https://kde.org/applications/graphics/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -37,11 +37,11 @@ pkgbase = okular-no-purpose
 	provides = okular
 	conflicts = okular
 	replaces = kdegraphics-okular
-	source = https://download.kde.org/stable/applications/18.04.0/src/okular-18.04.0.tar.xz
-	source = https://download.kde.org/stable/applications/18.04.0/src/okular-18.04.0.tar.xz.sig
+	source = https://download.kde.org/stable/applications/18.04.1/src/okular-18.04.1.tar.xz
+	source = https://download.kde.org/stable/applications/18.04.1/src/okular-18.04.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = a8056e8e80d2a6f7857497994a26ff87e260a06ff0b67877f380390b55bb9ffb
+	sha256sums = 0fa82f9a31de184966303395148dd03f627c64be2d5a2eb070bf13c5a95c0e3a
 	sha256sums = SKIP
 
 pkgname = okular-no-purpose
