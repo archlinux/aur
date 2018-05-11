@@ -4,9 +4,9 @@
 # shellcheck disable=2148
 
 pkgname=dfhack
-pkgver=0.44.09
-_pkgver=$pkgver-r1
-pkgrel=2
+pkgver=0.44.10
+_pkgver=$pkgver-alpha1
+pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -27,6 +27,8 @@ prepare() {
   # shellcheck disable=2154
   cd "$srcdir"/$pkgname || exit 1
 
+  git remote set-url origin https://github.com/DFHack/dfhack
+  git submodule sync
   git submodule update --init
 }
 
