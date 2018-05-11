@@ -41,7 +41,7 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _psd_patch="v4.16_pds${_pdsversion}.patch"
-_gcc_more_v='20180310'
+_gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
@@ -67,7 +67,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b2c1292e06544465b636543e6ac8a01959470d32ce3664460721671f1347c815'
+            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'e04b8f5e94d281e6e5e37fbdc8b8c9a6f8f14ec08989362279faf45716c36727'
             '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
             'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
