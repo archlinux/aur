@@ -20,7 +20,7 @@ pkgbase = gegl-git
 	makedepends = libtiff
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	makedepends = autoconf
+	makedepends = base-devel
 	depends = babl>=0.1.26
 	depends = libspiro
 	depends = json-glib

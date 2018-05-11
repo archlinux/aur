@@ -14,7 +14,7 @@ depends=('babl>=0.1.26' 'libspiro' 'json-glib')
 makedepends=('git' 'intltool' 'python2' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'suitesparse' 'gobject-introspection'
-	     'autoconf')
+	     'base-devel')
 optdepends=('openexr: for using the openexr plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'librsvg: for using the svg plugin'
