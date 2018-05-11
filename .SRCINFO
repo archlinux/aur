@@ -1,0 +1,14 @@
+pkgbase = rastertoezpl
+	pkgdesc = CUPS driver for GODEX printers
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.godexintl.com
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = cups
+	source = rastertoezpl-1.1.2.tar.gz::http://www.godexintl.com/en/download/downloads/Download/5597
+	md5sums = 2a918a782cdc3bb176a06e0748cb0cb8
+
+pkgname = rastertoezpl
+
