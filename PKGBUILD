@@ -1,10 +1,10 @@
 pkgname=sks
 pkgver=1.1.6
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc='Synchronizing OpenPGP Key Server'
-makedepends=('ocaml' 'db' 'camlp4')
+makedepends=('ocaml<4.06' 'db<5.4' 'camlp4<4.06')
 url='https://bitbucket.org/skskeyserver/sks-keyserver/'
 install='sks.install'
 backup=('etc/sks/sksconf'
