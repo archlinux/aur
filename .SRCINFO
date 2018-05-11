@@ -1,5 +1,5 @@
 pkgbase = devrantron
-	pkgdesc = DevRant client written in NodeJS
+	pkgdesc = DevRant client written in ReactJS
 	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/tahnik/devrantron
