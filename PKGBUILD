@@ -32,7 +32,7 @@ pkgname=(
      "${pkgbase}-xsl"
 )
 pkgver=7.0.29
-pkgrel=2
+pkgrel=3
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
 arch=('i686' 'x86_64')
 url='http://www.php.net'
@@ -138,7 +138,6 @@ build() {
         --with-curl=shared \
         --with-db4=/usr \
         --with-enchant=shared,/usr \
-        --with-freetype-dir=/usr \
         --with-gd=shared,/usr \
         --with-gdbm \
         --with-gettext=shared \
