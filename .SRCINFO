@@ -48,15 +48,15 @@ pkgname = gdal-hdf4
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL, with support to HDF4 format
-	depends = gdal-hdf4=2.2.4
+	depends = gdal=2.2.4
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal
 	conflicts = python-gdal
 
 pkgname = python2-gdal-hdf4
-	pkgdesc = Python bindings for GDAL, with support to HDF4 format
-	depends = gdal-hdf4=2.2.4
+	pkgdesc = Python 2 bindings for GDAL, with support to HDF4 format
+	depends = gdal=2.2.4
 	depends = python2-numpy
 	optdepends = 
 	provides = python2-gdal

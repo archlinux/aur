@@ -5,7 +5,7 @@
 
 # Contributor: Luigi Ranghetti <ggranga@gmail.com>
 
-pkgname=gdal-hdf4
+pkgbase=gdal-hdf4
 pkgname=(gdal-hdf4 python-gdal-hdf4 python2-gdal-hdf4)
 _pkgbase=gdal
 _pkgname=(gdal python-gdal python2-gdal)
@@ -92,11 +92,11 @@ package_gdal-hdf4 () {
 }
 
 package_python-gdal-hdf4 () {
-  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
-  depends=("gdal-hdf4=$pkgver" 'python-numpy')
-  optdepends=()
   provides=(python-gdal)
   conflicts=(python-gdal)
+  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
+  depends=("gdal=$pkgver" 'python-numpy')
+  optdepends=()
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
   python3 setup.py install --root="$pkgdir" --optimize=1
@@ -107,11 +107,11 @@ package_python-gdal-hdf4 () {
 }
 
 package_python2-gdal-hdf4 () {
-  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
-  depends=("gdal-hdf4=$pkgver" 'python2-numpy')
-  optdepends=()
   provides=(python2-gdal)
   conflicts=(python2-gdal)
+  pkgdesc="Python 2 bindings for GDAL, with support to HDF4 format"
+  depends=("gdal=$pkgver" 'python2-numpy')
+  optdepends=()
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
 
