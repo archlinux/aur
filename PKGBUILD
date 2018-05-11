@@ -1,7 +1,7 @@
 # Maintainer: Florian B. 
 
 pkgname="powerline-shell"
-pkgver=0.5.4
+pkgver='latest'
 pkgrel=1
 pkgdesc="A pretty prompt for your shell"
 arch=("any")
