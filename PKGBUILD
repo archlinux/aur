@@ -14,7 +14,7 @@ md5sums=('2a918a782cdc3bb176a06e0748cb0cb8')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	./configure --prefix=/usr
+	./configure --prefix=/usr --libexecdir=/usr/lib/cups/filter
 	make
 }
 
@@ -23,4 +23,9 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+	cd "${pkgdir}/usr/lib/cups/filter"
+	mv rastertoezpl rastertoezpl.dir
+	mv rastertoezpl.dir/rastertoezpl .
+	rmdir rastertoezpl.dir
 }
