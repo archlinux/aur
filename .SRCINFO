@@ -1,14 +1,14 @@
 pkgbase = libite
 	pkgdesc = Extends the GNU libc with some missing stuff from BSD
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/troglobit/libite
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = custom
-	source = https://github.com/troglobit/libite/releases/download/v2.0.1/libite-2.0.1.tar.xz
-	sha256sums = 11053a0fdd75233b33a7d1a13088c9fdec9d72f844bfeed48f49d839e769f88a
+	source = https://github.com/troglobit/libite/releases/download/v2.0.2/libite-2.0.2.tar.xz
+	sha256sums = 1cc6274670b36fed3ddb875da58dd036c4583a358f3ef726993b9740aa82f65c
 
 pkgname = libite
 
