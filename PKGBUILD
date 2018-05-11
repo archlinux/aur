@@ -1,7 +1,7 @@
 # Maintainer: Bruno Van de Velde <bruno@texus.me>
 
 pkgname=tgui-git
-pkgver=0.7.4.r1.g16c65f7b
+pkgver=0.8.alpha.r0.g2db12aab
 pkgrel=1
 pkgdesc="Cross-platform C++ GUI library for SFML"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('tgui')
 conflicts=('tgui')
 replaces=()
 
-source=("git+https://github.com/texus/TGUI.git#branch=0.7")
+source=("git+https://github.com/texus/TGUI.git#branch=0.8-dev")
 sha256sums=('SKIP')
 
 pkgver() {
