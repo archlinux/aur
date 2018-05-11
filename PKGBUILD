@@ -10,7 +10,7 @@
 _proname=RTKLIB
 pkgname=rtklib-git
 pkgver=2.4.3b29
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source Program Package for GNSS Positioning"
 arch=('x86_64')
 url="http://www.rtklib.com/"
@@ -46,7 +46,7 @@ package() {
     install -Dm755 "$srcdir/${_proname}/app/str2str/gcc/str2str" "$pkgdir/usr/bin/str2str"
     install -Dm755 "$srcdir/${_proname}/app/rnx2rtkp/gcc/rnx2rtkp" "$pkgdir/usr/bin/rnx2rtkp"
     install -Dm755 "$srcdir/${_proname}/app/rtkrcv/gcc/rtkrcv" "$pkgdir/usr/bin/rtkrcv"
-    install -Dm755 "$srcdir/${_proname}/app/rtkrcv/gcc/convbin" "$pkgdir/usr/bin/convbin"
+    install -Dm755 "$srcdir/${_proname}/app/convbin/gcc/convbin" "$pkgdir/usr/bin/convbin"
     # copy share file
     mkdir -p "$pkgdir/usr/share/${pkgname}/data/"
     for f in $srcdir/${_proname}/data/*;do

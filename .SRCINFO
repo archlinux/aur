@@ -1,7 +1,7 @@
 pkgbase = rtklib-git
 	pkgdesc = An Open Source Program Package for GNSS Positioning
 	pkgver = 2.4.3b29
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.rtklib.com/
 	arch = x86_64
 	groups = GNSS
