@@ -3,7 +3,7 @@
 _name='roboschool'
 pkgname="${_name}-git"
 pkgver=r242.675f1ac4
-pkgrel=2
+pkgrel=3
 pkgdesc='Robot simulation, integrated with OpenAI Gym.'
 url="https://github.com/openai/${_name}"
 depends=('python-gym-git' 'qt5-base' 'assimp' 'tinyxml')
@@ -37,8 +37,8 @@ build() {
 }
 
 package() {
-	#cd "${srcdir}/bullet3/build"
-	#make install
 	cd "${srcdir}/${_name}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	_pyver="$(python -c "import sys; print('%i.%i' % sys.version_info[:2])")"
+	cp "${_name}/cpp_household.so" "${pkgdir}/usr/lib/python${_pyver}/site-packages/${_name}/"
 }
