@@ -1,9 +1,8 @@
 [Desktop Entry]
-Name=Hexen 2
-Comment=Hexen II
-Exec=hexen2
-Icon=hexen2.png
-Terminal=false
 Type=Application
-Encoding=UTF-8
-Categories=Application;Game;
+Name=Hexen 2
+Comment=Hexen II: Hammer of Thyrion
+Exec=hexen2
+Icon=hexen2
+Terminal=false
+Categories=Game;
