@@ -2,7 +2,7 @@
 
 _pkgname='gvisor'
 pkgname="${_pkgname}-git"
-pkgver=r59.209c9e3
+pkgver=r74.c8bca2f
 pkgrel=1
 pkgdesc="User-space kernel, sandboxed container runtime"
 arch=('x86_64')
