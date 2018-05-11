@@ -76,9 +76,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.16"
 _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180509'
-_gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
+_gcc_path="https://github.com/graysky2/${_gcc_name}/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
-_bfq_mq_ver='20180410'
+_bfq_mq_ver='20180412'
 _bfq_mq_patch="4.16-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 
 source=(# mainline kernel patches
@@ -111,7 +111,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'de404c2a4af012eb31829183eebc2a291489357d5cd099829b57c194d167525f'
+            '3518ed9db96d7fc94ed69988c51f58356ccb639e3590cda5946086ee8739bd97'
             '159f6ba3e47c9f8de0cf0feda34edbfde3b756807e30615139f8304905e60316'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'c9f776f7c743f48c43aeaa18851bde39e98db663b3320030deb3740a369903cd'
