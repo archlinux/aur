@@ -3,18 +3,20 @@
 _name='roboschool'
 pkgname="${_name}-git"
 pkgver=r242.675f1ac4
-pkgrel=1
+pkgrel=2
 pkgdesc='Robot simulation, integrated with OpenAI Gym.'
 url="https://github.com/openai/${_name}"
 depends=('python-gym-git' 'qt5-base' 'assimp' 'tinyxml')
 makedepends=('cmake' 'python-setuptools' 'boost')
 license=('MIT')
-arch=('any')
-
+arch=('x86_64')
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_name}-qt"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 source=("git+${url}.git"
