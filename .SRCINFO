@@ -1,7 +1,7 @@
 pkgbase = roboschool-git
 	pkgdesc = Robot simulation, integrated with OpenAI Gym.
-	pkgver = r242.675f1ac4
-	pkgrel = 4
+	pkgver = r4.b81efcc
+	pkgrel = 1
 	url = https://github.com/openai/roboschool
 	arch = x86_64
 	license = MIT
