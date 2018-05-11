@@ -6,28 +6,30 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-gcc-stage1
-pkgver=7.2.0
-_pkgver=${pkgver:0:1}
+pkgver=8.1.0
+_majorver=${pkgver:0:1}
 _islver=0.18
-pkgrel=3
-_commit=1bd23ca8c30f4827c4bea23deedf7ca33a86ffb5
+pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-depends=("${_target}-binutils>=2.29.0-1" libmpc zlib)
+depends=("${_target}-binutils>=2.30-4" libmpc zlib)
 options=(!emptydirs !distcc !strip)
-source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        Revert-eeb6872bf.patch
-        PR82155.patch)
-md5sums=('1b6966a45fe43445ae7ae4ffd5d43df9'
-         '11436d6b205e516635b666090b94ab32'
-         'e4c9c8b498b04c0f51d219d025ca8407'
-         'e77419f7d25aad0980c765012dc8c417')
+#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b')
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
+
+_svnrev=259195
+_svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
 prepare() {
-  mv gcc-${_commit}* gcc
+  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
 
   # link isl for in-tree build
@@ -39,13 +41,7 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=80717
-  patch -p1 -i ${srcdir}/Revert-eeb6872bf.patch
-
   mkdir -p "$srcdir/gcc-build"
-
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82155
-  patch -p1 -i ../PR82155.patch
 }
 
 build() {
