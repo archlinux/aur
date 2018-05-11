@@ -1,0 +1,18 @@
+pkgbase = nerd-fonts-inconsolata
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	makedepends = fontconfig
+	provides = nerd-fonts-inconsolata
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	conflicts = nerd-fonts-complete-mono-glyphs
+	conflicts = nerd-fonts-gabmus
+	conflicts = nerd-fonts-ricty
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
+	sha1sums = 5289f5069db1058fbdff0017b4098796e2042a11
+
+pkgname = nerd-fonts-inconsolata
+
