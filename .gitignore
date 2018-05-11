@@ -1,8 +1,6 @@
 *.pkg.*
 src/
 pkg/
-*.tar.gz
-*.tar.bz2
+*.tar.*
 *.sig
-*.sign
 *.part
