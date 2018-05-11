@@ -1,6 +1,6 @@
 pkgbase = tagparser
 	pkgdesc = C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags
-	pkgver = 7.0.1
+	pkgver = 7.0.2
 	pkgrel = 1
 	url = https://github.com/Martchus/tagparser
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = tagparser
 	depends = c++utilities
 	depends = zlib
 	optdepends = tagparser-doc: API documentation
-	source = tagparser-7.0.1.tar.gz::https://github.com/Martchus/tagparser/archive/v7.0.1.tar.gz
-	sha256sums = c3faa383379a24111593ea00c7dceb46b3652227fa8fdb4496809124c49174c8
+	source = tagparser-7.0.2.tar.gz::https://github.com/Martchus/tagparser/archive/v7.0.2.tar.gz
+	sha256sums = bad3e48845da86212f06bbacca2f47a1462df1db5779b3cdaca1961033f762c2
 
 pkgname = tagparser
 
