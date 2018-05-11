@@ -1,0 +1,52 @@
+diff --git a/getweb.in b/getweb.in
+index 5215e02..400c832 100755
+--- a/getweb.in
++++ b/getweb.in
+@@ -117,6 +117,10 @@ then
+     }
+ fi
+ 
++wget() {
++    error "wget must not be called, please report this to maintainer"
++}
++
+ #
+ #	Download a .EXE file from the web, unzip it, and extract the
+ #	files we want
+@@ -124,11 +128,9 @@ getexe() {
+     url="$1"
+     exefile="$2"
+     shift; shift
+-    
+-    wget $WGETOPTS -O $exefile "$url/$exefile" ||
+-	error "Couldn't download $url/$exefile"
+-    unzip -oj $exefile "$@"
+-    rm $exefile
++
++    echo "$url/$exefile"
++    return
+ }
+ 
+ #
+@@ -138,17 +140,13 @@ gettgz() {
+     url="$1"
+     file="$2"
+     what="$3"
+-    
+-    wget $WGETOPTS -O $file "$url/$file" ||
+-	error "Couldn't download $url/$file"
+-    gunzip <$file | tar xvf - $what
+-    rm $file
++
++    echo "$url/$file"
++    return
+ }
+ 
+ copyright() {
+-    echo
+-    echo "$1"
+-    echo
++    return
+ }
+ 
+ getone() {

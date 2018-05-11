@@ -1,0 +1,28 @@
+diff --git a/getweb.in b/getweb.in
+index 5215e02..244d97a 100755
+--- a/getweb.in
++++ b/getweb.in
+@@ -125,10 +125,7 @@ getexe() {
+     exefile="$2"
+     shift; shift
+     
+-    wget $WGETOPTS -O $exefile "$url/$exefile" ||
+-	error "Couldn't download $url/$exefile"
+-    unzip -oj $exefile "$@"
+-    rm $exefile
++    unzip -oj $srcdir/$exefile "$@"
+ }
+ 
+ #
+@@ -139,10 +136,7 @@ gettgz() {
+     file="$2"
+     what="$3"
+     
+-    wget $WGETOPTS -O $file "$url/$file" ||
+-	error "Couldn't download $url/$file"
+-    gunzip <$file | tar xvf - $what
+-    rm $file
++    gunzip <$srcdir/$file | tar xvf - $what
+ }
+ 
+ copyright() {
