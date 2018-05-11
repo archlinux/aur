@@ -3,14 +3,14 @@
 pkgname=python-maxminddb
 _name=maxminddb
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MaxMind DB reader extension"
 arch=('any')
 url="http://maxminddb.readthedocs.org/"
 license=('BSD')
 groups=()
-depends=('libmaxminddb')
-makedepends=()
+depends=('python' 'libmaxminddb')
+makedepends=('python-setuptools')
 optdepends=()
 provides=()
 conflicts=()
