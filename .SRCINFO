@@ -1,12 +1,13 @@
 pkgbase = openmvg-git
 	pkgdesc = open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.
-	pkgver = 1.3.r76.gd9563130
-	pkgrel = 7
+	pkgver = 1.3.r78.g4f94981a
+	pkgrel = 8
 	url = http://imagine.enpc.fr/~moulonp/openMVG/
 	arch = i686
 	arch = x86_64
 	license = MPL
 	makedepends = git
+	makedepends = gcc6
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = eigen
