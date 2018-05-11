@@ -1,6 +1,6 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=openmusic
-pkgver=6.12
+pkgver=6.13
 pkgrel=1
 pkgdesc="A visual programming language designed for music composition"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('jack: JACK audio support'
 options=(!strip)
 install="$pkgname.install"
 source=("http://forge.ircam.fr/p/OM/downloads/get/OM_${pkgver}.tar.bz2")
-sha256sums=('a3b593210805e1c6ce3f47cd137c9f7fb6d93c35edb7f398b0088f247b79db45')
+sha256sums=('ed253ca9e00272b0fa75a86ae82296a95f0031cece5c6035d5ab9170b6da3d71')
 
 package() {
 	cd "$srcdir/OM_${pkgver}"
