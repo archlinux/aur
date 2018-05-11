@@ -66,7 +66,7 @@ _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
 _uksm_patch="uksm-${_major}.patch"
 _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180509'
-_gcc_path="https://github.com/graysky2/kernel_gcc_patch/archive"
+_gcc_path="https://github.com/graysky2/${_gcc_name}/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
