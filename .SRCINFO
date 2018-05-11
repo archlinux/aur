@@ -1,14 +1,14 @@
 pkgbase = powerline-shell
 	pkgdesc = A pretty prompt for your shell
-	pkgver = latest
+	pkgver = r546.73b01d6
 	pkgrel = 1
 	url = https://github.com/b-ryan/powerline-shell
 	arch = any
 	license = MIT
 	depends = python
 	provides = powerline-shell
-	source = powerline-shell-latest::https://github.com/b-ryan/powerline-shell/archive/master.tar.gz
-	md5sums = 8e33b7a891816a0c58d84159f79b124b
+	source = git://github.com/b-ryan/powerline-shell.git
+	md5sums = SKIP
 
 pkgname = powerline-shell
 
