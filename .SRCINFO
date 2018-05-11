@@ -1,6 +1,6 @@
 pkgbase = razergenie-git
 	pkgdesc = Qt application for configuring your Razer devices under GNU/Linux.
-	pkgver = 0.5.r1.gbe9818e
+	pkgver = 0.7.r8.ga786269
 	pkgrel = 1
 	url = https://github.com/z3ntu/RazerGenie
 	arch = x86_64
