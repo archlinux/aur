@@ -1,6 +1,6 @@
 --- src/sage/doctest/control.py.orig       2016-10-20 19:39:53.714618246 +0200
 +++ src/sage/doctest/control.py    2016-10-20 19:40:15.158049920 +0200
-@@ -320,22 +320,6 @@
+@@ -326,24 +326,6 @@
              if "all" in options.optional:
                  # Special case to run all optional tests
                  options.optional = True
@@ -20,6 +20,8 @@
 -                for o in options.optional:
 -                    if not optionaltag_regex.search(o):
 -                        raise ValueError('invalid optional tag {!r}'.format(o))
- 
+-
+-                options.optional |= auto_optional_tags
+
          self.options = options
          self.files = args

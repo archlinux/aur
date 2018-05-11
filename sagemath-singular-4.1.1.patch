@@ -2,7 +2,7 @@ diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
 index 676544ab1e..5c8639d362 100644
 --- a/src/sage/libs/singular/decl.pxd
 +++ b/src/sage/libs/singular/decl.pxd
-@@ -188,7 +188,7 @@ cdef extern from "singular/Singular/libsingular.h":
+@@ -170,7 +170,7 @@ cdef extern from "singular/Singular/libsingular.h":
  
      int n_NumberOfParameters(const n_Procs_s* r)
  
@@ -11,7 +11,7 @@ index 676544ab1e..5c8639d362 100644
          poly *next
          number *coef
          unsigned long exp[1]
-@@ -650,7 +650,7 @@ cdef extern from "singular/Singular/libsingular.h":
+@@ -632,7 +632,7 @@ cdef extern from "singular/Singular/libsingular.h":
  
      # divide monomial p by monomial q, p,q const
  
@@ -24,7 +24,7 @@ diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sa
 index 089524d6b4..ce6d58fc6f 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -188,8 +188,8 @@ from sage.libs.singular.decl cimport (
+@@ -190,8 +190,8 @@ from sage.libs.singular.decl cimport (
      n_IsUnit, n_Invers,
      p_ISet, rChangeCurrRing, p_Copy, p_Init, p_SetCoeff, p_Setm, p_SetExp, p_Add_q,
      p_NSet, p_GetCoeff, p_Delete, p_GetExp, pNext, rRingVar, omAlloc0, omStrDup,
@@ -35,7 +35,7 @@ index 089524d6b4..ce6d58fc6f 100644
      p_IsUnit, p_Series, p_Head, idInit, fast_map_common_subexp, id_Delete,
      p_IsHomogeneous, p_Homogen, p_Totaldegree,pLDeg1_Totaldegree, singclap_pdivide, singclap_factorize,
      idLift, IDELEMS, On, Off, SW_USE_CHINREM_GCD, SW_USE_EZGCD,
-@@ -1690,8 +1695,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+@@ -1692,8 +1697,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
          if not g._poly:
              raise ZeroDivisionError
  
@@ -46,7 +46,7 @@ index 089524d6b4..ce6d58fc6f 100644
          if coeff:
              if r.cf.type == n_unknown or r.cf.cfDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r), r.cf):
                  n = r.cf.cfDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r), r.cf)
-@@ -1850,8 +1855,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+@@ -1852,8 +1857,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
                     and (<MPolynomial_libsingular>g) \
                     and g.parent() is self \
                     and p_LmDivisibleBy((<MPolynomial_libsingular>g)._poly, m, r):
@@ -57,7 +57,7 @@ index 089524d6b4..ce6d58fc6f 100644
                  #p_SetCoeff(flt, n_Div( p_GetCoeff(f._poly, r) , p_GetCoeff((<MPolynomial_libsingular>g)._poly, r), r), r)
                  p_SetCoeff(flt, n_Init(1, r), r)
                  return new_MP(self,flt), g
-@@ -4046,10 +4051,10 @@ cdef class MPolynomial_libsingular(MPolynomial):
+@@ -4049,10 +4054,10 @@ cdef class MPolynomial_libsingular(MPolynomial):
              if _right.is_monomial():
                  p = _self._poly
                  quo = p_ISet(0,r)

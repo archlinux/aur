@@ -28,7 +28,7 @@ index ff1d02900a..bad4a18539 100644
  
          """
          import networkx
-@@ -1158,7 +1156,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
+@@ -1154,7 +1152,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
          import networkx
          try:
              if self._nxg.is_multigraph():
@@ -37,7 +37,7 @@ index ff1d02900a..bad4a18539 100644
                      if d.get('weight',None) == l:
                          self._nxg.remove_edge(u,v,k)
                          break
-@@ -1227,7 +1225,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
+@@ -1223,7 +1221,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
          """
          cdef dict E
          try:
@@ -46,7 +46,7 @@ index ff1d02900a..bad4a18539 100644
          except KeyError:
              from networkx import NetworkXError
              raise NetworkXError("Edge (%s,%s) requested via get_edge_label does not exist."%(u,v))
-@@ -1416,7 +1414,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
+@@ -1412,7 +1410,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
              sage: G.iterator_nbrs(0)
              <dictionary-keyiterator object at ...>
          """
@@ -68,7 +68,7 @@ index 003a8d6bcb..986137a9b0 100644
          elif format == 'igraph':
              if not data.is_directed():
                  raise ValueError("A *directed* igraph graph was expected. To "+
-@@ -2844,7 +2844,7 @@ class DiGraph(GenericGraph):
+@@ -2846,7 +2846,7 @@ class DiGraph(GenericGraph):
          Using the NetworkX implementation ::
  
              sage: D.topological_sort(implementation = "NetworkX")
@@ -77,7 +77,7 @@ index 003a8d6bcb..986137a9b0 100644
  
          Using the NetworkX recursive implementation ::
  
-@@ -2870,9 +2870,7 @@ class DiGraph(GenericGraph):
+@@ -2872,9 +2872,7 @@ class DiGraph(GenericGraph):
                sage: D = DiGraph({ 0:[1,2,3], 4:[2,5], 1:[8], 2:[7], 3:[7],
                ....:   5:[6,7], 7:[8], 6:[9], 8:[10], 9:[10] })
                sage: N = D.networkx_graph()
@@ -88,7 +88,7 @@ index 003a8d6bcb..986137a9b0 100644
                [4, 5, 6, 9, 0, 3, 2, 7, 1, 8, 10]
  
          TESTS:
-@@ -2895,10 +2893,7 @@ class DiGraph(GenericGraph):
+@@ -2897,10 +2895,7 @@ class DiGraph(GenericGraph):
  
          elif implementation == "NetworkX" or implementation == "recursive":
              import networkx
@@ -100,28 +100,6 @@ index 003a8d6bcb..986137a9b0 100644
              if S is None:
                  raise TypeError('Digraph is not acyclic; there is no topological sort.')
              else:
-diff --git a/src/sage/graphs/generators/basic.py b/src/sage/graphs/generators/basic.py
-index 8777b95c4b..28ef7e48f2 100644
---- a/src/sage/graphs/generators/basic.py
-+++ b/src/sage/graphs/generators/basic.py
-@@ -437,7 +437,7 @@ def CompleteBipartiteGraph(n1, n2):
- 
-     Compare the plotting::
- 
--        sage: n = networkx.complete_bipartite_graph(11,17)
-+        sage: n = networkx.complete_bipartite_graph(11r,17r)
-         sage: spring_med = Graph(n)
-         sage: posdict_med = graphs.CompleteBipartiteGraph(11,17)
- 
-@@ -469,7 +469,7 @@ def CompleteBipartiteGraph(n1, n2):
-         sage: g = []
-         sage: j = []
-         sage: for i in range(9):
--        ....:     spr = networkx.complete_bipartite_graph(i+1,4)
-+        ....:     spr = networkx.complete_bipartite_graph(int(i+1),4r)
-         ....:     k = Graph(spr)
-         ....:     g.append(k)
-         sage: for i in range(3):
 diff --git a/src/sage/graphs/generators/families.py b/src/sage/graphs/generators/families.py
 index 8f81333685..1540ec0dcc 100644
 --- a/src/sage/graphs/generators/families.py
@@ -149,15 +127,6 @@ diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
 index 3550f990ef..490813e619 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -108,7 +108,7 @@ examples are covered here.
-    ::
- 
-        sage: import networkx
--       sage: K = networkx.complete_bipartite_graph(12,7)
-+       sage: K = networkx.complete_bipartite_graph(12r,7r)
-        sage: G = Graph(K)
-        sage: G.degree()
-        [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 12, 12, 12, 12, 12, 12, 12]
 @@ -1199,7 +1199,7 @@ class Graph(GenericGraph):
              self.allow_loops(loops, check=False)
              self.allow_multiple_edges(multiedges, check=False)
@@ -167,7 +136,7 @@ index 3550f990ef..490813e619 100644
          elif format == 'igraph':
              if data.is_directed():
                  raise ValueError("An *undirected* igraph graph was expected. "+
-@@ -4600,7 +4600,7 @@ class Graph(GenericGraph):
+@@ -4621,7 +4621,7 @@ class Graph(GenericGraph):
  
              sage: g = Graph([(0,1,0), (1,2,999), (2,3,-5)])
              sage: g.matching(use_edge_labels=True)
@@ -176,16 +145,25 @@ index 3550f990ef..490813e619 100644
              sage: g.matching(algorithm="LP", use_edge_labels=True)
              [(1, 2, 999)]
  
-@@ -6288,7 +6288,7 @@ class Graph(GenericGraph):
+@@ -4671,7 +4671,7 @@ class Graph(GenericGraph):
+             else:
+                 for u, v in L:
+                     g.add_edge(u, v)
+-            d = networkx.max_weight_matching(g)
++            d = dict(networkx.max_weight_matching(g).union(t[::-1] for t in networkx.max_weight_matching(g)))
+             if value_only:
+                 if use_edge_labels:
+                     return sum(W[u, v] for u, v in six.iteritems(d) if u < v)
+@@ -6305,7 +6305,7 @@ class Graph(GenericGraph):
          return networkx.number_of_cliques(self.networkx_graph(copy=False), vertices, cliques)
  
      @doc_index("Clique-related methods")
 -    def cliques_get_max_clique_graph(self, name=''):
 +    def cliques_get_max_clique_graph(self):
          """
-         Returns a graph constructed with maximal cliques as vertices, and
-         edges between maximal cliques with common members in the original
-@@ -6317,7 +6317,7 @@ class Graph(GenericGraph):
+         Return the clique graph.
+ 
+@@ -6336,7 +6336,7 @@ class Graph(GenericGraph):
              sage: (G.cliques_get_max_clique_graph()).show(figsize=[2,2])
          """
          import networkx
@@ -194,3 +172,4 @@ index 3550f990ef..490813e619 100644
  
      @doc_index("Clique-related methods")
      def cliques_get_clique_bipartite(self, **kwds):
+

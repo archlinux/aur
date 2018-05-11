@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.rc2.r0.g303efaa461
+pkgver=8.3.beta0.r0.g8bdc326ba5
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -29,33 +29,30 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
-  'shared_meataxe: faster matrix arithmetic over finite fields'
+  'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch
-        sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
+        r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch
+        sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
-            '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
-            'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
+            '6f95ef6960acb3b368bc6245783d88fcadaa63537e1bf9f41d8d91b28e95ddf9'
+            '9e3c998e0ca8dcbf7ad9f5a8d591f2bc4cb792be14708e064594046081e9b60d'
             '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
             '2cad308f8adbb6c54e6603fa22b2f0eb60f6f09248d5d015000c3932ac14f646'
             '962ce805c87147212b21fc2ab0ac9af9bd0033942c7a6905b9906645b48e8a4f'
-            'ef94908d4ab28d13af622e6e58ec191aa78817d17e4466c7bb6f64ee72a813b9'
+            '18edeafb01cc1ed7270c2dfb41a58717918680c98e8eada1858736acd65d92ba'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
-            'e4a2f1de73dc3a6deedc1a05d716facd94afc9fe98239c4300e1b67375f95fc1'
-            '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
-            '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
+            '2d13b15ad2d1511bb3d752a261497060a8901882b1c2fa9813219781b7a71d83'
+            'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
+            '8253730940687992dd29d90d95bea7e2685bb4854db004090c8196ce92859b64'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
-            'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
-            'cc679321c2968d5e74b0ec060979c74019df2995857906bdd1397695b1f24c5c'
+            '369f1483e0364031d73d43d9e63b7bf2b0929c8a1d470c1596f98f9f1aa80750'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
 
@@ -82,19 +79,12 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
-# fix Cremona database detection
-  sed -e "s|is_package_installed('database_cremona_ellcurve')|os.path.exists('/usr/share/cremona/cremona.db')|" \
-   -i src/sage/databases/cremona.py
-# fix python-igraph detection
-  patch -p1 -i ../sagemath-detect-igraph.patch
-# fix lrs detection
-  patch -p1 -i ../sagemath-lrs.patch
 # adapt to networkx 2 changes
   patch -p1 -i ../sagemath-networkx2.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# don't show PARI stack size increase warnings during doctesting (Debian)
-  patch -p1 -i ../pari-stackwarn.patch
+# don't show PARI stack size increase or GLPK warnings during doctesting (Debian)
+  patch -p1 -i ../sagemath-ignore-warnings.patch
 # remove deprecated scipy parameters
   patch -p1 -i ../sagemath-scipy-1.0.patch
 # fix build with Singular 4.1.1
@@ -109,20 +99,15 @@ prepare(){
   patch -p1 -i ../fes02.patch
 
 # use python2
-  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|\<#!/usr/bin/env sage-python\>|#!/usr/bin/env python2|' \
-    -e 's|\<exec python\>|exec python2|' -i src/bin/*
+  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' \
+    -e 's|exec python\b|exec python2|' -i src/bin/*
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
-  sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
+  sed -e 's|exec ipython\b|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
-  sed -e 's|bin/python|bin/python2|g' -i src/bin/sage-env
 }
 
 build() {
-  cd sage
-  autoreconf -vi
-  ./configure --prefix=/usr || true
-
-  cd src
+  cd sage/src
 
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
@@ -145,7 +130,7 @@ package_sagemath-git() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
-  for _i in arch-env cachegrind callgrind cleaner coverage coverageall cython env env-config eval grep grepdoc inline-fortran \
+  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
