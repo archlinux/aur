@@ -5,8 +5,8 @@ pkgrel=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
-license=('APLv2')
-depends=(openimageio boost blosc embree glew gtk3 opencl-icd-loader)
+license=('Apache')
+depends=(openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
 optdepends=("opencl-dirver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
 makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
