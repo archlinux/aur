@@ -1,6 +1,6 @@
 # Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
 pkgname=copay-bin
-pkgver=4.3.3
+pkgver=4.3.4
 pkgrel=1
 pkgdesc="Copay is a secure bitcoin wallet platform for both desktop and mobile devices."
 arch=('x86_64')
@@ -27,7 +27,7 @@ package() {
   unzip "${srcdir}/Copay-$pkgver.zip"
  
   mv Copay-linux/* .
-  rmdir Copay-linux
+  rm -R Copay-linux
  
   find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a+r
 
