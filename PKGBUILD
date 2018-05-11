@@ -2,8 +2,8 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.90.0.r1435.c23bc81
-pkgrel=8
+pkgver=1.90.0.r1455.65b22f8
+pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
@@ -13,10 +13,8 @@ depends=("libarchive" "glew" "hdf5" "vtk" "libmsym" "spglib" "qt5-webview" "qt5-
 makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/OpenChemistry/${_pkgname}.git"
-        "CMakeLists.patch")
-sha256sums=("SKIP"
-            "0717b0aead3c913620207b41bcfe867cd947491a495906ba9c3632744ac60a05")
+source=("git://github.com/OpenChemistry/${_pkgname}.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -24,11 +22,6 @@ pkgver() {
          "$(git describe --tags --abbrev=0)" \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p1 -i "${srcdir}"/CMakeLists.patch
 }
 
 build() {
