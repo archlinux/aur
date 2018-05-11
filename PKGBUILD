@@ -12,6 +12,10 @@ source=('https://api.github.com/repos/tahnik/devrantron/releases/latest')
 provides=($_pkgname)
 sha1sums=('SKIP')
 
+pkgver() {
+	cat latest|jq --raw-output '.tag_name'|sed 's/v//g'
+}
+
 build() {
 	if [ ! -f package.deb ]
 	then	
