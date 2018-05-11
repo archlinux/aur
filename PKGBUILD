@@ -2,8 +2,8 @@
 
 pkgbase=postgresql-src
 pkgname=('postgresql-src-libs' 'postgresql-src-docs' 'postgresql-src')
-pkgver=10.3
-_majorver=10.3
+pkgver=10.4
+_majorver=10.4
 pkgrel=6
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
@@ -20,7 +20,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql.pam postgresql.logrotate
         postgresql.service 
         postgresql-check-db-dir)
-sha256sums=('6ea268780ee35e88c65cdb0af7955ad90b7d0ef34573867f223f14e43467931a'
+sha256sums=('1b60812310bd5756c62d93a9f93de8c28ea63b0df254f428cd1cf1a4d9020048'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
