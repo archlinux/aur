@@ -2,19 +2,21 @@
 
 pkgbase=('stig')
 pkgname=('stig')
-pkgver=0.8.3a
-pkgrel=2
+pkgver=0.9.0a
+pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
          'python-xdg' 'python-blinker' 'python-natsort')
 makedepends=('python-setuptools')
-optdepends=('python-geoip: shows country codes in peer lists'
-            'python-pprofile: profiling')
+optdepends=('python-maxminddb: shows country codes in peer lists'
+            'python-pprofile: profiling'
+            'python-setproctitle: prettifies the process name')
+
 license=('GPL')
 arch=('any')
 source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
-sha256sums=('3b0d8fabef2e642ae08d2c45af60cf104e7c6e1c5abea10903a6d0ff2975f05d')
+sha256sums=('ca22a9ab7d686dddfa1d10c028c80b7aea83677ca508918f024e6bcd4dd51dc8')
 
 prepare(){
     cd "stig-${pkgver}"
