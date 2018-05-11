@@ -2,7 +2,7 @@
 
 pkgname="powerline-shell-git"
 _pkgname="powerline-shell"
-pkgver=r3.3c5ca0c
+pkgver=r546.73b01d6
 pkgrel=1
 pkgdesc="A pretty prompt for your shell"
 arch=("any")
@@ -20,20 +20,11 @@ source=(
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$(pkgname)"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
-  
-  install -Dm 755 ${srcdir}/${_pkgname}/powerline-shell.py ${pkgdir}/usr/share/${_pkgname}/powerline-shell.py
-  install -Dm 644 ${srcdir}/${_pkgname}/powerline_shell_base.py ${pkgdir}/usr/share/${_pkgname}/powerline_shell_base.py
-  install -Dm 644 ${srcdir}/${_pkgname}/config.py ${pkgdir}/usr/share/${_pkgname}/config.py
-  install -Dm 644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/${_pkgname}/README.md
-  
-  cp -R --preserve=mode ${srcdir}/${_pkgname}/lib ${pkgdir}/usr/share/${_pkgname}
-  cp -R --preserve=mode ${srcdir}/${_pkgname}/themes ${pkgdir}/usr/share/${_pkgname}
-  cp -R --preserve=mode ${srcdir}/${_pkgname}/segments ${pkgdir}/usr/share/${_pkgname}
 }
