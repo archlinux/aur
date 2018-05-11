@@ -2,7 +2,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.21.0
-pkgrel=4
+pkgrel=5
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 license=('GPL')
@@ -14,7 +14,7 @@ depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'f
 makedepends=('boost' 'doxygen')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=642a73e47b6006e2056020d7031a3d78346d4912'
+source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=d1afd06fab9bf4a45ae34dd7f1bc017d7e768bb5'
 	'tmpfiles.d'
 	'conf')
 sha1sums=('SKIP'
