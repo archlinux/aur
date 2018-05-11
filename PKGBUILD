@@ -1,8 +1,8 @@
 # Maintainer: Henninger Henningstone <henritees at mein-twserver dot de>
 
 pkgname=allthehaxx
-pkgver=0.36
-pkgrel=2
+pkgver=0.36.3
+pkgrel=0
 pkgdesc="AllTernative Teeworlds Client"
 arch=('x86_64')
 url="https://allthehaxx.github.io"
@@ -18,17 +18,20 @@ backup=('etc/allthehaxx/storage.cfg'
         'etc/allthehaxx/skindbs.cfg')
 #options=('!strip' 'debug') # uncomment this if you want to gdb AllTheHaxx
 install=allthehaxx.install
-source=("https://media.githubusercontent.com/media/AllTheHaxx/stuffility/master/releases/AllTheHaxx-$pkgver.tar.gz"
-        '0001-Don-t-link-unnecessary-libs.patch')
-sha256sums=('707d7d5b5861c918a52c5fc472e20c65dc21bac2f4294fda3945aba43c2494b5'
-            '4f106ea29e22bc586b3a5a3bd4c1963723c43f5fceb3075db48ead74a7617354')
+_archive="$pkgname-$pkgver.tar.gz"
+source=("$_archive::https://netix.dl.sourceforge.net/project/allthehaxx/$pkgver/$pkgver.tar.gz") # https://github.com/AllTheHaxx/AllTheHaxx/archive/$pkgver.tar.gz
+noextract=("$_archive")
+sha256sums=('caa305a560524a08605c0feecaa469b51b5db9647ae01b82a45b54f820b81f9b')
 
 
 prepare() {
+      # extract
+    mkdir -p "$srcdir/AllTheHaxx-$pkgver/"
+    tar xf "$_archive" -C "$srcdir/AllTheHaxx-$pkgver/" --strip-components 1
+
       # Client
     cd "$srcdir/AllTheHaxx-$pkgver/"
     convert "other/icons/AllTheHaxx.ico" AllTheHaxx.png
-    patch -p1 -i "$srcdir/0001-Don-t-link-unnecessary-libs.patch"
 }
 
 build() {
