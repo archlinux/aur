@@ -1,16 +1,17 @@
-# Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
+# Maintainer: Andrew Crerar <crerar@archlinux.org>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 _name=git
 pkgname=$_name-git
-pkgver=2.16.2.r246.ga4ee44448f
+pkgver=2.17.0.r582.gccdcbd54c4
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=('i686' 'x86_64')
 url='http://git-scm.com/'
 license=('GPL2')
-depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2')
-makedepends=('python2' 'emacs' 'xmlto' 'asciidoc')
+depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl'
+         'perl-mailtools' 'pcre2' 'grep' 'shadow')
+makedepends=('python2' 'xmlto' 'asciidoc' 'libgnome-keyring')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
             'perl-term-readkey: git svn'
@@ -43,30 +44,43 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
+_make_paths=(
+  prefix='/usr'
+  gitexecdir='/usr/lib/git-core'
+  perllibdir="$(/usr/bin/perl -MConfig -wle 'print $Config{installvendorlib}')"
+)
+
+_make_options=(
+  CFLAGS="$CFLAGS"
+  LDFLAGS="$LDFLAGS"
+  USE_LIBPCRE2=1
+  NO_CROSS_DIRECTORY_HARDLINKS=1
+  NO_PERL_CPAN_FALLBACKS=1
+  MAN_BOLD_LITERAL=1
+)
+
 build() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$srcdir/$_name"
-  make prefix=/usr \
-    gitexecdir=/usr/lib/git-core \
-    perllibdir=/usr/share/perl5/vendor_perl \
-    CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE2=1 \
-    NO_CROSS_DIRECTORY_HARDLINKS=1 \
-    MAN_BOLD_LITERAL=1 \
+
+
+  make \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
     all doc
 
-  make -C contrib/emacs prefix=/usr
   make -C contrib/credential/gnome-keyring
   make -C contrib/credential/libsecret
-  make -C contrib/subtree prefix=/usr gitexecdir=/usr/lib/git-core all doc
-  make -C contrib/mw-to-git prefix=/usr all
-  make -C contrib/diff-highlight prefix=/usr
+  make -C contrib/subtree "${_make_paths[@]}" all doc
+  make -C contrib/mw-to-git "${_make_paths[@]}" all
+  make -C contrib/diff-highlight "${_make_paths[@]}"
 }
 
 check() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$srcdir/$_name"
-  local jobs
+
   jobs="$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*')" || true
   mkdir -p /dev/shm/git-test
 
@@ -74,11 +88,9 @@ check() {
   # which is caused by 'git rebase' trying to use builduser's SHELL inside the
   # build chroot (i.e.: /usr/bin/nologin)
   SHELL=/bin/sh \
-  make prefix=/usr gitexecdir=/usr/lib/git-core \
-    CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE2=1 \
-    NO_CROSS_DIRECTORY_HARDLINKS=1 \
-    MAN_BOLD_LITERAL=1 \
+  make \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
     NO_SVN_TESTS=y \
     DEFAULT_TEST_TARGET=prove \
     GIT_PROVE_OPTS="$jobs -Q" \
@@ -89,14 +101,11 @@ check() {
 package() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$srcdir/$_name"
-  make prefix=/usr \
-    gitexecdir=/usr/lib/git-core \
-    perllibdir=/usr/share/perl5/vendor_perl \
-    CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE2=1 \
-    NO_CROSS_DIRECTORY_HARDLINKS=1 \
-    MAN_BOLD_LITERAL=1 \
-    INSTALLDIRS=vendor DESTDIR="$pkgdir" install install-doc
+  make \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
+    DESTDIR="$pkgdir" \
+    install install-doc
 
   # bash completion
   mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
@@ -105,9 +114,6 @@ package() {
   # fancy git prompt
   mkdir -p "$pkgdir"/usr/share/git/
   install -m644 ./contrib/completion/git-prompt.sh "$pkgdir"/usr/share/git/git-prompt.sh
-
-  # emacs
-  make -C contrib/emacs prefix=/usr DESTDIR="$pkgdir" install
 
   # gnome credentials helper
   install -m755 contrib/credential/gnome-keyring/git-credential-gnome-keyring \
@@ -120,10 +126,10 @@ package() {
   make -C contrib/credential/libsecret clean
 
   # subtree installation
-  make -C contrib/subtree prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" install install-doc
+  make -C contrib/subtree "${_make_paths[@]}" DESTDIR="$pkgdir" install install-doc
 
   # mediawiki installation
-  make -C contrib/mw-to-git prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" INSTLIBDIR=/usr/share/perl5/vendor_perl install
+  make -C contrib/mw-to-git "${_make_paths[@]}" DESTDIR="$pkgdir" install
 
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
