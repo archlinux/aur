@@ -4,14 +4,14 @@ _pyname=Piexif
 pkgname=('python-piexif' 'python2-piexif')
 makedepends=('python' 'python2' 'python2-setuptools' 'python-setuptools')
 checkdepends=('python-pytest' 'python2-pytest' 'python-pillow' 'python2-pillow')
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
 arch=('any')
 url="https://github.com/hMatoba/Piexif"
 license=('BSD')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/hMatoba/Piexif/archive/${pkgver}.tar.gz")
-sha512sums=('475d4136b3d490823650532964a96358310d0bed71a747094bbc7c0b9438dddf72927651a94688e6f80c24e6e9168a6bee32b570b5f92d15693bee511e5a4493')
+sha512sums=('99f32cb55d6b4c34900075cd77c392ac916a96db058b142ed78bd79da502d12ff2b5ca74205b6d5abb424e044858d27e087438ccc6c005cdc18f22235bb93d02')
 
 # Disabled because of not compatible API with python-pillow version > 4.0.0
 #check(){

@@ -1,6 +1,6 @@
 pkgbase = python-piexif
 	pkgdesc = Python library to read and write EXIF data from TIFF and JPG files
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/hMatoba/Piexif
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-piexif
 	makedepends = python2
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
-	source = Piexif-1.0.12.tar.gz::https://github.com/hMatoba/Piexif/archive/1.0.12.tar.gz
+	source = Piexif-1.0.13.tar.gz::https://github.com/hMatoba/Piexif/archive/1.0.13.tar.gz
 	sha512sums = 475d4136b3d490823650532964a96358310d0bed71a747094bbc7c0b9438dddf72927651a94688e6f80c24e6e9168a6bee32b570b5f92d15693bee511e5a4493
 
 pkgname = python-piexif
