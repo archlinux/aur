@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=61.3
-pkgrel=1
+pkgrel=2
 meme=FIREFOX_61_0b3_RELEASE
 meme2=DEVEDITION_61_0b1_RELEASE
 meme3=FIREFOX_BETA_61_BASE
@@ -23,7 +23,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://hg.mozilla.org/mozilla-unified/archive/$meme2.tar.gz"
+source=("https://hg.mozilla.org/mozilla-unified/archive/$meme.tar.gz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$meme.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
