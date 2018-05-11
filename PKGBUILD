@@ -6,7 +6,7 @@
 _reponame=reflective-rapidjson
 _llvmver=6
 pkgname=reflective-rapidjson
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'clang-tools-extra' 'boost' 'llvm')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f670d57f6505a4f6294c61e013260289311f13481bb5f8346b9a10f94364c0a')
+sha256sums=('3ba7c7f2a73c9ab2afe38cd884b8f1290e770f17c9fd497de5468c7d4a690bdb')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
