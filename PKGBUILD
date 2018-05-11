@@ -2,7 +2,7 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
@@ -19,9 +19,9 @@ source_x86_64=("${_url}/${pkgname}_${pkgver}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 
 sha512sums=('SKIP')
-sha512sums_x86_64=('c4a89ddc9055937fd812d957fe090bf8358378a0ee3854dda49fff56431bab721c824d3d790b1feae0bc1f3ad10501d04a6c2859553cc01f106587ba26094215'
+sha512sums_x86_64=('186e51d17c9e021509b9486b3234d43747cb7010a5bf09285cdbe973c31bb0a0c51b835ad726f66d0b735f610d7df001bab3cfd0203e7f09acb489fcf7448d07'
                    'SKIP')
-sha512sums_i686=('cbf3cde45a4b53c960bf3094209487280acd2106a8425d326d3726fdf1be7ef20a23925261cad3abd8cc9f101d351ee44bfa3c6a5ecb5105da38727c6e6c0f18'
+sha512sums_i686=('694932052c638125a947eb2c47c6eb02b5f1749eb125c1fe11a316d1a8796745cd837d544efaab3df4ac8497e17c445cb402b60ba8a0235596783aa6e8216261'
                  'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
