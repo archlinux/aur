@@ -1,18 +1,21 @@
 # Maintainer: Florian B. 
 
-pkgname="powerline-shell"
-pkgver=r546.73b01d6
+pkgname="powerline-shell-git"
+_pkgname="powerline-shell"
+pkgver=r3.3c5ca0c
 pkgrel=1
 pkgdesc="A pretty prompt for your shell"
 arch=("any")
 _giturl="://github.com/b-ryan/powerline-shell"
 url="https${_giturl}"
 license=("MIT")
-provides=("${pkgname}")
+provides=("${_pkgname}")
 depends=("python")
+makedepends=(
+  "git" "python-setuptools"
+)
 source=(
   "git${_giturl}.git"
-  #${pkgname}-${pkgver}::${url}/archive/master.tar.gz"
 )
 md5sums=('SKIP')
 
@@ -21,12 +24,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}"
-  mv "${pkgname}-master" "${pkgname}"
-}
-
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
