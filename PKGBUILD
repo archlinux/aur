@@ -4,10 +4,9 @@
 pkgname=tweak-hexeditor
 pkgdesc='Efficient command line hex editor'
 pkgver=3.02
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 depends=('ncurses' 'glibc')
-makedepends=('make' 'gcc')
 url='https://www.chiark.greenend.org.uk/~sgtatham/tweak/'
 license=('MIT')
 source=("https://www.chiark.greenend.org.uk/~sgtatham/tweak/tweak-$pkgver.tar.gz")
@@ -18,8 +17,8 @@ sha256sums=('5b4c19b1bf8734d1623e723644b8da58150b882efa9f23bbe797c3922f295a1a')
 build() {
     cd "tweak-$pkgver"
     # The upstream Makefile is very poorly implemented and doesn't pick
-    # up CFLAGS or CPPFLAGS from the environment.
-    make XFLAGS="$CPPFLAGS $CFLAGS"
+    # up CFLAGS, CPPFLAGS or LDFLAGS from the environment.
+    make XFLAGS="$CPPFLAGS $CFLAGS" LINK="gcc $LDFLAGS"
 }
 
 package() {
