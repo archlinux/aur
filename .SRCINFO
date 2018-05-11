@@ -1,15 +1,15 @@
 pkgbase = deepin-wine-binfmt
 	pkgdesc = Deepin Wine Fonts
-	pkgver = 2.18_8
-	pkgrel = 2
+	pkgver = 2.18_10
+	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-wine-binfmt_2.18-8~rc4_all.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine-binfmt_2.18-8~rc4_all.deb
-	md5sums = 237ace71de614268ddca1a420506071e
+	noextract = deepin-wine-binfmt_2.18-10_all.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine-binfmt_2.18-10_all.deb
+	md5sums = cfb908bacddefac58fb8860f74c75a79
 
 pkgname = deepin-wine-binfmt
 
