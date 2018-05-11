@@ -2,7 +2,7 @@
 
 _name='roboschool'
 pkgname="${_name}-git"
-pkgver=r4.b81efcc
+pkgver=r37.1c323fc
 pkgrel=1
 pkgdesc='Robot simulation, integrated with OpenAI Gym.'
 url="https://github.com/openai/${_name}"
@@ -12,7 +12,7 @@ license=('MIT')
 arch=('x86_64')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${srcdir}/$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
