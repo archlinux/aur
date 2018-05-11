@@ -1,7 +1,7 @@
 pkgbase = lectrote-bin
 	pkgdesc = The IF interpreter in an Electron shell (binary release)
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erkyrath/lectrote
 	arch = x86_64
 	license = MIT

@@ -1,16 +1,15 @@
 # Maintainer: Benjamin L. Merritt <blm768@gmail.com>
 pkgname=lectrote-bin
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="The IF interpreter in an Electron shell (binary release)"
+pkgrel=2
+pkgdesc="The IF interpreter in an Electron shell (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/erkyrath/lectrote"
 license=('MIT')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxtst' 'libxss' 'nss')
 makedepends=()
 provides=('lectrote')
-install=
-changelog=
+install=lectrote.install
 source=(
     "https://github.com/erkyrath/lectrote/releases/download/lectrote-$pkgver/Lectrote-$pkgver-linux-x64.zip"
     "lectrote.desktop"
