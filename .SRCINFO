@@ -1,0 +1,18 @@
+pkgbase = bookwyrm-git
+	pkgdesc = traverse various sources, find ebooks/textbooks/papers, and download them
+	pkgver = v0.5.0.r0.g92cd41b
+	pkgrel = 1
+	url = https://github.com/Tmplt/bookwyrm
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = python
+	provides = bookwyrm
+	conflicts = bookwyrm
+	source = bookwyrm::git+https://github.com/Tmplt/bookwyrm.git
+	md5sums = SKIP
+
+pkgname = bookwyrm-git
+
