@@ -3,9 +3,9 @@
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.5.r1.gbe9818e
+pkgver=0.7.r8.ga786269
 pkgrel=1
-pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
+pkgdesc="Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
