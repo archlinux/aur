@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 _pkgbasename=distrho-extra-lv2
 pkgname=${_pkgbasename}-git
-pkgver=r25.0b3a99b
+pkgver=r26.b6f25f1
 pkgrel=1
 pkgdesc="Extra LV2 ports of JUCE-based audio plugins using the DISTRHO framework"
 arch=('i686' 'x86_64')
@@ -22,13 +22,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+# TODO: make DISTRHO-Ports a dependency instead of having to build it in here
 prepare() {
   cd "${srcdir}/${_pkgbasename%%-*}"
 
   # generate build script
   scripts/premake-update.sh linux
-  # https://github.com/DISTRHO/DISTRHO-Ports-Extra/issues/1
-  sed -i 's/JUCE_ALLOW_STATIC_NULL_VARIABLES 0/JUCE_ALLOW_STATIC_NULL_VARIABLES 1/' libs/juce/build-juce/AppConfig.h
   make
   
   cd "${srcdir}/${_pkgbasename}"
