@@ -1,14 +1,14 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Pythonless package of a a tool for defining and running multi-container applications
 	pkgver = 1.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/compose
 	arch = x86_64
 	license = Apache
 	depends = docker
 	conflicts = docker-compose
 	options = !strip
-	source = https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
+	source = docker-compose-1.21.2::https://github.com/docker/compose/releases/download/1.21.2/docker-compose-Linux-x86_64
 	source = https://github.com/docker/compose/archive/1.21.2.tar.gz
 	sha256sums = 8a11713e11ed73abcb3feb88cd8b5674b3320ba33b22b2ba37915b4ecffdf042
 	sha256sums = 3fdaa361dceb919b6008a925b8b672d7402cc3dd8277b8f26b028dd546d39926
