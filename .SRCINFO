@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
-	pkgver = 66.0.3359.139
+	pkgver = 66.0.3359.170
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -51,17 +51,17 @@ pkgbase = chromium-vaapi
 	optdepends = libva-intel-driver: Needed to support VA-API for Intel graphics cards
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.139.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.170.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = chromium-66.0.3359.139.txt::https://chromium.googlesource.com/chromium/src/+/66.0.3359.139?format=TEXT
+	source = chromium-66.0.3359.170.txt::https://chromium.googlesource.com/chromium/src/+/66.0.3359.170?format=TEXT
 	source = fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
 	source = fix-frame-buttons-rendering-too-large-when-using-OSX.patch
 	source = chromium-skia-harmony.patch
 	source = chromium-widevine.patch
 	source = chromium-vaapi-r18.patch
-	sha256sums = be75a5b5f8c5789d359238f374a43bf52ded49425f13ed68b8021c24e2e264b2
+	sha256sums = 864da6649d19387698e3a89321042193708b2d9f56b3a778fb552166374871de
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = 34eb82c625b7050021a8d3334ceaa7fa3d042dd816c228c14abb52b29796f7b9
+	sha256sums = b5b6385cf21991c02d47acaaa830c9612a3c5b6e154da3613db2b2e27fdc6b4c
 	sha256sums = e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe
 	sha256sums = bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a
 	sha256sums = feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3
