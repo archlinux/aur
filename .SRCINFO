@@ -1,7 +1,7 @@
 pkgbase = ypbind-mt
 	pkgdesc = Linux NIS daemon
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thkukuk/ypbind-mt
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ypbind-mt
 	source = ypbind.conf
 	source = fixes.patch
 	md5sums = 11f09789cc8bb4d844798c3535c30208
-	md5sums = 5ea205756731c2978cca4934141424bd
+	md5sums = 50e05f057ec0603243e3d334aaa0934f
 	md5sums = 3d6a8eb44771f81abb47d14d9e4f301d
 	md5sums = 17374b15cfa85bae36ee1948600821e6
 

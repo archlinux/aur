@@ -7,7 +7,7 @@
 
 pkgname=ypbind-mt
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux NIS daemon'
 url='https://github.com/thkukuk/ypbind-mt'
 license=('GPL2')
@@ -41,6 +41,6 @@ package() {
 }
 
 md5sums=('11f09789cc8bb4d844798c3535c30208'
-         '5ea205756731c2978cca4934141424bd'
+         '50e05f057ec0603243e3d334aaa0934f'
          '3d6a8eb44771f81abb47d14d9e4f301d'
          '17374b15cfa85bae36ee1948600821e6')
