@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.11rc1
+pkgver=1.11
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
