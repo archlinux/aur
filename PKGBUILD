@@ -10,12 +10,12 @@
 _proname=RTKLIB
 pkgname=rtklib-git
 pkgver=2.4.3b29
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Program Package for GNSS Positioning"
 arch=('x86_64')
 url="http://www.rtklib.com/"
 license=('GPL')
-groups=('rtklib-group')
+groups=('GNSS')
 depends=('glibc')
 makedepends=('git' 'gcc-fortran') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
@@ -28,10 +28,10 @@ source=("${_proname}::git+https://github.com/tomojitakasu/RTKLIB.git#branch=rtkl
 noextract=()
 md5sums=('SKIP')
 
-prepare() {
-    cd "$srcdir/${_proname}/app"
-    sed -i "s/\/usr\/local\/bin/\/usr\/bin/g" makefile
-}
+#prepare() {
+    #cd "$srcdir/${_proname}/app"
+    ##sed -i "s/\/usr\/local\/bin/\/usr\/bin/g" makefile
+#}
 
 build() {
     cd "$srcdir/${_proname}/lib/iers/gcc"
@@ -46,6 +46,7 @@ package() {
     install -Dm755 "$srcdir/${_proname}/app/str2str/gcc/str2str" "$pkgdir/usr/bin/str2str"
     install -Dm755 "$srcdir/${_proname}/app/rnx2rtkp/gcc/rnx2rtkp" "$pkgdir/usr/bin/rnx2rtkp"
     install -Dm755 "$srcdir/${_proname}/app/rtkrcv/gcc/rtkrcv" "$pkgdir/usr/bin/rtkrcv"
+    install -Dm755 "$srcdir/${_proname}/app/rtkrcv/gcc/convbin" "$pkgdir/usr/bin/convbin"
     # copy share file
     mkdir -p "$pkgdir/usr/share/${pkgname}/data/"
     for f in $srcdir/${_proname}/data/*;do
