@@ -7,8 +7,8 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.32.6
-pkgrel=2
+pkgver=2.32.7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -16,10 +16,8 @@ makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'p
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz"
-       "0001-cmd-libsnap-fix-compile-error-on-more-restrictive-gc.patch")
-sha256sums=('6bc2b4c2005713cdff711c2ddb937289b95e8459091f0eb9cda9f177e81181e7'
-           'df09d7a85da832781eb32acf9dafc3a41a78d3419666b0727db2921f0d93a81b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
+sha256sums=('672652d67fd28f388985b981c6e2fa89f32be264768b55f0ee4b79333792a0fc')
 
 _gourl=github.com/snapcore/snapd
 
@@ -34,8 +32,6 @@ prepare() {
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
-
-  patch -Np1 -i "${srcdir}/0001-cmd-libsnap-fix-compile-error-on-more-restrictive-gc.patch"
 }
 
 build() {
