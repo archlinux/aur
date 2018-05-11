@@ -4,7 +4,7 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
@@ -13,9 +13,9 @@ license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'gtk2' 'libxtst')
 makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven')
 optdepends=('fluidsynth')
-source=(tuxguitar-src-$pkgver.tar.gz::http://downloads.sourceforge.net/project/tuxguitar/TuxGuitar/TuxGuitar-$pkgver/tuxguitar-$pkgver-src.tar.gz
+source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
         nogcj.patch)
-sha256sums=('ac72690bc1c20919dd66df46f757c6890be4c54b38f2a3b59a0265c777392210'
+sha256sums=('5735aadc7f6ae5c1c612a8e8c0e5f4469bc63ddbb566fbba544f0d71e412a9c7'
             'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
 
 case $CARCH in
@@ -79,5 +79,3 @@ cd /usr/share/tuxguitar
 exec ./tuxguitar.sh -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false "\$@"
 EOF
 }
-sha256sums=('73fc2f2f433bda4b876a7670c2ec632c4c914d735ef566e745d1407dc2e6a5f9'
-            'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
