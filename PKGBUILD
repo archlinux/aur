@@ -6,10 +6,9 @@
 # Contributor: Luigi Ranghetti <ggranga@gmail.com>
 
 pkgname=gdal-hdf4
+pkgname=(gdal-hdf4 python-gdal-hdf4 python2-gdal-hdf4)
 _pkgbase=gdal
 _pkgname=(gdal python-gdal python2-gdal)
-provides=('gdal')
-conflicts=('gdal')
 pkgver=2.2.4
 pkgrel=4
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
@@ -69,6 +68,9 @@ build() {
 }
 
 package_gdal-hdf4 () {
+  provides=(gdal)
+  conflicts=(gdal)
+
   cd "${srcdir}"/$_pkgbase-$pkgver
 
   make DESTDIR="${pkgdir}" install
@@ -89,10 +91,12 @@ package_gdal-hdf4 () {
   chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GNM/GNM.so
 }
 
-package_python-gdal () {
-  pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
-  depends=("gdal=$pkgver" 'python-numpy')
+package_python-gdal-hdf4 () {
+  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
+  depends=("gdal-hdf4=$pkgver" 'python-numpy')
   optdepends=()
+  provides=(python-gdal)
+  conflicts=(python-gdal)
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
   python3 setup.py install --root="$pkgdir" --optimize=1
@@ -102,10 +106,12 @@ package_python-gdal () {
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$_pkgname
 }
 
-package_python2-gdal () {
-  pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
-  depends=("gdal=$pkgver" 'python2-numpy')
+package_python2-gdal-hdf4 () {
+  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
+  depends=("gdal-hdf4=$pkgver" 'python2-numpy')
   optdepends=()
+  provides=(python2-gdal)
+  conflicts=(python2-gdal)
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
 

@@ -34,8 +34,6 @@ pkgbase = gdal-hdf4
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
-	provides = gdal
-	conflicts = gdal
 	options = !emptydirs
 	source = https://download.osgeo.org/gdal/2.2.4/gdal-2.2.4.tar.xz
 	source = gdal-perl-vendor.patch
@@ -45,4 +43,22 @@ pkgbase = gdal-hdf4
 	sha256sums = 34d7909e1375aa407936374d65a561a6803b59b1280be7f878fb45049f629b40
 
 pkgname = gdal-hdf4
+	provides = gdal
+	conflicts = gdal
+
+pkgname = python-gdal-hdf4
+	pkgdesc = Python bindings for GDAL, with support to HDF4 format
+	depends = gdal-hdf4=2.2.4
+	depends = python-numpy
+	optdepends = 
+	provides = python-gdal
+	conflicts = python-gdal
+
+pkgname = python2-gdal-hdf4
+	pkgdesc = Python bindings for GDAL, with support to HDF4 format
+	depends = gdal-hdf4=2.2.4
+	depends = python2-numpy
+	optdepends = 
+	provides = python2-gdal
+	conflicts = python2-gdal
 
