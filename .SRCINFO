@@ -1,7 +1,7 @@
 pkgbase = python-virustotal-api
 	pkgdesc = Virus Total Public/Private/Intel API
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.10
+	pkgrel = 1
 	url = https://github.com/blacktop/virustotal-api/
 	arch = any
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = python-virustotal-api
 	makedepends = python2-setuptools
 	makedepends = python-future
 	makedepends = python2-future
-	source = virustotal-api-1.1.2.tar.gz::https://pypi.python.org/packages/source/v/virustotal-api/virustotal-api-1.1.2.tar.gz
-	sha512sums = ed687b1b75532d23489bc9a9dffc99e60ee041fd3e87740e5738c0c274af31fad92e8de06560961f15e3a617cb896d0a2749c4f125ff5257c19e01595f1f3d0e
+	source = virustotal-api-1.1.10.tar.gz::https://pypi.python.org/packages/source/v/virustotal-api/virustotal-api-1.1.10.tar.gz
+	sha512sums = 724b1defc46677795d80b49c9cfead8a9cf9d6dff27ca076ada60cb3f2be2718ffec975f0cf4cd088098c22dcfcd03356deb78a13189744f3c618fd5687e4f19
 
 pkgname = python-virustotal-api
 	depends = python

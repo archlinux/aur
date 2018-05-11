@@ -3,15 +3,15 @@
 pkgbase=python-virustotal-api
 _pyname=virustotal-api
 pkgname=('python-virustotal-api' 'python2-virustotal-api')
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.10
+pkgrel=1
 pkgdesc="Virus Total Public/Private/Intel API"
 arch=('any')
 url="https://github.com/blacktop/virustotal-api/"
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-future' 'python2-future')
 source=("${_pyname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/v/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha512sums=('ed687b1b75532d23489bc9a9dffc99e60ee041fd3e87740e5738c0c274af31fad92e8de06560961f15e3a617cb896d0a2749c4f125ff5257c19e01595f1f3d0e')
+sha512sums=('724b1defc46677795d80b49c9cfead8a9cf9d6dff27ca076ada60cb3f2be2718ffec975f0cf4cd088098c22dcfcd03356deb78a13189744f3c618fd5687e4f19')
 
 prepare() {
   cd "${srcdir}"
