@@ -10,7 +10,6 @@ license=('MIT')
 arch=('any')
 depends=('python-pynacl')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
@@ -19,11 +18,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-check() {
-    cd "${_pkgname}"
-    pytest tests
 }
 
 package() {

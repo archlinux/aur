@@ -5,7 +5,6 @@ pkgbase = python-scci-git
 	url = https://github.com/Syndace/python-scci
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-pynacl
 	provides = python-scci
