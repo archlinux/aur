@@ -3,7 +3,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.28.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -27,8 +27,18 @@ makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
-source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795')
+source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
+        'mpv-full-fix-build-with-ffmpeg-git.patch')
+sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795'
+            '037a21d6528344e25ec9f3057bb11b0b4a3f0114b9068c23ca15333f4e57bb50')
+
+prepare() {
+    cd "${_srcname}-${pkgver}"
+    
+    # fix build when using ffmpeg git master
+    # https://github.com/mpv-player/mpv/issues/5813
+    patch -Np1 -i "${srcdir}/mpv-full-fix-build-with-ffmpeg-git.patch"
+}
 
 build() {
     cd "${_srcname}-${pkgver}"
