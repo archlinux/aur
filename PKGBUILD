@@ -6,7 +6,7 @@
 _reponame=tagparser
 pkgname=mingw-w64-tagparser
 _name=${pkgname#mingw-w64-}
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
@@ -17,7 +17,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('c3faa383379a24111593ea00c7dceb46b3652227fa8fdb4496809124c49174c8')
+sha256sums=('bad3e48845da86212f06bbacca2f47a1462df1db5779b3cdaca1961033f762c2')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
