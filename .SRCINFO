@@ -1,7 +1,7 @@
 pkgbase = dte
 	pkgdesc = A small and easy to use console text editor
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://craigbarnes.gitlab.io/dte/
 	arch = x86_64
 	arch = i686
@@ -12,10 +12,7 @@ pkgbase = dte
 	depends = glibc
 	depends = ncurses
 	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.7.tar.gz
-	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.7.tar.gz.sig
-	validpgpkeys = A3FB922E15870DA250D9DCE1FBCC7A6B0330BEB4
 	sha256sums = 6cd070037d9c6f4b4f3b5bedd78183dde5f8e79811ccdf04b0e7abafe5fdc33d
-	sha256sums = 8d0ea0c123b250405c4e0152bd7a6558d75fb775b16f617edda50a0ac8994994
 
 pkgname = dte
 
