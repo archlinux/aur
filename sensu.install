@@ -21,11 +21,21 @@ post_install() {
 	chown_sensu_dirs()
 	{
 	    # Ensure all files/directories in $INSTALLER_DIR are owned by root.
-	    chown -Rh 0:0 /opt/sensu
-	    chown -R sensu:sensu /etc/sensu
-	    chown -R sensu:sensu /var/log/sensu
-	    chown -R sensu:sensu /run/sensu
-	    chown -R sensu:sensu /var/cache/sensu
+        if [ -d "/opt/sensu" ]; then
+	        chown -Rh 0:0 /opt/sensu
+        fi
+        if [ -d "/etc/sensu" ]; then
+	        chown -R sensu:sensu /etc/sensu
+        fi
+        if [ -d "/var/log/sensu" ]; then
+    	    chown -R sensu:sensu /var/log/sensu
+        fi
+        if [ -d "/run/sensu" ]; then
+	        chown -R sensu:sensu /run/sensu
+        fi
+        if [ -d "/var/cache/sensu" ]; then
+	        chown -R sensu:sensu /var/cache/sensu
+        fi
 	}
 
 	create_sensu_user_group

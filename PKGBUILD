@@ -3,7 +3,7 @@
 # Contributor:
 pkgname=sensu
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 _debver='1.4.2-1'
 pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=("https://repositories.sensuapp.org/apt/pool/stretch/main/s/${pkgname}/${pkgname}_${_debver}_amd64.deb")
 sha1sums=('e4b6a914fe32c96e0c05cad5915cf862ee49b078')
 
-package(){
+package() {
 	# Extract package data
 	tar xzf data.tar.gz -C "${pkgdir}"
 
