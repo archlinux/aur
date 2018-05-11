@@ -1,13 +1,14 @@
 pkgbase=python-pycmus
+_name=pycmus
 pkgname=('python-pycmus' 'python2-pycmus')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A python library cmus remote library"
 arch=('any')
 url='https://pypi.python.org/pypi/pycmus'
 license=('GPL3')
-source=("https://pypi.python.org/packages/51/b6/1acde8a61463ce35039fd2401884b9c6b2f03d34100c677c2e8378d5b833/pycmus-0.1.0.tar.gz")
-md5sums=('595f7a5339fbb694a3f9ada2772acd5e')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('5a4f49fd78ca641d77a3c426741c9558770075f34e89cc0b687d92878a89708c')
 makedepends=('python2-setuptools' 'python-setuptools')
 
 package_python-pycmus() {
