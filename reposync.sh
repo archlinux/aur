@@ -7,7 +7,7 @@ cfg_file_system="$cfg_file"
 local_repo="$HOME/.cache/reposync"
 old_pkgs="$HOME/.cache/reposync-outdated"
 
-do_rsync="rsync -av --append"
+do_rsync="rsync -av"
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
@@ -34,7 +34,7 @@ trap 'bash -c "$exit_cmd"' EXIT
 repo="$(mktemp -d)"
 defer "rmdir '$repo'"
 
-s3fs "${bucket}" "$repo" -o "nosuid,nodev,default_acl=public-read,url=$bucket_url,nomultipart"
+s3fs "${bucket}" "$repo" -o "nosuid,nodev,default_acl=public-read"
 defer "fusermount -u '$repo'"
 remote_repo="$repo/${repo_path}"
 mkdir -p "${remote_repo}"
