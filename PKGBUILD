@@ -5,7 +5,7 @@
 
 _reponame=cpp-utilities
 pkgname=c++utilities
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities'
@@ -16,7 +16,7 @@ makedepends=('cmake')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('dbf68dc8b9fa154b753403acfe66348c1f66f83782b662b9fcf6c73f301defcc')
+sha256sums=('4d63a9a2c06b6375f18baf5b8338e31fd36cfdf1301d474948be81901e079f95')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
