@@ -1,7 +1,7 @@
 pkgbase = roboschool-git
 	pkgdesc = Robot simulation, integrated with OpenAI Gym.
 	pkgver = r37.1c323fc
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openai/roboschool
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = roboschool-git
 	depends = assimp
 	depends = tinyxml
 	optdepends = python-pyglet: run some demos s.a. demo_keyboard_humanoid2.py
+	provides = {roboschool}
 	source = git+https://github.com/openai/roboschool.git
 	source = git+https://github.com/olegklimov/bullet3#branch=roboschool_self_collision
 	sha256sums = SKIP

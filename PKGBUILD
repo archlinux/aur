@@ -3,8 +3,9 @@
 _name='roboschool'
 pkgname="${_name}-git"
 pkgver=r37.1c323fc
-pkgrel=3
+pkgrel=4
 pkgdesc='Robot simulation, integrated with OpenAI Gym.'
+provides=({$_name})
 url="https://github.com/openai/${_name}"
 depends=('python-gym-git' 'qt5-base' 'assimp' 'tinyxml')
 makedepends=('cmake' 'python-setuptools')
