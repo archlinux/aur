@@ -2,16 +2,16 @@
 # Submitter: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=packmol
-pkgver=17.221
+pkgver=18.104
 pkgrel=1
 pkgdesc="Creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space."
 depends=("gcc-libs" "tcl" "bash")
 makedepends=("gcc-fortran")
-arch=("i686" "x86_64")
+arch=("x86_64")
 license=("GPL2")
 url="http://www.ime.unicamp.br/~martinez/packmol/"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mcubeg/packmol/archive/${pkgver}.tar.gz")
-sha1sums=('6d8488914e8f7c2e94998caab3c5b790f2986b0e')
+sha1sums=('f14109d7bae822580a018cff78de1bed5b368b87')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
