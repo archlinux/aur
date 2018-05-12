@@ -1,3 +1,8 @@
+2018-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.2.0-2:
+    package: use OS specific release when appropriate
+    package: add message about config paths on new installations
+    package: disable logging to file on new installations
 2018-04-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.2.0-1:
     Fixed latest Steam privacy breaking change that affected STM-related settings, including ASF STM public listing.
