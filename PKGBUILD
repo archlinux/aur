@@ -3,7 +3,7 @@
 
 pkgname=ffmpegthumbs-mattepaint
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="An alternative version of the standard KDE ffmpegthumbs."
 arch=('x86_64')
 url="http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902"

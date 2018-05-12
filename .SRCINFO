@@ -1,7 +1,7 @@
 pkgbase = ffmpegthumbs-mattepaint
 	pkgdesc = An alternative version of the standard KDE ffmpegthumbs.
 	pkgver = 0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902
 	arch = x86_64
 	license = GPL
