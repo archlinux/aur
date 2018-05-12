@@ -9,6 +9,7 @@ pkgbase = opensc-git
 	makedepends = git
 	depends = pcsclite
 	depends = libltdl
+	provides = opensc
 	conflicts = opensc
 	options = !emptydirs
 	backup = etc/opensc.conf

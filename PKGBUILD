@@ -16,7 +16,8 @@ backup=('etc/opensc.conf')
 makedepends=('docbook-xsl' 'git')
 depends=('pcsclite' 'libltdl')
 options=('!emptydirs')
-conflicts=(opensc)
+conflicts=('opensc')
+provides=('opensc')
 source=("git+https://github.com/OpenSC/OpenSC.git#branch=master"
         'bash-completion-path.patch')
 sha256sums=('SKIP'
