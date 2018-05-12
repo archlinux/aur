@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=18.01.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('mashup: for composing pages to print from within fotoxx'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha512sums=('7255d30fc57c4244224fa4f07fc2cb0e169325f05dfd316768988e0d12ac4dc46fa299830d2be062d6a2d72bd97239fbcf3cdbd4affde19b07a76683a4805c48')
+sha512sums=('81ab02eedbe3a001dcb667afc5c515781e32c1316ca8bfcbf361778ec9cea3592fb090a13b2ecede4b8fa5c51f855c45d518dd289dc0a0aeeee588ce19df79b0')
 options=('!makeflags')
 
 build() {
