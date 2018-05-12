@@ -1,0 +1,17 @@
+pkgbase = twiggy-git
+	pkgdesc = Twiggy is a code size profiler
+	pkgver = 0.1.0.118
+	pkgrel = 1
+	url = https://github.com/rustwasm/twiggy
+	arch = i686
+	arch = x86_64
+	license = NULL
+	makedepends = rust
+	makedepends = cargo
+	provides = twiggy
+	conflicts = twiggy
+	source = twiggy::git+https://github.com/rustwasm/twiggy
+	sha256sums = SKIP
+
+pkgname = twiggy-git
+
