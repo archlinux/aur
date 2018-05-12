@@ -1,25 +1,18 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
-# Contributor: keith <keith@hubbard.net>
+# Maintainer: Björn Wiedenmann <archlinux at xorxor dot de>
+# Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
+# Contributor: Alessio 'mOLOk' Bolognino <themolok at gmail dot com>
+# Contributor: keith <keith at hubbard dot net>
 
 pkgname=mp3gain
-pkgver=1.5.2
-pkgrel=3
-pkgdesc="Lossless mp3 normalizer with statistical analysis "
-arch=('x86_64')
-url="http://mp3gain.sourceforge.net"
-license=("GPL")
+pkgver=1.6.1
+pkgrel=1
+pkgdesc='Lossless mp3 normalizer with statistical analysis'
+arch=('x86_64' 'armv7h')
+url='https://sourceforge.net/projects/mp3gain/'
+license=('GPL')
 depends=('glibc')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver//./_}-src.zip
-	build-fix.patch)
-md5sums=('d888563538ec863eeea8afc8207b2739'
-         '20680cbada13ba941b0532ff94e583e1')
-
-prepare() {
-    cd "$srcdir"
-    patch -p0 Makefile <"$srcdir"/build-fix.patch
-}
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver//./_}-src.zip")
+md5sums=('0df5c6849353de212e8c36a0353d716c')
 
 build() {
     cd "$srcdir"
