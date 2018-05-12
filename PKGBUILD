@@ -1,6 +1,6 @@
 pkgname=cms-germany-git
 pkgver=r3802.4d519c16
-pkgrel=2
+pkgrel=3
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
@@ -87,5 +87,16 @@ package() {
     chmod o-x $pkgdir/usr/bin/isolate
 
     cd ../cms
+
+    # Logs and cache directories
+    install -d -m770 $pkgdir/var/log/cms
+    install -d -m770 $pkgdir/var/cache/cms
+
+    # Configuration files
+    install -D -m660 config/cms.conf.sample $pkgdir/usr/lib/cms/cms.conf
+    install -D -m660 config/cms.ranking.conf.sample $pkgdir/usr/lib/cms/cms.ranking.conf
+
+    python2 prerequisites.py build_l10n --as-root
     python2 setup.py install --root="$pkgdir" --optimize=1
+
 }
