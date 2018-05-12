@@ -29,7 +29,7 @@ if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     sha512sums[0]='f9b7084c8ad779cb434f550e1b2f1437cbb200c90ef110aece263124f934e8e589d237e956614fd082275c6ced5ac530979d318c7399aec183c75c136cfef8ab'
     [[ "$CARCH" == "i686" ]] && sha512sums[0]='2b41c7b5746254d083094ce6df59d4ecc13a7dd89b052ea930002a1953bdccdd532d9c5ece4bc52686ffae7f35df485f3d4eea0e36abade5dc2e10a868cbfc49'
 fi
-source=(http://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
+source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
         $_pkgname.desktop 
         $_pkgname-safe.desktop)
 
