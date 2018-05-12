@@ -1,0 +1,36 @@
+pkgbase = dotnet-core-rc
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	options = staticlibs
+	source = https://download.microsoft.com/download/D/0/B/D0B7F62D-9C5D-4CF3-AB6C-88F56B4FC1A9/dotnet-runtime-2.1.0-rc1-linux-x64.tar.gz
+	sha256sums = f720cf96ec174369e1fa217be8935ad787fe7964eeb8b3f062dfc89c08d1736e
+
+pkgname = dotnet-host-rc
+	pkgdesc = A generic driver for the .NET Core Command Line Interface
+	provides = dotnet-host
+	conflicts = dotnet-host
+
+pkgname = dotnet-runtime-rc
+	pkgdesc = The .NET Core runtime
+	depends = gcc-libs
+	depends = glibc
+	depends = dotnet-host-rc
+	depends = icu
+	depends = krb5
+	depends = libunwind
+	depends = lldb
+	depends = lttng-ust
+	depends = openssl-1.0
+	depends = zlib
+	depends = libcurl.so
+	depends = libuuid.so
+	provides = dotnet-runtime-2.0
+	provides = dotnet-runtime
+	conflicts = dotnet-runtime-2.0
+	conflicts = dotnet-runtime
+
