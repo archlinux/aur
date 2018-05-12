@@ -1,20 +1,19 @@
 pkgbase = libretro-pokemini-git
-	pkgdesc = libretro implementation of Pokémon-Mini emu - Obscure nintendo handheld emulator (functional,no color files or savestates currently)
-	pkgver = 38.218bdd5
+	pkgdesc = libretro implementation of Pokémon-Mini emu - Obscure nintendo handheld emulator
+	pkgver = 61.36a3f63
 	pkgrel = 1
 	url = https://github.com/libretro/PokeMini
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = armv6h
+	arch = armv7h
 	groups = libretro
 	license = GPL3
 	makedepends = git
-	depends = libretro-core-info
+	depends = glibc
 	source = git+https://github.com/libretro/PokeMini.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/pokemini_libretro.info
 	md5sums = SKIP
-	md5sums = 7274a85498b1603a24c7dfddf0657058
 
 pkgname = libretro-pokemini-git
 
