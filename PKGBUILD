@@ -12,7 +12,7 @@ depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-configobj python-dateutil python-tabulate python-humanize)
 optdepends=('python-click-repl: the repl command.'
             'bash-completion: bash autocompletion.'
-            'zsh-completion: zsh autocompletion.')
+            'zsh-completions: zsh autocompletion.')
 checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
               'python-freezegun')
 source=("https://github.com/pimutils/todoman/releases/download/v${pkgver}/todoman-${pkgver}.tar.gz"
