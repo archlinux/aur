@@ -1,7 +1,7 @@
 pkgbase = arenatracker-bin
 	pkgdesc = Tracks your Hearthstone Arena matches and cards.
 	pkgver = 6.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/supertriodo/Arena-Tracker/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = arenatracker-bin
 	arch = armv7h
 	license = GPL
 	depends = qt5-base
-	depends = python-pyautogui
 	depends = xcb-util-renderutil
 	depends = libpng12
 	provides = arenatracker
