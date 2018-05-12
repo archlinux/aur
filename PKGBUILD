@@ -38,9 +38,9 @@
 
 pkgname=openssh-hpn-git
 pkgver=7.5.P1.r74.ga0c37a72
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
-url='http://www.psc.edu/networking/projects/hpn-ssh/'
+url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('krb5' 'ldns' 'libedit' 'openssl-1.0' 'pam')
