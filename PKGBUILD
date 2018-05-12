@@ -8,6 +8,7 @@ pkgrel=1
 _reldate=2016-03-29
 license=('GPL')
 depends=('texlive-core')
+replaces=('texlive-tikzuml')
 pkgdesc="A LaTeX package for drawing UML diagrams using pgf/tikz"
 url="http://www.ensta-paristech.fr/~kielbasi/tikzuml/index.php?lang=en"
 arch=('any')

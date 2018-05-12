@@ -7,6 +7,7 @@ pkgbase = texlive-tikz-uml
 	arch = any
 	license = GPL
 	depends = texlive-core
+	replaces = texlive-tikzuml
 	source = http://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/src/tikzuml-v1.0-2016-03-29.tbz
 	md5sums = 8065a79c8cdf6fc99251d569dbaa65ec
 
