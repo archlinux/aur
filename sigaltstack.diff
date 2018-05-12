@@ -1,0 +1,15 @@
+--- gcc-5.3.0/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2014-05-22 09:09:21.000000000 +0200
++++ gcc-5.3.0/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2018-05-12 15:24:44.080409821 +0200
+@@ -31,6 +31,12 @@
+ #endif
+ #include <sys/wait.h> // for signal-related stuff
+ 
++struct sigaltstack {
++        void *ss_sp;
++        int ss_flags;
++        size_t ss_size;
++};
++
+ #ifdef sa_handler
+ # undef sa_handler
+ #endif

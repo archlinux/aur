@@ -1,0 +1,12 @@
+--- gcc-5.3.0/libsanitizer/asan/asan_linux.cc	2014-09-23 19:59:53.000000000 +0200
++++ gcc-5.3.0/libsanitizer/asan/asan_linux.cc	2018-05-12 15:17:49.785413772 +0200
+@@ -218,6 +218,9 @@ void GetPcSpBp(void *context, uptr *pc,
+ #endif
+ }
+ 
++#define SIGSEGV         11
++
++
+ bool AsanInterceptsSignal(int signum) {
+   return signum == SIGSEGV && common_flags()->handle_segv;
+ }

@@ -55,6 +55,11 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   patch -p1 -i ${startdir}/cfns.h.diff
+  patch -p1 -i ${startdir}/ucontext.diff
+  patch -p1 -i ${startdir}/sigsegv.diff
+  patch -p1 -i ${startdir}/sigaltstack.diff
+  patch -p1 -i ${startdir}/res_state.diff
+  
 
   mkdir -p ${srcdir}/gcc-build
 }
