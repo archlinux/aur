@@ -1,13 +1,14 @@
 # Maintainer: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-mednafen-vb-git
-pkgver=684.857a4b2
+pkgver=687.60a0859
 pkgrel=1
-pkgdesc="Virtual Boy emu - Standalone port of Mednafen VB to libretro."
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+pkgdesc="Virtual Boy emu - Standalone port of Beetle / Mednafen VB to libretro."
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/beetle-vb-libretro"
 license=('GPL2')
 groups=('libretro')
+depends=('gcc-libs')
 makedepends=('git')
 
 _libname=mednafen_vb_libretro
