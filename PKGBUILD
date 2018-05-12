@@ -2,8 +2,8 @@
 _ipn=hgettext
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
-pkgver=0.1.30
-pkgrel=3
+pkgver=0.1.31.0
+pkgrel=0
 pkgdesc="bindings to libintl.h (gettext, bindtextdomain)"
 arch=(x86_64)
 url="https://github.com/vasylp/hgettext"
@@ -19,21 +19,18 @@ options=(!emptydirs)
 install=
 source=(
   "http://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz"
-  "file://0001-update-to-support-haskell-src-exts-1.18.patch"
 )
-md5sums=('6b36a5c86e13de18c7daef124d9e9a71'
-         'd76683ac658490d60b880e6ee7928fe9')
+md5sums=('480acba59e114ed4a4f907695cfb60a1')
 
 prepare() {
   cd "$srcdir/${_ipn}-${pkgver}"
-  patch -Np1 -i "$srcdir/0001-update-to-support-haskell-src-exts-1.18.patch"
 }
 
 build() {
   cd "$srcdir/${_ipn}-${pkgver}"
-  runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
-    --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
-    --libsubdir=\$compiler/site-local/\$pkgid
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+      --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+      --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
   runhaskell Setup build
   runhaskell Setup haddock
   runhaskell Setup register --gen-script

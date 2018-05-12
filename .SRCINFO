@@ -1,7 +1,7 @@
 pkgbase = haskell-hgettext
 	pkgdesc = bindings to libintl.h (gettext, bindtextdomain)
-	pkgver = 0.1.30
-	pkgrel = 3
+	pkgver = 0.1.31.0
+	pkgrel = 0
 	url = https://github.com/vasylp/hgettext
 	arch = x86_64
 	license = custom:BSD3
@@ -13,10 +13,8 @@ pkgbase = haskell-hgettext
 	provides = haskell-hgettext
 	conflicts = haskell-hgettext
 	options = !emptydirs
-	source = http://hackage.haskell.org/packages/archive/hgettext/0.1.30/hgettext-0.1.30.tar.gz
-	source = file://0001-update-to-support-haskell-src-exts-1.18.patch
-	md5sums = 6b36a5c86e13de18c7daef124d9e9a71
-	md5sums = d76683ac658490d60b880e6ee7928fe9
+	source = http://hackage.haskell.org/packages/archive/hgettext/0.1.31.0/hgettext-0.1.31.0.tar.gz
+	md5sums = 480acba59e114ed4a4f907695cfb60a1
 
 pkgname = haskell-hgettext
 
