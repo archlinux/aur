@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=steam-wine-git
-pkgver=1.1.r0.gdf6a9c3
+pkgver=1.1.r5.g00ceea8
 pkgrel=1
 pkgdesc="Steam with simple wine wrapper"
 arch=('any')
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname}/"
-    ./install.sh PREFIX="$pkgdir"
+    make install PREFIX="$pkgdir"
 }
