@@ -16,7 +16,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=67.0.3396.10
+pkgver=68.0.3423.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -78,11 +78,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-ffmpeg-r1.patch'
-
          # Misc Patches
         'chromium-ffmpeg-clang.patch'
         'chromium-intel-vaapi_r18.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/18/patch?download'
@@ -95,9 +93,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
+            'c910f9260198bab40b330eec58e336b90677d907797aac308d87315e260b2582'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
-            '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
             # Misc Patches
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
@@ -138,8 +135,10 @@ _keeplibs=(
            'courgette/third_party'
            'native_client/src/third_party/dlmalloc'
            'native_client_sdk/src/libraries/third_party/newlib-extras'
+           'net/third_party/http2'
            'net/third_party/mozilla_security_manager'
            'net/third_party/nss'
+           'net/third_party/spdy'
            'third_party/WebKit'
            'third_party/analytics'
            'third_party/angle'
@@ -203,6 +202,7 @@ _keeplibs=(
            'third_party/libphonenumber'
            'third_party/libsecret'
            'third_party/libsrtp'
+           'third_party/libsync'
            'third_party/libudev'
            'third_party/libvpx'
            'third_party/libvpx/source/libvpx/third_party/x86inc'
@@ -220,6 +220,7 @@ _keeplibs=(
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/openmax_dl'
            'third_party/ots'
+           'third_party/perfetto'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
            'third_party/pdfium/third_party/base'
@@ -241,6 +242,7 @@ _keeplibs=(
            'third_party/shaderc'
            'third_party/skia'
            'third_party/skia/third_party/gif'
+           'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/spirv-headers'
            'third_party/skia/third_party/spirv-tools'
            'third_party/skia/third_party/vulkan'
@@ -263,11 +265,11 @@ _keeplibs=(
            'third_party/widevine'
            'third_party/woff2'
            'third_party/zlib/google'
-
            'url/third_party/mozilla'
            'v8/src/third_party/valgrind'
            'v8/src/third_party/utf8-decoder'
            'v8/third_party/inspector_protocol'
+           'v8/third_party/antlr4'
 
            # gyp -> gn leftovers
            'base/third_party/libevent'
@@ -301,7 +303,7 @@ _flags=(
         'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=true'
+        'enable_nacl_nonsfi=false' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
         'use_custom_libcxx=false'
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
         'enable_vulkan=true'
@@ -380,10 +382,14 @@ elif [ "${_use_bundled_clang}" = "1" ]; then
   _flags+=(
            'clang_use_chrome_plugins=true'
            )
-  _clang_path="${BUILDDIR}/${pkgname}/src/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
   # Bundled clang not like this.
   CXXFLAGS="${CXXFLAGS//-fno-plt/}"
   CFLAGS="${CFLAGS//-fno-plt/}"
+
+  if [ ! -f "${BUILDDIR}/PKGBUILD" ]; then
+    _builddir="/${pkgname}"
+  fi
+  _clang_path="${BUILDDIR}${_builddir}/src/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
 fi
 
 export CC="${_clang_path}clang"
@@ -410,15 +416,14 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-compiler-r1.patch"
   patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
-  patch -p1 -i "${srcdir}/chromium-clang-r2.patch"
   patch -p1 -i "${srcdir}/chromium-ffmpeg-r1.patch"
 
   # Misc patches
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
-  # Not this time
+  # Not this time :)
 
   # https://crbug.com/710701
   _chrome_build_hash=$(curl -s "https://chromium.googlesource.com/chromium/src.git/+/${pkgver}?format=TEXT")
@@ -445,6 +450,9 @@ prepare() {
     -i third_party/ffmpeg/chromium/scripts/generate_gn.py
   export PNACLPYTHON=/usr/bin/python2
 
+  (mkdir -p "${srcdir}/python"; cd ${srcdir}/python; ln -s /usr/bin/python2 python)
+  export PATH="${srcdir}/python:${PATH}"
+
   # Setup vulkan
   export VULKAN_SDK="/usr"
   sed 's|/x86_64-linux-gnu||' -i gpu/vulkan/BUILD.gn
@@ -470,7 +478,9 @@ prepare() {
     cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
   fi
   # use system opus in bundled ffmpeg.
-  sed -e "s|CHROMIUM_ROOT_DIR, 'third_party/opus/src/include'|'/usr/include/opus'|g" -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+  sed -e "s|I' + os.path.join(CHROMIUM_ROOT_DIR,|I' + os.path.join\(|g" \
+      -e 's|third_party/opus/src/include|/usr/include/opus|g' \
+      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save space."
@@ -482,11 +492,12 @@ prepare() {
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
 
-  msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"
+  msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
   build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
 
   msg2 "Download external build components from google"
   tools/clang/scripts/update.py --without-android
+
 }
 
 build() {
@@ -566,7 +577,7 @@ package() {
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
-              'nacl_helper_nonsfi'
+#               'nacl_helper_nonsfi'
               'nacl_irt_x86_64.nexe'
               )
   for i in "${_nacl_libs[@]}"; do
