@@ -22,9 +22,9 @@ md5sums=('492b7ecc53d0ac3599845ab8ac553997')
 
 build() {
   cd "$srcdir/${_ipn}-${pkgver}"
-  runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
-    --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
-    --libsubdir=\$compiler/site-local/\$pkgid
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
   runhaskell Setup build
   runhaskell Setup haddock
   runhaskell Setup register --gen-script
