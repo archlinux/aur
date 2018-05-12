@@ -1,0 +1,16 @@
+pkgbase = flamegraph
+	pkgdesc = Flame Graphs visualize profiled code
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.brendangregg.com/flamegraphs.html
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	depends = perl
+	conflicts = flamegraph
+	conflicts = flamegraph-git
+	source = https://github.com/brendangregg/FlameGraph/archive/v1.0.tar.gz
+	sha256sums = c5ba824228a4f7781336477015cb3b2d8178ffd86bccd5f51864ed52a5ad6675
+
+pkgname = flamegraph
+
