@@ -3,7 +3,7 @@
 
 _pkgbase='movim'
 pkgname=movim-git
-pkgver=r5975.e43f3510
+pkgver=r6336.5fd158bd
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
@@ -56,7 +56,7 @@ package() {
   cp -r app lib locales src themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
     linker.php manifest.webapp "$pkgdir/usr/share/webapps/$_pkgbase"
-  install -Dm755 daemon.php mud.php "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -Dm755 daemon.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
@@ -74,8 +74,4 @@ package() {
   install -m755 -d "$pkgdir/etc/default"
   install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
-
-  # Easy access to mud.php
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/share/webapps/$_pkgbase/mud.php" "$pkgdir/usr/bin/mud"
 }
