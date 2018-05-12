@@ -6,7 +6,7 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=2.16.1.r155.gad4cdb24
+pkgver=2.16.1.r160.g5dc5219a
 pkgrel=1
 pkgdesc="A modular sound and video processing and streaming library"
 arch=('x86_64')
@@ -28,7 +28,8 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-      -DENABLE_STATIC="NO" .
+      -DENABLE_STATIC="NO" \
+      -DENABLE_STRICT="NO" .
   make
 }
 
