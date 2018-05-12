@@ -1,9 +1,9 @@
 # Maintainer: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-thepowdertoy-git
-pkgver=41.df783fa
+pkgver=45.a619961
 pkgrel=1
-pkgdesc="A port of The Powder Toy to LibRetro."
+pkgdesc="A port of The Powder Toy to libretro."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/ThePowderToy"
 license=('GPL3')
@@ -31,5 +31,4 @@ build() {
 package() {
   install -Dm644 "${_gitname}/build/src/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
 }
-
 
