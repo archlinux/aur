@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91025.gc6a63e1109
+pkgver=4.1.r91071.g7db022e67b
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ depends=(
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
         'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sndio'
-        'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
-        'libvdpau'
+        'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
+        'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
         'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
@@ -200,6 +200,7 @@ build() {
         --disable-openssl \
         --enable-sndio \
         --enable-sdl2 \
+        --enable-vapoursynth \
         --enable-xlib \
         --enable-zlib \
         \
