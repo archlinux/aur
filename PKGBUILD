@@ -9,7 +9,8 @@ pkgdesc='Universal virtual machine for running applications written in a variety
 arch=('x86_64')
 url='https://www.graalvm.org/'
 license=('custom')
-depends=('java-environment-common')
+depends=('java-runtime-common'
+         'java-environment-common')
 makedepends=()
 optdepends=()
 provides=('java-environment=8' "$pkgname_")
