@@ -2,7 +2,7 @@
 pkgbase=qt5-restclient
 pkgname=(qt5-restclient qt5-restclient-doc)
 group=qt5-restclient-full
-pkgver=1.2.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
@@ -42,6 +42,8 @@ package_qt5-restclient() {
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/usr/lib" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  install -D -m644 "../$_pkgfqn/qbs/Qt/restbuilder/module.qbs" "$pkgdir/usr/share/qbs/modules/Qt/restbuilder/module.qbs"
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
