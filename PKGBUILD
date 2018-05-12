@@ -3,7 +3,7 @@
 
 _fragment="#tag=blendluxcore_v2.0"
 _blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
-_name="luxcore"
+_name="luxcorerender"
 
 pkgname=blender-plugin-luxcorerender
 pkgver=2.0.r0.gbb9c5ee
