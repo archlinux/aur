@@ -3,7 +3,7 @@
 _name="cclib"
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.3.3.r1789.f72c8cd
+pkgver=1.5.4.r2295.1e3f6c58
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
@@ -40,7 +40,7 @@ package_python2-cclib-git() {
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  _parent_ver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 3 | tr -d "v,)")
+  _parent_ver=$(git describe --tags --abbrev=0 | tr -d v)
   _parent_major_ver=$(echo "${_parent_ver}" | cut -d "." -f 1)
   _parent_minor_ver=$(echo "${_parent_ver}" | cut -d "." -f 2)
   _parent_patch_ver=$(echo "${_parent_ver}" | cut -d "." -f 3)
