@@ -5,8 +5,8 @@
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -101,7 +101,7 @@ options=('!emptydirs')
 source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"
         'update-vlc-plugin-cache.hook'
         'lua53_compat.patch')
-sha256sums=('ce700cdfb49d721b75581ee727e98cc60dae97407ccec0f82124d5e9a1cb1301'
+sha256sums=('efe8c889b69bffba9662140bdcf434d9d36edc5dbb0e300fcce4553c354ea198'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
 
