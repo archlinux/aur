@@ -80,5 +80,4 @@ package() {
   install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
   ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
-
 # vim:set ts=2 sw=2 et:
