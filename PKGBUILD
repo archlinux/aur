@@ -8,16 +8,15 @@ arch=('x86_64')
 url="https://ccid.apdu.fr/"
 license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusb' 'flex')
-backup=(etc/reader.conf.d/libccidtwin)
-makedepends=('pkg-config' 'git')
+makedepends=('git')
 provides=("ccid")
 conflicts=("ccid")
-backup=(etc/reader.conf.d/libccidtwin)
+backup=('etc/reader.conf.d/libccidtwin')
 source=("git+https://salsa.debian.org/rousseau/CCID.git"
         "git+https://salsa.debian.org/rousseau/PCSC.git"
         "git+https://salsa.debian.org/rousseau/PCSC-contrib.git")
 md5sums=('SKIP' 'SKIP' 'SKIP')
-validpgpkeys=(F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E) # Ludovic Rousseau <ludovic.rousseau@free.fr>
+validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ludovic.rousseau@free.fr>
 
 pkgver() {
   cd "${srcdir}/CCID"

@@ -6,7 +6,6 @@ pkgbase = ccid-git
 	arch = x86_64
 	license = LGPL
 	license = GPL
-	makedepends = pkg-config
 	makedepends = git
 	depends = pcsclite
 	depends = libusb
