@@ -4,7 +4,7 @@
 
 pkgname=gimp-gtk3-git
 epoch=1
-pkgver=2.10.0.r105.g7daeedf324
+pkgver=2.10.0.r575.gb12904c879
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch"
 arch=('i686' 'x86_64')
@@ -27,10 +27,10 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 options=('!libtool' '!makeflags')
 provides=("gimp")
 conflicts=("gimp")
-source=(git+https://git.gnome.org/browse/gimp 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp'
-)
+source=(git+https://git.gnome.org/browse/gimp#branch=gtk3-port 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp')
 md5sums=('SKIP'
          'bb27bc214261d36484093e857f015f38')
+
 
 pkgver() {
   cd ${pkgname%-gtk3-git}
@@ -54,9 +54,7 @@ build() {
   cd ${pkgname%-gtk3-git}
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/bin \
 	       --enable-mp --enable-gimp-console --enable-python \
-	       --with-gif-compression=lzw --with-libcurl --with-aa \
-	       --without-hal --without-gvfs --without-gnomevfs --without-webkit \
-	       --enable-gtk-doc
+	       --with-aa --without-webkit --enable-gtk-doc 
   make
 }
 
