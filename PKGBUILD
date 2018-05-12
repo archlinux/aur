@@ -1,14 +1,15 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=3.1.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
-# see also: https://github.com/sfoxdev/docker-collabora-code
 license=('MPL')
 provides=('libreoffice' 'libreoffice-en-US')
+
+# From official Archlinux’ LibreOffice:
 optdepends=(
   'hunspell-de: German hunspell dictionaries for LibreOffice'
   'hunspell-en: English (US, UK, etc.) hunspell dictionaries for LibreOffice'
@@ -53,17 +54,37 @@ sha1sums=(
   'f9c102a06b2582548f13121e78790237e2cb38e1'
 )
 
-# From Debian’s conffiles
+# From deb’s conffiles
 backup=(
   opt/collaboraoffice5.3/share/psprint/psprint.conf
   etc/loolwsd/loolkitconfig.xcu
   etc/loolwsd/loolwsd.xml
 )
 
-# From Debian’s pre/post scripts
+# From deb’s pre/post scripts
 install=install
 
-_upstream_deps='loolwsd code-brand collaboraofficebasis5.3-calc collaboraofficebasis5.3-core collaboraofficebasis5.3-extension-pdf-import collaboraofficebasis5.3-filter-data collaboraofficebasis5.3-graphicfilter collaboraofficebasis5.3-images collaboraofficebasis5.3-impress collaboraofficebasis5.3-ooofonts collaboraofficebasis5.3-writer'
+# From Dockerfile (https://github.com/CollaboraOnline/Docker-CODE), minus i18n files
+_upstream_deps='loolwsd code-brand'
+
+# DEBIAN–ARCHLINUX EQUIVALENCES
+#
+# In case of a new upstream release:
+#
+# 1. Move all lines from $_upstream_equiv to $_upstream_equiv_OLD.
+#
+# 2. Run `makepkg -s` iteratively:
+#  * Each time a dependency is missing, move it back from $_upstream_equiv_OLD to $_upstream_equiv.
+#  * If a dependency is new, add a new line in $_upstream_equiv with nothing after the “=” sign.
+#
+# 3. When the package is done, in a terminal run: ./missing-deps.sh
+#
+# 4. For each “not found” line:
+#  * If the missing file should be provided by a new dependency in $_upstream_equiv,
+#    then put after the “=” sign the name of an Archlinux package that provides this file;
+#    you may need to create the package if it does not exist (usually old versions).
+#  * Else the missing file is probably expected to be present on any Debian/Ubuntu system;
+#    thus add the missing dependency in the $depends array.
 _upstream_equiv='
   adduser             = 
   cpio                = 
@@ -73,17 +94,19 @@ _upstream_equiv='
   libcap2             = libcap
   libcap2-bin         = libcap
   libcups2            = libcups
+  libexpat1           = 
   libgcc1             = gcc-libs
   libgl1-mesa-glx     = mesa-libgl
   libpam0g            = pam
+  libpcre3            = 
   libpng12-0          = libpng12
-  libpococrypto48     = poco178
-  libpocofoundation48 = poco178
-  libpocojson48       = poco178
-  libpoconet48        = poco178
-  libpoconetssl48     = poco178
-  libpocoutil48       = poco178
-  libpocoxml48        = poco178
+  libpococrypto60     = poco
+  libpocofoundation60 = poco
+  libpocojson60       = poco
+  libpoconet60        = poco
+  libpoconetssl60     = poco
+  libpocoutil60       = poco
+  libpocoxml60        = poco
   libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
@@ -92,6 +115,8 @@ _upstream_equiv='
   libxinerama1        = libxinerama
   libxrender1         = libxrender
   zlib1g              = zlib
+'
+_upstream_equiv_OLD='
 '
 _upstream_handle_dep() {
   local dep="$1"
@@ -104,7 +129,12 @@ _upstream_handle_dep() {
     for seen in "${depends[@]}"; do
       [ "$seen" == "$dep" ] && return
     done
-    depends[${#depends[*]}]="$dep"
+    if [[ "$dep" =~ :// ]]; then
+      source[${#source[*]}]="$dep"
+      sha1sums[${#sha1sums[*]}]="SKIP"
+    else
+      depends[${#depends[*]}]="$dep"
+    fi
   elif [ -n "$meta" ]; then
     dep="$(sed -rn "s#^Filename:[[:blank:]]*(.*/)?#${source[0]%Packages}#p" <<<"$meta")"
     for seen in "${source[@]}"; do
