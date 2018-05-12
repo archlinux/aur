@@ -5,7 +5,7 @@ pkgname=linux-aarch64-raspberrypi-bin
 pkgver=4.14.37.20180504
 pkgdesc="Automated weekly build of the default branch aarch64 bcmrpi3_defconfig Linux kernel for the Raspberry Pi 3 models B/B+"
 _kernver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/sakaki-/bcmrpi3-kernel"
 license=('GPL2')
@@ -17,9 +17,9 @@ conflicts=('linux-aarch64' 'uboot-raspberrypi')
 install=${_pkgname}.install
 backup=('boot/config.txt' 'boot/cmdline.txt')
 source=("https://github.com/sakaki-/bcmrpi3-kernel/releases/download/${pkgver}/bcmrpi3-kernel-${pkgver}.tar.xz"
-	'config.txt'
-	'cmdline.txt'
-	'linux.preset'
+        'config.txt'
+        'cmdline.txt'
+        'linux.preset'
         '99-linux.hook')
 sha1sums=('b63c74f819b5a2785f86bb8966d15df40f7c7854'
           '472aa9e8528789f17950fb0b06de60ce3f67e4f8'
@@ -32,20 +32,20 @@ package() {
   cp -r "${srcdir}/boot" "${pkgdir}"
   mkdir "${pkgdir}/usr" && cp -r "${srcdir}/lib" "${pkgdir}/usr"
 
-  # create symlink for modules directory with short ${_kernver}
-  ln -s "${_kernver}$(source "${pkgdir}/boot/config"; echo $CONFIG_LOCALVERSION)+" "${pkgdir}/usr/lib/modules/${_kernver}"
+  # build full kernel version using CONFIG_LOCALVERSION value from kernel config
+  _fullkernver="${_kernver}$(source "${pkgdir}/boot/config"; echo $CONFIG_LOCALVERSION)+"
 
   # set correct depmod command for install
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_pkgname#linux}/g" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_fullkernver}/g" \
     -i "${startdir}/${_pkgname}.install"
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${_pkgname}.preset"
   sed \
     -e "1s|'linux.*'|'${_pkgname}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"${_kernver}\"|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"${_fullkernver}\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${_pkgname}.preset"
 
   # install pacman hook for initramfs regeneration
