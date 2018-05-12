@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=picard-tools
-pkgver=2.15.0
+pkgver=2.18.4
 pkgrel=1
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
 arch=('any')
@@ -20,6 +20,6 @@ package() {
   install -Dm755 $srcdir/$pkgname-$pkgver.jar $pkgdir/usr/share/java/picard-tools/picard.jar
 }
 
-md5sums=('3f5751630b1a3449edda47a0712a64e4'
+md5sums=('c88f9f177111791014037c5edd6f8e0c'
          'ebcda2d2c55df6d05994252cf22a68c2'
          '0987aa56f62f5e843bfa788cc93626c8')
