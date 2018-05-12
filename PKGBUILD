@@ -1,13 +1,14 @@
 # Maintainer: E5ten
 
 pkgname=yadshot
-pkgver=0.2.01
-pkgrel=2
+pkgver=0.2.02
+pkgrel=1
 pkgdesc="yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
 arch=('x86_64')
 url='http://www.simonizor.net'
 license=('GPL')
-depends=('slop' 'yad' 'xclip' 'curl')
+install=yadshot.install
+depends=('slop' 'yad' 'xclip' 'curl' 'grabc')
 optdepends=('ffmpeg: screenshot backend'
 			'imagemagick: screenshot backend')
 source=("https://github.com/simoniz0r/$pkgname/archive/$pkgver.tar.gz")
@@ -21,5 +22,4 @@ prepare() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR="$pkgdir/" install
-	echo ">>>This package requires ffmpeg or imagemagick as a screenshot backend, please install something providing one or the other."
 }

@@ -1,0 +1,3 @@
+post_install() {
+	echo ">>>This package requires ffmpeg or imagemagick as a screenshot backend, please install something providing one or the other."
+}	
