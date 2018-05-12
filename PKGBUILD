@@ -4,7 +4,7 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
 pkgver=13.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.citrix.com/products/receiver/"
