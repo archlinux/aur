@@ -5,7 +5,7 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r338.g411e8fdb9
+pkgver=3.12.0.r341.g8a946552f
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
@@ -39,7 +39,8 @@ build() {
       -DENABLE_CXX_WRAPPER=YES \
       -DENABLE_ROOTCA_DOWNLOAD=NO \
       -DENABLE_LIME=YES \
-      -DENABLE_UNIT_TESTS=NO .
+      -DENABLE_UNIT_TESTS=NO \
+      -DENABLE_STRICT=NO .
   make
 }
 
