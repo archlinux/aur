@@ -6,7 +6,7 @@ pkgname=icaclient
 pkgver=13.9.1
 pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h')
 url="https://www.citrix.com/products/receiver/"
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs')
@@ -19,9 +19,11 @@ options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
 source_url32="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx86-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source_url64="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+source_urlarmhf="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxarmhf-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
 source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
 source_x86_64=($pkgname-x64-$pkgver.tar.gz::$source_url64)
+source_armv7h=($pkgname-armhf-$pkgver.tar.gz::$source_urlarmhf)
 md5sums=('71aca6257f259996ac59729604f32978'
          'a38c3f844a0fefe8017a25bee213b843'
          '0e92c33b3fcc99b04269787da2984809'
@@ -30,6 +32,7 @@ md5sums=('71aca6257f259996ac59729604f32978'
          'dca5a1f51449ef35f1441b900d622276')
 sha256sums_x86_64=('A9A9157CE8C287E8AA11447A0E3C3AB7C227330E9D8882C6F7B938A4DD5925BC')
 sha256sums_i686=('A93E9770FD10FDD3586A2D47448559EA037265717A7000B9BD2B1DCCE7B0A483')
+sha256sums_armv7h=('b224d894c980e29298398e1d6c1d837ad67ce201fa9ffea7d283fa3d368f23b7')
 install=citrix-client.install
 
 package() {
@@ -41,6 +44,9 @@ package() {
     elif [[ $CARCH == 'x86_64' ]]
     then
         ICADIR="$srcdir/linuxx64/linuxx64.cor"
+    elif [[ $CARCH == 'armv7h' ]]
+    then
+        ICADIR="$srcdir/linuxarmhf/linuxarmhf.cor"
     fi
 
     mkdir -p "${pkgdir}$ICAROOT"

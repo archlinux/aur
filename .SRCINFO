@@ -6,6 +6,7 @@ pkgbase = icaclient
 	install = citrix-client.install
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = custom:Citrix
 	makedepends = automake
 	makedepends = autoconf
@@ -41,10 +42,12 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx64-13.9.1.6.tar.gz?__gda__=1521949055_887addf2176228f3589dbc908f9fccd4
+	source_x86_64 = icaclient-x64-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx64-13.9.1.6.tar.gz?__gda__=1526162912_01e452b72125c0ed209e2c88c7ec88c5
 	sha256sums_x86_64 = A9A9157CE8C287E8AA11447A0E3C3AB7C227330E9D8882C6F7B938A4DD5925BC
-	source_i686 = icaclient-x86-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx86-13.9.1.6.tar.gz?__gda__=1521949054_2c4fb84e7531de657bd6df8e295092ca
+	source_i686 = icaclient-x86-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxx86-13.9.1.6.tar.gz?__gda__=1526162912_31011754e4db140a96bf072f4d419494
 	sha256sums_i686 = A93E9770FD10FDD3586A2D47448559EA037265717A7000B9BD2B1DCCE7B0A483
+	source_armv7h = icaclient-armhf-13.9.1.tar.gz::http://downloads.citrix.com/14453/linuxarmhf-13.9.1.6.tar.gz?__gda__=1526162913_4fa20b0adb79d0c873fe8c32bec7213e
+	sha256sums_armv7h = b224d894c980e29298398e1d6c1d837ad67ce201fa9ffea7d283fa3d368f23b7
 
 pkgname = icaclient
 
