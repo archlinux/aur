@@ -2,8 +2,8 @@
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
 url='https://krita.org'
@@ -21,7 +21,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
 source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
         'replace-code.patch')
-sha256sums=('8e013b09ec38dbf2d0401a74e868749b9d60e66d89094dc7fc2c51f48d8ad68c'
+sha256sums=('f9ead78ff4b184af49aea59385b0cfa1238ebf7fd527bf2f408c59fc5b12b67e'
             'SKIP'
             '8b0103ec49c7fa4930d9e0fb3063d11ee7145356a2a851d3a44f45a8e5404246')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
