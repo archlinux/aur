@@ -1,7 +1,7 @@
 pkgbase = ufw-icon-bar
 	pkgdesc = System tray icon for gufw
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://forum.manjaro.org/t/how-to-add-an-ufw-status-icon-to-the-panel/38559
 	arch = any
 	license = unknown
