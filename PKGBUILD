@@ -4,7 +4,7 @@
 
 _hkgname=gio
 pkgname=haskell-${_hkgname}
-pkgver=0.13.3.0
+pkgver=0.13.5.0
 pkgrel=3
 pkgdesc="Binding to the GIO."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -21,13 +21,13 @@ depends=('ghc'
 )
 options=(!emptydirs)
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('8d3c4d06a275ab4e464de0e70128f44e')
+md5sums=('2315c7bbb3540b5988ff610b484674e8')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
-       --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
     runhaskell Setup register   --gen-script

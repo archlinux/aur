@@ -1,6 +1,6 @@
 pkgbase = haskell-gio
 	pkgdesc = Binding to the GIO.
-	pkgver = 0.13.3.0
+	pkgver = 0.13.5.0
 	pkgrel = 3
 	url = http://hackage.haskell.org/package/gio
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = haskell-gio
 	depends = haskell-mtl
 	depends = glib2
 	options = !emptydirs
-	source = http://hackage.haskell.org/packages/archive/gio/0.13.3.0/gio-0.13.3.0.tar.gz
-	md5sums = 8d3c4d06a275ab4e464de0e70128f44e
+	source = http://hackage.haskell.org/packages/archive/gio/0.13.5.0/gio-0.13.5.0.tar.gz
+	md5sums = 2315c7bbb3540b5988ff610b484674e8
 
 pkgname = haskell-gio
 
