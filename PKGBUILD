@@ -2,11 +2,12 @@
 
 pkgname=dark-aurora-theme-git
 pkgver=r6.202cc3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark Aurora Theme GNOME 3.28"
 arch=("any")
 url="https://github.com/bolimage/Dark-Aurora"
 license=("GPL")
+conflicts=("dark-aurora-theme")
 depends=("gnome-shell>3.28")
 makedepends=("git")
 optdepends=("gnome-tweak-tool: A tool to customize advanced GNOME 3 options.")
