@@ -6,7 +6,7 @@ pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.7.0_r481_gbc5f51c5d
 pkgrel=1
 license=('CDDL')
-makedepends=("git" "spl-dkms-git" "python2")
+makedepends=("git" "spl-dkms-git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git"
@@ -37,8 +37,7 @@ build() {
                 --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib/zfs \
                 --with-config=user \
-                --enable-systemd \
-                --enable-pyzfs
+                --enable-systemd
     make
 }
 
@@ -62,7 +61,6 @@ package_zfs-dkms-git() {
 
 package_zfs-utils-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System. (Git version)"
-    depends=("python2")
     provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common")
     install=zfs-utils.install
