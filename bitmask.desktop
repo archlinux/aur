@@ -4,3 +4,4 @@ Exec=/opt/bitmask/bitmask
 Terminal=false
 Type=Application
 Path=/opt/bitmask
+Categories=Network

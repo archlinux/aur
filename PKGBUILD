@@ -7,7 +7,7 @@ url="https://bitmask.net/"
 license=('GPL3')
 groups=('base-devel')
 source=(https://dl.bitmask.net/client/linux/stable/Bitmask-linux64-latest.tar.gz bitmask.desktop)
-md5sums=(94bb24e9068d9ca71ced7469aa18a43d 20f1f868f64ce2144e73eb29bd50777d)
+md5sums=(94bb24e9068d9ca71ced7469aa18a43d 9da51e679f8217e510bac857a7008e51)
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/applications/"
