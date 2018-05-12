@@ -1,4 +1,5 @@
 pkgbase = python-geocoder
+	pkgdesc = Simple and consistent geocoding library written in Python.
 	pkgver = r1248.b4375d1
 	pkgrel = 1
 	url = https://github.com/DenisCarriere/geocoder
