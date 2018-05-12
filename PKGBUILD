@@ -1,8 +1,8 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
 _bpn=bustle
 pkgname=${_bpn}-git
-pkgver=0.5.4.r2.g0a426c3
-pkgrel=2
+pkgver=0.6.2.r7.g7f663b6
+pkgrel=1
 pkgdesc="A dbus profiler"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/Bustle/"
@@ -26,7 +26,10 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  runhaskell Setup configure -O --prefix=/usr "--docdir=/usr/share/doc/${pkgname}" --datasubdir="$pkgname"
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+      --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+      --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+      --datasubdir="$pkgname"
   runhaskell Setup build
 }
 
