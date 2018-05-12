@@ -5,7 +5,7 @@
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.13.0.r0.g531defd0
+pkgver=1.15.0.r31.g4acf884f
 pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ depends=('desktop-file-utils'
          'ffmpeg'
          'qt5-svg'
          'sqlcipher'
-         'toxcore>=1:0.1.0')
+         'toxcore')
 makedepends=('git' 'check' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
