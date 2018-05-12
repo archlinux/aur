@@ -1,8 +1,8 @@
 # Maintainer: Paul Clark <paul500clark at gmail dot com>
 # Contributor: David Koenig <koenigdmj@gmail.com>
 pkgname=bible-kjv
-pkgver=4.29
-pkgrel=3
+pkgver=4.30
+pkgrel=1
 pkgdesc="King James Bible, Concordance, and Command-Line Viewer"
 arch=(i686 x86_64)
 url="http://www.debian.org/"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('perl')
 source=(http://ftp.debian.org/debian/pool/main/b/${pkgname}/${pkgname}_${pkgver}.tar.gz
 	makefile.patch)
-md5sums=('e08a001de6e436cb4554ffcb19c24d37'
+md5sums=('0fd7710b7d5c60543756701474cc9d01'
          'e234e246b418fbd75a3855e321775a9e')
 
 package () {
