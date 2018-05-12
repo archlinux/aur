@@ -1,6 +1,6 @@
 pkgname=cms-germany-git
 pkgver=r3802.4d519c16
-pkgrel=3
+pkgrel=4
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
@@ -96,7 +96,22 @@ package() {
     install -D -m660 config/cms.conf.sample $pkgdir/usr/lib/cms/cms.conf
     install -D -m660 config/cms.ranking.conf.sample $pkgdir/usr/lib/cms/cms.ranking.conf
 
+    # I'm not even sure if this is needed at all
+    install -d -m770 $pkgdir/var/lib/cms
+
+    # Fix testlib.h path (maybe patch CMS for this?)
+    install -d -m755 $pkgdir/usr/include/cms
+    ln -s /usr/include/testlib.h $pkgdir/usr/include/cms/testlib.h
+
     python2 prerequisites.py build_l10n --as-root
     python2 setup.py install --root="$pkgdir" --optimize=1
 
+    install -d $pkgdir/var/local/log
+    install -d $pkgdir/var/local/cache
+    install -d $pkgdir/var/local/lib
+    install -d $pkgdir/var/local/run
+    ln -s /var/log/cms $pkgdir/var/local/log/cms
+    ln -s /var/cache/cms $pkgdir/var/local/cache/cms
+    ln -s /var/lib/cms $pkgdir/var/local/lib/cms
+    ln -s /var/run/cms $pkgdir/var/local/run/cms
 }
