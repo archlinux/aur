@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=6
+pkgrel=7
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -65,7 +65,7 @@ prepare() {
     msg "Patching Vodo provider (butter-provider-vodo)..."
     # Obviously, when I try to update Node software, some dev makes big updates.
     # These are from less than a week ago; just fetch the old working version
-    #sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
+    sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
 
     # Actually install the stuff
     msg2 "Installing normal dependencies"
