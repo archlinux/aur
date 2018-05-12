@@ -2,7 +2,7 @@
 
 pkgname=satysfi-git
 _pkgname=SATySFi
-pkgver=r1362.b88ae48
+pkgver=r1420.f032f1a
 pkgrel=1
 pkgdesc='A statically-typed, functional typesetting system'
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
   export OPAMYES=1
   opam init --no-setup
   eval "$(opam config env)"
-  opam pin add jbuilder 1.0+beta17
+  opam repository add satysfi-external https://github.com/gfngfn/satysfi-external-repo.git
   opam pin add --no-action satysfi .
   # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
   export CHECK_IF_PREINSTALLED=false

@@ -1,6 +1,6 @@
 pkgbase = satysfi-git
 	pkgdesc = A statically-typed, functional typesetting system
-	pkgver = r1362.b88ae48
+	pkgver = r1420.f032f1a
 	pkgrel = 1
 	url = https://github.com/gfngfn/SATySFi
 	arch = x86_64
