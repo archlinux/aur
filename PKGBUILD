@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=omegat-plugin-okapi
-pkgver=0.26
+pkgver=1.4
 pkgrel=1
 pkgdesc="Additional file filters such as TTX, IDML, JSON, etc."
 arch=('any')
@@ -9,12 +9,12 @@ url="http://okapi.opentag.com"
 license=('LGPL3')
 depends=('omegat')
 options=('!strip')
-source=(https://dl.bintray.com/okapi/Distribution/okapiFiltersForOmegaT-${pkgver}-dist.zip)
-sha256sums=('2cce4ac4b52b446d7496143777ae11b67dd296a24d9beceb68e1c532eb0449c1')
+source=(https://dl.bintray.com/okapi/Distribution/okapiFiltersForOmegaT-${pkgver}-m33-dist.zip)
+sha256sums=('44fbdd3dd0c475639f8e9a83b62a98b74025d5ab1031554cec608b4193384914')
 
 package() {
   cd "${srcdir}"
 
   install -d "${pkgdir}"/usr/share/java/omegat/plugins/okapi
-  cp -a okapiFiltersForOmegaT-0.26/* "${pkgdir}"/usr/share/java/omegat/plugins/okapi
+  cp -a okapiFiltersForOmegaT-${pkgver}-m33/* "${pkgdir}"/usr/share/java/omegat/plugins/okapi
 }
