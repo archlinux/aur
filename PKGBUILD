@@ -3,10 +3,10 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.7.0_r468_ga82a4a15b
+pkgver=0.7.0_r481_gbc5f51c5d
 pkgrel=1
 license=('CDDL')
-makedepends=("git" "spl-dkms-git")
+makedepends=("git" "spl-dkms-git" "python2")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git"

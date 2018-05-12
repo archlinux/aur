@@ -1,5 +1,5 @@
 pkgbase = zfs-dkms-git
-	pkgver = 0.7.0_r468_ga82a4a15b
+	pkgver = 0.7.0_r481_gbc5f51c5d
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = i686
@@ -7,6 +7,7 @@ pkgbase = zfs-dkms-git
 	license = CDDL
 	makedepends = git
 	makedepends = spl-dkms-git
+	makedepends = python2
 	source = git+https://github.com/zfsonlinux/zfs.git
 	source = zfs-utils.bash-completion-r1
 	source = zfs-utils.initcpio.install
@@ -19,7 +20,7 @@ pkgbase = zfs-dkms-git
 pkgname = zfs-dkms-git
 	pkgdesc = Kernel modules for the Zettabyte File System. (Git version)
 	depends = spl-dkms-git
-	depends = zfs-utils-dkms-git=0.7.0_r468_ga82a4a15b-1
+	depends = zfs-utils-dkms-git=0.7.0_r481_gbc5f51c5d-1
 	depends = dkms
 	provides = zfs
 	conflicts = zfs-git
