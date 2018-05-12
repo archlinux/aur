@@ -8,10 +8,10 @@
 
 _pkgname=lua-posix
 pkgname="${_pkgname}-git"
-pkgver=33.4.0.11.g3ab67b5
-pkgrel=2
+pkgver=33.4.0.136.g69c1799
+pkgrel=1
 pkgdesc='POSIX library for Lua'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://github.com/luaposix/luaposix'
 license=('MIT')
 conflicts=("${_pkgname}")
@@ -23,35 +23,22 @@ source=("${_pkgname}::git://github.com/luaposix/luaposix.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git describe --always | sed 's+^v++' | sed 's+-+.+g'
 }
 
-prepare() {
-  cd "${_pkgname}"
-  sed -i '19,20d' bootstrap.conf
-}
-
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
-  luaver=$(/usr/bin/lua -v | cut -d " " -f 2 | cut -d "." -f 1,2)
-
-  ./bootstrap
-
-  ./configure \
-      LUA=/usr/bin/lua \
-      --prefix=/usr \
-      --libdir=/usr/lib/lua/${luaver} \
-      --datadir=/usr/share/lua/${luaver} \
-      --docdir=/usr/share/doc/lua-posix
-
-  make
+  ./build-aux/luke \
+      all
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  ./build-aux/luke \
+      PREFIX="${pkgdir}"/usr \
+      install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
