@@ -1,11 +1,10 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
-_shortname=easylogging
-pkgname=${_shortname}pp
-pkgver=9.94.2
+pkgname=easyloggingpp
+pkgver=9.96.4
 pkgrel=1
-pkgdesc='Robust, thread-safe lightweight single header only C++ logging library'
+pkgdesc='Robust, thread-safe lightweight C++ logging library'
 arch=('any')
-url="https://github.com/${_shortname}/${pkgname}"
+url="https://github.com/muflihun/${pkgname}"
 license=('custom')
 groups=()
 depends=()
@@ -18,13 +17,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/${_shortname}/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.gz")
+source=("https://github.com/muflihun/${pkgname}/archive/v${pkgver}.tar.gz")
 noextract=()
-sha1sums=('fbd4ac4d3c2b7a341c3d88c6e5d47a6cd79303d7')
+sha1sums=('90ca248c7b04ee9856630680d1c91d8f7deccd89')
 
 package() {
-    install -Dm644 "${srcdir}/LICENCE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/easylogging++.h" "${pkgdir}/usr/include/easylogging++.h"
-    install -Dm644 "${srcdir}/easylogging++.cc" "${pkgdir}/usr/include/easylogging++.cc"
-    install -Dm644 "${srcdir}/CHANGELOG.txt" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/easylogging++.h" "${pkgdir}/usr/include/easylogging++.h"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/easylogging++.cc" "${pkgdir}/usr/include/easylogging++.cc"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
 }
