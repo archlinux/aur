@@ -2,6 +2,7 @@
 #define PORTFOLIO_H
 
 #include <math.h>
+#include <sys/stat.h>
 #include "api.h"
 #include "rc4.h"
 
@@ -50,7 +51,7 @@ void portfolio_file_init(void);
  * @return pointer to a allocated String containing the contents of the portfolio or NULL on error opening
  * or reading portfolio
  */
-String* portfolio_file_get_string(void);
+String* portfolio_file_get_string(char** password);
 
 /**
  * Precondition: portfolio_file has been initialized
@@ -121,7 +122,7 @@ void portfolio_print_all(int SORT);
  * current value, profit, and 24h profit.
  * @param ticker_name_string the security to print
  */
-void portfolio_print_stock(char* ticker_name_string);
+void portfolio_print_stock(const char* ticker_name_string);
 
 /**
  * Goes through the given JSON array until the JSON object at the given index's key "Symbol" contains
@@ -131,6 +132,8 @@ void portfolio_print_stock(char* ticker_name_string);
  * @return -1 if not found, the index number otherwise
  */
 int portfolio_symbol_index(const char* ticker_name_string, Json* jarray);
+
+void portfolio_encrypt_decrypt(int CRYPT);
 
 /**
  * Frees all memory associated with a SDA struct and sets the handle to NULL

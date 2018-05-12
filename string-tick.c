@@ -33,9 +33,9 @@ char* strip_char(char* string, char c) {
 }
 
 void string_write_portfolio(String* pString) {
-    FILE* fp = fopen(portfolio_file, "w"); // fprintf %s won't work since there some chars are encoded to '\0', so it
-    for (int i = 0; i < (int) pString->len; i++)    // will be null terminated several times in the middle
-        fputc(pString->data[i], fp);
+    FILE* fp = fopen(portfolio_file, "w");
+    if (fwrite(pString->data, sizeof(char), pString->len, fp) != pString->len)
+        puts("Error writing file.");
     fclose(fp);
 }
 

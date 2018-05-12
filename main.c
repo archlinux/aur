@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     portfolio_file_init();
 
     // Portfolio modify operation
-    int modop = -1, cryptopt;
+    int modop = -1;
 
     // News
     if (strcmp(cmd, "news") == 0) {
@@ -32,18 +32,9 @@ int main(int argc, char* argv[]) {
     }
 
         //Encrypt/decrypt
-    else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2) {
-        cryptopt = strcmp(cmd, "encrypt") == 0; // 1 if encrypting, 0 if decrypting
-        String* pString = portfolio_file_get_string();
-        if (pString != NULL && pString->len != 0) { // NULL if error opening portfolio
-            String* crypted = rc4_get_crypted_string(pString, NULL, cryptopt);
-            string_destroy(&pString);
-            if (crypted != NULL) { // NULL if password error
-                string_write_portfolio(crypted);
-                string_destroy(&crypted);
-            }
-        }
-    }
+    else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2)
+        portfolio_encrypt_decrypt(strcmp(cmd, "encrypt") == 0);
+
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
         api_print_info(sym);
