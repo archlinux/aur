@@ -8,8 +8,7 @@ arch=('x86_64')
 url='https://github.com/libretro/citra'
 license=('GPL2')
 groups=('libretro-unstable')
-depends=('gcc-libs' 'glibc' 'libretro-core-info' 'sdl2'
-         'libcurl.so')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('cmake' 'git')
 provides=('libretro-citra')
 conflicts=('libretro-citra')
@@ -71,8 +70,8 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DENABLE_LIBRETRO='ON' \
     -DENABLE_QT='OFF' \
-    -DENABLE_SDL2='ON' \
-    -DUSE_SYSTEM_CURL='ON'
+    -DENABLE_SDL2='OFF' \
+    -DENABLE_WEB_SERVICE='OFF'
   make
 }
 
