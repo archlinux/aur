@@ -1,11 +1,13 @@
 pkgbase = strichliste
 	pkgdesc = strichliste is a tool to replace a tally sheet inside a hackerspace, this module is the api for the strichliste
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hackerspace-bootstrap/strichliste
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = python2
+	makedepends = node-gyp
 	depends = nodejs
 	depends = sqlite
 	optdepends = strichliste-web: frontend
