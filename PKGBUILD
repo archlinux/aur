@@ -28,10 +28,8 @@ build() {
   cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}/
 #  mkdir -p build
 #  cd build
-  cmake -DBUILD_SHARED_LIBS=ON .
+  cmake .
   make
-# remove local glfw-x11 library, will be removed when swiched to sys deps
-  rm lib/libglfw*
 }
 
 package() {
