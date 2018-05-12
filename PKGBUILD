@@ -1,10 +1,11 @@
 # Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 
 _name=pyquante2
+pkgbase=python-${_name}-git
 pkgname=(python-${_name}-git python2-${_name}-git)
-pkgver=r469.91a352b
+pkgver=r548.4b05475
 pkgrel=1
-pkgdesc="Python Quantum Chemistry Reloaded. This is a rewrite of the standard PyQuante program to clean up things that have been nagging me."
+pkgdesc="Python Quantum Chemistry Reloaded. This is a rewrite of the standard PyQuante program to clean up things that have been nagging me. (git version)"
 arch=("i686" "x86_64")
 url="https://github.com/rpmuller/${_name}"
 license=("BSD")
