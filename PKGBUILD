@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=luxcorerender
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
@@ -29,6 +29,8 @@ build() {
 #  cd build
   cmake -DBUILD_SHARED_LIBS=ON .
   make
+# remove local glfw-x11 library, will be removed when swiched to sys deps
+  rm lib/libglfw*
 }
 
 package() {
