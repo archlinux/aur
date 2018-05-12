@@ -1,10 +1,11 @@
 pkgbase = gvisor-git
 	pkgdesc = User-space kernel, sandboxed container runtime
-	pkgver = r74.c8bca2f
+	pkgver = r80.275a7b6
 	pkgrel = 1
 	url = https://github.com/google/gvisor
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = git
 	makedepends = bazel
 	makedepends = python
 	provides = runsc
