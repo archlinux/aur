@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.2.17
+pkgver=1.2.19
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -19,6 +19,8 @@ provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
+    # Fetch not-broken sources
+    #"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=cc2c13d0182c62dd5a89784a49ec375306449797"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
@@ -62,7 +64,8 @@ prepare() {
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
-    patch -Np1 -i "$srcdir/libtgvoip-2.patch"
+    # Merged upstream
+    #patch -Np1 -i "$srcdir/libtgvoip-2.patch"
 }
 
 build() {
