@@ -2,7 +2,7 @@
 
 pkgname=yadshot
 pkgver=0.2.02
-pkgrel=1
+pkgrel=2
 pkgdesc="yadshot provides a GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
 arch=('x86_64')
 url='http://www.simonizor.net'
@@ -12,7 +12,7 @@ depends=('slop' 'yad' 'xclip' 'curl' 'grabc')
 optdepends=('ffmpeg: screenshot backend'
 			'imagemagick: screenshot backend')
 source=("https://github.com/simoniz0r/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('de3d52a5dc9695bb652ad5492c54e836')
+md5sums=('5bb6c657935ae286818f03898f6d69df')
 
 prepare() {
     cd $srcdir
