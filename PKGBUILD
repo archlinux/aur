@@ -9,7 +9,7 @@ depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'nlopt'
 makedepends=('cmake' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('2c85ea7b1263ba9655df0bf6d791600a5d4e89a0d5187f270af63ec916fd50e6')
+sha256sums=('0b5e572f0a1b3a7a73bc912836f2420bd565d606b3f6a62771cb998ad83eb47f')
 
 build() {
   cd openturns-$pkgver
