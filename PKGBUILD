@@ -3,22 +3,21 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.28.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'openal' 'smbclient' 'vulkan-icd-loader' 'zlib'
+        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
+        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
         
     # AUR:
-        'ffmpeg-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
-        'vapoursynth-git'
+        'mujs' 'rsound' 'shaderc-git' 'crossc'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
