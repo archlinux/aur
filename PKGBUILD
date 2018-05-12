@@ -5,7 +5,7 @@
 
 _gitname='pulseview'
 pkgname="${_gitname}-git"
-pkgver=0.3.0.r457.gb8132c7
+pkgver=0.3.0.r577.ga3110ca
 pkgrel=1
 pkgdesc="A Qt based logic analyzer GUI for sigrok. (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS=-fext-numeric-literals .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS=-fext-numeric-literals -DDISABLE_WERROR=TRUE .
   make
 }
 
