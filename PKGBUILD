@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=3.3.r0.ge09e1fd3+wine.3.3.r0.gf17120d11b
+pkgver=3.8.r0.geb684dd9+wine.3.8.r0.g7280f7fb74
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -51,6 +51,7 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'sdl2'                  'lib32-sdl2'
     'samba'
     'opencl-headers'
+    'vulkan-headers'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
