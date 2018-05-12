@@ -1,20 +1,19 @@
 
 pkgname=pyinstaller-git
 _pyname=pyinstaller
-pkgver=r6541.95606610
-pkgrel=2
+pkgver=r6563.1033a877
+pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
 url="http://www.pyinstaller.org"
 license=('GPL2')
-depends=('python' 'python-setuptools')
+depends=('python')
 optdepends=('python-altgraph: performance testing')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('pyinstaller')
 conflicts=('pyinstaller')
 source=("git+https://github.com/pyinstaller/pyinstaller.git")
 md5sums=('SKIP')
-options=('!strip' '!emptydirs')
 
 pkgver() {
   cd "${srcdir}/${_pyname}"
@@ -28,5 +27,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pyname}"
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --skip-build --optimize=1
 }
