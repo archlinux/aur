@@ -1,9 +1,8 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r315.g2107ddff
+	pkgver = 4.1.1.r371.g3afd20ef
 	pkgrel = 1
 	url = http://www.linphone.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake

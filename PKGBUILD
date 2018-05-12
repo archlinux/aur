@@ -2,10 +2,10 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r315.g2107ddff
+pkgver=4.1.1.r371.g3afd20ef
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('bcg729-git' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
