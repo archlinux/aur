@@ -1,13 +1,15 @@
 pkgbase = mpv-light
 	pkgdesc = Free, open source, and cross-platform media player – with selection of features.
-	pkgver = 0.27.0
-	pkgrel = 2
+	pkgver = 0.28.2
+	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = mesa
 	makedepends = python-docutils
+	makedepends = wayland-protocols
+	makedepends = wayland
 	depends = ffmpeg
 	depends = libxkbcommon
 	depends = libxrandr
@@ -19,16 +21,10 @@ pkgbase = mpv-light
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = mpv-0.27.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.27.0.tar.gz
+	source = mpv-0.28.2.tar.gz::https://github.com/mpv-player/mpv/archive/v0.28.2.tar.gz
 	source = https://waf.io/waf-1.9.8
-	source = 0001-opengl-backend-support-multiple-backends.patch
-	source = 0002-vaapi-Use-libva2-message-callbacks.patch
-	source = 0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch
-	sha256sums = 341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c
+	sha256sums = aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795
 	sha256sums = 167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf
-	sha256sums = 609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a
-	sha256sums = 3c3517f4f4c71e39e1e04ea440688fc8d7b3dc55e6bc0a9398d11a9b75bde07d
-	sha256sums = 5de6c616428c87cf9b39d8ba24446d65d175050c083e1054194d93cf03d5816a
 
 pkgname = mpv-light
 
