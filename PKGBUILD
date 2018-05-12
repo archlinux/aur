@@ -1,7 +1,7 @@
 # Maintainer : Cecile Tonglet <cecile.tonglet@gmail.com>
 
 pkgname=libretro-quicknes-git
-pkgver=315.8613b48
+pkgver=r408.6d50e29
 pkgrel=1
 pkgdesc="libretro implementation of QuickNES Core. (NES)"
 groups=('libretro')

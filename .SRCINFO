@@ -1,6 +1,6 @@
 pkgbase = libretro-quicknes-git
 	pkgdesc = libretro implementation of QuickNES Core. (NES)
-	pkgver = 315.8613b48
+	pkgver = r408.6d50e29
 	pkgrel = 1
 	url = https://github.com/libretro/QuickNES_Core.git
 	arch = i686
@@ -13,8 +13,6 @@ pkgbase = libretro-quicknes-git
 	makedepends = git
 	depends = zlib
 	source = git+https://github.com/libretro/QuickNES_Core.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/quicknes_libretro.info
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libretro-quicknes-git
