@@ -10,7 +10,7 @@ license=('Apache')
 depends=('dotnet-runtime')
 makedepends=('p7zip')
 changelog=changelog
-backup=('var/lib/asf/config/ASF.json')
+backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}/ASF-generic.zip"
         "${pkgname}.sh"
@@ -20,10 +20,10 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/JustArchi/ArchiSteamFarm/r
         "NLog.config")
 sha256sums=('d7dc905e8164cc3911b5fd5d622cf681bf3e1e5f75604ad8ae396ec05f7ae423'
             '8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
-            'e63b55f65e1c0c935945bd788f47a77be82e96a409b64660b5a96b9c190964ff'
+            'e605b05ece2e86d02277b3a703f92b74817fd494dbd6195173dc20bbf33fb14a'
             'dcaf43586125e07488e338438158097b31ba335fcb238127dfb785a41d223f49'
             '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
-            'bfefd169626c3aff072e361a0517f2fbc0d2d403c8c61e1659c0bd0174d3d14a')
+            '9a10e9e6ff88fcc00000c12464ae2b650a3f075ef7e440088414b46c41214ee4')
 noextract=("${source[@]%%::*}")
 
 prepare() {
