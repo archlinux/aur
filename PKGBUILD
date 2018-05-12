@@ -4,7 +4,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.7.0.18.g2768f639a2
+pkgver=1.7.3.92.gbe502a39fd
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
@@ -47,7 +47,7 @@ build() {
 
   ./configure --prefix=/usr \
     --enable-neon --enable-dispmanx --enable-floathard --enable-udev \
-    --disable-ffmpeg --disable-cg --disable-jack --disable-oss --disable-sdl
+    --disable-ffmpeg --disable-cg --disable-jack --disable-oss --disable-sdl --disable-x11
   make
 }
 

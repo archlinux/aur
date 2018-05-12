@@ -1,6 +1,6 @@
 pkgbase = retroarch-rbp-git
 	pkgdesc = Reference frontend for the libretro API.
-	pkgver = 1.7.0.18.g2768f639a2
+	pkgver = 1.7.3.90.gcc5393e54d
 	pkgrel = 1
 	url = http://www.libretro.com
 	arch = arm
