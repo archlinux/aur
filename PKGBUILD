@@ -1,7 +1,7 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
 url='https://www.confluent.io/'
@@ -117,7 +117,7 @@ package() {
 	sed -i 's/#confluent.metrics.topic.replication=3/confluent.metrics.topic.replication=1/g' $_c3_etc
 
 	# Use a persistent folder for control center data directory
-	sed -i 's#confluent.controlcenter.data.dir=/tmp/confluent/control-center#confluent.controlcenter.data.dir=/usr/share/confluent-control-center#g' $_c3_etc
+	sed -i 's#confluent.controlcenter.data.dir=/tmp/confluent/control-center#confluent.controlcenter.data.dir=/var/lib/confluent/control-center#g' $_c3_etc
 
 	# Configure local kafka for monitoring
 	echo '' >> $_kafka_etc 
