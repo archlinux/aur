@@ -2,7 +2,7 @@
 
 pkgname=goatee
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc='lightwieght gtk2 text/hex editor written on Go'
 arch=('i686' 'x86_64')
 url='https://github.com/sg3des/goatee'
@@ -20,7 +20,16 @@ build() {
 	rm -rf $GOPATH/src/github.com/sg3des/$pkgname
 	mv $srcdir/$pkgname $GOPATH/src/github.com/sg3des/
 
+
+
 	cd $GOPATH/src/github.com/sg3des/$pkgname
+
+	mkdir -p vendor/github.com/mattn
+	cd vendor/github.com/mattn
+	git clone https://github.com/sg3des/go-gtk
+
+	cd $GOPATH/src/github.com/sg3des/$pkgname
+
 	go get -v ./...
 	go build -v -o $pkgname
 }
