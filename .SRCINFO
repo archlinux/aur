@@ -1,6 +1,6 @@
 pkgbase = obs-gnome-screencast
 	pkgdesc = GNOME Screen Cast OBS Studio plugin, supports Wayland
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/fzwoch/obs-gnome-screencast
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = obs-gnome-screencast
 	makedepends = meson
 	depends = gnome-shell
 	depends = obs-studio
-	source = https://github.com/fzwoch/obs-gnome-screencast/archive/v0.0.8.tar.gz
-	sha256sums = 3CD676E6A2A3DE065C7F903A16E64694BCC5408217CA707AEB7E0A72E5AC42C9
+	source = https://github.com/fzwoch/obs-gnome-screencast/archive/v0.0.9.tar.gz
+	sha256sums = E2599E30AD55E1FCB2ABED85DF29630045397FD532DEE8AA61F97CE05AFB5186
 
 pkgname = obs-gnome-screencast
