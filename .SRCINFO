@@ -1,20 +1,29 @@
 pkgbase = python-geocoder
-	pkgdesc = A pure Python Geocoding module made easy. Supports ArcGIS, Bing,CanadaPost,FreeGeoIP Geocoder.ca, Geonames, Google, HERE, MapQuest, MaxMind, OpenCage, OpenStreetMap, GeoOttawa, TomTom, Yahoo )
-	pkgver = 1.38.1
-	pkgrel = 4
+	pkgver = r1248.b4375d1
+	pkgrel = 1
 	url = https://github.com/DenisCarriere/geocoder
 	arch = any
 	license = custom
-	makedepends = python
-	makedepends = python-setuptools
-	source = https://github.com/DenisCarriere/geocoder/archive/master.zip
-	md5sums = 633a52784503a40a2b3f810da358a2e5
+	source = python-geocoder-r1248.b4375d1::git://github.com/DenisCarriere/geocoder.git
+	md5sums = SKIP
 
 pkgname = python-geocoder
+	depends = python-click
 	depends = flake8
 	depends = python-nose
 	depends = python-tox
 	depends = python-requests
-	provides = python-geocoder-git
-	conflicts = python-geocoder-git
+	depends = python-six
+	depends = python-future
+	provides = python-geocoder
+
+pkgname = python2-geocoder
+	depends = python2-click
+	depends = python2-flake8
+	depends = python2-nose
+	depends = python2-tox
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-future
+	provides = python-geocoder
 

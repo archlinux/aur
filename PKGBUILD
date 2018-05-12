@@ -1,28 +1,46 @@
-# Maintainer: Florian B. <gn0mish@protonmail.com>
+# Maintainer: Florian Benscheidt <gn0mish@protonmail.com>
 
-pkgbase=python-geocoder
-_gitname='geocoder-master'
-pkgname=('python-geocoder')
-pkgver=1.38.1
-pkgrel=4
-pkgdesc='A pure Python Geocoding module made easy. Supports ArcGIS, Bing,CanadaPost,FreeGeoIP Geocoder.ca, Geonames, Google, HERE, MapQuest, MaxMind, OpenCage, OpenStreetMap, GeoOttawa, TomTom, Yahoo )'
-arch=('any')
-url='https://github.com/DenisCarriere/geocoder'
-license=('custom')
-source=("https://github.com/DenisCarriere/geocoder/archive/master.zip")
-md5sums=('633a52784503a40a2b3f810da358a2e5')
-makedepends=('python' 'python-setuptools')
+pkgname=("python-geocoder" "python2-geocoder")
+pkgbase="python-geocoder"
+pkgver=r1248.b4375d1
+pkgrel=1
+pkgdesc=""
+arch=("any")
+_giturl="github.com/DenisCarriere/geocoder"
+url="https://${_giturl}"
+license=("custom")
+source=("$pkgbase-$pkgver::git://${_giturl}.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}-${pkgver}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd ${_gitname}
+  cd "$pkgname-$pkgver"
   python setup.py build
+  python2 setup.py build
 }
 
 package_python-geocoder() {
-  depends=('flake8' 'python-nose' 'python-tox' 'python-requests')
-  provides=('python-geocoder-git')
-  conflicts=('python-geocoder-git')
-  cd ${_gitname}
-  python setup.py install --root="${pkgdir}" --optimize=1
-  mv "${pkgdir}"/usr/bin/geocode{,-py3}
+  depends=("python-click" "flake8" "python-nose" "python-tox" "python-requests" "python-six" "python-future")
+  makedepends=("python" "python-setuptools")
+  provides=("${pkgbase}")
+
+  pip install --user "ratelim>=0.1.6" #ratelim not in aur or base repo
+  
+  cd "$pkgbase-$pkgver"
+  python setup.py install --root="${pkgdir}"
+}
+
+package_python2-geocoder() {
+  depends=("python2-click" "python2-flake8" "python2-nose" "python2-tox" "python2-requests" "python2-six" "python2-future")
+  makedepends=("python2" "python2-setuptools")
+  provides=("${pkgbase}")
+
+  pip2 install --user "ratelim>=0.1.6"
+
+  cd "$pkgbase-$pkgver"
+  python2 setup.py install --root="${pkgdir}"
 }
