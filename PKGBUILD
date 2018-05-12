@@ -1,9 +1,10 @@
-# Maintainer: Tomasz Paś <kierek93@gmail.com>
-# Contributor:  prettyvanilla <prettyvanilla@posteo.at>
+# Maintainer: Cecile Tonglet <cecile.tonglet@gmail.com>
+# Contributor: Tomasz Paś <kierek93@gmail.com>
+# Contributor: prettyvanilla <prettyvanilla@posteo.at>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-pcsx-rearmed-git
-pkgver=1342.ec665d1
+pkgver=1358.c6e7ce9
 pkgrel=1
 pkgdesc="libretro implementation of PCSX ReARMed. (PlayStation)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -27,9 +28,11 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
+  # detect Raspberry Pi 2 and 3
+  grep -q 'Hardware.\+BCM2835' /proc/cpuinfo && export platform=rpi2
   make -f Makefile.libretro
 }
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
- }
+}
