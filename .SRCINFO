@@ -1,0 +1,24 @@
+pkgbase = sudo-hg
+	pkgdesc = Run commands as root or another user
+	pkgver = r11370.d568dc923c7d
+	pkgrel = 1
+	url = https://www.sudo.ws/sudo.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = mercurial
+	depends = glibc
+	depends = libgcrypt
+	depends = libldap
+	depends = pam
+	provides = sudo
+	conflicts = sudo
+	backup = etc/sudoers
+	backup = etc/pam.d/sudo
+	source = hg+https://www.sudo.ws/repos/sudo/
+	source = sudo.pam::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sudo.pam?h=packages/sudo
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sudo-hg
+
