@@ -2,7 +2,7 @@
 
 pkgname=todoman-git
 _pkgname=todoman
-pkgver=3.2.3.post21+gdc64bbd
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -12,7 +12,8 @@ depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm
          python-configobj python-dateutil python-tabulate python-humanize)
 optdepends=('python-click-repl: the repl command.'
-            'bash-completion: bash autocompletion.')
+            'bash-completion: bash autocompletion.'
+            'zsh-completions: zsh autocompletion.')
 checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
               'python-freezegun' 'python-pytest-cov')
 conflicts=("todoman")
@@ -48,4 +49,7 @@ package() {
 
   install -Dm 644 contrib/completion/bash/_todo \
     "$pkgdir/usr/share/bash-completion/completions/todo"
+
+  install -Dm 644 contrib/completion/zsh/_todo \
+    "$pkgdir/usr/share/zsh/site-functions/_todo"
 }
