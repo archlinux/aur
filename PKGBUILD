@@ -3,7 +3,7 @@
 _basename=pacman-utils
 
 pkgname=pacman-utils-data
-_basever="2018_04_17"
+_basever="2018_05_12"
 pkgver="${_basever}"
 pkgrel=1
 pkgdesc="Additional data for use with pacman-utils (required for provides_upstream)"
@@ -12,8 +12,8 @@ url="https://github.com/kata198/pacman-utils-data"
 arch=(any)
 license=(apache)
 depends=(pacman-utils)
-source=("https://github.com/kata198/pacman-utils-data/archive/2018_04_17.tar.gz")
-sha512sums=("ad7ad6339a9aa7271f1e7de147423fde9379cffd1923b90847c829582f6e88c382a3a08d22f0f3f2681abc2840aeda8b151b01f2e74a7f38adebd64152cb03dd")
+source=("https://github.com/kata198/pacman-utils-data/archive/${_basever}.tar.gz")
+sha512sums=("b4e0078cc2f548e16d7bfe42fec756dfb247408af6ee7eb984ab41268675a2e529d89c0ac8f42324ce744155a30348ca0a59c3e17ddd718b878171069e64beeb")
 
 
 package() {
