@@ -1,0 +1,29 @@
+pkgbase = qt-flif-plugin
+	pkgdesc = Enables FLIF support in Qt applications
+	pkgver = r16.9272881
+	pkgrel = 1
+	url = https://github.com/spillerrec/qt-flif-plugin
+	arch = x86_64
+	license = GPL
+	makedepends = qt4
+	makedepends = qt5-base
+	depends = flif
+	source = git+https://github.com/spillerrec/qt-flif-plugin.git#commit=9272881133c48d55d44e8a08cdafecff3f37315c
+	sha512sums = SKIP
+
+pkgname = qt4-flif
+	pkgdesc = Enables FLIF support in Qt4 applications
+	depends = flif
+	depends = flif-mime
+	depends = qt4
+
+pkgname = qt5-flif
+	depends = flif
+	depends = flif-mime
+	depends = qt5-base
+
+pkgname = flif-mime
+	pkgdesc = MIME file type for the FLIF image format
+	arch = any
+	depends = 
+
