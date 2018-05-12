@@ -6,7 +6,7 @@ pkgdesc="System tray icon for gufw"
 arch=('any')
 url="https://forum.manjaro.org/t/how-to-add-an-ufw-status-icon-to-the-panel/38559"
 license=('unknown')
-depends=('yad gufw')
+depends=('yad' 'gufw')
 source=("$pkgname-$pkgver::git+https://github.com/juanmafont/ufwIconbar.git")
 md5sums=("SKIP")
 
