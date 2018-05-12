@@ -11,6 +11,7 @@ optdepends=("opencl-dirver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
 makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg)
+provides=(luxrays)
 options=('!buildflags')
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${pkgver}.tar.gz"
         "python.patch"
