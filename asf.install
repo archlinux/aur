@@ -1,8 +1,10 @@
 post_install() {
     systemd-sysusers asf.conf
     chown -R asf: /var/lib/asf
+    echo "# configuration is done in /var/lib/asf/config or ~/.config/asf depending on the service file used."
 }
 
 post_upgrade() {
-    post_install $1
+    systemd-sysusers asf.conf
+    chown -R asf: /var/lib/asf
 }
