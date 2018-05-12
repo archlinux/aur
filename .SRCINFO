@@ -1,0 +1,14 @@
+pkgbase = discord-rpc-api-git
+	pkgdesc = Libraries for Discord Rich Presence
+	pkgver = v3.1.0.r10.g566076e
+	pkgrel = 1
+	url = https://github.com/discordapp/discord-rpc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = discord-rpc-api-git::git+https://github.com/discordapp/discord-rpc.git
+	md5sums = SKIP
+
+pkgname = discord-rpc-api-git
+
