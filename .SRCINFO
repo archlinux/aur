@@ -1,13 +1,13 @@
 pkgbase = fchinanet-sh
 	pkgdesc = Easy to use, Lightweight ChinaNet Campus Authorization Tool
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/anapopo/fchinanet.sh
 	arch = any
 	license = MIT
 	depends = sh
-	source = https://github.com/anapopo/fchinanet.sh/archive/0.0.3.tar.gz
-	md5sums = af8c9510dabec06308b0028f2f00b30d
+	source = https://github.com/anapopo/fchinanet.sh/archive/0.0.4.tar.gz
+	md5sums = 50ad5ed96cd290fac4c7b1eb5becd3c2
 
 pkgname = fchinanet-sh
 
