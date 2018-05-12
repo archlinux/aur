@@ -41,4 +41,9 @@ package() {
 
     ln -s /opt/$_pkgname/firefox $pkgdir/usr/bin/$_pkgname
     install -m644 $srcdir/{$_pkgname.desktop,$_pkgname-safe.desktop} $pkgdir/usr/share/applications/
+    if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
+        install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
+    else
+		install -m644 $srcdir/firefox/browser/chrome/icons/default/default128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
+    fi
 }
