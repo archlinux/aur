@@ -8,7 +8,7 @@ pkgdesc="An extensible i3status replacement/wrapper written in python"
 url="http://www.ultrabug.fr/tag/py3status/"
 arch=('any')
 license=('custom: Simplified BSD')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'i3status')
 optdepends=('i3status: for some of the functionality'
             'acpi: for some of the battery related modules')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/ultrabug/py3status/archive/$pkgver.tar.gz")
