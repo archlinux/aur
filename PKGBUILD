@@ -3,11 +3,11 @@
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
 _subarchs=(armv5 armv6h armv7h armv8)
-_pkgrel_upstream=4
+_pkgrel_upstream=1
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
-_date=20180425
-pkgver=7.3.1
+_date=20180511
+pkgver=8.1.0
 pkgrel=1
 arch=('x86_64')
 license=('GPL' )
@@ -15,7 +15,8 @@ pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
 url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
-_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
+#_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
+_URL="https://archlinuxarm.org/builder/xtools"
 source=(
 "x-tools-$_date.tar.xz::$_URL/x-tools.tar.xz"
 "x-tools6h-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
@@ -24,10 +25,10 @@ source=(
 'config.in' 'service.in' 'readme.in'
 )
 #PKGEXT='.pkg.tar'
-md5sums=('b0616a324c5b7ee56f9d2492d41fcae9'
-         'c8358365b4cb77f7faf9bb9e041a4e5f'
-         'f8bf79552382e926c5d474c6cde0639a'
-         '2182c6a2949dc38daf3eae91feb98243'
+md5sums=('4a53a800a10241734ba1abdda981a35d'
+         'a6ae48eafce2894739277b3fa2be714d'
+         '397c46ec3f34512f553fa45e92459509'
+         '16e951eef3612244e8b1438e2fc9b69e'
          '6250a214faeda10c822899f39635e71e'
          '7e664f8ce386f467f1a7381c9ac3c06f'
          'da6ee5bb971d28b85e49d456a3889349')
