@@ -1,15 +1,17 @@
 pkgbase = r-cran-lubridate
 	pkgdesc = Functions to work with date-times and time-spans
-	pkgver = 1.6.0
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/lubridate/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = r
-	depends = r-cran-stringr
-	source = http://cran.r-project.org/src/contrib/lubridate_1.6.0.tar.gz
-	md5sums = 10d6d0433f714096927eb032dfafe289
+	depends = r-stringr
+	provides = r-lubridate
+	conflicts = r-lubridate
+	source = http://cran.r-project.org/src/contrib/lubridate_1.7.4.tar.gz
+	sha256sums = 510ca87bd91631c395655ee5029b291e948b33df09e56f6be5839f43e3104891
 
 pkgname = r-cran-lubridate
 
