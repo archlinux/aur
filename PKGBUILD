@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -43,8 +43,10 @@ prepare() {
 
     msg2 "Installing npm, bower and missing dependencies..."
     # Using a different folder for the cache, makes the system cleaner
-    _cache=`npm config get cache`
-    npm config set cache "$srcdir/npm_cache"
+    #_cache=`npm config get cache`
+    #npm config set cache "$srcdir/npm_cache"
+    # Thanks to Eschwartz for the tip!
+    export npm_config_cache="$srcdir/npm_cache"
     msg2 "Cache changed from $_cache to `npm config get cache`"
 
     msg2 "Install missing dependencies, if any"
@@ -63,14 +65,14 @@ prepare() {
     msg "Patching Vodo provider (butter-provider-vodo)..."
     # Obviously, when I try to update Node software, some dev makes big updates.
     # These are from less than a week ago; just fetch the old working version
-    sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
+    #sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
 
     # Actually install the stuff
     msg2 "Installing normal dependencies"
     npm install #-dd install
 
     # Restore the cache directory
-    npm config set cache ${_cache}
+    #npm config set cache ${_cache}
 }
 
 build() {
