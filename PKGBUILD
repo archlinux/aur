@@ -4,15 +4,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mirage
-pkgver=1.0_pre1
-pkgrel=1
+pkgver=0.9.5.2
+pkgrel=5
 pkgdesc="A simple GTK+ Image Viewer"
 url="https://sourceforge.net/projects/mirageiv.berlios/"
 license=('GPL')
-depends=('pygtk' 'desktop-file-utils')
+depends=('pygtk' 'desktop-file-utils' 'python2-exiv2')
 arch=('x86_64')
 source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('dc2f2036a4b1d65c75575b724c0bb22f')
+md5sums=('92191a4496b0a50486ed7299baf6729f')
 
 build() {
     cd ${pkgname}-${pkgver}
