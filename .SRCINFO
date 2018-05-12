@@ -7,6 +7,8 @@ pkgbase = discord-rpc-api-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	provides = discord-rpc-api
+	conflicts = discord-rpc-api
 	source = discord-rpc-api-git::git+https://github.com/discordapp/discord-rpc.git
 	md5sums = SKIP
 

@@ -9,6 +9,8 @@ url="https://github.com/discordapp/discord-rpc"
 license=('MIT')
 depends=('')
 makedepends=('git' 'cmake')
+conflicts=('discord-rpc-api')
+provides=('discord-rpc-api')
 source=("$pkgname"::'git+https://github.com/discordapp/discord-rpc.git')
 md5sums=('SKIP')
 
