@@ -1,6 +1,6 @@
 pkgname=cms-germany-git
 pkgver=r3802.4d519c16
-pkgrel=1
+pkgrel=2
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
@@ -34,6 +34,7 @@ depends=(
     'texlive-fontsextra'
     'texlive-latexextra'
     'texlive-pstricks'
+    'libcap'
 )
 optdepends=(
     'python2-pycups: printing support'
@@ -52,29 +53,39 @@ conflicts=('cms' 'isolate')
 install=$pkgname.install
 
 source=(
-  'git://github.com/ioi-germany/cms.git'
-  'git://github.com/ioi-germany/isolate.git'
+    'git://github.com/ioi-germany/cms.git'
+    'git://github.com/ioi-germany/isolate.git'
 )
 sha256sums=(
-  'SKIP' 'SKIP'
+    'SKIP' 'SKIP'
 )
 
 pkgver() {
-  cd cms
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd cms
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd isolate
+    make PREFIX="/usr" VARPREFIX="/var" CONFIGDIR="/etc" isolate isolate.1
+
+    cd ../cms
+
+    git config submodule.isolate.url "$srcdir/isolate"
+    git submodule update
 }
 
 package() {
-  cd cms
+    cd isolate
+    make PREFIX="$pkgdir/usr" VARPREFIX="$pkgdir/var" CONFIGDIR="$pkgdir/etc" install install-doc
 
-  git config submodule.isolate.url "$srcdir/isolate"
-  git submodule update
+    # Patch the configuration file so that it uses a standard directory
+    sed -i "s|/var/local/lib/isolate|/var/lib/isolate|" $pkgdir/etc/isolate
 
-  #mkdir -p "$pkgdir/"lib/python2.7/site-packages/
-  #export PYTHONPATH="$pkgdir"/lib/python2.7/site-packages/
+    # The isolate binary has the setuid bit set (to run as root without sudo)
+    # however we should let only the owner and the group be able to run it:
+    chmod o-x $pkgdir/usr/bin/isolate
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
-
-  #mv "$pkgdir"/lib "$pkgdir"/usr/
-  #mv "$pkgdir"/bin "$pkgdir"/usr/
+    cd ../cms
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
