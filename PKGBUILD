@@ -1,23 +1,24 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.4.r54.1344f15ef
+pkgver=0.0.5.r258.737db9005
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libpng'
-         'libpulse' 'libx11' 'llvm-libs' 'openal' 'qt5-base'
+         'libpulse' 'libx11' 'openal' 'qt5-base' 'qt5-declarative'
          'vulkan-icd-loader' 'yaml-cpp' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
          'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'llvm')
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
         'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
+#        'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
         'git+https://github.com/kobalicek/asmjit.git'
         'git+https://github.com/Microsoft/GSL.git'
         'git+https://github.com/KhronosGroup/glslang.git'
@@ -48,10 +49,13 @@ prepare() {
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
+  #git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
   git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
   git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+
+  sed 's/999.666/6.0.0/' -i rpcs3/CMakeLists.txt
 
   popd
 
@@ -70,15 +74,12 @@ build() {
     -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
     -DCMAKE_SKIP_RPATH='ON' \
     -DUSE_SYSTEM_FFMPEG='ON' \
-    -DUSE_SYSTEM_LIBPNG='ON' \
-    -DLLVM_DIR='/usr/lib/llvm-4.0/lib/cmake/llvm'
+    -DUSE_SYSTEM_LIBPNG='ON'
   make
 }
 
 package() {
-  cd build
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
 
 # vim: ts=2 sw=2 et:
