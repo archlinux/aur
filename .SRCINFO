@@ -1,0 +1,32 @@
+pkgbase = dupeguru-git
+	pkgdesc = Find duplicate files on your system
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://dupeguru.voltaicideas.net/
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-tox
+	makedepends = git
+	makedepends = python-sphinx
+	depends = python
+	depends = python-pyqt5
+	depends = python-polib
+	depends = python-send2trash
+	depends = python-hsaudiotag3k
+	depends = libxkbcommon-x11
+	provides = dupeguru
+	conflicts = dupeguru
+	conflicts = dupeguru-se
+	conflicts = dupeguru-pe
+	conflicts = dupeguru-me
+	source = package_py.patch
+	source = git+https://github.com/hsoft/dupeguru.git
+	source = git+https://github.com/hsoft/hscommon#commit=5497c6fec44de6767a6488f540526d70218ef0da
+	source = git+https://github.com/hsoft/qtlib.git#commit=45cf0cbf77c87eb591914f0235b3b2e36ef09bb8
+	md5sums = 01bc14050c5225d0939d051e54c397a3
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = dupeguru-git
+
