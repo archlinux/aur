@@ -3,9 +3,9 @@
 # Contributor: Kim Brandt <myrveln@gmail.com>
 
 pkgname=newrelic-php5
-pkgver=8.0.0.204
+pkgver=8.1.0.209
 _libver=20170718
-pkgrel=2
+pkgrel=1
 pkgdesc="NewRelic PHP Monitoring Agent"
 arch=("x86_64")
 url="https://newrelic.com/php"
@@ -15,7 +15,7 @@ backup=("etc/php/conf.d/newrelic.ini")
 install="${pkgname}.install"
 source=("https://download.newrelic.com/php_agent/archive/${pkgver}/${pkgname}-${pkgver}-linux.tar.gz"
         "newrelic-daemon.service")
-md5sums=("fdfd6a91e192c061cdf40b6bbddc0dea"
+md5sums=("1079485f1fac620b49e7216f7d8eaa05"
          "4fc78347663adcb32ed28eddb546619c")
 
 package() {
