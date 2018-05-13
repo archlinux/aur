@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.0.1.257.g77986af9
+pkgver=5.0.1.269.g03272ad5
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -22,13 +22,11 @@ backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('strip' 'debug')
 source=("git+https://git.archlinux.org/pacman.git"
-        "support-file-5.33-pie-executable.patch::https://patchwork.archlinux.org/patch/494/mbox/"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
         "makepkg.conf")
 sha256sums=('SKIP'
-            '9f2de2c9c361de1d0f6dd3640e99df6ae36768ba737d15504ac491e15f31a85e'
             '0c087d26e80333267391a6e9e34b95a2ffb103cb9391cb53cc5d97ad954af774'
             'c5a3ec55f9d1bc52e5e5b127f76b7b16b79738268691a3e1d842359033e460da'
             '2d17478fd607c75e396fe10ef2add8bc9fcc12054810fb6f4409dfb70e01989e'
@@ -41,8 +39,6 @@ pkgver() {
 
 prepare() {
   cd pacman
-
-  patch -p1 -i ../support-file-5.33-pie-executable.patch
 
   ./autogen.sh
 }
