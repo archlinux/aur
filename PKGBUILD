@@ -26,7 +26,7 @@ build() {
   # [TODO] Due to severe laziness, I have not tested in-source builds yet
   [[ -d "build" ]] && rm -r "build"
   mkdir -p "build" && cd "build"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -Dcegui=OFF ..
   # to build C/C++ version comment this in and the line above out.
   # cmake -Dbuild-library=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib ..
   make
