@@ -47,7 +47,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
  * @param post_field data needed for POST
  * @return NULL if no response from server. Otherwise, String containing data.
  */
-String* api_curl_data(char* url, char* post_field);
+String* api_curl_data(const char* url, const char* post_field);
 
 /**
  * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
@@ -122,7 +122,7 @@ void news_print_top_three(const char* ticker_name_string);
  * are specified, those will be printed as well.
  * @param jobj the JSON array
  */
-void json_print_news(Json* jobj);
+void json_print_news(const Json* jobj);
 
 /**
  * Prints information about the symbol ticker_name_string by calling the function json_print_news.

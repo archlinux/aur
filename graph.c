@@ -3,16 +3,15 @@
 int zoom_months[9], zoom_change_x_months[9];
 
 void graph_main(const char* ticker_name_string) {
+    double* price_data = api_get_hist_5y(ticker_name_string);
+    if (price_data == NULL)  // If invalid symbol or cryptocurrency
+        RET_MSG("Invalid symbol.")
+
     int temp[] = {60, 48, 36, 24, 12, 9, 6, 3, 1};
     memcpy(zoom_months, temp, sizeof(zoom_months));
     int temp2[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
     memcpy(zoom_change_x_months, temp2, sizeof(zoom_change_x_months));
 
-    double* price_data = api_get_hist_5y(ticker_name_string);
-    if (price_data == NULL) { // If invalid symbol or cryptocurrency
-        puts("Invalid symbol.");
-        return;
-    }
     initscr();
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
@@ -78,10 +77,8 @@ void graph_print(const double* points, struct tm* start_time, int zoom) {
     getmaxyx(stdscr, rows, cols);
     cols -= 11; // 10 offset to give space for graph labels + 1 for right side
     rows -= rows % ROWS_SPACING; // Round down to multiple of 5
-    if (cols < 10 || rows < 10) { // Exits if the terminal is too small
-        puts("Terminal not large enough.");
-        return;
-    }
+    if (cols < 10 || rows < 10) // Exits if the terminal is too small
+        RET_MSG("Terminal not large enough.")
 
     time_t now = time(NULL);
     struct tm end_date = *start_time, * five_y = localtime(&now);

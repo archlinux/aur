@@ -28,16 +28,16 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
     return size * nmemb;
 }
 
-String* api_curl_data(char* url, char* post_field) {
+String* api_curl_data(const char* url, const char* post_field) {
     String* pString = string_init();
     CURL* curl = curl_easy_init();
     CURLcode res;
     curl_global_init(CURL_GLOBAL_DEFAULT);
     if (curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, url);
-        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data);
+        curl_easy_setopt(curl, CURLOPT_URL, url); // Set URL
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // Needed for HTTPS
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc); // Specify writefunc for return data
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data); // Specify object for return data
         struct curl_slist* list = NULL;
         if (url[12] == 'g') { //if using Google Urlshortener, a post field is needed
             list = curl_slist_append(list, "Content-Type: application/json");
@@ -49,54 +49,60 @@ String* api_curl_data(char* url, char* post_field) {
         if (url[12] == 'g')
             curl_slist_free_all(list);
         curl_easy_cleanup(curl);
-        if (res != CURLE_OK)
-            return NULL;
+        if (res != CURLE_OK) {
+            puts("Error curling data.");
+            string_destroy(&pString);// Free and return NULL
+        }
+    } else {
+        puts("Error initializing curl.");
+        string_destroy(&pString);// Free and return NULL
     }
     return pString;
 }
 
 double* api_get_current_price(const char* ticker_name_string) {
     double* val;
-    if (strlen(ticker_name_string) > 5) { //if symbol length is greater than 5, then it must be a crypto
+    if (strlen(ticker_name_string) > 5) { // If symbol length is greater than 5, then it must be a crypto
         val = coinmarketcap_get_price(ticker_name_string);
         return val;
     }
-    val = iex_get_price(ticker_name_string); //First tries IEX for intraday prices
+    val = iex_get_price(ticker_name_string); // First tries IEX for intraday prices
     if (val != NULL)
         return val;
-    val = morningstar_get_price(ticker_name_string); //Secondly tries Morningstar for market open/close data
+    val = morningstar_get_price(ticker_name_string); // Secondly tries Morningstar for market open/close data
     if (val != NULL)
         return val;
-    val = coinmarketcap_get_price(ticker_name_string); //Thirdly tries Coinmarketcap for real-time crypto data
+    val = coinmarketcap_get_price(ticker_name_string); // Thirdly tries Coinmarketcap for real-time crypto data
     if (val != NULL)
         return val;
-    return NULL; //Invalid symbol
+    return NULL; // Invalid symbol
 }
 
 double* iex_get_price(const char* ticker_name_string) {
     char iex_api_string[80];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", ticker_name_string);
     String* pString = api_curl_data(iex_api_string, NULL);
-    if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
+    if (strcmp(pString->data, "Unknown symbol") == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    double* ret = malloc(sizeof(double) * 3);
-    pointer_alloc_check(ret);
+    double* api_data = malloc(sizeof(double) * 3);
+    pointer_alloc_check(api_data);
     // First API call can only give intraday and previous close
-    ret[0] = json_object_get_double(json_object_object_get(jobj, "latestPrice")); // Intraday
-    ret[1] = json_object_get_double(json_object_object_get(jobj, "previousClose")); // Previous close
-    string_destroy(&pString);
+    api_data[0] = json_object_get_double(json_object_object_get(jobj, "latestPrice")); // Intraday
+    api_data[1] = json_object_get_double(json_object_object_get(jobj, "previousClose")); // Previous close
     json_object_put(jobj);
+    string_destroy(&pString);
+    // Second API call gives 7D price
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", ticker_name_string);
     pString = api_curl_data(iex_api_string, NULL);
     jobj = json_tokener_parse(pString->data);
-    ret[2] = json_object_get_double(
+    api_data[2] = json_object_get_double(
             json_object_object_get(json_object_array_get_idx(jobj, json_object_array_length(jobj) - 5), "close"));
-    string_destroy(&pString);
     json_object_put(jobj);
-    return ret;
+    string_destroy(&pString);
+    return api_data;
 }
 
 double* morningstar_get_price(const char* ticker_name_string) {
@@ -104,7 +110,7 @@ double* morningstar_get_price(const char* ticker_name_string) {
     time_t now = time(NULL);
     struct tm* ts = localtime(&now);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    ts->tm_mday -= 12; //get info from past 12 days
+    ts->tm_mday -= 12; // Get info from past 12 days
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
@@ -112,86 +118,86 @@ double* morningstar_get_price(const char* ticker_name_string) {
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
-    if (strcmp("null", pString->data) == 0) { //Invalid symbol
+    if (strcmp("null", pString->data) == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    double* ret = malloc(sizeof(double) * 3);
-    pointer_alloc_check(ret);
+    double* api_data = malloc(sizeof(double) * 3);
+    pointer_alloc_check(api_data);
     Json* datapoints = json_object_object_get(
             json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
     size_t size = json_object_array_length(datapoints);
-    ret[0] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1), 0));
-    ret[1] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0));
-    ret[2] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 5), 0));
+    api_data[0] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1), 0));
+    api_data[1] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0));
+    api_data[2] = json_object_get_double(json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 5), 0));
     json_object_put(jobj);
     string_destroy(&pString);
-    return ret;
+    return api_data;
 }
 
 double* coinmarketcap_get_price(const char* ticker_name_string) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
-    if (pString->data[0] == '{') { //Invalid symbol
+    if (pString->data[0] == '{') { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
-    double* ret = malloc(sizeof(double) * 3);
-    pointer_alloc_check(ret);
+    double* api_data = malloc(sizeof(double) * 3);
+    pointer_alloc_check(api_data);
     Json* idx = json_object_array_get_idx(jobj, 0);
-    ret[0] = strtod(json_object_get_string(json_object_object_get(idx, "price_usd")), NULL); //Current real-time price
-    ret[1] = ret[0] -
-             ((strtod(json_object_get_string(json_object_object_get(idx, "percent_change_24h")), NULL) / 100) * ret[0]);
-    ret[2] = ret[0] -
-             ((strtod(json_object_get_string(json_object_object_get(idx, "percent_change_7d")), NULL) / 100) * ret[0]);
-    string_destroy(&pString);
+    api_data[0] = strtod(json_object_get_string(json_object_object_get(idx, "price_usd")), NULL);
+    api_data[1] = api_data[0] - ((strtod(json_object_get_string(
+            json_object_object_get(idx, "percent_change_24h")), NULL) / 100) * api_data[0]);
+    api_data[2] = api_data[0] - ((strtod(json_object_get_string(
+            json_object_object_get(idx, "percent_change_7d")), NULL) / 100) * api_data[0]);
     json_object_put(jobj);
-    return ret;
+    string_destroy(&pString);
+    return api_data;
 }
 
 double* api_get_hist_5y(const char* ticker_name_string) {
     double* val;
-    val = iex_get_hist_5y(ticker_name_string); //First tries IEX for intraday prices
+    val = iex_get_hist_5y(ticker_name_string); // First tries IEX
     if (val != NULL)
         return val;
-    val = morningstar_get_hist_5y(ticker_name_string);
+    val = morningstar_get_hist_5y(ticker_name_string); // Secondly tries Morningstar
     if (val != NULL)
         return val;
-    return NULL; //Invalid symbol
+    return NULL; // Invalid symbol or cryptocurrency
 }
 
 double* iex_get_hist_5y(const char* ticker_name_string) {
     char iex_api_string[64];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart/5y", ticker_name_string);
     String* pString = api_curl_data(iex_api_string, NULL);
-    if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
+    if (strcmp(pString->data, "Unknown symbol") == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
     Json* jobj = json_tokener_parse(pString->data);
     size_t len = json_object_array_length(jobj);
-    double* ret = calloc(len + 1, sizeof(double));
-    pointer_alloc_check(ret);
+    double* api_data = calloc(len + 1, sizeof(double));
+    pointer_alloc_check(api_data);
     Json* temp;
     for (int i = 0; i < (int) len; i++) {
         temp = json_object_array_get_idx(jobj, (size_t) i);
-        ret[i] = json_object_get_double(json_object_object_get(temp, "close"));
+        api_data[i] = json_object_get_double(json_object_object_get(temp, "close"));
     }
     json_object_put(jobj);
     string_destroy(&pString);
-    return ret;
+    return api_data;
 }
 
 double* morningstar_get_hist_5y(const char* ticker_name_string) {
-    char today_char[16], yesterday_char[16], morningstar_api_string[512];
+    char today_char[16], yesterday_char[16], morningstar_api_string[256];
     time_t now = time(NULL);
     struct tm* ts = localtime(&now);
     mktime(ts);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    ts->tm_year -= 5; //get info from past 5 days
+    ts->tm_year -= 5; //get info from past 5 years
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
@@ -199,7 +205,7 @@ double* morningstar_get_hist_5y(const char* ticker_name_string) {
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
-    if (strcmp("null", pString->data) == 0) { //Invalid symbol
+    if (strcmp("null", pString->data) == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
@@ -218,7 +224,7 @@ double* morningstar_get_hist_5y(const char* ticker_name_string) {
 }
 
 void news_print_top_three(const char* ticker_name_string) {
-    char* url_encoded_string = calloc(128, 1);
+    char* url_encoded_string = calloc(128, sizeof(char));
     pointer_alloc_check(url_encoded_string);
     for (int i = 0, j = 0; i < 128; i++, j++) { //Replace underscores and spaces with url encoded '%20's
         if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
@@ -232,24 +238,25 @@ void news_print_top_three(const char* ticker_name_string) {
     ts->tm_mday -= 14; // Lowerbound date is 14 days earlier
     mktime(ts);
     strftime(yearchar, 16, "%Y-%m-%d", ts);
-    sprintf(news_api_string,
-            "https://newsapi.org/v2/everything?sortBy=popularity&pageSize=3&language=en&apiKey=1163c352d041460381f0a8273e60a9d1&from=%s&q=%s",
-            yearchar, url_encoded_string);
+    sprintf(news_api_string, "https://newsapi.org/v2/everything?sortBy=popularity&pageSize=3&language=en"
+                             "&apiKey=1163c352d041460381f0a8273e60a9d1&from=%s&q=%s", yearchar, url_encoded_string);
     free(url_encoded_string);
     String* pString = api_curl_data(news_api_string, NULL);
     Json* jobj = json_tokener_parse(pString->data);
     if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10) > 0)
         json_print_news(jobj);
-    else printf("No articles. Try a different input.\n");
-    string_destroy(&pString);
+    else puts("No articles. Try a different input.");
     json_object_put(jobj);
+    string_destroy(&pString);
 }
 
-void json_print_news(Json* jobj) {
+void json_print_news(const Json* jobj) {
     Json* article_list = json_object_object_get(jobj, "articles"), * article;
     char author_string[512], title_string[512], source_string[512], url_string[512], date_string[512], * shortened_url;
     int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10);
-    for (int i = 0; i < results && i < 3; i++) {
+    if (results > 3)
+        results = 3;
+    for (int i = 0; i < results; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
         strcpy(author_string, json_object_to_json_string(json_object_object_get(article, "author")));
         strip_char(author_string, '\\'); // Strip all attributes of escape characters
@@ -266,7 +273,7 @@ void json_print_news(Json* jobj) {
         strip_char(url_string, '\"');
         shortened_url = google_shorten_link(url_string); // Shorten link with google API
         printf("Title: %s Source: %s ", title_string, source_string);
-        if (strcmp(author_string, "null") != 0) //Some articles don't list authors or dates
+        if (strcmp(author_string, "null") != 0) // Some articles don't list authors or dates
             printf("Author: %s ", author_string);
         if (strcmp(date_string, "null") != 0)
             printf("Date: %s ", date_string);
@@ -276,15 +283,18 @@ void json_print_news(Json* jobj) {
 }
 
 void api_print_info(const char* ticker_name_string) {
-    Info* ticker_info = coinmarketcap_get_info(ticker_name_string);
-    if (ticker_info == NULL)
-        ticker_info = iex_get_info(ticker_name_string);
+    Info* ticker_info;
+    if (strlen(ticker_name_string) > 5) { // If symbol length is greater than 5, then it must be a crypto
+        ticker_info = coinmarketcap_get_info(ticker_name_string);
+        if (ticker_info == NULL)
+            RET_MSG("Invalid symbol!")
+    }
+    ticker_info = iex_get_info(ticker_name_string);
     if (ticker_info == NULL)
         ticker_info = morningstar_get_info(ticker_name_string);
-    if (ticker_info == NULL) {
-        printf("Invalid symbol!\n");
-        return;
-    }
+    if (ticker_info == NULL)
+        RET_MSG("Invalid symbol!")
+
     if (strcmp(ticker_info->name, "") != 0)
         printf("Name: %s\n", ticker_info->name);
     if (strcmp(ticker_info->symbol, "") != 0)
@@ -323,11 +333,13 @@ Info* iex_get_info(const char* ticker_name_string) {
     ticker_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
     json_object_put(jobj);
     string_destroy(&pString);
+
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/stats/dividendYield", ticker_name_string);
     pString = api_curl_data(iex_api_string, NULL); // API CALL 2 -- dividend
     if (strcmp("0", pString->data) != 0)
         ticker_info->div_yield = strtod(pString->data, NULL);
     string_destroy(&pString);
+
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", ticker_name_string);
     pString = api_curl_data(iex_api_string, NULL); // API CALL 3 -- historical
     jobj = json_tokener_parse(pString->data);
@@ -355,7 +367,7 @@ Info* morningstar_get_info(const char* ticker_name_string) {
     struct tm* ts = localtime(&now);
     mktime(ts);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    ts->tm_mday -= 30; //get info from past 30 days
+    ts->tm_mday -= 30; // Get info from past 30 days
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     sprintf(morningstar_api_string,
@@ -363,7 +375,7 @@ Info* morningstar_get_info(const char* ticker_name_string) {
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
-    if (strcmp("null", pString->data) == 0) { //Invalid symbol
+    if (strcmp("null", pString->data) == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
@@ -395,7 +407,7 @@ Info* coinmarketcap_get_info(const char* ticker_name_string) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
-    if (pString->data[0] == '{') { //Invalid symbol
+    if (pString->data[0] == '{') { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
@@ -416,7 +428,7 @@ Info* coinmarketcap_get_info(const char* ticker_name_string) {
 
 char* google_shorten_link(const char* url_string) {
     char post_string[1024];
-    sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); //Format HTTP POST
+    sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); // Format HTTP POST
     String* pString = api_curl_data(
             "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU", post_string);
     Json* jobj = json_tokener_parse(pString->data);
