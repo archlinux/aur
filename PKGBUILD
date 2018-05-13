@@ -19,27 +19,28 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
-depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'fontconfig'
+depends=('alsa-lib' 'aom-git' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'fontconfig'
          'ffnvcodec-headers' 'frei0r-plugins' 'fribidi' 'glibc' 'gsm' 'jack' 'kvazaar'
          'ladspa' 'lame' 'libass' 'libavc1394' 'libbluray' 'libbs2b' 'libcaca'
          'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'libgme' 'libiec61883'
          'libilbc' 'libmodplug' 'libomxil-bellagio' 'libmysofa' 'libpulse' 
-         'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxml2' 'libxv' 'mesa' 'ndi-sdk' 'openal' 'opencore-amr' 'opencl-driver'
-         'opencl-icd-loader' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 
-         'rockchip-mpp' 'rubberband' 'rtmpdump' 'sdl2' 'smbclient' 'speex' 'srt'
-         'shine' 'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb'
-         'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so'
-         'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
-depends_x86_64=('cuda' 'nvidia-utils')
-makedepends=('flite' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
-makedepends_x86_64=('vmaf-git')
+         'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libxcb'
+         'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'mesa' 'ndi-sdk' 'openal'
+         'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
+         'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
+         'rtmpdump' 'sdl2' 'smbclient' 'speex' 'srt' 'shine' 'tesseract'
+         'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 'xz' 'wavpack'
+         'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
+depends_x86_64=('cuda')
+makedepends=('flite' 'ffnvcodec-headers' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
+makedepends_x86_64=('vmaf')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -87,6 +88,7 @@ build() {
     --prefix=/usr \
     --extra-cflags="${_cflags}" \
     --extra-ldflags="${_ldflags}" \
+    --extra-libs='-lpthread' \
     \
     --toolchain=hardened \
     \
@@ -104,6 +106,7 @@ build() {
     $_cuvid \
     $_libnpp \
     \
+    --enable-ffnvcodec \
     --enable-libdrm \
     --enable-libmfx \
     --enable-nvenc \
@@ -124,7 +127,9 @@ build() {
     --enable-gray \
     --enable-iconv \
     --enable-ladspa \
+    --enable-libaom \
     --enable-libass \
+    --enable-libcodec2 \
     --enable-libbluray \
     --enable-libbs2b \
     --enable-libcaca \
@@ -186,6 +191,7 @@ build() {
     --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
+    --enable-lv2 \
     --enable-lzma \
     --enable-openal \
     --enable-opencl \
@@ -194,6 +200,7 @@ build() {
     --enable-rkmpp \
     --enable-sndio \
     --enable-sdl2 \
+    --enable-v4l2-m2m \
     --enable-vaapi \
     --enable-vdpau \
     --enable-xlib \
