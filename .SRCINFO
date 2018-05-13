@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-robot
+	pkgdesc = ROS - A metapackage which extends ros_base and includes ROS libaries for any robot hardware.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-joint-state-publisher
+	depends = ros-melodic-ros-base
+	depends = ros-melodic-urdf-parser-plugin
+	depends = ros-melodic-kdl-parser
+	depends = ros-melodic-control-msgs
+	depends = ros-melodic-robot-state-publisher
+	depends = ros-melodic-urdf
+	depends = ros-melodic-geometry
+	depends = ros-melodic-xacro
+	depends = ros-melodic-executive-smach
+	depends = ros-melodic-diagnostics
+	depends = ros-melodic-kdl-parser-py
+	depends = ros-melodic-filters
+	source = ros-melodic-robot-1.4.0-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/robot/1.4.0-0.tar.gz
+	sha256sums = 11e057c04c351e722f620eef927e718033e63cbc842eead3b478954552fcdd46
+
+pkgname = ros-melodic-robot
+
