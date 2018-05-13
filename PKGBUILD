@@ -3,10 +3,10 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=v1.1.371.r1395
+pkgver=1.1.449
 _gwtver=2.8.1
 _ginver=2.1.2
-_clangver=5.0.1
+_clangver=6.0.1
 _qtver=5.10.1
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
@@ -37,7 +37,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-    git describe --long --tags | sed -r 's/([^-]*)-g.*/r\1/;s/-/./g'
+    git tag --sort=-version:refname | head -n 1 | sed 's/v//'
 }
 
 prepare() {
