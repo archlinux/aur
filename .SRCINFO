@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-swri-console
+	pkgdesc = ROS - A rosout GUI viewer developed at Southwest Research Insititute as an alternative to rqt_console.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://ros.org/wiki/swri_console
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rosgraph-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-rosbag-storage
+	makedepends = ros-melodic-catkin
+	makedepends = boost
+	makedepends = qt5-base
+	depends = ros-melodic-rosgraph-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-rosbag-storage
+	depends = boost
+	depends = qt5-base
+	source = ros-melodic-swri-console-1.1.0-0.tar.gz::https://github.com/swri-robotics-gbp/swri_console-release/archive/release/melodic/swri_console/1.1.0-0.tar.gz
+	sha256sums = 3b316832e42c12ebf733b8f9f299ad56326bdeea281c36e1323dfe6c195a4cfe
+
+pkgname = ros-melodic-swri-console
+
