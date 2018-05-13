@@ -2,7 +2,7 @@
 # Contributor: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 pkgname=eclim
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Brings Eclipse functionality to Vim"
 url="http://eclim.org/"
 license=('GPL3')
@@ -54,6 +54,7 @@ build() {
   ant -lib /usr/share/groovy/lib \
       -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=/usr/share/vim/vimfiles \
+      -Dfile.encoding=utf-8 \
       build
 
 }
