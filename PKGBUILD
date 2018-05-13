@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=3.4.2
+pkgver=4.0
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -18,19 +18,17 @@ depends=(
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'yasm')
 source=(https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz{,.asc}
-        'fs56089.patch')
+        configure.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
+sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
             'SKIP'
-            '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
+            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd ffmpeg-${pkgver}
 
-  # https://bugs.archlinux.org/task/56089
-  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
-  patch -Np1 -i ../fs56089.patch
+  patch -Np1 -i ../configure.patch
 }
 
 build() {
@@ -46,7 +44,6 @@ build() {
       --disable-debug \
       --enable-static \
       --disable-stripping \
-      --enable-avisynth \
       --enable-avresample \
       --enable-fontconfig \
       --enable-gmp \

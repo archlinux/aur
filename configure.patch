@@ -1,0 +1,17 @@
+diff -ruN ffmpeg-4.0/configure patched/configure
+--- ffmpeg-4.0/configure	2018-04-20 12:02:55.000000000 +0200
++++ patched/configure	2018-05-13 10:55:23.199869611 +0200
+@@ -5101,10 +5101,10 @@
+         elif enabled aarch64; then
+             LIBTARGET="arm64"
+         fi
+-        if enabled shared; then
++        #if enabled shared; then
+             # Cannot build both shared and static libs when using dllimport.
+-            disable static
+-        fi
++        #    disable static
++        #fi
+         enabled shared && ! enabled small && test_cmd $windres --version && enable gnu_windres
+         enabled x86_32 && check_ldflags -Wl,--large-address-aware
+         shlibdir_default="$bindir_default"
