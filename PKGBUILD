@@ -1,4 +1,5 @@
-# Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer: aimileus <me at aimileus dot nl>
+# Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=tails-installer
 pkgver=5.0.7
