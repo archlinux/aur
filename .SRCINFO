@@ -1,0 +1,15 @@
+pkgbase = ros-melodic-roslint
+	pkgdesc = ROS - CMake lint commands for ROS packages.
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = http://ros.org/wiki/roslint
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = ros-melodic-roslint-0.11.2-0.tar.gz::https://github.com/ros-gbp/roslint-release/archive/release/melodic/roslint/0.11.2-0.tar.gz
+	sha256sums = 85588e28bc32d5359340c5524437aa447aadbd15f25c30d9e6cb4030f49232a5
+
+pkgname = ros-melodic-roslint
+
