@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-melodic-roscpp-tutorials'
-pkgver='0.8.1'
+pkgver='0.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_tutorials-release-release-melodic-roscpp_tutorials-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/roscpp_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('183183b4218eff5633c7fb96ab847fa5e89173e651aaacc2b3fa4926bd37ebc6')
+sha256sums=('06930778f11b92fedbbde2795272662378ac071fd35022914e478b07e4c011ba')
 
 build() {
   # Use ROS environment variables
