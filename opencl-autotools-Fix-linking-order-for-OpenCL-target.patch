@@ -1,0 +1,17 @@
+diff --git a/src/gallium/targets/opencl/Makefile.am b/src/gallium/targets/opencl/Makefile.am
+index de68a93ad5..f0e1de7797 100644
+--- a/src/gallium/targets/opencl/Makefile.am
++++ b/src/gallium/targets/opencl/Makefile.am
+@@ -23,11 +23,10 @@ lib@OPENCL_LIBNAME@_la_LIBADD = \
+ 	$(LIBELF_LIBS) \
+ 	$(DLOPEN_LIBS) \
+ 	-lclangCodeGen \
+-	-lclangFrontendTool \
+ 	-lclangFrontend \
++	-lclangFrontendTool \
+ 	-lclangDriver \
+ 	-lclangSerialization \
+-	-lclangCodeGen \
+ 	-lclangParse \
+ 	-lclangSema \
+ 	-lclangAnalysis \
