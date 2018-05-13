@@ -1,6 +1,6 @@
 # Maintainer: tomKPZ
 pkgname=curse-downloader-git
-pkgver=r62.766dc3c
+pkgver=0.3.r62.766dc3c
 pkgrel=1
 pkgdesc="A simple script to download mods from a CurseForge Minecraft modpack."
 arch=('any')
@@ -19,7 +19,9 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  local version=$(grep "version=" "setup.py" | sed 's/ *version="\([0-9\.]\+\)",/\1/')
+  printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
