@@ -4,7 +4,7 @@
 pkgname=terraform-provider-acme-bin
 _pkgname=terraform-provider-acme
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terraform provider for ACME certificate provisioning (Lets Encrypt)'
 url='github.com/vancluever/terraform-provider-acme'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _importpath='github.com/vancluever'
 
 
 package() {
-	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}_v${pkgver}"
 }
 
 # vim:set ts=2 sw=2 noexpandtab:
