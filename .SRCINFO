@@ -1,7 +1,7 @@
 pkgbase = inkscape-092-git
 	pkgdesc = An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x
 	pkgver = 20180510.18239
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/inkscape/inkscape
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = inkscape-092-git
 	depends = potrace
 	depends = libxslt
 	depends = gsl
+	depends = libmagick6
 	depends = python2
 	depends = popt
 	depends = libcdr
