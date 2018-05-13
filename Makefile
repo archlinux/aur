@@ -7,7 +7,7 @@ CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 \
 -Wundef -Wnested-externs -Wcast-qual -Wunreachable-code \
 -ggdb3 -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing
 OBJECTS = main.o api.o portfolio.o rc4.o string-tick.o graph.o
-LIBS = -lcurl -ljson-c -lm -lncurses
+LIBS = -lcurl -ljson-c -lm -lncurses -lpthread
 BIN = tick
 DESTDIR = /usr
 

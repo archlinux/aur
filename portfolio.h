@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <sys/stat.h>
+#include <pthread.h>
 #include "api.h"
 #include "rc4.h"
 
@@ -93,9 +94,10 @@ SDA* portfolio_get_data_array(void);
 /**
  * Initializes the rest of the fields in an SD struct using API data after symbol, amount, and total_spent have already
  * been stored
- * @param sec_data pointer to SD struct
+ * @param vsec_data pointer to an SD struct. Must be void* for threading.
+ * @return returns NULL. Must return NULL for threading.
  */
-void portfolio_store_api_data(SD* sec_data);
+void* portfolio_store_api_data(void* vsec_data);
 
 /**
  * Sorts the SDA array based on the SORT mode.
