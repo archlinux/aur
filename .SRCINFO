@@ -1,10 +1,11 @@
 pkgbase = vim-x11
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)
 	pkgver = 8.0.1826
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom:vim
 	makedepends = gpm
 	makedepends = python2
