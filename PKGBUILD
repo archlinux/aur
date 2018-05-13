@@ -2,7 +2,7 @@
 # Contributor: Peter Lewis <plewis@aur.archlinux.org>
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=v200Release
+pkgver=v2.2.2.r4.ge946b846
 pkgrel=1
 pkgdesc="A modern implementation of the classic game Commander Keen"
 arch=('i686' 'x86_64')
@@ -30,8 +30,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  git submodule init 
-  git submodule update  
   sed -i 's/APPDIR\ games/APPDIR\ bin/' ./src/install.cmake
 
   [ $CARCH == 'x86_64' ] && cmake -DBUILD_TYPE=LINUX64 -DCMAKE_INSTALL_PREFIX=/usr
