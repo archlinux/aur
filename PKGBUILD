@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=dovecot-xaps-plugin
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - dovecot plugin'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('git' 'cmake')
 conflicts=('dovecot-xaps-plugin-git')
 source=(https://github.com/st3fan/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('519493db3eedfbb7dfc294233b27301f41d9b9695dcafd7bdda53913276439e53a0c3606d026384fbaf358f201e174590c727de62694e846244fad95c8df329c')
+sha512sums=('8b808a3b7b0080cbdbdf67d52f085a5890d3ed0531c6eddb257967674506fd4502ef5e973ff08fbd9628d532876521e446bb1a03bd7e802a96bc67da377b4b6a')
 
 build() {
     mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
