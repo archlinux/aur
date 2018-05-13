@@ -1,6 +1,21 @@
 #ifndef STRING_TICK_H
 #define STRING_TICK_H
 
+#define RET_MSG(msg) {\
+    puts(msg);\
+    return;\
+}
+
+#define RETNULL_MSG(msg) {\
+    puts(msg);\
+    return NULL;\
+}
+
+#define GOTO_CLEAN_MSG(msg) {\
+    puts(msg);\
+    goto cleanup;\
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
