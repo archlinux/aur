@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-control-toolbox
+	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = http://ros.org/wiki/control_toolbox
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-control-msgs
+	makedepends = ros-melodic-realtime-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-cmake-modules
+	makedepends = tinyxml
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-control-msgs
+	depends = ros-melodic-realtime-tools
+	depends = ros-melodic-cmake-modules
+	depends = tinyxml
+	source = ros-melodic-control-toolbox-1.16.0-0.tar.gz::https://github.com/ros-gbp/control_toolbox-release/archive/release/melodic/control_toolbox/1.16.0-0.tar.gz
+	sha256sums = adf41cc48636370fc100e01035663240b5328e593eda03980958451292654d3d
+
+pkgname = ros-melodic-control-toolbox
+
