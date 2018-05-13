@@ -1,7 +1,7 @@
 pkgbase = python-telethon-aio-git
 	pkgdesc = Pure Python 3 Telegram client library, asyncio version
-	pkgver = 0.18.3.r103.gdffbd2d
-	pkgrel = 1
+	pkgver = 0.18.3.r133.g98449bb
+	pkgrel = 2
 	url = https://github.com/LonamiWebs/Telethon/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-telethon-aio-git
 	depends = python>=3.5
 	depends = python-pyaes
 	depends = python-rsa
+	depends = python-async_generator
 	conflicts = python-telethon
 	options = !emptydirs
 	source = git+https://github.com/LonamiWebs/Telethon.git#branch=asyncio
