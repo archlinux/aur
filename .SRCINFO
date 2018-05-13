@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-audio-play
+	pkgdesc = ROS - Outputs audio to a speaker from a source node.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/audio_play
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-audio-common-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = gstreamer
+	makedepends = gst-plugins-base
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-audio-common-msgs
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-ugly
+	source = ros-melodic-audio-play-0.3.2-0.tar.gz::https://github.com/ros-gbp/audio_common-release/archive/release/melodic/audio_play/0.3.2-0.tar.gz
+	sha256sums = 2cd38e86b76faa04820c20e13ae18821cc8dc54f19e6c9ffbceb1e3929484e6e
+
+pkgname = ros-melodic-audio-play
+
