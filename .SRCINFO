@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-diagnostic-common-diagnostics
+	pkgdesc = ROS - diagnostic_common_diagnostics.
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = http://ros.org/wiki/diagnostic_common_diagnostics
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-diagnostic-updater
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rospy
+	depends = ros-melodic-diagnostic-updater
+	depends = ros-melodic-tf
+	depends = ros-melodic-rospy
+	depends = python2-psutil
+	depends = hddtemp
+	source = ros-melodic-diagnostic-common-diagnostics-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_common_diagnostics/1.9.3-0.tar.gz
+	sha256sums = e9729593c5e73825e769d670d78ba809db061ffb344132201020eae878c1359c
+
+pkgname = ros-melodic-diagnostic-common-diagnostics
+
