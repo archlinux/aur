@@ -1,0 +1,18 @@
+pkgbase = timescaledb
+	pkgdesc = An open-source time-series database optimized for fast ingest and complex queries.
+	pkgver = 0.9
+	pkgrel = 2
+	url = http://www.timescale.com/
+	install = timescaledb.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = cmake>=3.4
+	depends = postgresql>=9.6.0
+	depends = postgresql-libs>=9.6.0
+	source = timescaledb-0.9::git+https://github.com/timescale/timescaledb.git
+	md5sums = SKIP
+
+pkgname = timescaledb
+

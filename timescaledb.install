@@ -1,0 +1,19 @@
+post_install() {
+    echo "================================================================================"
+    echo "To use TimescaleDB as PostgreSQL extension,"
+	echo "put in /var/lib/postgres/data/postgresql.conf:"
+	echo "'shared_preload_libraries = "timescaledb"'"
+    echo "If multiple libraries are required, separate them with comma."
+    echo "Then restart postgresql:"
+    echo "$ systemctl restart postgresql"
+    echo "================================================================================"
+}
+
+post_remove() {
+    echo "================================================================================"
+    echo "Remove 'timescaledb' from 'shared_preload_libraries'"
+    echo "In /var/lib/postgres/data/postgresql.conf"
+    echo "Then restart postgresql:"
+    echo "$ systemctl restart postgresql"
+    echo "================================================================================"
+}
