@@ -1,6 +1,7 @@
-# MAINTAINER: winlu <derwinlu AT gmail DOT com>
+# Maintainer: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
+# Contributor: winlu <derwinlu AT gmail DOT com>
 pkgname=soundsense
-_pkgver="2015-1_194"
+_pkgver="2016-1_196"
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="SoundSense is a sound-engine tool for Dwarf Fortress."
@@ -13,7 +14,7 @@ makedepends=("coreutils"
              "unzip")
 source=("http://df.zweistein.cz/soundsense/soundSense_${_pkgver}.zip"
         "soundsense.install")
-md5sums=('95eebf4bdd0e048e217288b80aaae658'
+md5sums=('63d6ef6b2d75deaa6a77d016c9ba3adc'
          '15fd5fb1136348807f7f5351887b3ef9')
 
 DEST="/opt/soundsense"
