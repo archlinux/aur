@@ -1,6 +1,6 @@
 pkgbase = sparse
 	pkgdesc = Semantic parser for C
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://sparse.wiki.kernel.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = sparse
 	license = custom:OSL
 	depends = perl
 	depends = libxml2
-	source = https://git.kernel.org/pub/scm/devel/sparse/sparse.git/snapshot/sparse-0.5.1.tar.gz
-	sha256sums = 97781e5fdb95b65ab4d0e906a4cfa3f99fdb8b57c22a5c658523b69dbe95b7fb
+	source = https://www.kernel.org/pub/software/devel/sparse/dist/sparse-0.5.2.tar.xz
+	sha256sums = 4632b7b74af72214247f982f976ba44206933bab3a2717e09df166fb5b8abe7a
 
 pkgname = sparse
 
