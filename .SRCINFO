@@ -1,0 +1,16 @@
+pkgbase = bupper-git
+	pkgdesc = Profile manager for the bup backup system
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tobru/bupper
+	arch = any
+	license = MIT
+	depends = bup
+	depends = ruby-os
+	depends = ruby-ptools
+	optdepends = sshfs: SSH restore support
+	source = bupper-git-1::git+https://github.com/tobru/bupper.git
+	md5sums = SKIP
+
+pkgname = bupper-git
+
