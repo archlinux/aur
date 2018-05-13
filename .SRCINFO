@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-controller-manager-msgs
+	pkgdesc = ROS - Messages and services for the controller manager.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	source = ros-melodic-controller-manager-msgs-0.14.2-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager_msgs/0.14.2-0.tar.gz
+	sha256sums = d78d9ae886be7b70181238f17f06fd8637adec3463a6eb250c583b723763f83a
+
+pkgname = ros-melodic-controller-manager-msgs
+
