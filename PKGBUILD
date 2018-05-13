@@ -3,15 +3,15 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.29.1
+pkgver=2.30
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32bit and 64bit RISC-V'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=('zlib')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha1sums=('172244a349d07ec205c39c0321cbc354c125e78e')
+sha512sums=('e747ea20d8d79fcd21b9d9f6695059caa7189d60f19256da398e34b789fea9a133c32b192e9693b5828d27683739b0198431bf8b3e39fb3b04884cf89d9aa839')
 
 prepare() {
   cd binutils-$pkgver
