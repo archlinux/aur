@@ -7,24 +7,24 @@
 # nethack Contributor : Nick Erdmann <erdmann@date.upb.de>
 
 pkgname=jnethack
-pkgver=3.6.0_0.8
+pkgver=3.6.0_0.9
 _nethackver=${pkgver/_*/}
-pkgrel=2
+pkgrel=1
 pkgdesc='Japanized Nethack, A single player dungeon exploration game'
 arch=('i686' 'x86_64')
 url="http://jnethack.osdn.jp/"
 license=('custom')
 depends=('ncurses' 'gzip')
-optdepends=('cocot: UTF-8 tty support' )
+# optdepends=('cocot: UTF-8 tty support' )
 makedepends=('bzip2' 'nkf' )
 install=jnethack.install
 options=(!makeflags)
-source=("http://downloads.sourceforge.net/${pkgname#j}/${pkgname#j}-${_nethackver//./}-src.tgz"
-        ${pkgname}-${pkgver//_/-}.diff.gz::"https://ja.osdn.net/frs/redir.php?m=ymu&f=%2Fjnethack%2F67126%2F${pkgname}-${pkgver//_/-}.diff.gz"
+source=("http://www.nethack.org/download/${_nethackver}/${pkgname#j}-${_nethackver//./}-src.tgz"
+        ${pkgname}-${pkgver//_/-}.diff.gz::"https://osdn.net/frs/redir.php?f=jnethack%2F69482%2F${pkgname}-${pkgver//_/-}.diff.gz"
         "https://github.com/tung/nethack360-statuscolors/compare/master...statuscolors2.diff")
 md5sums=('d42147b26e5fb4746fb72536ce145984'
-         '0ba570a714c27f32933d7f49b80ce6f2'
-         '36008a4dacd9419b43c64515ba64bc53')
+         '72e72019564fc76138bd46d28618853b'
+         'bb1ac938bcdc0eb4ab572e1ea8c3f000')
 
 prepare() {
   cd "$srcdir/${pkgname#j}-${_nethackver}/"
