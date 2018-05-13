@@ -2,7 +2,7 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=4.1.1.r14.gcbe61fd1
+pkgver=4.1.1.r38.gc33a72f4
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
