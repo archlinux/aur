@@ -1,9 +1,8 @@
 pkgbase = kid3-cli
 	pkgdesc = An MP3, Ogg/Vorbis and FLAC tag editor, CLI version
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kid3.sourceforge.net/
-	changelog = kid3.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
