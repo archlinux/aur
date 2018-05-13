@@ -5,23 +5,27 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-qsv-git
-pkgver=4.1.r91063.g66ba303c53
+pkgver=4.1.r91072.gcae004cabb
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
 url='http://www.ffmpeg.org/'
 license=('GPL3')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
-         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
-         'speex' 'v4l-utils' 'xz' 'zlib'
-         'libomxil-bellagio'
-         'intel-media-sdk'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
-         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
-         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so')
-makedepends=('git' 'ladspa' 'nasm')
+depends=(
+    # official repositories:
+        'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+        'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
+        'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh'
+        'libtheora' 'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2'
+        'libxv' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils'
+        'xz' 'zlib'
+        'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
+        'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
+        'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
+    # AUR:
+        'intel-media-sdk'
+)
+makedepends=('git' 'ffnvcodec-headers' 'ladspa' 'nasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('ffmpeg' 'ffmpeg-git' 'qt-faststart' 'libavcodec.so' 'libavdevice.so'
           'libavfilter.so' 'libavformat.so' 'libavresample.so' 'libavutil.so'
@@ -52,7 +56,6 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --enable-avisynth \
         --enable-avresample \
         --enable-fontconfig \
         --enable-gmp \
@@ -61,6 +64,7 @@ build() {
         --enable-ladspa \
         --enable-libass \
         --enable-libbluray \
+        --enable-libdrm \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
@@ -86,10 +90,11 @@ build() {
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-shared \
-        --enable-version3 \
+        --enable-nvdec \
+        --enable-nvenc \
         --enable-omx \
-        --enable-libmfx
+        --enable-shared \
+        --enable-version3
         
     make
     make tools/qt-faststart
