@@ -12,7 +12,7 @@ depends=(
 	"wayland"
 )
 arch=("i686" "x86_64")
-url='http://makodaemon.org'
+url='http://mako-project.org'
 source=("${pkgname%-*}::git+https://github.com/emersion/mako.git")
 sha1sums=('SKIP')
 provides=('mako')
