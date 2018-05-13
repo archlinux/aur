@@ -3,11 +3,11 @@
 _name='baselines'
 pkgname="openai-${_name}-git"
 pkgver=r121.9cf95a0
-pkgrel=2
+pkgrel=4
 pkgdesc='High-quality implementations of reinforcement learning algorithms'
 provides=(openai-${_name})
 url="https://github.com/openai/${_name}"
-depends=('python' 'openmpi')
+depends=('python' 'openmpi' 'python-cloudpickle' 'python-tqdm' 'python-gym-git' 'python-joblib' 'python-pyzmq' 'python-dill' 'python-progressbar' 'python-mpi4py' 'python-tensorflow' 'python-click')
 makedepends=('cmake' 'python-setuptools')
 license=('MIT')
 arch=('x86_64')
