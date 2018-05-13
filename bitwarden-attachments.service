@@ -1,0 +1,16 @@
+[Unit]
+Description=Bitwarden Attachments
+PartOf=bitwarden-server.service
+After=bitwarden-server.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-attachments \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/core/attachments:/etc/bitwarden/core/attachments \
+  --network bitwarden-net \
+  bitwarden/attachments:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-attachments
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

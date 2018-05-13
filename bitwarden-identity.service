@@ -1,0 +1,19 @@
+[Unit]
+Description=Bitwarden Identity
+PartOf=bitwarden-server.service
+After=bitwarden-server.service itwarden-mssql.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-identity \
+  --env-file /etc/bitwarden/global.env \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/identity:/etc/bitwarden/identity \
+  --volume /var/lib/bitwarden/core:/etc/bitwarden/core \
+  --volume /var/log/bitwarden/identity:/etc/bitwarden/logs \
+  --network bitwarden-net \
+  bitwarden/identity:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-identity
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

@@ -1,0 +1,65 @@
+post_install() {
+  # Create user
+  systemd-sysusers /usr/lib/sysusers.d/bitwarden.conf
+  
+  # Change directories owner
+  chown -R bitwarden:bitwarden /etc/bitwarden
+  chown -R bitwarden:bitwarden /var/lib/bitwarden
+  chown -R bitwarden:bitwarden /var/log/bitwarden
+
+  # Generate required vars
+	FQDN=$(hostname -f)
+  BW_UID=$(id -u bitwarden)
+  BW_GID=$(id -G bitwarden)
+
+  # Configure global.env
+	sed -i "s/#FQDN#/$FQDN/" /etc/bitwarden/global.env
+
+  # Configure uid.env
+  sed -i "s/#UID#/$BW_UID/" /etc/bitwarden/uid.env
+  sed -i "s/#GID#/$BW_GID/" /etc/bitwarden/uid.env
+
+  # Configure app-id.json
+	sed -i "s/#FQDN#/$FQDN/" /var/lib/bitwarden/web/app-id.json
+
+  # Pull docker images
+  docker pull bitwarden/mssql:1.19.0
+  docker pull bitwarden/web:1.19.0
+  docker pull bitwarden/attachments:1.19.0
+  docker pull bitwarden/api:1.19.0
+  docker pull bitwarden/identity:1.19.0
+  docker pull bitwarden/admin:1.19.0
+  docker pull bitwarden/icons:1.19.0
+  docker pull bitwarden/nginx:1.19.0
+
+  # Create docker network
+  docker network create bitwarden-net --driver bridge
+
+  # Initialize the database
+
+  # Reload systemd services
+  systemctl daemon-reload
+cat << EOF
+
+  Bitwarden server:
+  --------------------------
+  Bitwarden server can be started with systemd: 
+    systemctl start bitwarden-server
+
+  Web interface will be available at http://localhost:8080, and Admin UI at http://localhost:8080/admin
+
+  Bitwarden requires HTTPS to be fully functional, and this package did not generate a SSL certificate.
+  If you use a reverse proxy in front of Bitwarden, please configure the SSL endpoint on your reverse proxy.
+
+  If you require SSL endpoint on Bitwarden, copy your certificate and key, mount the files to bitwarden-nginx docker & change the port
+  binding by overriding systemd service for bitwarden-nginx.service, and modify the /var/lib/bitwarden/nginx/default.conf nginx config file.
+
+  Bitwarden requires an installation key, which can be retrieved on https://bitwarden.com/host
+
+  Please edit the file /etc/bitwarden/global.env with your installation id and installation key:
+
+  globalSettings__installation__id=*** your id ***
+  globalSettings__installation__key=*** your key ***
+
+EOF
+}

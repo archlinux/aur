@@ -1,0 +1,18 @@
+[Unit]
+Description=Bitwarden nginx
+PartOf=bitwarden-server.service
+After=bitwarden-server.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-nginx \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/nginx:/etc/bitwarden/nginx \
+  --volume /var/log/bitwarden/nginx:/var/log/nginx \
+  --publish 8080:8080 \
+  --network bitwarden-net \
+  bitwarden/nginx:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-nginx
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

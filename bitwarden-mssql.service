@@ -1,0 +1,19 @@
+[Unit]
+Description=Bitwarden MSSQL
+PartOf=bitwarden-server.service
+After=bitwarden-server.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-mssql \
+  --env-file /etc/bitwarden/mssql.env \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/mssql/data:/var/opt/mssql/data \
+  --volume /var/log/bitwarden/mssql:/var/opt/mssql/log \
+  --volume /var/lib/bitwarden/mssql/backups:/etc/bitwarden/mssql/backups \
+  --network bitwarden-net \
+  bitwarden/mssql:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-mssql
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

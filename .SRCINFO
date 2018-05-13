@@ -1,0 +1,33 @@
+pkgbase = bitwarden-server
+	pkgdesc = Open source password management solutions for individuals, teams, and business organizations.
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/bitwarden
+	install = bitwarden.install
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = openssl
+	depends = docker
+	backup = etc/bitwarden/global.env
+	backup = etc/bitwarden/uid.env
+	backup = etc/bitwarden/mssql.env
+	backup = var/lib/bitwarden/identity/identity.pfx
+	source = app-id.json
+	source = uid.env
+	source = global.env
+	source = mssql.env
+	source = nginx-default.conf
+	source = settings.js
+	source = bitwarden-server.service
+	source = bitwarden-admin.service
+	source = bitwarden-api.service
+	source = bitwarden-attachments.service
+	source = bitwarden-icons.service
+	source = bitwarden-identity.service
+	source = bitwarden-mssql.service
+	source = bitwarden-nginx.service
+	source = bitwarden-web.service
+	source = bitwarden-sysuser.conf
+
+pkgname = bitwarden-server
+

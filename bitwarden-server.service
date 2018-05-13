@@ -1,0 +1,11 @@
+[Unit]
+Description=Bitwarden Server
+Requires=docker.service bitwarden-admin.service bitwarden-api.service bitwarden-attachments.service bitwarden-icons.service bitwarden-identity.service bitwarden-mssql.service bitwarden-nginx.service bitwarden-web.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/echo "Starting Bitwarden Server containers..."
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Bitwarden API
+PartOf=bitwarden-server.service
+After=bitwarden-server.service bitwarden-mssql.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-api \
+  --env-file /etc/bitwarden/global.env \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/core:/etc/bitwarden/core \
+  --volume /var/log/bitwarden/api:/etc/bitwarden/logs \
+  --network bitwarden-net \
+  bitwarden/api:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-api
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

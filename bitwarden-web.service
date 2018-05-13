@@ -1,0 +1,16 @@
+[Unit]
+Description=Bitwarden Web
+PartOf=bitwarden-server.service
+After=bitwarden-server.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-web \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/web:/etc/bitwarden/web \
+  --network bitwarden-net \
+  bitwarden/web:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-web
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

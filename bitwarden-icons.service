@@ -1,0 +1,15 @@
+[Unit]
+Description=Bitwarden Icons
+PartOf=bitwarden-server.service
+After=bitwarden-server.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-icons \
+  --env-file /etc/bitwarden/uid.env \
+  --network bitwarden-net \
+  bitwarden/icons:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-icons
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service

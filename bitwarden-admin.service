@@ -1,0 +1,18 @@
+[Unit]
+Description=Bitwarden Admin
+PartOf=bitwarden-server.service
+After=bitwarden-server.service bitwarden-mssql.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name bitwarden-admin \
+  --env-file /etc/bitwarden/global.env \
+  --env-file /etc/bitwarden/uid.env \
+  --volume /var/lib/bitwarden/core:/etc/bitwarden/core \
+  --volume /var/log/bitwarden/admin:/etc/bitwarden/logs \
+  --network bitwarden-net \
+  bitwarden/admin:1.19.0
+ExecStop=/usr/bin/docker kill bitwarden-admin
+Restart=on-failure
+
+[Install]
+WantedBy=bitwarden-server.service
