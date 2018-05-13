@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="http://clonekeenplus.sourceforge.net"
 license=('GPL')
 groups=()
-depends=('sdl2' 'mesa' 'libvorbis' 'sdl2_image' 'boost' 'python')
+depends=('sdl2' 'mesa' 'libvorbis' 'sdl2_image' 'sdl2_mixer'  'boost' 
+'python')
 makedepends=('git' 'cmake' 'glu')
 provides=()
 conflicts=()
