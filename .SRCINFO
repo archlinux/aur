@@ -1,0 +1,37 @@
+pkgbase = ros-melodic-gazebo-ros-control
+	pkgdesc = ROS - gazebo_ros_control.
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://ros.org/wiki/gazebo_ros_control
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-joint-limits-interface
+	makedepends = ros-melodic-controller-manager
+	makedepends = ros-melodic-transmission-interface
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-angles
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-control-toolbox
+	makedepends = ros-melodic-gazebo-dev
+	depends = ros-melodic-joint-limits-interface
+	depends = ros-melodic-controller-manager
+	depends = ros-melodic-hardware-interface
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-angles
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-urdf
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-gazebo-ros
+	depends = ros-melodic-control-toolbox
+	depends = ros-melodic-transmission-interface
+	source = ros-melodic-gazebo-ros-control-2.8.2-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros_control/2.8.2-0.tar.gz
+	sha256sums = 092cac290eb014375b7facd7bee2751eebdfd8814e2331667c2f9949c8709626
+
+pkgname = ros-melodic-gazebo-ros-control
+
