@@ -1,0 +1,20 @@
+pkgbase = curse-downloader-git
+	pkgdesc = A simple script to download mods from a CurseForge Minecraft modpack.
+	pkgver = r62.766dc3c
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3.4
+	depends = python-appdirs
+	depends = python-requests
+	depends = tk
+	source = curse-downloader-git::git+git://github.com/portablejim/curseDownloader.git
+	source = curse-downloader.sh
+	source = curse-updater.sh
+	sha256sums = SKIP
+	sha256sums = 02fa8486e87d3eebcd56f7a323f5dcfb2d62974083517cac1106a8f50c80b92f
+	sha256sums = a3f0badb7f52a1e634a00b6360ce44031fc53055013af9276dbebaa711e5c40e
+
+pkgname = curse-downloader-git
+
