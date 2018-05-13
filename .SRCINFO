@@ -1,0 +1,34 @@
+pkgbase = ros-melodic-stage-ros
+	pkgdesc = ROS - This package provides ROS specific hooks for stage.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://ros.org/wiki/stage_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-stage
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = boost
+	depends = ros-melodic-tf
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-stage
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = boost
+	source = ros-melodic-stage-ros-1.8.0-0.tar.gz::https://github.com/ros-gbp/stage_ros-release/archive/release/melodic/stage_ros/1.8.0-0.tar.gz
+	sha256sums = 5762c477b0401c12f43573895f7a94ec3bdfddc4aa9fe3a127d3acc1ce2960d8
+
+pkgname = ros-melodic-stage-ros
+
