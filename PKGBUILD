@@ -1,6 +1,6 @@
 # Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
 pkgname=copay-bin
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="Copay is a secure bitcoin wallet platform for both desktop and mobile devices."
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("Copay-$pkgver.zip::https://github.com/bitpay/copay/releases/download/v"$pkgver"/Copay-linux.zip"
         "copay.desktop"
         "512x512.png")
-md5sums=('6486a7df6d3afde1b94da59487185450'
+md5sums=('eae1e09f46e9900dbbf9cd107d55f387'
          'e05610d1b08a2c688efccf9d687b8b92'
          '6b524738900ea4aee5e085d149d0304f')
 
