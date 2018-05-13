@@ -3,7 +3,7 @@
 # All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
 
 pkgname=python-binarytree
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=2
 pkgdesc="A Python library which provides a simple API to generate, visualize, inspect and manipulate binary trees"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools') 
 checkdepends=('python-pytest')
 source=("${pkgname}${pkgver}.tar.gz::https://github.com/joowani/${pkgname#python\-}/archive/${pkgver}.tar.gz")
-sha256sums=('af7c683e307792c07c7698c3070af99247c17eb0143f7b81fcf085d8e638b6f9')
+sha256sums=('b0579b03b2a43350947d80661fcc2b4236df8db84de03d3d5ce68b8fe0463a18')
 
 build() {
 	cd ${pkgname#python\-}-${pkgver}
@@ -28,5 +28,5 @@ package() {
 
 check() {
 	cd "${srcdir}/${pkgname#python\-}"-${pkgver}
-	pytest -x tests.py
+	pytest -x tests/test_tree.py
 }
