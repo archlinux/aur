@@ -1,14 +1,13 @@
-# $Id$
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
 pkgname=belle-sip-git
 _pkgname=belle-sip
-pkgver=1.6.3.r116.gcbb4ab4c
+pkgver=1.6.3.r118.g561958bf
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
 license=('GPL')
 depends=('avahi' 'bctoolbox-git' 'gcc-libs' 'zlib')
@@ -28,7 +27,8 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DENABLE_STATIC=NO \
-        -DENABLE_MDNS=YES .
+        -DENABLE_MDNS=YES \
+        -DENABLE_STRICT=NO .
   make
 }
 
