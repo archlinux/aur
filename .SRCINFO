@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-tracetools
+	pkgdesc = ROS - Wrapper interface for tracing libraries.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = APLv2
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = boost
+	makedepends = pkg-config
+	source = ros-melodic-tracetools-0.1.0-0.tar.gz::https://github.com/bosch-robotics-cr/tracetools-release/archive/release/melodic/tracetools/0.1.0-0.tar.gz
+	sha256sums = 1bda2cf38782fd1b9924d6fd4adaefb01f77e67b52e0f1da06bb44649a912ac5
+
+pkgname = ros-melodic-tracetools
+
