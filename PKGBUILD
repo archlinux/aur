@@ -1,12 +1,13 @@
 # Maintainer: DetMittens - advcs at protonmail dot com
 pkgname=libaom-git
 _gitname=aom
-pkgver=r25383.612deea3a7
+pkgver=r25433.4835dc08db
 pkgrel=1
 pkgdesc="Alliance for Open Media codec library with encoders and decoders for AV1"
 arch=('x86_64')
 url="http://aomedia.org"
 license=('custom:BSD-2-Clause' 'custom:AOM-Patent-1.0')
+depends=('gcc-libs')
 makedepends=('yasm' 'git' 'cmake' 'doxygen' 'perl')
 provides=('libaom.so')
 source=('git+https://aomedia.googlesource.com/aom')
