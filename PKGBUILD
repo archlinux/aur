@@ -4,7 +4,7 @@
 # Contributor: Alexander Neumann <alexander@bumpern.de>
 options=(!strip)
 pkgname=restic-git
-pkgver=v0.8.3.r191.g6d4c40f8
+pkgver=v0.8.3.r258.g159badf5
 pkgrel=1
 pkgdesc="restic is a program that does backups right."
 arch=('i686' 'x86_64')
