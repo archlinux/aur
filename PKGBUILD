@@ -3,9 +3,9 @@
 
 pkgname=tails-installer
 pkgver=5.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer for the Tails live operating system"
-arch=('x86_64')
+arch=('any')
 url="https://tails.boum.org/"
 license=(GPL)
 depends=('cdrkit' 'coreutils' 'dosfstools' 'e2fsprogs' 'gptfdisk' 'gtk3' 'mtools' 'p7zip' 'parted' 'python2-configobj' 'python2-distutils-extra' 'python2-gobject' 'syslinux' 'udisks2' 'urlgrabber')

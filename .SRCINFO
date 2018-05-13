@@ -1,9 +1,9 @@
 pkgbase = tails-installer
 	pkgdesc = Installer for the Tails live operating system
 	pkgver = 5.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tails.boum.org/
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
 	depends = cdrkit
