@@ -2,7 +2,7 @@
 
 pkgname=libcotp
 pkgver=1.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='C library that generates TOTP and HOTP'
 arch=('i686' 'x86_64')
 depends=('libbaseencode')
