@@ -35,13 +35,14 @@ String* portfolio_file_get_string(char** password) {
 
     fclose(fp);
     Json* jobj = json_tokener_parse(pString->data);
-    if (jobj == NULL) { // Portfolio must be encrypted if it cannot be parsed as JSON
+    if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Decrypt if not a JSON array
         char* pw = rc4_getPassword();
         puts("Decrypting portfolio...");
         rc4_encode_string(pString, pw); // Decode using password
         jobj = json_tokener_parse(pString->data);
-        if (jobj == NULL) { // If cannot be parsed as JSON after decrypting, wrong password was entered
+        if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Wrong pw if not JSON array after decrypt
             free(pw);
+            json_object_put(jobj);
             string_destroy(&pString);
             RETNULL_MSG("Wrong password!")
         }
