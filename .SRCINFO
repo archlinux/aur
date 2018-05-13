@@ -1,0 +1,17 @@
+pkgbase = openai-baselines-git
+	pkgdesc = OpenAI Baselines: high-quality implementations of reinforcement learning algorithms
+	pkgver = r121.9cf95a0
+	pkgrel = 1
+	url = https://github.com/openai/baselines
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = python
+	depends = openmpi
+	provides = openai-baselines
+	source = git+https://github.com/openai/baselines.git
+	sha256sums = SKIP
+
+pkgname = openai-baselines-git
+
