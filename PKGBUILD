@@ -4,15 +4,15 @@
 
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
-pkgver=r2947
+pkgver=r2963
 pkgrel=1
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file')
+depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'pulseaudio')
 makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack'
-             'libmodplug' 'subversion' 'faad2')
+             'libmodplug' 'subversion' 'faad2' 'pulseaudio')
 optdepends=('speex: for using the speex plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'
@@ -24,9 +24,11 @@ conflicts=('moc')
 provides=('moc')
 options=('!libtool')
 source=("${pkgname}::svn://daper.net/moc/trunk"
-        '0001-Pulseaudio-backend.patch')
+        '0001-Pulseaudio-backend.patch'
+        'moc-ffmpeg4.patch')
 sha1sums=('SKIP'
-          'd86a04606eaa0960f3b59626070cd231d37b6430')
+          'd86a04606eaa0960f3b59626070cd231d37b6430'
+          '007a0580ac754e1c318a0d0b6f0d403883797eaf')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -36,6 +38,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  # Fix build with ffmpeg 4 (taken from official release on ArchLinux)
+  patch -p0 -i ../moc-ffmpeg4.patch
+
   # Add pulseaudio backend
   patch -p1 -i ../0001-Pulseaudio-backend.patch
 
@@ -45,7 +50,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --without-rcc \
+  ./configure --prefix=/usr --without-rcc --with-pulse \
     --with-alsa --with-oss --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
     --with-sndfile --with-modplug --with-ffmpeg --with-speex \
