@@ -1,6 +1,6 @@
 # Maintainer: lwsk <lwsk@protonmail.com>
 pkgname=openleecher
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Random internet browsing tool."
 arch=('any')
@@ -8,44 +8,43 @@ url='https://openleecher.tk/'
 license=('MIT')
 depends=('python')
 depends+=('pyqt5-common')
-depends+=('python-pip')
-makedepends=()
+makedepends=('unzip')
+makedepends+=('wget')
+makedepends+=('python-pip')
 backup=()
 options=('!emptydirs')
 source=()
 md5sums=()
 
 package() {
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/pyinstaller" --no-deps pyinstaller
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/psutil" --no-deps psutil
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/PyQt5" --no-deps PyQt5
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}/termcolor" --no-deps termcolor
+	pip install --upgrade termcolor -t $pkgdir/usr/lib/python3.6/site-packages/
+	pip install --upgrade PyQt5 -t $pkgdir/usr/lib/python3.6/site-packages/
+	pip install --upgrade psutil -t $pkgdir/usr/lib/python3.6/site-packages/
+	pip install --upgrade pyinstaller -t $pkgdir/usr/lib/python3.6/site-packages/
 
-    python -O -m compileall "${pkgdir}/pyinstaller/"
-    python -O -m compileall "${pkgdir}/psutil/"
-    python -O -m compileall "${pkgdir}/PyQt5/"
-    python -O -m compileall "${pkgdir}/termcolor/"
+    wget https://openleecher.tk/res/openleecher-1.2-src.zip
+    unzip -o openleecher-1.2-src.zip -d $srcdir
 
-    pyinstaller -F ../openleecher.py
+	pyinstaller --paths=$pkgdir/usr/lib/python3.6/site-packages/ -F $srcdir/openleecher.py
 
     mkdir -p $pkgdir/usr/bin/
     mkdir -p $pkgdir/etc/openleecher/
     mkdir -p $pkgdir/usr/share/applications/
     mkdir -p $pkgdir/usr/share/icons/
 
-    cp dist/openleecher $pkgdir/usr/bin/
+    cp $srcdir/dist/openleecher $pkgdir/usr/bin/
     chmod +x $pkgdir/usr/bin/openleecher
 
-    cp ../config.ini $pkgdir/etc/openleecher/
+    cp $srcdir/config.ini $pkgdir/etc/openleecher/
     chmod 776 $pkgdir/etc/openleecher/config.ini
 
-    cp ../openleecher.png $pkgdir/usr/share/icons/
-    cp ../openleecher.desktop $pkgdir/usr/share/applications/
+    cp $srcdir/openleecher.png $pkgdir/usr/share/icons/
+    cp openleecher.desktop $pkgdir/usr/share/applications/
 
-    cp ../LICENSE $pkgdir/etc/openleecher/
-    cp ../x.png $pkgdir/etc/openleecher/
-    cp ../pause.png $pkgdir/etc/openleecher/
-    cp ../slider.gif $pkgdir/etc/openleecher/
+    cp LICENSE $pkgdir/etc/openleecher/
+    cp $srcdir/x.png $pkgdir/etc/openleecher/
+    cp $srcdir/pause.png $pkgdir/etc/openleecher/
+    cp $srcdir/slider.gif $pkgdir/etc/openleecher/
 
     touch $pkgdir/etc/openleecher/openleecher.log
     chmod 776 $pkgdir/etc/openleecher/openleecher.log
