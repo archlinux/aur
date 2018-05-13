@@ -1,12 +1,15 @@
 pkgbase = circleci-cli
-	pkgdesc = A CircleCI client for building conda packages locally for example.
-	pkgver = 1.0
+	pkgdesc = The circleci commands enable you to reproduce the CircleCI environment locally and run jobs as if they were running on the hosted application
+	pkgver = 0.0.4705
 	pkgrel = 1
-	arch = i686
+	url = https://github.com/circleci/local-cli
 	arch = x86_64
-	license = GPL3
-	source = https://circle-downloads.s3.amazonaws.com/releases/build_agent_wrapper/circleci
-	md5sums = 6b0d27cacf7294f3c04e4434f4dbbd8a
+	license = MIT
+	depends = docker
+	source = circleci-cli-0.0.4705.tar.gz::https://github.com/circleci/local-cli/archive/v0.0.4705-deba4df.tar.gz
+	source = https://raw.githubusercontent.com/circleci/local-cli/master/LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = circleci-cli
 
