@@ -8,7 +8,7 @@ Group=sonospy
 WorkingDirectory=/opt/sonospy/app/
 Environment="SERVICE=Sonospy"
 Environment="SONOSPY_DB=sonospy.db"
-Environment="SONOSPY_INI=userindex3.ini"
+Environment="SONOSPY_INI=userindex.ini"
 EnvironmentFile=-/etc/sonospy/sonospy.conf
 Type=forking
 ExecStart=/opt/sonospy/app/sonospy_proxy -sSonospy=${SERVICE},${SONOSPY_DB},${SONOSPY_INI} -r

@@ -2,14 +2,14 @@ post_install() {
   sed -i "s_'python pycpoint.py'_'python2 pycpoint.py'_" /opt/sonospy/app/sonospy_proxy
   touch /opt/sonospy/data/sonospy.db
   ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy/sonospy.db
-  ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy.db
-  mv -n /opt/sonospy/app/sonospy/pycpoint2.ini /opt/sonospy/data/pycpoint.ini
+  mv -n /opt/sonospy/app/sonospy/pycpoint.ini.example /opt/sonospy/data/pycpoint.ini
   ln -s /opt/sonospy/data/pycpoint.ini /opt/sonospy/app/sonospy/pycpoint.ini
-  mv -n /opt/sonospy/app/sonospy/scan2.ini /opt/sonospy/data/scan.ini
+  mv -n /opt/sonospy/app/sonospy/scan.ini.example /opt/sonospy/data/scan.ini
   ln -s /opt/sonospy/data/scan.ini /opt/sonospy/app/sonospy/scan.ini
-  mv -n /opt/sonospy/app/sonospy/userindex2.ini /opt/sonospy/data/userindex3.ini
-  ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/sonospy/userindex3.ini
-  ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/userindex3.ini
+  mv -n /opt/sonospy/app/sonospy/userindex2.ini.example /opt/sonospy/data/userindex.ini
+  ln -s /opt/sonospy/data/userindex.ini /opt/sonospy/app/sonospy/userindex.ini
+  mv -n /opt/sonospy/app/sonospy/defaultindex.ini.example /opt/sonospy/data/defaultindex.ini
+  ln -s /opt/sonospy/data/defaultindex.ini /opt/sonospy/app/sonospy/defaultindex.ini
   systemd-sysusers sonospy.conf
   systemd-tmpfiles --create sonospy.conf
   chown -R sonospy:sonospy /opt/sonospy
