@@ -1,0 +1,19 @@
+pkgbase = grim-git
+	pkgdesc = Grab images from a Wayland compositor
+	pkgver = r13.9853771
+	pkgrel = 1
+	url = http://github.com/grim
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	depends = pango
+	depends = wayland
+	provides = grim
+	conflicts = grim
+	source = grim::git+https://github.com/emersion/grim.git
+	sha1sums = SKIP
+
+pkgname = grim-git
+
