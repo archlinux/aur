@@ -2,7 +2,7 @@
 
 pkgname=libbaseencode
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)'
 arch=('i686' 'x86_64')
 makedepends=('cmake')
@@ -21,7 +21,7 @@ sha256sums=("75c887f6790fc6fc83316938421557820bdcec47e4c235c78d9462034eb4943a"
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir build && cd $_
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
     make
 }
 
