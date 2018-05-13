@@ -2,9 +2,9 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.2.2
+_pkgver=0.2.3
 _branch=v${_pkgver}-dev
-pkgver=0.2.2.r26.1052008
+pkgver=0.2.3+26+aca2d3b
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git describe --always)"
+  printf '%s+%s+%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
 build() {
