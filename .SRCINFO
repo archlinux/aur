@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-controller-interface
+	pkgdesc = ROS - Interface base class for controllers.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-hardware-interface
+	source = ros-melodic-controller-interface-0.14.2-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_interface/0.14.2-0.tar.gz
+	sha256sums = ab30aafc8d549b2987425111e6d134cc0d2b1489565953fd028c44a1b0473e91
+
+pkgname = ros-melodic-controller-interface
+
