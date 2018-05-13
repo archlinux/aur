@@ -8,7 +8,7 @@ pkgbase = agedu
 	license = MIT
 	depends = glibc
 	source = https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20180329.af641e6.tar.gz
-	md5sums = a2242a738042bd8af062cd0e7b5ab508
+	md5sums = SKIP
 
 pkgname = agedu
 

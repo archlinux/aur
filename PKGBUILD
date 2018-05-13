@@ -17,8 +17,8 @@ arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
 license=('MIT')
 depends=('glibc')
-source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
-md5sums=('ec647c02f5719aeac4d87fe8e3662270')
+source=("https://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver.$_pkghash"
