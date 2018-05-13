@@ -22,7 +22,7 @@ sha256sums=("40ac7047d94dca3de9093ec4b3dfaabf3c295860d12467768a8a60c8ead57171"
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir build && cd $_
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
     make
 }
 
