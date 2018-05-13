@@ -1,13 +1,13 @@
 # Maintainer: Fabrice aneche <akh at nobugware dot com>
 
 pkgname=s2geometry-git
-pkgver=r136
+pkgver=r233
 pkgrel=1
 pkgdesc="Computational geometry and spatial indexing on the sphere"
 arch=('i686' 'x86_64')
 url="https://s2geometry.io/"
 license=('APACHE2')
-depends=('openssl-1.0' 'gflags' 'google-glog' 'python')
+depends=('openssl' 'python' 'gtest')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/google/s2geometry.git")
 sha256sums=('SKIP')
@@ -21,7 +21,7 @@ build() {
   cd "$srcdir/s2geometry"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DOPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0" -DOPENSSL_SSL_LIBRARY="/usr/lib/openssl-1.0/libssl.so" -DOPENSSL_CRYPTO_LIBRARY="/usr/lib/openssl-1.0/libcrypto.so"  ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr  ..
   make
 }
 
