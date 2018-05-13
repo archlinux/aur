@@ -15,20 +15,19 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='http://ffmpeg.org/'
 license=('GPL3')
 depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'lame' 'libmodplug'
-         'libtheora' 'libwebp'
-         'libxml2' 'opencore-amr' 'openjpeg2' 'opus'
-         'speex' 'v4l-utils' 'xz' 'zlib'
-         'libbluray.so'
+         'lame' 'libdrm' 'libmodplug'
+         'libtheora' 'libwebp' 'libxml2'
+         'opencore-amr' 'openjpeg2' 'opus' 'speex' 'v4l-utils'
+         'xz' 'zlib'
+         'libbluray.so' 'libva-drm.so' 'libva.so'
          'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'rtmpdump' 'libva-headless')
+         'rtmpdump')
 makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' "ffmpeg")
+          'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
-replaces=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
         'fs56089.patch')
 sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
@@ -50,7 +49,6 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-avisynth \
     --enable-avresample \
     --disable-fontconfig \
     --enable-gmp \
@@ -59,6 +57,7 @@ build() {
     --disable-ladspa \
     --disable-libass \
     --enable-libbluray \
+    --enable-libdrm \
     --disable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
@@ -84,6 +83,8 @@ build() {
     --disable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --disable-nvenc \
+    --disable-omx \
     --enable-shared \
     --enable-version3 \
     --enable-vaapi \
@@ -93,15 +94,13 @@ build() {
     --disable-xlib  \
     --disable-sdl2 \
     --disable-htmlpages \
-    --disable-ffplay #\
-    # enabling libfdk_aac makes ffmpeg incompatible with the GPL!
-    #--enable-libfdk_aac \
-    #--enable-nonfree
+    --disable-ffplay
 
   make
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
+
   make DESTDIR="${pkgdir}" install install-man
 }
