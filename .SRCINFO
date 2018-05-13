@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-image-geometry
+	pkgdesc = ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_geometry
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = opencv
+	depends = ros-melodic-sensor-msgs
+	depends = opencv
+	source = ros-melodic-image-geometry-1.13.0-0.tar.gz::https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/image_geometry/1.13.0-0.tar.gz
+	sha256sums = f1f06fc227662b34743a3391431538326fa3c8833c7ab47b6b1eeeeb631082e2
+
+pkgname = ros-melodic-image-geometry
+
