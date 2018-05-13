@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-acme-bin
+	pkgdesc = Terraform provider for ACME certificate provisioning (Lets Encrypt)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = github.com/vancluever/terraform-provider-acme
+	arch = x86_64
+	license = apache
+	depends = glibc
+	optdepends = terraform: uses this plugin
+	source = https://github.com/vancluever/terraform-provider-acme/releases/download/v0.5.0/terraform-provider-acme_v0.5.0_linux_amd64.zip
+	sha256sums = 5399b90969733b036117a7e6b37955bf88e144054df8314ef4cbaa37759924e8
+
+pkgname = terraform-provider-acme-bin
+
