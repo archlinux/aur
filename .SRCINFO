@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-compressed-depth-image-transport
+	pkgdesc = ROS - Compressed_depth_image_transport provides a plugin to image_transport for transparently sending depth images (raw, floating-point) using PNG compression.
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_transport_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-cv-bridge
+	makedepends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-image-transport
+	depends = ros-melodic-cv-bridge
+	depends = ros-melodic-dynamic-reconfigure
+	source = ros-melodic-compressed-depth-image-transport-1.9.5-0.tar.gz::https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/compressed_depth_image_transport/1.9.5-0.tar.gz
+	sha256sums = 344ba8616aae571668169db0759f432c049e9f2c272dbcbb2a82371ff285c212
+
+pkgname = ros-melodic-compressed-depth-image-transport
+
