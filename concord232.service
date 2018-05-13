@@ -1,0 +1,16 @@
+[Unit]
+Description=Concord 232 Server
+After=network.target
+
+[Service]
+Restart=on-failure
+User=concord232
+Group=concord232
+EnvironmentFile=/etc/conf.d/concord232
+ExecStart=/usr/bin/concord232_server \
+  --serial ${CONCORD232_SERIAL_DEV} \
+  --listen ${CONCORD232_LISTEN_ADDR} \
+  --port ${CONCORD232_LISTEN_PORT}
+
+[Install]
+WantedBy=multi-user.target
