@@ -1,7 +1,7 @@
 pkgbase = seafile-client
 	pkgdesc = GUI client for synchronizing your local files with seafile server
 	pkgver = 6.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile-client
 	arch = i686
 	arch = x86_64
