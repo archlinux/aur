@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-melodic-rviz'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,11 +36,11 @@ ros_makedepends=(ros-melodic-map-msgs
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt5-base
+  tinyxml2
   ogre-1.9
   urdfdom-headers
   assimp
   eigen3
-  tinyxml
   mesa
   yaml-cpp)
 
@@ -68,11 +68,11 @@ ros_depends=(ros-melodic-map-msgs
   ros-melodic-rospy)
 depends=(${ros_depends[@]}
   qt5-base
+  tinyxml2
   ogre-1.9
   urdfdom-headers
   assimp
   eigen3
-  tinyxml
   mesa
   yaml-cpp)
 
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-melodic-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0c822541a003a5cc3b9c352b8ca0c89fe67db8ee6ed9f70b95e2fcbff2e3c48d')
+sha256sums=('2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d')
 
 build() {
   # Use ROS environment variables
