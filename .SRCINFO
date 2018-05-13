@@ -1,0 +1,16 @@
+pkgbase = ovmf-arm
+	pkgdesc = Tianocore UEFI firmware for qemu ARM/AARCH64.
+	pkgver = latest
+	pkgrel = 1
+	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
+	arch = any
+	license = custom
+	source = qemu-arm::http://snapshots.linaro.org/components/kernel/leg-virt-tianocore-edk2-upstream/latest/QEMU-ARM/RELEASE_GCC5/QEMU_EFI.fd
+	source = qemu-aarch64::http://snapshots.linaro.org/components/kernel/leg-virt-tianocore-edk2-upstream/latest/QEMU-AARCH64/RELEASE_GCC5/QEMU_EFI.fd
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ovmf-arm
+
+pkgname = ovmf-aarch64
+
