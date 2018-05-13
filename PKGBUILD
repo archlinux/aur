@@ -12,7 +12,6 @@ source=("qemu-arm::http://snapshots.linaro.org/components/kernel/leg-virt-tianoc
 "qemu-aarch64::http://snapshots.linaro.org/components/kernel/leg-virt-tianocore-edk2-upstream/latest/QEMU-AARCH64/RELEASE_GCC5/QEMU_EFI.fd")
 
 package_ovmf-arm() {
-	cd "${srcdir}/"edk2
 
 	install -D -m644 "${srcdir}"/qemu-arm "${pkgdir}"/usr/share/ovmf/ARM/QEMU_EFI.fd
 }
