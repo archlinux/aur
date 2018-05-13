@@ -3,8 +3,8 @@
 _name='baselines'
 pkgname="openai-${_name}-git"
 pkgver=r121.9cf95a0
-pkgrel=1
-pkgdesc='OpenAI Baselines: high-quality implementations of reinforcement learning algorithms'
+pkgrel=2
+pkgdesc='High-quality implementations of reinforcement learning algorithms'
 provides=(openai-${_name})
 url="https://github.com/openai/${_name}"
 depends=('python' 'openmpi')

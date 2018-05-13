@@ -1,7 +1,7 @@
 pkgbase = openai-baselines-git
-	pkgdesc = OpenAI Baselines: high-quality implementations of reinforcement learning algorithms
+	pkgdesc = High-quality implementations of reinforcement learning algorithms
 	pkgver = r121.9cf95a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openai/baselines
 	arch = x86_64
 	license = MIT
