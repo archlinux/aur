@@ -4,7 +4,7 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='http://wiki.ros.org/common_msgs'
 
 pkgname='ros-melodic-common-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-melodic-common_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/common_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eb7d66c0735fbeecaa5536729bbdcb8a444fe55204301d4c71d3cfd43aac4dbd')
+sha256sums=('317d4eacc0a2501522c6762100bf258a4c84748bae46781bae7e7af0c9ffb017')
 
 build() {
   # Use ROS environment variables
