@@ -1,0 +1,36 @@
+pkgbase = ros-melodic-sound-play
+	pkgdesc = ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/sound_play
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-actionlib-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-audio-common-msgs
+	makedepends = ros-melodic-roslib
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-diagnostic-msgs
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-audio-common-msgs
+	depends = ros-melodic-roslib
+	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-rospy
+	depends = festival
+	depends = gstreamer
+	depends = gst-plugins-ugly
+	depends = gst-plugins-good
+	depends = python2-gobject
+	depends = festival-english
+	depends = gst-plugins-base
+	source = ros-melodic-sound-play-0.3.2-0.tar.gz::https://github.com/ros-gbp/audio_common-release/archive/release/melodic/sound_play/0.3.2-0.tar.gz
+	sha256sums = 0f040829721c64f41291a274032684fa812edb88ce82a34ac0bdd0c48c4645a2
+
+pkgname = ros-melodic-sound-play
+
