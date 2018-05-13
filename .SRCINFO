@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-gazebo-msgs
+	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://gazebosim.org/tutorials?cat=connect_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-trajectory-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-sensor-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-trajectory-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-gazebo-msgs-2.8.2-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_msgs/2.8.2-0.tar.gz
+	sha256sums = 2fff843830cde570f55c93662813cfb65f6d5913e9d55bbdacbf5c0b2ab8f531
+
+pkgname = ros-melodic-gazebo-msgs
+
