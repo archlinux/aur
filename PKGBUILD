@@ -6,7 +6,7 @@ pkgdesc="基于HTTP代理的百度网盘(Baidu)不限速下载，SwitchyOmega设
 arch=("any")
 url="https://github.com/monkeyWie/proxyee-down"
 license=('Apache License 2.0')
-depends=('jre8' )
+depends=('jre8' ,'java-runtime-common')
 makedepends=('unzip'
              'binutils')
 source=("https://github.com/monkeyWie/proxyee-down/releases/download/${pkgver}/proxyee-down-${pkgver}-jar.zip")
