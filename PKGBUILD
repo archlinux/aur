@@ -2,7 +2,7 @@
 
 _name=glbinding
 pkgname=${_name}-git
-pkgver=2.1.1.r49.g7d796914
+pkgver=2.1.3.r105.gc9909596
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
@@ -51,5 +51,8 @@ package() {
 	(cd build && make DESTDIR="$pkgdir" install)
 
 	install -D -m644 "$pkgname"/LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+
+	# conflict with mesa-demos
+	mv -v "${pkgdir}/usr/bin/glinfo" "${pkgdir}/usr/bin/glinfo-glb"
 }
 
