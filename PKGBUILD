@@ -11,12 +11,13 @@ makedepends=(
   "perl"
   "php"
   "python2"
-  #"ruby" Build broken, I'm not using the ruby bindings, too lazy to fix.
+  "ruby"
 )
 provides=(
   "perl-net-remctl=$pkgver"
   "php-remctl=$pkgver"
   "python2-remctl=$pkgver"
+  "ruby-net-remctl=$pkgver"
 )
 backup=("etc/remctl/remctl.conf")
 source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
@@ -42,7 +43,7 @@ build() {
     --enable-perl             \
     --enable-php              \
     --enable-python           \
-    --disable-ruby            \
+    --enable-ruby             \
     ;
   make
 }
