@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-diff-drive-controller
+	pkgdesc = ROS - Controller for a differential drive mobile base.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-controller-interface
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-realtime-tools
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-tf
+	depends = ros-melodic-controller-interface
+	depends = ros-melodic-urdf
+	depends = ros-melodic-realtime-tools
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-dynamic-reconfigure
+	source = ros-melodic-diff-drive-controller-0.14.0-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/diff_drive_controller/0.14.0-0.tar.gz
+	sha256sums = 4483afab4f623f6a5d42e1383d2a8068a59baf599bd4fbf9a27c85e0e2ff18f2
+
+pkgname = ros-melodic-diff-drive-controller
+
