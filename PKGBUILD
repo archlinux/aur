@@ -1,6 +1,6 @@
 # Maintainer: lwsk <lwsk@protonmail.com>
 pkgname=openleecher
-pkgver=1.2
+pkgver=1.1
 pkgrel=1
 pkgdesc="Random internet browsing tool."
 arch=('any')
@@ -22,30 +22,30 @@ package() {
 	pip install --upgrade psutil -t $pkgdir/usr/lib/python3.6/site-packages/
 	pip install --upgrade pyinstaller -t $pkgdir/usr/lib/python3.6/site-packages/
 
-    wget https://openleecher.tk/res/openleecher-1.2-src.zip
-    unzip -o openleecher-1.2-src.zip -d $srcdir
+	wget https://openleecher.tk/res/openleecher-1.1-src.zip
+	unzip -o openleecher-1.1-src.zip -d $srcdir
 
 	pyinstaller --paths=$pkgdir/usr/lib/python3.6/site-packages/ -F $srcdir/openleecher.py
 
-    mkdir -p $pkgdir/usr/bin/
-    mkdir -p $pkgdir/etc/openleecher/
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/icons/
+	mkdir -p $pkgdir/usr/bin/
+	mkdir -p $pkgdir/etc/openleecher/
+	mkdir -p $pkgdir/usr/share/applications/
+	mkdir -p $pkgdir/usr/share/icons/
 
-    cp $srcdir/dist/openleecher $pkgdir/usr/bin/
-    chmod +x $pkgdir/usr/bin/openleecher
+	cp $srcdir/dist/openleecher $pkgdir/usr/bin/
+	chmod +x $pkgdir/usr/bin/openleecher
 
-    cp $srcdir/config.ini $pkgdir/etc/openleecher/
-    chmod 776 $pkgdir/etc/openleecher/config.ini
+	cp $srcdir/config.ini $pkgdir/etc/openleecher/
+    	chmod 776 $pkgdir/etc/openleecher/config.ini
 
-    cp $srcdir/openleecher.png $pkgdir/usr/share/icons/
-    cp openleecher.desktop $pkgdir/usr/share/applications/
+ 	cp $srcdir/openleecher.png $pkgdir/usr/share/icons/
+	cp openleecher.desktop $pkgdir/usr/share/applications/
 
-    cp LICENSE $pkgdir/etc/openleecher/
-    cp $srcdir/x.png $pkgdir/etc/openleecher/
-    cp $srcdir/pause.png $pkgdir/etc/openleecher/
-    cp $srcdir/slider.gif $pkgdir/etc/openleecher/
+	cp LICENSE $pkgdir/etc/openleecher/
+	cp $srcdir/x.png $pkgdir/etc/openleecher/
+	cp $srcdir/pause.png $pkgdir/etc/openleecher/
+	cp $srcdir/slider.gif $pkgdir/etc/openleecher/
 
-    touch $pkgdir/etc/openleecher/openleecher.log
-    chmod 776 $pkgdir/etc/openleecher/openleecher.log
+	touch $pkgdir/etc/openleecher/openleecher.log
+ 	chmod 776 $pkgdir/etc/openleecher/openleecher.log
 }
