@@ -8,10 +8,15 @@ url="https://www.eyrie.org/~eagle/software/remctl/"
 license=(custom)
 depends=("krb5")
 makedepends=(
-  #"perl" Okay, it's part of base-devel now
+  "perl"
   "php"
   "python2"
   #"ruby" Build broken, I'm not using the ruby bindings, too lazy to fix.
+)
+provides=(
+  "perl-net-remctl=$pkgver"
+  "php-remctl=$pkgver"
+  "python2-remctl=$pkgver"
 )
 backup=("etc/remctl/remctl.conf")
 source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
