@@ -1,6 +1,6 @@
 pkgbase = xrootd
 	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
-	pkgver = 4.8.2
+	pkgver = 4.8.3
 	pkgrel = 1
 	url = http://xrootd.org/
 	arch = i686
@@ -12,8 +12,10 @@ pkgbase = xrootd
 	provides = xrootd
 	provides = xrootd-abi0
 	options = !emptydirs
-	source = http://xrootd.org/download/v4.8.2/xrootd-4.8.2.tar.gz
-	sha256sums = 8f28ec53e799d4aa55bd0cc4ab278d9762e0e57ac40a4b02af7fc53dcd1bef39
+	source = http://xrootd.org/download/v4.8.3/xrootd-4.8.3.tar.gz
+	source = fix_buffer_overflow.patch
+	sha256sums = 9cd30a343758b8f50aea4916fa7bd37de3c37c5b670fe059ae77a8b2bbabf299
+	sha256sums = d52b193d3e8c96064f2d151484abd433dd47835cfe0031b31bcfab2c17b69b85
 
 pkgname = xrootd
 
