@@ -1,14 +1,16 @@
 # Maintainer: Victor Häggqvist <aur a snilius d com>
-# https://github.com/victorhaggqvist/archlinux-pkgbuilds/tree/otto
+# https://github.com/victorhaggqvist/archlinux-pkgbuilds
 
 pkgname=apk-resigner
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='A bash script utility that resigns the Android Package (APK) files (Android applications) with different certificates.'
 url="https://code.google.com/p/apk-resigner/"
 arch=('i686' 'x86_64' 'arm')
 license=('Apache License 2.0')
 install=apk-resigner.install
+optdepends=('android-sdk-build-tools: build tools are required, however you may provide this via your own Android SDK setup in PATH')
+depends=(java-environment-common)
 
 source=("signapk.sh" "apk-resigner.install")
 sha512sums=('fce7e6fbf9ed702f559772535eb8078756cf1c69c2873e71a1421f8e05d5039d0fa88157cd21d607554720edb72f70774be4589ba08569fbe7c8b42cd91d03d6'
