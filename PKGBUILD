@@ -19,7 +19,7 @@ depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libtheora' 'libwebp' 'libxml2'
          'opencore-amr' 'openjpeg2' 'opus' 'speex' 'v4l-utils'
          'xz' 'zlib'
-         'libbluray.so' 'libva-drm.so' 'libva.so'
+         'libbluray.so' 'libva'
          'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
          'rtmpdump')
