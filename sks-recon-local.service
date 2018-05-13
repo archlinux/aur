@@ -1,6 +1,7 @@
 [Unit]
 Description=Synchronizing key server recon instance (Local sync/dumps)
 After=network.target remote-fs.target nss-lookup.target sks-db-local.service
+Requires=sks-db-local.service
 
 [Service]
 Type=simple
@@ -10,5 +11,4 @@ PIDFile=/var/run/sks-local/sksrecon.pid
 ExecStart=/usr/bin/sks-local recon
 
 [Install]
-Wants=sks-db-local.service
 WantedBy=multi-user.target
