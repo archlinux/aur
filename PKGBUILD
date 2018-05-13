@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -36,8 +36,10 @@ optdepends=(
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('1454485bd4ec4ad0252d87173e7fdbdf2ebb5d86')
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
+        scalapack-quick-test.patch)
+sha1sums=('ac9816053217610d622bb4f056200a46d27fcf32'
+          '9526ebad9098a9e9140b033cd919d73901215d6f')
 
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
@@ -65,8 +67,12 @@ build() {
       fi
   done
 
-  rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
+  # the 9.0.0 quicktest for scalapack relies on an unincluded header:
+  cd ${srcdir}
+  patch -p0 < ${srcdir}/scalapack-quick-test.patch
+
+  # rm -rf "${srcdir}/build"
+  # mkdir "${srcdir}/build"
   cd "${srcdir}/build"
 
   # explicitly disallow bundled packages: this disables bundled copies of boost,
@@ -111,11 +117,13 @@ build() {
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
 }
 
-# TODO this crashes for reasons I do not fully understand: fix this.
-# check() {
-#     cd "${srcdir}/build"
-#     make test
-# }
+check() {
+    cd "${srcdir}/build"
+    # make test cannot handle parallelism: spawned make instances read this 
+    # which causes trouble.
+    unset MAKEFLAGS 
+    make test
+}
 
 package() {
   cd "${srcdir}/build"
