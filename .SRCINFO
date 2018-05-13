@@ -1,15 +1,15 @@
 pkgbase = php70-xdebug
 	pkgdesc = PHP extension module that aids debugging and profiling
-	pkgver = 2.5.5
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.xdebug.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = php70
-	source = https://www.xdebug.org/files/xdebug-2.5.5.tgz
+	source = https://www.xdebug.org/files/xdebug-2.6.0.tgz
 	source = xdebug.ini
-	sha256sums = 72108bf2bc514ee7198e10466a0fedcac3df9bbc5bd26ce2ec2dafab990bf1a4
+	sha256sums = b5264cc03bf68fcbb04b97229f96dca505d7b87ec2fb3bd4249896783d29cbdc
 	sha256sums = 7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205
 
 pkgname = php70-xdebug
