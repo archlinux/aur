@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=dutree
-pkgver=0.2.1
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='A tool to analyze file system usage written in Rust'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('cargo')
 depends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d9ed968bbb8cd9c379ed3c502ed44418cf7686a95072a7a906e207292e23ed9c')
+sha256sums=('d158e3277bd1bc51744071cf0d09b780fbe55dc86605c3684baafc7e8898bebc')
 
 build() {
   cd $pkgname-$pkgver
