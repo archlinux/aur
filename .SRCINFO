@@ -1,0 +1,38 @@
+pkgbase = ros-melodic-gazebo-ros
+	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://gazebosim.org/tutorials?cat=connect_ros
+	arch = any
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-gazebo-msgs
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roslib
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-rosgraph-msgs
+	makedepends = ros-melodic-cmake-modules
+	makedepends = ros-melodic-gazebo-dev
+	makedepends = tinyxml
+	depends = ros-melodic-tf
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-gazebo-msgs
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-roslib
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-rosgraph-msgs
+	depends = ros-melodic-gazebo-dev
+	depends = tinyxml
+	source = ros-melodic-gazebo-ros-2.8.2-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros/2.8.2-0.tar.gz
+	sha256sums = 3f4ca2c5c3ee6786465adb44acc4f3aa163355214d84dc228e2e9080e6d50c44
+
+pkgname = ros-melodic-gazebo-ros
+
