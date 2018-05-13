@@ -1,7 +1,7 @@
 pkgbase = shotcut
 	pkgdesc = Video editor
-	pkgver = 18.05
-	pkgrel = 2
+	pkgver = 18.05.08
+	pkgrel = 1
 	url = https://www.shotcut.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = shotcut
 	depends = qt5-webkit
 	depends = qt5-websockets
 	depends = qt5-x11extras
-	depends = mlt-git
+	depends = mlt
 	depends = movit
 	depends = ffmpeg
 	depends = libx264
@@ -25,7 +25,7 @@ pkgbase = shotcut
 	depends = ladspa
 	provides = shotcut
 	conflicts = shotcut
-	source = shotcut::git+https://github.com/mltframework/shotcut.git#commit=f99a62cec3108aae8d0c6da47eba18e275197b55
+	source = shotcut::git+https://github.com/mltframework/shotcut.git#commit=ff26e251f6f7b3ace1163b8670eeb937abdc44c4
 	source = shotcut.desktop
 	source = melt.patch
 	sha512sums = SKIP

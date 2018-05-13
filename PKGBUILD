@@ -2,9 +2,9 @@
 pkgname=('shotcut')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='18.05'
-_commit='f99a62cec3108aae8d0c6da47eba18e275197b55'
-pkgrel='2'
+pkgver='18.05.08'
+_commit='ff26e251f6f7b3ace1163b8670eeb937abdc44c4'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.shotcut.org/'
 license=('GPL3')
@@ -18,7 +18,7 @@ depends=(
     'qt5-webkit'
     'qt5-websockets'
     'qt5-x11extras'
-    'mlt-git'
+    'mlt'
     'movit'
     'ffmpeg'
     'libx264'
