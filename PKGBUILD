@@ -7,6 +7,8 @@ arch=("any")
 url="https://github.com/monkeyWie/proxyee-down"
 license=('Apache License 2.0')
 depends=('jre8-openjdk')
+makedepends=('unzip'
+             'binutils')
 source=("https://github.com/monkeyWie/proxyee-down/releases/download/${pkgver}/proxyee-down-${pkgver}-jar.zip")
 md5sums=('SKIP')
 
