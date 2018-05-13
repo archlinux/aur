@@ -1,3 +1,16 @@
+2018-05-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.2.9-1:
+    Implemented new deprecation policy which will make future ASF transitions easier.
+    Added WebLimiterDelay global config property (ref: #764).
+    Added WebProxy, WebProxyPassword and WebProxyUsername global config properties.
+    Added misc Trace logging info related to receiving donation trades.
+    Added a workaround for a very stupid profile redirection issue.
+    [Deprecation] IsBotAccount is now splitted into independent BotBehaviour bot config property settings. If you'd like to use old IsBotAccount: true behaviour, use BotBehaviour: 7 instead. ASF will automatically map IsBotAccount: true to BotBehaviour: 7, during first stage of deprecation.
+    [Deprecation] Removed --server command-line argument. Use newly-introduced IPC global configuration property instead. ASF will still map --server to IPC: true during first stage of deprecation.
+    [Deprecation] Running ASF with IPC enabled no longer implies --process-required command-line argument. If you'd like to follow old behaviour, declare --process-required yourself. ASF will still imply --process-required when --server is used, during first stage of deprecation.
+    [Deprecation] Removed --service command-line argument by splitting it into three independent options: --no-restart, --process-required and --system-required. You should declare the ones you need (including all three if you'd like old behaviour). ASF will still map --service to all switches above during first stage of deprecation.
+    Misc BGR improvements (redeemed games are included in response now, in addition to original name).
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.2.0-2:
     package: use OS specific release when appropriate
