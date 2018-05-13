@@ -2,7 +2,7 @@
 
 pkgname=networkmanager-wireguard-git
 pkgver=r54.fc454a8
-pkgrel=2
+pkgrel=1
 pkgdesc='NetworkManager VPN plugin for WireGuard - git'
 arch=('i686' 'x86_64')
 license=('GPL')
