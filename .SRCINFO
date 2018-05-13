@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-desktop-full
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-desktop
+	depends = ros-melodic-simulators
+	depends = ros-melodic-perception
+	depends = ros-melodic-urdf-sim-tutorial
+	source = ros-melodic-desktop-full-1.4.0-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/desktop_full/1.4.0-0.tar.gz
+	sha256sums = 5885269074135543abb6814fc97335a4411a12cc716661aa3401186beec6fdc7
+
+pkgname = ros-melodic-desktop-full
+
