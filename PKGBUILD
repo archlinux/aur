@@ -6,24 +6,24 @@
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('custom:nonfree and unredistributable')
+license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
-         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
-         'speex' 'v4l-utils' 'xz' 'zlib'
-         'libomxil-bellagio'
+         'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
+         'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh'
+         'libtheora' 'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2'
+         'libxv' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils'
+         'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
          'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=(
     # official repositories:
-       'nasm' 'ladspa'
+       'nasm' 'ffnvcodec-headers' 'ladspa'
     # AUR:
         'blackmagic-decklink-sdk'
 )
@@ -47,7 +47,6 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --enable-avisynth \
         --enable-avresample \
         --enable-fontconfig \
         --enable-gmp \
@@ -56,6 +55,7 @@ build() {
         --enable-ladspa \
         --enable-libass \
         --enable-libbluray \
+        --enable-libdrm \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
@@ -81,9 +81,11 @@ build() {
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
+        --enable-nvdec \
+        --enable-nvenc \
+        --enable-omx \
         --enable-shared \
         --enable-version3 \
-        --enable-omx \
         --enable-nonfree \
         --enable-decklink
         
