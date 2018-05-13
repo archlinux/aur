@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-camera-calibration-parsers
+	pkgdesc = ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/camera_calibration_parsers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-roscpp-serialization
+	makedepends = boost
+	makedepends = yaml-cpp
+	makedepends = pkg-config
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-roscpp-serialization
+	depends = boost
+	depends = yaml-cpp
+	source = ros-melodic-camera-calibration-parsers-1.11.13-0.tar.gz::https://github.com/ros-gbp/image_common-release/archive/release/melodic/camera_calibration_parsers/1.11.13-0.tar.gz
+	sha256sums = dd350061b03da5dba0315515f603daa31204e71c43389cf9e57bf09c06d8d3ef
+
+pkgname = ros-melodic-camera-calibration-parsers
+
