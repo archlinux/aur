@@ -1,0 +1,19 @@
+pkgbase = libe131-git
+	pkgdesc = A lightweight C/C++ library for the E1.31 (sACN) protocol
+	pkgver = 1.3.1.r4.g9e0d1fc
+	pkgrel = 1
+	url = https://github.com/hhromic/libe131
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	provides = libe131
+	conflicts = libe131
+	source = git+https://github.com/hhromic/libe131.git
+	md5sums = SKIP
+
+pkgname = libe131-git
+
