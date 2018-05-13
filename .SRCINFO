@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-rqt-dep
+	pkgdesc = ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency graph.
+	pkgver = 0.4.8
+	pkgrel = 1
+	url = http://wiki.ros.org/rqt_dep
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-graph
+	depends = ros-melodic-qt-dotgraph
+	depends = ros-melodic-qt-gui-py-common
+	depends = ros-melodic-qt-gui
+	depends = ros-melodic-python-qt-binding
+	depends = python2-rospkg
+	source = ros-melodic-rqt-dep-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_dep-release/archive/release/melodic/rqt_dep/0.4.8-0.tar.gz
+	sha256sums = 9942be8114eab68563b9212d8dd36e31c29eb97ed0911d27fd53c0fe665b321b
+
+pkgname = ros-melodic-rqt-dep
+
