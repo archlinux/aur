@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-easy-markers
+	pkgdesc = ROS - Python library to assist in publishing markers easily.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://ros.org/wiki/easy_markers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-interactive-markers
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roslib
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-visualization-msgs
+	makedepends = ros-melodic-rospy
+	depends = ros-melodic-tf
+	depends = ros-melodic-interactive-markers
+	depends = ros-melodic-roslib
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-visualization-msgs
+	depends = ros-melodic-rospy
+	source = ros-melodic-easy-markers-0.2.4-0.tar.gz::https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/easy_markers/0.2.4-0.tar.gz
+	sha256sums = 64fea822e5e6ee2d58d4bfbd23519485c3197e5a8a8d74ef97ec91abc5e35088
+
+pkgname = ros-melodic-easy-markers
+
