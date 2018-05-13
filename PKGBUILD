@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=gifski
 pkgname=${_pkgname}-git
-pkgver=0.8.0.r7.g8c6bbcd
+pkgver=0.8.0.r14.g555d3dc
 pkgrel=1
 pkgdesc="GIF encoder based on libimagequant (pngquant, gifquant?). Squeezes maximum possible quality from the awful GIF format"
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ url="https://gif.ski/"
 license=('AGPL3')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-depends=(gcc-libs ffmpeg)
+depends=(gcc-libs)
 makedepends=(git rust clang)
 source=(${_pkgname}::git+https://github.com/ImageOptim/${_pkgname}.git)
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --features=video,openmp
+  cargo build --release --features=openmp
 }
 
 package() {
