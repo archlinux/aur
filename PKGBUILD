@@ -1,6 +1,6 @@
 # Maintainer: Shell Chen <aur@sorz.org>
 pkgname=moproxy
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A transparent TCP to SOCKSv5/HTTP proxy."
 url="https://github.com/sorz/moproxy"
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 backup=('etc/moproxy/config.env' 'etc/moproxy/proxy.ini')
 makedepends=('rust' 'cargo')
 source=("https://github.com/sorz/moproxy/archive/v$pkgver.tar.gz")
-sha256sums=('3cae2b7f4ea21eb12c885c57a43ae00e322a2c3efb577f0341f9844e07674720')
+sha256sums=('fe5909ebff7771eb34723e1d54215b7095eba9b93a1534e66a9db2dff9692d8c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
