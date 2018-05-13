@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=wunderline
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="Wunderlist for your command line!"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('4ac297ccaa6245e4128c16da144afb29058d44db49b8971c308b03ca8bdf187d')
+sha256sums=('eed2ed43b70cef36c1747e4f5a96f584c42ba8fcc6a80091a7c46803db3546e0')
 
 package() {
 	cd $srcdir
@@ -20,5 +20,4 @@ package() {
 	mkdir -p $_npmdir
 	cd $_npmdir
 	npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
-	rmdir "$pkgdir/usr/etc"
 }
