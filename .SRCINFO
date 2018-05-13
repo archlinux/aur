@@ -1,7 +1,7 @@
 pkgbase = tvheadend
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tvheadend.org/projects/tvheadend
 	install = tvheadend.install
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = tvheadend
 	optdepends = libiconv: For conversion of character encodings
 	provides = tvheadend
 	conflicts = tvheadend-git
-	source = https://github.com/tvheadend/tvheadend/archive/v4.2.6.tar.gz
+	source = git+https://github.com/tvheadend/tvheadend#tag=v4.2.6
 	source = tvheadend.override
-	sha256sums = 09b4d4ff436a2006001ef3c3f38553dc4db3ea31bf9871b046a33180a0e8a8b9
+	sha256sums = SKIP
 	sha256sums = bbb54ae46fbb1b00f987c0a8dde644ee9a0121fa173ee21cc6bf7a6a6fb12146
 
 pkgname = tvheadend
