@@ -45,7 +45,8 @@ build() {
     --enable-python           \
     --enable-ruby             \
     ;
-  make
+  # parallel builds sometimes fail with missing -lremctl
+  make -j1
 }
 
 package() {
