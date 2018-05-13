@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-tuw-msgs
+	pkgdesc = ROS - The tuw_msgs meta package.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-tuw-airskin-msgs
+	depends = ros-melodic-tuw-vehicle-msgs
+	depends = ros-melodic-tuw-nav-msgs
+	depends = ros-melodic-tuw-object-msgs
+	depends = ros-melodic-tuw-gazebo-msgs
+	depends = ros-melodic-tuw-multi-robot-msgs
+	depends = ros-melodic-tuw-geometry-msgs
+	source = ros-melodic-tuw-msgs-0.0.6-0.tar.gz::https://github.com/tuw-robotics/tuw_msgs-release/archive/release/melodic/tuw_msgs/0.0.6-0.tar.gz
+	sha256sums = 503404c6e0fba89a6a7db34e0acc567c22d0265c4148542c535cb8cd0a48b4f6
+
+pkgname = ros-melodic-tuw-msgs
+
