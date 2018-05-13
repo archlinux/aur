@@ -16,9 +16,11 @@ replaces=()
 backup=()
 options=('!strip')
 source=("Copay-$pkgver.zip::https://github.com/bitpay/copay/releases/download/v"$pkgver"/Copay-linux.zip"
-        "copay.desktop")
+        "copay.desktop"
+        "512x512.png")
 md5sums=('6486a7df6d3afde1b94da59487185450'
-         'e05610d1b08a2c688efccf9d687b8b92')
+         'e05610d1b08a2c688efccf9d687b8b92'
+         '6b524738900ea4aee5e085d149d0304f')
 
 package() {
   mkdir -p ${pkgdir}/opt/copay
@@ -27,7 +29,8 @@ package() {
   unzip "${srcdir}/Copay-$pkgver.zip"
  
   mv Copay-linux/* .
-  rm -R Copay-linux
+  mv Copay-linux/.[!.]* .
+  rmdir Copay-linux
  
   find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a+r
 
@@ -36,5 +39,6 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
   install -m644 "${srcdir}/copay.desktop" "$pkgdir/usr/share/applications/copay.desktop"
+  install -m644 "${srcdir}/512x512.png" "$pkgdir/opt/copay/512x512.png"
   ln -s "../../../opt/copay/512x512.png" "$pkgdir/usr/share/pixmaps/copay.png" 
 }

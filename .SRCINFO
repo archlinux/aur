@@ -11,8 +11,10 @@ pkgbase = copay-bin
 	options = !strip
 	source = Copay-4.3.4.zip::https://github.com/bitpay/copay/releases/download/v4.3.4/Copay-linux.zip
 	source = copay.desktop
+	source = 512x512.png
 	md5sums = 6486a7df6d3afde1b94da59487185450
 	md5sums = e05610d1b08a2c688efccf9d687b8b92
+	md5sums = 6b524738900ea4aee5e085d149d0304f
 
 pkgname = copay-bin
 
