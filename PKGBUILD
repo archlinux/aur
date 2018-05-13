@@ -4,7 +4,7 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='http://wiki.ros.org/diagnostic_msgs'
 
 pkgname='ros-melodic-diagnostic-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-melodic-diagnostic_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/diagnostic_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9019f28b73ec162df6db805a94a1d3eaeab77b4535dbd283b8faaa90bff9b812')
+sha256sums=('4b6569654ed66c3362f425fd6f0488e133cba37e0764b86202106b35e5223019')
 
 build() {
   # Use ROS environment variables
