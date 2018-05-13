@@ -39,9 +39,9 @@ package() {
     	chmod 776 $pkgdir/etc/openleecher/config.ini
 
  	cp $srcdir/openleecher.png $pkgdir/usr/share/icons/
-	cp openleecher.desktop $pkgdir/usr/share/applications/
+	cp ../openleecher.desktop $pkgdir/usr/share/applications/
 
-	cp LICENSE $pkgdir/etc/openleecher/
+	cp ../LICENSE $pkgdir/etc/openleecher/
 	cp $srcdir/x.png $pkgdir/etc/openleecher/
 	cp $srcdir/pause.png $pkgdir/etc/openleecher/
 	cp $srcdir/slider.gif $pkgdir/etc/openleecher/
