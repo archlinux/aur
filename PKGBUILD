@@ -16,30 +16,28 @@ license=('ZLIB')
 provides=('sdl2')
 conflicts=('sdl2')
 depends=(
-  'raspberrypi-firmware-tools' 'alsa-lib' 'glibc' 'libx11' 'libxext'
-  'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'libxss' 'libxxf86vm'
-  'libxcb' 'libxrender' 'libxfixes' 'libxau' 'libxdmcp'
+	'raspberrypi-firmware-tools' 'alsa-lib' 'glibc' 'libx11' 'libxext'
+	'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'libxss' 'libxxf86vm'
+	'libxcb' 'libxrender' 'libxfixes' 'libxau' 'libxdmcp'
 )
-makedepends=('deb2targz')
 source=(
-  "http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-2.0-0_${pkgver}_armhf.deb"
-  "http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-dev_${pkgver}_armhf.deb"
+	"http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-2.0-0_${pkgver}_armhf.deb"
+	"http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-dev_${pkgver}_armhf.deb"
 )
-
+noextract=(
+	"libsdl2-2.0-0_${pkgver}_armhf.deb"
+	"libsdl2-dev_${pkgver}_armhf.deb"
+)
 md5sums=(
-  '200a2fd711d29f8093caf45010bdd65d'
-  '6a1f1d168ffbc30cb9e55a812d93a997'
+	'200a2fd711d29f8093caf45010bdd65d'
+	'6a1f1d168ffbc30cb9e55a812d93a997'
 )
-
-build() {
-    deb2targz *.deb >/dev/null || return 1
-    rm -f *.deb || return 1
-    cd $srcdir || return 1
-    for i in *.tar.xz;do tar xfJ $i -C .;done || return 1
-}
 
 package() {
-    cp -rf $srcdir/usr/ $pkgdir/ || return 1
-    mv $pkgdir/usr/lib/arm-linux-gnueabihf/* $pkgdir/usr/lib/ || return 1
-    rmdir $pkgdir/usr/lib/arm-linux-gnueabihf || return 1
+	bsdtar -O -x -f libsdl2-2.0-0_${pkgver}_armhf.deb data.tar.xz | bsdtar -x -f - -C "$pkgdir"
+	test -e "$pkgdir/usr/lib" || (echo missing usr/lib; return 1)
+	bsdtar -O -x -f libsdl2-dev_${pkgver}_armhf.deb data.tar.xz | bsdtar -x -f - -C "$pkgdir"
+	test -e "$pkgdir/usr/include" || (echo missing usr/include; return 1)
+	mv "$pkgdir"/usr/lib/arm-linux-gnueabihf/* "$pkgdir"/usr/lib/ || return 1
+	rmdir $pkgdir/usr/lib/arm-linux-gnueabihf || return 1
 }
