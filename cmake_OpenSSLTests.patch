@@ -1,0 +1,12 @@
+diff -ura bro-git/cmake/OpenSSLTests.cmake bro-git.patched/cmake/OpenSSLTests.cmake
+--- bro-git/cmake/OpenSSLTests.cmake	2018-05-14 13:57:32.724543674 -0500
++++ bro-git.patched/cmake/OpenSSLTests.cmake	2018-05-14 13:58:36.355861923 -0500
+@@ -81,7 +81,7 @@
+     " OPENSSL_CORRECT_VERSION_NUMBER )
+ 
+     if (NOT OPENSSL_CORRECT_VERSION_NUMBER)
+-        message(FATAL_ERROR
++        message(WARNING
+             "OpenSSL library version does not match headers")
+     endif ()
+ endif ()
