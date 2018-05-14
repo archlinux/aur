@@ -3,47 +3,53 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.3.5
-pkgrel=5
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
 license=('BSD')
-depends=('fuse2' 'sqlite' 'curl' 'python' 'c-ares' 'intel-tbb' 'leveldb' 'openssl-1.0' 'pacparser')
-makedepends=('cmake' 'python' 'unzip' 'gtest' 'python-geoip' 'sparsehash')
+depends=('fuse2' 'curl' 'c-ares' 'leveldb' 'pacparser' 'sqlite' 'protobuf')
+makedepends=('cmake' 'make' 'gtest' 'sparsehash' 'gmock')
 backup=('etc/cvmfs/default.local')
 install=cvmfs.install
 options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
-        'libexec.patch'
-        'settings.cmake')
-md5sums=('bd54a1e45ef86d0a3cb6eefa44a89b5b'
-         'bc39c58e3aadf32789e6ff51087c7570'
-         '50f8179ff88eb7227b262e8e1c9b10b6')
+    'settings.cmake'
+	'externals.patch'
+	'sqlite-scratch.patch')
+md5sums=('d46705e06267278fd3a65b277a6d9e16'
+         '20dc60c61077f4a3711463e8686d260d'
+         '109a95cab95276c1c19bc46b66f0906f'
+         '0ef4c858aa9648dcd46768991748eb06')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-        msg2 'Fixing libexec to lib...'
-        patch -p1 -i "${srcdir}/libexec.patch"
-        msg2 'Fixing /sbin to /usr/bin'
-        sed -e "s/\/sbin/\/usr\/bin/g" -i CMakeLists.txt mount/CMakeLists.txt
+    cd "$srcdir/$pkgname-$pkgver"
+
+    # Tweak external packages
+    # We remove all those that are provided by Arch/AUR and leave only
+    # the ones not currently available
+    patch -Np1 -i "$srcdir/externals.patch"
+
+    # Sqlite deprecated the SCRATCH configuration option
+    patch -Np1 -i "$srcdir/sqlite-scratch.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-        mkdir -p build
-        cd build
-        cmake -C "${srcdir}/settings.cmake" ../
+    cd "$srcdir/$pkgname-$pkgver"
+    mkdir -p build
+    cd build
+    cmake -C "${srcdir}/settings.cmake" ../
 
-        make
+    make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
-	make DESTDIR="$pkgdir/" install
-        sed -e "s/\/etc\/auto.master/\/etc\/autofs\/auto.master/g" -i $pkgdir/usr/bin/cvmfs_config
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/cvmfs/COPYING"
+    cd "$srcdir/$pkgname-$pkgver/build"
+    make DESTDIR="$pkgdir/" install
+    sed -e "s/\/etc\/auto.master/\/etc\/autofs\/auto.master/g" -i $pkgdir/usr/bin/cvmfs_config
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/cvmfs/COPYING"
 
-        echo "CVMFS_REPOSITORIES=atlas.cern.ch,atlas-condb.cern.ch,grid.cern.ch,sft.cern.ch,lhcb.cern.ch,lhcbdev.cern.ch" > $pkgdir/etc/cvmfs/default.local
-        echo "CVMFS_HTTP_PROXY=DIRECT" >> $pkgdir/etc/cvmfs/default.local
+    echo "CVMFS_REPOSITORIES=atlas.cern.ch,atlas-condb.cern.ch,grid.cern.ch,sft.cern.ch,lhcb.cern.ch,lhcbdev.cern.ch" > $pkgdir/etc/cvmfs/default.local
+    echo "CVMFS_HTTP_PROXY=DIRECT" >> $pkgdir/etc/cvmfs/default.local
 }
