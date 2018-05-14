@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.28.1
+pkgver=3.28.2
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -34,7 +34,7 @@ conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=34644b2133241efe25794b57ddd18e6d9517cc0b  # tags/3.28.1^0
+_commit=41303bc01be873e684f11a3407aa556af2922426 # tags/3.28.2^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround-v2.patch"
@@ -53,6 +53,7 @@ prepare() {
   cd "$_realname"
 
   # https://bugs.archlinux.org/task/51940
+  # As of 2018-05-08: Still needed, according to fmuellner
   patch -Np1 -i ../startup-notification.patch
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
