@@ -1,7 +1,7 @@
 #Maintainer: Solomon Choina <shlomochoina at gmail dot com>
 pkgname=kawaii-player-git
 _pkgname=kawaii-player
-pkgver=v3.5.0.1.r6.g8f87bf2
+pkgver=v3.5.0.1.r42.g9c7830d
 pkgrel=1
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server"
 arch=(any)
