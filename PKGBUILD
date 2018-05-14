@@ -1,7 +1,7 @@
 # Maintainer: Sander Boom <sanderboom@gmail.com>
 
 pkgname=sublime-text-nightly
-pkgver=3.3173
+pkgver=3.3176
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - nightly build (available to registered users only)"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source_i686=("https://download.sublimetext.com/sublime_text_3_build_${pkgver:2}_
 source_x86_64=("https://download.sublimetext.com/sublime_text_3_build_${pkgver:2}_x64.tar.bz2")
 
 sha256sums=('3125f8a8db79b4d853a26b0be364ec69a26f3c8e97467ceab09c1b653060f03b')
-sha256sums_i686=('b875e0b343622fc82a82e6493a12f1f3e6fdd17d7fd7a071ebcaa17822498920')
-sha256sums_x86_64=('eff9dd5cf83a260c3a43e87caa1880ae66a7d8c065949d259ad0f0dc67d7666c')
+sha256sums_i686=('43e49dfdbea61cc0a1b6ebcdf0ff522d8531e6998e05f4756ba4218446f85a21')
+sha256sums_x86_64=('74f17c1aec4ddec9d4d4c39f5aec0414a4755d407a05efa571e8892e0b9cf732')
 
 package() {
   cd "${srcdir}"
