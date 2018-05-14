@@ -22,8 +22,8 @@ _microarchitecture=0
 pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.16.8
-xanmod=8
-pkgrel=1
+xanmod=9
+pkgrel=2
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -49,7 +49,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('508f5759991cc0d1ed70af9e031d8aa3bf49bee12f7facf6721b43046ec39734'
+sha256sums=('fd1c7a139610450a97e18e1d205ee0214070b9e6a9678d10874bed2c8b68af1b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
