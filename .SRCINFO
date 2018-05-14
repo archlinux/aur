@@ -1,4 +1,4 @@
-pkgbase = python-cfn-lint
+pkgbase = python-cfn-lint-git
 	pkgdesc = checks cloudformation for practices and behaviour that could potentially be improved
 	pkgver = r71.d2e1e46
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = python-cfn-lint
 	source = git+https://github.com/awslabs/cfn-python-lint.git
 	md5sums = SKIP
 
-pkgname = python-cfn-lint
+pkgname = python-cfn-lint-git
 

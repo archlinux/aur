@@ -1,7 +1,7 @@
 # Maintainer: Josip Janzic <josip@jjanzic.com>
 
-pkgbase=('python-cfn-lint')
-pkgname=('python-cfn-lint')
+pkgbase=('python-cfn-lint-git')
+pkgname=('python-cfn-lint-git')
 _module='cfn-lint'
 pkgver=r71.d2e1e46
 pkgrel=1
