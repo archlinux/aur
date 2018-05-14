@@ -1,6 +1,6 @@
 pkgbase = elektra
 	pkgdesc = A universal hierarchical configuration store
-	pkgver = 0.8.22
+	pkgver = 0.8.23
 	pkgrel = 1
 	url = https://www.libelektra.org
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = elektra
 	optdepends = xerces-c: for python2-bindings
 	optdepends = lua: for lua bindings
 	optdepends = libgit2: for git support
-	source = https://github.com/ElektraInitiative/libelektra/archive/0.8.22.tar.gz
-	sha256sums = f9322cffa2f57f15805c97fd1b11277212cefc73058c6ca579fa79ab0e76aabf
+	source = https://github.com/ElektraInitiative/libelektra/archive/0.8.23.tar.gz
+	sha256sums = f02c6219d26ec9b9d8c7409349e3a713ad88e587154897b8f24a4e6030b88d46
 
 pkgname = elektra
 
