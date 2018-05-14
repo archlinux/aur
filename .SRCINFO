@@ -1,0 +1,16 @@
+pkgbase = python-cfn-lint
+	pkgdesc = checks cloudformation for practices and behaviour that could potentially be improved
+	pkgver = r71.d2e1e46
+	pkgrel = 1
+	url = https://github.com/awslabs/cfn-python-lint
+	arch = any
+	license = MIT No Attribution
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-requests
+	source = git+https://github.com/awslabs/cfn-python-lint.git
+	md5sums = SKIP
+
+pkgname = python-cfn-lint
+
