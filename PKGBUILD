@@ -6,7 +6,7 @@
 set -u
 _pkgname='progress'
 pkgname="${_pkgname}-git"
-pkgver=0.13.1.r0.gf6894b8
+pkgver=0.13.1.r19.ga5e2704
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='Shows running coreutils basic commands and displays stats'
@@ -16,8 +16,8 @@ license=('GPL3')
 depends=('ncurses')
 makedepends=('gcc' 'make')
 makedepends+=('git')
-provides=("${_pkgname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}" 'cv')
+conflicts=("${_pkgname}" 'cv')
 replaces=('cv')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 source=("${_srcdir}::${url//https:/git:}")
@@ -35,7 +35,7 @@ build() {
   cd "${_srcdir}"
 
   set +u; msg2 'Building...'; set -u
-  make -s # -j "$(nproc)"
+  make -s -j1 # -j "$(nproc)"
   set +u
 }
 
