@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=easy-rsa-git
-pkgver=3.0.1.r14.g5a429d2
-pkgrel=3
+pkgver=3.0.4.r33.gff07d75
+pkgrel=1
 pkgdesc='Simple shell based CA utility - git checkout'
 arch=('any')
 url='https://github.com/OpenVPN/easy-rsa'
@@ -11,10 +11,12 @@ makedepends=('git')
 conflicts=('easy-rsa')
 provides=('easy-rsa')
 license=('custom')
-backup=('etc/easy-rsa/openssl-1.0.cnf'
+backup=('etc/easy-rsa/openssl-easyrsa.cnf'
 	'etc/easy-rsa/vars')
-source=('git://github.com/OpenVPN/easy-rsa.git')
-sha256sums=('SKIP')
+source=('git://github.com/OpenVPN/easy-rsa.git'
+        '0001-fix-paths.patch')
+sha256sums=('SKIP'
+            'c8287a6c3e79c36dcadbf2bd11b0fe2698f2ec8d6824b0dc22783ade36b8d2f6')
 
 pkgver() {
 	cd easy-rsa/
@@ -32,10 +34,13 @@ pkgver() {
 }
 
 prepare() {
-	cd easy-rsa/
+	cd easy-rsa/easyrsa3/
 
 	# fix output of help command, we have it in PATH
-	sed -i 's|./easyrsa|easyrsa|' easyrsa3/easyrsa
+	sed -i 's|./easyrsa|easyrsa|' easyrsa
+
+	# fix paths
+	patch -Np1 < "${srcdir}"/0001-fix-paths.patch
 }
 
 package() {
@@ -43,7 +48,7 @@ package() {
 
 	install -D -m0755 easyrsa3/easyrsa "${pkgdir}"/usr/bin/easyrsa
 
-	install -D -m0644 easyrsa3/openssl-1.0.cnf "${pkgdir}"/etc/easy-rsa/openssl-1.0.cnf
+	install -D -m0644 easyrsa3/openssl-easyrsa.cnf "${pkgdir}"/etc/easy-rsa/openssl-easyrsa.cnf
 	install -D -m0644 easyrsa3/vars.example "${pkgdir}"/etc/easy-rsa/vars
 	install -d -m0755 "${pkgdir}"/etc/easy-rsa/x509-types/
 	install -m0644 easyrsa3/x509-types/* "${pkgdir}"/etc/easy-rsa/x509-types/

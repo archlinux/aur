@@ -1,0 +1,29 @@
+From 49facdddb343cefb0cb85bcc7eb52fa01db1f377 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Thu, 28 Sep 2017 11:08:39 +0200
+Subject: [PATCH 1/1] fix paths
+
+We have the easyrsa executable in /usr/bin/ - so use use current working
+directory, not executable path.
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ easyrsa | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/easyrsa b/easyrsa
+index 11d2357..c665ab7 100755
+--- a/easyrsa
++++ b/easyrsa
+@@ -1042,9 +1042,9 @@ Note: using Easy-RSA configuration from: $vars"
+ 	fi
+ 	
+ 	# Set defaults, preferring existing env-vars if present
+-	set_var EASYRSA		"${0%/*}"
++	set_var EASYRSA		"$PWD"
+ 	set_var EASYRSA_OPENSSL	openssl
+-	set_var EASYRSA_PKI	"$PWD/pki"
++	set_var EASYRSA_PKI	"$EASYRSA/pki"
+ 	set_var EASYRSA_DN	cn_only
+ 	set_var EASYRSA_REQ_COUNTRY	"US"
+ 	set_var EASYRSA_REQ_PROVINCE	"California"
