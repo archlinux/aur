@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Tregunna <jeremy@metismachine.com>
 # Maintainer: Wess Cope <wess@metismachine.com>
 pkgname=skafos
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Command line utility to the Metis Machine platform"
 arch=(x86_64)
@@ -11,16 +11,10 @@ depends=('yaml-cpp>=0.6.0' 'libarchive>=3.3.2' 'libgit2>=1:0.26.0' 'curl>=7.0.0'
 makedepends=('cmake>=3.0')
 install=skafos.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MetisMachine/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('5e6dbd6a05df703b57c822a665e03278')
-sha1sums=('f765dd2071589cbafccb47c0312d0a91f179d45a')
-sha256sums=('96064f7edb7f7671587a928bd2f7e54d82f5c763e12c8c56dca8d0dff8dd5db8')
+md5sums=('9a9ac3c36981f9539c91f5817a70825c')
+sha1sums=('d8b69225354ed90b02128ef1672b9d2b253d0317')
+sha256sums=('3aab53b52d57334268e4e57c5fbf125fcd312c5c43b2cba257784a368565b95f')
 validpgpkeys=()
-
-prepare() {
-	cp "../$pkgname-$pkgver.patch" "$srcdir/$pkgname-$pkgver.patch"
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
 
 build() {
 	cd "$pkgname-$pkgver"
