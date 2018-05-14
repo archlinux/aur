@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
 pkgver=2.56.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
 url="https://git.gnome.org/browse/glib-networking"
@@ -14,18 +14,14 @@ sha256sums=('47fd10bcae2e5039dc5f685e3ea384f48e64a6bee26d755718f534a978477c93')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd "${srcdir}/glib-networking-${pkgver}"
-  sed -i '/libproxy_support/s/true/false/g' meson_options.txt 
-  sed -i '/gnome_proxy_support/s/true/false/g' meson_options.txt 
-  sed -i '/static_modules/s/false/true/g' meson_options.txt 
-}
-
 build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     cd "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
-    ${_arch}-meson .. 
+    ${_arch}-meson \
+      -D libproxy_support=false \
+      -D gnome_proxy_support=false \
+      -D static_modules=true ..
     ninja
   done
 }
