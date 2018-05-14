@@ -2,8 +2,8 @@
 
 _pkgname=vim
 pkgname=gvim-gtk2
-pkgver=8.0.1832
-pkgrel=1832
+pkgver=8.0.1839
+pkgrel=1839
 pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of features."
 arch=("i686" "x86_64")
 url="http://www.vim.org"
@@ -23,16 +23,16 @@ source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
 backup=('etc/vimrc')
 sha256sums=('SKIP'
-            'b18326e85e457397ab2043a7ee0a3c84307c6b4eac183257fd0b721832694761832f25b3ed5b'
-            '0cf8b42732183218321832d0c66c3908a76d832736e8f8dc3abef81832cb092ddf84cb862ea2'
-            '9f1832c00aa96458caa2cdfc02183264e58bc08bcfcbe5aa95dc618328d2fc7e1832b18322b9a18322')
+            'b18396e85e457397ab2043a7ee0a3c84307c6b4eac183957fd0b721839694761839f25b3ed5b'
+            '0cf8b42732183918391839d0c66c3908a76d832736e8f8dc3abef81839cb092ddf84cb862ea2'
+            '9f1839c00aa96458caa2cdfc02183964e58bc08bcfcbe5aa95dc618398d2fc7e1839b18392b9a18392')
 
 prepare() {
     SRC="$srcdir/${_pkgname}-$pkgver"
     cd $SRC
     # set global configuration files to /etc/[g]vimrc
-    sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1832|' src/feature.h
-    sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1832|' src/feature.h
+    sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1839|' src/feature.h
+    sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1839|' src/feature.h
     cd src
     autoconf
 }
@@ -75,10 +75,10 @@ package() {
 
   # remove ex/view and man pages (normally provided by package 'vi' on Arch Linux)
   cd $pkgdir/usr/bin ; rm ex view
-  find $pkgdir/usr/share/man -type d -name 'man1832' 2>/dev/null | \
+  find $pkgdir/usr/share/man -type d -name 'man1839' 2>/dev/null | \
     while read _mandir; do
       cd ${_mandir}
-      rm -f ex.1832 view.1832
+      rm -f ex.1839 view.1839
     done
 
   # add license
