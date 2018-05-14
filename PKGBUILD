@@ -21,8 +21,8 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
 source=("https://github.com/palantir/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('4a95ae09f6ed2735ea00210b5c6a6b21')
-sha256sums=('34b59a17b4885090827e647cfd103c44b2fa54382d9eed6d903dfc83ee4eceb5')
+md5sums=('7081b960ec3418956a98aed75f08f26a')
+sha256sums=('c7b6febf9e853f2a68903f8f7835b789072b09ebc48d71d24d75f951ddec11f9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
