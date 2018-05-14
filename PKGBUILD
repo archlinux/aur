@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=aur-out-of-date
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Determines out-of-date AUR packages"
 arch=('x86_64' 'i686')
@@ -38,4 +38,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/aur-out-of-date"
 }
 
-sha256sums=('d668ff91d35d4ab16f8c996444bdacaa1c6ccaf76ba7d5d08fc8359d03164211')
+sha256sums=('7be5c86348f92f977edf38a65b46aedaf4bc01f9b298b477829411dceb9ff473')
