@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-manilaclient' 'python2-manilaclient')
-pkgver='1.21.0'
+pkgver='1.22.0'
 pkgrel='1'
 pkgdesc='Client library for OpenStack Manila API'
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=('python-pbr'
               'python-oslotest' 
               'python-testtools' 
               'python-tempest')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}"{,-py2}
