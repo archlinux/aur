@@ -11,6 +11,11 @@ ensure_directories() {
 	for dir in /var/log/confluent/control-center /var/lib/confluent/control-center /usr/share/confluent-control-center; do
 		install -g confluent -o cp-control-center -m 0755 -d ${pkgdir}/$dir
 	done
+
+	# Required directories for Confluent Schema Registry
+	for dir in /var/log/confluent/schema-registry; do
+		install -g confluent -o cp-schema-resgistry -m 0755 -d ${pkgdir}/$dir
+	done
 }
 
 post_install() {
