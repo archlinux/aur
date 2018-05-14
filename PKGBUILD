@@ -11,7 +11,7 @@
 
 pkgname=('llvm40' 'llvm40-libs' 'clang40')
 pkgver=4.0.1
-pkgrel=4
+pkgrel=5
 _prefix="/usr/lib/llvm-4.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
