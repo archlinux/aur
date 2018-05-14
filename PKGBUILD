@@ -28,7 +28,7 @@ depends=(
     'gambas3-gb-util-web'
     'gambas3-gb-web'
     
-    'mpv'
+    'mpv>=0.28'
     'taglib'
     'youtube-dl'
     'wget'
