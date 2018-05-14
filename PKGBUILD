@@ -1,5 +1,5 @@
 pkgname=jupyterlab
-pkgver=0.32.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
@@ -7,7 +7,7 @@ url="https://github.com/jupyterlab/jupyterlab"
 license=(custom)
 depends=(jupyterlab_launcher)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/jupyterlab/archive/v$pkgver.tar.gz")
-sha256sums=('dd628ff07883906b08b12e77cd6fd2f6c819e889c2111941f27d6084dd2f7e5b')
+sha256sums=('727b8e0ff922fdf25f3392478d6da8718f5202638a134d8447975cd5078b4d3d')
 
 build() {
   cd $pkgname-$pkgver
@@ -22,5 +22,5 @@ package() {
 
   # symlink to fix assets
   install -d "$pkgdir"/usr/share/jupyter
-  ln -s "$pkgdir"/usr/lib/python3.6/site-packages/jupyterlab "$pkgdir"/usr/share/jupyter/lab
+  ln -s /usr/lib/python3.6/site-packages/jupyterlab "$pkgdir"/usr/share/jupyter/lab
 }
