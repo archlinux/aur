@@ -1,0 +1,20 @@
+pkgbase = spotifyrecorder
+	pkgdesc = A Spotify recorder script
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Bleuzen/spotifyrecorder
+	arch = x86_64
+	license = mit
+	depends = python
+	depends = python-dbus
+	depends = ffmpeg
+	optdepends = spotify
+	optdepends = audacity
+	optdepends = kid3
+	source = https://github.com/Bleuzen/spotifyrecorder/releases/download/0.1/spotifyrecorder.cpython-36.opt-1.pyc
+	source = spotifyrecorder
+	sha1sums = 0e6ddad09df7a28f82628d7732d6b177775ce9f9
+	sha1sums = ba07da8c0c077ec6e74390ee29d0f358e184b227
+
+pkgname = spotifyrecorder
+
