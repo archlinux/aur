@@ -1,11 +1,11 @@
 # Maintainer: Patrick Spek <aur+lonestar@tyil.work>
 
 pkgname="lonestar"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="Installer for Rakudo Star Perl 6"
 arch=("any")
-url="https://github.com/Tyil/lonestar"
+url="https://github.com/tyil/lonestar"
 license=("AGPL3")
 depends=("bash")
 makedepends=()
@@ -14,9 +14,18 @@ provides=("lonestar")
 conflicts=()
 backup=("etc/lonestar/user.sh")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tyil/lonestar/archive/v$pkgver.tar.gz")
-sha512sums=("414c6dc92fd415994885779fc1b545fa15b681f8d201b0b042ed11d9a99f9953539d0f1301bb6ed54485d5eeecf8fcba8dbe4f94bf88876b574700f77f25e5cc")
+sha512sums=("d1d8e30c20fc5ef1e669d05debcb9a07d09121ba1a858775701794d4cd01186ac1fdf40c90b81ae3de8a0d4ff7c221bd51103a72b98af19e6410e12eea0c9be4")
 
 package() {
 	cd -- "$pkgname-$pkgver" || exit 1
-	make DESTDIR="$pkgdir/usr" install
+	make DESTDIR="$pkgdir/usr" ETCDIR="$pkgdir/etc" install
+
+	# Add custom dist configuration
+	cat > "$pkgdir/etc/lonestar/custom.sh" <<EOF
+#! /usr/bin/env bash
+
+# Application configuration
+export LONESTAR_HELPPAGES="/usr/share/lonestar/help"
+export LONESTAR_LIB="/usr/lib/lonestar"
+EOF
 }
