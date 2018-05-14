@@ -3,7 +3,7 @@
 
 pkgbase=linux-apparmor
 _srcname=linux-4.16
-pkgver=4.16.7
+pkgver=4.16.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,9 +28,9 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
+            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
             'SKIP'
-            '627aa44c65d7297b00a8a7045d606d33b6a0b982c02331a101b94d38d348082a'
+            '8566a49997faf3f8678440c52578a7a0ee901e598d3b67d3bee3799fb92e8f86'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
