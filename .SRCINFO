@@ -1,6 +1,6 @@
 pkgbase = falkon-git
 	pkgdesc = Cross-platform Qt Web Browser
-	pkgver = 3.0.0.209.ga5ba6df9
+	pkgver = 3.0.0.234.g3760a9ff
 	pkgrel = 1
 	url = http://www.qupzilla.com
 	arch = i686
