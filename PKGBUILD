@@ -3,7 +3,7 @@
 _target=msp430-elf
 pkgname="${_target}-gdb"
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
 url="https://www.gnu.org/software/gdb/download/"
