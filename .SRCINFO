@@ -1,0 +1,16 @@
+pkgbase = log
+	pkgdesc = Log & time-tracker
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/joshavanier/log
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = sed
+	provides = log
+	conflicts = log
+	source = https://github.com/joshavanier/log/archive/1.0.5.tar.gz
+	md5sums = f02e9c8dca9cfde93365dad1edd64669
+
+pkgname = log
+
