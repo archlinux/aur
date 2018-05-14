@@ -1,0 +1,33 @@
+pkgbase = librm
+	pkgdesc = lib for roger-router
+	pkgver = 2.0
+	pkgrel = 0
+	url = https://www.tabos.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = git
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libsoup
+	depends = speex
+	depends = libxml2
+	depends = libtiff
+	depends = spandsp
+	depends = json-glib
+	depends = libsndfile
+	depends = gupnp
+	depends = gssdp
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = isdn4k-utils
+	depends = libsecret
+	provides = librm=2.0
+	conflicts = librm
+	options = !emptydirs
+	source = git+https://git.krueger-it.net/tabos.org/librm.git#tag=v2.0
+	sha512sums = SKIP
+
+pkgname = librm
+
