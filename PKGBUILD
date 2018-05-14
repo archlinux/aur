@@ -97,6 +97,17 @@ prepare() {
     patch -p0 -i ${srcdir}/enchant-2.patch
     patch -p1 -i ${srcdir}/php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
     patch -p1 -i ${srcdir}/php-icu-1101-Simplify-namespace-access.patch
+
+
+    # Build against specific libs in order to avoid clashes with official Arch Linux php package.
+    #sed -i configure -e "s/SAPI_SHARED=libs\/libphp7.so/SAPI_SHARED=libs\/lib${pkgbase}.so/g"
+    #sed -i configure -e 's/SAPI_SHARED=libs\/libphp$PHP_MAJOR_VERSION.$SHLIB_DL_SUFFIX_NAME/SAPI_SHARED=libs\/libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.$SHLIB_DL_SUFFIX_NAME/g'
+    #sed -i configure -e 's/OVERALL_TARGET=libphp$PHP_MAJOR_VERSION.la/OVERALL_TARGET=libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.la/g'
+    #sed -i configure -e 's/OVERALL_TARGET=libs\/libphp$PHP_MAJOR_VERSION.bundle/OVERALL_TARGET=libs\/libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.bundle/g'
+    #sed -i acinclude.m4 -e 's/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION\[.la\]/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.la\]/g'
+    #sed -i aclocal.m4 -e 's/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION\[.la\]/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.la\]/g'
+    #sed -i aclocal.m4 -e 's/OVERALL_TARGET=libs\/libphp\[\]$PHP_MAJOR_VERSION\[.bundle\]/OVERALL_TARGET=libs\/libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.bundle\]/g'
+
 }
 
 
