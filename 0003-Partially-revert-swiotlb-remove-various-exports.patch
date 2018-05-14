@@ -1,10 +1,10 @@
-From 1b03bcc6faecde170f9bea83accdde7bbd36df96 Mon Sep 17 00:00:00 2001
-Message-Id: <1b03bcc6faecde170f9bea83accdde7bbd36df96.1524129246.git.jan.steffens@gmail.com>
-In-Reply-To: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
-References: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
+From be536681bd2439bf8e95df124fa282cf4a2e7846 Mon Sep 17 00:00:00 2001
+Message-Id: <be536681bd2439bf8e95df124fa282cf4a2e7846.1524575789.git.jan.steffens@gmail.com>
+In-Reply-To: <f7a249814be46cbcb7bad48e4b1910baaf7f8961.1524575789.git.jan.steffens@gmail.com>
+References: <f7a249814be46cbcb7bad48e4b1910baaf7f8961.1524575789.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Fri, 6 Apr 2018 16:19:38 +0200
-Subject: [PATCH 3/6] Partially revert "swiotlb: remove various exports"
+Subject: [PATCH 3/5] Partially revert "swiotlb: remove various exports"
 
 This partially reverts commit 4bd89ed39b2ab8dc4ac4b6c59b07d420b0213bec.
 The proprietary NVIDIA driver needs one of the exports.
@@ -13,7 +13,7 @@ The proprietary NVIDIA driver needs one of the exports.
  1 file changed, 1 insertion(+)
 
 diff --git a/lib/swiotlb.c b/lib/swiotlb.c
-index c43ec2271469..77d699f14af7 100644
+index 44f7eb408fdb..0bb1bb65ad6b 100644
 --- a/lib/swiotlb.c
 +++ b/lib/swiotlb.c
 @@ -1016,6 +1016,7 @@ swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl, int nelems,

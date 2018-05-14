@@ -1,10 +1,10 @@
-From fb08717dc5ecf3ada73f93663b528d9d4ce4380b Mon Sep 17 00:00:00 2001
-Message-Id: <fb08717dc5ecf3ada73f93663b528d9d4ce4380b.1524129246.git.jan.steffens@gmail.com>
-In-Reply-To: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
-References: <ff9d06de19e83c0c5a00a4d46376b4d1032c4f99.1524129246.git.jan.steffens@gmail.com>
+From 415d0ca52b88f7cf3300a54c337ca80ebeccce5c Mon Sep 17 00:00:00 2001
+Message-Id: <415d0ca52b88f7cf3300a54c337ca80ebeccce5c.1524575789.git.jan.steffens@gmail.com>
+In-Reply-To: <f7a249814be46cbcb7bad48e4b1910baaf7f8961.1524575789.git.jan.steffens@gmail.com>
+References: <f7a249814be46cbcb7bad48e4b1910baaf7f8961.1524575789.git.jan.steffens@gmail.com>
 From: Igor Russkikh <igor.russkikh@aquantia.com>
 Date: Wed, 11 Apr 2018 15:23:24 +0300
-Subject: [PATCH 6/6] net: aquantia: Regression on reset with 1.x firmware
+Subject: [PATCH 5/5] net: aquantia: Regression on reset with 1.x firmware
 
 On ASUS XG-C100C with 1.5.44 firmware a special mode called "dirty wake"
 is active. With this mode when motherboard gets powered (but no poweron
