@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes-widgets
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FSLeyes is the FSL image viewer, widgets is one of its dependent projects"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -18,5 +18,7 @@ sha256sums=('03151fb5ace5d222c836d08e71dd099b8916b3fa5483030e55a60095cca021c2')
 
 package() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
+  # "Patching" for deprecation 2.x support
+  sed -i 's/deprecation>=1\.\*,<=2\.\*/deprecation>=1\.\*/g' requirements.txt
   python setup.py install --root="$pkgdir/" --optimize=1
 }
