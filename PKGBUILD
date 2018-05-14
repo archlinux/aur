@@ -1,6 +1,6 @@
 # Maintainer: a1lu <a1lu at arcor dot de>
 pkgname=qtchan
-pkgver=0.95
+pkgver=0.1
 pkgrel=1
 pkgdesc="A 4chan browser written with qt5"
 arch=('i686' 'x86_64')
