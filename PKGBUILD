@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-saharaclient' 'python2-saharaclient')
-pkgver='1.5.0'
+pkgver='1.6.0'
 pkgrel='1'
 pkgdesc='Python client library for Sahara'
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-requests-mock' 'python2-requests-mock'
               'python-testrepository' 'python2-testrepository')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   sed -i 's/pep8/pycodestyle/g' "${srcdir}/${pkgname}/saharaclient/tests/hacking/checks.py"
