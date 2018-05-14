@@ -2,7 +2,7 @@
 
 pkgname=('python-heatclient'
          'python2-heatclient')
-pkgver='1.13.0'
+pkgver='1.15.0'
 pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
@@ -34,7 +34,7 @@ checkdepends=('python-babel' 'python2-babel'
               'python-requests-mock' 'python2-requests-mock'
               'python-testrepository' 'python2-testrepository')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}"{,-py2}
