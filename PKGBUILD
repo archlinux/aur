@@ -2,7 +2,7 @@
 
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
-pkgver='3.38.0'
+pkgver='3.38.1'
 pkgrel='1'
 pkgdesc='Oslo Log library'
 arch=('any')
