@@ -5,7 +5,7 @@
 
 pkgname=natron
 pkgver=2.3.11
-pkgrel=3
+pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
