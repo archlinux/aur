@@ -1,6 +1,6 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-numpy-stl
-pkgver=2.3.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Simple library to make working with STL files (and 3D objects in general) fast and easy."
 url="https://github.com/WoLpH/numpy-stl/"
@@ -8,7 +8,7 @@ license=('BSD')
 depends=('python' 'python-numpy' 'python-nine' 'python-utils')
 makedepends=('python-setuptools')
 source=("https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz")
-md5sums=('b34f714d1775f703a5d11466efda8a91')
+md5sums=('08dbd830ecc5dafb568543c95bf40588')
 arch=('any')
 
 package() {
