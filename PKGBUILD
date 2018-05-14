@@ -2,8 +2,8 @@
 
 pkgname=spotifyrecorder
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="A Spotify recorder script"
+pkgrel=2
+pkgdesc="A recorder script for the Spotify desktop client"
 arch=('x86_64')
 url="https://github.com/Bleuzen/spotifyrecorder"
 license=('mit')

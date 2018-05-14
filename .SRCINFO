@@ -1,7 +1,7 @@
 pkgbase = spotifyrecorder
-	pkgdesc = A Spotify recorder script
+	pkgdesc = A recorder script for the Spotify desktop client
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bleuzen/spotifyrecorder
 	arch = x86_64
 	license = mit
